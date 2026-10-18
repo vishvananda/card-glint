@@ -32,6 +32,10 @@ node games/magic/tools/accuracy/frame-reconstruction-native.mjs \
 python games/magic/tools/accuracy/frame-reconstruction-verify.py test-results/frame-study train
 python games/magic/tools/accuracy/frame-reconstruction-evaluate.py test-results/frame-study
 
+# Optional: replay a separately versioned whole-card metric exporting scoreRegions.
+node games/magic/tools/accuracy/frame-reconstruction-score.mjs \
+  test-results/frame-study INPUTS.json SCORER_MODULE.mjs train
+
 PYTHONPATH=games/magic/tools/accuracy python -m unittest frame_reconstruction.test_model -v
 ```
 
@@ -39,6 +43,8 @@ Set `MAGIC_ACCURACY_CACHE` to reuse another checkout's content-addressed cache.
 Do not use the same output directory for different input revisions. Capture
 records source/scan hashes and the exact native baseline. Native replay must
 match every released full-card PNG pixel before candidate comparisons proceed.
+The optional whole-card scorer records its module hash and is a diagnostic only;
+this tool never publishes scores or marks a set complete.
 
 ## Interpretation
 

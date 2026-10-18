@@ -37,6 +37,7 @@ try {
       const { colorFrame } = await import('/games/magic/src/presentation/frame-hsb.ts');
       const candidates = [];
       const materials = [];
+      const plates = [];
       const inverse = (knots, value) => {
         let i = 1;
         while (i < knots.length - 1 && knots[i][1] < value) i++;
@@ -104,10 +105,11 @@ try {
                 : 0;
           }
         ctx.putImageData(result, 0, 0);
+        plates.push(c.toDataURL());
         candidates.push(await createImageBitmap(c));
         c.width = c.height = 0;
       }
-      window.frameExperiment = { candidates, materials };
+      window.frameExperiment = { candidates, materials, plates };
       window.renderExperiment = async (face, index) => {
         const { composeCardTexture, paintAssembledFace } = await import(
           '/games/magic/src/presentation/canvas-face.ts'
@@ -188,10 +190,16 @@ try {
     { geometry, adjustment, sourceData },
   );
   const materials = await session.page.evaluate(() => window.frameExperiment.materials);
+  const plates = await session.page.evaluate(() => window.frameExperiment.plates);
   for (let i = 0; i < materials.length; i++)
     await writeFile(
       path.join(output, `material-${i}.png`),
       Buffer.from(materials[i].split(',')[1], 'base64'),
+    );
+  for (let i = 0; i < plates.length; i++)
+    await writeFile(
+      path.join(output, `render-plate-${i}.png`),
+      Buffer.from(plates[i].split(',')[1], 'base64'),
     );
   const receipts = [];
   for (const [n, row] of obs.records.entries()) {

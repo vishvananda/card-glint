@@ -1,0 +1,4630 @@
+{
+  "schema": 1,
+  "status": "exploratory-not-adopted",
+  "set": "lea",
+  "material": "W",
+  "inputs": {
+    "archive": "alpha-dual-land-frames-and-sharpening (1).zip",
+    "sha256": "a5bcfcd851a41426cde9f3c134b2f2a403c8cf1872e58aa0cf6278c73a6c9a84",
+    "members": 41,
+    "strategySha256": "26eec50ef1900a9fa00512ae92178341d84114402d75de9849e8f33ea16f5719"
+  },
+  "sourceFrameSha256": "b996c0acacd18b33f406f2d3647ff93c796e9159069d2a0ea333b40e7667f85e",
+  "baseline": {
+    "image": "released-frame.png",
+    "sha256": "06c319329701672ff4fc46439cd2553a35e2d76e201d8b466c9f7dd268a37146",
+    "version": "0.5.2",
+    "sourceHash": "8ca296d05aaa9642094dd895d004c664d95e3deea11e48cda4e0b8b1b35a4738",
+    "browser": "148.0.7778.96"
+  },
+  "inputHashes": {
+    "inputHash": "35566229bf61284a2a5e341af2f8161cf035ee781dd6a4177242031b83d446c1",
+    "poseHash": "92fb503acbc3000527eb4ec4941c2684de012dcbdf22e34f7e99588ebc02815e",
+    "poseMethodHash": "cab200356e600c3f9374ebcc65d20edf9eb55428fa225fd306f6a1233820449f",
+    "poseTemplateHash": "dc5580757a4668448bd8e4368df751192269840b74a3d5f313f642fc77c05a78"
+  },
+  "geometry": {
+    "knots": {
+      "x": [
+        [0.0, 0.0],
+        [23, 25.375],
+        [52, 51.75],
+        [61, 59.75],
+        [425, 426.125],
+        [438, 438.5],
+        [464, 461.75],
+        [487.0, 487.0]
+      ],
+      "y": [
+        [0.0, 0.0],
+        [24, 28.125],
+        [62, 62.625],
+        [372, 374.375],
+        [404, 405.5],
+        [607, 601.25],
+        [654, 647.125],
+        [679.0, 679.0]
+      ]
+    },
+    "pins": [
+      {
+        "key": "stock-left",
+        "axis": "x",
+        "source": 23,
+        "target": 25.375,
+        "shift": 2.375,
+        "correlation": 0.9039061724901376
+      },
+      {
+        "key": "stock-right",
+        "axis": "x",
+        "source": 464,
+        "target": 461.75,
+        "shift": -2.25,
+        "correlation": 0.952182250417934
+      },
+      {
+        "key": "stock-top",
+        "axis": "y",
+        "source": 24,
+        "target": 28.125,
+        "shift": 4.125,
+        "correlation": 0.9771620095778957
+      },
+      {
+        "key": "stock-bottom",
+        "axis": "y",
+        "source": 654,
+        "target": 647.125,
+        "shift": -6.875,
+        "correlation": 0.9686455827611001
+      },
+      {
+        "key": "art-left",
+        "axis": "x",
+        "source": 52,
+        "target": 51.75,
+        "shift": -0.25,
+        "correlation": 0.9712701026639396
+      },
+      {
+        "key": "art-right",
+        "axis": "x",
+        "source": 438,
+        "target": 438.5,
+        "shift": 0.5,
+        "correlation": 0.9600414727918012
+      },
+      {
+        "key": "art-top",
+        "axis": "y",
+        "source": 62,
+        "target": 62.625,
+        "shift": 0.625,
+        "correlation": 0.9685911480531033
+      },
+      {
+        "key": "art-bottom",
+        "axis": "y",
+        "source": 372,
+        "target": 374.375,
+        "shift": 2.375,
+        "correlation": 0.9641271408639355
+      },
+      {
+        "key": "paper-left",
+        "axis": "x",
+        "source": 61,
+        "target": 59.75,
+        "shift": -1.25,
+        "correlation": 0.9697092159601259
+      },
+      {
+        "key": "paper-right",
+        "axis": "x",
+        "source": 425,
+        "target": 426.125,
+        "shift": 1.125,
+        "correlation": 0.9572392841919694
+      },
+      {
+        "key": "paper-top",
+        "axis": "y",
+        "source": 404,
+        "target": 405.5,
+        "shift": 1.5,
+        "correlation": 0.9334257505904862
+      },
+      {
+        "key": "paper-bottom",
+        "axis": "y",
+        "source": 607,
+        "target": 601.25,
+        "shift": -5.75,
+        "correlation": 0.9186857923239143
+      }
+    ],
+    "policy": "Shared monotone boundary remap; frozen per-scan poses"
+  },
+  "methods": {
+    "games/magic/tools/accuracy/frame-reconstruction-verify.py": "79df86a10ac708e692923858af2d242c0e45d8a4b219b2573bf7b04bc970cc4f",
+    "games/magic/tools/accuracy/frame-reconstruction-input.mjs": "0da6fb219267330785ced1a0f5ab92886f70e34a4eb303c3a3dbce86392009cd",
+    "games/magic/tools/accuracy/frame-reconstruction-evaluate.py": "022bfcec8b1f540f80a0b624cffd3fa1a4ec71b9cf1f5f3764a65887ddb37e43",
+    "games/magic/tools/accuracy/frame-reconstruction-fit.py": "c39e39174fcb44d4d8048f72cb85ba6089a54fd64994dec0148f2a15da1e4902",
+    "games/magic/tools/accuracy/frame-reconstruction-score.mjs": "5a70b6ea5f1ce194cb2de6f281c6c6ebdf48e63cedbe06657235a93786076c1d",
+    "games/magic/tools/accuracy/frame-reconstruction-native.mjs": "9f3115fcf1b70e67e2ac1dfb62dbf921844ec9cb29942fb4c5f120fb10cbf1e5",
+    "games/magic/tools/accuracy/frame_reconstruction/test_model.py": "87a2abb9f70260c1fbed622d48d970bfe12a1f670d5177e11d8c04e4bdb7c0ee",
+    "games/magic/tools/accuracy/frame_reconstruction/model.py": "e7281c3d6fe3d05a8686d60835db1a39ebdc20f6ae0fc776926f0631089a7cbc",
+    "games/magic/tools/accuracy/frame_reconstruction/geometry.py": "cb62d33436a09a79c8d66eb7bb480317c7e63a34bce96e5d8c82d9713b193a06"
+  },
+  "scorerModules": {
+    "accuracy-metrics.mjs": "9aa8a104719e9a8512fe064d0b87e78c354561313a3df41b53f3c4a66e0186d1",
+    "accuracy-policy.mjs": "2d98ee2d0c8a1c95b258ed0488bcb9510ef856f8161787cb496ec4ca445c42a6",
+    "vendor/card-glint/games/magic/tools/accuracy/pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+    "vendor/card-glint/games/magic/tools/accuracy/metrics.mjs": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a",
+    "vendor/card-glint/games/magic/tools/accuracy/edges.mjs": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"
+  },
+  "cards": [
+    {
+      "id": "057986c7-20c0-4157-b4df-beae4ef5c66d",
+      "name": "Crusade",
+      "oracleId": "4692740f-be90-459f-8d90-c4ae71771595",
+      "cohort": "calibration",
+      "scanSha256": "8c975844ad9e8bd744793cd1f1dcbc85776715ba6a9f63a50b6baf290a6c5c22",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0006999390338704, -0.00034931018940041384, 0, 0.9998500609143486, 0.04999999999999999,
+          0.4
+        ]
+      },
+      "baselineSha256": "64ad9206f7956d35e2055d4466e3a85d6bb05c21c4c286c189d5fa01385e6a2d"
+    },
+    {
+      "id": "0f84d676-5327-454c-a033-b4498a9d28e2",
+      "name": "Guardian Angel",
+      "oracleId": "1a91ca69-e890-41dc-866b-3aabf10c9a9c",
+      "cohort": "calibration",
+      "scanSha256": "9e509edda2c1f07a89fd4c753470df4e9d660cb03816ca156444aa26fde7a8b7",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.99955, 0, 0, 0.99955, -0.04999999999999999, -0.024999999999999994]
+      },
+      "baselineSha256": "8441d55ae913fda0edc8b206129eb38e748b08e40b9387d751707f804e0740ab"
+    },
+    {
+      "id": "11600105-56c6-4073-a4a6-8469030b39c9",
+      "name": "Benalish Hero",
+      "oracleId": "4c81cfb7-8765-4e28-ae33-4287fa9a86cc",
+      "cohort": "validation",
+      "scanSha256": "6e5de4ef1b34ef601791e962bbfc90f8e57833953295e131cac04347f61cee98",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0005499961901878, 8.731445904332337e-5, 1.3540329881628343e-20, 0.9991000038042908,
+          -0.05, 0
+        ]
+      },
+      "baselineSha256": "104a6d7bc21647a33a7b17910c2cacf60e221306583b99fb1aa025bde16cd4c0"
+    },
+    {
+      "id": "13186bc9-8d9c-433b-ba15-121ef94dd68a",
+      "name": "Conversion",
+      "oracleId": "a24e05fb-dffb-4400-b4ca-22fdde45e7a7",
+      "cohort": "calibration",
+      "scanSha256": "a3117a742d13af643fc5a1c66eb99d02922cd47157dc0c912f59a097dfaf406e",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.99985, 0, 0, 0.99985, 0.35, 1.3877787807814457e-17]
+      },
+      "baselineSha256": "65faeb42bab1270a3ab8c7318e62a1d701357966c78f56bf83a84d41dc32d38c"
+    },
+    {
+      "id": "15967a39-303f-457d-bcde-51837c8d63e1",
+      "name": "Black Ward",
+      "oracleId": "7861ac9b-3024-4935-804c-2ca4c5a46bf4",
+      "cohort": "calibration",
+      "scanSha256": "98e3b73ae3a2a6477e951694b684bb8aad3d745bac888f4da2745d58ee258d2d",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          0.9986999049308086, -0.0004357650671644308, -0.00017457659011659469, 1.0002501713901617,
+          -0.25, -0.15
+        ]
+      },
+      "baselineSha256": "3b3c62594d69385c5139cb7828d4547093cb4e9e445d0a143e5c9361a78a86bf"
+    },
+    {
+      "id": "1ae32d20-b438-4f43-b603-e8f706ecfb03",
+      "name": "Circle of Protection: Green",
+      "oracleId": "41b0f347-1398-4778-bf3f-4007d8a77162",
+      "cohort": "validation",
+      "scanSha256": "695133bfb57626dfe309ebd713173e8dea64e40e4e574827ab9444090b2a7ea4",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.0003, 0, 0, 1.0003, 0.275, -0.075]
+      },
+      "baselineSha256": "cfbbc49f7ee821614812226a6b9369392b2d3ea3517f91ebafee26dbf1bc502f"
+    },
+    {
+      "id": "1f6118b2-fe01-425a-a2ed-6d7c42286c8e",
+      "name": "Green Ward",
+      "oracleId": "727ab7f2-741e-4442-b5cb-e3032549fa87",
+      "cohort": "calibration",
+      "scanSha256": "2e6f5ac5c8ba1c072920f193fc5d349ce4f6144dd86752aa3000b6be26d8c4e2",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.0000499999999999, 0, 0, 1.0000499999999999, -0.05, -0.05]
+      },
+      "baselineSha256": "01e95d08a58e9a73c88b70244eb53bd2c88631c437cbdc20a2c171890ebb66ce"
+    },
+    {
+      "id": "2722d7e2-61c6-4934-9c21-875ee78fd06c",
+      "name": "Disenchant",
+      "oracleId": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+      "cohort": "calibration",
+      "scanSha256": "6bd82c6bf5f5e31b98055f7d11c43130a0f8ac6afe6c64392fa7c842bab6ff74",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.0001, 0, 0, 1.0001, -0.4, 0.2]
+      },
+      "baselineSha256": "3a660ca7ba42dcfddb5b141bb3e2affef2a23a745ce07afad669e067449d91d8"
+    },
+    {
+      "id": "2facf462-55cd-4da4-997f-2cf4add75628",
+      "name": "Purelace",
+      "oracleId": "3773001a-8868-49ec-a406-298cf72359c2",
+      "cohort": "calibration",
+      "scanSha256": "4d5a1f6ba1f4faee623326140311a7558c0300fd983eccb79548b314dbae2fbb",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.0004, 0, 0, 1.0004, 0.09999999999999999, 0.45]
+      },
+      "baselineSha256": "ead455ddeb79a62d9c7d400b16be10ed41d8caf3bbeb5e1a0cd6cff472e4bf7f"
+    },
+    {
+      "id": "3455b006-9ea5-4aef-8ad2-d0701eb0cacf",
+      "name": "Farmstead",
+      "oracleId": "0d71b157-09a0-4fd4-beb9-103117a784ad",
+      "cohort": "calibration",
+      "scanSha256": "b3ef4ee6ef00fdba98e8b3b5ec5cabdbd753d767df8dcbf7a5521b82c01e5c97",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.99985, 0, 0, 0.99985, 0.35000000000000003, 0.3]
+      },
+      "baselineSha256": "d35d612031359525bc3761ac212452e259fa71fd5fdac49ec770133ab8743888"
+    },
+    {
+      "id": "386ea9eb-abc1-4862-aa2d-8fb808d79490",
+      "name": "Swords to Plowshares",
+      "oracleId": "b1544f21-7e98-461b-aed5-e748b0168c52",
+      "cohort": "calibration",
+      "scanSha256": "495af24931d1f3a0dc3d4f217a6d56467e33878a62ba5289e2af5792cd5848e3",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.99945, 0, 0, 0.99945, -0.3, 0]
+      },
+      "baselineSha256": "b15b984a8964f0113c86a45fecbe59bbec5db39d773fd7cda543490b5e4bb64c"
+    },
+    {
+      "id": "49b22665-1501-420a-82ad-f71f6768bcf8",
+      "name": "White Ward",
+      "oracleId": "860468b3-625a-4663-a5ae-336ae10fc7d0",
+      "cohort": "calibration",
+      "scanSha256": "9eb3d43f0c7f94d2304e3894ff157a95167651edb217b6f8603d4944fa259c3f",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.99955, 0, 0, 0.99955, -0.325, 0.05]
+      },
+      "baselineSha256": "4b9ab6068e2ba8975108e583058d9f88971f19493aaf1dd41f5bf8bc495ff993"
+    },
+    {
+      "id": "4fff6e6f-4ebd-4ec8-9443-59efb22d376c",
+      "name": "Resurrection",
+      "oracleId": "837417d8-8260-486d-a3ed-3b5711eaf34a",
+      "cohort": "calibration",
+      "scanSha256": "0be3fba70c850e315b9a7ac7c63d6d6ddde60ce81d968a36878ca7bba58bdb24",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0002999961911396, 8.729264242770106e-5, -0.00043593962664305265, 0.9990999657613817,
+          -0.2, 0
+        ]
+      },
+      "baselineSha256": "7305d0a80672c9cce6dfdb20c591765d63f3e98d0ca5d5fbfb29512d30241b90"
+    },
+    {
+      "id": "50abfba8-c9f9-4ebf-965a-4b425fe83129",
+      "name": "White Knight",
+      "oracleId": "ddb021df-ae4a-4ac1-8353-d0b375761714",
+      "cohort": "calibration",
+      "scanSha256": "31d9d85a00d280fdb97d5a0e3712b8066023440e88b9983106e47d0c2292b6d3",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.024999999999999994, -0.024999999999999994]
+      },
+      "baselineSha256": "a0e87bd4cb37e8051ab7e3087a9671a03d80e324b0a28c4a1c9832636bb27c35"
+    },
+    {
+      "id": "5b6ddce7-b9c5-431d-a0b0-46d4aa93cbcb",
+      "name": "Armageddon",
+      "oracleId": "c9ed8b01-959a-47d6-891e-0abbdccf6e4f",
+      "cohort": "calibration",
+      "scanSha256": "ac19171585e54a012aa99ded497b6f7ebfeb34a68ea509f8ffec68ff9504a76b",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.0006, 0, 0, 1.0006, -0.27499999999999997, 0.2]
+      },
+      "baselineSha256": "f4720fad6a0b8d12c463af973208dcb8a90914c9878b591f22ed0c7fc1546c38"
+    },
+    {
+      "id": "6303233b-35eb-49ca-b844-ba6b9fe1cbd2",
+      "name": "Northern Paladin",
+      "oracleId": "f5975294-508a-453e-893a-2fbea2487d17",
+      "cohort": "calibration",
+      "scanSha256": "9e9aee38f82935a57c13c75458bbba6b00999a2f2592614138eda8cb5453a117",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0010999047023454, 0.0004368122646823987, -0.00017455911023403015, 1.0001500190414447,
+          -0.04999999999999999, 0.47500000000000003
+        ]
+      },
+      "baselineSha256": "478dbf298d8557c6fcd3a38a189f9cfdfe9354a53246d7f767ebc73263da054f"
+    },
+    {
+      "id": "6daf1aab-1e58-4a5a-bc66-cb3f7c86e0e8",
+      "name": "Pearled Unicorn",
+      "oracleId": "c071be90-0531-40cc-af46-0cbe80c4ddd4",
+      "cohort": "calibration",
+      "scanSha256": "68b69b7d6e492516dd960c3506df47532438f0ea49d28d7a18f9cec04407ae0c",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.00005, 0, 0, 1.00005, -0.14999999999999997, 0.15]
+      },
+      "baselineSha256": "48d2b8cd9538aeb52fe0a3ffdd9cb031eb500233ee96629048d7d3626740c2f4"
+    },
+    {
+      "id": "6f30ad61-fcb7-4d55-ba86-94de1bf545e4",
+      "name": "Karma",
+      "oracleId": "fac4da47-f0b2-4b57-9703-e0ed100d3499",
+      "cohort": "validation",
+      "scanSha256": "34579202e50ae0a74732d18e7516c7829f91b4d2a0b07ddff85961c81880fd96",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0002999961911396, -8.729264242770111e-5, 8.722282925770997e-5, 0.9994999961941861, 0.2,
+          -0.09999999999999999
+        ]
+      },
+      "baselineSha256": "f49c0d2f0737b5cda8e3111b793ff3c1319da66b3e3e9a95948ea06ca2b735a8"
+    },
+    {
+      "id": "6f9ea46a-411f-40ce-a873-a905180093f4",
+      "name": "Balance",
+      "oracleId": "17fa98cd-ed8f-483f-9525-7e989a82ebb2",
+      "cohort": "calibration",
+      "scanSha256": "c176a36264930697f45a71d3c3c0e01fe350215df7973eed48201e6d9ffbf3cf",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.9996, 0, 0, 0.9996, 0.375, 0.625]
+      },
+      "baselineSha256": "86fee607ace0a75b2a376d0fb0800a1738cbb7e59551379f868b9717ffefbb9c"
+    },
+    {
+      "id": "848b1a7f-e8ba-40b5-92b7-af1e963a0319",
+      "name": "Circle of Protection: Blue",
+      "oracleId": "d7572f17-f85d-45c0-ac64-43aac760eafe",
+      "cohort": "calibration",
+      "scanSha256": "3bd94f175601b05d4503f2a687aeef9a362253071ecfee26cc8e8501e34b4777",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.00045, 0, 0, 1.00045, -0.25, -0.04999999999999999]
+      },
+      "baselineSha256": "fa9caff8a033a5b67b375a56ced27dd6bb042c644a4368bbd1bd83045db755cc"
+    },
+    {
+      "id": "92df19c9-e127-42d9-8dd2-7fa5a7095428",
+      "name": "Circle of Protection: White",
+      "oracleId": "5f46f86a-9779-4ed3-99cb-76a03d380598",
+      "cohort": "calibration",
+      "scanSha256": "d55bc208415027e08f91f8753134fe2e58bb5d74362f6a803b30e0f0fe6473e9",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.0005, 0, 0, 1.0005, 0.05, -0.05]
+      },
+      "baselineSha256": "d13ad6f0f7dabff7cf12794f51c26ecd34ec2520a9118f6ea101e9f6d46e75d5"
+    },
+    {
+      "id": "93f9f0f2-e1cc-4740-888c-1336c6de0a27",
+      "name": "Blue Ward",
+      "oracleId": "fc0bf1d0-46a2-4305-ab2e-466d79d60ab2",
+      "cohort": "calibration",
+      "scanSha256": "39e622e06e610b97905377f5caa46f6280e65505421fb7c5977937545366a4a8",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.0003499999999999, 0, 0, 1.0003499999999999, 0.05, 0.175]
+      },
+      "baselineSha256": "6023c6b5e19e9df8f40354bac88eb9312cdbbe9282b9caedfe8ad906d3b6a45b"
+    },
+    {
+      "id": "943baea8-b173-4863-a3ab-dd217d483cd9",
+      "name": "Reverse Damage",
+      "oracleId": "eaaf7c30-f463-4115-a40e-7dc717063413",
+      "cohort": "calibration",
+      "scanSha256": "d68dd71a74b41b5dbab8950d59695620de8f7196403c980c46bdee68d28a2caf",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0008999390216855, 0.0003493800025690758, -0.0001744456605081395, 0.9994999999999999,
+          -0.25, 0.3
+        ]
+      },
+      "baselineSha256": "f453aa41cfd58425dae7f78bc81159c7e185d5c9e54a47ab86cde400e1b7a857"
+    },
+    {
+      "id": "98fba951-c5bb-497c-9292-ce1b2a1e1247",
+      "name": "Blaze of Glory",
+      "oracleId": "b330ac89-790e-4cc9-96a5-532c48252088",
+      "cohort": "calibration",
+      "scanSha256": "e3a9a7e6dbdc7c80fd3c637bda6f86bd10d11239ca9585164ca04859098d6ea5",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0005999961899976, 8.731882236644783e-5, -8.719664931896329e-5, 0.9991999961953284,
+          0.09999999999999999, 0.15
+        ]
+      },
+      "baselineSha256": "0b66d3add4b14945da8f7187bbb677fbbbf40bc66634dd557b3ff4b81759635b"
+    },
+    {
+      "id": "99ec4723-b36c-4015-b361-736a6523e8f5",
+      "name": "Wall of Swords",
+      "oracleId": "eb098958-50d3-4476-ba74-382033703ff9",
+      "cohort": "calibration",
+      "scanSha256": "2ac550828dd9995306eac15666c496452b8a4dfa302167091e6c8a044bddf918",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.99975, 0, 0, 0.99975, -0.55, -0.09999999999999999]
+      },
+      "baselineSha256": "43259868a36571edd051919503c317e643502f42178be98c9857829f36865af1"
+    },
+    {
+      "id": "a2788d69-6a3a-42f0-8736-cc6b57755ecd",
+      "name": "Wrath of God",
+      "oracleId": "34515b16-c9a4-4f98-8c77-416a7a523407",
+      "cohort": "validation",
+      "scanSha256": "d8db3d83a6fa3f131e244ca8d92fc90a4ec07b659b1b7e6483482620ee8b7b36",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.0004, 0, 0, 1.0004, -0.175, 0.175]
+      },
+      "baselineSha256": "122ab713f515d240cf6aff9c37500380fe34e4f308d4073c2547f01fe73bb31a"
+    },
+    {
+      "id": "b01041d2-687e-4972-81c8-16690809275b",
+      "name": "Holy Armor",
+      "oracleId": "912164c2-b4d4-42e3-a10e-903b8c7b2e6d",
+      "cohort": "calibration",
+      "scanSha256": "6aacc0cc3d7c44c0ddcc390d5535a87a846b23d8916e392a5974f2a0d94a8852",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0010499961882842, 8.735809227456786e-5, -0.0001745154716854111, 0.9998999885779891, 0.2,
+          -0.04999999999999999
+        ]
+      },
+      "baselineSha256": "27af2ef6e3a6d49ef77ba911fffd803fd300a31907624b90b483c9e50f6b94ac"
+    },
+    {
+      "id": "b0da8d56-3178-44c2-9344-95d2346d326f",
+      "name": "Castle",
+      "oracleId": "f3179c3c-7e53-44d2-b579-b9e677efe9d9",
+      "cohort": "validation",
+      "scanSha256": "d0e364c62cb80956288092701ac73774a1046792bbb7d1024802933b83839315",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.99965, 0, 0, 0.99965, 0.25, 0.09999999999999999]
+      },
+      "baselineSha256": "20c417b080eda66c8c752bc63fed5a362999cfc216960a075f2e431bfd26f7a3"
+    },
+    {
+      "id": "b3dd94c5-42f6-4148-be6e-2a3a4226cc0e",
+      "name": "Circle of Protection: Red",
+      "oracleId": "df2738fe-9cd1-4347-8808-105fcfde1190",
+      "cohort": "calibration",
+      "scanSha256": "48f8316cba5dc2dbcdf4cea077a5ba615243159606f3b7f7e07bced5b25ce980",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.00015, 0, 0, 1.00015, -0.02499999999999998, 0.325]
+      },
+      "baselineSha256": "8cfd0c7715e8e22b56df5033c8f37b37492894abdf2ef65d6337a5baa91284c9"
+    },
+    {
+      "id": "c15e8a42-89de-42bc-8d5f-33426d207c3a",
+      "name": "Island Sanctuary",
+      "oracleId": "7d1769d0-d942-45b3-a31c-2bbe45e68661",
+      "cohort": "validation",
+      "scanSha256": "b3069a1cf0896f3c1c63697eac3ed882aa1f81d237a6857afe1fcfe5b62a8fe8",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0005499657116923, -0.0002619433744702196, 0.00026168157508541103, 0.9995499657459618, 0,
+          0.6
+        ]
+      },
+      "baselineSha256": "ee4de00992cf9496e41e5fca45281bdb194daaacc7ac461339d169d63c7daffe"
+    },
+    {
+      "id": "caf9cef4-0f2d-478a-b119-fe1967687f74",
+      "name": "Personal Incarnation",
+      "oracleId": "6e49a5b8-6bc4-4c7b-82c1-957f1fb0ca5f",
+      "cohort": "validation",
+      "scanSha256": "a68625f83505a121bb5358627a25e0317086cc9c28ac05f6d52430b7de42fdb2",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0004499999999998, 0, 0, 1.0004499999999998, 0.22500000000000003, 0.5249999999999999
+        ]
+      },
+      "baselineSha256": "37ff0137535efe0c2e3011a88128063060b1915e53917669efafc363704b9661"
+    },
+    {
+      "id": "cbd9ab01-a833-4fa4-8dee-151bd9800835",
+      "name": "Veteran Bodyguard",
+      "oracleId": "d29078c0-1fb8-437a-81d1-bb319f646941",
+      "cohort": "calibration",
+      "scanSha256": "5238f7f750777932e1d0f6e20380f88a2c261667c5f733247cdfacafe27e5152",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0012500000000002, 6.062896412554068e-20, 0.0002617993937802986, 1, -0.2,
+          0.39999999999999997
+        ]
+      },
+      "baselineSha256": "1e21d06e2f0ad0cea0c4a6e4fb0640ba56c4c47f50bc21ecc77c100bcc010f31"
+    },
+    {
+      "id": "d05b92bd-797e-413f-a8b0-32e0937a1ee0",
+      "name": "Savannah Lions",
+      "oracleId": "60ba93eb-39e6-4af2-9c66-cd38f72daff2",
+      "cohort": "validation",
+      "scanSha256": "f334216d65edc7b57ad87073f2b195e14d1858fdf63ee68cd3251139a97e5efe",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1, 0, 0, 1, -0.05, 0.3]
+      },
+      "baselineSha256": "a7fee71c3417cb0a7f5f810ea7107386f46aca6fd9f5606d94bd76cee23efa75"
+    },
+    {
+      "id": "d0ba7b76-f3d0-47d0-8a35-0c08e67200fb",
+      "name": "Righteousness",
+      "oracleId": "3f6b2f76-0364-415e-a6a2-e9e5bf31b745",
+      "cohort": "calibration",
+      "scanSha256": "760e142657e67f21b2ba59c44972600c9e0f2a21ec851e1b691ccbe1c6782a2a",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          1.0000999961919013, -8.727518913520333e-5, 8.715737941084327e-5, 0.998749996197042, 0.3,
+          0.2
+        ]
+      },
+      "baselineSha256": "e5bcc4a8caf317a8db8853eed80d3c9df2d372b3f319dbada63c3d7ad681fbfe"
+    },
+    {
+      "id": "d2379f78-c03f-447f-b3c9-10a918d556e9",
+      "name": "Consecrate Land",
+      "oracleId": "4627691c-4ed4-4add-9cc3-2e019be2f9fd",
+      "cohort": "validation",
+      "scanSha256": "1759cf4de7b619348f1ffbd9b5e2e1ff36cc5d8273ac42ecac723a5237e2483f",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.00085, 0, 0, 1.00085, -0.05, 0.25]
+      },
+      "baselineSha256": "5d4f640de45444d63a2db1712414969a781b6c8b8211c6c35aae5e97a36493ff"
+    },
+    {
+      "id": "d5c83259-9b90-47c2-b48e-c7d78519e792",
+      "name": "Animate Wall",
+      "oracleId": "c7a6a165-b709-46e0-ae42-6f69a17c0621",
+      "cohort": "calibration",
+      "scanSha256": "71b61456ef6dddd7805727708eb4a55dfcd2231cfcc0a7a7f9ac37b69b8616ad",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          0.9988998136270721, 0.0006101932484864161, -0.00017466384063333668, 1.0007500800220503,
+          0.35000000000000003, 0.625
+        ]
+      },
+      "baselineSha256": "518da10d9c3f771a0b2baa2a35411184099a899ecf77bc8cc842414d62a4b114"
+    },
+    {
+      "id": "ddb633f5-cc4d-4157-8217-def90cb15e24",
+      "name": "Lance",
+      "oracleId": "5960dd01-6797-4c73-b48a-f637b9c288cc",
+      "cohort": "calibration",
+      "scanSha256": "3178e271f1d4030e5088d85f38026739482fca1fa2f936a33b51c515563211b2",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.99995, 0, 0, 0.99995, 0.125, 0.025000000000000022]
+      },
+      "baselineSha256": "1b6412190ec0109c7c878940fa2ac0b50dea6e93bf6d63072d1a44ba84d86400"
+    },
+    {
+      "id": "e0c64c01-c2aa-470b-88c6-3d3e4a969649",
+      "name": "Red Ward",
+      "oracleId": "73f84440-425f-4cf5-b01a-3ae89f1f6e37",
+      "cohort": "calibration",
+      "scanSha256": "73aaec8a6c2779ce6f860f4208b86490578b5a2fd6b793bf0f7f6841b031a42c",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          0.9974998632648588, 0.0005222897547945189, -0.00034852479656130234, 0.9984499543782105, 1,
+          0
+        ]
+      },
+      "baselineSha256": "dcbe990aba8b15ca7a6cbffa03b74540d6990e748f3dba7ed05ec8682b3dacbc"
+    },
+    {
+      "id": "e28de37e-84d5-4dc7-b36c-e14da5924729",
+      "name": "Healing Salve",
+      "oracleId": "8da8644c-75a1-4fe9-8e94-900d948d631c",
+      "cohort": "validation",
+      "scanSha256": "4d0a21cd87cc488509b0e2de1956076152aff3822da80625bbf008d20b27a2cb",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          0.9971499658282085, 0.00026105325656187046, 5.421824014056887e-20, 1.0001500342746013,
+          1.1500000000000001, 0.25
+        ]
+      },
+      "baselineSha256": "26cf3fab2cda2f5086867f0c7194a25d4d2a975e4fa194b358cb6f0a737fbd73"
+    },
+    {
+      "id": "e945a4cd-0eb1-4f54-898d-169ce2748a03",
+      "name": "Holy Strength",
+      "oracleId": "9357de36-f8be-4f49-b2c8-9fe9eaf82b07",
+      "cohort": "calibration",
+      "scanSha256": "3099c6554a4add66ee499b1b3171215d09dfba8146b43de53cc6c4b923ceabb8",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.99985, 0, 0, 0.99985, -0.39999999999999997, 0.15000000000000002]
+      },
+      "baselineSha256": "6545608e1b37232b596e1a744cee714477e3ac03b1bfa9bdac7e599adc1a4ee0"
+    },
+    {
+      "id": "eaac88da-d19e-4771-944c-3709963d04e7",
+      "name": "Mesa Pegasus",
+      "oracleId": "8161f5b8-6aab-4133-ba2c-2e7b5774153e",
+      "cohort": "calibration",
+      "scanSha256": "5b7e43695ddc3e26d3f3d060921a6cbe031bf6959933d2f44c7fb5f916b266b7",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.9995, 0, 0, 0.9995, -0.175, 0.05000000000000002]
+      },
+      "baselineSha256": "42580c36afa145dc9e3f1a6cb8ad169a38f3cdcb3212eefb2f1b06b9d4b5b8a4"
+    },
+    {
+      "id": "efba235e-04e5-449c-906c-0ac33f6d7929",
+      "name": "Samite Healer",
+      "oracleId": "95a0ca48-d924-47f4-86ed-42c673ee778c",
+      "cohort": "validation",
+      "scanSha256": "1d21bc6c81cfe96747064946c5825ad5fa6578570e84e13edffffbb58537230e",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          0.9993498630112649, 0.0005232584124851153, -0.00034910075521153635, 1.0000999543028177,
+          -0.05, -0.05
+        ]
+      },
+      "baselineSha256": "a52bc99eb6cc52a43f35d6513957b09904dd3fe123dab9eb326a4cc5b1cecb0a"
+    },
+    {
+      "id": "f131fd27-18da-47ca-b59f-135bcac83abd",
+      "name": "Blessing",
+      "oracleId": "5c84d8da-2bfb-4618-89a0-7d9ed604e854",
+      "cohort": "calibration",
+      "scanSha256": "f869e800e2f809d6d805339dab289d8c3db244f5e7eac7bf9e9af72e15e9cfc4",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [1.0003499999999999, 0, 0, 1.0003499999999999, -0.3, 0.3]
+      },
+      "baselineSha256": "253990d3507e8711d40bc331b75e899a6ac2830b09fd5bacaedbc3e0e7dc74e6"
+    },
+    {
+      "id": "f8ac5006-91bd-4803-93da-f87cf196dd2f",
+      "name": "Serra Angel",
+      "oracleId": "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
+      "cohort": "calibration",
+      "scanSha256": "08fd162ebb84008e27072894b6ba2d65b75ecedf6fa3da96b58076275445961a",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [0.9996, 0, 0, 0.9996, 0.25, 0.3]
+      },
+      "baselineSha256": "974f5e367ec041926851353339e0b86d429591e5c0e8641287291bed5e9db8a0"
+    },
+    {
+      "id": "fa5466cc-aa57-4a7f-8b21-d92b2fe02e13",
+      "name": "Death Ward",
+      "oracleId": "0544b707-ec67-43e3-a25d-fd7005ab673d",
+      "cohort": "calibration",
+      "scanSha256": "d6fa06b5ec57c02491a2bbb38eff3dfdad0f6dcd5c1fe7a8400bff26b39d3717",
+      "scanSize": [745, 1040],
+      "frozenTransform": {
+        "matrix": [
+          0.9991490260529744, 0.0013950761244085493, 0.0006979935486293582, 0.9998019491650598,
+          -0.25, 0.4000000000000001
+        ]
+      },
+      "baselineSha256": "69b5332b22574ebdd92ca2390180258ea01ca02efbde209c875702f6ebefb93c"
+    }
+  ],
+  "runs": {
+    "train": {
+      "fit": {
+        "steps": 200,
+        "cards": 34,
+        "patches": 1065,
+        "residualGrid": [133, 185],
+        "maximumSourceChange": 0.1,
+        "history": [
+          {
+            "step": 0,
+            "data": 0.00046457353164441884,
+            "prior": 0.0,
+            "smooth": 0.0
+          },
+          {
+            "step": 20,
+            "data": 0.000442995922639966,
+            "prior": 1.2131025641792803e-6,
+            "smooth": 5.373420208343305e-6
+          },
+          {
+            "step": 40,
+            "data": 0.0004194513021502644,
+            "prior": 1.3144872355042025e-6,
+            "smooth": 6.0427737480495125e-6
+          },
+          {
+            "step": 60,
+            "data": 0.00045225874055176973,
+            "prior": 1.3532867342291865e-6,
+            "smooth": 5.992774276819546e-6
+          },
+          {
+            "step": 80,
+            "data": 0.0004201068077236414,
+            "prior": 1.3447443052427843e-6,
+            "smooth": 5.930329280090518e-6
+          },
+          {
+            "step": 100,
+            "data": 0.00041922417585738003,
+            "prior": 1.2987674153919215e-6,
+            "smooth": 5.94845914747566e-6
+          },
+          {
+            "step": 120,
+            "data": 0.0004652922216337174,
+            "prior": 1.3448212712319219e-6,
+            "smooth": 6.152474270493258e-6
+          },
+          {
+            "step": 140,
+            "data": 0.00040339509723708034,
+            "prior": 1.3289422895468306e-6,
+            "smooth": 6.020614819135517e-6
+          },
+          {
+            "step": 160,
+            "data": 0.00040968559915199876,
+            "prior": 1.3858453939974424e-6,
+            "smooth": 6.0665856835839804e-6
+          },
+          {
+            "step": 180,
+            "data": 0.00034520329791121185,
+            "prior": 1.3106293863529572e-6,
+            "smooth": 5.979540674161399e-6
+          },
+          {
+            "step": 199,
+            "data": 0.00045087249600328505,
+            "prior": 1.308593255089363e-6,
+            "smooth": 6.0069623941672035e-6
+          }
+        ],
+        "policy": "Fixed shared HSB; scalar texture residual; at least five-card support; native scan patches; no per-card learned parameters; alpha unchanged; stock excluded"
+      },
+      "adjustment": {
+        "mask": {
+          "kind": "rect",
+          "rect": [0.129, 0.595, 0.745, 0.298],
+          "feather": 0.002
+        },
+        "frame": {
+          "hueDegrees": -4.261936664581299,
+          "saturationScale": 0.8843271732330322,
+          "brightnessScale": 0.8973440527915955
+        },
+        "paper": {
+          "hueDegrees": -6.511492729187012,
+          "saturationScale": 0.70084547996521,
+          "brightnessScale": 0.9336435794830322
+        }
+      },
+      "verification": {
+        "nativeModelMaterialParity": [
+          {
+            "variant": "calibrated",
+            "maximumOpaque8bitDifference": 1,
+            "meanOpaque8bitDifference": 0.0011075190268456936,
+            "alphaSha256": "74e8e2052632d2d5fc9110f98efdb80f339b290391472399ab0acb9a2b43900c",
+            "shape": [1482, 1062, 4]
+          },
+          {
+            "variant": "reconstructed",
+            "maximumOpaque8bitDifference": 1,
+            "meanOpaque8bitDifference": 0.0011132425861433148,
+            "alphaSha256": "74e8e2052632d2d5fc9110f98efdb80f339b290391472399ab0acb9a2b43900c",
+            "shape": [1482, 1062, 4]
+          }
+        ],
+        "nativeBaselineCards": 45,
+        "note": "Partial-alpha outer-corner RGB is excluded from parity because Canvas premultiplication rounds color; those pixels are outside fitting support."
+      },
+      "native": {
+        "label": "train",
+        "nativeBaselineParity": 45,
+        "receipts": [
+          {
+            "id": "057986c7-20c0-4157-b4df-beae4ef5c66d",
+            "variant": 0,
+            "sha256": "3f0b984f018f8ef623c5a669ec0544e8525146ce7ffc4f98bdf5a4097c99ab6d"
+          },
+          {
+            "id": "057986c7-20c0-4157-b4df-beae4ef5c66d",
+            "variant": 1,
+            "sha256": "0ef62d7f5c935f760680e967a19cf795b03cfc3e05a48a3814309a76ead162d6"
+          },
+          {
+            "id": "0f84d676-5327-454c-a033-b4498a9d28e2",
+            "variant": 0,
+            "sha256": "c4950bdb822ff871c1b9c0da8b3d0d3c1c7854393a1dd9ca681f8f06bf0c905d"
+          },
+          {
+            "id": "0f84d676-5327-454c-a033-b4498a9d28e2",
+            "variant": 1,
+            "sha256": "dc9a930259ca9635a78102aaaa0912272fb7671ac748c6fb24349714f46f8f59"
+          },
+          {
+            "id": "11600105-56c6-4073-a4a6-8469030b39c9",
+            "variant": 0,
+            "sha256": "4c3571e2f84be6b98a238130f137c5749340e4d0e1d9ba4528849bcc42e02a51"
+          },
+          {
+            "id": "11600105-56c6-4073-a4a6-8469030b39c9",
+            "variant": 1,
+            "sha256": "6faa3b45766c14f715b2267af3b876bb20704e79d8eb5905a6ce792fbfc27f4e"
+          },
+          {
+            "id": "13186bc9-8d9c-433b-ba15-121ef94dd68a",
+            "variant": 0,
+            "sha256": "7e76a1ae4ebc648b8479dfa7bcae5500a7912f5e0489b99af55627dfdf7bf139"
+          },
+          {
+            "id": "13186bc9-8d9c-433b-ba15-121ef94dd68a",
+            "variant": 1,
+            "sha256": "49466c50cb5569a77c7c0a61ced5b8af6fd10af1b62ba26705a08f642fe9bac8"
+          },
+          {
+            "id": "15967a39-303f-457d-bcde-51837c8d63e1",
+            "variant": 0,
+            "sha256": "8f3ecc8999c78704efce4b45a767993f22cd0c4401dc8345190805360fc8e304"
+          },
+          {
+            "id": "15967a39-303f-457d-bcde-51837c8d63e1",
+            "variant": 1,
+            "sha256": "e1fed37e5ccf9db7fee964567e944598965566a8d0691f46ed6f506ba0b5a16f"
+          },
+          {
+            "id": "1ae32d20-b438-4f43-b603-e8f706ecfb03",
+            "variant": 0,
+            "sha256": "07ca6ba19d568967627f56cccb994aeed6160649c02974588906bdf3c44c2a40"
+          },
+          {
+            "id": "1ae32d20-b438-4f43-b603-e8f706ecfb03",
+            "variant": 1,
+            "sha256": "f57946e957a817a4e382e40fb4b5c65a90ba0c2e745b302a51b3a97779544059"
+          },
+          {
+            "id": "1f6118b2-fe01-425a-a2ed-6d7c42286c8e",
+            "variant": 0,
+            "sha256": "1e0ddccfc0cb5620008c455089e02b43ca1a9f2dc547c7388e1b87e26bb14848"
+          },
+          {
+            "id": "1f6118b2-fe01-425a-a2ed-6d7c42286c8e",
+            "variant": 1,
+            "sha256": "e5b18ab6e39b2c462d2c28452a248ea8ea722907c71f16d77d30af1ef83dabfe"
+          },
+          {
+            "id": "2722d7e2-61c6-4934-9c21-875ee78fd06c",
+            "variant": 0,
+            "sha256": "cc1540af99c883dc373cffff9d852e80e9fd844c86319a290fd3c05d651fcf33"
+          },
+          {
+            "id": "2722d7e2-61c6-4934-9c21-875ee78fd06c",
+            "variant": 1,
+            "sha256": "4c0c6c6546ac6808179a9941bbcb589cc130ea06ac6911892c52b702e5c4eb06"
+          },
+          {
+            "id": "2facf462-55cd-4da4-997f-2cf4add75628",
+            "variant": 0,
+            "sha256": "b1fc346d765455f707ffd2c7f3450bc3694594d5823ffb5a4600310a938f9aa0"
+          },
+          {
+            "id": "2facf462-55cd-4da4-997f-2cf4add75628",
+            "variant": 1,
+            "sha256": "10ca8770ca00357a0dbf1afdccb6e864d5fcc11fd928f95ba6045b887a3eb72b"
+          },
+          {
+            "id": "3455b006-9ea5-4aef-8ad2-d0701eb0cacf",
+            "variant": 0,
+            "sha256": "c9c322c3c214ecede226a4bf5b0ec96000fc1735e87c021af4d9fe7cae4cd882"
+          },
+          {
+            "id": "3455b006-9ea5-4aef-8ad2-d0701eb0cacf",
+            "variant": 1,
+            "sha256": "fbe226549942f010e3e10f2a83afa735b955c5a126c76f8d2f392bc315d0ef9e"
+          },
+          {
+            "id": "386ea9eb-abc1-4862-aa2d-8fb808d79490",
+            "variant": 0,
+            "sha256": "caeb481557fdcf6828b44a270f02f3c36b8844137028570097e925599748aabd"
+          },
+          {
+            "id": "386ea9eb-abc1-4862-aa2d-8fb808d79490",
+            "variant": 1,
+            "sha256": "f1b10dc809bea698ee416556bf124921de9509d83781631466dd2b3a9c396d82"
+          },
+          {
+            "id": "49b22665-1501-420a-82ad-f71f6768bcf8",
+            "variant": 0,
+            "sha256": "b203c72cf904c3409a15e6ff90a4c49f89a68ea3cb8b5acaf51f4ecc76d82fd7"
+          },
+          {
+            "id": "49b22665-1501-420a-82ad-f71f6768bcf8",
+            "variant": 1,
+            "sha256": "276f6d5facfab21746d55f819beaf37576dca05f4fd1ca14de25c37ce7eae5d3"
+          },
+          {
+            "id": "4fff6e6f-4ebd-4ec8-9443-59efb22d376c",
+            "variant": 0,
+            "sha256": "510ffe654759812a9695051f371a88756b8c587e8c798f29b5ec9c1f23005cb0"
+          },
+          {
+            "id": "4fff6e6f-4ebd-4ec8-9443-59efb22d376c",
+            "variant": 1,
+            "sha256": "39b7fc9e67166efd8246b4b8d5f5fa4e6b2960a65f328e69a7dfa79d9775cf6f"
+          },
+          {
+            "id": "50abfba8-c9f9-4ebf-965a-4b425fe83129",
+            "variant": 0,
+            "sha256": "0894e2796904bb8edba873288044c9d584e3c7868ea12e2d51ac37b431be73db"
+          },
+          {
+            "id": "50abfba8-c9f9-4ebf-965a-4b425fe83129",
+            "variant": 1,
+            "sha256": "12fa7c980d68dd4bf6abe6a52afe6c12077a45a465c4e83d01ecaf56e17b08d6"
+          },
+          {
+            "id": "5b6ddce7-b9c5-431d-a0b0-46d4aa93cbcb",
+            "variant": 0,
+            "sha256": "661383a71fc9938a492b24c65bea779cf87fc69ccd3803a2eb9a7fff8852b491"
+          },
+          {
+            "id": "5b6ddce7-b9c5-431d-a0b0-46d4aa93cbcb",
+            "variant": 1,
+            "sha256": "0f2c8484fb495e2ccb812660a00a17d89cc385dcdd110332dc87d166edf19898"
+          },
+          {
+            "id": "6303233b-35eb-49ca-b844-ba6b9fe1cbd2",
+            "variant": 0,
+            "sha256": "7dfe5917c02ece4b16157049a12534238dc2c8e89cce7a97e89d20c76049de8b"
+          },
+          {
+            "id": "6303233b-35eb-49ca-b844-ba6b9fe1cbd2",
+            "variant": 1,
+            "sha256": "c2bbd1af31394d0edb415725db0b75569a3cc9449442499768f975f8f1dfd064"
+          },
+          {
+            "id": "6daf1aab-1e58-4a5a-bc66-cb3f7c86e0e8",
+            "variant": 0,
+            "sha256": "c80181e86be2c1f8a51709d44e03a547843197841b29c01e53610a3dc0036b5d"
+          },
+          {
+            "id": "6daf1aab-1e58-4a5a-bc66-cb3f7c86e0e8",
+            "variant": 1,
+            "sha256": "9ac89a4ec7fa3144235fb52d8d7931774402be4c2378ab8bce396e62cd072438"
+          },
+          {
+            "id": "6f30ad61-fcb7-4d55-ba86-94de1bf545e4",
+            "variant": 0,
+            "sha256": "357fb52067a794e6973ee43c1a5eb621bf71d77926d9eac98e494efa113eeef0"
+          },
+          {
+            "id": "6f30ad61-fcb7-4d55-ba86-94de1bf545e4",
+            "variant": 1,
+            "sha256": "7d7f62a54f3a0ac987468ad02fb2af531e30b3b4b184a1add8dade32acab719a"
+          },
+          {
+            "id": "6f9ea46a-411f-40ce-a873-a905180093f4",
+            "variant": 0,
+            "sha256": "04cc87684a03cb1c4d87fc0081638931696cb9b4ba91d77f7152ea745826808b"
+          },
+          {
+            "id": "6f9ea46a-411f-40ce-a873-a905180093f4",
+            "variant": 1,
+            "sha256": "9c790a148b97384ce24d6ae67746ce4596f94362992a5dd8b0783ddb2047d37b"
+          },
+          {
+            "id": "848b1a7f-e8ba-40b5-92b7-af1e963a0319",
+            "variant": 0,
+            "sha256": "2c219d88c4558dd7949cb00bbe14e32a344c4ea5ee51a53c664a5e7d81352d1a"
+          },
+          {
+            "id": "848b1a7f-e8ba-40b5-92b7-af1e963a0319",
+            "variant": 1,
+            "sha256": "05097fc44d681005c7e8ae1536e0816266559a80f0e62a76048cf8869c3a013a"
+          },
+          {
+            "id": "92df19c9-e127-42d9-8dd2-7fa5a7095428",
+            "variant": 0,
+            "sha256": "4e7ef921d6a87bbe870fd6f0b8a91ec265c9e3d657cdbedde288be8806046f58"
+          },
+          {
+            "id": "92df19c9-e127-42d9-8dd2-7fa5a7095428",
+            "variant": 1,
+            "sha256": "010e7b46f14cd2e9edcd6ed8d7995c94c03ea291344d8fea1a6915a72d63db3e"
+          },
+          {
+            "id": "93f9f0f2-e1cc-4740-888c-1336c6de0a27",
+            "variant": 0,
+            "sha256": "bcebe7167a21b30fce100350f1ece6b96178b0987bc452349d5f54a8fe22e437"
+          },
+          {
+            "id": "93f9f0f2-e1cc-4740-888c-1336c6de0a27",
+            "variant": 1,
+            "sha256": "f6abc75580178946e7a7efbc524d170048d3ab82ba42f03eaa5a013570945895"
+          },
+          {
+            "id": "943baea8-b173-4863-a3ab-dd217d483cd9",
+            "variant": 0,
+            "sha256": "cf6e3294dcc85f52a85d788285b9c24953e098e3029cb06915d3068e88e2211e"
+          },
+          {
+            "id": "943baea8-b173-4863-a3ab-dd217d483cd9",
+            "variant": 1,
+            "sha256": "00f09de1139230b4d2fa60357cb182228c18bb53e093b209f110f735f4435c40"
+          },
+          {
+            "id": "98fba951-c5bb-497c-9292-ce1b2a1e1247",
+            "variant": 0,
+            "sha256": "19c24502e99ac721263a6fe69e3848e380ffdb5a1059065dd758f57b6073291c"
+          },
+          {
+            "id": "98fba951-c5bb-497c-9292-ce1b2a1e1247",
+            "variant": 1,
+            "sha256": "e22ec72d715e338cfd376ff26c490dc7ba31327996146c3bff19960c6996b40b"
+          },
+          {
+            "id": "99ec4723-b36c-4015-b361-736a6523e8f5",
+            "variant": 0,
+            "sha256": "f60a3e9c931a2eaacf50b40d17989ede284580bc2421489618cb27b85d6015a6"
+          },
+          {
+            "id": "99ec4723-b36c-4015-b361-736a6523e8f5",
+            "variant": 1,
+            "sha256": "facfaf63353a0079933241cdd25a2a7c6589c00ee95d9e6fa9d2b3ad32a21abc"
+          },
+          {
+            "id": "a2788d69-6a3a-42f0-8736-cc6b57755ecd",
+            "variant": 0,
+            "sha256": "71a9eee3144de41603f20ab9752ed552ceacc4022aa76a02007d6d2a4a29dec8"
+          },
+          {
+            "id": "a2788d69-6a3a-42f0-8736-cc6b57755ecd",
+            "variant": 1,
+            "sha256": "023ea9f017359bdc8570188eddbc509b30f2752fcd28a946fb407d4adaad8b96"
+          },
+          {
+            "id": "b01041d2-687e-4972-81c8-16690809275b",
+            "variant": 0,
+            "sha256": "38da7bc030329cbadb0ecb0fb4cc6fa1dc38798554337665cfd1253c37b694fe"
+          },
+          {
+            "id": "b01041d2-687e-4972-81c8-16690809275b",
+            "variant": 1,
+            "sha256": "cc9bca66f66fb25ecf455af7812e4a13893383ac6ece8fee8952f10b50a43347"
+          },
+          {
+            "id": "b0da8d56-3178-44c2-9344-95d2346d326f",
+            "variant": 0,
+            "sha256": "01c7798bf4590938427cd2c5b35a1fa75ddc8ef9f00efd3c6fef0dc8fc2b35d6"
+          },
+          {
+            "id": "b0da8d56-3178-44c2-9344-95d2346d326f",
+            "variant": 1,
+            "sha256": "f9a068e3e6fed9a4aab8e95f234b7a60c9642e99d9e98c3bdaf33b19252313cc"
+          },
+          {
+            "id": "b3dd94c5-42f6-4148-be6e-2a3a4226cc0e",
+            "variant": 0,
+            "sha256": "5c088c8c7da4567c159441640de599d0b7e4622d79394fb923997fe53a141529"
+          },
+          {
+            "id": "b3dd94c5-42f6-4148-be6e-2a3a4226cc0e",
+            "variant": 1,
+            "sha256": "342c76291a6e7153c28872f940085d4535e21fecac5f0ab5245199ac342e4fd0"
+          },
+          {
+            "id": "c15e8a42-89de-42bc-8d5f-33426d207c3a",
+            "variant": 0,
+            "sha256": "529cb69ace2964f1958e6e84315cefe8086b914d6540f60c414272f35664f97b"
+          },
+          {
+            "id": "c15e8a42-89de-42bc-8d5f-33426d207c3a",
+            "variant": 1,
+            "sha256": "180cec3915823c9c6b1b87bdc5094de5bbec82723bdaa47881fcc0e234ae93de"
+          },
+          {
+            "id": "caf9cef4-0f2d-478a-b119-fe1967687f74",
+            "variant": 0,
+            "sha256": "4d81facfe0c247497d9b6edb0c412a2e2a944636cae22380ef5e273d2d9fffa4"
+          },
+          {
+            "id": "caf9cef4-0f2d-478a-b119-fe1967687f74",
+            "variant": 1,
+            "sha256": "e7a6f66ed282d0b2509ba7a3e7a516fd0d4f6ca1dd61a800952dd7cdfdfbde90"
+          },
+          {
+            "id": "cbd9ab01-a833-4fa4-8dee-151bd9800835",
+            "variant": 0,
+            "sha256": "5bb93134e448dc3f946bd9f07fa3ac5df3f729cb32dc9389c7587b18eb0efe7f"
+          },
+          {
+            "id": "cbd9ab01-a833-4fa4-8dee-151bd9800835",
+            "variant": 1,
+            "sha256": "906d6fdab2b12b4b3c6256aa506e44469cb9ef6f7a9b6a4aa645e09b5370c9f1"
+          },
+          {
+            "id": "d05b92bd-797e-413f-a8b0-32e0937a1ee0",
+            "variant": 0,
+            "sha256": "8f8a2c7680e74498aca8bd8c54358dec6543b9dfb8ba4f7560a9e79324d24dd6"
+          },
+          {
+            "id": "d05b92bd-797e-413f-a8b0-32e0937a1ee0",
+            "variant": 1,
+            "sha256": "b711193d57fa8921251f0ecb8f0bfdb795dc6dc1472cb90c881a42a386daa8c1"
+          },
+          {
+            "id": "d0ba7b76-f3d0-47d0-8a35-0c08e67200fb",
+            "variant": 0,
+            "sha256": "3eb66a9e4d2e0c75c81f743ac8f61ea9d42f5558cd34d2a4981673db0fae8cc1"
+          },
+          {
+            "id": "d0ba7b76-f3d0-47d0-8a35-0c08e67200fb",
+            "variant": 1,
+            "sha256": "1f5f13db9858266212832316ab3cc1fc727aa839e520474aa58d9d48d8a8f000"
+          },
+          {
+            "id": "d2379f78-c03f-447f-b3c9-10a918d556e9",
+            "variant": 0,
+            "sha256": "580039d0e9720f752050afafd63a0d2ee2c00743ef36530f7fb07b227a78c357"
+          },
+          {
+            "id": "d2379f78-c03f-447f-b3c9-10a918d556e9",
+            "variant": 1,
+            "sha256": "554a6e7cd9f8df5818799be7b4eb22be7a9d50f402d5a452f02a01d8d158d083"
+          },
+          {
+            "id": "d5c83259-9b90-47c2-b48e-c7d78519e792",
+            "variant": 0,
+            "sha256": "e117ffc145f69c15b066288d599db3ea439c1084baaa32bbc507c724566a7007"
+          },
+          {
+            "id": "d5c83259-9b90-47c2-b48e-c7d78519e792",
+            "variant": 1,
+            "sha256": "2cf62ca98cc82cd3afd06e48c1178309689aed7a834a4ac4475779f189d69a97"
+          },
+          {
+            "id": "ddb633f5-cc4d-4157-8217-def90cb15e24",
+            "variant": 0,
+            "sha256": "d016addcf155ac671c42e0579add2057240bb5478cbacfea40e7179790b81359"
+          },
+          {
+            "id": "ddb633f5-cc4d-4157-8217-def90cb15e24",
+            "variant": 1,
+            "sha256": "1157f9d55974b669328614b824d10fb5be9e3ec66623513ac90553c82b8a2bd1"
+          },
+          {
+            "id": "e0c64c01-c2aa-470b-88c6-3d3e4a969649",
+            "variant": 0,
+            "sha256": "50d7a62d6af5952ab10d728572cf568f78382c712c656446a35eeab7e64fd75e"
+          },
+          {
+            "id": "e0c64c01-c2aa-470b-88c6-3d3e4a969649",
+            "variant": 1,
+            "sha256": "5cea3359b7362fb2e51ec08fdf754b41a63475e154d9e3cd95e5a0ba52f1e3a9"
+          },
+          {
+            "id": "e28de37e-84d5-4dc7-b36c-e14da5924729",
+            "variant": 0,
+            "sha256": "3f895ea0344606c26e1161299a140c7b326640a0cc5457b2640d446a565c6c1b"
+          },
+          {
+            "id": "e28de37e-84d5-4dc7-b36c-e14da5924729",
+            "variant": 1,
+            "sha256": "3967f4a99b100b57314961371c927bb61fffb2876034d56561b098571a82c108"
+          },
+          {
+            "id": "e945a4cd-0eb1-4f54-898d-169ce2748a03",
+            "variant": 0,
+            "sha256": "b84e88216d338dd93d8c58dbcffd04adfb006f71ceb40cb69f7a03c0f54deee5"
+          },
+          {
+            "id": "e945a4cd-0eb1-4f54-898d-169ce2748a03",
+            "variant": 1,
+            "sha256": "5233674655f5d3cf19ff57096703634fc342dec05aafaaa633c4290766a35f04"
+          },
+          {
+            "id": "eaac88da-d19e-4771-944c-3709963d04e7",
+            "variant": 0,
+            "sha256": "19309bea99104d42da46f80dc739c8c967c3e3c1ec306710456a870fe7097fa2"
+          },
+          {
+            "id": "eaac88da-d19e-4771-944c-3709963d04e7",
+            "variant": 1,
+            "sha256": "2483b92d85a34eaa68bfb207abe0638880a3b0625ce3e72e8fc3c95b566e6168"
+          },
+          {
+            "id": "efba235e-04e5-449c-906c-0ac33f6d7929",
+            "variant": 0,
+            "sha256": "b7fca1ab3525bd927a7661de066b9581b7ead31bd1a566c57ceab676979c14fe"
+          },
+          {
+            "id": "efba235e-04e5-449c-906c-0ac33f6d7929",
+            "variant": 1,
+            "sha256": "46d295dd4f404c7e4e56cf408d58ddaf151af0f37553d9e0b55775b5d60c1d0f"
+          },
+          {
+            "id": "f131fd27-18da-47ca-b59f-135bcac83abd",
+            "variant": 0,
+            "sha256": "645f70c4b23b35a75f58a89157355bead099e46744c4ef7c8b56f211181453bd"
+          },
+          {
+            "id": "f131fd27-18da-47ca-b59f-135bcac83abd",
+            "variant": 1,
+            "sha256": "8b89958d05128dd79560822d8164e8e2571ad006799970172e30ef05472f9f2c"
+          },
+          {
+            "id": "f8ac5006-91bd-4803-93da-f87cf196dd2f",
+            "variant": 0,
+            "sha256": "b622146dd0dc274ad29afa04db9d31023d16570c95f3603a6cdb7fe3e077f8dd"
+          },
+          {
+            "id": "f8ac5006-91bd-4803-93da-f87cf196dd2f",
+            "variant": 1,
+            "sha256": "a3f89f06bb084057f672764d9f721b24961f0dcbc0a52525f6eef1cd75fffe6b"
+          },
+          {
+            "id": "fa5466cc-aa57-4a7f-8b21-d92b2fe02e13",
+            "variant": 0,
+            "sha256": "a199d8209799822333ce0d55c977cfbe1849c3ebe93e82df13a3864cee8589d3"
+          },
+          {
+            "id": "fa5466cc-aa57-4a7f-8b21-d92b2fe02e13",
+            "variant": 1,
+            "sha256": "e70f6627c73b0157565c27db0785da3b3a3d0055821b9e977fcc6635a5a87daf"
+          }
+        ],
+        "geometryHash": "d8afb09137e2aa748a5a1139652cf351017d6e09e75d041a5fb62a1c142a0098",
+        "adjustmentHash": "5b76527747d5bf01a7c2c8fb8bf16a36e94b386627e688382578065c0d47ee05"
+      },
+      "outputHashes": {
+        "train-reconstructed-material.png": "1d268e9342454143bf5f044ce0e29dfaeb4a3b94e3f0190cd5732064a919044c",
+        "train-coverage.png": "e579fd0908e73a1849a0c35d7751e5ce7a7bacfbaf4b44e9d652c4469445252b",
+        "train-calibrated-material.png": "e4f106dded9d7d61700b5f6724c2dfd088308ea865d6eafa2412d3eda09828e4",
+        "train-reconstructed-source.png": "f559cd93aae0c4e330c2758f5f7964329fc391fd0d848eeef052bd203e1070bb"
+      },
+      "wholeCardSummary": {
+        "calibration": {
+          "cards": 34,
+          "variants": {
+            "released": {
+              "structure100": 70.14260391255019,
+              "coverage": 0.9532334672999634,
+              "frame100": 79.27915887489435
+            },
+            "calibrated": {
+              "structure100": 75.00629284061557,
+              "coverage": 0.9532334672999634,
+              "frame100": 88.79781207028701
+            },
+            "reconstructed": {
+              "structure100": 75.62526872823241,
+              "coverage": 0.9532334672999634,
+              "frame100": 88.7089834601567
+            }
+          }
+        },
+        "validation": {
+          "cards": 11,
+          "variants": {
+            "released": {
+              "structure100": 68.95090304547601,
+              "coverage": 0.9538866930171278,
+              "frame100": 79.70479085752979
+            },
+            "calibrated": {
+              "structure100": 74.16364077556555,
+              "coverage": 0.9538866930171278,
+              "frame100": 88.50446275471174
+            },
+            "reconstructed": {
+              "structure100": 74.66219555131133,
+              "coverage": 0.9538866930171278,
+              "frame100": 88.46428561931009
+            }
+          }
+        },
+        "all": {
+          "cards": 45,
+          "variants": {
+            "released": {
+              "structure100": 69.85129925615429,
+              "coverage": 0.953393144697492,
+              "frame100": 79.38320224842747
+            },
+            "calibrated": {
+              "structure100": 74.80031122471446,
+              "coverage": 0.953393144697492,
+              "frame100": 88.72610445981303
+            },
+            "reconstructed": {
+              "structure100": 75.3898508405406,
+              "coverage": 0.953393144697492,
+              "frame100": 88.64916843239422
+            }
+          }
+        }
+      },
+      "frameSummary": {
+        "calibration": {
+          "cards": 34,
+          "variants": {
+            "released": {
+              "structure100": 78.94688804251844,
+              "rgbMae255": 6.927102911286056,
+              "boundaryCorrelation100": 70.27735646541218,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "structure100": 77.67603705365303,
+              "rgbMae255": 6.6012206627056,
+              "boundaryCorrelation100": 95.7950488260069,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "structure100": 85.49215427484805,
+              "rgbMae255": 5.605746468063444,
+              "boundaryCorrelation100": 95.73653690806881,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        "validation": {
+          "cards": 11,
+          "variants": {
+            "released": {
+              "structure100": 77.70557823408014,
+              "rgbMae255": 7.326936716721817,
+              "boundaryCorrelation100": 69.57099390593713,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "structure100": 77.45574267543972,
+              "rgbMae255": 6.9292817933654245,
+              "boundaryCorrelation100": 95.59731996530941,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "structure100": 85.2395372400051,
+              "rgbMae255": 6.035245989703319,
+              "boundaryCorrelation100": 95.54623928694356,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        "all": {
+          "cards": 45,
+          "variants": {
+            "released": {
+              "structure100": 78.64345675601129,
+              "rgbMae255": 7.024840063725908,
+              "boundaryCorrelation100": 70.10469006198495,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "structure100": 77.62218731675645,
+              "rgbMae255": 6.681413383533557,
+              "boundaryCorrelation100": 95.74671510450307,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "structure100": 85.43040344410863,
+              "rgbMae255": 5.710735240019858,
+              "boundaryCorrelation100": 95.69001971179377,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        }
+      },
+      "spectrum": {
+        "patches": 120,
+        "method": "Median 64px Hann-window spectra; diagnostic, not physical ink separation",
+        "peaks": [
+          {
+            "fx": 0.359375,
+            "fy": -0.359375,
+            "energy": 630.6208754465622,
+            "gaussian1_4Amplitude": 4.570238891747934e-5
+          },
+          {
+            "fx": 0.359375,
+            "fy": 0.359375,
+            "energy": 538.5152441021637,
+            "gaussian1_4Amplitude": 4.570238891747934e-5
+          },
+          {
+            "fx": 0.140625,
+            "fy": 0.078125,
+            "energy": 28.28222315669361,
+            "gaussian1_4Amplitude": 0.36742902702560554
+          },
+          {
+            "fx": 0.234375,
+            "fy": 0.140625,
+            "energy": 22.0436792697324,
+            "gaussian1_4Amplitude": 0.05555792714952256
+          },
+          {
+            "fx": 0.21875,
+            "fy": -0.140625,
+            "energy": 19.94379303652944,
+            "gaussian1_4Amplitude": 0.07306476825368079
+          },
+          {
+            "fx": 0.140625,
+            "fy": -0.5,
+            "energy": 15.38217073091582,
+            "gaussian1_4Amplitude": 2.9318277825529543e-5
+          }
+        ]
+      },
+      "rawEvidenceHashes": {
+        "train-whole-card.json": "0bbcdc4c3ef4d0eea256067038804f39579916b372b5b3f25a6fd1aff0c21497",
+        "train-evaluation.json": "ecba59f59356c698698dddf6f4e97a60d17ebb5f92cd1912f8b232d6d59d2975"
+      },
+      "perCard": [
+        {
+          "id": "057986c7-20c0-4157-b4df-beae4ef5c66d",
+          "values": {
+            "released": {
+              "wholeStructure100": 72.1034042711078,
+              "frameStructure100": 74.43955948690096,
+              "rgbMae255": 8.543612603098154,
+              "boundary100": 69.23958017174758,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 77.25315247489665,
+              "frameStructure100": 71.93063521012647,
+              "rgbMae255": 7.34321616590023,
+              "boundary100": 96.34013016720534,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.73853644873749,
+              "frameStructure100": 80.49367827258823,
+              "rgbMae255": 6.075236080214381,
+              "boundary100": 96.32375720279508,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "0f84d676-5327-454c-a033-b4498a9d28e2",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.83876336544925,
+              "frameStructure100": 76.62110398309359,
+              "rgbMae255": 7.983079981058836,
+              "boundary100": 70.84300903187433,
+              "medianBoundaryShiftPx": 0.75
+            },
+            "calibrated": {
+              "wholeStructure100": 70.39697060055191,
+              "frameStructure100": 74.18799922463795,
+              "rgbMae255": 7.0218118373304605,
+              "boundary100": 96.25142697389043,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 71.00072383177731,
+              "frameStructure100": 83.95164266726218,
+              "rgbMae255": 5.851457538083196,
+              "boundary100": 96.20425782452699,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "11600105-56c6-4073-a4a6-8469030b39c9",
+          "values": {
+            "released": {
+              "wholeStructure100": 64.73972829621292,
+              "frameStructure100": 78.95615736991549,
+              "rgbMae255": 6.061482718214393,
+              "boundary100": 69.67466224961262,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 70.42572839381909,
+              "frameStructure100": 78.90861300995599,
+              "rgbMae255": 5.69063164293766,
+              "boundary100": 96.49333872471354,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 70.77062500779313,
+              "frameStructure100": 86.83926203699448,
+              "rgbMae255": 4.705176372081041,
+              "boundary100": 96.49548979378878,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "13186bc9-8d9c-433b-ba15-121ef94dd68a",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.45918303557012,
+              "frameStructure100": 74.72185272284202,
+              "rgbMae255": 5.919047836214304,
+              "boundary100": 70.01340763223028,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 76.04688704168488,
+              "frameStructure100": 73.14861842687756,
+              "rgbMae255": 6.560866171494126,
+              "boundary100": 96.15937150709259,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 76.92418039023549,
+              "frameStructure100": 81.49627845364206,
+              "rgbMae255": 5.563065838068724,
+              "boundary100": 96.11038424368375,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "15967a39-303f-457d-bcde-51837c8d63e1",
+          "values": {
+            "released": {
+              "wholeStructure100": 77.14790514975653,
+              "frameStructure100": 80.60597224199337,
+              "rgbMae255": 5.633092280477285,
+              "boundary100": 76.03746691496413,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 78.7878420007329,
+              "frameStructure100": 75.15992717582827,
+              "rgbMae255": 6.783391255885363,
+              "boundary100": 96.16815780159163,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 79.70112273880936,
+              "frameStructure100": 82.50015020115288,
+              "rgbMae255": 5.865499209612608,
+              "boundary100": 96.07053996638885,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "1ae32d20-b438-4f43-b603-e8f706ecfb03",
+          "values": {
+            "released": {
+              "wholeStructure100": 66.18263101615644,
+              "frameStructure100": 71.25393181457852,
+              "rgbMae255": 6.051103575155139,
+              "boundary100": 64.77390459556612,
+              "medianBoundaryShiftPx": 0.9375
+            },
+            "calibrated": {
+              "wholeStructure100": 73.86415502754781,
+              "frameStructure100": 69.96563366376105,
+              "rgbMae255": 6.544135669246316,
+              "boundary100": 95.4015590636648,
+              "medianBoundaryShiftPx": 0.25
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.54689377406474,
+              "frameStructure100": 80.11705167098783,
+              "rgbMae255": 5.254721883684397,
+              "boundary100": 95.31322069204565,
+              "medianBoundaryShiftPx": 0.25
+            }
+          }
+        },
+        {
+          "id": "1f6118b2-fe01-425a-a2ed-6d7c42286c8e",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.22445650153956,
+              "frameStructure100": 76.99240398777198,
+              "rgbMae255": 7.697540502995253,
+              "boundary100": 69.01927781095979,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 78.15821723898193,
+              "frameStructure100": 77.92554003389108,
+              "rgbMae255": 6.378654073923826,
+              "boundary100": 96.61402517901311,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 79.00686159683642,
+              "frameStructure100": 85.195483476216,
+              "rgbMae255": 5.149230994284153,
+              "boundary100": 96.45830599306512,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "2722d7e2-61c6-4934-9c21-875ee78fd06c",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.14737621497594,
+              "frameStructure100": 77.15430012494373,
+              "rgbMae255": 5.716013805940747,
+              "boundary100": 69.73229816564375,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 77.55049833521086,
+              "frameStructure100": 79.52872146740634,
+              "rgbMae255": 5.755606256425381,
+              "boundary100": 95.87091855306778,
+              "medianBoundaryShiftPx": 0.1875
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.29055471129567,
+              "frameStructure100": 86.01501950160826,
+              "rgbMae255": 4.728851951658726,
+              "boundary100": 95.78506113986764,
+              "medianBoundaryShiftPx": 0.25
+            }
+          }
+        },
+        {
+          "id": "2facf462-55cd-4da4-997f-2cf4add75628",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.1743021200663,
+              "frameStructure100": 77.75465787111678,
+              "rgbMae255": 6.636434141546488,
+              "boundary100": 66.96837933541077,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 74.7410381319667,
+              "frameStructure100": 74.29530341693955,
+              "rgbMae255": 6.344216521829367,
+              "boundary100": 96.2985086080535,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.37045237240154,
+              "frameStructure100": 83.93170211253249,
+              "rgbMae255": 5.178212039172649,
+              "boundary100": 96.3261740954922,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "3455b006-9ea5-4aef-8ad2-d0701eb0cacf",
+          "values": {
+            "released": {
+              "wholeStructure100": 64.83425131856053,
+              "frameStructure100": 85.22628347991467,
+              "rgbMae255": 10.566774141043425,
+              "boundary100": 71.53798726590955,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 70.29221006498408,
+              "frameStructure100": 83.8052389120023,
+              "rgbMae255": 8.412622231990099,
+              "boundary100": 95.50931983749932,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 70.32850420302226,
+              "frameStructure100": 90.59996471317308,
+              "rgbMae255": 8.233605287969112,
+              "boundary100": 95.31371447291751,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "386ea9eb-abc1-4862-aa2d-8fb808d79490",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.13857306245447,
+              "frameStructure100": 76.33569666057691,
+              "rgbMae255": 6.039332281798124,
+              "boundary100": 67.70626452694314,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 74.2207748296534,
+              "frameStructure100": 77.02877189049885,
+              "rgbMae255": 6.092031178995967,
+              "boundary100": 96.08643010509056,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.84944441519097,
+              "frameStructure100": 84.90329558771666,
+              "rgbMae255": 4.921162007376552,
+              "boundary100": 96.0864536549504,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "49b22665-1501-420a-82ad-f71f6768bcf8",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.10288267538753,
+              "frameStructure100": 72.55834360011536,
+              "rgbMae255": 6.928975218906999,
+              "boundary100": 63.626123832444335,
+              "medianBoundaryShiftPx": 0.9375
+            },
+            "calibrated": {
+              "wholeStructure100": 74.83374661749731,
+              "frameStructure100": 74.0628881596026,
+              "rgbMae255": 6.15473541431129,
+              "boundary100": 95.8893193212387,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.66030184791104,
+              "frameStructure100": 81.88574672185065,
+              "rgbMae255": 4.984344067052007,
+              "boundary100": 95.84250678506395,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "4fff6e6f-4ebd-4ec8-9443-59efb22d376c",
+          "values": {
+            "released": {
+              "wholeStructure100": 63.43525891981907,
+              "frameStructure100": 76.30395616636804,
+              "rgbMae255": 7.151092775166035,
+              "boundary100": 63.286408178367694,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 70.49273164066886,
+              "frameStructure100": 85.35997066571662,
+              "rgbMae255": 8.12093373388052,
+              "boundary100": 93.64950501010442,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 70.26109599534092,
+              "frameStructure100": 90.45799044701607,
+              "rgbMae255": 7.800330212339759,
+              "boundary100": 93.4563039067141,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "50abfba8-c9f9-4ebf-965a-4b425fe83129",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.90556063339108,
+              "frameStructure100": 81.33378986884642,
+              "rgbMae255": 5.244379313662648,
+              "boundary100": 68.0770454520207,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 74.85705722964279,
+              "frameStructure100": 80.78673280809217,
+              "rgbMae255": 5.843595759943128,
+              "boundary100": 96.4992301184524,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.10426092589941,
+              "frameStructure100": 88.27670388947672,
+              "rgbMae255": 4.622339392080903,
+              "boundary100": 96.38624242738916,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "5b6ddce7-b9c5-431d-a0b0-46d4aa93cbcb",
+          "values": {
+            "released": {
+              "wholeStructure100": 73.50199206591422,
+              "frameStructure100": 78.20245877201133,
+              "rgbMae255": 7.7400625962764025,
+              "boundary100": 72.35702749615149,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 78.98344524334026,
+              "frameStructure100": 73.64302569881727,
+              "rgbMae255": 6.9161689560860395,
+              "boundary100": 96.77042990185394,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 80.25665512925441,
+              "frameStructure100": 82.27072300577163,
+              "rgbMae255": 5.511323064565659,
+              "boundary100": 96.79819938223936,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "6303233b-35eb-49ca-b844-ba6b9fe1cbd2",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.23467591372216,
+              "frameStructure100": 82.28125595417049,
+              "rgbMae255": 7.0716057904064655,
+              "boundary100": 76.60918995996452,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 72.88933234406225,
+              "frameStructure100": 76.43828240923119,
+              "rgbMae255": 6.507265297695994,
+              "boundary100": 97.03899313556308,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.3340911603746,
+              "frameStructure100": 85.24728883582785,
+              "rgbMae255": 5.2898486237972975,
+              "boundary100": 96.96137073321528,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "6daf1aab-1e58-4a5a-bc66-cb3f7c86e0e8",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.54624618175485,
+              "frameStructure100": 76.64259594643742,
+              "rgbMae255": 5.883808052167296,
+              "boundary100": 68.05383264966326,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 75.62170081408559,
+              "frameStructure100": 78.50234043922445,
+              "rgbMae255": 6.6619773209095,
+              "boundary100": 96.77130628118823,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.98910066051849,
+              "frameStructure100": 86.42742113677767,
+              "rgbMae255": 5.8995491825044155,
+              "boundary100": 96.76454084375132,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "6f30ad61-fcb7-4d55-ba86-94de1bf545e4",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.31803401212191,
+              "frameStructure100": 70.70210086686383,
+              "rgbMae255": 6.582808094099164,
+              "boundary100": 64.32449968972101,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 76.21245904498333,
+              "frameStructure100": 75.64818753817354,
+              "rgbMae255": 6.961333807557821,
+              "boundary100": 94.60381401732089,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 76.70079561788879,
+              "frameStructure100": 81.82526907847125,
+              "rgbMae255": 6.342451041564345,
+              "boundary100": 94.46327735500824,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "6f9ea46a-411f-40ce-a873-a905180093f4",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.51222992443682,
+              "frameStructure100": 86.48280079663648,
+              "rgbMae255": 5.4089408833533525,
+              "boundary100": 70.93882934258288,
+              "medianBoundaryShiftPx": 0.625
+            },
+            "calibrated": {
+              "wholeStructure100": 75.68069683252136,
+              "frameStructure100": 87.03364242515114,
+              "rgbMae255": 4.5733068231493235,
+              "boundary100": 91.83772408865671,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.7243517980792,
+              "frameStructure100": 93.65219396039821,
+              "rgbMae255": 3.767092921771109,
+              "boundary100": 91.44483605308994,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "848b1a7f-e8ba-40b5-92b7-af1e963a0319",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.95751943321257,
+              "frameStructure100": 85.25045204320055,
+              "rgbMae255": 10.77835438773036,
+              "boundary100": 73.46868237142007,
+              "medianBoundaryShiftPx": 0.625
+            },
+            "calibrated": {
+              "wholeStructure100": 74.78414070299004,
+              "frameStructure100": 83.0713589359295,
+              "rgbMae255": 8.938659355044365,
+              "boundary100": 96.16022304331295,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.06032333693287,
+              "frameStructure100": 89.47922679648453,
+              "rgbMae255": 8.018089402467012,
+              "boundary100": 96.13748732508193,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "92df19c9-e127-42d9-8dd2-7fa5a7095428",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.65352791809966,
+              "frameStructure100": 75.86872490991223,
+              "rgbMae255": 5.6352529395371675,
+              "boundary100": 71.38222773661171,
+              "medianBoundaryShiftPx": 0.75
+            },
+            "calibrated": {
+              "wholeStructure100": 72.99449608482018,
+              "frameStructure100": 72.0590251255802,
+              "rgbMae255": 6.3680098950862885,
+              "boundary100": 96.68146404294043,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.6134549797715,
+              "frameStructure100": 81.91946412737336,
+              "rgbMae255": 5.224349163472652,
+              "boundary100": 96.61980837769187,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "93f9f0f2-e1cc-4740-888c-1336c6de0a27",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.6539483810816,
+              "frameStructure100": 73.40321053659193,
+              "rgbMae255": 7.929067304357886,
+              "boundary100": 65.11658806692753,
+              "medianBoundaryShiftPx": 0.9375
+            },
+            "calibrated": {
+              "wholeStructure100": 75.6953471151719,
+              "frameStructure100": 72.40118799559765,
+              "rgbMae255": 6.908927019685507,
+              "boundary100": 95.87050883064082,
+              "medianBoundaryShiftPx": 0.25
+            },
+            "reconstructed": {
+              "wholeStructure100": 76.78030737014527,
+              "frameStructure100": 80.74487582311342,
+              "rgbMae255": 5.6892860401421785,
+              "boundary100": 95.84145266013383,
+              "medianBoundaryShiftPx": 0.1875
+            }
+          }
+        },
+        {
+          "id": "943baea8-b173-4863-a3ab-dd217d483cd9",
+          "values": {
+            "released": {
+              "wholeStructure100": 66.1030736070384,
+              "frameStructure100": 81.77961652918343,
+              "rgbMae255": 5.190807888284326,
+              "boundary100": 70.23849536264638,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 73.56035685218669,
+              "frameStructure100": 81.21501469693119,
+              "rgbMae255": 6.151329847052693,
+              "boundary100": 95.00292632964057,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.59608309263146,
+              "frameStructure100": 88.8005431092596,
+              "rgbMae255": 5.463057104498148,
+              "boundary100": 94.85627216955741,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "98fba951-c5bb-497c-9292-ce1b2a1e1247",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.73794472544304,
+              "frameStructure100": 80.31925973393516,
+              "rgbMae255": 6.6827446315437555,
+              "boundary100": 71.65755772696623,
+              "medianBoundaryShiftPx": 0.75
+            },
+            "calibrated": {
+              "wholeStructure100": 74.8086591513975,
+              "frameStructure100": 78.06155841262256,
+              "rgbMae255": 6.075349599123001,
+              "boundary100": 96.51107978261368,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.27931239439583,
+              "frameStructure100": 87.10102206984601,
+              "rgbMae255": 4.828656446188688,
+              "boundary100": 96.4587540234312,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "99ec4723-b36c-4015-b361-736a6523e8f5",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.0213221776619,
+              "frameStructure100": 78.77541276175184,
+              "rgbMae255": 5.770781692117453,
+              "boundary100": 71.72504334971613,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 75.16194734037164,
+              "frameStructure100": 79.2153457686701,
+              "rgbMae255": 5.730687668547034,
+              "boundary100": 96.35859853057195,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.49269163974759,
+              "frameStructure100": 86.80888824044727,
+              "rgbMae255": 4.429712053388357,
+              "boundary100": 96.38525212747794,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "a2788d69-6a3a-42f0-8736-cc6b57755ecd",
+          "values": {
+            "released": {
+              "wholeStructure100": 74.03297071565788,
+              "frameStructure100": 80.49802788097968,
+              "rgbMae255": 15.71708332747221,
+              "boundary100": 71.28427664249996,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 77.33982270952009,
+              "frameStructure100": 77.26973674887971,
+              "rgbMae255": 13.29759830608964,
+              "boundary100": 96.87888034637403,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.2242215057806,
+              "frameStructure100": 85.533063396986,
+              "rgbMae255": 12.591523993760347,
+              "boundary100": 96.89409386683478,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "b01041d2-687e-4972-81c8-16690809275b",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.46789191119763,
+              "frameStructure100": 72.84956914174235,
+              "rgbMae255": 5.71775933727622,
+              "boundary100": 66.62498916900074,
+              "medianBoundaryShiftPx": 0.9375
+            },
+            "calibrated": {
+              "wholeStructure100": 72.71227889114586,
+              "frameStructure100": 74.65658990084972,
+              "rgbMae255": 6.36063639074564,
+              "boundary100": 96.87777682460857,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.37343929373097,
+              "frameStructure100": 83.79031646939393,
+              "rgbMae255": 5.662192543968558,
+              "boundary100": 96.80479693060705,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "b0da8d56-3178-44c2-9344-95d2346d326f",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.39799964935716,
+              "frameStructure100": 74.77662078386594,
+              "rgbMae255": 6.073479624465108,
+              "boundary100": 66.77893277690103,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 73.24323855326324,
+              "frameStructure100": 78.76990918586894,
+              "rgbMae255": 5.6795737612992525,
+              "boundary100": 95.58112363801231,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.68682265467388,
+              "frameStructure100": 85.9159750344045,
+              "rgbMae255": 4.63344382122159,
+              "boundary100": 95.45678960964783,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "b3dd94c5-42f6-4148-be6e-2a3a4226cc0e",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.16383334389022,
+              "frameStructure100": 81.4094535188096,
+              "rgbMae255": 6.157731553539634,
+              "boundary100": 69.87748528720762,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 75.80511437783086,
+              "frameStructure100": 82.43899911836189,
+              "rgbMae255": 5.359964836388826,
+              "boundary100": 96.81207052505735,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 76.1542434653124,
+              "frameStructure100": 88.76594739671924,
+              "rgbMae255": 4.368783747777343,
+              "boundary100": 96.80359812305134,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "c15e8a42-89de-42bc-8d5f-33426d207c3a",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.95160382814404,
+              "frameStructure100": 83.4641870697728,
+              "rgbMae255": 5.072961961850524,
+              "boundary100": 79.69229509720311,
+              "medianBoundaryShiftPx": 0.5625
+            },
+            "calibrated": {
+              "wholeStructure100": 73.48294450556743,
+              "frameStructure100": 78.74304333508671,
+              "rgbMae255": 5.3989203460514545,
+              "boundary100": 95.09811859134726,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.96940708335282,
+              "frameStructure100": 87.38572996592366,
+              "rgbMae255": 4.455227209255099,
+              "boundary100": 95.20900034325874,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "caf9cef4-0f2d-478a-b119-fe1967687f74",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.56981064037616,
+              "frameStructure100": 85.09235954857243,
+              "rgbMae255": 5.05483265966177,
+              "boundary100": 69.46611377514417,
+              "medianBoundaryShiftPx": 0.75
+            },
+            "calibrated": {
+              "wholeStructure100": 73.05511494222607,
+              "frameStructure100": 82.1888783158931,
+              "rgbMae255": 5.0163601990789175,
+              "boundary100": 92.66096101925986,
+              "medianBoundaryShiftPx": 0.1875
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.15186428914153,
+              "frameStructure100": 89.13373702018855,
+              "rgbMae255": 4.133423902094364,
+              "boundary100": 92.45850799156848,
+              "medianBoundaryShiftPx": 0.1875
+            }
+          }
+        },
+        {
+          "id": "cbd9ab01-a833-4fa4-8dee-151bd9800835",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.22852986470538,
+              "frameStructure100": 86.93468972134933,
+              "rgbMae255": 5.367667498067021,
+              "boundary100": 75.93802845594666,
+              "medianBoundaryShiftPx": 0.625
+            },
+            "calibrated": {
+              "wholeStructure100": 74.7323302031921,
+              "frameStructure100": 83.72923136402936,
+              "rgbMae255": 5.341908680275083,
+              "boundary100": 93.97068547152352,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.86625255519101,
+              "frameStructure100": 90.15586661339002,
+              "rgbMae255": 4.00907794944942,
+              "boundary100": 94.20984277846794,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "d05b92bd-797e-413f-a8b0-32e0937a1ee0",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.76381054710342,
+              "frameStructure100": 76.67304274441737,
+              "rgbMae255": 12.05923905596137,
+              "boundary100": 64.32849770643618,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 71.96345055398318,
+              "frameStructure100": 77.37920410037287,
+              "rgbMae255": 10.326726771891117,
+              "boundary100": 95.90554526901607,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 72.39772638877068,
+              "frameStructure100": 86.26797823048852,
+              "rgbMae255": 9.78074261918664,
+              "boundary100": 95.90588041834832,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "d0ba7b76-f3d0-47d0-8a35-0c08e67200fb",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.34779432086441,
+              "frameStructure100": 75.21206803605546,
+              "rgbMae255": 6.371249221265316,
+              "boundary100": 68.59285308826144,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 73.76952225062794,
+              "frameStructure100": 75.72705482648875,
+              "rgbMae255": 5.796834519132972,
+              "boundary100": 95.78929997436796,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.73676668717026,
+              "frameStructure100": 84.33841047693497,
+              "rgbMae255": 4.877270087599754,
+              "boundary100": 95.7098769714879,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "d2379f78-c03f-447f-b3c9-10a918d556e9",
+          "values": {
+            "released": {
+              "wholeStructure100": 72.95040328521083,
+              "frameStructure100": 77.08928450836432,
+              "rgbMae255": 5.782433291897178,
+              "boundary100": 74.76091699620771,
+              "medianBoundaryShiftPx": 0.625
+            },
+            "calibrated": {
+              "wholeStructure100": 75.63982012467734,
+              "frameStructure100": 73.28088726815388,
+              "rgbMae255": 6.531631965190172,
+              "boundary100": 96.17903856758012,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 76.45936218380925,
+              "frameStructure100": 81.6233477232278,
+              "rgbMae255": 5.491901356726885,
+              "boundary100": 96.09789623037338,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "d5c83259-9b90-47c2-b48e-c7d78519e792",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.26723195282922,
+              "frameStructure100": 86.89833026589457,
+              "rgbMae255": 9.536930602043867,
+              "boundary100": 76.34849183919869,
+              "medianBoundaryShiftPx": 0.5
+            },
+            "calibrated": {
+              "wholeStructure100": 70.28293395064485,
+              "frameStructure100": 83.65518143087338,
+              "rgbMae255": 7.6062969490885735,
+              "boundary100": 92.61378014988306,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 70.11149413088799,
+              "frameStructure100": 90.48260804991666,
+              "rgbMae255": 7.051396099850535,
+              "boundary100": 92.61438133962476,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "ddb633f5-cc4d-4157-8217-def90cb15e24",
+          "values": {
+            "released": {
+              "wholeStructure100": 74.72702683293038,
+              "frameStructure100": 77.6585988431464,
+              "rgbMae255": 5.5512285232543945,
+              "boundary100": 68.07054290447178,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 78.85424721071116,
+              "frameStructure100": 75.25783028357455,
+              "rgbMae255": 6.453675348311663,
+              "boundary100": 96.86170652367298,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 79.971241139515,
+              "frameStructure100": 82.6740283799416,
+              "rgbMae255": 5.7422699220478535,
+              "boundary100": 96.73817704086844,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "e0c64c01-c2aa-470b-88c6-3d3e4a969649",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.30459642034047,
+              "frameStructure100": 76.743054352715,
+              "rgbMae255": 6.881786976009607,
+              "boundary100": 69.92295081720542,
+              "medianBoundaryShiftPx": 0.5
+            },
+            "calibrated": {
+              "wholeStructure100": 77.00278658262418,
+              "frameStructure100": 75.28929692881205,
+              "rgbMae255": 6.209808709099889,
+              "boundary100": 95.34610755092862,
+              "medianBoundaryShiftPx": 0.1875
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.07616629584916,
+              "frameStructure100": 83.24084054667692,
+              "rgbMae255": 4.902391489595175,
+              "boundary100": 95.28700668016002,
+              "medianBoundaryShiftPx": 0.1875
+            }
+          }
+        },
+        {
+          "id": "e28de37e-84d5-4dc7-b36c-e14da5924729",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.98403344689527,
+              "frameStructure100": 79.3046073923227,
+              "rgbMae255": 5.587788261473179,
+              "boundary100": 66.73869956330591,
+              "medianBoundaryShiftPx": 0.9375
+            },
+            "calibrated": {
+              "wholeStructure100": 77.71265188032633,
+              "frameStructure100": 86.19898798424398,
+              "rgbMae255": 4.5929246954619884,
+              "boundary100": 96.70443856459558,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 77.90943993871386,
+              "frameStructure100": 90.58365204652566,
+              "rgbMae255": 4.038557717576623,
+              "boundary100": 96.65010346941588,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "e945a4cd-0eb1-4f54-898d-169ce2748a03",
+          "values": {
+            "released": {
+              "wholeStructure100": 72.7147154263639,
+              "frameStructure100": 73.58548503581913,
+              "rgbMae255": 6.022972259670496,
+              "boundary100": 65.07506137849337,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 76.9226933360328,
+              "frameStructure100": 74.15615555769219,
+              "rgbMae255": 7.039459515362978,
+              "boundary100": 95.84342245266332,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.21105746623964,
+              "frameStructure100": 82.02970209021254,
+              "rgbMae255": 6.4735824801027775,
+              "boundary100": 95.79910688562869,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "eaac88da-d19e-4771-944c-3709963d04e7",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.5264727597351,
+              "frameStructure100": 85.44264810816567,
+              "rgbMae255": 4.841583827510476,
+              "boundary100": 70.01643885656104,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 74.91806485416977,
+              "frameStructure100": 84.54461570281225,
+              "rgbMae255": 4.657812863588333,
+              "boundary100": 96.40607102072926,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.01694455621039,
+              "frameStructure100": 91.68092975486437,
+              "rgbMae255": 3.9383556693792343,
+              "boundary100": 96.38440483472655,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "efba235e-04e5-449c-906c-0ac33f6d7929",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.56890806300021,
+              "frameStructure100": 76.95104059522842,
+              "rgbMae255": 6.553091313689947,
+              "boundary100": 73.45813387271066,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 72.8606627953071,
+              "frameStructure100": 73.6600882794471,
+              "rgbMae255": 6.182262562215328,
+              "boundary100": 96.06370181651913,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.46699262043539,
+              "frameStructure100": 82.40984343585795,
+              "rgbMae255": 4.96053596958518,
+              "boundary100": 96.06437238608922,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "f131fd27-18da-47ca-b59f-135bcac83abd",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.6035401596734,
+              "frameStructure100": 77.81616995008545,
+              "rgbMae255": 8.48627557978034,
+              "boundary100": 69.55175965679523,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 75.58680843844627,
+              "frameStructure100": 74.9667056448424,
+              "rgbMae255": 7.259830590337515,
+              "boundary100": 96.11398749759692,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 76.56201771453141,
+              "frameStructure100": 83.59737239424295,
+              "rgbMae255": 6.015479536727071,
+              "boundary100": 96.07648346592637,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "f8ac5006-91bd-4803-93da-f87cf196dd2f",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.49528285525048,
+              "frameStructure100": 81.16559175764297,
+              "rgbMae255": 5.516120307147503,
+              "boundary100": 71.67686533164108,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 74.2384218649669,
+              "frameStructure100": 77.13422845456556,
+              "rgbMae255": 5.820981748402119,
+              "boundary100": 95.90623894984475,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.8239811595327,
+              "frameStructure100": 84.78773821229795,
+              "rgbMae255": 4.628666527569294,
+              "boundary100": 95.82647343916975,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "fa5466cc-aa57-4a7f-8b21-d92b2fe02e13",
+          "values": {
+            "released": {
+              "wholeStructure100": 77.56721958248269,
+              "frameStructure100": 79.42482653588547,
+              "rgbMae255": 12.919392250478268,
+              "boundary100": 80.0999306580646,
+              "medianBoundaryShiftPx": 0.625
+            },
+            "calibrated": {
+              "wholeStructure100": 77.577505933117,
+              "frameStructure100": 70.56824131192644,
+              "rgbMae255": 10.890929996967316,
+              "boundary100": 94.15091599407607,
+              "medianBoundaryShiftPx": 0.1875
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.99312125642149,
+              "frameStructure100": 79.03018181070706,
+              "rgbMae255": 9.83161523938179,
+              "boundary100": 94.15643097609629,
+              "medianBoundaryShiftPx": 0.1875
+            }
+          }
+        }
+      ]
+    },
+    "all": {
+      "fit": {
+        "steps": 200,
+        "cards": 45,
+        "patches": 1413,
+        "residualGrid": [133, 185],
+        "maximumSourceChange": 0.1,
+        "history": [
+          {
+            "step": 0,
+            "data": 0.0005417037755250931,
+            "prior": 0.0,
+            "smooth": 0.0
+          },
+          {
+            "step": 20,
+            "data": 0.00040484737837687135,
+            "prior": 1.1351171451678965e-6,
+            "smooth": 4.565523340716027e-6
+          },
+          {
+            "step": 40,
+            "data": 0.00040973653085529804,
+            "prior": 1.2378495739540085e-6,
+            "smooth": 5.501897248905152e-6
+          },
+          {
+            "step": 60,
+            "data": 0.0004499215283431113,
+            "prior": 1.2934885944559937e-6,
+            "smooth": 5.744342615798814e-6
+          },
+          {
+            "step": 80,
+            "data": 0.0003503230691421777,
+            "prior": 1.2896239240944851e-6,
+            "smooth": 5.794518529000925e-6
+          },
+          {
+            "step": 100,
+            "data": 0.0004011138225905597,
+            "prior": 1.316258590122743e-6,
+            "smooth": 6.066138666938059e-6
+          },
+          {
+            "step": 120,
+            "data": 0.00043708435259759426,
+            "prior": 1.3164042229618644e-6,
+            "smooth": 5.877387593500316e-6
+          },
+          {
+            "step": 140,
+            "data": 0.00042990263318642974,
+            "prior": 1.3329159855857142e-6,
+            "smooth": 5.970530310150934e-6
+          },
+          {
+            "step": 160,
+            "data": 0.0003670028818305582,
+            "prior": 1.3635831237479579e-6,
+            "smooth": 6.084572305553593e-6
+          },
+          {
+            "step": 180,
+            "data": 0.0003708583244588226,
+            "prior": 1.2990927871214808e-6,
+            "smooth": 5.781898380519124e-6
+          },
+          {
+            "step": 199,
+            "data": 0.00037609643186442554,
+            "prior": 1.2581191413119086e-6,
+            "smooth": 5.831427642988274e-6
+          }
+        ],
+        "policy": "Fixed shared HSB; scalar texture residual; at least five-card support; native scan patches; no per-card learned parameters; alpha unchanged; stock excluded"
+      },
+      "adjustment": {
+        "mask": {
+          "kind": "rect",
+          "rect": [0.129, 0.595, 0.745, 0.298],
+          "feather": 0.002
+        },
+        "frame": {
+          "hueDegrees": -4.295199394226074,
+          "saturationScale": 0.8695296049118042,
+          "brightnessScale": 0.8918741941452026
+        },
+        "paper": {
+          "hueDegrees": -5.823859214782715,
+          "saturationScale": 0.7266173362731934,
+          "brightnessScale": 0.9354531764984131
+        }
+      },
+      "verification": {
+        "nativeModelMaterialParity": [
+          {
+            "variant": "calibrated",
+            "maximumOpaque8bitDifference": 1,
+            "meanOpaque8bitDifference": 0.0011774742743000388,
+            "alphaSha256": "74e8e2052632d2d5fc9110f98efdb80f339b290391472399ab0acb9a2b43900c",
+            "shape": [1482, 1062, 4]
+          },
+          {
+            "variant": "reconstructed",
+            "maximumOpaque8bitDifference": 1,
+            "meanOpaque8bitDifference": 0.0011781102512031794,
+            "alphaSha256": "74e8e2052632d2d5fc9110f98efdb80f339b290391472399ab0acb9a2b43900c",
+            "shape": [1482, 1062, 4]
+          }
+        ],
+        "nativeBaselineCards": 45,
+        "note": "Partial-alpha outer-corner RGB is excluded from parity because Canvas premultiplication rounds color; those pixels are outside fitting support."
+      },
+      "native": {
+        "label": "all",
+        "nativeBaselineParity": 45,
+        "receipts": [
+          {
+            "id": "057986c7-20c0-4157-b4df-beae4ef5c66d",
+            "variant": 0,
+            "sha256": "d5ae68c69783c144fe1e16837f348adc9a090e59886db3f43a4b1da966d1570e"
+          },
+          {
+            "id": "057986c7-20c0-4157-b4df-beae4ef5c66d",
+            "variant": 1,
+            "sha256": "0ca4752efeab9a14127ab941f0a2c5a7d4d0f322c1053091d7bd1745b52f967b"
+          },
+          {
+            "id": "0f84d676-5327-454c-a033-b4498a9d28e2",
+            "variant": 0,
+            "sha256": "1a124657c78b5870780ca31a4bb3c8bca8b6fd68ed4302619b26f69f446d02b2"
+          },
+          {
+            "id": "0f84d676-5327-454c-a033-b4498a9d28e2",
+            "variant": 1,
+            "sha256": "b64d39a3a12620d8ede416140037d1d525e31e210ca7f898c1dcb55a1ef8240b"
+          },
+          {
+            "id": "11600105-56c6-4073-a4a6-8469030b39c9",
+            "variant": 0,
+            "sha256": "cef866f99d0e40a0275d8d0a271508cb47cb0c1fc17590dd2ba30ddb824c867c"
+          },
+          {
+            "id": "11600105-56c6-4073-a4a6-8469030b39c9",
+            "variant": 1,
+            "sha256": "caea13136806426f280108fdd23ab2608fd2b06e829ff1665c0d0828cefaa757"
+          },
+          {
+            "id": "13186bc9-8d9c-433b-ba15-121ef94dd68a",
+            "variant": 0,
+            "sha256": "417bd0224c46e847c584b2cb4f51aaad2c6b2f00e5ac3b4b817f26a85262b841"
+          },
+          {
+            "id": "13186bc9-8d9c-433b-ba15-121ef94dd68a",
+            "variant": 1,
+            "sha256": "44e6100743f04e9467b04f60da6e3fcd504f6abb985e7752578f53d6555aa7ef"
+          },
+          {
+            "id": "15967a39-303f-457d-bcde-51837c8d63e1",
+            "variant": 0,
+            "sha256": "ba0101dee34648f2f76bd4d20d8d3f13a6115a34b8abab40752914729ed9163c"
+          },
+          {
+            "id": "15967a39-303f-457d-bcde-51837c8d63e1",
+            "variant": 1,
+            "sha256": "64c2d8b4f23d960e9cdcf57f0c62e35c2144e723b474ecb28cc4612fe0e39709"
+          },
+          {
+            "id": "1ae32d20-b438-4f43-b603-e8f706ecfb03",
+            "variant": 0,
+            "sha256": "c06bb83fede9cd242ec1354fa25b80a155bf4bcb9a0486d5d3e35d826252b367"
+          },
+          {
+            "id": "1ae32d20-b438-4f43-b603-e8f706ecfb03",
+            "variant": 1,
+            "sha256": "ba0469236576417958eecc2d5f8fb8c6d935b0791279bb32d95f8eb67388c86d"
+          },
+          {
+            "id": "1f6118b2-fe01-425a-a2ed-6d7c42286c8e",
+            "variant": 0,
+            "sha256": "0d7fca953ec802d2108e5e99d1c5096aa553feb3a1e8caaf551bc4549f8530c5"
+          },
+          {
+            "id": "1f6118b2-fe01-425a-a2ed-6d7c42286c8e",
+            "variant": 1,
+            "sha256": "fc5cda4a186ec8df8db1c7d92c1ccc74d72a49a330d0012fc788ecabb2eb74b2"
+          },
+          {
+            "id": "2722d7e2-61c6-4934-9c21-875ee78fd06c",
+            "variant": 0,
+            "sha256": "f67a36b4ffe51d6c9f7b821d21204110afe73f6efce799fd877fa1fe8ea474e1"
+          },
+          {
+            "id": "2722d7e2-61c6-4934-9c21-875ee78fd06c",
+            "variant": 1,
+            "sha256": "ab730772696327461b1f628e42f83cceb7e6ec2fb6482bd0c2b19c9bf3c858fc"
+          },
+          {
+            "id": "2facf462-55cd-4da4-997f-2cf4add75628",
+            "variant": 0,
+            "sha256": "b65159c97e61c1805dcd42c19da57ff5553d6ca82c1f34e083f71bff271fb80a"
+          },
+          {
+            "id": "2facf462-55cd-4da4-997f-2cf4add75628",
+            "variant": 1,
+            "sha256": "7730afb3a74bd61d9fdac76610939e407ee224c2ec50d68bbf7c99c9b8815f88"
+          },
+          {
+            "id": "3455b006-9ea5-4aef-8ad2-d0701eb0cacf",
+            "variant": 0,
+            "sha256": "ed525933ca2912ae24933291895a5f1ab84197b75599bd749f352b3dea72ff03"
+          },
+          {
+            "id": "3455b006-9ea5-4aef-8ad2-d0701eb0cacf",
+            "variant": 1,
+            "sha256": "00589d43333882b76d2478169cc2ac2a3158c913dd04df9b9d95e73db68ce224"
+          },
+          {
+            "id": "386ea9eb-abc1-4862-aa2d-8fb808d79490",
+            "variant": 0,
+            "sha256": "044f3c7c458a60ea5fc76fae110be8c557909d8ab004732cdf820f9b11087e1e"
+          },
+          {
+            "id": "386ea9eb-abc1-4862-aa2d-8fb808d79490",
+            "variant": 1,
+            "sha256": "4586adcb56a3c822a606693460e4efcabc26f586de7ea721a5ceef1abd55503f"
+          },
+          {
+            "id": "49b22665-1501-420a-82ad-f71f6768bcf8",
+            "variant": 0,
+            "sha256": "9407c777db85a0437e504200d00603960b02704dcdeb4ad2c842ff4d95341b16"
+          },
+          {
+            "id": "49b22665-1501-420a-82ad-f71f6768bcf8",
+            "variant": 1,
+            "sha256": "3490e2c4f1b7a1a97cf68020d9ed090e5c9455bbf3786d4c35dae56469723186"
+          },
+          {
+            "id": "4fff6e6f-4ebd-4ec8-9443-59efb22d376c",
+            "variant": 0,
+            "sha256": "18a4ece7fd01f79fa217793e0cedb3808c1e681c8e58e9588e2b2f49b88e3b6b"
+          },
+          {
+            "id": "4fff6e6f-4ebd-4ec8-9443-59efb22d376c",
+            "variant": 1,
+            "sha256": "843d5232df1c4787784ab2f6bf5cb9acd27b27d6aac24905dfe3c751b6d1ed04"
+          },
+          {
+            "id": "50abfba8-c9f9-4ebf-965a-4b425fe83129",
+            "variant": 0,
+            "sha256": "3aaa1c15e198e80e5aefbab487119b07cbb7a6247863a083328c64f807f336ad"
+          },
+          {
+            "id": "50abfba8-c9f9-4ebf-965a-4b425fe83129",
+            "variant": 1,
+            "sha256": "af0f0592ecea12cee5d90766cbfa2a846762673a4290e59fb6a3126e85489345"
+          },
+          {
+            "id": "5b6ddce7-b9c5-431d-a0b0-46d4aa93cbcb",
+            "variant": 0,
+            "sha256": "8b47a4a298587e29eadae0ff532d75376668cadfa60d59472541b7b72fa49f2a"
+          },
+          {
+            "id": "5b6ddce7-b9c5-431d-a0b0-46d4aa93cbcb",
+            "variant": 1,
+            "sha256": "f92f5d71449c9a1e914b8a197ee46e3ec204f9a643948eb11f658b82aa5f8751"
+          },
+          {
+            "id": "6303233b-35eb-49ca-b844-ba6b9fe1cbd2",
+            "variant": 0,
+            "sha256": "bf75b1bae26731d051fe4dc56a2d209112576c75ddcb5688cf38713d8eeb3c4c"
+          },
+          {
+            "id": "6303233b-35eb-49ca-b844-ba6b9fe1cbd2",
+            "variant": 1,
+            "sha256": "799af52974e1f0ea2e3ac0c9da5477184be8f8b50a9041abed224b80aa287748"
+          },
+          {
+            "id": "6daf1aab-1e58-4a5a-bc66-cb3f7c86e0e8",
+            "variant": 0,
+            "sha256": "7fe1b121193d1d035882ca7ab1d4cc3561b5cf07154e96582d3b780c027c2ade"
+          },
+          {
+            "id": "6daf1aab-1e58-4a5a-bc66-cb3f7c86e0e8",
+            "variant": 1,
+            "sha256": "8c15b2ba24edef61a6a6a383a61ad48786f5be5ae768e918876c126f7cca5d99"
+          },
+          {
+            "id": "6f30ad61-fcb7-4d55-ba86-94de1bf545e4",
+            "variant": 0,
+            "sha256": "d1800ac9a62ad0f2367a16c80565e10c2401126aecba31442a86e22d371678b3"
+          },
+          {
+            "id": "6f30ad61-fcb7-4d55-ba86-94de1bf545e4",
+            "variant": 1,
+            "sha256": "2572d3f398828bde37c39be671697e5cc57fe06e5db1e7c64c72861a8193c5f0"
+          },
+          {
+            "id": "6f9ea46a-411f-40ce-a873-a905180093f4",
+            "variant": 0,
+            "sha256": "45eecdfecff4ec68c43f6487a3f035fc75608f371f0c68736a7453a2ec4cf6cf"
+          },
+          {
+            "id": "6f9ea46a-411f-40ce-a873-a905180093f4",
+            "variant": 1,
+            "sha256": "1ef1d767a133ec9bb2dd8cdc718c6f907e00a0c5c11efb7f78ea4c09abc665c3"
+          },
+          {
+            "id": "848b1a7f-e8ba-40b5-92b7-af1e963a0319",
+            "variant": 0,
+            "sha256": "3b8ac8afea783ff44c7eb22732dcf935461cfc027452f5b7955f10cc286694db"
+          },
+          {
+            "id": "848b1a7f-e8ba-40b5-92b7-af1e963a0319",
+            "variant": 1,
+            "sha256": "b4e082186f530fba27e5e3c3516ea6526651dbb4f9cc976aa69460b5a527e8b1"
+          },
+          {
+            "id": "92df19c9-e127-42d9-8dd2-7fa5a7095428",
+            "variant": 0,
+            "sha256": "8dacd77775082311f434fcbef241eae78e1de84c233ebb612e8885be864a0be9"
+          },
+          {
+            "id": "92df19c9-e127-42d9-8dd2-7fa5a7095428",
+            "variant": 1,
+            "sha256": "2fdfea1f254bd2c64c473832820154b1ed462896fd2f1f78154d14285230bd7b"
+          },
+          {
+            "id": "93f9f0f2-e1cc-4740-888c-1336c6de0a27",
+            "variant": 0,
+            "sha256": "d262c5ab994f5d696e0f122e54abb2beb67a03f7055ac3806f22225fbc4b8945"
+          },
+          {
+            "id": "93f9f0f2-e1cc-4740-888c-1336c6de0a27",
+            "variant": 1,
+            "sha256": "55b737209d654664cf48b08012af58361adb284b4c28457c44ed584bbedb2914"
+          },
+          {
+            "id": "943baea8-b173-4863-a3ab-dd217d483cd9",
+            "variant": 0,
+            "sha256": "36842c9c7df5d7d24635f10612723c042c2bf3f6202de652a02fe57342f7a07a"
+          },
+          {
+            "id": "943baea8-b173-4863-a3ab-dd217d483cd9",
+            "variant": 1,
+            "sha256": "5bc04cd43d862e77b88e392b36fd75d3642b36d532b2aa8f9fde8f5314adb8bc"
+          },
+          {
+            "id": "98fba951-c5bb-497c-9292-ce1b2a1e1247",
+            "variant": 0,
+            "sha256": "43e5242d0a957c8855251b8f6212ea5c316af239228eee7bbd6107fd79c4c873"
+          },
+          {
+            "id": "98fba951-c5bb-497c-9292-ce1b2a1e1247",
+            "variant": 1,
+            "sha256": "71c26e8f4f3c211ad7b9ed24a977e7a5160e7d6de82aa4406f136c6c52d94135"
+          },
+          {
+            "id": "99ec4723-b36c-4015-b361-736a6523e8f5",
+            "variant": 0,
+            "sha256": "dcc47a64f6dfd6cd4783f63cdcb726b04cb52157be9823f40347ff7850cea186"
+          },
+          {
+            "id": "99ec4723-b36c-4015-b361-736a6523e8f5",
+            "variant": 1,
+            "sha256": "233590ea8a9bde6ce1ed411addc68306ff5e96f39610e2cf2535bb64c2dbb667"
+          },
+          {
+            "id": "a2788d69-6a3a-42f0-8736-cc6b57755ecd",
+            "variant": 0,
+            "sha256": "cfee4fd11003d716ce4f985247c95c4019357ee42b97bf0b22e11ef02ffec94e"
+          },
+          {
+            "id": "a2788d69-6a3a-42f0-8736-cc6b57755ecd",
+            "variant": 1,
+            "sha256": "65df05f18fa141779dc22ebc8bece2c57e29bcee44c1f4e4158072bcd84f00cd"
+          },
+          {
+            "id": "b01041d2-687e-4972-81c8-16690809275b",
+            "variant": 0,
+            "sha256": "cfbecb6f1bd0b5b3d698c21d985f3ad3ab3e5a94f9246c969c69e43fcfc2269f"
+          },
+          {
+            "id": "b01041d2-687e-4972-81c8-16690809275b",
+            "variant": 1,
+            "sha256": "3ab89358b08c2f9e16b148c7242b420cda9361eaf4e278fd279961c029c5459b"
+          },
+          {
+            "id": "b0da8d56-3178-44c2-9344-95d2346d326f",
+            "variant": 0,
+            "sha256": "7931e320502874d99bbed5ed2cae4bdd495400b8eef415c517eeef19b89fafb4"
+          },
+          {
+            "id": "b0da8d56-3178-44c2-9344-95d2346d326f",
+            "variant": 1,
+            "sha256": "d642f29015edd637ae0991b1429235aec90bcf4456365fa82d962a4f7bb45f6b"
+          },
+          {
+            "id": "b3dd94c5-42f6-4148-be6e-2a3a4226cc0e",
+            "variant": 0,
+            "sha256": "e8a0e3215a88ce6ca0c3e95d75c57b885af6729df0a4d3256783ef5c07345126"
+          },
+          {
+            "id": "b3dd94c5-42f6-4148-be6e-2a3a4226cc0e",
+            "variant": 1,
+            "sha256": "56ba5b5293ea1d75747cfd4060f4e5b96a3668245994647a6e1028baa706c061"
+          },
+          {
+            "id": "c15e8a42-89de-42bc-8d5f-33426d207c3a",
+            "variant": 0,
+            "sha256": "c52922ca31d6f94615f711c340a91982da86bc365c81240ec77c9b218baf5088"
+          },
+          {
+            "id": "c15e8a42-89de-42bc-8d5f-33426d207c3a",
+            "variant": 1,
+            "sha256": "a63ee96771393db806296e76aa18a923ed70307d8b19738b7b64fefb3ad801a5"
+          },
+          {
+            "id": "caf9cef4-0f2d-478a-b119-fe1967687f74",
+            "variant": 0,
+            "sha256": "1892e58d39008b832ce424135f298c53fd8abbddc188e5f9b285909fedc5aeb0"
+          },
+          {
+            "id": "caf9cef4-0f2d-478a-b119-fe1967687f74",
+            "variant": 1,
+            "sha256": "c90264bb2e7083bceb68226a186fb283ad068e1e2ad8c7afd88bbdaff2d0ac69"
+          },
+          {
+            "id": "cbd9ab01-a833-4fa4-8dee-151bd9800835",
+            "variant": 0,
+            "sha256": "c8a9df53773faaea1ed0a12f5af31cb931d6150077df7fb8d3a6da73069d5ee2"
+          },
+          {
+            "id": "cbd9ab01-a833-4fa4-8dee-151bd9800835",
+            "variant": 1,
+            "sha256": "591be0f62d9ae3ae5b577f4953125c9b3df58ef3c8784a334fc78d379f757653"
+          },
+          {
+            "id": "d05b92bd-797e-413f-a8b0-32e0937a1ee0",
+            "variant": 0,
+            "sha256": "7127c1952e7ca0dbff0034bdb4e87796f6fbf3861b5d60ac73a488ed9a93a546"
+          },
+          {
+            "id": "d05b92bd-797e-413f-a8b0-32e0937a1ee0",
+            "variant": 1,
+            "sha256": "51805c76595d6263193df27bdbff2f414e0a7a825bf0b864e451862af56f9be3"
+          },
+          {
+            "id": "d0ba7b76-f3d0-47d0-8a35-0c08e67200fb",
+            "variant": 0,
+            "sha256": "bd22efebcfeeabe049df3f8b7b97c036f952c5ace9c7c9474812f370136ce7df"
+          },
+          {
+            "id": "d0ba7b76-f3d0-47d0-8a35-0c08e67200fb",
+            "variant": 1,
+            "sha256": "e77a2ddef07e6ba723491fa7de73bf10f8553f52161456886493d3dedfa6432a"
+          },
+          {
+            "id": "d2379f78-c03f-447f-b3c9-10a918d556e9",
+            "variant": 0,
+            "sha256": "2e33d796ae6bb51483bc6e79fc59f334fe80ac42787f20ba2b8457f21e65bb09"
+          },
+          {
+            "id": "d2379f78-c03f-447f-b3c9-10a918d556e9",
+            "variant": 1,
+            "sha256": "1f26a7afa4a603b89e692bc40dacd2a905125d3bd28ab2bcb35b124cb139eedd"
+          },
+          {
+            "id": "d5c83259-9b90-47c2-b48e-c7d78519e792",
+            "variant": 0,
+            "sha256": "d37f25c0094f6b075dc46a0c8ec41fa3092421bce5b40406f31e95a560ff08a8"
+          },
+          {
+            "id": "d5c83259-9b90-47c2-b48e-c7d78519e792",
+            "variant": 1,
+            "sha256": "4d739da89e8c177675fdfa83ee7a3b66bdc854d4ca6c879be7b7fa20ab50941d"
+          },
+          {
+            "id": "ddb633f5-cc4d-4157-8217-def90cb15e24",
+            "variant": 0,
+            "sha256": "6e4ec02f0ce73bb32d2dee4fdf0342092a0039d137af4dbd4d00bb3798e6fa8a"
+          },
+          {
+            "id": "ddb633f5-cc4d-4157-8217-def90cb15e24",
+            "variant": 1,
+            "sha256": "b24ea036e6c2bb08476440665a5a4238a362fe269c5110f4610d64e1bd62e9a8"
+          },
+          {
+            "id": "e0c64c01-c2aa-470b-88c6-3d3e4a969649",
+            "variant": 0,
+            "sha256": "cc695ff8bf55137ef9e5b379aafb18804f129f66c5f29c3fa8a4dee48e7d852c"
+          },
+          {
+            "id": "e0c64c01-c2aa-470b-88c6-3d3e4a969649",
+            "variant": 1,
+            "sha256": "e9e072cd4a2ac85a7567d64adb4c18580609187250187663f2abd0d5f311f2e8"
+          },
+          {
+            "id": "e28de37e-84d5-4dc7-b36c-e14da5924729",
+            "variant": 0,
+            "sha256": "8a5e2f262b6bec1207cc8feee30b618062b91bd3dd0b55a500b0586d49ee73cc"
+          },
+          {
+            "id": "e28de37e-84d5-4dc7-b36c-e14da5924729",
+            "variant": 1,
+            "sha256": "2237ab8fa2ff9eae9cf92d4ee05477b42975a36011ec677c70f6610cc67e4ece"
+          },
+          {
+            "id": "e945a4cd-0eb1-4f54-898d-169ce2748a03",
+            "variant": 0,
+            "sha256": "bebbbc23465ca337f825bbd18c5c1c6074b23e7765e07bc15adf57ce18e23368"
+          },
+          {
+            "id": "e945a4cd-0eb1-4f54-898d-169ce2748a03",
+            "variant": 1,
+            "sha256": "ac4a7ceab873db546e95f5bc9c71434df47006d8eb06a15de3743c2f6f5a5fdc"
+          },
+          {
+            "id": "eaac88da-d19e-4771-944c-3709963d04e7",
+            "variant": 0,
+            "sha256": "d353f1c2b73a2674b7a21cd08856c3b11b55cae96af477cf5746df86a83bdd63"
+          },
+          {
+            "id": "eaac88da-d19e-4771-944c-3709963d04e7",
+            "variant": 1,
+            "sha256": "2aa6047e40553865d474f0a3232a8e53d4f198518dfa27b2cdb4e320a724908d"
+          },
+          {
+            "id": "efba235e-04e5-449c-906c-0ac33f6d7929",
+            "variant": 0,
+            "sha256": "52d723f7684d5f1f302ee93caeb64b4b852acfd6eebc839eeafd848e7a86f08f"
+          },
+          {
+            "id": "efba235e-04e5-449c-906c-0ac33f6d7929",
+            "variant": 1,
+            "sha256": "fcccebc8de5f31d9931f3104af015bda1b9e7c60fa445f6d890ae1dad0b70b7f"
+          },
+          {
+            "id": "f131fd27-18da-47ca-b59f-135bcac83abd",
+            "variant": 0,
+            "sha256": "10d81feabe92a141c9c636277e659a8e9e3d4e9387368e42c01a3197a33f82f4"
+          },
+          {
+            "id": "f131fd27-18da-47ca-b59f-135bcac83abd",
+            "variant": 1,
+            "sha256": "8ebb87071e195a2c06103f7cf9502b677bae699947b85a11972b4c78667270d2"
+          },
+          {
+            "id": "f8ac5006-91bd-4803-93da-f87cf196dd2f",
+            "variant": 0,
+            "sha256": "bb8eaf06184b8e2be9eee1f2bef811b96f3f1e815cad4dff67ce12962ddc4707"
+          },
+          {
+            "id": "f8ac5006-91bd-4803-93da-f87cf196dd2f",
+            "variant": 1,
+            "sha256": "cdaab1ed8def5510d660a48aa88823c3bd3fb06068ecd0f7a9e7b9de03e79350"
+          },
+          {
+            "id": "fa5466cc-aa57-4a7f-8b21-d92b2fe02e13",
+            "variant": 0,
+            "sha256": "a21c9849bb261407fa08caf2e7131571b13cdbc01e34bc0f7dd22ca7bf6a024e"
+          },
+          {
+            "id": "fa5466cc-aa57-4a7f-8b21-d92b2fe02e13",
+            "variant": 1,
+            "sha256": "0a61ec8f0a4cee668667c4b0ba58382bdd1955bf8565e148fb1c630c75d0c81b"
+          }
+        ],
+        "geometryHash": "d8afb09137e2aa748a5a1139652cf351017d6e09e75d041a5fb62a1c142a0098",
+        "adjustmentHash": "489e70f772cd578fa9b46e68664e6e1d4b7f374a220ff19162005d635c33f1bc"
+      },
+      "outputHashes": {
+        "all-reconstructed-material.png": "3245d6d32025d23b35359c99a6f398d5bd1dd02dae4b7d456d79b40157e30460",
+        "all-coverage.png": "a8d8028d19ece78ce378bdb0870c95ee59262d6b466427657b5ae29b383a5745",
+        "all-calibrated-material.png": "17378df25ac38cee4016986d805b0c3c038996390326c21211da3f42b71fd782",
+        "all-reconstructed-source.png": "f35afc4a3915c94f0e3b81ed8fa6b1cec80edaeee95b3241d7b80ebb14b762aa"
+      },
+      "wholeCardSummary": {
+        "calibration": {
+          "cards": 34,
+          "variants": {
+            "released": {
+              "structure100": 70.14260391255019,
+              "coverage": 0.9532334672999634,
+              "frame100": 79.27915887489435
+            },
+            "calibrated": {
+              "structure100": 74.98353792627152,
+              "coverage": 0.9532334672999634,
+              "frame100": 88.67198881477168
+            },
+            "reconstructed": {
+              "structure100": 75.64353866771408,
+              "coverage": 0.9532334672999634,
+              "frame100": 88.55232687698958
+            }
+          }
+        },
+        "validation": {
+          "cards": 11,
+          "variants": {
+            "released": {
+              "structure100": 68.95090304547601,
+              "coverage": 0.9538866930171278,
+              "frame100": 79.70479085752979
+            },
+            "calibrated": {
+              "structure100": 74.11097999509208,
+              "coverage": 0.9538866930171278,
+              "frame100": 88.30692196973305
+            },
+            "reconstructed": {
+              "structure100": 74.65454041252809,
+              "coverage": 0.9538866930171278,
+              "frame100": 88.20273712677816
+            }
+          }
+        },
+        "all": {
+          "cards": 45,
+          "variants": {
+            "released": {
+              "structure100": 69.85129925615429,
+              "coverage": 0.953393144697492,
+              "frame100": 79.38320224842747
+            },
+            "calibrated": {
+              "structure100": 74.77024598753879,
+              "coverage": 0.953393144697492,
+              "frame100": 88.58275025265114
+            },
+            "reconstructed": {
+              "structure100": 75.40178353866862,
+              "coverage": 0.953393144697492,
+              "frame100": 88.46687160471565
+            }
+          }
+        }
+      },
+      "frameSummary": {
+        "calibration": {
+          "cards": 34,
+          "variants": {
+            "released": {
+              "structure100": 78.94688804251844,
+              "rgbMae255": 6.927102911286056,
+              "boundaryCorrelation100": 70.27735646541218,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "structure100": 77.68168048281368,
+              "rgbMae255": 6.625244370661676,
+              "boundaryCorrelation100": 95.78999521397175,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "structure100": 85.53927911493479,
+              "rgbMae255": 5.59472709428519,
+              "boundaryCorrelation100": 95.78200979666804,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        "validation": {
+          "cards": 11,
+          "variants": {
+            "released": {
+              "structure100": 77.70557823408014,
+              "rgbMae255": 7.326936716721817,
+              "boundaryCorrelation100": 69.57099390593713,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "structure100": 77.46169265531411,
+              "rgbMae255": 6.958728572353721,
+              "boundaryCorrelation100": 95.58943282495242,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "structure100": 85.40807802854138,
+              "rgbMae255": 5.901868331923404,
+              "boundaryCorrelation100": 95.58741036902506,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        "all": {
+          "cards": 45,
+          "variants": {
+            "released": {
+              "structure100": 78.64345675601129,
+              "rgbMae255": 7.024840063725908,
+              "boundaryCorrelation100": 70.10469006198495,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "structure100": 77.627905680536,
+              "rgbMae255": 6.706762731075287,
+              "boundaryCorrelation100": 95.74096885221145,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "structure100": 85.50720773826086,
+              "rgbMae255": 5.669806063485642,
+              "boundaryCorrelation100": 95.73444104768863,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        }
+      },
+      "spectrum": {
+        "patches": 120,
+        "method": "Median 64px Hann-window spectra; diagnostic, not physical ink separation",
+        "peaks": [
+          {
+            "fx": 0.359375,
+            "fy": -0.359375,
+            "energy": 630.6208754465622,
+            "gaussian1_4Amplitude": 4.570238891747934e-5
+          },
+          {
+            "fx": 0.359375,
+            "fy": 0.359375,
+            "energy": 538.5152441021637,
+            "gaussian1_4Amplitude": 4.570238891747934e-5
+          },
+          {
+            "fx": 0.140625,
+            "fy": 0.078125,
+            "energy": 28.28222315669361,
+            "gaussian1_4Amplitude": 0.36742902702560554
+          },
+          {
+            "fx": 0.234375,
+            "fy": 0.140625,
+            "energy": 22.0436792697324,
+            "gaussian1_4Amplitude": 0.05555792714952256
+          },
+          {
+            "fx": 0.21875,
+            "fy": -0.140625,
+            "energy": 19.94379303652944,
+            "gaussian1_4Amplitude": 0.07306476825368079
+          },
+          {
+            "fx": 0.140625,
+            "fy": -0.5,
+            "energy": 15.38217073091582,
+            "gaussian1_4Amplitude": 2.9318277825529543e-5
+          }
+        ]
+      },
+      "rawEvidenceHashes": {
+        "all-whole-card.json": "a1ba6df41a24c336e946edabb9cdbd315fe402e6782843da0c90b405c9f1f915",
+        "all-evaluation.json": "c97f08e7ff29586929581ea48818761871a8c8f9de55da1863d658d5556774c0"
+      },
+      "perCard": [
+        {
+          "id": "057986c7-20c0-4157-b4df-beae4ef5c66d",
+          "values": {
+            "released": {
+              "wholeStructure100": 72.1034042711078,
+              "frameStructure100": 74.43955948690096,
+              "rgbMae255": 8.543612603098154,
+              "boundary100": 69.23958017174758,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 77.2851771726479,
+              "frameStructure100": 71.90477486973505,
+              "rgbMae255": 7.399669261649251,
+              "boundary100": 96.35313326624377,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.76770068612365,
+              "frameStructure100": 80.55995898515424,
+              "rgbMae255": 6.153458682820201,
+              "boundary100": 96.3255216911676,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "0f84d676-5327-454c-a033-b4498a9d28e2",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.83876336544925,
+              "frameStructure100": 76.62110398309359,
+              "rgbMae255": 7.983079981058836,
+              "boundary100": 70.84300903187433,
+              "medianBoundaryShiftPx": 0.75
+            },
+            "calibrated": {
+              "wholeStructure100": 70.35083140558503,
+              "frameStructure100": 74.1963743021453,
+              "rgbMae255": 7.161872796714306,
+              "boundary100": 96.24163904299033,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 70.92576777999626,
+              "frameStructure100": 83.84633816807843,
+              "rgbMae255": 5.646584881469607,
+              "boundary100": 96.23561536227166,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "11600105-56c6-4073-a4a6-8469030b39c9",
+          "values": {
+            "released": {
+              "wholeStructure100": 64.73972829621292,
+              "frameStructure100": 78.95615736991549,
+              "rgbMae255": 6.061482718214393,
+              "boundary100": 69.67466224961262,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 70.3100527721285,
+              "frameStructure100": 78.9103074732461,
+              "rgbMae255": 5.834398353472352,
+              "boundary100": 96.51002413367989,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 70.81507292804434,
+              "frameStructure100": 87.07011796669786,
+              "rgbMae255": 4.623044254258275,
+              "boundary100": 96.5954774983768,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "13186bc9-8d9c-433b-ba15-121ef94dd68a",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.45918303557012,
+              "frameStructure100": 74.72185272284202,
+              "rgbMae255": 5.919047836214304,
+              "boundary100": 70.01340763223028,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 76.10250989022462,
+              "frameStructure100": 73.14895441508662,
+              "rgbMae255": 6.494889361783862,
+              "boundary100": 96.15179016262778,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 77.08956782625924,
+              "frameStructure100": 81.64492984468433,
+              "rgbMae255": 5.523578831925988,
+              "boundary100": 96.11133893964902,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "15967a39-303f-457d-bcde-51837c8d63e1",
+          "values": {
+            "released": {
+              "wholeStructure100": 77.14790514975653,
+              "frameStructure100": 80.60597224199337,
+              "rgbMae255": 5.633092280477285,
+              "boundary100": 76.03746691496413,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 78.81405597347127,
+              "frameStructure100": 75.16060917040501,
+              "rgbMae255": 6.74396219663322,
+              "boundary100": 96.17267014734617,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 79.8714180000291,
+              "frameStructure100": 82.44195325933978,
+              "rgbMae255": 5.9489109087735415,
+              "boundary100": 96.11978536360994,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "1ae32d20-b438-4f43-b603-e8f706ecfb03",
+          "values": {
+            "released": {
+              "wholeStructure100": 66.18263101615644,
+              "frameStructure100": 71.25393181457852,
+              "rgbMae255": 6.051103575155139,
+              "boundary100": 64.77390459556612,
+              "medianBoundaryShiftPx": 0.9375
+            },
+            "calibrated": {
+              "wholeStructure100": 73.84521136715054,
+              "frameStructure100": 69.97143111793332,
+              "rgbMae255": 6.448568422347307,
+              "boundary100": 95.38930762702907,
+              "medianBoundaryShiftPx": 0.25
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.57921793915652,
+              "frameStructure100": 80.04738525958751,
+              "rgbMae255": 5.189914461225271,
+              "boundary100": 95.34557557456847,
+              "medianBoundaryShiftPx": 0.25
+            }
+          }
+        },
+        {
+          "id": "1f6118b2-fe01-425a-a2ed-6d7c42286c8e",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.22445650153956,
+              "frameStructure100": 76.99240398777198,
+              "rgbMae255": 7.697540502995253,
+              "boundary100": 69.01927781095979,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 78.11226759327916,
+              "frameStructure100": 77.91962255967223,
+              "rgbMae255": 6.389160985127091,
+              "boundary100": 96.62388976388878,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.98484081207582,
+              "frameStructure100": 85.33060591838748,
+              "rgbMae255": 5.148358941078186,
+              "boundary100": 96.50762899526005,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "2722d7e2-61c6-4934-9c21-875ee78fd06c",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.14737621497594,
+              "frameStructure100": 77.15430012494373,
+              "rgbMae255": 5.716013805940747,
+              "boundary100": 69.73229816564375,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 77.51983025294687,
+              "frameStructure100": 79.52796630230488,
+              "rgbMae255": 5.751293962821364,
+              "boundary100": 95.85512430634714,
+              "medianBoundaryShiftPx": 0.25
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.24790767166256,
+              "frameStructure100": 86.19796325624655,
+              "rgbMae255": 4.813851015642285,
+              "boundary100": 95.85963083138664,
+              "medianBoundaryShiftPx": 0.25
+            }
+          }
+        },
+        {
+          "id": "2facf462-55cd-4da4-997f-2cf4add75628",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.1743021200663,
+              "frameStructure100": 77.75465787111678,
+              "rgbMae255": 6.636434141546488,
+              "boundary100": 66.96837933541077,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 74.79989044967442,
+              "frameStructure100": 74.29585948757808,
+              "rgbMae255": 6.48164089769125,
+              "boundary100": 96.2730585782846,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.53576054922253,
+              "frameStructure100": 84.04411873736093,
+              "rgbMae255": 5.0792772229760885,
+              "boundary100": 96.29430098253479,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "3455b006-9ea5-4aef-8ad2-d0701eb0cacf",
+          "values": {
+            "released": {
+              "wholeStructure100": 64.83425131856053,
+              "frameStructure100": 85.22628347991467,
+              "rgbMae255": 10.566774141043425,
+              "boundary100": 71.53798726590955,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 70.18206687232423,
+              "frameStructure100": 83.81355373803551,
+              "rgbMae255": 8.689213190227747,
+              "boundary100": 95.51458456414804,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 70.31809946546828,
+              "frameStructure100": 90.78139097958729,
+              "rgbMae255": 7.828699965029955,
+              "boundary100": 95.4350828954297,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "386ea9eb-abc1-4862-aa2d-8fb808d79490",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.13857306245447,
+              "frameStructure100": 76.33569666057691,
+              "rgbMae255": 6.039332281798124,
+              "boundary100": 67.70626452694314,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 74.1637636972916,
+              "frameStructure100": 77.03688439631429,
+              "rgbMae255": 6.01473905146122,
+              "boundary100": 96.08895808141943,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.85852026323057,
+              "frameStructure100": 84.85958189580754,
+              "rgbMae255": 4.910590499639511,
+              "boundary100": 96.12141517255756,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "49b22665-1501-420a-82ad-f71f6768bcf8",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.10288267538753,
+              "frameStructure100": 72.55834360011536,
+              "rgbMae255": 6.928975218906999,
+              "boundary100": 63.626123832444335,
+              "medianBoundaryShiftPx": 0.9375
+            },
+            "calibrated": {
+              "wholeStructure100": 74.80924719326445,
+              "frameStructure100": 74.06777627718546,
+              "rgbMae255": 6.178614757955074,
+              "boundary100": 95.88835064531239,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.7921758388387,
+              "frameStructure100": 81.90424980983848,
+              "rgbMae255": 5.019002482295036,
+              "boundary100": 95.87930742000799,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "4fff6e6f-4ebd-4ec8-9443-59efb22d376c",
+          "values": {
+            "released": {
+              "wholeStructure100": 63.43525891981907,
+              "frameStructure100": 76.30395616636804,
+              "rgbMae255": 7.151092775166035,
+              "boundary100": 63.286408178367694,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 70.45611625521663,
+              "frameStructure100": 85.39485401971577,
+              "rgbMae255": 7.87686713039875,
+              "boundary100": 93.67420065860865,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 70.32182195892258,
+              "frameStructure100": 90.66795490597342,
+              "rgbMae255": 8.013988472521305,
+              "boundary100": 93.64596133698447,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "50abfba8-c9f9-4ebf-965a-4b425fe83129",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.90556063339108,
+              "frameStructure100": 81.33378986884642,
+              "rgbMae255": 5.244379313662648,
+              "boundary100": 68.0770454520207,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 74.76606690646666,
+              "frameStructure100": 80.81418136658655,
+              "rgbMae255": 5.744657143950462,
+              "boundary100": 96.51843864436964,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.0579356334484,
+              "frameStructure100": 88.25321833995052,
+              "rgbMae255": 4.854173976927996,
+              "boundary100": 96.41450550538876,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "5b6ddce7-b9c5-431d-a0b0-46d4aa93cbcb",
+          "values": {
+            "released": {
+              "wholeStructure100": 73.50199206591422,
+              "frameStructure100": 78.20245877201133,
+              "rgbMae255": 7.7400625962764025,
+              "boundary100": 72.35702749615149,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 78.97427259340506,
+              "frameStructure100": 73.61689628623952,
+              "rgbMae255": 6.930672777816653,
+              "boundary100": 96.74319098326686,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 80.37995772482279,
+              "frameStructure100": 82.23594995911337,
+              "rgbMae255": 5.573263540863991,
+              "boundary100": 96.81541085897686,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "6303233b-35eb-49ca-b844-ba6b9fe1cbd2",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.23467591372216,
+              "frameStructure100": 82.28125595417049,
+              "rgbMae255": 7.0716057904064655,
+              "boundary100": 76.60918995996452,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 72.82620626648215,
+              "frameStructure100": 76.43253416339958,
+              "rgbMae255": 6.632182644680142,
+              "boundary100": 97.02913469500422,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.33613187286427,
+              "frameStructure100": 85.16792257859997,
+              "rgbMae255": 5.224927682429552,
+              "boundary100": 96.96265696860907,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "6daf1aab-1e58-4a5a-bc66-cb3f7c86e0e8",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.54624618175485,
+              "frameStructure100": 76.64259594643742,
+              "rgbMae255": 5.883808052167296,
+              "boundary100": 68.05383264966326,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 75.56326829113753,
+              "frameStructure100": 78.51604483835025,
+              "rgbMae255": 6.543793212622404,
+              "boundary100": 96.73179823961463,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.96615902401162,
+              "frameStructure100": 86.4863867869914,
+              "rgbMae255": 6.122789103537798,
+              "boundary100": 96.77659520620087,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "6f30ad61-fcb7-4d55-ba86-94de1bf545e4",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.31803401212191,
+              "frameStructure100": 70.70210086686383,
+              "rgbMae255": 6.582808094099164,
+              "boundary100": 64.32449968972101,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 76.21379219217414,
+              "frameStructure100": 75.66930079312344,
+              "rgbMae255": 6.8704194109886885,
+              "boundary100": 94.61046008166507,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 76.76501860507223,
+              "frameStructure100": 82.19227509359102,
+              "rgbMae255": 6.280344324186444,
+              "boundary100": 94.51316310804219,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "6f9ea46a-411f-40ce-a873-a905180093f4",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.51222992443682,
+              "frameStructure100": 86.48280079663648,
+              "rgbMae255": 5.4089408833533525,
+              "boundary100": 70.93882934258288,
+              "medianBoundaryShiftPx": 0.625
+            },
+            "calibrated": {
+              "wholeStructure100": 75.69266551613009,
+              "frameStructure100": 87.10536305050479,
+              "rgbMae255": 4.879114413633943,
+              "boundary100": 91.82445607384685,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.74257973085278,
+              "frameStructure100": 93.97068736123079,
+              "rgbMae255": 3.6807796033099294,
+              "boundary100": 91.55495353756633,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "848b1a7f-e8ba-40b5-92b7-af1e963a0319",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.95751943321257,
+              "frameStructure100": 85.25045204320055,
+              "rgbMae255": 10.77835438773036,
+              "boundary100": 73.46868237142007,
+              "medianBoundaryShiftPx": 0.625
+            },
+            "calibrated": {
+              "wholeStructure100": 74.79799818041397,
+              "frameStructure100": 83.07076810861845,
+              "rgbMae255": 9.059363678097725,
+              "boundary100": 96.1676431098864,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.99285185234729,
+              "frameStructure100": 89.57648551187782,
+              "rgbMae255": 7.737982207909226,
+              "boundary100": 96.24335275738875,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "92df19c9-e127-42d9-8dd2-7fa5a7095428",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.65352791809966,
+              "frameStructure100": 75.86872490991223,
+              "rgbMae255": 5.6352529395371675,
+              "boundary100": 71.38222773661171,
+              "medianBoundaryShiftPx": 0.75
+            },
+            "calibrated": {
+              "wholeStructure100": 72.9951797885901,
+              "frameStructure100": 72.0643221844115,
+              "rgbMae255": 6.2477990705519915,
+              "boundary100": 96.67566489887072,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.60826150073339,
+              "frameStructure100": 81.71177318771926,
+              "rgbMae255": 5.273195067420602,
+              "boundary100": 96.6538309977273,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "93f9f0f2-e1cc-4740-888c-1336c6de0a27",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.6539483810816,
+              "frameStructure100": 73.40321053659193,
+              "rgbMae255": 7.929067304357886,
+              "boundary100": 65.11658806692753,
+              "medianBoundaryShiftPx": 0.9375
+            },
+            "calibrated": {
+              "wholeStructure100": 75.65168516667977,
+              "frameStructure100": 72.39551938019987,
+              "rgbMae255": 6.966422209516168,
+              "boundary100": 95.861207516387,
+              "medianBoundaryShiftPx": 0.25
+            },
+            "reconstructed": {
+              "wholeStructure100": 76.77347722214941,
+              "frameStructure100": 80.60851295630323,
+              "rgbMae255": 5.749977333471179,
+              "boundary100": 95.87434412006162,
+              "medianBoundaryShiftPx": 0.25
+            }
+          }
+        },
+        {
+          "id": "943baea8-b173-4863-a3ab-dd217d483cd9",
+          "values": {
+            "released": {
+              "wholeStructure100": 66.1030736070384,
+              "frameStructure100": 81.77961652918343,
+              "rgbMae255": 5.190807888284326,
+              "boundary100": 70.23849536264638,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 73.52090562226063,
+              "frameStructure100": 81.23458210840136,
+              "rgbMae255": 6.03012727573514,
+              "boundary100": 95.01078010580457,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.56238771431174,
+              "frameStructure100": 88.80574847489747,
+              "rgbMae255": 5.368565199896693,
+              "boundary100": 94.95605814318195,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "98fba951-c5bb-497c-9292-ce1b2a1e1247",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.73794472544304,
+              "frameStructure100": 80.31925973393516,
+              "rgbMae255": 6.6827446315437555,
+              "boundary100": 71.65755772696623,
+              "medianBoundaryShiftPx": 0.75
+            },
+            "calibrated": {
+              "wholeStructure100": 74.74262682949762,
+              "frameStructure100": 78.08051930825046,
+              "rgbMae255": 6.178324548527598,
+              "boundary100": 96.48826240199132,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.2642580269552,
+              "frameStructure100": 87.11092420745372,
+              "rgbMae255": 4.832728877663612,
+              "boundary100": 96.50067138780106,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "99ec4723-b36c-4015-b361-736a6523e8f5",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.0213221776619,
+              "frameStructure100": 78.77541276175184,
+              "rgbMae255": 5.770781692117453,
+              "boundary100": 71.72504334971613,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 75.18168570980886,
+              "frameStructure100": 79.23340834430067,
+              "rgbMae255": 5.7169328816235065,
+              "boundary100": 96.35824719227983,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 75.60002468131167,
+              "frameStructure100": 87.07187489958699,
+              "rgbMae255": 4.472546204924583,
+              "boundary100": 96.48009216173233,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "a2788d69-6a3a-42f0-8736-cc6b57755ecd",
+          "values": {
+            "released": {
+              "wholeStructure100": 74.03297071565788,
+              "frameStructure100": 80.49802788097968,
+              "rgbMae255": 15.71708332747221,
+              "boundary100": 71.28427664249996,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 77.34322327364882,
+              "frameStructure100": 77.25406907466933,
+              "rgbMae255": 13.354768138378859,
+              "boundary100": 96.84382993003999,
+              "medianBoundaryShiftPx": 0.1875
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.1847312308827,
+              "frameStructure100": 85.56538792081348,
+              "rgbMae255": 12.327734548598528,
+              "boundary100": 96.88442483587876,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "b01041d2-687e-4972-81c8-16690809275b",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.46789191119763,
+              "frameStructure100": 72.84956914174235,
+              "rgbMae255": 5.71775933727622,
+              "boundary100": 66.62498916900074,
+              "medianBoundaryShiftPx": 0.9375
+            },
+            "calibrated": {
+              "wholeStructure100": 72.70262941743624,
+              "frameStructure100": 74.6621583568164,
+              "rgbMae255": 6.295973360538483,
+              "boundary100": 96.86525947211605,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.37144561772658,
+              "frameStructure100": 83.79083568169851,
+              "rgbMae255": 5.711103994399309,
+              "boundary100": 96.81038346331589,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "b0da8d56-3178-44c2-9344-95d2346d326f",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.39799964935716,
+              "frameStructure100": 74.77662078386594,
+              "rgbMae255": 6.073479624465108,
+              "boundary100": 66.77893277690103,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 73.15840639455708,
+              "frameStructure100": 78.77412321195486,
+              "rgbMae255": 5.640053506940603,
+              "boundary100": 95.57735595491305,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.6832317551688,
+              "frameStructure100": 86.15573405310462,
+              "rgbMae255": 4.590452453121543,
+              "boundary100": 95.47500914456174,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "b3dd94c5-42f6-4148-be6e-2a3a4226cc0e",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.16383334389022,
+              "frameStructure100": 81.4094535188096,
+              "rgbMae255": 6.157731553539634,
+              "boundary100": 69.87748528720762,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 75.75348659007454,
+              "frameStructure100": 82.439455460855,
+              "rgbMae255": 5.388408685103059,
+              "boundary100": 96.81359795857482,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 76.09923727710874,
+              "frameStructure100": 89.02178506010513,
+              "rgbMae255": 4.1161880269646645,
+              "boundary100": 96.85145596896015,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "c15e8a42-89de-42bc-8d5f-33426d207c3a",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.95160382814404,
+              "frameStructure100": 83.4641870697728,
+              "rgbMae255": 5.072961961850524,
+              "boundary100": 79.69229509720311,
+              "medianBoundaryShiftPx": 0.5625
+            },
+            "calibrated": {
+              "wholeStructure100": 73.4541552645867,
+              "frameStructure100": 78.74084300732905,
+              "rgbMae255": 5.394626576453447,
+              "boundary100": 95.07159462639704,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.91867493937269,
+              "frameStructure100": 87.60222080714185,
+              "rgbMae255": 4.30156297981739,
+              "boundary100": 95.23148072481865,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "caf9cef4-0f2d-478a-b119-fe1967687f74",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.56981064037616,
+              "frameStructure100": 85.09235954857243,
+              "rgbMae255": 5.05483265966177,
+              "boundary100": 69.46611377514417,
+              "medianBoundaryShiftPx": 0.75
+            },
+            "calibrated": {
+              "wholeStructure100": 72.98692666639906,
+              "frameStructure100": 82.22504184343286,
+              "rgbMae255": 5.095764538273215,
+              "boundary100": 92.66906209988124,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.10277230969754,
+              "frameStructure100": 89.55141218317263,
+              "rgbMae255": 3.8795326882973313,
+              "boundary100": 92.60514194449465,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "cbd9ab01-a833-4fa4-8dee-151bd9800835",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.22852986470538,
+              "frameStructure100": 86.93468972134933,
+              "rgbMae255": 5.367667498067021,
+              "boundary100": 75.93802845594666,
+              "medianBoundaryShiftPx": 0.625
+            },
+            "calibrated": {
+              "wholeStructure100": 74.72740927257865,
+              "frameStructure100": 83.78195742685456,
+              "rgbMae255": 5.324820522218943,
+              "boundary100": 93.99016775059968,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.88904242947488,
+              "frameStructure100": 90.30576833061833,
+              "rgbMae255": 4.102218551561236,
+              "boundary100": 94.2651452975688,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "d05b92bd-797e-413f-a8b0-32e0937a1ee0",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.76381054710342,
+              "frameStructure100": 76.67304274441737,
+              "rgbMae255": 12.05923905596137,
+              "boundary100": 64.32849770643618,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 71.88497610250072,
+              "frameStructure100": 77.38593639747826,
+              "rgbMae255": 10.605685953050852,
+              "boundary100": 95.87571151656354,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 72.31512000507757,
+              "frameStructure100": 86.32219216202589,
+              "rgbMae255": 9.306670557707548,
+              "boundary100": 95.91188575165428,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "d0ba7b76-f3d0-47d0-8a35-0c08e67200fb",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.34779432086441,
+              "frameStructure100": 75.21206803605546,
+              "rgbMae255": 6.371249221265316,
+              "boundary100": 68.59285308826144,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 73.75276544111891,
+              "frameStructure100": 75.71288354383722,
+              "rgbMae255": 5.908245965838432,
+              "boundary100": 95.77338085234443,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.77607513007224,
+              "frameStructure100": 84.30830320570594,
+              "rgbMae255": 4.8189289681613445,
+              "boundary100": 95.739413399046,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "d2379f78-c03f-447f-b3c9-10a918d556e9",
+          "values": {
+            "released": {
+              "wholeStructure100": 72.95040328521083,
+              "frameStructure100": 77.08928450836432,
+              "rgbMae255": 5.782433291897178,
+              "boundary100": 74.76091699620771,
+              "medianBoundaryShiftPx": 0.625
+            },
+            "calibrated": {
+              "wholeStructure100": 75.61115107105405,
+              "frameStructure100": 73.27742268806429,
+              "rgbMae255": 6.47636060602963,
+              "boundary100": 96.1904209533296,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 76.55246300535423,
+              "frameStructure100": 81.62660960492113,
+              "rgbMae255": 5.525259291753173,
+              "boundary100": 96.1275403891129,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "d5c83259-9b90-47c2-b48e-c7d78519e792",
+          "values": {
+            "released": {
+              "wholeStructure100": 68.26723195282922,
+              "frameStructure100": 86.89833026589457,
+              "rgbMae255": 9.536930602043867,
+              "boundary100": 76.34849183919869,
+              "medianBoundaryShiftPx": 0.5
+            },
+            "calibrated": {
+              "wholeStructure100": 70.22748213139526,
+              "frameStructure100": 83.6622509762803,
+              "rgbMae255": 7.80805092304945,
+              "boundary100": 92.60778237334746,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 70.16093037517965,
+              "frameStructure100": 90.52425032823704,
+              "rgbMae255": 6.9067117385566235,
+              "boundary100": 92.65377240381576,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "ddb633f5-cc4d-4157-8217-def90cb15e24",
+          "values": {
+            "released": {
+              "wholeStructure100": 74.72702683293038,
+              "frameStructure100": 77.6585988431464,
+              "rgbMae255": 5.5512285232543945,
+              "boundary100": 68.07054290447178,
+              "medianBoundaryShiftPx": 0.875
+            },
+            "calibrated": {
+              "wholeStructure100": 78.83794479417487,
+              "frameStructure100": 75.25066993055208,
+              "rgbMae255": 6.440908033400774,
+              "boundary100": 96.85180526528227,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 79.93440083345817,
+              "frameStructure100": 82.73633562530432,
+              "rgbMae255": 5.808171685785055,
+              "boundary100": 96.76375094908784,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "e0c64c01-c2aa-470b-88c6-3d3e4a969649",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.30459642034047,
+              "frameStructure100": 76.743054352715,
+              "rgbMae255": 6.881786976009607,
+              "boundary100": 69.92295081720542,
+              "medianBoundaryShiftPx": 0.5
+            },
+            "calibrated": {
+              "wholeStructure100": 77.02533621868393,
+              "frameStructure100": 75.28244613175924,
+              "rgbMae255": 6.212721252813935,
+              "boundary100": 95.36279080940857,
+              "medianBoundaryShiftPx": 0.1875
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.10223465093415,
+              "frameStructure100": 83.21284478460007,
+              "rgbMae255": 4.862276567146182,
+              "boundary100": 95.30423616500227,
+              "medianBoundaryShiftPx": 0.1875
+            }
+          }
+        },
+        {
+          "id": "e28de37e-84d5-4dc7-b36c-e14da5924729",
+          "values": {
+            "released": {
+              "wholeStructure100": 67.98403344689527,
+              "frameStructure100": 79.3046073923227,
+              "rgbMae255": 5.587788261473179,
+              "boundary100": 66.73869956330591,
+              "medianBoundaryShiftPx": 0.9375
+            },
+            "calibrated": {
+              "wholeStructure100": 77.63125534499369,
+              "frameStructure100": 86.20322042955836,
+              "rgbMae255": 4.5940442103892565,
+              "boundary100": 96.7017282815232,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 77.90919800124308,
+              "frameStructure100": 90.8909548653794,
+              "rgbMae255": 4.014277020469308,
+              "boundary100": 96.70328189741203,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "e945a4cd-0eb1-4f54-898d-169ce2748a03",
+          "values": {
+            "released": {
+              "wholeStructure100": 72.7147154263639,
+              "frameStructure100": 73.58548503581913,
+              "rgbMae255": 6.022972259670496,
+              "boundary100": 65.07506137849337,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 76.95762311184255,
+              "frameStructure100": 74.14198804292099,
+              "rgbMae255": 7.074718773365021,
+              "boundary100": 95.81306400343328,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 78.23078728694635,
+              "frameStructure100": 82.0637547877262,
+              "rgbMae255": 6.526824273169041,
+              "boundary100": 95.82027357254249,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "eaac88da-d19e-4771-944c-3709963d04e7",
+          "values": {
+            "released": {
+              "wholeStructure100": 70.5264727597351,
+              "frameStructure100": 85.44264810816567,
+              "rgbMae255": 4.841583827510476,
+              "boundary100": 70.01643885656104,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 74.81503229023922,
+              "frameStructure100": 84.57693730065142,
+              "rgbMae255": 4.648574134334922,
+              "boundary100": 96.39027580628577,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.98509616913961,
+              "frameStructure100": 91.91172214287418,
+              "rgbMae255": 3.6862722085788846,
+              "boundary100": 96.45946559182687,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "efba235e-04e5-449c-906c-0ac33f6d7929",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.56890806300021,
+              "frameStructure100": 76.95104059522842,
+              "rgbMae255": 6.553091313689947,
+              "boundary100": 73.45813387271066,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 72.78162949681973,
+              "frameStructure100": 73.66692317166536,
+              "rgbMae255": 6.231324579566717,
+              "boundary100": 96.04426586945493,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 73.37444381873944,
+              "frameStructure100": 82.46456839751984,
+              "rgbMae255": 4.881759071722627,
+              "boundary100": 96.06853319035521,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "f131fd27-18da-47ca-b59f-135bcac83abd",
+          "values": {
+            "released": {
+              "wholeStructure100": 71.6035401596734,
+              "frameStructure100": 77.81616995008545,
+              "rgbMae255": 8.48627557978034,
+              "boundary100": 69.55175965679523,
+              "medianBoundaryShiftPx": 0.8125
+            },
+            "calibrated": {
+              "wholeStructure100": 75.52249117326745,
+              "frameStructure100": 74.95416223079229,
+              "rgbMae255": 7.34835016541183,
+              "boundary100": 96.10181422705215,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 76.51841555681213,
+              "frameStructure100": 83.46006153877806,
+              "rgbMae255": 6.064138300716877,
+              "boundary100": 96.10309376521005,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "f8ac5006-91bd-4803-93da-f87cf196dd2f",
+          "values": {
+            "released": {
+              "wholeStructure100": 69.49528285525048,
+              "frameStructure100": 81.16559175764297,
+              "rgbMae255": 5.516120307147503,
+              "boundary100": 71.67686533164108,
+              "medianBoundaryShiftPx": 0.6875
+            },
+            "calibrated": {
+              "wholeStructure100": 74.20750212892881,
+              "frameStructure100": 77.13531641460028,
+              "rgbMae255": 5.81540459766984,
+              "boundary100": 95.88855410863876,
+              "medianBoundaryShiftPx": 0.125
+            },
+            "reconstructed": {
+              "wholeStructure100": 74.76244416367166,
+              "frameStructure100": 84.80226103465607,
+              "rgbMae255": 4.78504428640008,
+              "boundary100": 95.88788792893759,
+              "medianBoundaryShiftPx": 0.125
+            }
+          }
+        },
+        {
+          "id": "fa5466cc-aa57-4a7f-8b21-d92b2fe02e13",
+          "values": {
+            "released": {
+              "wholeStructure100": 77.56721958248269,
+              "frameStructure100": 79.42482653588547,
+              "rgbMae255": 12.919392250478268,
+              "boundary100": 80.0999306580646,
+              "medianBoundaryShiftPx": 0.625
+            },
+            "calibrated": {
+              "wholeStructure100": 77.60226929669244,
+              "frameStructure100": 70.54554192230374,
+              "rgbMae255": 10.880818739533424,
+              "boundary100": 94.15512156941695,
+              "medianBoundaryShiftPx": 0.1875
+            },
+            "reconstructed": {
+              "wholeStructure100": 79.05259937611635,
+              "frameStructure100": 78.91903736329577,
+              "rgbMae255": 9.855611901730299,
+              "boundary100": 94.16139394590543,
+              "medianBoundaryShiftPx": 0.1875
+            }
+          }
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Historical scan poses use three anchors per side and are not current contributor certification.",
+    "Validation holds names out of reconstruction only; earlier development studies inspected these scans.",
+    "All-data refit retains shared geometry but refits HSB and texture on all 45 cards.",
+    "No physical CMYK/halftone/scanner model, no runtime or profile changes, no production score uploads."
+  ]
+}

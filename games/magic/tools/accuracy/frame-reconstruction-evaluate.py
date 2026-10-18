@@ -163,9 +163,12 @@ def evaluate(root, label, workers):
                 'rgbMae255':float(np.mean([r['values'][variant]['combined']['1.4']['rgbMae255'] for r in subset])),
                 'boundaryCorrelation100':float(np.mean([r['values'][variant]['boundaryCorrelation100'] for r in subset])),
                 'medianBoundaryShiftPx':float(np.median([r['values'][variant]['medianBoundaryShiftPx'] for r in subset]))}
+    validation = ('All-card refit: historical cohort labels are retained, but no card is held out.'
+                  if label == 'all' else
+                  'Holdout is only from this reconstruction, not prior studies.')
     result=dict(label=label,groups=groups,rows=rows,spectrum=spectrum(spectral_samples),
                 metric='Frame-only contrast/structure SSIM term x100; RGB MAE 8-bit; signed boundary gradient correlation x100',
-                limitation='Not Lab whole-card accuracy. Geometry uses prior exploratory poses with 3 anchors per side. Holdout is only from this reconstruction, not prior studies.')
+                limitation='Not Lab whole-card accuracy. Geometry uses prior exploratory poses with 3 anchors per side. ' + validation)
     save(root/f'{label}-evaluation.json', result)
     print(json.dumps(groups,indent=2))
 
