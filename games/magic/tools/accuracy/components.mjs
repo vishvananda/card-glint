@@ -18,6 +18,8 @@ export async function fetchComponents(entries, opts, faceForEntry = (e) => prese
     // Studies can change wording/symbol/frame modes. Resolve their actual input
     // once so the frozen cache includes every asset the capture will request.
     const faces = entries.filter((e) => !e.issue).map(faceForEntry);
+    const { prepareMagicCards } = await server.ssrLoadModule('/games/magic/src/data/load.ts');
+    await prepareMagicCards(faces);
     const urls = [
       ...new Set(
         [

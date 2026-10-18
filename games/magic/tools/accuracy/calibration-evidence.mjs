@@ -101,6 +101,8 @@ async function capture(study, studyHash, directory) {
         continue;
       }
       const image = await session.page.evaluate(async (face) => {
+        const { prepareMagicCards } = await import('/games/magic/src/data/load.ts');
+        await prepareMagicCards([face]);
         const { composeCardTexture } = await import('/games/magic/src/presentation/canvas-face.ts');
         const canvas = await composeCardTexture(
           { face, printingId: null, printedImage: null },
