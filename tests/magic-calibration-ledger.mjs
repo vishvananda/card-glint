@@ -11,6 +11,7 @@ import {
 } from '../games/magic/tools/accuracy/calibration-groups.mjs';
 import { calibrationReport } from '../games/magic/tools/accuracy/calibration-report.mjs';
 import { applyEarlyOriginalWording } from '../games/magic/tools/accuracy/calibration-original-wording.mjs';
+import { preDarkWordingSource } from './magic-dark-wording-source-guard.mjs';
 
 const h = 'a'.repeat(64);
 const proof = {
@@ -161,6 +162,27 @@ const ledger = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/calibration-progress.json'),
 );
 const reports = await calibrationReport(ledger);
+// The live ledger follows the reviewed Electric Eel input correction. Older
+// measurement receipts remain byte-identical and are not promoted to new scores.
+const wordingDelta = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/dark-wording-compatibility.json'),
+);
+const annotations = JSON.parse(await readFile(wordingDelta.review.source));
+const previousAnnotations = JSON.parse(await preDarkWordingSource(wordingDelta.review.source));
+const withoutEel = structuredClone(annotations);
+delete withoutEel.cards[wordingDelta.review.id];
+assert.deepEqual(withoutEel, previousAnnotations);
+const eelGroup = ledger.sets
+  .find((s) => s.set === 'drk')
+  .groups.find((g) => g.printingIds.includes(wordingDelta.review.id));
+assert.deepEqual(eelGroup.tasks.rules.originalInput.sources, {
+  'mtgjson-original': 6,
+  'scan-reviewed': 2,
+});
+assert.deepEqual(
+  eelGroup.tasks.references.wording.rules,
+  eelGroup.tasks.rules.originalInput.sources,
+);
 assert.equal(reports.length, 272);
 assert.ok(reports.every((s) => !s.complete));
 for (const s of ledger.sets) {
