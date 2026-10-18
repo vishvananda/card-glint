@@ -17,6 +17,7 @@ def run(tool,*args):
     subprocess.run(command,check=True,env=os.environ)
 
 def main(root, source, steps):
+    root=root.absolute()
     source=source.absolute()
     if not (root/'preparation.json').exists():run('frame-reconstruction-fit.py','prepare',root,'--source',source)
     if not (root/'train-fit.json').exists():run('frame-reconstruction-fit.py','fit',root,'--source',source,'--steps',steps)

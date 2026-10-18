@@ -7,9 +7,10 @@ import { hash, readJson, writeJson } from './common.mjs';
 import { openBrowser } from './browser.mjs';
 
 const platesOnly = process.argv.includes('--plates-only');
+const printLayers = process.argv.includes('--print-layers');
 const [directory, inputsFile, componentsFile, label = 'train', candidateFile] = process.argv
   .slice(2)
-  .filter((argument) => argument !== '--plates-only');
+  .filter((argument) => !['--plates-only', '--print-layers'].includes(argument));
 if (!componentsFile)
   throw Error('Usage: frame-reconstruction-native.mjs OUT INPUTS COMPONENTS [train|all]');
 const obs = await readJson(path.join(directory, 'observations.json'));
@@ -134,7 +135,7 @@ try {
         c.width = c.height = 0;
       }
       window.frameExperiment = { candidates, materials, plates, textReplays: [] };
-      window.renderExperiment = async (face, index) => {
+      window.renderExperiment = async (face, index, printing = false) => {
         const { composeCardTexture, paintAssembledFace } = await import(
           '/games/magic/src/presentation/canvas-face.ts'
         );
@@ -197,12 +198,20 @@ try {
             });
           withRulesInk(ctx, !textReplay?.paint, () =>
             withPrintingOmissions(ctx, face, () =>
-              paintAssembledFace(ctx, face, images, 680, false),
+              paintAssembledFace(
+                ctx,
+                face,
+                images,
+                680,
+                false,
+                undefined,
+                printing ? 'printing' : undefined,
+              ),
             ),
           );
           textReplay?.paint?.(images);
           const artOverlay = window.frameExperiment.artOverlays?.[index];
-          if (index >= 0 && artOverlay) {
+          if (index >= 0 && artOverlay && !printing) {
             ctx.save();
             ctx.globalAlpha = 1;
             ctx.globalCompositeOperation = 'source-over';
@@ -270,7 +279,14 @@ try {
       ),
     );
     const outputs = await session.page.evaluate(
-      async ({ face, artData }) => {
+      async ({ face, artData, printLayers, perCardData }) => {
+        for (let i = 0; i < perCardData.length; i++) {
+          if (!perCardData[i]) continue;
+          window.frameExperiment.candidates[i].close();
+          window.frameExperiment.candidates[i] = await createImageBitmap(
+            await (await fetch(perCardData[i])).blob(),
+          );
+        }
         const artOverlays = await Promise.all(
           artData.map(async (url) =>
             url ? createImageBitmap(await (await fetch(url)).blob()) : null,
@@ -278,29 +294,55 @@ try {
         );
         window.frameExperiment.artOverlays = artOverlays;
         try {
-          return await Promise.all(
-            [-1, ...window.frameExperiment.candidates.keys()].map((i) =>
-              window.renderExperiment(face, i),
-            ),
-          );
+          const indices = [-1, ...window.frameExperiment.candidates.keys()];
+          const full = await Promise.all(indices.map((i) => window.renderExperiment(face, i)));
+          const printing = printLayers
+            ? await Promise.all(indices.map((i) => window.renderExperiment(face, i, true)))
+            : [];
+          return { full, printing };
         } finally {
           for (const overlay of artOverlays) overlay?.close();
           window.frameExperiment.artOverlays = null;
         }
       },
-      { face: row.face, artData },
+      {
+        face: row.face,
+        artData,
+        printLayers,
+        perCardData: await Promise.all(
+          (manifest?.candidates ?? []).map(async (c) =>
+            c.perCardFile
+              ? 'data:image/png;base64,' +
+                (
+                  await readFile(path.join(directory, c.perCardFile.replace('{id}', row.id)))
+                ).toString('base64')
+              : null,
+          ),
+        ),
+      },
     );
     const baseline = PNG.sync.read(await readFile(path.join(directory, row.baseline.file)));
-    const replay = PNG.sync.read(Buffer.from(outputs[0].split(',')[1], 'base64'));
+    const replay = PNG.sync.read(Buffer.from(outputs.full[0].split(',')[1], 'base64'));
     assert.deepEqual(
       replay.data,
       baseline.data,
       `Native experiment pipeline changed released pixels: ${row.name}`,
     );
     for (let i = 0; i < sourceFiles.length; i++) {
-      const bytes = Buffer.from(outputs[i + 1].split(',')[1], 'base64');
+      const bytes = Buffer.from(outputs.full[i + 1].split(',')[1], 'base64');
       await writeFile(path.join(output, `${row.id}-${i}.png`), bytes);
       receipts.push({ id: row.id, variant: i, sha256: hash(bytes) });
+    }
+    if (printLayers) {
+      await writeFile(
+        path.join(output, `${row.id}-released-printing.png`),
+        Buffer.from(outputs.printing[0].split(',')[1], 'base64'),
+      );
+      for (let i = 0; i < sourceFiles.length; i++)
+        await writeFile(
+          path.join(output, `${row.id}-${i}-printing.png`),
+          Buffer.from(outputs.printing[i + 1].split(',')[1], 'base64'),
+        );
     }
     assert.deepEqual(session.faults, []);
     if (n % 10 === 0) console.log(`${n + 1}/${obs.records.length} ${row.name}`);

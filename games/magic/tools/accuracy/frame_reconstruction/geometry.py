@@ -96,7 +96,9 @@ def fit_geometry(source, references):
         xs = n[(n >= lo) & (n <= hi) & safe]
         if len(xs) < 4:
             raise ValueError(f'Insufficient shared boundary support: {key}')
-        shifts = np.arange(-8, 8.001, .125)
+        # The supplied green bottom edge is over eight canonical pixels off.
+        # Twelve covers it without permitting unconstrained frame deformation.
+        shifts = np.arange(-12, 12.001, .125)
         scores = [np.mean([correlation(r[key], src[key], xs, s) for r in refs]) for s in shifts]
         k = int(np.argmax(scores))
         if k in (0, len(shifts) - 1):
