@@ -21,6 +21,17 @@ export interface RulesLayout {
   lines: RulesLine[];
   separators: number[];
 }
+interface RulesLayoutRequest {
+  readonly paragraphs: readonly RulesParagraph[];
+  readonly bounds: Parameters<typeof layoutRules>[2];
+  readonly maximumSize: number;
+  readonly minimumSize: number;
+  readonly typography: RulesTypography;
+}
+// Side metadata leaves the public layout/pixel shape unchanged and expires
+// with the prepared layout. Used only when an opted-in proposal reflows text.
+const requests = new WeakMap<RulesLayout, RulesLayoutRequest>();
+export const rulesLayoutRequest = (layout: RulesLayout) => requests.get(layout);
 export interface RulesTypography {
   /** Positive horizontal letter scale. Does not scale mana discs or line height. */
   textWidth?: number;
@@ -216,6 +227,7 @@ export function layoutRules(
       if (!layout.overflow || size <= minimumSize) break;
       size = Math.max(minimumSize, size - 0.25);
     } while (true);
+    requests.set(layout, { paragraphs, bounds, maximumSize, minimumSize, typography });
     return layout;
   } finally {
     context.restore();

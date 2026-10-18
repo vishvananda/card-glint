@@ -1,4 +1,4 @@
-import { setCalibrationProfile } from '../calibration/profiles.js';
+import { calibrationForFace } from '../calibration/selection.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
 import { paintPrintingElement } from './printing-elements.js';
@@ -10,7 +10,7 @@ export function earlyReprintFooter(face: RenderedCardInput) {
   const frame = earlyReprintFrame(face);
   if (!frame) return undefined;
   const set = face.setCode!.toLowerCase();
-  const p = setCalibrationProfile(set)!.footer;
+  const p = calibrationForFace(face)!.footer;
   const light =
     ['B', 'G', 'A'].includes(frame.material ?? '') ||
     (set === 'fem' && face.name === 'Ebon Stronghold');

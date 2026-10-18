@@ -1,4 +1,4 @@
-import { setCalibrationProfile } from '../calibration/profiles.js';
+import { calibrationForFace } from '../calibration/selection.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
 import { paintSolidTitle } from './solid-title.js';
@@ -7,7 +7,7 @@ import { paintTextInk } from './text-ink.js';
 /** Shared original/Oracle typography. Absolute origins also correct the old
  * Fourth Edition land inset. Keep the caller's set-symbol clearance. */
 export function earlyReprintType(face: RenderedCardInput) {
-  return earlyReprintFrame(face) ? setCalibrationProfile(face.setCode)!.type : undefined;
+  return earlyReprintFrame(face) ? calibrationForFace(face)!.type : undefined;
 }
 
 export function paintEarlyReprintType(

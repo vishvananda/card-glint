@@ -1,6 +1,6 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
-import { REPRINT_MANA, REPRINT_MANA_INK, REPRINT_MANA_PAPER } from './early-reprint-mana-values.js';
+import { calibrationForFace } from '../calibration/selection.js';
 
 /** Original glyphs can accompany either wording mode. Modern symbols and
  * unmeasured/custom frames retain their existing defaults. */
@@ -13,17 +13,17 @@ export function earlyReprintMana(face: RenderedCardInput): boolean {
   );
 }
 export function earlyReprintManaDefaults(face: RenderedCardInput) {
-  return earlyReprintMana(face) ? REPRINT_MANA[face.setCode!.toLowerCase()] : undefined;
+  return earlyReprintMana(face) ? calibrationForFace(face)!.mana.geometry : undefined;
 }
 export function earlyReprintManaTarget(face: RenderedCardInput, symbol: string) {
   return earlyReprintMana(face)
-    ? REPRINT_MANA_PAPER[`${face.setCode!.toLowerCase()}/${symbol === 'X' ? 'N' : symbol}`]
+    ? calibrationForFace(face)!.mana.paper[symbol === 'X' ? 'N' : symbol]
     : undefined;
 }
 export function earlyReprintManaInk(face: RenderedCardInput) {
   return face.calibration !== 'source' &&
     face.colorCalibration === 'set-hsb-v1' &&
     earlyReprintMana(face)
-    ? REPRINT_MANA_INK[face.setCode!.toLowerCase()]
+    ? calibrationForFace(face)!.mana.ink
     : undefined;
 }

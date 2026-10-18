@@ -1,19 +1,18 @@
-import { setCalibrationProfile } from '../calibration/profiles.js';
+import { calibrationForFace } from '../calibration/selection.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
-import { EARLY_REPRINT_FRAMES } from './early-reprint-frame-values.js';
 
 /** Printing-level material selection shared by original and Oracle wording. */
 export function earlyReprintFrame(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
   if (
     !set ||
-    !setCalibrationProfile(set) ||
+    !calibrationForFace(face) ||
     face.frameTemplate ||
     face.frameAssetFamily ||
     face.frameStyle === 'modern' ||
-    (face.borderColor && face.borderColor !== setCalibrationProfile(set)!.border) ||
+    (face.borderColor && face.borderColor !== calibrationForFace(face)!.border) ||
     (face.layout && face.layout !== 'normal') ||
     /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '')
   )
@@ -47,7 +46,7 @@ export function earlyReprintFrame(face: RenderedCardInput) {
           : colors.length > 1
             ? 'M'
             : undefined;
-  const geometry = material && EARLY_REPRINT_FRAMES[`${set}/${material}`];
+  const geometry = material && calibrationForFace(face)!.frames[material];
   if (!geometry) return undefined;
   const pigment =
     material === 'L'

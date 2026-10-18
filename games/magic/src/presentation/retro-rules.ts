@@ -1,4 +1,5 @@
-import { setCalibrationProfile } from '../calibration/profiles.js';
+import { adjustCalibrationRules } from '../calibration/rules-adjustment.js';
+import { calibrationForFace } from '../calibration/selection.js';
 import { calibratedBodyLayout } from '../calibration/body.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
 import { retroBasicPrinting } from './retro-basic.js';
@@ -27,6 +28,9 @@ export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
 
 /** Null denotes the existing large-basic-symbol path, which has no body text. */
 export function retroTextLayout(context: CanvasRenderingContext2D, face: RenderedCardInput) {
+  return adjustCalibrationRules(context, face, baseRetroTextLayout(context, face));
+}
+function baseRetroTextLayout(context: CanvasRenderingContext2D, face: RenderedCardInput) {
   if (retroBasicSymbol(face)) return null;
   const [x, y, width, height] = retroPx(retroRects(face).rules);
   const basic = retroBasicPrinting(face);
@@ -55,7 +59,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   const expansion = earlyExpansionTextLayout(context, face, paragraphs, reference);
   if (expansion) return expansion;
   const frame = earlyReprintFrame(face);
-  const body = frame && setCalibrationProfile(face.setCode)?.body;
+  const body = frame && calibrationForFace(face)?.body;
   const fitted = body && (body[frame.material!] ?? body.default);
   if (fitted) return calibratedBodyLayout(context, face, fitted, paragraphs, reference);
   const set = face.setCode?.toLowerCase();

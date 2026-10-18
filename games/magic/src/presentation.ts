@@ -67,3 +67,7 @@ export { fromMtgjsonCard } from './presentation/mtgjson-card.js';
 export type { CardImportOptions } from './presentation/provider-card.js';
 
 export * from './presentation/printing-calibration.js';
+
+export * from './calibration/editor.js';
+export * from './calibration/face-editor.js';
+export type { SetCalibrationProfile } from './calibration/types.js';

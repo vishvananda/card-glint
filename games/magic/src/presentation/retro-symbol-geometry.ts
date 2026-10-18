@@ -1,4 +1,5 @@
 import { setCalibrationProfile } from '../calibration/profiles.js';
+import { calibrationForFace } from '../calibration/selection.js';
 import { chroniclesSymbol } from './chronicles-symbols.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
@@ -172,7 +173,7 @@ export function retroSymbolGeometry(face: RenderedCardInput): RetroSymbolGeometr
   const code = face.setCode?.toLowerCase() ?? '';
   if (face.setSymbol) return null;
   if (earlyReprintFrame(face)) {
-    const configured = setCalibrationProfile(code)?.setSymbols;
+    const configured = calibrationForFace(face)?.setSymbols;
     const symbol = code === 'chr' ? chroniclesSymbol(face.name) : 'default';
     const fit = (symbol && configured?.[symbol]) || configured?.default;
     if (fit) return fit;

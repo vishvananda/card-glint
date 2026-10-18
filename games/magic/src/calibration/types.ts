@@ -3,6 +3,7 @@ import type { FrameHsb } from '../presentation/frame-hsb.js';
 import type { Rgb } from '../presentation/hsb.js';
 import type { ManaSymbolTransform } from '../presentation/symbol-adjustment.js';
 import type { RulesTypography } from '../presentation/rules-layout.js';
+import type { CalibrationRulesAdjustment } from './rules-adjustment.js';
 
 /** Canonical rectangles are normalized; lettering uses 488 × 680 pixels. */
 export interface CalibratedFrame {
@@ -50,6 +51,7 @@ export interface SetCalibrationProfile {
   readonly revision: number;
   readonly set: string;
   readonly border: 'black' | 'white';
+  readonly cornerRadius?: number;
   readonly frames: Readonly<Partial<Record<string, CalibratedFrame>>>;
   readonly colors: Readonly<
     Partial<
@@ -82,4 +84,6 @@ export interface SetCalibrationProfile {
   readonly setSymbols?: Readonly<Partial<Record<string, CalibratedSetSymbol>>>;
   /** Omitted retains the established layout. Material override wins over default. */
   readonly body?: Readonly<Partial<Record<string, CalibratedBody>>>;
+  /** Shared deltas retain the printing's existing length/centering policy. */
+  readonly rulesAdjustments?: Readonly<Partial<Record<string, CalibrationRulesAdjustment>>>;
 }

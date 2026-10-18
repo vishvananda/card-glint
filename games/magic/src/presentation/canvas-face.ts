@@ -1,4 +1,4 @@
-import { setCalibrationProfile } from '../calibration/profiles.js';
+import { calibrationForFace } from '../calibration/selection.js';
 import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible, withRulesInk } from './rules-visibility.js';
 import { calibrationFace } from './calibration-input.js';
@@ -143,7 +143,11 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     CONJURER_ROOT,
     'canvas-face-v148',
     ['silhouette-v2', faceCornerRadius(face)],
-    ['set-profile-v1', setCalibrationProfile(face.setCode)?.revision ?? null],
+    [
+      'set-profile-v1',
+      calibrationForFace(face)?.revision ?? null,
+      face.setCalibrationCandidate ?? null,
+    ],
     input.paintLayer ?? null,
     input.rulesText !== false,
     tier,
