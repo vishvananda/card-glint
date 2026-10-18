@@ -140,7 +140,7 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
       );
   }
   for (const scope of ['default', ...Object.keys(profile.frames)]) {
-    const values = profile.rulesAdjustments?.[scope];
+    const values = { ...profile.rulesAdjustments?.default, ...profile.rulesAdjustments?.[scope] };
     choice(`rulesAdjustments.${scope}.alignment`, values?.alignment ?? 'printing', 'body', scope, [
       'printing',
       'left',
@@ -232,7 +232,7 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
       for (const key of ['hueDegrees', 'saturationScale', 'brightnessScale', 'valueGamma'] as const)
         number(
           `${prefix}.${key}`,
-          tone[key] ?? 1,
+          tone[key] ?? (key === 'hueDegrees' ? 0 : 1),
           'colors',
           scope,
           key === 'hueDegrees' ? -180 : key === 'valueGamma' ? 0.5 : 0,
@@ -258,5 +258,12 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
     if (adjustment.outerStock)
       rgb(`colors.${scope}.adjustment.outerStock`, adjustment.outerStock, scope);
   }
-  return controls;
+  return controls.map((control) => {
+    const match = /^rulesAdjustments\.([^.]+)\.([^.]+)$/.exec(control.id);
+    if (!match || match[1] === 'default') return control;
+    const own = profile.rulesAdjustments?.[match[1]!] as Record<string, unknown> | undefined;
+    return own?.[match[2]!] === undefined
+      ? { ...control, inheritedFrom: `rulesAdjustments.default.${match[2]}` }
+      : control;
+  });
 }

@@ -14,6 +14,8 @@ export interface CalibrationControl {
   readonly step?: number;
   readonly options?: readonly string[];
   readonly unit?: string;
+  /** Effective value inherited from another control when no local value exists. */
+  readonly inheritedFrom?: string;
 }
 /** Immutable, revision-bound proposal. IDs must come from describeSetCalibration. */
 export interface SetCalibrationCandidate {

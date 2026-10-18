@@ -61,7 +61,11 @@ export function createSetCalibrationCandidate(
             : typeof value !== 'string' || !control.options?.includes(value)
     )
       throw Error('Invalid calibration value: ' + id);
-    if (value !== control.value) clean[id] = value!;
+    // Retain a local override equal to its old value when the candidate also
+    // changes the inherited default; otherwise it would silently follow it.
+    const inherited = control.inheritedFrom && values[control.inheritedFrom];
+    if (value !== control.value || (inherited !== undefined && value !== inherited))
+      clean[id] = value!;
   }
   const candidate: SetCalibrationCandidate = freeze({
     schema: 1,
