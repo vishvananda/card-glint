@@ -31,6 +31,9 @@ import { earlyReprintTitleProof } from './magic-early-reprint-title-source-guard
 import { earlyReprintFooterProof } from './magic-early-reprint-footer-source-guard.mjs';
 import { earlyReprintTypeProof } from './magic-early-reprint-type-source-guard.mjs';
 
+const release053 = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/release-0-5-3-compatibility.json'),
+);
 const consolidation = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/profile-consolidation-compatibility.json'),
 );
@@ -65,6 +68,9 @@ async function packMetadata(directory, beforeSymbols = false) {
 async function identity() {
   const executable = await stat(chromium.executablePath());
   return {
+    release053Revision: hash(
+      await readFile('games/magic/fixtures/accuracy/release-0-5-3-compatibility.json'),
+    ),
     deliveryRevision: hash(
       await readFile('games/magic/fixtures/accuracy/set-editor-delivery-compatibility.json'),
     ),
@@ -249,6 +255,7 @@ async function verify() {
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
     (file) =>
       ![
+        ...Object.keys(release053.dependencies),
         ...delivery.newModules,
         ...delivery.generatedModules,
         ...consolidation.newModules,
@@ -292,6 +299,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(release053.files, relative) ||
             Object.hasOwn(delivery.files, relative) ||
             Object.hasOwn(reprintFooter.files, relative) ||
             Object.hasOwn(reprintType.files, relative) ||
