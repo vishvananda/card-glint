@@ -4,7 +4,8 @@ The [progress ledger](fixtures/accuracy/calibration-progress.json) is the source
 truth for completion. It covers the frozen 272-major-set inventory and keeps an
 explicit denominator for each frame/color/layout variant. The initial batch is
 Alpha, Beta, Unlimited, Revised, Eighth, M21, Arabian Nights, Antiquities, The Dark,
-and Legends. Other sets remain queued. A profile existing in the renderer does
+and Legends. Fallen Empires, Fourth Edition and Chronicles form the next grouped
+release. Other sets remain queued. A profile existing in the renderer does
 not mean that its set, or even its entire frame, has been calibrated.
 
 [Version 0.4.2](https://github.com/vishvananda/card-glint/releases/tag/v0.4.2)
@@ -14,6 +15,27 @@ release CI passed; package, browser archive and immutable CDN assets are
 published. This is a partial calibration checkpoint. Local scan templates and
 diagnostic scores are not automatically deployed to a review service, and the
 ledger's complete-set release checks remain open.
+
+The early-reprint group now has integrated frame/color, original-mana and title
+candidates. [Title evidence](fixtures/accuracy/early-reprint-title.json) covers
+690 native renders and 683 accepted scan comparisons. Names use filled gray
+Goudy lettering with a dark shadow; both wording modes share the printing style.
+The repeated-validation title index improves as follows:
+
+| Set            | Printings | Before | After | Regressions |
+| -------------- | --------: | -----: | ----: | ----------: |
+| Fallen Empires |        89 |  0.285 | 0.622 |           0 |
+| Fourth Edition |       315 |  0.469 | 0.641 |          53 |
+| Chronicles     |        66 |  0.308 | 0.578 |           1 |
+
+These are regional similarity indexes, balanced by material and distinct name,
+not whole-card correctness percentages or a fresh holdout. Both comparison crops
+improve on average in every frame/color group. The evidence retains all regressions,
+seven rejected scan poses and a separate Fourth Edition ink/geometry diagnostic.
+Most Fourth Edition regressions involve placement; the evidence does not establish
+whether the remaining offsets come from normalization or printing variation.
+There are no per-card title offsets. Type lines, other text, expansion symbols,
+final whole-card review and publication remain part of the grouped release work.
 
 [Version 0.4.3](https://github.com/vishvananda/card-glint/releases/tag/v0.4.3)
 publishes the M21 stock-coverage correction and refined comparison evidence at

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "5850bf9294674c928d5c8c96909099ab224d4cb5",
+  "evidenceHash": "6b9898401be1286ca3f49f03ad11584348a46fe4dc27b448ba9b6bc8b8dd71f1",
+  "dependencies": {
+    "games/magic/src/presentation/retro-paint.ts": "e58c115e815976ff8db2dec1cb97433b7790ec5d9a50ad53389b0b7c3212e537",
+    "games/magic/src/presentation/early-reprint-title.ts": "f99c8e7b3e9047899998fa9e5789d8c8b46e2269cf65b606ed8717ea12120ef1",
+    "games/magic/src/presentation/early-reprint-frame.ts": "e8d16406852f58f9fae95260f61a38ca87bd0906068a2396385eb0d0f9cea375",
+    "games/magic/src/presentation/solid-title.ts": "2589208c368e0c2bc356946a9b998292564f03b8fadff566631f20f2f577fcbb",
+    "games/magic/src/presentation/title-placement.ts": "38e0d6870413f5a4d1e702e27aead1f446096a3acdd09113ceea56275cb79cf7",
+    "games/magic/src/presentation/early-reprint-mana.ts": "27dad63203464864eb28025bd16e7dd17ea273c792ee268ee1b4bcc6e8d6b3e9",
+    "games/magic/src/presentation/early-reprint-mana-values.ts": "29ca412cc1963fcc3e46d947b6da6decb8ad2988bd7c3a78eeae6d918f4cd156",
+    "games/magic/src/presentation/printing-mana-adjustment.ts": "0aa96625c3c4ba19eb78cb82c8c51a92ce81a597cac8a77b09ef16cc546dbd94"
+  },
+  "newModules": ["games/magic/src/presentation/early-reprint-title.ts"],
+  "files": {
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "d4ba1276e2de866809f50e4e3decc14e15b140e36f1bf46f2b2ea6b40abf3c40",
+      "after": "e58c115e815976ff8db2dec1cb97433b7790ec5d9a50ad53389b0b7c3212e537",
+      "reverseEdits": [
+        {
+          "start": 181,
+          "count": 4,
+          "lines": ["  else if (!paintEarlyExpansionTitle(c, face, titleX + titleWidth))\n"]
+        },
+        {
+          "start": 17,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    }
+  }
+}

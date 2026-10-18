@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preEarlyReprintTitleSource } from './magic-early-reprint-title-source-guard.mjs';
 
 let verified;
 export function earlyReprintManaProof() {
@@ -46,7 +47,11 @@ export function earlyReprintManaProof() {
     assert.equal(evidence.rendererHash, evidence.native.guards.sourceHash);
     assert.deepEqual(extension.dependencies, evidence.sourceGuards);
     for (const [file, expected] of Object.entries(extension.dependencies))
-      assert.equal(hash(await readFile(file)), expected, 'Unreviewed mana dependency: ' + file);
+      assert.equal(
+        hash(await preEarlyReprintTitleSource(file)),
+        expected,
+        'Unreviewed mana dependency: ' + file,
+      );
     return extension;
   })();
   return verified;
@@ -55,7 +60,7 @@ export function earlyReprintManaProof() {
 /** Keep historical measurements attached to their exact frame-only source.
  * The scoped native replay must pass before this ancestry is reconstructed. */
 export async function preEarlyReprintManaSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preEarlyReprintTitleSource(file),
     extension = await earlyReprintManaProof(),
     change = extension.files[file];
   if (!change) return bytes;
