@@ -13,6 +13,8 @@ try {
   await page.route('https://**/*', (r) => r.abort());
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}`);
   const results = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const m = await import('/games/magic/src/presentation.ts');
     // Synthetic geometry test: avoid network font dependencies.
     document.fonts.load = async () => [{ status: 'loaded' }];

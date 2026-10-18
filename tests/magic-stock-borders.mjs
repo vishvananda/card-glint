@@ -29,6 +29,8 @@ try {
       await page.route('https://**/*', (route) => route.abort());
       await page.goto(server.resolvedUrls.local[0] + '__stock-test');
       const rows = await page.evaluate(async () => {
+        await import('/games/magic/src/data/eager.ts');
+        await import('/games/magic/src/data/eager-wording.ts');
         const { paintRetroStockBorder, paintRetroStockWindow } = await import(
           '/games/magic/src/presentation/retro-stock-border.ts'
         );

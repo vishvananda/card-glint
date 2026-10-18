@@ -15,3 +15,33 @@ export async function createServer(options) {
   };
   return server;
 }
+
+/** Exercise stale identity rejection at the compiled-data boundary. Runtime
+ * payloads are immutable; corrupt a separate server before registration. */
+export async function createCorruptedDataServer(tableName) {
+  return createServer({
+    configFile: false,
+    optimizeDeps: { noDiscovery: true },
+    server: { middlewareMode: true, hmr: false },
+    plugins: [
+      {
+        name: 'invalid-calibration-identity-fixture',
+        enforce: 'pre',
+        transform(code, id) {
+          if (!id.endsWith('/games/magic/src/data/eager.ts')) return;
+          return code.replace(
+            "import { registerSet } from './registry.js';",
+            `
+          import {registerSet as install} from './registry.js';
+          function registerSet(data) {
+            for(const profile of Object.values(data.tables[${JSON.stringify(tableName)}] ?? {}))
+              profile.source = 'different source or geometry';
+            install(data);
+          }
+        `,
+          );
+        },
+      },
+    ],
+  });
+}

@@ -1,13 +1,14 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { createServer } from './magic-vite.mjs';
+import { createServer, createCorruptedDataServer } from './magic-vite.mjs';
 import { readNativeCompatibleSource } from './magic-native-source-guard.mjs';
 const server = await createServer({
   configFile: false,
   optimizeDeps: { noDiscovery: true },
   server: { middlewareMode: true, hmr: false },
 });
+const corrupted = await createCorruptedDataServer('LEGENDS_COLOR_PROFILES');
 try {
   const footer = JSON.parse(await readFile('games/magic/fixtures/accuracy/legends-footer.json'));
   assert.equal(footer.rows.length, 70);
@@ -347,19 +348,19 @@ try {
       assert.ok(value.after <= value.before + (key === 'contrastError' ? 0.5 : 0.25));
     // A calibration is invalidated by changed geometry/source identity. It must
     // not silently inherit a fit from the old Seventh/Legends plate.
-    const profile = LEGENDS_COLOR_PROFILES['leg/black/retro/' + group.asset.split('/').at(-1)];
-    const saved = profile.source;
-    try {
-      profile.source = 'different source or geometry';
-      assert.deepEqual(calibratedFrameMaterials(face), {});
-      assert.equal(retroStock(face), '#080808');
-    } finally {
-      profile.source = saved;
-    }
+    const { calibratedFrameMaterials: invalidMaterials } = await corrupted.ssrLoadModule(
+      '/games/magic/src/presentation/calibration-profiles.ts',
+    );
+    const { retroStock: invalidStock } = await corrupted.ssrLoadModule(
+      '/games/magic/src/presentation/retro-frame.ts',
+    );
+    assert.deepEqual(invalidMaterials(face), {});
+    assert.equal(invalidStock(face), '#080808');
   }
   console.log(
     'Legends frame sources, original/Oracle equivalence, measured color gates and source/geometry guards pass.',
   );
 } finally {
   await server.close();
+  await corrupted.close();
 }

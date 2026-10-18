@@ -32,6 +32,8 @@ try {
   await page.route('https://**/*', (route) => route.abort());
   await page.goto(server.resolvedUrls.local[0]);
   const results = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { paintFittedText } = await import('/games/magic/src/presentation/canvas-text.ts');
     const results = [];
     for (const scale of [0.75, 1, 1.5, 2])

@@ -26,6 +26,8 @@ try {
   await page.route('https://**/*', (route) => route.abort());
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/__saga`);
   const result = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { sagaRuleLayout } = await import('/games/magic/src/presentation/saga-rules.ts');
     const { paintSagaFace } = await import('/games/magic/src/presentation/saga-paint.ts');
     const { sagaAssets, SAGA_RECTS, SAGA_CHAPTER } = await import(

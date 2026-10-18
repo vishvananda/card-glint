@@ -12,6 +12,8 @@ try {
   const page = await browser.newPage();
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}`);
   const result = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { manaSymbolAsset } = await import('/games/magic/src/presentation/assets.ts');
     const { prepareManaNumerals } = await import('/games/magic/src/presentation/mana-numeral.ts');
     const { paintMana } = await import('/games/magic/src/presentation/canvas-text.ts');

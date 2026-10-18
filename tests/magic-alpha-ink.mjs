@@ -33,6 +33,8 @@ try {
   await page.route('https://**/*', (route) => route.abort());
   await page.goto(server.resolvedUrls.local[0]);
   const result = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const before = await import('/games/magic/src/presentation/__alpha-ink-before.ts');
     const after = await import('/games/magic/src/presentation/__alpha-ink-after.ts');
     let changed = 0,

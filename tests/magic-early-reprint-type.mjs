@@ -86,6 +86,8 @@ try {
   );
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/__title_test`);
   const results = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { earlyReprintType, paintEarlyReprintType } = await import(
       '/games/magic/src/presentation/early-reprint-type.ts'
     );

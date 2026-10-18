@@ -141,6 +141,8 @@ try {
   );
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/__footer_test`);
   const result = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { earlyReprintFooter, paintEarlyReprintFooter } = await import(
       '/games/magic/src/presentation/early-reprint-footer.ts'
     );

@@ -24,6 +24,33 @@ try {
     ],
     { cwd: temporary, stdio: 'pipe' },
   );
+  // A separate process proves the published slim entries work without an eager
+  // compatibility import having initialized their registries first.
+  execFileSync(
+    process.execPath,
+    [
+      '--input-type=module',
+      '-e',
+      `
+    import assert from 'node:assert/strict';
+    import { canvas, closeRaster, decodeCanvasImage, ellipsizedText } from 'card-glint/canvas';
+    import { loadMagicSet, loadedMagicSets, describeSetCalibration } from 'card-glint/magic/calibration';
+    import { prepareMagicCards, faceRects } from 'card-glint/magic/lazy';
+    import { resolveSetPrintingWording } from 'card-glint/magic/printing';
+    for (const fn of [canvas, closeRaster, decodeCanvasImage, ellipsizedText]) assert.equal(typeof fn, 'function');
+    assert.deepEqual(loadedMagicSets(), []);
+    await loadMagicSet('4ed');
+    assert.equal(describeSetCalibration('4ed').revision, 1);
+    const face = {name:'Probe',setCode:'lea',frameStyle:'retro',colors:['W']};
+    await prepareMagicCards([face]);
+    assert.ok(faceRects(face));
+    const original={typeLine:'Artifact',rulesText:''};
+    const resolved=await resolveSetPrintingWording('lea','f594b7aa-d44e-47c4-989b-565f881e25f1',{oracle:original,original});
+    assert.equal(resolved.wordings.original.typeLine,'Continuous Artifact');
+  `,
+    ],
+    { cwd: temporary, stdio: 'inherit' },
+  );
   // Import the published entry point in Node: the wording resolver needs no
   // browser globals, source checkout, provider access or accuracy fixtures.
   execFileSync(
@@ -73,6 +100,10 @@ try {
 import { createRenderer, createDisplayRaster, printSamplingVersion, IDENTITY, type CardDocument, type DisplayRaster } from 'card-glint';
 export { createDisplayRaster, printSamplingVersion, type DisplayRaster };
 import { showcase } from 'card-glint/showcase';
+export { canvas, closeRaster, decodeCanvasImage } from 'card-glint/canvas';
+export { loadMagicSet, prepareMagicCards } from 'card-glint/magic/lazy';
+export { resolveSetPrintingWording, resolveSetPrintingArtist } from 'card-glint/magic/printing';
+export { describeSetCalibration } from 'card-glint/magic/calibration';
 import { magic, opticalDocument, resolvePrintingWording, resolvePrintingArtist, type ResolvedPrintingArtist, withCardWording, resolvePrintingPreset, printingPresets, printingStyles, resolvePrintingStyle, type PrintingStyle, type PrintingSelection, fromScryfallCard, fromMtgjsonCard, type CardImportOptions, type MagicCard, type PrintingText } from 'card-glint/magic';
 import 'card-glint/magic/fonts.css';
 import { faceArtBounds, composeCardTexture, type CardTextureInput } from 'card-glint/magic/presentation';

@@ -37,6 +37,8 @@ try {
       await page.route('https://**/*', (r) => r.abort());
       await page.goto(server.resolvedUrls.local[0]);
       const rows = await page.evaluate(async () => {
+        await import('/games/magic/src/data/eager.ts');
+        await import('/games/magic/src/data/eager-wording.ts');
         const { paintPlanarFrame } = await import(
           '/games/magic/src/presentation/planar-frame-geometry.ts'
         );

@@ -153,6 +153,8 @@ try {
   page.on('pageerror', (e) => faults.push(String(e)));
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/`);
   const result = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { prepareEarlyHsb } = await import('/games/magic/src/presentation/early-hsb-material.ts');
     const { prepareManaNumerals } = await import('/games/magic/src/presentation/mana-numeral.ts');
     const { historicalManaAsset } = await import(

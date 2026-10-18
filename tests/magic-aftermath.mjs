@@ -13,6 +13,8 @@ try {
   await page.route('https://**/*', (route) => route.abort());
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}`);
   const result = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { paintAftermathFace, aftermathRules } = await import(
       '/games/magic/src/presentation/aftermath-paint.ts'
     );

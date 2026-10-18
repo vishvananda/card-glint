@@ -39,6 +39,8 @@ try {
   );
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/__material-order-test`);
   const results = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { createRenderer, IDENTITY } = await import('/dist/lib/browser.js'),
       { magic } = await import('/dist/lib/magic.js');
     const output = [],

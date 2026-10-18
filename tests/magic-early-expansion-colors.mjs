@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createServer } from './magic-vite.mjs';
+import { createServer, createCorruptedDataServer } from './magic-vite.mjs';
 import { assertExpansionSourceHash } from './magic-expansion-source-guard.mjs';
 
 const evidence = JSON.parse(
@@ -25,6 +25,7 @@ const server = await createServer({
   optimizeDeps: { noDiscovery: true },
   server: { middlewareMode: true, hmr: false },
 });
+const corrupted = await createCorruptedDataServer('EARLY_EXPANSION_COLORS');
 try {
   const { earlyExpansionFrame } = await server.ssrLoadModule(
     '/games/magic/src/presentation/early-expansion-frame.ts',
@@ -95,13 +96,10 @@ try {
       { setCode: '3ed' },
     ])
       assert.equal(earlyExpansionColors({ ...face, ...override }), undefined);
-    const source = profile.source;
-    try {
-      profile.source += '?unreviewed';
-      assert.equal(earlyExpansionColors(face), undefined, 'Stale source/geometry must fail shut');
-    } finally {
-      profile.source = source;
-    }
+    const { earlyExpansionColors: invalidColors } = await corrupted.ssrLoadModule(
+      '/games/magic/src/presentation/early-expansion-colors.ts',
+    );
+    assert.equal(invalidColors(face), undefined, 'Stale source/geometry must fail shut');
   }
   assert.equal(adopted, evidence.native.summary.selected + red.summary.selectedComponents);
   for (const face of [{ setCode: 'arn', name: 'Mountain', typeLine: 'Land' }])
@@ -111,4 +109,5 @@ try {
   );
 } finally {
   await server.close();
+  await corrupted.close();
 }

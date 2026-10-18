@@ -93,6 +93,8 @@ try {
   const page = await browser.newPage();
   await page.goto(server.resolvedUrls.local[0]);
   await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { layoutRules } = await import('/games/magic/src/presentation/rules-layout.ts');
     const { paintRulesLayout } = await import('/games/magic/src/presentation/rules-paint.ts');
     const { earlyExpansionTextLayout: fit } = await import(

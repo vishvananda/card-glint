@@ -106,6 +106,8 @@ try {
   const page = await browser.newPage();
   await page.goto(server.resolvedUrls.local[0]);
   const result = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { eighthBasicProfile } = await import(
       '/games/magic/src/presentation/eighth-basic-profile.ts'
     );

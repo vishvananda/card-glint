@@ -73,6 +73,8 @@ try {
   });
   await page.goto(server.resolvedUrls.local[0]);
   const result = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { styledSetSymbol } = await import('/games/magic/src/presentation/styled-set-symbols.ts');
     const { patchSymbolSvg, hasSymbolSvgPatch, symbolOutlineKey, outlinedSymbolBlob } =
       await import('/games/magic/src/presentation/symbol-svg-patches.ts');

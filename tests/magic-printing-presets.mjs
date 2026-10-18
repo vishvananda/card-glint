@@ -191,6 +191,8 @@ try {
   await page.route('https://**/*', (r) => r.abort());
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}`);
   const result = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { paintPrintingElement } = await import(
       '/games/magic/src/presentation/printing-elements.ts'
     );

@@ -12,6 +12,8 @@ try {
   const page = await browser.newPage();
   await page.goto(server.resolvedUrls.local[0]);
   const result = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { paintIllustration } = await import(
       '/games/magic/src/presentation/illustration-paint.ts'
     );

@@ -161,7 +161,7 @@ try {
     new URL('review-metadata.ts', output),
     `// Identity metadata only; full notes remain in fixtures/accuracy/printing-review-catalog.json.\nexport const printingCorrectionRevision=${JSON.stringify(reviews.revision)};\nexport const artistCreditRevision=${JSON.stringify(reviews.artistRevision)};\nexport const reviewSources=${JSON.stringify(sources)};\n`,
   );
-  const codes = [...shards.keys()].sort();
+  const codes = [...groups.calibration.keys()].sort();
   await write(
     new URL('scopes.ts', output),
     `// Set ownership for detecting unprepared synchronous queries.\nexport const availableSets = ${JSON.stringify(codes)};\nexport const profileSets: readonly string[] = ${JSON.stringify(
