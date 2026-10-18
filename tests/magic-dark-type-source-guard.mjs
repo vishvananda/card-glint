@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preDarkSymbolSource } from './magic-dark-symbol-source-guard.mjs';
 
 let verified;
 export function darkTypographyProof() {
@@ -39,7 +40,7 @@ export function darkTypographyProof() {
     for (const row of evidence.controls.rows) assert.equal(row.before, row.sha256);
     for (const [file, expected] of Object.entries(extension.dependencies))
       assert.equal(
-        hash(await readFile(file)),
+        hash(await preDarkSymbolSource(file)),
         expected,
         'Unreviewed Dark typography dependency: ' + file,
       );
@@ -50,7 +51,7 @@ export function darkTypographyProof() {
 
 /** Retain the measured 0.4.17 sources for prior frame and type receipts. */
 export async function preDarkTypographySource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preDarkSymbolSource(file),
     extension = await darkTypographyProof(),
     change = extension.files[file];
   if (!change) return bytes;

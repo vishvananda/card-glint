@@ -40,57 +40,5 @@
       "sourceReadsDuringEffects": 0
     }
   ],
-  "errors": [],
-  "base": "5c0d7d788ae83396138d9639badc9d3cbc686ffc",
-  "checks": [
-    "npm run check",
-    "npm run build",
-    "npm run test:package",
-    "npm run test:browser",
-    "npm run test:showcase",
-    "npm run test:cardstock",
-    "npm run test:set-symbol-masks",
-    "node tests/magic-art-placement.mjs",
-    "node tests/magic-material-cache.mjs",
-    "node tests/magic-printing-style.mjs",
-    "node tests/magic-printing-presets.mjs"
-  ],
-  "mask_preparation": {
-    "concurrent_source_reads": 1,
-    "warm_source_reads": 0,
-    "alpha_override_source_reads": 0,
-    "derived_budget_bytes": 4194304,
-    "max_dimension": 512,
-    "source_bitmap_mutated": false
-  },
-  "order": [
-    "Original illustration/symbol sources prepare the etch/emboss mask independently of instance effects",
-    "Print dots alter the printed color before foil shading",
-    "Foil and embossing sample the unchanged mask; printed color can affect their visibility",
-    "Cardstock modulates the finished reflection",
-    "Wear and protected/over-finish content retain their normal ordering"
-  ],
-  "real_devices_tested": [],
-  "common_symbol_policy": {
-    "rarities": [
-      "common",
-      "uncommon",
-      "rare",
-      "mythic",
-      "special",
-      "bonus"
-    ],
-    "explicit_styled_overrides": "Use the selected symbol set\u2019s common art; printed rarity colors remain unchanged.",
-    "custom_urls": "Preserved",
-    "stamp_cache": "Shared by explicit styled rarity variants of the same symbol.",
-    "validation": [
-      "npm run check",
-      "npm run build",
-      "npm run test:package",
-      "npm run test:browser",
-      "npm run test:showcase",
-      "npm run test:set-symbol-masks"
-    ]
-  },
-  "releaseValidationVersion": "0.4.1"
+  "errors": []
 }

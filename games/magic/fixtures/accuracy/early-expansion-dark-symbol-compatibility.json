@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "78e5d19e52809695a1f22c15d7e2d4fa0159f412",
+  "evidenceHash": "266196d37fcedbda1bf7167120d773742b028bccd741c5cba6d016d01a514d5f",
+  "dependencies": {
+    "games/magic/src/presentation/symbol-svg-patches.ts": "18039a2abad0568bb0799b3d8599203ac122b7bf5493b1a556eba54041881c8e",
+    "games/magic/src/presentation/historical-symbol-sources.ts": "93962770ff7ccd24637e57ee72feb60438f6a2926919bf530fb470e687e0b22b",
+    "games/magic/src/presentation/styled-symbol-placement.ts": "e07ed57f46718e126387f54b31c81619c219e6c07a1e1164c377802db2aef78a",
+    "games/magic/src/presentation/retro-paint.ts": "3fd5ff6682417894b4608da6ff356062845faeb1ba52d74735d05c09a4aedbe3",
+    "games/magic/symbol-svg-patches.json": "27135ee2e99861d65e19abad8b10df2c16926eec840d883bed7067f7c7223c7f",
+    "games/magic/src/presentation/canvas-assets.ts": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+    "games/magic/src/presentation/canvas-face.ts": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+    "games/magic/src/presentation/retro-frame.ts": "82f4e142a764903e8d1f2dfe5a805096d5fe49db40b2fdfea49e255d3620301c",
+    "games/magic/src/presentation/retro-symbol-geometry.ts": "9abf1fade82e4c5a024e1250c8455a1470afda9ff5eb39b0cf66eeb88a2934c4",
+    "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+    "games/magic/src/presentation/printing-elements.ts": "db6bb4e27a9c040a62baa3e2ba9d1c4c8cc569dc6d30ae9d1072726a670d10ab",
+    "games/magic/src/presentation/styled-set-symbols.ts": "9b4b815c12d437d4b5cee9ac2e118712f96d66030ae70388eb7388a9fa32c1af",
+    "games/magic/src/presentation/set-symbols.ts": "f24652b1867e37c9343e4b27218e5f359e533c5b638a9229c372ab44614d831a",
+    "games/magic/src/presentation/profile.ts": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+    "games/magic/src/presentation/face-layout.ts": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+    "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3"
+  },
+  "files": {
+    "games/magic/src/presentation/symbol-svg-patches.ts": {
+      "before": "de2ff1928e433393cf610b64d1ce907c0eb1cffec21f9997834bcee3a430f597",
+      "after": "18039a2abad0568bb0799b3d8599203ac122b7bf5493b1a556eba54041881c8e",
+      "reverseEdits": [
+        {
+          "start": 92,
+          "count": 24,
+          "lines": []
+        },
+        {
+          "start": 54,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 46,
+          "count": 6,
+          "lines": [
+            "    // These pinned vectors separately paint all white interior details. The\n",
+            "    // first silhouette is only the later-printing exterior rim, so removing it\n",
+            "    // preserves the column's opaque white gaps and black outside contour.\n",
+            "    if (paths.length !== 7 || !/fill:\\s*#ffffff\\b/i.test(paths[0]!.getAttribute('style') ?? ''))\n"
+          ]
+        },
+        {
+          "start": 4,
+          "count": 8,
+          "lines": [
+            "const sources: Readonly<Record<string, { sha256: string; recipe: string }>> = patches.sources;\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/historical-symbol-sources.ts": {
+      "before": "9114a53f0ebc5777c42b6ab8213f5e55135189c2ff1cff944c4e76c4598b15ee",
+      "after": "93962770ff7ccd24637e57ee72feb60438f6a2926919bf530fb470e687e0b22b",
+      "reverseEdits": [
+        {
+          "start": 151,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 81,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 74,
+          "count": 3,
+          "lines": [
+            "          const sources = { original, backing: backing ? URL.createObjectURL(backing) : undefined };\n"
+          ]
+        },
+        {
+          "start": 72,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 68,
+          "count": 2,
+          "lines": ["          backing = await historicalBackingBlob(url, blob);\n"]
+        },
+        {
+          "start": 38,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 16,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 1,
+          "count": 6,
+          "lines": [
+            "import { hasSymbolSvgPatch, patchSymbolSvg } from './symbol-svg-patches.js';\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/styled-symbol-placement.ts": {
+      "before": "3a3a2cfc50c0c057a6b15e92cd4f32fa3c7d558643c05e8a8a11d70f459baf63",
+      "after": "e07ed57f46718e126387f54b31c81619c219e6c07a1e1164c377802db2aef78a",
+      "reverseEdits": [
+        {
+          "start": 16,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "6540e2090c76d1ec8fd8d95d6ab5d69e8dfc1d5c03c4fed9da2cc3c5bf267f5b",
+      "after": "3fd5ff6682417894b4608da6ff356062845faeb1ba52d74735d05c09a4aedbe3",
+      "reverseEdits": [
+        {
+          "start": 282,
+          "count": 10,
+          "lines": ["          c.drawImage(icon, ...originalBounds);\n"]
+        },
+        {
+          "start": 26,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/symbol-svg-patches.json": {
+      "before": "5a2f9b0cb6909fd5dc97a67108ad849c5456e4652f2c76f24caaa07bb5b0ca1a",
+      "after": "27135ee2e99861d65e19abad8b10df2c16926eec840d883bed7067f7c7223c7f",
+      "reverseEdits": [
+        {
+          "start": 5,
+          "count": 9,
+          "lines": ["      \"recipe\": \"remove-outer-white\"\n"]
+        },
+        {
+          "start": 1,
+          "count": 1,
+          "lines": ["  \"revision\": \"symbol-svg-v5\",\n"]
+        }
+      ]
+    }
+  }
+}

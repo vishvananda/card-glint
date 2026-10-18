@@ -24,6 +24,8 @@ import { paintRetroGoldBevel } from './retro-gold-bevel.js';
 import { retroSymbolGeometry } from './retro-symbol-geometry.js';
 import { retroSymbolPalette } from './retro-symbol-material.js';
 import { historicalBackingKey } from './historical-symbol-backing.js';
+import { symbolOutlineKey } from './symbol-svg-patches.js';
+import { resolveCardProfile } from './profile.js';
 import { usesMonochromeSetSymbol, historicalSetOutline } from './historical-set-symbol.js';
 import { retroBasicPrinting } from './retro-basic.js';
 import { isRevisedLand } from './revised-land-frame.js';
@@ -278,7 +280,16 @@ export function paintRetroFace(
           c.shadowColor = 'transparent';
           // Complete styled assets already contain opaque holes, rims and gradients.
           // Keyrune viewport crops and recoloring must never touch these vectors.
-          c.drawImage(icon, ...originalBounds);
+          // The Dark's black paper has a faint gray contour. This complete
+          // variant is prepared with the source, then shares the image cache.
+          const outlined =
+            !face.setSymbol &&
+            face.setCode?.toLowerCase() === 'drk' &&
+            retroBorder(face) === 'black' &&
+            resolveCardProfile(face).boxes === 'B'
+              ? images.get(symbolOutlineKey(symbolUrl))
+              : undefined;
+          c.drawImage(outlined ?? icon, ...originalBounds);
           c.restore();
         } else if (palette || details || usesMonochromeSetSymbol(face.setCode))
           paintOutlinedRetroSet(

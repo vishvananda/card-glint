@@ -19,6 +19,7 @@ import {
 import { nativeHostCases } from './magic-native-host-cases.mjs';
 import { assertCacheOnlySourceBytes } from './magic-source-guard.mjs';
 import { darkTypographyProof } from './magic-dark-type-source-guard.mjs';
+import { darkSymbolProof, preDarkSymbolSource } from './magic-dark-symbol-source-guard.mjs';
 import { darkCalibrationProof } from './magic-dark-source-guard.mjs';
 import { preStatsCalibrationSource, statsCalibrationProof } from './magic-stats-source-guard.mjs';
 
@@ -33,13 +34,20 @@ async function sourceFiles(directory) {
     .sort();
 }
 
-async function packMetadata(directory) {
+async function packMetadata(directory, beforeSymbols = false) {
   const files = (await readdir(directory, { withFileTypes: true }))
     .filter((entry) => entry.isFile() && /\.(?:json|css)$/.test(entry.name))
     .map((entry) => entry.name)
     .sort();
   return Promise.all(
-    files.map(async (file) => [file, hash(await readFile(path.join(directory, file)))]),
+    files.map(async (file) => [
+      file,
+      hash(
+        beforeSymbols
+          ? await preDarkSymbolSource(path.relative(root, path.join(directory, file)))
+          : await readFile(path.join(directory, file)),
+      ),
+    ]),
   );
 }
 
@@ -48,6 +56,17 @@ async function identity() {
   return {
     reference: nativeReference,
     sourceManifest: hash(await readFile(sourceManifestFile)),
+    darkSymbolRevision: hash(
+      Buffer.concat(
+        await Promise.all(
+          [
+            'tests/magic-dark-symbol-source-guard.mjs',
+            'games/magic/fixtures/accuracy/early-expansion-dark-symbols.json',
+            'games/magic/fixtures/accuracy/early-expansion-dark-symbol-compatibility.json',
+          ].map((file) => readFile(path.join(root, file))),
+        ),
+      ),
+    ),
     darkTypographyRevision: hash(
       Buffer.concat(
         await Promise.all(
@@ -136,7 +155,8 @@ function assertReceipt(receipt, expected) {
 async function verify() {
   const stats = await statsCalibrationProof(),
     dark = await darkCalibrationProof(),
-    typography = await darkTypographyProof();
+    typography = await darkTypographyProof(),
+    symbols = await darkSymbolProof();
   assert.equal(nativeHostSources.schema, 1);
   assert.equal(nativeHostSources.reference, nativeReference);
   const rulesFile = 'games/magic/src/presentation/rules-paint.ts';
@@ -185,7 +205,7 @@ async function verify() {
     } else assert.equal(after, before, 'Unrecorded native source change: ' + file);
   }
   assert.deepEqual(
-    await packMetadata(path.join(currentRoot, 'games/magic')),
+    await packMetadata(path.join(currentRoot, 'games/magic'), true),
     await packMetadata(path.join(referenceRoot, 'games/magic')),
     'Native runtime metadata differs from the pinned reference',
   );
@@ -203,7 +223,8 @@ async function verify() {
           if (
             Object.hasOwn(stats.files, relative) ||
             Object.hasOwn(dark.files, relative) ||
-            Object.hasOwn(typography.files, relative)
+            Object.hasOwn(typography.files, relative) ||
+            Object.hasOwn(symbols.files, relative)
           )
             return (await preStatsCalibrationSource(relative)).toString();
         },

@@ -14,6 +14,8 @@ const correctedSourceProfiles: Readonly<Record<string, Bounds>> = {
   // Black outer contour after the checksum-guarded LEG SVG repair.
   'leg/retro/black': [3.25, 1.5, 1.05, 1.125],
   '6ed/retro/white': [2, -2, 1.08, 1.08],
+  // Filled crescent after rim repair; independent width/height on fixed poses.
+  'drk/retro/black': [2.5, -1.25, 1.146, 1.203],
 };
 // Canonical 488 × 680 pixels. Shared set profiles after frame-only scan
 // registration; axis scales apply to visible SVG bounds, not a square viewport.

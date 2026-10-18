@@ -2,7 +2,14 @@ import patches from '../../symbol-svg-patches.json' with { type: 'json' };
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 
 const ROOT = `${CONJURER_ROOT}/img/setSymbols/official/`;
-const sources: Readonly<Record<string, { sha256: string; recipe: string }>> = patches.sources;
+interface SymbolPatch {
+  sha256: string;
+  recipe: string;
+  pathCount?: number;
+  fill?: string;
+  outline?: { stroke: string; width: number };
+}
+const sources: Readonly<Record<string, SymbolPatch>> = patches.sources;
 
 function policy(url: string) {
   if (!url.startsWith(ROOT) || !url.endsWith('.svg')) return undefined;
@@ -37,12 +44,15 @@ export async function patchSymbolSvg(url: string, blob: Blob): Promise<Blob> {
     for (const [name, value] of Object.entries(attributes)) element.setAttribute(name, value);
   };
   if (patch.recipe === 'remove-outer-white') {
-    // These pinned vectors separately paint all white interior details. The
-    // first silhouette is only the later-printing exterior rim, so removing it
-    // preserves the column's opaque white gaps and black outside contour.
-    if (paths.length !== 7 || !/fill:\s*#ffffff\b/i.test(paths[0]!.getAttribute('style') ?? ''))
+    // The first silhouette is the oversized exterior rim. LEG's separate
+    // white interior details remain intact; DRK has only a filled crescent.
+    if (
+      paths.length !== patch.pathCount ||
+      !/fill:\s*#ffffff\b/i.test(paths[0]!.getAttribute('style') ?? '')
+    )
       throw Error('Unexpected monochrome symbol topology.');
     paths[0]!.remove();
+    if (patch.fill) paths[1]!.setAttribute('fill', patch.fill);
   } else if (patch.recipe === 'white-outer-rim') {
     if (paths.length !== 3) throw Error('Unexpected rimmed symbol topology.');
     paths[0]!.setAttribute('fill', '#fff');
@@ -78,5 +88,29 @@ export async function patchSymbolSvg(url: string, blob: Blob): Promise<Blob> {
     }
   } else throw Error(`Unknown symbol SVG patch recipe: ${patch.recipe}`);
   root.setAttribute('data-card-glint-patch', patches.revision);
+  return new Blob([new XMLSerializer().serializeToString(doc)], { type: 'image/svg+xml' });
+}
+
+/** Prepared alternative for dark paper, never a second network request. */
+export const symbolOutlineKey = (url: string) => `${url}#printed-outline-v1`;
+
+export async function outlinedSymbolBlob(url: string, patched: Blob): Promise<Blob | null> {
+  const outline = policy(url)?.outline;
+  if (!outline) return null;
+  const doc = new DOMParser().parseFromString(await patched.text(), 'image/svg+xml'),
+    root = doc.documentElement,
+    paths = [...root.querySelectorAll('path')];
+  if (
+    root.localName !== 'svg' ||
+    doc.querySelector('parsererror') ||
+    root.getAttribute('data-card-glint-patch') !== patches.revision ||
+    paths.length !== 1
+  )
+    throw Error(`Unexpected prepared symbol outline: ${url}`);
+  const path = paths[0]!;
+  path.setAttribute('stroke', outline.stroke);
+  path.setAttribute('stroke-width', String(outline.width));
+  path.setAttribute('stroke-linejoin', 'round');
+  path.setAttribute('paint-order', 'stroke fill');
   return new Blob([new XMLSerializer().serializeToString(doc)], { type: 'image/svg+xml' });
 }

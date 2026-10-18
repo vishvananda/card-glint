@@ -7,6 +7,8 @@ import { chromium } from 'playwright';
 // Original geometry exercises material polarity and coordinate transforms.
 // Replace only checksum expectations in this test server; no third-party bytes.
 const synthetic = {
+  crescent:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path style="fill:#ffffff" d="M0 0H100V100H0Z"/><path d="M10 10H90V90H10Z"/></svg>',
   monochrome:
     '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path style="fill:#ffffff" d="M0 0H100V100H0Z"/><path d="M10 10H90V90H10Z"/><path fill="#fff" d="M20 20H25V80H20Z"/><path fill="#fff" d="M30 20H35V80H30Z"/><path fill="#fff" d="M40 20H45V80H40Z"/><path fill="#fff" d="M50 20H55V80H50Z"/><path fill="#fff" d="M60 20H65V80H60Z"/></svg>',
   m15: '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="160"><path d="M0 0H300V160H0Z"/><linearGradient id="g"><stop stop-color="#4488aa"/><stop offset="1" stop-color="#ddeeff"/></linearGradient><path fill="url(#g)" d="M30 30H50V90H30Z"/><path fill="url(#g)" d="M60 30H80V90H60Z"/><path fill="url(#g)" d="M90 30H110V90H90Z"/><path fill="url(#g)" d="M120 30H140V90H120Z"/><path fill="url(#g)" d="M150 30H170V90H150Z"/></svg>',
@@ -20,7 +22,9 @@ for (const rule of Object.values(manifest.sources))
     .update(
       synthetic[
         rule.recipe === 'remove-outer-white'
-          ? 'monochrome'
+          ? rule.pathCount === 2
+            ? 'crescent'
+            : 'monochrome'
           : rule.recipe === 'm15'
             ? 'm15'
             : rule.recipe === 'white-outer-rim'
@@ -57,20 +61,21 @@ try {
       body: synthetic[
         url.includes('/leg-')
           ? 'monochrome'
-          : url.includes('/m15-')
-            ? 'm15'
-            : /\/[67]ed-/.test(url)
-              ? 'rim'
-              : 'numeric'
+          : url.includes('/drk-')
+            ? 'crescent'
+            : url.includes('/m15-')
+              ? 'm15'
+              : /\/[67]ed-/.test(url)
+                ? 'rim'
+                : 'numeric'
       ],
     });
   });
   await page.goto(server.resolvedUrls.local[0]);
   const result = await page.evaluate(async () => {
     const { styledSetSymbol } = await import('/games/magic/src/presentation/styled-set-symbols.ts');
-    const { patchSymbolSvg, hasSymbolSvgPatch } = await import(
-      '/games/magic/src/presentation/symbol-svg-patches.ts'
-    );
+    const { patchSymbolSvg, hasSymbolSvgPatch, symbolOutlineKey, outlinedSymbolBlob } =
+      await import('/games/magic/src/presentation/symbol-svg-patches.ts');
     const { resolveCanvasSources, clearHistoricalSymbolSources } = await import(
       '/games/magic/src/presentation/historical-symbol-sources.ts'
     );
@@ -85,21 +90,25 @@ try {
     const urls = ['m15', '8ed', '9ed', '7ed', '6ed'].map((code) => styledSetSymbol(code, 'rare'));
     urls.push(...['6ed', '7ed', '8ed', '9ed'].map((code) => styledSetSymbol(code, 'uncommon')));
     urls.push(styledSetSymbol('leg', 'rare'));
+    urls.push(styledSetSymbol('drk', 'common'));
     const parsed = [];
     for (const url of urls) {
       const sources = await resolveCanvasSources([url, url], signal);
-      check(sources.urls.length === 1, 'Patched symbol created an unnecessary backing');
+      check(
+        sources.urls.length === (url.includes('/drk-') ? 2 : 1),
+        'Patched symbol has the wrong prepared variants',
+      );
       const encoded = await (await fetch(sources.aliases.get(url))).text(),
         doc = new DOMParser().parseFromString(encoded, 'image/svg+xml');
       parsed.push(doc);
       check(
-        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v5',
+        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v6',
         'Patch revision missing',
       );
       sources.dispose();
     }
     check(
-      parsed.at(-1).querySelectorAll('path').length === 6,
+      parsed.at(-2).querySelectorAll('path').length === 6,
       'Monochrome rim removal changed internal details',
     );
     const m15 = parsed[0].querySelectorAll('path');
@@ -149,6 +158,33 @@ try {
         return p;
       };
       const pixelsCache = pixels(other);
+      if (url.includes('/drk-')) {
+        const outlineUrl = sources.aliases.get(symbolOutlineKey(url)),
+          outlined = lease.value.get(outlineUrl),
+          otherOutline = direct.images.get(symbolOutlineKey(url)),
+          plain = pixels(other, 100, 100),
+          rimmed = pixels(outlined, 100, 100),
+          at = (p, x, y) => p.slice((y * 100 + x) * 4, (y * 100 + x) * 4 + 4);
+        check(at(plain, 5, 50)[3] === 0, 'DRK retained the oversized white silhouette');
+        check(at(plain, 50, 50).join(',') === '34,28,19,255', 'DRK lost its shared filled ink');
+        check(at(rimmed, 5, 50).join(',') === '80,80,80,255', 'Missing faint gray contour');
+        check(
+          at(rimmed, 50, 50).join(',') === at(plain, 50, 50).join(','),
+          'Outlined variant changed the interior ink',
+        );
+        const directPixels = pixels(otherOutline);
+        check(
+          pixels(outlined).every((v, i) => v === directPixels[i]),
+          'Public/direct outlined source pixels differ',
+        );
+        let rejected = false;
+        try {
+          await outlinedSymbolBlob(url, new Blob(['<svg/>']));
+        } catch {
+          rejected = true;
+        }
+        check(rejected, 'Unprepared outline input was accepted');
+      }
       if (url.includes('/leg-')) {
         const data = pixels(other, 100, 100),
           at = (x, y) => data.slice((y * 100 + x) * 4, (y * 100 + x) * 4 + 4);
@@ -195,7 +231,20 @@ try {
       lease.release();
       sources.dispose();
     }
+    const outlineLease = await resolveCanvasSources([urls.at(-1)], signal);
     clearHistoricalSymbolSources();
+    for (const url of outlineLease.urls)
+      check((await fetch(url)).ok, 'Active outline source revoked before decode completed');
+    outlineLease.dispose();
+    for (const url of outlineLease.urls) {
+      let revoked = false;
+      try {
+        await fetch(url);
+      } catch {
+        revoked = true;
+      }
+      check(revoked, 'Outline source survived teardown');
+    }
     const custom = 'https://custom.invalid/m15-r.svg',
       blob = new Blob(['custom']);
     check(
@@ -228,7 +277,7 @@ try {
     host.dispose();
     return { urls };
   });
-  assert.equal(result.urls.length, 10);
+  assert.equal(result.urls.length, 11);
   for (const [i, url] of result.urls.entries())
     assert.equal(requests.get(url), i === 0 ? 2 : 1, 'Preparation fetched a warm source again');
   console.log('SVG patch materials/cache:', result);

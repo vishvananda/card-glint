@@ -521,3 +521,18 @@ Shadows has a small title-contrast regression. This batch targets
 0.4.18; type/body layout, the crescent symbol's pale rim, measured mana transfer
 and complete-set certification remain open. These are local development
 diagnostics; hosted charts have not adopted them.
+
+The [Dark symbol fit](fixtures/accuracy/early-expansion-dark-symbols.json)
+measures the crescent on frozen scan-only poses, after comparing the Conjurer
+and Keyrune contours. Independent width/height and placement replace the former
+bulk profile. The oversized white source backing is removed; shared filled ink
+and a faint contour for black paper are prepared once from the pinned SVG.
+All 122 native prototypes match, with exact pixels outside the symbol region,
+194 other corpus faces and 84 unrelated controls unchanged. On the reused
+validation group, material-balanced symbol edge overlap improves from 0.5433
+to 0.8588 and filled-area similarity from 0.4519 to 0.8068. 119/120
+geometry-qualified cards improve both crops on edge/fill/contrast. Water Wurm
+is retained as a regression, Gaea's Touch 77† as a shifted-ink diagnostic, and
+Ball Lightning as unscored. Black stroke-width mismatch and frame-texture color
+remain review items. The ledger retains partial status; these are regional
+0.4.19 measurements, not complete-set certification or hosted scores.

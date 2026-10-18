@@ -1,5 +1,10 @@
 import { fetchCardAsset } from '../fetch.js';
-import { hasSymbolSvgPatch, patchSymbolSvg } from './symbol-svg-patches.js';
+import {
+  hasSymbolSvgPatch,
+  patchSymbolSvg,
+  outlinedSymbolBlob,
+  symbolOutlineKey,
+} from './symbol-svg-patches.js';
 import {
   hasHistoricalBacking,
   historicalBackingBlob,
@@ -9,6 +14,7 @@ import {
 interface SymbolSources {
   original: string;
   backing?: string;
+  outlined?: string;
 }
 interface Entry {
   promise: Promise<SymbolSources>;
@@ -30,6 +36,7 @@ function retire(entry: Entry) {
   }
   URL.revokeObjectURL(entry.sources.original);
   if (entry.sources.backing) URL.revokeObjectURL(entry.sources.backing);
+  if (entry.sources.outlined) URL.revokeObjectURL(entry.sources.outlined);
   entry.sources = undefined;
 }
 
@@ -59,15 +66,21 @@ async function acquire(url: string, signal: AbortSignal) {
         });
         if (!response.ok) throw Error(`Symbol source ${response.status}: ${url}`);
         const blob = await patchSymbolSvg(url, await response.blob()),
-          backing = await historicalBackingBlob(url, blob);
+          backing = await historicalBackingBlob(url, blob),
+          outlined = await outlinedSymbolBlob(url, blob);
         fresh.controller.signal.throwIfAborted();
         const original = URL.createObjectURL(blob);
+        let backingUrl: string | undefined, outlinedUrl: string | undefined;
         try {
-          const sources = { original, backing: backing ? URL.createObjectURL(backing) : undefined };
+          backingUrl = backing ? URL.createObjectURL(backing) : undefined;
+          outlinedUrl = outlined ? URL.createObjectURL(outlined) : undefined;
+          const sources = { original, backing: backingUrl, outlined: outlinedUrl };
           fresh.sources = sources;
           return sources;
         } catch (error) {
           URL.revokeObjectURL(original);
+          if (backingUrl) URL.revokeObjectURL(backingUrl);
+          if (outlinedUrl) URL.revokeObjectURL(outlinedUrl);
           throw error;
         }
       }),
@@ -136,6 +149,7 @@ export async function resolveCanvasSources(
       held.push(lease);
       aliases.set(url, lease.sources.original);
       if (lease.sources.backing) aliases.set(historicalBackingKey(url), lease.sources.backing);
+      if (lease.sources.outlined) aliases.set(symbolOutlineKey(url), lease.sources.outlined);
     }),
   );
   const failure = results.find((result) => result.status === 'rejected');
