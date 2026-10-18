@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { preDarkWordingSource } from './magic-dark-wording-source-guard.mjs';
-import { preBorderSource } from './magic-border-source-guard.mjs';
 
 const extension = JSON.parse(
   await readFile(
@@ -27,7 +26,7 @@ export function alphaInkProof() {
     for (const row of evidence.native.controls) assert.equal(row.before, row.after);
     for (const [file, expected] of Object.entries(extension.dependencies))
       assert.equal(
-        hash(await preBorderSource(file)),
+        hash(await readFile(file)),
         expected,
         'Unreviewed Alpha ink dependency: ' + file,
       );

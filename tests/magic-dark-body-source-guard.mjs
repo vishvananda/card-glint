@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
-import { preBorderSource } from './magic-border-source-guard.mjs';
 
 const extension = JSON.parse(
   await readFile(
@@ -49,11 +48,7 @@ export function darkBodyProof() {
       assert.equal(row.rawHashes.after, native.after);
     }
     for (const [file, expected] of Object.entries(extension.dependencies))
-      assert.equal(
-        hash(await preBorderSource(file)),
-        expected,
-        'Unreviewed body dependency: ' + file,
-      );
+      assert.equal(hash(await readFile(file)), expected, 'Unreviewed body dependency: ' + file);
     const annotations = JSON.parse(await readFile(extension.wordingSource));
     for (const review of evidence.wording) {
       const current = annotations.cards[review.id];
@@ -68,7 +63,7 @@ export function darkBodyProof() {
 
 /** Reconstruct the preceding renderer without changing historical receipts. */
 export async function preDarkBodySource(file) {
-  const bytes = await preBorderSource(file),
+  const bytes = await readFile(file),
     change = extension.files[file];
   if (!change) return bytes;
   await darkBodyProof();

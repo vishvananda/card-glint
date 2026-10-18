@@ -64,9 +64,6 @@ export interface RenderedCardInput extends CardProfileInput {
   borderColor?: CardBorderColor;
   /** Optional minimum black-border ink level in sRGB, 0..0.2. Omitted preserves source black. */
   blackBorderLift?: number;
-  /** Opaque stock overlay inward from all four outer edges, in card widths, 0..0.2.
-   * Omitted or 0 preserves native pixels. Does not resize content or remove baked-in borders. */
-  borderThickness?: number;
   /** Physical printing layout, independent of rules identity. */
   layout?: string;
   faces?: RenderedCardInput[];

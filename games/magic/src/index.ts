@@ -24,7 +24,6 @@ import { artworkGeometry } from './presentation/art-placement.js';
 import { splitPanels, panelRect } from './presentation/split-layout.js';
 import type { RenderedCardInput } from './presentation/face-layout.js';
 import { faceCornerRadius } from './presentation/face-silhouette.js';
-import { validateBorderThickness } from './presentation/border-thickness.js';
 import { isPrepared, PREPARE_SPELL_RECTS } from './presentation/prepare-frame.js';
 import { securityStampHologram } from './presentation/security-stamp-hologram.js';
 export type { RenderedCardInput as MtgCard, SecurityStamp } from './presentation/face-layout.js';
@@ -72,7 +71,6 @@ export const mtg: GamePack<RenderedCardInput> = {
     setSymbolMaskCache.clear();
   },
   describe(value: RenderedCardInput, tier: Tier): FaceRecipe {
-    validateBorderThickness(value);
     const face = structuredClone({
       ...value,
       setCode: value.setCode ?? 'GLINT',
