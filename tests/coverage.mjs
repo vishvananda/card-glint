@@ -62,6 +62,7 @@ try {
         'cold',
         'opal',
         'prismatic',
+        'holofoil',
         'gloss',
       ]) {
         const actual = await image(finish);

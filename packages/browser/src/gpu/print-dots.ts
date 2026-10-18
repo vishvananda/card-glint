@@ -11,8 +11,8 @@ float plateDot(vec2 cell,vec2 id,float radius,bool holes,float channel,float aa,
  if(printDotsInfo.z>0.){
   float a=plateNoise(id,channel),b=plateNoise(id,channel+1.),c=plateNoise(id,channel+2.);
   // Stable impression irregularity. Neighboring dots stay on their plate's
-  // screen, with small registration shifts, ellipticity and uneven ink gain.
-  cell-=(vec2(a,b)-.5)*.24*printDotsInfo.z;
+  // screen, with subpixel registration shifts, ellipticity and uneven ink gain.
+  cell-=(vec2(a,b)-.5)*.5*printDotsInfo.z;
   cell*=vec2(1.+(b-.5)*.3*printDotsInfo.z,1.-(b-.5)*.3*printDotsInfo.z);
   radius*=1.+(c-.5)*.36*printDotsInfo.z;
   radius*=holes?1.-.12*printDotsInfo.z:1.+.12*printDotsInfo.z;
@@ -26,7 +26,7 @@ float inkScreen(vec2 p,float ink,vec2 axis,float channel){
  vec2 point=q+(holes?.5:0.),id=floor(point),cell=fract(point)-.5;
  float radius=sqrt(min(ink,1.-ink)/3.14159265),aa=max(.015,printFootprint*.4);
  float variation=printDotsInfo.z;
- float reach=(radius*(1.+.18*variation)*(holes?1.-.12*variation:1.+.12*variation)+aa)/(1.-.15*variation)+.12*variation;
+ float reach=(radius*(1.+.18*variation)*(holes?1.-.12*variation:1.+.12*variation)+aa)/(1.-.15*variation)+.25*variation;
  float dotInk=plateDot(cell,id,radius,holes,channel,aa,reach);
  // Varied dots can cross cell borders. Union neighboring impressions instead
  // of clipping each dot to its square cell, including reversed (hole) screens.

@@ -1,0 +1,210 @@
+{
+  "schema": 1,
+  "reference": "e004a6da7044bf9c950022a64b964d49e93bc709",
+  "scope": "Additive artwork foil mask API and artwork-only preparation skip. Historical calibration bytes remain pinned; native differential checks also exercise the changed composition path.",
+  "files": {
+    "games/magic/src/index.ts": {
+      "before": "7c8d28425fb6f5ea43f06d519a8ea00ccd87ab9d2fd26539396425549795b64a",
+      "after": "92e95939e9e71f1744155842796eccbadcbd66ff45e3d815629ae21f5cd0423c",
+      "reverseEdits": [
+        {
+          "start": 243,
+          "count": 94,
+          "lines": []
+        },
+        {
+          "start": 22,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 7,
+          "count": 1,
+          "lines": []
+        }
+      ],
+      "forwardEdits": [
+        {
+          "start": 241,
+          "count": 0,
+          "lines": [
+            "/** Project an artwork-sized grayscale foil mask with the exact illustration fit.\n",
+            " * White is foil, black/transparent is uncoated. Invert for protection mattes.\n",
+            " * The returned alpha raster can be used by any public finishCoverage mask.\n",
+            " * Pixel conversion happens during preparation, never while the card moves. */\n",
+            "export function artworkFoilMask(\n",
+            "  face: RenderedCardInput,\n",
+            "  source: string,\n",
+            "  { invert = false, tier = 'inspect' }: { invert?: boolean; tier?: Tier } = {},\n",
+            "): Raster {\n",
+            "  if (face.faces?.length) throw Error('Project foil masks per physical face.');\n",
+            "  const maskFace = structuredClone(face);\n",
+            "  const projection = opticalDocument(0, 0, { ...maskFace, illustration: source }, 'silver', tier);\n",
+            "  const { color: raster, artWindows } = projection.recipe;\n",
+            "  return {\n",
+            "    key: JSON.stringify(['magic-artwork-foil-mask-v1', raster.key, invert]),\n",
+            "    size: raster.size,\n",
+            "    async paint(host, signal) {\n",
+            "      let destination: ReturnType<typeof artworkGeometry>['destination'] | undefined;\n",
+            "      // Invert grayscale before multiplying by source alpha. Transparent pixels\n",
+            "      // stay uncoated in both modes, including partially transparent brush edges.\n",
+            "      const maskHost: RasterHost = {\n",
+            "        async images(requests, imageSignal) {\n",
+            "          const lease = await host.images(requests, imageSignal);\n",
+            "          const image = lease.value.get(source);\n",
+            "          if (!image) {\n",
+            "            lease.release();\n",
+            "            throw Error('Artwork foil mask source is unavailable');\n",
+            "          }\n",
+            "          const flat = document.createElement('canvas');\n",
+            "          flat.width = image.width;\n",
+            "          flat.height = image.height;\n",
+            "          let bitmap: ImageBitmap;\n",
+            "          try {\n",
+            "            imageSignal.throwIfAborted();\n",
+            "            destination = artworkGeometry(maskFace, image.width, image.height).destination;\n",
+            "            const ctx = flat.getContext('2d', { willReadFrequently: true })!;\n",
+            "            ctx.drawImage(image, 0, 0);\n",
+            "            const pixels = ctx.getImageData(0, 0, flat.width, flat.height);\n",
+            "            for (let i = 0; i < pixels.data.length; i += 4) {\n",
+            "              const gray = (pixels.data[i]! + pixels.data[i + 1]! + pixels.data[i + 2]!) / 765;\n",
+            "              const value = Math.round((invert ? 1 - gray : gray) * pixels.data[i + 3]!);\n",
+            "              pixels.data[i] = pixels.data[i + 1] = pixels.data[i + 2] = value;\n",
+            "              pixels.data[i + 3] = 255;\n",
+            "            }\n",
+            "            ctx.putImageData(pixels, 0, 0);\n",
+            "            bitmap = await createImageBitmap(flat);\n",
+            "          } catch (error) {\n",
+            "            lease.release();\n",
+            "            throw error;\n",
+            "          } finally {\n",
+            "            flat.width = flat.height = 0;\n",
+            "          }\n",
+            "          return {\n",
+            "            value: new Map(lease.value).set(source, bitmap),\n",
+            "            release() {\n",
+            "              bitmap.close();\n",
+            "              lease.release();\n",
+            "            },\n",
+            "          };\n",
+            "        },\n",
+            "      };\n",
+            "      const output = await raster.paint(maskHost, signal);\n",
+            "      try {\n",
+            "        signal.throwIfAborted();\n",
+            "        const ctx = output.getContext('2d', { willReadFrequently: true })!;\n",
+            "        const pixels = ctx.getImageData(0, 0, output.width, output.height);\n",
+            "        for (let i = 0; i < pixels.data.length; i += 4) {\n",
+            "          const value = (pixels.data[i]! + pixels.data[i + 1]! + pixels.data[i + 2]!) / 765;\n",
+            "          pixels.data[i + 3] = Math.round(pixels.data[i + 3]! * value);\n",
+            "          pixels.data[i] = pixels.data[i + 1] = pixels.data[i + 2] = 255;\n",
+            "        }\n",
+            "        ctx.putImageData(pixels, 0, 0);\n",
+            "        ctx.resetTransform();\n",
+            "        ctx.globalCompositeOperation = 'destination-in';\n",
+            "        ctx.fillStyle = '#fff';\n",
+            "        ctx.beginPath();\n",
+            "        for (const [x, y, w, h] of artWindows)\n",
+            "          ctx.rect(x * output.width, y * output.height, w * output.width, h * output.height);\n",
+            "        ctx.fill();\n",
+            "        if (!destination) throw Error('Artwork foil mask source was not projected');\n",
+            "        // An explicit placement can leave unpainted backing inside the aperture.\n",
+            "        // That backing has no mask pixels and must not acquire a coating.\n",
+            "        const [x, y, w, h] = destination;\n",
+            "        ctx.fillRect(x * output.width, y * output.height, w * output.width, h * output.height);\n",
+            "        ctx.globalCompositeOperation = 'source-over';\n",
+            "        return output;\n",
+            "      } catch (error) {\n",
+            "        output.width = output.height = 0;\n",
+            "        throw error;\n",
+            "      }\n",
+            "    },\n",
+            "  };\n",
+            "}\n",
+            "\n"
+          ]
+        },
+        {
+          "start": 21,
+          "count": 0,
+          "lines": ["import { artworkGeometry } from './presentation/art-placement.js';\n"]
+        },
+        {
+          "start": 7,
+          "count": 0,
+          "lines": ["  Raster,\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-face.ts": {
+      "before": "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+      "after": "af6bf37cc6c2bc08f0db0165c9baf0d1d9095a8eef4c2d808a2debe15f04638c",
+      "reverseEdits": [
+        {
+          "start": 387,
+          "count": 8,
+          "lines": [
+            "      numerals = await prepareManaNumerals(\n",
+            "        input.face,\n",
+            "        dual?.images ?? calibrated?.images ?? loaded.images,\n",
+            "        signal,\n",
+            "      );\n"
+          ]
+        },
+        {
+          "start": 364,
+          "count": 13,
+          "lines": [
+            "    await Promise.all([\n",
+            "      (hooks?.loadFonts ?? loadCanvasFonts)(),\n",
+            "      nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),\n",
+            "      loadStandardTemplateFonts(input.face),\n",
+            "      faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),\n",
+            "      isAdventure(input.face) || isPrepared(input.face) ? loadAdventureFont() : Promise.resolve(),\n",
+            "      isRetro(input.face) ||\n",
+            "      nativeSplitEra(input.face) === 'old' ||\n",
+            "      historicalManaFamily(input.face, 'W') === 'historic-font'\n",
+            "        ? (hooks?.loadRetroFont ?? loadRetroFont)()\n",
+            "        : Promise.resolve(),\n",
+            "    ]);\n"
+          ]
+        }
+      ],
+      "forwardEdits": [
+        {
+          "start": 386,
+          "count": 5,
+          "lines": [
+            "      numerals =\n",
+            "        input.paintLayer === 'artwork'\n",
+            "          ? { images: loaded.images, dispose() {} }\n",
+            "          : await prepareManaNumerals(\n",
+            "              input.face,\n",
+            "              dual?.images ?? calibrated?.images ?? loaded.images,\n",
+            "              signal,\n",
+            "            );\n"
+          ]
+        },
+        {
+          "start": 364,
+          "count": 12,
+          "lines": [
+            "    if (input.paintLayer !== 'artwork')\n",
+            "      await Promise.all([\n",
+            "        (hooks?.loadFonts ?? loadCanvasFonts)(),\n",
+            "        nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),\n",
+            "        loadStandardTemplateFonts(input.face),\n",
+            "        faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),\n",
+            "        isAdventure(input.face) || isPrepared(input.face) ? loadAdventureFont() : Promise.resolve(),\n",
+            "        isRetro(input.face) ||\n",
+            "        nativeSplitEra(input.face) === 'old' ||\n",
+            "        historicalManaFamily(input.face, 'W') === 'historic-font'\n",
+            "          ? (hooks?.loadRetroFont ?? loadRetroFont)()\n",
+            "          : Promise.resolve(),\n",
+            "      ]);\n"
+          ]
+        }
+      ]
+    }
+  }
+}

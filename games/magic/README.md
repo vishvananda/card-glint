@@ -889,3 +889,11 @@ options are omitted.
 ## Provider imports
 
 See [provider card adapters](provider-cards.md) for direct Scryfall and MTGJSON inputs.
+
+`artworkFoilMask(face, url, {invert?, tier?})` returns a grayscale-to-alpha
+`Raster` using the illustration's existing frame aperture, crop, placement and
+zoom. Supply a mask matching the illustration's pixel dimensions. White enables
+foil; black or transparent protects it. Use the raster in a document layer's
+`finishCoverage.add` or `.exclude`; `invert` supports protection mattes. Prepare
+it with the document and retain it across pose changes. Composite layouts should
+project masks per physical face.

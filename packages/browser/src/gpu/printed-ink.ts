@@ -12,7 +12,21 @@ in vec2 uv;out vec4 color;uniform sampler2D face;
 vec3 previewInk(vec3 c){return mix(c*12.92,1.055*pow(max(c,vec3(0.)),vec3(1./2.4))-.055,step(vec3(.0031308),c));}
 vec3 previewLinear(vec3 c){return mix(c/12.92,pow(max((c+.055)/1.055,vec3(0.)),vec3(2.4)),step(vec3(.04045),c));}
 ${PRINT_DOTS_GLSL.replace('flat in vec4 printDotsInfo;', 'uniform vec4 printDotsInfo;')}
-void main(){printFootprint=1./printDotsInfo.y;color=printFace(uv);}`;
+void main(){
+ printFootprint=1./printDotsInfo.y;
+ // Fine screens need pixel-area coverage before they enter the mip chain.
+ // Sample only the ink screen: averaging source texels would soften lettering.
+ // This pass is cached per printing/settings, never rerun for pointer motion.
+ if(printDotsInfo.y<4.){
+  vec4 source=texture(face,uv);vec3 ink=previewInk(source.rgb),sum=vec3(0.);
+  vec2 pixel=1./vec2(textureSize(face,0));
+  for(int y=0;y<2;y++)for(int x=0;x<2;x++){
+   vec2 offset=(vec2(float(x),float(y))-.5)*.5;
+   sum+=previewLinear(printDotInk(ink,uv+offset*pixel));
+  }
+  color=vec4(sum*.25,source.a);
+ }else color=printFace(uv);
+}`;
 const limit = 16 * 1024 * 1024;
 const sizeOf = (texture: Texture) => {
   let w = texture.width,

@@ -36,7 +36,7 @@ asset references, its fan-content notice, and a guide for contributing fixes.
 
 ## What it does
 
-- Nine finishes: regular, gloss, etched, prismatic, cold foil, Opal embossing,
+- Ten finishes: regular, gloss, etched, prismatic, cold foil, reflective holofoil, Opal embossing,
   raindrops on glass, heat shimmer and pool water with caustics.
 - Independent face, artwork-edge, mask, decoded-image and overlay caches.
 - Explicit layers above/below foil, foil exclusion masks and etch contributions.
@@ -119,7 +119,7 @@ The README's paired eight-second GIFs and MP4s are captured from the same render
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.4.20/card-glint-0.4.20.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.5.0/card-glint-0.5.0.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -140,7 +140,7 @@ For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
   import {
     createRenderer,
     IDENTITY,
-  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.4.20/browser.js';
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.5.0/browser.js';
 
   const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
   // Supply your own game pack/card recipes, then render as below.

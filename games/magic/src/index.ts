@@ -5,6 +5,7 @@ import type {
   Tier,
   EdgeSource,
   RasterHost,
+  Raster,
 } from '../../../packages/browser/src/index.js';
 import { composeCardTexture, cardTextureKey } from './presentation/canvas-face.js';
 import { faceEtchingSymbol } from './presentation/assets.js';
@@ -19,6 +20,7 @@ import {
 import { faceRects } from './presentation/special-frames.js';
 import { visibleArt } from './presentation/art-apertures.js';
 import { illustrationTarget } from './presentation/illustration-layout.js';
+import { artworkGeometry } from './presentation/art-placement.js';
 import { splitPanels, panelRect } from './presentation/split-layout.js';
 import type { RenderedCardInput } from './presentation/face-layout.js';
 import { faceCornerRadius } from './presentation/face-silhouette.js';
@@ -236,6 +238,100 @@ export function opticalDocument(
         },
       },
     ],
+  };
+}
+
+/** Project an artwork-sized grayscale foil mask with the exact illustration fit.
+ * White is foil, black/transparent is uncoated. Invert for protection mattes.
+ * The returned alpha raster can be used by any public finishCoverage mask.
+ * Pixel conversion happens during preparation, never while the card moves. */
+export function artworkFoilMask(
+  face: RenderedCardInput,
+  source: string,
+  { invert = false, tier = 'inspect' }: { invert?: boolean; tier?: Tier } = {},
+): Raster {
+  if (face.faces?.length) throw Error('Project foil masks per physical face.');
+  const maskFace = structuredClone(face);
+  const projection = opticalDocument(0, 0, { ...maskFace, illustration: source }, 'silver', tier);
+  const { color: raster, artWindows } = projection.recipe;
+  return {
+    key: JSON.stringify(['magic-artwork-foil-mask-v1', raster.key, invert]),
+    size: raster.size,
+    async paint(host, signal) {
+      let destination: ReturnType<typeof artworkGeometry>['destination'] | undefined;
+      // Invert grayscale before multiplying by source alpha. Transparent pixels
+      // stay uncoated in both modes, including partially transparent brush edges.
+      const maskHost: RasterHost = {
+        async images(requests, imageSignal) {
+          const lease = await host.images(requests, imageSignal);
+          const image = lease.value.get(source);
+          if (!image) {
+            lease.release();
+            throw Error('Artwork foil mask source is unavailable');
+          }
+          const flat = document.createElement('canvas');
+          flat.width = image.width;
+          flat.height = image.height;
+          let bitmap: ImageBitmap;
+          try {
+            imageSignal.throwIfAborted();
+            destination = artworkGeometry(maskFace, image.width, image.height).destination;
+            const ctx = flat.getContext('2d', { willReadFrequently: true })!;
+            ctx.drawImage(image, 0, 0);
+            const pixels = ctx.getImageData(0, 0, flat.width, flat.height);
+            for (let i = 0; i < pixels.data.length; i += 4) {
+              const gray = (pixels.data[i]! + pixels.data[i + 1]! + pixels.data[i + 2]!) / 765;
+              const value = Math.round((invert ? 1 - gray : gray) * pixels.data[i + 3]!);
+              pixels.data[i] = pixels.data[i + 1] = pixels.data[i + 2] = value;
+              pixels.data[i + 3] = 255;
+            }
+            ctx.putImageData(pixels, 0, 0);
+            bitmap = await createImageBitmap(flat);
+          } catch (error) {
+            lease.release();
+            throw error;
+          } finally {
+            flat.width = flat.height = 0;
+          }
+          return {
+            value: new Map(lease.value).set(source, bitmap),
+            release() {
+              bitmap.close();
+              lease.release();
+            },
+          };
+        },
+      };
+      const output = await raster.paint(maskHost, signal);
+      try {
+        signal.throwIfAborted();
+        const ctx = output.getContext('2d', { willReadFrequently: true })!;
+        const pixels = ctx.getImageData(0, 0, output.width, output.height);
+        for (let i = 0; i < pixels.data.length; i += 4) {
+          const value = (pixels.data[i]! + pixels.data[i + 1]! + pixels.data[i + 2]!) / 765;
+          pixels.data[i + 3] = Math.round(pixels.data[i + 3]! * value);
+          pixels.data[i] = pixels.data[i + 1] = pixels.data[i + 2] = 255;
+        }
+        ctx.putImageData(pixels, 0, 0);
+        ctx.resetTransform();
+        ctx.globalCompositeOperation = 'destination-in';
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        for (const [x, y, w, h] of artWindows)
+          ctx.rect(x * output.width, y * output.height, w * output.width, h * output.height);
+        ctx.fill();
+        if (!destination) throw Error('Artwork foil mask source was not projected');
+        // An explicit placement can leave unpainted backing inside the aperture.
+        // That backing has no mask pixels and must not acquire a coating.
+        const [x, y, w, h] = destination;
+        ctx.fillRect(x * output.width, y * output.height, w * output.width, h * output.height);
+        ctx.globalCompositeOperation = 'source-over';
+        return output;
+      } catch (error) {
+        output.width = output.height = 0;
+        throw error;
+      }
+    },
   };
 }
 

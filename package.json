@@ -1,6 +1,6 @@
 {
   "name": "card-glint",
-  "version": "0.4.20",
+  "version": "0.5.0",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -60,7 +60,7 @@
     "test:rain-fog": "node tests/rain-fog.mjs",
     "test:ripple-budget": "node tests/surface-ripple-budget.mjs",
     "test:ripple-geometry": "node tests/pool-ripple-geometry.mjs",
-    "test:print-sampling": "node tests/print-sampling.mjs"
+    "test:print-sampling": "node tests/print-sampling.mjs && node tests/print-area.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

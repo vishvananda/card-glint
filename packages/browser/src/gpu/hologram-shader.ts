@@ -1,18 +1,10 @@
-// Independently authored diffraction response. Fine grooves stay attached to
-// the printed patch while reflected light follows the surface normal/view.
-export const HOLOGRAM_GLSL = `
-uniform sampler2D hologramMask;
-uniform vec4 hologramRect;
-uniform vec2 hologramMaterial;
-vec3 localHologram(vec2 uv, vec3 ink, vec3 normal, vec3 view, float grainFilter) {
-  if(hologramMaterial.x<=0.) return ink;
-  vec2 p=(uv-hologramRect.xy)/hologramRect.zw;
-  if(any(lessThan(p,vec2(0.))) || any(greaterThan(p,vec2(1.)))) return ink;
-  float cover=texture(hologramMask,p).a*hologramMaterial.x;
-  if(cover<=0.) return ink;
+// Shared diffraction for a full foil sheet and a local reflective patch.
+// Grooves stay card-local; pose changes lighting, never mask or texture placement.
+export const HOLOFOIL_GLSL = `
+float holofoilGrainFilter=1.;
+vec3 holofoil(vec2 p,vec3 ink,vec3 normal,vec3 view,float seed,float grainFilter){
   vec3 reflected=reflect(-view,normal);
   vec2 light=reflected.xy/max(abs(reflected.z),.25)+(pointer-.5)*.85;
-  float seed=hologramMaterial.y;
   float axisA=dot(p,vec2(1.6,.45))+dot(light,vec2(1.1,.65))+seed;
   float axisB=dot(p,vec2(-.7,1.9))+dot(light,vec2(-.8,1.3))+seed*.37;
   // Reuse the card foil's mylar spectra while retaining patch-local axes,
@@ -29,6 +21,19 @@ vec3 localHologram(vec2 uv, vec3 ink, vec3 normal, vec3 view, float grainFilter)
   vec3 silver=ink*(.80+.12*broad)*grain;
   vec3 colored=diffraction*(.12+.28*broad+.25*flash)*(.25+.75*luminance);
   vec3 specular=vec3(1.,.99,.96)*flash*.24;
-  return mix(ink,silver+colored+specular,cover);
+  return silver+colored+specular;
+}
+`;
+export const HOLOGRAM_GLSL = `
+uniform sampler2D hologramMask;
+uniform vec4 hologramRect;
+uniform vec2 hologramMaterial;
+vec3 localHologram(vec2 uv, vec3 ink, vec3 normal, vec3 view, float grainFilter) {
+  if(hologramMaterial.x<=0.) return ink;
+  vec2 p=(uv-hologramRect.xy)/hologramRect.zw;
+  if(any(lessThan(p,vec2(0.))) || any(greaterThan(p,vec2(1.)))) return ink;
+  float cover=texture(hologramMask,p).a*hologramMaterial.x;
+  if(cover<=0.) return ink;
+  return mix(ink,holofoil(p,ink,normal,view,hologramMaterial.y,grainFilter),cover);
 }
 `;

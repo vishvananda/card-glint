@@ -18,6 +18,7 @@ import {
 } from './magic-native-reference.mjs';
 import { nativeHostCases } from './magic-native-host-cases.mjs';
 import { assertCacheOnlySourceBytes } from './magic-source-guard.mjs';
+import { restoreArtworkPreparation } from './magic-artwork-source-guard.mjs';
 import { darkManaProof } from './magic-dark-mana-source-guard.mjs';
 import { darkTypographyProof } from './magic-dark-type-source-guard.mjs';
 import { darkSymbolProof, preDarkSymbolSource } from './magic-dark-symbol-source-guard.mjs';
@@ -62,6 +63,8 @@ async function identity() {
         await Promise.all(
           [
             'tests/magic-dark-mana-source-guard.mjs',
+            'tests/magic-artwork-source-guard.mjs',
+            'tests/magic-artwork-sources.json',
             'games/magic/fixtures/accuracy/early-expansion-dark-mana.json',
             'games/magic/fixtures/accuracy/early-expansion-dark-mana-compatibility.json',
           ].map((file) => readFile(path.join(root, file))),
@@ -243,7 +246,10 @@ async function verify() {
             Object.hasOwn(symbols.files, relative) ||
             Object.hasOwn(mana.files, relative)
           )
-            return (await preStatsCalibrationSource(relative)).toString();
+            return restoreArtworkPreparation(
+              relative,
+              await preStatsCalibrationSource(relative),
+            ).toString();
         },
         configureServer(server) {
           server.middlewares.use((req, res, next) => {
@@ -482,13 +488,14 @@ async function verify() {
             },
             loadImages: async (urls) => ({ images: images(urls), dispose() {} }),
           };
-          const compose = async (renderer, rulesText) => {
+          const compose = async (renderer, rulesText, paintLayer) => {
             trace = [];
             let canvas;
             try {
               canvas = await renderer.api.composeCardTexture(
                 {
                   face,
+                  paintLayer,
                   printingId: null,
                   printedImage: null,
                   ...(rulesText === undefined ? {} : { rulesText }),
@@ -512,6 +519,11 @@ async function verify() {
               if (canvas) canvas.width = canvas.height = 0;
             }
           };
+          check(
+            (await compose(before, undefined, 'artwork')).hash ===
+              (await compose(after, undefined, 'artwork')).hash,
+            'Artwork preparation optimization changed pixels',
+          );
           const native = await compose(before);
           check(
             native.hash === (await compose(after)).hash,

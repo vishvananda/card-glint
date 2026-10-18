@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { preArtworkSource } from './magic-artwork-source-guard.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 
 let verified;
@@ -34,7 +35,7 @@ export function darkManaProof() {
     for (const row of evidence.controls.rows) assert.equal(row.before, row.sha256);
     for (const [file, expected] of Object.entries(extension.dependencies))
       assert.equal(
-        hash(await readFile(file)),
+        hash(await preArtworkSource(file)),
         expected,
         'Unreviewed Dark mana dependency: ' + file,
       );
@@ -45,7 +46,7 @@ export function darkManaProof() {
 
 /** Keep earlier measurements attached to the exact source that produced them. */
 export async function preDarkManaSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preArtworkSource(file),
     extension = await darkManaProof(),
     change = extension.files[file];
   if (!change) return bytes;

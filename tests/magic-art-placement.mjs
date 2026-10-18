@@ -98,7 +98,7 @@ try {
       '/games/magic/src/presentation/canvas-assets.ts'
     );
     const { cardTextureKey } = await import('/games/magic/src/presentation/canvas-face.ts');
-    const { magic } = await import('/games/magic/src/index.ts');
+    const { magic, artworkFoilMask, opticalDocument } = await import('/games/magic/src/index.ts');
     const canvas = (w = 488, h = 680) => {
       const c = document.createElement('canvas');
       c.width = w;
@@ -163,6 +163,100 @@ try {
           if (a[i] < 240 || a[i + 1] < 240 || a[i + 2] < 240) mismatch++;
         }
       }
+    const maskHost = {
+      async images(requests, signal) {
+        const loaded = await loadCanvasImages(
+          requests
+            .map((request) => request.url)
+            .filter((url) => !['/mask', '/source'].includes(url)),
+          signal,
+        );
+        return {
+          value: new Map(loaded.images).set('/mask', mask).set('/source', bitmap),
+          release: () => loaded.dispose(),
+        };
+      },
+    };
+    const projected = artworkFoilMask(base, '/mask'),
+      projectedInverse = artworkFoilMask(base, '/mask', { invert: true });
+    const projectedPixels = await projected.paint(maskHost, new AbortController().signal),
+      inversePixels = await projectedInverse.paint(maskHost, new AbortController().signal);
+    const actualArt = await opticalDocument(0, 0, base, 'silver').recipe.color.paint(
+      maskHost,
+      new AbortController().signal,
+    );
+    const actualPixels = actualArt.getContext('2d').getImageData(0, 0, 732, 1020).data;
+    const projectedData = projectedPixels.getContext('2d').getImageData(0, 0, 732, 1020).data,
+      inverseData = inversePixels.getContext('2d').getImageData(0, 0, 732, 1020).data;
+    let foilWhite = 0,
+      foilAligned = 0,
+      foilBlack = 0;
+    for (let y = 145; y < 545; y++)
+      for (let x = 65; x < 675; x++) {
+        const target = (y * 732 + x) * 4;
+        if (
+          actualPixels[target] > 250 &&
+          actualPixels[target + 1] > 250 &&
+          actualPixels[target + 2] > 250
+        ) {
+          foilWhite++;
+          if (projectedData[target + 3] > 245) foilAligned++;
+        } else if (
+          actualPixels[target] < 30 &&
+          actualPixels[target + 1] < 70 &&
+          projectedData[target + 3] === 0 &&
+          inverseData[target + 3] === 0
+        )
+          foilBlack++;
+      }
+    const foilMaskCache =
+      projected.key !==
+        artworkFoilMask({ ...base, artPlacement: { ...base.artPlacement, zoom: 2 } }, '/mask')
+          .key && projected.key !== projectedInverse.key;
+    // A protection matte inverts only its opaque gray, never its source alpha.
+    // An explicit placement also leaves some aperture backing with no mask.
+    const matte = canvas(64, 64),
+      mc = matte.getContext('2d');
+    mc.fillStyle = '#fff';
+    mc.fillRect(0, 0, 16, 64);
+    mc.fillStyle = '#000';
+    mc.fillRect(16, 0, 16, 64);
+    mc.fillStyle = 'rgba(128,128,128,0.5)';
+    mc.fillRect(32, 0, 16, 64);
+    const matteImage = await createImageBitmap(matte);
+    let acquired = 0,
+      released = 0;
+    const matteHost = {
+      async images(requests) {
+        acquired++;
+        return {
+          value: new Map(requests.map(({ url }) => [url, matteImage])),
+          release() {
+            released++;
+          },
+        };
+      },
+    };
+    const placed = {
+      name: 'Mask alpha',
+      setCode: 'M21',
+      typeLine: 'Instant',
+      illustrationPlacement: [0.25, 0.2, 0.25, (0.25 * 488) / 680],
+    };
+    const matteAlpha = [];
+    for (const invert of [false, true]) {
+      const raster = artworkFoilMask(placed, '/mask', { invert });
+      const output = await raster.paint(matteHost, new AbortController().signal);
+      const ctx = output.getContext('2d');
+      const pixel = (x, y) =>
+        ctx.getImageData(Math.floor(x * 732), Math.floor(y * 1020), 1, 1).data[3];
+      matteAlpha.push([0.125, 0.375, 0.625, 0.875].map((x) => pixel(0.25 + x * 0.25, 0.27)));
+      if (pixel(0.13, 0.27) !== 0) throw Error('Artwork backing acquired foil');
+      output.width = output.height = 0;
+    }
+    if (acquired !== released) throw Error('Mask source lease leaked');
+    matteImage.close();
+    matte.width = matte.height = 0;
     const recipe = magic.describe(base, 'inspect');
     const stampFace = { name: 'Stamp control', setCode: 'M21', typeLine: 'Instant' };
     const movedStampFace = { ...stampFace, printingElements: { setSymbol: { offset: [10, 8] } } };
@@ -234,6 +328,11 @@ try {
     }
     const key = (f, layer = 'face') => cardTextureKey({ face: f, layer }, 'inspect');
     return {
+      matteAlpha,
+      foilWhite,
+      foilAligned,
+      foilBlack,
+      foilMaskCache,
       stampInk,
       stampMismatch,
       stampCache:
@@ -250,6 +349,23 @@ try {
         key({ ...base, artPlacement: { ...base.artPlacement, zoom: 2 } }, 'etching'),
     };
   });
+  console.log({
+    foilWhite: result.foilWhite,
+    foilAligned: result.foilAligned,
+    foilBlack: result.foilBlack,
+  });
+  assert.deepEqual(result.matteAlpha, [
+    [255, 0, 64, 0],
+    [0, 255, 64, 0],
+  ]);
+  assert.ok(
+    result.foilWhite > 100 && result.foilAligned / result.foilWhite > 0.97,
+    'Foil mask follows cropped/panned artwork',
+  );
+  assert.ok(
+    result.foilBlack > 1000 && result.foilMaskCache,
+    'Transparent pixels stay uncoated and placement/inversion invalidate the mask',
+  );
   assert.ok(result.maskPixels > 100);
   assert.ok(result.stampInk > 100);
   assert.equal(result.stampMismatch, 0, 'Set mark etching follows the same explicit translation');
