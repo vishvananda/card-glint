@@ -1,3 +1,6 @@
+import { setCalibrationProfile } from '../calibration/profiles.js';
+import { calibratedBodyLayout } from '../calibration/body.js';
+import { earlyReprintFrame } from './early-reprint-frame.js';
 import { retroBasicPrinting } from './retro-basic.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { layoutRules, type RulesTypography } from './rules-layout.js';
@@ -51,6 +54,10 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   if (legends) return legends;
   const expansion = earlyExpansionTextLayout(context, face, paragraphs, reference);
   if (expansion) return expansion;
+  const frame = earlyReprintFrame(face);
+  const body = frame && setCalibrationProfile(face.setCode)?.body;
+  const fitted = body && (body[frame.material!] ?? body.default);
+  if (fitted) return calibratedBodyLayout(context, face, fitted, paragraphs, reference);
   const set = face.setCode?.toLowerCase();
   // Original Mirage–Scourge printings use right-aligned attribution lines;
   // early sets and Eighth Edition onward use a different policy.

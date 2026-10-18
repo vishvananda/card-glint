@@ -1,3 +1,4 @@
+import { preProfileConsolidationSource } from './magic-profile-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -80,7 +81,11 @@ export function earlyReprintFooterProof() {
     assert.equal(evidence.wording.statsRows.filter((r) => r.changed).length, 1);
     assert.deepEqual(extension.dependencies, evidence.sourceGuards);
     for (const [file, expected] of Object.entries(extension.dependencies))
-      assert.equal(hash(await readFile(file)), expected, 'Unreviewed footer dependency: ' + file);
+      assert.equal(
+        hash(await preProfileConsolidationSource(file)),
+        expected,
+        'Unreviewed footer dependency: ' + file,
+      );
     return extension;
   })();
   return verified;
@@ -89,7 +94,7 @@ export function earlyReprintFooterProof() {
 /** Recover the exact pre-footer painter and wording catalogs. Every historical
  * receipt keeps its original bytes; the new layer proves only this footer delta. */
 export async function preEarlyReprintFooterSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preProfileConsolidationSource(file),
     extension = await earlyReprintFooterProof();
   const change = extension.files[file];
   if (!change) return bytes;

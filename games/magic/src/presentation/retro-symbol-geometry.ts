@@ -1,3 +1,6 @@
+import { setCalibrationProfile } from '../calibration/profiles.js';
+import { chroniclesSymbol } from './chronicles-symbols.js';
+import { earlyReprintFrame } from './early-reprint-frame.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
 
@@ -15,6 +18,7 @@ interface RetroSymbolGeometry {
  * from the frozen old-symbol-material study; explicit custom symbols retain
  * their original viewport. Chronicles has its own printing geometry. */
 const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
+  fem: setCalibrationProfile('fem')!.setSymbols!.default!,
   arn: {
     right: 439,
     centerY: 394,
@@ -31,14 +35,6 @@ const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
     width: 21,
     height: 18.5,
     crop: [0, 0.09375, 0.9884259259259259, 0.814453125],
-  },
-  // Crown and detached foot measured together; preserve the existing white rim.
-  fem: {
-    right: 441.75,
-    centerY: 390.75,
-    width: 20.75,
-    height: 16.75,
-    crop: [0, 0.12109375, 1, 0.724609375],
   },
   // Frozen globe ink bounds across Homelands materials; preserve its white rim.
   hml: {
@@ -174,7 +170,14 @@ const normalizedMaterials: Readonly<
 
 export function retroSymbolGeometry(face: RenderedCardInput): RetroSymbolGeometry | null {
   const code = face.setCode?.toLowerCase() ?? '';
-  if (face.setSymbol || !Object.hasOwn(profiles, code)) return null;
+  if (face.setSymbol) return null;
+  if (earlyReprintFrame(face)) {
+    const configured = setCalibrationProfile(code)?.setSymbols;
+    const symbol = code === 'chr' ? chroniclesSymbol(face.name) : 'default';
+    const fit = (symbol && configured?.[symbol]) || configured?.default;
+    if (fit) return fit;
+  }
+  if (!Object.hasOwn(profiles, code)) return null;
   const colors = resolveFrameColors(face);
   if (colors.length === 1 && !/\b(?:Land|Artifact)\b/.test(face.typeLine ?? ''))
     return normalizedMaterials[code]?.[colors[0]!] ?? profiles[code]!;

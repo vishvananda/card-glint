@@ -30,6 +30,9 @@ import { earlyReprintTitleProof } from './magic-early-reprint-title-source-guard
 import { earlyReprintFooterProof } from './magic-early-reprint-footer-source-guard.mjs';
 import { earlyReprintTypeProof } from './magic-early-reprint-type-source-guard.mjs';
 
+const consolidation = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/profile-consolidation-compatibility.json'),
+);
 let verification;
 const sourceManifestFile = new URL('./magic-native-host-sources.json', import.meta.url);
 export const nativeHostSources = JSON.parse(await readFile(sourceManifestFile));
@@ -61,6 +64,9 @@ async function packMetadata(directory, beforeSymbols = false) {
 async function identity() {
   const executable = await stat(chromium.executablePath());
   return {
+    consolidationRevision: hash(
+      await readFile('games/magic/fixtures/accuracy/profile-consolidation-compatibility.json'),
+    ),
     reprintFooterRevision: hash(
       await readFile('games/magic/fixtures/accuracy/early-reprint-footer-compatibility.json'),
     ),
@@ -238,6 +244,7 @@ async function verify() {
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
     (file) =>
       ![
+        ...consolidation.newModules,
         ...reprintFooter.newModules,
         ...reprintType.newModules,
         ...reprintTitle.newModules,

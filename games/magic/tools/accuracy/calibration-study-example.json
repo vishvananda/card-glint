@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "set": "4ed",
+  "validationKind": "fresh",
+  "note": "Synthetic format example only. Replace identities, targets, images and wording with reviewed printing data. Copy exampleTemplates into a separate templates file; these illustrative edge positions are not calibrated targets.",
+  "entries": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "card": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "name": "Synthetic example",
+        "set": "4ed",
+        "border_color": "white"
+      },
+      "group": "ordinary-white-example",
+      "cohort": "calibration",
+      "reference": {
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "mime": "image/png"
+      },
+      "face": {
+        "name": "Synthetic example",
+        "setCode": "4ed",
+        "typeLine": "Summon Creature",
+        "colors": ["W"],
+        "rulesText": "Flying",
+        "wordingMode": "original",
+        "colorCalibration": "set-hsb-v1"
+      },
+      "wordingEvidence": {
+        "rules": "scan-reviewed",
+        "referenceHash": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "normalization": {
+        "accepted": false,
+        "referenceHash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "reason": "Example only; review a scan-only template before normalizing"
+      },
+      "regions": [
+        {
+          "name": "rules",
+          "kind": "ink",
+          "fields": ["rules"],
+          "rect": [70, 420, 345, 170],
+          "lightInk": false,
+          "reviewed": true
+        }
+      ]
+    }
+  ],
+  "exampleTemplates": {
+    "ordinary-white-example": {
+      "reliable": false,
+      "sides": {
+        "left": { "position": 20, "reliable": false },
+        "right": { "position": 467, "reliable": false },
+        "top": { "position": 22, "reliable": false },
+        "bottom": { "position": 659, "reliable": false }
+      }
+    }
+  }
+}

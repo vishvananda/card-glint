@@ -1,3 +1,4 @@
+import { setCalibrationProfile } from '../calibration/profiles.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
 import { paintPrintingElement } from './printing-elements.js';
@@ -5,56 +6,11 @@ import { paintTextInk } from './text-ink.js';
 import { retroStatsText } from './retro-details.js';
 import { paintEarlyReprintFooterInk } from './early-reprint-footer-ink.js';
 
-const profiles = {
-  fem: {
-    artist: { x: 48.5, y: 630.5, size: 20, width: 0.96, shadow: 2, trim: 0.3, gray: 225 },
-    legal: {
-      x: 48,
-      y: 645,
-      size: 13,
-      width: 1.015,
-      shadow: 0,
-      trim: 0,
-      lightGray: 194,
-      darkGray: 29,
-    },
-    stats: { x: 452, y: 631, size: 28, width: 0.99, shadow: 1.5, trim: 0.3, gray: 218 },
-  },
-  '4ed': {
-    artist: { x: 43, y: 626.5, size: 19, width: 1, shadow: 1.25, trim: 0.2, gray: 238 },
-    legal: {
-      x: 41.25,
-      y: 640.5,
-      size: 11,
-      width: 1,
-      shadow: 0,
-      trim: 0,
-      lightGray: 205,
-      darkGray: 42,
-    },
-    stats: { x: 451.75, y: 634.5, size: 27, width: 1.03, shadow: 1, trim: 0.3, gray: 238 },
-  },
-  chr: {
-    artist: { x: 42, y: 626.5, size: 19, width: 0.995, shadow: 1.25, trim: 0.2, gray: 227 },
-    legal: {
-      x: 41.75,
-      y: 640.5,
-      size: 11,
-      width: 1,
-      shadow: 0,
-      trim: 0,
-      lightGray: 186,
-      darkGray: 45,
-    },
-    stats: { x: 451.5, y: 634.5, size: 27.5, width: 1, shadow: 1.25, trim: 0.3, gray: 229 },
-  },
-} as const;
-
 export function earlyReprintFooter(face: RenderedCardInput) {
   const frame = earlyReprintFrame(face);
   if (!frame) return undefined;
-  const set = face.setCode!.toLowerCase() as keyof typeof profiles;
-  const p = profiles[set];
+  const set = face.setCode!.toLowerCase();
+  const p = setCalibrationProfile(set)!.footer;
   const light =
     ['B', 'G', 'A'].includes(frame.material ?? '') ||
     (set === 'fem' && face.name === 'Ebon Stronghold');

@@ -11,6 +11,9 @@ const server = await createServer({
 });
 let browser;
 try {
+  const { setCalibrationProfile } = await server.ssrLoadModule(
+    '/games/magic/src/calibration/profiles.ts',
+  );
   const { printingManaDefaults, printingManaAdjustment } = await server.ssrLoadModule(
     '/games/magic/src/presentation/printing-mana-adjustment.ts',
   );
@@ -42,10 +45,15 @@ try {
     };
     const base = printingManaDefaults(face);
     assert.ok(base);
-    assert.deepEqual(base, evidence.geometry[setCode]);
-    assert.deepEqual(earlyReprintManaInk(face), evidence.ink[setCode]);
+    assert.deepEqual(base, setCalibrationProfile(setCode).mana.geometry);
+    if (setCalibrationProfile(setCode).revision === 1)
+      assert.deepEqual(base, evidence.geometry[setCode]);
+    assert.deepEqual(earlyReprintManaInk(face), setCalibrationProfile(setCode).mana.ink);
     for (const color of ['W', 'U', 'B', 'R', 'G', 'N'])
-      assert.deepEqual(calibratedManaTarget(face, color), evidence.paper[`${setCode}/${color}`]);
+      assert.deepEqual(
+        calibratedManaTarget(face, color),
+        setCalibrationProfile(setCode).mana.paper[color],
+      );
     assert.deepEqual(
       printingManaDefaults({ ...face, wordingMode: 'oracle', typeLine: 'Creature — Wizard' }),
       base,

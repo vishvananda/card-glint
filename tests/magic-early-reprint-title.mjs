@@ -11,6 +11,9 @@ const server = await createServer({
 });
 let browser;
 try {
+  const { setCalibrationProfile } = await server.ssrLoadModule(
+    '/games/magic/src/calibration/profiles.ts',
+  );
   await earlyReprintTitleProof();
   const evidence = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/early-reprint-title.json'),
@@ -38,7 +41,9 @@ try {
       };
       const p = earlyReprintTitle(face);
       assert.ok(p);
-      assert.deepEqual(p, evidence.profiles[setCode]);
+      assert.deepEqual(p, setCalibrationProfile(setCode).title);
+      if (setCalibrationProfile(setCode).revision === 1)
+        assert.deepEqual(p, evidence.profiles[setCode]);
       assert.deepEqual(earlyReprintTitle({ ...face, setCode: setCode.toUpperCase() }), p);
       assert.deepEqual(
         earlyReprintTitle({

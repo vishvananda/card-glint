@@ -348,6 +348,9 @@ their own treatments. See the [Prepared comparison and limitations](prepare-layo
 
 ## Contribute a frame or fix
 
+For set-wide work, follow [Calibrate a set](calibrating-a-set.md): input review,
+scan normalization, fitting, one-file profiles and PR evidence.
+
 1. Identify the selection rule, geometry and painting owners above. Keep game
    semantics here; do not add Magic branches to the Rust or browser core.
 2. Add or update a pinned external asset reference, with attribution here. Do

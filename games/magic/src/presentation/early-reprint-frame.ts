@@ -1,3 +1,4 @@
+import { setCalibrationProfile } from '../calibration/profiles.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
@@ -8,11 +9,11 @@ export function earlyReprintFrame(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
   if (
     !set ||
-    !['fem', '4ed', 'chr'].includes(set) ||
+    !setCalibrationProfile(set) ||
     face.frameTemplate ||
     face.frameAssetFamily ||
     face.frameStyle === 'modern' ||
-    (face.borderColor && face.borderColor !== (set === 'fem' ? 'black' : 'white')) ||
+    (face.borderColor && face.borderColor !== setCalibrationProfile(set)!.border) ||
     (face.layout && face.layout !== 'normal') ||
     /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '')
   )

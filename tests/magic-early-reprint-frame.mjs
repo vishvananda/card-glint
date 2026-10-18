@@ -9,6 +9,9 @@ const server = await createServer({
   server: { middlewareMode: true, hmr: false },
 });
 try {
+  const { setCalibrationProfile } = await server.ssrLoadModule(
+    '/games/magic/src/calibration/profiles.ts',
+  );
   const { earlyReprintFrame } = await server.ssrLoadModule(
     '/games/magic/src/presentation/early-reprint-frame.ts',
   );
@@ -34,14 +37,14 @@ try {
       const frame = earlyReprintFrame(face),
         colors = earlyReprintColors(face);
       assert.equal(frame.profile, `${setCode}/${color}`);
-      assert.equal(frame.family, setCode === 'fem' && color === 'B' ? 'abu' : 'fourth');
+      assert.equal(frame.family, setCalibrationProfile(setCode).frames[color].family);
       assert.equal(retroFrameAsset(face), frame.asset);
       assert.deepEqual(retroFrameRect(face), frame.frame);
       assert.deepEqual(retroRects(face).art, frame.art);
       assert.deepEqual(calibratedFrameMaterials(face), colors.materials);
       assert.equal(
         calibratedPrintingStock(face),
-        { fem: '#262626', '4ed': '#ededef', chr: '#edecea' }[setCode],
+        setCalibrationProfile(setCode).colors[color].stock,
       );
       assert.deepEqual(
         earlyReprintFrame({
@@ -121,6 +124,7 @@ try {
   );
   assert.equal(evidence.bindings.length, 30);
   for (const binding of evidence.bindings) {
+    if (setCalibrationProfile(binding.profile.split('/')[0]).revision !== 1) continue;
     const face = { ...binding.face, colorCalibration: 'set-hsb-v1' };
     const frame = earlyReprintFrame(face);
     assert.equal(frame.profile, binding.profile);

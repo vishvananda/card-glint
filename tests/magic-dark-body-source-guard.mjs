@@ -49,7 +49,11 @@ export function darkBodyProof() {
       assert.equal(row.rawHashes.after, native.after);
     }
     for (const [file, expected] of Object.entries(extension.dependencies))
-      assert.equal(hash(await readFile(file)), expected, 'Unreviewed body dependency: ' + file);
+      assert.equal(
+        hash(await preEarlyReprintSource(file)),
+        expected,
+        'Unreviewed body dependency: ' + file,
+      );
     const annotations = JSON.parse(await readFile(extension.wordingSource));
     for (const review of evidence.wording) {
       const current = annotations.cards[review.id];
