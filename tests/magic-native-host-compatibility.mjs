@@ -24,6 +24,7 @@ import { darkTypographyProof } from './magic-dark-type-source-guard.mjs';
 import { darkSymbolProof, preDarkSymbolSource } from './magic-dark-symbol-source-guard.mjs';
 import { darkCalibrationProof } from './magic-dark-source-guard.mjs';
 import { preStatsCalibrationSource, statsCalibrationProof } from './magic-stats-source-guard.mjs';
+import { earlyReprintProof } from './magic-early-reprint-source-guard.mjs';
 
 let verification;
 const sourceManifestFile = new URL('./magic-native-host-sources.json', import.meta.url);
@@ -56,6 +57,9 @@ async function packMetadata(directory, beforeSymbols = false) {
 async function identity() {
   const executable = await stat(chromium.executablePath());
   return {
+    reprintRevision: hash(
+      await readFile('games/magic/fixtures/accuracy/early-reprint-compatibility.json'),
+    ),
     reference: nativeReference,
     sourceManifest: hash(await readFile(sourceManifestFile)),
     darkManaRevision: hash(
@@ -168,6 +172,7 @@ function assertReceipt(receipt, expected) {
 }
 
 async function verify() {
+  const reprints = await earlyReprintProof();
   const stats = await statsCalibrationProof(),
     dark = await darkCalibrationProof(),
     typography = await darkTypographyProof(),
@@ -212,9 +217,12 @@ async function verify() {
   const nativeDirectory = 'games/magic/src';
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
     (file) =>
-      ![...stats.newModules, ...dark.newModules, ...mana.newModules].includes(
-        `${nativeDirectory}/${file}`,
-      ),
+      ![
+        ...reprints.newModules,
+        ...stats.newModules,
+        ...dark.newModules,
+        ...mana.newModules,
+      ].includes(`${nativeDirectory}/${file}`),
   );
   const referenceFiles = await sourceFiles(path.join(referenceRoot, nativeDirectory));
   for (const relative of new Set([...currentFiles, ...referenceFiles])) {
@@ -246,6 +254,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(reprints.files, relative) ||
             Object.hasOwn(stats.files, relative) ||
             Object.hasOwn(dark.files, relative) ||
             Object.hasOwn(typography.files, relative) ||

@@ -29,6 +29,7 @@ import { legendsFrame } from './legends-frame.js';
 import { futureFrameMaterials } from './future-color-profiles.js';
 import { planarFrameMaterials } from './planar-color-profiles.js';
 import { earlyExpansionColors } from './early-expansion-colors.js';
+import { earlyReprintColors } from './early-reprint-colors.js';
 export function hasColorCalibration(face: RenderedCardInput): boolean {
   if (face.frameTemplate) return false;
   const early = ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
@@ -75,6 +76,8 @@ export function calibratedManaTarget(face: RenderedCardInput, symbol: string): R
 
 /** Every binding retains the exact pinned asset and geometry it was fitted to. */
 function baseFrameMaterials(face: RenderedCardInput): Readonly<Record<string, FrameHsb>> {
+  const reprint = earlyReprintColors(face);
+  if (reprint) return reprint.materials;
   const expansion = earlyExpansionColors(face);
   if (expansion) return expansion.materials;
   if (face.frameTemplate === 'future') return futureFrameMaterials(face);
@@ -105,6 +108,8 @@ export function hasCalibratedFramePigment(face: RenderedCardInput): boolean {
 export function calibratedFrameMaterials(
   face: RenderedCardInput,
 ): Readonly<Record<string, FrameHsb>> {
+  const reprint = earlyReprintColors(face);
+  if (reprint) return reprint.materials;
   const expansion = earlyExpansionColors(face);
   if (expansion) return expansion.materials;
   return printingBlackPointMaterials(face, baseFrameMaterials(face), printingStockSource(face))
@@ -113,6 +118,8 @@ export function calibratedFrameMaterials(
 
 /** Stock is measured separately; white stock and unknown sources stay unchanged. */
 export function calibratedPrintingStock(face: RenderedCardInput): string | undefined {
+  const reprint = earlyReprintColors(face);
+  if (reprint) return reprint.stock;
   const expansion = earlyExpansionColors(face);
   if (expansion) return expansion.stock;
   return printingBlackPointMaterials(face, baseFrameMaterials(face), printingStockSource(face))

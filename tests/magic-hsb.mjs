@@ -169,6 +169,9 @@ try {
   const { earlyExpansionFrame } = await server.ssrLoadModule(
     '/games/magic/src/presentation/early-expansion-frame.ts',
   );
+  const { earlyReprintFrame } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/early-reprint-frame.ts',
+  );
   const { OLD_HSB_PROFILES } = await server.ssrLoadModule(
     '/games/magic/src/presentation/old-hsb-profiles.ts',
   );
@@ -194,7 +197,7 @@ try {
     };
     // Replaced plates/geometry invalidate historical diagnostic fits. They must
     // remain readable but cannot recolor the replacement sources.
-    if (setCode === 'leg' || earlyExpansionFrame(calibrated))
+    if (setCode === 'leg' || earlyExpansionFrame(calibrated) || earlyReprintFrame(calibrated))
       assert.equal(profiles.calibratedFrameProfile(calibrated), undefined, key);
     else assert.ok(profiles.calibratedFrameProfile(calibrated), key);
     assert.equal(

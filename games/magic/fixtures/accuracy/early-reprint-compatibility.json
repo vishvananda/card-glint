@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "e2b07b18ef66e19b3feb38a59c3c01ba188f818d",
+  "evidenceHash": "48c963320a91ddae6954e9e3d8091b9052ebe7b4ba8c0debf190064b32b60264",
+  "dependencies": {
+    "games/magic/src/presentation/calibration-profiles.ts": "a8dafad27bb9908d2bdc7d89f8f35015d6defedab9cd723e01b7f9371cea7bc9",
+    "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
+    "games/magic/src/presentation/retro-paint.ts": "d4ba1276e2de866809f50e4e3decc14e15b140e36f1bf46f2b2ea6b40abf3c40",
+    "games/magic/src/presentation/early-reprint-4ed-colors.ts": "5991dd47247387faa4a45199d4a559bdae08a55602bd84814b353e4127c8133b",
+    "games/magic/src/presentation/early-reprint-chr-colors.ts": "b0700d30843f511e273121cdf8e9487c656388e7aa50022bf8c0b32aad56443b",
+    "games/magic/src/presentation/early-reprint-colors.ts": "cf87f94ff33b44b3b024b1d13a73fd5154ca0a9a8a7d8e07f3eb1a666c0ca9e2",
+    "games/magic/src/presentation/early-reprint-fem-colors.ts": "061769dc7a53528e24f23ad919d5633570068f9d388ef02227c249f0b5ca5b92",
+    "games/magic/src/presentation/early-reprint-frame-values.ts": "b512bcaac57d2f6adf8a13f20726efba63405d34223fcfa589a7d54a35d419ad",
+    "games/magic/src/presentation/early-reprint-frame.ts": "e8d16406852f58f9fae95260f61a38ca87bd0906068a2396385eb0d0f9cea375"
+  },
+  "newModules": [
+    "games/magic/src/presentation/early-reprint-4ed-colors.ts",
+    "games/magic/src/presentation/early-reprint-chr-colors.ts",
+    "games/magic/src/presentation/early-reprint-colors.ts",
+    "games/magic/src/presentation/early-reprint-fem-colors.ts",
+    "games/magic/src/presentation/early-reprint-frame-values.ts",
+    "games/magic/src/presentation/early-reprint-frame.ts"
+  ],
+  "files": {
+    "games/magic/src/presentation/calibration-profiles.ts": {
+      "before": "54337a66728a37dff4c18e3a4ea93b2cf0dcc2d3315cc9d90996515c9340fb29",
+      "after": "a8dafad27bb9908d2bdc7d89f8f35015d6defedab9cd723e01b7f9371cea7bc9",
+      "reverseEdits": [
+        {
+          "start": 120,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 110,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 78,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 31,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-frame.ts": {
+      "before": "82f4e142a764903e8d1f2dfe5a805096d5fe49db40b2fdfea49e255d3620301c",
+      "after": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
+      "reverseEdits": [
+        {
+          "start": 115,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 92,
+          "count": 2,
+          "lines": ["    art: (earlyExpansionFrame(face)?.art ??\n"]
+        },
+        {
+          "start": 74,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 56,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 18,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "13d084eca3ac561676d234b8632a3f3b55583cc1502c32d012e03a08c2029b58",
+      "after": "d4ba1276e2de866809f50e4e3decc14e15b140e36f1bf46f2b2ea6b40abf3c40",
+      "reverseEdits": [
+        {
+          "start": 108,
+          "count": 4,
+          "lines": [
+            "  const stockWindow = earlyExpansionFrame(face)?.stockWindow ?? legendsFrame(face)?.stockWindow;\n"
+          ]
+        },
+        {
+          "start": 7,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    }
+  }
+}

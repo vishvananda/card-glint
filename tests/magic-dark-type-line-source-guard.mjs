@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { preDarkBodySource } from './magic-dark-body-source-guard.mjs';
+import { preEarlyReprintSource } from './magic-early-reprint-source-guard.mjs';
 
 const extension = JSON.parse(
   await readFile(
@@ -38,7 +39,11 @@ export function darkTypeLineProof() {
     assert.equal(evidence.controls.rows.length, 84);
     for (const row of evidence.controls.rows) assert.equal(row.before, row.sha256);
     for (const [file, expected] of Object.entries(extension.dependencies))
-      assert.equal(hash(await readFile(file)), expected, 'Unreviewed type dependency: ' + file);
+      assert.equal(
+        hash(await preEarlyReprintSource(file)),
+        expected,
+        'Unreviewed type dependency: ' + file,
+      );
     return evidence;
   })();
   return verified;

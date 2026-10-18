@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preEarlyReprintSource } from './magic-early-reprint-source-guard.mjs';
 
 const extension = JSON.parse(
   await readFile(
@@ -63,7 +64,7 @@ export function darkBodyProof() {
 
 /** Reconstruct the preceding renderer without changing historical receipts. */
 export async function preDarkBodySource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preEarlyReprintSource(file),
     change = extension.files[file];
   if (!change) return bytes;
   await darkBodyProof();

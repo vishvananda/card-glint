@@ -12,6 +12,25 @@ remain outside the current study. Use pinned frame sources and compare replaceme
 before adopting them. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
+## Next grouped calibration batch
+
+Keep **Fallen Empires, Fourth Edition and Chronicles** together in one release:
+690 ordinary printings, with frame, color, mana, expansion-symbol and typography
+work reviewed together. The released renderer remains 0.5.1 during preparation.
+
+The integration branch includes 27 shared frame geometries and 30 source-bound
+material profiles. Basic-land plates and the gold/dark/generic land treatments
+retain their printing identity when switching between original and Oracle text.
+Frame and paper colors use separate masks; rejected component fits keep their
+source pigment. Outer stock is cut independently of the frame texture.
+
+Title geometry has promising repeated-validation results, but ink, body/type
+text, credits, statistics and the final symbol review remain separate gates.
+A trial that sampled median title-core brightness was rejected: scan blur and
+shadow contamination made its gray too dark, especially on light frames. Keep
+solid letter fills and compare stroke mass as well as edges. Neither a regional
+score increase nor a successful implementation replay establishes a completed set.
+
 ## 0.5.1 calibration batch
 
 Alpha filled body ink and darker headings, The Dark type lines, and The Dark
