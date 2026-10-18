@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preEarlyReprintTypeSource } from './magic-early-reprint-type-source-guard.mjs';
 
 let verified;
 export function earlyReprintWordingProof() {
@@ -37,7 +38,7 @@ export function earlyReprintWordingProof() {
 /** Catalog changes are checked separately from typography. Preserve the exact
  * catalog bytes used by every earlier calibration/native compatibility receipt. */
 export async function preEarlyReprintWordingSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preEarlyReprintTypeSource(file),
     extension = await earlyReprintWordingProof();
   const change = extension.files[file];
   if (!change) return bytes;

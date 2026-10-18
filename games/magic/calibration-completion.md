@@ -16,7 +16,7 @@ published. This is a partial calibration checkpoint. Local scan templates and
 diagnostic scores are not automatically deployed to a review service, and the
 ledger's complete-set release checks remain open.
 
-The early-reprint group now has integrated frame/color, original-mana and title
+The early-reprint group now has integrated frame/color, original-mana and heading
 candidates. [Title evidence](fixtures/accuracy/early-reprint-title.json) covers
 690 native renders and 683 accepted scan comparisons. Names use filled gray
 Goudy lettering with a dark shadow; both wording modes share the printing style.
@@ -34,8 +34,19 @@ improve on average in every frame/color group. The evidence retains all regressi
 seven rejected scan poses and a separate Fourth Edition ink/geometry diagnostic.
 Most Fourth Edition regressions involve placement; the evidence does not establish
 whether the remaining offsets come from normalization or printing variation.
-There are no per-card title offsets. Type lines, other text, expansion symbols,
-final whole-card review and publication remain part of the grouped release work.
+There are no per-card title offsets. Other text, expansion symbols, final
+whole-card review and publication remain part of the grouped release work.
+
+The [type-line evidence](fixtures/accuracy/early-reprint-type.json) adds 690 exact
+native replays and 683 scan comparisons, using filled MPlantin strokes and the
+existing frame registrations. Fourth Edition lands now share the other materials'
+absolute type-line origin. Reused-validation type indexes rise from 0.525 to 0.772
+for Fallen Empires, 0.409 to 0.802 for Fourth Edition, and 0.383 to 0.752 for
+Chronicles. Every material improves on average in both crops. One training and
+six validation regressions remain visible, with the latter all on Chronicles gold
+cards. A separate gold-profile experiment did little to resolve that cluster, so
+the shared set profile is retained. These results do not close the remaining
+heading outliers or the overall set review.
 
 The [original-wording catalog](fixtures/accuracy/early-reprint-wording.json) now
 includes 690 reviewed type lines, 27 additional rules/flavor entries, three printed

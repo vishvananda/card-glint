@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "26aec399dda5ab979eff2ae3e490aca5452689e8",
+  "evidenceHash": "e6d8927ba2ed4de29676591a9a4bc3410839ba08e5eb3e36fb5b33ac45604df0",
+  "dependencies": {
+    "games/magic/src/presentation/retro-paint.ts": "4527a51515e5d0c5878d77ede158a2558cc5b574af44310c25719f7506432d29",
+    "games/magic/src/presentation/early-reprint-type.ts": "0cf361459933d5679f3307da0df4f8f6432381d955a22c9722122392e8e8a849",
+    "games/magic/src/presentation/early-reprint-frame.ts": "e8d16406852f58f9fae95260f61a38ca87bd0906068a2396385eb0d0f9cea375",
+    "games/magic/src/presentation/solid-title.ts": "2589208c368e0c2bc356946a9b998292564f03b8fadff566631f20f2f577fcbb",
+    "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+    "games/magic/src/presentation/retro-type.ts": "1f67b5ac7c47442d324749b8ba46283a9aeb4573c22c75ff988077fc8f12200f"
+  },
+  "newModules": ["games/magic/src/presentation/early-reprint-type.ts"],
+  "files": {
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "e58c115e815976ff8db2dec1cb97433b7790ec5d9a50ad53389b0b7c3212e537",
+      "after": "4527a51515e5d0c5878d77ede158a2558cc5b574af44310c25719f7506432d29",
+      "reverseEdits": [
+        {
+          "start": 238,
+          "count": 4,
+          "lines": ["        if (!paintEarlyExpansionType(c, face, text, x, y, width))\n"]
+        },
+        {
+          "start": 19,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    }
+  }
+}
