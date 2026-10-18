@@ -24,8 +24,12 @@ retain their printing identity when switching between original and Oracle text.
 Frame and paper colors use separate masks; rejected component fits keep their
 source pigment. Outer stock is cut independently of the frame texture.
 
-Title geometry has promising repeated-validation results, but ink, body/type
-text, credits, statistics and the final symbol review remain separate gates.
+Filled title/type typography and the shared artist, copyright and stats profiles
+are integrated with exact native replay evidence. The footer pass also adds 61
+printed artist corrections and Chronicles Sentinel's original `1/*`. Regional
+regressions and rejected scan poses remain visible in the
+[completion notes](calibration-completion.md). Body/flavor typography and the final
+symbol review remain separate gates.
 A trial that sampled median title-core brightness was rejected: scan blur and
 shadow contamination made its gray too dark, especially on light frames. Keep
 solid letter fills and compare stroke mass as well as edges. Neither a regional

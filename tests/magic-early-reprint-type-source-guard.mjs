@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { preEarlyReprintFooterSource } from './magic-early-reprint-footer-source-guard.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 
 let verified;
@@ -68,7 +69,11 @@ export function earlyReprintTypeProof() {
     assert.equal(evidence.outliers.rows.length, 7);
     assert.deepEqual(extension.dependencies, evidence.sourceGuards);
     for (const [file, expected] of Object.entries(extension.dependencies))
-      assert.equal(hash(await readFile(file)), expected, 'Unreviewed type dependency: ' + file);
+      assert.equal(
+        hash(await preEarlyReprintFooterSource(file)),
+        expected,
+        'Unreviewed type dependency: ' + file,
+      );
     return extension;
   })();
   return verified;
@@ -77,7 +82,7 @@ export function earlyReprintTypeProof() {
 /** Recover the exact committed title/wording painter after proving type-only
  * native changes. Historical calibration receipts keep their original hashes. */
 export async function preEarlyReprintTypeSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preEarlyReprintFooterSource(file),
     extension = await earlyReprintTypeProof();
   const change = extension.files[file];
   if (!change) return bytes;

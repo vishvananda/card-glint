@@ -18,6 +18,7 @@ import { paintEarlyExpansionTitle } from './early-expansion-title.js';
 import { paintEarlyReprintTitle } from './early-reprint-title.js';
 import { retroTypePlacement, paintEarlyExpansionType } from './retro-type.js';
 import { paintEarlyReprintType } from './early-reprint-type.js';
+import { paintEarlyReprintFooter } from './early-reprint-footer.js';
 import { paintPrintingLegendsFooter } from './printing-legends-footer.js';
 import { paintUrzaFooter } from './retro-urza-footer.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
@@ -370,6 +371,10 @@ export function paintRetroFace(
     return;
   }
   if (paintUrzaFooter(c, face)) return;
+  if (paintEarlyReprintFooter(c, face)) {
+    paintRetroExtras(c, face, false);
+    return;
+  }
   c.shadowColor = details?.statsOpaqueShadow ? '#000' : '#000b';
   if (details) c.shadowOffsetX = c.shadowOffsetY = details.statsShadow * c.getTransform().a;
   c.fillStyle = retroInk(face);

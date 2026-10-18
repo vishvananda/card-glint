@@ -55,6 +55,33 @@ reproduce the 690 original calibration inputs, preserve 37 earlier body reviews
 and leave Oracle wording unchanged. This validates the supplied text, not its
 typography; most rules still come from the caller's printing-specific provider data.
 
+The [footer evidence](fixtures/accuracy/early-reprint-footer.json) adds shared
+artist, copyright and power/toughness profiles for the same three sets. Credits
+use filled MPlantin ink with a separate shadow; copyright uses light or dark ink
+according to the printed material. Explicit host visibility, translation, legal
+text and stats-ink controls still apply. The exact-printing catalog adds 61 artist
+corrections and Chronicles Sentinel's original `1/*`, preserving Oracle `1/1`.
+All 690 credits and all 333 printed power/toughness expressions were reviewed.
+
+Combined-footer reused-validation indexes improve as follows. These are regional
+similarities on fixed scan poses, not whole-card compliance percentages.
+
+| Set            | Artist        | Copyright     | Power/toughness |
+| -------------- | ------------- | ------------- | --------------- |
+| Fallen Empires | 0.302 → 0.738 | 0.398 → 0.799 | 0.341 → 0.854   |
+| Fourth Edition | 0.422 → 0.740 | 0.571 → 0.775 | 0.764 → 0.871   |
+| Chronicles     | 0.290 → 0.694 | 0.246 → 0.726 | 0.321 → 0.836   |
+
+All material means improve in both crops. The evidence retains 18 regional
+regressions: four Thallid stats, eleven Fourth Edition stats, Fourth Edition
+Leviathan's credit and two Chronicles gold stats. Thallid's printed stats sit
+farther left than the shared profile; no per-card position was added. A separate
+gold-stats profile gave too little improvement to justify another default.
+All 690 full native renders match the independent footer prototype, including
+the seven cards excluded from scan scoring; 98 unrelated cards are unchanged.
+Rules/flavor, expansion symbols and final set review remain open in this release
+batch.
+
 [Version 0.4.3](https://github.com/vishvananda/card-glint/releases/tag/v0.4.3)
 publishes the M21 stock-coverage correction and refined comparison evidence at
 commit `862e34605ee18b0e77fa9c3497a86ca1118cdd10`. Release CI passed and the package,

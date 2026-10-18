@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { preEarlyReprintFooterSource } from './magic-early-reprint-footer-source-guard.mjs';
 import { readFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { transform } from 'esbuild';
@@ -23,14 +24,14 @@ try {
   const { resolvePrintingWording, resolvePrintingArtist } = await server.ssrLoadModule(
     '/games/magic/src/index.ts',
   );
-  const { printingCorrections } = await server.ssrLoadModule(
-    '/games/magic/src/printing/corrections.ts',
-  );
-  const { artistCredits } = await server.ssrLoadModule(
-    '/games/magic/src/printing/artist-credits.ts',
-  );
-  async function previous(file, field) {
-    const source = await preEarlyReprintWordingSource('games/magic/src/printing/' + file);
+  // Preserve this historical three-credit assertion. The footer test checks
+  // the newer catalogs against this exact reconstructed revision.
+  const printingCorrections = await previous('corrections.ts', 'printingCorrections', true);
+  const artistCredits = await previous('artist-credits.ts', 'artistCredits', true);
+  async function previous(file, field, beforeFooter = false) {
+    const source = await (
+      beforeFooter ? preEarlyReprintFooterSource : preEarlyReprintWordingSource
+    )('games/magic/src/printing/' + file);
     const { code } = await transform(source.toString(), { loader: 'ts', format: 'esm' });
     return (await import('data:text/javascript;base64,' + Buffer.from(code).toString('base64')))[
       field

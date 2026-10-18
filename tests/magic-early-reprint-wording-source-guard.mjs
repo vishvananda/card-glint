@@ -29,7 +29,11 @@ export function earlyReprintWordingProof() {
     }))
       assert.equal(hash(await readFile(file)), expected, 'Unreviewed wording dependency: ' + file);
     for (const [file, change] of Object.entries(extension.files))
-      assert.equal(hash(await readFile(file)), change.after, 'Unreviewed wording catalog: ' + file);
+      assert.equal(
+        hash(await preEarlyReprintTypeSource(file)),
+        change.after,
+        'Unreviewed wording catalog: ' + file,
+      );
     return extension;
   })();
   return verified;
