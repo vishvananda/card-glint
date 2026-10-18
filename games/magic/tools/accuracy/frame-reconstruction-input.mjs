@@ -32,7 +32,7 @@ for (const e of entries) {
     name: e.card.name,
     oracleId: e.card.oracle_id,
     reference: { ...e.reference, file, width: image.width, height: image.height },
-    cohort: holdout ? 'validation' : 'calibration',
+    cohort: !pose.accepted ? 'review' : holdout ? 'validation' : 'calibration',
     normalization: pose,
     source: e.card.scryfall_uri,
     face: e.face,

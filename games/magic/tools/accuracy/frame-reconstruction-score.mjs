@@ -48,13 +48,22 @@ for (const record of observations.records) {
       ),
     };
   }
-  rows.push({ id: record.id, name: record.name, cohort: record.cohort, variants });
+  rows.push({
+    id: record.id,
+    name: record.name,
+    cohort: record.cohort,
+    normalizationAccepted: record.normalization.accepted,
+    variants,
+  });
   console.log(rows.length, record.name);
 }
 const mean = (values) => values.reduce((a, b) => a + b, 0) / values.length;
 const groups = Object.fromEntries(
-  ['calibration', 'validation', 'all'].map((cohort) => {
-    const subset = rows.filter((r) => cohort === 'all' || r.cohort === cohort);
+  ['calibration', 'validation', 'accepted', 'all'].map((cohort) => {
+    const subset = rows.filter(
+      (r) =>
+        cohort === 'all' || (cohort === 'accepted' ? r.normalizationAccepted : r.cohort === cohort),
+    );
     assert(subset.length > 0, `Empty cohort: ${cohort}`);
     return [
       cohort,
