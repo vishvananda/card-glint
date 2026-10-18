@@ -221,3 +221,49 @@ material control. Their recomposition through the stock mask is checked against
 the fitted complete plate. They already contain the experimental geometry and
 color adjustments; do not apply the previous source calibration again. Keep
 these derived external assets in ignored output, not the public showcase.
+
+## Print-dot calibration
+
+`frame-reconstruction-print-dots.py` works with the corrected-corner study's
+frozen observations, prepared raw scans and masks. It excludes text and art,
+measures native-pixel spectra, and chooses material settings without adjusting
+per-card dot phase. Its companion `.mjs` uses the built public finish module in
+one reusable WebGL context. GPU preparation/readback occurs once per candidate;
+none of this is part of the tilt/render loop. The capture uses ANGLE Metal on
+macOS; choose an available backend for other platforms and record it.
+
+With a built renderer exposed as `renderer/` beside the study's output and the
+output served by a local HTTP server:
+
+```sh
+export VECLIB_MAXIMUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+export PYTHONDONTWRITEBYTECODE=1
+python games/magic/tools/accuracy/frame-reconstruction-print-dots.py prepare \
+  "$STUDY/corners-v3" "$STUDY/print-dots"
+node games/magic/tools/accuracy/frame-reconstruction-print-dots.mjs \
+  "$STUDY/print-dots" "$STUDY_URL/print-dots/"
+python games/magic/tools/accuracy/frame-reconstruction-print-dots.py score \
+  "$STUDY/corners-v3" "$STUDY/print-dots"
+python games/magic/tools/accuracy/frame-reconstruction-print-dots.py select \
+  "$STUDY/corners-v3" "$STUDY/print-dots" \
+  --trials "$STUDY/print-dots"
+python -m unittest games.magic.tools.accuracy.frame_reconstruction.test_print_dots
+```
+
+Use a Python environment with the numerical dependencies above. For additional
+trials, copy/link the patch files and `patches.json` to a sibling trial directory
+and supply a `candidates.json`. The committed result fixture contains the exact
+three trial manifests for this experiment; their `source` is the relative URL
+of the reconstructed blank plate. An optional `experiment` URL loads
+`frame_reconstruction/print-dots-experiment.mjs`, a local diagnostic adapter for
+the public GLSL. Use that only when explicitly testing ink extraction or screen
+rotation; the selected Alpha profile needs neither change. Compare its default
+output with the public preparation pass before trusting new trial results.
+
+Score checkpoints validate their texture-metric, patch/manifest fingerprint and
+render hash before reuse. Pass all trial directories to `select --trials` for
+the shared-period fit. Selection uses the calibration cohort only, requires the
+existing ink model and a supported period, and limits each material's increase
+in mean RGB error to one byte level. Native texture mismatch is a separate
+metric from whole-card accuracy /100. Inspect both texture and average color;
+do not promote a profile just because its spectrum improves.
