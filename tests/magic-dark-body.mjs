@@ -46,6 +46,8 @@ try {
   await page.route('https://**/*', (route) => route.abort());
   await page.goto(server.resolvedUrls.local[0]);
   const result = await page.evaluate(async (wording) => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { earlyExpansionTextLayout: before } = await import(
       '/games/magic/src/presentation/__dark-body-before.ts'
     );

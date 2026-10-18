@@ -92,6 +92,8 @@ try {
   });
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/__stats_test`);
   await page.evaluate(async (face) => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { paintEarlyExpansionStats } = await import(
       '/games/magic/src/presentation/early-expansion-stats.ts'
     );

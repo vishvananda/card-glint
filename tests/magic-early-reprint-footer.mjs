@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { transform } from 'esbuild';
+import { preDeliverySource } from './magic-delivery-source-guard.mjs';
 import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
 import {
@@ -61,12 +62,18 @@ try {
   const { resolvePrintingWording, resolvePrintingArtist } = await server.ssrLoadModule(
     '/games/magic/src/index.ts',
   );
-  const { artistCredits } = await server.ssrLoadModule(
-    '/games/magic/src/printing/artist-credits.ts',
-  );
-  const { printingCorrections } = await server.ssrLoadModule(
-    '/games/magic/src/printing/corrections.ts',
-  );
+  // Historical assertions cover the full reviewed evidence now kept outside
+  // browser payloads. magic-data-tables independently proves compact runtime
+  // fields and evidence identities match this catalog exactly.
+  async function reviewed(file, key) {
+    const bytes = await preDeliverySource('games/magic/src/printing/' + file);
+    const { code } = await transform(bytes.toString(), { loader: 'ts', format: 'esm' });
+    return (await import('data:text/javascript;base64,' + Buffer.from(code).toString('base64')))[
+      key
+    ];
+  }
+  const artistCredits = await reviewed('artist-credits.ts', 'artistCredits');
+  const printingCorrections = await reviewed('corrections.ts', 'printingCorrections');
   async function prior(file, key) {
     const bytes = await preEarlyReprintFooterSource('games/magic/src/printing/' + file);
     const { code } = await transform(bytes.toString(), { loader: 'ts', format: 'esm' });

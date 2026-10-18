@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createServer } from './magic-vite.mjs';
+import { createServer, createDataFixtureServer } from './magic-vite.mjs';
 import { PNG } from 'pngjs';
 import { measureCornerRadius } from '../games/magic/tools/accuracy/corner-radius.mjs';
 import { checkSetProfile } from '../games/magic/tools/accuracy/set-profile-check.mjs';
@@ -169,16 +169,26 @@ try {
   const input = { face, printingId: null, printedImage: null };
   const key = cardTextureKey(input, 'inspect');
   const p = setCalibrationProfiles.fem,
-    prior = p.mana.geometry.dx,
-    revision = p.revision;
-  try {
+    prior = p.mana.geometry.dx;
+  assert.throws(() => {
     p.mana.geometry.dx += 0.25;
-    p.revision++;
-    assert.equal(printingManaDefaults(face).dx, prior + 0.25);
-    assert.notEqual(cardTextureKey(input, 'inspect'), key);
+  }, TypeError);
+  const updated = await createDataFixtureServer(`
+    if(data.set === 'fem') {
+      const p=data.tables.setCalibrationProfiles.fem;
+      p.mana.geometry.dx += 0.25;
+      p.revision++;
+    }
+  `);
+  try {
+    const next = await updated.ssrLoadModule('/games/magic/src/presentation-api.ts');
+    const { printingManaDefaults: nextMana } = await updated.ssrLoadModule(
+      '/games/magic/src/presentation/printing-mana-adjustment.ts',
+    );
+    assert.equal(nextMana(face).dx, prior + 0.25);
+    assert.notEqual(next.cardTextureKey(input, 'inspect'), key);
   } finally {
-    p.mana.geometry.dx = prior;
-    p.revision = revision;
+    await updated.close();
   }
   assert.equal(cardTextureKey(input, 'inspect'), key);
 } finally {

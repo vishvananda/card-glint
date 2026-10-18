@@ -19,6 +19,11 @@ export async function createServer(options) {
 /** Exercise stale identity rejection at the compiled-data boundary. Runtime
  * payloads are immutable; corrupt a separate server before registration. */
 export async function createCorruptedDataServer(tableName) {
+  return createDataFixtureServer(
+    `for(const profile of Object.values(data.tables[${JSON.stringify(tableName)}] ?? {})) profile.source = 'different source or geometry';`,
+  );
+}
+export async function createDataFixtureServer(prepare) {
   return createServer({
     configFile: false,
     optimizeDeps: { noDiscovery: true },
@@ -34,8 +39,7 @@ export async function createCorruptedDataServer(tableName) {
             `
           import {registerSet as install} from './registry.js';
           function registerSet(data) {
-            for(const profile of Object.values(data.tables[${JSON.stringify(tableName)}] ?? {}))
-              profile.source = 'different source or geometry';
+            ${prepare}
             install(data);
           }
         `,

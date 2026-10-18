@@ -44,6 +44,8 @@ try {
   });
   await page.goto(server.resolvedUrls.local[0]);
   const result = await page.evaluate(async (symbolUrl) => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
     const { magic } = await import('/games/magic/src/index.ts');
     const { composeCardTexture } = await import('/games/magic/src/presentation/canvas-face.ts');
     const { canvasAssetUrls, loadCanvasImages } = await import(
