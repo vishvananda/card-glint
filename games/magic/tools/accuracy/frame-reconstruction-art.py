@@ -10,6 +10,35 @@ from scipy.ndimage import distance_transform_edt
 from frame_reconstruction.geometry import read_image, sample
 
 
+def verify_native(root):
+    records = []
+    observations = json.loads((root / 'observations.json').read_text())['records']
+    for row in observations:
+        def pixels(relative):
+            return np.asarray(Image.open(root / relative).convert('RGBA'))
+        identifier = row['id']
+        baseline = pixels(f'art-native/{identifier}-0.png')
+        if not np.array_equal(baseline, pixels(f'train-native/{identifier}-1.png')):
+            raise ValueError(f"Changed art baseline: {row['name']}")
+        reference = pixels(f'art-source/{identifier}-reference.png')
+        for i, kind in enumerate(['hard', 'feather'], start=1):
+            render = pixels(f'art-native/{identifier}-{i}.png')
+            mask = pixels(f'art-source/{identifier}-{kind}.png')[..., 3]
+            interior = mask == 255
+            changed = np.any(render != baseline, axis=-1)
+            if not np.array_equal(render[..., 3], baseline[..., 3]):
+                raise ValueError(f"Art changed silhouette: {row['name']}")
+            if np.any(changed & (mask == 0)):
+                raise ValueError(f"Art escaped aperture: {row['name']}")
+            if not np.array_equal(render[..., :3][interior], reference[..., :3][interior]):
+                raise ValueError(f"Common-grid artwork differs: {row['name']} ({kind})")
+            records.append(dict(id=identifier, variant=kind, opaquePixels=int(interior.sum()),
+                                maximumOpaqueRgbDifference=0, changedPixelsOutsideMask=0))
+    result = dict(cards=len(observations), baselineParity=True, alphaPreserved=True, records=records)
+    (root / 'art-source/native-sampling-verification.json').write_text(json.dumps(result, indent=2)+'\n')
+    print(f"Verified common-grid art, alpha and aperture isolation for {len(observations)} cards")
+
+
 def run(root, inputs=None, cache=None):
     spec = importlib.util.spec_from_file_location(
         'refine', Path(__file__).with_name('frame-reconstruction-refine.py'))
@@ -46,7 +75,14 @@ def run(root, inputs=None, cache=None):
     for row in observations['records']:
         scan = read_image(row['reference']['file'])
         sx, sy = refine.scan_coordinates(scan.shape, row['normalization']['transform']['matrix'])
-        image = sample(scan, sx, sy)[..., :3]
+        normalized = sample(scan, sx, sy)
+        # The comparison must use the same native grid as extracted artwork.
+        # Direct scan->preview and scan->native->preview sampling alias the
+        # printed dots differently even when the native artwork is identical.
+        # Match the float64 promotion in the RGBA art-mask concatenation below;
+        # float32 multiplication can otherwise change half-integer rounding.
+        refine.save_png(out / f"{row['id']}-reference.png", normalized.astype(np.float64))
+        image = normalized[..., :3]
         for kind, alpha in [('hard', aperture.astype(float)), ('feather', blend)]:
             rgba = np.concatenate([np.where((alpha > 0)[..., None], image, 0), alpha[..., None]], -1)
             refine.save_png(out / f"{row['id']}-{kind}.png", rgba)
@@ -71,7 +107,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('directory', type=Path)
     parser.add_argument('--inputs', type=Path)
+    parser.add_argument('--verify-native', action='store_true')
     parser.add_argument('--cache', type=Path, default=Path(os.environ.get(
         'MAGIC_ACCURACY_CACHE', Path(__file__).parents[2] / '.cache/accuracy')))
     args = parser.parse_args()
-    run(args.directory, args.inputs, args.cache)
+    if args.verify_native:
+        verify_native(args.directory)
+    else:
+        run(args.directory, args.inputs, args.cache)

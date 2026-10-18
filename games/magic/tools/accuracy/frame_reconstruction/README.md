@@ -110,3 +110,31 @@ then use its `art-source/candidates.json` with the native/scoring commands and
 the label `art`. This reference-derived art is not independent prediction
 evidence; report art and frame gains separately. Its one-canonical-pixel seam
 feather must not copy lettering or expand across the frame.
+After native capture, run the art tool again with `--verify-native` to check
+baseline parity, silhouette/aperture isolation and exact opaque art-interior
+RGB equality against the common-grid reference on every card.
+
+The art tool also exports each full reference onto the same native grid as the
+art extraction. Use that image when drawing preview differences: direct
+scan-to-preview and scan-to-native-to-preview sampling can produce false moire.
+Do not silently change the normalization used by previously recorded scores.
+
+For the optional dark-stock and corner diagnostic, run the art extraction first,
+then:
+
+```sh
+python games/magic/tools/accuracy/frame-reconstruction-border.py test-results/frame-study
+node games/magic/tools/accuracy/frame-reconstruction-native.mjs \
+  test-results/frame-study INPUTS.json COMPONENTS.json border \
+  test-results/frame-study/border/candidates.json
+python games/magic/tools/accuracy/frame-reconstruction-border.py test-results/frame-study --evaluate
+```
+
+This diagnostic fits shared band colors/geometry and an optional manifest
+`cornerRadius` override. It does not change a face or a renderer default. The
+source alpha remains fixed; the final native silhouette applies the override.
+Identical reference PNG alpha hashes establish one common reference mask, not
+independent measurements of physical card cuts. Report corner and stock metrics
+separately from frame texture. Replacement frame material should leave the outer
+stock transparent; a full-canvas inner-border overlay can remain independently
+calibratable. Keep external assets and all previews in the ignored output tree.

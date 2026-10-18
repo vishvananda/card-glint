@@ -79,7 +79,9 @@ because Canvas premultiplication rounds it.
 
 ## Next experiments
 
-These are proposals, not measured improvements:
+The first three experiments below have now been implemented and measured in
+[the refinement follow-up](alpha-white-refinement.md). The list records their
+motivation; alternating full layout calibration remains future work.
 
 - Recover a robust shared texture from all supported scan pixels, with an
   agreement/uncertainty map. Subpixel sampling may provide additional detail,

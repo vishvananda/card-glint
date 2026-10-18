@@ -19,6 +19,14 @@ const ids = new Set(obs.records.map((r) => r.id));
 const entries = inputs.entries.filter((e) => ids.has(e.id));
 const geometry = await readJson(path.join(directory, 'geometry.json'));
 const manifest = candidateFile ? await readJson(candidateFile) : null;
+for (const candidate of manifest?.candidates ?? []) {
+  const radius = candidate.cornerRadius;
+  assert(
+    radius === undefined ||
+      (typeof radius === 'number' && Number.isFinite(radius) && radius > 0 && radius < 0.25),
+    'Candidate cornerRadius must be a finite fraction of card width between 0 and 0.25',
+  );
+}
 const adjustment = manifest
   ? null
   : await readJson(path.join(directory, `${label}-adjustment.json`));
@@ -37,7 +45,7 @@ const output = path.join(directory, `${label}-native`);
 await mkdir(output, { recursive: true });
 try {
   await session.page.evaluate(
-    async ({ geometry, adjustment, sourceData, precomposed }) => {
+    async ({ geometry, adjustment, sourceData, precomposed, cornerRadii }) => {
       await import('/games/magic/src/data/eager.ts');
       await import('/games/magic/src/data/eager-wording.ts');
       const { colorFrame } = await import('/games/magic/src/presentation/frame-hsb.ts');
@@ -195,7 +203,9 @@ try {
           ctx.filter = 'none';
           ctx.fillStyle = '#000';
           ctx.beginPath();
-          ctx.roundRect(0, 0, 488, 680, faceCornerRadius(face) * 488);
+          const radius =
+            index >= 0 ? (cornerRadii[index] ?? faceCornerRadius(face)) : faceCornerRadius(face);
+          ctx.roundRect(0, 0, 488, 680, radius * 488);
           ctx.fill();
           ctx.restore();
           const result = c.toDataURL();
@@ -210,7 +220,13 @@ try {
         }
       };
     },
-    { geometry, adjustment, sourceData, precomposed: Boolean(manifest) },
+    {
+      geometry,
+      adjustment,
+      sourceData,
+      precomposed: Boolean(manifest),
+      cornerRadii: manifest?.candidates.map((candidate) => candidate.cornerRadius ?? null) ?? [],
+    },
   );
   const materials = await session.page.evaluate(() => window.frameExperiment.materials);
   const plates = await session.page.evaluate(() => window.frameExperiment.plates);
