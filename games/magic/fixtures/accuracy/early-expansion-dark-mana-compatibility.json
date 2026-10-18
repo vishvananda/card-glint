@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "b4ff9e3da44989ad92d7b7c07d709c9fbd5be15b",
+  "evidenceHash": "6bb03ae77a2c37b15d80f2152583e7d075f7fc11abe10dec4ebc5e1daa034bcd",
+  "dependencies": {
+    "games/magic/src/presentation/early-expansion-mana-colors.ts": "1160272a1a6bfe4d513995de0c7c1d944e3d8c35f9d7e165e79db9392267fbe3",
+    "games/magic/src/presentation/historical-mana.ts": "7038264ecea797772e215fedb46337e8d34315447db699789ffd8179d82c3a81",
+    "games/magic/src/presentation/mana-numeral.ts": "13ece88a229f00d138e351b60f12ccc1cfb111d4621ec78b93710beadb2fb4ff",
+    "games/magic/src/presentation/mana-printing-profiles.ts": "c3baf1b3703d9fa3c15b8b1df8446aeb316dad64430d54659a19beac53f4de71",
+    "games/magic/src/presentation/mana-glyph-paper.ts": "2e0aa108afb5e499c5f7beef00e467e517379a1cf12a24a95a7f494e35eb415b",
+    "games/magic/src/presentation/mana-assets.ts": "873ab2c862c7f95ffb096c437bc8639b1edd6f835662b36a2e355742d0667852",
+    "games/magic/src/presentation/mana-colors.ts": "ab608bd565055051bd0592dbca175b4fc1a06c2306d3462c2faae15f82861417",
+    "games/magic/src/presentation/early-expansion-mana.ts": "97acb863d20c211cafb1ad001e3a25f883cce8f4d0aa4c93e9786b23af6a05f2",
+    "games/magic/src/presentation/historical-mana-profiles.ts": "7c4f1c2b749342390a130bb62fe213c31552472d575cbfa67d8552adce97332d",
+    "games/magic/src/presentation/printing-mana-adjustment.ts": "ae53ce01f10a56c36a4ac140efaaa07ddc2f8e061dfd73019415cfa55ee183b9",
+    "games/magic/src/presentation/symbol-adjustment.ts": "a97d7cb91189288f2c81f64e0a7ace1bbdf42851b379ed4cf84b5de6c7195178",
+    "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3"
+  },
+  "newModules": ["games/magic/src/presentation/mana-glyph-paper.ts"],
+  "files": {
+    "games/magic/src/presentation/early-expansion-mana-colors.ts": {
+      "before": "6eb351dd8ffbc8e5918e1eadcab90db432a672b69769304f09170433cf843625",
+      "after": "1160272a1a6bfe4d513995de0c7c1d944e3d8c35f9d7e165e79db9392267fbe3",
+      "reverseEdits": [
+        {
+          "start": 16,
+          "count": 3,
+          "lines": ["  'drk-black-B': [158 / 255, 134 / 255, 128 / 255],\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/historical-mana.ts": {
+      "before": "ed8952f773c1f9d1be4e1de630ee505f83e062591687e908c38cc1ef56fa2c8e",
+      "after": "7038264ecea797772e215fedb46337e8d34315447db699789ffd8179d82c3a81",
+      "reverseEdits": [
+        {
+          "start": 25,
+          "count": 13,
+          "lines": []
+        },
+        {
+          "start": 22,
+          "count": 2,
+          "lines": [
+            "  const ink = MANA_PRINTING_INK[`${face.setCode?.toLowerCase()}/${symbol}`];\n",
+            "  return asset && ink && ink.family === family ? { ...asset, inkExpansion: ink.pixels } : asset;\n"
+          ]
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/mana-numeral.ts": {
+      "before": "3222da2e70d543f2b3a2c065c6bc3582176d713643fe039d6fec28fbd2f04120",
+      "after": "13ece88a229f00d138e351b60f12ccc1cfb111d4621ec78b93710beadb2fb4ff",
+      "reverseEdits": [
+        {
+          "start": 121,
+          "count": 1,
+          "lines": ["      paper = [p[sample]!, p[sample + 1]!, p[sample + 2]!];\n"]
+        },
+        {
+          "start": 109,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 77,
+          "count": 1,
+          "lines": ["        build: () => splitNumeral(source, cost),\n"]
+        },
+        {
+          "start": 74,
+          "count": 2,
+          "lines": [
+            "      sources.map(({ source, identity, cost }) => ({\n",
+            "        key: `numeral-v2:${identity}:${cost ? JSON.stringify(cost) : 'source'}`,\n"
+          ]
+        },
+        {
+          "start": 61,
+          "count": 9,
+          "lines": [
+            "    return [{ symbol, source, identity, cost: costUrl ? cost : undefined }];\n"
+          ]
+        },
+        {
+          "start": 8,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/mana-printing-profiles.ts": {
+      "before": "194c0710740b77b2239a8bdddba4e8481ca42fb82d7d540a3d3af603ba85792e",
+      "after": "c3baf1b3703d9fa3c15b8b1df8446aeb316dad64430d54659a19beac53f4de71",
+      "reverseEdits": [
+        {
+          "start": 37,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 33,
+          "count": 3,
+          "lines": [
+            "export const MANA_PRINTING_INK: Readonly<Record<string, { family: string; pixels: number }>> = {\n"
+          ]
+        }
+      ]
+    }
+  }
+}

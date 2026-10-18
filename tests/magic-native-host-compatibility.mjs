@@ -18,6 +18,7 @@ import {
 } from './magic-native-reference.mjs';
 import { nativeHostCases } from './magic-native-host-cases.mjs';
 import { assertCacheOnlySourceBytes } from './magic-source-guard.mjs';
+import { darkManaProof } from './magic-dark-mana-source-guard.mjs';
 import { darkTypographyProof } from './magic-dark-type-source-guard.mjs';
 import { darkSymbolProof, preDarkSymbolSource } from './magic-dark-symbol-source-guard.mjs';
 import { darkCalibrationProof } from './magic-dark-source-guard.mjs';
@@ -56,6 +57,17 @@ async function identity() {
   return {
     reference: nativeReference,
     sourceManifest: hash(await readFile(sourceManifestFile)),
+    darkManaRevision: hash(
+      Buffer.concat(
+        await Promise.all(
+          [
+            'tests/magic-dark-mana-source-guard.mjs',
+            'games/magic/fixtures/accuracy/early-expansion-dark-mana.json',
+            'games/magic/fixtures/accuracy/early-expansion-dark-mana-compatibility.json',
+          ].map((file) => readFile(path.join(root, file))),
+        ),
+      ),
+    ),
     darkSymbolRevision: hash(
       Buffer.concat(
         await Promise.all(
@@ -156,7 +168,8 @@ async function verify() {
   const stats = await statsCalibrationProof(),
     dark = await darkCalibrationProof(),
     typography = await darkTypographyProof(),
-    symbols = await darkSymbolProof();
+    symbols = await darkSymbolProof(),
+    mana = await darkManaProof();
   assert.equal(nativeHostSources.schema, 1);
   assert.equal(nativeHostSources.reference, nativeReference);
   const rulesFile = 'games/magic/src/presentation/rules-paint.ts';
@@ -189,7 +202,10 @@ async function verify() {
   const currentRoot = await realpath(root);
   const nativeDirectory = 'games/magic/src';
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
-    (file) => ![...stats.newModules, ...dark.newModules].includes(`${nativeDirectory}/${file}`),
+    (file) =>
+      ![...stats.newModules, ...dark.newModules, ...mana.newModules].includes(
+        `${nativeDirectory}/${file}`,
+      ),
   );
   const referenceFiles = await sourceFiles(path.join(referenceRoot, nativeDirectory));
   for (const relative of new Set([...currentFiles, ...referenceFiles])) {
@@ -224,7 +240,8 @@ async function verify() {
             Object.hasOwn(stats.files, relative) ||
             Object.hasOwn(dark.files, relative) ||
             Object.hasOwn(typography.files, relative) ||
-            Object.hasOwn(symbols.files, relative)
+            Object.hasOwn(symbols.files, relative) ||
+            Object.hasOwn(mana.files, relative)
           )
             return (await preStatsCalibrationSource(relative)).toString();
         },

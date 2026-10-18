@@ -1,5 +1,24 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
+import { darkManaProof } from './magic-dark-mana-source-guard.mjs';
+
+await darkManaProof();
+const evidence = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-expansion-dark-mana.json'),
+);
+for (const color of ['B', 'R']) {
+  const chosen = evidence.selected[color].candidate;
+  for (const cohort of ['calibration', 'validation']) {
+    const before = evidence.groups[`${color}/baseline/ordinary/${cohort}`];
+    const after = evidence.groups[`${color}/${chosen}/ordinary/${cohort}`];
+    for (const metric of ['score', 'filledOverlap', 'areaAgreement'])
+      assert.ok(after[metric] > before[metric], `${color}/${cohort}/${metric}`);
+  }
+  assert.ok(Object.values(evidence.weightSensitivity[color]).every((value) => value === chosen));
+}
+assert.equal(evidence.rejectedWhite.status, 'known-color-control-failed-estimator-biased');
+assert.ok(evidence.fullCard.regressions.length > 0, 'Keep individual score regressions visible.');
 
 const server = await createServer({
   configFile: false,
@@ -38,7 +57,7 @@ try {
   };
   for (const [symbol, amount] of [
     ['B', 0.2],
-    ['R', 0.4],
+    ['R', 0.2],
   ]) {
     assert.equal(historicalManaAsset(face, symbol).inkExpansion, amount);
     assert.equal(historicalManaPaperSample(face, symbol), 'opaque-percentile');

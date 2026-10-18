@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { preDarkManaSource } from './magic-dark-mana-source-guard.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 
 let verified;
@@ -40,7 +41,7 @@ export function darkSymbolProof() {
     for (const row of evidence.controls.rows) assert.equal(row.before, row.sha256);
     for (const [file, expected] of Object.entries(extension.dependencies))
       assert.equal(
-        hash(await readFile(file)),
+        hash(await preDarkManaSource(file)),
         expected,
         'Unreviewed Dark symbol dependency: ' + file,
       );
@@ -52,7 +53,7 @@ export function darkSymbolProof() {
 /** Reconstruct the measured 0.4.18 source, including pinned SVG preparation
  * metadata. Historical typography/frame evidence never inherits new pixels. */
 export async function preDarkSymbolSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preDarkManaSource(file),
     extension = await darkSymbolProof(),
     change = extension.files[file];
   if (!change) return bytes;

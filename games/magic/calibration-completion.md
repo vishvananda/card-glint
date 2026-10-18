@@ -536,3 +536,18 @@ is retained as a regression, Gaea's Touch 77† as a shifted-ink diagnostic, and
 Ball Lightning as unscored. Black stroke-width mismatch and frame-texture color
 remain review items. The ledger retains partial status; these are regional
 0.4.19 measurements, not complete-set certification or hosted scores.
+
+The [Dark mana refinement](fixtures/accuracy/early-expansion-dark-mana.json)
+uses opaque-source paper sampling and a shared 0.2 px ink expansion for black
+and red. Filled overlap, continuous coverage, area and outline diagnostics
+replace the initial overlap-only selection, which made red too heavy. Values
+are fitted only on ordinary calibration names; the reserved ordinary and gold
+groups retain their development status. Ordinary validation filled overlap
+improves from 0.8910 to 0.9190 for black and 0.8726 to 0.8981 for red. Gold
+transfer improves too, while red outline regressions remain recorded.
+All 122 native prototypes match, 194 other corpus faces and 84 controls remain
+exact, and changes stay within costs/rules. White pigment fitting is deferred
+after a known-palette blur test exposed estimator bias. Circle geometry and
+rendered paper medians are preserved. The ledger remains partial; type/body
+layout, generic numeral shape, text/frame metric separation and complete-set
+certification remain open. These are local 0.4.20 diagnostics, not hosted scores.
