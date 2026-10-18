@@ -83,9 +83,10 @@ export { faceArtBounds, composeCardTexture, foilShader, FinishResources, PRINT_D
 export function uploadFinishMap(gl: WebGL2RenderingContext, map: FinishMap, srgb: boolean) {
   gl.texImage2D(gl.TEXTURE_2D, 0, srgb ? gl.SRGB8_ALPHA8 : gl.RGBA8, map.width, map.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, map.data);
 }
-export const hostInk: CardTextureInput = {printingId:null,printedImage:null,face:{name:'Host',canonicalTypeLine:'Creature',textInk:{stats:[{start:0,end:1,color:'#f00'}]}},rulesText:false};
+export const hostInk: CardTextureInput = {printingId:null,printedImage:null,face:{name:'Host',canonicalTypeLine:'Creature',borderThickness:0.08,textInk:{stats:[{start:0,end:1,color:'#f00'}]}},rulesText:false};
+export const composeHostInk = (signal: AbortSignal) => composeCardTexture(hostInk, 'table', signal);
 import wasmUrl from 'card-glint/renderer.wasm?url';
-const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2',blackBorderLift:0.03,setSymbolMask:'ink',printingOmissions:[{rect:[0.1,0.1,0.4,0.1],texts:['Example']}]};
+const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2',borderThickness:0.125,blackBorderLift:0.03,setSymbolMask:'ink',printingOmissions:[{rect:[0.1,0.1,0.4,0.1],texts:['Example']}]};
 const selection: PrintingSelection = {preset:printingPresets[0]!.id,overrides:{calibration:'auto',collectorNumber:'7',elements:{artist:{offset:[2,0]}}}};
 export const presetFace = resolvePrintingPreset(face, selection);
 const importOptions:CardImportOptions={wording:'oracle'};export const imported=fromScryfallCard({name:'Probe',type_line:'Instant'},importOptions);export const importedMtgjson=fromMtgjsonCard({name:'Probe',type:'Instant'});

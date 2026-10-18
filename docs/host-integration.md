@@ -90,6 +90,44 @@ must honor `AssetRequest.width` and release only that request's borrowed images.
 Capture the correct source scope when each request starts, and cancel obsolete
 document work before replacing a document-specific source scope.
 
+### Native border thickness
+
+Set `face.borderThickness` on the public `MagicCard` or `CardTextureInput.face`
+before calling `magic.describe()` or `composeCardTexture()`:
+
+```ts
+const bordered = { ...face, borderThickness: 0.08 };
+const recipe = magic.describe(bordered, 'inspect');
+// For host-owned native composition:
+const texture = await composeCardTexture(
+  { ...textureInput, face: bordered },
+  'inspect',
+  signal,
+  hooks,
+);
+```
+
+The value is a finite number from `0` to `0.2`, measured in card widths.
+`0.08` covers 8% of the card width inward from each physical edge, with the
+same physical thickness at the top and bottom. It uses the face's calibrated
+or native stock color and honors `blackBorderLift`. Omitted values and `0`
+preserve native pixels and keys.
+
+This is an opaque overlay, not a frame rescale. It can cover text, artwork and
+credits near the edge; it cannot thin a baked-in border or recover hidden pixels.
+Apply it to the root face of a split card, not its panels. Custom painters must
+implement their own border geometry; positive values with `input.custom` reject.
+Out-of-range and nonfinite values reject before assets or composition hooks run.
+
+The setting affects native assembled faces, scans and printing-only rasters.
+Artwork-only rasters, etching masks, layout measurements and corner radius stay
+unchanged. Rounded clipping still applies to the final face. Keep the same face
+setting for preview and export, and include the returned raster key in host
+caches. Change the document revision when replacing a visible recipe.
+
+Run `npm run test:border-thickness` for Chromium/WebKit pixel checks at both
+tiers, including unchanged defaults against the pre-border PR revision.
+
 ## Finish shader contract
 
 `foilShader({artWindows: 'pair', liquid: false})` returns GLSL functions, not a

@@ -2,6 +2,7 @@ import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible, withRulesInk } from './rules-visibility.js';
 import { calibrationFace } from './calibration-input.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
+import { paintBorderThickness, validateBorderThickness } from './border-thickness.js';
 import { validateArtPlacement } from './art-placement.js';
 import { validatePrintingElements, paintPrintingElement } from './printing-elements.js';
 import { withPrintingOmissions } from './printing-omissions.js';
@@ -161,6 +162,9 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
           stats,
           stats ? (input.statusLayout ?? tier) : null,
         ],
+    ...(input.layer !== 'etching' && input.paintLayer !== 'artwork' && face.borderThickness
+      ? [['border-thickness-v1', face.borderThickness]]
+      : []),
   ]);
 }
 
@@ -277,6 +281,11 @@ export async function composeCardTexture(
     underArt?: HTMLCanvasElement;
   },
 ): Promise<HTMLCanvasElement> {
+  validateBorderThickness(input.face);
+  if (input.custom && input.face.borderThickness)
+    throw Error(
+      'borderThickness is only supported by native card composition, not custom painters.',
+    );
   input = { ...input, face: calibrationFace(input.face) };
   validateArtPlacement(input.face);
   validatePrintingElements(input.face);
@@ -355,6 +364,7 @@ export async function composeCardTexture(
             plateUrl ? loaded.images.get(plateUrl) : undefined,
             input.statusLayout === 'inspect' || tier === 'inspect',
           );
+          if (input.paintLayer !== 'artwork') paintBorderThickness(context, input.face);
           roundCanvasSilhouette(context, input.face);
           return canvas;
         }
@@ -438,6 +448,7 @@ export async function composeCardTexture(
         plateUrl ? loaded.images.get(plateUrl) : undefined,
         input.statusLayout === 'inspect' || tier === 'inspect',
       );
+      if (input.paintLayer !== 'artwork') paintBorderThickness(context, input.face);
       roundCanvasSilhouette(context, input.face);
       return canvas;
     } finally {
