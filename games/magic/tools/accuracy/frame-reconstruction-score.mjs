@@ -8,10 +8,15 @@ import { PNG } from 'pngjs';
 import { hash, readJson, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 
-const [directory, inputsFile, scorerFile, label = 'train'] = process.argv.slice(2);
+const [directory, inputsFile, scorerFile, label = 'train', candidateFile] = process.argv.slice(2);
 if (!scorerFile)
   throw Error('Usage: frame-reconstruction-score.mjs OUT INPUTS SCORER_MODULE [train|all]');
-assert(['train', 'all'].includes(label));
+assert(/^[a-z][a-z0-9-]*$/.test(label));
+const manifest = candidateFile ? await readJson(candidateFile) : null;
+const candidateKeys = manifest
+  ? manifest.candidates.map((candidate) => candidate.key)
+  : ['calibrated', 'reconstructed'];
+assert.equal(new Set(candidateKeys).size, candidateKeys.length);
 const { scoreRegions } = await import(pathToFileURL(path.resolve(scorerFile)));
 assert.equal(typeof scoreRegions, 'function', 'Scorer must export scoreRegions');
 const observations = await readJson(path.join(directory, 'observations.json'));
@@ -27,8 +32,7 @@ for (const record of observations.records) {
   const variants = {};
   for (const [key, file] of [
     ['released', record.baseline.file],
-    ['calibrated', `${label}-native/${record.id}-0.png`],
-    ['reconstructed', `${label}-native/${record.id}-1.png`],
+    ...candidateKeys.map((key, index) => [key, `${label}-native/${record.id}-${index}.png`]),
   ]) {
     const render = normalize(PNG.sync.read(await readFile(path.join(directory, file))));
     const result = scoreRegions(scan, render, entry.card, record.face);
@@ -57,7 +61,7 @@ const groups = Object.fromEntries(
       {
         cards: subset.length,
         variants: Object.fromEntries(
-          ['released', 'calibrated', 'reconstructed'].map((key) => [
+          ['released', ...candidateKeys].map((key) => [
             key,
             {
               structure100: mean(subset.map((r) => r.variants[key].structure100)),
@@ -81,6 +85,7 @@ await writeJson(path.join(directory, `${label}-whole-card.json`), {
   normalizationSha256: hash(
     await readFile(fileURLToPath(new URL('./pixels-pure.mjs', import.meta.url))),
   ),
+  ...(manifest ? { candidates: manifest.candidates } : {}),
   groups,
   rows,
 });

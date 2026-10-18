@@ -6,7 +6,10 @@ import { PNG } from 'pngjs';
 import { hash, readJson, writeJson } from './common.mjs';
 import { openBrowser } from './browser.mjs';
 
-const [directory, inputsFile, componentsFile, label = 'train'] = process.argv.slice(2);
+const platesOnly = process.argv.includes('--plates-only');
+const [directory, inputsFile, componentsFile, label = 'train', candidateFile] = process.argv
+  .slice(2)
+  .filter((argument) => argument !== '--plates-only');
 if (!componentsFile)
   throw Error('Usage: frame-reconstruction-native.mjs OUT INPUTS COMPONENTS [train|all]');
 const obs = await readJson(path.join(directory, 'observations.json'));
@@ -15,11 +18,14 @@ const inputs = await readJson(inputsFile),
 const ids = new Set(obs.records.map((r) => r.id));
 const entries = inputs.entries.filter((e) => ids.has(e.id));
 const geometry = await readJson(path.join(directory, 'geometry.json'));
-const adjustment = await readJson(path.join(directory, `${label}-adjustment.json`));
-const sourceFiles = [
-  'inputs/sharpened-frames/alpha-white-frame.png',
-  `${label}-reconstructed-source.png`,
-];
+const manifest = candidateFile ? await readJson(candidateFile) : null;
+const adjustment = manifest
+  ? null
+  : await readJson(path.join(directory, `${label}-adjustment.json`));
+const sourceFiles = manifest
+  ? manifest.candidates.map((candidate) => candidate.file)
+  : ['inputs/sharpened-frames/alpha-white-frame.png', `${label}-reconstructed-source.png`];
+assert(sourceFiles.length > 0);
 const sourceData = await Promise.all(
   sourceFiles.map(
     async (file) =>
@@ -31,7 +37,7 @@ const output = path.join(directory, `${label}-native`);
 await mkdir(output, { recursive: true });
 try {
   await session.page.evaluate(
-    async ({ geometry, adjustment, sourceData }) => {
+    async ({ geometry, adjustment, sourceData, precomposed }) => {
       await import('/games/magic/src/data/eager.ts');
       await import('/games/magic/src/data/eager-wording.ts');
       const { colorFrame } = await import('/games/magic/src/presentation/frame-hsb.ts');
@@ -52,6 +58,13 @@ try {
         const ctx = c.getContext('2d');
         ctx.drawImage(image, 0, 0);
         image.close();
+        if (precomposed) {
+          materials.push(c.toDataURL());
+          plates.push(c.toDataURL());
+          candidates.push(await createImageBitmap(c));
+          c.width = c.height = 0;
+          continue;
+        }
         const data = ctx.getImageData(0, 0, c.width, c.height);
         colorFrame(data, adjustment);
         ctx.putImageData(data, 0, 0);
@@ -164,6 +177,16 @@ try {
               paintAssembledFace(ctx, face, images, 680, false),
             ),
           );
+          const artOverlay = window.frameExperiment.artOverlays?.[index];
+          if (index >= 0 && artOverlay) {
+            ctx.save();
+            ctx.globalAlpha = 1;
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.filter = 'none';
+            ctx.shadowColor = 'transparent';
+            ctx.drawImage(artOverlay, 0, 0, 488, 680);
+            ctx.restore();
+          }
           ctx.save();
           ctx.setTransform(c.width / 488, 0, 0, c.height / 680, 0, 0);
           ctx.globalCompositeOperation = 'destination-in';
@@ -187,7 +210,7 @@ try {
         }
       };
     },
-    { geometry, adjustment, sourceData },
+    { geometry, adjustment, sourceData, precomposed: Boolean(manifest) },
   );
   const materials = await session.page.evaluate(() => window.frameExperiment.materials);
   const plates = await session.page.evaluate(() => window.frameExperiment.plates);
@@ -202,10 +225,37 @@ try {
       Buffer.from(plates[i].split(',')[1], 'base64'),
     );
   const receipts = [];
-  for (const [n, row] of obs.records.entries()) {
+  for (const [n, row] of (platesOnly ? [] : obs.records).entries()) {
+    const artData = await Promise.all(
+      (manifest?.candidates ?? sourceFiles.map(() => ({}))).map(async (candidate) =>
+        candidate.artSource
+          ? 'data:image/png;base64,' +
+            (
+              await readFile(path.join(directory, candidate.artSource.replace('{id}', row.id)))
+            ).toString('base64')
+          : null,
+      ),
+    );
     const outputs = await session.page.evaluate(
-      async (face) => Promise.all([-1, 0, 1].map((i) => window.renderExperiment(face, i))),
-      row.face,
+      async ({ face, artData }) => {
+        const artOverlays = await Promise.all(
+          artData.map(async (url) =>
+            url ? createImageBitmap(await (await fetch(url)).blob()) : null,
+          ),
+        );
+        window.frameExperiment.artOverlays = artOverlays;
+        try {
+          return await Promise.all(
+            [-1, ...window.frameExperiment.candidates.keys()].map((i) =>
+              window.renderExperiment(face, i),
+            ),
+          );
+        } finally {
+          for (const overlay of artOverlays) overlay?.close();
+          window.frameExperiment.artOverlays = null;
+        }
+      },
+      { face: row.face, artData },
     );
     const baseline = PNG.sync.read(await readFile(path.join(directory, row.baseline.file)));
     const replay = PNG.sync.read(Buffer.from(outputs[0].split(',')[1], 'base64'));
@@ -214,7 +264,7 @@ try {
       baseline.data,
       `Native experiment pipeline changed released pixels: ${row.name}`,
     );
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < sourceFiles.length; i++) {
       const bytes = Buffer.from(outputs[i + 1].split(',')[1], 'base64');
       await writeFile(path.join(output, `${row.id}-${i}.png`), bytes);
       receipts.push({ id: row.id, variant: i, sha256: hash(bytes) });
@@ -222,13 +272,15 @@ try {
     assert.deepEqual(session.faults, []);
     if (n % 10 === 0) console.log(`${n + 1}/${obs.records.length} ${row.name}`);
   }
-  await writeJson(path.join(output, 'receipt.json'), {
-    label,
-    nativeBaselineParity: obs.records.length,
-    receipts,
-    geometryHash: hash(JSON.stringify(geometry)),
-    adjustmentHash: hash(JSON.stringify(adjustment)),
-  });
+  if (!platesOnly)
+    await writeJson(path.join(output, 'receipt.json'), {
+      label,
+      nativeBaselineParity: obs.records.length,
+      receipts,
+      geometryHash: hash(JSON.stringify(geometry)),
+      adjustmentHash: hash(JSON.stringify(adjustment)),
+      ...(manifest ? { candidates: manifest.candidates } : {}),
+    });
 } finally {
   await session.close();
 }

@@ -80,3 +80,33 @@ rounding outside autograd; compare quantized exports with the native `colorFrame
 operation. Do not apply the old source's HSB correction a second time to the
 new calibrated material. Geometry is applied to a derived render plate; exported
 reconstructed source PNGs retain the original aperture and alpha exactly.
+
+## Follow-up ablations
+
+Keep the first experiment frozen. The follow-up tools use its 34 calibration
+names to construct a robust masked texture consensus, fit a smooth shared 2D
+warp and test a shared Gaussian observation blur. Candidate plates already
+include color and geometry; native replay must not apply those a second time.
+
+```sh
+node games/magic/tools/accuracy/frame-reconstruction-native.mjs \
+  test-results/frame-study INPUTS.json COMPONENTS.json train --plates-only
+python games/magic/tools/accuracy/frame-reconstruction-refine.py prepare test-results/frame-study
+python games/magic/tools/accuracy/frame-reconstruction-refine.py fit test-results/frame-study --steps 80
+node games/magic/tools/accuracy/frame-reconstruction-native.mjs \
+  test-results/frame-study INPUTS.json COMPONENTS.json refine \
+  test-results/frame-study/refine/candidates.json
+node games/magic/tools/accuracy/frame-reconstruction-score.mjs \
+  test-results/frame-study INPUTS.json SCORER_MODULE.mjs refine \
+  test-results/frame-study/refine/candidates.json
+python games/magic/tools/accuracy/frame-reconstruction-evaluate.py test-results/frame-study \
+  --label refine --candidates test-results/frame-study/refine/candidates.json --cohort validation
+```
+
+The optional art experiment checks the cached art-crop dimensions and extracts
+only the art aperture from the full scan, using the same frozen affine. Run
+`frame-reconstruction-art.py test-results/frame-study --inputs INPUTS.json`,
+then use its `art-source/candidates.json` with the native/scoring commands and
+the label `art`. This reference-derived art is not independent prediction
+evidence; report art and frame gains separately. Its one-canonical-pixel seam
+feather must not copy lettering or expand across the frame.

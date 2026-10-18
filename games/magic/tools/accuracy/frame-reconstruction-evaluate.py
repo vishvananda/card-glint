@@ -104,16 +104,16 @@ def spectrum(samples):
 
 
 def evaluate_row(job):
-    root, label, i, row = job
+    root, label, i, row, candidates = job
     gallery = root / f'{label}-gallery'
     with np.load(root / 'prepared' / (row['id'] + '.npz')) as data:
         scan, mask, card = data['raw'], data['mask'], data['card']
     source_ref = read_image(row['reference']['file'])
     normalized_scan = normalize(source_ref, row['normalization']['transform']['matrix'])
     values = {}
-    outputs = [('released', root / row['baseline']['file']),
-               ('calibrated', root / f'{label}-native' / f'{row["id"]}-0.png'),
-               ('reconstructed', root / f'{label}-native' / f'{row["id"]}-1.png')]
+    outputs = [('released', root / row['baseline']['file'])] + [
+        (key, root / f'{label}-native' / f'{row["id"]}-{index}.png')
+        for index, key in enumerate(candidates)]
     paper = (card[..., 0] > 66) & (card[..., 0] < 423) & (card[..., 1] > 414) & (card[..., 1] < 594)
     material = gaussian_filter(scan.max(-1), 1.4) > .3
     frame = mask & material & ~paper
@@ -139,13 +139,17 @@ def evaluate_row(job):
     return result
 
 
-def evaluate(root, label, workers):
+def evaluate(root, label, workers, candidate_file=None, cohort_filter=None):
     from concurrent.futures import ProcessPoolExecutor
     observations = json.loads((root / 'observations.json').read_text())
+    if cohort_filter:
+        observations['records'] = [r for r in observations['records'] if r['cohort'] == cohort_filter]
+    candidates = ([c['key'] for c in json.loads(candidate_file.read_text())['candidates']]
+                  if candidate_file else ['calibrated', 'reconstructed'])
     rows, spectral_samples = [], []
     gallery = root / f'{label}-gallery'
     gallery.mkdir(exist_ok=True)
-    jobs = [(root, label, i, row) for i, row in enumerate(observations['records'])]
+    jobs = [(root, label, i, row, candidates) for i, row in enumerate(observations['records'])]
     with ProcessPoolExecutor(max_workers=workers) as pool:
         for row in pool.map(evaluate_row, jobs):
             rows.append(row)
@@ -156,8 +160,10 @@ def evaluate(root, label, workers):
     groups = {}
     for cohort in ['calibration','validation','all']:
         subset = [r for r in rows if cohort == 'all' or r['cohort'] == cohort]
+        if not subset:
+            continue
         groups[cohort] = dict(cards=len(subset), variants={})
-        for variant in ['released','calibrated','reconstructed']:
+        for variant in ['released', *candidates]:
             groups[cohort]['variants'][variant] = {
                 'structure100':float(np.mean([r['values'][variant]['combined']['1.4']['structure100'] for r in subset])),
                 'rgbMae255':float(np.mean([r['values'][variant]['combined']['1.4']['rgbMae255'] for r in subset])),
@@ -176,4 +182,6 @@ def evaluate(root, label, workers):
 if __name__ == '__main__':
     p=argparse.ArgumentParser();p.add_argument('directory',type=Path);p.add_argument('--label',default='train')
     p.add_argument('--workers',type=int,choices=[1,2],default=2)
-    args=p.parse_args();evaluate(args.directory,args.label,args.workers)
+    p.add_argument('--candidates', type=Path)
+    p.add_argument('--cohort', choices=['calibration', 'validation'])
+    args=p.parse_args();evaluate(args.directory,args.label,args.workers,args.candidates,args.cohort)
