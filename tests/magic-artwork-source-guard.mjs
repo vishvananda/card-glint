@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preAlphaInkSource } from './magic-alpha-ink-source-guard.mjs';
 
 const manifest = JSON.parse(
   await readFile(new URL('./magic-artwork-sources.json', import.meta.url)),
@@ -14,7 +15,7 @@ function apply(bytes, edits) {
 
 /** Historical receipts continue to describe the source that produced them. */
 export async function preArtworkSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preAlphaInkSource(file),
     change = manifest.files[file];
   if (!change) return bytes;
   assert.equal(hash(bytes), change.after, 'Unreviewed artwork mask integration: ' + file);

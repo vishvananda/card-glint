@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "baselineCommit": "dc53d39ec03da382e9a15817f8ae4633f6cd0188",
+  "evidenceHash": "baadf508d114b91ff39506557583d732101f5a3bb79e3bf2423305307ef9d741",
+  "files": {
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "3fd5ff6682417894b4608da6ff356062845faeb1ba52d74735d05c09a4aedbe3",
+      "after": "5d483c3857828d02503effa94b503772d555fa6bf696ee21c454e554961e26b6",
+      "reverseEdits": [
+        {
+          "start": 351,
+          "count": 0,
+          "lines": ["        face.setCode?.toLowerCase() === 'lea' ? 0.012 : 0,\n"]
+        },
+        {
+          "start": 125,
+          "count": 2,
+          "lines": ["  c.fillStyle = retroInk(face);\n"]
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "games/magic/src/presentation/rules-paint.ts": "7b669814d33185b117526c2ca5611a6fcc13f0d686563b7c35289b358414ee0f",
+    "games/magic/src/presentation/retro-frame.ts": "82f4e142a764903e8d1f2dfe5a805096d5fe49db40b2fdfea49e255d3620301c",
+    "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd"
+  }
+}

@@ -123,7 +123,8 @@ export function paintRetroFace(
     const mask = images.get(retroBorderMask(face));
     if (mask) paintRetroStockBorder(c, mask, retroPx(rect.frame), stock);
   }
-  c.fillStyle = retroInk(face);
+  // Alpha headings use solid gray ink; keep its lighter footer ink independent.
+  c.fillStyle = face.setCode?.toLowerCase() === 'lea' ? '#828282' : retroInk(face);
   c.textBaseline = 'middle';
   c.textAlign = 'left';
   c.letterSpacing = '0px';
@@ -348,7 +349,6 @@ export function paintRetroFace(
               : details
                 ? paintHistoricMana
                 : paintMana,
-        face.setCode?.toLowerCase() === 'lea' ? 0.012 : 0,
       );
   }
   if (paintPrintingLegendsFooter(c, face)) {

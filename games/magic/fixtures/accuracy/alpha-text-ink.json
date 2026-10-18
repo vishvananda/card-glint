@@ -1,0 +1,1032 @@
+{
+  "schema": 1,
+  "status": "ink-correction-layout-needs-audit",
+  "baselineVersion": "0.5.0",
+  "baselineCommit": "dc53d39ec03da382e9a15817f8ae4633f6cd0188",
+  "profile": {
+    "headingGray": 130,
+    "rulesInsetEm": 0
+  },
+  "policy": "Alpha only: remove rules/flavor perimeter thinning and darken solid name/type gray. Keep fonts, sizes, placements, wrapping, shadows and footer ink. Current original inputs and exact frozen maintainer frame registrations; no scan re-alignment to ink. This narrow ink study does not approve complete set typography.",
+  "headingDecision": "Shared gray 130 selected visually across six calibration materials, comparing 171,130,100. Gray 100 made headings too dark; 130 better balances the scans. Shape metrics cannot establish ink color. No hollow outline is introduced.",
+  "cohorts": "Prior calibration/validation membership preserved. Three text-length quantiles per WUBRG/artifact/cohort selected before candidate results; four previously shown diagnostics tracked separately. Repeated validation, not fresh holdouts.",
+  "exclusions": [
+    {
+      "id": "2d4d87a3-5f8b-4152-9a8b-538ab49d62e8",
+      "name": "Dwarven Warriors",
+      "reason": "rejected independent frame alignment"
+    },
+    {
+      "id": "3838c2a3-7fab-4976-9c1b-2891aee24e52",
+      "name": "Camouflage",
+      "reason": "rejected independent frame alignment"
+    }
+  ],
+  "sourceCaveats": [
+    "Oracle type fallbacks remain excluded from type scoring.",
+    "Ink-area and area/perimeter diagnostics are sensitive to font size, paper texture and crop; they are not correctness percentages.",
+    "Mox Pearl first-line ascenders reach y=409.333; native isolation uses a body window starting at 408 to include those existing strokes."
+  ],
+  "guards": {
+    "captureHash": "ba840f83b95406c8a3220a1e65f988711a77b8550972cfdb82d22b761a73ff14",
+    "nativeHash": "3234e90c53e1467551a9f7aebb6f8707873c5d854bf5c190e97c863e67e0a1a9",
+    "metricsHash": "9defcc709798e1fa32d403d708e271f94c86032c11dbf37acf13228bcb2ff4ab",
+    "selectionHash": "28b2011aa81112f5f3cbed5e2f150bec24ed85911f642ef767340d025b86d8fa"
+  },
+  "filledInk": {
+    "method": "Fixed body crop 65,420..421,600. Contrast-normalized dark filled area at three thresholds, with area/perimeter stroke-width proxy. Useful sensitivity check, not proof of ink weight: size, wrapping, differing frame texture and cropped letters remain confounds. Geometry and source wording are never adjusted by this script.",
+    "summary": {
+      "calibration": [
+        {
+          "inset": 0,
+          "areaError": 0.10003882809336975,
+          "widthError": 0.10381649202051112,
+          "areaRatio": [0.882644505814749, 0.9391642671587335, 0.9887743587550526]
+        },
+        {
+          "inset": 0.003,
+          "areaError": 0.18247955975444016,
+          "widthError": 0.11882359671227039,
+          "areaRatio": [0.8210020857210066, 0.842044089768594, 0.8531614285071865]
+        },
+        {
+          "inset": 0.006,
+          "areaError": 0.3200431452806165,
+          "widthError": 0.18209453676552367,
+          "areaRatio": [0.749426607921356, 0.7275509171465439, 0.7171655562198426]
+        },
+        {
+          "inset": 0.009,
+          "areaError": 0.45440846257580225,
+          "widthError": 0.24662747080406322,
+          "areaRatio": [0.6755650938847492, 0.6350316599471402, 0.6108845923643927]
+        },
+        {
+          "inset": 0.012,
+          "areaError": 0.624469036549851,
+          "widthError": 0.3131539394620359,
+          "areaRatio": [0.587978302450282, 0.546858770782896, 0.49466509680754644]
+        }
+      ],
+      "validation": [
+        {
+          "inset": 0,
+          "areaError": 0.08780952595761969,
+          "widthError": 0.11620238213903462,
+          "areaRatio": [0.896209160038118, 0.9589829334934099, 1.0256646688293332]
+        },
+        {
+          "inset": 0.003,
+          "areaError": 0.1576134294026213,
+          "widthError": 0.11163680838059939,
+          "areaRatio": [0.8318760506367523, 0.8612671211547872, 0.8824502538659315]
+        },
+        {
+          "inset": 0.006,
+          "areaError": 0.2950527200055393,
+          "widthError": 0.1753877354504704,
+          "areaRatio": [0.7586794845325859, 0.7463549509935743, 0.7402709442001653]
+        },
+        {
+          "inset": 0.009,
+          "areaError": 0.43321924259498906,
+          "widthError": 0.248752365354806,
+          "areaRatio": [0.6822274494910892, 0.6483706008253068, 0.6269204368192249]
+        },
+        {
+          "inset": 0.012,
+          "areaError": 0.6030077409863688,
+          "widthError": 0.3118619972739617,
+          "areaRatio": [0.59392487549235, 0.5559219159648525, 0.5087983275020496]
+        }
+      ],
+      "diagnostic": [
+        {
+          "inset": 0,
+          "areaError": 0.0982100826322859,
+          "widthError": 0.0950271952348968,
+          "areaRatio": [0.9080377931006298, 0.9166362595513211, 0.952059232715952]
+        },
+        {
+          "inset": 0.003,
+          "areaError": 0.1993150122361761,
+          "widthError": 0.09632290686925013,
+          "areaRatio": [0.837883405886595, 0.8179095742020912, 0.8128864583468911]
+        },
+        {
+          "inset": 0.006,
+          "areaError": 0.35521560306130046,
+          "widthError": 0.16383359745854123,
+          "areaRatio": [0.7556897444664037, 0.6977311153004172, 0.6690583788085464]
+        },
+        {
+          "inset": 0.009,
+          "areaError": 0.4997824842179812,
+          "widthError": 0.24630752297699302,
+          "areaRatio": [0.6754646470262498, 0.6019276378631919, 0.5671046953388654]
+        },
+        {
+          "inset": 0.012,
+          "areaError": 0.688980374133547,
+          "widthError": 0.3235088162127195,
+          "areaRatio": [0.5810141047100951, 0.5101336045118676, 0.45165757832907183]
+        }
+      ]
+    }
+  },
+  "native": {
+    "rows": [
+      {
+        "id": "15967a39-303f-457d-bcde-51837c8d63e1",
+        "name": "Black Ward",
+        "cohort": "calibration",
+        "material": "W",
+        "before": "8321777fbda439eb2c760193689697f6a412dcb2a1257b1deb24db5ebf3c9f63",
+        "after": "de9997d521e4ccae12d69f81a575333c77c1bc829eddf8284d4ef66adfc293d9",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 12193,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "13186bc9-8d9c-433b-ba15-121ef94dd68a",
+        "name": "Conversion",
+        "cohort": "calibration",
+        "material": "W",
+        "before": "fcc68ec18de76a1c86921a00053efb52a7bd890ce853dd691ebc8c4d76eb4617",
+        "after": "9726f3f60e64d396523b23d443965eee79fb55e1c705fd238640b0f6223fb632",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 15092,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "0f84d676-5327-454c-a033-b4498a9d28e2",
+        "name": "Guardian Angel",
+        "cohort": "calibration",
+        "material": "W",
+        "before": "4abfbb1f8da5f6fc524ec7bf160f4c72011f9c472d1f980628cc5171b8e2535f",
+        "after": "57fd95c0cbcf5dc8425240eda48c6268c41908d94474cf590ca9f856f3dd01ca",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 21899,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "93f9f0f2-e1cc-4740-888c-1336c6de0a27",
+        "name": "Blue Ward",
+        "cohort": "validation",
+        "material": "W",
+        "before": "7e9541c65c7ac445f03913fad198302a815485732aa484e9017e77835a240b41",
+        "after": "45a530bf007579699c0ffd0fce1fc20bb60e256dbfb61488d75d4bbcac2371ea",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 11713,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "d2379f78-c03f-447f-b3c9-10a918d556e9",
+        "name": "Consecrate Land",
+        "cohort": "validation",
+        "material": "W",
+        "before": "b2440568a9e3ed81b298c77ac04f725a0f75145c592dc57a6d89841525263ae5",
+        "after": "93e0aaedee6fc2b674f9862cabb73fa5c30425feb93025721ebf1c82a66f4692",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 19262,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "50abfba8-c9f9-4ebf-965a-4b425fe83129",
+        "name": "White Knight",
+        "cohort": "validation",
+        "material": "W",
+        "before": "88510a204bf11440ac59a88a625e15c277c3a8fdbbb2fce40e681889b7261d95",
+        "after": "963fc4174f2e2b666262f7f02ecf215239fa53116347dbdd760abe6f538b1bcc",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 29268,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "1858ac51-e6a7-48d7-8759-166070ca13d8",
+        "name": "Invisibility",
+        "cohort": "calibration",
+        "material": "U",
+        "before": "1f29439d507478ee094ee16224dc7421cad879cd0736d487bca5e192a64abadf",
+        "after": "5a50292774457d0243b6d5bb69f13b7a7846cb300ebc7765659343ab13d24780",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 12077,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "0eb8f591-d763-49bf-8ef9-86265aaa72f7",
+        "name": "Feedback",
+        "cohort": "calibration",
+        "material": "U",
+        "before": "15a0ac4ce81851c2ef333edb27bdeb546b4842840bc55e26b4f086f3e78725fc",
+        "after": "32bca58848f3605c9b93f5e71b5ed2e12d28a3ae556430e762d510a37ca12827",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 18076,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "0631c7c8-9aa5-4333-8e20-20247fc47033",
+        "name": "Phantasmal Forces",
+        "cohort": "calibration",
+        "material": "U",
+        "before": "74e26b3104bba1700bb7df10d85057d2fbf9ff1dbeb64c096177683ce02c2877",
+        "after": "a9d60342e1418f4c7c03399220b5f99dfd3a7637505c6a5168fc9ebb013d56b5",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 27501,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "576e811f-26a3-4a7c-bd13-3b1cc3e184eb",
+        "name": "Twiddle",
+        "cohort": "validation",
+        "material": "U",
+        "before": "f81355114369bae2731fff47a8fa4c7685cfd29b508bf98234b0d74d7b9d7698",
+        "after": "41d49d76d05278044d9a914470b6d03baeddc843bd00adee202703ed7be48c50",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 13058,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "e4dc1103-7bf1-47f6-9006-d3ed9ccd7a6a",
+        "name": "Prodigal Sorcerer",
+        "cohort": "validation",
+        "material": "U",
+        "before": "1220821ff680d8bfa1add77736f63d5bb5dedff9ee0a8537bcfd25f3b1f4be47",
+        "after": "28b47c5eae04502c6cb8b63a3046eab6eca00eeff29b57fadf7604b91ac98802",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 24910,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "9a49dc44-616e-4bdd-8220-0bb71eccc512",
+        "name": "Timetwister",
+        "cohort": "validation",
+        "material": "U",
+        "before": "968eaa7c9747977c3f04723a561553af18ea26b36fc701ad10988282fd5267e6",
+        "after": "ef1a8c345624c34439de833ebad2d2aea14d3c68fdc88ed8faaf2cb3575fdbf7",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 25774,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "0551d66e-8cd4-48f0-aa17-15f26be9d85f",
+        "name": "Evil Presence",
+        "cohort": "calibration",
+        "material": "B",
+        "before": "70cd88f1832f3009667e7e1f6459ea30019395ac23a02ecb53e718b6bd215e22",
+        "after": "b857a61942ac1a9bacfe16aa9262fd31dbf0b7519afe6733c4ade1311af7d876",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 9500,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "2371c126-f19a-472a-ba5f-3b1366274ea0",
+        "name": "Deathgrip",
+        "cohort": "calibration",
+        "material": "B",
+        "before": "e42f4feab3196dab115f1c826f496a798dbdc2e2a57efe99b31bbfcf3a49e10a",
+        "after": "dbea1c7b995a4c640241447f41ffd4f315bd60332521fe8a8c8511870708957d",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 16957,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "23614289-0d73-4747-a849-5cb67cc97d6a",
+        "name": "Drudge Skeletons",
+        "cohort": "calibration",
+        "material": "B",
+        "before": "72c404db6d00fc826ae820ce3b59ffe3950b78de7f1c2446c634d7358102cd7d",
+        "after": "b537c2a7bc4c2d36ccd481fcf34f2ab545989b0c73d425b2aeb71c9da947e266",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 24094,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "9e5e07a2-fbdf-4c4c-996a-fce40bab5de5",
+        "name": "Warp Artifact",
+        "cohort": "validation",
+        "material": "B",
+        "before": "0483fc819b51c0d0a7f6634435d0e7dccf87cba41c01e2eb6944c2e196c2a7fb",
+        "after": "152ecf6438522cd6cd0083d4be094129870f1ca22f75b8966428eff2bf112f68",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 17957,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "59590768-fa96-4869-8763-9d5ab6ac22ad",
+        "name": "Royal Assassin",
+        "cohort": "validation",
+        "material": "B",
+        "before": "848535c1c034b9c923a426a896c556a9b59728805b0bd5aba9303a9f4651a893",
+        "after": "ee7940f9559fd773bda1350e4951c4556b5d48705ee6e0d40acc78ed9d886653",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 22468,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "b3724e40-0622-4aee-9334-6c9fff88bcd5",
+        "name": "Plague Rats",
+        "cohort": "validation",
+        "material": "B",
+        "before": "8b643971428f832ed37d4f2f5d4fdef1de206e25be16306e2ff994f7da54713e",
+        "after": "40a0a17e42bf2f7cc023aab39ea984d31afb9897664fe5472fe784c2e4ea1c29",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 28458,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "2ff21a6f-83a7-4bf3-a078-294e303232cc",
+        "name": "Uthden Troll",
+        "cohort": "calibration",
+        "material": "R",
+        "before": "ea3921422142a462550d59ec3ed27d1ec5cdcad190522d44896bc3963172357c",
+        "after": "1c36f5318ea322822dec7a9941030356a4b32e228449ea142376d20802bda159",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 17157,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "31c687dc-ee0c-4e54-a2b3-5d8e633b3245",
+        "name": "Two-Headed Giant of Foriys",
+        "cohort": "calibration",
+        "material": "R",
+        "before": "84fc546b93e2941f4906c7636088d9840702099a82ea83e76c3baea5e7bd3126",
+        "after": "a4b0581d397b0cb57d8c6f5200033ed65eb3a66c127511bc017f54a8f6135f52",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 27083,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "911538ea-322c-4c40-a9c3-35e47fe60fce",
+        "name": "Orcish Oriflamme",
+        "cohort": "validation",
+        "material": "R",
+        "before": "66dcb940a215fdd5339220dded286f52ec1e9d98c7703d8a033b08f1c2677adc",
+        "after": "0687387bca371be30e9b3a073112603163535b4519e952d6c7c135f5946a7bb6",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 15014,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "8712c49e-f171-4669-bed9-87575a37af11",
+        "name": "Disintegrate",
+        "cohort": "validation",
+        "material": "R",
+        "before": "98647a6f710fbdeafdd385b3a77543abafd323fe5b7525f549d2c65a0f8ef2f5",
+        "after": "b169aada49f1b019aeeda28f011c8650e6e068addc7e3668b9a00cf28d7480f1",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 21992,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "f15bf2b2-6848-4fbd-b89a-8d8da8ae1cdc",
+        "name": "Granite Gargoyle",
+        "cohort": "validation",
+        "material": "R",
+        "before": "a00538fd606748a09ba6f59be9eb5391dd252dbbf792ec0982f6663b0ac2dc03",
+        "after": "59e7695c2658741874a7bf5472fe743ed606b7ebf82657bd621f8355827945da",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 29483,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "220a03ca-8c9b-4acb-821d-f6577fbb20fb",
+        "name": "Wanderlust",
+        "cohort": "calibration",
+        "material": "G",
+        "before": "2033e603bb96c932dd11880bf820b8cc825b62e0fee853a4ee44fea1a0990937",
+        "after": "561bfd48ec27e272f3c7fd53d9cf408acfe952658a5568c3eb906f086e2bb976",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 16747,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "1cb9d405-f2b5-4e10-a405-feafd2a87d90",
+        "name": "Elvish Archers",
+        "cohort": "calibration",
+        "material": "G",
+        "before": "bab432a2227b04526e6fb0579e1f6e9c686b680e5d98d158a54756a961b5e7db",
+        "after": "69a3c3830ddf556e182e0fb98b829b3c75ff8e0cb2879b4eb87ffe9e8c4f7200",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 20741,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "badc73ec-3728-4246-90c7-5f4eb7051ed5",
+        "name": "Regrowth",
+        "cohort": "validation",
+        "material": "G",
+        "before": "b6a684ff032718a4ee63e44cb62f0057ed72f9422de46a03c71c5f0b8bdfea8d",
+        "after": "42ccb333e09126e67d34ed859bf712d6dff04cfa7c0b85f659038ad4d10fc638",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 11105,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "9cd91814-6177-4a3d-a1c1-a3be7d7c7957",
+        "name": "Cockatrice",
+        "cohort": "validation",
+        "material": "G",
+        "before": "177d82fd0d4c58cc1c07ba876dfdd9931f9377e3214e42f85cb6ef0caa0128bd",
+        "after": "2e02abf7737ba4e36dbd5a6850e9f0a3ffb82ddb590cbf214268695721abdfce",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 21663,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "e173c8ce-2352-405e-ad00-e3bb94ced1ad",
+        "name": "Berserk",
+        "cohort": "validation",
+        "material": "G",
+        "before": "7ecc164223805f7a451e51a60f84f6b7bcceb7445a0e21e43b81dd7f0d258009",
+        "after": "81af58cb6d0ad64c61a74937ba5dc7f985f6475d673e0dd6d418742b6e1861a9",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 22690,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "29dc1596-a2e7-4d60-9f99-89babaef8a06",
+        "name": "Icy Manipulator",
+        "cohort": "calibration",
+        "material": "A",
+        "before": "e05c1367006b4c7d38957ac8c4ca58574769fc6d597f0a002ec5f21589e7b3b1",
+        "after": "2810e82ff67b747fadbc890b6d6a249b2f35b9d8d8fed44e0edb21e56cc00eea",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 15151,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "12926dc8-8e6f-4a47-a12b-4d674189615a",
+        "name": "Nevinyrral's Disk",
+        "cohort": "calibration",
+        "material": "A",
+        "before": "165e2635c7b1a4999d8092de2305b25a73a1c658d9a1d0aaac0bf2ad08ebd41c",
+        "after": "7d6b77819bce547794ecfeb8c84300f770e5dd679a7e066da2ceeffe367b09be",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 19368,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "27f916a2-0ace-44b5-99dc-72979af34db9",
+        "name": "Clockwork Beast",
+        "cohort": "calibration",
+        "material": "A",
+        "before": "ef548329b1931587780d9e9a5f299e6e446a2441cf1e5b7fc61d1a763bb0d551",
+        "after": "57ada63998711573ad8168a01bf661abd14b76be047e033f1c0dc62d0820db16",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 29788,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "76693233-7961-4b7e-80f2-ed90e494c4aa",
+        "name": "Crystal Rod",
+        "cohort": "validation",
+        "material": "A",
+        "before": "fca6e3dbc21ef430fbb3064ff3511ddca25f621cd2a844755de3597c765498c6",
+        "after": "8acd1b141971a82bf0fe011883bedbef7812d48f1f191c9779620005472dbb7b",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 11853,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "8ebe4be7-e12a-4596-a899-fbd5b152e879",
+        "name": "Mox Pearl",
+        "cohort": "validation",
+        "material": "A",
+        "before": "f44153a77bed1f843041c5ea8e7b9685b76c48429a9ce464af5549c6c39889b4",
+        "after": "3da3f8c161af4ea593d27ae43dcb5ddf52a0cdc6eb2813ee2a40e95e8f4b4834",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 18136,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "894c5cf2-8ae2-427a-bcbc-67df0bdfee9d",
+        "name": "Cyclopean Tomb",
+        "cohort": "validation",
+        "material": "A",
+        "before": "8b68df25c36c793d1df35a1233b438dee4f98b8aed007413b28598fab5e02bc0",
+        "after": "2468b62bf56e5e9548ade79bb3c8ab492e22bff254bcab4b57f8b0ba982e9af4",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 26733,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "5b6ddce7-b9c5-431d-a0b0-46d4aa93cbcb",
+        "name": "Armageddon",
+        "cohort": "diagnostic",
+        "material": "W",
+        "before": "d8c1f9d320955f8858cf0bd0075dc4f9b2c4732b62ae413e226222de35fd470e",
+        "after": "525a8b27cf74a7f7a003bbccedb5092a0ee9fa573e59f30a6d1be83ee734ec94",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 8600,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "69c3b2a3-0daa-4d42-832d-fcdfda6555ea",
+        "name": "Air Elemental",
+        "cohort": "diagnostic",
+        "material": "U",
+        "before": "3fc4a4442c330acea831b61e623a22f9a497c18c1354eabafa3df8ee770f970c",
+        "after": "ad8b9b99ece95f1c9495fcbc6aefa99489c9a48e8acc93b79d57581cb0ca278b",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 24009,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "b0faa7f2-b547-42c4-a810-839da50dadfe",
+        "name": "Black Lotus",
+        "cohort": "diagnostic",
+        "material": "A",
+        "before": "a5842b618b15cd9e6381fad37b69d7df078b2c585fdc84bef048dd1ee51f3b4e",
+        "after": "727467bf548780e168cf02f8b8d3b4cfda0cb5d7e1a31c66c63fe72038b59e58",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 17659,
+        "layoutUnchanged": true
+      },
+      {
+        "id": "d4f1cc9e-4f99-4c26-ac1b-8ef069fa8ceb",
+        "name": "Llanowar Elves",
+        "cohort": "diagnostic",
+        "material": "G",
+        "before": "05da8c9c75b2e9edb553d1c5caab2ca8aff07c0d883fe5628dcfc7c7a7573684",
+        "after": "95a94702a09d0ac9474146a33759e9317eeae395fd54b595785055cdaa141060",
+        "outsideChanged": 0,
+        "alphaChanged": 0,
+        "changed": 26633,
+        "layoutUnchanged": true
+      }
+    ],
+    "controls": [
+      {
+        "set": "leb",
+        "material": "W",
+        "before": "743a4e05078ad3f53d87a472603d79699252aa6050c5a2dd3e04e6308bb0abcb",
+        "after": "743a4e05078ad3f53d87a472603d79699252aa6050c5a2dd3e04e6308bb0abcb"
+      },
+      {
+        "set": "leb",
+        "material": "U",
+        "before": "94b233c15478430ba58a3202e1697d4356a37999b11d4169c3058feed68fc3f4",
+        "after": "94b233c15478430ba58a3202e1697d4356a37999b11d4169c3058feed68fc3f4"
+      },
+      {
+        "set": "leb",
+        "material": "B",
+        "before": "b11669d841af9618f26ec69f6c5f877bc991bee64ee132197862786fa14f65c2",
+        "after": "b11669d841af9618f26ec69f6c5f877bc991bee64ee132197862786fa14f65c2"
+      },
+      {
+        "set": "leb",
+        "material": "R",
+        "before": "8f0f9fed8e2a72dbd398b20d2f44b685462243fb61dcb347c859c3e740da4eb5",
+        "after": "8f0f9fed8e2a72dbd398b20d2f44b685462243fb61dcb347c859c3e740da4eb5"
+      },
+      {
+        "set": "leb",
+        "material": "G",
+        "before": "bb02965a56847c7b6db695167e7c5dbcd2f67c7a6e01204c795443aaf3b64e35",
+        "after": "bb02965a56847c7b6db695167e7c5dbcd2f67c7a6e01204c795443aaf3b64e35"
+      },
+      {
+        "set": "leb",
+        "material": "A",
+        "before": "18ac9bf0163c9c5b8d8c7e191bc9cb6f8c80d23509167db558306ca45040bd0d",
+        "after": "18ac9bf0163c9c5b8d8c7e191bc9cb6f8c80d23509167db558306ca45040bd0d"
+      },
+      {
+        "set": "2ed",
+        "material": "W",
+        "before": "6201dd9d72e8247ed60ad9c303c615adf5bb23488443894359bb1b84e14fac8b",
+        "after": "6201dd9d72e8247ed60ad9c303c615adf5bb23488443894359bb1b84e14fac8b"
+      },
+      {
+        "set": "2ed",
+        "material": "U",
+        "before": "3af116082dfa3da14a419f2d80270d62ab2a21d3f5e5ebf5d98a15bfb976b764",
+        "after": "3af116082dfa3da14a419f2d80270d62ab2a21d3f5e5ebf5d98a15bfb976b764"
+      },
+      {
+        "set": "2ed",
+        "material": "B",
+        "before": "4cd3082e3292ef8c8d95fd7642a4d25b9a964aa8aa67b3a6ea091ec1cfcc343c",
+        "after": "4cd3082e3292ef8c8d95fd7642a4d25b9a964aa8aa67b3a6ea091ec1cfcc343c"
+      },
+      {
+        "set": "2ed",
+        "material": "R",
+        "before": "a0d2e646a311027e1bc04937530a4b35844809ebae22984f6f04b79788063b72",
+        "after": "a0d2e646a311027e1bc04937530a4b35844809ebae22984f6f04b79788063b72"
+      },
+      {
+        "set": "2ed",
+        "material": "G",
+        "before": "4f9c165bacfaa46adfe78a60196515c4e6fc87e0adfbc795b2590aeda55f4545",
+        "after": "4f9c165bacfaa46adfe78a60196515c4e6fc87e0adfbc795b2590aeda55f4545"
+      },
+      {
+        "set": "2ed",
+        "material": "A",
+        "before": "10917bcd1e8bd626b85dc05baf7a67de02a98c55cf099c5e68dacbfd5dfb573d",
+        "after": "10917bcd1e8bd626b85dc05baf7a67de02a98c55cf099c5e68dacbfd5dfb573d"
+      },
+      {
+        "set": "3ed",
+        "material": "W",
+        "before": "75794bdfe73ea5970aab075a3b656094ccd34d63318712f6f4e8ae9ef93f9472",
+        "after": "75794bdfe73ea5970aab075a3b656094ccd34d63318712f6f4e8ae9ef93f9472"
+      },
+      {
+        "set": "3ed",
+        "material": "U",
+        "before": "3654a93a948ad755bd1c7b7a11aee4060179ba1bd2f4b1a33385ed543ab76774",
+        "after": "3654a93a948ad755bd1c7b7a11aee4060179ba1bd2f4b1a33385ed543ab76774"
+      },
+      {
+        "set": "3ed",
+        "material": "B",
+        "before": "cfa07988535256d32ee503f6854dc01191c2a279f525def75eba2b3f99ac2db0",
+        "after": "cfa07988535256d32ee503f6854dc01191c2a279f525def75eba2b3f99ac2db0"
+      },
+      {
+        "set": "3ed",
+        "material": "R",
+        "before": "0fcca62d0f9ca4db6649775ee8c2b12a4417e9f372758f8e03f434985668fbad",
+        "after": "0fcca62d0f9ca4db6649775ee8c2b12a4417e9f372758f8e03f434985668fbad"
+      },
+      {
+        "set": "3ed",
+        "material": "G",
+        "before": "864348dc3c978fe2a7a6f4e35b532332ef764083bd7b861a71531718b0c00dc7",
+        "after": "864348dc3c978fe2a7a6f4e35b532332ef764083bd7b861a71531718b0c00dc7"
+      },
+      {
+        "set": "3ed",
+        "material": "A",
+        "before": "87a9cf77dd2b4a1999f8b8d4c57f87116c34db301d17c603d2ee2c0ad8f6fe97",
+        "after": "87a9cf77dd2b4a1999f8b8d4c57f87116c34db301d17c603d2ee2c0ad8f6fe97"
+      },
+      {
+        "set": "arn",
+        "material": "W",
+        "before": "49f541e01fd8730f45961e55dd9b5d35c54844d7caaf75f9c2df32d54d872b26",
+        "after": "49f541e01fd8730f45961e55dd9b5d35c54844d7caaf75f9c2df32d54d872b26"
+      },
+      {
+        "set": "arn",
+        "material": "U",
+        "before": "5bde1a956c6aac1069114f515665610c93a013417c772bb092e1f6aa3de0d650",
+        "after": "5bde1a956c6aac1069114f515665610c93a013417c772bb092e1f6aa3de0d650"
+      },
+      {
+        "set": "arn",
+        "material": "B",
+        "before": "8b9ee4fe411c76937fc099041e125be8d1f8774073c9abb39eb65e57deb9e752",
+        "after": "8b9ee4fe411c76937fc099041e125be8d1f8774073c9abb39eb65e57deb9e752"
+      },
+      {
+        "set": "arn",
+        "material": "R",
+        "before": "adf237106b3afe75460fae77e46ab46edfca2b9973e582889ea3e273fe619ebb",
+        "after": "adf237106b3afe75460fae77e46ab46edfca2b9973e582889ea3e273fe619ebb"
+      },
+      {
+        "set": "arn",
+        "material": "G",
+        "before": "075130b58818f110db47af0fdacba9bf118606e55ba4d394671a1124c3ac1469",
+        "after": "075130b58818f110db47af0fdacba9bf118606e55ba4d394671a1124c3ac1469"
+      },
+      {
+        "set": "arn",
+        "material": "A",
+        "before": "79bedaf7db52a6b75a56645584c2e44de7be179d53a10793dc8bde714312dc1f",
+        "after": "79bedaf7db52a6b75a56645584c2e44de7be179d53a10793dc8bde714312dc1f"
+      },
+      {
+        "set": "atq",
+        "material": "W",
+        "before": "0c41bf9282426c6efeae22a96b433a41b51ec811e2cd578850dea0b7a6aca8d3",
+        "after": "0c41bf9282426c6efeae22a96b433a41b51ec811e2cd578850dea0b7a6aca8d3"
+      },
+      {
+        "set": "atq",
+        "material": "U",
+        "before": "934e50f9d15accd68a25c6bd361d36893e819262da7f7983bec249859b3a4f5c",
+        "after": "934e50f9d15accd68a25c6bd361d36893e819262da7f7983bec249859b3a4f5c"
+      },
+      {
+        "set": "atq",
+        "material": "B",
+        "before": "4ac88a031ebbb396776519ca557636397324089e7716d2a55ab89d0b6184a981",
+        "after": "4ac88a031ebbb396776519ca557636397324089e7716d2a55ab89d0b6184a981"
+      },
+      {
+        "set": "atq",
+        "material": "R",
+        "before": "b7cd02a7c556e2e3df41842f9d97e2c23ad25ae6fbce7bd1388b4f62c7bedfc6",
+        "after": "b7cd02a7c556e2e3df41842f9d97e2c23ad25ae6fbce7bd1388b4f62c7bedfc6"
+      },
+      {
+        "set": "atq",
+        "material": "G",
+        "before": "2556da43bfea546aef2a1ce7e110334959479657f0c600fc093841cd0166eaa4",
+        "after": "2556da43bfea546aef2a1ce7e110334959479657f0c600fc093841cd0166eaa4"
+      },
+      {
+        "set": "atq",
+        "material": "A",
+        "before": "af1690b68666d37aebac60eb197078526fddbc9ae08116ff44d370a770c0c142",
+        "after": "af1690b68666d37aebac60eb197078526fddbc9ae08116ff44d370a770c0c142"
+      },
+      {
+        "set": "drk",
+        "material": "W",
+        "before": "9e02623394bb8863d5570ac4a461981183902569012d1ceca9d6e8a89b3009f5",
+        "after": "9e02623394bb8863d5570ac4a461981183902569012d1ceca9d6e8a89b3009f5"
+      },
+      {
+        "set": "drk",
+        "material": "U",
+        "before": "389db018b1a261382d653257e6b5adae276b2c153106975d967c94ea94d6a983",
+        "after": "389db018b1a261382d653257e6b5adae276b2c153106975d967c94ea94d6a983"
+      },
+      {
+        "set": "drk",
+        "material": "B",
+        "before": "e7ee667f3e97d7f77864da0c4ca1a4b0749e24ccabba8986a1af6b50ab0d03f2",
+        "after": "e7ee667f3e97d7f77864da0c4ca1a4b0749e24ccabba8986a1af6b50ab0d03f2"
+      },
+      {
+        "set": "drk",
+        "material": "R",
+        "before": "49229a97270c5be46496d6263afda5f664611c960fc6e1d82a85df1df6791879",
+        "after": "49229a97270c5be46496d6263afda5f664611c960fc6e1d82a85df1df6791879"
+      },
+      {
+        "set": "drk",
+        "material": "G",
+        "before": "21758f63f8ef49f991633cd0c8081b89201b95ddb0a499966bddf6359528dd1b",
+        "after": "21758f63f8ef49f991633cd0c8081b89201b95ddb0a499966bddf6359528dd1b"
+      },
+      {
+        "set": "drk",
+        "material": "A",
+        "before": "21599ebf6929caf0e12837290bd1355facc193c3f5e2a8558cad473e45077b36",
+        "after": "21599ebf6929caf0e12837290bd1355facc193c3f5e2a8558cad473e45077b36"
+      },
+      {
+        "set": "leg",
+        "material": "W",
+        "before": "67ff273d505e246baa42ec88c101b4528dfdd06e334f3bee24ed00c5efe77918",
+        "after": "67ff273d505e246baa42ec88c101b4528dfdd06e334f3bee24ed00c5efe77918"
+      },
+      {
+        "set": "leg",
+        "material": "U",
+        "before": "ae9c21e5fa10bc004615a6579f35fa88559621fa72209f5e777be3c18ca8ef46",
+        "after": "ae9c21e5fa10bc004615a6579f35fa88559621fa72209f5e777be3c18ca8ef46"
+      },
+      {
+        "set": "leg",
+        "material": "B",
+        "before": "871a0ffe7b4915141023287d6f0169403a9bf7b0fde91d5b7c67dfece8469410",
+        "after": "871a0ffe7b4915141023287d6f0169403a9bf7b0fde91d5b7c67dfece8469410"
+      },
+      {
+        "set": "leg",
+        "material": "R",
+        "before": "ce0e86420d48ff18a5f03d96c986f4b56be298d765e8c380b01e42d8ad721432",
+        "after": "ce0e86420d48ff18a5f03d96c986f4b56be298d765e8c380b01e42d8ad721432"
+      },
+      {
+        "set": "leg",
+        "material": "G",
+        "before": "6fa04b1a276a8ddd3e7c7ec2e596b091b5ef1af8c9abd30ba8525f7ed250ead3",
+        "after": "6fa04b1a276a8ddd3e7c7ec2e596b091b5ef1af8c9abd30ba8525f7ed250ead3"
+      },
+      {
+        "set": "leg",
+        "material": "A",
+        "before": "9cd72c2254c6c282c90bd5784a26125f8feac929a66409aeac01b89ce97cab97",
+        "after": "9cd72c2254c6c282c90bd5784a26125f8feac929a66409aeac01b89ce97cab97"
+      },
+      {
+        "set": "4ed",
+        "material": "W",
+        "before": "a38012394cdee11b5ac466b38c28303d7072e939f9a3f9a84aefba826c6a2adf",
+        "after": "a38012394cdee11b5ac466b38c28303d7072e939f9a3f9a84aefba826c6a2adf"
+      },
+      {
+        "set": "4ed",
+        "material": "U",
+        "before": "fcf6223ee9fa66875fec471ddbb503fdabc1419e50b5023c28a86f3d4efd6c43",
+        "after": "fcf6223ee9fa66875fec471ddbb503fdabc1419e50b5023c28a86f3d4efd6c43"
+      },
+      {
+        "set": "4ed",
+        "material": "B",
+        "before": "5a63c0d6fe5395de99dd36f0295cc12d6315f9a4b5cdcb2c3b280143281678c6",
+        "after": "5a63c0d6fe5395de99dd36f0295cc12d6315f9a4b5cdcb2c3b280143281678c6"
+      },
+      {
+        "set": "4ed",
+        "material": "R",
+        "before": "19fb9749faee03a29c9a81e7c71ce53a3e86ee6eb1e9052bb890101c9324db9f",
+        "after": "19fb9749faee03a29c9a81e7c71ce53a3e86ee6eb1e9052bb890101c9324db9f"
+      },
+      {
+        "set": "4ed",
+        "material": "G",
+        "before": "c2253e47152ce39c26e01c23e9de3562ed3995637d3414646722a615e7f98818",
+        "after": "c2253e47152ce39c26e01c23e9de3562ed3995637d3414646722a615e7f98818"
+      },
+      {
+        "set": "4ed",
+        "material": "A",
+        "before": "6d70d1aeafe4fb4dfcc3d8c1e484abeef2b6469597bfafcdff51873a17496c20",
+        "after": "6d70d1aeafe4fb4dfcc3d8c1e484abeef2b6469597bfafcdff51873a17496c20"
+      },
+      {
+        "set": "7ed",
+        "material": "W",
+        "before": "b810fb40e5bf7f38dca41192560ff19735ad4d0d72e3406a9207602d0732edbd",
+        "after": "b810fb40e5bf7f38dca41192560ff19735ad4d0d72e3406a9207602d0732edbd"
+      },
+      {
+        "set": "7ed",
+        "material": "U",
+        "before": "fdec0570ee06e1d0664d9e231143ed7fc92eeb64ad992a2c770a374f3933676d",
+        "after": "fdec0570ee06e1d0664d9e231143ed7fc92eeb64ad992a2c770a374f3933676d"
+      },
+      {
+        "set": "7ed",
+        "material": "B",
+        "before": "cf4ae0bef762c5dd867a7db76aa9cc071f6105a74c580bd3c7357f8ecd50003b",
+        "after": "cf4ae0bef762c5dd867a7db76aa9cc071f6105a74c580bd3c7357f8ecd50003b"
+      },
+      {
+        "set": "7ed",
+        "material": "R",
+        "before": "f7a985a153c2c8f77363da601a4c17a2fc1a2d278cdb9b00aa0ec6ee30dc3354",
+        "after": "f7a985a153c2c8f77363da601a4c17a2fc1a2d278cdb9b00aa0ec6ee30dc3354"
+      },
+      {
+        "set": "7ed",
+        "material": "G",
+        "before": "57bf72397fb0e439223d34e16e9cfabd8778c27bce29c112f0d7c6cf2dfa6a43",
+        "after": "57bf72397fb0e439223d34e16e9cfabd8778c27bce29c112f0d7c6cf2dfa6a43"
+      },
+      {
+        "set": "7ed",
+        "material": "A",
+        "before": "ddf7aeb5e363295818fee8a147cba75d80742bc75957e3300ca53c48cec428b5",
+        "after": "ddf7aeb5e363295818fee8a147cba75d80742bc75957e3300ca53c48cec428b5"
+      }
+    ]
+  },
+  "structuralDiagnostic": {
+    "policy": "Same frozen scans and old/new original inputs; only source-verified regions count. This edge-based similarity barely captures the much larger filled-stroke correction. No hosted scores were overwritten.",
+    "summary": {
+      "calibration": {
+        "whole": {
+          "cards": 16,
+          "before": 0.619980872271407,
+          "after": 0.6240422044392372,
+          "improved": 15
+        },
+        "title": {
+          "cards": 16,
+          "before": 0.6395684773915716,
+          "after": 0.6540792299696103,
+          "improved": 15
+        },
+        "type": {
+          "cards": 2,
+          "before": 0.6104151927155816,
+          "after": 0.6171249325425189,
+          "improved": 2
+        },
+        "rules": {
+          "cards": 16,
+          "before": 0.4856282154874523,
+          "after": 0.4920402036027269,
+          "improved": 12
+        }
+      },
+      "validation": {
+        "whole": {
+          "cards": 18,
+          "before": 0.6079859879259601,
+          "after": 0.6117202553106129,
+          "improved": 16
+        },
+        "title": {
+          "cards": 18,
+          "before": 0.618960562780672,
+          "after": 0.6324957973476221,
+          "improved": 16
+        },
+        "type": {
+          "cards": 3,
+          "before": 0.616013536298434,
+          "after": 0.6191717072765138,
+          "improved": 3
+        },
+        "rules": {
+          "cards": 18,
+          "before": 0.4776847965741122,
+          "after": 0.48354303736657483,
+          "improved": 14
+        }
+      },
+      "diagnostic": {
+        "whole": {
+          "cards": 4,
+          "before": 0.6294000443306509,
+          "after": 0.630667885388059,
+          "improved": 2
+        },
+        "title": {
+          "cards": 4,
+          "before": 0.6173795686527264,
+          "after": 0.6167213808384338,
+          "improved": 2
+        },
+        "type": {
+          "cards": 1,
+          "before": 0.6004738037788153,
+          "after": 0.60559796877607,
+          "improved": 1
+        },
+        "rules": {
+          "cards": 4,
+          "before": 0.5447822914823451,
+          "after": 0.5487109857403504,
+          "improved": 2
+        }
+      },
+      "all": {
+        "whole": {
+          "cards": 38,
+          "before": 0.6152905767455894,
+          "after": 0.6189029317939754,
+          "improved": 33
+        },
+        "title": {
+          "cards": 38,
+          "before": 0.627471159024425,
+          "after": 0.6399230935559131,
+          "improved": 33
+        },
+        "type": {
+          "cards": 6,
+          "before": 0.61155746635088,
+          "after": 0.6162271592817749,
+          "improved": 6
+        },
+        "rules": {
+          "cards": 38,
+          "before": 0.48809228821217465,
+          "after": 0.4939805756106152,
+          "improved": 28
+        }
+      }
+    }
+  }
+}
