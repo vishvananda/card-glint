@@ -36,5 +36,5 @@ export const MANA_PRINTING_INK: Readonly<
 > = {
   'leb/R': { family: 'mse-old', pixels: 0.4 },
   'drk/B': { family: 'mse-old', pixels: 0.2, paperSample: 'opaque-percentile' },
-  'drk/R': { family: 'mse-old', pixels: 0.4, paperSample: 'opaque-percentile' },
+  'drk/R': { family: 'mse-old', pixels: 0.2, paperSample: 'opaque-percentile' },
 };
