@@ -29,6 +29,8 @@ void main(){
  * Compile at context creation; allocate/generate once on first textured finish.
  * No per-frame noise evaluation, uploads, copies or CPU pixel readbacks. */
 export class Cardstock {
+  readonly width = width;
+  readonly height = height;
   map?: WebGLTexture;
   bytes = 0;
   passes = 0;

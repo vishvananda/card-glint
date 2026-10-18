@@ -130,22 +130,108 @@ extraction, hidden/offset elements and its generic missing-symbol mark.
 
 The returned canvas stores linear mask coverage in RGB with opaque alpha,
 including `max(base, etchAdd) * (1 - etchExclude)`. Upload it without premultiplying
-or sRGB conversion; finish shaders sample its red channel. Finish coverage
-and protected-ink exclusions remain the host material's separate responsibility.
+or sRGB conversion; finish shaders sample its red channel. Finish coverage is
+prepared separately with `documentCoverage`; protected-ink compositing remains
+the host material's responsibility.
 The caller owns the returned canvas and its uploaded texture. Cache them by
 pack identifier, immutable recipe/source revision, dimensions and algorithm,
 releasing canvases and textures on eviction. Never call this preparation API
 from a frame loop.
 
-Standalone preparation is serialized through a bounded 16 MiB texture cache and
+Standalone etch preparation is serialized through a bounded 16 MiB texture cache and
 8 MiB edge scratch budget, sharing the full renderer's mask composer rather than
 reimplementing its GPU pipeline. Source/image leases and temporary GPU leases
 release after preparation. It snapshots the resulting mask to a host-owned canvas
 once; it does not perform per-frame mask readback. WASM initialization is lazy and
-shared with `createRenderer`; importing the finish entry point or calling the
-generic `mask(source, width, height)` path does not initialize renderer WASM.
+shared with `createRenderer`; importing the finish entry point or calling
+`mask`, `printDots` or `cardstock` does not initialize renderer WASM.
 Aborts, context loss and `dispose()` cancel standalone work. Dispose the
 `FinishResources` owner when the host's resource scope ends.
+
+### Printing and coating in host materials
+
+`card-glint/finish` exports `PRINT_DOTS_GLSL`, `CARDSTOCK_GLSL` and the `FinishMap`
+type alongside `FinishResources`. These use the same shaders and preparation
+passes as `Instance.printDots` and `Instance.cardstock`; no host framework or
+private GPU handle is required.
+
+```ts
+import { FinishResources } from 'card-glint/finish';
+
+const resources = new FinishResources();
+const printing = resources.printDots(faceCanvas, faceCanvas.width, faceCanvas.height, {
+  amount: 0.35,
+  period: 5,
+  variation: 0.5,
+  inset: 0,
+});
+const coating = resources.cardstock();
+const coverage = await resources.documentCoverage(cardDocument, rasterHost, signal);
+```
+
+`printDots` accepts a `TexImageSource` and its exact pixel dimensions. Amount is
+0..1, period is 2..16 source pixels, variation is 0..1, and inset is 0..0.2 card
+widths. The defaults match `Instance.printDots`. Dimensions must be positive
+integers within the context's texture-size limit and the native 4,194,304-pixel
+raster limit. The source must be ready; the helper does not load or resize it.
+Prepare the face and any over-finish printing separately with the same settings.
+
+Every printing result owns its tightly packed, bottom-row-first RGBA bytes.
+RGB is sRGB-encoded and alpha is straight. Upload into an sRGB texture for
+automatic linear sampling, or decode explicitly in the material, never both.
+Generate mipmaps and use trilinear minification with linear magnification and
+clamped edges, as the native renderer does. Disable procedural dots when sampling
+an already prepared printing texture.
+
+`cardstock()` prepares one fixed native relief map and returns the same
+`FinishMap` on subsequent calls within that context lifetime. Its four channels
+are linear packed slope data; **alpha is data, not opacity**. Upload as linear
+RGBA8 without premultiplication or row flipping. Do not pass this map through a
+Canvas or image conversion that premultiplies alpha. Treat the shared bytes as
+read-only. Coating amount is a shader input, so changing it does not rebuild the map.
+
+For procedural printing, `PRINT_DOTS_GLSL` provides `printFace` and `printDotInk`.
+Supply a linear-sampling `face` texture, the `previewInk`/`previewLinear`
+conversions from `foilShader`, and `printDotsInfo = (amount, period, variation, inset)`.
+Set `printFootprint` to the projected footprint in source pixels divided by the
+screen period before silhouette discards or divergent branches.
+`CARDSTOCK_GLSL` needs the linear `cardstockMap`, `cardstockAmount` and `pointer`;
+`cardstockGloss` receives sRGB ink and reflected color. Adapt the exported
+`flat in` declarations to the host's uniform or varying bindings.
+
+The native composition order is printed dots, finish shading, coating relief,
+wear, finish-coverage blending, then protected over-finish printing. Regular
+printing ignores coating relief. Keep card UVs and texture dimensions aligned
+between the face, printing overlay, coverage and coating.
+
+These preparation calls belong outside animation. Printing uses the native
+fine-screen preparation pass, snapshots its output once and releases temporary
+GPU textures. The host caches printing by immutable source revision, dimensions,
+settings and SDK revision; each result remains usable after resource disposal.
+Upload the shared coating once per host context. Context restoration regenerates
+the resource owner's coating lazily. Dispose the owner when its scene ends.
+
+### Selective finish coverage
+
+`documentCoverage(document, rasterHost, signal)` uses the renderer's layer order,
+clipped mask rasters and maximum-alpha composition. It returns a caller-owned
+opaque grayscale canvas with resolved `max(finishCoverageBase ?? 1, add) * (1 - exclude)`
+in RGB. Sample its red channel as linear coverage; do not apply the base value again.
+The canvas has normal top-left image orientation. Set the base to zero when only
+the mask's white regions should receive the finish.
+
+Etch-only masks do not affect this result, and coverage preparation does not
+paint face color or load etching assets. Artwork-window and silhouette clipping,
+and protected printing above the finish, remain separate host responsibilities.
+Cache by pack, base coverage, immutable mask revisions, clips, dimensions and SDK
+revision. Each returned canvas is independent; the caller releases its canvas
+and uploaded texture. Coverage and etch requests share the owner's serialized,
+abortable document lifecycle and lazy WASM initialization.
+
+The Magic pack already exports `artworkFoilMask` to project an illustration-sized
+mask through the selected artwork placement and frame aperture. Add its raster
+to a document layer's `finishCoverage.add` or `.exclude`, then prepare that
+document's coverage. Generic finish resources do not interpret game artwork.
 
 ## Pixel kernels
 

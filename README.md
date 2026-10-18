@@ -312,3 +312,8 @@ Changing a setting/face may add a preparation pass; `surfacePasses` and
 `surfaceBytes` include it. Mixed settings on a material group or oversized faces
 keep the per-instance procedural path. The cache is released on disposal and
 rebuilt after context loss. There are no per-frame CPU readbacks or texture uploads.
+
+Host-owned renderers can reuse the same print-dot preparation, cardstock relief
+map and selective finish coverage through `card-glint/finish`. See the
+[host material contracts](docs/host-integration.md#printing-and-coating-in-host-materials)
+for texture encoding, shader inputs, caching and ownership.

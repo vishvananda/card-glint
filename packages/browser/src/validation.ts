@@ -84,37 +84,34 @@ export function validateDocument(document: CardDocument) {
       if (mask) raster(mask);
   }
 }
+export function validatePrintDots(profile: Instance['printDots']) {
+  if (
+    profile?.inset !== undefined &&
+    (!Number.isFinite(profile.inset) || profile.inset < 0 || profile.inset > 0.2)
+  )
+    throw Error('Invalid print dot inset');
+  if (
+    profile?.variation !== undefined &&
+    (!Number.isFinite(profile.variation) || profile.variation < 0 || profile.variation > 1)
+  )
+    throw Error('Invalid print dot variation');
+  if (
+    profile &&
+    (!Number.isFinite(profile.amount) ||
+      profile.amount < 0 ||
+      profile.amount > 1 ||
+      (profile.period !== undefined &&
+        (!Number.isFinite(profile.period) || profile.period < 2 || profile.period > 16)))
+  )
+    throw Error('Invalid print dots');
+}
 export function validateInstance(item: Instance) {
   if (
     item.rainFog !== undefined &&
     (!Number.isFinite(item.rainFog) || item.rainFog < 0 || item.rainFog > 2)
   )
     throw Error('Invalid rain fog density');
-  if (
-    item.printDots?.inset !== undefined &&
-    (!Number.isFinite(item.printDots.inset) ||
-      item.printDots.inset < 0 ||
-      item.printDots.inset > 0.2)
-  )
-    throw Error('Invalid print dot inset');
-  if (
-    item.printDots?.variation !== undefined &&
-    (!Number.isFinite(item.printDots.variation) ||
-      item.printDots.variation < 0 ||
-      item.printDots.variation > 1)
-  )
-    throw Error('Invalid print dot variation');
-  if (
-    item.printDots &&
-    (!Number.isFinite(item.printDots.amount) ||
-      item.printDots.amount < 0 ||
-      item.printDots.amount > 1 ||
-      (item.printDots.period !== undefined &&
-        (!Number.isFinite(item.printDots.period) ||
-          item.printDots.period < 2 ||
-          item.printDots.period > 16)))
-  )
-    throw Error('Invalid print dots');
+  validatePrintDots(item.printDots);
   if (
     item.cardstock &&
     (!Number.isFinite(item.cardstock.amount) ||

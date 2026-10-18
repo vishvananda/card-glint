@@ -1,8 +1,14 @@
 import { GpuEtcher, program } from './gpu/etcher.js';
 import { Caustics } from './gpu/caustics.js';
-import type { CardDocument, Lease, RasterHost } from './types.js';
-import type { TextureStore, Texture } from './gpu/textures.js';
-import type { Preparer } from './prepare.js';
+import type { CardDocument, Instance, Lease, RasterHost } from './types.js';
+import { TextureStore } from './gpu/textures.js';
+import type { Texture } from './gpu/textures.js';
+import { Preparer } from './prepare.js';
+import { FinishPrinting } from './finish-printing.js';
+import type { FinishMap } from './finish-printing.js';
+import { prepareFinishCoverage } from './finish-coverage.js';
+import { initializeRenderer } from './renderer.js';
+import { layersOf, paintCoverage } from './raster.js';
 
 const copyFragment = `#version 300 es
 precision highp float;
@@ -33,6 +39,7 @@ export class FinishResources {
   private documentHost?: RasterHost;
   private documentQueue: Promise<void> = Promise.resolve();
   private documentControllers = new Set<AbortController>();
+  private printing?: FinishPrinting;
   constructor() {
     const gl = this.canvas.getContext('webgl2', {
       alpha: false,
@@ -58,6 +65,7 @@ export class FinishResources {
     this.copy = undefined;
     this.vao = undefined;
     this.poolTime = NaN;
+    this.printing = undefined;
   };
   private draw(
     map: WebGLTexture,
@@ -110,27 +118,63 @@ export class FinishResources {
       this.gl.deleteTexture(map);
     }
   }
-  async documentMask(
+  printDots(
+    source: TexImageSource,
+    width: number,
+    height: number,
+    settings: NonNullable<Instance['printDots']>,
+  ): FinishMap {
+    if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
+    this.printing ??= new FinishPrinting(this.gl);
+    return this.printing.printDots(source, width, height, settings);
+  }
+  cardstock(): FinishMap {
+    if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
+    this.printing ??= new FinishPrinting(this.gl);
+    return this.printing.cardstock();
+  }
+  documentCoverage(
     document: CardDocument,
     host: RasterHost,
     signal: AbortSignal,
   ): Promise<HTMLCanvasElement> {
+    return this.documentResource(signal, (signal) => prepareFinishCoverage(document, host, signal));
+  }
+  private async documentResource<T>(
+    signal: AbortSignal,
+    prepare: (signal: AbortSignal) => Promise<T>,
+  ): Promise<T> {
     signal.throwIfAborted();
     if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
     const controller = new AbortController();
     const abort = () => controller.abort(signal.reason);
     signal.addEventListener('abort', abort, { once: true });
     this.documentControllers.add(controller);
-    const run = async () => {
+    const ready = this.documentQueue.then(async () => {
       controller.signal.throwIfAborted();
-      const [{ initializeRenderer }, { TextureStore }, { Preparer }, raster] = await Promise.all([
-        import('./renderer.js'),
-        import('./gpu/textures.js'),
-        import('./prepare.js'),
-        import('./raster.js'),
-      ]);
       await initializeRenderer();
       controller.signal.throwIfAborted();
+      if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
+      return prepare(controller.signal);
+    });
+    this.documentQueue = ready.then(
+      () => {},
+      () => {},
+    );
+    try {
+      return await ready;
+    } finally {
+      signal.removeEventListener('abort', abort);
+      this.documentControllers.delete(controller);
+    }
+  }
+  async documentMask(
+    document: CardDocument,
+    host: RasterHost,
+    signal: AbortSignal,
+  ): Promise<HTMLCanvasElement> {
+    return this.documentResource(signal, async (signal) => {
+      signal.throwIfAborted();
       if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
       this.documentTextures ??= new TextureStore(this.gl, 16 * 1024 * 1024, 8 * 1024 * 1024);
       this.documentPreparer ??= new Preparer(this.documentTextures, {
@@ -140,16 +184,11 @@ export class FinishResources {
       let mask: Lease<Texture> | undefined;
       let coverage: Lease<Texture> | undefined;
       try {
-        mask = await this.documentPreparer.prepareMask(document, controller.signal);
-        const layers = raster.layersOf(document).filter((layer) => layer.etchCoverage);
+        mask = await this.documentPreparer.prepareMask(document, signal);
+        const layers = layersOf(document).filter((layer) => layer.etchCoverage);
         if (layers.length) {
-          const bytes = await raster.paintCoverage(
-            document.recipe.color.size,
-            layers,
-            host,
-            controller.signal,
-          );
-          controller.signal.throwIfAborted();
+          const bytes = await paintCoverage(document.recipe.color.size, layers, host, signal);
+          signal.throwIfAborted();
           coverage = this.documentTextures.uploadBytes(
             `${document.recipe.pack}:` +
               JSON.stringify([
@@ -165,7 +204,7 @@ export class FinishResources {
             document.recipe.color.size,
           );
         }
-        controller.signal.throwIfAborted();
+        signal.throwIfAborted();
         const result = window.document.createElement('canvas');
         try {
           this.draw(
@@ -185,18 +224,7 @@ export class FinishResources {
         mask?.release();
         this.documentHost = undefined;
       }
-    };
-    const ready = this.documentQueue.then(run);
-    this.documentQueue = ready.then(
-      () => {},
-      () => {},
-    );
-    try {
-      return await ready;
-    } finally {
-      signal.removeEventListener('abort', abort);
-      this.documentControllers.delete(controller);
-    }
+    });
   }
   caustics(time: number): HTMLCanvasElement {
     if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
@@ -219,6 +247,7 @@ export class FinishResources {
     this.canvas.removeEventListener('webglcontextrestored', this.restored);
     this.etcher?.dispose();
     this.pool?.dispose();
+    this.printing?.dispose();
     this.gl.deleteProgram(this.copy ?? null);
     this.gl.deleteVertexArray(this.vao ?? null);
     this.gl.getExtension('WEBGL_lose_context')?.loseContext();

@@ -104,14 +104,10 @@ export class PrintedInk {
       this.gl.deleteTexture(face?.texture ?? null);
       this.gl.deleteTexture(top?.texture ?? null);
       throw error;
-    } finally {
-      const gl = this.gl;
-      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-      gl.bindVertexArray(null);
-      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
     }
   }
-  private paint(source: Texture, values: number[]): Texture {
+  /** Uncached native preparation. The caller owns and deletes the returned texture. */
+  paint(source: Texture, values: number[]): Texture {
     const gl = this.gl,
       w = source.width,
       h = source.height;
@@ -146,6 +142,12 @@ export class PrintedInk {
     } catch (error) {
       gl.deleteTexture(map);
       throw error;
+    } finally {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, this.framebuffer);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, null, 0);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.bindVertexArray(null);
+      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
     }
   }
   private release(entry: Entry) {
