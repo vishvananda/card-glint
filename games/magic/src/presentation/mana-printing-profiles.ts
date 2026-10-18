@@ -31,6 +31,10 @@ export const MANA_PRINTING_TARGETS: Readonly<Record<string, Rgb>> = {
 
 /** Expansion in pixels for a nominal 24px disc. Only measured printing/source
  * combinations qualify; other printings retain their source artwork. */
-export const MANA_PRINTING_INK: Readonly<Record<string, { family: string; pixels: number }>> = {
+export const MANA_PRINTING_INK: Readonly<
+  Record<string, { family: string; pixels: number; paperSample?: 'opaque-percentile' }>
+> = {
   'leb/R': { family: 'mse-old', pixels: 0.4 },
+  'drk/B': { family: 'mse-old', pixels: 0.2, paperSample: 'opaque-percentile' },
+  'drk/R': { family: 'mse-old', pixels: 0.4, paperSample: 'opaque-percentile' },
 };

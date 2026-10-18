@@ -6,6 +6,8 @@ import type { RenderedCardInput } from './face-layout.js';
 import { MaterialBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
 import { colorGlyphTransform } from './symbol-adjustment.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
+import { historicalManaPaperSample } from './historical-mana.js';
+import { opaqueManaPaper } from './mana-glyph-paper.js';
 
 const glyphs = new MaterialBitmapCache(16 * 1024 * 1024);
 const identities = new WeakMap<ImageBitmap, number>();
@@ -57,15 +59,23 @@ export async function prepareManaNumerals(
     if (!source) return [];
     let identity = identities.get(source);
     if (!identity) identities.set(source, (identity = ++nextIdentity));
-    return [{ symbol, source, identity, cost: costUrl ? cost : undefined }];
+    return [
+      {
+        symbol,
+        source,
+        identity,
+        cost: costUrl ? cost : undefined,
+        paperSample: historicalManaPaperSample(face, symbol),
+      },
+    ];
   });
   let leases: MaterialBitmapLease[] = [];
   try {
     leases = await glyphs.acquireMany(
-      sources.map(({ source, identity, cost }) => ({
-        key: `numeral-v2:${identity}:${cost ? JSON.stringify(cost) : 'source'}`,
+      sources.map(({ source, identity, cost, paperSample }) => ({
+        key: `numeral-v2:${identity}:${cost ? JSON.stringify(cost) : 'source'}${paperSample ? ':' + paperSample : ''}`,
         bytes: source.width * source.height * 8,
-        build: () => splitNumeral(source, cost),
+        build: () => splitNumeral(source, cost, paperSample),
       })),
       signal,
     );
@@ -97,6 +107,7 @@ export async function prepareManaNumerals(
 async function splitNumeral(
   source: ImageBitmap,
   cost?: ReturnType<typeof modernCostMana>,
+  paperSample?: 'opaque-percentile',
 ): Promise<ImageBitmap> {
   const canvas = document.createElement('canvas');
   canvas.width = source.width;
@@ -108,7 +119,7 @@ async function splitNumeral(
     const pixels = c.getImageData(0, 0, canvas.width, canvas.height),
       p = pixels.data,
       sample = (Math.floor(source.height * 0.04) * source.width + Math.floor(source.width / 2)) * 4,
-      paper = [p[sample]!, p[sample + 1]!, p[sample + 2]!];
+      paper = paperSample ? opaqueManaPaper(p) : [p[sample]!, p[sample + 1]!, p[sample + 2]!];
     let darkest = sample;
     for (let i = 0; i < p.length; i += 4)
       if (

@@ -14,7 +14,9 @@ export const EARLY_EXPANSION_MANA_TARGETS: Readonly<Record<string, Rgb>> = {
   'atq-black-W': [220 / 255, 224 / 255, 205 / 255],
   'atq-black-U': [183 / 255, 214 / 255, 224 / 255],
   'atq-black-G': [194 / 255, 213 / 255, 185 / 255],
-  'drk-black-B': [158 / 255, 134 / 255, 128 / 255],
+  // Robust glyph separation now uses the intended paper rather than a darkened
+  // rim probe. Preserve the previous rendered disc's measured median color.
+  'drk-black-B': [146 / 255, 124 / 255, 118 / 255],
   'drk-black-G': [179 / 255, 195 / 255, 158 / 255],
   'drk-black-U': [177 / 255, 205 / 255, 218 / 255],
   'drk-black-N': [185 / 255, 171 / 255, 162 / 255],
