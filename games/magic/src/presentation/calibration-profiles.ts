@@ -30,6 +30,7 @@ import { futureFrameMaterials } from './future-color-profiles.js';
 import { planarFrameMaterials } from './planar-color-profiles.js';
 import { earlyExpansionColors } from './early-expansion-colors.js';
 import { earlyReprintColors } from './early-reprint-colors.js';
+import { earlyReprintManaTarget } from './early-reprint-mana.js';
 export function hasColorCalibration(face: RenderedCardInput): boolean {
   if (face.frameTemplate) return false;
   const early = ['lea', 'leb', '2ed', '3ed'].includes(face.setCode?.toLowerCase() ?? '');
@@ -63,6 +64,8 @@ export function calibratedDualFrameProfile(face: RenderedCardInput): DualFrameHs
 }
 export function calibratedManaTarget(face: RenderedCardInput, symbol: string): Rgb | undefined {
   if (!hasColorCalibration(face)) return undefined;
+  const reprint = earlyReprintManaTarget(face, symbol);
+  if (reprint) return reprint;
   if (face.setCode?.toLowerCase() === 'leg' && !legendsFrame(face)) return undefined;
   const key = `${face.setCode?.toLowerCase()}-${retroBorder(face)}-${symbol}`;
   if (earlyExpansionMana(face)) {

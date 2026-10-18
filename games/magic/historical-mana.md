@@ -124,3 +124,25 @@ The complete candidate raster check improves reserved disc-color error for
 blue, black, red, green and neutral discs. White has no reserved-sample gain
 (1.88 to 1.91) after the placement fit and remains a review flag. Red's actual
 rendered shape score improves from 0.794 to 0.909 on its 21 reserved scans.
+
+## Fallen Empires, Fourth Edition and Chronicles
+
+These ordinary printing frames have shared original-symbol defaults for cost
+placement, spacing, circle size, colored glyph geometry and generic numerals.
+Explicit editor adjustments remain relative to those defaults. Oracle wording
+can retain the original symbols; selecting modern symbols keeps the existing
+modern-symbol defaults. Custom frames do not inherit these measured profiles.
+
+Printing color calibration adds six disc colors and one shared ink color per
+set. The original filled glyphs remain filled. Ink recoloring uses the existing
+preparation pixel buffer, preserves disc alpha and flat paper, and participates
+in the bounded material cache. Repeated preparation performs no pixel readback.
+The source-color option disables both disc and ink recoloring.
+
+The [integration receipt](fixtures/accuracy/early-reprint-mana.json) records exact
+native agreement with the measured prototype on all 690 printings and unchanged
+pixels on 98 controls from other sets. These checks verify implementation and
+scope; they are not scan-accuracy scores. The separate regional studies retain
+reused validation cohorts, color regressions and thin-glyph exclusions. Original
+wording was supplied to both sides of this replay. Remaining symbol, typography
+and whole-card gates stay open for the grouped release.

@@ -91,6 +91,7 @@ export async function prepareManaNumerals(
         manaCostShadow: cost?.shadow,
         manaCostNumeral: historical,
         manaColors: images.manaColors,
+        manaInkColor: images.manaInkColor,
         originalManaGlyphs: images.originalManaGlyphs,
         originalWhiteGlyph: images.originalWhiteGlyph,
         manaNumerals: numerals,

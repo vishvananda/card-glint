@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "f71215aafb8480dd5ceb3a8fb9fc0e377db2de92",
+  "evidenceHash": "0457ce170c2cbe67cc020bcdc967ca1de62ff57247c644c97f77af04642ec69e",
+  "dependencies": {
+    "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
+    "games/magic/src/presentation/canvas-assets.ts": "7fd3e57676325c55b361dad1e2bac8361ce206805755c1f24aa3925111cc94c5",
+    "games/magic/src/presentation/canvas-text.ts": "ec48dbe07b518578d2195307b291bc56916161ac282e8516e06ad4cc57425186",
+    "games/magic/src/presentation/early-hsb-material.ts": "24659248da6f63db58699a9af290fa2c8596c46d70b2372c38ad211d87cd90de",
+    "games/magic/src/presentation/historic-cost.ts": "ac0691b572223a8eb76277c765d0818d95065badef442b8796a10c64b0f47a3d",
+    "games/magic/src/presentation/historical-mana-material.ts": "e5b83b5e5f3ba3de452bd90e7c533e4052c80f8ca9238a42037bca0086ac17c7",
+    "games/magic/src/presentation/historical-mana.ts": "fefee70e93b6785bca4b74943a61a3488e7d21bb30dd685b019a3145d8aad7a4",
+    "games/magic/src/presentation/historical-white.ts": "73a7cf4be6026b86101449f1b8bbb2a83013e61bd08c86ee2af78471b7f8b6dd",
+    "games/magic/src/presentation/mana-numeral.ts": "94e7448b3fd24f2a2a0bb4d4b925d876e222f99e0b9a55a8144a32ee105d6405",
+    "games/magic/src/presentation/printing-mana-adjustment.ts": "0aa96625c3c4ba19eb78cb82c8c51a92ce81a597cac8a77b09ef16cc546dbd94",
+    "games/magic/src/presentation/early-reprint-mana-values.ts": "29ca412cc1963fcc3e46d947b6da6decb8ad2988bd7c3a78eeae6d918f4cd156",
+    "games/magic/src/presentation/early-reprint-mana.ts": "27dad63203464864eb28025bd16e7dd17ea273c792ee268ee1b4bcc6e8d6b3e9",
+    "games/magic/src/presentation/mana-ink-material.ts": "c1b4de8106acd703fcd98bf8f2c1041fdf83fd71152e690aef7d41a260c827a0",
+    "games/magic/src/presentation/early-reprint-frame.ts": "e8d16406852f58f9fae95260f61a38ca87bd0906068a2396385eb0d0f9cea375",
+    "games/magic/src/presentation/calibration-input.ts": "0fb2aa26b19e999a7d41173f6919f14152ff5607bf52e508cc6103bef777e625",
+    "games/magic/src/presentation/printing-calibration-materials.ts": "cf9138efaf587cda0a074ebbeebbecf4beae4050b69ebe1a4463ad4fccc31bdc"
+  },
+  "newModules": [
+    "games/magic/src/presentation/early-reprint-mana-values.ts",
+    "games/magic/src/presentation/early-reprint-mana.ts",
+    "games/magic/src/presentation/mana-ink-material.ts"
+  ],
+  "files": {
+    "games/magic/src/presentation/calibration-profiles.ts": {
+      "before": "a8dafad27bb9908d2bdc7d89f8f35015d6defedab9cd723e01b7f9371cea7bc9",
+      "after": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
+      "reverseEdits": [
+        {
+          "start": 66,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 32,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-assets.ts": {
+      "before": "e5958b41abe5606c190ff143b5c024060d10dcb345830433f0b5c76df431c347",
+      "after": "7fd3e57676325c55b361dad1e2bac8361ce206805755c1f24aa3925111cc94c5",
+      "reverseEdits": [
+        {
+          "start": 39,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-text.ts": {
+      "before": "071adf438e2da66d1b40cab9d8642402f08cdcf5feea13fd13b0b6afe553e1ab",
+      "after": "ec48dbe07b518578d2195307b291bc56916161ac282e8516e06ad4cc57425186",
+      "reverseEdits": [
+        {
+          "start": 76,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-hsb-material.ts": {
+      "before": "165028ef8fc2c238fc79eec3754444aeaff3dcdf99be05dd1472ad45909b9842",
+      "after": "24659248da6f63db58699a9af290fa2c8596c46d70b2372c38ad211d87cd90de",
+      "reverseEdits": [
+        {
+          "start": 210,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 170,
+          "count": 6,
+          "lines": [
+            "async function buildMaterial(source: ImageBitmap, adjustment: FrameHsb, images: CanvasImages) {\n"
+          ]
+        },
+        {
+          "start": 139,
+          "count": 1,
+          "lines": ["      build: () => buildHistoricalMana(source, palette, target),\n"]
+        },
+        {
+          "start": 136,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 125,
+          "count": 1,
+          "lines": ["      build: () => buildMaterial(source, adjustment, images),\n"]
+        },
+        {
+          "start": 117,
+          "count": 7,
+          "lines": [
+            "      key: earlyHsbMaterialKey(url, source.width, source.height, adjustment),\n"
+          ]
+        },
+        {
+          "start": 99,
+          "count": 3,
+          "lines": []
+        },
+        {
+          "start": 70,
+          "count": 6,
+          "lines": []
+        },
+        {
+          "start": 56,
+          "count": 1,
+          "lines": ["    const key = /^\\d+$/.test(symbol) ? 'N' : symbol,\n"]
+        },
+        {
+          "start": 36,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 1,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/historic-cost.ts": {
+      "before": "f9370e6e5dbc7c3312b6c4ff0434a501039a6f6d63df8f40f5c0f2df400a631a",
+      "after": "ac0691b572223a8eb76277c765d0818d95065badef442b8796a10c64b0f47a3d",
+      "reverseEdits": [
+        {
+          "start": 113,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 87,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/historical-mana-material.ts": {
+      "before": "3ea2e9035c543152422ce1c2c8c0c6954d904c0e2fffa8937fe02a3f033ce4a2",
+      "after": "e5b83b5e5f3ba3de452bd90e7c533e4052c80f8ca9238a42037bca0086ac17c7",
+      "reverseEdits": [
+        {
+          "start": 50,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 37,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 1,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/historical-mana.ts": {
+      "before": "7038264ecea797772e215fedb46337e8d34315447db699789ffd8179d82c3a81",
+      "after": "fefee70e93b6785bca4b74943a61a3488e7d21bb30dd685b019a3145d8aad7a4",
+      "reverseEdits": [
+        {
+          "start": 30,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 4,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/historical-white.ts": {
+      "before": "d11a16b7eaee1d0b11e74465b31ca07bfcf50ae16fde6cbc91c575254dad1875",
+      "after": "73a7cf4be6026b86101449f1b8bbb2a83013e61bd08c86ee2af78471b7f8b6dd",
+      "reverseEdits": [
+        {
+          "start": 21,
+          "count": 1,
+          "lines": ["  c.fillStyle = '#0d0f0f';\n"]
+        },
+        {
+          "start": 10,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/mana-numeral.ts": {
+      "before": "13ece88a229f00d138e351b60f12ccc1cfb111d4621ec78b93710beadb2fb4ff",
+      "after": "94e7448b3fd24f2a2a0bb4d4b925d876e222f99e0b9a55a8144a32ee105d6405",
+      "reverseEdits": [
+        {
+          "start": 93,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/printing-mana-adjustment.ts": {
+      "before": "ae53ce01f10a56c36a4ac140efaaa07ddc2f8e061dfd73019415cfa55ee183b9",
+      "after": "0aa96625c3c4ba19eb78cb82c8c51a92ce81a597cac8a77b09ef16cc546dbd94",
+      "reverseEdits": [
+        {
+          "start": 15,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 1,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    }
+  }
+}

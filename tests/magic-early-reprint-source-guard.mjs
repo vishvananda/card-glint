@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preEarlyReprintManaSource } from './magic-early-reprint-mana-source-guard.mjs';
 
 let verified;
 export function earlyReprintProof() {
@@ -33,7 +34,7 @@ export function earlyReprintProof() {
     assert.equal(evidence.rendererHash, evidence.controls.sourceHashes[1]);
     for (const [file, expected] of Object.entries(extension.dependencies))
       assert.equal(
-        hash(await readFile(file)),
+        hash(await preEarlyReprintManaSource(file)),
         expected,
         'Unreviewed early-reprint dependency: ' + file,
       );
@@ -45,7 +46,7 @@ export function earlyReprintProof() {
 /** Historical receipts keep their measured bytes. Verify the new scoped native
  * replay before reconstructing the three pre-integration modules. */
 export async function preEarlyReprintSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preEarlyReprintManaSource(file),
     extension = await earlyReprintProof(),
     change = extension.files[file];
   if (!change) return bytes;

@@ -1,4 +1,5 @@
 import { arabianManaVariant } from './early-expansion-mana.js';
+import { earlyReprintManaDefaults } from './early-reprint-mana.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { isRetro, retroBorder } from './retro-frame.js';
@@ -12,6 +13,8 @@ import {
 
 /** Resolve frame defaults first, then printing overrides and caller deltas. */
 export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransform | undefined {
+  const reprint = earlyReprintManaDefaults(face);
+  if (reprint) return reprint;
   const planar = planarManaDefaults(face);
   if (planar) return planar;
   const set = face.setCode?.toLowerCase() ?? '';

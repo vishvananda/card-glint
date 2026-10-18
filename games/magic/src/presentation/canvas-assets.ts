@@ -37,6 +37,8 @@ export interface CanvasImages extends ReadonlyMap<string, ImageBitmap> {
   readonly manaGlyphs?: ReadonlyMap<string, ManaNumeral>;
   readonly manaGlyphScales?: Readonly<Record<string, number>>;
   readonly manaColors?: Readonly<Record<string, string>>;
+  /** Shared printed ink for the procedural historical sun. */
+  readonly manaInkColor?: string;
   /** Prepared historical bitmaps aliased to the painter's logical mana keys. */
   readonly originalManaGlyphs?: ReadonlySet<string>;
   readonly originalWhiteGlyph?: boolean;

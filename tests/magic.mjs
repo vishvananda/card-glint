@@ -298,7 +298,7 @@ try {
   await page.goto(`http://127.0.0.1:${server.address().port}/`);
   const result = await page.evaluate(async (fixtures) => {
     const { magic, opticalDocument, withCardWording } = await import('/magic.js');
-    const { loadCanvasFonts, layoutRules, retroTextLayout } = await import(
+    const { loadCanvasFonts, layoutRules, retroTextLayout, faceManaAssets } = await import(
       '/magic-presentation.js'
     );
     let missingFontsRejected = false;
@@ -1471,6 +1471,14 @@ try {
         symbolStyle: 'modern',
       };
       const historicalFace = { ...symbolFace, symbolStyle: 'original' };
+      // Fourth retains the modern sun artwork; measured original-cost geometry
+      // can still move or resize it relative to the modern-symbol option.
+      if (
+        setCode === '4ed' &&
+        JSON.stringify(faceManaAssets({ ...symbolFace, rulesText: '' })) !==
+          JSON.stringify(faceManaAssets({ ...historicalFace, rulesText: '' }))
+      )
+        throw Error('Fourth Edition must retain the modern sun artwork');
       if (
         JSON.stringify(retroTextLayout(ctx, symbolFace)) !==
         JSON.stringify(retroTextLayout(ctx, historicalFace))
@@ -1501,12 +1509,12 @@ try {
         return false;
       };
       if (
-        changedIn([415, 26, 38, 40]) !== (setCode === '3ed') ||
+        !changedIn([415, 26, 38, 40]) ||
         !changedIn([65, 410, 355, 190]) ||
         changedIn([35, 85, 380, 310])
       )
         throw Error(
-          'Historic symbols must retain frame/art and the Fourth sun, while changing tap and the Revised sun',
+          'Historic symbols must preserve frame/art while applying original cost geometry and tap artwork',
         );
     }
     const beforeFailure = disposed;

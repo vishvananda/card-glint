@@ -1,4 +1,5 @@
 import type { Rgb } from './hsb.js';
+import { recolorManaInkPixels, type ManaInkTone } from './mana-ink-material.js';
 import { expandHistoricalManaInk } from './historical-mana-ink.js';
 import { hexManaColor } from './mana-colors.js';
 export { hexManaColor } from './mana-colors.js';
@@ -34,6 +35,7 @@ export async function buildHistoricalMana(
   source: ImageBitmap,
   palette: ManaGlyphPalette,
   target: Rgb,
+  tone?: ManaInkTone,
 ) {
   const canvas = document.createElement('canvas');
   canvas.width = source.width;
@@ -46,6 +48,7 @@ export async function buildHistoricalMana(
     if (palette.inkExpansion)
       expandHistoricalManaInk(pixels.data, canvas.width, canvas.height, palette);
     recolorHistoricalManaPixels(pixels.data, palette, target);
+    if (tone) recolorManaInkPixels(pixels.data, tone);
     c.putImageData(pixels, 0, 0);
     return await createImageBitmap(canvas);
   } finally {

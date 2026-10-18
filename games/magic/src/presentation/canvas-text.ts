@@ -74,6 +74,7 @@ export function paintMana(
       size * 0.87,
       images.manaColors?.W,
       colorGlyphTransform(adjustment, symbol),
+      images.manaInkColor,
     );
     return;
   }

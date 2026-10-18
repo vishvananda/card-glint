@@ -2,6 +2,7 @@ import type { RenderedCardInput } from './face-layout.js';
 import { HISTORICAL_MANA_GLYPHS, HISTORICAL_MANA_ASSETS } from './historical-mana-profiles.js';
 import { MANA_PRINTING_INK } from './mana-printing-profiles.js';
 import { earlyExpansionMana } from './early-expansion-mana.js';
+import { earlyReprintMana } from './early-reprint-mana.js';
 
 /** Glyph choice belongs to each printing/color, independently of its frame and
  * wording. Explicit original symbols also work with Oracle text. */
@@ -27,6 +28,7 @@ export function historicalManaAsset(face: RenderedCardInput, symbol: string) {
 /** Source-bound preparation policy; unmeasured printing/frame combinations keep
  * their existing sampler and glyph pixels. */
 export function historicalManaPaperSample(face: RenderedCardInput, symbol: string) {
+  if (symbol === 'B' && earlyReprintMana(face)) return 'opaque-percentile';
   return printingInk(face, symbol)?.paperSample;
 }
 

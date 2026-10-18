@@ -25,6 +25,7 @@ import { darkSymbolProof, preDarkSymbolSource } from './magic-dark-symbol-source
 import { darkCalibrationProof } from './magic-dark-source-guard.mjs';
 import { preStatsCalibrationSource, statsCalibrationProof } from './magic-stats-source-guard.mjs';
 import { earlyReprintProof } from './magic-early-reprint-source-guard.mjs';
+import { earlyReprintManaProof } from './magic-early-reprint-mana-source-guard.mjs';
 
 let verification;
 const sourceManifestFile = new URL('./magic-native-host-sources.json', import.meta.url);
@@ -57,6 +58,9 @@ async function packMetadata(directory, beforeSymbols = false) {
 async function identity() {
   const executable = await stat(chromium.executablePath());
   return {
+    reprintManaRevision: hash(
+      await readFile('games/magic/fixtures/accuracy/early-reprint-mana-compatibility.json'),
+    ),
     reprintRevision: hash(
       await readFile('games/magic/fixtures/accuracy/early-reprint-compatibility.json'),
     ),
@@ -172,6 +176,7 @@ function assertReceipt(receipt, expected) {
 }
 
 async function verify() {
+  const reprintMana = await earlyReprintManaProof();
   const reprints = await earlyReprintProof();
   const stats = await statsCalibrationProof(),
     dark = await darkCalibrationProof(),
@@ -218,6 +223,7 @@ async function verify() {
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
     (file) =>
       ![
+        ...reprintMana.newModules,
         ...reprints.newModules,
         ...stats.newModules,
         ...dark.newModules,
@@ -254,6 +260,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(reprintMana.files, relative) ||
             Object.hasOwn(reprints.files, relative) ||
             Object.hasOwn(stats.files, relative) ||
             Object.hasOwn(dark.files, relative) ||

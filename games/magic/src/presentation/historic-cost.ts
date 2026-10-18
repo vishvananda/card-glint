@@ -85,6 +85,7 @@ function paintCost(
       geometry.whiteSize,
       images.manaColors?.W,
       colorGlyphTransform(adjustment, symbol),
+      images.manaInkColor,
     );
   });
 }
@@ -110,5 +111,6 @@ export const paintEarlyMana: typeof paintMana = (
     size * 0.87,
     images.manaColors?.W,
     colorGlyphTransform(adjustment, symbol),
+    images.manaInkColor,
   );
 };

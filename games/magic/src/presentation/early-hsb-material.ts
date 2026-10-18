@@ -1,4 +1,6 @@
 import { calibrationFace } from './calibration-input.js';
+import { earlyReprintMana, earlyReprintManaInk } from './early-reprint-mana.js';
+import { recolorManaInkPixels, type ManaInkTone } from './mana-ink-material.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import {
@@ -32,6 +34,8 @@ export async function prepareEarlyHsb(
 ): Promise<{ images: CanvasImages; dispose: () => void }> {
   face = calibrationFace(face);
   const unchanged = { images, dispose() {} };
+  const inkTarget = earlyReprintManaInk(face),
+    toneJobs = new Map<string, ManaInkTone>();
   const adjustments = new Map<string, FrameHsb>(Object.entries(calibratedFrameMaterials(face))),
     colors: Record<string, string> = {},
     manaGlyphScales: Record<string, number> = {},
@@ -50,7 +54,7 @@ export async function prepareEarlyHsb(
   for (const p of face.rulesParagraphs ?? [])
     for (const run of p.runs) for (const m of run.text.matchAll(/\{([^}]+)\}/g)) symbols.add(m[1]!);
   for (const symbol of symbols) {
-    const key = /^\d+$/.test(symbol) ? 'N' : symbol,
+    const key = /^\d+$/.test(symbol) || (symbol === 'X' && earlyReprintMana(face)) ? 'N' : symbol,
       original = historicalManaAsset(face, symbol),
       source = original?.discColor ?? BITMAP_MANA_COLORS[key],
       // Glyph replacement preserves the existing disc palette. Measured color
@@ -64,6 +68,12 @@ export async function prepareEarlyHsb(
     if (original?.glyphScale !== undefined) manaGlyphScales[symbol] = original.glyphScale;
     if (!target || !source) continue;
     const url = original?.url ?? manaSymbolAsset(symbol);
+    if (inkTarget && url && /^[WUBRGN]$/.test(key))
+      toneJobs.set(url, {
+        inkTarget,
+        paper: target,
+        sourceInk: original ? hexManaColor(original.inkColor) : [13 / 255, 15 / 255, 15 / 255],
+      });
     if (original) {
       const bitmap = images.get(original.url);
       if (!bitmap) throw Error(`Historical mana asset unavailable: ${symbol}`);
@@ -87,6 +97,9 @@ export async function prepareEarlyHsb(
   )
     return unchanged;
   const derived = Object.assign(new Map(images), {
+    manaInkColor: inkTarget
+      ? `rgb(${inkTarget.map((v) => Math.round(v * 255)).join(' ')})`
+      : undefined,
     manaColors: colors,
     originalManaGlyphs,
     originalWhiteGlyph,
@@ -102,9 +115,15 @@ export async function prepareEarlyHsb(
     ...futureJobs,
     ...materials.map(({ url, source, adjustment }) => ({
       url,
-      key: earlyHsbMaterialKey(url, source.width, source.height, adjustment),
+      key: toneJobs.has(url)
+        ? JSON.stringify([
+            earlyHsbMaterialKey(url, source.width, source.height, adjustment),
+            'mana-ink-v1',
+            toneJobs.get(url),
+          ])
+        : earlyHsbMaterialKey(url, source.width, source.height, adjustment),
       bytes: source.width * source.height * 4,
-      build: () => buildMaterial(source, adjustment, images),
+      build: () => buildMaterial(source, adjustment, images, toneJobs.get(url)),
     })),
     ...originalMaterials.map(({ url, source, palette, target }) => ({
       url,
@@ -115,9 +134,10 @@ export async function prepareEarlyHsb(
         source.height,
         palette,
         target,
+        ...(toneJobs.has(url) ? ['mana-ink-v1', toneJobs.get(url)] : []),
       ]),
       bytes: source.width * source.height * 4,
-      build: () => buildHistoricalMana(source, palette, target),
+      build: () => buildHistoricalMana(source, palette, target, toneJobs.get(url)),
     })),
   ];
   let leases: MaterialBitmapLease[] = [];
@@ -148,7 +168,12 @@ export function earlyHsbMaterialKey(
   return JSON.stringify(['frame-hsb-paper-mask-v3', url, width, height, adjustment]);
 }
 
-async function buildMaterial(source: ImageBitmap, adjustment: FrameHsb, images: CanvasImages) {
+async function buildMaterial(
+  source: ImageBitmap,
+  adjustment: FrameHsb,
+  images: CanvasImages,
+  tone?: ManaInkTone,
+) {
   const canvas = document.createElement('canvas');
   canvas.width = source.width;
   canvas.height = source.height;
@@ -183,6 +208,7 @@ async function buildMaterial(source: ImageBitmap, adjustment: FrameHsb, images: 
       : undefined;
     colorFrame(pixels, adjustment, textureMask, stockMask);
     if (adjustment.blend && selection) blendFrameMaterial(pixels, selection, adjustment.blend);
+    if (tone) recolorManaInkPixels(pixels.data, tone);
     c.putImageData(pixels, 0, 0);
     return await createImageBitmap(canvas);
   } finally {

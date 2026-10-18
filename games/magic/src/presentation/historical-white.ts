@@ -8,6 +8,7 @@ export function paintOriginalWhite(
   whiteSize: number,
   fill = '#efe7cb',
   adjustment?: ManaGlyphTransform,
+  ink = '#0d0f0f',
 ) {
   // The font supplies only the black glyph; its outline and disc size differ.
   c.save();
@@ -18,7 +19,7 @@ export function paintOriginalWhite(
   c.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
   c.fill();
   c.clip();
-  c.fillStyle = '#0d0f0f';
+  c.fillStyle = ink;
   c.font = '100px "CardRenderer MTG Historic Symbols"';
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
