@@ -37,6 +37,13 @@ whether the remaining offsets come from normalization or printing variation.
 There are no per-card title offsets. Type lines, other text, expansion symbols,
 final whole-card review and publication remain part of the grouped release work.
 
+The [original-wording catalog](fixtures/accuracy/early-reprint-wording.json) now
+includes 690 reviewed type lines, 27 additional rules/flavor entries, three printed
+artist credits and Fourth Edition Drain Life's original cost. The public resolvers
+reproduce the 690 original calibration inputs, preserve 37 earlier body reviews
+and leave Oracle wording unchanged. This validates the supplied text, not its
+typography; most rules still come from the caller's printing-specific provider data.
+
 [Version 0.4.3](https://github.com/vishvananda/card-glint/releases/tag/v0.4.3)
 publishes the M21 stock-coverage correction and refined comparison evidence at
 commit `862e34605ee18b0e77fa9c3497a86ca1118cdd10`. Release CI passed and the package,

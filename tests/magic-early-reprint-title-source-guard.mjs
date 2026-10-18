@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preEarlyReprintWordingSource } from './magic-early-reprint-wording-source-guard.mjs';
 
 let verified;
 export function earlyReprintTitleProof() {
@@ -71,7 +72,11 @@ export function earlyReprintTitleProof() {
       assert.equal(row.reconstructedIndexDrift, 0);
     assert.deepEqual(extension.dependencies, evidence.sourceGuards);
     for (const [file, expected] of Object.entries(extension.dependencies))
-      assert.equal(hash(await readFile(file)), expected, 'Unreviewed title dependency: ' + file);
+      assert.equal(
+        hash(await preEarlyReprintWordingSource(file)),
+        expected,
+        'Unreviewed title dependency: ' + file,
+      );
     return extension;
   })();
   return verified;
@@ -80,7 +85,7 @@ export function earlyReprintTitleProof() {
 /** Verify the scoped native title replay before recovering the exact mana-only
  * source used by historical calibration and native-host receipts. */
 export async function preEarlyReprintTitleSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preEarlyReprintWordingSource(file),
     extension = await earlyReprintTitleProof(),
     change = extension.files[file];
   if (!change) return bytes;
