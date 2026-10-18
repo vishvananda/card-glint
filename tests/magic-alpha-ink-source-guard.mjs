@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preDarkWordingSource } from './magic-dark-wording-source-guard.mjs';
 
 const extension = JSON.parse(
   await readFile(
@@ -37,7 +38,7 @@ export function alphaInkProof() {
 /** Keep older measurements tied to their original Alpha ink, with exact
  * reversible source edits and a separate native isolation receipt. */
 export async function preAlphaInkSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preDarkWordingSource(file),
     change = extension.files[file];
   if (!change) return bytes;
   await alphaInkProof();

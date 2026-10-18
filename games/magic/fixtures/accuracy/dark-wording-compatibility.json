@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "baselineCommit": "6f9c6cd0cf8daff59a12d84f6463f34e7464eee7",
+  "review": {
+    "source": "games/magic/fixtures/accuracy/drk/annotations-text-outliers.json",
+    "id": "b8834c18-0e4e-4785-9d15-b33345e3789b",
+    "referenceHash": "8550f164aabab07a4fcde2cd199f047b824360e71fc48a0f4e80d8a40f44808f",
+    "rulesText": "{R}{R}: +2/+0; Electric Eel does 1 damage to you.\nElectric Eel does 1 damage to you when it is brought into play."
+  },
+  "files": {
+    "games/magic/src/printing/corrections.ts": {
+      "before": "b98e4772c625ef8dd84f54ba97be0d7e0f311ce042d8b85b0ab2388d4eeacea7",
+      "after": "73390eedf5729ec03d57d067e26db635a71e2e92cdf5686fe3da57b557fa5a10",
+      "reverseEdits": [
+        {
+          "start": 11782,
+          "count": 10,
+          "lines": []
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": ["  '9425ad62908d06ecec845eb53afcee569c297f1a0a62bc3ee347aa40f1e9e478';\n"]
+        }
+      ]
+    }
+  }
+}
