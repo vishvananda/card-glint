@@ -14,6 +14,7 @@ import { surfaceSeed } from '../deformation.js';
 import { Caustics } from './caustics.js';
 import { Cardstock } from './cardstock.js';
 import { PrintedInk } from './printed-ink.js';
+import { DEFAULT_PRINT_DOTS, printDotValues } from '../print-settings.js';
 const kinds = {
   regular: 0,
   etched: 1,
@@ -26,7 +27,7 @@ const kinds = {
   gloss: 8,
   holofoil: 9,
 };
-const stride = 48;
+const stride = 49;
 export interface Material {
   face: Texture;
   mask: Texture;
@@ -118,7 +119,7 @@ export class Device {
     gl.vertexAttribPointer(14, 4, gl.FLOAT, false, stride * 4, 172);
     gl.vertexAttribDivisor(14, 1);
     gl.enableVertexAttribArray(15);
-    gl.vertexAttribPointer(15, 1, gl.FLOAT, false, stride * 4, 188);
+    gl.vertexAttribPointer(15, 2, gl.FLOAT, false, stride * 4, 188);
     gl.vertexAttribDivisor(15, 1);
     gl.bindVertexArray(null);
   }
@@ -157,11 +158,13 @@ export class Device {
       values[start + 40] = item.wear?.amount ?? 0;
       values[start + 41] = surfaceSeed(item.wear?.seed ?? item.id);
       values[start + 42] = item.cardstock?.amount ?? 0;
-      values[start + 43] = printed ? 0 : (item.printDots?.amount ?? 0);
-      values[start + 44] = item.printDots?.period ?? 5;
-      values[start + 45] = item.printDots?.variation ?? 0.5;
-      values[start + 46] = item.printDots?.inset ?? 0;
+      const dots = item.printDots;
+      values[start + 43] = printed || !dots ? 0 : (dots.amount ?? DEFAULT_PRINT_DOTS.amount);
+      values[start + 44] = dots?.period ?? DEFAULT_PRINT_DOTS.period;
+      values[start + 45] = dots?.variation ?? DEFAULT_PRINT_DOTS.variation;
+      values[start + 46] = dots?.inset ?? DEFAULT_PRINT_DOTS.inset;
       values[start + 47] = item.rainFog ?? 1;
+      values[start + 48] = item.printDots?.artwork === false ? 0 : 1;
     });
     if (this.instanceCapacity < length) {
       this.instanceCapacity = length;
@@ -184,20 +187,28 @@ export class Device {
     )
       this.cardstock.prepare();
     const profile = list[0]?.printDots;
+    const settings = printDotValues(profile);
     const homogeneous =
       profile &&
-      profile.amount > 0 &&
+      settings[0]! > 0 &&
       list.every(
         (item) =>
-          item.printDots?.amount === profile.amount &&
-          (item.printDots.period ?? 5) === (profile.period ?? 5) &&
-          (item.printDots.variation ?? 0.5) === (profile.variation ?? 0.5) &&
-          (item.printDots.inset ?? 0) === (profile.inset ?? 0),
+          printDotValues(item.printDots).every((value, i) => value === settings[i]) &&
+          (item.printDots?.artwork !== false) === (profile.artwork !== false),
       );
     const printed = homogeneous
-      ? this.printedInk.prepare(material.face, material.overlay, profile)
+      ? this.printedInk.prepare(
+          material.face,
+          material.overlay,
+          profile,
+          material.recipe.artWindows,
+        )
       : undefined;
-    const procedural = !printed && list.some((item) => (item.printDots?.amount ?? 0) > 0);
+    const procedural =
+      !printed &&
+      list.some(
+        (item) => item.printDots && (item.printDots.amount ?? DEFAULT_PRINT_DOTS.amount) > 0,
+      );
     const p = material.recipe.hologram?.strength
       ? procedural
         ? this.proceduralHolographic
@@ -228,6 +239,7 @@ export class Device {
     const bounds = new Float32Array(32);
     windows.forEach((rect, i) => bounds.set(rect, i * 4));
     gl.uniform4fv(gl.getUniformLocation(p, 'artBounds[0]'), bounds);
+    gl.uniform4fv(gl.getUniformLocation(p, 'printArtBounds[0]'), bounds);
     gl.uniform1f(gl.getUniformLocation(p, 'finishBase'), material.recipe.finishCoverageBase ?? 1);
     const hologram = material.recipe.hologram,
       [hx, hy, hw, hh] = hologram?.rect ?? [0, 0, 1, 1];

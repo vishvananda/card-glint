@@ -4,6 +4,23 @@
 export const PRINT_DOTS_GLSL = `
 flat in vec4 printDotsInfo;
 float printFootprint;
+// Optional host contract. Without these defines the public shader is unchanged.
+#ifdef PRINT_DOT_ART_WINDOWS
+uniform vec4 printArtBounds[8];
+#ifdef PRINT_DOT_ART_INSTANCE
+flat in float printArtwork;
+#else
+uniform float printArtwork;
+#endif
+float printArea(vec2 uv){
+ if(printArtwork>.5)return 1.;
+ for(int i=0;i<8;i++){
+  vec4 b=printArtBounds[i];
+  if(b.z>b.x && b.w>b.y && all(greaterThanEqual(uv,b.xy)) && all(lessThanEqual(uv,b.zw)))return 0.;
+ }
+ return 1.;
+}
+#endif
 float plateNoise(vec2 cell,float channel){return fract(sin(dot(cell,vec2(127.1,311.7))+channel*74.7)*43758.5453);}
 float plateDot(vec2 cell,vec2 id,float radius,bool holes,float channel,float aa,float reach){
  // Reject distant neighbors before hashing; only nearby impressions can touch.
@@ -40,6 +57,9 @@ float inkScreen(vec2 p,float ink,vec2 axis,float channel){
 vec3 printDotInk(vec3 ink,vec2 uv){
  if(printDotsInfo.x<=0.)return ink;
  float visible=1.-smoothstep(.35,.9,printFootprint);
+#ifdef PRINT_DOT_ART_WINDOWS
+ visible*=printArea(uv);
+#endif
  if(printDotsInfo.w>0.){
   vec2 edge=min(uv,1.-uv);float aspect=float(textureSize(face,0).y)/float(textureSize(face,0).x);
   visible*=smoothstep(printDotsInfo.w*.85,printDotsInfo.w*1.15,min(edge.x,edge.y*aspect));

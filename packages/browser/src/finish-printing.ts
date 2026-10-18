@@ -2,7 +2,8 @@ import { Cardstock } from './gpu/cardstock.js';
 import { texture } from './gpu/etcher.js';
 import { PrintedInk } from './gpu/printed-ink.js';
 import type { Texture } from './gpu/textures.js';
-import type { Instance } from './types.js';
+import type { Instance, Rect } from './types.js';
+import { printDotValues } from './print-settings.js';
 import { validatePrintDots } from './validation.js';
 
 /** Tightly packed, bottom-row-first RGBA bytes. Printing is straight-alpha sRGB;
@@ -49,10 +50,18 @@ export class FinishPrinting {
     width: number,
     height: number,
     settings: NonNullable<Instance['printDots']>,
+    artWindows: readonly Rect[] = [],
   ): FinishMap {
     this.available();
     if (!settings || typeof settings !== 'object') throw Error('Invalid print dots');
     validatePrintDots(settings);
+    if (
+      artWindows.length > 8 ||
+      artWindows.some(
+        (r) => r.length !== 4 || r.some((v) => !Number.isFinite(v)) || r[2] <= 0 || r[3] <= 0,
+      )
+    )
+      throw Error('Invalid print artwork windows');
     const gl = this.gl;
     const limit = gl.getParameter(gl.MAX_TEXTURE_SIZE) as number;
     if (
@@ -105,12 +114,12 @@ export class FinishPrinting {
       gl.pixelStorei(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL, gl.BROWSER_DEFAULT_WEBGL);
       gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, gl.RGBA, gl.UNSIGNED_BYTE, source);
       this.ink ??= new PrintedInk(gl);
-      output = this.ink.paint({ texture: allocated, width, height }, [
-        settings.amount,
-        settings.period ?? 5,
-        settings.variation ?? 0.5,
-        settings.inset ?? 0,
-      ]);
+      output = this.ink.paint(
+        { texture: allocated, width, height },
+        printDotValues(settings),
+        artWindows,
+        settings.artwork !== false,
+      );
       return this.snapshot(output);
     } finally {
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);

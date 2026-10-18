@@ -1,5 +1,6 @@
 import { GpuEtcher, program } from './gpu/etcher.js';
 import { Caustics } from './gpu/caustics.js';
+import type { Rect } from './types.js';
 import type { CardDocument, Instance, Lease, RasterHost } from './types.js';
 import { TextureStore } from './gpu/textures.js';
 import type { Texture } from './gpu/textures.js';
@@ -123,10 +124,11 @@ export class FinishResources {
     width: number,
     height: number,
     settings: NonNullable<Instance['printDots']>,
+    artWindows: readonly Rect[] = [],
   ): FinishMap {
     if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
     this.printing ??= new FinishPrinting(this.gl);
-    return this.printing.printDots(source, width, height, settings);
+    return this.printing.printDots(source, width, height, settings, artWindows);
   }
   cardstock(): FinishMap {
     if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');

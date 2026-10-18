@@ -1,12 +1,14 @@
 import { program, texture } from './etcher.js';
 import { PRINT_DOTS_GLSL } from './print-dots.js';
 import type { Texture } from './textures.js';
-import type { Instance } from '../types.js';
+import type { Instance, Rect } from '../types.js';
+import { printArtBounds, printDotValues } from '../print-settings.js';
 
 const vertex = `#version 300 es
 out vec2 uv;
 void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);uv=p;gl_Position=vec4(p*2.-1.,0.,1.);}`;
 const fragment = `#version 300 es
+#define PRINT_DOT_ART_WINDOWS
 precision highp float;
 in vec2 uv;out vec4 color;uniform sampler2D face;
 vec3 previewInk(vec3 c){return mix(c*12.92,1.055*pow(max(c,vec3(0.)),vec3(1./2.4))-.055,step(vec3(.0031308),c));}
@@ -67,14 +69,11 @@ export class PrintedInk {
     source: Texture,
     overlay: Texture | undefined,
     profile: NonNullable<Instance['printDots']>,
+    windows: readonly Rect[] = [],
   ) {
-    const values = [
-        profile.amount,
-        profile.period ?? 5,
-        profile.variation ?? 0.5,
-        profile.inset ?? 0,
-      ],
-      settings = values.join(':');
+    const values = printDotValues(profile),
+      artwork = profile.artwork !== false,
+      settings = JSON.stringify([values, artwork, artwork ? [] : windows]);
     const index = this.entries.findIndex(
       (e) =>
         e.source.texture === source.texture &&
@@ -94,8 +93,8 @@ export class PrintedInk {
     }
     let face: Texture | undefined, top: Texture | undefined;
     try {
-      face = this.paint(source, values);
-      if (overlay) top = this.paint(overlay, values);
+      face = this.paint(source, values, windows, artwork);
+      if (overlay) top = this.paint(overlay, values, windows, artwork);
       const entry = { source, overlay, settings, face, top, bytes };
       this.entries.push(entry);
       this.bytes += bytes;
@@ -107,7 +106,7 @@ export class PrintedInk {
     }
   }
   /** Uncached native preparation. The caller owns and deletes the returned texture. */
-  paint(source: Texture, values: number[]): Texture {
+  paint(source: Texture, values: number[], windows: readonly Rect[] = [], artwork = true): Texture {
     const gl = this.gl,
       w = source.width,
       h = source.height;
@@ -132,6 +131,11 @@ export class PrintedInk {
       gl.bindTexture(gl.TEXTURE_2D, source.texture);
       gl.uniform1i(gl.getUniformLocation(this.shader, 'face'), 0);
       gl.uniform4fv(gl.getUniformLocation(this.shader, 'printDotsInfo'), values);
+      gl.uniform4fv(
+        gl.getUniformLocation(this.shader, 'printArtBounds[0]'),
+        printArtBounds(windows),
+      );
+      gl.uniform1f(gl.getUniformLocation(this.shader, 'printArtwork'), artwork ? 1 : 0);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       this.passes++;
       gl.bindTexture(gl.TEXTURE_2D, map);

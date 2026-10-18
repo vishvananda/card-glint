@@ -294,7 +294,10 @@ the same ownership as the other device resources. Map storage and the initial
 pass are included in `surfaceBytes` and `surfacePasses`.
 
 Printed ink uses a bounded 16 MiB context-owned LRU keyed by source face/overlay
-texture identity and all screen settings. A one-time GPU pass stores linear
+texture identity, all screen settings, and the artwork exclusion rectangles.
+Artwork exclusion reuses the recipe's normalized art windows. A single extra
+instance float selects inclusion in mixed groups; cached preparation receives the
+same rectangles as uniforms. No coverage readback or extra per-frame pass is needed. A one-time GPU pass stores linear
 shader output in sRGB targets, retaining dark-ink precision. Mipmaps filter fine
 dots as geometry shrinks. Homogeneous instance groups sample these textures in
 the normal finish pass, whose shader excludes procedural screen evaluation.

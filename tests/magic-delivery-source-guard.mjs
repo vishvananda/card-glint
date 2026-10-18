@@ -1,3 +1,4 @@
+import { pre053Source } from './magic-053-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { format } from 'prettier';
@@ -10,7 +11,7 @@ export async function deliveryProof() {
     );
     for (const [file, sha] of Object.entries(p.dependencies))
       assert.equal(
-        hash(await readFile(file)),
+        hash(await pre053Source(file)),
         sha,
         'Unreviewed editor/data-delivery change: ' + file,
       );
@@ -41,7 +42,7 @@ export async function deliveryProof() {
  * data is independently checked against authoritative profiles and evidence. */
 export async function preDeliverySource(file) {
   const p = await deliveryProof(),
-    bytes = await readFile(file),
+    bytes = await pre053Source(file),
     change = p.files[file];
   if (!change) return bytes;
   assert.equal(hash(bytes), change.after);

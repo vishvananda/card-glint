@@ -97,7 +97,7 @@ try {
     const invalidProfiles = [
       null,
       undefined,
-      {},
+      { artwork: 'no' },
       { amount: NaN },
       { amount: Infinity },
       { amount: -0.1 },

@@ -1,3 +1,4 @@
+import { alphaRulesLayout } from './alpha-rules.js';
 import { adjustCalibrationRules } from '../calibration/rules-adjustment.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import { calibratedBodyLayout } from '../calibration/body.js';
@@ -28,7 +29,11 @@ export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
 
 /** Null denotes the existing large-basic-symbol path, which has no body text. */
 export function retroTextLayout(context: CanvasRenderingContext2D, face: RenderedCardInput) {
-  return adjustCalibrationRules(context, face, baseRetroTextLayout(context, face));
+  return adjustCalibrationRules(
+    context,
+    face,
+    alphaRulesLayout(context, face, baseRetroTextLayout(context, face)),
+  );
 }
 function baseRetroTextLayout(context: CanvasRenderingContext2D, face: RenderedCardInput) {
   if (retroBasicSymbol(face)) return null;

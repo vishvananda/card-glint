@@ -119,6 +119,7 @@ export function paintRulesLayout(
   if (!rulesInkVisible(context)) return;
   if (layout.overflow) throw Error('Magic rules text does not fit the available area.');
   context.save();
+  if (layout.horizontalScale) context.scale(layout.horizontalScale, 1);
   context.textAlign = 'left';
   context.textBaseline = 'alphabetic';
   context.letterSpacing = '0px';

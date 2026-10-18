@@ -119,7 +119,7 @@ The README's paired eight-second GIFs and MP4s are captured from the same render
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.5.2/card-glint-0.5.2.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.5.3/card-glint-0.5.3.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -140,7 +140,7 @@ For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
   import {
     createRenderer,
     IDENTITY,
-  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.5.2/browser.js';
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.5.3/browser.js';
 
   const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
   // Supply your own game pack/card recipes, then render as below.
@@ -289,20 +289,24 @@ export parity, cache reuse, filtering and context restoration.
 
 ### Experimental printed dots
 
-`Instance.printDots = { amount: 0.35, period: 5, variation: 0.5 }` adds rotated CMYK screens to
-printing before finish and wear. Amount is 0..1; period is 2..16 source texture
-pixels (default 5). Variation ranges from 0 (ideal screen) to 1 (more uneven),
+`Instance.printDots = {}` adds rotated CMYK screens to
+printing before finish and wear. Amount is 0..1 (default 0.35); period is 2..16 source texture
+pixels (default 2). Variation ranges from 0 (ideal screen) to 1 (more uneven),
 defaulting to 0.5. Small stable position/size/shape differences and ink spread
-break up the ideal grid. Omitted/zero amount retains previous pixels. Pass the same option
+break up the ideal grid. Omitting the profile or setting amount to zero retains previous pixels. Pass the same option
 to `exportCard`. The effect is optional on every finish. It uses screen derivatives to fade fine dots when a card
 shrinks, reducing aliasing. Larger periods make the pattern easier to inspect.
 
 This is an RGB-to-CMYK visual approximation, not a calibrated press profile.
 An optional `inset` (0..0.2, in card-width units) excludes an outer rim from
 the print effect; the default is 0. Game packs/hosts supply any desired rim.
-Imported scans can already contain a dot pattern; adding another may create
-moire. Keep the option off for such images unless comparing an intentional
-second pattern. The conventional screen angles follow
+For scanned illustrations, use `printDots: { artwork: false }`: dots still
+apply to the frame and lettering outside the recipe's `artWindows`. Generated
+illustrations can use `{}` (artwork included). Full-card scans should omit the
+profile entirely. `DEFAULT_PRINT_DOTS`, exported from both the root and finish
+entry, exposes the defaults for editors. Explicit settings continue to work.
+The period is measured in source pixels; this default was compared at 732px
+card width, and is not a resolution-independent press frequency. The conventional screen angles follow
 [Adobe's prepress reference](https://helpx.adobe.com/indesign/desktop/print/ink-and-color-management/specify-halftone-frequency-and-resolution.html).
 
 Printing with matching instance settings is prepared once into a context-owned,

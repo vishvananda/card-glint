@@ -12,6 +12,8 @@ export interface RulesLine {
   inkBounds: readonly [number, number, number, number];
 }
 export interface RulesLayout {
+  /** Shared printing scale, including inline glyphs; coordinates are before this transform. */
+  horizontalScale?: number;
   size: number;
   x: number;
   top: number;

@@ -275,3 +275,20 @@ The native `holofoil` finish uses the same diffraction response as a local
 hologram patch, across the ordinary finish coverage. It remains distinct from
 `prismatic`, needs no mask or extra texture, and supports print dots, cardstock
 and wear. Existing card-local layers can restrict it using `finishCoverage`.
+
+### Print-dot artwork coverage
+
+Use `printDots: { artwork: false }` with the renderer to retain scanned art
+inside `FaceRecipe.artWindows` while applying dots to the rest of the printing.
+An empty profile opts into `DEFAULT_PRINT_DOTS` (amount 0.35, period 2, variation
+0.5, inset 0); an absent profile stays disabled. Generated art can include dots.
+`FinishResources.printDots(source, width, height, settings, artWindows)` accepts
+the same normalized top-left rectangles as an optional fifth argument (maximum
+eight). Omitted windows exclude nothing. Cached and procedural paths use the
+same coverage; preparation is reused until the source, settings or windows change.
+
+A direct shader host can opt into `PRINT_DOTS_GLSL` artwork coverage with
+`#define PRINT_DOT_ART_WINDOWS`, supply `uniform float printArtwork` (1 to include,
+0 to exclude), and fill `uniform vec4 printArtBounds[8]` with bottom-left
+(min-x, min-y, max-x, max-y) coordinates. Unused entries are zero. Without the
+define, existing shader hosts retain their previous contract.

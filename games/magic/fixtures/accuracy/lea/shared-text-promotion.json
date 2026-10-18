@@ -1,0 +1,524 @@
+{
+  "schemaVersion": 1,
+  "inputRevision": "alpha-white-original-wording-v2",
+  "inputHash": "682b020cc7cf7e5f599b8f7987e4dda48fdb57ae696a54eff8c6c605bed2f91c",
+  "textHistory": {
+    "sourceReportSha256": "5106322d097b5e147103e56ce23f4794b057bc772c4177b51e716e2c73d7fafe",
+    "sourceModelSha256": "85c24db0193de93aa99a9e8172a71034eed85c2883d3aaaf9109e86af4016d2e",
+    "studyCreatedAt": "2026-10-15T06:38:01.854Z",
+    "renderer": "0.2.23",
+    "meaning": "One-pixel local-contrast edge F1. Individual fits describe attainable per-card alignment, not released defaults. Whole-card scores retain the v0.2.23 weights, coverage and accepted scan poses; unverified credits are excluded from that aggregate. Shared values are trained on separate name/artist cohorts. A percentage is an overlap index, not a percentage of correctness.",
+    "alpha": {
+      "inventory": 295,
+      "ranked": 275,
+      "alignmentReview": 4,
+      "contentReview": 16,
+      "rules": {
+        "cards": 275,
+        "before": 0.4798544484710448,
+        "after": 0.7726474099927084,
+        "gain": 0.29279296152166373,
+        "medianGain": 0.2956983417877971,
+        "regressedByHalfPoint": 0,
+        "improvedByHalfPoint": 275
+      },
+      "artist": {
+        "cards": 291,
+        "before": 0.6552297522071768,
+        "after": 0.6943401091977296,
+        "gain": 0.03911035699055233,
+        "medianGain": 0.034523476579711776,
+        "regressedByHalfPoint": 0,
+        "improvedByHalfPoint": 278
+      },
+      "wholeIndividual": {
+        "cards": 275,
+        "before": 0.6077653363303707,
+        "after": 0.7090836063568039,
+        "gain": 0.10131827002643468,
+        "medianGain": 0.09979342537813163,
+        "regressedByHalfPoint": 0,
+        "improvedByHalfPoint": 275
+      },
+      "wholeShared": {
+        "cards": 275,
+        "before": 0.6077653363303707,
+        "after": 0.6641901892313484,
+        "gain": 0.056424852900978484,
+        "medianGain": 0.06060379333815624,
+        "regressedByHalfPoint": 24,
+        "improvedByHalfPoint": 222
+      },
+      "rulesHeldOut": {
+        "cards": 110,
+        "before": 0.49098690042386633,
+        "after": 0.6621939784134896,
+        "gain": 0.17120707798962323,
+        "medianGain": 0.18805584916623808,
+        "regressedByHalfPoint": 9,
+        "improvedByHalfPoint": 94
+      },
+      "artistHeldOut": {
+        "cards": 102,
+        "before": 0.6633089398250565,
+        "after": 0.6802972972404265,
+        "gain": 0.0169883574153704,
+        "medianGain": 0.015291753776211281,
+        "regressedByHalfPoint": 8,
+        "improvedByHalfPoint": 76
+      },
+      "flags": {
+        "artist:search-bound": 12,
+        "shared:regression": 24,
+        "source:unverified-printing-content": 16,
+        "rules:unverified-or-no-rules": 16,
+        "rules:search-bound": 6,
+        "shared:text-overflow": 11,
+        "artist:low-overlap": 16,
+        "rules:low-overlap": 17,
+        "rules:alignment-review": 4,
+        "artist:alignment-review": 4
+      }
+    },
+    "sharedModels": {
+      "lea:centered": {
+        "adjustment": {
+          "leftMargin": 10.5,
+          "rightMargin": -2.5,
+          "verticalOffset": -5,
+          "fontSize": 0.5,
+          "widthScale": -2.5,
+          "lineSpacing": -0.5,
+          "paragraphSpacing": 0,
+          "flavorSpacing": 0
+        },
+        "training": 50,
+        "leftAnchorCards": 94
+      },
+      "lea:regular": {
+        "adjustment": {
+          "leftMargin": 10.5,
+          "rightMargin": -1,
+          "verticalOffset": -2,
+          "fontSize": 0,
+          "widthScale": 0.5,
+          "lineSpacing": -0.5,
+          "paragraphSpacing": 0,
+          "flavorSpacing": 0
+        },
+        "training": 86,
+        "leftAnchorCards": 94
+      },
+      "lea:centered-long": {
+        "adjustment": {
+          "leftMargin": 10.5,
+          "rightMargin": -2,
+          "verticalOffset": 9.5,
+          "fontSize": 0,
+          "widthScale": -1,
+          "lineSpacing": -0.25,
+          "paragraphSpacing": 0,
+          "flavorSpacing": 0
+        },
+        "training": 11,
+        "leftAnchorCards": 94
+      }
+    },
+    "currentFinding": "The archived per-card fits and shared Alpha models are not consumed by the current renderer. Its legacy centering/margin policy and 0.5.1 ink correction remain active. The local frame experiment initially copied original bodies but 21 modern type-line fallbacks. Native replay of the archived shared layout candidate is separate from fitting the new frame/border and keeps current unthinned ink."
+  },
+  "textSummary": {
+    "before": 66.97130042685897,
+    "after": 80.6822432214163,
+    "improvedByHalfPoint": 39,
+    "regressedByHalfPoint": 2,
+    "smallOrUnchanged": 4,
+    "worst": [
+      {
+        "id": "cbd9ab01-a833-4fa4-8dee-151bd9800835",
+        "name": "Veteran Bodyguard",
+        "before": 63.85520771106123,
+        "after": 54.54609486611022,
+        "delta": -9.309112844951017
+      },
+      {
+        "id": "caf9cef4-0f2d-478a-b119-fe1967687f74",
+        "name": "Personal Incarnation",
+        "before": 65.05914255852339,
+        "after": 56.38751991182397,
+        "delta": -8.671622646699419
+      },
+      {
+        "id": "6f9ea46a-411f-40ce-a873-a905180093f4",
+        "name": "Balance",
+        "before": 61.63029774439808,
+        "after": 61.63029774439808,
+        "delta": 0.0
+      },
+      {
+        "id": "943baea8-b173-4863-a3ab-dd217d483cd9",
+        "name": "Reverse Damage",
+        "before": 55.653607927293,
+        "after": 55.653607927293,
+        "delta": 0.0
+      },
+      {
+        "id": "98fba951-c5bb-497c-9292-ce1b2a1e1247",
+        "name": "Blaze of Glory",
+        "before": 61.77445196460993,
+        "after": 61.77445196460993,
+        "delta": 0.0
+      },
+      {
+        "id": "eaac88da-d19e-4771-944c-3709963d04e7",
+        "name": "Mesa Pegasus",
+        "before": 65.00333307377684,
+        "after": 65.00333307377684,
+        "delta": 0.0
+      },
+      {
+        "id": "6303233b-35eb-49ca-b844-ba6b9fe1cbd2",
+        "name": "Northern Paladin",
+        "before": 62.673362914899066,
+        "after": 66.17025927875105,
+        "delta": 3.496896363851981
+      },
+      {
+        "id": "50abfba8-c9f9-4ebf-965a-4b425fe83129",
+        "name": "White Knight",
+        "before": 65.09679352123828,
+        "after": 70.91159744959505,
+        "delta": 5.814803928356767
+      }
+    ],
+    "best": [
+      {
+        "id": "4fff6e6f-4ebd-4ec8-9443-59efb22d376c",
+        "name": "Resurrection",
+        "before": 53.71956570068911,
+        "after": 89.97693982437583,
+        "delta": 36.25737412368672
+      },
+      {
+        "id": "d5c83259-9b90-47c2-b48e-c7d78519e792",
+        "name": "Animate Wall",
+        "before": 55.319468682951346,
+        "after": 89.85346213629813,
+        "delta": 34.53399345334679
+      },
+      {
+        "id": "d05b92bd-797e-413f-a8b0-32e0937a1ee0",
+        "name": "Savannah Lions",
+        "before": 62.52002676405798,
+        "after": 92.35192377556065,
+        "delta": 29.83189701150267
+      },
+      {
+        "id": "e28de37e-84d5-4dc7-b36c-e14da5924729",
+        "name": "Healing Salve",
+        "before": 66.11160643703167,
+        "after": 94.97001089128132,
+        "delta": 28.85840445424965
+      },
+      {
+        "id": "b0da8d56-3178-44c2-9344-95d2346d326f",
+        "name": "Castle",
+        "before": 64.5723015380907,
+        "after": 90.65399726462731,
+        "delta": 26.08169572653661
+      },
+      {
+        "id": "efba235e-04e5-449c-906c-0ac33f6d7929",
+        "name": "Samite Healer",
+        "before": 63.94045243612202,
+        "after": 87.37584343065046,
+        "delta": 23.43539099452844
+      },
+      {
+        "id": "c15e8a42-89de-42bc-8d5f-33426d207c3a",
+        "name": "Island Sanctuary",
+        "before": 60.89847529213517,
+        "after": 83.77445985886364,
+        "delta": 22.87598456672847
+      },
+      {
+        "id": "a2788d69-6a3a-42f0-8736-cc6b57755ecd",
+        "name": "Wrath of God",
+        "before": 71.57510111967751,
+        "after": 93.3048099082094,
+        "delta": 21.729708788531894
+      }
+    ]
+  },
+  "groups": {
+    "calibration": {
+      "cards": 34,
+      "variants": {
+        "released": {
+          "structure100": 70.39403883872444,
+          "coverage": 0.9532334672999634,
+          "frame100": 79.27915887489434,
+          "rules100": 61.91672001936416
+        },
+        "first": {
+          "structure100": 75.90048362699795,
+          "coverage": 0.9532334672999634,
+          "frame100": 88.70898346015672,
+          "rules100": 65.04417398463448
+        },
+        "consensus": {
+          "structure100": 76.19898788879235,
+          "coverage": 0.9532334672999634,
+          "frame100": 88.6194886015493,
+          "rules100": 66.04018446399995
+        },
+        "warp": {
+          "structure100": 76.52301930741129,
+          "coverage": 0.9532334672999634,
+          "frame100": 89.22164586096329,
+          "rules100": 66.21472636666327
+        },
+        "blur-aware": {
+          "structure100": 76.83209840760908,
+          "coverage": 0.9532334672999634,
+          "frame100": 89.12519878607552,
+          "rules100": 67.62455480070209
+        },
+        "combined": {
+          "structure100": 76.57668840897196,
+          "coverage": 0.9532334672999634,
+          "frame100": 89.13178186293442,
+          "rules100": 66.44693155368111
+        },
+        "scan-art": {
+          "structure100": 78.59050931149787,
+          "coverage": 0.9532334672999634,
+          "frame100": 90.65692299348463,
+          "rules100": 65.04417398463448
+        },
+        "feather-art": {
+          "structure100": 78.59483373912555,
+          "coverage": 0.9532334672999634,
+          "frame100": 90.67460776784318,
+          "rules100": 65.04417398463448
+        },
+        "stock-corners": {
+          "structure100": 76.82014704530175,
+          "coverage": 0.9532334672999634,
+          "frame100": 89.12519878607552,
+          "rules100": 67.62455480070209
+        },
+        "inner-supplied": {
+          "structure100": 76.81269915112497,
+          "coverage": 0.9532334672999634,
+          "frame100": 89.12519878607552,
+          "rules100": 67.62455480070209
+        },
+        "inner-geometry": {
+          "structure100": 76.81100366460477,
+          "coverage": 0.9532334672999634,
+          "frame100": 89.12519878607552,
+          "rules100": 67.62455480070209
+        },
+        "inner-tone": {
+          "structure100": 76.80987321940786,
+          "coverage": 0.9532334672999634,
+          "frame100": 89.12519878607552,
+          "rules100": 67.62455480070209
+        },
+        "complete": {
+          "structure100": 79.50416104169423,
+          "coverage": 0.9532334672999634,
+          "frame100": 91.09055482509399,
+          "rules100": 67.62455480070209
+        },
+        "shared-text": {
+          "structure100": 83.60339080734519,
+          "coverage": 0.9532334672999634,
+          "frame100": 91.55498761533548,
+          "rules100": 79.98169141769498
+        }
+      }
+    },
+    "validation": {
+      "cards": 11,
+      "variants": {
+        "released": {
+          "structure100": 69.28093029934664,
+          "coverage": 0.9538866930171278,
+          "frame100": 79.70479085752979,
+          "rules100": 59.65060454518111
+        },
+        "first": {
+          "structure100": 75.03293160976031,
+          "coverage": 0.9538866930171278,
+          "frame100": 88.46428561931008,
+          "rules100": 62.81779806396994
+        },
+        "consensus": {
+          "structure100": 75.24357781677466,
+          "coverage": 0.9538866930171278,
+          "frame100": 88.34607430655328,
+          "rules100": 63.57481227011283
+        },
+        "warp": {
+          "structure100": 75.69932276844692,
+          "coverage": 0.9538866930171278,
+          "frame100": 88.99760735760037,
+          "rules100": 63.85607193145782
+        },
+        "blur-aware": {
+          "structure100": 75.78644785360383,
+          "coverage": 0.9538866930171278,
+          "frame100": 88.7822533735016,
+          "rules100": 64.95215054407115
+        },
+        "combined": {
+          "structure100": 75.71749989654293,
+          "coverage": 0.9538866930171278,
+          "frame100": 88.92815195627342,
+          "rules100": 63.9672603862849
+        },
+        "scan-art": {
+          "structure100": 77.8166685278299,
+          "coverage": 0.9538866930171278,
+          "frame100": 91.03157643818562,
+          "rules100": 62.81779806396994
+        },
+        "feather-art": {
+          "structure100": 77.82262806618881,
+          "coverage": 0.9538866930171278,
+          "frame100": 91.05578070299345,
+          "rules100": 62.81779806396994
+        },
+        "stock-corners": {
+          "structure100": 75.75282789262793,
+          "coverage": 0.9538866930171278,
+          "frame100": 88.7822533735016,
+          "rules100": 64.95215054407115
+        },
+        "inner-supplied": {
+          "structure100": 75.74784102949387,
+          "coverage": 0.9538866930171278,
+          "frame100": 88.7822533735016,
+          "rules100": 64.95215054407115
+        },
+        "inner-geometry": {
+          "structure100": 75.74520675318169,
+          "coverage": 0.9538866930171278,
+          "frame100": 88.7822533735016,
+          "rules100": 64.95215054407115
+        },
+        "inner-tone": {
+          "structure100": 75.74330188590989,
+          "coverage": 0.9538866930171278,
+          "frame100": 88.7822533735016,
+          "rules100": 64.95215054407115
+        },
+        "complete": {
+          "structure100": 78.5330926432528,
+          "coverage": 0.9538866930171278,
+          "frame100": 91.37406673144015,
+          "rules100": 64.95215054407115
+        },
+        "shared-text": {
+          "structure100": 84.18303867870006,
+          "coverage": 0.9538866930171278,
+          "frame100": 91.34073174823355,
+          "rules100": 82.84758516019127
+        }
+      }
+    },
+    "all": {
+      "cards": 45,
+      "variants": {
+        "released": {
+          "structure100": 70.12194564020986,
+          "coverage": 0.9533931446974925,
+          "frame100": 79.38320224842747,
+          "rules100": 61.36278068123053
+        },
+        "first": {
+          "structure100": 75.68841535611766,
+          "coverage": 0.9533931446974925,
+          "frame100": 88.6491684323942,
+          "rules100": 64.49994875958315
+        },
+        "consensus": {
+          "structure100": 75.96544320452135,
+          "coverage": 0.9533931446974925,
+          "frame100": 88.55265399610585,
+          "rules100": 65.43753792771645
+        },
+        "warp": {
+          "structure100": 76.32167126455333,
+          "coverage": 0.9533931446974925,
+          "frame100": 89.16688089347457,
+          "rules100": 65.63816639361303
+        },
+        "blur-aware": {
+          "structure100": 76.57649493885224,
+          "coverage": 0.9533931446974925,
+          "frame100": 89.04136768522412,
+          "rules100": 66.97130042685897
+        },
+        "combined": {
+          "structure100": 76.36666455037819,
+          "coverage": 0.9533931446974925,
+          "frame100": 89.08200566352839,
+          "rules100": 65.84078971276202
+        },
+        "scan-art": {
+          "structure100": 78.40134823104569,
+          "coverage": 0.9533931446974925,
+          "frame100": 90.74850494663376,
+          "rules100": 64.49994875958315
+        },
+        "feather-art": {
+          "structure100": 78.40607235240766,
+          "coverage": 0.9533931446974925,
+          "frame100": 90.76778337421325,
+          "rules100": 64.49994875958315
+        },
+        "stock-corners": {
+          "structure100": 76.5592468079815,
+          "coverage": 0.9533931446974925,
+          "frame100": 89.04136768522412,
+          "rules100": 66.97130042685897
+        },
+        "inner-supplied": {
+          "structure100": 76.55240049917069,
+          "coverage": 0.9533931446974925,
+          "frame100": 89.04136768522412,
+          "rules100": 66.97130042685897
+        },
+        "inner-geometry": {
+          "structure100": 76.55047553070135,
+          "coverage": 0.9533931446974925,
+          "frame100": 89.04136768522412,
+          "rules100": 66.97130042685897
+        },
+        "inner-tone": {
+          "structure100": 76.54915578233059,
+          "coverage": 0.9533931446974925,
+          "frame100": 89.04136768522412,
+          "rules100": 66.97130042685897
+        },
+        "complete": {
+          "structure100": 79.26678876651967,
+          "coverage": 0.9533931446974925,
+          "frame100": 91.15985773553416,
+          "rules100": 66.97130042685897
+        },
+        "shared-text": {
+          "structure100": 83.74508250923193,
+          "coverage": 0.9533931446974925,
+          "frame100": 91.5026139589328,
+          "rules100": 80.6822432214163
+        }
+      }
+    }
+  },
+  "normalizationSha256": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+  "status": "Promoted shared Alpha typography in 0.5.3 with overflow fallback; no frame assets promoted.",
+  "provenance": "codex/alpha-frame-reconstruction: games/magic/fixtures/accuracy/alpha-white-border-text-result.json at 0c6516e"
+}

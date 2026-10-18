@@ -85,6 +85,8 @@ export function validateDocument(document: CardDocument) {
   }
 }
 export function validatePrintDots(profile: Instance['printDots']) {
+  if (profile?.artwork !== undefined && typeof profile.artwork !== 'boolean')
+    throw Error('Invalid print dot artwork option');
   if (
     profile?.inset !== undefined &&
     (!Number.isFinite(profile.inset) || profile.inset < 0 || profile.inset > 0.2)
@@ -97,9 +99,8 @@ export function validatePrintDots(profile: Instance['printDots']) {
     throw Error('Invalid print dot variation');
   if (
     profile &&
-    (!Number.isFinite(profile.amount) ||
-      profile.amount < 0 ||
-      profile.amount > 1 ||
+    ((profile.amount !== undefined &&
+      (!Number.isFinite(profile.amount) || profile.amount < 0 || profile.amount > 1)) ||
       (profile.period !== undefined &&
         (!Number.isFinite(profile.period) || profile.period < 2 || profile.period > 16)))
   )

@@ -9,3 +9,5 @@ export type { FinishMap } from './finish-printing.js';
 export { FinishResources } from './finish-material.js';
 export { SurfaceMotion } from './surface-motion.js';
 export { surfaceSeed } from './deformation.js';
+
+export { DEFAULT_PRINT_DOTS } from './print-settings.js';

@@ -1,0 +1,187 @@
+{
+  "schema": 1,
+  "baselineCommit": "24769b5896f2c8767d96d52ec45ab04793e73221",
+  "evidenceHash": "e8bd9fc0b16f770fb7c0f4f344d6ce35ba2fb6c74a3373ec212eb595292e2bd9",
+  "dependencies": {
+    "games/magic/src/presentation/alpha-rules.ts": "36d2832e776365b2eabd0c8b1a9d2d21f81612d367f2a49a9747ccb3c5f05622"
+  },
+  "files": {
+    "games/magic/src/presentation/retro-rules.ts": {
+      "before": "087abed2e5423514a46426401f27e5a9ffe2b01152fca2e3c2910e261be19210",
+      "after": "0977d8e8c894256f5a1e5f5c05a791bd405b0f2fb249af054a6de3b7bb5087ff",
+      "reverseEdits": [
+        {
+          "start": 31,
+          "count": 5,
+          "lines": [
+            "  return adjustCalibrationRules(context, face, baseRetroTextLayout(context, face));\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/rules-layout.ts": {
+      "before": "74538eb24783169f111af38b7968b172e9fa4bb4cd033b0f4542fcdbeabd0e13",
+      "after": "f6ec36f29d36fbf909868ce240e03a487bbb4a2413af33d3c52f8e7641274952",
+      "reverseEdits": [
+        {
+          "start": 14,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/rules-paint.ts": {
+      "before": "7b669814d33185b117526c2ca5611a6fcc13f0d686563b7c35289b358414ee0f",
+      "after": "213a6dd4dc74d723847d9c23b309b7a533555868b0a0b130aeca09f17a16a901",
+      "reverseEdits": [
+        {
+          "start": 121,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "packages/browser/src/finish-material.ts": {
+      "before": "60987ffad500e1912c0d66dcebfe2d1025db2e7eee3983139ed3aebcd6c84004",
+      "after": "7da0dc5b1f92b4306eccb763192c5735b23f2de0b2a305e548afb92913f0fa9c",
+      "reverseEdits": [
+        {
+          "start": 130,
+          "count": 1,
+          "lines": ["    return this.printing.printDots(source, width, height, settings);\n"]
+        },
+        {
+          "start": 126,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 2,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "packages/browser/src/finish-printing.ts": {
+      "before": "252d05e594a383e4393a4e20694514a383ef0f07fdc92ae2f4a24ca2991a3211",
+      "after": "a9b3e98c6b37af368227981c61d1b81dc6b22c45ae7540dcb6b14bbccb8d3ad6",
+      "reverseEdits": [
+        {
+          "start": 116,
+          "count": 6,
+          "lines": [
+            "      output = this.ink.paint({ texture: allocated, width, height }, [\n",
+            "        settings.amount,\n",
+            "        settings.period ?? 5,\n",
+            "        settings.variation ?? 0.5,\n",
+            "        settings.inset ?? 0,\n",
+            "      ]);\n"
+          ]
+        },
+        {
+          "start": 57,
+          "count": 7,
+          "lines": []
+        },
+        {
+          "start": 52,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 4,
+          "count": 2,
+          "lines": ["import type { Instance } from './types.js';\n"]
+        }
+      ]
+    },
+    "packages/browser/src/finish.ts": {
+      "before": "ac9abc1bae10fb00bce454c008c11c80be7d570aa7e4d159b19d16569dc35473",
+      "after": "4ee43c9ff1e1cfed01c8978dfd83a22663cfc43b5d9e9d686e3f15c5facf1503",
+      "reverseEdits": [
+        {
+          "start": 11,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "packages/browser/src/gpu/printed-ink.ts": {
+      "before": "a53fb67ab27be8cb47c171b4a9deb0da03c34142686ec8e38856d751e3917b4e",
+      "after": "6c8f244962b3cdf19f8b2b9a128a320dddf3922c8309df71ed5c2b0d06331309",
+      "reverseEdits": [
+        {
+          "start": 133,
+          "count": 5,
+          "lines": []
+        },
+        {
+          "start": 108,
+          "count": 1,
+          "lines": ["  paint(source: Texture, values: number[]): Texture {\n"]
+        },
+        {
+          "start": 95,
+          "count": 2,
+          "lines": [
+            "      face = this.paint(source, values);\n",
+            "      if (overlay) top = this.paint(overlay, values);\n"
+          ]
+        },
+        {
+          "start": 73,
+          "count": 3,
+          "lines": [
+            "    const values = [\n",
+            "        profile.amount,\n",
+            "        profile.period ?? 5,\n",
+            "        profile.variation ?? 0.5,\n",
+            "        profile.inset ?? 0,\n",
+            "      ],\n",
+            "      settings = values.join(':');\n"
+          ]
+        },
+        {
+          "start": 71,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 10,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 3,
+          "count": 2,
+          "lines": ["import type { Instance } from '../types.js';\n"]
+        }
+      ]
+    },
+    "packages/browser/src/validation.ts": {
+      "before": "5367ba2153a4f007a67475bfd46c8114d19f2199cc2913664046bfc62783f6ef",
+      "after": "fca6b8c95692ad017102f3e1f33f02b495ae46cfbac6f2d2958866df88e97c28",
+      "reverseEdits": [
+        {
+          "start": 101,
+          "count": 2,
+          "lines": [
+            "    (!Number.isFinite(profile.amount) ||\n",
+            "      profile.amount < 0 ||\n",
+            "      profile.amount > 1 ||\n"
+          ]
+        },
+        {
+          "start": 87,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    }
+  }
+}
