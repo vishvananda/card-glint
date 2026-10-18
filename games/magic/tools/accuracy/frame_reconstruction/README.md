@@ -29,6 +29,7 @@ python games/magic/tools/accuracy/frame-reconstruction-fit.py prepare test-resul
 python games/magic/tools/accuracy/frame-reconstruction-fit.py fit test-results/frame-study
 node games/magic/tools/accuracy/frame-reconstruction-native.mjs \
   test-results/frame-study INPUTS.json COMPONENTS.json train
+python games/magic/tools/accuracy/frame-reconstruction-verify.py test-results/frame-study train
 python games/magic/tools/accuracy/frame-reconstruction-evaluate.py test-results/frame-study
 
 PYTHONPATH=games/magic/tools/accuracy python -m unittest frame_reconstruction.test_model -v
@@ -63,6 +64,10 @@ match every released full-card PNG pixel before candidate comparisons proceed.
   The contrast/structure SSIM term is an index out of 100, not a percentage or
   the Lab whole-card score. A better value alone is insufficient: inspect native
   full cards, residuals, masks and texture stability before adopting an asset.
+  SSIM uses mask-normalized local moments after matched native filtering and
+  fixed 2x decimation; excluded art and lettering do not enter its local moments.
+  Evaluation caches reference statistics and uses at most two worker processes
+  (`--workers 1` is available for a busy machine).
 
 The differentiable HSB model rejects unsupported material operations. Keep
 rounding outside autograd; compare quantized exports with the native `colorFrame`

@@ -16,20 +16,45 @@ def png(path, value):
     Image.fromarray(np.round(np.clip(value, 0, 1) * 255).astype(np.uint8)).save(path)
 
 
-def masked_metrics(scan, predicted, mask):
+def filter_image(image):
     result = {}
     for sigma in [1.4, 3.0]:
-        a, b = [gaussian_filter(x, (sigma, sigma, 0)) for x in [scan, predicted]]
-        ag, bg = [x @ np.array([.2126, .7152, .0722]) for x in [a, b]]
-        ma, mb = gaussian_filter(ag, 5), gaussian_filter(bg, 5)
-        va = np.maximum(0, gaussian_filter(ag * ag, 5) - ma * ma)
-        vb = np.maximum(0, gaussian_filter(bg * bg, 5) - mb * mb)
-        cov = gaussian_filter(ag * bg, 5) - ma * mb
-        # The contrast/structure part of SSIM omits its mean-luminance term.
-        cs = (2 * cov + .03 ** 2) / (va + vb + .03 ** 2)
-        result[str(sigma)] = dict(structure100=float(100 * np.mean(cs[mask])),
-                                  rgbMae255=float(255 * np.abs(a - b)[mask].mean()),
-                                  rgbRmse255=float(255 * np.sqrt(((a - b) ** 2)[mask].mean())))
+        value = gaussian_filter(image, (sigma, sigma, 0))
+        gray = (.2126 * value[..., 0] + .7152 * value[..., 1] + .0722 * value[..., 2])[::2, ::2]
+        result[str(sigma)] = (value, gray)
+    return result
+
+
+def reference_statistics(scan, masks):
+    result = {}
+    for scale, (a, ag) in filter_image(scan).items():
+        parts = {}
+        for name, mask in masks.items():
+            small = mask[::2, ::2]
+            weight = gaussian_filter(small.astype(float), 2.5).clip(1e-8)
+            ma = gaussian_filter(ag * small, 2.5) / weight
+            va = np.maximum(0, gaussian_filter(ag * ag * small, 2.5) / weight - ma * ma)
+            parts[name] = (mask, small, weight, ma, va)
+        result[scale] = (a, ag, parts)
+    return result
+
+
+def compare_statistics(reference, predicted):
+    result = {}
+    for scale, (b, bg) in filter_image(predicted).items():
+        a, ag, parts = reference[scale]
+        error = np.abs(a - b)
+        for name, (mask, small, weight, ma, va) in parts.items():
+            # Mask-normalized local moments exclude letters/art from the SSIM
+            # window. Fixed 2x decimation follows matched native filtering.
+            mb = gaussian_filter(bg * small, 2.5) / weight
+            vb = np.maximum(0, gaussian_filter(bg * bg * small, 2.5) / weight - mb * mb)
+            cov = gaussian_filter(ag * bg * small, 2.5) / weight - ma * mb
+            cs = (2 * cov + .03 ** 2) / (va + vb + .03 ** 2)
+            result.setdefault(name, {})[scale] = dict(
+                structure100=float(100 * np.mean(cs[small])),
+                rgbMae255=float(255 * error[mask].mean()),
+                rgbRmse255=float(255 * np.sqrt((error[mask] ** 2).mean())))
     return result
 
 
@@ -78,45 +103,56 @@ def spectrum(samples):
                             gaussian1_4Amplitude=float(np.exp(-2*np.pi**2*1.4**2*(x[p]**2+y[p]**2)))) for p in points])
 
 
-def evaluate(root, label):
+def evaluate_row(job):
+    root, label, i, row = job
+    gallery = root / f'{label}-gallery'
+    with np.load(root / 'prepared' / (row['id'] + '.npz')) as data:
+        scan, mask, card = data['raw'], data['mask'], data['card']
+    source_ref = read_image(row['reference']['file'])
+    normalized_scan = normalize(source_ref, row['normalization']['transform']['matrix'])
+    values = {}
+    outputs = [('released', root / row['baseline']['file']),
+               ('calibrated', root / f'{label}-native' / f'{row["id"]}-0.png'),
+               ('reconstructed', root / f'{label}-native' / f'{row["id"]}-1.png')]
+    paper = (card[..., 0] > 66) & (card[..., 0] < 423) & (card[..., 1] > 414) & (card[..., 1] < 594)
+    material = gaussian_filter(scan.max(-1), 1.4) > .3
+    frame = mask & material & ~paper
+    inside = mask & paper
+    whole = mask & material
+    reference = reference_statistics(scan, dict(frame=frame, paper=inside, combined=whole))
+    normalized = {}
+    for name, path in outputs:
+        image = read_image(path)
+        x = (card[..., 0] + .5) * image.shape[1] / 488 - .5
+        y = (card[..., 1] + .5) * image.shape[0] / 680 - .5
+        predicted = sample(image, x, y)[..., :3]
+        norm = normalize(image, [1,0,0,1,0,0])
+        normalized[name] = norm
+        boundaries = boundary_metrics(normalized_scan, norm)
+        values[name] = dict(**compare_statistics(reference, predicted), boundaries=boundaries,
+                            boundaryCorrelation100=float(100*np.mean([b['correlation'] for b in boundaries.values()])),
+                            medianBoundaryShiftPx=float(np.median([abs(b['bestShift']) for b in boundaries.values()])))
+    result = dict(id=row['id'], name=row['name'], cohort=row['cohort'], values=values)
+    png(gallery / f'{row["id"]}-scan.png', normalized_scan)
+    for name, image in normalized.items():
+        png(gallery / f'{row["id"]}-{name}.png', image)
+    return result
+
+
+def evaluate(root, label, workers):
+    from concurrent.futures import ProcessPoolExecutor
     observations = json.loads((root / 'observations.json').read_text())
     rows, spectral_samples = [], []
     gallery = root / f'{label}-gallery'
     gallery.mkdir(exist_ok=True)
-    for i, row in enumerate(observations['records']):
+    jobs = [(root, label, i, row) for i, row in enumerate(observations['records'])]
+    with ProcessPoolExecutor(max_workers=workers) as pool:
+        for row in pool.map(evaluate_row, jobs):
+            rows.append(row)
+            print(f'{len(rows)}/{len(jobs)} {row["name"]}', flush=True)
+    for row in observations['records'][:12]:
         with np.load(root / 'prepared' / (row['id'] + '.npz')) as data:
-            scan, mask, card = data['raw'], data['mask'], data['card']
-        if i < 12:
-            spectral_samples.append((scan, mask))
-        source_ref = read_image(row['reference']['file'])
-        normalized_scan = normalize(source_ref, row['normalization']['transform']['matrix'])
-        values = {}
-        outputs = [('released', root / row['baseline']['file']),
-                   ('calibrated', root / f'{label}-native' / f'{row["id"]}-0.png'),
-                   ('reconstructed', root / f'{label}-native' / f'{row["id"]}-1.png')]
-        normalized = {}
-        for name, path in outputs:
-            image = read_image(path)
-            x = (card[..., 0] + .5) * image.shape[1] / 488 - .5
-            y = (card[..., 1] + .5) * image.shape[0] / 680 - .5
-            predicted = sample(image, x, y)[..., :3]
-            paper = (card[..., 0] > 66) & (card[..., 0] < 423) & (card[..., 1] > 414) & (card[..., 1] < 594)
-            material = gaussian_filter(scan.max(-1), 1.4) > .3
-            frame = mask & material & ~paper
-            inside = mask & paper
-            whole = mask & material
-            norm = normalize(image, [1,0,0,1,0,0])
-            normalized[name] = norm
-            boundaries = boundary_metrics(normalized_scan, norm)
-            values[name] = dict(frame=masked_metrics(scan,predicted,frame),paper=masked_metrics(scan,predicted,inside),
-                                combined=masked_metrics(scan,predicted,whole),boundaries=boundaries,
-                                boundaryCorrelation100=float(100*np.mean([b['correlation'] for b in boundaries.values()])),
-                                medianBoundaryShiftPx=float(np.median([abs(b['bestShift']) for b in boundaries.values()])))
-        rows.append(dict(id=row['id'], name=row['name'], cohort=row['cohort'], values=values))
-        png(gallery / f'{row["id"]}-scan.png', normalized_scan)
-        for name, image in normalized.items():
-            png(gallery / f'{row["id"]}-{name}.png', image)
-        print(f'{i+1}/45 {row["name"]}',flush=True)
+            spectral_samples.append((data['raw'], data['mask']))
     groups = {}
     for cohort in ['calibration','validation','all']:
         subset = [r for r in rows if cohort == 'all' or r['cohort'] == cohort]
@@ -136,4 +172,5 @@ def evaluate(root, label):
 
 if __name__ == '__main__':
     p=argparse.ArgumentParser();p.add_argument('directory',type=Path);p.add_argument('--label',default='train')
-    args=p.parse_args();evaluate(args.directory,args.label)
+    p.add_argument('--workers',type=int,choices=[1,2],default=2)
+    args=p.parse_args();evaluate(args.directory,args.label,args.workers)
