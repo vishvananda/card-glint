@@ -209,6 +209,27 @@ try {
         )
           foilBlack++;
       }
+    // Even curved frame apertures must return zero coverage for a black mask;
+    // the native artwork layer includes a backing outside its actual shape.
+    const blackMask = canvas(400, 1000);
+    blackMask.getContext('2d').fillRect(0, 0, 400, 1000);
+    const blackBitmap = await createImageBitmap(blackMask);
+    const noFoil = await artworkFoilMask(base, '/mask').paint(
+      {
+        async images(requests, signal) {
+          const lease = await maskHost.images(requests, signal);
+          return { value: new Map(lease.value).set('/mask', blackBitmap), release: lease.release };
+        },
+      },
+      new AbortController().signal,
+    );
+    const zeroCoverage = noFoil
+      .getContext('2d')
+      .getImageData(0, 0, noFoil.width, noFoil.height).data;
+    if (zeroCoverage.some((value, i) => i % 4 === 3 && value !== 0))
+      throw Error('Native aperture backing leaked into foil mask');
+    noFoil.width = noFoil.height = blackMask.width = blackMask.height = 0;
+    blackBitmap.close();
     const foilMaskCache =
       projected.key !==
         artworkFoilMask({ ...base, artPlacement: { ...base.artPlacement, zoom: 2 } }, '/mask')

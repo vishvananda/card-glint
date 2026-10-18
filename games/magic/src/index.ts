@@ -261,7 +261,7 @@ export function artworkFoilMask(
       let destination: ReturnType<typeof artworkGeometry>['destination'] | undefined;
       // Invert grayscale before multiplying by source alpha. Transparent pixels
       // stay uncoated in both modes, including partially transparent brush edges.
-      const maskHost: RasterHost = {
+      const maskHost = (black: boolean): RasterHost => ({
         async images(requests, imageSignal) {
           const lease = await host.images(requests, imageSignal);
           const image = lease.value.get(source);
@@ -277,11 +277,16 @@ export function artworkFoilMask(
             imageSignal.throwIfAborted();
             destination = artworkGeometry(maskFace, image.width, image.height).destination;
             const ctx = flat.getContext('2d', { willReadFrequently: true })!;
-            ctx.drawImage(image, 0, 0);
+            if (black) {
+              ctx.fillStyle = '#000';
+              ctx.fillRect(0, 0, flat.width, flat.height);
+            } else ctx.drawImage(image, 0, 0);
             const pixels = ctx.getImageData(0, 0, flat.width, flat.height);
             for (let i = 0; i < pixels.data.length; i += 4) {
               const gray = (pixels.data[i]! + pixels.data[i + 1]! + pixels.data[i + 2]!) / 765;
-              const value = Math.round((invert ? 1 - gray : gray) * pixels.data[i + 3]!);
+              const value = black
+                ? 0
+                : Math.round((invert ? 1 - gray : gray) * pixels.data[i + 3]!);
               pixels.data[i] = pixels.data[i + 1] = pixels.data[i + 2] = value;
               pixels.data[i + 3] = 255;
             }
@@ -301,14 +306,31 @@ export function artworkFoilMask(
             },
           };
         },
-      };
-      const output = await raster.paint(maskHost, signal);
+      });
+      const output = await raster.paint(maskHost(false), signal);
+      let backing: HTMLCanvasElement | undefined;
       try {
+        // Subtract the same projection of an opaque black mask. This removes
+        // the native artwork backing even at curved/antialiased apertures. Both
+        // paints use the host's cached assets and happen only during preparation.
+        backing = await raster.paint(maskHost(true), signal);
         signal.throwIfAborted();
         const ctx = output.getContext('2d', { willReadFrequently: true })!;
         const pixels = ctx.getImageData(0, 0, output.width, output.height);
+        const base = backing
+          .getContext('2d', { willReadFrequently: true })!
+          .getImageData(0, 0, backing.width, backing.height).data;
         for (let i = 0; i < pixels.data.length; i += 4) {
-          const value = (pixels.data[i]! + pixels.data[i + 1]! + pixels.data[i + 2]!) / 765;
+          const value = Math.max(
+            0,
+            (pixels.data[i]! -
+              base[i]! +
+              pixels.data[i + 1]! -
+              base[i + 1]! +
+              pixels.data[i + 2]! -
+              base[i + 2]!) /
+              765,
+          );
           pixels.data[i + 3] = Math.round(pixels.data[i + 3]! * value);
           pixels.data[i] = pixels.data[i + 1] = pixels.data[i + 2] = 255;
         }
@@ -330,6 +352,8 @@ export function artworkFoilMask(
       } catch (error) {
         output.width = output.height = 0;
         throw error;
+      } finally {
+        if (backing) backing.width = backing.height = 0;
       }
     },
   };
