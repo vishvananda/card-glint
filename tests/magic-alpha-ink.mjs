@@ -3,9 +3,11 @@ import path from 'node:path';
 import { createServer } from 'vite';
 import { chromium } from 'playwright';
 import { alphaInkProof, preAlphaInkSource } from './magic-alpha-ink-source-guard.mjs';
+import { preDarkTypeLineSource } from './magic-dark-type-line-source-guard.mjs';
 await alphaInkProof();
 const file = 'games/magic/src/presentation/retro-paint.ts';
 const virtual = 'games/magic/src/presentation/__alpha-ink-before.ts';
+const alphaAfter = 'games/magic/src/presentation/__alpha-ink-after.ts';
 const server = await createServer({
   configFile: false,
   optimizeDeps: { noDiscovery: true },
@@ -15,9 +17,11 @@ const server = await createServer({
       name: 'alpha-ink-baseline',
       resolveId(id) {
         if (id.endsWith('/__alpha-ink-before.ts')) return path.resolve(virtual);
+        if (id.endsWith('/__alpha-ink-after.ts')) return path.resolve(alphaAfter);
       },
       async load(id) {
         if (id === path.resolve(virtual)) return (await preAlphaInkSource(file)).toString();
+        if (id === path.resolve(alphaAfter)) return (await preDarkTypeLineSource(file)).toString();
       },
     },
   ],
@@ -30,7 +34,7 @@ try {
   await page.goto(server.resolvedUrls.local[0]);
   const result = await page.evaluate(async () => {
     const before = await import('/games/magic/src/presentation/__alpha-ink-before.ts');
-    const after = await import('/games/magic/src/presentation/retro-paint.ts');
+    const after = await import('/games/magic/src/presentation/__alpha-ink-after.ts');
     let changed = 0,
       controls = 0;
     for (const setCode of [

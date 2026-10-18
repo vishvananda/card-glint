@@ -1,4 +1,5 @@
 import { assertNativeMagicSourceHash } from './magic-native-source-guard.mjs';
+import { preDarkWordingSource } from './magic-dark-wording-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -85,7 +86,7 @@ for (const [file, expected] of Object.entries(wording.methodGuards)) {
   const next = inputExtension.guards[file];
   if (next) assert.equal(next.before, expected, 'Input replay must begin at the recorded adapter');
   assert.equal(
-    hash(await readFile(file)),
+    hash(await preDarkWordingSource(file)),
     next?.after ?? expected,
     'Stale wording adapter: ' + file,
   );
@@ -94,7 +95,7 @@ for (const [file, guard] of Object.entries(inputExtension.guards)) {
   const next = breaks.guards[file];
   if (next) assert.equal(next.before, guard.after);
   assert.equal(
-    hash(await readFile(file)),
+    hash(await preDarkWordingSource(file)),
     withWordingFollowup(file, next?.after ?? guard.after),
     'Stale input replay: ' + file,
   );
@@ -127,7 +128,7 @@ for (const [file, expected] of Object.entries(currentInputs.methodGuards)) {
   const next = breaks.guards[file];
   if (next) assert.equal(next.before, expected);
   assert.equal(
-    hash(await readFile(file)),
+    hash(await preDarkWordingSource(file)),
     withWordingFollowup(file, next?.after ?? expected),
     'Stale original-input replay: ' + file,
   );

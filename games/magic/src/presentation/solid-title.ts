@@ -7,6 +7,7 @@ export function paintSolidTitle(
   y: number,
   maxWidth: number,
   p: { width: number; shadow: number; trim: number; gray: number },
+  colors?: { fill: CanvasRenderingContext2D['fillStyle']; shadow: string },
 ) {
   c.save();
   const matrix = c.getTransform();
@@ -22,7 +23,7 @@ export function paintSolidTitle(
   ink.textAlign = c.textAlign;
   ink.textBaseline = c.textBaseline;
   ink.letterSpacing = c.letterSpacing;
-  ink.fillStyle = `rgb(${p.gray},${p.gray},${p.gray})`;
+  ink.fillStyle = colors?.fill ?? `rgb(${p.gray},${p.gray},${p.gray})`;
   ink.fillText(text, x, y, maxWidth);
   if (p.trim > 0) {
     ink.globalCompositeOperation = 'destination-out';
@@ -30,7 +31,7 @@ export function paintSolidTitle(
     ink.strokeText(text, x, y, maxWidth);
   }
   c.resetTransform();
-  c.shadowColor = '#17140f';
+  c.shadowColor = colors?.shadow ?? '#17140f';
   c.shadowOffsetX = (matrix.a / p.width) * p.shadow;
   c.shadowOffsetY = matrix.d * p.shadow;
   c.drawImage(layer, 0, 0);

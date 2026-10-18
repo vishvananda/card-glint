@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "baselineCommit": "350274b2563f2663ecd8b51decd2749fa6627bd4",
+  "evidenceHash": "0b2a274076fafca3bfdd6fa53ad079c9eb22349c289bdcc8b280ad1dac740957",
+  "files": {
+    "games/magic/src/presentation/retro-type.ts": {
+      "before": "09c73daa326185ef1fa42caa30a3f6f7ffdb540f857058c57073e7ff67d056d0",
+      "after": "1f67b5ac7c47442d324749b8ba46283a9aeb4573c22c75ff988077fc8f12200f",
+      "reverseEdits": [
+        {
+          "start": 2,
+          "count": 43,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "5d483c3857828d02503effa94b503772d555fa6bf696ee21c454e554961e26b6",
+      "after": "13d084eca3ac561676d234b8632a3f3b55583cc1502c32d012e03a08c2029b58",
+      "reverseEdits": [
+        {
+          "start": 228,
+          "count": 4,
+          "lines": [
+            "    : (text: string, x: number, y: number, width: number) =>\n",
+            "        paintTextInk(c, text, x, y, width, face.textInk, 'type');\n"
+          ]
+        },
+        {
+          "start": 16,
+          "count": 1,
+          "lines": ["import { retroTypePlacement } from './retro-type.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/solid-title.ts": {
+      "before": "8f16585f7e6ae12d80e3a85f78229544fbb1615f477e9cbefdcab640f8b4d983",
+      "after": "2589208c368e0c2bc356946a9b998292564f03b8fadff566631f20f2f577fcbb",
+      "reverseEdits": [
+        {
+          "start": 33,
+          "count": 1,
+          "lines": ["  c.shadowColor = '#17140f';\n"]
+        },
+        {
+          "start": 25,
+          "count": 1,
+          "lines": ["  ink.fillStyle = `rgb(${p.gray},${p.gray},${p.gray})`;\n"]
+        },
+        {
+          "start": 9,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
+    "games/magic/src/presentation/early-expansion-title.ts": "421e563f54ff62c931b8f630d31e0b60ac7c258c09b9d3d998727cc64e890149",
+    "games/magic/src/presentation/text-ink.ts": "51baed7910e9bc915ddde88cbd804994323cfbe319310904eaa7f57668939a4d",
+    "games/magic/src/presentation/retro-frame.ts": "82f4e142a764903e8d1f2dfe5a805096d5fe49db40b2fdfea49e255d3620301c"
+  }
+}

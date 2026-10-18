@@ -14,7 +14,7 @@ import { retroManaPlacement } from './retro-mana.js';
 import { printingManaAdjustment } from './printing-mana-adjustment.js';
 import { titleTranslation } from './title-placement.js';
 import { paintEarlyExpansionTitle } from './early-expansion-title.js';
-import { retroTypePlacement } from './retro-type.js';
+import { retroTypePlacement, paintEarlyExpansionType } from './retro-type.js';
 import { paintPrintingLegendsFooter } from './printing-legends-footer.js';
 import { paintUrzaFooter } from './retro-urza-footer.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
@@ -226,8 +226,10 @@ export function paintRetroFace(
   const paintType = isRevisedLand(face)
     ? (text: string, _x: number, _y: number, width: number) =>
         paintRevisedLandText(c, text, 'type', width, face.textInk)
-    : (text: string, x: number, y: number, width: number) =>
-        paintTextInk(c, text, x, y, width, face.textInk, 'type');
+    : (text: string, x: number, y: number, width: number) => {
+        if (!paintEarlyExpansionType(c, face, text, x, y, width))
+          paintTextInk(c, text, x, y, width, face.textInk, 'type');
+      };
   c.save();
   c.translate(typePlacement.dx, typePlacement.dy);
   paintType(

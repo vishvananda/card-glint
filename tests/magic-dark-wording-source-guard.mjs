@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preDarkTypeLineSource } from './magic-dark-type-line-source-guard.mjs';
 
 const manifest = JSON.parse(
   await readFile(
@@ -11,7 +12,7 @@ const manifest = JSON.parse(
 /** Preserve the wording catalog used by older native calibration receipts.
  * The current catalog is checked independently by magic-printing-resolver. */
 export async function preDarkWordingSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preDarkTypeLineSource(file),
     change = manifest.files[file];
   if (!change) return bytes;
   const review = JSON.parse(await readFile(manifest.review.source)).cards[manifest.review.id];
