@@ -6,9 +6,14 @@ plus a small shared warp has the best masked frame/paper result. Neither is a
 released default. The original study and its frozen inputs are described in
 [the first experiment](alpha-white-reconstruction.md).
 
+The first snapshot's original rules bodies were correct, but 21 type lines
+still used Oracle fallbacks. These historical whole-card results retain that
+limitation. A separate corrected replay supplies scan-reviewed types for all
+45 cards; it does not overwrite these receipts or refit the masked texture.
+
 ## Results
 
-All fits use the same 34 calibration cards, fixed original-wording renders and
+All fits use the same 34 calibration cards, fixed original-body renders and
 frozen affine scan transforms. The other 11 cards were withheld from these fits
 but appeared in earlier development studies. These results do not constitute
 fresh validation of the complete renderer. Evaluating several methods on this

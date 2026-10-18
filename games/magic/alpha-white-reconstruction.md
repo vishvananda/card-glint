@@ -5,6 +5,13 @@ improved native whole-card structural matching against the released 0.5.2
 frame. A constrained texture reconstruction added a smaller further gain.
 This is an offline experiment, not an approved set profile or a renderer release.
 
+**Input audit:** the original capture snapshot supplied original rules bodies,
+but 21 of the 45 white cards retained modern type-line fallbacks. The historical
+whole-card numbers below therefore do not certify original type typography.
+All 45 types have since been checked against their exact cached scans in
+`lea/annotations-white-types.json`; the corrected replay uses a separate input
+revision. The masked frame fit excludes type lettering and is unaffected.
+
 ## Native results
 
 The 34-card fit was evaluated on 11 other white cards, selected deterministically
@@ -38,7 +45,7 @@ has no held-out evaluation; its separate results are in the evidence receipt.
 
 ## Forward model and fitting
 
-1. Capture the exact 0.5.2 full-card painter using frozen original-wording and
+1. Capture the exact 0.5.2 full-card painter using frozen original-body and
    original-symbol inputs. Keep artwork, typography, mana and all other layers
    fixed. Candidate captures must first reproduce all 45 baseline PNGs exactly.
 2. Preserve each historical scan's affine transform: translation, X/Y scale,
