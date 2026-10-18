@@ -91,10 +91,12 @@ def prepare(root, source_path):
     print(json.dumps(dict(prepared=len(records), geometry=geometry)), flush=True)
 
 
-def load_patches(root, records, count=6):
+def load_patches(root, records, count=32):
     patches = []
+    coverage = np.zeros((185, 133), dtype=np.uint16)
     rng = np.random.default_rng(1903)
     for row in records:
+        seen = np.zeros_like(coverage, dtype=bool)
         with np.load(root / 'prepared' / (row['id'] + '.npz')) as data:
             mask, grid, raw = data['mask'], data['grid'], data['raw']
             # Fixed coverage-stratified native patches: top/bottom side frame,
@@ -112,17 +114,25 @@ def load_patches(root, records, count=6):
                 m[:, :5] = m[:, -5:] = False
                 patches.append((torch.from_numpy(grid[sl].copy())[None],
                                 gaussian(tensor(raw[sl].copy()), 1.4), tensor(m[..., None])))
-    return patches
+                g = grid[sl][m]
+                ix = np.clip(((g[:, 0] + 1) * 133 / 2).astype(int), 0, 132)
+                iy = np.clip(((g[:, 1] + 1) * 185 / 2).astype(int), 0, 184)
+                seen[iy, ix] = True
+        coverage += seen
+    return patches, coverage
 
 
-def fit(root, source_path, steps, all_cards=False):
+def fit(root, source_path, steps, all_cards=False, fixed_adjustment=None):
     prep = json.loads((root / 'preparation.json').read_text())
     source = read_image(source_path)
     original = tensor(source[..., :3])
     mask, spec = paper_mask(source.shape)
     paper = tensor(mask[..., None])
     records = [r for r in prep['records'] if all_cards or r['cohort'] == 'calibration']
-    patches = load_patches(root, records)
+    patches, coverage = load_patches(root, records)
+    label = 'all' if all_cards else 'train'
+    np.save(root / f'{label}-coverage.npy', coverage)
+    png(root / f'{label}-coverage.png', coverage / len(records))
     # Shared restrained source calibration, fitted once. The texture stage
     # keeps it fixed so a second tone model cannot conceal texture errors.
     parameters = torch.nn.Parameter(torch.zeros(2, 3))
@@ -143,7 +153,7 @@ def fit(root, source_path, steps, all_cards=False):
             loss = F.huber_loss(prediction, target, reduction='none', delta=.035)
             terms.append((loss * valid).sum() / (valid.sum() * 3).clamp_min(1))
         return torch.stack(terms).mean()
-    for iteration in range(80):
+    for iteration in range(0 if fixed_adjustment else 80):
         optimizer.zero_grad()
         loss = loss_on(color_frame(original, adjustment(), paper), rng.choice(len(patches), 8, replace=False))
         loss.backward()
@@ -154,23 +164,29 @@ def fit(root, source_path, steps, all_cards=False):
             parameters[:, 2].clamp_(-.25, .2)
         if iteration % 20 == 0:
             print(json.dumps(dict(phase='color', step=iteration, loss=float(loss))), flush=True)
-    fixed = {k: {n: float(v.detach()) for n, v in values.items()} if k != 'mask' else values
-             for k, values in adjustment().items()}
-    label = 'all' if all_cards else 'train'
+    fixed = json.loads(fixed_adjustment.read_text()) if fixed_adjustment else {
+        k: {n: float(v.detach()) for n, v in values.items()} if k != 'mask' else values
+        for k, values in adjustment().items()}
     save(root / f'{label}-adjustment.json', fixed)
     calibrated = color_frame(original, fixed, paper).detach()
     png(root / f'{label}-calibrated-material.png', np.concatenate([calibrated[0].permute(1, 2, 0).numpy(), source[..., 3:]], -1))
     # A low-resolution residual excludes scanner dots by construction; the
     # clean source retains its existing high-frequency detail. No learned alpha.
-    delta = torch.nn.Parameter(torch.zeros(1, 3, 185, 133))
-    optimizer = torch.optim.Adam([delta], lr=.012)
+    # Sparse observations cannot authorize localized texture. Five independent
+    # cards start contributing, ten give full confidence; stock stays fixed.
+    support = tensor(np.clip((coverage.astype(float)-4)/6, 0, 1)[..., None])
+    gate = F.interpolate(support, original.shape[2:], mode='bilinear', align_corners=False)
+    gate *= ((original.max(1, keepdim=True).values-.18)/.22).clamp(0,1)
+    gate *= tensor(source[..., 3:])
+    delta = torch.nn.Parameter(torch.zeros(1, 1, 185, 133))
+    optimizer = torch.optim.Adam([delta], lr=.008)
     history = []
     for iteration in range(steps):
         optimizer.zero_grad()
-        residual = F.interpolate(delta, original.shape[2:], mode='bicubic', align_corners=False)
+        residual = F.interpolate(delta, original.shape[2:], mode='bicubic', align_corners=False) * gate
         candidate = (original + residual).clamp(0, 1)
         frame = color_frame(candidate, fixed, paper)
-        data_loss = loss_on(frame, rng.choice(len(patches), 8, replace=False))
+        data_loss = loss_on(frame, rng.choice(len(patches), 16, replace=False))
         prior = .004 * delta.square().mean()
         smooth = .006 * ((delta[:, :, 1:] - delta[:, :, :-1]).square().mean()
                         + (delta[:, :, :, 1:] - delta[:, :, :, :-1]).square().mean())
@@ -178,20 +194,20 @@ def fit(root, source_path, steps, all_cards=False):
         loss.backward()
         optimizer.step()
         with torch.no_grad():
-            delta.clamp_(-.16, .16)
+            delta.clamp_(-.10, .10)
         if iteration % 20 == 0 or iteration == steps - 1:
             row = dict(step=iteration, data=float(data_loss), prior=float(prior), smooth=float(smooth))
             history.append(row)
             print(json.dumps(dict(phase='texture', **row)), flush=True)
     with torch.no_grad():
-        residual = F.interpolate(delta, original.shape[2:], mode='bicubic', align_corners=False)
+        residual = F.interpolate(delta, original.shape[2:], mode='bicubic', align_corners=False) * gate
         candidate = (original + residual).clamp(0, 1)
         frame = color_frame(candidate, fixed, paper)
     for name, value in [('reconstructed-source', candidate), ('reconstructed-material', frame)]:
         png(root / f'{label}-{name}.png', np.concatenate([value[0].permute(1, 2, 0).numpy(), source[..., 3:]], -1))
     save(root / f'{label}-fit.json', dict(steps=steps, cards=len(records), patches=len(patches),
-         residualGrid=[133, 185], maximumSourceChange=.16, history=history,
-         policy='Fixed shared HSB; native scan patches; no per-card learned parameters; alpha unchanged'))
+         residualGrid=[133, 185], maximumSourceChange=.10, history=history,
+         policy='Fixed shared HSB; scalar texture residual; at least five-card support; native scan patches; no per-card learned parameters; alpha unchanged; stock excluded'))
 
 
 if __name__ == '__main__':
@@ -200,6 +216,7 @@ if __name__ == '__main__':
     parser.add_argument('directory', type=Path)
     parser.add_argument('--steps', type=int, default=160)
     parser.add_argument('--all', action='store_true')
+    parser.add_argument('--adjustment', type=Path)
     args = parser.parse_args()
     torch.set_num_threads(2)
     torch.manual_seed(123)
@@ -208,4 +225,4 @@ if __name__ == '__main__':
     if args.phase == 'prepare':
         prepare(root, source)
     else:
-        fit(root, source, args.steps, args.all)
+        fit(root, source, args.steps, args.all, args.adjustment)

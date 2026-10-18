@@ -53,8 +53,10 @@ match every released full-card PNG pixel before candidate comparisons proceed.
   evaluation also reports 3-pixel filtering. It is a restricted continuous-tone
   experiment, not a calibrated CMYK printing/scanner simulator.
 - Shared HSB is fitted first and frozen. Backpropagation then optimizes a
-  bounded 133 x 185 RGB residual, interpolated onto the source. It preserves
+  bounded 133 x 185 scalar texture residual, interpolated onto the source. It preserves
   dimensions and alpha and retains the source's existing high-frequency detail.
+  Updates require at least five-card coverage and exclude dark stock. Shared
+  HSB supplies color; the scalar texture fit cannot introduce colored speckles.
   A prior and smoothness term discourage unsupported changes. Coverage outside
   the observed patches must not be presented as recovered detail.
 - Report frame and paper separately, with color error and boundary shifts.
