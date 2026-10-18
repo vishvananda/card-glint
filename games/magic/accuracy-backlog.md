@@ -12,7 +12,7 @@ remain outside the current study. Use pinned frame sources and compare replaceme
 before adopting them. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
-## Prepared 0.5.1 batch
+## 0.5.1 calibration batch
 
 Alpha filled body ink and darker headings, The Dark type lines, and The Dark
 regular/compact body geometry are bundled together. See the
