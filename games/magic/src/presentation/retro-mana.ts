@@ -1,6 +1,6 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { retroBorder } from './retro-frame.js';
-import { RETRO_MANA_PROFILES } from './retro-mana-profiles.js';
+import { RETRO_MANA_PROFILES } from '../data/tables.js';
 import { legendsFrame } from './legends-frame.js';
 /** Shared printing coordinates; scan poses are confined to measurement tools. */
 export function retroManaPlacement(face: RenderedCardInput) {

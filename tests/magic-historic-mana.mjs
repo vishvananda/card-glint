@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import reviews from '../games/magic/fixtures/accuracy/historic-mana-order.json' with { type: 'json' };
 import decisions from '../games/magic/fixtures/accuracy/mana-glyph-decisions.json' with { type: 'json' };
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';

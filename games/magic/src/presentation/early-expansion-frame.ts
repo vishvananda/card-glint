@@ -1,7 +1,7 @@
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
-import { EARLY_EXPANSION_FRAMES } from './early-expansion-frame-values.js';
+import { EARLY_EXPANSION_FRAMES } from '../data/tables.js';
 
 /** Shared printing geometry, never a scan-specific correction. Unsupported
  * materials keep their existing source until independent scans establish a fit. */

@@ -1,5 +1,10 @@
 # Magic drawing pack
 
+For collection/table hosts, see [loading only the displayed sets](lazy-loading.md).
+The `magic/lazy` entry prepares per-set calibration, `magic/printing` loads reviewed
+wording per set, and `card-glint/canvas` provides helpers without Magic data.
+Existing synchronous imports remain available for compatibility.
+
 This optional pack translates a card's presentation fields into card-glint
 recipes: frame and text rasters, art windows, etching sources, and editable
 regions. Frame definitions live here so new frames and rendering fixes can be

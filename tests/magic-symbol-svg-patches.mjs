@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
 
 // Original geometry exercises material polarity and coordinate transforms.

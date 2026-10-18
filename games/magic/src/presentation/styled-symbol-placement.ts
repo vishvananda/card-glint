@@ -1,7 +1,8 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
-import { MAJOR_SYMBOL_PROFILES, MAJOR_SYMBOL_SOURCE } from './major-symbol-profiles.js';
+import { MAJOR_SYMBOL_PROFILES } from '../data/tables.js';
+import { MAJOR_SYMBOL_SOURCE } from './major-symbol-profiles.js';
 import { cardStock } from './face-layout.js';
 import { retroBorder } from './retro-frame.js';
 import { resolveCardProfile } from './profile.js';

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { assertNativeMagicSourceHash } from './magic-native-source-guard.mjs';
 import { readFile } from 'node:fs/promises';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { applyM21Evidence } from '../games/magic/tools/accuracy/calibration-m21-evidence.mjs';
 const read = async (file) => JSON.parse(await readFile('games/magic/fixtures/accuracy/' + file));

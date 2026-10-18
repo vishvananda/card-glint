@@ -1,8 +1,9 @@
+import { deliveryProof } from './magic-delivery-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir, realpath, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
 import {
   root,
@@ -64,6 +65,9 @@ async function packMetadata(directory, beforeSymbols = false) {
 async function identity() {
   const executable = await stat(chromium.executablePath());
   return {
+    deliveryRevision: hash(
+      await readFile('games/magic/fixtures/accuracy/set-editor-delivery-compatibility.json'),
+    ),
     consolidationRevision: hash(
       await readFile('games/magic/fixtures/accuracy/profile-consolidation-compatibility.json'),
     ),
@@ -241,9 +245,12 @@ async function verify() {
   const referenceRoot = await realpath(await nativeReferenceRoot());
   const currentRoot = await realpath(root);
   const nativeDirectory = 'games/magic/src';
+  const delivery = await deliveryProof();
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
     (file) =>
       ![
+        ...delivery.newModules,
+        ...delivery.generatedModules,
         ...consolidation.newModules,
         ...reprintFooter.newModules,
         ...reprintType.newModules,
@@ -285,6 +292,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(delivery.files, relative) ||
             Object.hasOwn(reprintFooter.files, relative) ||
             Object.hasOwn(reprintType.files, relative) ||
             Object.hasOwn(reprintTitle.files, relative) ||

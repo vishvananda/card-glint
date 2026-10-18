@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
 import { darkTypeLineProof } from './magic-dark-type-line-source-guard.mjs';
 

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 const server = await createServer({
   configFile: false,
   server: { middlewareMode: true, hmr: false },

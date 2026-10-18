@@ -33,7 +33,11 @@ jobs:
       - run: npm run build
       - run: npm run check
       - run: npm run test:package
+      - run: npm run magic:data:check
+      - run: npm run test:magic-lazy
+      - run: npm run test:calibration-editor
       - run: npx playwright install --with-deps chromium webkit
+      - run: npm run test:magic-lazy-browser
       - run: npm run test:magic-accuracy
       - run: npm run test:set-symbol-masks
       - run: npm run test:foil-continuity

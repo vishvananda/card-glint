@@ -1,3 +1,4 @@
+import { preDeliverySource } from './magic-delivery-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -9,7 +10,11 @@ async function proof() {
       await readFile('games/magic/fixtures/accuracy/profile-consolidation-compatibility.json'),
     );
     for (const [file, sha] of Object.entries(p.dependencies))
-      assert.equal(hash(await readFile(file)), sha, 'Unreviewed profile adapter change: ' + file);
+      assert.equal(
+        hash(await preDeliverySource(file)),
+        sha,
+        'Unreviewed profile adapter change: ' + file,
+      );
     const previous = JSON.parse(
       await readFile('games/magic/fixtures/accuracy/early-reprint-footer.json'),
     );
@@ -31,7 +36,7 @@ async function proof() {
  * Profile data is checked independently so a revision can be a one-file PR. */
 export async function preProfileConsolidationSource(file) {
   const extension = await proof(),
-    bytes = await readFile(file),
+    bytes = await preDeliverySource(file),
     change = extension.files[file];
   if (!change) return bytes;
   assert.equal(hash(bytes), change.after);

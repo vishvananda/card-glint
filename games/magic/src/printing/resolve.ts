@@ -1,3 +1,4 @@
+import { reviewDetails } from './review.js';
 import type { CardWording } from '../presentation/wording.js';
 import type { RulesParagraph } from '../presentation/face-layout.js';
 import { printingCorrections, printingCorrectionRevision } from './corrections.js';
@@ -48,6 +49,15 @@ export function resolvePrintingWording(
   input: { oracle: PrintingText; original?: PrintingText },
   options: { faceName?: string; referenceSha256?: string } = {},
 ): ResolvedPrintingWording {
+  return resolveWithCorrections(printingCorrections, printingId, input, options);
+}
+/** Internal pure implementation shared by eager and exact-set entry points. */
+export function resolveWithCorrections(
+  catalog: typeof printingCorrections,
+  printingId: string,
+  input: { oracle: PrintingText; original?: PrintingText },
+  options: { faceName?: string; referenceSha256?: string } = {},
+): ResolvedPrintingWording {
   if (!printingId.trim()) throw Error('Printing ID must not be empty');
   for (const value of [input.oracle, input.original])
     if (value && (typeof value.typeLine !== 'string' || typeof value.rulesText !== 'string'))
@@ -66,9 +76,7 @@ export function resolvePrintingWording(
     },
     provenance,
   };
-  const reviews = Object.hasOwn(printingCorrections, printingId)
-    ? printingCorrections[printingId]
-    : undefined;
+  const reviews = Object.hasOwn(catalog, printingId) ? catalog[printingId] : undefined;
   if (!reviews) return result;
   if (reviews.some((r) => r.faceName) && !options.faceName) {
     provenance.status = 'face-required';
@@ -122,9 +130,7 @@ export function resolvePrintingWording(
     provenance.corrections.push({
       ...(review.faceName ? { faceName: review.faceName } : {}),
       ...(review.paragraphScope ? { paragraphScope: review.paragraphScope } : {}),
-      source: review.source,
-      referenceSha256: review.referenceSha256,
-      reason: review.reason,
+      ...reviewDetails(review),
       fields,
       before,
       after,

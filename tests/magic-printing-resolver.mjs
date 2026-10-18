@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
 import { calibrationPresentation } from '../games/magic/tools/accuracy/calibration-wording.mjs';
 execFileSync(process.execPath, ['games/magic/tools/build-printing-corrections.mjs', '--check']);

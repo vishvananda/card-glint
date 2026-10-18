@@ -1,6 +1,6 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { earlyExpansionFrame } from './early-expansion-frame.js';
-import { EARLY_EXPANSION_COLORS } from './early-expansion-color-values.js';
+import { EARLY_EXPANSION_COLORS } from '../data/tables.js';
 
 /** Exact source/geometry binding. These replacements must not receive legacy
  * source ink curves or stock masks after their component colors are applied. */

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 const server = await createServer({
   configFile: false,
   optimizeDeps: { noDiscovery: true },

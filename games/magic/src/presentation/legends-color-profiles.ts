@@ -1,3 +1,4 @@
+import { LEGENDS_COLOR_PROFILES as loadedLegendsColors } from '../data/tables.js';
 import type { PrintingColorProfile } from './printing-color-profiles.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { legendsFrame } from './legends-frame.js';
@@ -10,7 +11,7 @@ export function calibratedLegendsStock(face: RenderedCardInput): string | undefi
     return undefined;
   const geometry = legendsFrame(face);
   if (!geometry) return undefined;
-  const profile = LEGENDS_COLOR_PROFILES[`leg/black/retro/${geometry.material.toLowerCase()}.png`];
+  const profile = loadedLegendsColors[`leg/black/retro/${geometry.material.toLowerCase()}.png`];
   return profile?.source === JSON.stringify([geometry.asset, geometry.frame])
     ? '#262626'
     : undefined;

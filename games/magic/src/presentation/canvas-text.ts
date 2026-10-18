@@ -1,3 +1,4 @@
+export { ellipsizedText } from '../../../../packages/browser/src/canvas-text.js';
 import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import { paintEarlyManaNumeral } from './early-expansion-mana.js';
@@ -190,17 +191,6 @@ export function paintRules(
 }
 
 /** Match the native single-line plates without horizontally squeezing the letters. */
-export function ellipsizedText(
-  context: CanvasRenderingContext2D,
-  text: string,
-  width: number,
-): string {
-  if (context.measureText(text).width <= width) return text;
-  const letters = [...text];
-  while (letters.length && context.measureText(`${letters.join('')}…`).width > width) letters.pop();
-  return letters.length || context.measureText('…').width <= width ? `${letters.join('')}…` : '';
-}
-
 /** Preserve the complete printed line. Reduce size first, then fit the remaining width. */
 export function paintFittedText(
   context: CanvasRenderingContext2D,

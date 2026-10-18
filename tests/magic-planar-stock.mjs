@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { chromium, webkit } from 'playwright';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { readNativeCompatibleSource } from './magic-native-source-guard.mjs';
 
 const evidence = JSON.parse(

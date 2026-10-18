@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
 import { alphaInkProof, preAlphaInkSource } from './magic-alpha-ink-source-guard.mjs';
 import { preDarkTypeLineSource } from './magic-dark-type-line-source-guard.mjs';

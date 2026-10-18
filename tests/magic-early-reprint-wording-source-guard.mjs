@@ -1,3 +1,4 @@
+import { preDeliverySource } from './magic-delivery-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -27,7 +28,11 @@ export function earlyReprintWordingProof() {
       ...evidence.annotations,
       ...extension.dependencies,
     }))
-      assert.equal(hash(await readFile(file)), expected, 'Unreviewed wording dependency: ' + file);
+      assert.equal(
+        hash(await preDeliverySource(file)),
+        expected,
+        'Unreviewed wording dependency: ' + file,
+      );
     for (const [file, change] of Object.entries(extension.files))
       assert.equal(
         hash(await preEarlyReprintTypeSource(file)),

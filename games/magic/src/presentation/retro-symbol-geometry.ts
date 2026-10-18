@@ -19,7 +19,9 @@ interface RetroSymbolGeometry {
  * from the frozen old-symbol-material study; explicit custom symbols retain
  * their original viewport. Chronicles has its own printing geometry. */
 const profiles: Readonly<Record<string, RetroSymbolGeometry>> = {
-  fem: setCalibrationProfile('fem')!.setSymbols!.default!,
+  get fem() {
+    return setCalibrationProfile('fem')!.setSymbols!.default!;
+  },
   arn: {
     right: 439,
     centerY: 394,

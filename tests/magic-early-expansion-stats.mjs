@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { preDarkTypographySource } from './magic-dark-type-source-guard.mjs';

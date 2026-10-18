@@ -25,6 +25,7 @@ for (const name of [
   'assets.json',
   'printing-styles.md',
   'provider-cards.md',
+  'lazy-loading.md',
 ]) {
   await cp(path.join('games/magic', name), path.join(browser, 'magic', name));
 }

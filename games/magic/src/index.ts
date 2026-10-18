@@ -1,3 +1,5 @@
+import './data/eager.js';
+import './data/eager-wording.js';
 import type {
   GamePack,
   CardDocument,

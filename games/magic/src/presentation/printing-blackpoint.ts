@@ -1,7 +1,8 @@
-import stockFamilies from './printing-stock-values.json' with { type: 'json' };
+import { table } from '../data/registry.js';
+const stockFamilies =
+  table<Readonly<Record<string, typeof import('./printing-stock-values.json')>>>('printingStocks');
 import type { RenderedCardInput } from './face-layout.js';
 import type { FrameHsb } from './frame-hsb.js';
-import profiles from './printing-blackpoint-values.json' with { type: 'json' };
 
 /** Each binding includes the pinned source and the complete pre-existing color
  * adjustment. A changed source or HSB fit must be measured again. */
@@ -25,7 +26,8 @@ const stockRgb = (stock: string): readonly [number, number, number] => {
   const value = parseInt(stock.slice(1), 16);
   return [(value >> 16) / 255, ((value >> 8) & 255) / 255, (value & 255) / 255];
 };
-const bindings: readonly PrintingBlackPointProfile[] = profiles;
+const bindings =
+  table<Readonly<Record<string, readonly PrintingBlackPointProfile[]>>>('printingBlackPoints');
 
 /** Asset discovery may request a stock mask before the exact material is known.
  * Actual painting additionally verifies the measured material binding below. */
@@ -33,7 +35,9 @@ export function hasPrintingStockCandidate(face: RenderedCardInput): boolean {
   return (
     (face.colorCalibration === 'set-hsb-v1' || face.colorCalibration === 'early-hsb-v1') &&
     (!face.borderColor || face.borderColor === 'black') &&
-    bindings.some((p) => p.set === face.setCode?.toLowerCase() && p.stock !== null)
+    (bindings[face.setCode?.toLowerCase() ?? ''] ?? []).some(
+      (p) => p.set === face.setCode?.toLowerCase() && p.stock !== null,
+    )
   );
 }
 
@@ -43,7 +47,7 @@ export function printingBlackPointMaterials(
   stockSource?: PrintingStockSource,
 ): { materials: Readonly<Record<string, FrameHsb>>; stock?: string } {
   if (!['set-hsb-v1', 'early-hsb-v1'].includes(face.colorCalibration ?? '')) return { materials };
-  const profiles = bindings.filter((p) => p.set === face.setCode?.toLowerCase());
+  const profiles = bindings[face.setCode?.toLowerCase() ?? ''] ?? [];
   if (!profiles.length) return { materials };
   let stock: string | undefined;
   const result = { ...materials };
@@ -72,7 +76,7 @@ export function printingBlackPointMaterials(
     }
   }
   if (stockSource && hasPrintingStockCandidate(face)) {
-    const family = stockFamilies.find(
+    const family = (stockFamilies[face.setCode?.toLowerCase() ?? ''] ?? []).find(
       (p) =>
         p.set === face.setCode?.toLowerCase() &&
         stockSource.geometry === p.geometry &&

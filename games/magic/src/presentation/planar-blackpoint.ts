@@ -4,7 +4,7 @@ import type { FrameBlackPoint } from './frame-blackpoint.js';
 import type { FrameMaterialBlend } from './frame-material-blend.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import type { Rgb } from './hsb.js';
-import { PLANAR_TEXTURE } from './planar-texture-values.js';
+import { PLANAR_TEXTURE } from '../data/tables.js';
 
 // Lower-quartile native-raster ink residuals from three cards per source.
 // Twenty-nine independent printings validate these five material-level fits.

@@ -1,16 +1,12 @@
-import { profile as fem } from './sets/fem.js';
-import { profile as fourth } from './sets/4ed.js';
-import { profile as chronicles } from './sets/chr.js';
+import { profileSets } from '../data/scopes.js';
+import { table } from '../data/registry.js';
 import type { SetCalibrationProfile } from './types.js';
-
-/** Registration changes only when adding a new set, not when improving its values. */
-export const setCalibrationProfiles: Readonly<Partial<Record<string, SetCalibrationProfile>>> = {
-  fem,
-  '4ed': fourth,
-  chr: chronicles,
-};
-export const setCalibrationProfile = (code: string | null | undefined) =>
-  setCalibrationProfiles[code?.toLowerCase() ?? ''];
+export const setCalibrationProfiles =
+  table<Readonly<Partial<Record<string, SetCalibrationProfile>>>>('setCalibrationProfiles');
+export function setCalibrationProfile(code: string | null | undefined) {
+  const set = code?.toLowerCase() ?? '';
+  return profileSets.includes(set) ? setCalibrationProfiles[set] : undefined;
+}
 
 /** Compatibility views for existing painters. No IO, image preparation or fitting. */
 export function calibrationEntries<T>(

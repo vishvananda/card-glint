@@ -1,0 +1,1172 @@
+{
+  "schema": 1,
+  "baselineCommit": "5c2dfa620340b8bb4ca47f0a35d14cb790ec3c12",
+  "scope": "Native defaults and empty set candidates; per-set transport refactor preserves every authoritative data value. Candidate edits remain opt-in. Detailed correction prose moves to repository evidence.",
+  "nativeHash": "cc7c387f9ee0673e701c107cad8f0f7296bbeb62c26ac2c1d515807bf7f3767c",
+  "dataHash": "f362cfe520c45df37cc809514ab95d216fe7ff0be704280da1ec2b27901de66b",
+  "dependencies": {
+    "games/magic/fixtures/accuracy/printing-review-catalog.json": "25f7f664ea94a4fbb9ae27b276888aee55dd745d70cc5e8638275c0f06d51380",
+    "games/magic/src/calibration-api.ts": "783b48bf7a943cd9b839c9b8f0790fe06c43ae7a9dff0ee067ef54765f26e6fa",
+    "games/magic/src/calibration/editor-controls.ts": "0f25bd571b3e3526eaf00430293051cc26d8a017d3dbba9d18c7baf6abe5d720",
+    "games/magic/src/calibration/editor-types.ts": "701455700757e23b6fda528203cc57226b4cfb9e5792e851cff41a37aa79ee1f",
+    "games/magic/src/calibration/editor.ts": "acc3479d847cf7d7eb7f2879b9f95000aedd5d25a39538d4aeb4679e73063324",
+    "games/magic/src/calibration/face-editor.ts": "3dcef2523cbeefb2e3169ad2d831b8d61f5d77d390052dcba10bfc4aab04e8b8",
+    "games/magic/src/calibration/profiles.ts": "8ab0613e03ece64582b32d24b837f543f749ea2ed86505793fa8f6c1d4677899",
+    "games/magic/src/calibration/rules-adjustment.ts": "fb85db2c736d30240c9955913c831d86fab45f400afa0696f9c52f9278b40c81",
+    "games/magic/src/calibration/selection.ts": "c0381e62f5062fe7dd040f08b5c6848788c617318927b2b712042e11f986c82d",
+    "games/magic/src/calibration/types.ts": "099279e5d7dc1b9f54150a05779440701622d846ff0000f3130540e625dfadf1",
+    "games/magic/src/data/load.ts": "370f9a980e6cb98208c6cbeb03d1bd0d1d34e50ae0b0b610bbed97a0ac9137d9",
+    "games/magic/src/data/registry.ts": "e5cf6beb4e30cc577bd41106898bc52c117c0becef232f033784469ee05f7f17",
+    "games/magic/src/index.ts": "fdc9b31f176cf94b707380587d207a13d9fe1ed662ca70158f96923c10503506",
+    "games/magic/src/lazy.ts": "46253cb11f06466185b4ce4bd6458c6ecba5d868398612defa390be34e81b3d8",
+    "games/magic/src/presentation-api.ts": "5970598b4b361e949cb6084ee736b427b7971c64d193bcc83b0ac24170bfe1c0",
+    "games/magic/src/presentation.ts": "7e7e91c9e6aeb7fa0dc1cea8d326dad7bc28ec276a01be6908cdf90070b2bc5c",
+    "games/magic/src/presentation/calibration-profiles.ts": "bdfb3c7764d67ad2e335470678f7af44309a328aa3d5fedaa90b8328123d4a50",
+    "games/magic/src/presentation/canvas-assets.ts": "137aa0b46f4ca3d640b285509a9d95a481a649885a28030d8489b811eea5c29c",
+    "games/magic/src/presentation/canvas-face.ts": "7d8db02ddd28f76b63f6435571f5b9dafc3e815b9fb15881cb305818c073f11b",
+    "games/magic/src/presentation/canvas-text.ts": "b04e2069295068585a8e47f69281492111456e690c4be678d8d718de0cec1c11",
+    "games/magic/src/presentation/early-expansion-colors.ts": "b357bbf6bbe8243d3e9cdc911e35dea4b7c6ec668b049d83e4ecefa0a6f5de49",
+    "games/magic/src/presentation/early-expansion-frame.ts": "acdf753310ba4547b8a34cd62a25bd6c8b079c505bf59becac99806fd8feec1e",
+    "games/magic/src/presentation/early-reprint-colors.ts": "de5eb77e55671fb5df2ad20e42bc6bb50ac9f6ca75ec73963ad91b6766b77c5d",
+    "games/magic/src/presentation/early-reprint-footer.ts": "ae1bd670c030df876bd3747dd5449863cf26a06c30834e66401dd2c087814acf",
+    "games/magic/src/presentation/early-reprint-frame.ts": "4f9785564dfb0dedfcb0daa4701bd40e18639135ed5471cc5b41c1d7e79315d1",
+    "games/magic/src/presentation/early-reprint-mana.ts": "f1290599984074f9e4371a8d663d1b0ce561dd4c760c7378e45830728bed1ee4",
+    "games/magic/src/presentation/early-reprint-title.ts": "051ff955a3ea6be29aee356757b114bd78f33b210e027eee0f1c2d1d40d705e0",
+    "games/magic/src/presentation/early-reprint-type.ts": "af2f6343c71c49550a937154caba9562bf5fcf7ad8e1dbf192fc28f5d1ef82ae",
+    "games/magic/src/presentation/face-layout.ts": "848e2767ed95dc0f1d33b5a4ae8c3938d5892ea1fa1c2b17dd52c1be5cd9f46d",
+    "games/magic/src/presentation/face-silhouette.ts": "eeac4777bb5c0fb816867eaeb5b8a7449fb2a5c359df56153e251d29d036226e",
+    "games/magic/src/presentation/historical-mana.ts": "16edb435aa443b58617f57e5c0d5390492807cdd937b709f1fb71d8bddef78e6",
+    "games/magic/src/presentation/legends-color-profiles.ts": "165bd66f39a011c2857ee28ab94c61794f686a0aac604aa8c3ebeafc392ff8e9",
+    "games/magic/src/presentation/normal-frame-geometry.ts": "9c331b539a6d3fa0ae4035956877a0cfa5b36addd00dc10c25cf2c2510409e90",
+    "games/magic/src/presentation/planar-blackpoint.ts": "109249022845da27f64528923a21f08b8ba1743a04e48e77f3ed0d333c44ce54",
+    "games/magic/src/presentation/planar-color-profiles.ts": "a9709fd4fbd090597934b5ade42dcf22de735dc362e9672aea31677174aa1240",
+    "games/magic/src/presentation/printing-blackpoint.ts": "7c6a7e9f83a4e853565e78f6df781ccf92754019b1be32784f12336e1da69ff3",
+    "games/magic/src/presentation/printing-mana-adjustment.ts": "2d9e3723cfee66ab524cba5b5e000410c6cf2285700a12eeb09ff68cf76e683b",
+    "games/magic/src/presentation/retro-mana.ts": "220964cc275dba7f605f569f6bd41fbfa5dfbcd22e5c2f7eea8d7f0595b76b4f",
+    "games/magic/src/presentation/retro-rules.ts": "087abed2e5423514a46426401f27e5a9ffe2b01152fca2e3c2910e261be19210",
+    "games/magic/src/presentation/retro-symbol-geometry.ts": "5e67cf9d1928ac19352147cc88b3bf5f3f92f35f98661e524b92fb49010a9086",
+    "games/magic/src/presentation/rules-layout.ts": "74538eb24783169f111af38b7968b172e9fa4bb4cd033b0f4542fcdbeabd0e13",
+    "games/magic/src/presentation/styled-symbol-placement.ts": "f6fe14f8a9edc8c4030c83b22495a91a6a762d561b329e156dbe32f642db5fd7",
+    "games/magic/src/printing/artist-credits.ts": "d460b252928b633fd4735911ffdf374bfbd7f881a77cdc5af20e037756f339a7",
+    "games/magic/src/printing/artist.ts": "c1e437260a7e8a3b6ae8154b7cabdda24ba127d896537dbdfc01425357ae8431",
+    "games/magic/src/printing/corrections.ts": "0165fa23af14c78e2c7056c3b1f847a4a1dcbb8a309ea8e10583ecc4626bb05c",
+    "games/magic/src/printing/lazy.ts": "af47c7a9eb4051fb3d19fed772b8397d9c7e18ac4a5482b4425d7db1668f88d7",
+    "games/magic/src/printing/resolve.ts": "2f72d9451021e08682803448316968d25bec6e3603c7b1b302ed319f40147c95",
+    "games/magic/src/printing/review.ts": "a7f48b994d451299dec686c61826156ce89d6516ea69181b79c1aae4cdc52dc9",
+    "games/magic/tools/build-printing-corrections.mjs": "67330ee539588d5e9e25bd8f7ae5aafc35b1fa6d3d3f81b5372ca23e35c11880",
+    "games/magic/tools/build-set-data.mjs": "2ea1025a1e91b60bc9bf04a58450537014f2ea8933248830e28511b17392b6fe",
+    "games/magic/tools/set-data-tables.mjs": "4622c7d390e2e1345af3e8690431ac34fa6fb3bab1e17dc375270afac8b86210",
+    "packages/browser/src/canvas-images.ts": "4af809d286e4189cbd3e8843b0a2c58cbcd13de99dbb5a3d4121101cd2e5ac38",
+    "packages/browser/src/canvas-raster.ts": "3425417277344f6bf5bc4c89530af0f1adacc7e76d998ce790737c1d6cdc3666",
+    "packages/browser/src/canvas-text.ts": "a4a4b207a448e9b31b6a5fd9d4a1c0f2b2f44d91b00be4a4f0f5b6a38f236654",
+    "packages/browser/src/canvas.ts": "543a20fe1b050a79f5e363cd0f6fa5a9865866c986b06d79ad2d1b4582194760",
+    "packages/browser/src/finish-coverage.ts": "aa955bbfee69e11c4ad70f073003aceb86af6554851999990dd7ad592b412a2d",
+    "packages/browser/src/finish-material.ts": "60987ffad500e1912c0d66dcebfe2d1025db2e7eee3983139ed3aebcd6c84004",
+    "packages/browser/src/finish-printing.ts": "252d05e594a383e4393a4e20694514a383ef0f07fdc92ae2f4a24ca2991a3211",
+    "packages/browser/src/finish.ts": "ac9abc1bae10fb00bce454c008c11c80be7d570aa7e4d159b19d16569dc35473",
+    "packages/browser/src/gpu/cardstock.ts": "9e789817694bfe096a5cfe8d4bb196e40b42e4dfe6b549381227d5dfe2b8001b",
+    "packages/browser/src/gpu/printed-ink.ts": "a53fb67ab27be8cb47c171b4a9deb0da03c34142686ec8e38856d751e3917b4e",
+    "packages/browser/src/raster.ts": "a49408985067b4acf657fef65f2ba9ad7590ed88f1fd0876ba6f7889754294f5",
+    "packages/browser/src/validation.ts": "5367ba2153a4f007a67475bfd46c8114d19f2199cc2913664046bfc62783f6ef"
+  },
+  "newModules": [
+    "games/magic/src/calibration-api.ts",
+    "games/magic/src/calibration/editor-controls.ts",
+    "games/magic/src/calibration/editor-types.ts",
+    "games/magic/src/calibration/editor.ts",
+    "games/magic/src/calibration/face-editor.ts",
+    "games/magic/src/calibration/rules-adjustment.ts",
+    "games/magic/src/calibration/selection.ts",
+    "games/magic/src/data/load.ts",
+    "games/magic/src/data/registry.ts",
+    "games/magic/src/lazy.ts",
+    "games/magic/src/presentation-api.ts",
+    "games/magic/src/printing/lazy.ts",
+    "games/magic/src/printing/review.ts"
+  ],
+  "files": {
+    "games/magic/src/calibration/profiles.ts": {
+      "before": "51d3496a0d710b898be5ffa9606f9be0bff0f6820eb980da665d943c671b3fe1",
+      "after": "8ab0613e03ece64582b32d24b837f543f749ea2ed86505793fa8f6c1d4677899",
+      "reverseEdits": [
+        {
+          "start": 3,
+          "count": 6,
+          "lines": [
+            "\n",
+            "/** Registration changes only when adding a new set, not when improving its values. */\n",
+            "export const setCalibrationProfiles: Readonly<Partial<Record<string, SetCalibrationProfile>>> = {\n",
+            "  fem,\n",
+            "  '4ed': fourth,\n",
+            "  chr: chronicles,\n",
+            "};\n",
+            "export const setCalibrationProfile = (code: string | null | undefined) =>\n",
+            "  setCalibrationProfiles[code?.toLowerCase() ?? ''];\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 2,
+          "lines": [
+            "import { profile as fem } from './sets/fem.js';\n",
+            "import { profile as fourth } from './sets/4ed.js';\n",
+            "import { profile as chronicles } from './sets/chr.js';\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/calibration/types.ts": {
+      "before": "bd51f36b45d5459c231ffb2726e762cd4d2f39a891336b12fe6c932ea1d5741c",
+      "after": "099279e5d7dc1b9f54150a05779440701622d846ff0000f3130540e625dfadf1",
+      "reverseEdits": [
+        {
+          "start": 86,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 53,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 5,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/index.ts": {
+      "before": "213664052f7c3fe2ea3be00a6a8e67994debe7514b9517315c08e807a137164b",
+      "after": "fdc9b31f176cf94b707380587d207a13d9fe1ed662ca70158f96923c10503506",
+      "reverseEdits": [
+        {
+          "start": 387,
+          "count": 4,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation.ts": {
+      "before": "97282975a992d43de0ce3abae92b0e2a0e31757354ef34604b75c336838b875b",
+      "after": "7e7e91c9e6aeb7fa0dc1cea8d326dad7bc28ec276a01be6908cdf90070b2bc5c",
+      "reverseEdits": [
+        {
+          "start": 0,
+          "count": 3,
+          "lines": [
+            "export { faceCornerRadius } from './presentation/face-silhouette.js';\n",
+            "/** Shared layout and raster painting for hosts that own their scene and editing DOM. */\n",
+            "export * from './presentation/art-apertures.js';\n",
+            "export * from './presentation/assets.js';\n",
+            "export * from './presentation/canvas-ability-emblem.js';\n",
+            "export * from './presentation/canvas-assets.js';\n",
+            "export * from './presentation/canvas-fonts.js';\n",
+            "export { faceManaAssets } from './presentation/mana-assets.js';\n",
+            "export { PLAIN_SECURITY_STAMP } from './presentation/security-stamp-assets.js';\n",
+            "export { setAssetFetcher } from '../../../packages/browser/src/asset-fetch.js';\n",
+            "export * from './presentation/canvas-etching.js';\n",
+            "export * from './presentation/canvas-face.js';\n",
+            "export * from './presentation/canvas-status.js';\n",
+            "export * from './presentation/canvas-text.js';\n",
+            "export * from './presentation/rules-layout.js';\n",
+            "export * from './presentation/rules-paint.js';\n",
+            "export * from './presentation/extra-rule-paint.js';\n",
+            "export * from './presentation/extra-rules.js';\n",
+            "export * from './presentation/face-layout.js';\n",
+            "export * from './presentation/illustration-layout.js';\n",
+            "export * from './presentation/illustration-paint.js';\n",
+            "export * from './presentation/power-toughness-layout.js';\n",
+            "export * from './presentation/profile.js';\n",
+            "export * from './presentation/retro-font.js';\n",
+            "export * from './presentation/retro-frame.js';\n",
+            "export * from './presentation/retro-paint.js';\n",
+            "export * from './presentation/set-symbol-ink.js';\n",
+            "export * from './presentation/set-symbols.js';\n",
+            "export * from './presentation/special-frames.js';\n",
+            "export * from './presentation/planeswalker-rules.js';\n",
+            "export * from './presentation/special-rule-paint.js';\n",
+            "export * from './presentation/split-layout.js';\n",
+            "export * from './presentation/wording.js';\n",
+            "export * from './presentation/frame-plates.js';\n",
+            "export * from './presentation/color-calibration-coverage.js';\n",
+            "\n",
+            "export { sagaRuleLayout, SAGA_RULE_BOUNDS } from './presentation/saga-rules.js';\n",
+            "export { SAGA_CHAPTER, SAGA_MARKER_GEOMETRY, SAGA_RECTS } from './presentation/saga-frame.js';\n",
+            "\n",
+            "export * from './presentation/symbol-adjustment.js';\n",
+            "\n",
+            "export * from './presentation/standard-frame-templates.js';\n",
+            "\n",
+            "export { hasOvalSecurityStamp } from './presentation/security-stamp-policy.js';\n",
+            "export { mountedSecurityStamp } from './presentation/security-stamp-paint.js';\n",
+            "\n",
+            "export { ADVENTURE_RULE_BOUNDS } from './presentation/adventure-rules.js';\n",
+            "export { PREPARE_SPELL_RECTS } from './presentation/prepare-frame.js';\n",
+            "export { FLIP_PANEL_RECTS } from './presentation/flip-template-paint.js';\n",
+            "export * from './presentation/printing-presets.js';\n",
+            "export type {\n",
+            "  PrintingElement,\n",
+            "  PrintingElementOverride,\n",
+            "  PrintingElements,\n",
+            "} from './presentation/printing-elements.js';\n",
+            "\n",
+            "export * from './presentation/scryfall-printing.js';\n",
+            "\n",
+            "export * from './presentation/art-placement.js';\n",
+            "\n",
+            "export * from './presentation/printing-style.js';\n",
+            "\n",
+            "export { resolveFrameColors } from './presentation/profile.js';\n",
+            "\n",
+            "export { fromScryfallCard } from './presentation/scryfall-card.js';\n",
+            "export { fromMtgjsonCard } from './presentation/mtgjson-card.js';\n",
+            "export type { CardImportOptions } from './presentation/provider-card.js';\n",
+            "\n",
+            "export * from './presentation/printing-calibration.js';\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/calibration-profiles.ts": {
+      "before": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
+      "after": "bdfb3c7764d67ad2e335470678f7af44309a328aa3d5fedaa90b8328123d4a50",
+      "reverseEdits": [
+        {
+          "start": 24,
+          "count": 2,
+          "lines": [
+            "import { EARLY_EXPANSION_MANA_TARGETS } from './early-expansion-mana-colors.js';\n",
+            "import { MANA_PRINTING_TARGETS } from './mana-printing-profiles.js';\n"
+          ]
+        },
+        {
+          "start": 19,
+          "count": 4,
+          "lines": [
+            "import { PRINTING_COLOR_PROFILES } from './printing-color-profiles.js';\n",
+            "import { ORDINARY_COLOR_PROFILES } from './ordinary-color-profiles.js';\n",
+            "import { LEGENDS_COLOR_PROFILES } from './legends-color-profiles.js';\n",
+            "import { DUAL_HSB_PROFILES, DUAL_MANA_TARGETS } from './old-dual-hsb-profiles.js';\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-assets.ts": {
+      "before": "7fd3e57676325c55b361dad1e2bac8361ce206805755c1f24aa3925111cc94c5",
+      "after": "137aa0b46f4ca3d640b285509a9d95a481a649885a28030d8489b811eea5c29c",
+      "reverseEdits": [
+        {
+          "start": 83,
+          "count": 0,
+          "lines": [
+            "}\n",
+            "\n",
+            "/** Bound SVG intrinsic dimensions before rasterizing it for bitmap decoding. */\n",
+            "export async function sizedCanvasSvg(blob: Blob): Promise<Blob> {\n",
+            "  if (!blob.type.includes('svg')) return blob;\n",
+            "  const document = new DOMParser().parseFromString(await blob.text(), 'image/svg+xml');\n",
+            "  const svg = document.documentElement;\n",
+            "  if (svg.localName !== 'svg' || document.querySelector('parsererror'))\n",
+            "    throw new Error('Invalid SVG asset.');\n",
+            "  const box = (svg.getAttribute('viewBox') ?? '')\n",
+            "    .trim()\n",
+            "    .split(/[\\s,]+/)\n",
+            "    .map(Number);\n",
+            "  const width = box[2] ?? parseFloat(svg.getAttribute('width') ?? '');\n",
+            "  const height = box[3] ?? parseFloat(svg.getAttribute('height') ?? '');\n",
+            "  if (!(width > 0 && height > 0 && Number.isFinite(width + height)))\n",
+            "    throw new Error('SVG asset needs a finite viewport.');\n",
+            "  const scale = 512 / Math.max(width, height);\n",
+            "  if (!svg.hasAttribute('viewBox')) svg.setAttribute('viewBox', `0 0 ${width} ${height}`);\n",
+            "  svg.setAttribute('width', String(Math.max(1, Math.round(width * scale))));\n",
+            "  svg.setAttribute('height', String(Math.max(1, Math.round(height * scale))));\n",
+            "  return new Blob([new XMLSerializer().serializeToString(svg)], { type: 'image/svg+xml' });\n",
+            "}\n",
+            "\n",
+            "export async function decodeCanvasImage(\n",
+            "  blob: Blob,\n",
+            "  signal: AbortSignal,\n",
+            "  resizeWidth?: number,\n",
+            "): Promise<ImageBitmap> {\n",
+            "  signal.throwIfAborted();\n",
+            "  if (!blob.type.includes('svg'))\n",
+            "    return resizeWidth\n",
+            "      ? createImageBitmap(blob, { resizeWidth, resizeQuality: 'high' })\n",
+            "      : createImageBitmap(blob);\n",
+            "  const url = URL.createObjectURL(await sizedCanvasSvg(blob)),\n",
+            "    image = new Image();\n",
+            "  const raster = document.createElement('canvas');\n",
+            "  const cancel = () => {\n",
+            "    image.src = '';\n",
+            "  };\n",
+            "  signal.addEventListener('abort', cancel, { once: true });\n",
+            "  try {\n",
+            "    signal.throwIfAborted();\n",
+            "    image.src = url;\n",
+            "    await image.decode();\n",
+            "    signal.throwIfAborted();\n",
+            "    raster.width = image.naturalWidth;\n",
+            "    raster.height = image.naturalHeight;\n",
+            "    const context = raster.getContext('2d', { willReadFrequently: true });\n",
+            "    if (!context || !raster.width || !raster.height)\n",
+            "      throw new Error('SVG asset could not be rasterized.');\n",
+            "    context.drawImage(image, 0, 0);\n",
+            "    return await createImageBitmap(raster);\n",
+            "  } finally {\n",
+            "    signal.removeEventListener('abort', cancel);\n",
+            "    image.src = '';\n",
+            "    URL.revokeObjectURL(url);\n",
+            "    raster.width = 0;\n",
+            "    raster.height = 0;\n",
+            "  }\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 5,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-face.ts": {
+      "before": "0fb65a5c2c8d3fa6afd8f27e1582e7162152f4a92a8cc7b509b5b5ce3e3c1028",
+      "after": "7d8db02ddd28f76b63f6435571f5b9dafc3e815b9fb15881cb305818c073f11b",
+      "reverseEdits": [
+        {
+          "start": 145,
+          "count": 5,
+          "lines": [
+            "    ['set-profile-v1', setCalibrationProfile(face.setCode)?.revision ?? null],\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": ["import { setCalibrationProfile } from '../calibration/profiles.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-text.ts": {
+      "before": "ec48dbe07b518578d2195307b291bc56916161ac282e8516e06ad4cc57425186",
+      "after": "b04e2069295068585a8e47f69281492111456e690c4be678d8d718de0cec1c11",
+      "reverseEdits": [
+        {
+          "start": 193,
+          "count": 0,
+          "lines": [
+            "export function ellipsizedText(\n",
+            "  context: CanvasRenderingContext2D,\n",
+            "  text: string,\n",
+            "  width: number,\n",
+            "): string {\n",
+            "  if (context.measureText(text).width <= width) return text;\n",
+            "  const letters = [...text];\n",
+            "  while (letters.length && context.measureText(`${letters.join('')}\u2026`).width > width) letters.pop();\n",
+            "  return letters.length || context.measureText('\u2026').width <= width ? `${letters.join('')}\u2026` : '';\n",
+            "}\n",
+            "\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-expansion-colors.ts": {
+      "before": "c8c21ae39ce54e6568487127c84fd2795a449ac4caca099816d2a87cb79d9be3",
+      "after": "b357bbf6bbe8243d3e9cdc911e35dea4b7c6ec668b049d83e4ecefa0a6f5de49",
+      "reverseEdits": [
+        {
+          "start": 2,
+          "count": 1,
+          "lines": ["import { EARLY_EXPANSION_COLORS } from './early-expansion-color-values.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-expansion-frame.ts": {
+      "before": "a879dee6b6af69563d0a5d3a8eea0ba95366654af286d333fbc77846e0e3a4ec",
+      "after": "acdf753310ba4547b8a34cd62a25bd6c8b079c505bf59becac99806fd8feec1e",
+      "reverseEdits": [
+        {
+          "start": 3,
+          "count": 1,
+          "lines": ["import { EARLY_EXPANSION_FRAMES } from './early-expansion-frame-values.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-colors.ts": {
+      "before": "cf87f94ff33b44b3b024b1d13a73fd5154ca0a9a8a7d8e07f3eb1a666c0ca9e2",
+      "after": "de5eb77e55671fb5df2ad20e42bc6bb50ac9f6ca75ec73963ad91b6766b77c5d",
+      "reverseEdits": [
+        {
+          "start": 9,
+          "count": 1,
+          "lines": ["  const profile = profiles[frame.profile];\n"]
+        },
+        {
+          "start": 4,
+          "count": 0,
+          "lines": ["const profiles = { ...fem, ...fourth, ...chronicles };\n"]
+        },
+        {
+          "start": 2,
+          "count": 1,
+          "lines": [
+            "import { COLORS as fem } from './early-reprint-fem-colors.js';\n",
+            "import { COLORS as fourth } from './early-reprint-4ed-colors.js';\n",
+            "import { COLORS as chronicles } from './early-reprint-chr-colors.js';\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-footer.ts": {
+      "before": "0784fa274313246142c8b31b2ef9990cec557527042cd0fc420b92148729132f",
+      "after": "ae1bd670c030df876bd3747dd5449863cf26a06c30834e66401dd2c087814acf",
+      "reverseEdits": [
+        {
+          "start": 12,
+          "count": 1,
+          "lines": ["  const p = setCalibrationProfile(set)!.footer;\n"]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": ["import { setCalibrationProfile } from '../calibration/profiles.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-frame.ts": {
+      "before": "08fa285be46d8557115644a1b8c101a5df74ac65ae6d043aab62a9c23df66cb1",
+      "after": "4f9785564dfb0dedfcb0daa4701bd40e18639135ed5471cc5b41c1d7e79315d1",
+      "reverseEdits": [
+        {
+          "start": 48,
+          "count": 1,
+          "lines": ["  const geometry = material && EARLY_REPRINT_FRAMES[`${set}/${material}`];\n"]
+        },
+        {
+          "start": 14,
+          "count": 1,
+          "lines": [
+            "    (face.borderColor && face.borderColor !== setCalibrationProfile(set)!.border) ||\n"
+          ]
+        },
+        {
+          "start": 10,
+          "count": 1,
+          "lines": ["    !setCalibrationProfile(set) ||\n"]
+        },
+        {
+          "start": 4,
+          "count": 0,
+          "lines": ["import { EARLY_REPRINT_FRAMES } from './early-reprint-frame-values.js';\n"]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": ["import { setCalibrationProfile } from '../calibration/profiles.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-mana.ts": {
+      "before": "27dad63203464864eb28025bd16e7dd17ea273c792ee268ee1b4bcc6e8d6b3e9",
+      "after": "f1290599984074f9e4371a8d663d1b0ce561dd4c760c7378e45830728bed1ee4",
+      "reverseEdits": [
+        {
+          "start": 26,
+          "count": 1,
+          "lines": ["    ? REPRINT_MANA_INK[face.setCode!.toLowerCase()]\n"]
+        },
+        {
+          "start": 19,
+          "count": 1,
+          "lines": [
+            "    ? REPRINT_MANA_PAPER[`${face.setCode!.toLowerCase()}/${symbol === 'X' ? 'N' : symbol}`]\n"
+          ]
+        },
+        {
+          "start": 15,
+          "count": 1,
+          "lines": [
+            "  return earlyReprintMana(face) ? REPRINT_MANA[face.setCode!.toLowerCase()] : undefined;\n"
+          ]
+        },
+        {
+          "start": 2,
+          "count": 1,
+          "lines": [
+            "import { REPRINT_MANA, REPRINT_MANA_INK, REPRINT_MANA_PAPER } from './early-reprint-mana-values.js';\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-title.ts": {
+      "before": "24a4f6f052f3ed8a17446fdbd589305570362965f6e0c9976483c245e34ed171",
+      "after": "051ff955a3ea6be29aee356757b114bd78f33b210e027eee0f1c2d1d40d705e0",
+      "reverseEdits": [
+        {
+          "start": 8,
+          "count": 1,
+          "lines": [
+            "  return earlyReprintFrame(face) ? setCalibrationProfile(face.setCode)!.title : undefined;\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": ["import { setCalibrationProfile } from '../calibration/profiles.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-type.ts": {
+      "before": "e79a05cb689e8e8ea249639641655c1f60dd925b7906f4b61a0540d98d0dac6b",
+      "after": "af2f6343c71c49550a937154caba9562bf5fcf7ad8e1dbf192fc28f5d1ef82ae",
+      "reverseEdits": [
+        {
+          "start": 9,
+          "count": 1,
+          "lines": [
+            "  return earlyReprintFrame(face) ? setCalibrationProfile(face.setCode)!.type : undefined;\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": ["import { setCalibrationProfile } from '../calibration/profiles.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/face-layout.ts": {
+      "before": "324db45d5cf05996ddc17c644b2aeb6be4ffaf2158773a0e5c1054d956a86cc0",
+      "after": "848e2767ed95dc0f1d33b5a4ae8c3938d5892ea1fa1c2b17dd52c1be5cd9f46d",
+      "reverseEdits": [
+        {
+          "start": 37,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 5,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/face-silhouette.ts": {
+      "before": "1b43d339660e85c0f0b65dc795c30f4f199c07522f1ea62fe6dd961a28c673de",
+      "after": "eeac4777bb5c0fb816867eaeb5b8a7449fb2a5c359df56153e251d29d036226e",
+      "reverseEdits": [
+        {
+          "start": 8,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/historical-mana.ts": {
+      "before": "fefee70e93b6785bca4b74943a61a3488e7d21bb30dd685b019a3145d8aad7a4",
+      "after": "16edb435aa443b58617f57e5c0d5390492807cdd937b709f1fb71d8bddef78e6",
+      "reverseEdits": [
+        {
+          "start": 2,
+          "count": 1,
+          "lines": ["import { MANA_PRINTING_INK } from './mana-printing-profiles.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/legends-color-profiles.ts": {
+      "before": "f74bc1ea31badfdb3e4c45df7c1956ad232a47bb709a1be9ee47ee63f22c02f8",
+      "after": "165bd66f39a011c2857ee28ab94c61794f686a0aac604aa8c3ebeafc392ff8e9",
+      "reverseEdits": [
+        {
+          "start": 13,
+          "count": 1,
+          "lines": [
+            "  const profile = LEGENDS_COLOR_PROFILES[`leg/black/retro/${geometry.material.toLowerCase()}.png`];\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/normal-frame-geometry.ts": {
+      "before": "d27ed02d365ff8c780f69a9c61aa66da460f50ce093f3ea4975263d9ca817893",
+      "after": "9c331b539a6d3fa0ae4035956877a0cfa5b36addd00dc10c25cf2c2510409e90",
+      "reverseEdits": [
+        {
+          "start": 4,
+          "count": 2,
+          "lines": [
+            "import { MAJOR_FRAME_INSETS, MAJOR_FRAME_SOURCE } from './major-frame-profiles.js';\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/planar-blackpoint.ts": {
+      "before": "e1505015c5ceaea2b512ef9755847963c43c0ebd78ee3f8bb5ba4c1e3fa0011b",
+      "after": "109249022845da27f64528923a21f08b8ba1743a04e48e77f3ed0d333c44ce54",
+      "reverseEdits": [
+        {
+          "start": 6,
+          "count": 1,
+          "lines": ["import { PLANAR_TEXTURE } from './planar-texture-values.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/planar-color-profiles.ts": {
+      "before": "c0049b0f48ac1c66e37b7167a137de193fedae64ff464f5c29574143fe49fcc1",
+      "after": "a9709fd4fbd090597934b5ade42dcf22de735dc362e9672aea31677174aa1240",
+      "reverseEdits": [
+        {
+          "start": 5,
+          "count": 1,
+          "lines": ["import { PLANAR_COLORS } from './planar-color-values.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/printing-blackpoint.ts": {
+      "before": "1d9af4b895967c5959cb9c00a308393592370342ce8fd2c719564779f7fa890d",
+      "after": "7c6a7e9f83a4e853565e78f6df781ccf92754019b1be32784f12336e1da69ff3",
+      "reverseEdits": [
+        {
+          "start": 78,
+          "count": 1,
+          "lines": ["    const family = stockFamilies.find(\n"]
+        },
+        {
+          "start": 49,
+          "count": 1,
+          "lines": [
+            "  const profiles = bindings.filter((p) => p.set === face.setCode?.toLowerCase());\n"
+          ]
+        },
+        {
+          "start": 37,
+          "count": 3,
+          "lines": [
+            "    bindings.some((p) => p.set === face.setCode?.toLowerCase() && p.stock !== null)\n"
+          ]
+        },
+        {
+          "start": 28,
+          "count": 2,
+          "lines": ["const bindings: readonly PrintingBlackPointProfile[] = profiles;\n"]
+        },
+        {
+          "start": 5,
+          "count": 0,
+          "lines": [
+            "import profiles from './printing-blackpoint-values.json' with { type: 'json' };\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 3,
+          "lines": [
+            "import stockFamilies from './printing-stock-values.json' with { type: 'json' };\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/printing-mana-adjustment.ts": {
+      "before": "0aa96625c3c4ba19eb78cb82c8c51a92ce81a597cac8a77b09ef16cc546dbd94",
+      "after": "2d9e3723cfee66ab524cba5b5e000410c6cf2285700a12eeb09ff68cf76e683b",
+      "reverseEdits": [
+        {
+          "start": 7,
+          "count": 2,
+          "lines": [
+            "import {\n",
+            "  MODERN_COMPONENT_MANA,\n",
+            "  MODERN_MANA_OVERRIDES,\n",
+            "  PRINTING_MANA_PROFILES,\n",
+            "} from './printing-mana-profiles.js';\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-mana.ts": {
+      "before": "5829cc520f250cb335f229f489fd3d2401c0f048241d86550762fb55b403d7a4",
+      "after": "220964cc275dba7f605f569f6bd41fbfa5dfbcd22e5c2f7eea8d7f0595b76b4f",
+      "reverseEdits": [
+        {
+          "start": 2,
+          "count": 1,
+          "lines": ["import { RETRO_MANA_PROFILES } from './retro-mana-profiles.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-rules.ts": {
+      "before": "82d83257515d2475a9e6962f482da980444114abf71af3ec98c15d07f9b16f2a",
+      "after": "087abed2e5423514a46426401f27e5a9ffe2b01152fca2e3c2910e261be19210",
+      "reverseEdits": [
+        {
+          "start": 61,
+          "count": 1,
+          "lines": ["  const body = frame && setCalibrationProfile(face.setCode)?.body;\n"]
+        },
+        {
+          "start": 30,
+          "count": 3,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 2,
+          "lines": ["import { setCalibrationProfile } from '../calibration/profiles.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-symbol-geometry.ts": {
+      "before": "1d76587008341f9ba820b5f4bf27217173693bc131bb44a4402366095b282071",
+      "after": "5e67cf9d1928ac19352147cc88b3bf5f3f92f35f98661e524b92fb49010a9086",
+      "reverseEdits": [
+        {
+          "start": 177,
+          "count": 1,
+          "lines": ["    const configured = setCalibrationProfile(code)?.setSymbols;\n"]
+        },
+        {
+          "start": 21,
+          "count": 3,
+          "lines": ["  fem: setCalibrationProfile('fem')!.setSymbols!.default!,\n"]
+        },
+        {
+          "start": 1,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/rules-layout.ts": {
+      "before": "8b46b99f59cf33e675c5dd94357557cad951bab6992777fe7cc5e851109959a3",
+      "after": "74538eb24783169f111af38b7968b172e9fa4bb4cd033b0f4542fcdbeabd0e13",
+      "reverseEdits": [
+        {
+          "start": 229,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 23,
+          "count": 11,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/styled-symbol-placement.ts": {
+      "before": "e07ed57f46718e126387f54b31c81619c219e6c07a1e1164c377802db2aef78a",
+      "after": "f6fe14f8a9edc8c4030c83b22495a91a6a762d561b329e156dbe32f642db5fd7",
+      "reverseEdits": [
+        {
+          "start": 3,
+          "count": 2,
+          "lines": [
+            "import { MAJOR_SYMBOL_PROFILES, MAJOR_SYMBOL_SOURCE } from './major-symbol-profiles.js';\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/printing/artist-credits.ts": {
+      "before": "cc7877362f8fdb89433d8e47c1bcac6b493b3b26fe5249de7741b192d515eb51",
+      "after": "d460b252928b633fd4735911ffdf374bfbd7f881a77cdc5af20e037756f339a7",
+      "rebuild": "artist"
+    },
+    "games/magic/src/printing/artist.ts": {
+      "before": "45d083bd006df75b775165ba12944394ab2980a12cb8ac0f9b936b067dd43d56",
+      "after": "c1e437260a7e8a3b6ae8154b7cabdda24ba127d896537dbdfc01425357ae8431",
+      "reverseEdits": [
+        {
+          "start": 51,
+          "count": 1,
+          "lines": ["  provenance.corrections.push({ ...review, before: artist });\n"]
+        },
+        {
+          "start": 44,
+          "count": 1,
+          "lines": [
+            "  const review = Object.hasOwn(artistCredits, printingId) ? artistCredits[printingId] : undefined;\n"
+          ]
+        },
+        {
+          "start": 28,
+          "count": 8,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/printing/corrections.ts": {
+      "before": "afe7a07b0c01540e862b45a5ae6ffcd974f55844fbc62d8bd92b8cbba390a0eb",
+      "after": "0165fa23af14c78e2c7056c3b1f847a4a1dcbb8a309ea8e10583ecc4626bb05c",
+      "rebuild": "wording"
+    },
+    "games/magic/src/printing/resolve.ts": {
+      "before": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
+      "after": "2f72d9451021e08682803448316968d25bec6e3603c7b1b302ed319f40147c95",
+      "reverseEdits": [
+        {
+          "start": 132,
+          "count": 1,
+          "lines": [
+            "      source: review.source,\n",
+            "      referenceSha256: review.referenceSha256,\n",
+            "      reason: review.reason,\n"
+          ]
+        },
+        {
+          "start": 78,
+          "count": 1,
+          "lines": [
+            "  const reviews = Object.hasOwn(printingCorrections, printingId)\n",
+            "    ? printingCorrections[printingId]\n",
+            "    : undefined;\n"
+          ]
+        },
+        {
+          "start": 51,
+          "count": 9,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/tools/build-printing-corrections.mjs": {
+      "before": "acc340d863f1d82021189331a1838abfe2616a31c7f099e0d602c8a48f63e285",
+      "after": "67330ee539588d5e9e25bd8f7ae5aafc35b1fa6d3d3f81b5372ca23e35c11880",
+      "reverseEdits": [
+        {
+          "start": 210,
+          "count": 23,
+          "lines": []
+        },
+        {
+          "start": 198,
+          "count": 1,
+          "lines": [
+            "  `// Generated by games/magic/tools/build-printing-corrections.mjs.\\nimport type { ReviewedArtistCredit } from './artist.js';\\nexport const artistCreditRevision = '${artistRevision}';\\nexport const artistCredits: Readonly<Record<string, ReviewedArtistCredit>> = ${JSON.stringify(artistCatalog)};\\n`,\n"
+          ]
+        },
+        {
+          "start": 192,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 188,
+          "count": 2,
+          "lines": [
+            "for (const row of JSON.parse(await readFile(new URL(earlyArtistFile, root))).rows)\n"
+          ]
+        },
+        {
+          "start": 186,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 183,
+          "count": 2,
+          "lines": [
+            "for (const row of JSON.parse(await readFile(new URL(artistFile, root))).rows)\n"
+          ]
+        },
+        {
+          "start": 173,
+          "count": 1,
+          "lines": [
+            "  `// Generated by games/magic/tools/build-printing-corrections.mjs.\\nimport type { ReviewedCorrection } from './types.js';\\nexport const printingCorrectionRevision = '${revision}';\\nexport const printingCorrections: Readonly<Record<string, readonly ReviewedCorrection[]>> = ${JSON.stringify(catalog)};\\n`,\n"
+          ]
+        },
+        {
+          "start": 156,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 127,
+          "count": 2,
+          "lines": ["  for (const [id, r] of Object.entries(data.cards))\n"]
+        },
+        {
+          "start": 119,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 114,
+          "count": 2,
+          "lines": [
+            "for (const [id, r] of Object.entries(JSON.parse(await readFile(new URL(manaFile, root))).cards))\n"
+          ]
+        },
+        {
+          "start": 76,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 24,
+          "count": 6,
+          "lines": []
+        }
+      ]
+    },
+    "packages/browser/src/finish-material.ts": {
+      "before": "c3952ce8810f7ec28db341c46759f1800fd7a0fdf1b58a9f825114f56cd31b15",
+      "after": "60987ffad500e1912c0d66dcebfe2d1025db2e7eee3983139ed3aebcd6c84004",
+      "reverseEdits": [
+        {
+          "start": 249,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 226,
+          "count": 1,
+          "lines": [
+            "    };\n",
+            "    const ready = this.documentQueue.then(run);\n",
+            "    this.documentQueue = ready.then(\n",
+            "      () => {},\n",
+            "      () => {},\n",
+            "    );\n",
+            "    try {\n",
+            "      return await ready;\n",
+            "    } finally {\n",
+            "      signal.removeEventListener('abort', abort);\n",
+            "      this.documentControllers.delete(controller);\n",
+            "    }\n"
+          ]
+        },
+        {
+          "start": 206,
+          "count": 1,
+          "lines": ["        controller.signal.throwIfAborted();\n"]
+        },
+        {
+          "start": 189,
+          "count": 2,
+          "lines": [
+            "          const bytes = await raster.paintCoverage(\n",
+            "            document.recipe.color.size,\n",
+            "            layers,\n",
+            "            host,\n",
+            "            controller.signal,\n",
+            "          );\n",
+            "          controller.signal.throwIfAborted();\n"
+          ]
+        },
+        {
+          "start": 186,
+          "count": 2,
+          "lines": [
+            "        mask = await this.documentPreparer.prepareMask(document, controller.signal);\n",
+            "        const layers = raster.layersOf(document).filter((layer) => layer.etchCoverage);\n"
+          ]
+        },
+        {
+          "start": 156,
+          "count": 21,
+          "lines": []
+        },
+        {
+          "start": 154,
+          "count": 0,
+          "lines": [
+            "      const [{ initializeRenderer }, { TextureStore }, { Preparer }, raster] = await Promise.all([\n",
+            "        import('./renderer.js'),\n",
+            "        import('./gpu/textures.js'),\n",
+            "        import('./prepare.js'),\n",
+            "        import('./raster.js'),\n",
+            "      ]);\n"
+          ]
+        },
+        {
+          "start": 152,
+          "count": 1,
+          "lines": ["    const run = async () => {\n"]
+        },
+        {
+          "start": 140,
+          "count": 6,
+          "lines": []
+        },
+        {
+          "start": 120,
+          "count": 16,
+          "lines": ["  async documentMask(\n"]
+        },
+        {
+          "start": 67,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 41,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 2,
+          "count": 9,
+          "lines": [
+            "import type { CardDocument, Lease, RasterHost } from './types.js';\n",
+            "import type { TextureStore, Texture } from './gpu/textures.js';\n",
+            "import type { Preparer } from './prepare.js';\n"
+          ]
+        }
+      ]
+    },
+    "packages/browser/src/finish.ts": {
+      "before": "23e8abcb9b8eff5aa7e16d8acbfa2d1579f5563d7ff4e4e6d83ea44d2a63c696",
+      "after": "ac9abc1bae10fb00bce454c008c11c80be7d570aa7e4d159b19d16569dc35473",
+      "reverseEdits": [
+        {
+          "start": 5,
+          "count": 3,
+          "lines": []
+        }
+      ]
+    },
+    "packages/browser/src/gpu/cardstock.ts": {
+      "before": "8376cbbe0c57e2ad70d9a5f57482bea3366612644fb114f14551608fb98bdc92",
+      "after": "9e789817694bfe096a5cfe8d4bb196e40b42e4dfe6b549381227d5dfe2b8001b",
+      "reverseEdits": [
+        {
+          "start": 31,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "packages/browser/src/gpu/printed-ink.ts": {
+      "before": "ecd66f08c8063cb9da03307749fb4ea784218e7b26778b3bcf34ad39aadbb747",
+      "after": "a53fb67ab27be8cb47c171b4a9deb0da03c34142686ec8e38856d751e3917b4e",
+      "reverseEdits": [
+        {
+          "start": 144,
+          "count": 6,
+          "lines": []
+        },
+        {
+          "start": 108,
+          "count": 2,
+          "lines": ["  private paint(source: Texture, values: number[]): Texture {\n"]
+        },
+        {
+          "start": 106,
+          "count": 0,
+          "lines": [
+            "    } finally {\n",
+            "      const gl = this.gl;\n",
+            "      gl.bindFramebuffer(gl.FRAMEBUFFER, null);\n",
+            "      gl.bindVertexArray(null);\n",
+            "      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);\n"
+          ]
+        }
+      ]
+    },
+    "packages/browser/src/raster.ts": {
+      "before": "013fcd205d0b1a03cc7298f084fc93a694f1f21ddfb2fe669ddd681549e6ae4a",
+      "after": "a49408985067b4acf657fef65f2ba9ad7590ed88f1fd0876ba6f7889754294f5",
+      "reverseEdits": [
+        {
+          "start": 4,
+          "count": 0,
+          "lines": [
+            "export function canvas(size: Size) {\n",
+            "  const [width, height] = size;\n",
+            "  if (\n",
+            "    !Number.isInteger(width) ||\n",
+            "    !Number.isInteger(height) ||\n",
+            "    width < 1 ||\n",
+            "    height < 1 ||\n",
+            "    width * height > 4194304\n",
+            "  )\n",
+            "    throw RangeError('Invalid raster size');\n",
+            "  const result = document.createElement('canvas');\n",
+            "  result.width = width;\n",
+            "  result.height = height;\n",
+            "  return result;\n",
+            "}\n",
+            "export function closeRaster(image: HTMLCanvasElement) {\n",
+            "  image.width = image.height = 0;\n",
+            "}\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "packages/browser/src/validation.ts": {
+      "before": "e8dd04645c4e9084ca7c798ed0683698fc3172b6cf856331fa5a9b5b79751397",
+      "after": "5367ba2153a4f007a67475bfd46c8114d19f2199cc2913664046bfc62783f6ef",
+      "reverseEdits": [
+        {
+          "start": 113,
+          "count": 1,
+          "lines": [
+            "  if (\n",
+            "    item.printDots?.inset !== undefined &&\n",
+            "    (!Number.isFinite(item.printDots.inset) ||\n",
+            "      item.printDots.inset < 0 ||\n",
+            "      item.printDots.inset > 0.2)\n",
+            "  )\n",
+            "    throw Error('Invalid print dot inset');\n",
+            "  if (\n",
+            "    item.printDots?.variation !== undefined &&\n",
+            "    (!Number.isFinite(item.printDots.variation) ||\n",
+            "      item.printDots.variation < 0 ||\n",
+            "      item.printDots.variation > 1)\n",
+            "  )\n",
+            "    throw Error('Invalid print dot variation');\n",
+            "  if (\n",
+            "    item.printDots &&\n",
+            "    (!Number.isFinite(item.printDots.amount) ||\n",
+            "      item.printDots.amount < 0 ||\n",
+            "      item.printDots.amount > 1 ||\n",
+            "      (item.printDots.period !== undefined &&\n",
+            "        (!Number.isFinite(item.printDots.period) ||\n",
+            "          item.printDots.period < 2 ||\n",
+            "          item.printDots.period > 16)))\n",
+            "  )\n",
+            "    throw Error('Invalid print dots');\n"
+          ]
+        },
+        {
+          "start": 86,
+          "count": 21,
+          "lines": []
+        }
+      ]
+    }
+  }
+}

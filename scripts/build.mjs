@@ -2,6 +2,7 @@ import { build } from 'vite';
 import { execFileSync } from 'node:child_process';
 import { cp, mkdir } from 'node:fs/promises';
 import path from 'node:path';
+execFileSync(process.execPath, ['games/magic/tools/build-set-data.mjs'], { stdio: 'inherit' });
 const alias = { '@card-glint/browser': path.resolve('packages/browser/src/index.ts') };
 await build({
   configFile: false,
@@ -16,8 +17,12 @@ await build({
         showcase: 'games/showcase/src/index.ts',
         magic: 'games/magic/src/index.ts',
         'magic-presentation': 'games/magic/src/presentation.ts',
+        'magic-lazy': 'games/magic/src/lazy.ts',
+        'magic-printing': 'games/magic/src/printing/lazy.ts',
+        'magic-calibration': 'games/magic/src/calibration-api.ts',
         kernels: 'packages/browser/src/kernels.ts',
         finish: 'packages/browser/src/finish.ts',
+        canvas: 'packages/browser/src/canvas.ts',
       },
       formats: ['es'],
       fileName: (_, name) => `${name}.js`,

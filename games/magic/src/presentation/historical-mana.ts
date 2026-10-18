@@ -1,6 +1,6 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { HISTORICAL_MANA_GLYPHS, HISTORICAL_MANA_ASSETS } from './historical-mana-profiles.js';
-import { MANA_PRINTING_INK } from './mana-printing-profiles.js';
+import { MANA_PRINTING_INK } from '../data/tables.js';
 import { earlyExpansionMana } from './early-expansion-mana.js';
 import { earlyReprintMana } from './early-reprint-mana.js';
 

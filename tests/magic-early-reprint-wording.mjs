@@ -3,7 +3,7 @@ import { preEarlyReprintFooterSource } from './magic-early-reprint-footer-source
 import { readFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { transform } from 'esbuild';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import {
   earlyReprintWordingProof,
   preEarlyReprintWordingSource,

@@ -9,7 +9,7 @@
   "scripts": {
     "build:wasm": "node scripts/build-wasm.mjs",
     "build": "npm run build:wasm && node scripts/build.mjs",
-    "check": "cargo fmt --all --check && cargo clippy --workspace --all-targets -- -D warnings && cargo test --workspace && tsc --noEmit && prettier --check . && node scripts/check-boundaries.mjs",
+    "check": "node games/magic/tools/build-set-data.mjs && cargo fmt --all --check && cargo clippy --workspace --all-targets -- -D warnings && cargo test --workspace && tsc --noEmit && prettier --check . && node scripts/check-boundaries.mjs",
     "format": "cargo fmt --all && prettier --write .",
     "test:browser": "node tests/browser.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4283",
@@ -63,7 +63,11 @@
     "test:print-sampling": "node tests/print-sampling.mjs && node tests/print-area.mjs",
     "magic:calibration:check": "node games/magic/tools/accuracy/set-profile-check.mjs",
     "test:magic-contributions": "node tests/magic-calibration-contributions.mjs",
-    "test:calibration-editor": "node tests/magic-calibration-editor.mjs"
+    "test:calibration-editor": "node tests/magic-calibration-editor.mjs",
+    "magic:data:build": "node games/magic/tools/build-printing-corrections.mjs && node games/magic/tools/build-set-data.mjs",
+    "magic:data:check": "node games/magic/tools/build-printing-corrections.mjs --check && node games/magic/tools/build-set-data.mjs --check",
+    "test:magic-lazy": "node tests/magic-lazy.mjs && node tests/magic-data-tables.mjs",
+    "test:magic-lazy-browser": "node tests/magic-lazy-browser.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
@@ -100,7 +104,23 @@
       "types": "./dist/types/games/magic/src/presentation.d.ts",
       "import": "./dist/lib/magic-presentation.js"
     },
-    "./pixels.wasm": "./dist/lib/pixels_bg.wasm"
+    "./pixels.wasm": "./dist/lib/pixels_bg.wasm",
+    "./canvas": {
+      "types": "./dist/types/packages/browser/src/canvas.d.ts",
+      "import": "./dist/lib/canvas.js"
+    },
+    "./magic/lazy": {
+      "types": "./dist/types/games/magic/src/lazy.d.ts",
+      "import": "./dist/lib/magic-lazy.js"
+    },
+    "./magic/printing": {
+      "types": "./dist/types/games/magic/src/printing/lazy.d.ts",
+      "import": "./dist/lib/magic-printing.js"
+    },
+    "./magic/calibration": {
+      "types": "./dist/types/games/magic/src/calibration-api.d.ts",
+      "import": "./dist/lib/magic-calibration.js"
+    }
   },
   "files": [
     "dist/lib",
@@ -114,7 +134,8 @@
     "games/magic/README.md",
     "games/magic/NOTICE.md",
     "games/magic/printing-styles.md",
-    "games/magic/provider-cards.md"
+    "games/magic/provider-cards.md",
+    "games/magic/lazy-loading.md"
   ],
   "license": "MIT OR Apache-2.0",
   "description": "Game-neutral browser card rendering with a Rust/WASM core, cached GPU etching, and isolated game packs",

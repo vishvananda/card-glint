@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { chromium, webkit } from 'playwright';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 
 // Synthetic assets keep this cross-browser regression offline and distributable.
 const server = await createServer({

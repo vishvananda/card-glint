@@ -5,11 +5,8 @@ import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { isRetro, retroBorder } from './retro-frame.js';
 import { usesModernCostMana } from './modern-cost-mana.js';
 import { planarManaDefaults } from './planar-symbols.js';
-import {
-  MODERN_COMPONENT_MANA,
-  MODERN_MANA_OVERRIDES,
-  PRINTING_MANA_PROFILES,
-} from './printing-mana-profiles.js';
+import { MODERN_MANA_OVERRIDES, PRINTING_MANA_PROFILES } from '../data/tables.js';
+import { MODERN_COMPONENT_MANA } from './printing-mana-profiles.js';
 
 /** Resolve frame defaults first, then printing overrides and caller deltas. */
 export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransform | undefined {

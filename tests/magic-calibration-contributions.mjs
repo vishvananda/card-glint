@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { PNG } from 'pngjs';
 import { measureCornerRadius } from '../games/magic/tools/accuracy/corner-radius.mjs';
 import { checkSetProfile } from '../games/magic/tools/accuracy/set-profile-check.mjs';

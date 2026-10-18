@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { readNativeCompatibleSource } from './magic-native-source-guard.mjs';
 
 const receipt = JSON.parse(

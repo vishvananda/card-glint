@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createServer } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { darkTypographyProof } from './magic-dark-type-source-guard.mjs';
 import { darkCalibrationProof } from './magic-dark-source-guard.mjs';
 

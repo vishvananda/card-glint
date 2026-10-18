@@ -2,7 +2,8 @@ import type { RenderedCardInput } from './face-layout.js';
 import { cardStock, FACE_RECTS, FACE_WIDTH, FACE_HEIGHT, type FaceRect } from './face-layout.js';
 import { resolveCardProfile } from './profile.js';
 import { RENDERER_COMPONENT_ROOT } from './assets.js';
-import { MAJOR_FRAME_INSETS, MAJOR_FRAME_SOURCE } from './major-frame-profiles.js';
+import { MAJOR_FRAME_INSETS } from '../data/tables.js';
+import { MAJOR_FRAME_SOURCE } from './major-frame-profiles.js';
 /** Ordinary modern frames, in the pack's 488px reference coordinates.
  * Art needs its own aperture: painting to the asset's outer bevel erases the
  * inner black rim. The frame's horizontal adjustment preserves its height. */

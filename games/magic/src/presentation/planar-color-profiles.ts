@@ -3,7 +3,7 @@ import type { FrameHsb } from './frame-hsb.js';
 import type { PaperMask } from './frame-paper-mask.js';
 import { framePlate } from './frame-plates.js';
 import { usesPlanarFrameGeometry } from './planar-frame-geometry.js';
-import { PLANAR_COLORS } from './planar-color-values.js';
+import { PLANAR_COLORS } from '../data/tables.js';
 import { planarFrameBlackPoint, planarBevelBlend } from './planar-blackpoint.js';
 
 const polygon = (points: readonly (readonly [number, number])[]): PaperMask => ({
