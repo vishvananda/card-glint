@@ -203,3 +203,13 @@ including readback, not hardware GPU timings or FPS. CPU submission was below
 1 ms and cannot explain completion latency. Relief and cached ink preparation
 counts stayed constant after warmup. Mixed screen settings retain the procedural
 fallback, with separate pixel and cache regression coverage.
+
+Fine print screens (periods below four source pixels) integrate four subpixel
+positions once when cached printing is prepared. The ink color and alpha remain
+sampled at the source texel, keeping lettering sharp. At full variation,
+registration jitter spans half a screen cell to break coherent empty rows; the
+neighbor reach includes that displacement so dot and hole screens remain joined.
+This adds preparation work only; pointer frames reuse the same bounded cache.
+The pixel-area regression compares against a dense reference and checks source
+edges, alpha, zero intensity and unchanged coarse-screen sampling. It is software
+WebGL validation, not a physical external-monitor or GPU-completion benchmark.
