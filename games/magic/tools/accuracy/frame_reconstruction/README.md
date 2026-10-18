@@ -173,3 +173,51 @@ study's `adjustment` values. Only shared layout changes are replayed; current
 renderer ink remains intact. Unsafe layouts fall back to the native text.
 The capture receipt records the selected group, adjustment and every fallback.
 These experiments do not install a printing-ID override or change defaults.
+
+## Corrected corner layer and complete-frame refinement
+
+Keep a new output root for each source-archive hash. Reuse the original-wording
+observations, released captures, frozen `geometry.json`, `prepared/` masks,
+`art-source/` references, and the previous `refine/` and `border/` fits through
+local links. Extract the new overlay into that root's `inputs/inner-border/`.
+Verify its checksums before fitting; do not replace the previous source.
+
+```sh
+python games/magic/tools/accuracy/frame-reconstruction-inner-border.py OUT
+python games/magic/tools/accuracy/frame-reconstruction-corners.py OUT --steps 80
+node games/magic/tools/accuracy/frame-reconstruction-native.mjs \
+  OUT CORRECTED-INPUTS.json COMPONENTS.json corners OUT/candidates.json
+python games/magic/tools/accuracy/frame-reconstruction-corner-evaluate.py OUT --workers 2
+node games/magic/tools/accuracy/frame-reconstruction-score.mjs \
+  OUT CORRECTED-INPUTS.json SCORER_MODULE.mjs corners OUT/candidates.json
+```
+
+The candidate manifest uses `key`, `title`, `file`, and the same `cornerRadius`,
+`artSource` and `textModel` for every entry. Include the old plate, new
+`inner-border/tone-plate.png`, `joint/geometry-plate.png`,
+`joint/band-only-plate.png`, and `joint/backprop-plate.png`. Link the old plate
+inside the new output root. The specialized regional evaluator expects that
+order and the native label `corners`.
+
+Geometry adjusts one shared outer rectangle within ±1.5 canonical pixels;
+the inner white keyline and all scan poses remain fixed. Refinement starts from
+the previous best texture and fits independent 244 × 340 luminance fields for
+trusted white texture and the dark printed band. Additional changes are bounded
+to ±0.025 and ±0.035 respectively, including interpolation overshoot. The
+previous shared observation blur stays fixed. High-resolution layer coverage is
+reapplied when exporting so a resized correction cannot cross an alpha edge.
+Color, silhouette, lettering and illustration are not optimization variables.
+
+The 34 calibration names supply robust median targets; the other 11 names are
+excluded. Report both cohorts and the full group, noting their earlier use in
+development. Regional evaluation projects renders into each native scan and
+excludes the actual replayed lettering in addition to the old scan/native masks.
+It measures frame/paper, dark band and corner marks separately. Bright-mark Dice
+uses the same fixed corner regions and a 0.28 luminance threshold after 0.6-pixel
+filtering; report RGB error alongside it rather than selecting by overlap alone.
+
+`joint/white-texture-plate.png` and `joint/backprop-overlay.png` preserve separate
+material control. Their recomposition through the stock mask is checked against
+the fitted complete plate. They already contain the experimental geometry and
+color adjustments; do not apply the previous source calibration again. Keep
+these derived external assets in ignored output, not the public showcase.

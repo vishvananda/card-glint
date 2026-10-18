@@ -49,6 +49,8 @@ The extraction notes explicitly exclude bright corner marks and six-pixel corner
 zones. The white frame keyline survives composition, but the bright corner mark
 visible in the inspected reference is absent from the supplied overlay. Corrected
 source corners are pending. Preserve this receipt before fitting that replacement.
+The [corrected-corner follow-up](alpha-white-corrected-corners.md) records that
+replacement and its new measurements; this report remains the frozen baseline.
 
 The original texture backpropagation excluded dark stock, so adding the border
 does not invalidate the existing white-texture fit. The next experiment will
