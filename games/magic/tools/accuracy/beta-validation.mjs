@@ -22,7 +22,7 @@ import { fetchComponents } from './components.mjs';
 import { validateCalibrationStudy } from './calibration-evidence.mjs';
 
 const [phase, directory, historicalFile] = process.argv.slice(2);
-assert.ok(['freeze', 'normalize', 'capture', 'fit', 'replay', 'report'].includes(phase));
+assert.ok(['freeze', 'normalize', 'capture', 'fit', 'replay', 'isolate', 'report'].includes(phase));
 assert.ok(directory);
 const file = (name) => path.join(directory, name);
 const png = async (asset) => {
@@ -364,6 +364,58 @@ if (phase === 'capture' || phase === 'replay') {
       'Cached additive title differential approximation; final native replay is authoritative. Reused-development names and unverified heading wording cannot complete the set.',
   });
   console.log({ best, controls });
+} else if (phase === 'isolate') {
+  const templates = await readJson(file('templates-reviewed.json')),
+    rows = [];
+  for (const e of study.entries.filter((e) => e.normalization.accepted)) {
+    const source = await png(e.reference),
+      changed = { ...source, data: Uint8ClampedArray.from(source.data) };
+    // Replace the interior while retaining the four outer boundary locations.
+    // This is a sensitivity control, not proof that lettering alone caused a change.
+    for (let y = 34; y < 638; y++)
+      for (let x = 43; x < 446; x++) {
+        const i = (y * 488 + x) * 4;
+        changed.data[i] = changed.data[i + 1] = changed.data[i + 2] = 127;
+      }
+    const original = scanFrameAnchors(source, 'black'),
+      control = scanFrameAnchors(changed, 'black'),
+      fit = fitScanFrame(control, templates[e.material]);
+    rows.push({
+      id: e.id,
+      name: e.card.name,
+      material: e.material,
+      cohort: e.cohort,
+      referenceHash: e.reference.sha256,
+      anchorsIdentical: hash(JSON.stringify(original)) === hash(JSON.stringify(control)),
+      beforeAccepted: true,
+      afterAccepted: fit.accepted,
+      transformIdentical:
+        JSON.stringify(e.normalization.transform) === JSON.stringify(fit.transform),
+      maximumMatrixDelta: fit.transform
+        ? Math.max(
+            ...fit.transform.matrix.map((v, i) =>
+              Math.abs(v - e.normalization.transform.matrix[i]),
+            ),
+          )
+        : null,
+    });
+  }
+  const summary = {
+    total: rows.length,
+    anchorsChanged: rows.filter((r) => !r.anchorsIdentical).length,
+    acceptedChanged: rows.filter((r) => !r.afterAccepted).length,
+    transformsChanged: rows.filter((r) => !r.transformIdentical).length,
+  };
+  await writeJson(file('frame-isolation.json'), {
+    schema: 1,
+    studyHash,
+    scope:
+      'Post-fit interior replacement sensitivity control only. No frozen pose, cohort or proposal is refitted or selected around this result. The rectangle includes inner frame material as well as content; this does not attribute sensitivity to lettering alone.',
+    methodHash: hash(await readFile(new URL(import.meta.url))),
+    summary,
+    rows,
+  });
+  console.log(summary);
 } else {
   const before = await readJson(file('before/capture.json')),
     after = await readJson(file('after/capture.json'));
@@ -371,12 +423,15 @@ if (phase === 'capture' || phase === 'replay') {
   assert.equal(before.rendererHash, after.rendererHash);
   assert.equal(before.browser, after.browser);
   assert.equal(before.fontStylesheetHash, after.fontStylesheetHash);
+  const control = await readJson(file('frame-isolation.json'));
+  assert.equal(control.studyHash, studyHash);
   const rows = [];
   const image = async (capture, stage, id) => {
     const asset = capture.rows.find((r) => r.id === id).images.native;
     const bytes = await readFile(file(`${stage}/${asset.file}`));
     assert.equal(hash(bytes), asset.sha256);
-    return normalize(PNG.sync.read(bytes));
+    const native = PNG.sync.read(bytes);
+    return { ...normalize(native), native };
   };
   for (const e of study.entries) {
     const a = await image(before, 'before', e.id),
@@ -389,17 +444,32 @@ if (phase === 'capture' || phase === 'replay') {
           if (a.data[i] !== b.data[i]) outside++;
         }
     assert.equal(outside, 0, 'Native replay changed pixels outside the title band');
+    let nativeOutside = 0;
+    assert.equal(a.native.width, b.native.width);
+    assert.equal(a.native.height, b.native.height);
+    for (
+      let i = Math.ceil((a.native.height * 80) / 680) * a.native.width * 4;
+      i < a.native.data.length;
+      i++
+    )
+      if (a.native.data[i] !== b.native.data[i]) nativeOutside++;
+    assert.equal(nativeOutside, 0, 'Native pixels changed outside title band');
     const entry = {
       id: e.id,
       name: e.card.name,
+      number: e.card.collector_number,
       material: e.material,
       cohort: e.cohort,
       rarity: e.card.rarity,
       legendary: e.face.legendary ?? false,
       normalization: e.normalization.accepted,
+      interiorControlInvariant: e.normalization.accepted
+        ? control.rows.find((r) => r.id === e.id).transformIdentical
+        : null,
       reason: e.normalization.reason,
       regions: [],
       outsideTitleChangedChannels: outside,
+      nativeOutsideTitleChangedChannels: nativeOutside,
     };
     if (e.normalization.accepted) {
       const reference = normalize(await png(e.reference), e.normalization.transform);
@@ -498,7 +568,9 @@ if (phase === 'capture' || phase === 'replay') {
               (cohort === 'all' || r.cohort === cohort),
           )
           .flatMap((r) =>
-            r.regions.filter((x) => x.name === region).map((x) => ({ name: r.name, ...x })),
+            r.regions
+              .filter((x) => x.name === region)
+              .map((x) => ({ ...x, id: r.id, name: r.name, number: r.number })),
           );
         if (!selected.length) continue;
         const scores = {};
@@ -539,16 +611,51 @@ if (phase === 'capture' || phase === 'replay') {
       b.title.after.edgeF1 - b.title.before.edgeF1 - (a.title.after.edgeF1 - a.title.before.edgeF1),
   );
   const worst = [...titleRows].sort((a, b) => a.title.after.edgeF1 - b.title.after.edgeF1);
+  const strata = [];
+  for (const dimension of ['rarity', 'legendary'])
+    for (const value of new Set(titleRows.map((r) => r[dimension])))
+      for (const cohort of ['calibration', 'validation']) {
+        const selected = titleRows.filter((r) => r[dimension] === value && r.cohort === cohort);
+        if (selected.length)
+          strata.push({
+            dimension,
+            value,
+            cohort,
+            count: selected.length,
+            edgeF1: {
+              before: distribution(selected.map((r) => r.title.before.edgeF1)),
+              after: distribution(selected.map((r) => r.title.after.edgeF1)),
+            },
+            filledArea: {
+              before: distribution(selected.map((r) => r.title.before.filledArea)),
+              after: distribution(selected.map((r) => r.title.after.filledArea)),
+            },
+          });
+      }
+  const calibrationRows = titleRows.filter((r) => r.cohort === 'calibration');
+  const nativeCalibrationObjective = {
+    before: objective(calibrationRows.map((r) => r.title.before)),
+    after: objective(calibrationRows.map((r) => r.title.after)),
+    prototype: after.proposal.score,
+  };
   const report = {
     schema: 1,
-    status: 'experimental-not-adopted',
+    status: 'rejected-experimental-candidate',
+    rejection:
+      'Native calibration objective and reused-validation edge/fill means regress. Cached differential ranking does not transfer. Missing ABU migration and incomplete/interior-sensitive scan normalization independently block adoption.',
+    normalizationControl: {
+      ...control.summary,
+      methodHash: control.methodHash,
+      scope: control.scope,
+      changed: control.rows.filter((r) => !r.transformIdentical),
+    },
     studyHash,
     rendererHash: before.rendererHash,
     browser: before.browser,
     fontStylesheetHash: before.fontStylesheetHash,
     methodHash: await sourceHash(
       new URL('.', import.meta.url),
-      /^(beta-validation|scan-frame-anchors|scan-frame-fit|pixels-pure|scan-transform|edges|metrics|lettering-metrics|letter-fill-metrics|calibration-search).mjs$/,
+      /^(beta-validation|scan-frame-anchors|scan-frame-fit|pixels-pure|scan-transform|edges|metrics|lettering-metrics|letter-fill-metrics|calibration-search)\.mjs$/,
     ),
     validationKind: study.validationKind,
     counts: {
@@ -560,6 +667,8 @@ if (phase === 'capture' || phase === 'replay') {
     },
     proposal: after.proposal,
     summaries,
+    strata,
+    nativeCalibrationObjective,
     improvements: improved.slice(0, 5).map((r) => r.name),
     worst: worst.slice(0, 5).map((r) => r.name),
     rows,
@@ -575,7 +684,7 @@ if (phase === 'capture' || phase === 'replay') {
   ];
   await atomicWrite(
     file('review/index.html'),
-    `<!doctype html><meta charset="utf-8"><title>Beta independent title experiment</title><style>body{font:16px system-ui;max-width:1400px;margin:30px auto;background:#f4f5f7;color:#15202a}section{padding:20px;margin:24px 0;background:white}.cards{display:flex;gap:12px}.cards img{width:100%}figure{margin:0;flex:1}img{max-width:100%;height:auto}.crop{image-rendering:pixelated}.overlay{position:relative;width:488px}.overlay img+img{position:absolute;inset:0;opacity:.5}pre{white-space:pre-wrap}</style><h1>LEB: exploratory shared title translation</h1><p>${report.counts.accepted}/${report.counts.total} normalized scans; all 302 native faces rendered before/after. Reused-development cohorts. No defaults changed, no group completed. Title names/type/flavor/credits are not fully scan reviewed. Current adapter cannot consolidate LEB without changing pixels.</p><p>Native delta dx=${after.proposal.values.dx}, dy=${after.proposal.values.dy}. Geometry only; pigment, fonts and wording fixed. Scores are similarity indices, not accuracy percentages.</p><pre>${esc(
+    `<!doctype html><meta charset="utf-8"><title>Beta independent title experiment</title><style>body{font:16px system-ui;max-width:1400px;margin:30px auto;background:#f4f5f7;color:#15202a}section{padding:20px;margin:24px 0;background:white}.cards{display:flex;gap:12px}.cards img{width:100%}figure{margin:0;flex:1}img{max-width:100%;height:auto}.crop{image-rendering:pixelated}.overlay{position:relative;width:488px}.overlay img+img{position:absolute;inset:0;opacity:.5}pre{white-space:pre-wrap}</style><h1>LEB: rejected shared title translation</h1><p><strong>No adopted profile.</strong> Native objective regresses. Post-fit interior replacement perturbs ${control.summary.transformsChanged} registrations (${control.summary.acceptedChanged} lose acceptance), so these poses remain exploratory. All frozen results are retained without refitting.</p><p>${report.counts.accepted}/${report.counts.total} normalized scans; all 302 native faces rendered before/after. Reused-development cohorts. No defaults changed, no group completed. Title names/type/flavor/credits are not fully scan reviewed. Current adapter cannot consolidate LEB without changing pixels.</p><p>Native delta dx=${after.proposal.values.dx}, dy=${after.proposal.values.dy}. Geometry only; pigment, fonts and wording fixed. Scores are similarity indices, not accuracy percentages.</p><pre>${esc(
       JSON.stringify(
         summaries.filter((s) => s.material === 'all' && s.region === 'title'),
         null,
