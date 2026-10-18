@@ -107,8 +107,12 @@ try {
     baseline: {
       image: 'released-frame.png',
       sha256: hash(bytes),
-      version: (await readJson(path.join(root, 'package.json'))).version,
-      sourceHash: await sourceHash(path.join(root, 'games/magic/src')),
+      version: (
+        await readJson(path.join(process.env.MAGIC_NATIVE_SOURCE_ROOT ?? root, 'package.json'))
+      ).version,
+      sourceHash: await sourceHash(
+        path.join(process.env.MAGIC_NATIVE_SOURCE_ROOT ?? root, 'games/magic/src'),
+      ),
       browser: await session.browser.version(),
       face,
     },

@@ -32,7 +32,10 @@ const adjustment = manifest
   : await readJson(path.join(directory, `${label}-adjustment.json`));
 const sourceFiles = manifest
   ? manifest.candidates.map((candidate) => candidate.file)
-  : ['inputs/sharpened-frames/alpha-white-frame.png', `${label}-reconstructed-source.png`];
+  : [
+      obs.sourceFile ?? 'inputs/sharpened-frames/alpha-white-frame.png',
+      `${label}-reconstructed-source.png`,
+    ];
 assert(sourceFiles.length > 0);
 const sourceData = await Promise.all(
   sourceFiles.map(
@@ -180,11 +183,12 @@ try {
           ctx.scale(c.width / 488, c.height / 680);
           ctx.fillStyle = '#090806';
           ctx.fillRect(0, 0, 488, 680);
-          const { prepareTextReplay } = await import(
-            '/games/magic/tools/accuracy/frame-reconstruction-text-browser.mjs'
-          );
           const textReplay =
-            index >= 0 ? await prepareTextReplay(ctx, face, textModels[index]) : null;
+            index >= 0 && textModels[index]
+              ? await (
+                  await import('/games/magic/tools/accuracy/frame-reconstruction-text-browser.mjs')
+                ).prepareTextReplay(ctx, face, textModels[index])
+              : null;
           if (textReplay)
             window.frameExperiment.textReplays.push({
               name: face.name,

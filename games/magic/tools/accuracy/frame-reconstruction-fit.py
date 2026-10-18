@@ -217,11 +217,12 @@ if __name__ == '__main__':
     parser.add_argument('--steps', type=int, default=160)
     parser.add_argument('--all', action='store_true')
     parser.add_argument('--adjustment', type=Path)
+    parser.add_argument('--source', type=Path)
     args = parser.parse_args()
     torch.set_num_threads(2)
     torch.manual_seed(123)
     root = args.directory
-    source = root / 'inputs/sharpened-frames/alpha-white-frame.png'
+    source = args.source or root / 'inputs/sharpened-frames/alpha-white-frame.png'
     if args.phase == 'prepare':
         prepare(root, source)
     else:

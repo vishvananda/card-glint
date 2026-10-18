@@ -5,7 +5,10 @@ import { readObject } from './cache.mjs';
 import { root } from './common.mjs';
 
 /** Local source runner: snapshots supply all external bytes; capture never downloads. */
-export async function openBrowser(snapshot, { fonts = true, sourceRoot = root } = {}) {
+export async function openBrowser(
+  snapshot,
+  { fonts = true, sourceRoot = process.env.MAGIC_NATIVE_SOURCE_ROOT ?? root } = {},
+) {
   // Vite otherwise serves untransformed TS from symlinked roots (macOS /tmp).
   sourceRoot = await realpath(sourceRoot);
   const assets = [
