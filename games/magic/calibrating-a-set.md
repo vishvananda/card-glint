@@ -205,3 +205,15 @@ Use a branch and commit the profile. In the PR description, link the evidence
 bundle, summarize before/after results and regressions, and list incomplete tasks.
 Exclude downloaded assets, caches, private paths and host-specific code from the
 commit. Keep the public showcase on original repository assets.
+
+## Host calibration candidates
+
+`describeSetCalibration(set)` reports supported control IDs, effective values,
+units, scopes and bounds. Initially it covers ordinary ABU/Fourth-family FEM,
+4ED and CHR profiles. Use `createSetCalibrationCandidate(set, revision, values)`
+to validate a sparse proposal and `withSetCalibration(face, candidate)` to render
+it through the normal painter. `exportSetCalibrationProfile(candidate)` returns
+a detached, revision-incremented profile for a single-file contribution.
+Candidates never change global defaults. Keep original wording and scan poses
+fixed; fitting/validation cohorts, proposal storage and release approval belong
+to the host. An empty candidate preserves the released printing policy.
