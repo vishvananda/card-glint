@@ -45,7 +45,7 @@ const output = path.join(directory, `${label}-native`);
 await mkdir(output, { recursive: true });
 try {
   await session.page.evaluate(
-    async ({ geometry, adjustment, sourceData, precomposed, cornerRadii }) => {
+    async ({ geometry, adjustment, sourceData, precomposed, cornerRadii, textModels }) => {
       await import('/games/magic/src/data/eager.ts');
       await import('/games/magic/src/data/eager-wording.ts');
       const { colorFrame } = await import('/games/magic/src/presentation/frame-hsb.ts');
@@ -130,7 +130,7 @@ try {
         candidates.push(await createImageBitmap(c));
         c.width = c.height = 0;
       }
-      window.frameExperiment = { candidates, materials, plates };
+      window.frameExperiment = { candidates, materials, plates, textReplays: [] };
       window.renderExperiment = async (face, index) => {
         const { composeCardTexture, paintAssembledFace } = await import(
           '/games/magic/src/presentation/canvas-face.ts'
@@ -180,11 +180,23 @@ try {
           ctx.scale(c.width / 488, c.height / 680);
           ctx.fillStyle = '#090806';
           ctx.fillRect(0, 0, 488, 680);
-          withRulesInk(ctx, true, () =>
+          const { prepareTextReplay } = await import(
+            '/games/magic/tools/accuracy/frame-reconstruction-text-browser.mjs'
+          );
+          const textReplay =
+            index >= 0 ? await prepareTextReplay(ctx, face, textModels[index]) : null;
+          if (textReplay)
+            window.frameExperiment.textReplays.push({
+              name: face.name,
+              index,
+              ...textReplay.summary,
+            });
+          withRulesInk(ctx, !textReplay?.paint, () =>
             withPrintingOmissions(ctx, face, () =>
               paintAssembledFace(ctx, face, images, 680, false),
             ),
           );
+          textReplay?.paint?.(images);
           const artOverlay = window.frameExperiment.artOverlays?.[index];
           if (index >= 0 && artOverlay) {
             ctx.save();
@@ -226,6 +238,7 @@ try {
       sourceData,
       precomposed: Boolean(manifest),
       cornerRadii: manifest?.candidates.map((candidate) => candidate.cornerRadius ?? null) ?? [],
+      textModels: manifest?.candidates.map((candidate) => candidate.textModel ?? null) ?? [],
     },
   );
   const materials = await session.page.evaluate(() => window.frameExperiment.materials);
@@ -293,6 +306,7 @@ try {
       label,
       nativeBaselineParity: obs.records.length,
       receipts,
+      textReplays: await session.page.evaluate(() => window.frameExperiment.textReplays),
       geometryHash: hash(JSON.stringify(geometry)),
       adjustmentHash: hash(JSON.stringify(adjustment)),
       ...(manifest ? { candidates: manifest.candidates } : {}),

@@ -138,3 +138,38 @@ independent measurements of physical card cuts. Report corner and stock metrics
 separately from frame texture. Replacement frame material should leave the outer
 stock transparent; a full-canvas inner-border overlay can remain independently
 calibratable. Keep external assets and all previews in the ignored output tree.
+
+For the supplied 1062 × 1482 inner-border overlay, place its extracted files in
+`inputs/inner-border/`, then run `frame-reconstruction-inner-border.py OUT`.
+This reuses the frozen white-frame and band boundaries, exports as-supplied,
+geometry-only and independently color-adjusted plates, and records separate
+band measurements. It does not refit the white texture or outer stock. The
+archive's original geometry was measured on lands; do not assume that its
+bottom edge matches the fitted white plate without checking.
+
+## Original wording and typography replay
+
+The first Alpha snapshot used original rules bodies but retained 21 modern
+type-line fallbacks. `wordingMode: 'original'` alone is not source evidence.
+For that exact 45-card study, use:
+
+```sh
+node games/magic/tools/accuracy/frame-reconstruction-wording.mjs \
+  INPUTS.json CORRECTED-INPUTS.json
+```
+
+This verifies cached original bodies through the strict calibration adapter and
+uses the scan-bound `lea/annotations-white-types.json` review. It preserves all
+non-wording input fields. Prepare a separate output directory with these inputs
+and the same frozen poses. Link the existing plates there rather than refitting
+or duplicating source images. Re-capture and re-score: do not attach historical
+whole-card numbers to corrected images. Type-only pixel isolation is checked
+separately from frame fitting.
+
+The native experiment manifest optionally accepts `textModel` for a local replay
+of the archived Alpha shared typography study. Its `rules` map uses
+`lea:centered`, `lea:centered-long`, and `lea:regular` groups with the original
+study's `adjustment` values. Only shared layout changes are replayed; current
+renderer ink remains intact. Unsafe layouts fall back to the native text.
+The capture receipt records the selected group, adjustment and every fallback.
+These experiments do not install a printing-ID override or change defaults.

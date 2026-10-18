@@ -10,6 +10,8 @@ The first snapshot's original rules bodies were correct, but 21 type lines
 still used Oracle fallbacks. These historical whole-card results retain that
 limitation. A separate corrected replay supplies scan-reviewed types for all
 45 cards; it does not overwrite these receipts or refit the masked texture.
+See the [original-wording, border and text replay](alpha-white-border-text.md)
+for the corrected scores and the independently fitted inner-border layer.
 
 ## Results
 
