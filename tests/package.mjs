@@ -76,9 +76,13 @@ import { showcase } from 'card-glint/showcase';
 import { magic, opticalDocument, resolvePrintingWording, resolvePrintingArtist, type ResolvedPrintingArtist, withCardWording, resolvePrintingPreset, printingPresets, printingStyles, resolvePrintingStyle, type PrintingStyle, type PrintingSelection, fromScryfallCard, fromMtgjsonCard, type CardImportOptions, type MagicCard, type PrintingText } from 'card-glint/magic';
 import 'card-glint/magic/fonts.css';
 import { faceArtBounds, composeCardTexture, type CardTextureInput } from 'card-glint/magic/presentation';
-import { foilShader, FinishResources } from 'card-glint/finish';
+import { foilShader, FinishResources, PRINT_DOTS_GLSL, CARDSTOCK_GLSL } from 'card-glint/finish';
+import type { FinishMap } from 'card-glint/finish';
 import { createPixelKernels } from 'card-glint/kernels';
-export { faceArtBounds, composeCardTexture, foilShader, FinishResources, createPixelKernels };
+export { faceArtBounds, composeCardTexture, foilShader, FinishResources, PRINT_DOTS_GLSL, CARDSTOCK_GLSL, createPixelKernels };
+export function uploadFinishMap(gl: WebGL2RenderingContext, map: FinishMap, srgb: boolean) {
+  gl.texImage2D(gl.TEXTURE_2D, 0, srgb ? gl.SRGB8_ALPHA8 : gl.RGBA8, map.width, map.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, map.data);
+}
 export const hostInk: CardTextureInput = {printingId:null,printedImage:null,face:{name:'Host',canonicalTypeLine:'Creature',textInk:{stats:[{start:0,end:1,color:'#f00'}]}},rulesText:false};
 import wasmUrl from 'card-glint/renderer.wasm?url';
 const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2',blackBorderLift:0.03,setSymbolMask:'ink',printingOmissions:[{rect:[0.1,0.1,0.4,0.1],texts:['Example']}]};
