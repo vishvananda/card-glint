@@ -60,8 +60,9 @@ try {
       '-e',
       `
     import assert from 'node:assert/strict';
-    import { createDisplayRaster, printSamplingVersion, holofoilVersion } from 'card-glint';
+    import { createDisplayRaster, printSamplingVersion, holofoilVersion, normalLightingVersion } from 'card-glint';
     assert.equal(holofoilVersion,1);
+    assert.equal(normalLightingVersion,1);
     assert.equal(typeof createDisplayRaster,'function');
     assert.equal(printSamplingVersion,1);
     import { FinishResources, SURFACE_GLSL, WORN_GLSL, SurfaceMotion, surfaceSeed } from 'card-glint/finish';

@@ -36,7 +36,7 @@ vec3 foilSheenBlend(vec3 base, vec3 shine) {
 }
 vec2 foilPointer(vec3 normal) {
   if(studioLighting>.5)return studioFoilCenter(normal);
-  vec2 delta = vec2(normal.x * 2.63, normal.y * 3.33) + vec2(pointer.x - .5, .5 - pointer.y);
+  vec2 delta = vec2(normal.x * 2.63, normal.y * 3.33) + vec2(GLINT_LIGHTING_POINTER.x - .5, .5 - GLINT_LIGHTING_POINTER.y);
   // Keep the flat-pose studio offset, but taper it broadly. A narrow Gaussian
   // folds the light path near zero: highlights reverse as the card keeps turning.
   // Here the offset Jacobian norm is <= length(vec2(.18,.20))*sqrt(4/e) < .33,
@@ -74,14 +74,14 @@ vec3 spectrum(float phase) { return .5 + .5*cos(6.2831853*(phase+vec3(0.,.333,.6
 float satinStripAxis(vec2 uv, vec3 normal, vec3 view) {
   if(studioLighting>.5){vec2 q=vec2(uv.x,1.-uv.y)-studioFoilCenter(normal);return dot(q,vec2(.65,.18));}
   vec3 reflected=reflect(-view,normal);
-  vec2 q=reflected.xy/max(abs(reflected.z),.25)+(pointer-.5)*1.1;
+  vec2 q=reflected.xy/max(abs(reflected.z),.25)+(GLINT_LIGHTING_POINTER-.5)*1.1;
   return mix(q.x+.12+q.y*.2,
-    (uv.x-pointer.x)*.65+(uv.y-pointer.y)*.18+dot(reflected.xy,vec2(.16,.10)),satinCompact);
+    (uv.x-GLINT_LIGHTING_POINTER.x)*.65+(uv.y-GLINT_LIGHTING_POINTER.y)*.18+dot(reflected.xy,vec2(.16,.10)),satinCompact);
 }
 vec3 satin(vec2 uv, vec3 base, vec3 normal, vec3 view, float kind, float metal) {
   vec3 reflected=reflect(-view,normal);
-  vec2 q=reflected.xy/max(abs(reflected.z),.25)+(pointer-.5)*1.1;
-  vec2 broadQ=mix(q,reflected.xy/max(abs(reflected.z),.25)+vec2(-.10,.17)+(pointer-.5)*.28,satinCompact);
+  vec2 q=reflected.xy/max(abs(reflected.z),.25)+(GLINT_LIGHTING_POINTER-.5)*1.1;
+  vec2 broadQ=mix(q,reflected.xy/max(abs(reflected.z),.25)+vec2(-.10,.17)+(GLINT_LIGHTING_POINTER-.5)*.28,satinCompact);
   if(studioLighting>.5)broadQ=vec2(-.10,.17)+vec2(uv.x,1.-uv.y)-studioFoilCenter(normal);
   vec2 broadDelta=(broadQ-vec2(-.10,.17))*vec2(1.45,.85);
   float broad=exp(-dot(broadDelta,broadDelta))*.38;

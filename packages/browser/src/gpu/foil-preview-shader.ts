@@ -255,7 +255,7 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     vec3 res=foilSheenBlend(base,shine*(1.+satinHoverGain*.32));
     return applyStudioGlare(res,rT,.42);
   }
-  vec2 tilt=(pointer-.5)*2.;
+  vec2 tilt=(GLINT_LIGHTING_POINTER-.5)*2.;
   if(previewKind==4.) {
     // Opal embossed foil: contour relief bevels and mother-of-pearl nacre.
     vec4 facet=opalFacet(uv,tilt,normal,view);

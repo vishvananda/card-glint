@@ -91,6 +91,9 @@ export class Cardstock {
 }
 
 export const CARDSTOCK_GLSL = `
+#ifndef GLINT_LIGHTING_POINTER
+#define GLINT_LIGHTING_POINTER pointer
+#endif
 #ifdef GLINT_HOST_SAMPLING
 #ifndef GLINT_POINTER_BINDING
 #define GLINT_POINTER_BINDING
@@ -103,7 +106,7 @@ float cardstockResponse(vec2 uv){
  if(cardstockAmount<=0.)return 1.;
  vec4 encoded=texture(cardstockMap,uv);
  vec2 slope=(vec2(dot(encoded.rg,vec2(256.,1.)),dot(encoded.ba,vec2(256.,1.)))/257.-.5)*4.4;
- vec2 direction=vec2(.65,.76)+(vec2(pointer.x,1.-pointer.y)-.5)*1.6;
+ vec2 direction=vec2(.65,.76)+(vec2(GLINT_LIGHTING_POINTER.x,1.-GLINT_LIGHTING_POINTER.y)-.5)*1.6;
  vec2 light=direction/max(length(direction),.1);
  return max(0.,1.+cardstockAmount*2.38*dot(slope,light));
 }

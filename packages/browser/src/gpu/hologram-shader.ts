@@ -4,7 +4,7 @@ export const HOLOFOIL_GLSL = `
 float holofoilGrainFilter=1.;
 vec3 holofoil(vec2 p,vec3 ink,vec3 normal,vec3 view,float seed,float grainFilter){
   vec3 reflected=reflect(-view,normal);
-  vec2 light=reflected.xy/max(abs(reflected.z),.25)+(pointer-.5)*.85;
+  vec2 light=reflected.xy/max(abs(reflected.z),.25)+(GLINT_LIGHTING_POINTER-.5)*.85;
   if(studioLighting>.5)light=reflected.xy/max(abs(reflected.z),.25)-studioLampPosition.xy/studioLampPosition.z;
   float axisA=dot(p,vec2(1.6,.45))+dot(light,vec2(1.1,.65))+seed;
   float axisB=dot(p,vec2(-.7,1.9))+dot(light,vec2(-.8,1.3))+seed*.37;

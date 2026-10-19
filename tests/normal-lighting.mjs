@@ -8,7 +8,9 @@ const server = await createServer({
   server: { host: '127.0.0.1', port: 0, hmr: false },
 });
 await server.listen();
-const browser = await chromium.launch({ args: ['--no-sandbox', '--enable-unsafe-swiftshader'] });
+const browser = await chromium.launch({
+  args: ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
+});
 try {
   const page = await browser.newPage(),
     errors = [];
@@ -196,8 +198,7 @@ try {
       {
         ...result,
         errors,
-        scope:
-          'Linux Chromium / SwiftShader; native GPU output, no physical device. CPU submission metrics are not GPU completion timings.',
+        scope: `${process.platform} Chromium / SwiftShader; software GPU output, no physical device. CPU submission metrics are not GPU completion timings.`,
       },
       null,
       2,

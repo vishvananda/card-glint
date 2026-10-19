@@ -54,8 +54,8 @@ precision highp float;precision highp int;
 out vec2 uv;flat out float layer;flat out vec2 facePixelSize;flat out float previewKind;flat out float hasMask;flat out float aspect;flat out vec2 pointer;
 flat out vec4 printDotsInfo;flat out float cardstockAmount;
 ${bounds}
-uniform float finishKind;
-void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);uv=p;layer=float(gl_InstanceID);facePixelSize=vec2(64.,64.);previewKind=finishKind<0.?float(gl_InstanceID)+1.:finishKind;hasMask=gl_InstanceID==1?0.:1.;aspect=1.;pointer=vec2(.4+float(gl_InstanceID)*.05,.5);printDotsInfo=vec4(0.,5.,.5,0.);cardstockAmount=0.;${assign}gl_Position=vec4((p.x+float(gl_InstanceID))*.5-1.,p.y*2.-1.,0.,1.);}`;
+uniform float finishKind;uniform float pointerShift;uniform float stockAmount;
+void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);uv=p;layer=float(gl_InstanceID);facePixelSize=vec2(64.,64.);previewKind=finishKind<0.?float(gl_InstanceID)+1.:finishKind;hasMask=gl_InstanceID==1?0.:1.;aspect=1.;pointer=vec2(.4+float(gl_InstanceID)*.05+pointerShift,.5);printDotsInfo=vec4(0.,5.,.5,0.);cardstockAmount=stockAmount;${assign}gl_Position=vec4((p.x+float(gl_InstanceID))*.5-1.,p.y*2.-1.,0.,1.);}`;
       const fragment = `#version 300 es
 precision highp float;precision highp int;precision highp sampler2DArray;
 in vec2 uv;flat in float layer;out vec4 color;
@@ -152,6 +152,43 @@ void main(){if(any(greaterThan(uv,vec2(1.))))discard;vec3 ink=previewInk(printFa
         runs.push({ kind, samples, error: gl.getError() });
       }
     }
+    // Studio mode ignores pointer input in the shared shaders too; the host
+    // does not need to reproduce the complete renderer's pointer normalization.
+    const studioRuns = [];
+    gl.activeTexture(gl.TEXTURE2);
+    gl.bindTexture(gl.TEXTURE_2D, stock);
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      0,
+      gl.RGBA,
+      1,
+      1,
+      0,
+      gl.RGBA,
+      gl.UNSIGNED_BYTE,
+      new Uint8Array([220, 0, 70, 0]),
+    );
+    for (const p of programs) {
+      gl.useProgram(p);
+      gl.uniform1f(gl.getUniformLocation(p, 'studioLighting'), 1);
+      gl.uniform1f(gl.getUniformLocation(p, 'stockAmount'), 0.35);
+      for (const kind of [1, 2, 3, 4, 8, 9]) {
+        gl.uniform1f(gl.getUniformLocation(p, 'finishKind'), kind);
+        const images = [];
+        for (const shift of [0, 0.3]) {
+          gl.uniform1f(gl.getUniformLocation(p, 'pointerShift'), shift);
+          gl.drawArraysInstanced(gl.TRIANGLES, 0, 3, 4);
+          const b = new Uint8Array(256 * 64 * 4);
+          gl.readPixels(0, 0, 256, 64, gl.RGBA, gl.UNSIGNED_BYTE, b);
+          images.push(b);
+        }
+        studioRuns.push({
+          kind,
+          changed: images[0].reduce((n, v, i) => n + (v !== images[1][i] ? 1 : 0), 0),
+          error: gl.getError(),
+        });
+      }
+    }
     // Surface functions also compile with the same host bindings and no 2D face sampler.
     const surface =
       foilShader({ sampling: 'host', artWindows: 'pair', liquid: false }) + SURFACE_GLSL;
@@ -168,9 +205,14 @@ void main(){color=vec4(animatedSurface(uv,vec3(0.,0.,1.)),1.);}`,
     gl.deleteShader(fs);
     for (const p of programs) gl.deleteProgram(p);
     for (const t of textures) gl.deleteTexture(t);
-    return { runs, renderer: gl.getParameter(gl.RENDERER) };
+    return { runs, studioRuns, renderer: gl.getParameter(gl.RENDERER) };
   });
   assert.equal(result.runs.length, 16);
+  assert.equal(result.studioRuns.length, 12);
+  for (const r of result.studioRuns) {
+    assert.equal(r.changed, 0, 'Host studio lighting changes with pointer: ' + JSON.stringify(r));
+    assert.equal(r.error, 0);
+  }
   for (const r of result.runs) {
     assert.equal(r.error, 0);
     assert.equal(

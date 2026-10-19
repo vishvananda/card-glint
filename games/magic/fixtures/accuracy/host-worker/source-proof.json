@@ -2474,23 +2474,32 @@
     },
     "packages/browser/src/gpu/cardstock.ts": {
       "before": "9e789817694bfe096a5cfe8d4bb196e40b42e4dfe6b549381227d5dfe2b8001b",
-      "after": "56d6ec5128db0b6a67fba89e1836f0abb0cc2a39bd069d638a0e1ad3aab72a27",
-      "review": "host-finish-outside-flat",
-      "reverseEdits": [{ "start": 93, "count": 6, "lines": [] }]
-    },
-    "packages/browser/src/gpu/device.ts": {
-      "before": "e68a01cab1988e3fda61de9df2a8ce89eb49cc2e6b8df0aa9577caeaf15a26fd",
-      "after": "2b66f14dbd4ce7e1fdb1deb72f92d3f503a087e0814a94f9663ec57d24743132",
+      "after": "811950931529aa038735fe3837d0884f362a263647683099d5ace655a8b7ad4f",
       "review": "host-finish-outside-flat",
       "reverseEdits": [
         {
-          "start": 293,
+          "start": 108,
+          "count": 1,
+          "lines": [
+            " vec2 direction=vec2(.65,.76)+(vec2(pointer.x,1.-pointer.y)-.5)*1.6;\n"
+          ]
+        },
+        { "start": 93, "count": 9, "lines": [] }
+      ]
+    },
+    "packages/browser/src/gpu/device.ts": {
+      "before": "e68a01cab1988e3fda61de9df2a8ce89eb49cc2e6b8df0aa9577caeaf15a26fd",
+      "after": "60d2334190251b3c3c963a67e3aafa4fc07a5762d19b534959b67d13a72d3c92",
+      "review": "host-finish-outside-flat",
+      "reverseEdits": [
+        {
+          "start": 296,
           "count": 1,
           "lines": ["    gl.uniform1i(gl.getUniformLocation(p, 'face'), 0);\n"]
         },
         {
-          "start": 271,
-          "count": 5,
+          "start": 273,
+          "count": 6,
           "lines": [
             "    gl.uniform1f(gl.getUniformLocation(p, 'cornerRadius'), material.recipe.cornerRadius);\n",
             "    gl.uniform1f(gl.getUniformLocation(p, 'aspect'), material.face.height / material.face.width);\n",
@@ -2503,24 +2512,24 @@
           ]
         },
         {
-          "start": 267,
+          "start": 269,
           "count": 1,
           "lines": ["      gl.getUniformLocation(p, 'overlayFoil'),\n"]
         },
         {
-          "start": 261,
+          "start": 263,
           "count": 1,
           "lines": ["      gl.getUniformLocation(p, 'hologramMaterial'),\n"]
         },
         {
-          "start": 259,
+          "start": 261,
           "count": 1,
           "lines": [
             "    gl.uniform4f(gl.getUniformLocation(p, 'hologramRect'), hx, 1 - hy - hh, hw, hh);\n"
           ]
         },
         {
-          "start": 251,
+          "start": 253,
           "count": 6,
           "lines": [
             "    const windows = material.recipe.artWindows.map(([x, y, w, h]) => [x, 1 - y - h, x + w, 1 - y]);\n",
@@ -2532,12 +2541,12 @@
           ]
         },
         {
-          "start": 249,
+          "start": 251,
           "count": 1,
           "lines": ["      gl.uniform1i(gl.getUniformLocation(p, name), i);\n"]
         },
         {
-          "start": 206,
+          "start": 208,
           "count": 6,
           "lines": [
             "      list.every(\n",
@@ -2549,7 +2558,7 @@
         },
         {
           "start": 184,
-          "count": 7,
+          "count": 9,
           "lines": [
             "    gl.uniformMatrix4fv(\n",
             "      gl.getUniformLocation(shader, 'viewProjection'),\n",
@@ -2572,16 +2581,32 @@
     },
     "packages/browser/src/gpu/foil-preview-shader.ts": {
       "before": "019cd9dda7726f9a7a8054240666c18bfb4b36d4a769aaed3d69520a418eec2d",
-      "after": "163565ac169788d3562b2f7d68458f2fc32a911653f2b5c580681af7cd914c11",
+      "after": "4da5721556b4aeda0027e560ba1c1f67d11a8eaa3da1f43d4f48dfb3e84ca67b",
       "review": "host-finish-outside-flat",
       "reverseEdits": [
+        { "start": 270, "count": 1, "lines": [] },
         {
-          "start": 156,
+          "start": 257,
+          "count": 1,
+          "lines": ["  vec2 tilt=(pointer-.5)*2.;\n"]
+        },
+        { "start": 180, "count": 1, "lines": [] },
+        {
+          "start": 170,
           "count": 8,
           "lines": [
             "    vec2 d=vec2(.0015,0.);\n",
             "    vec2 slopeArt=vec2(contour(uv+d)-contour(uv-d),contour(uv+d.yx)-contour(uv-d.yx));\n",
             "    vec2 slopeAll=vec2(etchMask(uv+d)-etchMask(uv-d),etchMask(uv+d.yx)-etchMask(uv-d.yx));\n"
+          ]
+        },
+        { "start": 154, "count": 13, "lines": [] },
+        { "start": 151, "count": 1, "lines": [] },
+        {
+          "start": 139,
+          "count": 1,
+          "lines": [
+            "  if(previewKind==8.) return studioCardGloss(uv,base,normal);\n"
           ]
         },
         {
@@ -2608,6 +2633,65 @@
           ]
         },
         { "start": 4, "count": 1, "lines": [] }
+      ]
+    },
+    "packages/browser/src/gpu/foil-reflection-shader.ts": {
+      "before": "5a49bd00236a4fe47833da149c36ffce6dc37c756f41655310dcb683b3a03f25",
+      "after": "95fe06a81cb6fb8869b4ae8bdc91e8df58f82ccc5a44c4917fdbc16bcce74bc5",
+      "review": "host-finish-outside-flat",
+      "reverseEdits": [
+        { "start": 121, "count": 1, "lines": [] },
+        {
+          "start": 82,
+          "count": 3,
+          "lines": [
+            "  vec2 q=reflected.xy/max(abs(reflected.z),.25)+(pointer-.5)*1.1;\n",
+            "  vec2 broadQ=mix(q,reflected.xy/max(abs(reflected.z),.25)+vec2(-.10,.17)+(pointer-.5)*.28,satinCompact);\n"
+          ]
+        },
+        {
+          "start": 78,
+          "count": 1,
+          "lines": [
+            "    (uv.x-pointer.x)*.65+(uv.y-pointer.y)*.18+dot(reflected.xy,vec2(.16,.10)),satinCompact);\n"
+          ]
+        },
+        {
+          "start": 76,
+          "count": 1,
+          "lines": [
+            "  vec2 q=reflected.xy/max(abs(reflected.z),.25)+(pointer-.5)*1.1;\n"
+          ]
+        },
+        { "start": 74, "count": 1, "lines": [] },
+        { "start": 51, "count": 1, "lines": [] },
+        {
+          "start": 37,
+          "count": 2,
+          "lines": [
+            "  vec2 delta = vec2(normal.x * 2.63, normal.y * 3.33) + vec2(pointer.x - .5, .5 - pointer.y);\n"
+          ]
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": ["export const FOIL_REFLECTION_GLSL = `\n"]
+        },
+        { "start": 0, "count": 2, "lines": [] }
+      ]
+    },
+    "packages/browser/src/gpu/hologram-shader.ts": {
+      "before": "661556bcc7c88d9ca3e31e5e1a98cbcd796acd2e6103d0c80df44347a93127d6",
+      "after": "06edffe52c3c53a5c02a817e278a7f979896afb9e206d18b3034db481544731c",
+      "review": "host-finish-outside-flat",
+      "reverseEdits": [
+        {
+          "start": 6,
+          "count": 2,
+          "lines": [
+            "  vec2 light=reflected.xy/max(abs(reflected.z),.25)+(pointer-.5)*.85;\n"
+          ]
+        }
       ]
     },
     "packages/browser/src/gpu/liquid-foil-shader.ts": {
@@ -2682,9 +2766,17 @@
     },
     "packages/browser/src/gpu/shaders.ts": {
       "before": "2893d169dfe84ac9fe15e723df7fe89edc2f38c89f884bdc8c3d6d6f254db97a",
-      "after": "00b7f91f96cf8acad3a1907945de60787311d8398a0b7cc11e8fdba5612f8dda",
+      "after": "c40b93e1ffada9a9e0b678951e5e8fc5d3d3931cd40f347818a4c9c2b8846917",
       "review": "host-finish-outside-flat",
       "reverseEdits": [
+        {
+          "start": 96,
+          "count": 1,
+          "lines": [
+            " if(previewKind==8. && studioVirtual<.5)optical=studioGloss(previewInk(printFace(uv).rgb),normalize(v_normal),normalize(studioCamera.xyz-studioPosition*studioCamera.w),studioPosition);\n"
+          ]
+        },
+        { "start": 94, "count": 1, "lines": [] },
         {
           "start": 75,
           "count": 1,
@@ -2694,11 +2786,36 @@
         }
       ]
     },
-    "packages/browser/src/gpu/surface-shader.ts": {
-      "before": "1398e9c0146508f995870b231f4719c105b5f8ce7e165b7d86ea0cfb917ac724",
-      "after": "6cf42c5e58aba802ad31e4483dbba4bc3642e1e9ff1f5ae6494360dd30fc52e1",
+    "packages/browser/src/gpu/studio-gloss-shader.ts": {
+      "before": "137bd677061ed791808647e4e7703d3529374df1725f7731c239fe0ce74877f7",
+      "after": "fda5f5cad9c12421a5618c45905acd2c7459bcb324a1c75d92999ea37e663136",
       "review": "host-finish-outside-flat",
       "reverseEdits": [
+        {
+          "start": 31,
+          "count": 2,
+          "lines": [
+            "  vec3 n=normalize(normal);\n",
+            "  float cy=max(length(n.yz),.0001);\n",
+            "  float sx=-n.y/cy,cx=n.z/cy;\n",
+            "  vec3 right=vec3(cy,sx*n.x,-cx*n.x),up=vec3(0.,cx,sx);\n",
+            "  vec3 position=right*((uv.x-.5)/aspect)+up*(uv.y-.5);\n",
+            "  return studioGloss(ink,n,normalize(vec3(0.,0.,2.1)-position),position);\n"
+          ]
+        },
+        {
+          "start": 10,
+          "count": 1,
+          "lines": ["  const vec3 lamp=vec3(-.85,1.10,3.);\n"]
+        }
+      ]
+    },
+    "packages/browser/src/gpu/surface-shader.ts": {
+      "before": "1398e9c0146508f995870b231f4719c105b5f8ce7e165b7d86ea0cfb917ac724",
+      "after": "ae11eb389c2af11d56b46b058134ef093d59c1955ebe888cb86e0f151b1d6bcd",
+      "review": "host-finish-outside-flat",
+      "reverseEdits": [
+        { "start": 66, "count": 1, "lines": [] },
         {
           "start": 62,
           "count": 1,
@@ -2739,16 +2856,17 @@
     },
     "packages/browser/src/index.ts": {
       "before": "a2cd647803d1b1bda45f6631d4bdb66a1f26f070148c56863f4a9d181baaad5c",
-      "after": "0722a8bb6a0deb77feb14ad90e0dfa94857431b47024b0f2b2643a837f3e6e5f",
+      "after": "12796bcfab956141462d0bd17b95b441c9431308d7247cbaff4554a379ed29b7",
       "review": "host-finish-outside-flat",
       "reverseEdits": [
         {
-          "start": 15,
+          "start": 17,
           "count": 5,
           "lines": [
             "export { DEFAULT_PRINT_DOTS } from './print-settings.js';\n"
           ]
-        }
+        },
+        { "start": 14, "count": 2, "lines": [] }
       ]
     },
     "packages/browser/src/print-settings.ts": {
@@ -2765,11 +2883,22 @@
         { "start": 17, "count": 13, "lines": ["  return result;\n"] }
       ]
     },
-    "packages/browser/src/types.ts": {
-      "before": "b180ba638806b5226e6280e2e1e84a0989dc557a554485352c223f5b382e0c20",
-      "after": "2ebe535ce607b9b1f619166f4afd02f6af0f504de0cc9ea4249715e764904865",
+    "packages/browser/src/renderer.ts": {
+      "before": "492c7ca63d9e0a0da8670181725a542dd8ffb925bf08dfffef93aec2131c21fb",
+      "after": "d1c450ce5e20b019e6d601228658a76d1bd95ed4f744470d47a5c87c02c30a00",
       "review": "host-finish-outside-flat",
       "reverseEdits": [
+        { "start": 545, "count": 1, "lines": [] },
+        { "start": 533, "count": 1, "lines": [] },
+        { "start": 491, "count": 3, "lines": [] }
+      ]
+    },
+    "packages/browser/src/types.ts": {
+      "before": "b180ba638806b5226e6280e2e1e84a0989dc557a554485352c223f5b382e0c20",
+      "after": "3e21292b806a43f9056677b4d901f73a971a3055e67c2543cc99ad974966a913",
+      "review": "host-finish-outside-flat",
+      "reverseEdits": [
+        { "start": 151, "count": 2, "lines": [] },
         {
           "start": 117,
           "count": 1,
@@ -2783,12 +2912,19 @@
           "lines": ["  ): Promise<HTMLCanvasElement>;\n"]
         }
       ]
+    },
+    "packages/browser/src/validation.ts": {
+      "before": "fca6b8c95692ad017102f3e1f33f02b495ae46cfbac6f2d2958866df88e97c28",
+      "after": "e7d299103dee83f04672e18caf730d98933e49751069d56f14ff916ad5007c9e",
+      "review": "host-finish-outside-flat",
+      "reverseEdits": [{ "start": 164, "count": 2, "lines": [] }]
     }
   },
   "dependencies": {
     "games/magic/src/presentation/canvas-font-registry.ts": "c2f83555afbf58859ce81b42a7fdd9667f65df7e20405547baff936e4d9f6d14",
     "packages/browser/src/canvas-mask.ts": "da7c0ad200022636be9dacfd5b4d6806ba6c4b0a0820dfbc69e7687a27073b50",
     "packages/browser/src/gpu/host-sampling.ts": "d7446db62877490cbf16ed5914fb71b3d05952b4699f5aecbc717759cf7e8fcf",
+    "packages/browser/src/gpu/studio-lighting-shader.ts": "fa1ba8ef21bd6166a33ecc397172abef4e2820915effe5bc6ac4ef0bd0e3ebd7",
     "packages/browser/src/canvas-raster.ts": "abd7330793e3a61c3ca055dc776c915665d71a2e9a36e1bc6c01a3d44bf13ce8"
   },
   "evidence": "games/magic/fixtures/accuracy/host-worker/browser-parity.json",

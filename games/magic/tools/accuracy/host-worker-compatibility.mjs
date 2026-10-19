@@ -5,7 +5,7 @@ import { hash } from './common.mjs';
 const proofFile = 'games/magic/fixtures/accuracy/host-worker/source-proof.json';
 // Frozen after the independent browser replay. Changes require renewed evidence.
 export const HOST_WORKER_PROOF_HASH =
-  '5a70714a762182c5d924846b06db37483ee1a7f178117185c0a6c4f0583f998c';
+  '7e8861749c02aba22a372ecc467882da166b983697d84d82c0f4464ef20451ba';
 let checked;
 export function hostWorkerCompatibilityProof() {
   return (checked ??= (async () => {

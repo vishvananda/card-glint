@@ -336,6 +336,15 @@ The host-sampling mode changes resource access, not finish composition order,
 mask coverage, protected printing or output color conversion. The legacy uniform
 shader mode remains the default.
 
+Set the shared `studioLighting` uniform to 1 for the opt-in studio mode, or 0
+for compatibility lighting. Studio lighting ignores the flat pointer value,
+including cardstock relief. Keep actual hover hits separate for water motion.
+For a normalized upright card, pass `studioCardView(uv, normal)` as the view
+argument to `previewFoil`; a 3D host with its own camera can supply its actual
+view vector. The virtual studio cannot infer scene translation or card roll
+from a normal alone. The complete renderer selects this mode through
+`Frame.lighting: 'studio'`; `normalLightingVersion === 1` detects support.
+
 ## Worker composition and native widths (0.6)
 
 `composeCardTexture` paints directly at `'table'` (244×340), `'native'` (488×680),
