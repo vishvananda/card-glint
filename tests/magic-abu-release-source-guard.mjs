@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preUnlimitedProfileSource } from './magic-unlimited-profile-source-guard.mjs';
 const proof = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/abu-release-compatibility.json'),
 );
@@ -33,7 +34,7 @@ async function verify() {
 }
 /** Keep historical calibration evidence bound to its original source graph. */
 export async function preAbuReleaseSource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preUnlimitedProfileSource(file),
     change = proof.files[file];
   if (file === wording.file) {
     assert.equal(hash(bytes), wording.after);

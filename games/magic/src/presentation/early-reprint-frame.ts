@@ -2,6 +2,7 @@ import { calibrationForFace } from '../calibration/selection.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
+import { retroDualFrame } from './retro-dual-frame.js';
 
 /** Printing-level material selection shared by original and Oracle wording. */
 export function earlyReprintFrame(face: RenderedCardInput) {
@@ -21,6 +22,7 @@ export function earlyReprintFrame(face: RenderedCardInput) {
     colors = resolveFrameColors(face);
   const land = face.land ?? /\bLand\b/.test(type);
   let material: string | undefined;
+  let landColor: string | undefined;
   if (land) {
     // The original basics say only "Land". Explicit frame colors or their
     // printed names retain the same plate when switching to Oracle wording.
@@ -33,9 +35,12 @@ export function earlyReprintFrame(face: RenderedCardInput) {
     };
     const basic = basics[face.name];
     const landColors = face.frameColors ?? (basic ? [basic] : []);
-    if (landColors.length) {
-      if (set !== '4ed' || landColors.length !== 1) return undefined;
-      material = `L-${landColors[0]}`;
+    if (landColors.length === 1) {
+      landColor = landColors[0];
+      material = calibrationForFace(face)!.frames.L?.landPalette ? 'L' : `L-${landColor}`;
+    } else if (landColors.length > 1) {
+      if (!retroDualFrame(face)) return undefined;
+      material = 'L';
     } else material = 'L';
   } else
     material =
@@ -48,19 +53,28 @@ export function earlyReprintFrame(face: RenderedCardInput) {
             : undefined;
   const geometry = material && calibrationForFace(face)!.frames[material];
   if (!geometry) return undefined;
+  const dual = retroDualFrame(face);
+  if (dual && geometry.family !== 'abu') return undefined;
+  const assetKey =
+    geometry.landPalette && landColor ? `${landColor.toLowerCase()}l` : geometry.assetKey;
+  const asset =
+    dual?.base ?? `${manifest.RETRO_ROOT}/img/frames/old/${geometry.family}/${assetKey}.png`;
   const pigment =
-    material === 'L'
-      ? set === 'chr' && face.name === 'Safe Haven'
-        ? 'L-dark'
-        : (set === 'chr' && face.name === 'City of Brass') ||
-            (set === '4ed' && face.name === 'Oasis')
-          ? 'L-gold'
-          : 'L-red'
-      : material;
+    dual || (geometry.landPalette && landColor)
+      ? `L-${asset.split('/').at(-1)![0]!.toUpperCase()}`
+      : material === 'L'
+        ? set === 'chr' && face.name === 'Safe Haven'
+          ? 'L-dark'
+          : (set === 'chr' && face.name === 'City of Brass') ||
+              (set === '4ed' && face.name === 'Oasis')
+            ? 'L-gold'
+            : 'L-red'
+        : material;
   return {
     ...geometry,
+    stockWindow: geometry.stockMask === 'source' ? undefined : geometry.stockWindow,
     material,
     profile: `${set}/${pigment}`,
-    asset: `${manifest.RETRO_ROOT}/img/frames/old/${geometry.family}/${geometry.assetKey}.png`,
+    asset,
   };
 }

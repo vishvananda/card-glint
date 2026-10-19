@@ -74,7 +74,7 @@ try {
       );
     }
   }
-  for (const code of ['fem', '4ed', 'chr']) {
+  for (const code of ['2ed', 'fem', '4ed', 'chr']) {
     const { profile } = await server.ssrLoadModule(
       '/games/magic/src/calibration/sets/' + code + '.ts',
     );

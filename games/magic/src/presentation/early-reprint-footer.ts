@@ -11,16 +11,19 @@ export function earlyReprintFooter(face: RenderedCardInput) {
   if (!frame) return undefined;
   const set = face.setCode!.toLowerCase();
   const p = calibrationForFace(face)!.footer;
+  const text = calibrationForFace(face)!.footerText;
   const light =
     ['B', 'G', 'A'].includes(frame.material ?? '') ||
     (set === 'fem' && face.name === 'Ebon Stronghold');
   return {
     ...p,
+    artistPrefix: text?.artistPrefix ?? 'Illus. ',
     legalGray: light ? p.legal.lightGray : p.legal.darkGray,
     // Reviewed printing defaults, never a year inferred from an arbitrary set.
     legalText:
       face.legalText === undefined
-        ? `© ${set === 'fem' ? '1994' : '1995'} Wizards of the Coast, Inc. All rights reserved.`
+        ? (text?.legal ??
+          `© ${set === 'fem' ? '1994' : '1995'} Wizards of the Coast, Inc. All rights reserved.`)
         : face.legalText,
   };
 }
@@ -60,7 +63,9 @@ export function paintEarlyReprintFooter(
   };
   if (face.power != null && face.toughness != null) paint('stats', retroStatsText(face));
   if (face.artist)
-    paintPrintingElement(c, face, 'artist', () => paint('artist', `Illus. ${face.artist}`));
+    paintPrintingElement(c, face, 'artist', () =>
+      paint('artist', `${profile.artistPrefix}${face.artist}`),
+    );
   if (profile.legalText)
     paintPrintingElement(c, face, 'legal', () => paint('legal', profile.legalText!));
   return true;

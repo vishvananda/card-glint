@@ -9,6 +9,9 @@ import { rulesLayoutRequest, layoutRules } from '../../src/presentation/rules-la
 import { cropGray } from './pixels-pure.mjs';
 import { countLayout } from './abu-count-layout.mjs';
 import { JsTextObjective, nativeGrayCrop as grayCrop } from './abu-type-objective.mjs';
+import { paintSolidTitle } from '../../src/presentation/solid-title.ts';
+import { paintEarlyReprintFooterInk } from '../../src/presentation/early-reprint-footer-ink.ts';
+import { titleShape, compareTitleShape } from './letter-fill-metrics.mjs';
 const config = await fetch('/__type_kernel/config.json').then((r) => r.json());
 let TextObjective = JsTextObjective;
 if (config.wasm) {
@@ -69,8 +72,8 @@ export async function prepare(entry, scanUrl, roles = Object.keys(rects)) {
     body = { layout, images, args, transform: matrix(context) };
     return true;
   };
-  proto.fillText = function (text, x, y, maxWidth) {
-    const transform = this.getTransform(),
+  const record = (context, text, x, y, maxWidth, effect) => {
+    const transform = context.getTransform(),
       cy = (transform.b * x + transform.d * y + transform.f) / 1.5;
     const role =
       cy < 80 && text === face.name
@@ -82,23 +85,34 @@ export async function prepare(entry, scanUrl, roles = Object.keys(rects)) {
             : cy > 590 && cy < 637 && /^[*\dX]+\s*\/\s*[*\dX]+$/.test(String(text))
               ? 'stats'
               : null;
-    if (!role) return native.call(this, text, x, y, maxWidth);
+    if (!role) return false;
     commands.push({
       role,
       text,
       x,
       y,
       maxWidth,
-      transform: matrix(this),
-      properties: Object.fromEntries(properties.map((k) => [k, this[k]])),
+      transform: matrix(context),
+      properties: Object.fromEntries(properties.map((k) => [k, context[k]])),
+      effect,
     });
+    return true;
   };
+  proto.fillText = function (text, x, y, maxWidth) {
+    if (!record(this, text, x, y, maxWidth)) return native.call(this, text, x, y, maxWidth);
+  };
+  globalThis.__abuSolidTitle = (context, text, x, y, maxWidth, p, colors) =>
+    record(context, text, x, y, maxWidth, { kind: 'solid', p, colors });
+  globalThis.__abuFooterInk = (context, text, maxWidth, p) =>
+    record(context, text, 0, 0, maxWidth, { kind: 'footer', p });
   let background;
   try {
     background = await composeCardTexture(input, 'inspect', signal, hooks);
   } finally {
     proto.fillText = native;
     delete globalThis.__abuBody;
+    delete globalThis.__abuSolidTitle;
+    delete globalThis.__abuFooterInk;
   }
   const s = canvas(488, 680),
     sc = s.getContext('2d');
@@ -141,6 +155,7 @@ export async function prepare(entry, scanUrl, roles = Object.keys(rects)) {
             )
           : null,
       baselineGray: grayCrop(fullPixels, rect, [0, 0]),
+      referenceShape: role === 'rules' ? undefined : titleShape(gray, rect[2], rect[3]),
     };
     if (config.wasm) {
       const js = new JsTextObjective(gray, rect[2], rect[3]);
@@ -266,7 +281,35 @@ function paint(role, a) {
       // Preserve the separately painted dark shadow when fitting filled gray ink.
       if (a.gray !== undefined && command.properties.fillStyle !== '#17140f')
         c.fillStyle = `rgb(${a.gray},${a.gray},${a.gray})`;
-      c.fillText(command.text, 0, 0, command.maxWidth == null ? undefined : command.maxWidth / sx);
+      const max = command.maxWidth == null ? undefined : command.maxWidth / sx,
+        effect = command.effect;
+      if (effect?.kind === 'solid')
+        paintSolidTitle(
+          c,
+          command.text,
+          0,
+          0,
+          max,
+          {
+            ...effect.p,
+            width: effect.p.width * sx,
+            gray: a.gray ?? effect.p.gray,
+            trim: a.trim ?? effect.p.trim,
+            shadow: a.shadow ?? effect.p.shadow,
+          },
+          effect.colors && {
+            ...effect.colors,
+            fill: a.gray === undefined ? effect.colors.fill : c.fillStyle,
+          },
+        );
+      else if (effect?.kind === 'footer')
+        paintEarlyReprintFooterInk(c, command.text, max, {
+          ...effect.p,
+          width: effect.p.width * sx,
+          trim: a.trim ?? effect.p.trim,
+          shadow: a.shadow ?? effect.p.shadow,
+        });
+      else c.fillText(command.text, 0, 0, max);
       c.restore();
     }
   return true;
@@ -287,7 +330,9 @@ export function fit(role) {
   const specs =
     role === 'rules'
       ? { dx: [-10, 10, 1], dy: [-16, 16, 1] }
-      : { dx: [-6, 6, 0.5], dy: [-5, 5, 0.5], size: [-2, 2, 0.5], width: [-6, 6, 1] };
+      : role === 'stats'
+        ? { dx: [-6, 6, 0.5], dy: [-5, 5, 0.5], size: [-5, 2, 0.5], width: [-6, 6, 1] }
+        : { dx: [-6, 6, 0.5], dy: [-5, 5, 0.5], size: [-2, 2, 0.5], width: [-6, 6, 1] };
   let best = {},
     value = measure(role, best),
     baseline = value,
@@ -349,7 +394,7 @@ export function finish() {
 
 /** Fixed, deliberately small candidate grid. Select on calibration names and
  * report validation separately; individual probes never become printing fixes. */
-export function shared() {
+export function shared(overrides = {}) {
   const grids = {
     title: [{}, { dx: 0.5 }, { dx: 1 }, { size: -0.5 }, { dx: 0.5, size: -0.5 }],
     type: [
@@ -370,6 +415,7 @@ export function shared() {
     ],
     stats: [{}, { dx: 0.5 }, { dx: 1 }, { dx: 1, dy: -0.5 }],
     rules: [{}, { dy: -1 }, { dy: -2 }, { dy: -3 }, { dx: -1, dy: -2 }, { dx: 1, dy: -2 }],
+    ...overrides,
   };
   return Object.fromEntries(
     Object.keys(globalThis.__abuState.prepared).map((role) => [
@@ -380,6 +426,14 @@ export function shared() {
         return {
           adjustment,
           score,
+          ...(p.referenceShape
+            ? {
+                shape: compareTitleShape(
+                  p.referenceShape,
+                  titleShape(grayCrop(pixels(p.out), p.rect, p.origin), p.rect[2], p.rect[3]),
+                ),
+              }
+            : {}),
           ...(p.lightObjective
             ? {
                 lightScore: p.lightObjective.score(

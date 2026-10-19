@@ -12,6 +12,10 @@ export interface CalibratedFrame {
   readonly frame: FaceRect;
   readonly art: FaceRect;
   readonly stockWindow: FaceRect;
+  /** Preserve a source's printed aperture while moving the complete plate. */
+  readonly stockMask?: 'source' | 'window';
+  /** One shared ABU land placement; colored plates retain separate pigments. */
+  readonly landPalette?: boolean;
 }
 export interface CalibratedLettering {
   readonly x: number;
@@ -79,6 +83,11 @@ export interface SetCalibrationProfile {
       readonly darkGray: number;
     };
     readonly stats: CalibratedLettering;
+  };
+  /** Printed vocabulary, independent of artist identity and Oracle wording. */
+  readonly footerText?: {
+    readonly artistPrefix?: string;
+    readonly legal?: string;
   };
   /** default or printed source-set key (Chronicles); custom host symbols bypass these. */
   readonly setSymbols?: Readonly<Partial<Record<string, CalibratedSetSymbol>>>;

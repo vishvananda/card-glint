@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { createServer } from 'vite';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { hash, root } from './common.mjs';
 
 /** Data checks run without Chromium, fonts, images or network. */
@@ -31,6 +31,12 @@ export function checkSetProfile(profile, review, manifest) {
   for (const [key, frame] of Object.entries(profile.frames)) {
     assert.ok(['abu', 'fourth'].includes(frame.family));
     assert.match(frame.assetKey, /^[a-z]+$/);
+    if (frame.stockMask !== undefined) assert.ok(['source', 'window'].includes(frame.stockMask));
+    if (frame.landPalette !== undefined) {
+      assert.equal(typeof frame.landPalette, 'boolean');
+      assert.equal(key, 'L');
+      assert.equal(frame.family, 'abu');
+    }
     for (const field of ['frame', 'art', 'stockWindow']) rect(frame[field]);
     const source = JSON.stringify([
       `${manifest.RETRO_ROOT}/img/frames/old/${frame.family}/${frame.assetKey}.png`,
@@ -38,15 +44,23 @@ export function checkSetProfile(profile, review, manifest) {
     ]);
     for (const [color, adjustment] of Object.entries(profile.colors))
       if (color === key || (key === 'L' && color.startsWith('L-') && !profile.frames[color])) {
+        const expectedSource =
+          frame.landPalette && /^L-[WUBRG]$/.test(color)
+            ? JSON.stringify([
+                `${manifest.RETRO_ROOT}/img/frames/old/${frame.family}/${color.at(-1).toLowerCase()}l.png`,
+                frame.frame,
+              ])
+            : source;
         assert.equal(
           adjustment.source,
-          source,
+          expectedSource,
           `Stale color source/geometry: ${profile.set}/${color}`,
         );
         assert.match(adjustment.stock, /^#[0-9a-f]{6}$/i);
       }
   }
   for (const p of [profile.title, profile.type, ...Object.values(profile.footer)]) lettering(p);
+  for (const text of Object.values(profile.footerText ?? {})) assert.equal(typeof text, 'string');
   for (const symbol of Object.values(profile.setSymbols ?? {})) {
     rect(symbol.crop);
     assert.ok(symbol.width > 0 && symbol.height > 0);
@@ -69,10 +83,20 @@ if (process.argv[1]?.endsWith('/set-profile-check.mjs')) {
     optimizeDeps: { noDiscovery: true },
   });
   try {
+    await server.ssrLoadModule('/games/magic/src/data/eager.ts');
     const { setCalibrationProfiles } = await server.ssrLoadModule(
       '/games/magic/src/calibration/profiles.ts',
     );
     const manifest = JSON.parse(await readFile(new URL('../../assets.json', import.meta.url)));
+    const expected = (await readdir(new URL('../../src/calibration/sets/', import.meta.url)))
+      .filter((f) => f.endsWith('.ts'))
+      .map((f) => f.slice(0, -3))
+      .sort();
+    assert.deepEqual(
+      Object.keys(setCalibrationProfiles).sort(),
+      expected,
+      'Unloaded or stale set profiles',
+    );
     for (const [set, profile] of Object.entries(setCalibrationProfiles)) {
       const { review } = await server.ssrLoadModule(`/games/magic/src/calibration/sets/${set}.ts`);
       checkSetProfile(profile, review, manifest);

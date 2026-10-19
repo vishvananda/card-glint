@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "baselineCommit": "88ea4bb",
+  "scope": "Unlimited profile adapter extension. Historical painter ancestry is reconstructed only after neighboring selector and synthetic native equivalence controls; per-set values remain independently validated data.",
+  "evidence": "2ed/audit-preparation/neighbor-profile-controls.json.gz",
+  "evidenceHash": "af90e1d6dd896bac4c68d1ccfb1188775dbdf8a5bb1aea60255552808463f5d6",
+  "controlsInput": "2ed/audit-preparation/neighbor-control-inputs.json.gz",
+  "controlsInputHash": "86b71680ff10c0dc1cfe8e2588bd90f040b6b5feecf54142e9a2840dc2cd537c",
+  "nativeScope": "2ed/audit-preparation/profile-seed-native.json.gz",
+  "nativeScopeHash": "65e9ecc3a83d2b372ceb2d33653e1373ce5610a69712b20459865da87a2f2817",
+  "dependencies": {
+    "games/magic/src/calibration/types.ts": "a4be99408ff92cd62df232e3c3ea9059fb52f61495194101c3749580f86a4ede",
+    "games/magic/src/presentation/early-reprint-frame.ts": "d82859abd3adc4d56d0996ba3253b9bb5d2204204bff6402a2991f1145c82d1d",
+    "games/magic/src/presentation/early-reprint-colors.ts": "680e611014c29fd73cb454b93fc181d35609afff716e6b7da50bc00844e82c49",
+    "games/magic/src/presentation/early-reprint-footer.ts": "f7f23d9a7efc42a2e68e09b4bde62416329904d91a116fc0b089dfb517fc7968",
+    "games/magic/tools/build-set-data.mjs": "75fde9f681dd5ed635651907e41c8b7009a94e0ed299bf133b3b194b03a7b1d1"
+  },
+  "files": {
+    "games/magic/src/calibration/types.ts": {
+      "before": "099279e5d7dc1b9f54150a05779440701622d846ff0000f3130540e625dfadf1",
+      "after": "a4be99408ff92cd62df232e3c3ea9059fb52f61495194101c3749580f86a4ede",
+      "reverseEdits": [
+        {
+          "start": 86,
+          "count": 5,
+          "lines": []
+        },
+        {
+          "start": 14,
+          "count": 4,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-frame.ts": {
+      "before": "4f9785564dfb0dedfcb0daa4701bd40e18639135ed5471cc5b41c1d7e79315d1",
+      "after": "d82859abd3adc4d56d0996ba3253b9bb5d2204204bff6402a2991f1145c82d1d",
+      "reverseEdits": [
+        {
+          "start": 77,
+          "count": 1,
+          "lines": [
+            "    asset: `${manifest.RETRO_ROOT}/img/frames/old/${geometry.family}/${geometry.assetKey}.png`,\n"
+          ]
+        },
+        {
+          "start": 74,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 62,
+          "count": 10,
+          "lines": [
+            "    material === 'L'\n",
+            "      ? set === 'chr' && face.name === 'Safe Haven'\n",
+            "        ? 'L-dark'\n",
+            "        : (set === 'chr' && face.name === 'City of Brass') ||\n",
+            "            (set === '4ed' && face.name === 'Oasis')\n",
+            "          ? 'L-gold'\n",
+            "          : 'L-red'\n",
+            "      : material;\n"
+          ]
+        },
+        {
+          "start": 55,
+          "count": 6,
+          "lines": []
+        },
+        {
+          "start": 37,
+          "count": 6,
+          "lines": [
+            "    if (landColors.length) {\n",
+            "      if (set !== '4ed' || landColors.length !== 1) return undefined;\n",
+            "      material = `L-${landColors[0]}`;\n"
+          ]
+        },
+        {
+          "start": 24,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 4,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-colors.ts": {
+      "before": "de5eb77e55671fb5df2ad20e42bc6bb50ac9f6ca75ec73963ad91b6766b77c5d",
+      "after": "680e611014c29fd73cb454b93fc181d35609afff716e6b7da50bc00844e82c49",
+      "reverseEdits": [
+        {
+          "start": 12,
+          "count": 9,
+          "lines": [
+            "  return { materials: { [frame.asset]: profile.adjustment }, stock: profile.stock };\n"
+          ]
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-footer.ts": {
+      "before": "ae1bd670c030df876bd3747dd5449863cf26a06c30834e66401dd2c087814acf",
+      "after": "f7f23d9a7efc42a2e68e09b4bde62416329904d91a116fc0b089dfb517fc7968",
+      "reverseEdits": [
+        {
+          "start": 65,
+          "count": 3,
+          "lines": [
+            "    paintPrintingElement(c, face, 'artist', () => paint('artist', `Illus. ${face.artist}`));\n"
+          ]
+        },
+        {
+          "start": 24,
+          "count": 2,
+          "lines": [
+            "        ? `\u00a9 ${set === 'fem' ? '1994' : '1995'} Wizards of the Coast, Inc. All rights reserved.`\n"
+          ]
+        },
+        {
+          "start": 19,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 13,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/tools/build-set-data.mjs": {
+      "before": "a65bcf10033c8b0cd46d417c95cbeedd5a7bb968eb6836c9e2dd4550f946f5e5",
+      "after": "75fde9f681dd5ed635651907e41c8b7009a94e0ed299bf133b3b194b03a7b1d1",
+      "reverseEdits": [
+        {
+          "start": 76,
+          "count": 1,
+          "lines": ["  for (const code of ['fem', '4ed', 'chr']) {\n"]
+        }
+      ]
+    }
+  },
+  "newModules": ["games/magic/src/calibration/sets/2ed.ts"],
+  "generatedScopes": {
+    "file": "games/magic/src/data/scopes.ts",
+    "before": "69fb80bc7aa9b572909fd3fb1819507f39b252d809986c85a4d312c25496f168",
+    "beforeSource": "// Set ownership for detecting unprepared synchronous queries.\nexport const availableSets = [\n  '2ed',\n  '2x2',\n  '2xm',\n  '3ed',\n  '4ed',\n  '5ed',\n  '6ed',\n  '7ed',\n  '8ed',\n  'a25',\n  'aer',\n  'afc',\n  'afr',\n  'ala',\n  'all',\n  'apc',\n  'arb',\n  'arn',\n  'ath',\n  'atq',\n  'avr',\n  'bbd',\n  'blb',\n  'blc',\n  'bng',\n  'bok',\n  'brb',\n  'brc',\n  'bro',\n  'btd',\n  'c13',\n  'c14',\n  'c15',\n  'c19',\n  'c21',\n  'chr',\n  'clb',\n  'cm2',\n  'cmd',\n  'cmm',\n  'cn2',\n  'cns',\n  'con',\n  'csp',\n  'dd2',\n  'ddc',\n  'dde',\n  'ddf',\n  'ddg',\n  'ddh',\n  'ddi',\n  'ddj',\n  'ddl',\n  'ddn',\n  'ddo',\n  'ddq',\n  'dds',\n  'ddt',\n  'ddu',\n  'dft',\n  'dgm',\n  'dka',\n  'dmc',\n  'dmr',\n  'dmu',\n  'dpa',\n  'drc',\n  'drk',\n  'dsc',\n  'dsk',\n  'dst',\n  'e01',\n  'ecc',\n  'ecl',\n  'eld',\n  'ema',\n  'emn',\n  'eoc',\n  'eoe',\n  'eve',\n  'exo',\n  'fdc',\n  'fdn',\n  'fem',\n  'frc',\n  'frf',\n  'fut',\n  'gn3',\n  'gnt',\n  'hml',\n  'hob',\n  'hoc',\n  'hop',\n  'hou',\n  'ice',\n  'iko',\n  'ima',\n  'inr',\n  'inv',\n  'itp',\n  'j22',\n  'j25',\n  'jmp',\n  'jou',\n  'jud',\n  'kld',\n  'ktk',\n  'lcc',\n  'lci',\n  'lea',\n  'leb',\n  'leg',\n  'm10',\n  'm11',\n  'm12',\n  'm13',\n  'm15',\n  'm19',\n  'm20',\n  'm21',\n  'mbs',\n  'mh1',\n  'mh2',\n  'mh3',\n  'mid',\n  'mir',\n  'mkc',\n  'mkm',\n  'mm3',\n  'mma',\n  'mmq',\n  'moc',\n  'mom',\n  'msc',\n  'msh',\n  'ncc',\n  'nec',\n  'nem',\n  'neo',\n  'nph',\n  'ody',\n  'ogw',\n  'one',\n  'ons',\n  'ori',\n  'otc',\n  'otj',\n  'p02',\n  'pc2',\n  'pcy',\n  'plc',\n  'pls',\n  'por',\n  'ptk',\n  'rqs',\n  'rtr',\n  'rvr',\n  's99',\n  'scd',\n  'scg',\n  'shm',\n  'sld',\n  'snc',\n  'soc',\n  'soi',\n  'sok',\n  'som',\n  'sos',\n  'spm',\n  'sth',\n  'stx',\n  'sum',\n  'ths',\n  'tla',\n  'tle',\n  'tmc',\n  'tmp',\n  'tmt',\n  'tor',\n  'tsb',\n  'tsr',\n  'uds',\n  'ulg',\n  'uma',\n  'unf',\n  'usg',\n  'vis',\n  'voc',\n  'vow',\n  'war',\n  'woc',\n  'woe',\n  'wth',\n  'wwk',\n  'xln',\n  'zen',\n  'znr',\n];\nexport const profileSets: readonly string[] = ['4ed', 'chr', 'fem'];\nexport const fixedTableSets: Readonly<Record<string, string>> = {\n  PLANAR_COLORS: 'plc',\n  PLANAR_TEXTURE: 'plc',\n};\n",
+    "policy": "Generated ownership metadata is checked against the current generated manifest. Preserve the historical profile-set scope for native ancestry tests; current profile values and registrations are validated independently."
+  }
+}

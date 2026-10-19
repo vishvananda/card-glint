@@ -6,6 +6,7 @@ import { openBrowser } from './browser.mjs';
 import { cachedFetch } from './cache.mjs';
 import { readJson, writeJson, hash, root, sourceHash } from './common.mjs';
 import { normalizedReference } from './abu-reference-cache.mjs';
+import { typographyReplayTransform } from './abu-type-replay-hooks.mjs';
 
 const [
   inputsFile,
@@ -22,8 +23,32 @@ if (!outputDirectory)
   );
 const inputs = await readJson(inputsFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json'));
+const fitRoles = filter.startsWith('@fit:') ? filter.slice(5).split(',') : undefined;
+const customTrials = filter.startsWith('@probe:') ? await readJson(filter.slice(7)) : undefined;
+if (customTrials)
+  for (const [role, trials] of Object.entries(customTrials)) {
+    assert.ok(['title', 'type', 'artist', 'stats'].includes(role));
+    assert.ok(Array.isArray(trials) && trials.length > 0 && trials.length <= 128);
+    for (const trial of trials)
+      for (const [key, value] of Object.entries(trial)) {
+        assert.ok(['dx', 'dy', 'size', 'width', 'trim', 'shadow', 'gray'].includes(key));
+        assert.ok(Number.isFinite(value));
+        assert.ok(
+          key === 'gray'
+            ? value >= 0 && value <= 255
+            : key === 'trim' || key === 'shadow'
+              ? value >= 0 && value <= 2
+              : Math.abs(value) <= 12,
+        );
+      }
+  }
+if (fitRoles)
+  assert.ok(
+    fitRoles.length &&
+      fitRoles.every((role) => ['title', 'type', 'artist', 'stats', 'rules'].includes(role)),
+  );
 const mode =
-  filter === '@shared' || filter.startsWith('@headers:')
+  customTrials || filter === '@shared' || filter.startsWith('@headers:')
     ? 'shared'
     : filter === '@count' ||
         filter === '@native-count' ||
@@ -63,6 +88,7 @@ const studyDefinition = {
   normalizationHash: hash(JSON.stringify(poses)),
   mode,
   policy,
+  customTrials,
   rendererHash,
   nativeTrials: filter === '@native-count',
   fontsHash: hash(await readFile(path.join(root, 'games/magic/fonts.css'))),
@@ -71,11 +97,13 @@ const studyDefinition = {
     [
       'abu-type-study.mjs',
       'abu-type-browser.mjs',
+      'abu-type-replay-hooks.mjs',
       'abu-count-layout.mjs',
       'abu-assets.mjs',
       'abu-reference-cache.mjs',
       'browser.mjs',
       'abu-type-objective.mjs',
+      'letter-fill-metrics.mjs',
       'edges.mjs',
       'pixels-pure.mjs',
       'scan-transform.mjs',
@@ -134,8 +162,15 @@ const entries = inputs.entries.filter((e) =>
       ? new RegExp(filter.slice('@headers:'.length), 'i').test(e.card.name)
       : mode === 'details'
         ? new RegExp(filter.slice('@details:'.length), 'i').test(e.card.name)
-        : mode !== 'individual' || e.card.name.toLowerCase().includes(filter.toLowerCase()),
+        : fitRoles ||
+          mode !== 'individual' ||
+          e.card.name.toLowerCase().includes(filter.toLowerCase()),
 );
+studyDefinition.selection = {
+  filter: customTrials ? '@probe' : filter,
+  roles: fitRoles ?? null,
+  ids: entries.map((e) => e.id),
+};
 const fonts = [
   ...new Set(
     [...(await readFile('games/magic/fonts.css', 'utf8')).matchAll(/url\('([^']+)'\)/g)].map(
@@ -162,18 +197,7 @@ const plugins = [
   {
     name: 'abu-type-study',
     enforce: 'pre',
-    transform(source, id) {
-      if (id.endsWith('/retro-rules.ts'))
-        return source.replace(
-          'function baseRetroTextLayout(',
-          'export function baseRetroTextLayout(',
-        );
-      if (id.endsWith('/rules-paint.ts'))
-        return source.replace(
-          '  if (!rulesInkVisible(context)) return;',
-          '  if ((globalThis as any).__abuBody?.(context, layout, images, paintSymbol, inkInsetEm, color)) return;\n  if (!rulesInkVisible(context)) return;',
-        );
-    },
+    transform: typographyReplayTransform,
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         if (!req.url.startsWith('/__type_kernel/')) return next();
@@ -249,9 +273,8 @@ try {
     const scan = await normalizedReference(e, pose, path.join(posesDirectory, 'rasters'));
     const scanUrl = 'data:image/png;base64,' + scan.bytes.toString('base64');
     const prepared = await session.page.evaluate(
-      ({ e, scanUrl, rulesOnly }) =>
-        globalThis.__typeStudy.prepare(e, scanUrl, rulesOnly ? ['rules'] : undefined),
-      { e, scanUrl, rulesOnly: filter === '@native-count' },
+      ({ e, scanUrl, roles }) => globalThis.__typeStudy.prepare(e, scanUrl, roles),
+      { e, scanUrl, roles: filter === '@native-count' ? ['rules'] : fitRoles },
     );
     const nativeBytes = Buffer.from(prepared.png, 'base64'),
       baselineHash = hash(nativeBytes);
@@ -288,7 +311,10 @@ try {
             },
           )
         : mode === 'shared'
-          ? await session.page.evaluate(() => globalThis.__typeStudy.shared())
+          ? await session.page.evaluate(
+              (trials) => globalThis.__typeStudy.shared(trials),
+              customTrials,
+            )
           : undefined;
     let nativeTrial;
     if (mode === 'details' || filter === '@native-count') {

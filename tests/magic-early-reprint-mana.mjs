@@ -105,19 +105,7 @@ try {
       symbolStyle: 'original',
     }),
   );
-  for (const setCode of [
-    'lea',
-    'leb',
-    '2ed',
-    '3ed',
-    'arn',
-    'atq',
-    'leg',
-    'drk',
-    'ice',
-    '8ed',
-    'm21',
-  ])
+  for (const setCode of ['lea', 'leb', '3ed', 'arn', 'atq', 'leg', 'drk', 'ice', '8ed', 'm21'])
     assert.equal(
       earlyReprintManaInk({
         name: 'Other printing',

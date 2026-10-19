@@ -123,7 +123,7 @@ try {
   const { retroFrameAsset, retroAssets } = await server.ssrLoadModule(
     '/games/magic/src/presentation/retro-frame.ts',
   );
-  const { calibratedFrameMaterials } = await server.ssrLoadModule(
+  const { calibratedFrameMaterials, calibratedPrintingStock } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
   const { titleTranslation } = await server.ssrLoadModule(
@@ -224,13 +224,32 @@ try {
           colorCalibration: 'set-hsb-v1',
         });
         for (const { outerStock, outerStockMaskSource, ...pigment } of Object.values(calibrated)) {
-          assert.deepEqual(
-            pigment,
-            { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-            'Do not inherit neutral-land HSB on a different colored source',
-          );
-          assert.deepEqual(outerStock, [27 / 255, 27 / 255, 27 / 255]);
-          assert.ok(outerStockMaskSource.endsWith('/old/abu/border.svg'));
+          if (set !== '2ed')
+            assert.deepEqual(
+              pigment,
+              { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
+              'Do not inherit neutral-land HSB on a different colored source',
+            );
+          if (set === '2ed') {
+            assert.equal(
+              outerStock,
+              undefined,
+              'White stock is painted through the shared source mask',
+            );
+            assert.equal(outerStockMaskSource, undefined);
+            const stock = calibratedPrintingStock({
+              ...original.face,
+              colorCalibration: 'set-hsb-v1',
+            });
+            assert.match(stock, /^#[0-9a-f]{6}$/i);
+            assert.ok(
+              [1, 3, 5].every((i) => parseInt(stock.slice(i, i + 2), 16) >= 200),
+              'Unlimited retains light outer stock',
+            );
+          } else {
+            assert.deepEqual(outerStock, [27 / 255, 27 / 255, 27 / 255]);
+            assert.ok(outerStockMaskSource.endsWith('/old/abu/border.svg'));
+          }
         }
       } else assert.equal(retroDualFrame(original.face), undefined);
       count++;

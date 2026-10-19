@@ -6,10 +6,34 @@ import { readJson, writeJson, root, hash, sourceHash } from './common.mjs';
 import { cachedFetch } from './cache.mjs';
 import { openBrowser } from './browser.mjs';
 import { normalizedReference } from './abu-reference-cache.mjs';
-const [inputFile, posesDirectory, output, selectedRoles = 'title,type'] = process.argv.slice(2);
+import { typographyReplayTransform } from './abu-type-replay-hooks.mjs';
+const [inputFile, posesDirectory, output, selectedRoles = 'title,type', placementsFile] =
+  process.argv.slice(2);
 if (!output) throw Error('Usage: abu-heading-ink.mjs INPUTS POSES OUT');
 const input = await readJson(inputFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json'));
+const placements = placementsFile ? await readJson(placementsFile) : {};
+const allowedRoles = ['title', 'type', 'artist', 'stats'];
+assert.ok(selectedRoles.split(',').every((role) => allowedRoles.includes(role)));
+for (const [role, value] of Object.entries(placements)) {
+  assert.ok(allowedRoles.includes(role));
+  assert.ok(value && typeof value === 'object' && !Array.isArray(value));
+  for (const [key, number] of Object.entries(value))
+    assert.ok(
+      ['dx', 'dy', 'size', 'width'].includes(key) &&
+        Number.isFinite(number) &&
+        Math.abs(number) <= 12,
+      'Invalid filled-ink placement: ' + role + '/' + key,
+    );
+}
+const toolHashes = await Promise.all(
+  [
+    'abu-heading-ink.mjs',
+    'abu-heading-ink-browser.mjs',
+    'abu-type-browser.mjs',
+    'abu-type-replay-hooks.mjs',
+  ].map(async (file) => [file, hash(await readFile(new URL(file, import.meta.url)))]),
+);
 assert.equal(hash(await readFile(inputFile)), poses.inputHash);
 const rendererHash = await sourceHash(path.join(root, 'games/magic/src'));
 const server = await createServer({
@@ -68,18 +92,7 @@ const session = await openBrowser(
       {
         name: 'heading-ink',
         enforce: 'pre',
-        transform(source, id) {
-          if (id.endsWith('/retro-rules.ts'))
-            return source.replace(
-              'function baseRetroTextLayout(',
-              'export function baseRetroTextLayout(',
-            );
-          if (id.endsWith('/rules-paint.ts'))
-            return source.replace(
-              '  if (!rulesInkVisible(context)) return;',
-              '  if ((globalThis as any).__abuBody?.(context,layout,images,paintSymbol,inkInsetEm,color)) return;\n  if (!rulesInkVisible(context)) return;',
-            );
-        },
+        transform: typographyReplayTransform,
         configureServer(server) {
           server.middlewares.use((req, res, next) => {
             if (req.url !== '/__type_kernel/config.json') return next();
@@ -102,11 +115,13 @@ try {
     const pose = poses.rows.find((p) => p.id === e.id),
       scan = await normalizedReference(e, pose, path.join(posesDirectory, 'rasters'));
     const result = await session.page.evaluate(
-      ({ e, scan, roles }) => globalThis.__manaStudy.measure(e, scan, roles),
+      ({ e, scan, roles, placements }) =>
+        globalThis.__manaStudy.measure(e, scan, roles, placements),
       {
         e,
         scan: 'data:image/png;base64,' + scan.bytes.toString('base64'),
         roles: selectedRoles.split(','),
+        placements,
       },
     );
     rows.push({
@@ -122,12 +137,16 @@ try {
   }
   assert.deepEqual(session.faults, []);
   assert.equal(await sourceHash(path.join(root, 'games/magic/src')), rendererHash);
+  for (const [file, digest] of toolHashes)
+    assert.equal(hash(await readFile(new URL(file, import.meta.url))), digest);
   await writeJson(output, {
     schema: 1,
     set: poses.set,
     inputHash: poses.inputHash,
     rendererHash,
     normalizationHash: hash(JSON.stringify(poses)),
+    placements,
+    toolHashes,
     scope:
       'Filled-ink observations from native text at fixed shared placements. Opaque stroke interiors are identified by black/white replay subtraction; observed reference gray is inverted through coverage. Median targets exclude clipping. These are printing-ink diagnostics, independent of edge overlap; no hollow lettering or scan repositioning is fitted.',
     rows,
