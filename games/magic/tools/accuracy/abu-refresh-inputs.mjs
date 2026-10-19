@@ -26,6 +26,7 @@ try {
     assert.equal(e.card.set, poses.set);
     const face = e.face,
       paragraphs = face.rulesParagraphs ?? [];
+    assert.equal(face.wordingMode, 'original', 'Calibration inputs must use original wording');
     const text = (role) =>
       paragraphs
         .filter((p) => p.role === role)
@@ -52,6 +53,10 @@ try {
     assert.notEqual(wording.provenance.status, 'reference-mismatch');
     assert.notEqual(artist.provenance.status, 'reference-mismatch');
     const updated = { ...face, ...wording.wordings.original, artist: artist.artist };
+    // The size/centering reference must follow reviewed wording too. Keeping
+    // old reference runs would silently fit a different passage than we paint.
+    if (face.rulesAlignment?.mode === 'auto')
+      updated.rulesAlignment = { mode: 'auto', reference: updated.rulesParagraphs };
     entries.push({
       ...e,
       face: updated,
@@ -64,7 +69,7 @@ try {
 }
 assert.equal(entries.length, poses.rows.length);
 await mkdir(path.join(outputDirectory, 'normalization'), { recursive: true });
-const output = { ...input, inputRevision: 'reviewed-abu-printing-inputs-v1', entries };
+const output = { ...input, inputRevision: 'reviewed-abu-printing-inputs-v2', entries };
 const outputFile = path.join(outputDirectory, 'inputs.json');
 await writeJson(outputFile, output);
 const reused = {

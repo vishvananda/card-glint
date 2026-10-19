@@ -7,10 +7,19 @@ import { cachedFetch } from './cache.mjs';
 import { readJson, writeJson, hash, root, sourceHash } from './common.mjs';
 import { normalizedReference } from './abu-reference-cache.mjs';
 
-const [inputsFile, posesDirectory, baselineRoot, kernelDirectory, outputDirectory, filter = ''] =
-  process.argv.slice(2);
+const [
+  inputsFile,
+  posesDirectory,
+  baselineRoot,
+  kernelDirectory,
+  outputDirectory,
+  filter = '',
+  policyJson = '{}',
+] = process.argv.slice(2);
 if (!outputDirectory)
-  throw Error('Usage: abu-type-study.mjs INPUTS POSES BASELINES WASM_KERNEL OUT [NAME_FILTER]');
+  throw Error(
+    'Usage: abu-type-study.mjs INPUTS POSES BASELINES WASM_KERNEL OUT [FILTER] [POLICY_JSON]',
+  );
 const inputs = await readJson(inputsFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json'));
 const mode =
@@ -21,11 +30,17 @@ const mode =
       : filter.startsWith('@details:')
         ? 'details'
         : 'individual';
+const policy = { policy: 'count', mediumSize: 22.5, denseWidth: 1, ...JSON.parse(policyJson) };
+assert.ok(Object.keys(policy).every((key) => ['policy', 'mediumSize', 'denseWidth'].includes(key)));
+assert.equal(policy.policy, 'count');
+assert.ok([21.5, 22, 22.5].includes(policy.mediumSize));
+assert.ok([0.98, 1].includes(policy.denseWidth));
 const rendererHash = await sourceHash(path.join(root, 'games/magic/src'));
 const studyDefinition = {
   inputHash: hash(await readFile(inputsFile)),
   normalizationHash: hash(JSON.stringify(poses)),
   mode,
+  policy,
   rendererHash,
   nativeTrials: filter === '@native-count',
   fontsHash: hash(await readFile(path.join(root, 'games/magic/fonts.css'))),
@@ -39,6 +54,9 @@ const studyDefinition = {
       'browser.mjs',
       'abu-type-objective.mjs',
       'edges.mjs',
+      'pixels-pure.mjs',
+      'scan-transform.mjs',
+      'common.mjs',
     ].map(async (file) => [file, hash(await readFile(new URL(file, import.meta.url)))]),
   ),
   kernel:
@@ -213,20 +231,17 @@ try {
     const shared =
       mode === 'count' || mode === 'details'
         ? await session.page.evaluate(
-            (selectedOnly) => globalThis.__typeStudy.countTrials(selectedOnly),
-            filter === '@native-count',
+            ({ selectedOnly, policy }) => globalThis.__typeStudy.countTrials(selectedOnly, policy),
+            { selectedOnly: filter === '@native-count', policy },
           )
         : mode === 'shared'
           ? await session.page.evaluate(() => globalThis.__typeStudy.shared())
           : undefined;
     let nativeTrial;
     if (mode === 'details' || filter === '@native-count') {
-      nativeTrial = await session.page.evaluate(() =>
-        globalThis.__typeStudy.nativeRulesTrial({
-          policy: 'count',
-          mediumSize: 22.5,
-          denseWidth: 1,
-        }),
+      nativeTrial = await session.page.evaluate(
+        (policy) => globalThis.__typeStudy.nativeRulesTrial(policy),
+        policy,
       );
       const candidateBytes = Buffer.from(nativeTrial.png, 'base64');
       nativeTrial.renderHash = hash(candidateBytes);

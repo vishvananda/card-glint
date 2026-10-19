@@ -97,6 +97,18 @@ launch per candidate. Source, asset, input and pose identities are frozen in its
 receipt. Warm normalized scan rasters are reused across wording/renderer changes;
 new scan transforms or normalizer code invalidate that cache.
 
+An optional final JSON argument selects a measured policy, for example
+`'{"denseWidth":0.98}'`. `@details:REGEX` captures selected cards with baseline,
+reference and candidate PNGs. Fractionally scaled text trials retain the full
+native canvas origin: translating a cropped canvas can change glyph antialias
+quantization even when geometry is identical. Native replay must certify this;
+do not loosen the parity threshold to accept the artifact.
+
+Refreshing original wording also refreshes its automatic sizing/centering
+reference. Birds of Paradise and Northern Paladin retained stale reference runs
+in the first refreshed input file; independent native replays confirm that
+correcting those references leaves both 0.5.3 baseline PNGs byte-identical.
+
 The scorer accepts the immutable baseline score JSON as a final optional
 argument when measuring a candidate study. An exactly unchanged native PNG can
 reuse its score only when the input manifest, reference, scan pose, complete

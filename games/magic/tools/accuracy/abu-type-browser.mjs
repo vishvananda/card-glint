@@ -109,8 +109,15 @@ export async function prepare(entry, scanUrl, roles = Object.keys(rects)) {
     if (!roles.includes(role)) continue;
     const selected = commands.filter((c) => c.role === role);
     if (!(role === 'rules' ? body : selected.length)) continue;
-    const origin = [Math.floor(rect[0] * 1.5) - 16, Math.floor(rect[1] * 1.5) - 16];
-    const out = canvas(Math.ceil(rect[2] * 1.5) + 34, Math.ceil(rect[3] * 1.5) + 34);
+    // Fractional local letter scales can quantize differently after translating
+    // a cropped canvas origin. Keep rules at the native origin so trials retain
+    // the exact native antialias phase; only the objective readback is cropped.
+    const origin =
+      role === 'rules' ? [0, 0] : [Math.floor(rect[0] * 1.5) - 16, Math.floor(rect[1] * 1.5) - 16];
+    const out =
+      role === 'rules'
+        ? canvas(full.width, full.height)
+        : canvas(Math.ceil(rect[2] * 1.5) + 34, Math.ceil(rect[3] * 1.5) + 34);
     const ctx = out.getContext('2d', { willReadFrequently: true });
     ctx.imageSmoothingQuality = 'high';
     const gray = cropGray(scan, rect).gray;
@@ -350,9 +357,12 @@ export function shared() {
   );
 }
 
-export function countTrials(selectedOnly = false) {
+export function countTrials(
+  selectedOnly = false,
+  selectedPolicy = { policy: 'count', mediumSize: 22.5, denseWidth: 1 },
+) {
   const variants = selectedOnly
-    ? [{}, { policy: 'count', mediumSize: 22.5, denseWidth: 1 }]
+    ? [{}, selectedPolicy]
     : [
         {},
         ...[21.5, 22, 22.5].flatMap((mediumSize) =>
