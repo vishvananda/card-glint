@@ -37,7 +37,7 @@
     "test:coverage": "node tests/coverage.mjs && node tests/foil-windows.mjs && node tests/finish-material.mjs && node tests/host-printing.mjs",
     "test:worn": "node tests/worn.mjs && node tests/wear-motion.mjs",
     "test:optics": "node tests/optics.mjs",
-    "test:cdn-publish": "node tests/cdn-publish.mjs",
+    "test:cdn-publish": "node tests/cdn-publish.mjs && node tests/release-artifacts.mjs",
     "test:deformation": "node tests/deformation.mjs",
     "test:parallax": "node tests/parallax.mjs",
     "test:overlay-foil": "node tests/overlay-foil.mjs",

@@ -8,13 +8,18 @@ const browser = await chromium.launch({
 try {
   const page = await browser.newPage({
     viewport: { width: 390, height: 844 },
-    deviceScaleFactor: 1,
+    // Input geometry is in CSS pixels; use a small backing store on software GPUs.
+    deviceScaleFactor: 0.25,
     isMobile: true,
     hasTouch: true,
   });
   const errors = [];
   page.on('pageerror', (e) => errors.push(String(e)));
-  await page.goto(process.env.LAB_URL ?? 'http://127.0.0.1:4283/card-glint/');
+  // Select the input-only finish before the first frame, so software GPUs do
+  // not queue expensive mixed-finish draws before the gesture test begins.
+  const url = new URL(process.env.LAB_URL ?? 'http://127.0.0.1:4283/card-glint/');
+  url.searchParams.set('finish', 'regular');
+  await page.goto(url.href);
   await page.evaluate(async () => {
     await window.lab.ready;
     window.touchReleases = [];

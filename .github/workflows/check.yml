@@ -134,9 +134,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Select verified immutable release artifacts
+        id: artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: node scripts/release-artifacts.mjs release-packages
       - name: Publish immutable CDN tree
         run: node scripts/publish-cdn.mjs release-packages
       - name: Publish checked packages
+        if: steps.artifacts.outputs.published != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
