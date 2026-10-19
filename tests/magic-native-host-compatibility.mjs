@@ -1,3 +1,4 @@
+import { alphaEditorAncestry } from '../games/magic/tools/accuracy/alpha-editor-ancestry.mjs';
 import { deliveryProof } from './magic-delivery-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir, realpath, stat } from 'node:fs/promises';
@@ -272,6 +273,7 @@ async function verify() {
   const currentRoot = await realpath(root);
   const nativeDirectory = 'games/magic/src';
   const delivery = await deliveryProof();
+  const alphaEditor = await alphaEditorAncestry();
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
     (file) =>
       ![
@@ -279,6 +281,7 @@ async function verify() {
         ...Object.keys(battleSources.dependencies),
         ...Object.keys(release053.dependencies),
         ...Object.keys(abuTypography.dependencies),
+        ...alphaEditor.newModules,
         ...delivery.newModules,
         ...delivery.generatedModules,
         ...consolidation.newModules,
@@ -322,6 +325,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(alphaEditor.files, relative) ||
             Object.hasOwn(hostWorker.files, relative) ||
             Object.hasOwn(battleSources.files, relative) ||
             Object.hasOwn(abuRelease.files, relative) ||

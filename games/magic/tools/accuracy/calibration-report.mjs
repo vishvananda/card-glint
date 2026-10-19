@@ -6,6 +6,7 @@ import {
   calibrationSetStatus,
   calibrationTaskStatus,
 } from './calibration-ledger.mjs';
+import { preAlphaEditorSource } from './alpha-editor-ancestry.mjs';
 import { compatibleHostWorkerSource } from './host-worker-compatibility.mjs';
 
 function originalInputs(set, task) {
@@ -35,9 +36,13 @@ export async function calibrationReport(ledger) {
           if (!checked.has(file)) {
             try {
               const bytes = await readFile(root + '/' + file);
+              const ancestral =
+                file === 'games/magic/src/presentation/retro-paint.ts'
+                  ? await preAlphaEditorSource(file, bytes)
+                  : bytes;
               checked.set(
                 file,
-                new Set([hash(bytes), hash(await compatibleHostWorkerSource(file, bytes))]),
+                new Set([hash(bytes), hash(await compatibleHostWorkerSource(file, ancestral))]),
               );
             } catch (error) {
               if (error.code !== 'ENOENT') throw error;

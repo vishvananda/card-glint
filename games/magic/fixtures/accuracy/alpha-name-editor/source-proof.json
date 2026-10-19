@@ -1,0 +1,192 @@
+{
+  "schema": 1,
+  "baselineCommit": "aec311c397cb5355f3382b802438c6dbdd9c7a4c",
+  "scope": "Historical source ancestry only. The opt-in Alpha title adapter preserves untouched native pixels. Five corrected land outlines intentionally change; this does not relabel previous full-card or land scores as current.",
+  "files": {
+    "games/magic/src/calibration/editor-types.ts": {
+      "before": "701455700757e23b6fda528203cc57226b4cfb9e5792e851cff41a37aa79ee1f",
+      "after": "35ae2dcd016502d6531ad19001f79cb4faadc743752c5ac59172dc0e8550bd49",
+      "reverseEdits": [
+        {
+          "start": 30,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/calibration/editor.ts": {
+      "before": "acc3479d847cf7d7eb7f2879b9f95000aedd5d25a39538d4aeb4679e73063324",
+      "after": "187ac5fa026e562e28dae8e6c78be2cfc5323844edd7041882418ac20d8a1302",
+      "reverseEdits": [
+        {
+          "start": 174,
+          "count": 23,
+          "lines": []
+        },
+        {
+          "start": 100,
+          "count": 2,
+          "lines": ["  const base = setCalibrationProfile(candidate.set)!;\n"]
+        },
+        {
+          "start": 85,
+          "count": 1,
+          "lines": ["  validateProfile(buildCandidate(candidate));\n"]
+        },
+        {
+          "start": 37,
+          "count": 3,
+          "lines": [
+            "      : 'This set does not yet have a consolidated profile adapter. Existing symbol and text diagnostic tools remain available.',\n"
+          ]
+        },
+        {
+          "start": 31,
+          "count": 4,
+          "lines": [
+            "    supported: !!profile,\n",
+            "    revision: profile?.revision ?? null,\n",
+            "    controls: profile ? calibrationControls(profile) : [],\n"
+          ]
+        },
+        {
+          "start": 26,
+          "count": 2,
+          "lines": ["  const profile = setCalibrationProfile(code);\n"]
+        },
+        {
+          "start": 15,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 5,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/calibration/face-editor.ts": {
+      "before": "3dcef2523cbeefb2e3169ad2d831b8d61f5d77d390052dcba10bfc4aab04e8b8",
+      "after": "ce8b1e999e337caa48dbe60b7ae95b71b771c895181b6b948b1463a659adcde8",
+      "reverseEdits": [
+        {
+          "start": 13,
+          "count": 10,
+          "lines": [
+            "  if (!earlyReprintFrame(result)) throw Error('This printing has no set calibration adapter');\n"
+          ]
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/calibration/selection.ts": {
+      "before": "c0381e62f5062fe7dd040f08b5c6848788c617318927b2b712042e11f986c82d",
+      "after": "33dd79bc32e351cff23ede41ec369270bd77d86a96ddbd1e93acdd6a8dfdbd5b",
+      "reverseEdits": [
+        {
+          "start": 11,
+          "count": 4,
+          "lines": []
+        },
+        {
+          "start": 2,
+          "count": 2,
+          "lines": ["import { resolveSetCalibrationCandidate } from './editor.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-dual-frame.ts": {
+      "before": "0cce832c3c7dc78d8238183e22b2b97ceb145614cf8c010e41fd10825080bb13",
+      "after": "6abe354443205be63f6b7b107b3d78e1466617967135836394f9694fb7d69d06",
+      "reverseEdits": [
+        {
+          "start": 46,
+          "count": 3,
+          "lines": [
+            "        .filter(([type]) => new RegExp(`\\\\b${type}\\\\b`).test(face.typeLine ?? ''))\n"
+          ]
+        },
+        {
+          "start": 31,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-dual-material.ts": {
+      "before": "53db1772f6c3786bcc1262d1546eb95dc802796b12f3567cf43c74b2545b0157",
+      "after": "8c516fcca5a88c795c74943ef6cfe635b84ffa26ba30fe6cf5eff702a627853d",
+      "reverseEdits": [
+        {
+          "start": 53,
+          "count": 24,
+          "lines": []
+        },
+        {
+          "start": 32,
+          "count": 1,
+          "lines": ["          'abu-dual-frame-v2',\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "f2ba794c7011b65604efcff7fbcf352b4c37abd662802d0e7dc5af881d81f4b2",
+      "after": "8966899732cfe4cf7150090516db173ddbfdb51f1dbca349dbadc3d0b561fc96",
+      "reverseEdits": [
+        {
+          "start": 191,
+          "count": 2,
+          "lines": ["    !paintEarlyExpansionTitle(c, face, titleX + titleWidth)\n"]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/tools/build-set-data.mjs": {
+      "before": "a65bcf10033c8b0cd46d417c95cbeedd5a7bb968eb6836c9e2dd4550f946f5e5",
+      "after": "67cc654df8eef2a6c9c14ea1066e04e89e075e52d04acd04e967053d02c91f5e",
+      "reverseEdits": [
+        {
+          "start": 82,
+          "count": 4,
+          "lines": []
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "games/magic/src/calibration/editor-types.ts": "35ae2dcd016502d6531ad19001f79cb4faadc743752c5ac59172dc0e8550bd49",
+    "games/magic/src/calibration/editor.ts": "187ac5fa026e562e28dae8e6c78be2cfc5323844edd7041882418ac20d8a1302",
+    "games/magic/src/calibration/face-editor.ts": "ce8b1e999e337caa48dbe60b7ae95b71b771c895181b6b948b1463a659adcde8",
+    "games/magic/src/calibration/selection.ts": "33dd79bc32e351cff23ede41ec369270bd77d86a96ddbd1e93acdd6a8dfdbd5b",
+    "games/magic/src/calibration/sets/lea-title.ts": "eedf11b80db4084a556d2087a1f08f734ab4b846501665b284e2f0cfbbf8113b",
+    "games/magic/src/calibration/title-profiles.ts": "57c0a3e6cfbc8f12d1e364d7c90a16fc74bc9acef3af5d2662729ffc35f866bf",
+    "games/magic/src/presentation/abu-land-palette.ts": "29eae8492b5499269b0432af633057b9c82c0f1524214633ba82cb8382da4ac3",
+    "games/magic/src/presentation/legacy-calibrated-title.ts": "551e19bba7479c6e8ba27cdeab00eb3dc16e261d44d59d1adb99db22a1341fab",
+    "games/magic/src/presentation/retro-dual-frame.ts": "6abe354443205be63f6b7b107b3d78e1466617967135836394f9694fb7d69d06",
+    "games/magic/src/presentation/retro-dual-material.ts": "8c516fcca5a88c795c74943ef6cfe635b84ffa26ba30fe6cf5eff702a627853d",
+    "games/magic/src/presentation/retro-paint.ts": "8966899732cfe4cf7150090516db173ddbfdb51f1dbca349dbadc3d0b561fc96",
+    "games/magic/tools/build-set-data.mjs": "67cc654df8eef2a6c9c14ea1066e04e89e075e52d04acd04e967053d02c91f5e"
+  },
+  "newModules": [
+    "games/magic/src/calibration/sets/lea-title.ts",
+    "games/magic/src/calibration/title-profiles.ts",
+    "games/magic/src/presentation/abu-land-palette.ts",
+    "games/magic/src/presentation/legacy-calibrated-title.ts"
+  ],
+  "nativeEvidence": "games/magic/fixtures/accuracy/alpha-name-editor/native-replay.json",
+  "nativeHash": "fbfee2b6a0f0f9aa63ee3c4a59778d702266bbc40014ad1f0f8224923c9efe2e"
+}

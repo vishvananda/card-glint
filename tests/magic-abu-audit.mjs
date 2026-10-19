@@ -48,10 +48,11 @@ for (const [set, total] of [
   );
   const report = reports.find((r) => r.set === set);
   assert.equal(report.inventoryReady, true);
-  assert.equal(report.complete, true, 'Released ABU set has an unfinished audit task');
+  assert.equal(report.complete, false, 'Known title/dual-outline review must remain visible');
+  assert.ok(report.byTask.frameGeometry, 'Reopened land frame task remains in the report');
   const rejected = scores.rows.filter((r) => !r.normalizationAccepted);
   assert.equal(total - rejected.length, review.sets[set].score.ranked);
 }
 console.log(
-  'ABU audit: source/evidence integrity, original wording, exhaustive replay, retained exclusions and all applicable checks pass.',
+  'ABU audit: source/evidence integrity, original wording, exhaustive replay, retained exclusions and explicit reopened calibration reviews pass.',
 );
