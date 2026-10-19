@@ -15,7 +15,17 @@ export function alphaRulesLayout(
   face: RenderedCardInput,
   original: RulesLayout | null,
 ): RulesLayout | null {
-  if (face.setCode?.toLowerCase() !== 'lea' || !original) return original;
+  if (face.setCode?.toLowerCase() !== 'lea') return original;
+  return earlyRulesModel(context, face, original);
+}
+
+/** Shared physical model exposed internally for independent transfer trials. */
+export function earlyRulesModel(
+  context: CanvasRenderingContext2D,
+  face: RenderedCardInput,
+  original: RulesLayout | null,
+): RulesLayout | null {
+  if (!original) return original;
   const request = rulesLayoutRequest(original);
   if (!request || !request.paragraphs.length) return original;
   const paragraphs = request.paragraphs;

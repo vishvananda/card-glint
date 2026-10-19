@@ -1,3 +1,4 @@
+import { alphaTypography } from './alpha-typography.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { legendsFrame } from './legends-frame.js';
 import { earlyExpansionTitle } from './early-expansion-title.js';
@@ -48,6 +49,8 @@ export function paintEarlyExpansionType(
  * Legends uses 36 training and 36 held-out frozen frame registrations.
  * No per-card offsets or additional horizontal stretch are applied. */
 export function retroTypePlacement(face: RenderedCardInput) {
+  const alpha = alphaTypography(face.setCode);
+  if (alpha) return alpha.type;
   const legends =
     (!face.borderColor || face.borderColor === 'black') && Boolean(legendsFrame(face));
   return {

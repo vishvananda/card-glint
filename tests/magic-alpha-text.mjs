@@ -17,7 +17,7 @@ const server = await createServer({
       async load(id) {
         if (id === virtual)
           return (await readFile('games/magic/src/presentation/retro-rules.ts', 'utf8')).replace(
-            'alphaRulesLayout(context, face, baseRetroTextLayout(context, face))',
+            'alphaTextLayout(context, face, baseRetroTextLayout(context, face))',
             'baseRetroTextLayout(context, face)',
           );
       },
@@ -26,17 +26,24 @@ const server = await createServer({
 });
 let browser;
 try {
+  const sizeReviews = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/lea/text-size-review.json'),
+  ).exceptions.filter((r) => r.set === 'lea');
   await server.listen();
   browser = await chromium.launch();
   const page = await browser.newPage();
   await page.route('https://**/*', (r) => r.abort());
   await page.goto(server.resolvedUrls.local[0]);
-  const result = await page.evaluate(async () => {
+  const result = await page.evaluate(async (sizeReviews) => {
     await import('/games/magic/src/data/eager.ts');
     const { retroTextLayout: before } = await import(
       '/games/magic/src/presentation/__alpha-text-before.ts'
     );
     const { retroTextLayout: after } = await import('/games/magic/src/presentation/retro-rules.ts');
+    const { reviewedSmallOriginal } = await import(
+      '/games/magic/src/presentation/alpha-typography.ts'
+    );
+    const { alphaRulesLayout } = await import('/games/magic/src/presentation/alpha-rules.ts');
     const canvas = document.createElement('canvas'),
       ctx = canvas.getContext('2d');
     const cases = [
@@ -114,11 +121,47 @@ try {
     };
     const left = after(ctx, face);
     if (left.lines.some((l) => l.x !== left.x)) throw Error('Explicit left alignment changed');
-    return { changed, controls, fallbacks };
-  });
+    let printedSizeCases = 0;
+    for (const review of sizeReviews) {
+      const original = {
+        name: review.name,
+        setCode: 'lea',
+        wordingMode: 'original',
+        frameStyle: 'retro',
+        typeLine: review.name === 'Mana Vault' ? 'Mono Artifact' : 'Summon Specter',
+        rulesParagraphs: review.paragraphs,
+      };
+      if (!reviewedSmallOriginal(original, review.paragraphs)) throw Error('Missing reviewed size');
+      if (after(ctx, original).size !== 15.5) throw Error('Original small face was lost');
+      const oracle = { ...original, wordingMode: 'oracle' };
+      if (reviewedSmallOriginal(oracle, review.paragraphs))
+        throw Error('Size exception leaked to Oracle');
+      if (
+        JSON.stringify(after(ctx, oracle)) !==
+        JSON.stringify(alphaRulesLayout(ctx, oracle, before(ctx, oracle)))
+      )
+        throw Error('Existing Oracle fitting changed');
+      if (reviewedSmallOriginal({ ...original, name: 'Custom card' }, review.paragraphs))
+        throw Error('Exception leaked to a custom title');
+      if (reviewedSmallOriginal(original, [{ role: 'rules', runs: [{ text: 'Draw a card.' }] }]))
+        throw Error('Exception applied to changed wording');
+      if (reviewedSmallOriginal({ ...original, setCode: '3ed' }, review.paragraphs))
+        throw Error('Exception leaked to another printing');
+      printedSizeCases++;
+    }
+    const legacy = after(ctx, {
+      ...face,
+      rulesParagraphs: undefined,
+      rulesAlignment: undefined,
+      rulesText: 'Draw three cards.',
+    });
+    if (!legacy.lines.length) throw Error('Legacy rulesText was discarded');
+    return { changed, controls, fallbacks, printedSizeCases };
+  }, sizeReviews);
   assert.ok(result.changed > 0);
   assert.equal(result.controls, 30);
   assert.ok(result.fallbacks > 0);
+  assert.equal(result.printedSizeCases, 2);
   console.log(result);
 } finally {
   await browser?.close();

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preAbuTypographySource } from './magic-abu-typography-source-guard.mjs';
 const proof = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/release-0-5-3-compatibility.json'),
 );
@@ -13,10 +14,14 @@ export async function pre053Source(file) {
       proof.evidenceHash,
     );
     for (const [name, sha] of Object.entries(proof.dependencies))
-      assert.equal(hash(await readFile(name)), sha, 'Unreviewed 0.5.3 rendering source: ' + name);
+      assert.equal(
+        hash(await preAbuTypographySource(name)),
+        sha,
+        'Unreviewed 0.5.3 rendering source: ' + name,
+      );
   })();
   await verified;
-  const bytes = await readFile(file),
+  const bytes = await preAbuTypographySource(file),
     change = proof.files[file];
   if (!change) return bytes;
   assert.equal(hash(bytes), change.after, 'Unreviewed 0.5.3 rendering integration: ' + file);

@@ -129,6 +129,14 @@ export async function prepare(entry, scanUrl, roles = Object.keys(rects)) {
       out,
       ctx,
       objective,
+      lightObjective:
+        role === 'artist'
+          ? new TextObjective(
+              Float32Array.from(gray, (v) => 255 - v),
+              rect[2],
+              rect[3],
+            )
+          : null,
       baselineGray: grayCrop(fullPixels, rect, [0, 0]),
     };
     if (config.wasm) {
@@ -250,6 +258,8 @@ function paint(role, a) {
       c.translate(command.x + (a.dx ?? 0), command.y + (a.dy ?? 0));
       c.scale(sx, 1);
       c.font = c.font.replace(/([\d.]+)px/, (_, n) => `${+n + (a.size ?? 0)}px`);
+      if (a.family)
+        c.font = c.font.replace('CardRenderer MTG MPlantin', `CardRenderer MTG ${a.family}`);
       // Preserve the separately painted dark shadow when fitting filled gray ink.
       if (a.gray !== undefined && command.properties.fillStyle !== '#17140f')
         c.fillStyle = `rgb(${a.gray},${a.gray},${a.gray})`;
@@ -326,6 +336,7 @@ export function finish() {
   const s = globalThis.__abuState;
   for (const p of Object.values(s.prepared)) {
     p.objective.free();
+    p.lightObjective?.free();
     p.out.width = p.out.height = 0;
   }
   for (const c of [s.full, s.background]) c.width = c.height = 0;
@@ -345,14 +356,36 @@ export function shared() {
       { dx: -1.5, dy: -1, size: 0.5, width: 1 },
       { dx: -2, dy: -1.5, size: 0.5, width: 1 },
     ],
-    artist: [{}, { dy: -0.5 }, { dy: -0.75 }, { dy: -1 }],
+    artist: [
+      {},
+      { dy: -0.5 },
+      { dy: -0.75 },
+      { dy: -1 },
+      ...[-1.5, 0, 1.5, 3].flatMap((size) =>
+        [-1, 0, 1].map((dy) => ({ family: 'Goudy', size, dy })),
+      ),
+    ],
     stats: [{}, { dx: 0.5 }, { dx: 1 }, { dx: 1, dy: -0.5 }],
     rules: [{}, { dy: -1 }, { dy: -2 }, { dy: -3 }, { dx: -1, dy: -2 }, { dx: 1, dy: -2 }],
   };
   return Object.fromEntries(
     Object.keys(globalThis.__abuState.prepared).map((role) => [
       role,
-      grids[role].map((adjustment) => ({ adjustment, score: measure(role, adjustment) })),
+      grids[role].map((adjustment) => {
+        const score = measure(role, adjustment),
+          p = globalThis.__abuState.prepared[role];
+        return {
+          adjustment,
+          score,
+          ...(p.lightObjective
+            ? {
+                lightScore: p.lightObjective.score(
+                  Float32Array.from(grayCrop(pixels(p.out), p.rect, p.origin), (v) => 255 - v),
+                )[0],
+              }
+            : {}),
+        };
+      }),
     ]),
   );
 }

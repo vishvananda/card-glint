@@ -1,3 +1,4 @@
+import { alphaTypography } from './alpha-typography.js';
 import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
@@ -389,7 +390,7 @@ export function paintRetroFace(
       paintTextInk(
         c,
         retroStatsText(face),
-        placement?.right ?? sx + sw / 2,
+        (placement?.right ?? sx + sw / 2) + (alphaTypography(face.setCode)?.statsDx ?? 0),
         sy + sh / 2 + (placement?.yOffset ?? 0),
         placement?.maxWidth ?? sw,
         face.textInk,
@@ -402,7 +403,8 @@ export function paintRetroFace(
       if (isRevisedLand(face) && face.artist)
         paintRevisedLandText(c, `Illus. © ${face.artist}`, 'artist', 390);
       else if (revised && face.artist) paintRevisedCredits(c, face.artist);
-      else if (face.artist && usesEarlyCredits(face)) paintEarlyCredits(c, face.artist);
+      else if (face.artist && usesEarlyCredits(face))
+        paintEarlyCredits(c, face.artist, face.setCode);
       else if (face.artist) {
         const [fx, fy, fw, fh] = retroPx(rect.footer);
         c.textAlign = 'center';

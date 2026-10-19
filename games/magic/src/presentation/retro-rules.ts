@@ -1,4 +1,4 @@
-import { alphaRulesLayout } from './alpha-rules.js';
+import { alphaTextLayout } from './early-text-tiers.js';
 import { adjustCalibrationRules } from '../calibration/rules-adjustment.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import { calibratedBodyLayout } from '../calibration/body.js';
@@ -32,7 +32,7 @@ export function retroTextLayout(context: CanvasRenderingContext2D, face: Rendere
   return adjustCalibrationRules(
     context,
     face,
-    alphaRulesLayout(context, face, baseRetroTextLayout(context, face)),
+    alphaTextLayout(context, face, baseRetroTextLayout(context, face)),
   );
 }
 function baseRetroTextLayout(context: CanvasRenderingContext2D, face: RenderedCardInput) {

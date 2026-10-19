@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "sets": ["lea", "leb"],
-  "status": "diagnostic; no font-size exception or shared model promoted",
+  "status": "Alpha shared count/wrap model and two content-matched small-text reviews integrated; full native replay certified. Beta transfer remains a trial.",
   "scope": "Original-printing text size. Historical manual typesetting remains an inference, not an established fact.",
   "developmentTierClassification": {
     "set": "lea",
@@ -23,7 +23,7 @@
     "largeMaxMeasuredLines": 5,
     "largeFitWidthCanonicalPx": 340,
     "mediumMaxCharacters": 274,
-    "scope": "Raw original-text count plus measured wrapping; empirical candidate only."
+    "scope": "Alpha original-wording default, validated on all 295 native renders; empirical policy, not a universal historical typesetting rule."
   },
   "exceptions": [
     {
@@ -35,7 +35,19 @@
         "sha256": "66eb644bfc9a4987437f097cb990083b873b7af6f9707482ae34d9de6d407773"
       },
       "review": "Small printed face. Alpha and Beta have the same rules/flavor line breaks.",
-      "runtimeLayoutOverride": false
+      "runtimeLayoutOverride": true,
+      "paragraphs": [
+        {
+          "role": "rules",
+          "runs": [
+            {
+              "text": "Tap to add 3 colorless mana to your mana pool. Mana Vault doesn't untap normally during untap phase; to untap it, you must pay 4 mana. If Mana Vault remains tapped during upkeep it does 1 damage to you. Tapping this artifact can be played as an interrupt.",
+              "italic": false
+            }
+          ]
+        }
+      ],
+      "runtimeLayoutScope": "Exact original-content size tier only; no per-card positioning. Beta production activation remains pending transfer review."
     },
     {
       "set": "lea",
@@ -46,7 +58,46 @@
         "sha256": "f5137fc2eb1bc72c020326cd2aa2063a41b24d5ae626b2eb759c4d09bcd3c461"
       },
       "review": "Small printed face. Alpha and Beta have the same rules/flavor line breaks.",
-      "runtimeLayoutOverride": false
+      "runtimeLayoutOverride": true,
+      "paragraphs": [
+        {
+          "role": "rules",
+          "runs": [
+            {
+              "text": "Flying",
+              "italic": false
+            }
+          ]
+        },
+        {
+          "role": "rules",
+          "runs": [
+            {
+              "text": "An opponent damaged by Specter must discard a card at random from his or her hand. Ignore this effect if opponent has no cards left in hand.",
+              "italic": false
+            }
+          ]
+        },
+        {
+          "role": "flavor",
+          "runs": [
+            {
+              "text": "\"...There was no trace/ Of aught on that illumined face...\"",
+              "italic": true
+            }
+          ]
+        },
+        {
+          "role": "flavor",
+          "runs": [
+            {
+              "text": "\u2014Samuel Coleridge, \"Phantom\"",
+              "italic": true
+            }
+          ]
+        }
+      ],
+      "runtimeLayoutScope": "Exact original-content size tier only; no per-card positioning. Beta production activation remains pending transfer review."
     },
     {
       "set": "leb",
@@ -57,7 +108,8 @@
         "sha256": "41354ee0130dac23d847db8707dc092ebd77aedcffad99a80d288635fbee3074"
       },
       "review": "Small printed face. Alpha and Beta have the same rules/flavor line breaks.",
-      "runtimeLayoutOverride": false
+      "runtimeLayoutOverride": true,
+      "runtimeLayoutScope": "Exact original-content size tier only; no per-card positioning. Beta production activation remains pending transfer review."
     },
     {
       "set": "leb",
@@ -68,7 +120,8 @@
         "sha256": "02fd4222a4dd0970eaa593a2d0afffe1c44034d763a3dcd016032ff83dd7da00"
       },
       "review": "Small printed face. Alpha and Beta have the same rules/flavor line breaks.",
-      "runtimeLayoutOverride": false
+      "runtimeLayoutOverride": true,
+      "runtimeLayoutScope": "Exact original-content size tier only; no per-card positioning. Beta production activation remains pending transfer review."
     }
   ],
   "findings": [

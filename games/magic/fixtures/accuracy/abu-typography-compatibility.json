@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "baselineCommit": "57ca1ee",
+  "evidence": "lea/typography-integration.json",
+  "evidenceHash": "9848df00703628fb4cc4cbf26e8b993ae9157e1e5b34a670b4e2bb00caa2b306",
+  "dependencies": {
+    "games/magic/src/presentation/alpha-typography.ts": "cdacfb6f47f6d93fa705d504d8290553ea4db136d32a5eb215c8622be0da910c",
+    "games/magic/src/presentation/early-text-tiers.ts": "1cddfa1f6149773969507db272436d111fb5cef2700b1997c203e99969ea7062"
+  },
+  "files": {
+    "games/magic/src/presentation/alpha-rules.ts": {
+      "before": "36d2832e776365b2eabd0c8b1a9d2d21f81612d367f2a49a9747ccb3c5f05622",
+      "after": "00259cab80900c5f16eb0e107232de81ac4667395c9b461931f34c5a0a0caa7d",
+      "reverseEdits": [
+        {
+          "start": 17,
+          "count": 11,
+          "lines": ["  if (face.setCode?.toLowerCase() !== 'lea' || !original) return original;\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-rules.ts": {
+      "before": "0977d8e8c894256f5a1e5f5c05a791bd405b0f2fb249af054a6de3b7bb5087ff",
+      "after": "e3f6761c172772b9ec86fabb3d03568fe356f3995da61b63d12a6e5f997e945c",
+      "reverseEdits": [
+        {
+          "start": 34,
+          "count": 1,
+          "lines": ["    alphaRulesLayout(context, face, baseRetroTextLayout(context, face)),\n"]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": ["import { alphaRulesLayout } from './alpha-rules.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "36b32e75904236948e1bf72fbbe2bfdfddd180d955feec07194bc9f205976918",
+      "after": "64271e04e35d3b5086b77af0569ff8a482daf012c2dc260b5934a4d6979ddf18",
+      "reverseEdits": [
+        {
+          "start": 405,
+          "count": 2,
+          "lines": [
+            "      else if (face.artist && usesEarlyCredits(face)) paintEarlyCredits(c, face.artist);\n"
+          ]
+        },
+        {
+          "start": 392,
+          "count": 1,
+          "lines": ["        placement?.right ?? sx + sw / 2,\n"]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-type.ts": {
+      "before": "1f67b5ac7c47442d324749b8ba46283a9aeb4573c22c75ff988077fc8f12200f",
+      "after": "4c2a3ed94c4edf1234aef931c82cc44c28b988003971c0c9e9d121a9f4fc98e1",
+      "reverseEdits": [
+        {
+          "start": 51,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-credits.ts": {
+      "before": "c4229c72e2f3b0d2004f7e9fb876fe1238c4e473b0dbde4768e0756b39bc1715",
+      "after": "60a1d6123676f0ef3b2942ba0a80f1042f8643c9c654f163eb5f5d5982f52a84",
+      "reverseEdits": [
+        {
+          "start": 18,
+          "count": 8,
+          "lines": ["  paintRetroGrayText(c, `Illus. © ${artist}`, 49, 631, 338, 1.25);\n"]
+        },
+        {
+          "start": 9,
+          "count": 5,
+          "lines": [
+            "export function paintEarlyCredits(c: CanvasRenderingContext2D, artist: string) {\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    }
+  }
+}

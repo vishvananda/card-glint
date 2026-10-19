@@ -58,12 +58,17 @@ for (const e of inputs.entries)
       e.material,
       await readJson(path.join(baselineRoot, e.material, 'observations.json')),
     );
+const labels = [
+  ...new Set([...manifests.values()].map((m) => m.baseline.variant ?? m.baseline.version)),
+];
+assert.equal(labels.length, 1, 'Mixed native capture variants');
+const captureLabel = labels[0];
 await mkdir(path.dirname(output), { recursive: true });
 for (const e of inputs.entries) {
   const pose = poses.rows.find((r) => r.id === e.id);
   assert.equal(pose.referenceHash, e.reference.sha256);
   const manifest = manifests.get(e.material);
-  assert.equal(manifest.baseline.version, '0.5.3');
+  assert.match(manifest.baseline.version, /^\d+\.\d+\.\d+$/);
   const native = manifest.records.find((r) => r.id === e.id);
   assert.deepEqual(native.face, e.face);
   let baseline = await readFile(path.join(baselineRoot, e.material, native.baseline.file));
@@ -156,7 +161,9 @@ assert.deepEqual(await metricSourceGraph(scorerFile), metricGraph, 'Metric chang
 await writeJson(output, {
   schema: 1,
   set: poses.set,
-  baseline: candidateStudy ? '0.5.3 with experimental shared text-tier model' : '0.5.3',
+  baseline: candidateStudy
+    ? `${captureLabel} with experimental shared text-tier model`
+    : captureLabel,
   ...(candidateStudy ? { candidateStudyHash: candidateStudy.studyHash } : {}),
   inputHash: poses.inputHash,
   normalizationHash: hash(JSON.stringify(poses)),
@@ -164,7 +171,7 @@ await writeJson(output, {
   metricGraph,
   ...(reusableScoresFile ? { reusableScoresHash: hash(await readFile(reusableScoresFile)) } : {}),
   scope:
-    'Full native 0.5.3 replay using original-wording inputs' +
+    `Full native ${captureLabel} replay using original-wording inputs` +
     (candidateStudy ? ' and a rules-only experimental shared text-tier model' : '') +
     '. Scan-only profiles; two-stage canonical then affine resampling with untouched raster certification. Rejected poses remain diagnostic. Experimental replacement frame assets are excluded.',
   summary,

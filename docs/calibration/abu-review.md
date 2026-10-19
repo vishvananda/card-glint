@@ -116,3 +116,51 @@ local metric dependency graph and runtime identity also match. Changed pixels
 are rescored. The output records the source score-file hash and reused row
 count. Imported policy/helper edits invalidate reuse even when the metric
 entry file itself is unchanged.
+
+## Alpha native integration
+
+The original-wording default now uses the measured count/wrap tiers, with
+content-matched small-face reviews for Mana Vault and Hypnotic Specter. Oracle
+wording retains its established layout. Dense text uses 0.98 horizontal scale
+and a block-center correction after wrapping; the full native replay agrees
+exactly with all 295 independently measured body proposals. Shared type-line,
+illustrator-baseline and P/T placement changes are limited to Alpha.
+
+The paired whole-card structural index improves from **66.04 to 67.29/100** on
+the same 292 accepted scans. Type lines improve from 59.00 to 65.86, rules from
+64.88 to 66.15, and P/T from 61.87 to 67.66. Credits improve from 63.93 to 66.56
+but remain diagnostic and excluded from the aggregate. Artist font trials retain
+MPlantin: Goudy trials lose roughly ten points under both light- and dark-ink
+objectives. Title, mana, frame, art and silhouette pixels are unchanged.
+
+All 295 captures pass region isolation. Seventy original/Oracle controls across
+Beta, Unlimited, Revised, Fourth and Seventh remain byte-identical. This proves
+compatibility of those controls, not completion of those sets. Normalization
+still rejects Deathlace, Pestilence and Nether Shadow; their native renders
+remain in the inventory. Wall of Brambles' mixed quotation indentation and the
+existing frame/secondary-border geometry remain review items. No reconstructed
+frames are included in the production changes.
+
+The committed [paired report](../../games/magic/fixtures/accuracy/lea/typography-score-delta.json)
+contains every card, material and reused-development cohort. Its native receipt
+checks each before/after PNG and unchanged scan pose, and records the full metric
+dependency graph. Two refreshed sizing-reference fields changed input metadata;
+independent native controls show their baseline PNGs are byte-identical. A
+separate manifest-equivalence receipt proves that regenerated source-identity
+metadata changed no executable renderer code after capture.
+
+Historical delivery tests use the frozen compressed printing-review catalog
+from their original release. Current generated tables still validate against the
+current catalog; intentional wording corrections must not rewrite old evidence.
+
+```sh
+node games/magic/tools/accuracy/abu-native-capture.mjs \
+  REVIEWED/inputs.json NATIVE BASELINES BODY_EXPECTATIONS.json
+node games/magic/tools/accuracy/abu-score-delta.mjs \
+  BEFORE.json AFTER.json NATIVE_PROOF.json DELTA.json
+```
+
+The native capture resumes only with identical inputs, assets, fonts, renderer
+and expectation hashes. The delta report rejects changed scan poses, scoring
+graphs, eligibility or mismatched native receipts. Keep local raster paths in
+private study inputs; commit only content hashes and reproducible evidence.

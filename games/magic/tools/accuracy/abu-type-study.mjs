@@ -23,7 +23,7 @@ if (!outputDirectory)
 const inputs = await readJson(inputsFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json'));
 const mode =
-  filter === '@shared'
+  filter === '@shared' || filter.startsWith('@headers:')
     ? 'shared'
     : filter === '@count' || filter === '@native-count'
       ? 'count'
@@ -31,10 +31,15 @@ const mode =
         ? 'details'
         : 'individual';
 const policy = { policy: 'count', mediumSize: 22.5, denseWidth: 1, ...JSON.parse(policyJson) };
-assert.ok(Object.keys(policy).every((key) => ['policy', 'mediumSize', 'denseWidth'].includes(key)));
+assert.ok(
+  Object.keys(policy).every((key) =>
+    ['policy', 'mediumSize', 'denseWidth', 'forceSmall'].includes(key),
+  ),
+);
 assert.equal(policy.policy, 'count');
 assert.ok([21.5, 22, 22.5].includes(policy.mediumSize));
 assert.ok([0.98, 1].includes(policy.denseWidth));
+assert.ok(policy.forceSmall === undefined || typeof policy.forceSmall === 'boolean');
 const rendererHash = await sourceHash(path.join(root, 'games/magic/src'));
 const studyDefinition = {
   inputHash: hash(await readFile(inputsFile)),
@@ -84,9 +89,11 @@ const { RETRO_FONT, RETRO_SYMBOL_FONT } = await ssr.ssrLoadModule(
   '/games/magic/src/presentation/retro-frame.ts',
 );
 const entries = inputs.entries.filter((e) =>
-  mode === 'details'
-    ? new RegExp(filter.slice('@details:'.length), 'i').test(e.card.name)
-    : mode !== 'individual' || e.card.name.toLowerCase().includes(filter.toLowerCase()),
+  filter.startsWith('@headers:')
+    ? new RegExp(filter.slice('@headers:'.length), 'i').test(e.card.name)
+    : mode === 'details'
+      ? new RegExp(filter.slice('@details:'.length), 'i').test(e.card.name)
+      : mode !== 'individual' || e.card.name.toLowerCase().includes(filter.toLowerCase()),
 );
 const fonts = [
   ...new Set(
