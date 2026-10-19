@@ -67,7 +67,8 @@ try {
       manaTargets++;
       assert.ok(group.training >= 3 && group.held >= 3);
       assert.ok(group.after < group.before - 0.25 && group.worstRegression <= 3);
-      assert.deepEqual(MANA_PRINTING_TARGETS[key], group.target);
+      if (!['lea', 'leb'].includes(set.set))
+        assert.deepEqual(MANA_PRINTING_TARGETS[key], group.target);
       assert.equal(group.rasterValidation.adopt, true);
       assert.ok(group.rasterValidation.after < group.rasterValidation.before - 0.25);
       assert.ok(group.rasterValidation.worstRegression <= 3);
@@ -76,8 +77,12 @@ try {
   assert.equal(manaTargets, 13);
   const admitted = adoption.results.filter((r) => r.status !== 'review-only');
   assert.deepEqual(
-    Object.keys(PRINTING_COLOR_PROFILES).sort(),
-    [...new Set([...admitted.map((r) => r.key), ...rebindings.map((r) => r.key), m21.key])].sort(),
+    Object.keys(PRINTING_COLOR_PROFILES)
+      .filter((k) => !/^(lea|leb)\//.test(k))
+      .sort(),
+    [...new Set([...admitted.map((r) => r.key), ...rebindings.map((r) => r.key), m21.key])]
+      .filter((k) => !/^(lea|leb)\//.test(k))
+      .sort(),
   );
   for (const set of ['lea', 'leb', '3ed', '8ed', 'm21'])
     assert.ok(

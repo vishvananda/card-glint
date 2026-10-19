@@ -117,10 +117,15 @@ try {
   const materials = JSON.parse(
     await readFile('games/magic/fixtures/accuracy/beta-mana-materials.json'),
   );
+  const { MANA_PRINTING_TARGETS } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/mana-printing-profiles.ts',
+  );
   for (const row of materials.groups) {
+    // Routing uses the later full-set audit; retain the historical measurements
+    // as historical evidence rather than relabeling them with new RGB values.
     assert.deepEqual(
       calibratedManaTarget(beta, row.color),
-      row.candidateRgb.map((v) => v / 255),
+      MANA_PRINTING_TARGETS['leb-black-' + row.color],
     );
     assert.equal(
       calibratedManaTarget({ ...beta, colorCalibration: undefined }, row.color),
