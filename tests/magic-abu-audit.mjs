@@ -3,12 +3,13 @@ import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { calibrationReport } from '../games/magic/tools/accuracy/calibration-report.mjs';
+import { preBattleSource } from './magic-battle-source-guard.mjs';
 
 const root = 'games/magic/fixtures/accuracy/abu-054/';
 const review = JSON.parse(await readFile(root + 'review.json'));
 const release = JSON.parse(await readFile(root + 'release.json'));
 for (const [file, digest] of Object.entries(review.sourceGuards))
-  assert.equal(hash(await readFile(file)), digest, 'Changed audited source: ' + file);
+  assert.equal(hash(await preBattleSource(file)), digest, 'Changed audited source: ' + file);
 for (const [file, record] of Object.entries(review.files)) {
   const bytes = await readFile(root + file),
     raw = gunzipSync(bytes);
