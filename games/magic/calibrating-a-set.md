@@ -217,3 +217,12 @@ a detached, revision-incremented profile for a single-file contribution.
 Candidates never change global defaults. Keep original wording and scan poses
 fixed; fitting/validation cohorts, proposal storage and release approval belong
 to the host. An empty candidate preserves the released printing policy.
+
+LEA currently has a **name-only** adapter (`description.adapter === 'title'`).
+It exposes horizontal/vertical deltas, font size, horizontal scale, filled gray
+ink and shadow. The existing frame, type, rules and footer painters remain
+authoritative. Unsupported groups are deliberately unavailable rather than
+substituting another set's layout. Export an evaluated name proposal with
+`exportSetTitleCalibration(candidate)` into `calibration/sets/lea-title.ts`.
+Do not use `exportSetCalibrationProfile` for a title-only description. Empty
+proposals preserve the native pixels, including the original filled lettering.
