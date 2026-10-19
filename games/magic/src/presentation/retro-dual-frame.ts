@@ -1,6 +1,7 @@
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
+import { abuLandOutlineColor } from './abu-land-palette.js';
 
 /** ABU uses concentric bands, not a modern split-color gradient. Retain the
  * palette separately from the visible original type line, which is just Land.
@@ -28,6 +29,7 @@ export function retroDualFrame(face: RenderedCardInput) {
     base: `${root}${bands[0]!.toLowerCase()}l.png`,
     overlay: `${root}${bands[1]!.toLowerCase()}l.png`,
     mask: `${manifest.CONJURER_ROOT}/img/frames/old/abu/dualLand.png`,
+    outline: `${root}${abuLandOutlineColor(colors)!.toLowerCase()}l.png`,
   };
 }
 
@@ -42,6 +44,8 @@ export function retroLandColors(face: RenderedCardInput): string[] {
         ['Mountain', 'R'],
         ['Forest', 'G'],
       ]
-        .filter(([type]) => new RegExp(`\\b${type}\\b`).test(face.typeLine ?? ''))
+        .filter(([type]) =>
+          new RegExp(`\b${type}\b`).test(face.canonicalTypeLine ?? face.typeLine ?? ''),
+        )
         .map(([, color]) => color!);
 }

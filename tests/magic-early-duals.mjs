@@ -117,7 +117,7 @@ try {
     { layout: 'split' },
   ])
     assert.equal(printingManaAdjustment({ ...eighth, ...extra }), undefined);
-  const { retroDualFrame } = await server.ssrLoadModule(
+  const { retroDualFrame, retroLandColors } = await server.ssrLoadModule(
     '/games/magic/src/presentation/retro-dual-frame.ts',
   );
   const { retroFrameAsset, retroAssets } = await server.ssrLoadModule(
@@ -216,6 +216,22 @@ try {
           'Volcanic Island': 'r',
         }[row.name];
         assert.ok(plan.overlay.endsWith(`/${printedOuterBand}l.png`), 'Printed ABU stripe order');
+        const printedOutline = {
+          Badlands: 'b',
+          Bayou: 'b',
+          Plateau: 'w',
+          Savannah: 'w',
+          Scrubland: 'w',
+          Taiga: 'g',
+          'Tropical Island': 'u',
+          Tundra: 'u',
+          'Underground Sea': 'b',
+          'Volcanic Island': 'r',
+        }[row.name];
+        assert.ok(
+          plan.outline.endsWith(`/${printedOutline}l.png`),
+          'The full-frame outline is independent of paper-stripe ordering',
+        );
         assert.deepEqual(plan, retroDualFrame(oracle.face));
         assert.equal(retroFrameAsset(original.face), plan.base);
         assert.ok(Object.values(plan).every((url) => retroAssets(original.face).includes(url)));
@@ -237,6 +253,21 @@ try {
     }
   }
   assert.equal(count, 98);
+  for (const [name, color] of Object.entries(basics)) {
+    const face = {
+      name,
+      setCode: 'lea',
+      typeLine: 'Land',
+      canonicalTypeLine: `Basic Land — ${name}`,
+    };
+    assert.deepEqual(retroLandColors(face), [color]);
+    assert.ok(retroFrameAsset(face).endsWith(`/${color.toLowerCase()}l.png`));
+    assert.deepEqual(retroLandColors({ ...face, frameColors: [] }), []);
+  }
+  assert.deepEqual(retroLandColors({ name: 'Tundra', typeLine: 'Land — Plains Island' }), [
+    'W',
+    'U',
+  ]);
   const { framePlate, framePlateUrls } = await server.ssrLoadModule(
     '/games/magic/src/presentation/frame-plates.ts',
   );
