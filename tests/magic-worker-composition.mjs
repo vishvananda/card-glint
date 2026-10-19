@@ -26,10 +26,10 @@ try {
     const code = `
    import {composeCardTexture,cardTextureSize} from '${base}/games/magic/src/presentation.ts';
    const local='local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")';
-   async function fonts(){ for(const [family,style,weight] of [['Goudy','normal','400'],['Historic Symbols','normal','400'],['Beleren','normal','400 700'],['Beleren Small Caps','normal','700'],['MPlantin','normal','400'],['MPlantin','italic','400'],['Relay','normal','400'],['Artist Credit','normal','400'],['Matrix','normal','400 700']])self.fonts.add(await new FontFace('CardRenderer MTG '+family,local,{style,weight}).load()); }
+   async function fonts(){ for(const [family,style,weight] of [['Goudy','normal','400'],['Historic Symbols','normal','400'],['Beleren','normal','400 700'],['Beleren Small Caps','normal','700'],['MPlantin','normal','400'],['MPlantin','italic','400'],['Relay','normal','400'],['Artist Credit','normal','400'],['Matrix','normal','400 700'],['ModMatrix','normal','400 700']])self.fonts.add(await new FontFace('CardRenderer MTG '+family,local,{style,weight}).load()); }
    let fontReady;const loadFonts=()=>fontReady??=fonts();
    async function images(urls,signal){signal.throwIfAborted();const c=new OffscreenCanvas(64,64),ctx=c.getContext('2d');ctx.fillStyle='#76847c';ctx.fillRect(0,0,64,64);ctx.fillStyle='#b0a090';ctx.fillRect(0,0,64,32);const b=c.transferToImageBitmap();return{images:new Map(urls.filter(Boolean).map(u=>[u,b])),dispose(){b.close();c.width=c.height=0;}};}
-   self.onmessage=async({data})=>{try{if(typeof document!=='undefined')throw Error('Worker unexpectedly has document');const controller=new AbortController();let disposed=false;const input={printingId:null,printedImage:null,face:{name:'Worker Adept',typeLine:'Creature',colors:['U'],rulesText:'Draw a card.',illustration:'fixture-art',setCode:'m21',power:'1',toughness:'2',...(data.retro?{frameStyle:'retro'}:{})},...(data.custom?{custom:{key:'worker-custom',artBounds:[0,0,1,1],async compose(tier,signal,layer){const [w,h]=cardTextureSize(tier),c=new OffscreenCanvas(w,h),ctx=c.getContext('2d');ctx.fillStyle=layer==='etching'?'#fff':'#c04020';ctx.fillRect(0,0,w,h/2);return c;}}}:{})};if(data.aborted)controller.abort();const image=await composeCardTexture({...input,layer:data.layer},data.tier,controller.signal,{loadImages:images,loadFonts,loadRetroFont:loadFonts,resolveEtching:async()=> 'fixture-mask',output:data.output});if(data.output==='r8'){self.postMessage({ok:true,map:image},[image.data.buffer]);return;}if(!(image instanceof ImageBitmap))throw Error('Worker did not return transferable ImageBitmap');self.postMessage({ok:true,image},[image]);}catch(e){self.postMessage({ok:false,name:e.name,error:e.message});}};
+   self.onmessage=async({data})=>{try{if(typeof document!=='undefined')throw Error('Worker unexpectedly has document');const controller=new AbortController();let disposed=false;const input={printingId:null,printedImage:null,face:{name:'Worker Adept',typeLine:'Creature',colors:['U'],rulesText:'Draw a card.',illustration:'fixture-art',setCode:'m21',power:'1',toughness:'2',...(data.retro?{frameStyle:'retro'}:{}),...(data.battle?{frameTemplate:'battle',defense:'0',reverseStats:{power:'3',toughness:'4'}}:{})},...(data.custom?{custom:{key:'worker-custom',artBounds:[0,0,1,1],async compose(tier,signal,layer){const [w,h]=cardTextureSize(tier),c=new OffscreenCanvas(w,h),ctx=c.getContext('2d');ctx.fillStyle=layer==='etching'?'#fff':'#c04020';ctx.fillRect(0,0,w,h/2);return c;}}}:{})};if(data.aborted)controller.abort();const image=await composeCardTexture({...input,layer:data.layer},data.tier,controller.signal,{loadImages:images,loadFonts,loadRetroFont:loadFonts,resolveEtching:async()=> 'fixture-mask',output:data.output});if(data.output==='r8'){self.postMessage({ok:true,map:image},[image.data.buffer]);return;}if(!(image instanceof ImageBitmap))throw Error('Worker did not return transferable ImageBitmap');self.postMessage({ok:true,image},[image]);}catch(e){self.postMessage({ok:false,name:e.name,error:e.message});}};
   `;
     const workerUrl = URL.createObjectURL(new Blob([code], { type: 'text/javascript' })),
       worker = new Worker(workerUrl, { type: 'module' }),
@@ -48,6 +48,7 @@ try {
         { tier: 0 },
         { tier: 128, custom: true, layer: 'etching', output: 'r8' },
         { tier: 128, output: 'r8' },
+        { tier: 'native', battle: true },
       ]) {
         const r = await new Promise((resolve, reject) => {
           worker.onmessage = (e) => resolve(e.data);
@@ -112,6 +113,7 @@ try {
   assert.equal(result[10].first, 0);
   assert.equal(result[10].last, 255);
   assert.equal(result[11].ok, false);
+  assert.equal(result[12].ok, true, JSON.stringify(result[12]));
   console.log(JSON.stringify(result));
 } finally {
   await browser?.close();

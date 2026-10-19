@@ -6,6 +6,7 @@ import {
   calibrationSetStatus,
   calibrationTaskStatus,
 } from './calibration-ledger.mjs';
+import { compatibleHostWorkerSource } from './host-worker-compatibility.mjs';
 
 function originalInputs(set, task) {
   return set.groups.reduce(
@@ -33,13 +34,17 @@ export async function calibrationReport(ledger) {
           assert.ok(!file.startsWith('/') && !file.split('/').includes('..'));
           if (!checked.has(file)) {
             try {
-              checked.set(file, hash(await readFile(root + '/' + file)));
+              const bytes = await readFile(root + '/' + file);
+              checked.set(
+                file,
+                new Set([hash(bytes), hash(await compatibleHostWorkerSource(file, bytes))]),
+              );
             } catch (error) {
               if (error.code !== 'ENOENT') throw error;
               checked.set(file, null);
             }
           }
-          if (checked.get(file) !== expected) {
+          if (!checked.get(file)?.has(expected)) {
             item.status = 'stale';
             item.reason = 'Changed evidence dependency: ' + file;
             break;

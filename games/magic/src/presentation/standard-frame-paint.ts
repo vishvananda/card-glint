@@ -111,7 +111,7 @@ export function loadStandardTemplateFonts(face: RenderedCardInput): Promise<void
   if (!face.frameTemplate) return Promise.resolve();
   if (face.frameTemplate === 'battle') {
     if (!face.reverseStats) return Promise.resolve();
-    return (battleStatsFont ??= document.fonts
+    return (battleStatsFont ??= canvasFonts()
       .load(BATTLE_REVERSE_STATS.font)
       .then(() => undefined)
       .catch((error) => {

@@ -1,3 +1,4 @@
+import type { CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 
 /** Native 523 × 375 Battle rectangles, rotated into the physical portrait face. */
@@ -33,7 +34,7 @@ export interface BattleReverseStatsLayout {
 /** Measure the reverse creature's reminder independently of the live defense badge.
  * MSE aligns this field bottom-right without shrink-overflow. */
 export function battleReverseStatsLayout(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
 ): BattleReverseStatsLayout | null {
   if (face.frameTemplate !== 'battle' || !face.reverseStats) return null;
