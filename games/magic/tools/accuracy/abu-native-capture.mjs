@@ -8,7 +8,10 @@ import { openBrowser } from './browser.mjs';
 import { cachedFetch } from './cache.mjs';
 import { root, readJson, writeJson, hash, sourceHash } from './common.mjs';
 
-const [inputFile, outputDirectory, parentRoot, expectedFile] = process.argv.slice(2);
+const [inputFile, outputDirectory, parentRoot, expectationArgument, scope = 'typography'] =
+  process.argv.slice(2);
+assert.ok(['typography', 'whole-card'].includes(scope));
+const expectedFile = expectationArgument === '-' ? undefined : expectationArgument;
 if (!parentRoot)
   throw Error('Usage: abu-native-capture.mjs INPUTS OUT PARENT_BASELINES [BODY_EXPECTATIONS]');
 const input = await readJson(inputFile),
@@ -53,7 +56,8 @@ const definition = {
   inputHash,
   rendererHash,
   version,
-  variant: 'unreleased Alpha typography candidate',
+  variant: `unreleased ${input.entries[0].card.set.toUpperCase()} ${scope} candidate`,
+  scope,
   parentRoot: 'immutable native 0.5.3 capture; per-card hashes below',
   fontsHash: hash(fonts),
   assetsHash: hash(assetManifest),
@@ -80,13 +84,14 @@ const session = await openBrowser({ entries: input.entries, components });
 const records = new Map(),
   rows = [];
 // All measured geometry changes are confined to these printing regions.
-const allowed = [
+const typographyRegions = [
   [29, 362, 417, 42],
   [53, 410, 392, 192],
   [36, 607, 352, 39],
   // Include the full printed field: X/X reaches beyond ordinary digit widths.
   [377, 596, 87, 51],
 ];
+const allowed = scope === 'whole-card' ? [[0, 0, 488, 680]] : typographyRegions;
 const manifests = new Map();
 let prior;
 try {
@@ -96,7 +101,14 @@ try {
 }
 const completed = new Map(prior?.rows.map((r) => [r.id, r]));
 if (prior) {
-  for (const field of ['inputHash', 'rendererHash', 'fontsHash', 'assetsHash', 'expectationsHash'])
+  for (const field of [
+    'inputHash',
+    'rendererHash',
+    'fontsHash',
+    'assetsHash',
+    'expectationsHash',
+    'scope',
+  ])
     assert.equal(prior[field], definition[field], 'Stale native capture: ' + field);
   assert.deepEqual(prior.components, definition.components, 'Cached asset identity changed');
 }
@@ -162,13 +174,22 @@ try {
     const outsideBounds = [Infinity, Infinity, -Infinity, -Infinity];
     let outside = 0,
       changedPixels = 0,
-      silhouette = 0;
+      silhouette = 0,
+      artworkChanged = 0;
     for (let y = 0; y < raster.height; y++)
       for (let x = 0; x < raster.width; x++) {
         const i = (y * raster.width + x) * 4;
         if (raster.data[i + 3] !== before.data[i + 3]) silhouette++;
         if (![0, 1, 2, 3].some((k) => raster.data[i + k] !== before.data[i + k])) continue;
         changedPixels++;
+        if (
+          scope === 'whole-card' &&
+          x >= 84 * 1.5 &&
+          x < 400 * 1.5 &&
+          y >= 110 * 1.5 &&
+          y < 340 * 1.5
+        )
+          artworkChanged++;
         if (
           !allowed.some(
             ([l, t, w, h]) =>
@@ -194,6 +215,7 @@ try {
     }
     assert.equal(outside, 0, e.card.name + ': changes escaped typography at ' + outsideBounds);
     assert.equal(silhouette, 0, e.card.name + ': silhouette changed');
+    assert.equal(artworkChanged, 0, e.card.name + ': illustration changed');
     let bodyChanged = null;
     if (expected[e.id]) {
       const targetBytes = await readFile(expected[e.id].file);
@@ -224,6 +246,7 @@ try {
       outside,
       silhouette,
       bodyChanged,
+      artworkChanged,
     });
     await writeJson(path.join(outputDirectory, 'progress.json'), { ...definition, rows });
     if (rows.length % 10 === 0) console.log('native', rows.length, '/', input.entries.length);

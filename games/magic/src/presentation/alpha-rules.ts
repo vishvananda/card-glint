@@ -15,7 +15,7 @@ export function alphaRulesLayout(
   face: RenderedCardInput,
   original: RulesLayout | null,
 ): RulesLayout | null {
-  if (face.setCode?.toLowerCase() !== 'lea') return original;
+  if (!['lea', 'leb'].includes(face.setCode?.toLowerCase() ?? '')) return original;
   return earlyRulesModel(context, face, original);
 }
 

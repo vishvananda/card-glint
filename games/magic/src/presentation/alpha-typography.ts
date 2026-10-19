@@ -31,7 +31,13 @@ const placement = {
   type: { fontSize: 22.2, dx: -2, dy: -1 },
   artistBaseline: 630.25,
   statsDx: 1,
+  headingInk: '#828282',
 } as const;
 export function alphaTypography(setCode?: string | null) {
-  return setCode?.toLowerCase() === 'lea' ? placement : undefined;
+  const set = setCode?.toLowerCase();
+  return set === 'lea'
+    ? { ...placement, artistInk: '#737373', statsInk: '#787878' }
+    : set === 'leb'
+      ? { ...placement, artistInk: '#828282', statsInk: '#737373' }
+      : undefined;
 }

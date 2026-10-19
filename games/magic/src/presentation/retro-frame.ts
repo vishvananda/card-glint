@@ -10,7 +10,7 @@ import {
   type RenderedCardInput,
   type FaceRect,
 } from './face-layout.js';
-import { resolveFrameColors } from './profile.js';
+import { resolveFrameColors, resolveCardProfile } from './profile.js';
 import { faceSetSymbol } from './assets.js';
 import { faceManaAssets } from './mana-assets.js';
 import { retroDualFrame } from './retro-dual-frame.js';
@@ -123,7 +123,8 @@ export function retroFrameAsset(face: RenderedCardInput) {
   const dual = retroDualFrame(face);
   if (dual) return dual.base;
   const colors = resolveFrameColors(face),
-    type = face.typeLine ?? '';
+    type = face.canonicalTypeLine ?? face.typeLine ?? '';
+  const profile = resolveCardProfile(face);
   const landType = [
     ['Plains', 'w'],
     ['Island', 'u'],
@@ -132,16 +133,15 @@ export function retroFrameAsset(face: RenderedCardInput) {
     ['Forest', 'g'],
   ].filter(([name]) => type.includes(name!));
   const landColors = face.frameColors?.map((c) => c.toLowerCase()) ?? landType.map(([, c]) => c!);
-  const key =
-    (face.land ?? /\bLand\b/.test(type))
-      ? landColors.length === 1
-        ? landColors[0] + 'l'
-        : 'l'
-      : (face.artifact ?? /\bArtifact\b/.test(type))
-        ? 'a'
-        : colors.length > 1
-          ? 'm'
-          : (colors[0]?.toLowerCase() ?? 'c');
+  const key = profile.land
+    ? landColors.length === 1
+      ? landColors[0] + 'l'
+      : 'l'
+    : profile.artifact
+      ? 'a'
+      : colors.length > 1
+        ? 'm'
+        : (colors[0]?.toLowerCase() ?? 'c');
   const family = retroFamily(face);
   const folder =
     family === 'seventh' || key === 'c' || (family === 'abu' && key === 'm')

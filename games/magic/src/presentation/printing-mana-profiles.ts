@@ -127,11 +127,31 @@ export const PRINTING_MANA_PROFILES: Readonly<Record<string, ManaSymbolTransform
     spacing: 1.75,
     numberDy: -1,
     glyphs: {
-      W: { scale: 1.09, dx: 0, dy: 0 },
-      U: { scale: 1, dx: 0.5, dy: -1 },
-      B: { scale: 1.03, dx: 0.25, dy: -1.25 },
-      R: { scale: 1, dx: 0.5, dy: 0.5 },
-      G: { scale: 1.12, dx: 0, dy: -1 },
+      W: {
+        scale: 1.09,
+        dx: 0,
+        dy: 0,
+      },
+      U: {
+        scale: 1,
+        dx: 0.5,
+        dy: -1,
+      },
+      B: {
+        scale: 1.03,
+        dx: 0.25,
+        dy: -1.25,
+      },
+      R: {
+        scale: 1,
+        dx: 0.5,
+        dy: 0.5,
+      },
+      G: {
+        scale: 1.12,
+        dx: 0,
+        dy: -1,
+      },
     },
   },
   '8ed': {
@@ -142,11 +162,34 @@ export const PRINTING_MANA_PROFILES: Readonly<Record<string, ManaSymbolTransform
     numberDx: -0.5,
     numberDy: -1.25,
     glyphs: {
-      W: { scale: 0.98, dx: -0.5, dy: -2 },
-      U: { scale: 0.94, dx: -0.5, dy: -1.5 },
-      B: { scale: 0.97, dx: -0.25, dy: -2 },
-      R: { scale: 0.95, dx: 0, dy: -1.5 },
-      G: { scale: 1.04, dx: -0.25, dy: -3 },
+      W: {
+        scale: 0.98,
+        dx: -0.5,
+        dy: -2,
+      },
+      U: {
+        scale: 0.94,
+        dx: -0.5,
+        dy: -1.5,
+      },
+      B: {
+        scale: 0.97,
+        dx: -0.25,
+        dy: -2,
+      },
+      R: {
+        scale: 0.95,
+        dx: 0,
+        dy: -1.5,
+      },
+      G: {
+        scale: 1.04,
+        dx: -0.25,
+        dy: -3,
+      },
     },
+  },
+  lea: {
+    dy: 0.5,
   },
 };

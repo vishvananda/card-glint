@@ -132,7 +132,7 @@ export function paintRetroFace(
     if (mask) paintRetroStockBorder(c, mask, retroPx(rect.frame), stock);
   }
   // Alpha headings use solid gray ink; keep its lighter footer ink independent.
-  c.fillStyle = face.setCode?.toLowerCase() === 'lea' ? '#828282' : retroInk(face);
+  c.fillStyle = alphaTypography(face.setCode)?.headingInk ?? retroInk(face);
   c.textBaseline = 'middle';
   c.textAlign = 'left';
   c.letterSpacing = '0px';
@@ -378,7 +378,7 @@ export function paintRetroFace(
   }
   c.shadowColor = details?.statsOpaqueShadow ? '#000' : '#000b';
   if (details) c.shadowOffsetX = c.shadowOffsetY = details.statsShadow * c.getTransform().a;
-  c.fillStyle = retroInk(face);
+  c.fillStyle = alphaTypography(face.setCode)?.statsInk ?? retroInk(face);
   c.font = '27.8px "CardRenderer MTG MPlantin", Georgia';
   c.textBaseline = 'middle';
   if (face.power != null && face.toughness != null && !paintEarlyExpansionStats(c, face)) {

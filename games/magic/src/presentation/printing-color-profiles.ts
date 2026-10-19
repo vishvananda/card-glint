@@ -14,9 +14,9 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
       'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/r.png':
         {
           frame: {
-            hueDegrees: 0,
-            saturationScale: 1,
-            brightnessScale: 1,
+            hueDegrees: -4.187200187200233,
+            saturationScale: 0.8694011668194112,
+            brightnessScale: 0.9948630136986302,
           },
           paper: {
             hueDegrees: 6.19600667693885,
@@ -90,9 +90,9 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
       'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/u.png':
         {
           frame: {
-            hueDegrees: 0,
-            saturationScale: 1,
-            brightnessScale: 1,
+            hueDegrees: -14.184368264725094,
+            saturationScale: 0.8062503649777121,
+            brightnessScale: 0.9025157232704403,
           },
           paper: {
             hueDegrees: -4.361205868715615,
@@ -218,9 +218,9 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
       'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/u.png':
         {
           frame: {
-            hueDegrees: 0,
-            saturationScale: 1,
-            brightnessScale: 1,
+            hueDegrees: -13.244565374706895,
+            saturationScale: 0.8118504539381727,
+            brightnessScale: 0.9960691823899371,
           },
           paper: {
             hueDegrees: -3.8366935483870748,
@@ -271,9 +271,9 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
             brightnessScale: 1.033678756476684,
           },
           paper: {
-            hueDegrees: 0,
-            saturationScale: 1,
-            brightnessScale: 1,
+            hueDegrees: 7.777777777777828,
+            saturationScale: 0.8510204081632654,
+            brightnessScale: 1.0575539568345325,
           },
           mask: {
             kind: 'rect',
@@ -757,6 +757,34 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
           saturationScale: 0.474605353403811,
           brightnessScale: 0.8839908987957145,
           valueGamma: 0.9532541359332688,
+        },
+    },
+  },
+  'leb/black/retro/g.png': {
+    source:
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/g.png",[0,0,1,1]]',
+    materials: {
+      'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/g.png':
+        {
+          frame: {
+            hueDegrees: 9.285259809119793,
+            saturationScale: 0.9856246560264171,
+            brightnessScale: 1.085164835164835,
+          },
+          paper: {
+            hueDegrees: 10.520270270270203,
+            saturationScale: 0.8438596491228071,
+            brightnessScale: 1.0961538461538463,
+          },
+          mask: {
+            kind: 'chroma',
+            bounds: [
+              0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294,
+            ],
+            seed: [0.5, 0.7352941176470589],
+            frameRgb: [0.23529411764705882, 0.3431372549019608, 0.28823529411764703],
+            paperRgb: [0.4117647058823529, 0.2784313725490196, 0.2549019607843137],
+          },
         },
     },
   },

@@ -23,6 +23,7 @@ export function paintEarlyCredits(
     alphaTypography(setCode)?.artistBaseline ?? 631,
     338,
     1.25,
+    alphaTypography(setCode)?.artistInk,
   );
   c.restore();
 }

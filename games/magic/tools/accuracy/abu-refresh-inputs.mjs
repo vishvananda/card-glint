@@ -14,9 +14,8 @@ const server = await createServer({
   root,
   server: { middlewareMode: true, hmr: false },
 });
-const { resolvePrintingWording, resolvePrintingArtist } = await server.ssrLoadModule(
-  '/games/magic/src/index.ts',
-);
+const { resolvePrintingWording, resolvePrintingArtist, withCardWording } =
+  await server.ssrLoadModule('/games/magic/src/index.ts');
 const entries = [];
 try {
   for (const e of input.entries) {
@@ -52,7 +51,19 @@ try {
     });
     assert.notEqual(wording.provenance.status, 'reference-mismatch');
     assert.notEqual(artist.provenance.status, 'reference-mismatch');
-    const updated = { ...face, ...wording.wordings.original, artist: artist.artist };
+    const selected = { ...face, ...wording.wordings.original, artist: artist.artist };
+    const updated = withCardWording(
+      selected,
+      {
+        original: selected,
+        oracle: { typeLine: e.card.type_line, rulesText: e.card.oracle_text ?? '' },
+      },
+      'original',
+      {
+        rulesAlignment: face.rulesAlignment?.mode === 'left' ? 'left' : 'original',
+        symbolStyle: face.symbolStyle ?? 'original',
+      },
+    );
     // The size/centering reference must follow reviewed wording too. Keeping
     // old reference runs would silently fit a different passage than we paint.
     if (face.rulesAlignment?.mode === 'auto')

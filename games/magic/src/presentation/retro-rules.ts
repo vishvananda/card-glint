@@ -76,7 +76,9 @@ function baseRetroTextLayout(context: CanvasRenderingContext2D, face: RenderedCa
   // Oracle reminders need a safe panel inset. Dense original Alpha printings
   // have tighter margins; the original-comparison path retains their placement.
   const verticalLimits =
-    set === 'lea' && face.wordingMode === 'oracle' ? ([428, 590] as const) : undefined;
+    ['lea', 'leb'].includes(set ?? '') && face.wordingMode === 'oracle'
+      ? ([428, 590] as const)
+      : undefined;
   const early = ['lea', 'leb', '2ed'].includes(set ?? '');
   const revisedStyle = early || (set === '3ed' && retroFamily(face) === 'fourth');
   if (revisedStyle && !forcedLeft) {

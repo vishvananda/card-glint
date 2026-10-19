@@ -23,7 +23,7 @@ export function alphaTextLayout(
   face: RenderedCardInput,
   base: RulesLayout | null,
 ): RulesLayout | null {
-  if (face.setCode?.toLowerCase() !== 'lea' || !base) return base;
+  if (!['lea', 'leb'].includes(face.setCode?.toLowerCase() ?? '') || !base) return base;
   if (face.wordingMode === 'oracle') return alphaRulesLayout(context, face, base);
   return earlyTextTierLayout(context, face, base);
 }

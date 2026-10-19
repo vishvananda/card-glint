@@ -56,7 +56,8 @@ export interface CardProfile {
 export function resolveCardProfile(input: CardProfileInput): CardProfile {
   const typeLine = input.canonicalTypeLine ?? input.typeLine ?? '';
   const artifact = input.artifact ?? /(^|\s)Artifact(?:\s|$)/i.test(typeLine);
-  const land = input.land ?? /(^|\s)Land(?:\s|$)/i.test(typeLine);
+  const land =
+    input.land ?? (!/^Enchant\b/i.test(typeLine) && /(^|\s)Land(?:\s|$)/i.test(typeLine));
   const legendary =
     !/\bPlaneswalker\b/i.test(typeLine) &&
     (input.legendary ?? /(^|\s)Legendary(?:\s|$)/i.test(typeLine));

@@ -34,7 +34,7 @@ export async function prepareEarlyHsb(
 ): Promise<{ images: CanvasImages; dispose: () => void }> {
   face = calibrationFace(face);
   const unchanged = { images, dispose() {} };
-  const inkTarget = earlyReprintManaInk(face),
+  const inkTarget = earlyReprintManaInk(face) ?? calibratedManaTarget(face, 'INK'),
     toneJobs = new Map<string, ManaInkTone>();
   const adjustments = new Map<string, FrameHsb>(Object.entries(calibratedFrameMaterials(face))),
     colors: Record<string, string> = {},

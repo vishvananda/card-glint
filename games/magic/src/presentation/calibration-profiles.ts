@@ -86,6 +86,19 @@ function baseFrameMaterials(face: RenderedCardInput): Readonly<Record<string, Fr
   if (face.frameTemplate === 'future') return futureFrameMaterials(face);
   if (face.setCode?.toLowerCase() === 'plc') return planarFrameMaterials(face);
   if (!hasColorCalibration(face)) return {};
+  const dualPlan = retroDualFrame(face);
+  if (dualPlan) {
+    const result: Record<string, FrameHsb> = {};
+    for (const url of [dualPlan.base, dualPlan.overlay]) {
+      const profile =
+        PRINTING_COLOR_PROFILES[
+          `${face.setCode?.toLowerCase()}/${retroBorder(face)}/retro/${url.split('/').at(-1)}`
+        ];
+      if (profile?.source === JSON.stringify([url, retroFrameRect(face)]))
+        Object.assign(result, profile.materials);
+    }
+    return result;
+  }
   const source = printingColorSource(face),
     profile =
       source &&
@@ -115,8 +128,17 @@ export function calibratedFrameMaterials(
   if (reprint) return reprint.materials;
   const expansion = earlyExpansionColors(face);
   if (expansion) return expansion.materials;
-  return printingBlackPointMaterials(face, baseFrameMaterials(face), printingStockSource(face))
-    .materials;
+  const source = printingStockSource(face),
+    dual = retroDualFrame(face);
+  let materials = printingBlackPointMaterials(face, baseFrameMaterials(face), source).materials;
+  // Both plates contribute outside the striped-paper mask. Correct each plate's
+  // outer stock before compositing, so the overlay cannot repaint it pure black.
+  if (dual && source && hasColorCalibration(face))
+    materials = printingBlackPointMaterials(face, materials, {
+      ...source,
+      url: dual.overlay,
+    }).materials;
+  return materials;
 }
 
 /** Stock is measured separately; white stock and unknown sources stay unchanged. */
