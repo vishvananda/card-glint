@@ -124,7 +124,7 @@ const vec2 dirNeg35=vec2(.8191520,-.5735764);
 vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
   vec3 base=previewInk(texture2D(face,uv).rgb);
   if(previewKind<.5) return base;
-  if(previewKind==8.) return studioCardGloss(uv,base,normal);
+  if(previewKind==8. && studioLighting>.5) return studioCardGloss(uv,base,normal);
   vec2 cardUv=vec2(uv.x,1.-uv.y);
   vec2 ptr=foilPointer(normal);
   vec2 bg=foilSweepOffset(ptr);
@@ -139,6 +139,19 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
   if(studioLighting>.5)lamp=normalize(studioLampPosition);
 
   if(previewKind==9.)return holofoil(uv,base,normal,view,317./4294967295.,holofoilGrainFilter);
+  if(previewKind==8.) {
+    // Compatibility varnish from 0.5.3: the legacy foil pointer moves its sheen.
+    float sweep=dot(cardUv*vec2(.86,1.20)-(bg-.5)*1.25,dir133)-.42;
+    float coatBand=exp(-(sweep*sweep)*5.5);
+    float stripAxis=satinStripAxis(uv,normal,view);
+    float strip=exp(-(stripAxis*stripAxis)*34.);
+    float fineLine=smoothstep(.28,.90,etched)*art;
+    float frameLines=smoothstep(.74,.96,etched*(1.-art));
+    float inkGloss=1.+clamp(fineLine*.22+frameLines*.34,0.,1.);
+    vec3 clearCoat=vec3(.97,.98,1.)*((.032+coatBand*.092+strip*.062)*spot+innerCore*.052)*inkGloss;
+    vec3 res=foilSheenBlend(base,clearCoat*(1.+satinHoverGain*.25));
+    return mix(base,applyStudioGlare(res,rT,.52),.9);
+  }
   if(previewKind==1.) {
     // Etched gold foil: embossed contour bevels, warm champagne-gold leaf, and micro-sparkle (+10% gold highlight).
     float fineLine=smoothstep(.24,.88,etched)*art;

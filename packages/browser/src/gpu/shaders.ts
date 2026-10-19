@@ -94,7 +94,7 @@ void main(){
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
  if(studioLighting>.5)view=studioVirtual>.5?studioCardView(uv,normalize(v_normal)):normalize(studioCamera.xyz-studioPosition*studioCamera.w);
  vec3 optical;
- if(previewKind==8. && studioVirtual<.5)optical=studioGloss(previewInk(printFace(uv).rgb),normalize(v_normal),normalize(studioCamera.xyz-studioPosition*studioCamera.w),studioPosition);
+ if(previewKind==8. && studioVirtual<.5 && studioLighting>.5)optical=studioGloss(previewInk(printFace(uv).rgb),normalize(v_normal),normalize(studioCamera.xyz-studioPosition*studioCamera.w),studioPosition);
  else optical=previewKind>=5. && previewKind<8. ? animatedSurface(uv,normalize(v_normal)) : previewFoil(uv,normalize(v_normal),view);
  vec3 shaded=previewLinear(optical);
  vec3 base=printFace(uv).rgb;

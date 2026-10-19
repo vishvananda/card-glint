@@ -149,7 +149,7 @@ export interface Budgets {
 export interface Frame {
   viewProjection: Float32Array;
   pointer?: readonly [number, number];
-  /** Opt-in fixed virtual studio: normals drive foil, without pointer lighting. */
+  /** Defaults to compatibility pointer lighting, including gloss. Studio uses normals only. */
   lighting?: 'pointer' | 'studio';
   /** Host-owned elapsed seconds. Omit (or keep fixed) for a still surface. */
   time?: number;

@@ -1,5 +1,9 @@
 # Softbox gloss experiment
 
+The normal-lighting prototype makes this treatment opt-in with
+`Frame.lighting: 'studio'`. Pointer-based 0.5.3 gloss is the compatibility default;
+the following notes describe the softbox treatment shipped in 0.5.4.
+
 The approved softbox treatment now replaces the old gloss effect, with a 10%
 strength increase. All three cards in the private frame preview share it. Frame
 assets, flat overlays and accuracy scores are unchanged by the optical effect.

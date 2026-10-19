@@ -85,7 +85,13 @@ try {
       const [nx, ny, nz] = p.normal;
       p.normal = [c * nx - s * ny, s * nx + c * ny, nz];
       renderer.updateScene([{ id: 1, card: 1, finish, ...p }]);
-      renderer.render({ viewProjection: projection, pointer, time, clear: [0, 0, 0, 0] });
+      renderer.render({
+        lighting: 'studio',
+        viewProjection: projection,
+        pointer,
+        time,
+        clear: [0, 0, 0, 0],
+      });
       const bytes = new Uint8Array(output.width * output.height * 4);
       gl.readPixels(0, 0, output.width, output.height, gl.RGBA, gl.UNSIGNED_BYTE, bytes);
       return bytes;
@@ -141,7 +147,13 @@ try {
           transform: [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
         },
       ]);
-      renderer.render({ viewProjection: IDENTITY, pointer, time, clear: [0, 0, 0, 0] });
+      renderer.render({
+        lighting: 'studio',
+        viewProjection: IDENTITY,
+        pointer,
+        time,
+        clear: [0, 0, 0, 0],
+      });
       const bytes = new Uint8Array(output.width * output.height * 4);
       gl.readPixels(0, 0, output.width, output.height, gl.RGBA, gl.UNSIGNED_BYTE, bytes);
       return bytes;
@@ -158,7 +170,12 @@ try {
     // Settling the pose does not cause per-frame preparation/readback work.
     const before = renderer.metrics;
     for (let i = 0; i < 10; i++)
-      renderer.render({ viewProjection: projection, pointer: [i / 10, 0.2], time: i });
+      renderer.render({
+        lighting: 'studio',
+        viewProjection: projection,
+        pointer: [i / 10, 0.2],
+        time: i,
+      });
     const after = renderer.metrics;
     renderer.dispose();
     return {

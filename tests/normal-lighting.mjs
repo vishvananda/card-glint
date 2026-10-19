@@ -117,6 +117,10 @@ try {
       const stockA = draw('gloss', normal(-0.08), [0, 1], 'studio', true),
         stockB = draw('gloss', normal(-0.08), [1, 0], 'studio', true);
       if (difference(stockA, stockB)) throw Error('Printed coating still responds to pointer');
+      const legacyGlossA = draw('gloss', [0, 0, 1], [0.1, 0.9]),
+        legacyGlossB = draw('gloss', [0, 0, 1], [0.9, 0.1]);
+      if (difference(legacyGlossA, legacyGlossB) < 1000)
+        throw Error('Default gloss must retain pointer-based compatibility');
       const centroids = [];
       for (const finish of ['gloss', 'prismatic'])
         for (const angle of [-0.08, 0, 0.08]) {

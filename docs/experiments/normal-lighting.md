@@ -2,7 +2,8 @@
 
 `Frame.lighting: 'studio'` opts into a fixed virtual studio for foil and living
 surfaces. `normalLightingVersion === 1` detects support. Existing callers retain
-their pointer-driven appearance by default; gloss keeps its existing studio light.
+their pointer-driven appearance by default. Gloss restores the pointer-based
+varnish from 0.5.3 for compatibility; the 0.5.4 softbox is selected by studio mode.
 
 Supply world-space `Instance.normal` values from the visible card pose. Lighting
 ignores `Frame.pointer` in this mode. Actual `Frame.hover` hits still disturb water.
