@@ -100,6 +100,28 @@
         }
       ]
     },
+    "games/magic/src/presentation/canvas-face.ts": {
+      "before": "fd35ddb8f0160cffe8fa23de51ed2f1e06a64d2d77e2d9a2e1e5767c787a5ab8",
+      "after": "eb2ecb5fd757d969ae09d17dba76669963ccc9f1030973087ee74eeaed183706",
+      "reverseEdits": [
+        {
+          "start": 170,
+          "count": 1,
+          "lines": [
+            "    [\n",
+            "      'set-profile-v1',\n",
+            "      calibrationForFace(face)?.revision ?? null,\n",
+            "      face.setCalibrationCandidate ?? null,\n",
+            "    ],\n"
+          ]
+        },
+        {
+          "start": 7,
+          "count": 1,
+          "lines": ["import { calibrationForFace } from '../calibration/selection.js';\n"]
+        }
+      ]
+    },
     "games/magic/src/presentation/retro-dual-frame.ts": {
       "before": "0cce832c3c7dc78d8238183e22b2b97ceb145614cf8c010e41fd10825080bb13",
       "after": "5f7354e049259ef02ea43b70156301c51f528d718919c4e6c7b3d9cab1b67169",
@@ -168,13 +190,14 @@
     }
   },
   "dependencies": {
+    "games/magic/src/calibration/cache-key.ts": "bdd35528abfcb7fa34e686060be71d9465bdf6da20af2e0894473472f47d3597",
     "games/magic/src/calibration/editor-types.ts": "35ae2dcd016502d6531ad19001f79cb4faadc743752c5ac59172dc0e8550bd49",
     "games/magic/src/calibration/editor.ts": "187ac5fa026e562e28dae8e6c78be2cfc5323844edd7041882418ac20d8a1302",
     "games/magic/src/calibration/face-editor.ts": "ce8b1e999e337caa48dbe60b7ae95b71b771c895181b6b948b1463a659adcde8",
     "games/magic/src/calibration/selection.ts": "33dd79bc32e351cff23ede41ec369270bd77d86a96ddbd1e93acdd6a8dfdbd5b",
-    "games/magic/src/calibration/sets/lea-title.ts": "eedf11b80db4084a556d2087a1f08f734ab4b846501665b284e2f0cfbbf8113b",
     "games/magic/src/calibration/title-profiles.ts": "57c0a3e6cfbc8f12d1e364d7c90a16fc74bc9acef3af5d2662729ffc35f866bf",
     "games/magic/src/presentation/abu-land-palette.ts": "29eae8492b5499269b0432af633057b9c82c0f1524214633ba82cb8382da4ac3",
+    "games/magic/src/presentation/canvas-face.ts": "eb2ecb5fd757d969ae09d17dba76669963ccc9f1030973087ee74eeaed183706",
     "games/magic/src/presentation/legacy-calibrated-title.ts": "551e19bba7479c6e8ba27cdeab00eb3dc16e261d44d59d1adb99db22a1341fab",
     "games/magic/src/presentation/retro-dual-frame.ts": "5f7354e049259ef02ea43b70156301c51f528d718919c4e6c7b3d9cab1b67169",
     "games/magic/src/presentation/retro-dual-material.ts": "8c516fcca5a88c795c74943ef6cfe635b84ffa26ba30fe6cf5eff702a627853d",
@@ -182,11 +205,18 @@
     "games/magic/tools/build-set-data.mjs": "67cc654df8eef2a6c9c14ea1066e04e89e075e52d04acd04e967053d02c91f5e"
   },
   "newModules": [
+    "games/magic/src/calibration/cache-key.ts",
     "games/magic/src/calibration/sets/lea-title.ts",
     "games/magic/src/calibration/title-profiles.ts",
     "games/magic/src/presentation/abu-land-palette.ts",
     "games/magic/src/presentation/legacy-calibrated-title.ts"
   ],
   "nativeEvidence": "games/magic/fixtures/accuracy/alpha-name-editor/native-replay.json",
-  "nativeHash": "fbfee2b6a0f0f9aa63ee3c4a59778d702266bbc40014ad1f0f8224923c9efe2e"
+  "nativeHash": "fbfee2b6a0f0f9aa63ee3c4a59778d702266bbc40014ad1f0f8224923c9efe2e",
+  "profileSnapshot": {
+    "file": "games/magic/src/calibration/sets/lea-title.ts",
+    "sha256": "eedf11b80db4084a556d2087a1f08f734ab4b846501665b284e2f0cfbbf8113b",
+    "scope": "Historical neutral title values used for the native replay; current per-set title data is separately guarded by LEA calibration tasks."
+  },
+  "cacheScope": "Only cardTextureKey delegates to the new pure revision helper. Existing drawing/composition functions remain byte-identical; non-ABU/non-LEA keys retain their previous tuples."
 }

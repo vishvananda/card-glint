@@ -45,6 +45,15 @@ try {
   assert.equal(alpha.adapter, 'title');
   assert.deepEqual([...new Set(alpha.controls.map((c) => c.group))], ['lettering']);
   assert.equal(alpha.controls.length, 6);
+  assert.deepEqual(
+    api.createSetCalibrationCandidate(
+      'lea',
+      alpha.revision,
+      Object.fromEntries(alpha.controls.map((c) => [c.id, c.value])),
+    ).values,
+    {},
+    'The data-file defaults must themselves satisfy every control bound',
+  );
   const emptyAlpha = api.createSetCalibrationCandidate('lea', alpha.revision, {});
   assert.deepEqual(emptyAlpha.values, {});
   const alphaFace = {
@@ -76,6 +85,22 @@ try {
   );
   assert.throws(() => api.createSetCalibrationCandidate('lea', alpha.revision - 1, {}), /revision/);
   assert.throws(() => api.exportSetCalibrationProfile(editedAlpha), /exportSetTitleCalibration/);
+  const { setCalibrationTextureKey } = await vite.ssrLoadModule(
+    '/games/magic/src/calibration/cache-key.ts',
+  );
+  assert.equal(setCalibrationTextureKey(alphaFace)[0], 'legacy-regional-v1');
+  const ordinary = { name: 'Probe', setCode: 'm21', typeLine: 'Creature', colors: ['U'] };
+  assert.deepEqual(setCalibrationTextureKey(ordinary), ['set-profile-v1', null, null]);
+  assert.deepEqual(
+    setCalibrationTextureKey({
+      name: 'Tundra',
+      setCode: 'leb',
+      land: true,
+      typeLine: 'Land',
+      frameColors: ['W', 'U'],
+    }),
+    ['legacy-regional-v1', null, null, 'abu-outline-v3', null],
+  );
   const { withSetCalibration } = await vite.ssrLoadModule(
     '/games/magic/src/calibration/face-editor.ts',
   );
@@ -91,16 +116,40 @@ try {
   const { paintLegacyCalibratedTitle } = await vite.ssrLoadModule(
     '/games/magic/src/presentation/legacy-calibrated-title.ts',
   );
-  assert.equal(paintLegacyCalibratedTitle({}, alphaFace, 34, 48, 350), false);
+  const titleCalls = [];
+  const titleContext = {
+    save() {},
+    restore() {},
+    getTransform() {
+      return { a: 1 };
+    },
+    translate(...args) {
+      titleCalls.push(['translate', ...args]);
+    },
+    scale(...args) {
+      titleCalls.push(['scale', ...args]);
+    },
+    fillText(...args) {
+      titleCalls.push(['fillText', ...args]);
+    },
+  };
+  const originalTitle = paintLegacyCalibratedTitle(titleContext, alphaFace, 34, 48, 350);
+  const originalCalls = structuredClone(titleCalls);
+  titleCalls.length = 0;
   assert.equal(
     paintLegacyCalibratedTitle(
-      {},
+      titleContext,
       { ...alphaFace, setCalibrationCandidate: emptyAlpha },
       34,
       48,
       350,
     ),
-    false,
+    originalTitle,
+  );
+  assert.deepEqual(
+    titleCalls,
+    originalCalls,
+    'Empty proposals follow the current per-set title defaults',
   );
   for (const set of ['fem', '4ed', 'chr']) {
     const face = {

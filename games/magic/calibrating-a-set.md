@@ -226,3 +226,8 @@ substituting another set's layout. Export an evaluated name proposal with
 `exportSetTitleCalibration(candidate)` into `calibration/sets/lea-title.ts`.
 Do not use `exportSetCalibrationProfile` for a title-only description. Empty
 proposals preserve the native pixels, including the original filled lettering.
+
+The LEA title file is scoped calibration data. Its revision participates in the
+face texture key, and its hash guards LEA calibration evidence. Updating it does
+not require rewriting the historical shared-code migration proof. Keep the
+module inert and literal; shared painter changes still require separate review.
