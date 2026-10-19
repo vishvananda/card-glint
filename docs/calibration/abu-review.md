@@ -45,3 +45,54 @@ Alpha's 0.5.3 rules adjustments are already active. Their font size, margins,
 leading and horizontal scale must not be applied a second time. Their initial
 native promotion review covered white cards; the current pass checks the full
 set, including dense and mixed passages that retain the baseline layout.
+
+## Text-size investigation
+
+The source ink supports three size tiers. Character count predicts the tier
+better than word count, but measured wrapping is also necessary: a short passage
+with wide words can need the medium face. The experimental policy uses large
+text through 117 characters only when it fits five measured lines at a 340px
+width; medium text through 274 characters; then the small face. These are Alpha
+development candidates, not a universal historical typesetting rule.
+
+On 236 accepted references with confident line-pitch measurements, the combined
+count/wrapping model agrees with 234 inferred size tiers. The other references
+remain unclassified; this is not a whole-card accuracy score. The name-grouped
+split is reused development evidence, not a newly sealed holdout.
+
+Mana Vault and Hypnotic Specter use the small face despite falling below the
+dense-text cutoff. Their Alpha and Beta scans have the same small text and line
+breaks. Deliberate printing-specific typesetting is plausible; historical manual
+adjustment cannot be established from those scans. Keep these as reviewed
+outliers instead of contorting the shared count rule to fit two cards.
+
+Use the native painter for the final comparison. The prepared component replay
+must match its unchanged native raster, and each proposed rules layout must
+match a full native render with no changed pixels outside the rules region
+(including a one-canonical-pixel antialias fringe). Narrowing dense text can add
+a line: validate wrapping before adjusting the block's optical center. Retaining
+the old first-line position can push a block too low; blindly recentering an
+unwanted extra line also regresses the match. Keep all ink inside the panel.
+
+The tools accept an existing immutable capture and an offline asset cache:
+
+```sh
+export MAGIC_ACCURACY_CACHE=/path/to/accuracy-cache
+node games/magic/tools/accuracy/abu-refresh-inputs.mjs INPUTS POSES REVIEWED
+node games/magic/tools/accuracy/abu-type-study.mjs \
+  REVIEWED/inputs.json REVIEWED/normalization BASELINES - STUDY @native-count
+node games/magic/tools/accuracy/abu-calibration-score.mjs \
+  REVIEWED/inputs.json REVIEWED/normalization BASELINES SCORER.mjs BEFORE.json
+node games/magic/tools/accuracy/abu-calibration-score.mjs \
+  REVIEWED/inputs.json REVIEWED/normalization BASELINES SCORER.mjs AFTER.json STUDY
+```
+
+`BASELINES` contains per-material `observations.json` receipts and native PNGs;
+the study verifies every baseline hash. `SCORER.mjs` exports `scoreRegions` using
+the review application's whole-card metric. `-` selects the portable JavaScript
+text objective; an optional directory containing the compatible WASM kernel can
+replace it. The same reference objective is checked against WASM before use.
+The study uses one persistent browser and cached component rasters, not a browser
+launch per candidate. Source, asset, input and pose identities are frozen in its
+receipt. Warm normalized scan rasters are reused across wording/renderer changes;
+new scan transforms or normalizer code invalidate that cache.

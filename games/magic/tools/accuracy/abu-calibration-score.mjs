@@ -3,19 +3,31 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { readFile, mkdir } from 'node:fs/promises';
 import { PNG } from 'pngjs';
-import { hash, readJson, writeJson, objectFile } from './common.mjs';
+import { hash, readJson, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
+import { normalizedReference } from './abu-reference-cache.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
 import { profileSupport } from './scan-gradient-fit.mjs';
-const [inputsFile, posesDirectory, baselineRoot, scorerFile, output] = process.argv.slice(2);
+const [inputsFile, posesDirectory, baselineRoot, scorerFile, output, candidateDirectory] =
+  process.argv.slice(2);
 if (!output)
   throw Error(
-    'Usage: abu-calibration-score.mjs INPUTS POSES_DIRECTORY BASELINE_ROOT SCORER.mjs OUTPUT',
+    'Usage: abu-calibration-score.mjs INPUTS POSES_DIRECTORY BASELINE_ROOT SCORER.mjs OUTPUT [CANDIDATE_STUDY]',
   );
 const inputs = await readJson(inputsFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json')),
   templates = await readJson(path.join(posesDirectory, 'templates.json'));
 assert.equal(poses.inputHash, hash(await readFile(inputsFile)));
+const candidateStudy = candidateDirectory
+  ? await readJson(path.join(candidateDirectory, '_source', 'study.json'))
+  : undefined;
+if (candidateStudy) {
+  const { studyHash, ...definition } = candidateStudy;
+  assert.equal(studyHash, hash(JSON.stringify(definition)));
+  assert.equal(candidateStudy.inputHash, poses.inputHash);
+  assert.equal(candidateStudy.normalizationHash, hash(JSON.stringify(poses)));
+  assert.equal(candidateStudy.nativeTrials, true, 'Candidate requires full native replay');
+}
 const { scoreRegions } = await import(pathToFileURL(path.resolve(scorerFile)));
 const rows = [];
 const neutral = { sx: 1, sy: 1, tx: 0, ty: 0, rotation: 0, shear: 0 };
@@ -34,12 +46,21 @@ for (const e of inputs.entries) {
   assert.equal(manifest.baseline.version, '0.5.3');
   const native = manifest.records.find((r) => r.id === e.id);
   assert.deepEqual(native.face, e.face);
-  const baseline = await readFile(path.join(baselineRoot, e.material, native.baseline.file));
+  let baseline = await readFile(path.join(baselineRoot, e.material, native.baseline.file));
   assert.equal(hash(baseline), native.baseline.sha256);
-  const bytes = await readFile(objectFile(e.reference));
-  assert.equal(hash(bytes), e.reference.sha256);
-  const canonical = normalize(PNG.sync.read(bytes, { checkCRC: true }));
-  const scan = normalize(canonical, pose.transform);
+  if (candidateStudy) {
+    const trial = await readJson(path.join(candidateDirectory, e.id + '.json'));
+    assert.equal(trial.id, e.id);
+    assert.equal(trial.studyHash, candidateStudy.studyHash);
+    assert.equal(trial.referenceHash, e.reference.sha256);
+    assert.equal(trial.poseHash, hash(JSON.stringify(pose)));
+    assert.equal(trial.baselineHash, hash(baseline));
+    assert.equal(trial.nativeTrial.outside, 0, 'Candidate changed pixels outside rules region');
+    assert.ok(trial.nativeTrial.maximum <= 1.001, 'Candidate failed native replay parity');
+    baseline = await readFile(path.join(candidateDirectory, e.id + '-candidate.png'));
+    assert.equal(hash(baseline), trial.nativeTrial.renderHash);
+  }
+  const { image: scan } = await normalizedReference(e, pose, path.join(posesDirectory, 'rasters'));
   const rendered = normalize(PNG.sync.read(baseline, { checkCRC: true }));
   const raster = profileSupport(
     scanBoundaryProfiles(scan, templates.groups[2], templates.bounds),
@@ -105,12 +126,15 @@ const mean = (v) => (v.length ? v.reduce((a, b) => a + b, 0) / v.length : null),
 await writeJson(output, {
   schema: 1,
   set: poses.set,
-  baseline: '0.5.3',
+  baseline: candidateStudy ? '0.5.3 with experimental shared text-tier model' : '0.5.3',
+  ...(candidateStudy ? { candidateStudyHash: candidateStudy.studyHash } : {}),
   inputHash: poses.inputHash,
   normalizationHash: hash(JSON.stringify(poses)),
   scorerHash: hash(await readFile(scorerFile)),
   scope:
-    'Full native 0.5.3 replay using original-wording inputs. Scan-only profiles; two-stage canonical then affine resampling with untouched raster certification. Rejected poses remain diagnostic. Existing experimental frames are excluded.',
+    'Full native 0.5.3 replay using original-wording inputs' +
+    (candidateStudy ? ' and a rules-only experimental shared text-tier model' : '') +
+    '. Scan-only profiles; two-stage canonical then affine resampling with untouched raster certification. Rejected poses remain diagnostic. Experimental replacement frame assets are excluded.',
   summary,
   rows,
 });

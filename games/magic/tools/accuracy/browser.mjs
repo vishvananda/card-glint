@@ -5,7 +5,10 @@ import { readObject } from './cache.mjs';
 import { root } from './common.mjs';
 
 /** Local source runner: snapshots supply all external bytes; capture never downloads. */
-export async function openBrowser(snapshot, { fonts = true, sourceRoot = root } = {}) {
+export async function openBrowser(
+  snapshot,
+  { fonts = true, sourceRoot = root, plugins = [] } = {},
+) {
   // Vite otherwise serves untransformed TS from symlinked roots (macOS /tmp).
   sourceRoot = await realpath(sourceRoot);
   const assets = [
@@ -21,6 +24,7 @@ export async function openBrowser(snapshot, { fonts = true, sourceRoot = root } 
     optimizeDeps: { noDiscovery: true },
     server: { host: '127.0.0.1', port: 0, hmr: false },
     plugins: [
+      ...plugins,
       {
         name: 'accuracy-local',
         configureServer(server) {
