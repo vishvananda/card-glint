@@ -136,6 +136,7 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
   float line=etched*art;
   float stamp=clamp(etched*(1.-art)/.68,0.,1.);
   vec3 lamp=normalize(vec3((ptr-.5)*vec2(1.35,-1.35)+vec2(-.28,.36),1.));
+  if(studioLighting>.5)lamp=normalize(studioLampPosition);
 
   if(previewKind==9.)return holofoil(uv,base,normal,view,317./4294967295.,holofoilGrainFilter);
   if(previewKind==1.) {
@@ -146,6 +147,7 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     vec2 slopeAll=vec2(etchMask(uv+d)-etchMask(uv-d),etchMask(uv+d.yx)-etchMask(uv-d.yx));
     vec2 slope=mix(slopeAll*1.25,slopeArt,art);
     vec3 relief=normalize(vec3(-slope*(.56+1.08*spot)*6.6,1.));
+    if(studioLighting>.5)relief=studioDetailNormal(relief,normal);
     float shade=max(0.,dot(relief,lamp));
     float spec=max(0.,dot(relief,normalize(lamp+vec3(0.,0.,1.))));
     float s2=spec*spec,s4=s2*s2,s8=s4*s4,s16=s8*s8;
@@ -235,6 +237,7 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     vec2 slope=mix(slopeAll*1.25,slopeArt,art);
     float pressure=.48+1.15*spot;
     vec3 relief=normalize(vec3(-slope*pressure*6.8,1.));
+    if(studioLighting>.5)relief=studioDetailNormal(relief,normal);
     float shade=max(0.,dot(relief,lamp));
     float spec=max(0.,dot(relief,normalize(lamp+vec3(0.,0.,1.))));
     float s2=spec*spec,s4=s2*s2,s8=s4*s4,s16=s8*s8;

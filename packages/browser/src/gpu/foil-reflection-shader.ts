@@ -1,5 +1,7 @@
+import { STUDIO_LIGHTING_GLSL } from './studio-lighting-shader.js';
+
 // Shared reflection and studio-lighting helpers for card finishes and living surfaces.
-export const FOIL_REFLECTION_GLSL = `
+export const FOIL_REFLECTION_GLSL = `${STUDIO_LIGHTING_GLSL}
 uniform float satinCompact;
 uniform float satinHoverGain;
 float foilHash(vec2 p) {
@@ -33,6 +35,7 @@ vec3 foilSheenBlend(vec3 base, vec3 shine) {
   return mix(blendColorDodge(lifted, s), blendScreen(base, s * .85), .28);
 }
 vec2 foilPointer(vec3 normal) {
+  if(studioLighting>.5)return studioFoilCenter(normal);
   vec2 delta = vec2(normal.x * 2.63, normal.y * 3.33) + vec2(pointer.x - .5, .5 - pointer.y);
   // Keep the flat-pose studio offset, but taper it broadly. A narrow Gaussian
   // folds the light path near zero: highlights reverse as the card keeps turning.
@@ -46,6 +49,7 @@ vec2 foilSweepOffset(vec2 ptr) {
 }
 float foilRadialDistance(vec2 cardUv, vec2 ptr) {
   const vec2 cardAspect = vec2(.718, 1.);
+  if(studioLighting>.5)return length((cardUv-ptr)*cardAspect)/.72;
   float cornerDist = length(max(ptr, vec2(1.) - ptr) * cardAspect);
   return length((cardUv - ptr) * cardAspect) / max(cornerDist, .5);
 }
@@ -68,6 +72,7 @@ vec3 applyStudioGlare(vec3 c, float rT, float opacity) {
 }
 vec3 spectrum(float phase) { return .5 + .5*cos(6.2831853*(phase+vec3(0.,.333,.667))); }
 float satinStripAxis(vec2 uv, vec3 normal, vec3 view) {
+  if(studioLighting>.5){vec2 q=vec2(uv.x,1.-uv.y)-studioFoilCenter(normal);return dot(q,vec2(.65,.18));}
   vec3 reflected=reflect(-view,normal);
   vec2 q=reflected.xy/max(abs(reflected.z),.25)+(pointer-.5)*1.1;
   return mix(q.x+.12+q.y*.2,
@@ -77,6 +82,7 @@ vec3 satin(vec2 uv, vec3 base, vec3 normal, vec3 view, float kind, float metal) 
   vec3 reflected=reflect(-view,normal);
   vec2 q=reflected.xy/max(abs(reflected.z),.25)+(pointer-.5)*1.1;
   vec2 broadQ=mix(q,reflected.xy/max(abs(reflected.z),.25)+vec2(-.10,.17)+(pointer-.5)*.28,satinCompact);
+  if(studioLighting>.5)broadQ=vec2(-.10,.17)+vec2(uv.x,1.-uv.y)-studioFoilCenter(normal);
   vec2 broadDelta=(broadQ-vec2(-.10,.17))*vec2(1.45,.85);
   float broad=exp(-dot(broadDelta,broadDelta))*.38;
   float stripAxis=satinStripAxis(uv,normal,view);
@@ -113,6 +119,7 @@ vec4 opalFacet(vec2 uv, vec2 tilt, vec3 normal, vec3 view) {
   float seed=fract(sin(dot(cell,vec2(127.1,311.7)))*43758.5453);
   vec3 facet=normalize(vec3((seed-.5)*1.15,(triangle-.5)*.75,1.));
   vec3 lamp=normalize(vec3(tilt*.6+vec2(-.4,.45),1.));
+  if(studioLighting>.5){facet=studioDetailNormal(facet,normal);lamp=normalize(studioLampPosition);}
   float spec=max(0.,dot(facet,normalize(lamp+vec3(0.,0.,1.))));
   float s2=spec*spec,s4=s2*s2,s8=s4*s4;
   float stripAxis=satinStripAxis(uv,normal,view);

@@ -162,6 +162,8 @@ export function validateInstance(item: Instance) {
     throw Error('Invalid surface normal');
 }
 export function validateFrame(frame: Frame) {
+  if (frame.lighting !== undefined && !['pointer', 'studio'].includes(frame.lighting))
+    throw Error('Invalid lighting model');
   if (!Number.isFinite(frame.time ?? 0) || (frame.time ?? 0) < 0)
     throw Error('Frame time must be finite, nonnegative seconds');
   if (

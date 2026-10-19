@@ -257,8 +257,11 @@ export class Device {
     );
     gl.uniform1f(gl.getUniformLocation(p, 'cornerRadius'), material.recipe.cornerRadius);
     gl.uniform1f(gl.getUniformLocation(p, 'aspect'), material.face.height / material.face.width);
-    const pointer = frame.pointer ?? [0.5, 0.5];
+    // Studio lighting is driven only by pose. Hover UVs remain independent inputs
+    // to water interaction; legacy pointer-sensitive relief gets a stable value.
+    const pointer = frame.lighting === 'studio' ? [0.5, 0.5] : (frame.pointer ?? [0.5, 0.5]);
     gl.uniform2f(gl.getUniformLocation(p, 'pointer'), pointer[0], 1 - pointer[1]);
+    gl.uniform1f(gl.getUniformLocation(p, 'studioLighting'), frame.lighting === 'studio' ? 1 : 0);
     gl.uniform1f(gl.getUniformLocation(p, 'hasMask'), 1);
     gl.uniform1f(gl.getUniformLocation(p, 'satinCompact'), 1);
     gl.uniform1f(gl.getUniformLocation(p, 'satinHoverGain'), 0);

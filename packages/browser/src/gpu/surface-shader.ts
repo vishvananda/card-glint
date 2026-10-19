@@ -50,6 +50,7 @@ vec3 softenedInk(vec2 uv,vec2 radius){return softenedInk(uv,radius,vec4(.002,.00
 float surfaceReflection(vec2 uv,vec3 normal,float sharpness){
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
  vec3 lamp=normalize(vec3(-.24,.32,1.));
+ if(studioLighting>.5){view=studioCardView(uv,normal);lamp=normalize(studioLampPosition-studioCardPosition(uv,normal));}
  return pow(max(0.,dot(reflect(-view,normal),lamp)),sharpness);
 }
 ${RAIN_GLSL}
