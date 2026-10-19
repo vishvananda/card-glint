@@ -94,7 +94,7 @@ def fit(root):
     refine.save_png(out/'stock-mask.png',np.repeat(weight[...,None],3,-1))
     alpha_hashes = {hashlib.sha256(Image.open(r['reference']['file']).getchannel('A').tobytes()).hexdigest() for r in rows}
     receipt = dict(calibrationCards=len(train),rawAlphaUniqueHashes=sorted(alpha_hashes),
-        policy='Shared white Alpha stock colors/rectangle; no per-card fitting. Corner match is to the common Scryfall PNG mask, not independently measured physical cuts.',
+        policy='Shared Alpha material stock colors/rectangle; no per-card fitting. Corner match is to the common Scryfall PNG mask, not independently measured physical cuts.',
         oldCornerRadius=.058,cornerRadius=radius,canonicalRadius=radius*488,
         cornerTrainingMseBefore=loss(.058*488),cornerTrainingMseAfter=loss(radius*488),
         bandInsets=edges,sideMeasurements=measurements,

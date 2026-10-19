@@ -1,8 +1,8 @@
 """Refit a corrected Alpha border and refine the complete shared frame.
 
 Frozen scan poses and original-wording renders remain controls. Geometry moves
-only four outer border edges; the white frame/keyline is fixed. Backpropagation
-uses separate bounded scalar fields for trusted white texture and printed stock.
+only four outer border edges; the material frame/keyline is fixed. Backpropagation
+uses separate bounded scalar fields for trusted frame texture and printed stock.
 """
 import argparse
 import importlib.util
@@ -138,10 +138,10 @@ def bounded_refinement(base, target, supports, steps, sigma):
 
 def export_layers(out, base, layer, stock, fields, outer):
     frame = base.copy()
-    # The independent white material is not attenuated by either stock layer.
+    # The independent frame material is not attenuated by either stock layer.
     frame_gain = (1 - stock) * (1 - layer[..., 3:] * stock)
     if np.any((np.abs(fields[0]) > 1e-7) & (frame_gain < .01)):
-        raise ValueError('White correction overlaps the stock layer')
+        raise ValueError('Frame correction overlaps the stock layer')
     frame[..., :3] = np.clip(base[..., :3] + fields[0] / frame_gain.clip(.01), 0, 1)
     overlay = layer.copy()
     alpha = layer[..., 3:] * stock
@@ -233,7 +233,7 @@ def run(root, steps):
     refine.save_json(out / 'fit.json', dict(calibrationIds=[r['id'] for r in train],
         geometry=geometry_receipt, refinement=refinement,
         frameSupportPixels=int((frame_support > 0).sum()), bandSupportPixels=int((band_support > 0).sum()),
-        inputRevision='alpha-white-original-wording-v2', runtimeChanges=False))
+        inputRevision='alpha-' + json.loads((root / 'observations.json').read_text()).get('material', 'W').lower() + '-original-wording', runtimeChanges=False))
 
 
 if __name__ == '__main__':

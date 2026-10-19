@@ -47,7 +47,7 @@ def run(root):
     pins = {p['key']: p['target'] for p in geometry['pins']}
     edges = border['bandInsets']
     # The original overlay was registered against land plates. Reuse the
-    # independently measured white frame and printed-band boundaries; no
+    # independently measured material frame and printed-band boundaries; no
     # per-card geometry or texture optimization is introduced here.
     xknots = [[0, 0], [33.5 * 488 / 1062, edges['left']],
               [56.5 * 488 / 1062, pins['stock-left']],
@@ -108,7 +108,7 @@ def run(root):
                        for key in variants} for cohort in ['calibration', 'validation', 'all']}
     receipt = dict(sourceSha256=hashlib.sha256(source.read_bytes()).hexdigest(),
                    sourceCanvas=[w, h], calibrationCards=len(training),
-                   policy='Shared white-band geometry from the prior frozen fit; independent robust RGB offset from 34 white cards. No outer-stock, frame, illustration, text, or scan-transform adjustment.',
+                   policy='Shared printed-band geometry from the frozen fit; independent robust RGB offset from this material’s calibration cohort. No outer-stock, frame, illustration, text, or scan-transform adjustment.',
                    geometry=dict(x=xknots, y=yknots), sourceMedianRgb255=(source_median * 255).tolist(),
                    targetMedianRgb255=(target_median * 255).tolist(), offsetRgb255=(offset * 255).tolist(),
                    scoredPixels=int(mask.sum()), groups=groups, rows=result_rows)
