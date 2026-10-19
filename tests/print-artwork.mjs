@@ -104,18 +104,22 @@ try {
     try {
       renderer.upsertCards([{ id: 1, revision: 1, recipe }]);
       await renderer.ready(1, 1);
+      // Default physical dots are unresolved at this thumbnail tier and must fade.
+      // Use a resolvable physical period for the independent artwork-mask checks.
+      const visibleSettings = { ...DEFAULT_PRINT_DOTS, period: 12 };
       const off = draw(),
         defaults = draw({}),
         explicit = draw(DEFAULT_PRINT_DOTS),
-        excluded = draw({ artwork: false });
+        visible = draw(visibleSettings),
+        excluded = draw({ ...visibleSettings, artwork: false });
       const prepared = renderer.metrics.surfacePasses;
-      const repeat = draw({ artwork: false });
+      const repeat = draw({ ...visibleSettings, artwork: false });
       const repeated = renderer.metrics.surfacePasses;
-      const mixed = draw({ artwork: false }, true);
+      const mixed = draw({ ...visibleSettings, artwork: false }, true);
       const out = await renderer.exportCard(1, {
         revision: 1,
         width: 128,
-        printDots: { artwork: false },
+        printDots: { ...visibleSettings, artwork: false },
       });
       const blob = out instanceof Blob ? out : out.blob;
       const bitmap = await createImageBitmap(blob);
@@ -135,12 +139,13 @@ try {
           source,
           128,
           192,
-          { artwork: false },
+          { ...visibleSettings, artwork: false },
           windows,
         ).data;
         return {
           defaultParity: diff(defaults, explicit, true),
-          artAdded: diff(off, defaults, true),
+          defaultFade: diff(off, defaults, true),
+          artAdded: diff(off, visible, true),
           artExcluded: diff(off, excluded, true),
           frameAdded: diff(off, excluded, false),
           mixedArt: diff(off, mixed, true),
@@ -163,6 +168,7 @@ try {
   assert.deepEqual(errors, []);
   for (const key of [
     'defaultParity',
+    'defaultFade',
     'artExcluded',
     'mixedArt',
     'repeat',
