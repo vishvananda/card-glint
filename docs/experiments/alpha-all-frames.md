@@ -80,3 +80,12 @@ They diagnose shared-frame overfitting, but are not a blind test of the pipeline
 Land palette measurements use all 19 historical land scans and must be labeled
 as a full-data fit. Preserve source hashes, cohort membership, normalization,
 failed fits, and regional scores when sharing evidence.
+
+The deployed preview is at <https://tetrarcum.com/alpha/> and uses the published
+0.5.3 browser archive. Card tilt uses the consumer's independent spring motion,
+with matching optical normals, pointer release rebound and reduced-motion
+support. Overlay computations run in a worker and cache repeat modes. Structure
+view applies the same five-tap binomial filter to both sources to reduce print
+screen moiré; raw mode retains exact pixels. Filtering never affects stored
+scores, normalization or the finished card images. Yellow edges indicate
+agreement. Interaction evidence records runtime hashes and CPU timings.
