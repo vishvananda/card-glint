@@ -451,9 +451,11 @@ export function countTrials(
   selectedOnly = false,
   selectedPolicy = { policy: 'count', mediumSize: 22.5, denseWidth: 1 },
   grid = false,
+  customPolicies,
 ) {
   const variants =
-    grid === 'width'
+    customPolicies ??
+    (grid === 'width'
       ? [
           {},
           ...[8, 16, 24, 32].map((regularWidthDelta) => ({ ...selectedPolicy, regularWidthDelta })),
@@ -481,7 +483,7 @@ export function countTrials(
               ...[21.5, 22, 22.5].flatMap((mediumSize) =>
                 [0.98, 1].map((denseWidth) => ({ policy: 'count', mediumSize, denseWidth })),
               ),
-            ];
+            ]);
   return {
     rules: variants.map((adjustment) => ({ adjustment, score: measure('rules', adjustment) })),
   };

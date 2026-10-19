@@ -6,11 +6,11 @@ import { createServer } from 'vite';
 import { readJson, writeJson, hash, root } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { normalizedReference } from './abu-reference-cache.mjs';
-import { sampleColor, center, delta, median, oklab } from './hsb-color.mjs';
+import { sampleColor, center, delta, median, oklab, quantile } from './hsb-color.mjs';
 import { sampleTexture } from './hsb-texture.mjs';
 import { searchCalibration } from './calibration-search.mjs';
 
-const [inputFile, posesDirectory, nativeRoot, output] = process.argv.slice(2);
+const [inputFile, posesDirectory, nativeRoot, output, samplesFile] = process.argv.slice(2);
 if (!output) throw Error('Usage: set-component-color-study.mjs INPUTS POSES NATIVE OUT');
 const input = await readJson(inputFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json')),
@@ -65,7 +65,35 @@ const inkColor = (image) => {
 const basics = { Plains: 'W', Island: 'U', Swamp: 'B', Mountain: 'R', Forest: 'G' },
   manifests = new Map(),
   rows = [];
-for (const e of input.entries) {
+const parent = samplesFile ? await readJson(samplesFile) : undefined;
+if (parent) {
+  assert.equal(parent.inputHash, poses.inputHash);
+  assert.equal(parent.normalizationHash, hash(JSON.stringify(poses)));
+  assert.equal(parent.rendererHash, capture.rendererHash);
+  assert.deepEqual(parent.patches, patches);
+  assert.equal(parent.rows.length, input.entries.length);
+  assert.equal(new Set(parent.rows.map((r) => r.id)).size, input.entries.length);
+  for (const e of input.entries) {
+    const r = parent.rows.find((r) => r.id === e.id),
+      p = poses.rows.find((p) => p.id === e.id);
+    assert.equal(r.name, e.card.name);
+    assert.equal(r.material, e.material);
+    assert.equal(r.cohort, p.cohort);
+    assert.equal(r.accepted, p.accepted);
+    const basic = e.material === 'L' && basics[e.card.name];
+    assert.equal(r.group, basic ? `L-${basic}` : e.material === 'L' ? 'L/duals' : e.material);
+    for (const sample of [r.render, r.scan]) {
+      for (const component of ['frame', 'paper']) assert.equal(sample[component].length, 10);
+      for (const rgb of [...sample.frame, ...sample.paper, sample.stock, sample.ink])
+        assert.ok(rgb.length === 3 && rgb.every((v) => Number.isFinite(v) && v >= 0 && v <= 1));
+    }
+    assert.equal(r.referenceHash, e.reference.sha256);
+    assert.equal(r.poseHash, hash(JSON.stringify(p)));
+    assert.equal(r.nativeHash, capture.rows.find((row) => row.id === e.id).after);
+  }
+  rows.push(...parent.rows);
+}
+for (const e of parent ? [] : input.entries) {
   if (!manifests.has(e.material))
     manifests.set(
       e.material,
@@ -108,13 +136,26 @@ const server = await createServer({
   groups = {};
 try {
   const math = await server.ssrLoadModule('/games/magic/src/presentation/hsb.ts');
-  for (const group of [...new Set(rows.map((r) => r.group))]) {
+  for (const group of [
+    ...new Set(rows.map((r) => r.group)),
+    ...(rows.some((r) => r.material === 'L') ? ['L/shared-frame'] : []),
+  ]) {
+    const pooledLand = group === 'L/shared-frame';
     const all = rows
-      .filter((r) => r.group === group && r.accepted)
+      .filter((r) => (pooledLand ? r.material === 'L' : r.group === group) && r.accepted)
       .sort((a, b) => a.id.localeCompare(b.id));
     if (group === 'L/duals') {
       groups[group] = { status: 'composite-palette-validation-required', cards: all.length };
       continue;
+    }
+    if (pooledLand) {
+      const source = Array.from({ length: 10 }, (_, i) =>
+        center(all.map((r) => r.render.frame[i])),
+      );
+      if (all.some((r) => r.render.frame.some((rgb, i) => delta(rgb, source[i]) > 1))) {
+        groups[group] = { status: 'mixed-source-frame-pigment', cards: all.length };
+        continue;
+      }
     }
     const sibling = group.startsWith('L-');
     const train = sibling ? all.slice(0, -1) : all.filter((r) => r.cohort === 'calibration'),
@@ -124,7 +165,7 @@ try {
       continue;
     }
     const components = {};
-    for (const component of ['frame', 'paper']) {
+    for (const component of pooledLand ? ['frame'] : ['frame', 'paper']) {
       const source = Array.from({ length: 10 }, (_, i) =>
           center(train.map((r) => r.render[component][i])),
         ),
@@ -144,6 +185,7 @@ try {
           { key: 'valueGamma', min: 0.6, max: 1.5, steps: [0.1, 0.025, 0.005] },
         ],
         score,
+        { maxSweeps: 200 },
       );
       const measurements = all.map((r) => ({
         id: r.id,
@@ -155,6 +197,11 @@ try {
             (n, rgb, i) => n + delta(math.adjustHsb(rgb, fit.values), r.scan[component][i]),
             0,
           ) / 10,
+        clipping:
+          r.render[component].filter(
+            (rgb) =>
+              math.rgbToHsb(rgb)[2] ** fit.values.valueGamma * fit.values.brightnessScale > 1.0001,
+          ).length / 10,
       }));
       const cohorts = Object.fromEntries(
         ['calibration', 'validation'].map((c) => {
@@ -166,6 +213,12 @@ try {
               before: median(a.map((r) => r.before)),
               after: median(a.map((r) => r.after)),
               worstRegression: Math.max(...a.map((r) => r.after - r.before)),
+              improvedFraction: a.filter((r) => r.after < r.before).length / a.length,
+              p90Regression: quantile(
+                a.map((r) => r.after - r.before),
+                0.9,
+              ),
+              maximumClipping: Math.max(...a.map((r) => r.clipping)),
             },
           ];
         }),
@@ -181,10 +234,21 @@ try {
           fit.boundary.length || fit.exhausted
             ? 'search-review'
             : Object.values(cohorts).every(
-                  (c) => c.after < c.before - 0.25 && c.worstRegression <= 2,
+                  (c) =>
+                    c.after < c.before - 0.25 &&
+                    c.worstRegression <= 2 &&
+                    c.maximumClipping <= 0.02,
                 )
               ? 'candidate'
-              : 'retain-or-inspect',
+              : Object.values(cohorts).every(
+                    (c) =>
+                      c.after < c.before - 0.25 &&
+                      c.improvedFraction >= 0.8 &&
+                      c.p90Regression <= 0.5 &&
+                      c.maximumClipping <= 0.02,
+                  )
+                ? 'population-candidate-review-outliers'
+                : 'retain-or-inspect',
       };
     }
     groups[group] = {
@@ -212,6 +276,9 @@ await writeJson(output, {
   scope:
     'Native geometry and scan poses frozen. Fit separate source-plate frame/paper HSV and value curves to luminance-ordered RGB deciles; paper tiles reject dark text. Texture phase is not fitted. Basic-land assets use explicitly labeled sibling-printing transfers; composite lands require separate palette validation. Stock and near-black pinline samples are diagnostics, not automatic black-point adoption.',
   patches,
+  sampleParent: parent
+    ? { sha256: hash(await readFile(samplesFile)), sources: parent.sources }
+    : null,
   sources: await Promise.all(
     [
       'set-component-color-study.mjs',

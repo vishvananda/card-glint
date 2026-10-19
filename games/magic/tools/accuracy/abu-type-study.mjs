@@ -25,6 +25,42 @@ const inputs = await readJson(inputsFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json'));
 const fitRoles = filter.startsWith('@fit:') ? filter.slice(5).split(',') : undefined;
 const customTrials = filter.startsWith('@probe:') ? await readJson(filter.slice(7)) : undefined;
+const customPolicies = filter.startsWith('@count-probe:')
+  ? await readJson(filter.slice('@count-probe:'.length))
+  : undefined;
+const policyKeys = [
+  'policy',
+  'mediumSize',
+  'denseWidth',
+  'forceSmall',
+  'transferAlphaModel',
+  'centeredWidth',
+  'centeredDx',
+  'centeredDy',
+  'shortRegularDy',
+  'mediumSizeDelta',
+  'regularWidthDelta',
+  'largeMaximum',
+  'mediumMaximum',
+  'largeFitWidth',
+  'regularDx',
+  'regularDy',
+  'preserveClassGeometry',
+];
+if (customPolicies) {
+  assert.ok(
+    Array.isArray(customPolicies) && customPolicies.length > 0 && customPolicies.length <= 128,
+  );
+  assert.deepEqual(customPolicies[0], {}, 'First policy must retain the native baseline');
+  for (const p of customPolicies)
+    for (const [k, v] of Object.entries(p)) {
+      assert.ok(policyKeys.includes(k), 'Unknown count-policy control: ' + k);
+      if (k === 'policy') assert.equal(v, 'count');
+      else if (['forceSmall', 'transferAlphaModel', 'preserveClassGeometry'].includes(k))
+        assert.equal(typeof v, 'boolean');
+      else assert.ok(Number.isFinite(v) && Math.abs(v) <= 600);
+    }
+}
 if (customTrials)
   for (const [role, trials] of Object.entries(customTrials)) {
     assert.ok(['title', 'type', 'artist', 'stats'].includes(role));
@@ -50,7 +86,8 @@ if (fitRoles)
 const mode =
   customTrials || filter === '@shared' || filter.startsWith('@headers:')
     ? 'shared'
-    : filter === '@count' ||
+    : customPolicies ||
+        filter === '@count' ||
         filter === '@native-count' ||
         ['@policy-grid', '@policy-check', '@width-grid'].includes(filter)
       ? 'count'
@@ -58,23 +95,7 @@ const mode =
         ? 'details'
         : 'individual';
 const policy = { policy: 'count', mediumSize: 22.5, denseWidth: 1, ...JSON.parse(policyJson) };
-assert.ok(
-  Object.keys(policy).every((key) =>
-    [
-      'policy',
-      'mediumSize',
-      'denseWidth',
-      'forceSmall',
-      'transferAlphaModel',
-      'centeredWidth',
-      'centeredDx',
-      'centeredDy',
-      'shortRegularDy',
-      'mediumSizeDelta',
-      'regularWidthDelta',
-    ].includes(key),
-  ),
-);
+assert.ok(Object.keys(policy).every((key) => policyKeys.includes(key)));
 assert.equal(policy.policy, 'count');
 assert.ok([21.5, 22, 22.5].includes(policy.mediumSize));
 assert.ok([0.98, 1].includes(policy.denseWidth));
@@ -89,6 +110,7 @@ const studyDefinition = {
   mode,
   policy,
   customTrials,
+  customPolicies,
   rendererHash,
   nativeTrials: filter === '@native-count',
   fontsHash: hash(await readFile(path.join(root, 'games/magic/fonts.css'))),
@@ -167,7 +189,7 @@ const entries = inputs.entries.filter((e) =>
           e.card.name.toLowerCase().includes(filter.toLowerCase()),
 );
 studyDefinition.selection = {
-  filter: customTrials ? '@probe' : filter,
+  filter: customTrials ? '@probe' : customPolicies ? '@count-probe' : filter,
   roles: fitRoles ?? null,
   ids: entries.map((e) => e.id),
 };
@@ -274,7 +296,7 @@ try {
     const scanUrl = 'data:image/png;base64,' + scan.bytes.toString('base64');
     const prepared = await session.page.evaluate(
       ({ e, scanUrl, roles }) => globalThis.__typeStudy.prepare(e, scanUrl, roles),
-      { e, scanUrl, roles: filter === '@native-count' ? ['rules'] : fitRoles },
+      { e, scanUrl, roles: filter === '@native-count' || customPolicies ? ['rules'] : fitRoles },
     );
     const nativeBytes = Buffer.from(prepared.png, 'base64'),
       baselineHash = hash(nativeBytes);
@@ -302,12 +324,13 @@ try {
     const shared =
       mode === 'count' || mode === 'details'
         ? await session.page.evaluate(
-            ({ selectedOnly, policy, grid }) =>
-              globalThis.__typeStudy.countTrials(selectedOnly, policy, grid),
+            ({ selectedOnly, policy, grid, customPolicies }) =>
+              globalThis.__typeStudy.countTrials(selectedOnly, policy, grid, customPolicies),
             {
               selectedOnly: ['@native-count', '@policy-check'].includes(filter),
               policy,
               grid: filter === '@width-grid' ? 'width' : filter === '@policy-grid',
+              customPolicies,
             },
           )
         : mode === 'shared'
