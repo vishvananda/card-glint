@@ -44,6 +44,14 @@ asset references, its fan-content notice, and a guide for contributing fixes.
 - Instanced scenes, perspective-aware picking, context recovery and PNG export.
 - Game packs that remain separate from both the renderer and application UI.
 
+Finishes default to pointer-based lighting, including the compatibility gloss
+from 0.5.3. Opt into a fixed virtual studio with `Frame.lighting: 'studio'` and
+supply each card's world-space `Instance.normal` from its visible pose. That mode
+ignores pointer position for lighting while retaining card-local water interactions.
+`normalLightingVersion === 1` detects support. Pass the same `lighting` and
+`normal` to `exportCard` for matching PNGs. See the
+[normal-lighting experiment](docs/experiments/normal-lighting.md) for scope and checks.
+
 The browser still rasterizes fonts and static faces with Canvas2D. This is not a
 complete Rust text-layout engine. The large-scene test uses 2,000 instances of
 three faces; it does not claim that 2,000 unique high-resolution cards fit in

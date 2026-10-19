@@ -149,6 +149,8 @@ export interface Budgets {
 export interface Frame {
   viewProjection: Float32Array;
   pointer?: readonly [number, number];
+  /** Defaults to compatibility pointer lighting, including gloss. Studio uses normals only. */
+  lighting?: 'pointer' | 'studio';
   /** Host-owned elapsed seconds. Omit (or keep fixed) for a still surface. */
   time?: number;
   /** Actual hit, in top-left card UVs. Only this instance receives ripple impulses. */

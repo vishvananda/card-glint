@@ -8,7 +8,7 @@ vec3 studioGloss(vec3 ink, vec3 normal, vec3 view, vec3 position) {
   if(nv<=0.)return ink;
   vec3 ray=reflect(-v,n);
   if(ray.z<=.0001)return ink;
-  const vec3 lamp=vec3(-.85,1.10,3.);
+  vec3 lamp=studioLampPosition;
   const vec2 halfSize=vec2(.52,.95);
   float travel=(lamp.z-position.z)/ray.z;
   if(travel<=0.)return ink;
@@ -29,11 +29,7 @@ vec3 studioGloss(vec3 ink, vec3 normal, vec3 view, vec3 position) {
 // Normal-only / 2D hosts use an upright virtual card and a finite studio camera.
 // The native 3D pass instead supplies actual world positions and its own camera.
 vec3 studioCardGloss(vec2 uv, vec3 ink, vec3 normal) {
-  vec3 n=normalize(normal);
-  float cy=max(length(n.yz),.0001);
-  float sx=-n.y/cy,cx=n.z/cy;
-  vec3 right=vec3(cy,sx*n.x,-cx*n.x),up=vec3(0.,cx,sx);
-  vec3 position=right*((uv.x-.5)/aspect)+up*(uv.y-.5);
-  return studioGloss(ink,n,normalize(vec3(0.,0.,2.1)-position),position);
+  vec3 n=normalize(normal),position=studioCardPosition(uv,n);
+  return studioGloss(ink,n,normalize(studioEyePosition-position),position);
 }
 `;

@@ -489,6 +489,9 @@ export class Renderer {
       /** Match the live rain condensation density. */
       rainFog?: Instance['rainFog'];
       pointer?: readonly [number, number];
+      /** Match the live virtual studio and surface pose. */
+      lighting?: Frame['lighting'];
+      normal?: Instance['normal'];
       /** Surface snapshot time in seconds; does not change the live simulation. */
       time?: number;
       /** Optional silhouette warp; fits within the PNG with transparent margins. */
@@ -528,6 +531,7 @@ export class Renderer {
           id: options.instanceId ?? 0,
           card: id,
           finish: options.finish,
+          normal: options.normal,
           rainFog: options.rainFog,
           wear: options.wear,
           cardstock: options.cardstock,
@@ -539,6 +543,7 @@ export class Renderer {
       this.render({
         viewProjection: IDENTITY,
         pointer: options.pointer,
+        lighting: options.lighting,
         time: options.time ?? oldFrame?.time,
       });
       promise = new Promise((resolve, reject) =>

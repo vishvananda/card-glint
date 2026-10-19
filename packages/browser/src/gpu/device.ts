@@ -184,9 +184,11 @@ export class Device {
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, values, 0, length);
     if (this.frameUniforms.get(shader) !== frame) {
       gl.uniformMatrix4fv(this.uniform(shader, 'viewProjection'), false, frame.viewProjection);
-      const pointer = frame.pointer ?? [0.5, 0.5];
+      // Pose controls studio lighting; hover UVs remain independent water inputs.
+      const pointer = frame.lighting === 'studio' ? [0.5, 0.5] : (frame.pointer ?? [0.5, 0.5]);
       gl.uniform2f(this.uniform(shader, 'pointer'), pointer[0], 1 - pointer[1]);
       gl.uniform1f(this.uniform(shader, 'surfaceTime'), frame.time ?? 0);
+      gl.uniform1f(this.uniform(shader, 'studioLighting'), frame.lighting === 'studio' ? 1 : 0);
       this.frameUniforms.set(shader, frame);
     }
   }
@@ -274,6 +276,7 @@ export class Device {
     gl.uniform1f(this.uniform(p, 'hasMask'), 1);
     gl.uniform1f(this.uniform(p, 'satinCompact'), 1);
     gl.uniform1f(this.uniform(p, 'satinHoverGain'), 0);
+
     gl.drawArraysInstanced(gl.TRIANGLES, 0, 6, list.length);
     this.draws++;
   }

@@ -12,6 +12,8 @@ export const printSamplingVersion = 1;
 
 /** Native reflective diffraction finish, independent of local hologram patches. */
 export const holofoilVersion = 1;
+/** Optional normal-driven virtual studio lighting for foil and living surfaces. */
+export const normalLightingVersion = 1;
 
 export {
   DEFAULT_PRINT_DOTS,
