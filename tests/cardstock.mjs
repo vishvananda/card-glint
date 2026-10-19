@@ -138,7 +138,7 @@ try {
       r.render(frame);
       const isolated = pixels();
       frame.pointer = [0.1, 0.7];
-      const tilted = draw(0.2);
+      const tilted = draw(0.2, 'gloss', { normal: [-0.2, 0.1, Math.sqrt(0.95)] });
       frame.pointer = [0.88, 0.15];
       let rejected = 0;
       for (const amount of [-1, 1.01, NaN, Infinity])

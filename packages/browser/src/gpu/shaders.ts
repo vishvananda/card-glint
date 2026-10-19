@@ -23,7 +23,7 @@ flat out float printArtwork;
 flat out float rainFogDensity;
 uniform mat4 viewProjection;
 out vec2 v_uv;out vec3 v_normal;flat out float previewKind;flat out vec2 wearInfo;
-out vec3 studioPosition;flat out vec4 studioCamera;
+out vec3 studioPosition;flat out vec4 studioCamera;flat out float studioVirtual;
 flat out vec4 surfaceInfo;flat out vec4 ripple0;flat out vec4 ripple1;flat out vec4 ripple2;flat out vec4 ripple3;
 void main(){
 vec2 pad=instanceSurface.w*vec2(1.,.18);
@@ -34,17 +34,18 @@ rainFogDensity=instanceRainFog.x;printArtwork=instanceRainFog.y;
 surfaceInfo=instanceSurface;ripple0=instanceRipple0;ripple1=instanceRipple1;ripple2=instanceRipple2;ripple3=instanceRipple3;
 vec4 world=model*vec4(local,0.,1.);
 studioPosition=world.xyz/world.w;
+studioVirtual=viewProjection==mat4(1.)?1.:0.;
 vec4 eye=inverse(viewProjection)*vec4(0.,0.,1.,0.);
 studioCamera=abs(eye.w)>.00001?vec4(eye.xyz/eye.w,1.):vec4(normalize(eye.xyz),0.);
 gl_Position=viewProjection*world;}`;
-const foil = foilShader({ studioGloss: true })
+const foil = foilShader()
   .replace('uniform float previewKind;', 'flat in float previewKind;')
   .replaceAll('texture2D(mask,uv).r*hasMask', 'edgeCoverage(uv)')
   .replaceAll('texture2D(face,', 'printFace(');
 export const fragment = `#version 300 es
 precision highp float;
 in vec2 v_uv;in vec3 v_normal;flat in vec2 wearInfo;
-in vec3 studioPosition;flat in vec4 studioCamera;
+in vec3 studioPosition;flat in vec4 studioCamera;flat in float studioVirtual;
 uniform sampler2D face;uniform sampler2D mask;uniform sampler2D overlay;uniform sampler2D coverage;
 uniform vec2 overlayFoil;
 uniform vec2 pointer;uniform vec4 artBounds[8];
@@ -91,7 +92,10 @@ void main(){
  vec2 corner=abs((uv-.5)*vec2(1.,aspect))-(vec2(.5,aspect*.5)-cornerRadius);
  if(length(max(corner,0.))+min(max(corner.x,corner.y),0.)-cornerRadius>0.)discard;
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
- vec3 shaded=previewLinear(previewKind>=5. && previewKind<8. ? animatedSurface(uv,normalize(v_normal)) : previewFoil(uv,normalize(v_normal),view));
+ vec3 optical;
+ if(previewKind==8. && studioVirtual<.5)optical=studioGloss(previewInk(printFace(uv).rgb),normalize(v_normal),normalize(studioCamera.xyz-studioPosition*studioCamera.w),studioPosition);
+ else optical=previewKind>=5. && previewKind<8. ? animatedSurface(uv,normalize(v_normal)) : previewFoil(uv,normalize(v_normal),view);
+ vec3 shaded=previewLinear(optical);
  vec3 base=printFace(uv).rgb;
  if(cardstockAmount>0. && previewKind>.5)shaded=previewLinear(cardstockGloss(uv,previewInk(base),previewInk(shaded)));
  if(wearInfo.x>0.) {
