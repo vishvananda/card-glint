@@ -156,6 +156,11 @@ keyed by each entry's `group`, and component regions. Use the formats in
 The example contains synthetic values; it does not certify any real printing.
 For an ink region, list its `fields` and review each field's wording provenance.
 Keep an unavailable field unmeasured instead of copying Oracle text into it.
+The initializer uses the public printing correction resolver and records its
+field-level provenance. Exact scan-reviewed empty rules can replace missing
+provider text; a type-only correction cannot. Add new scan-bound reviews under
+the set's `annotations*.json` files, run `npm run magic:data:build`, then create a
+new draft. Artist/stat/cost reviews remain independent of rules and flavor reviews.
 
 ```sh
 node games/magic/tools/accuracy/calibration-study.mjs normalize test-results/4ed-draft.json test-results/4ed-study.json test-results/4ed-templates.json

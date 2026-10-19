@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { access } from 'node:fs/promises';
-import { cacheRoot, readJson, writeJson, hash, objectFile } from './common.mjs';
+import { createServer } from 'vite';
+import { cacheRoot, readJson, writeJson, hash, objectFile, root } from './common.mjs';
 import { readPrintingText } from './printing-text.mjs';
-import { calibrationPresentation } from './calibration-wording.mjs';
+import { reviewedCalibrationInput } from './calibration-reviewed-input.mjs';
 import { calibrationVariant } from './calibration-groups.mjs';
 import { cachedScanFrame } from './scan-frame-cache.mjs';
 
@@ -23,42 +24,53 @@ if (command === 'init') {
   const snapshot = await readJson(path.join(cacheRoot, 'sets', input + '.json'));
   const printing = await readPrintingText(snapshot);
   const entries = [];
-  for (const entry of snapshot.entries) {
-    const card = entry.card;
-    const identity = card.oracle_id ?? card.name;
-    const cohort =
-      parseInt(hash(identity).slice(0, 8), 16) % 3 === 0 ? 'validation' : 'calibration';
-    const base = {
-      id: entry.id,
-      card,
-      reference: entry.reference,
-      art: entry.art,
-      group: calibrationVariant(card).key,
-      cohort,
-    };
-    const issue = entry.issue ?? (card.nonfoil === false ? 'foil-only-reference' : null);
-    if (issue) {
-      entries.push({ ...base, issue });
-      continue;
+  const server = await createServer({
+    configFile: false,
+    root,
+    server: { middlewareMode: true, hmr: false },
+  });
+  try {
+    const api = await server.ssrLoadModule('/games/magic/src/index.ts');
+    for (const entry of snapshot.entries) {
+      const card = entry.card;
+      const identity = card.oracle_id ?? card.name;
+      const cohort =
+        parseInt(hash(identity).slice(0, 8), 16) % 3 === 0 ? 'validation' : 'calibration';
+      const base = {
+        id: entry.id,
+        card,
+        reference: entry.reference,
+        art: entry.art,
+        group: calibrationVariant(card).key,
+        cohort,
+      };
+      const issue = entry.issue ?? (card.nonfoil === false ? 'foil-only-reference' : null);
+      if (issue) {
+        entries.push({ ...base, issue });
+        continue;
+      }
+      let prepared;
+      try {
+        prepared = reviewedCalibrationInput(entry, printing?.cards ?? {}, api);
+      } catch (error) {
+        entries.push({ ...base, issue: String(error.message) });
+        continue;
+      }
+      entries.push({
+        ...base,
+        face: { ...prepared.face, colorCalibration: 'set-hsb-v1' },
+        wordingEvidence: prepared.wordingEvidence,
+        correctionEvidence: prepared.correctionEvidence,
+        normalization: {
+          accepted: false,
+          referenceHash: entry.reference.sha256,
+          reason: 'Frame template not reviewed',
+        },
+        regions: [],
+      });
     }
-    let prepared;
-    try {
-      prepared = calibrationPresentation(entry, {}, printing?.cards);
-    } catch (error) {
-      entries.push({ ...base, issue: String(error.message) });
-      continue;
-    }
-    entries.push({
-      ...base,
-      face: { ...prepared.face, colorCalibration: 'set-hsb-v1' },
-      wordingEvidence: prepared.wordingEvidence,
-      normalization: {
-        accepted: false,
-        referenceHash: entry.reference.sha256,
-        reason: 'Frame template not reviewed',
-      },
-      regions: [],
-    });
+  } finally {
+    await server.close();
   }
   await writeJson(output, {
     schema: 1,

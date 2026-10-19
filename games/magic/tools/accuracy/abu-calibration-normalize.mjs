@@ -11,7 +11,7 @@ const [inputFile, outputDirectory] = process.argv.slice(2);
 if (!outputDirectory) throw Error('Usage: abu-calibration-normalize.mjs INPUTS.json OUT');
 const source = await readJson(inputFile),
   entries = structuredClone(source.entries);
-assert.ok(entries.length > 200 && entries.every((e) => ['lea', 'leb'].includes(e.card.set)));
+assert.ok(entries.length > 200 && entries.every((e) => ['lea', 'leb', '2ed'].includes(e.card.set)));
 const set = entries[0].card.set;
 assert.ok(entries.every((e) => e.card.set === set));
 const dir = path.resolve(outputDirectory);
