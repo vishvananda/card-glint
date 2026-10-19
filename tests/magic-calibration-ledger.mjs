@@ -185,7 +185,13 @@ assert.deepEqual(
   eelGroup.tasks.rules.originalInput.sources,
 );
 assert.equal(reports.length, 272);
-assert.ok(reports.every((s) => !s.complete));
+assert.deepEqual(
+  reports
+    .filter((s) => s.complete)
+    .map((s) => s.set)
+    .sort(),
+  ['lea', 'leb'],
+);
 for (const s of ledger.sets) {
   assert.equal(
     reports.find((r) => r.set === s.set).inventoryReady,

@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "version": "0.5.4",
+  "publishedCommit": "a64dbbee543d572a0d4432a28ffb88ac003a6e33",
+  "publishedAt": "2026-10-19T09:11:39Z",
+  "url": "https://github.com/vishvananda/card-glint/releases/tag/v0.5.4",
+  "checksPassed": true,
+  "ci": {
+    "main": {
+      "run": "https://github.com/vishvananda/card-glint/actions/runs/39224466689",
+      "conclusion": "success"
+    },
+    "release": {
+      "run": "https://github.com/vishvananda/card-glint/actions/runs/39225094128",
+      "conclusion": "success"
+    }
+  },
+  "scope": "Every ordinary nonfoil English Alpha and Beta printing, original wording, existing pinned assets. All applicable calibration tasks audited; retained source-asset and typesetting residuals are not a claim of exact reproduction.",
+  "metricScope": "Fresh single-pass raw-source affine scores from verified native 0.5.4 pixels. Current face recipes and reference/art hashes match all 597 captured printings. Three rejected Alpha scans remain alignment-review; Beta has no rejected live alignments. These live scores differ from the earlier two-stage local audit averages.",
+  "sets": {
+    "lea": {
+      "total": 295,
+      "scored": 292,
+      "alignmentReview": 3,
+      "score100": 67.51735801771565,
+      "metricsFile": "games/magic/fixtures/accuracy/abu-054/lea-live-scores.json.gz",
+      "metricsHash": "ae276793f96ca54be23ff081607567c8865a22d23988363c6e5449377db88611",
+      "compressedHash": "005f247b5a387bf56805e759a1c0c40976e10356e5f8f5d53877f486a3ac7d03",
+      "generation": "4d2a5cff77703da5735e44f8eb883eb4c4601d75ff85bf67afb9c11ed9419f49",
+      "methodHash": "7d94d6d1d3e72f8b534a8c66062e68de639e01ed78722bfaa2637bef5c1761cf"
+    },
+    "leb": {
+      "total": 302,
+      "scored": 302,
+      "alignmentReview": 0,
+      "score100": 68.26963097440328,
+      "metricsFile": "games/magic/fixtures/accuracy/abu-054/leb-live-scores.json.gz",
+      "metricsHash": "98182fb36b833165175e0fc7129a29adae45ef46758a0399a1d148e30dabe3e6",
+      "compressedHash": "08db0c7fb7113e4431b042571687d54a9018434a34164fcf7d892cfcb3e7b152",
+      "generation": "4d2a5cff77703da5735e44f8eb883eb4c4601d75ff85bf67afb9c11ed9419f49",
+      "methodHash": "7d94d6d1d3e72f8b534a8c66062e68de639e01ed78722bfaa2637bef5c1761cf"
+    }
+  },
+  "limits": [
+    "Existing frame textures and the missing secondary ABU inner-border details remain asset improvement work; the reconstructed Alpha frames stay experimental.",
+    "Land-paper tint varies more strongly than colored spell paper. A pooled land-paper proposal regressed individual validation cards and was retained as a rejected candidate, rather than fitted per scan.",
+    "Original manual typesetting can differ from a shared count/wrap rule. Reviewed residual outliers remain discoverable and are not hidden by scan-specific renderer offsets."
+  ]
+}
