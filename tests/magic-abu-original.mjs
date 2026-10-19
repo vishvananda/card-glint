@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { gunzipSync } from 'node:zlib';
 import { createServer } from './magic-vite.mjs';
 const server = await createServer({
   configFile: false,
@@ -16,6 +17,43 @@ try {
     '/games/magic/src/presentation/profile.ts',
   );
   for (const set of ['lea', 'leb']) {
+    const headers = JSON.parse(
+      gunzipSync(await readFile('games/magic/fixtures/accuracy/abu-mana-recheck/headers.json.gz')),
+    ).rows.filter((r) => r.set === set);
+    const costs = Object.fromEntries(headers.map((r) => [r.id, { ...r, manaSymbols: r.observed }]));
+    assert.equal(Object.keys(costs).length, set === 'lea' ? 295 : 302);
+    for (const [id, row] of Object.entries(costs)) {
+      const input = {
+        original: { typeLine: 'Artifact', rulesText: 'Original rules', manaSymbols: row.before },
+        oracle: { typeLine: 'Artifact', rulesText: 'Oracle rules', manaSymbols: ['9'] },
+      };
+      const resolved = resolvePrintingWording(id, input, { referenceSha256: row.referenceHash });
+      assert.deepEqual(resolved.wordings.original.manaSymbols, row.manaSymbols, row.name);
+      assert.deepEqual(resolved.wordings.oracle.manaSymbols, ['9']);
+      assert.deepEqual(input.original.manaSymbols, row.before, 'Do not mutate provider wording');
+    }
+    const tomb = Object.entries(costs).find(([, r]) => r.name === 'Cyclopean Tomb');
+    assert.deepEqual(tomb[1].manaSymbols, set === 'lea' ? [] : ['4']);
+    for (const name of ['Orcish Artillery', 'Orcish Oriflamme']) {
+      const row = Object.values(costs).find((r) => r.name === name);
+      assert.deepEqual(
+        row.manaSymbols,
+        set === 'lea' ? ['1', 'R'] : name === 'Orcish Artillery' ? ['1', 'R', 'R'] : ['3', 'R'],
+      );
+    }
+    const tombFace = withCardWording(
+      { name: 'Cyclopean Tomb', setCode: set, manaSymbols: ['4'] },
+      resolvePrintingWording(tomb[0], {
+        original: { typeLine: 'Artifact', rulesText: 'Original rules', manaSymbols: ['4'] },
+        oracle: { typeLine: 'Artifact', rulesText: 'Oracle rules', manaSymbols: ['4'] },
+      }).wordings,
+      'original',
+    );
+    assert.deepEqual(
+      tombFace.manaSymbols,
+      tomb[1].manaSymbols,
+      'An absent printed cost must not fall back to Oracle',
+    );
     const rows = JSON.parse(
       await readFile(`games/magic/fixtures/accuracy/${set}/annotations-empty-rules.json`),
     ).cards;

@@ -1,0 +1,601 @@
+{
+  "schema": 1,
+  "baselineVersion": "0.5.4",
+  "validationKind": "reused-development",
+  "scope": "Fixed frame-only scan poses. No per-card render offsets or recalibration of scan poses inside mana searches. Independent disc/per-glyph/numeral, spacing and color controls. Whole-cost placement and independent axis sizes retained after explicit trials. These studies certify the unchanged 0.5.4 mana geometry, not the three original-cost errors corrected separately.",
+  "minimumGain": 0.003,
+  "sets": {
+    "lea": {
+      "global": {
+        "calibrationNames": 27,
+        "validationNames": 27,
+        "candidate": {
+          "name": "current",
+          "delta": {}
+        },
+        "calibrationGain": 0,
+        "validationGain": 0,
+        "minimumGain": 0.003,
+        "qualifies": false
+      },
+      "axes": {
+        "calibrationNames": 27,
+        "validationNames": 27,
+        "candidate": {
+          "name": "current",
+          "delta": {}
+        },
+        "calibrationGain": 0,
+        "validationGain": 0,
+        "minimumGain": 0.003,
+        "qualifies": false
+      },
+      "glyphs": {
+        "W": {
+          "calibrationNames": 34,
+          "validationNames": 11,
+          "candidate": {
+            "name": "glyph/1.04/0/-0.5",
+            "delta": {
+              "glyph": {
+                "scale": 1.04,
+                "dx": 0,
+                "dy": -0.5
+              }
+            }
+          },
+          "calibrationGain": 0.0028995220268254185,
+          "validationGain": 0.004787653604386155,
+          "minimumGain": 0.003,
+          "qualifies": false
+        },
+        "U": {
+          "calibrationNames": 5,
+          "validationNames": 5,
+          "candidate": {
+            "name": "glyph/1/0/0.5",
+            "delta": {
+              "glyph": {
+                "scale": 1,
+                "dx": 0,
+                "dy": 0.5
+              }
+            }
+          },
+          "calibrationGain": 0.0014422034560429564,
+          "validationGain": -0.004405408045244585,
+          "minimumGain": 0.003,
+          "qualifies": false
+        },
+        "B": {
+          "calibrationNames": 5,
+          "validationNames": 5,
+          "candidate": {
+            "name": "glyph/1.02/0/0",
+            "delta": {
+              "glyph": {
+                "scale": 1.02,
+                "dx": 0,
+                "dy": 0
+              }
+            }
+          },
+          "calibrationGain": 0.0025277989780678745,
+          "validationGain": -0.0006406764901528694,
+          "minimumGain": 0.003,
+          "qualifies": false
+        },
+        "R": {
+          "calibrationNames": 5,
+          "validationNames": 5,
+          "candidate": {
+            "name": "glyph/1.02/-0.5/0.5",
+            "delta": {
+              "glyph": {
+                "scale": 1.02,
+                "dx": -0.5,
+                "dy": 0.5
+              }
+            }
+          },
+          "calibrationGain": 0.00029089073938326493,
+          "validationGain": 0.0013408439836977148,
+          "minimumGain": 0.003,
+          "qualifies": false
+        },
+        "G": {
+          "calibrationNames": 5,
+          "validationNames": 5,
+          "candidate": {
+            "name": "current",
+            "delta": {}
+          },
+          "calibrationGain": 0,
+          "validationGain": 0,
+          "minimumGain": 0.003,
+          "qualifies": false
+        }
+      },
+      "numerals": {
+        "calibrationNames": 11,
+        "validationNames": 13,
+        "candidate": {
+          "name": "number/1.02/0/-0.5",
+          "delta": {
+            "numberScale": 1.02,
+            "numberDx": 0,
+            "numberDy": -0.5
+          }
+        },
+        "calibrationGain": 0.0017954021549193566,
+        "validationGain": 0.005537543872364714,
+        "minimumGain": 0.003,
+        "qualifies": false
+      },
+      "discGroups": {
+        "R": {
+          "total": 46,
+          "accepted": 46,
+          "training": 31,
+          "validation": 15,
+          "target": [0.807843137254902, 0.6313725490196078, 0.5450980392156862],
+          "geometry": {
+            "dx": 0.375,
+            "dy": 0,
+            "diameter": -0.5
+          },
+          "discDeltaE": 1.3861534529401855,
+          "glyphDeltaE": 1.7394111843474436,
+          "colorTrial": {
+            "before": 1.3703793788719427,
+            "after": 1.3703793788719427,
+            "worstRegression": 0
+          }
+        },
+        "B": {
+          "total": 46,
+          "accepted": 43,
+          "training": 26,
+          "validation": 17,
+          "target": [0.4, 0.4235294117647059, 0.4235294117647059],
+          "geometry": {
+            "dx": 0.25,
+            "dy": 0,
+            "diameter": -0.75
+          },
+          "discDeltaE": 2.872708812178478,
+          "glyphDeltaE": 3.4632141512828243,
+          "colorTrial": {
+            "before": 2.5649743898292434,
+            "after": 2.9497574431975835,
+            "worstRegression": 2.9480322408214845
+          }
+        },
+        "W": {
+          "total": 45,
+          "accepted": 45,
+          "training": 34,
+          "validation": 11,
+          "target": [0.8509803921568627, 0.8588235294117647, 0.796078431372549],
+          "geometry": {
+            "dx": 0.125,
+            "dy": 0,
+            "diameter": -0.5
+          },
+          "discDeltaE": 0.901743883944762,
+          "glyphDeltaE": 1.8580303146222075,
+          "colorTrial": {
+            "before": 0.9130898466446512,
+            "after": 0.8764838877885073,
+            "worstRegression": 0.6084476436878345
+          }
+        },
+        "U": {
+          "total": 46,
+          "accepted": 46,
+          "training": 30,
+          "validation": 16,
+          "target": [0.6078431372549019, 0.7294117647058823, 0.7803921568627451],
+          "geometry": {
+            "dx": 0.375,
+            "dy": 0,
+            "diameter": -1
+          },
+          "discDeltaE": 0.8112489330543081,
+          "glyphDeltaE": 2.361109008128203,
+          "colorTrial": {
+            "before": 0.8194005885761109,
+            "after": 0.8194005885761109,
+            "worstRegression": 0
+          }
+        },
+        "N": {
+          "total": 47,
+          "accepted": 46,
+          "training": 33,
+          "validation": 13,
+          "target": [0.4980392156862745, 0.5529411764705883, 0.5725490196078431],
+          "geometry": {
+            "dx": 0.0625,
+            "dy": -0.25,
+            "diameter": -0.75
+          },
+          "discDeltaE": 1.903156618777147,
+          "glyphDeltaE": 1.6588095992924297,
+          "colorTrial": {
+            "before": 2.3701153368234125,
+            "after": 2.2135523680602556,
+            "worstRegression": 0.9142795295066095
+          }
+        },
+        "G": {
+          "total": 46,
+          "accepted": 46,
+          "training": 31,
+          "validation": 15,
+          "target": [0.596078431372549, 0.6980392156862745, 0.5372549019607843],
+          "geometry": {
+            "dx": 0.3125,
+            "dy": 0.25,
+            "diameter": -0.5
+          },
+          "discDeltaE": 1.2301961306991895,
+          "glyphDeltaE": 1.9552294268348052,
+          "colorTrial": {
+            "before": 1.3363991956403805,
+            "after": 1.3363991956403805,
+            "worstRegression": 0
+          }
+        }
+      },
+      "spacing": {
+        "calibration": {
+          "cards": 95,
+          "nativePitch": 27,
+          "referencePitch": 26.875,
+          "delta": -0.125
+        },
+        "validation": {
+          "cards": 48,
+          "nativePitch": 27,
+          "referencePitch": 27,
+          "delta": -0.125
+        }
+      }
+    },
+    "leb": {
+      "global": {
+        "calibrationNames": 27,
+        "validationNames": 27,
+        "candidate": {
+          "name": "0.5/0/1.02/0",
+          "delta": {
+            "dx": 0.5,
+            "dy": 0,
+            "scaleX": 1.02,
+            "scaleY": 1.02,
+            "spacing": 0
+          }
+        },
+        "calibrationGain": 0.0009669886564399599,
+        "validationGain": 0.0027585640088924057,
+        "minimumGain": 0.003,
+        "qualifies": false
+      },
+      "axes": {
+        "calibrationNames": 27,
+        "validationNames": 27,
+        "candidate": {
+          "name": "axes/1/1.02",
+          "delta": {
+            "scaleX": 1,
+            "scaleY": 1.02
+          }
+        },
+        "calibrationGain": 0.00024675777137150856,
+        "validationGain": 0.00012479259609321502,
+        "minimumGain": 0.003,
+        "qualifies": false
+      },
+      "glyphs": {
+        "W": {
+          "calibrationNames": 5,
+          "validationNames": 5,
+          "candidate": {
+            "name": "glyph/0.98/0/0",
+            "delta": {
+              "glyph": {
+                "scale": 0.98,
+                "dx": 0,
+                "dy": 0
+              }
+            }
+          },
+          "calibrationGain": 0.0005347352345870249,
+          "validationGain": 0.0006893291708616189,
+          "minimumGain": 0.003,
+          "qualifies": false
+        },
+        "U": {
+          "calibrationNames": 5,
+          "validationNames": 5,
+          "candidate": {
+            "name": "glyph/1.02/0/0.5",
+            "delta": {
+              "glyph": {
+                "scale": 1.02,
+                "dx": 0,
+                "dy": 0.5
+              }
+            }
+          },
+          "calibrationGain": 0.002574885331409482,
+          "validationGain": 0.002234564746308343,
+          "minimumGain": 0.003,
+          "qualifies": false
+        },
+        "B": {
+          "calibrationNames": 5,
+          "validationNames": 5,
+          "candidate": {
+            "name": "glyph/1.02/0/0",
+            "delta": {
+              "glyph": {
+                "scale": 1.02,
+                "dx": 0,
+                "dy": 0
+              }
+            }
+          },
+          "calibrationGain": 0.0032203556874194073,
+          "validationGain": 0.0014211365879172044,
+          "minimumGain": 0.003,
+          "qualifies": false
+        },
+        "R": {
+          "calibrationNames": 5,
+          "validationNames": 5,
+          "candidate": {
+            "name": "glyph/1.02/0/0",
+            "delta": {
+              "glyph": {
+                "scale": 1.02,
+                "dx": 0,
+                "dy": 0
+              }
+            }
+          },
+          "calibrationGain": 0.0015172519707922216,
+          "validationGain": 0.001960394293988754,
+          "minimumGain": 0.003,
+          "qualifies": false
+        },
+        "G": {
+          "calibrationNames": 5,
+          "validationNames": 5,
+          "candidate": {
+            "name": "current",
+            "delta": {}
+          },
+          "calibrationGain": 0,
+          "validationGain": 0,
+          "minimumGain": 0.003,
+          "qualifies": false
+        }
+      },
+      "numerals": {
+        "calibrationNames": 16,
+        "validationNames": 14,
+        "candidate": {
+          "name": "number/1.06/0/0",
+          "delta": {
+            "numberScale": 1.06,
+            "numberDx": 0,
+            "numberDy": 0
+          }
+        },
+        "calibrationGain": 0.0017329397607360741,
+        "validationGain": 0.0017510243289379224,
+        "minimumGain": 0.003,
+        "qualifies": false
+      },
+      "discGroups": {
+        "W": {
+          "total": 46,
+          "accepted": 46,
+          "training": 35,
+          "validation": 11,
+          "target": [0.8941176470588236, 0.8941176470588236, 0.8196078431372549],
+          "geometry": {
+            "dx": 0.5,
+            "dy": -0.5,
+            "diameter": -0.5
+          },
+          "discDeltaE": 0.6884936743513256,
+          "glyphDeltaE": 1.8197878044857467,
+          "colorTrial": {
+            "before": 0.8777611640496332,
+            "after": 0.8777611640496332,
+            "worstRegression": 0
+          }
+        },
+        "U": {
+          "total": 46,
+          "accepted": 46,
+          "training": 30,
+          "validation": 16,
+          "target": [0.6588235294117647, 0.8, 0.8588235294117647],
+          "geometry": {
+            "dx": 0.5,
+            "dy": -0.75,
+            "diameter": -0.5
+          },
+          "discDeltaE": 0.7937074239169388,
+          "glyphDeltaE": 1.6121276329237877,
+          "colorTrial": {
+            "before": 0.7199873525029792,
+            "after": 0.7199873525029792,
+            "worstRegression": 0
+          }
+        },
+        "B": {
+          "total": 46,
+          "accepted": 46,
+          "training": 27,
+          "validation": 19,
+          "target": [0.40784313725490196, 0.43137254901960786, 0.43529411764705883],
+          "geometry": {
+            "dx": 0,
+            "dy": -0.625,
+            "diameter": -0.5
+          },
+          "discDeltaE": 3.6036035492590273,
+          "glyphDeltaE": 1.3479838283750643,
+          "colorTrial": {
+            "before": 2.1579747754915277,
+            "after": 3.555026447212821,
+            "worstRegression": 3.823121152060293
+          }
+        },
+        "R": {
+          "total": 46,
+          "accepted": 45,
+          "training": 30,
+          "validation": 15,
+          "target": [0.8431372549019608, 0.6666666666666666, 0.5882352941176471],
+          "geometry": {
+            "dx": 0.375,
+            "dy": -0.75,
+            "diameter": -0.25
+          },
+          "discDeltaE": 1.2476723377463803,
+          "glyphDeltaE": 1.0835208419919897,
+          "colorTrial": {
+            "before": 1.3013937050953668,
+            "after": 1.50651677324511,
+            "worstRegression": 0.33801894780089436
+          }
+        },
+        "G": {
+          "total": 46,
+          "accepted": 46,
+          "training": 31,
+          "validation": 15,
+          "target": [0.6823529411764706, 0.7686274509803922, 0.6392156862745098],
+          "geometry": {
+            "dx": 0.25,
+            "dy": -0.625,
+            "diameter": -0.25
+          },
+          "discDeltaE": 1.1030046741576565,
+          "glyphDeltaE": 1.4346395133073344,
+          "colorTrial": {
+            "before": 1.033059924782361,
+            "after": 1.2355082094329422,
+            "worstRegression": 0.806073269464922
+          }
+        },
+        "N": {
+          "total": 47,
+          "accepted": 47,
+          "training": 33,
+          "validation": 14,
+          "target": [0.6549019607843137, 0.6784313725490196, 0.6823529411764706],
+          "geometry": {
+            "dx": 0.25,
+            "dy": -0.75,
+            "diameter": -0.25
+          },
+          "discDeltaE": 2.540694533028499,
+          "glyphDeltaE": 1.3175565492613521,
+          "colorTrial": {
+            "before": 2.5294103516972903,
+            "after": 1.9456927688441528,
+            "worstRegression": 1.8509631055011244
+          }
+        }
+      },
+      "spacing": {
+        "calibration": {
+          "cards": 88,
+          "nativePitch": 26.875,
+          "referencePitch": 26.875,
+          "delta": 0
+        },
+        "validation": {
+          "cards": 46,
+          "nativePitch": 26.875,
+          "referencePitch": 26.875,
+          "delta": 0
+        }
+      }
+    }
+  },
+  "files": {
+    "lea-global.json.gz": {
+      "sha256": "da9e665cb932c47e06c0a45c774d1ef3ec576d0c7e224448dc6e681d8155aea4",
+      "uncompressedSha256": "e75cac56bfecb0e82713274e2400d375210b28bdde809fc93a72f378abbe7314"
+    },
+    "lea-axes.json.gz": {
+      "sha256": "52845620b60631c991c363cb2deb341a4c49b6e0843388dd1adda622f50c5cdc",
+      "uncompressedSha256": "a72c5e720116181f23a7f264a8589fc56c7c4edbd2e02cc9312242388d55d688"
+    },
+    "lea-glyphs.json.gz": {
+      "sha256": "2c1551d9e21bd11bec1d120ca7bbd49a79cd08c56dbe9151f2d4db828c68ab15",
+      "uncompressedSha256": "c3a30021060ab5fdef3056a56b822861019dc29c7defdb613a86f0d0f2987ca8"
+    },
+    "lea-discs.json.gz": {
+      "sha256": "1506abd7e5969ecd3a4af07cbdd7f027836ec48bdfd950a6790ee0ae5f1bb537",
+      "uncompressedSha256": "67def5cd1298b166a45d30dd08618e573b840acbef3425eb422d717a0a982453"
+    },
+    "lea-spacing.json.gz": {
+      "sha256": "63af3d3c7cb9d5efde64adf7c67e7c764f2a948e93a3f26a4ef5ba045f342605",
+      "uncompressedSha256": "1acad175e81f7aa10eaae84b68c203ddfddb10ea6e65ff1d6862383023f2f3e6"
+    },
+    "leb-global.json.gz": {
+      "sha256": "b33b7999f2df58b9678397e289dc7d5a6df8f687153017ad90ceed3a88a9d58b",
+      "uncompressedSha256": "4dee3d0007f2582028f525e686f2b4997e5a5e9b84a0a34c0d94770c517989e3"
+    },
+    "leb-axes.json.gz": {
+      "sha256": "b42b07396acc9a8882fc32bfcac694ec084ddca100b129dbe77a584392dcaf8d",
+      "uncompressedSha256": "de3f829ab8f921639db3bdc0a35783386c4a62c287a25b64c78f32ec7e206ae4"
+    },
+    "leb-glyphs.json.gz": {
+      "sha256": "a2af74ae4ea9942891dfee4c3c8e6c603d4a6051027531aef9a35d12977fed9a",
+      "uncompressedSha256": "b20a3790986f94101d25e1f5e76b59309e5d033bbb82972f89d49b71be702e64"
+    },
+    "leb-discs.json.gz": {
+      "sha256": "18f3e8051c78cb4cabc96238f508561d95d559dca8666851bc5561a234fc51e1",
+      "uncompressedSha256": "c5fd22dca35d56731b7976024af6c5496e6ae8a90abec75d6435db8739319803"
+    },
+    "leb-spacing.json.gz": {
+      "sha256": "edc019f6d4360d3031589f5bf000b1c0fd4e5028ab807f537dcb4cb2093d0eaf",
+      "uncompressedSha256": "bfbacdd8a5581d06ba28869ddf4fa45e25b5b3c844e09182a941916db45cc261"
+    },
+    "lea-all-white.json.gz": {
+      "sha256": "3ae9076ed4bd15782a90ec259326af63cc9428d6ce1997fa47410d0040e95768",
+      "uncompressedSha256": "6b48dcb6a486a50918fed7079fc132878a35bf5a78c4d800e5308ad149038797"
+    },
+    "lea-all-white-inputs.json.gz": {
+      "sha256": "b1b578673caa2d93f48ac957ced984fe5dd7f4238e2fe173a8eb5ddf357c5cbb",
+      "uncompressedSha256": "19061246c42137295fe0f52c316cc9573d0a4be2cc7a6a91e6fbb77d08a8c530"
+    },
+    "lea-all-white-normalization.json.gz": {
+      "sha256": "5b833d816bf9a86d5200abf3cadefbc08a5b01c735e934890cdfcace7cbfe521",
+      "uncompressedSha256": "570931331338cc7de707bc5168641fd7c9e151c604c6dc3e40520ded8431d2a2"
+    },
+    "headers.json.gz": {
+      "sha256": "76610485f9c520fa43de0d0cc3d64400d3ea21c137411dd7f5e2b595555b8cfc",
+      "uncompressedSha256": "d8b2c709dad204414d3d4fbb6eae04ccc4d670a74a544af60c6e298a69eb66fd"
+    }
+  },
+  "notes": [
+    "The earlier Alpha generic-numeral search did not prepare its adjustable numeral layer. It is superseded here by active-control and full-native trial parity checks.",
+    "All 597 original cost headers were visually reviewed. Alpha Cyclopean Tomb has no printed cost; Alpha Orcish Artillery and Orcish Oriflamme print 1R. The other costs match.",
+    "All 45 Alpha white printings were tested after the initial 10-name proposal. Calibration gain 0.002900 falls below the predeclared >0.003 gate; retain the baseline.",
+    "Generic-number proposals are judged across mixed colored costs, not only the four artifact examples.",
+    "Three Alpha frame-rejected scans remain excluded from ranked comparisons. The historical attempted circle on Alpha Cyclopean Tomb was an input error, not a scan failure.",
+    "Beta Demonic Hordes is measured with a shared expanded search range. Red Elemental Blast remains a circle-estimator outlier: its header and cost were visually checked; do not alter its scan pose or renderer offset.",
+    "The archived original spacing pass uses the narrower disc measurements. Its excluded perimeter measurements remain visible; no individual printing receives an offset from those diagnostics."
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "a2754f7c65d5e5a70167054cb46ff6b34d40a240daa4d2226d7cc3b4d0a682b0",
+  "revision": "9381076e26057ff04b3d053c5561d9e8b98540ef2dfe2bb0cf31ee2d2f17ddb0",
   "artistRevision": "fd5d3692b5b9fad700d8de65cd8ec24eeb52b1fbe2ffc589cc7526ae693a9b43",
   "sets": {
     "0014def3-4063-4929-ac51-76aef1bb2a68": "arn",
@@ -17851,6 +17851,14 @@
         "fields": {
           "typeLine": "Mono Artifact"
         }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/lea/annotations-original-cost.json",
+        "referenceSha256": "cbdb8973ea63f68bead4c09fdbb053f55acec57833610cd18f969ce7ec8ab8b0",
+        "reason": "Alpha omits the entire mana cost. Preserve an empty symbol list; Oracle and Beta retain 4.",
+        "fields": {
+          "manaSymbols": []
+        }
       }
     ],
     "8965ce61-0522-4f77-a82d-89441d1ba867": [
@@ -18763,6 +18771,14 @@
         "reason": "Visually transcribed from the frozen Scryfall Alpha scan type strip; no rules/body certification.",
         "fields": {
           "typeLine": "Enchantment"
+        }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/lea/annotations-original-cost.json",
+        "referenceSha256": "d2b3b7679d00377c1de6ea2a9b4c463b43012ec685f79de962adda5fd0dc871a",
+        "reason": "Alpha prints 1R. Preserve the printed cost independently of the corrected Oracle cost and later editions.",
+        "fields": {
+          "manaSymbols": ["1", "R"]
         }
       }
     ],
@@ -21916,6 +21932,14 @@
         "reason": "Visually transcribed from the frozen Scryfall Alpha scan type strip; no rules/body certification.",
         "fields": {
           "typeLine": "Summon Orcs"
+        }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/lea/annotations-original-cost.json",
+        "referenceSha256": "b70e9b55c0aa0b74936b09e03a60b1126ae6452e5bb092cfffa1a0f2feb705db",
+        "reason": "Alpha prints 1R. Preserve the printed cost independently of the corrected Oracle cost and later editions.",
+        "fields": {
+          "manaSymbols": ["1", "R"]
         }
       }
     ],

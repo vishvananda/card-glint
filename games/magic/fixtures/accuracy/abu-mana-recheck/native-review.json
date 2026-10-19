@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "version": "0.5.5",
+  "status": "native-validated-release-pending",
+  "baselineVersion": "0.5.4",
+  "scope": "Original wording only. Only three Alpha printed costs change. Existing geometry, colors, fonts, art, corners and Beta pixels remain unchanged.",
+  "rendererHash": "0b2e6d2fe2deae76a9f7847f3dfde9a629a70cdf2b55dc22b7040c0950c75173",
+  "files": {
+    "lea-native.json.gz": {
+      "sha256": "a7222df0d9296e7b8443eabd1c218b1c8af0fcf7b3e2b082285d981e4506701a",
+      "uncompressedSha256": "57253b4c96847b2ca9952c25d527a4601ad2459ec8179254d4be2aac4e9bc8b3"
+    },
+    "leb-native.json.gz": {
+      "sha256": "0eaf983d3bd7371e45148c7dfe2035c19874668bfb29b809e7a612c647fdc535",
+      "uncompressedSha256": "eaaff0081960283df823d7de9442a5ad60b1fb2d50203dac2972141c0b2fe7e9"
+    },
+    "lea-inputs.json.gz": {
+      "sha256": "68ed4033e5524a8364b7e24ae4c0224827b8d95b3ece2fd5bfdb5b98780fd16f",
+      "uncompressedSha256": "34bfda52593cb41039f93ef1dde07ca9c373577c0e91eb0ff48ca657ff0f4f1d"
+    },
+    "lea-normalization.json.gz": {
+      "sha256": "8480562d4d7aa8ccdb140435471af4c6668689ee992a289bf0ecff5d031021c2",
+      "uncompressedSha256": "883da5bd0ea502ad950557d9847689c9bd96d32621fbef6121a219983c79fb6a"
+    },
+    "lea-scores.json.gz": {
+      "sha256": "517bd839d24929f026ce3d249a8731559eaccea02396d37311a0eefb3edcd067",
+      "uncompressedSha256": "1d277920c4e2337c8fe44fa9ef8c726ff4412e01591b61bf3c73b9089399fe45"
+    }
+  },
+  "sets": {
+    "lea": {
+      "total": 295,
+      "changed": 3,
+      "reusedScores": 292,
+      "changedScores": [
+        {
+          "id": "894c5cf2-8ae2-427a-bcbc-67df0bdfee9d",
+          "name": "Cyclopean Tomb",
+          "before100": 53.91225400326747,
+          "after100": 53.093767023731395,
+          "beforeMana100": 58.66473623987108,
+          "afterMana100": null
+        },
+        {
+          "id": "911538ea-322c-4c40-a9c3-35e47fe60fce",
+          "name": "Orcish Oriflamme",
+          "before100": 74.0432799443738,
+          "after100": 74.56305329901727,
+          "beforeMana100": 84.11524355280194,
+          "afterMana100": 89.31297709923665
+        },
+        {
+          "id": "a97208b1-a91b-4129-8a00-2f97b418accc",
+          "name": "Orcish Artillery",
+          "before100": 70.19774994567996,
+          "after100": 71.44042227064882,
+          "beforeMana100": 77.46098241220332,
+          "afterMana100": 91.66041070135462
+        }
+      ]
+    },
+    "leb": {
+      "total": 302,
+      "changed": 0,
+      "scoreReuse": "All 302 native PNGs are byte-identical to the frozen 0.5.4 native replay; input faces, artwork, scans and comparison poses are unchanged."
+    }
+  },
+  "notes": [
+    "The native capture tool retains a historical 0.5.3 parent description. Its actual parent was the frozen 0.5.4 native capture; every before hash is independently matched against abu-054/*-native-replay.json.gz.",
+    "Cyclopean Tomb no longer has an eligible mana region. Its weighted whole-card index decreases because an inapplicable component is removed; this is not a pixel regression.",
+    "Header review is exhaustive across all 597 printings. Only three cost exceptions are shipped; unchanged costs remain offline evidence.",
+    "The mana geometry searches predate the three cost corrections. None of the affected printings appears in the selected geometry/glyph studies, and all selected native PNGs remain byte-identical. The false Cyclopean Tomb circle measurement is explicitly reclassified as missing printed cost."
+  ]
+}

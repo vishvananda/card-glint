@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "set": "lea",
+  "note": "Exact Alpha printed costs verified against pinned scans. Only differences from the supplied cost are shipped; the exhaustive 597-header review remains offline evidence in abu-mana-recheck/headers.json.gz.",
+  "cards": {
+    "894c5cf2-8ae2-427a-bcbc-67df0bdfee9d": {
+      "name": "Cyclopean Tomb",
+      "referenceHash": "cbdb8973ea63f68bead4c09fdbb053f55acec57833610cd18f969ce7ec8ab8b0",
+      "reviewedFields": ["manaSymbols"],
+      "manaSymbols": [],
+      "reviewNote": "Alpha omits the entire mana cost. Preserve an empty symbol list; Oracle and Beta retain 4."
+    },
+    "911538ea-322c-4c40-a9c3-35e47fe60fce": {
+      "name": "Orcish Oriflamme",
+      "referenceHash": "d2b3b7679d00377c1de6ea2a9b4c463b43012ec685f79de962adda5fd0dc871a",
+      "reviewedFields": ["manaSymbols"],
+      "manaSymbols": ["1", "R"],
+      "reviewNote": "Alpha prints 1R. Preserve the printed cost independently of the corrected Oracle cost and later editions."
+    },
+    "a97208b1-a91b-4129-8a00-2f97b418accc": {
+      "name": "Orcish Artillery",
+      "referenceHash": "b70e9b55c0aa0b74936b09e03a60b1126ae6452e5bb092cfffa1a0f2feb705db",
+      "reviewedFields": ["manaSymbols"],
+      "manaSymbols": ["1", "R"],
+      "reviewNote": "Alpha prints 1R. Preserve the printed cost independently of the corrected Oracle cost and later editions."
+    }
+  }
+}
