@@ -14,7 +14,7 @@ have no direct lighting effect. Existing cardstock modulates the coating.
 The preview uses the normalized 2D virtual studio with physical posed normals.
 Its visual tilt and optical normal use the same bounded angles: vertical rotation
 is reduced from 17.2° to 14.9°, horizontal rotation retains 21.8°, and the combined
-angle is capped at 22°. The card motion springs remain host-owned. All three
+angle is capped at 18°. The card motion springs remain host-owned. All three
 cards again share one renderer and one lighting model; export uses that model.
 
 Prepare a new local directory from the existing private preview:

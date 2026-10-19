@@ -51,7 +51,7 @@ html = html
   )
   .replace(
     '<p id="cohort-note">',
-    '<p>All three cards use the same pack-fresh softbox gloss. Vertical tilt is reduced and combined tilt is capped at 22°. Lighting is excluded from the scores and flat overlays.</p><p id="cohort-note">',
+    '<p>All three cards use the same pack-fresh softbox gloss. Vertical tilt is reduced and combined tilt is capped at 18°. Lighting is excluded from the scores and flat overlays.</p><p id="cohort-note">',
   );
 await writeFile(path.join(outputSite, 'index.html'), html);
 await cp(path.join(baseSite, 'style.css'), path.join(outputSite, 'style.css'));
