@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { chromium } from 'playwright';
 import { createServer, transformWithEsbuild } from 'vite';
-import { format } from 'prettier';
+import { format, resolveConfig } from 'prettier';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const proofFile = 'games/magic/fixtures/accuracy/host-worker/source-proof.json';
 const proof = JSON.parse(await readFile(proofFile));
@@ -243,9 +243,10 @@ try {
   };
   if (process.argv.includes('--capture')) {
     const out = proof.evidence;
-    await writeFile(out, await format(JSON.stringify(report), { parser: 'json' }));
+    const options = { ...(await resolveConfig(proofFile)), parser: 'json' };
+    await writeFile(out, await format(JSON.stringify(report), options));
     proof.evidenceHash = sha(await readFile(out));
-    await writeFile(proofFile, await format(JSON.stringify(proof), { parser: 'json' }));
+    await writeFile(proofFile, await format(JSON.stringify(proof), options));
   }
   console.log(
     JSON.stringify({
