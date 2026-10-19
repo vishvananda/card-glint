@@ -4,6 +4,7 @@ import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { FACE_RECTS } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
+import { battlePhysicalRect } from './battle-layout.js';
 
 export const MSE_TEMPLATE_ROOT = manifest.MSE_TEMPLATE_ROOT;
 export type StandardTemplate = NonNullable<RenderedCardInput['frameTemplate']>;
@@ -44,7 +45,8 @@ export const STANDARD_TEMPLATE_DEFAULTS = {
     size: [523, 375],
     style: 'magic-m15-mainframe-battles.mse-style',
     title: [67, 21, 410, 22],
-    art: [41, 15, 467, 345],
+    // Boxed image aperture, not the full-height image behind opaque printing.
+    art: [63, 51, 422, 162],
     type: [67, 219, 366, 22],
     rules: [69, 254, 400, 96],
     stats: [480, 336, 22, 24],
@@ -134,7 +136,7 @@ export function standardTemplateRects(face: RenderedCardInput) {
     const [x, y, w, h] = rect,
       [width, height] = spec.size;
     return face.frameTemplate === 'battle'
-      ? [y / height, 1 - (x + w) / width, h / height, w / width]
+      ? battlePhysicalRect(rect)
       : [x / width, y / height, w / width, h / height];
   };
   return {

@@ -2,6 +2,7 @@ import { coverImage, type ImageFit } from '../../../../packages/browser/src/imag
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { faceRects } from './special-frames.js';
 import { illustrationTarget } from './illustration-layout.js';
+import { battleNativeRect, battlePhysicalRect } from './battle-layout.js';
 export interface ArtPlacement extends ImageFit {
   mode: 'window' | 'behind-text';
   /** Behind-text paper opacity; defaults to 0.8. Printing remains opaque. */
@@ -76,17 +77,22 @@ export function artworkGeometry(
   if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0)
     throw Error('Artwork dimensions must be positive');
   const source = face.illustrationCrop ?? [0, 0, 1, 1],
-    aperture = faceRects(face).art;
-  const target = illustrationTarget(face, aperture);
-  const rect = coverImage(
-    width * source[2],
-    height * source[3],
-    [target[0] * 488, target[1] * 680, target[2] * 488, target[3] * 680],
-    face.artPlacement,
-  );
+    aperture = faceRects(face).art,
+    battle = face.frameTemplate === 'battle';
+  const target = battle
+    ? illustrationTarget(face, battleNativeRect(aperture), 523, 375, -90)
+    : illustrationTarget(
+        face,
+        [aperture[0] * 488, aperture[1] * 680, aperture[2] * 488, aperture[3] * 680],
+        488,
+        680,
+      );
+  const rect = coverImage(width * source[2], height * source[3], target, face.artPlacement);
   return {
     source,
-    destination: [rect[0] / 488, rect[1] / 680, rect[2] / 488, rect[3] / 680],
+    destination: battle
+      ? battlePhysicalRect(rect)
+      : [rect[0] / 488, rect[1] / 680, rect[2] / 488, rect[3] / 680],
     aperture,
   };
 }

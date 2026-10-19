@@ -18,6 +18,7 @@ import {
   templateFooter,
 } from './template-typography.js';
 import { paintFlipTemplate } from './flip-template-paint.js';
+import { BATTLE_REVERSE_STATS, battleReverseStatsLayout } from './battle-layout.js';
 
 /** First rendering coverage from source defaults. No scan-fitted placements,
  * text exceptions or color profiles are borrowed from other frame families. */
@@ -58,7 +59,7 @@ export function paintStandardTemplate(
     }
     if (parts.kind !== 'battle') throw Error('Unexpected standard template branch');
     if (layer !== 'artwork') c.drawImage(required(parts.texture), 0, 0, 523, 375);
-    paintIllustration(c, face, images, spec.art, layer);
+    paintIllustration(c, face, images, spec.art, layer, spec.size, -90);
     if (layer === 'artwork') return;
     c.drawImage(base, 0, 0, spec.size[0], spec.size[1]);
     c.drawImage(required(parts.border), 0, 0, 523, 375);
@@ -77,6 +78,15 @@ export function paintStandardTemplate(
       c.fillStyle = 'white';
       templateLabel(c, String(face.defense), spec.stats, 17, family);
     } else templateStats(c, face, spec.stats, 18, family);
+    const reverse = battleReverseStatsLayout(c, face);
+    if (reverse) {
+      c.fillStyle = BATTLE_REVERSE_STATS.color;
+      c.font = reverse.font;
+      c.textAlign = 'right';
+      c.textBaseline = 'alphabetic';
+      c.letterSpacing = '0px';
+      c.fillText(reverse.text, reverse.x, reverse.baseline);
+    }
     const icon = images.get(faceSetSymbol(face) ?? '');
     if (icon) {
       const [x, y, w, h] = spec.symbol,
@@ -96,8 +106,19 @@ export function paintStandardTemplate(
 }
 
 let templateFonts: Promise<void> | undefined;
+let battleStatsFont: Promise<void> | undefined;
 export function loadStandardTemplateFonts(face: RenderedCardInput): Promise<void> {
-  if (!face.frameTemplate || face.frameTemplate === 'battle') return Promise.resolve();
+  if (!face.frameTemplate) return Promise.resolve();
+  if (face.frameTemplate === 'battle') {
+    if (!face.reverseStats) return Promise.resolve();
+    return (battleStatsFont ??= document.fonts
+      .load(BATTLE_REVERSE_STATS.font)
+      .then(() => undefined)
+      .catch((error) => {
+        battleStatsFont = undefined;
+        throw error;
+      }));
+  }
   return (templateFonts ??= Promise.all([
     canvasFonts().load('400 24px "CardRenderer MTG Matrix"'),
     canvasFonts().load('700 24px "CardRenderer MTG Matrix"'),

@@ -40,6 +40,7 @@ export { SAGA_CHAPTER, SAGA_MARKER_GEOMETRY, SAGA_RECTS } from './presentation/s
 export * from './presentation/symbol-adjustment.js';
 
 export * from './presentation/standard-frame-templates.js';
+export * from './presentation/battle-layout.js';
 
 export { hasOvalSecurityStamp } from './presentation/security-stamp-policy.js';
 export { mountedSecurityStamp } from './presentation/security-stamp-paint.js';

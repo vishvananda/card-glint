@@ -8,11 +8,13 @@ import {
   FACE_WIDTH,
   etchedSetLabel,
   type RenderedCardInput,
+  type FaceRect,
 } from './face-layout.js';
 import { faceEtchingSymbol } from './assets.js';
 import { acquireSetSymbolMask } from './set-symbol-mask.js';
 import { loadCanvasImages } from './canvas-assets.js';
 import { illustrationCover, illustrationTarget } from './illustration-layout.js';
+import { battleNativeRect } from './battle-layout.js';
 
 /** Host-owned mask resolution. The pack owns placement, clipping and stamp geometry. */
 export type EtchingResolver = (
@@ -82,28 +84,43 @@ async function paintMask(
       if (bitmap && !signal.aborted) {
         await beforePaint?.();
         signal.throwIfAborted();
-        const [rx, ry, rw, rh] = faceRects(face).art;
-        const x = rx * FACE_WIDTH,
-          y = ry * height,
-          w = rw * FACE_WIDTH,
-          h = rh * height;
+        const battle = face.frameTemplate === 'battle',
+          width = battle ? 523 : FACE_WIDTH,
+          artHeight = battle ? 375 : height;
+        const aperture = faceRects(face).art,
+          bounds: FaceRect = battle
+            ? battleNativeRect(aperture)
+            : [
+                aperture[0] * width,
+                aperture[1] * artHeight,
+                aperture[2] * width,
+                aperture[3] * artHeight,
+              ];
         // Derivative dimensions are rounded to whole pixels. Keep the source
         // illustration's aspect ratio, as the DOM's shared crop plane does.
         const source = loaded.images.get(face.illustration) ?? bitmap;
         context.save();
+        if (battle) {
+          context.translate(0, height);
+          context.rotate(-Math.PI / 2);
+          context.scale(height / 523, FACE_WIDTH / 375);
+        }
         context.beginPath();
-        const clip = visibleArt(face);
-        context.rect(
-          clip[0] * FACE_WIDTH,
-          clip[1] * height,
-          clip[2] * FACE_WIDTH,
-          clip[3] * height,
-        );
+        const physicalClip = visibleArt(face),
+          clip: FaceRect = battle
+            ? battleNativeRect(physicalClip)
+            : [
+                physicalClip[0] * width,
+                physicalClip[1] * artHeight,
+                physicalClip[2] * width,
+                physicalClip[3] * artHeight,
+              ];
+        context.rect(...clip);
         context.clip();
         // Match the DOM alpha mask's bilinear sampling; photographic filtering
         // alters thin etched edges when this lower-resolution mask is enlarged.
         context.imageSmoothingQuality = 'low';
-        const target = illustrationTarget(face, [x, y, w, h], FACE_WIDTH, height);
+        const target = illustrationTarget(face, bounds, width, artHeight, battle ? -90 : 0);
         if (face.illustrationCrop) {
           const crop = face.illustrationCrop;
           const dest = illustrationCover(

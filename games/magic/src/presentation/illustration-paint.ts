@@ -19,6 +19,8 @@ export function paintIllustration(
   images: CanvasImages,
   bounds: FaceRect,
   layer?: PaintLayer,
+  size: readonly [number, number] = [488, 680],
+  rotation: 0 | -90 = 0,
 ) {
   const [x, y, width, height] = bounds;
   const kind = faceFrame(face);
@@ -42,7 +44,7 @@ export function paintIllustration(
   context.beginPath();
   context.rect(x, y, width, height);
   context.clip();
-  const target = illustrationTarget(face, bounds, 488, 680);
+  const target = illustrationTarget(face, bounds, size[0], size[1], rotation);
   if (face.illustrationCrop)
     context.drawImage(
       image,

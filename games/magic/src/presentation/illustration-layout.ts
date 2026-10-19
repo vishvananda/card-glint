@@ -1,18 +1,22 @@
 import { coverImage, type ImageFit } from '../../../../packages/browser/src/image-cover.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
+import { battleNativeRect } from './battle-layout.js';
 
 /** The same source placement drives painting and both etching paths. The
- * fallback is already in caller units; explicit placement is normalized. */
+ * fallback is already in caller units; explicit placement is physical-normalized.
+ * Rotation -90 selects the Battle painter's native 523 × 375 coordinate space. */
 export function illustrationTarget(
   face: RenderedCardInput,
   fallback: FaceRect,
   width = 1,
   height = 1,
+  rotation: 0 | -90 = 0,
 ): FaceRect {
   const rect = face.illustrationPlacement;
   if (!rect) return fallback;
   if (!rect.every(Number.isFinite) || rect[2] <= 0 || rect[3] <= 0)
     throw Error('Artwork placement requires finite coordinates and positive dimensions');
+  if (rotation === -90) return battleNativeRect(rect);
   return [rect[0] * width, rect[1] * height, rect[2] * width, rect[3] * height];
 }
 

@@ -29,6 +29,7 @@ import { faceRects } from './presentation/special-frames.js';
 import { visibleArt } from './presentation/art-apertures.js';
 import { illustrationTarget } from './presentation/illustration-layout.js';
 import { artworkGeometry } from './presentation/art-placement.js';
+import { BATTLE_REVERSE_STATS, battlePhysicalRect } from './presentation/battle-layout.js';
 import { splitPanels, panelRect } from './presentation/split-layout.js';
 import type { RenderedCardInput } from './presentation/face-layout.js';
 import { faceCornerRadius } from './presentation/face-silhouette.js';
@@ -115,7 +116,10 @@ export const mtg: GamePack<RenderedCardInput> = {
           crop: child.face.illustrationCrop ?? [0, 0, 1, 1],
           destination: child.panel ? panelRect(child.panel, target) : target,
           clip: child.panel ? panelRect(child.panel, clip) : clip,
-          rotation: (child.panel?.rotation ?? 0) as -90 | 0 | 90,
+          rotation: (child.panel?.rotation ?? (child.face.frameTemplate === 'battle' ? -90 : 0)) as
+            | -90
+            | 0
+            | 90,
           importedMask: child.face.etchedIllustration
             ? { url: child.face.etchedIllustration, width: 512 }
             : undefined,
@@ -174,6 +178,9 @@ export const mtg: GamePack<RenderedCardInput> = {
       cornerRadius: faceCornerRadius(face),
       regions: [
         ...Object.entries(faceRects(face)).map(([id, rect]) => ({ id, rect })),
+        ...(face.frameTemplate === 'battle' && face.reverseStats
+          ? [{ id: 'reverse-stats', rect: battlePhysicalRect(BATTLE_REVERSE_STATS.rect) }]
+          : []),
         ...(isPrepared(face)
           ? Object.entries(PREPARE_SPELL_RECTS).map(([id, rect]) => ({ id: `spell-${id}`, rect }))
           : []),
@@ -370,6 +377,7 @@ export function artworkFoilMask(
 export { mtg as magic };
 export type { RenderedCardInput as MagicCard } from './presentation/face-layout.js';
 export { faceFrame, faceRects } from './presentation/special-frames.js';
+export * from './presentation/battle-layout.js';
 export { isRetro, retroFamily, retroRects } from './presentation/retro-frame.js';
 export { resolveCardProfile, resolveFrameColors } from './presentation/profile.js';
 

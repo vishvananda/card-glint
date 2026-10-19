@@ -1,0 +1,290 @@
+{
+  "schema": 1,
+  "reference": "1d51cfc0465aeda5d27b1de832c7fef3c36d0170",
+  "scope": "Intentional native Battle artwork, orientation, provider routing and reverse-creature reminder correction. Rewind exact reviewed source bytes for historical receipts; current provider and native-template contracts exercise the corrected defaults. No new scan or pixel-calibration evidence is claimed.",
+  "dependencies": {
+    "games/magic/src/presentation/battle-layout.ts": "dd089aa2b5a10a906eb0570f2bb5c5fadac52e380cc87b23047d4b5fa68d6eda"
+  },
+  "files": {
+    "games/magic/src/index.ts": {
+      "before": "fdc9b31f176cf94b707380587d207a13d9fe1ed662ca70158f96923c10503506",
+      "after": "ce446aadc9acaed824817f3375ba689a7d95420d8dd049fc9dfc32355b2c45bf",
+      "reverseEdits": [
+        {
+          "start": 373,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 174,
+          "count": 3,
+          "lines": []
+        },
+        {
+          "start": 112,
+          "count": 4,
+          "lines": ["          rotation: (child.panel?.rotation ?? 0) as -90 | 0 | 90,\n"]
+        },
+        {
+          "start": 25,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation-api.ts": {
+      "before": "5970598b4b361e949cb6084ee736b427b7971c64d193bcc83b0ac24170bfe1c0",
+      "after": "8516193a4a3136b92ca2468fc4950f14ad270117c2039ca8b935ed2b3bebae07",
+      "reverseEdits": [
+        {
+          "start": 42,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/art-placement.ts": {
+      "before": "f997f657a5c8daca66978612f4e870b1578a2095e1844a1fbe84fd6e480d2f5d",
+      "after": "4bdc7d41d2337291a6a55a0833de654eff384bca971615aabd891d724176d28a",
+      "reverseEdits": [
+        {
+          "start": 92,
+          "count": 3,
+          "lines": [
+            "    destination: [rect[0] / 488, rect[1] / 680, rect[2] / 488, rect[3] / 680],\n"
+          ]
+        },
+        {
+          "start": 79,
+          "count": 11,
+          "lines": [
+            "    aperture = faceRects(face).art;\n",
+            "  const target = illustrationTarget(face, aperture);\n",
+            "  const rect = coverImage(\n",
+            "    width * source[2],\n",
+            "    height * source[3],\n",
+            "    [target[0] * 488, target[1] * 680, target[2] * 488, target[3] * 680],\n",
+            "    face.artPlacement,\n",
+            "  );\n"
+          ]
+        },
+        {
+          "start": 4,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-etching.ts": {
+      "before": "57f7bba9a1a3c8e8e2454b3d687f830784b84a638b99760ad175bae694943b0f",
+      "after": "7c62ea64043430ca8acf89f1ab794a5e9d8f309b6030715947809470e5ed91aa",
+      "reverseEdits": [
+        {
+          "start": 121,
+          "count": 1,
+          "lines": [
+            "        const target = illustrationTarget(face, [x, y, w, h], FACE_WIDTH, height);\n"
+          ]
+        },
+        {
+          "start": 107,
+          "count": 10,
+          "lines": [
+            "        const clip = visibleArt(face);\n",
+            "        context.rect(\n",
+            "          clip[0] * FACE_WIDTH,\n",
+            "          clip[1] * height,\n",
+            "          clip[2] * FACE_WIDTH,\n",
+            "          clip[3] * height,\n",
+            "        );\n"
+          ]
+        },
+        {
+          "start": 101,
+          "count": 5,
+          "lines": []
+        },
+        {
+          "start": 85,
+          "count": 12,
+          "lines": [
+            "        const [rx, ry, rw, rh] = faceRects(face).art;\n",
+            "        const x = rx * FACE_WIDTH,\n",
+            "          y = ry * height,\n",
+            "          w = rw * FACE_WIDTH,\n",
+            "          h = rh * height;\n"
+          ]
+        },
+        {
+          "start": 15,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 9,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/face-layout.ts": {
+      "before": "848e2767ed95dc0f1d33b5a4ae8c3938d5892ea1fa1c2b17dd52c1be5cd9f46d",
+      "after": "71f838d8e86fc9b1835df840e0ac22c76ae670b863f560c72d138f302950c3ae",
+      "reverseEdits": [
+        {
+          "start": 121,
+          "count": 1,
+          "lines": ["  /** Visible reverse-face P/T reminder on a transforming Saga's front. */\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/illustration-layout.ts": {
+      "before": "ee06a28da1644493362e91ffc5a1761f46915e35da8f97875f7155ecff15bbcc",
+      "after": "5c08c7755a2269d314dde14f539c5909979789615e4694684426ea07783aeef7",
+      "reverseEdits": [
+        {
+          "start": 18,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 12,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 5,
+          "count": 2,
+          "lines": [
+            " * fallback is already in caller units; explicit placement is normalized. */\n"
+          ]
+        },
+        {
+          "start": 2,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/illustration-paint.ts": {
+      "before": "02b0e12684cf76ae5f2551249fc80ed7c73713dccbbf0dcc5e9b0ac31b650458",
+      "after": "7216b61c8270b81ed4d4fcedf01074a43d9ffead3ec0f5bbad91c612c88175d2",
+      "reverseEdits": [
+        {
+          "start": 45,
+          "count": 1,
+          "lines": ["  const target = illustrationTarget(face, bounds, 488, 680);\n"]
+        },
+        {
+          "start": 20,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/provider-card.ts": {
+      "before": "9e63fc41344cdfc93247fb6baa2e3c51b3ba361be007dbf00acb87fba3195196",
+      "after": "a7190b28b6fce3098949e705143f3dd9836bcd5389c6ab71dcc9269665b5f2cb",
+      "reverseEdits": [
+        {
+          "start": 154,
+          "count": 0,
+          "lines": [
+            "  if (layout === 'battle')\n",
+            "    return {\n",
+            "      ...faces[index]!,\n",
+            "      frameTemplate: index === 0 ? 'battle' : undefined,\n",
+            "      frameAssetFamily: undefined,\n",
+            "    };\n"
+          ]
+        },
+        {
+          "start": 152,
+          "count": 1,
+          "lines": [
+            "  if (!['split', 'aftermath', 'flip', 'adventure', 'prepare', 'room', 'battle'].includes(layout))\n"
+          ]
+        },
+        {
+          "start": 136,
+          "count": 13,
+          "lines": [
+            "      ...(layout === 'battle' && index === 0\n",
+            "        ? { frameTemplate: 'battle' as const, frameAssetFamily: undefined }\n"
+          ]
+        },
+        {
+          "start": 129,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 124,
+          "count": 3,
+          "lines": [
+            "    ['transform', 'modal_dfc', 'reversible_card', 'meld', 'double_faced_token'].includes(layout)\n"
+          ]
+        },
+        {
+          "start": 117,
+          "count": 4,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/standard-frame-paint.ts": {
+      "before": "61e02054ffbd8277b928196684fcdb623f92d22447055323b8559b07e0bc9dd2",
+      "after": "1e80b8d30aefbc7b79f355dfa43c8e3e35379f8944df950e16667b22d689a735",
+      "reverseEdits": [
+        {
+          "start": 105,
+          "count": 11,
+          "lines": [
+            "  if (!face.frameTemplate || face.frameTemplate === 'battle') return Promise.resolve();\n"
+          ]
+        },
+        {
+          "start": 103,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 75,
+          "count": 9,
+          "lines": []
+        },
+        {
+          "start": 56,
+          "count": 1,
+          "lines": ["    paintIllustration(c, face, images, spec.art, layer);\n"]
+        },
+        {
+          "start": 15,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/standard-frame-templates.ts": {
+      "before": "2d8c460dccb8877c767335517e7ebd03f4bc868b16cd91d1a58d204452b07f63",
+      "after": "f98c24b5c27e3a0549baab49e5113818ba1b4fee15cfc9c4680e0fdaf4cb45f8",
+      "reverseEdits": [
+        {
+          "start": 138,
+          "count": 1,
+          "lines": ["      ? [y / height, 1 - (x + w) / width, h / height, w / width]\n"]
+        },
+        {
+          "start": 47,
+          "count": 2,
+          "lines": ["    art: [41, 15, 467, 345],\n"]
+        },
+        {
+          "start": 6,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    }
+  }
+}
