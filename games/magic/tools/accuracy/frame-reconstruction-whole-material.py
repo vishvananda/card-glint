@@ -85,14 +85,16 @@ def correction(luma,chroma,grid):
     return luminance+color
 
 
-def fit(root, out, steps):
+def fit(root, out, steps, luminance_only=False):
     out.mkdir(parents=True,exist_ok=False)
     observations=json.loads((root/'observations.json').read_text())['records']
     geometry=json.loads((root/'geometry.json').read_text());pins={p['key']:p['target'] for p in geometry['pins']}
     assert all(k in pins for k in ['stock-left','stock-right','stock-top','stock-bottom'])
     candidate=json.loads((root/'candidates.json').read_text())['candidates'][0]
-    prepared=[]; sources={};rng=np.random.default_rng(1903)
+    prepared=[]; sources={};excluded=[];rng=np.random.default_rng(1903)
     for row in observations:
+        if not row['normalization'].get('accepted',False):
+            excluded.append(dict(id=row['id'],name=row['name'],reason='Frozen scan pose rejected'));continue
         path=root/candidate.get('perCardFile',candidate['file']).replace('{id}',row['id'])
         source,raw,grid,valid,counts=prepare(root,path,row)
         key=str(path);sources.setdefault(key,source)
@@ -118,8 +120,20 @@ def fit(root, out, steps):
     global_rgb=torch.nn.Parameter(torch.zeros(1,3,1,1))
     luma=torch.nn.Parameter(torch.zeros(1,1,185,133))
     chroma=torch.nn.Parameter(torch.zeros(1,3,43,31))
-    optimizer=torch.optim.Adam([global_rgb,luma,chroma],lr=.007)
+    optimizer=torch.optim.Adam([luma] if luminance_only else [global_rgb,luma,chroma],lr=.007)
     tensors={k:tensor(v[...,:3]) for k,v in sources.items()}
+    coefficients=torch.tensor([.2126,.7152,.0722])[None,:,None,None]
+    def prediction(base, grid, gate=1):
+        if luminance_only:
+            field=F.grid_sample(luma,grid,align_corners=False,padding_mode='border').clamp(-.16,.16)
+            return (base*torch.exp(field*gate)).clamp(0,1)
+        return (base+global_rgb+correction(luma,chroma,grid)*gate).clamp(0,1)
+    def measurement(value,target,valid):
+        if luminance_only:
+            value=(value*coefficients).sum(1,keepdim=True);target=(target*coefficients).sum(1,keepdim=True)
+            a=(value*valid).sum()/valid.sum().clamp_min(1);b=(target*valid).sum()/valid.sum().clamp_min(1)
+            return (value-a)/(a+.05),(target-b)/(b+.05)
+        return value,target
     training=[(r['key'],p) for r in train for p in r['patches']]
     if len(training)<16:raise ValueError('Insufficient independent native patches')
     history=[]
@@ -128,9 +142,10 @@ def fit(root, out, steps):
         for index in rng.choice(len(training),16,replace=False):
             key,(grid,target,valid)=training[index]
             base=F.grid_sample(tensors[key],grid,align_corners=False,padding_mode='border')
-            predicted=gaussian((base+global_rgb+correction(luma,chroma,grid)).clamp(0,1),1.4)
-            error=F.huber_loss(predicted,target,reduction='none',delta=.035)
-            terms.append((error*valid).sum()/(valid.sum()*3).clamp_min(1))
+            predicted=gaussian(prediction(base,grid),1.4)
+            measured,reference=measurement(predicted,target,valid)
+            error=F.huber_loss(measured,reference,reduction='none',delta=.035)
+            terms.append((error*valid).sum()/(valid.sum()*(1 if luminance_only else 3)).clamp_min(1))
         data=torch.stack(terms).mean()
         smooth=sum((p[:,:,1:]-p[:,:,:-1]).square().mean()+(p[:,:,:,1:]-p[:,:,:,:-1]).square().mean() for p in [luma,chroma])
         prior=luma.square().mean()+chroma.square().mean()+.1*global_rgb.square().mean()
@@ -150,6 +165,16 @@ def fit(root, out, steps):
         name=r["row"].get("oracleId",r["row"]["name"]);seen_by_name[name]=seen_by_name.get(name,np.zeros_like(seen))|seen
     support=sum(seen_by_name.values(),np.zeros_like(support))
     support=np.clip((support.astype(float)-4)/6,0,1)
+    filled=None;fill_report=[]
+    if luminance_only:
+        from frame_reconstruction.material_fill import fill_scalar
+        first=next(iter(sources.values()));yy,xx=np.mgrid[:680,:488]
+        small=sample(first,(xx+.5)*first.shape[1]/488-.5,(yy+.5)*first.shape[0]/680-.5)
+        domain=(small[...,3]>.99)&(small[...,:3].max(-1)>.12)
+        domain&=(xx>pins['stock-left'])&(xx<pins['stock-right'])&(yy>pins['stock-top'])&(yy<pins['stock-bottom'])
+        raw_field=F.interpolate(luma.detach(),(680,488),mode='bilinear',align_corners=False)[0,0].numpy()
+        filled,fill_report=fill_scalar(raw_field,support>0,domain)
+        final_field=tensor(filled[...,None])
     exported={};source_receipts=[]
     for index,(key,source) in enumerate(sources.items()):
         h,w=source.shape[:2];yy,xx=np.mgrid[:h,:w]
@@ -161,6 +186,9 @@ def fit(root, out, steps):
         material=((source[...,3:]>.99)&(source[...,:3].max(-1,keepdims=True)>.12))*bounds[...,None]
         offset=global_rgb.detach()[0,:,0,0].numpy()
         corrected=np.clip(source[...,:3]+(offset+delta*gate)*material,0,1)
+        if luminance_only:
+            scalar=sample(filled[...,None],(xx+.5)*488/w-.5,(yy+.5)*680/h-.5)
+            corrected=np.clip(source[...,:3]*np.exp(scalar*material),0,1)
         name=f'plate-{index}.png';image(out/name,corrected,source[...,3:]);exported[key]=name
         source_receipts.append(dict(source=Path(key).relative_to(root).as_posix(),sourceSha256=digest(Path(key)),file=name,sha256=digest(out/name)))
     image(out/'support.png',np.repeat(support[...,None],3,-1),np.ones((680,488,1)))
@@ -173,16 +201,20 @@ def fit(root, out, steps):
             for grid,target,valid in r['patches']:
                 base=F.grid_sample(tensors[r['key']],grid,align_corners=False,padding_mode='border')
                 gate=F.grid_sample(tensor(support[...,None]),grid,align_corners=False,padding_mode='border')
-                a=gaussian(base,1.4);b=gaussian((base+global_rgb+correction(luma,chroma,grid)*gate).clamp(0,1),1.4)
-                before.append(float((abs(a-target)*valid).sum()/(valid.sum()*3).clamp_min(1)))
-                after.append(float((abs(b-target)*valid).sum()/(valid.sum()*3).clamp_min(1)))
+                a=gaussian(base,1.4);b=gaussian(prediction(base,grid,gate),1.4)
+                if luminance_only:
+                    gain=torch.exp(F.grid_sample(final_field,grid,align_corners=False,padding_mode='border'))
+                    b=gaussian((base*gain).clamp(0,1),1.4)
+                a,reference=measurement(a,target,valid);b,_=measurement(b,target,valid)
+                before.append(float((abs(a-reference)*valid).sum()/(valid.sum()*(1 if luminance_only else 3)).clamp_min(1)))
+                after.append(float((abs(b-reference)*valid).sum()/(valid.sum()*(1 if luminance_only else 3)).clamp_min(1)))
         metrics.append(dict(id=r['row']['id'],name=r['row']['name'],cohort=r['row']['cohort'],coverage=r['counts'],before=float(np.mean(before)),after=float(np.mean(after)),file=exported[r['key']]))
-    report=dict(schema=1,material=root.name,steps=steps,inputSha256=digest(out/'inputs.json'),toolSha256=digest(Path(__file__)),policy='Shared whole-material RGB backpropagation. Native raw scan patches; frozen poses; relative ink masks and rendering content exclusions; five-card minimum. No separate paper calibration, no post-HSB. Development cohorts reused, not blind validation.',sourceReceipts=source_receipts,history=history,rows=metrics,bakedRgbOffset=global_rgb.detach()[0,:,0,0].tolist(),postHsb=dict(hueDegrees=0,saturationScale=1,brightnessScale=1))
+    report=dict(schema=1,material=root.name,steps=steps,mode='luminance-relative-contrast' if luminance_only else 'exploratory-rgb',fill=fill_report,excluded=excluded,inputSha256=digest(out/'inputs.json'),toolSha256=digest(Path(__file__)),policy=('Luminance-only texture reconstruction; hue/saturation preserved; color matching is a later whole-material step. ' if luminance_only else 'Exploratory RGB reconstruction; not adopted. ')+ 'Shared whole-material backpropagation. Native raw scan patches; frozen poses; relative ink masks and rendering content exclusions; five-card minimum. No separate paper calibration, no post-HSB. Development cohorts reused, not blind validation.',sourceReceipts=source_receipts,history=history,rows=metrics,bakedRgbOffset=global_rgb.detach()[0,:,0,0].tolist(),postHsb=dict(hueDegrees=0,saturationScale=1,brightnessScale=1))
     (out/'fit.json').write_text(json.dumps(report,indent=2)+'\n')
-    torch.save(dict(global_rgb=global_rgb.detach(),luma=luma.detach(),chroma=chroma.detach()),out/'fields.pt')
+    torch.save(dict(filled_luminance=torch.from_numpy(filled) if filled is not None else None,global_rgb=global_rgb.detach(),luma=luma.detach(),chroma=chroma.detach()),out/'fields.pt')
     print(json.dumps(dict(phase='complete',material=root.name,rows=len(metrics))),flush=True)
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('root',type=Path);parser.add_argument('output',type=Path);parser.add_argument('--steps',type=int,default=160);args=parser.parse_args()
-    torch.set_num_threads(2);torch.manual_seed(1903);fit(args.root,args.output,args.steps)
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('root',type=Path);parser.add_argument('output',type=Path);parser.add_argument('--steps',type=int,default=160);parser.add_argument('--luminance-only',action='store_true');args=parser.parse_args()
+    torch.set_num_threads(2);torch.manual_seed(1903);fit(args.root,args.output,args.steps,args.luminance_only)

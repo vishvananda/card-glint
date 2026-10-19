@@ -41,6 +41,24 @@ def run():
         optimizer.zero_grad();result=source+global_rgb+whole.correction(luma,chroma,grid)
         loss=(result-target).square().mean();loss.backward();optimizer.step()
     assert (result-target).abs().mean().item()<initial/3
+    from frame_reconstruction.material_fill import fill_scalar
+    from frame_reconstruction.tone import adjust
+    domain=np.zeros((20,35),bool);domain[2:18,1:11]=True;domain[2:18,14:24]=True;domain[2:18,28:34]=True
+    known=np.zeros_like(domain);known[3:17:4,2:10:3]=True;known[3:17:4,15:23:3]=True
+    field=np.zeros(domain.shape);field[:,1:11]=.05;field[:,14:24]=-.08
+    filled,_=fill_scalar(field,known,domain)
+    assert np.max(abs(filled[domain&(np.indices(domain.shape)[1]<11)]-.05))<1e-6
+    assert np.max(abs(filled[domain&(np.indices(domain.shape)[1]>13)&(np.indices(domain.shape)[1]<24)]+.08))<1e-6
+    assert not filled[:,28:].any(),'Unsupported disconnected component changed'
+    assert not filled[~domain].any(),'Art/stock exclusion leaked'
+    colors=np.array([[.8,.2,.2],[.3,.5,.7],[0,0,0]])
+    assert np.max(abs(adjust(colors,[0,0,0,0])-colors))<1e-7
+    assert np.max(abs(adjust(colors[:1],[120,0,0,0])-np.array([[.2,.8,.2]])))<1e-7
+    from scipy.optimize import least_squares
+    rng=np.random.default_rng(31);colors=rng.uniform(.2,.75,(32,3)).astype('float32')
+    expected=np.array([4,np.log(.8),np.log(.9),np.log(.9)]);target=adjust(colors,expected)
+    recovered=least_squares(lambda p:(adjust(colors,p)-target).ravel(),np.zeros(4)).x
+    assert np.max(abs(recovered-expected))<.001,'Float32 source pixels must not flatten numerical tone gradients'
     print('Whole-material checks passed: dark paper survives scan grain, text/art stay excluded, shared gradients improve frame and paper.')
 
 
