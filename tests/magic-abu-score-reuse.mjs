@@ -108,6 +108,36 @@ try {
   assert.equal(result.summary.reused, 1);
   assert.equal(result.rows[0].structural100, 64);
   assert.equal(result.reusableScoresHash, hash(await readFile(scoreFile)));
+  await writeJson(baseline + '/capture.json', {
+    complete: true,
+    inputHash,
+    rows: [{ id: entry.id, after: renderHash, outside: 0, silhouette: 0, artworkChanged: 0 }],
+  });
+  const fullRun = () =>
+    execFileSync(
+      process.execPath,
+      [
+        'games/magic/tools/accuracy/abu-calibration-score.mjs',
+        inputFile,
+        dir,
+        baseline,
+        scorerFile,
+        output,
+        '-',
+        scoreFile,
+        inputFile,
+      ],
+      { stdio: 'pipe', env: { ...process.env, MAGIC_ACCURACY_CACHE: dir + '/missing-raw-cache' } },
+    );
+  fullRun();
+  assert.equal(JSON.parse(await readFile(output)).summary.reused, 1);
+  const changedInput = {
+    entries: [{ ...entry, face: { ...face, rulesText: 'A different passage' } }],
+  };
+  await writeJson(dir + '/old-input.json', { entries: [entry] });
+  await writeJson(inputFile, changedInput);
+  assert.throws(fullRun, 'Changed inputs cannot claim the old native input identity');
+  await writeJson(inputFile, { entries: [entry] });
   await writeFile(dir + '/policy.mjs', 'export const weight = 25;');
   assert.throws(run, 'An imported policy change must invalidate reuse');
   await writeFile(dir + '/policy.mjs', 'export const weight = 26;');

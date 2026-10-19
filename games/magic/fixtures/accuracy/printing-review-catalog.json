@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "df1ab3c88f8ce9e4549cbd6ba5f1774ec348adcf039716e395750f24276fb8ec",
+  "revision": "842db3d8b94e110ba772d293e5768f787828b914289c5df684d537fbbce24a33",
   "artistRevision": "fd5d3692b5b9fad700d8de65cd8ec24eeb52b1fbe2ffc589cc7526ae693a9b43",
   "sets": {
     "0014def3-4063-4929-ac51-76aef1bb2a68": "arn",
@@ -4482,6 +4482,15 @@
         "fields": {
           "typeLine": "Summon Wall"
         }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/lea/annotations-empty-rules.json",
+        "referenceSha256": "6b8fe1ca7a7ee25320f6bf41733187e9a42d9a12cbe2e05fc3d0512809941bcd",
+        "reason": "Exact ABU scan rules panel reviewed: flavor only, with neither Defender nor the later parenthetical wall reminder. Preserve Oracle reminder wording independently.",
+        "fields": {
+          "rulesText": "",
+          "flavorText": "The Earth herself lends her strength to these walls of living stone, which possess the stability of ancient mountains. These mighty bulwarks thwart ground-based troops, providing welcome relief for weary warriors who defend the land."
+        }
       }
     ],
     "14749600-9eca-4122-b04f-30ddda091b74": [
@@ -5072,6 +5081,15 @@
         "reason": "Visually checked the normalized frozen Beta scan type strip. OCR was diagnostic only; this review does not certify rules, artist, P/T or frame geometry.",
         "fields": {
           "typeLine": "Summon Wall"
+        }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/leb/annotations-empty-rules.json",
+        "referenceSha256": "88692ec6e957916ef4340d0f8df58bf8ac18737ee53c3dd5ab134145c408456d",
+        "reason": "Exact ABU scan rules panel reviewed: flavor only, with neither Defender nor the later parenthetical wall reminder. Preserve Oracle reminder wording independently.",
+        "fields": {
+          "rulesText": "",
+          "flavorText": "Everybody knows that to ward off trouble, you knock on wood. But usually it's better to make a wall out of the wood and let trouble do the knocking."
         }
       }
     ],
@@ -8081,6 +8099,15 @@
         "reason": "Visually checked the normalized frozen Beta scan type strip. OCR was diagnostic only; this review does not certify rules, artist, P/T or frame geometry.",
         "fields": {
           "typeLine": "Summon Wall"
+        }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/leb/annotations-empty-rules.json",
+        "referenceSha256": "4acc4bd36912f60bd52b1f4868c85dc62936432e32a7c6f1ac952f52e74756ea",
+        "reason": "Exact ABU scan rules panel reviewed: flavor only, with neither Defender nor the later parenthetical wall reminder. Preserve Oracle reminder wording independently.",
+        "fields": {
+          "rulesText": "",
+          "flavorText": "The Earth herself lends her strength to these walls of living stone, which possess the stability of ancient mountains. These mighty bulwarks thwart ground-based troops, providing welcome relief for weary warriors who defend the land."
         }
       }
     ],
@@ -17081,6 +17108,14 @@
         "fields": {
           "typeLine": "Mono Artifact"
         }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/leb/annotations-text-outliers.json",
+        "referenceSha256": "b91c31a9a055ea2cecfea54de59b1ed2730a36b8a4aaae17f7efe3fd52620de3",
+        "reason": "Exact Beta rules panel reviewed. The untap payment is a plain printed numeral 3, without a mana disc. Oracle continues to use its modern cost symbol.",
+        "fields": {
+          "rulesText": "Tap to add 3 colorless mana to your mana pool. Does not untap as normal during untap phase; spend 3 to untap. Tapping this artifact can be played as an interrupt."
+        }
       }
     ],
     "8201b51b-da03-4207-805c-134e527c42e1": [
@@ -17425,6 +17460,35 @@
         "reason": "Visually checked the normalized frozen Beta scan type strip. OCR was diagnostic only; this review does not certify rules, artist, P/T or frame geometry.",
         "fields": {
           "typeLine": "Summon Mana Birds"
+        }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/leb/annotations-text-outliers.json",
+        "referenceSha256": "ec8b7340f680537e7068548446de43b931150dfa6ad8fb86531448d382291655",
+        "reason": "Exact Beta scan visibly uses the large face with both Flying and the mana paragraph left aligned. Preserve this original paragraph alignment; Oracle retains normal fitting.",
+        "fields": {
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "Flying",
+                  "italic": false
+                }
+              ],
+              "align": "left"
+            },
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "Tap to add one mana of any color to your mana pool. This tap may be played as an interrupt.",
+                  "italic": false
+                }
+              ],
+              "align": "left"
+            }
+          ]
         }
       }
     ],
@@ -18267,9 +18331,9 @@
     ],
     "8df80424-3bd9-4982-ad79-e55d9ba3b43d": [
       {
-        "source": "games/magic/fixtures/accuracy/lea/annotations.json",
+        "source": "games/magic/fixtures/accuracy/lea/annotations-empty-rules.json",
         "referenceSha256": "d56c93d6a40578bce007ca245fb7ac4eec53c1ab99fbf4391fe82090c0c863af",
-        "reason": "Eight development scans visually reviewed. Printed wording transcribed; soft wraps are not forced. Poetry line breaks are intentional. Land targets retain semantic subtypes and require an actual historical printing policy. Expected alignment/artist are review targets, not geometry overrides. Heldouts remain unviewed.",
+        "reason": "Exact ABU scan rules panel reviewed: flavor only, with neither Defender nor the later parenthetical wall reminder. Preserve Oracle reminder wording independently.",
         "fields": {
           "rulesText": "",
           "flavorText": "Everybody knows that to ward off trouble, you knock on wood. But usually it’s better to make a wall out of the wood and let trouble do the knocking."

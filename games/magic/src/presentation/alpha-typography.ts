@@ -41,3 +41,44 @@ export function alphaTypography(setCode?: string | null) {
       ? { ...placement, artistInk: '#828282', statsInk: '#737373' }
       : undefined;
 }
+
+/** Content-matched original typesetting reviews. These are shared by Alpha and
+ * Beta when the printed passage agrees; Oracle text never inherits them. */
+export function reviewedOriginalTextLayout(
+  face: RenderedCardInput,
+  paragraphs: readonly RulesParagraph[],
+) {
+  const set = face.setCode?.toLowerCase();
+  if (face.wordingMode === 'oracle' || !['lea', 'leb'].includes(set ?? '')) return {};
+  const text = canonical(paragraphs.flatMap((p) => p.runs.map((r) => r.text)).join(' '));
+  if (
+    (face.name === 'Lifetap' &&
+      text === "You gain 1 life each time any forest of opponent's becomes tapped.") ||
+    (face.name === 'Gauntlet of Might' &&
+      text ===
+        'All red creatures gain +1/+1 and all mountains provide an extra red mana when tapped.')
+  )
+    return { centeredWidth: 390, centeredDx: -6.5 };
+  if (
+    (face.name === 'Howl from Beyond' &&
+      text === 'Target creature gains +X/+0 until end of turn.') ||
+    (set === 'lea' &&
+      face.name === 'Twiddle' &&
+      text === 'Caster may tap or untap any one land, creature, or artifact in play.')
+  )
+    return { centeredDx: -6.5, centeredDy: -16 };
+  if (
+    face.name === 'Black Vise' &&
+    text ===
+      'If opponent has more than four cards in hand during upkeep, black vise does 1 damage to opponent for each card in excess of four.'
+  )
+    return { shortRegularDy: -16 };
+  if (
+    set === 'leb' &&
+    face.name === 'Birds of Paradise' &&
+    text ===
+      'Flying Tap to add one mana of any color to your mana pool. This tap may be played as an interrupt.'
+  )
+    return { centeredWidth: 374, regularDx: 10, regularDy: 12 };
+  return {};
+}

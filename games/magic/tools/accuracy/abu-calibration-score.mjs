@@ -17,6 +17,7 @@ const [
   output,
   candidateDirectory,
   reusableScoresFile,
+  reusableInputsFile,
 ] = process.argv.slice(2);
 if (!output)
   throw Error(
@@ -26,9 +27,10 @@ const inputs = await readJson(inputsFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json')),
   templates = await readJson(path.join(posesDirectory, 'templates.json'));
 assert.equal(poses.inputHash, hash(await readFile(inputsFile)));
-const candidateStudy = candidateDirectory
-  ? await readJson(path.join(candidateDirectory, '_source', 'study.json'))
-  : undefined;
+const candidateStudy =
+  candidateDirectory && candidateDirectory !== '-'
+    ? await readJson(path.join(candidateDirectory, '_source', 'study.json'))
+    : undefined;
 if (candidateStudy) {
   const { studyHash, ...definition } = candidateStudy;
   assert.equal(studyHash, hash(JSON.stringify(definition)));
@@ -41,13 +43,27 @@ const scorerHash = hash(await readFile(scorerFile));
 const metricGraph = await metricSourceGraph(scorerFile);
 const reusableScores = reusableScoresFile ? await readJson(reusableScoresFile) : undefined;
 const reusableRows = new Map(reusableScores?.rows.map((r) => [r.id, r]));
+const reusableInputs = reusableInputsFile ? await readJson(reusableInputsFile) : undefined;
+const oldEntries = new Map(reusableInputs?.entries.map((e) => [e.id, e]));
+const nativeCapture = reusableInputs
+  ? await readJson(path.join(baselineRoot, 'capture.json'))
+  : undefined;
+if (nativeCapture) {
+  assert.equal(nativeCapture.complete, true);
+  assert.equal(nativeCapture.inputHash, poses.inputHash);
+  assert.equal(nativeCapture.rows.length, inputs.entries.length);
+  assert.equal(reusableScores.inputHash, hash(await readFile(reusableInputsFile)));
+}
+
 if (reusableScores) {
-  assert.ok(candidateStudy, 'Baseline reuse requires a certified native candidate study');
-  assert.equal(reusableScores.inputHash, poses.inputHash);
-  assert.equal(reusableScores.normalizationHash, hash(JSON.stringify(poses)));
+  assert.ok(candidateStudy || nativeCapture, 'Reuse requires certified native capture');
+  if (candidateStudy) {
+    assert.equal(reusableScores.inputHash, poses.inputHash);
+    assert.equal(reusableScores.normalizationHash, hash(JSON.stringify(poses)));
+  }
   assert.equal(reusableScores.scorerHash, scorerHash);
   assert.equal(reusableScores.metricGraph?.hash, metricGraph.hash);
-  assert.equal(reusableScores.baseline, '0.5.3');
+  if (candidateStudy) assert.equal(reusableScores.baseline, '0.5.3');
 }
 const rows = [];
 const neutral = { sx: 1, sy: 1, tx: 0, ty: 0, rotation: 0, shear: 0 };
@@ -86,7 +102,18 @@ for (const e of inputs.entries) {
     assert.equal(hash(baseline), trial.nativeTrial.renderHash);
   }
   const reused = reusableRows.get(e.id);
-  if (reused && reused.renderHash === hash(baseline)) {
+  const oldEntry = oldEntries.get(e.id);
+  const sameInput =
+    !reusableInputs ||
+    (oldEntry &&
+      JSON.stringify({ card: oldEntry.card, face: oldEntry.face }) ===
+        JSON.stringify({ card: e.card, face: e.face }));
+  if (nativeCapture) {
+    const replay = nativeCapture.rows.find((r) => r.id === e.id);
+    assert.equal(replay.after, hash(baseline));
+    for (const field of ['outside', 'silhouette', 'artworkChanged']) assert.equal(replay[field], 0);
+  }
+  if (reused && sameInput && reused.renderHash === hash(baseline)) {
     assert.equal(reused.referenceHash, e.reference.sha256);
     assert.equal(reused.poseHash, hash(JSON.stringify(pose)));
     assert.equal(reused.profileAccepted, pose.accepted);

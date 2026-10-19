@@ -1,0 +1,317 @@
+{
+  "schema": 1,
+  "baselineCommit": "5552458",
+  "evidence": "abu-release-integration.json",
+  "evidenceHash": "4306d20ca98a97f5c08302a2c9bef83fb66ad05131d1b9671f56a3857111df5a",
+  "files": {
+    "games/magic/src/presentation/alpha-rules.ts": {
+      "before": "00259cab80900c5f16eb0e107232de81ac4667395c9b461931f34c5a0a0caa7d",
+      "after": "efdef45ad07b3221eee06d67af8d5fabebccadef0c630711bbea8b2d371e7784",
+      "reverseEdits": [
+        {
+          "start": 17,
+          "count": 1,
+          "lines": ["  if (face.setCode?.toLowerCase() !== 'lea') return original;\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/alpha-typography.ts": {
+      "before": "cdacfb6f47f6d93fa705d504d8290553ea4db136d32a5eb215c8622be0da910c",
+      "after": "34afb57069e7b24a729b16cf76bc0bde060ee24a17636876716ec25677a9e703",
+      "reverseEdits": [
+        {
+          "start": 43,
+          "count": 41,
+          "lines": []
+        },
+        {
+          "start": 36,
+          "count": 6,
+          "lines": ["  return setCode?.toLowerCase() === 'lea' ? placement : undefined;\n"]
+        },
+        {
+          "start": 33,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/calibration-profiles.ts": {
+      "before": "bdfb3c7764d67ad2e335470678f7af44309a328aa3d5fedaa90b8328123d4a50",
+      "after": "650591d380f2f53ad646778bea5511851022bc242eb57c5f929ced3f5d380978",
+      "reverseEdits": [
+        {
+          "start": 130,
+          "count": 11,
+          "lines": [
+            "  return printingBlackPointMaterials(face, baseFrameMaterials(face), printingStockSource(face))\n",
+            "    .materials;\n"
+          ]
+        },
+        {
+          "start": 88,
+          "count": 13,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-credits.ts": {
+      "before": "60a1d6123676f0ef3b2942ba0a80f1042f8643c9c654f163eb5f5d5982f52a84",
+      "after": "5853886e9de3db5d30bccf0872d77bd55660dcdd5a0b18e76a2fe1ff04699c99",
+      "reverseEdits": [
+        {
+          "start": 25,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-hsb-material.ts": {
+      "before": "24659248da6f63db58699a9af290fa2c8596c46d70b2372c38ad211d87cd90de",
+      "after": "dbf23705850e77d1a8cc823a536a6ad4da23eb4f0587a78c2e4d5e6ef6817951",
+      "reverseEdits": [
+        {
+          "start": 36,
+          "count": 1,
+          "lines": ["  const inkTarget = earlyReprintManaInk(face),\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-text-tiers.ts": {
+      "before": "1cddfa1f6149773969507db272436d111fb5cef2700b1997c203e99969ea7062",
+      "after": "7e546618a0e4ec2349d2438e09bace7ce8db5591875de2f00193a471ccba7422",
+      "reverseEdits": [
+        {
+          "start": 161,
+          "count": 33,
+          "lines": []
+        },
+        {
+          "start": 137,
+          "count": 22,
+          "lines": ["  if (chosen.size >= 19)\n", "    return options.transferAlphaModel\n"]
+        },
+        {
+          "start": 100,
+          "count": 1,
+          "lines": ["          { x: 70, y: y - 6, width: 348, height: height - 8 },\n"]
+        },
+        {
+          "start": 84,
+          "count": 6,
+          "lines": [
+            "      { x: 70, y: y - 6, width: options.largeFitWidth ?? 340, height: height - 8 },\n"
+          ]
+        },
+        {
+          "start": 60,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 32,
+          "count": 1,
+          "lines": ["  if (face.setCode?.toLowerCase() !== 'lea' || !base) return base;\n"]
+        },
+        {
+          "start": 9,
+          "count": 7,
+          "lines": []
+        },
+        {
+          "start": 5,
+          "count": 1,
+          "lines": ["import { reviewedSmallOriginal } from './alpha-typography.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/mana-printing-profiles.ts": {
+      "before": "c3baf1b3703d9fa3c15b8b1df8446aeb316dad64430d54659a19beac53f4de71",
+      "after": "0a4164c9a7b1cb067261bd93e915b75aab7ae01038cbc1ff09ec0d4bec5c2f7a",
+      "reverseEdits": [
+        {
+          "start": 7,
+          "count": 24,
+          "lines": [
+            "  'leg-black-U': [177 / 255, 230 / 255, 225 / 255],\n",
+            "  'leg-black-R': [228 / 255, 193 / 255, 147 / 255],\n",
+            "  'leg-black-G': [181 / 255, 217 / 255, 148 / 255],\n",
+            "  'lea-black-U': [149 / 255, 185 / 255, 194 / 255],\n",
+            "  'lea-black-B': [92 / 255, 100 / 255, 101 / 255],\n",
+            "  'lea-black-R': [199 / 255, 152 / 255, 136 / 255],\n",
+            "  'lea-black-G': [148 / 255, 175 / 255, 134 / 255],\n",
+            "  'lea-black-N': [122 / 255, 136 / 255, 139 / 255],\n",
+            "  '3ed-white-G': [186 / 255, 206 / 255, 176 / 255],\n",
+            "  '3ed-white-N': [194 / 255, 190 / 255, 184 / 255],\n",
+            "  '8ed-white-U': [176 / 255, 210 / 255, 227 / 255],\n",
+            "  '8ed-white-N': [178 / 255, 177 / 255, 168 / 255],\n",
+            "  'm21-black-W': [251 / 255, 249 / 255, 218 / 255],\n",
+            "  'm21-black-U': [190 / 255, 221 / 255, 249 / 255],\n",
+            "  'm21-black-R': [237 / 255, 165 / 255, 126 / 255],\n",
+            "  'm21-black-G': [167 / 255, 204 / 255, 172 / 255],\n",
+            "  'leb-black-W': [228 / 255, 228 / 255, 209 / 255],\n",
+            "  'leb-black-U': [163 / 255, 201 / 255, 213 / 255],\n",
+            "  'leb-black-B': [113 / 255, 122 / 255, 121 / 255],\n",
+            "  'leb-black-R': [215 / 255, 170 / 255, 152 / 255],\n",
+            "  'leb-black-G': [175 / 255, 199 / 255, 167 / 255],\n",
+            "  'leb-black-N': [156 / 255, 162 / 255, 162 / 255],\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/printing-color-profiles.ts": {
+      "before": "15b5ceb9701ff1b8e1dd33d07a85d6f6de50bf3baef6541cd1865794df4e614c",
+      "after": "aa5f2fe46ddd4becacaf2406a98bdc385cfb71c63c3f81537a30635c08d9f128",
+      "reverseEdits": [
+        {
+          "start": 762,
+          "count": 28,
+          "lines": []
+        },
+        {
+          "start": 273,
+          "count": 3,
+          "lines": [
+            "            hueDegrees: 0,\n",
+            "            saturationScale: 1,\n",
+            "            brightnessScale: 1,\n"
+          ]
+        },
+        {
+          "start": 220,
+          "count": 3,
+          "lines": [
+            "            hueDegrees: 0,\n",
+            "            saturationScale: 1,\n",
+            "            brightnessScale: 1,\n"
+          ]
+        },
+        {
+          "start": 92,
+          "count": 3,
+          "lines": [
+            "            hueDegrees: 0,\n",
+            "            saturationScale: 1,\n",
+            "            brightnessScale: 1,\n"
+          ]
+        },
+        {
+          "start": 16,
+          "count": 3,
+          "lines": [
+            "            hueDegrees: 0,\n",
+            "            saturationScale: 1,\n",
+            "            brightnessScale: 1,\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/printing-mana-profiles.ts": {
+      "before": "fca9dfd9eb128315b3906aa14c03ecbd8a964daaebcd99b728c7cbf5b9c26cf1",
+      "after": "a340376d0a2771d42f9c4a33b410b0192d059e48fa28917d1886726be676ebb5",
+      "reverseEdits": [
+        {
+          "start": 191,
+          "count": 3,
+          "lines": []
+        },
+        {
+          "start": 164,
+          "count": 25,
+          "lines": [
+            "      W: { scale: 0.98, dx: -0.5, dy: -2 },\n",
+            "      U: { scale: 0.94, dx: -0.5, dy: -1.5 },\n",
+            "      B: { scale: 0.97, dx: -0.25, dy: -2 },\n",
+            "      R: { scale: 0.95, dx: 0, dy: -1.5 },\n",
+            "      G: { scale: 1.04, dx: -0.25, dy: -3 },\n"
+          ]
+        },
+        {
+          "start": 129,
+          "count": 25,
+          "lines": [
+            "      W: { scale: 1.09, dx: 0, dy: 0 },\n",
+            "      U: { scale: 1, dx: 0.5, dy: -1 },\n",
+            "      B: { scale: 1.03, dx: 0.25, dy: -1.25 },\n",
+            "      R: { scale: 1, dx: 0.5, dy: 0.5 },\n",
+            "      G: { scale: 1.12, dx: 0, dy: -1 },\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/profile.ts": {
+      "before": "406d845c4c7579bd7dbd3fdab50b1c22a60e82349b2836bc500ef7eb29686a3f",
+      "after": "ea190605089a1b96b47e640f950fef7385e3013303b24784718127060f7fa6f8",
+      "reverseEdits": [
+        {
+          "start": 58,
+          "count": 2,
+          "lines": ["  const land = input.land ?? /(^|\\s)Land(?:\\s|$)/i.test(typeLine);\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-frame.ts": {
+      "before": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
+      "after": "065dbaa6e24b17916496537007b9ab97393f9337cae29620f237c072edd580c6",
+      "reverseEdits": [
+        {
+          "start": 135,
+          "count": 9,
+          "lines": [
+            "  const key =\n",
+            "    (face.land ?? /\\bLand\\b/.test(type))\n",
+            "      ? landColors.length === 1\n",
+            "        ? landColors[0] + 'l'\n",
+            "        : 'l'\n",
+            "      : (face.artifact ?? /\\bArtifact\\b/.test(type))\n",
+            "        ? 'a'\n",
+            "        : colors.length > 1\n",
+            "          ? 'm'\n",
+            "          : (colors[0]?.toLowerCase() ?? 'c');\n"
+          ]
+        },
+        {
+          "start": 125,
+          "count": 2,
+          "lines": ["    type = face.typeLine ?? '';\n"]
+        },
+        {
+          "start": 12,
+          "count": 1,
+          "lines": ["import { resolveFrameColors } from './profile.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "64271e04e35d3b5086b77af0569ff8a482daf012c2dc260b5934a4d6979ddf18",
+      "after": "3a2f82068795bddb736956691136a94056ed8c7e13d0a67f9ad49ecea473aca1",
+      "reverseEdits": [
+        {
+          "start": 380,
+          "count": 1,
+          "lines": ["  c.fillStyle = retroInk(face);\n"]
+        },
+        {
+          "start": 134,
+          "count": 1,
+          "lines": [
+            "  c.fillStyle = face.setCode?.toLowerCase() === 'lea' ? '#828282' : retroInk(face);\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-rules.ts": {
+      "before": "e3f6761c172772b9ec86fabb3d03568fe356f3995da61b63d12a6e5f997e945c",
+      "after": "bf9f14f0aa1967b642764a67e48933fbb117e6d5b420e93046ed84af9a5a6215",
+      "reverseEdits": [
+        {
+          "start": 78,
+          "count": 3,
+          "lines": [
+            "    set === 'lea' && face.wordingMode === 'oracle' ? ([428, 590] as const) : undefined;\n"
+          ]
+        }
+      ]
+    }
+  }
+}

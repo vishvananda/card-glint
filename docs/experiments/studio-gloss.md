@@ -2,7 +2,8 @@
 
 The approved softbox treatment now replaces the old gloss effect, with a 10%
 strength increase. All three cards in the private frame preview share it. Frame
-assets, flat overlays and accuracy scores are unchanged; this is not a release.
+assets, flat overlays and accuracy scores are unchanged by the optical effect.
+The replacement ships in 0.5.4.
 
 The native face pass receives surface positions and a camera recovered from the
 view-projection matrix. Reflection rays intersect a fixed rectangular softbox.

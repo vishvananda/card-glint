@@ -3,10 +3,17 @@ import { layoutRules, rulesLayoutRequest, type RulesLayout } from './rules-layou
 import { alphaRulesLayout, earlyRulesModel } from './alpha-rules.js';
 import { retroPx, retroRects } from './retro-frame.js';
 import { wordingParagraphs } from './wording.js';
-import { reviewedSmallOriginal } from './alpha-typography.js';
+import { reviewedSmallOriginal, reviewedOriginalTextLayout } from './alpha-typography.js';
 
 export interface EarlyTextTierOptions {
   readonly largeMaximum?: number;
+  readonly centeredWidth?: number;
+  readonly regularDx?: number;
+  readonly regularDy?: number;
+  readonly centeredDx?: number;
+  readonly centeredDy?: number;
+  readonly shortRegularDy?: number;
+  readonly mediumSizeDelta?: number;
   readonly largeFitWidth?: number;
   readonly mediumMaximum?: number;
   readonly mediumSize?: number;
@@ -51,6 +58,7 @@ export function earlyTextTierLayout(
     face.rulesAlignment?.mode === 'auto'
       ? (face.rulesAlignment.reference ?? paragraphs)
       : paragraphs;
+  options = { ...reviewedOriginalTextLayout(face, reference), ...options };
   const characters = reference.reduce(
     (n, p) => n + p.runs.reduce((n, r) => n + r.text.length, 0),
     0,
@@ -74,7 +82,12 @@ export function earlyTextTierLayout(
     const fit = layoutRules(
       context,
       blocks,
-      { x: 70, y: y - 6, width: options.largeFitWidth ?? 340, height: height - 8 },
+      {
+        x: 70,
+        y: y - 6,
+        width: options.largeFitWidth ?? options.centeredWidth ?? 340,
+        height: height - 8,
+      },
       32.5,
       32.5,
       { ...typography, leading: 1.1, balanceLines: true, centerOffset: 0 },
@@ -85,7 +98,7 @@ export function earlyTextTierLayout(
         const trial = layoutRules(
           context,
           blocks,
-          { x: 70, y: y - 6, width: 348, height: height - 8 },
+          { x: 70, y: y - 6, width: options.centeredWidth ?? 348, height: height - 8 },
           32.5,
           32.5,
           { ...typography, leading: 1.1, balanceLines: true, centerOffset: 0 },
@@ -122,10 +135,63 @@ export function earlyTextTierLayout(
     }
   }
   if (chosen.overflow) chosen = base;
-  if (chosen.size >= 19)
-    return options.transferAlphaModel
+  if (chosen.size >= 19) {
+    const r = rulesLayoutRequest(chosen);
+    if (!r) throw Error('Missing selected typography request');
+    const centered = r.paragraphs.every((p) => p.align === 'center');
+    const width = centered && chosen.size >= 30 ? options.centeredWidth : undefined;
+    const sizeDelta = !centered && chosen.size < 30 ? options.mediumSizeDelta : undefined;
+    if (width !== undefined || sizeDelta) {
+      const size = chosen.size + (sizeDelta ?? 0);
+      const shaped = layoutRules(
+        context,
+        r.paragraphs,
+        {
+          ...r.bounds,
+          ...(width !== undefined ? { x: (488 - width) / 2, width } : {}),
+        },
+        size,
+        size,
+        r.typography,
+      );
+      if (!shaped.overflow) chosen = shaped;
+    }
+    const model = options.transferAlphaModel
       ? (earlyRulesModel(context, face, chosen) ?? chosen)
       : (alphaRulesLayout(context, face, chosen) ?? chosen);
+    const dx = centered ? (options.centeredDx ?? 0) : (options.regularDx ?? 0);
+    const dy = centered
+      ? (options.centeredDy ?? 0)
+      : options.regularDy !== undefined
+        ? options.regularDy
+        : chosen.lines.length <= 5
+          ? (options.shortRegularDy ?? 0)
+          : 0;
+    if (!dx && !dy) return model;
+    const candidate = {
+      ...model,
+      x: model.x + dx / (model.horizontalScale ?? 1),
+      top: model.top + dy,
+      lines: model.lines.map((l) => ({
+        ...l,
+        x: (l.x ?? model.x) + dx / (model.horizontalScale ?? 1),
+        baseline: l.baseline + dy,
+        inkBounds: [
+          l.inkBounds[0] + dx / (model.horizontalScale ?? 1),
+          l.inkBounds[1] + dy,
+          l.inkBounds[2],
+          l.inkBounds[3],
+        ] as const,
+      })),
+    };
+    const top = face.wordingMode === 'oracle' ? 428 : 405;
+    const bottom = face.wordingMode === 'oracle' ? 590 : 602;
+    return candidate.lines.some(
+      (l) => l.inkBounds[1] < top || l.inkBounds[1] + l.inkBounds[3] > bottom,
+    )
+      ? model
+      : candidate;
+  }
   const r = rulesLayoutRequest(chosen);
   if (!r) throw Error('Missing selected early typography request');
   const shape = layoutRules(

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preAbuReleaseSource } from './magic-abu-release-source-guard.mjs';
 const proof = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/abu-typography-compatibility.json'),
 );
@@ -32,7 +33,7 @@ async function verify() {
     for (const row of parsed.rows) assert.equal(row.before, row.after);
     for (const [file, digest] of Object.entries(proof.dependencies))
       assert.equal(
-        hash(await readFile(file)),
+        hash(await preAbuReleaseSource(file)),
         digest,
         'Unreviewed Alpha typography dependency: ' + file,
       );
@@ -41,7 +42,7 @@ async function verify() {
 }
 /** Preserve the exact released source behind older calibration evidence. */
 export async function preAbuTypographySource(file) {
-  const bytes = await readFile(file),
+  const bytes = await preAbuReleaseSource(file),
     change = proof.files[file];
   if (!change) return bytes;
   await verify();

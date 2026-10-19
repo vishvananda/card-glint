@@ -34,6 +34,12 @@ import { earlyReprintTypeProof } from './magic-early-reprint-type-source-guard.m
 const release053 = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/release-0-5-3-compatibility.json'),
 );
+const abuRelease = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/abu-release-compatibility.json'),
+);
+const abuTypography = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/abu-typography-compatibility.json'),
+);
 const consolidation = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/profile-consolidation-compatibility.json'),
 );
@@ -88,6 +94,12 @@ async function identity() {
     ),
     reprintManaRevision: hash(
       await readFile('games/magic/fixtures/accuracy/early-reprint-mana-compatibility.json'),
+    ),
+    abuReleaseRevision: hash(
+      await readFile('games/magic/fixtures/accuracy/abu-release-compatibility.json'),
+    ),
+    abuTypographyRevision: hash(
+      await readFile('games/magic/fixtures/accuracy/abu-typography-compatibility.json'),
     ),
     reprintRevision: hash(
       await readFile('games/magic/fixtures/accuracy/early-reprint-compatibility.json'),
@@ -256,6 +268,7 @@ async function verify() {
     (file) =>
       ![
         ...Object.keys(release053.dependencies),
+        ...Object.keys(abuTypography.dependencies),
         ...delivery.newModules,
         ...delivery.generatedModules,
         ...consolidation.newModules,
@@ -299,6 +312,8 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(abuRelease.files, relative) ||
+            Object.hasOwn(abuTypography.files, relative) ||
             Object.hasOwn(release053.files, relative) ||
             Object.hasOwn(delivery.files, relative) ||
             Object.hasOwn(reprintFooter.files, relative) ||

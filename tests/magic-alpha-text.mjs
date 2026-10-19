@@ -96,8 +96,8 @@ try {
           };
           const a = before(ctx, face),
             b = after(ctx, face);
-          if (setCode !== 'lea') {
-            if (JSON.stringify(a) !== JSON.stringify(b)) throw Error('Non-Alpha layout changed');
+          if (!['lea', 'leb'].includes(setCode)) {
+            if (JSON.stringify(a) !== JSON.stringify(b)) throw Error('Non-ABU layout changed');
             controls++;
           } else if (JSON.stringify(a) !== JSON.stringify(b)) {
             changed++;
@@ -159,7 +159,7 @@ try {
     return { changed, controls, fallbacks, printedSizeCases };
   }, sizeReviews);
   assert.ok(result.changed > 0);
-  assert.equal(result.controls, 30);
+  assert.equal(result.controls, 20);
   assert.ok(result.fallbacks > 0);
   assert.equal(result.printedSizeCases, 2);
   console.log(result);

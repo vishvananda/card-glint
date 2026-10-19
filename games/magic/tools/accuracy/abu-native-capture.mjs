@@ -3,13 +3,20 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { PNG } from 'pngjs';
+import { verifyMetadataRefresh } from './abu-metadata-refresh.mjs';
 import { createServer } from 'vite';
 import { openBrowser } from './browser.mjs';
 import { cachedFetch } from './cache.mjs';
 import { root, readJson, writeJson, hash, sourceHash } from './common.mjs';
 
-const [inputFile, outputDirectory, parentRoot, expectationArgument, scope = 'typography'] =
-  process.argv.slice(2);
+const [
+  inputFile,
+  outputDirectory,
+  parentRoot,
+  expectationArgument,
+  scope = 'typography',
+  metadataProofFile,
+] = process.argv.slice(2);
 assert.ok(['typography', 'whole-card'].includes(scope));
 const expectedFile = expectationArgument === '-' ? undefined : expectationArgument;
 if (!parentRoot)
@@ -100,6 +107,15 @@ try {
   if (error.code !== 'ENOENT') throw error;
 }
 const completed = new Map(prior?.rows.map((r) => [r.id, r]));
+if (metadataProofFile) {
+  definition.metadataOnlyRefresh = await verifyMetadataRefresh(
+    path.join(root, 'games/magic/src'),
+    await readJson(metadataProofFile),
+  );
+  assert.equal(prior?.rendererHash, definition.metadataOnlyRefresh.beforeRendererHash);
+  assert.equal(rendererHash, definition.metadataOnlyRefresh.afterRendererHash);
+  prior.rendererHash = rendererHash;
+}
 if (prior) {
   for (const field of [
     'inputHash',

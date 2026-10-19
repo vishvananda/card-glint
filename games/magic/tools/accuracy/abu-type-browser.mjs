@@ -395,15 +395,32 @@ export function shared() {
 export function countTrials(
   selectedOnly = false,
   selectedPolicy = { policy: 'count', mediumSize: 22.5, denseWidth: 1 },
+  grid = false,
 ) {
-  const variants = selectedOnly
-    ? [{}, selectedPolicy]
-    : [
+  const variants = grid
+    ? [
         {},
-        ...[21.5, 22, 22.5].flatMap((mediumSize) =>
-          [0.98, 1].map((denseWidth) => ({ policy: 'count', mediumSize, denseWidth })),
+        ...[undefined, 374, 390].flatMap((centeredWidth) =>
+          [0, -8, -16].flatMap((centeredDy) =>
+            [0, -10, -16].map((shortRegularDy) => ({
+              ...selectedPolicy,
+              centeredWidth,
+              centeredDx: -6.5,
+              centeredDy,
+              shortRegularDy,
+            })),
+          ),
         ),
-      ];
+        ...[-0.5, -1].map((mediumSizeDelta) => ({ ...selectedPolicy, mediumSizeDelta })),
+      ]
+    : selectedOnly
+      ? [{}, selectedPolicy]
+      : [
+          {},
+          ...[21.5, 22, 22.5].flatMap((mediumSize) =>
+            [0.98, 1].map((denseWidth) => ({ policy: 'count', mediumSize, denseWidth })),
+          ),
+        ];
   return {
     rules: variants.map((adjustment) => ({ adjustment, score: measure('rules', adjustment) })),
   };

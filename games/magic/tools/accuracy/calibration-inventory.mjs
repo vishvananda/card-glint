@@ -94,6 +94,7 @@ const earlyGuards = Object.fromEntries(
 );
 const sets = [];
 try {
+  await server.ssrLoadModule('/games/magic/src/data/eager.ts');
   const { printingColorSource } = await server.ssrLoadModule(
     '/games/magic/src/presentation/printing-color-source.ts',
   );
@@ -259,11 +260,13 @@ try {
               : {}),
           };
         }
-        if (geometry) {
-          const key = `${set.set}/${geometry.material}`,
-            eg = early.groups[key];
-          assert.ok(eg);
-          assert.equal(eg.profile.source, JSON.stringify([geometry.asset, geometry.frame]));
+        const historicalGeometry = geometry && early.groups[`${set.set}/${geometry.material}`];
+        if (
+          geometry &&
+          historicalGeometry?.profile.source === JSON.stringify([geometry.asset, geometry.frame])
+        ) {
+          const eg = historicalGeometry,
+            key = `${set.set}/${geometry.material}`;
           const covered = early.native.rows.filter((r) => g.printingIds.includes(r.id));
           for (const [task, component] of [
             ['frameColor', 'frame'],

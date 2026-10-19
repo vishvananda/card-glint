@@ -19,6 +19,8 @@ export function printedTextOutlierAnnotation(entry) {
   for (const row of rows)
     if (row.name !== entry.card.name || row.referenceHash !== entry.reference.sha256)
       throw Error(`Printed text review is stale for ${entry.card.name}`);
+  // Existing single-source sets retain their exact annotation object.
+  if (!['lea', 'leb'].includes(entry.card.set)) return rows[0];
   return Object.assign({}, ...rows, {
     reviewedFields: [...new Set(rows.flatMap((r) => r.reviewedFields ?? []))],
   });

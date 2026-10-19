@@ -25,7 +25,7 @@ const inputs = await readJson(inputsFile),
 const mode =
   filter === '@shared' || filter.startsWith('@headers:')
     ? 'shared'
-    : filter === '@count' || filter === '@native-count'
+    : filter === '@count' || filter === '@native-count' || filter === '@policy-grid'
       ? 'count'
       : filter.startsWith('@details:')
         ? 'details'
@@ -33,7 +33,18 @@ const mode =
 const policy = { policy: 'count', mediumSize: 22.5, denseWidth: 1, ...JSON.parse(policyJson) };
 assert.ok(
   Object.keys(policy).every((key) =>
-    ['policy', 'mediumSize', 'denseWidth', 'forceSmall', 'transferAlphaModel'].includes(key),
+    [
+      'policy',
+      'mediumSize',
+      'denseWidth',
+      'forceSmall',
+      'transferAlphaModel',
+      'centeredWidth',
+      'centeredDx',
+      'centeredDy',
+      'shortRegularDy',
+      'mediumSizeDelta',
+    ].includes(key),
   ),
 );
 assert.equal(policy.policy, 'count');
@@ -91,12 +102,35 @@ const { canvasAssetUrls } = await ssr.ssrLoadModule(
 const { RETRO_FONT, RETRO_SYMBOL_FONT } = await ssr.ssrLoadModule(
   '/games/magic/src/presentation/retro-frame.ts',
 );
+const selected = new Set();
+if (filter === '@policy-grid') {
+  for (const material of new Set(inputs.entries.map((e) => e.material)))
+    for (const cohort of ['calibration', 'validation'])
+      for (const tier of [0, 1, 2, 3]) {
+        const group = inputs.entries
+          .filter((e) => {
+            const n = (e.face.rulesParagraphs ?? []).reduce(
+              (n, p) => n + p.runs.reduce((n, r) => n + r.text.length, 0),
+              0,
+            );
+            return (
+              e.material === material &&
+              poses.rows.find((p) => p.id === e.id).cohort === cohort &&
+              (n < 118 ? 0 : n < 180 ? 1 : n < 275 ? 2 : 3) === tier
+            );
+          })
+          .sort((a, b) => a.id.localeCompare(b.id));
+        for (const e of group.slice(0, cohort === 'calibration' ? 3 : 2)) selected.add(e.id);
+      }
+}
 const entries = inputs.entries.filter((e) =>
-  filter.startsWith('@headers:')
-    ? new RegExp(filter.slice('@headers:'.length), 'i').test(e.card.name)
-    : mode === 'details'
-      ? new RegExp(filter.slice('@details:'.length), 'i').test(e.card.name)
-      : mode !== 'individual' || e.card.name.toLowerCase().includes(filter.toLowerCase()),
+  filter === '@policy-grid'
+    ? selected.has(e.id)
+    : filter.startsWith('@headers:')
+      ? new RegExp(filter.slice('@headers:'.length), 'i').test(e.card.name)
+      : mode === 'details'
+        ? new RegExp(filter.slice('@details:'.length), 'i').test(e.card.name)
+        : mode !== 'individual' || e.card.name.toLowerCase().includes(filter.toLowerCase()),
 );
 const fonts = [
   ...new Set(
@@ -241,8 +275,9 @@ try {
     const shared =
       mode === 'count' || mode === 'details'
         ? await session.page.evaluate(
-            ({ selectedOnly, policy }) => globalThis.__typeStudy.countTrials(selectedOnly, policy),
-            { selectedOnly: filter === '@native-count', policy },
+            ({ selectedOnly, policy, grid }) =>
+              globalThis.__typeStudy.countTrials(selectedOnly, policy, grid),
+            { selectedOnly: filter === '@native-count', policy, grid: filter === '@policy-grid' },
           )
         : mode === 'shared'
           ? await session.page.evaluate(() => globalThis.__typeStudy.shared())
