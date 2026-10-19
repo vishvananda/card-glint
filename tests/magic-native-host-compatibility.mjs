@@ -30,6 +30,7 @@ import { earlyReprintManaProof } from './magic-early-reprint-mana-source-guard.m
 import { earlyReprintTitleProof } from './magic-early-reprint-title-source-guard.mjs';
 import { earlyReprintFooterProof } from './magic-early-reprint-footer-source-guard.mjs';
 import { earlyReprintTypeProof } from './magic-early-reprint-type-source-guard.mjs';
+import { battleSources, battleSourceProof } from './magic-battle-source-guard.mjs';
 
 const release053 = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/release-0-5-3-compatibility.json'),
@@ -74,6 +75,7 @@ async function packMetadata(directory, beforeSymbols = false) {
 async function identity() {
   const executable = await stat(chromium.executablePath());
   return {
+    battleRevision: hash(await readFile('tests/magic-battle-sources.json')),
     release053Revision: hash(
       await readFile('games/magic/fixtures/accuracy/release-0-5-3-compatibility.json'),
     ),
@@ -216,6 +218,7 @@ function assertReceipt(receipt, expected) {
 }
 
 async function verify() {
+  await battleSourceProof();
   const reprintFooter = await earlyReprintFooterProof();
   const reprintType = await earlyReprintTypeProof();
   const reprintTitle = await earlyReprintTitleProof();
@@ -267,6 +270,7 @@ async function verify() {
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
     (file) =>
       ![
+        ...Object.keys(battleSources.dependencies),
         ...Object.keys(release053.dependencies),
         ...Object.keys(abuTypography.dependencies),
         ...delivery.newModules,
@@ -312,6 +316,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(battleSources.files, relative) ||
             Object.hasOwn(abuRelease.files, relative) ||
             Object.hasOwn(abuTypography.files, relative) ||
             Object.hasOwn(release053.files, relative) ||

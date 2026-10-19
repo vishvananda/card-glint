@@ -119,7 +119,7 @@ export interface RenderedCardInput extends CardProfileInput {
   power?: string | number | null;
   toughness?: string | number | null;
   loyalty?: string | number | null;
-  /** Visible reverse-face P/T reminder on a transforming Saga's front. */
+  /** Visible reverse-creature P/T reminder on a transforming Saga or native Battle front. */
   reverseStats?: { power: string | number; toughness: string | number };
   setCode?: string | null;
   /** Optional host-owned symbol URL; setCode remains the printed label. */

@@ -115,31 +115,43 @@ export function providerFace(
   const index = options.faceIndex ?? 0;
   if (!Number.isInteger(index) || index < 0 || index >= faces.length)
     throw Error('This card does not have that face.');
+  const battleFront =
+    layout === 'battle' ||
+    (layout === 'transform' &&
+      /\bBattle\b/.test(faces[0]!.canonicalTypeLine ?? faces[0]!.typeLine ?? ''));
   if (
     options.faceIndex !== undefined ||
     faces.length === 1 ||
-    ['transform', 'modal_dfc', 'reversible_card', 'meld', 'double_faced_token'].includes(layout)
+    ['transform', 'modal_dfc', 'reversible_card', 'meld', 'double_faced_token', 'battle'].includes(
+      layout,
+    )
   ) {
     const face = faces[index]!;
+    const reverse = faces[1];
     return {
       ...face,
       ...(index > 0 && ['transform', 'modal_dfc', 'battle', 'double_faced_token'].includes(layout)
         ? { securityStamp: 'none' as const }
         : {}),
       illustration: face.illustration ?? sharedArt,
-      ...(layout === 'battle' && index === 0
-        ? { frameTemplate: 'battle' as const, frameAssetFamily: undefined }
+      ...(battleFront && index === 0
+        ? {
+            frameTemplate: 'battle' as const,
+            frameAssetFamily: undefined,
+            ...(reverse &&
+            /\bCreature\b/.test(reverse.canonicalTypeLine ?? reverse.typeLine ?? '') &&
+            reverse.power != null &&
+            reverse.power !== '' &&
+            reverse.toughness != null &&
+            reverse.toughness !== ''
+              ? { reverseStats: { power: reverse.power, toughness: reverse.toughness } }
+              : {}),
+          }
         : {}),
     };
   }
-  if (!['split', 'aftermath', 'flip', 'adventure', 'prepare', 'room', 'battle'].includes(layout))
+  if (!['split', 'aftermath', 'flip', 'adventure', 'prepare', 'room'].includes(layout))
     throw Error('Unsupported multiple-face layout: ' + layout);
-  if (layout === 'battle')
-    return {
-      ...faces[index]!,
-      frameTemplate: index === 0 ? 'battle' : undefined,
-      frameAssetFamily: undefined,
-    };
   return {
     ...faces[0]!,
     layout: layout === 'room' ? 'split' : layout,

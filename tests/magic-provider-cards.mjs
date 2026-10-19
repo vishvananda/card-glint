@@ -309,6 +309,75 @@ const flipOriginal = fromMtgjsonCard(flipPair, { wording: 'original' });
 assert.equal(flipOriginal.faces[0].rulesText, 'Front ability.');
 assert.equal(flipOriginal.faces[1].rulesText, 'Back ability.');
 assert.equal(flipOriginal.faces[1].typeLine, 'Legendary Creature — Spirit');
+const battle = {
+  ...card,
+  name: 'Invasion of Zendikar // Awakened Skyclave',
+  layout: 'transform',
+  frame: '2015',
+  set: 'mom',
+  power: undefined,
+  toughness: undefined,
+  card_faces: [
+    {
+      name: 'Invasion of Zendikar',
+      type_line: 'Battle — Siege',
+      printed_type_line: 'Bataille — siège',
+      oracle_text: 'Search your library for two basic land cards.',
+      mana_cost: '{3}{G}',
+      colors: ['G'],
+      defense: '3',
+      image_uris: { art_crop: 'https://example.com/battle-front.png' },
+    },
+    {
+      name: 'Awakened Skyclave',
+      type_line: 'Creature — Elemental',
+      oracle_text: 'Vigilance, haste',
+      power: '4',
+      toughness: '4',
+      image_uris: { art_crop: 'https://example.com/battle-reverse.png' },
+    },
+  ],
+};
+const battleBefore = structuredClone(battle);
+for (const options of [{}, { faceIndex: 0 }, { wording: 'original' }]) {
+  const front = fromScryfallCard(battle, options);
+  assert.equal(front.frameTemplate, 'battle');
+  assert.equal(front.frameAssetFamily, undefined);
+  assert.equal(front.defense, '3');
+  assert.deepEqual(front.reverseStats, { power: '4', toughness: '4' });
+  assert.equal(front.illustration, 'https://example.com/battle-front.png');
+}
+assert.equal(fromScryfallCard(battle, { wording: 'original' }).typeLine, 'Bataille — siège');
+const reverse = fromScryfallCard(battle, { faceIndex: 1 });
+assert.equal(reverse.frameTemplate, undefined);
+assert.equal(reverse.typeLine, 'Creature — Elemental');
+assert.equal(reverse.power, '4');
+assert.equal(reverse.illustration, 'https://example.com/battle-reverse.png');
+assert.equal(reverse.reverseStats, undefined);
+for (const back of [
+  { ...battle.card_faces[1], toughness: undefined },
+  { ...battle.card_faces[1], type_line: 'Enchantment' },
+]) {
+  assert.equal(
+    fromScryfallCard({ ...battle, card_faces: [battle.card_faces[0], back] }).reverseStats,
+    undefined,
+  );
+}
+assert.deepEqual(
+  fromScryfallCard({
+    ...battle,
+    card_faces: [battle.card_faces[0], { ...battle.card_faces[1], power: '*', toughness: '1+*' }],
+  }).reverseStats,
+  { power: '*', toughness: '1+*' },
+);
+assert.equal(
+  fromScryfallCard({
+    ...battle,
+    card_faces: [{ ...battle.card_faces[0], type_line: 'Artifact' }, battle.card_faces[1]],
+  }).frameTemplate,
+  undefined,
+);
+assert.deepEqual(battle, battleBefore);
 console.log(
   'PASS provider render routing, panel palettes, land colors, original panel boundaries, artwork pairing, historical cost order and reverse-side stamps',
 );
