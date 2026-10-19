@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { FACE_WIDTH, FACE_HEIGHT, type FaceRect } from './face-layout.js';
 
 // Aperture landmarks measured from the pinned 2736×3810 planeswalker plates,
@@ -115,7 +116,7 @@ export function planeswalkerArtBounds(large: boolean): FaceRect {
 }
 
 /** Clip during face preparation; no image decoding or alpha readback. */
-export function clipPlaneswalkerArt(c: CanvasRenderingContext2D, large: boolean) {
+export function clipPlaneswalkerArt(c: CanvasContext, large: boolean) {
   const side = SIDES[large ? 1 : 0]!;
   c.beginPath();
   side.forEach(([y, x], i) => {

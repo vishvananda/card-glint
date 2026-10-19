@@ -1,3 +1,8 @@
+import {
+  type CanvasContext,
+  type CanvasRaster,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
@@ -28,14 +33,10 @@ export function sagaColorAssets(face: RenderedCardInput): string[] {
   const frames = sagaColorFrames(face);
   return frames.length ? [...frames, ...SAGA_COLOR_MASKS] : [];
 }
-const prepared = new WeakMap<ImageBitmap, { sources: ImageBitmap[]; canvas: HTMLCanvasElement }>();
+const prepared = new WeakMap<ImageBitmap, { sources: ImageBitmap[]; canvas: CanvasRaster }>();
 /** Retain gold paper/frame; only the source's pinline and folded bookmark masks
  * receive the ordered pair. Preparation is cached by decoded source identity. */
-export function paintSagaColors(
-  c: CanvasRenderingContext2D,
-  face: RenderedCardInput,
-  images: CanvasImages,
-) {
+export function paintSagaColors(c: CanvasContext, face: RenderedCardInput, images: CanvasImages) {
   const frames = sagaColorFrames(face);
   if (!frames.length) return;
   const sources = [...frames, ...SAGA_COLOR_MASKS].map((url) => {
@@ -49,13 +50,13 @@ export function paintSagaColors(
     return;
   }
   const [left, right, pinline, banner, bannerRight, stripe] = sources;
-  const canvas = document.createElement('canvas');
+  const canvas = rasterCanvas();
   canvas.width = left!.width;
   canvas.height = left!.height;
-  const layer = document.createElement('canvas');
+  const layer = rasterCanvas();
   layer.width = canvas.width;
   layer.height = canvas.height;
-  const mask = document.createElement('canvas');
+  const mask = rasterCanvas();
   mask.width = canvas.width;
   mask.height = canvas.height;
   const o = canvas.getContext('2d')!,

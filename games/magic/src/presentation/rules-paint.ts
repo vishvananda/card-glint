@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import type { CanvasImages } from './canvas-assets.js';
 import { paintMana } from './canvas-text.js';
@@ -17,7 +21,7 @@ import { planarRulesSpacing, planarRulesStatsRect } from './planar-rules.js';
 import { planarShortRules } from './planar-short-rules.js';
 
 export function ordinaryTextLayout(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   height = FACE_HEIGHT,
   scale = 1,
@@ -109,7 +113,7 @@ export function ordinaryTextLayout(
 }
 
 export function paintRulesLayout(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   layout: RulesLayout,
   images: CanvasImages,
   paintSymbol: typeof paintMana = paintMana,
@@ -135,7 +139,7 @@ export function paintRulesLayout(
   context.fillStyle = color;
   // Optical weight adjustment belongs to face composition, never the draw loop.
   // Remove a narrow outline from a separate text layer so frame texture survives.
-  const layer = inkInsetEm > 0 ? document.createElement('canvas') : null;
+  const layer = inkInsetEm > 0 ? rasterCanvas() : null;
   if (layer) {
     layer.width = context.canvas.width;
     layer.height = context.canvas.height;
@@ -191,7 +195,7 @@ export function paintRulesLayout(
 
 /** Scale letter ink locally; the caller advances with the matching measured width. */
 function paintScaledText(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   run: MeasuredRun,
   x: number,
   y: number,

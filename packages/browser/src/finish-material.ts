@@ -10,6 +10,7 @@ import type { FinishMap } from './finish-printing.js';
 import { prepareFinishCoverage } from './finish-coverage.js';
 import { initializeRenderer } from './renderer.js';
 import { layersOf, paintCoverage } from './raster.js';
+import { coverageMap, type CoverageMap } from './canvas-mask.js';
 
 const copyFragment = `#version 300 es
 precision highp float;
@@ -227,6 +228,20 @@ export class FinishResources {
         this.documentHost = undefined;
       }
     });
+  }
+  /** Upload data directly into linear R8 with UNPACK_ALIGNMENT=1. Preparation only. */
+  async documentMaskData(
+    document: CardDocument,
+    host: RasterHost,
+    signal: AbortSignal,
+  ): Promise<CoverageMap> {
+    const mask = await this.documentMask(document, host, signal);
+    try {
+      signal.throwIfAborted();
+      return coverageMap(mask, 'red');
+    } finally {
+      mask.width = mask.height = 0;
+    }
   }
   caustics(time: number): HTMLCanvasElement {
     if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');

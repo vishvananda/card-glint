@@ -1,3 +1,10 @@
+import { coverageMap, type CoverageMap } from '../../../../packages/browser/src/canvas-mask.js';
+import { finishRaster, closeRaster } from '../../../../packages/browser/src/canvas-raster.js';
+import {
+  type CanvasContext,
+  type CanvasRaster,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible, withRulesInk } from './rules-visibility.js';
@@ -84,7 +91,25 @@ import type { AbilityEmblem } from '../emblems.js';
 import { paintCardStatus } from './canvas-status.js';
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
 
-export type TextureTier = 'table' | 'inspect';
+export type TextureTier = 'table' | 'native' | 'inspect' | number;
+
+/** Numeric tiers paint directly at that width in the 488×680 reference space. */
+export function cardTextureSize(tier: TextureTier): readonly [number, number] {
+  const width =
+    typeof tier === 'number'
+      ? tier
+      : tier === 'table'
+        ? 244
+        : tier === 'native'
+          ? 488
+          : tier === 'inspect'
+            ? 732
+            : NaN;
+  const height = Math.round((width * FACE_HEIGHT) / FACE_WIDTH);
+  if (!Number.isInteger(width) || width < 1 || height < 1 || width * height > 4194304)
+    throw RangeError('Invalid card texture tier');
+  return [width, height];
+}
 export interface CardTextureInput {
   /** Game-specific painter. Art bounds are bottom-up UV endpoints; corner radius is in card widths. */
   custom?: {
@@ -96,7 +121,7 @@ export interface CardTextureInput {
       signal: AbortSignal,
       layer: 'face' | 'etching',
       threshold?: number,
-    ) => Promise<HTMLCanvasElement>;
+    ) => Promise<CanvasRaster | ImageBitmap>;
   };
   layer?: 'face' | 'etching';
   paintLayer?: PaintLayer;
@@ -263,27 +288,58 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
       ];
 }
 
-export function faceCanvas(tier: TextureTier): HTMLCanvasElement {
-  const canvas = document.createElement('canvas');
-  canvas.width = tier === 'table' ? 244 : 732;
-  canvas.height = tier === 'table' ? 340 : 1020;
-  return canvas;
+export function faceCanvas(tier: TextureTier): CanvasRaster {
+  return rasterCanvas(cardTextureSize(tier));
 }
 
+export interface CardTextureHooks {
+  /** Workers return a bitmap by default. R8 is valid only for the etching layer. */
+  output?: 'bitmap' | 'r8';
+  beforePaint?: () => Promise<void>;
+  cpuPixels?: boolean;
+  loadImages?: typeof loadCanvasImages;
+  resolveEtching?: EtchingResolver;
+  loadFonts?: () => Promise<void>;
+  loadRetroFont?: () => Promise<void>;
+  underArt?: CanvasRaster;
+}
+export function composeCardTexture(
+  input: CardTextureInput,
+  tier: TextureTier,
+  signal: AbortSignal,
+  hooks: CardTextureHooks & { output: 'r8' },
+): Promise<CoverageMap>;
+export function composeCardTexture(
+  input: CardTextureInput,
+  tier: TextureTier,
+  signal: AbortSignal,
+  hooks?: CardTextureHooks & { output?: 'bitmap' },
+): Promise<HTMLCanvasElement | ImageBitmap>;
 export async function composeCardTexture(
   input: CardTextureInput,
   tier: TextureTier,
   signal: AbortSignal,
-  hooks?: {
-    beforePaint?: () => Promise<void>;
-    cpuPixels?: boolean;
-    loadImages?: typeof loadCanvasImages;
-    resolveEtching?: EtchingResolver;
-    loadFonts?: () => Promise<void>;
-    loadRetroFont?: () => Promise<void>;
-    underArt?: HTMLCanvasElement;
-  },
-): Promise<HTMLCanvasElement> {
+  hooks?: CardTextureHooks,
+): Promise<HTMLCanvasElement | ImageBitmap | CoverageMap> {
+  signal.throwIfAborted();
+  if (hooks?.output === 'r8' && input.layer !== 'etching')
+    throw Error('R8 composition requires the etching layer');
+  const complete = async (raster: CanvasRaster | ImageBitmap) => {
+    if (hooks?.output !== 'r8') {
+      const result = await finishRaster(raster, hooks?.output === 'bitmap');
+      if (signal.aborted) {
+        closeRaster(result);
+        signal.throwIfAborted();
+      }
+      return result;
+    }
+    try {
+      signal.throwIfAborted();
+      return coverageMap(raster, 'alpha');
+    } finally {
+      closeRaster(raster);
+    }
+  };
   input = { ...input, face: calibrationFace(input.face) };
   validateArtPlacement(input.face);
   validatePrintingElements(input.face);
@@ -291,7 +347,17 @@ export async function composeCardTexture(
   if (input.custom) {
     await hooks?.beforePaint?.();
     signal.throwIfAborted();
-    return input.custom.compose(tier, signal, input.layer ?? 'face', input.etchThreshold);
+    const result = await input.custom.compose(
+      tier,
+      signal,
+      input.layer ?? 'face',
+      input.etchThreshold,
+    );
+    if (signal.aborted) {
+      closeRaster(result);
+      signal.throwIfAborted();
+    }
+    return complete(result);
   }
   const loadImages = hooks?.loadImages ?? loadCanvasImages;
   const canvas = faceCanvas(tier);
@@ -314,7 +380,7 @@ export async function composeCardTexture(
         loadImages,
         hooks?.resolveEtching,
       );
-      return canvas;
+      return await complete(canvas);
     }
     context.fillStyle = '#090806';
     context.fillRect(0, 0, FACE_WIDTH, FACE_HEIGHT);
@@ -324,7 +390,7 @@ export async function composeCardTexture(
         : null;
     if (input.printedImage) {
       const imageUrl =
-        tier === 'inspect' ? fullResolutionScan(input.printedImage) : input.printedImage;
+        tier !== 'table' ? fullResolutionScan(input.printedImage) : input.printedImage;
       if (plateUrl) await (hooks?.loadFonts ?? loadCanvasFonts)();
       const loaded = await loadImages(plateUrl ? [imageUrl, plateUrl] : [imageUrl], signal);
       try {
@@ -363,7 +429,7 @@ export async function composeCardTexture(
             input.statusLayout === 'inspect' || tier === 'inspect',
           );
           roundCanvasSilhouette(context, input.face);
-          return canvas;
+          return await complete(canvas);
         }
       } finally {
         loaded.dispose();
@@ -446,7 +512,7 @@ export async function composeCardTexture(
         input.statusLayout === 'inspect' || tier === 'inspect',
       );
       roundCanvasSilhouette(context, input.face);
-      return canvas;
+      return await complete(canvas);
     } finally {
       numerals?.dispose();
       dual?.dispose();
@@ -460,7 +526,7 @@ export async function composeCardTexture(
 }
 
 /** Apply the silhouette after painting so a complex clip cannot alter interior antialiasing. */
-function roundCanvasSilhouette(context: CanvasRenderingContext2D, face: RenderedCardInput) {
+function roundCanvasSilhouette(context: CanvasContext, face: RenderedCardInput) {
   context.save();
   context.setTransform(
     context.canvas.width / FACE_WIDTH,
@@ -482,12 +548,12 @@ function roundCanvasSilhouette(context: CanvasRenderingContext2D, face: Rendered
 }
 
 export function paintAssembledFace(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
   height = FACE_HEIGHT,
   panel = false,
-  underArt?: HTMLCanvasElement,
+  underArt?: CanvasRaster,
   layer?: PaintLayer,
 ) {
   face = calibrationFace(face);
@@ -914,7 +980,7 @@ export function paintAssembledFace(
 }
 
 function paintFrame(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   image: ImageBitmap,
   legendary: boolean,
   rect: FaceRect = FACE_RECTS.frame,

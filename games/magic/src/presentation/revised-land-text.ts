@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, RulesParagraph, CardTextInk } from './face-layout.js';
 import { layoutRules, type RulesLayout } from './rules-layout.js';
 import { shortCenteredRules } from './short-centered-rules.js';
@@ -34,7 +35,7 @@ export function revisedLandText() {
 }
 
 export function paintRevisedLandText(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   kind: 'title' | 'type' | 'artist',
   maxWidth: number,
@@ -62,7 +63,7 @@ export function paintRevisedLandText(
 }
 
 export function revisedLandRules(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   paragraphs: readonly RulesParagraph[],
   reference: readonly RulesParagraph[],

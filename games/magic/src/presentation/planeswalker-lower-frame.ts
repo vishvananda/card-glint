@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { FACE_HEIGHT, FACE_WIDTH } from './face-layout.js';
 
 // Shared correction from separate inner/outer rim landmarks across four sets.
@@ -18,7 +19,7 @@ export function planeswalkerInkLimits(large: boolean): readonly [number, number]
 /** Keep all source pixels, with the upper frame unchanged and a shared small
  * vertical compression below the type opening. Called during face preparation. */
 export function paintPlaneswalkerFrameImage(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   image: ImageBitmap,
   x: number,
   y: number,

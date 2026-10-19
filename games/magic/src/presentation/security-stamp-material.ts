@@ -1,3 +1,4 @@
+import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import type { CanvasImages } from './canvas-assets.js';
 import { cardStock, type RenderedCardInput } from './face-layout.js';
@@ -35,7 +36,7 @@ export function securityStampMaterialJobs(face: RenderedCardInput, images: Canva
       ]),
       bytes: source.width * source.height * 4,
       build: async () => {
-        const canvas = document.createElement('canvas');
+        const canvas = rasterCanvas();
         canvas.width = source.width;
         canvas.height = source.height;
         try {

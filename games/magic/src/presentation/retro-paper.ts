@@ -1,11 +1,8 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 /** The seventh-family white source adds a gray inner left/bottom bevel absent
  * from the reviewed printings (Mirage through Seventh Edition). Expand its retained paper texture to the keyline;
  * never move the outer frame, keyline, art window or their baked shadows. */
-export function paintRetroPaper(
-  context: CanvasRenderingContext2D,
-  frame: ImageBitmap,
-  asset: string,
-) {
+export function paintRetroPaper(context: CanvasContext, frame: ImageBitmap, asset: string) {
   if (!asset.endsWith('/seventh/regular/w.png')) return;
   context.drawImage(
     frame,

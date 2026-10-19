@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect } from './face-layout.js';
 
 export const PLANESWALKER_COST_GEOMETRY = {
@@ -15,7 +16,7 @@ export const PLANESWALKER_COST_GEOMETRY = {
  * generic middle baseline centers the font em box and puts tall digits into
  * that notch. Measured against frozen M15, M21 and WAR scan registrations. */
 export function paintPlaneswalkerLoyalty(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   [x, y, width, height]: FaceRect,
 ): void {
@@ -26,7 +27,7 @@ export function paintPlaneswalkerLoyalty(
  * point, minus a bottom point, and all three have transparent bottom padding.
  * Keep ability anchors independent of the visible numerals inside each shape. */
 export function paintPlaneswalkerCost(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   [x, y, width, height]: FaceRect,
 ): void {
@@ -45,7 +46,7 @@ export function paintPlaneswalkerCost(
 }
 
 function paintLoyaltyInk(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   size: number,
   centerX: number,

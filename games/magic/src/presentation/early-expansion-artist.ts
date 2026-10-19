@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { paintRetroLetterEdges } from './retro-lettering.js';
 import { paintSolidArtist } from './solid-artist.js';
@@ -38,10 +39,7 @@ export function earlyExpansionArtist(face: RenderedCardInput) {
   return profiles[set];
 }
 
-export function paintEarlyExpansionArtist(
-  c: CanvasRenderingContext2D,
-  face: RenderedCardInput,
-): boolean {
+export function paintEarlyExpansionArtist(c: CanvasContext, face: RenderedCardInput): boolean {
   const set = face.setCode?.toLowerCase();
   if (!face.artist || (set !== 'arn' && set !== 'atq' && set !== 'drk')) return false;
   const solid = earlyExpansionArtist(face),

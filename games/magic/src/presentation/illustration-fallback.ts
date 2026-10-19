@@ -1,3 +1,4 @@
+import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 const colors = new WeakMap<ImageBitmap, string>();
 
 /** A solid, explicitly incomplete background, never a stretched duplicate of
@@ -5,7 +6,7 @@ const colors = new WeakMap<ImageBitmap, string>();
 export function illustrationFallback(image: ImageBitmap): string {
   const prior = colors.get(image);
   if (prior) return prior;
-  const sample = document.createElement('canvas');
+  const sample = rasterCanvas();
   sample.width = sample.height = 16;
   try {
     const c = sample.getContext('2d', { willReadFrequently: true })!;

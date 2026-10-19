@@ -1,14 +1,11 @@
-const hidden = new WeakSet<CanvasRenderingContext2D>();
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
+const hidden = new WeakSet<CanvasContext>();
 
-export function rulesInkVisible(context: CanvasRenderingContext2D): boolean {
+export function rulesInkVisible(context: CanvasContext): boolean {
   return !hidden.has(context);
 }
 
-export function withRulesInk(
-  context: CanvasRenderingContext2D,
-  visible: boolean,
-  paint: () => void,
-): void {
+export function withRulesInk(context: CanvasContext, visible: boolean, paint: () => void): void {
   const wasHidden = hidden.has(context);
   if (!visible) hidden.add(context);
   try {

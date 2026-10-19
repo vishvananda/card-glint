@@ -13,4 +13,8 @@ export const printSamplingVersion = 1;
 /** Native reflective diffraction finish, independent of local hologram patches. */
 export const holofoilVersion = 1;
 
-export { DEFAULT_PRINT_DOTS } from './print-settings.js';
+export {
+  DEFAULT_PRINT_DOTS,
+  PRINT_DOTS_REFERENCE_WIDTH,
+  printDotPeriodForWidth,
+} from './print-settings.js';

@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { printingCollectorText, printingLegalText } from './printing-footer.js';
@@ -19,7 +20,7 @@ export function eighthArtistBrush(face: RenderedCardInput): string | null {
 /** The imported small-caps font maps '*' to a dot. Printed variable stats use
  * a five-point star, including inside expressions such as 1+*. Keep that symbol
  * independent of the font's legacy character encoding. */
-function paintStats(c: CanvasRenderingContext2D, text: string): void {
+function paintStats(c: CanvasContext, text: string): void {
   if (!text.includes('*')) {
     c.fillText(text, 407, 627, 78);
     return;
@@ -54,7 +55,7 @@ function paintStats(c: CanvasRenderingContext2D, text: string): void {
 /** Eighth-family footer ink, independent of badge/frame geometry. Prepared
  * once with the face; source brushes and fonts use the normal asset caches. */
 export function paintEighthFooter(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
   source = '',

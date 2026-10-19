@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 
 export type PrintingElement = 'artist' | 'legal' | 'collector' | 'manaCost' | 'setSymbol';
@@ -45,7 +46,7 @@ export function validatePrintingElements(face: RenderedCardInput): void {
 /** Scoped semantic groups, not global Canvas interception or post-raster repair.
  * Preserve the painter's font/color/shadow and restore state even on failure. */
 export function paintPrintingElement(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   element: PrintingElement,
   paint: () => void,

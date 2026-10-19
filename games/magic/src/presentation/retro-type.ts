@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { alphaTypography } from './alpha-typography.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { legendsFrame } from './legends-frame.js';
@@ -18,7 +19,7 @@ export function earlyExpansionType(face: RenderedCardInput) {
 }
 
 export function paintEarlyExpansionType(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   text: string,
   x: number,

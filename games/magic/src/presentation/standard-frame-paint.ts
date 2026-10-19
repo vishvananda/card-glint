@@ -1,3 +1,8 @@
+import { canvasFonts } from './canvas-font-registry.js';
+import {
+  type CanvasContext,
+  type CanvasRaster,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
@@ -17,11 +22,11 @@ import { paintFlipTemplate } from './flip-template-paint.js';
 /** First rendering coverage from source defaults. No scan-fitted placements,
  * text exceptions or color profiles are borrowed from other frame families. */
 export function paintStandardTemplate(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
   layer?: PaintLayer,
-  underArt?: HTMLCanvasElement,
+  underArt?: CanvasRaster,
 ) {
   const kind = face.frameTemplate;
   if (!kind) throw Error('Missing standard template');
@@ -94,9 +99,9 @@ let templateFonts: Promise<void> | undefined;
 export function loadStandardTemplateFonts(face: RenderedCardInput): Promise<void> {
   if (!face.frameTemplate || face.frameTemplate === 'battle') return Promise.resolve();
   return (templateFonts ??= Promise.all([
-    document.fonts.load('400 24px "CardRenderer MTG Matrix"'),
-    document.fonts.load('700 24px "CardRenderer MTG Matrix"'),
-    document.fonts.load('700 24px "CardRenderer MTG Matrix Small Caps"'),
+    canvasFonts().load('400 24px "CardRenderer MTG Matrix"'),
+    canvasFonts().load('700 24px "CardRenderer MTG Matrix"'),
+    canvasFonts().load('700 24px "CardRenderer MTG Matrix Small Caps"'),
   ])
     .then(() => undefined)
     .catch((error) => {

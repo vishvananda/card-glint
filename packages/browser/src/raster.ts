@@ -15,7 +15,19 @@ export async function paintRaster(
     signal.throwIfAborted();
     throw Error('Raster dimensions differ from recipe');
   }
-  return result;
+  if ('getContext' in result) return result;
+  const mutable = canvas(raster.size);
+  try {
+    const context = mutable.getContext('2d');
+    if (!context) throw Error('Canvas2D raster unavailable');
+    context.drawImage(result, 0, 0);
+    return mutable;
+  } catch (error) {
+    closeRaster(mutable);
+    throw error;
+  } finally {
+    result.close();
+  }
 }
 export function layersOf(document: CardDocument) {
   const layers = document.layers ?? [];

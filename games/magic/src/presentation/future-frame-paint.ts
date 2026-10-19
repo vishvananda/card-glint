@@ -1,3 +1,4 @@
+import { type CanvasRaster, rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { futureGeometry, futureParts, futureTreatment } from './future-frame.js';
@@ -5,7 +6,7 @@ import { templateImageMask } from './template-image-mask.js';
 import { calibrateFutureFrame } from './future-frame-geometry.js';
 
 function canvas(width: number, height: number) {
-  const result = document.createElement('canvas');
+  const result = rasterCanvas();
   result.width = width;
   result.height = height;
   return result;
@@ -13,7 +14,7 @@ function canvas(width: number, height: number) {
 
 /** Premultiplied cross-fade also preserves the source paper's 80% opacity.
  * These canvases are built during static face preparation, never animation. */
-function blend(left: ImageBitmap, right: ImageBitmap): HTMLCanvasElement {
+function blend(left: ImageBitmap, right: ImageBitmap): CanvasRaster {
   const result = canvas(left.width, left.height),
     c = result.getContext('2d')!;
   const part = canvas(left.width, left.height),
@@ -56,15 +57,9 @@ export function prepareFutureFrame(face: RenderedCardInput, images: CanvasImages
     }
     return image;
   };
-  const draw = (
-    image: ImageBitmap | HTMLCanvasElement,
-    x: number,
-    y: number,
-    w: number,
-    h: number,
-  ) => {
+  const draw = (image: ImageBitmap | CanvasRaster, x: number, y: number, w: number, h: number) => {
     c.drawImage(image, x, y, w, h);
-    if (image instanceof HTMLCanvasElement) image.width = image.height = 0;
+    if (!(image instanceof ImageBitmap)) image.width = image.height = 0;
   };
   try {
     c.scale(976 / 375, 1360 / 523);
@@ -134,7 +129,7 @@ export function prepareFutureFrame(face: RenderedCardInput, images: CanvasImages
 
 /** CC's transparent window and the assembled MSE window are the exact aperture.
  * Only the illustration rectangle contributes: transparent corners are not art. */
-export function futureArtMask(frame: HTMLCanvasElement, face: RenderedCardInput) {
+export function futureArtMask(frame: CanvasRaster, face: RenderedCardInput) {
   const mask = canvas(frame.width, frame.height),
     c = mask.getContext('2d')!;
   c.fillStyle = 'white';

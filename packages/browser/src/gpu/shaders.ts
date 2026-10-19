@@ -73,7 +73,7 @@ void main(){
  vec2 source=cardSource(v_uv,surfaceTime,surfaceInfo.wz);
  vec2 uv=vec2(source.x,1.-source.y);
 #ifdef PROCEDURAL_PRINT
- printFootprint=max(length(dFdx(uv*vec2(textureSize(face,0)))),length(dFdy(uv*vec2(textureSize(face,0)))))/max(printDotsInfo.y,2.);
+ printFootprint=printDotFootprint(uv);
 #endif
 #ifdef LOCAL_HOLOGRAM
  // Evaluate derivatives before any per-fragment return/discard. The outer

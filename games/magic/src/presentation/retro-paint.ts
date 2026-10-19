@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  type CanvasRaster,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { alphaTypography } from './alpha-typography.js';
 import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
@@ -76,10 +80,10 @@ import {
   paintRetroCredits,
 } from './retro-details.js';
 export function paintRetroFace(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
-  underArt?: HTMLCanvasElement,
+  underArt?: CanvasRaster,
   layer?: PaintLayer,
 ) {
   const rect = retroRects(face),
@@ -416,7 +420,7 @@ export function paintRetroFace(
   c.shadowColor = 'transparent';
 }
 
-function paintRetroExtras(c: CanvasRenderingContext2D, face: RenderedCardInput, legal: boolean) {
+function paintRetroExtras(c: CanvasContext, face: RenderedCardInput, legal: boolean) {
   if (legal && face.legalText)
     paintPrintingElement(c, face, 'legal', () => {
       c.save();

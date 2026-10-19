@@ -37,7 +37,7 @@ export interface Raster {
     host: RasterHost,
     signal: AbortSignal,
     underArt?: HTMLCanvasElement,
-  ): Promise<HTMLCanvasElement>;
+  ): Promise<HTMLCanvasElement | ImageBitmap>;
 }
 export interface EdgeSource {
   /** Same image/threshold can be reused across faces, crops and finishes. */
@@ -115,7 +115,7 @@ export interface Instance {
   wear?: { amount: number; seed?: number };
   /** Card-local coating relief over optical finishes. Amount 0..1; omitted/zero keeps smooth gloss. */
   cardstock?: { amount: number };
-  /** Opt-in process-ink dots. Empty settings use amount .35 and period 2 source pixels.
+  /** Opt-in process-ink dots. Empty settings use amount .35 and period 2 reference pixels at 732px card width.
    * Set artwork:false for scanned art; the recipe's artWindows remain unchanged. */
   printDots?: {
     amount?: number;

@@ -1,3 +1,8 @@
+import { canvasFonts } from './canvas-font-registry.js';
+import {
+  type CanvasContext,
+  type CanvasRaster,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import {
   paintModernSplitFrames,
   paintModernSplitHeader,
@@ -28,7 +33,7 @@ import { loadAdventureFont } from './adventure-footer.js';
 import { paintSplitFuseBridge } from './split-fuse-bridge.js';
 
 export function splitRules(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   half: RenderedCardInput,
   era: SplitEra,
   fuse: boolean,
@@ -58,11 +63,7 @@ export function splitRules(
 }
 
 /** Frame-only painting is also used by the offline audit to keep ink out of scan registration. */
-export function paintSplitFrames(
-  c: CanvasRenderingContext2D,
-  face: RenderedCardInput,
-  images: CanvasImages,
-) {
+export function paintSplitFrames(c: CanvasContext, face: RenderedCardInput, images: CanvasImages) {
   const era = nativeSplitEra(face);
   if (!era) throw Error('No native split plate for this printing.');
   if (era === 'm15') return paintModernSplitFrames(c, face, images);
@@ -83,7 +84,7 @@ export function paintSplitFrames(
 }
 
 function paintSplitHeader(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   half: RenderedCardInput,
   era: SplitEra,
   fuse: boolean,
@@ -153,7 +154,7 @@ function paintSplitHeader(
   }
 }
 function paintSplitFooter(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   half: RenderedCardInput,
   parent: RenderedCardInput,
   era: SplitEra,
@@ -194,10 +195,10 @@ function paintSplitFooter(
     );
 }
 export function paintNativeSplitFace(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
-  underArt?: HTMLCanvasElement,
+  underArt?: CanvasRaster,
   layer?: PaintLayer,
 ) {
   const era = nativeSplitEra(face);
@@ -249,8 +250,8 @@ export function loadSplitFonts(face: RenderedCardInput): Promise<void> {
   if (nativeSplitEra(face) === 'm15') return loadAdventureFont();
   if (nativeSplitEra(face) !== 'eighth') return Promise.resolve();
   return (splitFonts ??= Promise.all([
-    document.fonts.load('700 24px "CardRenderer MTG Matrix"'),
-    document.fonts.load('24px "CardRenderer MTG Matrix"'),
+    canvasFonts().load('700 24px "CardRenderer MTG Matrix"'),
+    canvasFonts().load('24px "CardRenderer MTG Matrix"'),
   ])
     .then((matches) => {
       if (matches.some((fonts) => !fonts.length || fonts.some((f) => f.status !== 'loaded')))

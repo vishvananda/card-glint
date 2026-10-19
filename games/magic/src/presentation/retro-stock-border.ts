@@ -1,11 +1,11 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { FACE_WIDTH, FACE_HEIGHT, type FaceRect } from './face-layout.js';
 
 /** Independent printed-face aperture; no scaling of the interior plate. */
-export function paintRetroStockWindow(
-  c: CanvasRenderingContext2D,
-  window: FaceRect,
-  stock: string,
-) {
+export function paintRetroStockWindow(c: CanvasContext, window: FaceRect, stock: string) {
   c.save();
   c.fillStyle = stock;
   c.beginPath();
@@ -19,7 +19,7 @@ export function paintRetroStockWindow(
  * edges cannot expose a white plate fringe. Padding leaves the aperture's
  * native mask pixels and sample spacing unchanged. Static face preparation only. */
 export function paintRetroStockBorder(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   mask: CanvasImageSource,
   [x, y, w, h]: FaceRect,
   stock: string,
@@ -27,7 +27,7 @@ export function paintRetroStockBorder(
   const padding = 12,
     width = 732,
     height = 1020,
-    layer = document.createElement('canvas');
+    layer = rasterCanvas();
   layer.width = width + padding * 2;
   layer.height = height + padding * 2;
   try {

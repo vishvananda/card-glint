@@ -1,3 +1,9 @@
+import {
+  mutableRaster,
+  finishRaster,
+  closeRaster,
+  type CanvasRaster,
+} from '../../../packages/browser/src/canvas-raster.js';
 import './data/eager.js';
 import './data/eager-wording.js';
 import type {
@@ -234,7 +240,7 @@ export function opticalDocument(
                   w * output.width,
                   h * output.height,
                 );
-              return output;
+              return finishRaster(output);
             },
           },
         },
@@ -309,13 +315,13 @@ export function artworkFoilMask(
           };
         },
       });
-      const output = await raster.paint(maskHost(false), signal);
-      let backing: HTMLCanvasElement | undefined;
+      const output = mutableRaster(await raster.paint(maskHost(false), signal));
+      let backing: CanvasRaster | undefined;
       try {
         // Subtract the same projection of an opaque black mask. This removes
         // the native artwork backing even at curved/antialiased apertures. Both
         // paints use the host's cached assets and happen only during preparation.
-        backing = await raster.paint(maskHost(true), signal);
+        backing = mutableRaster(await raster.paint(maskHost(true), signal));
         signal.throwIfAborted();
         const ctx = output.getContext('2d', { willReadFrequently: true })!;
         const pixels = ctx.getImageData(0, 0, output.width, output.height);
@@ -350,12 +356,12 @@ export function artworkFoilMask(
         const [x, y, w, h] = destination;
         ctx.fillRect(x * output.width, y * output.height, w * output.width, h * output.height);
         ctx.globalCompositeOperation = 'source-over';
-        return output;
+        return finishRaster(output);
       } catch (error) {
-        output.width = output.height = 0;
+        closeRaster(output);
         throw error;
       } finally {
-        if (backing) backing.width = backing.height = 0;
+        if (backing) closeRaster(backing);
       }
     },
   };

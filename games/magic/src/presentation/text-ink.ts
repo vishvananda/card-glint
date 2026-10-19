@@ -1,7 +1,8 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { CardTextInk } from './face-layout.js';
 
 export function paintTextInk(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   x: number,
   y: number,

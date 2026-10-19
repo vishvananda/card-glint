@@ -1,3 +1,4 @@
+import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import { calibrationFace } from './calibration-input.js';
 import { earlyReprintMana, earlyReprintManaInk } from './early-reprint-mana.js';
 import { recolorManaInkPixels, type ManaInkTone } from './mana-ink-material.js';
@@ -174,7 +175,7 @@ async function buildMaterial(
   images: CanvasImages,
   tone?: ManaInkTone,
 ) {
-  const canvas = document.createElement('canvas');
+  const canvas = rasterCanvas();
   canvas.width = source.width;
   canvas.height = source.height;
   try {

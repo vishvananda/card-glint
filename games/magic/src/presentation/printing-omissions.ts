@@ -1,11 +1,12 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 
 type OmissionCheck = (text: string, x: number, y: number) => boolean;
-const active = new WeakMap<CanvasRenderingContext2D, OmissionCheck>();
+const active = new WeakMap<CanvasContext, OmissionCheck>();
 
 /** Staged glyphs must honor the same physical-face omissions as direct text. */
 export function isPrintingTextOmitted(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   text: string,
   x: number,
   y: number,
@@ -17,7 +18,7 @@ export function isPrintingTextOmitted(
  * Region coordinates refer to the whole physical face, including rotated panels.
  * Never patch global Canvas methods or change rules used to choose the frame. */
 export function withPrintingOmissions(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   paint: () => void,
 ) {

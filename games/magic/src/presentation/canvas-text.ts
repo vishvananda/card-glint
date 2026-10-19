@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 export { ellipsizedText } from '../../../../packages/browser/src/canvas-text.js';
 import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
@@ -19,7 +23,7 @@ interface Token {
 
 /** Greedy wrapping measures the actual loaded font, keeping mana glyphs indivisible. */
 export function rulesLines(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   text: string,
   width: number,
   size: number,
@@ -57,7 +61,7 @@ export function rulesLines(
 }
 
 export function paintMana(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   symbol: string,
   x: number,
   y: number,
@@ -160,7 +164,7 @@ export function paintMana(
 }
 
 export function paintRules(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   text: string,
   x: number,
   y: number,
@@ -193,7 +197,7 @@ export function paintRules(
 /** Match the native single-line plates without horizontally squeezing the letters. */
 /** Preserve the complete printed line. Reduce size first, then fit the remaining width. */
 export function paintFittedText(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   text: string,
   x: number,
   y: number,
@@ -244,7 +248,7 @@ export function paintFittedText(
 
 /** Recolor monochrome set vectors without relying on Canvas2D filter support. */
 export function paintSetSymbol(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   image: ImageBitmap,
   code: string | undefined | null,
   rarity: string | undefined,
@@ -273,7 +277,7 @@ export function paintSetSymbol(
     context.drawImage(image, ...source, x, y, w, h);
     return;
   }
-  const layer = document.createElement('canvas');
+  const layer = rasterCanvas();
   layer.width = Math.max(1, Math.ceil(w * 2));
   layer.height = Math.max(1, Math.ceil(h * 2));
   const c = layer.getContext('2d')!;

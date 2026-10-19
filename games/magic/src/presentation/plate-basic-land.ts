@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
@@ -52,7 +53,7 @@ export function plateBasicSymbol(face: RenderedCardInput): string | null {
 
 /** Source padding is part of the glyph; retain one common size and center. */
 export function paintBasicLandSymbol(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: ReadonlyMap<string, ImageBitmap>,
 ): boolean {

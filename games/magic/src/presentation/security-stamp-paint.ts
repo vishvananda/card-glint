@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import { resolveCardProfile, resolveFrameColors } from './profile.js';
@@ -59,7 +60,7 @@ export function mountedSecurityStamp(face: RenderedCardInput): {
 }
 
 export function paintMountedSecurityStamp(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
 ) {

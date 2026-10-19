@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import { CLASS_LEVEL_ASSET, extraRuleBlocks } from './extra-rules.js';
@@ -6,7 +7,7 @@ import { paintRules, rulesLines } from './canvas-text.js';
 import type { CanvasImages } from './canvas-assets.js';
 
 export function paintExtraRules(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
 ) {

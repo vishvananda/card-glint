@@ -1,3 +1,4 @@
+import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
 import { retroDualBitmapCache } from './material-bitmap-cache.js';
@@ -37,8 +38,8 @@ export async function prepareRetroDualFrame(
         ]),
         bytes: base.width * base.height * 4,
         build: async () => {
-          const canvas = document.createElement('canvas'),
-            layer = document.createElement('canvas');
+          const canvas = rasterCanvas(),
+            layer = rasterCanvas();
           canvas.width = layer.width = base.width;
           canvas.height = layer.height = base.height;
           try {

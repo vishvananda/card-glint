@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { isRetro, retroBorder } from './retro-frame.js';
@@ -50,7 +51,7 @@ export function earlyManaNumeral(face: RenderedCardInput): EarlyManaNumeral | un
 }
 /** Uses the already-loaded pack font; no readback, decoding or font loading. */
 export function paintEarlyManaNumeral(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   symbol: string,
   x: number,
   y: number,

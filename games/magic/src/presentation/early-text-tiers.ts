@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { layoutRules, rulesLayoutRequest, type RulesLayout } from './rules-layout.js';
 import { alphaRulesLayout, earlyRulesModel } from './alpha-rules.js';
@@ -27,7 +28,7 @@ export interface EarlyTextTierOptions {
 
 /** Reviewed Alpha defaults. Oracle retains its established fitting/safe inset. */
 export function alphaTextLayout(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   base: RulesLayout | null,
 ): RulesLayout | null {
@@ -40,7 +41,7 @@ export function alphaTextLayout(
  * selected correctly keeps its established physical geometry. Scan poses never
  * enter this policy; two original-printing size reviews are separate data. */
 export function earlyTextTierLayout(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   base: RulesLayout,
   options: EarlyTextTierOptions = {},

@@ -1,3 +1,4 @@
+import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { FramePixels } from './frame-paper-mask.js';
@@ -43,7 +44,7 @@ export function eighthBasicMaterialJobs(face: RenderedCardInput, images: CanvasI
       ]),
       bytes: source.width * source.height * 4,
       build: async () => {
-        const canvas = document.createElement('canvas');
+        const canvas = rasterCanvas();
         canvas.width = source.width;
         canvas.height = source.height;
         try {

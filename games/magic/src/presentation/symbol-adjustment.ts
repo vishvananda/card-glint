@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 
 export const SYMBOL_ADJUSTMENT_VERSION = 'symbols-v3';
@@ -90,7 +91,7 @@ export function adjustedSymbolBounds(bounds: FaceRect, value?: SymbolTransform):
   return [x + w + dx - w * scaleX, y + h / 2 + dy - (h * scaleY) / 2, w * scaleX, h * scaleY];
 }
 export function paintAdjustedSymbols(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   bounds: FaceRect,
   value: SymbolTransform | undefined,
   paint: () => void,

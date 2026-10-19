@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { cardStock, type RenderedCardInput } from './face-layout.js';
 import { printingCollectorText, printingLegalText } from './printing-footer.js';
@@ -5,7 +6,7 @@ import { printingCollectorText, printingLegalText } from './printing-footer.js';
 /** Ordinary M15-family information lines. MSE's Relay / Beleren small caps /
  * MPlantin roles, checked against M15, WAR, M21 and FDN paper references.
  * Fonts are loaded once during face preparation, never by this painter. */
-export function paintModernFooter(c: CanvasRenderingContext2D, face: RenderedCardInput): void {
+export function paintModernFooter(c: CanvasContext, face: RenderedCardInput): void {
   c.save();
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;

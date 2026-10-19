@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { FACE_HEIGHT, FACE_WIDTH, type FaceRect } from './face-layout.js';
 
 /** The pinned gray plates have ~70% alpha. A partial second pass increases
@@ -7,7 +8,7 @@ export const COLORLESS_PLATE_REPAINT = 0.7;
 /** Reuse the plate's texture without its baked down-right shadow. The left end
  * flares slightly below the upper curve instead of forming a symmetric pill. */
 export function paintPlaneswalkerType(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   image: ImageBitmap,
   rect: FaceRect,
   colorless = false,

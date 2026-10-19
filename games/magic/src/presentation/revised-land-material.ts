@@ -1,3 +1,4 @@
+import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
 import { retroDualBitmapCache } from './material-bitmap-cache.js';
@@ -26,7 +27,7 @@ export async function prepareRevisedLand(
     ]),
     source.width * source.height * 4,
     async () => {
-      const canvas = document.createElement('canvas');
+      const canvas = rasterCanvas();
       canvas.width = source.width;
       canvas.height = source.height;
       try {

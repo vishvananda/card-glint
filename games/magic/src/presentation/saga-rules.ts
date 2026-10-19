@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { specialRules } from './special-frames.js';
 import { layoutRules } from './rules-layout.js';
@@ -23,7 +24,7 @@ export const SAGA_TYPOGRAPHY = {
   bottomSpace: 0.15,
 };
 export function sagaRuleLayout(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   options = SAGA_TYPOGRAPHY,
 ) {

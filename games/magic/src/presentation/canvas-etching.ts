@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { visibleArt } from './art-apertures.js';
 import { splitPanels, panelTransform } from './split-layout.js';
 import { faceRects } from './special-frames.js';
@@ -24,7 +25,7 @@ export type EtchingResolver = (
 
 /** One transparent alpha plane shares the assembled face's exact illustration aperture. */
 export async function paintEtchingMask(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   printingId: string | null,
   signal: AbortSignal,
@@ -42,7 +43,7 @@ export async function paintEtchingMask(
   });
 }
 async function paintMask(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   printingId: string | null,
   signal: AbortSignal,

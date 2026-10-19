@@ -2,11 +2,12 @@ import { HOLOFOIL_GLSL } from './hologram-shader.js';
 import { LIQUID_FOIL_GLSL } from './liquid-foil-shader.js';
 import { FOIL_REFLECTION_GLSL } from './foil-reflection-shader.js';
 import { STUDIO_GLOSS_GLSL } from './studio-gloss-shader.js';
+import { HOST_SAMPLING_GLSL } from './host-sampling.js';
 
 // Shared by the DOM motion fixture and the 3D card face pass. Preview finishes
 // are presentation settings, not inventory finish identifiers.
 export function foilShader(
-  options: { artWindows?: 'array' | 'pair'; liquid?: boolean } = {},
+  options: { artWindows?: 'array' | 'pair'; liquid?: boolean; sampling?: 'uniform' | 'host' } = {},
 ): string {
   const artWindow =
     options.artWindows === 'pair'
@@ -24,9 +25,21 @@ export function foilShader(
   return coverage;
 }`;
   return `
+${options.sampling === 'host' ? '#define GLINT_HOST_SAMPLING' : ''}
+${options.artWindows === 'pair' ? '#define GLINT_ART_PAIR' : ''}
+${HOST_SAMPLING_GLSL}
+#ifndef GLINT_HOST_SAMPLING
 uniform float previewKind;
+#endif
 uniform sampler2D wave;
 uniform float hasWave;
+#ifdef GLINT_HOST_SAMPLING
+#define GLINT_FOIL_FACE(uv) glintSampleFace(uv)
+#define GLINT_FOIL_MASK(uv) glintSampleMask(uv)
+#else
+#define GLINT_FOIL_FACE(uv) texture2D(face,uv)
+#define GLINT_FOIL_MASK(uv) texture2D(mask,uv).r
+#endif
 // The study was tuned against printed sRGB ink. Preserve those amounts when
 // the host uploads sRGB textures and performs the final output conversion.
 vec3 previewInk(vec3 c) { return mix(c*12.92,1.055*pow(max(c,vec3(0.)),vec3(1./2.4))-.055,step(vec3(.0031308),c)); }
@@ -35,8 +48,8 @@ ${FOIL_REFLECTION_GLSL}
 ${STUDIO_GLOSS_GLSL}
 ${artWindow}
 // Gameplay mask alpha is stored unchanged in a linear R8 red channel.
-float etchMask(vec2 uv) { return texture2D(mask,uv).r*hasMask; }
-float contour(vec2 uv) { return texture2D(mask,uv).r*hasMask*artWindow(uv); }
+float etchMask(vec2 uv) { return GLINT_FOIL_MASK(uv)*hasMask; }
+float contour(vec2 uv) { return GLINT_FOIL_MASK(uv)*hasMask*artWindow(uv); }
 vec3 vividSpectrum(float t) {
   float x=fract(t)*5.;
   int idx=int(floor(x));
@@ -122,7 +135,7 @@ const vec2 dir115=vec2(-.4226183,.9063078);
 const vec2 dir35=vec2(.8191520,.5735764);
 const vec2 dirNeg35=vec2(.8191520,-.5735764);
 vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
-  vec3 base=previewInk(texture2D(face,uv).rgb);
+  vec3 base=previewInk(GLINT_FOIL_FACE(uv).rgb);
   if(previewKind<.5) return base;
   if(previewKind==8.) return studioCardGloss(uv,base,normal);
   vec2 cardUv=vec2(uv.x,1.-uv.y);
@@ -141,9 +154,14 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
   if(previewKind==1.) {
     // Etched gold foil: embossed contour bevels, warm champagne-gold leaf, and micro-sparkle (+10% gold highlight).
     float fineLine=smoothstep(.24,.88,etched)*art;
-    vec2 d=vec2(.0015,0.);
-    vec2 slopeArt=vec2(contour(uv+d)-contour(uv-d),contour(uv+d.yx)-contour(uv-d.yx));
-    vec2 slopeAll=vec2(etchMask(uv+d)-etchMask(uv-d),etchMask(uv+d.yx)-etchMask(uv-d.yx));
+#ifdef GLINT_HOST_SAMPLING
+    vec2 texel=1./facePixelSize;
+    vec2 dx=vec2(texel.x,0.),dy=vec2(0.,texel.y);
+#else
+    vec2 dx=vec2(.0015,0.),dy=vec2(0.,.0015);
+#endif
+    vec2 slopeArt=vec2(contour(uv+dx)-contour(uv-dx),contour(uv+dy)-contour(uv-dy));
+    vec2 slopeAll=vec2(etchMask(uv+dx)-etchMask(uv-dx),etchMask(uv+dy)-etchMask(uv-dy));
     vec2 slope=mix(slopeAll*1.25,slopeArt,art);
     vec3 relief=normalize(vec3(-slope*(.56+1.08*spot)*6.6,1.));
     float shade=max(0.,dot(relief,lamp));

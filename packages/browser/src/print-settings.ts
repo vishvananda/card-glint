@@ -1,5 +1,19 @@
 import type { Instance, Rect } from './types.js';
 
+/** Period values are reference pixels at this card width, independent of tier. */
+export const PRINT_DOTS_REFERENCE_WIDTH = 732;
+export function printDotPeriodForWidth(width: number, period = DEFAULT_PRINT_DOTS.period): number {
+  if (
+    !Number.isFinite(width) ||
+    width <= 0 ||
+    !Number.isFinite(period) ||
+    period < 2 ||
+    period > 16
+  )
+    throw RangeError('Invalid print-dot period or face width');
+  return (period * width) / PRINT_DOTS_REFERENCE_WIDTH;
+}
+
 /** Opt-in process-printing defaults. An absent printDots profile stays disabled. */
 export const DEFAULT_PRINT_DOTS = Object.freeze({
   amount: 0.35,

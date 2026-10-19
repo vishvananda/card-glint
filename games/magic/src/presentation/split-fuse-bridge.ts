@@ -1,3 +1,8 @@
+import {
+  type CanvasContext,
+  type CanvasRaster,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import { resolveFrameColors } from './profile.js';
 import { splitSourceMask } from './split-materials.js';
@@ -25,7 +30,7 @@ export function splitFuseBridgeAssets(face: RenderedCardInput) {
 /** MSE's 2003 Fuse plates stop at the shared panel join. Its dedicated bridge
  * supplies the original paper, gold/colored rim and shadows across that gap. */
 export function paintSplitFuseBridge(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
 ) {
@@ -37,7 +42,7 @@ export function paintSplitFuseBridge(
   const halves = face.faces!.map((half, i) => {
     const parts = bridgeParts(half, i),
       color = required(parts.color),
-      canvas = document.createElement('canvas');
+      canvas = rasterCanvas();
     canvas.width = color.width;
     canvas.height = color.height;
     const c = canvas.getContext('2d')!;
@@ -50,7 +55,7 @@ export function paintSplitFuseBridge(
     }
     return canvas;
   });
-  const [left, right] = halves as [HTMLCanvasElement, HTMLCanvasElement];
+  const [left, right] = halves as [CanvasRaster, CanvasRaster];
   const r = right.getContext('2d')!;
   r.globalCompositeOperation = 'destination-in';
   const gradient = r.createLinearGradient(0, 0, right.width, 0);

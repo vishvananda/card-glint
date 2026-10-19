@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RulesParagraph } from './face-layout.js';
 import { wrapRules, type MeasuredRun } from './rules-wrap.js';
 import { flavorAttribution } from './flavor-attribution.js';
@@ -59,7 +60,7 @@ export const RULES_TYPOGRAPHY: Readonly<RulesTypography> = {
 
 /** Pure measured layout in reference pixels. Oversize words/blocks remain explicit errors. */
 export function layoutRules(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   paragraphs: readonly RulesParagraph[],
   bounds: {
     x: number;

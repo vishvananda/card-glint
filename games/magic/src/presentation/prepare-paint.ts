@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  type CanvasRaster,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -12,14 +16,10 @@ import { setSymbolCrop } from './set-symbols.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { paintAdventureFooter } from './adventure-footer.js';
 
-export function paintPrepareFrame(
-  c: CanvasRenderingContext2D,
-  face: RenderedCardInput,
-  images: CanvasImages,
-) {
+export function paintPrepareFrame(c: CanvasContext, face: RenderedCardInput, images: CanvasImages) {
   c.drawImage(prepareFrameImage(face, images), 0, 0, 488, 680);
 }
-function headers(c: CanvasRenderingContext2D, face: RenderedCardInput, images: CanvasImages) {
+function headers(c: CanvasContext, face: RenderedCardInput, images: CanvasImages) {
   const title = (input: RenderedCardInput, inset: boolean) => {
     const cost = input.manaSymbols ?? [],
       size = inset ? 19.8 : 23.4,
@@ -93,10 +93,10 @@ function headers(c: CanvasRenderingContext2D, face: RenderedCardInput, images: C
   );
 }
 export function paintPrepareFace(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
-  underArt?: HTMLCanvasElement,
+  underArt?: CanvasRaster,
   layer?: PaintLayer,
 ) {
   preparedSpell(face);

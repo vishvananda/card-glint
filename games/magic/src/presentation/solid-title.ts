@@ -1,19 +1,23 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 /** Solid title ink, optionally thinned around its perimeter during cached face
  * preparation. The surviving strokes stay filled. No pixel readback is needed. */
 export function paintSolidTitle(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   x: number,
   y: number,
   maxWidth: number,
   p: { width: number; shadow: number; trim: number; gray: number },
-  colors?: { fill: CanvasRenderingContext2D['fillStyle']; shadow: string },
+  colors?: { fill: CanvasContext['fillStyle']; shadow: string },
 ) {
   c.save();
   const matrix = c.getTransform();
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;
-  const layer = document.createElement('canvas');
+  const layer = rasterCanvas();
   layer.width = c.canvas.width;
   layer.height = c.canvas.height;
   const ink = layer.getContext('2d');

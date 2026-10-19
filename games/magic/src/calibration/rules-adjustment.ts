@@ -1,3 +1,4 @@
+import type { CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from '../presentation/face-layout.js';
 import { layoutRules, rulesLayoutRequest, type RulesLayout } from '../presentation/rules-layout.js';
 import { calibrationForFace } from './selection.js';
@@ -16,7 +17,7 @@ export interface CalibrationRulesAdjustment {
   readonly flavorGap?: number;
 }
 export function adjustCalibrationRules(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   layout: RulesLayout | null,
 ) {

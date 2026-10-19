@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { alphaTextLayout } from './early-text-tiers.js';
 import { adjustCalibrationRules } from '../calibration/rules-adjustment.js';
 import { calibrationForFace } from '../calibration/selection.js';
@@ -28,14 +29,14 @@ export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
 };
 
 /** Null denotes the existing large-basic-symbol path, which has no body text. */
-export function retroTextLayout(context: CanvasRenderingContext2D, face: RenderedCardInput) {
+export function retroTextLayout(context: CanvasContext, face: RenderedCardInput) {
   return adjustCalibrationRules(
     context,
     face,
     alphaTextLayout(context, face, baseRetroTextLayout(context, face)),
   );
 }
-function baseRetroTextLayout(context: CanvasRenderingContext2D, face: RenderedCardInput) {
+function baseRetroTextLayout(context: CanvasContext, face: RenderedCardInput) {
   if (retroBasicSymbol(face)) return null;
   const [x, y, width, height] = retroPx(retroRects(face).rules);
   const basic = retroBasicPrinting(face);

@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RulesParagraph } from './face-layout.js';
 import { layoutRules } from './rules-layout.js';
 
@@ -12,7 +13,7 @@ const heading = (paragraphs: readonly RulesParagraph[]) =>
  * Measure the chosen reference; fit and paint the visible wording separately.
  */
 export function revisedLargeRules(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   paragraphs: readonly RulesParagraph[],
   reference: readonly RulesParagraph[],
   y: number,

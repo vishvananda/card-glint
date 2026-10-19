@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { clipPlaneswalkerArt } from './planeswalker-art.js';
 import { faceFrame } from './special-frames.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -13,7 +14,7 @@ export type PaintLayer = 'artwork' | 'printing';
 /** Keep the illustration aperture transparent in the printing layer. Subsequent
  * frame, crown, text and symbol drawing retains its original ordering. */
 export function paintIllustration(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
   bounds: FaceRect,

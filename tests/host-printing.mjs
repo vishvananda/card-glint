@@ -351,7 +351,7 @@ color=vec4(cardstockGloss(uv,ink.rgb,ink.rgb*.6+vec3(.15)),ink.a);}`;
                 0,
                 `${name}, ${JSON.stringify(profile)} native preparation`,
               );
-              if (profile.amount > 0)
+              if (profile.amount > 0 && ((profile.period ?? 2) * source.width) / 732 > 1 / 0.9)
                 check(
                   map.data.some((value, i) => i % 4 !== 3 && value !== printed.data[i]),
                   'Nonzero printing changes the asymmetric color fixture',

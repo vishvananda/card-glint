@@ -1,3 +1,5 @@
+import { canvasFonts } from './canvas-font-registry.js';
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { SECURITY_STAMP_RECTS } from './security-stamp-geometry.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
@@ -20,7 +22,7 @@ export function adventureCollectorText(face: RenderedCardInput) {
 }
 
 export function paintAdventureFooter(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
 ) {
@@ -62,7 +64,7 @@ export function paintAdventureFooter(
 
 let font: Promise<void> | null = null;
 export function loadAdventureFont(): Promise<void> {
-  return (font ??= document.fonts
+  return (font ??= canvasFonts()
     .load('700 25px "CardRenderer MTG Beleren Small Caps"')
     .then((fonts) => {
       if (!fonts.length || fonts.some((f) => f.status !== 'loaded'))

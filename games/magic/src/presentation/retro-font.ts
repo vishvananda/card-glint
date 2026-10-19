@@ -1,3 +1,4 @@
+import { canvasFonts } from './canvas-font-registry.js';
 import { fetchCardAsset } from '../fetch.js';
 import { RETRO_FONT, RETRO_SYMBOL_FONT } from './retro-frame.js';
 import type { CanvasFontAsset } from './canvas-fonts.js';
@@ -16,14 +17,14 @@ export function loadRetroFont(): Promise<void> {
   return (ready ??= Promise.all(
     retroFontAssets.map(async ({ family, url }) => {
       if (
-        [...document.fonts].some(
+        [...canvasFonts()].some(
           (f) => f.family.replace(/^"|"$/g, '') === family && f.status === 'loaded',
         )
       )
         return;
       const response = await fetchCardAsset(url);
       if (!response.ok) throw Error(`Retro font unavailable: ${family}`);
-      document.fonts.add(await new FontFace(family, await response.arrayBuffer()).load());
+      canvasFonts().add(await new FontFace(family, await response.arrayBuffer()).load());
     }),
   )
     .then(() => undefined)

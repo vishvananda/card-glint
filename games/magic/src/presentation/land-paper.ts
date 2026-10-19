@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { CardProfile, FrameAssetKey } from './profile.js';
 
 // Left/right order follows the visible asset, not WUBRG sorting: WR and WG
@@ -31,11 +32,7 @@ const PAPER: Partial<Record<FrameAssetKey, readonly [string, string]>> = {
  * so the existing grain and inset shadows survive; the colored rails, plates,
  * lettering and nonland uses of the same assets retain their original paint.
  * Values are shared by palette, not fitted to individual cards or scans. */
-export function paintLandPaper(
-  context: CanvasRenderingContext2D,
-  profile: CardProfile,
-  inset: number,
-) {
+export function paintLandPaper(context: CanvasContext, profile: CardProfile, inset: number) {
   if (!profile.land) return;
   const stops = PAPER[profile.frame];
   if (!stops) return;
@@ -61,7 +58,7 @@ export function paintLandPaper(
  * lettering, plates or the surrounding land background. Texture composition
  * only: no additional image decoding or pixel readback. */
 export function paintLandFrame(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   profile: CardProfile,
   inset: number,
   paint: () => void,
@@ -88,7 +85,7 @@ export function paintLandFrame(
  * surround. Paint after the land tint/filter so it stays white. The stamp is
  * composited later and masks the straight line inside its arched mount. */
 export function paintLandPaperHighlight(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   profile: CardProfile,
   inset: number,
 ) {

@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { paintPrintingElement } from './printing-elements.js';
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { paintMana } from './canvas-text.js';
@@ -101,7 +105,7 @@ export function originalRulesSymbols(setCode?: string | null): typeof paintMana 
 }
 
 function paintTap(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   x: number,
   y: number,
   size: number,
@@ -130,7 +134,7 @@ function paintTap(
 
 /** Outline the existing monochrome bitmap during composition; no mask readback. */
 export function paintOutlinedRetroSet(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   image: ImageBitmap,
   x: number,
   y: number,
@@ -141,7 +145,7 @@ export function paintOutlinedRetroSet(
   palette: RetroSymbolPalette | null = null,
   sampling: ImageSmoothingQuality = 'low',
 ) {
-  const layer = document.createElement('canvas');
+  const layer = rasterCanvas();
   const pad = Math.ceil(outline * 2) + 1;
   layer.width = Math.ceil(w * 2) + pad * 2;
   layer.height = Math.ceil(h * 2) + pad * 2;
@@ -188,7 +192,7 @@ export function paintOutlinedRetroSet(
 }
 
 export function paintRetroCredits(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   details: NonNullable<ReturnType<typeof retroPrintDetails>>,
 ) {

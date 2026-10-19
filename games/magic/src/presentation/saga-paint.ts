@@ -1,3 +1,8 @@
+import { canvasFonts } from './canvas-font-registry.js';
+import {
+  type CanvasContext,
+  type CanvasRaster,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import { SECURITY_STAMP_RECTS } from './security-stamp-geometry.js';
@@ -24,10 +29,10 @@ import { setSymbolCrop } from './set-symbols.js';
 
 /** Saga-specific preparation; no ordinary-frame symbol calibration is reused. */
 export function paintSagaFace(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
-  underArt?: HTMLCanvasElement,
+  underArt?: CanvasRaster,
   layer?: PaintLayer,
 ) {
   const required = (url: string) => {
@@ -157,7 +162,7 @@ export function paintSagaFace(
 
 let chapterFont: Promise<void> | null = null;
 export function loadSagaFont(): Promise<void> {
-  return (chapterFont ??= document.fonts
+  return (chapterFont ??= canvasFonts()
     .load('550 22px "CardRenderer MTG Chapter"')
     .then((fonts) => {
       if (!fonts.length || fonts.some((f) => f.status !== 'loaded'))

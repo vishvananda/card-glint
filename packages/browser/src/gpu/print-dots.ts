@@ -2,8 +2,19 @@
 // Conventional C/M/Y/K angles: 105, 75, 90, 45 degrees. This is a visual
 // approximation, not a color-managed press simulation or scan reconstruction.
 export const PRINT_DOTS_GLSL = `
+#ifdef GLINT_HOST_SAMPLING
+#define GLINT_PRINT_FACE(uv) glintSampleFace(uv)
+#define GLINT_PRINT_SIZE facePixelSize
+#else
+#define GLINT_PRINT_FACE(uv) texture(face,uv)
+#define GLINT_PRINT_SIZE vec2(textureSize(face,0))
+#endif
 flat in vec4 printDotsInfo;
 float printFootprint;
+// The period describes the physical card, not the selected raster tier.
+float printDotPeriodTexels(){return printDotsInfo.y*GLINT_PRINT_SIZE.x/732.;}
+vec2 printScreenSize(){return GLINT_PRINT_SIZE*(732./GLINT_PRINT_SIZE.x);}
+float printDotFootprint(vec2 uv){vec2 p=uv*printScreenSize();return max(length(dFdx(p)),length(dFdy(p)))/printDotsInfo.y;}
 // Optional host contract. Without these defines the public shader is unchanged.
 #ifdef PRINT_DOT_ART_WINDOWS
 uniform vec4 printArtBounds[8];
@@ -61,11 +72,11 @@ vec3 printDotInk(vec3 ink,vec2 uv){
  visible*=printArea(uv);
 #endif
  if(printDotsInfo.w>0.){
-  vec2 edge=min(uv,1.-uv);float aspect=float(textureSize(face,0).y)/float(textureSize(face,0).x);
-  visible*=smoothstep(printDotsInfo.w*.85,printDotsInfo.w*1.15,min(edge.x,edge.y*aspect));
+  vec2 edge=min(uv,1.-uv);float printAspect=GLINT_PRINT_SIZE.y/GLINT_PRINT_SIZE.x;
+  visible*=smoothstep(printDotsInfo.w*.85,printDotsInfo.w*1.15,min(edge.x,edge.y*printAspect));
  }
  if(visible<=0.)return ink;
- vec2 p=vec2(uv.x,1.-uv.y)*vec2(textureSize(face,0))/printDotsInfo.y;
+ vec2 p=vec2(uv.x,1.-uv.y)*printScreenSize()/printDotsInfo.y;
  float k=1.-max(max(ink.r,ink.g),ink.b);
  vec3 cmy=clamp((1.-ink-k)/max(1.-k,.0001),0.,1.);
  vec3 plates=vec3(inkScreen(p,cmy.x,vec2(-.258819,.965926),1.),inkScreen(p,cmy.y,vec2(.258819,.965926),5.),inkScreen(p,cmy.z,vec2(0.,1.),9.));
@@ -74,7 +85,7 @@ vec3 printDotInk(vec3 ink,vec2 uv){
  return mix(ink,screened,printDotsInfo.x*visible);
 }
 vec4 printFace(vec2 uv){
- vec4 source=texture(face,uv);
+ vec4 source=GLINT_PRINT_FACE(uv);
  if(printDotsInfo.x<=0.)return source;
  return vec4(previewLinear(printDotInk(previewInk(source.rgb),uv)),source.a);
 }`;

@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { FramePlate } from './frame-plates.js';
 import { paintPlanarFrame } from './planar-frame-geometry.js';
@@ -6,7 +10,7 @@ import { paintPlanarFrame } from './planar-frame-geometry.js';
  * the gold panels, illustration and text paper intact. All compositing happens
  * once during face preparation; decoded/material sources use existing caches. */
 export function paintPlanarPinlines(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   plate: FramePlate,
   images: CanvasImages,
 ): void {
@@ -17,7 +21,7 @@ export function paintPlanarPinlines(
     return image;
   };
   const create = () => {
-    const canvas = document.createElement('canvas');
+    const canvas = rasterCanvas();
     canvas.width = 732;
     canvas.height = 1020;
     const context = canvas.getContext('2d');

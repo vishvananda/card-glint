@@ -1,3 +1,4 @@
+import { canvasFonts } from './canvas-font-registry.js';
 import { decodeCanvasImage } from '../../../../packages/browser/src/canvas-images.js';
 export {
   decodeCanvasImage,
@@ -218,13 +219,13 @@ let fonts: Promise<void> | null = null;
 export function loadCanvasFonts(): Promise<void> {
   // The same @font-face declarations as RenderedCardFace; no second font registry.
   return (fonts ??= Promise.all([
-    document.fonts.load('24px "CardRenderer MTG Beleren"'),
-    document.fonts.load('700 24px "CardRenderer MTG Beleren"'),
-    document.fonts.load('700 11px "CardRenderer MTG Beleren Small Caps"'),
-    document.fonts.load('24px "CardRenderer MTG MPlantin"'),
-    document.fonts.load('italic 24px "CardRenderer MTG MPlantin"'),
-    document.fonts.load('14px "CardRenderer MTG Relay"'),
-    document.fonts.load('14px "CardRenderer MTG Artist Credit"'),
+    canvasFonts().load('24px "CardRenderer MTG Beleren"'),
+    canvasFonts().load('700 24px "CardRenderer MTG Beleren"'),
+    canvasFonts().load('700 11px "CardRenderer MTG Beleren Small Caps"'),
+    canvasFonts().load('24px "CardRenderer MTG MPlantin"'),
+    canvasFonts().load('italic 24px "CardRenderer MTG MPlantin"'),
+    canvasFonts().load('14px "CardRenderer MTG Relay"'),
+    canvasFonts().load('14px "CardRenderer MTG Artist Credit"'),
   ])
     .then((matches) => {
       if (matches.some((faces) => !faces.length || faces.some((face) => face.status !== 'loaded')))

@@ -37,7 +37,7 @@ This avoids fine halftone screens aliasing into colored moiré during CSS rotati
 The helper watches CSS size and monitor/zoom density changes, caps output at the
 native size, and owns no animation loop. Native source textures and exports retain
 their resolution. Do not filter a canvas already rendered directly at its final
-projected resolution; `createRenderer` already uses texture mipmaps in that case.
+projected resolution; `createRenderer` currently uploads ordinary face, mask, overlay and coverage textures at level 0 with linear filtering. Cached print-dot and cardstock textures have mipmaps. Host materials should generate face mipmaps and use trilinear minification, linear magnification and clamped edges.
 `printSamplingVersion === 1` advertises this helper and continuous overlapping
 varied print dots (including hole screens). Print-dot preparation stays in the
 existing bounded printing cache, so tilting does not rebuild the screens.
@@ -177,7 +177,7 @@ const coverage = await resources.documentCoverage(cardDocument, rasterHost, sign
 ```
 
 `printDots` accepts a `TexImageSource` and its exact pixel dimensions. Amount is
-0..1, period is 2..16 source pixels, variation is 0..1, and inset is 0..0.2 card
+0..1, period is 2..16 reference pixels at a card width of 732, variation is 0..1, and inset is 0..0.2 card
 widths. The defaults match `Instance.printDots`. Dimensions must be positive
 integers within the context's texture-size limit and the native 4,194,304-pixel
 raster limit. The source must be ready; the helper does not load or resize it.
@@ -201,10 +201,9 @@ For procedural printing, `PRINT_DOTS_GLSL` provides `printFace` and `printDotInk
 Supply a linear-sampling `face` texture, the `previewInk`/`previewLinear`
 conversions from `foilShader`, and `printDotsInfo = (amount, period, variation, inset)`.
 Set `printFootprint` to the projected footprint in source pixels divided by the
-screen period before silhouette discards or divergent branches.
+screen period before silhouette discards or divergent branches. `printDotFootprint(uv)` computes this using the selected face dimensions and the resolution-independent period.
 `CARDSTOCK_GLSL` needs the linear `cardstockMap`, `cardstockAmount` and `pointer`;
-`cardstockGloss` receives sRGB ink and reflected color. Adapt the exported
-`flat in` declarations to the host's uniform or varying bindings.
+`cardstockGloss` receives sRGB ink and reflected color. Use the matching `flat out` vertex bindings with the host-sampling contract below; no declaration replacement is needed.
 
 The native composition order is printed dots, finish shading, coating relief,
 wear, finish-coverage blending, then protected over-finish printing. Regular
@@ -299,3 +298,97 @@ A direct shader host can opt into `PRINT_DOTS_GLSL` artwork coverage with
 0 to exclude), and fill `uniform vec4 printArtBounds[8]` with bottom-left
 (min-x, min-y, max-x, max-y) coordinates. Unused entries are zero. Without the
 define, existing shader hosts retain their previous contract.
+
+## Instanced texture arrays (0.6)
+
+Assemble `foilShader({sampling: 'host', artWindows: 'pair', liquid: false})`
+before `PRINT_DOTS_GLSL`, `CARDSTOCK_GLSL` and optional `SURFACE_GLSL`. Host mode
+sets `GLINT_HOST_SAMPLING`; it uses these host implementations instead of a
+`sampler2D face` or `sampler2D mask`:
+
+```glsl
+uniform highp sampler2DArray faces;
+uniform highp sampler2DArray masks;
+flat in float faceLayer;
+flat in float maskLayer;
+vec4 glintSampleFace(vec2 uv) { return texture(faces, vec3(uv, faceLayer)); }
+float glintSampleMask(vec2 uv) { return texture(masks, vec3(uv, maskLayer)).r; }
+```
+
+The shader declares `previewKind`, `hasMask`, `aspect`, `pointer`, `facePixelSize`
+and artwork bounds as `flat in` fragment inputs. Supply matching `flat out`
+vertex values for every instance. `facePixelSize` is the positive pixel size of
+that face, independent of the texture array's allocated size. An atlas or padded
+array host maps UVs inside its sampling functions. Samples use bottom-left UVs,
+linear RGB and straight alpha; mask coverage is linear red. Array layers,
+residency and context ownership remain entirely with the host.
+
+Pair mode declares two `vec4` bounds and saves varying slots. Array mode declares
+eight; check the device's varying limit when combining it with optical surfaces.
+The optional `HOST_SAMPLING_GLSL` export supplies the same guarded declarations
+when assembling printing without foil: define `GLINT_HOST_SAMPLING` first and
+`GLINT_ART_PAIR` for two windows. Do not redeclare the instance inputs. Cardstock
+uses one shared linear `sampler2D cardstockMap`; it needs no per-card copy.
+Etch slopes use one face texel on each axis in host mode. Optical clamps use
+face texels, including half-texel insets within artwork windows.
+
+The host-sampling mode changes resource access, not finish composition order,
+mask coverage, protected printing or output color conversion. The legacy uniform
+shader mode remains the default.
+
+## Worker composition and native widths (0.6)
+
+`composeCardTexture` paints directly at `'table'` (244×340), `'native'` (488×680),
+`'inspect'` (732×1020), or an integer pixel width. Numeric heights preserve the
+488:680 aspect, rounded to the nearest pixel; total area is bounded at 4,194,304
+pixels. `cardTextureSize(tier)` exposes these exact dimensions. These choices do
+not install an automatic tier policy in the renderer.
+
+Without `document`, painters allocate OffscreenCanvas and return a transferable
+ImageBitmap. On the main thread the default remains HTMLCanvasElement; pass
+`{output: 'bitmap'}` to request a bitmap there too. The return type now expresses
+both possibilities. `custom.compose` may return a canvas, OffscreenCanvas or
+ImageBitmap and follows the same completion/cancellation path. Use `closeRaster`
+from `card-glint/canvas` (or bitmap.close) when finished.
+
+Supply `loadImages` leases containing ImageBitmap assets, plus `loadFonts` and
+`loadRetroFont` hooks. Load each required `FontFace` into the worker's own
+`self.fonts`; a page's font registry is not shared with its workers. The exported
+`canvasFontAssets` and `retroFontAssets` describe the matching sources. Hooks
+should cache preparation per worker and honor cancellation; image leases release
+when composition completes. Custom painters own their asset and font loading.
+No DOM shim or UI framework is required.
+
+For the etching layer, `{output: 'r8'}` returns a `CoverageMap` instead of an image:
+
+```ts
+const mask = await composeCardTexture({ ...input, layer: 'etching' }, 'native', signal, {
+  ...hooks,
+  output: 'r8',
+});
+// mask.rowOrder === 'bottom-up'; mask.data is owned, tightly packed linear R8.
+postMessage(mask, [mask.data.buffer]);
+```
+
+The extraction retains alpha coverage, including soft stamp edges, in the R8
+bytes. The default image etching output retains its existing alpha semantics.
+`FinishResources.documentMaskData(document, host, signal)` returns the same R8
+shape after the complete mask and its coverage exclusions are composed. Upload
+with `UNPACK_ALIGNMENT=1`, format RED/UNSIGNED_BYTE and internal format R8. No
+premultiplication, sRGB decode, getImageData or JavaScript row flip is needed in
+the host. Extraction is one-time preparation; cache it by recipe and algorithm,
+never recompute it during motion.
+
+## Print-period migration (0.6)
+
+Print periods now describe a fixed physical screen on the card: the established
+732px appearance is the reference. The screen phase and period no longer change
+when the same card uses 244, 488 or 732px faces. `PRINT_DOTS_REFERENCE_WIDTH` is
+732 and `printDotPeriodForWidth(width, period)` gives the period in face texels.
+For example a period of 6 is 2, 4 and 6 face texels at those three widths.
+Procedural hosts set `printFootprint = printDotFootprint(uv)` before divergent
+branches or silhouette discards. Small projected screens filter away smoothly;
+using a larger source texture does not make dots physically smaller.
+
+Consumers that previously chose a different period per tier should now pass the
+same reference period at every tier. Existing 732px settings retain their scale.

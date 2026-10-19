@@ -1,7 +1,11 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 /** MPlantin lacks precomposed o-macron. Compose its native o and visible
  * modifier macron without changing the word's advance or stored Unicode. */
 function footerGlyphs(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   method: 'fillText' | 'strokeText',
   text: string,
   maxWidth: number,
@@ -34,12 +38,12 @@ function footerGlyphs(
 /** Filled strokes, independent shadow and bounded perimeter thinning, prepared
  * once with the face. No font loading or pixel readback in the painter. */
 export function paintEarlyReprintFooterInk(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   maxWidth: number,
   p: { width: number; trim: number; shadow: number },
 ) {
-  const layer = document.createElement('canvas');
+  const layer = rasterCanvas();
   layer.width = c.canvas.width;
   layer.height = c.canvas.height;
   c.save();

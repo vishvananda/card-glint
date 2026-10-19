@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  type CanvasRaster,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -14,7 +18,7 @@ import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { paintAdventureFooter } from './adventure-footer.js';
 
 export function paintAdventureFrame(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
 ) {
@@ -27,7 +31,7 @@ export function paintAdventureFrame(
     c.drawImage(crown, 13.4, 13, 461.4, 113.4);
   }
 }
-function header(c: CanvasRenderingContext2D, face: RenderedCardInput, images: CanvasImages) {
+function header(c: CanvasContext, face: RenderedCardInput, images: CanvasImages) {
   const cost = face.manaSymbols ?? [],
     size = 23.4,
     gap = 1.8,
@@ -73,7 +77,7 @@ function header(c: CanvasRenderingContext2D, face: RenderedCardInput, images: Ca
     else paintSetSymbol(c, icon, face.setCode, face.rarity, ...bounds, crop);
   }
 }
-function insetHeader(c: CanvasRenderingContext2D, spell: RenderedCardInput, images: CanvasImages) {
+function insetHeader(c: CanvasContext, spell: RenderedCardInput, images: CanvasImages) {
   const cost = spell.manaSymbols ?? [],
     size = 19.8,
     gap = 1.2,
@@ -109,10 +113,10 @@ function insetHeader(c: CanvasRenderingContext2D, spell: RenderedCardInput, imag
   );
 }
 export function paintAdventureFace(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
-  underArt?: HTMLCanvasElement,
+  underArt?: CanvasRaster,
   layer?: PaintLayer,
 ) {
   const spell = face.faces?.[1];

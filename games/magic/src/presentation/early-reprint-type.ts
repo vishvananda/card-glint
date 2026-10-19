@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
@@ -11,7 +12,7 @@ export function earlyReprintType(face: RenderedCardInput) {
 }
 
 export function paintEarlyReprintType(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   text: string,
   right: number,

@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintOriginalWhite } from './historical-white.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { colorGlyphTransform } from './symbol-adjustment.js';
@@ -6,7 +7,7 @@ import { paintMana } from './canvas-text.js';
 
 /** Frozen Revised nonland policy. Header geometry does not change title fitting. */
 export function paintRevisedCost(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   symbols: readonly string[],
   images: CanvasImages,
   modernSymbols = false,
@@ -30,7 +31,7 @@ export function paintRevisedCost(
 
 /** Alpha calibration validated on reserved Alpha and Unlimited costs. */
 export function paintEarlyCost(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   symbols: readonly string[],
   images: CanvasImages,
   modernSymbols = false,
@@ -53,7 +54,7 @@ export function paintEarlyCost(
 }
 
 function paintCost(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   symbols: readonly string[],
   images: CanvasImages,
   geometry: Readonly<{

@@ -1,3 +1,8 @@
+import {
+  type CanvasContext,
+  type CanvasRaster,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { modernSplitAssets } from './split-modern-frame.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -61,11 +66,11 @@ export function splitMaterialAssets(
     ...(era === 'eighth' && face.artist ? [`${CONJURER_ROOT}/img/manaSymbols/brush.svg`] : []),
   ];
 }
-const masks = new WeakMap<ImageBitmap, HTMLCanvasElement>();
-export function splitSourceMask(image: ImageBitmap): HTMLCanvasElement {
+const masks = new WeakMap<ImageBitmap, CanvasRaster>();
+export function splitSourceMask(image: ImageBitmap): CanvasRaster {
   const cached = masks.get(image);
   if (cached) return cached;
-  const canvas = document.createElement('canvas');
+  const canvas = rasterCanvas();
   canvas.width = image.width;
   canvas.height = image.height;
   const c = canvas.getContext('2d', { willReadFrequently: true })!;
@@ -80,10 +85,7 @@ export function splitSourceMask(image: ImageBitmap): HTMLCanvasElement {
 }
 const plates = new WeakMap<
   ImageBitmap,
-  Map<
-    string,
-    { left: ImageBitmap; right: ImageBitmap; mask: ImageBitmap; canvas: HTMLCanvasElement }
-  >
+  Map<string, { left: ImageBitmap; right: ImageBitmap; mask: ImageBitmap; canvas: CanvasRaster }>
 >();
 export function splitPlateImage(
   face: RenderedCardInput,
@@ -112,10 +114,10 @@ export function splitPlateImage(
   plates.set(base, map);
   const cached = map.get(key);
   if (cached?.left === left && cached.right === right && cached.mask === mask) return cached.canvas;
-  const canvas = document.createElement('canvas');
+  const canvas = rasterCanvas();
   canvas.width = base.width;
   canvas.height = base.height;
-  const overlay = document.createElement('canvas');
+  const overlay = rasterCanvas();
   overlay.width = base.width;
   overlay.height = base.height;
   const c = canvas.getContext('2d')!,
@@ -140,9 +142,9 @@ export function splitPlateImage(
   map.set(key, { left: left!, right: right!, mask, canvas });
   return canvas;
 }
-const watermarkImages = new WeakMap<ImageBitmap, Map<string, HTMLCanvasElement>>();
+const watermarkImages = new WeakMap<ImageBitmap, Map<string, CanvasRaster>>();
 export function paintSplitWatermark(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
   center: number,
@@ -159,7 +161,7 @@ export function paintSplitWatermark(
   watermarkImages.set(image, map);
   let canvas = map.get(key);
   if (!canvas) {
-    canvas = document.createElement('canvas');
+    canvas = rasterCanvas();
     canvas.width = image.width;
     canvas.height = image.height;
     const ink = canvas.getContext('2d')!;

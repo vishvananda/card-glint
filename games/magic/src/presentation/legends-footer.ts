@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import type { RenderedCardInput, CardTextInk } from './face-layout.js';
 import { legendsFrame } from './legends-frame.js';
@@ -32,13 +36,8 @@ const stats: Lettering = {
 /** Prepare solid, slightly lighter-weight ink once with the cached face. The
  * transparent stroke removes only the glyph edge; it never erases frame pixels.
  * Shadows belong to the finished glyph, independent of the title's state. */
-function paint(
-  c: CanvasRenderingContext2D,
-  text: string,
-  style: Lettering,
-  liveChanges?: CardTextInk,
-) {
-  const layer = document.createElement('canvas');
+function paint(c: CanvasContext, text: string, style: Lettering, liveChanges?: CardTextInk) {
+  const layer = rasterCanvas();
   layer.width = c.canvas.width;
   layer.height = c.canvas.height;
   const ink = layer.getContext('2d');
@@ -68,7 +67,7 @@ function paint(
 
 /** One Legends footer profile fitted on training printings and validated on
  * reserved scans. Copyright is part of this set's illustrator credit. */
-export function paintLegendsFooter(c: CanvasRenderingContext2D, face: RenderedCardInput): boolean {
+export function paintLegendsFooter(c: CanvasContext, face: RenderedCardInput): boolean {
   if (!legendsFrame(face) || (face.borderColor && face.borderColor !== 'black')) return false;
   if (face.artist) paint(c, `Illus. © 1994 ${face.artist}`, artist);
   if (face.power != null && face.toughness != null)

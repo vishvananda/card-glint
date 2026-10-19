@@ -1,3 +1,4 @@
+import type { CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, RulesParagraph } from '../presentation/face-layout.js';
 import { layoutRules } from '../presentation/rules-layout.js';
 import type { CalibratedBody } from './types.js';
@@ -5,7 +6,7 @@ import type { CalibratedBody } from './types.js';
 /** Fit the displayed wording; select a short-text policy using the supplied
  * original/Oracle reference. Explicit paragraph alignment remains authoritative. */
 export function calibratedBodyLayout(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   profile: CalibratedBody,
   paragraphs: readonly RulesParagraph[],

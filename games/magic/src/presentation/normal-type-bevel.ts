@@ -1,9 +1,10 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { BoxAssetKey } from './profile.js';
 
 /** Extend the existing upper ink inward. Its first pass retains the outer
  * silhouette; the repeated cap follows the sprite's rounded ends 1px lower. */
 export function paintNormalTypeCap(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   image: ImageBitmap,
   [x, y, width, height]: readonly [number, number, number, number],
 ): void {
@@ -20,7 +21,7 @@ export function paintNormalTypeCap(
  * narrow interior band during static preparation, retaining the outer contour.
  * Gold, land and colorless materials have not shown the same tone mismatch. */
 export function paintNormalTypeBevel(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   [x, y, width, height]: readonly [number, number, number, number],
   material: BoxAssetKey,
 ): void {

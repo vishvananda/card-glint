@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -33,11 +34,7 @@ export function futureGenericSources(): string[] {
 
 /** Source cost positions follow the curved left rail. Inline mana keeps the
  * ordinary text glyphs; it is not printed in these framed cost medallions. */
-export function paintFutureMana(
-  c: CanvasRenderingContext2D,
-  face: RenderedCardInput,
-  images: CanvasImages,
-) {
+export function paintFutureMana(c: CanvasContext, face: RenderedCardInput, images: CanvasImages) {
   const x = [91, 61, 46, 46, 59, 106],
     y = [140, 207, 281, 356, 437, 512];
   const symbols = face.manaSymbols ?? [];

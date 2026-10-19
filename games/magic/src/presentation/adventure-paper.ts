@@ -1,3 +1,4 @@
+import { type CanvasRaster, rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { adjustHsb, type HsbAdjustment } from './hsb.js';
 
@@ -16,7 +17,7 @@ const PAPER: Readonly<Record<string, HsbAdjustment>> = {
  * text is painted. Clip to the source's curved lower page, preserving headers,
  * the left folded edge, black book outline and colored bottom rail. */
 export function prepareAdventurePaper(
-  canvas: HTMLCanvasElement,
+  canvas: CanvasRaster,
   face: RenderedCardInput,
   material: string,
 ) {
@@ -46,7 +47,7 @@ export function prepareAdventurePaper(
     for (let channel = 0; channel < 3; channel++)
       pixels.data[i + channel] = Math.round(rgb[channel]! * 255);
   }
-  const paper = document.createElement('canvas');
+  const paper = rasterCanvas();
   paper.width = region[2];
   paper.height = region[3];
   paper.getContext('2d')!.putImageData(pixels, 0, 0);

@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import type { CardTextInk, RenderedCardInput } from './face-layout.js';
 import { earlyExpansionArtist } from './early-expansion-artist.js';
 import { paintTextInk } from './text-ink.js';
@@ -22,7 +26,7 @@ export function earlyExpansionStats(face: RenderedCardInput) {
   return profiles[set];
 }
 
-export function paintEarlyExpansionStats(c: CanvasRenderingContext2D, face: RenderedCardInput) {
+export function paintEarlyExpansionStats(c: CanvasContext, face: RenderedCardInput) {
   const p = earlyExpansionStats(face);
   if (!p) return false;
   c.save();
@@ -46,13 +50,13 @@ export function paintEarlyExpansionStats(c: CanvasRenderingContext2D, face: Rend
 /** Filled light strokes and a separately thinned lower-right shadow. The mask
  * is prepared with the face, with no pixel readback, decoding or font loading. */
 function paintStatsInk(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   maxWidth: number,
   p: { width: number; trim: number; shadow: number; shadowTrim: number },
   changes?: CardTextInk,
 ) {
-  const layer = document.createElement('canvas');
+  const layer = rasterCanvas();
   c.save();
   try {
     layer.width = c.canvas.width;

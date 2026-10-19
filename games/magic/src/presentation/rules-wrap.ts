@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { symbolTextParts, type RulesRun } from './face-layout.js';
 
 export interface MeasuredRun {
@@ -58,7 +59,7 @@ function words(runs: readonly RulesRun[]): Word[] {
 
 /** Measure the same contiguous style runs that Canvas paints, retaining shaping/kerning. */
 function measure(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   pieces: Piece[],
   size: number,
   textWidth = 1,
@@ -93,7 +94,7 @@ function measure(
  * dash, preserve style runs, and choose the longest prefix whose ink fits.
  * A leading attribution dash stays attached to its following word. */
 function discretionaryBreak(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   prefix: Piece[],
   pieces: Piece[],
   width: number,
@@ -130,7 +131,7 @@ function discretionaryBreak(
 }
 
 function wrapWords(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   tokens: readonly Word[],
   width: number,
   size: number,
@@ -184,7 +185,7 @@ function wrapWords(
 
 /** Keep the minimum feasible line count, then balance unused width on every line. */
 function balanceWords(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   tokens: readonly Word[],
   width: number,
   size: number,
@@ -241,7 +242,7 @@ function balanceWords(
 }
 
 export function wrapRules(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   runs: readonly RulesRun[],
   width: number,
   size: number,

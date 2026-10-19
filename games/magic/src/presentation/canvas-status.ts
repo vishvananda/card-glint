@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { AbilityEmblem } from '../emblems.js';
 import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.js';
 import { POWER_TOUGHNESS_LAYOUT } from './power-toughness-layout.js';
@@ -5,7 +6,7 @@ import { paintAbilityEmblem } from './canvas-ability-emblem.js';
 
 /** The same projected status drawings used by native cards, including inspection. */
 export function paintCardStatus(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   emblems: readonly AbilityEmblem[],
   stats?: Pick<RenderedCardInput, 'power' | 'toughness'>,
   plate?: ImageBitmap,

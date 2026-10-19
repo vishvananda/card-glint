@@ -1,14 +1,18 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { paintPlanarFrame } from './planar-frame-geometry.js';
 
 /** The stock mask must use the plate's geometry, including its outer bands.
  * Preparing this static layer performs no pixel readback or per-frame work. */
 export function paintPlateStockBorder(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   image: CanvasImageSource & { width: number; height: number },
   stock: string,
   geometry?: 'planar' | 'colorshifted',
 ): void {
-  const mask = document.createElement('canvas');
+  const mask = rasterCanvas();
   mask.width = 732;
   mask.height = 1020;
   try {

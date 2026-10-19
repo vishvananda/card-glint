@@ -1,3 +1,4 @@
+import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import { earlyManaNumeral } from './early-expansion-mana.js';
 import { modernCostMana, modernCostNumeralAsset } from './modern-cost-mana.js';
 import { manaSymbolAsset } from './assets.js';
@@ -110,7 +111,7 @@ async function splitNumeral(
   cost?: ReturnType<typeof modernCostMana>,
   paperSample?: 'opaque-percentile',
 ): Promise<ImageBitmap> {
-  const canvas = document.createElement('canvas');
+  const canvas = rasterCanvas();
   canvas.width = source.width;
   canvas.height = source.height;
   try {

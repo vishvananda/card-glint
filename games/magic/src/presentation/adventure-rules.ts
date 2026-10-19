@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { layoutRules } from './rules-layout.js';
 import { wordingParagraphs } from './wording.js';
@@ -8,7 +9,7 @@ export const ADVENTURE_RULE_BOUNDS = {
   spell: { x: 41.7, y: 499, width: 191, height: 122 },
 } as const;
 
-export function adventureRuleLayouts(c: CanvasRenderingContext2D, face: RenderedCardInput) {
+export function adventureRuleLayouts(c: CanvasContext, face: RenderedCardInput) {
   const spell = face.faces?.[1];
   if (!spell) throw Error('Adventure spell is missing.');
   const paragraphs = (f: RenderedCardInput) => {

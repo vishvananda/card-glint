@@ -1,3 +1,4 @@
+import { type CanvasRaster, rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -14,7 +15,7 @@ import {
 } from './prepare-frame.js';
 import { adventureHybrid } from './adventure-frame.js';
 
-const cache = new Map<string, HTMLCanvasElement>();
+const cache = new Map<string, CanvasRaster>();
 const ids = new WeakMap<ImageBitmap, number>();
 let nextId = 0,
   bytes = 0;
@@ -52,7 +53,7 @@ export function prepareFrameImage(face: RenderedCardInput, images: CanvasImages)
     w = base.width,
     h = base.height;
   const scratch = () => {
-    const c = document.createElement('canvas');
+    const c = rasterCanvas();
     c.width = w;
     c.height = h;
     return c;

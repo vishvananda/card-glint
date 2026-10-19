@@ -1,10 +1,11 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { resolveFrameColors } from './profile.js';
 import type { RenderedCardInput } from './face-layout.js';
 /** Shared scan-normalized Urza footer. Keep the artist and legal line's ink,
  * baseline and shadow independent; never inherit the title's Canvas shadow. */
-export function paintUrzaFooter(c: CanvasRenderingContext2D, face: RenderedCardInput): boolean {
+export function paintUrzaFooter(c: CanvasContext, face: RenderedCardInput): boolean {
   const set = face.setCode?.toLowerCase();
   if (!['usg', 'ulg', 'uds'].includes(set ?? '') || (face.layout ?? 'normal') !== 'normal')
     return false;

@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.js';
 import { faceFrame, faceRects, specialRules } from './special-frames.js';
 import { layoutRules, RULES_TYPOGRAPHY } from './rules-layout.js';
@@ -38,7 +39,7 @@ function abilityRuns(face: RenderedCardInput, text: string, index: number) {
 
 /** Measured ability geometry, in reference pixels, computed only at composition.
  * Reserve the curved lower panel/loyalty plate; static text has no badge indent. */
-export function planeswalkerRuleRows(context: CanvasRenderingContext2D, face: RenderedCardInput) {
+export function planeswalkerRuleRows(context: CanvasContext, face: RenderedCardInput) {
   const large = faceFrame(face) === 'planeswalker-large';
   const abilities = specialRules(face),
     sparse = !large && abilities.length < 3;

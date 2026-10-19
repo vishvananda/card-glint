@@ -1,8 +1,12 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 /** Filled light ink with an independent lower-right shadow. Partial perimeter
  * thinning retains fine strokes, including the copyright ring. Composed only
  * during cached face preparation, without pixel readback or font loading. */
 export function paintSolidArtist(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   x: number,
   y: number,
@@ -10,7 +14,7 @@ export function paintSolidArtist(
   p: { width: number; shadow: number; trim: number },
 ) {
   c.save();
-  const layer = document.createElement('canvas');
+  const layer = rasterCanvas();
   try {
     const matrix = c.getTransform();
     c.shadowColor = 'transparent';

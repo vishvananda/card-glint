@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 
@@ -49,7 +50,7 @@ export function planarBadgeRect(
  * shared bounds use 15 calibration scans, with 29 held out. Separate badges,
  * lettering, symbols, art and paper apertures retain their existing geometry. */
 export function paintPlanarFrame(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   image: CanvasImageSource & { width: number; height: number },
   colorshifted = false,
 ): void {

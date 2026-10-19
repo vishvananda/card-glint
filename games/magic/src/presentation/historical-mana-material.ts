@@ -1,3 +1,4 @@
+import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { Rgb } from './hsb.js';
 import { recolorManaInkPixels, type ManaInkTone } from './mana-ink-material.js';
 import { expandHistoricalManaInk } from './historical-mana-ink.js';
@@ -37,7 +38,7 @@ export async function buildHistoricalMana(
   target: Rgb,
   tone?: ManaInkTone,
 ) {
-  const canvas = document.createElement('canvas');
+  const canvas = rasterCanvas();
   canvas.width = source.width;
   canvas.height = source.height;
   try {

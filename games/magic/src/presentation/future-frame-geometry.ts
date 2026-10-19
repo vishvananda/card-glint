@@ -1,3 +1,4 @@
+import { type CanvasRaster, rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { futureTreatment } from './future-frame.js';
 import { resolveCardProfile, resolveFrameColors } from './profile.js';
@@ -33,8 +34,8 @@ function mapping(face: RenderedCardInput) {
  * while correcting the outer stock. Integer physical-pixel clips tile the
  * output without partially covered seams; each band samples the whole plate.
  * No pixel readback or animation-time work is needed. */
-export function calibrateFutureFrame(source: HTMLCanvasElement, face: RenderedCardInput) {
-  const target = document.createElement('canvas');
+export function calibrateFutureFrame(source: CanvasRaster, face: RenderedCardInput) {
+  const target = rasterCanvas();
   target.width = source.width;
   target.height = source.height;
   const c = target.getContext('2d')!,

@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintRetroGrayText } from './retro-lettering.js';
 import type { RenderedCardInput, CardTextInk } from './face-layout.js';
 import { retroFamily } from './retro-frame.js';
@@ -8,7 +9,7 @@ export function usesRevisedLettering(face: RenderedCardInput): boolean {
 }
 
 export function paintRevisedTitle(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   originalX: number,
   y: number,
@@ -21,7 +22,7 @@ export function paintRevisedTitle(
 }
 
 export function paintRevisedStats(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   y: number,
   liveChanges?: CardTextInk,
@@ -34,7 +35,7 @@ export function paintRevisedStats(
   c.restore();
 }
 
-export function paintRevisedCredits(c: CanvasRenderingContext2D, artist: string) {
+export function paintRevisedCredits(c: CanvasContext, artist: string) {
   c.save();
   c.font = '22px "CardRenderer MTG MPlantin", Georgia';
   c.textAlign = 'left';

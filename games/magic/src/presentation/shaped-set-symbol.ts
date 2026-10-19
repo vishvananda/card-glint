@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 
 type ShapedSetCode = 'm15' | 'war';
@@ -13,7 +17,7 @@ export function shapedSetCode(
 /** Existing M15/WAR stencil envelopes. Interior holes are printing ink, not
  * transparent windows onto the type plate. Coordinates follow the pinned SVGs. */
 export function paintShapedSetSymbol(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   image: ImageBitmap,
   code: ShapedSetCode,
   rarity: string | undefined,
@@ -34,7 +38,7 @@ export function paintShapedSetSymbol(
   width *= growth;
   height *= growth;
   const common = !rarity || rarity === 'common';
-  const layer = document.createElement('canvas'),
+  const layer = rasterCanvas(),
     padding = 3,
     resolution = 4;
   layer.width = Math.ceil((width + padding * 2) * resolution);

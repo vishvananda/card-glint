@@ -4,6 +4,15 @@ import { POOL_GLSL } from './pool-shader.js';
 
 /** Analytic optical surfaces. No animated textures, readbacks or simulation FBOs. */
 export const SURFACE_GLSL = `
+#ifdef GLINT_HOST_SAMPLING
+#define GLINT_SURFACE_FACE(uv) glintSampleFace(uv)
+#define GLINT_SURFACE_SIZE facePixelSize
+vec4 glintSurfaceClamp(){vec2 t=1./facePixelSize;return vec4(t,1.-t);}
+#else
+#define GLINT_SURFACE_FACE(uv) texture(face,uv)
+#define GLINT_SURFACE_SIZE vec2(textureSize(face,0))
+vec4 glintSurfaceClamp(){return vec4(.002,.002,.998,.998);}
+#endif
 uniform float surfaceTime;
 flat in vec4 surfaceInfo;
 flat in vec4 ripple0;flat in vec4 ripple1;flat in vec4 ripple2;flat in vec4 ripple3;
@@ -14,7 +23,7 @@ float surfaceNoise(vec2 p){
  return mix(mix(surfaceHash(i),surfaceHash(i+vec2(1.,0.)),f.x),
  mix(surfaceHash(i+vec2(0.,1.)),surfaceHash(i+vec2(1.,1.)),f.x),f.y);
 }
-vec3 surfaceInk(vec2 uv){return texture(face,clamp(uv,vec2(.002),vec2(.998))).rgb;}
+vec3 surfaceInk(vec2 uv){vec4 b=glintSurfaceClamp();return GLINT_SURFACE_FACE(clamp(uv,b.xy,b.zw)).rgb;}
 vec3 refractedInk(vec2 uv){return previewInk(surfaceInk(uv));}
 // Project the turning pane onto a nearly stationary, front-facing scene.
 // Shortest-arc rotation from +Z to the normal, with a restrained perspective
@@ -29,16 +38,21 @@ vec2 windowSceneUv(vec2 uv,vec3 normal){
 // In artwork-only mode, clamp to this art window so moving ink cannot pull the
 // printed frame into the illustration. No overscan image or extra texture needed.
 vec4 surfaceWindow(vec2 uv){
+#ifdef GLINT_ART_PAIR
+ if(finishBase<.5)for(int i=0;i<2;i++){
+  vec4 b=i==0?artBounds:artBounds2;
+#else
  if(finishBase<.5)for(int i=0;i<8;i++){
   vec4 b=artBounds[i];
+#endif
   if(b.z>b.x && b.w>b.y && all(greaterThanEqual(uv,b.xy)) && all(lessThanEqual(uv,b.zw))){
-   vec2 inset=min(.5/vec2(textureSize(face,0)),(b.zw-b.xy)*.25);
+   vec2 inset=min(.5/GLINT_SURFACE_SIZE,(b.zw-b.xy)*.25);
    return b+vec4(inset,-inset);
   }
  }
- return vec4(.002,.002,.998,.998);
+ return glintSurfaceClamp();
 }
-vec3 windowInk(vec2 uv,vec4 bounds){return texture(face,clamp(uv,bounds.xy,bounds.zw)).rgb;}
+vec3 windowInk(vec2 uv,vec4 bounds){return GLINT_SURFACE_FACE(clamp(uv,bounds.xy,bounds.zw)).rgb;}
 // Small, linear-light cross filter. Radius can be anisotropic; no blur texture.
 vec3 softenedInk(vec2 uv,vec2 radius,vec4 bounds){
  vec3 ink=windowInk(uv,bounds)*.4;
@@ -46,7 +60,7 @@ vec3 softenedInk(vec2 uv,vec2 radius,vec4 bounds){
  ink+=(windowInk(uv+vec2(0.,radius.y),bounds)+windowInk(uv-vec2(0.,radius.y),bounds))*.15;
  return previewInk(ink);
 }
-vec3 softenedInk(vec2 uv,vec2 radius){return softenedInk(uv,radius,vec4(.002,.002,.998,.998));}
+vec3 softenedInk(vec2 uv,vec2 radius){return softenedInk(uv,radius,glintSurfaceClamp());}
 float surfaceReflection(vec2 uv,vec3 normal,float sharpness){
  vec3 view=normalize(vec3((uv-.5)*vec2(-.65,-.90),1.));
  vec3 lamp=normalize(vec3(-.24,.32,1.));

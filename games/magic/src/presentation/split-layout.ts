@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { MODERN_SPLIT_WIDTH } from './split-modern-frame.js';
 import { splitPanelWatermark } from './split-materials.js';
 import { nativeSplitEra, hasFuse, SPLIT_PANEL_WIDTH } from './split-frame.js';
@@ -96,7 +97,7 @@ export function panelStyle(panel: SplitPanel) {
     transform: `rotate(${panel.rotation}deg)`,
   };
 }
-export function panelTransform(context: CanvasRenderingContext2D, panel: SplitPanel) {
+export function panelTransform(context: CanvasContext, panel: SplitPanel) {
   context.translate(panel.x, panel.y);
   context.rotate((panel.rotation * Math.PI) / 180);
   context.scale(panel.width / FACE_WIDTH, panel.width / FACE_WIDTH);

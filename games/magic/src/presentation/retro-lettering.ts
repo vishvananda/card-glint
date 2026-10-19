@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import type { CardTextInk } from './face-layout.js';
 import { paintTextInk } from './text-ink.js';
 /**
@@ -6,7 +10,7 @@ import { paintTextInk } from './text-ink.js';
  * fonts are already loaded, and no pixel readback or per-frame work is needed.
  */
 export function paintRetroLetterEdges(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   x: number,
   y: number,
@@ -16,7 +20,7 @@ export function paintRetroLetterEdges(
   c.save();
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;
-  const layer = document.createElement('canvas');
+  const layer = rasterCanvas();
   layer.width = c.canvas.width;
   layer.height = c.canvas.height;
   const ink = layer.getContext('2d');
@@ -46,7 +50,7 @@ export function paintRetroLetterEdges(
 }
 /** Solid gray ink over a lower-right shadow, composed once per cached face. */
 export function paintRetroGrayText(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   x: number,
   y: number,

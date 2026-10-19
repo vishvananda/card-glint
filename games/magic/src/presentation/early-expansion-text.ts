@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { layoutRules, type RulesTypography } from './rules-layout.js';
 
@@ -60,7 +61,7 @@ const alignLarge = (
  * visible text. Nominal regular fit keeps a small width adjustment from causing
  * a large jump to compact type. Inline symbols retain their own aspect/advance. */
 export function earlyExpansionTextLayout(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   paragraphs: readonly RulesParagraph[],
   reference: readonly RulesParagraph[],

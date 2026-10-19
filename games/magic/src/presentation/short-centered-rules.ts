@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RulesParagraph } from './face-layout.js';
 import { layoutRules, type RulesTypography } from './rules-layout.js';
 
@@ -5,7 +6,7 @@ import { layoutRules, type RulesTypography } from './rules-layout.js';
  * A longer Oracle passage must not change an original-based classification.
  */
 export function shortCenteredRules(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   paragraphs: readonly RulesParagraph[],
   reference: readonly RulesParagraph[],
   bounds: Parameters<typeof layoutRules>[2],

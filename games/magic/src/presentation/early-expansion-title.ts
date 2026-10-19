@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
 import { paintSolidTitle } from './solid-title.js';
@@ -33,7 +34,7 @@ export function earlyExpansionTitle(face: RenderedCardInput) {
 }
 
 export function paintEarlyExpansionTitle(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   right: number,
 ): boolean {

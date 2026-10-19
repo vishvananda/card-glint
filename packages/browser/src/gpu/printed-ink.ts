@@ -15,11 +15,11 @@ vec3 previewInk(vec3 c){return mix(c*12.92,1.055*pow(max(c,vec3(0.)),vec3(1./2.4
 vec3 previewLinear(vec3 c){return mix(c/12.92,pow(max((c+.055)/1.055,vec3(0.)),vec3(2.4)),step(vec3(.04045),c));}
 ${PRINT_DOTS_GLSL.replace('flat in vec4 printDotsInfo;', 'uniform vec4 printDotsInfo;')}
 void main(){
- printFootprint=1./printDotsInfo.y;
+ printFootprint=1./printDotPeriodTexels();
  // Fine screens need pixel-area coverage before they enter the mip chain.
  // Sample only the ink screen: averaging source texels would soften lettering.
  // This pass is cached per printing/settings, never rerun for pointer motion.
- if(printDotsInfo.y<4.){
+ if(printDotPeriodTexels()<4.){
   vec4 source=texture(face,uv);vec3 ink=previewInk(source.rgb),sum=vec3(0.);
   vec2 pixel=1./vec2(textureSize(face,0));
   for(int y=0;y<2;y++)for(int x=0;x<2;x++){

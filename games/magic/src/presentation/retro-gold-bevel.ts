@@ -1,8 +1,9 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 /** The pinned seventh-family gold paper has reversed bevel lighting. Adjust
  * the four facets in place: moving/copying the rim also moves its baked shadow
  * texture. Multiplicative light preserves shadows; a white overlay washes them
  * out. Reuse the decoded frame during preparation, without another readback. */
-export function paintRetroGoldBevel(context: CanvasRenderingContext2D, frame: CanvasImageSource) {
+export function paintRetroGoldBevel(context: CanvasContext, frame: CanvasImageSource) {
   // Bounds of the existing 1500×2100 asset, excluding its black keyline.
   const x = (160 / 1500) * 488,
     y = (1255 / 2100) * 680,

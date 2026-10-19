@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { framePlate } from './frame-plates.js';
 import { usesPlanarFrameGeometry } from './planar-frame-geometry.js';
@@ -7,7 +8,7 @@ import { layoutRules, type RulesLayout } from './rules-layout.js';
  * Long flavor endings retain their cadence. This policy is shared by content,
  * never selected by printing ID or by a scan during rendering. */
 export function planarShortRules(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   paragraphs: readonly RulesParagraph[],
   original: RulesLayout,

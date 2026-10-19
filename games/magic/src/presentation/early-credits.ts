@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { alphaTypography } from './alpha-typography.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { paintRetroGrayText } from './retro-lettering.js';
@@ -7,11 +8,7 @@ export function usesEarlyCredits(face: RenderedCardInput): boolean {
   return ['lea', 'leb', '2ed'].includes(face.setCode?.toLowerCase() ?? '');
 }
 
-export function paintEarlyCredits(
-  c: CanvasRenderingContext2D,
-  artist: string,
-  setCode?: string | null,
-) {
+export function paintEarlyCredits(c: CanvasContext, artist: string, setCode?: string | null) {
   c.save();
   c.font = '22.5px "CardRenderer MTG MPlantin", Georgia';
   c.textAlign = 'left';

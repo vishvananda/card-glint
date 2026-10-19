@@ -1,3 +1,8 @@
+import {
+  type CanvasContext,
+  type CanvasRaster,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import { paintPrintingElement } from './printing-elements.js';
@@ -22,11 +27,11 @@ import { printingCollectorText, printingLegalText } from './printing-footer.js';
 import { futureSetSymbolRect } from './future-set-symbol.js';
 
 export function paintFutureTemplate(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
   layer?: PaintLayer,
-  underArt?: HTMLCanvasElement,
+  underArt?: CanvasRaster,
 ) {
   validateFutureTreatment(face);
   const frame = prepareFutureFrame(face, images),
@@ -51,7 +56,7 @@ export function paintFutureTemplate(
     }
     if (underArt) c.drawImage(underArt, 0, 0, 488, 680);
     if (layer !== 'printing') {
-      const art = document.createElement('canvas');
+      const art = rasterCanvas();
       art.width = 976;
       art.height = 1360;
       try {

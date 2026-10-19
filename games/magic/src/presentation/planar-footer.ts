@@ -1,3 +1,5 @@
+import { canvasFonts } from './canvas-font-registry.js';
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { usesPlanarFrameGeometry } from './planar-frame-geometry.js';
 
@@ -8,7 +10,7 @@ export function planarStatsFont(face: RenderedCardInput, source: string): string
 /** ModMatrix's star is larger than the printed PLC glyph. Fit star ink without
  * changing advances, digits or slash: two calibration and six validation scans.
  * The caller selects this painter only for the measured Planar frame family. */
-export function paintPlanarStats(c: CanvasRenderingContext2D, text: string): void {
+export function paintPlanarStats(c: CanvasContext, text: string): void {
   if (!text.includes('*')) {
     c.fillText(text, 407, 627, 78);
     return;
@@ -40,7 +42,7 @@ export function paintPlanarStats(c: CanvasRenderingContext2D, text: string): voi
 /** Shared footer ink fits. The source badge and texture keep their own bounds.
  * Apply only during face preparation, within a caller-owned saved context. */
 export function transformPlanarFooter(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   source: string,
   part: 'artist' | 'legal' | 'stats',
@@ -61,7 +63,7 @@ let statsFont: Promise<void> | null = null;
 export function loadPlanarStatsFont(face: RenderedCardInput, source: string): Promise<void> {
   const family = planarStatsFont(face, source);
   if (!family || face.power == null || face.toughness == null) return Promise.resolve();
-  return (statsFont ??= document.fonts
+  return (statsFont ??= canvasFonts()
     .load(`700 29px "${family}"`)
     .then((fonts) => {
       if (!fonts.length || fonts.some((font) => font.status !== 'loaded'))

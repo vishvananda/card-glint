@@ -1,3 +1,4 @@
+import { rasterCanvas, finishRaster } from '../../../../packages/browser/src/canvas-raster.js';
 import type { Hologram, Raster, Rect } from '../../../../packages/browser/src/index.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { isAdventure } from './adventure-frame.js';
@@ -22,13 +23,13 @@ const mask: Raster = {
       signal.throwIfAborted();
       const source = lease.value.get(PLAIN_SECURITY_STAMP);
       if (!source) throw Error('Authenticity stamp mask is unavailable.');
-      const output = document.createElement('canvas');
+      const output = rasterCanvas();
       output.width = 134;
       output.height = 67;
       const context = output.getContext('2d');
       if (!context) throw Error('Authenticity stamp mask needs Canvas2D.');
       context.drawImage(source, 2, 1, 130, 65);
-      return output;
+      return finishRaster(output);
     } finally {
       lease.release();
     }

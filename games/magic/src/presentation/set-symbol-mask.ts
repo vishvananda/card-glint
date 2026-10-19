@@ -1,3 +1,4 @@
+import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { MaterialBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
@@ -29,7 +30,7 @@ export async function acquireSetSymbolMask(
     JSON.stringify(['set-symbol-ink-v1', identity, width, height]),
     width * height * 4,
     async () => {
-      const canvas = document.createElement('canvas');
+      const canvas = rasterCanvas();
       canvas.width = width;
       canvas.height = height;
       try {

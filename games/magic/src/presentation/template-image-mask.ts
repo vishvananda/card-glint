@@ -1,10 +1,11 @@
+import { type CanvasRaster, rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 /** MSE uses grayscale coverage, not alpha. Convert each decoded shared mask
  * once during face preparation; animation never reads pixels or rebuilds it. */
-const masks = new WeakMap<ImageBitmap, HTMLCanvasElement>();
-export function templateImageMask(image: ImageBitmap): HTMLCanvasElement {
+const masks = new WeakMap<ImageBitmap, CanvasRaster>();
+export function templateImageMask(image: ImageBitmap): CanvasRaster {
   const old = masks.get(image);
   if (old) return old;
-  const canvas = document.createElement('canvas');
+  const canvas = rasterCanvas();
   canvas.width = image.width;
   canvas.height = image.height;
   const c = canvas.getContext('2d', { willReadFrequently: true })!;

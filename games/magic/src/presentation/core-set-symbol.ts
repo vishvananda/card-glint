@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 
 /** Shared normal-frame enlargement; preserve the shield's aspect and center. */
@@ -12,7 +16,7 @@ export function hasCoreSetShield(face: Pick<RenderedCardInput, 'setCode' | 'setS
 /** Static face preparation only: retain the existing stencil, make its letter
  * holes opaque, and add a shield rim. No pixel readback or extra asset fetch. */
 export function paintCoreSetSymbol(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   image: ImageBitmap,
   rarity: string | undefined,
   x: number,
@@ -23,7 +27,7 @@ export function paintCoreSetSymbol(
   rim = 1,
 ): void {
   const common = !rarity || rarity === 'common';
-  const layer = document.createElement('canvas');
+  const layer = rasterCanvas();
   const padding = 2,
     resolution = 4;
   layer.width = Math.ceil((width + padding * 2) * resolution);

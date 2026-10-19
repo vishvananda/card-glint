@@ -13,7 +13,7 @@ export const LIQUID_FOIL_GLSL = `
     shift*=min(1.,max(0.,edge-.0015)/max(length(shift),.00001));
     // The bounded shift cannot cross the border. Preserve texture filtering
     // there instead of snapping the sample to an inset art rectangle.
-    base=previewInk(texture2D(face,uv+shift).rgb);
+    base=previewInk(GLINT_FOIL_FACE(uv+shift).rgb);
     vec3 fluidNormal=normalize(vec3(-gradient*32.,1.));
     // Ripple glints perturb the same reflected strip as cold/prismatic foil.
     // At rest their angle is identical, including the card's physical tilt.

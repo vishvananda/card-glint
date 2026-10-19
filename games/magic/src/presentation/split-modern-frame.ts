@@ -1,3 +1,8 @@
+import {
+  type CanvasContext,
+  type CanvasRaster,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
@@ -48,7 +53,7 @@ export function modernSplitAssets(face: RenderedCardInput): string[] {
 }
 // Derived full plates are larger than the old MSE panels. Keep a separate
 // bounded LRU without retaining borrowed source bitmaps after preparation.
-const prepared = new Map<string, HTMLCanvasElement>();
+const prepared = new Map<string, CanvasRaster>();
 const identities = new WeakMap<ImageBitmap, number>();
 let sequence = 0,
   preparedBytes = 0;
@@ -56,14 +61,7 @@ const sourceId = (image: ImageBitmap) => {
   if (!identities.has(image)) identities.set(image, ++sequence);
   return identities.get(image)!;
 };
-function labelPath(
-  c: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  bulge: number,
-) {
+function labelPath(c: CanvasContext, x: number, y: number, w: number, h: number, bulge: number) {
   c.moveTo(x + bulge, y);
   c.lineTo(x + w - bulge, y);
   c.quadraticCurveTo(x + w + bulge * 0.25, y + h / 2, x + w - bulge, y + h);
@@ -96,7 +94,7 @@ export function modernSplitImage(face: RenderedCardInput, images: CanvasImages):
     prepared.set(key, cached);
     return cached;
   }
-  const canvas = document.createElement('canvas');
+  const canvas = rasterCanvas();
   canvas.width = base.width;
   canvas.height = base.height;
   const c = canvas.getContext('2d')!;
@@ -138,7 +136,7 @@ export function modernSplitImage(face: RenderedCardInput, images: CanvasImages):
     c.clip();
     draw(sources[0]!);
     // Cross-fade the second plate without transparent paint erasing the first.
-    const overlay = document.createElement('canvas');
+    const overlay = rasterCanvas();
     overlay.width = canvas.width;
     overlay.height = canvas.height;
     const o = overlay.getContext('2d')!;

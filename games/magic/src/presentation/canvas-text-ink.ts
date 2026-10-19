@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { isPrintingTextOmitted } from './printing-omissions.js';
 
 /** Reduce white header stroke coverage without changing glyph advances. The
@@ -5,7 +9,7 @@ import { isPrintingTextOmitted } from './printing-omissions.js';
  * placement avoids a second interpolation; the final draw retains the existing
  * down-left shadow. No pixel readback or animation-time work is needed. */
 export function paintInsetText(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   text: string,
   bounds: readonly [number, number, number],
   size: number,
@@ -17,7 +21,7 @@ export function paintInsetText(
     scale = Math.hypot(matrix.a, matrix.b),
     left = (Math.floor((x - 4) * scale + matrix.e) - matrix.e) / scale,
     top = (Math.floor((y - size) * scale + matrix.f) - matrix.f) / scale;
-  const ink = document.createElement('canvas');
+  const ink = rasterCanvas();
   ink.width = Math.ceil((width + 8) * scale);
   ink.height = Math.ceil(size * 2 * scale);
   const c = ink.getContext('2d');

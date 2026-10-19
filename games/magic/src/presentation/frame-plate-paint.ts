@@ -1,3 +1,9 @@
+import { canvasFonts } from './canvas-font-registry.js';
+import {
+  type CanvasContext,
+  type CanvasRaster,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import { paintPrintingElement } from './printing-elements.js';
@@ -45,10 +51,10 @@ const px = (r: FaceRect): [number, number, number, number] => [
 /** Paint a complete base plate once per face preparation. Its art aperture,
  * bevels, paper and type plate remain one source; no component overlays. */
 export function paintFramePlateFace(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
-  underArt?: HTMLCanvasElement,
+  underArt?: CanvasRaster,
   layer?: PaintLayer,
 ) {
   const plate = framePlate(face);
@@ -81,12 +87,12 @@ export function paintFramePlateFace(
   if (plate.rightFrame) {
     // A narrow blend joins the two *land* textures, preserving colored outer
     // frames and paper rather than replacing them with a generic gold land.
-    const mix = document.createElement('canvas');
+    const mix = rasterCanvas();
     mix.width = 732;
     mix.height = 1020;
     const m = mix.getContext('2d')!;
     m.drawImage(required(plate.rightFrame), 0, 0, mix.width, mix.height);
-    const mask = document.createElement('canvas');
+    const mask = rasterCanvas();
     mask.width = mix.width;
     mask.height = mix.height;
     const a = mask.getContext('2d')!;
@@ -267,8 +273,8 @@ let matrixFont: Promise<void> | null = null;
 export function loadFramePlateFonts(face: RenderedCardInput): Promise<void> {
   if (face.frameAssetFamily !== 'eighth') return Promise.resolve();
   const common = (matrixFont ??= Promise.all([
-    document.fonts.load('700 24px "CardRenderer MTG Matrix"'),
-    document.fonts.load('700 29px "CardRenderer MTG Matrix Small Caps"'),
+    canvasFonts().load('700 24px "CardRenderer MTG Matrix"'),
+    canvasFonts().load('700 29px "CardRenderer MTG Matrix Small Caps"'),
   ])
     .then((matches) => {
       if (matches.some((fonts) => !fonts.length || fonts.some((font) => font.status !== 'loaded')))
@@ -285,11 +291,7 @@ export function loadFramePlateFonts(face: RenderedCardInput): Promise<void> {
 
 /** Source pack8thColorshifted.js: white ink with a down-left black shadow.
  * Called inside text-only saved state so symbols and rules retain their ink. */
-function paintColorshiftedHeading(
-  c: CanvasRenderingContext2D,
-  face: RenderedCardInput,
-  source: string,
-): void {
+function paintColorshiftedHeading(c: CanvasContext, face: RenderedCardInput, source: string): void {
   if (face.frameTreatment !== 'colorshifted') return;
   c.fillStyle = '#fff';
   c.shadowColor = planarCalibratedStock(face, source) ?? '#000';

@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { legendsFrame } from './legends-frame.js';
 import { layoutRules, type RulesTypography } from './rules-layout.js';
@@ -30,7 +31,7 @@ const alignLarge = (paragraphs: readonly RulesParagraph[]): readonly RulesParagr
  * host's chosen wording reference and fit all visible text independently.
  * See legends-rules-clean-proposal.json; no card names or scan poses enter here. */
 export function legendsTextLayout(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   paragraphs: readonly RulesParagraph[],
   reference: readonly RulesParagraph[],

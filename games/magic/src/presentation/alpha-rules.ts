@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { layoutRules, rulesLayoutRequest, type RulesLayout } from './rules-layout.js';
 
@@ -11,7 +12,7 @@ const models = {
 } as const;
 
 export function alphaRulesLayout(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   original: RulesLayout | null,
   regularWidthDelta = 0,
@@ -22,7 +23,7 @@ export function alphaRulesLayout(
 
 /** Shared physical model exposed internally for independent transfer trials. */
 export function earlyRulesModel(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   original: RulesLayout | null,
   regularWidthDelta = 0,

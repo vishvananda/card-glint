@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import { basicLandColor } from './plate-basic-land.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
@@ -31,7 +32,7 @@ export function eighthBasicRect([left, top, width, height]: FaceRect): FaceRect 
  * outer bands retain the existing border and corners.
  * This runs only when preparing a static face; it adds no readback or decoding. */
 export function paintEighthBasicFrame(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   image: CanvasImageSource & { width: number; height: number },
 ) {
   c.save();

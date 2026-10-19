@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
@@ -27,10 +28,7 @@ export function earlyReprintFooter(face: RenderedCardInput) {
 
 /** Shared printing geometry for original and Oracle wording; explicit host
  * visibility, translations, legal text and stats ink remain authoritative. */
-export function paintEarlyReprintFooter(
-  c: CanvasRenderingContext2D,
-  face: RenderedCardInput,
-): boolean {
+export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInput): boolean {
   const profile = earlyReprintFooter(face);
   if (!profile) return false;
   const paint = (role: 'artist' | 'legal' | 'stats', text: string) => {

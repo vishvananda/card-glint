@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { templateImageMask } from './template-image-mask.js';
 import type { standardTemplateParts } from './standard-frame-templates.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -28,7 +32,7 @@ export const FLIP_PANEL_RECTS = [
 ] as const;
 
 export function paintFlipTemplate(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
   assets: Extract<NonNullable<ReturnType<typeof standardTemplateParts>>, { kind: 'flip' }>,
@@ -61,7 +65,7 @@ export function paintFlipTemplate(
     const image = images.get(url),
       mask = images.get(maskUrl);
     if (!image || !mask) throw Error('Missing flip statistics plate');
-    const plate = document.createElement('canvas');
+    const plate = rasterCanvas();
     plate.width = 140;
     plate.height = 76;
     const p = plate.getContext('2d')!;

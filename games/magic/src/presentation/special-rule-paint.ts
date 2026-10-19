@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import { resolveCardProfile } from './profile.js';
 import { componentAsset } from './assets.js';
@@ -35,7 +36,7 @@ export function specialPaperColor(face: RenderedCardInput): string {
   return colors[resolveCardProfile(face).boxes] ?? '#dededbf0';
 }
 /** Paper belongs below the frame's own outline, not across its inside edge. */
-export function paintPlaneswalkerPaper(context: CanvasRenderingContext2D, face: RenderedCardInput) {
+export function paintPlaneswalkerPaper(context: CanvasContext, face: RenderedCardInput) {
   // Match the existing aperture in reference pixels. A rectangular underlay
   // leaks through the type opening and beyond the curved lower frame corners.
   const { top, scale } = planeswalkerLowerPanel(faceFrame(face) === 'planeswalker-large');
@@ -59,7 +60,7 @@ export function paintPlaneswalkerPaper(context: CanvasRenderingContext2D, face: 
   context.restore();
 }
 
-function paintAbilityColon(context: CanvasRenderingContext2D, x: number, center: number) {
+function paintAbilityColon(context: CanvasContext, x: number, center: number) {
   context.save();
   context.fillStyle = PLANESWALKER_RULE_GEOMETRY.colonInk;
   context.font = `${PLANESWALKER_RULE_GEOMETRY.colonFontSize}px ${PLANESWALKER_RULE_GEOMETRY.colonFontFamily}`;
@@ -76,7 +77,7 @@ function paintAbilityColon(context: CanvasRenderingContext2D, x: number, center:
   context.restore();
 }
 export function paintSpecialRules(
-  context: CanvasRenderingContext2D,
+  context: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
 ) {

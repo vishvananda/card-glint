@@ -1,3 +1,4 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import type { CanvasImages } from './canvas-assets.js';
@@ -11,7 +12,7 @@ import { paintRulesLayout } from './rules-paint.js';
 const POINT = 96 / 72;
 
 export function templateLabel(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   text: string,
   rect: FaceRect,
   size: number,
@@ -36,7 +37,7 @@ export function templateLabel(
   );
 }
 export function templateCost(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
   right: number,
@@ -51,7 +52,7 @@ export function templateCost(
   return symbols.length * advance;
 }
 export function templateRules(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
   rect: FaceRect,
@@ -77,7 +78,7 @@ export function templateRules(
   paintRulesLayout(c, layout, images, undefined, 0, color);
 }
 export function templateStats(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   rect: FaceRect,
   size: number,
@@ -91,7 +92,7 @@ export function templateStats(
   paintTextInk(c, `${face.power}/${face.toughness}`, x + w / 2, y + h / 2, w, face.textInk);
 }
 export function templateFooter(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   rect: FaceRect,
   color: string,

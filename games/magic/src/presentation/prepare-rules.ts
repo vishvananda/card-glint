@@ -1,10 +1,11 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import { layoutRules } from './rules-layout.js';
 import { wordingParagraphs } from './wording.js';
 import { PREPARE_RECTS, PREPARE_SPELL_RECTS, preparedSpell } from './prepare-frame.js';
 
-export function prepareRuleLayouts(c: CanvasRenderingContext2D, face: RenderedCardInput) {
+export function prepareRuleLayouts(c: CanvasContext, face: RenderedCardInput) {
   const spell = preparedSpell(face);
   const layout = (
     input: RenderedCardInput,

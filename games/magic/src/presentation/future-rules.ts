@@ -1,13 +1,10 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { layoutRules } from './rules-layout.js';
 
 /** The shared FUT body fit retains the existing font and wrapping. Larger
  * size/leading changes had discontinuous wrap regressions on reserved cards. */
-export function futureRulesLayout(
-  c: CanvasRenderingContext2D,
-  face: RenderedCardInput,
-  rect: FaceRect,
-) {
+export function futureRulesLayout(c: CanvasContext, face: RenderedCardInput, rect: FaceRect) {
   const [x, y, width, height] = rect;
   const paragraphs =
     face.rulesParagraphs ??

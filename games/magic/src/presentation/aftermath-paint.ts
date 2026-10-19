@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  type CanvasRaster,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import { SECURITY_STAMP_RECTS } from './security-stamp-geometry.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
@@ -21,11 +25,7 @@ import { layoutRules } from './rules-layout.js';
 import { paintRulesLayout } from './rules-paint.js';
 import { shortCenteredRules } from './short-centered-rules.js';
 
-export function aftermathRules(
-  c: CanvasRenderingContext2D,
-  face: RenderedCardInput,
-  bottom: boolean,
-) {
+export function aftermathRules(c: CanvasContext, face: RenderedCardInput, bottom: boolean) {
   const [x, y, width, height] = (bottom ? AFTERMATH_BOTTOM : AFTERMATH_TOP).rules;
   const paragraphs = wordingParagraphs({
     rulesText: face.rulesText ?? '',
@@ -79,10 +79,10 @@ export function aftermathRules(
 
 /** Full source plates supply the asymmetric join, not two resized ordinary cards. */
 export function paintAftermathFace(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
-  underArt?: HTMLCanvasElement,
+  underArt?: CanvasRaster,
   layer?: PaintLayer,
 ) {
   const panels = splitPanels(face);

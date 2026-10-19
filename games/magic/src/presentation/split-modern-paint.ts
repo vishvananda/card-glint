@@ -1,3 +1,7 @@
+import {
+  type CanvasContext,
+  rasterCanvas,
+} from '../../../../packages/browser/src/canvas-raster.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import { SECURITY_STAMP_RECTS } from './security-stamp-geometry.js';
 import { hasOvalSecurityStamp } from './security-stamp-policy.js';
@@ -12,7 +16,7 @@ import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { PLAIN_SECURITY_STAMP } from './security-stamp-assets.js';
 
 export function paintModernSplitFrames(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
 ) {
@@ -34,7 +38,7 @@ export function paintModernSplitFrames(
     // Both full source plates include the shared reminder panel. Blend those
     // original textures across its join, preserving the printed outlines and
     // leaving the separate rules panels unchanged. This runs at preparation.
-    const overlay = document.createElement('canvas');
+    const overlay = rasterCanvas();
     overlay.width = 488;
     overlay.height = 680;
     const o = overlay.getContext('2d')!;
@@ -56,7 +60,7 @@ export function paintModernSplitFrames(
   }
 }
 export function paintModernSplitHeader(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   half: RenderedCardInput,
   images: CanvasImages,
 ) {
@@ -106,7 +110,7 @@ export function paintModernSplitHeader(
   }
 }
 export function paintModernSplitFooter(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   face: RenderedCardInput,
   images: CanvasImages,
 ) {

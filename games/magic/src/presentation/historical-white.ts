@@ -1,7 +1,8 @@
+import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { ManaGlyphTransform } from './symbol-adjustment.js';
 
 export function paintOriginalWhite(
-  c: CanvasRenderingContext2D,
+  c: CanvasContext,
   x: number,
   y: number,
   size: number,

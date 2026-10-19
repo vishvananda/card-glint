@@ -1,3 +1,4 @@
+import { type CanvasRaster, rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
@@ -12,7 +13,7 @@ import {
   adventurePlate,
 } from './adventure-frame.js';
 
-const cache = new Map<string, HTMLCanvasElement>();
+const cache = new Map<string, CanvasRaster>();
 const ids = new WeakMap<ImageBitmap, number>();
 let nextId = 0,
   bytes = 0;
@@ -53,14 +54,14 @@ export function adventureFrameImage(
     return cached;
   }
   const base = required(adventurePlate(face));
-  const canvas = document.createElement('canvas');
+  const canvas = rasterCanvas();
   canvas.width = base.width;
   canvas.height = base.height;
   const c = canvas.getContext('2d')!,
     w = canvas.width,
     h = canvas.height;
   const scratch = () => {
-    const s = document.createElement('canvas');
+    const s = rasterCanvas();
     s.width = w;
     s.height = h;
     return s;

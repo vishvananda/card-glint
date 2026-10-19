@@ -1,3 +1,4 @@
+import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { CanvasImages } from './canvas-assets.js';
 import { futureManaAsset, futureGenericSources } from './future-mana.js';
@@ -75,7 +76,7 @@ async function build(
   profile: readonly [Rgb, Rgb] | undefined,
   backgrounds: ImageBitmap[],
 ) {
-  const canvas = document.createElement('canvas');
+  const canvas = rasterCanvas();
   canvas.width = source.width;
   canvas.height = source.height;
   try {
