@@ -235,7 +235,7 @@ function paint(role, a) {
     if (
       layout.lines.some((l) => {
         const [x, y, w, h] = l.inkBounds;
-        return y < 409 || y + h > 601 || x < 48 || x + w > 449;
+        return Object.keys(a).length > 0 && (y < 399 || y + h > 604 || x < 48 || x + w > 449);
       })
     )
       return false;
