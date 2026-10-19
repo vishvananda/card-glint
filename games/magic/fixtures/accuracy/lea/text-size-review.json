@@ -75,5 +75,176 @@
     "Both exceptions would take nine lines at 22.5px in a 346px-wide medium-face probe. A line-count-only rule also misclassifies other medium printings, so this does not establish a universal replacement rule.",
     "Neither card has an existing individual layout override in the renderer. Reviewed wording/artist corrections are separate from layout.",
     "Do not add per-scan renderer offsets or alter the shared length threshold just to classify these two printings."
-  ]
+  ],
+  "nativeReplay": {
+    "studyHash": "96cb82ebb4d36416c7de294bfac4627eef30de523178ba89fd1bb1374fca6543",
+    "rendererHash": "d8ba9c529a6f96e45038674dcc6d6d2b53251b6631841fafa56b8b35aa6c8ae5",
+    "inputHash": "7880a40c0cd6eb4216929140189da9cc7dfb185f95450da654475e324c2ce510",
+    "normalizationHash": "e38dc8d7f1858c972e400ddf7e32ec5e02c94191408398bbd900bb8cbf253813",
+    "model": "22.5px medium; dense letter-width multiplier 1.0; experimental size and centering policy",
+    "rendered": 295,
+    "normalizationAccepted": 292,
+    "maximumPreparedNativeGrayError": 0.7873992919921875,
+    "outsideRulesRegionChanges": 0,
+    "metric": "Symmetric ink-edge/chamfer text objective, on a 0\u2013100 scale; not the full-card metric.",
+    "cohorts": {
+      "calibration": {
+        "count": 196,
+        "meanGain100": 0.8440166258242433,
+        "declinesOver3": 1
+      },
+      "validation": {
+        "count": 96,
+        "meanGain100": 1.082899877072203,
+        "declinesOver3": 0
+      }
+    },
+    "changed": [
+      {
+        "id": "98fba951-c5bb-497c-9292-ce1b2a1e1247",
+        "name": "Blaze of Glory",
+        "cohort": "validation",
+        "referenceHash": "e3a9a7e6dbdc7c80fd3c637bda6f86bd10d11239ca9585164ca04859098d6ea5",
+        "baselineHash": "0b66d3add4b14945da8f7187bbb677fbbbf40bc66634dd557b3ff4b81759635b",
+        "renderHash": "97fc98f067ba8a3fb8b2f87da94c28cf169113fbea74fbb3d508f3e476db0beb",
+        "gain100": 22.749778693329535
+      },
+      {
+        "id": "f00d33dd-4eb2-4446-9813-1923d8e2d2f3",
+        "name": "Clone",
+        "cohort": "validation",
+        "referenceHash": "7faafe481d77634b1061295f210a6b6f33856439bf7ddea662898d85f61f96a0",
+        "baselineHash": "592a4b20fc91d8fa6d58c244577566fb63333b01e1b5816f6260d39a21d26b79",
+        "renderHash": "86ad2a3f7f51c5ad5ebd3a07fab0e11d4792f5f62a148d46efb4f762393b7c47",
+        "gain100": 28.847773376040976
+      },
+      {
+        "id": "e2b15221-c8b0-4861-9f8b-8a65834ad499",
+        "name": "Gaea's Liege",
+        "cohort": "calibration",
+        "referenceHash": "3193cff9739693394f52f9308a64b58f8b26bc57fb90f1f39ba6c750f07ee1d7",
+        "baselineHash": "b69a4b5134e15ec2c7d414a51f2aa22d6fc6130824352d41b10332033f453bc2",
+        "renderHash": "eb9d6124c05d3b5de75a50f539320fd4de41c62b97a02d0d802c55fdf25545bf",
+        "gain100": 5.0127320099657595
+      },
+      {
+        "id": "62ef2f37-b8ad-47ad-89ca-d6abcb7ff21b",
+        "name": "Illusionary Mask",
+        "cohort": "calibration",
+        "referenceHash": "3f1df6342ef1034e1436b2ca69f65c04e33721443f8c298b2ee6cb8402f98404",
+        "baselineHash": "cfb860f9281dde1b7e587930b16e3325b1009422bac0dd83fc3cf59cc8ec928d",
+        "renderHash": "d2d514922bc1384ce971cd1791cb11465cf0f9bafb92b71aaae881543236a30a",
+        "gain100": 27.677134380892664
+      },
+      {
+        "id": "4250caec-0e37-41be-9ec4-8938deb5f0d0",
+        "name": "Lich",
+        "cohort": "calibration",
+        "referenceHash": "f90114d12dbe4c6e54a9b3bcf5561a40afce1af9729bfd4aa1022b1c85eb9672",
+        "baselineHash": "d7f7dcc08744f2ce39c997ab835b0a4c9461992db6a963a7409c56310e327e2c",
+        "renderHash": "33a42711e925886b91eef31534b9db6783b10d92063ade31469ac5e9b49aa4e8",
+        "gain100": 11.222993991550268
+      },
+      {
+        "id": "4a98ada6-923a-44a5-bdef-ea6a160b481e",
+        "name": "Living Wall",
+        "cohort": "calibration",
+        "referenceHash": "9f1c5b52484a420e870fa91434549bdb8a4705357ea12e087f4c19fae0b7b21a",
+        "baselineHash": "b70c0d638358e866e1660ea8c521e08e68352bb216f6c29c485a27526fd5e1e8",
+        "renderHash": "8ff010eae5f0a2c021216acd19823050e60703a366bc6fe91fb30184b3a8e5db",
+        "gain100": 31.986813800776513
+      },
+      {
+        "id": "61e4f56d-1f4f-49f2-8534-0d09196a3327",
+        "name": "Raging River",
+        "cohort": "calibration",
+        "referenceHash": "dc9f89bd18026732a8e57149b6075737b8a86d4bdc660ecfb6f908ae0d290301",
+        "baselineHash": "70e334f16fe143609eb93833669a0ce0221e971705d7a3629ffbe6678d4cc7e7",
+        "renderHash": "2ba25182a028646cd2bfa070ae13c8650ea501d83b7ae26f5076ee820be23a04",
+        "gain100": 29.954868266981833
+      },
+      {
+        "id": "943baea8-b173-4863-a3ab-dd217d483cd9",
+        "name": "Reverse Damage",
+        "cohort": "validation",
+        "referenceHash": "d68dd71a74b41b5dbab8950d59695620de8f7196403c980c46bdee68d28a2caf",
+        "baselineHash": "f453aa41cfd58425dae7f78bc81159c7e185d5c9e54a47ab86cde400e1b7a857",
+        "renderHash": "91695a3c1e7d533455cbbf5b7a314925072d17e0daae6edfbaa666e2140dca82",
+        "gain100": 21.898455992378985
+      },
+      {
+        "id": "b13bf496-f3c0-4c13-8282-e7abfab6a198",
+        "name": "Sedge Troll",
+        "cohort": "calibration",
+        "referenceHash": "dcd8ab043bdd27eb87ae5d5680fc4a7b0156f57820a6b7c87b8f55f0af4eb826",
+        "baselineHash": "e651aad40c498dea3ec995fad5fa0f64387396cf84265781c4d5fdb4202cb73d",
+        "renderHash": "76bb6046595e62959d8f5ceff14c17ce544120960442aef980c6e3c6bc7a0a37",
+        "gain100": 40.19918197325471
+      },
+      {
+        "id": "35c3a78d-cc79-4187-929a-8aa1d1469990",
+        "name": "Simulacrum",
+        "cohort": "calibration",
+        "referenceHash": "bc1e29cc3df9c773791c7ffba30d6d38302389aabb14c6296e5fe4f7cb786849",
+        "baselineHash": "0838b6820da6d838733c21fa69292a1532fecc8e5516f7218401990c2236dc9c",
+        "renderHash": "c2e6714e572f1dd20afb80f4c0d110a85d3e31442f5fa9f2b4e880b2db3aaa1c",
+        "gain100": -19.80873217052524
+      },
+      {
+        "id": "544a7138-eae8-4ff9-9e17-680bfa717183",
+        "name": "The Hive",
+        "cohort": "validation",
+        "referenceHash": "651f25dfb127c8f82b5ffc151cc8fbfd55723d2f87ef83e645ec2149d063e1de",
+        "baselineHash": "c4a1ff0ea1f77ac093339bbb2962b1f02b1d7972392acab18eaea4eba0d485f0",
+        "renderHash": "fb59fd700e59ff634008a609514c461a5df7b6386cf55a638712659aa52f25f5",
+        "gain100": 12.598976560391261
+      },
+      {
+        "id": "768f3a05-bd06-4a23-b9f2-94f6e618fd9f",
+        "name": "Vesuvan Doppelganger",
+        "cohort": "validation",
+        "referenceHash": "e41b3d3948851f2d6b1e5a3cb4d66d46000e3afe77a9bed85741934abc3f3be8",
+        "baselineHash": "598575e58a664d656c23371c66787b71bfc1f1aa5adb05a6d7d1642b8cb2da2b",
+        "renderHash": "afe7ab23d9cd2c209a7835cf5de49bf1a22bdc8a697480349f01fdac75c2d7bc",
+        "gain100": 4.663889178694736
+      },
+      {
+        "id": "af2a4558-db6e-41b2-aff6-b164d93282a0",
+        "name": "Wall of Brambles",
+        "cohort": "validation",
+        "referenceHash": "eb87a12106e1e4753e52e547216874803f2fc5b5813a1eedec83d46dbc299d1f",
+        "baselineHash": "17da7f8877cea98fc7fd2e3bee6be6dd4bc7e18afebf28c06394f27b4e96970d",
+        "renderHash": "2ec9ba1354b41b76a71bb2ef46530baed8588d0fcb13ea7f7ef45e46e1b4ff66",
+        "gain100": 13.199514398095996
+      },
+      {
+        "id": "96c21429-98d3-416b-be00-6aa9c4c5a006",
+        "name": "Word of Command",
+        "cohort": "calibration",
+        "referenceHash": "596a501e3087888ea48195df6b91746d0b809b8aa8840f11fb96bcc38f4672b0",
+        "baselineHash": "257f5982cf08db4b9873b27e04aef674a0fa9df036030ff69d85bb86f15a6663",
+        "renderHash": "498d27d45fd8df53201ef7071116e033090bfe79af38ddf6bf55d01a6841f0ea",
+        "gain100": 39.182266408655174
+      }
+    ]
+  },
+  "denseWidthRefinement": {
+    "status": "Prepared component comparison only; native 0.98-width replay remains required before promotion.",
+    "count": 12,
+    "selectedDenseWidth": 0.98,
+    "selection": "Calibration names only; reused-development validation reported separately.",
+    "reason": "The 1.0-width trial adds an unwanted line to Simulacrum. The 0.98-width trial improves every dense printing versus its immutable 0.5.3 baseline.",
+    "cohorts": {
+      "calibration": {
+        "count": 8,
+        "meanGain100": 22.980355859070126,
+        "declines": 0
+      },
+      "validation": {
+        "count": 4,
+        "meanGain100": 13.524993679762051,
+        "declines": 0
+      }
+    }
+  }
 }
