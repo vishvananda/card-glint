@@ -14,7 +14,8 @@ const [study, assets, out, renderer] = [studyArg, assetsArg, outputArg, renderer
 const hash = (b) => createHash('sha256').update(b).digest('hex');
 const json = async (p) => JSON.parse(await readFile(p, 'utf8'));
 const decode = async (p) => PNG.sync.read(await readFile(p));
-assert.equal((await json(path.join(renderer, 'package.json'))).version, '0.6.0');
+const rendererVersion = (await json(path.join(renderer, 'package.json'))).version;
+assert.equal(rendererVersion, '0.6.1');
 const ssr = await createServer({
   configFile: false,
   root: renderer,
@@ -35,16 +36,17 @@ try {
     '/games/magic/src/presentation/dual-land-pinline.ts',
   );
   const { PALETTE } = await ssr.ssrLoadModule('/games/magic/src/presentation/abu-dual-pinline.ts');
-  const { retroDualFrame } = await ssr.ssrLoadModule(
+  const { retroLandColors } = await ssr.ssrLoadModule(
     '/games/magic/src/presentation/retro-dual-frame.ts',
   );
+  const { abuLandOutlineColor } = await ssr.ssrLoadModule(
+    '/games/magic/src/presentation/abu-land-palette.ts',
+  );
   const observations = await json(path.join(study, 'observations.json'));
-  const presets = (await json(path.join(assets, 'dual-land-palettes.json'))).palettes;
   const neutral = await decode(path.join(study, 'joint/backprop-plate.png'));
   const mask = await decode(path.join(assets, 'land-border-mask.png'));
   assert.equal(mask.width, neutral.width);
   assert.equal(mask.height, neutral.height);
-  const typeColor = { plains: 'W', island: 'U', swamp: 'B', mountain: 'R', forest: 'G' };
   const rectangles = {
     outer: [28.0301318267, 30.2834008097, 459.9698681733, 646.5047233468],
     art: [47.7890772128, 60.5668016194, 440.670433145, 379.4601889339],
@@ -57,31 +59,15 @@ try {
     { id: 'synthetic-volcanic-island', name: 'Volcanic Island', synthetic: true },
   ];
   for (const row of cards) {
-    const preset =
-      presets[row.name.toLowerCase().replaceAll(' ', '-')] ??
-      (row.synthetic ? { color_a: 'mountain', color_b: 'island' } : undefined);
-    if (!preset) continue; // Basic-land frame treatments are not changed here.
-    const colors = [typeColor[preset.color_a], typeColor[preset.color_b]].sort(
-      (a, b) => 'RGUBW'.indexOf(a) - 'RGUBW'.indexOf(b),
-    );
+    const face = row.synthetic
+      ? { setCode: 'lea', land: true, typeLine: 'Land', frameColors: ['U', 'R'] }
+      : row.face;
+    const semantic = retroLandColors(face);
+    assert([1, 2].includes(semantic.length), 'Missing land palette: ' + row.name);
+    const colors = [...semantic].sort((a, b) => 'RGUBW'.indexOf(a) - 'RGUBW'.indexOf(b));
     assert(colors.every((c) => PALETTE[c]));
-    const plan = retroDualFrame(
-      row.synthetic
-        ? {
-            setCode: 'lea',
-            frameStyle: 'old',
-            layout: 'normal',
-            land: true,
-            typeLine: 'Land',
-            frameColors: ['U', 'R'],
-          }
-        : row.face,
-    );
-    assert(plan, 'Released dual-land frame selection unavailable: ' + row.name);
-    // The released full-frame mask covers this outline with its overlay frame.
-    // This choice differs from the art/rules pinline's RGUBW band order.
-    const outerColor = /\/([wubrg])l\.png$/.exec(plan.overlay)?.[1]?.toUpperCase();
-    assert(outerColor && PALETTE[outerColor], 'Unknown released outer outline color');
+    const outerColor = abuLandOutlineColor(semantic);
+    assert(outerColor && PALETTE[outerColor], 'Unknown printed outer outline color');
     const input = path.join(study, 'land-plates', row.id + '.png');
     const bytes = await readFile(input),
       image = PNG.sync.read(bytes);
@@ -99,7 +85,9 @@ try {
       const inks =
         role === 'outer'
           ? [PALETTE[outerColor], PALETTE[outerColor]]
-          : colors.map((c) => PALETTE[c]);
+          : colors.length === 1
+            ? [PALETTE[colors[0]], PALETTE[colors[0]]]
+            : colors.map((c) => PALETTE[c]);
       const geometry = {
         box: { left, top, right, bottom },
         width: { left: width, right: width, top: width, bottom: width },
@@ -134,38 +122,40 @@ try {
       synthetic: !!row.synthetic,
       colors,
       outerColor,
-      outerSource: plan.overlay,
+      outerRule: 'abuLandOutlineColor',
       sourceSha256: hash(bytes),
       file,
       sha256: hash(output),
     });
   }
   const sources = await Promise.all(
-    ['dual-land-pinline', 'abu-dual-pinline', 'retro-dual-frame'].map(async (name) => ({
-      file: name + '.ts',
-      sha256: hash(
-        await readFile(path.join(renderer, 'games/magic/src/presentation', name + '.ts')),
-      ),
-    })),
+    ['dual-land-pinline', 'abu-dual-pinline', 'retro-dual-frame', 'abu-land-palette'].map(
+      async (name) => ({
+        file: name + '.ts',
+        sha256: hash(
+          await readFile(path.join(renderer, 'games/magic/src/presentation', name + '.ts')),
+        ),
+      }),
+    ),
   );
   await writeFile(
     path.join(out, 'lines.json'),
     JSON.stringify(
       {
         schema: 1,
-        renderer: '0.6.0',
+        renderer: rendererVersion,
         sources,
         rectangles,
         physicalWidths: { art: 3.75, rules: 6.375, outer: 3.75 },
         policy:
-          'Existing 0.6.0 integrated edge/color/color/color/edge painter and RGUBW art/rules band order. The single full-frame outline color follows the actual released retroDualFrame overlay selection, not a fixed charcoal or the first pinline color. Geometry measured from shared supplied masks; alpha unchanged.',
+          'Integrated edge/color/color/color/edge painter and RGUBW art/rules band order. Basics receive their single printed color on all three rings; dual full-frame outlines use the independently reviewed abuLandOutlineColor rule. Geometry measured from shared supplied masks; alpha unchanged.',
         rows,
       },
       null,
       2,
     ) + '\n',
   );
-  console.log('Wrote', rows.length, 'experimental dual-land frames');
+  console.log('Wrote', rows.length, 'experimental land frames');
 } finally {
   await ssr.close();
 }
