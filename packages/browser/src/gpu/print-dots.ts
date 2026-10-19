@@ -3,6 +3,11 @@
 // approximation, not a color-managed press simulation or scan reconstruction.
 export const PRINT_DOTS_GLSL = `
 #ifdef GLINT_HOST_SAMPLING
+#ifndef GLINT_FACE_SIZE_BINDING
+#define GLINT_FACE_SIZE_BINDING
+flat in vec2 facePixelSize;
+#endif
+vec4 glintSampleFace(vec2 uv);
 #define GLINT_PRINT_FACE(uv) glintSampleFace(uv)
 #define GLINT_PRINT_SIZE facePixelSize
 #else

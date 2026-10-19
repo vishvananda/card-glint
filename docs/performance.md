@@ -213,3 +213,47 @@ This adds preparation work only; pointer frames reuse the same bounded cache.
 The pixel-area regression compares against a dense reference and checks source
 edges, alpha, zero intensity and unchanged coarse-screen sampling. It is software
 WebGL validation, not a physical external-monitor or GPU-completion benchmark.
+
+## 0.6 distinct-face rendering
+
+`npm run test:distinct-faces` prepares **400 different original faces**, each
+96×134, then draws them into a 960×1340 target using six static finish kinds,
+including full-card holofoil, cardstock and printing. Eight shared mask shapes
+are used. These are procedural test faces, not a measurement of fetching and
+painting 400 Magic cards. Preparation includes renderer initialization and raster
+painting, while warm draws reuse every face and mask.
+
+The checked software-GPU run compares the 0.6 API implementation before and after
+cache/uniform optimizations. Five warm samples follow two initial draws. CPU
+submission includes synchronous driver stalls; it does **not** measure completed
+GPU work. Separate non-disjoint timer queries measure the full submitted scene.
+
+| Warm measurement                            |    Before |     After |
+| ------------------------------------------- | --------: | --------: |
+| CPU submission, median                      |  166.5 ms |    7.6 ms |
+| CPU submission, slowest of five             |  191.3 ms |    8.7 ms |
+| Completed GPU work, median                  | 4952.3 ms | 1390.6 ms |
+| Printing rebuilds across five frames        |      2000 |         0 |
+| Uniform-location queries across five frames |     50000 |         0 |
+
+The 16 MiB printing cache previously evicted earlier cards in the same working
+set, recreating every entry on the following frame. The new policy protects the
+current and immediately preceding frame's entries. Overflow retains correct
+procedural printing rather than causing cache churn. Old inactive entries become
+eligible for eviction after that short protection interval. The byte limit is
+unchanged. Uniform locations and immutable artwork bounds are cached; per-frame
+camera, pointer and time uniforms are submitted once per used program.
+
+The run retained 21,096,960 bytes in the resident texture cache and 21,401,448 bytes
+in printing/coating maps. This is payload accounting, excluding browser staging,
+WASM memory, driver allocations, program storage and the output buffers. There
+are still 400 material draws in the complete renderer; host-owned texture-array
+paging can batch distinct faces through the new sampling API.
+
+[Baseline evidence](../evidence/distinct-faces-baseline.json) and
+[optimized evidence](../evidence/distinct-faces-performance.json) record the
+full counters. The optional `PERF_GPU=native` probe also selected SwiftShader in
+this environment, so it provides **no physical-device GPU validation**. These
+numbers establish the removal of repeated work, not an expected frame rate on
+an M1, phone or other real GPU. Run the fixture on those devices before making
+hardware performance claims.

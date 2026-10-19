@@ -55,7 +55,7 @@ out vec2 uv;flat out float layer;flat out vec2 facePixelSize;flat out float prev
 flat out vec4 printDotsInfo;flat out float cardstockAmount;
 ${bounds}
 uniform float finishKind;
-void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);uv=p;layer=float(gl_InstanceID);facePixelSize=vec2(64.,64.);previewKind=finishKind;hasMask=1.;aspect=1.;pointer=vec2(.5);printDotsInfo=vec4(0.,5.,.5,0.);cardstockAmount=0.;${assign}gl_Position=vec4((p.x+float(gl_InstanceID))*.5-1.,p.y*2.-1.,0.,1.);}`;
+void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);uv=p;layer=float(gl_InstanceID);facePixelSize=vec2(64.,64.);previewKind=finishKind<0.?float(gl_InstanceID)+1.:finishKind;hasMask=gl_InstanceID==1?0.:1.;aspect=1.;pointer=vec2(.4+float(gl_InstanceID)*.05,.5);printDotsInfo=vec4(0.,5.,.5,0.);cardstockAmount=0.;${assign}gl_Position=vec4((p.x+float(gl_InstanceID))*.5-1.,p.y*2.-1.,0.,1.);}`;
       const fragment = `#version 300 es
 precision highp float;precision highp int;precision highp sampler2DArray;
 in vec2 uv;flat in float layer;out vec4 color;
@@ -140,7 +140,7 @@ void main(){if(any(greaterThan(uv,vec2(1.))))discard;vec3 ink=previewInk(printFa
       gl.uniform1i(gl.getUniformLocation(p, 'faces'), 0);
       gl.uniform1i(gl.getUniformLocation(p, 'masks'), 1);
       gl.uniform1i(gl.getUniformLocation(p, 'cardstockMap'), 2);
-      for (const kind of [0, 1, 2, 3, 4, 8, 9]) {
+      for (const kind of [0, 1, 2, 3, 4, 8, 9, -1]) {
         gl.uniform1f(gl.getUniformLocation(p, 'finishKind'), kind);
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArraysInstanced(gl.TRIANGLES, 0, 3, 4);
@@ -170,7 +170,7 @@ void main(){color=vec4(animatedSurface(uv,vec3(0.,0.,1.)),1.);}`,
     for (const t of textures) gl.deleteTexture(t);
     return { runs, renderer: gl.getParameter(gl.RENDERER) };
   });
-  assert.equal(result.runs.length, 14);
+  assert.equal(result.runs.length, 16);
   for (const r of result.runs) {
     assert.equal(r.error, 0);
     assert.equal(
@@ -181,10 +181,16 @@ void main(){color=vec4(animatedSurface(uv,vec3(0.,0.,1.)),1.);}`,
     for (const s of r.samples) assert.equal(s[3], 255);
   }
   assert.deepEqual(
-    result.runs.slice(0, 7),
-    result.runs.slice(7),
+    result.runs.slice(0, 8),
+    result.runs.slice(8),
     'Pair and array windows retain the same finish pixels',
   );
+  for (let i = 0; i < 4; i++)
+    assert.deepEqual(
+      result.runs[7].samples[i],
+      result.runs.find((r) => r.kind === i + 1).samples[i],
+      'Mixed finish instances preserve independent kinds',
+    );
   console.log(JSON.stringify(result));
 } finally {
   await browser?.close();

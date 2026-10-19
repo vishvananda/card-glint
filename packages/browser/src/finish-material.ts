@@ -10,7 +10,7 @@ import type { FinishMap } from './finish-printing.js';
 import { prepareFinishCoverage } from './finish-coverage.js';
 import { initializeRenderer } from './renderer.js';
 import { layersOf, paintCoverage } from './raster.js';
-import { coverageMap, type CoverageMap } from './canvas-mask.js';
+import type { CoverageMap } from './canvas-mask.js';
 
 const copyFragment = `#version 300 es
 precision highp float;
@@ -73,7 +73,7 @@ export class FinishResources {
     map: WebGLTexture,
     width: number,
     height: number,
-    target: HTMLCanvasElement,
+    target?: HTMLCanvasElement,
     coverage?: Texture,
   ) {
     if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
@@ -100,6 +100,7 @@ export class FinishResources {
     gl.bindTexture(gl.TEXTURE_2D, coverage?.texture ?? map);
     gl.uniform1i(gl.getUniformLocation(copy, 'coverage'), 1);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
+    if (!target) return;
     if (target.width !== width || target.height !== height) {
       target.width = width;
       target.height = height;
@@ -171,11 +172,12 @@ export class FinishResources {
       this.documentControllers.delete(controller);
     }
   }
-  async documentMask(
+  private prepareDocumentMask<T>(
     document: CardDocument,
     host: RasterHost,
     signal: AbortSignal,
-  ): Promise<HTMLCanvasElement> {
+    snapshot: (mask: Texture, coverage?: Texture) => T,
+  ): Promise<T> {
     return this.documentResource(signal, async (signal) => {
       signal.throwIfAborted();
       if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');
@@ -208,20 +210,7 @@ export class FinishResources {
           );
         }
         signal.throwIfAborted();
-        const result = window.document.createElement('canvas');
-        try {
-          this.draw(
-            mask.value.texture,
-            mask.value.width,
-            mask.value.height,
-            result,
-            coverage?.value,
-          );
-          return result;
-        } catch (error) {
-          result.width = result.height = 0;
-          throw error;
-        }
+        return snapshot(mask.value, coverage?.value);
       } finally {
         coverage?.release();
         mask?.release();
@@ -229,19 +218,40 @@ export class FinishResources {
       }
     });
   }
-  /** Upload data directly into linear R8 with UNPACK_ALIGNMENT=1. Preparation only. */
+  async documentMask(
+    document: CardDocument,
+    host: RasterHost,
+    signal: AbortSignal,
+  ): Promise<HTMLCanvasElement> {
+    return this.prepareDocumentMask(document, host, signal, (mask, coverage) => {
+      const result = window.document.createElement('canvas');
+      try {
+        this.draw(mask.texture, mask.width, mask.height, result, coverage);
+        return result;
+      } catch (error) {
+        result.width = result.height = 0;
+        throw error;
+      }
+    });
+  }
+  /** Preparation-only linear R8, bottom row first. No Canvas copy or row flip. */
   async documentMaskData(
     document: CardDocument,
     host: RasterHost,
     signal: AbortSignal,
   ): Promise<CoverageMap> {
-    const mask = await this.documentMask(document, host, signal);
-    try {
+    return this.prepareDocumentMask(document, host, signal, (mask, coverage) => {
+      this.draw(mask.texture, mask.width, mask.height, undefined, coverage);
+      const gl = this.gl,
+        rgba = new Uint8Array(mask.width * mask.height * 4);
+      gl.pixelStorei(gl.PACK_ALIGNMENT, 1);
+      gl.readPixels(0, 0, mask.width, mask.height, gl.RGBA, gl.UNSIGNED_BYTE, rgba);
+      if (this.disposed || gl.isContextLost()) throw Error('Finish resources unavailable');
       signal.throwIfAborted();
-      return coverageMap(mask, 'red');
-    } finally {
-      mask.width = mask.height = 0;
-    }
+      const data = new Uint8Array(mask.width * mask.height);
+      for (let i = 0; i < data.length; i++) data[i] = rgba[i * 4]!;
+      return { width: mask.width, height: mask.height, rowOrder: 'bottom-up', data };
+    });
   }
   caustics(time: number): HTMLCanvasElement {
     if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');

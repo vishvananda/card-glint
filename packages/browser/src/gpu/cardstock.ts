@@ -91,6 +91,12 @@ export class Cardstock {
 }
 
 export const CARDSTOCK_GLSL = `
+#ifdef GLINT_HOST_SAMPLING
+#ifndef GLINT_POINTER_BINDING
+#define GLINT_POINTER_BINDING
+flat in vec2 pointer;
+#endif
+#endif
 uniform sampler2D cardstockMap;
 flat in float cardstockAmount;
 float cardstockResponse(vec2 uv){

@@ -48,6 +48,7 @@ type Entry = {
   face: Texture;
   top?: Texture;
   bytes: number;
+  lastFrame: number;
 };
 
 /** Small context-owned LRU of finished printing. Only homogeneous instance
@@ -58,12 +59,18 @@ export class PrintedInk {
   private framebuffer: WebGLFramebuffer;
   private vao: WebGLVertexArrayObject;
   private entries: Entry[] = [];
+  private frame = 0;
   bytes = 0;
   passes = 0;
   constructor(private gl: WebGL2RenderingContext) {
     this.shader = program(gl, fragment, vertex)!;
     this.framebuffer = gl.createFramebuffer()!;
     this.vao = gl.createVertexArray()!;
+  }
+  /** Protect the active working set. Overflow uses the existing procedural path
+   * instead of evicting and rebuilding the same printing on every frame. */
+  beginFrame() {
+    this.frame++;
   }
   prepare(
     source: Texture,
@@ -82,20 +89,25 @@ export class PrintedInk {
     );
     if (index >= 0) {
       const entry = this.entries.splice(index, 1)[0]!;
+      entry.lastFrame = this.frame;
       this.entries.push(entry);
       return entry;
     }
     const bytes = sizeOf(source) + (overlay ? sizeOf(overlay) : 0);
     if (bytes > limit) return undefined;
     while (this.bytes + bytes > limit) {
-      const old = this.entries.shift()!;
+      const victim = this.entries.findIndex(
+        (e) => this.frame === 0 || e.lastFrame < this.frame - 1,
+      );
+      if (victim < 0) return undefined;
+      const old = this.entries.splice(victim, 1)[0]!;
       this.release(old);
     }
     let face: Texture | undefined, top: Texture | undefined;
     try {
       face = this.paint(source, values, windows, artwork);
       if (overlay) top = this.paint(overlay, values, windows, artwork);
-      const entry = { source, overlay, settings, face, top, bytes };
+      const entry = { source, overlay, settings, face, top, bytes, lastFrame: this.frame };
       this.entries.push(entry);
       this.bytes += bytes;
       return entry;

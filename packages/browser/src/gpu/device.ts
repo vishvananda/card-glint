@@ -14,7 +14,7 @@ import { surfaceSeed } from '../deformation.js';
 import { Caustics } from './caustics.js';
 import { Cardstock } from './cardstock.js';
 import { PrintedInk } from './printed-ink.js';
-import { DEFAULT_PRINT_DOTS, printDotValues } from '../print-settings.js';
+import { DEFAULT_PRINT_DOTS, printDotValues, printArtBounds } from '../print-settings.js';
 const kinds = {
   regular: 0,
   etched: 1,
@@ -55,6 +55,9 @@ export class Device {
   private caustics: Caustics;
   private cardstock: Cardstock;
   private printedInk: PrintedInk;
+  private uniforms = new WeakMap<WebGLProgram, Map<string, WebGLUniformLocation | null>>();
+  private frameUniforms = new Map<WebGLProgram, Frame>();
+  private bounds = new WeakMap<FaceRecipe, Float32Array>();
   draws = 0;
   constructor(readonly canvas: HTMLCanvasElement) {
     const gl = canvas.getContext('webgl2', {
@@ -125,6 +128,8 @@ export class Device {
   }
   begin(frame: Frame) {
     this.motion.begin();
+    this.printedInk.beginFrame();
+    this.frameUniforms.clear();
     const gl = this.gl;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     gl.viewport(0, 0, this.canvas.width, this.canvas.height);
@@ -136,6 +141,12 @@ export class Device {
     gl.clearColor(...(frame.clear ?? [0, 0, 0, 0]));
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     this.draws = 0;
+  }
+  private uniform(shader: WebGLProgram, name: string) {
+    let uniforms = this.uniforms.get(shader);
+    if (!uniforms) this.uniforms.set(shader, (uniforms = new Map()));
+    if (!uniforms.has(name)) uniforms.set(name, this.gl.getUniformLocation(shader, name));
+    return uniforms.get(name)!;
   }
   private bind(shader: WebGLProgram, frame: Frame, list: readonly Instance[], printed = false) {
     const gl = this.gl;
@@ -171,11 +182,13 @@ export class Device {
       gl.bufferData(gl.ARRAY_BUFFER, length * 4, gl.DYNAMIC_DRAW);
     }
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, values, 0, length);
-    gl.uniformMatrix4fv(
-      gl.getUniformLocation(shader, 'viewProjection'),
-      false,
-      frame.viewProjection,
-    );
+    if (this.frameUniforms.get(shader) !== frame) {
+      gl.uniformMatrix4fv(this.uniform(shader, 'viewProjection'), false, frame.viewProjection);
+      const pointer = frame.pointer ?? [0.5, 0.5];
+      gl.uniform2f(this.uniform(shader, 'pointer'), pointer[0], 1 - pointer[1]);
+      gl.uniform1f(this.uniform(shader, 'surfaceTime'), frame.time ?? 0);
+      this.frameUniforms.set(shader, frame);
+    }
   }
   draw(material: Material, frame: Frame, list: readonly Instance[]) {
     const gl = this.gl;
@@ -191,11 +204,12 @@ export class Device {
     const homogeneous =
       profile &&
       settings[0]! > 0 &&
-      list.every(
-        (item) =>
-          printDotValues(item.printDots).every((value, i) => value === settings[i]) &&
-          (item.printDots?.artwork !== false) === (profile.artwork !== false),
-      );
+      (list.length === 1 ||
+        list.every(
+          (item) =>
+            printDotValues(item.printDots).every((value, i) => value === settings[i]) &&
+            (item.printDots?.artwork !== false) === (profile.artwork !== false),
+        ));
     const printed = homogeneous
       ? this.printedInk.prepare(
           material.face,
@@ -233,36 +247,33 @@ export class Device {
     bindings.forEach(([name, t], i) => {
       gl.activeTexture(gl.TEXTURE0 + i);
       gl.bindTexture(gl.TEXTURE_2D, t);
-      gl.uniform1i(gl.getUniformLocation(p, name), i);
+      gl.uniform1i(this.uniform(p, name), i);
     });
-    const windows = material.recipe.artWindows.map(([x, y, w, h]) => [x, 1 - y - h, x + w, 1 - y]);
-    const bounds = new Float32Array(32);
-    windows.forEach((rect, i) => bounds.set(rect, i * 4));
-    gl.uniform4fv(gl.getUniformLocation(p, 'artBounds[0]'), bounds);
-    gl.uniform4fv(gl.getUniformLocation(p, 'printArtBounds[0]'), bounds);
-    gl.uniform1f(gl.getUniformLocation(p, 'finishBase'), material.recipe.finishCoverageBase ?? 1);
+    let bounds = this.bounds.get(material.recipe);
+    if (!bounds)
+      this.bounds.set(material.recipe, (bounds = printArtBounds(material.recipe.artWindows)));
+    gl.uniform4fv(this.uniform(p, 'artBounds[0]'), bounds);
+    gl.uniform4fv(this.uniform(p, 'printArtBounds[0]'), bounds);
+    gl.uniform1f(this.uniform(p, 'finishBase'), material.recipe.finishCoverageBase ?? 1);
     const hologram = material.recipe.hologram,
       [hx, hy, hw, hh] = hologram?.rect ?? [0, 0, 1, 1];
-    gl.uniform4f(gl.getUniformLocation(p, 'hologramRect'), hx, 1 - hy - hh, hw, hh);
+    gl.uniform4f(this.uniform(p, 'hologramRect'), hx, 1 - hy - hh, hw, hh);
     gl.uniform2f(
-      gl.getUniformLocation(p, 'hologramMaterial'),
+      this.uniform(p, 'hologramMaterial'),
       hologram?.strength ?? 0,
       (hologram?.seed ?? 0) / 0xffffffff,
     );
     const overlayFoil = material.recipe.overlayFoil;
     gl.uniform2f(
-      gl.getUniformLocation(p, 'overlayFoil'),
+      this.uniform(p, 'overlayFoil'),
       overlayFoil ? { gold: 1, silver: 3, prismatic: 2 }[overlayFoil.tone] : 0,
       overlayFoil?.strength ?? 0,
     );
-    gl.uniform1f(gl.getUniformLocation(p, 'cornerRadius'), material.recipe.cornerRadius);
-    gl.uniform1f(gl.getUniformLocation(p, 'aspect'), material.face.height / material.face.width);
-    const pointer = frame.pointer ?? [0.5, 0.5];
-    gl.uniform2f(gl.getUniformLocation(p, 'pointer'), pointer[0], 1 - pointer[1]);
-    gl.uniform1f(gl.getUniformLocation(p, 'hasMask'), 1);
-    gl.uniform1f(gl.getUniformLocation(p, 'satinCompact'), 1);
-    gl.uniform1f(gl.getUniformLocation(p, 'satinHoverGain'), 0);
-    gl.uniform1f(gl.getUniformLocation(p, 'surfaceTime'), frame.time ?? 0);
+    gl.uniform1f(this.uniform(p, 'cornerRadius'), material.recipe.cornerRadius);
+    gl.uniform1f(this.uniform(p, 'aspect'), material.face.height / material.face.width);
+    gl.uniform1f(this.uniform(p, 'hasMask'), 1);
+    gl.uniform1f(this.uniform(p, 'satinCompact'), 1);
+    gl.uniform1f(this.uniform(p, 'satinHoverGain'), 0);
     gl.drawArraysInstanced(gl.TRIANGLES, 0, 6, list.length);
     this.draws++;
   }
@@ -280,7 +291,7 @@ export class Device {
     gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, image.texture);
-    gl.uniform1i(gl.getUniformLocation(p, 'face'), 0);
+    gl.uniform1i(this.uniform(p, 'face'), 0);
     gl.drawArraysInstanced(gl.TRIANGLES, 0, 6, 1);
     this.draws++;
     gl.depthMask(true);

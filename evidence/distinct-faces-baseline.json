@@ -1,0 +1,88 @@
+{
+  "scope": "400 distinct original Canvas faces, 96x134, 960x1340 target, six static finishes including full holofoil, shared eight mask geometries, cardstock and printing. CPU submission is not completed GPU time. SwiftShader is software GPU evidence.",
+  "count": 400,
+  "sourceSize": [
+    96,
+    134
+  ],
+  "targetSize": [
+    960,
+    1340
+  ],
+  "preparedMs": 523.2999999523163,
+  "firstSubmissionMs": 878.7999999523163,
+  "warmCpuMedianMs": 166.5,
+  "warmCpuP95Ms": 191.30000007152557,
+  "gpuTimerAvailable": true,
+  "completedGpuMedianMs": 4952.327008,
+  "before": {
+    "compositions": 400,
+    "maskBuilds": 8,
+    "edgeBuilds": 0,
+    "uploads": 408,
+    "readbacks": 0,
+    "draws": 400,
+    "visible": 400,
+    "pending": 1,
+    "gpu": {
+      "hits": 2408,
+      "misses": 832,
+      "admissions": 416,
+      "evictions": 0,
+      "bytes": 21096960,
+      "peakBytes": 21096960,
+      "rejected": 0
+    },
+    "cpu": {
+      "hits": 0,
+      "misses": 0,
+      "admissions": 0,
+      "evictions": 0,
+      "bytes": 0,
+      "peakBytes": 0,
+      "rejected": 0
+    },
+    "scratchBytes": 0,
+    "cpuFrameMs": 185.5,
+    "surfacePasses": 801,
+    "surfaceBytes": 21401448
+  },
+  "after": {
+    "compositions": 400,
+    "maskBuilds": 8,
+    "edgeBuilds": 0,
+    "uploads": 408,
+    "readbacks": 0,
+    "draws": 400,
+    "visible": 400,
+    "pending": 0,
+    "gpu": {
+      "hits": 6408,
+      "misses": 832,
+      "admissions": 416,
+      "evictions": 0,
+      "bytes": 21096960,
+      "peakBytes": 21096960,
+      "rejected": 0
+    },
+    "cpu": {
+      "hits": 0,
+      "misses": 0,
+      "admissions": 0,
+      "evictions": 0,
+      "bytes": 0,
+      "peakBytes": 0,
+      "rejected": 0
+    },
+    "scratchBytes": 0,
+    "cpuFrameMs": 165.09999990463257,
+    "surfacePasses": 2801,
+    "surfaceBytes": 21401448
+  },
+  "warmGlCalls": {
+    "getUniformLocation": 50000,
+    "drawArrays": 2000,
+    "generateMipmap": 2000
+  },
+  "glError": 0
+}
