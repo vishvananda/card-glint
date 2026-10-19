@@ -102,7 +102,12 @@ try {
     const modern = { ...face, setCode: 'm21', frameStyle: 'modern' };
     assert.equal(calibratedPrintingStock(modern), '#16130e');
     assert.equal(calibratedPrintingStock({ ...modern, layout: 'token' }), undefined);
-    if (color === 'G') assert.equal(colorCalibrationCoverage(face).frame, false);
+    if (color === 'G')
+      assert.equal(
+        colorCalibrationCoverage(face).frame,
+        true,
+        'Full Beta audit adds green pigment',
+      );
   }
   // A land's procedural paper is deliberately uncalibrated. That must not
   // suppress the independently measured border stock on the same component
