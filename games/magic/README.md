@@ -371,6 +371,10 @@ their own treatments. See the [Prepared comparison and limitations](prepare-layo
 
 ## Contribute a frame or fix
 
+Visit [CardForge Lab](https://cardforge.fyi/lab/) to browse set calibration status,
+compare original printings with rebuilt cards, suggest corrections, and get
+agent instructions for helping calibrate a set.
+
 For set-wide work, follow [Calibrate a set](calibrating-a-set.md): input review,
 scan normalization, fitting, one-file profiles and PR evidence.
 
