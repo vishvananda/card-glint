@@ -8,6 +8,30 @@ import {
 } from '../games/magic/tools/accuracy/mana-study-validation.mjs';
 const root = 'games/magic/fixtures/accuracy/abu-mana-recheck/';
 const review = JSON.parse(await readFile(root + 'study-review.json'));
+const scope = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/abu-wording-source-scope.json'),
+);
+const annotationSource = await readFile(scope.file, 'utf8');
+assert.equal(hash(annotationSource), scope.after);
+assert.equal(
+  hash(
+    annotationSource
+      .replace(
+        "import alphaCosts from '../../fixtures/accuracy/lea/annotations-original-cost.json' with { type: 'json' };\n",
+        '',
+      )
+      .replace(
+        "reviews.set('lea', [alphaTypes, alpha, alphaCosts]);",
+        "reviews.set('lea', [alphaTypes, alpha]);",
+      ),
+  ),
+  scope.previousAfter,
+  'The only adapter extension is the exact Alpha cost source',
+);
+assert.equal(
+  hash(await readFile('games/magic/fixtures/accuracy/lea/annotations-original-cost.json')),
+  scope.alphaCostsHash,
+);
 const archives = new Map();
 for (const [file, expected] of Object.entries(review.files)) {
   const bytes = await readFile(root + file),
