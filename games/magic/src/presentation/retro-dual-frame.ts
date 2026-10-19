@@ -45,7 +45,7 @@ export function retroLandColors(face: RenderedCardInput): string[] {
         ['Forest', 'G'],
       ]
         .filter(([type]) =>
-          new RegExp(`\b${type}\b`).test(face.canonicalTypeLine ?? face.typeLine ?? ''),
+          new RegExp(String.raw`\b${type}\b`).test(face.canonicalTypeLine ?? face.typeLine ?? ''),
         )
         .map(([, color]) => color!);
 }

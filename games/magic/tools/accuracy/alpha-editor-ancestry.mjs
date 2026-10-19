@@ -4,7 +4,7 @@ import { hash } from './common.mjs';
 
 // Historical receipt reconstruction, not reuse of scores for corrected lands.
 export const ALPHA_EDITOR_PROOF_HASH =
-  '6f071061f9da318f4cb47ca4b16af689ca71c97d07114a6cb3b32c627df014d0';
+  '888d0d68ab4d5a0ec32dce1ae7159004e8226726d8cc53ab7408a118b882981f';
 let checked;
 export function alphaEditorAncestry() {
   return (checked ??= (async () => {

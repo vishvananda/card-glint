@@ -269,7 +269,12 @@ async function verify() {
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
   }
+  const debug = (message) => {
+    if (process.env.MAGIC_NATIVE_DEBUG) console.error('[native ancestry]', message);
+  };
+  debug('checking source ancestry');
   const referenceRoot = await realpath(await nativeReferenceRoot());
+  debug('reference materialized');
   const currentRoot = await realpath(root);
   const nativeDirectory = 'games/magic/src';
   const delivery = await deliveryProof();
@@ -295,8 +300,10 @@ async function verify() {
         ...mana.newModules,
       ].includes(`${nativeDirectory}/${file}`),
   );
+  debug('source inventory ready');
   const referenceFiles = await sourceFiles(path.join(referenceRoot, nativeDirectory));
   for (const relative of new Set([...currentFiles, ...referenceFiles])) {
+    debug('source ' + relative);
     const file = `${nativeDirectory}/${relative}`;
     const change = nativeHostSources.files[file];
     const after = currentFiles.includes(relative)
@@ -365,15 +372,19 @@ async function verify() {
   });
   let browser;
   try {
+    debug('starting native browser');
     await server.listen();
     browser = await chromium.launch();
     const page = await browser.newPage({ deviceScaleFactor: 1, locale: 'en-US' });
+    if (process.env.MAGIC_NATIVE_DEBUG)
+      page.on('console', (message) => console.error('[native browser]', message.text()));
     page.on('pageerror', (error) => faults.push(String(error)));
     await page.route('https://**/*', async (route) => {
       faults.push('Unexpected external dependency: ' + route.request().url());
       await route.abort();
     });
     await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/__native_host`);
+    debug('importing native probe modules');
     const result = await page.evaluate(
       async ({ referenceRoot, specimens }) => {
         const prefix = '/games/magic/src/presentation/';
@@ -386,8 +397,11 @@ async function verify() {
           wording: await import(/* @vite-ignore */ base + 'wording.ts'),
           mana: await import(/* @vite-ignore */ base + 'mana-assets.ts'),
         });
+        console.debug('Loading reference modules');
         const before = await load(beforePrefix);
+        console.debug('Reference modules ready');
         const after = await load(prefix);
+        console.debug('Candidate modules ready');
         const visibility = await import('/games/magic/src/presentation/rules-visibility.ts');
         const { paintTextInk } = await import('/games/magic/src/presentation/text-ink.ts');
         const check = (yes, message) => {
