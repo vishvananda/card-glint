@@ -45,7 +45,7 @@ try {
       reference: { sha256: row.referenceHash },
     };
     const adapted = presentation(entry);
-    for (const field of row.reviewedFields) assert.equal(adapted.face[field], row[field]);
+    for (const field of row.reviewedFields ?? []) assert.equal(adapted.face[field], row[field]);
     if (row.artist) {
       assert.equal(
         resolvePrintingArtist(id, 'Provider artist', { referenceSha256: row.referenceHash }).artist,
@@ -55,16 +55,27 @@ try {
         resolvePrintingArtist(id, 'Provider artist', { referenceSha256: '0'.repeat(64) }).artist,
         'Provider artist',
       );
-    } else {
+    } else if (row.power !== undefined) {
       const input = {
         oracle: { ...oracle, power: '2', toughness: '1' },
         original: { ...original, power: '2', toughness: '1' },
       };
       const resolved = resolvePrintingWording(id, input, { referenceSha256: row.referenceHash });
-      assert.equal(resolved.wordings.original.power, '1');
-      assert.equal(resolved.wordings.original.toughness, '2');
+      assert.equal(resolved.wordings.original.power, row.power);
+      assert.equal(resolved.wordings.original.toughness, row.toughness);
       assert.equal(resolved.wordings.oracle.power, '2');
       assert.equal(resolved.wordings.oracle.toughness, '1');
+    } else {
+      const resolved = resolvePrintingWording(id, input, { referenceSha256: row.referenceHash });
+      assert.equal(
+        adapted.face.rulesText,
+        [row.rulesText, row.flavorText].filter(Boolean).join('\n'),
+      );
+      assert.equal(
+        resolved.wordings.original.rulesText,
+        [row.rulesText, row.flavorText].filter(Boolean).join('\n'),
+      );
+      assert.equal(resolved.wordings.oracle.rulesText, 'Oracle rules.\nOracle flavor.');
     }
     assert.throws(() => presentation({ ...entry, reference: { sha256: '0'.repeat(64) } }), /stale/);
   }
