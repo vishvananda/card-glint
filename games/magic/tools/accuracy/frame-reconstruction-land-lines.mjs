@@ -35,6 +35,9 @@ try {
     '/games/magic/src/presentation/dual-land-pinline.ts',
   );
   const { PALETTE } = await ssr.ssrLoadModule('/games/magic/src/presentation/abu-dual-pinline.ts');
+  const { retroDualFrame } = await ssr.ssrLoadModule(
+    '/games/magic/src/presentation/retro-dual-frame.ts',
+  );
   const observations = await json(path.join(study, 'observations.json'));
   const presets = (await json(path.join(assets, 'dual-land-palettes.json'))).palettes;
   const neutral = await decode(path.join(study, 'joint/backprop-plate.png'));
@@ -47,7 +50,6 @@ try {
     art: [47.7890772128, 60.5668016194, 440.670433145, 379.4601889339],
     rules: [61.5743879473, 404.2375168691, 427.3446327684, 600.1619433198],
   };
-  const ink = [0.18, 0.18, 0.17];
   await mkdir(out, { recursive: true });
   const rows = [];
   const cards = [
@@ -63,6 +65,23 @@ try {
       (a, b) => 'RGUBW'.indexOf(a) - 'RGUBW'.indexOf(b),
     );
     assert(colors.every((c) => PALETTE[c]));
+    const plan = retroDualFrame(
+      row.synthetic
+        ? {
+            setCode: 'lea',
+            frameStyle: 'old',
+            layout: 'normal',
+            land: true,
+            typeLine: 'Land',
+            frameColors: ['U', 'R'],
+          }
+        : row.face,
+    );
+    assert(plan, 'Released dual-land frame selection unavailable: ' + row.name);
+    // The released full-frame mask covers this outline with its overlay frame.
+    // This choice differs from the art/rules pinline's RGUBW band order.
+    const outerColor = /\/([wubrg])l\.png$/.exec(plan.overlay)?.[1]?.toUpperCase();
+    assert(outerColor && PALETTE[outerColor], 'Unknown released outer outline color');
     const input = path.join(study, 'land-plates', row.id + '.png');
     const bytes = await readFile(input),
       image = PNG.sync.read(bytes);
@@ -77,7 +96,10 @@ try {
     for (const [role, rect] of Object.entries(rectangles)) {
       const [left, top, right, bottom] = rect,
         width = role === 'rules' ? 6.375 : role === 'art' ? 3.75 : 3.75;
-      const inks = role === 'outer' ? [ink, ink] : colors.map((c) => PALETTE[c]);
+      const inks =
+        role === 'outer'
+          ? [PALETTE[outerColor], PALETTE[outerColor]]
+          : colors.map((c) => PALETTE[c]);
       const geometry = {
         box: { left, top, right, bottom },
         width: { left: width, right: width, top: width, bottom: width },
@@ -111,13 +133,15 @@ try {
       name: row.name,
       synthetic: !!row.synthetic,
       colors,
+      outerColor,
+      outerSource: plan.overlay,
       sourceSha256: hash(bytes),
       file,
       sha256: hash(output),
     });
   }
   const sources = await Promise.all(
-    ['dual-land-pinline', 'abu-dual-pinline'].map(async (name) => ({
+    ['dual-land-pinline', 'abu-dual-pinline', 'retro-dual-frame'].map(async (name) => ({
       file: name + '.ts',
       sha256: hash(
         await readFile(path.join(renderer, 'games/magic/src/presentation', name + '.ts')),
@@ -134,7 +158,7 @@ try {
         rectangles,
         physicalWidths: { art: 3.75, rules: 6.375, outer: 3.75 },
         policy:
-          'Existing 0.6.0 integrated edge/color/color/color/edge painter and RGUBW source color order. One charcoal outer outline; three equal color bands on art and rules boxes. Geometry measured from shared supplied masks; alpha unchanged.',
+          'Existing 0.6.0 integrated edge/color/color/color/edge painter and RGUBW art/rules band order. The single full-frame outline color follows the actual released retroDualFrame overlay selection, not a fixed charcoal or the first pinline color. Geometry measured from shared supplied masks; alpha unchanged.',
         rows,
       },
       null,
