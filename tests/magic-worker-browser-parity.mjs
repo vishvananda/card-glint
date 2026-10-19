@@ -1,3 +1,4 @@
+import { preAlphaEditorSource } from '../games/magic/tools/accuracy/alpha-editor-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -50,7 +51,10 @@ const server = await createServer({
             JSON.stringify(await readFile(path.join(root, file.slice(0, -4)), 'utf8')) +
             ';'
           );
-        const code = baseline(file, await readFile(path.join(root, file))).toString();
+        const code = baseline(
+          file,
+          await preAlphaEditorSource(file, await readFile(path.join(root, file))),
+        ).toString();
         return file.endsWith('.ts')
           ? (await transformWithEsbuild(code, file, { loader: 'ts', target: 'esnext' })).code
           : code;
