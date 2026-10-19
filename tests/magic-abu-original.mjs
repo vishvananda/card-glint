@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { createServer } from './magic-vite.mjs';
+import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
 const server = await createServer({
   configFile: false,
   server: { middlewareMode: true, hmr: false },
@@ -31,6 +32,15 @@ try {
       assert.deepEqual(resolved.wordings.original.manaSymbols, row.manaSymbols, row.name);
       assert.deepEqual(resolved.wordings.oracle.manaSymbols, ['9']);
       assert.deepEqual(input.original.manaSymbols, row.before, 'Do not mutate provider wording');
+      const adapted = presentation({
+        card: { id, name: row.name, set, mana_cost: row.before.map((s) => `{${s}}`).join('') },
+        reference: { sha256: row.referenceHash },
+      });
+      assert.deepEqual(
+        adapted.face.manaSymbols,
+        row.manaSymbols,
+        'Review application uses the same original cost',
+      );
     }
     const tomb = Object.entries(costs).find(([, r]) => r.name === 'Cyclopean Tomb');
     assert.deepEqual(tomb[1].manaSymbols, set === 'lea' ? [] : ['4']);

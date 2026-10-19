@@ -3,12 +3,13 @@
   "scope": "Original annotation outputs and stale-scan guards are preserved for all existing ARN/ATQ/DRK rows. LEA/LEB add multiple review sources. This extends input readiness only, not layout certification.",
   "file": "games/magic/tools/accuracy/printed-text-outliers.mjs",
   "before": "aaf666f30ca799bdb97148ca5adbdb1a1b164d32c4782ce82452e0f2afcdfce7",
-  "after": "a22d4da9b37b6c04fa1c075a75251c53237ff484882a8fcbeb332d3411f2cfd6",
+  "after": "c889efd563d1df5b751a4a547ebff29df40cac3c2f6780e6503189a5e42141d2",
   "verifiedAnnotations": 18,
   "beforeSource": "import arabian from '../../fixtures/accuracy/arn/annotations-text-outliers.json' with { type: 'json' };\nimport antiquities from '../../fixtures/accuracy/atq/annotations-text-outliers.json' with { type: 'json' };\nimport dark from '../../fixtures/accuracy/drk/annotations-text-outliers.json' with { type: 'json' };\n\nconst reviews = new Map([arabian, antiquities, dark].map((review) => [review.set, review]));\n\n/** Reviewed source errors must not be mistaken for layout errors. */\nexport function printedTextOutlierAnnotation(entry) {\n  const row = reviews.get(entry.card.set)?.cards[entry.card.id];\n  if (!row || !entry.reference) return {};\n  if (row.name !== entry.card.name || row.referenceHash !== entry.reference.sha256)\n    throw Error(`Printed text review is stale for ${entry.card.name}`);\n  return row;\n}\n",
   "fixtures": {
     "games/magic/fixtures/accuracy/arn/annotations-text-outliers.json": "4ead595c22df4f3bf74f54eaec169bf73a2028465db2e08d894b826d7b16f56a",
     "games/magic/fixtures/accuracy/atq/annotations-text-outliers.json": "aec9223d91e642c569f0b94f636e5d6c32988bb03716b27a2ae3653f6f665577",
     "games/magic/fixtures/accuracy/drk/annotations-text-outliers.json": "02d1c74e639b60bf9d9e33788d452f5606dfab20a2f3e05a7e0d355ba245be2d"
-  }
+  },
+  "alphaCostEvidence": "games/magic/fixtures/accuracy/abu-mana-recheck/native-review.json"
 }
