@@ -7,6 +7,7 @@ import { reviewedSmallOriginal, reviewedOriginalTextLayout } from './alpha-typog
 
 export interface EarlyTextTierOptions {
   readonly largeMaximum?: number;
+  readonly regularWidthDelta?: number;
   readonly centeredWidth?: number;
   readonly regularDx?: number;
   readonly regularDy?: number;
@@ -156,9 +157,14 @@ export function earlyTextTierLayout(
       );
       if (!shaped.overflow) chosen = shaped;
     }
+    // Predeclared short/long medium-text cohorts validate different widths.
+    // Alpha's longer passages retain their narrower box; Beta also gains here.
+    const regularWidthDelta =
+      options.regularWidthDelta ??
+      (characters < 180 || face.setCode?.toLowerCase() === 'leb' ? 8 : 0);
     const model = options.transferAlphaModel
-      ? (earlyRulesModel(context, face, chosen) ?? chosen)
-      : (alphaRulesLayout(context, face, chosen) ?? chosen);
+      ? (earlyRulesModel(context, face, chosen, regularWidthDelta) ?? chosen)
+      : (alphaRulesLayout(context, face, chosen, regularWidthDelta) ?? chosen);
     const dx = centered ? (options.centeredDx ?? 0) : (options.regularDx ?? 0);
     const dy = centered
       ? (options.centeredDy ?? 0)

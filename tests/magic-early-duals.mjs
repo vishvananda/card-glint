@@ -15,7 +15,7 @@ try {
   const defaults = printingManaAdjustment(beta);
   assert.equal(defaults.dx, -1.5);
   assert.equal(defaults.dy ?? 0, 0, 'Disc height remains unchanged');
-  assert.deepEqual(defaults.glyphs.W, { scale: 1.09, dx: 0, dy: 0 });
+  assert.deepEqual(defaults.glyphs.W, { scale: 1.09, dx: 0, dy: -0.5 });
   assert.equal(defaults.glyphs.B.scale, 1.03);
   assert.equal(defaults.glyphs.G.scale, 1.12);
   const delta = { dx: 0.5, dy: 0.5, numberDy: 0.5, glyphs: { W: { dx: 1, scale: 1.1 } } };
@@ -34,7 +34,6 @@ try {
     'Repeated preparation is stable',
   );
   for (const extra of [
-    { setCode: 'lea' },
     { setCode: '2ed' },
     { setCode: '3ed' },
     { borderColor: 'white' },
@@ -44,6 +43,9 @@ try {
     { wordingMode: 'oracle' },
   ])
     assert.equal(printingManaAdjustment({ ...adjustedFace, ...extra }), delta);
+  const alpha = printingManaAdjustment({ ...adjustedFace, setCode: 'lea' });
+  assert.equal(alpha.dy, 1, 'Alpha combines its audited half-pixel offset with editor delta');
+  assert.equal(alpha.glyphs.W.scale, 1.04 * 1.1);
   assert.deepEqual(
     printingManaAdjustment({ ...adjustedFace, frameStyle: 'modern' }),
     { ...delta, scaleX: 1.01, scaleY: 1.01, numberScale: 0.98, numberDx: -0.25 },
@@ -68,7 +70,16 @@ try {
     const face =
       study.set === '8ed' ? eighth : { name: 'Probe', setCode: study.set, wordingMode: 'original' };
     const actual = printingManaAdjustment(face);
-    if (study.set === 'm21') {
+    const abu = ['lea', 'leb'].includes(study.set);
+    if (abu) {
+      const review = JSON.parse(
+        await readFile('games/magic/fixtures/accuracy/abu-054/review.json'),
+      );
+      assert.ok(review.sets[study.set].manaDecision);
+      assert.equal(review.status, 'validated');
+      // The frozen historical study is not retroactively rewritten when a
+      // later original-wording, glyph-aware audit supersedes its defaults.
+    } else if (study.set === 'm21') {
       // The rejected original geometry-only fit is superseded by the separately
       // validated numeral-source and shadow study, not adopted retroactively.
       assert.equal(study.adopt, false);
@@ -79,7 +90,7 @@ try {
     assert.equal(new Set(study.rows.map((r) => r.id)).size, 72);
     assert.equal(study.validation.count, 48);
     assert.ok(study.rows.every((r) => /^[a-f0-9]{64}$/.test(r.referenceHash)));
-    if (study.adopt) {
+    if (study.adopt && !abu) {
       assert.deepEqual(study.flags, []);
       assert.ok(
         study.validation.after - study.validation.before >= manaStudy.policy.manaMeanMinimumGain,
@@ -161,7 +172,13 @@ try {
       );
       assert.equal(original.face.typeLine, dwarf ? 'Summon Dwarves' : 'Land');
       assert.equal(original.face.rulesText, 'Original rules.');
-      assert.deepEqual(original.reviewedFields, ['typeLine']);
+      assert.deepEqual(
+        original.reviewedFields.filter(
+          (field) => !['artist', 'power', 'toughness'].includes(field),
+        ),
+        ['typeLine'],
+        'Independent artist/stat reviews do not remove the original type correction',
+      );
       assert.throws(() => presentation({ ...entry, reference: { sha256: 'stale' } }), /stale/);
       const oracle = presentation(entry, {
         [id]: { typeLine: card.type_line, rulesText: card.oracle_text },

@@ -45,7 +45,7 @@ try {
       reference: { sha256: row.referenceHash },
     };
     const adapted = presentation(entry);
-    for (const field of row.reviewedFields ?? []) assert.equal(adapted.face[field], row[field]);
+    for (const field of row.reviewedFields ?? []) assert.deepEqual(adapted.face[field], row[field]);
     if (row.artist) {
       assert.equal(
         resolvePrintingArtist(id, 'Provider artist', { referenceSha256: row.referenceHash }).artist,

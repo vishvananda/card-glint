@@ -256,7 +256,7 @@
         "rejected": 0
       },
       "scratchBytes": 1225728,
-      "cpuFrameMs": 1,
+      "cpuFrameMs": 0.8999999761581421,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     },
@@ -288,7 +288,7 @@
         "rejected": 0
       },
       "scratchBytes": 1225728,
-      "cpuFrameMs": 0.5999999046325684,
+      "cpuFrameMs": 0.6000000238418579,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     }
@@ -352,7 +352,7 @@
         "rejected": 0
       },
       "scratchBytes": 0,
-      "cpuFrameMs": 0.3999999761581421,
+      "cpuFrameMs": 0.5,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     },
@@ -384,7 +384,7 @@
         "rejected": 0
       },
       "scratchBytes": 0,
-      "cpuFrameMs": 0.3999999761581421,
+      "cpuFrameMs": 0.5,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     },
@@ -420,7 +420,7 @@
         "rejected": 0
       },
       "scratchBytes": 0,
-      "cpuFrameMs": 1.2000000476837158,
+      "cpuFrameMs": 0.8999999761581421,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     }
@@ -566,7 +566,7 @@
         "rejected": 0
       },
       "scratchBytes": 1225728,
-      "cpuFrameMs": 0.5999999046325684,
+      "cpuFrameMs": 0.6000000238418579,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     },
@@ -598,21 +598,21 @@
         "rejected": 0
       },
       "scratchBytes": 1225728,
-      "cpuFrameMs": 4.399999976158142,
+      "cpuFrameMs": 2.6999999284744263,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     },
     "submissionMs": [
-      3.600000023841858,
-      4,
-      3.3000000715255737,
-      3.1999999284744263,
-      4.200000047683716,
-      4,
-      4.399999976158142,
-      3.700000047683716,
-      3.6999999284744263,
-      4.600000023841858
+      2.899999976158142,
+      3.399999976158142,
+      2.600000023841858,
+      2.399999976158142,
+      2.5,
+      2.600000023841858,
+      2.799999952316284,
+      2.8000000715255737,
+      2.5,
+      2.6999999284744263
     ]
   },
   "context": {
@@ -645,7 +645,7 @@
         "rejected": 0
       },
       "scratchBytes": 1225728,
-      "cpuFrameMs": 8.200000047683716,
+      "cpuFrameMs": 7.100000023841858,
       "surfacePasses": 0,
       "surfaceBytes": 704512
     },
@@ -660,13 +660,13 @@
     ],
     "paths": {
       "rust": {
-        "contextAndProgramSetupMs": 6.900000095367432,
-        "coldMaskCompletedMedianMs": 27.399999976158142,
+        "contextAndProgramSetupMs": 4.5,
+        "coldMaskCompletedMedianMs": 17.399999976158142,
         "samples": 5,
         "hot": {
           "requests": 10000,
-          "lookupAndLeaseMs": 24.800000071525574,
-          "microsecondsPerHit": 2.480000007152557,
+          "lookupAndLeaseMs": 14.800000071525574,
+          "microsecondsPerHit": 1.4800000071525574,
           "edgeBuilds": 0,
           "uploads": 0,
           "evictions": 0,
@@ -676,7 +676,7 @@
         },
         "fitted": {
           "requests": 800,
-          "lookupAndLeaseMs": 1.7999999523162842,
+          "lookupAndLeaseMs": 3.200000047683716,
           "edgeBuilds": 0,
           "uploads": 0,
           "evictions": 0,
@@ -687,7 +687,7 @@
         "pressure": {
           "requests": 24,
           "budgetBytes": 698368,
-          "elapsedMs": 753.1999999284744,
+          "elapsedMs": 477.89999997615814,
           "edges": 24,
           "uploads": 24,
           "readbacks": 24,
@@ -703,13 +703,13 @@
         "scratchBytes": 0
       },
       "gpu": {
-        "contextAndProgramSetupMs": 9.299999952316284,
-        "coldMaskCompletedMedianMs": 130.60000002384186,
+        "contextAndProgramSetupMs": 4.600000023841858,
+        "coldMaskCompletedMedianMs": 83.39999997615814,
         "samples": 5,
         "hot": {
           "requests": 10000,
-          "lookupAndLeaseMs": 24.300000071525574,
-          "microsecondsPerHit": 2.4300000071525574,
+          "lookupAndLeaseMs": 11.399999976158142,
+          "microsecondsPerHit": 1.1399999976158142,
           "edgeBuilds": 0,
           "uploads": 0,
           "evictions": 0,
@@ -719,7 +719,7 @@
         },
         "fitted": {
           "requests": 800,
-          "lookupAndLeaseMs": 6.399999976158142,
+          "lookupAndLeaseMs": 3.6999999284744263,
           "edgeBuilds": 0,
           "uploads": 0,
           "evictions": 0,
@@ -730,7 +730,7 @@
         "pressure": {
           "requests": 24,
           "budgetBytes": 698368,
-          "elapsedMs": 3148.5,
+          "elapsedMs": 2037.2000000476837,
           "edges": 24,
           "uploads": 24,
           "readbacks": 24,
@@ -750,12 +750,12 @@
       "available": true,
       "rawBytes": 174592,
       "compressedBytes": 92364,
-      "gzipMs": 32.10000002384186,
-      "writeMs": 8.599999904632568,
-      "readDecodeMedianMs": 5.899999976158142,
-      "snapshotReadbackMs": 18.300000071525574,
-      "uploadCompletedMedianMs": 10.899999976158142,
-      "rebuildFromDecodedArtCompletedMedianMs": 105,
+      "gzipMs": 19.199999928474426,
+      "writeMs": 3.4000000953674316,
+      "readDecodeMedianMs": 3.3000000715255737,
+      "snapshotReadbackMs": 7.699999928474426,
+      "uploadCompletedMedianMs": 7.100000023841858,
+      "rebuildFromDecodedArtCompletedMedianMs": 66.40000009536743,
       "breakEvenRestores": 1,
       "note": "Null means cached restore was slower than rebuilding here. Hot CacheStorage reads, not OS-cold disk or fresh network; optional persistence is not enabled in the renderer."
     },

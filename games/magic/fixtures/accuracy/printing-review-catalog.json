@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "842db3d8b94e110ba772d293e5768f787828b914289c5df684d537fbbce24a33",
+  "revision": "a2754f7c65d5e5a70167054cb46ff6b34d40a240daa4d2226d7cc3b4d0a682b0",
   "artistRevision": "fd5d3692b5b9fad700d8de65cd8ec24eeb52b1fbe2ffc589cc7526ae693a9b43",
   "sets": {
     "0014def3-4063-4929-ac51-76aef1bb2a68": "arn",
@@ -4476,18 +4476,11 @@
     ],
     "140e567c-6e4a-42b0-8084-d6c9695ae802": [
       {
-        "source": "games/magic/fixtures/accuracy/lea/annotations-colored-types.json",
-        "referenceSha256": "6b8fe1ca7a7ee25320f6bf41733187e9a42d9a12cbe2e05fc3d0512809941bcd",
-        "reason": "Visually transcribed from the frozen Scryfall Alpha scan type strip; no rules/body certification.",
-        "fields": {
-          "typeLine": "Summon Wall"
-        }
-      },
-      {
         "source": "games/magic/fixtures/accuracy/lea/annotations-empty-rules.json",
         "referenceSha256": "6b8fe1ca7a7ee25320f6bf41733187e9a42d9a12cbe2e05fc3d0512809941bcd",
         "reason": "Exact ABU scan rules panel reviewed: flavor only, with neither Defender nor the later parenthetical wall reminder. Preserve Oracle reminder wording independently.",
         "fields": {
+          "typeLine": "Summon Wall",
           "rulesText": "",
           "flavorText": "The Earth herself lends her strength to these walls of living stone, which possess the stability of ancient mountains. These mighty bulwarks thwart ground-based troops, providing welcome relief for weary warriors who defend the land."
         }
@@ -5076,18 +5069,11 @@
     ],
     "1a5054a4-599d-49df-9a80-77eeed47891f": [
       {
-        "source": "games/magic/fixtures/accuracy/leb/annotations-colored-types.json",
-        "referenceSha256": "88692ec6e957916ef4340d0f8df58bf8ac18737ee53c3dd5ab134145c408456d",
-        "reason": "Visually checked the normalized frozen Beta scan type strip. OCR was diagnostic only; this review does not certify rules, artist, P/T or frame geometry.",
-        "fields": {
-          "typeLine": "Summon Wall"
-        }
-      },
-      {
         "source": "games/magic/fixtures/accuracy/leb/annotations-empty-rules.json",
         "referenceSha256": "88692ec6e957916ef4340d0f8df58bf8ac18737ee53c3dd5ab134145c408456d",
         "reason": "Exact ABU scan rules panel reviewed: flavor only, with neither Defender nor the later parenthetical wall reminder. Preserve Oracle reminder wording independently.",
         "fields": {
+          "typeLine": "Summon Wall",
           "rulesText": "",
           "flavorText": "Everybody knows that to ward off trouble, you knock on wood. But usually it's better to make a wall out of the wood and let trouble do the knocking."
         }
@@ -8094,18 +8080,11 @@
     ],
     "329ba196-a107-41ac-b02a-5f8b10ecd130": [
       {
-        "source": "games/magic/fixtures/accuracy/leb/annotations-colored-types.json",
-        "referenceSha256": "4acc4bd36912f60bd52b1f4868c85dc62936432e32a7c6f1ac952f52e74756ea",
-        "reason": "Visually checked the normalized frozen Beta scan type strip. OCR was diagnostic only; this review does not certify rules, artist, P/T or frame geometry.",
-        "fields": {
-          "typeLine": "Summon Wall"
-        }
-      },
-      {
         "source": "games/magic/fixtures/accuracy/leb/annotations-empty-rules.json",
         "referenceSha256": "4acc4bd36912f60bd52b1f4868c85dc62936432e32a7c6f1ac952f52e74756ea",
         "reason": "Exact ABU scan rules panel reviewed: flavor only, with neither Defender nor the later parenthetical wall reminder. Preserve Oracle reminder wording independently.",
         "fields": {
+          "typeLine": "Summon Wall",
           "rulesText": "",
           "flavorText": "The Earth herself lends her strength to these walls of living stone, which possess the stability of ancient mountains. These mighty bulwarks thwart ground-based troops, providing welcome relief for weary warriors who defend the land."
         }
@@ -17467,6 +17446,7 @@
         "referenceSha256": "ec8b7340f680537e7068548446de43b931150dfa6ad8fb86531448d382291655",
         "reason": "Exact Beta scan visibly uses the large face with both Flying and the mana paragraph left aligned. Preserve this original paragraph alignment; Oracle retains normal fitting.",
         "fields": {
+          "rulesText": "Flying\nTap to add one mana of any color to your mana pool. This tap may be played as an interrupt.",
           "rulesParagraphs": [
             {
               "role": "rules",
@@ -17609,6 +17589,14 @@
         "reason": "Visually checked the normalized frozen Beta scan type strip. OCR was diagnostic only; this review does not certify rules, artist, P/T or frame geometry.",
         "fields": {
           "typeLine": "Enchant Enchantment"
+        }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/leb/annotations-text-outliers.json",
+        "referenceSha256": "62858fa2d0264a560beef1bab19892de67a54cdd21e57007f8512c2ddd5d0d06",
+        "reason": "Exact Beta scan includes each turn. The missing source words changed wrapping and invalidated text placement comparisons. Oracle remains unchanged.",
+        "fields": {
+          "rulesText": "Target enchantment costs 2 extra mana each turn during upkeep. If target enchantment's controller cannot or will not pay this extra mana, Power Leak does 1 damage to him or her for each unpaid mana."
         }
       }
     ],
@@ -18336,14 +18324,7 @@
         "reason": "Exact ABU scan rules panel reviewed: flavor only, with neither Defender nor the later parenthetical wall reminder. Preserve Oracle reminder wording independently.",
         "fields": {
           "rulesText": "",
-          "flavorText": "Everybody knows that to ward off trouble, you knock on wood. But usually it’s better to make a wall out of the wood and let trouble do the knocking."
-        }
-      },
-      {
-        "source": "games/magic/fixtures/accuracy/lea/annotations-colored-types.json",
-        "referenceSha256": "d56c93d6a40578bce007ca245fb7ac4eec53c1ab99fbf4391fe82090c0c863af",
-        "reason": "Visually transcribed from the frozen Scryfall Alpha scan type strip; no rules/body certification.",
-        "fields": {
+          "flavorText": "Everybody knows that to ward off trouble, you knock on wood. But usually it’s better to make a wall out of the wood and let trouble do the knocking.",
           "typeLine": "Summon Wall"
         }
       }

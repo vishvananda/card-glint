@@ -6,7 +6,8 @@ import { readJson, writeJson, root, hash, sourceHash } from './common.mjs';
 import { cachedFetch } from './cache.mjs';
 import { openBrowser } from './browser.mjs';
 import { normalizedReference } from './abu-reference-cache.mjs';
-const [inputFile, posesDirectory, output] = process.argv.slice(2);
+const [inputFile, posesDirectory, output, mode = 'global'] = process.argv.slice(2);
+assert.ok(['global', 'glyphs'].includes(mode));
 if (!output) throw Error('Usage: abu-mana-study.mjs INPUTS POSES OUT');
 const input = await readJson(inputFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json'));
@@ -62,14 +63,29 @@ try {
   await server.close();
 }
 const candidates = [{ name: 'current', delta: {} }];
-for (const dx of [-0.5, 0, 0.5])
-  for (const dy of [-0.5, 0, 0.5])
-    for (const scale of [0.98, 1, 1.02])
-      for (const spacing of [-0.5, 0, 0.5]) {
-        if (!dx && !dy && scale === 1 && !spacing) continue;
+if (mode === 'global')
+  for (const dx of [-0.5, 0, 0.5])
+    for (const dy of [-0.5, 0, 0.5])
+      for (const scale of [0.98, 1, 1.02])
+        for (const spacing of [-0.5, 0, 0.5]) {
+          if (!dx && !dy && scale === 1 && !spacing) continue;
+          candidates.push({
+            name: `${dx}/${dy}/${scale}/${spacing}`,
+            delta: { dx, dy, scaleX: scale, scaleY: scale, spacing },
+          });
+        }
+if (mode === 'glyphs')
+  for (const scale of [0.96, 1, 1.04])
+    for (const dx of [-0.5, 0, 0.5])
+      for (const dy of [-0.5, 0, 0.5]) {
+        if (scale === 1 && !dx && !dy) continue;
         candidates.push({
-          name: `${dx}/${dy}/${scale}/${spacing}`,
-          delta: { dx, dy, scaleX: scale, scaleY: scale, spacing },
+          name: `glyph/${scale}/${dx}/${dy}`,
+          delta: { glyph: { scale, dx, dy } },
+        });
+        candidates.push({
+          name: `number/${scale}/${dx}/${dy}`,
+          delta: { numberScale: scale, numberDx: dx, numberDy: dy },
         });
       }
 const session = await openBrowser(
@@ -130,6 +146,7 @@ try {
     set: poses.set,
     inputHash: poses.inputHash,
     rendererHash,
+    mode,
     normalizationHash: hash(JSON.stringify(poses)),
     scope:
       'Native retained cost callbacks, same Canvas origin and static assets; zero replay byte parity is required. Scores include circle and glyph edges. Shared geometry only, calibration-name selection and separate reused-development validation. No per-scan registration or color fit inside this search.',

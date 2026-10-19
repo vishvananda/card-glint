@@ -17,7 +17,7 @@ const [
   scope = 'typography',
   metadataProofFile,
 ] = process.argv.slice(2);
-assert.ok(['typography', 'whole-card'].includes(scope));
+assert.ok(['typography', 'whole-card', 'mana-only', 'body-mana'].includes(scope));
 const expectedFile = expectationArgument === '-' ? undefined : expectationArgument;
 if (!parentRoot)
   throw Error('Usage: abu-native-capture.mjs INPUTS OUT PARENT_BASELINES [BODY_EXPECTATIONS]');
@@ -71,6 +71,13 @@ const definition = {
   browser: null,
   commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
   components: components.map((a) => [a.url, a.sha256]),
+  toolHashes: await Promise.all(
+    ['abu-native-capture.mjs', 'abu-assets.mjs', 'browser.mjs'].map(async (f) => [
+      f,
+      hash(await readFile(new URL(f, import.meta.url))),
+    ]),
+  ),
+  node: process.version,
   expectationsHash: expectedFile ? hash(await readFile(expectedFile)) : null,
 };
 const changed = execFileSync(
@@ -98,7 +105,17 @@ const typographyRegions = [
   // Include the full printed field: X/X reaches beyond ordinary digit widths.
   [377, 596, 87, 51],
 ];
-const allowed = scope === 'whole-card' ? [[0, 0, 488, 680]] : typographyRegions;
+const allowed =
+  scope === 'whole-card'
+    ? [[0, 0, 488, 680]]
+    : scope === 'mana-only'
+      ? [[23, 20, 435, 56]]
+      : scope === 'body-mana'
+        ? [
+            [23, 20, 435, 56],
+            [54, 405, 390, 197],
+          ]
+        : typographyRegions;
 const manifests = new Map();
 let prior;
 try {
@@ -134,6 +151,7 @@ try {
   await session.page.evaluate(async () => {
     await import('/games/magic/src/data/eager.ts');
     await import('/games/magic/src/data/eager-wording.ts');
+    globalThis.__abuAssetLoader = await import('/games/magic/tools/accuracy/abu-assets.mjs');
     globalThis.__abuCompose = (
       await import('/games/magic/src/presentation/canvas-face.ts')
     ).composeCardTexture;
@@ -173,6 +191,10 @@ try {
         { face: e.face, printingId: e.id, printedImage: null },
         'inspect',
         new AbortController().signal,
+        {
+          loadImages: (urls, signal) =>
+            globalThis.__abuAssetLoader.loadAccuracyImages(urls, signal, e.face.illustration),
+        },
       );
       try {
         return canvas.toDataURL().split(',')[1];
@@ -282,6 +304,12 @@ try {
     definition.assetsHash,
   );
   if (session.faults.length) throw Error(session.faults.join('\n'));
+  for (const [file, digest] of definition.toolHashes)
+    assert.equal(
+      hash(await readFile(new URL(file, import.meta.url))),
+      digest,
+      'Capture tool changed',
+    );
   for (const [material, items] of records)
     await writeJson(path.join(outputDirectory, material, 'observations.json'), {
       schema: 1,
@@ -290,6 +318,9 @@ try {
       baseline: { version, sourceHash: rendererHash, variant: definition.variant },
       records: items,
     });
+  definition.assetCache = await session.page.evaluate(() =>
+    globalThis.__abuAssetLoader.accuracyAssetStats(),
+  );
   await writeJson(path.join(outputDirectory, 'capture.json'), {
     ...definition,
     complete: true,

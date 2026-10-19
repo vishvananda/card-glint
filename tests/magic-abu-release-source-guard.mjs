@@ -4,6 +4,9 @@ import { hash } from '../games/magic/tools/accuracy/common.mjs';
 const proof = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/abu-release-compatibility.json'),
 );
+const wording = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/abu-wording-source-scope.json'),
+);
 let verified;
 async function verify() {
   verified ??= (async () => {
@@ -32,6 +35,32 @@ async function verify() {
 export async function preAbuReleaseSource(file) {
   const bytes = await readFile(file),
     change = proof.files[file];
+  if (file === wording.file) {
+    assert.equal(hash(bytes), wording.after);
+    const before = Buffer.from(wording.beforeSource);
+    assert.equal(hash(before), wording.before);
+    const { printedTextOutlierAnnotation } = await import(
+      '../games/magic/tools/accuracy/printed-text-outliers.mjs'
+    );
+    let checked = 0;
+    for (const [fixture, digest] of Object.entries(wording.fixtures)) {
+      const raw = await readFile(fixture);
+      assert.equal(hash(raw), digest);
+      const data = JSON.parse(raw);
+      for (const [id, row] of Object.entries(data.cards)) {
+        assert.deepEqual(
+          printedTextOutlierAnnotation({
+            card: { id, name: row.name, set: data.set },
+            reference: { sha256: row.referenceHash },
+          }),
+          row,
+        );
+        checked++;
+      }
+    }
+    assert.equal(checked, wording.verifiedAnnotations);
+    return before;
+  }
   if (!change) return bytes;
   await verify();
   assert.equal(hash(bytes), change.after, 'Unreviewed ABU release source: ' + file);

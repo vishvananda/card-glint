@@ -2,16 +2,36 @@
   "schema": 1,
   "baselineCommit": "5552458",
   "evidence": "abu-release-integration.json",
-  "evidenceHash": "4306d20ca98a97f5c08302a2c9bef83fb66ad05131d1b9671f56a3857111df5a",
+  "evidenceHash": "aec44164cfc953bf50fb880d17b1a62fb730ab211a3d7f98dd1c57ce49e1f77c",
   "files": {
     "games/magic/src/presentation/alpha-rules.ts": {
       "before": "00259cab80900c5f16eb0e107232de81ac4667395c9b461931f34c5a0a0caa7d",
-      "after": "efdef45ad07b3221eee06d67af8d5fabebccadef0c630711bbea8b2d371e7784",
+      "after": "7afc2b0d6d5adca624447179b93bd2ebe8830aa959408873686490735002e328",
       "reverseEdits": [
         {
-          "start": 17,
+          "start": 46,
+          "count": 8,
+          "lines": [
+            "    { x: 0, y: 0, width: (original.width - model.left - model.right) / model.width, height: 200 },\n"
+          ]
+        },
+        {
+          "start": 27,
           "count": 1,
-          "lines": ["  if (face.setCode?.toLowerCase() !== 'lea') return original;\n"]
+          "lines": []
+        },
+        {
+          "start": 18,
+          "count": 2,
+          "lines": [
+            "  if (face.setCode?.toLowerCase() !== 'lea') return original;\n",
+            "  return earlyRulesModel(context, face, original);\n"
+          ]
+        },
+        {
+          "start": 16,
+          "count": 1,
+          "lines": []
         }
       ]
     },
@@ -79,43 +99,43 @@
     },
     "games/magic/src/presentation/early-text-tiers.ts": {
       "before": "1cddfa1f6149773969507db272436d111fb5cef2700b1997c203e99969ea7062",
-      "after": "7e546618a0e4ec2349d2438e09bace7ce8db5591875de2f00193a471ccba7422",
+      "after": "d2529d551009b72218ee9f94bbf63d9232b03376794fbc73f1b8534b1336eedd",
       "reverseEdits": [
         {
-          "start": 161,
-          "count": 33,
-          "lines": []
+          "start": 138,
+          "count": 62,
+          "lines": [
+            "  if (chosen.size >= 19)\n",
+            "    return options.transferAlphaModel\n",
+            "      ? (earlyRulesModel(context, face, chosen) ?? chosen)\n",
+            "      : (alphaRulesLayout(context, face, chosen) ?? chosen);\n"
+          ]
         },
         {
-          "start": 137,
-          "count": 22,
-          "lines": ["  if (chosen.size >= 19)\n", "    return options.transferAlphaModel\n"]
-        },
-        {
-          "start": 100,
+          "start": 101,
           "count": 1,
           "lines": ["          { x: 70, y: y - 6, width: 348, height: height - 8 },\n"]
         },
         {
-          "start": 84,
+          "start": 85,
           "count": 6,
           "lines": [
             "      { x: 70, y: y - 6, width: options.largeFitWidth ?? 340, height: height - 8 },\n"
           ]
         },
         {
-          "start": 60,
+          "start": 61,
           "count": 1,
           "lines": []
         },
         {
-          "start": 32,
+          "start": 33,
           "count": 1,
           "lines": ["  if (face.setCode?.toLowerCase() !== 'lea' || !base) return base;\n"]
         },
         {
           "start": 9,
-          "count": 7,
+          "count": 8,
           "lines": []
         },
         {
@@ -208,16 +228,11 @@
     },
     "games/magic/src/presentation/printing-mana-profiles.ts": {
       "before": "fca9dfd9eb128315b3906aa14c03ecbd8a964daaebcd99b728c7cbf5b9c26cf1",
-      "after": "a340376d0a2771d42f9c4a33b410b0192d059e48fa28917d1886726be676ebb5",
+      "after": "2533982810fa32f25f28b434f91072ffc6a0b2f558eb3a0c37b957af78dbdcfd",
       "reverseEdits": [
         {
-          "start": 191,
-          "count": 3,
-          "lines": []
-        },
-        {
           "start": 164,
-          "count": 25,
+          "count": 33,
           "lines": [
             "      W: { scale: 0.98, dx: -0.5, dy: -2 },\n",
             "      U: { scale: 0.94, dx: -0.5, dy: -1.5 },\n",

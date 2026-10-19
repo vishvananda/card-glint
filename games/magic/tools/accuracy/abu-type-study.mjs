@@ -25,7 +25,9 @@ const inputs = await readJson(inputsFile),
 const mode =
   filter === '@shared' || filter.startsWith('@headers:')
     ? 'shared'
-    : filter === '@count' || filter === '@native-count' || filter === '@policy-grid'
+    : filter === '@count' ||
+        filter === '@native-count' ||
+        ['@policy-grid', '@policy-check', '@width-grid'].includes(filter)
       ? 'count'
       : filter.startsWith('@details:')
         ? 'details'
@@ -44,6 +46,7 @@ assert.ok(
       'centeredDy',
       'shortRegularDy',
       'mediumSizeDelta',
+      'regularWidthDelta',
     ].includes(key),
   ),
 );
@@ -69,6 +72,7 @@ const studyDefinition = {
       'abu-type-study.mjs',
       'abu-type-browser.mjs',
       'abu-count-layout.mjs',
+      'abu-assets.mjs',
       'abu-reference-cache.mjs',
       'browser.mjs',
       'abu-type-objective.mjs',
@@ -103,7 +107,7 @@ const { RETRO_FONT, RETRO_SYMBOL_FONT } = await ssr.ssrLoadModule(
   '/games/magic/src/presentation/retro-frame.ts',
 );
 const selected = new Set();
-if (filter === '@policy-grid') {
+if (['@policy-grid', '@policy-check', '@width-grid'].includes(filter)) {
   for (const material of new Set(inputs.entries.map((e) => e.material)))
     for (const cohort of ['calibration', 'validation'])
       for (const tier of [0, 1, 2, 3]) {
@@ -124,7 +128,7 @@ if (filter === '@policy-grid') {
       }
 }
 const entries = inputs.entries.filter((e) =>
-  filter === '@policy-grid'
+  ['@policy-grid', '@policy-check', '@width-grid'].includes(filter)
     ? selected.has(e.id)
     : filter.startsWith('@headers:')
       ? new RegExp(filter.slice('@headers:'.length), 'i').test(e.card.name)
@@ -277,7 +281,11 @@ try {
         ? await session.page.evaluate(
             ({ selectedOnly, policy, grid }) =>
               globalThis.__typeStudy.countTrials(selectedOnly, policy, grid),
-            { selectedOnly: filter === '@native-count', policy, grid: filter === '@policy-grid' },
+            {
+              selectedOnly: ['@native-count', '@policy-check'].includes(filter),
+              policy,
+              grid: filter === '@width-grid' ? 'width' : filter === '@policy-grid',
+            },
           )
         : mode === 'shared'
           ? await session.page.evaluate(() => globalThis.__typeStudy.shared())

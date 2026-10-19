@@ -130,7 +130,7 @@ export const PRINTING_MANA_PROFILES: Readonly<Record<string, ManaSymbolTransform
       W: {
         scale: 1.09,
         dx: 0,
-        dy: 0,
+        dy: -0.5,
       },
       U: {
         scale: 1,
@@ -145,7 +145,7 @@ export const PRINTING_MANA_PROFILES: Readonly<Record<string, ManaSymbolTransform
       R: {
         scale: 1,
         dx: 0.5,
-        dy: 0.5,
+        dy: 0,
       },
       G: {
         scale: 1.12,
@@ -191,5 +191,10 @@ export const PRINTING_MANA_PROFILES: Readonly<Record<string, ManaSymbolTransform
   },
   lea: {
     dy: 0.5,
+    glyphs: {
+      W: { scale: 1.04, dx: 0, dy: -0.5 },
+      B: { scale: 1.04, dx: 0, dy: -0.5 },
+      R: { scale: 1, dx: 0.5, dy: 0.5 },
+    },
   },
 };

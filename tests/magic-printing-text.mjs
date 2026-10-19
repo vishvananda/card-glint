@@ -5,6 +5,7 @@ import {
   normalizePrintingText,
   printingTextIndex,
 } from '../games/magic/tools/accuracy/printing-text.mjs';
+import { printedTextOutlierAnnotation } from '../games/magic/tools/accuracy/printed-text-outliers.mjs';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
 import { calibrationPresentation } from '../games/magic/tools/accuracy/calibration-wording.mjs';
 
@@ -319,9 +320,14 @@ try {
       };
       const result = presentation(input);
       assert.equal(result.face.typeLine, row.typeLine);
-      assert.equal(result.face.rulesText, 'Current rules.');
-      assert.equal(result.contentStatus, 'oracle-unverified');
-      assert.deepEqual(result.reviewedFields, ['typeLine']);
+      const bodyReview = printedTextOutlierAnnotation(input);
+      assert.equal(result.face.rulesText, bodyReview.rulesText ?? 'Current rules.');
+      assert.equal(
+        result.contentStatus,
+        bodyReview.reviewed ? 'scan-reviewed' : 'oracle-unverified',
+      );
+      assert(result.reviewedFields.includes('typeLine'));
+      assert(!result.reviewedFields.includes('rulesText'));
       const wordings = {
         original: result.face,
         oracle: { typeLine: 'Artifact', rulesText: 'Oracle rules.' },
@@ -337,8 +343,8 @@ try {
       assert.equal(caller.face.typeLine, 'Caller override');
       assert.deepEqual(
         caller.reviewedFields,
-        [],
-        'A partial historical review cannot certify caller text',
+        result.reviewedFields.filter((field) => field !== 'typeLine'),
+        'A caller type replacement loses only its own review; independent artist/stat reviews remain',
       );
       if (row.name === 'Jade Statue') assert.equal(row.typeLine, 'Artifact');
     }
@@ -561,8 +567,8 @@ try {
       emptyCount++;
     }
   }
-  assert.equal(emptyCount, 73);
-  console.log('73 scan-bound empty rules, printed types, flavor and Oracle isolation pass.');
+  assert.equal(emptyCount, 77);
+  console.log('77 scan-bound empty rules, printed types, flavor and Oracle isolation pass.');
 } finally {
   await wordingServer.close();
 }

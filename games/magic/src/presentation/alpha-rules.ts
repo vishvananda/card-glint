@@ -14,9 +14,10 @@ export function alphaRulesLayout(
   context: CanvasRenderingContext2D,
   face: RenderedCardInput,
   original: RulesLayout | null,
+  regularWidthDelta = 0,
 ): RulesLayout | null {
   if (!['lea', 'leb'].includes(face.setCode?.toLowerCase() ?? '')) return original;
-  return earlyRulesModel(context, face, original);
+  return earlyRulesModel(context, face, original, regularWidthDelta);
 }
 
 /** Shared physical model exposed internally for independent transfer trials. */
@@ -24,6 +25,7 @@ export function earlyRulesModel(
   context: CanvasRenderingContext2D,
   face: RenderedCardInput,
   original: RulesLayout | null,
+  regularWidthDelta = 0,
 ): RulesLayout | null {
   if (!original) return original;
   const request = rulesLayoutRequest(original);
@@ -42,7 +44,14 @@ export function earlyRulesModel(
   const shape = layoutRules(
     context,
     paragraphs,
-    { x: 0, y: 0, width: (original.width - model.left - model.right) / model.width, height: 200 },
+    {
+      x: 0,
+      y: 0,
+      width:
+        (original.width - model.left - model.right + (centered ? 0 : regularWidthDelta)) /
+        model.width,
+      height: 200,
+    },
     size,
     size,
     {

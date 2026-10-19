@@ -1,7 +1,8 @@
 import '../../src/data/eager.ts';
 import '../../src/data/eager-wording.ts';
 import { composeCardTexture } from '../../src/presentation/canvas-face.ts';
-import { canvasAssetUrls, loadCanvasImages } from '../../src/presentation/canvas-assets.ts';
+import { canvasAssetUrls } from '../../src/presentation/canvas-assets.ts';
+import { loadAccuracyImages } from './abu-assets.mjs';
 import { paintRulesLayout } from '../../src/presentation/rules-paint.ts';
 import { baseRetroTextLayout } from '../../src/presentation/retro-rules.ts';
 import { rulesLayoutRequest, layoutRules } from '../../src/presentation/rules-layout.ts';
@@ -57,7 +58,7 @@ export async function prepare(entry, scanUrl, roles = Object.keys(rects)) {
   const face = entry.face,
     signal = new AbortController().signal;
   const input = { face, printingId: entry.id, printedImage: null };
-  const lease = await loadCanvasImages(canvasAssetUrls(face), signal);
+  const lease = await loadAccuracyImages(canvasAssetUrls(face), signal, face.illustration);
   const hooks = { loadImages: async () => ({ ...lease, dispose() {} }) };
   const full = await composeCardTexture(input, 'inspect', signal, hooks);
   const proto = CanvasRenderingContext2D.prototype,
@@ -397,30 +398,36 @@ export function countTrials(
   selectedPolicy = { policy: 'count', mediumSize: 22.5, denseWidth: 1 },
   grid = false,
 ) {
-  const variants = grid
-    ? [
-        {},
-        ...[undefined, 374, 390].flatMap((centeredWidth) =>
-          [0, -8, -16].flatMap((centeredDy) =>
-            [0, -10, -16].map((shortRegularDy) => ({
-              ...selectedPolicy,
-              centeredWidth,
-              centeredDx: -6.5,
-              centeredDy,
-              shortRegularDy,
-            })),
-          ),
-        ),
-        ...[-0.5, -1].map((mediumSizeDelta) => ({ ...selectedPolicy, mediumSizeDelta })),
-      ]
-    : selectedOnly
-      ? [{}, selectedPolicy]
-      : [
+  const variants =
+    grid === 'width'
+      ? [
           {},
-          ...[21.5, 22, 22.5].flatMap((mediumSize) =>
-            [0.98, 1].map((denseWidth) => ({ policy: 'count', mediumSize, denseWidth })),
-          ),
-        ];
+          ...[8, 16, 24, 32].map((regularWidthDelta) => ({ ...selectedPolicy, regularWidthDelta })),
+        ]
+      : grid
+        ? [
+            {},
+            ...[undefined, 374, 390].flatMap((centeredWidth) =>
+              [0, -8, -16].flatMap((centeredDy) =>
+                [0, -10, -16].map((shortRegularDy) => ({
+                  ...selectedPolicy,
+                  centeredWidth,
+                  centeredDx: -6.5,
+                  centeredDy,
+                  shortRegularDy,
+                })),
+              ),
+            ),
+            ...[-0.5, -1].map((mediumSizeDelta) => ({ ...selectedPolicy, mediumSizeDelta })),
+          ]
+        : selectedOnly
+          ? [{}, selectedPolicy]
+          : [
+              {},
+              ...[21.5, 22, 22.5].flatMap((mediumSize) =>
+                [0.98, 1].map((denseWidth) => ({ policy: 'count', mediumSize, denseWidth })),
+              ),
+            ];
   return {
     rules: variants.map((adjustment) => ({ adjustment, score: measure('rules', adjustment) })),
   };
