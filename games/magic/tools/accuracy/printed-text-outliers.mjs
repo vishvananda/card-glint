@@ -3,9 +3,12 @@ import antiquities from '../../fixtures/accuracy/atq/annotations-text-outliers.j
 import dark from '../../fixtures/accuracy/drk/annotations-text-outliers.json' with { type: 'json' };
 import alpha from '../../fixtures/accuracy/lea/annotations-text-outliers.json' with { type: 'json' };
 import alphaTypes from '../../fixtures/accuracy/lea/annotations-colored-types.json' with { type: 'json' };
+import betaTypes from '../../fixtures/accuracy/leb/annotations-colored-types.json' with { type: 'json' };
+import beta from '../../fixtures/accuracy/leb/annotations-text-outliers.json' with { type: 'json' };
 
 const reviews = new Map([arabian, antiquities, dark].map((review) => [review.set, [review]]));
 reviews.set('lea', [alphaTypes, alpha]);
+reviews.set('leb', [betaTypes, beta]);
 
 /** Reviewed source errors must not be mistaken for layout errors. */
 export function printedTextOutlierAnnotation(entry) {

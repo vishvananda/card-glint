@@ -57,9 +57,16 @@ try {
     // old reference runs would silently fit a different passage than we paint.
     if (face.rulesAlignment?.mode === 'auto')
       updated.rulesAlignment = { mode: 'auto', reference: updated.rulesParagraphs };
+    const reviewed = new Set(wording.provenance.corrections.flatMap((r) => r.fields));
     entries.push({
       ...e,
       face: updated,
+      wordingEvidence: {
+        ...e.wordingEvidence,
+        ...(reviewed.has('typeLine') ? { type: 'scan-reviewed' } : {}),
+        ...(reviewed.has('rulesText') ? { rules: 'scan-reviewed' } : {}),
+        ...(reviewed.has('flavorText') ? { flavor: 'scan-reviewed' } : {}),
+      },
       correctionEvidence: { wording: wording.provenance, artist: artist.provenance },
       refreshedFaceChanged: JSON.stringify(updated) !== JSON.stringify(face),
     });

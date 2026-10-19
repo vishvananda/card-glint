@@ -33,13 +33,16 @@ const mode =
 const policy = { policy: 'count', mediumSize: 22.5, denseWidth: 1, ...JSON.parse(policyJson) };
 assert.ok(
   Object.keys(policy).every((key) =>
-    ['policy', 'mediumSize', 'denseWidth', 'forceSmall'].includes(key),
+    ['policy', 'mediumSize', 'denseWidth', 'forceSmall', 'transferAlphaModel'].includes(key),
   ),
 );
 assert.equal(policy.policy, 'count');
 assert.ok([21.5, 22, 22.5].includes(policy.mediumSize));
 assert.ok([0.98, 1].includes(policy.denseWidth));
 assert.ok(policy.forceSmall === undefined || typeof policy.forceSmall === 'boolean');
+assert.ok(
+  policy.transferAlphaModel === undefined || typeof policy.transferAlphaModel === 'boolean',
+);
 const rendererHash = await sourceHash(path.join(root, 'games/magic/src'));
 const studyDefinition = {
   inputHash: hash(await readFile(inputsFile)),

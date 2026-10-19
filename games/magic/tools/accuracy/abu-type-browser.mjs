@@ -34,8 +34,10 @@ const rects = {
   title: [29, 29, 408, 41],
   type: [29, 362, 417, 42],
   artist: [36, 607, 350, 39],
-  stats: [377, 596, 72, 39],
-  rules: [54, 411, 390, 190],
+  // X/X and wider original fields must not be clipped by a digit-sized ROI.
+  stats: [377, 596, 87, 51],
+  // Beta large text can start above the Alpha crop; include the full paper.
+  rules: [54, 405, 390, 197],
 };
 const canvas = (w, h) => Object.assign(document.createElement('canvas'), { width: w, height: h });
 const pixels = (c) =>
