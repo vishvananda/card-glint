@@ -30,6 +30,57 @@ try {
   const input = { oracle, original },
     snapshot = structuredClone(input);
   const reviewedStats = await fixture('atq/annotations-stats.json');
+  const alphaOutliers = await fixture('lea/annotations-text-outliers.json');
+  for (const [id, row] of Object.entries(alphaOutliers.cards)) {
+    const entry = {
+      card: {
+        id,
+        name: row.name,
+        set: 'lea',
+        artist: 'Provider artist',
+        type_line: 'Creature — Elf',
+        power: '2',
+        toughness: '1',
+      },
+      reference: { sha256: row.referenceHash },
+    };
+    const adapted = presentation(entry);
+    for (const field of row.reviewedFields) assert.equal(adapted.face[field], row[field]);
+    if (row.artist) {
+      assert.equal(
+        resolvePrintingArtist(id, 'Provider artist', { referenceSha256: row.referenceHash }).artist,
+        row.artist,
+      );
+      assert.equal(
+        resolvePrintingArtist(id, 'Provider artist', { referenceSha256: '0'.repeat(64) }).artist,
+        'Provider artist',
+      );
+    } else {
+      const input = {
+        oracle: { ...oracle, power: '2', toughness: '1' },
+        original: { ...original, power: '2', toughness: '1' },
+      };
+      const resolved = resolvePrintingWording(id, input, { referenceSha256: row.referenceHash });
+      assert.equal(resolved.wordings.original.power, '1');
+      assert.equal(resolved.wordings.original.toughness, '2');
+      assert.equal(resolved.wordings.oracle.power, '2');
+      assert.equal(resolved.wordings.oracle.toughness, '1');
+    }
+    assert.throws(() => presentation({ ...entry, reference: { sha256: '0'.repeat(64) } }), /stale/);
+  }
+  const alphaTypes = await fixture('lea/annotations-colored-types.json');
+  for (const [id, row] of Object.entries(alphaTypes.cards)) {
+    const resolved = resolvePrintingWording(id, input, { referenceSha256: row.referenceHash });
+    assert.equal(resolved.wordings.original.typeLine, row.typeLine);
+    assert.equal(resolved.wordings.oracle.typeLine, oracle.typeLine);
+    assert.equal(
+      presentation({
+        card: { id, name: row.name, set: 'lea', type_line: oracle.typeLine },
+        reference: { sha256: row.referenceHash },
+      }).face.typeLine,
+      row.typeLine,
+    );
+  }
   for (const [id, row] of Object.entries(reviewedStats.cards)) {
     const values = {
       oracle: { ...oracle, power: '1+*', toughness: '7-*' },
