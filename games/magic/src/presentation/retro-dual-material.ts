@@ -55,19 +55,26 @@ export async function prepareRetroDualFrame(
             // whose ink does not always match the outer paper stripe. Restore
             // only that source strip from the independently selected plate.
             // Keep the interior art/paper bands and calibrated stock unchanged.
-            const outline = required(plan.outline);
-            c.save();
-            c.beginPath();
-            c.rect(0, 0, base.width, base.height);
-            c.rect(
-              (112 / 1500) * base.width,
-              (120 / 2100) * base.height,
-              (1275 / 1500) * base.width,
-              (1860 / 2100) * base.height,
-            );
-            c.clip('evenodd');
-            c.drawImage(outline, 0, 0, base.width, base.height);
-            c.restore();
+            if (plan.outline !== plan.overlay) {
+              const outline = required(plan.outline);
+              c.save();
+              c.beginPath();
+              c.rect(
+                (78 / 1500) * base.width,
+                (90 / 2100) * base.height,
+                (1344 / 1500) * base.width,
+                (1920 / 2100) * base.height,
+              );
+              c.rect(
+                (108 / 1500) * base.width,
+                (120 / 2100) * base.height,
+                (1284 / 1500) * base.width,
+                (1860 / 2100) * base.height,
+              );
+              c.clip('evenodd');
+              c.drawImage(outline, 0, 0, base.width, base.height);
+              c.restore();
+            }
             const pixels = c.getImageData(0, 0, base.width, base.height);
             colorAbuDualPinline(pixels, retroLandColors(face));
             c.putImageData(pixels, 0, 0);
