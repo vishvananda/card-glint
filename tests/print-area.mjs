@@ -10,6 +10,10 @@ const fragment = (await readFile('packages/browser/src/gpu/printed-ink.ts', 'utf
     /\$\{PRINT_DOTS_GLSL.replace\([^\n]*\)\}/,
     dots.replace('flat in vec4 printDotsInfo;', 'uniform vec4 printDotsInfo;'),
   );
+assert.ok(
+  fragment.includes('if(printDotPeriodTexels()<4.)'),
+  'Update the area-reference fixture when the integration branch changes',
+);
 const browser = await chromium.launch({ args: ['--no-sandbox', '--enable-unsafe-swiftshader'] });
 try {
   const page = await browser.newPage();
@@ -40,10 +44,10 @@ try {
       };
       const centered = fragment.replace(
         /void main\(\)\{[\s\S]*$/,
-        'void main(){printFootprint=1./printDotsInfo.y;color=printFace(uv);}',
+        'void main(){printFootprint=1./printDotPeriodTexels();color=printFace(uv);}',
       );
       const dense = fragment
-        .replace('if(printDotsInfo.y<4.)', 'if(true)')
+        .replace('if(printDotPeriodTexels()<4.)', 'if(true)')
         .replaceAll('y<2', 'y<8')
         .replaceAll('x<2', 'x<8')
         .replace('(vec2(float(x),float(y))-.5)*.5', '(vec2(float(x),float(y))-3.5)/8.')
@@ -75,7 +79,8 @@ try {
       const draw = (p, period, amount) => {
         gl.useProgram(p);
         gl.uniform1i(gl.getUniformLocation(p, 'face'), 0);
-        gl.uniform4f(gl.getUniformLocation(p, 'printDotsInfo'), amount, period, 1, 0);
+        // Test periods are face texels; the public uniform uses the 732px card reference.
+        gl.uniform4f(gl.getUniformLocation(p, 'printDotsInfo'), amount, (period * 732) / 128, 1, 0);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
         const d = new Uint8Array(data.length);
         gl.readPixels(0, 0, 128, 128, gl.RGBA, gl.UNSIGNED_BYTE, d);
