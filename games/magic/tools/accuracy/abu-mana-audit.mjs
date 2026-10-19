@@ -7,7 +7,15 @@ import { normalize } from './pixels-pure.mjs';
 import { normalizedReference } from './abu-reference-cache.mjs';
 import { outerManaCircle } from './abu-mana-ring.mjs';
 import { center, delta, median, quantile } from './hsb-color.mjs';
-const [inputsFile, posesDirectory, nativeRoot, output] = process.argv.slice(2);
+const [inputsFile, posesDirectory, nativeRoot, output, circleOptionsJson = '{}'] =
+  process.argv.slice(2);
+const circleOptions = JSON.parse(circleOptionsJson);
+assert.ok(Object.keys(circleOptions).every((k) => ['x', 'y', 'range'].includes(k)));
+for (const [k, v] of Object.entries(circleOptions))
+  assert.ok(
+    Number.isFinite(v) &&
+      (k === 'range' ? v > 0 && v <= 8 : k === 'x' ? v >= 400 && v <= 450 : v >= 30 && v <= 70),
+  );
 if (!output) throw Error('Usage: abu-mana-audit.mjs INPUTS POSES NATIVE OUT');
 const input = await readJson(inputsFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json'));
@@ -73,7 +81,12 @@ for (const e of input.entries) {
     ['render', render],
     ['scan', scan],
   ]) {
-    const circle = outerManaCircle(image, { ...nominal, range: 3, radiusRange: [9.5, 14] });
+    const circle = outerManaCircle(image, {
+      ...nominal,
+      range: 3,
+      radiusRange: [9.5, 14],
+      ...circleOptions,
+    });
     measurement[key] = { circle, ...pigment(image, circle) };
   }
   const accepted =
@@ -145,6 +158,7 @@ await writeJson(output, {
   set: poses.set,
   inputHash: poses.inputHash,
   normalizationHash: hash(JSON.stringify(poses)),
+  circleOptions,
   scope:
     'Frame-normalized nonfoil scans and unchanged native rasters. Perimeter measurements isolate disc pigment from dark glyph, without moving either scoring raster. First/last UUID-name cohorts inherited from frozen normalization; repeated development evidence. Diameter and center measurements are diagnostics, not per-card renderer overrides. Rightmost symbols have equal per-printing weight.',
   groups,

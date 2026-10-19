@@ -7,7 +7,7 @@ import { cachedFetch } from './cache.mjs';
 import { openBrowser } from './browser.mjs';
 import { normalizedReference } from './abu-reference-cache.mjs';
 const [inputFile, posesDirectory, output, mode = 'global'] = process.argv.slice(2);
-assert.ok(['global', 'glyphs'].includes(mode));
+assert.ok(['global', 'glyphs', 'glyphs-wide'].includes(mode));
 if (!output) throw Error('Usage: abu-mana-study.mjs INPUTS POSES OUT');
 const input = await readJson(inputFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json'));
@@ -74,8 +74,10 @@ if (mode === 'global')
             delta: { dx, dy, scaleX: scale, scaleY: scale, spacing },
           });
         }
-if (mode === 'glyphs')
-  for (const scale of [0.96, 1, 1.04])
+if (mode === 'glyphs' || mode === 'glyphs-wide')
+  for (const scale of mode === 'glyphs-wide'
+    ? [0.86, 0.9, 0.94, 0.98, 1, 1.02, 1.06, 1.1, 1.14, 1.18]
+    : [0.96, 1, 1.04])
     for (const dx of [-0.5, 0, 0.5])
       for (const dy of [-0.5, 0, 0.5]) {
         if (scale === 1 && !dx && !dy) continue;
@@ -105,6 +107,11 @@ const session = await openBrowser(
             return source.replace(
               '  const option = face.printingElements?.[element];',
               '  if ((globalThis as any).__abuManaCapture?.(c,element,paint)) return;\n  const option = face.printingElements?.[element];',
+            );
+          if (id.endsWith('/canvas-text.ts'))
+            return source.replace(
+              "  if (symbol === 'W' && images.originalWhiteGlyph) {",
+              "  (globalThis as any).__manaStudyImages?.(images);\n  if (symbol === 'W' && images.originalWhiteGlyph) {",
             );
         },
       },
@@ -147,9 +154,16 @@ try {
     inputHash: poses.inputHash,
     rendererHash,
     mode,
+    methods: Object.fromEntries(
+      await Promise.all(
+        ['abu-mana-study.mjs', 'abu-mana-study-browser.mjs', 'abu-type-objective.mjs'].map(
+          async (file) => [file, hash(await readFile(new URL(file, import.meta.url)))],
+        ),
+      ),
+    ),
     normalizationHash: hash(JSON.stringify(poses)),
     scope:
-      'Native retained cost callbacks, same Canvas origin and static assets; zero replay byte parity is required. Scores include circle and glyph edges. Shared geometry only, calibration-name selection and separate reused-development validation. No per-scan registration or color fit inside this search.',
+      'Native retained cost callbacks, same Canvas origin and static assets; Zero replay, regional sampling and active trial/full-native byte parity are required; active controls must change pixels. Scores include circle and glyph edges. Shared geometry only, calibration-name selection and separate reused-development validation. No per-scan registration or color fit inside this search.',
     candidates,
     rows,
   });

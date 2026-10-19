@@ -5,6 +5,9 @@ import { loadAccuracyImages } from './abu-assets.mjs';
 import { canvasAssetUrls } from '../../src/presentation/canvas-assets.ts';
 import { JsTextObjective, nativeGrayCrop } from './abu-type-objective.mjs';
 import { cropGray } from './pixels-pure.mjs';
+import { printingManaAdjustment } from '../../src/presentation/printing-mana-adjustment.ts';
+import { modernCostMana } from '../../src/presentation/modern-cost-mana.ts';
+import { earlyManaNumeral } from '../../src/presentation/early-expansion-mana.ts';
 const properties = [
   'font',
   'textAlign',
@@ -42,12 +45,29 @@ export async function measure(e, url, candidates) {
   };
   let blank;
   try {
-    blank = await composeCardTexture(input, 'inspect', signal, hooks);
+    // Enable decomposition once during preparation, even when the actual
+    // baseline has no glyph/numeral override. Painting below restores its real
+    // parameters and hides the extra numeral map for an unadjusted baseline.
+    const user = e.face.symbolAdjustment?.mana ?? {};
+    const preparedFace = {
+      ...e.face,
+      symbolAdjustment: {
+        ...e.face.symbolAdjustment,
+        mana: {
+          ...user,
+          numberDx: (user.numberDx ?? 0) + 0.000001,
+          glyphs: Object.fromEntries(
+            ['W', 'U', 'B', 'R', 'G'].map((s) => [s, { ...user.glyphs?.[s], scale: 1.000001 }]),
+          ),
+        },
+      },
+    };
+    blank = await composeCardTexture({ ...input, face: preparedFace }, 'inspect', signal, hooks);
   } finally {
     delete globalThis.__abuManaCapture;
     delete globalThis.__abuManaAdjustment;
   }
-  const base = Object.assign({}, adjustment),
+  const base = { ...printingManaAdjustment(e.face) },
     backup = document.createElement('canvas');
   backup.width = blank.width;
   backup.height = blank.height;
@@ -69,6 +89,25 @@ export async function measure(e, url, candidates) {
   const readHeight = Math.ceil((rect[1] + rect[3]) * 1.5) + 1 - origin[1];
   let parity = 0,
     regionParity = 0;
+  let preparedImages;
+  globalThis.__manaStudyImages = (images) => {
+    preparedImages = images;
+  };
+  try {
+    retained.paint();
+  } finally {
+    delete globalThis.__manaStudyImages;
+  }
+  const numerals = preparedImages?.manaNumerals;
+  const historical = earlyManaNumeral(e.face),
+    modern = modernCostMana(e.face);
+  const numericActive = (a) =>
+    !historical && (!!modern || !!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1);
+  const effects = [];
+  let baselineRaster,
+    candidateParity = null;
+  const sentinels = new Map(),
+    candidateParities = {};
   try {
     for (const candidate of candidates) {
       for (const k of Object.keys(adjustment)) delete adjustment[k];
@@ -92,6 +131,8 @@ export async function measure(e, url, candidates) {
           };
         }
       }
+      if (preparedImages)
+        preparedImages.manaNumerals = numericActive(adjustment) ? numerals : undefined;
       const { c, paint, m, state } = retained;
       c.resetTransform();
       c.clearRect(0, 0, blank.width, blank.height);
@@ -117,10 +158,82 @@ export async function measure(e, url, candidates) {
       }
       const raster = retained.c.getImageData(origin[0], origin[1], readWidth, readHeight);
       scores.push(objective.score(nativeGrayCrop(raster, rect, origin))[0]);
+      if (candidate.name === 'current') baselineRaster = new Uint8ClampedArray(raster.data);
+      let changed = 0;
+      for (let i = 0; i < raster.data.length; i += 4)
+        if ([0, 1, 2, 3].some((k) => raster.data[i + k] !== baselineRaster[i + k])) changed++;
+      effects.push(changed);
+      const family = candidate.name.startsWith('number/')
+        ? 'number'
+        : candidate.name.startsWith('glyph/')
+          ? 'glyph'
+          : 'global';
+      const applicable =
+        candidate.name !== 'current' &&
+        (family === 'number'
+          ? e.face.manaSymbols.some((s) => /^\d+$/.test(s))
+          : family === 'glyph'
+            ? ['W', 'U', 'B', 'R', 'G'].includes(e.face.manaSymbols.at(-1))
+            : true);
+      if (applicable && !sentinels.has(family))
+        sentinels.set(family, { candidate, raster: new Uint8ClampedArray(pixels(blank).data) });
+    }
+    for (const [family, sentinel] of sentinels) {
+      const d = sentinel.candidate.delta,
+        user = e.face.symbolAdjustment?.mana ?? {},
+        mana = { ...user };
+      for (const key of ['dx', 'dy', 'spacing'])
+        if (d[key] !== undefined) mana[key] = (user[key] ?? 0) + d[key];
+      for (const key of ['scaleX', 'scaleY'])
+        if (d[key] !== undefined) mana[key] = (user[key] ?? 1) * d[key];
+      for (const key of ['numberDx', 'numberDy'])
+        if (d[key] !== undefined) mana[key] = (user[key] ?? 0) + d[key];
+      if (d.numberScale !== undefined) mana.numberScale = (user.numberScale ?? 1) * d.numberScale;
+      if (d.glyph) {
+        const s = e.face.manaSymbols.at(-1),
+          old = user.glyphs?.[s] ?? {};
+        mana.glyphs = {
+          ...user.glyphs,
+          [s]: {
+            scale: (old.scale ?? 1) * d.glyph.scale,
+            dx: (old.dx ?? 0) + d.glyph.dx,
+            dy: (old.dy ?? 0) + d.glyph.dy,
+          },
+        };
+      }
+      const actual = await composeCardTexture(
+        { ...input, face: { ...e.face, symbolAdjustment: { ...e.face.symbolAdjustment, mana } } },
+        'inspect',
+        signal,
+        hooks,
+      );
+      try {
+        const data = pixels(actual).data;
+        candidateParity = 0;
+        for (let i = 0; i < data.length; i++)
+          candidateParity = Math.max(candidateParity, Math.abs(data[i] - sentinel.raster[i]));
+        candidateParities[family] = candidateParity;
+        if (candidateParity !== 0)
+          throw Error('Prepared trial differs from actual native candidate: ' + candidateParity);
+      } finally {
+        actual.width = actual.height = 0;
+      }
+    }
+    for (const kind of ['number/', 'glyph/']) {
+      const applicable =
+        kind === 'number/'
+          ? e.face.manaSymbols.some((s) => /^\d+$/.test(s))
+          : ['W', 'U', 'B', 'R', 'G'].includes(e.face.manaSymbols.at(-1));
+      const indexes = candidates.flatMap((c, i) => (c.name.startsWith(kind) ? [i] : []));
+      if (applicable && indexes.length && !indexes.some((i) => effects[i] > 0))
+        throw Error('Calibration control produced no pixel changes: ' + kind);
     }
     return {
       parity,
       regionParity,
+      candidateParity,
+      candidateParities,
+      effects,
       trialReadbackPixels: readWidth * readHeight,
       nativePng: native.toDataURL().split(',')[1],
       scores,
