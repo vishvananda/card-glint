@@ -1,7 +1,7 @@
 # Softbox gloss experiment
 
-This branch tests restrained clear varnish on the right card of the private
-three-card frame preview. The two controls keep their frozen renderer. Frame
+The approved softbox treatment now replaces the old gloss effect, with a 10%
+strength increase. All three cards in the private frame preview share it. Frame
 assets, flat overlays and accuracy scores are unchanged; this is not a release.
 
 The native face pass receives surface positions and a camera recovered from the
@@ -11,18 +11,18 @@ sets its strength. This is an area-reflection approximation, not integrated GGX.
 The lamp is defined in card-height world units. Pointer position and elapsed time
 have no direct lighting effect. Existing cardstock modulates the coating.
 
-The private page previously combined projection and model transforms. Its right
-card now separates them while retaining exactly the same projected geometry.
-Its surface normal follows the actual transformed plane. A separate renderer
-keeps the two controls on their original lighting. The experiment adds no public
-finish enum or new host API. Preview export uses the same virtual studio.
+The preview uses the normalized 2D virtual studio with physical posed normals.
+Its visual tilt and optical normal use the same bounded angles: vertical rotation
+is reduced from 17.2° to 14.9°, horizontal rotation retains 21.8°, and the combined
+angle is capped at 22°. The card motion springs remain host-owned. All three
+cards again share one renderer and one lighting model; export uses that model.
 
 Prepare a new local directory from the existing private preview:
 
 ```sh
 npm run build
 node games/magic/tools/accuracy/studio-gloss-preview.mjs \
-  BASE_SITE NEW_SITE dist/lib
+  BASE_SITE NEW_SITE dist/lib SURFACE_POSE
 python3 -m http.server --directory NEW_SITE
 node tests/studio-gloss.mjs
 ```

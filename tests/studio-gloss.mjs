@@ -130,15 +130,51 @@ try {
         added: sum,
       });
     }
+    const { IDENTITY } = await import('/packages/browser/src/index.ts');
+    function billboard(normal, pointer, time = 0) {
+      renderer.updateScene([
+        {
+          id: 1,
+          card: 1,
+          finish: 'gloss',
+          normal,
+          transform: [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
+        },
+      ]);
+      renderer.render({ viewProjection: IDENTITY, pointer, time, clear: [0, 0, 0, 0] });
+      const bytes = new Uint8Array(output.width * output.height * 4);
+      gl.readPixels(0, 0, output.width, output.height, gl.RGBA, gl.UNSIGNED_BYTE, bytes);
+      return bytes;
+    }
+    const twoD = billboard([0, 0, 1], [0.5, 0.5]),
+      twoDFixed = billboard([0, 0, 1], [0.9, 0.1], 50);
+    const turned = billboard(pose(0, -0.12).normal, [0.5, 0.5]);
+    let twoDPointerChanges = 0,
+      twoDPoseChanges = 0;
+    for (let i = 0; i < twoD.length; i++) {
+      if (twoD[i] !== twoDFixed[i]) twoDPointerChanges++;
+      if (twoD[i] !== turned[i]) twoDPoseChanges++;
+    }
     // Settling the pose does not cause per-frame preparation/readback work.
     const before = renderer.metrics;
     for (let i = 0; i < 10; i++)
       renderer.render({ viewProjection: projection, pointer: [i / 10, 0.2], time: i });
     const after = renderer.metrics;
     renderer.dispose();
-    return { pointerChanges, rollCompared, rollError, samples, before, after };
+    return {
+      pointerChanges,
+      rollCompared,
+      rollError,
+      twoDPointerChanges,
+      twoDPoseChanges,
+      samples,
+      before,
+      after,
+    };
   });
   assert.equal(results.pointerChanges, 0, 'A fixed pose must ignore cursor/time');
+  assert.equal(results.twoDPointerChanges, 0, '2D hosts must share fixed-light behavior');
+  assert.ok(results.twoDPoseChanges > 1000, '2D gloss must follow the supplied normal');
   assert.ok(results.rollCompared > 10000);
   assert.ok(results.rollError <= 1, 'Softbox rotates with the printed face');
   const samples = results.samples;

@@ -5,8 +5,9 @@ Each treatment has a small shader module under `packages/browser/src/gpu`.
 
 ## Gloss and foil
 
-`gloss` adds a clear varnish reflection and a broad studio highlight without a
-rainbow pigment tint. Prismatic foil mixes two directional mylar spectra; cold
+`gloss` reflects a fixed softbox through restrained clear varnish. The reflection
+moves with the surface pose and can leave the face; cursor position and elapsed
+time alone do not move the light. Prismatic foil mixes two directional mylar spectra; cold
 foil uses a silver response, and Opal combines nacre colors with contour relief.
 These treatments reuse the prepared face, edge mask and coverage textures.
 They do not allocate resources or read pixels while a card moves.
@@ -93,3 +94,19 @@ CI checks silhouette pixels against Rust picking, overlap, masks, exports,
 anchored window scenes, card-attached painted floors, light/dark floor contrast,
 traveling caustics and cache/pass reuse. These are software-rendered correctness tests,
 not hardware FPS or proof of physical accuracy.
+
+## Gloss coordinates
+
+The native 3D pass uses world positions, world-space surface normals and a camera
+recovered from the view-projection matrix. Normalized 2D scenes with the identity
+view-projection use an upright virtual studio, with a camera 2.1 card heights
+away. The public `foilShader()` helper uses that same virtual studio for gloss,
+so existing host materials need no new uniforms. Hosts should supply the actual
+posed normal even for ordinary gloss; pointer movement alone no longer drives it.
+The virtual studio assumes no independent in-plane rotation. Native 3D scenes
+with a real view-projection retain the complete geometry and camera.
+
+The light is an analytic blurred rectangle, approximating a rough coating rather
+than integrating a GGX BRDF. Cardstock keeps its stable grain. Other foil and
+living treatments retain their own lighting. Gloss changes do not affect flat
+printing calibration scores.

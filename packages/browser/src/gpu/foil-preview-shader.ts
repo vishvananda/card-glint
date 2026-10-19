@@ -6,7 +6,7 @@ import { STUDIO_GLOSS_GLSL } from './studio-gloss-shader.js';
 // Shared by the DOM motion fixture and the 3D card face pass. Preview finishes
 // are presentation settings, not inventory finish identifiers.
 export function foilShader(
-  options: { artWindows?: 'array' | 'pair'; liquid?: boolean; studioGloss?: boolean } = {},
+  options: { artWindows?: 'array' | 'pair'; liquid?: boolean } = {},
 ): string {
   const artWindow =
     options.artWindows === 'pair'
@@ -32,7 +32,7 @@ uniform float hasWave;
 vec3 previewInk(vec3 c) { return mix(c*12.92,1.055*pow(max(c,vec3(0.)),vec3(1./2.4))-.055,step(vec3(.0031308),c)); }
 vec3 previewLinear(vec3 c) { return mix(c/12.92,pow(max((c+.055)/1.055,vec3(0.)),vec3(2.4)),step(vec3(.04045),c)); }
 ${FOIL_REFLECTION_GLSL}
-${options.studioGloss ? STUDIO_GLOSS_GLSL : ''}
+${STUDIO_GLOSS_GLSL}
 ${artWindow}
 // Gameplay mask alpha is stored unchanged in a linear R8 red channel.
 float etchMask(vec2 uv) { return texture2D(mask,uv).r*hasMask; }
@@ -124,7 +124,7 @@ const vec2 dirNeg35=vec2(.8191520,-.5735764);
 vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
   vec3 base=previewInk(texture2D(face,uv).rgb);
   if(previewKind<.5) return base;
-  ${options.studioGloss ? 'if(previewKind==8.) return studioGloss(base,normal,normalize(studioCamera.xyz-studioPosition*studioCamera.w),studioPosition);' : ''}
+  if(previewKind==8.) return studioCardGloss(uv,base,normal);
   vec2 cardUv=vec2(uv.x,1.-uv.y);
   vec2 ptr=foilPointer(normal);
   vec2 bg=foilSweepOffset(ptr);
@@ -138,20 +138,6 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
   vec3 lamp=normalize(vec3((ptr-.5)*vec2(1.35,-1.35)+vec2(-.28,.36),1.));
 
   if(previewKind==9.)return holofoil(uv,base,normal,view,317./4294967295.,holofoilGrainFilter);
-  if(previewKind==8.) {
-    // Glossy card finish: pack-fresh clear varnish sheen + soft radial studio glare + subtle ink-gloss catch.
-    float sweep=dot(cardUv*vec2(.86,1.20)-(bg-.5)*1.25,dir133)-.42;
-    float coatBand=exp(-(sweep*sweep)*5.5);
-    float stripAxis=satinStripAxis(uv,normal,view);
-    float strip=exp(-(stripAxis*stripAxis)*34.);
-    float fineLine=smoothstep(.28,.90,etched)*art;
-    float frameLines=smoothstep(.74,.96,etched*(1.-art));
-    float inkGloss=1.+clamp(fineLine*.22+frameLines*.34,0.,1.);
-    vec3 clearCoat=vec3(.97,.98,1.)*((.032+coatBand*.092+strip*.062)*spot+innerCore*.052)*inkGloss;
-    vec3 res=foilSheenBlend(base,clearCoat*(1.+satinHoverGain*.25));
-    // Keep clear varnish slightly softer independently of optional cardstock.
-    return mix(base,applyStudioGlare(res,rT,.52),.9);
-  }
   if(previewKind==1.) {
     // Etched gold foil: embossed contour bevels, warm champagne-gold leaf, and micro-sparkle (+10% gold highlight).
     float fineLine=smoothstep(.24,.88,etched)*art;

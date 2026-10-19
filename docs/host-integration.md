@@ -101,6 +101,13 @@ It provides linear RGB face samples and unmodified mask alpha in a linear R8
 texture. `previewFoil(uv, normal, view)` returns sRGB; `previewLinear` converts it
 for a host that performs output color conversion.
 
+Gloss uses a fixed virtual softbox and camera, deriving a posed card from the
+supplied normal. Supply the actual surface normal for gloss as well as foil;
+pointer movement alone no longer moves its reflection. Normals use world Y up;
+a host with a CSS Y-down normal must convert that axis. Native 3D scenes with a
+non-identity view-projection use their actual surface positions and camera.
+The gloss helper adds no required uniforms or samplers.
+
 The shader declares `previewKind` (0 ordinary, 1 etched, 2 prismatic, 3 cold,
 4 opal, 8 gloss, 9 holofoil), `satinCompact`, `satinHoverGain`, `wave` and `hasWave`. Pointer defaults to
 (0.5,0.5), with normals/view normalized in the same coordinate system. Aspect is
