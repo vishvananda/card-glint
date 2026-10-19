@@ -223,8 +223,8 @@ are used. These are procedural test faces, not a measurement of fetching and
 painting 400 Magic cards. Preparation includes renderer initialization and raster
 painting, while warm draws reuse every face and mask.
 
-The checked software-GPU run compares the 0.6 API implementation before and after
-cache/uniform optimizations. Five warm samples follow two initial draws. CPU
+The timing table below compares the initial 0.6 API implementation before and after
+cache/uniform optimizations, before the studio-lighting integration. Five warm samples follow two initial draws. CPU
 submission includes synchronous driver stalls; it does **not** measure completed
 GPU work. Separate non-disjoint timer queries measure the full submitted scene.
 
@@ -257,3 +257,13 @@ this environment, so it provides **no physical-device GPU validation**. These
 numbers establish the removal of repeated work, not an expected frame rate on
 an M1, phone or other real GPU. Run the fixture on those devices before making
 hardware performance claims.
+
+The [merged 0.6 capture](../evidence/distinct-faces-060.json) again records zero
+warm printing rebuilds, uniform-location queries, compilation, uploads or mask
+readbacks across all 400 faces. Its CPU submission median was 19.8 ms and its
+completed software-GPU median was 6999.7 ms. These later timings are a separate
+run, not a direct comparison with the earlier table; they establish no hardware
+frame-rate claim. A shader-only control using the earlier lighting in the same
+session also took about 7.8 seconds of completed software-GPU work. Host load
+and software rasterization strongly affect these measurements; the stable
+preparation counters are the regression gates.

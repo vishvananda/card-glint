@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
+import { preBattleSource } from './magic-battle-source-guard.mjs';
 
 const replay = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-expansion-dash-native.json'),
@@ -19,7 +20,7 @@ for (const row of replay.changes.filter((r) => r.status === 'measured-improvemen
   assert.ok(row.component.after > row.component.before, row.name);
 }
 const wrapperHash = createHash('sha256')
-  .update(await readFile('games/magic/src/presentation/rules-wrap.ts'))
+  .update(await preBattleSource('games/magic/src/presentation/rules-wrap.ts'))
   .digest('hex');
 if (wrapperHash !== replay.sourceExtension['rules-wrap.ts'].after) {
   const typography = JSON.parse(
