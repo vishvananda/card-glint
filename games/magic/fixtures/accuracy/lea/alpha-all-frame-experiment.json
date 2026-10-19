@@ -1,0 +1,195 @@
+{
+  "schema": 1,
+  "rendererVersion": "0.5.3",
+  "rendererCommit": "994238d",
+  "experimentCommit": "35c8b46de0856aa85311bb46fb934b7f8605d714",
+  "scope": "Experimental material reconstruction only; supplied frame assets are not shipped in the renderer.",
+  "wording": "Reviewed original rules and type lines; shared 0.5.3 Alpha text model.",
+  "normalization": "Frozen per-card scale, translation, and accepted affine rotation/shear. Rejected poses excluded from training and accepted aggregates.",
+  "acceptedCards": 292,
+  "historicalCards": 295,
+  "nativeBaselineParity": 295,
+  "synthetic": {
+    "name": "Volcanic Island",
+    "referenceSet": "leb",
+    "excludedFromFitsAndScores": true
+  },
+  "art": "Every full scan provides more estimated illustration pixels than its art_crop. Experimental artwork is reference-derived and not independent accuracy evidence.",
+  "effects": {
+    "printDots": {
+      "amount": 0.35,
+      "period": 2,
+      "variation": 0.5,
+      "artwork": false
+    },
+    "printedInnerBorder": true,
+    "outerSurroundPrinted": false,
+    "cardstock": 0.25,
+    "gloss": "whole card",
+    "effectsIncludedInScores": false
+  },
+  "cohort": "Reconstruction holdouts were previously inspected development scans, not a blind test. Land palettes pool all 19 historical lands. White reuses its reviewed fit; all materials replay through 0.5.3.",
+  "materials": [
+    {
+      "material": "W",
+      "cards": 45,
+      "accepted": 45,
+      "reviewOnly": [],
+      "sourceSha256": "b996c0acacd18b33f406f2d3647ff93c796e9159069d2a0ea333b40e7667f85e",
+      "geometrySha256": "ca7a94df5e2180774339cc2054ad2512d4333ca9ebcdb975538f5e04975dafdd",
+      "candidateSha256": "9c3ac6a50dad32a5039418056a51b2dd9d904df0139311b44a7333c4802988df",
+      "scores": {
+        "released": {
+          "frame100": 79.746747074511,
+          "structure100": 74.48252135669223
+        },
+        "best": {
+          "frame100": 91.78134334776938,
+          "structure100": 83.90401454957505
+        }
+      },
+      "scoreReceiptSha256": "dcf830e6b805608bc97f89b968b954ad9c0929b406082a3e0966e538965055c1",
+      "baselineParity": 45
+    },
+    {
+      "material": "U",
+      "cards": 46,
+      "accepted": 46,
+      "reviewOnly": [],
+      "sourceSha256": "e2f39df55f502e4aca4387e9a8bd9fb90ac2125c001f502f7c709a4b3ac46294",
+      "geometrySha256": "9146fa5e8df71017928e8a03411529790616f5b8300173406315517eb0cb74a2",
+      "candidateSha256": "9767c89aef4ec7955b9123c19fd915ca68ff6e17a903ea6e031f74d88f0760ba",
+      "scores": {
+        "released": {
+          "frame100": 64.09558852445065,
+          "structure100": 66.3296661729096
+        },
+        "best": {
+          "frame100": 85.94301526989315,
+          "structure100": 80.47005245482184
+        }
+      },
+      "scoreReceiptSha256": "cfa8b6ee0a8a8a6473b3aa1578d27c8483bf3f438d979723b89e5a1907f3e68e",
+      "baselineParity": 46
+    },
+    {
+      "material": "B",
+      "cards": 46,
+      "accepted": 43,
+      "reviewOnly": [
+        {
+          "id": "6ff1cefc-62cb-4525-b0c5-2b09603b4314",
+          "name": "Deathlace"
+        },
+        {
+          "id": "d42a6350-b16b-4e10-a273-e6cbb55dcb7a",
+          "name": "Pestilence"
+        },
+        {
+          "id": "f13ad58a-6f9b-420a-bac1-40929f5e616a",
+          "name": "Nether Shadow"
+        }
+      ],
+      "sourceSha256": "63471d42061aa362333bdb0007c08fe67b3ae8b026c9a6f9a313aa79c2fe215c",
+      "geometrySha256": "f9a8a3e5465eb43f181a7b25086495a32f8b7a5878138b933b1ac4259fa8330e",
+      "candidateSha256": "7c6ec2eb0d37f78036cd103f9e29cd44ae7ac712ee39adbea22e79484fc25d07",
+      "scores": {
+        "released": {
+          "frame100": 66.99188383032143,
+          "structure100": 66.49744586141374
+        },
+        "best": {
+          "frame100": 79.81239762827241,
+          "structure100": 76.01509889544418
+        }
+      },
+      "scoreReceiptSha256": "66ba784a86aed5187e157b41ad9a0839a9c8673fa0e209177dd96c6e318b7970",
+      "baselineParity": 46
+    },
+    {
+      "material": "R",
+      "cards": 46,
+      "accepted": 46,
+      "reviewOnly": [],
+      "sourceSha256": "71d317895dd737215f70afe708bc779121fa252b79937117309f5fe69800b932",
+      "geometrySha256": "526ad569607f4a7dba864f41da8835fdd03c3f5f86e3593100e254ebcff3d7fd",
+      "candidateSha256": "b10ad6a6fd2fc665318b9a5d29cf32767102f122a7df841c777d40ec5df67b10",
+      "scores": {
+        "released": {
+          "frame100": 67.14437407987054,
+          "structure100": 67.36174044676623
+        },
+        "best": {
+          "frame100": 77.8513005690795,
+          "structure100": 75.0593807381578
+        }
+      },
+      "scoreReceiptSha256": "691d3c1bba09f887fc30358163e6b115392b9763358ce5ec6471758718e53983",
+      "baselineParity": 46
+    },
+    {
+      "material": "G",
+      "cards": 46,
+      "accepted": 46,
+      "reviewOnly": [],
+      "sourceSha256": "4120a5057ad2cd7083133d83b1119ebaac59fd39ce17df76063f2584d616c8c8",
+      "geometrySha256": "4faf4dba293d7a8e13cb13704ba468417adbfaf8a652fbf24ce2985385adee4b",
+      "candidateSha256": "b39578dd4ed3a4f0f1616191d7b5c187dddadfb4953da82d1faabb5603ce401c",
+      "scores": {
+        "released": {
+          "frame100": 59.20797798818457,
+          "structure100": 64.36269196679184
+        },
+        "best": {
+          "frame100": 81.04039270834046,
+          "structure100": 73.87231835776416
+        }
+      },
+      "scoreReceiptSha256": "797ef09e4b5131683b2dd258d5c6afde056a3d1b1f7c7df80a9e49dd7c281d91",
+      "baselineParity": 46
+    },
+    {
+      "material": "A",
+      "cards": 47,
+      "accepted": 47,
+      "reviewOnly": [],
+      "sourceSha256": "44adadcfa5d5081587a1420120e73ee5164516c0bf69f58a4dab756253f1ba61",
+      "geometrySha256": "43b52f6613a18fa3490e817bec0b3f5c75fba25fc4da03d6dd9e1934036bcaca",
+      "candidateSha256": "07c7ee2af904802100cfdffc0175dcf32a6f3220c57d26361f54dc56d1d4eb51",
+      "scores": {
+        "released": {
+          "frame100": 53.860581064175165,
+          "structure100": 60.41160454972498
+        },
+        "best": {
+          "frame100": 76.19651338788317,
+          "structure100": 76.01093064926637
+        }
+      },
+      "scoreReceiptSha256": "602d4b45349232583ad35dc3a7ed0b4fe1c08ef434d8438847575cc2496af396",
+      "baselineParity": 47
+    },
+    {
+      "material": "L",
+      "cards": 19,
+      "accepted": 19,
+      "reviewOnly": [],
+      "sourceSha256": "51577a142265b341be1114a011a79441a1abb1fbdcaf3473982e73f4ff4cc37a",
+      "geometrySha256": "d1f67db0e349d612aa7907649dcd3fc97ddbcd60fd8a3e4d3aee3ed6fe3f4d6d",
+      "candidateSha256": "36e04439abd57a0dcc26b6f6d9e2638d3d3becae4816ef9d961adce2f6fe60b2",
+      "scores": {
+        "released": {
+          "frame100": 62.24942617815833,
+          "structure100": 62.83364546369494
+        },
+        "best": {
+          "frame100": 83.75267971108212,
+          "structure100": 80.18720233017149
+        }
+      },
+      "scoreReceiptSha256": "a4406e0ab64bf780af031866d99262dc484affe3feddbb975000f702d79ce4b4",
+      "baselineParity": 19
+    }
+  ],
+  "scorerSha256": "9aa8a104719e9a8512fe064d0b87e78c354561313a3df41b53f3c4a66e0186d1"
+}
