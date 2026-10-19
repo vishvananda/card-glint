@@ -40,6 +40,68 @@ try {
       };
     },
   };
+  const alpha = api.describeSetCalibration('LEA');
+  assert.equal(alpha.supported, true);
+  assert.equal(alpha.adapter, 'title');
+  assert.deepEqual([...new Set(alpha.controls.map((c) => c.group))], ['lettering']);
+  assert.equal(alpha.controls.length, 6);
+  const emptyAlpha = api.createSetCalibrationCandidate('lea', alpha.revision, {});
+  assert.deepEqual(emptyAlpha.values, {});
+  const alphaFace = {
+    name: 'Air Elemental',
+    setCode: 'lea',
+    typeLine: 'Summon Elemental',
+    colors: ['U'],
+  };
+  assert.equal(
+    calibrationForFace({ ...alphaFace, setCalibrationCandidate: emptyAlpha }),
+    undefined,
+  );
+  assert.equal(earlyReprintFrame({ ...alphaFace, setCalibrationCandidate: emptyAlpha }), undefined);
+  const editedAlpha = api.createSetCalibrationCandidate('lea', alpha.revision, {
+    'title.dx': 2,
+    'title.width': 1.02,
+  });
+  const title = api.resolveSetTitleCalibration(editedAlpha);
+  assert.equal(title.title.dx, 2);
+  assert.equal(title.title.width, 1.02);
+  assert.equal(api.exportSetTitleCalibration(editedAlpha).revision, alpha.revision + 1);
+  assert.throws(
+    () => api.createSetCalibrationCandidate('lea', alpha.revision, { 'title.dx': 31 }),
+    /Invalid/,
+  );
+  assert.throws(
+    () => api.createSetCalibrationCandidate('lea', alpha.revision, { 'frames.W.frame.0': 0.01 }),
+    /Unsupported/,
+  );
+  assert.throws(() => api.createSetCalibrationCandidate('lea', alpha.revision - 1, {}), /revision/);
+  assert.throws(() => api.exportSetCalibrationProfile(editedAlpha), /exportSetTitleCalibration/);
+  const { withSetCalibration } = await vite.ssrLoadModule(
+    '/games/magic/src/calibration/face-editor.ts',
+  );
+  assert.equal(withSetCalibration(alphaFace, editedAlpha).setCalibrationCandidate, editedAlpha);
+  assert.throws(
+    () => withSetCalibration({ ...alphaFace, setCode: 'leb' }, editedAlpha),
+    /another set/,
+  );
+  assert.throws(
+    () => withSetCalibration({ ...alphaFace, frameStyle: 'modern' }, editedAlpha),
+    /no set calibration adapter/,
+  );
+  const { paintLegacyCalibratedTitle } = await vite.ssrLoadModule(
+    '/games/magic/src/presentation/legacy-calibrated-title.ts',
+  );
+  assert.equal(paintLegacyCalibratedTitle({}, alphaFace, 34, 48, 350), false);
+  assert.equal(
+    paintLegacyCalibratedTitle(
+      {},
+      { ...alphaFace, setCalibrationCandidate: emptyAlpha },
+      34,
+      48,
+      350,
+    ),
+    false,
+  );
   for (const set of ['fem', '4ed', 'chr']) {
     const face = {
       name: 'Probe',
@@ -101,7 +163,7 @@ try {
     ])
       assert.throws(() => api.createSetCalibrationCandidate(set, description.revision, invalid));
   }
-  assert.equal(api.describeSetCalibration('LEA').supported, false);
+  assert.equal(api.describeSetCalibration('LEB').supported, false);
   console.log(
     'Calibration editor: native selectors, zero parity, bounds, immutable profiles and cache identities pass',
   );

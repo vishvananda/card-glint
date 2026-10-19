@@ -1,3 +1,8 @@
+import {
+  setTitleCalibration,
+  titleCalibrationControls,
+  type SetTitleCalibration,
+} from './title-profiles.js';
 import { setCalibrationProfile } from './profiles.js';
 import { calibrationControls } from './editor-controls.js';
 import type { SetCalibrationProfile } from './types.js';
@@ -8,6 +13,7 @@ import type {
 } from './editor-types.js';
 import { validateFrameBlackPoint } from '../presentation/frame-blackpoint.js';
 export * from './editor-types.js';
+export type { SetTitleCalibration } from './title-profiles.js';
 
 function freeze<T>(value: T): T {
   if (value && typeof value === 'object') {
@@ -18,16 +24,20 @@ function freeze<T>(value: T): T {
 }
 export function describeSetCalibration(set: string): SetCalibrationDescription {
   const code = set.toLowerCase();
-  const profile = setCalibrationProfile(code);
+  const profile = setCalibrationProfile(code),
+    title = setTitleCalibration(code);
   return freeze({
     schema: 1,
     set: code,
-    supported: !!profile,
-    revision: profile?.revision ?? null,
-    controls: profile ? calibrationControls(profile) : [],
+    supported: !!(profile || title),
+    adapter: title ? 'title' : 'profile',
+    revision: profile?.revision ?? title?.revision ?? null,
+    controls: profile ? calibrationControls(profile) : title ? titleCalibrationControls(title) : [],
     notice: profile
       ? 'Ordinary ABU/Fourth plates only. Geometry, lettering, symbols and pigment use the native painter. Source assets and masks remain fixed.'
-      : 'This set does not yet have a consolidated profile adapter. Existing symbol and text diagnostic tools remain available.',
+      : title
+        ? 'Name controls use the native Alpha painter. Offsets are deltas from the existing shared title placement. Frame, type, body, symbols and footer remain on their established calibration; full-profile editing is not available yet.'
+        : 'This set does not yet have a consolidated profile adapter. Existing symbol and text diagnostic tools remain available.',
   });
 }
 
@@ -73,7 +83,7 @@ export function createSetCalibrationCandidate(
     baseRevision,
     values: clean,
   });
-  validateProfile(buildCandidate(candidate));
+  if (!setTitleCalibration(set)) validateProfile(buildCandidate(candidate));
   return candidate;
 }
 
@@ -88,7 +98,8 @@ function write(profile: SetCalibrationProfile, id: string, value: CalibrationVal
   target[parts.at(-1)!] = value;
 }
 function buildCandidate(candidate: SetCalibrationCandidate): SetCalibrationProfile {
-  const base = setCalibrationProfile(candidate.set)!;
+  const base = setCalibrationProfile(candidate.set);
+  if (!base) throw Error('This adapter exports title calibration; use exportSetTitleCalibration');
   const profile = structuredClone(base);
   // Optional RGB gains must be initialized as a complete tuple, even when
   // only one channel is edited. Sparse arrays would create NaN materials.
@@ -160,4 +171,27 @@ export function exportSetCalibrationProfile(
 ): SetCalibrationProfile {
   const profile = resolveSetCalibrationCandidate(candidate);
   return freeze({ ...structuredClone(profile), revision: profile.revision + 1 });
+}
+
+/** Resolve a bounded title-only proposal without changing the frame/body adapter. */
+export function resolveSetTitleCalibration(
+  candidate: SetCalibrationCandidate,
+): SetTitleCalibration {
+  const base = setTitleCalibration(candidate.set);
+  if (!base) throw Error('This set has no title calibration adapter');
+  const checked = createSetCalibrationCandidate(
+    candidate.set,
+    candidate.baseRevision,
+    candidate.values,
+  );
+  const title = { ...base.title };
+  for (const [id, value] of Object.entries(checked.values)) {
+    const key = id.slice(6) as keyof typeof title;
+    title[key] = value as number;
+  }
+  return freeze({ ...base, title });
+}
+export function exportSetTitleCalibration(candidate: SetCalibrationCandidate): SetTitleCalibration {
+  const profile = resolveSetTitleCalibration(candidate);
+  return freeze({ ...profile, revision: profile.revision + 1 });
 }

@@ -1,3 +1,4 @@
+import { paintLegacyCalibratedTitle } from './legacy-calibrated-title.js';
 import {
   type CanvasContext,
   type CanvasRaster,
@@ -188,7 +189,8 @@ export function paintRetroFace(
   else if (revised) paintRevisedTitle(c, face.name, titleX, titleY, titleWidth);
   else if (
     !paintEarlyReprintTitle(c, face, titleX + titleWidth) &&
-    !paintEarlyExpansionTitle(c, face, titleX + titleWidth)
+    !paintEarlyExpansionTitle(c, face, titleX + titleWidth) &&
+    !paintLegacyCalibratedTitle(c, face, titleX, titleY, titleWidth)
   )
     c.fillText(face.name, titleX, titleY, titleWidth);
   c.restore();

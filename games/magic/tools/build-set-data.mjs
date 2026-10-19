@@ -80,6 +80,10 @@ try {
     );
     put(code, 'setCalibrationProfiles', code, profile);
   }
+  const { profile: alphaTitle } = await server.ssrLoadModule(
+    '/games/magic/src/calibration/sets/lea-title.ts',
+  );
+  put('lea', 'setTitleCalibrations', 'lea', alphaTitle);
   for (const [file, name] of [
     ['printing-blackpoint-values', 'printingBlackPoints'],
     ['printing-stock-values', 'printingStocks'],

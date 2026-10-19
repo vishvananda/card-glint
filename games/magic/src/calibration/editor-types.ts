@@ -28,6 +28,8 @@ export interface SetCalibrationDescription {
   readonly schema: 1;
   readonly set: string;
   readonly supported: boolean;
+  /** Title-only adapters retain the legacy frame and body; other controls are unavailable. */
+  readonly adapter?: 'profile' | 'title';
   readonly revision: number | null;
   readonly controls: readonly CalibrationControl[];
   readonly notice: string;
