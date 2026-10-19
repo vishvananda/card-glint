@@ -4,53 +4,57 @@
   "version": "0.5.3",
   "publishedBrowserSha256": "30d91f4103daa4709a9b365e93b592dbcf233ad470bbc6d0eaf185140ea89ee4",
   "sourceFiles": {
-    "app.js": "64a8e5dfc0ee734438f482f131ab4d14a87fa165dcf23bcfeebd640ab70015c1",
-    "index.html": "b1fd02de7b11b0a54cc4dd61ce7b66a7a89320ace44df03a35e2a421bfc28874",
-    "style.css": "1801b5e5a8093e044e778c7611ee7af6c5429f5e9b221b43d8440638b1abe6cf",
-    "overlays.js": "f124e4ca5f6f13487aba426fff7513212c5c267c885e3d142395169d02bf476d",
-    "overlay-worker.js": "e297061e9669d13cdcaa8c1b3b72302cb6f73d7dc8902e2c037f224f9be8dd76",
+    "app.js": "c7560756dae66a8f90060f80f182e5a8eed8e9acfbf2e9db6979de8ccce3cded",
+    "index.html": "3c30a05a6de705148c25995bb5de9a9f17a648e79c3d8fe39b7496151a5d6e30",
+    "style.css": "bd5143ce58f33e7709e59f37cec4b2557b1f38d46e190308f95f94606d277edc",
+    "overlays.js": "aa7c07528db68a0e207fd0975b19cea68e7dfe60982902cf60b7b03c98f013f0",
+    "overlay-worker.js": "55933b4cadde41c279f9d1cb458cec0264666e28965a249406fe7df637992aba",
     "cardforge-motion/surface-pose.js": "1a875c337d28d2a359a7a6f1d8d7c23f57a3c89c2825a30bee396ddb42ecdf77",
     "cardforge-motion/idle-motion.js": "93759a36d207eb55f8397e2e843742e226a6bb223afa0db24d16c7d54a989ce5",
     "cardforge-motion/preview-motion.js": "9465d5a8ab271473dc9e9a4deeec019fe92f009dff5f76dd9c08f249da2ed446"
   },
   "test": {
     "url": "https://tetrarcum.com/alpha/?card=e28de37e-84d5-4dc7-b36c-e14da5924729",
+    "physical": {
+      "pixels": 538,
+      "displayed": 538
+    },
     "cold": {
       "generation": 1,
-      "key": "redgreen:structure:",
-      "computeMs": 1675.0350000858307,
+      "key": "redgreen:fit:538x750:",
+      "computeMs": 36.02499997615814,
       "cached": false
     },
     "timing": [
       {
         "mode": "difference",
-        "mainThreadMs": 0.375,
+        "mainThreadMs": 0.8849999904632568,
         "generation": 1,
-        "key": "difference:structure:",
-        "computeMs": 200,
+        "key": "difference:fit:538x750:",
+        "computeMs": 61.6599999666214,
         "cached": false
       },
       {
         "mode": "transparent",
-        "mainThreadMs": 0.24500000476837158,
+        "mainThreadMs": 1.5049999952316284,
         "generation": 1,
-        "key": "transparent:structure:0.5",
-        "computeMs": 187.75,
+        "key": "transparent:fit:538x750:0.5",
+        "computeMs": 76.84500002861023,
         "cached": false
       },
       {
         "mode": "redgreen",
-        "mainThreadMs": 14.009999990463257,
+        "mainThreadMs": 2.409999966621399,
         "generation": 1,
-        "key": "redgreen:structure:",
+        "key": "redgreen:fit:538x750:",
         "cached": true,
         "computeMs": 0
       },
       {
         "mode": "difference",
-        "mainThreadMs": 13.360000014305115,
+        "mainThreadMs": 2.5500000715255737,
         "generation": 1,
-        "key": "difference:structure:",
+        "key": "difference:fit:538x750:",
         "cached": true,
         "computeMs": 0
       }
@@ -58,9 +62,32 @@
     "rawDifferencePixelErrors": 0,
     "independentHover": true,
     "cardforgeNormalParity": true,
-    "returnMinimum": 0.31844760609026446,
+    "returnMinimum": 0.31514789878838645,
     "reducedMotion": true,
     "errors": []
   },
-  "scope": "Chromium on macOS; CPU event-handler and worker timings, not GPU completion. Browser runtime copied from the verified published archive. Experimental assets are preview-only."
+  "scope": "Chromium on macOS; CPU event-handler and worker timings, not GPU completion. Browser runtime copied from the verified published archive. Experimental assets are preview-only.",
+  "displaySampling": {
+    "filter": "Pixel-area integration when reducing; linear interpolation when enlarging, before edge/difference calculation. No additional grain blur.",
+    "fitPhysicalPixelParity": {
+      "desktop2x": [
+        888,
+        1237
+      ],
+      "mobile2x": [
+        356,
+        496
+      ]
+    },
+    "sourcePixelMode": [
+      732,
+      1020
+    ],
+    "rawDifferencePixelErrors": 0,
+    "differentAirElementalOverlayPixels": 343171,
+    "airElementalView": [
+      538,
+      750
+    ]
+  }
 }
