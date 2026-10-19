@@ -1,4 +1,4 @@
-import { FOIL_PREVIEW_GLSL } from './foil-preview-shader.js';
+import { foilShader } from './foil-preview-shader.js';
 import { SURFACE_GLSL } from './surface-shader.js';
 import { DEFORMATION_GLSL } from './deformation-shader.js';
 import { HOLOGRAM_GLSL } from './hologram-shader.js';
@@ -23,6 +23,7 @@ flat out float printArtwork;
 flat out float rainFogDensity;
 uniform mat4 viewProjection;
 out vec2 v_uv;out vec3 v_normal;flat out float previewKind;flat out vec2 wearInfo;
+out vec3 studioPosition;flat out vec4 studioCamera;
 flat out vec4 surfaceInfo;flat out vec4 ripple0;flat out vec4 ripple1;flat out vec4 ripple2;flat out vec4 ripple3;
 void main(){
 vec2 pad=instanceSurface.w*vec2(1.,.18);
@@ -31,13 +32,19 @@ v_uv=local;v_normal=instanceNormal;previewKind=instanceFinish;wearInfo=instanceW
 cardstockAmount=instanceCardstock;printDotsInfo=instancePrintDots;
 rainFogDensity=instanceRainFog.x;printArtwork=instanceRainFog.y;
 surfaceInfo=instanceSurface;ripple0=instanceRipple0;ripple1=instanceRipple1;ripple2=instanceRipple2;ripple3=instanceRipple3;
-gl_Position=viewProjection*model*vec4(local,0.,1.);}`;
-const foil = FOIL_PREVIEW_GLSL.replace('uniform float previewKind;', 'flat in float previewKind;')
+vec4 world=model*vec4(local,0.,1.);
+studioPosition=world.xyz/world.w;
+vec4 eye=inverse(viewProjection)*vec4(0.,0.,1.,0.);
+studioCamera=abs(eye.w)>.00001?vec4(eye.xyz/eye.w,1.):vec4(normalize(eye.xyz),0.);
+gl_Position=viewProjection*world;}`;
+const foil = foilShader({ studioGloss: true })
+  .replace('uniform float previewKind;', 'flat in float previewKind;')
   .replaceAll('texture2D(mask,uv).r*hasMask', 'edgeCoverage(uv)')
   .replaceAll('texture2D(face,', 'printFace(');
 export const fragment = `#version 300 es
 precision highp float;
 in vec2 v_uv;in vec3 v_normal;flat in vec2 wearInfo;
+in vec3 studioPosition;flat in vec4 studioCamera;
 uniform sampler2D face;uniform sampler2D mask;uniform sampler2D overlay;uniform sampler2D coverage;
 uniform vec2 overlayFoil;
 uniform vec2 pointer;uniform vec4 artBounds[8];
