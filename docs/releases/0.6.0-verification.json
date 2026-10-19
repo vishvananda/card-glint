@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "version": "0.6.0",
+  "sourceCommit": "aec311c397cb5355f3382b802438c6dbdd9c7a4c",
+  "release": "https://github.com/vishvananda/card-glint/releases/tag/v0.6.0",
+  "publishedAt": "2026-10-19T16:36:48Z",
+  "cdn": "https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.6.0/browser.js",
+  "files": [
+    {
+      "name": "card-glint-0.6.0.tgz",
+      "bytes": 3225681,
+      "sha256": "ee095fa330c36eefaf1ccc0eaab6a5ae5efad979fb7cfb9d45229bf950302830"
+    },
+    {
+      "name": "card-glint-0.6.0-browser.zip",
+      "bytes": 3191013,
+      "sha256": "6357a183c0096fd162b0b320c6ca96c4fb58a54643fa3def36396750e06420b9"
+    }
+  ],
+  "verification": {
+    "publishedDownloads": "Both archives and both manifests downloaded and verified against the source revision and SHA-256 checksums.",
+    "cdn": "Published build.json matches the release manifest; immutable retry reuses the exact archive.",
+    "requiredLocalChecks": ["check", "build", "test:package", "test:browser", "test:showcase"],
+    "additionalLocalChecks": [
+      "strict wasm Clippy",
+      "Magic accuracy suite",
+      "Magic native compatibility",
+      "host sampling and texture arrays",
+      "worker composition including built public entry",
+      "normal lighting and PNG exports",
+      "coverage",
+      "400 distinct-face warm-cache counters",
+      "cardstock",
+      "release archives",
+      "CDN publication and retry"
+    ],
+    "flatCompatibility": "56 default compositions are pixel-identical; historical source proofs retain their exact guards.",
+    "scope": "Software-GPU tests are not hardware frame-rate evidence. CPU submission is not GPU completion."
+  },
+  "ci": {
+    "run": "https://github.com/vishvananda/card-glint/actions/runs/39286626038",
+    "statusAtPublication": "queued",
+    "incident": "https://www.githubstatus.com/incidents/8tzbpcnl75jp",
+    "note": "GitHub Actions and Pages delayed by the provider incident. Full automated matrix and Pages deployment remain pending; required local checks passed."
+  },
+  "mergedPullRequests": [8, 9]
+}
