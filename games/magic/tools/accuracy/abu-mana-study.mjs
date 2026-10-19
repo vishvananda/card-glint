@@ -6,9 +6,14 @@ import { readJson, writeJson, root, hash, sourceHash } from './common.mjs';
 import { cachedFetch } from './cache.mjs';
 import { openBrowser } from './browser.mjs';
 import { normalizedReference } from './abu-reference-cache.mjs';
-const [inputFile, posesDirectory, output, mode = 'global'] = process.argv.slice(2);
-assert.ok(['global', 'glyphs', 'glyphs-wide'].includes(mode));
-if (!output) throw Error('Usage: abu-mana-study.mjs INPUTS POSES OUT');
+const [inputFile, posesDirectory, output, mode = 'global', selection = 'sample'] =
+  process.argv.slice(2);
+assert.ok(['global', 'axes', 'glyphs', 'glyphs-wide'].includes(mode));
+assert.ok(['sample', 'all'].includes(selection));
+if (!output)
+  throw Error(
+    'Usage: abu-mana-study.mjs INPUTS POSES OUT [global|axes|glyphs|glyphs-wide] [sample|all]',
+  );
 const input = await readJson(inputFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json'));
 assert.equal(hash(await readFile(inputFile)), poses.inputHash);
@@ -44,10 +49,12 @@ try {
           );
         })
         .sort((a, b) => a.id.localeCompare(b.id));
-      for (const e of [
-        ...a.filter((e) => e.face.manaSymbols.length === 1).slice(0, 2),
-        ...a.filter((e) => e.face.manaSymbols.length > 1).slice(0, 3),
-      ])
+      for (const e of selection === 'all'
+        ? a
+        : [
+            ...a.filter((e) => e.face.manaSymbols.length === 1).slice(0, 2),
+            ...a.filter((e) => e.face.manaSymbols.length > 1).slice(0, 3),
+          ])
         selected.set(e.id, e);
     }
   entries = [...selected.values()];
@@ -63,6 +70,12 @@ try {
   await server.close();
 }
 const candidates = [{ name: 'current', delta: {} }];
+if (mode === 'axes')
+  for (const scaleX of [0.98, 1, 1.02])
+    for (const scaleY of [0.98, 1, 1.02]) {
+      if (scaleX === 1 && scaleY === 1) continue;
+      candidates.push({ name: `axes/${scaleX}/${scaleY}`, delta: { scaleX, scaleY } });
+    }
 if (mode === 'global')
   for (const dx of [-0.5, 0, 0.5])
     for (const dy of [-0.5, 0, 0.5])
@@ -154,6 +167,7 @@ try {
     inputHash: poses.inputHash,
     rendererHash,
     mode,
+    selection,
     methods: Object.fromEntries(
       await Promise.all(
         ['abu-mana-study.mjs', 'abu-mana-study-browser.mjs', 'abu-type-objective.mjs'].map(
