@@ -21,10 +21,13 @@ try {
     }),
   );
   await page.goto(url);
-  const result = await page.evaluate(async () => {
+  const entry = process.argv.includes('--built')
+    ? '/dist/lib/magic-presentation.js'
+    : '/games/magic/src/presentation.ts';
+  const result = await page.evaluate(async (entry) => {
     const base = location.origin;
     const code = `
-   import {composeCardTexture,cardTextureSize} from '${base}/games/magic/src/presentation.ts';
+   import {composeCardTexture,cardTextureSize} from '${base}${entry}';
    const local='local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")';
    async function fonts(){ for(const [family,style,weight] of [['Goudy','normal','400'],['Historic Symbols','normal','400'],['Beleren','normal','400 700'],['Beleren Small Caps','normal','700'],['MPlantin','normal','400'],['MPlantin','italic','400'],['Relay','normal','400'],['Artist Credit','normal','400'],['Matrix','normal','400 700'],['ModMatrix','normal','400 700']])self.fonts.add(await new FontFace('CardRenderer MTG '+family,local,{style,weight}).load()); }
    let fontReady;const loadFonts=()=>fontReady??=fonts();
@@ -90,7 +93,7 @@ try {
       URL.revokeObjectURL(workerUrl);
     }
     return rows;
-  });
+  }, entry);
   assert.deepEqual(
     result.slice(0, 4).map((r) => r.size),
     [
