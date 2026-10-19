@@ -10,7 +10,7 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image
-from scipy.ndimage import binary_dilation, binary_erosion, gaussian_filter
+from scipy.ndimage import binary_dilation, binary_erosion, gaussian_filter, grey_closing
 import torch
 import torch.nn.functional as F
 
@@ -41,6 +41,17 @@ def paper_mask(shape):
     return (v * v * (3 - 2 * v)).astype(np.float32), dict(kind='rect', rect=rect, feather=.002)
 
 
+def paper_ink_mask(rgb, paper):
+    """Dark strokes relative to nearby paper, including dark green/red stock.
+
+    An absolute luminance threshold wrongly classified the entire green box as
+    ink. Closing fills letter-sized pits without treating dark paper as text.
+    """
+    gray = gaussian_filter(rgb[..., :3] @ np.array([.2126, .7152, .0722]), .7)
+    backdrop = grey_closing(gray, size=(7, 7))
+    return paper & ((backdrop - gray) > np.maximum(.035, backdrop * .12))
+
+
 def prepare(root, source_path):
     observations = json.loads((root / 'observations.json').read_text())
     source = read_image(source_path)
@@ -65,9 +76,8 @@ def prepare(root, source_path):
         content = np.max(np.abs(sample(old, bx, by)[..., :3] - sample(blank, bx, by)[..., :3]), axis=-1) > .035
         # Actual ink reinforces native-render masks, including letters with
         # different scan placement. Exclude title/type/footer bands entirely.
-        gray = scan[..., :3] @ np.array([.2126, .7152, .0722])
         paper = (x > 66) & (x < 423) & (y > 414) & (y < 594)
-        ink = paper & (gaussian_filter(gray, .7) < .44)
+        ink = paper_ink_mask(scan, paper)
         excluded = binary_dilation(content | ink, iterations=6)
         allowed = (alpha > .99) & (x > 8) & (x < 480) & (y > 9) & (y < 671)
         allowed &= ~(((y > 30) & (y < 61)) | ((y > 382) & (y < 403)) | ((y > 609) & (y < 644)))
@@ -84,7 +94,11 @@ def prepare(root, source_path):
                             mask=mask, raw=scan[..., :3], card=np.stack([x, y], -1))
         if not records or row['cohort'] == 'validation' and len(records) < 8:
             png(prepared / (row['id'] + '-mask.png'), mask.astype(float))
-        records.append(dict(id=row['id'], name=row['name'], cohort=row['cohort'], pixels=int(mask.sum())))
+        records.append(dict(id=row['id'], name=row['name'], cohort=row['cohort'], pixels=int(mask.sum()),
+                            paperPixels=int((mask & paper).sum())))
+    training = [r for r in records if r['cohort'] == 'calibration']
+    if sum(r['paperPixels'] >= 100 for r in training) < 5:
+        raise ValueError('Insufficient paper support: need 100 valid pixels on five calibration cards; inspect ink/content masks before fitting')
     save(root / 'preparation.json', dict(records=records, source=str(source_path.relative_to(root)),
          sourceSha256=hashlib.sha256(source_path.read_bytes()).hexdigest(),
          policy='Native scans; identical frozen masks; 1.4px matched lowpass; no per-card color fits'))
