@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { projectScanPoint } from '../games/magic/tools/accuracy/scan-transform.mjs';
 import { normalize } from '../games/magic/tools/accuracy/pixels-pure.mjs';
 import { scanBoundaryProfiles } from '../games/magic/tools/accuracy/scan-boundary-profiles.mjs';
 import {
@@ -49,6 +50,18 @@ for (const transform of [
   );
   assert.ok(result.accepted);
   assert.ok(bounded(result.parameters));
+  for (const [x, y] of [
+    [40, 40],
+    [450, 610],
+    [244, 340],
+  ]) {
+    const movedPoint = projectScanPoint(x, y, transform),
+      recovered = projectScanPoint(...movedPoint, result.transform);
+    assert.ok(
+      Math.hypot(recovered[0] - x, recovered[1] - y) < 0.35,
+      'Known scan pose must recover physical control points',
+    );
+  }
   const certificate = profileSupport(profiles[2], templates[2], result.parameters, {
     residuals: true,
   });
