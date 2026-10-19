@@ -8,11 +8,19 @@ import { normalize } from './pixels-pure.mjs';
 import { normalizedReference } from './abu-reference-cache.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
 import { profileSupport } from './scan-gradient-fit.mjs';
-const [inputsFile, posesDirectory, baselineRoot, scorerFile, output, candidateDirectory] =
-  process.argv.slice(2);
+import { metricSourceGraph } from './module-graph.mjs';
+const [
+  inputsFile,
+  posesDirectory,
+  baselineRoot,
+  scorerFile,
+  output,
+  candidateDirectory,
+  reusableScoresFile,
+] = process.argv.slice(2);
 if (!output)
   throw Error(
-    'Usage: abu-calibration-score.mjs INPUTS POSES_DIRECTORY BASELINE_ROOT SCORER.mjs OUTPUT [CANDIDATE_STUDY]',
+    'Usage: abu-calibration-score.mjs INPUTS POSES_DIRECTORY BASELINE_ROOT SCORER.mjs OUTPUT [CANDIDATE_STUDY] [BASELINE_SCORES]',
   );
 const inputs = await readJson(inputsFile),
   poses = await readJson(path.join(posesDirectory, 'normalization.json')),
@@ -29,6 +37,18 @@ if (candidateStudy) {
   assert.equal(candidateStudy.nativeTrials, true, 'Candidate requires full native replay');
 }
 const { scoreRegions } = await import(pathToFileURL(path.resolve(scorerFile)));
+const scorerHash = hash(await readFile(scorerFile));
+const metricGraph = await metricSourceGraph(scorerFile);
+const reusableScores = reusableScoresFile ? await readJson(reusableScoresFile) : undefined;
+const reusableRows = new Map(reusableScores?.rows.map((r) => [r.id, r]));
+if (reusableScores) {
+  assert.ok(candidateStudy, 'Baseline reuse requires a certified native candidate study');
+  assert.equal(reusableScores.inputHash, poses.inputHash);
+  assert.equal(reusableScores.normalizationHash, hash(JSON.stringify(poses)));
+  assert.equal(reusableScores.scorerHash, scorerHash);
+  assert.equal(reusableScores.metricGraph?.hash, metricGraph.hash);
+  assert.equal(reusableScores.baseline, '0.5.3');
+}
 const rows = [];
 const neutral = { sx: 1, sy: 1, tx: 0, ty: 0, rotation: 0, shear: 0 };
 const manifests = new Map();
@@ -59,6 +79,14 @@ for (const e of inputs.entries) {
     assert.ok(trial.nativeTrial.maximum <= 1.001, 'Candidate failed native replay parity');
     baseline = await readFile(path.join(candidateDirectory, e.id + '-candidate.png'));
     assert.equal(hash(baseline), trial.nativeTrial.renderHash);
+  }
+  const reused = reusableRows.get(e.id);
+  if (reused && reused.renderHash === hash(baseline)) {
+    assert.equal(reused.referenceHash, e.reference.sha256);
+    assert.equal(reused.poseHash, hash(JSON.stringify(pose)));
+    assert.equal(reused.profileAccepted, pose.accepted);
+    rows.push({ ...reused, reusedScore: true });
+    continue;
   }
   const { image: scan } = await normalizedReference(e, pose, path.join(posesDirectory, 'rasters'));
   const rendered = normalize(PNG.sync.read(baseline, { checkCRC: true }));
@@ -99,6 +127,7 @@ for (const e of inputs.entries) {
 const mean = (v) => (v.length ? v.reduce((a, b) => a + b, 0) / v.length : null),
   summary = {
     total: rows.length,
+    reused: rows.filter((r) => r.reusedScore).length,
     accepted: rows.filter((r) => r.normalizationAccepted).length,
     materials: Object.fromEntries(
       [...new Set(rows.map((r) => r.material))].map((material) => {
@@ -123,6 +152,7 @@ const mean = (v) => (v.length ? v.reduce((a, b) => a + b, 0) / v.length : null),
       }),
     ),
   };
+assert.deepEqual(await metricSourceGraph(scorerFile), metricGraph, 'Metric changed during scoring');
 await writeJson(output, {
   schema: 1,
   set: poses.set,
@@ -130,7 +160,9 @@ await writeJson(output, {
   ...(candidateStudy ? { candidateStudyHash: candidateStudy.studyHash } : {}),
   inputHash: poses.inputHash,
   normalizationHash: hash(JSON.stringify(poses)),
-  scorerHash: hash(await readFile(scorerFile)),
+  scorerHash,
+  metricGraph,
+  ...(reusableScoresFile ? { reusableScoresHash: hash(await readFile(reusableScoresFile)) } : {}),
   scope:
     'Full native 0.5.3 replay using original-wording inputs' +
     (candidateStudy ? ' and a rules-only experimental shared text-tier model' : '') +

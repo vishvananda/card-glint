@@ -96,3 +96,11 @@ The study uses one persistent browser and cached component rasters, not a browse
 launch per candidate. Source, asset, input and pose identities are frozen in its
 receipt. Warm normalized scan rasters are reused across wording/renderer changes;
 new scan transforms or normalizer code invalidate that cache.
+
+The scorer accepts the immutable baseline score JSON as a final optional
+argument when measuring a candidate study. An exactly unchanged native PNG can
+reuse its score only when the input manifest, reference, scan pose, complete
+local metric dependency graph and runtime identity also match. Changed pixels
+are rescored. The output records the source score-file hash and reused row
+count. Imported policy/helper edits invalidate reuse even when the metric
+entry file itself is unchanged.

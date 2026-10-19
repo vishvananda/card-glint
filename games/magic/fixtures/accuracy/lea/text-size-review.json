@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "sets": ["lea", "leb"],
+  "status": "diagnostic; no font-size exception or shared model promoted",
+  "scope": "Original-printing text size. Historical manual typesetting remains an inference, not an established fact.",
+  "developmentTierClassification": {
+    "set": "lea",
+    "acceptedReferences": 292,
+    "confidentPitchLabels": 236,
+    "characterAndWrappingAgreements": 234,
+    "calibration": {
+      "labeled": 160,
+      "agreements": 158
+    },
+    "reusedDevelopmentValidation": {
+      "labeled": 76,
+      "agreements": 76
+    },
+    "notAWholeCardAccuracyScore": true
+  },
+  "candidate": {
+    "largeMaxCharacters": 117,
+    "largeMaxMeasuredLines": 5,
+    "largeFitWidthCanonicalPx": 340,
+    "mediumMaxCharacters": 274,
+    "scope": "Raw original-text count plus measured wrapping; empirical candidate only."
+  },
+  "exceptions": [
+    {
+      "set": "lea",
+      "id": "19499cb7-eccb-4e69-af32-6002d447a160",
+      "name": "Mana Vault",
+      "reference": {
+        "url": "https://cards.scryfall.io/png/front/1/9/19499cb7-eccb-4e69-af32-6002d447a160.png?1783948664",
+        "sha256": "66eb644bfc9a4987437f097cb990083b873b7af6f9707482ae34d9de6d407773"
+      },
+      "review": "Small printed face. Alpha and Beta have the same rules/flavor line breaks.",
+      "runtimeLayoutOverride": false
+    },
+    {
+      "set": "lea",
+      "id": "b43b900f-2d9b-442b-9699-058483604ec9",
+      "name": "Hypnotic Specter",
+      "reference": {
+        "url": "https://cards.scryfall.io/png/front/b/4/b43b900f-2d9b-442b-9699-058483604ec9.png?1783948694",
+        "sha256": "f5137fc2eb1bc72c020326cd2aa2063a41b24d5ae626b2eb759c4d09bcd3c461"
+      },
+      "review": "Small printed face. Alpha and Beta have the same rules/flavor line breaks.",
+      "runtimeLayoutOverride": false
+    },
+    {
+      "set": "leb",
+      "id": "edcc56a0-1dc0-4261-8f9c-5a88ce83f9e9",
+      "name": "Hypnotic Specter",
+      "reference": {
+        "url": "https://cards.scryfall.io/png/front/e/d/edcc56a0-1dc0-4261-8f9c-5a88ce83f9e9.png?1783948633",
+        "sha256": "41354ee0130dac23d847db8707dc092ebd77aedcffad99a80d288635fbee3074"
+      },
+      "review": "Small printed face. Alpha and Beta have the same rules/flavor line breaks.",
+      "runtimeLayoutOverride": false
+    },
+    {
+      "set": "leb",
+      "id": "a11f55e8-7f86-4ca9-b737-9a920d9cf282",
+      "name": "Mana Vault",
+      "reference": {
+        "url": "https://cards.scryfall.io/png/front/a/1/a11f55e8-7f86-4ca9-b737-9a920d9cf282.png?1783948602",
+        "sha256": "02fd4222a4dd0970eaa593a2d0afffe1c44034d763a3dcd016032ff83dd7da00"
+      },
+      "review": "Small printed face. Alpha and Beta have the same rules/flavor line breaks.",
+      "runtimeLayoutOverride": false
+    }
+  ],
+  "findings": [
+    "Both exceptions would take nine lines at 22.5px in a 346px-wide medium-face probe. A line-count-only rule also misclassifies other medium printings, so this does not establish a universal replacement rule.",
+    "Neither card has an existing individual layout override in the renderer. Reviewed wording/artist corrections are separate from layout.",
+    "Do not add per-scan renderer offsets or alter the shared length threshold just to classify these two printings."
+  ]
+}
