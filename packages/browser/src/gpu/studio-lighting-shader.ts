@@ -1,7 +1,12 @@
 /** Shared virtual studio for normal-driven foil and clear-coat lighting. */
 export const STUDIO_LIGHTING_GLSL = `
+#ifndef GLINT_STUDIO_LIGHTING_UNIFORM
+#define GLINT_STUDIO_LIGHTING_UNIFORM
 uniform float studioLighting;
+#endif
+#ifndef GLINT_LIGHTING_POINTER
 #define GLINT_LIGHTING_POINTER (studioLighting>.5?vec2(.5):pointer)
+#endif
 const vec3 studioLampPosition=vec3(-.85,1.10,3.);
 const vec3 studioEyePosition=vec3(0.,0.,2.1);
 void studioCardBasis(vec3 normal,out vec3 right,out vec3 up){

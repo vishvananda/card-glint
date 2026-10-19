@@ -91,8 +91,12 @@ export class Cardstock {
 }
 
 export const CARDSTOCK_GLSL = `
+#ifndef GLINT_STUDIO_LIGHTING_UNIFORM
+#define GLINT_STUDIO_LIGHTING_UNIFORM
+uniform float studioLighting;
+#endif
 #ifndef GLINT_LIGHTING_POINTER
-#define GLINT_LIGHTING_POINTER pointer
+#define GLINT_LIGHTING_POINTER (studioLighting>.5?vec2(.5):pointer)
 #endif
 #ifdef GLINT_HOST_SAMPLING
 #ifndef GLINT_POINTER_BINDING
