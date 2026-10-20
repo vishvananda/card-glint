@@ -61,6 +61,21 @@
     "2ed-type-review": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-type-review.json.gz",
       "sha256": "08915fffa7afdf46bc85de83f4b1a6a0cdfa4ffb48cf7eb3bf699a75189c802c"
+    },
+    "2ed-release066-native": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-release066-native.json.gz",
+      "sha256": "ffee5a905c71e2b2289db9adf5a800dd1e8806ae91f173c007cef5779c966772",
+      "contentSha256": "92c6b465b6c9ac3e9f796e3e6ba684d7c4758ea237fcfd08227ecfbc5ce18d35"
+    },
+    "2ed-release066-parity": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-release066-parity.json.gz",
+      "sha256": "19492682d300ab61b78dfe07a972664ed9a91c3219e2e4215afc8ec04530552b",
+      "contentSha256": "879973e959d2b18dd2773c1e27b1be3f8ad8579cc21439c9115cdd07055d98e0"
+    },
+    "2ed-outer-boundaries": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-outer-boundaries.json.gz",
+      "sha256": "bda41af80b52ea39bbbc4ad1e89793b5c7658458378152c32bcdb1ab8c4f80c1",
+      "contentSha256": "5586a3e1c200e76d68479ca5125db727b36054a2706bb02bd4b2a122b807d04f"
     }
   },
   "native": {
@@ -73,5 +88,25 @@
     "unchangedScanTransformsAfterTypeReview": 302,
     "purpose": "Baseline only; this is not a complete-set layout certification."
   },
-  "reviewedInputAnnotationCommit": "6d56bdc2f0ee31c89d9bbc94b25a2c22d0e2eeb5"
+  "reviewedInputAnnotationCommit": "6d56bdc2f0ee31c89d9bbc94b25a2c22d0e2eeb5",
+  "releaseBaseline": {
+    "version": "0.6.6",
+    "commit": "7fda3cb15b55e6b444720addb86c405e2660dd67",
+    "faces": 302,
+    "unchangedFromPreparedBaseline": 302,
+    "scanPosesChanged": 0,
+    "purpose": "Native baseline, not a completed set calibration."
+  },
+  "outerBoundaryDiagnostic": {
+    "status": "measured-not-promoted",
+    "coherent": 302,
+    "canonicalSpace": [488, 680],
+    "medianRendererMinusReference": {
+      "left": 1.0210815079048263,
+      "right": -0.8782270394865179,
+      "top": 0.8402094611505699,
+      "bottom": -1.1132375268230703
+    },
+    "decision": "The printed outer frame is consistently undersized, about two canonical pixels in width and height. Retain the independent scan poses. Trial frame/mask geometry and compare internal apertures before adjusting colors; do not hide renderer geometry errors with a new scan transform. Art/rules bevels and frame-family selection remain open."
+  }
 }

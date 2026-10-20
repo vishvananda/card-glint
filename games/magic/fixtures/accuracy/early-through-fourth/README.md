@@ -144,3 +144,11 @@ frozen batch, not a step needed for a normal single-profile calibration. Its
 reviewed receipt and complete reverse edits are in `source-proof.json`; verification
 requires no external images or Git history. Reused development references are
 explicitly labeled and are not represented as a new blind validation sample.
+
+Unlimited now has a native 0.6.6 replay of all 302 own-printing reviewed inputs.
+All faces, normalized scans and frozen poses reproduce the prepared baseline
+exactly. The outside-first printed-boundary diagnostic is coherent on all 302
+faces: the existing frame is roughly two canonical pixels too narrow and short.
+This is a renderer geometry residual, not permission to change scan registration.
+The recorded values are diagnostic; source-family and internal aperture reviews,
+geometry candidate replays, colors and text remain open.
