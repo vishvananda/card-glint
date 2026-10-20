@@ -273,7 +273,11 @@
       }
     }
   },
-  "landPrintingsPending": 25,
+  "landPrintingsPending": {
+    "color": 25,
+    "typography": 25,
+    "runtimeIntegration": 25
+  },
   "sourceReceipts": {
     "2ed-native-color-fit": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-native-color-fit.json.gz",
@@ -387,5 +391,57 @@
     "improved": 14,
     "worstRegression": 0.008089200689091913,
     "scope": "Geometry candidates only. Existing source bytes and original wording; shared values per land color, fixed scan poses. Basic-land colors, heading/body/artist fitting, ten dual lands and whole-set checks are still pending."
+  },
+  "dualLandMaterial": {
+    "family": "abu",
+    "frame": [-0.0005122950819672131, 0.002970588235294119, 1, 0.997],
+    "art": [0.11407103825136612, 0.10441176470588236, 0.76775956284153, 0.4441176470588235],
+    "stockMaskFrame": [
+      -0.0020051953357544676, -0.0015184891038458673, 1.003923706804288, 1.00359236568134
+    ]
+  },
+  "dualLandSelection": {
+    "source": "2ed-dual-land-verification.json.gz",
+    "printings": 10,
+    "improved": 8,
+    "groups": {
+      "calibration": {
+        "count": 8,
+        "before": 0.6555719309832011,
+        "after": 0.6783233543145134,
+        "improved": 7,
+        "worstRegression": 0.01574553285601632,
+        "maximumPredictionError": 0.00429590592702167
+      },
+      "validation": {
+        "count": 2,
+        "before": 0.6063483845007768,
+        "after": 0.6421184648050214,
+        "improved": 1,
+        "worstRegression": 0.010798236948549977,
+        "maximumPredictionError": 0.002927129125494643
+      },
+      "all": {
+        "count": 10,
+        "before": 0.6457272216867163,
+        "after": 0.671082376412615,
+        "improved": 8,
+        "worstRegression": 0.01574553285601632,
+        "maximumPredictionError": 0.00429590592702167
+      }
+    },
+    "scope": "One transform for ten duals. Eight calibration names select it; two reserved names are reused development validation. Source preparation uses the unchanged production material pipeline. Fixed opaque support excludes art and nearby text. Exact original printing inputs, independent scan poses, source/definition hashes, current native PNGs, face alpha and empty etching layers are checked. A common one-pixel art underlap covers all ten source apertures; art placement changes and is not scored here. These regional indices do not certify colors, typography, full-card scores or complete the set."
+  },
+  "dualLandOutlineColors": {
+    "Badlands": "B",
+    "Bayou": "B",
+    "Plateau": "W",
+    "Savannah": "W",
+    "Scrubland": "W",
+    "Taiga": "G",
+    "Tropical Island": "U",
+    "Tundra": "W",
+    "Underground Sea": "B",
+    "Volcanic Island": "U"
   }
 }

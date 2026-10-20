@@ -174,7 +174,8 @@
     },
     "2ed-material-proposal": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-material-proposal.json",
-      "sha256": "4ee8fc50fdc4df932ec8cefeaa81d5f2d559b981802e1649823eceb6c76c0d6f"
+      "sha256": "56daf953113fc0d6964187c352cea4ae4f0ec6adf6117daab3633191dcc932db",
+      "contentSha256": "56daf953113fc0d6964187c352cea4ae4f0ec6adf6117daab3633191dcc932db"
     },
     "2ed-basic-land-geometry": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-geometry.json.gz",
@@ -205,6 +206,41 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-family-joint.json.gz",
       "sha256": "3b27ba351f3d9792ca15c1d52fa91800d2a662129a303f9c50a73742938c9a8d",
       "contentSha256": "fc34cdd85a4bda2ce1569454728e2b059d6ef8df0494ded8e22fd1d0f371d3e5"
+    },
+    "2ed-dual-land-search": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-land-search.json.gz",
+      "sha256": "3c3fc595df0cf9ec8638d4190fb27fe44db2134b04c83a5c2f745b1a823003b3",
+      "contentSha256": "35071af1707fe3496e35c8faf59651355fd6f14cc9d9f75fcfbac2660bf90784"
+    },
+    "2ed-dual-land-definition": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-land-definition.json.gz",
+      "sha256": "237aabaa02e212ccb773bb44cbf27bbf89707cf5dc2ce00e7972c4c84763e446",
+      "contentSha256": "f14feba91536adc859abf8803c3c18ad4e28fc97e159acee7787155dda90d819"
+    },
+    "2ed-dual-land-native": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-land-native.json.gz",
+      "sha256": "5741867d5d416675fb0ad3b3fd19074aa1f659d7ee278c919bfb65e8328db4a7",
+      "contentSha256": "52419a8aa24d964202c2327c39a87ef8adf2e99959c94167bb69e1cca6f903cd"
+    },
+    "2ed-dual-land-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-land-verification.json.gz",
+      "sha256": "521a2c734459ddbf6a903f89714e51730fd17c951f93de7d3dc02c053ccb7a2a",
+      "contentSha256": "952d8d9ea64c2760d31b9d218ed69b49b59f134631cb62ddef8765b578deb434"
+    },
+    "2ed-dual-outline-capture": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-outline-capture.json.gz",
+      "sha256": "2936d62c20a7d526c34cb8a9c367bd64d24a513f09cfd7eb182f17daccd77126",
+      "contentSha256": "afe001138b5be755c9625c6f52c5cb826a369abca795a62d97334c77544ebb72"
+    },
+    "2ed-dual-outline-review": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-outline-review.json.gz",
+      "sha256": "24ad5467dfe1a7e8925ab5254a0f3ad4d74638e87d49355f3d6d4b83bc5288d9",
+      "contentSha256": "9599190f26fefa4838af579c550512f74ab17db1f38afb3c9407097277b2d812"
+    },
+    "2ed-frame-profile-benchmark": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-frame-profile-benchmark.json.gz",
+      "sha256": "903ac1bfdb8f305c0ccd474546a8190a77fba599e4e048dfd7c8853a069179d9",
+      "contentSha256": "6219f610f807311742184b3c492b48fc923b3e07748ef746c54e7fa193651cda"
     }
   },
   "native": {
@@ -601,8 +637,30 @@
     "materials": 5,
     "improved": 14,
     "regressed": 1,
-    "dualLandGeometryPending": 10,
+    "dualLandGeometryPending": 0,
     "validationKind": "development-three-illustrations-per-name",
+    "wholeSetCertification": false
+  },
+  "dualLandGeometry": {
+    "status": "native-shared-candidate-not-runtime-adopted",
+    "printings": 10,
+    "improved": 8,
+    "regressed": 2,
+    "meanBefore100": 64.57272216867163,
+    "meanAfter100": 67.1082376412615,
+    "source": "2ed-dual-land-verification.json.gz",
+    "validationKind": "two-reserved-names-reused-development",
+    "remaining": "Color, typography, symbols and full-card verification remain open. Art aperture underlap is verified, but art geometry is not scored by these frame strips.",
+    "wholeSetCertification": false
+  },
+  "dualLandOutlines": {
+    "status": "own-printing-color-assignment-reviewed-not-runtime-adopted",
+    "printings": 10,
+    "changes": {
+      "Tundra": "W",
+      "Volcanic Island": "U"
+    },
+    "source": "2ed-dual-outline-review.json.gz",
     "wholeSetCertification": false
   }
 }

@@ -454,3 +454,24 @@ directory. It intersects current and transformed source supports before
 comparing native candidates, verifies each printing's reference and pose, and
 resolves basic-land keys separately from generic material `L`. No Lab scoring
 method or published score generation is changed by these study tools.
+
+## Unlimited dual-land geometry and outline review
+
+All ten duals have one shared prepared-composite geometry candidate. It improves
+the regional frame index from 64.6 to 67.1/100, with eight gains and two small
+regressions. Eight calibration names select the transform; the other two names
+are reused development checks. Native renders verify exact baseline parity,
+unchanged face alpha and empty etching, plus an art underlap covering all source
+apertures. This is not a full-card score or runtime adoption.
+
+Own-printing outline inspection selects white for Unlimited Tundra and blue for
+Volcanic Island; eight other assignments remain unchanged. The opposite-color
+controls change pixels only inside the full-frame outline ring. The proposals
+and compressed hash-bound measurements are listed in `2ed-stage.json`.
+
+`early-dual-land-search.mjs` consumes a native capture and outer-material proposal;
+`early-dual-land-verify.mjs` checks the resulting native frame trial. Both use the
+unchanged production preparation of each composite and fixed scan transforms.
+The thin-strip sampling helpers are tested against full RGBA normalization,
+including alpha matting. `frame-profile-benchmark.mjs` measures their CPU work
+only; it excludes painting, image readback, loading and GPU finish completion.

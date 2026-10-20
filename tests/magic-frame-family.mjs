@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import './magic-frame-native-profiles.mjs';
 import {
   frameProfiles,
   stockBounds,
