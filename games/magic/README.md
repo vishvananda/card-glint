@@ -589,6 +589,15 @@ not certify unrelated body text. The public catalog is generated from the same
 evidence used by accuracy tools; regenerate it with
 `node games/magic/tools/build-printing-corrections.mjs` after reviewing changes.
 
+Printing corrections can reproduce omitted paragraph breaks as well as textual
+misprints. A `rulesParagraphs` entry may contain upright rules and italic flavor
+runs in the same paragraph; a newline inside a run remains an explicit break.
+Keep the provider's rules-only `rulesText` and separate `flavorText` alongside
+those display runs. Dragon Whelp's seven English printings before Fourth Edition
+use this treatment: the quotation starts inline and the attribution starts on a
+new line. Fourth Edition and Oracle wording retain separate flavor paragraphs.
+No card-name exception is needed in the painter.
+
 `resolvePrintingArtist(printingId, providerArtist, { referenceSha256? })` resolves
 reviewed printed artist credits separately from wording. It returns
 `{ artist, provenance }`; assign `artist` to the face before choosing original or

@@ -29,6 +29,48 @@ try {
   };
   const input = { oracle, original },
     snapshot = structuredClone(input);
+  // Missing printed paragraph breaks are rich-text corrections, never global
+  // layout exceptions. The physical quotation is inline only in original mode.
+  for (const set of ['lea', 'leb', '2ed', 'ced', 'cei', '3ed', 'sum']) {
+    const data = await fixture(set + '/annotations-zz-inline-flavor.json');
+    const [[id, row]] = Object.entries(data.cards);
+    const resolved = resolvePrintingWording(id, input, {
+      referenceSha256: row.referenceHash,
+    });
+    const printed = resolved.wordings.original;
+    assert.equal(resolved.provenance.status, 'applied');
+    assert.deepEqual(printed.rulesParagraphs, row.paragraphs);
+    assert.equal(printed.rulesParagraphs.length, 2);
+    assert.equal(printed.rulesParagraphs[1].runs.length, 2);
+    assert.equal(printed.rulesParagraphs[1].runs[0].italic, false);
+    assert.equal(printed.rulesParagraphs[1].runs[1].italic, true);
+    assert.equal(printed.rulesParagraphs[1].runs[1].text, row.flavorText);
+    assert.ok(printed.rulesText.includes('turn. “O to be a dragon'));
+    assert.ok(printed.rulesText.includes('”\n—Marianne Moore, “O to Be a Dragon”'));
+    assert.equal(resolved.wordings.oracle.rulesText, 'Oracle rules.\nOracle flavor.');
+    assert.deepEqual(
+      resolved.wordings.oracle.rulesParagraphs.map((p) => p.role),
+      ['rules', 'flavor'],
+    );
+    assert.equal(
+      resolvePrintingWording(id, input, { referenceSha256: '0'.repeat(64) }).provenance.status,
+      'reference-mismatch',
+    );
+    assert.deepEqual(
+      withCardWording({ name: 'Dragon Whelp', typeLine: 'Creature' }, resolved.wordings, 'oracle')
+        .rulesParagraphs,
+      resolved.wordings.oracle.rulesParagraphs,
+    );
+  }
+  const fourthWhelp = resolvePrintingWording('349ff6e6-b914-4787-bb90-ea77a3550d23', input);
+  assert.deepEqual(
+    fourthWhelp.wordings.original.rulesParagraphs.map((p) => p.role),
+    ['rules', 'flavor'],
+  );
+  assert.deepEqual(input, snapshot, 'Corrections must not mutate provider inputs');
+  console.log(
+    'Seven pre-Fourth Dragon Whelp inline quotations preserve Oracle and Fourth separation.',
+  );
   const reviewedStats = await fixture('atq/annotations-stats.json');
   const alphaOutliers = await fixture('lea/annotations-text-outliers.json');
   for (const [id, row] of Object.entries(alphaOutliers.cards)) {

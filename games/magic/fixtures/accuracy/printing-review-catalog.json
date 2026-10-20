@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "2799da976ef53620ace6d1d50e411f2d8eff6f89fece70bb7833d4beb27f82a7",
+  "revision": "688dd0064fc3bd1fe910d22d474c3775facffa0a3dc24a39c2b7d09811cdb970",
   "artistRevision": "aafc5599d700f388242ffafd8dbd2e01e0a34228324f6e3ea55033f0877dba5b",
   "sets": {
     "0014def3-4063-4929-ac51-76aef1bb2a68": "arn",
@@ -276,6 +276,7 @@
     "1cb86b2f-116d-4952-b35a-1398341baaf5": "leg",
     "1cb9d405-f2b5-4e10-a405-feafd2a87d90": "lea",
     "1cc1188c-4331-41dc-a577-bd4bedd7ca76": "arn",
+    "1d0b4a6a-31e7-4773-b984-f2b29dc0fd58": "cei",
     "1d50bf06-97ab-4874-a484-9289f41dc98e": "fem",
     "1d51a6de-7bb4-4e3d-82a7-a298c8d742ef": "4ed",
     "1d9479ae-2b42-4137-9e62-ef4d7fd17d0c": "leb",
@@ -1082,6 +1083,7 @@
     "7150245a-4fed-47cd-b13f-24507e89449d": "2ed",
     "71504078-a16f-4dc4-9626-0ecc42b1e93b": "arn",
     "715472e1-585b-4379-b335-8f3b5e572d83": "4ed",
+    "7178a1de-741d-49f1-b199-be772c82ad36": "sum",
     "717c5ee5-a033-4a58-bdcb-ef54e6c8b7a9": "4ed",
     "717f6d10-9144-4ade-9ac6-a481cc66b875": "lea",
     "71904b59-55dd-4074-9d50-c5bb0fb7266f": "leb",
@@ -1659,6 +1661,7 @@
     "ac09a506-427f-4636-bcfd-b40f8d511905": "atq",
     "ac15b58c-80b4-4da7-8ed6-d963702eda3a": "4ed",
     "ac19c5a1-ca13-4443-920b-83b567167ed4": "leb",
+    "ac1d677b-a43f-4aa0-9219-fc8d0a776faa": "ced",
     "ac2655e4-3a4d-4f73-820a-02fab675d42e": "drk",
     "ac555709-c7cc-4c64-8a6f-8fe2bc149fcd": "m20",
     "ac77e867-939e-49fb-ae1a-9c1dd5e54a9a": "chr",
@@ -5922,6 +5925,41 @@
         }
       }
     ],
+    "1d0b4a6a-31e7-4773-b984-f2b29dc0fd58": [
+      {
+        "source": "games/magic/fixtures/accuracy/cei/annotations-zz-inline-flavor.json",
+        "referenceSha256": "c73422e044098228e62c059242604e3b507bb4bae63c24853f74bb918cf5a3ea",
+        "reason": "Own original scan visually reviewed: the quotation begins inline after the final rules sentence. Keep the italic quotation and its explicit attribution newline in that same rich paragraph; the printed poem title is “O to Be a Dragon” (lowercase “to”). Rules-only and flavor-only source fields remain separate. Original-printing correction only; no Oracle changes or scan-specific coordinates.",
+        "fields": {
+          "rulesText": "Flying\n{R}: +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn.",
+          "flavorText": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "Flying",
+                  "italic": false
+                }
+              ]
+            },
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "{R}: +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn. ",
+                  "italic": false
+                },
+                {
+                  "text": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+                  "italic": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
     "1d50bf06-97ab-4874-a484-9289f41dc98e": [
       {
         "source": "games/magic/fixtures/accuracy/fem/annotations-printed-types.json",
@@ -8232,6 +8270,39 @@
         "reason": "Visually checked the normalized frozen Beta scan type strip. OCR was diagnostic only; this review does not certify rules, artist, P/T or frame geometry.",
         "fields": {
           "typeLine": "Summon Dragon"
+        }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/leb/annotations-zz-inline-flavor.json",
+        "referenceSha256": "8aa650770bca552e1d8b3d9c7f3ca686cf2e333f23c1ddf655e350bea99ca2b3",
+        "reason": "Own original scan visually reviewed: the quotation begins inline after the final rules sentence. Keep the italic quotation and its explicit attribution newline in that same rich paragraph; the printed poem title is “O to Be a Dragon” (lowercase “to”). Rules-only and flavor-only source fields remain separate. Original-printing correction only; no Oracle changes or scan-specific coordinates.",
+        "fields": {
+          "rulesText": "Flying\n{R}: +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn.",
+          "flavorText": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "Flying",
+                  "italic": false
+                }
+              ]
+            },
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "{R}: +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn. ",
+                  "italic": false
+                },
+                {
+                  "text": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+                  "italic": true
+                }
+              ]
+            }
+          ]
         }
       }
     ],
@@ -14699,9 +14770,9 @@
     ],
     "643d6f5b-6a17-434d-945a-6b9a05015493": [
       {
-        "source": "games/magic/fixtures/accuracy/3ed/annotations-revised-text.json",
+        "source": "games/magic/fixtures/accuracy/3ed/annotations-zz-inline-flavor.json",
         "referenceSha256": "5086fc320d8eed290af691273234b50230bb8aa9ba7afb1c3b1020276dd786c5",
-        "reason": "Restore the missing activation colon; flavor begins inline after the final rules sentence, with its attribution on a new line. This expresses printed content/style, not scan-specific coordinates or soft wrapping.",
+        "reason": "Own original scan visually reviewed: the quotation begins inline after the final rules sentence. Keep the italic quotation and its explicit attribution newline in that same rich paragraph; the printed poem title is “O to Be a Dragon” (lowercase “to”). Rules-only and flavor-only source fields remain separate. Original-printing correction only; no Oracle changes or scan-specific coordinates.",
         "fields": {
           "rulesText": "Flying\n{R}: +1/+0; if more than {R}{R}{R} is spent in this way during one turn, Dragon Whelp is killed at end of turn.",
           "flavorText": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
@@ -15680,6 +15751,39 @@
         "fields": {
           "typeLine": "Summon Dragon"
         }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/lea/annotations-zz-inline-flavor.json",
+        "referenceSha256": "80b7af3d28c744a6d208aea61f3eb27cf33391fd1bf146a4c40a923587bf96c8",
+        "reason": "Own original scan visually reviewed: the quotation begins inline after the final rules sentence. Keep the italic quotation and its explicit attribution newline in that same rich paragraph; the printed poem title is “O to Be a Dragon” (lowercase “to”). Rules-only and flavor-only source fields remain separate. Original-printing correction only; no Oracle changes or scan-specific coordinates.",
+        "fields": {
+          "rulesText": "Flying\n{R}: +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn.",
+          "flavorText": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "Flying",
+                  "italic": false
+                }
+              ]
+            },
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "{R}: +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn. ",
+                  "italic": false
+                },
+                {
+                  "text": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+                  "italic": true
+                }
+              ]
+            }
+          ]
+        }
       }
     ],
     "6bccf9a0-8d93-4b5e-ada0-1f19f260e5a8": [
@@ -16477,6 +16581,41 @@
         "reason": "Type line visually checked against this printing’s cached Scryfall scan. This review certifies original type wording only.",
         "fields": {
           "typeLine": "Sorcery"
+        }
+      }
+    ],
+    "7178a1de-741d-49f1-b199-be772c82ad36": [
+      {
+        "source": "games/magic/fixtures/accuracy/sum/annotations-zz-inline-flavor.json",
+        "referenceSha256": "ed9eabf025a6912a57266b7107a59b049cdbf070ad9a8293ec68dcfa4c50a3d7",
+        "reason": "Own original scan visually reviewed: the quotation begins inline after the final rules sentence. Keep the italic quotation and its explicit attribution newline in that same rich paragraph; the printed poem title is “O to Be a Dragon” (lowercase “to”). Rules-only and flavor-only source fields remain separate. Original-printing correction only; no Oracle changes or scan-specific coordinates.",
+        "fields": {
+          "rulesText": "Flying\n{R}: +1/+0; if more than {R}{R}{R} is spent in this way during one turn, Dragon Whelp is killed at end of turn.",
+          "flavorText": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "Flying",
+                  "italic": false
+                }
+              ]
+            },
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "{R}: +1/+0; if more than {R}{R}{R} is spent in this way during one turn, Dragon Whelp is killed at end of turn. ",
+                  "italic": false
+                },
+                {
+                  "text": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+                  "italic": true
+                }
+              ]
+            }
+          ]
         }
       }
     ],
@@ -17757,6 +17896,39 @@
         "reason": "Original type line visually read from this exact Unlimited scan on 2026-10-20 in the complete 230-printing pending-type audit. Only the type field is certified; rules, flavor, layout and rendering are not approved by this review.",
         "fields": {
           "typeLine": "Summon Dragon"
+        }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/2ed/annotations-zz-inline-flavor.json",
+        "referenceSha256": "a8b900fc0769b2d9115e75826497ad7b9c10898fa86b97c4ca9f36b01c5cb612",
+        "reason": "Own original scan visually reviewed: the quotation begins inline after the final rules sentence. Keep the italic quotation and its explicit attribution newline in that same rich paragraph; the printed poem title is “O to Be a Dragon” (lowercase “to”). Rules-only and flavor-only source fields remain separate. Original-printing correction only; no Oracle changes or scan-specific coordinates.",
+        "fields": {
+          "rulesText": "Flying\n{R}: +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn.",
+          "flavorText": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "Flying",
+                  "italic": false
+                }
+              ]
+            },
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "{R}: +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn. ",
+                  "italic": false
+                },
+                {
+                  "text": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+                  "italic": true
+                }
+              ]
+            }
+          ]
         }
       }
     ],
@@ -23930,6 +24102,41 @@
         "reason": "Type line visually checked against the cached Scryfall PNG. This partial review does not certify other wording.",
         "fields": {
           "typeLine": "Land"
+        }
+      }
+    ],
+    "ac1d677b-a43f-4aa0-9219-fc8d0a776faa": [
+      {
+        "source": "games/magic/fixtures/accuracy/ced/annotations-zz-inline-flavor.json",
+        "referenceSha256": "c73422e044098228e62c059242604e3b507bb4bae63c24853f74bb918cf5a3ea",
+        "reason": "Own original scan visually reviewed: the quotation begins inline after the final rules sentence. Keep the italic quotation and its explicit attribution newline in that same rich paragraph; the printed poem title is “O to Be a Dragon” (lowercase “to”). Rules-only and flavor-only source fields remain separate. Original-printing correction only; no Oracle changes or scan-specific coordinates.",
+        "fields": {
+          "rulesText": "Flying\n{R}: +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn.",
+          "flavorText": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "Flying",
+                  "italic": false
+                }
+              ]
+            },
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "{R}: +1/+0 until end of turn; if more than {R}{R}{R} is spent in this way, Dragon Whelp is destroyed at end of turn. ",
+                  "italic": false
+                },
+                {
+                  "text": "“O to be a dragon . . . of silkworm size or immense . . .”\n—Marianne Moore, “O to Be a Dragon”",
+                  "italic": true
+                }
+              ]
+            }
+          ]
         }
       }
     ],
