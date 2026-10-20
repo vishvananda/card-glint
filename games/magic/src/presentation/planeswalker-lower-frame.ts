@@ -1,4 +1,5 @@
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
+import { WALKER_GEOMETRY, paintWalkerGeometry } from './planeswalker-geometry.js';
 import { FACE_HEIGHT, FACE_WIDTH } from './face-layout.js';
 
 // Shared correction from separate inner/outer rim landmarks across four sets.
@@ -13,12 +14,12 @@ export function planeswalkerLowerPanel(large: boolean) {
 /** Inset the printed ink from the aperture's inner rim, including its curve. */
 export function planeswalkerInkLimits(large: boolean): readonly [number, number] {
   const { top, scale } = planeswalkerLowerPanel(large);
-  return [top + 6, top + (625 - top) * scale - 4];
+  return [top + 6 - WALKER_GEOMETRY.middleLift, top + (625 - top) * scale - 4];
 }
 
 /** Keep all source pixels, with the upper frame unchanged and a shared small
  * vertical compression below the type opening. Called during face preparation. */
-export function paintPlaneswalkerFrameImage(
+function paintPlaneswalkerFrameImageBase(
   context: CanvasContext,
   image: ImageBitmap,
   x: number,
@@ -44,4 +45,17 @@ export function paintPlaneswalkerFrameImage(
       width,
       (height - upperHeight) * scale,
     );
+}
+
+export function paintPlaneswalkerFrameImage(
+  context: CanvasContext,
+  image: ImageBitmap,
+  x: number,
+  y: number,
+  width: number,
+  large: boolean,
+) {
+  paintWalkerGeometry(context, large, () =>
+    paintPlaneswalkerFrameImageBase(context, image, x, y, width, large),
+  );
 }

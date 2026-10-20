@@ -1,4 +1,5 @@
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
+import { WALKER_GEOMETRY, walkerY } from './planeswalker-geometry.js';
 import { FACE_WIDTH, FACE_HEIGHT, type FaceRect } from './face-layout.js';
 
 // Aperture landmarks measured from the pinned 2736×3810 planeswalker plates,
@@ -110,8 +111,8 @@ export function planeswalkerArtBounds(large: boolean): FaceRect {
   return [
     (LEFT + 20 * SCALE) / FACE_WIDTH,
     (TOP + 84 * SCALE) / FACE_HEIGHT,
-    (728 * SCALE) / FACE_WIDTH,
-    (((large ? 541 : 622) - 84) * SCALE) / FACE_HEIGHT,
+    (728 * SCALE - WALKER_GEOMETRY.rightInset) / FACE_WIDTH,
+    (((large ? 541 : 622) - 84) * SCALE - WALKER_GEOMETRY.middleLift) / FACE_HEIGHT,
   ];
 }
 
@@ -121,13 +122,16 @@ export function clipPlaneswalkerArt(c: CanvasContext, large: boolean) {
   c.beginPath();
   side.forEach(([y, x], i) => {
     const px = LEFT + (x - 1) * SCALE,
-      py = TOP + y * SCALE;
+      py = walkerY(TOP + y * SCALE, large);
     if (i === 0) c.moveTo(px, py);
     else c.lineTo(px, py);
   });
   for (let i = side.length - 1; i >= 0; i--) {
     const [y, x] = side[i]!;
-    c.lineTo(LEFT + (769 - x) * SCALE, TOP + y * SCALE);
+    c.lineTo(
+      LEFT + (769 - x) * SCALE - WALKER_GEOMETRY.rightInset,
+      walkerY(TOP + y * SCALE, large),
+    );
   }
   c.closePath();
   c.clip();

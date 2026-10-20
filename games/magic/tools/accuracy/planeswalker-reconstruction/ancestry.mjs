@@ -1,3 +1,4 @@
+import { preWalkerGeometry } from './geometry-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../common.mjs';
@@ -10,7 +11,11 @@ export async function walkerAncestry() {
     assert.equal(hash(bytes), '0b6370dd58b91c66c3245d476efee3a67aa4466c2001530a875261d2d8f2f41a');
     const proof = JSON.parse(bytes);
     for (const [file, digest] of Object.entries(proof.dependencies))
-      assert.equal(hash(await readFile(file)), digest, 'Changed planeswalker source: ' + file);
+      assert.equal(
+        hash(await preWalkerGeometry(file, await readFile(file))),
+        digest,
+        'Changed planeswalker source: ' + file,
+      );
     const nativeBytes = await readFile(proof.native.file);
     assert.equal(hash(nativeBytes), proof.native.sha256, 'Changed planeswalker native replay');
     const native = JSON.parse(nativeBytes);
@@ -24,6 +29,7 @@ export async function walkerAncestry() {
   }));
 }
 export async function preWalkerSource(file, bytes) {
+  bytes = await preWalkerGeometry(file, bytes);
   const proof = await walkerAncestry();
   const c = proof.files[file];
   if (!c) return bytes;

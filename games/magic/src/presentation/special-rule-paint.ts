@@ -1,3 +1,4 @@
+import { WALKER_GEOMETRY, paintWalkerGeometry } from './planeswalker-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import { resolveCardProfile } from './profile.js';
@@ -36,7 +37,7 @@ export function specialPaperColor(face: RenderedCardInput): string {
   return colors[resolveCardProfile(face).boxes] ?? '#dededbf0';
 }
 /** Paper belongs below the frame's own outline, not across its inside edge. */
-export function paintPlaneswalkerPaper(context: CanvasContext, face: RenderedCardInput) {
+function paintPlaneswalkerPaperBase(context: CanvasContext, face: RenderedCardInput) {
   // Match the existing aperture in reference pixels. A rectangular underlay
   // leaks through the type opening and beyond the curved lower frame corners.
   const { top, scale } = planeswalkerLowerPanel(faceFrame(face) === 'planeswalker-large');
@@ -46,17 +47,18 @@ export function paintPlaneswalkerPaper(context: CanvasContext, face: RenderedCar
   context.translate(0, -top);
   context.beginPath();
   context.moveTo(66, top);
-  context.lineTo(448, top);
-  context.quadraticCurveTo(456, top, 456, top + 8);
-  context.lineTo(456, 613);
-  context.bezierCurveTo(456, 623, 420, 629, 257, 629);
+  const inset = WALKER_GEOMETRY.rightInset;
+  context.lineTo(448 - inset, top);
+  context.quadraticCurveTo(456 - inset, top, 456 - inset, top + 8);
+  context.lineTo(456 - inset, 613);
+  context.bezierCurveTo(456 - inset, 623, 420 - inset, 629, 257, 629);
   context.bezierCurveTo(94, 629, 58, 623, 58, 613);
   context.lineTo(58, top + 8);
   context.quadraticCurveTo(58, top, 66, top);
   context.closePath();
   context.clip();
   context.fillStyle = specialPaperColor(face);
-  context.fillRect(58, top, 398, 629 - top);
+  context.fillRect(58, top, 398 - inset, 629 - top);
   context.restore();
 }
 
@@ -167,4 +169,10 @@ export function paintSpecialRules(
       }
     });
   }
+}
+
+export function paintPlaneswalkerPaper(context: CanvasContext, face: RenderedCardInput) {
+  paintWalkerGeometry(context, faceFrame(face) === 'planeswalker-large', () =>
+    paintPlaneswalkerPaperBase(context, face),
+  );
 }

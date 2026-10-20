@@ -19,11 +19,11 @@ export function paintPlaneswalkerType(
     rect[2] * FACE_WIDTH,
     rect[3] * FACE_HEIGHT - 1,
   ];
-  // Raise the plate's bottom edge 1px; preserve text and the shadow's lower extent.
+  // Preserve the reviewed plate contour and texture placement.
   const outline = new Path2D();
   outline.moveTo(x + 14, y);
   // Measured upper-right turn only; retain the existing slot, left flare,
-  // bottom contour, texture placement and independent down-left shadow.
+  // bottom contour and texture placement.
   outline.lineTo(x + w - 16, y);
   outline.quadraticCurveTo(x + w, y, x + w, y + 26);
   outline.lineTo(x + w, y + h - 7);
@@ -34,20 +34,8 @@ export function paintPlaneswalkerType(
   outline.quadraticCurveTo(x + 5, y, x + 14, y);
   outline.closePath();
   context.save();
-  const scale = context.getTransform().a;
-  context.shadowColor = '#0009';
-  context.shadowBlur = 1.4 * scale;
-  context.shadowOffsetX = -1.2 * scale;
-  context.shadowOffsetY = 3.5 * scale;
   context.fillStyle = '#191816';
-  // Keep the down-left/bottom shadow, but stop its blur beyond the right rim.
-  // The 0.6px allowance is half the unchanged 1.2px foreground stroke.
-  context.save();
-  context.beginPath();
-  context.rect(x - 8, y - 8, w + 8.6, h + 20);
-  context.clip();
   context.fill(outline);
-  context.restore();
   context.shadowColor = 'transparent';
   context.save();
   context.clip(outline);
@@ -69,6 +57,13 @@ export function paintPlaneswalkerType(
     context.globalAlpha *= COLORLESS_PLATE_REPAINT;
     context.drawImage(image, ...textureRect);
   }
+  context.restore();
+  // Inset dark bezel; no outer drop shadow. Clip the wider stroke inward.
+  context.save();
+  context.clip(outline);
+  context.strokeStyle = '#0007';
+  context.lineWidth = 3;
+  context.stroke(outline);
   context.restore();
   context.strokeStyle = '#191816';
   context.lineWidth = 1.2;

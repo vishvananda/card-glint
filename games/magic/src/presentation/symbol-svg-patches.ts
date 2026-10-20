@@ -58,9 +58,8 @@ export async function patchSymbolSvg(url: string, blob: Blob): Promise<Blob> {
     paths[0]!.setAttribute('fill', '#fff');
   } else if (patch.recipe === 'm15') {
     if (paths.length !== 6) throw Error('Unexpected M15 path topology.');
-    // Metallic field, black lettering/inset line, and an independent black rim.
-    // SVG viewport clipping keeps the stroke inside the original viewport.
-    set(paths[0]!, { fill: `url(#${gradient!.id})`, stroke: '#000', 'stroke-width': '8' });
+    // Metallic field with black lettering/inset detail; no added exterior rim.
+    set(paths[0]!, { fill: `url(#${gradient!.id})` });
     for (const path of paths.slice(1)) path.setAttribute('fill', '#000');
   } else if (patch.recipe === '8ed' || patch.recipe === '9ed') {
     if (paths.length !== 4) throw Error('Unexpected numeric shield path topology.');

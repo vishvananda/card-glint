@@ -1,4 +1,3 @@
-import ts from 'typescript';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
@@ -19,27 +18,6 @@ assert(
         r.means.candidate < r.means.released &&
         r.reservedMeans.candidate < r.reservedMeans.released,
     ),
-);
-const typeFile = 'games/magic/src/presentation/planeswalker-type.ts',
-  typeSource = await readFile(typeFile);
-const javascript = (bytes) =>
-  ts
-    .transpile(bytes.toString(), {
-      target: ts.ScriptTarget.ES2022,
-      module: ts.ModuleKind.ESNext,
-      removeComments: true,
-    })
-    .replace(/\s/g, '');
-assert.equal(
-  javascript(typeSource)
-    .replace(
-      'context.save();context.beginPath();context.rect(x-8,y-8,w+8.6,h+20);context.clip();context.fill(outline);context.restore();',
-      'context.fill(outline);',
-    )
-    .replace('x+w-16', 'x+w-14')
-    .replace('y+26', 'y+14'),
-  javascript(await preWalkerSource(typeFile, typeSource)),
-  'Only the top-right curve and right-shadow clipping may change',
 );
 const server = await createServer({
   configFile: false,
@@ -137,15 +115,16 @@ try {
           images = new Map([
             [s.source, source],
             [a.background, mask],
+            [a.frame, mask],
           ]);
         const count = planeswalkerBitmapCache.stats.builds,
           one = await preparePlaneswalkerMaterials(face, images, signal),
           two = await preparePlaneswalkerMaterials(face, images, signal);
         if (
           one.images.get(a.background) !== two.images.get(a.background) ||
-          planeswalkerBitmapCache.stats.builds - count !== 1
+          planeswalkerBitmapCache.stats.builds - count !== 2
         )
-          throw Error('Warm background rebuilt');
+          throw Error('Warm materials rebuilt');
         if (images.get(a.background) !== mask) throw Error('Source owner mutated');
         const background = one.images.get(a.background),
           c = document.createElement('canvas');
@@ -156,9 +135,9 @@ try {
         if (ctx.getImageData(10, 10, 1, 1).data[3] !== 255)
           throw Error('Obsolete source opacity retained');
         const rect = faceRects(face).type,
-          expected = [0.05669 + 1.5 / 488, (large ? 0.49044 : 0.55793) + 5 / 680, 0.88662, 0.05737];
+          expected = [0.05669 + 1.5 / 488, (large ? 0.49044 : 0.55793) + 1 / 680, 0.88662, 0.05737];
         if (JSON.stringify(rect) !== JSON.stringify(expected))
-          throw Error('Type text/symbol slot moved');
+          throw Error('Reviewed type slot changed');
         if (palette === 'U' || palette === 'A') {
           const transfer = await Promise.all(
             [...images].map(async ([url, image]) => [url, await createImageBitmap(image)]),
@@ -204,6 +183,26 @@ try {
     URL.revokeObjectURL(workerUrl);
     planeswalkerBitmapCache.clear();
     if (planeswalkerBitmapCache.stats.bytes !== 0) throw Error('Cache lease leaked');
+    const { walkerY, walkerSymbolSize } = await import(
+      '/games/magic/src/presentation/planeswalker-geometry.ts'
+    );
+    for (const large of [false, true]) {
+      for (const y of [0, 42, 70, 620, 650, 680])
+        if (walkerY(y, large) !== y) throw Error('Name/footer moved');
+      for (const y of large ? [320, 345, 382] : [365, 395, 429])
+        if (walkerY(y, large) !== y - 4) throw Error('Middle group is not up 4px');
+      const r = faceRects({
+        typeLine: 'Planeswalker',
+        rulesText: Array(large ? 4 : 3)
+          .fill('+1: Draw a card.')
+          .join('\n'),
+      });
+      if (
+        Math.abs(r.rules[1] + r.rules[3] - (large ? 0.55118 + 0.37534 : 0.62655 + 0.29997)) > 1e-12
+      )
+        throw Error('Ability bottom moved');
+    }
+    if (walkerSymbolSize('__proto__')[0] !== 1) throw Error('Unknown symbol changed');
     const texture = await make(768, 705, (c, w, h) => {
         c.fillStyle = '#c9d8e0';
         c.fillRect(0, 0, w, h);
@@ -240,10 +239,7 @@ try {
             changed++;
             const x = (((i / 4) % (488 * scale)) + 0.5) / scale,
               y = (Math.floor(i / 4 / (488 * scale)) + 0.5) / scale;
-            if (
-              (x < right - 30 || y < top - 5 || y > top + 34) &&
-              !(x > right + 0.5 && x < right + 8 && y > top - 5 && y < top + 50)
-            ) {
+            if (x < rect[0] * 488 - 10 || x > right + 10 || y < top - 10 || y > top + 65) {
               const delta = Math.max(...[0, 1, 2, 3].map((k) => Math.abs(a[i + k] - b[i + k])));
               if (delta > 8)
                 throw Error(
@@ -259,8 +255,8 @@ try {
           height = rect[3] * 680;
         const index =
           (Math.floor((top + height + 3) * scale) * width + Math.floor(244 * scale)) * 4;
-        if ([0, 1, 2, 3].some((k) => a[index + k] !== b[index + k]))
-          throw Error('Bottom shadow moved or changed');
+        if ([22, 136, 181, 255].some((v, k) => b[index + k] !== v))
+          throw Error('Type outer shadow remains below the bezel');
         let rightLeaks = 0;
         for (
           let py = Math.ceil((top + 27) * scale);

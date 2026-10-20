@@ -1,3 +1,4 @@
+import { WALKER_GEOMETRY } from './planeswalker-geometry.js';
 import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { CanvasImages } from './canvas-assets.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -81,6 +82,63 @@ async function background(
     c.width = c.height = 0;
   }
 }
+/** Copy only the right section. Compressing the center would move the left
+ * aperture, type slot and artwork. The texture expands into the vacated strip. */
+async function rightInset(image: ImageBitmap, isBackground: boolean): Promise<ImageBitmap> {
+  const canvas = rasterCanvas();
+  canvas.width = image.width;
+  canvas.height = image.height;
+  try {
+    const context = canvas.getContext('2d');
+    if (!context) throw Error('Planeswalker inset needs Canvas2D');
+    const left = (isBackground ? 0.03937 : 0.04724) * 488;
+    const width = (isBackground ? 0.92126 : 0.91339) * 488;
+    const q = image.width / width,
+      px = (x: number) => (x - left) * q;
+    if (!isBackground) {
+      const split = Math.round(px(420)),
+        edge = split - WALKER_GEOMETRY.rightInset * q;
+      context.drawImage(image, 0, 0);
+      context.clearRect(edge, 0, image.width - edge, image.height);
+      context.drawImage(
+        image,
+        split,
+        0,
+        image.width - split,
+        image.height,
+        edge,
+        0,
+        image.width - split,
+        image.height,
+      );
+    } else {
+      const source = [0, px(420), px(442), image.width - 4 * q, image.width];
+      const target = [
+        0,
+        px(420),
+        px(442 - WALKER_GEOMETRY.rightInset),
+        image.width - (4 + WALKER_GEOMETRY.rightInset) * q,
+        image.width,
+      ];
+      for (let i = 0; i < source.length - 1; i++)
+        context.drawImage(
+          image,
+          source[i]!,
+          0,
+          source[i + 1]! - source[i]!,
+          image.height,
+          target[i]!,
+          0,
+          target[i + 1]! - target[i]!,
+          image.height,
+        );
+    }
+    return await createImageBitmap(canvas);
+  } finally {
+    canvas.width = canvas.height = 0;
+  }
+}
+
 /** Bounded source-derived background. Other frame parts and type geometry stay
  * independent. Sources remain borrowed until a pending build settles on abort. */
 export async function preparePlaneswalkerMaterials(
@@ -102,25 +160,50 @@ export async function preparePlaneswalkerMaterials(
   const source = required(sources.source),
     mask = required(assets.background);
   const adjustment = face.calibration === 'source' ? IDENTITY_HSB : WALKER_BACKGROUND_HSB[palette];
-  const lease = await planeswalkerBitmapCache.acquire(
-    JSON.stringify([
-      WALKER_MATERIAL_REVISION,
-      sources.source,
-      assets.background,
-      mask.width,
-      mask.height,
-      adjustment,
-    ]),
-    mask.width * mask.height * 4,
-    () => background(source, mask, adjustment, palette === 'A'),
+  const frame = required(assets.frame);
+  const leases = await planeswalkerBitmapCache.acquireMany(
+    [
+      {
+        key: JSON.stringify([
+          WALKER_MATERIAL_REVISION,
+          'background',
+          sources.source,
+          assets.background,
+          mask.width,
+          mask.height,
+          adjustment,
+        ]),
+        bytes: mask.width * mask.height * 4,
+        async build() {
+          const prepared = await background(source, mask, adjustment, palette === 'A');
+          try {
+            return await rightInset(prepared, true);
+          } finally {
+            prepared.close();
+          }
+        },
+      },
+      {
+        key: JSON.stringify([
+          WALKER_MATERIAL_REVISION,
+          'frame',
+          assets.frame,
+          frame.width,
+          frame.height,
+        ]),
+        bytes: frame.width * frame.height * 4,
+        build: () => rightInset(frame, false),
+      },
+    ],
     signal,
   );
   const result = Object.assign(new Map(images), images);
-  result.set(assets.background, lease.value);
+  result.set(assets.background, leases[0]!.value);
+  result.set(assets.frame, leases[1]!.value);
   return {
     images: result,
     dispose() {
-      lease.release();
+      for (const lease of leases) lease.release();
     },
   };
 }

@@ -1,0 +1,309 @@
+{
+  "schema": 1,
+  "baselineCommit": "de99fc0c3d8807b56fd181cb8a67b93943f62099",
+  "scope": "Reconstruct the reviewed 0.6.3 candidate for historical receipts only. Current planeswalkers and M15 symbols require fresh scores. No old native evidence is relabeled.",
+  "dependencies": {
+    "games/magic/src/presentation/canvas-face.ts": "b7fb955f3d79dab288d6e89be408c401ded90e4f90114d954cd053c9a063a16c",
+    "games/magic/src/presentation/planeswalker-art.ts": "679d14f205679cd1a63b8dca4341aa3ea1c0b9d67ad667becd790b6fdde97e92",
+    "games/magic/src/presentation/planeswalker-lower-frame.ts": "f912c4102ce0c46768b83d4642816615e41f2555602a6b4bcd8e6f251a820d6c",
+    "games/magic/src/presentation/planeswalker-material.ts": "804aab688fc55db6887ec1bca694c3a4d5f34c9bbf875ecb94d8788b13672ec7",
+    "games/magic/src/presentation/planeswalker-sources.ts": "878cadaf512192d3d86fa53b6b1816e899b8c7905b9be60b63111a2515cbdc9d",
+    "games/magic/src/presentation/planeswalker-type.ts": "96a39333030bf8c5fcd1a558cadcd89d3f7a6d5c40fe3980378fe93bd9286c4a",
+    "games/magic/src/presentation/special-frames.ts": "ebf59aa6f3002eb4c04503ce8b51a699ed42eb18bf14dc9c6302f2d5228b5907",
+    "games/magic/src/presentation/special-rule-paint.ts": "07d3bddc6c6913576c3bc767bae9fbc09e78533b438a6f26e7506605e6af8a2f",
+    "games/magic/src/presentation/symbol-svg-patches.ts": "6c366dae09e58c0335708ce033924767c606fd2670122fb74b83e0d4cdf36b58",
+    "games/magic/src/presentation/planeswalker-geometry.ts": "794e1126ff4eb84d410ec1a9a0dc127e3258f6674613079d3285a9dc2fd3c888"
+  },
+  "files": {
+    "games/magic/src/presentation/canvas-face.ts": {
+      "before": "dba28540253e347283208ed282a086df693c9f2cfcea2685e8861b655628ac50",
+      "after": "b7fb955f3d79dab288d6e89be408c401ded90e4f90114d954cd053c9a063a16c",
+      "reverseEdits": [
+        {
+          "start": 940,
+          "count": 7,
+          "lines": ["    kind === 'normal' && !panel ? NORMAL_FRAME_GEOMETRY.typeWidthScale : 1,\n"]
+        },
+        {
+          "start": 929,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 915,
+          "count": 1,
+          "lines": ["      : baseSymbolBounds;\n"]
+        },
+        {
+          "start": 902,
+          "count": 10,
+          "lines": []
+        },
+        {
+          "start": 846,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 843,
+          "count": 1,
+          "lines": ["    adjustedMana[0] - textX - (mana.length ? FACE_TEXT.titleGap : 0),\n"]
+        },
+        {
+          "start": 828,
+          "count": 10,
+          "lines": []
+        },
+        {
+          "start": 173,
+          "count": 5,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/planeswalker-art.ts": {
+      "before": "8253f36c6535bb528c34f50defc002c00e2d083684941528b9357f3445aa33d2",
+      "after": "679d14f205679cd1a63b8dca4341aa3ea1c0b9d67ad667becd790b6fdde97e92",
+      "reverseEdits": [
+        {
+          "start": 130,
+          "count": 4,
+          "lines": ["    c.lineTo(LEFT + (769 - x) * SCALE, TOP + y * SCALE);\n"]
+        },
+        {
+          "start": 124,
+          "count": 1,
+          "lines": ["      py = TOP + y * SCALE;\n"]
+        },
+        {
+          "start": 113,
+          "count": 2,
+          "lines": [
+            "    (728 * SCALE) / FACE_WIDTH,\n",
+            "    (((large ? 541 : 622) - 84) * SCALE) / FACE_HEIGHT,\n"
+          ]
+        },
+        {
+          "start": 1,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/planeswalker-lower-frame.ts": {
+      "before": "113b00c7412c28dd8eb21f0cd95c3b269a52cd1859efc01ea682ab68681f38a5",
+      "after": "f912c4102ce0c46768b83d4642816615e41f2555602a6b4bcd8e6f251a820d6c",
+      "reverseEdits": [
+        {
+          "start": 48,
+          "count": 13,
+          "lines": []
+        },
+        {
+          "start": 21,
+          "count": 1,
+          "lines": ["export function paintPlaneswalkerFrameImage(\n"]
+        },
+        {
+          "start": 16,
+          "count": 1,
+          "lines": ["  return [top + 6, top + (625 - top) * scale - 4];\n"]
+        },
+        {
+          "start": 1,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/planeswalker-material.ts": {
+      "before": "674c3d21a195b36f909c186744dc781e23726996886f23c60d365537a5250dbf",
+      "after": "804aab688fc55db6887ec1bca694c3a4d5f34c9bbf875ecb94d8788b13672ec7",
+      "reverseEdits": [
+        {
+          "start": 205,
+          "count": 1,
+          "lines": ["      lease.release();\n"]
+        },
+        {
+          "start": 200,
+          "count": 2,
+          "lines": ["  result.set(assets.background, lease.value);\n"]
+        },
+        {
+          "start": 162,
+          "count": 35,
+          "lines": [
+            "  const lease = await planeswalkerBitmapCache.acquire(\n",
+            "    JSON.stringify([\n",
+            "      WALKER_MATERIAL_REVISION,\n",
+            "      sources.source,\n",
+            "      assets.background,\n",
+            "      mask.width,\n",
+            "      mask.height,\n",
+            "      adjustment,\n",
+            "    ]),\n",
+            "    mask.width * mask.height * 4,\n",
+            "    () => background(source, mask, adjustment, palette === 'A'),\n"
+          ]
+        },
+        {
+          "start": 84,
+          "count": 57,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/planeswalker-sources.ts": {
+      "before": "41bb842f87f8f16c00543a8b705a4dd36eedf1d003ffaa9f901fea7c442f0440",
+      "after": "878cadaf512192d3d86fa53b6b1816e899b8c7905b9be60b63111a2515cbdc9d",
+      "reverseEdits": [
+        {
+          "start": 6,
+          "count": 1,
+          "lines": ["export const WALKER_MATERIAL_REVISION = 'conjurer-planeswalker-v2';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/planeswalker-type.ts": {
+      "before": "3b7229de4171d2ab07640ff41c375313696f895cd30a9e51384225fd17202e72",
+      "after": "96a39333030bf8c5fcd1a558cadcd89d3f7a6d5c40fe3980378fe93bd9286c4a",
+      "reverseEdits": [
+        {
+          "start": 60,
+          "count": 7,
+          "lines": []
+        },
+        {
+          "start": 38,
+          "count": 0,
+          "lines": ["  context.restore();\n"]
+        },
+        {
+          "start": 37,
+          "count": 0,
+          "lines": [
+            "  // Keep the down-left/bottom shadow, but stop its blur beyond the right rim.\n",
+            "  // The 0.6px allowance is half the unchanged 1.2px foreground stroke.\n",
+            "  context.save();\n",
+            "  context.beginPath();\n",
+            "  context.rect(x - 8, y - 8, w + 8.6, h + 20);\n",
+            "  context.clip();\n"
+          ]
+        },
+        {
+          "start": 36,
+          "count": 0,
+          "lines": [
+            "  const scale = context.getTransform().a;\n",
+            "  context.shadowColor = '#0009';\n",
+            "  context.shadowBlur = 1.4 * scale;\n",
+            "  context.shadowOffsetX = -1.2 * scale;\n",
+            "  context.shadowOffsetY = 3.5 * scale;\n"
+          ]
+        },
+        {
+          "start": 25,
+          "count": 1,
+          "lines": ["  // bottom contour, texture placement and independent down-left shadow.\n"]
+        },
+        {
+          "start": 21,
+          "count": 1,
+          "lines": [
+            "  // Raise the plate's bottom edge 1px; preserve text and the shadow's lower extent.\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/special-frames.ts": {
+      "before": "fb0fab8d1dd3b5c9be04139304cf3ade39b240785bdedc92c92f5efef4441802",
+      "after": "ebf59aa6f3002eb4c04503ce8b51a699ed42eb18bf14dc9c6302f2d5228b5907",
+      "reverseEdits": [
+        {
+          "start": 119,
+          "count": 1,
+          "lines": ["        (large ? 0.49044 : 0.55793) + 5 / FACE_HEIGHT,\n"]
+        },
+        {
+          "start": 105,
+          "count": 1,
+          "lines": ["      large ? 0.37534 : 0.29997,\n"]
+        },
+        {
+          "start": 103,
+          "count": 1,
+          "lines": ["      large ? 0.55118 : 0.62655,\n"]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/special-rule-paint.ts": {
+      "before": "d59c10b26527fc651035b40baa182a59a303a404cffd45a7821a9d04344179c3",
+      "after": "07d3bddc6c6913576c3bc767bae9fbc09e78533b438a6f26e7506605e6af8a2f",
+      "reverseEdits": [
+        {
+          "start": 172,
+          "count": 6,
+          "lines": []
+        },
+        {
+          "start": 60,
+          "count": 1,
+          "lines": ["  context.fillRect(58, top, 398, 629 - top);\n"]
+        },
+        {
+          "start": 49,
+          "count": 5,
+          "lines": [
+            "  context.lineTo(448, top);\n",
+            "  context.quadraticCurveTo(456, top, 456, top + 8);\n",
+            "  context.lineTo(456, 613);\n",
+            "  context.bezierCurveTo(456, 623, 420, 629, 257, 629);\n"
+          ]
+        },
+        {
+          "start": 39,
+          "count": 1,
+          "lines": [
+            "export function paintPlaneswalkerPaper(context: CanvasContext, face: RenderedCardInput) {\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/symbol-svg-patches.ts": {
+      "before": "18039a2abad0568bb0799b3d8599203ac122b7bf5493b1a556eba54041881c8e",
+      "after": "6c366dae09e58c0335708ce033924767c606fd2670122fb74b83e0d4cdf36b58",
+      "reverseEdits": [
+        {
+          "start": 60,
+          "count": 2,
+          "lines": [
+            "    // Metallic field, black lettering/inset line, and an independent black rim.\n",
+            "    // SVG viewport clipping keeps the stroke inside the original viewport.\n",
+            "    set(paths[0]!, { fill: `url(#${gradient!.id})`, stroke: '#000', 'stroke-width': '8' });\n"
+          ]
+        }
+      ]
+    }
+  }
+}

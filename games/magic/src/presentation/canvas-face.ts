@@ -1,3 +1,4 @@
+import { WALKER_GEOMETRY, walkerSymbolSize } from './planeswalker-geometry.js';
 import { coverageMap, type CoverageMap } from '../../../../packages/browser/src/canvas-mask.js';
 import { finishRaster, closeRaster } from '../../../../packages/browser/src/canvas-raster.js';
 import {
@@ -170,6 +171,11 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     CONJURER_ROOT,
     'canvas-face-v148',
     ...(faceFrame(face).startsWith('planeswalker') ? [WALKER_MATERIAL_REVISION] : []),
+    ...(faceSetSymbol(face)?.startsWith(`${CONJURER_ROOT}/img/setSymbols/official/m15-`) &&
+    !face.setSymbol &&
+    face.rarity !== 'common'
+      ? ['m15-no-added-rim-v1']
+      : []),
     ['silhouette-v2', faceCornerRadius(face)],
     setCalibrationTextureKey(face),
     input.paintLayer ?? null,
@@ -820,14 +826,25 @@ export function paintAssembledFace(
   context.letterSpacing = `${FACE_TEXT.titleTracking}px`;
   context.save();
   if (kind === 'normal' && !panel) context.translate(...titleTranslation(face, 'modern'));
+  const titleWidth = adjustedMana[0] - textX - (mana.length ? FACE_TEXT.titleGap : 0);
+  const titleWidthScale = planeswalker
+    ? Math.max(
+        1,
+        Math.min(
+          WALKER_GEOMETRY.titleWidth,
+          (titleWidth - 0.5) / context.measureText(face.name).width,
+        ),
+      )
+    : 1;
   paintFittedText(
     context,
     face.name,
     textX,
     ty + th / 2 + (kind === 'normal' ? 1 : 0),
-    adjustedMana[0] - textX - (mana.length ? FACE_TEXT.titleGap : 0),
+    titleWidth,
     titleSize,
     true,
+    titleWidthScale,
   );
   context.restore();
   context.letterSpacing = '0px';
@@ -883,10 +900,20 @@ export function paintAssembledFace(
     (setIcon?.width ?? 0) * setCrop[2] * setScale * symbolGrowth,
     (setIcon?.height ?? 0) * setCrop[3] * setScale * symbolGrowth,
   ] as const;
+  const [walkerSymbolWidth, walkerSymbolHeight] =
+    planeswalker && styledSymbol && !face.setSymbol ? walkerSymbolSize(face.setCode) : [1, 1];
+  const walkerSymbolBounds: FaceRect = planeswalker
+    ? [
+        baseSymbolBounds[0] + baseSymbolBounds[2] * (1 - walkerSymbolWidth),
+        baseSymbolBounds[1] + baseSymbolBounds[3] * (1 - walkerSymbolHeight),
+        baseSymbolBounds[2] * walkerSymbolWidth,
+        baseSymbolBounds[3] * walkerSymbolHeight,
+      ]
+    : baseSymbolBounds;
   const originalSymbolBounds =
     kind === 'normal' && !panel
       ? calibratedStyledSymbolBounds(face, setUrl, baseSymbolBounds, 'component')
-      : baseSymbolBounds;
+      : walkerSymbolBounds;
   const symbolBounds = adjustedSymbolBounds(originalSymbolBounds, face.symbolAdjustment?.set);
   // Preserve existing type fitting unless an adjusted symbol needs more room.
   const typeWidth = Math.max(
@@ -900,6 +927,8 @@ export function paintAssembledFace(
         : Infinity,
     ),
   );
+  // Preserve clearance on already crowded type lines; do not reduce their
+  // font height merely to apply the shared width correction.
   context.font = `${FACE_TEXT.typeFont * textScale}px "CardRenderer MTG Beleren", Georgia`;
   paintFittedText(
     context,
@@ -909,7 +938,13 @@ export function paintAssembledFace(
     typeWidth,
     FACE_TEXT.typeFont * textScale,
     false,
-    kind === 'normal' && !panel ? NORMAL_FRAME_GEOMETRY.typeWidthScale : 1,
+    kind === 'normal' && !panel
+      ? NORMAL_FRAME_GEOMETRY.typeWidthScale
+      : planeswalker &&
+          context.measureText(face.typeLine ?? '').width * WALKER_GEOMETRY.typeWidth <=
+            typeWidth * 0.97
+        ? WALKER_GEOMETRY.typeWidth
+        : 1,
     'CardRenderer MTG Beleren',
     0,
     face.textInk,

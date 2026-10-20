@@ -118,7 +118,11 @@ try {
       m15[0].getAttribute('fill') === 'url(#g)' && m15[1].getAttribute('fill') === '#000',
       'M15 material polarity stayed reversed',
     );
-    check(m15[0].getAttribute('stroke') === '#000', 'M15 lost its exterior outline');
+    check(!m15[0].hasAttribute('stroke'), 'M15 gained an unprinted exterior outline');
+    check(
+      [...m15].slice(1).every((p) => p.getAttribute('fill') === '#000'),
+      'M15 lost its black lettering/inset details',
+    );
     for (const [i, url] of urls.entries()) {
       const doc = parsed[i],
         paths = doc.querySelectorAll('path');

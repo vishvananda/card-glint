@@ -34,12 +34,12 @@ export async function calibrationReport(ledger) {
       for (const item of dependencies) {
         for (const [file, expected] of Object.entries(item.guards ?? {})) {
           assert.ok(!file.startsWith('/') && !file.split('/').includes('..'));
-          const guardKey = (group.kind === 'planeswalker' ? 'walker:' : 'other:') + file;
+          const changedScope = group.kind === 'planeswalker' || set.set === 'm15';
+          const guardKey = (changedScope ? 'changed:' : 'other:') + file;
           if (!checked.has(guardKey)) {
             try {
               const bytes = await readFile(root + '/' + file);
-              const scoped =
-                group.kind === 'planeswalker' ? bytes : await preWalkerSource(file, bytes);
+              const scoped = changedScope ? bytes : await preWalkerSource(file, bytes);
               const ancestral =
                 file === 'games/magic/src/presentation/retro-paint.ts'
                   ? await preAlphaEditorSource(file, scoped)

@@ -4,7 +4,7 @@ import type { HsbAdjustment } from './hsb.js';
 
 export type WalkerPalette = 'W' | 'U' | 'B' | 'R' | 'G' | 'M' | 'A';
 export type WalkerFamily = 'regular' | 'tall';
-export const WALKER_MATERIAL_REVISION = 'conjurer-planeswalker-v2';
+export const WALKER_MATERIAL_REVISION = 'conjurer-planeswalker-v3';
 
 /** Shared source-material correction; exact printing profiles remain separate. */
 export const WALKER_BACKGROUND_HSB: Readonly<Record<WalkerPalette, HsbAdjustment>> = {

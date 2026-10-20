@@ -145,3 +145,44 @@ test. The source default, backgrounds and per-set typography remain separate.
 It never makes changed planeswalker scores current. Its receipt binds the material
 implementation and native replay. Material tests cover all 14 combinations,
 missing assets, aborts, warm reuse/cleanup and document/worker pixel parity.
+
+## Reviewed 0.6.4 geometry and heading widths
+
+The approved follow-up keeps original name/type plate widths and moves the
+middle group up 4 pixels in the 488 × 680 painter space. Name geometry and the
+ability-paper bottom stay fixed. The colored right contour, art aperture and
+ability-paper edge move inward 2 pixels. The type box uses a clipped inward dark
+bezel instead of an outer shadow. These are shared frame rules, not scan offsets.
+
+`planeswalker-geometry.ts` owns these values. Name ink widens 6%, capped by the
+space remaining before the mana cost. Type ink widens 3% only if it retains 3%
+clearance; crowded lines preserve their font height and existing width. M20
+Chandra's type line is byte-identical before/after this width pass. Symbol source
+profiles resize each axis independently around a fixed lower-right anchor.
+Only measured sources receive a correction. Host-supplied symbols stay untouched.
+
+Reuse an external study produced by `fetch-release.mjs` and `capture-release.mjs`;
+keep its original-wording inputs and frozen exterior scan poses. Diagnostic
+outputs stay outside the repository. Capture actual text draw calls with:
+
+```sh
+node "$TOOLS/capture-geometry.mjs" "$STUDY" actual-geometry
+python "$TOOLS/fit-heading-widths.py" "$STUDY"
+python "$TOOLS/fit-symbol-sizes.py" "$STUDY"
+python "$TOOLS/validate-heading-widths.py" "$STUDY"
+```
+
+The fitting tools expect `actual-before/` as the paired unadjusted width/symbol
+capture and `actual-geometry/` as the candidate. Both must use identical approved
+frame geometry and scan poses. The baseline disables the shared heading width
+and symbol size profiles only. Keep 39 calibration and 20 reserved cards separate.
+Use capped bidirectional dark-ink distance for headings and paper-relative shape
+coverage for symbols; evaluate the final native raster, not transformed templates.
+
+The mask observer copies the actual draw transform/font and explicitly supplies
+heading tracking. Chromium can return an empty `letterSpacing` getter even while
+nonzero tracking is active. A mask reconstructed from that getter is invalid.
+Verify mask ink against full-card ink and keep the observed raster hashes.
+The old 0.6.3 evidence and source proof remain immutable; a separate reversible
+geometry proof reconstructs those historical bytes for unchanged-frame receipts.
+Changed planeswalkers and M15 symbols require fresh scores.

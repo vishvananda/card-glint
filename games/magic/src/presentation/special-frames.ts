@@ -1,3 +1,4 @@
+import { WALKER_GEOMETRY } from './planeswalker-geometry.js';
 import { standardTemplateRects } from './standard-frame-templates.js';
 import { splitHalfRects } from './split-frame.js';
 import { ADVENTURE_RECTS } from './adventure-frame.js';
@@ -100,9 +101,9 @@ export function faceRects(face: RenderedCardInput): FaceRects {
     const large = kind === 'planeswalker-large';
     const rules: FaceRect = [
       0.04409,
-      large ? 0.55118 : 0.62655,
+      (large ? 0.55118 : 0.62655) - WALKER_GEOMETRY.middleLift / FACE_HEIGHT,
       0.88827,
-      large ? 0.37534 : 0.29997,
+      (large ? 0.37534 : 0.29997) + WALKER_GEOMETRY.middleLift / FACE_HEIGHT,
     ];
     const stampWidth = FACE_RECTS.stamp[2],
       stampHeight = FACE_RECTS.stamp[3];
@@ -116,7 +117,7 @@ export function faceRects(face: RenderedCardInput): FaceRects {
       title: [0.05669, 0.03375, 0.88662, 0.05737],
       type: [
         0.05669 + 1.5 / FACE_WIDTH,
-        (large ? 0.49044 : 0.55793) + 5 / FACE_HEIGHT,
+        (large ? 0.49044 : 0.55793) + (5 - WALKER_GEOMETRY.middleLift) / FACE_HEIGHT,
         0.88662,
         0.05737,
       ],
