@@ -174,8 +174,8 @@
     },
     "2ed-material-proposal": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-material-proposal.json",
-      "sha256": "dcf886f79a9cf3718292424b98316667c3832923ff6b3d28f6a71a84b0c51d5c",
-      "contentSha256": "dcf886f79a9cf3718292424b98316667c3832923ff6b3d28f6a71a84b0c51d5c"
+      "sha256": "5828c362e0af42357b2217a162fb051fe82be4f15f5776f7fea5236292b426f7",
+      "contentSha256": "5828c362e0af42357b2217a162fb051fe82be4f15f5776f7fea5236292b426f7"
     },
     "2ed-basic-land-geometry": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-geometry.json.gz",
@@ -426,6 +426,26 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-component-replay.json.gz",
       "sha256": "fe47e2417db158b7c2f95cc2fbab6f3affcc9e627df439a990fcb6d8936de699",
       "contentSha256": "dc60762a52d1044861dbc6f502b3ac233d426b56f7688baf25babaa716ddf2c1"
+    },
+    "2ed-mana-ink-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-ink-verification.json.gz",
+      "sha256": "804857d253ba37a820747d064e75c317e420402c6a206f30e87fcf3ecc8882a4",
+      "contentSha256": "c61d8319e7ac6823390175c48d72a6e2001c1e5f261d18b7cac12d7fd44177a1"
+    },
+    "2ed-mana-x-source-review": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-x-source-review.json.gz",
+      "sha256": "64a10906eebb78aeb77346f2964aa0a68fb13f46546e812db539107173d3127d",
+      "contentSha256": "5e2df0d7747a47a6ba803fb0a8381d7cf82b87e51e9e4f003c37ffa9d1f0ccc0"
+    },
+    "2ed-mana-all-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-all-verification.json.gz",
+      "sha256": "4a516424c5ecb4e9a5b89f2c3f7ab630a59a7b50c98690ba482c0e1f68ee087d",
+      "contentSha256": "c49ed41b28055bc1614ebf3614eb7e250c59d10fd3c606ecffd19c5fa105e91e"
+    },
+    "2ed-mana-final-replay": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-final-replay.json.gz",
+      "sha256": "d2a402d9e454bf7d7ef0093125e593a7405e0da54f4f899458f36b31c72a05e5",
+      "contentSha256": "d79af82a148ff1747e84d0806c9da10a88977508b67c5f63dc01c1af82663c6e"
     }
   },
   "native": {
@@ -1373,7 +1393,7 @@
     "wording": "Use current original printing inputs, including Dragon Whelp inline quotation and Drain Life 1B. Drain Life header-only replay preserves body pixels and rightmost pips; historical extra-X full-face records are superseded for header comparisons. Oracle input remains unchanged.",
     "typography": "Measure filled ink/stroke/shadow values separately from fixed-gray geometry; retain MPlantin credits unless new evidence supports another face.",
     "body": "Integrate shared count/wrap and medium-density retention with original/Oracle safety preserved; verify final full native inputs.",
-    "mana": "Disc/pigment/colored glyph/numeral candidates have native evidence. Review original X glyph identity and source ink expansion, retain numeral outliers, then verify the combined final profile across all 277 costs.",
+    "mana": "All 277 current original costs have joint native verification. Integrate shared palette/disc/glyph/numeral geometry plus R source expansion 0.4 AND opaque-percentile paper sampling; retain X source and all numerical/measurement outliers. Recheck after complete frame/body/footer integration, Oracle mode and source-equivalence proof.",
     "footer": "Preserve printed Illus. \u00a9 prefix and absence of a separate Unlimited legal line.",
     "receipts": "Scoped integration and source-equivalence evidence must preserve immutable historical receipts and avoid reopening unrelated sets.",
     "completion": "Full profile/whole-card validation and visual boundary certification are still required. No renderer profile is adopted by these study files."
@@ -1901,15 +1921,19 @@
     "wholeSetCertification": false
   },
   "manaComponents": {
-    "status": "native-shared-components-verified-X-and-ink-review-open",
+    "status": "joint-native-all-costs-verified-final-profile-integration-open",
     "sources": {
       "physicalDiscs": "2ed-mana-disc-fit.json.gz",
       "nativeGlyphs": "2ed-mana-component-verification.json.gz",
-      "nativeNumerals": "2ed-mana-number-verification.json.gz"
+      "nativeNumerals": "2ed-mana-number-verification.json.gz",
+      "nativeInkExpansion": "2ed-mana-ink-verification.json.gz",
+      "XSourceComparison": "2ed-mana-x-source-review.json.gz",
+      "nativeAllCosts": "2ed-mana-all-verification.json.gz",
+      "replay": "2ed-mana-final-replay.json.gz"
     },
     "nativeColoredSample": 54,
     "nativeNumericCosts": 47,
-    "originalXCostsPending": 13,
+    "originalXCostsPending": 1,
     "geometry": {
       "dx": -0.875,
       "dy": 1.125,
@@ -2363,9 +2387,489 @@
         "inkDelta100": -0.5842254253521251
       }
     ],
-    "scope": "Shared source-relative cost geometry and glyph/numeral transforms. Disc centers/radii are fitted from calibration perimeter measurements; pitch is measured separately. Colored glyphs use disc-relative masks at three thresholds, without normalizing ink bounds. Actual PNGs verify all component/cost scores and isolation. Forty colored-glyph cases improve with no regressions; blue and numeric-only cases retain exact bytes for that glyph change. Numerals improve 36/47 cases, with eleven residuals retained. Whole-cost edge scores remain a separate diagnostic and can disagree with physical/pigment improvements. Original X glyph identity and source ink expansion still need checking; complete frame/body/footer integration and full-set native verification remain open.",
+    "scope": "Shared source-relative mana palette, disc/pitch geometry, five colored glyph scales, numeral transforms and red-only ink expansion have actual native evidence on all 277 current original costs. Fixed frame-only scan poses are retained; no per-card placement defaults are proposed. Red expansion 0.4 requires opaque-percentile paper sampling. Existing X is retained after comparison with six cached fonts; Guardian Angel has one low-contrast X perimeter residual but remains in complete-cost replay. Physical-disc measurements succeed for all 277. Internal-ink indices sample the rightmost pip of each cost and improve 76.71 to 86.50/100, with 242 gains and 35 regressions; whole-cost structure moves 72.89 to 72.73/100, with all outliers retained. Only cost/rules pixels change, alpha is unchanged and no heading pixels change. Complete frame/body/footer integration, Oracle behavior, etching, visual normalization review and whole-card validation are still required. No runtime profile is adopted.",
     "runtimeProfilePromoted": false,
-    "wholeSetCertification": false
+    "wholeSetCertification": false,
+    "originalXSourceReview": {
+      "total": 13,
+      "measurable": 12,
+      "candidates": 7,
+      "retained": "source-X",
+      "ranking": {
+        "all": {
+          "count": 12,
+          "candidates": [
+            {
+              "id": "source-X",
+              "mean100": 76.9517656528841
+            },
+            {
+              "id": "font-0",
+              "mean100": 76.23211352258764
+            },
+            {
+              "id": "font-3",
+              "mean100": 72.44435680850856
+            },
+            {
+              "id": "font-1",
+              "mean100": 60.65238702409954
+            },
+            {
+              "id": "font-4",
+              "mean100": 60.493640897138214
+            },
+            {
+              "id": "font-2",
+              "mean100": 59.45603279083716
+            },
+            {
+              "id": "font-5",
+              "mean100": 45.50464736945645
+            }
+          ]
+        },
+        "calibration": {
+          "count": 9,
+          "candidates": [
+            {
+              "id": "source-X",
+              "mean100": 77.52500164003963
+            },
+            {
+              "id": "font-0",
+              "mean100": 76.8068724222117
+            },
+            {
+              "id": "font-3",
+              "mean100": 72.86401781243796
+            },
+            {
+              "id": "font-1",
+              "mean100": 60.149277101039765
+            },
+            {
+              "id": "font-4",
+              "mean100": 59.93630745031366
+            },
+            {
+              "id": "font-2",
+              "mean100": 59.094344338106666
+            },
+            {
+              "id": "font-5",
+              "mean100": 45.727397999954455
+            }
+          ]
+        },
+        "validation": {
+          "count": 3,
+          "candidates": [
+            {
+              "id": "source-X",
+              "mean100": 75.23205769141752
+            },
+            {
+              "id": "font-0",
+              "mean100": 74.50783682371544
+            },
+            {
+              "id": "font-3",
+              "mean100": 71.18537379672031
+            },
+            {
+              "id": "font-4",
+              "mean100": 62.16564123761188
+            },
+            {
+              "id": "font-1",
+              "mean100": 62.161716793278885
+            },
+            {
+              "id": "font-2",
+              "mean100": 60.54109814902861
+            },
+            {
+              "id": "font-5",
+              "mean100": 44.83639547796241
+            }
+          ]
+        }
+      },
+      "residual": "Guardian Angel pale disc has a search-boundary perimeter measurement. It remains in all-cost native replay; no per-card placement or scan registration is fitted."
+    },
+    "inkExpansion": {
+      "selected": {
+        "R": 0.4
+      },
+      "paperSampling": {
+        "R": "opaque-percentile"
+      },
+      "groups": {
+        "B": {
+          "selected": 0,
+          "candidates": [
+            {
+              "amount": 0,
+              "utility": 0,
+              "calibrationGain100": 0
+            },
+            {
+              "amount": 0.2,
+              "utility": -0.04491333799790027,
+              "calibrationGain100": -3.2895597066131965
+            },
+            {
+              "amount": 0.4,
+              "utility": -0.10114148087677621,
+              "calibrationGain100": -7.823741397445408
+            },
+            {
+              "amount": 0.6,
+              "utility": -0.15066637127058816,
+              "calibrationGain100": -11.670636552320387
+            }
+          ],
+          "cohorts": {
+            "all": {
+              "count": 10,
+              "inkMean100": [85.20190978630092, 85.20190978630092],
+              "costMean100": [64.31762364617764, 64.31762364617764],
+              "improved": 0,
+              "regressed": 0,
+              "worstRegression100": 0
+            },
+            "calibration": {
+              "count": 5,
+              "inkMean100": [84.3628180111962, 84.3628180111962],
+              "costMean100": [65.47742315237302, 65.47742315237302],
+              "improved": 0,
+              "regressed": 0,
+              "worstRegression100": 0
+            },
+            "validation": {
+              "count": 5,
+              "inkMean100": [86.04100156140561, 86.04100156140561],
+              "costMean100": [63.15782413998227, 63.15782413998227],
+              "improved": 0,
+              "regressed": 0,
+              "worstRegression100": 0
+            }
+          }
+        },
+        "R": {
+          "selected": 0.4,
+          "candidates": [
+            {
+              "amount": 0.4,
+              "utility": 0.08184543286496078,
+              "calibrationGain100": 8.184543286496078
+            },
+            {
+              "amount": 0.2,
+              "utility": 0.07910006987305691,
+              "calibrationGain100": 7.9100069873056915
+            },
+            {
+              "amount": 0.6,
+              "utility": 0.023434900513719187,
+              "calibrationGain100": 2.6423186861066927
+            },
+            {
+              "amount": 0,
+              "utility": 0,
+              "calibrationGain100": 0
+            }
+          ],
+          "cohorts": {
+            "all": {
+              "count": 10,
+              "inkMean100": [80.44917220327974, 89.88455706853007],
+              "costMean100": [69.46715887342803, 71.50790792231729],
+              "improved": 10,
+              "regressed": 0,
+              "worstRegression100": 0
+            },
+            "calibration": {
+              "count": 5,
+              "inkMean100": [80.0185651372902, 88.20310842378628],
+              "costMean100": [71.40060247579146, 73.87240515673228],
+              "improved": 5,
+              "regressed": 0,
+              "worstRegression100": 0
+            },
+            "validation": {
+              "count": 5,
+              "inkMean100": [80.87977926926928, 91.56600571327385],
+              "costMean100": [67.5337152710646, 69.1434106879023],
+              "improved": 5,
+              "regressed": 0,
+              "worstRegression100": 0
+            }
+          }
+        },
+        "G": {
+          "selected": 0,
+          "candidates": [
+            {
+              "amount": 0,
+              "utility": 0,
+              "calibrationGain100": 0
+            },
+            {
+              "amount": 0.2,
+              "utility": -0.027782670116004902,
+              "calibrationGain100": -2.1162420600786014
+            },
+            {
+              "amount": 0.4,
+              "utility": -0.07126289799923316,
+              "calibrationGain100": -5.439414913382888
+            },
+            {
+              "amount": 0.6,
+              "utility": -0.1188473234844564,
+              "calibrationGain100": -9.26747753857691
+            }
+          ],
+          "cohorts": {
+            "all": {
+              "count": 10,
+              "inkMean100": [92.35937929033766, 92.35937929033766],
+              "costMean100": [62.10343108206771, 62.10343108206771],
+              "improved": 0,
+              "regressed": 0,
+              "worstRegression100": 0
+            },
+            "calibration": {
+              "count": 5,
+              "inkMean100": [92.82184485815097, 92.82184485815097],
+              "costMean100": [62.28338878171192, 62.28338878171192],
+              "improved": 0,
+              "regressed": 0,
+              "worstRegression100": 0
+            },
+            "validation": {
+              "count": 5,
+              "inkMean100": [91.8969137225243, 91.8969137225243],
+              "costMean100": [61.92347338242348, 61.92347338242348],
+              "improved": 0,
+              "regressed": 0,
+              "worstRegression100": 0
+            }
+          }
+        }
+      },
+      "samplerAudit": {
+        "nativePairs": 80,
+        "identical": 60,
+        "different": 20,
+        "requirement": "R ink expansion 0.4 and 0.6 contaminate the old fixed paper probe. The selected R 0.4 must use the existing opaque-percentile sampler. B/G expansion is not selected."
+      }
+    },
+    "nativeAllCosts": {
+      "all": {
+        "count": 277,
+        "cost": {
+          "accepted": 277,
+          "mean100": [72.89456041461757, 72.73268605509948],
+          "improved": 144,
+          "regressed": 133,
+          "worstRegression100": 10.78657180539777
+        },
+        "ink": {
+          "accepted": 277,
+          "mean100": [76.71283305071341, 86.50316399370732],
+          "improved": 242,
+          "regressed": 35,
+          "worstRegression100": 10.757631303299842
+        },
+        "geometryAccepted": 277,
+        "centerMedianPx": [1.5461646096066226, 0.9893977018873609],
+        "radiusMedianPx": [0.375, 0.125],
+        "bodyChangedCards": 58,
+        "headingChangedCards": 0
+      },
+      "calibration": {
+        "count": 187,
+        "cost": {
+          "accepted": 187,
+          "mean100": [73.42059316184185, 73.4964053187244],
+          "improved": 101,
+          "regressed": 86,
+          "worstRegression100": 10.608643683089426
+        },
+        "ink": {
+          "accepted": 187,
+          "mean100": [76.850384819731, 86.56762828938056],
+          "improved": 165,
+          "regressed": 22,
+          "worstRegression100": 10.757631303299842
+        },
+        "geometryAccepted": 187,
+        "centerMedianPx": [1.5461646096066226, 0.9394300965212825],
+        "radiusMedianPx": [0.375, 0.125],
+        "bodyChangedCards": 42,
+        "headingChangedCards": 0
+      },
+      "validation": {
+        "count": 90,
+        "cost": {
+          "accepted": 90,
+          "mean100": [71.80158126205158, 71.14584714067901],
+          "improved": 43,
+          "regressed": 47,
+          "worstRegression100": 10.78657180539777
+        },
+        "ink": {
+          "accepted": 90,
+          "mean100": [76.42703104175462, 86.36922151269732],
+          "improved": 77,
+          "regressed": 13,
+          "worstRegression100": 6.507829020033817
+        },
+        "geometryAccepted": 90,
+        "centerMedianPx": [1.5786178842187204, 1.0888133158313282],
+        "radiusMedianPx": [0.375, 0.125],
+        "bodyChangedCards": 16,
+        "headingChangedCards": 0
+      },
+      "W": {
+        "count": 46,
+        "cost": {
+          "accepted": 46,
+          "mean100": [77.38695735917196, 77.94813856004785],
+          "improved": 31,
+          "regressed": 15,
+          "worstRegression100": 7.169124958274575
+        },
+        "ink": {
+          "accepted": 46,
+          "mean100": [86.95611083185429, 91.46858025956217],
+          "improved": 45,
+          "regressed": 1,
+          "worstRegression100": 0.7186763994385559
+        },
+        "geometryAccepted": 46,
+        "centerMedianPx": [1.5662455107677085, 1.0851400399257412],
+        "radiusMedianPx": [0.25, 0.125],
+        "bodyChangedCards": 10,
+        "headingChangedCards": 0
+      },
+      "U": {
+        "count": 46,
+        "cost": {
+          "accepted": 46,
+          "mean100": [76.11528609926721, 75.9265220707022],
+          "improved": 23,
+          "regressed": 23,
+          "worstRegression100": 6.6888416671010535
+        },
+        "ink": {
+          "accepted": 46,
+          "mean100": [90.52765603714286, 90.48302568021612],
+          "improved": 22,
+          "regressed": 24,
+          "worstRegression100": 6.071801522419884
+        },
+        "geometryAccepted": 46,
+        "centerMedianPx": [1.507790034524179, 0.929161851282224],
+        "radiusMedianPx": [0.375, 0.125],
+        "bodyChangedCards": 3,
+        "headingChangedCards": 0
+      },
+      "B": {
+        "count": 46,
+        "cost": {
+          "accepted": 46,
+          "mean100": [72.46681542523743, 71.56906002188849],
+          "improved": 20,
+          "regressed": 26,
+          "worstRegression100": 9.830372414670553
+        },
+        "ink": {
+          "accepted": 46,
+          "mean100": [76.87474863500753, 81.36432368371152],
+          "improved": 46,
+          "regressed": 0,
+          "worstRegression100": 0
+        },
+        "geometryAccepted": 46,
+        "centerMedianPx": [1.718369656136578, 1.1553251015363921],
+        "radiusMedianPx": [0.375, 0],
+        "bodyChangedCards": 9,
+        "headingChangedCards": 0
+      },
+      "R": {
+        "count": 46,
+        "cost": {
+          "accepted": 46,
+          "mean100": [69.11073604022341, 69.40214764799381],
+          "improved": 27,
+          "regressed": 19,
+          "worstRegression100": 10.78657180539777
+        },
+        "ink": {
+          "accepted": 46,
+          "mean100": [67.71050438956667, 88.54438674578748],
+          "improved": 46,
+          "regressed": 0,
+          "worstRegression100": 0
+        },
+        "geometryAccepted": 46,
+        "centerMedianPx": [1.5461646096066226, 1.0625513036450964],
+        "radiusMedianPx": [0.375, 0.25],
+        "bodyChangedCards": 9,
+        "headingChangedCards": 0
+      },
+      "G": {
+        "count": 46,
+        "cost": {
+          "accepted": 46,
+          "mean100": [65.0974661354879, 62.92882807399312],
+          "improved": 12,
+          "regressed": 34,
+          "worstRegression100": 10.183727656623232
+        },
+        "ink": {
+          "accepted": 46,
+          "mean100": [68.07945195526986, 89.81874572929289],
+          "improved": 46,
+          "regressed": 0,
+          "worstRegression100": 0
+        },
+        "geometryAccepted": 46,
+        "centerMedianPx": [1.5650996611745183, 0.8501325933933956],
+        "radiusMedianPx": [0.25, 0],
+        "bodyChangedCards": 4,
+        "headingChangedCards": 0
+      },
+      "N": {
+        "count": 47,
+        "cost": {
+          "accepted": 47,
+          "mean100": [77.09870693866425, 78.4961277453149],
+          "improved": 31,
+          "regressed": 16,
+          "worstRegression100": 4.190319779527119
+        },
+        "ink": {
+          "accepted": 47,
+          "mean100": [70.26861808512605, 77.5348844621851],
+          "improved": 37,
+          "regressed": 10,
+          "worstRegression100": 10.757631303299842
+        },
+        "geometryAccepted": 47,
+        "centerMedianPx": [1.4252192813739224, 0.8646720837982407],
+        "radiusMedianPx": [0.375, 0.125],
+        "bodyChangedCards": 23,
+        "headingChangedCards": 0
+      }
+    },
+    "allCostMeasurementFailures": [],
+    "currentOriginalInputs": true,
+    "nativeAllCostsScope": "Whole-cost indices and physical geometry cover all 277. Internal-ink indices sample the rightmost pip of every cost; they do not certify every numeral or X on multicolor/multiple-pip costs. All thirteen X originals are included in full-cost replay, with one pale-disc identity measurement flagged separately."
   },
   "originalCostCorrection": {
     "status": "original-cost-header-correction-native-verified",
@@ -2389,8 +2893,8 @@
     {
       "component": "generic-X",
       "sourceAsset": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/X.svg",
-      "scope": "Thirteen actual original X costs after the Drain Life correction. Stroke/serif shape needs a font/source comparison; numeric controls intentionally do not move X.",
-      "status": "open-font-and-asset-review"
+      "scope": "Compared the pinned X with six cached font alternatives at three thresholds on thirteen actual costs. Existing X ranks first on the twelve reliable perimeter cases. Guardian Angel remains a perimeter-measurement failure; it is included in joint all-cost native replay. Numeric controls intentionally do not move X.",
+      "status": "source-retained-low-contrast-perimeter-residual"
     }
   ]
 }

@@ -695,3 +695,55 @@ but final whole-face/profile captures must use current supplied inputs.
 Thirteen actual X costs still need a font/asset comparison, and source ink
 expansion remains open. These component studies are not a promoted runtime
 profile, a whole-card compliance score or complete-set certification.
+
+## Unlimited final mana component replay
+
+Ink weight is fitted independently of physical disc and glyph size. The shared
+red expansion is 0.4 source pixels per nominal 24px disc; B/G select zero.
+Ten native red samples improve 80.4→89.9/100 in the disc-relative ink index,
+with no regressions. Expansion makes the old fixed paper probe unreliable:
+R at 0.4/0.6 differs from opaque-percentile sampling, and the first expanded G
+fails composition. The selected red setting **requires opaque-percentile paper
+sampling**. Its sampler is part of the calibration, not an interchangeable
+implementation detail. The failed trial and all eighty B/R comparisons remain
+in the numerical replay archive; sixty pairs are identical and twenty differ.
+
+`early-mana-ink-study.mjs NATIVE AUDIT GLYPH_NATIVE OUT` renders four source-ink
+weights through production preparation. `early-mana-ink-verify.mjs NATIVE AUDIT
+GLYPH_NATIVE CANDIDATE OUT` independently verifies PNG hashes, pixels, isolation
+and three-threshold ink scores, then selects on calibration names with a
+worst-loss penalty. This does not modify the painter or install a runtime profile.
+
+`early-mana-x-study.mjs NATIVE CURRENT_INPUTS AUDIT OUT` compares the pinned X
+with six already cached font alternatives. It removes only ink-bound size for
+source-identity measurement; it does not register scoring rasters or infer a
+rendered offset. Existing X ranks first on twelve measurable original costs,
+76.95/100 versus MPlantin's 76.23. Guardian Angel's pale disc reaches the
+perimeter-search boundary and remains flagged. All thirteen actual X costs
+remain in the subsequent native replay; corrected Drain Life is excluded from
+X selection. There is no justification here for replacing X or applying the
+numeric-only adjustments to it.
+
+`early-mana-all-replay.mjs NATIVE AUDIT NUMBER_DEFINITION CURRENT_INPUTS
+CORRECTED_HEADER OUT` composes current originals plus the joint candidate for
+all 277 costs. Every control must match the frozen native PNG exactly, except
+Drain Life, whose control must match its separately verified corrected header.
+Only the reviewed original cost differs in supplied inputs. Fixed scan poses
+never change. Run `early-mana-all-verify.mjs NATIVE AUDIT CURRENT_INPUTS
+CORRECTED_HEADER CANDIDATE OUT` to recompute saved-PNG geometry, internal ink,
+whole-cost structure and pixel isolation without Chromium.
+
+Across all 277, the ink index improves 76.71→86.50/100 (242 gains, 35
+regressions); median center error falls 1.55→0.99px and radius error
+0.375→0.125px. All physical measurements succeed. All B/R/G ink cases improve;
+blue is essentially unchanged on average and contributes 24 small regressions.
+Glasses of Urza, Chaos Orb, Sol Ring and several blue costs remain outliers.
+The whole-cost structural index moves 72.89→72.73/100, with 144 gains and 133
+regressions. Keep it alongside the physical/pigment/ink diagnostics; its contrast
+sensitivity must not choose incorrect black ink. Changes remain in cost/rules
+regions, alpha is unchanged, and no heading pixels change. Inline mana colors
+change on 58 faces, as expected from production preparation.
+
+These are mana-component results with reused development validation. Full frame,
+body, footer and Oracle integration, etching checks, visual normalization review
+and whole-card scoring are still required before promoting the Unlimited profile.
