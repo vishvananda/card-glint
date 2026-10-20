@@ -40,7 +40,14 @@ export function paintPlaneswalkerType(
   context.shadowOffsetX = -1.2 * scale;
   context.shadowOffsetY = 3.5 * scale;
   context.fillStyle = '#191816';
+  // Keep the down-left/bottom shadow, but stop its blur beyond the right rim.
+  // The 0.6px allowance is half the unchanged 1.2px foreground stroke.
+  context.save();
+  context.beginPath();
+  context.rect(x - 8, y - 8, w + 8.6, h + 20);
+  context.clip();
   context.fill(outline);
+  context.restore();
   context.shadowColor = 'transparent';
   context.save();
   context.clip(outline);
