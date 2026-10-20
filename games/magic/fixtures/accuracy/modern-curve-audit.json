@@ -1,0 +1,1700 @@
+{
+  "schema": 1,
+  "units": "488x680 canonical pixels; signed reference minus render",
+  "scope": "Type light-face transitions only. Exterior pose frozen. Curved-end residuals remove straight-edge translation for diagnosis, not renderer fitting. Positive/negative transition polarity is fixed; competing peaks, occluded text/symbols and neighboring boundaries are excluded and counted. No bevel/outer contour/shadow or whole-card certification.",
+  "records": [
+    {
+      "id": "e411cacd-910b-4eda-8f67-03b426c94ebe",
+      "name": "Ajani's Pridemate",
+      "set": "m15",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 135,
+          "totalProbes": 424,
+          "straightProbes": 79,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "bottom": {
+          "pairedProbes": 7,
+          "totalProbes": 420,
+          "straightProbes": 6,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 49,
+          "totalProbes": 62,
+          "straightProbes": 18,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.40000000000002
+        },
+        "right": {
+          "pairedProbes": 60,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.6000000000003638
+        }
+      },
+      "bucket": "W",
+      "referenceSha256": "3114c85474d0e1bd2b5beec4cf48b457bf62d132f216e525d1337964b4b20fa0",
+      "renderSha256": "f10a47a69b55fc4e906fd653bf1f12ad802c3b66e52e1c5face341be04bbb4bb",
+      "normalization": {
+        "matrix": [
+          [1.002204937588144, 7.88104794651215e-6, -0.5463974692958757],
+          [-0.00033677085051547013, 1.006307153118145, -2.933743163466793],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.14605362742587133,
+        "sideRms": {
+          "left": 0.16529621068328348,
+          "right": 0.12757270918430988,
+          "top": 0.17902842292348264,
+          "bottom": 0.0786237350976181
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 271,
+            "measured": 148,
+            "missing": 2,
+            "occluded": 3
+          },
+          "bottom": {
+            "ambiguous": 196,
+            "measured": 8,
+            "neighboring-boundary": 200,
+            "occluded": 16
+          },
+          "left": {
+            "ambiguous": 13,
+            "measured": 49
+          },
+          "right": {
+            "ambiguous": 2,
+            "measured": 60
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 23,
+            "measured": 370,
+            "occluded": 31
+          },
+          "bottom": {
+            "ambiguous": 33,
+            "measured": 340,
+            "occluded": 47
+          },
+          "left": {
+            "ambiguous": 1,
+            "measured": 61
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "7a8313a1-af64-4ffb-9110-e70d297b9343",
+      "name": "Battle Mastery",
+      "set": "m15",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 364,
+          "totalProbes": 424,
+          "straightProbes": 307,
+          "expectedStraightProbes": 319,
+          "status": "measured",
+          "straightOffset": 0.0,
+          "leftCorner": {
+            "probes": 20,
+            "expectedProbes": 26,
+            "status": "measured",
+            "medianResidual": -0.10000000000002274,
+            "p95AbsoluteResidual": 0.20500000000004667
+          },
+          "rightCorner": {
+            "probes": 9,
+            "expectedProbes": 29,
+            "status": "uncertain"
+          }
+        },
+        "bottom": {
+          "pairedProbes": 32,
+          "totalProbes": 420,
+          "straightProbes": 25,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 54,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.6000000000000227
+        },
+        "right": {
+          "pairedProbes": 62,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.6000000000003638
+        }
+      },
+      "bucket": "W",
+      "referenceSha256": "51872103638953a5bc89a22e65ffb6c672b221294ba44219526977c8abc70c89",
+      "renderSha256": "c01325c66449e75dd6e21e6c1bcda662e8e9e5c3932e6cd6266d2a433dff78ea",
+      "normalization": {
+        "matrix": [
+          [1.0017848905643343, -0.00028527639632733824, -0.30168250616732023],
+          [0.00034373661293154545, 1.0055518033704987, -2.7977385286867364],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.1462591727399045,
+        "sideRms": {
+          "left": 0.23264330483063653,
+          "right": 0.13322760615692822,
+          "top": 0.04651788149188049,
+          "bottom": 0.0925862472586275
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 34,
+            "measured": 387,
+            "missing": 2,
+            "occluded": 1
+          },
+          "bottom": {
+            "ambiguous": 281,
+            "measured": 33,
+            "neighboring-boundary": 103,
+            "occluded": 3
+          },
+          "left": {
+            "ambiguous": 7,
+            "measured": 55
+          },
+          "right": {
+            "measured": 62
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 15,
+            "measured": 381,
+            "occluded": 28
+          },
+          "bottom": {
+            "ambiguous": 33,
+            "measured": 340,
+            "occluded": 47
+          },
+          "left": {
+            "ambiguous": 1,
+            "measured": 61
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "e145e85d-1eaa-4ec6-9208-ca6491577302",
+      "name": "Aeronaut Tinkerer",
+      "set": "m15",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 335,
+          "totalProbes": 424,
+          "straightProbes": 284,
+          "expectedStraightProbes": 319,
+          "status": "measured",
+          "straightOffset": -0.3000000000000682,
+          "leftCorner": {
+            "probes": 20,
+            "expectedProbes": 26,
+            "status": "measured",
+            "medianResidual": 0.10000000000002274,
+            "p95AbsoluteResidual": 0.3450000000000791
+          },
+          "rightCorner": {
+            "probes": 9,
+            "expectedProbes": 29,
+            "status": "uncertain"
+          }
+        },
+        "bottom": {
+          "pairedProbes": 313,
+          "totalProbes": 420,
+          "straightProbes": 265,
+          "expectedStraightProbes": 319,
+          "status": "measured",
+          "straightOffset": -0.5000000000001137,
+          "leftCorner": {
+            "probes": 23,
+            "expectedProbes": 26,
+            "status": "measured",
+            "medianResidual": 0.10000000000002274,
+            "p95AbsoluteResidual": 0.20000000000004547
+          },
+          "rightCorner": {
+            "probes": 2,
+            "expectedProbes": 25,
+            "status": "uncertain"
+          }
+        },
+        "left": {
+          "pairedProbes": 28,
+          "totalProbes": 62,
+          "straightProbes": 7,
+          "expectedStraightProbes": 21,
+          "status": "uncertain"
+        },
+        "right": {
+          "pairedProbes": 38,
+          "totalProbes": 62,
+          "straightProbes": 4,
+          "expectedStraightProbes": 21,
+          "status": "uncertain"
+        }
+      },
+      "bucket": "U",
+      "referenceSha256": "a2405f8eaf91b099026cd2e6f2c13eaca41a2b707a52bc9529f0bac9c869cef1",
+      "renderSha256": "e3c6b6d423b729ae3660b4fbb257da5b20fd2aad37438b7eac1c412b8e666540",
+      "normalization": {
+        "matrix": [
+          [1.0019702710086562, 0.0001451855576245837, -0.4896697480309122],
+          [0.00011146125298055665, 1.0041698291781123, -2.426949324598789],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.21856746347697908,
+        "sideRms": {
+          "left": 0.2552751197478771,
+          "right": 0.32471577266711477,
+          "top": 0.06118648076926821,
+          "bottom": 0.0861809147764037
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 56,
+            "measured": 341,
+            "missing": 1,
+            "occluded": 26
+          },
+          "bottom": {
+            "ambiguous": 5,
+            "measured": 369,
+            "occluded": 46
+          },
+          "left": {
+            "ambiguous": 26,
+            "measured": 36
+          },
+          "right": {
+            "ambiguous": 15,
+            "measured": 47
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 6,
+            "measured": 371,
+            "occluded": 47
+          },
+          "bottom": {
+            "ambiguous": 55,
+            "measured": 318,
+            "occluded": 47
+          },
+          "left": {
+            "ambiguous": 9,
+            "measured": 53
+          },
+          "right": {
+            "ambiguous": 9,
+            "measured": 53
+          }
+        }
+      }
+    },
+    {
+      "id": "46f1b48f-6528-46bd-a384-2358af25e500",
+      "name": "Aetherspouts",
+      "set": "m15",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 382,
+          "totalProbes": 424,
+          "straightProbes": 318,
+          "expectedStraightProbes": 319,
+          "status": "measured",
+          "straightOffset": 0.5000000000001137,
+          "leftCorner": {
+            "probes": 26,
+            "expectedProbes": 26,
+            "status": "measured",
+            "medianResidual": -0.3000000000000682,
+            "p95AbsoluteResidual": 0.40000000000009095
+          },
+          "rightCorner": {
+            "probes": 10,
+            "expectedProbes": 29,
+            "status": "uncertain"
+          }
+        },
+        "bottom": {
+          "pairedProbes": 129,
+          "totalProbes": 420,
+          "straightProbes": 119,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 30,
+          "totalProbes": 62,
+          "straightProbes": 14,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.7000000000000242
+        },
+        "right": {
+          "pairedProbes": 62,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.900000000000432
+        }
+      },
+      "bucket": "U",
+      "referenceSha256": "3ac0ab13b466b2003b150cff202b0eedf862bd7a2b2812d84d169f859f9432b8",
+      "renderSha256": "7f79bbb6e4adab543dde89e49535416ea3ce18d1d5c41b19e931c7518f524c52",
+      "normalization": {
+        "matrix": [
+          [1.0016616024255671, -0.00014590375390237048, -0.5024128563587429],
+          [-0.0011707425246047039, 1.0060203320077055, -2.7355786654283354],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.19623022917354058,
+        "sideRms": {
+          "left": 0.2440604744792905,
+          "right": 0.23875822125259166,
+          "top": 0.15770034585636125,
+          "bottom": 0.06934234399546378
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 25,
+            "measured": 384,
+            "missing": 2,
+            "occluded": 13
+          },
+          "bottom": {
+            "ambiguous": 225,
+            "measured": 148,
+            "occluded": 47
+          },
+          "left": {
+            "ambiguous": 25,
+            "measured": 37
+          },
+          "right": {
+            "measured": 62
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 12,
+            "measured": 384,
+            "occluded": 28
+          },
+          "bottom": {
+            "ambiguous": 55,
+            "measured": 318,
+            "occluded": 47
+          },
+          "left": {
+            "ambiguous": 9,
+            "measured": 53
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "ec56727f-6280-4625-96b9-9b599af0dada",
+      "name": "Avarice Amulet",
+      "set": "m15",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 7,
+          "totalProbes": 424,
+          "straightProbes": 2,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "bottom": {
+          "pairedProbes": 1,
+          "totalProbes": 420,
+          "straightProbes": 0,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 41,
+          "totalProbes": 62,
+          "straightProbes": 12,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.5000000000000213
+        },
+        "right": {
+          "pairedProbes": 57,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.4000000000003183
+        }
+      },
+      "bucket": "artifact",
+      "referenceSha256": "14aea4fd2b440b24ee0b6666b14f1a2428494ce03ea4c67065ad01a06d6f749e",
+      "renderSha256": "1f073c8d358856a20d9c9d4005b6dfa3ef3ef9b187cd48ab132553233ae44528",
+      "normalization": {
+        "matrix": [
+          [1.0020252163877164, -0.00013242480335487827, -0.44760407747447795],
+          [0.0002865711944779152, 1.005347119591693, -2.5765987923030407],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.26960562069335675,
+        "sideRms": {
+          "left": 0.42316462966672247,
+          "right": 0.266762938789603,
+          "top": 0.14784572753267983,
+          "bottom": 0.04951128634267591
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 412,
+            "measured": 7,
+            "missing": 2,
+            "occluded": 3
+          },
+          "bottom": {
+            "ambiguous": 34,
+            "measured": 1,
+            "neighboring-boundary": 376,
+            "occluded": 9
+          },
+          "left": {
+            "ambiguous": 21,
+            "measured": 41
+          },
+          "right": {
+            "ambiguous": 5,
+            "measured": 57
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 21,
+            "measured": 369,
+            "occluded": 34
+          },
+          "bottom": {
+            "ambiguous": 368,
+            "measured": 5,
+            "occluded": 47
+          },
+          "left": {
+            "measured": 62
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "eddc4ee6-7855-4dc7-9488-5e019609bd09",
+      "name": "Brawler's Plate",
+      "set": "m15",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 9,
+          "totalProbes": 424,
+          "straightProbes": 0,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "bottom": {
+          "pairedProbes": 1,
+          "totalProbes": 420,
+          "straightProbes": 0,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 42,
+          "totalProbes": 62,
+          "straightProbes": 13,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.40000000000002
+        },
+        "right": {
+          "pairedProbes": 56,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.4000000000003183
+        }
+      },
+      "bucket": "artifact",
+      "referenceSha256": "cf0c16c5be0b0dbbe08b4916fe6e209188797242405b1dbb926eb45e977ec410",
+      "renderSha256": "71c0bf63daf7ab0b77d7df245d7f53558ad4f95c3c1f22cc7fa140566007ea3e",
+      "normalization": {
+        "matrix": [
+          [1.00169921188981, -0.00016439008495154752, -0.2598220970019205],
+          [8.644309667316621e-6, 1.005463503003733, -2.8616370322619713],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.21599342668396182,
+        "sideRms": {
+          "left": 0.3252418942936939,
+          "right": 0.08746730488147339,
+          "top": 0.23067682222172092,
+          "bottom": 0.1093731485230922
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 403,
+            "measured": 11,
+            "missing": 2,
+            "occluded": 8
+          },
+          "bottom": {
+            "ambiguous": 84,
+            "measured": 2,
+            "neighboring-boundary": 324,
+            "occluded": 10
+          },
+          "left": {
+            "ambiguous": 20,
+            "measured": 42
+          },
+          "right": {
+            "ambiguous": 6,
+            "measured": 56
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 18,
+            "measured": 371,
+            "occluded": 35
+          },
+          "bottom": {
+            "ambiguous": 368,
+            "measured": 5,
+            "occluded": 47
+          },
+          "left": {
+            "measured": 62
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "c392a7e5-6ff5-4c2f-9590-f8811a724f44",
+      "name": "Alpine Watchdog",
+      "set": "m21",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 3,
+          "totalProbes": 424,
+          "straightProbes": 0,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "bottom": {
+          "pairedProbes": 117,
+          "totalProbes": 420,
+          "straightProbes": 101,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 53,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -2.2000000000000313
+        },
+        "right": {
+          "pairedProbes": 62,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.4000000000003183
+        }
+      },
+      "bucket": "W",
+      "referenceSha256": "550d62229fda2a96274e44453286fd3a03c0ee7f836ff8cf3c1f81a8f2458e88",
+      "renderSha256": "396b32b6534be11b9131bab05b95a79c742a5fa8f71695d9a71e84e9769da42c",
+      "normalization": {
+        "matrix": [
+          [0.9984837448650726, -4.281897555576624e-6, 0.35918437969391004],
+          [-5.546140261667769e-5, 1.0019784864853605, -1.6749220495794126],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.18666747997521763,
+        "sideRms": {
+          "left": 0.23284402535672852,
+          "right": 0.2765056613650651,
+          "top": 0.021324598039708008,
+          "bottom": 0.016579155069119653
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 382,
+            "measured": 3,
+            "missing": 2,
+            "occluded": 37
+          },
+          "bottom": {
+            "ambiguous": 273,
+            "measured": 141,
+            "occluded": 6
+          },
+          "left": {
+            "ambiguous": 2,
+            "measured": 60
+          },
+          "right": {
+            "measured": 62
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 9,
+            "measured": 384,
+            "occluded": 31
+          },
+          "bottom": {
+            "ambiguous": 33,
+            "measured": 339,
+            "neighboring-boundary": 1,
+            "occluded": 47
+          },
+          "left": {
+            "ambiguous": 7,
+            "measured": 55
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "e8cca776-b0e4-4cd2-815f-36c1f86cf497",
+      "name": "Angelic Ascension",
+      "set": "m21",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 4,
+          "totalProbes": 424,
+          "straightProbes": 0,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "bottom": {
+          "pairedProbes": 62,
+          "totalProbes": 420,
+          "straightProbes": 58,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 51,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -2.3000000000000327
+        },
+        "right": {
+          "pairedProbes": 60,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -0.9000000000002046
+        }
+      },
+      "bucket": "W",
+      "referenceSha256": "c0f8c685ea45b94b6dcb44d601e3da83a06430a4bb39292eb1beb6f0ac0eb7a4",
+      "renderSha256": "22c0fe22bbccece9b0b3dc8b6bc7614ffa1f650fbf1b7af820efbe2f004aaa03",
+      "normalization": {
+        "matrix": [
+          [0.998472329254738, 2.8944703662760414e-5, 0.34504320667846666],
+          [0.0001486905797885577, 1.0019905147991923, -1.6869313008077178],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.20627054398734962,
+        "sideRms": {
+          "left": 0.22332184379198183,
+          "right": 0.32883583955249024,
+          "top": 0.0268784234836934,
+          "bottom": 0.04622116867138515
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 412,
+            "measured": 4,
+            "missing": 1,
+            "occluded": 7
+          },
+          "bottom": {
+            "ambiguous": 293,
+            "measured": 74,
+            "occluded": 53
+          },
+          "left": {
+            "ambiguous": 4,
+            "measured": 58
+          },
+          "right": {
+            "ambiguous": 2,
+            "measured": 60
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 43,
+            "measured": 379,
+            "occluded": 2
+          },
+          "bottom": {
+            "ambiguous": 33,
+            "measured": 330,
+            "neighboring-boundary": 1,
+            "occluded": 56
+          },
+          "left": {
+            "ambiguous": 7,
+            "measured": 55
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+      "name": "Cancel",
+      "set": "m21",
+      "status": "registration-rejected",
+      "bucket": "U",
+      "referenceSha256": "0edbb74a1b613b73c9e27ecf2fe3df6eba821a7dc9cf8e237e77e8253543d09a",
+      "renderSha256": "35ef5d488567680488c25b5c0ef186e8c8e0aaba93e8512e838f23e367747a36",
+      "normalization": {
+        "matrix": [
+          [0.9982343706931732, 6.337504393488921e-5, 0.4023058833857535],
+          [0.000235742493404204, 1.001655427060832, -1.6571821459057279],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 1.1843421920619432,
+        "sideRms": {
+          "left": 0.22862454420790496,
+          "right": 0.3154620950411832,
+          "top": 0.04547450699987121,
+          "bottom": 2.5832258934071235
+        },
+        "accepted": false
+      },
+      "probeStatuses": {
+        "reference": {},
+        "render": {}
+      }
+    },
+    {
+      "id": "f5ed9f08-56e8-4e24-aae2-05270d7c1ba8",
+      "name": "Capture Sphere",
+      "set": "m21",
+      "status": "registration-rejected",
+      "bucket": "U",
+      "referenceSha256": "984a577a8b078f6eb1efd51e1aff52d2e6459289877b96d5c01966b567d3ea67",
+      "renderSha256": "e3289e40312c6f96d24ffbdb6a5268b5944f5126194d062ec13f8d37ba00f6a4",
+      "normalization": {
+        "matrix": [
+          [0.9982052207412775, 7.117559633780343e-5, 0.41179925117785104],
+          [-6.523192538182221e-5, 1.0021329953579974, -1.6540495942298652],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 1.181110199069394,
+        "sideRms": {
+          "left": 0.3059272389909066,
+          "right": 0.33136902330943585,
+          "top": 0.05828393244546874,
+          "bottom": 2.5625714200706873
+        },
+        "accepted": false
+      },
+      "probeStatuses": {
+        "reference": {},
+        "render": {}
+      }
+    },
+    {
+      "id": "4d60e84e-be05-49da-9720-4225abe9d003",
+      "name": "Idol of Endurance",
+      "set": "m21",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 3,
+          "totalProbes": 424,
+          "straightProbes": 0,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "bottom": {
+          "pairedProbes": 1,
+          "totalProbes": 420,
+          "straightProbes": 0,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 41,
+          "totalProbes": 62,
+          "straightProbes": 16,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -2.2000000000000313
+        },
+        "right": {
+          "pairedProbes": 59,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -0.5000000000001137
+        }
+      },
+      "bucket": "artifact",
+      "referenceSha256": "ad41f49dcf0c292e0eec5cd211f7493c75a604cd0d4b8d036efeb854814a69c0",
+      "renderSha256": "2b64ee15b1551f2f332b54af2a1fc7dde3fc0a021d8111ef6f0c3f3ca176b189",
+      "normalization": {
+        "matrix": [
+          [0.9983668591814274, 2.964771618806865e-5, 0.36111350045572266],
+          [-1.1942454054897065e-5, 1.0018910239456578, -1.539908692536093],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.2843785138804652,
+        "sideRms": {
+          "left": 0.3682037487915697,
+          "right": 0.38773434723380257,
+          "top": 0.11312014988574323,
+          "bottom": 0.08915189858726381
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 418,
+            "measured": 3,
+            "missing": 1,
+            "occluded": 2
+          },
+          "bottom": {
+            "ambiguous": 356,
+            "measured": 10,
+            "occluded": 54
+          },
+          "left": {
+            "ambiguous": 9,
+            "measured": 48,
+            "occluded": 5
+          },
+          "right": {
+            "ambiguous": 3,
+            "measured": 59
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 51,
+            "measured": 369,
+            "occluded": 4
+          },
+          "bottom": {
+            "ambiguous": 360,
+            "measured": 2,
+            "neighboring-boundary": 2,
+            "occluded": 56
+          },
+          "left": {
+            "ambiguous": 7,
+            "measured": 55
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "89e2bc57-8f18-4ba1-a11b-9d69d029f56a",
+      "name": "Malefic Scythe",
+      "set": "m21",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 357,
+          "totalProbes": 424,
+          "straightProbes": 303,
+          "expectedStraightProbes": 319,
+          "status": "measured",
+          "straightOffset": 0.40000000000009095,
+          "leftCorner": {
+            "probes": 26,
+            "expectedProbes": 26,
+            "status": "measured",
+            "medianResidual": -0.10000000000002274,
+            "p95AbsoluteResidual": 0.10000000000002274
+          },
+          "rightCorner": {
+            "probes": 9,
+            "expectedProbes": 29,
+            "status": "uncertain"
+          }
+        },
+        "bottom": {
+          "pairedProbes": 1,
+          "totalProbes": 420,
+          "straightProbes": 0,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 45,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -2.3000000000000327
+        },
+        "right": {
+          "pairedProbes": 62,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.1000000000002501
+        }
+      },
+      "bucket": "artifact",
+      "referenceSha256": "ff9f4411acf82b7f2c4c0626715bd2cad0edad98fe3ea9f757f1f553b32433c7",
+      "renderSha256": "e405d97ddd08931533c4e9aaa51a24eb7bbb494fb4cf978b0d4b7ae155b9241f",
+      "normalization": {
+        "matrix": [
+          [0.9983745244809991, 0.00014827681558070985, 0.31174733905997615],
+          [0.0003420015684297168, 1.0014319320992981, -1.6309726121660661],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.2866894995287153,
+        "sideRms": {
+          "left": 0.3720620561182117,
+          "right": 0.3949236301513669,
+          "top": 0.1162936522411053,
+          "bottom": 0.04940121190596227
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 40,
+            "measured": 380,
+            "missing": 1,
+            "occluded": 3
+          },
+          "bottom": {
+            "ambiguous": 295,
+            "measured": 73,
+            "occluded": 52
+          },
+          "left": {
+            "ambiguous": 6,
+            "measured": 56
+          },
+          "right": {
+            "measured": 62
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 42,
+            "measured": 374,
+            "occluded": 8
+          },
+          "bottom": {
+            "ambiguous": 34,
+            "measured": 2,
+            "neighboring-boundary": 331,
+            "occluded": 53
+          },
+          "left": {
+            "ambiguous": 9,
+            "measured": 51,
+            "missing": 2
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "b3656310-093d-4724-a399-7f7010843b1f",
+      "name": "Ajani's Pridemate",
+      "set": "war",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 102,
+          "totalProbes": 424,
+          "straightProbes": 47,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "bottom": {
+          "pairedProbes": 9,
+          "totalProbes": 420,
+          "straightProbes": 7,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 50,
+          "totalProbes": 62,
+          "straightProbes": 20,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -2.5000000000000355
+        },
+        "right": {
+          "pairedProbes": 57,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -2.0000000000004547
+        }
+      },
+      "bucket": "W",
+      "referenceSha256": "f6caaaf755bee5a3afa6a7c886c34cfee4271f8b740bf5669007012eae145ceb",
+      "renderSha256": "493d58527a210421417cdd9e5a3d03e5739c08adce13cfb6d20cad44538ae7ca",
+      "normalization": {
+        "matrix": [
+          [1.0006101140545807, 0.0004643223746516218, 0.19626212719160782],
+          [7.722385397853829e-5, 1.0024072510220579, -1.6399725112394898],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.22560134402253454,
+        "sideRms": {
+          "left": 0.3903579887606003,
+          "right": 0.17984563817588028,
+          "top": 0.026467636020194557,
+          "bottom": 0.09131583734381446
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 317,
+            "measured": 102,
+            "missing": 3,
+            "occluded": 2
+          },
+          "bottom": {
+            "ambiguous": 337,
+            "measured": 11,
+            "neighboring-boundary": 32,
+            "occluded": 40
+          },
+          "left": {
+            "ambiguous": 11,
+            "measured": 51
+          },
+          "right": {
+            "ambiguous": 5,
+            "measured": 57
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 11,
+            "measured": 405,
+            "occluded": 8
+          },
+          "bottom": {
+            "ambiguous": 33,
+            "measured": 340,
+            "occluded": 47
+          },
+          "left": {
+            "ambiguous": 1,
+            "measured": 61
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "89f8e970-b90c-4829-8970-0a3364027bbb",
+      "name": "Battlefield Promotion",
+      "set": "war",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 408,
+          "totalProbes": 424,
+          "straightProbes": 313,
+          "expectedStraightProbes": 319,
+          "status": "measured",
+          "straightOffset": -0.40000000000009095,
+          "leftCorner": {
+            "probes": 23,
+            "expectedProbes": 26,
+            "status": "measured",
+            "medianResidual": 0.10000000000002274,
+            "p95AbsoluteResidual": 0.10000000000002274
+          },
+          "rightCorner": {
+            "probes": 26,
+            "expectedProbes": 29,
+            "status": "measured",
+            "medianResidual": -0.10000000000002274,
+            "p95AbsoluteResidual": 2.4000000000005457
+          }
+        },
+        "bottom": {
+          "pairedProbes": 0,
+          "totalProbes": 420,
+          "straightProbes": 0,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 49,
+          "totalProbes": 62,
+          "straightProbes": 16,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.5000000000000213
+        },
+        "right": {
+          "pairedProbes": 59,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.4000000000003183
+        }
+      },
+      "bucket": "W",
+      "referenceSha256": "4ba85392b6b7bca86f6a08af7e6decc13c83d1e4e0aebb3048468bba45c56c83",
+      "renderSha256": "9c78167e643eede80e51937fbedb17d22abbb99e6119ab5cda4060a050ae7cfe",
+      "normalization": {
+        "matrix": [
+          [1.0022883541133716, 0.00027918528432859186, -0.4345412715930367],
+          [0.0006782659486980355, 1.0022255547792647, -1.7843578748860578],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.2288890654024556,
+        "sideRms": {
+          "left": 0.37196623023378117,
+          "right": 0.22176897546856442,
+          "top": 0.0780683818116902,
+          "bottom": 0.07061491045482707
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 4,
+            "measured": 408,
+            "missing": 2,
+            "occluded": 10
+          },
+          "bottom": {
+            "ambiguous": 305,
+            "missing": 1,
+            "neighboring-boundary": 75,
+            "occluded": 39
+          },
+          "left": {
+            "ambiguous": 13,
+            "measured": 49
+          },
+          "right": {
+            "ambiguous": 3,
+            "measured": 59
+          }
+        },
+        "render": {
+          "top": {
+            "measured": 422,
+            "occluded": 2
+          },
+          "bottom": {
+            "ambiguous": 33,
+            "measured": 340,
+            "occluded": 47
+          },
+          "left": {
+            "ambiguous": 1,
+            "measured": 61
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "7dd5b0a1-104d-4e0f-82de-65487fbf01ff",
+      "name": "Ashiok's Skulker",
+      "set": "war",
+      "status": "registration-rejected",
+      "bucket": "U",
+      "referenceSha256": "bb4b9daf5bfef05b0b21c4137b8f4ec7d5cbb4ab4956c7a96832c11eb5f14e4a",
+      "renderSha256": "cf14fe39da9d9e51d46ea79a23ff38bcf92c582efffe729a543561172c300221",
+      "normalization": {
+        "matrix": [
+          [1.0030859920905417, 0.003091130686121763, -0.9014727667129644],
+          [-0.0018466138305246462, 1.0028419348651185, -1.25180666357015],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 1.2094494418129937,
+        "sideRms": {
+          "left": 0.37344631171785403,
+          "right": 0.314862858654435,
+          "top": 0.1102109338861004,
+          "bottom": 2.615643627026004
+        },
+        "accepted": false
+      },
+      "probeStatuses": {
+        "reference": {},
+        "render": {}
+      }
+    },
+    {
+      "id": "d19fbfe6-69bb-452a-be3c-b9c625e23193",
+      "name": "Augur of Bolas",
+      "set": "war",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 380,
+          "totalProbes": 424,
+          "straightProbes": 291,
+          "expectedStraightProbes": 319,
+          "status": "measured",
+          "straightOffset": -0.5000000000001137,
+          "leftCorner": {
+            "probes": 20,
+            "expectedProbes": 26,
+            "status": "measured",
+            "medianResidual": 0.10000000000002274,
+            "p95AbsoluteResidual": 0.11000000000002516
+          },
+          "rightCorner": {
+            "probes": 25,
+            "expectedProbes": 29,
+            "status": "measured",
+            "medianResidual": -0.3000000000000682,
+            "p95AbsoluteResidual": 2.100000000000475
+          }
+        },
+        "bottom": {
+          "pairedProbes": 121,
+          "totalProbes": 420,
+          "straightProbes": 113,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 41,
+          "totalProbes": 62,
+          "straightProbes": 20,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.7000000000000242
+        },
+        "right": {
+          "pairedProbes": 62,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.8000000000004093
+        }
+      },
+      "bucket": "U",
+      "referenceSha256": "889e9facdb14d5480999c9cc8c69ddadbb1646c596e90cf14e24289a1b46998e",
+      "renderSha256": "a5187867eba4deb529e4b6e970ce3f0617da42e1d25c084a0c34ea7af9e8932b",
+      "normalization": {
+        "matrix": [
+          [1.0038384393715005, 0.0002803270990610108, -0.4262338661025681],
+          [0.0005875753052546986, 1.002141124754644, -1.7431265676349856],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.2550569024709109,
+        "sideRms": {
+          "left": 0.37210333786073035,
+          "right": 0.3102543005967232,
+          "top": 0.061054846434158955,
+          "bottom": 0.09372566336830304
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 25,
+            "measured": 384,
+            "missing": 2,
+            "occluded": 13
+          },
+          "bottom": {
+            "ambiguous": 229,
+            "measured": 148,
+            "occluded": 43
+          },
+          "left": {
+            "ambiguous": 14,
+            "measured": 48
+          },
+          "right": {
+            "measured": 62
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 5,
+            "measured": 414,
+            "occluded": 5
+          },
+          "bottom": {
+            "ambiguous": 55,
+            "measured": 318,
+            "occluded": 47
+          },
+          "left": {
+            "ambiguous": 9,
+            "measured": 53
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "ae2f3dee-1768-4562-9333-a50b9ee7570f",
+      "name": "Silent Submersible",
+      "set": "war",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 409,
+          "totalProbes": 424,
+          "straightProbes": 310,
+          "expectedStraightProbes": 319,
+          "status": "measured",
+          "straightOffset": -0.40000000000009095,
+          "leftCorner": {
+            "probes": 26,
+            "expectedProbes": 26,
+            "status": "measured",
+            "medianResidual": 0.40000000000009095,
+            "p95AbsoluteResidual": 0.5750000000001307
+          },
+          "rightCorner": {
+            "probes": 26,
+            "expectedProbes": 29,
+            "status": "measured",
+            "medianResidual": -0.3000000000000682,
+            "p95AbsoluteResidual": 1.4500000000003297
+          }
+        },
+        "bottom": {
+          "pairedProbes": 18,
+          "totalProbes": 420,
+          "straightProbes": 13,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 45,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.40000000000002
+        },
+        "right": {
+          "pairedProbes": 58,
+          "totalProbes": 62,
+          "straightProbes": 18,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.1000000000002501
+        }
+      },
+      "bucket": "artifact",
+      "referenceSha256": "b7d83cf5f36340380c031a3b306a1a70bd6956a4702f4e62498796fcfeb54b01",
+      "renderSha256": "ab76bba29605d2864fcf652c974059003e421d6865a66f0771af9fea35e2533a",
+      "normalization": {
+        "matrix": [
+          [1.0016602347789718, -0.0006123473629333874, 0.01474998372219732],
+          [0.0006156197575567419, 1.0023695315444705, -1.6359777661346282],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.20475400908379637,
+        "sideRms": {
+          "left": 0.3116176857715429,
+          "right": 0.07672218583817635,
+          "top": 0.11453123601979208,
+          "bottom": 0.22557204132988365
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 4,
+            "measured": 417,
+            "missing": 2,
+            "occluded": 1
+          },
+          "bottom": {
+            "ambiguous": 383,
+            "measured": 29,
+            "occluded": 8
+          },
+          "left": {
+            "ambiguous": 8,
+            "measured": 54
+          },
+          "right": {
+            "ambiguous": 4,
+            "measured": 58
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 6,
+            "measured": 414,
+            "occluded": 4
+          },
+          "bottom": {
+            "ambiguous": 105,
+            "measured": 268,
+            "occluded": 47
+          },
+          "left": {
+            "ambiguous": 10,
+            "measured": 52
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    },
+    {
+      "id": "5643253b-0996-45a8-9488-5bcc9192f867",
+      "name": "Mizzium Tank",
+      "set": "war",
+      "status": "diagnostic",
+      "differences": {
+        "top": {
+          "pairedProbes": 401,
+          "totalProbes": 424,
+          "straightProbes": 305,
+          "expectedStraightProbes": 319,
+          "status": "measured",
+          "straightOffset": 0.20000000000004547,
+          "leftCorner": {
+            "probes": 26,
+            "expectedProbes": 26,
+            "status": "measured",
+            "medianResidual": 0.0,
+            "p95AbsoluteResidual": 0.07500000000001705
+          },
+          "rightCorner": {
+            "probes": 25,
+            "expectedProbes": 29,
+            "status": "measured",
+            "medianResidual": 0.0,
+            "p95AbsoluteResidual": 2.160000000000489
+          }
+        },
+        "bottom": {
+          "pairedProbes": 1,
+          "totalProbes": 420,
+          "straightProbes": 0,
+          "expectedStraightProbes": 319,
+          "status": "uncertain"
+        },
+        "left": {
+          "pairedProbes": 41,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.7000000000000242
+        },
+        "right": {
+          "pairedProbes": 62,
+          "totalProbes": 62,
+          "straightProbes": 21,
+          "expectedStraightProbes": 21,
+          "status": "measured",
+          "straightOffset": -1.3000000000002956
+        }
+      },
+      "bucket": "artifact",
+      "referenceSha256": "f6e0cd72aa7b14f72190886497ea9dd051d4799f51e8d12f4922d6ad019f94b0",
+      "renderSha256": "905a3822ebbdb1e80092fc3451b88d3d7b245a61db37bb90952763cdca3beda8",
+      "normalization": {
+        "matrix": [
+          [1.0004040441529258, 0.0031477104771685093, -1.2268411782900155],
+          [-0.0027372768887721785, 1.0033778043419181, -1.2359150232100244],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 0.2441591917891506,
+        "sideRms": {
+          "left": 0.42286679454197235,
+          "right": 0.17986219421402827,
+          "top": 0.11284508138796015,
+          "bottom": 0.03219024987255315
+        },
+        "accepted": true
+      },
+      "probeStatuses": {
+        "reference": {
+          "top": {
+            "ambiguous": 10,
+            "measured": 408,
+            "missing": 2,
+            "occluded": 4
+          },
+          "bottom": {
+            "ambiguous": 378,
+            "measured": 30,
+            "occluded": 12
+          },
+          "left": {
+            "ambiguous": 12,
+            "measured": 50
+          },
+          "right": {
+            "measured": 62
+          }
+        },
+        "render": {
+          "top": {
+            "ambiguous": 6,
+            "measured": 414,
+            "occluded": 4
+          },
+          "bottom": {
+            "ambiguous": 83,
+            "measured": 3,
+            "neighboring-boundary": 315,
+            "occluded": 19
+          },
+          "left": {
+            "ambiguous": 10,
+            "measured": 52
+          },
+          "right": {
+            "measured": 62
+          }
+        }
+      }
+    }
+  ],
+  "rendererVersion": "0.6.2",
+  "rendererSource": "aae68926a75cbda738bf4fec9018e918a3f85269",
+  "registeredScans": 15,
+  "totalScans": 18,
+  "status": "initial-type-curve-diagnostic-not-family-complete",
+  "notes": [
+    "Three exterior registrations rejected, retained in report.",
+    "Competing or occluded edges remain uncertain.",
+    "Other contours, bevel thickness and shadows are not measured by this probe policy.",
+    "WAR Mizzium Tank uses an incorrect artifact material despite its red physical frame; queue separately from geometry."
+  ]
+}

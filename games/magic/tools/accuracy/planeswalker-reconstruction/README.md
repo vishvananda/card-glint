@@ -1,5 +1,11 @@
 # Blue planeswalker reconstruction experiment
 
+**Review status:** the v5 type-box PNG edge fit was rejected visually. Its RGB and
+nearest-edge overlap gains do not certify the outline. Keep its geometry
+experimental. The background-only follow-up compares a pinned alternative asset
+plus HSB against reconstruction through the actual painter. See the adjacent
+`drawn-shapes/README.md` for the measurement method and remaining work.
+
 This offline prototype fits the outer blue texture and type-box asset separately.
 It does not alter the shipped painter, calibration tables or default frame URLs.
 Use an external output directory. Never commit downloaded scans or reconstructed
@@ -58,3 +64,26 @@ do not describe them as a fresh blind holdout. M20's top-right mean edge distanc
 still slightly regresses despite improved overlap: inspect that corner before
 promoting the asset. Typography, the solid blue frame layer, rules paper and stamp
 remain unchanged and require separate validation.
+
+## Background-only alternatives
+
+Keep cached pinned alternative assets in an external directory with their URL/hash
+manifest (see `fixtures/accuracy/blue-planeswalker-background-alternatives.json`).
+Use the same six-scan snapshot produced above. The output and variant files below
+are external artifacts, not shipped assets.
+
+```sh
+python "$TOOLS/background_hsb.py" "$STUDY" /external/alternatives /external/backgrounds
+python "$TOOLS/export-backgrounds.py" "$STUDY" /external/alternatives /external/backgrounds
+# Variant manifest: [{"id":"cc-hsb","file":"/external/backgrounds/cc-regular/planeswalker-bg-U.png"}, ...]
+node "$TOOLS/capture-backgrounds.mjs" "$STUDY" /external/variants.json /external/backgrounds/native
+python "$TOOLS/evaluate_backgrounds.py" "$STUDY" /external/backgrounds
+```
+
+Include `current-hsb`, `cc-hsb`, and `backprop` variants to reproduce the report.
+The HSB fit changes only hue, saturation and brightness; no per-card correction,
+local residual field or shape fit is used. Alternative full plates are sampled
+into the current background component coordinates with its alpha retained. The
+final replay uses the native painter and identical raw-scan masks, then proves no
+pixels outside the background support changed. Regional channel MAE is /255,
+lower better; it is not a whole-card compliance score.
