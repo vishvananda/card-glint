@@ -1,26 +1,18 @@
 import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import type { CanvasImages } from './canvas-assets.js';
-import type { FaceRect, RenderedCardInput } from './face-layout.js';
+import type { RenderedCardInput } from './face-layout.js';
 import { faceFrame } from './special-frames.js';
 import { profileAssets } from './assets.js';
 import { resolveCardProfile } from './profile.js';
 import { adjustHsb, IDENTITY_HSB, type HsbAdjustment } from './hsb.js';
-import { planeswalkerBitmapCache, type MaterialBitmapLease } from './material-bitmap-cache.js';
-import { calibratedFrameMaterials } from './printing-calibration-materials.js';
+import { planeswalkerBitmapCache } from './material-bitmap-cache.js';
 import {
   walkerSources,
   walkerPalette,
-  walkerTypeRect,
   WALKER_BACKGROUND_HSB,
-  WALKER_TYPE_HSB,
   WALKER_MATERIAL_REVISION,
 } from './planeswalker-sources.js';
-import { buildWalkerOpening, walkerOpeningRect } from './planeswalker-opening.js';
 
-export interface WalkerMaterials {
-  type: { image: ImageBitmap; rect: FaceRect };
-  opening: { image: ImageBitmap; rect: FaceRect };
-}
 function color(
   c: OffscreenCanvasRenderingContext2D | CanvasRenderingContext2D,
   w: number,
@@ -89,53 +81,8 @@ async function background(
     c.width = c.height = 0;
   }
 }
-async function type(
-  source: ImageBitmap,
-  mask: ImageBitmap,
-  crop: FaceRect,
-  a: HsbAdjustment,
-  w: number,
-  h: number,
-) {
-  const c = rasterCanvas();
-  c.width = w;
-  c.height = h;
-  try {
-    const ctx = c.getContext('2d');
-    if (!ctx) throw Error('Planeswalker type plate needs Canvas2D');
-    const [x, y, cw, ch] = crop;
-    ctx.drawImage(
-      source,
-      x * source.width,
-      y * source.height,
-      cw * source.width,
-      ch * source.height,
-      0,
-      0,
-      w,
-      h,
-    );
-    color(ctx, w, h, a);
-    ctx.globalCompositeOperation = 'destination-in';
-    ctx.drawImage(
-      mask,
-      x * mask.width,
-      y * mask.height,
-      cw * mask.width,
-      ch * mask.height,
-      0,
-      0,
-      w,
-      h,
-    );
-    return await createImageBitmap(c);
-  } finally {
-    c.width = c.height = 0;
-  }
-}
-
-/** Three atomic, bounded source-derived materials. No decoded source is owned
- * by this cache; callers retain sources until pending builds settle on abort. */
+/** Bounded source-derived background. Other frame parts and type geometry stay
+ * independent. Sources remain borrowed until a pending build settles on abort. */
 export async function preparePlaneswalkerMaterials(
   face: RenderedCardInput,
   images: CanvasImages,
@@ -144,85 +91,36 @@ export async function preparePlaneswalkerMaterials(
   const kind = faceFrame(face);
   if (!kind.startsWith('planeswalker')) return { images, dispose() {} };
   const large = kind === 'planeswalker-large',
-    palette = walkerPalette(resolveCardProfile(face).boxes),
-    sources = walkerSources(large, palette);
-  const assets = profileAssets(resolveCardProfile(face), kind);
+    palette = walkerPalette(resolveCardProfile(face).boxes);
+  const sources = walkerSources(large, palette),
+    assets = profileAssets(resolveCardProfile(face), kind);
   const required = (url: string) => {
     const image = images.get(url);
     if (!image) throw Error('Planeswalker asset unavailable: ' + url);
     return image;
   };
   const source = required(sources.source),
-    mask = required(sources.mask),
-    bg = required(assets.background),
-    frame = required(assets.frame);
-  const raw = face.calibration === 'source',
-    ba = raw ? IDENTITY_HSB : WALKER_BACKGROUND_HSB[palette],
-    ta = raw ? IDENTITY_HSB : WALKER_TYPE_HSB[palette];
-  const tw = Math.ceil(sources.crop[2] * source.width),
-    th = Math.ceil(sources.crop[3] * source.height),
-    openingRect = walkerOpeningRect(frame, large);
-  const oh = Math.round((openingRect[3] * 680) / ((0.91339 * 488) / frame.width));
-  let leases: MaterialBitmapLease[] = [];
-  try {
-    leases = await planeswalkerBitmapCache.acquireMany(
-      [
-        {
-          key: JSON.stringify([
-            WALKER_MATERIAL_REVISION,
-            'background',
-            sources.source,
-            assets.background,
-            bg.width,
-            bg.height,
-            ba,
-          ]),
-          bytes: bg.width * bg.height * 4,
-          build: () => background(source, bg, ba, palette === 'A'),
-        },
-        {
-          key: JSON.stringify([
-            WALKER_MATERIAL_REVISION,
-            'type',
-            sources.source,
-            sources.mask,
-            tw,
-            th,
-            ta,
-          ]),
-          bytes: tw * th * 4,
-          build: () => type(source, mask, sources.crop, ta, tw, th),
-        },
-        {
-          key: JSON.stringify([
-            WALKER_MATERIAL_REVISION,
-            'opening',
-            assets.frame,
-            frame.width,
-            frame.height,
-            large,
-            calibratedFrameMaterials(face)[assets.frame] ?? null,
-          ]),
-          bytes: frame.width * oh * 4,
-          build: async () => (await buildWalkerOpening(frame, large)).image,
-        },
-      ],
-      signal,
-    );
-    const prepared: WalkerMaterials = {
-      type: { image: leases[1]!.value, rect: walkerTypeRect(large) },
-      opening: { image: leases[2]!.value, rect: openingRect },
-    };
-    const result = Object.assign(new Map(images), images, { planeswalker: prepared });
-    result.set(assets.background, leases[0]!.value);
-    return {
-      images: result,
-      dispose() {
-        for (const l of leases) l.release();
-      },
-    };
-  } catch (error) {
-    for (const l of leases) l.release();
-    throw error;
-  }
+    mask = required(assets.background);
+  const adjustment = face.calibration === 'source' ? IDENTITY_HSB : WALKER_BACKGROUND_HSB[palette];
+  const lease = await planeswalkerBitmapCache.acquire(
+    JSON.stringify([
+      WALKER_MATERIAL_REVISION,
+      sources.source,
+      assets.background,
+      mask.width,
+      mask.height,
+      adjustment,
+    ]),
+    mask.width * mask.height * 4,
+    () => background(source, mask, adjustment, palette === 'A'),
+    signal,
+  );
+  const result = Object.assign(new Map(images), images);
+  result.set(assets.background, lease.value);
+  return {
+    images: result,
+    dispose() {
+      lease.release();
+    },
+  };
 }

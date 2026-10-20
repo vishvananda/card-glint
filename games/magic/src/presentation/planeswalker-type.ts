@@ -12,19 +12,7 @@ export function paintPlaneswalkerType(
   image: ImageBitmap,
   rect: FaceRect,
   colorless = false,
-  prepared?: { image: ImageBitmap; rect: FaceRect },
 ) {
-  if (prepared) {
-    const [x, y, w, h] = prepared.rect;
-    context.drawImage(
-      prepared.image,
-      x * FACE_WIDTH,
-      y * FACE_HEIGHT,
-      w * FACE_WIDTH,
-      h * FACE_HEIGHT,
-    );
-    return;
-  }
   const [x, y, w, h] = [
     rect[0] * FACE_WIDTH,
     rect[1] * FACE_HEIGHT,
@@ -34,8 +22,10 @@ export function paintPlaneswalkerType(
   // Raise the plate's bottom edge 1px; preserve text and the shadow's lower extent.
   const outline = new Path2D();
   outline.moveTo(x + 14, y);
-  outline.lineTo(x + w - 14, y);
-  outline.quadraticCurveTo(x + w, y, x + w, y + 14);
+  // Measured upper-right turn only; retain the existing slot, left flare,
+  // bottom contour, texture placement and independent down-left shadow.
+  outline.lineTo(x + w - 16, y);
+  outline.quadraticCurveTo(x + w, y, x + w, y + 26);
   outline.lineTo(x + w, y + h - 7);
   outline.quadraticCurveTo(x + w, y + h, x + w - 7, y + h);
   outline.lineTo(x + 9, y + h);

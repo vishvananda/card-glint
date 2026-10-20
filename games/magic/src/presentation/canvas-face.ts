@@ -753,10 +753,6 @@ export function paintAssembledFace(
     const [x, y, width] = px(rects.frame);
     paintPlaneswalkerFrameImage(context, frame, x, y, width, kind === 'planeswalker-large');
   } else if (frame && kind !== 'normal') paintFrame(context, frame, profile.legendary, rects.frame);
-  if (planeswalker && images.planeswalker) {
-    const opening = images.planeswalker.opening;
-    context.drawImage(opening.image, ...px(opening.rect));
-  }
   if (profile.legendary) draw(assets.crown, rects.crown);
   if (panel) {
     const boxes = images.get(assets.boxes);
@@ -788,8 +784,7 @@ export function paintAssembledFace(
       context.restore();
     }
     const boxes = images.get(assets.boxes);
-    if (planeswalker && boxes)
-      paintPlaneswalkerType(context, boxes, rects.type, colorlessPlate, images.planeswalker?.type);
+    if (planeswalker && boxes) paintPlaneswalkerType(context, boxes, rects.type, colorlessPlate);
     else {
       draw(assets.boxes, rects.type, 'bottom');
       if (kind === 'normal' && boxes) {
