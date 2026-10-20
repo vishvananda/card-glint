@@ -81,6 +81,11 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-boundary-proposal.json.gz",
       "sha256": "36defbd2c151bb33f87e242fe7e36c54c101b51b51b59b1387ecbe5c17bbc386",
       "contentSha256": "50bf2c1477a10620af5190e609c35a7da9f3e1b2af32c742ceafdd4a2977062a"
+    },
+    "2ed-family-initial": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-family-initial.json.gz",
+      "sha256": "75491bd316ee26973b477dba5555c9d9b2dea5f20cff63af506b71fa7f818813",
+      "contentSha256": "034cf88da340db93da57d3aea6c7b32cee2735f7d4df81c39e70962f96c8fece"
     }
   },
   "native": {
@@ -114,5 +119,13 @@
     },
     "decision": "The printed outer frame is consistently undersized, about two canonical pixels in width and height. Retain the independent scan poses. Trial frame/mask geometry and compare internal apertures before adjusting colors; do not hide renderer geometry errors with a new scan transform. Art/rules bevels and frame-family selection remain open.",
     "proposal": "Seven shared material transforms are predicted from the preselected calibration cohorts. Reserved-scan median residuals are 0.05-0.09 canonical px. These are boundary-model predictions, not replayed renderer scores. Native candidate and internal-aperture checks are required before adoption."
+  },
+  "frameSourceReview": {
+    "status": "initial-geometry-only-needs-joint-aperture-check",
+    "method": "old-family-opaque-profiles-v3",
+    "comparedPrintings": 292,
+    "dualOverlaysSeparate": 10,
+    "productionDecodeWidth": 768,
+    "summary": "At initial geometry ABU leads W/U/B/R/A; Fourth leads green. Shared eroded opaque support intentionally excludes artwork but also omits some aperture contour, so family choice still needs native geometry replay and aperture comparison. Basic-land variants share names and do not supply independent-name validation. No source mapping has been changed."
   }
 }
