@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "baselineCommit": "2a39fa02311b8884d04590df25b507af17eb9d74",
+  "scope": "Historical pre-0.6.3 source reconstruction only. Changed planeswalker materials and type geometry require fresh scores. Other branches retain their exact dispatch and cache keys; public native evidence and the non-planeswalker browser replay check those boundaries.",
+  "dependencies": {
+    "games/magic/src/presentation/canvas-assets.ts": "af70ccf04652d083dfc54d88a6bb2e9c728ad1c35aa7c39a4519b9a047fa9cf1",
+    "games/magic/src/presentation/canvas-face.ts": "dba28540253e347283208ed282a086df693c9f2cfcea2685e8861b655628ac50",
+    "games/magic/src/presentation/material-bitmap-cache.ts": "eb93149f37ca94ae59b464cb6957064d70db926ac2765bd5ae378e8cbac2a42f",
+    "games/magic/src/presentation/planeswalker-type.ts": "3b7229de4171d2ab07640ff41c375313696f895cd30a9e51384225fd17202e72",
+    "games/magic/src/presentation/special-frames.ts": "fb0fab8d1dd3b5c9be04139304cf3ade39b240785bdedc92c92f5efef4441802",
+    "games/magic/src/presentation/planeswalker-material.ts": "674c3d21a195b36f909c186744dc781e23726996886f23c60d365537a5250dbf",
+    "games/magic/src/presentation/planeswalker-sources.ts": "41bb842f87f8f16c00543a8b705a4dd36eedf1d003ffaa9f901fea7c442f0440"
+  },
+  "files": {
+    "games/magic/src/presentation/canvas-assets.ts": {
+      "before": "e29db1a6044791d369ee927c6ea0fdc27d9036c1679b9908e9f152a66c8c389a",
+      "after": "af70ccf04652d083dfc54d88a6bb2e9c728ad1c35aa7c39a4519b9a047fa9cf1",
+      "reverseEdits": [
+        {
+          "start": 201,
+          "count": 9,
+          "lines": []
+        },
+        {
+          "start": 34,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-face.ts": {
+      "before": "eb2ecb5fd757d969ae09d17dba76669963ccc9f1030973087ee74eeaed183706",
+      "after": "dba28540253e347283208ed282a086df693c9f2cfcea2685e8861b655628ac50",
+      "reverseEdits": [
+        {
+          "start": 518,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 472,
+          "count": 1,
+          "lines": ["      const paintingImages = numerals.images;\n"]
+        },
+        {
+          "start": 468,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 454,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 171,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 36,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/material-bitmap-cache.ts": {
+      "before": "c209541ea7f0d068a7d0f823826dc2a92494d8c0bed7926a36b27fd504a7100e",
+      "after": "eb93149f37ca94ae59b464cb6957064d70db926ac2765bd5ae378e8cbac2a42f",
+      "reverseEdits": [
+        {
+          "start": 207,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 205,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/planeswalker-type.ts": {
+      "before": "96ca8c9d5a5c776e8b05a92f8e9931260e785963c87ed2d21d4614dae9da4d26",
+      "after": "3b7229de4171d2ab07640ff41c375313696f895cd30a9e51384225fd17202e72",
+      "reverseEdits": [
+        {
+          "start": 49,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 42,
+          "count": 6,
+          "lines": []
+        },
+        {
+          "start": 24,
+          "count": 4,
+          "lines": [
+            "  outline.lineTo(x + w - 14, y);\n",
+            "  outline.quadraticCurveTo(x + w, y, x + w, y + 14);\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/special-frames.ts": {
+      "before": "fb0fab8d1dd3b5c9be04139304cf3ade39b240785bdedc92c92f5efef4441802",
+      "after": "fb0fab8d1dd3b5c9be04139304cf3ade39b240785bdedc92c92f5efef4441802",
+      "reverseEdits": []
+    }
+  },
+  "newModules": [
+    "games/magic/src/presentation/planeswalker-material.ts",
+    "games/magic/src/presentation/planeswalker-sources.ts"
+  ],
+  "native": {
+    "file": "games/magic/fixtures/accuracy/planeswalker-materials/native.json",
+    "sha256": "74137623757fdffb70f647ebf2959fa618af071c141174783fb383c90be2b477"
+  }
+}

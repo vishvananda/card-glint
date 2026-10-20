@@ -87,3 +87,61 @@ into the current background component coordinates with its alpha retained. The
 final replay uses the native painter and identical raw-scan masks, then proves no
 pixels outside the background support changed. Regional channel MAE is /255,
 lower better; it is not a whole-card compliance score.
+
+## Release-wide background and corner study
+
+`fetch-release.mjs` caches all pinned regular/tall palettes and type masks, then
+selects ordinary nonfoil references across sets. The source pixels and scans
+stay outside the repository. The tall-only custom land material has no ordinary
+physical reference, so no calibration is invented for it.
+
+With NumPy, SciPy, Pillow and PyTorch installed, run from the repository root:
+
+```sh
+export MAGIC_ACCURACY_CACHE=/path/to/reference-cache
+STUDY=/path/to/external-planeswalker-study
+node games/magic/tools/accuracy/planeswalker-reconstruction/fetch-release.mjs "$STUDY"
+# Capture this baseline from the immutable pre-change renderer and capture tool.
+node games/magic/tools/accuracy/planeswalker-reconstruction/capture-release.mjs "$STUDY" baseline
+node games/magic/tools/accuracy/planeswalker-reconstruction/capture-release.mjs "$STUDY" source
+python games/magic/tools/accuracy/planeswalker-reconstruction/calibrate-release.py "$STUDY"
+# Promote only shared background HSB values into planeswalker-sources.ts.
+python games/magic/tools/accuracy/planeswalker-reconstruction/fit-type-corner.py "$STUDY"
+# Preserve the existing type slot and all geometry except the top-right turn.
+node games/magic/tools/accuracy/planeswalker-reconstruction/capture-release.mjs "$STUDY" final
+python games/magic/tools/accuracy/planeswalker-reconstruction/verify-release.py "$STUDY"
+python games/magic/tools/accuracy/planeswalker-reconstruction/fit-type-corner.py "$STUDY"
+```
+
+`source` applies identity controls only to the new background HSB. The baseline
+must use its saved tool and exact original-text snapshot, not a newer painter
+relabeled as old. `sources.json` binds reference/component hashes, original wording,
+receipts and raster hashes. Missing original wording excludes a printing; Oracle
+text is never substituted. Pre-Ixalan types omit the later legendary-supertype
+erratum while retaining provider metadata and its historical review.
+
+Freeze exterior affine poses before fitting. Reject inconsistent registrations.
+Use fixed unprinted masks, equal weight per card and separate fitting/checking
+cohorts. HSB means encoded-sRGB HSV. The old gray background used 179/255 material
+opacity; its replacement keeps the antialiased silhouette with its own opaque
+pigment. Background results transfer across both frame heights.
+
+The first full type-plate replacement was rejected in enlarged visual review:
+color improved while position, left contour and bottom shadow regressed. Its
+paper HSB and rectangle-registration values must not be promoted. The current
+corner fit first checks that its probes recover the known old 14px control;
+ambiguous bevel/neighbor boundaries are excluded. It fits only a shared top-right
+quadratic turn. A lower RGB error never certifies shape, bevel or shadow accuracy.
+The validation cohort has been inspected during development; it is not a fresh
+blind estimate of generalization.
+
+Evaluate the final native pipeline. `native.json` gives paired regional RGB MAE
+/255, exact source/capture identity, rejected registrations, the bounded changed
+region and separately counted rounding fringes. Left geometry, text/symbol slots,
+paper and bottom-shadow preservation also have a direct old/new pixel regression
+test. The source default, backgrounds and per-set typography remain separate.
+
+`ancestry.mjs` reconstructs frozen historical sources for calibration tests only.
+It never makes changed planeswalker scores current. Its receipt binds the material
+implementation and native replay. Material tests cover all 14 combinations,
+missing assets, aborts, warm reuse/cleanup and document/worker pixel parity.

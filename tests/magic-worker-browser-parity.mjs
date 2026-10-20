@@ -1,3 +1,4 @@
+import { preWalkerSource } from '../games/magic/tools/accuracy/planeswalker-reconstruction/ancestry.mjs';
 import { preAlphaEditorSource } from '../games/magic/tools/accuracy/alpha-editor-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
@@ -23,6 +24,7 @@ function baseline(file, bytes) {
   return before;
 }
 const prefix = '\0worker-baseline:';
+const walkerPrefix = '\0walker-baseline:';
 const server = await createServer({
   configFile: false,
   root,
@@ -31,29 +33,38 @@ const server = await createServer({
       name: 'reviewed-worker-baseline',
       enforce: 'pre',
       resolveId(id, importer) {
+        if (id === '/__walker_baseline/presentation.ts')
+          return walkerPrefix + 'games/magic/src/presentation.ts';
+        const activePrefix = importer?.startsWith(walkerPrefix) ? walkerPrefix : prefix;
         if (id === '/__worker_baseline/presentation.ts')
           return prefix + 'games/magic/src/presentation.ts';
-        if (importer?.startsWith(prefix) && id.startsWith('.')) {
+        if (importer?.startsWith(activePrefix) && id.startsWith('.')) {
           let file = path.posix.normalize(
-            path.posix.join(path.posix.dirname(importer.slice(prefix.length).split('?')[0]), id),
+            path.posix.join(
+              path.posix.dirname(importer.slice(activePrefix.length).split('?')[0]),
+              id,
+            ),
           );
           if (file.endsWith('.js') && existsSync(path.join(root, file.slice(0, -3) + '.ts')))
             file = file.slice(0, -3) + '.ts';
-          return prefix + file;
+          return activePrefix + file;
         }
       },
       async load(id) {
-        if (!id.startsWith(prefix)) return;
-        const file = id.slice(prefix.length);
+        const historicalWalker = id.startsWith(walkerPrefix);
+        if (!id.startsWith(prefix) && !historicalWalker) return;
+        const file = id.slice(historicalWalker ? walkerPrefix.length : prefix.length);
         if (file.endsWith('?raw'))
           return (
             'export default ' +
             JSON.stringify(await readFile(path.join(root, file.slice(0, -4)), 'utf8')) +
             ';'
           );
-        const code = baseline(
-          file,
-          await preAlphaEditorSource(file, await readFile(path.join(root, file))),
+        const bytes = await readFile(path.join(root, file));
+        const code = (
+          historicalWalker
+            ? await preWalkerSource(file, bytes)
+            : baseline(file, await preAlphaEditorSource(file, bytes))
         ).toString();
         return file.endsWith('.ts')
           ? (await transformWithEsbuild(code, file, { loader: 'ts', target: 'esnext' })).code
@@ -79,7 +90,8 @@ try {
   await page.goto(url);
   const rows = await page.evaluate(async () => {
     const current = await import('/games/magic/src/presentation.ts'),
-      before = await import('/__worker_baseline/presentation.ts');
+      before = await import('/__worker_baseline/presentation.ts'),
+      historicalWalker = await import('/__walker_baseline/presentation.ts');
     const local = 'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")';
     for (const { family, weight, style } of current.canvasFontAssets)
       document.fonts.add(await new FontFace(family, local, { weight, style }).load());
@@ -196,7 +208,9 @@ try {
       for (const { label, face } of cases)
         for (const tier of ['table', 'inspect']) {
           const results = [];
-          for (const api of [before, current]) {
+          // Intentional 0.6.3 planeswalker changes have their own native/material tests.
+          // Preserve the earlier host-portability proof against its exact source.
+          for (const api of [before, label === 'walker' ? historicalWalker : current]) {
             requested = new Set();
             const c = await api.composeCardTexture(
               {

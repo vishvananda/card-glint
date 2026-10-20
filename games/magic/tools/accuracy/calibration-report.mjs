@@ -1,3 +1,4 @@
+import { preWalkerSource } from './planeswalker-reconstruction/ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { fixtureRoot, root, hash, readJson } from './common.mjs';
@@ -33,23 +34,30 @@ export async function calibrationReport(ledger) {
       for (const item of dependencies) {
         for (const [file, expected] of Object.entries(item.guards ?? {})) {
           assert.ok(!file.startsWith('/') && !file.split('/').includes('..'));
-          if (!checked.has(file)) {
+          const guardKey = (group.kind === 'planeswalker' ? 'walker:' : 'other:') + file;
+          if (!checked.has(guardKey)) {
             try {
               const bytes = await readFile(root + '/' + file);
+              const scoped =
+                group.kind === 'planeswalker' ? bytes : await preWalkerSource(file, bytes);
               const ancestral =
                 file === 'games/magic/src/presentation/retro-paint.ts'
-                  ? await preAlphaEditorSource(file, bytes)
-                  : bytes;
+                  ? await preAlphaEditorSource(file, scoped)
+                  : scoped;
               checked.set(
-                file,
-                new Set([hash(bytes), hash(await compatibleHostWorkerSource(file, ancestral))]),
+                guardKey,
+                new Set([
+                  hash(bytes),
+                  hash(scoped),
+                  hash(await compatibleHostWorkerSource(file, ancestral)),
+                ]),
               );
             } catch (error) {
               if (error.code !== 'ENOENT') throw error;
-              checked.set(file, null);
+              checked.set(guardKey, null);
             }
           }
-          if (!checked.get(file)?.has(expected)) {
+          if (!checked.get(guardKey)?.has(expected)) {
             item.status = 'stale';
             item.reason = 'Changed evidence dependency: ' + file;
             break;

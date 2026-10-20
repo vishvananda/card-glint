@@ -1,21 +1,77 @@
+import ts from 'typescript';
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import { createServer } from 'vite';
+import { preWalkerSource } from '../games/magic/tools/accuracy/planeswalker-reconstruction/ancestry.mjs';
+const evidence = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/planeswalker-materials/native.json'),
+);
+assert.equal(evidence.normalization.accepted, 59);
+assert.equal(evidence.normalization.attempted, 61);
+assert.equal(evidence.records.filter((r) => r.cohort === 'validation').length, 20);
+assert(evidence.records.every((r) => r.outsideScope === 0));
+assert(
+  evidence.summary
+    .filter((r) => r.component === 'background')
+    .every(
+      (r) =>
+        r.means.candidate < r.means.released &&
+        r.reservedMeans.candidate < r.reservedMeans.released,
+    ),
+);
+const typeFile = 'games/magic/src/presentation/planeswalker-type.ts',
+  typeSource = await readFile(typeFile);
+const javascript = (bytes) =>
+  ts
+    .transpile(bytes.toString(), {
+      target: ts.ScriptTarget.ES2022,
+      module: ts.ModuleKind.ESNext,
+      removeComments: true,
+    })
+    .replace(/\s/g, '');
+assert.equal(
+  javascript(typeSource)
+    .replace(
+      'context.save();context.beginPath();context.rect(x-8,y-8,w+8.6,h+20);context.clip();context.fill(outline);context.restore();',
+      'context.fill(outline);',
+    )
+    .replace('x+w-16', 'x+w-14')
+    .replace('y+26', 'y+14'),
+  javascript(await preWalkerSource(typeFile, typeSource)),
+  'Only the top-right curve and right-shadow clipping may change',
+);
 const server = await createServer({
   configFile: false,
   server: { host: '127.0.0.1', port: 0, hmr: false },
   optimizeDeps: { noDiscovery: true },
+  plugins: [
+    {
+      name: 'previous-walker-contour',
+      enforce: 'pre',
+      resolveId(id) {
+        if (id.endsWith('/presentation/__previous-planeswalker-type.ts'))
+          return process.cwd() + '/games/magic/src/presentation/__previous-planeswalker-type.ts';
+      },
+      async load(id) {
+        if (id.split('?')[0].endsWith('/presentation/__previous-planeswalker-type.ts')) {
+          const file = 'games/magic/src/presentation/planeswalker-type.ts';
+          return (await preWalkerSource(file, await readFile(file))).toString();
+        }
+      },
+    },
+  ],
 });
 let browser;
 try {
   await server.listen();
   browser = await chromium.launch({ args: ['--no-sandbox'] });
-  const page = await browser.newPage();
-  const url = new URL('walker-materials.html', server.resolvedUrls.local[0]).href;
+  const page = await browser.newPage(),
+    url = new URL('walker-check.html', server.resolvedUrls.local[0]).href;
   await page.route(url, (r) =>
     r.fulfill({
       contentType: 'text/html',
-      body: '<!doctype html><title>Planeswalker material boundaries</title>',
+      body: '<!doctype html><title>Planeswalker material scope</title>',
     }),
   );
   await page.goto(url);
@@ -26,116 +82,111 @@ try {
     const { planeswalkerBitmapCache } = await import(
       '/games/magic/src/presentation/material-bitmap-cache.ts'
     );
-    const { walkerSources, walkerTypeRect } = await import(
-      '/games/magic/src/presentation/planeswalker-sources.ts'
-    );
+    const { walkerSources } = await import('/games/magic/src/presentation/planeswalker-sources.ts');
     const { profileAssets } = await import('/games/magic/src/presentation/assets.ts');
     const { resolveCardProfile } = await import('/games/magic/src/presentation/profile.ts');
-    const signal = new AbortController().signal,
-      rows = [];
-    let leases = 0;
+    const { faceRects } = await import('/games/magic/src/presentation/special-frames.ts');
+    const current = await import('/games/magic/src/presentation/planeswalker-type.ts'),
+      before = await import('/games/magic/src/presentation/__previous-planeswalker-type.ts');
+    async function hashes(images, url) {
+      const image = images.get(url),
+        c = new OffscreenCanvas(image.width, image.height),
+        x = c.getContext('2d');
+      x.drawImage(image, 0, 0);
+      const p = x.getImageData(0, 0, c.width, c.height).data;
+      const hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', p)))
+        .map((v) => v.toString(16).padStart(2, '0'))
+        .join('');
+      c.width = c.height = 0;
+      return hash;
+    }
+    const workerCode = `import{preparePlaneswalkerMaterials}from'${location.origin}/games/magic/src/presentation/planeswalker-material.ts';import{profileAssets}from'${location.origin}/games/magic/src/presentation/assets.ts';import{resolveCardProfile}from'${location.origin}/games/magic/src/presentation/profile.ts';import{faceFrame}from'${location.origin}/games/magic/src/presentation/special-frames.ts';const hashes=${hashes.toString()};self.onmessage=async({data})=>{const images=new Map(data.images);let prepared;try{if(typeof document!=='undefined')throw Error('Worker has document');prepared=await preparePlaneswalkerMaterials(data.face,images,new AbortController().signal);self.postMessage({hash:await hashes(prepared.images,profileAssets(resolveCardProfile(data.face),faceFrame(data.face)).background)});}catch(e){self.postMessage({error:e.message});}finally{prepared?.dispose();for(const i of images.values())i.close();}};`;
+    const workerUrl = URL.createObjectURL(new Blob([workerCode], { type: 'text/javascript' })),
+      worker = new Worker(workerUrl, { type: 'module' }),
+      rows = [],
+      signal = new AbortController().signal;
+    let workerCases = 0;
+    const make = async (w, h, paint) => {
+      const c = document.createElement('canvas');
+      c.width = w;
+      c.height = h;
+      paint(c.getContext('2d'), w, h);
+      return createImageBitmap(c);
+    };
     for (const large of [false, true])
       for (const palette of ['W', 'U', 'B', 'R', 'G', 'M', 'A']) {
         const face = {
-          name: 'Original Walker',
-          typeLine: 'Planeswalker',
-          colors: palette === 'M' ? ['W', 'G'] : palette === 'A' ? [] : [palette],
-          rulesText: Array.from(
-            { length: large ? 4 : 3 },
-            (_, i) => '+' + i + ': Draw a card.',
-          ).join('\n'),
-          loyalty: '4',
-        };
-        const kind = large ? 'planeswalker-large' : 'planeswalker',
-          assets = profileAssets(resolveCardProfile(face), kind),
-          s = walkerSources(large, palette),
-          images = new Map();
-        const make = async (w, h, paint) => {
-          const c = document.createElement('canvas');
-          c.width = w;
-          c.height = h;
-          const x = c.getContext('2d');
-          paint(x, w, h);
-          return createImageBitmap(c);
-        };
-        images.set(
-          s.source,
-          await make(768, 1075, (x, w, h) => {
-            x.fillStyle = '#a5b1c8';
-            x.fillRect(0, 0, w, h);
+            typeLine: 'Planeswalker',
+            colors: palette === 'M' ? ['W', 'G'] : palette === 'A' ? [] : [palette],
+            rulesText: Array.from(
+              { length: large ? 4 : 3 },
+              (_, i) => '+' + i + ': Draw a card.',
+            ).join('\n'),
+          },
+          kind = large ? 'planeswalker-large' : 'planeswalker',
+          a = profileAssets(resolveCardProfile(face), kind),
+          s = walkerSources(large, palette);
+        const source = await make(768, 1075, (c, w, h) => {
+            c.fillStyle = '#a5b1c8';
+            c.fillRect(0, 0, w, h);
           }),
-        );
-        images.set(
-          s.mask,
-          await make(768, 1075, (x, w, h) => {
-            x.fillStyle = 'white';
-            x.beginPath();
-            x.roundRect(s.crop[0] * w, s.crop[1] * h, s.crop[2] * w, s.crop[3] * h, 8);
-            x.fill();
+          mask = await make(768, 1049, (c, w, h) => {
+            c.fillStyle = palette === 'A' ? 'rgba(120,120,120,0.702)' : '#abc';
+            c.fillRect(0, 0, w, h);
           }),
-        );
-        images.set(
-          assets.background,
-          await make(768, 1049, (x, w, h) => {
-            x.fillStyle = palette === 'A' ? 'rgba(120,120,120,0.702)' : '#abc';
-            x.fillRect(0, 0, w, h);
-          }),
-        );
-        images.set(
-          assets.frame,
-          await make(768, 1070, (x, w, h) => {
-            x.fillStyle = '#448899';
-            x.fillRect(0, 0, w, h);
-            const scale = (0.91339 * 488) / w,
-              top = (large ? 0.49044 : 0.55793) * 680 + 5;
-            x.clearRect(
-              (32 - 0.04724 * 488) / scale,
-              (top + 5 - 0.02655 * 680) / scale,
-              420 / scale,
-              28 / scale,
-            );
-          }),
-        );
-        const before = planeswalkerBitmapCache.stats.builds;
-        const a = await preparePlaneswalkerMaterials(face, images, signal),
-          b = await preparePlaneswalkerMaterials(face, images, signal);
-        leases += 2;
-        if (a.images.planeswalker.type.image !== b.images.planeswalker.type.image)
-          throw Error('Warm type rebuilt');
-        if (planeswalkerBitmapCache.stats.builds - before !== 3)
-          throw Error('Materials must build atomically once');
+          images = new Map([
+            [s.source, source],
+            [a.background, mask],
+          ]);
+        const count = planeswalkerBitmapCache.stats.builds,
+          one = await preparePlaneswalkerMaterials(face, images, signal),
+          two = await preparePlaneswalkerMaterials(face, images, signal);
         if (
-          JSON.stringify(a.images.planeswalker.type.rect) !== JSON.stringify(walkerTypeRect(large))
+          one.images.get(a.background) !== two.images.get(a.background) ||
+          planeswalkerBitmapCache.stats.builds - count !== 1
         )
-          throw Error('Source contour placement diverged');
-        const opening = a.images.planeswalker.opening,
+          throw Error('Warm background rebuilt');
+        if (images.get(a.background) !== mask) throw Error('Source owner mutated');
+        const background = one.images.get(a.background),
           c = document.createElement('canvas');
-        c.width = opening.image.width;
-        c.height = opening.image.height;
+        c.width = background.width;
+        c.height = background.height;
         const ctx = c.getContext('2d');
-        ctx.drawImage(opening.image, 0, 0);
-        const p = ctx.getImageData(0, 0, c.width, c.height).data;
-        if (p[3] !== 0 || p[(c.width * c.height - 1) * 4 + 3] !== 0)
-          throw Error('Aperture fill leaked out of closed hole');
-        if (!p.some((v, i) => i % 4 === 3 && v === 255)) throw Error('Aperture remained empty');
-        const bg = a.images.get(assets.background);
-        c.width = bg.width;
-        c.height = bg.height;
-        ctx.drawImage(bg, 0, 0);
-        const alpha = ctx.getImageData(10, 10, 1, 1).data[3];
-        if (alpha !== 255) throw Error('Replacement material retained obsolete opacity');
-        a.dispose();
-        b.dispose();
-        leases -= 2;
+        ctx.drawImage(background, 0, 0);
+        if (ctx.getImageData(10, 10, 1, 1).data[3] !== 255)
+          throw Error('Obsolete source opacity retained');
+        const rect = faceRects(face).type,
+          expected = [0.05669 + 1.5 / 488, (large ? 0.49044 : 0.55793) + 5 / 680, 0.88662, 0.05737];
+        if (JSON.stringify(rect) !== JSON.stringify(expected))
+          throw Error('Type text/symbol slot moved');
+        if (palette === 'U' || palette === 'A') {
+          const transfer = await Promise.all(
+            [...images].map(async ([url, image]) => [url, await createImageBitmap(image)]),
+          );
+          const actual = await new Promise((resolve, reject) => {
+            worker.onmessage = ({ data }) =>
+              data.error ? reject(Error(data.error)) : resolve(data.hash);
+            worker.onerror = (e) => reject(Error(e.message));
+            worker.postMessage(
+              { face, images: transfer },
+              transfer.map(([, i]) => i),
+            );
+          });
+          if (actual !== (await hashes(one.images, a.background)))
+            throw Error('Worker pixels differ');
+          workerCases++;
+        }
+        one.dispose();
+        two.dispose();
         const missing = new Map(images);
-        missing.delete(s.mask);
+        missing.delete(s.source);
         let rejected = false;
         try {
           await preparePlaneswalkerMaterials(face, missing, signal);
         } catch (e) {
           rejected = e.message.includes('Planeswalker asset unavailable');
         }
-        if (!rejected) throw Error('Partial material revision accepted');
+        if (!rejected) throw Error('Missing source accepted');
         const abort = new AbortController();
         abort.abort();
         let aborted = false;
@@ -144,15 +195,95 @@ try {
         } catch (e) {
           aborted = e.name === 'AbortError';
         }
-        if (!aborted) throw Error('Aborted preparation succeeded');
-        for (const image of images.values()) image.close();
-        rows.push({ palette, large, alpha });
+        if (!aborted) throw Error('Abort ignored');
+        source.close();
+        mask.close();
+        rows.push({ palette, large });
       }
+    worker.terminate();
+    URL.revokeObjectURL(workerUrl);
     planeswalkerBitmapCache.clear();
-    if (planeswalkerBitmapCache.stats.bytes !== 0 || leases) throw Error('Material lease leaked');
-    return { rows, builds: planeswalkerBitmapCache.stats.builds };
+    if (planeswalkerBitmapCache.stats.bytes !== 0) throw Error('Cache lease leaked');
+    const texture = await make(768, 705, (c, w, h) => {
+        c.fillStyle = '#c9d8e0';
+        c.fillRect(0, 0, w, h);
+      }),
+      corners = [];
+    for (const large of [false, true])
+      for (const scale of [0.5, 1, 1.5]) {
+        const face = {
+            typeLine: 'Planeswalker',
+            rulesText: Array(large ? 4 : 3)
+              .fill('+1: Draw a card.')
+              .join('\n'),
+          },
+          rect = faceRects(face).type;
+        const render = (api) => {
+            const c = document.createElement('canvas');
+            c.width = Math.round(488 * scale);
+            c.height = Math.round(680 * scale);
+            const x = c.getContext('2d');
+            x.scale(scale, scale);
+            x.fillStyle = '#1688b5';
+            x.fillRect(0, 0, 488, 680);
+            api.paintPlaneswalkerType(x, texture, rect);
+            return x.getImageData(0, 0, c.width, c.height).data;
+          },
+          a = render(before),
+          b = render(current),
+          right = (rect[0] + rect[2]) * 488,
+          top = rect[1] * 680;
+        let changed = 0,
+          fringe = 0;
+        for (let i = 0; i < a.length; i += 4)
+          if ([0, 1, 2, 3].some((k) => a[i + k] !== b[i + k])) {
+            changed++;
+            const x = (((i / 4) % (488 * scale)) + 0.5) / scale,
+              y = (Math.floor(i / 4 / (488 * scale)) + 0.5) / scale;
+            if (
+              (x < right - 30 || y < top - 5 || y > top + 34) &&
+              !(x > right + 0.5 && x < right + 8 && y > top - 5 && y < top + 50)
+            ) {
+              const delta = Math.max(...[0, 1, 2, 3].map((k) => Math.abs(a[i + k] - b[i + k])));
+              if (delta > 8)
+                throw Error(
+                  'Corner edit changed region: ' +
+                    JSON.stringify({ large, scale, x, y, right, top, delta }),
+                );
+              fringe++;
+            }
+          }
+        if (!changed) throw Error('Corner did not change');
+        if (fringe > 64) throw Error('Excess type rasterization differences');
+        const width = Math.round(488 * scale),
+          height = rect[3] * 680;
+        const index =
+          (Math.floor((top + height + 3) * scale) * width + Math.floor(244 * scale)) * 4;
+        if ([0, 1, 2, 3].some((k) => a[index + k] !== b[index + k]))
+          throw Error('Bottom shadow moved or changed');
+        let rightLeaks = 0;
+        for (
+          let py = Math.ceil((top + 27) * scale);
+          py < Math.floor((top + height - 5) * scale);
+          py++
+        )
+          for (
+            let px = Math.ceil((right + 1.6) * scale);
+            px < Math.floor((right + 5) * scale);
+            px++
+          ) {
+            const i = (py * width + px) * 4;
+            if ([22, 136, 181, 255].some((v, k) => b[i + k] !== v)) rightLeaks++;
+          }
+        if (rightLeaks) throw Error('Type shadow still extends to the right');
+        corners.push({ large, scale, changed, fringe, rightLeaks });
+      }
+    texture.close();
+    return { rows, workerCases, corners };
   });
   assert.equal(result.rows.length, 14);
+  assert.equal(result.workerCases, 4);
+  assert.equal(result.corners.length, 6);
   console.log(JSON.stringify(result));
 } finally {
   await browser?.close();

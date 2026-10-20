@@ -1,3 +1,4 @@
+import { walkerAncestry } from '../games/magic/tools/accuracy/planeswalker-reconstruction/ancestry.mjs';
 import { alphaEditorAncestry } from '../games/magic/tools/accuracy/alpha-editor-ancestry.mjs';
 import { deliveryProof } from './magic-delivery-source-guard.mjs';
 import assert from 'node:assert/strict';
@@ -279,6 +280,7 @@ async function verify() {
   const nativeDirectory = 'games/magic/src';
   const delivery = await deliveryProof();
   const alphaEditor = await alphaEditorAncestry();
+  const walkers = await walkerAncestry();
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
     (file) =>
       ![
@@ -286,6 +288,7 @@ async function verify() {
         ...Object.keys(battleSources.dependencies),
         ...Object.keys(release053.dependencies),
         ...Object.keys(abuTypography.dependencies),
+        ...walkers.newModules,
         ...alphaEditor.newModules,
         ...delivery.newModules,
         ...delivery.generatedModules,
@@ -332,6 +335,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(walkers.files, relative) ||
             Object.hasOwn(alphaEditor.files, relative) ||
             Object.hasOwn(hostWorker.files, relative) ||
             Object.hasOwn(battleSources.files, relative) ||

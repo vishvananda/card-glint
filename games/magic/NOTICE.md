@@ -60,6 +60,14 @@ at `33f2547137fe366b40e9e8dba4eb591af190fddf`. See that source's
 The `official` directory name describes the upstream collection, not a grant of
 rights. Only pinned URLs and an inventory of available filenames are included.
 
+Standard planeswalker background textures additionally use that pinned
+repository's `img/frames/planeswalker/regular/planeswalkerFrame` and
+`img/frames/planeswalker/tall/planeswalkerTall` palette PNGs. Source URLs and
+hashes are retained in [the material study](fixtures/accuracy/planeswalker-materials/sources.json).
+These external assets are fetched at face preparation; their pixels are not
+bundled with the library or public showcase. The study also inventories type masks;
+the complete type-plate replacement was rejected and is not the default.
+
 Ordinary and planeswalker oval security stamps use that same pinned repository's
 `img/frames/m15/holoStamps/` and `img/frames/planeswalker/holo/` assets. Their
 separate mount bounds follow

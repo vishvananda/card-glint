@@ -48,7 +48,30 @@ try {
           c.fillStyle = '#fff';
           c.textBaseline = 'middle';
           const state = [c.font, c.fillStyle, c.getTransform().toString()];
-          const readback = CanvasRenderingContext2D.prototype.getImageData;
+          const proto = CanvasRenderingContext2D.prototype;
+          const readback = proto.getImageData,
+            fillText = proto.fillText,
+            drawImage = proto.drawImage;
+          const inkOrigins = new WeakMap();
+          let anchor;
+          proto.fillText = function (text, x, y, width) {
+            const m = this.getTransform(),
+              point = { x: m.a * x + m.c * y + m.e, y: m.b * x + m.d * y + m.f };
+            if (this === c) anchor = point;
+            else inkOrigins.set(this.canvas, point);
+            return fillText.call(this, text, x, y, width);
+          };
+          proto.drawImage = function (source, ...args) {
+            if (this === c && inkOrigins.has(source)) {
+              const point = inkOrigins.get(source),
+                [sx, sy, sw, sh, dx, dy, dw, dh] = args;
+              const x = dx + ((point.x - sx) * dw) / sw,
+                y = dy + ((point.y - sy) * dh) / sh,
+                m = this.getTransform();
+              anchor = { x: m.a * x + m.c * y + m.e, y: m.b * x + m.d * y + m.f };
+            }
+            return drawImage.call(this, source, ...args);
+          };
           CanvasRenderingContext2D.prototype.getImageData = () => {
             throw Error('Heading preparation must not read pixels');
           };
@@ -66,7 +89,9 @@ try {
               inset,
             );
           } finally {
-            CanvasRenderingContext2D.prototype.getImageData = readback;
+            proto.getImageData = readback;
+            proto.fillText = fillText;
+            proto.drawImage = drawImage;
           }
           if (
             JSON.stringify(state) !==
@@ -86,7 +111,7 @@ try {
             if (data[i + 3] > 250) opaque++;
           }
           canvas.width = canvas.height = 0;
-          return { mass, opaque, x: xsum / mass / scale, y: ysum / mass / scale };
+          return { mass, opaque, x: xsum / mass / scale, y: ysum / mass / scale, anchor };
         };
         const before = draw(0),
           after = draw(0.5);
@@ -94,8 +119,19 @@ try {
           !(after.mass < before.mass * 0.95 && after.mass > before.mass * 0.65 && after.opaque > 10)
         )
           throw Error('Inset should reduce coverage and retain solid cores');
-        if (Math.abs(before.x - after.x) > 0.4 || Math.abs(before.y - after.y) > 0.4)
-          throw Error('Inset moved the heading');
+        // Erosion changes glyph masses unequally, so their coverage centroid
+        // can move even when every glyph keeps its exact baseline and advance.
+        // Check the fillText anchor mapped through the staging-image transform.
+        if (
+          !before.anchor ||
+          !after.anchor ||
+          Math.abs(before.anchor.x - after.anchor.x) > 1e-4 ||
+          Math.abs(before.anchor.y - after.anchor.y) > 1e-4
+        )
+          throw Error(
+            'Inset moved the heading anchor: ' +
+              JSON.stringify({ scale, width, before: before.anchor, after: after.anchor }),
+          );
         results.push({ scale, width, before, after });
       }
     const { withPrintingOmissions } = await import(

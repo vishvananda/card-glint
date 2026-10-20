@@ -1,0 +1,1819 @@
+{
+  "schema": 1,
+  "rendererVersion": "0.6.3",
+  "sourceCommit": "24b9606bc906b1f8141d0d7ba962604c3e6e58d1",
+  "scope": "Paired native full-card renders with original MTGJSON wording; frozen baseline exterior affine poses, equal weight/card and fixed unprinted masks. Regional RGB MAE /255, lower better. Not a whole-card compliance score. No changed pixels outside background support and the full type-box region, except separately counted one-code-value pixels in its one-native-pixel antialias fringe.",
+  "normalization": {
+    "accepted": 59,
+    "attempted": 61,
+    "rejected": [
+      {
+        "id": "bf472be9-f375-455e-a800-7af5258f4e59",
+        "name": "Ob Nixilis of the Black Oath",
+        "palette": "B",
+        "family": "tall",
+        "matrix": [
+          [1.0016508098861976, -0.00040541499675167284, -0.36185244722067256],
+          [-0.0016063725284079038, 1.0051560727082784, -2.0748530997065537],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 1.4080141061068399,
+        "sideRms": {
+          "left": 1.1107378467180202,
+          "right": 0.16211139800176344,
+          "top": 2.478282303700668,
+          "bottom": 0.30297828709487784
+        },
+        "accepted": false
+      },
+      {
+        "id": "a3957b43-4d7e-41f9-b7a1-6f57d6603ab8",
+        "name": "Garruk, Apex Predator",
+        "palette": "M",
+        "family": "tall",
+        "matrix": [
+          [1.001336126713598, 0.00022553973552680293, -0.398590936161245],
+          [0.002672371785195802, 1.005561304936192, -3.020342965442169],
+          [0.0, 0.0, 1.0]
+        ],
+        "validationRms": 1.3220756255590211,
+        "sideRms": {
+          "left": 0.09817475416952368,
+          "right": 0.09226721376102363,
+          "top": 2.487793552282403,
+          "bottom": 0.5668845305283782
+        },
+        "accepted": false
+      }
+    ]
+  },
+  "excluded": [
+    {
+      "id": "02e8e540-8aa3-4e6a-9a11-c3949cab5f0f",
+      "name": "Tezzeret, Cruel Captain",
+      "reason": "Missing original printing wording in MTGJSON; no Oracle substitution"
+    }
+  ],
+  "summary": [
+    {
+      "palette": "W",
+      "component": "background",
+      "cards": 9,
+      "means": {
+        "released": 32.71551215400299,
+        "uncorrected": 15.1313530964156,
+        "candidate": 14.553081654012203
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 33.98660812526941,
+        "uncorrected": 17.053001075983047,
+        "candidate": 17.727503199130297
+      }
+    },
+    {
+      "palette": "W",
+      "component": "type",
+      "cards": 9,
+      "means": {
+        "released": 20.538330593456823,
+        "uncorrected": 9.584661054735383,
+        "candidate": 7.981933498134215
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 20.121545419096947,
+        "uncorrected": 8.400470800697803,
+        "candidate": 8.17237458191812
+      }
+    },
+    {
+      "palette": "U",
+      "component": "background",
+      "cards": 9,
+      "means": {
+        "released": 46.52490109205246,
+        "uncorrected": 23.370362433294456,
+        "candidate": 15.622623035063347
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 47.85535916686058,
+        "uncorrected": 26.534242816269398,
+        "candidate": 18.903358336538076
+      }
+    },
+    {
+      "palette": "U",
+      "component": "type",
+      "cards": 9,
+      "means": {
+        "released": 24.964837729930878,
+        "uncorrected": 9.874030938372016,
+        "candidate": 8.718588411187133
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 27.925126515328884,
+        "uncorrected": 13.421938559040427,
+        "candidate": 12.926270039752126
+      }
+    },
+    {
+      "palette": "B",
+      "component": "background",
+      "cards": 8,
+      "means": {
+        "released": 35.578765757381916,
+        "uncorrected": 25.38174146320671,
+        "candidate": 23.291032137349248
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 37.02676609158516,
+        "uncorrected": 27.616203725337982,
+        "candidate": 25.29929768294096
+      }
+    },
+    {
+      "palette": "B",
+      "component": "type",
+      "cards": 8,
+      "means": {
+        "released": 25.67774652969092,
+        "uncorrected": 15.374714811332524,
+        "candidate": 10.060414380859584
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 26.80373005568981,
+        "uncorrected": 18.237671740353107,
+        "candidate": 12.358392095193267
+      }
+    },
+    {
+      "palette": "R",
+      "component": "background",
+      "cards": 9,
+      "means": {
+        "released": 36.15269646048546,
+        "uncorrected": 15.732820394138495,
+        "candidate": 14.108974679062763
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 35.66338784992695,
+        "uncorrected": 14.653308242559433,
+        "candidate": 12.641226276755333
+      }
+    },
+    {
+      "palette": "R",
+      "component": "type",
+      "cards": 9,
+      "means": {
+        "released": 27.475692331790924,
+        "uncorrected": 7.311825258657336,
+        "candidate": 7.223633257672191
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 30.003763176500797,
+        "uncorrected": 6.647109193727374,
+        "candidate": 6.702646855264902
+      }
+    },
+    {
+      "palette": "G",
+      "component": "background",
+      "cards": 9,
+      "means": {
+        "released": 35.622994750738144,
+        "uncorrected": 19.64532182862361,
+        "candidate": 15.01372375835975
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 35.97746253013611,
+        "uncorrected": 17.999028712511063,
+        "candidate": 16.84111526235938
+      }
+    },
+    {
+      "palette": "G",
+      "component": "type",
+      "cards": 9,
+      "means": {
+        "released": 29.305323498944443,
+        "uncorrected": 17.379736412937444,
+        "candidate": 14.67239630719026
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 28.0210118368268,
+        "uncorrected": 17.460381016135216,
+        "candidate": 13.600940462201834
+      }
+    },
+    {
+      "palette": "M",
+      "component": "background",
+      "cards": 8,
+      "means": {
+        "released": 37.58531126193702,
+        "uncorrected": 15.954290467780083,
+        "candidate": 15.465669461991638
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 37.32737809419632,
+        "uncorrected": 18.131588716059923,
+        "candidate": 17.41755921393633
+      }
+    },
+    {
+      "palette": "M",
+      "component": "type",
+      "cards": 8,
+      "means": {
+        "released": 28.792806076817214,
+        "uncorrected": 11.676341380225495,
+        "candidate": 9.754767272388563
+      },
+      "reservedCards": 3,
+      "reservedMeans": {
+        "released": 26.961192339658737,
+        "uncorrected": 12.592013850808144,
+        "candidate": 10.138436108827591
+      }
+    },
+    {
+      "palette": "A",
+      "component": "background",
+      "cards": 7,
+      "means": {
+        "released": 31.64199975984437,
+        "uncorrected": 25.678674392402172,
+        "candidate": 23.230898124831064
+      },
+      "reservedCards": 2,
+      "reservedMeans": {
+        "released": 29.655553344637156,
+        "uncorrected": 23.416502829641104,
+        "candidate": 19.883848540484905
+      }
+    },
+    {
+      "palette": "A",
+      "component": "type",
+      "cards": 7,
+      "means": {
+        "released": 23.772756648915156,
+        "uncorrected": 25.80911840711321,
+        "candidate": 14.905785197126013
+      },
+      "reservedCards": 2,
+      "reservedMeans": {
+        "released": 25.001871809363365,
+        "uncorrected": 33.56950482353568,
+        "candidate": 18.024952188134193
+      }
+    }
+  ],
+  "records": [
+    {
+      "id": "f9302ba8-7ff2-4eaa-a32d-eedd94f0bb79",
+      "name": "Ajani Steadfast",
+      "set": "m15",
+      "palette": "W",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 32.220507860183716,
+          "uncorrected": 15.59572733938694,
+          "candidate": 12.038141638040543
+        },
+        "type": {
+          "released": 20.147353000938892,
+          "uncorrected": 14.416145235300064,
+          "candidate": 9.875501934438944
+        }
+      },
+      "changedPixels": 66917,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "be79070441e41797e00741dcefd173dcf6f013adec986d1924ac459defe6668a",
+      "releasedSha256": "2f07afc212563b92920f50fcb3c2342e6c1806ffd0836e18704ed743e6a118e8",
+      "candidateSha256": "620d631341a2827351d3555ebf108212f0e1e588af2db1ff4b61e2d6b906cf63"
+    },
+    {
+      "id": "4c565076-5db2-47ea-8ee0-4a4fd7bb353d",
+      "name": "Ajani, Adversary of Tyrants",
+      "set": "m19",
+      "palette": "W",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 32.62761801481247,
+          "uncorrected": 12.924695815891027,
+          "candidate": 9.931606873869896
+        },
+        "type": {
+          "released": 30.640503242611885,
+          "uncorrected": 7.450873889029026,
+          "candidate": 11.300863400101662
+        }
+      },
+      "changedPixels": 66521,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "9c569019451b17fdddb3bb4b1d42cbb64b964737dfc773ee7e8f5f2ceda3b289",
+      "releasedSha256": "a4def70bb05731e822c168c8cc1356ee90024d04774592a71bf63d698b180b1e",
+      "candidateSha256": "704728f9a47085aa35f84bb22dcd57d27b5a66a5184cf0ddaa5737767cff7470"
+    },
+    {
+      "id": "79883468-a37c-4894-8d05-6a4d150b7d59",
+      "name": "Ajani, Strength of the Pride",
+      "set": "m20",
+      "palette": "W",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 28.70444443076849,
+          "uncorrected": 9.408310353755951,
+          "candidate": 11.87284765765071
+        },
+        "type": {
+          "released": 26.743297465145588,
+          "uncorrected": 8.330766074359417,
+          "candidate": 8.189011830836535
+        }
+      },
+      "changedPixels": 66505,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "ceee3031f7a3bfa0a02012c53a8a6aa7f7afd9545109779a71a1ec622475cc91",
+      "releasedSha256": "a22a5f56bbbcfd15c6be304cf526b1cad6c83960672fec8bfca2030936f7741e",
+      "candidateSha256": "45513b1ad395ec32be55ea0e2d3f8e70a66e90f06aa5352d3897d8f621bd0646"
+    },
+    {
+      "id": "98c85699-2daf-4e87-a3be-465d02bd64bb",
+      "name": "Basri Ket",
+      "set": "m21",
+      "palette": "W",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 31.102455854415894,
+          "uncorrected": 13.614714089781046,
+          "candidate": 14.172701798379421
+        },
+        "type": {
+          "released": 21.597412191331387,
+          "uncorrected": 11.49744775146246,
+          "candidate": 6.235757516697049
+        }
+      },
+      "changedPixels": 66579,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "b65b4fcf0b818b9bc7d15aaaf8c29fc4435cc76551a81cec292ff279fd2b21bd",
+      "releasedSha256": "73af7eb4d432efdcb798ef9387066803d0605c011a6cdaee2cf4794dd84dcbab",
+      "candidateSha256": "d11e58a5c6ea5b1b308474cf9f887b7d0955f49779ed56fa7728e9aa369d5887"
+    },
+    {
+      "id": "a974571c-d8d5-4860-9077-2023e5f32a24",
+      "name": "Teyo, the Shieldmage",
+      "set": "war",
+      "palette": "W",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 34.78129304945469,
+          "uncorrected": 14.769224189221859,
+          "candidate": 14.609788544476032
+        },
+        "type": {
+          "released": 20.17020497471094,
+          "uncorrected": 8.244477454572916,
+          "candidate": 6.365188071504235
+        }
+      },
+      "changedPixels": 66948,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "3c5e6688bb24fa4310bebe96e7f3dbf243841ad5cd9941e3dba287b5ef3dd69e",
+      "releasedSha256": "bb277d86c7d87027b54c6fc35064fb20d7ca4dbc6780714bcfdb6c3a40a82a8d",
+      "candidateSha256": "d39c5dc1ad6ccaa9f876b27c0b3d4698fdff12d36c88cf2e1047374fc3c9980b"
+    },
+    {
+      "id": "187e887c-c39d-4d25-a506-cdc95fc70316",
+      "name": "Gideon, Ally of Zendikar",
+      "set": "bfz",
+      "palette": "W",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 38.60358774662018,
+          "uncorrected": 24.453616328537464,
+          "candidate": 19.92364190518856
+        },
+        "type": {
+          "released": 18.982793390750885,
+          "uncorrected": 9.766661524772644,
+          "candidate": 8.652797844260931
+        }
+      },
+      "changedPixels": 67273,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "5af5bada4fb0742fbf2157c305b6a77d6ade68e11e0e2d7487b22dca39ca3755",
+      "releasedSha256": "c5cee8fff1b4d16eb85f1ea5430dd66deac1d6a73e435d45072464451162186b",
+      "candidateSha256": "9f5851f8bbecb2cea73cb2a3c11e88b219b5e517a61053b2f1341f2231801d69"
+    },
+    {
+      "id": "99713bb4-186f-42b6-aa66-e94ec8858e6a",
+      "name": "Jace, the Living Guildpact",
+      "set": "m15",
+      "palette": "U",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 47.8046116232872,
+          "uncorrected": 24.66430362313986,
+          "candidate": 12.023792658001184
+        },
+        "type": {
+          "released": 20.40370624512434,
+          "uncorrected": 13.253426626324654,
+          "candidate": 9.162680134177208
+        }
+      },
+      "changedPixels": 67120,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "3c8a6d0cf93ef85c90eb7b41015d51b4858d9bd244a9061b1cc9bb205efada40",
+      "releasedSha256": "3f7ca6aa3b399d2e8e955efd3a954dc2752fbb19cac6b00297e9990ea4df8331",
+      "candidateSha256": "539d63439f9abc854268d32fa51dd1eb09236f4b5c4280e80ecf6955679c29b6"
+    },
+    {
+      "id": "20d5521d-e9f1-49e0-aa13-8e6de794cb12",
+      "name": "Jace, Unraveler of Secrets",
+      "set": "soi",
+      "palette": "U",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 48.399716690182686,
+          "uncorrected": 20.5236829072237,
+          "candidate": 11.185987964272499
+        },
+        "type": {
+          "released": 26.67049527168274,
+          "uncorrected": 8.364623207598925,
+          "candidate": 11.926578674465418
+        }
+      },
+      "changedPixels": 67228,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "0e4ef0d61488ff52b1cfb30b526a483c9b6f3f2f94a785e5a022ca149c0ae937",
+      "releasedSha256": "28f7d255346a94211652b971fb8097081213a71c2eba0d79f2ae27ffab4c6afb",
+      "candidateSha256": "624a097fc11941a3698ddf0536845c0adaced2929be256a229e8c0f9db36e256"
+    },
+    {
+      "id": "b75f56f2-88fd-44ba-ad02-56ea3391f173",
+      "name": "Jace, Cunning Castaway",
+      "set": "xln",
+      "palette": "U",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 49.753223061561584,
+          "uncorrected": 37.587503269314766,
+          "candidate": 25.784684903919697
+        },
+        "type": {
+          "released": 24.974788762629032,
+          "uncorrected": 22.54320804029703,
+          "candidate": 18.235584385693073
+        }
+      },
+      "changedPixels": 66839,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "e2dad51353b14b8ad018da07402d6c53851bd11ffae4c6d291940b9d10af4de2",
+      "releasedSha256": "b2d43895ab06f8e61a1a590b797b856822b82669e52649d5a028c79d37bcf7a9",
+      "candidateSha256": "b88dc092bc3e734bd1e5e3378f7427f339795d1c47ac8dadf2ef4b3c924f6a33"
+    },
+    {
+      "id": "e5e12371-f05c-41cf-92ca-7cb17c2f7f1a",
+      "name": "Tezzeret, Artifice Master",
+      "set": "m19",
+      "palette": "U",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 44.361076802015305,
+          "uncorrected": 29.389382377266884,
+          "candidate": 18.47918551415205
+        },
+        "type": {
+          "released": 26.84992354363203,
+          "uncorrected": 8.109442200511694,
+          "candidate": 4.87237025052309
+        }
+      },
+      "changedPixels": 66560,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "52b7e0a703286f081bb947f0f9175d2f4d16ef9e3f0f3eb4a124de1433cabd00",
+      "releasedSha256": "f9ab14d74d45d9e052d6d3e0e737d9841c4c1714023544098a19a89bd671c924",
+      "candidateSha256": "32faae81a42775c871d903d51d3134d1e819acf6b4fd3c832796bee10787cf00"
+    },
+    {
+      "id": "6adb7d73-4482-4930-8497-cffd169b57e2",
+      "name": "Jace, Wielder of Mysteries",
+      "set": "war",
+      "palette": "U",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 45.6157922744751,
+          "uncorrected": 16.17967240512371,
+          "candidate": 14.075068887323141
+        },
+        "type": {
+          "released": 28.459363281726837,
+          "uncorrected": 7.219003681093454,
+          "candidate": 5.194893144071102
+        }
+      },
+      "changedPixels": 66943,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "14333e1c689497b7627f42f27fbc4fb7fe884e9721eede7b3a9652c0c750ac97",
+      "releasedSha256": "cf86d1fcea88cd846f61724c44f6c2285bfbd213ba36db6ec342a6acd5b21764",
+      "candidateSha256": "b3965dc293cc7bfcde311b9861932132cfade36baac7179c326906ba4399a8ea"
+    },
+    {
+      "id": "0240f9eb-e1b2-4b41-94b0-b00ad2850825",
+      "name": "Mu Yanling, Sky Dancer",
+      "set": "m20",
+      "palette": "U",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 46.21120132505894,
+          "uncorrected": 18.199064545333385,
+          "candidate": 14.186220522969961
+        },
+        "type": {
+          "released": 32.708135694265366,
+          "uncorrected": 7.678357707336545,
+          "candidate": 6.39505541883409
+        }
+      },
+      "changedPixels": 66511,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "adb161c4729e5083cb69e9cf4cd7f62ae60295d393aa017e36604515a1480289",
+      "releasedSha256": "e314ddbba04952410430479a24bce78435c1add2e055c1a4f56506f897eca63d",
+      "candidateSha256": "32c9d32cd3d35fa2a531b252eb8dd044630982de156fa48a0148aaf8b2e51d02"
+    },
+    {
+      "id": "6087f146-f468-472a-b248-fc7386ea3e63",
+      "name": "Liliana Vess",
+      "set": "m15",
+      "palette": "B",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 32.97004044055939,
+          "uncorrected": 26.837604604661465,
+          "candidate": 22.966372333467007
+        },
+        "type": {
+          "released": 16.163804456591606,
+          "uncorrected": 9.379094671458006,
+          "candidate": 10.664672087877989
+        }
+      },
+      "changedPixels": 66756,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "c86842d6cbeabc01f8dbef024333d952c2f3d84106d86f362d7de9611910e25f",
+      "releasedSha256": "19c6fe3e079a7c47f20722d4722bfdf0aa89432cc1a1cacc3136abdcd697d105",
+      "candidateSha256": "6e70dc5d81a6dc4b2be37b733dccdb90455c7c410417b5b6e2073551e01f479a"
+    },
+    {
+      "id": "a7939170-f84e-44c6-b8bc-a180cf7f85d9",
+      "name": "Liliana, Untouched by Death",
+      "set": "m19",
+      "palette": "B",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 36.46516889333725,
+          "uncorrected": 27.85066444426775,
+          "candidate": 24.328623935580254
+        },
+        "type": {
+          "released": 26.780415773391724,
+          "uncorrected": 10.135748069733381,
+          "candidate": 8.298686295747757
+        }
+      },
+      "changedPixels": 66360,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "d776734dd27cd38eed501ae0fa3d57a525ccbf77859717b6b800e33ad9b94783",
+      "releasedSha256": "cb57ab7b80e9c5619c588bf7b53eff096b857ba78c1d775c94401e8e4c20a779",
+      "candidateSha256": "fd2b80bd8559811d7f5563519b3013da67513fb9841db8df37e6250f64bcbfdd"
+    },
+    {
+      "id": "9f764be3-dd3f-44b1-a4a6-807d1387590b",
+      "name": "Sorin, Imperious Bloodlord",
+      "set": "m20",
+      "palette": "B",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 35.64410135149956,
+          "uncorrected": 25.01089822500944,
+          "candidate": 23.77579540014267
+        },
+        "type": {
+          "released": 29.11671280860901,
+          "uncorrected": 15.716983582824469,
+          "candidate": 7.791142305359244
+        }
+      },
+      "changedPixels": 66584,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "b54ab4a8b5f097a00c2406dbe505d66efb5c33737c64ae51a2e41997a1876c61",
+      "releasedSha256": "ae60478d263647341ffd67fe5e51b92a7370dc4edf3bb3c7aa71e9550c84145d",
+      "candidateSha256": "e8550e02f03d89a93af7d197f6ff6261836fe07ba729f84fa0ef6859bca571d6"
+    },
+    {
+      "id": "e329a3e2-6702-4758-8aac-c3017e77b619",
+      "name": "Liliana, Waker of the Dead",
+      "set": "m21",
+      "palette": "B",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 35.37663750350475,
+          "uncorrected": 28.270545713603497,
+          "candidate": 27.719827964901924
+        },
+        "type": {
+          "released": 35.91520540416241,
+          "uncorrected": 20.172397457063198,
+          "candidate": 9.833742175251245
+        }
+      },
+      "changedPixels": 66384,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "d0c2e35c399f151aafe8cb23470cefef444a7cccec98d7f238df2e293c74a72b",
+      "releasedSha256": "35febc7d5db954ddda4d4ad38e02159bbab5c068c6d777bc32de824961a2b76b",
+      "candidateSha256": "d59384cd970c50da2271dc5bc9d92ea7a915fb9ae843496d9f55de118f33b542"
+    },
+    {
+      "id": "5b1a44f0-1db8-406a-b7d9-f883f947f7bd",
+      "name": "Davriel, Rogue Shadowmage",
+      "set": "war",
+      "palette": "B",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 33.65455090999603,
+          "uncorrected": 23.530873842537403,
+          "candidate": 21.775979809463024
+        },
+        "type": {
+          "released": 24.18594539165497,
+          "uncorrected": 12.216342575848103,
+          "candidate": 6.858507050201297
+        }
+      },
+      "changedPixels": 66772,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "9d9487493e57b9e30abfb2d266794fcda27e2621224b345e981d5cbe799fd586",
+      "releasedSha256": "75710a267acf25081acb76b75e9b6a7be4747e0ed0f31dd16a5fc8c807e5ad7c",
+      "candidateSha256": "b8312ae70787f1661abc5a6024a0d7de42596a9ea05606f435e04f6df1543c57"
+    },
+    {
+      "id": "53b2d6e9-2a43-4ebe-9ae8-944375b46cce",
+      "name": "Ob Nixilis Reignited",
+      "set": "bfz",
+      "palette": "B",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 35.001293644309044,
+          "uncorrected": 29.217141419649124,
+          "candidate": 26.257525831460953
+        },
+        "type": {
+          "released": 18.957893326878548,
+          "uncorrected": 10.092295501381159,
+          "candidate": 12.05398203805089
+        }
+      },
+      "changedPixels": 67311,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "f38411d1959d685b66bb3b919cb1c0aca34569034e84a39699bdaa797d6c3c83",
+      "releasedSha256": "00b9903b3e079a9bc38c0a8c7055416363282dff8097660334fbed25659d266c",
+      "candidateSha256": "0e3eeb471b968c90743081ffbe362942600e546fbb71b5fa3daab9570ccd9e52"
+    },
+    {
+      "id": "e92cc35d-4e97-4be2-8c53-cce68c3374ca",
+      "name": "Chandra, Pyromaster",
+      "set": "m15",
+      "palette": "R",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 35.05105957388878,
+          "uncorrected": 16.459662280976772,
+          "candidate": 15.913509037345648
+        },
+        "type": {
+          "released": 19.433675296604633,
+          "uncorrected": 7.865406945347786,
+          "candidate": 7.7968628983944654
+        }
+      },
+      "changedPixels": 66777,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "55fe3b27e179def60a24d6681738cfa5d1f958b9676d90af7e5a7059305fddff",
+      "releasedSha256": "2076b79ce234160b18998fd7f724d345fcf8d479efa634da6db085d2a05a6f76",
+      "candidateSha256": "b2d56a5d1708e79e7e9cc8c393584519d3b37eb27a3625e7485cd77de3153e3e"
+    },
+    {
+      "id": "3553a70e-75de-4a8c-9b20-92cd4a317101",
+      "name": "Sarkhan, Fireblood",
+      "set": "m19",
+      "palette": "R",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 36.69564552605152,
+          "uncorrected": 13.865253645926714,
+          "candidate": 14.013227205723524
+        },
+        "type": {
+          "released": 31.35865330696106,
+          "uncorrected": 6.643186379224062,
+          "candidate": 6.042008763179183
+        }
+      },
+      "changedPixels": 66474,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "10e1314743a2b7b72c0a53bcd39f8ece1ef34f85110e4650ea0f8f97ef419629",
+      "releasedSha256": "305553f187cbdc229aba36ee02e9c346f450bea03d7e4569454e0227f3359537",
+      "candidateSha256": "d8c9af631bd403d9ca53614ada5cde480c7171386786cdd79213afe69d95e0c6"
+    },
+    {
+      "id": "2cabfcfe-012e-4cab-bba2-24052eac0946",
+      "name": "Chandra, Acolyte of Flame",
+      "set": "m20",
+      "palette": "R",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 37.644819393754005,
+          "uncorrected": 15.638549141585827,
+          "candidate": 12.35925005748868
+        },
+        "type": {
+          "released": 40.187490954995155,
+          "uncorrected": 8.308157287538052,
+          "candidate": 8.410295806825161
+        }
+      },
+      "changedPixels": 66329,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "f0e5b99cf7b9fbec3e7878695eaf36daeff82cd24838078a825496e041368c0c",
+      "releasedSha256": "e72dab5a3c309d3b3529c2e6b45ad7d0835543ebb644e5f781f1f04ddb246ba8",
+      "candidateSha256": "0f12e2b4db9c5b9031444c05ce9b24339d2f3e9f938bf33b69ba2939a0fe0bc4"
+    },
+    {
+      "id": "a4c3ca8c-c77c-43b8-84ad-796313ecc813",
+      "name": "Chandra, Heart of Fire",
+      "set": "m21",
+      "palette": "R",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 39.48324054479599,
+          "uncorrected": 21.446598283946514,
+          "candidate": 19.255478158593178
+        },
+        "type": {
+          "released": 25.110295191407204,
+          "uncorrected": 7.031702706590295,
+          "candidate": 5.956368483603001
+        }
+      },
+      "changedPixels": 66479,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "4d31823661997ca2307216abd6b9c3642ac2ed77c84131352da7c12e62d1e69d",
+      "releasedSha256": "501117b2aa793645a9cedab7d74af85262ace59315505627ee6481dd0cdc7ebf",
+      "candidateSha256": "02845b27014a1da56d032ca7099d20a812cf20d77d37ce624bd2cb3dce6c7b7f"
+    },
+    {
+      "id": "d21a7b23-8827-49f2-ade4-75a602d17743",
+      "name": "Chandra, Fire Artisan",
+      "set": "war",
+      "palette": "R",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 37.023203149437904,
+          "uncorrected": 13.97356778383255,
+          "candidate": 11.730551943182945
+        },
+        "type": {
+          "released": 36.683934554457664,
+          "uncorrected": 7.005787622183561,
+          "candidate": 7.188665634021163
+        }
+      },
+      "changedPixels": 66675,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "e59673f2ef66f7e20b90ebb55a5136b691a67fdc0bef2fc4d12f6c66541ed2d1",
+      "releasedSha256": "e0493c43812d3547a92b8dd66076fb01bcc1294f613745131ac0dd5d8de1bd66",
+      "candidateSha256": "1e00751081839a1d66fa115ab7933198127d8532b17fc84623e2cbfffc561702"
+    },
+    {
+      "id": "fa25fedc-6038-48c8-b42a-817ac186492e",
+      "name": "Jaya Ballard",
+      "set": "dom",
+      "palette": "R",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 34.97512824833393,
+          "uncorrected": 14.445410314947367,
+          "candidate": 13.412133660167456
+        },
+        "type": {
+          "released": 24.26297675818205,
+          "uncorrected": 6.180232996121049,
+          "candidate": 6.107279285788536
+        }
+      },
+      "changedPixels": 66882,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "aa25de31eb3fbbb6079ee4207f528d766b2b4816d1ccf2ccf196956b709a522b",
+      "releasedSha256": "577a79f2ad21cadbb156c784b0edd59dd0888c7226672fc6906b7cd8e4063b0a",
+      "candidateSha256": "5f3298ef3adae5b080b0441244841ef85d09f4561023fe20d1d0395411738db9"
+    },
+    {
+      "id": "07eb2476-488b-4610-8567-f0456601f7fd",
+      "name": "Nissa, Worldwaker",
+      "set": "m15",
+      "palette": "G",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 34.81136463582516,
+          "uncorrected": 20.198032781481743,
+          "candidate": 13.082722686231136
+        },
+        "type": {
+          "released": 15.324124563485384,
+          "uncorrected": 7.219455381855369,
+          "candidate": 6.887539867311716
+        }
+      },
+      "changedPixels": 67030,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "6f2ce6cd0123909bd850093703e061eba8600c6cfe46b563411a47e3cc44911a",
+      "releasedSha256": "e03671378d30f71d80ad64c5d6c336a0150037ac0002a33e42e5e87a562b43e1",
+      "candidateSha256": "44593ec075f330fad55b45a805daca1944ffb430fa425f297efff0e57bb5d77b"
+    },
+    {
+      "id": "681fbd66-b622-4f20-a860-f101aff21109",
+      "name": "Vivien Reid",
+      "set": "m19",
+      "palette": "G",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 37.514269798994064,
+          "uncorrected": 27.635345198214054,
+          "candidate": 14.786994885653257
+        },
+        "type": {
+          "released": 24.923993088304996,
+          "uncorrected": 8.41856511309743,
+          "candidate": 5.2528514340519905
+        }
+      },
+      "changedPixels": 66562,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "d14f4379ef127c02679c3c3dcdf5f8c5a67c6040f8413d0f21631e9cfaaa82bc",
+      "releasedSha256": "60ee53e2fa183dba81f29378ded9c3860f6092796663b2b8f606a1c793c05f99",
+      "candidateSha256": "e614621f5e359c8e9a69612c049949e15cb2bb8d6f643272240df769c1a23a54"
+    },
+    {
+      "id": "592c5e27-c538-425e-b41f-1d6708428853",
+      "name": "Vivien, Arkbow Ranger",
+      "set": "m20",
+      "palette": "G",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 35.36199688911438,
+          "uncorrected": 18.59205085784197,
+          "candidate": 19.111676774919033
+        },
+        "type": {
+          "released": 30.060281977057457,
+          "uncorrected": 12.850477248430252,
+          "candidate": 8.144860100001097
+        }
+      },
+      "changedPixels": 66585,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "99e0d775ffda61b3bba7457715a4d2e82e0165510e155699f69bca7fa51177e5",
+      "releasedSha256": "e1e3362a2e55e1d857ddbc44ee1a53c2409c14a77ba83ecf0863b574237e4748",
+      "candidateSha256": "7b7516aebbe4c329b44374005ae30f924d8d95400cd63e35675289a5794f9b5c"
+    },
+    {
+      "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
+      "name": "Garruk, Unleashed",
+      "set": "m21",
+      "palette": "G",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 34.191230311989784,
+          "uncorrected": 20.583890676498413,
+          "candidate": 14.64031420648098
+        },
+        "type": {
+          "released": 29.11724478006363,
+          "uncorrected": 11.343014538288116,
+          "candidate": 6.8049555737525225
+        }
+      },
+      "changedPixels": 66461,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "b8ee722b04e0070b20e73f23a04c61bd66978d0d7e0aadcc1b15d1f76e3afe19",
+      "releasedSha256": "0cccb293a0d43fd677422eb1d1a5c20c738346141fd772a33a63cbbd2378cedf",
+      "candidateSha256": "a8fe447841b5d4f27a23b80ea27b84c69c6d309463c1a4b943172be251575242"
+    },
+    {
+      "id": "5391d2f1-e8d3-4d39-98cf-367888e10534",
+      "name": "Arlinn, Voice of the Pack",
+      "set": "war",
+      "palette": "G",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 36.48215778172016,
+          "uncorrected": 17.414169162511826,
+          "candidate": 12.722669206559658
+        },
+        "type": {
+          "released": 27.758373096585274,
+          "uncorrected": 9.020193479955196,
+          "candidate": 5.200858823955059
+        }
+      },
+      "changedPixels": 66801,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "5cf9f04bc056efa818efc8e9edebc4e164479642da13eea0c3e40bb2bc667773",
+      "releasedSha256": "33a79c0f0f18bc1b8b6ef08e0c6e2d83973d33443191c75b8810ed981e4790fb",
+      "candidateSha256": "f867a53e798a833d0626ce4b3e38ab54c45526fcf9d1a2aa0a921b5017ce2619"
+    },
+    {
+      "id": "a600b97b-1851-4b1b-a2af-f80e0307c02c",
+      "name": "Nissa, Voice of Zendikar",
+      "set": "ogw",
+      "palette": "G",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 35.1619566231966,
+          "uncorrected": 16.664836071431637,
+          "candidate": 13.69542745873332
+        },
+        "type": {
+          "released": 18.337225131690502,
+          "uncorrected": 8.063507415354252,
+          "candidate": 5.949977226555347
+        }
+      },
+      "changedPixels": 67160,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "a497e7e7b9ed6079309e65f37c12e7b6a038d543e9be324dd35fd56c053158bc",
+      "releasedSha256": "84b768ebe7936f86c8e52b8e2f0ccd2bf0ae7d82de052f96f85be09c4c9ca0d4",
+      "candidateSha256": "a1a687032c97885de873b355d8d9d6b341f2f10fc667fd711192200102681475"
+    },
+    {
+      "id": "6cc78151-8cb0-4521-9674-fb0c67e24a17",
+      "name": "Ajani, the Greathearted",
+      "set": "war",
+      "palette": "M",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 41.17688186466694,
+          "uncorrected": 15.186313558369875,
+          "candidate": 14.779504537582397
+        },
+        "type": {
+          "released": 36.01479806005955,
+          "uncorrected": 11.33638959378004,
+          "candidate": 8.114426583051682
+        }
+      },
+      "changedPixels": 66913,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "fbe7823928259638c6f92b140b91e636fde1f361d975be55d4929cadbfd0c0e1",
+      "releasedSha256": "1df74d1878bbde3f1810af97dba5ee306e537c8ea2ca095c958cf86ffc23de7f",
+      "candidateSha256": "99b8f25f8eac163639ed875a7e86c0766c11b2bf5a739a06f4e384b6b80a8b6f"
+    },
+    {
+      "id": "84d70487-21d1-4897-ac20-2a996e893b5b",
+      "name": "Nahiri, the Harbinger",
+      "set": "soi",
+      "palette": "M",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 37.88090832531452,
+          "uncorrected": 13.699327949434519,
+          "candidate": 13.826102446764708
+        },
+        "type": {
+          "released": 34.55258712172508,
+          "uncorrected": 13.441336993128061,
+          "candidate": 7.457486009225249
+        }
+      },
+      "changedPixels": 67048,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "cae78d11dccb924dc60e3fc98e4a461dab8f0676e76955be8998bba0e250ad85",
+      "releasedSha256": "10c6005b3be22105a8ca51b0659caa299598036f68c77cb01f51118dae0e97cd",
+      "candidateSha256": "fb28c3ac8e8d89c3ac281015cb84a7cdc10938439fbb7ff800b5a4524813ca74"
+    },
+    {
+      "id": "a0cc61ba-e91a-4b30-841c-cae8dd288b40",
+      "name": "Huatli, Warrior Poet",
+      "set": "xln",
+      "palette": "M",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 34.940223321318626,
+          "uncorrected": 24.49890799820423,
+          "candidate": 24.501972533762455
+        },
+        "type": {
+          "released": 23.18319819867611,
+          "uncorrected": 13.155221845954657,
+          "candidate": 14.702592864632607
+        }
+      },
+      "changedPixels": 66494,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "c425ea3488618a7b0d6c1a459039bf1bf1798ada81e288b4a721433d8e6a8686",
+      "releasedSha256": "57ae4a83dd45d0b0bdac1ac6fcc2c10b32cfba877601170e96ab9246e8ea3d90",
+      "candidateSha256": "e3572ba1df859dc2cdca2012fd08a46f11ba5ad6bbe7601fe8f66016a04e3579"
+    },
+    {
+      "id": "5d10b752-d9cb-419d-a5c4-d4ee1acb655e",
+      "name": "Teferi, Hero of Dominaria",
+      "set": "dom",
+      "palette": "M",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 34.097546339035034,
+          "uncorrected": 12.485829815268517,
+          "candidate": 12.046841271221638
+        },
+        "type": {
+          "released": 27.863403260707855,
+          "uncorrected": 7.153502320870757,
+          "candidate": 9.438362941145897
+        }
+      },
+      "changedPixels": 66791,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "218a74037a99805f28d069974107e541fad29752e9b9b0c9e39bab143f85b927",
+      "releasedSha256": "a3cb6090c545313ad464d65728a6764f2ff5250461f0a4381e52b4c0d15cc7ee",
+      "candidateSha256": "7993151068424aaa842f4aeb9d08003e87338207a84468d0d3bc8cebd8de1c75"
+    },
+    {
+      "id": "4b63c228-3265-4029-9bc0-36b3e31dfb53",
+      "name": "Kiora, Master of the Depths",
+      "set": "bfz",
+      "palette": "M",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 36.648691445589066,
+          "uncorrected": 17.99436192959547,
+          "candidate": 17.208252511918545
+        },
+        "type": {
+          "released": 19.824320934712887,
+          "uncorrected": 10.865274723619223,
+          "candidate": 13.265958353877068
+        }
+      },
+      "changedPixels": 67478,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "64e4b0b944691f328f8bb8a873b8689189640359f94404d07a47055ebc3171d4",
+      "releasedSha256": "09c416dbcf7e94904c640dcfb86568b48a9ad3e401b0b587315588048c2d6d1b",
+      "candidateSha256": "3489f1df9f7c2301d8c6f1062831189e7660132ea87b2fd277cdafa5cb4dba56"
+    },
+    {
+      "id": "9f9aced7-9ae9-432f-b8c0-caac9cad098b",
+      "name": "Tamiyo, Field Researcher",
+      "set": "emn",
+      "palette": "M",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 39.71180967986584,
+          "uncorrected": 12.91445916518569,
+          "candidate": 12.42524966597557
+        },
+        "type": {
+          "released": 34.61821340024471,
+          "uncorrected": 13.99654895067215,
+          "candidate": 10.095932856202126
+        }
+      },
+      "changedPixels": 67139,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "1e1e16f2c3a1a18025d816913f79cfe185225d30195e93793b956ad39d4c0d93",
+      "releasedSha256": "b1742c4b1a96b14d10c752644e1d3e74462e6ab87fe9476358d9fe120109ec7d",
+      "candidateSha256": "6aca5020e5a02634ea092ba0a5644377d101522984f0c7e53c8e1ffcf63ee7eb"
+    },
+    {
+      "id": "9c017fa9-7021-417a-9c2e-3df409644fcf",
+      "name": "Ugin, the Spirit Dragon",
+      "set": "m21",
+      "palette": "A",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 28.469814620912075,
+          "uncorrected": 21.856829971075058,
+          "candidate": 21.934345811605453
+        },
+        "type": {
+          "released": 23.13828270882368,
+          "uncorrected": 21.479787603020668,
+          "candidate": 8.450832031667233
+        }
+      },
+      "changedPixels": 70412,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "56ea3b56cf3e438c5601d007e97f73f8118af2189b8bc733c84c4ddc498ce53f",
+      "releasedSha256": "41d31df81a8b33d8f22f2ab5bc5cb4581a0a5ae40a3155a14092255ec73c2804",
+      "candidateSha256": "59e6e738b7efd95c30f776368edf8433d811afc9d6df3635b606e2d15dbd6519"
+    },
+    {
+      "id": "3ec0c0fb-1a4f-45f4-85b7-346a6d3ce2c5",
+      "name": "Karn, the Great Creator",
+      "set": "war",
+      "palette": "A",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 27.76211779564619,
+          "uncorrected": 21.030678302049637,
+          "candidate": 15.130639895796776
+        },
+        "type": {
+          "released": 23.327299766242504,
+          "uncorrected": 25.076374411582947,
+          "candidate": 11.342257428914309
+        }
+      },
+      "changedPixels": 70588,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "a196afb98b7c9b263bbe3c4018efe0aafc19bbbfff6f8e99c46a4419eef0e74b",
+      "releasedSha256": "0720612eb6be63e17a9a67f61788aebae3834c94b73d85cb642df8ce2ebdb033",
+      "candidateSha256": "694f73416d5db88b4925864eee0f59f1f19e94d472b215c5eb532c47168531e0"
+    },
+    {
+      "id": "07a3d9e8-8597-498b-869c-cff79e0df516",
+      "name": "Karn, Scion of Urza",
+      "set": "dom",
+      "palette": "A",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 33.29184137284756,
+          "uncorrected": 26.93150896579027,
+          "candidate": 22.86312237381935
+        },
+        "type": {
+          "released": 30.21180834621191,
+          "uncorrected": 46.745160073041916,
+          "candidate": 30.6812484562397
+        }
+      },
+      "changedPixels": 70554,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "8591e7a273e2ec7ad3204c45154a553a5b83983c1d97a591d4d8ad018800a0eb",
+      "releasedSha256": "e7f6cd731c94812235a0500a209bd286aa3571198de3aca996a7334a0bcda004",
+      "candidateSha256": "275312c6faa5f8e487ac10281bb05bf91ceb902e402e2b191897f6abe1af0df3"
+    },
+    {
+      "id": "cd1deda0-c99d-4570-a5dd-f51eb5d12570",
+      "name": "Karn Liberated",
+      "set": "mm2",
+      "palette": "A",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 28.492658995091915,
+          "uncorrected": 18.3836567401886,
+          "candidate": 22.95575950294733
+        },
+        "type": {
+          "released": 21.215696074068546,
+          "uncorrected": 37.27098025381565,
+          "candidate": 21.49477779865265
+        }
+      },
+      "changedPixels": 70970,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "84509fe25d062f4cbe9d9c663c65f8c6481196871fec03a33e7848f2beaea94f",
+      "releasedSha256": "f7496a7028764e8a89985cd2e82c1b74cdd3bed45cfefc3b09f787d8d44a2483",
+      "candidateSha256": "b69ca0eafd09238928336e9657818bac6b6be1782d62a4f93ff52fe42cbf73b0"
+    },
+    {
+      "id": "e83b1b87-01d5-4624-8a2b-4b771e13e59c",
+      "name": "Karn, Living Legacy",
+      "set": "dmu",
+      "palette": "A",
+      "family": "regular",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 34.75344814360142,
+          "uncorrected": 28.63979659974575,
+          "candidate": 26.314140893518925
+        },
+        "type": {
+          "released": 21.966334395110607,
+          "uncorrected": 25.71952410042286,
+          "candidate": 10.68394560366869
+        }
+      },
+      "changedPixels": 70407,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "ba609e0bbc02718755d15efc56b24a011b7aca542a2351e81c3265834ec99d27",
+      "releasedSha256": "c2c30059f8a5bb7e485d8adf2a33b96a4ce63e3a0c059426f5c61557aae38e60",
+      "candidateSha256": "9130967258069eba4a1f9b02517b2fe9772a6096117438d458dac23c88c0b25b"
+    },
+    {
+      "id": "2eb7e322-aba0-42f5-80a1-267f3444ac4d",
+      "name": "Ugin, the Ineffable",
+      "set": "cmm",
+      "palette": "A",
+      "family": "regular",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 26.019265316426754,
+          "uncorrected": 19.901496693491936,
+          "candidate": 16.90457470715046
+        },
+        "type": {
+          "released": 19.79193527251482,
+          "uncorrected": 20.393849574029446,
+          "candidate": 5.3686559200286865
+        }
+      },
+      "changedPixels": 70416,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "f8a841aaacff8509314099f4af9a37f6a5228d870ed5c473e1c6dcf7d7211665",
+      "releasedSha256": "7f4d161c7aca037eac4ada9a4a0827bae02c97a33cd6ce69b6a604e13f6aacd2",
+      "candidateSha256": "3712e5692407a01af5e521a9fa5d98d988ed23589c348efbc77bb8ad46a081dd"
+    },
+    {
+      "id": "39d51c5e-26cb-4276-a676-fabfef866248",
+      "name": "Gideon Blackblade",
+      "set": "war",
+      "palette": "W",
+      "family": "tall",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 28.95424872636795,
+          "uncorrected": 11.384995635598898,
+          "candidate": 13.09010474011302
+        },
+        "type": {
+          "released": 17.02552791684866,
+          "uncorrected": 7.856751484796405,
+          "candidate": 5.677416427060962
+        }
+      },
+      "changedPixels": 67172,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "106997c6e3630e41201e78e5441f79794981ca497da36bba4ee4b0444f261097",
+      "releasedSha256": "7e14b0aebc3530edc008a8a3cfa501b342fc1fcc0bf529421e1843ba7e2d5d17",
+      "candidateSha256": "d17114bf1fca6ffc09d9b8bc3a75de0275473446906e939f1721e717e69c7945"
+    },
+    {
+      "id": "9a226eae-1c77-45a9-9115-f846b76681a3",
+      "name": "Nahiri, the Lithomancer",
+      "set": "c14",
+      "palette": "W",
+      "family": "tall",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 32.7936615049839,
+          "uncorrected": 16.73381756991148,
+          "candidate": 13.952881693840027
+        },
+        "type": {
+          "released": 14.899337757378817,
+          "uncorrected": 11.59484127536416,
+          "candidate": 7.865550387650728
+        }
+      },
+      "changedPixels": 67264,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "f35cc2a8829c6a8aec55d74f2cf3eb6941eddd161de07de33266824e91778953",
+      "releasedSha256": "811b045c4a70825a89f77b51f84add2ac9974f6b329a636af7d94d0ccad87f01",
+      "candidateSha256": "0dc96d6d0f378f7d9cfd998adf3b1216579286b7557b268880bd5f948ae83b83"
+    },
+    {
+      "id": "81aec42f-abb7-42f9-96f5-f1ee2f94db52",
+      "name": "Elspeth, Sun's Nemesis",
+      "set": "thb",
+      "palette": "W",
+      "family": "tall",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 34.65179219841957,
+          "uncorrected": 17.297076545655727,
+          "candidate": 21.38602003455162
+        },
+        "type": {
+          "released": 14.638545401394367,
+          "uncorrected": 7.1039848029613495,
+          "candidate": 7.675314070656896
+        }
+      },
+      "changedPixels": 66796,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "89969e5f0af83ddf4f84f7db878e6eb3095cbde6888adbf0b2e27ae606debe2d",
+      "releasedSha256": "76793eb72a7e7e10952cf284baf0cc03f97642858e00faa919414a578d27509f",
+      "candidateSha256": "02658d93073a6d39c12b5af703882e521bae95c158af8d48db757b0bee80f60a"
+    },
+    {
+      "id": "9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d",
+      "name": "Teferi, Master of Time",
+      "set": "m21",
+      "palette": "U",
+      "family": "tall",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 44.54534411430359,
+          "uncorrected": 21.9313420727849,
+          "candidate": 14.859836976975203
+        },
+        "type": {
+          "released": 21.63631070405245,
+          "uncorrected": 5.6702842097729445,
+          "candidate": 3.628404401242733
+        }
+      },
+      "changedPixels": 67085,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "91c0bf0ae94f6196a16a8916163630c5d4fff8e97fc68468099b5b09ee7f0eec",
+      "releasedSha256": "7eb3c23ef5e28101ea6cdee3f3fa437e9b66d275a8c7b986172d3d2ccdc8cdc1",
+      "candidateSha256": "3701b00db6a793ac4cb26edc18aef5f9b6683ea1c24a8222c2eda1667492dc74"
+    },
+    {
+      "id": "80eec0bd-9eb4-4360-b97b-9c7985a63343",
+      "name": "Teferi, Temporal Archmage",
+      "set": "c14",
+      "palette": "U",
+      "family": "tall",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 44.43149082362652,
+          "uncorrected": 18.04215006530285,
+          "candidate": 13.26966030523181
+        },
+        "type": {
+          "released": 16.88836097717285,
+          "uncorrected": 5.983682842925191,
+          "candidate": 4.903558976948261
+        }
+      },
+      "changedPixels": 67406,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "dde2a4c19240f167505d5ecb273ece3a1db6109cd74a3830eece0d262f31b6c3",
+      "releasedSha256": "a8fb409f2f2834ff7f5c4a7156f59d12c832a9be5507d18d28ef19a91f4ba6bf",
+      "candidateSha256": "9c650746e61b309a47b6c69d38f75146bbec54054d12f8190384f27281a5993d"
+    },
+    {
+      "id": "3a1a1910-9587-481c-9e5c-5eb0c3b098c6",
+      "name": "Jace, the Mind Sculptor",
+      "set": "ema",
+      "palette": "U",
+      "family": "tall",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 47.60165311396122,
+          "uncorrected": 23.816160634160042,
+          "candidate": 16.73916958272457
+        },
+        "type": {
+          "released": 26.092455089092255,
+          "uncorrected": 10.044249929487705,
+          "candidate": 14.148170314729214
+        }
+      },
+      "changedPixels": 67509,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "1472aefa79cc5ba06a7b5df8505331ad61ab4d3837d5882305a3f1383b0be6d2",
+      "releasedSha256": "4d6929ede175375425baec5744ae18839de053bf10d9e52c88b5e8550cee0006",
+      "candidateSha256": "ef48fa3882f2cd6e10cb351a2a6c3e69a3f0f4e8c65662cbbb85ceb123472241"
+    },
+    {
+      "id": "d75ebba8-34ca-47a0-bf13-8318ad73b343",
+      "name": "Liliana, Dreadhorde General",
+      "set": "war",
+      "palette": "B",
+      "family": "tall",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 35.08343003690243,
+          "uncorrected": 13.715631924569607,
+          "candidate": 13.639560006558895
+        },
+        "type": {
+          "released": 21.96541104465723,
+          "uncorrected": 16.38112049549818,
+          "candidate": 7.75253115221858
+        }
+      },
+      "changedPixels": 66863,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "f1c5f7c7dbd25c0d2fdb910af41cc88ad9af1d3a7b70437d7c4403cd8be0ae5b",
+      "releasedSha256": "5bd5877da90a85279c36caff1e0e5a04110ccadefc2d03a38aa4073c0377df2b",
+      "candidateSha256": "d60e6807d3e6df6d717efcffb2c3c0953c145d1002c8775a395fc8c8546286e7"
+    },
+    {
+      "id": "8f244716-78ab-46f5-b6e9-fc1e6db28052",
+      "name": "Tevesh Szat, Doom of Fools",
+      "set": "cmr",
+      "palette": "B",
+      "family": "tall",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 40.43490327894688,
+          "uncorrected": 28.62057153135538,
+          "candidate": 25.864571817219257
+        },
+        "type": {
+          "released": 32.33658403158188,
+          "uncorrected": 28.903736136853695,
+          "candidate": 17.230051942169666
+        }
+      },
+      "changedPixels": 67063,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "e7da8f986ca7577f79b724ced05c36ff56ae6cedfd3dab0ecf04a8a24d642859",
+      "releasedSha256": "7ad1c3a242625cfb31afc264f3384d8c5fd96f239d9cf129639c6bb0ac0a8912",
+      "candidateSha256": "87df318962a0a543ccd14c7028f5d625b63c0723fdf26fe3db3e63350a917fdc"
+    },
+    {
+      "id": "49d2a680-4f3b-4bfa-b77b-d2dfaced9f23",
+      "name": "Chandra, Awakened Inferno",
+      "set": "m20",
+      "palette": "R",
+      "family": "tall",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 35.71923851966858,
+          "uncorrected": 16.622584238648415,
+          "candidate": 14.05351359397173
+        },
+        "type": {
+          "released": 30.06426226347685,
+          "uncorrected": 9.63096035644412,
+          "candidate": 9.78543821722269
+        }
+      },
+      "changedPixels": 66958,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "27c41186862612972203182a1329e9bd3fd86849207dfdddf3a06c6788e3d2e8",
+      "releasedSha256": "a8cadc61c4350c0cd8c86e41de907ca184cd552097f6f90dfb33707d954d5a56",
+      "candidateSha256": "1e3efe28a386bebf420c6c8fb51ad3fd51ee15572acdc01b41d0049eb740ee34"
+    },
+    {
+      "id": "cda40e31-ba99-4565-ad92-7c687ff44bd9",
+      "name": "Daretti, Scrap Savant",
+      "set": "c14",
+      "palette": "R",
+      "family": "tall",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 34.411717280745506,
+          "uncorrected": 15.267792586237192,
+          "candidate": 14.090813342481852
+        },
+        "type": {
+          "released": 14.619120843708515,
+          "uncorrected": 7.688055736944079,
+          "candidate": 8.135414756834507
+        }
+      },
+      "changedPixels": 67388,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "a4f7129fbb35971613882692fe6865fb290811baeae045cc333bd0c991d42afe",
+      "releasedSha256": "f43b2b2687e38f34286af929618cbe5323924955b6c82afafe6aed359c193dd3",
+      "candidateSha256": "cca650f84a55fdcd1b64bccc4fecc3e7b70860b3f7f3ae99dd6f1db5cde73c50"
+    },
+    {
+      "id": "ff8086cd-b868-4f4e-823e-2635ad7ebc07",
+      "name": "Chandra, Torch of Defiance",
+      "set": "kld",
+      "palette": "R",
+      "family": "tall",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 34.37021590769291,
+          "uncorrected": 13.875965271145105,
+          "candidate": 12.152295112609863
+        },
+        "type": {
+          "released": 25.560821816325188,
+          "uncorrected": 5.452937297523022,
+          "candidate": 5.590365473181009
+        }
+      },
+      "changedPixels": 67354,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "d4d97a34cf3fb01e9ba303144f43e289c9c708a7d1ed24c31ce4b30e33c42e04",
+      "releasedSha256": "62e67100fb7806d4b27eb729392d71da25556b7bbf5e16340d321272e7dbb03f",
+      "candidateSha256": "5ffc7bb95ef798af4d736c6ee66d06bbfb25ce17d9d45bfca5866d5bc6c99162"
+    },
+    {
+      "id": "6c6ef042-1a69-4b16-abae-4f436dbadbbd",
+      "name": "Freyalise, Llanowar's Fury",
+      "set": "c14",
+      "palette": "G",
+      "family": "tall",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 34.02224957942963,
+          "uncorrected": 19.248591028153896,
+          "candidate": 15.3871014341712
+        },
+        "type": {
+          "released": 14.397912863641977,
+          "uncorrected": 7.933170609176159,
+          "candidate": 5.7059775944799185
+        }
+      },
+      "changedPixels": 67216,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "cb146316d035e98dc69166e2087ea6abcb5db90c5db8cab744d9d7ef6b53160c",
+      "releasedSha256": "3585ad1632fedf865366e813b0c39ac15af0db604faf663ca3d72d82f160e392",
+      "candidateSha256": "efc1ca482b234d61ba15f239063801c6ce80cbb15b74b2fd4e95978e1797953d"
+    },
+    {
+      "id": "504ebb84-7e7b-4119-a128-a9c183c5d9de",
+      "name": "Vivien, Monsters' Advocate",
+      "set": "iko",
+      "palette": "G",
+      "family": "tall",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 35.65329305827618,
+          "uncorrected": 17.730781473219395,
+          "candidate": 13.980365619063377
+        },
+        "type": {
+          "released": 68.16322758793831,
+          "uncorrected": 60.102085545659065,
+          "candidate": 61.396562084555626
+        }
+      },
+      "changedPixels": 66850,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "8f79ef1863bcd29a94e6a5e33634737083da225e3b088ef9b7f68c62226098cd",
+      "releasedSha256": "b0919ae07d5c3040814de2cf3a0097ba6bd074467e6ab2f6ec9e10083fc8d2de",
+      "candidateSha256": "70cab0e8861253b9b8beda8008366a2f42eb6fc9946e69eb24ae352067c3cabf"
+    },
+    {
+      "id": "8d18008f-10d2-4cdf-b4b5-7675782a8b0d",
+      "name": "Tyvar Kell",
+      "set": "khm",
+      "palette": "G",
+      "family": "tall",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 37.40843407809734,
+          "uncorrected": 18.740199208259583,
+          "candidate": 17.71624155342579
+        },
+        "type": {
+          "released": 35.665528401732445,
+          "uncorrected": 31.467158384621143,
+          "candidate": 26.707984060049057
+        }
+      },
+      "changedPixels": 66889,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "75f48e515e5af5e21b1b477330837c71b1421ae12726206d79b9f79ef461d7bb",
+      "releasedSha256": "b6cd70cd5b4d90755e06dbc78e11273f8141614858ece1e81aa279538b891ccf",
+      "candidateSha256": "760d3b541f8e584eda3e04feabfd0f662ecf937c140abe0d95938a9f4a129f86"
+    },
+    {
+      "id": "98b68dea-a7be-4f99-8a50-4c8cf0e0f7a9",
+      "name": "Nicol Bolas, Dragon-God",
+      "set": "war",
+      "palette": "M",
+      "family": "tall",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 38.89632783830166,
+          "uncorrected": 13.873724341392517,
+          "candidate": 13.61197728663683
+        },
+        "type": {
+          "released": 31.203762218356133,
+          "uncorrected": 12.838185857981443,
+          "candidate": 9.346595965325832
+        }
+      },
+      "changedPixels": 67104,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "f4a6490c67e67cd2bddb634502ee643fed40078fb2484c563475f6cb51efbb20",
+      "releasedSha256": "300b15100f03a1cad222055a8ccf672d3af37c85e1dcb7ce98e5fa4cfdd8e01e",
+      "candidateSha256": "f7d877d4dd9bfc18b19c07f0e9d1edf2f7e92007c5068e78f24a04b7518db25c"
+    },
+    {
+      "id": "985e92f4-3904-41df-91f7-42eedbe3ccd2",
+      "name": "Nicol Bolas, God-Pharaoh",
+      "set": "hou",
+      "palette": "M",
+      "family": "tall",
+      "cohort": "validation",
+      "metrics": {
+        "background": {
+          "released": 37.330101281404495,
+          "uncorrected": 16.98139898478985,
+          "candidate": 15.325455442070961
+        },
+        "type": {
+          "released": 23.08216542005539,
+          "uncorrected": 10.624270755797625,
+          "candidate": 5.616782605648041
+        }
+      },
+      "changedPixels": 67442,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 0,
+      "referenceSha256": "3fe23a76c522cae9dd9ba07878a88c20275ba7b483a7be8f896ab1d125f5c65c",
+      "releasedSha256": "d78955e11028cf6bae2166a6810ca288d05af84fbe461310ebe0fe9cccc99972",
+      "candidateSha256": "6b44e0068aac70938b703e77ed2b4584881689e5234676f7339375dfbafb8cf5"
+    },
+    {
+      "id": "05690d52-06c4-40b1-8360-380418a83250",
+      "name": "The Aetherspark",
+      "set": "dft",
+      "palette": "A",
+      "family": "tall",
+      "cohort": "calibration",
+      "metrics": {
+        "background": {
+          "released": 42.70485207438469,
+          "uncorrected": 43.00675347447395,
+          "candidate": 36.51370368897915
+        },
+        "type": {
+          "released": 26.757939979434013,
+          "uncorrected": 3.978152833878994,
+          "candidate": 16.31877914071083
+        }
+      },
+      "changedPixels": 71495,
+      "outsideScope": 0,
+      "oneByteAntialiasFringe": 7,
+      "referenceSha256": "d424b569b0ab0976907adaeeabb9ff7f5c8239168a7976cc717a5ddf8a329ab3",
+      "releasedSha256": "012c5bf9c0118343dbf227aeadb0adce029dc293961538501f1c958f126b4b8a",
+      "candidateSha256": "c105799b463263040c3abe0eb6500f4d84219e560c5bf1aa634a842b07ebb958"
+    }
+  ]
+}

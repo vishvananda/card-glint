@@ -31,7 +31,7 @@ def main():
   aligned=root/'calibration'/(r['id']+'-aligned.png')
   if not aligned.exists():continue
   targets=boundary(aligned,r['family']);item={k:r[k] for k in ['id','name','palette','family','cohort']};item['offsets']={}
-  for run in ['baseline','source']:
+  for run in (['baseline','source','final'] if (root/'final/receipt.json').exists() else ['baseline','source']):
    observed=boundary(root/run/(r['id']+'-full.png'),r['family']);d={}
    for side in targets:
     a={v[0]:v[1] for v in targets[side]};pairs=[a[v[0]]-v[1] for v in observed[side] if v[0] in a];d[side]=dict(pairs=len(pairs),offset=float(np.median(pairs)) if len(pairs)>=10 else None)

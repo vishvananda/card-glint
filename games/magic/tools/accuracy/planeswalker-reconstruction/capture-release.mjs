@@ -81,6 +81,37 @@ const session = await openBrowser(
         name: 'walker-control-type',
         enforce: 'pre',
         transform(code, id) {
+          if (run === 'source' && id.endsWith('/presentation/planeswalker-sources.ts')) {
+            const ast = ts.createSourceFile(id, code, ts.ScriptTarget.Latest, true),
+              edits = [];
+            for (const n of ast.statements)
+              if (ts.isVariableStatement(n))
+                for (const d of n.declarationList.declarations) {
+                  const name = d.name.getText(ast);
+                  let value;
+                  if (['WALKER_BACKGROUND_HSB', 'WALKER_TYPE_HSB'].includes(name))
+                    value = Object.fromEntries(
+                      ['W', 'U', 'B', 'R', 'G', 'M', 'A'].map((c) => [
+                        c,
+                        { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
+                      ]),
+                    );
+                  if (name === 'WALKER_TYPE_REGISTRATION')
+                    value = Object.fromEntries(
+                      ['regular', 'tall'].map((f) => [f, { dx: 0, dy: 0, scaleX: 1, scaleY: 1 }]),
+                    );
+                  if (value)
+                    edits.push({
+                      start: d.initializer.getStart(ast),
+                      end: d.initializer.end,
+                      text: JSON.stringify(value),
+                    });
+                }
+            for (const e of edits.sort((a, b) => b.start - a.start))
+              code = code.slice(0, e.start) + e.text + code.slice(e.end);
+            return code;
+          }
+
           if (id.endsWith('/presentation/planeswalker-material.ts')) {
             const ast = ts.createSourceFile(id, code, ts.ScriptTarget.Latest, true);
             const fn = ast.statements.find(
@@ -130,6 +161,16 @@ const receipt = {
   schema: 1,
   run,
   sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+  captureToolSha256: createHash('sha256')
+    .update(await readFile(new URL(import.meta.url)))
+    .digest('hex'),
+  inputSha256: createHash('sha256')
+    .update(await readFile(root + '/' + run + '/inputs.json'))
+    .digest('hex'),
+  controls:
+    run === 'source'
+      ? 'Identity new-source HSB and registration only; remaining renderer unchanged'
+      : null,
   rendererVersion: JSON.parse(await readFile('package.json')).version,
   rasters: {},
   records: [],

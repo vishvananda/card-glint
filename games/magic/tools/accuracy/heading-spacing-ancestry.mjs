@@ -1,9 +1,11 @@
+import { preWalkerSource } from './planeswalker-reconstruction/ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from './common.mjs';
 const PROOF_HASH = '3b618060de80e27cc22e7b3e55244da5a80054dcef8e992a009579af8bfdf149';
 let checked;
 export async function preHeadingSpacingSource(file, bytes) {
+  bytes = await preWalkerSource(file, bytes);
   const proof = await (checked ??= readFile(
     'games/magic/fixtures/accuracy/heading-spacing/source-proof.json',
   ).then((bytes) => {

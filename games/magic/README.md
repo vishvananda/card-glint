@@ -927,3 +927,21 @@ foil; black or transparent protects it. Use the raster in a document layer's
 `finishCoverage.add` or `.exclude`; `invert` supports protection mattes. Prepare
 it with the document and retain it across pose changes. Composite layouts should
 project masks per physical face.
+
+## Standard planeswalker materials
+
+From 0.6.3, standard planeswalkers use pinned Card Conjurer regular/tall background
+textures in white, blue, black, red, green, gold and colorless. Each palette has a
+shared HSB correction for both heights. Existing frame pinlines, type/title paper,
+ability paper, typography, loyalty badges and footer remain separate components.
+Only the type box's upper-right curve changes; its slot, left edge, bottom contour
+and shadow retain the previous placement.
+
+[Source selection and HSB defaults](src/presentation/planeswalker-sources.ts),
+[native evidence](fixtures/accuracy/planeswalker-materials/native.json), and
+[reproduction tools](tools/accuracy/planeswalker-reconstruction/README.md) describe
+the measured scope. This does not mark every planeswalker printing fully calibrated.
+The additional source is fetched only for planeswalkers and prepared once per
+material under a separate 64 MiB cache. `clearEarlyHsbBitmaps()` also retires these
+derived backgrounds. `composeCardTexture` prepares them automatically; custom
+low-level painters keep their existing source-asset behavior.
