@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from './common.mjs';
-const PROOF_HASH = '991257a7887ae9c935d1b480a5210d0f0bdd7ef8f9e9187f9a8798b9b8830148';
+const PROOF_HASH = '3b618060de80e27cc22e7b3e55244da5a80054dcef8e992a009579af8bfdf149';
 let checked;
 export async function preHeadingSpacingSource(file, bytes) {
   const proof = await (checked ??= readFile(

@@ -672,7 +672,9 @@ async function verify() {
           ink.width = 220;
           ink.height = 70;
           const c = ink.getContext('2d');
-          c.font = '32px serif';
+          // Keep ink inside separate advance cells: a fractional serif boundary can
+          // clip a neighboring glyph differently across system font fallbacks.
+          c.font = '32px monospace';
           c.fillStyle = '#000';
           paintTextInk(c, '2/3', 10, 45, 180);
           const plain = c.getImageData(0, 0, 220, 70).data;

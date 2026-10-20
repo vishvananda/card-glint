@@ -1,8 +1,9 @@
 # Alpha heading-spacing experiment
 
 This adapter adds independent name/type-line controls and finer width steps.
-The data-file defaults preserve 0.6.1. The fitted settings are experimental and
-are not promoted into the set profile. Font choice remains the existing filled
+The shared fitted settings are promoted into the Alpha set profile.
+The comparison tool explicitly freezes the 0.6.1 baseline so that promotion does
+not move the reference policy. Font choice remains the existing filled
 ink; this experiment does not select hollow lettering.
 
 The shared fit uses 18 names and reserves 18 names across six non-land materials.
@@ -17,7 +18,7 @@ size=23.1, width=0.973 and wordSpacing=0.4. Ink and shadow are unchanged.
 Name scores improve from 70.32 to 71.24/100 (224 improve, 68 regress).
 Type scores improve from 61.72 to 62.97/100 (272 improve, 20 regress).
 These are heading-region structural indices, not whole-card accuracy.
-Every default replay matches released pixels and fitted changes remain inside
+Every frozen-baseline replay matches released pixels and fitted changes remain inside
 the two heading regions. The largest title regressions remain under investigation;
 do not infer per-card default offsets from an individually optimal diagnostic.
 
@@ -57,3 +58,11 @@ and calibration assertions; never replace the earlier frozen evidence hashes.
 The separate ABU artist-credit audit records exact printed spellings and exceptions.
 It preserves providers' canonical artist names. Those metadata corrections do not
 explain heading-score changes, which use frozen heading text and input geometry.
+
+The full-set ablation does not establish a reliable exception rule. Horizontal-only
+best shifts overlap between the old-better and new-better groups. Word spacing
+alone leaves the name score unchanged; removing it from the combined fit changes
+71.24 to 71.21/100. Position alone scores 70.52/100. Opening-letter associations
+are retained as diagnostics, without per-letter or per-card rendering exceptions.
+The historical worker-transport test explicitly resets Alpha to its old heading
+policy; the promoted-default replay separately checks all 292 measured cards.

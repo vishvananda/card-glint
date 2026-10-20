@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { createServer } from './magic-vite.mjs';
 const vite = await createServer({
   configFile: false,
@@ -70,6 +72,33 @@ try {
       }),
     /Invalid/,
   );
+  const receipt = JSON.parse(
+    await readFile('games/magic/fixtures/accuracy/heading-spacing/promotion.json'),
+  );
+  const bytes = await readFile(receipt.measurement);
+  const hash = (b) => createHash('sha256').update(b).digest('hex');
+  assert.equal(hash(bytes), receipt.measurementSha256);
+  assert.equal(hash(await readFile(receipt.profile)), receipt.profileSha256);
+  const measurement = JSON.parse(bytes);
+  const defaults = api.resolveSetTitleCalibration(
+    api.createSetCalibrationCandidate('lea', alpha.revision, {}),
+  );
+  for (const role of ['title', 'type'])
+    for (const [key, value] of Object.entries(measurement.fits[role].values))
+      assert.equal(
+        defaults[role][key],
+        value,
+        'Measured shared headings must remain enabled by default',
+      );
+  assert.equal(receipt.nativeReplays.length, 292);
+  assert.equal(new Set(receipt.nativeReplays.map((r) => r.id)).size, 292);
+  for (const row of receipt.nativeReplays) {
+    assert.equal(row.baselineChangedPixels, 0);
+    assert.equal(row.defaultCandidateFields, 0);
+    assert.equal(row.outsideHeadings, 0);
+    assert.equal(row.scoresMatchMeasurement, true);
+    assert(Object.values(row.replayParity).every((v) => v <= 1.001));
+  }
   const emptyAlpha = api.createSetCalibrationCandidate('lea', alpha.revision, {});
   assert.deepEqual(emptyAlpha.values, {});
   const alphaFace = {

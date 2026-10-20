@@ -104,6 +104,11 @@ const session = await openBrowser(
     ],
   },
 );
+const expectedRows = process.env.HEADING_EXPECTED_FIT
+  ? new Map(
+      (await readJson(process.env.HEADING_EXPECTED_FIT)).nativeVerification.map((r) => [r.id, r]),
+    )
+  : null;
 const rows = [],
   report =
     process.env.HEADING_VERIFY_ALL || process.env.HEADING_REFINE || reviewEntries
@@ -305,10 +310,22 @@ try {
             },
           )
         : undefined;
+    if (expectedRows)
+      assert.deepEqual(
+        scores,
+        expectedRows.get(e.id)?.scores,
+        'Promoted heading scores changed: ' + e.name,
+      );
     const proof = await session.page.evaluate(
       ({ id, values }) => globalThis.fit.verify(id, values),
       { id: e.id, values },
     );
+    if (expectedRows)
+      assert.equal(
+        proof.defaultCandidateFields,
+        0,
+        'Expected native defaults without proposal overrides',
+      );
     for (const key of ['before', 'after']) {
       if (reviewEntries || selectedIds.has(e.id))
         await writeFile(

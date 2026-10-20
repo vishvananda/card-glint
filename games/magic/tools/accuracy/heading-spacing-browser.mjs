@@ -28,6 +28,24 @@ const props = [
   'globalCompositeOperation',
   'filter',
 ];
+// A released baseline must not move when the promoted profile is updated.
+const baselineValues = Object.fromEntries(
+  ['title', 'type'].flatMap((role) =>
+    Object.entries({
+      dx: 0,
+      dy: 0,
+      size: role === 'title' ? 27.8 : 22.2,
+      width: 1,
+      wordSpacing: 0,
+      gray: 130,
+      shadow: 1,
+    }).map(([k, v]) => [role + '.' + k, v]),
+  ),
+);
+function headingCandidate(face, values = {}) {
+  const d = describeSetCalibration(face.setCode);
+  return createSetCalibrationCandidate(face.setCode, d.revision, { ...baselineValues, ...values });
+}
 const states = new Map();
 const rects = { title: [29, 24, 425, 48], type: [29, 358, 425, 49] };
 const pixels = (c) =>
@@ -38,12 +56,16 @@ export async function prepare(entry, scanUrl) {
     signal = new AbortController().signal;
   const lease = await loadAccuracyImages(canvasAssetUrls(face), signal, face.illustration);
   const hooks = { loadImages: async () => ({ ...lease, dispose() {} }) };
-  const input = { face, printingId: null, printedImage: null };
+  const input = {
+    face: { ...face, setCalibrationCandidate: headingCandidate(face) },
+    printingId: null,
+    printedImage: null,
+  };
   const full = await composeCardTexture(input, 'inspect', signal, hooks);
   let releasedParity;
   if (globalThis.__headingBaseline) {
     const before = await globalThis.__headingBaseline.composeCardTexture(
-      input,
+      { ...input, face },
       'inspect',
       signal,
       hooks,
@@ -114,13 +136,12 @@ export async function prepare(entry, scanUrl) {
   return { parity, releasedParity };
 }
 function candidate(face, role, values) {
-  const d = describeSetCalibration(face.setCode);
-  return createSetCalibrationCandidate(
-    face.setCode,
-    d.revision,
+  return headingCandidate(
+    face,
     Object.fromEntries(Object.entries(values).map(([k, v]) => [role + '.' + k, v])),
   );
 }
+
 export function measure(id, role, values, context = {}) {
   const s = states.get(id),
     p = s.prepared[role],
@@ -160,7 +181,7 @@ export function batch(ids, role, values) {
 export async function verify(id, values) {
   const s = states.get(id),
     d = describeSetCalibration(s.face.setCode);
-  const candidate = createSetCalibrationCandidate(s.face.setCode, d.revision, values);
+  const candidate = headingCandidate(s.face, values);
   const actual = await composeCardTexture(
     { ...s.input, face: { ...s.face, setCalibrationCandidate: candidate } },
     'inspect',
@@ -206,6 +227,7 @@ export async function verify(id, values) {
   if (outside) throw Error('Heading edit changes pixels outside heading regions: ' + outside);
   const result = {
     parity,
+    defaultCandidateFields: Object.keys(candidate.values).length,
     changed,
     outside,
     before: s.full.toDataURL(),

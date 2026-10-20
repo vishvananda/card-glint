@@ -199,7 +199,33 @@ try {
           for (const api of [before, current]) {
             requested = new Set();
             const c = await api.composeCardTexture(
-              { face, printingId: null, printedImage: null },
+              {
+                face:
+                  api === current && face.setCode === 'lea'
+                    ? {
+                        ...face,
+                        setCalibrationCandidate: current.createSetCalibrationCandidate(
+                          'lea',
+                          current.describeSetCalibration('lea').revision,
+                          Object.fromEntries(
+                            ['title', 'type'].flatMap((role) =>
+                              Object.entries({
+                                dx: 0,
+                                dy: 0,
+                                size: role === 'title' ? 27.8 : 22.2,
+                                width: 1,
+                                wordSpacing: 0,
+                                gray: 130,
+                                shadow: 1,
+                              }).map(([k, v]) => [role + '.' + k, v]),
+                            ),
+                          ),
+                        ),
+                      }
+                    : face,
+                printingId: null,
+                printedImage: null,
+              },
               tier,
               new AbortController().signal,
               { loadImages, loadFonts: async () => {}, loadRetroFont: async () => {} },
