@@ -36,7 +36,12 @@ function color(
   }
   c.putImageData(p, 0, 0);
 }
-async function background(source: ImageBitmap, mask: ImageBitmap, a: HsbAdjustment) {
+async function background(
+  source: ImageBitmap,
+  mask: ImageBitmap,
+  a: HsbAdjustment,
+  opaqueColorless: boolean,
+) {
   const c = rasterCanvas();
   c.width = mask.width;
   c.height = mask.height;
@@ -60,7 +65,25 @@ async function background(source: ImageBitmap, mask: ImageBitmap, a: HsbAdjustme
     );
     color(ctx, c.width, c.height, a);
     ctx.globalCompositeOperation = 'destination-in';
-    ctx.drawImage(mask, 0, 0);
+    if (opaqueColorless) {
+      // The retired gray texture used 179/255 material opacity. The replacement
+      // is an opaque printed material: retain its antialiased silhouette only.
+      const coverage = rasterCanvas();
+      coverage.width = mask.width;
+      coverage.height = mask.height;
+      try {
+        const m = coverage.getContext('2d');
+        if (!m) throw Error('Planeswalker coverage needs Canvas2D');
+        m.drawImage(mask, 0, 0);
+        const p = m.getImageData(0, 0, mask.width, mask.height);
+        for (let i = 3; i < p.data.length; i += 4)
+          p.data[i] = Math.min(255, Math.round((p.data[i]! * 255) / 179));
+        m.putImageData(p, 0, 0);
+        ctx.drawImage(coverage, 0, 0);
+      } finally {
+        coverage.width = coverage.height = 0;
+      }
+    } else ctx.drawImage(mask, 0, 0);
     return await createImageBitmap(c);
   } finally {
     c.width = c.height = 0;
@@ -155,7 +178,7 @@ export async function preparePlaneswalkerMaterials(
             ba,
           ]),
           bytes: bg.width * bg.height * 4,
-          build: () => background(source, bg, ba),
+          build: () => background(source, bg, ba, palette === 'A'),
         },
         {
           key: JSON.stringify([

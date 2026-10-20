@@ -5,7 +5,7 @@ import sys,json,hashlib,ast
 from pathlib import Path
 import numpy as np
 from PIL import Image,ImageDraw
-from scipy.ndimage import gaussian_filter,binary_erosion,map_coordinates
+from scipy.ndimage import gaussian_filter,binary_erosion,binary_dilation,grey_closing,map_coordinates
 from scipy.optimize import least_squares
 from model import read,canonical,peak,sample,png
 
@@ -31,20 +31,23 @@ def main():
  records=json.loads((root/'inputs.json').read_text())['records'];receipt=json.loads((root/'baseline/receipt.json').read_text());included={r['id'] for r in receipt['records']}
  for f,h in receipt['rasters'].items():assert hashlib.sha256((root/'baseline'/f).read_bytes()).hexdigest()==h,f
  rng=np.random.default_rng(6301);data=[];registrations=[]
+ frozen={r['id']:r for r in json.loads((out/'report.json').read_text())['normalization']} if '--reuse-registration' in sys.argv else {}
  for r in records:
   if r['id'] not in included:continue
-  rid=r['id'];ref=read(root/'scans'/f'{rid}.png');base=read(root/'baseline'/f'{rid}-full.png');src=read(root/'source'/f'{rid}-full.png');p=pose(ref,base)
+  rid=r['id'];ref=read(root/'scans'/f'{rid}.png');base=read(root/'baseline'/f'{rid}-full.png');src=read(root/'source'/f'{rid}-full.png');p={k:v for k,v in frozen[rid].items() if k not in ['id','name','palette','family']} if rid in frozen else pose(ref,base)
   registrations.append(dict(id=rid,name=r['name'],palette=r['palette'],family=r['family'],**p));print('pose',r['palette'],r['family'],r['name'],p['accepted'],round(p.get('validationRms',999),3),flush=True)
   if not p['accepted']:continue
   yy,xx=np.mgrid[:ref.shape[0],:ref.shape[1]];sx=(xx+.5)*488/ref.shape[1]-.5;sy=(yy+.5)*680/ref.shape[0]-.5;m=np.asarray(p['matrix']);x=m[0,0]*sx+m[0,1]*sy+m[0,2];y=m[1,0]*sx+m[1,1]*sy+m[1,2];bx,by=(x+.5)*1.5-.5,(y+.5)*1.5-.5
   target=gaussian_filter(ref[...,:3],(.8,.8,0));b=sample(base,bx,by)[...,:3];s=sample(src,bx,by)[...,:3]
-  black=read(root/'baseline'/f'{rid}-bgBlack.png')[...,:3];white=read(root/'baseline'/f'{rid}-bgWhite.png')[...,:3];w=sample(np.clip((white-black).mean(-1),0,1)[...,None],bx,by)[...,0]
+  control='source' if r['palette']=='A' else 'baseline';black=read(root/control/f'{rid}-bgBlack.png')[...,:3];white=read(root/control/f'{rid}-bgWhite.png')[...,:3];w=sample(np.clip((white-black).mean(-1),0,1)[...,None],bx,by)[...,0]
   bgmask=(w>.60)&(y>80)&(y<610)&~((y>320)&(y<436))&(x>15)&(x<474)&(ref[...,:3].max(-1)>.09);bgmask=binary_erosion(bgmask,iterations=1)
   # Type paper: horizontal unprinted strips inside the complete CC contour.
   # Exclude the printed text/symbol band, curved ends, and dark scan ink.
   top=(1037 if r['family']=='tall' else 1175)/2100*680
   typemask=(x>65)&(x<395)&(((y>top+8)&(y<top+11))|((y>top+29)&(y<top+32)))
   typemask&=(target.max(-1)-target.min(-1)<.45)&(target.mean(-1)>.23)
+  tg=target.mean(-1);sg=s.mean(-1);ink=(grey_closing(tg,size=(9,9))-tg>.055)|(grey_closing(sg,size=(9,9))-sg>.055)
+  typemask&=~binary_dilation(ink,iterations=2)
   # Save a native-coordinate aligned scan only for review. Fitting never repeatedly warps it.
   inv=np.linalg.inv(m);ny,nx=np.mgrid[:1020,:732];cx=(nx+.5)/1.5-.5;cy=(ny+.5)/1.5-.5;rx=inv[0,0]*cx+inv[0,1]*cy+inv[0,2];ry=inv[1,0]*cx+inv[1,1]*cy+inv[1,2]
   aligned=sample(ref,(rx+.5)*ref.shape[1]/488-.5,(ry+.5)*ref.shape[0]/680-.5);png(out/f'{rid}-aligned.png',aligned)
@@ -61,7 +64,13 @@ def main():
   for kind in ['background','type']:
    rows=[r for r in data if r['row']['palette']==palette];train=[r for r in rows if r['row']['cohort']=='calibration'];assert len(train)>=3,(palette,kind)
    def residual(a):return np.concatenate([((adjust(r[kind]['hsv'],a)-r[kind]['target'])*r[kind]['weight']).ravel()/np.sqrt(len(r[kind]['source'])) for r in train])
-   fit=least_squares(residual,[0,.85,.85],bounds=([-30,.2,.45],[30,1.6,1.4]),loss='soft_l1',f_scale=.045/np.sqrt(5000),max_nfev=60,diff_step=1e-4)
+   bounds=([-30,.2,.45],[30,1.6,1.5]) if kind=='background' else ([-25,.2,.75],[25,1.6,1.15])
+   fits=[least_squares(residual,seed,bounds=bounds,loss='soft_l1',f_scale=.045/np.sqrt(5000),max_nfev=55,diff_step=1e-4) for seed in [[0,1,1],[0,.8,.9]]]
+   # Pick by equal-card absolute channel error, including the identity candidate.
+   candidates=[fit.x for fit in fits]+[np.array([0.,1.,1.])]
+   score=lambda a:np.mean([abs((adjust(r[kind]['hsv'],a)-r[kind]['target'])*r[kind]['weight']).mean() for r in train])
+   best=min(candidates,key=score)
+   fit=type('Fit',(),{'x':best})()
    values=[]
    for r in rows:
     q=r[kind];values.append(dict(id=r['row']['id'],name=r['row']['name'],family=r['row']['family'],cohort=r['row']['cohort'],pixels=q['count'],baseline=float(abs(q['base']-q['rawTarget']).mean()*255),source=float(abs((q['source']-q['target'])*q['weight']).mean()*255),corrected=float(abs((adjust(q['hsv'],fit.x)-q['target'])*q['weight']).mean()*255)))

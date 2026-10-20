@@ -81,6 +81,34 @@ const session = await openBrowser(
         name: 'walker-control-type',
         enforce: 'pre',
         transform(code, id) {
+          if (id.endsWith('/presentation/planeswalker-material.ts')) {
+            const ast = ts.createSourceFile(id, code, ts.ScriptTarget.Latest, true);
+            const fn = ast.statements.find(
+              (n) => ts.isFunctionDeclaration(n) && n.name?.text === 'background',
+            );
+            const ret = fn.body.statements
+              .find(ts.isTryStatement)
+              .tryBlock.statements.find(ts.isReturnStatement);
+            assert(ret);
+            const at = ret.getStart(ast);
+            return (
+              code.slice(0, at) +
+              `
+          const mode = (globalThis as any).__walkerBgMode;
+          if (mode === 'bgBlack' || mode === 'bgWhite' || mode === 'bgUV') {
+            const p=ctx.getImageData(0,0,c.width,c.height);
+            for(let y=0;y<c.height;y++) for(let x=0;x<c.width;x++) {
+              const i=(y*c.width+x)*4;
+              p.data[i]=mode==='bgWhite'?255:mode==='bgUV'?Math.round(255*(x+.5)/c.width):0;
+              p.data[i+1]=mode==='bgWhite'?255:mode==='bgUV'?Math.round(255*(y+.5)/c.height):0;
+              p.data[i+2]=mode==='bgWhite'?255:0;
+            }
+            ctx.putImageData(p,0,0);
+          }
+          ` +
+              code.slice(at)
+            );
+          }
           if (!id.endsWith('/presentation/planeswalker-type.ts')) return;
           const ast = ts.createSourceFile(id, code, ts.ScriptTarget.Latest, true);
           const fn = ast.statements.find(
@@ -123,6 +151,13 @@ try {
         const bgUrl = profileAssets(resolveCardProfile(face), faceFrame(face)).background;
         const paint = async (mode) => {
           window.__walkerOmitType = mode !== 'full';
+          const previousBgMode = window.__walkerBgMode;
+          window.__walkerBgMode = mode;
+          const { planeswalkerBitmapCache } = await import(
+            '/games/magic/src/presentation/material-bitmap-cache.ts'
+          );
+          if (mode.startsWith('bg') || previousBgMode?.startsWith('bg'))
+            planeswalkerBitmapCache.clear();
           const im = await composeCardTexture(
             { face, printingId: null, printedImage: null },
             'inspect',
@@ -184,7 +219,7 @@ try {
             result[mode] = await paint(mode);
         return result;
       },
-      { face: e.face, baseline: run === 'baseline' },
+      { face: e.face, baseline: run === 'baseline' || (run === 'source' && !e.card.colors.length) },
     );
     for (const [mode, url] of Object.entries(variants)) {
       const bytes = Buffer.from(url.split(',')[1], 'base64'),

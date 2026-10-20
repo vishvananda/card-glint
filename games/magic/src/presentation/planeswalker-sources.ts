@@ -9,26 +9,26 @@ export const WALKER_MATERIAL_REVISION = 'conjurer-planeswalker-v1';
 
 /** Shared source-material correction; exact printing profiles remain separate. */
 export const WALKER_BACKGROUND_HSB: Readonly<Record<WalkerPalette, HsbAdjustment>> = {
-  W: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  U: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  B: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  R: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  G: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  M: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  A: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
+  W: { hueDegrees: -19.0561061, saturationScale: 1.0414075, brightnessScale: 0.967493 },
+  U: { hueDegrees: 10.198972, saturationScale: 0.7186607, brightnessScale: 0.8360822 },
+  B: { hueDegrees: 5.4208506, saturationScale: 0.7598563, brightnessScale: 0.8801518 },
+  R: { hueDegrees: -3.269066, saturationScale: 1.2589451, brightnessScale: 1.0859474 },
+  G: { hueDegrees: 6.636047, saturationScale: 0.8931966, brightnessScale: 0.8272016 },
+  M: { hueDegrees: -3.6353884, saturationScale: 0.9038432, brightnessScale: 0.9853541 },
+  A: { hueDegrees: -0.0941491, saturationScale: 1.6, brightnessScale: 1.1230379 },
 };
 export const WALKER_TYPE_HSB: Readonly<Record<WalkerPalette, HsbAdjustment>> = {
-  W: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  U: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  B: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  R: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  G: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  M: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
-  A: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
+  W: { hueDegrees: 14.6450571, saturationScale: 0.2868237, brightnessScale: 0.9642352 },
+  U: { hueDegrees: 7.5644988, saturationScale: 0.9820435, brightnessScale: 0.9860931 },
+  B: { hueDegrees: -17.4075631, saturationScale: 1.2255249, brightnessScale: 1.0776789 },
+  R: { hueDegrees: 0.9753593, saturationScale: 0.9516829, brightnessScale: 0.9921301 },
+  G: { hueDegrees: -25.0, saturationScale: 0.3487185, brightnessScale: 0.9982582 },
+  M: { hueDegrees: 0.5139304, saturationScale: 1.1071443, brightnessScale: 1.0444201 },
+  A: { hueDegrees: 24.9999991, saturationScale: 0.2596335, brightnessScale: 0.8875961 },
 };
 export const WALKER_TYPE_REGISTRATION = {
-  regular: { dx: 0, dy: 0, scaleX: 1, scaleY: 1 },
-  tall: { dx: 0, dy: 0, scaleX: 1, scaleY: 1 },
+  regular: { dx: 0.2, dy: 0.15, scaleX: 0.9997696, scaleY: 0.9887927 },
+  tall: { dx: 0.5, dy: -1.3, scaleX: 0.9990783, scaleY: 0.990038 },
 } as const;
 
 export function walkerPalette(material: BoxAssetKey): WalkerPalette {
