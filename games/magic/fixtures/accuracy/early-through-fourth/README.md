@@ -497,3 +497,26 @@ then `early-land-color-fit.mjs AUDITS BASIC_GEOMETRY OUTPUT`. Replay each emitte
 definition with `early-frame-trial-replay.mjs`, and verify the fifteen results
 with `early-land-color-verify.mjs NATIVE BASIC_GEOMETRY COLOR_DIRECTORY OUTPUT`.
 Use the frozen renderer revision recorded in the receipts for the replays.
+
+## Unlimited heading and credit probes
+
+`early-heading-study.mjs NATIVE_CAPTURE OUTPUT [SHARED_DEFINITION]` checks thirty
+ordinary cards and all twenty-five lands. It converts native reference PNGs to
+488×680 before the text objective and rejects a dimension mismatch. Native
+current face hashes must match exactly; command replay error is bounded by one
+gray level. Title windows omit mana costs and type windows omit the art border.
+The source-transform receipts retain these measurement-only crop changes.
+
+The first run probes individual geometry to diagnose shared bounds. A supplied
+definition evaluates one common grid per role; `early-heading-select.mjs MATRIX
+PROBES OUTPUT` selects using calibration rows only. Validation is reused
+development evidence. A local neighboring-value check retains the selected type
+and artist geometry and slightly narrows the name. The 23 development validation
+cards improve from 62.9→68.0/100 for names, 61.6→65.5 for types and 62.6→64.1 for
+credits, against the same fixed-gray control. All individual residuals remain.
+
+Gray 130 is a measurement control, **not** a proposed ink color. Geometry uses
+pixel offsets, font-size deltas and horizontal-scale percentage deltas. These
+regional command scores do not certify original ink/shadows, body text or an
+entire set. Native profile replay after material integration and full-set checks
+are still required; none of the individual probes become printing overrides.

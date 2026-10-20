@@ -174,8 +174,8 @@
     },
     "2ed-material-proposal": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-material-proposal.json",
-      "sha256": "a036030a02de5df8d9c1e2f054bc72817166f0595877d49045b8c64b945731f6",
-      "contentSha256": "a036030a02de5df8d9c1e2f054bc72817166f0595877d49045b8c64b945731f6"
+      "sha256": "b6d39101e9de2d12e5298ebac213fe2a9fd3af2488858225634e42b07c7620a7",
+      "contentSha256": "b6d39101e9de2d12e5298ebac213fe2a9fd3af2488858225634e42b07c7620a7"
     },
     "2ed-basic-land-geometry": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-geometry.json.gz",
@@ -261,6 +261,36 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-heading-probes.json.gz",
       "sha256": "1c1fbec57d4f19a30757afe30fe0d8e5cfd54b2c9a9935f45cb9eaa80d7b0c8c",
       "contentSha256": "518e5ded9deb654a1614b413d1ef0e323b49c875c2925398d3e068da8479ef56"
+    },
+    "2ed-heading-shared-definition": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-heading-shared-definition.json.gz",
+      "sha256": "884d7e151ad42e5a2a121715503abf464e0e375ed23daf6330630680577904b2",
+      "contentSha256": "dc06c5341201482d1a00b2a29608c3cefc22b22d94fc3fcad4e3b55538dad756"
+    },
+    "2ed-heading-shared": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-heading-shared.json.gz",
+      "sha256": "37d5571abfca8cdefbfb09ce8e98f09e17d2c3ef0e2492aa79e2de973d5609c1",
+      "contentSha256": "9a25630e8b5664516d4030fb8e262c4bd3edfe3c380951963f4d1724fc45b199"
+    },
+    "2ed-heading-selection": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-heading-selection.json.gz",
+      "sha256": "4453379376eba1c8b094a844c9e9d5c96620806a1cf15d26db342f93deeb35f2",
+      "contentSha256": "6550e692d55fa51056e115c4661b1128ef9ddb9303893ffbcdc6866182d03791"
+    },
+    "2ed-heading-local-definition": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-heading-local-definition.json.gz",
+      "sha256": "7cce44c321df5e4207b3990d26bef00ffad18692496d908c85fd19f90a6bee76",
+      "contentSha256": "425dc521be66e42381969a2973ed41487e46d02d88a68ededfff3e0c13c69cdc"
+    },
+    "2ed-heading-local": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-heading-local.json.gz",
+      "sha256": "ddd152fff5fc5120a6d7814231488cd80726ed175ff6245e8ce7a7c6ca1b4642",
+      "contentSha256": "8a88168f8a2fc00777e77c6ff3407e93f079f221bc8e4e570bf36a29417266e8"
+    },
+    "2ed-heading-local-selection": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-heading-local-selection.json.gz",
+      "sha256": "36bee22316e1fcc50f301243cb3318fdcb7bf18698f8dc48fd499f43404bf3cd",
+      "contentSha256": "91300c980ec7bcdab828ae94461c27fbcaa1ae7534ef957a4f2979f8aeb2227b"
     }
   },
   "native": {
@@ -854,6 +884,177 @@
       }
     },
     "scope": "Original words, independent fixed scan poses, exact full native baseline hashes. Reference dimensions are explicitly canonicalized and checked; title crops exclude mana and type crops exclude the art border. Filled gray is fixed at 130 during geometry probes. Individual fits are diagnostic and are not runtime overrides. Shared header/credit profiles, ink tone, body text, mana and whole-set validation remain open.",
+    "wholeSetCertification": false
+  },
+  "typographyShared": {
+    "status": "shared-command-candidates-needs-native-profile-replay",
+    "printings": 55,
+    "source": "2ed-heading-local-selection.json.gz",
+    "units": {
+      "dx": "canonical pixels",
+      "dy": "canonical pixels",
+      "size": "font size delta in canonical pixels",
+      "width": "percentage delta in horizontal scale; 2 means a factor of 1.02"
+    },
+    "roles": {
+      "title": {
+        "geometry": {
+          "dx": -1,
+          "dy": 2,
+          "size": -0.5,
+          "width": -1
+        },
+        "groups": {
+          "calibration": {
+            "count": 32,
+            "beforeMean100": 65.17339210063146,
+            "afterMean100": 69.2224024832782,
+            "improved": 28,
+            "worstRegression100": 2.849463147431064
+          },
+          "validation": {
+            "count": 23,
+            "beforeMean100": 62.914070754051785,
+            "afterMean100": 67.95998422937505,
+            "improved": 19,
+            "worstRegression100": 3.9457638327780984
+          },
+          "all": {
+            "count": 55,
+            "beforeMean100": 64.2285849920618,
+            "afterMean100": 68.69448212255506,
+            "improved": 47,
+            "worstRegression100": 3.9457638327780984
+          },
+          "ordinary": {
+            "count": 30,
+            "beforeMean100": 63.189329424617945,
+            "afterMean100": 69.77419253436395,
+            "improved": 27,
+            "worstRegression100": 3.9457638327780984
+          },
+          "land": {
+            "count": 25,
+            "beforeMean100": 65.47569167299437,
+            "afterMean100": 67.3988296283844,
+            "improved": 20,
+            "worstRegression100": 2.708646614734489
+          }
+        },
+        "selection": {
+          "method": "calibration mean minus one quarter of the worst calibration loss against fixed-gray control",
+          "usedValidation": false,
+          "validationKind": "reused-development",
+          "baselineObjective": 0.6517339210063147,
+          "selectedObjective": 0.6851003669642044
+        }
+      },
+      "type": {
+        "geometry": {
+          "dx": -3,
+          "dy": 0,
+          "size": 0.5,
+          "width": 2
+        },
+        "groups": {
+          "calibration": {
+            "count": 32,
+            "beforeMean100": 61.98692657439058,
+            "afterMean100": 65.2751490051229,
+            "improved": 30,
+            "worstRegression100": 1.0380098069034949
+          },
+          "validation": {
+            "count": 23,
+            "beforeMean100": 61.623389061353166,
+            "afterMean100": 65.48111352484348,
+            "improved": 21,
+            "worstRegression100": 0.6220372962980947
+          },
+          "all": {
+            "count": 55,
+            "beforeMean100": 61.8349017962113,
+            "afterMean100": 65.36127962246059,
+            "improved": 51,
+            "worstRegression100": 1.0380098069034949
+          },
+          "ordinary": {
+            "count": 30,
+            "beforeMean100": 57.302977510911866,
+            "afterMean100": 62.628232424404985,
+            "improved": 30,
+            "worstRegression100": 0
+          },
+          "land": {
+            "count": 25,
+            "beforeMean100": 67.27321093857064,
+            "afterMean100": 68.6409362601273,
+            "improved": 21,
+            "worstRegression100": 1.0380098069034949
+          }
+        },
+        "selection": {
+          "method": "calibration mean minus one quarter of the worst calibration loss against fixed-gray control",
+          "usedValidation": false,
+          "validationKind": "reused-development",
+          "baselineObjective": 0.6198692657439058,
+          "selectedObjective": 0.6501564655339702
+        }
+      },
+      "artist": {
+        "geometry": {
+          "dx": 0.5,
+          "dy": 0.5,
+          "size": 0,
+          "width": 0
+        },
+        "groups": {
+          "calibration": {
+            "count": 32,
+            "beforeMean100": 62.89403888668337,
+            "afterMean100": 64.99666136128872,
+            "improved": 25,
+            "worstRegression100": 3.087631798823587
+          },
+          "validation": {
+            "count": 23,
+            "beforeMean100": 62.64577679342709,
+            "afterMean100": 64.10260881707984,
+            "improved": 16,
+            "worstRegression100": 4.395337175061254
+          },
+          "all": {
+            "count": 55,
+            "beforeMean100": 62.790220193139824,
+            "afterMean100": 64.62278484280134,
+            "improved": 41,
+            "worstRegression100": 4.395337175061254
+          },
+          "ordinary": {
+            "count": 30,
+            "beforeMean100": 64.96579416934732,
+            "afterMean100": 67.17783448051887,
+            "improved": 25,
+            "worstRegression100": 4.063046257695602
+          },
+          "land": {
+            "count": 25,
+            "beforeMean100": 60.17953142169081,
+            "afterMean100": 61.556725277540316,
+            "improved": 16,
+            "worstRegression100": 4.395337175061254
+          }
+        },
+        "selection": {
+          "method": "calibration mean minus one quarter of the worst calibration loss against fixed-gray control",
+          "usedValidation": false,
+          "validationKind": "reused-development",
+          "baselineObjective": 0.6289403888668337,
+          "selectedObjective": 0.6422475341158281
+        }
+      }
+    },
+    "scope": "One heading, type and artist geometry candidate per set, selected on calibration names only. Validation names are reused development observations. Original wording, independent scan poses, canonical 488x680 references, exact current full-card PNG hashes and zero-command replay parity are checked for all fifty-five inputs. Gray 130 is a fixed geometry-measurement control; it is not an adopted ink color. No per-printing offsets are proposed. Native profile replay after frame/color integration, actual ink tone/shadows, body text, mana and full-set verification remain open.",
     "wholeSetCertification": false
   }
 }

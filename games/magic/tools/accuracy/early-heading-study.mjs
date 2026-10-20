@@ -6,8 +6,10 @@ import { normalize } from './pixels-pure.mjs';
 import { readFile } from 'node:fs/promises';
 import { openBrowser } from './browser.mjs';
 import { hash, sourceHash, root, writeJson } from './common.mjs';
-const [nativeDirectory, output] = process.argv.slice(2);
-assert(output, 'Usage: early-heading-study.mjs NATIVE_CAPTURE OUTPUT');
+const [nativeDirectory, output, sharedDefinitionFile] = process.argv.slice(2);
+const sharedBytes = sharedDefinitionFile ? await readFile(sharedDefinitionFile) : null;
+const sharedDefinition = sharedBytes ? JSON.parse(sharedBytes) : null;
+assert(output, 'Usage: early-heading-study.mjs NATIVE_CAPTURE OUTPUT [SHARED_DEFINITION]');
 const captureBytes = await readFile(path.join(nativeDirectory, 'capture.json'));
 const inputsBytes = await readFile(path.join(nativeDirectory, 'inputs.json'));
 const capture = JSON.parse(captureBytes),
@@ -132,47 +134,64 @@ try {
       'Native heading control changed: ' + entry.name,
     );
     delete prepared.png;
-    const fits = await session.page.evaluate(() => {
-      const api = globalThis.__headingStudy;
-      const roles = Object.keys(globalThis.__abuState.prepared);
-      const fit = (role, family) => {
-        const base = { gray: 130, ...(family ? { family } : {}) };
-        let best = { ...base },
-          value = api.measure(role, best),
-          trials = 1;
-        const baseline = api.measure(role, {}),
-          fixedGray = value;
-        const dimensions =
-          role === 'type'
-            ? { dx: [-25, 3, 1], dy: [-5, 5, 0.5], size: [-3, 3, 0.5], width: [-12, 16, 1] }
-            : role === 'artist'
-              ? { dx: [-15, 5, 1], dy: [-8, 5, 0.5], size: [-4, 3, 0.5], width: [-10, 10, 1] }
-              : { dx: [-8, 8, 0.5], dy: [-5, 5, 0.5], size: [-3, 2, 0.5], width: [-12, 16, 1] };
-        for (let pass = 0; pass < 2; pass++)
-          for (const [key, [lo, hi, step]] of Object.entries(dimensions)) {
-            let winner = best;
-            for (let v = lo; v <= hi + 1e-8; v += step) {
-              const candidate = { ...best, [key]: v },
-                s = api.measure(role, candidate);
-              trials++;
-              if (s > value + 1e-9) {
-                value = s;
-                winner = candidate;
+    const fits = sharedDefinition
+      ? await session.page.evaluate((definition) => {
+          const api = globalThis.__headingStudy;
+          return Object.fromEntries(
+            Object.entries(definition.candidates).map(([role, candidates]) => [
+              role,
+              {
+                baseline: api.measure(role, {}),
+                fixedGray: api.measure(role, { gray: 130 }),
+                candidates: candidates.map((candidate) => ({
+                  ...candidate,
+                  score: api.measure(role, candidate.adjustment),
+                })),
+              },
+            ]),
+          );
+        }, sharedDefinition)
+      : await session.page.evaluate(() => {
+          const api = globalThis.__headingStudy;
+          const roles = Object.keys(globalThis.__abuState.prepared);
+          const fit = (role, family) => {
+            const base = { gray: 130, ...(family ? { family } : {}) };
+            let best = { ...base },
+              value = api.measure(role, best),
+              trials = 1;
+            const baseline = api.measure(role, {}),
+              fixedGray = value;
+            const dimensions =
+              role === 'type'
+                ? { dx: [-25, 3, 1], dy: [-5, 5, 0.5], size: [-3, 3, 0.5], width: [-12, 16, 1] }
+                : role === 'artist'
+                  ? { dx: [-15, 5, 1], dy: [-8, 5, 0.5], size: [-4, 3, 0.5], width: [-10, 10, 1] }
+                  : { dx: [-8, 8, 0.5], dy: [-5, 5, 0.5], size: [-3, 2, 0.5], width: [-12, 16, 1] };
+            for (let pass = 0; pass < 2; pass++)
+              for (const [key, [lo, hi, step]] of Object.entries(dimensions)) {
+                let winner = best;
+                for (let v = lo; v <= hi + 1e-8; v += step) {
+                  const candidate = { ...best, [key]: v },
+                    s = api.measure(role, candidate);
+                  trials++;
+                  if (s > value + 1e-9) {
+                    value = s;
+                    winner = candidate;
+                  }
+                }
+                best = winner;
               }
-            }
-            best = winner;
-          }
-        return { baseline, fixedGray, value, adjustment: best, trials };
-      };
-      return Object.fromEntries(
-        roles.map((role) => [
-          role,
-          role === 'artist'
-            ? { MPlantin: fit(role, 'MPlantin'), Goudy: fit(role, 'Goudy') }
-            : fit(role),
-        ]),
-      );
-    });
+            return { baseline, fixedGray, value, adjustment: best, trials };
+          };
+          return Object.fromEntries(
+            roles.map((role) => [
+              role,
+              role === 'artist'
+                ? { MPlantin: fit(role, 'MPlantin'), Goudy: fit(role, 'Goudy') }
+                : fit(role),
+            ]),
+          );
+        });
     await session.page.evaluate(() => globalThis.__headingStudy.finish());
     rows.push({
       id: entry.id,
@@ -192,18 +211,26 @@ try {
       schema: 1,
       status:
         rows.length === entries.length
-          ? 'diagnostic-heading-probes-complete'
-          : 'diagnostic-heading-probes-in-progress',
-      scope:
-        'Native original-printing commands, frozen independent scan poses and exact native full-card baseline hashes. Three calibration and two validation names per ordinary material, plus all twenty-five lands. Geometry probes keep filled gray ink fixed at 130; artist compares MPlantin and Goudy. Title windows exclude the fixed mana-cost area; type windows exclude artwork/frame borders. Per-card probes are diagnostics only and cannot become printing overrides. Shared defaults require calibration-only selection, held-out checking and native profile replay after frame/color integration. Gray, shadow and body-text calibration remain separate.',
+          ? sharedDefinition
+            ? 'shared-heading-matrix-complete'
+            : 'diagnostic-heading-probes-complete'
+          : 'heading-study-in-progress',
+      scope: sharedDefinition
+        ? 'Native original-printing commands with one fixed shared candidate grid per role. All native baselines, canonical reference dimensions, independent scan poses and zero-command replay checks remain enforced. Filled gray ink is fixed at 130; no hollow font or per-printing defaults. Selection must use calibration rows only; named validation rows are reused development evidence. This matrix is not runtime profile adoption, a body-text fit or whole-set certification.'
+        : 'Native original-printing commands, frozen independent scan poses and exact native full-card baseline hashes. Three calibration and two validation names per ordinary material, plus all twenty-five lands. Geometry probes keep filled gray ink fixed at 130; artist compares MPlantin and Goudy. Title windows exclude the fixed mana-cost area; type windows exclude artwork/frame borders. Per-card probes are diagnostics only and cannot become printing overrides. Shared defaults require calibration-only selection, held-out checking and native profile replay after frame/color integration. Gray, shadow and body-text calibration remain separate.',
       rendererHash,
+      ...(sharedBytes ? { sharedDefinitionHash: hash(sharedBytes), sharedDefinition } : {}),
       nativeCaptureHash: hash(captureBytes),
       nativeInputsHash: hash(inputsBytes),
       toolHash: hash(await readFile(new URL(import.meta.url))),
       dependencies: await Promise.all(
-        ['abu-type-browser.mjs', 'abu-type-objective.mjs', 'browser.mjs', 'pixels-pure.mjs'].map(
-          async (f) => [f, hash(await readFile(new URL(f, import.meta.url)))],
-        ),
+        [
+          'abu-type-browser.mjs',
+          'abu-type-objective.mjs',
+          'browser.mjs',
+          'pixels-pure.mjs',
+          'edges.mjs',
+        ].map(async (f) => [f, hash(await readFile(new URL(f, import.meta.url)))]),
       ),
       browser: session.browser.version(),
       transformed,
