@@ -1,0 +1,838 @@
+{
+  "schema": 1,
+  "asOf": "2026-10-20",
+  "baselineVersion": "0.6.5",
+  "baselineCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040",
+  "scope": "Every inventoried major set released through Fourth Edition, inclusive. At least 50 distinct ordinary English paper cards; large Collectors and Summer editions remain in scope. Printing variants count separately in native coverage. No experimental reconstructed frames are promoted.",
+  "tasks": {
+    "references": "Reference quality and original printing wording",
+    "normalization": "Independent frame translation, scale, rotation/skew validation",
+    "frameGeometry": "Frame source, stock/corners, art aperture, boxes and crown geometry",
+    "frameColor": "Frame pigment and texture contrast",
+    "paperColor": "Text-box pigment and gradients",
+    "blackLevels": "Interior ink and outer stock, measured separately",
+    "manaGeometry": "Cost-disc placement, spacing, glyph and generic-number geometry",
+    "manaColor": "Mana-disc and glyph colors, outline/shadow treatment",
+    "setSymbol": "Expansion-symbol contour, rarity fills/rims, size and placement",
+    "headings": "Name and type fonts, weight, spacing, position and shadows",
+    "rules": "Rules size, margins, alignment, line spacing and inline symbols",
+    "flavor": "Flavor spacing, divider and attribution alignment",
+    "artist": "Illustrator wording, font, size, alignment and shadow",
+    "footer": "Copyright, trademarks, collector number and lower information",
+    "stats": "Power/toughness or loyalty geometry, typography and shadows",
+    "specialComponents": "Basic-land glyph, stamp and layout-specific components",
+    "fullCard": "Every-printing native replay, regional/full scores and outlier review",
+    "release": "Renderer checks, published revision and matching score revision"
+  },
+  "order": [
+    "references",
+    "normalization",
+    "frameGeometry",
+    "frameColor",
+    "paperColor",
+    "blackLevels",
+    "manaGeometry",
+    "manaColor",
+    "setSymbol",
+    "headings",
+    "rules",
+    "flavor",
+    "artist",
+    "footer",
+    "stats",
+    "specialComponents",
+    "fullCard",
+    "release"
+  ],
+  "publication": "Regional fits are evidence, not a whole-set completion. Require matching renderer/source, scans, original wording, metric graph and raster environment for stored scores. Preserve rejected alignments and known asset limitations.",
+  "sets": [
+    {
+      "set": "lea",
+      "name": "Limited Edition Alpha",
+      "releasedAt": "1993-08-05",
+      "printings": 295,
+      "groups": 26,
+      "complete": false,
+      "openTasks": {
+        "frameGeometry": {
+          "needs-audit": 9
+        },
+        "headings": {
+          "needs-audit": 26
+        },
+        "fullCard": {
+          "needs-audit": 26
+        },
+        "release": {
+          "needs-audit": 26
+        }
+      },
+      "distinctOrdinary": 290,
+      "auditState": "native-replay-in-progress",
+      "next": "Confirm independent dual-land outline palettes and remeasure published Alpha headings; retain every rejected normalization."
+    },
+    {
+      "set": "leb",
+      "name": "Limited Edition Beta",
+      "releasedAt": "1993-10-04",
+      "printings": 302,
+      "groups": 27,
+      "complete": false,
+      "openTasks": {
+        "frameGeometry": {
+          "needs-audit": 10
+        }
+      },
+      "distinctOrdinary": 292,
+      "auditState": "native-replay-in-progress",
+      "next": "Confirm independent dual-land outline palettes and remeasure published Alpha headings; retain every rejected normalization."
+    },
+    {
+      "set": "2ed",
+      "name": "Unlimited Edition",
+      "releasedAt": "1993-12-01",
+      "printings": 302,
+      "groups": 27,
+      "complete": false,
+      "openTasks": {
+        "references": {
+          "needs-audit": 27
+        },
+        "normalization": {
+          "needs-audit": 27
+        },
+        "frameGeometry": {
+          "needs-audit": 27
+        },
+        "frameColor": {
+          "pending": 27
+        },
+        "paperColor": {
+          "pending": 27
+        },
+        "blackLevels": {
+          "needs-audit": 27
+        },
+        "manaGeometry": {
+          "needs-audit": 12
+        },
+        "manaColor": {
+          "needs-audit": 12
+        },
+        "headings": {
+          "needs-audit": 27
+        },
+        "rules": {
+          "needs-audit": 27
+        },
+        "flavor": {
+          "needs-audit": 8
+        },
+        "artist": {
+          "needs-audit": 27
+        },
+        "footer": {
+          "needs-audit": 27
+        },
+        "stats": {
+          "needs-audit": 6
+        },
+        "specialComponents": {
+          "needs-audit": 5
+        },
+        "fullCard": {
+          "needs-audit": 27
+        },
+        "release": {
+          "pending": 27
+        }
+      },
+      "distinctOrdinary": 292,
+      "auditState": "queued",
+      "next": "Verify ordinary reference inventory and original wording, then validate a scan-only normalization template before fitting renderer values."
+    },
+    {
+      "set": "ced",
+      "name": "Collectors' Edition",
+      "releasedAt": "1993-12-10",
+      "printings": 302,
+      "groups": 27,
+      "complete": false,
+      "openTasks": {
+        "references": {
+          "pending": 27
+        },
+        "normalization": {
+          "pending": 27
+        },
+        "frameGeometry": {
+          "pending": 27
+        },
+        "frameColor": {
+          "pending": 27
+        },
+        "paperColor": {
+          "pending": 27
+        },
+        "blackLevels": {
+          "pending": 27
+        },
+        "manaGeometry": {
+          "pending": 27
+        },
+        "manaColor": {
+          "pending": 27
+        },
+        "setSymbol": {
+          "pending": 27
+        },
+        "headings": {
+          "pending": 27
+        },
+        "rules": {
+          "pending": 27
+        },
+        "flavor": {
+          "pending": 27
+        },
+        "artist": {
+          "pending": 27
+        },
+        "footer": {
+          "pending": 27
+        },
+        "stats": {
+          "pending": 27
+        },
+        "specialComponents": {
+          "pending": 27
+        },
+        "fullCard": {
+          "pending": 27
+        },
+        "release": {
+          "pending": 27
+        }
+      },
+      "distinctOrdinary": 292,
+      "auditState": "queued",
+      "next": "Verify ordinary reference inventory and original wording, then validate a scan-only normalization template before fitting renderer values."
+    },
+    {
+      "set": "cei",
+      "name": "Intl. Collectors' Edition",
+      "releasedAt": "1993-12-10",
+      "printings": 302,
+      "groups": 27,
+      "complete": false,
+      "openTasks": {
+        "references": {
+          "pending": 27
+        },
+        "normalization": {
+          "pending": 27
+        },
+        "frameGeometry": {
+          "pending": 27
+        },
+        "frameColor": {
+          "pending": 27
+        },
+        "paperColor": {
+          "pending": 27
+        },
+        "blackLevels": {
+          "pending": 27
+        },
+        "manaGeometry": {
+          "pending": 27
+        },
+        "manaColor": {
+          "pending": 27
+        },
+        "setSymbol": {
+          "pending": 27
+        },
+        "headings": {
+          "pending": 27
+        },
+        "rules": {
+          "pending": 27
+        },
+        "flavor": {
+          "pending": 27
+        },
+        "artist": {
+          "pending": 27
+        },
+        "footer": {
+          "pending": 27
+        },
+        "stats": {
+          "pending": 27
+        },
+        "specialComponents": {
+          "pending": 27
+        },
+        "fullCard": {
+          "pending": 27
+        },
+        "release": {
+          "pending": 27
+        }
+      },
+      "distinctOrdinary": 292,
+      "auditState": "queued",
+      "next": "Verify ordinary reference inventory and original wording, then validate a scan-only normalization template before fitting renderer values."
+    },
+    {
+      "set": "arn",
+      "name": "Arabian Nights",
+      "releasedAt": "1993-12-17",
+      "printings": 92,
+      "groups": 15,
+      "complete": false,
+      "openTasks": {
+        "references": {
+          "partial": 15
+        },
+        "normalization": {
+          "needs-audit": 14,
+          "partial": 1
+        },
+        "frameGeometry": {
+          "partial": 14,
+          "pending": 1
+        },
+        "frameColor": {
+          "stale": 10,
+          "rejected": 4,
+          "pending": 1
+        },
+        "paperColor": {
+          "stale": 12,
+          "pending": 1,
+          "rejected": 2
+        },
+        "blackLevels": {
+          "partial": 14,
+          "needs-audit": 1
+        },
+        "manaGeometry": {
+          "partial": 12
+        },
+        "manaColor": {
+          "partial": 12
+        },
+        "setSymbol": {
+          "needs-audit": 15
+        },
+        "headings": {
+          "partial": 15
+        },
+        "rules": {
+          "partial": 15
+        },
+        "flavor": {
+          "partial": 11
+        },
+        "artist": {
+          "partial": 15
+        },
+        "footer": {
+          "in-progress": 15
+        },
+        "stats": {
+          "partial": 6
+        },
+        "specialComponents": {
+          "needs-audit": 1
+        },
+        "fullCard": {
+          "partial": 15
+        },
+        "release": {
+          "pending": 15
+        }
+      },
+      "distinctOrdinary": 78,
+      "auditState": "queued",
+      "next": "Verify ordinary reference inventory and original wording, then validate a scan-only normalization template before fitting renderer values."
+    },
+    {
+      "set": "atq",
+      "name": "Antiquities",
+      "releasedAt": "1994-03-04",
+      "printings": 102,
+      "groups": 13,
+      "complete": false,
+      "openTasks": {
+        "references": {
+          "partial": 13
+        },
+        "normalization": {
+          "needs-audit": 11,
+          "partial": 2
+        },
+        "frameGeometry": {
+          "partial": 13
+        },
+        "frameColor": {
+          "rejected": 8,
+          "stale": 4,
+          "partial": 1
+        },
+        "paperColor": {
+          "stale": 11,
+          "rejected": 1,
+          "partial": 1
+        },
+        "blackLevels": {
+          "partial": 11,
+          "needs-audit": 2
+        },
+        "manaGeometry": {
+          "partial": 12
+        },
+        "manaColor": {
+          "partial": 12
+        },
+        "setSymbol": {
+          "needs-audit": 13
+        },
+        "headings": {
+          "partial": 13
+        },
+        "rules": {
+          "partial": 13
+        },
+        "flavor": {
+          "partial": 10
+        },
+        "artist": {
+          "partial": 13
+        },
+        "footer": {
+          "in-progress": 13
+        },
+        "stats": {
+          "partial": 6
+        },
+        "fullCard": {
+          "partial": 13
+        },
+        "release": {
+          "pending": 13
+        }
+      },
+      "distinctOrdinary": 85,
+      "auditState": "queued",
+      "next": "Verify ordinary reference inventory and original wording, then validate a scan-only normalization template before fitting renderer values."
+    },
+    {
+      "set": "3ed",
+      "name": "Revised Edition",
+      "releasedAt": "1994-04-11",
+      "printings": 306,
+      "groups": 27,
+      "complete": false,
+      "openTasks": {
+        "references": {
+          "needs-audit": 27
+        },
+        "normalization": {
+          "needs-audit": 27
+        },
+        "frameGeometry": {
+          "needs-audit": 27
+        },
+        "frameColor": {
+          "pending": 15,
+          "rejected": 6,
+          "needs-audit": 6
+        },
+        "paperColor": {
+          "pending": 15,
+          "needs-audit": 10,
+          "rejected": 2
+        },
+        "blackLevels": {
+          "needs-audit": 27
+        },
+        "manaGeometry": {
+          "needs-audit": 12
+        },
+        "manaColor": {
+          "needs-audit": 12
+        },
+        "headings": {
+          "needs-audit": 27
+        },
+        "rules": {
+          "needs-audit": 27
+        },
+        "flavor": {
+          "needs-audit": 10
+        },
+        "artist": {
+          "needs-audit": 27
+        },
+        "footer": {
+          "needs-audit": 27
+        },
+        "stats": {
+          "needs-audit": 6
+        },
+        "specialComponents": {
+          "needs-audit": 5
+        },
+        "fullCard": {
+          "needs-audit": 27
+        },
+        "release": {
+          "pending": 27
+        }
+      },
+      "distinctOrdinary": 296,
+      "auditState": "queued",
+      "next": "Verify ordinary reference inventory and original wording, then validate a scan-only normalization template before fitting renderer values."
+    },
+    {
+      "set": "leg",
+      "name": "Legends",
+      "releasedAt": "1994-06-01",
+      "printings": 310,
+      "groups": 29,
+      "complete": false,
+      "openTasks": {
+        "references": {
+          "needs-audit": 29
+        },
+        "normalization": {
+          "needs-audit": 29
+        },
+        "frameGeometry": {
+          "needs-audit": 29
+        },
+        "frameColor": {
+          "needs-audit": 29
+        },
+        "paperColor": {
+          "needs-audit": 29
+        },
+        "blackLevels": {
+          "needs-audit": 29
+        },
+        "manaGeometry": {
+          "needs-audit": 22
+        },
+        "manaColor": {
+          "needs-audit": 22
+        },
+        "setSymbol": {
+          "needs-audit": 29
+        },
+        "headings": {
+          "needs-audit": 29
+        },
+        "rules": {
+          "needs-audit": 29
+        },
+        "flavor": {
+          "needs-audit": 26
+        },
+        "artist": {
+          "needs-audit": 29
+        },
+        "footer": {
+          "needs-audit": 29
+        },
+        "stats": {
+          "needs-audit": 16
+        },
+        "fullCard": {
+          "needs-audit": 29
+        },
+        "release": {
+          "pending": 29
+        }
+      },
+      "distinctOrdinary": 310,
+      "auditState": "queued",
+      "next": "Verify ordinary reference inventory and original wording, then validate a scan-only normalization template before fitting renderer values."
+    },
+    {
+      "set": "sum",
+      "name": "Summer Magic / Edgar",
+      "releasedAt": "1994-06-21",
+      "printings": 306,
+      "groups": 27,
+      "complete": false,
+      "openTasks": {
+        "references": {
+          "pending": 27
+        },
+        "normalization": {
+          "pending": 27
+        },
+        "frameGeometry": {
+          "pending": 27
+        },
+        "frameColor": {
+          "pending": 27
+        },
+        "paperColor": {
+          "pending": 27
+        },
+        "blackLevels": {
+          "pending": 27
+        },
+        "manaGeometry": {
+          "pending": 27
+        },
+        "manaColor": {
+          "pending": 27
+        },
+        "setSymbol": {
+          "pending": 27
+        },
+        "headings": {
+          "pending": 27
+        },
+        "rules": {
+          "pending": 27
+        },
+        "flavor": {
+          "pending": 27
+        },
+        "artist": {
+          "pending": 27
+        },
+        "footer": {
+          "pending": 27
+        },
+        "stats": {
+          "pending": 27
+        },
+        "specialComponents": {
+          "pending": 27
+        },
+        "fullCard": {
+          "pending": 27
+        },
+        "release": {
+          "pending": 27
+        }
+      },
+      "distinctOrdinary": 296,
+      "auditState": "queued",
+      "next": "Verify ordinary reference inventory and original wording, then validate a scan-only normalization template before fitting renderer values."
+    },
+    {
+      "set": "drk",
+      "name": "The Dark",
+      "releasedAt": "1994-08-01",
+      "printings": 122,
+      "groups": 16,
+      "complete": false,
+      "openTasks": {
+        "references": {
+          "partial": 16
+        },
+        "normalization": {
+          "needs-audit": 10,
+          "partial": 6
+        },
+        "frameGeometry": {
+          "partial": 16
+        },
+        "frameColor": {
+          "stale": 9,
+          "partial": 5,
+          "rejected": 2
+        },
+        "paperColor": {
+          "stale": 9,
+          "partial": 5,
+          "rejected": 2
+        },
+        "blackLevels": {
+          "partial": 10,
+          "needs-audit": 6
+        },
+        "manaGeometry": {
+          "partial": 15
+        },
+        "manaColor": {
+          "partial": 15
+        },
+        "setSymbol": {
+          "partial": 16
+        },
+        "headings": {
+          "partial": 16
+        },
+        "rules": {
+          "partial": 16
+        },
+        "flavor": {
+          "partial": 15
+        },
+        "artist": {
+          "partial": 16
+        },
+        "footer": {
+          "in-progress": 16
+        },
+        "stats": {
+          "partial": 8
+        },
+        "fullCard": {
+          "partial": 16
+        },
+        "release": {
+          "pending": 16
+        }
+      },
+      "distinctOrdinary": 119,
+      "auditState": "queued",
+      "next": "Verify ordinary reference inventory and original wording, then validate a scan-only normalization template before fitting renderer values."
+    },
+    {
+      "set": "fem",
+      "name": "Fallen Empires",
+      "releasedAt": "1994-11-01",
+      "printings": 187,
+      "groups": 17,
+      "complete": false,
+      "openTasks": {
+        "references": {
+          "partial": 17
+        },
+        "normalization": {
+          "pending": 17
+        },
+        "frameGeometry": {
+          "partial": 17
+        },
+        "frameColor": {
+          "partial": 17
+        },
+        "paperColor": {
+          "partial": 17
+        },
+        "blackLevels": {
+          "pending": 17
+        },
+        "manaGeometry": {
+          "partial": 17
+        },
+        "manaColor": {
+          "partial": 17
+        },
+        "setSymbol": {
+          "pending": 17
+        },
+        "headings": {
+          "partial": 17
+        },
+        "rules": {
+          "pending": 17
+        },
+        "flavor": {
+          "pending": 17
+        },
+        "artist": {
+          "partial": 17
+        },
+        "footer": {
+          "partial": 17
+        },
+        "stats": {
+          "partial": 5,
+          "pending": 12
+        },
+        "specialComponents": {
+          "pending": 17
+        },
+        "fullCard": {
+          "partial": 17
+        },
+        "release": {
+          "pending": 17
+        }
+      },
+      "distinctOrdinary": 102,
+      "auditState": "queued",
+      "next": "Verify ordinary reference inventory and original wording, then validate a scan-only normalization template before fitting renderer values."
+    },
+    {
+      "set": "4ed",
+      "name": "Fourth Edition",
+      "releasedAt": "1995-04-01",
+      "printings": 378,
+      "groups": 18,
+      "complete": false,
+      "openTasks": {
+        "references": {
+          "partial": 18
+        },
+        "normalization": {
+          "pending": 18
+        },
+        "frameGeometry": {
+          "partial": 18
+        },
+        "frameColor": {
+          "partial": 18
+        },
+        "paperColor": {
+          "partial": 18
+        },
+        "blackLevels": {
+          "pending": 18
+        },
+        "manaGeometry": {
+          "partial": 18
+        },
+        "manaColor": {
+          "partial": 18
+        },
+        "setSymbol": {
+          "pending": 18
+        },
+        "headings": {
+          "partial": 18
+        },
+        "rules": {
+          "pending": 18
+        },
+        "flavor": {
+          "pending": 18
+        },
+        "artist": {
+          "partial": 18
+        },
+        "footer": {
+          "partial": 18
+        },
+        "stats": {
+          "pending": 12,
+          "partial": 6
+        },
+        "specialComponents": {
+          "pending": 18
+        },
+        "fullCard": {
+          "partial": 18
+        },
+        "release": {
+          "pending": 18
+        }
+      },
+      "distinctOrdinary": 368,
+      "auditState": "queued",
+      "next": "Verify ordinary reference inventory and original wording, then validate a scan-only normalization template before fitting renderer values."
+    }
+  ]
+}
