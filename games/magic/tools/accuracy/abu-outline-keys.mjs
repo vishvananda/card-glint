@@ -5,8 +5,12 @@ import { execFileSync } from 'node:child_process';
 import { createServer } from 'vite';
 import { readJson, writeJson, hash, sourceHash } from './common.mjs';
 import { readFile } from 'node:fs/promises';
-const [beforeRoot, afterRoot, inputsFile, output] = process.argv.slice(2);
-assert(output, 'Usage: abu-outline-keys.mjs BEFORE_ROOT AFTER_ROOT INPUTS OUT');
+const [beforeRoot, afterRoot, inputsFile, output, mode = 'outlines'] = process.argv.slice(2);
+assert(
+  output,
+  'Usage: abu-outline-keys.mjs BEFORE_ROOT AFTER_ROOT INPUTS OUT [outlines|plain-wrap]',
+);
+assert(['outlines', 'plain-wrap'].includes(mode));
 const input = await readJson(inputsFile),
   captures = [];
 for (const root of [beforeRoot, afterRoot]) {
@@ -43,12 +47,20 @@ for (const root of [beforeRoot, afterRoot]) {
 const rows = captures[0].rows.map((b, i) => {
   const a = captures[1].rows[i];
   assert.equal(a.id, b.id);
-  const expected = b.set === 'leb' && ['Tundra', 'Volcanic Island'].includes(b.name);
+  const expected =
+    (b.set === 'leb' && ['Tundra', 'Volcanic Island'].includes(b.name)) ||
+    (mode === 'plain-wrap' && b.set === 'lea' && input.entries[i].face.wordingMode !== 'oracle');
   assert.equal(a.face !== b.face, expected, 'Incorrect face-key scope: ' + b.set + ' ' + b.name);
   assert.equal(a.mask, b.mask, 'Unchanged etching mask should retain its key');
   if (expected)
     assert.deepEqual(
-      JSON.parse(a.face).filter((v) => v !== 'beta-outline-ink-v2'),
+      JSON.parse(a.face).filter(
+        (v) =>
+          ![
+            'beta-outline-ink-v2',
+            ...(mode === 'plain-wrap' ? ['alpha-plain-rules-wrap-v1'] : []),
+          ].includes(v),
+      ),
       JSON.parse(b.face),
     );
   return {
@@ -64,8 +76,11 @@ const rows = captures[0].rows.map((b, i) => {
 });
 await writeJson(output, {
   schema: 1,
+  mode,
   scope:
-    'All 597 original-printing face and etching keys. Only Beta WU/UR face revisions change; this is identity verification, not a claim of GPU performance or full native replay of every candidate.',
+    mode === 'plain-wrap'
+      ? 'All original-printing face and etching keys. Alpha original faces and the two Beta outline revisions invalidate; all etching keys remain unchanged. Key scope is not a claim that every invalidated face changes pixels.'
+      : 'All 597 original-printing face and etching keys. Only Beta WU/UR face revisions change; this is identity verification, not a claim of GPU performance or full native replay of every candidate.',
   sources: captures.map(({ rows, ...s }) => s),
   inputsHash: hash(await readFile(inputsFile)),
   toolHash: hash(await readFile(new URL(import.meta.url))),

@@ -174,7 +174,9 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     CONJURER_ROOT,
     'canvas-face-v148',
     ...(dualFrameRevision ? [dualFrameRevision] : []),
-    ...(face.setCode?.toLowerCase() === 'lea' && face.wordingMode !== 'oracle'
+    ...(input.layer !== 'etching' &&
+    face.setCode?.toLowerCase() === 'lea' &&
+    face.wordingMode !== 'oracle'
       ? [ALPHA_RULES_REVISION]
       : []),
     ...(faceFrame(face).startsWith('planeswalker') ? [WALKER_MATERIAL_REVISION] : []),
