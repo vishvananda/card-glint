@@ -197,5 +197,118 @@
       "characters": 235,
       "reason": "Visual follow-up after recovering its scan normalization. Beta with the same wording already wraps into the correct seven lines. Determine whether Alpha tier/bounds fallback is responsible before changing shared defaults. No per-card renderer offset approved."
     }
-  ]
+  ],
+  "rulesWidthTrial": {
+    "status": "exploratory-not-promoted",
+    "allLayouts": 295,
+    "nativeChangedByBroadTrial": 56,
+    "broadTrial": {
+      "printings": 295,
+      "changed": 94,
+      "unchanged": 201,
+      "before100": 57.65719253439706,
+      "after100": 58.529750761385806,
+      "improved": 34,
+      "regressedHalfPoint": [
+        {
+          "name": "Power Sink",
+          "delta": -1.2347447479602813
+        },
+        {
+          "name": "Library of Leng",
+          "delta": -10.386378541537077
+        },
+        {
+          "name": "Lord of the Pit",
+          "delta": -3.018914415750862
+        },
+        {
+          "name": "Two-Headed Giant of Foriys",
+          "delta": -6.846659621309604
+        },
+        {
+          "name": "Zombie Master",
+          "delta": -8.522286665114748
+        },
+        {
+          "name": "Goblin King",
+          "delta": -6.863012115178025
+        },
+        {
+          "name": "Dragon Whelp",
+          "delta": -2.3064675254141243
+        },
+        {
+          "name": "Balance",
+          "delta": -9.789474377747053
+        },
+        {
+          "name": "Control Magic",
+          "delta": -0.7611653306481836
+        },
+        {
+          "name": "Living Lands",
+          "delta": -3.211415665690287
+        },
+        {
+          "name": "Disintegrate",
+          "delta": -4.46053141956032
+        },
+        {
+          "name": "Chaos Orb",
+          "delta": -5.515457799583279
+        },
+        {
+          "name": "Verduran Enchantress",
+          "delta": -3.036240303011728
+        },
+        {
+          "name": "Island Sanctuary",
+          "delta": -2.268214775844535
+        },
+        {
+          "name": "Personal Incarnation",
+          "delta": -2.0166249501273215
+        },
+        {
+          "name": "Pirate Ship",
+          "delta": -1.9208559975172124
+        },
+        {
+          "name": "Frozen Shade",
+          "delta": -2.965414976548564
+        },
+        {
+          "name": "Siren's Call",
+          "delta": -1.0413089628051098
+        },
+        {
+          "name": "Darkpact",
+          "delta": -4.335434362473922
+        }
+      ],
+      "changedNativePrintings": 56,
+      "unchangedNativePrintings": 239
+    },
+    "followup": {
+      "status": "not-promoted",
+      "policy": "For a pure rules passage, consider the wider existing Beta allowance only when the narrower Alpha inset adds a line. Flavor/mixed passages retain their existing layout pending their own review. No name/ID lookup, per-scan renderer offset, font change or scan refit.",
+      "selectionIsExploratory": true,
+      "validationKind": "reused-development",
+      "selectedPrintingIds": [
+        "5d077a49-73d4-4958-b42a-31b814e110e8",
+        "894c5cf2-8ae2-427a-bcbc-67df0bdfee9d",
+        "8fe3fd83-969c-4add-888f-86f4306b067c",
+        "f13ad58a-6f9b-420a-bac1-40929f5e616a"
+      ],
+      "count": 4,
+      "delta100Sum": 26.59105811905214,
+      "next": "Implement the shared rule and verify its exact native footprint before adoption. The broad width change is not approved."
+    },
+    "evidence": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/alpha-rules-width-trial.json.gz",
+      "sha256": "36288d060f6cbdb26d573b2a11f70d64ac2a542dd22db3e7a20040e80b83c8fe",
+      "contentSha256": "5ce4d2482ca8da1c802b5dbe72e2b4c980e00f7f5639854f3056f279bf2e396d"
+    }
+  }
 }
