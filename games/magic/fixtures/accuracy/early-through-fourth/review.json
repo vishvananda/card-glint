@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-10-20",
+  "status": "partial-set-audit",
+  "renderer": {
+    "version": "0.6.5",
+    "commit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040",
+    "sourceHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb"
+  },
+  "scope": "Existing library ABU frames and original-printing text. Experimental reconstructed assets excluded. New native capture covers all 597 Alpha/Beta printings; regional heading and independent outline checks do not close every set task.",
+  "native": {
+    "total": 597,
+    "acceptedComparisons": 594,
+    "alpha": 295,
+    "beta": 302,
+    "maskEscapes": 0,
+    "excluded": [
+      {
+        "id": "6ff1cefc-62cb-4525-b0c5-2b09603b4314",
+        "name": "Deathlace"
+      },
+      {
+        "id": "d42a6350-b16b-4e10-a273-e6cbb55dcb7a",
+        "name": "Pestilence"
+      },
+      {
+        "id": "f13ad58a-6f9b-420a-bac1-40929f5e616a",
+        "name": "Nether Shadow"
+      }
+    ]
+  },
+  "headings": {
+    "status": "validated-existing-default",
+    "summary": {
+      "title": {
+        "count": 292,
+        "before": 70.38798013201374,
+        "after": 71.35335017752263,
+        "improved": 221,
+        "regressedHalfPoint": 35
+      },
+      "type": {
+        "count": 292,
+        "before": 60.861722533761444,
+        "after": 62.19922529965539,
+        "improved": 271,
+        "regressedHalfPoint": 7
+      }
+    },
+    "outsideHeadingPixels": 0,
+    "reviewedRegressions": [
+      "Sedge Troll",
+      "Timber Wolves",
+      "Serra Angel",
+      "Merfolk of the Pearl Trident",
+      "Pearled Unicorn",
+      "Craw Wurm",
+      "Copper Tablet",
+      "Elvish Archers"
+    ],
+    "decision": "Retain the shared improved defaults. The largest regressions include different left bearings/printed widths across mixed initials; this recheck does not justify a per-card renderer offset or reverting shared word spacing. Keep all 35 name and seven type regressions above half a point in the evidence. Full native gray fills and shadow were retained; no hollow-lettering trial is promoted.",
+    "validation": "Reused development scans and frozen independent affine poses; not a new blind holdout."
+  },
+  "outlineCandidate": {
+    "status": "unpublished-next-batch",
+    "commit": "245b351e1d7615b0d8f22c1122b797a8cef21e22",
+    "rendererHash": "2755afa283a7e48053aa05d940879d05bdbb160a53db90fba8fe9ae592ae5cee",
+    "decision": "Beta WU outer outline changes U to W; Beta UR changes R to U. Alpha and Unlimited policies retain their previous colors. All three photometric diagnostics agree for these two Beta candidates, followed by native visual review. Other disagreements remain diagnostic and do not trigger palette changes.",
+    "actualNativeReplays": 19,
+    "unchangedNativeReplays": 17,
+    "allNativeFaceKeysChecked": 597,
+    "unchangedFaceKeys": 595,
+    "changedMaskKeys": 0,
+    "changes": [
+      {
+        "id": "1b93ce48-219c-49ea-9ad0-b7357bea4606",
+        "set": "leb",
+        "name": "Tundra",
+        "before": "606226a9c3c3ad6097b06263b0267e02939b3e19b5d94208b8502d49ceba69a9",
+        "after": "55883df0f1bdd83b5e0086e5e6da8c1c158b7576fda5926dc55d8f15b0f5ac7e",
+        "outsideOutline": 0
+      },
+      {
+        "id": "0324641d-af55-4c53-b4dc-c8262e967da5",
+        "set": "leb",
+        "name": "Volcanic Island",
+        "before": "909a845276722122c04f4614aa762e3ab95f49bd0b76322e6c95b628f5f88cce",
+        "after": "daba13c271c521e36c5cbe6e1818f46920b213d0d7125cea9432a618bac75d6d",
+        "outsideOutline": 0
+      }
+    ],
+    "integrationRemaining": "Register the batch source-ancestry and dependency-reuse receipt before merging or publishing runtime changes. Recheck affected completion tasks and final scores against that published batch."
+  },
+  "live": {
+    "renderer": "cdn-v0.6.5",
+    "alphaScore100": 67.15312565321928,
+    "betaScore100": 67.5571638188431,
+    "generation": "6a43213b083eaf58fc9b9a911ba08baa227f5e52021f1add3a02a25d6e2286d2",
+    "scope": "Fresh Lab whole-card indices from current background jobs: Alpha 292 scored plus three alignment reviews, Beta 302 scored. Not paired deltas against 0.5.4 because source/template generations differ. Six Alpha live original rebuilds match the native audit pixels exactly.",
+    "nativeParityCards": [
+      "Animate Dead",
+      "Air Elemental",
+      "Mana Vault",
+      "Hypnotic Specter",
+      "Tundra",
+      "Circle of Protection: White"
+    ]
+  },
+  "remaining": [
+    "Complete rail/geometry and known asset-limit dispositions for all nineteen ABU duals; a stronger nearby bevel edge is not a reliable caliper for the intended thin outline.",
+    "Integrate the two Beta outline candidates with scoped dependency/source evidence in the next calibration batch.",
+    "Complete original-wording regional/full outlier dispositions and published-source confirmation before closing Alpha/Beta full-set checks.",
+    "Continue the chronological queued sets through Fourth Edition, including large Collectors and Summer printings."
+  ],
+  "evidence": {
+    "native-current": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz",
+      "sha256": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+      "contentSha256": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283"
+    },
+    "native-heading-control": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/native-heading-control.json.gz",
+      "sha256": "d049ad707843eeef46795454a466fbbc3512eb1091e781f4331744d4da61e940",
+      "contentSha256": "b1f6c654eda17dc0d26478570bb3e042bf7a925bd53ba7cdc0bd7dfb9369172b"
+    },
+    "alpha-headings": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+      "sha256": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+      "contentSha256": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d"
+    },
+    "outline-counterfactual": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/outline-counterfactual.json.gz",
+      "sha256": "83fb3d8977ff17ea02e2c5225bd852ac3e3d899d5245987ad61e358ee456dd5d",
+      "contentSha256": "195d150dbe1de315ce8878fc4006e7da2b73ac7e996c321698a2ac6fbb956279"
+    },
+    "outline-colors": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/outline-colors.json.gz",
+      "sha256": "69b02249808fab092a71cdae4e78ed90c9190b0fe705273481011620caa6247d",
+      "contentSha256": "c74f36503ed9fd06c3538dd9f23c278c2abdf0046323320714a20ca7b536469e"
+    },
+    "outline-candidate": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/outline-candidate.json.gz",
+      "sha256": "861990287d4602900f1c3afcb85bbe9f7422a7321518d65d3c61dd29f6a50720",
+      "contentSha256": "53b579167a1d355093ad2c49fd1b87d54b3d1392b2228f2e915f1e049b17a3c4"
+    },
+    "outline-keys": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/outline-keys.json.gz",
+      "sha256": "ab55f8c67cf569c37af9de804dcc66bed6fc95fe8e3212b05e21f9c17345daa9",
+      "contentSha256": "48da876e15c0f67eb2b3e1f42f9939179e15f50824bc4394cab6711e53f1f40a"
+    },
+    "live-parity": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz",
+      "sha256": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+      "contentSha256": "12f459c915ed2ca23e3de43a08545ce205aab91e5248ec46c9892a731b67790b"
+    }
+  },
+  "preview": "https://tetrarcum.com/early-sets/"
+}
