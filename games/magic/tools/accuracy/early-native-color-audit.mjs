@@ -44,6 +44,7 @@ const patches = {
 for (const r of capture.rows) {
   const e = inputs.entries.find((e) => e.id === r.id);
   assert(e && e.pose.accepted && r.accepted);
+  assert.equal(e.face.wordingMode, 'original');
   assert.equal(e.reference.sha256, r.referenceHash);
   const t = trial?.rows.find((t) => t.id === r.id);
   if (trial && !t?.trials[trialName]) {
@@ -71,6 +72,8 @@ for (const r of capture.rows) {
           deltaE: delta(a.rgb, b.rgb),
           renderRgb: a.rgb,
           referenceRgb: b.rgb,
+          renderTiles: a.tiles,
+          referenceTiles: b.tiles,
           renderSpread: a.spread,
           referenceSpread: b.spread,
           renderRejectedFraction: a.rejectedFraction,

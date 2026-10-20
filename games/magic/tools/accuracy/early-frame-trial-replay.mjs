@@ -32,7 +32,13 @@ for (const url of extraUrls)
 const transformed = {},
   session = await openBrowser(
     { entries, components },
-    { plugins: [earlyFrameTrialPlugin(transformed)] },
+    {
+      plugins: [
+        (definition.pigment
+          ? (await import('./early-color-trial-plugin.mjs')).earlyColorTrialPlugin
+          : earlyFrameTrialPlugin)(transformed),
+      ],
+    },
   ),
   rows = [];
 await mkdir(out, { recursive: true });
@@ -44,10 +50,18 @@ const source = {
   definitionHash: hash(definitionBytes),
   toolHash: hash(await readFile(new URL(import.meta.url))),
   pluginHash: hash(await readFile(new URL('./early-frame-trial-plugin.mjs', import.meta.url))),
+  ...(definition.pigment
+    ? {
+        colorPluginHash: hash(
+          await readFile(new URL('./early-color-trial-plugin.mjs', import.meta.url)),
+        ),
+      }
+    : {}),
   components: components.map((c) => [c.url, c.sha256]),
   browser: session.browser.version(),
-  scope:
-    'Native 732x1020 full-card and etching replays. Scan poses, wording, fonts, glyphs and baseline pigment calibration remain frozen. Study-only optional frame, art and stock-mask controls do not ship in the renderer. All baseline faces must match their immutable captured PNG bytes. A trial is not an adopted calibration.',
+  scope: definition.pigment
+    ? 'Native 732x1020 source-local HSB and geometry candidates. Source paper masks come from the identical pinned frame assets. Original scan poses, wording, fonts and glyph geometry are frozen. All baseline faces match immutable captured PNG bytes. HSB is applied by the production cached material painter; no final-image color filter is used. A trial is not an adopted calibration.'
+    : 'Native 732x1020 full-card and etching replays. Scan poses, wording, fonts, glyphs and baseline pigment calibration remain frozen. Study-only optional frame, art and stock-mask controls do not ship in the renderer. All baseline faces must match their immutable captured PNG bytes. A trial is not an adopted calibration.',
 };
 try {
   await session.page.evaluate(async () => {
@@ -78,6 +92,19 @@ try {
         try {
           const values = [];
           for (const t of choices) {
+            let appliedMaterial;
+            if (t.trial?.pigment) {
+              const { printingCalibrationMaterials } = await import(
+                '/games/magic/src/presentation/printing-calibration-materials.ts'
+              );
+              const { asset, adjustment } = t.trial.pigment;
+              appliedMaterial = printingCalibrationMaterials(t.face).materials[asset];
+              if (
+                !lease.images.has(asset) ||
+                JSON.stringify(appliedMaterial) !== JSON.stringify(adjustment)
+              )
+                throw Error('Study pigment did not resolve to its supplied source material');
+            }
             const layers = {};
             for (const layer of ['face', 'etching']) {
               const image = await composeCardTexture(
@@ -97,7 +124,7 @@ try {
                 image.width = image.height = 0;
               }
             }
-            values.push({ id: t.id, ...layers });
+            values.push({ id: t.id, appliedMaterial, ...layers });
           }
           return values;
         } finally {
@@ -144,7 +171,27 @@ try {
           changed++;
           if (x > 60 && x < 672 && y > 68 && y < 952) interiorChanged++;
         }
+      const supplied = alternatives.find((t) => t.id === value.id)?.trial;
+      if (supplied?.pigment) {
+        const { pigment, ...geometry } = supplied;
+        const pure = alternatives.find(
+          (t) =>
+            t.trial && !t.trial.pigment && JSON.stringify(t.trial) === JSON.stringify(geometry),
+        );
+        if (pure) {
+          const control = renders.find((t) => t.id === pure.id);
+          assert.notEqual(
+            hash(bytes),
+            hash(Buffer.from(control.face, 'base64')),
+            'Pigment candidate has no pixel effect: ' + e.name,
+          );
+        }
+        assert.deepEqual(value.appliedMaterial, pigment.adjustment);
+      }
       row.trials[value.id] = {
+        ...(value.appliedMaterial
+          ? { appliedMaterialHash: hash(JSON.stringify(value.appliedMaterial)) }
+          : {}),
         faceHash: hash(bytes),
         etchingHash: hash(etch),
         etchingChanged: hash(etch) !== hash(Buffer.from(renders[0].etching, 'base64')),

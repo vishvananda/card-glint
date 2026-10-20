@@ -1,0 +1,231 @@
+{
+  "schema": 1,
+  "status": "main-material-proposal-not-runtime-profile",
+  "set": "2ed",
+  "rendererBaseline": "0.6.6",
+  "rendererHash": "2e9726bae6818fb2af6d9dbd28020126a2f934c42b1f6b54bd61d563aefff752",
+  "scope": "Six shared material configurations only. No per-card renderer corrections or scan transforms. The white source chooses a risk-aware shared compromise on calibration names only; other materials retain the measured joint source geometry and native-verified HSB. Original body/heading/artist, contrast/black levels and all land interiors still require their own fits. All frozen native inputs predate the new Dragon Whelp paragraph correction. Do not certify a complete set or copy this study-only schema into the runtime registry.",
+  "whiteSelection": {
+    "candidate": "joint-x100",
+    "method": "calibration mean minus one quarter of the worst calibration loss against current",
+    "validationUsedToSelect": false,
+    "validationKind": "reused-development",
+    "selectionObjective": {
+      "current": 0.7729966040431059,
+      "joint-x000": 0.7627755839631603,
+      "joint-x050": 0.7913948852768652,
+      "joint-x100": 0.7959876194611313,
+      "joint-x150": 0.7726691234578067,
+      "joint-x200": 0.7245301584703011,
+      "vertical-only": 0.7807102529256862,
+      "mask-only": 0.7729966040431059
+    },
+    "note": "Exploratory shared compromise. It improves calibration and validation means while reducing the largest white regression from roughly 23 to 7 regional index points. It is not a per-scan fit or a new blind-validation result."
+  },
+  "materials": {
+    "W": {
+      "family": "abu",
+      "frame": [
+        -0.002661991937717457, 9.455651431961637e-6, 1.0024299054868664, 0.9991061121250419
+      ],
+      "stockMaskFrame": [
+        -0.001599857856591008, -0.0006361797676199089, 1.002197869163225, 1.0016932038951687
+      ]
+    },
+    "U": {
+      "family": "abu",
+      "frame": [
+        -0.0004051256553665722, 0.0009175145897550028, 0.9973999272437499, 0.9979182881846657
+      ],
+      "stockMaskFrame": [
+        -0.0021971135723292488, -0.0013455829059307318, 1.0030172194086486, 1.0029711831557688
+      ],
+      "pigment": {
+        "asset": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/u.png",
+        "adjustment": {
+          "frame": {
+            "hueDegrees": -9.668755615453733,
+            "saturationScale": 0.8359719317032658,
+            "brightnessScale": 1.0801232665639446
+          },
+          "paper": {
+            "hueDegrees": -2.920454545454504,
+            "saturationScale": 0.8299490950226248,
+            "brightnessScale": 0.9866071428571429
+          },
+          "mask": {
+            "kind": "rect",
+            "rect": [
+              0.12704918032786885, 0.5985294117647059, 0.7479508196721312, 0.2852941176470588
+            ],
+            "feather": 0.0013333333333333333
+          }
+        }
+      }
+    },
+    "B": {
+      "family": "abu",
+      "frame": [
+        -0.0016171599546919472, 0.0009831517365230032, 0.9995233830277084, 0.995507059980833
+      ],
+      "stockMaskFrame": [
+        -0.0023191972103297712, -0.0013925962317059258, 1.0042834555891456, 1.0031982199684841
+      ],
+      "pigment": {
+        "asset": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/b.png",
+        "adjustment": {
+          "frame": {
+            "hueDegrees": 0,
+            "saturationScale": 0.4,
+            "brightnessScale": 1.1747916666666667
+          },
+          "paper": {
+            "hueDegrees": -7.381175889328006,
+            "saturationScale": 0.8802530017152661,
+            "brightnessScale": 0.8907563025210085
+          },
+          "mask": {
+            "kind": "chroma",
+            "bounds": [
+              0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294
+            ],
+            "seed": [0.5, 0.7352941176470589],
+            "frameRgb": [0.17647058823529413, 0.2196078431372549, 0.23333333333333334],
+            "paperRgb": [0.9372549019607843, 0.8, 0.5941176470588235]
+          }
+        }
+      }
+    },
+    "R": {
+      "family": "abu",
+      "frame": [
+        -0.003327885528121137, -0.0004879731207046398, 1.0002040550058338, 0.9995362714138716
+      ],
+      "stockMaskFrame": [
+        -0.0023753293154445275, -0.0014146392958707566, 1.0044610365693625, 1.0032302442281607
+      ],
+      "pigment": {
+        "asset": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/r.png",
+        "adjustment": {
+          "frame": {
+            "hueDegrees": 4.844309727197469,
+            "saturationScale": 0.8919106715790833,
+            "brightnessScale": 1.1153184165232357
+          },
+          "paper": {
+            "hueDegrees": 9.762115805226244,
+            "saturationScale": 0.8198656198148048,
+            "brightnessScale": 1.1373240072202169
+          },
+          "mask": {
+            "kind": "rect",
+            "rect": [0.125, 0.5985294117647059, 0.7540983606557377, 0.2852941176470588],
+            "feather": 0.0013333333333333333
+          }
+        }
+      }
+    },
+    "G": {
+      "family": "abu",
+      "frame": [
+        -0.006766880866430748, 0.0007749731164299169, 1.0027918296845708, 0.9963599606963014
+      ],
+      "stockMaskFrame": [
+        -0.0025397755281931795, -0.0017235547914747176, 1.004977202581471, 1.0036182588386853
+      ],
+      "pigment": {
+        "asset": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/g.png",
+        "adjustment": {
+          "frame": {
+            "hueDegrees": 3.2004573170731874,
+            "saturationScale": 0.8991495408009635,
+            "brightnessScale": 1.1581769436997318
+          },
+          "paper": {
+            "hueDegrees": 16.979166666666742,
+            "saturationScale": 0.8716666666666665,
+            "brightnessScale": 1.1682692307692306
+          },
+          "mask": {
+            "kind": "chroma",
+            "bounds": [
+              0.09221311475409837, 0.5823529411764706, 0.8176229508196722, 0.3176470588235294
+            ],
+            "seed": [0.5, 0.7352941176470589],
+            "frameRgb": [0.23529411764705882, 0.3431372549019608, 0.28823529411764703],
+            "paperRgb": [0.4117647058823529, 0.2784313725490196, 0.2549019607843137]
+          }
+        }
+      }
+    },
+    "A": {
+      "family": "abu",
+      "frame": [
+        -0.0018531443476412334, 0.0010418621935165363, 0.999361522763717, 0.9942331499123988
+      ],
+      "stockMaskFrame": [
+        -0.002314460936387341, -0.0016058864383056957, 1.0045545797703566, 1.0034723199082023
+      ],
+      "pigment": {
+        "asset": "https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/a.png",
+        "adjustment": {
+          "frame": {
+            "hueDegrees": 12.625,
+            "saturationScale": 0.6550045727861409,
+            "brightnessScale": 1.233890214797136
+          },
+          "paper": {
+            "hueDegrees": 10.322115384615358,
+            "saturationScale": 0.7160565196998131,
+            "brightnessScale": 1.1122554347826084
+          },
+          "mask": {
+            "kind": "rect",
+            "rect": [
+              0.1290983606557377, 0.6014705882352941, 0.7459016393442623, 0.2852941176470588
+            ],
+            "feather": 0.0013333333333333333
+          }
+        }
+      }
+    }
+  },
+  "landPrintingsPending": 25,
+  "sourceReceipts": {
+    "2ed-native-color-fit": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-native-color-fit.json.gz",
+      "sha256": "e2eb5e0d6cf7bfffc0ef553bdf17d0cef3d6bbe2e97cf5f20fd0cad8c720ff6b",
+      "contentSha256": "13b24532a89386199c31ab0a01c4b768f03a45f889cc01fcf11e5ad346f56666"
+    },
+    "2ed-native-color-definition": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-native-color-definition.json.gz",
+      "sha256": "8378d4bc01e78a1f69bac644f1e39a47926c2a9b98c590566c348af1ac4cf915",
+      "contentSha256": "70f6f78027f5cffd6b1cc9845bc2dc1e0b5691fd2a4f908bf6f68b400bcd1b6e"
+    },
+    "2ed-native-color-capture": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-native-color-capture.json.gz",
+      "sha256": "f41dbad4862a68fb8f36944d4da94dc948f2fbfc656fe5e273afcc87951e11c8",
+      "contentSha256": "ffc910b97fe32708b51ccd451e25fc4a34969b4d552ee136171c19d54de9e39e"
+    },
+    "2ed-native-color-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-native-color-verification.json.gz",
+      "sha256": "027dc2ba74f1e916f62fb7d40740455b6b08c6714bbdab43baf5297c9cba950f",
+      "contentSha256": "f77bbbb30df88abab21cbb9ad851aaf6df3215c7f9ac5c9beb5de9842c25077f"
+    },
+    "2ed-white-shared-definition": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-white-shared-definition.json.gz",
+      "sha256": "bb354de8f66764347982720e01257545870dd0d826bc7f4aad5f4b2f95da28e0",
+      "contentSha256": "2047eb3c61083af0d6789ace603432255d8a7087f414f5182d6e04e9e8b99507"
+    },
+    "2ed-white-shared-capture": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-white-shared-capture.json.gz",
+      "sha256": "f9261281282a28aaac0d270785c8c0f038573cc980d7f971d89b392df81a86ee",
+      "contentSha256": "be2ae75ca4abdb5b1c106d389974b0d0c51c272a4425bdfcb1daef5d5c0faac2"
+    },
+    "2ed-white-shared-measure": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-white-shared-measure.json.gz",
+      "sha256": "1326189d1a01dc0a30a2352b4f1469f3fe86ee93e4126a21a0e7c1083e551190",
+      "contentSha256": "e4fb27fb93d198042cd33eaa7bc0828d1d0a55676670c3ce844fe54dc89e7ef6"
+    }
+  }
+}

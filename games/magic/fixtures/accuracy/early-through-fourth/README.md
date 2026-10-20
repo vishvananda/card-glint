@@ -247,3 +247,48 @@ The Dark's three existing rules-only reviews also pass the metadata adapter:
 reviewed body fields are checked separately and never misreported as type,
 artist, cost or stats reviews. Stale hashes, unreviewed bodies, duplicate fields
 and invalid values still fail closed.
+
+## Native Unlimited pigment verification and white compromise
+
+`2ed-native-color-verification.json.gz` pairs all 277 main-material candidates
+with the geometry-only baseline. The same cached material painter applies HSB
+before frame composition; exact supplied adjustments and a nonzero pixel effect
+are checked. All illustration-core and face-alpha bytes remain unchanged.
+
+Median frame Oklab errors fall from 9.799 to 1.227 (blue), 5.540 to 1.924 (black),
+5.312 to 1.617 (red), 5.281 to 2.507 (green), and 10.796 to 1.838 (artifact).
+White retains its already close source palette. Paper errors improve as well.
+These are color distances, not accuracy indices. Dark Basalt Monolith and other
+individual palette regressions remain explicit in the frozen per-card report;
+a shared fit is not permission to recolor individual scans. Contrast and black
+levels still require separate checks.
+
+The texture-aware fit samples at most 64 source tiles per calibration printing;
+it does not approximate the whole source texture with one RGB median:
+
+```sh
+node games/magic/tools/accuracy/early-native-color-fit.mjs NATIVE_COLOR_AUDIT.json COLOR_FIT.json
+node games/magic/tools/accuracy/early-native-color-verify.mjs GEOMETRY_CAPTURE COLOR_CAPTURE BEFORE_AUDIT.json AFTER_AUDIT.json COLOR_VERIFICATION.json
+```
+
+Set `pigment: true` in a native trial definition to enable source-local material
+candidates. Its geometry entry may include `pigment: { asset, adjustment }`.
+The harness checks the actual resolved material, rejects a missing source, and
+rejects a no-effect pigment candidate when the matching geometry control exists.
+These are study-only properties; the library does not read them.
+
+`2ed-white-shared-measure.json.gz` records seven shared white-frame candidates.
+The calibration-only objective balances mean score against one quarter of its
+largest individual regression. An additional one-pixel rightward source shift
+improves calibration from 77.30 to 81.27/100 and reserved development references
+from 78.41 to 80.81/100. The largest loss drops from about 23 to seven regional
+points, and median outer-boundary error remains below 0.18 canonical pixels.
+No per-card source position is used. This is an exploratory shared compromise,
+not fresh blind validation.
+
+`2ed-material-proposal.json` consolidates the six source/stock-mask/HSB choices
+for the next integration. Its schema is deliberately a study proposal, not a
+registered complete-set profile. Land geometry, illustration placement, black
+levels, headings, mana and body/footer fitting remain open. Typography fitting
+must use the current original wording, including Dragon Whelp's corrected flow,
+instead of these older frozen frame-only body inputs.

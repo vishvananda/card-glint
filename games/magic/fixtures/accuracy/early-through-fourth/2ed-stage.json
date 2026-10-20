@@ -2,7 +2,7 @@
   "schema": 1,
   "asOf": "2026-10-20",
   "set": "2ed",
-  "status": "native-frame-candidates-measured-pigment-fit-ready",
+  "status": "native-material-candidates-ready-remaining-components-open",
   "inventory": 302,
   "referenceObjectsPresent": 302,
   "artObjectsPresent": 302,
@@ -126,6 +126,41 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-family-joint.json.gz",
       "sha256": "3f0ff0841eca9a409f4a61893209aab55a1904cbb534db90e8e843377403d554",
       "contentSha256": "22165adf4caae8d66dde6a3d5de3ca8787d554dfe3ff72e400e02cc62f91e2b7"
+    },
+    "2ed-native-color-fit": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-native-color-fit.json.gz",
+      "sha256": "e2eb5e0d6cf7bfffc0ef553bdf17d0cef3d6bbe2e97cf5f20fd0cad8c720ff6b",
+      "contentSha256": "13b24532a89386199c31ab0a01c4b768f03a45f889cc01fcf11e5ad346f56666"
+    },
+    "2ed-native-color-definition": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-native-color-definition.json.gz",
+      "sha256": "8378d4bc01e78a1f69bac644f1e39a47926c2a9b98c590566c348af1ac4cf915",
+      "contentSha256": "70f6f78027f5cffd6b1cc9845bc2dc1e0b5691fd2a4f908bf6f68b400bcd1b6e"
+    },
+    "2ed-native-color-capture": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-native-color-capture.json.gz",
+      "sha256": "f41dbad4862a68fb8f36944d4da94dc948f2fbfc656fe5e273afcc87951e11c8",
+      "contentSha256": "ffc910b97fe32708b51ccd451e25fc4a34969b4d552ee136171c19d54de9e39e"
+    },
+    "2ed-native-color-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-native-color-verification.json.gz",
+      "sha256": "027dc2ba74f1e916f62fb7d40740455b6b08c6714bbdab43baf5297c9cba950f",
+      "contentSha256": "f77bbbb30df88abab21cbb9ad851aaf6df3215c7f9ac5c9beb5de9842c25077f"
+    },
+    "2ed-white-shared-definition": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-white-shared-definition.json.gz",
+      "sha256": "bb354de8f66764347982720e01257545870dd0d826bc7f4aad5f4b2f95da28e0",
+      "contentSha256": "2047eb3c61083af0d6789ace603432255d8a7087f414f5182d6e04e9e8b99507"
+    },
+    "2ed-white-shared-capture": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-white-shared-capture.json.gz",
+      "sha256": "f9261281282a28aaac0d270785c8c0f038573cc980d7f971d89b392df81a86ee",
+      "contentSha256": "be2ae75ca4abdb5b1c106d389974b0d0c51c272a4425bdfcb1daef5d5c0faac2"
+    },
+    "2ed-white-shared-measure": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-white-shared-measure.json.gz",
+      "sha256": "1326189d1a01dc0a30a2352b4f1469f3fe86ee93e4126a21a0e7c1083e551190",
+      "contentSha256": "e4fb27fb93d198042cd33eaa7bc0828d1d0a55676670c3ce844fe54dc89e7ef6"
     }
   },
   "native": {
@@ -188,7 +223,7 @@
     "meanBefore100": 72.25887254327995,
     "meanAfter100": 81.80808424970189,
     "scope": "Regional frame-strip index only, not a whole-card Lab score. Two-axis frame transforms fit predeclared calibration cohorts only. All baseline faces match immutable native PNG bytes. Original scan poses remain fixed. Native inputs predate the new Dragon Whelp paragraph correction; these frame-only targets exclude its lettering.",
-    "remaining": "White has substantial individual regressions; inspect shared position/contour fitting before promotion. Existing data do not justify per-card renderer offsets. Basic/dual land internal geometry is not included.",
+    "remaining": "The initial white regression was followed by seven shared candidates. A risk-aware calibration-only x+1px compromise improves both cohort means and reduces the largest regression to about seven regional points. Retain individual residuals. Illustration placement, all land interiors, contrast/black levels and typography still need verification; no per-card source offsets are adopted.",
     "worstRegressions": [
       {
         "id": "1704d11c-569c-4b4e-bbe0-df42af98c4fc",
@@ -265,7 +300,7 @@
     ]
   },
   "pigmentTrial": {
-    "status": "shared-candidates-need-native-replay",
+    "status": "native-verified-main-material-candidates",
     "mainPrintings": 277,
     "landPrintingsPending": 25,
     "runtimeBindingsObserved": {
@@ -277,7 +312,232 @@
       "A": 0
     },
     "gap": "All six ordinary 2ED frame materials currently resolve no HSB material correction even with set-hsb-v1 enabled. Existing source-specific guards remain enforced; do not alias an obsolete fit.",
-    "review": "White is already close and should retain source values unless native evidence improves. Most other frame/paper candidates improve reserved-cohort medians. The red-frame Chaoslace reference is an explicit color outlier: the shared predicted fit regresses it by 3.13 Oklab units. Contrast, black levels, mana colors and native post-integration verification remain open."
+    "review": "Native HSB materially improves five palettes; white keeps source pigment. Individual reference-palette outliers remain recorded, including dark Basalt Monolith and red Chaoslace. Contrast, interior black levels, mana, typography and 25 land interiors remain open. A selected main-material proposal is not a completed set.",
+    "illustrationCorePixelsChanged": 0,
+    "faceAlphaPixelsChanged": 0,
+    "summary": {
+      "W": {
+        "frame": {
+          "count": 46,
+          "before": 0.9403094803649322,
+          "after": 0.9403094803649322,
+          "improved": 0,
+          "worstRegression": 0
+        },
+        "paper": {
+          "count": 46,
+          "before": 1.2117142953510678,
+          "after": 1.2117142953510678,
+          "improved": 0,
+          "worstRegression": 0
+        }
+      },
+      "U": {
+        "frame": {
+          "count": 46,
+          "before": 9.799400100221803,
+          "after": 1.2265975379672374,
+          "improved": 44,
+          "worstRegression": 8.939728036613996
+        },
+        "paper": {
+          "count": 46,
+          "before": 2.0243599726220793,
+          "after": 0.9748727182180519,
+          "improved": 37,
+          "worstRegression": 1.8904098207964921
+        }
+      },
+      "B": {
+        "frame": {
+          "count": 46,
+          "before": 5.539696309287278,
+          "after": 1.9241620109060862,
+          "improved": 37,
+          "worstRegression": 4.815091710553977
+        },
+        "paper": {
+          "count": 46,
+          "before": 8.072372746044852,
+          "after": 0.9728196604249186,
+          "improved": 46,
+          "worstRegression": -0.9917372806606912
+        }
+      },
+      "R": {
+        "frame": {
+          "count": 46,
+          "before": 5.3116125324032515,
+          "after": 1.617393016981063,
+          "improved": 40,
+          "worstRegression": 4.367947873787279
+        },
+        "paper": {
+          "count": 46,
+          "before": 7.162066122876176,
+          "after": 1.592214238011716,
+          "improved": 43,
+          "worstRegression": 6.261542412585548
+        }
+      },
+      "G": {
+        "frame": {
+          "count": 46,
+          "before": 5.280754641687916,
+          "after": 2.5074327978969944,
+          "improved": 38,
+          "worstRegression": 5.058467068593389
+        },
+        "paper": {
+          "count": 46,
+          "before": 8.90413774123355,
+          "after": 1.8198069864272337,
+          "improved": 44,
+          "worstRegression": 8.423263829555761
+        }
+      },
+      "A": {
+        "frame": {
+          "count": 47,
+          "before": 10.795867818976227,
+          "after": 1.8375543319826673,
+          "improved": 45,
+          "worstRegression": 10.556913634767643
+        },
+        "paper": {
+          "count": 47,
+          "before": 7.76958537584172,
+          "after": 0.873394725805651,
+          "improved": 45,
+          "worstRegression": 7.363924320518355
+        }
+      }
+    }
   },
-  "runtimeProfilePromoted": false
+  "runtimeProfilePromoted": false,
+  "whiteGeometryFollowup": {
+    "status": "shared-compromise-selected-needs-profile-integration",
+    "total": 46,
+    "candidate": "joint-x100",
+    "selection": {
+      "candidate": "joint-x100",
+      "method": "calibration mean minus one quarter of the worst calibration loss against current",
+      "validationUsedToSelect": false,
+      "validationKind": "reused-development",
+      "selectionObjective": {
+        "current": 0.7729966040431059,
+        "joint-x000": 0.7627755839631603,
+        "joint-x050": 0.7913948852768652,
+        "joint-x100": 0.7959876194611313,
+        "joint-x150": 0.7726691234578067,
+        "joint-x200": 0.7245301584703011,
+        "vertical-only": 0.7807102529256862,
+        "mask-only": 0.7729966040431059
+      },
+      "note": "Exploratory shared compromise. It improves calibration and validation means while reducing the largest white regression from roughly 23 to 7 regional index points. It is not a per-scan fit or a new blind-validation result."
+    },
+    "summary": {
+      "calibration": {
+        "current": {
+          "count": 35,
+          "median": 0.7597893647013344,
+          "improved": 0,
+          "mean": 0.7729966040431059
+        },
+        "joint-x000": {
+          "count": 35,
+          "median": 0.8413540552551853,
+          "improved": 25,
+          "mean": 0.8204688559294688
+        },
+        "joint-x050": {
+          "count": 35,
+          "median": 0.8296148377028476,
+          "improved": 27,
+          "mean": 0.8289086549000826
+        },
+        "joint-x100": {
+          "count": 35,
+          "median": 0.8057936371590848,
+          "improved": 28,
+          "mean": 0.8127540469724204
+        },
+        "joint-x150": {
+          "count": 35,
+          "median": 0.7687552110316926,
+          "improved": 23,
+          "mean": 0.781828336821823
+        },
+        "joint-x200": {
+          "count": 35,
+          "median": 0.7277137995368788,
+          "improved": 6,
+          "mean": 0.7461733932035715
+        },
+        "vertical-only": {
+          "count": 35,
+          "median": 0.7774049359796302,
+          "improved": 22,
+          "mean": 0.786796895920903
+        },
+        "mask-only": {
+          "count": 35,
+          "median": 0.7597893647013344,
+          "improved": 0,
+          "mean": 0.7729966040431059
+        }
+      },
+      "validation": {
+        "current": {
+          "count": 11,
+          "median": 0.8120199479307962,
+          "improved": 0,
+          "mean": 0.7841447375818945
+        },
+        "joint-x000": {
+          "count": 11,
+          "median": 0.7969810499272383,
+          "improved": 6,
+          "mean": 0.7948242547299049
+        },
+        "joint-x050": {
+          "count": 11,
+          "median": 0.794965765970186,
+          "improved": 8,
+          "mean": 0.8147542021614881
+        },
+        "joint-x100": {
+          "count": 11,
+          "median": 0.8264947572399014,
+          "improved": 8,
+          "mean": 0.8080755486014322
+        },
+        "joint-x150": {
+          "count": 11,
+          "median": 0.8025540447869144,
+          "improved": 5,
+          "mean": 0.7821559360803568
+        },
+        "joint-x200": {
+          "count": 11,
+          "median": 0.7615040855898089,
+          "improved": 1,
+          "mean": 0.7472199929751396
+        },
+        "vertical-only": {
+          "count": 11,
+          "median": 0.82000632664946,
+          "improved": 5,
+          "mean": 0.7862039624283078
+        },
+        "mask-only": {
+          "count": 11,
+          "median": 0.8120199479307962,
+          "improved": 0,
+          "mean": 0.7841447375818945
+        }
+      }
+    },
+    "source": "2ed-material-proposal.json"
+  }
 }
