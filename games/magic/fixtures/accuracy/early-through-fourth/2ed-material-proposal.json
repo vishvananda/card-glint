@@ -1056,5 +1056,19 @@
         }
       ]
     }
+  },
+  "manaPigmentCandidate": {
+    "status": "native-shared-mana-pigment-candidates-verified-not-adopted",
+    "source": "2ed-mana-pigment-verification.json.gz",
+    "paper": {
+      "W": [0.9098039215686274, 0.9098039215686274, 0.8392156862745098],
+      "U": [0.6549019607843137, 0.807843137254902, 0.8705882352941177],
+      "B": [0.5019607843137255, 0.5254901960784314, 0.5333333333333333],
+      "R": [0.8549019607843137, 0.6823529411764706, 0.596078431372549],
+      "G": [0.6862745098039216, 0.7764705882352941, 0.6392156862745098],
+      "N": [0.6901960784313725, 0.7137254901960784, 0.7176470588235294]
+    },
+    "ink": [0.1843137254901961, 0.1803921568627451, 0.1568627450980392],
+    "scope": "Actual shared disc and common ink targets through the production material preparation path. Native baseline PNGs, poses, cost scores and pixel isolation are independently verified from the cache. Targets use calibration pigment quantiles rather than edge-score optimization. Validation median disc error falls 2.27 to 1.01 Oklab units; ink falls 26.88 to 3.11. The whole-cost structural index falls 70.56 to 69.62/100, confirming that color/edge objectives must remain separate. Global circle and internal glyph/numeral geometry still need their own fit. No runtime profile adopted."
   }
 }

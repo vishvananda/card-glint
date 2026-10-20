@@ -174,8 +174,8 @@
     },
     "2ed-material-proposal": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-material-proposal.json",
-      "sha256": "114823671a6392a815beee3fd4fb92e3b28efb600a310e4a3d74febc2db0ff64",
-      "contentSha256": "114823671a6392a815beee3fd4fb92e3b28efb600a310e4a3d74febc2db0ff64"
+      "sha256": "55751ff3773cd78870c715feedb4571acd8b3a76ba427976d180196813747220",
+      "contentSha256": "55751ff3773cd78870c715feedb4571acd8b3a76ba427976d180196813747220"
     },
     "2ed-basic-land-geometry": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-geometry.json.gz",
@@ -381,6 +381,21 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-native-audit.json.gz",
       "sha256": "19ff476afd550bfed10bec7a031df1fab469c03f8046b0f0cd685045286a6984",
       "contentSha256": "a3aa0e23251a470486f8e3943a9a91ee2f11e50c61e9b27c9411b1f4ef633e5f"
+    },
+    "2ed-mana-pigment-definition": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-pigment-definition.json.gz",
+      "sha256": "55d2ebf595570891d9fdb0e6cc7cd7d803b170523fc05746e458755f114581f3",
+      "contentSha256": "de42186a7a0f8d935ca18365b71d975eb6357ae46dd6158f41ef8e02f090bd96"
+    },
+    "2ed-mana-pigment-native": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-pigment-native.json.gz",
+      "sha256": "469c4011810af71902c0be888328366eb23daccb8d5f7f5d66007eba86f61beb",
+      "contentSha256": "d1e6bfcadaf1ac5f080fa7ae1eb22a80e0d78c952a3ca9670ca12709566f83b1"
+    },
+    "2ed-mana-pigment-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-pigment-verification.json.gz",
+      "sha256": "26018055177ff0fb2dcd1ebe6e950b85c2b0efe1ed7591e579a8511dd9d2cb99",
+      "contentSha256": "6cec59e56b3e961e1e0ff005894ec1014460ef69bea51243546969cc91e26dfc"
     }
   },
   "native": {
@@ -1322,7 +1337,7 @@
     "wording": "Current Dragon Whelp original-body refresh is verified with all 302 native body results. Reuse this reviewed provided input; do not run an older wording resolver over it during final profile verification.",
     "typography": "Measure filled ink/stroke/shadow values separately from fixed-gray geometry; retain MPlantin credits unless new evidence supports another face.",
     "body": "Integrate shared count/wrap and medium-density retention with original/Oracle safety preserved; verify final full native inputs.",
-    "mana": "All 277 cost perimeters have measured native baselines. Fit common dx/dy/diameter and spacing, separate glyph/numeral sizing, and disc/ink pigment. The black disc currently uses the pale generic source color; preserve color-specific targets. Verify active native controls before integration.",
+    "mana": "Shared disc/ink targets have actual native pigment and isolation checks on 54 predefined printings. Fit circles/pitch from perimeter measurements and glyph/numerals separately; whole-cost edge scores currently prefer the unshifted geometry despite circle offsets. Verify final native outputs before integration.",
     "footer": "Preserve printed Illus. \u00a9 prefix and absence of a separate Unlimited legal line.",
     "receipts": "Scoped integration and source-equivalence evidence must preserve immutable historical receipts and avoid reopening unrelated sets.",
     "completion": "Full profile/whole-card validation and visual boundary certification are still required. No renderer profile is adopted by these study files."
@@ -1654,6 +1669,199 @@
       }
     },
     "scope": "Every mana-cost printing is measured against its fixed independently normalized original scan. Circles are about 0.5-0.75px too large in diameter, 0.4-1px too far right and around 1px too high. The black disc incorrectly shares the pale generic source palette. Glyphs are darker than the scans. These are diagnostics only: no per-card repositioning or target color adoption. Fit shared cost/glyph/numeral geometry and source pigment next, then verify full native outputs and all residuals.",
+    "wholeSetCertification": false
+  },
+  "manaPigmentCandidates": {
+    "status": "native-shared-mana-pigment-candidates-verified-not-adopted",
+    "source": "2ed-mana-pigment-verification.json.gz",
+    "printings": 54,
+    "calibrationNames": 27,
+    "validationNames": 27,
+    "outsideCostAndRulesChanged": 0,
+    "faceAlphaChanged": 0,
+    "groups": {
+      "all": {
+        "count": 54,
+        "trials": {
+          "current": {
+            "costMean100": 71.42527199823412,
+            "medianDiscDeltaE": 2.1154456218463533,
+            "medianGlyphDeltaE": 26.292767779574618
+          },
+          "paper": {
+            "costMean100": 71.20394556466971,
+            "medianDiscDeltaE": 0.855022936502911,
+            "medianGlyphDeltaE": 26.292767779574618
+          },
+          "paper-ink": {
+            "costMean100": 70.65991732381003,
+            "medianDiscDeltaE": 0.855022936502911,
+            "medianGlyphDeltaE": 3.2125004803689476
+          }
+        }
+      },
+      "calibration": {
+        "count": 27,
+        "trials": {
+          "current": {
+            "costMean100": 72.28698587535295,
+            "medianDiscDeltaE": 1.9698866707675062,
+            "medianGlyphDeltaE": 25.839593582111608
+          },
+          "paper": {
+            "costMean100": 72.11907872581635,
+            "medianDiscDeltaE": 0.7874556692948178,
+            "medianGlyphDeltaE": 25.839593582111608
+          },
+          "paper-ink": {
+            "costMean100": 71.69522953277855,
+            "medianDiscDeltaE": 0.7874556692948178,
+            "medianGlyphDeltaE": 4.197853167322142
+          }
+        }
+      },
+      "validation": {
+        "count": 27,
+        "trials": {
+          "current": {
+            "costMean100": 70.56355812111529,
+            "medianDiscDeltaE": 2.2747528843740694,
+            "medianGlyphDeltaE": 26.87895390012133
+          },
+          "paper": {
+            "costMean100": 70.28881240352302,
+            "medianDiscDeltaE": 1.012600384964734,
+            "medianGlyphDeltaE": 26.87895390012133
+          },
+          "paper-ink": {
+            "costMean100": 69.62460511484146,
+            "medianDiscDeltaE": 1.012600384964734,
+            "medianGlyphDeltaE": 3.111927501076559
+          }
+        }
+      },
+      "symbol/W": {
+        "count": 10,
+        "trials": {
+          "current": {
+            "costMean100": 79.36076195738443,
+            "medianDiscDeltaE": 1.2613518056927302,
+            "medianGlyphDeltaE": 13.325337421069648
+          },
+          "paper": {
+            "costMean100": 79.52861574589917,
+            "medianDiscDeltaE": 0.6156550268835781,
+            "medianGlyphDeltaE": 13.325337421069648
+          },
+          "paper-ink": {
+            "costMean100": 78.88359112438317,
+            "medianDiscDeltaE": 0.6156550268835781,
+            "medianGlyphDeltaE": 4.608861354912679
+          }
+        }
+      },
+      "symbol/U": {
+        "count": 10,
+        "trials": {
+          "current": {
+            "costMean100": 76.27209985453426,
+            "medianDiscDeltaE": 1.4565082915806755,
+            "medianGlyphDeltaE": 28.55291456732656
+          },
+          "paper": {
+            "costMean100": 76.36368013440621,
+            "medianDiscDeltaE": 0.6849961176899235,
+            "medianGlyphDeltaE": 28.55291456732656
+          },
+          "paper-ink": {
+            "costMean100": 75.84080812261377,
+            "medianDiscDeltaE": 0.6849961176899235,
+            "medianGlyphDeltaE": 3.6580967930783452
+          }
+        }
+      },
+      "symbol/B": {
+        "count": 10,
+        "trials": {
+          "current": {
+            "costMean100": 67.07539652944948,
+            "medianDiscDeltaE": 20.39270323211848,
+            "medianGlyphDeltaE": 29.59380676504019
+          },
+          "paper": {
+            "costMean100": 65.98502400805228,
+            "medianDiscDeltaE": 1.6850531986744786,
+            "medianGlyphDeltaE": 29.59380676504019
+          },
+          "paper-ink": {
+            "costMean100": 66.84232729369111,
+            "medianDiscDeltaE": 1.6850531986744786,
+            "medianGlyphDeltaE": 1.2211511212088366
+          }
+        }
+      },
+      "symbol/R": {
+        "count": 10,
+        "trials": {
+          "current": {
+            "costMean100": 69.65135837609124,
+            "medianDiscDeltaE": 1.513592375356442,
+            "medianGlyphDeltaE": 27.08460652128947
+          },
+          "paper": {
+            "costMean100": 69.25927801317098,
+            "medianDiscDeltaE": 0.8613227965097874,
+            "medianGlyphDeltaE": 27.08460652128947
+          },
+          "paper-ink": {
+            "costMean100": 67.89850181404088,
+            "medianDiscDeltaE": 0.8613227965097874,
+            "medianGlyphDeltaE": 3.669470064022487
+          }
+        }
+      },
+      "symbol/G": {
+        "count": 10,
+        "trials": {
+          "current": {
+            "costMean100": 64.06968696710142,
+            "medianDiscDeltaE": 3.0929642080188753,
+            "medianGlyphDeltaE": 27.28753229570059
+          },
+          "paper": {
+            "costMean100": 64.05382528471718,
+            "medianDiscDeltaE": 1.1360188834694105,
+            "medianGlyphDeltaE": 27.28753229570059
+          },
+          "paper-ink": {
+            "costMean100": 62.97303918074761,
+            "medianDiscDeltaE": 1.1360188834694105,
+            "medianGlyphDeltaE": 3.3103360416152503
+          }
+        }
+      },
+      "symbol/N": {
+        "count": 4,
+        "trials": {
+          "current": {
+            "costMean100": 73.1679127647588,
+            "medianDiscDeltaE": 4.916667981250661,
+            "medianGlyphDeltaE": 14.091516532267057
+          },
+          "paper": {
+            "costMean100": 73.27720715742645,
+            "medianDiscDeltaE": 2.350460079509483,
+            "medianGlyphDeltaE": 14.119462529194976
+          },
+          "paper-ink": {
+            "costMean100": 72.81321503274376,
+            "medianDiscDeltaE": 2.350460079509483,
+            "medianGlyphDeltaE": 2.4264078322008937
+          }
+        }
+      }
+    },
+    "scope": "Actual shared disc and common ink targets through the production material preparation path. Native baseline PNGs, poses, cost scores and pixel isolation are independently verified from the cache. Targets use calibration pigment quantiles rather than edge-score optimization. Validation median disc error falls 2.27 to 1.01 Oklab units; ink falls 26.88 to 3.11. The whole-cost structural index falls 70.56 to 69.62/100, confirming that color/edge objectives must remain separate. Global circle and internal glyph/numeral geometry still need their own fit. No runtime profile adopted.",
     "wholeSetCertification": false
   }
 }

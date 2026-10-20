@@ -622,3 +622,24 @@ source glyph ink is also substantially darker than the scans. These findings
 identify the next shared native geometry/pigment fit. Quantile pigment probes
 and hypothetical validation targets do not certify rendered corrections, glyph
 shape, numeral placement, cost pitch or a completed set.
+
+## Unlimited native mana pigments
+
+`early-mana-color-fit.mjs NATIVE AUDIT OUTPUT` derives one disc target per symbol
+and a shared ink color from calibration-name quantiles. Its fixed 54-printing
+sample preserves single/multiple costs and both cohorts. Replay using
+`early-mana-color-replay.mjs NATIVE AUDIT DEFINITION OUT`; then independently
+verify cached PNGs with `early-mana-color-verify.mjs NATIVE COLOR_CAPTURE OUTPUT`.
+The study-only source plugin calls the production cached material pipeline.
+Every unchanged control matches the native PNG exactly, and all changed pixels
+remain in cost/rules regions with unchanged face alpha. No runtime data or
+external raster assets are installed by these tools.
+
+On 27 reused development validation names, median disc error improves from
+2.27→1.01 Oklab units and ink from 26.88→3.11. The whole-cost structural index
+moves 70.56→69.62/100. Pigment values are not chosen by that edge objective:
+lightening source ink to match printed ink can lower edge contrast. The initial
+shared geometry grid also prefers the unchanged control despite independently
+measured circle offsets. Fit outer circles/pitch separately from internal glyph
+shape/placement; preserve both component and whole-region results. This is not
+an all-cost fit, etching check, runtime adoption or completed set.
