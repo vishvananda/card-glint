@@ -217,7 +217,7 @@ candidate evidence rather than a completed frame calibration. The 15 basics and
 The independent outer stock-mask change improves all 302 measured boundaries,
 from a median residual of 0.957 to 0.112 canonical pixels. No title/type coverage,
 strict interior or face-alpha pixel changes. Etching outputs match but are empty
-in these inputs; do not treat that as a nonempty etching-mask certification.
+in these inputs; do not treat that as a nondefault etching-mask certification.
 
 The six ordinary Unlimited materials currently resolve no pigment correction
 with set HSB enabled. New frame/paper fits improve most reserved-cohort color
@@ -355,8 +355,8 @@ remaining difference includes source keyline geometry and antialiasing.
 
 The native replays verify original reference/pose identities, exact released
 baseline parity, unchanged illustration-core and face-alpha bytes, and unchanged
-empty etching outputs. Frame and paper texture samples remain in the selection
-objective. This does not validate nonempty etching or complete the set. The six
+default etching outputs. Frame and paper texture samples remain in the selection
+objective. This does not validate nondefault etching or complete the set. The six
 selected recipes are consolidated in `2ed-material-proposal.json`, still outside
 the runtime registry. All 25 land interiors and the subsequent typography,
 mana, art-window and whole-card checks remain open.
@@ -431,7 +431,7 @@ objective. The upper art strip is omitted because short heading descenders can
 enter it. Native verification then repeats the score on the actual full
 renderings. Maximum source-only prediction errors are 0.2–0.7 regional points.
 All original wording, source/definition identities, current native raster
-hashes, face alpha and empty etching layers are checked. Art placement is
+hashes, face alpha and default etching layers are checked. Art placement is
 intentionally adjusted to cover the source aperture; it is not certified by a
 frame-only score.
 
@@ -461,7 +461,7 @@ All ten duals have one shared prepared-composite geometry candidate. It improves
 the regional frame index from 64.6 to 67.1/100, with eight gains and two small
 regressions. Eight calibration names select the transform; the other two names
 are reused development checks. Native renders verify exact baseline parity,
-unchanged face alpha and empty etching, plus an art underlap covering all source
+unchanged face alpha and default etching, plus an art underlap covering all source
 apertures. This is not a full-card score or runtime adoption.
 
 Own-printing outline inspection selects white for Unlimited Tundra and blue for
@@ -486,7 +486,7 @@ the report instead of acquiring per-card color overrides. Colored rim accents,
 contrast/black levels and the ten composed duals still need color checks.
 
 The native verifier checks unchanged illustration cores, face alpha, white
-stock and empty etching hashes. Prediction error stays below 0.2 Oklab distance
+stock and default etching hashes. Prediction error stays below 0.2 Oklab distance
 units. These are development fits across three illustrations per name, not
 independent-name validation or whole-card accuracy scores. The compact replay
 archive stores the exact JSON strings needed to reconstruct hashed source
@@ -520,3 +520,49 @@ pixel offsets, font-size deltas and horizontal-scale percentage deltas. These
 regional command scores do not certify original ink/shadows, body text or an
 entire set. Native profile replay after material integration and full-set checks
 are still required; none of the individual probes become printing overrides.
+
+## Unlimited full-set body policy
+
+The 302 frozen original inputs have a native body candidate: the shared count/
+wrap model with an inset for ordinary medium blocks, retaining the native base
+for medium blocks above seven lines. The retention decision uses compiled font
+size and line count, never a card identity or scan. It preserves 32 entire native
+PNGs byte-for-byte. The regional body index rises from 51.0 to 59.0/100, with
+248 gains and 22 regressions. Calibration names alone select the rule; the
+101 validation printings are reused development evidence.
+
+Every actual selected score equals its prediction. All non-body pixels and face
+alpha match the baseline, and the default etching plane is byte-identical. The
+completed checkpoint reload checks all saved PNG hashes without rewriting the
+matrix or images. The current reviewed input audit finds 301 unchanged provided
+face values and one changed body: Dragon Whelp's inline quotation. Replay that
+one original input before calling the current full-set text work complete.
+
+`early-body-study.mjs NATIVE DEFINITION OUTPUT` measures a policy grid. Add a
+native output directory to replay current plus one selected rule. This mode
+checks full native isolation, silhouette and etching equality, and resumes only
+the same code/input/definition/pixel checkpoint. `early-region-select.mjs MATRIX
+DEFINITION OUTPUT density-guards` selects the shared body rule. The optional
+density guards reuse already measured identical recipes as predictions until
+the native branch replay verifies them.
+
+`early-body-verify.mjs NATIVE POLICY_MATRIX SELECTION NATIVE_MATRIX NATIVE_IMAGES
+OUTPUT` repeats score/isolation checks from cached PNGs in Node, without Chromium.
+`early-body-input-audit.mjs NATIVE CURRENT_PRINTING_INPUTS OUTPUT` identifies
+wording-dependent refreshes while preserving unchanged reference/art identities
+and poses. Use the tool revision recorded by each frozen receipt.
+
+The exact typography readback helper reads 693,824 RGBA bytes for the body window
+instead of 2,986,560 bytes for the entire native canvas. Its translated and
+fractional bilinear samples match the full readback exactly. This is offline
+Canvas2D readback accounting, not renderer throughput or GPU completion timing.
+
+Power/toughness has a separate 92-printing geometry probe. A common shift/size
+change improves the mean but regresses 26 cases, so it remains flagged for
+filled-ink, stroke-width and shadow review before adoption. Gray 130 is a fixed
+measurement control throughout these geometry studies.
+
+**Etching clarification:** the historical “empty etching” descriptions were
+incorrect. The unchanged default plane contains a fallback set mark with 13,366
+covered pixels. Existing byte-equality evidence remains valid. These studies do
+not supply an illustration-etch resolver or certify its output.

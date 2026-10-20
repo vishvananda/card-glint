@@ -1,14 +1,16 @@
 // Full-set native text policy matrix, sharing the production count/fit code.
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { readFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { PNG } from 'pngjs';
 import { openBrowser } from './browser.mjs';
-import { normalize } from './pixels-pure.mjs';
+import { normalize, cropGray } from './pixels-pure.mjs';
+import { JsTextObjective, nativeGrayCrop } from './abu-type-objective.mjs';
 import { hash, sourceHash, root, writeJson } from './common.mjs';
 
-const [nativeDirectory, definitionFile, output] = process.argv.slice(2);
-assert(output, 'Usage: early-body-study.mjs NATIVE_CAPTURE DEFINITION OUTPUT');
+const [nativeDirectory, definitionFile, output, nativeOutputDirectory] = process.argv.slice(2);
+if (nativeOutputDirectory) await mkdir(nativeOutputDirectory, { recursive: true });
+assert(output, 'Usage: early-body-study.mjs NATIVE_CAPTURE DEFINITION OUTPUT [NATIVE_OUTPUT]');
 const captureBytes = await readFile(path.join(nativeDirectory, 'capture.json'));
 const inputBytes = await readFile(path.join(nativeDirectory, 'inputs.json'));
 const definitionBytes = await readFile(definitionFile);
@@ -27,6 +29,12 @@ assert(
     (e) => e.set === '2ed' && e.pose.accepted && e.face.wordingMode === 'original',
   ),
 );
+if (nativeOutputDirectory)
+  assert.equal(
+    definition.candidates.length,
+    2,
+    'Native verification expects current plus one shared candidate',
+  );
 const transformed = {};
 const once = (code, needle, replacement) => {
   assert.equal(code.split(needle).length, 2, 'Typography study hook changed');
@@ -52,7 +60,21 @@ const session = await openBrowser(inputs, {
             '  if (!rulesInkVisible(context)) return;',
             '  if ((globalThis as any).__abuBody?.(context, layout, images, paintSymbol, inkInsetEm, color)) return;\n  if (!rulesInkVisible(context)) return;',
           );
-        else if (file === 'abu-type-browser.mjs') {
+        else if (
+          file === 'abu-count-layout.mjs' &&
+          definition.candidates.some((c) => c.adjustment.retainRegularAboveLines !== undefined)
+        ) {
+          code = once(
+            code,
+            "  if (!base) throw Error('Count study requires the native base layout');",
+            `  if (!base) throw Error('Count study requires the native base layout');
+  const limit=options.retainRegularAboveLines;
+  if(limit!==undefined){
+    if(!Number.isInteger(limit)||limit<1)throw Error('Invalid shared regular density limit');
+    if(base.size>=19&&base.size<30&&base.lines.length>limit)return base;
+  }`,
+          );
+        } else if (file === 'abu-type-browser.mjs') {
           code = "import {nativeTextWindow} from './native-text-window.mjs';\n" + code;
           code = once(
             code,
@@ -96,6 +118,7 @@ const session = await openBrowser(inputs, {
   ],
 });
 const rows = [];
+const studyToolHash = hash(await readFile(new URL(import.meta.url)));
 const dependencies = await Promise.all(
   [
     'abu-type-browser.mjs',
@@ -108,10 +131,49 @@ const dependencies = await Promise.all(
   ].map(async (file) => [file, hash(await readFile(new URL(file, import.meta.url)))]),
 );
 try {
+  let prior;
+  try {
+    prior = JSON.parse(await readFile(output, 'utf8'));
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+  if (prior) {
+    for (const [key, value] of Object.entries({
+      rendererHash,
+      nativeCaptureHash: hash(captureBytes),
+      nativeInputsHash: hash(inputBytes),
+      definitionHash: hash(definitionBytes),
+      toolHash: studyToolHash,
+      nativeVerification: Boolean(nativeOutputDirectory),
+    }))
+      assert.equal(prior[key], value, 'Stale body checkpoint: ' + key);
+    assert.deepEqual(prior.dependencies, dependencies);
+    assert.equal(prior.completed, prior.rows.length);
+    for (let i = 0; i < prior.rows.length; i++) {
+      const row = prior.rows[i],
+        entry = inputs.entries[i],
+        original = capture.rows.find((r) => r.id === entry.id);
+      assert.equal(row.id, entry.id);
+      assert.equal(row.baselineHash, original.renderHash);
+      assert.equal(row.nativeScanHash, original.scanHash);
+      assert.equal(row.poseHash, original.poseHash);
+      if (nativeOutputDirectory) {
+        assert.equal(
+          hash(await readFile(path.join(nativeOutputDirectory, row.id + '.png'))),
+          row.native.faceHash,
+        );
+        assert.equal(
+          hash(await readFile(path.join(nativeOutputDirectory, row.id + '-etching.png'))),
+          row.native.etchingHash,
+        );
+      }
+      rows.push(row);
+    }
+  }
   await session.page.evaluate(async () => {
     globalThis.__bodyStudy = await import('/games/magic/tools/accuracy/abu-type-browser.mjs');
   });
-  for (const e of inputs.entries) {
+  for (const e of inputs.entries.slice(rows.length)) {
     const before = capture.rows.find((r) => r.id === e.id);
     assert(before && before.accepted);
     assert.equal(before.referenceHash, e.reference.sha256);
@@ -180,6 +242,98 @@ try {
         };
       });
     }, definition);
+    let native;
+    if (nativeOutputDirectory) {
+      const candidate = definition.candidates[1];
+      const actual = await session.page.evaluate(async (adjustment) => {
+        const s = globalThis.__abuState;
+        const result = await globalThis.__bodyStudy.nativeRulesTrial(adjustment);
+        const { composeCardTexture } = await import('/games/magic/src/presentation/canvas-face.ts');
+        const control = await composeCardTexture(
+          { ...s.input, layer: 'etching' },
+          'inspect',
+          new AbortController().signal,
+          { loadImages: async () => ({ ...s.lease, dispose() {} }) },
+        );
+        let controlEtching;
+        try {
+          controlEtching = control.toDataURL().split(',')[1];
+        } finally {
+          control.width = control.height = 0;
+        }
+        let bodyCalls = 0,
+          etch;
+        globalThis.__abuBody = () => {
+          bodyCalls++;
+          throw Error('Old-frame etching unexpectedly paints rules');
+        };
+        try {
+          etch = await composeCardTexture(
+            { ...s.input, layer: 'etching' },
+            'inspect',
+            new AbortController().signal,
+            { loadImages: async () => ({ ...s.lease, dispose() {} }) },
+          );
+          return {
+            ...result,
+            controlEtching,
+            etching: etch.toDataURL().split(',')[1],
+            etchingBodyCalls: bodyCalls,
+          };
+        } finally {
+          delete globalThis.__abuBody;
+          if (etch) etch.width = etch.height = 0;
+        }
+      }, candidate.adjustment);
+      const faceBytes = Buffer.from(actual.png, 'base64'),
+        etchingBytes = Buffer.from(actual.etching, 'base64');
+      const facePixels = PNG.sync.read(faceBytes),
+        beforePixels = PNG.sync.read(Buffer.from(prepared.png, 'base64')),
+        etchingPixels = PNG.sync.read(etchingBytes);
+      assert.deepEqual([facePixels.width, facePixels.height], [732, 1020]);
+      assert.equal(actual.etchingBodyCalls, 0);
+      assert.equal(
+        hash(etchingBytes),
+        hash(Buffer.from(actual.controlEtching, 'base64')),
+        'Body policy changed the default etching plane',
+      );
+      let etchingCoveredPixels = 0;
+      for (let i = 3; i < etchingPixels.data.length; i += 4)
+        if (etchingPixels.data[i]) etchingCoveredPixels++;
+      for (let i = 3; i < facePixels.data.length; i += 4)
+        assert.equal(facePixels.data[i], beforePixels.data[i], 'Body policy changed silhouette');
+      const rect = [54, 405, 390, 197],
+        objective = new JsTextObjective(cropGray(reference, rect).gray, rect[2], rect[3]);
+      const score = objective.score(nativeGrayCrop(facePixels, rect))[0],
+        predicted = trials[1].score;
+      assert(Math.abs(score - predicted) <= 0.005, 'Native body prediction error: ' + e.name);
+      const control = trials[0],
+        limit = candidate.adjustment.retainRegularAboveLines;
+      const retainedBase =
+        limit !== undefined && control.size >= 19 && control.size < 30 && control.lineCount > limit;
+      if (retainedBase)
+        assert.equal(
+          hash(faceBytes),
+          before.renderHash,
+          'Density retention changed a full native face',
+        );
+      await writeFile(path.join(nativeOutputDirectory, e.id + '.png'), faceBytes);
+      await writeFile(path.join(nativeOutputDirectory, e.id + '-etching.png'), etchingBytes);
+      native = {
+        faceHash: hash(faceBytes),
+        etchingHash: hash(etchingBytes),
+        controlEtchingHash: hash(Buffer.from(actual.controlEtching, 'base64')),
+        etchingCoveredPixels,
+        score,
+        predictedScore: predicted,
+        predictionError: Math.abs(score - predicted),
+        maximumReplayGrayError: actual.maximum,
+        outsideChangedBytes: actual.outside,
+        silhouetteChanged: 0,
+        etchingBodyCalls: actual.etchingBodyCalls,
+        retainedBase,
+      };
+    }
     await session.page.evaluate(() => globalThis.__bodyStudy.finish());
     rows.push({
       id: e.id,
@@ -197,6 +351,7 @@ try {
       baselineHash: before.renderHash,
       zeroReplayMaximumError: prepared.parity,
       trials,
+      ...(native ? { native } : {}),
     });
     if (rows.length % 10 === 0 || rows.length === inputs.entries.length) {
       await writeJson(output, {
@@ -206,14 +361,16 @@ try {
           rows.length === inputs.entries.length
             ? 'native-body-policy-matrix-complete'
             : 'native-body-policy-matrix-in-progress',
-        scope:
-          'Original text only, all supplied Unlimited printings, fixed independently normalized scans and unchanged full native current PNGs. Candidate policies use the production count/wrap code. Every accepted trial preserves the entire rendered text sequence. Cropped Canvas2D readback uses the exact existing bilinear footprint, not a resized crop. No per-card fit or runtime adoption; independent native candidate isolation and whole-set validation remain required.',
+        scope: nativeOutputDirectory
+          ? 'One shared original-text body policy replayed through the full native painter on every Unlimited printing. Independent frozen scans, exact current PNGs, complete text sequences, cropped readback parity, actual score predictions and zero changes outside the rules region are checked. Face alpha stays unchanged. Dense regular retention must preserve the entire current PNG byte-for-byte. The default etching plane is composed before/after and must be byte-identical without running a body callback; its coverage is recorded rather than assumed empty. Hash-bound checkpoints resume only the same code, inputs, policies and pixels. This is still a regional candidate, not material integration or complete-set certification.'
+          : 'Original text only, all supplied Unlimited printings, fixed independently normalized scans and unchanged full native current PNGs. Candidate policies use the production count/wrap code. Every accepted trial preserves the entire rendered text sequence. Cropped Canvas2D readback uses the exact existing bilinear footprint, not a resized crop. No per-card fit or runtime adoption; independent native candidate isolation and whole-set validation remain required.',
         rendererHash,
         nativeCaptureHash: hash(captureBytes),
         nativeInputsHash: hash(inputBytes),
         definitionHash: hash(definitionBytes),
         definition,
-        toolHash: hash(await readFile(new URL(import.meta.url))),
+        toolHash: studyToolHash,
+        nativeVerification: Boolean(nativeOutputDirectory),
         dependencies,
         transformed,
         browser: session.browser.version(),

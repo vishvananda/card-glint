@@ -331,7 +331,7 @@
       "W": "keyline-1p5"
     },
     "nativeArtCoreAndAlphaUnchanged": true,
-    "etchingScope": "Empty layers unchanged; no nonempty etching certification."
+    "etchingScope": "Empty layers unchanged; no nondefault etching certification."
   },
   "basicLandMaterials": {
     "WL": {
@@ -541,7 +541,7 @@
         "maximumPredictionError": 0.00429590592702167
       }
     },
-    "scope": "One transform for ten duals. Eight calibration names select it; two reserved names are reused development validation. Source preparation uses the unchanged production material pipeline. Fixed opaque support excludes art and nearby text. Exact original printing inputs, independent scan poses, source/definition hashes, current native PNGs, face alpha and empty etching layers are checked. A common one-pixel art underlap covers all ten source apertures; art placement changes and is not scored here. These regional indices do not certify colors, typography, full-card scores or complete the set."
+    "scope": "One transform for ten duals. Eight calibration names select it; two reserved names are reused development validation. Source preparation uses the unchanged production material pipeline. Fixed opaque support excludes art and nearby text. Exact original printing inputs, independent scan poses, source/definition hashes, current native PNGs, face alpha and default etching layers are checked. A common one-pixel art underlap covers all ten source apertures; art placement changes and is not scored here. These regional indices do not certify colors, typography, full-card scores or complete the set."
   },
   "dualLandOutlineColors": {
     "Badlands": "B",
@@ -800,5 +800,26 @@
         }
       }
     }
+  },
+  "bodyPolicyCandidate": {
+    "status": "full-native-frozen-input-candidate-current-wording-refresh-open",
+    "source": "2ed-body-native-verification.json.gz",
+    "options": {
+      "policy": "count",
+      "mediumSize": 22.5,
+      "denseWidth": 1,
+      "transferAlphaModel": true,
+      "centeredDx": -6.5,
+      "regularWidthDelta": 8,
+      "regularDx": -2,
+      "retainRegularAboveLines": 7
+    },
+    "currentInputReplayPending": ["7ad8ab3d-8a77-4fd3-8d5a-ac1e8a09e3bc"],
+    "integrationScope": "These study options need a typed set-profile adapter. Retention based on dense regular originals must not undo safe Oracle insets or shrinking. Recheck against the final prepared frame/material pipeline before release."
+  },
+  "powerToughnessProbe": {
+    "status": "shared-geometry-probe-needs-ink-and-shadow-review",
+    "source": "2ed-stats-policy-selection.json.gz",
+    "review": "The global position/size probe improves the regional mean but regresses 26 of 92 cases, up to 11.1 points. Zoom inspection shows stroke/ink contrast differences, including 1/x examples; resolve ink/stroke/shadow matching before accepting a universal positional refit. No per-card stats overrides are proposed."
   }
 }
