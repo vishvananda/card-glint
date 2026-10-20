@@ -48,8 +48,12 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
     });
   for (const [key, frame] of Object.entries(profile.frames)) {
     if (!frame) continue;
-    for (const rect of ['frame', 'art', 'stockWindow'] as const)
-      frame[rect].forEach((value, i) =>
+    for (const rect of [
+      'frame',
+      'art',
+      frame.stockMaskFrame ? 'stockMaskFrame' : 'stockWindow',
+    ] as const)
+      frame[rect]!.forEach((value, i) =>
         number(
           `frames.${key}.${rect}.${i}`,
           value,
@@ -126,6 +130,19 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
         key === 'scale' ? 0.005 : 0.25,
         key === 'scale' ? 'ratio' : 'px',
       );
+  for (const [color, policy] of Object.entries(profile.mana.sourceInk ?? {})) {
+    if (policy)
+      number(
+        `mana.sourceInk.${color}.pixels`,
+        policy.pixels,
+        'symbols',
+        color,
+        0,
+        1,
+        0.05,
+        'px per 24px disc',
+      );
+  }
   for (const [key, symbol] of Object.entries(profile.setSymbols ?? {})) {
     if (!symbol) continue;
     for (const name of ['right', 'centerY', 'width', 'height', 'outline'] as const)

@@ -50,6 +50,8 @@ export async function calibrationReport(ledger) {
           assert.ok(!file.startsWith('/') && !file.split('/').includes('..'));
           const changedScope = group.kind === 'planeswalker' || set.set === 'm15';
           const guardKey =
+            set.set +
+            ':' +
             (earlyAffected ? 'early-current:' : 'early-compatible:') +
             (changedScope ? 'changed:' : 'other:') +
             (set.set === 'm21' ? 'm21-body-compatible:' : 'body-current:') +
@@ -64,7 +66,7 @@ export async function calibrationReport(ledger) {
                 earlyAffected || changedScope ? early : await preWalkerSource(file, early);
               const ancestral =
                 file === 'games/magic/src/presentation/retro-paint.ts'
-                  ? await preAlphaEditorSource(file, scoped)
+                  ? await preAlphaEditorSource(file, scoped, set.set)
                   : scoped;
               checked.set(
                 guardKey,

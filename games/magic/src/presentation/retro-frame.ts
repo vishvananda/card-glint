@@ -200,7 +200,8 @@ export function retroAssets(face: RenderedCardInput) {
     dual?.mask,
     !isRevisedLand(face) &&
     !usesRevisedFrameGeometry(face) &&
-    (retroBorder(face) !== 'black' ||
+    (earlyReprintFrame(face)?.stockMaskFrame ||
+      retroBorder(face) !== 'black' ||
       retroFamily(face) === 'fourth' ||
       hasPrintingStockCandidate(face))
       ? retroBorderMask(face)

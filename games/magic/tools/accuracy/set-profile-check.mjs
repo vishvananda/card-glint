@@ -32,6 +32,7 @@ export function checkSetProfile(profile, review, manifest) {
     assert.ok(['abu', 'fourth'].includes(frame.family));
     assert.match(frame.assetKey, /^[a-z]+$/);
     for (const field of ['frame', 'art', 'stockWindow']) rect(frame[field]);
+    if (frame.stockMaskFrame !== undefined) rect(frame.stockMaskFrame);
     const source = JSON.stringify([
       `${manifest.RETRO_ROOT}/img/frames/old/${frame.family}/${frame.assetKey}.png`,
       frame.frame,
@@ -45,6 +46,18 @@ export function checkSetProfile(profile, review, manifest) {
         );
         assert.match(adjustment.stock, /^#[0-9a-f]{6}$/i);
       }
+  }
+  for (const [color, ink] of Object.entries(profile.mana.sourceInk ?? {})) {
+    assert.match(color, /^[WUBRG]$/, 'Source ink requires a colored mana symbol');
+    assert.ok(['conjurer-old', 'mse-old'].includes(ink.family), 'Unsupported source ink family');
+    assert.ok(
+      typeof ink.pixels === 'number' && ink.pixels >= 0 && ink.pixels <= 1,
+      'Invalid source ink pixels',
+    );
+    assert.ok(
+      ink.paperSample === undefined || ink.paperSample === 'opaque-percentile',
+      'Unsupported source paper sampler',
+    );
   }
   for (const p of [profile.title, profile.type, ...Object.values(profile.footer)]) lettering(p);
   for (const symbol of Object.values(profile.setSymbols ?? {})) {
@@ -69,10 +82,14 @@ if (process.argv[1]?.endsWith('/set-profile-check.mjs')) {
     optimizeDeps: { noDiscovery: true },
   });
   try {
+    await server.ssrLoadModule('/games/magic/src/data/eager.ts');
+    const { profileSets } = await server.ssrLoadModule('/games/magic/src/data/scopes.ts');
     const { setCalibrationProfiles } = await server.ssrLoadModule(
       '/games/magic/src/calibration/profiles.ts',
     );
     const manifest = JSON.parse(await readFile(new URL('../../assets.json', import.meta.url)));
+    assert.ok(profileSets.length > 0, 'No full profiles registered');
+    assert.deepEqual(Object.keys(setCalibrationProfiles).sort(), [...profileSets].sort());
     for (const [set, profile] of Object.entries(setCalibrationProfiles)) {
       const { review } = await server.ssrLoadModule(`/games/magic/src/calibration/sets/${set}.ts`);
       checkSetProfile(profile, review, manifest);

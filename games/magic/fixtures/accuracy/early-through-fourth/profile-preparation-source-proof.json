@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "scope": "Historical-source reconstruction for optional profile preparation capabilities only. Existing stock-window/mana defaults are unchanged; source mask placement and source-bound ink/sampler become active only through new profile data. Exact before/current source bytes, 25,200 metadata cases and 302 actual original native PNG pairs support this bridge. No native Alpha/Beta or other-set PNG parity is claimed. Relevant changed or newly added profile files must bypass restoration and retain current source guards. Unknown source edits reject. This does not promote a profile or establish whole-card accuracy.",
+  "base": "d61a7c683326022bc2f13109bfde8c4ccb4b11f1",
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/early-through-fourth/profile-preparation-parity.json.gz",
+    "sha256": "f8b314096be4561bd5661c4465c0258815cca3135d7a126b71e450c375b65eb8",
+    "contentSha256": "744226ae91c5d1e2d7fa8ccea364e8f76bc37afdc29216f4e3fc8c63457cadc7"
+  },
+  "profileDependencies": {
+    "games/magic/src/calibration/sets/4ed.ts": "579d0bc0a118800002af346bf0ea0cbb85ae5243d5de8f80783a941c777effee",
+    "games/magic/src/calibration/sets/chr.ts": "36c7f45ffd40312153191fe250a79da9fc8ec88dd943aa454dcfcc7acb85cb42",
+    "games/magic/src/calibration/sets/fem.ts": "f353881676d4805ee69bcec760fb5b784fe9c9aee044adf093a7a04ad0687ba6"
+  },
+  "files": {
+    "games/magic/src/calibration/types.ts": {
+      "before": "099279e5d7dc1b9f54150a05779440701622d846ff0000f3130540e625dfadf1",
+      "after": "d762f7cba75e9bb1bff260ec3dfa6c8e279de88da54a57ad1b54e54b76ba37a0",
+      "reverseEdits": [
+        {
+          "start": 75,
+          "count": 14,
+          "lines": []
+        },
+        {
+          "start": 15,
+          "count": 3,
+          "lines": []
+        },
+        {
+          "start": 3,
+          "count": 2,
+          "lines": [
+            "import type { ManaSymbolTransform } from '../presentation/symbol-adjustment.js';\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/calibration/editor-controls.ts": {
+      "before": "0f25bd571b3e3526eaf00430293051cc26d8a017d3dbba9d18c7baf6abe5d720",
+      "after": "8043d98b6b8cbc1897dded9c4f7458f09715c58d68081b16e2750848822bbe43",
+      "reverseEdits": [
+        {
+          "start": 132,
+          "count": 13,
+          "lines": []
+        },
+        {
+          "start": 50,
+          "count": 6,
+          "lines": [
+            "    for (const rect of ['frame', 'art', 'stockWindow'] as const)\n",
+            "      frame[rect].forEach((value, i) =>\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-frame.ts": {
+      "before": "4f9785564dfb0dedfcb0daa4701bd40e18639135ed5471cc5b41c1d7e79315d1",
+      "after": "976113f3bf2e88d4ead95f2d87706db3852c630798fc5fd17dc36b76c5c6f2af",
+      "reverseEdits": [
+        {
+          "start": 36,
+          "count": 1,
+          "lines": ["      if (set !== '4ed' || landColors.length !== 1) return undefined;\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/historical-mana.ts": {
+      "before": "16edb435aa443b58617f57e5c0d5390492807cdd937b709f1fb71d8bddef78e6",
+      "after": "67fb31e9b48c6d3b220ec3c69cbf41566f1fdbb2aac07cbb5a8f03ee7de1cf58",
+      "reverseEdits": [
+        {
+          "start": 44,
+          "count": 1,
+          "lines": ["  if (ink.paperSample && !earlyExpansionMana(face)) return undefined;\n"]
+        },
+        {
+          "start": 37,
+          "count": 6,
+          "lines": [
+            "  const ink = MANA_PRINTING_INK[`${face.setCode?.toLowerCase()}/${symbol}`];\n"
+          ]
+        },
+        {
+          "start": 5,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-frame.ts": {
+      "before": "065dbaa6e24b17916496537007b9ab97393f9337cae29620f237c072edd580c6",
+      "after": "016eefc11632f16d48056ae0edd65308d6b242225b4fb0caaef26b1b602f9530",
+      "reverseEdits": [
+        {
+          "start": 202,
+          "count": 2,
+          "lines": ["    (retroBorder(face) !== 'black' ||\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "b00adab7f49a95453e98c64adf6aa41771c1a33156b2bb5085a1bdc81a5edcd1",
+      "after": "ae52bce2ef1fd4a4459ac9202f75195c39505cb9c35347f73218c1b31f23b989",
+      "reverseEdits": [
+        {
+          "start": 121,
+          "count": 6,
+          "lines": ["  if (stockWindow) {\n"]
+        }
+      ]
+    }
+  }
+}

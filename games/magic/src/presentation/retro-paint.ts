@@ -119,7 +119,12 @@ export function paintRetroFace(
     earlyReprintFrame(face)?.stockWindow ??
     earlyExpansionFrame(face)?.stockWindow ??
     legendsFrame(face)?.stockWindow;
-  if (stockWindow) {
+  const stockMaskFrame = earlyReprintFrame(face)?.stockMaskFrame;
+  if (stockMaskFrame) {
+    const mask = images.get(retroBorderMask(face));
+    if (!mask) throw Error('Calibrated historical stock mask is unavailable.');
+    paintRetroStockBorder(c, mask, retroPx(stockMaskFrame), stock);
+  } else if (stockWindow) {
     paintRetroStockWindow(c, retroPx(stockWindow), stock);
   } else if (isRevisedLand(face) || usesRevisedFrameGeometry(face)) {
     c.save();

@@ -34,7 +34,7 @@ export function earlyReprintFrame(face: RenderedCardInput) {
     const basic = basics[face.name];
     const landColors = face.frameColors ?? (basic ? [basic] : []);
     if (landColors.length) {
-      if (set !== '4ed' || landColors.length !== 1) return undefined;
+      if (landColors.length !== 1) return undefined;
       material = `L-${landColors[0]}`;
     } else material = 'L';
   } else

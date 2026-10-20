@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { preProfilePreparationSource } from './profile-preparation-ancestry.mjs';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { preUnlimitedEmptySource } from './unlimited-empty-ancestry.mjs';
@@ -69,6 +70,7 @@ export async function earlyCalibrationAffected(set, group, task, originalInput =
 /** Source restoration is used only after the caller chooses an unaffected
  * component. It must not approve a changed component's historical fit. */
 export async function preEarlyCalibrationSource(file, bytes, set) {
+  bytes = await preProfilePreparationSource(file, bytes, set);
   bytes = await preM21BodyFieldSource(file, bytes, set);
   bytes = await preOracleInsetSource(file, bytes);
   const proof = await earlyProof();

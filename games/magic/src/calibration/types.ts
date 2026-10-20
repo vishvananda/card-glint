@@ -1,7 +1,8 @@
 import type { FaceRect } from '../presentation/face-layout.js';
 import type { FrameHsb } from '../presentation/frame-hsb.js';
 import type { Rgb } from '../presentation/hsb.js';
-import type { ManaSymbolTransform } from '../presentation/symbol-adjustment.js';
+import type { ManaSymbolTransform, ManaColor } from '../presentation/symbol-adjustment.js';
+import type { ManaGlyphFamily } from '../presentation/historical-mana-profiles.js';
 import type { RulesTypography } from '../presentation/rules-layout.js';
 import type { CalibrationRulesAdjustment } from './rules-adjustment.js';
 
@@ -12,6 +13,9 @@ export interface CalibratedFrame {
   readonly frame: FaceRect;
   readonly art: FaceRect;
   readonly stockWindow: FaceRect;
+  /** Use the pinned family stock mask at an independent placement. When present,
+   * this preserves its curved aperture instead of drawing stockWindow. */
+  readonly stockMaskFrame?: FaceRect;
 }
 export interface CalibratedLettering {
   readonly x: number;
@@ -69,6 +73,20 @@ export interface SetCalibrationProfile {
     readonly geometry: ManaSymbolTransform;
     readonly paper: Readonly<Partial<Record<string, Rgb>>>;
     readonly ink: Rgb;
+    /** Source-bound stroke weight and paper sampler are one preparation policy.
+     * Values are pixels per nominal 24px disc, not output-resolution pixels. */
+    readonly sourceInk?: Readonly<
+      Partial<
+        Record<
+          ManaColor,
+          {
+            readonly family: Exclude<ManaGlyphFamily, 'modern' | 'historic-font'>;
+            readonly pixels: number;
+            readonly paperSample?: 'opaque-percentile';
+          }
+        >
+      >
+    >;
   };
   readonly title: CalibratedLettering;
   readonly type: CalibratedLettering;

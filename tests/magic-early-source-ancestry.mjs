@@ -94,3 +94,73 @@ for (const [file, entry] of Object.entries(oracleProof.files)) {
 console.log(
   'Oracle-only source restoration verifies 295 identical original layouts and rejects unknown edits.',
 );
+
+const { preProfilePreparationSource } = await import(
+  '../games/magic/tools/accuracy/profile-preparation-ancestry.mjs'
+);
+const preparation = JSON.parse(
+  await readFile(
+    'games/magic/fixtures/accuracy/early-through-fourth/profile-preparation-source-proof.json',
+  ),
+);
+for (const [file, entry] of Object.entries(preparation.files)) {
+  const bytes = await readFile(file);
+  assert.equal(hash(await preProfilePreparationSource(file, bytes, 'lea')), entry.before);
+  assert.equal(hash(await preProfilePreparationSource(file, bytes, '4ed')), entry.before);
+  assert.equal(hash(await preProfilePreparationSource(file, bytes)), entry.before);
+  await assert.rejects(
+    preProfilePreparationSource(
+      file,
+      Buffer.concat([bytes, Buffer.from('// unknown helper edit')]),
+      'lea',
+    ),
+    /Unreviewed/,
+  );
+  assert.deepEqual(
+    await preProfilePreparationSource(file, bytes, '4ed', async () =>
+      Buffer.from('changed set data'),
+    ),
+    bytes,
+    'A changed profile must keep current source guards',
+  );
+  assert.deepEqual(
+    await preProfilePreparationSource(file, bytes, '2ed', async () =>
+      Buffer.from('new full profile'),
+    ),
+    bytes,
+    'Newly activated profiles must not inherit historical helper guards',
+  );
+  assert.deepEqual(await preProfilePreparationSource(file, bytes, '../'), bytes);
+  const scopesPath = 'games/magic/src/data/scopes.ts';
+  const scopes = await readFile(scopesPath);
+  const activeAlias = async (path) =>
+    path === scopesPath
+      ? Buffer.from(
+          scopes.toString().replace("['4ed', 'chr', 'fem']", "['4ed', 'chr', 'fem', '2ed']"),
+        )
+      : path.endsWith('/2ed.ts')
+        ? undefined
+        : readFile(path);
+  assert.deepEqual(
+    await preProfilePreparationSource(file, bytes, '2ed', activeAlias),
+    bytes,
+    'A newly registered full profile must bypass restoration even without a matching filename',
+  );
+  assert.deepEqual(
+    await preProfilePreparationSource(file, bytes, undefined, activeAlias),
+    bytes,
+    'Unscoped restoration cannot ignore newly registered full profiles',
+  );
+  const removed = async (path) =>
+    path === scopesPath
+      ? Buffer.from(scopes.toString().replace("['4ed', 'chr', 'fem']", "['chr', 'fem']"))
+      : readFile(path);
+  assert.deepEqual(
+    await preProfilePreparationSource(file, bytes, '4ed', removed),
+    bytes,
+    'Removed profile membership invalidates its old helper guards',
+  );
+}
+console.log(
+  'Profile preparation ancestry: 302 actual native pairs and 25,200 metadata cases; inactive defaults restore, changed/new profiles bypass restoration, unknown edits reject.',
+);

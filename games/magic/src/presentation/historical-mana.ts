@@ -3,6 +3,8 @@ import { HISTORICAL_MANA_GLYPHS, HISTORICAL_MANA_ASSETS } from './historical-man
 import { MANA_PRINTING_INK } from '../data/tables.js';
 import { earlyExpansionMana } from './early-expansion-mana.js';
 import { earlyReprintMana } from './early-reprint-mana.js';
+import { calibrationForFace } from '../calibration/selection.js';
+import type { ManaColor } from './symbol-adjustment.js';
 
 /** Glyph choice belongs to each printing/color, independently of its frame and
  * wording. Explicit original symbols also work with Oracle text. */
@@ -33,8 +35,13 @@ export function historicalManaPaperSample(face: RenderedCardInput, symbol: strin
 }
 
 function printingInk(face: RenderedCardInput, symbol: string) {
-  const ink = MANA_PRINTING_INK[`${face.setCode?.toLowerCase()}/${symbol}`];
+  const reprint = earlyReprintMana(face);
+  const measured =
+    reprint && /^[WUBRG]$/.test(symbol)
+      ? calibrationForFace(face)!.mana.sourceInk?.[symbol as ManaColor]
+      : undefined;
+  const ink = measured ?? MANA_PRINTING_INK[`${face.setCode?.toLowerCase()}/${symbol}`];
   if (!ink || ink.family !== historicalManaFamily(face, symbol)) return undefined;
-  if (ink.paperSample && !earlyExpansionMana(face)) return undefined;
+  if (ink.paperSample && !earlyExpansionMana(face) && !reprint) return undefined;
   return ink;
 }

@@ -233,3 +233,33 @@ The LEA title file is scoped calibration data. Its revision participates in the
 face texture key, and its hash guards LEA calibration evidence. Updating it does
 not require rewriting the historical shared-code migration proof. Keep the
 module inert and literal; shared painter changes still require separate review.
+
+### Independent historical stock masks and mana source ink
+
+ABU/Fourth full profiles may specify `frames[material].stockMaskFrame`, a normalized
+rectangle for the pinned family stock mask. The mask preserves the source aperture's
+curves independently of the texture placement in `frame`. When present, it replaces
+`stockWindow` for painting and editor controls; retain `stockWindow` as fallback data.
+The asset loader prepares the mask with the other static face assets and rejects a
+missing mask. A per-color land requires its own `L-W`, `L-U`, `L-B`, `L-R` or `L-G`
+frame entry; an absent plate is not substituted from another color. Multicolor land
+plates require separate support.
+
+`mana.sourceInk[color]` may bind stroke expansion to `family: 'conjurer-old'` or
+`'mse-old'`, with `pixels` from 0 to 1 per nominal 24-pixel disc. It only applies
+when the selected original glyph family matches. An optional
+`paperSample: 'opaque-percentile'` keeps dark expanded strokes out of the paper
+sample; fit stroke and sampling policy together. Modern-symbol and explicit custom
+frame choices keep their own policy. The editor exposes the numeric expansion;
+source family and sampler remain fixed source decisions in the same profile file.
+Check these additions with `npm run magic:calibration:check` and
+`npm run test:calibration-editor`. Run `node tests/magic-profile-preparation.mjs`
+with Chromium installed for native stock-mask placement and source-ink validation;
+the full accuracy suite includes it after browser installation.
+
+These optional capabilities do not themselves complete a set. The preparation
+receipt contains 302 actual native Original Unlimited before/after pairs and
+25,200 metadata cases across 15 sets. Other sets have metadata parity only in that
+receipt. Historical helper guards are reconstructed only for exact reviewed source
+bytes with unchanged, inactive profile data. New or changed full profiles retain
+current source guards and need fresh fit evidence; they cannot inherit the old fit.
