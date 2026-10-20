@@ -376,6 +376,11 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-land-accent-replay.json.gz",
       "sha256": "fef3ef5a2f72815d3e749b3a4f410029a4360f6b647f377b17dabed608527a32",
       "contentSha256": "7239c46109ce99606b5aa2904c7f867c929774b8ecd1cf1c537715a019f90b08"
+    },
+    "2ed-mana-native-audit": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-native-audit.json.gz",
+      "sha256": "19ff476afd550bfed10bec7a031df1fab469c03f8046b0f0cd685045286a6984",
+      "contentSha256": "a3aa0e23251a470486f8e3943a9a91ee2f11e50c61e9b27c9411b1f4ef633e5f"
     }
   },
   "native": {
@@ -1317,7 +1322,7 @@
     "wording": "Current Dragon Whelp original-body refresh is verified with all 302 native body results. Reuse this reviewed provided input; do not run an older wording resolver over it during final profile verification.",
     "typography": "Measure filled ink/stroke/shadow values separately from fixed-gray geometry; retain MPlantin credits unless new evidence supports another face.",
     "body": "Integrate shared count/wrap and medium-density retention with original/Oracle safety preserved; verify final full native inputs.",
-    "mana": "Disc/glyph/numeral size, pitch/placement and paper/ink color remain open.",
+    "mana": "All 277 cost perimeters have measured native baselines. Fit common dx/dy/diameter and spacing, separate glyph/numeral sizing, and disc/ink pigment. The black disc currently uses the pale generic source color; preserve color-specific targets. Verify active native controls before integration.",
     "footer": "Preserve printed Illus. \u00a9 prefix and absence of a separate Unlimited legal line.",
     "receipts": "Scoped integration and source-equivalence evidence must preserve immutable historical receipts and avoid reopening unrelated sets.",
     "completion": "Full profile/whole-card validation and visual boundary certification are still required. No renderer profile is adopted by these study files."
@@ -1386,6 +1391,269 @@
     "faceAlphaChanged": 0,
     "defaultEtchingChanged": false,
     "scope": "One source-local outline adjustment per basic color, shared across its three illustrations. Fixed projected line strips measure color; shared source rings and hue weights apply it during cached material preparation. Group means improve for all five colors, but black median error rises and four individual printings regress. Preserve every residual, including the 3.83-unit white regression. No per-card palette or per-scan offset/color fit; no independent-name validation. Land contrast/black levels and dual composite/pinline colors still need checks.",
+    "wholeSetCertification": false
+  },
+  "manaAudit": {
+    "status": "native-perimeter-and-pigment-diagnostic-not-adopted",
+    "source": "2ed-mana-native-audit.json.gz",
+    "printings": 277,
+    "acceptedPerimeters": 277,
+    "rejectedPerimeters": 0,
+    "groups": {
+      "W": {
+        "total": 46,
+        "accepted": 46,
+        "all": {
+          "count": 46,
+          "geometry": {
+            "dx": -1,
+            "dy": 0.9375,
+            "diameter": -0.5
+          },
+          "discDeltaE": 1.2078383403515416,
+          "glyphDeltaE": 14.036180021395193,
+          "targetDiscRgb": [0.9098039215686274, 0.9098039215686274, 0.8392156862745098]
+        },
+        "calibration": {
+          "count": 35,
+          "geometry": {
+            "dx": -1,
+            "dy": 0.75,
+            "diameter": -0.5
+          },
+          "discDeltaE": 1.2963999752649196,
+          "glyphDeltaE": 13.133092545015698,
+          "targetDiscRgb": [0.907843137254902, 0.907843137254902, 0.8392156862745098]
+        },
+        "validation": {
+          "count": 11,
+          "geometry": {
+            "dx": -1,
+            "dy": 1.375,
+            "diameter": -0.5
+          },
+          "discDeltaE": 1.055501758503242,
+          "glyphDeltaE": 15.958864927140478,
+          "targetDiscRgb": [0.9098039215686274, 0.9137254901960784, 0.8392156862745098]
+        },
+        "colorTargetProbe": {
+          "beforeMedian": 1.055501758503242,
+          "afterMedian": 0.5087942516703622,
+          "worstRegression": 0.47132107956006747
+        }
+      },
+      "U": {
+        "total": 46,
+        "accepted": 46,
+        "all": {
+          "count": 46,
+          "geometry": {
+            "dx": -0.875,
+            "dy": 1.25,
+            "diameter": -0.75
+          },
+          "discDeltaE": 1.3791312482208133,
+          "glyphDeltaE": 31.645733434162416,
+          "targetDiscRgb": [0.6529411764705882, 0.807843137254902, 0.8705882352941177]
+        },
+        "calibration": {
+          "count": 30,
+          "geometry": {
+            "dx": -0.875,
+            "dy": 1.25,
+            "diameter": -0.5
+          },
+          "discDeltaE": 1.0617771545915284,
+          "glyphDeltaE": 31.923352224353053,
+          "targetDiscRgb": [0.6549019607843137, 0.807843137254902, 0.8705882352941177]
+        },
+        "validation": {
+          "count": 16,
+          "geometry": {
+            "dx": -0.75,
+            "dy": 1.3125,
+            "diameter": -0.75
+          },
+          "discDeltaE": 1.7091854193333111,
+          "glyphDeltaE": 30.23870620906324,
+          "targetDiscRgb": [0.6460784313725491, 0.803921568627451, 0.8647058823529412]
+        },
+        "colorTargetProbe": {
+          "beforeMedian": 1.7091854193333111,
+          "afterMedian": 0.9036121161336471,
+          "worstRegression": 0.9986563282278893
+        }
+      },
+      "B": {
+        "total": 46,
+        "accepted": 46,
+        "all": {
+          "count": 46,
+          "geometry": {
+            "dx": -0.4375,
+            "dy": 1.0625,
+            "diameter": -0.75
+          },
+          "discDeltaE": 21.21773414068865,
+          "glyphDeltaE": 28.059923615881985,
+          "targetDiscRgb": [0.49607843137254903, 0.5254901960784314, 0.5333333333333333]
+        },
+        "calibration": {
+          "count": 27,
+          "geometry": {
+            "dx": -0.375,
+            "dy": 1.25,
+            "diameter": -1
+          },
+          "discDeltaE": 21.072368006028615,
+          "glyphDeltaE": 28.162373677530063,
+          "targetDiscRgb": [0.5019607843137255, 0.5254901960784314, 0.5333333333333333]
+        },
+        "validation": {
+          "count": 19,
+          "geometry": {
+            "dx": -0.625,
+            "dy": 0.875,
+            "diameter": -0.75
+          },
+          "discDeltaE": 21.363100275348685,
+          "glyphDeltaE": 27.957473554233907,
+          "targetDiscRgb": [0.49019607843137253, 0.5254901960784314, 0.5333333333333333]
+        },
+        "colorTargetProbe": {
+          "beforeMedian": 21.363100275348685,
+          "afterMedian": 2.2361363417463496,
+          "worstRegression": 0
+        }
+      },
+      "R": {
+        "total": 46,
+        "accepted": 46,
+        "all": {
+          "count": 46,
+          "geometry": {
+            "dx": -0.5,
+            "dy": 1.125,
+            "diameter": -0.75
+          },
+          "discDeltaE": 1.5141261024312191,
+          "glyphDeltaE": 28.036205700781355,
+          "targetDiscRgb": [0.8549019607843137, 0.6803921568627451, 0.6009803921568627]
+        },
+        "calibration": {
+          "count": 31,
+          "geometry": {
+            "dx": -0.5,
+            "dy": 1.125,
+            "diameter": -0.75
+          },
+          "discDeltaE": 1.5883206116343227,
+          "glyphDeltaE": 29.901412429526154,
+          "targetDiscRgb": [0.8529411764705882, 0.6803921568627451, 0.596078431372549]
+        },
+        "validation": {
+          "count": 15,
+          "geometry": {
+            "dx": -0.75,
+            "dy": 1.125,
+            "diameter": -0.75
+          },
+          "discDeltaE": 1.3695094264274408,
+          "glyphDeltaE": 27.644589167072752,
+          "targetDiscRgb": [0.8549019607843137, 0.6843137254901961, 0.6039215686274509]
+        },
+        "colorTargetProbe": {
+          "beforeMedian": 1.3695094264274408,
+          "afterMedian": 0.7726052112013858,
+          "worstRegression": 1.2891459969631256
+        }
+      },
+      "G": {
+        "total": 46,
+        "accepted": 46,
+        "all": {
+          "count": 46,
+          "geometry": {
+            "dx": -0.75,
+            "dy": 1.125,
+            "diameter": -0.5
+          },
+          "discDeltaE": 2.9617407458631084,
+          "glyphDeltaE": 28.93866922839363,
+          "targetDiscRgb": [0.6862745098039216, 0.7764705882352941, 0.6352941176470588]
+        },
+        "calibration": {
+          "count": 31,
+          "geometry": {
+            "dx": -0.625,
+            "dy": 1.125,
+            "diameter": -0.5
+          },
+          "discDeltaE": 3.0108947982143053,
+          "glyphDeltaE": 28.79274830036383,
+          "targetDiscRgb": [0.6862745098039216, 0.7764705882352941, 0.6392156862745098]
+        },
+        "validation": {
+          "count": 15,
+          "geometry": {
+            "dx": -0.875,
+            "dy": 0.625,
+            "diameter": -0.5
+          },
+          "discDeltaE": 2.9617407458631084,
+          "glyphDeltaE": 30.73285799155217,
+          "targetDiscRgb": [0.6901960784313725, 0.7764705882352941, 0.6313725490196078]
+        },
+        "colorTargetProbe": {
+          "beforeMedian": 2.9617407458631084,
+          "afterMedian": 0.9152489540942379,
+          "worstRegression": 1.0914385715648687
+        }
+      },
+      "N": {
+        "total": 47,
+        "accepted": 47,
+        "all": {
+          "count": 47,
+          "geometry": {
+            "dx": -0.5,
+            "dy": 1,
+            "diameter": -0.75
+          },
+          "discDeltaE": 5.919344071082378,
+          "glyphDeltaE": 13.367318377708164,
+          "targetDiscRgb": [0.6862745098039216, 0.7098039215686275, 0.7137254901960784]
+        },
+        "calibration": {
+          "count": 33,
+          "geometry": {
+            "dx": -0.375,
+            "dy": 1,
+            "diameter": -0.75
+          },
+          "discDeltaE": 5.724720742300041,
+          "glyphDeltaE": 13.896047069151566,
+          "targetDiscRgb": [0.6882352941176471, 0.7137254901960784, 0.7176470588235294]
+        },
+        "validation": {
+          "count": 14,
+          "geometry": {
+            "dx": -0.5,
+            "dy": 1.3125,
+            "diameter": -0.75
+          },
+          "discDeltaE": 6.355917421128813,
+          "glyphDeltaE": 11.011962346487174,
+          "targetDiscRgb": [0.6843137254901961, 0.7029411764705882, 0.7058823529411764]
+        },
+        "colorTargetProbe": {
+          "beforeMedian": 6.355917421128813,
+          "afterMedian": 1.2736600924318098,
+          "worstRegression": 0.6946809763349773
+        }
+      }
+    },
+    "scope": "Every mana-cost printing is measured against its fixed independently normalized original scan. Circles are about 0.5-0.75px too large in diameter, 0.4-1px too far right and around 1px too high. The black disc incorrectly shares the pale generic source palette. Glyphs are darker than the scans. These are diagnostics only: no per-card repositioning or target color adoption. Fit shared cost/glyph/numeral geometry and source pigment next, then verify full native outputs and all residuals.",
     "wholeSetCertification": false
   }
 }

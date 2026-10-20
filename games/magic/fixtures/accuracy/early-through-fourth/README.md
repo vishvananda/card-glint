@@ -602,3 +602,23 @@ measurement control throughout these geometry studies.
 incorrect. The unchanged default plane contains a fallback set mark with 13,366
 covered pixels. Existing byte-equality evidence remains valid. These studies do
 not supply an illustration-etch resolver or certify its output.
+
+## Unlimited mana baseline
+
+`early-native-mana-audit.mjs NATIVE_CAPTURE OUTPUT` measures every printing with a
+cost directly from the cached native card and its normalized scan. It verifies
+full raster hashes and stored poses, then uses the existing perimeter objective
+to distinguish circle geometry from glyph edges. These circle measurements are
+diagnostics; they never move scan pixels or become printing-specific offsets.
+Each card contributes only its rightmost circle, and pigment targets use only
+calibration names. Reused development validation and every failed measurement
+remain explicit.
+
+All 277 Unlimited cost perimeters measure successfully. The circles are roughly
+0.5–0.75px too large in diameter, 0.4–1px too far right and about 1px too high in
+488×680 reference units. Black's disc has the pale generic source color instead
+of the dark gray printing color. Its median color error is 21.2 Oklab units;
+source glyph ink is also substantially darker than the scans. These findings
+identify the next shared native geometry/pigment fit. Quantile pigment probes
+and hypothetical validation targets do not certify rendered corrections, glyph
+shape, numeral placement, cost pitch or a completed set.
