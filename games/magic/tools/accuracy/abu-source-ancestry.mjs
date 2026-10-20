@@ -4,6 +4,7 @@ import { gunzipSync } from 'node:zlib';
 import { preUnlimitedEmptySource } from './unlimited-empty-ancestry.mjs';
 import { hash } from './common.mjs';
 import { preOracleInsetSource } from './alpha-oracle-ancestry.mjs';
+import { preM21BodyFieldSource } from './m21-body-field-ancestry.mjs';
 export const EARLY_SOURCE_RECEIPT =
   'ffdbdec5616e31f5b136399deadd7f4ecf6095806e9c10e47a21920e001d8a11';
 let checked;
@@ -67,7 +68,8 @@ export async function earlyCalibrationAffected(set, group, task, originalInput =
 
 /** Source restoration is used only after the caller chooses an unaffected
  * component. It must not approve a changed component's historical fit. */
-export async function preEarlyCalibrationSource(file, bytes) {
+export async function preEarlyCalibrationSource(file, bytes, set) {
+  bytes = await preM21BodyFieldSource(file, bytes, set);
   bytes = await preOracleInsetSource(file, bytes);
   const proof = await earlyProof();
   const entry = proof.files[file];

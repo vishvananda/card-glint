@@ -52,11 +52,14 @@ export async function calibrationReport(ledger) {
           const guardKey =
             (earlyAffected ? 'early-current:' : 'early-compatible:') +
             (changedScope ? 'changed:' : 'other:') +
+            (set.set === 'm21' ? 'm21-body-compatible:' : 'body-current:') +
             file;
           if (!checked.has(guardKey)) {
             try {
               const bytes = await readFile(root + '/' + file);
-              const early = earlyAffected ? bytes : await preEarlyCalibrationSource(file, bytes);
+              const early = earlyAffected
+                ? bytes
+                : await preEarlyCalibrationSource(file, bytes, set.set);
               const scoped =
                 earlyAffected || changedScope ? early : await preWalkerSource(file, early);
               const ancestral =

@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "scope": "Historical M21 original-input source guards only. An exact caller-normalization equivalence replay is required; other sets and Oracle scores are not approved by this receipt.",
+  "change": {
+    "file": "games/magic/tools/accuracy/printing-fields.mjs",
+    "before": "e4ca47639659f2824326cc2428e7186ebe3d52a96df97f215bd78aeaa2d593e1",
+    "after": "70e19c97e5160e842c578c1a957e77395d3e0550e559c69a2ab11de900f7dd53",
+    "reverseEdits": [
+      {
+        "start": 12,
+        "count": 8,
+        "lines": []
+      },
+      {
+        "start": 9,
+        "count": 2,
+        "lines": [
+          "    if (Object.hasOwn(result, field)) throw Error(`Repeated printing field: ${field}`);\n"
+        ]
+      },
+      {
+        "start": 6,
+        "count": 2,
+        "lines": ["  const result = {};\n"]
+      }
+    ]
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21-body-field-equivalence.json.gz",
+    "sha256": "cadd866d68d59ac665a0b48291531debec55459684b598b66b67ddb6cb3c83b8"
+  }
+}

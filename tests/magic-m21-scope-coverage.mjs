@@ -1,5 +1,8 @@
 import { assertNativeMagicSourceHash } from './magic-native-source-guard.mjs';
-import { preDarkWordingSource } from './magic-dark-wording-source-guard.mjs';
+import { preDarkWordingSource as priorWordingSource } from './magic-dark-wording-source-guard.mjs';
+import { preM21BodyFieldSource } from '../games/magic/tools/accuracy/m21-body-field-ancestry.mjs';
+const preDarkWordingSource = async (file) =>
+  preM21BodyFieldSource(file, await priorWordingSource(file), 'm21');
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -189,3 +192,41 @@ assert.equal(whiteCount, 42);
 console.log(
   'M21 scope: 239 scan poses, 80 known transforms, 305 native cards, 645 selector controls; failed scans and interior-ink obligations retained.',
 );
+
+const fieldsFile = 'games/magic/tools/accuracy/printing-fields.mjs';
+const fieldsBytes = await readFile(fieldsFile);
+assert.deepEqual(
+  await preM21BodyFieldSource(fieldsFile, fieldsBytes, 'drk'),
+  fieldsBytes,
+  'M21 projection proof must not authorize changed Dark inputs',
+);
+await assert.rejects(
+  preM21BodyFieldSource(
+    fieldsFile,
+    Buffer.concat([fieldsBytes, Buffer.from('\n// unknown body adapter\n')]),
+    'm21',
+  ),
+  /Unreviewed M21/,
+);
+console.log(
+  'All 297 current M21 original recipes, including 292 historical inputs, retain exact field projections; foreign sets and unknown edits are excluded.',
+);
+
+const foreign = structuredClone(m21);
+foreign.set = 'drk';
+for (const sets of [
+  [foreign, m21],
+  [m21, foreign],
+]) {
+  const reports = await calibrationReport({ sets });
+  assert.equal(
+    reports.find((r) => r.set === 'm21').originalRulesInputs.ready,
+    292,
+    'An earlier foreign guard must not poison M21 compatibility',
+  );
+  assert.equal(
+    reports.find((r) => r.set === 'drk').originalRulesInputs.stale,
+    292,
+    'M21 compatibility must not escape through the guard memoization cache',
+  );
+}
