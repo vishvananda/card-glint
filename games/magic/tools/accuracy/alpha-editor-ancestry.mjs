@@ -1,3 +1,4 @@
+import { preHeadingSpacingSource } from './heading-spacing-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from './common.mjs';
@@ -14,7 +15,11 @@ export function alphaEditorAncestry() {
     assert.equal(hash(bytes), ALPHA_EDITOR_PROOF_HASH);
     const proof = JSON.parse(bytes);
     for (const [file, sha] of Object.entries(proof.dependencies))
-      assert.equal(hash(await readFile(file)), sha, 'Changed Alpha editor dependency: ' + file);
+      assert.equal(
+        hash(await preHeadingSpacingSource(file, await readFile(file))),
+        sha,
+        'Changed Alpha editor dependency: ' + file,
+      );
     const evidence = await readFile(proof.nativeEvidence);
     assert.equal(hash(evidence), proof.nativeHash);
     const native = JSON.parse(evidence);
@@ -34,6 +39,7 @@ export function alphaEditorAncestry() {
   })());
 }
 export async function preAlphaEditorSource(file, bytes) {
+  bytes = await preHeadingSpacingSource(file, bytes);
   const proof = await alphaEditorAncestry(),
     change = proof.files[file];
   if (!change) return bytes;

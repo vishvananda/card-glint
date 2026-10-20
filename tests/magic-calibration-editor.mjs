@@ -44,7 +44,7 @@ try {
   assert.equal(alpha.supported, true);
   assert.equal(alpha.adapter, 'title');
   assert.deepEqual([...new Set(alpha.controls.map((c) => c.group))], ['lettering']);
-  assert.equal(alpha.controls.length, 6);
+  assert.equal(alpha.controls.length, 14);
   assert.deepEqual(
     api.createSetCalibrationCandidate(
       'lea',
@@ -53,6 +53,22 @@ try {
     ).values,
     {},
     'The data-file defaults must themselves satisfy every control bound',
+  );
+  assert.equal(alpha.controls.find((c) => c.id === 'title.width').step, 0.001);
+  const spaced = api.createSetCalibrationCandidate('lea', alpha.revision, {
+    'title.width': 0.953,
+    'title.wordSpacing': -1.25,
+    'type.width': 0.977,
+    'type.wordSpacing': -0.65,
+  });
+  assert.equal(api.resolveSetTitleCalibration(spaced).title.wordSpacing, -1.25);
+  assert.equal(api.resolveSetTitleCalibration(spaced).type.width, 0.977);
+  assert.throws(
+    () =>
+      api.createSetCalibrationCandidate('lea', alpha.revision, {
+        'type.wordSpacing': -7,
+      }),
+    /Invalid/,
   );
   const emptyAlpha = api.createSetCalibrationCandidate('lea', alpha.revision, {});
   assert.deepEqual(emptyAlpha.values, {});

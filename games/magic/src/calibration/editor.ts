@@ -1,7 +1,7 @@
 import {
   setTitleCalibration,
   titleCalibrationControls,
-  type SetTitleCalibration,
+  type ResolvedSetTitleCalibration,
 } from './title-profiles.js';
 import { setCalibrationProfile } from './profiles.js';
 import { calibrationControls } from './editor-controls.js';
@@ -13,7 +13,11 @@ import type {
 } from './editor-types.js';
 import { validateFrameBlackPoint } from '../presentation/frame-blackpoint.js';
 export * from './editor-types.js';
-export type { SetTitleCalibration } from './title-profiles.js';
+export type {
+  SetTitleCalibration,
+  ResolvedSetTitleCalibration,
+  CalibratedHeading,
+} from './title-profiles.js';
 
 function freeze<T>(value: T): T {
   if (value && typeof value === 'object') {
@@ -36,7 +40,7 @@ export function describeSetCalibration(set: string): SetCalibrationDescription {
     notice: profile
       ? 'Ordinary ABU/Fourth plates only. Geometry, lettering, symbols and pigment use the native painter. Source assets and masks remain fixed.'
       : title
-        ? 'Name controls use the native Alpha painter. Offsets are deltas from the existing shared title placement. Frame, type, body, symbols and footer remain on their established calibration; full-profile editing is not available yet.'
+        ? 'Name and type controls use the native Alpha painter. Offsets are deltas from the existing shared placements. Frame, body, symbols and footer remain on their established calibration; full-profile editing is not available yet.'
         : 'This set does not yet have a consolidated profile adapter. Existing symbol and text diagnostic tools remain available.',
   });
 }
@@ -176,7 +180,7 @@ export function exportSetCalibrationProfile(
 /** Resolve a bounded title-only proposal without changing the frame/body adapter. */
 export function resolveSetTitleCalibration(
   candidate: SetCalibrationCandidate,
-): SetTitleCalibration {
+): ResolvedSetTitleCalibration {
   const base = setTitleCalibration(candidate.set);
   if (!base) throw Error('This set has no title calibration adapter');
   const checked = createSetCalibrationCandidate(
@@ -184,14 +188,19 @@ export function resolveSetTitleCalibration(
     candidate.baseRevision,
     candidate.values,
   );
-  const title = { ...base.title };
+  const result = { ...base, title: { ...base.title }, type: { ...base.type } };
   for (const [id, value] of Object.entries(checked.values)) {
-    const key = id.slice(6) as keyof typeof title;
-    title[key] = value as number;
+    const [role, key] = id.split('.') as [
+      'title' | 'type',
+      keyof ResolvedSetTitleCalibration['title'],
+    ];
+    result[role][key] = value as number;
   }
-  return freeze({ ...base, title });
+  return freeze(result);
 }
-export function exportSetTitleCalibration(candidate: SetCalibrationCandidate): SetTitleCalibration {
+export function exportSetTitleCalibration(
+  candidate: SetCalibrationCandidate,
+): ResolvedSetTitleCalibration {
   const profile = resolveSetTitleCalibration(candidate);
   return freeze({ ...profile, revision: profile.revision + 1 });
 }

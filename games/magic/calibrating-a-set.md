@@ -218,11 +218,13 @@ Candidates never change global defaults. Keep original wording and scan poses
 fixed; fitting/validation cohorts, proposal storage and release approval belong
 to the host. An empty candidate preserves the released printing policy.
 
-LEA currently has a **name-only** adapter (`description.adapter === 'title'`).
-It exposes horizontal/vertical deltas, font size, horizontal scale, filled gray
-ink and shadow. The existing frame, type, rules and footer painters remain
+LEA currently has a **name and type-line** adapter (`description.adapter === 'title'`).
+It exposes horizontal/vertical deltas, font size, horizontal scale (0.001 ratio
+steps), independent word spacing in canonical 488 × 680 pixels, filled gray ink
+and shadow for both headings. Word spacing is applied before horizontal scaling.
+The existing frame, rules and footer painters remain
 authoritative. Unsupported groups are deliberately unavailable rather than
-substituting another set's layout. Export an evaluated name proposal with
+substituting another set's layout. Export an evaluated heading proposal with
 `exportSetTitleCalibration(candidate)` into `calibration/sets/lea-title.ts`.
 Do not use `exportSetCalibrationProfile` for a title-only description. Empty
 proposals preserve the native pixels, including the original filled lettering.

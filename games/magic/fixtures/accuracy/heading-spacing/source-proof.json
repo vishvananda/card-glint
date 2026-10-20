@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "baselineCommit": "a6372ca02d172f560788e6795eac3649b28a32d7",
+  "scope": "Opt-in Alpha name/type width and word spacing; untouched native pixels must match 0.6.1. Historical Alpha evidence is preserved separately.",
+  "files": {
+    "games/magic/src/calibration/editor.ts": {
+      "before": "187ac5fa026e562e28dae8e6c78be2cfc5323844edd7041882418ac20d8a1302",
+      "after": "cf419baf4b6df16ac75292ced89b0c3e8a1ed5abacbb0bad654e5f0afe7546ca",
+      "reverseEdits": [
+        {
+          "start": 200,
+          "count": 3,
+          "lines": [
+            "export function exportSetTitleCalibration(candidate: SetCalibrationCandidate): SetTitleCalibration {\n"
+          ]
+        },
+        {
+          "start": 198,
+          "count": 1,
+          "lines": ["  return freeze({ ...base, title });\n"]
+        },
+        {
+          "start": 192,
+          "count": 5,
+          "lines": [
+            "    const key = id.slice(6) as keyof typeof title;\n",
+            "    title[key] = value as number;\n"
+          ]
+        },
+        {
+          "start": 190,
+          "count": 1,
+          "lines": ["  const title = { ...base.title };\n"]
+        },
+        {
+          "start": 182,
+          "count": 1,
+          "lines": ["): SetTitleCalibration {\n"]
+        },
+        {
+          "start": 42,
+          "count": 1,
+          "lines": [
+            "        ? 'Name controls use the native Alpha painter. Offsets are deltas from the existing shared title placement. Frame, type, body, symbols and footer remain on their established calibration; full-profile editing is not available yet.'\n"
+          ]
+        },
+        {
+          "start": 15,
+          "count": 5,
+          "lines": ["export type { SetTitleCalibration } from './title-profiles.js';\n"]
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": ["  type SetTitleCalibration,\n"]
+        }
+      ]
+    },
+    "games/magic/src/calibration/sets/lea-title.ts": {
+      "before": "eedf11b80db4084a556d2087a1f08f734ab4b846501665b284e2f0cfbbf8113b",
+      "after": "6464bf4b86dacd2a6d3fef0e7c3d45124a1756e60d535fa0149e9c96a640e415",
+      "reverseEdits": [
+        {
+          "start": 8,
+          "count": 2,
+          "lines": ["  title: { dx: 0, dy: 0, size: 27.8, width: 1, gray: 130, shadow: 1 },\n"]
+        },
+        {
+          "start": 6,
+          "count": 1,
+          "lines": ["  revision: 1,\n"]
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": [
+            " * Frame, body, type and footer keep their independent existing calibration. */\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/calibration/title-profiles.ts": {
+      "before": "57c0a3e6cfbc8f12d1e364d7c90a16fc74bc9acef3af5d2662729ffc35f866bf",
+      "after": "5b26c8bbfa17d8778ad39e67b5b85c1bf19904bfaadc0de9caa6f2e901f3b7f9",
+      "reverseEdits": [
+        {
+          "start": 48,
+          "count": 20,
+          "lines": [
+            "              ? 1.5\n",
+            "              : 4,\n",
+            "    step: key === 'gray' ? 1 : 0.05,\n",
+            "    unit: key === 'width' ? 'ratio' : key === 'gray' ? 'sRGB 0–255' : 'px',\n",
+            "  }));\n"
+          ]
+        },
+        {
+          "start": 31,
+          "count": 16,
+          "lines": [
+            "export function titleCalibrationControls(profile: SetTitleCalibration): CalibrationControl[] {\n",
+            "  return Object.entries(profile.title).map(([key, value]) => ({\n",
+            "    id: `title.${key}`,\n",
+            "    label: `name · ${key === 'dx' ? 'horizontal offset' : key === 'dy' ? 'vertical offset' : key}`,\n",
+            "    group: 'lettering',\n",
+            "    scope: 'all',\n",
+            "    kind: 'number',\n",
+            "    value,\n",
+            "    min: key === 'dx' || key === 'dy' ? -30 : key === 'width' ? 0.6 : key === 'size' ? 8 : 0,\n",
+            "    max:\n",
+            "      key === 'dx' || key === 'dy'\n",
+            "        ? 30\n",
+            "        : key === 'gray'\n",
+            "          ? 255\n",
+            "          : key === 'size'\n",
+            "            ? 60\n"
+          ]
+        },
+        {
+          "start": 21,
+          "count": 7,
+          "lines": [
+            "const profiles = table<Readonly<Record<string, SetTitleCalibration>>>('setTitleCalibrations');\n"
+          ]
+        },
+        {
+          "start": 18,
+          "count": 2,
+          "lines": [
+            "  readonly title: {\n",
+            "    readonly dx: number;\n",
+            "    readonly dy: number;\n",
+            "    readonly size: number;\n",
+            "    readonly width: number;\n",
+            "    readonly gray: number;\n",
+            "    readonly shadow: number;\n",
+            "  };\n"
+          ]
+        },
+        {
+          "start": 3,
+          "count": 10,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/legacy-calibrated-title.ts": {
+      "before": "551e19bba7479c6e8ba27cdeab00eb3dc16e261d44d59d1adb99db22a1341fab",
+      "after": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78",
+      "reverseEdits": [
+        {
+          "start": 47,
+          "count": 4,
+          "lines": ["  c.fillText(face.name, 0, 0, Math.max(1, (width - p.dx) / p.width));\n"]
+        },
+        {
+          "start": 43,
+          "count": 2,
+          "lines": ["  c.font = `${p.size}px \"CardRenderer MTG Goudy\", Georgia`;\n"]
+        },
+        {
+          "start": 28,
+          "count": 10,
+          "lines": [
+            "  ).title;\n",
+            "  if (!p.dx && !p.dy && p.size === 27.8 && p.width === 1 && p.gray === 130 && p.shadow === 1)\n"
+          ]
+        },
+        {
+          "start": 13,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-paint.ts": {
+      "before": "8966899732cfe4cf7150090516db173ddbfdb51f1dbca349dbadc3d0b561fc96",
+      "after": "b00adab7f49a95453e98c64adf6aa41771c1a33156b2bb5085a1bdc81a5edcd1",
+      "reverseEdits": [
+        {
+          "start": 248,
+          "count": 2,
+          "lines": ["          !paintEarlyExpansionType(c, face, text, x, y, width)\n"]
+        }
+      ]
+    },
+    "games/magic/tools/accuracy/printed-artist.mjs": {
+      "before": "f7292cf73fedcb36625ae41872be04eee67be9525c0092a3e5642d15b5964420",
+      "after": "b9246df0f1a5f37cb2283e6ba510e72434d4f281c0a7b3d5fe87184f389f7c7f",
+      "reverseEdits": [
+        {
+          "start": 27,
+          "count": 1,
+          "lines": ["    entry.card.collector_number !== row.number ||\n"]
+        },
+        {
+          "start": 11,
+          "count": 5,
+          "lines": []
+        },
+        {
+          "start": 3,
+          "count": 7,
+          "lines": []
+        }
+      ]
+    }
+  }
+}

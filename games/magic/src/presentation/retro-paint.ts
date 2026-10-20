@@ -246,7 +246,8 @@ export function paintRetroFace(
     : (text: string, x: number, y: number, width: number) => {
         if (
           !paintEarlyReprintType(c, face, text, x + width) &&
-          !paintEarlyExpansionType(c, face, text, x, y, width)
+          !paintEarlyExpansionType(c, face, text, x, y, width) &&
+          !paintLegacyCalibratedTitle(c, face, x, y, width, 'type', text)
         )
           paintTextInk(c, text, x, y, width, face.textInk, 'type');
       };

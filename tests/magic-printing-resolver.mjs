@@ -79,6 +79,78 @@ try {
     }
     assert.throws(() => presentation({ ...entry, reference: { sha256: '0'.repeat(64) } }), /stale/);
   }
+  for (const [id, name, provider, printed, scan] of [
+    [
+      'b3dd94c5-42f6-4148-be6e-2a3a4226cc0e',
+      'Circle of Protection: Red',
+      'Mark Tedin',
+      'Anson Maddocks',
+      '48f8316cba5dc2dbcdf4cea077a5ba615243159606f3b7f7e07bced5b25ce980',
+    ],
+    [
+      '92df19c9-e127-42d9-8dd2-7fa5a7095428',
+      'Circle of Protection: White',
+      'Douglas Shuler',
+      'Douglas Schuler',
+      'd55bc208415027e08f91f8753134fe2e58bb5d74362f6a803b30e0f0fe6473e9',
+    ],
+  ]) {
+    const entry = {
+      card: { id, name, set: 'lea', artist: provider, type_line: 'Enchantment' },
+      reference: { sha256: scan },
+    };
+    const snapshot = structuredClone(entry);
+    assert.equal(presentation(entry).face.artist, printed);
+    assert.deepEqual(entry, snapshot, 'Provider artist metadata must remain untouched');
+    const resolved = resolvePrintingArtist(id, provider, { referenceSha256: scan });
+    assert.equal(resolved.artist, printed);
+    assert.equal(resolved.provenance.status, 'applied');
+    assert.equal(resolved.provenance.corrections[0].before, provider);
+    assert.equal(
+      resolvePrintingArtist(id, provider, { referenceSha256: '0'.repeat(64) }).artist,
+      provider,
+    );
+    assert.throws(() => presentation({ ...entry, reference: { sha256: '0'.repeat(64) } }), /stale/);
+    assert.throws(() => presentation({ ...entry, card: { ...entry.card, set: 'leb' } }), /stale/);
+  }
+  const creditAudit = await fixture('abu-artist-credit-audit.json');
+  assert.equal(creditAudit.rows.length, 114);
+  let misspellings = 0;
+  for (const row of creditAudit.rows) {
+    const entry = {
+      card: {
+        id: row.id,
+        name: row.name,
+        set: row.set,
+        collector_number: row.collectorNumber,
+        artist: row.providerArtist,
+        type_line: 'Enchantment',
+      },
+      reference: { sha256: row.referenceHash },
+    };
+    const source = structuredClone(entry);
+    assert.equal(presentation(entry).face.artist, row.printedArtist, row.set + ' ' + row.name);
+    assert.deepEqual(entry, source);
+    const resolved = resolvePrintingArtist(row.id, row.providerArtist, {
+      referenceSha256: row.referenceHash,
+    });
+    assert.equal(resolved.artist, row.printedArtist);
+    if (row.printedArtist !== row.providerArtist) {
+      misspellings++;
+      assert.equal(resolved.provenance.status, 'applied');
+      assert.equal(
+        resolvePrintingArtist(row.id, row.providerArtist, { referenceSha256: '0'.repeat(64) })
+          .artist,
+        row.providerArtist,
+      );
+    } else
+      assert.equal(
+        resolved.provenance.status,
+        'unreviewed',
+        'Correctly printed exceptions must not inherit a spelling override',
+      );
+  }
+  assert.equal(misspellings, 82);
   const alphaTypes = await fixture('lea/annotations-colored-types.json');
   for (const [id, row] of Object.entries(alphaTypes.cards)) {
     const resolved = resolvePrintingWording(id, input, { referenceSha256: row.referenceHash });

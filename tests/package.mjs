@@ -84,6 +84,7 @@ try {
     const artist = resolvePrintingArtist('0faa005e-c753-4484-bf64-349350d59094', 'Dan Murayama Scott');
     assert.equal(artist.artist, 'Dan Scott');
     assert.equal(artist.provenance.status, 'applied');
+    for (const [id,provider,printed] of [["5669f9c8-2e94-47e2-a551-7efff317fb34", "Douglas Shuler", "Douglas Schuler"], ["98a1c689-cd8b-4a80-ad6d-e4ff5933f5e7", "Douglas Shuler", "Douglas Schuler"], ["d27608e7-6539-4813-95b6-d8847cdc6a12", "Douglas Shuler", "Douglas Shuler"], ["987557ee-8344-4191-b85c-f9dedf4d1614", "Douglas Shuler", "Douglas Shuler"], ["97fa5f07-46ba-408d-a861-bdb1791cc188", "Douglas Shuler", "Douglas Shuler"], ["b3dd94c5-42f6-4148-be6e-2a3a4226cc0e", "Mark Tedin", "Anson Maddocks"]]) assert.equal(resolvePrintingArtist(id,provider).artist,printed);
     const face = resolvePrintingPreset({name:'Probe',typeLine:'Instant',colors:['U']}, {preset:'plc-colorshifted',overrides:{calibration:'auto',collectorNumber:'7',elements:{artist:{hidden:true}}}});
     assert.equal(face.frameTreatment, 'colorshifted');
     assert.equal(resolveScryfallPrinting({frame:'future'}).frameTemplate, 'future');
@@ -105,6 +106,12 @@ export { canvas, closeRaster, decodeCanvasImage } from 'card-glint/canvas';
 export { loadMagicSet, prepareMagicCards } from 'card-glint/magic/lazy';
 export { resolveSetPrintingWording, resolveSetPrintingArtist } from 'card-glint/magic/printing';
 export { describeSetCalibration } from 'card-glint/magic/calibration';
+import type { SetTitleCalibration } from 'card-glint/magic/calibration';
+// Host-authored 0.6.1 profiles keep their source compatibility.
+export const titleOnlyProfile: SetTitleCalibration = {
+  schema: 1, revision: 1, set: 'lea',
+  title: { dx: 0, dy: 0, size: 27.8, width: 1, gray: 130, shadow: 1 },
+};
 import { magic, opticalDocument, resolvePrintingWording, resolvePrintingArtist, type ResolvedPrintingArtist, withCardWording, resolvePrintingPreset, printingPresets, printingStyles, resolvePrintingStyle, type PrintingStyle, type PrintingSelection, fromScryfallCard, fromMtgjsonCard, type CardImportOptions, type MagicCard, type PrintingText } from 'card-glint/magic';
 import 'card-glint/magic/fonts.css';
 import { faceArtBounds, composeCardTexture, type CardTextureInput } from 'card-glint/magic/presentation';
