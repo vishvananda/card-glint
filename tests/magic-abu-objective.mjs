@@ -1,3 +1,4 @@
+import "./magic-early-mana-trial.mjs";
 import './magic-early-body-refresh.mjs';
 import './magic-native-text-window.mjs';
 import assert from 'node:assert/strict';
