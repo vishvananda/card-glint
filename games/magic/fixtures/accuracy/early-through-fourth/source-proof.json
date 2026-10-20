@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "baselineCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040",
+  "candidateCommit": "467c7e6dcde027bd8d3cea29e8bc8e7dab7e310e",
+  "affectedSets": ["lea", "leb", "2ed"],
+  "scope": "Restore exact 0.6.5 painter bytes for historical receipts only. The new Alpha layout and Beta outlines and Unlimited wording require fresh affected-set measurements. This does not reconstruct or alias the correction catalog. Existing immutable walker evidence is retained, never relabeled.",
+  "dependencies": {
+    "games/magic/src/presentation/abu-land-palette.ts": "ccd909c5b2e9088870a95e7dd87b91c5524117b370bb4b1eee47cf07c36b1e94",
+    "games/magic/src/presentation/canvas-face.ts": "a7bae87a647699f8e6cbf32a37d809f94dac1d8fbbc0198cc8968aed8a3eb919",
+    "games/magic/src/presentation/early-text-tiers.ts": "16d3a43a26e9eda4ce14ac2af18ce498ac0c2637e6ca018369dd3f3191aea40c",
+    "games/magic/src/presentation/retro-dual-frame.ts": "a174c92dd19cb19ed6851c5f694245dfcafe1bbdd2e86468937321f1e94515d3"
+  },
+  "files": {
+    "games/magic/src/presentation/abu-land-palette.ts": {
+      "before": "29eae8492b5499269b0432af633057b9c82c0f1524214633ba82cb8382da4ac3",
+      "after": "ccd909c5b2e9088870a95e7dd87b91c5524117b370bb4b1eee47cf07c36b1e94",
+      "reverseEdits": [
+        {
+          "start": 22,
+          "count": 7,
+          "lines": ["  return ordered.length === 1 ? ordered[0] : OUTLINES[ordered.join('')];\n"]
+        },
+        {
+          "start": 16,
+          "count": 4,
+          "lines": [
+            "export function abuLandOutlineColor(colors: readonly string[]): string | undefined {\n"
+          ]
+        },
+        {
+          "start": 1,
+          "count": 1,
+          "lines": [
+            " * Reviewed against all nine Alpha duals; UR retains the Beta source treatment.\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-face.ts": {
+      "before": "b7fb955f3d79dab288d6e89be408c401ded90e4f90114d954cd053c9a063a16c",
+      "after": "a7bae87a647699f8e6cbf32a37d809f94dac1d8fbbc0198cc8968aed8a3eb919",
+      "reverseEdits": [
+        { "start": 175, "count": 6, "lines": [] },
+        { "start": 165, "count": 1, "lines": [] },
+        { "start": 0, "count": 2, "lines": [] }
+      ]
+    },
+    "games/magic/src/presentation/early-text-tiers.ts": {
+      "before": "4859b847a11ebfc65f9e16d26f635e31f3ef8b2f5698601b02c002cf0d37a9b6",
+      "after": "16d3a43a26e9eda4ce14ac2af18ce498ac0c2637e6ca018369dd3f3191aea40c",
+      "reverseEdits": [
+        { "start": 171, "count": 17, "lines": [] },
+        { "start": 168, "count": 1, "lines": ["    const model = options.transferAlphaModel\n"] },
+        { "start": 27, "count": 3, "lines": [] }
+      ]
+    },
+    "games/magic/src/presentation/retro-dual-frame.ts": {
+      "before": "5f7354e049259ef02ea43b70156301c51f528d718919c4e6c7b3d9cab1b67169",
+      "after": "a174c92dd19cb19ed6851c5f694245dfcafe1bbdd2e86468937321f1e94515d3",
+      "reverseEdits": [
+        { "start": 51, "count": 6, "lines": [] },
+        {
+          "start": 31,
+          "count": 1,
+          "lines": ["    outline: `${root}${abuLandOutlineColor(colors)!.toLowerCase()}l.png`,\n"]
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "alphaMeasure": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/alpha-plain-wrap-measure.json.gz",
+      "sha256": "89f5f44e9de495fcf84fa21d5289094012cda0051b3d362a8a51d0836f25324c",
+      "contentSha256": "61ee94289ffc0ed3356b4920908b5a56970c0591117e1c16c9b244e76bd259c0"
+    },
+    "alphaNative": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/alpha-plain-wrap-native.json.gz",
+      "sha256": "99fb02a295890ecab046ea66ef1c9fbe76e60083a840f4bd56c6eaf8581c5c23",
+      "contentSha256": "eff23952eadbf18a0f95f88295b1284cd0974fc3d52adc2610617370f986d74d"
+    },
+    "betaParity": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/beta-outline-final-parity.json.gz",
+      "sha256": "18f0e859e147c5b76061878a26d17c711db5a6dde4ef0bedbdf1333821c3ff44",
+      "contentSha256": "96ce4a49a1c3aa9f2be7aec012a949f8f45829497508a3204ff98ca924306793"
+    },
+    "keys": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/early-final-keys.json.gz",
+      "sha256": "5943ae8186dfa14646bc535e026f12faeac1d927d298d40bef62f9fe68301465",
+      "contentSha256": "e94e0108da0db738d8273758abf484e75c9de633799f5d94ce39ae857da9e6b5"
+    },
+    "catalog": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/early-catalog-audit.json.gz",
+      "sha256": "102ffdd04496d94308b8d331101cb47bb059ac8fc64999c1d4f9fedae6e48da1",
+      "contentSha256": "3eed0da12c1e5afb635d58a69063140a1bd85158c29f4757fabd9d2ae2cb6b2e"
+    }
+  },
+  "audit": [
+    "Compiled canvas-face statements are exactly the 0.6.5 module plus two pure imports and the reviewed face-only Alpha/Beta cache revisions. Every drawing function remains identical.",
+    "All 295 original Alpha faces are paired with identical assets, references, poses and heading controls. Exactly four plain-rules passages improve; all other faces are byte-identical.",
+    "All ten Beta duals match the earlier reviewed native outline candidate exactly: two changed, eight unchanged. The other nine Alpha duals remain unchanged in the whole-set replay.",
+    "All 597 etching keys remain unchanged. Face keys change for Alpha original faces and the two reviewed Beta outlines only; a changed key is not a claim that every face changes pixels.",
+    "All 231 correction changes belong to Unlimited. Every other correction and every artist review retains its exact values. Generated evidence locators can renumber, but are not painter inputs.",
+    "Reverse edits restore every complete pre-batch source file hash. Unknown modifications, incomplete evidence or changed dependencies fail closed."
+  ]
+}

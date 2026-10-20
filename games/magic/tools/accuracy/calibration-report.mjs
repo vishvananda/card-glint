@@ -1,3 +1,8 @@
+import {
+  preEarlyCalibrationSource,
+  earlyCalibrationAffected,
+  EARLY_SOURCE_RECEIPT,
+} from './abu-source-ancestry.mjs';
 import { preWalkerSource } from './planeswalker-reconstruction/ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -27,19 +32,33 @@ export async function calibrationReport(ledger) {
     checked = new Map();
   for (const set of current.sets)
     for (const group of set.groups) {
-      const dependencies = Object.values(group.tasks ?? {}).flatMap((item) => [
-        ...(['validated', 'validated-default'].includes(item.status) ? [item] : []),
-        ...(item.originalInput ? [item.originalInput] : []),
+      const dependencies = Object.entries(group.tasks ?? {}).flatMap(([task, item]) => [
+        ...(['validated', 'validated-default'].includes(item.status)
+          ? [{ task, item, original: false }]
+          : []),
+        ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
-      for (const item of dependencies) {
+      for (const { task, item, original } of dependencies) {
+        const earlyAffected = await earlyCalibrationAffected(set.set, group, task, original);
+        if (earlyAffected && item.proof?.earlyBatchReceipt !== EARLY_SOURCE_RECEIPT) {
+          item.status = original ? 'stale' : 'needs-audit';
+          item.reason =
+            'The early-set batch changes this printing/component; its previous fit needs a current source-bound review.';
+          continue;
+        }
         for (const [file, expected] of Object.entries(item.guards ?? {})) {
           assert.ok(!file.startsWith('/') && !file.split('/').includes('..'));
           const changedScope = group.kind === 'planeswalker' || set.set === 'm15';
-          const guardKey = (changedScope ? 'changed:' : 'other:') + file;
+          const guardKey =
+            (earlyAffected ? 'early-current:' : 'early-compatible:') +
+            (changedScope ? 'changed:' : 'other:') +
+            file;
           if (!checked.has(guardKey)) {
             try {
               const bytes = await readFile(root + '/' + file);
-              const scoped = changedScope ? bytes : await preWalkerSource(file, bytes);
+              const early = earlyAffected ? bytes : await preEarlyCalibrationSource(file, bytes);
+              const scoped =
+                earlyAffected || changedScope ? early : await preWalkerSource(file, early);
               const ancestral =
                 file === 'games/magic/src/presentation/retro-paint.ts'
                   ? await preAlphaEditorSource(file, scoped)
@@ -48,6 +67,7 @@ export async function calibrationReport(ledger) {
                 guardKey,
                 new Set([
                   hash(bytes),
+                  hash(early),
                   hash(scoped),
                   hash(await compatibleHostWorkerSource(file, ancestral)),
                 ]),

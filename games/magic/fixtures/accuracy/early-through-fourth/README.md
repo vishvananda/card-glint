@@ -120,3 +120,27 @@ Recovering Alpha's Nether Shadow scan also exposes a genuine rules-wrap outlier:
 seven printed lines versus eight rebuilt. Beta's identical passage already wraps
 correctly. The Alpha black-creature rules check is reopened while that tier/bounds
 case is investigated; complete score coverage does not certify correct layout.
+
+## Plain-passage wrap and Beta outline batch
+
+`alpha-plain-wrap-native.json.gz` and `alpha-plain-wrap-measure.json.gz` pair all
+295 Alpha faces with the published 0.6.5 baseline. Exactly four pure rules
+passages improve; all 291 other faces and all heading controls are byte-identical.
+The font size is unchanged. The broader width experiment was not adopted.
+
+The source receipt restores exact 0.6.5 painter bytes only for historical
+verification. Current Alpha rules, the two Beta outlines and the reviewed
+Unlimited wording require their own current evidence. The completion checker
+uses the affected printing/component footprint; an old proof cannot authorize a
+changed component by attaching a receipt marker alone.
+
+```sh
+node tests/magic-early-source-ancestry.mjs
+node games/magic/tools/accuracy/abu-plain-wrap-measure.mjs "$ABU_CURRENT" "$ALPHA_CANDIDATE" "$ALPHA_MEASURE"
+```
+
+`record-early-source-proof.mjs` is the one-time integration recorder for this
+frozen batch, not a step needed for a normal single-profile calibration. Its
+reviewed receipt and complete reverse edits are in `source-proof.json`; verification
+requires no external images or Git history. Reused development references are
+explicitly labeled and are not represented as a new blind validation sample.

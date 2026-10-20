@@ -1,16 +1,22 @@
+import { preEarlyCalibrationSource } from '../abu-source-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../common.mjs';
 let checked;
 /** Historical bytes only. Changed planeswalkers and M15 symbols never reuse scores. */
 export async function preWalkerGeometry(file, bytes) {
+  bytes = await preEarlyCalibrationSource(file, bytes);
   const proof = await (checked ??= readFile(
     'games/magic/fixtures/accuracy/planeswalker-materials/geometry-proof.json',
   ).then(async (b) => {
     assert.equal(hash(b), '2a4b8ed0e965015d7d9f04021ef3b6d232d32132efc64565a0e0cd267ec2c490');
     const p = JSON.parse(b);
     for (const [name, digest] of Object.entries(p.dependencies))
-      assert.equal(hash(await readFile(name)), digest, 'Changed reviewed walker geometry: ' + name);
+      assert.equal(
+        hash(await preEarlyCalibrationSource(name, await readFile(name))),
+        digest,
+        'Changed reviewed walker geometry: ' + name,
+      );
     const native = await readFile(p.nativeGeometry.file);
     assert.equal(hash(native), p.nativeGeometry.sha256);
     assert(JSON.parse(native).nativeControls.every((r) => r.outsideHeadingAndSymbolSlots === 0));
