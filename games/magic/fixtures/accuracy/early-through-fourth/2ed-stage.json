@@ -256,6 +256,11 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-land-color-replay-evidence.json.gz",
       "sha256": "96623424be0567b156274af0fab6bea4f89f9551ce53825a92b4ea01f6820e8c",
       "contentSha256": "45dabaca548646b81d48cc53dd1e60ef5b4208acfa2edb7f6ee6c9449eee8c11"
+    },
+    "2ed-heading-probes": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-heading-probes.json.gz",
+      "sha256": "1c1fbec57d4f19a30757afe30fe0d8e5cfd54b2c9a9935f45cb9eaa80d7b0c8c",
+      "contentSha256": "518e5ded9deb654a1614b413d1ef0e323b49c875c2925398d3e068da8479ef56"
     }
   },
   "native": {
@@ -783,5 +788,72 @@
         }
       }
     }
+  },
+  "typographyProbes": {
+    "status": "native-diagnostics-needs-shared-default-validation",
+    "printings": 55,
+    "ordinary": 30,
+    "land": 25,
+    "source": "2ed-heading-probes.json.gz",
+    "groups": {
+      "calibration": {
+        "title": {
+          "count": 32,
+          "medianDiagnosticAdjustment": {
+            "dx": -1.75,
+            "dy": 2.75,
+            "size": -0.5,
+            "width": 0.0
+          }
+        },
+        "type": {
+          "count": 32,
+          "medianDiagnosticAdjustment": {
+            "dx": -2.0,
+            "dy": 0.0,
+            "size": 0.25,
+            "width": 0.5
+          }
+        },
+        "artistMPlantin": {
+          "count": 32,
+          "meanBestDiagnostic100": 69.59287890995276
+        },
+        "artistGoudy": {
+          "count": 32,
+          "meanBestDiagnostic100": 60.39359310966408
+        }
+      },
+      "validation": {
+        "title": {
+          "count": 23,
+          "medianDiagnosticAdjustment": {
+            "dx": -1.5,
+            "dy": 2.5,
+            "size": 0,
+            "width": 0
+          }
+        },
+        "type": {
+          "count": 23,
+          "medianDiagnosticAdjustment": {
+            "dx": -2,
+            "dy": 0,
+            "size": 0.5,
+            "width": 0
+          }
+        },
+        "artistMPlantin": {
+          "count": 23,
+          "meanBestDiagnostic100": 68.67231183271959
+        },
+        "artistGoudy": {
+          "count": 23,
+          "meanBestDiagnostic100": 59.71200738484366
+        }
+      }
+    },
+    "scope": "Original words, independent fixed scan poses, exact full native baseline hashes. Reference dimensions are explicitly canonicalized and checked; title crops exclude mana and type crops exclude the art border. Filled gray is fixed at 130 during geometry probes. Individual fits are diagnostic and are not runtime overrides. Shared header/credit profiles, ink tone, body text, mana and whole-set validation remain open.",
+    "wholeSetCertification": false
   }
 }
