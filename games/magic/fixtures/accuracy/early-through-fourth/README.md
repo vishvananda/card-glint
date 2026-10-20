@@ -105,7 +105,6 @@ The audit needs the source-object cache and existing native-capture directory.
 Sampling and certificate checks run on numeric pixel arrays without Chromium.
 Its timing includes PNG decoding and diagnostic controls, not GPU completion.
 
-
 For original-type wording review, generate raw source crops outside the checkout:
 
 ```sh
