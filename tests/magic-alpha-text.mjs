@@ -149,6 +149,61 @@ try {
         throw Error('Exception leaked to another printing');
       printedSizeCases++;
     }
+    const { layoutRules } = await import('/games/magic/src/presentation/rules-layout.ts');
+    let fixedInsetCases = 0,
+      reducedOracleSizes = 0;
+    for (const setCode of ['lea', 'leb']) {
+      for (const repetitions of [2, 3, 4, 6, 8]) {
+        const paragraphs = [
+          {
+            role: 'rules',
+            runs: [
+              {
+                text: 'At the beginning of your upkeep, draw a card, then discard a card. '.repeat(
+                  repetitions,
+                ),
+              },
+            ],
+          },
+        ];
+        for (const size of [22.5, 15.5]) {
+          const base = layoutRules(
+            ctx,
+            paragraphs,
+            {
+              x: 70,
+              y: 428,
+              width: 346,
+              height: 162,
+              verticalLimits: [428, 590],
+            },
+            size,
+            10,
+            { leading: 1, paragraphGap: 0, flavorGap: 0, flavorSeparator: false },
+          );
+          const fitted = alphaRulesLayout(ctx, { ...face, setCode, wordingMode: 'oracle' }, base);
+          const scale = fitted.horizontalScale ?? 1;
+          if (fitted.overflow) throw Error('Oracle inset overflowed');
+          if (fitted.size > base.size) throw Error('Oracle fallback enlarged text');
+          if (Math.abs(fitted.x * scale - 80.5) > 0.001)
+            throw Error('Oracle fallback lost its inset');
+          if (fitted.size < base.size) reducedOracleSizes++;
+          for (const line of fitted.lines) {
+            if (Math.abs(line.x * scale - 80.5) > 0.001) throw Error('Oracle line lost its inset');
+            if (line.inkBounds[1] < 428 || line.inkBounds[1] + line.inkBounds[3] > 590)
+              throw Error('Oracle fallback escaped vertical limits');
+          }
+          const text = (l) =>
+            l.lines
+              .flatMap((row) => row.runs.map((run) => run.text))
+              .join('')
+              .replace(/\s/g, '');
+          if (text(fitted) !== text(base)) throw Error('Oracle fallback discarded text');
+          fixedInsetCases++;
+        }
+      }
+    }
+    if (!reducedOracleSizes) throw Error('No vertical failure exercised smaller-text fallback');
     const legacy = after(ctx, {
       ...face,
       rulesParagraphs: undefined,
@@ -156,7 +211,7 @@ try {
       rulesText: 'Draw three cards.',
     });
     if (!legacy.lines.length) throw Error('Legacy rulesText was discarded');
-    return { changed, controls, fallbacks, printedSizeCases };
+    return { changed, controls, fallbacks, printedSizeCases, fixedInsetCases, reducedOracleSizes };
   }, sizeReviews);
   assert.ok(result.changed > 0);
   assert.equal(result.controls, 20);

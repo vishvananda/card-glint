@@ -27,7 +27,7 @@ export interface EarlyTextTierOptions {
 }
 
 /** Face-cache identity for the shared Alpha original-only wrap safeguard. */
-export const ALPHA_RULES_REVISION = 'alpha-plain-rules-wrap-v1';
+export const ALPHA_RULES_REVISION = 'alpha-oracle-fixed-inset-v2';
 
 /** Reviewed Alpha defaults. Oracle retains its established fitting/safe inset. */
 export function alphaTextLayout(

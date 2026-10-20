@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "688dd0064fc3bd1fe910d22d474c3775facffa0a3dc24a39c2b7d09811cdb970",
+  "revision": "38fa4c9eb49dac0f57e70507653a9e2538f36b737c2b2506d4f0b40da0cd2e2e",
   "artistRevision": "aafc5599d700f388242ffafd8dbd2e01e0a34228324f6e3ea55033f0877dba5b",
   "sets": {
     "0014def3-4063-4929-ac51-76aef1bb2a68": "arn",
@@ -15863,6 +15863,35 @@
         "reason": "Visually transcribed from the frozen Scryfall Alpha scan type strip; no rules/body certification.",
         "fields": {
           "typeLine": "Summon Demons"
+        }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/lea/annotations-zz-literal-mana.json",
+        "referenceSha256": "2407b12b06285d7c07b8ff89352a483c11fa97b0d667ab034e3a697ae840191f",
+        "reason": "Own Alpha scan visually reviewed: the upkeep cost is printed as literal BBB, with no mana discs. Preserve that lettering only for this original printing; Oracle wording keeps its mana symbols. No scan-specific layout overrides.",
+        "fields": {
+          "rulesText": "Tap to destroy 1 land. Pay BBB during upkeep or the Hordes become tapped and you lose a land of opponent's choice.",
+          "flavorText": "Created to destroy Dominia, Demons can sometimes be bent to a more focused purpose.",
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "Tap to destroy 1 land. Pay BBB during upkeep or the Hordes become tapped and you lose a land of opponent's choice.",
+                  "italic": false
+                }
+              ]
+            },
+            {
+              "role": "flavor",
+              "runs": [
+                {
+                  "text": "Created to destroy Dominia, Demons can sometimes be bent to a more focused purpose.",
+                  "italic": true
+                }
+              ]
+            }
+          ]
         }
       }
     ],

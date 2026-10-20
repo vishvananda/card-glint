@@ -1,0 +1,199 @@
+{
+  "schema": 1,
+  "status": "lab-original-reference-fixed-oracle-inset-candidate",
+  "labRenderer": "0.6.6",
+  "originalRegression": "Oracle centering reference was also used for original size tiers; Animate Dead shrank at 0.5.4, while Warp Artifact had the wrong reference at least as early as 0.5.2.",
+  "examples": [
+    {
+      "name": "Animate Dead",
+      "history": [
+        {
+          "version": "0.5.2",
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "version": "0.5.3",
+          "size": 22.5,
+          "lines": 8
+        },
+        {
+          "version": "0.5.4",
+          "size": 15.5,
+          "lines": 5
+        },
+        {
+          "version": "0.5.5",
+          "size": 15.5,
+          "lines": 5
+        },
+        {
+          "version": "0.6.0",
+          "size": 15.5,
+          "lines": 5
+        },
+        {
+          "version": "0.6.6",
+          "size": 15.5,
+          "lines": 5
+        }
+      ],
+      "corrected": {
+        "size": 22.5,
+        "lines": 8,
+        "left": 80.5
+      },
+      "oracle": {
+        "before": {
+          "size": 14.75,
+          "lines": 9,
+          "left": 70
+        },
+        "after": {
+          "size": 14.75,
+          "lines": 9,
+          "left": 80.5
+        }
+      }
+    },
+    {
+      "name": "Darkpact",
+      "history": [],
+      "corrected": {
+        "size": 22.25,
+        "lines": 8,
+        "left": 80.5
+      },
+      "oracle": {
+        "before": {
+          "size": 22.5,
+          "lines": 6,
+          "left": 70
+        },
+        "after": {
+          "size": 22.5,
+          "lines": 6,
+          "left": 80.5
+        }
+      }
+    },
+    {
+      "name": "Demonic Hordes",
+      "history": [],
+      "corrected": {
+        "size": 22.5,
+        "lines": 7,
+        "left": 80.5
+      },
+      "oracle": {
+        "before": {
+          "size": 20.25,
+          "lines": 8,
+          "left": 70
+        },
+        "after": {
+          "size": 20.25,
+          "lines": 8,
+          "left": 80.5
+        }
+      }
+    },
+    {
+      "name": "Drain Life",
+      "history": [],
+      "corrected": {
+        "size": 22.5,
+        "lines": 7,
+        "left": 80.5
+      },
+      "oracle": {
+        "before": {
+          "size": 20.25,
+          "lines": 8,
+          "left": 70
+        },
+        "after": {
+          "size": 20.25,
+          "lines": 8,
+          "left": 80.5
+        }
+      }
+    },
+    {
+      "name": "Drudge Skeletons",
+      "history": [],
+      "corrected": {
+        "size": 22.5,
+        "lines": 7,
+        "left": 80.5
+      },
+      "oracle": {
+        "before": {
+          "size": 15.5,
+          "lines": 7,
+          "left": 70
+        },
+        "after": {
+          "size": 15.5,
+          "lines": 7,
+          "left": 80.5
+        }
+      }
+    },
+    {
+      "name": "Warp Artifact",
+      "history": [
+        {
+          "version": "0.5.2",
+          "size": 22.5,
+          "lines": 3
+        },
+        {
+          "version": "0.5.3",
+          "size": 22.5,
+          "lines": 3
+        },
+        {
+          "version": "0.5.4",
+          "size": 22.5,
+          "lines": 3
+        },
+        {
+          "version": "0.5.5",
+          "size": 22.5,
+          "lines": 3
+        },
+        {
+          "version": "0.6.0",
+          "size": 22.5,
+          "lines": 3
+        },
+        {
+          "version": "0.6.6",
+          "size": 22.5,
+          "lines": 3
+        }
+      ],
+      "corrected": {
+        "size": 33,
+        "lines": 4,
+        "left": 109.12500000000001
+      },
+      "oracle": {
+        "before": {
+          "size": 22.5,
+          "lines": 5,
+          "left": 80.5
+        },
+        "after": {
+          "size": 22.5,
+          "lines": 5,
+          "left": 80.5
+        }
+      }
+    }
+  ],
+  "evidence": "alpha-text-reference-review.json.gz",
+  "evidenceSha256": "3b826b3520c5fd3ce7b3edffcd3c5d5360e1c5e6d0a960eb006fbfb2556fdd9c",
+  "remaining": "Oracle margin fallback is not yet released. Original Demonic Hordes literal BBB correction is scan-reviewed on the same audit branch. No full-set completion claim or global score invalidation."
+}

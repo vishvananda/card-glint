@@ -292,3 +292,40 @@ registered complete-set profile. Land geometry, illustration placement, black
 levels, headings, mana and body/footer fitting remain open. Typography fitting
 must use the current original wording, including Dragon Whelp's corrected flow,
 instead of these older frozen frame-only body inputs.
+
+## Alpha text-reference investigation
+
+`alpha-text-reference-review.json` and its compressed numerical evidence compare
+all 295 original-reference layouts across 0.5.2, 0.5.3, 0.5.4, 0.5.5, 0.6.0 and
+0.6.6. Seventeen exact paired-wording examples also reproduce the Lab's previous
+Oracle-reference setting; no inferred Oracle recipes count as evidence.
+Animate Dead's displayed original text shrank from 22.5 to 15.5 canonical pixels
+at 0.5.4 under that setting, while original-reference fitting retained 22.5.
+Warp Artifact already differed in 0.5.2; 0.6.6 uses 33 centered with its own
+original reference, versus 22.5 left-aligned with the Oracle reference.
+The Lab now keeps the original column on its own reference.
+
+The separate Oracle-inset candidate retains 80.5 canonical pixels at the left
+when the existing model rejects an unsafe vertical fit. It reflows and reduces
+font size within the same inset and 428–590 vertical limits, preserving the
+entire visible text. Both centering references pass all 295 Alpha Oracle cases;
+170 cards change, and all 295 frozen original-wording layouts remain identical.
+That comparison is about layout constraints, not Oracle-versus-scan text scores.
+Demonic Hordes' literal printed BBB is a separate scan-bound wording correction.
+
+To replay published fitting, prepare a normal native `inputs.json` and a cached
+object keyed by printing ID containing `{card, original, oracle}` for each exact
+paired example. Use the same content-addressed external-asset cache:
+
+```sh
+node games/magic/tools/accuracy/early-text-history.mjs \
+  INPUTS.json PAIRED_WORDINGS.json OUT 0.5.3 0.5.4 0.6.6
+```
+
+The tool archives immutable tags, builds each tag's own data, loads its native
+fonts, records source/input/image hashes and refuses uncached external requests.
+Only supplied paired records get Oracle-reference controls. It does not fetch
+changing wording, mutate the checkout, adjust scans or upload scores. Temporary
+source copies under `OUT/sources` can be removed after capture. Pixel evidence
+stays outside Git. The gallery is at `/early-sets/alpha-text/`; its Oracle candidate
+is explicitly unreleased, while the corrected original view uses published 0.6.6.

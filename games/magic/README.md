@@ -649,6 +649,14 @@ from that wording, independently of which wording is displayed. The default is
 the displayed mode; requesting a missing alignment source throws. Explicit
 paragraph alignment takes precedence over automatic centering.
 
+To fit using the wording being rendered, omit the alignment override: the
+selected mode supplies its own reference. For an exact scan comparison, use
+`withCardWording(face, wordings, 'original')`; keep an Oracle centering preference
+on the separate Oracle rebuild. Historical automatic centering also participates
+in size-tier selection, so an Oracle reference is not a neutral choice for an
+original-printing comparison. Alpha/Beta Oracle overflow keeps its physical inset
+and reduces the font size rather than falling back to a wider box.
+
 The early-set rule is empirical: in Alpha, Beta, Unlimited and Revised, a
 rules-only passage that fits in five lines at the set's large size is centered.
 A short keyword heading can precede it; flavor blocks and longer passages use

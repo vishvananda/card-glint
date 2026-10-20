@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "scope": "Exact source restoration for historical original-wording calibration evidence only. All 295 frozen original layouts agree. This does not authorize Oracle score reuse, changed wording, fresh renderer fingerprints or a rendered-face cache migration.",
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/early-through-fourth/alpha-text-reference-review.json.gz",
+    "sha256": "3b826b3520c5fd3ce7b3edffcd3c5d5360e1c5e6d0a960eb006fbfb2556fdd9c"
+  },
+  "files": {
+    "games/magic/src/presentation/alpha-rules.ts": {
+      "before": "2d9b8ef185b16faee9d5c32d942c5b75815bc7c4869c84aed412e935da74706b",
+      "after": "406ca0fa646f496145b2a74feaa33252a0a7e12328a1327b0f4c8c2b3dfdb03f",
+      "reverseEdits": [
+        {
+          "start": 95,
+          "count": 25,
+          "lines": []
+        },
+        {
+          "start": 89,
+          "count": 5,
+          "lines": ["  return overflow ? original : candidate;\n"]
+        },
+        {
+          "start": 42,
+          "count": 3,
+          "lines": ["  if (!model) return original;\n"]
+        }
+      ],
+      "ancestors": []
+    },
+    "games/magic/src/presentation/early-text-tiers.ts": {
+      "before": "16d3a43a26e9eda4ce14ac2af18ce498ac0c2637e6ca018369dd3f3191aea40c",
+      "after": "e3d3723291b5351d7771fcede0ee27c956dd263c3306c10c744bb797f530ac1d",
+      "reverseEdits": [
+        {
+          "start": 29,
+          "count": 1,
+          "lines": ["export const ALPHA_RULES_REVISION = 'alpha-plain-rules-wrap-v1';\n"]
+        }
+      ],
+      "ancestors": ["4859b847a11ebfc65f9e16d26f635e31f3ef8b2f5698601b02c002cf0d37a9b6"]
+    }
+  }
+}

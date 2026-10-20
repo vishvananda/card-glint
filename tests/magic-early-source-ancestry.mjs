@@ -6,13 +6,14 @@ import {
   EARLY_SOURCE_RECEIPT,
 } from '../games/magic/tools/accuracy/abu-source-ancestry.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preOracleInsetSource } from '../games/magic/tools/accuracy/alpha-oracle-ancestry.mjs';
 const proof = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/early-through-fourth/source-proof.json'),
 );
 for (const [file, entry] of Object.entries(proof.files)) {
   const current = await readFile(file),
     before = await preEarlyCalibrationSource(file, current);
-  assert.equal(hash(current), entry.after);
+  assert.equal(hash(await preOracleInsetSource(file, current)), entry.after);
   assert.equal(hash(before), entry.before);
   assert.deepEqual(await preEarlyCalibrationSource(file, before), before);
   await assert.rejects(
@@ -72,4 +73,24 @@ await assert.rejects(
 assert.deepEqual(await preUnlimitedEmptySource('unrelated.mjs', unrelated), unrelated);
 console.log(
   'Unlimited adapter ancestry: exact scoped entry, original bytes and unknown-edit rejection pass.',
+);
+
+const oracleProof = JSON.parse(
+  await readFile(
+    'games/magic/fixtures/accuracy/early-through-fourth/alpha-oracle-source-proof.json',
+  ),
+);
+for (const [file, entry] of Object.entries(oracleProof.files)) {
+  const current = await readFile(file);
+  assert.equal(hash(current), entry.after);
+  const original = await preOracleInsetSource(file, current);
+  assert.equal(hash(original), entry.before);
+  assert.deepEqual(await preOracleInsetSource(file, original), original);
+  await assert.rejects(
+    preOracleInsetSource(file, Buffer.concat([current, Buffer.from('\n// unknown Oracle edit\n')])),
+    /Unreviewed early source/,
+  );
+}
+console.log(
+  'Oracle-only source restoration verifies 295 identical original layouts and rejects unknown edits.',
 );

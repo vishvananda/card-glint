@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { preUnlimitedEmptySource } from './unlimited-empty-ancestry.mjs';
 import { hash } from './common.mjs';
+import { preOracleInsetSource } from './alpha-oracle-ancestry.mjs';
 export const EARLY_SOURCE_RECEIPT =
   'ffdbdec5616e31f5b136399deadd7f4ecf6095806e9c10e47a21920e001d8a11';
 let checked;
@@ -16,7 +17,11 @@ async function earlyProof() {
     const p = JSON.parse(raw);
     assert.deepEqual(p.affectedSets, ['lea', 'leb', '2ed']);
     for (const [name, digest] of Object.entries(p.dependencies))
-      assert.equal(hash(await readFile(name)), digest, 'Changed reviewed early source: ' + name);
+      assert.equal(
+        hash(await preOracleInsetSource(name, await readFile(name))),
+        digest,
+        'Changed reviewed early source: ' + name,
+      );
     const evidence = {};
     for (const [role, ref] of Object.entries(p.evidence)) {
       const b = await readFile(ref.file);
@@ -63,6 +68,7 @@ export async function earlyCalibrationAffected(set, group, task, originalInput =
 /** Source restoration is used only after the caller chooses an unaffected
  * component. It must not approve a changed component's historical fit. */
 export async function preEarlyCalibrationSource(file, bytes) {
+  bytes = await preOracleInsetSource(file, bytes);
   const proof = await earlyProof();
   const entry = proof.files[file];
   if (!entry) return preUnlimitedEmptySource(file, bytes);

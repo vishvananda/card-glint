@@ -71,6 +71,25 @@ try {
   console.log(
     'Seven pre-Fourth Dragon Whelp inline quotations preserve Oracle and Fourth separation.',
   );
+  const literalMana = await fixture('lea/annotations-zz-literal-mana.json');
+  const [[literalId, literalRow]] = Object.entries(literalMana.cards);
+  const literalOracle = { ...oracle, rulesText: 'Pay {B}{B}{B} during your upkeep.' };
+  const literal = resolvePrintingWording(
+    literalId,
+    { original, oracle: literalOracle },
+    {
+      referenceSha256: literalRow.referenceHash,
+    },
+  );
+  assert.ok(literal.wordings.original.rulesText.includes('Pay BBB during upkeep'));
+  assert.ok(!literal.wordings.original.rulesText.includes('{B}'));
+  assert.ok(literal.wordings.oracle.rulesText.includes('{B}{B}{B}'));
+  assert.equal(
+    resolvePrintingWording(literalId, input, {
+      referenceSha256: '0'.repeat(64),
+    }).provenance.status,
+    'reference-mismatch',
+  );
   const reviewedStats = await fixture('atq/annotations-stats.json');
   const alphaOutliers = await fixture('lea/annotations-text-outliers.json');
   for (const [id, row] of Object.entries(alphaOutliers.cards)) {

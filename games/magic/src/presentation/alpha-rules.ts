@@ -40,7 +40,9 @@ export function earlyRulesModel(
     : paragraphs.some((p) => p.align === 'center') || original.size < 19
       ? null
       : models.regular;
-  if (!model) return original;
+  if (!model) {
+    return face.wordingMode === 'oracle' ? fitOracleInset(context, original) : original;
+  }
   const size = original.size + model.size;
   const shape = layoutRules(
     context,
@@ -85,5 +87,34 @@ export function earlyRulesModel(
       ({ inkBounds: [x, y, w, h] }) =>
         y < top || y + h > bottom || x * model.width < 48 || (x + w) * model.width > 448,
     );
-  return overflow ? original : candidate;
+  if (!overflow) return candidate;
+  // A vertical fit failure must not discard the physical inset. Oracle text
+  // can be much longer than the printing: reflow at that inset and reduce the
+  // font size, rather than returning the wider, unadjusted layout.
+  return face.wordingMode === 'oracle' ? fitOracleInset(context, original) : original;
+}
+
+/** Preserve the frame's horizontal inset while fitting expanded Oracle text.
+ * Original-printing fits and their reviewed size tiers remain unchanged. */
+function fitOracleInset(context: CanvasContext, original: RulesLayout): RulesLayout {
+  const request = rulesLayoutRequest(original);
+  if (!request) throw Error('Missing Oracle typography request');
+  const model = models.regular;
+  const shape = layoutRules(
+    context,
+    request.paragraphs,
+    {
+      ...request.bounds,
+      x: (original.x + model.left) / model.width,
+      width: (original.width - model.left - model.right) / model.width,
+      verticalLimits: [428, 590],
+    },
+    original.size,
+    Math.min(10, original.size),
+    {
+      ...request.typography,
+      leading: request.typography.leading + model.leading / original.size,
+    },
+  );
+  return { ...shape, horizontalScale: model.width };
 }
