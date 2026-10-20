@@ -224,9 +224,9 @@ try {
           Scrubland: 'w',
           Taiga: 'g',
           'Tropical Island': 'u',
-          Tundra: 'u',
+          Tundra: set === 'leb' ? 'w' : 'u',
           'Underground Sea': 'b',
-          'Volcanic Island': 'r',
+          'Volcanic Island': set === 'leb' ? 'u' : 'r',
         }[row.name];
         assert.ok(
           plan.outline.endsWith(`/${printedOutline}l.png`),

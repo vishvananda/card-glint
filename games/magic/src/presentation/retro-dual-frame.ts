@@ -29,7 +29,7 @@ export function retroDualFrame(face: RenderedCardInput) {
     base: `${root}${bands[0]!.toLowerCase()}l.png`,
     overlay: `${root}${bands[1]!.toLowerCase()}l.png`,
     mask: `${manifest.CONJURER_ROOT}/img/frames/old/abu/dualLand.png`,
-    outline: `${root}${abuLandOutlineColor(colors)!.toLowerCase()}l.png`,
+    outline: `${root}${abuLandOutlineColor(colors, face.setCode)!.toLowerCase()}l.png`,
   };
 }
 
@@ -48,4 +48,10 @@ export function retroLandColors(face: RenderedCardInput): string[] {
           new RegExp(String.raw`\b${type}\b`).test(face.canonicalTypeLine ?? face.typeLine ?? ''),
         )
         .map(([, color]) => color!);
+}
+
+/** Only these two printed outlines change. Other face cache identities stay byte-identical. */
+export function retroDualFrameRevision(face: RenderedCardInput): string | undefined {
+  if (face.setCode?.toLowerCase() !== 'leb' || !retroDualFrame(face)) return undefined;
+  return ['WU', 'UR'].includes(retroLandColors(face).join('')) ? 'beta-outline-ink-v2' : undefined;
 }

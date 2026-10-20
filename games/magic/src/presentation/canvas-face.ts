@@ -1,3 +1,4 @@
+import { retroDualFrameRevision } from './retro-dual-frame.js';
 import { WALKER_GEOMETRY, walkerSymbolSize } from './planeswalker-geometry.js';
 import { coverageMap, type CoverageMap } from '../../../../packages/browser/src/canvas-mask.js';
 import { finishRaster, closeRaster } from '../../../../packages/browser/src/canvas-raster.js';
@@ -161,6 +162,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     ]);
   // Only visible face content; no identity handles, finish or interaction state.
   const face = input.face;
+  const dualFrameRevision = input.layer === 'etching' ? undefined : retroDualFrameRevision(face);
   const content = faceContentKey(face, input.layer === 'etching');
   const stats =
     input.currentStats?.power != null && input.currentStats.toughness != null
@@ -170,6 +172,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
     'canvas-face-v148',
+    ...(dualFrameRevision ? [dualFrameRevision] : []),
     ...(faceFrame(face).startsWith('planeswalker') ? [WALKER_MATERIAL_REVISION] : []),
     ...(faceSetSymbol(face)?.startsWith(`${CONJURER_ROOT}/img/setSymbols/official/m15-`) &&
     !face.setSymbol &&
