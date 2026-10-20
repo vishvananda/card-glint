@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { earlyManaTrialPlugin } from '../games/magic/tools/accuracy/early-mana-trial-plugin.mjs';
 import { earlyManaRetainedPlugin } from '../games/magic/tools/accuracy/early-mana-retained-plugin.mjs';
+import { earlyManaInkPlugin } from '../games/magic/tools/accuracy/early-mana-ink-plugin.mjs';
 const prefix = '/repo/games/magic/src/presentation/';
 const functions = [
   'export function earlyReprintMana(face: RenderedCardInput): boolean {',
@@ -48,3 +49,25 @@ assert.equal(retained.transform('unrelated', prefix + 'layout.ts'), undefined);
 console.log(
   'Mana study hooks: exact boundaries, immutable transforms, palette cache identity and core exclusion pass.',
 );
+
+const inkSource = `export function historicalManaPaperSample(face: RenderedCardInput, symbol: string) {
+ return undefined;
+}
+export function historicalManaAsset(face: RenderedCardInput, symbol: string) {
+ const asset = undefined, ink = undefined;
+  return asset && ink ? { ...asset, inkExpansion: ink.pixels } : asset;
+}`;
+const inkProof = {},
+  inkPlugin = earlyManaInkPlugin(inkProof);
+const inkCode = inkPlugin.transform(inkSource, prefix + 'historical-mana.ts');
+assert(inkCode.includes('inkExpansion: amount'));
+assert(inkCode.includes("return 'opaque-percentile'"));
+assert(inkCode.includes("throw Error('Invalid trial ink expansion')"));
+assert.equal(inkPlugin.transform(inkSource, prefix + 'historical-mana.ts'), inkCode);
+assert.equal(
+  inkPlugin.transform(inkSource, '/repo/packages/browser/src/historical-mana.ts'),
+  undefined,
+);
+assert.throws(() => inkPlugin.transform(inkSource + '// changed', prefix + 'historical-mana.ts'));
+assert.throws(() => earlyManaInkPlugin({}).transform('missing', prefix + 'historical-mana.ts'));
+assert.equal(inkPlugin.transform('unrelated', prefix + 'layout.ts'), undefined);
