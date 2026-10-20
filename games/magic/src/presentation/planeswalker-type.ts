@@ -12,7 +12,19 @@ export function paintPlaneswalkerType(
   image: ImageBitmap,
   rect: FaceRect,
   colorless = false,
+  prepared?: { image: ImageBitmap; rect: FaceRect },
 ) {
+  if (prepared) {
+    const [x, y, w, h] = prepared.rect;
+    context.drawImage(
+      prepared.image,
+      x * FACE_WIDTH,
+      y * FACE_HEIGHT,
+      w * FACE_WIDTH,
+      h * FACE_HEIGHT,
+    );
+    return;
+  }
   const [x, y, w, h] = [
     rect[0] * FACE_WIDTH,
     rect[1] * FACE_HEIGHT,

@@ -32,10 +32,13 @@ import { framePlateUrls } from './frame-plates.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { mountedSecurityStamp } from './security-stamp-paint.js';
 
+import type { WalkerMaterials } from './planeswalker-material.js';
+import { walkerPalette, walkerSources } from './planeswalker-sources.js';
 import type { EarlyManaNumeral } from './early-expansion-mana.js';
 import type { ManaNumeral } from './mana-numeral.js';
 
 export interface CanvasImages extends ReadonlyMap<string, ImageBitmap> {
+  readonly planeswalker?: WalkerMaterials;
   /** Face-preparation palette for procedural/fallback mana discs. */
   readonly manaCostShadow?: readonly [number, number];
   readonly manaCostNumeral?: EarlyManaNumeral;
@@ -198,6 +201,15 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
     mountedSecurityStamp(face)?.rightImage,
     faceFrame(face) === 'normal' ? plateBasicSymbol(face) : null,
     ...extraRuleAssets(face),
+    ...(faceFrame(face).startsWith('planeswalker')
+      ? (() => {
+          const s = walkerSources(
+            faceFrame(face) === 'planeswalker-large',
+            walkerPalette(profile.boxes),
+          );
+          return [s.source, s.mask];
+        })()
+      : []),
     assets.background,
     assets.frame,
     assets.boxes,

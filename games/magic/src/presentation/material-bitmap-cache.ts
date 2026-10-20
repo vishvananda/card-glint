@@ -203,7 +203,9 @@ export const earlyHsbBitmapCache = new MaterialBitmapCache(16 * 1024 * 1024);
 // A composite borrows HSB leases while building. A separate budget prevents
 // concurrent preparations from holding all HSB capacity while waiting on it.
 export const retroDualBitmapCache = new MaterialBitmapCache(8 * 1024 * 1024);
+export const planeswalkerBitmapCache = new MaterialBitmapCache(64 * 1024 * 1024);
 export const clearEarlyHsbBitmaps = () => {
+  planeswalkerBitmapCache.clear();
   earlyHsbBitmapCache.clear();
   retroDualBitmapCache.clear();
 };

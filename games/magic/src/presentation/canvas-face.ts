@@ -34,6 +34,8 @@ import { paintNativeSplitFace, loadSplitFonts } from './split-paint.js';
 import { paintSagaFace, loadSagaFont } from './saga-paint.js';
 import { isAftermath } from './aftermath-frame.js';
 import { paintAftermathFace } from './aftermath-paint.js';
+import { preparePlaneswalkerMaterials } from './planeswalker-material.js';
+import { WALKER_MATERIAL_REVISION } from './planeswalker-sources.js';
 import { prepareEarlyHsb } from './early-hsb-material.js';
 import { titleTranslation } from './title-placement.js';
 import { prepareRetroDualFrame } from './retro-dual-material.js';
@@ -167,6 +169,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
     'canvas-face-v148',
+    ...(faceFrame(face).startsWith('planeswalker') ? [WALKER_MATERIAL_REVISION] : []),
     ['silhouette-v2', faceCornerRadius(face)],
     setCalibrationTextureKey(face),
     input.paintLayer ?? null,
@@ -449,6 +452,7 @@ export async function composeCardTexture(
     let calibrated: Awaited<ReturnType<typeof prepareEarlyHsb>> | undefined;
     let dual: Awaited<ReturnType<typeof prepareRetroDualFrame>> | undefined;
     let numerals: Awaited<ReturnType<typeof prepareManaNumerals>> | undefined;
+    let walkers: Awaited<ReturnType<typeof preparePlaneswalkerMaterials>> | undefined;
     try {
       if (input.paintLayer !== 'artwork')
         calibrated = await prepareEarlyHsb(input.face, loaded.images, signal);
@@ -462,9 +466,11 @@ export async function composeCardTexture(
               dual?.images ?? calibrated?.images ?? loaded.images,
               signal,
             );
+      if (input.paintLayer !== 'artwork')
+        walkers = await preparePlaneswalkerMaterials(input.face, numerals.images, signal);
       await hooks?.beforePaint?.();
       signal.throwIfAborted();
-      const paintingImages = numerals.images;
+      const paintingImages = walkers?.images ?? numerals.images;
       withRulesInk(context, input.rulesText !== false, () =>
         withPrintingOmissions(context, input.face, () =>
           paintAssembledFace(
@@ -510,6 +516,7 @@ export async function composeCardTexture(
       roundCanvasSilhouette(context, input.face);
       return await complete(canvas);
     } finally {
+      walkers?.dispose();
       numerals?.dispose();
       dual?.dispose();
       calibrated?.dispose();
@@ -746,6 +753,10 @@ export function paintAssembledFace(
     const [x, y, width] = px(rects.frame);
     paintPlaneswalkerFrameImage(context, frame, x, y, width, kind === 'planeswalker-large');
   } else if (frame && kind !== 'normal') paintFrame(context, frame, profile.legendary, rects.frame);
+  if (planeswalker && images.planeswalker) {
+    const opening = images.planeswalker.opening;
+    context.drawImage(opening.image, ...px(opening.rect));
+  }
   if (profile.legendary) draw(assets.crown, rects.crown);
   if (panel) {
     const boxes = images.get(assets.boxes);
@@ -777,7 +788,8 @@ export function paintAssembledFace(
       context.restore();
     }
     const boxes = images.get(assets.boxes);
-    if (planeswalker && boxes) paintPlaneswalkerType(context, boxes, rects.type, colorlessPlate);
+    if (planeswalker && boxes)
+      paintPlaneswalkerType(context, boxes, rects.type, colorlessPlate, images.planeswalker?.type);
     else {
       draw(assets.boxes, rects.type, 'bottom');
       if (kind === 'normal' && boxes) {
