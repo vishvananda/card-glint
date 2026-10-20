@@ -8,7 +8,7 @@ import { hash, readJson, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { measureWhiteFrame, boundaryDifference } from './frame-boundaries.mjs';
 import { median } from './metrics.mjs';
-const [captureDirectory, inputsFile, output] = process.argv.slice(2);
+const [captureDirectory, inputsFile, output, posesFile] = process.argv.slice(2);
 assert(output, 'Usage: early-native-boundaries.mjs CAPTURE INPUTS OUTPUT');
 const captureBytes = await readFile(path.join(captureDirectory, 'capture.json')),
   capture = JSON.parse(captureBytes),
@@ -17,6 +17,17 @@ const captureBytes = await readFile(path.join(captureDirectory, 'capture.json'))
   byId = new Map(inputs.entries.map((e) => [e.id, e])),
   rows = [];
 assert.equal(capture.rows.length, inputs.entries.length, 'Complete printing coverage required');
+const posesBytes = posesFile ? await readFile(posesFile) : undefined;
+const poses = posesBytes ? JSON.parse(posesBytes) : undefined;
+if (poses) {
+  assert.equal(poses.inputHash, hash(inputsBytes));
+  assert(
+    capture.source.inputs.some(
+      (r) => r.inputHash === hash(inputsBytes) && r.poseHash === hash(posesBytes),
+    ),
+  );
+}
+
 for (const r of capture.rows) {
   const e = byId.get(r.id);
   assert(e);
@@ -33,7 +44,7 @@ for (const r of capture.rows) {
     name: r.name,
     set: r.set,
     material: e.material,
-    cohort: e.cohort,
+    cohort: poses?.rows.find((p) => p.id === r.id)?.cohort ?? e.cohort,
     acceptedPose: r.accepted,
     referenceHash: r.referenceHash,
     poseHash: r.poseHash,
@@ -74,6 +85,7 @@ const report = {
   validationKind: 'reused-development',
   captureHash: hash(captureBytes),
   inputHash: hash(inputsBytes),
+  ...(posesBytes ? { normalizationHash: hash(posesBytes) } : {}),
   toolHash: hash(await readFile(new URL(import.meta.url))),
   dependencies,
   summary: summarize(rows),

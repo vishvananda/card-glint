@@ -152,3 +152,17 @@ faces: the existing frame is roughly two canonical pixels too narrow and short.
 This is a renderer geometry residual, not permission to change scan registration.
 The recorded values are diagnostic; source-family and internal aperture reviews,
 geometry candidate replays, colors and text remain open.
+
+To reproduce the outer-boundary diagnostic without changing scan poses:
+
+```sh
+node games/magic/tools/accuracy/early-native-boundaries.mjs NATIVE_CAPTURE REVIEWED_INPUTS.json BOUNDARIES.json NORMALIZATION.json
+node games/magic/tools/accuracy/early-boundary-proposal.mjs BOUNDARIES.json PROPOSAL.json
+```
+
+The first command verifies all native raster hashes and the exact input/pose
+manifest identities before attaching existing calibration/validation cohorts.
+The second fits one x/y frame transform per material on calibration scans only.
+Predicted reserved residuals are 0.05–0.09 canonical pixels; these numbers do not
+replace an actual native candidate replay, internal aperture checks or frame
+source comparison, and do not close a calibration task.

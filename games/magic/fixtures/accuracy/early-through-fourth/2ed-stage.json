@@ -74,8 +74,13 @@
     },
     "2ed-outer-boundaries": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-outer-boundaries.json.gz",
-      "sha256": "bda41af80b52ea39bbbc4ad1e89793b5c7658458378152c32bcdb1ab8c4f80c1",
-      "contentSha256": "5586a3e1c200e76d68479ca5125db727b36054a2706bb02bd4b2a122b807d04f"
+      "sha256": "f6673a1edd423277439aa69b2f083cd99bd3b73e672042057c42ae29bffe7716",
+      "contentSha256": "3a7a6fbeddbbeb32ca349c42b81843259036c7418df160330910835ff4f75e5a"
+    },
+    "2ed-boundary-proposal": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-boundary-proposal.json.gz",
+      "sha256": "36defbd2c151bb33f87e242fe7e36c54c101b51b51b59b1387ecbe5c17bbc386",
+      "contentSha256": "50bf2c1477a10620af5190e609c35a7da9f3e1b2af32c742ceafdd4a2977062a"
     }
   },
   "native": {
@@ -107,6 +112,7 @@
       "top": 0.8402094611505699,
       "bottom": -1.1132375268230703
     },
-    "decision": "The printed outer frame is consistently undersized, about two canonical pixels in width and height. Retain the independent scan poses. Trial frame/mask geometry and compare internal apertures before adjusting colors; do not hide renderer geometry errors with a new scan transform. Art/rules bevels and frame-family selection remain open."
+    "decision": "The printed outer frame is consistently undersized, about two canonical pixels in width and height. Retain the independent scan poses. Trial frame/mask geometry and compare internal apertures before adjusting colors; do not hide renderer geometry errors with a new scan transform. Art/rules bevels and frame-family selection remain open.",
+    "proposal": "Seven shared material transforms are predicted from the preselected calibration cohorts. Reserved-scan median residuals are 0.05-0.09 canonical px. These are boundary-model predictions, not replayed renderer scores. Native candidate and internal-aperture checks are required before adoption."
   }
 }
