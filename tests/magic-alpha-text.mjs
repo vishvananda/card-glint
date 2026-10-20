@@ -203,7 +203,41 @@ try {
         }
       }
     }
-    if (!reducedOracleSizes) throw Error('No vertical failure exercised smaller-text fallback');
+    // A fixed, deliberately tall request deterministically exercises the
+    // vertical fallback even when the platform fallback font changes wrapping.
+    // Compact cases need not cross a font-dependent line-breaking threshold.
+    for (const setCode of ['lea', 'leb']) {
+      const paragraphs = [{ role: 'rules', runs: [{ text: 'Draw a card.\n'.repeat(9).trim() }] }];
+      const base = layoutRules(
+        ctx,
+        paragraphs,
+        { x: 70, y: 428, width: 346, height: 300 },
+        22.5,
+        22.5,
+        { leading: 1, paragraphGap: 0, flavorGap: 0, flavorSeparator: false },
+      );
+      if (base.overflow) throw Error('Vertical fallback fixture has an invalid base');
+      const fitted = alphaRulesLayout(ctx, { ...face, setCode, wordingMode: 'oracle' }, base);
+      if (fitted.overflow || fitted.size >= base.size)
+        throw Error('Unsafe vertical fit did not reduce Oracle text');
+      for (const line of fitted.lines) {
+        if (
+          Math.abs(line.x * (fitted.horizontalScale ?? 1) - 80.5) > 0.001 ||
+          line.inkBounds[1] < 428 ||
+          line.inkBounds[1] + line.inkBounds[3] > 590
+        )
+          throw Error('Reduced Oracle fit lost the physical inset');
+      }
+      const text = (layout) =>
+        layout.lines
+          .flatMap((l) => l.runs.map((r) => r.text))
+          .join('')
+          .replace(/\s/g, '');
+      if (text(fitted) !== text(base)) throw Error('Reduced Oracle fit discarded text');
+      reducedOracleSizes++;
+      fixedInsetCases++;
+    }
+
     const legacy = after(ctx, {
       ...face,
       rulesParagraphs: undefined,
