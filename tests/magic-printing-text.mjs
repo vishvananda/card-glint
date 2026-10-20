@@ -177,6 +177,48 @@ assert.throws(
   () => presentation(entry, { 'printing-a': { ...partial, reviewedFields: ['power', 'power'] } }),
   /Repeated printing field/,
 );
+// Legacy body annotations are validated independently of printing metadata.
+// They must not require deleting their field list or weakening stale-scan checks.
+for (const field of ['rulesText', 'flavorText']) {
+  const review = { reviewed: true, reviewedFields: [field], referenceHash: 'scan-a', [field]: '' };
+  const result = presentation(entry, { 'printing-a': review });
+  assert.equal(result.contentStatus, 'scan-reviewed');
+  assert.deepEqual(result.reviewedFields, [], 'Body fields are not type/artist/cost reviews');
+  assert.throws(
+    () => presentation(entry, { 'printing-a': { ...review, reviewed: false } }),
+    /Invalid reviewed printing field/,
+  );
+  assert.throws(
+    () => presentation(entry, { 'printing-a': { ...review, [field]: null } }),
+    /Invalid reviewed printing field/,
+  );
+  assert.throws(
+    () => presentation(entry, { 'printing-a': { ...review, reviewedFields: [field, field] } }),
+    /Repeated printing field/,
+  );
+  assert.throws(
+    () => presentation(entry, { 'printing-a': { ...review, referenceHash: 'stale' } }),
+    /stale/,
+  );
+}
+const darkBodies = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/drk/annotations-text-outliers.json'),
+);
+for (const [id, row] of Object.entries(darkBodies.cards).filter(([, r]) =>
+  r.reviewedFields?.includes('rulesText'),
+)) {
+  const e = {
+    card: { id, name: row.name, set: 'drk', type_line: 'Creature', oracle_text: 'Oracle probe.' },
+    reference: { sha256: row.referenceHash },
+  };
+  const p = presentation(e);
+  assert.equal(p.face.rulesText, row.rulesText);
+  assert.equal(p.contentStatus, 'scan-reviewed');
+  assert.equal(e.card.oracle_text, 'Oracle probe.');
+  const custom = presentation(e, { [id]: { rulesText: 'Caller text.' } });
+  assert.equal(custom.face.rulesText, 'Caller text.');
+  assert.equal(custom.contentStatus, 'oracle-unverified');
+}
 const removedStats = presentation(entry, {
   'printing-a': { ...partial, power: null, toughness: null },
 });

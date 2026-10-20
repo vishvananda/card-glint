@@ -17,7 +17,7 @@ const opts = options();
 const query = `set:${opts.set} lang:en game:paper`;
 let url =
   'https://api.scryfall.com/cards/search?' +
-  new URLSearchParams({ q: query, unique: 'prints', order: 'set' });
+  new URLSearchParams({ q: query, unique: 'prints', order: 'set', include_variations: 'true' });
 const cards = [],
   pages = [];
 while (url) {
@@ -60,6 +60,7 @@ const snapshot = {
   policy: corpusPolicy(cards),
   set: opts.set,
   query,
+  includeVariations: true,
   createdAt: new Date().toISOString(),
   totalPrintings: cards.length,
   eligibleCount: eligible.length,

@@ -4,10 +4,20 @@ export function reviewedPrintingFields(entry, annotation) {
   if (!Array.isArray(annotation.reviewedFields)) throw Error('Invalid reviewed printing fields');
   if (annotation.referenceHash !== entry.reference?.sha256)
     throw Error(`Reviewed printing fields are stale for ${entry.card.name}`);
-  const result = {};
+  const result = {},
+    seen = new Set();
   for (const field of annotation.reviewedFields) {
-    if (Object.hasOwn(result, field)) throw Error(`Repeated printing field: ${field}`);
+    if (seen.has(field)) throw Error(`Repeated printing field: ${field}`);
+    seen.add(field);
     const value = annotation[field];
+    // Legacy full-body reviews can list these alongside partial field reviews.
+    // The adapter assembles their text separately; never return them as a type,
+    // cost, artist or stats field or infer a body review from their presence.
+    if (['rulesText', 'flavorText'].includes(field)) {
+      if (annotation.reviewed !== true || typeof value !== 'string')
+        throw Error(`Invalid reviewed printing field: ${field}`);
+      continue;
+    }
     const valid = ['name', 'typeLine', 'artist'].includes(field)
       ? typeof value === 'string' && value.length > 0
       : field === 'manaSymbols'

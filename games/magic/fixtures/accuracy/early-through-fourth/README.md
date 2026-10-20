@@ -225,3 +225,25 @@ medians; white is already close and remains conservative. Native color replay,
 contrast/black levels, mana calibration, headings, body/footer fitting and final
 whole-card scores remain required. `2ed-stage.json` lists each frozen receipt and
 its remaining scope. No runtime profile has been promoted by these trials.
+
+## Complete early-set reference cache
+
+`reference-preparation.json.gz` records all 3,306 planned printings across the
+13 major sets through Fourth Edition. Source assets remain external; the corpus
+fixtures contain printing IDs, source links and hashes only. The ordinary query
+must include `include_variations=true`: omitting it loses 14 Arabian Nights,
+two Antiquities and three Dark printings, even with `unique=prints`. These are
+ordinary historical variations and remain in the original audit scope.
+
+The offline cache is prepared for every set. Original text is a separate gate:
+MTGJSON has no `originalText` for the Collectors, International Collectors or
+Summer printings. Other missing entries remain listed individually. Neither an
+absent original field nor an empty Oracle body certifies the original printed
+body. Review exact scans before transferring another printing's wording.
+
+`fetch.mjs --set SET` now includes variations explicitly. Run
+`fetch-printing-text.mjs --set SET` afterward so its snapshot identity matches.
+The Dark's three existing rules-only reviews also pass the metadata adapter:
+reviewed body fields are checked separately and never misreported as type,
+artist, cost or stats reviews. Stale hashes, unreviewed bodies, duplicate fields
+and invalid values still fail closed.
