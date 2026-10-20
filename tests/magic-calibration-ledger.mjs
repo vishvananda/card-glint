@@ -193,11 +193,11 @@ assert.deepEqual(
   [],
 );
 const alphaReport = reports.find((s) => s.set === 'lea');
-assert.equal(alphaReport.byTask.headings['needs-audit'], alphaReport.groups);
+assert.equal(alphaReport.byTask.headings.validated, alphaReport.groups);
 assert.ok(alphaReport.byTask.frameGeometry['needs-audit'] > 0);
 assert.ok(reports.find((s) => s.set === 'leb').byTask.frameGeometry['needs-audit'] > 0);
 for (const group of ledger.sets.find((s) => s.set === 'lea').groups)
-  assert.match(group.tasks.headings.reason, /63\.12\/100/);
+  assert.match(group.tasks.headings.reason, /Fresh 0\.6\.5 native heading audit/);
 for (const s of ledger.sets) {
   assert.equal(
     reports.find((r) => r.set === s.set).inventoryReady,

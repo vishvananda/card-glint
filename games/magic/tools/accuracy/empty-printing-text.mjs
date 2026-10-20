@@ -1,10 +1,11 @@
+import unlimited from '../../fixtures/accuracy/2ed/annotations-empty-rules.json' with { type: 'json' };
 import lea from '../../fixtures/accuracy/lea/annotations-empty-rules.json' with { type: 'json' };
 import leb from '../../fixtures/accuracy/leb/annotations-empty-rules.json' with { type: 'json' };
 import revised from '../../fixtures/accuracy/3ed/annotations-empty-rules.json' with { type: 'json' };
 import eighth from '../../fixtures/accuracy/8ed/annotations-empty-rules.json' with { type: 'json' };
 import m21 from '../../fixtures/accuracy/m21/annotations-empty-rules.json' with { type: 'json' };
 
-const sets = { lea, leb, '3ed': revised, '8ed': eighth, m21 };
+const sets = { lea, leb, '2ed': unlimited, '3ed': revised, '8ed': eighth, m21 };
 /** Missing originalText is unknown. Only an exact, visually reviewed printing
  * can establish that its rules are empty; Oracle may add abilities later. */
 export function emptyPrintingTextAnnotation(entry) {

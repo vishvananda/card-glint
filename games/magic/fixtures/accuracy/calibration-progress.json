@@ -390,21 +390,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "1d5e7aca62d1f2e37201b378a60745473dccafbabcb7b6d91c0bc16cb1a9a727",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "56ac439d2c3ad9c6110b334f11f09be3c5719b940d57b266c951f1e4a2ce1d02",
                 "coveredPrintings": 2,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -425,15 +432,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
                   "calibration": 1,
-                  "validation": 1
+                  "validation": 0
                 }
               },
               "originalInput": {
@@ -445,6 +456,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 2,
+                "accepted": 2,
+                "rejected": []
               }
             },
             "rules": {
@@ -1203,21 +1220,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "9dec3a31117d58a1e8a50e65d9cf8019855865229e03ee292747e80a868c1673",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "3bfdd049370aac245163926e30d4aaf19dc54306908ae1ce2423a7b41d488712",
                 "coveredPrintings": 18,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -1238,15 +1262,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 2,
-                  "validation": 16
+                  "calibration": 10,
+                  "validation": 8
                 }
               },
               "originalInput": {
@@ -1258,6 +1286,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 18,
+                "accepted": 17,
+                "rejected": ["f13ad58a-6f9b-420a-bac1-40929f5e616a"]
               }
             },
             "rules": {
@@ -2018,21 +2052,28 @@
               "reason": "Disc paper and dark symbol ink separately measured against printing scans, final full-set audit repeated after glyph changes."
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "3297484bbd93708b9f8f1bb8b02ba2bea6b3806b7279459a6affddd47380f284",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "b86720d6754f44d8681c085665232cc84d1fd0215a9a4f5610a7c7d3d1758b39",
                 "coveredPrintings": 28,
-                "calibrationNames": 6,
-                "validationNames": 22,
-                "validationKind": "reused-development"
+                "calibrationNames": 195,
+                "validationNames": 95,
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -2053,9 +2094,13 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 28,
@@ -2065,6 +2110,23 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "transfer": {
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
+                "localNames": {
+                  "calibration": 17,
+                  "validation": 11
+                }
+              },
+              "comparisonCoverage": {
+                "native": 28,
+                "accepted": 26,
+                "rejected": [
+                  "6ff1cefc-62cb-4525-b0c5-2b09603b4314",
+                  "d42a6350-b16b-4e10-a273-e6cbb55dcb7a"
+                ]
               }
             },
             "rules": {
@@ -2639,21 +2701,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "a976b32b39783a03103d8094e582e96149b19fd64591bc185963d7e5dbb6ba52",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "95791f153af60d29f95c56641d0669d5455a11e2c4003d04f9885536a7d637d2",
                 "coveredPrintings": 1,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -2674,12 +2743,16 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
                   "calibration": 1,
                   "validation": 0
@@ -2694,6 +2767,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 1,
+                "accepted": 1,
+                "rejected": []
               }
             },
             "rules": {
@@ -3300,21 +3379,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "1c7827328a680869c3e499f823a08e89a4043ab0771061852efe11ad5bb50e5b",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "1f851cb2f774ed920de7d4263014e42af3fbbc7b6cc1a412c814dcf9e3d9a789",
                 "coveredPrintings": 1,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -3335,12 +3421,16 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
                   "calibration": 1,
                   "validation": 0
@@ -3355,6 +3445,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 1,
+                "accepted": 1,
+                "rejected": []
               }
             },
             "rules": {
@@ -4050,21 +4146,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "27945718ebb1863cc3d5b41ef87802ba8a0b7646871cbf0cf203db7a93788177",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "cfd2f8f0cfd410db54d246ec4a99fc6e5f58b12e7b79be11fd1779399aa75d21",
                 "coveredPrintings": 4,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -4085,12 +4188,16 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
                   "calibration": 1,
                   "validation": 3
@@ -4105,6 +4212,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 4,
+                "accepted": 4,
+                "rejected": []
               }
             },
             "rules": {
@@ -4876,21 +4989,28 @@
               "reason": "Disc paper and dark symbol ink separately measured against printing scans, final full-set audit repeated after glyph changes."
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "1cf5a22a024f00c081062993f4250e0e3bb744bed1ae6ebac265a2ead8c1a766",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "24cd30c983e7ec3fe756f8526f0393e416b51f92e8524acbc606e2a26b3e85c4",
                 "coveredPrintings": 43,
-                "calibrationNames": 7,
-                "validationNames": 36,
-                "validationKind": "reused-development"
+                "calibrationNames": 195,
+                "validationNames": 95,
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -4911,9 +5031,13 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 43,
@@ -4923,6 +5047,20 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "transfer": {
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
+                "localNames": {
+                  "calibration": 32,
+                  "validation": 11
+                }
+              },
+              "comparisonCoverage": {
+                "native": 43,
+                "accepted": 43,
+                "rejected": []
               }
             },
             "rules": {
@@ -5539,21 +5677,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "0b7c9c829be48ed429b257cc2c0b8d9a9539915b054848e95da38347fd2c04af",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "7e7e487c4a323427363a7ccbbd5a4fbfa519ce97a8eee80a246f3655eb02e744",
                 "coveredPrintings": 2,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -5574,14 +5719,18 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 1,
+                  "calibration": 0,
                   "validation": 1
                 }
               },
@@ -5594,6 +5743,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 2,
+                "accepted": 2,
+                "rejected": []
               }
             },
             "rules": {
@@ -6355,21 +6510,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "bb08f1715ff14fde66898343a9becc341b1a4fe88d30008179681fe1ba8b052f",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "cf6ee6dde2fba52e9e43cbf0a92e046ece6be1489b925e299a42620ad705ed14",
                 "coveredPrintings": 21,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -6390,15 +6552,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 2,
-                  "validation": 19
+                  "calibration": 17,
+                  "validation": 4
                 }
               },
               "originalInput": {
@@ -6410,6 +6576,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 21,
+                "accepted": 21,
+                "rejected": []
               }
             },
             "rules": {
@@ -7167,21 +7339,28 @@
               "reason": "Disc paper and dark symbol ink separately measured against printing scans, final full-set audit repeated after glyph changes."
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "7485ce1709e5d70b7c93d95e448024f30b35993fdd832b9e3ce90bd029499835",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "c37d673d26d23d71f469a4d251948b48e613cd842b63e2fe7448ec4285072290",
                 "coveredPrintings": 25,
-                "calibrationNames": 6,
-                "validationNames": 19,
-                "validationKind": "reused-development"
+                "calibrationNames": 195,
+                "validationNames": 95,
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -7202,9 +7381,13 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 25,
@@ -7214,6 +7397,20 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "transfer": {
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
+                "localNames": {
+                  "calibration": 14,
+                  "validation": 11
+                }
+              },
+              "comparisonCoverage": {
+                "native": 25,
+                "accepted": 25,
+                "rejected": []
               }
             },
             "rules": {
@@ -7789,21 +7986,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "5220f93aed8cd3ff07e32b73aa04b3028a01941fa89b04bd8acfbf5d0a7242c4",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "e7a0f79b2ce91e3e294f4424301c203b9b35a440cd7deeb662bb08c9fb9d3899",
                 "coveredPrintings": 2,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -7824,15 +8028,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
                   "calibration": 1,
-                  "validation": 1
+                  "validation": 0
                 }
               },
               "originalInput": {
@@ -7844,6 +8052,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 2,
+                "accepted": 2,
+                "rejected": []
               }
             },
             "rules": {
@@ -8544,21 +8758,28 @@
               "reason": "Disc paper and dark symbol ink separately measured against printing scans, final full-set audit repeated after glyph changes."
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "0ce7d1dd4ceaade4b555e114e1fcb301b06ae433bb1de9efb54a9ada813f4fd2",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "b272ed66a119eebb61afe4b0ad32fbde536e8ba30f9e2253b7ae0530d5b3c3b8",
                 "coveredPrintings": 24,
-                "calibrationNames": 7,
-                "validationNames": 17,
-                "validationKind": "reused-development"
+                "calibrationNames": 195,
+                "validationNames": 95,
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -8579,9 +8800,13 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 24,
@@ -8591,6 +8816,20 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "transfer": {
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
+                "localNames": {
+                  "calibration": 16,
+                  "validation": 8
+                }
+              },
+              "comparisonCoverage": {
+                "native": 24,
+                "accepted": 24,
+                "rejected": []
               }
             },
             "rules": {
@@ -9358,21 +9597,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "47d618f8f01e939fdca7c1af8771b1201653d4fd3495f51ca509928542ad2c5b",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "d787388b81ffc8bf71f4f82572972883b9c759959ff5a60385447900a9e8c0b8",
                 "coveredPrintings": 22,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -9393,15 +9639,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 1,
-                  "validation": 21
+                  "calibration": 15,
+                  "validation": 7
                 }
               },
               "originalInput": {
@@ -9413,6 +9663,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 22,
+                "accepted": 22,
+                "rejected": []
               }
             },
             "rules": {
@@ -10068,21 +10324,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "0bf315d18bfd57cc4afb025d158febf185d94935505e74bdc3ca2999384c79f5",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "fc53ffefd744c709e2dd01469cfba787a357e5b789effc3b9f65d6382c3ea332",
                 "coveredPrintings": 1,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -10103,15 +10366,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 1,
-                  "validation": 0
+                  "calibration": 0,
+                  "validation": 1
                 }
               },
               "originalInput": {
@@ -10123,6 +10390,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 1,
+                "accepted": 1,
+                "rejected": []
               }
             },
             "rules": {
@@ -10731,21 +11004,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "5e10a0fbc7377bf598a78a851d4c83d2d9598d10cc03f032afbc0d542b17421c",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "f7ddff2248a567539a52bf5bb4fd359c3f171a30f40d77e548881016885f4355",
                 "coveredPrintings": 2,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -10766,12 +11046,16 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
                   "calibration": 0,
                   "validation": 1
@@ -10786,6 +11070,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 2,
+                "accepted": 2,
+                "rejected": []
               }
             },
             "rules": {
@@ -11541,21 +11831,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "45a6be6518f2fdac8ab765e52722780f8cbe0e2874fde5f5a2dd4bbccbd6ec74",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "d48b3c2cd74f947674759d3ac6cc78a3f9b1e387186d938e160730c7479e0eff",
                 "coveredPrintings": 14,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -11576,15 +11873,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 1,
-                  "validation": 13
+                  "calibration": 9,
+                  "validation": 5
                 }
               },
               "originalInput": {
@@ -11596,6 +11897,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 14,
+                "accepted": 14,
+                "rejected": []
               }
             },
             "rules": {
@@ -12361,21 +12668,28 @@
               "reason": "Disc paper and dark symbol ink separately measured against printing scans, final full-set audit repeated after glyph changes."
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "6ce8b4faf5d16c14bd90699395a21a1820691fac1afb7caa259f5bb3e33de667",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "3666d696f5b964547582bdb4572b475c004cd39a4a42fd50ccea6016f155db57",
                 "coveredPrintings": 32,
-                "calibrationNames": 7,
-                "validationNames": 25,
-                "validationKind": "reused-development"
+                "calibrationNames": 195,
+                "validationNames": 95,
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -12396,9 +12710,13 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 32,
@@ -12408,6 +12726,20 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "transfer": {
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
+                "localNames": {
+                  "calibration": 21,
+                  "validation": 11
+                }
+              },
+              "comparisonCoverage": {
+                "native": 32,
+                "accepted": 32,
+                "rejected": []
               }
             },
             "rules": {
@@ -12983,21 +13315,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "e646e43b8796e7ae5470cc59444f49c11cbabfa78804f4f0658684072fc27301",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "fa918f5ad70a24a9d07b2313996c7f23d73ae53e765b6cb83edc88f843093e3c",
                 "coveredPrintings": 1,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -13018,12 +13357,16 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
                   "calibration": 0,
                   "validation": 1
@@ -13038,6 +13381,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 1,
+                "accepted": 1,
+                "rejected": []
               }
             },
             "rules": {
@@ -13644,21 +13993,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "a33ce0afdb18c2213c9e7a871cb5108218bd51fb9e7c635eb2afe8d48d6c540b",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "650300c12015f5abd60cb434f8018bf4c88b0ac7da487060a0c37c97deb52be5",
                 "coveredPrintings": 1,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -13679,15 +14035,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 0,
-                  "validation": 1
+                  "calibration": 1,
+                  "validation": 0
                 }
               },
               "originalInput": {
@@ -13699,6 +14059,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 1,
+                "accepted": 1,
+                "rejected": []
               }
             },
             "rules": {
@@ -14306,21 +14672,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "0d2c27b61dc836ef9a808b0b81b2e10bb9a2c1c1c2526cd160e1250ce1cc6074",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "19c96aaa748fd353a9408e969b6b7d5bcb8aafc81e30facec4fef8f660b0f912",
                 "coveredPrintings": 2,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -14341,14 +14714,18 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 1,
+                  "calibration": 0,
                   "validation": 1
                 }
               },
@@ -14361,6 +14738,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 2,
+                "accepted": 2,
+                "rejected": []
               }
             },
             "rules": {
@@ -15112,21 +15495,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "b42fc30070474649fbd8e6faaa8d102374fb2766eac137834d9a3c37bf740b8f",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "d5e863d3de6f22e2fe0b73016731247f46fbe08090536b0319ad3633f28dd7a1",
                 "coveredPrintings": 11,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -15147,15 +15537,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 1,
-                  "validation": 10
+                  "calibration": 9,
+                  "validation": 2
                 }
               },
               "originalInput": {
@@ -15167,6 +15561,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 11,
+                "accepted": 11,
+                "rejected": []
               }
             },
             "rules": {
@@ -15934,21 +16334,28 @@
               "reason": "Disc paper and dark symbol ink separately measured against printing scans, final full-set audit repeated after glyph changes."
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "61c5bef33a5ae4f117af8e5f2974b4cba855145a9991d596fa20c7df35510a4b",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "646c846cbd0a1f259844c22e95b11721803e53bf2dee4b707c66d51aa8a8cd64",
                 "coveredPrintings": 34,
-                "calibrationNames": 7,
-                "validationNames": 27,
-                "validationKind": "reused-development"
+                "calibrationNames": 195,
+                "validationNames": 95,
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -15969,9 +16376,13 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "originalInput": {
                 "status": "ready",
                 "coveredPrintings": 34,
@@ -15981,6 +16392,20 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "transfer": {
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
+                "localNames": {
+                  "calibration": 25,
+                  "validation": 9
+                }
+              },
+              "comparisonCoverage": {
+                "native": 34,
+                "accepted": 34,
+                "rejected": []
               }
             },
             "rules": {
@@ -16556,21 +16981,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "a84a08c923ed7dcb62575b8d679aaa017a78d9d2030d4f88cc33360fb2a3c11c",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "982f91594c697ded9e7e542252dd197f36e428b164ab109b91a5273370353069",
                 "coveredPrintings": 1,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -16591,15 +17023,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 0,
-                  "validation": 1
+                  "calibration": 1,
+                  "validation": 0
                 }
               },
               "originalInput": {
@@ -16611,6 +17047,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 1,
+                "accepted": 1,
+                "rejected": []
               }
             },
             "rules": {
@@ -17217,21 +17659,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "841ab2e8281bf5dd8c6b4380167d2dafc2126c43a744d62fe8f67fa63d752784",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "77fb5cf7df4bf34bfc4d3b9acd502fffa4dc5ebd9c757e51567cdd017ce96c8b",
                 "coveredPrintings": 1,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -17252,15 +17701,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 0,
-                  "validation": 1
+                  "calibration": 1,
+                  "validation": 0
                 }
               },
               "originalInput": {
@@ -17272,6 +17725,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 1,
+                "accepted": 1,
+                "rejected": []
               }
             },
             "rules": {
@@ -17878,21 +18337,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "488a51d02bc41f6f5ac34e2f02fb80d62dab08e4b043255d14c1a5de4b915e6f",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "d2b91cbe8b4d8a17bf4deec680d2a1b4d7cf0262392654048df3ae64bc27abd2",
                 "coveredPrintings": 1,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -17913,12 +18379,16 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
                   "calibration": 1,
                   "validation": 0
@@ -17933,6 +18403,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 1,
+                "accepted": 1,
+                "rejected": []
               }
             },
             "rules": {
@@ -18539,21 +19015,28 @@
               }
             },
             "headings": {
-              "status": "needs-audit",
-              "evidence": ["games/magic/fixtures/accuracy/abu-054/review.json"],
+              "status": "validated",
+              "evidence": [
+                "games/magic/fixtures/accuracy/abu-054/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz"
+              ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
+                "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+                "nativeReplayHash": "349b8c4420280f366a3fd580aa1607ad4d92b7dc9d0b4988ecbbd13f971cb283",
+                "metricsHash": "c26700f28776ec1d108949541210a85325eb502902fe73a4437be81079e66e6d",
+                "scanTemplateHash": "c43ea53aa3a1b1b1a8eb771c417f565d8afb7e2a7c95088adceac4f4da7cc75b",
                 "gatesPassed": true,
                 "sourceHash": "03e944ff92cf5d6492b03d03d36db6564680fbc6de784e50fb908d14274cd6a3",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "f252158e260f480fc4d5f050270d9a187ff4106f12031be4415a043bddcb2234",
                 "scopeHash": "51d61e38d3535afeb2787cb097af9e5748e7986f0405fb41391852269de67616",
                 "coveredPrintings": 1,
                 "calibrationNames": 195,
                 "validationNames": 95,
-                "validationKind": "family-transfer"
+                "validationKind": "family-transfer",
+                "publishedVersion": "0.6.5",
+                "publishedCommit": "e8e2fc6fdd0062531b47bbe1e30570355ded4040"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -18574,15 +19057,19 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/fixtures/accuracy/early-through-fourth/alpha-headings.json.gz": "61a7c781a4221c331a4d8c2f05b885c0cac458c51d54d20972da592355a1fb11",
+                "games/magic/fixtures/accuracy/early-through-fourth/native-current.json.gz": "332446ed3453d6994321d4290a6ec79fd8430e1c970ea95756a83818e9ec3029",
+                "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
+                "games/magic/src/presentation/legacy-calibrated-title.ts": "cd7e34519d5c4fd853c400c03b8b88f13fea50670ca5fc5d8bdd52c76b295c78"
               },
-              "reason": "The previous 63.12/100 heading audit was reopened. Shared native heading fitting now improves names 70.32 to 71.24/100 and types 61.72 to 62.97/100 across 292 accepted original-wording printings. These regional objective indices differ from the old whole-card component method. Retain residual outliers; published-score confirmation remains pending.",
+              "reason": "Fresh 0.6.5 native heading audit: names 70.39 to 71.35/100; types 60.86 to 62.20/100 across 292 accepted original-printing scans. All 295 native pairs change zero pixels outside headings. Six live rebuilds match the native audit exactly. Retain 35 name and seven type regressions above half a point; no per-card positioning or hollow ink. Regional validation does not close the pending dual-frame/full-card/release checks.",
               "transfer": {
-                "parent": "lea shared ABU material/typography cohort",
-                "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
+                "parent": "Alpha shared heading profile, all original printings",
+                "scope": "Shared font/ink/physical name and type defaults. Parent name counts refer to frozen calibration/validation cohorts, not invented independent examples inside a sparse group. Every printing has a real native replay.",
                 "localNames": {
-                  "calibration": 0,
-                  "validation": 1
+                  "calibration": 1,
+                  "validation": 0
                 }
               },
               "originalInput": {
@@ -18594,6 +19081,12 @@
                 "guards": {
                   "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c"
                 }
+              },
+              "reviewedAt": "2026-10-20",
+              "comparisonCoverage": {
+                "native": 1,
+                "accepted": 1,
+                "rejected": []
               }
             },
             "rules": {

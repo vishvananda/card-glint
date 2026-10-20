@@ -46,3 +46,21 @@ source receipts, rejected cases and profile values using the
 [set contribution guide](../../../calibrating-a-set.md). Record source-asset
 limitations separately from completed measurements. Experimental reconstructed
 Alpha assets remain preview-only.
+
+## Unlimited preparation
+
+`2ed-stage.json` records all 302 cached scans/art objects and a numerically passing
+independent affine normalization. Visual boundary certification is still pending.
+Seventy-two type labels have exact-printing reviews; 230 Beta-derived labels are
+explicit proposals awaiting Unlimited scan checks, not newly reviewed corrections.
+Wall of Ice's flavor-only printing has a new hash-bound empty-rules review.
+
+```sh
+node games/magic/tools/accuracy/early-printing-inputs.mjs 2ed "$UNLIMITED_STUDY"
+node games/magic/tools/accuracy/early-calibration-normalize.mjs "$UNLIMITED_STUDY/inputs.json" "$UNLIMITED_STUDY/normalization"
+```
+
+Both tools are offline and use the existing source-object cache. The separate
+early-set entry preserves the ABU normalizer's historical source receipts while
+reusing its scan-only numerical modules. A numerical pass does not by itself
+approve a new frame profile or original-type wording.

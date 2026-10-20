@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "asOf": "2026-10-20",
+  "set": "2ed",
+  "status": "awaiting-visual-frame-and-type-review",
+  "inventory": 302,
+  "referenceObjectsPresent": 302,
+  "artObjectsPresent": 302,
+  "originalBodyFallbacks": [],
+  "typeInputs": {
+    "ownPrintingReviews": 72,
+    "betaFamilyProposalsPending": 230
+  },
+  "normalization": {
+    "total": 302,
+    "numericallyAccepted": 302,
+    "templateHash": "b52cb58c649cfcad4fe48fd905d7390a35e5a78aa34f07ea964739a1b4330fb9",
+    "methodHash": "40eca51e2cb35e36487c71d10cade30e263ffb41dc348acae95dca19f066933e",
+    "independentCertification": true,
+    "contentIsolation": true,
+    "visualCertificationPending": true,
+    "validationKind": "reused-development"
+  },
+  "wordingCorrection": "Wall of Ice has flavor only. Exact printing reviewed, empty rules supplied explicitly; Oracle Defender remains separate. No broad empty-text inference from a missing provider field.",
+  "scope": "Reference and input preparation only. No new frame choice, color fit, text fit or whole-card score has been approved for Unlimited. Proposed Beta type labels require verification against Unlimited scans.",
+  "sources": {
+    "early-printing-inputs.mjs": "c547ccd552bed95140a7355c3dbf130e379935c855126f1f31fd9da9a9f1f80c",
+    "early-calibration-normalize.mjs": "bc316037dcd6533c13757bfe8959b7b2b7ea3623a0975df950e474463bbe7801",
+    "adapter.mjs": "34278dbf16420236605ceb3b701c5ad09e7429d5ad60c53a1130fa192e508017",
+    "printing-text.mjs": "a8b2d0f08447740ec15f307efd735686f425263537b18cbc7057fcf93a5631a9",
+    "empty-printing-text.mjs": "a6482b4145020847f58dcb1773fe16824197f3ebdda450c6bcf9c2f320c8dbc5"
+  },
+  "evidence": {
+    "2ed-inputs": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-inputs.json.gz",
+      "sha256": "6a8b0bd582b47c3d9abedfe258c475a8113a3cf8f0effb24b02169f654f262b9",
+      "contentSha256": "170c6a94f322c07ce47ca3a009220ad9705f609df2351c1a43e10a3cdb5041b2"
+    },
+    "2ed-normalization": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-normalization.json.gz",
+      "sha256": "73dae5cdd16e47848fdee2f22d356e8b1137c0e3efa457e424d139115250551a",
+      "contentSha256": "1765a83d4bb4f8f4b921192a0c2dc159b14ccc175060cd6ba5413f4359fc1df6"
+    }
+  }
+}
