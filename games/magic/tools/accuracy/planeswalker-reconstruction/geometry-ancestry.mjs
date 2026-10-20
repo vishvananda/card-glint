@@ -25,3 +25,11 @@ export async function preWalkerGeometry(file, bytes) {
   assert.equal(hash(result), entry.before);
   return result;
 }
+
+/** New modules have no pre-geometry ancestor. Verify their complete current
+ * bytes through the same frozen proof before excluding them from old inventories. */
+export async function walkerGeometryModules() {
+  await preWalkerGeometry('', Buffer.alloc(0));
+  const proof = await checked;
+  return Object.keys(proof.dependencies).filter((file) => !Object.hasOwn(proof.files, file));
+}

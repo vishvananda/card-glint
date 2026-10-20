@@ -96,10 +96,13 @@ try {
     assert.equal(row.before.inside, 255);
     assert.equal(row.before.middleLeft, 255, 'Curved aperture lost its middle');
     assert.deepEqual(row.composed, [255, 0, 0, 255], 'Printing layer cleared outside the aperture');
-    assert.ok(Math.abs(row.center - row.frameCenter) < 1e-6, 'Art and frame centers differ');
+    assert.ok(
+      Math.abs(row.center - row.frameCenter + 1) < 1e-6,
+      'Art did not follow the reviewed 2px right inset',
+    );
   }
   console.log(
-    'Planeswalker apertures: centered art, curved clipping and matching printing cutout in both frame heights.',
+    'Planeswalker apertures: fixed left edge, right inset, curved clipping and matching printing cutout in both frame heights.',
   );
 } finally {
   await browser.close();

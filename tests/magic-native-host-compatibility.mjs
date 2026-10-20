@@ -1,3 +1,4 @@
+import { walkerGeometryModules } from '../games/magic/tools/accuracy/planeswalker-reconstruction/geometry-ancestry.mjs';
 import { walkerAncestry } from '../games/magic/tools/accuracy/planeswalker-reconstruction/ancestry.mjs';
 import { alphaEditorAncestry } from '../games/magic/tools/accuracy/alpha-editor-ancestry.mjs';
 import { deliveryProof } from './magic-delivery-source-guard.mjs';
@@ -281,6 +282,7 @@ async function verify() {
   const delivery = await deliveryProof();
   const alphaEditor = await alphaEditorAncestry();
   const walkers = await walkerAncestry();
+  const walkerGeometry = await walkerGeometryModules();
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
     (file) =>
       ![
@@ -289,6 +291,7 @@ async function verify() {
         ...Object.keys(release053.dependencies),
         ...Object.keys(abuTypography.dependencies),
         ...walkers.newModules,
+        ...walkerGeometry,
         ...alphaEditor.newModules,
         ...delivery.newModules,
         ...delivery.generatedModules,
