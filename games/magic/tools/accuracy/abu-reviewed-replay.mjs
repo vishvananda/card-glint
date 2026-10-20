@@ -11,22 +11,34 @@ import { root, hash, sourceHash, objectFile, writeJson } from './common.mjs';
 import { cachedFetch } from './cache.mjs';
 import { openBrowser } from './browser.mjs';
 import { inverseScanMatrix } from './scan-transform.mjs';
-const [out, scope = 'duals', sets = 'lea,leb', variant = 'current'] = process.argv.slice(2);
+const [out, scope = 'duals', sets = 'lea,leb', variant = 'current', inputFile, poseFile] =
+  process.argv.slice(2);
 assert(
   out && ['duals', 'headings', 'all'].includes(scope),
-  'Usage: abu-reviewed-replay.mjs OUT [duals|headings|all] [lea,leb]',
+  'Usage: abu-reviewed-replay.mjs OUT [duals|headings|all] SETS [current|released-headings] [INPUT.json POSES.json]',
 );
 assert(['current', 'released-headings'].includes(variant));
 assert(variant === 'current' || sets === 'lea', 'Released-heading control applies to Alpha only');
+assert.equal(Boolean(inputFile), Boolean(poseFile), 'Supply both input and pose manifests');
+assert(!inputFile || variant === 'current', 'External manifests use the current renderer only');
 const entries = [],
   inputs = [];
 for (const set of sets.split(',')) {
-  assert(['lea', 'leb'].includes(set));
   const dir = path.join(root, 'games/magic/fixtures/accuracy/abu-054');
-  const raw = gunzipSync(await readFile(path.join(dir, set + '-inputs.json.gz')));
+  let raw, poseBytes;
+  if (inputFile) {
+    assert.equal(sets, set, 'External manifests must contain exactly one set');
+    assert(/^[a-z0-9]{2,8}$/.test(set));
+    raw = await readFile(inputFile);
+    poseBytes = await readFile(poseFile);
+  } else {
+    assert(['lea', 'leb'].includes(set));
+    raw = gunzipSync(await readFile(path.join(dir, set + '-inputs.json.gz')));
+    poseBytes = gunzipSync(await readFile(path.join(dir, set + '-normalization.json.gz')));
+  }
   const input = JSON.parse(raw),
-    poseBytes = gunzipSync(await readFile(path.join(dir, set + '-normalization.json.gz'))),
     poses = JSON.parse(poseBytes);
+  assert(input.entries.every((e) => e.card.set === set));
   assert.equal(hash(raw), poses.inputHash);
   inputs.push({ set, inputHash: hash(raw), poseHash: hash(poseBytes) });
   for (const e of input.entries) {

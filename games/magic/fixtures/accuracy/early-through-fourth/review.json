@@ -27,7 +27,17 @@
         "id": "f13ad58a-6f9b-420a-bac1-40929f5e616a",
         "name": "Nether Shadow"
       }
-    ]
+    ],
+    "subsequentCertification": {
+      "originalCaptureRetained": true,
+      "alphaAcceptedNow": 295,
+      "totalAcceptedNow": 597,
+      "receipt": {
+        "file": "games/magic/fixtures/accuracy/early-through-fourth/alpha-corner-live.json.gz",
+        "sha256": "cbce6e22abd4c66564e98753413bb7bc31972c96441f3e891fdc6c9c1b0f5d52",
+        "contentSha256": "b6d09b28950fd77a2614295a842e19f1e398ee3f680b855b119ec2c54dc8c8f0"
+      }
+    }
   },
   "headings": {
     "status": "validated-existing-default",
@@ -93,10 +103,10 @@
   },
   "live": {
     "renderer": "cdn-v0.6.5",
-    "alphaScore100": 67.15312565321928,
+    "alphaScore100": 67.18087018862525,
     "betaScore100": 67.5571638188431,
     "generation": "6a43213b083eaf58fc9b9a911ba08baa227f5e52021f1add3a02a25d6e2286d2",
-    "scope": "Fresh Lab whole-card indices from current background jobs: Alpha 292 scored plus three alignment reviews, Beta 302 scored. Not paired deltas against 0.5.4 because source/template generations differ. Six Alpha live original rebuilds match the native audit pixels exactly.",
+    "scope": "Current Lab whole-card indices: Alpha 295 scored with zero current alignment reviews, Beta 302 scored. The three newly certified scans are additional coverage; the previously scored 292 retain their exact mean. Historical rejects remain stored. Not paired deltas against 0.5.4.",
     "nativeParityCards": [
       "Animate Dead",
       "Air Elemental",
@@ -104,7 +114,23 @@
       "Hypnotic Specter",
       "Tundra",
       "Circle of Protection: White"
-    ]
+    ],
+    "normalizationRecovery": {
+      "method": "three-sides-and-printed-corners-v1",
+      "applicationCommit": "1a7a3d8126a6097efc3b76e8eaee97783fb93eea",
+      "recovered": [
+        "Nether Shadow",
+        "Deathlace",
+        "Pestilence"
+      ],
+      "sameTransforms": true,
+      "rendererChanged": false,
+      "receipt": {
+        "file": "games/magic/fixtures/accuracy/early-through-fourth/alpha-corner-live.json.gz",
+        "sha256": "cbce6e22abd4c66564e98753413bb7bc31972c96441f3e891fdc6c9c1b0f5d52",
+        "contentSha256": "b6d09b28950fd77a2614295a842e19f1e398ee3f680b855b119ec2c54dc8c8f0"
+      }
+    }
   },
   "remaining": [
     "Complete rail/geometry and known asset-limit dispositions for all nineteen ABU duals; a stronger nearby bevel edge is not a reliable caliper for the intended thin outline.",
@@ -152,7 +178,24 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/live-parity.json.gz",
       "sha256": "a19c577e6a7c188bc05745f3e7e6c8564997e4fda0ca9e48d170b8d6cb7a4187",
       "contentSha256": "12f459c915ed2ca23e3de43a08545ce205aab91e5248ec46c9892a731b67790b"
+    },
+    "alpha-corner-live": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/alpha-corner-live.json.gz",
+      "sha256": "cbce6e22abd4c66564e98753413bb7bc31972c96441f3e891fdc6c9c1b0f5d52",
+      "contentSha256": "b6d09b28950fd77a2614295a842e19f1e398ee3f680b855b119ec2c54dc8c8f0"
     }
   },
-  "preview": "https://tetrarcum.com/early-sets/"
+  "preview": "https://tetrarcum.com/early-sets/",
+  "rulesOutliers": [
+    {
+      "set": "lea",
+      "name": "Nether Shadow",
+      "status": "needs-fit",
+      "referenceLines": 7,
+      "rebuildLines": 8,
+      "wordingMatches": true,
+      "characters": 235,
+      "reason": "Visual follow-up after recovering its scan normalization. Beta with the same wording already wraps into the correct seven lines. Determine whether Alpha tier/bounds fallback is responsible before changing shared defaults. No per-card renderer offset approved."
+    }
+  ]
 }

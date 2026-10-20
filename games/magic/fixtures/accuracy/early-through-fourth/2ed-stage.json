@@ -2,14 +2,16 @@
   "schema": 1,
   "asOf": "2026-10-20",
   "set": "2ed",
-  "status": "awaiting-visual-frame-and-type-review",
+  "status": "original-types-reviewed-native-baseline-ready-frame-review-pending",
   "inventory": 302,
   "referenceObjectsPresent": 302,
   "artObjectsPresent": 302,
   "originalBodyFallbacks": [],
   "typeInputs": {
-    "ownPrintingReviews": 72,
-    "betaFamilyProposalsPending": 230
+    "ownPrintingReviews": 302,
+    "betaFamilyProposalsPending": 0,
+    "newExactPrintingVisualChecks": 230,
+    "changesFromProposals": 0
   },
   "normalization": {
     "total": 302,
@@ -22,7 +24,7 @@
     "validationKind": "reused-development"
   },
   "wordingCorrection": "Wall of Ice has flavor only. Exact printing reviewed, empty rules supplied explicitly; Oracle Defender remains separate. No broad empty-text inference from a missing provider field.",
-  "scope": "Reference and input preparation only. No new frame choice, color fit, text fit or whole-card score has been approved for Unlimited. Proposed Beta type labels require verification against Unlimited scans.",
+  "scope": "All 302 original type labels now have exact-printing reviews. Native 732x1020 baseline covers all 302 printings, with zero heading-mask escapes. Updated review provenance changes no face input or scan transform. Visual boundary/frame-family selection, geometry, color and text calibration are still open.",
   "sources": {
     "early-printing-inputs.mjs": "c547ccd552bed95140a7355c3dbf130e379935c855126f1f31fd9da9a9f1f80c",
     "early-calibration-normalize.mjs": "bc316037dcd6533c13757bfe8959b7b2b7ea3623a0975df950e474463bbe7801",
@@ -40,6 +42,35 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-normalization.json.gz",
       "sha256": "73dae5cdd16e47848fdee2f22d356e8b1137c0e3efa457e424d139115250551a",
       "contentSha256": "1765a83d4bb4f8f4b921192a0c2dc159b14ccc175060cd6ba5413f4359fc1df6"
+    },
+    "2ed-native": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-native.json.gz",
+      "sha256": "79625d56bc852703f00619fdb35c32bb10603cb6a3a7f66c9486788f5ef985a9",
+      "contentSha256": "81ae44072cbc273ed96f4d925c2890036a700249c006a50537c197743c45228f"
+    },
+    "2ed-reviewed-inputs": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-reviewed-inputs.json.gz",
+      "sha256": "c1d7d61e6a707e7acb368b6fb1b877f465419d35fafc7dcdc1b14652d3d7b7dc",
+      "contentSha256": "2df1a5bd38ff710bbdedfe1f315f952abdcfd19ab82389c8d1965f46c33a87e6"
+    },
+    "2ed-reviewed-normalization": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-reviewed-normalization.json.gz",
+      "sha256": "9964be0ebf29fbbf7e27cbadb55bfc6a1922064d7ac4861693bd47b44ec02c3f",
+      "contentSha256": "99428534e5230f4768ce8be9e90428ac83c544fe6d553d129eb59b40d5ad7270"
+    },
+    "2ed-type-review": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-type-review.json.gz",
+      "sha256": "231f75597f83086ae814f1d98b297f3098b67bf797e3eec307d8b2ddb28f16b6"
     }
+  },
+  "native": {
+    "total": 302,
+    "acceptedPoses": 302,
+    "headingMaskEscapes": 0,
+    "rendererHash": "e3db99d22e0efb56830c124fc2fb61ffe8f3282f328701623c1e4128f89a1ecb",
+    "rendererBaseCommit": "5507b7d4bdc2d0617314706faa07ec92abc7eb31",
+    "unchangedFaceInputsAfterTypeReview": 302,
+    "unchangedScanTransformsAfterTypeReview": 302,
+    "purpose": "Baseline only; this is not a complete-set layout certification."
   }
 }

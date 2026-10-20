@@ -51,8 +51,10 @@ Alpha assets remain preview-only.
 
 `2ed-stage.json` records all 302 cached scans/art objects and a numerically passing
 independent affine normalization. Visual boundary certification is still pending.
-Seventy-two type labels have exact-printing reviews; 230 Beta-derived labels are
-explicit proposals awaiting Unlimited scan checks, not newly reviewed corrections.
+All 302 type labels now have exact-printing reviews. The 230 Beta-derived
+proposals were transcribed independently from the Unlimited scans; all agreed.
+The native baseline is complete at 732×1020, and updated review provenance changes
+none of its 302 face inputs or frozen poses. Frame selection and fitting remain open.
 Wall of Ice's flavor-only printing has a new hash-bound empty-rules review.
 
 ```sh
@@ -63,7 +65,17 @@ node games/magic/tools/accuracy/early-calibration-normalize.mjs "$UNLIMITED_STUD
 Both tools are offline and use the existing source-object cache. The separate
 early-set entry preserves the ABU normalizer's historical source receipts while
 reusing its scan-only numerical modules. A numerical pass does not by itself
-approve a new frame profile or original-type wording.
+approve a new frame profile or original-type wording. To make a native baseline
+from these external manifests without modifying frozen ABU fixtures:
+
+```sh
+node games/magic/tools/accuracy/abu-reviewed-replay.mjs "$UNLIMITED_NATIVE" all 2ed current "$UNLIMITED_STUDY/inputs.json" "$UNLIMITED_STUDY/normalization/normalization.json"
+```
+
+Both manifests must match by byte hash, set and reference hashes. The capture
+retains every input's wording provenance; transferred labels remain proposals
+until checked against the matching Unlimited scan. Native pixels do not turn an
+unreviewed type proposal into an approved wording correction.
 
 ## Alpha bottom-corner certification
 
@@ -78,8 +90,11 @@ neither renderer values nor scan transforms. It is scoped to this measured frame
 `alpha-corner-recovery.json.gz` retains all 46 black-frame measurements. Direct raw
 window sampling matches the existing native reference rasters. All 276 displaced,
 missing-mark and square-mark controls reject. The prior successful path stays
-unchanged. Client/server integration and current-generation score imports remain
-pending; this offline evidence does not silently clear live review states.
+unchanged. Client/server integration is deployed; `alpha-corner-live.json.gz`
+records all 295 current Alpha scores with zero alignment rejections. The original
+capture and historical rejected records remain intact. The same-generation cache
+now checks template identity, so the 551 unaffected Alpha/Beta records remain
+eligible while the 46 Alpha black-frame entries recompute.
 
 ```sh
 node tests/magic-corner-certification.mjs
@@ -89,3 +104,20 @@ node games/magic/tools/accuracy/audit-corner-recovery.mjs "$ABU_STUDY" "$CORNER_
 The audit needs the source-object cache and existing native-capture directory.
 Sampling and certificate checks run on numeric pixel arrays without Chromium.
 Its timing includes PNG decoding and diagnostic controls, not GPU completion.
+
+
+For original-type wording review, generate raw source crops outside the checkout:
+
+```sh
+python games/magic/tools/accuracy/early-type-review-sheets.py "$UNLIMITED_STUDY/inputs.json" "$TYPE_REVIEW" "$MAGIC_ACCURACY_CACHE"
+```
+
+This optional tool needs Pillow. The crops are for reading wording, not geometric
+measurement, and contain external reference pixels. `2ed-type-review.json.gz`
+records the 230 transcriptions and exact scan identities; the shipped corrections
+will include the reviewed annotation fields in the next renderer data build.
+
+Recovering Alpha's Nether Shadow scan also exposes a genuine rules-wrap outlier:
+seven printed lines versus eight rebuilt. Beta's identical passage already wraps
+correctly. The Alpha black-creature rules check is reopened while that tier/bounds
+case is investigated; complete score coverage does not certify correct layout.
