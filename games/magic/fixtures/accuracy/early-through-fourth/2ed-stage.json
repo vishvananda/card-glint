@@ -446,6 +446,11 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-final-replay.json.gz",
       "sha256": "d2a402d9e454bf7d7ef0093125e593a7405e0da54f4f899458f36b31c72a05e5",
       "contentSha256": "d79af82a148ff1747e84d0806c9da10a88977508b67c5f63dc01c1af82663c6e"
+    },
+    "2ed-dual-paper-replay": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-paper-replay.json.gz",
+      "sha256": "c53e840b5a2f58723c061f780a4e0eb81d0bffa6245f27358975dd9da7b885d9",
+      "contentSha256": "7c4761fdf955d3975b7c5e7f3fae4fb1fe73c21689288f148e65ed2291c24f3a"
     }
   },
   "native": {
@@ -1389,7 +1394,7 @@
   },
   "integrationRequirements": {
     "frame": "Source-bound ordinary and five basic plates, shared dual composite, independent SVG stock-mask geometry; retain existing foreign-set behavior.",
-    "color": "Basic colored rims have a native-verified shared candidate with all residuals retained. Finish land contrast/black levels and composed dual paper/pinline palettes before final text verification.",
+    "color": "Basic colored rims and all ten dual paper stripes have native candidate evidence with every residual retained. Resolve the shared dual-paper compromise (blue/red Volcanic Island regressions), land contrast/black levels and composed dual pinline/outline palettes before final full-card verification.",
     "wording": "Use current original printing inputs, including Dragon Whelp inline quotation and Drain Life 1B. Drain Life header-only replay preserves body pixels and rightmost pips; historical extra-X full-face records are superseded for header comparisons. Oracle input remains unchanged.",
     "typography": "Measure filled ink/stroke/shadow values separately from fixed-gray geometry; retain MPlantin credits unless new evidence supports another face.",
     "body": "Integrate shared count/wrap and medium-density retention with original/Oracle safety preserved; verify final full native inputs.",
@@ -2896,5 +2901,62 @@
       "scope": "Compared the pinned X with six cached font alternatives at three thresholds on thirteen actual costs. Existing X ranks first on the twelve reliable perimeter cases. Guardian Angel remains a perimeter-measurement failure; it is included in joint all-cost native replay. Numeric controls intentionally do not move X.",
       "status": "source-retained-low-contrast-perimeter-residual"
     }
-  ]
+  ],
+  "dualLandPaper": {
+    "status": "native-shared-candidates-with-outliers-not-adopted",
+    "source": "2ed-dual-paper-replay.json.gz",
+    "printings": 10,
+    "stripeObservations": 20,
+    "improved": 18,
+    "regressed": 2,
+    "groups": [
+      {
+        "color": "W",
+        "count": 4,
+        "beforeMedian": 4.931008896823591,
+        "afterMedian": 0.6180893299248772,
+        "improved": 4,
+        "worstRegression": 0,
+        "maxPredictionError": 0.04987871923956866
+      },
+      {
+        "color": "U",
+        "count": 4,
+        "beforeMedian": 6.511183826527976,
+        "afterMedian": 1.183881755798438,
+        "improved": 3,
+        "worstRegression": 5.988546294576878,
+        "maxPredictionError": 0.26711369192154155
+      },
+      {
+        "color": "B",
+        "count": 4,
+        "beforeMedian": 11.339509577185904,
+        "afterMedian": 1.1049779035040594,
+        "improved": 4,
+        "worstRegression": 0,
+        "maxPredictionError": 0.17732651115565323
+      },
+      {
+        "color": "R",
+        "count": 4,
+        "beforeMedian": 3.730161773889792,
+        "afterMedian": 2.2368025642164326,
+        "improved": 3,
+        "worstRegression": 2.4833350837771757,
+        "maxPredictionError": 0.32744553354232053
+      },
+      {
+        "color": "G",
+        "count": 4,
+        "beforeMedian": 7.876683421989509,
+        "afterMedian": 0.8934196759580639,
+        "improved": 4,
+        "worstRegression": 0,
+        "maxPredictionError": 0.08812603085309584
+      }
+    ],
+    "scope": "Five source-paper HSB candidates shared by color across all ten duals. Fixed source-alpha stripe labels, three-pixel erosion and symmetric dark-ink rejection. All actual native baseline controls reproduce; original wording and independent scan poses remain fixed. No alpha, upper-card or default etching changes; upper-card isolation covers the first 590 native rows, not a separate type-ink mask. Volcanic Island has the two regressing blue/red observations; all residuals remain in the report. This development fit is not independent-name or whole-card validation. Brown texture contrast/blackpoint and outline/pinline palettes remain open.",
+    "wholeSetCertification": false
+  }
 }

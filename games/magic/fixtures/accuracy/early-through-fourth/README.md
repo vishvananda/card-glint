@@ -747,3 +747,41 @@ change on 58 faces, as expected from production preparation.
 These are mana-component results with reused development validation. Full frame,
 body, footer and Oracle integration, etching checks, visual normalization review
 and whole-card scoring are still required before promoting the Unlimited profile.
+
+## Optional profile preparation and Unlimited dual-paper replay
+
+The optional stock-mask placement and source-bound mana ink policy are documented
+in the [contribution guide](../../../calibrating-a-set.md). Their preparation
+receipt has 302 actual native Unlimited Original before/after pairs, all identical
+while the options are inactive, plus 25,200 metadata cases across 15 sets. It does
+not claim native Alpha/Beta or other-set pixel parity. New or changed full profiles
+must carry current guards and fresh component evidence.
+
+`2ed-dual-paper-replay.json.gz` retains exact source/fit/definition/native/report
+JSON strings with hashes. Its five common paper-color candidates improve 18 of
+20 actual stripe-color observations across ten dual lands. White, black and green
+improve on all four associated cards; Volcanic Island's blue and red regressions
+remain explicit. This is a development fit with all names reused, not blind
+validation or an adopted profile. Outline/pinline colors, brown texture contrast
+and blackpoint still need fitting. No alpha, upper-card or default etching pixels
+change between the geometry-only and paper trials. Upper-card isolation covers
+the first 590 native rows; separate type-ink verification remains part of final
+profile integration.
+
+Use a checkout with the exact renderer source recorded by the current native
+capture; keep every output outside the checkout and use a new replay directory:
+
+```sh
+node games/magic/tools/accuracy/early-dual-color-source.mjs "$CURRENT_UNLIMITED_NATIVE" "$DUAL_GEOMETRY_DEFINITION" "$DUAL_CLEAN_SOURCE"
+node games/magic/tools/accuracy/early-dual-paper-fit.mjs "$CURRENT_UNLIMITED_NATIVE" "$DUAL_CLEAN_SOURCE" "$DUAL_PAPER_FIT"
+node games/magic/tools/accuracy/early-dual-color-replay.mjs "$CURRENT_UNLIMITED_NATIVE" "$DUAL_PAPER_DEFINITION" "$DUAL_PAPER_NATIVE"
+node games/magic/tools/accuracy/early-dual-paper-verify.mjs "$CURRENT_UNLIMITED_NATIVE" "$DUAL_CLEAN_SOURCE" "$DUAL_PAPER_FIT" "$DUAL_PAPER_NATIVE" "$DUAL_PAPER_REPORT"
+```
+
+The definition contains two `L` trials with identical shared geometry; only the
+paper trial adds five pinned-asset `pigments` entries using the fit's paper HSB,
+identity frame HSB and the source paper mask. The replay plugin is study-only;
+materials are prepared by the real cached painter before compositing, with no
+filter over the final card. The source-alpha sampler never classifies scan colors
+or adjusts their pose. These color errors are Oklab distances, separate from the
+Lab's accuracy indices out of 100.
