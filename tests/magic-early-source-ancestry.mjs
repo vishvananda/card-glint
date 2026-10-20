@@ -52,3 +52,24 @@ assert.equal(stale.byTask.rules.stale, 1, 'A marker cannot authorize old source 
 console.log(
   'Component scope: changed rules reopen, unchanged headings survive, marker-only evidence fails closed.',
 );
+
+const { preUnlimitedEmptySource } = await import(
+  '../games/magic/tools/accuracy/unlimited-empty-ancestry.mjs'
+);
+const emptyAdapter = 'games/magic/tools/accuracy/empty-printing-text.mjs';
+const emptyBytes = await readFile(emptyAdapter);
+assert.equal(
+  hash(await preUnlimitedEmptySource(emptyAdapter, emptyBytes)),
+  'c014fd2b2c2c950c7442338716f2cf5bc7fe50d3fbc9da4354a98fc034b1f911',
+);
+await assert.rejects(
+  preUnlimitedEmptySource(
+    emptyAdapter,
+    Buffer.concat([emptyBytes, Buffer.from('\n// unknown adapter change\n')]),
+  ),
+  /Unreviewed Unlimited/,
+);
+assert.deepEqual(await preUnlimitedEmptySource('unrelated.mjs', unrelated), unrelated);
+console.log(
+  'Unlimited adapter ancestry: exact scoped entry, original bytes and unknown-edit rejection pass.',
+);

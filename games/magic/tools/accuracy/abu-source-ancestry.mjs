@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
+import { preUnlimitedEmptySource } from './unlimited-empty-ancestry.mjs';
 import { hash } from './common.mjs';
 export const EARLY_SOURCE_RECEIPT =
   'ffdbdec5616e31f5b136399deadd7f4ecf6095806e9c10e47a21920e001d8a11';
@@ -64,7 +65,7 @@ export async function earlyCalibrationAffected(set, group, task, originalInput =
 export async function preEarlyCalibrationSource(file, bytes) {
   const proof = await earlyProof();
   const entry = proof.files[file];
-  if (!entry) return bytes;
+  if (!entry) return preUnlimitedEmptySource(file, bytes);
   if (hash(bytes) === entry.before) return bytes;
   assert.equal(hash(bytes), entry.after, 'Unreviewed early source: ' + file);
   const lines = bytes.toString().match(/[^\n]*\n|[^\n]+$/g) ?? [];
