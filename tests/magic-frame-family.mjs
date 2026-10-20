@@ -76,6 +76,15 @@ const plate = { width, height, data: new Uint8Array(data).fill(255) };
 for (let y = 0; y < height; y++)
   for (let x = 60; x < 430; x++) plate.data[(y * width + x) * 4 + 3] = 0;
 const mask = opaqueSupport([plate]);
+// Expanding/moving an aperture must reduce the shared comparison support.
+// Otherwise a source transform can turn illustration detail into frame evidence.
+const wider = { width, height, data: new Uint8Array(data).fill(255) };
+for (let y = 0; y < height; y++)
+  for (let x = 55; x < 435; x++) wider.data[(y * width + x) * 4 + 3] = 0;
+const intersection = opaqueSupport([plate, wider]);
+assert.ok(intersection.artLeft[1] < mask.artLeft[1]);
+assert.ok(intersection.artRight[0] > mask.artRight[0]);
+assert.deepEqual(opaqueSupport([wider, plate]), intersection);
 assert.deepEqual(mask.artLeft, [0, 15]); // 43..57; two-pixel erosion from alpha edge.
 console.log(
   'Frame-family metrics: art exclusion, color shifts, fixed support, displaced borders and shared registration pass.',

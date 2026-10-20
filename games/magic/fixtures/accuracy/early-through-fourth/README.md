@@ -391,3 +391,66 @@ the referenced cached native captures. Python tools require NumPy and Pillow;
 three-illustration basic-land medians leave several art boundaries unresolved;
 missing or out-of-range boundaries remain rejected rather than supplying a
 speculative geometry fit.
+
+## Unlimited basic-land geometry
+
+`2ed-basic-land-native-verification.json.gz` verifies the five shared ABU source
+transforms in `2ed-material-proposal.json`. The ordinary material map remains
+separate from `basicLandMaterials`; these are integration candidates, not an
+adopted runtime profile. Colors, typography, ten dual lands and complete-set
+checks remain open.
+
+| Basic land | Native frame-strip index before → after |
+| ---------- | --------------------------------------- |
+| Plains     | 61.8 → 82.7/100                         |
+| Island     | 65.2 → 85.4/100                         |
+| Swamp      | 65.7 → 91.1/100                         |
+| Mountain   | 74.7 → 86.1/100                         |
+| Forest     | 53.8 → 71.4/100                         |
+
+Fourteen of fifteen printings improve; one Plains loses 0.81 regional points.
+These are frame-strip indices, not whole-card scores. The three illustrations
+of each name are development examples, not independent-name holdouts. Forest's
+right art edge and paper sides retain the largest residuals and need another
+look after color calibration; a shared source transform cannot change a source
+asset's bevel shape independently.
+
+The first joint art/paper measurement was inadequate on three illustrations
+alone. Pooling all fifteen illustrations recovers the common art aperture, but
+joint affine proposals still regress several colors. Both the source geometry
+and those rejected native measurements are retained. Seventh Edition is a
+weaker source family. The subsequent direct search uses ABU and keeps each
+printing's independent scan pose fixed. It tests one shared position and scale
+per land color: ±2 canonical pixels, ±0.8% horizontal scale and ±0.6% vertical
+scale, selected by mean signed-gradient/census score minus one quarter of the
+largest individual regression.
+
+The comparison support is the opaque intersection across the entire candidate
+envelope, so moving an aperture cannot introduce illustration detail into the
+objective. The upper art strip is omitted because short heading descenders can
+enter it. Native verification then repeats the score on the actual full
+renderings. Maximum source-only prediction errors are 0.2–0.7 regional points.
+All original wording, source/definition identities, current native raster
+hashes, face alpha and empty etching layers are checked. Art placement is
+intentionally adjusted to cover the source aperture; it is not certified by a
+frame-only score.
+
+```sh
+python games/magic/tools/accuracy/early-basic-land-geometry.py NATIVE_CAPTURE CURRENT_FAMILY OUTER_PROPOSAL.json LAND_GEOMETRY
+node games/magic/tools/accuracy/early-basic-land-search.mjs NATIVE_CAPTURE CURRENT_FAMILY LAND_GEOMETRY LAND_SEARCH
+# For each emitted WL/UL/BL/RL/GL definition:
+node games/magic/tools/accuracy/early-frame-trial-replay.mjs NATIVE_CAPTURE LAND_SEARCH/WL-definition.json LAND_SEARCH/WL-native
+node games/magic/tools/accuracy/early-basic-land-verify.mjs NATIVE_CAPTURE LAND_SEARCH VERIFICATION.json
+```
+
+Use the exact baseline source checkout recorded by the native capture. Search
+prepares a source bitmap once per color and compares cached scan profiles in
+one warm browser; candidate evaluation does not compose whole cards or reload
+art and fonts. Full native composition is reserved for verifying the winner.
+The study does not benchmark GPU foil completion.
+
+`early-frame-trial-measure.mjs` also accepts a final optional baseline-family
+directory. It intersects current and transformed source supports before
+comparing native candidates, verifies each printing's reference and pose, and
+resolves basic-land keys separately from generic material `L`. No Lab scoring
+method or published score generation is changed by these study tools.

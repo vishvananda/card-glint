@@ -24,7 +24,7 @@
     "validationKind": "reused-development"
   },
   "wordingCorrection": "Wall of Ice has flavor only. Exact printing reviewed, empty rules supplied explicitly; Oracle Defender remains separate. No broad empty-text inference from a missing provider field.",
-  "scope": "All 302 original type labels have exact-printing reviews. Frozen native 0.6.6 inputs cover all 302. Outer stock-mask trials are verified on all 302; six-material internal geometry/color/black-level trials cover 277 nonland printings. No runtime calibration profile is adopted yet. Visual normalization certification, individual geometry regressions, all land interiors, filled heading ink, mana, body/footer fitting and complete-set scoring remain open.",
+  "scope": "All 302 original type labels have exact-printing reviews. Frozen native 0.6.6 inputs cover all 302. Outer stock-mask trials are verified on all 302; six-material internal geometry/color/black-level trials cover 277 nonland printings. No runtime calibration profile is adopted yet. Visual normalization certification, individual geometry regressions, land color and ten dual-land interiors, filled heading ink, mana, body/footer fitting and complete-set scoring remain open.",
   "sources": {
     "early-printing-inputs.mjs": "c547ccd552bed95140a7355c3dbf130e379935c855126f1f31fd9da9a9f1f80c",
     "early-calibration-normalize.mjs": "bc316037dcd6533c13757bfe8959b7b2b7ea3623a0975df950e474463bbe7801",
@@ -174,7 +174,37 @@
     },
     "2ed-material-proposal": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-material-proposal.json",
-      "sha256": "37388dbd7a9aad557695cb6ec0a58000b28fd2712c6609060d74974c845eb8ec"
+      "sha256": "4ee8fc50fdc4df932ec8cefeaa81d5f2d559b981802e1649823eceb6c76c0d6f"
+    },
+    "2ed-basic-land-geometry": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-geometry.json.gz",
+      "sha256": "26fe3e3bc3dfe8387856335d807d5ce1060aa536731eeb14666bb659b7b17543",
+      "contentSha256": "811682adf4600713059ebcf45f6795fb8e7dfbed0201c247594ab0532237e10f"
+    },
+    "2ed-basic-land-search": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-search.json.gz",
+      "sha256": "9a97924c5d0a97eeada0065712043b66b1f03009ddf1de27afb5c9653c902f04",
+      "contentSha256": "efa4b7b958f9bd1fd76f370b79962dc8c241f7eacd9eb83b29fec19934f0a70d"
+    },
+    "2ed-basic-land-native-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-native-verification.json.gz",
+      "sha256": "968caeb6c0b60b540c0ce60889ac38bc2f4cb85cdc6d554c4189a0651c2db7bc",
+      "contentSha256": "c60e604bef30de47f77caaf62273d7f91b2e91e8aa7fb791985ef9850583e483"
+    },
+    "2ed-basic-land-native-captures": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-native-captures.json.gz",
+      "sha256": "2012da18b9e89ef7b95da558f7f36c8884675016a920216a26223ca4ba5efab0",
+      "contentSha256": "4b55e3cebf16668bf9d22fdcc96593377bf176aa6fc1588f6702b96baa32f061"
+    },
+    "2ed-basic-land-joint-measurements": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-joint-measurements.json.gz",
+      "sha256": "f99445734215b547ebecffa39f7ae90749e8a6686e885966589f401132fe9687",
+      "contentSha256": "26fb3ccc727b04b68d87a0bad92678c161618a0141321e743fa5918e7eecb1b4"
+    },
+    "2ed-basic-land-family-joint": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-family-joint.json.gz",
+      "sha256": "3b27ba351f3d9792ca15c1d52fa91800d2a662129a303f9c50a73742938c9a8d",
+      "contentSha256": "fc34cdd85a4bda2ce1569454728e2b059d6ef8df0494ded8e22fd1d0f371d3e5"
     }
   },
   "native": {
@@ -562,6 +592,17 @@
     "inkImproved": 242,
     "inkRegressed": 35,
     "reference": "2ed-keyline-selection.json.gz",
+    "wholeSetCertification": false
+  },
+  "basicLandGeometry": {
+    "status": "native-shared-candidates-not-runtime-adopted",
+    "source": "2ed-basic-land-native-verification.json.gz",
+    "printings": 15,
+    "materials": 5,
+    "improved": 14,
+    "regressed": 1,
+    "dualLandGeometryPending": 10,
+    "validationKind": "development-three-illustrations-per-name",
     "wholeSetCertification": false
   }
 }

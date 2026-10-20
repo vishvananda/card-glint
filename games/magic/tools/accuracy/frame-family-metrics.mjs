@@ -1,4 +1,4 @@
-import { luminance, WIDTH, HEIGHT } from './pixels.mjs';
+import { luminance, WIDTH, HEIGHT } from './pixels-pure.mjs';
 import { median, quantile } from './metrics.mjs';
 // Fixed strips avoid names, type lines, symbols, artist and body text centers.
 export const PROFILE_WINDOWS = {
