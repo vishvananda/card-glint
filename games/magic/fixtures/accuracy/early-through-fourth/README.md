@@ -498,6 +498,32 @@ definition with `early-frame-trial-replay.mjs`, and verify the fifteen results
 with `early-land-color-verify.mjs NATIVE BASIC_GEOMETRY COLOR_DIRECTORY OUTPUT`.
 Use the frozen renderer revision recorded in the receipts for the replays.
 
+## Unlimited colored land outlines
+
+The basic-land brown-frame correction also rotated the thin colored outlines:
+Island became purple and Forest lost its yellow-green color. The shared outline
+pass samples four fixed text-box line strips after the existing geometry fit.
+It fits one source-local HSB adjustment per basic color across all three scans.
+Three shared bounded source rings, with hue weights on the chromatic plates,
+keep the brown texture and paper separate. This runs in cached material
+preparation; it adds no per-frame readback or color processing.
+
+`early-land-accent-fit.mjs NATIVE COLOR_DIRECTORY OUTPUT` emits the five native
+trial definitions. Replay each with `early-frame-trial-replay.mjs`, then run
+`early-land-accent-verify.mjs NATIVE COLOR_DIRECTORY ACCENT_DIRECTORY OUTPUT`.
+The verifier checks native raster hashes, painter/plugin identity, fixed poses,
+source-ring isolation, unchanged art/paper cores, alpha and actual etching bytes.
+No raster assets are included in the numerical replay archive.
+
+The average Oklab errors improve for every color: W 3.65→2.32, U 7.85→2.08,
+B 7.12→6.46, R 3.26→2.33 and G 6.55→1.42. Eleven of fifteen scans improve.
+Black's median error rises from 4.53 to 5.42 despite the lower mean; the largest
+individual regression is a white illustration at 3.83 units. Keep those
+residuals and the darker third-illustration palettes visible. These are color
+errors, not accuracy percentages. There are no per-card color overrides or
+independent-name validation claims. Dual interiors/pinlines and land contrast/
+black-level checks remain open before runtime adoption.
+
 ## Unlimited heading and credit probes
 
 `early-heading-study.mjs NATIVE_CAPTURE OUTPUT [SHARED_DEFINITION]` checks thirty
@@ -527,16 +553,19 @@ The 302 frozen original inputs have a native body candidate: the shared count/
 wrap model with an inset for ordinary medium blocks, retaining the native base
 for medium blocks above seven lines. The retention decision uses compiled font
 size and line count, never a card identity or scan. It preserves 32 entire native
-PNGs byte-for-byte. The regional body index rises from 51.0 to 59.0/100, with
+PNGs byte-for-byte. The current-wording regional body index rises from 51.0 to 59.1/100, with
 248 gains and 22 regressions. Calibration names alone select the rule; the
 101 validation printings are reused development evidence.
 
 Every actual selected score equals its prediction. All non-body pixels and face
 alpha match the baseline, and the default etching plane is byte-identical. The
 completed checkpoint reload checks all saved PNG hashes without rewriting the
-matrix or images. The current reviewed input audit finds 301 unchanged provided
-face values and one changed body: Dragon Whelp's inline quotation. Replay that
-one original input before calling the current full-set text work complete.
+matrix or images. The current original-input refresh replays Dragon Whelp's
+inline quotation and reuses the other 301 unchanged native recipes. All 302
+current scores and pixel-isolation checks are then recomputed from cached PNGs.
+The common selected parameters, 248 gains, 22 regressions and 32 retained faces
+remain unchanged. This closes the wording-dependent body replay, not material
+integration or the complete-set audit.
 
 `early-body-study.mjs NATIVE DEFINITION OUTPUT` measures a policy grid. Add a
 native output directory to replay current plus one selected rule. This mode
@@ -550,7 +579,14 @@ the native branch replay verifies them.
 OUTPUT` repeats score/isolation checks from cached PNGs in Node, without Chromium.
 `early-body-input-audit.mjs NATIVE CURRENT_PRINTING_INPUTS OUTPUT` identifies
 wording-dependent refreshes while preserving unchanged reference/art identities
-and poses. Use the tool revision recorded by each frozen receipt.
+and poses. `early-body-refresh.mjs prepare NATIVE CURRENT_PRINTING_INPUTS OUT`
+creates a composite baseline and a changed-card subset using the same painter.
+Run policy/native studies only for that subset; `early-body-refresh.mjs merge
+OLD_MATRIX PARTIAL_MATRIX REFRESHED_BASELINE OUTPUT [OLD_IMAGES PARTIAL_IMAGES
+OUT_IMAGES]` reuses only identical candidates, dependencies and original inputs.
+The full cached-PNG verification still runs over every card. The compact current
+replay archive stores exact JSON strings and hashes for these inputs and reports.
+Use the tool revision recorded by each frozen receipt.
 
 The exact typography readback helper reads 693,824 RGBA bytes for the body window
 instead of 2,986,560 bytes for the entire native canvas. Its translated and

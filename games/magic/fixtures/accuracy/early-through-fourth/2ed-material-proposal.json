@@ -4,7 +4,7 @@
   "set": "2ed",
   "rendererBaseline": "0.6.6",
   "rendererHash": "2e9726bae6818fb2af6d9dbd28020126a2f934c42b1f6b54bd61d563aefff752",
-  "scope": "Six shared material configurations only. No per-card renderer corrections or scan transforms. The white source chooses a risk-aware shared compromise on calibration names only; other materials retain the measured joint source geometry and native-verified HSB. Original body/heading/artist, all land interiors still require their own fits. All frozen native inputs predate the new Dragon Whelp paragraph correction. Do not certify a complete set or copy this study-only schema into the runtime registry.",
+  "scope": "Six shared material configurations only. No per-card renderer corrections or scan transforms. The white source chooses a risk-aware shared compromise on calibration names only; other materials retain the measured joint source geometry and native-verified HSB. Original body/heading/artist, all land interiors still require their own fits. The current body replay incorporates the Dragon Whelp paragraph correction; historical frame-only receipts remain frozen. Do not certify a complete set or copy this study-only schema into the runtime registry.",
   "whiteSelection": {
     "candidate": "joint-x100",
     "method": "calibration mean minus one quarter of the worst calibration loss against current",
@@ -274,10 +274,10 @@
     }
   },
   "landPrintingsPending": {
-    "coloredRimsAndContrast": 25,
     "dualColorReplay": 10,
     "typography": 25,
-    "runtimeIntegration": 25
+    "runtimeIntegration": 25,
+    "contrastAndBlackLevels": 25
   },
   "sourceReceipts": {
     "2ed-native-color-fit": {
@@ -558,7 +558,7 @@
   "basicLandColorSelection": {
     "status": "native-development-candidates-not-runtime-adopted",
     "source": "2ed-land-color-native-verification.json.gz",
-    "scope": "Shared brown-frame adjustment across fifteen original basic references; five paper adjustments. The third illustration of every basic has a darker scan palette. Retain those five measured regressions; do not fit their color individually. Colored rim accents, contrast/black levels and reuse on the ten dual composites remain open. No independent-name validation or complete-set certification.",
+    "scope": "Shared brown-frame adjustment across fifteen original basic references; five paper adjustments. The third illustration of every basic has a darker scan palette. Retain those five measured regressions; do not fit their color individually. Colored rim accents have a separate native-verified candidate. Contrast/black levels and reuse on the ten dual composites remain open. No independent-name validation or complete-set certification.",
     "groups": {
       "WL": {
         "frame": {
@@ -802,8 +802,8 @@
     }
   },
   "bodyPolicyCandidate": {
-    "status": "full-native-frozen-input-candidate-current-wording-refresh-open",
-    "source": "2ed-body-native-verification.json.gz",
+    "status": "full-native-current-wording-candidate-verified",
+    "source": "2ed-body-current-native-verification.json.gz",
     "options": {
       "policy": "count",
       "mediumSize": 22.5,
@@ -814,12 +814,247 @@
       "regularDx": -2,
       "retainRegularAboveLines": 7
     },
-    "currentInputReplayPending": ["7ad8ab3d-8a77-4fd3-8d5a-ac1e8a09e3bc"],
-    "integrationScope": "These study options need a typed set-profile adapter. Retention based on dense regular originals must not undo safe Oracle insets or shrinking. Recheck against the final prepared frame/material pipeline before release."
+    "currentInputReplayPending": [],
+    "integrationScope": "These study options need a typed set-profile adapter. Retention based on dense regular originals must not undo safe Oracle insets or shrinking. Recheck against the final prepared frame/material pipeline before release.",
+    "currentReplayArchive": "2ed-body-current-replay.json.gz"
   },
   "powerToughnessProbe": {
     "status": "shared-geometry-probe-needs-ink-and-shadow-review",
     "source": "2ed-stats-policy-selection.json.gz",
     "review": "The global position/size probe improves the regional mean but regresses 26 of 92 cases, up to 11.1 points. Zoom inspection shows stroke/ink contrast differences, including 1/x examples; resolve ink/stroke/shadow matching before accepting a universal positional refit. No per-card stats overrides are proposed."
+  },
+  "basicLandAccentSelection": {
+    "status": "native-shared-outline-colors-verified-not-adopted",
+    "source": "2ed-land-accent-native-verification.json.gz",
+    "scope": "One source-local outline adjustment per basic color, shared across its three illustrations. Fixed projected line strips measure color; shared source rings and hue weights apply it during cached material preparation. Group means improve for all five colors, but black median error rises and four individual printings regress. Preserve every residual, including the 3.83-unit white regression. No per-card palette or per-scan offset/color fit; no independent-name validation. Land contrast/black levels and dual composite/pinline colors still need checks.",
+    "groups": {
+      "WL": {
+        "count": 3,
+        "beforeMedianDeltaE": 4.025224254578945,
+        "afterMedianDeltaE": 0.8788633447046964,
+        "beforeMeanDeltaE": 3.652108993171705,
+        "afterMeanDeltaE": 2.317697216650363,
+        "improved": 2,
+        "worstRegression": 3.833768689040782,
+        "maxPredictionError": 0.07578542784777431
+      },
+      "UL": {
+        "count": 3,
+        "beforeMedianDeltaE": 8.823934302637051,
+        "afterMedianDeltaE": 1.556406210315725,
+        "beforeMeanDeltaE": 7.851013018027888,
+        "afterMeanDeltaE": 2.082966715825613,
+        "improved": 2,
+        "worstRegression": 0.14532148584364268,
+        "maxPredictionError": 0.056850636192509595
+      },
+      "BL": {
+        "count": 3,
+        "beforeMedianDeltaE": 4.528378619081766,
+        "afterMedianDeltaE": 5.4175619515344176,
+        "beforeMeanDeltaE": 7.1216608239557955,
+        "afterMeanDeltaE": 6.4588334083999905,
+        "improved": 2,
+        "worstRegression": 0.8891833324526512,
+        "maxPredictionError": 0.07772906333645313
+      },
+      "RL": {
+        "count": 3,
+        "beforeMedianDeltaE": 3.335055824615591,
+        "afterMedianDeltaE": 2.5878020794472087,
+        "beforeMeanDeltaE": 3.2550833267963952,
+        "afterMeanDeltaE": 2.331348052272809,
+        "improved": 2,
+        "worstRegression": 0.05820567183784009,
+        "maxPredictionError": 0.041470479212130096
+      },
+      "GL": {
+        "count": 3,
+        "beforeMedianDeltaE": 5.909402766018718,
+        "afterMedianDeltaE": 1.5043429312353596,
+        "beforeMeanDeltaE": 6.554824379694655,
+        "afterMeanDeltaE": 1.4175554861867627,
+        "improved": 3,
+        "worstRegression": 0,
+        "maxPredictionError": 0.01238957947501973
+      }
+    },
+    "accents": {
+      "WL": [
+        {
+          "mask": {
+            "rings": [
+              {
+                "outer": [0.05533333333333333, 0.045714285714285714, 0.89, 0.9104761904761904],
+                "inner": [0.066, 0.05238095238095238, 0.8673333333333333, 0.8966666666666666]
+              },
+              {
+                "outer": [
+                  0.09533333333333334, 0.09095238095238095, 0.8106666666666666, 0.4723809523809524
+                ],
+                "inner": [0.108, 0.09904761904761905, 0.7853333333333333, 0.4552380952380952]
+              },
+              {
+                "outer": [
+                  0.12466666666666666, 0.5971428571428572, 0.7546666666666667, 0.2923809523809524
+                ],
+                "inner": [
+                  0.13866666666666666, 0.6090476190476191, 0.7253333333333334, 0.26857142857142857
+                ]
+              }
+            ],
+            "hueCenter": 0,
+            "hueRadius": 180,
+            "hueFeather": 1,
+            "saturation": [0, 0.001]
+          },
+          "adjustment": {
+            "hueDegrees": 0,
+            "saturationScale": 0.49972560975609837,
+            "brightnessScale": 1.0732005033557046
+          }
+        }
+      ],
+      "UL": [
+        {
+          "mask": {
+            "rings": [
+              {
+                "outer": [0.05533333333333333, 0.045714285714285714, 0.89, 0.9104761904761904],
+                "inner": [0.066, 0.05238095238095238, 0.8673333333333333, 0.8966666666666666]
+              },
+              {
+                "outer": [
+                  0.09533333333333334, 0.09095238095238095, 0.8106666666666666, 0.4723809523809524
+                ],
+                "inner": [0.108, 0.09904761904761905, 0.7853333333333333, 0.4552380952380952]
+              },
+              {
+                "outer": [
+                  0.12466666666666666, 0.5971428571428572, 0.7546666666666667, 0.2923809523809524
+                ],
+                "inner": [
+                  0.13866666666666666, 0.6090476190476191, 0.7253333333333334, 0.26857142857142857
+                ]
+              }
+            ],
+            "hueCenter": 205,
+            "hueRadius": 55,
+            "hueFeather": 15,
+            "saturation": [0, 0.001]
+          },
+          "adjustment": {
+            "hueDegrees": -2.9276556776557072,
+            "saturationScale": 1.44411044973545,
+            "brightnessScale": 1.1386861313868615
+          }
+        }
+      ],
+      "BL": [
+        {
+          "mask": {
+            "rings": [
+              {
+                "outer": [0.05533333333333333, 0.045714285714285714, 0.89, 0.9104761904761904],
+                "inner": [0.066, 0.05238095238095238, 0.8673333333333333, 0.8966666666666666]
+              },
+              {
+                "outer": [
+                  0.09533333333333334, 0.09095238095238095, 0.8106666666666666, 0.4723809523809524
+                ],
+                "inner": [0.108, 0.09904761904761905, 0.7853333333333333, 0.4552380952380952]
+              },
+              {
+                "outer": [
+                  0.12466666666666666, 0.5971428571428572, 0.7546666666666667, 0.2923809523809524
+                ],
+                "inner": [
+                  0.13866666666666666, 0.6090476190476191, 0.7253333333333334, 0.26857142857142857
+                ]
+              }
+            ],
+            "hueCenter": 0,
+            "hueRadius": 180,
+            "hueFeather": 1,
+            "saturation": [0, 0.001]
+          },
+          "adjustment": {
+            "hueDegrees": 0,
+            "saturationScale": 0.05603658536585383,
+            "brightnessScale": 0.896818181818182
+          }
+        }
+      ],
+      "RL": [
+        {
+          "mask": {
+            "rings": [
+              {
+                "outer": [0.05533333333333333, 0.045714285714285714, 0.89, 0.9104761904761904],
+                "inner": [0.066, 0.05238095238095238, 0.8673333333333333, 0.8966666666666666]
+              },
+              {
+                "outer": [
+                  0.09533333333333334, 0.09095238095238095, 0.8106666666666666, 0.4723809523809524
+                ],
+                "inner": [0.108, 0.09904761904761905, 0.7853333333333333, 0.4552380952380952]
+              },
+              {
+                "outer": [
+                  0.12466666666666666, 0.5971428571428572, 0.7546666666666667, 0.2923809523809524
+                ],
+                "inner": [
+                  0.13866666666666666, 0.6090476190476191, 0.7253333333333334, 0.26857142857142857
+                ]
+              }
+            ],
+            "hueCenter": 350,
+            "hueRadius": 55,
+            "hueFeather": 15,
+            "saturation": [0, 0.001]
+          },
+          "adjustment": {
+            "hueDegrees": 13.290006627163564,
+            "saturationScale": 1.0379708933287894,
+            "brightnessScale": 1.0543478260869565
+          }
+        }
+      ],
+      "GL": [
+        {
+          "mask": {
+            "rings": [
+              {
+                "outer": [0.05533333333333333, 0.045714285714285714, 0.89, 0.9104761904761904],
+                "inner": [0.066, 0.05238095238095238, 0.8673333333333333, 0.8966666666666666]
+              },
+              {
+                "outer": [
+                  0.09533333333333334, 0.09095238095238095, 0.8106666666666666, 0.4723809523809524
+                ],
+                "inner": [0.108, 0.09904761904761905, 0.7853333333333333, 0.4552380952380952]
+              },
+              {
+                "outer": [
+                  0.12466666666666666, 0.5971428571428572, 0.7546666666666667, 0.2923809523809524
+                ],
+                "inner": [
+                  0.13866666666666666, 0.6090476190476191, 0.7253333333333334, 0.26857142857142857
+                ]
+              }
+            ],
+            "hueCenter": 82,
+            "hueRadius": 55,
+            "hueFeather": 15,
+            "saturation": [0, 0.001]
+          },
+          "adjustment": {
+            "hueDegrees": -3.8775431225121793,
+            "saturationScale": 1.272536152497809,
+            "brightnessScale": 1.1398601398601398
+          }
+        }
+      ]
+    }
   }
 }

@@ -174,8 +174,8 @@
     },
     "2ed-material-proposal": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-material-proposal.json",
-      "sha256": "340d21ae768f23f1d32cab6ec7334f766a2063a8f0286e6b9bdc9ca34e89a15f",
-      "contentSha256": "340d21ae768f23f1d32cab6ec7334f766a2063a8f0286e6b9bdc9ca34e89a15f"
+      "sha256": "114823671a6392a815beee3fd4fb92e3b28efb600a310e4a3d74febc2db0ff64",
+      "contentSha256": "114823671a6392a815beee3fd4fb92e3b28efb600a310e4a3d74febc2db0ff64"
     },
     "2ed-basic-land-geometry": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-geometry.json.gz",
@@ -351,6 +351,31 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-stats-policy-selection.json.gz",
       "sha256": "0f910dcdac0b328edbc960c4aace87dba9b1454d6d0b143a2adc727fa7dff42a",
       "contentSha256": "8af22bd227a22afb92a885e9ce1472dfa58405b78fbc9ee8c1b4dad14ee496f7"
+    },
+    "2ed-body-current-replay": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-body-current-replay.json.gz",
+      "sha256": "c58239dd77633b0f88312053f93ca2ff6a3597e5d4f21ba2a0f4b1f5db193829",
+      "contentSha256": "fbe12804c084381f899409402a3da8f1d03799429a5eac0e207eb0cdd54fdfac"
+    },
+    "2ed-body-current-native-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-body-current-native-verification.json.gz",
+      "sha256": "39ea95079a9a2d5e23288d7ec333e9f98d09bcc3fa527a6c2e931e22f5186e09",
+      "contentSha256": "25f559ba5bd8565e84828f9dcb7b07f3500d545dab39e49d162b980f0dd42400"
+    },
+    "2ed-land-accent-fit": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-land-accent-fit.json.gz",
+      "sha256": "170884092bd80998eb504a196b23ccd6b1c387fda9c7894552fda7d35feacca2",
+      "contentSha256": "2750fab14dbcd6f8d56aee286eb89312316ed6da6b6064631c011456ec52708d"
+    },
+    "2ed-land-accent-native-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-land-accent-native-verification.json.gz",
+      "sha256": "c1358031ad8afdc503594af4a546f5d7b1aa2cf8f340dca31467703b82fa539e",
+      "contentSha256": "5cbc9687addae680a34a3f73f98332dc179106d5af4ac6b221c4ee7ec3dc0ade"
+    },
+    "2ed-land-accent-replay": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-land-accent-replay.json.gz",
+      "sha256": "fef3ef5a2f72815d3e749b3a4f410029a4360f6b647f377b17dabed608527a32",
+      "contentSha256": "7239c46109ce99606b5aa2904c7f867c929774b8ecd1cf1c537715a019f90b08"
     }
   },
   "native": {
@@ -781,7 +806,7 @@
     "frameImproved": 10,
     "frameRegressed": 5,
     "source": "2ed-land-color-native-verification.json.gz",
-    "scope": "Shared brown-frame adjustment across fifteen original basic references; five paper adjustments. The third illustration of every basic has a darker scan palette. Retain those five measured regressions; do not fit their color individually. Colored rim accents, contrast/black levels and reuse on the ten dual composites remain open. No independent-name validation or complete-set certification.",
+    "scope": "Shared brown-frame adjustment across fifteen original basic references; five paper adjustments. The third illustration of every basic has a darker scan palette. Retain those five measured regressions; do not fit their color individually. Colored rim accents have a separate native-verified candidate. Contrast/black levels and reuse on the ten dual composites remain open. No independent-name validation or complete-set certification.",
     "maximumPredictionError": 0.1816609834428884,
     "illustrationCorePixelsChanged": 0,
     "faceAlphaPixelsChanged": 0,
@@ -1118,17 +1143,11 @@
     "wholeSetCertification": false
   },
   "bodyPolicy": {
-    "status": "full-native-frozen-input-candidate-current-wording-refresh-open",
-    "source": "2ed-body-native-verification.json.gz",
+    "status": "full-native-current-wording-candidate-verified",
+    "source": "2ed-body-current-native-verification.json.gz",
     "printings": 302,
     "latestProvidedInputsUnchanged": 301,
-    "pendingCurrentInputReplay": [
-      {
-        "id": "7ad8ab3d-8a77-4fd3-8d5a-ac1e8a09e3bc",
-        "name": "Dragon Whelp",
-        "fields": ["rulesAlignment", "rulesParagraphs", "rulesText"]
-      }
-    ],
+    "pendingCurrentInputReplay": [],
     "rule": {
       "policy": "count",
       "mediumSize": 22.5,
@@ -1142,8 +1161,8 @@
     "groups": {
       "all": {
         "count": 302,
-        "beforeMean100": 50.98000509104686,
-        "afterMean100": 59.01056080395001,
+        "beforeMean100": 51.04610447599058,
+        "afterMean100": 59.076660188893726,
         "improved": 248,
         "regressed": 22,
         "retainedBase": 32,
@@ -1151,8 +1170,8 @@
       },
       "calibration": {
         "count": 201,
-        "beforeMean100": 50.790750312359755,
-        "afterMean100": 58.757261263610246,
+        "beforeMean100": 50.890063816106036,
+        "afterMean100": 58.85657476735653,
         "improved": 164,
         "regressed": 15,
         "retainedBase": 22,
@@ -1172,8 +1191,10 @@
     "outsideRulesChangedPixels": 0,
     "silhouetteChangedPixels": 0,
     "predictionError": 0,
-    "scope": "All 302 frozen original faces have actual native score/isolation checks. Latest reviewed wording is identical for 301 supplied face values; Dragon Whelp needs its inline-quotation correction replayed before current full-set body certification. The medium-density guard uses original compiled size and line count. These are per-set options, never printing-specific offsets. Material integration and Oracle behavior still need checking.",
-    "wholeSetCertification": false
+    "scope": "All 302 current original faces have actual native score and isolation checks. Dragon Whelp uses its reviewed inline quotation; the remaining 301 measurements and selected PNGs are reused only after exact provided face, asset/reference, painter and pose comparisons. The common candidate parameters are unchanged and all 302 cached native scores are independently recomputed. The medium-density guard uses original compiled size and line count. These are per-set options, never printing-specific offsets. Material integration and Oracle behavior still need checking.",
+    "wholeSetCertification": false,
+    "currentReplayArchive": "2ed-body-current-replay.json.gz",
+    "latestProvidedInputsRefreshed": 1
   },
   "powerToughness": {
     "status": "shared-geometry-probe-needs-ink-and-shadow-review",
@@ -1292,13 +1313,79 @@
   },
   "integrationRequirements": {
     "frame": "Source-bound ordinary and five basic plates, shared dual composite, independent SVG stock-mask geometry; retain existing foreign-set behavior.",
-    "color": "Finish colored land rim and composed dual palette/contrast checks before final text verification.",
-    "wording": "Targeted Dragon Whelp original-body refresh. Reference/art bytes, poses and 301 other provided face values remain unchanged.",
+    "color": "Basic colored rims have a native-verified shared candidate with all residuals retained. Finish land contrast/black levels and composed dual paper/pinline palettes before final text verification.",
+    "wording": "Current Dragon Whelp original-body refresh is verified with all 302 native body results. Reuse this reviewed provided input; do not run an older wording resolver over it during final profile verification.",
     "typography": "Measure filled ink/stroke/shadow values separately from fixed-gray geometry; retain MPlantin credits unless new evidence supports another face.",
     "body": "Integrate shared count/wrap and medium-density retention with original/Oracle safety preserved; verify final full native inputs.",
     "mana": "Disc/glyph/numeral size, pitch/placement and paper/ink color remain open.",
     "footer": "Preserve printed Illus. \u00a9 prefix and absence of a separate Unlimited legal line.",
     "receipts": "Scoped integration and source-equivalence evidence must preserve immutable historical receipts and avoid reopening unrelated sets.",
     "completion": "Full profile/whole-card validation and visual boundary certification are still required. No renderer profile is adopted by these study files."
+  },
+  "basicLandAccents": {
+    "status": "native-shared-outline-colors-verified-not-adopted",
+    "source": "2ed-land-accent-native-verification.json.gz",
+    "printings": 15,
+    "improved": 11,
+    "regressed": 4,
+    "groups": {
+      "WL": {
+        "count": 3,
+        "beforeMedianDeltaE": 4.025224254578945,
+        "afterMedianDeltaE": 0.8788633447046964,
+        "beforeMeanDeltaE": 3.652108993171705,
+        "afterMeanDeltaE": 2.317697216650363,
+        "improved": 2,
+        "worstRegression": 3.833768689040782,
+        "maxPredictionError": 0.07578542784777431
+      },
+      "UL": {
+        "count": 3,
+        "beforeMedianDeltaE": 8.823934302637051,
+        "afterMedianDeltaE": 1.556406210315725,
+        "beforeMeanDeltaE": 7.851013018027888,
+        "afterMeanDeltaE": 2.082966715825613,
+        "improved": 2,
+        "worstRegression": 0.14532148584364268,
+        "maxPredictionError": 0.056850636192509595
+      },
+      "BL": {
+        "count": 3,
+        "beforeMedianDeltaE": 4.528378619081766,
+        "afterMedianDeltaE": 5.4175619515344176,
+        "beforeMeanDeltaE": 7.1216608239557955,
+        "afterMeanDeltaE": 6.4588334083999905,
+        "improved": 2,
+        "worstRegression": 0.8891833324526512,
+        "maxPredictionError": 0.07772906333645313
+      },
+      "RL": {
+        "count": 3,
+        "beforeMedianDeltaE": 3.335055824615591,
+        "afterMedianDeltaE": 2.5878020794472087,
+        "beforeMeanDeltaE": 3.2550833267963952,
+        "afterMeanDeltaE": 2.331348052272809,
+        "improved": 2,
+        "worstRegression": 0.05820567183784009,
+        "maxPredictionError": 0.041470479212130096
+      },
+      "GL": {
+        "count": 3,
+        "beforeMedianDeltaE": 5.909402766018718,
+        "afterMedianDeltaE": 1.5043429312353596,
+        "beforeMeanDeltaE": 6.554824379694655,
+        "afterMeanDeltaE": 1.4175554861867627,
+        "improved": 3,
+        "worstRegression": 0,
+        "maxPredictionError": 0.01238957947501973
+      }
+    },
+    "outsideSourceRingsChanged": 0,
+    "artCoreChanged": 0,
+    "rulesPaperCoreChanged": 0,
+    "faceAlphaChanged": 0,
+    "defaultEtchingChanged": false,
+    "scope": "One source-local outline adjustment per basic color, shared across its three illustrations. Fixed projected line strips measure color; shared source rings and hue weights apply it during cached material preparation. Group means improve for all five colors, but black median error rises and four individual printings regress. Preserve every residual, including the 3.83-unit white regression. No per-card palette or per-scan offset/color fit; no independent-name validation. Land contrast/black levels and dual composite/pinline colors still need checks.",
+    "wholeSetCertification": false
   }
 }
