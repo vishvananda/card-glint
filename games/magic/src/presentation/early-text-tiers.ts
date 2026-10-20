@@ -26,6 +26,9 @@ export interface EarlyTextTierOptions {
   readonly transferAlphaModel?: boolean;
 }
 
+/** Face-cache identity for the shared Alpha original-only wrap safeguard. */
+export const ALPHA_RULES_REVISION = 'alpha-plain-rules-wrap-v1';
+
 /** Reviewed Alpha defaults. Oracle retains its established fitting/safe inset. */
 export function alphaTextLayout(
   context: CanvasContext,
@@ -163,9 +166,26 @@ export function earlyTextTierLayout(
     const regularWidthDelta =
       options.regularWidthDelta ??
       (characters < 180 || face.setCode?.toLowerCase() === 'leb' ? 8 : 0);
-    const model = options.transferAlphaModel
+    let model = options.transferAlphaModel
       ? (earlyRulesModel(context, face, chosen, regularWidthDelta) ?? chosen)
       : (alphaRulesLayout(context, face, chosen, regularWidthDelta) ?? chosen);
+    // Preserve a plain passage's established wrapping when the tighter Alpha
+    // inset alone adds a line. The existing Beta allowance restores the inset
+    // without changing the face size. Mixed/flavor passages keep their policy;
+    // explicit diagnostic width overrides remain exact. No scan or card-name
+    // lookup participates in this physical fit.
+    if (
+      face.setCode?.toLowerCase() === 'lea' &&
+      face.wordingMode !== 'oracle' &&
+      options.regularWidthDelta === undefined &&
+      regularWidthDelta === 0 &&
+      !centered &&
+      r.paragraphs.every((p) => p.role === 'rules') &&
+      model.lines.length > chosen.lines.length
+    ) {
+      const wider = alphaRulesLayout(context, face, chosen, 8);
+      if (wider && wider !== chosen && wider.lines.length < model.lines.length) model = wider;
+    }
     const dx = centered ? (options.centeredDx ?? 0) : (options.regularDx ?? 0);
     const dy = centered
       ? (options.centeredDy ?? 0)

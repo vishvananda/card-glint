@@ -1,3 +1,4 @@
+import { ALPHA_RULES_REVISION } from './early-text-tiers.js';
 import { retroDualFrameRevision } from './retro-dual-frame.js';
 import { WALKER_GEOMETRY, walkerSymbolSize } from './planeswalker-geometry.js';
 import { coverageMap, type CoverageMap } from '../../../../packages/browser/src/canvas-mask.js';
@@ -173,6 +174,9 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     CONJURER_ROOT,
     'canvas-face-v148',
     ...(dualFrameRevision ? [dualFrameRevision] : []),
+    ...(face.setCode?.toLowerCase() === 'lea' && face.wordingMode !== 'oracle'
+      ? [ALPHA_RULES_REVISION]
+      : []),
     ...(faceFrame(face).startsWith('planeswalker') ? [WALKER_MATERIAL_REVISION] : []),
     ...(faceSetSymbol(face)?.startsWith(`${CONJURER_ROOT}/img/setSymbols/official/m15-`) &&
     !face.setSymbol &&
