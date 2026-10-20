@@ -7,10 +7,13 @@ export async function preWalkerGeometry(file, bytes) {
   const proof = await (checked ??= readFile(
     'games/magic/fixtures/accuracy/planeswalker-materials/geometry-proof.json',
   ).then(async (b) => {
-    assert.equal(hash(b), '198411929369236eebb6a0a473ef2f71c1adb46f5d8347fc11b1fff42160a8f4');
+    assert.equal(hash(b), '2a4b8ed0e965015d7d9f04021ef3b6d232d32132efc64565a0e0cd267ec2c490');
     const p = JSON.parse(b);
     for (const [name, digest] of Object.entries(p.dependencies))
       assert.equal(hash(await readFile(name)), digest, 'Changed reviewed walker geometry: ' + name);
+    const native = await readFile(p.nativeGeometry.file);
+    assert.equal(hash(native), p.nativeGeometry.sha256);
+    assert(JSON.parse(native).nativeControls.every((r) => r.outsideHeadingAndSymbolSlots === 0));
     return p;
   }));
   const entry = proof.files[file];

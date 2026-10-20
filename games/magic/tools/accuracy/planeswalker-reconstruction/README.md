@@ -166,6 +166,7 @@ keep its original-wording inputs and frozen exterior scan poses. Diagnostic
 outputs stay outside the repository. Capture actual text draw calls with:
 
 ```sh
+node "$TOOLS/capture-geometry.mjs" "$STUDY" actual-before
 node "$TOOLS/capture-geometry.mjs" "$STUDY" actual-geometry
 python "$TOOLS/fit-heading-widths.py" "$STUDY"
 python "$TOOLS/fit-symbol-sizes.py" "$STUDY"

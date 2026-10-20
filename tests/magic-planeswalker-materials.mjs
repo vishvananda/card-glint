@@ -6,6 +6,18 @@ import { preWalkerSource } from '../games/magic/tools/accuracy/planeswalker-reco
 const evidence = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/planeswalker-materials/native.json'),
 );
+const geometry = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/planeswalker-materials/geometry.json'),
+);
+assert.equal(geometry.nativeControls.length, 61);
+assert(
+  geometry.nativeControls.every((r) => r.outsideHeadingAndSymbolSlots === 0 && r.footerIdentical),
+);
+assert(
+  geometry.summary
+    .filter((r) => r.cohort === 'validation')
+    .every((r) => r.means.after < r.means.before),
+);
 assert.equal(evidence.normalization.accepted, 59);
 assert.equal(evidence.normalization.attempted, 61);
 assert.equal(evidence.records.filter((r) => r.cohort === 'validation').length, 20);

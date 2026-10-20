@@ -14,6 +14,11 @@ const session = await openBrowser(snapshot, {
       name: 'current-heading-capture',
       enforce: 'pre',
       transform(code, id) {
+        if (run === 'actual-before' && id.endsWith('/planeswalker-geometry.ts'))
+          return code
+            .replace('titleWidth: 1.06', 'titleWidth: 1')
+            .replace('typeWidth: 1.03', 'typeWidth: 1')
+            .replace(/return Object.hasOwn\(SYMBOL_SIZE, code\)[^;]+;/, 'return [1, 1];');
         if (id.endsWith('/canvas-text.ts'))
           return (
             code.replace('export function paintFittedText(', 'function paintFittedTextBase(') +
