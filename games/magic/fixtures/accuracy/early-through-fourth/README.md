@@ -329,3 +329,65 @@ changing wording, mutate the checkout, adjust scans or upload scores. Temporary
 source copies under `OUT/sources` can be removed after capture. Pixel evidence
 stays outside Git. The gallery is at `/early-sets/alpha-text/`; its Oracle candidate
 is explicitly unreleased, while the corrected original view uses published 0.6.6.
+
+## Native Unlimited printed black levels
+
+`2ed-keyline-selection.json.gz` records one source curve per ordinary material,
+selected from four native candidates on the calibration cohort. The objective
+balances median printed-keyline Oklab distance against frame/paper color and
+texture-spread regressions. Validation does not choose the curve; its scans are
+reused development observations, not a fresh blind sample.
+
+| Material | Median keyline color distance before → after |
+| -------- | -------------------------------------------- |
+| White    | 12.206 → 3.052                               |
+| Blue     | 8.804 → 2.160                                |
+| Black    | 1.940 → 1.467                                |
+| Red      | 3.963 → 1.978                                |
+| Green    | 2.794 → 1.639                                |
+| Artifact | 3.015 → 2.197                                |
+
+These are color distances, not card accuracy indices. Of 277 cards, 242 improve
+and 35 regress on this regional measurement. Individual losses remain in the
+report; no scan receives its own renderer color adjustment. Dark Unholy Strength
+and Raise Dead and the artifact outliers remain useful visual checks. White's
+remaining difference includes source keyline geometry and antialiasing.
+
+The native replays verify original reference/pose identities, exact released
+baseline parity, unchanged illustration-core and face-alpha bytes, and unchanged
+empty etching outputs. Frame and paper texture samples remain in the selection
+objective. This does not validate nonempty etching or complete the set. The six
+selected recipes are consolidated in `2ed-material-proposal.json`, still outside
+the runtime registry. All 25 land interiors and the subsequent typography,
+mana, art-window and whole-card checks remain open.
+
+The physical-ink diagnostic follows short strips normal to each measured outer
+printed boundary, choosing the darkest pixel to avoid the adjacent bevel. The
+source curve has positive bounded channel slopes and returns to zero before
+highlights. It is applied to cached source materials by the actual painter,
+never to final card images.
+
+```sh
+python games/magic/tools/accuracy/early-frame-ink-audit.py NATIVE_CAPTURE TRIAL_CAPTURE VARIANT INK.json
+python games/magic/tools/accuracy/early-keyline-tone-fit.py INK.json COLORS.json PREDICTION.json
+# Render the proposed source curves with early-frame-trial-replay.mjs, then
+# generate matching ink/color diagnostics for every candidate, including control.
+python games/magic/tools/accuracy/early-native-keyline-select.py NATIVE_CAPTURE TRIAL_CAPTURE DEFINITION.json SELECTION.json
+python tests/early-keyline-tone.py
+python tests/early-native-keyline.py
+```
+
+The compact observations omit large RGB tile lists but retain every numeric
+input used by native selection and the original diagnostic hashes. Reproduce
+all six selections and 277 paired rows without downloading external pixels:
+
+```sh
+python games/magic/tools/accuracy/early-native-keyline-select.py --replay games/magic/fixtures/accuracy/early-through-fourth/2ed-keyline-observations.json.gz games/magic/fixtures/accuracy/early-through-fourth/2ed-keyline-selection.json.gz
+```
+
+That replay checks numerical selection only. Repeating PNG invariants requires
+the referenced cached native captures. Python tools require NumPy and Pillow;
+`early-basic-land-geometry.py` additionally requires SciPy. Its initial
+three-illustration basic-land medians leave several art boundaries unresolved;
+missing or out-of-range boundaries remain rejected rather than supplying a
+speculative geometry fit.

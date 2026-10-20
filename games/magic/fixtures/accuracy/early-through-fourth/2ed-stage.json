@@ -24,7 +24,7 @@
     "validationKind": "reused-development"
   },
   "wordingCorrection": "Wall of Ice has flavor only. Exact printing reviewed, empty rules supplied explicitly; Oracle Defender remains separate. No broad empty-text inference from a missing provider field.",
-  "scope": "All 302 original type labels have exact-printing reviews. Frozen native 0.6.6 inputs cover all 302. Outer stock-mask trials are verified on all 302; six-material internal geometry/color trials cover 277 nonland printings. No runtime calibration profile is adopted yet. Visual normalization certification, individual geometry regressions, all land interiors, filled heading ink, mana, body/footer fitting and complete-set scoring remain open.",
+  "scope": "All 302 original type labels have exact-printing reviews. Frozen native 0.6.6 inputs cover all 302. Outer stock-mask trials are verified on all 302; six-material internal geometry/color/black-level trials cover 277 nonland printings. No runtime calibration profile is adopted yet. Visual normalization certification, individual geometry regressions, all land interiors, filled heading ink, mana, body/footer fitting and complete-set scoring remain open.",
   "sources": {
     "early-printing-inputs.mjs": "c547ccd552bed95140a7355c3dbf130e379935c855126f1f31fd9da9a9f1f80c",
     "early-calibration-normalize.mjs": "bc316037dcd6533c13757bfe8959b7b2b7ea3623a0975df950e474463bbe7801",
@@ -161,6 +161,20 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-white-shared-measure.json.gz",
       "sha256": "1326189d1a01dc0a30a2352b4f1469f3fe86ee93e4126a21a0e7c1083e551190",
       "contentSha256": "e4fb27fb93d198042cd33eaa7bc0828d1d0a55676670c3ce844fe54dc89e7ef6"
+    },
+    "2ed-keyline-selection": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-keyline-selection.json.gz",
+      "sha256": "4706a0420e6aa6f27bc6ef61804b2f358e96895f55f3522f94fcebe54a56e7a7",
+      "contentSha256": "6189f7217867e51dfde78ae35e8461041982cf2906c5972faeacb0ddbdc6f459"
+    },
+    "2ed-keyline-observations": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-keyline-observations.json.gz",
+      "sha256": "d361ef89ed2f69a490d6ebedc6efa56b9ec8b879dbc4124994ddb309824cb769",
+      "contentSha256": "e8e27ca7cd6981aa18ed0836a65354d046f4765c53aa33d786f9cd70be1a833b"
+    },
+    "2ed-material-proposal": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-material-proposal.json",
+      "sha256": "37388dbd7a9aad557695cb6ec0a58000b28fd2712c6609060d74974c845eb8ec"
     }
   },
   "native": {
@@ -539,5 +553,15 @@
       }
     },
     "source": "2ed-material-proposal.json"
+  },
+  "blackLevels": {
+    "status": "native-shared-candidates-not-runtime-adopted",
+    "printings": 277,
+    "materials": 6,
+    "landPrintingsPending": 25,
+    "inkImproved": 242,
+    "inkRegressed": 35,
+    "reference": "2ed-keyline-selection.json.gz",
+    "wholeSetCertification": false
   }
 }
