@@ -643,3 +643,55 @@ shared geometry grid also prefers the unchanged control despite independently
 measured circle offsets. Fit outer circles/pitch separately from internal glyph
 shape/placement; preserve both component and whole-region results. This is not
 an all-cost fit, etching check, runtime adoption or completed set.
+
+## Unlimited mana components and printed-cost review
+
+The first corrected-palette whole-cost grid prefers the unchanged geometry,
+despite independently measured circle offsets. Keep that result as a diagnostic;
+fit physical circles/pitch independently of the ink inside them. One common
+circle transform is `dx=-0.875`, `dy=1.125`, `scaleX=scaleY=0.975`, with
+`spacing=0.625`, in the painter’s reference units. These are set defaults, never
+printing-specific shifts. On 54 actual native examples, median center error
+falls 1.57→1.00px and radius error 0.25→0.00px. Individual residuals remain.
+
+Disc-relative glyph masks retain physical size/centering and use three contrast
+thresholds. Calibration-only fitting selects scale 1.06 for W/B/R, 1.14 for G,
+and the unchanged U. All 40 changed cases improve actual ink overlap; U and
+numeric-only cards remain byte-identical for this glyph change. The mean
+internal-ink index rises 78.2→85.8/100 across the 54-card sample. Native numeral
+fitting separately uses all 47 artifacts: scale 1.06 and dy -0.75 improves its
+ink index 71.1→77.3/100, with 36 gains and eleven regressions. Chaos Orb, Glasses
+of Urza, Sol Ring and Celestial Prism remain flagged; do not create per-card
+calibration offsets to hide them. The whole-cost edge index stays separate.
+
+`early-mana-disc-fit.mjs NATIVE AUDIT COLOR_DEFINITION OUTPUT` measures common
+circle geometry and pitch. `early-native-mana-study.mjs NATIVE COLOR_CAPTURE
+DEFINITION OUTPUT` tests retained native controls, checking exact baseline and
+active full-render parity. `early-mana-glyph-fit.mjs NATIVE AUDIT COLOR_CAPTURE
+OUTPUT [colored|numeric]` predicts disc-relative ink adjustments; those mask
+transforms require actual native replay with `early-mana-geometry-replay.mjs`.
+`early-mana-component-verify.mjs NATIVE AUDIT DISC_CAPTURE GLYPH_CAPTURE OUTPUT`
+and `early-mana-number-verify.mjs NATIVE AUDIT NUMBER_BASELINE NUMBER_CANDIDATE
+FIT CURRENT_INPUTS OUTPUT` independently check cached PNG scores and isolation.
+The replay archive retains exact inputs/reports and the historical tool revision.
+
+The X-cost pass also found an input error: Unlimited Drain Life prints 1B,
+while Oracle supplies X1B. Own-printing header review confirms 1B on eight early
+printings. Alpha/Beta/Revised/Fourth already had corrections; missing reviews
+are added for Unlimited, both Collector editions and Summer. The full reviewed
+catalog audit finds only these four new original-cost fields changed, preserving
+2,520 unrelated wording groups and all 182 artist rows. Original and Oracle
+costs, both symbol-style options, stale hashes and provider immutability are
+covered by resolver tests.
+
+`early-header-input-review.mjs NATIVE CURRENT_INPUTS PROFILE_DEFINITION OUT`
+replays only changed printed mana inputs with the frozen painter. A fixed union
+cost window penalizes the removed extra symbol rather than cropping it away.
+The corrected Unlimited control changes 1,104 header pixels, with unchanged
+body/alpha; its surviving 1B pips are byte-identical. Historical extra-X header
+trials are explicitly excluded from certification. Body-region results survive,
+but final whole-face/profile captures must use current supplied inputs.
+
+Thirteen actual X costs still need a font/asset comparison, and source ink
+expansion remains open. These component studies are not a promoted runtime
+profile, a whole-card compliance score or complete-set certification.

@@ -7,8 +7,13 @@ import { hash, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { manaGlyphMask, compareManaGlyph, GLYPH_SIZE } from './mana-glyph-metrics.mjs';
 import { median } from './hsb-color.mjs';
-const [nativeDirectory, auditFile, colorDirectory, output] = process.argv.slice(2);
-assert(output, 'Usage: early-mana-glyph-fit.mjs NATIVE AUDIT COLOR_CAPTURE OUTPUT');
+const [nativeDirectory, auditFile, colorDirectory, output, mode = 'colored'] =
+  process.argv.slice(2);
+assert(['colored', 'numeric'].includes(mode));
+assert(
+  output,
+  'Usage: early-mana-glyph-fit.mjs NATIVE AUDIT COLOR_CAPTURE OUTPUT [colored|numeric]',
+);
 const raw = await Promise.all(
   [
     path.join(nativeDirectory, 'capture.json'),
@@ -17,6 +22,9 @@ const raw = await Promise.all(
   ].map((f) => readFile(f)),
 );
 const [capture, audit, color] = raw.map((b) => JSON.parse(b));
+const inputBytes = await readFile(path.join(nativeDirectory, 'inputs.json'));
+const input = JSON.parse(inputBytes);
+assert.equal(color.source.nativeInputsHash, hash(inputBytes));
 assert.equal(audit.nativeCaptureHash, hash(raw[0]));
 assert.equal(color.source.nativeCaptureHash, hash(raw[0]));
 assert.equal(color.source.auditHash, hash(raw[1]));
@@ -42,7 +50,9 @@ const resize = (ink, a, radius) => {
     }
   return out;
 };
-for (const r of color.rows.filter((r) => r.symbol !== 'N')) {
+for (const r of color.rows.filter((r) =>
+  mode === 'numeric' ? r.symbol === 'N' : r.symbol !== 'N',
+)) {
   const ar = audit.rows.find((x) => x.id === r.id),
     native = capture.rows.find((x) => x.id === r.id),
     trial = r.trials.find((t) => t.id === 'paper-ink');
@@ -57,9 +67,12 @@ for (const r of color.rows.filter((r) => r.symbol !== 'N')) {
   assert.equal(hash(bytes[0]), trial.faceHash);
   assert.equal(hash(bytes[1]), native.scanHash);
   const [source, reference] = bytes.map((b) => normalize(PNG.sync.read(b)));
+  const sourceCircle = trial.circle ?? ar.render.circle;
+  const costScale =
+    color.definition.candidates.find((c) => c.id === 'paper-ink').profile.geometry?.scaleX ?? 1;
   const masks = [source, reference].map((im, i) =>
     thresholds.map((thresholdFraction) =>
-      manaGlyphMask(im, i ? ar.scan.circle : ar.render.circle, false, {
+      manaGlyphMask(im, i ? ar.scan.circle : sourceCircle, false, {
         normalizeBounds: false,
         thresholdFraction,
       }),
@@ -80,7 +93,7 @@ for (const r of color.rows.filter((r) => r.symbol !== 'N')) {
             (_, i) =>
               compareManaGlyph(
                 masks[1][i].ink,
-                resize(masks[0][i].ink, c.adjustment, ar.render.circle.radius),
+                resize(masks[0][i].ink, c.adjustment, sourceCircle.radius / costScale),
               ).score,
           ),
         ),
@@ -89,11 +102,14 @@ for (const r of color.rows.filter((r) => r.symbol !== 'N')) {
     id: r.id,
     name: r.name,
     symbol: r.symbol,
+    ...(mode === 'numeric'
+      ? { number: input.entries.find((e) => e.id === r.id).face.manaSymbols.at(-1) }
+      : {}),
     cohort: r.cohort,
     referenceHash: r.referenceHash,
     poseHash: r.poseHash,
     sourceHash: trial.faceHash,
-    sourceCircle: ar.render.circle,
+    sourceCircle,
     referenceCircle: ar.scan.circle,
     accepted: !failed.length,
     failures: failed,
@@ -104,7 +120,7 @@ for (const r of color.rows.filter((r) => r.symbol !== 'N')) {
 }
 const mean = (a) => a.reduce((s, v) => s + v, 0) / a.length;
 const groups = {};
-for (const symbol of ['W', 'U', 'B', 'R', 'G']) {
+for (const symbol of mode === 'numeric' ? ['N'] : ['W', 'U', 'B', 'R', 'G']) {
   const all = rows.filter((r) => r.symbol === symbol),
     accepted = all.filter((r) => r.accepted),
     cal = accepted.filter((r) => r.cohort === 'calibration'),
@@ -153,9 +169,18 @@ await writeJson(output, {
   schema: 1,
   set: '2ed',
   status: 'disc-relative-glyph-candidates-needs-native-replay',
+  mode,
   scope:
-    'Five colored glyphs in independently measured disc coordinates. No normalization of glyph ink bounds and no scan raster registration. Binary ink IoU/boundary scores use three contrast thresholds; each glyph family receives one shared scale and within-circle offset selected on calibration names with a worst-loss penalty. Validation is reused development evidence. Approximate mask transforms are predictions and need actual native verification; generic numerals and source ink expansion remain separate.',
-  sources: { nativeCapture: hash(raw[0]), audit: hash(raw[1]), colorCapture: hash(raw[2]) },
+    (mode === 'numeric'
+      ? 'Generic numerals in independently measured disc coordinates.'
+      : 'Five colored glyphs in independently measured disc coordinates.') +
+    ' No normalization of glyph ink bounds and no scan raster registration. Binary ink IoU/boundary scores use three contrast thresholds; each glyph family receives one shared scale and within-circle offset selected on calibration names with a worst-loss penalty. Validation is reused development evidence. Approximate mask transforms are predictions and need actual native verification; source ink expansion, source-font differences and final whole-set validation remain separate.',
+  sources: {
+    nativeCapture: hash(raw[0]),
+    nativeInputs: hash(inputBytes),
+    audit: hash(raw[1]),
+    colorCapture: hash(raw[2]),
+  },
   toolHash: hash(await readFile(new URL(import.meta.url))),
   dependencies: await Promise.all(
     ['pixels-pure.mjs', 'mana-glyph-metrics.mjs', 'hsb-color.mjs'].map(async (f) => [

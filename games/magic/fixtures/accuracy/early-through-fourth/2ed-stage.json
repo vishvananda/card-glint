@@ -174,8 +174,8 @@
     },
     "2ed-material-proposal": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-material-proposal.json",
-      "sha256": "55751ff3773cd78870c715feedb4571acd8b3a76ba427976d180196813747220",
-      "contentSha256": "55751ff3773cd78870c715feedb4571acd8b3a76ba427976d180196813747220"
+      "sha256": "dcf886f79a9cf3718292424b98316667c3832923ff6b3d28f6a71a84b0c51d5c",
+      "contentSha256": "dcf886f79a9cf3718292424b98316667c3832923ff6b3d28f6a71a84b0c51d5c"
     },
     "2ed-basic-land-geometry": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-geometry.json.gz",
@@ -396,6 +396,36 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-pigment-verification.json.gz",
       "sha256": "26018055177ff0fb2dcd1ebe6e950b85c2b0efe1ed7591e579a8511dd9d2cb99",
       "contentSha256": "6cec59e56b3e961e1e0ff005894ec1014460ef69bea51243546969cc91e26dfc"
+    },
+    "2ed-mana-disc-fit": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-disc-fit.json.gz",
+      "sha256": "6388e0d3e6ac332b851c27f39ba79e4515e412a9103a879f5c611ef8819a330c",
+      "contentSha256": "25c7ae3d6294fff387dab00d11f0229c56a771e28bf54bf85b0ed85ee9472940"
+    },
+    "2ed-mana-component-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-component-verification.json.gz",
+      "sha256": "c03311829e5fb18472b60d330aead700293c434ab2d58f4664ce0b6a0df871d9",
+      "contentSha256": "66a23b5ed0cf31b2947b5877f731029c317c6134daa9167b68692338b87bc08d"
+    },
+    "2ed-mana-number-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-number-verification.json.gz",
+      "sha256": "f1875cd8bb60cbe6f6b818e4adc183b3a39593f1044df1bf1c0188465644ee92",
+      "contentSha256": "81ab88d64233cd290d8ef510fce4572ad9e4be3361db7f1c0503fc45b55afe64"
+    },
+    "2ed-original-cost-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-original-cost-verification.json.gz",
+      "sha256": "872733b55a9d88f31c7b7c310a6b1801f0fa4f4275fa4eb4b4fdc715a4baf416",
+      "contentSha256": "b34b9a1061693e637e8c2c648c91a3ecb2dfc222b78ea8f8de785c41e299103f"
+    },
+    "2ed-original-cost-pip-check": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-original-cost-pip-check.json.gz",
+      "sha256": "d2e7bd86074ed63d5f1f735c3401bb4397f6d41437ec4fceec03a1e48440d0da",
+      "contentSha256": "9fdd7456b64d941b439652680c30f99cf5031127483f53cd43e7f1e770d78f11"
+    },
+    "2ed-mana-component-replay": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-mana-component-replay.json.gz",
+      "sha256": "fe47e2417db158b7c2f95cc2fbab6f3affcc9e627df439a990fcb6d8936de699",
+      "contentSha256": "dc60762a52d1044861dbc6f502b3ac233d426b56f7688baf25babaa716ddf2c1"
     }
   },
   "native": {
@@ -1211,10 +1241,16 @@
     "outsideRulesChangedPixels": 0,
     "silhouetteChangedPixels": 0,
     "predictionError": 0,
-    "scope": "All 302 current original faces have actual native score and isolation checks. Dragon Whelp uses its reviewed inline quotation; the remaining 301 measurements and selected PNGs are reused only after exact provided face, asset/reference, painter and pose comparisons. The common candidate parameters are unchanged and all 302 cached native scores are independently recomputed. The medium-density guard uses original compiled size and line count. These are per-set options, never printing-specific offsets. Material integration and Oracle behavior still need checking.",
+    "scope": "All 302 current original faces have actual native score and isolation checks. Dragon Whelp uses its reviewed inline quotation; the remaining 301 measurements and selected PNGs are reused only after exact provided face, asset/reference, painter and pose comparisons. The common candidate parameters are unchanged and all 302 cached native scores are independently recomputed. The medium-density guard uses original compiled size and line count. These are per-set options, never printing-specific offsets. Material integration and Oracle behavior still need checking. A later original-cost review removes an erroneous X from Drain Life. Its body pixels are independently verified unchanged, but final full-face/profile capture must use the corrected mana input.",
     "wholeSetCertification": false,
     "currentReplayArchive": "2ed-body-current-replay.json.gz",
-    "latestProvidedInputsRefreshed": 1
+    "latestProvidedInputsRefreshed": 1,
+    "laterHeaderCorrection": {
+      "id": "d5f7044e-3b91-42ac-91ec-56e17cd72274",
+      "source": "2ed-original-cost-verification.json.gz",
+      "bodyPixelsChanged": 0,
+      "finalFullFaceReplayRequired": true
+    }
   },
   "powerToughness": {
     "status": "shared-geometry-probe-needs-ink-and-shadow-review",
@@ -1334,10 +1370,10 @@
   "integrationRequirements": {
     "frame": "Source-bound ordinary and five basic plates, shared dual composite, independent SVG stock-mask geometry; retain existing foreign-set behavior.",
     "color": "Basic colored rims have a native-verified shared candidate with all residuals retained. Finish land contrast/black levels and composed dual paper/pinline palettes before final text verification.",
-    "wording": "Current Dragon Whelp original-body refresh is verified with all 302 native body results. Reuse this reviewed provided input; do not run an older wording resolver over it during final profile verification.",
+    "wording": "Use current original printing inputs, including Dragon Whelp inline quotation and Drain Life 1B. Drain Life header-only replay preserves body pixels and rightmost pips; historical extra-X full-face records are superseded for header comparisons. Oracle input remains unchanged.",
     "typography": "Measure filled ink/stroke/shadow values separately from fixed-gray geometry; retain MPlantin credits unless new evidence supports another face.",
     "body": "Integrate shared count/wrap and medium-density retention with original/Oracle safety preserved; verify final full native inputs.",
-    "mana": "Shared disc/ink targets have actual native pigment and isolation checks on 54 predefined printings. Fit circles/pitch from perimeter measurements and glyph/numerals separately; whole-cost edge scores currently prefer the unshifted geometry despite circle offsets. Verify final native outputs before integration.",
+    "mana": "Disc/pigment/colored glyph/numeral candidates have native evidence. Review original X glyph identity and source ink expansion, retain numeral outliers, then verify the combined final profile across all 277 costs.",
     "footer": "Preserve printed Illus. \u00a9 prefix and absence of a separate Unlimited legal line.",
     "receipts": "Scoped integration and source-equivalence evidence must preserve immutable historical receipts and avoid reopening unrelated sets.",
     "completion": "Full profile/whole-card validation and visual boundary certification are still required. No renderer profile is adopted by these study files."
@@ -1863,5 +1899,498 @@
     },
     "scope": "Actual shared disc and common ink targets through the production material preparation path. Native baseline PNGs, poses, cost scores and pixel isolation are independently verified from the cache. Targets use calibration pigment quantiles rather than edge-score optimization. Validation median disc error falls 2.27 to 1.01 Oklab units; ink falls 26.88 to 3.11. The whole-cost structural index falls 70.56 to 69.62/100, confirming that color/edge objectives must remain separate. Global circle and internal glyph/numeral geometry still need their own fit. No runtime profile adopted.",
     "wholeSetCertification": false
-  }
+  },
+  "manaComponents": {
+    "status": "native-shared-components-verified-X-and-ink-review-open",
+    "sources": {
+      "physicalDiscs": "2ed-mana-disc-fit.json.gz",
+      "nativeGlyphs": "2ed-mana-component-verification.json.gz",
+      "nativeNumerals": "2ed-mana-number-verification.json.gz"
+    },
+    "nativeColoredSample": 54,
+    "nativeNumericCosts": 47,
+    "originalXCostsPending": 13,
+    "geometry": {
+      "dx": -0.875,
+      "dy": 1.125,
+      "scaleX": 0.975,
+      "scaleY": 0.975,
+      "spacing": 0.625,
+      "glyphs": {
+        "W": {
+          "scale": 1.06,
+          "dx": 0,
+          "dy": 0
+        },
+        "U": {
+          "scale": 1,
+          "dx": 0,
+          "dy": 0
+        },
+        "B": {
+          "scale": 1.06,
+          "dx": 0,
+          "dy": 0
+        },
+        "R": {
+          "scale": 1.06,
+          "dx": 0,
+          "dy": 0
+        },
+        "G": {
+          "scale": 1.14,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "numberScale": 1.06,
+      "numberDx": 0,
+      "numberDy": -0.75
+    },
+    "physicalGroups": {
+      "all": {
+        "count": 277,
+        "beforeCenterMedian": 1.5461646096066226,
+        "afterCenterMedian": 1.0091909661952156,
+        "beforeRadiusMedian": 0.375,
+        "afterRadiusMedian": 0.07499999999999929,
+        "beforeCenterMean": 1.5505532103044803,
+        "afterCenterMean": 1.0843030367967181,
+        "centerImproved": 205,
+        "worstCenterRegression": 1.2539997192165562
+      },
+      "calibration": {
+        "count": 187,
+        "beforeCenterMedian": 1.5461646096066226,
+        "afterCenterMedian": 0.9487664688952977,
+        "beforeRadiusMedian": 0.375,
+        "afterRadiusMedian": 0.07187500000000036,
+        "beforeCenterMean": 1.51781831045386,
+        "afterCenterMean": 1.0342637685728093,
+        "centerImproved": 140,
+        "worstCenterRegression": 1.2539997192165562
+      },
+      "validation": {
+        "count": 90,
+        "beforeCenterMedian": 1.5786178842187204,
+        "afterCenterMedian": 1.1040353302228758,
+        "beforeRadiusMedian": 0.375,
+        "afterRadiusMedian": 0.07499999999999929,
+        "beforeCenterMean": 1.6185690577718839,
+        "afterCenterMean": 1.1882735163286169,
+        "centerImproved": 65,
+        "worstCenterRegression": 1.2075712226619153
+      },
+      "symbol/W": {
+        "count": 46,
+        "beforeCenterMedian": 1.5662455107677085,
+        "afterCenterMedian": 1.1952542355266944,
+        "beforeRadiusMedian": 0.25,
+        "afterRadiusMedian": 0.05000000000000071,
+        "beforeCenterMean": 1.5965442650155373,
+        "afterCenterMean": 1.1618253904373221,
+        "centerImproved": 35,
+        "worstCenterRegression": 1.24119685288085
+      },
+      "symbol/U": {
+        "count": 46,
+        "beforeCenterMedian": 1.507790034524179,
+        "afterCenterMedian": 0.916599382169789,
+        "beforeRadiusMedian": 0.375,
+        "afterRadiusMedian": 0.07499999999999929,
+        "beforeCenterMean": 1.5355634427444316,
+        "afterCenterMean": 0.9229380868287279,
+        "centerImproved": 36,
+        "worstCenterRegression": 0.9601390648250583
+      },
+      "symbol/B": {
+        "count": 46,
+        "beforeCenterMedian": 1.718369656136578,
+        "afterCenterMedian": 1.1847933927041598,
+        "beforeRadiusMedian": 0.375,
+        "afterRadiusMedian": 0.07187500000000036,
+        "beforeCenterMean": 1.6376400573800016,
+        "afterCenterMean": 1.2122075790718612,
+        "centerImproved": 32,
+        "worstCenterRegression": 1.1228294750223968
+      },
+      "symbol/R": {
+        "count": 46,
+        "beforeCenterMedian": 1.5461646096066226,
+        "afterCenterMedian": 1.0625513036450964,
+        "beforeRadiusMedian": 0.375,
+        "afterRadiusMedian": 0.07499999999999929,
+        "beforeCenterMean": 1.6106587269284613,
+        "afterCenterMean": 1.2677092299924304,
+        "centerImproved": 29,
+        "worstCenterRegression": 1.1395644996543308
+      },
+      "symbol/G": {
+        "count": 46,
+        "beforeCenterMedian": 1.5650996611745183,
+        "afterCenterMedian": 0.9143164327436408,
+        "beforeRadiusMedian": 0.25,
+        "afterRadiusMedian": 0.05000000000000071,
+        "beforeCenterMean": 1.5253954488694277,
+        "afterCenterMean": 1.0099201869376189,
+        "centerImproved": 38,
+        "worstCenterRegression": 1.2539997192165562
+      },
+      "symbol/N": {
+        "count": 47,
+        "beforeCenterMedian": 1.4252192813739224,
+        "afterCenterMedian": 0.8770130860625865,
+        "beforeRadiusMedian": 0.375,
+        "afterRadiusMedian": 0.07499999999999929,
+        "beforeCenterMean": 1.40077340364255,
+        "afterCenterMean": 0.934474881326908,
+        "centerImproved": 35,
+        "worstCenterRegression": 1.2075712226619153
+      }
+    },
+    "pitchGroups": {
+      "calibration": {
+        "count": 15,
+        "rejected": 0,
+        "beforeMedianPitch": 27,
+        "referenceMedianPitch": 27,
+        "afterMedianPitch": 26.934375,
+        "beforeMeanAbsoluteError": 0.425,
+        "afterMeanAbsoluteError": 0.43374999999999986
+      },
+      "validation": {
+        "count": 15,
+        "rejected": 0,
+        "beforeMedianPitch": 27,
+        "referenceMedianPitch": 26.875,
+        "afterMedianPitch": 26.934375,
+        "beforeMeanAbsoluteError": 0.20833333333333334,
+        "afterMeanAbsoluteError": 0.17687499999999948
+      }
+    },
+    "nativeGlyphGroups": {
+      "all": {
+        "count": 54,
+        "costMean100": [70.65991732381003, 69.77143803862987, 70.36158587723072],
+        "inkAccepted": 54,
+        "inkBeforeMean100": 78.1988675686097,
+        "inkAfterMean100": 85.80070412338004,
+        "inkImproved": 40,
+        "inkWorstRegression100": 0,
+        "circlesAccepted": 54,
+        "beforeCenterMedian": 1.5736921704259492,
+        "afterCenterMedian": 1.0044152203780716,
+        "beforeRadiusMedian": 0.25,
+        "afterRadiusMedian": 0,
+        "maxCirclePredictionError": 0.25,
+        "maxRadiusPredictionError": 0.1750000000000007
+      },
+      "calibration": {
+        "count": 27,
+        "costMean100": [71.69522953277855, 70.94988470636669, 71.43588522520233],
+        "inkAccepted": 27,
+        "inkBeforeMean100": 79.10261001342691,
+        "inkAfterMean100": 86.76559897356367,
+        "inkImproved": 20,
+        "inkWorstRegression100": 0,
+        "circlesAccepted": 27,
+        "beforeCenterMedian": 1.5662455107677085,
+        "afterCenterMedian": 1.0658456516423696,
+        "beforeRadiusMedian": 0.25,
+        "afterRadiusMedian": 0,
+        "maxCirclePredictionError": 0.25,
+        "maxRadiusPredictionError": 0.1750000000000007
+      },
+      "validation": {
+        "count": 27,
+        "costMean100": [69.62460511484146, 68.59299137089303, 69.28728652925913],
+        "inkAccepted": 27,
+        "inkBeforeMean100": 77.29512512379247,
+        "inkAfterMean100": 84.8358092731964,
+        "inkImproved": 20,
+        "inkWorstRegression100": 0,
+        "circlesAccepted": 27,
+        "beforeCenterMedian": 1.6298006013006623,
+        "afterCenterMedian": 0.9429847891137737,
+        "beforeRadiusMedian": 0.375,
+        "afterRadiusMedian": 0,
+        "maxCirclePredictionError": 0.25,
+        "maxRadiusPredictionError": 0.1750000000000007
+      },
+      "symbol/W": {
+        "count": 10,
+        "costMean100": [78.88359112438317, 78.06877000952547, 79.6652686762237],
+        "inkAccepted": 10,
+        "inkBeforeMean100": 87.19674269946879,
+        "inkAfterMean100": 92.48788652244683,
+        "inkImproved": 10,
+        "inkWorstRegression100": 0,
+        "circlesAccepted": 10,
+        "beforeCenterMedian": 1.5357224165583727,
+        "afterCenterMedian": 1.0150944125165662,
+        "beforeRadiusMedian": 0.25,
+        "afterRadiusMedian": 0.125,
+        "maxCirclePredictionError": 0.125,
+        "maxRadiusPredictionError": 0.1750000000000007
+      },
+      "symbol/U": {
+        "count": 10,
+        "costMean100": [75.84080812261377, 74.14523998429647, 74.14523998429647],
+        "inkAccepted": 10,
+        "inkBeforeMean100": 91.62737512844892,
+        "inkAfterMean100": 91.62737512844892,
+        "inkImproved": 0,
+        "inkWorstRegression100": 0,
+        "circlesAccepted": 10,
+        "beforeCenterMedian": 1.2287406853877147,
+        "afterCenterMedian": 0.8091601769653578,
+        "beforeRadiusMedian": 0.25,
+        "afterRadiusMedian": 0,
+        "maxCirclePredictionError": 0.25,
+        "maxRadiusPredictionError": 0.05000000000000071
+      },
+      "symbol/B": {
+        "count": 10,
+        "costMean100": [66.84232729369111, 64.45376781863256, 64.31762364617764],
+        "inkAccepted": 10,
+        "inkBeforeMean100": 79.19695490323573,
+        "inkAfterMean100": 83.44164508889853,
+        "inkImproved": 10,
+        "inkWorstRegression100": 0,
+        "circlesAccepted": 10,
+        "beforeCenterMedian": 2.0124791351998303,
+        "afterCenterMedian": 1.6833446521829756,
+        "beforeRadiusMedian": 0.375,
+        "afterRadiusMedian": 0,
+        "maxCirclePredictionError": 0.125,
+        "maxRadiusPredictionError": 0.07187500000000036
+      },
+      "symbol/R": {
+        "count": 10,
+        "costMean100": [67.89850181404088, 68.783987267069, 69.46715887342803],
+        "inkAccepted": 10,
+        "inkBeforeMean100": 69.63074547285333,
+        "inkAfterMean100": 80.23950689787185,
+        "inkImproved": 10,
+        "inkWorstRegression100": 0,
+        "circlesAccepted": 10,
+        "beforeCenterMedian": 1.750865239102172,
+        "afterCenterMedian": 0.9169122281128372,
+        "beforeRadiusMedian": 0.375,
+        "afterRadiusMedian": 0.125,
+        "maxCirclePredictionError": 0.125,
+        "maxRadiusPredictionError": 0.05000000000000071
+      },
+      "symbol/G": {
+        "count": 10,
+        "costMean100": [62.97303918074761, 61.06015885422534, 62.10343108206771],
+        "inkAccepted": 10,
+        "inkBeforeMean100": 68.64454632999592,
+        "inkAfterMean100": 89.54986829209635,
+        "inkImproved": 10,
+        "inkWorstRegression100": 0,
+        "circlesAccepted": 10,
+        "beforeCenterMedian": 1.5934511641166254,
+        "afterCenterMedian": 0.8140554495399673,
+        "beforeRadiusMedian": 0.25,
+        "afterRadiusMedian": 0,
+        "maxCirclePredictionError": 0.25,
+        "maxRadiusPredictionError": 0.05000000000000071
+      },
+      "symbol/N": {
+        "count": 4,
+        "costMean100": [72.81321503274376, 75.63460368713115, 75.63460368713115],
+        "inkAccepted": 4,
+        "inkBeforeMean100": 64.9438008412244,
+        "inkAfterMean100": 64.9438008412244,
+        "inkImproved": 0,
+        "inkWorstRegression100": 0,
+        "circlesAccepted": 4,
+        "beforeCenterMedian": 1.605469715692426,
+        "afterCenterMedian": 0.8608549119686145,
+        "beforeRadiusMedian": 0.3125,
+        "afterRadiusMedian": 0.0625,
+        "maxCirclePredictionError": 0.125,
+        "maxRadiusPredictionError": 0.05000000000000071
+      }
+    },
+    "nativeNumeralGroups": {
+      "all": {
+        "count": 47,
+        "costMean100": [78.0134292412766, 78.4961277453149],
+        "inkAccepted": 47,
+        "inkMean100": [71.09485903995314, 77.2793115884143],
+        "inkImproved": 36,
+        "inkRegressed": 11,
+        "inkWorstRegression100": 13.41190377406033
+      },
+      "calibration": {
+        "count": 33,
+        "costMean100": [79.2305438107121, 79.78879151448385],
+        "inkAccepted": 33,
+        "inkMean100": [72.97142057537881, 78.31571084228662],
+        "inkImproved": 24,
+        "inkRegressed": 9,
+        "inkWorstRegression100": 13.41190377406033
+      },
+      "validation": {
+        "count": 14,
+        "costMean100": [75.14451632760726, 75.44913457513094],
+        "inkAccepted": 14,
+        "inkMean100": [66.67153542073544, 74.83637049000092],
+        "inkImproved": 12,
+        "inkRegressed": 2,
+        "inkWorstRegression100": 7.340787048528163
+      },
+      "number/2": {
+        "count": 7,
+        "costMean100": [77.75849891388711, 78.1547592383295],
+        "inkAccepted": 7,
+        "inkMean100": [65.43224127380697, 76.21384190132233],
+        "inkImproved": 5,
+        "inkRegressed": 2,
+        "inkWorstRegression100": 13.41190377406033
+      },
+      "number/3": {
+        "count": 5,
+        "costMean100": [74.63505576736932, 75.94908598620272],
+        "inkAccepted": 5,
+        "inkMean100": [69.54660790055168, 77.45380875918472],
+        "inkImproved": 3,
+        "inkRegressed": 2,
+        "inkWorstRegression100": 6.994197936885216
+      },
+      "number/0": {
+        "count": 6,
+        "costMean100": [77.68576367597288, 78.52712178141137],
+        "inkAccepted": 6,
+        "inkMean100": [74.23950122892452, 82.12289561007535],
+        "inkImproved": 4,
+        "inkRegressed": 2,
+        "inkWorstRegression100": 6.335981049648143
+      },
+      "number/1": {
+        "count": 13,
+        "costMean100": [78.41249381830109, 78.63854657703698],
+        "inkAccepted": 13,
+        "inkMean100": [87.15529934776569, 88.10390853355835],
+        "inkImproved": 8,
+        "inkRegressed": 5,
+        "inkWorstRegression100": 11.070400033583283
+      },
+      "number/6": {
+        "count": 2,
+        "costMean100": [81.5986722446483, 81.34697960136566],
+        "inkAccepted": 2,
+        "inkMean100": [57.97119181835663, 62.77957335868945],
+        "inkImproved": 2,
+        "inkRegressed": 0,
+        "inkWorstRegression100": 0
+      },
+      "number/4": {
+        "count": 13,
+        "costMean100": [78.41167612677609, 79.07280961705604],
+        "inkAccepted": 13,
+        "inkMean100": [58.55978800662268, 66.55706130488538],
+        "inkImproved": 13,
+        "inkRegressed": 0,
+        "inkWorstRegression100": 0
+      },
+      "number/5": {
+        "count": 1,
+        "costMean100": [81.1202672748067, 78.3849390160702],
+        "inkAccepted": 1,
+        "inkMean100": [80.0241198410809, 82.47257927269172],
+        "inkImproved": 1,
+        "inkRegressed": 0,
+        "inkWorstRegression100": 0
+      }
+    },
+    "numeralOutliers": [
+      {
+        "id": "7a601041-926f-40fd-8106-39099b87806f",
+        "name": "Chaos Orb",
+        "inkDelta100": -13.41190377406033
+      },
+      {
+        "id": "c8635a10-12fc-4308-8f1e-6c4bc6acd9b5",
+        "name": "Glasses of Urza",
+        "inkDelta100": -11.070400033583283
+      },
+      {
+        "id": "e07f656c-97b5-4147-821a-edbb49f34e19",
+        "name": "Sol Ring",
+        "inkDelta100": -7.340787048528163
+      },
+      {
+        "id": "cb119f5e-a47f-4910-b170-561d6315fdc3",
+        "name": "Celestial Prism",
+        "inkDelta100": -6.994197936885216
+      },
+      {
+        "id": "239a5d29-95cf-468a-8b07-aea1f7dc8d52",
+        "name": "Forcefield",
+        "inkDelta100": -6.985010383893364
+      },
+      {
+        "id": "f7d82f1d-631e-4668-9d10-7bf0ee515267",
+        "name": "Mox Sapphire",
+        "inkDelta100": -6.335981049648143
+      },
+      {
+        "id": "00c92601-11b9-4e7c-bc81-882085f3fae6",
+        "name": "Crystal Rod",
+        "inkDelta100": -3.6788492356405023
+      },
+      {
+        "id": "0b64dd0f-2e99-41bd-87aa-f623582d64d0",
+        "name": "Time Vault",
+        "inkDelta100": -2.3094866725482555
+      },
+      {
+        "id": "0f586dd9-bb47-411d-9652-05de4651b146",
+        "name": "Soul Net",
+        "inkDelta100": -2.085131695082687
+      },
+      {
+        "id": "778d10e6-251b-4ef3-b9b8-bc23a0d74aed",
+        "name": "Mana Vault",
+        "inkDelta100": -1.9810779179535887
+      },
+      {
+        "id": "70d6c02e-0f48-4fb0-94f3-1fc92ee1814f",
+        "name": "Mox Jet",
+        "inkDelta100": -0.5842254253521251
+      }
+    ],
+    "scope": "Shared source-relative cost geometry and glyph/numeral transforms. Disc centers/radii are fitted from calibration perimeter measurements; pitch is measured separately. Colored glyphs use disc-relative masks at three thresholds, without normalizing ink bounds. Actual PNGs verify all component/cost scores and isolation. Forty colored-glyph cases improve with no regressions; blue and numeric-only cases retain exact bytes for that glyph change. Numerals improve 36/47 cases, with eleven residuals retained. Whole-cost edge scores remain a separate diagnostic and can disagree with physical/pigment improvements. Original X glyph identity and source ink expansion still need checking; complete frame/body/footer integration and full-set native verification remain open.",
+    "runtimeProfilePromoted": false,
+    "wholeSetCertification": false
+  },
+  "originalCostCorrection": {
+    "status": "original-cost-header-correction-native-verified",
+    "source": "2ed-original-cost-verification.json.gz",
+    "id": "d5f7044e-3b91-42ac-91ec-56e17cd72274",
+    "name": "Drain Life",
+    "beforeMana": ["X", "1", "B"],
+    "afterMana": ["1", "B"],
+    "outsideHeaderChangedPixels": 0,
+    "bodyChangedPixels": 0,
+    "faceAlphaChangedPixels": 0,
+    "rightmostTwoPipsChangedBytes": 0,
+    "unionWindowScores100": [71.07712801820244, 72.72195791396886, 66.74581082095355],
+    "relatedEarlyPrintingsReviewed": 8,
+    "missingCorrectionsAdded": 4,
+    "unrelatedWordingGroupsUnchanged": 2520,
+    "oracleUnchanged": true,
+    "scope": "Exact cached headers confirm 1B in Alpha, Beta, Unlimited, Collector\u2019s Edition, International Collector\u2019s Edition, Revised, Summer and Fourth. Four missing reviews are added; the other four retain their existing sources. The corrected Unlimited native control changes only the header, and 1B pip pixels remain byte-identical. Oracle X1B is preserved. Historical full-face records with the extra X are not current original-render certification."
+  },
+  "assetsToReview": [
+    {
+      "component": "generic-X",
+      "sourceAsset": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/X.svg",
+      "scope": "Thirteen actual original X costs after the Drain Life correction. Stroke/serif shape needs a font/source comparison; numeric controls intentionally do not move X.",
+      "status": "open-font-and-asset-review"
+    }
+  ]
 }
