@@ -1,3 +1,4 @@
+import './magic-native-text-window.mjs';
 import assert from 'node:assert/strict';
 import {
   JsTextObjective,
