@@ -90,6 +90,37 @@ try {
     }).provenance.status,
     'reference-mismatch',
   );
+  const drainCosts = await fixture('early-drain-life-costs.json');
+  for (const row of drainCosts.rows) {
+    const provided = {
+      oracle: { ...oracle, manaSymbols: ['X', '1', 'B'] },
+      original: { ...original, manaSymbols: ['X', '1', 'B'] },
+    };
+    const before = structuredClone(provided);
+    const corrected = resolvePrintingWording(row.id, provided, {
+      referenceSha256: row.referenceHash,
+    });
+    assert.equal(corrected.provenance.status, 'applied');
+    assert.deepEqual(corrected.wordings.original.manaSymbols, ['1', 'B'], row.set);
+    assert.deepEqual(corrected.wordings.oracle.manaSymbols, ['X', '1', 'B'], row.set);
+    assert.deepEqual(
+      withCardWording({ name: 'Drain Life' }, corrected.wordings, 'original').manaSymbols,
+      ['1', 'B'],
+    );
+    for (const symbolStyle of ['original', 'modern'])
+      assert.deepEqual(
+        withCardWording({ name: 'Drain Life' }, corrected.wordings, 'oracle', { symbolStyle })
+          .manaSymbols,
+        ['X', '1', 'B'],
+      );
+    const stale = resolvePrintingWording(row.id, provided, { referenceSha256: '0'.repeat(64) });
+    assert.equal(stale.provenance.status, 'reference-mismatch');
+    assert.deepEqual(stale.wordings.original.manaSymbols, ['X', '1', 'B']);
+    assert.deepEqual(provided, before);
+  }
+  console.log(
+    'Eight original Drain Life costs preserve Oracle costs, both symbol styles and scan guards.',
+  );
   const reviewedStats = await fixture('atq/annotations-stats.json');
   const alphaOutliers = await fixture('lea/annotations-text-outliers.json');
   for (const [id, row] of Object.entries(alphaOutliers.cards)) {

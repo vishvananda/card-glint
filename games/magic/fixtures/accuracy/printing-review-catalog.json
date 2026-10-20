@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "38fa4c9eb49dac0f57e70507653a9e2538f36b737c2b2506d4f0b40da0cd2e2e",
+  "revision": "258354fe5ace829bcb48753ebab6a4d6b2fe8f8a1d8a64b013ffcf30119ddf47",
   "artistRevision": "aafc5599d700f388242ffafd8dbd2e01e0a34228324f6e3ea55033f0877dba5b",
   "sets": {
     "0014def3-4063-4929-ac51-76aef1bb2a68": "arn",
@@ -236,6 +236,7 @@
     "18e057ae-8e60-478c-b047-605dab356835": "2ed",
     "18f1cc24-a5fc-43cc-b558-ac7901c48b81": "fem",
     "18f86e13-f942-423e-b175-930d768cb811": "leg",
+    "18fc6cd9-2122-48ca-bec5-c0b37f0d7f01": "cei",
     "18ffa85c-61c4-49b7-8946-ab353355a11c": "4ed",
     "19272824-a0a4-4352-8904-a185516c95e1": "2ed",
     "19281eb4-f5b6-4b27-8c65-7e56d2a8ab77": "4ed",
@@ -1574,6 +1575,7 @@
     "a3d1f470-058d-41b7-acaf-4f68431de9ed": "leg",
     "a3e81250-52c3-49f6-be43-17c34339e177": "leg",
     "a3eedc11-0b47-430c-8391-577a2d05c2ae": "leg",
+    "a400d404-9e0a-44dc-ba34-3a3115028ae0": "sum",
     "a419c9e3-5615-44f9-9256-94a3022bb69f": "fem",
     "a432d6ae-a17f-484b-ad55-4b4b6674ba8d": "leg",
     "a450ce98-4854-4378-8809-27019b3800c2": "3ed",
@@ -1806,6 +1808,7 @@
     "b894acd5-818b-4ac5-bbf8-47db2ed9a825": "2ed",
     "b8a7c22e-fe96-4960-96d4-ee85abec3281": "mir",
     "b8cdd6a7-f772-4ccb-914f-63f52ed54d6b": "lea",
+    "b8e19ebf-a1da-4af5-8948-a199a05283f6": "ced",
     "b9029bfb-fcff-4f80-a423-c2cfdc881c61": "4ed",
     "b9211949-66a5-4039-ac6d-3e42b008b58e": "leg",
     "b93c5869-7777-44bb-967a-e9439b25ced4": "lea",
@@ -5396,6 +5399,16 @@
         "reason": "Original type individually read from this printing’s Scryfall scan on 2026-10-15. Certifies the type line only; Oracle wording is unchanged.",
         "fields": {
           "typeLine": "Instant"
+        }
+      }
+    ],
+    "18fc6cd9-2122-48ca-bec5-c0b37f0d7f01": [
+      {
+        "source": "games/magic/fixtures/accuracy/cei/annotations.json",
+        "referenceSha256": "d76591ad9c4e0112b2d5593ef05cedba480dc661bc5aababb9bf288c034bdaf3",
+        "reason": "Exact printing header reviewed: it contains 1 and black mana only, with no X symbol. Preserve Oracle X1B separately; this cost review does not certify unrelated body text.",
+        "fields": {
+          "manaSymbols": ["1", "B"]
         }
       }
     ],
@@ -23032,6 +23045,16 @@
         }
       }
     ],
+    "a400d404-9e0a-44dc-ba34-3a3115028ae0": [
+      {
+        "source": "games/magic/fixtures/accuracy/sum/annotations.json",
+        "referenceSha256": "de6405b21a1a35f0778324ca01ed91666916b9b634fcba4141cca3076495dda9",
+        "reason": "Exact printing header reviewed: it contains 1 and black mana only, with no X symbol. Preserve Oracle X1B separately; this cost review does not certify unrelated body text.",
+        "fields": {
+          "manaSymbols": ["1", "B"]
+        }
+      }
+    ],
     "a419c9e3-5615-44f9-9256-94a3022bb69f": [
       {
         "source": "games/magic/fixtures/accuracy/fem/annotations-printed-types.json",
@@ -26033,6 +26056,16 @@
         "reason": "Visually transcribed from the frozen Scryfall Alpha scan type strip; no rules/body certification.",
         "fields": {
           "typeLine": "Summon Nightmare"
+        }
+      }
+    ],
+    "b8e19ebf-a1da-4af5-8948-a199a05283f6": [
+      {
+        "source": "games/magic/fixtures/accuracy/ced/annotations.json",
+        "referenceSha256": "d76591ad9c4e0112b2d5593ef05cedba480dc661bc5aababb9bf288c034bdaf3",
+        "reason": "Exact printing header reviewed: it contains 1 and black mana only, with no X symbol. Preserve Oracle X1B separately; this cost review does not certify unrelated body text.",
+        "fields": {
+          "manaSymbols": ["1", "B"]
         }
       }
     ],
@@ -29904,6 +29937,14 @@
       }
     ],
     "d5f7044e-3b91-42ac-91ec-56e17cd72274": [
+      {
+        "source": "games/magic/fixtures/accuracy/2ed/annotations.json",
+        "referenceSha256": "63b32ad07e692356313287eac2c1492865e56956fe55267c68308f3acd811b3b",
+        "reason": "Exact printing header reviewed: it contains 1 and black mana only, with no X symbol. Preserve Oracle X1B separately; this cost review does not certify unrelated body text.",
+        "fields": {
+          "manaSymbols": ["1", "B"]
+        }
+      },
       {
         "source": "games/magic/fixtures/accuracy/2ed/annotations-type-audit.json",
         "referenceSha256": "63b32ad07e692356313287eac2c1492865e56956fe55267c68308f3acd811b3b",
