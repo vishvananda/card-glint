@@ -475,3 +475,25 @@ unchanged production preparation of each composite and fixed scan transforms.
 The thin-strip sampling helpers are tested against full RGBA normalization,
 including alpha matting. `frame-profile-benchmark.mjs` measures their CPU work
 only; it excludes painting, image readback, loading and GPU finish completion.
+
+## Unlimited land-color candidates
+
+The fifteen basic references now have native source-local HSB candidates: one
+brown-frame adjustment and one paper adjustment for each of the five source
+plates. All five median color distances improve. The third illustration in
+every basic type has a darker scan palette; those five regressions remain in
+the report instead of acquiring per-card color overrides. Colored rim accents,
+contrast/black levels and the ten composed duals still need color checks.
+
+The native verifier checks unchanged illustration cores, face alpha, white
+stock and empty etching hashes. Prediction error stays below 0.2 Oklab distance
+units. These are development fits across three illustrations per name, not
+independent-name validation or whole-card accuracy scores. The compact replay
+archive stores the exact JSON strings needed to reconstruct hashed source
+files; artwork and PNG outputs remain in the external cache.
+
+Run `early-native-color-audit.mjs` against each verified basic geometry capture,
+then `early-land-color-fit.mjs AUDITS BASIC_GEOMETRY OUTPUT`. Replay each emitted
+definition with `early-frame-trial-replay.mjs`, and verify the fifteen results
+with `early-land-color-verify.mjs NATIVE BASIC_GEOMETRY COLOR_DIRECTORY OUTPUT`.
+Use the frozen renderer revision recorded in the receipts for the replays.

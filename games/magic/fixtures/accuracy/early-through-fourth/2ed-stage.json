@@ -174,8 +174,8 @@
     },
     "2ed-material-proposal": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-material-proposal.json",
-      "sha256": "56daf953113fc0d6964187c352cea4ae4f0ec6adf6117daab3633191dcc932db",
-      "contentSha256": "56daf953113fc0d6964187c352cea4ae4f0ec6adf6117daab3633191dcc932db"
+      "sha256": "a036030a02de5df8d9c1e2f054bc72817166f0595877d49045b8c64b945731f6",
+      "contentSha256": "a036030a02de5df8d9c1e2f054bc72817166f0595877d49045b8c64b945731f6"
     },
     "2ed-basic-land-geometry": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-geometry.json.gz",
@@ -241,6 +241,21 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-frame-profile-benchmark.json.gz",
       "sha256": "903ac1bfdb8f305c0ccd474546a8190a77fba599e4e048dfd7c8853a069179d9",
       "contentSha256": "6219f610f807311742184b3c492b48fc923b3e07748ef746c54e7fa193651cda"
+    },
+    "2ed-land-color-fit": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-land-color-fit.json.gz",
+      "sha256": "54606a714f252240c3ec515f6371c6587c7ac4a70a810c90644a1f320b25d6fa",
+      "contentSha256": "f161074d5f25776b3a7c5779d0a21b3525fd396a2d0ec9a12c7f7d328c56d6f4"
+    },
+    "2ed-land-color-native-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-land-color-native-verification.json.gz",
+      "sha256": "6d33385355d452edaa8bad26f8c84a62e0990b8ed87c03ea80ea0199d6a8de72",
+      "contentSha256": "05d68ea0171ec3e576666b223c8f6da83e994ba0c0c8eff6a1f09786ad23d898"
+    },
+    "2ed-land-color-replay-evidence": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-land-color-replay-evidence.json.gz",
+      "sha256": "96623424be0567b156274af0fab6bea4f89f9551ce53825a92b4ea01f6820e8c",
+      "contentSha256": "45dabaca548646b81d48cc53dd1e60ef5b4208acfa2edb7f6ee6c9449eee8c11"
     }
   },
   "native": {
@@ -662,5 +677,111 @@
     },
     "source": "2ed-dual-outline-review.json.gz",
     "wholeSetCertification": false
+  },
+  "basicLandColors": {
+    "status": "native-development-candidates-not-runtime-adopted",
+    "printings": 15,
+    "paperImproved": 10,
+    "paperRegressed": 5,
+    "frameImproved": 10,
+    "frameRegressed": 5,
+    "source": "2ed-land-color-native-verification.json.gz",
+    "scope": "Shared brown-frame adjustment across fifteen original basic references; five paper adjustments. The third illustration of every basic has a darker scan palette. Retain those five measured regressions; do not fit their color individually. Colored rim accents, contrast/black levels and reuse on the ten dual composites remain open. No independent-name validation or complete-set certification.",
+    "maximumPredictionError": 0.1816609834428884,
+    "illustrationCorePixelsChanged": 0,
+    "faceAlphaPixelsChanged": 0,
+    "whiteStockChanged": false,
+    "groups": {
+      "WL": {
+        "frame": {
+          "count": 3,
+          "before": 3.518903698462138,
+          "after": 2.124224376942956,
+          "improved": 2,
+          "worstRegression": 1.253563323827004,
+          "maximumPredictionError": 0.1571745219620131
+        },
+        "paper": {
+          "count": 3,
+          "before": 3.9239909204420735,
+          "after": 1.05302326584374,
+          "improved": 2,
+          "worstRegression": 3.3682151787323416,
+          "maximumPredictionError": 0.037580337549107945
+        }
+      },
+      "UL": {
+        "frame": {
+          "count": 3,
+          "before": 2.6076681897078857,
+          "after": 0.8927487775710121,
+          "improved": 2,
+          "worstRegression": 1.096349505498166,
+          "maximumPredictionError": 0.09031540906586422
+        },
+        "paper": {
+          "count": 3,
+          "before": 4.231424585111418,
+          "after": 1.8274688221419053,
+          "improved": 2,
+          "worstRegression": 3.700976987588176,
+          "maximumPredictionError": 0.014175148206993837
+        }
+      },
+      "BL": {
+        "frame": {
+          "count": 3,
+          "before": 5.432227538097069,
+          "after": 3.977776155953863,
+          "improved": 2,
+          "worstRegression": 1.1605635339026534,
+          "maximumPredictionError": 0.0344913009077179
+        },
+        "paper": {
+          "count": 3,
+          "before": 6.979850250103806,
+          "after": 6.164013947008757,
+          "improved": 2,
+          "worstRegression": 6.1209855272944,
+          "maximumPredictionError": 0.017510670476303503
+        }
+      },
+      "RL": {
+        "frame": {
+          "count": 3,
+          "before": 4.503125650770727,
+          "after": 3.025980551475903,
+          "improved": 2,
+          "worstRegression": 1.443173663097376,
+          "maximumPredictionError": 0.15580339470078997
+        },
+        "paper": {
+          "count": 3,
+          "before": 3.4834342939250704,
+          "after": 0.6589346114059954,
+          "improved": 2,
+          "worstRegression": 1.7808563328022848,
+          "maximumPredictionError": 0.05062554563198032
+        }
+      },
+      "GL": {
+        "frame": {
+          "count": 3,
+          "before": 3.961408431862254,
+          "after": 2.1723286506672506,
+          "improved": 2,
+          "worstRegression": 1.449849203044721,
+          "maximumPredictionError": 0.07353468965093413
+        },
+        "paper": {
+          "count": 3,
+          "before": 7.3331194594881435,
+          "after": 0.5961588141321297,
+          "improved": 2,
+          "worstRegression": 5.602657129017748,
+          "maximumPredictionError": 0.1816609834428884
+        }
+      }
+    }
   }
 }
