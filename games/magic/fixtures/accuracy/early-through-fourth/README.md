@@ -64,3 +64,28 @@ Both tools are offline and use the existing source-object cache. The separate
 early-set entry preserves the ABU normalizer's historical source receipts while
 reusing its scan-only numerical modules. A numerical pass does not by itself
 approve a new frame profile or original-type wording.
+
+## Alpha bottom-corner certification
+
+The three rejected Alpha black-frame references match their unchanged uniform
+poses when checked against the two printed white bottom corner marks. The weak
+bottom texture correlation is retained in the evidence. The optional certificate
+uses 26 previously accepted calibration-cohort scans, three independently
+supported remaining edges, and both marks within one canonical pixel. It changes
+neither renderer values nor scan transforms. It is scoped to this measured frame.
+
+`alpha-bottom-corners.json` is the frozen numerical template;
+`alpha-corner-recovery.json.gz` retains all 46 black-frame measurements. Direct raw
+window sampling matches the existing native reference rasters. All 276 displaced,
+missing-mark and square-mark controls reject. The prior successful path stays
+unchanged. Client/server integration and current-generation score imports remain
+pending; this offline evidence does not silently clear live review states.
+
+```sh
+node tests/magic-corner-certification.mjs
+node games/magic/tools/accuracy/audit-corner-recovery.mjs "$ABU_STUDY" "$CORNER_AUDIT"
+```
+
+The audit needs the source-object cache and existing native-capture directory.
+Sampling and certificate checks run on numeric pixel arrays without Chromium.
+Its timing includes PNG decoding and diagnostic controls, not GPU completion.
