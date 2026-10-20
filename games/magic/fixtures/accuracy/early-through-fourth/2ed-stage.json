@@ -2,7 +2,7 @@
   "schema": 1,
   "asOf": "2026-10-20",
   "set": "2ed",
-  "status": "original-types-reviewed-native-baseline-ready-frame-review-pending",
+  "status": "native-frame-candidates-measured-pigment-fit-ready",
   "inventory": 302,
   "referenceObjectsPresent": 302,
   "artObjectsPresent": 302,
@@ -24,7 +24,7 @@
     "validationKind": "reused-development"
   },
   "wordingCorrection": "Wall of Ice has flavor only. Exact printing reviewed, empty rules supplied explicitly; Oracle Defender remains separate. No broad empty-text inference from a missing provider field.",
-  "scope": "All 302 original type labels now have exact-printing reviews. Native 732x1020 baseline covers all 302 printings, with zero heading-mask escapes. Updated review provenance changes no face input or scan transform. Visual boundary/frame-family selection, geometry, color and text calibration are still open.",
+  "scope": "All 302 original type labels have exact-printing reviews. Frozen native 0.6.6 inputs cover all 302. Outer stock-mask trials are verified on all 302; six-material internal geometry/color trials cover 277 nonland printings. No runtime calibration profile is adopted yet. Visual normalization certification, individual geometry regressions, all land interiors, filled heading ink, mana, body/footer fitting and complete-set scoring remain open.",
   "sources": {
     "early-printing-inputs.mjs": "c547ccd552bed95140a7355c3dbf130e379935c855126f1f31fd9da9a9f1f80c",
     "early-calibration-normalize.mjs": "bc316037dcd6533c13757bfe8959b7b2b7ea3623a0975df950e474463bbe7801",
@@ -86,6 +86,46 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-family-initial.json.gz",
       "sha256": "75491bd316ee26973b477dba5555c9d9b2dea5f20cff63af506b71fa7f818813",
       "contentSha256": "034cf88da340db93da57d3aea6c7b32cee2735f7d4df81c39e70962f96c8fece"
+    },
+    "2ed-stock-mask-verification": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-stock-mask-verification.json.gz",
+      "sha256": "b6de48ed308ff42461d2426f8f0ae9e333890d42fbe95e665c7c78f1fabdc11f",
+      "contentSha256": "425d1b30031d76c0af93e861a232ef60eab87ceeff9f4ab7ce91c11fd8a2fea6"
+    },
+    "2ed-joint-geometry": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-joint-geometry.json.gz",
+      "sha256": "a54c27c3dba709168b7363e0d06b88867f8b8a738f1b31ebb59985d8bbd546c8",
+      "contentSha256": "d51f33f8d9e7b6f0dafe5897c712665c3fa58792bba543dc601846383108c41f"
+    },
+    "2ed-joint-definition": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-joint-definition.json.gz",
+      "sha256": "6836949d1c38c29245a7758a0302335c4b318bd3287cc346a9fb93b54c70a74b",
+      "contentSha256": "5d200dc2f3476b6624a2740af842e72f8bada94a912eacc6117b00da759852b3"
+    },
+    "2ed-joint-native": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-joint-native.json.gz",
+      "sha256": "876b6c5a999139167e1590814fe35588afcde242202cf6cc3a2a00b8548876ed",
+      "contentSha256": "51cb79a715c86896b3a9661e7fbf1b594972e6f0f3ff5549c89e3e3af26df9a0"
+    },
+    "2ed-joint-measure": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-joint-measure.json.gz",
+      "sha256": "e84eca26879a6dd5ae8f8d256ddf063145aaf7118d13465c16c1dbda11d97f89",
+      "contentSha256": "16c2cffc53a548fca1be3b683a7ab25a76c30e192fd93e9050a5554e9eb5e6ac"
+    },
+    "2ed-joint-colors": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-joint-colors.json.gz",
+      "sha256": "16b4c2ed1d0e246a22e1a7ce2b742fd0ee7021872bfcc7e1cb880ddb2b6e1fe2",
+      "contentSha256": "bc36d3e8c641416b3f10782bc3b22ea607807b5dd75bea6a9a3260bffdc585a1"
+    },
+    "2ed-joint-color-fit": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-joint-color-fit.json.gz",
+      "sha256": "84d9688a8b4ce86408cf81bc87b455f080b77d0004d12b417ae7fff5003751a7",
+      "contentSha256": "eef19c78f992584c80a52f2c1b1dc7c03977ce4b59488c983764c4e9f58e9d8f"
+    },
+    "2ed-family-joint": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-family-joint.json.gz",
+      "sha256": "3f0ff0841eca9a409f4a61893209aab55a1904cbb534db90e8e843377403d554",
+      "contentSha256": "22165adf4caae8d66dde6a3d5de3ca8787d554dfe3ff72e400e02cc62f91e2b7"
     }
   },
   "native": {
@@ -121,11 +161,123 @@
     "proposal": "Seven shared material transforms are predicted from the preselected calibration cohorts. Reserved-scan median residuals are 0.05-0.09 canonical px. These are boundary-model predictions, not replayed renderer scores. Native candidate and internal-aperture checks are required before adoption."
   },
   "frameSourceReview": {
-    "status": "initial-geometry-only-needs-joint-aperture-check",
+    "status": "retain-abu-after-joint-geometry-comparison",
     "method": "old-family-opaque-profiles-v3",
     "comparedPrintings": 292,
+    "mainMaterialPrintings": 277,
+    "basicLandPrintings": 15,
     "dualOverlaysSeparate": 10,
     "productionDecodeWidth": 768,
-    "summary": "At initial geometry ABU leads W/U/B/R/A; Fourth leads green. Shared eroded opaque support intentionally excludes artwork but also omits some aperture contour, so family choice still needs native geometry replay and aperture comparison. Basic-land variants share names and do not supply independent-name validation. No source mapping has been changed."
-  }
+    "summary": "ABU retained for six main materials after fitting every family to calibration-only art/paper boundaries. ABU has the best or nearly tied calibration mean; green is within 0.002 of Fourth. No alternate source has a decisive gain. Basic lands remain separately provisional; dual-overlay source/geometry is still open. Native source/geometry/color promotion is not implied by this diagnostic."
+  },
+  "stockMaskTrial": {
+    "status": "verified-not-promoted",
+    "total": 302,
+    "interiorPixelsChanged": 0,
+    "headingCoveragePixelsChanged": 0,
+    "faceAlphaPixelsChanged": 0,
+    "medianBeforePx": 0.956937160256162,
+    "medianAfterPx": 0.11180979239696764,
+    "worstAfterPx": 0.2811013624225893,
+    "scope": "Existing source frame/art/lettering remain unchanged. All 302 independent poses are frozen. Empty etching outputs match; this does not certify nonempty etching inputs."
+  },
+  "jointGeometryTrial": {
+    "status": "native-candidate-with-individual-regressions",
+    "total": 277,
+    "improved": 220,
+    "meanBefore100": 72.25887254327995,
+    "meanAfter100": 81.80808424970189,
+    "scope": "Regional frame-strip index only, not a whole-card Lab score. Two-axis frame transforms fit predeclared calibration cohorts only. All baseline faces match immutable native PNG bytes. Original scan poses remain fixed. Native inputs predate the new Dragon Whelp paragraph correction; these frame-only targets exclude its lettering.",
+    "remaining": "White has substantial individual regressions; inspect shared position/contour fitting before promotion. Existing data do not justify per-card renderer offsets. Basic/dual land internal geometry is not included.",
+    "worstRegressions": [
+      {
+        "id": "1704d11c-569c-4b4e-bbe0-df42af98c4fc",
+        "name": "Blue Ward",
+        "material": "W",
+        "delta100": -23.077308786523364
+      },
+      {
+        "id": "f0cd79e9-1b61-4ad3-8f6d-cb5d3f60ef8e",
+        "name": "Black Ward",
+        "material": "W",
+        "delta100": -20.473397758828227
+      },
+      {
+        "id": "2ea3db44-85c5-4201-a5c9-ec14a9d244d6",
+        "name": "Castle",
+        "material": "W",
+        "delta100": -19.31230722590328
+      },
+      {
+        "id": "45bf4297-ccf4-4fa0-b7ce-5aaebca50813",
+        "name": "Conversion",
+        "material": "W",
+        "delta100": -18.8989402930812
+      },
+      {
+        "id": "e57404bc-44ba-4909-87da-f4a71673168d",
+        "name": "Wrath of God",
+        "material": "W",
+        "delta100": -16.548260742982745
+      },
+      {
+        "id": "98a1c689-cd8b-4a80-ad6d-e4ff5933f5e7",
+        "name": "Circle of Protection: White",
+        "material": "W",
+        "delta100": -13.548838775366578
+      },
+      {
+        "id": "1dba16d3-292d-430c-88cc-c49ded13effb",
+        "name": "Earthquake",
+        "material": "R",
+        "delta100": -12.48453702572231
+      },
+      {
+        "id": "8a1dff82-de5c-4b1d-b87f-6ddb4551f820",
+        "name": "Psionic Blast",
+        "material": "U",
+        "delta100": -12.039444158546331
+      },
+      {
+        "id": "402e84fb-7c77-4491-9ece-c2d9b8506ece",
+        "name": "Blessing",
+        "material": "W",
+        "delta100": -10.978186685645897
+      },
+      {
+        "id": "19272824-a0a4-4352-8904-a185516c95e1",
+        "name": "Personal Incarnation",
+        "material": "W",
+        "delta100": -10.435011922239944
+      },
+      {
+        "id": "ff1b8fc5-604a-4449-a73d-861e53642a70",
+        "name": "Lightning Bolt",
+        "material": "R",
+        "delta100": -10.249349674609565
+      },
+      {
+        "id": "24b4c4c9-84c1-484c-9f67-1f460585d45c",
+        "name": "Jump",
+        "material": "U",
+        "delta100": -9.777427882994116
+      }
+    ]
+  },
+  "pigmentTrial": {
+    "status": "shared-candidates-need-native-replay",
+    "mainPrintings": 277,
+    "landPrintingsPending": 25,
+    "runtimeBindingsObserved": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "A": 0
+    },
+    "gap": "All six ordinary 2ED frame materials currently resolve no HSB material correction even with set-hsb-v1 enabled. Existing source-specific guards remain enforced; do not alias an obsolete fit.",
+    "review": "White is already close and should retain source values unless native evidence improves. Most other frame/paper candidates improve reserved-cohort medians. The red-frame Chaoslace reference is an explicit color outlier: the shared predicted fit regresses it by 3.13 Oklab units. Contrast, black levels, mana colors and native post-integration verification remain open."
+  },
+  "runtimeProfilePromoted": false
 }

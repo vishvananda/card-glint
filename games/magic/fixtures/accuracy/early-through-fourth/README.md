@@ -166,3 +166,62 @@ The second fits one x/y frame transform per material on calibration scans only.
 Predicted reserved residuals are 0.05–0.09 canonical pixels; these numbers do not
 replace an actual native candidate replay, internal aperture checks or frame
 source comparison, and do not close a calibration task.
+
+## Published 0.6.6 full-card check
+
+`release066-scores.json.gz` records the latest maintainer result per printing,
+face and generation, without counting duplicate history rows. All 597 normalized
+scan hashes and registration transforms match the 0.6.5 baseline. Exactly six
+faces change and all six scores improve; the other 591 retain identical scores.
+Alpha's mean is 67.207/100 and Beta's is 67.565/100. These are the Lab whole-card
+indices, distinct from the regional frame/text indices above. The scores predate
+Dragon Whelp's new rich-paragraph correction and do not close outstanding set tasks.
+
+## Native Unlimited geometry and pigment trials
+
+Keep the same renderer source as the native baseline: trial tools reject a
+source mismatch rather than silently combining unrelated revisions. The study
+plugin exposes temporary frame/art/stock-mask inputs only inside Vite; no study
+controls or scan transforms enter the published painter. Every trial's control
+must reproduce its immutable native baseline PNG bytes.
+
+```sh
+node games/magic/tools/accuracy/early-frame-trial-replay.mjs NATIVE_CAPTURE DEFINITION.json TRIAL_CAPTURE
+node games/magic/tools/accuracy/early-stock-mask-verify.mjs NATIVE_CAPTURE TRIAL_CAPTURE mask-only MASK_REPORT.json
+python games/magic/tools/accuracy/early-internal-geometry.py NATIVE_CAPTURE FAMILY_STUDY BOUNDARY_PROPOSAL.json JOINT_GEOMETRY
+node games/magic/tools/accuracy/early-frame-trial-measure.mjs NATIVE_CAPTURE TRIAL_CAPTURE FAMILY_STUDY FRAME_REPORT.json
+node games/magic/tools/accuracy/early-native-color-audit.mjs NATIVE_CAPTURE COLOR_REPORT.json TRIAL_CAPTURE joint-art-paper
+node games/magic/tools/accuracy/abu-color-fit.mjs COLOR_REPORT.json COLOR_FIT.json
+```
+
+The optional Python tool needs NumPy, Pillow and SciPy. It fits shared source
+geometry from calibration-only robust medians: cross-card art variance locates
+the aperture, while frame-to-paper color transitions locate the rules box.
+Pixel coordinates refer to pixel centers. Narrow false bevel peaks and missing
+apertures have synthetic controls:
+
+```sh
+python tests/early-internal-geometry.py
+```
+
+The source-family command accepts an optional final geometry JSON argument to
+compare every family after fitting it to the same art/paper targets. Fixed opaque
+support excludes illustration interiors; original scan poses remain unchanged.
+ABU is retained for all six main materials: no alternate source has a decisive
+calibration-cohort advantage. Native joint geometry improves the mean regional
+frame-strip index from 72.259 to 81.808/100 on 277 nonland printings, with 220
+individual gains. White has substantial regressions, so these numbers remain
+candidate evidence rather than a completed frame calibration. The 15 basics and
+10 duals still need their own internal geometry review.
+
+The independent outer stock-mask change improves all 302 measured boundaries,
+from a median residual of 0.957 to 0.112 canonical pixels. No title/type coverage,
+strict interior or face-alpha pixel changes. Etching outputs match but are empty
+in these inputs; do not treat that as a nonempty etching-mask certification.
+
+The six ordinary Unlimited materials currently resolve no pigment correction
+with set HSB enabled. New frame/paper fits improve most reserved-cohort color
+medians; white is already close and remains conservative. Native color replay,
+contrast/black levels, mana calibration, headings, body/footer fitting and final
+whole-card scores remain required. `2ed-stage.json` lists each frozen receipt and
+its remaining scope. No runtime profile has been promoted by these trials.

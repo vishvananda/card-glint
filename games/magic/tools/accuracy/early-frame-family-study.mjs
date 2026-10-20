@@ -11,7 +11,7 @@ import { normalize } from './pixels-pure.mjs';
 import { frameProfiles } from './frame-family-metrics.mjs';
 import { opaqueSupport, scoreOpaqueFamily, FAMILY_SCORE_VERSION } from './frame-family-score.mjs';
 import { median } from './metrics.mjs';
-const [inputsFile, posesFile, nativeDirectory, out] = process.argv.slice(2);
+const [inputsFile, posesFile, nativeDirectory, out, geometryFile] = process.argv.slice(2);
 assert(out, 'Usage: early-frame-family-study.mjs INPUTS POSES NATIVE_CAPTURE OUT');
 const rawInputs = await readFile(inputsFile),
   rawPoses = await readFile(posesFile),
@@ -27,6 +27,8 @@ assert(
   ),
 );
 assert.equal(capture.source.rendererHash, await sourceHash(path.join(root, 'games/magic/src')));
+const geometryBytes = geometryFile ? await readFile(geometryFile) : undefined;
+const geometry = geometryBytes ? JSON.parse(geometryBytes) : undefined;
 const basic = { Plains: 'W', Island: 'U', Swamp: 'B', Mountain: 'R', Forest: 'G' },
   key = (e) =>
     e.material === 'L' ? (basic[e.card.name] ? basic[e.card.name] + 'L' : null) : e.material,
@@ -40,7 +42,9 @@ for (const k of keys)
     assets.push({
       key: k,
       family,
-      rect: family === 'fourth' ? [0.012, 0.01, 0.974, 0.982] : [0, 0, 1, 1],
+      rect:
+        geometry?.[k]?.[family]?.frame ??
+        (family === 'fourth' ? [0.012, 0.01, 0.974, 0.982] : [0, 0, 1, 1]),
       ...(await cachedFetch(url, { offline: true })),
     });
   }
@@ -180,8 +184,15 @@ await writeJson(path.join(out, 'family-study.json'), {
   status: 'source-family-diagnostic',
   method: FAMILY_SCORE_VERSION,
   scope:
-    'Existing source families at their established initial geometry, production 768px decode and 732px plate paint. All families share eroded opaque support; artwork interiors do not score. Original independent per-card scan poses remain unchanged. Signed contrast gradients and census scores reduce photometric sensitivity; no HSB is fitted. This study alone does not approve internal geometry or complete a set. Dual overlays remain a separate review. Basic-land variants share a printed name, so their cohort scores are reused-development evidence, not independent-name validation.',
+    'Existing source families at explicitly recorded geometry, production 768px decode and 732px plate paint. All families share eroded opaque support; artwork interiors do not score. Original independent per-card scan poses remain unchanged. Signed contrast gradients and census scores reduce photometric sensitivity; no HSB is fitted. This study alone does not approve internal geometry or complete a set. Dual overlays remain a separate review. Basic-land variants share a printed name, so their cohort scores are reused-development evidence, not independent-name validation.',
   inputHash: hash(rawInputs),
+  ...(geometryBytes
+    ? {
+        sourceGeometryHash: hash(geometryBytes),
+        geometryPolicy:
+          'Study-only shared source geometry; independent scan poses remain frozen. Targets and source selection require separate native certification.',
+      }
+    : {}),
   normalizationHash: hash(rawPoses),
   captureHash: hash(captureBytes),
   rendererHash: capture.source.rendererHash,
