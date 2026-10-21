@@ -2,7 +2,9 @@
 
 `plan.json` freezes the starting backlog for the 13 major sets (3,306 printings).
 The live completion authority remains `../calibration-progress.json`, not this
-planning snapshot. Large Collectors and Summer editions are included; their
+planning snapshot. The [current work order](work-order.json) completes and
+releases Unlimited first, then prioritizes full M21 calibration and modern-frame
+defaults. The remaining early-set backlog stays queued. Large Collectors and Summer editions are included; their
 fronts, borders and applicability must be checked rather than assumed to inherit
 Beta or Revised. The order starts with Alpha and Beta's reopened work, then
 proceeds chronologically through Fourth Edition.
@@ -872,3 +874,52 @@ not synthesized. Both palettes use identical geometry and source preparation.
 The optional `--preview PATH.png` verification output contains external scan/art
 pixels and must remain outside Git. Brown land texture/black levels and full-frame
 outline calibration remain open; this component study does not complete a set.
+
+## Final Unlimited land material candidates
+
+`2ed-land-material-replay.json.gz` retains exact definitions, native receipts,
+color/texture samples and all residuals for twenty-five lands. Twenty-five current
+defaults and twenty-five prior prepared materials reproduce exactly. The older
+basic-land capture has different metadata; reuse is justified only by the paired
+before/after PNG equality for those fifteen lands. No other printing inherits
+that equivalence. Independent outline-source choices change only Tundra and
+Volcanic Island, confined to the projected full-frame outline ring.
+
+One brown HSB is shared by all source plates. Fixed narrow rails avoid both
+colored frame/art outlines. All six notably dark references remain in their
+original cohorts; they are not individually brightened or excluded. The shared
+HSB reduces median rail-color error from 3.84 to about 2.44 Oklab units, with
+individual regressions retained. The reference brightness spread is not solved
+by per-printing renderer values.
+
+The black-level fit checks color plus luminance-ordered texture and contrast.
+An ink-only fit would worsen contrast on some faces. The selected common curve
+ends at maximum channel 0.42, preserving brown/paper medians; all three Mountain
+illustrations share a weaker source-relative curve chosen from native controls.
+Every one of the twenty-five native keyline errors improves: median 6.09→1.69
+Oklab units. Frame, paper and white-stock color medians are unchanged by this
+last tone step; worst texture-contrast regression is 0.011 lightness units.
+These are regional distances, not Lab accuracy scores or whole-set certification.
+
+```sh
+node games/magic/tools/accuracy/early-land-material-replay.mjs "$CURRENT_UNLIMITED_NATIVE" "$LAND_MATERIAL_DEFINITION" "$LAND_MATERIAL_NATIVE"
+python games/magic/tools/accuracy/early-land-material-controls.py "$CURRENT_UNLIMITED_NATIVE" "$LAND_MATERIAL_NATIVE" "$BASIC_ACCENT_DIRECTORY" "$PINLINE_PALETTE_NATIVE" "$LAND_CONTROLS"
+node games/magic/tools/accuracy/early-land-texture-audit.mjs "$CURRENT_UNLIMITED_NATIVE" "$LAND_BROWN_AUDIT" "$LAND_MATERIAL_NATIVE" brown-transfer
+node games/magic/tools/accuracy/early-land-brown-fit.mjs "$LAND_BROWN_AUDIT" "$LAND_MATERIAL_DEFINITION" "$BASIC_ACCENT_FIT" "$LAND_BROWN_FIT" "$LAND_BROWN_DEFINITION"
+node games/magic/tools/accuracy/early-land-material-replay.mjs "$CURRENT_UNLIMITED_NATIVE" "$LAND_BROWN_DEFINITION" "$LAND_BROWN_NATIVE"
+```
+
+Use the archived exact definitions for tone and Mountain comparisons.
+`early-land-tone-fit.py` consumes the native keyline/color audits, brown definition
+and ink-only fit, and writes a constrained fit plus replay definition.
+`early-land-tone-verify.py --help` lists its native input manifests. It samples
+both alternatives on the same pre-curve boundary strips and checks the actual
+selected Mountain color audit. Every frame/stock alpha and art-core control
+passes; default etching is unchanged. Mountain has three reused development
+illustrations, not independent-name validation. No external raster belongs in Git.
+
+`finalDefinition` and `finalNativeChoices` in the archive assemble the exact
+semantic material values and point to each actual selected face hash. They do
+not claim a production profile or a new full-face capture. The next step is
+profile/typography/footer integration and all-Original/all-Oracle verification,
+followed by a renderer release; then the work order moves to M21.

@@ -24,7 +24,7 @@
     "validationKind": "reused-development"
   },
   "wordingCorrection": "Wall of Ice has flavor only. Exact printing reviewed, empty rules supplied explicitly; Oracle Defender remains separate. No broad empty-text inference from a missing provider field.",
-  "scope": "All 302 original type labels have exact-printing reviews. Frozen native 0.6.6 inputs cover all 302. Outer stock-mask trials are verified on all 302; six-material internal geometry/color/black-level trials cover 277 nonland printings. No runtime calibration profile is adopted yet. Visual normalization certification, individual geometry regressions, land color and ten dual-land interiors, filled heading ink, mana, body/footer fitting and complete-set scoring remain open.",
+  "scope": "All 302 original type labels have exact-printing reviews and frozen native 0.6.6 inputs. Shared ordinary and all 25 land material candidates, 277 cost/mana candidates and the full body-policy candidate have actual native evidence. These do not yet form an adopted runtime profile. Filled heading/artist/PT ink and shadows, footer/dual profile adapter integration, visual normalization certification, complete current Original/Oracle replay, etching and whole-card scoring remain open. Every regional regression and visibly dark reference remains in the records.",
   "sources": {
     "early-printing-inputs.mjs": "c547ccd552bed95140a7355c3dbf130e379935c855126f1f31fd9da9a9f1f80c",
     "early-calibration-normalize.mjs": "bc316037dcd6533c13757bfe8959b7b2b7ea3623a0975df950e474463bbe7801",
@@ -174,8 +174,8 @@
     },
     "2ed-material-proposal": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-material-proposal.json",
-      "sha256": "2d5c0ea3b770103432e8f6ad4c3f818302a857d30c6f37c702e1079686b6d57d",
-      "contentSha256": "2d5c0ea3b770103432e8f6ad4c3f818302a857d30c6f37c702e1079686b6d57d"
+      "sha256": "fadc7ff2040aa111a282ac0e1242cada676cd1df1e100908c38b7826c0b0225a",
+      "contentSha256": "fadc7ff2040aa111a282ac0e1242cada676cd1df1e100908c38b7826c0b0225a"
     },
     "2ed-basic-land-geometry": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-geometry.json.gz",
@@ -470,6 +470,11 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-pinline-palette-replay.json.gz",
       "sha256": "daf8a5a052afd68761bb730b41d7444d8c416d55afe3477c874c75a356d0cd5a",
       "contentSha256": "706b9b1170f5524f31f94e831345bc37ad23be9a3c235e509c053ab2e6fcec49"
+    },
+    "2ed-land-material-replay": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-land-material-replay.json.gz",
+      "sha256": "48434b83c8486cb31f1fd4a8ddb0f2002b45391495e64af62e005ea45c9d8c27",
+      "contentSha256": "04d535b01b20f12b7275de210a0978beef34a56553ddb946b445c893aa6ef83f"
     }
   },
   "native": {
@@ -1413,7 +1418,7 @@
   },
   "integrationRequirements": {
     "frame": "Source-bound ordinary and five basic plates, shared dual composite, independent SVG stock-mask geometry; retain existing foreign-set behavior.",
-    "color": "Complete land brown texture contrast/black levels and full-frame outline calibration. Shared dual paper and pinline geometry/palette candidates have native evidence with all residuals retained; keep Volcanic Island paper-color outliers visible. Finish complete Original/Oracle integration and whole-card verification before profile promotion.",
+    "color": "Ordinary and all 25 land material candidates have native verification. Carry the exact semantic source values into the profile and verify them again with the integrated renderer. Preserve all dark-reference and Volcanic Island paper-color residuals; do not introduce per-printing scan/color corrections.",
     "wording": "Use current original printing inputs, including Dragon Whelp inline quotation and Drain Life 1B. Drain Life header-only replay preserves body pixels and rightmost pips; historical extra-X full-face records are superseded for header comparisons. Oracle input remains unchanged.",
     "typography": "Measure filled ink/stroke/shadow values separately from fixed-gray geometry; retain MPlantin credits unless new evidence supports another face.",
     "body": "Integrate shared count/wrap and medium-density retention with original/Oracle safety preserved; verify final full native inputs.",
@@ -3164,5 +3169,88 @@
       "decision": "Retain the dark source edge instead of using freely brown edge ink to compensate blur. The five shared colors improve every card mean and 32/40 side windows; eight side regressions remain. The free-edge alternative has slightly better mean distance but a larger worst side regression (0.88 vs 0.38 Oklab units). No per-card palette or renderer pose is fitted.",
       "wholeSetCertification": false
     }
+  },
+  "landMaterialFinalSelection": {
+    "status": "all-25-native-material-candidates-verified-not-runtime-adopted",
+    "source": "2ed-land-material-replay.json.gz",
+    "currentDefaultControls": 25,
+    "priorMaterialControls": 25,
+    "outlineSourceChanges": ["Tundra", "Volcanic Island"],
+    "brownHsb": {
+      "hueDegrees": 12.699142834132203,
+      "saturationScale": 0.8443206155567071,
+      "brightnessScale": 1.0561321379230946
+    },
+    "blackPoint": {
+      "lift": [0, 0, 0],
+      "transition": 0.5,
+      "texture": [
+        [0, [0, 0, 0]],
+        [0.2784313725490196, [-0.1, -0.08308823529411764, -0.10808823529411764]],
+        [0.42, [0, 0, 0]],
+        [1, [0, 0, 0]]
+      ]
+    },
+    "mountainBlackPoint": {
+      "lift": [0, 0, 0],
+      "transition": 0.5,
+      "texture": [
+        [0, [0, 0, 0]],
+        [0.2784313725490196, [-0.03333333333333333, -0.027696078431372548, -0.03602941176470588]],
+        [0.42, [0, 0, 0]],
+        [1, [0, 0, 0]]
+      ]
+    },
+    "mountainStrength": "land-tone-025",
+    "inkSummary": {
+      "all": {
+        "count": 25,
+        "medianBefore": 6.094873149546816,
+        "medianAfter": 1.6917376616585518,
+        "improved": 25,
+        "regressed": 0,
+        "worstRegression": 0
+      },
+      "calibration": {
+        "count": 14,
+        "medianBefore": 7.857087404955539,
+        "medianAfter": 3.2135273198051797,
+        "improved": 14,
+        "regressed": 0,
+        "worstRegression": 0
+      },
+      "validation": {
+        "count": 11,
+        "medianBefore": 5.959072173982461,
+        "medianAfter": 1.472826774948375,
+        "improved": 11,
+        "regressed": 0,
+        "worstRegression": 0
+      }
+    },
+    "colorAndContrast": {
+      "frame": {
+        "meanChange": 0.0,
+        "meanPositiveRegression": 0.0,
+        "worstRegression": 0
+      },
+      "paper": {
+        "meanChange": 0.0,
+        "meanPositiveRegression": 0.0,
+        "worstRegression": 0
+      },
+      "stock": {
+        "meanChange": 0.0,
+        "meanPositiveRegression": 0.0,
+        "worstRegression": 0
+      },
+      "contrast": {
+        "meanChange": -0.0017568173152535849,
+        "meanPositiveRegression": 0.00043999902229742817,
+        "worstRegression": 0.010999975557435704
+      }
+    },
+    "scope": "All twenty-five Original land faces at fixed independently registered scan poses. Baseline HSB rasters reproduce exactly; source curves are measured from actual PNGs using the SAME before-curve physical boundary strips, not re-detected candidate positions. Source-material controls preserve art core, white stock core, alpha and default etching. Shared Mountain strength is selected on all three development illustrations of that source material, not individual printings; no independent Mountain validation is claimed. Frame/paper medians and texture contrast are compared with actual saved native audits. These are regional Oklab distances, not whole-card scores. Final integrated profile and Original/Oracle scoring remain required.",
+    "wholeSetCertification": false
   }
 }
