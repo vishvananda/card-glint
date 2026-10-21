@@ -112,7 +112,7 @@ float cardstockResponse(vec2 uv){
  vec2 slope=(vec2(dot(encoded.rg,vec2(256.,1.)),dot(encoded.ba,vec2(256.,1.)))/257.-.5)*4.4;
  vec2 direction=vec2(.65,.76)+(vec2(GLINT_LIGHTING_POINTER.x,1.-GLINT_LIGHTING_POINTER.y)-.5)*1.6;
  vec2 light=direction/max(length(direction),.1);
- return max(0.,1.+cardstockAmount*2.38*dot(slope,light));
+ return max(0.,1.+cardstockAmount*2.142*dot(slope,light));
 }
 vec3 cardstockGloss(vec2 uv,vec3 ink,vec3 reflected){
  if(cardstockAmount<=0.)return reflected;
