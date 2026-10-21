@@ -677,8 +677,136 @@
     "plan": "games/magic/fixtures/accuracy/m21-normalization-confirmation-plan.json",
     "sources": 297,
     "controls": 891,
-    "status": "running-unapproved",
+    "status": "completed-rejected",
     "sourcePrintingHoldout": false,
-    "finding": "Early HSV confirmation exposes high-confidence color-driven pose drift on Radha. Retain every case; do not approve normalization or fit final renderer defaults from these poses."
-  }
+    "finding": "888/891 pass. HSV-only Radha changes an accepted pose by max3.425px; two geometric controls also exceed unchanged limits. Do not promote poses. Future trials that use these outcomes treat this suite as reused development/property validation, not an untouched confirmation.",
+    "summary": {
+      "total": 891,
+      "completed": 891,
+      "passed": 888,
+      "baselineRejected": 0,
+      "controlledRejected": 0,
+      "recoveryFailed": 3,
+      "maxCornerError": 3.4251640605491924,
+      "families": {
+        "normal-crown/Artifact": {
+          "count": 3,
+          "passed": 3,
+          "maxCornerError": 0.04091676877525464
+        },
+        "normal-crown/B": {
+          "count": 9,
+          "passed": 9,
+          "maxCornerError": 0.063271076184702
+        },
+        "normal-crown/G": {
+          "count": 9,
+          "passed": 9,
+          "maxCornerError": 0.071807655741195
+        },
+        "normal-crown/Gold": {
+          "count": 9,
+          "passed": 8,
+          "maxCornerError": 3.4251640605491924
+        },
+        "normal-crown/R": {
+          "count": 9,
+          "passed": 9,
+          "maxCornerError": 0.22531909286214294
+        },
+        "normal-crown/U": {
+          "count": 9,
+          "passed": 9,
+          "maxCornerError": 0.25134799224153476
+        },
+        "normal-crown/W": {
+          "count": 6,
+          "passed": 6,
+          "maxCornerError": 0.044903282289503375
+        },
+        "normal-plain/Artifact": {
+          "count": 48,
+          "passed": 48,
+          "maxCornerError": 0.07314284777541699
+        },
+        "normal-plain/B": {
+          "count": 120,
+          "passed": 120,
+          "maxCornerError": 0.36722561020119
+        },
+        "normal-plain/G": {
+          "count": 123,
+          "passed": 122,
+          "maxCornerError": 0.5685344056728859
+        },
+        "normal-plain/Gold": {
+          "count": 30,
+          "passed": 30,
+          "maxCornerError": 0.37496540015133817
+        },
+        "normal-plain/Land": {
+          "count": 99,
+          "passed": 99,
+          "maxCornerError": 0.39473594898990905
+        },
+        "normal-plain/R": {
+          "count": 126,
+          "passed": 126,
+          "maxCornerError": 0.42577398678465106
+        },
+        "normal-plain/U": {
+          "count": 123,
+          "passed": 123,
+          "maxCornerError": 0.3557538871354714
+        },
+        "normal-plain/W": {
+          "count": 126,
+          "passed": 126,
+          "maxCornerError": 0.05433820438875166
+        },
+        "planeswalker": {
+          "count": 30,
+          "passed": 29,
+          "maxCornerError": 0.6150782756277537
+        },
+        "planeswalker-large": {
+          "count": 12,
+          "passed": 12,
+          "maxCornerError": 0.3515812594075763
+        }
+      }
+    },
+    "failures": [
+      {
+        "id": "2bbd37b1-49cb-4295-9a1f-fb85368a8f12",
+        "name": "Radha, Heart of Keld",
+        "label": "confirm-hsv",
+        "cornerRms": 2.1034252651039878,
+        "cornerMax": 3.4251640605491924,
+        "accepted": true
+      },
+      {
+        "id": "cceaf927-261e-4d61-9fac-eb8abbe87593",
+        "name": "Wildwood Patrol",
+        "label": "confirm-axis-and-skew",
+        "cornerRms": 0.35039699327347446,
+        "cornerMax": 0.5685344056728859,
+        "accepted": true
+      },
+      {
+        "id": "921e3dc3-f8eb-4498-a6a8-b424952230cd",
+        "name": "Liliana, Death Mage",
+        "label": "confirm-axis-and-skew",
+        "cornerRms": 0.4205352751450768,
+        "cornerMax": 0.6150782756277537,
+        "accepted": true
+      }
+    ],
+    "evidence": {
+      "file": "games/magic/fixtures/accuracy/m21-normalization-confirmation-v18.json.gz",
+      "sha256": "fad776d3e29523bf730721716c06c4e77aa0dfe8e4ab79e5fc1012da3b90a493",
+      "contentSha256": "ba7485d8a9cccba47a015713750ab61ba6f5d6c06916066f36eee570e23db339"
+    }
+  },
+  "next": "Separate geometry from derivative amplitudes before further renderer fitting; retain all controls and gates, and compare source-bound normalizers without moving thresholds or adding printing exceptions."
 }
