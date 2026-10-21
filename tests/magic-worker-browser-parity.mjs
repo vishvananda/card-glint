@@ -1,5 +1,5 @@
 import { preWalkerSource } from '../games/magic/tools/accuracy/planeswalker-reconstruction/ancestry.mjs';
-import { preAlphaEditorSource } from '../games/magic/tools/accuracy/alpha-editor-ancestry.mjs';
+import { hostWorkerProofSource } from './magic-host-worker-source-guard.mjs';
 import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -25,6 +25,7 @@ function baseline(file, bytes) {
 }
 const prefix = '\0worker-baseline:';
 const walkerPrefix = '\0walker-baseline:';
+const profilePrefix = '\0profile-baseline:';
 const server = await createServer({
   configFile: false,
   root,
@@ -35,7 +36,13 @@ const server = await createServer({
       resolveId(id, importer) {
         if (id === '/__walker_baseline/presentation.ts')
           return walkerPrefix + 'games/magic/src/presentation.ts';
-        const activePrefix = importer?.startsWith(walkerPrefix) ? walkerPrefix : prefix;
+        if (id === '/__profile_baseline/presentation.ts')
+          return profilePrefix + 'games/magic/src/presentation.ts';
+        const activePrefix = importer?.startsWith(walkerPrefix)
+          ? walkerPrefix
+          : importer?.startsWith(profilePrefix)
+            ? profilePrefix
+            : prefix;
         if (id === '/__worker_baseline/presentation.ts')
           return prefix + 'games/magic/src/presentation.ts';
         if (importer?.startsWith(activePrefix) && id.startsWith('.')) {
@@ -51,9 +58,16 @@ const server = await createServer({
         }
       },
       async load(id) {
-        const historicalWalker = id.startsWith(walkerPrefix);
-        if (!id.startsWith(prefix) && !historicalWalker) return;
-        const file = id.slice(historicalWalker ? walkerPrefix.length : prefix.length);
+        const historicalWalker = id.startsWith(walkerPrefix),
+          historicalProfile = id.startsWith(profilePrefix);
+        if (!id.startsWith(prefix) && !historicalWalker && !historicalProfile) return;
+        const file = id.slice(
+          historicalWalker
+            ? walkerPrefix.length
+            : historicalProfile
+              ? profilePrefix.length
+              : prefix.length,
+        );
         if (file.endsWith('?raw'))
           return (
             'export default ' +
@@ -64,7 +78,9 @@ const server = await createServer({
         const code = (
           historicalWalker
             ? await preWalkerSource(file, bytes)
-            : baseline(file, await preAlphaEditorSource(file, bytes))
+            : historicalProfile
+              ? await hostWorkerProofSource(file)
+              : baseline(file, await hostWorkerProofSource(file))
         ).toString();
         return file.endsWith('.ts')
           ? (await transformWithEsbuild(code, file, { loader: 'ts', target: 'esnext' })).code
@@ -91,7 +107,8 @@ try {
   const rows = await page.evaluate(async () => {
     const current = await import('/games/magic/src/presentation.ts'),
       before = await import('/__worker_baseline/presentation.ts'),
-      historicalWalker = await import('/__walker_baseline/presentation.ts');
+      historicalWalker = await import('/__walker_baseline/presentation.ts'),
+      historicalProfile = await import('/__profile_baseline/presentation.ts');
     const local = 'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")';
     for (const { family, weight, style } of current.canvasFontAssets)
       document.fonts.add(await new FontFace(family, local, { weight, style }).load());
@@ -210,7 +227,17 @@ try {
           const results = [];
           // Intentional 0.6.3 planeswalker changes have their own native/material tests.
           // Preserve the earlier host-portability proof against its exact source.
-          for (const api of [before, label === 'walker' ? historicalWalker : current]) {
+          // Unlimited 0.6.7 is intentionally changed. Compare the original worker
+          // transition on its verified historical profile. Current Unlimited
+          // browser/worker pixels have their own positive parity test.
+          for (const api of [
+            before,
+            label === 'walker'
+              ? historicalWalker
+              : face.setCode === '2ed'
+                ? historicalProfile
+                : current,
+          ]) {
             requested = new Set();
             const c = await api.composeCardTexture(
               {

@@ -10,7 +10,8 @@ import {
   hostWorkerCompatibilityProof,
 } from '../games/magic/tools/accuracy/host-worker-compatibility.mjs';
 
-export async function preHostWorkerSource(file) {
+/** Historical dependency reconstruction only; no current profile score approval. */
+export async function hostWorkerProofSource(file) {
   const bytes = await preAlphaEditorSource(
       file,
       await profilePreparationProofDependency(
@@ -24,5 +25,9 @@ export async function preHostWorkerSource(file) {
     proof = await hostWorkerCompatibilityProof();
   if (proof.files[file])
     assert.equal(hash(bytes), proof.files[file].after, 'Unreviewed worker source: ' + file);
-  return compatibleHostWorkerSource(file, bytes);
+  return bytes;
+}
+
+export async function preHostWorkerSource(file) {
+  return compatibleHostWorkerSource(file, await hostWorkerProofSource(file));
 }

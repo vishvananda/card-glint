@@ -1,6 +1,5 @@
-import { preAlphaEditorSource } from '../games/magic/tools/accuracy/alpha-editor-ancestry.mjs';
+import { hostWorkerProofSource } from './magic-host-worker-source-guard.mjs';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
 import ts from 'typescript';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
@@ -33,7 +32,9 @@ const proof = await hostWorkerCompatibilityProof();
 let same = 0,
   hostOnly = 0;
 for (const [file, change] of Object.entries(proof.files)) {
-  const bytes = await preAlphaEditorSource(file, await readFile(file));
+  // Keep the immutable worker receipt on its original profile/helper sources.
+  // Fresh and changed-profile measurements retain current source identities.
+  const bytes = await hostWorkerProofSource(file);
   assert.equal(hash(bytes), change.after, file);
   const before = await compatibleHostWorkerSource(file, bytes);
   assert.equal(hash(before), change.before, file);
