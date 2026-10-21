@@ -1,3 +1,4 @@
+import { artistReviewProofDependency } from './artist-review-ancestry.mjs';
 import { profileDataGeneratorSource } from './profile-data-modules.mjs';
 import {
   profilePreparationProofDependency,
@@ -30,7 +31,10 @@ export function alphaEditorAncestry(set) {
                 file,
                 await profilePreparationProofDependency(
                   file,
-                  profileDataGeneratorSource(file, await readFile(file)),
+                  profileDataGeneratorSource(
+                    file,
+                    await artistReviewProofDependency(file, await readFile(file)),
+                  ),
                 ),
                 set,
               ),

@@ -1,4 +1,5 @@
 import { createServer } from 'vite';
+import { PNG } from 'pngjs';
 import { cachedFetch } from './cache.mjs';
 // Verify an installed printing profile through the public native painter.
 import assert from 'node:assert/strict';
@@ -32,6 +33,23 @@ try {
   const { canvasAssetUrls } = await preflight.ssrLoadModule(
     '/games/magic/src/presentation/canvas-assets.ts',
   );
+  const { resolvePrintingArtist } = await preflight.ssrLoadModule(
+    '/games/magic/src/printing/artist.ts',
+  );
+  inputs.entries = inputs.entries.map((e) => {
+    const resolved = resolvePrintingArtist(e.id, e.face.artist, {
+      referenceSha256: e.reference.sha256,
+    });
+    assert.notEqual(resolved.provenance.status, 'reference-mismatch');
+    return {
+      ...e,
+      controlFace: e.face,
+      face: { ...e.face, artist: resolved.artist },
+      artistProvenance: resolved.provenance,
+    };
+  });
+  const changes = inputs.entries.filter((e) => e.face.artist !== e.controlFace.artist);
+  assert.equal(changes.length, 13, 'Unexpected printing-credit change count');
   const urls = new Set();
   for (const e of inputs.entries)
     for (const style of ['modern', 'original']) {
@@ -56,11 +74,21 @@ const source = {
   rendererHash: await sourceHash(path.join(root, 'games/magic/src')),
   candidateCaptureHash: hash(raw[0]),
   inputsHash: hash(raw[1]),
+  resolvedInputsHash: hash(JSON.stringify(inputs)),
+  artistCorrections: inputs.entries
+    .filter((e) => e.face.artist !== e.controlFace.artist)
+    .map((e) => ({
+      id: e.id,
+      before: e.controlFace.artist,
+      after: e.face.artist,
+      referenceHash: e.reference.sha256,
+    })),
   toolHash: hash(await readFile(new URL(import.meta.url))),
   scope:
-    'Actual installed profile, no runtime injection. All Original native pixels/etching must match the measured complete candidate. Oracle variants use public Scryfall import, complete text and independent symbol choices. Fixed scans and poses are retained, never refitted.',
+    'Actual installed profile, no runtime injection. All 302 historical Original controls must match the measured complete candidate. Public artist corrections change only 13 Original credits, confined to the footer; body and etching remain exact. Oracle variants retain complete Scryfall wording and physical printing credits with independent symbol choices. Fixed scans and poses are retained, never refitted.',
 };
 await mkdir(out, { recursive: true });
+await writeJson(path.join(out, 'inputs.json'), inputs);
 let rows = [];
 try {
   const prior = JSON.parse(await readFile(path.join(out, 'capture.json')));
@@ -84,13 +112,16 @@ try {
       const { canvasAssetUrls } = await import('/games/magic/src/presentation/canvas-assets.ts');
       const { loadAccuracyImages } = await import('/games/magic/tools/accuracy/abu-assets.mjs');
       const { retroTextLayout } = await import('/games/magic/src/presentation/retro-rules.ts');
-      const faces = { original: e.face };
+      const faces = { 'control-original': e.controlFace, original: e.face };
       for (const style of ['modern', 'original'])
-        faces['oracle-' + style] = fromScryfallCard(e.card, {
-          wording: 'oracle',
-          symbolStyle: style,
-          illustrations: [e.face.illustration],
-        });
+        faces['oracle-' + style] = {
+          ...fromScryfallCard(e.card, {
+            wording: 'oracle',
+            symbolStyle: style,
+            illustrations: [e.face.illustration],
+          }),
+          artist: e.face.artist,
+        };
       const urls = [...new Set(Object.values(faces).flatMap(canvasAssetUrls))];
       const lease = await loadAccuracyImages(
         urls,
@@ -157,14 +188,47 @@ try {
           bytes,
         );
       }
-      if (variant === 'original') {
+      if (variant === 'control-original') {
         assert.deepEqual(rasters, expected.rasters.candidate, 'Installed pixels differ: ' + e.name);
         assert.deepEqual(values.body, expected.body.candidate, 'Installed body differs: ' + e.name);
+        assert.deepEqual(values.face, e.controlFace);
+      } else if (variant === 'original') {
+        assert.deepEqual(
+          values.body,
+          expected.body.candidate,
+          'Artist correction reflowed body: ' + e.name,
+        );
+        assert.equal(rasters.etching, expected.rasters.candidate.etching);
         assert.deepEqual(values.face, e.face);
+        if (e.face.artist === e.controlFace.artist)
+          assert.deepEqual(rasters, expected.rasters.candidate);
+        else {
+          const a = PNG.sync.read(Buffer.from(result['control-original'].layers.face, 'base64'));
+          const b = PNG.sync.read(Buffer.from(values.layers.face, 'base64'));
+          assert.equal(a.width, b.width);
+          assert.equal(a.height, b.height);
+          let changed = 0,
+            outside = 0;
+          for (let y = 0; y < b.height; y++)
+            for (let x = 0; x < b.width; x++) {
+              const i = (y * b.width + x) * 4;
+              assert.equal(a.data[i + 3], b.data[i + 3]);
+              if (![0, 1, 2].some((k) => a.data[i + k] !== b.data[i + k])) continue;
+              changed++;
+              if (x < 25 * 1.5 || x > 425 * 1.5 || y < 600 * 1.5 || y > 660 * 1.5) outside++;
+            }
+          assert(changed > 0, 'Changed credit did not change pixels: ' + e.name);
+          assert.equal(outside, 0, 'Credit change escaped footer: ' + e.name);
+        }
       } else {
         assert.equal(values.face.wordingMode, 'oracle');
         assert.equal(values.face.rulesText, e.card.oracle_text ?? '');
         assert.equal(values.face.typeLine, e.card.type_line);
+        assert.equal(
+          values.face.artist,
+          e.face.artist,
+          'Oracle must preserve physical printing credit',
+        );
       }
       variants[variant] = {
         rasters,
@@ -182,7 +246,7 @@ try {
       variants,
     });
     await writeJson(path.join(out, 'capture.json'), {
-      schema: 1,
+      schema: 2,
       source,
       denominator: 302,
       completed: rows.length,
@@ -204,7 +268,12 @@ await writeJson(path.join(out, 'summary.json'), {
   source,
   cards: rows.length,
   nativeFaces: rows.length * 3,
-  originalPixelMatches: rows.length,
+  controlFaces: rows.length,
+  historicalOriginalPixelMatches: rows.length,
+  unchangedOriginalFaces: rows.filter(
+    (r) => r.variants.original.rasters.face === r.variants['control-original'].rasters.face,
+  ).length,
+  artistOnlyOriginalChanges: source.artistCorrections.length,
   overflow,
 });
 console.log(JSON.stringify({ completed: rows.length, overflow }));

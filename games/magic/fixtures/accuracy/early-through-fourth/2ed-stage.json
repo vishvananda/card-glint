@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "asOf": "2026-10-20",
+  "asOf": "2026-10-21",
   "set": "2ed",
-  "status": "final-artist-input-correction-before-release",
+  "status": "final-native-and-scores-verified-release-checks-pending",
   "inventory": 302,
   "referenceObjectsPresent": 302,
   "artObjectsPresent": 302,
@@ -24,7 +24,7 @@
     "validationKind": "reused-development"
   },
   "wordingCorrection": "Wall of Ice has flavor only. Exact printing reviewed, empty rules supplied explicitly; Oracle Defender remains separate. No broad empty-text inference from a missing provider field.",
-  "scope": "All 302 original type labels have exact-printing reviews and frozen native 0.6.6 inputs. Shared ordinary and all 25 land material candidates, 277 cost/mana candidates and the full body-policy candidate have actual native evidence. These do not yet form an adopted runtime profile. Filled heading/artist/PT ink and shadows, final full-profile integration, visual normalization certification, complete current Original/Oracle replay, etching and whole-card scoring remain open. Every regional regression and visibly dark reference remains in the records.",
+  "scope": "All302 original printings use the installed shared Unlimited profile. 302 corrected Original faces,604 Oracle faces,302 historical controls. No missing assets/overflow. Thirteen exact physical artist credits are corrected independently of wording mode. Fixed independently normalized scans and all regressions remain in the scores; release/checklist publication remains pending.",
   "sources": {
     "early-printing-inputs.mjs": "c547ccd552bed95140a7355c3dbf130e379935c855126f1f31fd9da9a9f1f80c",
     "early-calibration-normalize.mjs": "bc316037dcd6533c13757bfe8959b7b2b7ea3623a0975df950e474463bbe7801",
@@ -508,6 +508,11 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-installed-native.json.gz",
       "sha256": "461234dcb617e5481043efb4de501b1e438d789389195e69af99263e70ccd38e",
       "contentSha256": "f8d6840d02686d784a30a1a9080db899e83aa1cbe878f039926cb6a5562a0a7a"
+    },
+    "2ed-final-release-replay": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-release-replay.json.gz",
+      "sha256": "f0e9bb545b72180e229d06895ff64ee23eb755c89b2e4c2b153249593308700a",
+      "contentSha256": "5bb21e76e5d3531a71f835e8ddde91e6452da4789b71073769cb9101ebaba230"
     }
   },
   "native": {
@@ -532,7 +537,10 @@
   "outerBoundaryDiagnostic": {
     "status": "measured-not-promoted",
     "coherent": 302,
-    "canonicalSpace": [488, 680],
+    "canonicalSpace": [
+      488,
+      680
+    ],
     "medianRendererMinusReference": {
       "left": 1.0210815079048263,
       "right": -0.8782270394865179,
@@ -1444,8 +1452,12 @@
   "defaultEtchingAudit": {
     "status": "unchanged-default-plane-verified",
     "source": "2ed-body-native-verification.json.gz",
-    "hashes": ["e2fccfb2128ef14df1ecd9dce54e42ad878c15ea0c158bbf0046afd7a140cc9a"],
-    "coveredPixels": [13366],
+    "hashes": [
+      "e2fccfb2128ef14df1ecd9dce54e42ad878c15ea0c158bbf0046afd7a140cc9a"
+    ],
+    "coveredPixels": [
+      13366
+    ],
     "bodyCalls": 0,
     "clarification": "Earlier evidence descriptions called these default etching outputs. They actually contain the default set-mark fallback: 13,366 covered pixels in the unchanged plane. Historical hash-equality checks remain valid; they do not establish zero coverage. No illustration-etch resolver was used. Keep historical compressed evidence unchanged."
   },
@@ -1456,7 +1468,7 @@
     "typography": "Measure filled ink/stroke/shadow values separately from fixed-gray geometry; retain MPlantin credits unless new evidence supports another face.",
     "body": "Integrate shared count/wrap and medium-density retention with original/Oracle safety preserved; verify final full native inputs.",
     "mana": "All 277 current original costs have joint native verification. Integrate shared palette/disc/glyph/numeral geometry plus R source expansion 0.4 AND opaque-percentile paper sampling; retain X source and all numerical/measurement outliers. Recheck after complete frame/body/footer integration, Oracle mode and source-equivalence proof.",
-    "footer": "Preserve printed Illus. \u00a9 prefix and absence of a separate Unlimited legal line.",
+    "footer": "Preserve printed Illus. © prefix and absence of a separate Unlimited legal line.",
     "receipts": "Scoped integration and source-equivalence evidence must preserve immutable historical receipts and avoid reopening unrelated sets.",
     "completion": "Full profile/whole-card validation and visual boundary certification are still required. No renderer profile is adopted by these study files."
   },
@@ -1545,7 +1557,11 @@
           },
           "discDeltaE": 1.2078383403515416,
           "glyphDeltaE": 14.036180021395193,
-          "targetDiscRgb": [0.9098039215686274, 0.9098039215686274, 0.8392156862745098]
+          "targetDiscRgb": [
+            0.9098039215686274,
+            0.9098039215686274,
+            0.8392156862745098
+          ]
         },
         "calibration": {
           "count": 35,
@@ -1556,7 +1572,11 @@
           },
           "discDeltaE": 1.2963999752649196,
           "glyphDeltaE": 13.133092545015698,
-          "targetDiscRgb": [0.907843137254902, 0.907843137254902, 0.8392156862745098]
+          "targetDiscRgb": [
+            0.907843137254902,
+            0.907843137254902,
+            0.8392156862745098
+          ]
         },
         "validation": {
           "count": 11,
@@ -1567,7 +1587,11 @@
           },
           "discDeltaE": 1.055501758503242,
           "glyphDeltaE": 15.958864927140478,
-          "targetDiscRgb": [0.9098039215686274, 0.9137254901960784, 0.8392156862745098]
+          "targetDiscRgb": [
+            0.9098039215686274,
+            0.9137254901960784,
+            0.8392156862745098
+          ]
         },
         "colorTargetProbe": {
           "beforeMedian": 1.055501758503242,
@@ -1587,7 +1611,11 @@
           },
           "discDeltaE": 1.3791312482208133,
           "glyphDeltaE": 31.645733434162416,
-          "targetDiscRgb": [0.6529411764705882, 0.807843137254902, 0.8705882352941177]
+          "targetDiscRgb": [
+            0.6529411764705882,
+            0.807843137254902,
+            0.8705882352941177
+          ]
         },
         "calibration": {
           "count": 30,
@@ -1598,7 +1626,11 @@
           },
           "discDeltaE": 1.0617771545915284,
           "glyphDeltaE": 31.923352224353053,
-          "targetDiscRgb": [0.6549019607843137, 0.807843137254902, 0.8705882352941177]
+          "targetDiscRgb": [
+            0.6549019607843137,
+            0.807843137254902,
+            0.8705882352941177
+          ]
         },
         "validation": {
           "count": 16,
@@ -1609,7 +1641,11 @@
           },
           "discDeltaE": 1.7091854193333111,
           "glyphDeltaE": 30.23870620906324,
-          "targetDiscRgb": [0.6460784313725491, 0.803921568627451, 0.8647058823529412]
+          "targetDiscRgb": [
+            0.6460784313725491,
+            0.803921568627451,
+            0.8647058823529412
+          ]
         },
         "colorTargetProbe": {
           "beforeMedian": 1.7091854193333111,
@@ -1629,7 +1665,11 @@
           },
           "discDeltaE": 21.21773414068865,
           "glyphDeltaE": 28.059923615881985,
-          "targetDiscRgb": [0.49607843137254903, 0.5254901960784314, 0.5333333333333333]
+          "targetDiscRgb": [
+            0.49607843137254903,
+            0.5254901960784314,
+            0.5333333333333333
+          ]
         },
         "calibration": {
           "count": 27,
@@ -1640,7 +1680,11 @@
           },
           "discDeltaE": 21.072368006028615,
           "glyphDeltaE": 28.162373677530063,
-          "targetDiscRgb": [0.5019607843137255, 0.5254901960784314, 0.5333333333333333]
+          "targetDiscRgb": [
+            0.5019607843137255,
+            0.5254901960784314,
+            0.5333333333333333
+          ]
         },
         "validation": {
           "count": 19,
@@ -1651,7 +1695,11 @@
           },
           "discDeltaE": 21.363100275348685,
           "glyphDeltaE": 27.957473554233907,
-          "targetDiscRgb": [0.49019607843137253, 0.5254901960784314, 0.5333333333333333]
+          "targetDiscRgb": [
+            0.49019607843137253,
+            0.5254901960784314,
+            0.5333333333333333
+          ]
         },
         "colorTargetProbe": {
           "beforeMedian": 21.363100275348685,
@@ -1671,7 +1719,11 @@
           },
           "discDeltaE": 1.5141261024312191,
           "glyphDeltaE": 28.036205700781355,
-          "targetDiscRgb": [0.8549019607843137, 0.6803921568627451, 0.6009803921568627]
+          "targetDiscRgb": [
+            0.8549019607843137,
+            0.6803921568627451,
+            0.6009803921568627
+          ]
         },
         "calibration": {
           "count": 31,
@@ -1682,7 +1734,11 @@
           },
           "discDeltaE": 1.5883206116343227,
           "glyphDeltaE": 29.901412429526154,
-          "targetDiscRgb": [0.8529411764705882, 0.6803921568627451, 0.596078431372549]
+          "targetDiscRgb": [
+            0.8529411764705882,
+            0.6803921568627451,
+            0.596078431372549
+          ]
         },
         "validation": {
           "count": 15,
@@ -1693,7 +1749,11 @@
           },
           "discDeltaE": 1.3695094264274408,
           "glyphDeltaE": 27.644589167072752,
-          "targetDiscRgb": [0.8549019607843137, 0.6843137254901961, 0.6039215686274509]
+          "targetDiscRgb": [
+            0.8549019607843137,
+            0.6843137254901961,
+            0.6039215686274509
+          ]
         },
         "colorTargetProbe": {
           "beforeMedian": 1.3695094264274408,
@@ -1713,7 +1773,11 @@
           },
           "discDeltaE": 2.9617407458631084,
           "glyphDeltaE": 28.93866922839363,
-          "targetDiscRgb": [0.6862745098039216, 0.7764705882352941, 0.6352941176470588]
+          "targetDiscRgb": [
+            0.6862745098039216,
+            0.7764705882352941,
+            0.6352941176470588
+          ]
         },
         "calibration": {
           "count": 31,
@@ -1724,7 +1788,11 @@
           },
           "discDeltaE": 3.0108947982143053,
           "glyphDeltaE": 28.79274830036383,
-          "targetDiscRgb": [0.6862745098039216, 0.7764705882352941, 0.6392156862745098]
+          "targetDiscRgb": [
+            0.6862745098039216,
+            0.7764705882352941,
+            0.6392156862745098
+          ]
         },
         "validation": {
           "count": 15,
@@ -1735,7 +1803,11 @@
           },
           "discDeltaE": 2.9617407458631084,
           "glyphDeltaE": 30.73285799155217,
-          "targetDiscRgb": [0.6901960784313725, 0.7764705882352941, 0.6313725490196078]
+          "targetDiscRgb": [
+            0.6901960784313725,
+            0.7764705882352941,
+            0.6313725490196078
+          ]
         },
         "colorTargetProbe": {
           "beforeMedian": 2.9617407458631084,
@@ -1755,7 +1827,11 @@
           },
           "discDeltaE": 5.919344071082378,
           "glyphDeltaE": 13.367318377708164,
-          "targetDiscRgb": [0.6862745098039216, 0.7098039215686275, 0.7137254901960784]
+          "targetDiscRgb": [
+            0.6862745098039216,
+            0.7098039215686275,
+            0.7137254901960784
+          ]
         },
         "calibration": {
           "count": 33,
@@ -1766,7 +1842,11 @@
           },
           "discDeltaE": 5.724720742300041,
           "glyphDeltaE": 13.896047069151566,
-          "targetDiscRgb": [0.6882352941176471, 0.7137254901960784, 0.7176470588235294]
+          "targetDiscRgb": [
+            0.6882352941176471,
+            0.7137254901960784,
+            0.7176470588235294
+          ]
         },
         "validation": {
           "count": 14,
@@ -1777,7 +1857,11 @@
           },
           "discDeltaE": 6.355917421128813,
           "glyphDeltaE": 11.011962346487174,
-          "targetDiscRgb": [0.6843137254901961, 0.7029411764705882, 0.7058823529411764]
+          "targetDiscRgb": [
+            0.6843137254901961,
+            0.7029411764705882,
+            0.7058823529411764
+          ]
         },
         "colorTargetProbe": {
           "beforeMedian": 6.355917421128813,
@@ -2157,7 +2241,11 @@
     "nativeGlyphGroups": {
       "all": {
         "count": 54,
-        "costMean100": [70.65991732381003, 69.77143803862987, 70.36158587723072],
+        "costMean100": [
+          70.65991732381003,
+          69.77143803862987,
+          70.36158587723072
+        ],
         "inkAccepted": 54,
         "inkBeforeMean100": 78.1988675686097,
         "inkAfterMean100": 85.80070412338004,
@@ -2173,7 +2261,11 @@
       },
       "calibration": {
         "count": 27,
-        "costMean100": [71.69522953277855, 70.94988470636669, 71.43588522520233],
+        "costMean100": [
+          71.69522953277855,
+          70.94988470636669,
+          71.43588522520233
+        ],
         "inkAccepted": 27,
         "inkBeforeMean100": 79.10261001342691,
         "inkAfterMean100": 86.76559897356367,
@@ -2189,7 +2281,11 @@
       },
       "validation": {
         "count": 27,
-        "costMean100": [69.62460511484146, 68.59299137089303, 69.28728652925913],
+        "costMean100": [
+          69.62460511484146,
+          68.59299137089303,
+          69.28728652925913
+        ],
         "inkAccepted": 27,
         "inkBeforeMean100": 77.29512512379247,
         "inkAfterMean100": 84.8358092731964,
@@ -2205,7 +2301,11 @@
       },
       "symbol/W": {
         "count": 10,
-        "costMean100": [78.88359112438317, 78.06877000952547, 79.6652686762237],
+        "costMean100": [
+          78.88359112438317,
+          78.06877000952547,
+          79.6652686762237
+        ],
         "inkAccepted": 10,
         "inkBeforeMean100": 87.19674269946879,
         "inkAfterMean100": 92.48788652244683,
@@ -2221,7 +2321,11 @@
       },
       "symbol/U": {
         "count": 10,
-        "costMean100": [75.84080812261377, 74.14523998429647, 74.14523998429647],
+        "costMean100": [
+          75.84080812261377,
+          74.14523998429647,
+          74.14523998429647
+        ],
         "inkAccepted": 10,
         "inkBeforeMean100": 91.62737512844892,
         "inkAfterMean100": 91.62737512844892,
@@ -2237,7 +2341,11 @@
       },
       "symbol/B": {
         "count": 10,
-        "costMean100": [66.84232729369111, 64.45376781863256, 64.31762364617764],
+        "costMean100": [
+          66.84232729369111,
+          64.45376781863256,
+          64.31762364617764
+        ],
         "inkAccepted": 10,
         "inkBeforeMean100": 79.19695490323573,
         "inkAfterMean100": 83.44164508889853,
@@ -2253,7 +2361,11 @@
       },
       "symbol/R": {
         "count": 10,
-        "costMean100": [67.89850181404088, 68.783987267069, 69.46715887342803],
+        "costMean100": [
+          67.89850181404088,
+          68.783987267069,
+          69.46715887342803
+        ],
         "inkAccepted": 10,
         "inkBeforeMean100": 69.63074547285333,
         "inkAfterMean100": 80.23950689787185,
@@ -2269,7 +2381,11 @@
       },
       "symbol/G": {
         "count": 10,
-        "costMean100": [62.97303918074761, 61.06015885422534, 62.10343108206771],
+        "costMean100": [
+          62.97303918074761,
+          61.06015885422534,
+          62.10343108206771
+        ],
         "inkAccepted": 10,
         "inkBeforeMean100": 68.64454632999592,
         "inkAfterMean100": 89.54986829209635,
@@ -2285,7 +2401,11 @@
       },
       "symbol/N": {
         "count": 4,
-        "costMean100": [72.81321503274376, 75.63460368713115, 75.63460368713115],
+        "costMean100": [
+          72.81321503274376,
+          75.63460368713115,
+          75.63460368713115
+        ],
         "inkAccepted": 4,
         "inkBeforeMean100": 64.9438008412244,
         "inkAfterMean100": 64.9438008412244,
@@ -2303,90 +2423,150 @@
     "nativeNumeralGroups": {
       "all": {
         "count": 47,
-        "costMean100": [78.0134292412766, 78.4961277453149],
+        "costMean100": [
+          78.0134292412766,
+          78.4961277453149
+        ],
         "inkAccepted": 47,
-        "inkMean100": [71.09485903995314, 77.2793115884143],
+        "inkMean100": [
+          71.09485903995314,
+          77.2793115884143
+        ],
         "inkImproved": 36,
         "inkRegressed": 11,
         "inkWorstRegression100": 13.41190377406033
       },
       "calibration": {
         "count": 33,
-        "costMean100": [79.2305438107121, 79.78879151448385],
+        "costMean100": [
+          79.2305438107121,
+          79.78879151448385
+        ],
         "inkAccepted": 33,
-        "inkMean100": [72.97142057537881, 78.31571084228662],
+        "inkMean100": [
+          72.97142057537881,
+          78.31571084228662
+        ],
         "inkImproved": 24,
         "inkRegressed": 9,
         "inkWorstRegression100": 13.41190377406033
       },
       "validation": {
         "count": 14,
-        "costMean100": [75.14451632760726, 75.44913457513094],
+        "costMean100": [
+          75.14451632760726,
+          75.44913457513094
+        ],
         "inkAccepted": 14,
-        "inkMean100": [66.67153542073544, 74.83637049000092],
+        "inkMean100": [
+          66.67153542073544,
+          74.83637049000092
+        ],
         "inkImproved": 12,
         "inkRegressed": 2,
         "inkWorstRegression100": 7.340787048528163
       },
       "number/2": {
         "count": 7,
-        "costMean100": [77.75849891388711, 78.1547592383295],
+        "costMean100": [
+          77.75849891388711,
+          78.1547592383295
+        ],
         "inkAccepted": 7,
-        "inkMean100": [65.43224127380697, 76.21384190132233],
+        "inkMean100": [
+          65.43224127380697,
+          76.21384190132233
+        ],
         "inkImproved": 5,
         "inkRegressed": 2,
         "inkWorstRegression100": 13.41190377406033
       },
       "number/3": {
         "count": 5,
-        "costMean100": [74.63505576736932, 75.94908598620272],
+        "costMean100": [
+          74.63505576736932,
+          75.94908598620272
+        ],
         "inkAccepted": 5,
-        "inkMean100": [69.54660790055168, 77.45380875918472],
+        "inkMean100": [
+          69.54660790055168,
+          77.45380875918472
+        ],
         "inkImproved": 3,
         "inkRegressed": 2,
         "inkWorstRegression100": 6.994197936885216
       },
       "number/0": {
         "count": 6,
-        "costMean100": [77.68576367597288, 78.52712178141137],
+        "costMean100": [
+          77.68576367597288,
+          78.52712178141137
+        ],
         "inkAccepted": 6,
-        "inkMean100": [74.23950122892452, 82.12289561007535],
+        "inkMean100": [
+          74.23950122892452,
+          82.12289561007535
+        ],
         "inkImproved": 4,
         "inkRegressed": 2,
         "inkWorstRegression100": 6.335981049648143
       },
       "number/1": {
         "count": 13,
-        "costMean100": [78.41249381830109, 78.63854657703698],
+        "costMean100": [
+          78.41249381830109,
+          78.63854657703698
+        ],
         "inkAccepted": 13,
-        "inkMean100": [87.15529934776569, 88.10390853355835],
+        "inkMean100": [
+          87.15529934776569,
+          88.10390853355835
+        ],
         "inkImproved": 8,
         "inkRegressed": 5,
         "inkWorstRegression100": 11.070400033583283
       },
       "number/6": {
         "count": 2,
-        "costMean100": [81.5986722446483, 81.34697960136566],
+        "costMean100": [
+          81.5986722446483,
+          81.34697960136566
+        ],
         "inkAccepted": 2,
-        "inkMean100": [57.97119181835663, 62.77957335868945],
+        "inkMean100": [
+          57.97119181835663,
+          62.77957335868945
+        ],
         "inkImproved": 2,
         "inkRegressed": 0,
         "inkWorstRegression100": 0
       },
       "number/4": {
         "count": 13,
-        "costMean100": [78.41167612677609, 79.07280961705604],
+        "costMean100": [
+          78.41167612677609,
+          79.07280961705604
+        ],
         "inkAccepted": 13,
-        "inkMean100": [58.55978800662268, 66.55706130488538],
+        "inkMean100": [
+          58.55978800662268,
+          66.55706130488538
+        ],
         "inkImproved": 13,
         "inkRegressed": 0,
         "inkWorstRegression100": 0
       },
       "number/5": {
         "count": 1,
-        "costMean100": [81.1202672748067, 78.3849390160702],
+        "costMean100": [
+          81.1202672748067,
+          78.3849390160702
+        ],
         "inkAccepted": 1,
-        "inkMean100": [80.0241198410809, 82.47257927269172],
+        "inkMean100": [
+          80.0241198410809,
+          82.47257927269172
+        ],
         "inkImproved": 1,
         "inkRegressed": 0,
         "inkWorstRegression100": 0
@@ -2595,24 +2775,42 @@
           "cohorts": {
             "all": {
               "count": 10,
-              "inkMean100": [85.20190978630092, 85.20190978630092],
-              "costMean100": [64.31762364617764, 64.31762364617764],
+              "inkMean100": [
+                85.20190978630092,
+                85.20190978630092
+              ],
+              "costMean100": [
+                64.31762364617764,
+                64.31762364617764
+              ],
               "improved": 0,
               "regressed": 0,
               "worstRegression100": 0
             },
             "calibration": {
               "count": 5,
-              "inkMean100": [84.3628180111962, 84.3628180111962],
-              "costMean100": [65.47742315237302, 65.47742315237302],
+              "inkMean100": [
+                84.3628180111962,
+                84.3628180111962
+              ],
+              "costMean100": [
+                65.47742315237302,
+                65.47742315237302
+              ],
               "improved": 0,
               "regressed": 0,
               "worstRegression100": 0
             },
             "validation": {
               "count": 5,
-              "inkMean100": [86.04100156140561, 86.04100156140561],
-              "costMean100": [63.15782413998227, 63.15782413998227],
+              "inkMean100": [
+                86.04100156140561,
+                86.04100156140561
+              ],
+              "costMean100": [
+                63.15782413998227,
+                63.15782413998227
+              ],
               "improved": 0,
               "regressed": 0,
               "worstRegression100": 0
@@ -2646,24 +2844,42 @@
           "cohorts": {
             "all": {
               "count": 10,
-              "inkMean100": [80.44917220327974, 89.88455706853007],
-              "costMean100": [69.46715887342803, 71.50790792231729],
+              "inkMean100": [
+                80.44917220327974,
+                89.88455706853007
+              ],
+              "costMean100": [
+                69.46715887342803,
+                71.50790792231729
+              ],
               "improved": 10,
               "regressed": 0,
               "worstRegression100": 0
             },
             "calibration": {
               "count": 5,
-              "inkMean100": [80.0185651372902, 88.20310842378628],
-              "costMean100": [71.40060247579146, 73.87240515673228],
+              "inkMean100": [
+                80.0185651372902,
+                88.20310842378628
+              ],
+              "costMean100": [
+                71.40060247579146,
+                73.87240515673228
+              ],
               "improved": 5,
               "regressed": 0,
               "worstRegression100": 0
             },
             "validation": {
               "count": 5,
-              "inkMean100": [80.87977926926928, 91.56600571327385],
-              "costMean100": [67.5337152710646, 69.1434106879023],
+              "inkMean100": [
+                80.87977926926928,
+                91.56600571327385
+              ],
+              "costMean100": [
+                67.5337152710646,
+                69.1434106879023
+              ],
               "improved": 5,
               "regressed": 0,
               "worstRegression100": 0
@@ -2697,24 +2913,42 @@
           "cohorts": {
             "all": {
               "count": 10,
-              "inkMean100": [92.35937929033766, 92.35937929033766],
-              "costMean100": [62.10343108206771, 62.10343108206771],
+              "inkMean100": [
+                92.35937929033766,
+                92.35937929033766
+              ],
+              "costMean100": [
+                62.10343108206771,
+                62.10343108206771
+              ],
               "improved": 0,
               "regressed": 0,
               "worstRegression100": 0
             },
             "calibration": {
               "count": 5,
-              "inkMean100": [92.82184485815097, 92.82184485815097],
-              "costMean100": [62.28338878171192, 62.28338878171192],
+              "inkMean100": [
+                92.82184485815097,
+                92.82184485815097
+              ],
+              "costMean100": [
+                62.28338878171192,
+                62.28338878171192
+              ],
               "improved": 0,
               "regressed": 0,
               "worstRegression100": 0
             },
             "validation": {
               "count": 5,
-              "inkMean100": [91.8969137225243, 91.8969137225243],
-              "costMean100": [61.92347338242348, 61.92347338242348],
+              "inkMean100": [
+                91.8969137225243,
+                91.8969137225243
+              ],
+              "costMean100": [
+                61.92347338242348,
+                61.92347338242348
+              ],
               "improved": 0,
               "regressed": 0,
               "worstRegression100": 0
@@ -2734,21 +2968,33 @@
         "count": 277,
         "cost": {
           "accepted": 277,
-          "mean100": [72.89456041461757, 72.73268605509948],
+          "mean100": [
+            72.89456041461757,
+            72.73268605509948
+          ],
           "improved": 144,
           "regressed": 133,
           "worstRegression100": 10.78657180539777
         },
         "ink": {
           "accepted": 277,
-          "mean100": [76.71283305071341, 86.50316399370732],
+          "mean100": [
+            76.71283305071341,
+            86.50316399370732
+          ],
           "improved": 242,
           "regressed": 35,
           "worstRegression100": 10.757631303299842
         },
         "geometryAccepted": 277,
-        "centerMedianPx": [1.5461646096066226, 0.9893977018873609],
-        "radiusMedianPx": [0.375, 0.125],
+        "centerMedianPx": [
+          1.5461646096066226,
+          0.9893977018873609
+        ],
+        "radiusMedianPx": [
+          0.375,
+          0.125
+        ],
         "bodyChangedCards": 58,
         "headingChangedCards": 0
       },
@@ -2756,21 +3002,33 @@
         "count": 187,
         "cost": {
           "accepted": 187,
-          "mean100": [73.42059316184185, 73.4964053187244],
+          "mean100": [
+            73.42059316184185,
+            73.4964053187244
+          ],
           "improved": 101,
           "regressed": 86,
           "worstRegression100": 10.608643683089426
         },
         "ink": {
           "accepted": 187,
-          "mean100": [76.850384819731, 86.56762828938056],
+          "mean100": [
+            76.850384819731,
+            86.56762828938056
+          ],
           "improved": 165,
           "regressed": 22,
           "worstRegression100": 10.757631303299842
         },
         "geometryAccepted": 187,
-        "centerMedianPx": [1.5461646096066226, 0.9394300965212825],
-        "radiusMedianPx": [0.375, 0.125],
+        "centerMedianPx": [
+          1.5461646096066226,
+          0.9394300965212825
+        ],
+        "radiusMedianPx": [
+          0.375,
+          0.125
+        ],
         "bodyChangedCards": 42,
         "headingChangedCards": 0
       },
@@ -2778,21 +3036,33 @@
         "count": 90,
         "cost": {
           "accepted": 90,
-          "mean100": [71.80158126205158, 71.14584714067901],
+          "mean100": [
+            71.80158126205158,
+            71.14584714067901
+          ],
           "improved": 43,
           "regressed": 47,
           "worstRegression100": 10.78657180539777
         },
         "ink": {
           "accepted": 90,
-          "mean100": [76.42703104175462, 86.36922151269732],
+          "mean100": [
+            76.42703104175462,
+            86.36922151269732
+          ],
           "improved": 77,
           "regressed": 13,
           "worstRegression100": 6.507829020033817
         },
         "geometryAccepted": 90,
-        "centerMedianPx": [1.5786178842187204, 1.0888133158313282],
-        "radiusMedianPx": [0.375, 0.125],
+        "centerMedianPx": [
+          1.5786178842187204,
+          1.0888133158313282
+        ],
+        "radiusMedianPx": [
+          0.375,
+          0.125
+        ],
         "bodyChangedCards": 16,
         "headingChangedCards": 0
       },
@@ -2800,21 +3070,33 @@
         "count": 46,
         "cost": {
           "accepted": 46,
-          "mean100": [77.38695735917196, 77.94813856004785],
+          "mean100": [
+            77.38695735917196,
+            77.94813856004785
+          ],
           "improved": 31,
           "regressed": 15,
           "worstRegression100": 7.169124958274575
         },
         "ink": {
           "accepted": 46,
-          "mean100": [86.95611083185429, 91.46858025956217],
+          "mean100": [
+            86.95611083185429,
+            91.46858025956217
+          ],
           "improved": 45,
           "regressed": 1,
           "worstRegression100": 0.7186763994385559
         },
         "geometryAccepted": 46,
-        "centerMedianPx": [1.5662455107677085, 1.0851400399257412],
-        "radiusMedianPx": [0.25, 0.125],
+        "centerMedianPx": [
+          1.5662455107677085,
+          1.0851400399257412
+        ],
+        "radiusMedianPx": [
+          0.25,
+          0.125
+        ],
         "bodyChangedCards": 10,
         "headingChangedCards": 0
       },
@@ -2822,21 +3104,33 @@
         "count": 46,
         "cost": {
           "accepted": 46,
-          "mean100": [76.11528609926721, 75.9265220707022],
+          "mean100": [
+            76.11528609926721,
+            75.9265220707022
+          ],
           "improved": 23,
           "regressed": 23,
           "worstRegression100": 6.6888416671010535
         },
         "ink": {
           "accepted": 46,
-          "mean100": [90.52765603714286, 90.48302568021612],
+          "mean100": [
+            90.52765603714286,
+            90.48302568021612
+          ],
           "improved": 22,
           "regressed": 24,
           "worstRegression100": 6.071801522419884
         },
         "geometryAccepted": 46,
-        "centerMedianPx": [1.507790034524179, 0.929161851282224],
-        "radiusMedianPx": [0.375, 0.125],
+        "centerMedianPx": [
+          1.507790034524179,
+          0.929161851282224
+        ],
+        "radiusMedianPx": [
+          0.375,
+          0.125
+        ],
         "bodyChangedCards": 3,
         "headingChangedCards": 0
       },
@@ -2844,21 +3138,33 @@
         "count": 46,
         "cost": {
           "accepted": 46,
-          "mean100": [72.46681542523743, 71.56906002188849],
+          "mean100": [
+            72.46681542523743,
+            71.56906002188849
+          ],
           "improved": 20,
           "regressed": 26,
           "worstRegression100": 9.830372414670553
         },
         "ink": {
           "accepted": 46,
-          "mean100": [76.87474863500753, 81.36432368371152],
+          "mean100": [
+            76.87474863500753,
+            81.36432368371152
+          ],
           "improved": 46,
           "regressed": 0,
           "worstRegression100": 0
         },
         "geometryAccepted": 46,
-        "centerMedianPx": [1.718369656136578, 1.1553251015363921],
-        "radiusMedianPx": [0.375, 0],
+        "centerMedianPx": [
+          1.718369656136578,
+          1.1553251015363921
+        ],
+        "radiusMedianPx": [
+          0.375,
+          0
+        ],
         "bodyChangedCards": 9,
         "headingChangedCards": 0
       },
@@ -2866,21 +3172,33 @@
         "count": 46,
         "cost": {
           "accepted": 46,
-          "mean100": [69.11073604022341, 69.40214764799381],
+          "mean100": [
+            69.11073604022341,
+            69.40214764799381
+          ],
           "improved": 27,
           "regressed": 19,
           "worstRegression100": 10.78657180539777
         },
         "ink": {
           "accepted": 46,
-          "mean100": [67.71050438956667, 88.54438674578748],
+          "mean100": [
+            67.71050438956667,
+            88.54438674578748
+          ],
           "improved": 46,
           "regressed": 0,
           "worstRegression100": 0
         },
         "geometryAccepted": 46,
-        "centerMedianPx": [1.5461646096066226, 1.0625513036450964],
-        "radiusMedianPx": [0.375, 0.25],
+        "centerMedianPx": [
+          1.5461646096066226,
+          1.0625513036450964
+        ],
+        "radiusMedianPx": [
+          0.375,
+          0.25
+        ],
         "bodyChangedCards": 9,
         "headingChangedCards": 0
       },
@@ -2888,21 +3206,33 @@
         "count": 46,
         "cost": {
           "accepted": 46,
-          "mean100": [65.0974661354879, 62.92882807399312],
+          "mean100": [
+            65.0974661354879,
+            62.92882807399312
+          ],
           "improved": 12,
           "regressed": 34,
           "worstRegression100": 10.183727656623232
         },
         "ink": {
           "accepted": 46,
-          "mean100": [68.07945195526986, 89.81874572929289],
+          "mean100": [
+            68.07945195526986,
+            89.81874572929289
+          ],
           "improved": 46,
           "regressed": 0,
           "worstRegression100": 0
         },
         "geometryAccepted": 46,
-        "centerMedianPx": [1.5650996611745183, 0.8501325933933956],
-        "radiusMedianPx": [0.25, 0],
+        "centerMedianPx": [
+          1.5650996611745183,
+          0.8501325933933956
+        ],
+        "radiusMedianPx": [
+          0.25,
+          0
+        ],
         "bodyChangedCards": 4,
         "headingChangedCards": 0
       },
@@ -2910,21 +3240,33 @@
         "count": 47,
         "cost": {
           "accepted": 47,
-          "mean100": [77.09870693866425, 78.4961277453149],
+          "mean100": [
+            77.09870693866425,
+            78.4961277453149
+          ],
           "improved": 31,
           "regressed": 16,
           "worstRegression100": 4.190319779527119
         },
         "ink": {
           "accepted": 47,
-          "mean100": [70.26861808512605, 77.5348844621851],
+          "mean100": [
+            70.26861808512605,
+            77.5348844621851
+          ],
           "improved": 37,
           "regressed": 10,
           "worstRegression100": 10.757631303299842
         },
         "geometryAccepted": 47,
-        "centerMedianPx": [1.4252192813739224, 0.8646720837982407],
-        "radiusMedianPx": [0.375, 0.125],
+        "centerMedianPx": [
+          1.4252192813739224,
+          0.8646720837982407
+        ],
+        "radiusMedianPx": [
+          0.375,
+          0.125
+        ],
         "bodyChangedCards": 23,
         "headingChangedCards": 0
       }
@@ -2938,18 +3280,29 @@
     "source": "2ed-original-cost-verification.json.gz",
     "id": "d5f7044e-3b91-42ac-91ec-56e17cd72274",
     "name": "Drain Life",
-    "beforeMana": ["X", "1", "B"],
-    "afterMana": ["1", "B"],
+    "beforeMana": [
+      "X",
+      "1",
+      "B"
+    ],
+    "afterMana": [
+      "1",
+      "B"
+    ],
     "outsideHeaderChangedPixels": 0,
     "bodyChangedPixels": 0,
     "faceAlphaChangedPixels": 0,
     "rightmostTwoPipsChangedBytes": 0,
-    "unionWindowScores100": [71.07712801820244, 72.72195791396886, 66.74581082095355],
+    "unionWindowScores100": [
+      71.07712801820244,
+      72.72195791396886,
+      66.74581082095355
+    ],
     "relatedEarlyPrintingsReviewed": 8,
     "missingCorrectionsAdded": 4,
     "unrelatedWordingGroupsUnchanged": 2520,
     "oracleUnchanged": true,
-    "scope": "Exact cached headers confirm 1B in Alpha, Beta, Unlimited, Collector\u2019s Edition, International Collector\u2019s Edition, Revised, Summer and Fourth. Four missing reviews are added; the other four retain their existing sources. The corrected Unlimited native control changes only the header, and 1B pip pixels remain byte-identical. Oracle X1B is preserved. Historical full-face records with the extra X are not current original-render certification."
+    "scope": "Exact cached headers confirm 1B in Alpha, Beta, Unlimited, Collector’s Edition, International Collector’s Edition, Revised, Summer and Fourth. Four missing reviews are added; the other four retain their existing sources. The corrected Unlimited native control changes only the header, and 1B pip pixels remain byte-identical. Oracle X1B is preserved. Historical full-face records with the extra X are not current original-render certification."
   },
   "assetsToReview": [
     {
@@ -3078,12 +3431,36 @@
       "source": "2ed-dual-pinline-palette-replay.json.gz",
       "selected": "pinline-fixed-edge",
       "palette": {
-        "W": [0.8059616047216823, 0.7620219239775382, 0.7475212865587831],
-        "U": [0.28253787343382203, 0.45177042542938184, 0.5530133512539952],
-        "B": [0.4074429619590483, 0.41229679075456604, 0.38333422342765877],
-        "R": [0.5959403337963363, 0.35462688819381655, 0.3639452613896898],
-        "G": [0.5076388990491424, 0.5671906788471864, 0.4174668900213387],
-        "edge": [0.18, 0.18, 0.17]
+        "W": [
+          0.8059616047216823,
+          0.7620219239775382,
+          0.7475212865587831
+        ],
+        "U": [
+          0.28253787343382203,
+          0.45177042542938184,
+          0.5530133512539952
+        ],
+        "B": [
+          0.4074429619590483,
+          0.41229679075456604,
+          0.38333422342765877
+        ],
+        "R": [
+          0.5959403337963363,
+          0.35462688819381655,
+          0.3639452613896898
+        ],
+        "G": [
+          0.5076388990491424,
+          0.5671906788471864,
+          0.4174668900213387
+        ],
+        "edge": [
+          0.18,
+          0.18,
+          0.17
+        ]
       },
       "summary": {
         "pinline-palette": {
@@ -3212,30 +3589,97 @@
     "source": "2ed-land-material-replay.json.gz",
     "currentDefaultControls": 25,
     "priorMaterialControls": 25,
-    "outlineSourceChanges": ["Tundra", "Volcanic Island"],
+    "outlineSourceChanges": [
+      "Tundra",
+      "Volcanic Island"
+    ],
     "brownHsb": {
       "hueDegrees": 12.699142834132203,
       "saturationScale": 0.8443206155567071,
       "brightnessScale": 1.0561321379230946
     },
     "blackPoint": {
-      "lift": [0, 0, 0],
+      "lift": [
+        0,
+        0,
+        0
+      ],
       "transition": 0.5,
       "texture": [
-        [0, [0, 0, 0]],
-        [0.2784313725490196, [-0.1, -0.08308823529411764, -0.10808823529411764]],
-        [0.42, [0, 0, 0]],
-        [1, [0, 0, 0]]
+        [
+          0,
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          0.2784313725490196,
+          [
+            -0.1,
+            -0.08308823529411764,
+            -0.10808823529411764
+          ]
+        ],
+        [
+          0.42,
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            0,
+            0
+          ]
+        ]
       ]
     },
     "mountainBlackPoint": {
-      "lift": [0, 0, 0],
+      "lift": [
+        0,
+        0,
+        0
+      ],
       "transition": 0.5,
       "texture": [
-        [0, [0, 0, 0]],
-        [0.2784313725490196, [-0.03333333333333333, -0.027696078431372548, -0.03602941176470588]],
-        [0.42, [0, 0, 0]],
-        [1, [0, 0, 0]]
+        [
+          0,
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          0.2784313725490196,
+          [
+            -0.03333333333333333,
+            -0.027696078431372548,
+            -0.03602941176470588
+          ]
+        ],
+        [
+          0.42,
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          1,
+          [
+            0,
+            0,
+            0
+          ]
+        ]
       ]
     },
     "mountainStrength": "land-tone-025",
@@ -3371,7 +3815,9 @@
       }
     },
     "runtimeAdopted": true,
-    "remaining": ["Complete final release checks and publish matching renderer/score revision"],
+    "remaining": [
+      "Complete final release checks and publish matching renderer/score revision"
+    ],
     "finalCandidateWholeCard": {
       "all": {
         "count": 302,
@@ -4772,24 +5218,137 @@
     "profileReviewOnlySourceChange": [
       "games/magic/src/calibration/sets/2ed.ts",
       "games/magic/src/data/generated-manifest.json"
-    ]
+    ],
+    "historicalControlFaces": 302,
+    "unchangedOriginalFaces": 289,
+    "artistOnlyOriginalChanges": 13,
+    "finalEvidence": "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-release-replay.json.gz",
+    "rendererHash": "e913686c3355ed42b0a8ed5533bbb1d1ac3741929ede4fe3f1dccda89a32a826"
   },
   "finalArtistAudit": {
-    "status": "13-exact-printing-reviews-recorded-not-yet-replayed",
+    "status": "13-corrections-native-and-public-api-verified",
     "source": "games/magic/fixtures/accuracy/2ed/annotations-artist-final.json",
     "reviewedNames": 37,
     "correctionCount": 13,
     "spellings": {
       "Melissa A. Benson": "Melissa Benson",
-      "Tom W\u00e4nerstrand": "Tom Wanerstrand",
-      "Brian Sn\u00f5ddy": "Brian Snoddy"
+      "Tom Wänerstrand": "Tom Wanerstrand",
+      "Brian Snõddy": "Brian Snoddy"
     },
     "required": [
-      "Generate reviewed public catalog",
-      "Load artist-only reviews in the accuracy adapter",
-      "Replay corrected original and oracle artist credits",
-      "Refresh scores for the changed credits and release evidence"
+      "Publish checked renderer and matching report"
     ],
     "scope": "Existing 906-face replay and 70.760959/100 index precede these thirteen wording corrections. Preserve old evidence unchanged and obtain fresh source-bound final records."
+  },
+  "finalWholeCard": {
+    "source": "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-release-replay.json.gz",
+    "summary": {
+      "count": 302,
+      "components": {
+        "structural100": {
+          "count": 302,
+          "beforeMean": 61.4926409914524,
+          "afterMean": 70.7609591816934,
+          "beforeMedian": 61.10836569154414,
+          "afterMedian": 71.07599088534113,
+          "beforeLowerDecile": 52.10809459700596,
+          "afterLowerDecile": 62.88140390074188,
+          "improved": 278,
+          "regressed": 24,
+          "worstRegression": 7.081300134639996
+        },
+        "title": {
+          "count": 302,
+          "beforeMean": 67.53812861641468,
+          "afterMean": 71.26904981394242,
+          "beforeMedian": 67.2972142212239,
+          "afterMedian": 70.95379596778139,
+          "beforeLowerDecile": 59.65625317724781,
+          "afterLowerDecile": 61.23739054983897,
+          "improved": 213,
+          "regressed": 89,
+          "worstRegression": 24.587707203763365
+        },
+        "mana": {
+          "count": 277,
+          "beforeMean": 73.84827866513027,
+          "afterMean": 82.92036767815335,
+          "beforeMedian": 73.64942830168887,
+          "afterMedian": 85.25703896849508,
+          "beforeLowerDecile": 61.48259010219908,
+          "afterLowerDecile": 71.25583094714125,
+          "improved": 219,
+          "regressed": 58,
+          "worstRegression": 30.371594074171625
+        },
+        "type": {
+          "count": 302,
+          "beforeMean": 69.23814867693781,
+          "afterMean": 75.77192819763624,
+          "beforeMedian": 71.1481987278373,
+          "afterMedian": 77.43280700171276,
+          "beforeLowerDecile": 55.30302181803774,
+          "afterLowerDecile": 60.61050476901166,
+          "improved": 237,
+          "regressed": 65,
+          "worstRegression": 24.815586777207272
+        },
+        "rules": {
+          "count": 302,
+          "beforeMean": 48.92667481962211,
+          "afterMean": 61.54244705210947,
+          "beforeMedian": 49.05164039261834,
+          "afterMedian": 61.03246002483587,
+          "beforeLowerDecile": 34.243972668764705,
+          "afterLowerDecile": 48.317966762517074,
+          "improved": 270,
+          "regressed": 32,
+          "worstRegression": 9.009525834782451
+        },
+        "stats": {
+          "count": 92,
+          "beforeMean": 65.5798178632079,
+          "afterMean": 76.59585769802673,
+          "beforeMedian": 67.41856560466022,
+          "afterMedian": 78.68406309174031,
+          "beforeLowerDecile": 49.326101910066555,
+          "afterLowerDecile": 62.40604166298763,
+          "improved": 81,
+          "regressed": 11,
+          "worstRegression": 12.182576800862051
+        },
+        "frame": {
+          "count": 299,
+          "beforeMean": 63.66983912504991,
+          "afterMean": 76.14155606466306,
+          "beforeMedian": 62.42405151523073,
+          "afterMedian": 77.14817894964729,
+          "beforeLowerDecile": 45.849098240187644,
+          "afterLowerDecile": 65.48292837049615,
+          "improved": 248,
+          "regressed": 51,
+          "worstRegression": 34.19448258738699
+        },
+        "art": {
+          "count": 302,
+          "beforeMean": 69.78653126292558,
+          "afterMean": 69.70704908664794,
+          "beforeMedian": 69.95649972031993,
+          "afterMedian": 69.83184314799308,
+          "beforeLowerDecile": 63.26535471954864,
+          "afterLowerDecile": 63.26535471954864,
+          "improved": 9,
+          "regressed": 16,
+          "worstRegression": 5.61717975535673
+        }
+      }
+    },
+    "reuse": {
+      "current": 302,
+      "candidate": 302,
+      "freshCurrent": 0,
+      "freshCandidate": 0
+    },
+    "scope": "Structural index70.760959/100; all302 retained. Current metric excludes unverified legal/credit region from aggregate. Artist placement/appearance and exact credit strings have separate native fit, metadata and pixel-isolation evidence."
   }
 }

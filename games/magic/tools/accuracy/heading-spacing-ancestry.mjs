@@ -1,3 +1,4 @@
+import { artistReviewSource } from './artist-review-ancestry.mjs';
 import { profilePreparationSource } from './profile-preparation-ancestry.mjs';
 import { preWalkerSource } from './planeswalker-reconstruction/ancestry.mjs';
 import assert from 'node:assert/strict';
@@ -6,6 +7,9 @@ import { hash } from './common.mjs';
 const PROOF_HASH = '3b618060de80e27cc22e7b3e55244da5a80054dcef8e992a009579af8bfdf149';
 let checked;
 export async function preHeadingSpacingSource(file, bytes, set) {
+  const artist = await artistReviewSource(file, bytes, set);
+  if (artist.changed) return artist.bytes;
+  bytes = artist.bytes;
   const prepared = await profilePreparationSource(file, bytes, set);
   if (prepared.changedProfile) return prepared.bytes;
   bytes = prepared.bytes;

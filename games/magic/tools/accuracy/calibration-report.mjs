@@ -1,3 +1,4 @@
+import { artistReviewSource } from './artist-review-ancestry.mjs';
 import {
   preEarlyCalibrationSource,
   earlyCalibrationAffected,
@@ -59,11 +60,16 @@ export async function calibrationReport(ledger) {
           if (!checked.has(guardKey)) {
             try {
               const bytes = await readFile(root + '/' + file);
-              const early = earlyAffected
-                ? bytes
-                : await preEarlyCalibrationSource(file, bytes, set.set);
+              const artist = await artistReviewSource(file, bytes, set.set);
+              const changedArtist = artist.changed;
+              const early =
+                earlyAffected || changedArtist
+                  ? artist.bytes
+                  : await preEarlyCalibrationSource(file, artist.bytes, set.set);
               const scoped =
-                earlyAffected || changedScope ? early : await preWalkerSource(file, early);
+                earlyAffected || changedArtist || changedScope
+                  ? early
+                  : await preWalkerSource(file, early);
               const ancestral =
                 file === 'games/magic/src/presentation/retro-paint.ts'
                   ? await preAlphaEditorSource(file, scoped, set.set)
@@ -74,7 +80,9 @@ export async function calibrationReport(ledger) {
                   hash(bytes),
                   hash(early),
                   hash(scoped),
-                  hash(await compatibleHostWorkerSource(file, ancestral)),
+                  hash(
+                    changedArtist ? ancestral : await compatibleHostWorkerSource(file, ancestral),
+                  ),
                 ]),
               );
             } catch (error) {

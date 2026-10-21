@@ -1,3 +1,4 @@
+import { checkSourceCensus } from './calibration-census.mjs';
 import assert from 'node:assert/strict';
 
 /** Completion is evidence-based, not the presence of an override. Keep this
@@ -71,12 +72,17 @@ export function calibrationTaskStatus(group, task) {
     `Incomplete or inconsistent printing coverage: ${task}`,
   );
   if (task !== 'release') {
+    if (proof.validationKind === 'source-census') checkSourceCensus(group, proof);
+    else {
+      assert.ok(
+        proof.calibrationNames >= 3 && proof.validationNames >= 3,
+        `Insufficient independent names; record a validated family transfer instead: ${task}`,
+      );
+    }
     assert.ok(
-      proof.calibrationNames >= 3 && proof.validationNames >= 3,
-      `Insufficient independent names; record a validated family transfer instead: ${task}`,
-    );
-    assert.ok(
-      ['fresh', 'reused-development', 'family-transfer'].includes(proof.validationKind),
+      ['fresh', 'reused-development', 'family-transfer', 'source-census'].includes(
+        proof.validationKind,
+      ),
       `Missing validation independence label: ${task}`,
     );
     assert.ok(

@@ -297,3 +297,71 @@ assert.equal(alteredReport.originalTypeInputs.stale, first.printings);
 console.log(
   'Calibration ledger: full inventory, completion gates, stale evidence and foil denominators passed.',
 );
+
+// Exhaustive one-name families disclose development reuse; no fake holdout.
+const censusGroup = {
+  ...group,
+  printings: 1,
+  printingIds: ['one-printing'],
+  references: { nonfoil: 1, foilOnly: 0 },
+};
+const censusProof = {
+  ...proof,
+  coveredPrintings: 1,
+  calibrationNames: 1,
+  validationNames: 1,
+  validationKind: 'source-census',
+  sourceCensus: {
+    scope: 'all-ordinary-printings-in-variant',
+    heldOut: false,
+    names: ['Plains'],
+    parametersHash: h,
+    parameterScope: 'Shared printing profile and material; no per-scan renderer offsets',
+    members: [
+      {
+        id: 'one-printing',
+        name: 'Plains',
+        referenceHash: h,
+        poseHash: h,
+        inputHash: h,
+        nativeFaceHash: h,
+      },
+    ],
+  },
+};
+const censusTask = { ...group.tasks.rules, proof: censusProof };
+assert.equal(
+  calibrationTaskStatus({ ...censusGroup, tasks: { rules: censusTask } }, 'rules').status,
+  'validated',
+);
+for (const change of [
+  { heldOut: true },
+  { members: [] },
+  { members: [...censusProof.sourceCensus.members, ...censusProof.sourceCensus.members] },
+  { names: ['Different name'] },
+  { parametersHash: '' },
+  { members: [{ ...censusProof.sourceCensus.members[0], nativeFaceHash: '' }] },
+])
+  assert.throws(() =>
+    calibrationTaskStatus(
+      {
+        ...censusGroup,
+        tasks: {
+          rules: {
+            ...censusTask,
+            proof: { ...censusProof, sourceCensus: { ...censusProof.sourceCensus, ...change } },
+          },
+        },
+      },
+      'rules',
+    ),
+  );
+assert.throws(() =>
+  calibrationTaskStatus(
+    { ...censusGroup, references: { nonfoil: 0, foilOnly: 1 }, tasks: { rules: censusTask } },
+    'rules',
+  ),
+);
+console.log(
+  'Finite source census requires every exact native member and discloses that no holdout exists.',
+);

@@ -1,0 +1,2493 @@
+{
+  "schema": 1,
+  "scope": "Exact artist-only metadata helper differential, all 182 existing public reviews unchanged and thirteen exact Unlimited additions. Unknown ids preserve empty result; new rows reject stale scans and wrong sets. No pixel/score approval for changed Unlimited credits.",
+  "base": "876874a",
+  "file": "games/magic/tools/accuracy/printed-artist.mjs",
+  "before": "b9246df0f1a5f37cb2283e6ba510e72434d4f281c0a7b3d5fe87184f389f7c7f",
+  "after": "e8ddc5392734ab1c2217118101e3db57037dd59cbf07b3add095ab2c1a0d987e",
+  "newData": {
+    "file": "games/magic/fixtures/accuracy/2ed/annotations-artist-final.json",
+    "sha256": "bbc60881c4cc89a420edbb9e9f788351b450af9bff4d19659f4074162174ec79"
+  },
+  "beforeSource": "import fixture from '../../fixtures/accuracy/planar-artist-review.json' with { type: 'json' };\nimport early from '../../fixtures/accuracy/early-expansion-footer-wording.json' with { type: 'json' };\n\nimport alpha from '../../fixtures/accuracy/lea/annotations.json' with { type: 'json' };\nimport alphaCredits from '../../fixtures/accuracy/lea/annotations-artist-credit.json' with { type: 'json' };\n\nimport betaCredits from '../../fixtures/accuracy/leb/annotations-artist-credit.json' with { type: 'json' };\nimport unlimited from '../../fixtures/accuracy/2ed/annotations.json' with { type: 'json' };\nimport unlimitedCredits from '../../fixtures/accuracy/2ed/annotations-artist-credit.json' with { type: 'json' };\n\nconst credits = new Map([\n  ...[alpha, alphaCredits, betaCredits, unlimited, unlimitedCredits].flatMap((review) =>\n    Object.entries(review.cards)\n      .filter(([, row]) => row.reviewedFields?.includes('artist'))\n      .map(([id, row]) => [id, { ...row, set: review.set, printedArtist: row.artist }]),\n  ),\n  ...fixture.rows.map((row) => [row.id, { ...row, set: fixture.set }]),\n  ...early.rows.filter((row) => !row.artistMatchesProvider).map((row) => [row.id, row]),\n]);\n\n/** Exact physical credits, separate from providers' canonical artist metadata.\n * Partial review certifies only the artist, never legal text or body wording. */\nexport function printedArtistAnnotation(entry) {\n  const row = credits.get(entry.card.id);\n  if (!row || !entry.reference) return {};\n  if (\n    entry.card.set !== row.set ||\n    (row.number != null && entry.card.collector_number !== row.number) ||\n    entry.card.name !== row.name ||\n    entry.reference.sha256 !== row.referenceHash\n  )\n    throw Error(`Printed artist credit review is stale for ${entry.card.name}`);\n  return {\n    artist: row.printedArtist,\n    referenceHash: row.referenceHash,\n    reviewedFields: ['artist'],\n  };\n}\n",
+  "rows": [
+    {
+      "id": "005a993c-5111-4364-9fba-75b3d94a8296",
+      "set": "2ed",
+      "name": "Mountain",
+      "referenceHash": "d7300afc83d0f48efda9ff7e5b563bd2c2e304000bee6c0624004877e3ac4953",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "d7300afc83d0f48efda9ff7e5b563bd2c2e304000bee6c0624004877e3ac4953",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "d7300afc83d0f48efda9ff7e5b563bd2c2e304000bee6c0624004877e3ac4953",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "008df307-f010-47bc-8548-65a1c7b1c4b8",
+      "set": "4ed",
+      "name": "Spell Blast",
+      "referenceHash": "c067946e3333229411c2ec20897807bb8d4b1735cab3721b01b18b97eb469a85",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "0261cd0f-e763-49b5-96ed-5e5767a3d8d7",
+      "set": "4ed",
+      "name": "Fire Elemental",
+      "referenceHash": "777f76f50b39bea8a8b9cc24540995c4b37c19318f69ac1cf2a2417abe682b29",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "0401bd23-9f81-40b7-a6c2-e3f9847d175c",
+      "set": "fem",
+      "name": "Farrel's Zealot",
+      "referenceHash": "a1cb64f674f10b9773cab0e41e892e06c01c07eba181924f903ee2ad25dacd87",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "05362cde-3b0b-4a8d-9875-675cfac52e4a",
+      "set": "chr",
+      "name": "Nicol Bolas",
+      "referenceHash": "abb75825c7aef03a9b4be9b059b28290c0796108bb40614e7b0a38f384c0bcfd",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "06883fd2-eccd-47c6-8c34-10d95e923685",
+      "set": "fem",
+      "name": "Tourach's Chant",
+      "referenceHash": "cb32b07ed4c5c554c780b49a1f8d5bff350a253a589284ca3ece1de37f889a22",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "0987461a-45c0-4956-8627-cd27a7e038d0",
+      "set": "atq",
+      "name": "Shatterstorm",
+      "referenceHash": "8513aabea9a766a542985505212adde1a6e5c2f62bd40a299d350ee9136c7dfd",
+      "before": {
+        "artist": "Mark Poole",
+        "referenceHash": "8513aabea9a766a542985505212adde1a6e5c2f62bd40a299d350ee9136c7dfd",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Mark Poole",
+        "referenceHash": "8513aabea9a766a542985505212adde1a6e5c2f62bd40a299d350ee9136c7dfd",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "0a681487-951d-4ff1-ab08-bc173ea022e8",
+      "set": "2ed",
+      "name": "Unsummon",
+      "referenceHash": "7c45eb4ee0d3b70b26ef803ea12f7a1796b08e0b3b3d68308181e640cc4d3426",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "7c45eb4ee0d3b70b26ef803ea12f7a1796b08e0b3b3d68308181e640cc4d3426",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "7c45eb4ee0d3b70b26ef803ea12f7a1796b08e0b3b3d68308181e640cc4d3426",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "0bbfd6aa-2fc9-4628-aa17-3ff0c30dc804",
+      "set": "plc",
+      "name": "Serendib Sorcerer",
+      "referenceHash": "72e109b3c33a46093295a28fd44aa6dce36993f1afa93a37d0a728bc2408bcf9",
+      "before": {
+        "artist": "Dan Scott",
+        "referenceHash": "72e109b3c33a46093295a28fd44aa6dce36993f1afa93a37d0a728bc2408bcf9",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Dan Scott",
+        "referenceHash": "72e109b3c33a46093295a28fd44aa6dce36993f1afa93a37d0a728bc2408bcf9",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "0d24fc87-7b30-4c99-a525-b1746821391c",
+      "set": "2ed",
+      "name": "Timber Wolves",
+      "referenceHash": "ecf75b18877fd4b06b1a122419c6ee7cc648c1ed31098a2c351e49ff80abda8d",
+      "before": {},
+      "after": {
+        "artist": "Melissa Benson",
+        "referenceHash": "ecf75b18877fd4b06b1a122419c6ee7cc648c1ed31098a2c351e49ff80abda8d",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "0e9ad288-d164-44a6-96ec-4185a1587f1a",
+      "set": "arn",
+      "name": "Abu Ja'far",
+      "referenceHash": "6852a3a4b3ac3955e332709d26ba26eb9b9a0ce77fc48e20564079e08043356f",
+      "before": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "6852a3a4b3ac3955e332709d26ba26eb9b9a0ce77fc48e20564079e08043356f",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "6852a3a4b3ac3955e332709d26ba26eb9b9a0ce77fc48e20564079e08043356f",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "0ea81883-7cd6-4443-9733-39d25cc64328",
+      "set": "chr",
+      "name": "Palladia-Mors",
+      "referenceHash": "fcdb87b2d8d5379cebaea6f5f76ec08d65e2cd63b50156828e2207857de3725e",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "0faa005e-c753-4484-bf64-349350d59094",
+      "set": "plc",
+      "name": "Retether",
+      "referenceHash": "ede4d5b2116bebebe84c2894bd77a52aefd3b1c49c03bb3130b7e9a4670a1c20",
+      "before": {
+        "artist": "Dan Scott",
+        "referenceHash": "ede4d5b2116bebebe84c2894bd77a52aefd3b1c49c03bb3130b7e9a4670a1c20",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Dan Scott",
+        "referenceHash": "ede4d5b2116bebebe84c2894bd77a52aefd3b1c49c03bb3130b7e9a4670a1c20",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "113d518a-2ce9-4747-9e6f-c6a464a78a49",
+      "set": "2ed",
+      "name": "Dwarven Warriors",
+      "referenceHash": "62abd4e4077acaf4dff0b24913caedba86cad3843bef689b8481eb070c4c7df8",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "62abd4e4077acaf4dff0b24913caedba86cad3843bef689b8481eb070c4c7df8",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "62abd4e4077acaf4dff0b24913caedba86cad3843bef689b8481eb070c4c7df8",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "11600105-56c6-4073-a4a6-8469030b39c9",
+      "set": "lea",
+      "name": "Benalish Hero",
+      "referenceHash": "6e5de4ef1b34ef601791e962bbfc90f8e57833953295e131cac04347f61cee98",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "1301e203-7d9a-4735-8db3-7882ad70d343",
+      "set": "4ed",
+      "name": "Land Tax",
+      "referenceHash": "1cfc92876fd226a48e56aaaf0ba8fd25102c825a82b4104808ca34ad67c41e0c",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "138db623-393d-485a-8fa8-f1b1b933fce5",
+      "set": "4ed",
+      "name": "Psychic Venom",
+      "referenceHash": "e716c0c9975792623db6a8076ad64951da8ea46a10e6cc7d18a9d88f96e76e70",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "16137fa6-1b5c-49e7-ad79-dda4b7019a59",
+      "set": "leb",
+      "name": "Weakness",
+      "referenceHash": "2db1b1232e0747120842c2065d98af46cd018959ebda50364efc0c63c53795bf",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "2db1b1232e0747120842c2065d98af46cd018959ebda50364efc0c63c53795bf",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "2db1b1232e0747120842c2065d98af46cd018959ebda50364efc0c63c53795bf",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "1941cf19-b1f6-4148-a1de-6d03531f2f1c",
+      "set": "2ed",
+      "name": "Serra Angel",
+      "referenceHash": "bc24665f390b3d00037fbe994179985ab65ff96e44a7d9a1d1ce042ecf371417",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "bc24665f390b3d00037fbe994179985ab65ff96e44a7d9a1d1ce042ecf371417",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "bc24665f390b3d00037fbe994179985ab65ff96e44a7d9a1d1ce042ecf371417",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "1a96315d-edc6-4d68-a260-d14f61281dc1",
+      "set": "lea",
+      "name": "Mountain",
+      "referenceHash": "fe190f5fc305e992c5b0f3f32047dfa5f4e170fba20373bccba2304e8e74f4c6",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "1c1c781d-1f27-40e3-9d79-0ebb6677e835",
+      "set": "leb",
+      "name": "Unholy Strength",
+      "referenceHash": "0d4f23ad60245748851ba11c3a0024cd246bea3e6352c2bd509106c6761bb9c3",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "0d4f23ad60245748851ba11c3a0024cd246bea3e6352c2bd509106c6761bb9c3",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "0d4f23ad60245748851ba11c3a0024cd246bea3e6352c2bd509106c6761bb9c3",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "1d51a6de-7bb4-4e3d-82a7-a298c8d742ef",
+      "set": "4ed",
+      "name": "Oasis",
+      "referenceHash": "81669939f414252bdce6cfa902ab180f241b176c31f62ac0a1298ee1dd33df1f",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "1df0c902-3fe1-4de7-9777-7ddb563b6cec",
+      "set": "4ed",
+      "name": "Spirit Shackle",
+      "referenceHash": "bdcaff40537c42835cc00f0af75c1cd859ed32f030cc0eb6562e0b902c064ed1",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "210c4a90-fc7a-4c76-aeaa-20a005e45386",
+      "set": "lea",
+      "name": "Lord of Atlantis",
+      "referenceHash": "d72d1b6a5b65c90b5179708919640764e9399aeb7023e3dd2738a8eea39fb98c",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "21551cb6-3a53-42dd-9bbd-4bc56304d6d3",
+      "set": "lea",
+      "name": "Force of Nature",
+      "referenceHash": "f9990bb4ee3baaa9b7e0f137d71b805a99d234acfab05b9a938b9b57ad92bb28",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "21fa636b-8ce8-40b6-a4d0-3191a664bd92",
+      "set": "chr",
+      "name": "Xira Arien",
+      "referenceHash": "78abda0e13ea99a31a4eab170c6602fa6348303f5fb17e976d32e5f8c9708d40",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "22e6e890-d1d0-4a9b-a453-5b51974a9dff",
+      "set": "4ed",
+      "name": "Segovian Leviathan",
+      "referenceHash": "633028113b4670da6633c55ab7673295e982d1849d2784fc0e97f91bbddbfbcd",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "247a2ba4-aa5d-4970-b886-90196f684f80",
+      "set": "2ed",
+      "name": "Force of Nature",
+      "referenceHash": "46834d1565854660acff85eeb096a0d0b8d3730f057cf7983fbd9c9104d1e33c",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "46834d1565854660acff85eeb096a0d0b8d3730f057cf7983fbd9c9104d1e33c",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "46834d1565854660acff85eeb096a0d0b8d3730f057cf7983fbd9c9104d1e33c",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "29dc1596-a2e7-4d60-9f99-89babaef8a06",
+      "set": "lea",
+      "name": "Icy Manipulator",
+      "referenceHash": "d03eadbd22dcaaff11a40ade1f8c96b749e7702b9068428889824d24d462fd50",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "2c3c0f74-485e-4b21-8f41-56666a7d0005",
+      "set": "2ed",
+      "name": "Mountain",
+      "referenceHash": "3ca99a3f8b57e9b0a695330bf79d12e4e56a7bc84f94b76fd4a3dc847fd7c9d2",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "3ca99a3f8b57e9b0a695330bf79d12e4e56a7bc84f94b76fd4a3dc847fd7c9d2",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "3ca99a3f8b57e9b0a695330bf79d12e4e56a7bc84f94b76fd4a3dc847fd7c9d2",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "2d4d87a3-5f8b-4152-9a8b-538ab49d62e8",
+      "set": "lea",
+      "name": "Dwarven Warriors",
+      "referenceHash": "cfd1d506cef89dde848bd2087fad4d33f827dc18b7ab8bad211fdbe711512e3c",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "2ff21a6f-83a7-4bf3-a078-294e303232cc",
+      "set": "lea",
+      "name": "Uthden Troll",
+      "referenceHash": "09e8ca016ab1f98979ce9d3d1c3eac4639e97db473d7b251f21bbb51a5e01756",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "309cd081-13bb-428b-b561-60b7a81c0f1d",
+      "set": "2ed",
+      "name": "Northern Paladin",
+      "referenceHash": "cf1249887351c4bde85593b03d8af49ddf94452230820f16b9ec7830166c4318",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "cf1249887351c4bde85593b03d8af49ddf94452230820f16b9ec7830166c4318",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "cf1249887351c4bde85593b03d8af49ddf94452230820f16b9ec7830166c4318",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "30bb1158-fe16-49e6-9b7a-44b7bee84737",
+      "set": "2ed",
+      "name": "Uthden Troll",
+      "referenceHash": "2c6c76fc86b1a196594f55e5ff9f82c1b6abebea544c8e6a1a478d74781bfd9e",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "2c6c76fc86b1a196594f55e5ff9f82c1b6abebea544c8e6a1a478d74781bfd9e",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "2c6c76fc86b1a196594f55e5ff9f82c1b6abebea544c8e6a1a478d74781bfd9e",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "35786a7a-faa6-457d-9b92-da560b93a43a",
+      "set": "plc",
+      "name": "Dismal Failure",
+      "referenceHash": "533a00a9521bdad5907511de9045a40b4a4f001d870a8599149bf324919af6c9",
+      "before": {
+        "artist": "Dan Scott",
+        "referenceHash": "533a00a9521bdad5907511de9045a40b4a4f001d870a8599149bf324919af6c9",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Dan Scott",
+        "referenceHash": "533a00a9521bdad5907511de9045a40b4a4f001d870a8599149bf324919af6c9",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "36313dc7-6bf2-4d73-b696-969d984a7466",
+      "set": "drk",
+      "name": "Merfolk Assassin",
+      "referenceHash": "e95ec90c9e34e8428930d4493b8287fa70b01365c59b2bc4475dd261d58a918b",
+      "before": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "e95ec90c9e34e8428930d4493b8287fa70b01365c59b2bc4475dd261d58a918b",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "e95ec90c9e34e8428930d4493b8287fa70b01365c59b2bc4475dd261d58a918b",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "36ca06a1-9b9a-49a2-9c47-9b72228621bc",
+      "set": "lea",
+      "name": "Weakness",
+      "referenceHash": "9aac6e32d14be885d247d794efbca6f6b9d940e588455ab4dc466d947d1c9379",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "374df061-ebd2-4f1f-9a6e-7940a49197a9",
+      "set": "drk",
+      "name": "Squire",
+      "referenceHash": "fe22feed2c29becca20e839dc6f6a611a253094760d314a9732d60cb655cc3ae",
+      "before": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "fe22feed2c29becca20e839dc6f6a611a253094760d314a9732d60cb655cc3ae",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "fe22feed2c29becca20e839dc6f6a611a253094760d314a9732d60cb655cc3ae",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "394e4fe9-2bb0-4a5c-bf10-b72b519d5226",
+      "set": "plc",
+      "name": "Intet, the Dreamer",
+      "referenceHash": "995cae193dca21c1a772294f1e28c86ea5611f76ebe6c3e26c3b196cfb746f60",
+      "before": {
+        "artist": "Dan Scott",
+        "referenceHash": "995cae193dca21c1a772294f1e28c86ea5611f76ebe6c3e26c3b196cfb746f60",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Dan Scott",
+        "referenceHash": "995cae193dca21c1a772294f1e28c86ea5611f76ebe6c3e26c3b196cfb746f60",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "3a0b9dba-f621-4700-8a36-bf326e04cbac",
+      "set": "4ed",
+      "name": "Holy Armor",
+      "referenceHash": "cc76edbbee65bbb7e470cd70bafb6acc3a0f63e6b2f99e7f347019307491140f",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "3f6f1fcb-d903-4a31-abab-40488569eef6",
+      "set": "fem",
+      "name": "Sand Silos",
+      "referenceHash": "803949621e34416d838bb29331d8b07d20461d31025ad88bdf07f247403ec6b0",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "4047df9c-335c-4c1a-968d-00f40e2e7386",
+      "set": "atq",
+      "name": "Mishra's Factory",
+      "referenceHash": "41233c746f016c02ddb8a037b905c2814e5a5050190594202c88eaace577f287",
+      "before": {
+        "artist": "Kaja & Phil Foglio",
+        "referenceHash": "41233c746f016c02ddb8a037b905c2814e5a5050190594202c88eaace577f287",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Kaja & Phil Foglio",
+        "referenceHash": "41233c746f016c02ddb8a037b905c2814e5a5050190594202c88eaace577f287",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "40a9710e-b2f8-4746-8640-d450f58a6e49",
+      "set": "fem",
+      "name": "Elvish Farmer",
+      "referenceHash": "9c22a11eb8cc8a7b72f054a291183332d6f2799f70b41b9f67c68e36e1036164",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "41798dd9-8ce8-4642-89c2-7356ea129d4e",
+      "set": "chr",
+      "name": "Land's Edge",
+      "referenceHash": "704d5b878bd2cccabfc7b1d413f3b68832b4746d364bb15ee3d11551bf8edd74",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "42bc0c3f-0a52-4bdc-83da-6484bf3102f3",
+      "set": "arn",
+      "name": "Erhnam Djinn",
+      "referenceHash": "5437571de717ae14be55200bcd27d50ea64b9e3675af58b9617eb3ed77a280ca",
+      "before": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "5437571de717ae14be55200bcd27d50ea64b9e3675af58b9617eb3ed77a280ca",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "5437571de717ae14be55200bcd27d50ea64b9e3675af58b9617eb3ed77a280ca",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "485421e0-ee1c-425b-abe0-ec5a7e2c0042",
+      "set": "2ed",
+      "name": "Frozen Shade",
+      "referenceHash": "8905e5ae13575009b7071887cecc2d85d9e90e49a9b54d979c11a7a8045a7bdf",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "8905e5ae13575009b7071887cecc2d85d9e90e49a9b54d979c11a7a8045a7bdf",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "8905e5ae13575009b7071887cecc2d85d9e90e49a9b54d979c11a7a8045a7bdf",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "4874388e-0227-4b89-a986-d86c14482c81",
+      "set": "chr",
+      "name": "Dakkon Blackblade",
+      "referenceHash": "9d24e5ec122c697604a1d6ef47ed55d7517d3406037208ffb9f3ae6b045ec82a",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "4990dd4b-2b18-4e4c-81d4-1cd8d746a7dc",
+      "set": "fem",
+      "name": "Orcish Veteran",
+      "referenceHash": "77514bd4f9970a0b031e60407241269efb02d738abc7d32ba5f1e3dd6e824ba0",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "499a791f-ac4f-4a96-b59b-37043686a79a",
+      "set": "fem",
+      "name": "Mindstab Thrull",
+      "referenceHash": "78c2b04159bab586beca4626823defc99b0bd7bdc3b2fe067931664887eff656",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "4ba8493c-ae69-48d1-a050-a887ae27c83f",
+      "set": "leb",
+      "name": "Northern Paladin",
+      "referenceHash": "75da43e9f7b28e6dc1cc79670ea1a37332da1af6eddfeea65b0e50b6e7a7313c",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "75da43e9f7b28e6dc1cc79670ea1a37332da1af6eddfeea65b0e50b6e7a7313c",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "75da43e9f7b28e6dc1cc79670ea1a37332da1af6eddfeea65b0e50b6e7a7313c",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "4caaf31b-86a9-485b-8da7-d5b526ed1233",
+      "set": "fem",
+      "name": "Thallid",
+      "referenceHash": "25105ec59e797d2defa4eb470272dbe3bb3bef70437428ab5ca410091137c488",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "4cfb5638-4502-44ed-b54c-27276d45d1ad",
+      "set": "2ed",
+      "name": "Prodigal Sorcerer",
+      "referenceHash": "d449460066574d8d6704423727c67abd3b3729a00b80fe780d7681bd227bd5a8",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "d449460066574d8d6704423727c67abd3b3729a00b80fe780d7681bd227bd5a8",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "d449460066574d8d6704423727c67abd3b3729a00b80fe780d7681bd227bd5a8",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "530be94d-7f6a-4c23-948f-22c5bdbceb4f",
+      "set": "2ed",
+      "name": "Contract from Below",
+      "referenceHash": "ed6a3ac4a104f5bec9432c3dd316e13de4da28847d61f640f0637ec9a7ba0064",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "ed6a3ac4a104f5bec9432c3dd316e13de4da28847d61f640f0637ec9a7ba0064",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "ed6a3ac4a104f5bec9432c3dd316e13de4da28847d61f640f0637ec9a7ba0064",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "54252fd2-21a6-40d1-8515-697f18c78a06",
+      "set": "fem",
+      "name": "Farrel's Zealot",
+      "referenceHash": "4a55ed4adb39d0b8eab9768c36f1953c96336ee5642cc4cc0e34a136817a3112",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "5669f9c8-2e94-47e2-a551-7efff317fb34",
+      "set": "leb",
+      "name": "Serra Angel",
+      "referenceHash": "3fe4e53099b6674266a36057f7d9f1599f7a3a23cdeac873f8aa4c95db6c4863",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "3fe4e53099b6674266a36057f7d9f1599f7a3a23cdeac873f8aa4c95db6c4863",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "3fe4e53099b6674266a36057f7d9f1599f7a3a23cdeac873f8aa4c95db6c4863",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "5988a3d2-748f-4642-9e33-293ddc568111",
+      "set": "fem",
+      "name": "Goblin War Drums",
+      "referenceHash": "a15671da1c85ee0d92031f527e451f1a63d97d74a57b1d2143aa4b1001b510d1",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "5b27431c-e301-4581-b67d-9213edee6ebb",
+      "set": "chr",
+      "name": "Boomerang",
+      "referenceHash": "e795bbd713e7ac5f418da95066cafbaa33fdc170ffaf74adf590f8c084381838",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "5cceb11b-0f70-4749-8a8c-d698cd01cd6e",
+      "set": "2ed",
+      "name": "Royal Assassin",
+      "referenceHash": "939a3ac4d8cc42814983121a84f87ac4f13edccd72816b89187ca0c43bde0fe7",
+      "before": {},
+      "after": {
+        "artist": "Tom Wanerstrand",
+        "referenceHash": "939a3ac4d8cc42814983121a84f87ac4f13edccd72816b89187ca0c43bde0fe7",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "5d077a49-73d4-4958-b42a-31b814e110e8",
+      "set": "lea",
+      "name": "Drain Life",
+      "referenceHash": "3a0545f316074bcb912e3ef643a9e640dab0a58c7ba951c2b191e758d2850e83",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "60c0faf1-0c16-441a-97fd-6d4e91c894a5",
+      "set": "4ed",
+      "name": "Mesa Pegasus",
+      "referenceHash": "06516e45ef780041896c652682a062f6f85c01bfc506bb591d96e5fcd0756e67",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "6123f833-236d-4c61-b543-4ac662759336",
+      "set": "2ed",
+      "name": "Drain Power",
+      "referenceHash": "ab052a9671e20f659bda5cca8c193ca7d7b3de9adb3a331554325062eab6ac70",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "ab052a9671e20f659bda5cca8c193ca7d7b3de9adb3a331554325062eab6ac70",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "ab052a9671e20f659bda5cca8c193ca7d7b3de9adb3a331554325062eab6ac70",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "62858604-ca5a-4f69-a045-a7515ebfabf2",
+      "set": "lea",
+      "name": "Power Surge",
+      "referenceHash": "e981913c602b982b08d5a398c8502a62815f85e0c0759bc63b7021c4557c79e0",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "62f96e43-aebd-4de2-969a-37cd1d62f127",
+      "set": "leb",
+      "name": "Contract from Below",
+      "referenceHash": "f7cdac06fb27ce4bce34ca564fbe8de1adbb55f426d643c9cc08fccb90ab29e2",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "f7cdac06fb27ce4bce34ca564fbe8de1adbb55f426d643c9cc08fccb90ab29e2",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "f7cdac06fb27ce4bce34ca564fbe8de1adbb55f426d643c9cc08fccb90ab29e2",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "6303233b-35eb-49ca-b844-ba6b9fe1cbd2",
+      "set": "lea",
+      "name": "Northern Paladin",
+      "referenceHash": "9e9aee38f82935a57c13c75458bbba6b00999a2f2592614138eda8cb5453a117",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "639ae988-d1d1-4ead-b0f8-47fc39eb64a0",
+      "set": "fem",
+      "name": "Bottomless Vault",
+      "referenceHash": "ed709d8bd0d4cc6b4a24a7efaa258c7f855977e515b83ad44a5f0a9ff5ebf847",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "664b46f5-0424-4f4e-9f26-6bd2cf5e0357",
+      "set": "lea",
+      "name": "Animate Artifact",
+      "referenceHash": "9e88a9e9bb279d1a189f7e08c5fdd0ac9afc14fda94c42e38ad034140f53166e",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "671aca82-6c55-43ef-b452-d6a2e706a7ae",
+      "set": "leb",
+      "name": "Circle of Protection: White",
+      "referenceHash": "b45dc122a72fd0aacc52c2829c0a36110ef32b3ca77b5efc82716de1f85deb30",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b45dc122a72fd0aacc52c2829c0a36110ef32b3ca77b5efc82716de1f85deb30",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b45dc122a72fd0aacc52c2829c0a36110ef32b3ca77b5efc82716de1f85deb30",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "686843c8-8c8a-4af6-bca8-e7f7583cc886",
+      "set": "leb",
+      "name": "Unsummon",
+      "referenceHash": "f8056baf39c526bbaf7cace8337e68fe5d1c01b11ba4f4688218347ee31f3485",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "f8056baf39c526bbaf7cace8337e68fe5d1c01b11ba4f4688218347ee31f3485",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "f8056baf39c526bbaf7cace8337e68fe5d1c01b11ba4f4688218347ee31f3485",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "6d7c78a4-e3db-42bf-8365-d7a08c26f4a9",
+      "set": "2ed",
+      "name": "Volcanic Eruption",
+      "referenceHash": "06c4dc601e6ed38b345563e0303f01bc9d75d9de07e15d85cf251fcb00fb5c64",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "06c4dc601e6ed38b345563e0303f01bc9d75d9de07e15d85cf251fcb00fb5c64",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "06c4dc601e6ed38b345563e0303f01bc9d75d9de07e15d85cf251fcb00fb5c64",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "70846483-9c23-42c4-9f9f-1fc5cda17c77",
+      "set": "4ed",
+      "name": "Shivan Dragon",
+      "referenceHash": "514b94d84a428e14c6b11945aaf55ee930c59026cc6dd74c08639c3344e9ab1e",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "711d4d54-5520-4de8-9b93-79902ed8e562",
+      "set": "lea",
+      "name": "Demonic Tutor",
+      "referenceHash": "d81ccba22deaaf6522cae6a2ac7074b05319eec40976106670e09db47a6c1981",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "7150245a-4fed-47cd-b13f-24507e89449d",
+      "set": "2ed",
+      "name": "Unholy Strength",
+      "referenceHash": "b636263f4263f2ea51f232ec0eea0b8a02abeaf5f60488efbb556a97f1cb8103",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b636263f4263f2ea51f232ec0eea0b8a02abeaf5f60488efbb556a97f1cb8103",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b636263f4263f2ea51f232ec0eea0b8a02abeaf5f60488efbb556a97f1cb8103",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "7281e17d-a6e0-4e0e-8ee6-c6d9dec54231",
+      "set": "2ed",
+      "name": "Samite Healer",
+      "referenceHash": "176c6532acd8146e0be718b9ed4a9722c93037dd92b7b820bb47a049f85a40a7",
+      "before": {},
+      "after": {
+        "artist": "Tom Wanerstrand",
+        "referenceHash": "176c6532acd8146e0be718b9ed4a9722c93037dd92b7b820bb47a049f85a40a7",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "73b6b789-00c5-4d72-8fb3-6808bfbf0144",
+      "set": "leb",
+      "name": "Psionic Blast",
+      "referenceHash": "e5e460d061a1575c7d4b354b65dc5af7f136f0dd0689212af7cfbe691e429da0",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "e5e460d061a1575c7d4b354b65dc5af7f136f0dd0689212af7cfbe691e429da0",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "e5e460d061a1575c7d4b354b65dc5af7f136f0dd0689212af7cfbe691e429da0",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "747d4c99-0287-4138-af13-6244f33d2e57",
+      "set": "2ed",
+      "name": "Nightmare",
+      "referenceHash": "cd41c44e4435bffd380024aaa950f4ad35bf9d4412b7d7a72344b6ebfaeb262c",
+      "before": {},
+      "after": {
+        "artist": "Melissa Benson",
+        "referenceHash": "cd41c44e4435bffd380024aaa950f4ad35bf9d4412b7d7a72344b6ebfaeb262c",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "76a0b7cc-0889-4980-a23e-6f5088b374f8",
+      "set": "chr",
+      "name": "Nebuchadnezzar",
+      "referenceHash": "447aa42d2cdd5db2d9d265ec9de1ee41bb55616ddb7ed6f3e6cd073eea4af89e",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "774cc5a6-3a69-4812-add4-eb5eb6389238",
+      "set": "lea",
+      "name": "Tranquility",
+      "referenceHash": "3d965301de1f4c5e244baf41329868f082f0f78c90cc7e856cfd04afce4b128d",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "7a899b2d-825c-4929-a769-f4df70bf6a17",
+      "set": "fem",
+      "name": "Hand of Justice",
+      "referenceHash": "e332d752831d1e438f2d0d4f12958d3bd820c02e611274ecb1155f456bdf6c56",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "7af9c715-8d72-4eae-b412-fc89138ff588",
+      "set": "leb",
+      "name": "Mountain",
+      "referenceHash": "08ee61ef295105fc90a07b0ca6baf7080eb6ead1edf783588a6142bd20dc8fed",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "08ee61ef295105fc90a07b0ca6baf7080eb6ead1edf783588a6142bd20dc8fed",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "08ee61ef295105fc90a07b0ca6baf7080eb6ead1edf783588a6142bd20dc8fed",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "7cb88a03-7092-4d31-a9f1-4f16e39bc537",
+      "set": "leb",
+      "name": "Mountain",
+      "referenceHash": "f94363152f7f747750ddbd3c58dfcac6322928dd3d0e343ce6bb348f0de444f7",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "f94363152f7f747750ddbd3c58dfcac6322928dd3d0e343ce6bb348f0de444f7",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "f94363152f7f747750ddbd3c58dfcac6322928dd3d0e343ce6bb348f0de444f7",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "7eb50256-9113-4b03-bcef-9aea24be8493",
+      "set": "fem",
+      "name": "Vodalian Soldiers",
+      "referenceHash": "93789a82d11e588e51627a8a9c1b51056f5a66f18483b51dc332b568cad1a9a0",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "7ff95a24-86e9-4302-bd90-89ca96164032",
+      "set": "2ed",
+      "name": "Mesa Pegasus",
+      "referenceHash": "5684bb8b80c06ce2517682a7e017166643197cfbf4203332016b20ab3886c456",
+      "before": {},
+      "after": {
+        "artist": "Melissa Benson",
+        "referenceHash": "5684bb8b80c06ce2517682a7e017166643197cfbf4203332016b20ab3886c456",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "8201b51b-da03-4207-805c-134e527c42e1",
+      "set": "4ed",
+      "name": "Cyclopean Mummy",
+      "referenceHash": "e5bcd97e3e866a4fafff5fa164d2e3edd4598f58969f67d8a8a1e6116c809c39",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "845734da-ab03-4dbc-bb5f-96481d3b8e88",
+      "set": "lea",
+      "name": "Spell Blast",
+      "referenceHash": "aa31592d1044d72cfdeda8d4329f4fe4be343603cdd260bcbabdf3d54f8f02e9",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "846572ce-c8fd-402c-9212-8288336c75e8",
+      "set": "4ed",
+      "name": "Lord of Atlantis",
+      "referenceHash": "234dcea690ba55d8c3452ad37998228515dbcf46d852f4ece5f989ad962ce68a",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "84b8de7a-c055-4031-a359-24526b6e6354",
+      "set": "chr",
+      "name": "Recall",
+      "referenceHash": "7007ef7bbd3bfcba13f9d3eb272179610ee640ef53c9c3baa0856065fc23bd1a",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "8512f2c1-6361-4b79-843f-80b6bceeeb99",
+      "set": "lea",
+      "name": "Unsummon",
+      "referenceHash": "489e6eb165e9b046e84632876be95be2803adff255397925c92fa12ff31bb8ec",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "86bf4aaa-a9b1-4798-a96b-c3e35afb77f7",
+      "set": "fem",
+      "name": "Icatian Scout",
+      "referenceHash": "9d1f32ba5aac311892a34ebc726b005d93be691b113249430281fd480b66b6d5",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "89b6a352-40f5-4d7c-b2b6-2617539a1c1c",
+      "set": "leb",
+      "name": "Frozen Shade",
+      "referenceHash": "8a7e7d687051ebad7ed876657295e9e213dbc7dbe1b71991f7404f844135a34c",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "8a7e7d687051ebad7ed876657295e9e213dbc7dbe1b71991f7404f844135a34c",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "8a7e7d687051ebad7ed876657295e9e213dbc7dbe1b71991f7404f844135a34c",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "8a1dff82-de5c-4b1d-b87f-6ddb4551f820",
+      "set": "2ed",
+      "name": "Psionic Blast",
+      "referenceHash": "b72198d5f876a47146e05a5007b3247db253f9f4345e103372c2d458d20064a2",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b72198d5f876a47146e05a5007b3247db253f9f4345e103372c2d458d20064a2",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b72198d5f876a47146e05a5007b3247db253f9f4345e103372c2d458d20064a2",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "8b6da540-6803-47e5-9af0-7ae8e2f84b6c",
+      "set": "drk",
+      "name": "Tivadar's Crusade",
+      "referenceHash": "377f439bf647aa25750fc80c6e56be3ecb04f10422740fad011e0c1b7178722b",
+      "before": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "377f439bf647aa25750fc80c6e56be3ecb04f10422740fad011e0c1b7178722b",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "377f439bf647aa25750fc80c6e56be3ecb04f10422740fad011e0c1b7178722b",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "8d693da0-039d-462b-a5cb-d2bb179df65e",
+      "set": "2ed",
+      "name": "Veteran Bodyguard",
+      "referenceHash": "16d0e87f8bcf75e0acdc033266a0807fc45da67d7b951e79e9afb5e52b191d66",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "16d0e87f8bcf75e0acdc033266a0807fc45da67d7b951e79e9afb5e52b191d66",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "16d0e87f8bcf75e0acdc033266a0807fc45da67d7b951e79e9afb5e52b191d66",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "8e99870c-b2b9-431b-b8a8-3f4a80aa8fa5",
+      "set": "drk",
+      "name": "Scavenger Folk",
+      "referenceHash": "3f025e7c463c858378610d3e084e3e38e4df46779d3f9365c58e803dc61bcb0d",
+      "before": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "3f025e7c463c858378610d3e084e3e38e4df46779d3f9365c58e803dc61bcb0d",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "3f025e7c463c858378610d3e084e3e38e4df46779d3f9365c58e803dc61bcb0d",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "90563f90-0127-4164-b43b-f0321dc63a1d",
+      "set": "lea",
+      "name": "Unholy Strength",
+      "referenceHash": "4f699ce1b3971de5b043ab30b7b164901c793ce7308ab222d71121c08ce278c4",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "906095f6-25c7-4f61-8513-9d75e32aab02",
+      "set": "4ed",
+      "name": "Elven Riders",
+      "referenceHash": "e846ef151182bf38dd3c9d2f84f5cd1b81e4d44b0347789eeb3082b8baba62b0",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "90845410-e09a-4753-ad4c-bf2b2f3c95ac",
+      "set": "fem",
+      "name": "Hollow Trees",
+      "referenceHash": "6181ec3f0b8c1b148790d270023f7f1f52902a4c5e1b7cd2a98d314fa8a8b67e",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "91e0b59d-8f9b-4a76-9845-bcb0dc32523d",
+      "set": "drk",
+      "name": "Goblin Rock Sled",
+      "referenceHash": "65ce1526c2ab3e42e7cb0dc4016db9772710acf79cb674afd068a4f6f27f29ba",
+      "before": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "65ce1526c2ab3e42e7cb0dc4016db9772710acf79cb674afd068a4f6f27f29ba",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "65ce1526c2ab3e42e7cb0dc4016db9772710acf79cb674afd068a4f6f27f29ba",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "91f46e9a-6075-4fa5-8f60-f81e2024b13d",
+      "set": "leb",
+      "name": "Uthden Troll",
+      "referenceHash": "6d83589474ce7bf879b1e4e05700af8dc1cedc388cc8aad94e1a8a3d4caae7f2",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "6d83589474ce7bf879b1e4e05700af8dc1cedc388cc8aad94e1a8a3d4caae7f2",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "6d83589474ce7bf879b1e4e05700af8dc1cedc388cc8aad94e1a8a3d4caae7f2",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "92df19c9-e127-42d9-8dd2-7fa5a7095428",
+      "set": "lea",
+      "name": "Circle of Protection: White",
+      "referenceHash": "d55bc208415027e08f91f8753134fe2e58bb5d74362f6a803b30e0f0fe6473e9",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "d55bc208415027e08f91f8753134fe2e58bb5d74362f6a803b30e0f0fe6473e9",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "d55bc208415027e08f91f8753134fe2e58bb5d74362f6a803b30e0f0fe6473e9",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "9404e779-2065-4c4f-95d1-6997c7fea156",
+      "set": "2ed",
+      "name": "Benalish Hero",
+      "referenceHash": "225f9e281adb4c2108419421f9682d33bcd3592ca9c57f63f9b311c363530aa6",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "225f9e281adb4c2108419421f9682d33bcd3592ca9c57f63f9b311c363530aa6",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "225f9e281adb4c2108419421f9682d33bcd3592ca9c57f63f9b311c363530aa6",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "965048e6-a693-4858-a244-3b9ee10bfb56",
+      "set": "plc",
+      "name": "Kavu Predator",
+      "referenceHash": "61e8fc228411308a1cf8df6a73b0ec79ffe41d7d054e9e18105fce7fa7f99c02",
+      "before": {
+        "artist": "Dan Scott",
+        "referenceHash": "61e8fc228411308a1cf8df6a73b0ec79ffe41d7d054e9e18105fce7fa7f99c02",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Dan Scott",
+        "referenceHash": "61e8fc228411308a1cf8df6a73b0ec79ffe41d7d054e9e18105fce7fa7f99c02",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "9672caeb-5cf8-4b40-a371-005c911a67d9",
+      "set": "leb",
+      "name": "Drain Power",
+      "referenceHash": "d4205c182c089a535db31204bfc9f9b22e487471783673c8393e9487ff210965",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "d4205c182c089a535db31204bfc9f9b22e487471783673c8393e9487ff210965",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "d4205c182c089a535db31204bfc9f9b22e487471783673c8393e9487ff210965",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "9853b0ce-4763-4877-9741-f9145a3659c6",
+      "set": "lea",
+      "name": "Contract from Below",
+      "referenceHash": "06256365d1c771a14edc2d4b13e2a1ffa3218d0eabea162d28db0c7763270806",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "98a1c689-cd8b-4a80-ad6d-e4ff5933f5e7",
+      "set": "2ed",
+      "name": "Circle of Protection: White",
+      "referenceHash": "b17084e1292e8df45d37ba11e5cde90ffb76a52876c654e693b003242da78cdd",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b17084e1292e8df45d37ba11e5cde90ffb76a52876c654e693b003242da78cdd",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b17084e1292e8df45d37ba11e5cde90ffb76a52876c654e693b003242da78cdd",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "98ac9e72-603b-43cf-b959-03552c44ae22",
+      "set": "2ed",
+      "name": "Power Surge",
+      "referenceHash": "2dc68e0b195f696e26c37606092d7eb859cc15ca8cc5c84317b99b13a84c3601",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "2dc68e0b195f696e26c37606092d7eb859cc15ca8cc5c84317b99b13a84c3601",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "2dc68e0b195f696e26c37606092d7eb859cc15ca8cc5c84317b99b13a84c3601",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "9941f83b-2903-4eab-ac6d-5313e3978fa3",
+      "set": "arn",
+      "name": "Guardian Beast",
+      "referenceHash": "305b12ad22f84ed767ff27f0b58b8055e65a7f03197f827973513f5f301b5038",
+      "before": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "305b12ad22f84ed767ff27f0b58b8055e65a7f03197f827973513f5f301b5038",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "305b12ad22f84ed767ff27f0b58b8055e65a7f03197f827973513f5f301b5038",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "9a7d92de-d663-4919-a23f-38389ba5593e",
+      "set": "2ed",
+      "name": "Holy Armor",
+      "referenceHash": "928cb818c69a1480ad4ece5799bc84614b454abbb08fa035f4d9de2c96208820",
+      "before": {},
+      "after": {
+        "artist": "Melissa Benson",
+        "referenceHash": "928cb818c69a1480ad4ece5799bc84614b454abbb08fa035f4d9de2c96208820",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "9c1624f7-8275-46d3-ab7e-7b162e27593f",
+      "set": "tmp",
+      "name": "Selenia, Dark Angel",
+      "referenceHash": "f730c8a9fd8eb644fec510b31ad6091c655562b7ad709c8bbb301cb41b40ba6a",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "9cfd96cb-03d6-4845-8595-50bf17b35726",
+      "set": "fem",
+      "name": "Combat Medic",
+      "referenceHash": "9a29b0aed377498ebcd9d45b23332de51c535b96b445841baaad2eae61eb3de8",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "9d970195-0a09-4cb4-a2c0-c16fcab5c859",
+      "set": "fem",
+      "name": "Thelon's Chant",
+      "referenceHash": "0efb2194f5a3e439c5c09d876fc46b5eb92b9d2b29cc90efc0e12eb291492f3a",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "9dc7ab05-a5f5-4a02-87e7-3c47be35b5cb",
+      "set": "2ed",
+      "name": "Volcanic Island",
+      "referenceHash": "8cb40a0eced583a6db78f220e378ac905f40a5597f757dce07fda78f8ab4d792",
+      "before": {},
+      "after": {
+        "artist": "Brian Snoddy",
+        "referenceHash": "8cb40a0eced583a6db78f220e378ac905f40a5597f757dce07fda78f8ab4d792",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "9e3aeee7-975c-419a-bfb3-45bb48ba6918",
+      "set": "fem",
+      "name": "Farrel's Zealot",
+      "referenceHash": "29cbd394601e247798bdd61c4aafdca26cb6932699f43b5595dcba2b04bb1e30",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "9e51f5d8-a7cc-4720-8af5-e002bcfd78a0",
+      "set": "fem",
+      "name": "Order of the Ebon Hand",
+      "referenceHash": "f09f20db347bd34cba3ad47b488dbc005b938024fe7349977516cae5a3a051a0",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "9ec03950-80f7-4783-9b65-f2538436c9be",
+      "set": "2ed",
+      "name": "Spell Blast",
+      "referenceHash": "2b5719b86bbab7822e2ce73c5822d44e89d74352c44a78177065e4013f512292",
+      "before": {},
+      "after": {
+        "artist": "Brian Snoddy",
+        "referenceHash": "2b5719b86bbab7822e2ce73c5822d44e89d74352c44a78177065e4013f512292",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "9f73597d-f453-4d37-b2ef-c54ef683a884",
+      "set": "fem",
+      "name": "Soul Exchange",
+      "referenceHash": "2d1d2d940c4494027a144b105d56c31658a1fe0b84ae2e1abed1b278c5da8afb",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "9fbc6761-c4fc-4b4c-afb5-94ad4d21bc05",
+      "set": "leb",
+      "name": "Drain Life",
+      "referenceHash": "b1cda78194d9f46595374803f8f39a0b2574e6ef44e7c96cda265dd820fd6eeb",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b1cda78194d9f46595374803f8f39a0b2574e6ef44e7c96cda265dd820fd6eeb",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b1cda78194d9f46595374803f8f39a0b2574e6ef44e7c96cda265dd820fd6eeb",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "a3142ded-ff62-4817-aa54-75a7ea4498a6",
+      "set": "fem",
+      "name": "Dwarven Hold",
+      "referenceHash": "f6367bec48071f35980d297b23762853aadac90cf7440782a5d4e5b93328d0be",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "a419c9e3-5615-44f9-9256-94a3022bb69f",
+      "set": "fem",
+      "name": "Draconian Cylix",
+      "referenceHash": "e0514094e47a7fff9b48281dcc2a94f785f06936ae785a7ec0e91b44c4f9d34d",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "a5e571ef-1645-4584-ab53-e7ea5d443dea",
+      "set": "leb",
+      "name": "Demonic Tutor",
+      "referenceHash": "06d7988863a403e811b100ab664a423721e7df9a283251d474f684d2b007df43",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "06d7988863a403e811b100ab664a423721e7df9a283251d474f684d2b007df43",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "06d7988863a403e811b100ab664a423721e7df9a283251d474f684d2b007df43",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "a696c5b6-f216-454d-8029-74e84bbd1428",
+      "set": "atq",
+      "name": "Mishra's Factory",
+      "referenceHash": "242f0ba967d7b715bd3896f57c15c66c32b60c88594e3e360da2dcc5db58ac93",
+      "before": {
+        "artist": "Kaja & Phil Foglio",
+        "referenceHash": "242f0ba967d7b715bd3896f57c15c66c32b60c88594e3e360da2dcc5db58ac93",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Kaja & Phil Foglio",
+        "referenceHash": "242f0ba967d7b715bd3896f57c15c66c32b60c88594e3e360da2dcc5db58ac93",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "a6a86e6e-bfff-46af-9d36-c912901fea92",
+      "set": "lea",
+      "name": "Psionic Blast",
+      "referenceHash": "f35cfcf6fda28ca28d9c1b416c82bec40a3d76701d989080e1ab42e177790d56",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "f35cfcf6fda28ca28d9c1b416c82bec40a3d76701d989080e1ab42e177790d56",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "f35cfcf6fda28ca28d9c1b416c82bec40a3d76701d989080e1ab42e177790d56",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "a80582b1-09db-45f8-b362-0e5207a5a8e6",
+      "set": "lea",
+      "name": "Volcanic Eruption",
+      "referenceHash": "0763f93f7c17d96095735f002c8d0d3243a8ef0a9f93566b3eef0ed424decfea",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "a86d9647-3a87-4620-aa07-26f996fc6fa3",
+      "set": "fem",
+      "name": "Basal Thrull",
+      "referenceHash": "266375b7508716d4477352c7145be232b65a956fe485d1c978c106b9afd442e0",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "ac09a506-427f-4636-bcfd-b40f8d511905",
+      "set": "atq",
+      "name": "Mishra's Factory",
+      "referenceHash": "61bf57e9c811754cf0e47b05a51e36fa164335aa800b9c4ea8ab2dcdb2c9fb41",
+      "before": {
+        "artist": "Kaja & Phil Foglio",
+        "referenceHash": "61bf57e9c811754cf0e47b05a51e36fa164335aa800b9c4ea8ab2dcdb2c9fb41",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Kaja & Phil Foglio",
+        "referenceHash": "61bf57e9c811754cf0e47b05a51e36fa164335aa800b9c4ea8ab2dcdb2c9fb41",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "ad34094d-a7ec-4b04-a288-4d4f1a07fc6b",
+      "set": "4ed",
+      "name": "Backfire",
+      "referenceHash": "4fa7cd7cf6a610dc35a7dfa632875b35cfee74354d0b54eb585cbb36fc48f810",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "af092da3-8713-4a59-86d3-827b942d6456",
+      "set": "fem",
+      "name": "Farrel's Mantle",
+      "referenceHash": "41c18ba19c729451a1efe2ff3154dd98b3f06d6e52c1996bdc637f040f2f8d67",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "aff8d4f1-eaad-4afb-9097-2afab133f707",
+      "set": "4ed",
+      "name": "Mishra's Factory",
+      "referenceHash": "04684f661b8f58914936ad3bfdb6cff3958da77db54ff9c0d164c753680efc69",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "b01041d2-687e-4972-81c8-16690809275b",
+      "set": "lea",
+      "name": "Holy Armor",
+      "referenceHash": "6aacc0cc3d7c44c0ddcc390d5535a87a846b23d8916e392a5974f2a0d94a8852",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "b13bf496-f3c0-4c13-8282-e7abfab6a198",
+      "set": "lea",
+      "name": "Sedge Troll",
+      "referenceHash": "dcd8ab043bdd27eb87ae5d5680fc4a7b0156f57820a6b7c87b8f55f0af4eb826",
+      "before": {
+        "artist": "Jeff A. Menges",
+        "referenceHash": "dcd8ab043bdd27eb87ae5d5680fc4a7b0156f57820a6b7c87b8f55f0af4eb826",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Jeff A. Menges",
+        "referenceHash": "dcd8ab043bdd27eb87ae5d5680fc4a7b0156f57820a6b7c87b8f55f0af4eb826",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "b1646d85-2396-445c-9bbb-65bf65b0a63c",
+      "set": "2ed",
+      "name": "Weakness",
+      "referenceHash": "b8ebc740732ddaad7b5bd332b20008b476504d3ffedc2ccd84f48fbe077c090d",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b8ebc740732ddaad7b5bd332b20008b476504d3ffedc2ccd84f48fbe077c090d",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "b8ebc740732ddaad7b5bd332b20008b476504d3ffedc2ccd84f48fbe077c090d",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "b36e0fba-f6a4-4400-b685-3178431c292f",
+      "set": "2ed",
+      "name": "Psychic Venom",
+      "referenceHash": "9bd5099a28ee232e1a47f9aede56538d19781536de3c58cedb41d14f1c73dd8b",
+      "before": {},
+      "after": {
+        "artist": "Brian Snoddy",
+        "referenceHash": "9bd5099a28ee232e1a47f9aede56538d19781536de3c58cedb41d14f1c73dd8b",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "b3dd94c5-42f6-4148-be6e-2a3a4226cc0e",
+      "set": "lea",
+      "name": "Circle of Protection: Red",
+      "referenceHash": "48f8316cba5dc2dbcdf4cea077a5ba615243159606f3b7f7e07bced5b25ce980",
+      "before": {
+        "artist": "Anson Maddocks",
+        "referenceHash": "48f8316cba5dc2dbcdf4cea077a5ba615243159606f3b7f7e07bced5b25ce980",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Anson Maddocks",
+        "referenceHash": "48f8316cba5dc2dbcdf4cea077a5ba615243159606f3b7f7e07bced5b25ce980",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "b43b900f-2d9b-442b-9699-058483604ec9",
+      "set": "lea",
+      "name": "Hypnotic Specter",
+      "referenceHash": "f5137fc2eb1bc72c020326cd2aa2063a41b24d5ae626b2eb759c4d09bcd3c461",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "b622e694-858d-482f-a67d-0e52d268708c",
+      "set": "4ed",
+      "name": "White Mana Battery",
+      "referenceHash": "6e4d082655172c717b868237d7055deaf19173c411c66839d325992c865da795",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "b7033d2f-45be-42bc-830a-dc3b5b27c366",
+      "set": "chr",
+      "name": "Ivory Guardians",
+      "referenceHash": "23a5ad965651b66f41e958fe2248ad4958c64411033c50fc2fe455fe9551e72c",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "b847a2d1-5912-4f88-a68f-06790d0795dc",
+      "set": "leb",
+      "name": "Righteousness",
+      "referenceHash": "fc701cc5aee836cd24440e2a2304b49002325af72738eb93fdc23525d562e2b5",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "fc701cc5aee836cd24440e2a2304b49002325af72738eb93fdc23525d562e2b5",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "fc701cc5aee836cd24440e2a2304b49002325af72738eb93fdc23525d562e2b5",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "b8cdd6a7-f772-4ccb-914f-63f52ed54d6b",
+      "set": "lea",
+      "name": "Nightmare",
+      "referenceHash": "70ae69b43d7e124ac042eda5b172b16da7a7c6b125844d689c179cae6650cc90",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "bc2570a4-eef9-430d-b6c2-cd51d29b9d01",
+      "set": "lea",
+      "name": "Timber Wolves",
+      "referenceHash": "09d013a824ead7a42a3ac35594340f3e3b2bb617ed83ce04a6259448885093f9",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "bddeac3f-f4ee-432b-9d69-8533a28e7f46",
+      "set": "2ed",
+      "name": "Fire Elemental",
+      "referenceHash": "61b13cbe30219c476c3ced9d422e9c969d54ffe0abf8ed44428b701b9b580e9f",
+      "before": {},
+      "after": {
+        "artist": "Melissa Benson",
+        "referenceHash": "61b13cbe30219c476c3ced9d422e9c969d54ffe0abf8ed44428b701b9b580e9f",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "bf2f6936-b50c-4907-9b55-ebf8a3fba8f5",
+      "set": "drk",
+      "name": "Pikemen",
+      "referenceHash": "0c18f03576bdb7f4376011d9bda950acd9780555580e668b5b2d017df2858ff5",
+      "before": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "0c18f03576bdb7f4376011d9bda950acd9780555580e668b5b2d017df2858ff5",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "0c18f03576bdb7f4376011d9bda950acd9780555580e668b5b2d017df2858ff5",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "c0de88cf-b9e5-4611-a16f-2787d8d9d269",
+      "set": "leb",
+      "name": "Dwarven Warriors",
+      "referenceHash": "8219653652202f093601cf11b446f9d26ff2024deb6968697c65aaf2ffcfb006",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "8219653652202f093601cf11b446f9d26ff2024deb6968697c65aaf2ffcfb006",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "8219653652202f093601cf11b446f9d26ff2024deb6968697c65aaf2ffcfb006",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "c25a61b3-c828-491c-868d-e4eff770c1bb",
+      "set": "leb",
+      "name": "Force of Nature",
+      "referenceHash": "bd54ba1724fbd98993a0034f928e9d7b483810cb2319cf48ac21318f89416ca1",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "bd54ba1724fbd98993a0034f928e9d7b483810cb2319cf48ac21318f89416ca1",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "bd54ba1724fbd98993a0034f928e9d7b483810cb2319cf48ac21318f89416ca1",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "c420abf2-05ec-4623-8a6c-353736a4edeb",
+      "set": "leb",
+      "name": "Prodigal Sorcerer",
+      "referenceHash": "fa9d721a3c29e6f3128da7ec7f04477b900a17cc36c06fee7ea33436bdbf6693",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "fa9d721a3c29e6f3128da7ec7f04477b900a17cc36c06fee7ea33436bdbf6693",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "fa9d721a3c29e6f3128da7ec7f04477b900a17cc36c06fee7ea33436bdbf6693",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "c44669b2-bf9a-41c3-91c7-d845b0061fbf",
+      "set": "atq",
+      "name": "Mishra's Factory",
+      "referenceHash": "77c821bfd59ccf8d943d704665c39993eaef24b74229605f0e6785e61bc4524f",
+      "before": {
+        "artist": "Kaja & Phil Foglio",
+        "referenceHash": "77c821bfd59ccf8d943d704665c39993eaef24b74229605f0e6785e61bc4524f",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Kaja & Phil Foglio",
+        "referenceHash": "77c821bfd59ccf8d943d704665c39993eaef24b74229605f0e6785e61bc4524f",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "c70f8f50-866a-4889-b986-48636225638a",
+      "set": "fem",
+      "name": "Icatian Javelineers",
+      "referenceHash": "928ae8a963e9c5d51f1ff50efa0fbdb01afd4278b7543e71afdf02e206e3eb65",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "c7ea7454-c715-4d6d-8e46-cf5acaf397f5",
+      "set": "chr",
+      "name": "Sol'kanar the Swamp King",
+      "referenceHash": "842e0693cbce0939623a2c43ef4c6685a9f631dad575f862d40d5ab7976ab946",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "c8635a10-12fc-4308-8f1e-6c4bc6acd9b5",
+      "set": "2ed",
+      "name": "Glasses of Urza",
+      "referenceHash": "d599ac0f11147806dc46b931bdbac90099ef091bb62fe3a90b87ff728e796d99",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "d599ac0f11147806dc46b931bdbac90099ef091bb62fe3a90b87ff728e796d99",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "d599ac0f11147806dc46b931bdbac90099ef091bb62fe3a90b87ff728e796d99",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "c8d5d6a5-6807-4a80-9460-7633dc430ee9",
+      "set": "2ed",
+      "name": "Demonic Tutor",
+      "referenceHash": "03fc7650b2c23404b342cb7555d33a65cf9bc15585b039605c1e2c78a070f96a",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "03fc7650b2c23404b342cb7555d33a65cf9bc15585b039605c1e2c78a070f96a",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "03fc7650b2c23404b342cb7555d33a65cf9bc15585b039605c1e2c78a070f96a",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "ca669988-e009-4b3e-af20-ee5885554d34",
+      "set": "leb",
+      "name": "Volcanic Eruption",
+      "referenceHash": "2c5ab41ae96b9f739b2f89f1e8e30a61fa27c3dce2178332c4bb3fdb5a5d3931",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "2c5ab41ae96b9f739b2f89f1e8e30a61fa27c3dce2178332c4bb3fdb5a5d3931",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "2c5ab41ae96b9f739b2f89f1e8e30a61fa27c3dce2178332c4bb3fdb5a5d3931",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "ca9af432-3997-426a-b532-52333c3c50c4",
+      "set": "4ed",
+      "name": "Sandstorm",
+      "referenceHash": "d5d1785782699ccb5d95f5f15896fb437e9ea720b4cf1c89d0acbdd672c6cbc5",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "caf1ee51-2852-44c0-a5d4-d0e415381738",
+      "set": "2ed",
+      "name": "Animate Artifact",
+      "referenceHash": "45551b1ca38f1b5445afd69827214969f6f25408dd61fb2a05d6c9f4ea59dbd3",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "45551b1ca38f1b5445afd69827214969f6f25408dd61fb2a05d6c9f4ea59dbd3",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "45551b1ca38f1b5445afd69827214969f6f25408dd61fb2a05d6c9f4ea59dbd3",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "cafc2350-5d64-4379-9198-79a114654d45",
+      "set": "lea",
+      "name": "Glasses of Urza",
+      "referenceHash": "4fe0e1052ec092f648141bc4081dc7cda29a1cc95f5d62d16db05a9d6cb037d0",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "cb0b28ac-144e-43c5-84f3-d4a2a229f49b",
+      "set": "arn",
+      "name": "Stone-Throwing Devils",
+      "referenceHash": "d38a4d7bfcbb71bf1ee0a75831f08675c7fe6f66f0b9dbfe51529c559609794a",
+      "before": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "d38a4d7bfcbb71bf1ee0a75831f08675c7fe6f66f0b9dbfe51529c559609794a",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "d38a4d7bfcbb71bf1ee0a75831f08675c7fe6f66f0b9dbfe51529c559609794a",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "cb575b27-d2ca-4d90-a650-dc670484f607",
+      "set": "leb",
+      "name": "Animate Artifact",
+      "referenceHash": "8f0ae3e18c062b634b9977e8b839007c76455edc94662897890aaf1707dd896e",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "8f0ae3e18c062b634b9977e8b839007c76455edc94662897890aaf1707dd896e",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "8f0ae3e18c062b634b9977e8b839007c76455edc94662897890aaf1707dd896e",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "cbd9ab01-a833-4fa4-8dee-151bd9800835",
+      "set": "lea",
+      "name": "Veteran Bodyguard",
+      "referenceHash": "5238f7f750777932e1d0f6e20380f88a2c261667c5f733247cdfacafe27e5152",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "cbf9194c-8e50-4f50-9a87-3b339a5bc279",
+      "set": "fem",
+      "name": "Icatian Moneychanger",
+      "referenceHash": "493010e1e9cdbc737188e589e030b56406c6072ea601abbd2897dde6cbdfb286",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "cf9521ae-6fac-4d86-9c60-adecaae5687d",
+      "set": "fem",
+      "name": "Icatian Moneychanger",
+      "referenceHash": "077c51e23a136e30d17c9968613c4a499786454783ce24e7c8c3a0f7c2bceedd",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "d0ba7b76-f3d0-47d0-8a35-0c08e67200fb",
+      "set": "lea",
+      "name": "Righteousness",
+      "referenceHash": "760e142657e67f21b2ba59c44972600c9e0f2a21ec851e1b691ccbe1c6782a2a",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "d0bd76c8-4cff-4c15-9686-7a299b589814",
+      "set": "lea",
+      "name": "Frozen Shade",
+      "referenceHash": "357c3de798c448c00b0abb57402e4e8d07c953917bf517d2a14732c5bcf41746",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "d1c387dd-1347-4443-91ce-b71f7ccdceba",
+      "set": "arn",
+      "name": "Stone-Throwing Devils",
+      "referenceHash": "dae74d5767a6ed66d59067bb946d5126858d7e8a058d87c36e0feedaddf89e3b",
+      "before": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "dae74d5767a6ed66d59067bb946d5126858d7e8a058d87c36e0feedaddf89e3b",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "dae74d5767a6ed66d59067bb946d5126858d7e8a058d87c36e0feedaddf89e3b",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "d20a0b5a-2a04-4cce-83e4-2d65ef9399df",
+      "set": "chr",
+      "name": "Arcades Sabboth",
+      "referenceHash": "2d2ca6924a9be80102c44d0eac09d40399d4a16a1619930522449206b2d1f4f2",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "d5f7044e-3b91-42ac-91ec-56e17cd72274",
+      "set": "2ed",
+      "name": "Drain Life",
+      "referenceHash": "63b32ad07e692356313287eac2c1492865e56956fe55267c68308f3acd811b3b",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "63b32ad07e692356313287eac2c1492865e56956fe55267c68308f3acd811b3b",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "63b32ad07e692356313287eac2c1492865e56956fe55267c68308f3acd811b3b",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "d6119988-4797-4993-a75f-e7015c2c6354",
+      "set": "2ed",
+      "name": "Pirate Ship",
+      "referenceHash": "c7d22e0904ee3a682a6401462e3597657503c6a035cd2b4dc4648a504c6817f0",
+      "before": {},
+      "after": {
+        "artist": "Tom Wanerstrand",
+        "referenceHash": "c7d22e0904ee3a682a6401462e3597657503c6a035cd2b4dc4648a504c6817f0",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "d7cd8d8c-52c7-402f-92e1-5e5866f2555a",
+      "set": "fem",
+      "name": "Icatian Store",
+      "referenceHash": "148002e4fc59c800c9504e96bd17750d27e69304a22caa2bf9b47f1731bfba88",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "d8d1ceac-bb75-4c46-9ab4-1ef623ed3027",
+      "set": "fem",
+      "name": "Vodalian Soldiers",
+      "referenceHash": "35be8964f79aaf3dd60bba03734b679c366bbac4f7670c150e75267994d16eab",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "d8d888b7-26e2-465d-b5ee-bb2f2af5c621",
+      "set": "leb",
+      "name": "Veteran Bodyguard",
+      "referenceHash": "80505f0fa23ba67f2047a476ae430e5eb7ff35dfe98fdd3c8534672b36386130",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "80505f0fa23ba67f2047a476ae430e5eb7ff35dfe98fdd3c8534672b36386130",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "80505f0fa23ba67f2047a476ae430e5eb7ff35dfe98fdd3c8534672b36386130",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "d8f84fc8-69b4-4756-9634-4d6c17ec88a1",
+      "set": "4ed",
+      "name": "Timber Wolves",
+      "referenceHash": "58acda0ea8edd8154e13d1f5f3871c29b2c3b845bf637913ce6a2c3fee6758e1",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "d927c073-0198-4a32-b21a-ead7d8ac116f",
+      "set": "chr",
+      "name": "Cat Warriors",
+      "referenceHash": "0d3cfc19d9b1246e08ccff3d32f3ffe5bd22b7cddf61872ba9b0149079dbf18f",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "da237992-2919-4e37-8f56-2164095f59b5",
+      "set": "lea",
+      "name": "Fire Elemental",
+      "referenceHash": "9474fb0979ef837f087c4c0f2e196ef8c3d0836ae4910c4e30aca057117d9829",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "db11b832-7584-4e4b-8d02-b03fe76dcbc3",
+      "set": "4ed",
+      "name": "Nightmare",
+      "referenceHash": "cfee5a375549d539ffb76203539f541c9e6807416eac94f0f2fa928cc3024f56",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "ddb92543-e601-4575-8e17-84ec0b1edd66",
+      "set": "2ed",
+      "name": "Righteousness",
+      "referenceHash": "7684568f38d2ebb32093c6b2b8cf9b8c87256c126abe6a6e608d954f7b5054be",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "7684568f38d2ebb32093c6b2b8cf9b8c87256c126abe6a6e608d954f7b5054be",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "7684568f38d2ebb32093c6b2b8cf9b8c87256c126abe6a6e608d954f7b5054be",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "e0fa83df-57e8-4e4e-95af-9557869a34a3",
+      "set": "chr",
+      "name": "Remove Soul",
+      "referenceHash": "22dcd2893bb7229702e2cbb1da6fcc24f6239e6e4bbd3ee9e31ca4bdc7e3ea19",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "e12847f4-4ace-4116-bc96-f3e5336eb35f",
+      "set": "2ed",
+      "name": "Hypnotic Specter",
+      "referenceHash": "1741f49d48e217664583a73982148476532d0a04a3a3c36bd8d9345a409333ed",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "1741f49d48e217664583a73982148476532d0a04a3a3c36bd8d9345a409333ed",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "1741f49d48e217664583a73982148476532d0a04a3a3c36bd8d9345a409333ed",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "e4dc1103-7bf1-47f6-9006-d3ed9ccd7a6a",
+      "set": "lea",
+      "name": "Prodigal Sorcerer",
+      "referenceHash": "1329529bbd834e0da816f4cceb4033b37e0c2581f02a7b76d630c742cd7e8f3c",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "e85e54f3-012b-460f-a6f9-d0242a174adc",
+      "set": "chr",
+      "name": "Chromium",
+      "referenceHash": "5b5ff827b7aac773d848d05dc3c499a56ca63ffa78008ae0ed91faa3b00a0ab7",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "ea3830c5-cc66-453e-9e53-0636e00ee0ee",
+      "set": "lea",
+      "name": "Drain Power",
+      "referenceHash": "8f8b0b659aab36259950c3dc44d6824c6825d7dcfadb209b624a906c529d1caa",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "eaac88da-d19e-4771-944c-3709963d04e7",
+      "set": "lea",
+      "name": "Mesa Pegasus",
+      "referenceHash": "5b7e43695ddc3e26d3f3d060921a6cbe031bf6959933d2f44c7fb5f916b266b7",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "eace2c85-976c-425e-9800-5a6ccbd91b56",
+      "set": "lea",
+      "name": "Mountain",
+      "referenceHash": "54710d60a0c3af2311dc51dbd23361ac25cf7b88365ae98e63f01e00d795c556",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "54710d60a0c3af2311dc51dbd23361ac25cf7b88365ae98e63f01e00d795c556",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "54710d60a0c3af2311dc51dbd23361ac25cf7b88365ae98e63f01e00d795c556",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "eb6953fd-ee48-49dc-9c9c-bfb9a9dc06d0",
+      "set": "leb",
+      "name": "Glasses of Urza",
+      "referenceHash": "bf0ab4064da4de3ffef6bb8b65807ec33192755345dde11c2f70c132b2d03e9e",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "bf0ab4064da4de3ffef6bb8b65807ec33192755345dde11c2f70c132b2d03e9e",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "bf0ab4064da4de3ffef6bb8b65807ec33192755345dde11c2f70c132b2d03e9e",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "ebe8845e-df1c-481c-949c-aab84af99a05",
+      "set": "arn",
+      "name": "Kird Ape",
+      "referenceHash": "808eb46c46ac4985af440532d943ca76436a48da7fc8b6e4f47bb432d63412c2",
+      "before": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "808eb46c46ac4985af440532d943ca76436a48da7fc8b6e4f47bb432d63412c2",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Ken Meyer Jr.",
+        "referenceHash": "808eb46c46ac4985af440532d943ca76436a48da7fc8b6e4f47bb432d63412c2",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "edcc56a0-1dc0-4261-8f9c-5a88ce83f9e9",
+      "set": "leb",
+      "name": "Hypnotic Specter",
+      "referenceHash": "41354ee0130dac23d847db8707dc092ebd77aedcffad99a80d288635fbee3074",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "41354ee0130dac23d847db8707dc092ebd77aedcffad99a80d288635fbee3074",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "41354ee0130dac23d847db8707dc092ebd77aedcffad99a80d288635fbee3074",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "ee21b620-4dfa-4e06-872e-8d8ffce12f76",
+      "set": "leb",
+      "name": "Tranquility",
+      "referenceHash": "0f0feec771147dc40f61ab11640630006731f26e66ef738076e2b6fc661e7e7d",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "0f0feec771147dc40f61ab11640630006731f26e66ef738076e2b6fc661e7e7d",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "0f0feec771147dc40f61ab11640630006731f26e66ef738076e2b6fc661e7e7d",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "f04b8356-2384-4743-80dd-f15ca7ec65f7",
+      "set": "fem",
+      "name": "Icatian Javelineers",
+      "referenceHash": "5ac5833124b08294f80f083eabb6c17d56158d2ca506e5c34c71d2bdb933080f",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "f32373dd-06d8-45d1-8777-3b1411bcb30a",
+      "set": "atq",
+      "name": "Hurkyl's Recall",
+      "referenceHash": "b9772f8d17541c29fb77c92146231abe79d6aac0db05cea384385cbef6045243",
+      "before": {
+        "artist": "Néné Thomas",
+        "referenceHash": "b9772f8d17541c29fb77c92146231abe79d6aac0db05cea384385cbef6045243",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Néné Thomas",
+        "referenceHash": "b9772f8d17541c29fb77c92146231abe79d6aac0db05cea384385cbef6045243",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "f3f5b68a-6b0e-431e-89f0-ff60f17687a5",
+      "set": "lea",
+      "name": "Psychic Venom",
+      "referenceHash": "8b80fafa9ecb3b738e959f8561bdf19a7c410c06ee652c28fc14b6b04857c272",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "f52eb10a-a9eb-44b7-95ae-12fb551c8fa5",
+      "set": "leb",
+      "name": "Power Surge",
+      "referenceHash": "521b4fb16533dd5898c92fd0cda929b766c911ca7ae15411a9ec1819dc0574e5",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "521b4fb16533dd5898c92fd0cda929b766c911ca7ae15411a9ec1819dc0574e5",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "521b4fb16533dd5898c92fd0cda929b766c911ca7ae15411a9ec1819dc0574e5",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "f62c68d0-9b1e-4abe-991d-a645effeb676",
+      "set": "leb",
+      "name": "Benalish Hero",
+      "referenceHash": "5f738853ea717775e71283b3ee69644610fe0f0211adc9079480d03728ab6749",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "5f738853ea717775e71283b3ee69644610fe0f0211adc9079480d03728ab6749",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "5f738853ea717775e71283b3ee69644610fe0f0211adc9079480d03728ab6749",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "f8ac5006-91bd-4803-93da-f87cf196dd2f",
+      "set": "lea",
+      "name": "Serra Angel",
+      "referenceHash": "08fd162ebb84008e27072894b6ba2d65b75ecedf6fa3da96b58076275445961a",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "f94c7a9a-4b7e-438e-9f8f-b22a9e757f4f",
+      "set": "chr",
+      "name": "Enchantment Alteration",
+      "referenceHash": "d63704ecbf4444f3236c3dee54dcfdfc6c38bcf2946654e76a30905b956b0696",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "f95d42d8-ba75-43bf-81b8-b02374f03e83",
+      "set": "fem",
+      "name": "Icatian Infantry",
+      "referenceHash": "db18646f795d0ef753883526cfa4750b4771f9bb8ca3d760c15671654420f2c8",
+      "before": {},
+      "after": {},
+      "changed": false
+    },
+    {
+      "id": "fa161987-2dd1-4efe-b934-acbd93653169",
+      "set": "2ed",
+      "name": "Lord of Atlantis",
+      "referenceHash": "2360fee5ba91af5dd159ae3cc8d3d9a78f0348f8b56dba46340ba88b074fcb22",
+      "before": {},
+      "after": {
+        "artist": "Melissa Benson",
+        "referenceHash": "2360fee5ba91af5dd159ae3cc8d3d9a78f0348f8b56dba46340ba88b074fcb22",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "fabc3267-b59b-4f36-8873-5b4b072711ca",
+      "set": "drk",
+      "name": "Flood",
+      "referenceHash": "6472932946187ac3c03189d8a7168b54829db38dc37753d724bcad37e31169ea",
+      "before": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "6472932946187ac3c03189d8a7168b54829db38dc37753d724bcad37e31169ea",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Denise Detwiler",
+        "referenceHash": "6472932946187ac3c03189d8a7168b54829db38dc37753d724bcad37e31169ea",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "fc24f763-4c7f-45e4-933b-573d1ace1ddc",
+      "set": "2ed",
+      "name": "Tranquility",
+      "referenceHash": "789ee32c646f30298f23c58d931d165ebe1ed28b4dac803c705ce162d99cf09f",
+      "before": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "789ee32c646f30298f23c58d931d165ebe1ed28b4dac803c705ce162d99cf09f",
+        "reviewedFields": ["artist"]
+      },
+      "after": {
+        "artist": "Douglas Schuler",
+        "referenceHash": "789ee32c646f30298f23c58d931d165ebe1ed28b4dac803c705ce162d99cf09f",
+        "reviewedFields": ["artist"]
+      },
+      "changed": false
+    },
+    {
+      "id": "fd4f6e34-3f66-4e10-8170-56039c5f6fcc",
+      "set": "2ed",
+      "name": "Shivan Dragon",
+      "referenceHash": "e6470be4a758ed8e8c0f7c0890243b7bad65f89539e094638ab8eb3388393ab2",
+      "before": {},
+      "after": {
+        "artist": "Melissa Benson",
+        "referenceHash": "e6470be4a758ed8e8c0f7c0890243b7bad65f89539e094638ab8eb3388393ab2",
+        "reviewedFields": ["artist"]
+      },
+      "changed": true
+    },
+    {
+      "id": "fefbf149-f988-4f8b-9f53-56f5878116a6",
+      "set": "lea",
+      "name": "Shivan Dragon",
+      "referenceHash": "1eacbef70519988735adf1f2fca39a65fa25c56177828107446cbf0d3a68e83e",
+      "before": {},
+      "after": {},
+      "changed": false
+    }
+  ],
+  "summary": {
+    "existingUnchanged": 182,
+    "newExactCredits": 13,
+    "total": 195,
+    "staleScanGuards": 13,
+    "wrongSetGuards": 13
+  }
+}
