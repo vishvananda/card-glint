@@ -143,11 +143,11 @@ use the same canonical resampling as the full-card metric. Their unchanged
 baseline matches 555,152 tested glyph pixels exactly across collector, artist
 and legal regions. Collector candidates include the pinned Conjurer Gotham font;
 283 ordinary nonfoil printings choose shared candidates, with all planeswalkers
-and foil-only sources retained as diagnostics. The proposal uses Gotham 13 px
-for collectors, 12 px small caps for artists, and 11 px Plantin for legal text.
-These are research proposals: refine the search boundary, port the evolving
-harness to a reproducible CLI, verify physical strings and replay complete native
-faces/etchings before changing defaults. Artist positions also depend on the
+and foil-only sources retained as diagnostics. That coarse phase proposes Gotham
+13 px for collectors, 12 px small caps for artists, and 11 px Plantin for legal
+text. The follow-up below refines the search boundaries, provides a reproducible
+CLI and replays complete native faces/etchings. Physical strings, ink colors and
+remaining source details still need verification before changing defaults. Artist positions also depend on the
 collector font's measured code width, so its phase delta is not the whole change.
 Copyright regions follow the known stats/non-stats row and exclude long artist
 names on the other row.
@@ -223,3 +223,28 @@ TEMPLATES OUT` compares native outer-frame fields to the scan-only consensus.
 Identical fields share computation while retaining every printing. Its affine
 residual is a diagnostic, not a renderer transformation: outer fields cannot
 establish the shape or position of inner art, rules or type boundaries.
+
+## Complete native footer and land-symbol replay
+
+The [numeric replay](../fixtures/accuracy/m21-footer-and-land-native-replay.json.gz)
+retains all 297 Original printings, hashes and differential checks for their
+594 native layers, all footer proposal rows, the 15 large-land-symbol measurements
+and the 61 distinct native outer-frame field diagnostics. Every etching is unchanged; face differences stay inside the permitted
+footer and basic-land symbol regions, with no alpha changes or browser faults.
+
+The same-pose, same-metric structural mean on the 283 supported ordinary faces
+changes from 73.28 to 74.52/100.
+All 15 basic lands improve and the other 268 structural scores are unchanged.
+Diagnostic artist/legal overlap changes from 64.25 to
+85.82/100. Credits remain unverified and excluded from the
+weighted total. Four sample footer strings and renderings were visually checked;
+this is not an all-printing content approval. All 14 planeswalkers remain visible
+as missing full-card region maps, with their native layers and regional footer
+diagnostics retained.
+
+The expanded searches select Gotham 12.5 px for collector text, Beleren small caps
+11.75 px with zero added tracking for artists, and MPlantin 11 px with 0.1 px
+tracking for copyright. Collector and artist sizes/offsets are interior to the
+refined search ranges. The refined replay plan is experimental, not a shipped
+profile. Glyph-body masks, fixed scan poses and samples cannot certify remaining
+bezel, shadow, ink-color, original-content or frame-geometry questions.
