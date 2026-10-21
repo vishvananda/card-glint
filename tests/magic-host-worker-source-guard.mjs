@@ -1,3 +1,4 @@
+import { profileDataGeneratorSource } from '../games/magic/tools/accuracy/profile-data-modules.mjs';
 import { profilePreparationProofDependency } from '../games/magic/tools/accuracy/profile-preparation-ancestry.mjs';
 import { preAlphaEditorSource } from '../games/magic/tools/accuracy/alpha-editor-ancestry.mjs';
 import assert from 'node:assert/strict';
@@ -11,7 +12,10 @@ import {
 export async function preHostWorkerSource(file) {
   const bytes = await preAlphaEditorSource(
       file,
-      await profilePreparationProofDependency(file, await readFile(file)),
+      await profilePreparationProofDependency(
+        file,
+        profileDataGeneratorSource(file, await readFile(file)),
+      ),
     ),
     proof = await hostWorkerCompatibilityProof();
   if (proof.files[file])

@@ -1,3 +1,4 @@
+import { profileDataGeneratorSource } from './profile-data-modules.mjs';
 import {
   profilePreparationProofDependency,
   profilePreparationSource,
@@ -27,7 +28,10 @@ export function alphaEditorAncestry(set) {
             hash(
               await preHeadingSpacingSource(
                 file,
-                await profilePreparationProofDependency(file, await readFile(file)),
+                await profilePreparationProofDependency(
+                  file,
+                  profileDataGeneratorSource(file, await readFile(file)),
+                ),
                 set,
               ),
             ),

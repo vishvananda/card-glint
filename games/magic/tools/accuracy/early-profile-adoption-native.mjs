@@ -1,3 +1,5 @@
+import { createServer } from 'vite';
+import { cachedFetch } from './cache.mjs';
 // Verify an installed printing profile through the public native painter.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -12,7 +14,45 @@ const raw = await Promise.all(
 const [capture, inputs] = raw.map((b) => JSON.parse(b));
 assert.equal(capture.completed, 302);
 assert.equal(inputs.entries.length, 302);
+// Discover both symbol modes before painting. Frozen Original snapshots do
+// not necessarily list the modern glyph assets needed by Oracle variants.
+const preflight = await createServer({
+  root,
+  configFile: false,
+  server: { middlewareMode: true },
+  optimizeDeps: { noDiscovery: true },
+});
+const inventory = new Map((inputs.components ?? []).map((a) => [a.url, a]));
+try {
+  await preflight.ssrLoadModule('/games/magic/src/data/eager.ts');
+  await preflight.ssrLoadModule('/games/magic/src/data/eager-wording.ts');
+  const { fromScryfallCard } = await preflight.ssrLoadModule(
+    '/games/magic/src/presentation/scryfall-card.ts',
+  );
+  const { canvasAssetUrls } = await preflight.ssrLoadModule(
+    '/games/magic/src/presentation/canvas-assets.ts',
+  );
+  const urls = new Set();
+  for (const e of inputs.entries)
+    for (const style of ['modern', 'original']) {
+      const f = fromScryfallCard(e.card, {
+        wording: 'oracle',
+        symbolStyle: style,
+        illustrations: [e.face.illustration],
+      });
+      for (const url of canvasAssetUrls(f)) if (url?.startsWith('https:')) urls.add(url);
+    }
+  for (const url of [...urls].sort()) {
+    const asset = await cachedFetch(url, { offline: true });
+    if (inventory.has(url)) assert.equal(inventory.get(url).sha256, asset.sha256);
+    inventory.set(url, asset);
+  }
+} finally {
+  await preflight.close();
+}
+inputs.components = [...inventory.values()].sort((a, b) => a.url.localeCompare(b.url));
 const source = {
+  componentInventoryHash: hash(JSON.stringify(inputs.components)),
   rendererHash: await sourceHash(path.join(root, 'games/magic/src')),
   candidateCaptureHash: hash(raw[0]),
   inputsHash: hash(raw[1]),
@@ -57,6 +97,8 @@ try {
         new AbortController().signal,
         e.face.illustration,
       );
+      for (const url of urls.filter(Boolean))
+        if (!lease.images.has(url)) throw Error('Undecoded native asset: ' + url);
       const result = {};
       try {
         for (const [variant, face] of Object.entries(faces)) {

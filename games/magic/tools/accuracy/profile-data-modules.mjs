@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict';
 import ts from 'typescript';
 import { readFile, readdir } from 'node:fs/promises';
+import { hash } from './common.mjs';
 import { checkSetProfile } from './set-profile-check.mjs';
 
 export function parseProfileData(text, file = 'profile.ts') {
@@ -85,9 +86,28 @@ export async function additionalProfileDataModules(known) {
     assert(declaration);
     // Parse the literal payload without evaluating generated code.
     const initializer = declaration.declarationList.declarations[0].initializer.getText(parsed);
-    const data = JSON.parse(initializer);
+    const data = parseProfileData(
+      `export const profile = ${initializer}; export const review = {};`,
+    ).profile;
     assert.deepEqual(data.tables.setCalibrationProfiles[profile.set], profile);
     result.push(file);
   }
+  return result;
+}
+
+/** Historical generator reconstruction only. Current generated payloads are
+ * independently checked against every authoritative source in their manifest.
+ * Adding a registered data module must not grant it an older score identity. */
+export function profileDataGeneratorSource(file, bytes) {
+  if (file !== 'games/magic/tools/build-set-data.mjs') return bytes;
+  const before = '67cc654df8eef2a6c9c14ea1066e04e89e075e52d04acd04e967053d02c91f5e',
+    after = 'dfe7e032382f2544168affac70d3b88517ae17ff8d649704dfbda7d7fed10a4b';
+  if (hash(bytes) === before) return bytes;
+  assert.equal(hash(bytes), after, 'Unreviewed set-data generator');
+  const source = bytes.toString();
+  const needle = "for (const code of ['2ed', 'fem', '4ed', 'chr'])";
+  assert.equal(source.split(needle).length, 2);
+  const result = Buffer.from(source.replace(needle, "for (const code of ['fem', '4ed', 'chr'])"));
+  assert.equal(hash(result), before);
   return result;
 }

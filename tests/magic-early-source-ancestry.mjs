@@ -1,3 +1,4 @@
+import { profilePreparationProofDependency } from '../games/magic/tools/accuracy/profile-preparation-ancestry.mjs';
 import { profileAdapterProofDependency } from '../games/magic/tools/accuracy/profile-adapter-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -13,7 +14,10 @@ const proof = JSON.parse(
 );
 for (const [file, entry] of Object.entries(proof.files)) {
   const current = await readFile(file),
-    before = await preEarlyCalibrationSource(file, current);
+    before = await preEarlyCalibrationSource(
+      file,
+      await profilePreparationProofDependency(file, current),
+    );
   assert.equal(
     hash(await preOracleInsetSource(file, await profileAdapterProofDependency(file, current))),
     entry.after,
@@ -107,11 +111,25 @@ const preparation = JSON.parse(
     'games/magic/fixtures/accuracy/early-through-fourth/profile-preparation-source-proof.json',
   ),
 );
+// Historical membership is an explicit test fixture, not a claim about the
+// current registered profiles. Current/new profiles are checked separately.
+const historicalScopes = Buffer.from(
+  "export const profileSets: readonly string[] = ['4ed', 'chr', 'fem'];",
+);
+const historicalProfiles = async (file) =>
+  file.endsWith('/data/scopes.ts')
+    ? historicalScopes
+    : file.endsWith('/sets/2ed.ts')
+      ? undefined
+      : readFile(file);
 for (const [file, entry] of Object.entries(preparation.files)) {
   const bytes = await readFile(file);
   assert.equal(hash(await preProfilePreparationSource(file, bytes, 'lea')), entry.before);
   assert.equal(hash(await preProfilePreparationSource(file, bytes, '4ed')), entry.before);
-  assert.equal(hash(await preProfilePreparationSource(file, bytes)), entry.before);
+  assert.equal(
+    hash(await preProfilePreparationSource(file, bytes, undefined, historicalProfiles)),
+    entry.before,
+  );
   await assert.rejects(
     preProfilePreparationSource(
       file,
@@ -135,8 +153,18 @@ for (const [file, entry] of Object.entries(preparation.files)) {
     'Newly activated profiles must not inherit historical helper guards',
   );
   assert.deepEqual(await preProfilePreparationSource(file, bytes, '../'), bytes);
+  assert.deepEqual(
+    await preProfilePreparationSource(file, bytes, '2ed'),
+    bytes,
+    'Installed Unlimited data must keep its new helper identity',
+  );
+  assert.deepEqual(
+    await preProfilePreparationSource(file, bytes),
+    bytes,
+    'Current unscoped source cannot approve a newly installed profile',
+  );
   const scopesPath = 'games/magic/src/data/scopes.ts';
-  const scopes = await readFile(scopesPath);
+  const scopes = historicalScopes;
   const activeAlias = async (path) =>
     path === scopesPath
       ? Buffer.from(
@@ -144,7 +172,7 @@ for (const [file, entry] of Object.entries(preparation.files)) {
         )
       : path.endsWith('/2ed.ts')
         ? undefined
-        : readFile(path);
+        : historicalProfiles(path);
   assert.deepEqual(
     await preProfilePreparationSource(file, bytes, '2ed', activeAlias),
     bytes,
@@ -158,7 +186,7 @@ for (const [file, entry] of Object.entries(preparation.files)) {
   const removed = async (path) =>
     path === scopesPath
       ? Buffer.from(scopes.toString().replace("['4ed', 'chr', 'fem']", "['chr', 'fem']"))
-      : readFile(path);
+      : historicalProfiles(path);
   assert.deepEqual(
     await preProfilePreparationSource(file, bytes, '4ed', removed),
     bytes,
