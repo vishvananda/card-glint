@@ -449,3 +449,21 @@ the evidence. Source star bounds have shared median 8 × 8 px at [61.5, 653.5].
 Give the marker its own fixed slot and preserve ordinary code/language advances,
 then replay all five foil cards and require the other 292 native faces unchanged.
 Do not certify the footer from the improved mean alone.
+
+## Material cache prerequisite
+
+The [cache-only source proof](../fixtures/accuracy/planeswalker-materials/cache-source-proof.json)
+records the resolved same-URL pixel collision. Derived planeswalker materials
+now include immutable bitmap identity for the source, alpha mask and frame.
+Weak keys retain no source ownership and require no hashing or pixel readback.
+The browser/worker regression checks all three replacements, selective one-part
+rebuilds, unchanged warm reuse and borrowed-source preservation. The existing
+14-palette/geometry cases, four worker cases and material lifetime/budget tests
+also pass.
+
+All 297 Original M21 faces and 297 etchings remain byte-identical in the separate
+[native replay](../fixtures/accuracy/planeswalker-materials/cache-native.json.gz).
+An exact reversible source delta preserves historical geometry receipts; unknown
+painter edits remain rejected. This proof concerns unchanged default source
+pixels, not changed calibrations or arbitrary host replacements. It does not
+complete the M21 color or layout pass.

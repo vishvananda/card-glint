@@ -6,7 +6,7 @@ import { faceFrame } from './special-frames.js';
 import { profileAssets } from './assets.js';
 import { resolveCardProfile } from './profile.js';
 import { adjustHsb, IDENTITY_HSB, type HsbAdjustment } from './hsb.js';
-import { planeswalkerBitmapCache } from './material-bitmap-cache.js';
+import { planeswalkerBitmapCache, materialBitmapIdentity } from './material-bitmap-cache.js';
 import {
   walkerSources,
   walkerPalette,
@@ -169,6 +169,8 @@ export async function preparePlaneswalkerMaterials(
           'background',
           sources.source,
           assets.background,
+          materialBitmapIdentity(source),
+          materialBitmapIdentity(mask),
           mask.width,
           mask.height,
           adjustment,
@@ -188,6 +190,7 @@ export async function preparePlaneswalkerMaterials(
           WALKER_MATERIAL_REVISION,
           'frame',
           assets.frame,
+          materialBitmapIdentity(frame),
           frame.width,
           frame.height,
         ]),

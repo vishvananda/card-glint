@@ -209,3 +209,18 @@ export const clearEarlyHsbBitmaps = () => {
   earlyHsbBitmapCache.clear();
   retroDualBitmapCache.clear();
 };
+
+// ImageBitmap pixels are immutable. Source URL and dimensions alone do not
+// identify the output of upstream correction or a host-provided replacement.
+// Weak keys do not own/retain sources and require no pixel readback or hashing.
+const materialBitmapIds = new WeakMap<ImageBitmap, number>();
+let nextMaterialBitmapId = 0;
+export function materialBitmapIdentity(bitmap: ImageBitmap): number {
+  const known = materialBitmapIds.get(bitmap);
+  if (known !== undefined) return known;
+  if (nextMaterialBitmapId >= Number.MAX_SAFE_INTEGER)
+    throw Error('Material bitmap identity space exhausted');
+  const id = ++nextMaterialBitmapId;
+  materialBitmapIds.set(bitmap, id);
+  return id;
+}

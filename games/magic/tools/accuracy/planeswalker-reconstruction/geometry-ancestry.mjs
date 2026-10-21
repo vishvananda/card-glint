@@ -1,3 +1,4 @@
+import { preWalkerMaterialCacheSource } from '../walker-material-cache-ancestry.mjs';
 import { profilePreparationProofDependency } from '../profile-preparation-ancestry.mjs';
 import { preEarlyCalibrationSource } from '../abu-source-ancestry.mjs';
 import assert from 'node:assert/strict';
@@ -6,6 +7,7 @@ import { hash } from '../common.mjs';
 let checked;
 /** Historical bytes only. Changed planeswalkers and M15 symbols never reuse scores. */
 export async function preWalkerGeometry(file, bytes) {
+  bytes = await preWalkerMaterialCacheSource(file, bytes);
   bytes = await preEarlyCalibrationSource(
     file,
     await profilePreparationProofDependency(file, bytes),
@@ -20,7 +22,10 @@ export async function preWalkerGeometry(file, bytes) {
         hash(
           await preEarlyCalibrationSource(
             name,
-            await profilePreparationProofDependency(name, await readFile(name)),
+            await profilePreparationProofDependency(
+              name,
+              await preWalkerMaterialCacheSource(name, await readFile(name)),
+            ),
           ),
         ),
         digest,

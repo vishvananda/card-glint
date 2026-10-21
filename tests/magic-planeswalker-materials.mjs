@@ -167,6 +167,52 @@ try {
             throw Error('Worker pixels differ');
           workerCases++;
         }
+        if (palette === 'U') {
+          // A prior preparation stage or host can supply different immutable
+          // pixels at the same URL and dimensions. This is not a new asset URL.
+          for (const [label, url, changedSlot, color] of [
+            ['source', s.source, a.background, '#bb6611'],
+            ['mask', a.background, a.background, 'rgba(120,120,120,0.5)'],
+            ['frame', a.frame, a.frame, '#2244dd'],
+          ]) {
+            const original = images.get(url);
+            const replacement = await make(original.width, original.height, (c, w, h) => {
+              c.fillStyle = color;
+              c.fillRect(0, 0, w, h);
+            });
+            const modified = new Map(images);
+            modified.set(url, replacement);
+            const builds = planeswalkerBitmapCache.stats.builds;
+            let prepared;
+            try {
+              prepared = await preparePlaneswalkerMaterials(face, modified, signal);
+              if (
+                prepared.images.get(changedSlot) === one.images.get(changedSlot) ||
+                (await hashes(prepared.images, changedSlot)) ===
+                  (await hashes(one.images, changedSlot))
+              )
+                throw Error('Same-URL ' + label + ' pixels reused stale material');
+              const unchanged = changedSlot === a.frame ? a.background : a.frame;
+              if (
+                prepared.images.get(unchanged) !== one.images.get(unchanged) ||
+                planeswalkerBitmapCache.stats.builds - builds !== 1
+              )
+                throw Error('Unrelated material rebuilt for ' + label);
+            } finally {
+              prepared?.dispose();
+              replacement.close();
+            }
+          }
+          const builds = planeswalkerBitmapCache.stats.builds;
+          const again = await preparePlaneswalkerMaterials(face, images, signal);
+          if (
+            again.images.get(a.frame) !== one.images.get(a.frame) ||
+            again.images.get(a.background) !== one.images.get(a.background) ||
+            planeswalkerBitmapCache.stats.builds !== builds
+          )
+            throw Error('Original material lost its warm identity');
+          again.dispose();
+        }
         one.dispose();
         two.dispose();
         const missing = new Map(images);

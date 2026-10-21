@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "baseCommit": "a6c9317ca6bf629a6acbcf11897adbddd0baa17e",
+  "scope": "Historical pre-cache-key source reconstruction only. Default M21 pixels are preserved; different immutable source/mask/frame pixels at identical URLs correctly produce distinct materials. No geometry, source-calibration approval or general score alias. Reject any unrecorded source edit.",
+  "files": {
+    "games/magic/src/presentation/material-bitmap-cache.ts": {
+      "before": "eb93149f37ca94ae59b464cb6957064d70db926ac2765bd5ae378e8cbac2a42f",
+      "after": "7d25387c92fcd348144667a5b58cd551463c7a3b54a2dda339b08ab000c44283",
+      "reverseEdits": [
+        {
+          "start": 211,
+          "count": 15,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/planeswalker-material.ts": {
+      "before": "804aab688fc55db6887ec1bca694c3a4d5f34c9bbf875ecb94d8788b13672ec7",
+      "after": "86e383a26223cfeafe17bb20d05c200f62d9cd087a684ce26813981db08878ce",
+      "reverseEdits": [
+        {
+          "start": 192,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 171,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 8,
+          "count": 1,
+          "lines": ["import { planeswalkerBitmapCache } from './material-bitmap-cache.js';\n"]
+        }
+      ]
+    }
+  },
+  "native": {
+    "file": "games/magic/fixtures/accuracy/planeswalker-materials/cache-native.json.gz",
+    "sha256": "3daabb07c41fde725ed4aeb900cede6a3fc968b6bffb9f73225ea7999cef105a",
+    "contentSha256": "f2fc96fe71aa477eb273c1dc640d01ffde8c177b17a372207b448a346bd1223b"
+  }
+}
