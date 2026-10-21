@@ -135,5 +135,28 @@ font candidates, glyph-aware masks/alternative assets, visible bounds, color,
 bevel and shadow checks must precede the full native replay. A high regional
 bitmap score cannot certify a complete component or set.
 
+## Native footer and remaining registration research
+
+The [native follow-up](../fixtures/accuracy/m21-native-footer-and-filter-research.json.gz)
+retains all 297 source rows for each footer part. Candidates paint at 732 px and
+use the same canonical resampling as the full-card metric. Their unchanged
+baseline matches 555,152 tested glyph pixels exactly across collector, artist
+and legal regions. Collector candidates include the pinned Conjurer Gotham font;
+283 ordinary nonfoil printings choose shared candidates, with all planeswalkers
+and foil-only sources retained as diagnostics. The proposal uses Gotham 13 px
+for collectors, 12 px small caps for artists, and 11 px Plantin for legal text.
+These are research proposals: refine the search boundary, port the evolving
+harness to a reproducible CLI, verify physical strings and replay complete native
+faces/etchings before changing defaults. Artist positions also depend on the
+collector font's measured code width, so its phase delta is not the whole change.
+Copyright regions follow the known stats/non-stats row and exclude long artist
+names on the other row.
+
+A targeted planeswalker probe tries extra vertical starting points and 0.8,
+1.2 and 1.6 px native filtering. More filtering recovers the two Garruk cases
+but worsens foil Liliana's recovery; no setting is promoted. Ordinary-frame
+known controls remain passing. Preserve the existing normalization limits and
+investigate physical frame-edge selection before full-set certification.
+
 Indices are reported out of 100; they are not percentages of visual fidelity.
 A passing regional fit does not prove an entire card, frame family or set.
