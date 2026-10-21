@@ -80,5 +80,58 @@
       "nativeFaceHash": "773c210d8c56f9d6c1a8cba3909bbc0e36ec43445b41c50d58ad736cf8ce40a1"
     }
   ],
-  "requiredReview": "Compare all ten fixed-pose native frames, including top-left and bottom edge crops. Keep source-image crop, stock aperture and illustration placement coherent. Re-run regional/full metrics and retain regressions."
+  "requiredReview": "Compare all ten fixed-pose native frames, including top-left and bottom edge crops. Keep source-image crop, stock aperture and illustration placement coherent. Re-run regional/full metrics and retain regressions.",
+  "candidateStudy": {
+    "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-crop-candidates.json.gz",
+    "sha256": "aa863b62e035d7875a81c19407a5a611c8b4537372f40976a675247db1f9deeb",
+    "nativeFaces": 40,
+    "sharedCandidates": 4,
+    "independentScanRefits": 0,
+    "recommendedCropCandidate": "up-3-art",
+    "summary": {
+      "current": {
+        "structural100": 64.01099479975785,
+        "frame100": 70.92333832285516,
+        "art100": 70.23596107797273,
+        "strips": {
+          "left": 0.8928931317111125,
+          "top": 0.6216166241836438,
+          "bottom": 0.8295103472869888
+        }
+      },
+      "up-2.5-art": {
+        "structural100": 69.70092487741043,
+        "frame100": 71.70899807900794,
+        "art100": 70.42073702390255,
+        "strips": {
+          "left": 0.8949692758566347,
+          "top": 0.840618787299721,
+          "bottom": 0.8273532283125583
+        }
+      },
+      "up-3-art": {
+        "structural100": 70.43934962173341,
+        "frame100": 72.70962001461896,
+        "art100": 70.24164547869226,
+        "strips": {
+          "left": 0.8949883979408995,
+          "top": 0.9035883584302068,
+          "bottom": 0.8269490173052244
+        }
+      },
+      "up-3.5-art": {
+        "structural100": 70.85651744451476,
+        "frame100": 73.4599587351037,
+        "art100": 70.06598206500162,
+        "strips": {
+          "left": 0.8952762089633552,
+          "top": 0.8855846508696917,
+          "bottom": 0.825866126351157
+        }
+      }
+    },
+    "adopted": false,
+    "remaining": "A cropped top edge does not restore the missing darker lower bevel or fully correct the original art surround. Reconstruct and measure the outer edge separately before adoption.",
+    "visualCornerPairs": 10
+  }
 }

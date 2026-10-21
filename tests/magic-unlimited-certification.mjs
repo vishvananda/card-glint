@@ -72,3 +72,35 @@ for (const row of data.receipt.rows) {
   assert.equal(reference.nativeScoredPoseHash, row.poseHash);
 }
 console.log('Published scan templates preserve all302 certified reference/pose joins.');
+
+// A better aggregate must not silently close a visibly wrong frame edge.
+const cropReview = await readJson(
+  'games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-crop-review.json',
+);
+assert.equal(cropReview.status, 'open');
+assert.equal(cropReview.candidateStudy.adopted, false);
+const archive = await readFile(cropReview.candidateStudy.file);
+assert.equal(hash(archive), cropReview.candidateStudy.sha256);
+const { gunzipSync } = await import('node:zlib');
+const cropStudy = JSON.parse(gunzipSync(archive));
+assert.equal(cropStudy.capture.rows.length, 10);
+assert.equal(cropStudy.scores.rows.length, 10);
+for (const row of cropStudy.capture.rows) {
+  const original = data.receipt.rows.find((r) => r.id === row.id);
+  assert.equal(row.referenceHash, original.referenceHash);
+  assert.equal(row.poseHash, original.poseHash);
+  assert.equal(row.variants.length, 4);
+  assert.equal(row.variants[0].hash, original.nativeFaceHash);
+  for (const variant of row.variants)
+    assert.deepEqual(
+      variant.values,
+      cropStudy.capture.rows[0].variants.find((v) => v.name === variant.name).values,
+    );
+}
+const summary = cropStudy.scores.summary;
+assert(summary['up-3-art'].structural100 > summary.current.structural100);
+assert(summary['up-3-art'].strips.top > summary['up-3.5-art'].strips.top);
+assert(summary['up-3.5-art'].structural100 > summary['up-3-art'].structural100);
+console.log(
+  'Dual crop:40 native candidates,10 exact baseline matches; boundary diagnostic rejects the misleading aggregate optimum. Review remains open.',
+);
