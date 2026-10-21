@@ -26,6 +26,8 @@ assert.equal(n.data.summary.completed, n.data.summary.total);
 assert.equal(n.data.observationsHash, hash(obs.bytes));
 assert.equal(controls.data.observationsHash, hash(obs.bytes));
 assert.equal(controls.data.templatesHash, hash(t.bytes));
+assert.deepEqual(t.data.partitionPolicy.fit, [0, 1]);
+assert.deepEqual(t.data.partitionPolicy.validation, [2]);
 const definition = {
   schema: 1,
   observationsHash: hash(obs.bytes),
@@ -105,21 +107,22 @@ for (const control of controls.data.controls) {
     image = normalize(raw),
     profiles = source.partitions.map((p) => scanBoundaryProfiles(image, p, source.bounds));
   const patches = source.partitions.map((p) => nativeFramePatches(raw, p, source.bounds));
-  const [template, independentTemplate, certificateTemplate] =
-    t.data.templates[control.geometry].partitions;
+  const family = t.data.templates[control.geometry];
+  const template = family.partitions[0].concat(family.partitions[1]),
+    independentTemplate = family.partitions[2];
   const fit = fitGradientProfiles(
     {
-      profiles: profiles[0],
-      independentProfiles: profiles[1],
-      patches: patches[0],
-      independentPatches: patches[1],
-      fit: fitScanResidual(profiles[0], template),
+      profiles: profiles[0].concat(profiles[1]),
+      independentProfiles: profiles[2],
+      patches: patches[0].concat(patches[1]),
+      independentPatches: patches[2],
+      fit: fitScanResidual(profiles[0].concat(profiles[1]), template),
     },
     {
       template,
       independentTemplate,
-      patchTemplate: t.data.templates[control.geometry].patchTemplates[0],
-      independentPatchTemplate: t.data.templates[control.geometry].patchTemplates[1],
+      patchTemplate: family.patchTemplates[0].concat(family.patchTemplates[1]),
+      independentPatchTemplate: family.patchTemplates[2],
       search: 'independent-axis-seed-v1',
     },
   );

@@ -110,8 +110,13 @@ const definition = {
   sources,
   reviews: reviews.map(({ file, sha256 }) => ({ file, sha256 })),
   templates,
+  partitionPolicy: {
+    fit: [0, 1],
+    validation: [2],
+    modelSelection: 'none; fixed six-parameter affine',
+  },
   policy:
-    'Complete observed scan census. Physical geometry and normal-frame material families; gradient vectors use the matched outer-boundary interval for normalization and are normalized to L2 norm100 before taking population medians so pale cards cannot dominate the shared edge positions. Four tangential gradient bins retain the local2D shape instead of averaging it away. A joint six-parameter affine fit samples small reviewed2D gray fields with the exact inverse matrix (including tangential movement along curves), and uses original unnormalized gradients, preserving low-signal rejection. The earlier stepwise models only supply starting points; independent strips and known-raster controls gate the affine result. All colors, foil flags and materials remain in the denominator. Disjoint fit, model-selection and certification footprints; no held-out-name or unseen-transfer claim. Scan poses are comparison-only and never enter renderer defaults.',
+    'Complete observed scan census. Physical geometry and normal-frame material families; gradient vectors use the matched outer-boundary interval for normalization and are normalized to L2 norm100 before taking population medians so pale cards cannot dominate the shared edge positions. Four tangential gradient bins retain the local2D shape instead of averaging it away. A joint six-parameter affine fit samples small reviewed2D gray fields with the exact inverse matrix (including tangential movement along curves), and uses original unnormalized gradients, preserving low-signal rejection. The earlier stepwise models only supply starting points; independent strips and known-raster controls gate the affine result. All colors, foil flags and materials remain in the denominator. Two disjoint field partitions jointly fit the fixed affine model; the third partition alone validates and certifies it. Validation and certification are the same held pixels, not two independent tests; no held-out-name or unseen-transfer claim. Scan poses are comparison-only and never enter renderer defaults.',
 };
 const templateHash = hash(JSON.stringify(definition));
 await mkdir(outputDirectory, { recursive: true });
@@ -154,21 +159,23 @@ const save = () =>
   });
 for (const row of rows) {
   if (fitted.some((r) => r.id === row.id)) continue;
-  const [template, independentTemplate, certificationTemplate] = templates[row.geometry].partitions;
+  const family = templates[row.geometry];
+  const template = family.partitions[0].concat(family.partitions[1]),
+    independentTemplate = family.partitions[2];
   const fit = fitGradientProfiles(
     {
       ...row,
-      profiles: row.profiles[0],
-      independentProfiles: row.profiles[1],
-      patches: row.patches[0],
-      independentPatches: row.patches[1],
+      profiles: row.profiles[0].concat(row.profiles[1]),
+      independentProfiles: row.profiles[2],
+      patches: row.patches[0].concat(row.patches[1]),
+      independentPatches: row.patches[2],
       fit: fitScanResidual(row.profiles[0], template),
     },
     {
       template,
       independentTemplate,
-      patchTemplate: templates[row.geometry].patchTemplates[0],
-      independentPatchTemplate: templates[row.geometry].patchTemplates[1],
+      patchTemplate: family.patchTemplates[0].concat(family.patchTemplates[1]),
+      independentPatchTemplate: family.patchTemplates[2],
       search: 'independent-axis-seed-v1',
     },
   );

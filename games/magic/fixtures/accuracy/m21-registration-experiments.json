@@ -393,6 +393,47 @@
           "cornerMax": 0.47884255012145716
         }
       ]
+    },
+    {
+      "label": "Two disjoint fit partitions and one independent validation partition",
+      "status": "rejected-for-certification",
+      "knownControlHash": "a043a64c670b1b7fc193d631f408c98988fb4d20441957675ed20f917bd2050f",
+      "normalizationHash": "9465b9f48a176fba9e0ecf84ad0e027d705800b68c047519d067c68f1500118d",
+      "scans": 297,
+      "supportedPoses": 297,
+      "controls": 231,
+      "recovered": 228,
+      "limits": {
+        "cornerRms": 0.35,
+        "cornerMax": 0.6
+      },
+      "maxCornerError": 0.9164454214504577,
+      "failures": [
+        {
+          "id": "2bbd37b1-49cb-4295-9a1f-fb85368a8f12",
+          "name": "Radha, Heart of Keld",
+          "case": "axis-scale",
+          "geometry": "normal-crown/Gold",
+          "cornerRms": 0.5468735604637052,
+          "cornerMax": 0.9164454214504577
+        },
+        {
+          "id": "354b9ea4-3d55-48cc-b426-c46b1d1bb397",
+          "name": "Watcher of the Spheres",
+          "case": "axis-scale",
+          "geometry": "normal-plain/Gold",
+          "cornerRms": 0.38687413361825546,
+          "cornerMax": 0.5933053836809166
+        },
+        {
+          "id": "0002ab72-834b-4c81-82b1-0d2760ea96b0",
+          "name": "Mystic Skyfish",
+          "case": "combined",
+          "geometry": "normal-plain/U",
+          "cornerRms": 0.38149229107546934,
+          "cornerMax": 0.6563514733031685
+        }
+      ]
     }
   ]
 }

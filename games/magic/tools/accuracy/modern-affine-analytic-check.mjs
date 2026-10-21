@@ -81,17 +81,17 @@ for (const pigment of [50, 125, 225]) {
     const patches = windows.map((w) => nativeFramePatches(raster, w, bounds));
     const fit = fitModernAffine(
       {
-        profiles: p[0],
-        independentProfiles: p[1],
-        patches: patches[0],
-        independentPatches: patches[1],
+        profiles: p[0].concat(p[1]),
+        independentProfiles: p[2],
+        patches: patches[0].concat(patches[1]),
+        independentPatches: patches[2],
         fit: { proposed: { scale: 1, tx: 0, ty: 0 } },
       },
       {
-        template: target[0],
-        independentTemplate: target[1],
-        patchTemplate: patchTemplates[0],
-        independentPatchTemplate: patchTemplates[1],
+        template: target[0].concat(target[1]),
+        independentTemplate: target[2],
+        patchTemplate: patchTemplates[0].concat(patchTemplates[1]),
+        independentPatchTemplate: patchTemplates[2],
         search: 'independent-axis-seed-v1',
       },
     );
