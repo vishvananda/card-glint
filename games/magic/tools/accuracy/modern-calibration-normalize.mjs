@@ -9,6 +9,7 @@ import { median } from './metrics.mjs';
 import { fitScanResidual } from './printed-plate-registration.mjs';
 import { profileSupport, bounded } from './scan-gradient-fit.mjs';
 import { fitModernAffine as fitGradientProfiles } from './modern-affine-fit.mjs';
+import { metricSourceGraph } from './module-graph.mjs';
 const [observationsFile, outputDirectory] = process.argv.slice(2);
 assert(outputDirectory, 'Usage: modern-calibration-normalize.mjs OBSERVATIONS OUT');
 const bytes = await readFile(observationsFile),
@@ -105,6 +106,16 @@ for (const family of [...new Set(rows.map((r) => r.geometry))]) {
 }
 const definition = {
   schema: 1,
+  sourceGraphs: {
+    affine: await metricSourceGraph(new URL('./modern-affine-fit.mjs', import.meta.url).pathname),
+    nativeFields: await metricSourceGraph(
+      new URL('./native-frame-patches.mjs', import.meta.url).pathname,
+    ),
+    coarse: await metricSourceGraph(
+      new URL('./printed-plate-registration.mjs', import.meta.url).pathname,
+    ),
+  },
+  graphToolHash: hash(await readFile(new URL('./module-graph.mjs', import.meta.url))),
   set: observations.set,
   observationsHash: hash(bytes),
   sources,

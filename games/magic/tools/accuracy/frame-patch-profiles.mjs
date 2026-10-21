@@ -109,7 +109,13 @@ export function unpackFramePatches(bytes, description) {
         throw Error('Native float field requires f32le encoding');
       if (p.filter.startsWith('native-grid-')) {
         const s = p.nativeSampling;
-        if (!s || !Object.values(s).every(Number.isFinite) || !(s.factor > 0))
+        if (
+          !s ||
+          !['factor', 'normalPad', 'alongPad', 'normalStart', 'alongStart'].every((k) =>
+            Number.isFinite(s[k]),
+          ) ||
+          !(s.factor > 0)
+        )
           throw Error('Invalid native frame sampling');
       } else if (p.nativeSampling) throw Error('Unexpected native frame sampling');
       used += p.length;
@@ -127,7 +133,12 @@ export function unpackFramePatches(bytes, description) {
   return result;
 }
 
-function sample(p, x, y) {
+const cubic = (a, b, c, d, t) =>
+  (((-0.5 * a + 1.5 * b - 1.5 * c + 0.5 * d) * t + (a - 2.5 * b + 2 * c - 0.5 * d)) * t +
+    (-0.5 * a + 0.5 * c)) *
+    t +
+  b;
+export function sampleFrameField(p, x, y) {
   const n = p.axis === 'x' ? x : y,
     a = p.axis === 'x' ? y : x;
   const s = p.nativeSampling;
@@ -151,6 +162,14 @@ function sample(p, x, y) {
     b = Math.min(j + 1, p.height - 1),
     fx = u - i,
     fy = v - j;
+  if (s) {
+    const at = (x, y) =>
+      p.values[
+        Math.max(0, Math.min(p.height - 1, y)) * p.width + Math.max(0, Math.min(p.width - 1, x))
+      ];
+    const row = (y) => cubic(at(i - 1, y), at(i, y), at(i + 1, y), at(i + 2, y), fx);
+    return cubic(row(j - 1), row(j), row(j + 1), row(j + 2), fy);
+  }
   return (
     (p.values[j * p.width + i] * (1 - fx) + p.values[j * p.width + r] * fx) * (1 - fy) +
     (p.values[b * p.width + i] * (1 - fx) + p.values[b * p.width + r] * fx) * fy
@@ -160,7 +179,7 @@ export function patchGradient(p, transform = { matrix: [1, 0, 0, 1, 0, 0] }) {
   const m = inverseScanMatrix(transform),
     result = [];
   const at = (x, y) =>
-    sample(
+    sampleFrameField(
       p,
       244 + m[0] * (x - 244) + m[2] * (y - 340) + m[4],
       340 + m[1] * (x - 244) + m[3] * (y - 340) + m[5],

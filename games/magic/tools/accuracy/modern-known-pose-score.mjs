@@ -11,6 +11,7 @@ import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
 import { fitScanResidual } from './printed-plate-registration.mjs';
 import { profileSupport, bounded } from './scan-gradient-fit.mjs';
 import { fitModernAffine as fitGradientProfiles } from './modern-affine-fit.mjs';
+import { metricSourceGraph } from './module-graph.mjs';
 const [obsFile, normalizationDirectory, controlDirectory, output] = process.argv.slice(2);
 assert(output, 'Usage: modern-known-pose-score.mjs OBS NORMALIZATION_DIR CONTROLS_DIR OUT');
 const read = async (p) => {
@@ -30,6 +31,16 @@ assert.deepEqual(t.data.partitionPolicy.fit, [0, 1]);
 assert.deepEqual(t.data.partitionPolicy.validation, [2]);
 const definition = {
   schema: 1,
+  sourceGraphs: {
+    affine: await metricSourceGraph(new URL('./modern-affine-fit.mjs', import.meta.url).pathname),
+    nativeFields: await metricSourceGraph(
+      new URL('./native-frame-patches.mjs', import.meta.url).pathname,
+    ),
+    coarse: await metricSourceGraph(
+      new URL('./printed-plate-registration.mjs', import.meta.url).pathname,
+    ),
+  },
+  graphToolHash: hash(await readFile(new URL('./module-graph.mjs', import.meta.url))),
   observationsHash: hash(obs.bytes),
   normalizationHash: hash(n.bytes),
   templatesHash: hash(t.bytes),

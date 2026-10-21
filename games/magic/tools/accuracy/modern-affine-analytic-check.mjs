@@ -6,6 +6,7 @@ import { profileMatrix } from './scan-gradient-fit.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
 import {
   framePatches,
+  sampleFrameField,
   patchGradient,
   packFramePatches,
   unpackFramePatches,
@@ -76,6 +77,28 @@ assert.throws(() => unpackFramePatches(nativePacked.bytes, badNative), /native f
 const nonfinite = nativePacked.bytes.slice();
 new DataView(nonfinite.buffer).setFloat32(0, NaN, true);
 assert.throws(() => unpackFramePatches(nonfinite, nativePacked.description), /Nonfinite/);
+// Independent polynomial reconstruction checks the native bicubic interpolator.
+const polynomial = (x, y) => 7 + 3 * x - 2 * y + 0.05 * x * x + 0.03 * x * y - 0.02 * y * y;
+const interpolationField = {
+  axis: 'x',
+  normalLo: 0,
+  along: 8,
+  span: 8,
+  width: 18,
+  height: 17,
+  nativeSampling: { factor: 1, normalPad: 0, alongPad: 0, normalStart: 0, alongStart: 0 },
+  values: Float32Array.from({ length: 18 * 17 }, (_, i) => polynomial(i % 18, Math.floor(i / 18))),
+};
+for (const [x, y] of [
+  [4.3, 6.2],
+  [8.1, 3.9],
+  [10.75, 12.25],
+])
+  assert(Math.abs(sampleFrameField(interpolationField, x, y) - polynomial(x, y)) < 1e-5);
+assert.equal(
+  sampleFrameField(interpolationField, -100, 2),
+  sampleFrameField(interpolationField, 0, 2),
+);
 let failures = [];
 for (const pigment of [50, 125, 225]) {
   const base = image([1, 0, 0, 1, 0, 0], pigment),
@@ -88,12 +111,12 @@ for (const pigment of [50, 125, 225]) {
     for (const c of cases) {
       const m = profileMatrix(c),
         expected = inverseScanMatrix({ matrix: m }),
-        raster = image(m, pigment),
-        p = windows.map((w) => scanBoundaryProfiles(raster, w, bounds));
+        raster = image(m, pigment);
       if (gain !== 1)
         for (let i = 0; i < raster.data.length; i += 4)
           for (let ch = 0; ch < 3; ch++)
             raster.data[i + ch] = Math.round(raster.data[i + ch] * gain + 16);
+      const p = windows.map((w) => scanBoundaryProfiles(raster, w, bounds));
       const patches = windows.map((w) => nativeFramePatches(raster, w, bounds));
       const fit = fitModernAffine(
         {
