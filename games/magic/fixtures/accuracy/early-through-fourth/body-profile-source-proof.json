@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "scope": "302 exact current Original faces and 302 complete-profile candidate faces, with both actual default etching layers and captured body layouts unchanged before/after scoped reflow metadata. This does not approve a new profile or certify Oracle/all-set native rendering. Nonzero new tiered-text proposals gain working coordinate/scale preservation, verified by separate positive browser controls.",
+  "base": "cd9ad9a0f86f5d4551a3d8d0bf6e0dc04787f165",
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/early-through-fourth/body-profile-parity.json.gz",
+    "sha256": "908bab6cd48d4a95d341463434e1b037aaff5deef6acc1b12abecd84a53ca4f1",
+    "contentSha256": "ca8959f46c28855fcf4d6551876c0a34426f6cfbf9076a0ce851d9d3dd75a2a1"
+  },
+  "profileDependencies": {
+    "games/magic/src/calibration/sets/4ed.ts": "579d0bc0a118800002af346bf0ea0cbb85ae5243d5de8f80783a941c777effee",
+    "games/magic/src/calibration/sets/chr.ts": "36c7f45ffd40312153191fe250a79da9fc8ec88dd943aa454dcfcc7acb85cb42",
+    "games/magic/src/calibration/sets/fem.ts": "f353881676d4805ee69bcec760fb5b784fe9c9aee044adf093a7a04ad0687ba6"
+  },
+  "files": {
+    "games/magic/src/presentation/rules-layout.ts": {
+      "before": "845643c0a7504f4ed7dadff528ca75e1e818bdfe560f087e6ae91817d0013e40",
+      "after": "3d517e111b6522619b399a66b5085d23b0ca157a4e7f984b4aff606ab1ab6221",
+      "reverseEdits": [
+        {
+          "start": 223,
+          "count": 7,
+          "lines": [
+            "    requests.set(layout, { paragraphs, bounds, maximumSize, minimumSize, typography });\n"
+          ]
+        },
+        {
+          "start": 28,
+          "count": 0,
+          "lines": [
+            "interface RulesLayoutRequest {\n",
+            "  readonly paragraphs: readonly RulesParagraph[];\n",
+            "  readonly bounds: Parameters<typeof layoutRules>[2];\n",
+            "  readonly maximumSize: number;\n",
+            "  readonly minimumSize: number;\n",
+            "  readonly typography: RulesTypography;\n",
+            "}\n",
+            "// Side metadata leaves the public layout/pixel shape unchanged and expires\n",
+            "// with the prepared layout. Used only when an opted-in proposal reflows text.\n",
+            "const requests = new WeakMap<RulesLayout, RulesLayoutRequest>();\n",
+            "export const rulesLayoutRequest = (layout: RulesLayout) => requests.get(layout);\n"
+          ]
+        },
+        {
+          "start": 0,
+          "count": 2,
+          "lines": []
+        }
+      ],
+      "historicalHashes": ["f6ec36f29d36fbf909868ce240e03a487bbb4a2413af33d3c52f8e7641274952"]
+    },
+    "games/magic/src/presentation/retro-rules.ts": {
+      "before": "98b4803ace18ccab4cc8d063827faed4a56e23be072971c26ab67074a554309c",
+      "after": "9fde9eff563e3bd0bd059fbb35d39b5e87c772030ece8697af653f92f6bff73e",
+      "reverseEdits": [
+        {
+          "start": 34,
+          "count": 22,
+          "lines": [
+            "  const limit = tiers?.retainRegularAboveLines;\n",
+            "  if (limit !== undefined && (!Number.isInteger(limit) || limit < 1))\n",
+            "    throw Error('Invalid regular density limit');\n",
+            "  const retain =\n",
+            "    base &&\n",
+            "    face.wordingMode !== 'oracle' &&\n",
+            "    limit !== undefined &&\n",
+            "    base.size >= 19 &&\n",
+            "    base.size < 30 &&\n",
+            "    base.lines.length > limit;\n",
+            "  const layout = retain\n",
+            "    ? base\n",
+            "    : tiers && base\n",
+            "      ? face.wordingMode === 'oracle'\n",
+            "        ? earlyRulesModel(context, face, base, tiers.regularWidthDelta)\n",
+            "        : earlyTextTierLayout(context, face, base, tiers)\n",
+            "      : alphaTextLayout(context, face, base);\n",
+            "  return adjustCalibrationRules(context, face, layout);\n"
+          ]
+        },
+        {
+          "start": 33,
+          "count": 0,
+          "lines": ["  const base = baseRetroTextLayout(context, face);\n"]
+        },
+        {
+          "start": 9,
+          "count": 1,
+          "lines": ["import { layoutRules, type RulesTypography } from './rules-layout.js';\n"]
+        }
+      ],
+      "historicalHashes": [
+        "95d90660b3304f55fcffaec425df5d38c8db4e0b888772a95b78be51620e5183",
+        "bf9f14f0aa1967b642764a67e48933fbb117e6d5b420e93046ed84af9a5a6215"
+      ]
+    },
+    "games/magic/src/calibration/rules-adjustment.ts": {
+      "before": "eab33312f33a8e09e88c953306e89fa3f29020ccaab859187931dc4f96006676",
+      "after": "9bbf475bf40cf2e4073c8dda061d04a88c1cecd6e42d4d1211dc04c143949204",
+      "reverseEdits": [
+        {
+          "start": 64,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 42,
+          "count": 1,
+          "lines": ["  return layoutRules(\n"]
+        },
+        {
+          "start": 34,
+          "count": 3,
+          "lines": [
+            "  const left = delta.leftMargin ?? 0,\n",
+            "    right = delta.rightMargin ?? 0;\n"
+          ]
+        }
+      ],
+      "historicalHashes": ["fb85db2c736d30240c9955913c831d86fab45f400afa0696f9c52f9278b40c81"]
+    }
+  },
+  "newModules": {
+    "games/magic/src/presentation/rules-layout-request.ts": "7a732bb9939910a1038880feb46e0ddc2f5b9e1d419130b5e82619458d0affc0"
+  },
+  "positiveControl": {
+    "file": "tests/magic-profile-rule-requests.mjs",
+    "sha256": "d1d0463bc01eeacc5c39e795a9816055c6c9422a33abb59e62cb85341f471931",
+    "cases": 4,
+    "scaledCases": 3,
+    "verticalDelta": 0.5,
+    "zeroProposals": 4,
+    "exceptionCleanup": true,
+    "nestingCleanup": true
+  },
+  "historicalReceipts": {
+    "games/magic/fixtures/accuracy/early-through-fourth/profile-adapter-source-proof.json": "16fe931d3f1852b406158105ddb94ffb0bd7edf21b94bc71114a39863e251896",
+    "games/magic/fixtures/accuracy/host-worker/source-proof.json": "6afd6b7101c29be8bd3b2d59402155170b93cbc390c170b8158f1580aeaab209"
+  }
+}

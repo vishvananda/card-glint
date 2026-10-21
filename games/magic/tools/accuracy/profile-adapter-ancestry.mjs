@@ -1,3 +1,4 @@
+import { profileBodyProofDependency } from './body-profile-ancestry.mjs';
 // Additive, exact source reconstruction for inactive optional set capabilities.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -71,7 +72,7 @@ function restore(file, bytes, p) {
 /** Used only to verify an immutable earlier receipt's source dependencies.
  * This does not authorize score reuse; that requires the profile scope below. */
 export async function profileAdapterProofDependency(file, bytes) {
-  return restore(file, bytes, await proof()).bytes;
+  return restore(file, await profileBodyProofDependency(file, bytes), await proof()).bytes;
 }
 /** The caller supplies the existing conservative profile-membership check.
  * A new/changed profile must keep current bytes and bypass older bridges. */

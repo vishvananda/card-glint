@@ -484,6 +484,25 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/profile-adapter-parity.json.gz",
       "sha256": "f314e786f29c88eb71f091a4b0c058519eaf677e11953c00885d253345370866",
       "contentSha256": "d5cac65d7e018fc21609627b45a68ad6274caa80cbe8a10b4928cc566f0e8a83"
+    },
+    "2ed-profile-integration-replay": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-profile-integration-replay.json.gz",
+      "sha256": "a37459531f2cab898e6a0a1055c2eaa5131950e7d043c7555ea4f444560da255",
+      "contentSha256": "6b22824251508a9e8912ff84a6e85b2bc39f0fc63f06a0f62bd6a6577a2853f1"
+    },
+    "body-profile-source-proof": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/body-profile-source-proof.json",
+      "sha256": "e4a3d79cd626974ea8cc3ab3cc875c286e732f6d37cd9d834adc3880360bf611"
+    },
+    "body-profile-parity": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/body-profile-parity.json.gz",
+      "sha256": "908bab6cd48d4a95d341463434e1b037aaff5deef6acc1b12abecd84a53ca4f1",
+      "contentSha256": "ca8959f46c28855fcf4d6551876c0a34426f6cfbf9076a0ce851d9d3dd75a2a1"
+    },
+    "2ed-final-candidate-scores": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-candidate-scores.json.gz",
+      "sha256": "87a60d3ecd2239d7c1372db707fb1a9884f99af8abaf362b9b327fb2fbf4f3ec",
+      "contentSha256": "1d9dada5eb273536f2e9666f8d98599d153eebfb5474545a46a21b889c729060"
     }
   },
   "native": {
@@ -2933,6 +2952,10 @@
       "sourceAsset": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/symbols/X.svg",
       "scope": "Compared the pinned X with six cached font alternatives at three thresholds on thirteen actual costs. Existing X ranks first on the twelve reliable perimeter cases. Guardian Angel remains a perimeter-measurement failure; it is included in joint all-cost native replay. Numeric controls intentionally do not move X.",
       "status": "source-retained-low-contrast-perimeter-residual"
+    },
+    {
+      "scope": "Shared Unlimited body rules",
+      "issue": "Residual line wrapping on Copy Artifact/Sea Serpent and type-specific text lengths; do not solve with per-scan offsets. Current body metrics improve across 270/302 printings but are not pixel-perfect."
     }
   ],
   "dualLandPaper": {
@@ -3271,5 +3294,1467 @@
     "setsInMetadata": 15,
     "runtimeProfileAdopted": false,
     "scope": "All current Unlimited Original faces match their frozen controls, with current Drain Life 1B. Default etching is rendered and compared, not assumed empty. Other sets have metadata coverage only in this receipt. The complete Unlimited profile is still an integration candidate; native typography/ink, Original/Oracle, whole-card and visual normalization certification remain open."
+  },
+  "integratedProfileStudy": {
+    "status": "all-302-original-native-candidates-and-stats-refit-verified-not-adopted",
+    "source": "2ed-profile-integration-replay.json.gz",
+    "nativeOriginalFaces": 302,
+    "currentControlsIdentical": 302,
+    "defaultEtchingUnchanged": 302,
+    "overflow": 0,
+    "nativeFilledGlyphMasks": 998,
+    "provisionalWholeCard": {
+      "metric": "supplied host structural metric; original words and frozen independent poses",
+      "meanBefore100": 61.4926409914524,
+      "meanAfter100": 69.96741950475496,
+      "improved": 274,
+      "regressed": 28,
+      "scope": "Provisional gray-130 candidate, before final ink and the P/T anchor correction. Not the final shipping score. Three baseline frame components have low-signal parts; do not silently remove their cards."
+    },
+    "inkDecision": "Reject the unconstrained pixel-MSE proposal: a slightly displaced glyph can lower error by losing contrast. Use the independent softened luminance-distribution proposal for native validation; preserve filled strokes and real shadows.",
+    "inkCandidates": {
+      "title": {
+        "gray": 140.0,
+        "shadow": 1.0
+      },
+      "type": {
+        "gray": 150.0,
+        "shadow": 0.75
+      },
+      "artist": {
+        "gray": 145.0,
+        "shadow": 1.25
+      },
+      "stats": {
+        "gray": 150.0,
+        "shadow": 1.0
+      }
+    },
+    "statsAnchor": {
+      "right": 447.5,
+      "middleBaseline": 624.22,
+      "size": 27.3,
+      "width": 1
+    },
+    "statsNativeSummary": {
+      "all": {
+        "count": 92,
+        "beforeMean100": 62.647588748075485,
+        "afterMean100": 77.33781439334443,
+        "improved": 87,
+        "regressed": 5,
+        "worstRegression100": 2.696593402827965,
+        "maximumPredictionError100": 3.186884777411869
+      },
+      "calibration": {
+        "count": 62,
+        "beforeMean100": 62.88380509835991,
+        "afterMean100": 77.77711167512457,
+        "improved": 58,
+        "regressed": 4,
+        "worstRegression100": 2.696593402827965,
+        "maximumPredictionError100": 3.186884777411869
+      },
+      "validation": {
+        "count": 30,
+        "beforeMean100": 62.159408290821126,
+        "afterMean100": 76.42993334433224,
+        "improved": 29,
+        "regressed": 1,
+        "worstRegression100": 1.3254466609866853,
+        "maximumPredictionError100": 1.844487892325497
+      }
+    },
+    "runtimeAdopted": false,
+    "remaining": [
+      "Verify the scoped editor metadata integration and strict source guards",
+      "Finish appearance/outlier and normalization visual review",
+      "Adopt the complete data profile",
+      "Validate Original and Oracle native output",
+      "Generate final whole-card numbers and release"
+    ],
+    "finalCandidateWholeCard": {
+      "all": {
+        "count": 302,
+        "components": {
+          "structural100": {
+            "count": 302,
+            "beforeMean": 61.4926409914524,
+            "afterMean": 70.7609591816934,
+            "beforeMedian": 61.10836569154414,
+            "afterMedian": 71.07599088534113,
+            "beforeLowerDecile": 52.10809459700596,
+            "afterLowerDecile": 62.88140390074188,
+            "improved": 278,
+            "regressed": 24,
+            "worstRegression": 7.081300134639996
+          },
+          "title": {
+            "count": 302,
+            "beforeMean": 67.53812861641468,
+            "afterMean": 71.26904981394242,
+            "beforeMedian": 67.2972142212239,
+            "afterMedian": 70.95379596778139,
+            "beforeLowerDecile": 59.65625317724781,
+            "afterLowerDecile": 61.23739054983897,
+            "improved": 213,
+            "regressed": 89,
+            "worstRegression": 24.587707203763365
+          },
+          "mana": {
+            "count": 277,
+            "beforeMean": 73.84827866513027,
+            "afterMean": 82.92036767815335,
+            "beforeMedian": 73.64942830168887,
+            "afterMedian": 85.25703896849508,
+            "beforeLowerDecile": 61.48259010219908,
+            "afterLowerDecile": 71.25583094714125,
+            "improved": 219,
+            "regressed": 58,
+            "worstRegression": 30.371594074171625
+          },
+          "type": {
+            "count": 302,
+            "beforeMean": 69.23814867693781,
+            "afterMean": 75.77192819763624,
+            "beforeMedian": 71.1481987278373,
+            "afterMedian": 77.43280700171276,
+            "beforeLowerDecile": 55.30302181803774,
+            "afterLowerDecile": 60.61050476901166,
+            "improved": 237,
+            "regressed": 65,
+            "worstRegression": 24.815586777207272
+          },
+          "rules": {
+            "count": 302,
+            "beforeMean": 48.92667481962211,
+            "afterMean": 61.54244705210947,
+            "beforeMedian": 49.05164039261834,
+            "afterMedian": 61.03246002483587,
+            "beforeLowerDecile": 34.243972668764705,
+            "afterLowerDecile": 48.317966762517074,
+            "improved": 270,
+            "regressed": 32,
+            "worstRegression": 9.009525834782451
+          },
+          "stats": {
+            "count": 92,
+            "beforeMean": 65.5798178632079,
+            "afterMean": 76.59585769802673,
+            "beforeMedian": 67.41856560466022,
+            "afterMedian": 78.68406309174031,
+            "beforeLowerDecile": 49.326101910066555,
+            "afterLowerDecile": 62.40604166298763,
+            "improved": 81,
+            "regressed": 11,
+            "worstRegression": 12.182576800862051
+          },
+          "frame": {
+            "count": 299,
+            "beforeMean": 63.66983912504991,
+            "afterMean": 76.14155606466306,
+            "beforeMedian": 62.42405151523073,
+            "afterMedian": 77.14817894964729,
+            "beforeLowerDecile": 45.849098240187644,
+            "afterLowerDecile": 65.48292837049615,
+            "improved": 248,
+            "regressed": 51,
+            "worstRegression": 34.19448258738699
+          },
+          "art": {
+            "count": 302,
+            "beforeMean": 69.78653126292558,
+            "afterMean": 69.70704908664794,
+            "beforeMedian": 69.95649972031993,
+            "afterMedian": 69.83184314799308,
+            "beforeLowerDecile": 63.26535471954864,
+            "afterLowerDecile": 63.26535471954864,
+            "improved": 9,
+            "regressed": 16,
+            "worstRegression": 5.61717975535673
+          }
+        }
+      },
+      "calibration": {
+        "count": 201,
+        "components": {
+          "structural100": {
+            "count": 201,
+            "beforeMean": 61.265175795990615,
+            "afterMean": 70.75901711950463,
+            "beforeMedian": 61.00166949266309,
+            "afterMedian": 71.33216973397428,
+            "beforeLowerDecile": 52.15115115071829,
+            "afterLowerDecile": 62.620790678422075,
+            "improved": 183,
+            "regressed": 18,
+            "worstRegression": 7.081300134639996
+          },
+          "title": {
+            "count": 201,
+            "beforeMean": 67.5107179008674,
+            "afterMean": 71.25981312692035,
+            "beforeMedian": 67.4292070153712,
+            "afterMedian": 70.96083806272033,
+            "beforeLowerDecile": 59.88150000928684,
+            "afterLowerDecile": 61.320204666137656,
+            "improved": 144,
+            "regressed": 57,
+            "worstRegression": 24.587707203763365
+          },
+          "mana": {
+            "count": 187,
+            "beforeMean": 73.9571389256915,
+            "afterMean": 83.47884986313125,
+            "beforeMedian": 74.24716784665802,
+            "afterMedian": 85.52915766738661,
+            "beforeLowerDecile": 60.99356345126765,
+            "afterLowerDecile": 72.4041277006846,
+            "improved": 151,
+            "regressed": 36,
+            "worstRegression": 30.371594074171625
+          },
+          "type": {
+            "count": 201,
+            "beforeMean": 69.46235501088105,
+            "afterMean": 75.90946366915244,
+            "beforeMedian": 71.50837988826815,
+            "afterMedian": 77.91161991361435,
+            "beforeLowerDecile": 55.580742798316926,
+            "afterLowerDecile": 60.53070252398851,
+            "improved": 155,
+            "regressed": 46,
+            "worstRegression": 24.815586777207272
+          },
+          "rules": {
+            "count": 201,
+            "beforeMean": 48.63633923120475,
+            "afterMean": 61.31130946722096,
+            "beforeMedian": 49.04740030976151,
+            "afterMedian": 60.9499488543724,
+            "beforeLowerDecile": 34.538250620704424,
+            "afterLowerDecile": 48.31122280758427,
+            "improved": 180,
+            "regressed": 21,
+            "worstRegression": 8.328804125467613
+          },
+          "stats": {
+            "count": 62,
+            "beforeMean": 65.11746051479696,
+            "afterMean": 76.73953140225524,
+            "beforeMedian": 66.7446592447015,
+            "afterMedian": 78.04010179532916,
+            "beforeLowerDecile": 43.87969756208597,
+            "afterLowerDecile": 63.78590297865465,
+            "improved": 54,
+            "regressed": 8,
+            "worstRegression": 12.182576800862051
+          },
+          "frame": {
+            "count": 199,
+            "beforeMean": 63.06682509015569,
+            "afterMean": 76.28901514360538,
+            "beforeMedian": 62.1999318128033,
+            "afterMedian": 77.41855791134789,
+            "beforeLowerDecile": 44.16493403519321,
+            "afterLowerDecile": 65.57817614508156,
+            "improved": 168,
+            "regressed": 31,
+            "worstRegression": 34.19448258738699
+          },
+          "art": {
+            "count": 201,
+            "beforeMean": 69.40770318272244,
+            "afterMean": 69.29625809039909,
+            "beforeMedian": 69.45250688546363,
+            "afterMedian": 69.43398460047845,
+            "beforeLowerDecile": 62.73227974085821,
+            "afterLowerDecile": 62.55018343332419,
+            "improved": 4,
+            "regressed": 10,
+            "worstRegression": 4.792110996064146
+          }
+        }
+      },
+      "validation": {
+        "count": 101,
+        "components": {
+          "structural100": {
+            "count": 101,
+            "beforeMean": 61.94531925172776,
+            "afterMean": 70.76482407773223,
+            "beforeMedian": 61.394419795222866,
+            "afterMedian": 71.01585605284306,
+            "beforeLowerDecile": 52.10427142542669,
+            "afterLowerDecile": 63.6216455508473,
+            "improved": 95,
+            "regressed": 6,
+            "worstRegression": 4.054908339503385
+          },
+          "title": {
+            "count": 101,
+            "beforeMean": 67.5926786542858,
+            "afterMean": 71.2874317356397,
+            "beforeMedian": 67.1903204717402,
+            "afterMedian": 70.83067194202354,
+            "beforeLowerDecile": 58.0734367798433,
+            "afterLowerDecile": 61.10753816256852,
+            "improved": 69,
+            "regressed": 32,
+            "worstRegression": 15.660495792640333
+          },
+          "mana": {
+            "count": 90,
+            "beforeMean": 73.62209123485312,
+            "afterMean": 81.75996580492159,
+            "beforeMedian": 72.19560275423845,
+            "afterMedian": 84.54707832208177,
+            "beforeLowerDecile": 62.999197620026486,
+            "afterLowerDecile": 68.07132852237461,
+            "improved": 68,
+            "regressed": 22,
+            "worstRegression": 23.49004403874588
+          },
+          "type": {
+            "count": 101,
+            "beforeMean": 68.79195587374375,
+            "afterMean": 75.49821899194573,
+            "beforeMedian": 70.82235002178635,
+            "afterMedian": 76.99619222272648,
+            "beforeLowerDecile": 54.173339647625504,
+            "afterLowerDecile": 62.02644135460673,
+            "improved": 82,
+            "regressed": 19,
+            "worstRegression": 20.571169393644
+          },
+          "rules": {
+            "count": 101,
+            "beforeMean": 49.50447138667072,
+            "afterMean": 62.00243373094715,
+            "beforeMedian": 49.06642331911972,
+            "afterMedian": 62.319467807033455,
+            "beforeLowerDecile": 34.21127511854918,
+            "afterLowerDecile": 49.80117352582098,
+            "improved": 90,
+            "regressed": 11,
+            "worstRegression": 9.009525834782451
+          },
+          "stats": {
+            "count": 30,
+            "beforeMean": 66.53535638325702,
+            "afterMean": 76.2989320426211,
+            "beforeMedian": 69.88206559729922,
+            "afterMedian": 80.95169247358133,
+            "beforeLowerDecile": 50.97288040937674,
+            "afterLowerDecile": 62.22039885183084,
+            "improved": 27,
+            "regressed": 3,
+            "worstRegression": 5.303794469331507
+          },
+          "frame": {
+            "count": 100,
+            "beforeMean": 64.86983705448944,
+            "afterMean": 75.84811249756775,
+            "beforeMedian": 63.687292747669815,
+            "afterMedian": 75.87442830234437,
+            "beforeLowerDecile": 47.9431455293825,
+            "afterLowerDecile": 65.48733416860692,
+            "improved": 80,
+            "regressed": 20,
+            "worstRegression": 14.884199979760382
+          },
+          "art": {
+            "count": 101,
+            "beforeMean": 70.54043665026052,
+            "afterMean": 70.52456384155902,
+            "beforeMedian": 70.30858606785398,
+            "afterMedian": 70.53426341181299,
+            "beforeLowerDecile": 64.01144781364523,
+            "afterLowerDecile": 64.01144781364523,
+            "improved": 5,
+            "regressed": 6,
+            "worstRegression": 5.61717975535673
+          }
+        }
+      },
+      "W": {
+        "count": 46,
+        "components": {
+          "structural100": {
+            "count": 46,
+            "beforeMean": 67.80878217479258,
+            "afterMean": 76.4711412310194,
+            "beforeMedian": 66.81799751529275,
+            "afterMedian": 76.68174950399563,
+            "beforeLowerDecile": 58.40776833500556,
+            "afterLowerDecile": 71.61463284245417,
+            "improved": 42,
+            "regressed": 4,
+            "worstRegression": 4.054908339503385
+          },
+          "title": {
+            "count": 46,
+            "beforeMean": 68.85315276668466,
+            "afterMean": 77.40993031366743,
+            "beforeMedian": 68.6573673230705,
+            "afterMedian": 78.86421581254007,
+            "beforeLowerDecile": 62.84160772884502,
+            "afterLowerDecile": 70.40781096615643,
+            "improved": 43,
+            "regressed": 3,
+            "worstRegression": 0.7351747174064087
+          },
+          "mana": {
+            "count": 46,
+            "beforeMean": 76.3911497779433,
+            "afterMean": 85.56173550108822,
+            "beforeMedian": 77.14874103137751,
+            "afterMedian": 87.79032429856784,
+            "beforeLowerDecile": 66.32742747102975,
+            "afterLowerDecile": 75.23312748939597,
+            "improved": 44,
+            "regressed": 2,
+            "worstRegression": 5.900341906408897
+          },
+          "type": {
+            "count": 46,
+            "beforeMean": 71.40885234072955,
+            "afterMean": 79.23221303888407,
+            "beforeMedian": 71.04200291818356,
+            "afterMedian": 78.92415668764968,
+            "beforeLowerDecile": 58.169584131726104,
+            "afterLowerDecile": 72.40299040752066,
+            "improved": 43,
+            "regressed": 3,
+            "worstRegression": 4.177717438728976
+          },
+          "rules": {
+            "count": 46,
+            "beforeMean": 58.224390809306485,
+            "afterMean": 70.20596339694369,
+            "beforeMedian": 56.024294526533176,
+            "afterMedian": 69.72595508136857,
+            "beforeLowerDecile": 46.35111872755905,
+            "afterLowerDecile": 61.52815038437953,
+            "improved": 41,
+            "regressed": 5,
+            "worstRegression": 8.328804125467613
+          },
+          "stats": {
+            "count": 11,
+            "beforeMean": 72.54756889294548,
+            "afterMean": 73.88997569451111,
+            "beforeMedian": 72.52755838862373,
+            "afterMedian": 76.81923907625853,
+            "beforeLowerDecile": 67.95610227041368,
+            "afterLowerDecile": 65.23554666823502,
+            "improved": 7,
+            "regressed": 4,
+            "worstRegression": 12.158724532406445
+          },
+          "frame": {
+            "count": 46,
+            "beforeMean": 73.94775958660739,
+            "afterMean": 82.61135607096058,
+            "beforeMedian": 75.62052720768577,
+            "afterMedian": 84.09960445960857,
+            "beforeLowerDecile": 57.47221743108314,
+            "afterLowerDecile": 72.24845955493741,
+            "improved": 36,
+            "regressed": 10,
+            "worstRegression": 11.181304784852657
+          },
+          "art": {
+            "count": 46,
+            "beforeMean": 68.94918343058889,
+            "afterMean": 68.94918343058889,
+            "beforeMedian": 69.8674159768891,
+            "afterMedian": 69.8674159768891,
+            "beforeLowerDecile": 63.47953571922611,
+            "afterLowerDecile": 63.47953571922611,
+            "improved": 0,
+            "regressed": 0,
+            "worstRegression": 0
+          }
+        }
+      },
+      "U": {
+        "count": 46,
+        "components": {
+          "structural100": {
+            "count": 46,
+            "beforeMean": 66.67164565288927,
+            "afterMean": 71.77106907933526,
+            "beforeMedian": 68.1526207052708,
+            "afterMedian": 72.4499629745396,
+            "beforeLowerDecile": 58.391306158382086,
+            "afterLowerDecile": 64.9845881906499,
+            "improved": 40,
+            "regressed": 6,
+            "worstRegression": 4.729723637437033
+          },
+          "title": {
+            "count": 46,
+            "beforeMean": 72.98711375253116,
+            "afterMean": 70.9126742841463,
+            "beforeMedian": 73.64044230042867,
+            "afterMedian": 71.54270346566025,
+            "beforeLowerDecile": 67.489353396691,
+            "afterLowerDecile": 61.60201293569911,
+            "improved": 17,
+            "regressed": 29,
+            "worstRegression": 15.660495792640333
+          },
+          "mana": {
+            "count": 46,
+            "beforeMean": 69.9482779749072,
+            "afterMean": 83.16226868234574,
+            "beforeMedian": 71.59430037808264,
+            "afterMedian": 85.27803899738743,
+            "beforeLowerDecile": 59.85319403551819,
+            "afterLowerDecile": 75.08447337848875,
+            "improved": 43,
+            "regressed": 3,
+            "worstRegression": 22.20347898911129
+          },
+          "type": {
+            "count": 46,
+            "beforeMean": 68.8339755143456,
+            "afterMean": 70.22572377652817,
+            "beforeMedian": 73.42331159954293,
+            "afterMedian": 71.74805558254866,
+            "beforeLowerDecile": 51.09227199313926,
+            "afterLowerDecile": 54.91286400800254,
+            "improved": 25,
+            "regressed": 21,
+            "worstRegression": 12.323323504678996
+          },
+          "rules": {
+            "count": 46,
+            "beforeMean": 57.4161238980716,
+            "afterMean": 66.11489743692364,
+            "beforeMedian": 58.54748649362898,
+            "afterMedian": 64.42319487792,
+            "beforeLowerDecile": 45.82780490960974,
+            "afterLowerDecile": 56.58751866459286,
+            "improved": 39,
+            "regressed": 7,
+            "worstRegression": 6.587658949641636
+          },
+          "stats": {
+            "count": 14,
+            "beforeMean": 66.11724839635855,
+            "afterMean": 73.82449857497993,
+            "beforeMedian": 67.03482875249613,
+            "afterMedian": 74.13517327622921,
+            "beforeLowerDecile": 52.2999709486284,
+            "afterLowerDecile": 63.91966344959572,
+            "improved": 11,
+            "regressed": 3,
+            "worstRegression": 12.182576800862051
+          },
+          "frame": {
+            "count": 46,
+            "beforeMean": 72.62363636767454,
+            "afterMean": 76.58280908500068,
+            "beforeMedian": 72.66139222578445,
+            "afterMedian": 79.58914220301264,
+            "beforeLowerDecile": 61.65988574755857,
+            "afterLowerDecile": 64.7147187429085,
+            "improved": 29,
+            "regressed": 17,
+            "worstRegression": 11.32531293044022
+          },
+          "art": {
+            "count": 46,
+            "beforeMean": 69.08121032998508,
+            "afterMean": 69.08121032998508,
+            "beforeMedian": 68.97061612094136,
+            "afterMedian": 68.97061612094136,
+            "beforeLowerDecile": 62.30666029661566,
+            "afterLowerDecile": 62.30666029661566,
+            "improved": 0,
+            "regressed": 0,
+            "worstRegression": 0
+          }
+        }
+      },
+      "B": {
+        "count": 46,
+        "components": {
+          "structural100": {
+            "count": 46,
+            "beforeMean": 63.031008456238446,
+            "afterMean": 71.99363659989501,
+            "beforeMedian": 63.09823500424601,
+            "afterMedian": 72.36051377808009,
+            "beforeLowerDecile": 54.30417087935578,
+            "afterLowerDecile": 65.55832836592081,
+            "improved": 44,
+            "regressed": 2,
+            "worstRegression": 2.3813014193917184
+          },
+          "title": {
+            "count": 46,
+            "beforeMean": 70.58793496921238,
+            "afterMean": 76.27705969131367,
+            "beforeMedian": 71.35590826407102,
+            "afterMedian": 77.65273293235029,
+            "beforeLowerDecile": 61.10323191973954,
+            "afterLowerDecile": 66.81877110758097,
+            "improved": 35,
+            "regressed": 11,
+            "worstRegression": 8.127318579760797
+          },
+          "mana": {
+            "count": 46,
+            "beforeMean": 79.03220393471534,
+            "afterMean": 80.55301399917444,
+            "beforeMedian": 79.38856615367803,
+            "afterMedian": 82.2971034584248,
+            "beforeLowerDecile": 68.00536689115268,
+            "afterLowerDecile": 67.17790618872738,
+            "improved": 25,
+            "regressed": 21,
+            "worstRegression": 30.371594074171625
+          },
+          "type": {
+            "count": 46,
+            "beforeMean": 71.37325564979754,
+            "afterMean": 81.84382619457433,
+            "beforeMedian": 73.38271442592324,
+            "afterMedian": 83.54263813294493,
+            "beforeLowerDecile": 56.051974459726566,
+            "afterLowerDecile": 69.74981937408052,
+            "improved": 43,
+            "regressed": 3,
+            "worstRegression": 3.420827865646231
+          },
+          "rules": {
+            "count": 46,
+            "beforeMean": 47.25177690554989,
+            "afterMean": 61.13440457198603,
+            "beforeMedian": 47.43480948002393,
+            "afterMedian": 59.506454722150295,
+            "beforeLowerDecile": 38.03780965888545,
+            "afterLowerDecile": 51.92950870675264,
+            "improved": 41,
+            "regressed": 5,
+            "worstRegression": 4.08895350923698
+          },
+          "stats": {
+            "count": 18,
+            "beforeMean": 61.75715777850366,
+            "afterMean": 74.26039914779226,
+            "beforeMedian": 61.04469157187471,
+            "afterMedian": 74.61626242034342,
+            "beforeLowerDecile": 46.57769428021851,
+            "afterLowerDecile": 57.91652567786216,
+            "improved": 17,
+            "regressed": 1,
+            "worstRegression": 5.303794469331507
+          },
+          "frame": {
+            "count": 46,
+            "beforeMean": 67.14335805360368,
+            "afterMean": 76.84456458635077,
+            "beforeMedian": 67.61974673767423,
+            "afterMedian": 79.32935830132189,
+            "beforeLowerDecile": 52.27629862001286,
+            "afterLowerDecile": 67.5076171869054,
+            "improved": 40,
+            "regressed": 6,
+            "worstRegression": 14.567769236877893
+          },
+          "art": {
+            "count": 46,
+            "beforeMean": 70.54414784691222,
+            "afterMean": 70.54414784691222,
+            "beforeMedian": 70.44724672219115,
+            "afterMedian": 70.44724672219115,
+            "beforeLowerDecile": 63.12234016949405,
+            "afterLowerDecile": 63.12234016949405,
+            "improved": 0,
+            "regressed": 0,
+            "worstRegression": 0
+          }
+        }
+      },
+      "R": {
+        "count": 46,
+        "components": {
+          "structural100": {
+            "count": 46,
+            "beforeMean": 61.09993428578585,
+            "afterMean": 69.85162553087751,
+            "beforeMedian": 62.013313735544074,
+            "afterMedian": 70.70632285560785,
+            "beforeLowerDecile": 52.31354861313582,
+            "afterLowerDecile": 63.14030263544318,
+            "improved": 39,
+            "regressed": 7,
+            "worstRegression": 7.081300134639996
+          },
+          "title": {
+            "count": 46,
+            "beforeMean": 63.01890218720165,
+            "afterMean": 69.42646291062088,
+            "beforeMedian": 62.800922529904454,
+            "afterMedian": 68.70240164572049,
+            "beforeLowerDecile": 57.14111331380369,
+            "afterLowerDecile": 62.286542804643865,
+            "improved": 36,
+            "regressed": 10,
+            "worstRegression": 7.319205405507503
+          },
+          "mana": {
+            "count": 46,
+            "beforeMean": 74.884087343099,
+            "afterMean": 82.4513667700879,
+            "beforeMedian": 74.53249264618421,
+            "afterMedian": 84.77272475289371,
+            "beforeLowerDecile": 63.755431348148164,
+            "afterLowerDecile": 72.7638708652945,
+            "improved": 34,
+            "regressed": 12,
+            "worstRegression": 15.11680442272079
+          },
+          "type": {
+            "count": 46,
+            "beforeMean": 66.51653823289807,
+            "afterMean": 75.2305765033642,
+            "beforeMedian": 67.26873345419375,
+            "afterMedian": 79.32512144499375,
+            "beforeLowerDecile": 55.236389276029,
+            "afterLowerDecile": 55.60337452989277,
+            "improved": 39,
+            "regressed": 7,
+            "worstRegression": 5.753908590344992
+          },
+          "rules": {
+            "count": 46,
+            "beforeMean": 48.77479557590272,
+            "afterMean": 59.303108491534935,
+            "beforeMedian": 49.780605955147735,
+            "afterMedian": 57.45785025944016,
+            "beforeLowerDecile": 38.49892023943679,
+            "afterLowerDecile": 48.34494258224827,
+            "improved": 37,
+            "regressed": 9,
+            "worstRegression": 5.625634217965825
+          },
+          "stats": {
+            "count": 24,
+            "beforeMean": 70.58274404420995,
+            "afterMean": 82.22732699983102,
+            "beforeMedian": 70.94667473861287,
+            "afterMedian": 84.64228246782056,
+            "beforeLowerDecile": 61.68185834358771,
+            "afterLowerDecile": 73.59207478532596,
+            "improved": 22,
+            "regressed": 2,
+            "worstRegression": 2.9786874679376396
+          },
+          "frame": {
+            "count": 46,
+            "beforeMean": 63.41948987533896,
+            "afterMean": 74.2702411439645,
+            "beforeMedian": 60.358264966573216,
+            "afterMedian": 74.87858684037383,
+            "beforeLowerDecile": 46.92720177023122,
+            "afterLowerDecile": 64.86427949010928,
+            "improved": 33,
+            "regressed": 13,
+            "worstRegression": 34.19448258738699
+          },
+          "art": {
+            "count": 46,
+            "beforeMean": 69.97347246590853,
+            "afterMean": 69.97347246590853,
+            "beforeMedian": 69.89160432608713,
+            "afterMedian": 69.89160432608713,
+            "beforeLowerDecile": 63.936985907084924,
+            "afterLowerDecile": 63.936985907084924,
+            "improved": 0,
+            "regressed": 0,
+            "worstRegression": 0
+          }
+        }
+      },
+      "G": {
+        "count": 46,
+        "components": {
+          "structural100": {
+            "count": 46,
+            "beforeMean": 56.99301412379526,
+            "afterMean": 69.01420458241031,
+            "beforeMedian": 57.29484135509659,
+            "afterMedian": 68.87062268208052,
+            "beforeLowerDecile": 50.870425929023796,
+            "afterLowerDecile": 63.02420939179084,
+            "improved": 46,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "title": {
+            "count": 46,
+            "beforeMean": 67.05726605069184,
+            "afterMean": 71.72478889623736,
+            "beforeMedian": 67.1743275372588,
+            "afterMedian": 70.99480803124868,
+            "beforeLowerDecile": 62.255423542493446,
+            "afterLowerDecile": 66.21750144401668,
+            "improved": 37,
+            "regressed": 9,
+            "worstRegression": 11.336786065806635
+          },
+          "mana": {
+            "count": 46,
+            "beforeMean": 72.34697006913515,
+            "afterMean": 84.02859381688961,
+            "beforeMedian": 70.58548508657452,
+            "afterMedian": 86.3739319045657,
+            "beforeLowerDecile": 63.403943413292275,
+            "afterLowerDecile": 73.76867363097205,
+            "improved": 38,
+            "regressed": 8,
+            "worstRegression": 14.02741833029522
+          },
+          "type": {
+            "count": 46,
+            "beforeMean": 67.44404353066176,
+            "afterMean": 77.08033008852748,
+            "beforeMedian": 65.32909361251168,
+            "afterMedian": 80.11931130674768,
+            "beforeLowerDecile": 55.580026576354626,
+            "afterLowerDecile": 63.518356903066774,
+            "improved": 44,
+            "regressed": 2,
+            "worstRegression": 2.2024137715419982
+          },
+          "rules": {
+            "count": 46,
+            "beforeMean": 39.76376087085556,
+            "afterMean": 55.283890214758834,
+            "beforeMedian": 38.90076990039248,
+            "afterMedian": 55.950808382188654,
+            "beforeLowerDecile": 28.129262791172597,
+            "afterLowerDecile": 42.641009892102865,
+            "improved": 45,
+            "regressed": 1,
+            "worstRegression": 3.3148534875080458
+          },
+          "stats": {
+            "count": 21,
+            "beforeMean": 58.52969596522074,
+            "afterMean": 76.61288321372275,
+            "beforeMedian": 61.03017093036595,
+            "afterMedian": 79.45336555565096,
+            "beforeLowerDecile": 39.57789217832395,
+            "afterLowerDecile": 61.57884702811304,
+            "improved": 21,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "frame": {
+            "count": 46,
+            "beforeMean": 58.84152828412432,
+            "afterMean": 74.934662798329,
+            "beforeMedian": 59.510029357494055,
+            "afterMedian": 77.17926925827302,
+            "beforeLowerDecile": 50.81018441387871,
+            "afterLowerDecile": 64.99110454539839,
+            "improved": 45,
+            "regressed": 1,
+            "worstRegression": 10.069602763820917
+          },
+          "art": {
+            "count": 46,
+            "beforeMean": 69.69314811850842,
+            "afterMean": 69.69314811850842,
+            "beforeMedian": 69.75488041137194,
+            "afterMedian": 69.75488041137194,
+            "beforeLowerDecile": 64.56276745172012,
+            "afterLowerDecile": 64.56276745172012,
+            "improved": 0,
+            "regressed": 0,
+            "worstRegression": 0
+          }
+        }
+      },
+      "A": {
+        "count": 47,
+        "components": {
+          "structural100": {
+            "count": 47,
+            "beforeMean": 54.24116284440508,
+            "afterMean": 66.45567884891891,
+            "beforeMedian": 54.22418002742687,
+            "afterMedian": 67.19350738599023,
+            "beforeLowerDecile": 48.352689025171934,
+            "afterLowerDecile": 61.19718343943748,
+            "improved": 45,
+            "regressed": 2,
+            "worstRegression": 0.966140923280669
+          },
+          "title": {
+            "count": 47,
+            "beforeMean": 61.96569972043659,
+            "afterMean": 66.00757929832045,
+            "beforeMedian": 62.40613040295616,
+            "afterMedian": 66.68787944679279,
+            "beforeLowerDecile": 55.792317790932636,
+            "afterLowerDecile": 59.72998614675812,
+            "improved": 37,
+            "regressed": 10,
+            "worstRegression": 10.664225959678937
+          },
+          "mana": {
+            "count": 47,
+            "beforeMean": 70.55849982234653,
+            "afterMean": 81.78980475420262,
+            "beforeMedian": 69.66251316888872,
+            "afterMedian": 84.14995860102921,
+            "beforeLowerDecile": 57.511404221891354,
+            "afterLowerDecile": 72.8723461783189,
+            "improved": 35,
+            "regressed": 12,
+            "worstRegression": 17.423126582645708
+          },
+          "type": {
+            "count": 47,
+            "beforeMean": 71.0876463761451,
+            "afterMean": 75.50467622455045,
+            "beforeMedian": 73.30489815413253,
+            "afterMedian": 76.4812632719803,
+            "beforeLowerDecile": 58.592551750536614,
+            "afterLowerDecile": 68.29208451420159,
+            "improved": 32,
+            "regressed": 15,
+            "worstRegression": 20.571169393644
+          },
+          "rules": {
+            "count": 47,
+            "beforeMean": 41.572617824397355,
+            "afterMean": 54.36286120504849,
+            "beforeMedian": 39.881209757591776,
+            "afterMedian": 53.94592140467653,
+            "beforeLowerDecile": 32.395865646745264,
+            "afterLowerDecile": 44.40235063932447,
+            "improved": 43,
+            "regressed": 4,
+            "worstRegression": 9.009525834782451
+          },
+          "stats": {
+            "count": 4,
+            "beforeMean": 68.73504892499096,
+            "afterMean": 70.36815384618356,
+            "beforeMedian": 70.46102435149803,
+            "afterMedian": 70.51721378834341,
+            "beforeLowerDecile": 60.419893750147544,
+            "afterLowerDecile": 65.34377790730441,
+            "improved": 3,
+            "regressed": 1,
+            "worstRegression": 3.614266394752164
+          },
+          "frame": {
+            "count": 44,
+            "beforeMean": 46.25902965952868,
+            "afterMean": 72.01926572958818,
+            "beforeMedian": 46.07927113651624,
+            "afterMedian": 73.12706985903552,
+            "beforeLowerDecile": 36.71008389435618,
+            "afterLowerDecile": 65.03252901884446,
+            "improved": 44,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "art": {
+            "count": 47,
+            "beforeMean": 70.36170483847091,
+            "afterMean": 70.36170483847091,
+            "beforeMedian": 69.94780082461007,
+            "afterMedian": 69.94780082461007,
+            "beforeLowerDecile": 63.69524186224537,
+            "afterLowerDecile": 63.69524186224537,
+            "improved": 0,
+            "regressed": 0,
+            "worstRegression": 0
+          }
+        }
+      },
+      "L-dual": {
+        "count": 10,
+        "components": {
+          "structural100": {
+            "count": 10,
+            "beforeMean": 61.359157955927515,
+            "afterMean": 64.01099479975785,
+            "beforeMedian": 60.5613953083718,
+            "afterMedian": 64.28983478398793,
+            "beforeLowerDecile": 56.773562688568425,
+            "afterLowerDecile": 60.349293210649144,
+            "improved": 7,
+            "regressed": 3,
+            "worstRegression": 1.9392485230235224
+          },
+          "title": {
+            "count": 10,
+            "beforeMean": 66.40751366322709,
+            "afterMean": 51.685953342422046,
+            "beforeMedian": 67.24921369964062,
+            "afterMedian": 53.43380620724196,
+            "beforeLowerDecile": 59.459392159467995,
+            "afterLowerDecile": 42.677992471675154,
+            "improved": 0,
+            "regressed": 10,
+            "worstRegression": 24.587707203763365
+          },
+          "type": {
+            "count": 10,
+            "beforeMean": 66.71768011204853,
+            "afterMean": 55.09134847262794,
+            "beforeMedian": 69.16825276955123,
+            "afterMedian": 54.813866156179344,
+            "beforeLowerDecile": 55.99323011454347,
+            "afterLowerDecile": 49.920385350825384,
+            "improved": 1,
+            "regressed": 9,
+            "worstRegression": 24.815586777207272
+          },
+          "rules": {
+            "count": 10,
+            "beforeMean": 51.115825076721045,
+            "afterMean": 64.2633403575552,
+            "beforeMedian": 52.62711233033143,
+            "afterMedian": 66.90085464230937,
+            "beforeLowerDecile": 43.05349656394033,
+            "afterLowerDecile": 55.79036265516688,
+            "improved": 10,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "frame": {
+            "count": 10,
+            "beforeMean": 65.15643823301457,
+            "afterMean": 70.92333832285516,
+            "beforeMedian": 65.71690806034752,
+            "afterMedian": 71.75959901621991,
+            "beforeLowerDecile": 57.83692740135726,
+            "afterLowerDecile": 64.52651848149625,
+            "improved": 7,
+            "regressed": 3,
+            "worstRegression": 3.4969410484741843
+          },
+          "art": {
+            "count": 10,
+            "beforeMean": 73.48782233038554,
+            "afterMean": 70.23596107797273,
+            "beforeMedian": 74.20741330715823,
+            "afterMedian": 70.5008143689424,
+            "beforeLowerDecile": 66.57122257777664,
+            "afterLowerDecile": 63.825996718144594,
+            "improved": 0,
+            "regressed": 10,
+            "worstRegression": 5.61717975535673
+          }
+        }
+      },
+      "L-W": {
+        "count": 3,
+        "components": {
+          "structural100": {
+            "count": 3,
+            "beforeMean": 62.50193443022783,
+            "afterMean": 72.74591358358914,
+            "beforeMedian": 62.64600179005614,
+            "afterMedian": 73.41469644931121,
+            "beforeLowerDecile": 61.78440619309948,
+            "afterLowerDecile": 70.24774878750836,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "title": {
+            "count": 3,
+            "beforeMean": 74.0820990064167,
+            "afterMean": 74.46888713312705,
+            "beforeMedian": 75.38135803530248,
+            "afterMedian": 76.74675175694809,
+            "beforeLowerDecile": 70.59161385725722,
+            "afterLowerDecile": 68.54318318126862,
+            "improved": 1,
+            "regressed": 2,
+            "worstRegression": 2.9018867753971307
+          },
+          "type": {
+            "count": 3,
+            "beforeMean": 66.65742911120141,
+            "afterMean": 75.1468219455338,
+            "beforeMedian": 67.7965842934495,
+            "afterMedian": 76.93600613375924,
+            "beforeLowerDecile": 61.42704261854033,
+            "afterLowerDecile": 72.61729937288052,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "rules": {
+            "count": 3,
+            "beforeMean": 46.80783945318772,
+            "afterMean": 65.93391015724684,
+            "beforeMedian": 47.3038530898377,
+            "afterMedian": 66.33605051944838,
+            "beforeLowerDecile": 45.40109019224019,
+            "afterLowerDecile": 64.20143409572896,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "frame": {
+            "count": 3,
+            "beforeMean": 71.49255576838793,
+            "afterMean": 80.12174825017239,
+            "beforeMedian": 70.72126251040505,
+            "afterMedian": 84.44080293140875,
+            "beforeLowerDecile": 70.13444596631756,
+            "afterLowerDecile": 72.52383813454664,
+            "improved": 2,
+            "regressed": 1,
+            "worstRegression": 1.1766655750739545
+          },
+          "art": {
+            "count": 3,
+            "beforeMean": 72.40048935899819,
+            "afterMean": 71.89071275387651,
+            "beforeMedian": 70.19001584106337,
+            "afterMedian": 69.84052991848753,
+            "beforeLowerDecile": 70.04475906814793,
+            "afterLowerDecile": 69.63623013601769,
+            "improved": 0,
+            "regressed": 3,
+            "worstRegression": 0.7565542082703587
+          }
+        }
+      },
+      "L-U": {
+        "count": 3,
+        "components": {
+          "structural100": {
+            "count": 3,
+            "beforeMean": 59.08251766365021,
+            "afterMean": 76.7022360190694,
+            "beforeMedian": 59.01405230378991,
+            "afterMedian": 75.51465694011458,
+            "beforeLowerDecile": 57.33134775952276,
+            "afterLowerDecile": 74.79816840077669,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "title": {
+            "count": 3,
+            "beforeMean": 74.40139085541496,
+            "afterMean": 80.53514241980133,
+            "beforeMedian": 74.68823398946301,
+            "afterMedian": 82.17570727454077,
+            "beforeLowerDecile": 71.0578246356275,
+            "afterLowerDecile": 78.2256183237848,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "type": {
+            "count": 3,
+            "beforeMean": 57.45793843149295,
+            "afterMean": 77.38745103818053,
+            "beforeMedian": 53.42312372809855,
+            "afterMedian": 78.39443726670837,
+            "beforeLowerDecile": 51.46796114353053,
+            "afterLowerDecile": 75.88532175290081,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "rules": {
+            "count": 3,
+            "beforeMean": 56.02673016818543,
+            "afterMean": 76.90105754705048,
+            "beforeMedian": 56.12024193137878,
+            "afterMedian": 73.73035524407564,
+            "beforeLowerDecile": 53.4286579158061,
+            "afterLowerDecile": 72.14016175415244,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "frame": {
+            "count": 3,
+            "beforeMean": 50.92812627551435,
+            "afterMean": 76.31101394755024,
+            "beforeMedian": 53.75317593464014,
+            "afterMedian": 76.77687925721405,
+            "beforeLowerDecile": 45.878637571245996,
+            "afterLowerDecile": 73.04482586688393,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "art": {
+            "count": 3,
+            "beforeMean": 71.87579323670165,
+            "afterMean": 71.55777321190268,
+            "beforeMedian": 70.30858606785398,
+            "afterMedian": 70.53426341181299,
+            "beforeLowerDecile": 69.76811512602883,
+            "afterLowerDecile": 68.81074615247077,
+            "improved": 2,
+            "regressed": 1,
+            "worstRegression": 1.2531305529373213
+          }
+        }
+      },
+      "L-B": {
+        "count": 3,
+        "components": {
+          "structural100": {
+            "count": 3,
+            "beforeMean": 53.50964189223686,
+            "afterMean": 72.1474758563237,
+            "beforeMedian": 53.50898803381574,
+            "afterMedian": 71.97663499688997,
+            "beforeLowerDecile": 51.505634543960625,
+            "afterLowerDecile": 71.0221439230425,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "title": {
+            "count": 3,
+            "beforeMean": 69.9990887065192,
+            "afterMean": 70.62097571186837,
+            "beforeMedian": 74.20518678211742,
+            "afterMedian": 68.98005437353476,
+            "beforeLowerDecile": 63.0969526382461,
+            "afterLowerDecile": 67.65002863251677,
+            "improved": 2,
+            "regressed": 1,
+            "worstRegression": 8.15466303789961
+          },
+          "type": {
+            "count": 3,
+            "beforeMean": 70.98508424280628,
+            "afterMean": 77.37285444122182,
+            "beforeMedian": 73.96997764292558,
+            "afterMedian": 86.99745010984093,
+            "beforeLowerDecile": 65.74441177308829,
+            "afterLowerDecile": 62.72410788972185,
+            "improved": 2,
+            "regressed": 1,
+            "worstRegression": 17.314205308233518
+          },
+          "rules": {
+            "count": 3,
+            "beforeMean": 43.19762341411137,
+            "afterMean": 71.14219643693258,
+            "beforeMedian": 41.487282893611216,
+            "afterMedian": 67.9313436272468,
+            "beforeLowerDecile": 40.42508988571157,
+            "afterLowerDecile": 67.52036621225444,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "frame": {
+            "count": 3,
+            "beforeMean": 47.65648601400767,
+            "afterMean": 76.18192103736283,
+            "beforeMedian": 48.07794273697235,
+            "afterMedian": 75.76809059578157,
+            "beforeLowerDecile": 42.56866433017652,
+            "afterLowerDecile": 73.92184453852336,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "art": {
+            "count": 3,
+            "beforeMean": 63.56934077329537,
+            "afterMean": 62.01126761241809,
+            "beforeMedian": 63.202882468459876,
+            "afterMedian": 61.73637074955054,
+            "beforeLowerDecile": 62.89160600949649,
+            "afterLowerDecile": 60.356772083063,
+            "improved": 1,
+            "regressed": 2,
+            "worstRegression": 3.191010052018761
+          }
+        }
+      },
+      "L-R": {
+        "count": 3,
+        "components": {
+          "structural100": {
+            "count": 3,
+            "beforeMean": 60.484336996023195,
+            "afterMean": 71.97658629213969,
+            "beforeMedian": 62.672883617833406,
+            "afterMedian": 70.92861351694417,
+            "beforeLowerDecile": 56.41949599568981,
+            "afterLowerDecile": 70.02416736845635,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "title": {
+            "count": 3,
+            "beforeMean": 73.24456867171104,
+            "afterMean": 69.86360086832032,
+            "beforeMedian": 76.0032062996837,
+            "afterMedian": 70.86254625070538,
+            "beforeLowerDecile": 66.03497045585608,
+            "afterLowerDecile": 62.53567468347272,
+            "improved": 0,
+            "regressed": 3,
+            "worstRegression": 5.140660048978319
+          },
+          "type": {
+            "count": 3,
+            "beforeMean": 72.09657219307876,
+            "afterMean": 80.97156808618548,
+            "beforeMedian": 82.78391297181473,
+            "afterMedian": 82.94464169693487,
+            "beforeLowerDecile": 56.734281045943675,
+            "afterLowerDecile": 77.03597999089862,
+            "improved": 1,
+            "regressed": 2,
+            "worstRegression": 7.225098407425165
+          },
+          "rules": {
+            "count": 3,
+            "beforeMean": 53.08896783543395,
+            "afterMean": 70.09972582067044,
+            "beforeMedian": 53.469533651166856,
+            "afterMedian": 70.2737687996291,
+            "beforeLowerDecile": 52.16546358062444,
+            "afterLowerDecile": 65.72463777581581,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "frame": {
+            "count": 3,
+            "beforeMean": 58.139938777370766,
+            "afterMean": 74.53833021496433,
+            "beforeMedian": 62.8284723311012,
+            "afterMedian": 72.3011360796332,
+            "beforeLowerDecile": 47.98679700420939,
+            "afterLowerDecile": 70.50033504947913,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "art": {
+            "count": 3,
+            "beforeMean": 62.817757522903925,
+            "afterMean": 65.31827300308144,
+            "beforeMedian": 64.01253107479629,
+            "afterMedian": 64.53132765775963,
+            "beforeLowerDecile": 60.2928706548624,
+            "afterLowerDecile": 64.49925878835047,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          }
+        }
+      },
+      "L-G": {
+        "count": 3,
+        "components": {
+          "structural100": {
+            "count": 3,
+            "beforeMean": 61.10478577494076,
+            "afterMean": 68.9630135461768,
+            "beforeMedian": 61.709924391532844,
+            "afterMedian": 70.48110593826092,
+            "beforeLowerDecile": 54.95337317070472,
+            "afterLowerDecile": 62.146054164552744,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "title": {
+            "count": 3,
+            "beforeMean": 63.223123177817236,
+            "afterMean": 64.34310818354253,
+            "beforeMedian": 62.531953384548025,
+            "afterMedian": 62.32278324065167,
+            "beforeLowerDecile": 58.052019320280635,
+            "afterLowerDecile": 59.200093838212986,
+            "improved": 2,
+            "regressed": 1,
+            "worstRegression": 0.20917014389635824
+          },
+          "type": {
+            "count": 3,
+            "beforeMean": 67.83568178409301,
+            "afterMean": 68.22338672874689,
+            "beforeMedian": 75.40636306050028,
+            "afterMedian": 67.32206770095914,
+            "beforeLowerDecile": 56.93260501041704,
+            "afterLowerDecile": 67.29497378644353,
+            "improved": 1,
+            "regressed": 2,
+            "worstRegression": 8.084295359541144
+          },
+          "rules": {
+            "count": 3,
+            "beforeMean": 49.2006712178931,
+            "afterMean": 60.65210349325963,
+            "beforeMedian": 45.17830509074309,
+            "afterMedian": 65.19011828178888,
+            "beforeLowerDecile": 42.84732337473367,
+            "afterLowerDecile": 47.86385876780908,
+            "improved": 2,
+            "regressed": 1,
+            "worstRegression": 1.6460112014289692
+          },
+          "frame": {
+            "count": 3,
+            "beforeMean": 70.26112361220929,
+            "afterMean": 81.85933272060566,
+            "beforeMedian": 75.70393808336419,
+            "afterMedian": 82.51933732947323,
+            "beforeLowerDecile": 60.52537933435218,
+            "afterLowerDecile": 77.26943324050762,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          },
+          "art": {
+            "count": 3,
+            "beforeMean": 67.52349572942643,
+            "afterMean": 70.2471818028081,
+            "beforeMedian": 67.24256737365273,
+            "afterMedian": 70.92757081847051,
+            "beforeLowerDecile": 66.84172641157394,
+            "afterLowerDecile": 69.28615067319501,
+            "improved": 3,
+            "regressed": 0,
+            "worstRegression": 0
+          }
+        }
+      }
+    },
+    "finalCandidateScope": "Final selected candidate: native role-specific filled ink and shadows, corrected shared P/T anchor. All 302 original cards retained, including three frame regions with incomplete reference signal. Not yet installed-profile/release certification."
+  },
+  "bodyEditorPreparation": {
+    "status": "native-default-and-complete-candidate-equivalence-verified",
+    "source": "body-profile-source-proof.json",
+    "defaultPairs": 302,
+    "candidatePairs": 302,
+    "etchingPairs": 604,
+    "positiveCases": 4,
+    "scope": "Context-local request metadata survives selected early-layout copies. Empty proposals keep pixels exact; nonzero physical deltas preserve wording, scale and flavor spacing. The current compiled profiles remain unchanged."
   }
 }

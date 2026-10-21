@@ -1,4 +1,8 @@
-import { profileAdapterSource } from './profile-adapter-ancestry.mjs';
+import { profileBodySource } from './body-profile-ancestry.mjs';
+import {
+  profileAdapterProofDependency,
+  profileAdapterSource,
+} from './profile-adapter-ancestry.mjs';
 // Preserve unrelated historical receipts when optional preparation fields are inactive.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -84,6 +88,9 @@ async function inactive(p, set, readProfile) {
  * unchanged default profile. A changed/new profile retains current guards;
  * unknown helper edits reject even if a receipt marker is supplied. */
 export async function profilePreparationSource(file, bytes, set, readProfile = readOptional) {
+  const body = await profileBodySource(file, bytes, (p) => inactive(p, set, readProfile));
+  if (body.changedProfile) return body;
+  bytes = body.bytes;
   const adapted = await profileAdapterSource(file, bytes, (p) => inactive(p, set, readProfile));
   if (adapted.changedProfile) return adapted;
   bytes = adapted.bytes;
@@ -101,4 +108,20 @@ export async function profilePreparationSource(file, bytes, set, readProfile = r
 
 export async function preProfilePreparationSource(file, bytes, set, readProfile = readOptional) {
   return (await profilePreparationSource(file, bytes, set, readProfile)).bytes;
+}
+
+/** Reconstruct an immutable historical painter in differential tests only.
+ * This deliberately has no set-data approval semantics. Fresh/profile scores
+ * must use profilePreparationSource and retain changed-profile fingerprints. */
+export async function profilePreparationProofDependency(file, bytes) {
+  bytes = await profileAdapterProofDependency(file, bytes);
+  const p = await proof(),
+    entry = p.files[file];
+  if (!entry || hash(bytes) === entry.before) return bytes;
+  assert.equal(hash(bytes), entry.after, 'Unreviewed historical profile helper: ' + file);
+  const lines = bytes.toString().match(/[^\n]*\n|[^\n]+$/g) ?? [];
+  for (const edit of entry.reverseEdits) lines.splice(edit.start, edit.count, ...edit.lines);
+  const before = Buffer.from(lines.join(''));
+  assert.equal(hash(before), entry.before);
+  return before;
 }

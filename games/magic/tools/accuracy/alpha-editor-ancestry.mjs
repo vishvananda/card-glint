@@ -1,4 +1,7 @@
-import { profilePreparationSource } from './profile-preparation-ancestry.mjs';
+import {
+  profilePreparationProofDependency,
+  profilePreparationSource,
+} from './profile-preparation-ancestry.mjs';
 import { preHeadingSpacingSource } from './heading-spacing-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -21,7 +24,13 @@ export function alphaEditorAncestry(set) {
         const proof = JSON.parse(bytes);
         for (const [file, sha] of Object.entries(proof.dependencies))
           assert.equal(
-            hash(await preHeadingSpacingSource(file, await readFile(file), set)),
+            hash(
+              await preHeadingSpacingSource(
+                file,
+                await profilePreparationProofDependency(file, await readFile(file)),
+                set,
+              ),
+            ),
             sha,
             'Changed Alpha editor dependency: ' + file,
           );

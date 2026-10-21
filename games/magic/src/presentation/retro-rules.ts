@@ -7,7 +7,7 @@ import { calibratedBodyLayout } from '../calibration/body.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
 import { retroBasicPrinting } from './retro-basic.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
-import { layoutRules, type RulesTypography } from './rules-layout.js';
+import { layoutRules, withRulesLayoutRequests, type RulesTypography } from './rules-layout.js';
 import { retroBasicSymbol, retroFamily, retroPx, retroRects } from './retro-frame.js';
 import { resolveFrameColors } from './profile.js';
 import { revisedLargeRules } from './revised-large-rules.js';
@@ -31,26 +31,29 @@ export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
 
 /** Null denotes the existing large-basic-symbol path, which has no body text. */
 export function retroTextLayout(context: CanvasContext, face: RenderedCardInput) {
-  const base = baseRetroTextLayout(context, face);
   const tiers = earlyReprintFrame(face) && calibrationForFace(face)?.textTiers;
-  const limit = tiers?.retainRegularAboveLines;
-  if (limit !== undefined && (!Number.isInteger(limit) || limit < 1))
-    throw Error('Invalid regular density limit');
-  const retain =
-    base &&
-    face.wordingMode !== 'oracle' &&
-    limit !== undefined &&
-    base.size >= 19 &&
-    base.size < 30 &&
-    base.lines.length > limit;
-  const layout = retain
-    ? base
-    : tiers && base
-      ? face.wordingMode === 'oracle'
-        ? earlyRulesModel(context, face, base, tiers.regularWidthDelta)
-        : earlyTextTierLayout(context, face, base, tiers)
-      : alphaTextLayout(context, face, base);
-  return adjustCalibrationRules(context, face, layout);
+  const calculate = () => {
+    const base = baseRetroTextLayout(context, face);
+    const limit = tiers?.retainRegularAboveLines;
+    if (limit !== undefined && (!Number.isInteger(limit) || limit < 1))
+      throw Error('Invalid regular density limit');
+    const retain =
+      base &&
+      face.wordingMode !== 'oracle' &&
+      limit !== undefined &&
+      base.size >= 19 &&
+      base.size < 30 &&
+      base.lines.length > limit;
+    const layout = retain
+      ? base
+      : tiers && base
+        ? face.wordingMode === 'oracle'
+          ? earlyRulesModel(context, face, base, tiers.regularWidthDelta)
+          : earlyTextTierLayout(context, face, base, tiers)
+        : alphaTextLayout(context, face, base);
+    return adjustCalibrationRules(context, face, layout);
+  };
+  return tiers ? withRulesLayoutRequests(context, calculate) : calculate();
 }
 function baseRetroTextLayout(context: CanvasContext, face: RenderedCardInput) {
   if (retroBasicSymbol(face)) return null;

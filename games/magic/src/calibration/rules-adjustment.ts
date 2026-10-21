@@ -32,14 +32,15 @@ export function adjustCalibrationRules(
   const request = rulesLayoutRequest(layout);
   if (!request) throw Error('Selected rules policy does not expose calibration inputs');
   const { bounds, typography } = request;
-  const left = delta.leftMargin ?? 0,
-    right = delta.rightMargin ?? 0;
+  const scale = layout.horizontalScale ?? 1;
+  const left = (delta.leftMargin ?? 0) / scale,
+    right = (delta.rightMargin ?? 0) / scale;
   const y = delta.vertical ?? 0;
   const paragraphs =
     delta.alignment && delta.alignment !== 'printing'
       ? request.paragraphs.map((p) => ({ ...p, align: delta.alignment as 'left' | 'center' }))
       : request.paragraphs;
-  return layoutRules(
+  const adjusted = layoutRules(
     context,
     paragraphs,
     {
@@ -61,4 +62,5 @@ export function adjustCalibrationRules(
       flavorGap: typography.flavorGap + (delta.flavorGap ?? 0),
     },
   );
+  return layout.horizontalScale === undefined ? adjusted : { ...adjusted, horizontalScale: scale };
 }

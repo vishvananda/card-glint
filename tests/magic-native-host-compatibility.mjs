@@ -1,3 +1,5 @@
+import { additionalProfileDataModules } from '../games/magic/tools/accuracy/profile-data-modules.mjs';
+import { profileBodyAncestry } from '../games/magic/tools/accuracy/body-profile-ancestry.mjs';
 import { profileAdapterAncestry } from '../games/magic/tools/accuracy/profile-adapter-ancestry.mjs';
 import { walkerGeometryModules } from '../games/magic/tools/accuracy/planeswalker-reconstruction/geometry-ancestry.mjs';
 import { walkerAncestry } from '../games/magic/tools/accuracy/planeswalker-reconstruction/ancestry.mjs';
@@ -285,9 +287,15 @@ async function verify() {
   const walkers = await walkerAncestry();
   const walkerGeometry = await walkerGeometryModules();
   const profileAdapter = await profileAdapterAncestry();
+  const profileBody = await profileBodyAncestry();
+  const profileData = await additionalProfileDataModules(
+    new Set([...consolidation.newModules, ...alphaEditor.newModules]),
+  );
   const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
     (file) =>
       ![
+        ...profileData,
+        ...Object.keys(profileBody.newModules),
         ...Object.keys(profileAdapter.newModules),
         ...Object.keys(hostWorker.dependencies),
         ...Object.keys(battleSources.dependencies),
@@ -341,6 +349,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(profileBody.files, relative) ||
             Object.hasOwn(profileAdapter.files, relative) ||
             Object.hasOwn(walkers.files, relative) ||
             Object.hasOwn(alphaEditor.files, relative) ||
