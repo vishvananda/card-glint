@@ -785,3 +785,53 @@ materials are prepared by the real cached painter before compositing, with no
 filter over the final card. The source-alpha sampler never classifies scan colors
 or adjusts their pose. These color errors are Oklab distances, separate from the
 Lab's accuracy indices out of 100.
+
+## Dual-land band ordering and Unlimited pinline geometry
+
+`dual-text-box-order-review.json` records a visual check of all 39 printed dual
+lands across Alpha, Beta, Unlimited and Revised. Broad paper stripes and narrow
+three-color border bands use different ordering rules. Neither treatment shows
+a reversal across these cached scans. Full-frame outline color is a separate
+rule; this check does not certify it. The sheet generator verifies every cached
+scan hash and keeps all external pixels outside the checkout:
+
+```sh
+python games/magic/tools/accuracy/early-dual-order-sheets.py games/magic/fixtures/accuracy "$MAGIC_ACCURACY_CACHE" "$DUAL_ORDER_REVIEW"
+```
+
+`2ed-dual-pinline-replay.json.gz` retains the geometry model, shared candidates,
+actual native replay and fixed-strip checks. Keeping the existing physical width
+and moving the bottom inward by five canonical pixels gives 82.65/100 mean edge
+cosine, versus 72.61 for the existing geometry and 79.06 for the wider candidate.
+These are forty local RGB-gradient-magnitude comparisons, not whole-card scores.
+Twenty-five sides improve and fifteen regress; reserved names are reused
+observations. Ten default native controls reproduce exactly. The candidate
+preserves alpha, default etching, the first 590 native rows and the tested central
+rules rectangle. Final complete ink/material isolation is still required.
+
+The study plugin adds pinline geometry to the material-cache identity and invokes
+the actual pixel-integrating border painter. It preserves original palette/order.
+The joint color model has blur uncertainty; its palette and later band-center
+medians remain diagnostics. Do not install them as printing inks.
+
+```sh
+python games/magic/tools/accuracy/early-dual-pinline-geometry.py "$CURRENT_UNLIMITED_NATIVE" "$DUAL_PAPER_NATIVE" "$DUAL_PINLINE_PROFILES"
+OPENBLAS_NUM_THREADS=1 python games/magic/tools/accuracy/early-dual-pinline-fit.py "$DUAL_PINLINE_PROFILES" "$CURRENT_UNLIMITED_NATIVE/inputs.json" "$DUAL_PINLINE_FIT"
+node games/magic/tools/accuracy/early-dual-pinline-replay.mjs "$CURRENT_UNLIMITED_NATIVE" "$DUAL_PINLINE_DEFINITION" "$DUAL_PINLINE_NATIVE"
+python games/magic/tools/accuracy/early-dual-pinline-verify.py "$CURRENT_UNLIMITED_NATIVE" "$DUAL_PINLINE_NATIVE" "$DUAL_PINLINE_PROFILES" "$DUAL_PINLINE_REPORT"
+python games/magic/tools/accuracy/early-dual-pinline-audit.py "$CURRENT_UNLIMITED_NATIVE" "$DUAL_PINLINE_NATIVE" "$DUAL_PINLINE_COLORS" --trial pinline-selected
+```
+
+The replay definition retains the shared-paper control and two geometry trials;
+only their `pinline.box` (1500×2100 source coordinates) and four physical-compensated
+`pinline.width` values differ. Use the archived exact definition, not a per-card
+fit. Equivalent color orders in the eight-card training graph retain the existing
+rule: Taiga and Underground Sea are the two reserved names, so training alone
+cannot distinguish their pair order. Their scans and the cross-set visual check
+support preserving it.
+
+`2ed-dual-paper-compromise.json.gz` records the rejected shared color compromise.
+Run `early-dual-paper-compromise.mjs FIT OUTPUT` to reproduce its four common
+penalties. Avoiding Volcanic Island's blue regression gives up most of the gain
+on the other three blue duals. The previous median candidate remains proposed,
+with all residuals explicit. No runtime profile is adopted by these studies.

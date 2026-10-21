@@ -451,6 +451,20 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-paper-replay.json.gz",
       "sha256": "c53e840b5a2f58723c061f780a4e0eb81d0bffa6245f27358975dd9da7b885d9",
       "contentSha256": "7c4761fdf955d3975b7c5e7f3fae4fb1fe73c21689288f148e65ed2291c24f3a"
+    },
+    "2ed-dual-pinline-replay": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-pinline-replay.json.gz",
+      "sha256": "38c34edbd8c3c89fd223bb671bdb3ad0d8d81397e87d37b4136a46e1e788024a",
+      "contentSha256": "d0fa412e292c2c983eef80c1d1f3de2e10c13388a68069eddd4fee1df42014b7"
+    },
+    "2ed-dual-paper-compromise": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-paper-compromise.json.gz",
+      "sha256": "b5ffa0d6690b060264e38db45685bf07c87fc2bfe5e5b7983e1dd636b2bf8dde",
+      "contentSha256": "db11f6b0ab8c486283e244c749afd6f86de991d3086beeba906917a291da521b"
+    },
+    "dual-text-box-order-review": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/dual-text-box-order-review.json",
+      "sha256": "9886710921278d720fe50e06a118a643712154a27915a3acf692b09e89fc9336"
     }
   },
   "native": {
@@ -1394,7 +1408,7 @@
   },
   "integrationRequirements": {
     "frame": "Source-bound ordinary and five basic plates, shared dual composite, independent SVG stock-mask geometry; retain existing foreign-set behavior.",
-    "color": "Basic colored rims and all ten dual paper stripes have native candidate evidence with every residual retained. Resolve the shared dual-paper compromise (blue/red Volcanic Island regressions), land contrast/black levels and composed dual pinline/outline palettes before final full-card verification.",
+    "color": "Resolve land contrast/black levels and composed dual pinline/outline palettes. The original shared dual-paper candidate is retained after the compromise tradeoff study. Keep all Volcanic Island blue/red residuals. Native pinline geometry improves fixed-strip mean but retains fifteen side-level regressions; source palette and order remain unchanged.",
     "wording": "Use current original printing inputs, including Dragon Whelp inline quotation and Drain Life 1B. Drain Life header-only replay preserves body pixels and rightmost pips; historical extra-X full-face records are superseded for header comparisons. Oracle input remains unchanged.",
     "typography": "Measure filled ink/stroke/shadow values separately from fixed-gray geometry; retain MPlantin credits unless new evidence supports another face.",
     "body": "Integrate shared count/wrap and medium-density retention with original/Oracle safety preserved; verify final full native inputs.",
@@ -2957,6 +2971,60 @@
       }
     ],
     "scope": "Five source-paper HSB candidates shared by color across all ten duals. Fixed source-alpha stripe labels, three-pixel erosion and symmetric dark-ink rejection. All actual native baseline controls reproduce; original wording and independent scan poses remain fixed. No alpha, upper-card or default etching changes; upper-card isolation covers the first 590 native rows, not a separate type-ink mask. Volcanic Island has the two regressing blue/red observations; all residuals remain in the report. This development fit is not independent-name or whole-card validation. Brown texture contrast/blackpoint and outline/pinline palettes remain open.",
+    "wholeSetCertification": false,
+    "compromiseReview": {
+      "source": "2ed-dual-paper-compromise.json.gz",
+      "decision": "Keep the prior shared median candidate and retain Volcanic Island residuals. Penalizing worst-card regression gives up most blue improvement on the other three associated duals. No per-card palette is introduced."
+    }
+  },
+  "dualLandPinline": {
+    "status": "native-geometry-candidate-not-adopted",
+    "source": "2ed-dual-pinline-replay.json.gz",
+    "printings": 10,
+    "fixedStrips": 40,
+    "geometry": {
+      "box": {
+        "left": 187.3104508196721,
+        "right": 1314.699795081967,
+        "top": 1250.7571611894505,
+        "bottom": 1856.9866253171278
+      },
+      "width": {
+        "left": 19.5952868852459,
+        "right": 19.5952868852459,
+        "top": 19.746740220661984,
+        "bottom": 19.746740220661984
+      }
+    },
+    "summary": {
+      "shared-paper": {
+        "edgeMean100": 72.60632695009883,
+        "improvedSides": 0,
+        "regressedSides": 0,
+        "worstRegression100": -0.0,
+        "calibrationMean100": 72.05668852102458,
+        "reservedMean100": 74.80488066639587
+      },
+      "pinline-selected": {
+        "edgeMean100": 82.65446496462975,
+        "improvedSides": 25,
+        "regressedSides": 15,
+        "worstRegression100": 15.675780854918543,
+        "calibrationMean100": 82.00742302123525,
+        "reservedMean100": 85.24263273820772
+      },
+      "pinline-freeFit": {
+        "edgeMean100": 79.06135864462817,
+        "improvedSides": 21,
+        "regressedSides": 19,
+        "worstRegression100": 14.815573866533837,
+        "calibrationMean100": 79.20524916402773,
+        "reservedMean100": 78.48579656702994
+      }
+    },
+    "scope": "Actual full native cards, fixed scan poses and original text; shared geometry and source ink only. RGB-gradient magnitude cosine is local to forty fixed border strips and is not a whole-card score. Ten baseline PNGs match; upper-card rows [0,590), central rules [110,620)x[640,890), alpha and etching control checks pass. Separate complete ink and paper controls remain required. Reserved names are reused development observations. Palette/order remain unchanged.",
+    "orderReview": "dual-text-box-order-review.json",
+    "paletteStatus": "Original source palette retained. Remeasured band centers still mix neighboring inks in some scans; do not promote the diagnostic RGB medians without native verification.",
     "wholeSetCertification": false
   }
 }
