@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { restoreUnlimitedProfilePayload } from '../games/magic/tools/accuracy/unlimited-tone-payload.mjs';
 import { readFile } from 'node:fs/promises';
 import { hash, readJson, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
 import {
@@ -139,10 +140,16 @@ const toneBeforeMap = new Map(toneMetadata.beforeMap),
 assert.deepEqual([...toneBeforeMap.keys()], [...toneAfterMap.keys()]);
 assert.deepEqual(
   [...toneBeforeMap.keys()].filter((k) => toneBeforeMap.get(k) !== toneAfterMap.get(k)),
-  ['calibration/sets/2ed.ts', 'data/generated-manifest.json', 'data/sets/2ed.ts'],
+  ['calibration/sets/2ed.ts', 'data/eager.ts', 'data/generated-manifest.json', 'data/sets/2ed.ts'],
 );
 assert.equal(hash(JSON.stringify(toneMetadata.beforeMap)), toneMetadata.beforeTreeHash);
 assert.equal(hash(JSON.stringify(toneMetadata.afterMap)), toneMetadata.afterTreeHash);
+for (const file of ['data/eager.ts', 'data/sets/2ed.ts']) {
+  const actual = await readFile('games/magic/src/' + file, 'utf8');
+  const restored = await restoreUnlimitedProfilePayload(actual, tone.profileProof.before);
+  assert.equal(hash(restored), toneBeforeMap.get(file));
+  assert.equal(hash(actual), toneAfterMap.get(file));
+}
 console.log(
   'Revision3:906 installed faces; nine-scan pigment fit, dark scan retained in reports, fixed geometry/wording and disclosed structural-score tradeoff.',
 );

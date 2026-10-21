@@ -5,6 +5,7 @@ import { readFile, readdir, writeFile } from 'node:fs/promises';
 import { gzipSync } from 'node:zlib';
 import ts from 'typescript';
 import { PNG } from 'pngjs';
+import { restoreUnlimitedProfilePayload } from './unlimited-tone-payload.mjs';
 import { hash, readJson, writeJson, sourceHash, root } from './common.mjs';
 const [previousDirectory, nativeDirectory, candidateDirectory] = process.argv.slice(2);
 assert(
@@ -77,9 +78,38 @@ const bm = new Map(data.before.map),
 assert.deepEqual([...bm.keys()], [...am.keys()]);
 assert.deepEqual(
   [...bm.keys()].filter((k) => bm.get(k) !== am.get(k)),
-  ['calibration/sets/2ed.ts', 'data/generated-manifest.json', 'data/sets/2ed.ts'],
+  ['calibration/sets/2ed.ts', 'data/eager.ts', 'data/generated-manifest.json', 'data/sets/2ed.ts'],
+);
+const generatedRestoration = {};
+for (const file of ['data/eager.ts', 'data/sets/2ed.ts']) {
+  const actual = await readFile(path.join(sourceDirectory, file), 'utf8');
+  const restored = await restoreUnlimitedProfilePayload(actual, previousProfile);
+  assert.equal(hash(restored), bm.get(file), 'Unreviewed generated payload changes ' + file);
+  generatedRestoration[file] = { beforeHash: hash(restored), afterHash: hash(actual) };
+}
+const manifestAfter = await readFile(
+  path.join(sourceDirectory, 'data/generated-manifest.json'),
+  'utf8',
+);
+const manifestBeforeData = JSON.parse(data.before.manifest),
+  manifestAfterData = JSON.parse(manifestAfter);
+assert.deepEqual(Object.keys(manifestBeforeData.files), Object.keys(manifestAfterData.files));
+assert.deepEqual(
+  Object.keys(manifestBeforeData.files)
+    .filter((k) => manifestBeforeData.files[k] !== manifestAfterData.files[k])
+    .sort(),
+  ['games/magic/src/data/eager.ts', 'games/magic/src/data/sets/2ed.ts'],
+);
+assert.deepEqual(
+  Object.keys(manifestBeforeData.sources).filter(
+    (k) => manifestBeforeData.sources[k] !== manifestAfterData.sources[k],
+  ),
+  [profileFile],
 );
 const metadata = {
+  generatedRestoration,
+  manifestBefore: data.before.manifest,
+  manifestAfter,
   beforeTreeHash: data.before.rendererHash,
   afterTreeHash,
   beforeMap: data.before.map,
@@ -180,6 +210,7 @@ for (const name of [
   'early-profile-revision-score.mjs',
   'early-profile-tone-certification.mjs',
   'unlimited-dual-tone-study.mjs',
+  'unlimited-tone-payload.mjs',
 ])
   tools[name] = await readFile('games/magic/tools/accuracy/' + name, 'utf8');
 assert.equal(hash(tools['early-profile-tone-native.mjs']), data.capture.source.toolHash);
