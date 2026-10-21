@@ -4,21 +4,35 @@ import path from 'node:path';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { openBrowser } from './browser.mjs';
+import { modernPlateControlsStudy } from './modern-plate-controls-study.mjs';
 import { root, hash, sourceHash, writeJson } from './common.mjs';
-const [inputFile, outputDirectory] = process.argv.slice(2);
+const [inputFile, outputDirectory, study] = process.argv.slice(2);
+assert([undefined, '--retain-modern-controls'].includes(study), 'Unknown native study');
 assert(outputDirectory, 'Usage: modern-calibration-native.mjs INPUTS OUT');
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
 assert(inputs.entries.length && inputs.entries.every((e) => e.face.wordingMode === 'original'));
 const out = path.resolve(outputDirectory);
 await mkdir(out, { recursive: true });
-const session = await openBrowser(inputs);
+const session = await openBrowser(inputs, {
+  plugins: study ? [modernPlateControlsStudy()] : [],
+});
 try {
   await session.page.evaluate(async () => {
     await import('/games/magic/src/data/eager.ts');
     await import('/games/magic/src/data/eager-wording.ts');
   });
   const source = {
+    ...(study
+      ? {
+          study: {
+            name: study,
+            toolHash: hash(
+              await readFile(new URL('./modern-plate-controls-study.mjs', import.meta.url)),
+            ),
+          },
+        }
+      : {}),
     rendererHash: await sourceHash(path.join(root, 'games/magic/src')),
     inputsHash: hash(bytes),
     toolHash: hash(await readFile(new URL(import.meta.url))),

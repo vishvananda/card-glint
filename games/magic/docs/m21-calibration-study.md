@@ -562,3 +562,22 @@ title, mana and P/T placements regress; overall structure is therefore not the
 selection criterion. This is a promising frame source, not an adopted profile
 or a complete-set calibration. Retain measured lettering/mana/stats policy or
 refit those controls before a native replacement.
+
+### Retained-control alternate-plate replay
+
+A complete diagnostic replay retains the calibrated component title, cost-mana
+policy and P/T asset/text geometry while using the alternate M15 plate on the
+265 eligible plain faces. The 32 crown/planeswalker controls remain unchanged.
+All 297 Original faces and etching layers rendered without faults and were
+scored against the same frozen reference registration. The overall structure
+index rises from 73.087 to 75.699/100. Across the complete census, title rises
+from 86.605 to 87.731, type 85.318 to 89.820, set symbol 88.010 to 95.069,
+frame 75.595 to 82.197, and art 66.370 to 76.815/100. P/T remains similar
+(86.626 to 86.729). Mana still regresses from 90.470 to 83.797/100; this is
+not an approved production replacement or set completion. The next fit must
+resolve that remaining regression and combine the separately measured footer
+and basic-land work.
+
+Use `modern-calibration-native.mjs INPUTS OUTPUT --retain-modern-controls`
+for this isolated experiment. Its plugin assertions fail on source drift, and
+the capture records the study hash. Normal capture behavior is unchanged.
