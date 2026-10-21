@@ -667,6 +667,20 @@
           "cornerMax": 0.603261160445381
         }
       ]
+    },
+    {
+      "name": "v19-local-gradient-whitening",
+      "status": "rejected-before-census",
+      "analytic": {
+        "total": 42,
+        "passed": 26,
+        "maxCornerError": 0.9129161434515607
+      },
+      "evidence": {
+        "file": "games/magic/fixtures/accuracy/m21-normalization-local-contrast-v19.json.gz",
+        "sha256": "6e2b5dddcdedd9e93e2eb0c94a8247fdac3c222129e6e19f790a80fbc3750014"
+      },
+      "finding": "Normalizing a gradient by neighboring derivative amplitudes distorts pure geometric recovery. Reject without relaxing limits or evaluating/tuning the census controls."
     }
   ],
   "gateDefinitions": {

@@ -4,7 +4,7 @@ import { readFile, mkdir } from 'node:fs/promises';
 import { PNG } from 'pngjs';
 import { hash, writeJson } from './common.mjs';
 import { patchSupport } from './frame-patch-profiles.mjs';
-import { nativeFramePatches } from './native-frame-patches.mjs';
+import { modernValueFramePatches } from './modern-frame-value.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { inverseScanMatrix, projectScanPoint } from './scan-transform.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
@@ -34,7 +34,7 @@ const definition = {
   sourceGraphs: {
     affine: await metricSourceGraph(new URL('./modern-affine-fit.mjs', import.meta.url).pathname),
     nativeFields: await metricSourceGraph(
-      new URL('./native-frame-patches.mjs', import.meta.url).pathname,
+      new URL('./modern-frame-value.mjs', import.meta.url).pathname,
     ),
     coarse: await metricSourceGraph(
       new URL('./printed-plate-registration.mjs', import.meta.url).pathname,
@@ -53,6 +53,7 @@ const definition = {
         'modern-affine-fit.mjs',
         'frame-patch-profiles.mjs',
         'native-frame-patches.mjs',
+        'modern-frame-value.mjs',
         'scan-transform.mjs',
         'scan-boundary-profiles.mjs',
         'printed-plate-registration.mjs',
@@ -117,7 +118,7 @@ for (const control of controls.data.controls) {
   const raw = PNG.sync.read(bytes, { checkCRC: true }),
     image = normalize(raw),
     profiles = source.partitions.map((p) => scanBoundaryProfiles(image, p, source.bounds));
-  const patches = source.partitions.map((p) => nativeFramePatches(raw, p, source.bounds));
+  const patches = source.partitions.map((p) => modernValueFramePatches(raw, p, source.bounds));
   const family = t.data.templates[control.geometry];
   const template = family.partitions[0].concat(family.partitions[1]),
     independentTemplate = family.partitions[2];

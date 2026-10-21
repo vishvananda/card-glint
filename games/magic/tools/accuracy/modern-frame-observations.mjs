@@ -7,7 +7,8 @@ import { PNG } from 'pngjs';
 import { root, hash, objectFile, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { packFramePatches } from './frame-patch-profiles.mjs';
-import { nativeFramePatches, nativeFrameRegions } from './native-frame-patches.mjs';
+import { nativeFrameRegions } from './native-frame-patches.mjs';
+import { modernValueFramePatches } from './modern-frame-value.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
 const [inputFile, outputDirectory] = process.argv.slice(2);
 assert(outputDirectory, 'Usage: modern-frame-observations.mjs INPUTS OUT');
@@ -50,6 +51,7 @@ const tools = Object.fromEntries(
       'scan-boundary-profiles.mjs',
       'frame-patch-profiles.mjs',
       'native-frame-patches.mjs',
+      'modern-frame-value.mjs',
       'pixels-pure.mjs',
     ].map(async (f) => [f, hash(await readFile(new URL(f, import.meta.url)))]),
   ),
@@ -104,7 +106,7 @@ try {
         observations[i],
         e.card.name + ': content isolation',
       );
-    const fields = samplePartitions.map((p) => nativeFramePatches(raw, p, sampleBounds));
+    const fields = samplePartitions.map((p) => modernValueFramePatches(raw, p, sampleBounds));
     const packed = packFramePatches(fields);
     const rawAllowed = new Uint8Array(raw.width * raw.height);
     for (const p of samplePartitions)
@@ -117,7 +119,7 @@ try {
     for (let i = 0; i < rawAllowed.length; i++)
       if (!rawAllowed[i]) changedRaw.data.set([i % 251, (i * 3) % 251, (i * 7) % 251, 255], i * 4);
     const changedFields = packFramePatches(
-      samplePartitions.map((p) => nativeFramePatches(changedRaw, p, sampleBounds)),
+      samplePartitions.map((p) => modernValueFramePatches(changedRaw, p, sampleBounds)),
     );
     assert.deepEqual(changedFields, packed, e.card.name + ': native2D content isolation');
     const patchFile = 'patches/' + e.id + '.bin';
