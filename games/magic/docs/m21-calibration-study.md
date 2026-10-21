@@ -82,8 +82,21 @@ handling, not physical accuracy.
 - Fit frame/paper color and blackpoint on nonfoil references with correct masks.
 - Fit mana discs, glyphs, numerals, spacing and shadows; fit all set-symbol
   rarities with independent width/height and outline checks.
-- Fit headings, body/flavor layout, stats, credits, collector/legal lines and
-  stamps. Retain outliers and compare whole-card and component indices.
+- Fit headings, body/flavor layout, stats and stamps. Retain outliers and
+  compare whole-card and component indices.
+- Calibrate artist credits separately: verify exact printed names, font/small
+  caps, size, baseline, horizontal placement, tracking, ink and shadow. Include
+  the ordinary frame, basic lands and planeswalker layouts; a body-text fit
+  does not certify credits.
+- Calibrate copyright/legal and collector lines separately: verify printed
+  wording, year, trademark marks, number, rarity and set code before measuring
+  font, size, spacing, color, position and clipping. Retain missing or incorrect
+  strings as source/content errors rather than fitting around them.
+- Calibrate the large basic-land mana symbols independently from mana costs:
+  measure each W/U/B/R/G glyph's visible bounds and center, scale, position,
+  color, bevel and shadow against every matching land printing. Asset padding
+  is not a visible-symbol measurement. Preserve intentional art variants and
+  report every printing, including outliers.
 - Integrate a single editable M21 profile and transfer defaults only to matching
   source components. Preserve explicit source-color and printing choices.
 - Verify compatibility of historical set scores and native rasters, complete
