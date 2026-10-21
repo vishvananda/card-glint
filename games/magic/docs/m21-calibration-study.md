@@ -24,6 +24,25 @@ color fitting. Four Teferi printings use the taller four-ability geometry.
 M21 contains no legendary land or multicolor planeswalker, so transfer to those
 families requires separate controls with matching pinned asset sources.
 
+## Modern-frame default policy
+
+Once M21 passes the full calibration checklist, use its profile as the baseline
+for modern-frame sets without an independently calibrated profile. An exact
+set/component calibration takes precedence; a partially calibrated set inherits
+M21 only for its missing components. Explicit source-color or profile choices
+remain authoritative. Resolve defaults through the same path for layout, asset
+loading, native painting and cache identity; do not copy M21 values into every
+set file.
+
+Transfer each component to compatible frame geometry and pinned assets. M21
+covers the ordinary, legendary, basic-land and two planeswalker geometries in
+its census. Check representative split, adventure, double-faced, legendary-land
+and multicolor planeswalker controls before applying applicable defaults there;
+unrelated specialty geometry must retain its own layout. A fallback is not an
+independent calibration: Lab should show its inherited source and keep the set's
+checklist incomplete until checked. This policy is queued for integration after
+M21 is complete, not activated by these experimental measurements.
+
 ## Reproduce the measurements
 
 Keep downloaded scans, art, fonts and native renders in the external cache.
@@ -248,3 +267,79 @@ tracking for copyright. Collector and artist sizes/offsets are interior to the
 refined search ranges. The refined replay plan is experimental, not a shipped
 profile. Glyph-body masks, fixed scan poses and samples cannot certify remaining
 bezel, shadow, ink-color, original-content or frame-geometry questions.
+
+## Planeswalker registration follow-up
+
+The [projection research](../fixtures/accuracy/m21-planeswalker-registration-research.json.gz)
+retains the rejected wider-reserve trials and the linear RGB projection trials.
+The selected research candidate estimates a largest-variance color axis within
+each existing native frame strip and filters at 0.4 canonical px. All 98 existing
+planeswalker pose/color controls pass: 28 initial controls, 42 confirmation
+controls and 28 combined color/pose controls. Maximum corner RMS is 0.336 px and
+maximum corner error is 0.476 px, within the unchanged 0.35/0.6 px limits. These
+are reused development cases, not untouched holdouts. All 504 fields across the
+14 planeswalkers remain byte-identical when pixels outside their reviewed native
+frame fields are changed.
+
+This is not production normalization approval. Port the shared projection and
+per-family filter policy, keep ordinary HSV/0.8 behavior unchanged, version the
+encoded fields correctly, and replay observations, templates and controls. The
+private research overlay still has a legacy filter label; the frozen source
+hashes and actual declared parameters identify its method. No old-label cache
+may be used for the new projection.
+
+[Scoring-window reviews](../fixtures/accuracy/m21/planeswalker-region-review.json)
+cover all 14 ordinary M21 planeswalkers. The experimental
+`modern-planeswalker-regions.mjs` separates the static Teferi row from indented
+loyalty text, retains ability badges and starting loyalty, and mattes the corners
+to reveal silhouette differences. It refuses other sets, altered sources and
+unreviewed ability arrangements. These windows do not certify rendering accuracy
+or change the live Lab metric. The frozen complete-census diagnostic below uses these maps; credits remain
+diagnostic. Holographic-stamp contours and remaining layout/color fits are still
+pending, so mapped coverage does not certify the whole renderer.
+
+## Printed footer content and collector columns
+
+The [partial footer content review](../fixtures/accuracy/m21/footer-content-review.json)
+covers 33 unique printings: all 20 PW-deck cards, all 15 canonical-name/diacritic
+candidates, and two ordinary controls, accounting for overlap. Twelve credits
+need [exact-printing artist corrections](../fixtures/accuracy/m21/artist-credit-proposal.json).
+Do not remove accents generically: the printed Milivoj Ćeran and Bartłomiej Gaweł
+forms match provider metadata. These are inactive proposals, not a changed runtime
+catalog. Verify the remaining artists/legal strings before certifying credits.
+
+The review also finds a separate rarity column on bonus cards and a star in the
+set/language line of the five foil-only planeswalkers. The current painter
+concatenates a bonus serial and rarity, moving rarity far left. The
+[column diagnostic](../fixtures/accuracy/m21-collector-column-diagnostic.json.gz)
+retains all 297 source/native rows. Median visible rarity left is 93 px on the
+23 bonus scans versus 58 px in the prototype. These are visible glyph bounds,
+not final font origins. Use a shared column fit, not per-card offsets.
+
+```sh
+python3 games/magic/tools/accuracy/modern-collector-column-measure.py \
+  "$INPUTS" "$PROTOTYPE_OUT" "$PROTOTYPE_SCORES" "$COLUMN_OUT"
+```
+
+This heuristic uses per-image ink/stock contrast rather than a fixed bright-pixel
+threshold. The latter misses Predatory Wurm's faint but visibly present U; it
+does not need a missing-rarity override. Exact native font/layout fitting must
+follow. Apply the reviewed artist strings and collector-layout corrections
+before the final artist/collector refit.
+
+## Complete-census paired diagnostic
+
+The [297-card replay](../fixtures/accuracy/m21-complete-census-native-diagnostic.json.gz)
+uses the experimental PCA poses for 14 planeswalkers and preserves all 283
+ordinary pose rows, metric objects and normalized reference hashes exactly.
+A shared lower-left frame field was moved from empty black stock to the actual
+curved boundary after reviewing all 14 scans. Every planeswalker frame component
+then passes the existing signal gate; no gate or metric weight was relaxed.
+
+With these fixed poses and maps, the native footer/land prototype changes the
+297-card structural mean from 73.09 to 74.27/100: 15 improvements, 282 unchanged,
+zero regressions. All 297 etchings and face alpha channels are unchanged. The
+292 nonfoil references have a separate summary in the evidence. Credits improve
+from 64.38 to 85.57/100 diagnostically and remain excluded from the total. These
+means include new planeswalker maps and cannot be compared directly to the old
+283-card mean. This is complete census coverage, not completed M21 calibration.
