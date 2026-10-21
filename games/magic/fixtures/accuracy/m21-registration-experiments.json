@@ -998,6 +998,333 @@
         "file": "games/magic/fixtures/accuracy/m21-normalization-value-v20.json.gz",
         "sha256": "50f6baf5421162e3342f1ef8cfafbbad43da77cf47fc3638b8536f610cdbbe41"
       }
+    },
+    {
+      "name": "v21-consistent-HSV-value",
+      "status": "rejected-remaining-planeswalker-recovery-failures",
+      "supportedScans": 297,
+      "originalControlSummary": {
+        "total": 231,
+        "completed": 231,
+        "passed": 231,
+        "baselineRejected": 0,
+        "controlledRejected": 0,
+        "recoveryFailed": 0,
+        "maxCornerError": 0.4460975212494685,
+        "families": {
+          "normal-crown/Artifact": {
+            "count": 7,
+            "passed": 7,
+            "maxCornerError": 0.053665115035263826
+          },
+          "normal-crown/B": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.14781536348635405
+          },
+          "normal-crown/G": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.17155311144203456
+          },
+          "normal-crown/Gold": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.059368617251227294
+          },
+          "normal-crown/R": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.06292613194415386
+          },
+          "normal-crown/U": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.05259604609497127
+          },
+          "normal-crown/W": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.059950254557638596
+          },
+          "normal-plain/Artifact": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.04938154938763503
+          },
+          "normal-plain/B": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.08588929806825535
+          },
+          "normal-plain/G": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.08246582424837667
+          },
+          "normal-plain/Gold": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.10627257284837102
+          },
+          "normal-plain/Land": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.06732868758439974
+          },
+          "normal-plain/R": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.057245705617838274
+          },
+          "normal-plain/U": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.07318029633072747
+          },
+          "normal-plain/W": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.06478655613743549
+          },
+          "planeswalker": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.4460975212494685
+          },
+          "planeswalker-large": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.4434956553366357
+          }
+        }
+      },
+      "reusedFullCensusSummary": {
+        "total": 891,
+        "completed": 891,
+        "passed": 888,
+        "baselineRejected": 0,
+        "controlledRejected": 0,
+        "recoveryFailed": 3,
+        "maxCornerError": 5.236243296497524,
+        "families": {
+          "normal-crown/Artifact": {
+            "count": 3,
+            "passed": 3,
+            "maxCornerError": 0.04100374515805112
+          },
+          "normal-crown/B": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.048906510578798315
+          },
+          "normal-crown/G": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.047876316015436404
+          },
+          "normal-crown/Gold": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.06627921833351885
+          },
+          "normal-crown/R": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.04168424617833369
+          },
+          "normal-crown/U": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.05684196800260022
+          },
+          "normal-crown/W": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.04422215082653999
+          },
+          "normal-plain/Artifact": {
+            "count": 48,
+            "passed": 48,
+            "maxCornerError": 0.07060353009968352
+          },
+          "normal-plain/B": {
+            "count": 120,
+            "passed": 120,
+            "maxCornerError": 0.37465488124031454
+          },
+          "normal-plain/G": {
+            "count": 123,
+            "passed": 123,
+            "maxCornerError": 0.5473544229346258
+          },
+          "normal-plain/Gold": {
+            "count": 30,
+            "passed": 30,
+            "maxCornerError": 0.20004241990579832
+          },
+          "normal-plain/Land": {
+            "count": 99,
+            "passed": 99,
+            "maxCornerError": 0.31338484858841054
+          },
+          "normal-plain/R": {
+            "count": 126,
+            "passed": 126,
+            "maxCornerError": 0.07371574397511502
+          },
+          "normal-plain/U": {
+            "count": 123,
+            "passed": 123,
+            "maxCornerError": 0.06798580805676847
+          },
+          "normal-plain/W": {
+            "count": 126,
+            "passed": 126,
+            "maxCornerError": 0.05060628541624901
+          },
+          "planeswalker": {
+            "count": 30,
+            "passed": 27,
+            "maxCornerError": 5.236243296497524
+          },
+          "planeswalker-large": {
+            "count": 12,
+            "passed": 12,
+            "maxCornerError": 0.3230736946872198
+          }
+        }
+      },
+      "additionalCombinedSummary": {
+        "total": 594,
+        "completed": 594,
+        "passed": 594,
+        "baselineRejected": 0,
+        "controlledRejected": 0,
+        "recoveryFailed": 0,
+        "maxCornerError": 0.31598032552676436,
+        "families": {
+          "normal-crown/Artifact": {
+            "count": 2,
+            "passed": 2,
+            "maxCornerError": 0.04143103337325701
+          },
+          "normal-crown/B": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.07174759067324783
+          },
+          "normal-crown/G": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.0642300369291517
+          },
+          "normal-crown/Gold": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.07570846147883553
+          },
+          "normal-crown/R": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.04423474852264392
+          },
+          "normal-crown/U": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.05050061417751853
+          },
+          "normal-crown/W": {
+            "count": 4,
+            "passed": 4,
+            "maxCornerError": 0.04737106712334561
+          },
+          "normal-plain/Artifact": {
+            "count": 32,
+            "passed": 32,
+            "maxCornerError": 0.10386123072353944
+          },
+          "normal-plain/B": {
+            "count": 80,
+            "passed": 80,
+            "maxCornerError": 0.1374161405718451
+          },
+          "normal-plain/G": {
+            "count": 82,
+            "passed": 82,
+            "maxCornerError": 0.14112183940268536
+          },
+          "normal-plain/Gold": {
+            "count": 20,
+            "passed": 20,
+            "maxCornerError": 0.12565233801029074
+          },
+          "normal-plain/Land": {
+            "count": 66,
+            "passed": 66,
+            "maxCornerError": 0.17226466800043824
+          },
+          "normal-plain/R": {
+            "count": 84,
+            "passed": 84,
+            "maxCornerError": 0.09366785921042901
+          },
+          "normal-plain/U": {
+            "count": 82,
+            "passed": 82,
+            "maxCornerError": 0.12731151545483943
+          },
+          "normal-plain/W": {
+            "count": 84,
+            "passed": 84,
+            "maxCornerError": 0.07230202170441982
+          },
+          "planeswalker": {
+            "count": 20,
+            "passed": 20,
+            "maxCornerError": 0.31598032552676436
+          },
+          "planeswalker-large": {
+            "count": 8,
+            "passed": 8,
+            "maxCornerError": 0.10854635161175573
+          }
+        }
+      },
+      "failures": [
+        {
+          "id": "921e3dc3-f8eb-4498-a6a8-b424952230cd",
+          "name": "Liliana, Death Mage",
+          "label": "confirm-axis-and-skew",
+          "geometry": "planeswalker",
+          "cornerRms": 0.3921131589393599,
+          "cornerMax": 0.578797973563954,
+          "accepted": true
+        },
+        {
+          "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
+          "name": "Garruk, Unleashed",
+          "label": "confirm-negative-rotation",
+          "geometry": "planeswalker",
+          "cornerRms": 3.635318806733038,
+          "cornerMax": 5.154736401758723,
+          "accepted": true
+        },
+        {
+          "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
+          "name": "Garruk, Unleashed",
+          "label": "confirm-axis-and-skew",
+          "geometry": "planeswalker",
+          "cornerRms": 3.637641396937026,
+          "cornerMax": 5.236243296497524,
+          "accepted": true
+        }
+      ],
+      "finding": "Consistent coarse/fine value projection fixes the nonfoil Liliana Waker combined case and all ordinary-frame cases pass. Garruk Unleashed baseline/control fits choose different vertical edge minima; Liliana Death Mage foil retains a smaller RMS bias. Original231 and combined594 suites pass completely, but full-set normalization remains unapproved. Reused suites cannot be called untouched validation. Native-content probe initially changed stock by blanking the physical type; retaining it and asserting equal material/stock policies proves297/297 frame windows unchanged by the remaining text/art replacement.",
+      "evidence": {
+        "file": "games/magic/fixtures/accuracy/m21-normalization-value-v21.json.gz",
+        "sha256": "225de7404ff5bba3444ad60b985d38b4a72f5f63164e391651480da76b1f21ed"
+      }
     }
   ],
   "gateDefinitions": {
@@ -1139,5 +1466,5 @@
       "contentSha256": "ba7485d8a9cccba47a015713750ab61ba6f5d6c06916066f36eee570e23db339"
     }
   },
-  "next": "Use HSV value consistently in coarse and fine geometry features; retain the V20 failures and all frozen control cases. No poses or renderer defaults have been promoted."
+  "next": "All ordinary-frame recovery cases pass. Investigate ambiguous planeswalker vertical edge minima using fixed physical landmarks and unchanged recovery gates; retain all297 sources and all failures. Ordinary component measurements may proceed diagnostically. No complete-set normalization or renderer-default adoption."
 }

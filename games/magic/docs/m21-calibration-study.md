@@ -5,12 +5,17 @@ these measurements. Numeric evidence is in
 [`m21-registration-experiments.json`](../fixtures/accuracy/m21-registration-experiments.json)
 and [`m21-baseline-diagnostic.json`](../fixtures/accuracy/m21-baseline-diagnostic.json).
 
-The current method has support on all297 scans but passes230/231 initial
-recovery cases. The broader confirmation includes actual HSV changes and has
-exposed high-confidence color-driven drift on Radha. These poses remain
-unapproved; a geometric edge/phase comparison needs investigation before fitting
-final defaults. The [type-line proposal](../fixtures/accuracy/m21/README.md) is
-versioned separately from its pending runtime adoption.
+The current scan-only HSV-value method has support on all 297 scans. It passes
+all 231 initial recovery controls and all 594 combined color/geometry controls,
+but only 888/891 broader replay cases. All three remaining failures are
+planeswalkers: two Garruk, Unleashed transforms choose different vertical edge
+minima, and foil Liliana, Death Mage exceeds the RMS limit. All ordinary-frame
+cases pass. The suites have been reused during development; this is property
+validation, not an untouched holdout. Full-set poses remain unapproved.
+Numeric views and exact tool sources are preserved in
+[`m21-normalization-value-v21.json.gz`](../fixtures/accuracy/m21-normalization-value-v21.json.gz).
+The [type-line proposal](../fixtures/accuracy/m21/README.md) remains separate
+from its pending runtime adoption.
 
 The source census contains 297 ordinary printings, 50 semantic material/frame
 variants and 17 registration families. Five planeswalker-deck printings have
@@ -31,7 +36,10 @@ repository root.
 1. Run `modern-calibration-native.mjs INPUTS NATIVE` to capture every Original
    face and etching with one browser session. It records renderer, input and
    component identities and retains failures. This does not validate layout.
-2. Run `modern-frame-observations.mjs INPUTS OBSERVATIONS`. It extracts reviewed
+2. Run `modern-frame-observations.mjs INPUTS OBSERVATIONS`. Project raw pixels
+   to HSV value before both coarse resampling and native Gaussian filtering, so
+   hue/saturation cannot shift frame edges and both searches use one signal.
+   It extracts reviewed
    frame strips directly from native-resolution scans. Gaussian filtering is
    restricted to each strip before any resampling; replacing all pixels outside
    those native strips must leave every packed field byte-identical.
@@ -56,7 +64,13 @@ OBSERVATIONS/observations.json POSES CONTROLS CONTROLS/results.json`.
    cover all297 sources with two additional warps and an HSV variation.
    Run fresh controls and inspect normalized
    rasters before approving a method fitted using these controls.
-6. For an explicitly provisional baseline, run `modern-calibration-score.mjs
+6. Run `modern-frame-native-probe.mjs INPUTS NATIVE
+OBSERVATIONS/observations.json PROBE`. It preserves frame semantics, rectangles,
+   stock and material corrections, replaces art and hides title/body/artist
+   strings, then requires identical pixels in every native frame field. Keep
+   physical type lines: blanking them currently changes calibration eligibility
+   even with a preserved canonical type. All 297 current fields pass.
+7. For an explicitly provisional baseline, run `modern-calibration-score.mjs
 INPUTS NATIVE POSES METRIC_MODULE OUTPUT --diagnostic`. The supplied module
    exports `scoreRegions(scan, render, card, face)`. Its relative import graph
    and the preprocessing graph are hashed. The tool validates input, raster,
