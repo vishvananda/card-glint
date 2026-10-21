@@ -1,0 +1,442 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "diagnostic-only-not-approved",
+  "eligibleForPublication": false,
+  "rendererBasis": "0.6.8 plus uncommitted printing-only type review. Actual renderer and inputs hashes, not the release label, bind these rasters.",
+  "scope": "Complete native Original census, with each reference transformed using its frozen comparison-only scan matrix. Every reference and native face is hash-checked. Unaccepted poses, unsupported scoring maps and foil-only references stay visible in the denominator. Scores are regional structure indices out of100, with explicit coverage, not percentages of visual fidelity. This diagnostic does not approve pending normalization, unverified wording, or set completion.",
+  "nativeRendererHash": "66de61272aa17f5aa8fa54e03739a10173903fd7fb6dbe1d74b29ce0b8675f8a",
+  "evidenceHash": "7cb9dbeda35118ad61bcde2efdf9fd0acf17219dc90a48a7c80c299ad4eb6528",
+  "source": {
+    "schema": 1,
+    "set": "m21",
+    "inputsHash": "6f2ed81619170e59caac38cc924075767c4620b21b3d0688dfec1363adeeb23a",
+    "nativeCaptureHash": "94ab0191fd12b1d2390721f98eea27ae4696bb79b512f12c694cba9a25e24040",
+    "normalizationHash": "bf05a99d097b9b4c190cd9c33fa043b0206e65c2ebcefc356a6015d8bc95c31d",
+    "metricGraph": {
+      "hash": "9f1d07048c76c3b188af2a09672e3c728da3be3e01c820ac61fc788aacfd4cde",
+      "node": "v22.22.1",
+      "sources": [
+        [
+          "accuracy-metrics.mjs",
+          "9aa8a104719e9a8512fe064d0b87e78c354561313a3df41b53f3c4a66e0186d1"
+        ],
+        ["accuracy-policy.mjs", "2d98ee2d0c8a1c95b258ed0488bcb9510ef856f8161787cb496ec4ca445c42a6"],
+        [
+          "accuracy-regions-planar.mjs",
+          "37545cfd59150132429ac9cd3becb0c24df4874e5e62f3b05060d0ffc8f7611b"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/edges.mjs",
+          "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/metrics.mjs",
+          "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/pixels-pure.mjs",
+          "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/scan-transform.mjs",
+          "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+        ]
+      ]
+    },
+    "preprocessingGraph": {
+      "hash": "81ac8a6dd25657810e1631f1e5b241d137a5b22f0512c53d5f3be6045202cbf7",
+      "node": "v22.22.1",
+      "sources": [
+        ["pixels-pure.mjs", "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"],
+        ["scan-transform.mjs", "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"]
+      ]
+    },
+    "toolHash": "fb91ec3ca1fae18bc5053d1cab8c665b342209cfc3f8fc05e80f1cc906981cfd",
+    "scope": "Complete native Original census, with each reference transformed using its frozen comparison-only scan matrix. Every reference and native face is hash-checked. Unaccepted poses, unsupported scoring maps and foil-only references stay visible in the denominator. Scores are regional structure indices out of100, with explicit coverage, not percentages of visual fidelity. This diagnostic does not approve pending normalization, unverified wording, or set completion."
+  },
+  "summary": {
+    "total": 297,
+    "measured": 283,
+    "acceptedPoses": 296,
+    "nonfoil": 292,
+    "meanStructure100": 73.53299020337775,
+    "meanRegionalCoverage": 0.9308491539187517,
+    "missingRegionMaps": [
+      "9c017fa9-7021-417a-9c2e-3df409644fcf",
+      "98c85699-2daf-4e87-a3be-465d02bd64bb",
+      "9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d",
+      "e329a3e2-6702-4758-8aac-c3017e77b619",
+      "a4c3ca8c-c77c-43b8-84ad-796313ecc813",
+      "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
+      "2d1ff397-2445-459a-ae4e-7bf1cd48f490",
+      "a8bf5708-4222-46d2-b108-0ed4cf3c83c3",
+      "d4949a0b-e320-470a-ba54-07ac75b0053b",
+      "2688b45d-9d74-4d9f-9a63-29c82b48d64f",
+      "62d05287-ad7f-4de8-9f68-8f36c62fae72",
+      "921e3dc3-f8eb-4498-a6a8-b424952230cd",
+      "1e49ce44-5286-4310-88c2-f8a1402b113b",
+      "48133629-4a5b-4c91-b496-2ee94f6cbc4c"
+    ]
+  },
+  "families": {
+    "normal-crown/Artifact": {
+      "total": 1,
+      "measured": 1,
+      "acceptedPoses": 1,
+      "nonfoil": 1,
+      "meanStructure100": 74.37961090902412,
+      "meanRegionalCoverage": 0.9565217391304348,
+      "missingRegionMaps": []
+    },
+    "normal-crown/B": {
+      "total": 3,
+      "measured": 3,
+      "acceptedPoses": 3,
+      "nonfoil": 3,
+      "meanStructure100": 77.27942786702239,
+      "meanRegionalCoverage": 0.9588405797101448,
+      "missingRegionMaps": []
+    },
+    "normal-crown/G": {
+      "total": 3,
+      "measured": 3,
+      "acceptedPoses": 3,
+      "nonfoil": 3,
+      "meanStructure100": 75.07363130768725,
+      "meanRegionalCoverage": 0.9588405797101448,
+      "missingRegionMaps": []
+    },
+    "normal-crown/Gold": {
+      "total": 3,
+      "measured": 3,
+      "acceptedPoses": 3,
+      "nonfoil": 3,
+      "meanStructure100": 69.1675191748178,
+      "meanRegionalCoverage": 0.9588405797101448,
+      "missingRegionMaps": []
+    },
+    "normal-crown/R": {
+      "total": 3,
+      "measured": 3,
+      "acceptedPoses": 3,
+      "nonfoil": 3,
+      "meanStructure100": 77.82470517048162,
+      "meanRegionalCoverage": 0.9588405797101448,
+      "missingRegionMaps": []
+    },
+    "normal-crown/U": {
+      "total": 3,
+      "measured": 3,
+      "acceptedPoses": 3,
+      "nonfoil": 3,
+      "meanStructure100": 71.09703312702514,
+      "meanRegionalCoverage": 0.9576811594202899,
+      "missingRegionMaps": []
+    },
+    "normal-crown/W": {
+      "total": 2,
+      "measured": 2,
+      "acceptedPoses": 2,
+      "nonfoil": 2,
+      "meanStructure100": 74.45960350830788,
+      "meanRegionalCoverage": 0.8495652173913043,
+      "missingRegionMaps": []
+    },
+    "normal-plain/Artifact": {
+      "total": 16,
+      "measured": 16,
+      "acceptedPoses": 16,
+      "nonfoil": 16,
+      "meanStructure100": 70.81122847078876,
+      "meanRegionalCoverage": 0.841413043478261,
+      "missingRegionMaps": []
+    },
+    "normal-plain/B": {
+      "total": 40,
+      "measured": 40,
+      "acceptedPoses": 39,
+      "nonfoil": 40,
+      "meanStructure100": 71.36299564209753,
+      "meanRegionalCoverage": 0.958521739130435,
+      "missingRegionMaps": []
+    },
+    "normal-plain/G": {
+      "total": 41,
+      "measured": 41,
+      "acceptedPoses": 41,
+      "nonfoil": 41,
+      "meanStructure100": 75.41310099866325,
+      "meanRegionalCoverage": 0.9588123011664903,
+      "missingRegionMaps": []
+    },
+    "normal-plain/Gold": {
+      "total": 10,
+      "measured": 10,
+      "acceptedPoses": 10,
+      "nonfoil": 10,
+      "meanStructure100": 71.72515672371793,
+      "meanRegionalCoverage": 0.9596521739130435,
+      "missingRegionMaps": []
+    },
+    "normal-plain/Land": {
+      "total": 33,
+      "measured": 33,
+      "acceptedPoses": 33,
+      "nonfoil": 33,
+      "meanStructure100": 66.84024357356441,
+      "meanRegionalCoverage": 0.9523809523809524,
+      "missingRegionMaps": []
+    },
+    "normal-plain/R": {
+      "total": 42,
+      "measured": 42,
+      "acceptedPoses": 42,
+      "nonfoil": 42,
+      "meanStructure100": 77.306288112579,
+      "meanRegionalCoverage": 0.9584265010351971,
+      "missingRegionMaps": []
+    },
+    "normal-plain/U": {
+      "total": 41,
+      "measured": 41,
+      "acceptedPoses": 41,
+      "nonfoil": 41,
+      "meanStructure100": 75.15827879408751,
+      "meanRegionalCoverage": 0.9583881230116651,
+      "missingRegionMaps": []
+    },
+    "normal-plain/W": {
+      "total": 42,
+      "measured": 42,
+      "acceptedPoses": 42,
+      "nonfoil": 42,
+      "meanStructure100": 74.86763573992233,
+      "meanRegionalCoverage": 0.8263768115942033,
+      "missingRegionMaps": []
+    },
+    "planeswalker": {
+      "total": 10,
+      "measured": 0,
+      "acceptedPoses": 10,
+      "nonfoil": 5,
+      "meanStructure100": null,
+      "meanRegionalCoverage": null,
+      "missingRegionMaps": [
+        "9c017fa9-7021-417a-9c2e-3df409644fcf",
+        "98c85699-2daf-4e87-a3be-465d02bd64bb",
+        "e329a3e2-6702-4758-8aac-c3017e77b619",
+        "a4c3ca8c-c77c-43b8-84ad-796313ecc813",
+        "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
+        "2688b45d-9d74-4d9f-9a63-29c82b48d64f",
+        "62d05287-ad7f-4de8-9f68-8f36c62fae72",
+        "921e3dc3-f8eb-4498-a6a8-b424952230cd",
+        "1e49ce44-5286-4310-88c2-f8a1402b113b",
+        "48133629-4a5b-4c91-b496-2ee94f6cbc4c"
+      ]
+    },
+    "planeswalker-large": {
+      "total": 4,
+      "measured": 0,
+      "acceptedPoses": 4,
+      "nonfoil": 4,
+      "meanStructure100": null,
+      "meanRegionalCoverage": null,
+      "missingRegionMaps": [
+        "9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d",
+        "2d1ff397-2445-459a-ae4e-7bf1cd48f490",
+        "a8bf5708-4222-46d2-b108-0ed4cf3c83c3",
+        "d4949a0b-e320-470a-ba54-07ac75b0053b"
+      ]
+    }
+  },
+  "worstMeasured": [
+    {
+      "id": "d43a3eb7-3daf-4667-b824-1f5d801c9341",
+      "name": "Witch's Cauldron",
+      "number": "129",
+      "geometry": "normal-plain/Artifact",
+      "structure100": 49.17904109897452,
+      "coverage": 0.9565217391304348,
+      "weakest": ["rules", "frame", "art"]
+    },
+    {
+      "id": "30b3d647-3546-4ade-b395-f2370750a7a6",
+      "name": "Swamp",
+      "number": "266",
+      "geometry": "normal-plain/Land",
+      "structure100": 55.20919910516496,
+      "coverage": 0.9523809523809523,
+      "weakest": ["rules", "title", "art"]
+    },
+    {
+      "id": "89e2bc57-8f18-4ba1-a11b-9d69d029f56a",
+      "name": "Malefic Scythe",
+      "number": "112",
+      "geometry": "normal-plain/Artifact",
+      "structure100": 56.776331540275315,
+      "coverage": 0.9565217391304348,
+      "weakest": ["frame", "type", "rules"]
+    },
+    {
+      "id": "d4558304-7c17-4aa0-bd50-cdd95547f1a7",
+      "name": "Forest",
+      "number": "274",
+      "geometry": "normal-plain/Land",
+      "structure100": 56.81634338716235,
+      "coverage": 0.9523809523809523,
+      "weakest": ["rules", "art", "frame"]
+    },
+    {
+      "id": "28ff52a2-4223-4551-b388-b4dd21cc1437",
+      "name": "Blood Glutton",
+      "number": "90",
+      "geometry": "normal-plain/B",
+      "structure100": 57.53028960903451,
+      "coverage": 0.96,
+      "weakest": ["rules", "frame", "art"]
+    },
+    {
+      "id": "be68e315-ffef-40a8-8a46-1c042b148c03",
+      "name": "Swamp",
+      "number": "267",
+      "geometry": "normal-plain/Land",
+      "structure100": 57.76312931480836,
+      "coverage": 0.9523809523809523,
+      "weakest": ["rules", "art", "title"]
+    },
+    {
+      "id": "3279314f-d639-4489-b2ab-3621bb3ca64b",
+      "name": "Forest",
+      "number": "272",
+      "geometry": "normal-plain/Land",
+      "structure100": 58.43397460669133,
+      "coverage": 0.9523809523809523,
+      "weakest": ["rules", "art", "frame"]
+    },
+    {
+      "id": "56a95546-c45a-4da5-b1e8-d5658b5b7d53",
+      "name": "Fetid Imp",
+      "number": "98",
+      "geometry": "normal-plain/B",
+      "structure100": 58.48229451370622,
+      "coverage": 0.96,
+      "weakest": ["rules", "frame", "art"]
+    },
+    {
+      "id": "2b85a552-2119-4d9c-b7c1-c09c2d9f2f38",
+      "name": "Finishing Blow",
+      "number": "99",
+      "geometry": "normal-plain/B",
+      "structure100": 58.88009111138363,
+      "coverage": 0.9565217391304348,
+      "weakest": ["rules", "art", "frame"]
+    },
+    {
+      "id": "0863a079-1cc2-4388-85bb-a24eae251e99",
+      "name": "Swamp",
+      "number": "268",
+      "geometry": "normal-plain/Land",
+      "structure100": 59.30790246771648,
+      "coverage": 0.9523809523809523,
+      "weakest": ["rules", "title", "art"]
+    },
+    {
+      "id": "a4df3e89-610c-4f42-a93a-e694342307cc",
+      "name": "Forest",
+      "number": "273",
+      "geometry": "normal-plain/Land",
+      "structure100": 59.99782181344928,
+      "coverage": 0.9523809523809523,
+      "weakest": ["rules", "art", "title"]
+    },
+    {
+      "id": "ec3a2c95-4e7a-43c5-90bd-6f1de7c82a5c",
+      "name": "Meteorite",
+      "number": "233",
+      "geometry": "normal-plain/Artifact",
+      "structure100": 60.06365094360088,
+      "coverage": 0.7391304347826086,
+      "weakest": ["rules", "art", "mana"]
+    },
+    {
+      "id": "1e01bcb4-e823-4da5-b433-e75be3356367",
+      "name": "Chrome Replicator",
+      "number": "229",
+      "geometry": "normal-plain/Artifact",
+      "structure100": 60.331364866427705,
+      "coverage": 0.96,
+      "weakest": ["rules", "frame", "art"]
+    },
+    {
+      "id": "27305aad-f1bd-4895-8611-143bc0250bee",
+      "name": "Palladium Myr",
+      "number": "234",
+      "geometry": "normal-plain/Artifact",
+      "structure100": 60.83843668536677,
+      "coverage": 0.76,
+      "weakest": ["rules", "art", "type"]
+    },
+    {
+      "id": "70ff4fd5-c26f-4274-b899-1f995d4d8c25",
+      "name": "Mountain",
+      "number": "270",
+      "geometry": "normal-plain/Land",
+      "structure100": 60.84905027994727,
+      "coverage": 0.9523809523809523,
+      "weakest": ["rules", "art", "frame"]
+    },
+    {
+      "id": "ed6fd37e-a5b3-48c6-b881-cedadfd94833",
+      "name": "Mountain",
+      "number": "271",
+      "geometry": "normal-plain/Land",
+      "structure100": 60.97090978178159,
+      "coverage": 0.9523809523809523,
+      "weakest": ["rules", "art", "frame"]
+    },
+    {
+      "id": "8a299a1e-1ce9-4668-a5f5-c587081acf6b",
+      "name": "Plains",
+      "number": "262",
+      "geometry": "normal-plain/Land",
+      "structure100": 61.421209373014264,
+      "coverage": 0.9523809523809523,
+      "weakest": ["rules", "art", "frame"]
+    },
+    {
+      "id": "f8eb4087-3a4c-4de8-8e29-f4cd71acb180",
+      "name": "Eliminate",
+      "number": "97",
+      "geometry": "normal-plain/B",
+      "structure100": 61.54214304315876,
+      "coverage": 0.9565217391304348,
+      "weakest": ["rules", "art", "title"]
+    },
+    {
+      "id": "b231f941-4acb-46f2-81ae-16e5a28e65af",
+      "name": "Liliana's Scorn",
+      "number": "329",
+      "geometry": "normal-plain/B",
+      "structure100": 62.294820036232665,
+      "coverage": 0.9565217391304348,
+      "weakest": ["rules", "art", "title"]
+    },
+    {
+      "id": "7a3f8bc2-ef66-474f-92a3-9c4df1670cec",
+      "name": "Bad Deal",
+      "number": "89",
+      "geometry": "normal-plain/B",
+      "structure100": 62.320851655168276,
+      "coverage": 0.9565217391304348,
+      "weakest": ["rules", "art", "title"]
+    }
+  ],
+  "requiredBeforePublication": [
+    "Pass known scan-pose recovery and certify actual normalized rasters.",
+    "Add and validate dedicated planeswalker maps; all fourteen remain explicitly unmapped here.",
+    "Audit original printed inputs, credit/footer and all region semantics.",
+    "Fit and verify geometry, colors/blackpoint, mana/symbols, headings/body/stats/credits/stamps across applicable materials.",
+    "Validate matched-source modern-default transfer, then complete renderer/package/release checks."
+  ]
+}

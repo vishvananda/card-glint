@@ -12,6 +12,24 @@ remain outside the current study. Use pinned frame sources and compare replaceme
 before adopting them. The local all-card reports contain asset URLs,
 example UUIDs, alignment flags and scores for each affected group.
 
+## Current work after Unlimited 0.6.8
+
+The [M21 study](docs/m21-calibration-study.md) covers 297 ordinary printings.
+Its measurements are experimental: scan-pose recovery, dedicated planeswalker
+scoring maps and all component/default-transfer checks must be completed.
+The [diagnostic baseline](fixtures/accuracy/m21-baseline-diagnostic.json) retains
+all 297 cards; 14 have no scoring region map in that metric. Earlier batch notes
+below remain historical and do not describe the current renderer release.
+
+Unlimited's installed 0.6.8 duals have a remaining top-left review lead: the
+outer edge is close to the normalized scan, while the inner dark band is too
+thick, particularly along the left side. All ten printings were inspected in
+identical enlarged crops with scan poses fixed. Compare untinted source plates
+and the composed bevel/masks to locate the cause; this does not yet establish a
+faulty bitmap. Keep the existing crop improvement and do not shift scan poses
+to conceal the band. Numeric image identities are retained in the
+[corner observation](fixtures/accuracy/early-through-fourth/2ed-corner-observation.json).
+
 ## Next grouped calibration batch
 
 Keep **Fallen Empires, Fourth Edition and Chronicles** together in one release:

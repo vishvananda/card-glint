@@ -377,6 +377,8 @@ agent instructions for helping calibrate a set.
 
 For set-wide work, follow [Calibrate a set](calibrating-a-set.md): input review,
 scan normalization, fitting, one-file profiles and PR evidence.
+The [M21 study](docs/m21-calibration-study.md) documents the current experimental
+normalization checks, diagnostic replay and work remaining for modern defaults.
 
 1. Identify the selection rule, geometry and painting owners above. Keep game
    semantics here; do not add Magic branches to the Rust or browser core.
