@@ -71,7 +71,7 @@
     "test:magic-lazy-browser": "node tests/magic-lazy-browser.mjs",
     "test:host": "node tests/magic-host-worker-compatibility.mjs && node tests/magic-worker-browser-parity.mjs && node tests/magic-unlimited-worker-parity.mjs && node tests/magic-unlimited-worker-parity.mjs --built && node tests/host-sampling.mjs && node tests/magic-worker-composition.mjs && node tests/magic-worker-composition.mjs --built && node tests/host-mask-data.mjs && node tests/host-print-period.mjs",
     "test:distinct-faces": "node tests/distinct-faces-performance.mjs",
-    "test:magic-modern-calibration": "node tests/magic-modern-calibration-score.mjs && node games/magic/tools/accuracy/modern-affine-analytic-check.mjs && node tests/magic-modern-frame-value.mjs"
+    "test:magic-modern-calibration": "node tests/magic-modern-calibration-score.mjs && node games/magic/tools/accuracy/modern-affine-analytic-check.mjs && node tests/magic-modern-frame-value.mjs && node --test games/magic/tools/accuracy/modern-calibration-pair-report.test.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

@@ -160,3 +160,66 @@ investigate physical frame-edge selection before full-set certification.
 
 Indices are reported out of 100; they are not percentages of visual fidelity.
 A passing regional fit does not prove an entire card, frame family or set.
+
+## Reproduce the footer and large-land-symbol studies
+
+Use the frozen Original inputs, baseline native capture, normalized-reference
+score directory and local source cache from the same study. The tools reject
+changed hashes instead of mixing renderer revisions or scan poses. Set
+`MAGIC_ACCURACY_CACHE` to the cache root; fonts and images remain external assets.
+
+```sh
+node games/magic/tools/accuracy/modern-footer-study.mjs \
+  "$INPUTS" "$NATIVE" "$SCORES" \
+  games/magic/fixtures/accuracy/m21/footer-collector-boundary-plan.json "$COLLECTOR_OUT"
+node games/magic/tools/accuracy/modern-footer-study.mjs \
+  "$INPUTS" "$NATIVE" "$SCORES" \
+  games/magic/fixtures/accuracy/m21/footer-artist-boundary-plan.json "$ARTIST_OUT"
+node games/magic/tools/accuracy/modern-footer-study.mjs \
+  "$INPUTS" "$NATIVE" "$SCORES" \
+  games/magic/fixtures/accuracy/m21/footer-legal-fine-plan.json "$LEGAL_OUT"
+python3 games/magic/tools/accuracy/modern-land-glyph-measure.py \
+  "$INPUTS" "$NATIVE" "$SCORES" "$MAGIC_ACCURACY_CACHE" "$GLYPH_OUT"
+python3 games/magic/tools/accuracy/modern-land-glyph-controls.py
+```
+
+Install the pinned Python requirements from
+`games/magic/tools/accuracy/modern-calibration-requirements.txt` first. Font
+variants paint natively at 732 px; the baseline is checked against the full-card
+capture before ranking proposals. Translation is comparison-only within a fixed
+component region. There are no per-card rendering offsets. Copyright uses its
+physical row rather than including artist names in the same fit. The artist
+search includes the selected collector font because its measured code width
+also sets the artist credit's origin.
+
+The land-symbol study estimates paper and ink independently for each image,
+then fits shared per-color bounds to the filled ink. Known translation/scale
+controls cover all five colors with different source/reference ink and paper
+colors, and reject missing contrast. The high body-mask overlap does not certify
+bezel, cast shadow or color accuracy. In particular, a black cast shadow cannot
+be separated from black ink by color alone, and the white symbol's gray bezel
+still differs from the warm reference.
+
+A complete experimental native replay uses:
+
+```sh
+node games/magic/tools/accuracy/modern-calibration-prototype.mjs \
+  "$INPUTS" "$NATIVE" \
+  games/magic/fixtures/accuracy/m21/modern-prototype-refined-plan.json "$PROTOTYPE_OUT"
+node games/magic/tools/accuracy/modern-calibration-pair-report.mjs \
+  "$SCORES/scores.json" "$PROTOTYPE_SCORES/scores.json" \
+  "$NATIVE/capture.json" "$PROTOTYPE_OUT/capture.json" "$PAIRED_OUT"
+```
+
+Score the replay with `modern-calibration-score.mjs` using exactly the baseline
+normalization and metric graph before producing the paired report. That report
+rejects changes to references, poses, metric code, coverage, component eligibility
+and the printing census. It separates diagnostic credits from eligible weighted
+components; an improvement in unverified credits must not inflate the total.
+Unsupported region maps remain in the denominator.
+
+The optional `modern-native-frame-diagnostic.mjs INPUTS NATIVE OBSERVATIONS
+TEMPLATES OUT` compares native outer-frame fields to the scan-only consensus.
+Identical fields share computation while retaining every printing. Its affine
+residual is a diagnostic, not a renderer transformation: outer fields cannot
+establish the shape or position of inner art, rules or type boundaries.
