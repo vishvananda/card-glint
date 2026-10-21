@@ -41,6 +41,18 @@ for (const original of set.groups) {
   missing.receipt.rows = missing.receipt.rows.filter((r) => r.id !== group.printingIds[0]);
   assert.throws(() => applyUnlimitedEvidence(structuredClone(original), missing));
 }
+const historicalRelease = structuredClone(set.groups[0]);
+historicalRelease.tasks.release = {
+  ...historicalRelease.tasks.release,
+  status: 'validated',
+  proof: { ...(historicalRelease.tasks.release.proof ?? {}), rendererHash: '0'.repeat(64) },
+};
+applyUnlimitedEvidence(historicalRelease, data);
+assert.equal(
+  historicalRelease.tasks.release.status,
+  'pending',
+  'A historical release cannot certify new renderer pixels',
+);
 const reports = await calibrationReport({ sets: [set] });
 assert.equal(
   reports[0].counts.validated,

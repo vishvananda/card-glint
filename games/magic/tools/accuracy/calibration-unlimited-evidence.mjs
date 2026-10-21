@@ -34,6 +34,16 @@ export function applyUnlimitedEvidence(
     variant.sourceHash === group.sourceHash &&
     JSON.stringify(variant.sourceHashes) === JSON.stringify(group.sourceHashes);
   group.guards = { ...receipt.guards, ...receipt.artifacts, [file]: receiptHash };
+  if (
+    group.tasks.release?.status === 'validated' &&
+    group.tasks.release.proof?.rendererHash !== receipt.rendererHash
+  )
+    group.tasks.release = {
+      ...group.tasks.release,
+      status: 'pending',
+      reason:
+        'The calibrated renderer changed after publication; verify a matching release before marking this set complete.',
+    };
   const rows = receipt.rows.filter((r) => group.printingIds.includes(r.id));
   assert.equal(rows.length, group.printings);
   group.sourceCensus = {
