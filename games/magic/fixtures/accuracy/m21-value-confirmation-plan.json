@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "selection": "complete-reference-census",
+  "expectedSources": 297,
+  "scope": "Additional predeclared combined geometry/HSV controls for the raw-value registration channel. Chosen after the method was fixed and before evaluating these cases. Every source is already used in the frame templates; this is not a held-out-printing claim. Existing F18 controls are reused development/property validation. Preserve the corner RMS0.35/max0.6 and raw support gates, including every failed source/case.",
+  "cases": [
+    {
+      "label": "value-combined-positive-skew",
+      "sx": 1.0017,
+      "sy": 0.9986,
+      "tx": -1.15,
+      "ty": -0.35,
+      "rotation": 0.07,
+      "shear": 0.11,
+      "photometry": {
+        "space": "HSV",
+        "saturationScale": 0.45,
+        "valueScale": 0.91,
+        "valueOffset": 0.025
+      }
+    },
+    {
+      "label": "value-combined-negative-rotation",
+      "sx": 0.9988,
+      "sy": 1.0022,
+      "tx": 1.1,
+      "ty": 0.4,
+      "rotation": -0.17,
+      "shear": -0.09,
+      "photometry": {
+        "space": "HSV",
+        "saturationScale": 0.85,
+        "valueScale": 0.73,
+        "valueOffset": 0.04
+      }
+    }
+  ]
+}
