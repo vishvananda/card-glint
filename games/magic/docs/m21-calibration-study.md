@@ -1,7 +1,9 @@
 # M21 calibration study
 
 Status: experimental. The current renderer defaults have not been replaced by
-these measurements. Numeric evidence is in
+these measurements. The shared comparison normalizer now passes all 1,716
+recovery controls on the complete 297-printing census; this does not complete
+renderer calibration. Numeric evidence is in
 [`m21-registration-experiments.json`](../fixtures/accuracy/m21-registration-experiments.json)
 and [`m21-baseline-diagnostic.json`](../fixtures/accuracy/m21-baseline-diagnostic.json).
 
@@ -11,7 +13,8 @@ but only 888/891 broader replay cases. All three remaining failures are
 planeswalkers: two Garruk, Unleashed transforms choose different vertical edge
 minima, and foil Liliana, Death Mage exceeds the RMS limit. All ordinary-frame
 cases pass. The suites have been reused during development; this is property
-validation, not an untouched holdout. Full-set poses remain unapproved.
+validation, not an untouched holdout. That all-HSV method remains unapproved;
+the shared per-geometry implementation below fixes its three failures.
 Numeric views and exact tool sources are preserved in
 [`m21-normalization-value-v21.json.gz`](../fixtures/accuracy/m21-normalization-value-v21.json.gz).
 The [type-line proposal](../fixtures/accuracy/m21/README.md) remains separate
@@ -284,12 +287,11 @@ are reused development cases, not untouched holdouts. All 504 fields across the
 14 planeswalkers remain byte-identical when pixels outside their reviewed native
 frame fields are changed.
 
-This is not production normalization approval. Port the shared projection and
-per-family filter policy, keep ordinary HSV/0.8 behavior unchanged, version the
-encoded fields correctly, and replay observations, templates and controls. The
-private research overlay still has a legacy filter label; the frozen source
-hashes and actual declared parameters identify its method. No old-label cache
-may be used for the new projection.
+This research alone was not normalization approval. The shared implementation
+and full replay below now port the projection/filter policy with correct metadata
+and preserve ordinary HSV/0.8 behavior. The historical research overlay has a
+legacy filter label; its frozen source hashes and declared parameters identify
+that experiment. No old-label cache may be used for the new projection.
 
 [Scoring-window reviews](../fixtures/accuracy/m21/planeswalker-region-review.json)
 cover all 14 ordinary M21 planeswalkers. The experimental
@@ -390,3 +392,60 @@ noncreatures, reserving legal space on creatures and planeswalkers. The
 [column fitting plan](../fixtures/accuracy/m21/footer-collector-column-plan.json)
 refits the shared font/column geometry after the content corrections. These
 study substitutions do not activate a runtime profile or printing corrections.
+
+## Frozen shared normalization and corrected-footer replay
+
+The [shared normalization evidence](../fixtures/accuracy/m21-shared-projection-normalization.json.gz)
+retains all 297 accepted poses, templates, observation identities and all 1,716
+recovery cases. All 231 initial, 594 combined color/pose and 891 confirmation
+cases pass. Maximum corner RMS is 0.338 px and maximum error is 0.547 px, inside
+the unchanged 0.35/0.6 px limits. All 1,618 ordinary raw result rows are exactly
+unchanged, and the 98 planeswalker fits exactly match the frozen research.
+These remain reused development controls, not an unseen corpus.
+
+The hash-bound certification record is separate from `normalization.json`:
+that producer file retains its original pending status because changing its
+bytes would invalidate the controls' provenance. The certification applies only
+to the frozen references and renderer. The earlier material-preserving native
+content probe remains valid because every source mask and pixel center is
+unchanged; all 297 baseline/probe frame fields were byte-identical. Repeat that
+native probe after changing renderer geometry or typography. No comparison pose
+is a renderer default, and this certificate does not mark M21 complete.
+
+The [corrected-footer native replay](../fixtures/accuracy/m21-printed-footer-native-replay.json.gz)
+retains both full-census font searches, all 594 native layers and the paired
+297-card report. The content corrections leave the previous shared selections
+unchanged: Gotham 12.5 px at [-0.5, 1.5], Beleren small caps 11.75 px at [0.5, 1],
+and zero extra tracking for both. Rarity has its own 92 px anchor before the
+collector offset. The searched font sizes, offsets, rarity anchor and artist tracking are interior
+to their tested ranges. Collector tracking is held at zero. Collector
+and artist baseline parity is zero mismatches over 214,339 and 149,514 tested
+glyph pixels respectively.
+
+Full-card structural mean remains 73.09 → 74.27/100 relative to the original
+native baseline, with the same 15 land-symbol improvements and 282 unchanged
+cards. The further footer content/layout fixes improve diagnostic credit overlap
+from the prior prototype's 85.57 to 86.65/100, compared with 64.38/100 originally.
+Credits remain excluded from the total. All etchings and alpha are unchanged;
+face changes stay inside approved regions. Both searches still require native
+profile integration, ink/color review and the final release checks.
+
+Next, measure inner frame/art/rules/type geometry and per-component color before
+mana, symbols, body and stats. Whole-card inspection also exposes the uncalibrated
+flat colored planeswalker surround, especially red; the globally corrected
+Conjurer background does not calibrate the separate frame bitmap. Before adding
+printing-specific frame material corrections, verify the planeswalker derived
+frame cache: it currently keys the incoming frame by URL and dimensions although
+printing HSB runs before it. The key must distinguish effective upstream material
+corrections so mixed-set and source-color comparisons cannot reuse stale colors.
+
+The [foil-marker review](../fixtures/accuracy/m21/footer-marker-review.json) retains
+a remaining discrepancy: the Unicode star advances the EN/artist line farther
+than the physical printing. Against the preceding prototype, diagnostic credits
+regress on 27 cards while improving by 1.08/100 overall; the largest losses are
+foil Teferi, Timeless Voyager (-2.96) and Liliana, Death Mage (-2.81). Their
+normalized reference pixels and metric graph are identical. All cases remain in
+the evidence. Source star bounds have shared median 8 × 8 px at [61.5, 653.5].
+Give the marker its own fixed slot and preserve ordinary code/language advances,
+then replay all five foil cards and require the other 292 native faces unchanged.
+Do not certify the footer from the improved mean alone.
