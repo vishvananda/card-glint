@@ -18,19 +18,22 @@ const windows = (vertical, horizontal, bottom) => ({
   left: ['x', 12, 27, vertical, 8],
   right: ['x', 460, 476, vertical, 8],
   top: ['y', 9, 26, horizontal, 8],
-  bottom: ['y', 627, 634, bottom, 8],
+  bottom: ['y', 627, 634, bottom, 5],
 });
 const partitions = [
-  windows([130, 210, 290], [90, 180, 320], [130, 170, 290]),
-  windows([155, 235, 315], [120, 210, 350], [150, 190, 330]),
-  windows([180, 260, 340], [150, 290, 380], [310, 350, 370]),
+  windows([130, 210, 290], [90, 180, 320], [127, 151, 290]),
+  windows([155, 235, 315], [120, 210, 350], [139, 175, 310]),
+  windows([180, 260, 340], [150, 290, 380], [163, 187, 330]),
 ];
 for (const side of Object.keys(bounds))
   for (let a = 0; a < 3; a++)
     for (let b = a + 1; b < 3; b++)
       for (const x of partitions[a][side][3])
         for (const y of partitions[b][side][3])
-          assert(Math.abs(x - y) > 16, 'Independent strip footprints must not overlap');
+          assert(
+            Math.abs(x - y) > partitions[a][side][4] + partitions[b][side][4],
+            'Independent strip footprints must not overlap',
+          );
 const walkerBounds = { ...bounds, top: [0, 27] };
 const walkerPartitions = partitions.map((p) => ({
   ...p,

@@ -184,11 +184,13 @@ export function patchGradient(p, transform = { matrix: [1, 0, 0, 1, 0, 0] }) {
       244 + m[0] * (x - 244) + m[2] * (y - 340) + m[4],
       340 + m[1] * (x - 244) + m[3] * (y - 340) + m[5],
     );
-  // Preserve four tangential bins instead of averaging a curve into one strip.
-  // Each bin averages two samples. Dividing each by two keeps the raw-signal
-  // energy scale equal to the earlier single averaged gradient vector.
+  // Preserve tangential bins instead of averaging a curve into one strip.
+  // Narrow lower fields use two bins; broad fields use four. The normalized
+  // bin weight preserves the raw-signal energy scale across both footprints.
+  const centers = p.span >= 8 ? [-3, -1, 1, 3] : [-1, 1];
+  if (p.span < 5) throw Error('Insufficient tangential frame support');
   for (let q = p.lo; q <= p.hi; q++)
-    for (const center of [-3, -1, 1, 3]) {
+    for (const center of centers) {
       let sum = 0;
       for (const k of [center - 0.5, center + 0.5]) {
         const x = p.axis === 'x' ? q : p.along + k,
@@ -196,7 +198,7 @@ export function patchGradient(p, transform = { matrix: [1, 0, 0, 1, 0, 0] }) {
         sum +=
           p.axis === 'x' ? (at(x + 1, y) - at(x - 1, y)) / 2 : (at(x, y + 1) - at(x, y - 1)) / 2;
       }
-      result.push(sum / 4);
+      result.push(sum / (2 * Math.sqrt(centers.length)));
     }
 
   return result;
