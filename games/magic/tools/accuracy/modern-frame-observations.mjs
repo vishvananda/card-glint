@@ -11,7 +11,7 @@ const [inputFile, outputDirectory] = process.argv.slice(2);
 assert(outputDirectory, 'Usage: modern-frame-observations.mjs INPUTS OUT');
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
-const bounds = { left: [0, 33], right: [455, 487], top: [0, 27], bottom: [625, 641] };
+const bounds = { left: [0, 33], right: [455, 487], top: [0, 27], bottom: [625, 634] };
 const windows = (vertical, horizontal, bottom) => ({
   left: ['x', 12, 33, vertical, 8],
   right: ['x', 455, 476, vertical, 8],
