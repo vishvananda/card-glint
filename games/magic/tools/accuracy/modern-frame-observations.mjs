@@ -6,7 +6,8 @@ import { createServer } from 'vite';
 import { PNG } from 'pngjs';
 import { root, hash, objectFile, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
-import { framePatches, packFramePatches } from './frame-patch-profiles.mjs';
+import { packFramePatches } from './frame-patch-profiles.mjs';
+import { nativeFramePatches, nativeFrameRegions } from './native-frame-patches.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
 const [inputFile, outputDirectory] = process.argv.slice(2);
 assert(outputDirectory, 'Usage: modern-frame-observations.mjs INPUTS OUT');
@@ -45,6 +46,7 @@ const tools = Object.fromEntries(
       'modern-frame-observations.mjs',
       'scan-boundary-profiles.mjs',
       'frame-patch-profiles.mjs',
+      'native-frame-patches.mjs',
       'pixels-pure.mjs',
     ].map(async (f) => [f, hash(await readFile(new URL(f, import.meta.url)))]),
   ),
@@ -70,7 +72,8 @@ try {
   for (const e of inputs.entries) {
     const reference = await readFile(objectFile(e.reference));
     assert.equal(hash(reference), e.reference.sha256);
-    const image = normalize(PNG.sync.read(reference, { checkCRC: true }));
+    const raw = PNG.sync.read(reference, { checkCRC: true }),
+      image = normalize(raw);
     const profile = resolveCardProfile(e.face),
       kind = faceFrame(e.face);
     const family = [kind, profile.legendary ? 'crown' : 'plain', profile.frame, profile.boxes].join(
@@ -98,12 +101,22 @@ try {
         observations[i],
         e.card.name + ': content isolation',
       );
-    const fields = samplePartitions.map((p) => framePatches(image, p, sampleBounds));
+    const fields = samplePartitions.map((p) => nativeFramePatches(raw, p, sampleBounds));
     const packed = packFramePatches(fields);
+    const rawAllowed = new Uint8Array(raw.width * raw.height);
+    for (const p of samplePartitions)
+      for (const {
+        rect: [left, top, right, bottom],
+      } of nativeFrameRegions(raw, p, sampleBounds))
+        for (let y = top; y <= bottom; y++)
+          rawAllowed.fill(1, y * raw.width + left, y * raw.width + right + 1);
+    const changedRaw = { ...raw, data: raw.data.slice() };
+    for (let i = 0; i < rawAllowed.length; i++)
+      if (!rawAllowed[i]) changedRaw.data.set([i % 251, (i * 3) % 251, (i * 7) % 251, 255], i * 4);
     const changedFields = packFramePatches(
-      samplePartitions.map((p) => framePatches(changed, p, sampleBounds)),
+      samplePartitions.map((p) => nativeFramePatches(changedRaw, p, sampleBounds)),
     );
-    assert.deepEqual(changedFields, packed, e.card.name + ':2D content isolation');
+    assert.deepEqual(changedFields, packed, e.card.name + ': native2D content isolation');
     const patchFile = 'patches/' + e.id + '.bin';
     await writeFile(path.join(outputDirectory, patchFile), packed.bytes);
     rows.push({
@@ -147,7 +160,7 @@ try {
     set: inputs.set,
     status: 'awaiting-full-strip-visual-review-and-template-certification',
     scope:
-      'Scan-only census and renderer-resolved frame-family inventory. Disjoint extraction footprints and pixel isolation are verified; these proposed windows are not yet certified as visually content-free on every printing. No pose, calibration or completion claim.',
+      'Scan-only census and renderer-resolved frame-family inventory. Disjoint extraction footprints and native-resolution pixel isolation are verified; these proposed windows are not yet certified as visually content-free on every printing. No pose, calibration or completion claim.',
     inputHash: hash(bytes),
     methodHash,
     tools,

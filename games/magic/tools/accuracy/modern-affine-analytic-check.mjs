@@ -10,6 +10,7 @@ import {
   packFramePatches,
   unpackFramePatches,
 } from './frame-patch-profiles.mjs';
+import { nativeFramePatches } from './native-frame-patches.mjs';
 import { fitModernAffine } from './modern-affine-fit.mjs';
 const bounds = { left: [0, 33], right: [455, 487], top: [0, 31], bottom: [625, 634] };
 const make = (v, h, b) => ({
@@ -68,7 +69,7 @@ let failures = [];
 for (const pigment of [50, 125, 225]) {
   const base = image([1, 0, 0, 1, 0, 0], pigment),
     target = windows.map((w) => scanBoundaryProfiles(base, w, bounds));
-  const targetPatches = windows.map((w) => framePatches(base, w, bounds)),
+  const targetPatches = windows.map((w) => nativeFramePatches(base, w, bounds)),
     patchTemplates = targetPatches.map((ps) =>
       ps.map((p) => ({ ...p, gradient: patchGradient(p) })),
     );
@@ -77,7 +78,7 @@ for (const pigment of [50, 125, 225]) {
       expected = inverseScanMatrix({ matrix: m }),
       raster = image(m, pigment),
       p = windows.map((w) => scanBoundaryProfiles(raster, w, bounds));
-    const patches = windows.map((w) => framePatches(raster, w, bounds));
+    const patches = windows.map((w) => nativeFramePatches(raster, w, bounds));
     const fit = fitModernAffine(
       {
         profiles: p[0],

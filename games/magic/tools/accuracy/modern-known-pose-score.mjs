@@ -3,7 +3,8 @@ import path from 'node:path';
 import { readFile, mkdir } from 'node:fs/promises';
 import { PNG } from 'pngjs';
 import { hash, writeJson } from './common.mjs';
-import { framePatches, patchSupport } from './frame-patch-profiles.mjs';
+import { patchSupport } from './frame-patch-profiles.mjs';
+import { nativeFramePatches } from './native-frame-patches.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { inverseScanMatrix, projectScanPoint } from './scan-transform.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
@@ -38,6 +39,7 @@ const definition = {
         'pixels-pure.mjs',
         'modern-affine-fit.mjs',
         'frame-patch-profiles.mjs',
+        'native-frame-patches.mjs',
         'scan-transform.mjs',
         'scan-boundary-profiles.mjs',
         'printed-plate-registration.mjs',
@@ -99,9 +101,10 @@ for (const control of controls.data.controls) {
   assert.equal(source.referenceHash, control.referenceHash);
   const bytes = await readFile(path.join(controlDirectory, control.file));
   assert.equal(hash(bytes), control.sha256);
-  const image = normalize(PNG.sync.read(bytes, { checkCRC: true })),
+  const raw = PNG.sync.read(bytes, { checkCRC: true }),
+    image = normalize(raw),
     profiles = source.partitions.map((p) => scanBoundaryProfiles(image, p, source.bounds));
-  const patches = source.partitions.map((p) => framePatches(image, p, source.bounds));
+  const patches = source.partitions.map((p) => nativeFramePatches(raw, p, source.bounds));
   const [template, independentTemplate, certificateTemplate] =
     t.data.templates[control.geometry].partitions;
   const fit = fitGradientProfiles(

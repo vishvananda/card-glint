@@ -75,7 +75,11 @@ export function unpackFramePatches(bytes, description) {
   let used = 0;
   const result = description.map((ps) =>
     ps.map((p) => {
-      if (p.filter !== 'binomial5-frame-only-v1' || p.lo <= p.normalLo || p.hi >= p.normalHi)
+      if (
+        !['binomial5-frame-only-v1', 'native-gaussian-0.8-frame-only-v1'].includes(p.filter) ||
+        p.lo <= p.normalLo ||
+        p.hi >= p.normalHi
+      )
         throw Error('Unsupported or invalid frame field');
       if (
         p.offset !== used ||

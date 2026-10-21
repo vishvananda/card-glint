@@ -1,0 +1,268 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "experimental-no-approved-poses",
+  "scope": "All297 source scans retained. Thirty-three sources selected by stable UUID order before control evaluation, seven known native raster transforms each. Native-frame pixel isolation and analytic rectangle recovery pass, but none of these image trials satisfies every declared recovery gate. No runtime calibration or completion approval. Numeric artifact digests identify cached evidence; external image bytes stay out of the repository.",
+  "trials": [
+    {
+      "label": "2D canonical filter",
+      "status": "rejected-for-certification",
+      "knownControlHash": "59a6d190afa15a055b103caecae07b4d97cf6ee9be7640881700481a4f5ee2d7",
+      "normalizationHash": "d7d41891249606c8d1cc12926b93fe96cd8fa811c7896dcb23f5f4d61efea104",
+      "scans": 297,
+      "supportedPoses": 296,
+      "controls": 231,
+      "recovered": 228,
+      "limits": {
+        "cornerRms": 0.35,
+        "cornerMax": 0.6
+      },
+      "maxCornerError": 2.183208312132611,
+      "failures": [
+        {
+          "id": "0fe79ee4-c3f3-4a6b-a967-203ca3b70ee5",
+          "name": "Vito, Thorn of the Dusk Rose",
+          "case": "axis-scale",
+          "geometry": "normal-crown/B",
+          "cornerRms": 0.46263436521086304,
+          "cornerMax": 0.5170286984553162
+        },
+        {
+          "id": "354b9ea4-3d55-48cc-b426-c46b1d1bb397",
+          "name": "Watcher of the Spheres",
+          "case": "combined",
+          "geometry": "normal-plain/Gold",
+          "cornerRms": 1.2711933857512694,
+          "cornerMax": 2.183208312132611
+        },
+        {
+          "id": "2688b45d-9d74-4d9f-9a63-29c82b48d64f",
+          "name": "Basri, Devoted Paladin",
+          "case": "combined",
+          "geometry": "planeswalker",
+          "cornerRms": 0.36547125358228855,
+          "cornerMax": 0.4879690993120681
+        }
+      ]
+    },
+    {
+      "label": "Contained edge windows",
+      "status": "rejected-for-certification",
+      "knownControlHash": "d17a25104aa5188c09c8de47e6a1816f3a0280c30a9a7caa469d9bb73686219e",
+      "normalizationHash": "1bcba081d3c2dd2d43efa2a7ceec5aea934f9a38936df50d53f9cb9fb060ce01",
+      "scans": 297,
+      "supportedPoses": 296,
+      "controls": 231,
+      "recovered": 227,
+      "limits": {
+        "cornerRms": 0.35,
+        "cornerMax": 0.6
+      },
+      "maxCornerError": 1.004389709302937,
+      "failures": [
+        {
+          "id": "2bbd37b1-49cb-4295-9a1f-fb85368a8f12",
+          "name": "Radha, Heart of Keld",
+          "case": "shear",
+          "geometry": "normal-crown/Gold",
+          "cornerRms": 0.6083825737096499,
+          "cornerMax": 1.004389709302937
+        },
+        {
+          "id": "ba91338c-1f6c-4b83-851f-98c3e9dea17b",
+          "name": "Sanctum of All",
+          "case": "translation",
+          "geometry": "normal-crown/Gold",
+          "cornerRms": 0.6241845877127515,
+          "cornerMax": 0.9743882008838581
+        },
+        {
+          "id": "ba91338c-1f6c-4b83-851f-98c3e9dea17b",
+          "name": "Sanctum of All",
+          "case": "combined",
+          "geometry": "normal-crown/Gold",
+          "cornerRms": 0.3538496874222528,
+          "cornerMax": 0.4204805341301081
+        },
+        {
+          "id": "9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d",
+          "name": "Teferi, Master of Time",
+          "case": "combined",
+          "geometry": "planeswalker-large",
+          "cornerRms": 0.3963202638029508,
+          "cornerMax": 0.6049599152893181
+        }
+      ]
+    },
+    {
+      "label": "Positive edge polarity",
+      "status": "rejected-for-certification",
+      "knownControlHash": "abe2c5b2ebeb108726ea2cfff2c4e3f5acfa30d7d12e97dc5d6851c252082953",
+      "normalizationHash": "8df9f8b26a7776fe5bfdc8fdf041806ca6c7821b8df5a90eb4d552a737e1f8c4",
+      "scans": 297,
+      "supportedPoses": 296,
+      "controls": 231,
+      "recovered": 224,
+      "limits": {
+        "cornerRms": 0.35,
+        "cornerMax": 0.6
+      },
+      "maxCornerError": 0.9891884341492639,
+      "failures": [
+        {
+          "id": "2bbd37b1-49cb-4295-9a1f-fb85368a8f12",
+          "name": "Radha, Heart of Keld",
+          "case": "shear",
+          "geometry": "normal-crown/Gold",
+          "cornerRms": 0.4152194356943945,
+          "cornerMax": 0.6647623930292876
+        },
+        {
+          "id": "ba91338c-1f6c-4b83-851f-98c3e9dea17b",
+          "name": "Sanctum of All",
+          "case": "translation",
+          "geometry": "normal-crown/Gold",
+          "cornerRms": 0.6351176726925568,
+          "cornerMax": 0.9891884341492639
+        },
+        {
+          "id": "ba91338c-1f6c-4b83-851f-98c3e9dea17b",
+          "name": "Sanctum of All",
+          "case": "rotation",
+          "geometry": "normal-crown/Gold",
+          "cornerRms": 0.554109339441849,
+          "cornerMax": 0.8528489093075885
+        },
+        {
+          "id": "ba91338c-1f6c-4b83-851f-98c3e9dea17b",
+          "name": "Sanctum of All",
+          "case": "combined",
+          "geometry": "normal-crown/Gold",
+          "cornerRms": 0.36164178581448775,
+          "cornerMax": 0.43403838873596
+        },
+        {
+          "id": "2688b45d-9d74-4d9f-9a63-29c82b48d64f",
+          "name": "Basri, Devoted Paladin",
+          "case": "combined",
+          "geometry": "planeswalker",
+          "cornerRms": 0.4511005722402502,
+          "cornerMax": 0.6009745785493544
+        },
+        {
+          "id": "2d1ff397-2445-459a-ae4e-7bf1cd48f490",
+          "name": "Teferi, Master of Time",
+          "case": "combined",
+          "geometry": "planeswalker-large",
+          "cornerRms": 0.3862963679535191,
+          "cornerMax": 0.5244009828736238
+        },
+        {
+          "id": "9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d",
+          "name": "Teferi, Master of Time",
+          "case": "combined",
+          "geometry": "planeswalker-large",
+          "cornerRms": 0.47055443997717034,
+          "cornerMax": 0.7118552384576735
+        }
+      ]
+    },
+    {
+      "label": "Native prefilter, canonical fields",
+      "status": "rejected-for-certification",
+      "knownControlHash": "659f141c9b02e8afb126504c062e146112747079cdb5c8c9941e34c0dc055cf0",
+      "normalizationHash": "bf05a99d097b9b4c190cd9c33fa043b0206e65c2ebcefc356a6015d8bc95c31d",
+      "scans": 297,
+      "supportedPoses": 296,
+      "controls": 231,
+      "recovered": 221,
+      "limits": {
+        "cornerRms": 0.35,
+        "cornerMax": 0.6
+      },
+      "maxCornerError": 2.0945188448245324,
+      "failures": [
+        {
+          "id": "2bbd37b1-49cb-4295-9a1f-fb85368a8f12",
+          "name": "Radha, Heart of Keld",
+          "case": "translation",
+          "geometry": "normal-crown/Gold",
+          "cornerRms": 0.5224664174826341,
+          "cornerMax": 0.8633832060206019
+        },
+        {
+          "id": "2bbd37b1-49cb-4295-9a1f-fb85368a8f12",
+          "name": "Radha, Heart of Keld",
+          "case": "axis-scale",
+          "geometry": "normal-crown/Gold",
+          "cornerRms": 1.2408314664688482,
+          "cornerMax": 2.0945188448245324
+        },
+        {
+          "id": "ba91338c-1f6c-4b83-851f-98c3e9dea17b",
+          "name": "Sanctum of All",
+          "case": "axis-scale",
+          "geometry": "normal-crown/Gold",
+          "cornerRms": 0.3717264676746993,
+          "cornerMax": 0.5784145249210413
+        },
+        {
+          "id": "354b9ea4-3d55-48cc-b426-c46b1d1bb397",
+          "name": "Watcher of the Spheres",
+          "case": "translation",
+          "geometry": "normal-plain/Gold",
+          "cornerRms": 0.9267212830861634,
+          "cornerMax": 1.5982822756927408
+        },
+        {
+          "id": "354b9ea4-3d55-48cc-b426-c46b1d1bb397",
+          "name": "Watcher of the Spheres",
+          "case": "uniform",
+          "geometry": "normal-plain/Gold",
+          "cornerRms": 0.8941768623558672,
+          "cornerMax": 1.5392809715324678
+        },
+        {
+          "id": "354b9ea4-3d55-48cc-b426-c46b1d1bb397",
+          "name": "Watcher of the Spheres",
+          "case": "rotation",
+          "geometry": "normal-plain/Gold",
+          "cornerRms": 1.0385990911585212,
+          "cornerMax": 1.754741658381011
+        },
+        {
+          "id": "354b9ea4-3d55-48cc-b426-c46b1d1bb397",
+          "name": "Watcher of the Spheres",
+          "case": "combined",
+          "geometry": "normal-plain/Gold",
+          "cornerRms": 0.9776456698230562,
+          "cornerMax": 1.6766850048100486
+        },
+        {
+          "id": "0296c34b-120b-483e-8b49-6d432c04f9a4",
+          "name": "Radiant Fountain",
+          "case": "uniform",
+          "geometry": "normal-plain/Land",
+          "cornerRms": 0.40496220494072,
+          "cornerMax": 0.5867353490226349
+        },
+        {
+          "id": "2688b45d-9d74-4d9f-9a63-29c82b48d64f",
+          "name": "Basri, Devoted Paladin",
+          "case": "combined",
+          "geometry": "planeswalker",
+          "cornerRms": 0.41964467394863947,
+          "cornerMax": 0.6403611539365217
+        },
+        {
+          "id": "9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d",
+          "name": "Teferi, Master of Time",
+          "case": "combined",
+          "geometry": "planeswalker-large",
+          "cornerRms": 0.36064345197206954,
+          "cornerMax": 0.5596916971066048
+        }
+      ]
+    }
+  ]
+}

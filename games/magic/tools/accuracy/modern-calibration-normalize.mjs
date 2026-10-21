@@ -4,6 +4,7 @@ import path from 'node:path';
 import { readFile, mkdir } from 'node:fs/promises';
 import { hash, root, writeJson } from './common.mjs';
 import { unpackFramePatches, patchGradient, patchSupport } from './frame-patch-profiles.mjs';
+import { NATIVE_FRAME_FILTER } from './native-frame-patches.mjs';
 import { median } from './metrics.mjs';
 import { fitScanResidual } from './printed-plate-registration.mjs';
 import { profileSupport, bounded } from './scan-gradient-fit.mjs';
@@ -38,6 +39,7 @@ const sources = Object.fromEntries(
       'modern-calibration-normalize.mjs',
       'modern-affine-fit.mjs',
       'frame-patch-profiles.mjs',
+      'native-frame-patches.mjs',
       'scan-transform.mjs',
       'pixels-pure.mjs',
       'printed-plate-registration.mjs',
@@ -55,6 +57,10 @@ for (const row of rows) {
   const data = await readFile(path.join(path.dirname(observationsFile), row.framePatches.file));
   assert.equal(hash(data), row.framePatches.sha256);
   row.patches = unpackFramePatches(data, row.framePatches.description);
+  assert(
+    row.patches.flat().every((p) => p.filter === NATIVE_FRAME_FILTER),
+    'Require native antialiasing for the fine objective',
+  );
 }
 const templates = {};
 for (const family of [...new Set(rows.map((r) => r.geometry))]) {
