@@ -2,7 +2,7 @@
   "schema": 1,
   "asOf": "2026-10-21",
   "set": "2ed",
-  "status": "final-native-and-scores-verified-release-checks-pending",
+  "status": "published-complete",
   "inventory": 302,
   "referenceObjectsPresent": 302,
   "artObjectsPresent": 302,
@@ -26,7 +26,7 @@
     "visualReview": "2ed-visual-normalization-review.json"
   },
   "wordingCorrection": "Wall of Ice has flavor only. Exact printing reviewed, empty rules supplied explicitly; Oracle Defender remains separate. No broad empty-text inference from a missing provider field.",
-  "scope": "All 302 original printings use the installed shared Unlimited profile. Native replay verifies 302 corrected Originals, 604 Oracle faces and 302 historical controls with no missing assets or overflow. Thirteen physical artist corrections are independent of wording mode. All scan poses are frozen, all regressions remain, and full-set visual normalization review is recorded. Publication and its matching checklist receipt remain pending. Regional study descriptions below retain their historical scope; final evidence supersedes their adoption/replay requirements.",
+  "scope": "All 302 original printings use the installed shared Unlimited profile. Native replay verifies 302 corrected Originals, 604 Oracle faces and 302 historical controls with no missing assets or overflow. Thirteen physical artist corrections are independent of wording mode. All scan poses are frozen, all regressions remain, and full-set visual normalization review is recorded. Publication and matching checklist receipt verified for 0.6.7. Regional study descriptions below retain their historical scope; final evidence supersedes their adoption/replay requirements.",
   "sources": {
     "early-printing-inputs.mjs": "c547ccd552bed95140a7355c3dbf130e379935c855126f1f31fd9da9a9f1f80c",
     "early-calibration-normalize.mjs": "bc316037dcd6533c13757bfe8959b7b2b7ea3623a0975df950e474463bbe7801",
@@ -1463,7 +1463,7 @@
     "typography": "Measure filled ink/stroke/shadow values separately from fixed-gray geometry; retain MPlantin credits unless new evidence supports another face.",
     "body": "Integrate shared count/wrap and medium-density retention with original/Oracle safety preserved; verify final full native inputs.",
     "mana": "All 277 current original costs have joint native verification. Integrate shared palette/disc/glyph/numeral geometry plus R source expansion 0.4 AND opaque-percentile paper sampling; retain X source and all numerical/measurement outliers. Recheck after complete frame/body/footer integration, Oracle mode and source-equivalence proof.",
-    "footer": "Preserve printed Illus. \u00a9 prefix and absence of a separate Unlimited legal line.",
+    "footer": "Preserve printed Illus. © prefix and absence of a separate Unlimited legal line.",
     "receipts": "Scoped integration and source-equivalence evidence must preserve immutable historical receipts and avoid reopening unrelated sets.",
     "completion": "Full profile/whole-card validation and visual boundary certification are still required. No renderer profile is adopted by these study files."
   },
@@ -2956,7 +2956,7 @@
     "missingCorrectionsAdded": 4,
     "unrelatedWordingGroupsUnchanged": 2520,
     "oracleUnchanged": true,
-    "scope": "Exact cached headers confirm 1B in Alpha, Beta, Unlimited, Collector\u2019s Edition, International Collector\u2019s Edition, Revised, Summer and Fourth. Four missing reviews are added; the other four retain their existing sources. The corrected Unlimited native control changes only the header, and 1B pip pixels remain byte-identical. Oracle X1B is preserved. Historical full-face records with the extra X are not current original-render certification."
+    "scope": "Exact cached headers confirm 1B in Alpha, Beta, Unlimited, Collector’s Edition, International Collector’s Edition, Revised, Summer and Fourth. Four missing reviews are added; the other four retain their existing sources. The corrected Unlimited native control changes only the header, and 1B pip pixels remain byte-identical. Oracle X1B is preserved. Historical full-face records with the extra X are not current original-render certification."
   },
   "assetsToReview": [
     {
@@ -4770,7 +4770,7 @@
     "originalPixelMatches": 302,
     "oracleStatus": "Both original and modern symbols verified on all 302 Oracle faces; zero native asset faults or overflow.",
     "fullCardCandidateIndex100": 70.7609591816934,
-    "released": false,
+    "released": true,
     "nativeOriginalFaces": 302,
     "nativeOracleFaces": 604,
     "originalEtchingMatches": 302,
@@ -4784,7 +4784,10 @@
     "unchangedOriginalFaces": 289,
     "artistOnlyOriginalChanges": 13,
     "finalEvidence": "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-release-replay.json.gz",
-    "rendererHash": "e913686c3355ed42b0a8ed5533bbb1d1ac3741929ede4fe3f1dccda89a32a826"
+    "rendererHash": "e913686c3355ed42b0a8ed5533bbb1d1ac3741929ede4fe3f1dccda89a32a826",
+    "publication": "games/magic/fixtures/accuracy/early-through-fourth/2ed-publication.json",
+    "version": "0.6.7",
+    "publishedCommit": "063d3ea62c75dbd557a46c320e63927413b61695"
   },
   "finalArtistAudit": {
     "status": "13-corrections-native-and-public-api-verified",
@@ -4793,8 +4796,8 @@
     "correctionCount": 13,
     "spellings": {
       "Melissa A. Benson": "Melissa Benson",
-      "Tom W\u00e4nerstrand": "Tom Wanerstrand",
-      "Brian Sn\u00f5ddy": "Brian Snoddy"
+      "Tom Wänerstrand": "Tom Wanerstrand",
+      "Brian Snõddy": "Brian Snoddy"
     },
     "required": ["Publish checked renderer and matching report"],
     "scope": "Final 302 Original and 604 Oracle faces include all thirteen physical artist corrections; 302 historical controls preserve prior evidence. Their changes are confined to artist spans, with identical body and etching outputs. Credits are diagnostic-only in the structural aggregate."

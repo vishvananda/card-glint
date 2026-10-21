@@ -190,7 +190,7 @@ assert.deepEqual(
     .filter((s) => s.complete)
     .map((s) => s.set)
     .sort(),
-  [],
+  ['2ed'],
 );
 const alphaReport = reports.find((s) => s.set === 'lea');
 assert.equal(alphaReport.byTask.headings.validated, alphaReport.groups);
