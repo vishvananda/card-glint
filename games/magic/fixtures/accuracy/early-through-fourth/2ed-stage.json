@@ -2,7 +2,7 @@
   "schema": 1,
   "asOf": "2026-10-20",
   "set": "2ed",
-  "status": "installed-profile-final-oracle-replay-in-progress",
+  "status": "final-artist-input-correction-before-release",
   "inventory": 302,
   "referenceObjectsPresent": 302,
   "artObjectsPresent": 302,
@@ -503,6 +503,11 @@
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-candidate-scores.json.gz",
       "sha256": "87a60d3ecd2239d7c1372db707fb1a9884f99af8abaf362b9b327fb2fbf4f3ec",
       "contentSha256": "1d9dada5eb273536f2e9666f8d98599d153eebfb5474545a46a21b889c729060"
+    },
+    "2ed-installed-native": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-installed-native.json.gz",
+      "sha256": "461234dcb617e5481043efb4de501b1e438d789389195e69af99263e70ccd38e",
+      "contentSha256": "f8d6840d02686d784a30a1a9080db899e83aa1cbe878f039926cb6a5562a0a7a"
     }
   },
   "native": {
@@ -1045,14 +1050,14 @@
             "dx": -1.75,
             "dy": 2.75,
             "size": -0.5,
-            "width": 0.0
+            "width": 0
           }
         },
         "type": {
           "count": 32,
           "medianDiagnosticAdjustment": {
-            "dx": -2.0,
-            "dy": 0.0,
+            "dx": -2,
+            "dy": 0,
             "size": 0.25,
             "width": 0.5
           }
@@ -3043,7 +3048,7 @@
         "edgeMean100": 72.60632695009883,
         "improvedSides": 0,
         "regressedSides": 0,
-        "worstRegression100": -0.0,
+        "worstRegression100": 0,
         "calibrationMean100": 72.05668852102458,
         "reservedMean100": 74.80488066639587
       },
@@ -3262,18 +3267,18 @@
     },
     "colorAndContrast": {
       "frame": {
-        "meanChange": 0.0,
-        "meanPositiveRegression": 0.0,
+        "meanChange": 0,
+        "meanPositiveRegression": 0,
         "worstRegression": 0
       },
       "paper": {
-        "meanChange": 0.0,
-        "meanPositiveRegression": 0.0,
+        "meanChange": 0,
+        "meanPositiveRegression": 0,
         "worstRegression": 0
       },
       "stock": {
-        "meanChange": 0.0,
-        "meanPositiveRegression": 0.0,
+        "meanChange": 0,
+        "meanPositiveRegression": 0,
         "worstRegression": 0
       },
       "contrast": {
@@ -3314,20 +3319,20 @@
     "inkDecision": "Reject the unconstrained pixel-MSE proposal: a slightly displaced glyph can lower error by losing contrast. Use the independent softened luminance-distribution proposal for native validation; preserve filled strokes and real shadows.",
     "inkCandidates": {
       "title": {
-        "gray": 140.0,
-        "shadow": 1.0
+        "gray": 140,
+        "shadow": 1
       },
       "type": {
-        "gray": 150.0,
+        "gray": 150,
         "shadow": 0.75
       },
       "artist": {
-        "gray": 145.0,
+        "gray": 145,
         "shadow": 1.25
       },
       "stats": {
-        "gray": 150.0,
-        "shadow": 1.0
+        "gray": 150,
+        "shadow": 1
       }
     },
     "statsAnchor": {
@@ -3365,14 +3370,8 @@
         "maximumPredictionError100": 1.844487892325497
       }
     },
-    "runtimeAdopted": false,
-    "remaining": [
-      "Verify the scoped editor metadata integration and strict source guards",
-      "Finish appearance/outlier and normalization visual review",
-      "Adopt the complete data profile",
-      "Validate Original and Oracle native output",
-      "Generate final whole-card numbers and release"
-    ],
+    "runtimeAdopted": true,
+    "remaining": ["Complete final release checks and publish matching renderer/score revision"],
     "finalCandidateWholeCard": {
       "all": {
         "count": 302,
@@ -4760,10 +4759,37 @@
   "installedProfile": {
     "file": "games/magic/src/calibration/sets/2ed.ts",
     "revision": 1,
-    "profileSourceHash": "d32a25d8a486909ea6b904ad51cc823880c4a7a2198c5bfcabce751e7efe380f",
+    "profileSourceHash": "f20e1d0d239f683f63b3cc39fbae60253f8919003ff932441eda0aa674d04954",
     "originalPixelMatches": 302,
-    "oracleStatus": "Replay in progress after preflighting both symbol modes against content-addressed cached assets. The initial Original snapshot lacked modern mana URLs; its Oracle renders are rejected, not certified.",
+    "oracleStatus": "Both original and modern symbols verified on all 302 Oracle faces; zero native asset faults or overflow.",
     "fullCardCandidateIndex100": 70.7609591816934,
-    "released": false
+    "released": false,
+    "nativeOriginalFaces": 302,
+    "nativeOracleFaces": 604,
+    "originalEtchingMatches": 302,
+    "overflow": 0,
+    "nativeEvidence": "games/magic/fixtures/accuracy/early-through-fourth/2ed-installed-native.json.gz",
+    "profileReviewOnlySourceChange": [
+      "games/magic/src/calibration/sets/2ed.ts",
+      "games/magic/src/data/generated-manifest.json"
+    ]
+  },
+  "finalArtistAudit": {
+    "status": "13-exact-printing-reviews-recorded-not-yet-replayed",
+    "source": "games/magic/fixtures/accuracy/2ed/annotations-artist-final.json",
+    "reviewedNames": 37,
+    "correctionCount": 13,
+    "spellings": {
+      "Melissa A. Benson": "Melissa Benson",
+      "Tom W\u00e4nerstrand": "Tom Wanerstrand",
+      "Brian Sn\u00f5ddy": "Brian Snoddy"
+    },
+    "required": [
+      "Generate reviewed public catalog",
+      "Load artist-only reviews in the accuracy adapter",
+      "Replay corrected original and oracle artist credits",
+      "Refresh scores for the changed credits and release evidence"
+    ],
+    "scope": "Existing 906-face replay and 70.760959/100 index precede these thirteen wording corrections. Preserve old evidence unchanged and obtain fresh source-bound final records."
   }
 }

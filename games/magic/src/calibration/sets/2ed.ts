@@ -1189,5 +1189,5 @@ export const review = {
     'games/magic/fixtures/accuracy/early-through-fourth/2ed-profile-integration-replay.json.gz',
     'games/magic/fixtures/accuracy/early-through-fourth/2ed-final-candidate-scores.json.gz',
   ],
-  pending: ['fullCard', 'release'],
+  pending: [],
 } as const;

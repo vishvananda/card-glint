@@ -959,3 +959,22 @@ The stock/plate/material choices are ready for this replay. Heading geometry is
 measured, while its fixed-gray measurement controls must not be treated as final
 ink calibration. The artist command evidence retains the measured left alignment
 and alphabetic baseline; a different centering policy needs its own evidence.
+
+## Unlimited integrated profile
+
+The installed one-file profile is `src/calibration/sets/2ed.ts`. The final
+candidate full-card index is **61.49 → 70.76/100**, with 278 improvements and 24
+regressions across all 302 Original faces. This is not a correctness percentage.
+`2ed-final-candidate-scores.json.gz` retains every regional result and identity.
+`2ed-installed-native.json.gz` proves 302 exact installed/candidate face and
+etching matches plus 604 complete Oracle faces with both symbol choices and no
+overflow or asset faults. Original words and independently normalized scans stay
+fixed; no card-specific renderer offsets are fitted. Finalizing inert review
+metadata leaves parsed rendering values and every generated runtime payload
+unchanged; both actual source identities are retained in the evidence.
+
+Use `early-profile-adoption-native.mjs` to replay an installed profile. It
+preflights both symbol modes from the content-addressed cache before painting,
+and refuses missing decoded assets. The older Original-only snapshot is
+insufficient on its own for Oracle symbol checks. Residual source texture and
+wrapping outliers remain explicitly listed in `2ed-stage.json`.

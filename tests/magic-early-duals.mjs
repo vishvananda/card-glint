@@ -141,6 +141,9 @@ try {
     'Underground Sea': 'Island Swamp',
     'Volcanic Island': 'Island Mountain',
   };
+  const { profile: unlimited } = await server.ssrLoadModule(
+    '/games/magic/src/calibration/sets/2ed.ts',
+  );
   const basics = { Plains: 'W', Island: 'U', Swamp: 'B', Mountain: 'R', Forest: 'G' };
   let count = 0;
   for (const set of ['lea', 'leb', '2ed', '3ed']) {
@@ -228,8 +231,11 @@ try {
           'Underground Sea': 'b',
           'Volcanic Island': set === 'leb' ? 'u' : 'r',
         }[row.name];
+        const pair = [...'WUBRG'].filter((c) => original.face.frameColors.includes(c)).join('');
+        const expectedOutline =
+          set === '2ed' ? unlimited.dualLand.outlines[pair].toLowerCase() : printedOutline;
         assert.ok(
-          plan.outline.endsWith(`/${printedOutline}l.png`),
+          plan.outline.endsWith(`/${expectedOutline}l.png`),
           'The full-frame outline is independent of paper-stripe ordering',
         );
         assert.deepEqual(plan, retroDualFrame(oracle.face));
@@ -244,7 +250,21 @@ try {
           ...original.face,
           colorCalibration: 'set-hsb-v1',
         });
-        for (const { outerStock, outerStockMaskSource, ...pigment } of Object.values(calibrated)) {
+        for (const [url, { outerStock, outerStockMaskSource, ...pigment }] of Object.entries(
+          calibrated,
+        )) {
+          if (set === '2ed') {
+            const color = url.match(/\/([wubrg])l\.png$/)?.[1]?.toUpperCase();
+            assert(color);
+            assert.deepEqual(pigment, unlimited.dualLand.sources[color].adjustment);
+            assert.equal(
+              outerStock,
+              undefined,
+              'Measured dual pigments do not inherit legacy per-source stock',
+            );
+            assert.equal(outerStockMaskSource, undefined);
+            continue;
+          }
           assert.deepEqual(
             pigment,
             { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
