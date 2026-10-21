@@ -835,3 +835,40 @@ Run `early-dual-paper-compromise.mjs FIT OUTPUT` to reproduce its four common
 penalties. Avoiding Volcanic Island's blue regression gives up most of the gain
 on the other three blue duals. The previous median candidate remains proposed,
 with all residuals explicit. No runtime profile is adopted by these studies.
+
+## Native coverage for Unlimited dual-pinline colors
+
+`2ed-dual-pinline-palette-replay.json.gz` replaces uncertain band-center color
+sampling with actual native zero/white controls. Six controls isolate the five
+colored inks and fine edge ink, after source preparation and normal compositing.
+The existing palette reconstructs within three byte levels; candidate predictions
+also agree with actual PNGs within that bound. Source coverage defines every
+sample. No scan color selects masks, and no scan pose or per-card palette changes.
+
+One palette fits the eight calibration names, with equal votes for each straight
+side. The selected candidate preserves the dark source edge. Mean pixel Oklab
+distance falls 11.79→11.02 across forty border windows, with 32 gains and eight
+regressions. All ten card means improve. Worst side regression is 0.38, compared
+with 0.88 for the free-edge candidate, whose edge becomes brown. Preserve the
+actual free-edge comparison as evidence of a blur/geometry tradeoff rather than
+adopting it merely for lower mean error. These distances are not Lab accuracy
+scores; reserved names are reused development observations.
+
+All ten default and source-palette controls reproduce exactly. Changed pixels
+stay within measured native pinline coverage; alpha and default etching remain
+identical. Typography, artwork, paper and stock outside that coverage are therefore
+unchanged. Final whole-profile Original/Oracle verification is still mandatory.
+
+```sh
+node games/magic/tools/accuracy/early-dual-pinline-palette-replay.mjs "$CURRENT_UNLIMITED_NATIVE" "$PINLINE_BASIS_DEFINITION" "$PINLINE_BASIS_NATIVE"
+OPENBLAS_NUM_THREADS=1 python games/magic/tools/accuracy/early-dual-pinline-palette-fit.py "$CURRENT_UNLIMITED_NATIVE" "$PINLINE_BASIS_NATIVE" "$DUAL_PINLINE_NATIVE" "$PINLINE_PALETTE_FIT" "$PINLINE_PALETTE_DEFINITION"
+node games/magic/tools/accuracy/early-dual-pinline-palette-replay.mjs "$CURRENT_UNLIMITED_NATIVE" "$PINLINE_PALETTE_DEFINITION" "$PINLINE_PALETTE_NATIVE"
+OPENBLAS_NUM_THREADS=1 python games/magic/tools/accuracy/early-dual-pinline-palette-verify.py "$CURRENT_UNLIMITED_NATIVE" "$PINLINE_BASIS_NATIVE" "$PINLINE_PALETTE_FIT" "$PINLINE_PALETTE_NATIVE" "$PINLINE_PALETTE_REPORT"
+```
+
+Exact basis/candidate definitions are in the archive. `colors` on a white-control
+trial limits it to cards containing that ink; unused color controls are omitted,
+not synthesized. Both palettes use identical geometry and source preparation.
+The optional `--preview PATH.png` verification output contains external scan/art
+pixels and must remain outside Git. Brown land texture/black levels and full-frame
+outline calibration remain open; this component study does not complete a set.

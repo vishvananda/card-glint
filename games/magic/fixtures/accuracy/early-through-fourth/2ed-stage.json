@@ -174,8 +174,8 @@
     },
     "2ed-material-proposal": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-material-proposal.json",
-      "sha256": "5828c362e0af42357b2217a162fb051fe82be4f15f5776f7fea5236292b426f7",
-      "contentSha256": "5828c362e0af42357b2217a162fb051fe82be4f15f5776f7fea5236292b426f7"
+      "sha256": "2d5c0ea3b770103432e8f6ad4c3f818302a857d30c6f37c702e1079686b6d57d",
+      "contentSha256": "2d5c0ea3b770103432e8f6ad4c3f818302a857d30c6f37c702e1079686b6d57d"
     },
     "2ed-basic-land-geometry": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-basic-land-geometry.json.gz",
@@ -465,6 +465,11 @@
     "dual-text-box-order-review": {
       "file": "games/magic/fixtures/accuracy/early-through-fourth/dual-text-box-order-review.json",
       "sha256": "9886710921278d720fe50e06a118a643712154a27915a3acf692b09e89fc9336"
+    },
+    "2ed-dual-pinline-palette-replay": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-pinline-palette-replay.json.gz",
+      "sha256": "daf8a5a052afd68761bb730b41d7444d8c416d55afe3477c874c75a356d0cd5a",
+      "contentSha256": "706b9b1170f5524f31f94e831345bc37ad23be9a3c235e509c053ab2e6fcec49"
     }
   },
   "native": {
@@ -1408,7 +1413,7 @@
   },
   "integrationRequirements": {
     "frame": "Source-bound ordinary and five basic plates, shared dual composite, independent SVG stock-mask geometry; retain existing foreign-set behavior.",
-    "color": "Resolve land contrast/black levels and composed dual pinline/outline palettes. The original shared dual-paper candidate is retained after the compromise tradeoff study. Keep all Volcanic Island blue/red residuals. Native pinline geometry improves fixed-strip mean but retains fifteen side-level regressions; source palette and order remain unchanged.",
+    "color": "Complete land brown texture contrast/black levels and full-frame outline calibration. Shared dual paper and pinline geometry/palette candidates have native evidence with all residuals retained; keep Volcanic Island paper-color outliers visible. Finish complete Original/Oracle integration and whole-card verification before profile promotion.",
     "wording": "Use current original printing inputs, including Dragon Whelp inline quotation and Drain Life 1B. Drain Life header-only replay preserves body pixels and rightmost pips; historical extra-X full-face records are superseded for header comparisons. Oracle input remains unchanged.",
     "typography": "Measure filled ink/stroke/shadow values separately from fixed-gray geometry; retain MPlantin credits unless new evidence supports another face.",
     "body": "Integrate shared count/wrap and medium-density retention with original/Oracle safety preserved; verify final full native inputs.",
@@ -3024,7 +3029,140 @@
     },
     "scope": "Actual full native cards, fixed scan poses and original text; shared geometry and source ink only. RGB-gradient magnitude cosine is local to forty fixed border strips and is not a whole-card score. Ten baseline PNGs match; upper-card rows [0,590), central rules [110,620)x[640,890), alpha and etching control checks pass. Separate complete ink and paper controls remain required. Reserved names are reused development observations. Palette/order remain unchanged.",
     "orderReview": "dual-text-box-order-review.json",
-    "paletteStatus": "Original source palette retained. Remeasured band centers still mix neighboring inks in some scans; do not promote the diagnostic RGB medians without native verification.",
-    "wholeSetCertification": false
+    "paletteStatus": "Exact native-coverage fitting and actual shared palette replay complete as a component candidate. Source edge retained; all side residuals remain. Final integrated Original/Oracle verification is still required.",
+    "wholeSetCertification": false,
+    "paletteSelection": {
+      "status": "native-source-coverage-shared-palette-candidate",
+      "source": "2ed-dual-pinline-palette-replay.json.gz",
+      "selected": "pinline-fixed-edge",
+      "palette": {
+        "W": [0.8059616047216823, 0.7620219239775382, 0.7475212865587831],
+        "U": [0.28253787343382203, 0.45177042542938184, 0.5530133512539952],
+        "B": [0.4074429619590483, 0.41229679075456604, 0.38333422342765877],
+        "R": [0.5959403337963363, 0.35462688819381655, 0.3639452613896898],
+        "G": [0.5076388990491424, 0.5671906788471864, 0.4174668900213387],
+        "edge": [0.18, 0.18, 0.17]
+      },
+      "summary": {
+        "pinline-palette": {
+          "all": {
+            "strips": 40,
+            "before": 11.792571182820451,
+            "after": 10.665309305336663,
+            "improved": 34,
+            "regressed": 6,
+            "worstRegression": 0.8823107649356174
+          },
+          "calibration": {
+            "strips": 32,
+            "before": 11.725068283949607,
+            "after": 10.58634718400663,
+            "improved": 28,
+            "regressed": 4,
+            "worstRegression": 0.8823107649356174
+          },
+          "validation": {
+            "strips": 8,
+            "before": 12.062582778303831,
+            "after": 10.981157790656795,
+            "improved": 6,
+            "regressed": 2,
+            "worstRegression": 0.45077575679527904
+          }
+        },
+        "pinline-fixed-edge": {
+          "all": {
+            "strips": 40,
+            "before": 11.792571182820451,
+            "after": 11.015759089956015,
+            "improved": 32,
+            "regressed": 8,
+            "worstRegression": 0.3776674057871592
+          },
+          "calibration": {
+            "strips": 32,
+            "before": 11.725068283949607,
+            "after": 10.936894641008134,
+            "improved": 26,
+            "regressed": 6,
+            "worstRegression": 0.31527463025948066
+          },
+          "validation": {
+            "strips": 8,
+            "before": 12.062582778303831,
+            "after": 11.331216885747533,
+            "improved": 6,
+            "regressed": 2,
+            "worstRegression": 0.3776674057871592
+          }
+        }
+      },
+      "cards": [
+        {
+          "id": "5804dcd3-d41d-4cbd-9f8f-9736f2d37a64",
+          "name": "Badlands",
+          "beforeOklab100": 11.142339918136626,
+          "afterOklab100": 10.523141566520557
+        },
+        {
+          "id": "d66e43f0-1558-409f-8248-cc1d76c6bd8e",
+          "name": "Bayou",
+          "beforeOklab100": 11.53289743437153,
+          "afterOklab100": 10.614840323363007
+        },
+        {
+          "id": "de38f96c-5d17-4cf2-9951-f0866eadd011",
+          "name": "Plateau",
+          "beforeOklab100": 16.46602095972796,
+          "afterOklab100": 16.0894287139253
+        },
+        {
+          "id": "38937c61-280e-457f-aef9-43139446163a",
+          "name": "Savannah",
+          "beforeOklab100": 9.484592757632475,
+          "afterOklab100": 9.235914957887363
+        },
+        {
+          "id": "7e18d625-0950-4062-8d41-f8b681eff234",
+          "name": "Scrubland",
+          "beforeOklab100": 11.00066992035179,
+          "afterOklab100": 8.993228269152965
+        },
+        {
+          "id": "01006833-6007-4c16-9ebb-20d31c60a57a",
+          "name": "Taiga",
+          "beforeOklab100": 14.582910179833322,
+          "afterOklab100": 14.22413868965126
+        },
+        {
+          "id": "856bf0ba-e5a5-47eb-9a6a-111935088c31",
+          "name": "Tropical Island",
+          "beforeOklab100": 11.18293319258887,
+          "afterOklab100": 10.77164979133676
+        },
+        {
+          "id": "0d08f5e4-d2d3-4659-86d4-a983d80e3b2c",
+          "name": "Tundra",
+          "beforeOklab100": 10.951684154225319,
+          "afterOklab100": 9.956221497640437
+        },
+        {
+          "id": "bc98d888-4af3-43a3-b035-40c651057b6e",
+          "name": "Underground Sea",
+          "beforeOklab100": 9.54225537677434,
+          "afterOklab100": 8.438295081843805
+        },
+        {
+          "id": "9dc7ab05-a5f5-4a02-87e7-3c47be35b5cb",
+          "name": "Volcanic Island",
+          "beforeOklab100": 12.039407934562284,
+          "afterOklab100": 11.310732008238686
+        }
+      ],
+      "improvedCardMeans": 10,
+      "scope": "Ten actual full native Original cards, fixed independent scan poses, fixed geometry and ordering. Forty fixed straight-side color windows are defined by native coverage controls, never reference-color thresholds. These are mean pixel Oklab distances x100, not whole-card accuracy. Exact baseline/source-palette controls, reconstruction, support isolation, alpha and default etching are checked. Two reserved names are reused development observations. All side regressions remain visible.",
+      "decision": "Retain the dark source edge instead of using freely brown edge ink to compensate blur. The five shared colors improve every card mean and 32/40 side windows; eight side regressions remain. The free-edge alternative has slightly better mean distance but a larger worst side regression (0.88 vs 0.38 Oklab units). No per-card palette or renderer pose is fitted.",
+      "wholeSetCertification": false
+    }
   }
 }
