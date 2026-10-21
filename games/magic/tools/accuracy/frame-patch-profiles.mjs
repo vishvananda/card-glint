@@ -59,13 +59,22 @@ export function framePatches(image, windows, bounds, gray = luminance(image)) {
   );
 }
 export function packFramePatches(partitions) {
-  const bytes = new Uint8Array(partitions.flat().reduce((n, p) => n + p.values.length, 0));
+  const bytes = new Uint8Array(partitions.flat().reduce((n, p) => n + p.values.byteLength, 0));
+  const view = new DataView(bytes.buffer);
   let offset = 0;
   const description = partitions.map((ps) =>
     ps.map(({ values, ...p }) => {
-      bytes.set(values, offset);
-      const r = { ...p, offset, length: values.length };
-      offset += values.length;
+      const floating = values instanceof Float32Array;
+      if (!floating && !(values instanceof Uint8Array))
+        throw Error('Unsupported frame field encoding');
+      if (floating)
+        for (let i = 0; i < values.length; i++) {
+          if (!Number.isFinite(values[i])) throw Error('Nonfinite frame field');
+          view.setFloat32(offset + i * 4, values[i], true);
+        }
+      else bytes.set(values, offset);
+      const r = { ...p, offset, length: values.byteLength, encoding: floating ? 'f32le' : 'u8' };
+      offset += values.byteLength;
       return r;
     }),
   );
@@ -73,6 +82,7 @@ export function packFramePatches(partitions) {
 }
 export function unpackFramePatches(bytes, description) {
   let used = 0;
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
   const result = description.map((ps) =>
     ps.map((p) => {
       if (
@@ -80,25 +90,43 @@ export function unpackFramePatches(bytes, description) {
           'binomial5-frame-only-v1',
           'native-gaussian-0.8-frame-only-v1',
           'native-grid-gaussian-0.8-frame-only-v2',
+          'native-grid-gaussian-0.8-f32-frame-only-v3',
         ].includes(p.filter) ||
         p.lo <= p.normalLo ||
         p.hi >= p.normalHi
       )
         throw Error('Unsupported or invalid frame field');
+      const floating = p.encoding === 'f32le';
+      if (!floating && p.encoding !== undefined && p.encoding !== 'u8')
+        throw Error('Unsupported frame field encoding');
       if (
         p.offset !== used ||
-        p.length !== p.width * p.height ||
+        p.length !== p.width * p.height * (floating ? 4 : 1) ||
         p.offset + p.length > bytes.length
       )
         throw Error('Invalid frame field offsets');
+      if (p.filter === 'native-grid-gaussian-0.8-f32-frame-only-v3' && !floating)
+        throw Error('Native float field requires f32le encoding');
+      if (p.filter.startsWith('native-grid-')) {
+        const s = p.nativeSampling;
+        if (!s || !Object.values(s).every(Number.isFinite) || !(s.factor > 0))
+          throw Error('Invalid native frame sampling');
+      } else if (p.nativeSampling) throw Error('Unexpected native frame sampling');
       used += p.length;
-      const { offset, length, ...shape } = p;
-      return { ...shape, values: bytes.subarray(offset, offset + length) };
+      const { offset, length, encoding, ...shape } = p;
+      if (!floating) return { ...shape, values: bytes.subarray(offset, offset + length) };
+      const values = new Float32Array(length / 4);
+      for (let i = 0; i < values.length; i++) {
+        values[i] = view.getFloat32(offset + i * 4, true);
+        if (!Number.isFinite(values[i])) throw Error('Nonfinite frame field');
+      }
+      return { ...shape, values };
     }),
   );
   if (used !== bytes.length) throw Error('Unexpected trailing frame pixels');
   return result;
 }
+
 function sample(p, x, y) {
   const n = p.axis === 'x' ? x : y,
     a = p.axis === 'x' ? y : x;

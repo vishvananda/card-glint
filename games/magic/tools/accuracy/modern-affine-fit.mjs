@@ -146,12 +146,7 @@ function optimize(profiles, templates, start, patches, patchTemplates) {
 }
 export function fitModernAffine(row, study) {
   const legacy = fitGradientProfiles(row, study);
-  const starts = [
-    [1, 0, 0, 1, 0, 0],
-    ...(row.patches
-      ? [legacy.candidates.at(-1).transform.matrix]
-      : legacy.candidates.map((c) => c.transform.matrix)),
-  ];
+  const starts = [[1, 0, 0, 1, 0, 0], ...legacy.candidates.map((c) => c.transform.matrix)];
   const seeds = starts.filter(
     (m, i) => starts.findIndex((p) => p.every((x, j) => Math.abs(x - m[j]) < 1e-9)) === i,
   );

@@ -1,7 +1,7 @@
 // Filter only reviewed frame pixels at source resolution before downsampling.
 // Filtering a complete card first could leak adjacent title/footer/art pixels.
 import { luminance } from './pixels-pure.mjs';
-export const NATIVE_FRAME_FILTER = 'native-grid-gaussian-0.8-frame-only-v2';
+export const NATIVE_FRAME_FILTER = 'native-grid-gaussian-0.8-f32-frame-only-v3';
 export function nativeFrameRegions(image, windows, bounds) {
   const factor = Math.min(488 / image.width, 680 / image.height),
     padX = (488 - image.width * factor) / 2,
@@ -59,7 +59,7 @@ export function nativeFramePatches(image, windows, bounds, gray = luminance(imag
       total = kernel.reduce((a, b) => a + b, 0);
     for (let i = 0; i < kernel.length; i++) kernel[i] /= total;
     const horizontal = new Float32Array(width * height),
-      values = new Uint8Array(width * height);
+      values = new Float32Array(width * height);
     for (let j = 0; j < height; j++)
       for (let i = 0; i < width; i++) {
         let sum = 0;
@@ -78,7 +78,7 @@ export function nativeFramePatches(image, windows, bounds, gray = luminance(imag
         for (let k = -radius; k <= radius; k++)
           sum +=
             kernel[k + radius] * horizontal[Math.max(0, Math.min(height - 1, j + k)) * width + i];
-        values[j * width + i] = Math.round(sum);
+        values[j * width + i] = sum;
       }
     return {
       ...shape,

@@ -65,6 +65,17 @@ assert.deepEqual(unpackFramePatches(packed.bytes, packed.description), safetyFie
 const badDescription = structuredClone(packed.description);
 badDescription[0][0].offset++;
 assert.throws(() => unpackFramePatches(packed.bytes, badDescription), /Invalid frame field/);
+// Native fields stay floating point through source filtering and affine sampling.
+// Their packed format is explicitly little-endian, independent of host order.
+const nativeSafety = windows.map((w) => nativeFramePatches(safetyImage, w, bounds)),
+  nativePacked = packFramePatches(nativeSafety);
+assert.deepEqual(unpackFramePatches(nativePacked.bytes, nativePacked.description), nativeSafety);
+const badNative = structuredClone(nativePacked.description);
+badNative[0][0].nativeSampling.factor = 0;
+assert.throws(() => unpackFramePatches(nativePacked.bytes, badNative), /native frame sampling/);
+const nonfinite = nativePacked.bytes.slice();
+new DataView(nonfinite.buffer).setFloat32(0, NaN, true);
+assert.throws(() => unpackFramePatches(nonfinite, nativePacked.description), /Nonfinite/);
 let failures = [];
 for (const pigment of [50, 125, 225]) {
   const base = image([1, 0, 0, 1, 0, 0], pigment),
@@ -73,50 +84,56 @@ for (const pigment of [50, 125, 225]) {
     patchTemplates = targetPatches.map((ps) =>
       ps.map((p) => ({ ...p, gradient: patchGradient(p) })),
     );
-  for (const c of cases) {
-    const m = profileMatrix(c),
-      expected = inverseScanMatrix({ matrix: m }),
-      raster = image(m, pigment),
-      p = windows.map((w) => scanBoundaryProfiles(raster, w, bounds));
-    const patches = windows.map((w) => nativeFramePatches(raster, w, bounds));
-    const fit = fitModernAffine(
-      {
-        profiles: p[0].concat(p[1]),
-        independentProfiles: p[2],
-        patches: patches[0].concat(patches[1]),
-        independentPatches: patches[2],
-        fit: { proposed: { scale: 1, tx: 0, ty: 0 } },
-      },
-      {
-        template: target[0].concat(target[1]),
-        independentTemplate: target[2],
-        patchTemplate: patchTemplates[0].concat(patchTemplates[1]),
-        independentPatchTemplate: patchTemplates[2],
-        search: 'independent-axis-seed-v1',
-      },
-    );
-    assert.equal(fit.model, 'affine-joint-2d');
-    const errors = [
-      [20, 20],
-      [468, 20],
-      [20, 630],
-      [468, 630],
-    ].map(([x, y]) => {
-      const a = projectScanPoint(x, y, { matrix: expected }),
-        b = projectScanPoint(x, y, fit.transform);
-      return Math.hypot(a[0] - b[0], a[1] - b[1]);
-    });
-    const max = Math.max(...errors);
-    console.log(
-      JSON.stringify({
-        pigment,
-        case: c.label,
-        max,
-        accepted: fit.accepted,
-        parameters: fit.parameters,
-      }),
-    );
-    if (!fit.accepted || max > 0.2) failures.push({ pigment, label: c.label, max });
-  }
+  for (const gain of [1, 0.75])
+    for (const c of cases) {
+      const m = profileMatrix(c),
+        expected = inverseScanMatrix({ matrix: m }),
+        raster = image(m, pigment),
+        p = windows.map((w) => scanBoundaryProfiles(raster, w, bounds));
+      if (gain !== 1)
+        for (let i = 0; i < raster.data.length; i += 4)
+          for (let ch = 0; ch < 3; ch++)
+            raster.data[i + ch] = Math.round(raster.data[i + ch] * gain + 16);
+      const patches = windows.map((w) => nativeFramePatches(raster, w, bounds));
+      const fit = fitModernAffine(
+        {
+          profiles: p[0].concat(p[1]),
+          independentProfiles: p[2],
+          patches: patches[0].concat(patches[1]),
+          independentPatches: patches[2],
+          fit: { proposed: { scale: 1, tx: 0, ty: 0 } },
+        },
+        {
+          template: target[0].concat(target[1]),
+          independentTemplate: target[2],
+          patchTemplate: patchTemplates[0].concat(patchTemplates[1]),
+          independentPatchTemplate: patchTemplates[2],
+          search: 'independent-axis-seed-v1',
+        },
+      );
+      assert.equal(fit.model, 'affine-joint-2d');
+      const errors = [
+        [20, 20],
+        [468, 20],
+        [20, 630],
+        [468, 630],
+      ].map(([x, y]) => {
+        const a = projectScanPoint(x, y, { matrix: expected }),
+          b = projectScanPoint(x, y, fit.transform);
+        return Math.hypot(a[0] - b[0], a[1] - b[1]);
+      });
+      const max = Math.max(...errors);
+      console.log(
+        JSON.stringify({
+          pigment,
+          gain,
+          case: c.label,
+          max,
+          accepted: fit.accepted,
+          parameters: fit.parameters,
+        }),
+      );
+      if (!fit.accepted || max > 0.2) failures.push({ pigment, gain, label: c.label, max });
+    }
 }
 assert.deepEqual(failures, [], 'Analytic affine recovery failed');
