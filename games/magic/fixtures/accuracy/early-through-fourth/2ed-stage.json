@@ -2,7 +2,7 @@
   "schema": 1,
   "asOf": "2026-10-21",
   "set": "2ed",
-  "status": "published-dual-frame-followup-open",
+  "status": "revision2-native-verified-release-pending",
   "inventory": 302,
   "referenceObjectsPresent": 302,
   "artObjectsPresent": 302,
@@ -26,7 +26,7 @@
     "visualReview": "2ed-visual-normalization-review.json"
   },
   "wordingCorrection": "Wall of Ice has flavor only. Exact printing reviewed, empty rules supplied explicitly; Oracle Defender remains separate. No broad empty-text inference from a missing provider field.",
-  "scope": "All 302 original printings use the installed shared Unlimited profile. Native replay verifies 302 corrected Originals, 604 Oracle faces and 302 historical controls with no missing assets or overflow. Thirteen physical artist corrections are independent of wording mode. All scan poses are frozen, all regressions remain, and full-set visual normalization review is recorded. Publication and matching checklist receipt verified for 0.6.7. Regional study descriptions below retain their historical scope; final evidence supersedes their adoption/replay requirements. Subsequent top-left native inspection reopened dual-land frame geometry and full-card review; published scores are historical evidence, not a claim that this visible discrepancy is acceptable.",
+  "scope": "All302 Original printings and604 Oracle faces replay under revision2. Ten duals have a corrected shared crop/art window and lower-bevel tone;292 printings and every text layout/etching layer remain unchanged. Original full-card index70.9738186/100; current release certification pending.",
   "sources": {
     "early-printing-inputs.mjs": "c547ccd552bed95140a7355c3dbf130e379935c855126f1f31fd9da9a9f1f80c",
     "early-calibration-normalize.mjs": "bc316037dcd6533c13757bfe8959b7b2b7ea3623a0975df950e474463bbe7801",
@@ -4765,12 +4765,12 @@
   },
   "installedProfile": {
     "file": "games/magic/src/calibration/sets/2ed.ts",
-    "revision": 1,
-    "profileSourceHash": "f20e1d0d239f683f63b3cc39fbae60253f8919003ff932441eda0aa674d04954",
-    "originalPixelMatches": 302,
+    "revision": 2,
+    "profileSourceHash": "1d7d818994aa66d47adcfad11e0228574c8b860f6cd7b2efc8f78a7932714f09",
+    "originalPixelMatches": 292,
     "oracleStatus": "Both original and modern symbols verified on all 302 Oracle faces; zero native asset faults or overflow.",
-    "fullCardCandidateIndex100": 70.7609591816934,
-    "released": true,
+    "fullCardCandidateIndex100": 70.97381861288463,
+    "released": false,
     "nativeOriginalFaces": 302,
     "nativeOracleFaces": 604,
     "originalEtchingMatches": 302,
@@ -4781,13 +4781,14 @@
       "games/magic/src/data/generated-manifest.json"
     ],
     "historicalControlFaces": 302,
-    "unchangedOriginalFaces": 289,
-    "artistOnlyOriginalChanges": 13,
-    "finalEvidence": "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-release-replay.json.gz",
-    "rendererHash": "e913686c3355ed42b0a8ed5533bbb1d1ac3741929ede4fe3f1dccda89a32a826",
-    "publication": "games/magic/fixtures/accuracy/early-through-fourth/2ed-publication.json",
-    "version": "0.6.7",
-    "publishedCommit": "063d3ea62c75dbd557a46c320e63927413b61695"
+    "unchangedOriginalFaces": 292,
+    "artistOnlyOriginalChanges": 0,
+    "finalEvidence": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-replay.json.gz",
+    "rendererHash": "cea52ac13b7e3afed0298426790e40029e15ddcdb94c43e50f59e4b576872324",
+    "version": "0.6.8",
+    "changedDualPrintings": 10,
+    "historicalArtistCorrections": 13,
+    "nativeRendererHash": "81db79e44b45f26a7502108fcc0c9204ef21e5f842dfb16a30269a829eb09a9e"
   },
   "finalArtistAudit": {
     "status": "13-corrections-native-and-public-api-verified",
@@ -4913,5 +4914,10 @@
     },
     "scope": "Structural index70.760959/100; all302 retained. Current metric excludes unverified legal/credit region from aggregate. Artist placement/appearance and exact credit strings have separate native fit, metadata and pixel-isolation evidence."
   },
-  "openReviews": ["games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-crop-review.json"]
+  "openReviews": [],
+  "revision2": {
+    "adoption": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-adoption.json",
+    "metadataProof": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-review-metadata-proof.json",
+    "visual": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-visual-review.json"
+  }
 }

@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { hash } from './common.mjs';
 import { CALIBRATION_TASKS } from './calibration-ledger.mjs';
 import { EARLY_SOURCE_RECEIPT } from './abu-source-ancestry.mjs';
-const file = 'games/magic/fixtures/accuracy/early-through-fourth/2ed-calibration-adoption.json';
+const file = 'games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-adoption.json';
 export async function unlimitedCalibrationEvidence() {
   const bytes = await readFile(file);
   const receipt = JSON.parse(bytes);

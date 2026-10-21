@@ -1280,14 +1280,11 @@ export const profile = {
 export const review = {
   revision: 2,
   scope:
-    'Shared Unlimited defaults with a source-bound dual crop, matched illustration window and isolated lower-bevel tone. Original and Oracle native replays, score update and publication certification are pending.',
+    'All302 ordinary Unlimited printings retain their reviewed Original inputs and text layouts. The dual plate is cropped upward with its illustration window; a source-local tone restores the lower bezel.906 installed Original/Oracle faces, fixed scan poses and separate boundary diagnostics are recorded in the evidence. Publication is tracked by the calibration ledger.',
   evidence: [
-    'games/magic/fixtures/accuracy/early-through-fourth/2ed-stage.json',
+    'games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-adoption.json',
+    'games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-replay.json.gz',
     'games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-crop-review.json',
   ],
-  pending: [
-    'Installed profile replay in Original and both Oracle symbol modes',
-    'Updated frozen-pose scores and full-card/corner visual review',
-    'Matching published release',
-  ],
+  pending: [],
 } as const;

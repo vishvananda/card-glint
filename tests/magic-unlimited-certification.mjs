@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { hash, readJson } from '../games/magic/tools/accuracy/common.mjs';
+import { hash, readJson, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   CALIBRATION_TASKS,
   calibrationTaskStatus,
@@ -43,20 +43,24 @@ for (const original of set.groups) {
 const reports = await calibrationReport({ sets: [set] });
 assert.equal(
   reports[0].counts.validated,
-  320 + set.groups.filter((g) => g.tasks.release.status === 'validated').length,
+  340 + set.groups.filter((g) => g.tasks.release.status === 'validated').length,
 );
 assert.equal(reports[0].originalRulesInputs.ready, 302);
 assert.equal(reports[0].originalTypeInputs.ready, 302);
-assert.equal(reports[0].counts['needs-audit'], 20);
-assert.equal(reports[0].complete, false);
-assert(reports[0].outstanding.every((r) => ['frameGeometry', 'fullCard'].includes(r.task)));
+assert.equal(reports[0].counts['needs-audit'], 0);
+assert.equal(
+  reports[0].complete,
+  set.groups.every((g) => g.tasks.release.status === 'validated'),
+);
+assert(reports[0].outstanding.every((r) => r.task === 'release'));
 // Group-level guards must invalidate every applicable dependent task.
 const tampered = structuredClone(set);
 tampered.groups[0].guards['games/magic/src/calibration/sets/2ed.ts'] = '0'.repeat(64);
 const invalid = await calibrationReport({ sets: [tampered] });
 assert(invalid[0].outstanding.some((r) => r.task === 'fullCard' && r.status === 'stale'));
 assert(data.receipt.metricCoverage.includes('excluded'));
-assert.equal(data.receipt.native.artistOnlyOriginalChanges, 13);
+assert.equal(data.receipt.native.artistOnlyOriginalChanges, 0);
+assert.equal(data.receipt.native.historicalArtistCorrections, 13);
 console.log(
   'Unlimited:302 exact census members,27 variants,340 scoped checks; changed source/geometry/member and group guards reject; publication remains a separate gate.',
 );
@@ -77,7 +81,11 @@ console.log('Published scan templates preserve all302 certified reference/pose j
 const cropReview = await readJson(
   'games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-crop-review.json',
 );
-assert.equal(cropReview.status, 'open');
+assert(['resolved-awaiting-release', 'resolved'].includes(cropReview.status));
+assert.equal(cropReview.resolution.profileRevision, 2);
+assert.equal(cropReview.resolution.adopted, true);
+const historical = await readJson(data.receipt.parent.file);
+assert.equal(hash(await readFile(data.receipt.parent.file)), data.receipt.parent.sha256);
 assert.equal(cropReview.candidateStudy.adopted, false);
 const archive = await readFile(cropReview.candidateStudy.file);
 assert.equal(hash(archive), cropReview.candidateStudy.sha256);
@@ -90,7 +98,7 @@ for (const row of cropStudy.capture.rows) {
   assert.equal(row.referenceHash, original.referenceHash);
   assert.equal(row.poseHash, original.poseHash);
   assert.equal(row.variants.length, 4);
-  assert.equal(row.variants[0].hash, original.nativeFaceHash);
+  assert.equal(row.variants[0].hash, historical.rows.find((r) => r.id === row.id).nativeFaceHash);
   for (const variant of row.variants)
     assert.deepEqual(
       variant.values,
@@ -102,5 +110,72 @@ assert(summary['up-3-art'].structural100 > summary.current.structural100);
 assert(summary['up-3-art'].strips.top > summary['up-3.5-art'].strips.top);
 assert(summary['up-3.5-art'].structural100 > summary['up-3-art'].structural100);
 console.log(
-  'Dual crop:40 native candidates,10 exact baseline matches; boundary diagnostic rejects the misleading aggregate optimum. Review remains open.',
+  'Dual crop:40 native candidates,10 exact baseline matches; boundary diagnostic rejects the misleading aggregate optimum. Combined crop/bevel proof is separate from this rejected crop-only study.',
+);
+
+const revisionFile = 'games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-replay.json.gz';
+const revisionBytes = await readFile(revisionFile);
+assert.equal(hash(revisionBytes), data.receipt.artifacts[revisionFile]);
+const revision = JSON.parse(gunzipSync(revisionBytes));
+for (const [key, text] of Object.entries(revision.documents))
+  assert.equal(hash(text), revision.documentHashes[key]);
+const native = JSON.parse(revision.documents.capture);
+const nativeSummary = JSON.parse(revision.documents.summary);
+const scores = JSON.parse(revision.documents.scores);
+const metadata = JSON.parse(revision.documents.metadata);
+assert.equal(native.completed, 302);
+assert.equal(nativeSummary.nativeFaces, 906);
+assert.equal(nativeSummary.unchangedFaces, 876);
+assert.equal(nativeSummary.bodyLayoutsUnchanged, 906);
+assert.deepEqual(nativeSummary.overflow, []);
+assert.equal(scores.reuse.unchanged, 292);
+assert.equal(scores.reuse.fresh, 10);
+assert.equal(scores.summary.all.components.structural100.improved, 10);
+assert.equal(scores.summary.all.components.structural100.regressed, 0);
+assert.equal(hash(revision.documents.capture), metadata.nativeCaptureHash);
+assert.equal(native.source.rendererHash, metadata.beforeTreeHash);
+assert.equal(metadata.afterTreeHash, data.receipt.rendererHash);
+assert.equal(await sourceHash('games/magic/src'), metadata.afterTreeHash);
+assert.equal(
+  hash(metadata.afterSource),
+  hash(await readFile('games/magic/src/calibration/sets/2ed.ts')),
+);
+assert.equal(hash(JSON.stringify(metadata.beforeMap)), metadata.beforeTreeHash);
+assert.equal(hash(JSON.stringify(metadata.afterMap)), metadata.afterTreeHash);
+const beforeFiles = new Map(metadata.beforeMap),
+  afterFiles = new Map(metadata.afterMap);
+assert.deepEqual([...beforeFiles.keys()], [...afterFiles.keys()]);
+assert.deepEqual(
+  [...beforeFiles.keys()].filter((file) => beforeFiles.get(file) !== afterFiles.get(file)),
+  ['calibration/sets/2ed.ts', 'data/generated-manifest.json'],
+);
+assert.deepEqual(
+  JSON.parse(metadata.manifestBefore).files,
+  JSON.parse(metadata.manifestAfter).files,
+);
+for (const [name, source] of Object.entries(revision.tools))
+  assert.equal(hash(source), hash(await readFile('games/magic/tools/accuracy/' + name)));
+assert.equal(native.source.toolHash, hash(revision.tools['early-profile-revision-native.mjs']));
+assert.equal(scores.source.toolHash, hash(revision.tools['early-profile-revision-score.mjs']));
+assert.equal(metadata.toolHash, hash(revision.tools['early-profile-review-metadata.mjs']));
+assert.equal(revision.materialIsolation.length, 10);
+for (const row of revision.materialIsolation) {
+  assert(row.changedPixels > 0);
+  assert.equal(row.outsideLowerBand, 0);
+  assert.equal(row.alphaUnchanged, true);
+  assert(row.bounds[1] >= 969 && row.bounds[1] + row.bounds[3] <= 982);
+}
+for (const row of native.rows) {
+  const current = data.receipt.rows.find((r) => r.id === row.id);
+  assert.equal(row.referenceHash, current.referenceHash);
+  assert.equal(row.poseHash, current.poseHash);
+  assert.equal(row.variants.original.rasters.face, current.nativeFaceHash);
+  for (const face of Object.values(row.variants)) {
+    assert.equal(face.etchingUnchanged, true);
+    assert.equal(hash(JSON.stringify(face.input)), face.inputHash);
+    assert.equal(face.body?.overflow ?? false, false);
+  }
+}
+console.log(
+  'Revision2:906 installed faces,292 unchanged printings,10 corrected duals; isolated lower bezel and exact review-only source bridge.',
 );
