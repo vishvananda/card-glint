@@ -22,7 +22,7 @@ vec3 studioGloss(vec3 ink, vec3 normal, vec3 view, vec3 position) {
   float g2=grazing*grazing;
   float fresnel=.035+.965*g2*g2*grazing;
   // Restrained pack-fresh varnish, with a nearly neutral softbox reflection.
-  vec3 reflected=vec3(1.00,.99,.97)*source*fresnel*.78*1.10;
+  vec3 reflected=vec3(1.00,.99,.97)*source*fresnel*.78*1.21;
   vec3 linearInk=previewLinear(ink);
   return previewInk(clamp(linearInk*(1.-source*fresnel*.15)+reflected,0.,1.));
 }
