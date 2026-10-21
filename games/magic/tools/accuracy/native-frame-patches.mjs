@@ -1,7 +1,7 @@
 // Filter only reviewed frame pixels at source resolution before downsampling.
 // Filtering a complete card first could leak adjacent title/footer/art pixels.
 import { luminance } from './pixels-pure.mjs';
-export const NATIVE_FRAME_FILTER = 'native-gaussian-0.8-frame-only-v1';
+export const NATIVE_FRAME_FILTER = 'native-grid-gaussian-0.8-frame-only-v2';
 export function nativeFrameRegions(image, windows, bounds) {
   const factor = Math.min(488 / image.width, 680 / image.height),
     padX = (488 - image.width * factor) / 2,
@@ -43,50 +43,55 @@ export function nativeFrameRegions(image, windows, bounds) {
     }),
   );
 }
-function weights(center, sigma, lo, hi) {
-  const radius = Math.ceil(3 * sigma),
-    start = Math.floor(center),
-    result = new Map();
-  let total = 0;
-  for (let i = start - radius; i <= start + radius + 1; i++) {
-    const weight = Math.exp(-0.5 * ((i - center) / sigma) ** 2),
-      index = Math.max(lo, Math.min(hi, i));
-    result.set(index, (result.get(index) ?? 0) + weight);
-    total += weight;
-  }
-  return [...result].map(([i, w]) => [i, w / total]);
-}
 export function nativeFramePatches(image, windows, bounds, gray = luminance(image)) {
   return nativeFrameRegions(image, windows, bounds).map((region) => {
     const { rect, factor, padX, padY, ...shape } = region,
-      { axis, normalLo, along, span, width, height } = shape,
-      sigma = 0.8 / factor;
-    const source = (x, pad) => (x - pad + 0.5) / factor - 0.5;
-    const normalWeights = Array.from({ length: width }, (_, i) =>
-      weights(
-        source(normalLo + i, axis === 'x' ? padX : padY),
-        sigma,
-        axis === 'x' ? rect[0] : rect[1],
-        axis === 'x' ? rect[2] : rect[3],
+      { axis } = shape,
+      normalStart = axis === 'x' ? rect[0] : rect[1],
+      alongStart = axis === 'x' ? rect[1] : rect[0],
+      width = (axis === 'x' ? rect[2] : rect[3]) - normalStart + 1,
+      height = (axis === 'x' ? rect[3] : rect[2]) - alongStart + 1,
+      sigma = 0.8 / factor,
+      radius = Math.ceil(3 * sigma);
+    const kernel = Array.from({ length: radius * 2 + 1 }, (_, i) =>
+        Math.exp(-0.5 * ((i - radius) / sigma) ** 2),
       ),
-    );
-    const alongWeights = Array.from({ length: height }, (_, j) =>
-      weights(
-        source(along - span + j, axis === 'x' ? padY : padX),
-        sigma,
-        axis === 'x' ? rect[1] : rect[0],
-        axis === 'x' ? rect[3] : rect[2],
-      ),
-    );
-    const values = new Uint8Array(width * height);
+      total = kernel.reduce((a, b) => a + b, 0);
+    for (let i = 0; i < kernel.length; i++) kernel[i] /= total;
+    const horizontal = new Float32Array(width * height),
+      values = new Uint8Array(width * height);
     for (let j = 0; j < height; j++)
       for (let i = 0; i < width; i++) {
-        let value = 0;
-        for (const [a, wa] of alongWeights[j])
-          for (const [n, wn] of normalWeights[i])
-            value += wa * wn * gray[(axis === 'x' ? a : n) * image.width + (axis === 'x' ? n : a)];
-        values[j * width + i] = Math.round(value);
+        let sum = 0;
+        for (let k = -radius; k <= radius; k++) {
+          const n = normalStart + Math.max(0, Math.min(width - 1, i + k)),
+            a = alongStart + j;
+          sum +=
+            kernel[k + radius] *
+            gray[(axis === 'x' ? a : n) * image.width + (axis === 'x' ? n : a)];
+        }
+        horizontal[j * width + i] = sum;
       }
-    return { ...shape, values };
+    for (let j = 0; j < height; j++)
+      for (let i = 0; i < width; i++) {
+        let sum = 0;
+        for (let k = -radius; k <= radius; k++)
+          sum +=
+            kernel[k + radius] * horizontal[Math.max(0, Math.min(height - 1, j + k)) * width + i];
+        values[j * width + i] = Math.round(sum);
+      }
+    return {
+      ...shape,
+      width,
+      height,
+      nativeSampling: {
+        factor,
+        normalPad: axis === 'x' ? padX : padY,
+        alongPad: axis === 'x' ? padY : padX,
+        normalStart,
+        alongStart,
+      },
+      values,
+    };
   });
 }

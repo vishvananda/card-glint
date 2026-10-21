@@ -76,7 +76,11 @@ export function unpackFramePatches(bytes, description) {
   const result = description.map((ps) =>
     ps.map((p) => {
       if (
-        !['binomial5-frame-only-v1', 'native-gaussian-0.8-frame-only-v1'].includes(p.filter) ||
+        ![
+          'binomial5-frame-only-v1',
+          'native-gaussian-0.8-frame-only-v1',
+          'native-grid-gaussian-0.8-frame-only-v2',
+        ].includes(p.filter) ||
         p.lo <= p.normalLo ||
         p.hi >= p.normalHi
       )
@@ -98,8 +102,21 @@ export function unpackFramePatches(bytes, description) {
 function sample(p, x, y) {
   const n = p.axis === 'x' ? x : y,
     a = p.axis === 'x' ? y : x;
-  const u = Math.max(0, Math.min(p.width - 1, n - p.normalLo)),
-    v = Math.max(0, Math.min(p.height - 1, a - p.along + p.span));
+  const s = p.nativeSampling;
+  const u = Math.max(
+      0,
+      Math.min(
+        p.width - 1,
+        s ? (n - s.normalPad + 0.5) / s.factor - 0.5 - s.normalStart : n - p.normalLo,
+      ),
+    ),
+    v = Math.max(
+      0,
+      Math.min(
+        p.height - 1,
+        s ? (a - s.alongPad + 0.5) / s.factor - 0.5 - s.alongStart : a - p.along + p.span,
+      ),
+    );
   const i = Math.floor(u),
     j = Math.floor(v),
     r = Math.min(i + 1, p.width - 1),

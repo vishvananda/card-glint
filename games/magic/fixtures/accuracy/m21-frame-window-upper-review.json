@@ -3,7 +3,7 @@
   "set": "m21",
   "reviewedAt": "2026-10-21",
   "scope": "All297 scans visually checked in exact top/left/right support mosaics. Normal/crowned support is0..31; fourteen planeswalkers retain0..27 because extending to31 catches heading ink. Top matching uses9..26 for normal/crowned and9..23 for planeswalkers. Bottom support remains625..634, matching interval627..632. Native Gaussian filtering uses source pixel centers strictly contained in these same reviewed fields, then downsamples; native outside-field replacement is byte-exact on all297. No text, artwork or footer is admitted to a fine frame feature. No pose, color or set-completion approval is claimed here.",
-  "observationsHash": "3e718193cf4f4318d33c3e8d34a8c2824f37a562ba8f1c6310f4036887e8bcb8",
+  "observationsHash": "b3fdac2539a3a84c537cce7d7bf146e7930e306882450dc8000816c51d0145d7",
   "bounds": {
     "left": [0, 33],
     "right": [455, 487],
@@ -2007,5 +2007,5 @@
   ],
   "externalImagesInRepository": false,
   "matchingInvariant": "All matched coordinates plus a one-pixel derivative footprint must fit inside the reviewed support. The previous experimental625..639 bottom interval violated this invariant and is rejected.",
-  "filter": "native-gaussian-0.8-frame-only-v1"
+  "filter": "native-grid-gaussian-0.8-frame-only-v2"
 }
