@@ -13,17 +13,17 @@ import {
 } from './frame-patch-profiles.mjs';
 import { nativeFramePatches } from './native-frame-patches.mjs';
 import { fitModernAffine } from './modern-affine-fit.mjs';
-const bounds = { left: [0, 33], right: [455, 487], top: [0, 31], bottom: [625, 634] };
+const bounds = { left: [0, 33], right: [455, 487], top: [0, 31], bottom: [625, 638] };
 const make = (v, h, b) => ({
   left: ['x', 12, 27, v, 8],
   right: ['x', 460, 476, v, 8],
   top: ['y', 9, 26, h, 8],
-  bottom: ['y', 627, 632, b, 8],
+  bottom: ['y', 627, 634, b, 8],
 });
 const windows = [
-  make([130, 210, 290], [90, 180, 320], [70, 130, 290]),
-  make([155, 235, 315], [120, 210, 350], [90, 150, 310]),
-  make([180, 260, 340], [150, 290, 380], [110, 170, 330]),
+  make([130, 210, 290], [90, 180, 320], [130, 170, 290]),
+  make([155, 235, 315], [120, 210, 350], [150, 190, 330]),
+  make([180, 260, 340], [150, 290, 380], [310, 350, 370]),
 ];
 const cases = [
   { label: 'identity', sx: 1, sy: 1, tx: 0, ty: 0, rotation: 0, shear: 0 },
@@ -55,7 +55,7 @@ assert.throws(
   () =>
     framePatches(
       safetyImage,
-      { ...windows[0], bottom: ['y', 625, 639, [70, 130, 290], 8] },
+      { ...windows[0], bottom: ['y', 625, 639, [130, 170, 290], 8] },
       bounds,
     ),
   /Matching interval/,

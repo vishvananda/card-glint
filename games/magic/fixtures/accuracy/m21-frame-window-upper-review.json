@@ -2,32 +2,32 @@
   "schema": 1,
   "set": "m21",
   "reviewedAt": "2026-10-21",
-  "scope": "All297 scans visually checked in exact top/left/right support mosaics. Normal/crowned support is0..31; fourteen planeswalkers retain0..27 because extending to31 catches heading ink. Top matching uses9..26 for normal/crowned and9..23 for planeswalkers. Bottom support remains625..634, matching interval627..632. Native Gaussian filtering uses source pixel centers strictly contained in these same reviewed fields, then downsamples; native outside-field replacement is byte-exact on all297. No text, artwork or footer is admitted to a fine frame feature. No pose, color or set-completion approval is claimed here.",
-  "observationsHash": "c3c50eff85204a69aa55383ff7326d760ac9e5977ffbb1678a254d710378ddef",
+  "scope": "All297 exact top/left/right fields retain their previously reviewed source bounds and positions: normal/crowned top0..31, fourteen walkers0..27. Only bottom fields changed: companion bottom review binds all297 newly inspected lower crops,625..638 support and627..634 matching at nine slots away from collector text, stamp and stats. Native Gaussian filtering and float storage read only source pixel centers inside these masks; outside-field replacement is byte-exact. No scan pose, color or set-completion approval.",
+  "observationsHash": "7df521593fcd96555a0cb600b75f87b685216aa5290dcdfdf09aae893568ef3a",
   "bounds": {
     "left": [0, 33],
     "right": [455, 487],
     "top": [0, 31],
-    "bottom": [625, 634]
+    "bottom": [625, 638]
   },
   "partitions": [
     {
       "left": ["x", 12, 27, [130, 210, 290], 8],
       "right": ["x", 460, 476, [130, 210, 290], 8],
       "top": ["y", 9, 26, [90, 180, 320], 8],
-      "bottom": ["y", 627, 632, [70, 130, 290], 8]
+      "bottom": ["y", 627, 634, [130, 170, 290], 8]
     },
     {
       "left": ["x", 12, 27, [155, 235, 315], 8],
       "right": ["x", 460, 476, [155, 235, 315], 8],
       "top": ["y", 9, 26, [120, 210, 350], 8],
-      "bottom": ["y", 627, 632, [90, 150, 310], 8]
+      "bottom": ["y", 627, 634, [150, 190, 330], 8]
     },
     {
       "left": ["x", 12, 27, [180, 260, 340], 8],
       "right": ["x", 460, 476, [180, 260, 340], 8],
       "top": ["y", 9, 26, [150, 290, 380], 8],
-      "bottom": ["y", 627, 632, [110, 170, 330], 8]
+      "bottom": ["y", 627, 634, [310, 350, 370], 8]
     }
   ],
   "windowProfiles": {
@@ -36,26 +36,26 @@
         "left": [0, 33],
         "right": [455, 487],
         "top": [0, 31],
-        "bottom": [625, 634]
+        "bottom": [625, 638]
       },
       "partitions": [
         {
           "left": ["x", 12, 27, [130, 210, 290], 8],
           "right": ["x", 460, 476, [130, 210, 290], 8],
           "top": ["y", 9, 26, [90, 180, 320], 8],
-          "bottom": ["y", 627, 632, [70, 130, 290], 8]
+          "bottom": ["y", 627, 634, [130, 170, 290], 8]
         },
         {
           "left": ["x", 12, 27, [155, 235, 315], 8],
           "right": ["x", 460, 476, [155, 235, 315], 8],
           "top": ["y", 9, 26, [120, 210, 350], 8],
-          "bottom": ["y", 627, 632, [90, 150, 310], 8]
+          "bottom": ["y", 627, 634, [150, 190, 330], 8]
         },
         {
           "left": ["x", 12, 27, [180, 260, 340], 8],
           "right": ["x", 460, 476, [180, 260, 340], 8],
           "top": ["y", 9, 26, [150, 290, 380], 8],
-          "bottom": ["y", 627, 632, [110, 170, 330], 8]
+          "bottom": ["y", 627, 634, [310, 350, 370], 8]
         }
       ]
     },
@@ -64,26 +64,26 @@
         "left": [0, 33],
         "right": [455, 487],
         "top": [0, 27],
-        "bottom": [625, 634]
+        "bottom": [625, 638]
       },
       "partitions": [
         {
           "left": ["x", 12, 27, [130, 210, 290], 8],
           "right": ["x", 460, 476, [130, 210, 290], 8],
           "top": ["y", 9, 23, [90, 180, 320], 8],
-          "bottom": ["y", 627, 632, [70, 130, 290], 8]
+          "bottom": ["y", 627, 634, [130, 170, 290], 8]
         },
         {
           "left": ["x", 12, 27, [155, 235, 315], 8],
           "right": ["x", 460, 476, [155, 235, 315], 8],
           "top": ["y", 9, 23, [120, 210, 350], 8],
-          "bottom": ["y", 627, 632, [90, 150, 310], 8]
+          "bottom": ["y", 627, 634, [150, 190, 330], 8]
         },
         {
           "left": ["x", 12, 27, [180, 260, 340], 8],
           "right": ["x", 460, 476, [180, 260, 340], 8],
           "top": ["y", 9, 23, [150, 290, 380], 8],
-          "bottom": ["y", 627, 632, [110, 170, 330], 8]
+          "bottom": ["y", 627, 634, [310, 350, 370], 8]
         }
       ]
     }

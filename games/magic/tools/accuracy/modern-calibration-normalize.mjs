@@ -33,6 +33,11 @@ assert.deepEqual(reviews[0].data.bounds, observations.bounds);
 assert.deepEqual(reviews[0].data.partitions, observations.partitions);
 assert.deepEqual(reviews[0].data.windowProfiles, observations.windowProfiles);
 assert.deepEqual(reviews[1].data.bounds, observations.bounds.bottom);
+assert.deepEqual(
+  reviews[1].data.positions,
+  observations.partitions.map((p) => p.bottom[3]),
+);
+assert(observations.partitions.every((p) => p.bottom[4] === reviews[1].data.halfSpan));
 assert(observations.rows.every((r) => r.contentIsolationPassed));
 const sources = Object.fromEntries(
   await Promise.all(

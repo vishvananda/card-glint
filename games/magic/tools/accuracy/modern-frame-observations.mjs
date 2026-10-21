@@ -13,17 +13,17 @@ const [inputFile, outputDirectory] = process.argv.slice(2);
 assert(outputDirectory, 'Usage: modern-frame-observations.mjs INPUTS OUT');
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
-const bounds = { left: [0, 33], right: [455, 487], top: [0, 31], bottom: [625, 634] };
+const bounds = { left: [0, 33], right: [455, 487], top: [0, 31], bottom: [625, 638] };
 const windows = (vertical, horizontal, bottom) => ({
   left: ['x', 12, 27, vertical, 8],
   right: ['x', 460, 476, vertical, 8],
   top: ['y', 9, 26, horizontal, 8],
-  bottom: ['y', 627, 632, bottom, 8],
+  bottom: ['y', 627, 634, bottom, 8],
 });
 const partitions = [
-  windows([130, 210, 290], [90, 180, 320], [70, 130, 290]),
-  windows([155, 235, 315], [120, 210, 350], [90, 150, 310]),
-  windows([180, 260, 340], [150, 290, 380], [110, 170, 330]),
+  windows([130, 210, 290], [90, 180, 320], [130, 170, 290]),
+  windows([155, 235, 315], [120, 210, 350], [150, 190, 330]),
+  windows([180, 260, 340], [150, 290, 380], [310, 350, 370]),
 ];
 for (const side of Object.keys(bounds))
   for (let a = 0; a < 3; a++)
