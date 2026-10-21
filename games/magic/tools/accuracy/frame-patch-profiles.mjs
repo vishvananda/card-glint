@@ -137,17 +137,21 @@ export function patchGradient(p, transform = { matrix: [1, 0, 0, 1, 0, 0] }) {
       244 + m[0] * (x - 244) + m[2] * (y - 340) + m[4],
       340 + m[1] * (x - 244) + m[3] * (y - 340) + m[5],
     );
-  // Eight central tangential samples leave4.5px of observed support on each
-  // side. Every sample clamps only to reviewed frame pixels, never to text/art.
-  for (let q = p.lo; q <= p.hi; q++) {
-    let sum = 0;
-    for (let k = -3.5; k <= 3.5; k++) {
-      const x = p.axis === 'x' ? q : p.along + k,
-        y = p.axis === 'y' ? q : p.along + k;
-      sum += p.axis === 'x' ? (at(x + 1, y) - at(x - 1, y)) / 2 : (at(x, y + 1) - at(x, y - 1)) / 2;
+  // Preserve four tangential bins instead of averaging a curve into one strip.
+  // Each bin averages two samples. Dividing each by two keeps the raw-signal
+  // energy scale equal to the earlier single averaged gradient vector.
+  for (let q = p.lo; q <= p.hi; q++)
+    for (const center of [-3, -1, 1, 3]) {
+      let sum = 0;
+      for (const k of [center - 0.5, center + 0.5]) {
+        const x = p.axis === 'x' ? q : p.along + k,
+          y = p.axis === 'y' ? q : p.along + k;
+        sum +=
+          p.axis === 'x' ? (at(x + 1, y) - at(x - 1, y)) / 2 : (at(x, y + 1) - at(x, y - 1)) / 2;
+      }
+      result.push(sum / 4);
     }
-    result.push(sum / 8);
-  }
+
   return result;
 }
 export function patchSupport(patches, templates, transform) {
@@ -156,8 +160,9 @@ export function patchSupport(patches, templates, transform) {
     if (!t || p.side !== t.side || p.along !== t.along || p.lo !== t.lo || p.hi !== t.hi)
       throw Error('Frame field identity differs');
     const a = patchGradient(p, transform),
-      b = t.gradient,
-      aa = a.reduce((n, x) => n + x * x, 0),
+      b = t.gradient;
+    if (a.length !== b.length) throw Error('Frame feature identity differs');
+    const aa = a.reduce((n, x) => n + x * x, 0),
       bb = b.reduce((n, x) => n + x * x, 0);
     return {
       side: p.side,

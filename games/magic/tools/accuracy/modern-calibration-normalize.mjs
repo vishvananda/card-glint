@@ -83,7 +83,7 @@ for (const family of [...new Set(rows.map((r) => r.geometry))]) {
           lo: p.lo,
           hi: p.hi,
           along: p.along,
-          gradient: Array.from({ length: p.hi - p.lo + 1 }, (_, j) =>
+          gradient: Array.from({ length: gradients[0].length }, (_, j) =>
             median(gradients.map((g) => g[j])),
           ),
         };
@@ -111,7 +111,7 @@ const definition = {
   reviews: reviews.map(({ file, sha256 }) => ({ file, sha256 })),
   templates,
   policy:
-    'Complete observed scan census. Physical geometry and normal-frame material families; gradient vectors use the matched outer-boundary interval for normalization and are normalized to L2 norm100 before taking population medians so pale cards cannot dominate the shared edge positions. A joint six-parameter affine fit samples small reviewed2D gray fields with the exact inverse matrix (including tangential movement along curves), and uses original unnormalized gradients, preserving low-signal rejection. The earlier stepwise models only supply starting points; independent strips and known-raster controls gate the affine result. All colors, foil flags and materials remain in the denominator. Disjoint fit, model-selection and certification footprints; no held-out-name or unseen-transfer claim. Scan poses are comparison-only and never enter renderer defaults.',
+    'Complete observed scan census. Physical geometry and normal-frame material families; gradient vectors use the matched outer-boundary interval for normalization and are normalized to L2 norm100 before taking population medians so pale cards cannot dominate the shared edge positions. Four tangential gradient bins retain the local2D shape instead of averaging it away. A joint six-parameter affine fit samples small reviewed2D gray fields with the exact inverse matrix (including tangential movement along curves), and uses original unnormalized gradients, preserving low-signal rejection. The earlier stepwise models only supply starting points; independent strips and known-raster controls gate the affine result. All colors, foil flags and materials remain in the denominator. Disjoint fit, model-selection and certification footprints; no held-out-name or unseen-transfer claim. Scan poses are comparison-only and never enter renderer defaults.',
 };
 const templateHash = hash(JSON.stringify(definition));
 await mkdir(outputDirectory, { recursive: true });

@@ -31,6 +31,7 @@ function residuals(profiles, templates, q, patches, patchTemplates) {
         b = patchTemplates[i].gradient,
         an = Math.hypot(...a),
         bn = Math.hypot(...b);
+      if (a.length !== b.length) throw Error('Frame feature identity differs');
       for (let j = 0; j < a.length; j++)
         result.push(an * an < 10 || bn * bn < 10 ? 1 / Math.sqrt(a.length) : a[j] / an - b[j] / bn);
     }
