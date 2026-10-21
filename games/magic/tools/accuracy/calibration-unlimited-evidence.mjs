@@ -3,8 +3,13 @@ import { readFile } from 'node:fs/promises';
 import { hash } from './common.mjs';
 import { CALIBRATION_TASKS } from './calibration-ledger.mjs';
 import { EARLY_SOURCE_RECEIPT } from './abu-source-ancestry.mjs';
-const file = 'games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-adoption.json';
-export async function unlimitedCalibrationEvidence() {
+const receiptFiles = {
+  crop: 'games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-adoption.json',
+  tone: 'games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-adoption.json',
+};
+export async function unlimitedCalibrationEvidence({ revision = 'tone' } = {}) {
+  assert(Object.hasOwn(receiptFiles, revision), 'Unknown Unlimited receipt revision');
+  const file = receiptFiles[revision];
   const bytes = await readFile(file);
   const receipt = JSON.parse(bytes);
   assert.equal(receipt.set, '2ed');
@@ -15,10 +20,13 @@ export async function unlimitedCalibrationEvidence() {
       Object.entries(receipt.guards).map(async ([f, h]) => hash(await readFile(f)) === h),
     )
   ).every(Boolean);
-  return { receipt, current, receiptHash: hash(bytes) };
+  return { receipt, current, receiptHash: hash(bytes), file };
 }
 /** Install only exact, replayed variants. This does not approve a release. */
-export function applyUnlimitedEvidence(group, { receipt, current, receiptHash }) {
+export function applyUnlimitedEvidence(
+  group,
+  { receipt, current, receiptHash, file = receiptFiles.tone },
+) {
   const variant = receipt.groups.find((g) => g.key === group.key);
   assert(variant, 'Uncertified Unlimited variant');
   assert.deepEqual(variant.printingIds, group.printingIds);
@@ -26,6 +34,16 @@ export function applyUnlimitedEvidence(group, { receipt, current, receiptHash })
     variant.sourceHash === group.sourceHash &&
     JSON.stringify(variant.sourceHashes) === JSON.stringify(group.sourceHashes);
   group.guards = { ...receipt.guards, ...receipt.artifacts, [file]: receiptHash };
+  if (
+    group.tasks.release?.status === 'validated' &&
+    group.tasks.release.proof?.rendererHash !== receipt.rendererHash
+  )
+    group.tasks.release = {
+      ...group.tasks.release,
+      status: 'pending',
+      reason:
+        'The calibrated renderer changed after publication; verify a matching release before marking this set complete.',
+    };
   const rows = receipt.rows.filter((r) => group.printingIds.includes(r.id));
   assert.equal(rows.length, group.printings);
   group.sourceCensus = {

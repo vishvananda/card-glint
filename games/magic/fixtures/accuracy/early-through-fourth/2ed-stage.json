@@ -2,7 +2,7 @@
   "schema": 1,
   "asOf": "2026-10-21",
   "set": "2ed",
-  "status": "revision2-published-all-printing-native-verified",
+  "status": "revision3-published-all-printing-native-verified",
   "inventory": 302,
   "referenceObjectsPresent": 302,
   "artObjectsPresent": 302,
@@ -4765,11 +4765,11 @@
   },
   "installedProfile": {
     "file": "games/magic/src/calibration/sets/2ed.ts",
-    "revision": 2,
-    "profileSourceHash": "1d7d818994aa66d47adcfad11e0228574c8b860f6cd7b2efc8f78a7932714f09",
+    "revision": 3,
+    "profileSourceHash": "88e4cc497dc62522544a01163c4341520899f4e1febca0cc2a9469a68cb2c5e6",
     "originalPixelMatches": 292,
     "oracleStatus": "Both original and modern symbols verified on all 302 Oracle faces; zero native asset faults or overflow.",
-    "fullCardCandidateIndex100": 70.97381861288463,
+    "fullCardCandidateIndex100": 70.96130124769897,
     "released": true,
     "nativeOriginalFaces": 302,
     "nativeOracleFaces": 604,
@@ -4783,13 +4783,13 @@
     "historicalControlFaces": 302,
     "unchangedOriginalFaces": 292,
     "artistOnlyOriginalChanges": 0,
-    "finalEvidence": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-replay.json.gz",
-    "rendererHash": "cea52ac13b7e3afed0298426790e40029e15ddcdb94c43e50f59e4b576872324",
-    "version": "0.6.8",
+    "finalEvidence": "games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-replay.json.gz",
+    "rendererHash": "34a8a05e2e5dae4786486eb5d3fbac6b21cfc1ff9d0b47a06135f84f19de7e4a",
+    "version": "0.6.9",
     "changedDualPrintings": 10,
     "historicalArtistCorrections": 13,
-    "nativeRendererHash": "81db79e44b45f26a7502108fcc0c9204ef21e5f842dfb16a30269a829eb09a9e",
-    "publishedCommit": "9c60a7d0fd6aef8dc3d1dcd0185a241c83aacabd"
+    "nativeRendererHash": "34a8a05e2e5dae4786486eb5d3fbac6b21cfc1ff9d0b47a06135f84f19de7e4a",
+    "publishedCommit": "96f98dc584131f4678543bcea6f6f157697f3b0a"
   },
   "finalArtistAudit": {
     "status": "13-corrections-native-and-public-api-verified",
@@ -4921,5 +4921,38 @@
     "metadataProof": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-review-metadata-proof.json",
     "visual": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-visual-review.json",
     "publication": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-publication.json"
+  },
+  "revision3": {
+    "adoption": "games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-adoption.json",
+    "visual": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-tone-review.json",
+    "publication": "games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-publication.json",
+    "colorDiagnostic": {
+      "fitPrintings": 9,
+      "reportPrintings": 10,
+      "excludedFitId": "9dc7ab05-a5f5-4a02-87e7-3c47be35b5cb",
+      "backgroundMAE": {
+        "before": 7.990513545953361,
+        "after": 7.6701688957476
+      },
+      "blackOutlineScope": [
+        "5804dcd3-d41d-4cbd-9f8f-9736f2d37a64",
+        "d66e43f0-1558-409f-8248-cc1d76c6bd8e",
+        "bc98d888-4af3-43a3-b035-40c651057b6e"
+      ],
+      "structuralTradeoff": {
+        "count": 302,
+        "beforeMean": 70.97381861288463,
+        "afterMean": 70.96130124769897,
+        "beforeMedian": 71.41681466443006,
+        "afterMedian": 71.41681466443006,
+        "beforeLowerDecile": 63.462460251372356,
+        "afterLowerDecile": 63.462460251372356,
+        "improved": 1,
+        "regressed": 9,
+        "worstRegression": 1.214296435573516
+      },
+      "reason": "Accept independently measured pigment improvement without optimizing scan contrast thresholds or introducing printing-specific tones. No geometry or text-size changes."
+    },
+    "scope": "Shared dual pigment/outer-strip corrections only; immutable revision2 crop/geometry/wording receipts retained."
   }
 }

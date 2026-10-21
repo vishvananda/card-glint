@@ -10,6 +10,7 @@ import {
   calibrationApplicability,
 } from '../games/magic/tools/accuracy/calibration-groups.mjs';
 import { calibrationReport } from '../games/magic/tools/accuracy/calibration-report.mjs';
+import { unlimitedCalibrationEvidence } from '../games/magic/tools/accuracy/calibration-unlimited-evidence.mjs';
 import { applyEarlyOriginalWording } from '../games/magic/tools/accuracy/calibration-original-wording.mjs';
 import { preDarkWordingSource } from './magic-dark-wording-source-guard.mjs';
 import { preDarkBodySource } from './magic-dark-body-source-guard.mjs';
@@ -185,12 +186,20 @@ assert.deepEqual(
   eelGroup.tasks.rules.originalInput.sources,
 );
 assert.equal(reports.length, 272);
+const unlimitedReceipt = (await unlimitedCalibrationEvidence()).receipt;
+const unlimitedReleased = ledger.sets
+  .find((s) => s.set === '2ed')
+  .groups.every(
+    (g) =>
+      g.tasks.release.status === 'validated' &&
+      g.tasks.release.proof.rendererHash === unlimitedReceipt.rendererHash,
+  );
 assert.deepEqual(
   reports
     .filter((s) => s.complete)
     .map((s) => s.set)
     .sort(),
-  ['2ed'],
+  unlimitedReleased ? ['2ed'] : [],
 );
 const alphaReport = reports.find((s) => s.set === 'lea');
 assert.equal(alphaReport.byTask.headings.validated, alphaReport.groups);
