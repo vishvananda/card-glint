@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "set": "2ed",
+  "status": "candidate-not-adopted",
+  "reviewedAt": "2026-10-21",
+  "scope": "All ten Unlimited duals; tone-only study against original wording at installed 0.6.8 scan poses. Source-census diagnostics, no held-out claim. Runtime profile, release and calibration completion receipts remain unchanged.",
+  "source": {
+    "rendererHash": "cea52ac13b7e3afed0298426790e40029e15ddcdb94c43e50f59e4b576872324",
+    "inputsHash": "f76145a7effbb3f1d28d948ea1a8f5dc42ed6d2956715e4553a5b81f48d03ca3",
+    "toolHash": "7aefe3af5b80ebedfe8b5976578ca027848ae4a4dc370f892af1113fa7878e2b"
+  },
+  "baselineExactMatches": 10,
+  "reviewerDirection": {
+    "excludeFromSharedBackgroundFit": {
+      "id": "9dc7ab05-a5f5-4a02-87e7-3c47be35b5cb",
+      "name": "Volcanic Island",
+      "reason": "User compared independent online scans and identified the cached Scryfall scan as abnormally dark. One cached scan cannot establish a printing-wide defect."
+    },
+    "reportDenominator": 10,
+    "fitDenominator": 9,
+    "perCardToneOverrides": false
+  },
+  "findings": [
+    "The outer colored strip is restored from the selected source plate, not drawn as a hardcoded pure-black fill.",
+    "The shared post-HSB texture curve subtracts up to 25.5 red/27.56 blue levels in mid-dark values. Removing it improves the three black outlines but worsens Volcanic Island; do not optimize a shared frame against this dark outlier.",
+    "Raising all B pigment rings affects more than the full-frame strip. Split the first source-local ring from the remaining art/text rings and adjust it independently.",
+    "The structural metric does not independently report this outer pigment strip; color mismatch must be evaluated separately from edge overlap."
+  ],
+  "candidate": {
+    "name": "combined-nine",
+    "frameRGBScale": [1.036764705882353, 1.0327868852459017, 1.0256410256410255],
+    "backgroundFitMethod": "Equal-card/equal-side L1 of neutral strip median RGB. Per-channel global linear gain is weighted median(target/source), source-channel value as weight. Single gain for nine cards; excludes no side or card except user-identified Volcanic scan.",
+    "scope": "Same neutral-background transform for all five dual source plates; paper/textbox transformations and geometry unchanged.",
+    "blackOuterAccent": {
+      "source": "B",
+      "splitFirstRingFromAccent": 0,
+      "brightnessScale": 1.2,
+      "remainingRingsUnchanged": true
+    },
+    "blackOuterOnlyIsolation": "Seven other duals byte-identical under outer-only correction; only Badlands, Bayou and Underground Sea change. Combined background fit intentionally changes all ten backgrounds, including Volcanic Island using the nine-card rule."
+  },
+  "colorDiagnostic": {
+    "method": "RGB mean absolute error after Gaussian sigma1.5 native pixels; side-paper medians fit with equal card/side weighting. Native fixed scan poses; no rescaling, rotation, text or per-card fit changes.",
+    "backgroundMedianMAE": {
+      "before": 5.962962962962963,
+      "linearFitPrediction": 5.112785278045645
+    },
+    "coverage": "Two neutral side strips only; separate left shadow/keyline diagnostics. This is not certification of all frame colors or full-card accuracy."
+  },
+  "evidence": {
+    "archive": "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-tone-study.json.gz",
+    "sha256": "3aea73840d2156873ccaf258df65e54e899333e7e1043bcbac9a5d993f106202",
+    "tool": "games/magic/tools/accuracy/unlimited-dual-tone-study.mjs",
+    "toolHash": "7aefe3af5b80ebedfe8b5976578ca027848ae4a4dc370f892af1113fa7878e2b"
+  },
+  "next": "Adopt only after installed-profile native replay and current-source certification; preserve historical 0.6.8 receipts and regenerate dependent scores. This diagnostic alone does not promote renderer defaults."
+}
