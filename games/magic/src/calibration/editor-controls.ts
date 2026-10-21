@@ -1,3 +1,4 @@
+import { dualCalibrationControls } from './dual-controls.js';
 import type { SetCalibrationProfile } from './types.js';
 import type { CalibrationControl, CalibrationGroup, CalibrationValue } from './editor-types.js';
 
@@ -81,6 +82,7 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
       ? profile.footer[role.slice(7) as keyof SetCalibrationProfile['footer']]
       : profile[role as 'title' | 'type'];
     for (const [key, value] of Object.entries(p)) {
+      if (typeof value !== 'number') continue;
       const gray = /gray/i.test(key),
         ratio = key === 'width';
       number(
@@ -89,12 +91,59 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
         role.startsWith('footer') ? 'footer' : 'lettering',
         'all',
         key === 'x' || key === 'y' ? 0 : ratio ? 0.6 : 0,
-        key === 'x' ? 488 : key === 'y' ? 680 : gray ? 255 : key === 'size' ? 60 : ratio ? 1.5 : 4,
+        key === 'x' || key === 'maxWidth'
+          ? 488
+          : key === 'y'
+            ? 680
+            : gray
+              ? 255
+              : key === 'size'
+                ? 60
+                : ratio
+                  ? 1.5
+                  : 4,
         gray ? 1 : 0.05,
         ratio ? 'ratio' : gray ? 'sRGB 0–255' : 'px',
       );
     }
   }
+  if (profile.footer.artist.align !== undefined)
+    choice('footer.artist.align', profile.footer.artist.align, 'footer', 'all', [
+      'left',
+      'center',
+      'right',
+    ]);
+  if (profile.footer.artist.baseline !== undefined)
+    choice('footer.artist.baseline', profile.footer.artist.baseline, 'footer', 'all', [
+      'alphabetic',
+      'middle',
+      'top',
+      'bottom',
+    ]);
+  if (profile.textTiers)
+    for (const [key, value] of Object.entries(profile.textTiers)) {
+      if (typeof value === 'boolean') choice(`textTiers.${key}`, value, 'body', 'all');
+      else if (typeof value === 'number') {
+        const ratio = key === 'denseWidth';
+        const count = ['largeMaximum', 'mediumMaximum', 'retainRegularAboveLines'].includes(key);
+        number(
+          `textTiers.${key}`,
+          value,
+          'body',
+          'all',
+          ratio ? 0.7 : count ? 1 : -24,
+          ratio ? 1.3 : count ? 1000 : 488,
+          ratio ? 0.005 : count ? 1 : 0.25,
+          ratio ? 'ratio' : count ? 'count' : 'px',
+        );
+      }
+    }
+  if (profile.footer.stats.baseline !== undefined)
+    choice('footer.stats.baseline', profile.footer.stats.baseline, 'footer', 'all', [
+      'alphabetic',
+      'middle',
+    ]);
+  controls.push(...dualCalibrationControls(profile));
   const mana = profile.mana.geometry;
   for (const key of [
     'dx',

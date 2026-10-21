@@ -198,6 +198,7 @@ export function retroAssets(face: RenderedCardInput) {
     retroFrameAsset(face),
     dual?.overlay,
     dual?.mask,
+    ...(earlyReprintFrame(face)?.dual ? [dual?.outline] : []),
     !isRevisedLand(face) &&
     !usesRevisedFrameGeometry(face) &&
     (earlyReprintFrame(face)?.stockMaskFrame ||

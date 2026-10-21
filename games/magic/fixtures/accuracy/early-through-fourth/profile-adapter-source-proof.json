@@ -1,0 +1,381 @@
+{
+  "schema": 1,
+  "scope": "Additive optional dual-land, footer and early-text profile adapter equivalence. The original preparation receipt remains immutable. All 302 current Unlimited Original PNG pairs and default etching layers are identical; 25200 semantic cases across fifteen sets are unchanged. Other-set native and Oracle parity are not claimed. Only exact known helper bytes and unchanged/inactive compiled profiles may reconstruct the older source. Changed profiles and unknown edits retain current guards; this does not certify or activate Unlimited calibration.",
+  "base": "280d715",
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/early-through-fourth/profile-adapter-parity.json.gz",
+    "sha256": "f314e786f29c88eb71f091a4b0c058519eaf677e11953c00885d253345370866",
+    "contentSha256": "d5cac65d7e018fc21609627b45a68ad6274caa80cbe8a10b4928cc566f0e8a83"
+  },
+  "profileDependencies": {
+    "games/magic/src/calibration/sets/4ed.ts": "579d0bc0a118800002af346bf0ea0cbb85ae5243d5de8f80783a941c777effee",
+    "games/magic/src/calibration/sets/chr.ts": "36c7f45ffd40312153191fe250a79da9fc8ec88dd943aa454dcfcc7acb85cb42",
+    "games/magic/src/calibration/sets/fem.ts": "f353881676d4805ee69bcec760fb5b784fe9c9aee044adf093a7a04ad0687ba6"
+  },
+  "newModules": {
+    "games/magic/src/calibration/dual-controls.ts": "63ea143b41db7635a7d966d8995ed1f5acfaff3cc70889e4e72b8fc006d5d1ea",
+    "games/magic/src/presentation/early-reprint-dual.ts": "c5575ab45168edf0457119cb93c3ce991b2a55a6c37da72bd231e485a6f5ecbe",
+    "games/magic/src/presentation/retro-land-colors.ts": "c84acdaf970ac60a0d9ed3756654883685b24eda2dda6b48eb2ce0f2f6aa3d0d"
+  },
+  "files": {
+    "games/magic/src/calibration/editor-controls.ts": {
+      "before": "8043d98b6b8cbc1897dded9c4f7458f09715c58d68081b16e2750848822bbe43",
+      "after": "48e37f0c2d679035a7be3271bfb20ba3e698515a8a1b532691d979144c07bfc3",
+      "reverseEdits": [
+        {
+          "start": 109,
+          "count": 37,
+          "lines": []
+        },
+        {
+          "start": 93,
+          "count": 11,
+          "lines": [
+            "        key === 'x' ? 488 : key === 'y' ? 680 : gray ? 255 : key === 'size' ? 60 : ratio ? 1.5 : 4,\n"
+          ]
+        },
+        {
+          "start": 84,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ],
+      "historicalHashes": ["0f25bd571b3e3526eaf00430293051cc26d8a017d3dbba9d18c7baf6abe5d720"]
+    },
+    "games/magic/src/calibration/editor.ts": {
+      "before": "cf419baf4b6df16ac75292ced89b0c3e8a1ed5abacbb0bad654e5f0afe7546ca",
+      "after": "07e18147dcf6a5123ede00c35164041a4ab9311478e5e5841c8930695d859066",
+      "reverseEdits": [
+        {
+          "start": 168,
+          "count": 6,
+          "lines": []
+        },
+        {
+          "start": 163,
+          "count": 4,
+          "lines": ["  for (const color of Object.values(profile.colors))\n"]
+        },
+        {
+          "start": 134,
+          "count": 14,
+          "lines": []
+        }
+      ],
+      "historicalHashes": [
+        "187ac5fa026e562e28dae8e6c78be2cfc5323844edd7041882418ac20d8a1302",
+        "acc3479d847cf7d7eb7f2879b9f95000aedd5d25a39538d4aeb4679e73063324"
+      ]
+    },
+    "games/magic/src/calibration/types.ts": {
+      "before": "d762f7cba75e9bb1bff260ec3dfa6c8e279de88da54a57ad1b54e54b76ba37a0",
+      "after": "6697024eb6d9408c2ef025c12c6a5872c48c760a6b4bbb1a48fde668c954a542",
+      "reverseEdits": [
+        {
+          "start": 125,
+          "count": 4,
+          "lines": []
+        },
+        {
+          "start": 119,
+          "count": 1,
+          "lines": ["    readonly stats: CalibratedLettering;\n"]
+        },
+        {
+          "start": 115,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 108,
+          "count": 6,
+          "lines": ["    readonly artist: CalibratedLettering;\n"]
+        },
+        {
+          "start": 73,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 52,
+          "count": 12,
+          "lines": []
+        },
+        {
+          "start": 7,
+          "count": 2,
+          "lines": []
+        }
+      ],
+      "historicalHashes": ["099279e5d7dc1b9f54150a05779440701622d846ff0000f3130540e625dfadf1"]
+    },
+    "games/magic/src/presentation/abu-dual-pinline.ts": {
+      "before": "0d3da0d20e86645b196828c3a83dd8c6d0f8c2d0f5280dd8dd26e74d92714100",
+      "after": "a8e2ea246a42e0b5cbcab110a0500a137ad2214018d6ec1ab144552f907e0bca",
+      "reverseEdits": [
+        {
+          "start": 73,
+          "count": 1,
+          "lines": [
+            "        const inside =\n",
+            "          sx >= ABU_DUAL_BOX.left &&\n",
+            "          sx < ABU_DUAL_BOX.right &&\n",
+            "          sy >= ABU_DUAL_BOX.top &&\n",
+            "          sy < ABU_DUAL_BOX.bottom;\n"
+          ]
+        },
+        {
+          "start": 50,
+          "count": 3,
+          "lines": ["        box: ABU_DUAL_BOX,\n", "        width,\n"]
+        },
+        {
+          "start": 43,
+          "count": 4,
+          "lines": [
+            "  const left = Math.min(ABU_DUAL_BOX.left, SOURCE_BOX.left),\n",
+            "    right = Math.max(ABU_DUAL_BOX.right, SOURCE_BOX.right),\n",
+            "    top = Math.min(ABU_DUAL_BOX.top, SOURCE_BOX.top),\n",
+            "    bottom = Math.max(ABU_DUAL_BOX.bottom, SOURCE_BOX.bottom);\n"
+          ]
+        },
+        {
+          "start": 38,
+          "count": 1,
+          "lines": ["  const inks = pair.map((color) => PALETTE[color]);\n"]
+        },
+        {
+          "start": 29,
+          "count": 7,
+          "lines": [
+            "export function colorAbuDualPinline(pixels: ImageData, colors: readonly string[]): void {\n"
+          ]
+        },
+        {
+          "start": 1,
+          "count": 1,
+          "lines": ["import { dualLandPinline } from './dual-land-pinline.js';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/dual-land-pinline.ts": {
+      "before": "601aa408b807db1e6e0ef14464e9eeb8f570d1679db05277ac3ff30924813744",
+      "after": "b765dc985a2f425ecde26a94be293bf2778eb313b20555d79cd717f05317333b",
+      "reverseEdits": [
+        {
+          "start": 57,
+          "count": 1,
+          "lines": [
+            "    const ink = band === 0 || band === 4 ? INK : colors[band === 2 ? 1 : 0]!;\n"
+          ]
+        },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-colors.ts": {
+      "before": "de5eb77e55671fb5df2ad20e42bc6bb50ac9f6ca75ec73963ad91b6766b77c5d",
+      "after": "ecb2a7f6fda37b7d8d887be428e8f5dabd11649c4917a60d97357118d381a3cb",
+      "reverseEdits": [
+        {
+          "start": 9,
+          "count": 5,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/early-reprint-footer.ts": {
+      "before": "0ad9cf7c1c762ca9b456a0e4c33bce7cd55a756ab70bc6ea03f8ae8bb3bfaff3",
+      "after": "1d424834706f0f5be53b1ff69649879d1e22f99bf79e3f60eff7305f4cea23fc",
+      "reverseEdits": [
+        {
+          "start": 69,
+          "count": 3,
+          "lines": [
+            "    paintPrintingElement(c, face, 'artist', () => paint('artist', `Illus. ${face.artist}`));\n"
+          ]
+        },
+        {
+          "start": 55,
+          "count": 5,
+          "lines": [
+            "        role === 'stats'\n",
+            "          ? 132 / p.width\n",
+            "          : Math.max(1, ((role === 'artist' ? 386 : 445) - p.x) / p.width);\n"
+          ]
+        },
+        {
+          "start": 41,
+          "count": 8,
+          "lines": [
+            "      c.textAlign = role === 'stats' ? 'right' : 'left';\n",
+            "      c.textBaseline = 'alphabetic';\n"
+          ]
+        },
+        {
+          "start": 23,
+          "count": 2,
+          "lines": [
+            "        ? `\u00a9 ${set === 'fem' ? '1994' : '1995'} Wizards of the Coast, Inc. All rights reserved.`\n"
+          ]
+        }
+      ],
+      "historicalHashes": ["ae1bd670c030df876bd3747dd5449863cf26a06c30834e66401dd2c087814acf"]
+    },
+    "games/magic/src/presentation/early-reprint-frame.ts": {
+      "before": "976113f3bf2e88d4ead95f2d87706db3852c630798fc5fd17dc36b76c5c6f2af",
+      "after": "9a8065278d1a6c3e9058b7ed7a5223f81f6bb8597ec27f5df5e50ca5bb867a3a",
+      "reverseEdits": [
+        {
+          "start": 73,
+          "count": 3,
+          "lines": [
+            "    asset: `${manifest.RETRO_ROOT}/img/frames/old/${geometry.family}/${geometry.assetKey}.png`,\n"
+          ]
+        },
+        {
+          "start": 70,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 37,
+          "count": 8,
+          "lines": [
+            "    const landColors = face.frameColors ?? (basic ? [basic] : []);\n",
+            "    if (landColors.length) {\n"
+          ]
+        },
+        {
+          "start": 25,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 4,
+          "count": 2,
+          "lines": []
+        }
+      ],
+      "historicalHashes": ["4f9785564dfb0dedfcb0daa4701bd40e18639135ed5471cc5b41c1d7e79315d1"]
+    },
+    "games/magic/src/presentation/retro-dual-frame.ts": {
+      "before": "a174c92dd19cb19ed6851c5f694245dfcafe1bbdd2e86468937321f1e94515d3",
+      "after": "dc3e27e108a02a19cd5efcf4d2a255fbd519805d7b23c30a535a3b76cf694cce",
+      "reverseEdits": [
+        {
+          "start": 40,
+          "count": 0,
+          "lines": [
+            "/** Semantic land colors survive original type lines such as just \u201cLand\u201d. */\n",
+            "export function retroLandColors(face: RenderedCardInput): string[] {\n",
+            "  return face.frameColors\n",
+            "    ? resolveFrameColors(face)\n",
+            "    : [\n",
+            "        ['Plains', 'W'],\n",
+            "        ['Island', 'U'],\n",
+            "        ['Swamp', 'B'],\n",
+            "        ['Mountain', 'R'],\n",
+            "        ['Forest', 'G'],\n",
+            "      ]\n",
+            "        .filter(([type]) =>\n",
+            "          new RegExp(String.raw`\\b${type}\\b`).test(face.canonicalTypeLine ?? face.typeLine ?? ''),\n",
+            "        )\n",
+            "        .map(([, color]) => color!);\n",
+            "}\n",
+            "\n"
+          ]
+        },
+        {
+          "start": 32,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 20,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 2,
+          "count": 3,
+          "lines": ["import { resolveFrameColors } from './profile.js';\n"]
+        }
+      ],
+      "historicalHashes": [
+        "0cce832c3c7dc78d8238183e22b2b97ceb145614cf8c010e41fd10825080bb13",
+        "5f7354e049259ef02ea43b70156301c51f528d718919c4e6c7b3d9cab1b67169"
+      ]
+    },
+    "games/magic/src/presentation/retro-dual-material.ts": {
+      "before": "8c516fcca5a88c795c74943ef6cfe635b84ffa26ba30fe6cf5eff702a627853d",
+      "after": "41506ab6ff668979b2e58f6b372a569e67ae2e997dffa76e8b4e555e15ae01da",
+      "reverseEdits": [
+        {
+          "start": 79,
+          "count": 1,
+          "lines": ["            colorAbuDualPinline(pixels, retroLandColors(face));\n"]
+        },
+        {
+          "start": 33,
+          "count": 1,
+          "lines": []
+        }
+      ],
+      "historicalHashes": [
+        "53db1772f6c3786bcc1262d1546eb95dc802796b12f3567cf43c74b2545b0157",
+        "95a0d22251f927bba0f00fcaa39071dd365ce187921c2820424ef68e99eca07c"
+      ]
+    },
+    "games/magic/src/presentation/retro-frame.ts": {
+      "before": "016eefc11632f16d48056ae0edd65308d6b242225b4fb0caaef26b1b602f9530",
+      "after": "7cc48dacecac3d0731839051bd7442cfb1b80baeda5e2b2275c7f24890d59793",
+      "reverseEdits": [
+        {
+          "start": 200,
+          "count": 1,
+          "lines": []
+        }
+      ],
+      "historicalHashes": ["065dbaa6e24b17916496537007b9ab97393f9337cae29620f237c072edd580c6"]
+    },
+    "games/magic/src/presentation/retro-rules.ts": {
+      "before": "95d90660b3304f55fcffaec425df5d38c8db4e0b888772a95b78be51620e5183",
+      "after": "98b4803ace18ccab4cc8d063827faed4a56e23be072971c26ab67074a554309c",
+      "reverseEdits": [
+        {
+          "start": 33,
+          "count": 20,
+          "lines": [
+            "  return adjustCalibrationRules(\n",
+            "    context,\n",
+            "    face,\n",
+            "    alphaTextLayout(context, face, baseRetroTextLayout(context, face)),\n",
+            "  );\n"
+          ]
+        },
+        {
+          "start": 1,
+          "count": 2,
+          "lines": ["import { alphaTextLayout } from './early-text-tiers.js';\n"]
+        }
+      ],
+      "historicalHashes": ["bf9f14f0aa1967b642764a67e48933fbb117e6d5b420e93046ed84af9a5a6215"]
+    }
+  },
+  "historicalReceipts": {
+    "games/magic/fixtures/accuracy/early-through-fourth/profile-preparation-source-proof.json": "dd610d767afc6b185aa3ece79177f9a75267a0500ed628341c1d298a8e26cdba",
+    "games/magic/fixtures/accuracy/early-through-fourth/source-proof.json": "ffdbdec5616e31f5b136399deadd7f4ecf6095806e9c10e47a21920e001d8a11",
+    "games/magic/fixtures/accuracy/alpha-name-editor/source-proof.json": "ca99ff97004177106251d1dfebf020a7ba3a297cc042ef6a87ea8187ac4544c8",
+    "games/magic/fixtures/accuracy/heading-spacing/source-proof.json": "3b618060de80e27cc22e7b3e55244da5a80054dcef8e992a009579af8bfdf149",
+    "games/magic/fixtures/accuracy/host-worker/source-proof.json": "6afd6b7101c29be8bd3b2d59402155170b93cbc390c170b8158f1580aeaab209"
+  }
+}

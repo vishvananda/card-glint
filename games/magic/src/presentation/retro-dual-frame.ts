@@ -1,6 +1,8 @@
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
-import { resolveFrameColors } from './profile.js';
+import { retroLandColors } from './retro-land-colors.js';
+import { earlyReprintFrame } from './early-reprint-frame.js';
+export { retroLandColors } from './retro-land-colors.js';
 import { abuLandOutlineColor } from './abu-land-palette.js';
 
 /** ABU uses concentric bands, not a modern split-color gradient. Retain the
@@ -16,6 +18,8 @@ export function retroDualFrame(face: RenderedCardInput) {
     (face.layout && face.layout !== 'normal')
   )
     return undefined;
+  const calibrated = earlyReprintFrame(face)?.dual;
+  if (calibrated) return calibrated;
   const colors = retroLandColors(face);
   if (colors.length !== 2) return undefined;
   // Printed concentric bands have their own color order. WUBRG is a semantic
@@ -26,28 +30,12 @@ export function retroDualFrame(face: RenderedCardInput) {
     : colors;
   const root = `${manifest.RETRO_ROOT}/img/frames/old/abu/`;
   return {
+    pinline: undefined,
     base: `${root}${bands[0]!.toLowerCase()}l.png`,
     overlay: `${root}${bands[1]!.toLowerCase()}l.png`,
     mask: `${manifest.CONJURER_ROOT}/img/frames/old/abu/dualLand.png`,
     outline: `${root}${abuLandOutlineColor(colors, face.setCode)!.toLowerCase()}l.png`,
   };
-}
-
-/** Semantic land colors survive original type lines such as just “Land”. */
-export function retroLandColors(face: RenderedCardInput): string[] {
-  return face.frameColors
-    ? resolveFrameColors(face)
-    : [
-        ['Plains', 'W'],
-        ['Island', 'U'],
-        ['Swamp', 'B'],
-        ['Mountain', 'R'],
-        ['Forest', 'G'],
-      ]
-        .filter(([type]) =>
-          new RegExp(String.raw`\b${type}\b`).test(face.canonicalTypeLine ?? face.typeLine ?? ''),
-        )
-        .map(([, color]) => color!);
 }
 
 /** Only these two printed outlines change. Other face cache identities stay byte-identical. */

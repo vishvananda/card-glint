@@ -1,6 +1,7 @@
 import type { Rgb } from './hsb.js';
 
 export interface DualBorderGeometry {
+  readonly edge?: Rgb;
   box: { left: number; right: number; top: number; bottom: number };
   width: { left: number; right: number; top: number; bottom: number };
 }
@@ -54,7 +55,7 @@ export function dualLandPinline(
   for (let band = 0; band < BAND_ENDS.length; band++) {
     const next = coverage(BAND_ENDS[band]!);
     const amount = Math.max(0, previous - next);
-    const ink = band === 0 || band === 4 ? INK : colors[band === 2 ? 1 : 0]!;
+    const ink = band === 0 || band === 4 ? (geometry.edge ?? INK) : colors[band === 2 ? 1 : 0]!;
     for (let k = 0; k < 3; k++) color[k]! += ink[k]! * amount;
     alpha += amount;
     previous = next;

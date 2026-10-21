@@ -47,6 +47,58 @@ export function checkSetProfile(profile, review, manifest) {
         assert.match(adjustment.stock, /^#[0-9a-f]{6}$/i);
       }
   }
+  if (profile.dualLand) {
+    const dual = profile.dualLand,
+      frame = profile.frames['L-dual'];
+    assert.equal(frame?.family, 'abu', 'Dual geometry requires an ABU source');
+    assert.match(dual.stock, /^#[0-9a-f]{6}$/i);
+    for (const color of 'WUBRG') {
+      const source = dual.sources[color];
+      assert(source, 'Missing dual source: ' + color);
+      assert.equal(
+        source.source,
+        JSON.stringify([
+          `${manifest.RETRO_ROOT}/img/frames/old/abu/${color.toLowerCase()}l.png`,
+          frame.frame,
+        ]),
+        'Stale dual source/geometry: ' + color,
+      );
+      const rgb = dual.pinline.palette[color];
+      assert(
+        rgb?.length === 3 && rgb.every((v) => v >= 0 && v <= 1),
+        'Invalid dual band ink: ' + color,
+      );
+    }
+    const { box, width, edge } = dual.pinline;
+    assert(box.left >= 0 && box.right <= 1500 && box.top >= 0 && box.bottom <= 2100);
+    assert(box.right > box.left && box.bottom > box.top);
+    assert(Object.values(width).every((v) => v > 0 && v <= 80));
+    assert(
+      width.left + width.right < box.right - box.left &&
+        width.top + width.bottom < box.bottom - box.top,
+    );
+    if (edge) assert(edge.length === 3 && edge.every((v) => v >= 0 && v <= 1));
+    assert(Object.keys(dual.outlines).length > 0);
+    for (const [pair, color] of Object.entries(dual.outlines)) {
+      assert.match(pair, /^(WU|WB|WR|WG|UB|UR|UG|BR|BG|RG)$/);
+      assert('WUBRG'.includes(color));
+    }
+  }
+  if (profile.textTiers?.retainRegularAboveLines !== undefined)
+    assert(
+      Number.isInteger(profile.textTiers.retainRegularAboveLines) &&
+        profile.textTiers.retainRegularAboveLines > 0,
+    );
+  const artist = profile.footer.artist;
+  if (artist.prefix !== undefined) assert.equal(typeof artist.prefix, 'string');
+  if (artist.align !== undefined) assert(['left', 'right', 'center'].includes(artist.align));
+  if (artist.baseline !== undefined)
+    assert(['alphabetic', 'middle', 'top', 'bottom'].includes(artist.baseline));
+  if (artist.maxWidth !== undefined) assert(artist.maxWidth > 0 && artist.maxWidth <= 488);
+  if (profile.footer.stats.baseline !== undefined)
+    assert(['alphabetic', 'middle'].includes(profile.footer.stats.baseline));
+  if (profile.footer.legal.defaultText !== undefined)
+    assert.equal(typeof profile.footer.legal.defaultText, 'string');
   for (const [color, ink] of Object.entries(profile.mana.sourceInk ?? {})) {
     assert.match(color, /^[WUBRG]$/, 'Source ink requires a colored mana symbol');
     assert.ok(['conjurer-old', 'mse-old'].includes(ink.family), 'Unsupported source ink family');

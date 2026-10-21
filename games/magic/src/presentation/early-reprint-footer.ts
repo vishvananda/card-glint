@@ -21,7 +21,8 @@ export function earlyReprintFooter(face: RenderedCardInput) {
     // Reviewed printing defaults, never a year inferred from an arbitrary set.
     legalText:
       face.legalText === undefined
-        ? `© ${set === 'fem' ? '1994' : '1995'} Wizards of the Coast, Inc. All rights reserved.`
+        ? (p.legal.defaultText ??
+          `© ${set === 'fem' ? '1994' : '1995'} Wizards of the Coast, Inc. All rights reserved.`)
         : face.legalText,
   };
 }
@@ -38,17 +39,25 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
       c.translate(p.x, p.y);
       c.scale(p.width, 1);
       c.font = `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
-      c.textAlign = role === 'stats' ? 'right' : 'left';
-      c.textBaseline = 'alphabetic';
+      c.textAlign =
+        role === 'artist' ? (profile.artist.align ?? 'left') : role === 'stats' ? 'right' : 'left';
+      c.textBaseline =
+        role === 'artist'
+          ? (profile.artist.baseline ?? 'alphabetic')
+          : role === 'stats'
+            ? (profile.stats.baseline ?? 'alphabetic')
+            : 'alphabetic';
       c.letterSpacing = '0px';
       const gray = 'gray' in p ? p.gray : profile.legalGray;
       c.fillStyle = `rgb(${gray},${gray},${gray})`;
       c.shadowColor = role === 'legal' ? 'transparent' : '#17140f';
       c.shadowBlur = 0;
       const max =
-        role === 'stats'
-          ? 132 / p.width
-          : Math.max(1, ((role === 'artist' ? 386 : 445) - p.x) / p.width);
+        role === 'artist' && profile.artist.maxWidth !== undefined
+          ? profile.artist.maxWidth / p.width
+          : role === 'stats'
+            ? 132 / p.width
+            : Math.max(1, ((role === 'artist' ? 386 : 445) - p.x) / p.width);
       const ink = () => paintEarlyReprintFooterInk(c, text, max, p);
       if (role === 'stats') paintTextInk(c, text, 0, 0, max, face.textInk, 'stats', ink);
       else ink();
@@ -58,7 +67,9 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
   };
   if (face.power != null && face.toughness != null) paint('stats', retroStatsText(face));
   if (face.artist)
-    paintPrintingElement(c, face, 'artist', () => paint('artist', `Illus. ${face.artist}`));
+    paintPrintingElement(c, face, 'artist', () =>
+      paint('artist', `${profile.artist.prefix ?? 'Illus. '}${face.artist}`),
+    );
   if (profile.legalText)
     paintPrintingElement(c, face, 'legal', () => paint('legal', profile.legalText!));
   return true;

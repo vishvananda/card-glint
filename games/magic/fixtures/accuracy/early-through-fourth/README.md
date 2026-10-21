@@ -923,3 +923,39 @@ semantic material values and point to each actual selected face hash. They do
 not claim a production profile or a new full-face capture. The next step is
 profile/typography/footer integration and all-Original/all-Oracle verification,
 followed by a renderer release; then the work order moves to M21.
+
+### Complete early-set profile preparation
+
+The additive `profile-adapter-source-proof.json` and compressed native report
+preserve the earlier optional preparation receipt. The new adapter supports
+source-bound dual plates, independent full-frame outline colors and narrow
+paper bands, explicit artist prefix/alignment/baseline, printed legal defaults,
+and the shared early text count/wrap policy. These fields are inactive in the
+existing full profiles. All 302 current Unlimited Original face PNG pairs and
+default etching layers are identical; 25,200 semantic cases across 15 sets are
+unchanged. This is compatibility evidence, not an adopted Unlimited profile or
+native certification of the other sets.
+
+Reproduce the default comparison after generating set data, with no build or
+source mutation running concurrently:
+
+```sh
+node games/magic/tools/accuracy/profile-adapter-parity.mjs "$CURRENT_NATIVE" "$CURRENT_INPUTS" "$CURRENT_HEADER_REVIEW" "$ADAPTER_PARITY"
+node tests/magic-profile-adapters.mjs
+```
+
+The integrated-profile replay takes a complete data candidate through the real
+painter and checks every current baseline against its frozen PNG, including the
+reviewed Drain Life header. `pilot` captures a small material selection; `all`
+completes all 302. Resuming requires the same source, tool, inputs, candidate and
+saved native PNG hashes. A pilot cannot certify full-set coverage:
+
+```sh
+node games/magic/tools/accuracy/early-integrated-profile-replay.mjs "$CURRENT_NATIVE" "$CURRENT_INPUTS" "$CURRENT_HEADER_REVIEW" "$PROFILE_CANDIDATE" "$PROFILE_REPLAY" pilot
+node games/magic/tools/accuracy/early-integrated-profile-replay.mjs "$CURRENT_NATIVE" "$CURRENT_INPUTS" "$CURRENT_HEADER_REVIEW" "$PROFILE_CANDIDATE" "$PROFILE_REPLAY" all
+```
+
+The stock/plate/material choices are ready for this replay. Heading geometry is
+measured, while its fixed-gray measurement controls must not be treated as final
+ink calibration. The artist command evidence retains the measured left alignment
+and alphabetic baseline; a different centering policy needs its own evidence.

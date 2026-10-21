@@ -2,6 +2,8 @@ import { calibrationForFace } from '../calibration/selection.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
+import { retroLandColors } from './retro-land-colors.js';
+import { earlyReprintDual } from './early-reprint-dual.js';
 
 /** Printing-level material selection shared by original and Oracle wording. */
 export function earlyReprintFrame(face: RenderedCardInput) {
@@ -21,6 +23,7 @@ export function earlyReprintFrame(face: RenderedCardInput) {
     colors = resolveFrameColors(face);
   const land = face.land ?? /\bLand\b/.test(type);
   let material: string | undefined;
+  let dual: ReturnType<typeof earlyReprintDual>;
   if (land) {
     // The original basics say only "Land". Explicit frame colors or their
     // printed names retain the same plate when switching to Oracle wording.
@@ -32,8 +35,14 @@ export function earlyReprintFrame(face: RenderedCardInput) {
       Forest: 'G',
     };
     const basic = basics[face.name];
-    const landColors = face.frameColors ?? (basic ? [basic] : []);
-    if (landColors.length) {
+    const landColors =
+      face.frameColors ??
+      (basic ? [basic] : calibrationForFace(face)!.dualLand ? retroLandColors(face) : []);
+    if (landColors.length === 2) {
+      dual = earlyReprintDual(calibrationForFace(face)!, retroLandColors(face));
+      if (!dual) return undefined;
+      material = 'L-dual';
+    } else if (landColors.length) {
       if (landColors.length !== 1) return undefined;
       material = `L-${landColors[0]}`;
     } else material = 'L';
@@ -59,8 +68,11 @@ export function earlyReprintFrame(face: RenderedCardInput) {
       : material;
   return {
     ...geometry,
+    dual,
     material,
     profile: `${set}/${pigment}`,
-    asset: `${manifest.RETRO_ROOT}/img/frames/old/${geometry.family}/${geometry.assetKey}.png`,
+    asset:
+      dual?.base ??
+      `${manifest.RETRO_ROOT}/img/frames/old/${geometry.family}/${geometry.assetKey}.png`,
   };
 }

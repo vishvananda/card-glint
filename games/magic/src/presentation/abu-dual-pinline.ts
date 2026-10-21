@@ -1,5 +1,5 @@
 import type { Rgb } from './hsb.js';
-import { dualLandPinline } from './dual-land-pinline.js';
+import { dualLandPinline, type DualBorderGeometry } from './dual-land-pinline.js';
 
 // ABU artwork has its own geometry; Revised uses a cropped Fourth plate.
 // Source coordinates are 1500 × 2100. Compensate for its aspect ratio so the
@@ -27,23 +27,30 @@ const PALETTE: Readonly<Record<string, Rgb>> = {
 };
 
 /** Cached static material preparation, never an animation-frame operation. */
-export function colorAbuDualPinline(pixels: ImageData, colors: readonly string[]): void {
+export function colorAbuDualPinline(
+  pixels: ImageData,
+  colors: readonly string[],
+  calibrated?: DualBorderGeometry & { readonly palette: Readonly<Partial<Record<string, Rgb>>> },
+): void {
+  const box = calibrated?.box ?? ABU_DUAL_BOX;
+  const ringWidth = calibrated?.width ?? width;
   if (colors.length !== 2) return;
   const pair = [...colors].sort((a, b) => 'RGUBW'.indexOf(a) - 'RGUBW'.indexOf(b));
-  const inks = pair.map((color) => PALETTE[color]);
+  const inks = pair.map((color) => (calibrated?.palette ?? PALETTE)[color]);
   if (!inks[0] || !inks[1]) return;
   const pw = 1500 / pixels.width,
     ph = 2100 / pixels.height;
   const original = pixels.data.slice();
-  const left = Math.min(ABU_DUAL_BOX.left, SOURCE_BOX.left),
-    right = Math.max(ABU_DUAL_BOX.right, SOURCE_BOX.right),
-    top = Math.min(ABU_DUAL_BOX.top, SOURCE_BOX.top),
-    bottom = Math.max(ABU_DUAL_BOX.bottom, SOURCE_BOX.bottom);
+  const left = Math.min(box.left, SOURCE_BOX.left),
+    right = Math.max(box.right, SOURCE_BOX.right),
+    top = Math.min(box.top, SOURCE_BOX.top),
+    bottom = Math.max(box.bottom, SOURCE_BOX.bottom);
   for (let y = Math.floor(top / ph); y < Math.ceil(bottom / ph); y++)
     for (let x = Math.floor(left / pw); x < Math.ceil(right / pw); x++) {
       const p = dualLandPinline((x + 0.5) * pw, (y + 0.5) * ph, pw, ph, [inks[0], inks[1]], {
-        box: ABU_DUAL_BOX,
-        width,
+        box,
+        width: ringWidth,
+        edge: calibrated?.edge,
       });
       const sx = (x + 0.5) * pw,
         sy = (y + 0.5) * ph;
@@ -64,11 +71,7 @@ export function colorAbuDualPinline(pixels: ImageData, colors: readonly string[]
           SOURCE_BOX.bottom - sy,
         ];
         const side = distances.indexOf(Math.min(...distances));
-        const inside =
-          sx >= ABU_DUAL_BOX.left &&
-          sx < ABU_DUAL_BOX.right &&
-          sy >= ABU_DUAL_BOX.top &&
-          sy < ABU_DUAL_BOX.bottom;
+        const inside = sx >= box.left && sx < box.right && sy >= box.top && sy < box.bottom;
         const sampleX =
           side === 0
             ? SOURCE_BOX.left + (inside ? SOURCE_WIDTH.left + 2 : -2)

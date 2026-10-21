@@ -5,6 +5,8 @@ import type { ManaSymbolTransform, ManaColor } from '../presentation/symbol-adju
 import type { ManaGlyphFamily } from '../presentation/historical-mana-profiles.js';
 import type { RulesTypography } from '../presentation/rules-layout.js';
 import type { CalibrationRulesAdjustment } from './rules-adjustment.js';
+import type { EarlyTextTierOptions } from '../presentation/early-text-tiers.js';
+import type { DualBorderGeometry } from '../presentation/dual-land-pinline.js';
 
 /** Canonical rectangles are normalized; lettering uses 488 × 680 pixels. */
 export interface CalibratedFrame {
@@ -48,6 +50,18 @@ export interface CalibratedBody {
     readonly maximumSize: number;
   };
 }
+/** Source-bound ABU dual plates. Geometry is shared; the full-frame outline
+ * and narrow paper bands have independent semantic palettes. */
+export interface CalibratedDualLand {
+  readonly stock: string;
+  readonly sources: Readonly<
+    Partial<Record<ManaColor, { readonly source: string; readonly adjustment: FrameHsb }>>
+  >;
+  readonly outlines: Readonly<Partial<Record<string, ManaColor>>>;
+  readonly pinline: DualBorderGeometry & {
+    readonly palette: Readonly<Partial<Record<ManaColor, Rgb>>>;
+  };
+}
 /** A data-only profile. Shared selection/painting stays outside contribution files.
  * This first adapter covers ordinary old-border ABU/Fourth plates. */
 export interface SetCalibrationProfile {
@@ -57,6 +71,7 @@ export interface SetCalibrationProfile {
   readonly border: 'black' | 'white';
   readonly cornerRadius?: number;
   readonly frames: Readonly<Partial<Record<string, CalibratedFrame>>>;
+  readonly dualLand?: CalibratedDualLand;
   readonly colors: Readonly<
     Partial<
       Record<
@@ -91,17 +106,27 @@ export interface SetCalibrationProfile {
   readonly title: CalibratedLettering;
   readonly type: CalibratedLettering;
   readonly footer: {
-    readonly artist: CalibratedLettering;
+    readonly artist: CalibratedLettering & {
+      readonly prefix?: string;
+      readonly align?: CanvasTextAlign;
+      readonly baseline?: CanvasTextBaseline;
+      readonly maxWidth?: number;
+    };
     readonly legal: Omit<CalibratedLettering, 'gray'> & {
+      readonly defaultText?: string;
       readonly lightGray: number;
       readonly darkGray: number;
     };
-    readonly stats: CalibratedLettering;
+    readonly stats: CalibratedLettering & { readonly baseline?: 'alphabetic' | 'middle' };
   };
   /** default or printed source-set key (Chronicles); custom host symbols bypass these. */
   readonly setSymbols?: Readonly<Partial<Record<string, CalibratedSetSymbol>>>;
   /** Omitted retains the established layout. Material override wins over default. */
   readonly body?: Readonly<Partial<Record<string, CalibratedBody>>>;
+  /** Shared count/wrap model for early printings; Oracle always keeps a safe inset. */
+  readonly textTiers?: Readonly<
+    Omit<EarlyTextTierOptions, 'forceSmall'> & { readonly retainRegularAboveLines?: number }
+  >;
   /** Shared deltas retain the printing's existing length/centering policy. */
   readonly rulesAdjustments?: Readonly<Partial<Record<string, CalibrationRulesAdjustment>>>;
 }

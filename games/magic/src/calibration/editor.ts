@@ -132,6 +132,20 @@ function buildCandidate(candidate: SetCalibrationCandidate): SetCalibrationProfi
     if (Array.isArray(source) && source.length === 2 && typeof source[0] === 'string')
       write(profile, `colors.${key}.source`, JSON.stringify([source[0], frame.frame]));
   }
+  if (
+    profile.dualLand &&
+    Object.keys(candidate.values).some((k) => k.startsWith('frames.L-dual.'))
+  ) {
+    const frame = profile.frames['L-dual'];
+    if (!frame) throw Error('Dual-land calibration has no geometry');
+    for (const [color, material] of Object.entries(profile.dualLand.sources)) {
+      if (!material) continue;
+      const source: unknown = JSON.parse(material.source);
+      if (!Array.isArray(source) || source.length !== 2 || typeof source[0] !== 'string')
+        throw Error('Invalid dual-land material binding');
+      write(profile, `dualLand.sources.${color}.source`, JSON.stringify([source[0], frame.frame]));
+    }
+  }
   return profile;
 }
 function validateProfile(profile: SetCalibrationProfile) {
@@ -147,8 +161,17 @@ function validateProfile(profile: SetCalibrationProfile) {
     )
       throw Error('Invalid body bounds or typography range');
   }
-  for (const color of Object.values(profile.colors))
+  for (const color of [
+    ...Object.values(profile.colors),
+    ...Object.values(profile.dualLand?.sources ?? {}),
+  ])
     if (color?.adjustment.blackPoint) validateFrameBlackPoint(color.adjustment.blackPoint);
+  if (
+    profile.textTiers?.retainRegularAboveLines !== undefined &&
+    (!Number.isInteger(profile.textTiers.retainRegularAboveLines) ||
+      profile.textTiers.retainRegularAboveLines < 1)
+  )
+    throw Error('Invalid regular density limit');
 }
 
 const cache = new WeakMap<object, { key: string; profile: SetCalibrationProfile }>();

@@ -1,5 +1,6 @@
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
-import { alphaTextLayout } from './early-text-tiers.js';
+import { earlyRulesModel } from './alpha-rules.js';
+import { alphaTextLayout, earlyTextTierLayout } from './early-text-tiers.js';
 import { adjustCalibrationRules } from '../calibration/rules-adjustment.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import { calibratedBodyLayout } from '../calibration/body.js';
@@ -30,11 +31,26 @@ export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
 
 /** Null denotes the existing large-basic-symbol path, which has no body text. */
 export function retroTextLayout(context: CanvasContext, face: RenderedCardInput) {
-  return adjustCalibrationRules(
-    context,
-    face,
-    alphaTextLayout(context, face, baseRetroTextLayout(context, face)),
-  );
+  const base = baseRetroTextLayout(context, face);
+  const tiers = earlyReprintFrame(face) && calibrationForFace(face)?.textTiers;
+  const limit = tiers?.retainRegularAboveLines;
+  if (limit !== undefined && (!Number.isInteger(limit) || limit < 1))
+    throw Error('Invalid regular density limit');
+  const retain =
+    base &&
+    face.wordingMode !== 'oracle' &&
+    limit !== undefined &&
+    base.size >= 19 &&
+    base.size < 30 &&
+    base.lines.length > limit;
+  const layout = retain
+    ? base
+    : tiers && base
+      ? face.wordingMode === 'oracle'
+        ? earlyRulesModel(context, face, base, tiers.regularWidthDelta)
+        : earlyTextTierLayout(context, face, base, tiers)
+      : alphaTextLayout(context, face, base);
+  return adjustCalibrationRules(context, face, layout);
 }
 function baseRetroTextLayout(context: CanvasContext, face: RenderedCardInput) {
   if (retroBasicSymbol(face)) return null;

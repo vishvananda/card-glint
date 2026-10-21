@@ -1,3 +1,4 @@
+import { profileAdapterProofDependency } from '../games/magic/tools/accuracy/profile-adapter-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import {
@@ -13,7 +14,10 @@ const proof = JSON.parse(
 for (const [file, entry] of Object.entries(proof.files)) {
   const current = await readFile(file),
     before = await preEarlyCalibrationSource(file, current);
-  assert.equal(hash(await preOracleInsetSource(file, current)), entry.after);
+  assert.equal(
+    hash(await preOracleInsetSource(file, await profileAdapterProofDependency(file, current))),
+    entry.after,
+  );
   assert.equal(hash(before), entry.before);
   assert.deepEqual(await preEarlyCalibrationSource(file, before), before);
   await assert.rejects(

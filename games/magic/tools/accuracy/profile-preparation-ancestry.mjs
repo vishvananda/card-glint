@@ -1,3 +1,4 @@
+import { profileAdapterSource } from './profile-adapter-ancestry.mjs';
 // Preserve unrelated historical receipts when optional preparation fields are inactive.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -83,6 +84,9 @@ async function inactive(p, set, readProfile) {
  * unchanged default profile. A changed/new profile retains current guards;
  * unknown helper edits reject even if a receipt marker is supplied. */
 export async function profilePreparationSource(file, bytes, set, readProfile = readOptional) {
+  const adapted = await profileAdapterSource(file, bytes, (p) => inactive(p, set, readProfile));
+  if (adapted.changedProfile) return adapted;
+  bytes = adapted.bytes;
   const p = await proof(),
     entry = p.files[file];
   if (!entry || hash(bytes) === entry.before) return { bytes, changedProfile: false };

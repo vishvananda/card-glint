@@ -234,7 +234,12 @@ try {
         );
         assert.deepEqual(plan, retroDualFrame(oracle.face));
         assert.equal(retroFrameAsset(original.face), plan.base);
-        assert.ok(Object.values(plan).every((url) => retroAssets(original.face).includes(url)));
+        assert.ok(
+          ['base', 'overlay', 'mask', 'outline'].every(
+            (role) =>
+              typeof plan[role] === 'string' && retroAssets(original.face).includes(plan[role]),
+          ),
+        );
         const calibrated = calibratedFrameMaterials({
           ...original.face,
           colorCalibration: 'set-hsb-v1',

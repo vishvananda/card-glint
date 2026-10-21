@@ -31,6 +31,7 @@ export async function prepareRetroDualFrame(
       {
         key: JSON.stringify([
           'abu-dual-frame-v3',
+          ...(plan.pinline ? [plan.pinline] : []),
           plan,
           base.width,
           base.height,
@@ -76,7 +77,7 @@ export async function prepareRetroDualFrame(
               c.restore();
             }
             const pixels = c.getImageData(0, 0, base.width, base.height);
-            colorAbuDualPinline(pixels, retroLandColors(face));
+            colorAbuDualPinline(pixels, retroLandColors(face), plan.pinline);
             c.putImageData(pixels, 0, 0);
             return await createImageBitmap(canvas);
           } finally {

@@ -1,5 +1,6 @@
+import { profileAdapterProofDependency } from './profile-adapter-ancestry.mjs';
 import assert from 'node:assert/strict';
-import { preProfilePreparationSource } from './profile-preparation-ancestry.mjs';
+import { profilePreparationSource } from './profile-preparation-ancestry.mjs';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { preUnlimitedEmptySource } from './unlimited-empty-ancestry.mjs';
@@ -20,7 +21,12 @@ async function earlyProof() {
     assert.deepEqual(p.affectedSets, ['lea', 'leb', '2ed']);
     for (const [name, digest] of Object.entries(p.dependencies))
       assert.equal(
-        hash(await preOracleInsetSource(name, await readFile(name))),
+        hash(
+          await preOracleInsetSource(
+            name,
+            await profileAdapterProofDependency(name, await readFile(name)),
+          ),
+        ),
         digest,
         'Changed reviewed early source: ' + name,
       );
@@ -70,7 +76,9 @@ export async function earlyCalibrationAffected(set, group, task, originalInput =
 /** Source restoration is used only after the caller chooses an unaffected
  * component. It must not approve a changed component's historical fit. */
 export async function preEarlyCalibrationSource(file, bytes, set) {
-  bytes = await preProfilePreparationSource(file, bytes, set);
+  const prepared = await profilePreparationSource(file, bytes, set);
+  if (prepared.changedProfile) return prepared.bytes;
+  bytes = prepared.bytes;
   bytes = await preM21BodyFieldSource(file, bytes, set);
   bytes = await preOracleInsetSource(file, bytes);
   const proof = await earlyProof();

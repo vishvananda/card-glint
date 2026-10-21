@@ -243,7 +243,7 @@ curves independently of the texture placement in `frame`. When present, it repla
 The asset loader prepares the mask with the other static face assets and rejects a
 missing mask. A per-color land requires its own `L-W`, `L-U`, `L-B`, `L-R` or `L-G`
 frame entry; an absent plate is not substituted from another color. Multicolor land
-plates require separate support.
+plates use the optional source-bound dual adapter below.
 
 `mana.sourceInk[color]` may bind stroke expansion to `family: 'conjurer-old'` or
 `'mse-old'`, with `pixels` from 0 to 1 per nominal 24-pixel disc. It only applies
@@ -263,3 +263,26 @@ receipt contains 302 actual native Original Unlimited before/after pairs and
 receipt. Historical helper guards are reconstructed only for exact reviewed source
 bytes with unchanged, inactive profile data. New or changed full profiles retain
 current source guards and need fresh fit evidence; they cannot inherit the old fit.
+
+### Shared dual plates, footer and early text policy
+
+A full profile can add `frames['L-dual']` and `dualLand`. The latter binds all five
+pinned ABU source plates to that shared frame rectangle, independently assigns
+`outlines` by the semantic `WUBRG` pair, and stores the paper `pinline` box,
+physical widths, five-color palette and edge ink. `dualLand.stock` is the outer
+stock color. Missing or stale source bindings bypass the new dual adapter as a
+whole. Editor geometry proposals update these bindings while retaining source
+URLs; plate tones and band geometry/colors have bounded controls.
+
+Optional `footer.artist` fields are `prefix`, `align`, `baseline` and `maxWidth`.
+An empty `footer.legal.defaultText` suppresses the set's fallback legal row; an
+explicit host legal string remains authoritative. `footer.stats.baseline` can
+retain middle anchoring. Existing profiles keep their previous defaults.
+
+`textTiers` configures the shared early count/wrap model. Its optional
+`retainRegularAboveLines` applies only to Original medium text. Oracle uses the
+safe physical inset and shrinks to fit; it must not inherit Original density
+retention. Fit font tiers, wrapping and margins before publishing these values,
+and run `node tests/magic-profile-adapters.mjs` for source-binding and proposal
+validation. Neither adding these fields nor passing compatibility tests completes
+a set: the integrated native Original/Oracle faces and outliers still need review.
