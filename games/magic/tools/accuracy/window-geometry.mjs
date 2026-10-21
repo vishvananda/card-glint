@@ -1,4 +1,4 @@
-import { luminance, WIDTH, HEIGHT } from './pixels.mjs';
+import { luminance, WIDTH, HEIGHT } from './pixels-pure.mjs';
 import { median } from './metrics.mjs';
 
 export const WINDOW_GEOMETRY_VERSION = 'paired-window-edges-v1';

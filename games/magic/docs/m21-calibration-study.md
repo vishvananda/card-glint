@@ -467,3 +467,44 @@ An exact reversible source delta preserves historical geometry receipts; unknown
 painter edits remain rejected. This proof concerns unchanged default source
 pixels, not changed calibrations or arbitrary host replacements. It does not
 complete the M21 color or layout pass.
+
+## Modern fallback contract
+
+After the complete M21 profile passes its final replay, compatible modern frames
+without their own component calibration should inherit its measured layout and
+material defaults automatically. Resolve each component separately: an exact
+printing/set component wins, then the matching M21 frame/material component,
+then the source default if no compatible donor exists. An explicit source or
+host override stays authoritative. Do not copy M21 registration matrices into
+rendering; those matrices normalize reference scans only.
+
+Inheritance must preserve printing content: artist spelling, physical type line,
+collector total/format, legal wording, and finish markers belong to the selected
+printing, not the donor set. The five M21 foil-only deck markers and the ten
+reviewed land rarity marks are not general modern-frame rules. Independently
+calibrated geometry or colors must never be overwritten by a broad fallback.
+Special layouts can inherit only components with validated matching source and
+geometry; donor coverage and outstanding checks remain visible in Lab. Inherited
+sets are not independently calibrated or complete merely because they render
+using M21.
+
+## Inner-window measurement, frozen normalized references
+
+The [horizontal window audit](../fixtures/accuracy/m21-inner-window-audit.json.gz)
+uses all 297 hash-bound native/reference pairs. The existing fixed-strip
+measurement covers 283 ordinary faces; the 14 planeswalkers remain explicitly
+assigned to a separate geometry audit. It fits no scan pose and moves no image.
+Art edges are jointly reliable on 258 faces, with 25 uncertain; rules edges are
+reliable on 267, with 16 uncertain. Weak, ambiguous, boundary or inconsistent
+strips remain in the output.
+
+Median native-minus-reference width is +0.85 px for art and +0.60 px for rules.
+Their centers differ in opposite directions: +0.53 px for art and -0.67 px for
+rules, so a global translation cannot resolve both. White paper shows a larger
+rules-width difference (+2.09 px for 42 plain white faces), which needs bezel/
+paper-edge inspection before interpreting it as a separate geometry rule.
+These are diagnostic observations, not adopted calibration values. The audit
+does not measure vertical borders or curve shapes. The existing synthetic test
+still separates translation from width under tone/grain changes and rejects
+missing edges. Its detector now imports only the pure pixel helpers; no PNG
+decoder is part of the measurement graph.
