@@ -5,7 +5,7 @@ these measurements. Numeric evidence is in
 [`m21-registration-experiments.json`](../fixtures/accuracy/m21-registration-experiments.json)
 and [`m21-baseline-diagnostic.json`](../fixtures/accuracy/m21-baseline-diagnostic.json).
 
-The current scan-only HSV-value method has support on all 297 scans. It passes
+The previous all-HSV scan-only method has support on all 297 scans. It passes
 all 231 initial recovery controls and all 594 combined color/geometry controls,
 but only 888/891 broader replay cases. All three remaining failures are
 planeswalkers: two Garruk, Unleashed transforms choose different vertical edge
@@ -56,9 +56,11 @@ repository root.
    face and etching with one browser session. It records renderer, input and
    component identities and retains failures. This does not validate layout.
 2. Run `modern-frame-observations.mjs INPUTS OBSERVATIONS`. Project raw pixels
-   to HSV value before both coarse resampling and native Gaussian filtering, so
-   hue/saturation cannot shift frame edges and both searches use one signal.
-   It extracts reviewed
+   to HSV value before coarse resampling. Ordinary fine fields retain HSV value
+   and the 0.8 px native Gaussian. The two reviewed planeswalker geometries use
+   a largest-variance RGB axis per strip and a 0.4 px Gaussian; this is a linear
+   projection of encoded RGB, not a linear-light conversion. Each field records
+   its actual channel, filter and projection axis. It extracts reviewed
    frame strips directly from native-resolution scans. Gaussian filtering is
    restricted to each strip before any resampling; replacing all pixels outside
    those native strips must leave every packed field byte-identical.
@@ -66,7 +68,8 @@ repository root.
    the source census, extraction bounds and observation hash. Titles, artwork,
    rules descenders and collector text are excluded. Do not widen a window just
    to recover a stronger signal.
-4. Run `modern-calibration-normalize.mjs OBSERVATIONS/observations.json POSES`.
+4. Run `modern-calibration-normalize.mjs OBSERVATIONS/observations.json POSES
+games/magic/fixtures/accuracy/m21-frame-projection-review-plan.json`.
    Templates come only from scans in each geometry/material family. A fixed
    affine model fits two disjoint strip partitions, retaining four tangential
    gradient bins per patch. The third partition validates the result; it is one
@@ -300,10 +303,10 @@ pending, so mapped coverage does not certify the whole renderer.
 
 ## Printed footer content and collector columns
 
-The [partial footer content review](../fixtures/accuracy/m21/footer-content-review.json)
+The [initial partial footer content review](../fixtures/accuracy/m21/footer-content-review.json)
 covers 33 unique printings: all 20 PW-deck cards, all 15 canonical-name/diacritic
-candidates, and two ordinary controls, accounting for overlap. Twelve credits
-need [exact-printing artist corrections](../fixtures/accuracy/m21/artist-credit-proposal.json).
+candidates, and two ordinary controls, accounting for overlap. It identified twelve of the
+[exact-printing artist corrections](../fixtures/accuracy/m21/artist-credit-proposal.json).
 Do not remove accents generically: the printed Milivoj Ćeran and Bartłomiej Gaweł
 forms match provider metadata. These are inactive proposals, not a changed runtime
 catalog. Verify the remaining artists/legal strings before certifying credits.
@@ -343,3 +346,47 @@ zero regressions. All 297 etchings and face alpha channels are unchanged. The
 from 64.38 to 85.57/100 diagnostically and remain excluded from the total. These
 means include new planeswalker maps and cannot be compared directly to the old
 283-card mean. This is complete census coverage, not completed M21 calibration.
+
+## Shared projection implementation
+
+The shared tools now use `modern-frame-policy.mjs` to select a fixed fine signal
+and search policy by geometry. All 283 ordinary encoded fields and complete
+normalization rows remain exactly equal to V21. All 504 planeswalker field values
+and all 14 fitted transforms, support scores and optimization results exactly
+match the frozen PCA research. All 297 outside-field isolation checks pass.
+The [projection review plan](../fixtures/accuracy/m21-frame-projection-review-plan.json)
+binds a new observation hash without changing or replacing historical reviews.
+Its [window review](../fixtures/accuracy/m21-frame-window-pca-review.json)
+retains the source-mask ancestry and complete field parity evidence.
+
+The new float field format refuses inconsistent filter, channel and projection
+metadata. Ordinary observations can still be replayed with their original
+all-HSV policy. Per-geometry observations require explicit matching policy data;
+no cache may silently interpret an old field as a new projection. Only the PW
+fine objective gets the bounded vertical seed grid, chosen using fit fields
+alone. The third strip partition never selects a seed. The analytic, encoding,
+projection, isolation and legacy-policy checks are included in
+`npm run test:magic-modern-calibration`. Full known-raster replay is a separate
+required gate before approving these poses for final calibration.
+
+## Full printed-footer census
+
+The [full footer review](../fixtures/accuracy/m21/footer-census-review.json)
+checks all 297 artist, legal, serial, rarity, set/language and finish-marker
+strings on 25 source contact sheets. It adds Double Vision's printed
+“Heonhwa Choe” credit to the earlier twelve artist proposals. Every legal line
+uses the existing 2020 wording. Ten common nonbasic lands print an L in the
+collector line; Radiant Fountain instead prints C, so this cannot be inferred
+from the Land type. The five foil-only deck planeswalkers print a star, and
+bonus cards retain a fixed rarity column without the /274 denominator.
+This verifies content only; fonts, ink and placement still need native fitting.
+
+`modern-footer-study.mjs` accepts an optional `reviewedFooterHash` in its plan.
+It verifies the full review's input/reference census and derives only the
+reviewed content differences. The baseline still paints the unmodified renderer
+and must pass glyph-pixel parity. Opt-in `collectorRarityX` independently anchors
+the rarity column. Artist studies now include the full available artist row on
+noncreatures, reserving legal space on creatures and planeswalkers. The
+[column fitting plan](../fixtures/accuracy/m21/footer-collector-column-plan.json)
+refits the shared font/column geometry after the content corrections. These
+study substitutions do not activate a runtime profile or printing corrections.

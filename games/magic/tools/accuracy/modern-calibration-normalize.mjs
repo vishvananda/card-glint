@@ -4,18 +4,28 @@ import path from 'node:path';
 import { readFile, mkdir } from 'node:fs/promises';
 import { hash, root, writeJson } from './common.mjs';
 import { unpackFramePatches, patchGradient, patchSupport } from './frame-patch-profiles.mjs';
-import { NATIVE_FRAME_FILTER } from './native-frame-patches.mjs';
+import { observationFramePolicy, requireFramePatchPolicy } from './modern-frame-policy.mjs';
 import { median } from './metrics.mjs';
 import { fitScanResidual } from './printed-plate-registration.mjs';
 import { profileSupport, bounded } from './scan-gradient-fit.mjs';
 import { fitModernAffine as fitGradientProfiles } from './modern-affine-fit.mjs';
 import { metricSourceGraph } from './module-graph.mjs';
-const [observationsFile, outputDirectory] = process.argv.slice(2);
-assert(outputDirectory, 'Usage: modern-calibration-normalize.mjs OBSERVATIONS OUT');
+const [observationsFile, outputDirectory, reviewPlanFile] = process.argv.slice(2);
+assert(outputDirectory, 'Usage: modern-calibration-normalize.mjs OBSERVATIONS OUT [REVIEW_PLAN]');
 const bytes = await readFile(observationsFile),
   observations = JSON.parse(bytes);
-assert.equal(observations.channel, 'HSV-V-coarse-and-native-v1');
-const reviewFiles = ['m21-frame-window-upper-review.json', 'm21-frame-window-bottom-review.json'];
+const reviewPlan = reviewPlanFile ? JSON.parse(await readFile(reviewPlanFile)) : null;
+if (reviewPlan) {
+  assert.equal(reviewPlan.schema, 1);
+  assert.equal(reviewPlan.observationsHash, hash(bytes));
+  assert.equal(reviewPlan.reviews.length, 2);
+  assert.equal(new Set(reviewPlan.reviews).size, 2);
+  assert(reviewPlan.reviews.every((f) => typeof f === 'string' && path.basename(f) === f));
+}
+const reviewFiles = reviewPlan?.reviews ?? [
+  'm21-frame-window-upper-review.json',
+  'm21-frame-window-bottom-review.json',
+];
 const reviews = await Promise.all(
   reviewFiles.map(async (f) => {
     const bytes = await readFile(path.join(root, 'games/magic/fixtures/accuracy', f));
@@ -30,6 +40,7 @@ for (const r of reviews)
     'Review census',
   );
 assert.equal(reviews[0].data.observationsHash, hash(bytes));
+assert.equal(reviews[1].data.inputHash, observations.inputHash);
 assert.deepEqual(reviews[0].data.bounds, observations.bounds);
 assert.deepEqual(reviews[0].data.partitions, observations.partitions);
 assert.deepEqual(reviews[0].data.windowProfiles, observations.windowProfiles);
@@ -48,6 +59,8 @@ const sources = Object.fromEntries(
       'frame-patch-profiles.mjs',
       'native-frame-patches.mjs',
       'modern-frame-value.mjs',
+      'modern-frame-policy.mjs',
+      'native-frame-rgb-projection.mjs',
       'scan-transform.mjs',
       'pixels-pure.mjs',
       'printed-plate-registration.mjs',
@@ -65,15 +78,8 @@ for (const row of rows) {
   const data = await readFile(path.join(path.dirname(observationsFile), row.framePatches.file));
   assert.equal(hash(data), row.framePatches.sha256);
   row.patches = unpackFramePatches(data, row.framePatches.description);
-  assert(
-    row.patches
-      .flat()
-      .every(
-        (p) =>
-          p.filter === NATIVE_FRAME_FILTER && p.channel === 'HSV-V-before-native-frame-filter-v1',
-      ),
-    'Require native antialiasing for the fine objective',
-  );
+  row.projectionPolicy = observationFramePolicy(observations, row);
+  requireFramePatchPolicy(row.patches, row.projectionPolicy);
 }
 const templates = {};
 for (const family of [...new Set(rows.map((r) => r.geometry))]) {
@@ -132,6 +138,7 @@ const definition = {
   channel: observations.channel,
   observationsHash: hash(bytes),
   sources,
+  reviewPlanHash: reviewPlanFile ? hash(await readFile(reviewPlanFile)) : null,
   reviews: reviews.map(({ file, sha256 }) => ({ file, sha256 })),
   templates,
   partitionPolicy: {
@@ -140,7 +147,7 @@ const definition = {
     modelSelection: 'none; fixed six-parameter affine',
   },
   policy:
-    'Complete observed scan census. Physical geometry and normal-frame material families; gradient vectors use the matched outer-boundary interval for normalization and are normalized to L2 norm100 before taking population medians so pale cards cannot dominate the shared edge positions. Four tangential bins on each field, using finer eight-point quadrature on narrower bottom fields, retain local2D shape without consuming the reserve needed for tangential motion. Each bottom partition contains two left and one right strip, avoiding an accidental material/color split between fit and validation. A joint six-parameter affine fit samples small reviewed2D HSV-value fields computed from raw max(R,G,B) before filtering, independent of hue/saturation and preserving affine value gain/offset with the exact inverse matrix (including tangential movement along curves), and uses original unnormalized gradients, preserving low-signal rejection. Coarse profiles are also projected to HSV value before canonical resampling, so the starting search and fine objective share the same channel. The earlier stepwise models only supply starting points; independent strips and known-raster controls gate the affine result. All colors, foil flags and materials remain in the denominator. Two disjoint field partitions jointly fit the fixed affine model; the third partition alone validates and certifies it. Validation and certification are the same held pixels, not two independent tests; no held-out-name or unseen-transfer claim. Scan poses are comparison-only and never enter renderer defaults.',
+    'Complete observed scan census. Physical geometry and normal-frame material families; gradient vectors use the matched outer-boundary interval for normalization and are normalized to L2 norm100 before taking population medians so pale cards cannot dominate the shared edge positions. Four tangential bins on each field, using finer eight-point quadrature on narrower bottom fields, retain local2D shape without consuming the reserve needed for tangential motion. Each bottom partition contains two left and one right strip, avoiding an accidental material/color split between fit and validation. A joint six-parameter affine fit samples small reviewed2D native fields with the exact inverse matrix (including tangential movement along curves). Ordinary families retain raw HSV value and0.8px Gaussian; reviewed PW geometries use one largest-variance encoded-RGB linear projection per strip and0.4px Gaussian, with the same bounded vertical multi-start grid on every PW. Fields retain accurate filter/channel/projection-axis metadata. Original unnormalized gradients preserve low-signal rejection. All coarse profiles are projected to HSV value before canonical resampling. Ordinary coarse and fine objectives share that channel; PW fine fields deliberately use the declared geometry-specific linear RGB projection. The earlier stepwise models only supply starting points; independent strips and known-raster controls gate the affine result. All colors, foil flags and materials remain in the denominator. Two disjoint field partitions jointly fit the fixed affine model; the third partition alone validates and certifies it. Validation and certification are the same held pixels, not two independent tests; no held-out-name or unseen-transfer claim. Scan poses are comparison-only and never enter renderer defaults.',
 };
 const templateHash = hash(JSON.stringify(definition));
 await mkdir(outputDirectory, { recursive: true });
@@ -193,7 +200,13 @@ for (const row of rows) {
       independentProfiles: row.profiles[2],
       patches: row.patches[0].concat(row.patches[1]),
       independentPatches: row.patches[2],
-      fit: fitScanResidual(row.profiles[0], template),
+      // Preserve ordinary seed numerics; the PW research used both fit partitions.
+      fit: fitScanResidual(
+        row.projectionPolicy.fineSearch === 'vertical-reserve-multistart-v1'
+          ? row.profiles[0].concat(row.profiles[1])
+          : row.profiles[0],
+        template,
+      ),
     },
     {
       template,
@@ -201,6 +214,7 @@ for (const row of rows) {
       patchTemplate: family.patchTemplates[0].concat(family.patchTemplates[1]),
       independentPatchTemplate: family.patchTemplates[2],
       search: 'independent-axis-seed-v1',
+      fineSearch: row.projectionPolicy.fineSearch,
     },
   );
   assert.equal(fit.model, 'affine-joint-2d');

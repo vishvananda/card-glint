@@ -21,7 +21,33 @@ export function modernFooterStudyPlugin() {
         );
         source = source.replace(before, after);
       };
-      replace(needle, needle + insertion);
+      replace(
+        needle,
+        needle +
+          insertion +
+          `
+  const printedArtist = study.artistByNumber?.[face.collectorNumber ?? ''];
+  if (printedArtist !== undefined) face = {...face, artist: printedArtist};
+`,
+      );
+      replace(
+        'c.fillText(printingCollectorText(face), 30, 645)',
+        `(study.collectorRarityX === undefined
+          ? c.fillText(printingCollectorText(face), 30, 645)
+          : (() => {
+            const text = printingCollectorText(face);
+            if (!text) return;
+            const match = /^(\\d{3}(?:\\/274)?) ([CMRUL])$/.exec(text);
+            if (!match || face.setCode?.toLowerCase() !== 'm21')
+              throw Error('Unreviewed collector arrangement in footer study');
+            c.fillText(match[1], 30, 645);
+            c.fillText(study.collectorRarityByNumber?.[face.collectorNumber ?? ''] ?? match[2], study.collectorRarityX, 645);
+          })())`,
+      );
+      replace(
+        "`${set} \u2022 ${face.collectorLanguage?.toUpperCase() ?? 'EN'}`",
+        '`${set} ${study.foilStarNumbers?.includes(face.collectorNumber) ? "★" : "•"} ${face.collectorLanguage?.toUpperCase() ?? "EN"}`',
+      );
       replace("c.letterSpacing = '0px';", 'c.letterSpacing = `${study.collectorTracking ?? 0}px`;');
       replace(
         'c.font = \'11px "CardRenderer MTG Relay", sans-serif\';',

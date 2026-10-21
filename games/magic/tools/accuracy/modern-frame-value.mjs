@@ -1,4 +1,5 @@
-import { nativeFramePatches } from './native-frame-patches.mjs';
+import { nativeFramePatches, nativeRgbPcaFramePatches } from './native-frame-patches.mjs';
+import { HSV_FRAME_POLICY, PCA_FRAME_POLICY } from './modern-frame-policy.mjs';
 
 /** Registration only. HSV value is independent of hue/saturation; affine value
  * gain/offset remains affine before the linear native frame filter. Keep this
@@ -13,11 +14,16 @@ export function frameValue(image) {
   }
   return values;
 }
-export function modernValueFramePatches(image, windows, bounds) {
-  return nativeFramePatches(image, windows, bounds, frameValue(image)).map((p) => ({
-    ...p,
-    channel: 'HSV-V-before-native-frame-filter-v1',
-  }));
+export function modernValueFramePatches(image, windows, bounds, policy = HSV_FRAME_POLICY) {
+  if (policy !== HSV_FRAME_POLICY && policy !== PCA_FRAME_POLICY)
+    throw Error('Unknown native frame policy');
+  if (image.data.length !== image.width * image.height * 4)
+    throw Error('Frame projection needs complete RGBA pixels');
+  const fields =
+    policy === PCA_FRAME_POLICY
+      ? nativeRgbPcaFramePatches(image, windows, bounds)
+      : nativeFramePatches(image, windows, bounds, frameValue(image));
+  return fields.map((p) => ({ ...p, channel: policy.channel }));
 }
 
 /** Project before canonical resampling too: otherwise the coarse search still

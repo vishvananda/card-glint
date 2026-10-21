@@ -5,6 +5,7 @@ import { PNG } from 'pngjs';
 import { hash, writeJson } from './common.mjs';
 import { patchSupport } from './frame-patch-profiles.mjs';
 import { frameValueImage, modernValueFramePatches } from './modern-frame-value.mjs';
+import { observationFramePolicy, requireFramePatchPolicy } from './modern-frame-policy.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { inverseScanMatrix, projectScanPoint } from './scan-transform.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
@@ -22,7 +23,7 @@ const obs = await read(obsFile),
   n = await read(path.join(normalizationDirectory, 'normalization.json')),
   t = await read(path.join(normalizationDirectory, 'templates.json')),
   controls = await read(path.join(controlDirectory, 'controls.json'));
-assert.equal(obs.data.channel, 'HSV-V-coarse-and-native-v1');
+
 assert.equal(n.data.rows.length, obs.data.rows.length);
 assert.equal(n.data.summary.completed, n.data.summary.total);
 assert.equal(n.data.observationsHash, hash(obs.bytes));
@@ -55,6 +56,8 @@ const definition = {
         'frame-patch-profiles.mjs',
         'native-frame-patches.mjs',
         'modern-frame-value.mjs',
+        'modern-frame-policy.mjs',
+        'native-frame-rgb-projection.mjs',
         'scan-transform.mjs',
         'scan-boundary-profiles.mjs',
         'printed-plate-registration.mjs',
@@ -119,7 +122,11 @@ for (const control of controls.data.controls) {
   const raw = PNG.sync.read(bytes, { checkCRC: true }),
     image = normalize(frameValueImage(raw)),
     profiles = source.partitions.map((p) => scanBoundaryProfiles(image, p, source.bounds));
-  const patches = source.partitions.map((p) => modernValueFramePatches(raw, p, source.bounds));
+  const finePolicy = observationFramePolicy(obs.data, source);
+  const patches = source.partitions.map((p) =>
+    modernValueFramePatches(raw, p, source.bounds, finePolicy),
+  );
+  requireFramePatchPolicy(patches, finePolicy);
   const family = t.data.templates[control.geometry];
   const template = family.partitions[0].concat(family.partitions[1]),
     independentTemplate = family.partitions[2];
@@ -137,6 +144,7 @@ for (const control of controls.data.controls) {
       patchTemplate: family.patchTemplates[0].concat(family.patchTemplates[1]),
       independentPatchTemplate: family.patchTemplates[2],
       search: 'independent-axis-seed-v1',
+      fineSearch: finePolicy.fineSearch,
     },
   );
   assert.equal(fit.model, 'affine-joint-2d');

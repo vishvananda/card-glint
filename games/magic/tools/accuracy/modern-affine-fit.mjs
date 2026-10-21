@@ -154,6 +154,23 @@ export function fitModernAffine(row, study) {
     optimize(row.profiles, study.template, m, row.patches, study.patchTemplate),
   );
   fits.sort((a, b) => a.loss - b.loss);
+  if (study.fineSearch === 'vertical-reserve-multistart-v1') {
+    // Fit fields alone select the candidate; held strips never select a seed.
+    // The same bounded grid is used for every member of this geometry family.
+    const anchor = variables(fits[0].transform.matrix);
+    for (const top of [-6, -3, 0, 3, 6])
+      for (const bottom of [-3, 0, 3]) {
+        if (top === 0 && bottom === 0) continue;
+        const q = [...anchor];
+        q[3] += (bottom - top) / 2;
+        q[5] += (bottom + top) / 2;
+        const m = matrix(q);
+        if (!bounded(parameters(m))) continue;
+        fits.push(optimize(row.profiles, study.template, m, row.patches, study.patchTemplate));
+      }
+    fits.sort((a, b) => a.loss - b.loss);
+  } else if (study.fineSearch !== undefined && study.fineSearch !== 'coarse-seeds-v1')
+    throw Error('Unknown native affine search policy');
   const chosen = fits[0];
   const fit = row.patches
     ? patchSupport(row.patches, study.patchTemplate, chosen.transform)

@@ -24,6 +24,7 @@ const parameters = new Set([
   'collectorSize',
   'collectorTracking',
   'collectorOffset',
+  'collectorRarityX',
   'artistSize',
   'artistTracking',
   'artistOffset',
@@ -35,7 +36,9 @@ function validate(value) {
   assert(value && typeof value === 'object' && !Array.isArray(value));
   for (const [k, v] of Object.entries(value)) {
     assert(parameters.has(k), 'Unknown footer parameter ' + k);
-    if (k === 'collectorFamily') assert(['CardRenderer MTG Relay', 'Study M21 Gotham'].includes(v));
+    if (k === 'collectorRarityX') assert(Number.isFinite(v) && v >= 60 && v <= 120);
+    else if (k === 'collectorFamily')
+      assert(['CardRenderer MTG Relay', 'Study M21 Gotham'].includes(v));
     else if (k.endsWith('Offset'))
       assert(
         Array.isArray(v) &&
@@ -46,10 +49,32 @@ function validate(value) {
   }
 }
 validate(base);
+let contentParameters = {};
+if (plan.reviewedFooterHash) {
+  const file = root + '/games/magic/fixtures/accuracy/m21/footer-census-review.json';
+  assert.equal(hash(await fs.readFile(file)), plan.reviewedFooterHash);
+  const review = await read(file);
+  assert.equal(inputs.set, 'm21');
+  assert.equal(review.source.inputsHash, hash(await fs.readFile(inputFile)));
+  assert.equal(review.rows.length, inputs.entries.length);
+  assert.equal(new Set(review.rows.map((r) => r.id)).size, inputs.entries.length);
+  contentParameters = { artistByNumber: {}, collectorRarityByNumber: {}, foilStarNumbers: [] };
+  for (const r of review.rows) {
+    const e = inputs.entries.find((e) => e.id === r.id);
+    assert(e && e.reference.sha256 === r.referenceHash && e.card.collector_number === r.number);
+    assert.equal(r.printedLegal, '™ & © 2020 Wizards of the Coast');
+    if (r.printedArtist !== e.face.artist)
+      contentParameters.artistByNumber[r.number] = r.printedArtist;
+    const rarity = /^Basic Land/.test(e.face.typeLine ?? '') ? 'L' : e.card.rarity[0].toUpperCase();
+    if (r.printedRarityMark !== rarity)
+      contentParameters.collectorRarityByNumber[r.number] = r.printedRarityMark;
+    if (r.printedFinishMarker === 'star') contentParameters.foilStarNumbers.push(r.number);
+  }
+}
 assert(Array.isArray(plan.variants) && plan.variants.length > 0 && plan.variants.length <= 128);
 const variants = plan.variants.map((v) => {
     validate(v);
-    return { ...base, ...v };
+    return { ...base, ...v, ...contentParameters };
   }),
   offsets = plan.offsets;
 assert(Array.isArray(offsets) && offsets.length > 0 && offsets.length <= 256);
@@ -87,6 +112,7 @@ const source = {
   toolHash: hash(await fs.readFile(new URL(import.meta.url))),
   pluginHash: hash(await fs.readFile(new URL('./modern-footer-study-plugin.mjs', import.meta.url))),
   planHash: hash(await fs.readFile(planFile)),
+  reviewedFooterHash: plan.reviewedFooterHash ?? null,
 };
 source.nativeCaptureHash = hash(await fs.readFile(nativeDirectory + '/capture.json'));
 assert.equal(native.source.inputsHash, source.inputsHash);
@@ -163,20 +189,31 @@ try {
     const original = await fs.readFile(nativeDirectory + '/' + n.layers.face.file);
     assert.equal(hash(original), n.layers.face.sha256);
     const cardRects =
-      part === 'legal'
+      part === 'artist'
         ? [
             [
-              277,
+              88,
+              648,
               (e.face.power != null && e.face.toughness != null) || e.face.loyalty != null
-                ? 646
-                : 632,
-              181,
-              (e.face.power != null && e.face.toughness != null) || e.face.loyalty != null
-                ? 20
-                : 17,
+                ? 185
+                : 369,
+              18,
             ],
           ]
-        : rects;
+        : part === 'legal'
+          ? [
+              [
+                277,
+                (e.face.power != null && e.face.toughness != null) || e.face.loyalty != null
+                  ? 646
+                  : 632,
+                181,
+                (e.face.power != null && e.face.toughness != null) || e.face.loyalty != null
+                  ? 20
+                  : 17,
+              ],
+            ]
+          : rects;
     const s = scores.rows.find((r) => r.id === e.id),
       png = await fs.readFile(scoreDirectory + '/' + s.normalizedReference.file);
     assert.equal(hash(png), s.normalizedReference.sha256);

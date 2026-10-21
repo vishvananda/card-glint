@@ -9,6 +9,7 @@ import { normalize } from './pixels-pure.mjs';
 import { packFramePatches } from './frame-patch-profiles.mjs';
 import { nativeFrameRegions } from './native-frame-patches.mjs';
 import { frameValueImage, modernValueFramePatches } from './modern-frame-value.mjs';
+import { MODERN_FRAME_CHANNEL, modernFramePolicy } from './modern-frame-policy.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
 const [inputFile, outputDirectory] = process.argv.slice(2);
 assert(outputDirectory, 'Usage: modern-frame-observations.mjs INPUTS OUT');
@@ -52,6 +53,8 @@ const tools = Object.fromEntries(
       'frame-patch-profiles.mjs',
       'native-frame-patches.mjs',
       'modern-frame-value.mjs',
+      'modern-frame-policy.mjs',
+      'native-frame-rgb-projection.mjs',
       'pixels-pure.mjs',
     ].map(async (f) => [f, hash(await readFile(new URL(f, import.meta.url)))]),
   ),
@@ -84,6 +87,7 @@ try {
     const family = [kind, profile.legendary ? 'crown' : 'plain', profile.frame, profile.boxes].join(
       '/',
     );
+    const finePolicy = modernFramePolicy(kind);
     const windowFamily = kind.startsWith('planeswalker') ? 'planeswalker' : 'normal';
     const { bounds: sampleBounds, partitions: samplePartitions } = windowProfiles[windowFamily];
     const observations = samplePartitions.map((p) => scanBoundaryProfiles(image, p, sampleBounds));
@@ -106,7 +110,9 @@ try {
         observations[i],
         e.card.name + ': content isolation',
       );
-    const fields = samplePartitions.map((p) => modernValueFramePatches(raw, p, sampleBounds));
+    const fields = samplePartitions.map((p) =>
+      modernValueFramePatches(raw, p, sampleBounds, finePolicy),
+    );
     const packed = packFramePatches(fields);
     const rawAllowed = new Uint8Array(raw.width * raw.height);
     for (const p of samplePartitions)
@@ -119,7 +125,7 @@ try {
     for (let i = 0; i < rawAllowed.length; i++)
       if (!rawAllowed[i]) changedRaw.data.set([i % 251, (i * 3) % 251, (i * 7) % 251, 255], i * 4);
     const changedFields = packFramePatches(
-      samplePartitions.map((p) => modernValueFramePatches(changedRaw, p, sampleBounds)),
+      samplePartitions.map((p) => modernValueFramePatches(changedRaw, p, sampleBounds, finePolicy)),
     );
     assert.deepEqual(changedFields, packed, e.card.name + ': native2D content isolation');
     const patchFile = 'patches/' + e.id + '.bin';
@@ -133,6 +139,7 @@ try {
       kind,
       profile,
       windowFamily,
+      finePolicy: finePolicy.key,
       bounds: sampleBounds,
       partitions: samplePartitions,
       referenceHash: e.reference.sha256,
@@ -163,7 +170,7 @@ try {
   await writeJson(path.join(outputDirectory, 'observations.json'), {
     schema: 1,
     set: inputs.set,
-    channel: 'HSV-V-coarse-and-native-v1',
+    channel: MODERN_FRAME_CHANNEL,
     status: 'awaiting-full-strip-visual-review-and-template-certification',
     scope:
       'Scan-only census and renderer-resolved frame-family inventory. Disjoint extraction footprints and native-resolution pixel isolation are verified; these proposed windows are not yet certified as visually content-free on every printing. No pose, calibration or completion claim.',

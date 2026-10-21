@@ -4,6 +4,7 @@ import path from 'node:path';
 import { readFile, mkdir } from 'node:fs/promises';
 import { PNG } from 'pngjs';
 import { hash, writeJson } from './common.mjs';
+import { observationFramePolicy, requireFramePatchPolicy } from './modern-frame-policy.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { frameValueImage, modernValueFramePatches } from './modern-frame-value.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
@@ -48,12 +49,14 @@ for (const e of input.data.entries) {
   assert.equal(native.inputHash, hash(JSON.stringify(e.face)));
   const bytes = await readFile(path.join(nativeDirectory, native.layers.face.file));
   assert.equal(hash(bytes), native.layers.face.sha256);
+  const finePolicy = observationFramePolicy(obs.data, row);
   const image = PNG.sync.read(bytes),
-    patches = row.partitions.map((p) => modernValueFramePatches(image, p, row.bounds)),
+    patches = row.partitions.map((p) => modernValueFramePatches(image, p, row.bounds, finePolicy)),
     packed = packFramePatches(patches),
     geometry = row.kind.startsWith('planeswalker')
       ? row.kind
       : (row.profile.legendary ? 'normal-crown/' : 'normal-plain/') + row.profile.boxes;
+  requireFramePatchPolicy(patches, finePolicy);
   const identity = hash(
     Buffer.concat([Buffer.from(JSON.stringify(packed.description)), packed.bytes]),
   );
@@ -87,6 +90,7 @@ for (const e of input.data.entries) {
       patchTemplate: family.patchTemplates[0].concat(family.patchTemplates[1]),
       independentPatchTemplate: family.patchTemplates[2],
       search: 'independent-axis-seed-v1',
+      fineSearch: finePolicy.fineSearch,
     },
   );
   const value = {

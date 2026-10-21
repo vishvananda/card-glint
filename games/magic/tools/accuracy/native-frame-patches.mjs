@@ -1,6 +1,7 @@
 // Filter only reviewed frame pixels at source resolution before downsampling.
 // Filtering a complete card first could leak adjacent title/footer/art pixels.
 import { luminance } from './pixels-pure.mjs';
+import { stripRgbAxis, RGB_PCA_FILTER } from './native-frame-rgb-projection.mjs';
 export const NATIVE_FRAME_FILTER = 'native-grid-gaussian-0.8-f32-frame-only-v3';
 export function nativeFrameRegions(image, windows, bounds) {
   const factor = Math.min(488 / image.width, 680 / image.height),
@@ -44,6 +45,12 @@ export function nativeFrameRegions(image, windows, bounds) {
   );
 }
 export function nativeFramePatches(image, windows, bounds, gray = luminance(image)) {
+  return filteredNativeFramePatches(image, windows, bounds, gray, false);
+}
+export function nativeRgbPcaFramePatches(image, windows, bounds) {
+  return filteredNativeFramePatches(image, windows, bounds, undefined, true);
+}
+function filteredNativeFramePatches(image, windows, bounds, gray, rgbPca) {
   return nativeFrameRegions(image, windows, bounds).map((region) => {
     const { rect, factor, padX, padY, ...shape } = region,
       { axis } = shape,
@@ -51,13 +58,18 @@ export function nativeFramePatches(image, windows, bounds, gray = luminance(imag
       alongStart = axis === 'x' ? rect[1] : rect[0],
       width = (axis === 'x' ? rect[2] : rect[3]) - normalStart + 1,
       height = (axis === 'x' ? rect[3] : rect[2]) - alongStart + 1,
-      sigma = 0.8 / factor,
+      sigma = (rgbPca ? 0.4 : 0.8) / factor,
       radius = Math.ceil(3 * sigma);
     const kernel = Array.from({ length: radius * 2 + 1 }, (_, i) =>
         Math.exp(-0.5 * ((i - radius) / sigma) ** 2),
       ),
       total = kernel.reduce((a, b) => a + b, 0);
     for (let i = 0; i < kernel.length; i++) kernel[i] /= total;
+    const projectionAxis = rgbPca ? stripRgbAxis(image, rect) : undefined;
+    const sampleGray = (pixel) =>
+      projectionAxis
+        ? projectionAxis.reduce((n, v, k) => n + v * image.data[pixel * 4 + k], 0)
+        : gray[pixel];
     const horizontal = new Float32Array(width * height),
       values = new Float32Array(width * height);
     for (let j = 0; j < height; j++)
@@ -68,7 +80,7 @@ export function nativeFramePatches(image, windows, bounds, gray = luminance(imag
             a = alongStart + j;
           sum +=
             kernel[k + radius] *
-            gray[(axis === 'x' ? a : n) * image.width + (axis === 'x' ? n : a)];
+            sampleGray((axis === 'x' ? a : n) * image.width + (axis === 'x' ? n : a));
         }
         horizontal[j * width + i] = sum;
       }
@@ -82,6 +94,9 @@ export function nativeFramePatches(image, windows, bounds, gray = luminance(imag
       }
     return {
       ...shape,
+      ...(rgbPca
+        ? { filter: RGB_PCA_FILTER, projection: { kind: 'rgb-pca-strip-v1', axis: projectionAxis } }
+        : {}),
       width,
       height,
       nativeSampling: {

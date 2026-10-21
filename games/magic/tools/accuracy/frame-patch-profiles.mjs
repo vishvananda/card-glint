@@ -3,6 +3,7 @@
 import { luminance } from './pixels-pure.mjs';
 import { inverseScanMatrix } from './scan-transform.mjs';
 import { median } from './metrics.mjs';
+import { RGB_PCA_CHANNEL, RGB_PCA_FILTER } from './native-frame-rgb-projection.mjs';
 function smooth(values, width, height) {
   const weights = [1, 4, 6, 4, 1],
     horizontal = new Float32Array(values.length),
@@ -91,6 +92,7 @@ export function unpackFramePatches(bytes, description) {
           'native-gaussian-0.8-frame-only-v1',
           'native-grid-gaussian-0.8-frame-only-v2',
           'native-grid-gaussian-0.8-f32-frame-only-v3',
+          RGB_PCA_FILTER,
         ].includes(p.filter) ||
         p.lo <= p.normalLo ||
         p.hi >= p.normalHi
@@ -105,8 +107,25 @@ export function unpackFramePatches(bytes, description) {
         p.offset + p.length > bytes.length
       )
         throw Error('Invalid frame field offsets');
-      if (p.filter === 'native-grid-gaussian-0.8-f32-frame-only-v3' && !floating)
+      if (
+        ['native-grid-gaussian-0.8-f32-frame-only-v3', RGB_PCA_FILTER].includes(p.filter) &&
+        !floating
+      )
         throw Error('Native float field requires f32le encoding');
+      if (p.filter === RGB_PCA_FILTER) {
+        const a = p.projection?.axis;
+        if (
+          p.channel !== RGB_PCA_CHANNEL ||
+          p.projection?.kind !== 'rgb-pca-strip-v1' ||
+          !Array.isArray(a) ||
+          a.length !== 3 ||
+          !a.every(Number.isFinite) ||
+          Math.abs(Math.hypot(...a) - 1) > 1e-8 ||
+          a.reduce((n, v) => n + v, 0) < -1e-8
+        )
+          throw Error('Invalid strip RGB projection');
+      } else if (p.projection || p.channel === RGB_PCA_CHANNEL)
+        throw Error('Projection metadata requires the matching frame filter');
       if (p.filter.startsWith('native-grid-')) {
         const s = p.nativeSampling;
         if (
