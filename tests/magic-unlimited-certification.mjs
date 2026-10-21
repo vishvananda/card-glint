@@ -58,3 +58,15 @@ assert.equal(data.receipt.native.artistOnlyOriginalChanges, 13);
 console.log(
   'Unlimited:302 exact census members,27 variants,340 scoped checks; changed source/geometry/member and group guards reject; publication remains a separate gate.',
 );
+
+const templates = await readJson('games/magic/fixtures/accuracy/2ed/certified-scan-templates.json');
+assert.equal(templates.references.length, 302);
+assert.equal(templates.templateHash, data.receipt.scanTemplateHash);
+for (const row of data.receipt.rows) {
+  const reference = templates.references.find((r) => r.id === row.id);
+  assert(reference?.accepted && reference.contentIsolationPassed);
+  assert.equal(reference.referenceHash, row.referenceHash);
+  assert.equal(hash(JSON.stringify(reference.transform)), row.poseHash);
+  assert.equal(reference.nativeScoredPoseHash, row.poseHash);
+}
+console.log('Published scan templates preserve all302 certified reference/pose joins.');
