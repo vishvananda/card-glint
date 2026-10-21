@@ -5,6 +5,13 @@ these measurements. Numeric evidence is in
 [`m21-registration-experiments.json`](../fixtures/accuracy/m21-registration-experiments.json)
 and [`m21-baseline-diagnostic.json`](../fixtures/accuracy/m21-baseline-diagnostic.json).
 
+The current method has support on all297 scans but passes230/231 initial
+recovery cases. The broader confirmation includes actual HSV changes and has
+exposed high-confidence color-driven drift on Radha. These poses remain
+unapproved; a geometric edge/phase comparison needs investigation before fitting
+final defaults. The [type-line proposal](../fixtures/accuracy/m21/README.md) is
+versioned separately from its pending runtime adoption.
+
 The source census contains 297 ordinary printings, 50 semantic material/frame
 variants and 17 registration families. Five planeswalker-deck printings have
 only foil references: check their layout, but exclude them from ordinary-paper
@@ -44,7 +51,10 @@ OBSERVATIONS/observations.json POSES CONTROLS CONTROLS/results.json`.
    Thirty-three sources are selected by UUID before evaluating seven known
    native raster transforms each. Every selected case stays in the denominator.
    Recovery requires corner RMS at most 0.35 and maximum error at most 0.6 in
-   the 488 × 680 comparison space. Run fresh controls and inspect normalized
+   the 488 × 680 comparison space. An optional final plan argument accepts
+   `games/magic/fixtures/accuracy/m21-normalization-confirmation-plan.json` to
+   cover all297 sources with two additional warps and an HSV variation.
+   Run fresh controls and inspect normalized
    rasters before approving a method fitted using these controls.
 6. For an explicitly provisional baseline, run `modern-calibration-score.mjs
 INPUTS NATIVE POSES METRIC_MODULE OUTPUT --diagnostic`. The supplied module

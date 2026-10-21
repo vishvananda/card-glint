@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "selection": "complete-reference-census",
+  "expectedSources": 297,
+  "scope": "Fresh transform and HSV confirmation over every source in the frozen297-printing census. These cases were declared before their recovery scores were evaluated. All sources already contributed to scan templates; this is not a held-out-printing claim. Every source/case remains in the denominator, including foil-only layout references. The existing corner RMS0.35/max0.6 and frame-support gates remain unchanged. Failure keeps normalization unapproved.",
+  "cases": [
+    {
+      "label": "confirm-negative-rotation",
+      "sx": 0.999,
+      "sy": 1.001,
+      "tx": -0.85,
+      "ty": 0.9,
+      "rotation": -0.12,
+      "shear": 0.08
+    },
+    {
+      "label": "confirm-axis-and-skew",
+      "sx": 1.0024,
+      "sy": 0.9978,
+      "tx": 0.65,
+      "ty": -0.55,
+      "rotation": 0.11,
+      "shear": -0.06
+    },
+    {
+      "label": "confirm-hsv",
+      "sx": 1,
+      "sy": 1,
+      "tx": 0,
+      "ty": 0,
+      "rotation": 0,
+      "shear": 0,
+      "photometry": {
+        "space": "HSV",
+        "saturationScale": 0.65,
+        "valueScale": 0.88,
+        "valueOffset": 0.03
+      }
+    }
+  ]
+}

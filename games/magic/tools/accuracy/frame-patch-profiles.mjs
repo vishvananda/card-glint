@@ -185,14 +185,16 @@ export function patchGradient(p, transform = { matrix: [1, 0, 0, 1, 0, 0] }) {
       340 + m[1] * (x - 244) + m[3] * (y - 340) + m[5],
     );
   // Preserve tangential bins instead of averaging a curve into one strip.
-  // Narrow lower fields use two bins; broad fields use four. The normalized
+  // Narrow lower fields use a finer eight-point quadrature over a smaller
+  // footprint; broad fields retain their wider four bins. The normalized
   // bin weight preserves the raw-signal energy scale across both footprints.
-  const centers = p.span >= 8 ? [-3, -1, 1, 3] : [-1, 1];
+  const centers = p.span >= 8 ? [-3, -1, 1, 3] : [-1.5, -0.5, 0.5, 1.5];
+  const halfStep = p.span >= 8 ? 0.5 : 0.25;
   if (p.span < 5) throw Error('Insufficient tangential frame support');
   for (let q = p.lo; q <= p.hi; q++)
     for (const center of centers) {
       let sum = 0;
-      for (const k of [center - 0.5, center + 0.5]) {
+      for (const k of [center - halfStep, center + halfStep]) {
         const x = p.axis === 'x' ? q : p.along + k,
           y = p.axis === 'y' ? q : p.along + k;
         sum +=
