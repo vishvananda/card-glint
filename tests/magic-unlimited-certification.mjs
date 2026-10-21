@@ -43,11 +43,13 @@ for (const original of set.groups) {
 const reports = await calibrationReport({ sets: [set] });
 assert.equal(
   reports[0].counts.validated,
-  340 + set.groups.filter((g) => g.tasks.release.status === 'validated').length,
+  320 + set.groups.filter((g) => g.tasks.release.status === 'validated').length,
 );
 assert.equal(reports[0].originalRulesInputs.ready, 302);
 assert.equal(reports[0].originalTypeInputs.ready, 302);
-assert(reports[0].outstanding.every((r) => r.task === 'release'));
+assert.equal(reports[0].counts['needs-audit'], 20);
+assert.equal(reports[0].complete, false);
+assert(reports[0].outstanding.every((r) => ['frameGeometry', 'fullCard'].includes(r.task)));
 // Group-level guards must invalidate every applicable dependent task.
 const tampered = structuredClone(set);
 tampered.groups[0].guards['games/magic/src/calibration/sets/2ed.ts'] = '0'.repeat(64);
