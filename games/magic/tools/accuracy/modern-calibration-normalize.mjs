@@ -14,6 +14,7 @@ const [observationsFile, outputDirectory] = process.argv.slice(2);
 assert(outputDirectory, 'Usage: modern-calibration-normalize.mjs OBSERVATIONS OUT');
 const bytes = await readFile(observationsFile),
   observations = JSON.parse(bytes);
+assert.equal(observations.channel, 'HSV-V-coarse-and-native-v1');
 const reviewFiles = ['m21-frame-window-upper-review.json', 'm21-frame-window-bottom-review.json'];
 const reviews = await Promise.all(
   reviewFiles.map(async (f) => {
@@ -128,6 +129,7 @@ const definition = {
   },
   graphToolHash: hash(await readFile(new URL('./module-graph.mjs', import.meta.url))),
   set: observations.set,
+  channel: observations.channel,
   observationsHash: hash(bytes),
   sources,
   reviews: reviews.map(({ file, sha256 }) => ({ file, sha256 })),
@@ -138,7 +140,7 @@ const definition = {
     modelSelection: 'none; fixed six-parameter affine',
   },
   policy:
-    'Complete observed scan census. Physical geometry and normal-frame material families; gradient vectors use the matched outer-boundary interval for normalization and are normalized to L2 norm100 before taking population medians so pale cards cannot dominate the shared edge positions. Four tangential bins on each field, using finer eight-point quadrature on narrower bottom fields, retain local2D shape without consuming the reserve needed for tangential motion. Each bottom partition contains two left and one right strip, avoiding an accidental material/color split between fit and validation. A joint six-parameter affine fit samples small reviewed2D HSV-value fields computed from raw max(R,G,B) before filtering, independent of hue/saturation and preserving affine value gain/offset with the exact inverse matrix (including tangential movement along curves), and uses original unnormalized gradients, preserving low-signal rejection. The earlier stepwise models only supply starting points; independent strips and known-raster controls gate the affine result. All colors, foil flags and materials remain in the denominator. Two disjoint field partitions jointly fit the fixed affine model; the third partition alone validates and certifies it. Validation and certification are the same held pixels, not two independent tests; no held-out-name or unseen-transfer claim. Scan poses are comparison-only and never enter renderer defaults.',
+    'Complete observed scan census. Physical geometry and normal-frame material families; gradient vectors use the matched outer-boundary interval for normalization and are normalized to L2 norm100 before taking population medians so pale cards cannot dominate the shared edge positions. Four tangential bins on each field, using finer eight-point quadrature on narrower bottom fields, retain local2D shape without consuming the reserve needed for tangential motion. Each bottom partition contains two left and one right strip, avoiding an accidental material/color split between fit and validation. A joint six-parameter affine fit samples small reviewed2D HSV-value fields computed from raw max(R,G,B) before filtering, independent of hue/saturation and preserving affine value gain/offset with the exact inverse matrix (including tangential movement along curves), and uses original unnormalized gradients, preserving low-signal rejection. Coarse profiles are also projected to HSV value before canonical resampling, so the starting search and fine objective share the same channel. The earlier stepwise models only supply starting points; independent strips and known-raster controls gate the affine result. All colors, foil flags and materials remain in the denominator. Two disjoint field partitions jointly fit the fixed affine model; the third partition alone validates and certifies it. Validation and certification are the same held pixels, not two independent tests; no held-out-name or unseen-transfer claim. Scan poses are comparison-only and never enter renderer defaults.',
 };
 const templateHash = hash(JSON.stringify(definition));
 await mkdir(outputDirectory, { recursive: true });

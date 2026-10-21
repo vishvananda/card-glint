@@ -3,7 +3,7 @@
   "set": "m21",
   "reviewedAt": "2026-10-21",
   "scope": "All297 exact top/left/right fields retain their previously reviewed source bounds and positions: normal/crowned top0..31, fourteen walkers0..27. Only bottom fields changed: companion bottom review binds all297 newly inspected lower crops,625..638 support and627..634 matching at nine slots away from collector text, stamp and stats. Native Gaussian filtering and float storage read only source pixel centers inside these masks; outside-field replacement is byte-exact. No scan pose, color or set-completion approval.",
-  "observationsHash": "674cb5e39d4596565088894ce34ec506d59b1c9224fa839989db918cf0ca0506",
+  "observationsHash": "4ad1c36aa4cbfd7ce15845a0ba4beeb883830d418b27290e181aacbbd3c22f0a",
   "bounds": {
     "left": [0, 33],
     "right": [455, 487],
@@ -2008,10 +2008,10 @@
   "externalImagesInRepository": false,
   "matchingInvariant": "All matched coordinates plus a one-pixel derivative footprint must fit inside the reviewed support. The previous experimental625..639 bottom interval violated this invariant and is rejected.",
   "filter": "native-grid-gaussian-0.8-f32-frame-only-v3",
-  "measurementChannel": "HSV-V-before-native-frame-filter-v1",
-  "measurementChange": "Same reviewed native pixel footprints, references and content-exclusion proof. Compute max(R,G,B) before the existing linear filter to remove hue/saturation dependence. This rebinds extraction, not registration approval or a new visual window selection.",
+  "measurementChannel": "HSV-V-coarse-and-native-v1",
+  "measurementChange": "Same reviewed native pixels, frame-patch bytes, references and content-exclusion proof. Coarse profiles now also project raw RGB to HSV value before canonical resampling. This changes coarse seeds, not reviewed windows or raw native fields. No pose approval.",
   "priorWindowReview": {
-    "file": "games/magic/fixtures/accuracy/m21-frame-window-value-rebinding.json.gz",
-    "sha256OfArchivedReview": "bb97d61bf734776c91350e2c84df14d68d02f2689c811b7051391654bffefc60"
+    "file": "games/magic/fixtures/accuracy/m21-frame-window-coarse-value-rebinding.json.gz",
+    "sha256OfArchivedReview": "946d619cc1268040da829fca7cabf31e21fe84a5c49c1e82b62934200974ded2"
   }
 }

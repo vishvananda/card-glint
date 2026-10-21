@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
 import {
   frameValue,
+  frameValueImage,
   modernValueFramePatches,
 } from '../games/magic/tools/accuracy/modern-frame-value.mjs';
 import { nativeFramePatches } from '../games/magic/tools/accuracy/native-frame-patches.mjs';
-import { luminance } from '../games/magic/tools/accuracy/pixels-pure.mjs';
+import { normalize, luminance } from '../games/magic/tools/accuracy/pixels-pure.mjs';
 const width = 146,
   height = 204;
 const image = { width, height, data: new Uint8Array(width * height * 4) };
@@ -28,6 +29,11 @@ assert.deepEqual(
   frameValue(changed),
   expected,
   'Changing hue/saturation must not move the frame value field',
+);
+assert.deepEqual(
+  normalize(frameValueImage(image)),
+  normalize(frameValueImage(changed)),
+  'Coarse resampling must retain hue/saturation invariance',
 );
 const changedGray = luminance(changed);
 assert(luminance(image).some((v, i) => Math.abs(v - changedGray[i]) > 25));

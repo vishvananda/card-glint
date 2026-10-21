@@ -1567,10 +1567,10 @@
   "sourceManifestHash": "2ba860c79bb0e6e95e5d3ae46cdba901bb4eb472c58e4f921ced83f6d072d62d",
   "previousSourceManifestHash": "991efe4acca721b50536da2bb290be65062b92e122fb6a483ddbc51ccd281b2a",
   "sourceCropPixelsUnchanged": 297,
-  "measurementChannel": "HSV-V-before-native-frame-filter-v1",
-  "measurementChange": "Same reviewed native pixel footprints, references and content-exclusion proof. Compute max(R,G,B) before the existing linear filter to remove hue/saturation dependence. This rebinds extraction, not registration approval or a new visual window selection.",
+  "measurementChannel": "HSV-V-coarse-and-native-v1",
+  "measurementChange": "Same reviewed native pixels, frame-patch bytes, references and content-exclusion proof. Coarse profiles now also project raw RGB to HSV value before canonical resampling. This changes coarse seeds, not reviewed windows or raw native fields. No pose approval.",
   "priorWindowReview": {
-    "file": "games/magic/fixtures/accuracy/m21-frame-window-value-rebinding.json.gz",
-    "sha256OfArchivedReview": "5dfb02584d16b14b3126befc05c5476f904954c9732851ad27e8d52841084433"
+    "file": "games/magic/fixtures/accuracy/m21-frame-window-coarse-value-rebinding.json.gz",
+    "sha256OfArchivedReview": "1335ded1a5f3699628d90561f50855b78e19f28a43b1729cfc873b506f2c1587"
   }
 }

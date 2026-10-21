@@ -4,7 +4,7 @@ import { readFile, mkdir } from 'node:fs/promises';
 import { PNG } from 'pngjs';
 import { hash, writeJson } from './common.mjs';
 import { patchSupport } from './frame-patch-profiles.mjs';
-import { modernValueFramePatches } from './modern-frame-value.mjs';
+import { frameValueImage, modernValueFramePatches } from './modern-frame-value.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { inverseScanMatrix, projectScanPoint } from './scan-transform.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
@@ -22,6 +22,7 @@ const obs = await read(obsFile),
   n = await read(path.join(normalizationDirectory, 'normalization.json')),
   t = await read(path.join(normalizationDirectory, 'templates.json')),
   controls = await read(path.join(controlDirectory, 'controls.json'));
+assert.equal(obs.data.channel, 'HSV-V-coarse-and-native-v1');
 assert.equal(n.data.rows.length, obs.data.rows.length);
 assert.equal(n.data.summary.completed, n.data.summary.total);
 assert.equal(n.data.observationsHash, hash(obs.bytes));
@@ -116,7 +117,7 @@ for (const control of controls.data.controls) {
   const bytes = await readFile(path.join(controlDirectory, control.file));
   assert.equal(hash(bytes), control.sha256);
   const raw = PNG.sync.read(bytes, { checkCRC: true }),
-    image = normalize(raw),
+    image = normalize(frameValueImage(raw)),
     profiles = source.partitions.map((p) => scanBoundaryProfiles(image, p, source.bounds));
   const patches = source.partitions.map((p) => modernValueFramePatches(raw, p, source.bounds));
   const family = t.data.templates[control.geometry];

@@ -8,7 +8,7 @@ import { root, hash, objectFile, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { packFramePatches } from './frame-patch-profiles.mjs';
 import { nativeFrameRegions } from './native-frame-patches.mjs';
-import { modernValueFramePatches } from './modern-frame-value.mjs';
+import { frameValueImage, modernValueFramePatches } from './modern-frame-value.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
 const [inputFile, outputDirectory] = process.argv.slice(2);
 assert(outputDirectory, 'Usage: modern-frame-observations.mjs INPUTS OUT');
@@ -78,7 +78,7 @@ try {
     const reference = await readFile(objectFile(e.reference));
     assert.equal(hash(reference), e.reference.sha256);
     const raw = PNG.sync.read(reference, { checkCRC: true }),
-      image = normalize(raw);
+      image = normalize(frameValueImage(raw));
     const profile = resolveCardProfile(e.face),
       kind = faceFrame(e.face);
     const family = [kind, profile.legendary ? 'crown' : 'plain', profile.frame, profile.boxes].join(
@@ -163,6 +163,7 @@ try {
   await writeJson(path.join(outputDirectory, 'observations.json'), {
     schema: 1,
     set: inputs.set,
+    channel: 'HSV-V-coarse-and-native-v1',
     status: 'awaiting-full-strip-visual-review-and-template-certification',
     scope:
       'Scan-only census and renderer-resolved frame-family inventory. Disjoint extraction footprints and native-resolution pixel isolation are verified; these proposed windows are not yet certified as visually content-free on every printing. No pose, calibration or completion claim.',
