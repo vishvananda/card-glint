@@ -681,6 +681,323 @@
         "sha256": "6e2b5dddcdedd9e93e2eb0c94a8247fdac3c222129e6e19f790a80fbc3750014"
       },
       "finding": "Normalizing a gradient by neighboring derivative amplitudes distorts pure geometric recovery. Reject without relaxing limits or evaluating/tuning the census controls."
+    },
+    {
+      "name": "v20-native-HSV-value",
+      "status": "rejected-remaining-geometric-recovery-failures",
+      "supportedScans": 297,
+      "originalControlSummary": {
+        "total": 231,
+        "completed": 231,
+        "passed": 231,
+        "baselineRejected": 0,
+        "controlledRejected": 0,
+        "recoveryFailed": 0,
+        "maxCornerError": 0.44608447890790104,
+        "families": {
+          "normal-crown/Artifact": {
+            "count": 7,
+            "passed": 7,
+            "maxCornerError": 0.053665115035263826
+          },
+          "normal-crown/B": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.14782966563640026
+          },
+          "normal-crown/G": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.17154683671666873
+          },
+          "normal-crown/Gold": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.05937194262393305
+          },
+          "normal-crown/R": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.0629215213537947
+          },
+          "normal-crown/U": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.05258921974584159
+          },
+          "normal-crown/W": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.05995093406067895
+          },
+          "normal-plain/Artifact": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.04939577157464725
+          },
+          "normal-plain/B": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.08590604332492396
+          },
+          "normal-plain/G": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.08241951745689827
+          },
+          "normal-plain/Gold": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.10730115249150161
+          },
+          "normal-plain/Land": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.0673153593603884
+          },
+          "normal-plain/R": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.05723772696048431
+          },
+          "normal-plain/U": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.0731801899600381
+          },
+          "normal-plain/W": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.06478647955665129
+          },
+          "planeswalker": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.44608447890790104
+          },
+          "planeswalker-large": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.44338043091249657
+          }
+        }
+      },
+      "reusedFullCensusSummary": {
+        "total": 891,
+        "completed": 891,
+        "passed": 890,
+        "baselineRejected": 0,
+        "controlledRejected": 0,
+        "recoveryFailed": 1,
+        "maxCornerError": 0.5788924799290457,
+        "families": {
+          "normal-crown/Artifact": {
+            "count": 3,
+            "passed": 3,
+            "maxCornerError": 0.04100374515805112
+          },
+          "normal-crown/B": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.04891664387265021
+          },
+          "normal-crown/G": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.047876316015436404
+          },
+          "normal-crown/Gold": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.06584002918734429
+          },
+          "normal-crown/R": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.041684332542134904
+          },
+          "normal-crown/U": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.056844406792009375
+          },
+          "normal-crown/W": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.04422215082653999
+          },
+          "normal-plain/Artifact": {
+            "count": 48,
+            "passed": 48,
+            "maxCornerError": 0.0704524749455124
+          },
+          "normal-plain/B": {
+            "count": 120,
+            "passed": 120,
+            "maxCornerError": 0.37466013230660905
+          },
+          "normal-plain/G": {
+            "count": 123,
+            "passed": 123,
+            "maxCornerError": 0.5468532917788611
+          },
+          "normal-plain/Gold": {
+            "count": 30,
+            "passed": 30,
+            "maxCornerError": 0.20227303258754478
+          },
+          "normal-plain/Land": {
+            "count": 99,
+            "passed": 99,
+            "maxCornerError": 0.312291317392408
+          },
+          "normal-plain/R": {
+            "count": 126,
+            "passed": 126,
+            "maxCornerError": 0.07368963854701298
+          },
+          "normal-plain/U": {
+            "count": 123,
+            "passed": 123,
+            "maxCornerError": 0.06789679225734553
+          },
+          "normal-plain/W": {
+            "count": 126,
+            "passed": 126,
+            "maxCornerError": 0.05060367561225991
+          },
+          "planeswalker": {
+            "count": 30,
+            "passed": 29,
+            "maxCornerError": 0.5788924799290457
+          },
+          "planeswalker-large": {
+            "count": 12,
+            "passed": 12,
+            "maxCornerError": 0.32304408947872376
+          }
+        }
+      },
+      "additionalCombinedSummary": {
+        "total": 594,
+        "completed": 594,
+        "passed": 593,
+        "baselineRejected": 0,
+        "controlledRejected": 0,
+        "recoveryFailed": 1,
+        "maxCornerError": 5.779205773066956,
+        "families": {
+          "normal-crown/Artifact": {
+            "count": 2,
+            "passed": 2,
+            "maxCornerError": 0.04143103342679504
+          },
+          "normal-crown/B": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.07171116275661983
+          },
+          "normal-crown/G": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.06424471681657547
+          },
+          "normal-crown/Gold": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.07571139716157842
+          },
+          "normal-crown/R": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.04423320125750342
+          },
+          "normal-crown/U": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.050489000986991196
+          },
+          "normal-crown/W": {
+            "count": 4,
+            "passed": 4,
+            "maxCornerError": 0.04737106712334561
+          },
+          "normal-plain/Artifact": {
+            "count": 32,
+            "passed": 32,
+            "maxCornerError": 0.10383040074717899
+          },
+          "normal-plain/B": {
+            "count": 80,
+            "passed": 80,
+            "maxCornerError": 0.13726293667130457
+          },
+          "normal-plain/G": {
+            "count": 82,
+            "passed": 82,
+            "maxCornerError": 0.14101918220271456
+          },
+          "normal-plain/Gold": {
+            "count": 20,
+            "passed": 20,
+            "maxCornerError": 0.12550605101231344
+          },
+          "normal-plain/Land": {
+            "count": 66,
+            "passed": 66,
+            "maxCornerError": 0.1717624063939779
+          },
+          "normal-plain/R": {
+            "count": 84,
+            "passed": 84,
+            "maxCornerError": 0.09364015343135573
+          },
+          "normal-plain/U": {
+            "count": 82,
+            "passed": 82,
+            "maxCornerError": 0.12734007347997758
+          },
+          "normal-plain/W": {
+            "count": 84,
+            "passed": 84,
+            "maxCornerError": 0.07230202170441982
+          },
+          "planeswalker": {
+            "count": 20,
+            "passed": 19,
+            "maxCornerError": 5.779205773066956
+          },
+          "planeswalker-large": {
+            "count": 8,
+            "passed": 8,
+            "maxCornerError": 0.10853854095371288
+          }
+        }
+      },
+      "failures": [
+        {
+          "id": "921e3dc3-f8eb-4498-a6a8-b424952230cd",
+          "name": "Liliana, Death Mage",
+          "label": "confirm-axis-and-skew",
+          "cornerRms": 0.39219105787522546,
+          "cornerMax": 0.5788924799290457,
+          "accepted": true
+        },
+        {
+          "id": "e329a3e2-6702-4758-8aac-c3017e77b619",
+          "name": "Liliana, Waker of the Dead",
+          "label": "value-combined-negative-rotation",
+          "cornerRms": 3.9696106716641277,
+          "cornerMax": 5.779205773066956,
+          "accepted": true
+        }
+      ],
+      "RadhaHSVMaxCornerError": 0.002872969501925816,
+      "finding": "Native HSV value removes the color-driven Radha drift (3.425\u21920.0029px). Original231 cases all pass, but one foil PW recovery exceeds RMS and one nonfoil PW baseline/control chooses different minima. Coarse search still uses luminance while fine fields use value. Probe consistent value projection before canonical resampling/coarse search; do not loosen support/recovery gates.",
+      "evidence": {
+        "file": "games/magic/fixtures/accuracy/m21-normalization-value-v20.json.gz",
+        "sha256": "50f6baf5421162e3342f1ef8cfafbbad43da77cf47fc3638b8536f610cdbbe41"
+      }
     }
   ],
   "gateDefinitions": {
@@ -822,5 +1139,5 @@
       "contentSha256": "ba7485d8a9cccba47a015713750ab61ba6f5d6c06916066f36eee570e23db339"
     }
   },
-  "next": "Separate geometry from derivative amplitudes before further renderer fitting; retain all controls and gates, and compare source-bound normalizers without moving thresholds or adding printing exceptions."
+  "next": "Use HSV value consistently in coarse and fine geometry features; retain the V20 failures and all frozen control cases. No poses or renderer defaults have been promoted."
 }
