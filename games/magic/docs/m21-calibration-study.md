@@ -543,3 +543,22 @@ A full 297-row before/after comparison proves every candidate score, current-
 renderer score and native parity result unchanged by this optimization. Reduced
 five-card searches declare both their 297-input source census and five measured
 references, and require the separate full native negative-control replay.
+
+## Modern source comparison
+
+The [full-plate comparison](../fixtures/accuracy/m21-modern-frame-source-comparison.json.gz)
+tests the supported Conjurer M15 accurate plate against the component renderer
+on all 265 ordinary nonlegendary M21 faces. Only frameAssetFamily changes.
+The other 32 cards retain their existing crowns/planeswalker assets and both
+native layers remain byte-identical. All 297 scan matrices and normalized
+reference rasters stay fixed; there is no candidate-dependent registration.
+
+On the 265 candidates, frame overlap improves from 75.08 to 82.48/100.
+Art overlap improves on every card, from 66.44 to 78.14/100. The art aperture
+is about 0.94 px too narrow but its median center is only 0.08 px from reference.
+Rules edges center more closely, although artifact/gold detector uncertainty
+and bevel identity still require visual inspection. The candidate's existing
+title, mana and P/T placements regress; overall structure is therefore not the
+selection criterion. This is a promising frame source, not an adopted profile
+or a complete-set calibration. Retain measured lettering/mana/stats policy or
+refit those controls before a native replacement.
