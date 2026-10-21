@@ -118,7 +118,7 @@ try {
     '8ed',
     'm21',
   ])
-    assert.equal(
+    assert.deepEqual(
       earlyReprintManaInk({
         name: 'Other printing',
         setCode,
@@ -126,7 +126,8 @@ try {
         typeLine: 'Creature',
         colorCalibration: 'set-hsb-v1',
       }),
-      undefined,
+      // Unlimited now has its own measured historical ink profile.
+      setCode === '2ed' ? [47 / 255, 46 / 255, 40 / 255] : undefined,
     );
   const tone = {
     paper: [200 / 255, 180 / 255, 160 / 255],
