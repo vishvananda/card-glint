@@ -2,7 +2,7 @@
   "schema": 1,
   "asOf": "2026-10-21",
   "set": "2ed",
-  "status": "revision2-native-verified-release-pending",
+  "status": "revision2-published-all-printing-native-verified",
   "inventory": 302,
   "referenceObjectsPresent": 302,
   "artObjectsPresent": 302,
@@ -4770,7 +4770,7 @@
     "originalPixelMatches": 292,
     "oracleStatus": "Both original and modern symbols verified on all 302 Oracle faces; zero native asset faults or overflow.",
     "fullCardCandidateIndex100": 70.97381861288463,
-    "released": false,
+    "released": true,
     "nativeOriginalFaces": 302,
     "nativeOracleFaces": 604,
     "originalEtchingMatches": 302,
@@ -4788,7 +4788,8 @@
     "version": "0.6.8",
     "changedDualPrintings": 10,
     "historicalArtistCorrections": 13,
-    "nativeRendererHash": "81db79e44b45f26a7502108fcc0c9204ef21e5f842dfb16a30269a829eb09a9e"
+    "nativeRendererHash": "81db79e44b45f26a7502108fcc0c9204ef21e5f842dfb16a30269a829eb09a9e",
+    "publishedCommit": "9c60a7d0fd6aef8dc3d1dcd0185a241c83aacabd"
   },
   "finalArtistAudit": {
     "status": "13-corrections-native-and-public-api-verified",
@@ -4800,7 +4801,7 @@
       "Tom Wänerstrand": "Tom Wanerstrand",
       "Brian Snõddy": "Brian Snoddy"
     },
-    "required": ["Publish checked renderer and matching report"],
+    "required": [],
     "scope": "Final 302 Original and 604 Oracle faces include all thirteen physical artist corrections; 302 historical controls preserve prior evidence. Their changes are confined to artist spans, with identical body and etching outputs. Credits are diagnostic-only in the structural aggregate."
   },
   "finalWholeCard": {
@@ -4918,6 +4919,7 @@
   "revision2": {
     "adoption": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-adoption.json",
     "metadataProof": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-review-metadata-proof.json",
-    "visual": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-visual-review.json"
+    "visual": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-visual-review.json",
+    "publication": "games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-publication.json"
   }
 }
