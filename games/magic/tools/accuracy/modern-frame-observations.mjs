@@ -1,22 +1,23 @@
 // Freeze frame-only scan observations before selecting a registration template.
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { readFile, mkdir } from 'node:fs/promises';
+import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { createServer } from 'vite';
 import { PNG } from 'pngjs';
 import { root, hash, objectFile, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
+import { framePatches, packFramePatches } from './frame-patch-profiles.mjs';
 import { scanBoundaryProfiles } from './scan-boundary-profiles.mjs';
 const [inputFile, outputDirectory] = process.argv.slice(2);
 assert(outputDirectory, 'Usage: modern-frame-observations.mjs INPUTS OUT');
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
-const bounds = { left: [0, 33], right: [455, 487], top: [0, 27], bottom: [625, 634] };
+const bounds = { left: [0, 33], right: [455, 487], top: [0, 31], bottom: [625, 634] };
 const windows = (vertical, horizontal, bottom) => ({
-  left: ['x', 12, 33, vertical, 8],
-  right: ['x', 455, 476, vertical, 8],
-  top: ['y', 9, 23, horizontal, 8],
-  bottom: ['y', 625, 639, bottom, 8],
+  left: ['x', 12, 27, vertical, 8],
+  right: ['x', 460, 476, vertical, 8],
+  top: ['y', 9, 26, horizontal, 8],
+  bottom: ['y', 627, 632, bottom, 8],
 });
 const partitions = [
   windows([130, 210, 290], [90, 180, 320], [70, 130, 290]),
@@ -29,14 +30,26 @@ for (const side of Object.keys(bounds))
       for (const x of partitions[a][side][3])
         for (const y of partitions[b][side][3])
           assert(Math.abs(x - y) > 16, 'Independent strip footprints must not overlap');
+const walkerBounds = { ...bounds, top: [0, 27] };
+const walkerPartitions = partitions.map((p) => ({
+  ...p,
+  top: [p.top[0], p.top[1], 23, p.top[3], p.top[4]],
+}));
+const windowProfiles = {
+  normal: { bounds, partitions },
+  planeswalker: { bounds: walkerBounds, partitions: walkerPartitions },
+};
 const tools = Object.fromEntries(
   await Promise.all(
-    ['modern-frame-observations.mjs', 'scan-boundary-profiles.mjs', 'pixels-pure.mjs'].map(
-      async (f) => [f, hash(await readFile(new URL(f, import.meta.url)))],
-    ),
+    [
+      'modern-frame-observations.mjs',
+      'scan-boundary-profiles.mjs',
+      'frame-patch-profiles.mjs',
+      'pixels-pure.mjs',
+    ].map(async (f) => [f, hash(await readFile(new URL(f, import.meta.url)))]),
   ),
 );
-const methodHash = hash(JSON.stringify({ tools, bounds, partitions }));
+const methodHash = hash(JSON.stringify({ tools, windowProfiles }));
 const server = await createServer({
   configFile: false,
   root,
@@ -44,6 +57,7 @@ const server = await createServer({
 });
 const rows = [];
 await mkdir(outputDirectory, { recursive: true });
+await mkdir(path.join(outputDirectory, 'patches'), { recursive: true });
 try {
   await server.ssrLoadModule('/games/magic/src/data/eager.ts');
   await server.ssrLoadModule('/games/magic/src/data/eager-wording.ts');
@@ -62,26 +76,36 @@ try {
     const family = [kind, profile.legendary ? 'crown' : 'plain', profile.frame, profile.boxes].join(
       '/',
     );
-    const observations = partitions.map((p) => scanBoundaryProfiles(image, p, bounds));
+    const windowFamily = kind.startsWith('planeswalker') ? 'planeswalker' : 'normal';
+    const { bounds: sampleBounds, partitions: samplePartitions } = windowProfiles[windowFamily];
+    const observations = samplePartitions.map((p) => scanBoundaryProfiles(image, p, sampleBounds));
     // Replace every pixel outside every selected frame strip, including the
     // complete illustration, headings and rules. Profile bytes must stay exact.
     const changed = { ...image, data: image.data.slice() },
       allowed = new Uint8Array(488 * 680);
-    for (const p of partitions)
+    for (const p of samplePartitions)
       for (const [side, [axis, , , positions, halfSpan]] of Object.entries(p)) {
         for (const along of positions)
-          for (let n = bounds[side][0]; n <= bounds[side][1]; n++)
+          for (let n = sampleBounds[side][0]; n <= sampleBounds[side][1]; n++)
             for (let a = along - halfSpan; a <= along + halfSpan; a++)
               allowed[(axis === 'x' ? a : n) * 488 + (axis === 'x' ? n : a)] = 1;
       }
     for (let i = 0; i < allowed.length; i++)
       if (!allowed[i]) changed.data.set([i % 251, (i * 3) % 251, (i * 7) % 251, 255], i * 4);
-    for (let i = 0; i < partitions.length; i++)
+    for (let i = 0; i < samplePartitions.length; i++)
       assert.deepEqual(
-        scanBoundaryProfiles(changed, partitions[i], bounds),
+        scanBoundaryProfiles(changed, samplePartitions[i], sampleBounds),
         observations[i],
         e.card.name + ': content isolation',
       );
+    const fields = samplePartitions.map((p) => framePatches(image, p, sampleBounds));
+    const packed = packFramePatches(fields);
+    const changedFields = packFramePatches(
+      samplePartitions.map((p) => framePatches(changed, p, sampleBounds)),
+    );
+    assert.deepEqual(changedFields, packed, e.card.name + ':2D content isolation');
+    const patchFile = 'patches/' + e.id + '.bin';
+    await writeFile(path.join(outputDirectory, patchFile), packed.bytes);
     rows.push({
       id: e.id,
       name: e.card.name,
@@ -90,9 +114,17 @@ try {
       family,
       kind,
       profile,
+      windowFamily,
+      bounds: sampleBounds,
+      partitions: samplePartitions,
       referenceHash: e.reference.sha256,
       nonfoilEligible: e.card.finishes.includes('nonfoil'),
       contentIsolationPassed: true,
+      framePatches: {
+        file: patchFile,
+        sha256: hash(packed.bytes),
+        description: packed.description,
+      },
       profiles: observations,
     });
   }
@@ -121,6 +153,7 @@ try {
     tools,
     bounds,
     partitions,
+    windowProfiles,
     groups,
     rows,
   });
