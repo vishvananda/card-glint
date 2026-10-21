@@ -15,11 +15,12 @@ const server = await createServer({
         if (id.endsWith('/__alpha-text-before.ts')) return virtual;
       },
       async load(id) {
-        if (id === virtual)
-          return (await readFile('games/magic/src/presentation/retro-rules.ts', 'utf8')).replace(
-            'alphaTextLayout(context, face, baseRetroTextLayout(context, face))',
-            'baseRetroTextLayout(context, face)',
-          );
+        if (id === virtual) {
+          const source = await readFile('games/magic/src/presentation/retro-rules.ts', 'utf8');
+          const needle = 'alphaTextLayout(context, face, base)';
+          assert.equal(source.split(needle).length, 2, 'Alpha baseline hook changed');
+          return source.replace(needle, 'base');
+        }
       },
     },
   ],
