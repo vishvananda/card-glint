@@ -116,5 +116,24 @@ handling, not physical accuracy.
 - Verify compatibility of historical set scores and native rasters, complete
   renderer/package checks, then publish matching library and Lab revisions.
 
+## Credits and large land-symbol diagnostics
+
+`modern-component-raster-fit.py INPUTS NATIVE SCORES OUTPUT` makes cheap shared
+bitmap geometry proposals from the frozen normalized scans. It uses the pinned
+Python requirements and verifies every input/capture/reference hash. Artist,
+legal and collector regions are fitted separately; all 15 basics (three of each
+W/U/B/R/G) get a separate large-symbol pass. All 906 component rows are retained,
+including foil-only references, missing signal and unapproved planeswalker poses.
+It does not render fonts, change a scan pose or install renderer parameters.
+
+The [first diagnostic](../fixtures/accuracy/m21-component-raster-diagnostic.json.gz)
+confirms narrow artist names, smaller legal placement/width differences and
+undersized/high black and green land symbols. None of its proposals is adopted:
+several hit a search bound, letter matching can favor the wrong offset, and a
+dark value mask poorly separates the light sun and saturated red glyph. Native
+font candidates, glyph-aware masks/alternative assets, visible bounds, color,
+bevel and shadow checks must precede the full native replay. A high regional
+bitmap score cannot certify a complete component or set.
+
 Indices are reported out of 100; they are not percentages of visual fidelity.
 A passing regional fit does not prove an entire card, frame family or set.
