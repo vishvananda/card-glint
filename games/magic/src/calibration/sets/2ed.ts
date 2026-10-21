@@ -3,14 +3,16 @@ import type { SetCalibrationProfile } from '../types.js';
 /** Shared Unlimited printing defaults. Scan poses and reference pixels stay in evidence. */
 export const profile = {
   schema: 1,
-  revision: 1,
+  revision: 2,
   set: '2ed',
   border: 'white',
   cornerRadius: 0.045,
   frames: {
     W: {
       family: 'abu',
-      frame: [-0.002661991937717457, 9.455651431961637e-6, 1.0024299054868664, 0.9991061121250419],
+      frame: [
+        -0.002661991937717457, 0.000009455651431961637, 1.0024299054868664, 0.9991061121250419,
+      ],
       stockMaskFrame: [
         -0.001599857856591008, -0.0006361797676199089, 1.002197869163225, 1.0016932038951687,
       ],
@@ -104,7 +106,7 @@ export const profile = {
     },
     'L-R': {
       family: 'abu',
-      frame: [-2.459016393442534e-5, 0.0011617647058823556, 0.998, 0.994],
+      frame: [-0.00002459016393442534, 0.0011617647058823556, 0.998, 0.994],
       stockMaskFrame: [
         -0.0020051953357544676, -0.0015184891038458673, 1.003923706804288, 1.00359236568134,
       ],
@@ -124,11 +126,11 @@ export const profile = {
     },
     'L-dual': {
       family: 'abu',
-      frame: [-0.0005122950819672131, 0.002970588235294119, 1, 0.997],
+      frame: [-0.0005122950819672131, -0.001441176470588234, 1, 1.0014117647058824],
       stockMaskFrame: [
         -0.0020051953357544676, -0.0015184891038458673, 1.003923706804288, 1.00359236568134,
       ],
-      art: [0.11407103825136612, 0.10441176470588236, 0.76775956284153, 0.4441176470588235],
+      art: [0.1130464480874317, 0.09971358712816653, 0.7698087431693988, 0.44755347356949743],
       assetKey: 'wl',
       stockWindow: [0.04, 0.04, 0.92, 0.92],
     },
@@ -681,7 +683,7 @@ export const profile = {
     sources: {
       W: {
         source:
-          '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/wl.png",[-0.0005122950819672131,0.002970588235294119,1,0.997]]',
+          '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/wl.png",[-0.0005122950819672131,-0.001441176470588234,1,1.0014117647058824]]',
         adjustment: {
           frame: {
             hueDegrees: 12.699142834132203,
@@ -735,6 +737,25 @@ export const profile = {
                 brightnessScale: 1.0732005033557046,
               },
             },
+            {
+              mask: {
+                rings: [
+                  {
+                    outer: [0.045, 0.04, 0.91, 0.9189109492481202],
+                    inner: [0.045, 0.04, 0.91, 0.9130368890977443],
+                  },
+                ],
+                hueCenter: 45,
+                hueRadius: 180,
+                hueFeather: 1,
+                saturation: [0, 0.001],
+              },
+              adjustment: {
+                hueDegrees: 12.699142834132203,
+                saturationScale: 0.8443206155567071,
+                brightnessScale: 0.6864858896500114,
+              },
+            },
           ],
           blackPoint: {
             lift: [0, 0, 0],
@@ -750,7 +771,7 @@ export const profile = {
       },
       U: {
         source:
-          '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/ul.png",[-0.0005122950819672131,0.002970588235294119,1,0.997]]',
+          '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/ul.png",[-0.0005122950819672131,-0.001441176470588234,1,1.0014117647058824]]',
         adjustment: {
           frame: {
             hueDegrees: 12.699142834132203,
@@ -804,6 +825,25 @@ export const profile = {
                 brightnessScale: 1.1386861313868615,
               },
             },
+            {
+              mask: {
+                rings: [
+                  {
+                    outer: [0.045, 0.04, 0.91, 0.9189109492481202],
+                    inner: [0.045, 0.04, 0.91, 0.9130368890977443],
+                  },
+                ],
+                hueCenter: 45,
+                hueRadius: 180,
+                hueFeather: 1,
+                saturation: [0, 0.001],
+              },
+              adjustment: {
+                hueDegrees: 12.699142834132203,
+                saturationScale: 0.8443206155567071,
+                brightnessScale: 0.6864858896500114,
+              },
+            },
           ],
           blackPoint: {
             lift: [0, 0, 0],
@@ -819,7 +859,7 @@ export const profile = {
       },
       B: {
         source:
-          '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/bl.png",[-0.0005122950819672131,0.002970588235294119,1,0.997]]',
+          '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/bl.png",[-0.0005122950819672131,-0.001441176470588234,1,1.0014117647058824]]',
         adjustment: {
           frame: {
             hueDegrees: 12.699142834132203,
@@ -873,6 +913,25 @@ export const profile = {
                 brightnessScale: 0.896818181818182,
               },
             },
+            {
+              mask: {
+                rings: [
+                  {
+                    outer: [0.045, 0.04, 0.91, 0.9189109492481202],
+                    inner: [0.045, 0.04, 0.91, 0.9130368890977443],
+                  },
+                ],
+                hueCenter: 45,
+                hueRadius: 180,
+                hueFeather: 1,
+                saturation: [0, 0.001],
+              },
+              adjustment: {
+                hueDegrees: 12.699142834132203,
+                saturationScale: 0.8443206155567071,
+                brightnessScale: 0.6864858896500114,
+              },
+            },
           ],
           blackPoint: {
             lift: [0, 0, 0],
@@ -888,7 +947,7 @@ export const profile = {
       },
       R: {
         source:
-          '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/rl.png",[-0.0005122950819672131,0.002970588235294119,1,0.997]]',
+          '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/rl.png",[-0.0005122950819672131,-0.001441176470588234,1,1.0014117647058824]]',
         adjustment: {
           frame: {
             hueDegrees: 12.699142834132203,
@@ -942,6 +1001,25 @@ export const profile = {
                 brightnessScale: 1.0543478260869565,
               },
             },
+            {
+              mask: {
+                rings: [
+                  {
+                    outer: [0.045, 0.04, 0.91, 0.9189109492481202],
+                    inner: [0.045, 0.04, 0.91, 0.9130368890977443],
+                  },
+                ],
+                hueCenter: 45,
+                hueRadius: 180,
+                hueFeather: 1,
+                saturation: [0, 0.001],
+              },
+              adjustment: {
+                hueDegrees: 12.699142834132203,
+                saturationScale: 0.8443206155567071,
+                brightnessScale: 0.6864858896500114,
+              },
+            },
           ],
           blackPoint: {
             lift: [0, 0, 0],
@@ -957,7 +1035,7 @@ export const profile = {
       },
       G: {
         source:
-          '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/gl.png",[-0.0005122950819672131,0.002970588235294119,1,0.997]]',
+          '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/gl.png",[-0.0005122950819672131,-0.001441176470588234,1,1.0014117647058824]]',
         adjustment: {
           frame: {
             hueDegrees: 12.699142834132203,
@@ -1009,6 +1087,25 @@ export const profile = {
                 hueDegrees: -3.8775431225121793,
                 saturationScale: 1.272536152497809,
                 brightnessScale: 1.1398601398601398,
+              },
+            },
+            {
+              mask: {
+                rings: [
+                  {
+                    outer: [0.045, 0.04, 0.91, 0.9189109492481202],
+                    inner: [0.045, 0.04, 0.91, 0.9130368890977443],
+                  },
+                ],
+                hueCenter: 45,
+                hueRadius: 180,
+                hueFeather: 1,
+                saturation: [0, 0.001],
+              },
+              adjustment: {
+                hueDegrees: 12.699142834132203,
+                saturationScale: 0.8443206155567071,
+                brightnessScale: 0.6864858896500114,
               },
             },
           ],
@@ -1142,7 +1239,7 @@ export const profile = {
       shadow: 1.25,
       trim: 0,
       gray: 145,
-      prefix: 'Illus. \u00a9 ',
+      prefix: 'Illus. © ',
       align: 'left',
       baseline: 'alphabetic',
       maxWidth: 338,
@@ -1181,13 +1278,16 @@ export const profile = {
 } as const satisfies SetCalibrationProfile;
 
 export const review = {
-  revision: 1,
+  revision: 2,
   scope:
-    'All 302 ordinary English nonfoil Unlimited printings. Original wording, fixed independently normalized scans, shared material/typography/mana/footer values; no per-scan renderer offsets. Oracle fitting and final installed-profile verification are required before release.',
+    'Shared Unlimited defaults with a source-bound dual crop, matched illustration window and isolated lower-bevel tone. Original and Oracle native replays, score update and publication certification are pending.',
   evidence: [
     'games/magic/fixtures/accuracy/early-through-fourth/2ed-stage.json',
-    'games/magic/fixtures/accuracy/early-through-fourth/2ed-profile-integration-replay.json.gz',
-    'games/magic/fixtures/accuracy/early-through-fourth/2ed-final-candidate-scores.json.gz',
+    'games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-crop-review.json',
   ],
-  pending: [],
+  pending: [
+    'Installed profile replay in Original and both Oracle symbol modes',
+    'Updated frozen-pose scores and full-card/corner visual review',
+    'Matching published release',
+  ],
 } as const;
