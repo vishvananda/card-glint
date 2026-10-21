@@ -46,7 +46,28 @@ export function modernFooterStudyPlugin() {
       );
       replace(
         "`${set} \u2022 ${face.collectorLanguage?.toUpperCase() ?? 'EN'}`",
-        '`${set} ${study.foilStarNumbers?.includes(face.collectorNumber) ? "★" : "•"} ${face.collectorLanguage?.toUpperCase() ?? "EN"}`',
+        '`${set} ${study.foilStarNumbers?.includes(face.collectorNumber) && !study.collectorMarker ? "★" : "•"} ${face.collectorLanguage?.toUpperCase() ?? "EN"}`',
+      );
+      replace(
+        'c.fillText(code, 30, 658)',
+        `(study.collectorMarker && study.foilStarNumbers?.includes(face.collectorNumber)
+          ? (() => {
+            const marker = study.collectorMarker;
+            const prefix = set + ' ';
+            c.fillText(prefix, 30, 658);
+            c.fillText(' ' + (face.collectorLanguage?.toUpperCase() ?? 'EN'),
+              30 + c.measureText(prefix).width + c.measureText('•').width, 658);
+            const m = c.measureText('★');
+            const width = m.actualBoundingBoxLeft + m.actualBoundingBoxRight;
+            const height = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
+            if (!(width > 0 && height > 0)) throw Error('Missing foil marker ink');
+            c.save();
+            c.translate(marker.center[0], marker.center[1]);
+            c.scale(marker.size[0] / width, marker.size[1] / height);
+            c.fillText('★', (m.actualBoundingBoxLeft - m.actualBoundingBoxRight) / 2,
+              (m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2);
+            c.restore();
+          })() : c.fillText(code, 30, 658))`,
       );
       replace("c.letterSpacing = '0px';", 'c.letterSpacing = `${study.collectorTracking ?? 0}px`;');
       replace(

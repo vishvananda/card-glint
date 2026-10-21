@@ -508,3 +508,38 @@ does not measure vertical borders or curve shapes. The existing synthetic test
 still separates translation from width under tone/grain changes and rejects
 missing edges. Its detector now imports only the pure pixel helpers; no PNG
 decoder is part of the measurement graph.
+
+## Fixed-slot foil footer marker
+
+The [marker searches](../fixtures/accuracy/m21-footer-marker-search.json.gz)
+retain the full-collector experiments as rejected shape-selection diagnostics.
+A large shared ROI couples the small star to neighboring lettering mismatch.
+The final search measures a fixed 16 × 16 px star region while native baseline
+parity still checks the original full collector strips. The five-reference
+follow-up reproduces all 180 overlapping candidate scores from the complete
+297-row local-region study. Its selected center [62, 652.5] and draw size
+[11, 10] are interior to the final grid; the previously fitted collector
+translation is applied afterward. A font draw box and a thresholded scan ink
+box have different antialiasing, so these draw sizes do not replace the earlier
+8 × 8 px source-ink measurement.
+
+The [full native replay](../fixtures/accuracy/m21-footer-marker-native-replay.json.gz)
+checks all 297 Original faces and 297 etchings against the preceding printed-
+footer prototype. Only the five foil-only faces change, only inside the footer.
+All 292 non-marker faces, every etching, and all alpha values remain unchanged.
+All five credit scores improve: Teferi by 6.46/100 and Liliana by 6.10/100.
+Mean credits move from 86.646 to 86.712/100. Every non-credit component remains
+exactly unchanged on all 297 cards; total structure stays 74.270/100 because
+credits are diagnostic and excluded from that total.
+
+The fixed marker retains ordinary code/language advances, so it no longer moves
+the artist line. All five final footer crops were inspected. Artist ink/color
+and long-name/case outliers, including Chandra's deck printing, remain follow-up
+checks. This resolves the earlier marker-spacing issue in the prototype only:
+there is still no adopted modern M21 profile or complete-set claim.
+
+Marker-only variants on a non-marker printing reuse one identical score vector.
+A full 297-row before/after comparison proves every candidate score, current-
+renderer score and native parity result unchanged by this optimization. Reduced
+five-card searches declare both their 297-input source census and five measured
+references, and require the separate full native negative-control replay.

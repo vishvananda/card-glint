@@ -25,6 +25,7 @@ const parameters = new Set([
   'collectorTracking',
   'collectorOffset',
   'collectorRarityX',
+  'collectorMarker',
   'artistSize',
   'artistTracking',
   'artistOffset',
@@ -36,7 +37,14 @@ function validate(value) {
   assert(value && typeof value === 'object' && !Array.isArray(value));
   for (const [k, v] of Object.entries(value)) {
     assert(parameters.has(k), 'Unknown footer parameter ' + k);
-    if (k === 'collectorRarityX') assert(Number.isFinite(v) && v >= 60 && v <= 120);
+    if (k === 'collectorMarker') {
+      assert(v && typeof v === 'object' && !Array.isArray(v));
+      assert.deepEqual(Object.keys(v).sort(), ['center', 'size']);
+      for (const key of ['center', 'size'])
+        assert(Array.isArray(v[key]) && v[key].length === 2 && v[key].every(Number.isFinite));
+      assert(v.center[0] >= 40 && v.center[0] <= 80 && v.center[1] >= 635 && v.center[1] <= 670);
+      assert(v.size.every((x) => x >= 3 && x <= 16));
+    } else if (k === 'collectorRarityX') assert(Number.isFinite(v) && v >= 60 && v <= 120);
     else if (k === 'collectorFamily')
       assert(['CardRenderer MTG Relay', 'Study M21 Gotham'].includes(v));
     else if (k.endsWith('Offset'))
@@ -48,6 +56,14 @@ function validate(value) {
     else assert(Number.isFinite(v) && (k.endsWith('Size') ? v >= 6 && v <= 24 : Math.abs(v) <= 2));
   }
 }
+assert(plan.selection === undefined || plan.selection === 'foil-marker');
+if (plan.selection === 'foil-marker') {
+  assert(part === 'collector' && plan.reviewedFooterHash);
+  if (plan.markerRect !== undefined) assert.deepEqual(plan.markerRect, [54, 647, 16, 16]);
+}
+assert(
+  plan.census === undefined || (plan.census === 'foil-marker' && plan.selection === 'foil-marker'),
+);
 validate(base);
 let contentParameters = {};
 if (plan.reviewedFooterHash) {
@@ -71,6 +87,13 @@ if (plan.reviewedFooterHash) {
     if (r.printedFinishMarker === 'star') contentParameters.foilStarNumbers.push(r.number);
   }
 }
+const studyEntries =
+  plan.census === 'foil-marker'
+    ? inputs.entries.filter((e) =>
+        contentParameters.foilStarNumbers.includes(e.card.collector_number),
+      )
+    : inputs.entries;
+if (plan.census === 'foil-marker') assert.equal(studyEntries.length, 5);
 assert(Array.isArray(plan.variants) && plan.variants.length > 0 && plan.variants.length <= 128);
 const variants = plan.variants.map((v) => {
     validate(v);
@@ -137,8 +160,18 @@ const definition = {
   variants,
   offsets,
   rects,
+  markerRect: plan.markerRect ?? null,
+  inputPrintings: inputs.entries.length,
+  measuredPrintings: studyEntries.length,
   scope:
-    'Original every-printing census. Native footer fonts rendered once per size/tracking candidate in one cached browser; translations scored on prepared filled-ink masks. Fixed comparison-only scan poses, no pose fitting. Nonfoil ordinary frames choose the shared proposal; planeswalkers/foil-only sources remain diagnostic and in the denominator. These are regional proposals, not renderer adoption or set certification.',
+    (plan.census === 'foil-marker'
+      ? 'All297 Original inputs are hash-bound; only five reviewed foil markers are measured in this follow-up. Require a separate full297 native negative-control replay. '
+      : 'Original every-printing census. ') +
+    'Fixed comparison-only scan poses, no pose fitting. ' +
+    (plan.selection === 'foil-marker'
+      ? 'The five reviewed foil-only printings select one shared fixed marker slot; all other rows are negative controls. Marker-only variants on non-marker cards reuse an identical first score vector.'
+      : 'Nonfoil ordinary frames select the shared proposal; planeswalkers/foil-only sources remain diagnostic and in the denominator.') +
+    ' Native baseline parity is mandatory. These are regional proposals, not renderer adoption or set certification.',
 };
 const definitionHash = hash(JSON.stringify(definition));
 try {
@@ -182,38 +215,41 @@ try {
     const font = new FontFace('Study M21 Gotham', `url("${url}")`);
     document.fonts.add(await font.load());
   }, gotham.url);
-  for (const e of inputs.entries) {
+  for (const e of studyEntries) {
     const n = native.rows.find((r) => r.id === e.id);
     assert.equal(n.inputHash, hash(JSON.stringify(e.face)));
     assert.equal(n.referenceHash, e.reference.sha256);
     const original = await fs.readFile(nativeDirectory + '/' + n.layers.face.file);
     assert.equal(hash(original), n.layers.face.sha256);
+    const markerRow = contentParameters.foilStarNumbers?.includes(e.card.collector_number);
     const cardRects =
-      part === 'artist'
-        ? [
-            [
-              88,
-              648,
-              (e.face.power != null && e.face.toughness != null) || e.face.loyalty != null
-                ? 185
-                : 369,
-              18,
-            ],
-          ]
-        : part === 'legal'
+      plan.selection === 'foil-marker' && plan.markerRect && markerRow
+        ? [plan.markerRect]
+        : part === 'artist'
           ? [
               [
-                277,
+                88,
+                648,
                 (e.face.power != null && e.face.toughness != null) || e.face.loyalty != null
-                  ? 646
-                  : 632,
-                181,
-                (e.face.power != null && e.face.toughness != null) || e.face.loyalty != null
-                  ? 20
-                  : 17,
+                  ? 185
+                  : 369,
+                18,
               ],
             ]
-          : rects;
+          : part === 'legal'
+            ? [
+                [
+                  277,
+                  (e.face.power != null && e.face.toughness != null) || e.face.loyalty != null
+                    ? 646
+                    : 632,
+                  181,
+                  (e.face.power != null && e.face.toughness != null) || e.face.loyalty != null
+                    ? 20
+                    : 17,
+                ],
+              ]
+            : rects;
     const s = scores.rows.find((r) => r.id === e.id),
       png = await fs.readFile(scoreDirectory + '/' + s.normalizedReference.file);
     assert.equal(hash(png), s.normalizedReference.sha256);
@@ -228,7 +264,17 @@ try {
       continue;
     }
     const result = await session.page.evaluate(
-      async ({ face, png, original, variants, offsets, rects, part }) => {
+      async ({
+        face,
+        png,
+        original,
+        variants,
+        offsets,
+        rects,
+        parityRects,
+        part,
+        reuseVariantScores,
+      }) => {
         const { paintModernFooter } = await import(
           '/games/magic/src/presentation/modern-footer.ts'
         );
@@ -337,7 +383,7 @@ try {
         const controlPixels = control.getImageData(0, 939, 732, 90).data;
         let checkedGlyphPixels = 0,
           baselineGlyphPixelMismatches = 0;
-        for (const [x, y, w, h] of rects)
+        for (const [x, y, w, h] of parityRects)
           for (let ny = Math.ceil((y - 626) * 1.5); ny < Math.floor((y + h - 626) * 1.5); ny++)
             for (let nx = Math.ceil(x * 1.5); nx < Math.floor((x + w) * 1.5); nx++) {
               const at = (ny * 732 + nx) * 4;
@@ -374,6 +420,10 @@ try {
           part === 'collector' ? ['artist'] : part === 'artist' ? ['collector', 'legal'] : [];
         const currentRendererScore = score(toCanonical(paint({}, hidden)), 0, 0);
         for (const variant of variants) {
+          if (reuseVariantScores && scores.length) {
+            scores.push(...scores.slice(0, offsets.length));
+            continue;
+          }
           const data = toCanonical(paint(variant, hidden));
           for (const [dx, dy] of offsets) scores.push(score(data, dx, dy));
         }
@@ -393,7 +443,12 @@ try {
         variants,
         offsets,
         rects: cardRects,
+        parityRects: plan.selection === 'foil-marker' ? rects : cardRects,
         part,
+        reuseVariantScores:
+          plan.selection === 'foil-marker' &&
+          plan.variants.every((v) => Object.keys(v).length === 1 && v.collectorMarker) &&
+          !contentParameters.foilStarNumbers.includes(e.card.collector_number),
       },
     );
     rows.push({
@@ -406,11 +461,12 @@ try {
       poseAccepted: s.poseAccepted,
       geometry: s.geometry,
       rects: cardRects,
+      baselineParityRects: plan.selection === 'foil-marker' ? rects : cardRects,
       ...result,
     });
     if (rows.length % 25 === 0) {
       await save({ status: 'running' });
-      console.log(part, rows.length, '/', inputs.entries.length);
+      console.log(part, rows.length, '/', studyEntries.length);
     }
   }
   assert.deepEqual(session.faults, []);
@@ -421,22 +477,51 @@ try {
   const ordinary = rows.filter(
     (r) => r.nonfoil && r.poseAccepted && !r.geometry.startsWith('planeswalker'),
   );
-  assert(ordinary.length, 'No accepted ordinary nonfoil poses for shared parameter selection');
+  if (plan.selection !== 'foil-marker')
+    assert(ordinary.length, 'No accepted ordinary nonfoil poses for shared parameter selection');
+  const foilIds = new Set(
+    inputs.entries
+      .filter((e) => contentParameters.foilStarNumbers?.includes(e.card.collector_number))
+      .map((e) => e.id),
+  );
+  const selection =
+    plan.selection === 'foil-marker'
+      ? rows.filter((r) => foilIds.has(r.id) && !r.nonfoil && r.poseAccepted)
+      : ordinary;
+  assert(selection.length, 'No reviewed sources for footer selection');
+  if (plan.selection === 'foil-marker') assert.equal(selection.length, 5);
+
   const ranks = variants
     .flatMap((variant, v) =>
       offsets.map((offset, o) => ({
         variant,
         offset,
         index: v * offsets.length + o,
-        ordinaryMean:
-          ordinary.reduce((n, r) => n + r.scores[v * offsets.length + o], 0) / ordinary.length,
+        selectionMean:
+          selection.reduce((n, r) => n + r.scores[v * offsets.length + o], 0) / selection.length,
+        ...(plan.selection === undefined
+          ? {
+              ordinaryMean:
+                ordinary.reduce((n, r) => n + r.scores[v * offsets.length + o], 0) /
+                ordinary.length,
+            }
+          : {}),
       })),
     )
-    .sort((a, b) => b.ordinaryMean - a.ordinaryMean);
+    .sort((a, b) => b.selectionMean - a.selectionMean);
   const selected = ranks[0],
-    proposal = { ...selected.variant, [part + 'Offset']: selected.offset };
+    priorOffset = selected.variant[part + 'Offset'] ?? [0, 0],
+    proposal = {
+      ...selected.variant,
+      [part + 'Offset']: selected.offset.map((v, i) => v + priorOffset[i]),
+    };
   await save({
     status: 'regional-proposal-only',
+    selection: {
+      kind: plan.selection ?? 'ordinary-nonfoil',
+      count: selection.length,
+      ids: selection.map((r) => r.id),
+    },
     ordinary: ordinary.length,
     rank: ranks.slice(0, 20),
   });
