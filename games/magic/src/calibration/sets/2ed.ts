@@ -1,9 +1,8 @@
 import type { SetCalibrationProfile } from '../types.js';
-
 /** Shared Unlimited printing defaults. Scan poses and reference pixels stay in evidence. */
 export const profile = {
   schema: 1,
-  revision: 2,
+  revision: 3,
   set: '2ed',
   border: 'white',
   cornerRadius: 0.045,
@@ -193,11 +192,7 @@ export const profile = {
         '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/b.png",[-0.0016171599546919472,0.0009831517365230032,0.9995233830277084,0.995507059980833]]',
       stock: '#eeedeb',
       adjustment: {
-        frame: {
-          hueDegrees: 0,
-          saturationScale: 0.4,
-          brightnessScale: 1.1747916666666667,
-        },
+        frame: { hueDegrees: 0, saturationScale: 0.4, brightnessScale: 1.1747916666666667 },
         paper: {
           hueDegrees: -7.381175889328006,
           saturationScale: 0.8802530017152661,
@@ -408,11 +403,7 @@ export const profile = {
           saturationScale: 0.8443206155567071,
           brightnessScale: 1.0561321379230946,
         },
-        paper: {
-          hueDegrees: 0,
-          saturationScale: 1.4,
-          brightnessScale: 1.0995302547770702,
-        },
+        paper: { hueDegrees: 0, saturationScale: 1.4, brightnessScale: 1.0995302547770702 },
         mask: {
           kind: 'rect',
           rect: [0.13733333333333334, 0.6095238095238096, 0.7293333333333333, 0.2704761904761905],
@@ -477,11 +468,7 @@ export const profile = {
           saturationScale: 0.8443206155567071,
           brightnessScale: 1.0561321379230946,
         },
-        paper: {
-          hueDegrees: 0,
-          saturationScale: 0.4,
-          brightnessScale: 1.1435191441441441,
-        },
+        paper: { hueDegrees: 0, saturationScale: 0.4, brightnessScale: 1.1435191441441441 },
         mask: {
           kind: 'rect',
           rect: [0.13733333333333334, 0.6095238095238096, 0.7293333333333333, 0.2704761904761905],
@@ -689,6 +676,7 @@ export const profile = {
             hueDegrees: 12.699142834132203,
             saturationScale: 0.8443206155567071,
             brightnessScale: 1.0561321379230946,
+            rgbScale: [1.036764705882353, 1.0327868852459017, 1.0256410256410255],
           },
           paper: {
             hueDegrees: 0.8214127285582435,
@@ -777,6 +765,7 @@ export const profile = {
             hueDegrees: 12.699142834132203,
             saturationScale: 0.8443206155567071,
             brightnessScale: 1.0561321379230946,
+            rgbScale: [1.036764705882353, 1.0327868852459017, 1.0256410256410255],
           },
           paper: {
             hueDegrees: -12.437500000000114,
@@ -865,6 +854,7 @@ export const profile = {
             hueDegrees: 12.699142834132203,
             saturationScale: 0.8443206155567071,
             brightnessScale: 1.0561321379230946,
+            rgbScale: [1.036764705882353, 1.0327868852459017, 1.0256410256410255],
           },
           paper: {
             hueDegrees: 0,
@@ -880,10 +870,6 @@ export const profile = {
             {
               mask: {
                 rings: [
-                  {
-                    outer: [0.05533333333333333, 0.045714285714285714, 0.89, 0.9104761904761904],
-                    inner: [0.066, 0.05238095238095238, 0.8673333333333333, 0.8966666666666666],
-                  },
                   {
                     outer: [
                       0.09533333333333334, 0.09095238095238095, 0.8106666666666666,
@@ -932,6 +918,25 @@ export const profile = {
                 brightnessScale: 0.6864858896500114,
               },
             },
+            {
+              mask: {
+                rings: [
+                  {
+                    outer: [0.05533333333333333, 0.045714285714285714, 0.89, 0.9104761904761904],
+                    inner: [0.066, 0.05238095238095238, 0.8673333333333333, 0.8966666666666666],
+                  },
+                ],
+                hueCenter: 0,
+                hueRadius: 180,
+                hueFeather: 1,
+                saturation: [0, 0.001],
+              },
+              adjustment: {
+                hueDegrees: 0,
+                saturationScale: 0.05603658536585383,
+                brightnessScale: 1.2,
+              },
+            },
           ],
           blackPoint: {
             lift: [0, 0, 0],
@@ -953,6 +958,7 @@ export const profile = {
             hueDegrees: 12.699142834132203,
             saturationScale: 0.8443206155567071,
             brightnessScale: 1.0561321379230946,
+            rgbScale: [1.036764705882353, 1.0327868852459017, 1.0256410256410255],
           },
           paper: {
             hueDegrees: 4.582442104785798,
@@ -1041,6 +1047,7 @@ export const profile = {
             hueDegrees: 12.699142834132203,
             saturationScale: 0.8443206155567071,
             brightnessScale: 1.0561321379230946,
+            rgbScale: [1.036764705882353, 1.0327868852459017, 1.0256410256410255],
           },
           paper: {
             hueDegrees: -7.1432522123893705,
@@ -1165,31 +1172,11 @@ export const profile = {
       scaleY: 0.975,
       spacing: 0.625,
       glyphs: {
-        W: {
-          scale: 1.06,
-          dx: 0,
-          dy: 0,
-        },
-        U: {
-          scale: 1,
-          dx: 0,
-          dy: 0,
-        },
-        B: {
-          scale: 1.06,
-          dx: 0,
-          dy: 0,
-        },
-        R: {
-          scale: 1.06,
-          dx: 0,
-          dy: 0,
-        },
-        G: {
-          scale: 1.14,
-          dx: 0,
-          dy: 0,
-        },
+        W: { scale: 1.06, dx: 0, dy: 0 },
+        U: { scale: 1, dx: 0, dy: 0 },
+        B: { scale: 1.06, dx: 0, dy: 0 },
+        R: { scale: 1.06, dx: 0, dy: 0 },
+        G: { scale: 1.14, dx: 0, dy: 0 },
       },
       numberScale: 1.06,
       numberDx: 0,
@@ -1204,13 +1191,7 @@ export const profile = {
       N: [0.6901960784313725, 0.7137254901960784, 0.7176470588235294],
     },
     ink: [0.1843137254901961, 0.1803921568627451, 0.1568627450980392],
-    sourceInk: {
-      R: {
-        family: 'mse-old',
-        pixels: 0.4,
-        paperSample: 'opaque-percentile',
-      },
-    },
+    sourceInk: { R: { family: 'mse-old', pixels: 0.4, paperSample: 'opaque-percentile' } },
   },
   title: {
     x: 33.160000000000004,
@@ -1221,15 +1202,7 @@ export const profile = {
     trim: 0,
     gray: 140,
   },
-  type: {
-    x: 49.4112,
-    y: 391.51,
-    size: 22.2,
-    width: 1.02,
-    shadow: 0.75,
-    trim: 0,
-    gray: 150,
-  },
+  type: { x: 49.4112, y: 391.51, size: 22.2, width: 1.02, shadow: 0.75, trim: 0, gray: 150 },
   footer: {
     artist: {
       x: 49.5,
@@ -1276,15 +1249,14 @@ export const profile = {
     retainRegularAboveLines: 7,
   },
 } as const satisfies SetCalibrationProfile;
-
 export const review = {
-  revision: 2,
+  revision: 3,
   scope:
-    'All302 ordinary Unlimited printings retain their reviewed Original inputs and text layouts. The dual plate is cropped upward with its illustration window; a source-local tone restores the lower bezel.906 installed Original/Oracle faces, fixed scan poses and separate boundary diagnostics are recorded in the evidence. Publication is tracked by the calibration ledger.',
+    'All302 Unlimited printings retain Original inputs, geometry and body layout. The shared dual background fit uses nine scans, excluding the reviewer-identified dark Volcanic Island scan; all ten remain in score reports. A source-local charcoal correction changes only the black outer pigment strip. Installed native replay and a separate pigment diagnostic document the structural-score tradeoff; publication remains a separate gate.',
   evidence: [
-    'games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-adoption.json',
-    'games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-replay.json.gz',
-    'games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-crop-review.json',
+    'games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-adoption.json',
+    'games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-replay.json.gz',
+    'games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-tone-review.json',
   ],
   pending: [],
 } as const;

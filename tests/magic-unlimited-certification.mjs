@@ -77,105 +77,175 @@ for (const row of data.receipt.rows) {
 }
 console.log('Published scan templates preserve all302 certified reference/pose joins.');
 
-// A better aggregate must not silently close a visibly wrong frame edge.
-const cropReview = await readJson(
-  'games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-crop-review.json',
-);
-assert(['resolved-awaiting-release', 'resolved'].includes(cropReview.status));
-assert.equal(cropReview.resolution.profileRevision, 2);
-assert.equal(cropReview.resolution.adopted, true);
-const historical = await readJson(data.receipt.parent.file);
-assert.equal(hash(await readFile(data.receipt.parent.file)), data.receipt.parent.sha256);
-assert.equal(cropReview.candidateStudy.adopted, false);
-const archive = await readFile(cropReview.candidateStudy.file);
-assert.equal(hash(archive), cropReview.candidateStudy.sha256);
-const { gunzipSync } = await import('node:zlib');
-const cropStudy = JSON.parse(gunzipSync(archive));
-assert.equal(cropStudy.capture.rows.length, 10);
-assert.equal(cropStudy.scores.rows.length, 10);
-for (const row of cropStudy.capture.rows) {
-  const original = data.receipt.rows.find((r) => r.id === row.id);
-  assert.equal(row.referenceHash, original.referenceHash);
-  assert.equal(row.poseHash, original.poseHash);
-  assert.equal(row.variants.length, 4);
-  assert.equal(row.variants[0].hash, historical.rows.find((r) => r.id === row.id).nativeFaceHash);
-  for (const variant of row.variants)
-    assert.deepEqual(
-      variant.values,
-      cropStudy.capture.rows[0].variants.find((v) => v.name === variant.name).values,
-    );
-}
-const summary = cropStudy.scores.summary;
-assert(summary['up-3-art'].structural100 > summary.current.structural100);
-assert(summary['up-3-art'].strips.top > summary['up-3.5-art'].strips.top);
-assert(summary['up-3.5-art'].structural100 > summary['up-3-art'].structural100);
-console.log(
-  'Dual crop:40 native candidates,10 exact baseline matches; boundary diagnostic rejects the misleading aggregate optimum. Combined crop/bevel proof is separate from this rejected crop-only study.',
-);
-
-const revisionFile = 'games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-replay.json.gz';
-const revisionBytes = await readFile(revisionFile);
-assert.equal(hash(revisionBytes), data.receipt.artifacts[revisionFile]);
-const revision = JSON.parse(gunzipSync(revisionBytes));
-for (const [key, text] of Object.entries(revision.documents))
-  assert.equal(hash(text), revision.documentHashes[key]);
-const native = JSON.parse(revision.documents.capture);
-const nativeSummary = JSON.parse(revision.documents.summary);
-const scores = JSON.parse(revision.documents.scores);
-const metadata = JSON.parse(revision.documents.metadata);
-assert.equal(native.completed, 302);
-assert.equal(nativeSummary.nativeFaces, 906);
-assert.equal(nativeSummary.unchangedFaces, 876);
-assert.equal(nativeSummary.bodyLayoutsUnchanged, 906);
-assert.deepEqual(nativeSummary.overflow, []);
-assert.equal(scores.reuse.unchanged, 292);
-assert.equal(scores.reuse.fresh, 10);
-assert.equal(scores.summary.all.components.structural100.improved, 10);
-assert.equal(scores.summary.all.components.structural100.regressed, 0);
-assert.equal(hash(revision.documents.capture), metadata.nativeCaptureHash);
-assert.equal(native.source.rendererHash, metadata.beforeTreeHash);
-assert.equal(metadata.afterTreeHash, data.receipt.rendererHash);
-assert.equal(await sourceHash('games/magic/src'), metadata.afterTreeHash);
+// Current tone certification extends, rather than rewrites, the crop history.
+const { gunzipSync: decodeTone } = await import('node:zlib');
+const toneFile = 'games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-replay.json.gz';
+const toneBytes = await readFile(toneFile);
+assert.equal(hash(toneBytes), data.receipt.artifacts[toneFile]);
+const tone = JSON.parse(decodeTone(toneBytes));
+for (const [key, value] of Object.entries(tone.documents))
+  assert.equal(hash(value), tone.documentHashes[key]);
+const toneMetadata = JSON.parse(tone.documents.metadata);
+assert.equal(await sourceHash('games/magic/src'), toneMetadata.afterTreeHash);
+assert.equal(toneMetadata.afterTreeHash, data.receipt.rendererHash);
 assert.equal(
-  hash(metadata.afterSource),
   hash(await readFile('games/magic/src/calibration/sets/2ed.ts')),
+  hash(toneMetadata.afterSource),
 );
-assert.equal(hash(JSON.stringify(metadata.beforeMap)), metadata.beforeTreeHash);
-assert.equal(hash(JSON.stringify(metadata.afterMap)), metadata.afterTreeHash);
-const beforeFiles = new Map(metadata.beforeMap),
-  afterFiles = new Map(metadata.afterMap);
-assert.deepEqual([...beforeFiles.keys()], [...afterFiles.keys()]);
-assert.deepEqual(
-  [...beforeFiles.keys()].filter((file) => beforeFiles.get(file) !== afterFiles.get(file)),
-  ['calibration/sets/2ed.ts', 'data/generated-manifest.json'],
-);
-assert.deepEqual(
-  JSON.parse(metadata.manifestBefore).files,
-  JSON.parse(metadata.manifestAfter).files,
-);
-for (const [name, source] of Object.entries(revision.tools))
+for (const [name, source] of Object.entries(tone.tools))
   assert.equal(hash(source), hash(await readFile('games/magic/tools/accuracy/' + name)));
-assert.equal(native.source.toolHash, hash(revision.tools['early-profile-revision-native.mjs']));
-assert.equal(scores.source.toolHash, hash(revision.tools['early-profile-revision-score.mjs']));
-assert.equal(metadata.toolHash, hash(revision.tools['early-profile-review-metadata.mjs']));
-assert.equal(revision.materialIsolation.length, 10);
-for (const row of revision.materialIsolation) {
-  assert(row.changedPixels > 0);
-  assert.equal(row.outsideLowerBand, 0);
-  assert.equal(row.alphaUnchanged, true);
-  assert(row.bounds[1] >= 969 && row.bounds[1] + row.bounds[3] <= 982);
-}
-for (const row of native.rows) {
-  const current = data.receipt.rows.find((r) => r.id === row.id);
-  assert.equal(row.referenceHash, current.referenceHash);
-  assert.equal(row.poseHash, current.poseHash);
-  assert.equal(row.variants.original.rasters.face, current.nativeFaceHash);
-  for (const face of Object.values(row.variants)) {
+const toneCapture = JSON.parse(tone.documents.capture),
+  tonePrevious = JSON.parse(tone.documents.previous),
+  toneSummary = JSON.parse(tone.documents.summary),
+  toneScores = JSON.parse(tone.documents.scores);
+assert.equal(toneCapture.completed, 302);
+assert.equal(toneSummary.nativeFaces, 906);
+assert.equal(toneSummary.unchangedFaces, 876);
+assert.deepEqual(toneSummary.overflow, []);
+assert.equal(hash(tone.documents.capture), toneScores.source.finalCaptureHash);
+assert.equal(hash(tone.documents.previous), toneCapture.source.previousCaptureHash);
+assert.equal(hash(tone.documents.inputs), toneCapture.source.inputsHash);
+assert.equal(toneScores.reuse.unchanged, 292);
+assert.equal(toneScores.reuse.fresh, 10);
+for (const row of toneCapture.rows) {
+  const before = tonePrevious.rows.find((r) => r.id === row.id);
+  const joined = data.receipt.rows.find((r) => r.id === row.id);
+  assert.equal(row.referenceHash, before.referenceHash);
+  assert.equal(row.poseHash, before.poseHash);
+  assert.equal(row.variants.original.rasters.face, joined.nativeFaceHash);
+  for (const [mode, face] of Object.entries(row.variants)) {
+    assert.deepEqual(face.body, before.variants[mode].body);
     assert.equal(face.etchingUnchanged, true);
     assert.equal(hash(JSON.stringify(face.input)), face.inputHash);
-    assert.equal(face.body?.overflow ?? false, false);
   }
 }
-console.log(
-  'Revision2:906 installed faces,292 unchanged printings,10 corrected duals; isolated lower bezel and exact review-only source bridge.',
+assert.equal(data.receipt.pigmentDecision.fitPrintings, 9);
+assert.equal(data.receipt.pigmentDecision.reportPrintings, 10);
+assert(
+  data.receipt.pigmentDecision.backgroundMAE.after <
+    data.receipt.pigmentDecision.backgroundMAE.before,
 );
+assert(
+  toneScores.summary.all.components.structural100.regressed > 0,
+  'Do not hide contrast-sensitive score regressions',
+);
+for (const row of tone.isolation) {
+  assert(row.changedPixels > 0);
+  assert.equal(row.alphaUnchanged, true);
+  assert.equal(row.interiorArtChanges, 0);
+}
+const toneBeforeMap = new Map(toneMetadata.beforeMap),
+  toneAfterMap = new Map(toneMetadata.afterMap);
+assert.deepEqual([...toneBeforeMap.keys()], [...toneAfterMap.keys()]);
+assert.deepEqual(
+  [...toneBeforeMap.keys()].filter((k) => toneBeforeMap.get(k) !== toneAfterMap.get(k)),
+  ['calibration/sets/2ed.ts', 'data/generated-manifest.json', 'data/sets/2ed.ts'],
+);
+assert.equal(hash(JSON.stringify(toneMetadata.beforeMap)), toneMetadata.beforeTreeHash);
+assert.equal(hash(JSON.stringify(toneMetadata.afterMap)), toneMetadata.afterTreeHash);
+console.log(
+  'Revision3:906 installed faces; nine-scan pigment fit, dark scan retained in reports, fixed geometry/wording and disclosed structural-score tradeoff.',
+);
+
+{
+  const data = await unlimitedCalibrationEvidence({ revision: 'crop' });
+  // A better aggregate must not silently close a visibly wrong frame edge.
+  const cropReview = await readJson(
+    'games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-crop-review.json',
+  );
+  assert(['resolved-awaiting-release', 'resolved'].includes(cropReview.status));
+  assert.equal(cropReview.resolution.profileRevision, 2);
+  assert.equal(cropReview.resolution.adopted, true);
+  const historical = await readJson(data.receipt.parent.file);
+  assert.equal(hash(await readFile(data.receipt.parent.file)), data.receipt.parent.sha256);
+  assert.equal(cropReview.candidateStudy.adopted, false);
+  const archive = await readFile(cropReview.candidateStudy.file);
+  assert.equal(hash(archive), cropReview.candidateStudy.sha256);
+  const { gunzipSync } = await import('node:zlib');
+  const cropStudy = JSON.parse(gunzipSync(archive));
+  assert.equal(cropStudy.capture.rows.length, 10);
+  assert.equal(cropStudy.scores.rows.length, 10);
+  for (const row of cropStudy.capture.rows) {
+    const original = data.receipt.rows.find((r) => r.id === row.id);
+    assert.equal(row.referenceHash, original.referenceHash);
+    assert.equal(row.poseHash, original.poseHash);
+    assert.equal(row.variants.length, 4);
+    assert.equal(row.variants[0].hash, historical.rows.find((r) => r.id === row.id).nativeFaceHash);
+    for (const variant of row.variants)
+      assert.deepEqual(
+        variant.values,
+        cropStudy.capture.rows[0].variants.find((v) => v.name === variant.name).values,
+      );
+  }
+  const summary = cropStudy.scores.summary;
+  assert(summary['up-3-art'].structural100 > summary.current.structural100);
+  assert(summary['up-3-art'].strips.top > summary['up-3.5-art'].strips.top);
+  assert(summary['up-3.5-art'].structural100 > summary['up-3-art'].structural100);
+  console.log(
+    'Dual crop:40 native candidates,10 exact baseline matches; boundary diagnostic rejects the misleading aggregate optimum. Combined crop/bevel proof is separate from this rejected crop-only study.',
+  );
+
+  const revisionFile = 'games/magic/fixtures/accuracy/early-through-fourth/2ed-crop-replay.json.gz';
+  const revisionBytes = await readFile(revisionFile);
+  assert.equal(hash(revisionBytes), data.receipt.artifacts[revisionFile]);
+  const revision = JSON.parse(gunzipSync(revisionBytes));
+  for (const [key, text] of Object.entries(revision.documents))
+    assert.equal(hash(text), revision.documentHashes[key]);
+  const native = JSON.parse(revision.documents.capture);
+  const nativeSummary = JSON.parse(revision.documents.summary);
+  const scores = JSON.parse(revision.documents.scores);
+  const metadata = JSON.parse(revision.documents.metadata);
+  assert.equal(native.completed, 302);
+  assert.equal(nativeSummary.nativeFaces, 906);
+  assert.equal(nativeSummary.unchangedFaces, 876);
+  assert.equal(nativeSummary.bodyLayoutsUnchanged, 906);
+  assert.deepEqual(nativeSummary.overflow, []);
+  assert.equal(scores.reuse.unchanged, 292);
+  assert.equal(scores.reuse.fresh, 10);
+  assert.equal(scores.summary.all.components.structural100.improved, 10);
+  assert.equal(scores.summary.all.components.structural100.regressed, 0);
+  assert.equal(hash(revision.documents.capture), metadata.nativeCaptureHash);
+  assert.equal(native.source.rendererHash, metadata.beforeTreeHash);
+  assert.equal(metadata.afterTreeHash, data.receipt.rendererHash);
+  assert.equal(toneMetadata.beforeTreeHash, metadata.afterTreeHash);
+  assert.equal(hash(metadata.afterSource), hash(toneMetadata.beforeSource));
+  assert.equal(hash(JSON.stringify(metadata.beforeMap)), metadata.beforeTreeHash);
+  assert.equal(hash(JSON.stringify(metadata.afterMap)), metadata.afterTreeHash);
+  const beforeFiles = new Map(metadata.beforeMap),
+    afterFiles = new Map(metadata.afterMap);
+  assert.deepEqual([...beforeFiles.keys()], [...afterFiles.keys()]);
+  assert.deepEqual(
+    [...beforeFiles.keys()].filter((file) => beforeFiles.get(file) !== afterFiles.get(file)),
+    ['calibration/sets/2ed.ts', 'data/generated-manifest.json'],
+  );
+  assert.deepEqual(
+    JSON.parse(metadata.manifestBefore).files,
+    JSON.parse(metadata.manifestAfter).files,
+  );
+  for (const [name, source] of Object.entries(revision.tools))
+    assert.equal(hash(source), hash(await readFile('games/magic/tools/accuracy/' + name)));
+  assert.equal(native.source.toolHash, hash(revision.tools['early-profile-revision-native.mjs']));
+  assert.equal(scores.source.toolHash, hash(revision.tools['early-profile-revision-score.mjs']));
+  assert.equal(metadata.toolHash, hash(revision.tools['early-profile-review-metadata.mjs']));
+  assert.equal(revision.materialIsolation.length, 10);
+  for (const row of revision.materialIsolation) {
+    assert(row.changedPixels > 0);
+    assert.equal(row.outsideLowerBand, 0);
+    assert.equal(row.alphaUnchanged, true);
+    assert(row.bounds[1] >= 969 && row.bounds[1] + row.bounds[3] <= 982);
+  }
+  for (const row of native.rows) {
+    const current = data.receipt.rows.find((r) => r.id === row.id);
+    assert.equal(row.referenceHash, current.referenceHash);
+    assert.equal(row.poseHash, current.poseHash);
+    assert.equal(row.variants.original.rasters.face, current.nativeFaceHash);
+    for (const face of Object.values(row.variants)) {
+      assert.equal(face.etchingUnchanged, true);
+      assert.equal(hash(JSON.stringify(face.input)), face.inputHash);
+      assert.equal(face.body?.overflow ?? false, false);
+    }
+  }
+  console.log(
+    'Revision2:906 installed faces,292 unchanged printings,10 corrected duals; isolated lower bezel and exact review-only source bridge.',
+  );
+}
