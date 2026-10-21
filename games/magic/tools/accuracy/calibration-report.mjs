@@ -47,7 +47,7 @@ export async function calibrationReport(ledger) {
             'The early-set batch changes this printing/component; its previous fit needs a current source-bound review.';
           continue;
         }
-        for (const [file, expected] of Object.entries(item.guards ?? {})) {
+        for (const [file, expected] of Object.entries({ ...group.guards, ...item.guards })) {
           assert.ok(!file.startsWith('/') && !file.split('/').includes('..'));
           const changedScope = group.kind === 'planeswalker' || set.set === 'm15';
           const guardKey =

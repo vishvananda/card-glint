@@ -286,3 +286,14 @@ retention. Fit font tiers, wrapping and margins before publishing these values,
 and run `node tests/magic-profile-adapters.mjs` for source-binding and proposal
 validation. Neither adding these fields nor passing compatibility tests completes
 a set: the integrated native Original/Oracle faces and outliers still need review.
+
+### Finite printing groups
+
+When a variant has fewer than three distinct names, use a `source-census`
+receipt instead of inventing holdout independence. Replay every ordinary
+nonfoil printing in that variant against its frozen, independently validated
+scan pose. Record the complete printing membership, unique names, shared
+parameter hash, and each reference, pose, input and native-face hash. State
+`heldOut: false`; this certifies the observed population only, with no claim
+of transfer to unseen printings. Regional measurements, outlier review and
+release checks still apply. The ledger rejects missing or duplicate members.

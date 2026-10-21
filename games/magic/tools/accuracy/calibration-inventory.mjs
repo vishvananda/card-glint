@@ -1,3 +1,7 @@
+import {
+  unlimitedCalibrationEvidence,
+  applyUnlimitedEvidence,
+} from './calibration-unlimited-evidence.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'vite';
@@ -21,6 +25,12 @@ import {
 import { applyEarlyOriginalWording } from './calibration-original-wording.mjs';
 
 const inventory = await readJson(fixtureRoot + '/rollout-inventory.json');
+const [selectedSet, ...extra] = process.argv.slice(2);
+assert(extra.length === 0 && (!selectedSet || /^[a-z0-9]{2,10}$/.test(selectedSet)), 'Use [set]');
+assert(
+  !selectedSet || inventory.sets.some((s) => s.set === selectedSet && s.status === 'major'),
+  'Unknown major set',
+);
 const active = new Set(['lea', 'leb', '2ed', '3ed', '8ed', 'm21', 'arn', 'atq', 'drk', 'leg']);
 const file = fixtureRoot + '/calibration-progress.json';
 let previous;
@@ -92,6 +102,7 @@ const earlyGuards = Object.fromEntries(
     ]),
   ),
 );
+const unlimitedEvidence = await unlimitedCalibrationEvidence();
 const sets = [];
 try {
   await server.ssrLoadModule('/games/magic/src/data/eager.ts');
@@ -107,7 +118,9 @@ try {
   const { calibratedFrameMaterials, hasCalibratedFramePigment } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
-  for (const set of inventory.sets.filter((s) => s.status === 'major')) {
+  for (const set of inventory.sets.filter(
+    (s) => s.status === 'major' && (!selectedSet || s.set === selectedSet),
+  )) {
     const snapshot = await readJson(`${cacheRoot}/rollout/sets/${set.set}.json`);
     assert.equal(snapshot.sourceIdentity, set.sourceIdentity, 'Catalog changed: ' + set.set);
     const cards = [];
@@ -393,6 +406,7 @@ try {
         ?.groups.find((v) => v.key === g.key);
       for (const [task, item] of Object.entries(saved?.tasks ?? {}))
         if (item.reviewedAt) g.tasks[task] = item;
+      if (set.set === '2ed') applyUnlimitedEvidence(g, unlimitedEvidence);
       // Queued sets keep exact variant denominators without duplicating every
       // printing UUID and applicability explanation from the frozen catalog.
       groups.push(
@@ -430,6 +444,11 @@ try {
   }
 } finally {
   await server.close();
+}
+if (selectedSet) {
+  assert(previous, 'Targeted inventory requires an existing ledger');
+  const updated = new Map(sets.map((s) => [s.set, s]));
+  sets.splice(0, sets.length, ...previous.sets.map((s) => updated.get(s.set) ?? s));
 }
 await writeJson(file, {
   schemaVersion: 1,

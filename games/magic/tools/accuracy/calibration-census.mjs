@@ -3,7 +3,7 @@ const digest = /^[a-f0-9]{64}$/;
 /** A finite printing family can contain fewer than three names. Certify its
  * full observed population without claiming an independent holdout or transfer. */
 export function checkSourceCensus(group, proof) {
-  const census = proof.sourceCensus;
+  const census = proof.sourceCensus ?? group.sourceCensus;
   assert(census && census.heldOut === false, 'A source census must disclose reused development');
   assert.equal(census.scope, 'all-ordinary-printings-in-variant');
   assert.equal(
