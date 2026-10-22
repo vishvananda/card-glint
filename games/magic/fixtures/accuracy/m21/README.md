@@ -347,3 +347,50 @@ node games/magic/tools/accuracy/modern-calibration-native.mjs \
 The existing source-bound study accepts optional numeric and per-color glyph
 controls. Editor adjustments remain relative; unrelated sets, planeswalker costs,
 explicit older plates and cards without costs retain their defaults.
+
+## Remaining ordinary and legendary material colors
+
+[The28-card material trial](remaining-normal-color-native-review.json) covers
+all18 remaining crowns and10 plain gold cards with nonfoil references. It keeps
+the existing sources and frozen scan alignment. Shared frame, rules-paper and
+header fits reduce mean color error from3.65 to2.84,1.92 to0.88 and3.91 to0.81
+respectively (Oklab delta; lower is better).
+
+Native replay rejects the unstable black-frame fit and retains the existing blue
+surround, green rules paper and paired-color pinlines. Gold headers improve
+substantially without recoloring their authored color strips. All28 alpha masks
+and etchings remain identical. The regional structure index changes slightly
+from73.86 to73.79/100; both objectives and all regressions are retained.
+
+The compressed receipt includes selected parameters, earlier rejected candidates,
+per-printing results and exact source bindings. These values await integration;
+this material trial does not certify typography or set completion.
+
+## Planeswalker paper is a separate component
+
+[The14-card paper trial](walker-paper-native-review.json) uses9 nonfoil scans
+and5 unchanged foil-only render controls. The textured CC background does not own
+the ability paper: adjusting it left every body-color patch unchanged. That
+candidate is retained as a rejected component-ownership experiment.
+
+A separate fit to the procedural paper reduces mean color error from2.23 to0.74.
+It preserves the240/255 alpha, outline, text layout and all pixels outside the
+ability paper. Heading/surround color patches and all14 etchings are unchanged.
+The structure index stays effectively level at70.25 to70.26/100.
+
+The selected paper colors and source-bound study parameters are in the receipt.
+Regular blue has only a foil-only reference and retains shared defaults. These
+are material candidates; planeswalker type/name color, mana, badges, starting
+loyalty, typography and the full-set publication audit remain separate checks.
+
+Use the existing native replay command with the selected material parameters:
+
+```sh
+node games/magic/tools/accuracy/modern-calibration-native.mjs \
+  INPUTS OUTPUT --materials PARAMETERS
+```
+
+Paper corrections are keyed by the exact background-mask source, applied by the
+procedural fill and excluded from bitmap color adjustment. Source-texture
+corrections use the CC source key and are applied by its own preparer once.
+The study never changes production defaults, caller inputs or source mask alpha.
