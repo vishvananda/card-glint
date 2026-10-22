@@ -100,3 +100,13 @@
     format('truetype');
   font-display: block;
 }
+
+/* Beleren2016 includes the contextual descending n used by modern headings.
+   Loaded only when a printing profile selects it; regular Beleren stays available. */
+@font-face {
+  font-family: 'CardRenderer MTG Beleren 2016';
+  font-weight: 400 700;
+  src: url('https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/beleren-b.ttf')
+    format('truetype');
+  font-display: block;
+}

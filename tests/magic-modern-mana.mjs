@@ -25,7 +25,8 @@ try {
       '/games/magic/src/presentation/printing-mana-adjustment.ts'
     );
     const { paintMana } = await import('/games/magic/src/presentation/canvas-text.ts');
-    const face = { name: 'Probe', setCode: 'm21', manaSymbols: ['3'], rulesText: 'Pay {3}.' };
+    // Generic component defaults; exact M21 overrides have their own adoption test.
+    const face = { name: 'Probe', setCode: 'war', manaSymbols: ['3'], rulesText: 'Pay {3}.' };
     const make = async (triangle) => {
       const c = document.createElement('canvas');
       c.width = c.height = 96;
@@ -122,12 +123,10 @@ try {
       ),
       whiteStock: modernCostNumeralAsset({ ...face, borderColor: 'white' }, '3'),
       neutralSource: neutral.images.manaNumerals?.has('3'),
-      admitted: ['m15', 'm20', 'm21', 'war', 'dmu', 'dsk', 'future-set', undefined].map(
-        (setCode) => ({
-          url: modernCostNumeralAsset({ ...face, setCode }, '3'),
-          adjustment: printingManaAdjustment({ ...face, setCode }),
-        }),
-      ),
+      admitted: ['m15', 'm20', 'war', 'dmu', 'dsk', 'future-set', undefined].map((setCode) => ({
+        url: modernCostNumeralAsset({ ...face, setCode }, '3'),
+        adjustment: printingManaAdjustment({ ...face, setCode }),
+      })),
       inline: changed(baseInline, newInline),
       cost: changed(baseCost, newCost),
       cold,

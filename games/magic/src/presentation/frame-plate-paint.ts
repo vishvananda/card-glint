@@ -1,3 +1,4 @@
+import { modernHeadingFamily } from './modern-heading-font.js';
 import { paintModernArtifactLayer } from './modern-artifact-layer.js';
 import { paintModernLandLayers } from './modern-land-layers.js';
 import { modernOrdinaryPlates } from './modern-printing-profile.js';
@@ -146,7 +147,9 @@ export function paintFramePlateFace(
   c.textAlign = 'left';
   c.textBaseline = 'middle';
   const costAdjustment = printingManaAdjustment(face);
-  const family = eighth ? 'CardRenderer MTG Matrix' : 'CardRenderer MTG Beleren';
+  const family = eighth
+    ? 'CardRenderer MTG Matrix'
+    : (modernHeadingFamily(face) ?? 'CardRenderer MTG Beleren');
   const [titleX, ty, tw, th] = px(retained ? FACE_RECTS.title : rects.title),
     tx = titleX + (retained ? FACE_TEXT.plateLeft + 1 : 0),
     cost = face.manaSymbols ?? [],
@@ -267,7 +270,8 @@ export function paintFramePlateFace(
   }
   if (face.power != null && face.toughness != null) {
     const [sx, sy, sw, sh] = px(rects.stats);
-    c.font = `bold ${retained ? FACE_TEXT.statsFont : 25}px "${family}", Georgia`;
+    const statsFamily = eighth ? 'CardRenderer MTG Matrix' : 'CardRenderer MTG Beleren';
+    c.font = `bold ${retained ? FACE_TEXT.statsFont : 25}px "${statsFamily}", Georgia`;
     c.textAlign = 'center';
     c.textBaseline = 'middle';
     paintTextInk(

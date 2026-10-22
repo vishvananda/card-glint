@@ -1,3 +1,4 @@
+import { modernPrintingProfile, modernWalkerProfile } from './modern-printing-profile.js';
 import { arabianManaVariant } from './early-expansion-mana.js';
 import { earlyReprintManaDefaults } from './early-reprint-mana.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -15,7 +16,13 @@ export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransfo
   const planar = planarManaDefaults(face);
   if (planar) return planar;
   const set = face.setCode?.toLowerCase() ?? '';
-  if (usesModernCostMana(face)) return { ...MODERN_COMPONENT_MANA, ...MODERN_MANA_OVERRIDES[set] };
+  if (usesModernCostMana(face)) {
+    const fit = (face.manaSymbols?.length ?? 0) > 0 ? modernPrintingProfile(face)?.mana : undefined;
+    return {
+      ...MODERN_COMPONENT_MANA,
+      ...(fit ? (modernWalkerProfile(face) ? fit.walker : fit.normal) : MODERN_MANA_OVERRIDES[set]),
+    };
+  }
   const base = PRINTING_MANA_PROFILES[set];
   const early = ['lea', 'leb', '3ed', 'arn', 'atq', 'drk'].includes(set);
   if (

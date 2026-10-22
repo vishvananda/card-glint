@@ -1,3 +1,4 @@
+import { modernWalkerBodyProfile } from './modern-printing-profile.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.js';
 import { faceFrame, faceRects, specialRules } from './special-frames.js';
@@ -43,19 +44,24 @@ export function planeswalkerRuleRows(context: CanvasContext, face: RenderedCardI
   const large = faceFrame(face) === 'planeswalker-large';
   const abilities = specialRules(face),
     sparse = !large && abilities.length < 3;
+  const adjustment = modernWalkerBodyProfile(face)?.rules[large ? 'tall' : 'regular'];
   const rect = faceRects(face).rules;
   const x = rect[0] * FACE_WIDTH,
-    y = rect[1] * FACE_HEIGHT,
-    width = rect[2] * FACE_WIDTH,
-    height = rect[3] * FACE_HEIGHT - (large ? 24 : sparse ? 4 : 16),
+    y = rect[1] * FACE_HEIGHT + (adjustment?.dy ?? 0),
+    width = rect[2] * FACE_WIDTH + (adjustment?.width ?? 0),
+    height = rect[3] * FACE_HEIGHT - (large ? 24 : sparse ? 4 : 16) + (adjustment?.height ?? 0),
     topInset = large ? 8 : sparse ? 3 : 0;
-  const typography = large ? { ...RULES_TYPOGRAPHY, leading: 0.9 } : RULES_TYPOGRAPHY;
+  const typography = {
+    ...RULES_TYPOGRAPHY,
+    leading: adjustment?.leading ?? (large ? 0.9 : RULES_TYPOGRAPHY.leading),
+  };
   const rows = abilities.map((row, index) => ({
     ...row,
     runs: abilityRuns(face, row.text, index),
-    left: row.badges.length
-      ? PLANESWALKER_RULE_GEOMETRY.textLeft
-      : PLANESWALKER_RULE_GEOMETRY.staticTextLeft,
+    left:
+      (row.badges.length
+        ? PLANESWALKER_RULE_GEOMETRY.textLeft
+        : PLANESWALKER_RULE_GEOMETRY.staticTextLeft) + (adjustment?.dx ?? 0),
   }));
   const measure = (size: number) =>
     rows.map((row) =>
@@ -73,7 +79,7 @@ export function planeswalkerRuleRows(context: CanvasContext, face: RenderedCardI
         typography,
       ),
     );
-  let font = large ? 17.5 : sparse ? 24 : 19,
+  let font = (large ? 17.5 : sparse ? 24 : 19) + (adjustment?.size ?? 0),
     measured = measure(font);
   const [inkTop, inkBottom] = planeswalkerInkLimits(large);
   const paperTops = () => {

@@ -21,7 +21,7 @@ try {
   const { calibratedFrameMaterials } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
-  const { modernOrdinaryPlates } = await server.ssrLoadModule(
+  const { modernOrdinaryPlates, modernPrintingProfile } = await server.ssrLoadModule(
     '/games/magic/src/presentation/modern-printing-profile.ts',
   );
   const { colorCalibrationCoverage } = await server.ssrLoadModule(
@@ -111,7 +111,15 @@ try {
       ),
     );
     const selected = modernOrdinaryPlates(face);
-    const expected = selected ?? PRINTING_COLOR_PROFILES[row.key].materials;
+    const component = modernPrintingProfile(face)?.componentMaterials;
+    const expected =
+      selected ??
+      Object.fromEntries(
+        Object.entries(PRINTING_COLOR_PROFILES[row.key].materials).map(([url, value]) => [
+          url,
+          component?.[url] ?? value,
+        ]),
+      );
     const expectedPigment = Object.fromEntries(
       Object.entries(expected).map(
         ([url, { blackPoint, outerStock, outerStockMaskSource, ...value }]) => [url, value],

@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "adopted-profile-native-diagnostic",
+  "eligibleForPublication": false,
+  "scope": "297 Original printings with unchanged art, wording and frozen affine scan poses. Profile revision6 adopts exact-source component colors, normal/walker cost geometry and paper/shadow, contextual headings, and the nine booster/tall walker body fits. Five deck bodies retain their previous settings. Structure is an index out of100; this replay does not certify pending scan normalization, unfinished frame/rules audits or set completion.",
+  "source": {
+    "beforeScores": "5ada0d27ef9cdceba6b3f443ff219fc6db6236860e8a30042e0d1d72149259ce",
+    "afterScores": "04603558ae5a159ac36b3426f14ada146b35b62026b5f531ace1f389c93c7a0a",
+    "inputs": "01597eb2b6ab913fd0ea5d0a3a3464c0942afad862e63fc6fbc38ae6b4d5cafa",
+    "nativeCapture": "91ae8d25ec9100a8f5d960b6b8917983b2fb1921f3ce2e5f6e978706d964ab2e",
+    "renderer": "b814cfecd9ad2200af5e7dc012acf64160e997654aa9a129ae26bc455c036523",
+    "packMetadata": [
+      ["assets.json", "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3"],
+      ["fonts.css", "921f655e309f7ad2617a920aad812cd0a0a555ed1bb837e0fe962a55b1aedf76"]
+    ],
+    "metricGraph": {
+      "hash": "dc799073df34b807f5ce03a565f5fc69ebe86489e4323f659eeed2182506181c",
+      "node": "v22.22.1",
+      "sources": [
+        [
+          "accuracy-metrics.mjs",
+          "9aa8a104719e9a8512fe064d0b87e78c354561313a3df41b53f3c4a66e0186d1"
+        ],
+        ["accuracy-policy.mjs", "847eefc4e0e172da8305cb662565a0e250213b61ce8bbd3a74cf338d7ed087f3"],
+        [
+          "accuracy-regions-planar.mjs",
+          "37545cfd59150132429ac9cd3becb0c24df4874e5e62f3b05060d0ffc8f7611b"
+        ],
+        [
+          "m21-planeswalker-regions.mjs",
+          "b2b58059c35a72023971d3ee05a3a40125041ce1ce4abf3c2f7dd9dcc67b1a70"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/edges.mjs",
+          "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/metrics.mjs",
+          "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/pixels-pure.mjs",
+          "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/scan-transform.mjs",
+          "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+        ]
+      ]
+    },
+    "normalization": "7c90a70f6d969238efd6b6897cfbefd83f7f792e546fb75962d09054d571eaa5"
+  },
+  "summary": {
+    "before100": 78.18136490038343,
+    "after100": 78.2936227141113,
+    "improved": 185,
+    "regressed": 112,
+    "unchanged": 0,
+    "coverage": 0.9277395068699427,
+    "nonfoilBefore100": 78.36715164002031,
+    "nonfoilAfter100": 78.4763994351263
+  },
+  "review": [
+    "All nine nonfoil walkers improve ability-text and mana region scores. The first regular-body transfer regressed all five foil-only deck controls, so that body transfer was rejected.",
+    "Deck mana retains the shared nine-card geometry/style transfer, with one broad-region regression. Deck paper and body typography are not marked calibrated.",
+    "Remaining crown/gold materials are exact pinned sources and selected asset URLs only; existing component donors retain their previous corrections.",
+    "Beleren2016 headings use its official same-advance n.alt at line end, before spaces and descenders. Commas and internal n in Legendary/Liliana retain regular n. All-final-forms forcing was rejected.",
+    "Broad title regions include cost symbols. Edge scores can shift with material/ink changes; color-delta objectives remain in their own native trial receipts.",
+    "Tall Teferi type-line fitting is still an outlier with the new font. Shared spacing/fit policy, foreground walker colors, basic-symbol rim/shadow, loyalty/footer checks and final normalization remain separate reviews."
+  ],
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/component-profile-adoption-native-review.json.gz",
+    "sha256": "f75e057dbcbab04171d2494365301aadd6e94f96567a7271012cefc93327e730",
+    "contentSha256": "05ed61d58db5b05dfb5e8607b8ab3c8ffaafd5a498b3ded4c3f17a16f7b41def"
+  }
+}

@@ -1,4 +1,8 @@
-import { modernOrdinaryPlates } from './modern-printing-profile.js';
+import {
+  modernOrdinaryPlates,
+  modernPrintingProfile,
+  modernWalkerProfile,
+} from './modern-printing-profile.js';
 import {
   hasPrintingStockCandidate,
   printingBlackPointMaterials,
@@ -7,7 +11,7 @@ import {
 import { FACE_RECTS, type RenderedCardInput } from './face-layout.js';
 import { profileAssets } from './assets.js';
 import { framePlate } from './frame-plates.js';
-import { resolveCardProfile } from './profile.js';
+import { resolveCardProfile, resolveFrameColors } from './profile.js';
 import {
   isRetro,
   retroFrameAsset,
@@ -64,7 +68,10 @@ export function calibratedDualFrameProfile(face: RenderedCardInput): DualFrameHs
     : profile.adjustment;
 }
 export function calibratedManaTarget(face: RenderedCardInput, symbol: string): Rgb | undefined {
-  if (!hasColorCalibration(face)) return undefined;
+  const measured = face.colorCalibration === 'set-hsb-v1' && face.calibration !== 'source';
+  if (!hasColorCalibration(face) && !(measured && modernWalkerProfile(face))) return undefined;
+  const modern = measured ? modernPrintingProfile(face)?.mana?.paperTargets[symbol] : undefined;
+  if (modern) return [modern[0] / 255, modern[1] / 255, modern[2] / 255];
   const reprint = earlyReprintManaTarget(face, symbol);
   if (reprint) return reprint;
   if (face.setCode?.toLowerCase() === 'leg' && !legendsFrame(face)) return undefined;
@@ -143,7 +150,32 @@ export function calibratedFrameMaterials(
       ...source,
       url: dual.overlay,
     }).materials;
-  return materials;
+  return { ...materials, ...modernComponentMaterials(face) };
+}
+
+/** Exact selected URLs only: unused material variants are not asset dependencies.
+ * Ordinary plates, lands, specialty layouts and donor profiles retain their fits. */
+function modernComponentMaterials(face: RenderedCardInput): Readonly<Record<string, FrameHsb>> {
+  const fit = modernPrintingProfile(face)?.componentMaterials;
+  if (!fit || face.colorCalibration !== 'set-hsb-v1' || face.calibration === 'source') return {};
+  const traits = resolveCardProfile(face);
+  if (
+    traits.land ||
+    modernWalkerProfile(face) ||
+    (!traits.legendary && resolveFrameColors(face).length < 2)
+  )
+    return {};
+  const assets = profileAssets(traits);
+  const urls = [
+    assets.frame,
+    assets.background,
+    assets.boxes,
+    ...(traits.legendary ? [assets.crown] : []),
+    assets.pt,
+  ];
+  return Object.fromEntries(
+    urls.filter((url) => Object.hasOwn(fit, url)).map((url) => [url, fit[url]!]),
+  );
 }
 
 /** Stock is measured separately; white stock and unknown sources stay unchanged. */

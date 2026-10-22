@@ -1,3 +1,8 @@
+import {
+  loadModernHeadingFont,
+  modernHeadingFamily,
+  shapeModernHeading,
+} from './modern-heading-font.js';
 import { loadModernFooterFont } from './modern-footer-font.js';
 import { framePlate } from './frame-plates.js';
 import { modernPrintingProfileKey } from './modern-printing-profile.js';
@@ -455,7 +460,9 @@ export async function composeCardTexture(
     }
     if (input.paintLayer !== 'artwork')
       await Promise.all([
-        (hooks?.loadFonts ?? loadCanvasFonts)().then(() => loadModernFooterFont(input.face)),
+        (hooks?.loadFonts ?? loadCanvasFonts)().then(() =>
+          Promise.all([loadModernFooterFont(input.face), loadModernHeadingFont(input.face)]),
+        ),
         nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),
         loadStandardTemplateFonts(input.face),
         faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),
@@ -835,7 +842,8 @@ export function paintAssembledFace(
   const adjustedMana = mana.length ? adjustedSymbolBounds(manaBounds, costAdjustment) : manaBounds;
   const titleSize =
     (kind === 'normal' && !panel ? FACE_TEXT.normalTitleFont : FACE_TEXT.titleFont) * textScale;
-  context.font = `bold ${titleSize}px "CardRenderer MTG Beleren", Georgia`;
+  const headingFamily = modernHeadingFamily(face) ?? 'CardRenderer MTG Beleren';
+  context.font = `bold ${titleSize}px "${headingFamily}", Georgia`;
   context.letterSpacing = `${FACE_TEXT.titleTracking}px`;
   context.save();
   if (kind === 'normal' && !panel) context.translate(...titleTranslation(face, 'modern'));
@@ -845,7 +853,8 @@ export function paintAssembledFace(
         1,
         Math.min(
           WALKER_GEOMETRY.titleWidth,
-          (titleWidth - 0.5) / context.measureText(face.name).width,
+          (titleWidth - 0.5) /
+            context.measureText(shapeModernHeading(face.name, headingFamily)).width,
         ),
       )
     : 1;
@@ -858,6 +867,7 @@ export function paintAssembledFace(
     titleSize,
     true,
     titleWidthScale,
+    headingFamily,
   );
   context.restore();
   context.letterSpacing = '0px';
@@ -942,7 +952,7 @@ export function paintAssembledFace(
   );
   // Preserve clearance on already crowded type lines; do not reduce their
   // font height merely to apply the shared width correction.
-  context.font = `${FACE_TEXT.typeFont * textScale}px "CardRenderer MTG Beleren", Georgia`;
+  context.font = `${FACE_TEXT.typeFont * textScale}px "${headingFamily}", Georgia`;
   paintFittedText(
     context,
     face.typeLine ?? '',
@@ -954,11 +964,12 @@ export function paintAssembledFace(
     kind === 'normal' && !panel
       ? NORMAL_FRAME_GEOMETRY.typeWidthScale
       : planeswalker &&
-          context.measureText(face.typeLine ?? '').width * WALKER_GEOMETRY.typeWidth <=
+          context.measureText(shapeModernHeading(face.typeLine ?? '', headingFamily)).width *
+            WALKER_GEOMETRY.typeWidth <=
             typeWidth * 0.97
         ? WALKER_GEOMETRY.typeWidth
         : 1,
-    'CardRenderer MTG Beleren',
+    headingFamily,
     0,
     face.textInk,
   );

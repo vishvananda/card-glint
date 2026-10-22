@@ -85,6 +85,19 @@ export function modernArtifactPinline(face: RenderedCardInput) {
   return { source, mask: root + '/pinline.png', correction };
 }
 
+/** Exact profile-owned planeswalkers, without speculative donor inheritance. */
+export function modernWalkerProfile(face: RenderedCardInput) {
+  return /\bPlaneswalker\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '')
+    ? modernPrintingProfile(face)?.planeswalkers
+    : undefined;
+}
+
+/** Booster/tall body fits are not transferred to unmeasured deck printings. */
+export function modernWalkerBodyProfile(face: RenderedCardInput) {
+  const profile = modernWalkerProfile(face);
+  return profile?.deckCollectorNumbers.includes(face.collectorNumber ?? '') ? undefined : profile;
+}
+
 /** Exact-set ordinary source selection. Crowns and specialty frames keep
  * their independently owned sources and geometry. */
 export function modernOrdinaryPlates(face: RenderedCardInput) {

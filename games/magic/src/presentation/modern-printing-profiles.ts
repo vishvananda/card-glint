@@ -1,3 +1,5 @@
+import { M21_COMPONENT_CALIBRATION } from './m21-component-calibration.js';
+import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { M21_LAND_PLATES, type ModernLandPlateProfile } from './m21-land-plates.js';
 import type { FrameHsb } from './frame-hsb.js';
 import { M21_ORDINARY_PLATES } from './m21-ordinary-plates.js';
@@ -16,8 +18,35 @@ export interface ModernBasicLandSymbol {
   readonly body: readonly [number, number, number];
 }
 
+export interface ModernWalkerTextAdjustment {
+  readonly size: number;
+  readonly dx: number;
+  readonly dy: number;
+  readonly width: number;
+  readonly height: number;
+  readonly leading: number;
+}
+
 export interface ModernPrintingProfile {
   readonly revision: number;
+  /** Intrinsic heading glyphs, independent of color calibration policy. */
+  readonly headingFont?: 'beleren-2016';
+  readonly mana?: {
+    readonly normal: ManaSymbolTransform;
+    readonly walker: ManaSymbolTransform;
+    readonly shadow: readonly [number, number];
+    readonly paperTargets: Readonly<Record<string, readonly [number, number, number]>>;
+  };
+  readonly componentMaterials?: Readonly<Record<string, FrameHsb>>;
+  readonly planeswalkers?: {
+    /** Deck printings need a separate body fit; retain their previous paper/text. */
+    readonly deckCollectorNumbers: readonly string[];
+    readonly paperColors: Readonly<Record<string, string>>;
+    readonly rules: {
+      readonly regular: ModernWalkerTextAdjustment;
+      readonly tall: ModernWalkerTextAdjustment;
+    };
+  };
   /** Exact-source ordinary monocolored spells and colorless artifacts only. */
   readonly ordinaryPlates?: Readonly<Record<string, FrameHsb>>;
   readonly landPlates?: ModernLandPlateProfile;
@@ -53,7 +82,9 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 5,
+    revision: 6,
+    headingFont: 'beleren-2016',
+    ...M21_COMPONENT_CALIBRATION,
     ordinaryPlates: M21_ORDINARY_PLATES,
     landPlates: M21_LAND_PLATES,
     rules: { leading: 0.975, paragraphGap: 0.4, capAtBaseSize: true },

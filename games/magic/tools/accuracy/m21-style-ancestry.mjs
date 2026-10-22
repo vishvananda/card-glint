@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { hash } from './common.mjs';
 
-const RECEIPT = 'e7066076c84fe8985bdb6868c659e9c47c4c79e869402b94868bae71f415db5f';
+const RECEIPT = '23cbf4e944bf65d5b99100975ae4b6e27ef0fdce115c7a7a9fe518eebfb440c5';
 let checked;
 /** Evidence for exact historical reconstruction, not current fit approval. */
 export async function m21StyleAncestry() {
@@ -11,6 +11,11 @@ export async function m21StyleAncestry() {
     const raw = await readFile('games/magic/fixtures/accuracy/m21/style-source-compatibility.json');
     assert.equal(hash(raw), RECEIPT, 'Changed M21 style compatibility receipt');
     const p = JSON.parse(raw);
+    assert.equal(
+      hash(await readFile(p.parent.file)),
+      p.parent.sha256,
+      'Changed M21 parent receipt',
+    );
     assert.deepEqual(p.changedSets, ['m21']);
     const summaryBytes = await readFile(p.evidence.file);
     assert.equal(hash(summaryBytes), p.evidence.sha256);
@@ -31,7 +36,11 @@ export async function m21StyleAncestry() {
       for (const digest of Object.values(row.before)) assert.match(digest, /^[a-f0-9]{64}$/);
     }
     assert.equal(
-      hash(await readFile('games/magic/tools/accuracy/m21-unaffected-native-review.mjs')),
+      hash(
+        await readFile(
+          summary.toolFile ?? 'games/magic/tools/accuracy/m21-unaffected-native-review.mjs',
+        ),
+      ),
       evidence.source.tool,
     );
     for (const [file, digest] of Object.entries(p.newModules))

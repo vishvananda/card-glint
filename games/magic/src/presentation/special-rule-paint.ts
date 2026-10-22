@@ -1,3 +1,4 @@
+import { modernWalkerBodyProfile } from './modern-printing-profile.js';
 import { WALKER_GEOMETRY, paintWalkerGeometry } from './planeswalker-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { rulesInkVisible } from './rules-visibility.js';
@@ -25,6 +26,11 @@ export function sagaTextbox(face: RenderedCardInput, boxes: string) {
     : null;
 }
 export function specialPaperColor(face: RenderedCardInput): string {
+  const measured =
+    face.colorCalibration === 'set-hsb-v1' && face.calibration !== 'source'
+      ? modernWalkerBodyProfile(face)?.paperColors[resolveCardProfile(face).boxes]
+      : undefined;
+  if (measured) return measured;
   const colors: Record<string, string> = {
     W: '#eee9d9f0',
     U: '#d3e4ecf0',

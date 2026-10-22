@@ -1,3 +1,4 @@
+import { shapeModernHeading } from './modern-heading-font.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -207,6 +208,7 @@ export function paintFittedText(
   widthScale = 1,
   family:
     | 'CardRenderer MTG Beleren'
+    | 'CardRenderer MTG Beleren 2016'
     | 'CardRenderer MTG Matrix'
     | 'CardRenderer MTG Goudy'
     | 'CardRenderer MTG MPlantin' = 'CardRenderer MTG Beleren',
@@ -215,6 +217,7 @@ export function paintFittedText(
   inkRole: 'type' | 'stats' = 'type',
 ) {
   if (!(width > 0)) throw Error('Magic title/type plate has no text space.');
+  text = shapeModernHeading(text, family);
   context.save();
   context.font = `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`;
   const measured = context.measureText(text).width;

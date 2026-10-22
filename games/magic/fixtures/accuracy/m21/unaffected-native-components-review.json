@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "status": "unaffected-native-source-audit",
+  "eligibleForPublication": false,
+  "scope": "Same generated local raster and browser fallback fonts. Native table/inspect face, printing and artwork layers; text measurement/draw calls and frame descriptors. Excludes intentional M21 changes. No cached scans or actual artwork/color-fit certification, asynchronous material preparation or GPU benchmark.",
+  "source": {
+    "fontAddition": "88c35b63eecde234bf8ea54201111b1c0daf4766f1ef9429e364674267f17620",
+    "base": "89b320d41ed41ddaaf92e5c72f6390a5dbc9448f",
+    "current": "62c37963dc352c4621ae60e9dbdfa66298da34dc",
+    "beforeRenderer": "34a8a05e2e5dae4786486eb5d3fbac6b21cfc1ff9d0b47a06135f84f19de7e4a",
+    "afterRenderer": "b814cfecd9ad2200af5e7dc012acf64160e997654aa9a129ae26bc455c036523",
+    "cases": "fd3441b272a6d78d4cceac643579da4d9dd52d5148724e9c8f1d49e356ac163c",
+    "tool": "e3260e36b43b90304866dccf477979df5cf2e5714b22198dbfff46082fb8483c"
+  },
+  "toolFile": "games/magic/tools/accuracy/m21-unaffected-component-review.mjs",
+  "summary": {
+    "cases": 250,
+    "tiers": ["table", "inspect"],
+    "layers": ["face", "printing", "artwork"],
+    "pixelPairsIdentical": 1500,
+    "textCallPairsIdentical": 1500,
+    "geometryPairsIdentical": 1500,
+    "externalAssetRequests": 0
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-components-review.json.gz",
+    "sha256": "2b187cc6e6bb14dfe673db5680bde1eba1b39517051b0e7277e0d4f04f98cb04",
+    "contentSha256": "a02aaf16e452a81c1a0346381688e575c6c7f2414735dc1af8dbd85ced537405"
+  },
+  "review": [
+    "R3 retains every previous font declaration byte and adds only optional M21 Gotham and Beleren2016 faces.",
+    "Exact published 0.6.11 versus current native pixels, draw/measurement calls and geometry agree on 250 unrelated historical and modern donor cases across 1500 pairs.",
+    "New mana, component colors, contextual headings and booster/tall walker paper/body fits are exact-M21 only. Five deck printings retain their prior body settings after the shared text fit regressed.",
+    "This synthetic collateral audit does not certify cached-scan normalization, changed M21 accuracy, colors, actual font loading or set completion; separate native cached-scan evidence is required."
+  ]
+}

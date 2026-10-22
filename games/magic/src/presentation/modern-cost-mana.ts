@@ -1,4 +1,8 @@
-import { modernOrdinaryPlates } from './modern-printing-profile.js';
+import {
+  modernOrdinaryPlates,
+  modernPrintingProfile,
+  modernWalkerProfile,
+} from './modern-printing-profile.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { isRetro } from './retro-frame.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
@@ -12,6 +16,7 @@ const MODERN = {
 /** The component frame owns this default, independently of the printing set.
  * Replacement plates and special layouts retain their own cost geometry. */
 export function usesModernCostMana(face: RenderedCardInput): boolean {
+  if (modernWalkerProfile(face) && (face.manaSymbols?.length ?? 0) > 0) return true;
   return (
     !isRetro(face) &&
     (face.frameAssetFamily === undefined || Boolean(modernOrdinaryPlates(face))) &&
@@ -23,7 +28,17 @@ export function usesModernCostMana(face: RenderedCardInput): boolean {
 }
 
 export function modernCostMana(face: RenderedCardInput) {
-  return usesModernCostMana(face) ? MODERN : undefined;
+  if (!usesModernCostMana(face)) return undefined;
+  const fit = modernPrintingProfile(face)?.mana;
+  return fit
+    ? {
+        ...MODERN,
+        shadow: fit.shadow,
+        ...(face.colorCalibration === 'set-hsb-v1' && face.calibration !== 'source'
+          ? { paper: fit.paperTargets.N ?? MODERN.paper }
+          : {}),
+      }
+    : MODERN;
 }
 
 export function modernCostNumeralAsset(face: RenderedCardInput, symbol: string): string | null {

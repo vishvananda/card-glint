@@ -3,7 +3,22 @@ import { createServer } from 'vite';
 import { modernOrdinaryBaselineStudy } from '../games/magic/tools/accuracy/modern-ordinary-baseline-study.mjs';
 const options = { configFile: false, server: { middlewareMode: true, hmr: false, ws: false } };
 const current = await createServer(options);
-const legacy = await createServer({ ...options, plugins: [modernOrdinaryBaselineStudy()] });
+const legacy = await createServer({
+  ...options,
+  plugins: [
+    modernOrdinaryBaselineStudy(),
+    {
+      name: 'prior-m21-component-materials',
+      enforce: 'pre',
+      transform(source, id) {
+        if (!id.endsWith('/presentation/calibration-profiles.ts')) return;
+        const needle = '  return { ...materials, ...modernComponentMaterials(face) };';
+        assert.equal(source.split(needle).length, 2);
+        return { code: source.replace(needle, '  return materials;'), map: null };
+      },
+    },
+  ],
+});
 try {
   for (const server of [current, legacy])
     await server.ssrLoadModule('/games/magic/src/data/eager.ts');

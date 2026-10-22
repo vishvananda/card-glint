@@ -60,9 +60,17 @@ export function modernManaStudy(parameters) {
   }
   if (parameters.paperTargets || parameters.shadow || parameters.walkerControls)
     assert.match(parameters.source.costSourceHash, /^[a-f0-9]{64}$/);
+
   const walker = parameters.walkerControls
     ? "(face.setCode?.toLowerCase() === 'm21' && !face.frameTemplate && !face.frameAssetFamily && face.frameStyle !== 'retro' && (!face.layout || face.layout === 'normal' || face.layout === 'planeswalker') && /\\bPlaneswalker\\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '') && (face.manaSymbols?.length ?? 0) > 0)"
     : 'false';
+  const normal =
+    "(face.setCode?.toLowerCase() === 'm21' && usesModernCostMana(face) && !/\\bPlaneswalker\\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '') && (face.manaSymbols?.length ?? 0) > 0)";
+  const patch = (source, expected, message, needle, replacement) => {
+    assert.equal(hash(source), expected, message);
+    assert.equal(source.split(needle).length, 2, message + '; review study hook');
+    return { code: source.replace(needle, replacement), map: null };
+  };
   return {
     name: 'm21-normal-mana-study',
     enforce: 'pre',
@@ -71,13 +79,7 @@ export function modernManaStudy(parameters) {
         id.endsWith('/presentation/modern-cost-mana.ts') &&
         (parameters.paperTargets || parameters.shadow || parameters.walkerControls)
       ) {
-        assert.equal(
-          hash(source),
-          parameters.source.costSourceHash,
-          'Changed cost material source',
-        );
-        const needle = '  return usesModernCostMana(face) ? MODERN : undefined;';
-        assert.equal(source.split(needle).length, 2);
+        const needle = 'export function modernCostMana(face: RenderedCardInput) {';
         const shadow = parameters.shadow
           ? ', shadow: ' + JSON.stringify(parameters.shadow) + ' as const'
           : '';
@@ -86,70 +88,67 @@ export function modernManaStudy(parameters) {
             JSON.stringify(parameters.paperTargets.N) +
             ' as const} : {})'
           : '';
-        return {
-          code: source.replace(
-            needle,
-            '  return (usesModernCostMana(face) || ' +
-              walker +
-              ") ? (face.setCode?.toLowerCase() === 'm21' && (face.manaSymbols?.length ?? 0) > 0 ? {...MODERN" +
-              shadow +
-              paper +
-              '} : MODERN) : undefined;',
-          ),
-          map: null,
-        };
+        return patch(
+          source,
+          parameters.source.costSourceHash,
+          'Changed cost material source',
+          needle,
+          needle +
+            '\n const base = modernCostManaStudyBase(face);\n return (' +
+            normal +
+            ' || ' +
+            walker +
+            ') ? {...(base ?? MODERN)' +
+            shadow +
+            paper +
+            '} : base;\n}\n' +
+            'function modernCostManaStudyBase(face: RenderedCardInput) {',
+        );
       }
       if (id.endsWith('/presentation/calibration-profiles.ts') && parameters.paperTargets) {
-        assert.equal(
-          hash(source),
-          parameters.source.paletteSourceHash,
-          'Changed mana palette source',
-        );
-        const needle = '  return MANA_PRINTING_TARGETS[key] ?? DUAL_MANA_TARGETS[key];';
-        assert.equal(source.split(needle).length, 2);
+        const needle =
+          'export function calibratedManaTarget(face: RenderedCardInput, symbol: string): Rgb | undefined {';
         const targets = Object.fromEntries(
           Object.entries(parameters.paperTargets).map(([k, rgb]) => [k, rgb.map((v) => v / 255)]),
         );
-        const early = parameters.walkerControls
-          ? `  if (${walker} && face.colorCalibration === 'set-hsb-v1' && face.calibration !== 'source') return (${JSON.stringify(targets)} as Readonly<Record<string,Rgb>>)[symbol];\n`
-          : '';
-        const input = source.replace(
-          '  if (!hasColorCalibration(face)) return undefined;',
-          early + '  if (!hasColorCalibration(face)) return undefined;',
+        return patch(
+          source,
+          parameters.source.paletteSourceHash,
+          'Changed mana palette source',
+          needle,
+          needle +
+            '\n const trial: Readonly<Record<string,Rgb>> = ' +
+            JSON.stringify(targets) +
+            ';\n' +
+            " if (face.setCode?.toLowerCase() === 'm21' && (hasColorCalibration(face) || " +
+            walker +
+            ") && face.colorCalibration === 'set-hsb-v1' && face.calibration !== 'source' && Object.hasOwn(trial,symbol)) return trial[symbol];\n" +
+            ' return calibratedManaTargetStudyBase(face,symbol);\n}\n' +
+            'function calibratedManaTargetStudyBase(face: RenderedCardInput, symbol: string): Rgb | undefined {',
         );
-        return {
-          code: input.replace(
-            needle,
-            '  const trial: Readonly<Record<string, Rgb>> = ' +
-              JSON.stringify(targets) +
-              ';\n' +
-              "  return face.setCode?.toLowerCase() === 'm21' && Object.hasOwn(trial, symbol) ? trial[symbol] : MANA_PRINTING_TARGETS[key] ?? DUAL_MANA_TARGETS[key];",
-          ),
-          map: null,
-        };
       }
       if (!id.endsWith('/presentation/printing-mana-adjustment.ts')) return;
-      assert.equal(
-        hash(source),
+      const needle = "  const set = face.setCode?.toLowerCase() ?? '';";
+      return patch(
+        source,
         parameters.source.profileSourceHash,
-        'Changed mana source; review study hook',
-      );
-      const needle =
-        '  if (usesModernCostMana(face)) return { ...MODERN_COMPONENT_MANA, ...MODERN_MANA_OVERRIDES[set] };';
-      assert.equal(source.split(needle).length, 2);
-      return {
-        code: source.replace(
-          needle,
+        'Changed mana source',
+        needle,
+        needle +
+          '\n' +
           (parameters.walkerControls
-            ? `  if (${walker}) return {...MODERN_COMPONENT_MANA, ...${JSON.stringify(parameters.walkerControls)}};\n`
+            ? '  if (' +
+              walker +
+              ') return {...MODERN_COMPONENT_MANA, ...' +
+              JSON.stringify(parameters.walkerControls) +
+              '};\n'
             : '') +
-            '  if (usesModernCostMana(face)) return { ...MODERN_COMPONENT_MANA, ...MODERN_MANA_OVERRIDES[set], ' +
-            "...(set === 'm21' && (face.manaSymbols?.length ?? 0) > 0 ? " +
-            JSON.stringify(controls) +
-            ' : {}) };',
-        ),
-        map: null,
-      };
+          '  if (' +
+          normal +
+          ') return {...MODERN_COMPONENT_MANA, ...' +
+          JSON.stringify(controls) +
+          '};',
+      );
     },
   };
 }

@@ -363,8 +363,8 @@ and etchings remain identical. The regional structure index changes slightly
 from73.86 to73.79/100; both objectives and all regressions are retained.
 
 The compressed receipt includes selected parameters, earlier rejected candidates,
-per-printing results and exact source bindings. These values await integration;
-this material trial does not certify typography or set completion.
+per-printing results and exact source bindings. The selected values are now integrated in profile revision6; see the combined
+native replay below. This material trial does not certify typography or set completion.
 
 ## Planeswalker paper is a separate component
 
@@ -394,3 +394,43 @@ Paper corrections are keyed by the exact background-mask source, applied by the
 procedural fill and excluded from bitmap color adjustment. Source-texture
 corrections use the CC source key and are applied by its own preparer once.
 The study never changes production defaults, caller inputs or source mask alpha.
+
+## Profile revision 6: adopted components and contextual headings
+
+[The combined native replay](component-profile-adoption-native-review.json) renders
+all 297 Original printings without faults. It adopts the normal and planeswalker
+mana size/placement, numeric and color glyph controls, paper colors and down-left
+shadow; the 28 selected crown/gold material fits; and 9 booster/tall planeswalker
+paper/body fits. The 5 planeswalker-deck bodies keep their previous settings:
+transferring the shared regular fit regressed every deck reference. Deck mana
+uses the separately reviewed shared transfer and retains one broad-region outlier.
+
+Whole-card diagnostic structure changes from 78.181 to 78.294/100, with unchanged
+regional coverage. There are 185 improvements and 112 regressions; the compressed
+receipt retains every card and region, rather than hiding these differences.
+All 9 nonfoil walkers improve ability-text and mana scores. Material-color
+objectives remain in their separate receipts and are not implied by this index.
+
+[The heading receipt](heading-contextual-native-review.json) covers 28 native
+printing pairs. Beleren2016 is loaded only when selected by this printing profile,
+for names and type lines. Its official same-width descending n is selected before
+spaces/descenders and at line end; the n before the comma in “Ugin,” remains
+regular, as do the internal forms in Legendary and Liliana. The font's unsorted
+descender lookup misses g in native shaping, so the painter explicitly selects
+the existing U+E009 glyph in these contexts. It never rewrites stored wording.
+Forcing the font's global final-form feature is rejected.
+
+The old and new heading renders differ only in the name/type bands; rules,
+credits, P/T and alpha remain unchanged. Tall Teferi type fitting is still an
+outlier. A shared tracking/dash-spacing policy is not adopted from the earlier
+trial, which improved the mean but regressed already good short type lines.
+
+[R3 collateral evidence](unaffected-native-components-review.json) contains 1500
+identical pixel/text/geometry pairs outside M21, including historical cards and
+modern donor profiles. The source-reconstruction receipt retains its immutable
+R2 parent and preserves Unlimited's 141 dependency guards. This is evidence for
+reuse of unrelated scores, not approval of changed M21 scores.
+
+M21 remains incomplete: foreground walker colors, remaining rules/heading
+outliers, basic-symbol rim/shadow, loyalty/footer checks and final normalization
+certification remain open. None of these diagnostics marks the set complete.
