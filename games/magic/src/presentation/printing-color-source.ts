@@ -45,6 +45,13 @@ export function printingColorSource(face: RenderedCardInput) {
       source: JSON.stringify([plate.frame, plate.rects]),
     };
   }
+  return componentPrintingColorSource(face);
+}
+
+/** Explicit component donor; a newer default plate must not change older hosts' sources. */
+export function componentPrintingColorSource(face: RenderedCardInput) {
+  const set = face.setCode?.toLowerCase(),
+    border = retroBorder(face);
   const profile = resolveCardProfile(face);
   // Procedural land-paper tint needs independent calibration of the blend.
   if (profile.land) return undefined;

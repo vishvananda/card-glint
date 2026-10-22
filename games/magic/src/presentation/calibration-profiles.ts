@@ -17,7 +17,7 @@ import {
 } from './retro-frame.js';
 import type { Rgb } from './hsb.js';
 import type { DualFrameHsb, FrameHsb } from './frame-hsb.js';
-import { printingColorSource } from './printing-color-source.js';
+import { componentPrintingColorSource, printingColorSource } from './printing-color-source.js';
 import { PRINTING_COLOR_PROFILES } from '../data/tables.js';
 import { ORDINARY_COLOR_PROFILES } from '../data/tables.js';
 import { LEGENDS_COLOR_PROFILES } from '../data/tables.js';
@@ -181,4 +181,29 @@ function printingStockSource(face: RenderedCardInput): PrintingStockSource | und
   return source?.family === 'components'
     ? { url: source.frame, geometry: JSON.stringify(source.rect) }
     : undefined;
+}
+
+/** Keep component-frame inheritance source-compatible when an exact set starts
+ * using a newer plate. This is a donor lookup, not a second rendering policy. */
+export function calibratedComponentDonorMaterials(
+  face: RenderedCardInput,
+): Readonly<Record<string, FrameHsb>> {
+  if (!hasColorCalibration(face)) return {};
+  const source = componentPrintingColorSource(face),
+    profile =
+      source &&
+      ((!resolveCardProfile(face).legendary ? ORDINARY_COLOR_PROFILES[source.key] : undefined) ??
+        PRINTING_COLOR_PROFILES[source.key] ??
+        LEGENDS_COLOR_PROFILES[source.key]);
+  const materials =
+    profile &&
+    profile.source === source?.source &&
+    (profile.legendary === undefined || profile.legendary === resolveCardProfile(face).legendary)
+      ? profile.materials
+      : {};
+  const assets = profileAssets(resolveCardProfile(face));
+  const stockSource = hasPrintingStockCandidate(face)
+    ? { url: assets.frame, geometry: JSON.stringify(FACE_RECTS.frame) }
+    : undefined;
+  return printingBlackPointMaterials(face, materials, stockSource).materials;
 }

@@ -56,7 +56,9 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
       colorCalibration: 'set-hsb-v1',
     };
     const available = new Set(sources.shared);
-    for (const [url, correction] of Object.entries(exact.calibratedFrameMaterials(donor))) {
+    for (const [url, correction] of Object.entries(
+      exact.calibratedComponentDonorMaterials(donor),
+    )) {
       // Source-local masks are safe only for the identical pinned bitmap.
       if (!available.has(url) || materials[url]) continue;
       materials[url] = correction;
