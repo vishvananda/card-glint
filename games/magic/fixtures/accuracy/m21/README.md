@@ -280,3 +280,39 @@ node games/magic/tools/accuracy/modern-native-mana-audit.mjs \
 The input must be the complete 297-card M21 Original snapshot and match both
 the native capture and current renderer. The tool verifies every used raster,
 checks tool/source stability and retains unsupported measurements explicitly.
+
+## Shared mana fit and native trial
+
+[The shared native trial](mana-shared-native-review.json) fits one diameter,
+center pitch and x/y offset over all250 normal-frame costs, including the
+individual observer's scan-boundary cases. It proves exact objective parity at
+1134 stored native/scan measurements. Both starting points reach the same
+solution; the own-render control stays near the current geometry.
+
+The native297-card replay changes exactly250 costs, with47 byte-identical
+control faces and all297 etchings unchanged. Alpha and every cost-external pixel
+are unchanged. Mean mana structure improves **89.56 to90.10/100**, while the
+whole-card diagnostic improves **78.18 to78.22/100**, with identical coverage.
+
+This remains **unadopted**. The broader mana metric improves124 and regresses126
+costs, while the perimeter objective improves227 and regresses23. Generic
+numerals, symbol ink/pigment and shadow fitting must follow. The title metric
+also responds to40 cost changes despite unchanged name pixels, exposing overlap
+between its window and cost ink.
+
+The cached search runs179 candidates in roughly1 second after about31 seconds
+of PNG/objective preparation. It does not run Chromium. A source-bound native
+trial then checks the chosen result through the actual renderer.
+
+```sh
+node --test games/magic/tools/accuracy/modern-mana-objective.test.mjs \
+  games/magic/tools/accuracy/modern-mana-study.test.mjs
+node games/magic/tools/accuracy/modern-mana-shared-fit.mjs \
+  INPUTS NATIVE SCORES AUDIT PROPOSAL OUTPUT
+node games/magic/tools/accuracy/modern-calibration-native.mjs \
+  INPUTS OUTPUT --mana-study PARAMETERS
+```
+
+The shared fit uses fixed reference pixels and source-only paper arcs. The
+trial parameters bind the renderer, input snapshot, source hook and fit receipt.
+Neither script modifies production profiles or input cards.

@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "shared-mana-native-trial-not-production-adoption",
+  "eligibleForPublication": false,
+  "scope": "Complete297 Original native replay; shared disc geometry changes250 normal-frame costs (527 symbols). Same frozen comparison poses, references and metric code. No per-card renderer adjustment or scan pose changes. Diagnostic structure and internal perimeter objective are distinct; M21 normalization and completion remain unapproved.",
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/mana-shared-native-review.json.gz",
+    "sha256": "619dd19a97a64bc00181844b1a9ee9f83ef97611f2752900e102b731f89dec37",
+    "contentSha256": "cf306049ff11712df4083210bb8c02d5b87b972bf05fe112dff07a979d4b8952"
+  },
+  "source": {
+    "recordedFromCommit": "34b0ea51d25cfab42999bcca614af84625c35d7e",
+    "privateArtifacts": {
+      "mana-shared-fit-final-0611/fit.json": "969bb87a893ec5d746c7a6684f353585876b5532e480fe1f8fcd426a4b0f41e2",
+      "mana-shared-native-parameters-0611.json": "2eea9e1ea8364dd7bbc5e1f63fd47e8769ceae4f8876ab689def4d884a40ea86",
+      "native-m21-mana-shared-0611/capture.json": "8f1a9e57fcfda38ab33acc68d19baf07a7f91bcf51a04f8ce50a59a62a25297c",
+      "native-m21-artifact-production-r2-0611/capture.json": "d8ebffa8c23027054ae8389657e8da7b5ef82e911b3c8ce5c64ebe9b291a5c77",
+      "mana-shared-native-scope-0611.json": "3bd18810d62fa8a48886ff49a9c38339f40f432bb7070b2c170799088172b95b",
+      "mana-shared-native-pair-0611.json": "128e96f4e4fcc9f77b58a2baef9e0d16de96fa60039e574d671739b70d0adae2",
+      "score-m21-mana-shared-v25-0611/scores.json": "a639e9b52e4d6c4d0e81a8b6d00cfc466fe49a2197646ae30afdd8abcd568b17",
+      "score-m21-artifact-production-v25-0611/scores.json": "5ada0d27ef9cdceba6b3f443ff219fc6db6236860e8a30042e0d1d72149259ce"
+    },
+    "fit": {
+      "inputsHash": "4f9deabbe6ec058b02aa21dcf360440ef85ebe84a031c22bdcf7df282792ae1d",
+      "nativeHash": "d8ebffa8c23027054ae8389657e8da7b5ef82e911b3c8ce5c64ebe9b291a5c77",
+      "scoresHash": "5ada0d27ef9cdceba6b3f443ff219fc6db6236860e8a30042e0d1d72149259ce",
+      "auditHash": "b6bfdb15f9eaf4e47f0508b1421962f493644d2b2f7758b46ef1581b75d771ae",
+      "proposalHash": "4201459f6123b6fbfa66819c6ab3b7cbdc66df2d7a0a18a8dee302e1a410318e",
+      "rendererHash": "41171c39150ee9f7943673bfcf0af5f770614ca3daa630a5fcc1b76272c5ffb4",
+      "tools": [
+        [
+          "modern-mana-shared-fit.mjs",
+          "057d301b6aeda0143233e5bd5fc8c71c9312efd7bd4904701be348712659ec7d"
+        ],
+        [
+          "modern-mana-objective.mjs",
+          "c159d340df887dd3729c89721c99109fbbdf41d3c2876bca482092e7e8b13c0c"
+        ],
+        [
+          "modern-mana-ring.mjs",
+          "0aa1807fd444b668c075fc1c136bebde3e34330ec9dfffa45e37c1f7fcc033c1"
+        ],
+        ["pixels-pure.mjs", "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"]
+      ]
+    }
+  },
+  "fit": {
+    "parity": {
+      "comparisons": 1134,
+      "maxAbsoluteQualityError": 0,
+      "tolerance": 1e-8
+    },
+    "normalCards": 250,
+    "symbols": 527,
+    "candidateCounts": {
+      "native": 57,
+      "scan": 122
+    },
+    "baseline": {
+      "scan": {
+        "diameter": 0,
+        "pitch": 0,
+        "dx": 0,
+        "dy": 0,
+        "quality": 9.304869474230944
+      },
+      "native": {
+        "diameter": 0,
+        "pitch": 0,
+        "dx": 0,
+        "dy": 0,
+        "quality": 18.507759844755057
+      }
+    },
+    "ownRenderControl": {
+      "diameter": 0.0625,
+      "pitch": -0.0625,
+      "dx": 0,
+      "dy": -0.0625,
+      "quality": 18.555036398956325
+    },
+    "selected": {
+      "diameter": -0.6875,
+      "pitch": -0.0625,
+      "dx": 0.1875,
+      "dy": -0.25,
+      "quality": 11.675360828972998
+    },
+    "rendererControls": {
+      "scaleX": 0.9806534292503055,
+      "scaleY": 0.9806534292503055,
+      "spacing": 0.6925319771602734,
+      "dx": -0.15624999999999944,
+      "dy": -0.25
+    },
+    "perimeterCardChanges": {
+      "cards": 250,
+      "discs": 527,
+      "improved": 227,
+      "regressed": 23,
+      "unchanged": 0
+    }
+  },
+  "native": {
+    "cards": 297,
+    "changedCosts": 250,
+    "unchangedFaces": 47,
+    "unchangedEtchings": 297,
+    "alphaChanges": 0,
+    "outsideCostChanges": 0,
+    "changedNamePixels": 0,
+    "wholeStructure": {
+      "count": 297,
+      "before100": 78.18136490038341,
+      "after100": 78.22369956207439,
+      "delta100": 0.04233466169088522,
+      "improved": 124,
+      "regressed": 126,
+      "unchanged": 47
+    },
+    "manaStructure": {
+      "count": 264,
+      "before100": 89.55891975277562,
+      "after100": 90.10331210380878,
+      "delta100": 0.5443923510331546,
+      "improved": 124,
+      "regressed": 126,
+      "unchanged": 14
+    },
+    "sameComponentEligibilityAndCoverage": true
+  },
+  "performance": {
+    "scope": "CPU PNG decode, cached objective construction and numerical shared search; no browser/GPU/rendering benchmark",
+    "prepareMs": 31270.521491,
+    "totalMs": 31963.543332999998,
+    "nativeCandidates": 57,
+    "scanCandidates": 122
+  },
+  "review": [
+    "The reusable objective exactly reproduces1134 stored native/scan quality values. Both shared scan-search seeds converge to the same1/16px physical solution. No individual scan fits enter the renderer profile.",
+    "The own-render optimum remains close to unchanged geometry: diameter+0.0625,pitch-0.0625,x0,y-0.0625 canonical pixels. It does not prefer the scan correction on its own input.",
+    "The complete trial changes only the250 intended costs. Every native face and etching PNG was rehashed;47 other faces and297 etchings match exactly, alpha is preserved and no cost-external pixel changes occur.",
+    "Perimeter quality improves227 costs and regresses23; the broader mana metric improves124 and regresses126, with14 planeswalker costs unchanged. Preserve that disagreement; it does not justify declaring the full mana component calibrated.",
+    "Enlarged aligned scan/current/candidate crops inspected for Alpine Watchdog,Capture Sphere,Alchemist\u2019s Gift,Battle-Rattle Shaman,Drowsing Tyrannodon and Chrome Replicator. Circle changes are modest; generic numeral proportions, symbol ink shape/pigment and shadows remain visible.",
+    "The title metric changes on40 cards despite zero changed name pixels: its window includes nearby cost ink. This regional cross-talk must be disclosed and tightened before interpreting those changes as title accuracy.",
+    "The47 unchanged score rows are reused only after exact native/input/reference identity checks. The existing score runner measures250 changed rows and revalidates every seeded row.",
+    "Cached field preparation takes about31 seconds for the complete observer replay;179 shared candidates then take roughly1 second on this machine. These are CPU pixel/search timings, not GPU or scene-rendering measurements."
+  ],
+  "next": [
+    "Fit generic numerals and W/U/B/R/G glyph size/offset independently inside fixed circles; confirm with own-render controls and native replay.",
+    "Measure per-color cost pigment and shadow shape, and retain all broad-metric regressions in review.",
+    "Check title-window isolation; keep the existing metric version fixed for before/after comparisons.",
+    "Complete remaining frame cohorts and final normalization before adopting a complete M21 profile and transferring defaults."
+  ]
+}
