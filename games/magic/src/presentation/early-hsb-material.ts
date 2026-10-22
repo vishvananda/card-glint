@@ -21,6 +21,7 @@ import {
   calibratedFrameMaterials,
   calibratedManaTarget,
 } from './printing-calibration-materials.js';
+import { modernBasicMaterialJobs } from './modern-basic-material.js';
 import { eighthBasicMaterialJobs } from './eighth-basic-material.js';
 import { securityStampMaterialJobs } from './security-stamp-material.js';
 import { futureManaMaterialJobs } from './future-mana-material.js';
@@ -84,7 +85,10 @@ export async function prepareEarlyHsb(
   }
   const originalWhiteGlyph =
     symbols.has('W') && historicalManaFamily(face, 'W') === 'historic-font';
-  const basicJobs = eighthBasicMaterialJobs(face, images),
+  const basicJobs = [
+      ...eighthBasicMaterialJobs(face, images),
+      ...modernBasicMaterialJobs(face, images),
+    ],
     stampJobs = securityStampMaterialJobs(face, images),
     futureJobs = futureManaMaterialJobs(face, images);
   if (

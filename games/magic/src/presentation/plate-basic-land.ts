@@ -1,4 +1,5 @@
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
+import { modernPrintingProfile } from './modern-printing-profile.js';
 import { rulesInkVisible } from './rules-visibility.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
@@ -51,7 +52,15 @@ export function plateBasicSymbol(face: RenderedCardInput): string | null {
   return `${manifest.RETRO_ROOT}/img/frames/m15/basics/${color.toLowerCase()}.png`;
 }
 
-/** Source padding is part of the glyph; retain one common size and center. */
+/** Exact-set fit is bound to the same padded source used during measurement.
+ * Custom rules, templates and older frame families retain their own behavior. */
+export function modernBasicLandProfile(face: RenderedCardInput) {
+  const color = basicLandColor(face);
+  const profile = color ? modernPrintingProfile(face)?.largeLandSymbols?.[color] : undefined;
+  return profile && profile.source === plateBasicSymbol(face) ? profile : undefined;
+}
+
+/** Source padding is retained; measured scale is around the original center. */
 export function paintBasicLandSymbol(
   c: CanvasContext,
   face: RenderedCardInput,
@@ -67,7 +76,14 @@ export function paintBasicLandSymbol(
   c.shadowOffsetX = -1.5;
   c.shadowOffsetY = 1.5;
   c.shadowBlur = 1.5;
-  c.drawImage(glyph, 166, 440, 156, 156);
+  const geometry = modernBasicLandProfile(face)?.geometry;
+  c.drawImage(
+    glyph,
+    geometry ? 244 + (166 - 244) * geometry.scaleX + geometry.dx : 166,
+    geometry ? 518 + (440 - 518) * geometry.scaleY + geometry.dy : 440,
+    geometry ? 156 * geometry.scaleX : 156,
+    geometry ? 156 * geometry.scaleY : 156,
+  );
   c.restore();
   return true;
 }
