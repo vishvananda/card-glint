@@ -1,3 +1,4 @@
+import { modernLandLayerStudy } from './modern-land-layer-study.mjs';
 import { modernOrdinaryBaselineStudy } from './modern-ordinary-baseline-study.mjs';
 // Source-bound Original baseline. Registration and scoring are separate steps.
 import assert from 'node:assert/strict';
@@ -12,6 +13,11 @@ const [inputFile, outputDirectory, ...options] = process.argv.slice(2);
 const allowed = ['--retain-modern-controls', '--retain-component-rules'];
 const study = allowed.find((flag) => options.includes(flag));
 const componentBaseline = options.includes('--component-source-baseline');
+const landLayers = options.includes('--land-layer-study');
+assert(
+  !(landLayers && (study || componentBaseline)),
+  'Land layers require their own retained-layout study',
+);
 assert(
   !(componentBaseline && study),
   'Do not combine a source baseline with a retained-layout trial',
@@ -23,6 +29,7 @@ assert(
   'A component-source baseline cannot recolor absent plates',
 );
 const expectedOptions = [
+  ...(landLayers ? ['--land-layer-study'] : []),
   ...(componentBaseline ? ['--component-source-baseline'] : []),
   ...(study ? [study] : []),
   ...(materialFile ? ['--materials', materialFile] : []),
@@ -34,7 +41,7 @@ assert(
 );
 assert(
   outputDirectory,
-  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline]',
+  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline] [--land-layer-study]',
 );
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
@@ -44,6 +51,18 @@ await mkdir(out, { recursive: true });
 const materialBytes = materialFile ? await readFile(materialFile) : null;
 const materials = materialBytes ? JSON.parse(materialBytes) : null;
 const materialIds = new Set(materials?.ids ?? []);
+if (landLayers) {
+  assert(materials && inputs.set === 'm21');
+  assert(
+    inputs.entries.every(
+      (e) =>
+        e.face.frameAssetFamily === 'm15-accurate' &&
+        (e.face.canonicalTypeLine ?? e.face.typeLine ?? '').includes('Land'),
+    ),
+  );
+  assert.equal(materialIds.size, inputs.entries.length);
+}
+
 if (materials) {
   assert.equal(materials.schema, 1);
   assert.equal(materialIds.size, materials.ids.length, 'Duplicate material study IDs');
@@ -54,6 +73,19 @@ if (materials) {
     'Unknown material study printing',
   );
   const knownUrls = new Set(inputs.components.map((a) => a.url));
+  assert(
+    (materials.additionalAssets ?? []).every((url) => knownUrls.has(url)),
+    'Unbound auxiliary asset',
+  );
+  if (materials.landHeaders) {
+    assert(landLayers && materials.dualHeaderMaterial);
+    assert.deepEqual(Object.keys(materials.landHeaders).sort(), ['source', 'title', 'type']);
+    assert(
+      Object.values(materials.landHeaders).every((url) => knownUrls.has(url)),
+      'Unbound header source',
+    );
+  }
+
   assert(Object.keys(materials.materials).length > 0);
   assert(
     Object.keys(materials.materials).every((url) => knownUrls.has(url)),
@@ -62,6 +94,7 @@ if (materials) {
 }
 const session = await openBrowser(inputs, {
   plugins: [
+    ...(landLayers ? [modernLandLayerStudy()] : []),
     ...(componentBaseline ? [modernOrdinaryBaselineStudy()] : []),
     ...(study ? [modernPlateControlsStudy({ rules: study === '--retain-component-rules' })] : []),
     ...(materials ? [modernMaterialStudy()] : []),
@@ -73,6 +106,16 @@ try {
     await import('/games/magic/src/data/eager-wording.ts');
   });
   const source = {
+    ...(landLayers
+      ? {
+          landLayerStudy: {
+            toolHash: hash(
+              await readFile(new URL('./modern-land-layer-study.mjs', import.meta.url)),
+            ),
+          },
+        }
+      : {}),
+
     ...(componentBaseline
       ? {
           componentSourceBaseline: {
@@ -161,7 +204,15 @@ try {
     };
     try {
       const rendered = await session.page.evaluate(
-        async ({ face, id, materialValues }) => {
+        async ({
+          face,
+          id,
+          materialValues,
+          extraAssets,
+          landLayers,
+          landHeaders,
+          dualHeaderMaterial,
+        }) => {
           const { composeCardTexture } = await import(
             '/games/magic/src/presentation/canvas-face.ts'
           );
@@ -169,14 +220,25 @@ try {
             '/games/magic/src/presentation/canvas-assets.ts'
           );
           const { loadAccuracyImages } = await import('/games/magic/tools/accuracy/abu-assets.mjs');
-          const lease = await loadAccuracyImages(
-            canvasAssetUrls(face),
-            new AbortController().signal,
-            face.illustration,
-          );
           const result = {};
-          globalThis.__m21MaterialTrial = materialValues;
+          let lease;
+          globalThis.__m21LandLayers = landLayers;
+          globalThis.__m21LandHeaders = null;
+          delete globalThis.__m21LandHeaderMask;
           try {
+            if (landLayers && landHeaders) {
+              const { framePlate } = await import('/games/magic/src/presentation/frame-plates.ts');
+              if (framePlate(face)?.rightFrame) {
+                globalThis.__m21LandHeaders = landHeaders;
+                materialValues = { ...materialValues, [landHeaders.source]: dualHeaderMaterial };
+              }
+            }
+            lease = await loadAccuracyImages(
+              [...canvasAssetUrls(face), ...extraAssets],
+              new AbortController().signal,
+              face.illustration,
+            );
+            globalThis.__m21MaterialTrial = materialValues;
             for (const layer of ['face', 'etching']) {
               const image = await composeCardTexture(
                 {
@@ -195,13 +257,22 @@ try {
                   width: image.width,
                   height: image.height,
                 };
+                if (layer === 'face' && globalThis.__m21LandHeaderMask)
+                  result.headerMask = {
+                    png: globalThis.__m21LandHeaderMask,
+                    width: image.width,
+                    height: image.height,
+                  };
               } finally {
                 image.width = image.height = 0;
               }
             }
           } finally {
-            lease.dispose();
+            lease?.dispose();
             delete globalThis.__m21MaterialTrial;
+            delete globalThis.__m21LandLayers;
+            delete globalThis.__m21LandHeaders;
+            delete globalThis.__m21LandHeaderMask;
           }
           return result;
         },
@@ -209,9 +280,22 @@ try {
           face: e.face,
           id: e.id,
           materialValues: materialIds.has(e.id) ? materials.materials : {},
+          extraAssets: materials?.additionalAssets ?? [],
+          landLayers,
+          landHeaders: materials?.landHeaders ?? null,
+          dualHeaderMaterial: materials?.dualHeaderMaterial ?? null,
         },
       );
       for (const [layer, value] of Object.entries(rendered)) {
+        if (layer === 'headerMask') {
+          const png = Buffer.from(value.png, 'base64'),
+            file = e.id + '-header-mask.png';
+          await writeFile(path.join(out, file), png);
+          row.aux = {
+            headerMask: { file, sha256: hash(png), width: value.width, height: value.height },
+          };
+          continue;
+        }
         assert.equal(value.width, 732);
         assert.equal(value.height, 1020);
         const png = Buffer.from(value.png, 'base64'),
