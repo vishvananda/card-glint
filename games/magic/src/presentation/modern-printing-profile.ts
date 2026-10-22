@@ -1,3 +1,4 @@
+import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 import { MODERN_PRINTING_PROFILES } from '../data/tables.js';
 
@@ -42,8 +43,12 @@ export function modernOrdinaryPlates(face: RenderedCardInput) {
   const plates = modernPrintingProfile(face)?.ordinaryPlates;
   const type = face.canonicalTypeLine ?? face.typeLine ?? '';
   const colors = face.frameColors ?? face.colors ?? [];
+  const artifact = face.artifact ?? /\bArtifact\b/.test(type);
+  const sourceColor = artifact ? 'a' : colors[0]?.toLowerCase();
+  const source = `${manifest.CONJURER_ROOT}/img/frames/m15/new/${sourceColor}.png`;
   if (
     !plates ||
+    !Object.hasOwn(plates, source) ||
     (face.layout && face.layout !== 'normal') ||
     face.legendary ||
     face.land ||
@@ -51,7 +56,7 @@ export function modernOrdinaryPlates(face: RenderedCardInput) {
     /\b(Legendary|Land|Planeswalker|Saga|Class|Battle|Vehicle)\b/.test(type) ||
     /^Level up\b/m.test(face.rulesText ?? '') ||
     colors.length > 1 ||
-    ((face.artifact ?? /\bArtifact\b/.test(type)) ? colors.length > 0 : colors.length !== 1)
+    (artifact ? colors.length > 0 : colors.length !== 1)
   )
     return undefined;
   return plates;

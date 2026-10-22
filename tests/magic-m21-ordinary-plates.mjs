@@ -141,6 +141,39 @@ assert.equal(
 assert(disabled.code.endsWith('return undefined; }\n'));
 assert.throws(() => plugin.transform(source + '// Changed helper\n', '/' + file));
 assert.equal(plugin.transform(source, '/other.ts'), undefined);
+// A global asset revision must not silently reuse a calibrated old plate.
+const stale = await createServer({
+  configFile: false,
+  server: { middlewareMode: true, hmr: false, ws: false },
+  plugins: [
+    {
+      name: 'stale-frame-root-test',
+      enforce: 'pre',
+      transform(source, id) {
+        if (!id.endsWith('/games/magic/assets.json')) return;
+        return {
+          code: source.replaceAll(
+            '33f2547137fe366b40e9e8dba4eb591af190fddf',
+            '0000000000000000000000000000000000000000',
+          ),
+          map: null,
+        };
+      },
+    },
+  ],
+});
+try {
+  await stale.ssrLoadModule('/games/magic/src/data/eager.ts');
+  const { modernOrdinaryPlates } = await stale.ssrLoadModule(
+    '/games/magic/src/presentation/modern-printing-profile.ts',
+  );
+  const { framePlate } = await stale.ssrLoadModule('/games/magic/src/presentation/frame-plates.ts');
+  const face = { name: 'Stale asset', setCode: 'm21', typeLine: 'Creature', colors: ['W'] };
+  assert.equal(modernOrdinaryPlates(face), undefined);
+  assert.equal(framePlate(face), null);
+} finally {
+  await stale.close();
+}
 console.log(
   'M21 ordinary plate source, shared materials, retained controls, source mode and excluded families passed.',
 );
