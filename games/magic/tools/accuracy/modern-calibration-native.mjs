@@ -1,3 +1,4 @@
+import { modernColoredArtifactStudy } from './modern-colored-artifact-study.mjs';
 import { modernLandLayerStudy } from './modern-land-layer-study.mjs';
 import { modernOrdinaryBaselineStudy } from './modern-ordinary-baseline-study.mjs';
 // Source-bound Original baseline. Registration and scoring are separate steps.
@@ -14,6 +15,15 @@ const allowed = ['--retain-modern-controls', '--retain-component-rules'];
 const study = allowed.find((flag) => options.includes(flag));
 const componentBaseline = options.includes('--component-source-baseline');
 const landLayers = options.includes('--land-layer-study');
+const artifactPinlines = options.includes('--colored-artifact-pinlines-study');
+const coloredArtifact = options.includes('--colored-artifact-study') || artifactPinlines;
+assert(
+  !(
+    coloredArtifact &&
+    (landLayers || study || componentBaseline || options.includes('--materials'))
+  ),
+  'Colored-artifact source probe is isolated',
+);
 assert(
   !(landLayers && (study || componentBaseline)),
   'Land layers require their own retained-layout study',
@@ -29,6 +39,9 @@ assert(
   'A component-source baseline cannot recolor absent plates',
 );
 const expectedOptions = [
+  ...(coloredArtifact
+    ? [artifactPinlines ? '--colored-artifact-pinlines-study' : '--colored-artifact-study']
+    : []),
   ...(landLayers ? ['--land-layer-study'] : []),
   ...(componentBaseline ? ['--component-source-baseline'] : []),
   ...(study ? [study] : []),
@@ -41,11 +54,24 @@ assert(
 );
 assert(
   outputDirectory,
-  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline] [--land-layer-study]',
+  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline] [--land-layer-study] [--colored-artifact-study]',
 );
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
 assert(inputs.entries.length && inputs.entries.every((e) => e.face.wordingMode === 'original'));
+if (coloredArtifact)
+  assert(
+    inputs.set === 'm21' &&
+      inputs.entries.length === 3 &&
+      inputs.entries.every(
+        (e) =>
+          e.face.artifact &&
+          e.face.colors?.length === 1 &&
+          !e.face.legendary &&
+          !e.face.frameAssetFamily,
+      ),
+    'Use the complete three-card ordinary colored-artifact cohort',
+  );
 const out = path.resolve(outputDirectory);
 await mkdir(out, { recursive: true });
 const materialBytes = materialFile ? await readFile(materialFile) : null;
@@ -102,6 +128,7 @@ if (materials) {
 }
 const session = await openBrowser(inputs, {
   plugins: [
+    ...(coloredArtifact ? [modernColoredArtifactStudy({ pinlines: artifactPinlines })] : []),
     ...(landLayers ? [modernLandLayerStudy()] : []),
     ...(componentBaseline ? [modernOrdinaryBaselineStudy()] : []),
     ...(study ? [modernPlateControlsStudy({ rules: study === '--retain-component-rules' })] : []),
@@ -114,6 +141,16 @@ try {
     await import('/games/magic/src/data/eager-wording.ts');
   });
   const source = {
+    ...(coloredArtifact
+      ? {
+          coloredArtifactStudy: {
+            pinlines: artifactPinlines,
+            toolHash: hash(
+              await readFile(new URL('./modern-colored-artifact-study.mjs', import.meta.url)),
+            ),
+          },
+        }
+      : {}),
     ...(landLayers
       ? {
           landLayerStudy: {

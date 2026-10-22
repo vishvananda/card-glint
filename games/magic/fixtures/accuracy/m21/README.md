@@ -216,3 +216,24 @@ plates tints those nonbasic headers incorrectly. Do not average the two
 header populations into one per-color fit or promote the raw land trial.
 A neutral source panel is needed for the nonbasic headers; paper gradients
 and colored rails remain independent.
+
+## Current land and colored-artifact follow-up
+
+[Land production evidence](land-source-production-review.json) now adopts the
+shared common texture and neutral nonbasic headers on this branch. The 33 land
+scores improve **76.26 to 80.59/100**; the whole staged set reaches
+**78.11/100**. The other 264 faces and all 297 etchings remain identical.
+These are diagnostic scores, not a completed-set certification.
+
+[Colored-artifact evidence](colored-artifact-pinline-review.json) covers the
+complete three-card ordinary cohort. A calibrated artifact plate plus the
+authored colored pinlines improves **62.40 to 69.26/100**, with all three cards
+improving and identical regional eligibility, alpha and etching output.
+This trial is not yet a production default. A plain artifact plate is rejected:
+it removes a scorable frame region on Witch's Cauldron.
+
+Historical evidence reuse is separate from M21 fit approval. The exact scoped
+source compatibility receipt preserves unrelated native results; Unlimited's
+current-applicability wrapper additionally checks its original dependency
+guards and the exact certified profile in both eager and per-set delivery.
+An unknown shared-painter edit or changed Unlimited profile still rejects reuse.
