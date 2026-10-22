@@ -217,6 +217,98 @@ settings and SDK revision; each result remains usable after resource disposal.
 Upload the shared coating once per host context. Context restoration regenerates
 the resource owner's coating lazily. Dispose the owner when its scene ends.
 
+### GPU preparation in a host context
+
+When the source already resides on the GPU, use `FinishTextures` from
+`card-glint/finish`. It runs the native preparation passes in the supplied
+WebGL2 context, without creating another context, reading pixels back to the CPU,
+or uploading source bytes again. The existing `FinishResources` byte API remains
+available for renderers that cannot share their context.
+
+```ts
+import { FinishTextures } from 'card-glint/finish';
+
+const finishes = new FinishTextures(gl);
+const printing = finishes.printDots(
+  { texture: sourceTexture, width, height },
+  {}, // native print defaults
+  artWindows, // optional normalized top-left rectangles
+);
+const coating = finishes.cardstock();
+// Bind printing.texture as the face; disable procedural print dots.
+// Bind coating.texture as the shared linear cardstockMap.
+// Tilt now samples these maps without regenerating them.
+
+// On printing-cache eviction:
+gl.deleteTexture(printing.texture);
+// On scene teardown (also releases the borrowed coating map):
+finishes.dispose();
+```
+
+The exported `FinishTextureSource` describes an allocated `TEXTURE_2D` with
+bottom-left UVs, straight-alpha sRGB color, and level-zero storage matching its
+`width` and `height`. Use `SRGB8_ALPHA8`, base level zero and a complete source;
+this helper does not convert linear or premultiplied sources, resize them, or
+infer their storage dimensions. Source texture parameters remain unchanged; a
+private linear/clamped sampler supplies the native preparation filtering.
+Dimensions, profiles and artwork windows have the same limits as the byte API.
+Foreign/deleted textures and invalid descriptors are rejected before allocation.
+
+For an allocated `TEXTURE_2D_ARRAY`, add `layer`:
+
+```ts
+const printing = finishes.printDots(
+  { texture: facePage, width: pageWidth, height: pageHeight, layer: faceLayer },
+  profile,
+  artWindows,
+);
+```
+
+Each layer must contain the full face at those exact dimensions, without atlas
+padding. Array sources use one temporary GPU-only copy into a 2D source, then
+the same native pass. Every result is a `FinishTexture` describing a complete
+`TEXTURE_2D` with all mip levels, clamped edges, trilinear minification and linear
+magnification. Printing results use `SRGB8_ALPHA8` and retain straight alpha.
+They are **caller-owned**: cache by immutable source revision (including array
+layer), dimensions, profile, artwork windows and SDK revision, then explicitly
+delete on eviction. Calls do not deduplicate or retain printing textures.
+Disposing the helper leaves caller-owned printing textures and source textures
+alive. A host can copy a printing result into its own compatible sRGB array layer
+with a framebuffer and `copyTexSubImage3D`, then generate the page's mipmaps; no
+CPU conversion is needed.
+
+`cardstock()` returns the same **borrowed** `FinishTexture` on repeated calls.
+Its linear `RGBA8` channels contain packed slopes, including alpha, matching
+`FinishResources.cardstock()` byte for byte. Do not delete, modify or render
+into this shared map. The helper releases it on disposal. Coating amount stays
+a material input; changing it does not prepare another map.
+
+Preparation restores the host bindings and draw state it touches on both success
+and failure, including separate read/draw framebuffers, program, VAO, active
+texture unit and unit-zero texture/sampler, pixel-unpack buffer, viewport,
+color mask and capability enables. It does not consume the host's GL error
+queue. Run outside occlusion queries and pause transform feedback first; those
+active operations are rejected rather than disturbed. Unbind a current program
+marked for deletion before preparation: switching away would destroy it, making
+state restoration impossible, so this state is also rejected. Frameworks that cache GL
+state can keep their cache after these calls. Disposal invalidates owned
+resources, so stop sampling the borrowed coating before disposing.
+
+Create one helper per context lifetime and prepare outside animation. Shader
+compilation is lazy on first use; subsequent calls reuse programs and scratch
+objects. Printing is one GPU render pass plus mip generation, with the extra
+GPU copy for array sources. The helper has no unbounded printing cache. The
+shared coating costs approximately 4 MB including mipmaps. Synchronous GL state
+queries happen only during preparation, never during tilt. CPU submission time
+is not GPU completion time; use a GPU timer query when measuring the pass.
+
+After context loss, discard all cached GPU handles, dispose this helper and
+create a fresh helper after restoration. The old helper remains invalid even
+when the context is restored. The host owns context recovery and re-uploading
+its immutable sources; this helper never calls `preventDefault` or restores or
+destroys the host's context. `npm run test:finish-textures` covers native pixel
+and mip parity, array layers, GL state, ownership, failure cleanup and recovery.
+
 ### Selective finish coverage
 
 `documentCoverage(document, rasterHost, signal)` uses the renderer's layer order,

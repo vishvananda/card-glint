@@ -7,6 +7,8 @@ export { CARDSTOCK_GLSL } from './gpu/cardstock.js';
 export { PRINT_DOTS_GLSL } from './gpu/print-dots.js';
 export type { FinishMap } from './finish-printing.js';
 export type { CoverageMap } from './canvas-mask.js';
+export { FinishTextures } from './finish-textures.js';
+export type { FinishTextureSource, FinishTexture } from './finish-textures.js';
 export { FinishResources } from './finish-material.js';
 export { SurfaceMotion } from './surface-motion.js';
 export { surfaceSeed } from './deformation.js';

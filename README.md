@@ -325,6 +325,8 @@ keep the per-instance procedural path. The cache is released on disposal and
 rebuilt after context loss. There are no per-frame CPU readbacks or texture uploads.
 
 Host-owned renderers can reuse the same print-dot preparation, cardstock relief
-map and selective finish coverage through `card-glint/finish`. See the
+map and selective finish coverage through `card-glint/finish`. `FinishTextures(gl)`
+prepares GPU textures directly in a host-owned WebGL2 context, including sources
+in texture-array layers, without CPU readback or a second context. See the
 [host material contracts](docs/host-integration.md#printing-and-coating-in-host-materials)
 for texture encoding, shader inputs, caching and ownership.

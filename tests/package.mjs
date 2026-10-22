@@ -65,9 +65,9 @@ try {
     assert.equal(normalLightingVersion,1);
     assert.equal(typeof createDisplayRaster,'function');
     assert.equal(printSamplingVersion,1);
-    import { FinishResources, SURFACE_GLSL, WORN_GLSL, SurfaceMotion, surfaceSeed } from 'card-glint/finish';
+    import { FinishResources, FinishTextures, SURFACE_GLSL, WORN_GLSL, SurfaceMotion, surfaceSeed } from 'card-glint/finish';
     import { canvasFontAssets, canvasAssetUrls, faceManaAssets, setAssetFetcher } from 'card-glint/magic/presentation';
-    for(const fn of [FinishResources, SurfaceMotion, surfaceSeed, canvasAssetUrls, faceManaAssets, setAssetFetcher]) assert.equal(typeof fn,'function');
+    for(const fn of [FinishResources, FinishTextures, SurfaceMotion, surfaceSeed, canvasAssetUrls, faceManaAssets, setAssetFetcher]) assert.equal(typeof fn,'function');
     assert.ok(SURFACE_GLSL.length>0 && WORN_GLSL.length>0);
     assert.ok(canvasFontAssets.length>0 && canvasFontAssets.every(font=>font.family && font.url));
     import { artworkFoilMask, resolvePrintingWording, resolvePrintingArtist, resolvePrintingPreset, resolveScryfallPrinting, fromScryfallCard, fromMtgjsonCard, artworkGeometry, resolveArtPlacement, printingStyles, resolvePrintingStyle, composePrintingSelection, validatePrintingStyle, resolvePrintingCalibration, printingCalibrationOptions, printingCalibrationApiVersion } from 'card-glint/magic';
@@ -115,10 +115,16 @@ export const titleOnlyProfile: SetTitleCalibration = {
 import { magic, opticalDocument, resolvePrintingWording, resolvePrintingArtist, type ResolvedPrintingArtist, withCardWording, resolvePrintingPreset, printingPresets, printingStyles, resolvePrintingStyle, type PrintingStyle, type PrintingSelection, fromScryfallCard, fromMtgjsonCard, type CardImportOptions, type MagicCard, type PrintingText } from 'card-glint/magic';
 import 'card-glint/magic/fonts.css';
 import { faceArtBounds, composeCardTexture, type CardTextureInput } from 'card-glint/magic/presentation';
-import { foilShader, FinishResources, PRINT_DOTS_GLSL, CARDSTOCK_GLSL } from 'card-glint/finish';
-import type { FinishMap } from 'card-glint/finish';
+import { foilShader, FinishResources, FinishTextures, PRINT_DOTS_GLSL, CARDSTOCK_GLSL } from 'card-glint/finish';
+import type { FinishMap, FinishTexture, FinishTextureSource } from 'card-glint/finish';
 import { createPixelKernels } from 'card-glint/kernels';
 export { faceArtBounds, composeCardTexture, foilShader, FinishResources, PRINT_DOTS_GLSL, CARDSTOCK_GLSL, createPixelKernels };
+export function prepareFinishTexture(gl: WebGL2RenderingContext, source: FinishTextureSource): FinishTexture {
+  const resources = new FinishTextures(gl);
+  const printing = resources.printDots(source, {});
+  resources.dispose();
+  return printing;
+}
 export function uploadFinishMap(gl: WebGL2RenderingContext, map: FinishMap, srgb: boolean) {
   gl.texImage2D(gl.TEXTURE_2D, 0, srgb ? gl.SRGB8_ALPHA8 : gl.RGBA8, map.width, map.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, map.data);
 }
