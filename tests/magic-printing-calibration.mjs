@@ -11,6 +11,7 @@ try {
   const { resolvePrintingStyle, printingStyles, printingStyleOptions, composePrintingSelection } =
     await load('printing-style');
   const exact = await load('calibration-profiles');
+  const { modernOrdinaryPlates } = await load('modern-printing-profile');
   const material = await load('printing-calibration-materials');
   const { cardTextureKey } = await load('canvas-face');
   const { canvasAssetUrls } = await load('canvas-assets');
@@ -24,6 +25,7 @@ try {
     colorCalibration: 'set-hsb-v1',
   };
   const original = structuredClone(face);
+  let plateStockCases = 0;
   for (const setCode of [
     'LEA',
     'LEB',
@@ -48,11 +50,22 @@ try {
         exact.calibratedFrameMaterials(f),
         'Omitted policy preserves measured materials',
       );
-      assert.equal(material.calibratedPrintingStock(f), exact.calibratedPrintingStock(f));
+      const plates = modernOrdinaryPlates(f);
+      if (plates) {
+        // Full M21 plates have a measured surround even when the legacy
+        // single-component stock descriptor has no matching source.
+        assert.equal(setCode, 'M21');
+        assert(Object.keys(plates).every((url) => url.includes('/m15/new/')));
+        assert.equal(material.calibratedPrintingStock(f), '#16130e');
+        plateStockCases++;
+      } else {
+        assert.equal(material.calibratedPrintingStock(f), exact.calibratedPrintingStock(f));
+      }
       const auto = material.calibratedFrameMaterials({ ...f, calibration: 'auto' });
       for (const [url, correction] of Object.entries(exact.calibratedFrameMaterials(f)))
         assert.deepEqual(auto[url], correction, 'Auto preserves each exact correction');
     }
+  assert.equal(plateStockCases, 5, 'All five M21 ordinary plate colors checked');
   assert.deepEqual(face, original);
   const report = api.resolvePrintingCalibration({ ...face, calibration: 'auto' });
   assert.equal(report.components.border.color, '#16130e');
