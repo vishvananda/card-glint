@@ -1,3 +1,4 @@
+import { modernManaStudy } from './modern-mana-study.mjs';
 import { modernColoredArtifactStudy } from './modern-colored-artifact-study.mjs';
 import { modernLandLayerStudy } from './modern-land-layer-study.mjs';
 import { modernOrdinaryBaselineStudy } from './modern-ordinary-baseline-study.mjs';
@@ -32,6 +33,15 @@ assert(
   !(componentBaseline && study),
   'Do not combine a source baseline with a retained-layout trial',
 );
+const manaIndex = options.indexOf('--mana-study');
+const manaFile = manaIndex < 0 ? undefined : options[manaIndex + 1];
+assert(
+  !(
+    manaFile &&
+    (study || componentBaseline || landLayers || coloredArtifact || options.includes('--materials'))
+  ),
+  'Mana geometry requires its own source-bound trial',
+);
 const materialIndex = options.indexOf('--materials');
 const materialFile = materialIndex < 0 ? undefined : options[materialIndex + 1];
 assert(
@@ -46,6 +56,7 @@ const expectedOptions = [
   ...(componentBaseline ? ['--component-source-baseline'] : []),
   ...(study ? [study] : []),
   ...(materialFile ? ['--materials', materialFile] : []),
+  ...(manaFile ? ['--mana-study', manaFile] : []),
 ];
 assert(
   options.length === expectedOptions.length &&
@@ -54,7 +65,7 @@ assert(
 );
 assert(
   outputDirectory,
-  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline] [--land-layer-study] [--colored-artifact-study|--colored-artifact-pinlines-study]',
+  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline] [--land-layer-study] [--colored-artifact-study|--colored-artifact-pinlines-study] [--mana-study PARAMETERS]',
 );
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
@@ -74,6 +85,14 @@ if (coloredArtifact)
   );
 const out = path.resolve(outputDirectory);
 await mkdir(out, { recursive: true });
+const manaBytes = manaFile ? await readFile(manaFile) : null;
+const manaParameters = manaBytes ? JSON.parse(manaBytes) : null;
+if (manaParameters) {
+  assert.equal(inputs.set, 'm21');
+  assert.equal(inputs.entries.length, 297);
+  assert.equal(manaParameters.source.inputsHash, hash(bytes));
+  assert(inputs.entries.every((e) => !e.face.symbolAdjustment));
+}
 const materialBytes = materialFile ? await readFile(materialFile) : null;
 const materials = materialBytes ? JSON.parse(materialBytes) : null;
 const materialIds = new Set(materials?.ids ?? []);
@@ -128,6 +147,7 @@ if (materials) {
 }
 const session = await openBrowser(inputs, {
   plugins: [
+    ...(manaParameters ? [modernManaStudy(manaParameters)] : []),
     ...(coloredArtifact ? [modernColoredArtifactStudy({ pinlines: artifactPinlines })] : []),
     ...(landLayers ? [modernLandLayerStudy()] : []),
     ...(componentBaseline ? [modernOrdinaryBaselineStudy()] : []),
@@ -141,6 +161,15 @@ try {
     await import('/games/magic/src/data/eager-wording.ts');
   });
   const source = {
+    ...(manaParameters
+      ? {
+          manaStudy: {
+            parametersHash: hash(manaBytes),
+            toolHash: hash(await readFile(new URL('./modern-mana-study.mjs', import.meta.url))),
+            rendererControls: manaParameters.rendererControls,
+          },
+        }
+      : {}),
     ...(coloredArtifact
       ? {
           coloredArtifactStudy: {
@@ -211,6 +240,7 @@ try {
     node: process.version,
     components: inputs.components.map((a) => [a.url, a.sha256]),
   };
+  if (manaParameters) assert.equal(source.rendererHash, manaParameters.source.rendererHash);
   let rows = [];
   try {
     const prior = JSON.parse(await readFile(path.join(out, 'capture.json')));
