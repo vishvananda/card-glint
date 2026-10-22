@@ -22,6 +22,19 @@ export function modernLandLayerStudy() {
           map: null,
         };
       }
+      if (id.endsWith('/presentation/modern-land-layers.ts')) {
+        const needle =
+          'export function modernLandLayers(input: RenderedCardInput): readonly LandLayer[] {';
+        assert.equal(source.split(needle).length, 2);
+        return {
+          code: source.replace(
+            needle,
+            needle +
+              '\n  return []; // Production overlays are excluded from this historical layer experiment.',
+          ),
+          map: null,
+        };
+      }
       if (!id.endsWith('/presentation/frame-plate-paint.ts')) return;
       const needle = '  paintMountedSecurityStamp(c, face, images);';
       assert.equal(source.split(needle).length, 2);

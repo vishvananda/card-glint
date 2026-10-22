@@ -1,3 +1,4 @@
+import { modernLandMaterialJobs } from './modern-land-layers.js';
 import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import { calibrationFace } from './calibration-input.js';
 import { earlyReprintMana, earlyReprintManaInk } from './early-reprint-mana.js';
@@ -85,6 +86,7 @@ export async function prepareEarlyHsb(
   }
   const originalWhiteGlyph =
     symbols.has('W') && historicalManaFamily(face, 'W') === 'historic-font';
+  const landJobs = modernLandMaterialJobs(face, images);
   const basicJobs = [
       ...eighthBasicMaterialJobs(face, images),
       ...modernBasicMaterialJobs(face, images),
@@ -95,6 +97,7 @@ export async function prepareEarlyHsb(
     !adjustments.size &&
     !originalMaterials.length &&
     !basicJobs.length &&
+    !landJobs.length &&
     !stampJobs.length &&
     !futureJobs.length &&
     !Object.keys(colors).length &&
@@ -115,6 +118,7 @@ export async function prepareEarlyHsb(
     return source ? [{ url, source, adjustment }] : [];
   });
   const jobs = [
+    ...landJobs,
     ...basicJobs,
     ...stampJobs,
     ...futureJobs,

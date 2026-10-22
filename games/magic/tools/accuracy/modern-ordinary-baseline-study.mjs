@@ -14,7 +14,7 @@ export function modernOrdinaryBaselineStudy() {
       const start = source.indexOf(marker);
       assert.equal(
         hash(source.slice(start)),
-        'df68dda0a4126df9fe0d39413f95a1f58fda215968e6cfea9460a6f8cb7603af',
+        '745da67d3693271e4fa50729839befacc0d0e076c1c1613bfe862269b29d081b',
         'Review changed ordinary plate selector before rebuilding the baseline',
       );
       return {

@@ -1,3 +1,4 @@
+import { M21_LAND_PLATES, type ModernLandPlateProfile } from './m21-land-plates.js';
 import type { FrameHsb } from './frame-hsb.js';
 import { M21_ORDINARY_PLATES } from './m21-ordinary-plates.js';
 
@@ -19,6 +20,7 @@ export interface ModernPrintingProfile {
   readonly revision: number;
   /** Exact-source ordinary monocolored spells and colorless artifacts only. */
   readonly ordinaryPlates?: Readonly<Record<string, FrameHsb>>;
+  readonly landPlates?: ModernLandPlateProfile;
   readonly rules?: {
     /** Shared ordinary typography; cap prevents spacing from growing a font. */
     readonly leading: number;
@@ -51,8 +53,9 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 4,
+    revision: 5,
     ordinaryPlates: M21_ORDINARY_PLATES,
+    landPlates: M21_LAND_PLATES,
     rules: { leading: 0.975, paragraphGap: 0.4, capAtBaseSize: true },
     footer: {
       collectorFamily: 'CardRenderer MTG Gotham',

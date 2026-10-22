@@ -6,7 +6,7 @@ import type { FrameBlackPoint } from './frame-blackpoint.js';
 // Shared source-local masks and tones. No scan transforms or printing IDs.
 const root =
   'https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/m15/new';
-const rulesMask: PaperMask = {
+export const rulesMask: PaperMask = {
   kind: 'polygon',
   points: [
     [0.073134, 0.6258],
@@ -18,7 +18,7 @@ const rulesMask: PaperMask = {
   ],
   feather: 0.0020491803278688526,
 };
-const nameMask: PaperMask = {
+export const nameMask: PaperMask = {
   kind: 'polygon',
   points: [
     [0.062189, 0.066453],
@@ -43,7 +43,7 @@ const nameMask: PaperMask = {
   ],
   feather: 0.0020491803278688526,
 };
-const typeMask: PaperMask = {
+export const typeMask: PaperMask = {
   kind: 'polygon',
   points: [
     [0.064677, 0.575338],

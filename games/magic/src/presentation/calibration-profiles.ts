@@ -86,9 +86,11 @@ function baseFrameMaterials(face: RenderedCardInput): Readonly<Record<string, Fr
   if (expansion) return expansion.materials;
   if (face.frameTemplate === 'future') return futureFrameMaterials(face);
   if (face.setCode?.toLowerCase() === 'plc') return planarFrameMaterials(face);
-  if (!hasColorCalibration(face)) return {};
+  // Exact multi-plate materials have a source census rather than a single
+  // printingColorSource descriptor. This does not expand inline-mana coverage.
   const ordinary = modernOrdinaryPlates(face);
-  if (ordinary) return ordinary;
+  if (ordinary && face.colorCalibration === 'set-hsb-v1') return ordinary;
+  if (!hasColorCalibration(face)) return {};
   const dualPlan = retroDualFrame(face);
   if (dualPlan) {
     const result: Record<string, FrameHsb> = {};

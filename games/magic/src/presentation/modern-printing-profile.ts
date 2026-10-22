@@ -1,3 +1,4 @@
+import { resolveCardProfile, resolveFrameColors } from './profile.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 import { MODERN_PRINTING_PROFILES } from '../data/tables.js';
@@ -9,18 +10,23 @@ export function modernPrintingProfile(face: RenderedCardInput) {
 export function modernPrintingProfileKey(face: RenderedCardInput): readonly unknown[] {
   const profile = modernPrintingProfile(face);
   if (!profile) return [];
-  // A face key carries only the material it can paint, rather than six copies
-  // of the shared source masks for every card in a collection.
-  const { ordinaryPlates: _plates, ...style } = profile;
-  const plates = modernOrdinaryPlates(face);
-  const type = face.canonicalTypeLine ?? face.typeLine ?? '';
-  const color =
-    (face.artifact ?? /\bArtifact\b/.test(type))
-      ? 'a'
-      : (face.frameColors ?? face.colors ?? [])[0]?.toLowerCase();
-  const material =
-    plates && Object.entries(plates).find(([url]) => url.endsWith('/' + color + '.png'));
-  return [['modern-printing', face.setCode?.toLowerCase(), style, material ?? null]];
+  const { ordinaryPlates: _ordinary, landPlates: _lands, ...style } = profile;
+  const land = modernLandPlates(face);
+  return [
+    [
+      'modern-printing',
+      face.setCode?.toLowerCase(),
+      style,
+      modernOrdinaryPlates(face) ?? null,
+      land
+        ? [
+            land.profile.root,
+            land.profile.commonTexture,
+            land.dual ? land.profile.neutralHeaders : null,
+          ]
+        : null,
+    ],
+  ];
 }
 
 /** Source-compatible ordinary M15 information lines, including planeswalkers.
@@ -37,9 +43,38 @@ export function supportsModernPrintingProfile(face: RenderedCardInput): boolean 
   );
 }
 
-/** Exact-set ordinary source selection. Crowns, lands, colored artifacts and
+/** Exact pinned M15 land sources; no inferred calibration for crowns or other sets. */
+export function modernLandPlates(face: RenderedCardInput) {
+  const profile = modernPrintingProfile(face)?.landPlates;
+  if (!profile || profile.root !== manifest.CONJURER_ROOT + '/img/frames/m15/new') return undefined;
+  const traits = resolveCardProfile(face);
+  if (
+    !traits.land ||
+    traits.legendary ||
+    traits.artifact ||
+    face.legendary ||
+    (face.layout && face.layout !== 'normal') ||
+    (face.borderColor !== undefined && face.borderColor !== 'black')
+  )
+    return undefined;
+  const colors = resolveFrameColors(face);
+  if (colors.length > 2) return undefined;
+  const sources = colors.length
+    ? colors.map((c) => profile.root + '/l' + c.toLowerCase() + '.png')
+    : [profile.root + '/l.png'];
+  if (!sources.every((source) => Object.hasOwn(profile.materials, source))) return undefined;
+  return { profile, sources, dual: colors.length === 2 };
+}
+
+/** Exact-set ordinary source selection. Crowns, colored artifacts and
  * specialty frames keep their independently owned sources and geometry. */
 export function modernOrdinaryPlates(face: RenderedCardInput) {
+  const land = modernLandPlates(face);
+  if (land)
+    return Object.fromEntries(
+      land.sources.map((source) => [source, land.profile.materials[source]!]),
+    );
+
   const plates = modernPrintingProfile(face)?.ordinaryPlates;
   const type = face.canonicalTypeLine ?? face.typeLine ?? '';
   const colors = face.frameColors ?? face.colors ?? [];

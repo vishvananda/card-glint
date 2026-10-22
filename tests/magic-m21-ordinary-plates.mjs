@@ -47,8 +47,8 @@ try {
   assert(key.includes('/m15/new/w.png'));
   assert(!key.includes('/m15/new/u.png'));
   assert(
-    !JSON.stringify(modernPrintingProfileKey({ ...base, typeLine: 'Land', colors: [] })).includes(
-      '/m15/new/',
+    JSON.stringify(modernPrintingProfileKey({ ...base, typeLine: 'Land', colors: [] })).includes(
+      '/m15/new/l.png',
     ),
   );
   const snapshot = structuredClone(base),
@@ -103,13 +103,11 @@ try {
     { layout: 'transform' },
     { layout: 'planeswalker' },
     { legendary: true },
-    { land: true },
     { artifact: true },
     { borderColor: 'white' },
     { borderColor: 'silver' },
     { frameColors: ['R', 'G'] },
     { typeLine: 'Legendary Creature — Dog' },
-    { typeLine: 'Land' },
     { typeLine: 'Artifact', colors: ['W'] },
     { colors: ['W', 'U'] },
     { typeLine: 'Vehicle' },

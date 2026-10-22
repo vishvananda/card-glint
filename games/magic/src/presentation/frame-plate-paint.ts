@@ -1,3 +1,4 @@
+import { paintModernLandLayers } from './modern-land-layers.js';
 import { modernOrdinaryPlates } from './modern-printing-profile.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import {
@@ -137,6 +138,7 @@ export function paintFramePlateFace(
           : 'planar'
         : undefined,
     );
+  paintModernLandLayers(c, face, images);
   paintMountedSecurityStamp(c, face, images);
   c.fillStyle = '#17140f';
   c.textAlign = 'left';
