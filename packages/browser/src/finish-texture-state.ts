@@ -10,6 +10,8 @@ export function withFinishTextureState<T>(gl: WebGL2RenderingContext, prepare: (
       throw Error('Finish preparation cannot run inside an occlusion query');
   const active = gl.getParameter(gl.ACTIVE_TEXTURE) as number;
   const program = gl.getParameter(gl.CURRENT_PROGRAM) as WebGLProgram | null;
+  if (program && gl.getProgramParameter(program, gl.DELETE_STATUS))
+    throw Error('Finish preparation requires an undeleted current program');
   const vao = gl.getParameter(gl.VERTEX_ARRAY_BINDING) as WebGLVertexArrayObject | null;
   const read = gl.getParameter(gl.READ_FRAMEBUFFER_BINDING) as WebGLFramebuffer | null;
   const draw = gl.getParameter(gl.DRAW_FRAMEBUFFER_BINDING) as WebGLFramebuffer | null;

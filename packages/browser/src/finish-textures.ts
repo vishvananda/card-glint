@@ -163,9 +163,16 @@ export class FinishTextures {
     if (this.disposed) return;
     this.disposed = true;
     this.gl.canvas.removeEventListener('webglcontextlost', this.onLost);
-    this.ink?.dispose();
-    this.stock?.dispose();
-    this.gl.deleteSampler(this.sampler ?? null);
+    // Lost-context objects are already released and must not be submitted to a
+    // restored context. Only this context generation's live handles need deletion.
+    if (!this.lost && !this.gl.isContextLost()) {
+      this.ink?.dispose();
+      this.stock?.dispose();
+      this.gl.deleteSampler(this.sampler ?? null);
+    }
+    this.ink = undefined;
+    this.stock = undefined;
+    this.sampler = undefined;
     this.stockMap = undefined;
   }
 }

@@ -289,6 +289,23 @@ try {
         Object.values(live).reduce((sum, objects) => sum + objects.size, 0) === count,
         'Failed preparation releases textures',
       );
+      const pendingDelete = program(
+        gl,
+        '#version 300 es\nprecision highp float;out vec4 color;void main(){color=vec4(1.);}',
+        '#version 300 es\nvoid main(){gl_Position=vec4(0.);}',
+      );
+      gl.useProgram(pendingDelete);
+      gl.deleteProgram(pendingDelete);
+      rejects(
+        () => textures.printDots({ texture: source, width, height }),
+        'Pending program deletion',
+      );
+      check(
+        gl.getParameter(gl.CURRENT_PROGRAM) === pendingDelete,
+        'Deleted current program remains bound',
+      );
+      gl.useProgram(hostProgram);
+      equalState(before);
       check(gl.getError() === gl.NO_ERROR, 'Preparation emits no GL errors');
       // Compare against the existing public native pass, including alpha and row orientation.
       HTMLCanvasElement.prototype.getContext = getContext;
@@ -350,7 +367,10 @@ try {
       for (const [kind, objects] of Object.entries(live))
         check(objects.size === 0, 'Released ' + kind);
       check(gl.getError() === gl.NO_ERROR, 'No GL errors after validation');
+      gl.useProgram(null);
       const recovered = new FinishTextures(gl);
+      recovered.cardstock();
+      check(gl.getError() === gl.NO_ERROR, 'Prepared owner before context loss');
       const extension = gl.getExtension('WEBGL_lose_context');
       check(extension, 'Context loss extension');
       const lost = new Promise((resolve) =>
@@ -374,6 +394,11 @@ try {
       await waitFor(restored, 'Context restoration');
       rejects(() => recovered.cardstock(), 'Restored context requires new owner');
       recovered.dispose();
+      const recoveryError = gl.getError();
+      check(
+        recoveryError === gl.NO_ERROR,
+        'No stale handles submitted after restoration: ' + recoveryError,
+      );
       const fresh = new FinishTextures(gl);
       check(gl.isTexture(fresh.cardstock().texture), 'Fresh owner works after restoration');
       fresh.dispose();

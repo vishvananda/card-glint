@@ -288,7 +288,9 @@ and failure, including separate read/draw framebuffers, program, VAO, active
 texture unit and unit-zero texture/sampler, pixel-unpack buffer, viewport,
 color mask and capability enables. It does not consume the host's GL error
 queue. Run outside occlusion queries and pause transform feedback first; those
-active operations are rejected rather than disturbed. Frameworks that cache GL
+active operations are rejected rather than disturbed. Unbind a current program
+marked for deletion before preparation: switching away would destroy it, making
+state restoration impossible, so this state is also rejected. Frameworks that cache GL
 state can keep their cache after these calls. Disposal invalidates owned
 resources, so stop sampling the borrowed coating before disposing.
 
