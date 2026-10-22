@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "status": "unaffected-native-source-audit",
+  "eligibleForPublication": false,
+  "scope": "Same generated local raster and browser fallback fonts. Native table/inspect face, printing and artwork layers; text measurement/draw calls and frame descriptors. Excludes intentional M21 changes. No cached scans or actual artwork/color-fit certification, asynchronous material preparation or GPU benchmark.",
+  "source": {
+    "fontAddition": "4a174a7afd4ae5d41350f0cbe30b9dd4c0312a231e9802eb4c00e0df1bb58167",
+    "base": "89b320d41ed41ddaaf92e5c72f6390a5dbc9448f",
+    "current": "745ff417944a1bcf288eced6663176bab91bb594",
+    "beforeRenderer": "34a8a05e2e5dae4786486eb5d3fbac6b21cfc1ff9d0b47a06135f84f19de7e4a",
+    "afterRenderer": "ce9ce2549d1ed3ff0b0d9bb02a839c6a9e5320f69450e9e2eb78e7ea38c3de95",
+    "cases": "fd3441b272a6d78d4cceac643579da4d9dd52d5148724e9c8f1d49e356ac163c",
+    "tool": "e120f22a85548c67bed675b0f962e54a31c3013ad83b1630e46b33fae96ecbb8"
+  },
+  "summary": {
+    "cases": 250,
+    "tiers": ["table", "inspect"],
+    "layers": ["face", "printing", "artwork"],
+    "pixelPairsIdentical": 1500,
+    "textCallPairsIdentical": 1500,
+    "geometryPairsIdentical": 1500,
+    "externalAssetRequests": 0
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-source-review.json.gz",
+    "sha256": "df9b389b578616718a79b70924668d8e13955fae56347ac215c98dfcd6681758",
+    "contentSha256": "2284dc2b5b495861ab4b474aa02286ef675dcf758950396d9939b5fe99c3b2b1"
+  },
+  "review": [
+    "The corpus includes historical frames and modern source-compatible donor cases on WAR and JMP. Every pair has identical native RGBA, text measurement/draw-call trace and frame descriptor hashes.",
+    "Existing asset metadata and browser backend sources match published0.6.11. The font stylesheet preserves every old byte and appends only the source-bound optional M21 Gotham declaration.",
+    "This is supplemental evidence for an exact historical source-reconstruction bridge. The bridge is not yet integrated; broader historical Magic source guards remain strict and currently reject the changed global painter hashes.",
+    "Real-font/default Oracle-flavor compatibility and complete cached-scan M21 replays have separate receipts. This synthetic audit does not certify actual material-color preparation, M21 fits, scan normalization or set completion."
+  ]
+}
