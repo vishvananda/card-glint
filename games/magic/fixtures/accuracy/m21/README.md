@@ -142,3 +142,28 @@ node games/magic/tools/accuracy/modern-native-material-audit.mjs \
 The material audit uses fixed frame, rules, name and type patches with the same
 dark-letter rejection. Missing observations stay explicit. Tile-center spread
 is only a coarse texture/color diagnostic; it does not certify fine print grain.
+
+## Independent header-panel replay
+
+[Header-panel evidence](frame-color-header-native-review.json) checks a second
+complete 297-card native pair. Structure improves **77.62 to 78.07/100**, with
+183 improvements, 36 regressions and 78 unchanged controls. All 297 etchings
+remain identical. Mean color distance falls **2.27 to 1.20** for name paper and
+**2.27 to 1.13** for type paper. Black and green now improve independently;
+artifact type paper retains identity. Frame and rules-paper fits are unchanged.
+
+The opt-in Oracle flavor API has no default pixel impact: all 594 face and
+etching PNGs match the pre-option native baseline byte for byte. The comparison
+above was nevertheless freshly scored from the new capture metadata.
+
+The art-rim audit measures reliable dark ridges in fixed, text-free strips.
+It retains uncertain edges and does not move either image. Inner scan ink is
+darker than outer stock: a common outer-stock lift would over-light the rims.
+Use a native replay before promoting a source-specific shadow curve.
+
+Reproduce with modern-inner-ink-audit.mjs INPUTS NATIVE
+FROZEN_REFERENCE_SCORES PARAMETERS INK_AUDIT_JSON in the accuracy tools, and run
+tests/magic-modern-inner-ink.mjs for exact, weak, ambiguous and noisy cases.
+
+These results remain partial. Paper color, structural overlap and line ink are
+separate diagnostics, and none alone certifies the complete M21 profile.
