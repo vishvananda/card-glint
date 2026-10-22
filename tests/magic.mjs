@@ -314,6 +314,7 @@ try {
       ['Goudy', 'normal', '400'],
       ['Historic Symbols', 'normal', '400'],
       ['Beleren', 'normal', '400 700'],
+      ['Beleren 2016', 'normal', '700'],
       ['Beleren Small Caps', 'normal', '700'],
       ['MPlantin', 'normal', '400'],
       ['MPlantin', 'italic', '400'],
