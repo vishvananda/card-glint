@@ -169,7 +169,6 @@ try {
   assert.equal(hasCalibratedFramePigment({ ...face, frameAssetFamily: 'm15-accurate' }), true);
   for (const excluded of [
     { typeLine: 'Legendary Creature' },
-    { typeLine: 'Artifact' },
     { typeLine: 'Planeswalker' },
     { typeLine: 'Legendary Land', colors: [] },
     { setCode: 'unmeasured' },
@@ -182,6 +181,17 @@ try {
       false,
       JSON.stringify(excluded),
     );
+  const { modernArtifactPinline } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/modern-printing-profile.ts',
+  );
+  for (const color of ['W', 'B']) {
+    const artifact = { ...face, typeLine: 'Artifact', colors: [color] };
+    assert.equal(hasCalibratedFramePigment(artifact), true);
+    assert.deepEqual(calibratedFrameMaterials(artifact), modernOrdinaryPlates(artifact));
+    assert(Object.keys(calibratedFrameMaterials(artifact))[0].endsWith('/a.png'));
+    assert(modernArtifactPinline(artifact).source.endsWith('/' + color.toLowerCase() + '.png'));
+    assert.equal(modernArtifactPinline({ ...artifact, setCode: 'unmeasured' }), undefined);
+  }
   assert.equal(hasCalibratedFramePigment({ ...face, typeLine: 'Land', colors: [] }), true);
   assert.ok(!Object.keys(pigment).some((url) => url.includes('/legendary_crowns/')));
 } finally {
