@@ -284,23 +284,23 @@ checks tool/source stability and retains unsupported measurements explicitly.
 ## Shared mana fit and native trial
 
 [The shared native trial](mana-shared-native-review.json) fits one diameter,
-center pitch and x/y offset over all250 normal-frame costs, including the
+center pitch and x/y offset over all 250 normal-frame costs, including the
 individual observer's scan-boundary cases. It proves exact objective parity at
 1134 stored native/scan measurements. Both starting points reach the same
 solution; the own-render control stays near the current geometry.
 
-The native297-card replay changes exactly250 costs, with47 byte-identical
-control faces and all297 etchings unchanged. Alpha and every cost-external pixel
-are unchanged. Mean mana structure improves **89.56 to90.10/100**, while the
-whole-card diagnostic improves **78.18 to78.22/100**, with identical coverage.
+The native 297-card replay changes exactly250 costs, with 47 byte-identical
+control faces and all 297 etchings unchanged. Alpha and every cost-external pixel
+are unchanged. Mean mana structure improves **89.56 to 90.10/100**, while the
+whole-card diagnostic improves **78.18 to 78.22/100**, with identical coverage.
 
-This remains **unadopted**. The broader mana metric improves124 and regresses126
-costs, while the perimeter objective improves227 and regresses23. Generic
+This remains **unadopted**. The broader mana metric improves 124 and regresses 126
+costs, while the perimeter objective improves 227 and regresses 23. Generic
 numerals, symbol ink/pigment and shadow fitting must follow. The title metric
-also responds to40 cost changes despite unchanged name pixels, exposing overlap
+also responds to 40 cost changes despite unchanged name pixels, exposing overlap
 between its window and cost ink.
 
-The cached search runs179 candidates in roughly1 second after about31 seconds
+The cached search runs 179 candidates in roughly 1 second after about 31 seconds
 of PNG/objective preparation. It does not run Chromium. A source-bound native
 trial then checks the chosen result through the actual renderer.
 

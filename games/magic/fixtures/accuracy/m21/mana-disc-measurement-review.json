@@ -3,7 +3,7 @@
   "set": "m21",
   "status": "mana-disc-measurement-proposal-not-adopted",
   "eligibleForPublication": false,
-  "scope": "Complete297 Original input census;264 cards carry567 mana-cost tokens. Existing native PNGs and frozen normalized references are verified by hash. This is a disc-geometry audit and proposal, not a renderer change, color/glyph/shadow fit, normalization certification or set completion.",
+  "scope": "Complete 297 Original input census;264 cards carry567 mana-cost tokens. Existing native PNGs and frozen normalized references are verified by hash. This is a disc-geometry audit and proposal, not a renderer change, color/glyph/shadow fit, normalization certification or set completion.",
   "evidence": {
     "file": "games/magic/fixtures/accuracy/m21/mana-disc-measurement.json.gz",
     "sha256": "8eeaa8fbceae4e8ac1467aff36bdc9ad67eee3ecba555af5c81e92c2863ca4e4",
@@ -486,9 +486,9 @@
   "method": [
     "Use source-bound cost geometry and subtract0.5 to express Canvas coordinates at pixel centers. Never refit the scan matrix to a mana candidate.",
     "Known source paper colors identify paper-distance fields. Native-only paper arcs exclude glyphs and unavailable perimeter. Per-ray contrast is normalized and softly saturated so a stronger ink/shadow edge cannot dominate.",
-    "The source must recover its own known circle within0.75px before its scan comparison can contribute. All567 source circles pass; observed coordinate/radius error bounds are disclosed above.",
+    "The source must recover its own known circle within0.75 px before its scan comparison can contribute. All 567 source circles pass; observed coordinate/radius error bounds are disclosed above.",
     "Boundary-limited scans and foil-only observations remain explicit. Shared normal-frame fitting uses one median/MAD diameter-outlier policy across colors, with all rejected IDs retained.",
-    "The shared proposal uses451 geometry observations and219 adjacent-symbol pitch pairs. It is unrounded and unadopted; native full-card replay and glyph/shadow/color checks are still required.",
+    "The shared proposal uses451 geometry observations and 219 adjacent-symbol pitch pairs. It is unrounded and unadopted; native full-card replay and glyph/shadow/color checks are still required.",
     "Earlier signed/unsaturated detectors are retained as rejected diagnostics. Their large black/generic errors must not be promoted into renderer adjustments."
   ],
   "next": [
