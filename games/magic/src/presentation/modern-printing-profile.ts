@@ -23,3 +23,22 @@ export function supportsModernPrintingProfile(face: RenderedCardInput): boolean 
     !/\b(Saga|Class|Battle)\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '')
   );
 }
+
+/** Exact-set ordinary source selection. Crowns, lands, colored artifacts and
+ * specialty frames keep their independently owned sources and geometry. */
+export function modernOrdinaryPlates(face: RenderedCardInput) {
+  const plates = modernPrintingProfile(face)?.ordinaryPlates;
+  const type = face.canonicalTypeLine ?? face.typeLine ?? '';
+  const colors = face.frameColors ?? face.colors ?? [];
+  if (
+    !plates ||
+    (face.layout && face.layout !== 'normal') ||
+    face.legendary ||
+    /\b(Legendary|Land|Planeswalker|Saga|Class|Battle|Vehicle)\b/.test(type) ||
+    /^Level up\b/m.test(face.rulesText ?? '') ||
+    colors.length > 1 ||
+    (/\bArtifact\b/.test(type) ? colors.length > 0 : colors.length !== 1)
+  )
+    return undefined;
+  return plates;
+}

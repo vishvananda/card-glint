@@ -28,8 +28,8 @@ export function supportsModernCalibration(face: RenderedCardInput): boolean {
 export function modernCalibrationSources(face: RenderedCardInput) {
   if (!supportsModernCalibration(face)) return { shared: [] as string[], stock: [] as string[] };
   const plates = (urls: string[]) => ({ shared: [] as string[], stock: urls });
-  if (face.frameAssetFamily === 'm15-accurate') {
-    const plate = framePlate(face);
+  const plate = framePlate(face);
+  if (plate) {
     return plates(
       plate ? [plate.frame, ...(plate.rightFrame ? [plate.rightFrame] : []), plate.border] : [],
     );

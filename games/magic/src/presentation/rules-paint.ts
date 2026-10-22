@@ -1,3 +1,4 @@
+import { modernOrdinaryPlates } from './modern-printing-profile.js';
 import { modernPrintingProfile } from './modern-printing-profile.js';
 import type { ModernPrintingProfile } from './modern-printing-profiles.js';
 import {
@@ -71,11 +72,12 @@ function measuredOrdinaryTextLayout(
       .filter(Boolean)
       .map((text) => ({ role: 'rules' as const, runs: [{ text }] }));
   const stamp = mountedSecurityStamp(face);
+  const componentRules = !face.frameAssetFamily || Boolean(modernOrdinaryPlates(face));
   const bounds: Parameters<typeof layoutRules>[2] = {
-    x: x * FACE_WIDTH + (face.frameAssetFamily ? 0 : 3.5),
-    y: y * height + (face.frameAssetFamily ? 0 : 7),
-    width: width * FACE_WIDTH - (face.frameAssetFamily ? 0 : 9.5),
-    height: h * height - (face.frameAssetFamily ? 0 : 8),
+    x: x * FACE_WIDTH + (componentRules ? 3.5 : 0),
+    y: y * height + (componentRules ? 7 : 0),
+    width: width * FACE_WIDTH - (componentRules ? 9.5 : 0),
+    height: h * height - (componentRules ? 8 : 0),
     // Fit actual line ink around the existing power/toughness plate. Short
     // final lines can use the lower left area without being painted over.
     exclusions: [

@@ -1,3 +1,4 @@
+import { modernOrdinaryPlates } from './modern-printing-profile.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { isRetro } from './retro-frame.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
@@ -13,7 +14,7 @@ const MODERN = {
 export function usesModernCostMana(face: RenderedCardInput): boolean {
   return (
     !isRetro(face) &&
-    face.frameAssetFamily === undefined &&
+    (face.frameAssetFamily === undefined || Boolean(modernOrdinaryPlates(face))) &&
     face.frameTemplate === undefined &&
     (face.layout ?? 'normal') === 'normal' &&
     !/\b(Saga|Class|Planeswalker|Battle)\b/i.test(face.canonicalTypeLine ?? face.typeLine ?? '') &&

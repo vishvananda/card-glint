@@ -1,3 +1,4 @@
+import { modernOrdinaryPlates } from './modern-printing-profile.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { cardStock } from './face-layout.js';
 import type { FrameHsb } from './frame-hsb.js';
@@ -25,13 +26,16 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
   const explicitProfile = typeof choice === 'object';
   if (explicitProfile && !supportsModernCalibration(face))
     throw Error('M21 calibration requires a modern frame.');
-  const plate = face.frameAssetFamily ? framePlate(original) : null;
+  const plate = framePlate(original);
+  const ordinary =
+    original.colorCalibration === 'set-hsb-v1' ? modernOrdinaryPlates(original) : undefined;
   const measuredStock =
     choice === 'source'
       ? undefined
       : ((plate ? planarCalibratedStock(original, plate.frame) : undefined) ??
-        exact.calibratedPrintingStock(original));
-  const measured = choice === 'source' ? {} : exact.calibratedFrameMaterials(original);
+        (ordinary ? stock : exact.calibratedPrintingStock(original)));
+  const measured =
+    choice === 'source' ? {} : { ...exact.calibratedFrameMaterials(original), ...ordinary };
   const materials: Record<string, FrameHsb> = explicitProfile ? {} : { ...measured };
   const fallbackAssets: string[] = [];
   let border = explicitProfile ? undefined : measuredStock;

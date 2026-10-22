@@ -1,3 +1,5 @@
+import { modernOrdinaryPlates } from './modern-printing-profile.js';
+import { profileAssets } from './assets.js';
 import { hasPrintingStockCandidate } from './printing-blackpoint.js';
 import {
   planarBadgeRect,
@@ -6,7 +8,13 @@ import {
 } from './planar-frame-geometry.js';
 import { eighthArtistBrush } from './eighth-footer.js';
 import type { FaceRects } from './special-frames.js';
-import { FACE_RECTS, cardStock, type FaceRect, type RenderedCardInput } from './face-layout.js';
+import {
+  FACE_RECTS,
+  FACE_TEXT,
+  cardStock,
+  type FaceRect,
+  type RenderedCardInput,
+} from './face-layout.js';
 import { resolveCardProfile, resolveFrameColors } from './profile.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { isRetro } from './retro-frame.js';
@@ -34,7 +42,8 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
   const shifted = face.frameTreatment === 'colorshifted';
   if (shifted && face.frameAssetFamily !== 'eighth')
     throw Error('Colorshifted treatment requires the eighth frame family.');
-  if (!face.frameAssetFamily) return null;
+  const retained = Boolean(modernOrdinaryPlates(face));
+  if (!face.frameAssetFamily && !retained) return null;
   // Composite spell faces retain the era for their dedicated panel painter.
   // They never use an ordinary full-face plate or its geometry.
   if (['split', 'aftermath'].includes(face.layout ?? '') && face.faces?.length === 2) return null;
@@ -106,11 +115,13 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
           }
         : undefined,
     border: `${CONJURER_ROOT}/img/frames/${folder}/border.png`,
-    pt: shifted
-      ? `${CONJURER_ROOT}/img/frames/m15/colorshifted/${ptKey}pt.png`
-      : eighth
-        ? `${CONJURER_ROOT}/img/frames/8th/pt/${ptKey === 'c' ? 'l' : ptKey}.png`
-        : `${CONJURER_ROOT}/img/frames/m15/regular/m15PT${ptKey.toUpperCase()}.png`,
+    pt: retained
+      ? profileAssets(profile).pt
+      : shifted
+        ? `${CONJURER_ROOT}/img/frames/m15/colorshifted/${ptKey}pt.png`
+        : eighth
+          ? `${CONJURER_ROOT}/img/frames/8th/pt/${ptKey === 'c' ? 'l' : ptKey}.png`
+          : `${CONJURER_ROOT}/img/frames/m15/regular/m15PT${ptKey.toUpperCase()}.png`,
     rects: {
       ...FACE_RECTS,
       frame: [0, 0, 1, 1],
@@ -122,8 +133,10 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
         : [0.0767, 0.1129, 0.8476, 0.4429],
       rules: eighth
         ? interior([205 / 2010, 1779 / 2814, 1596 / 2010, 729 / 2814])
-        : [0.086, 1780 / 2814, 0.828, 0.2875],
-      stats: planarGeometry ? planarBadgeRect(stats, shifted) : stats,
+        : retained
+          ? FACE_RECTS.rules
+          : [0.086, 1780 / 2814, 0.828, 0.2875],
+      stats: retained ? FACE_RECTS.stats : planarGeometry ? planarBadgeRect(stats, shifted) : stats,
       footer: eighth ? [150 / 2010, 1938 / 2100, 0.81, 0.04] : FACE_RECTS.footer,
     },
     titleSize: eighth ? 29.2 : 26,
@@ -131,10 +144,14 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
     // Shared family adjustments measured after frame-only scan normalization.
     // Cost discs have their own baseline; they do not follow font centering.
     mana: {
-      right: (eighth ? 0.9147 : 1864 / 2010) - (eighth ? 2 : 1) / 488,
-      center: title[1] + title[3] / 2 + (eighth ? 1 : -4) / 680,
-      size: eighth ? 22 : 23.4,
-      gap: 1.5,
+      right: retained
+        ? FACE_RECTS.title[0] + FACE_RECTS.title[2] - FACE_TEXT.plateRight / 488
+        : (eighth ? 0.9147 : 1864 / 2010) - (eighth ? 2 : 1) / 488,
+      center: retained
+        ? FACE_RECTS.title[1] + FACE_RECTS.title[3] / 2 + FACE_TEXT.manaLift / (2 * 680)
+        : title[1] + title[3] / 2 + (eighth ? 1 : -4) / 680,
+      size: retained ? FACE_TEXT.manaSize : eighth ? 22 : 23.4,
+      gap: retained ? FACE_TEXT.manaGap : 1.5,
     },
     symbol: eighth
       ? { right: 0.9079 - 2 / 488, center: 0.5886, width: 0.114, height: 0.0391 * 0.95 }

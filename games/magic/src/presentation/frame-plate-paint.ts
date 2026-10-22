@@ -1,3 +1,4 @@
+import { modernOrdinaryPlates } from './modern-printing-profile.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import {
   type CanvasContext,
@@ -30,6 +31,8 @@ import type { CanvasImages } from './canvas-assets.js';
 import { planarCalibratedStock } from './planar-blackpoint.js';
 import { paintPlateStockBorder } from './frame-plate-border.js';
 import {
+  FACE_RECTS,
+  FACE_TEXT,
   FACE_WIDTH as W,
   FACE_HEIGHT as H,
   cardStock,
@@ -66,6 +69,7 @@ export function paintFramePlateFace(
   };
   const { rects } = plate,
     eighth = face.frameAssetFamily === 'eighth',
+    retained = Boolean(modernOrdinaryPlates(face)),
     stock =
       planarCalibratedStock(face, plate.frame) ??
       calibratedPrintingStock(face) ??
@@ -139,7 +143,8 @@ export function paintFramePlateFace(
   c.textBaseline = 'middle';
   const costAdjustment = printingManaAdjustment(face);
   const family = eighth ? 'CardRenderer MTG Matrix' : 'CardRenderer MTG Beleren';
-  const [tx, ty, tw, th] = px(rects.title),
+  const [titleX, ty, tw, th] = px(retained ? FACE_RECTS.title : rects.title),
+    tx = titleX + (retained ? FACE_TEXT.plateLeft + 1 : 0),
     cost = face.manaSymbols ?? [],
     { size } = plate.mana,
     gap = plate.mana.gap + (costAdjustment?.spacing ?? 0);
@@ -154,7 +159,8 @@ export function paintFramePlateFace(
   const adjustedMana = adjustedSymbolBounds(manaBounds, costAdjustment);
   c.font = `bold ${plate.titleSize}px "${family}", Georgia`;
   c.save();
-  if (eighth) c.translate(...titleTranslation(face, 'eighth'));
+  if (eighth || retained) c.translate(...titleTranslation(face, eighth ? 'eighth' : 'modern'));
+  if (retained) c.letterSpacing = `${FACE_TEXT.titleTracking}px`;
   const titleFit = planarLettering(face, plate.frame, 'title');
   c.translate(titleFit.dx, titleFit.dy);
   paintColorshiftedHeading(c, face, plate.frame);
@@ -162,8 +168,12 @@ export function paintFramePlateFace(
     c,
     face.name,
     tx,
-    ty + th / 2,
-    cost.length ? adjustedMana[0] - tx - 8 : tw,
+    ty + th / 2 + (retained ? 1 : 0),
+    retained
+      ? adjustedMana[0] - tx - (cost.length ? FACE_TEXT.titleGap : 0)
+      : cost.length
+        ? adjustedMana[0] - tx - 8
+        : tw,
     plate.titleSize * titleFit.size,
     true,
     1,
@@ -253,15 +263,15 @@ export function paintFramePlateFace(
   }
   if (face.power != null && face.toughness != null) {
     const [sx, sy, sw, sh] = px(rects.stats);
-    c.font = `bold 25px "${family}", Georgia`;
+    c.font = `bold ${retained ? FACE_TEXT.statsFont : 25}px "${family}", Georgia`;
     c.textAlign = 'center';
     c.textBaseline = 'middle';
     paintTextInk(
       c,
       `${face.power}/${face.toughness}`,
-      sx + sw * 0.52,
-      sy + sh * 0.52,
-      sw * 0.85,
+      sx + sw * (retained ? 0.5 : 0.52),
+      retained ? sy + FACE_TEXT.statsLine / 2 + 2 : sy + sh * 0.52,
+      retained ? sw : sw * 0.85,
       face.textInk,
     );
   }

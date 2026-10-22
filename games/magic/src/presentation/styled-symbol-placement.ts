@@ -1,3 +1,4 @@
+import { modernOrdinaryPlates } from './modern-printing-profile.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
@@ -37,19 +38,13 @@ export function styledSymbolBounds(
 ): Bounds {
   // Ordinary-plate scan fits do not certify the colorshifted source geometry.
   if (face.frameTreatment === 'colorshifted') return bounds;
+  const family = face.frameAssetFamily ?? (modernOrdinaryPlates(face) ? 'm15-accurate' : undefined);
   const key = face.setCode?.toLowerCase() ?? '';
   const profile = Object.hasOwn(profiles, key) ? profiles[key] : undefined;
   let result = bounds;
-  if (
-    profile &&
-    !face.setSymbol &&
-    isStyledSetSymbol(url) &&
-    profile.family === face.frameAssetFamily
-  )
+  if (profile && !face.setSymbol && isStyledSetSymbol(url) && profile.family === family)
     result = adjust(bounds, profile.delta);
-  return face.frameAssetFamily
-    ? calibratedStyledSymbolBounds(face, url, result, face.frameAssetFamily)
-    : result;
+  return family ? calibratedStyledSymbolBounds(face, url, result, family) : result;
 }
 
 /** Shared printing geometry only; stored scan transforms never enter painting. */
