@@ -6,7 +6,7 @@ import {
 } from './modern-heading-font.js';
 import { loadModernFooterFont } from './modern-footer-font.js';
 import { framePlate } from './frame-plates.js';
-import { modernPrintingProfileKey } from './modern-printing-profile.js';
+import { modernPrintingProfileKey, modernWalkerFrameRepaint } from './modern-printing-profile.js';
 import { ALPHA_RULES_REVISION } from './early-text-tiers.js';
 import { retroDualFrameRevision } from './retro-dual-frame.js';
 import { WALKER_GEOMETRY, walkerSymbolSize } from './planeswalker-geometry.js';
@@ -779,6 +779,13 @@ export function paintAssembledFace(
   if (frame && planeswalker) {
     const [x, y, width] = px(rects.frame);
     paintPlaneswalkerFrameImage(context, frame, x, y, width, kind === 'planeswalker-large');
+    const repaint = modernWalkerFrameRepaint(face, profile.boxes);
+    if (repaint) {
+      context.save();
+      context.globalAlpha *= repaint;
+      paintPlaneswalkerFrameImage(context, frame, x, y, width, kind === 'planeswalker-large');
+      context.restore();
+    }
   } else if (frame && kind !== 'normal') paintFrame(context, frame, profile.legendary, rects.frame);
   if (profile.legendary) draw(assets.crown, rects.crown);
   if (panel) {

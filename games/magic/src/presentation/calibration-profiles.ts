@@ -1,3 +1,4 @@
+import { faceFrame } from './special-frames.js';
 import {
   modernOrdinaryPlates,
   modernPrintingProfile,
@@ -161,11 +162,10 @@ function modernComponentMaterials(face: RenderedCardInput): Readonly<Record<stri
   const traits = resolveCardProfile(face);
   if (
     traits.land ||
-    modernWalkerProfile(face) ||
-    (!traits.legendary && resolveFrameColors(face).length < 2)
+    (!modernWalkerProfile(face) && !traits.legendary && resolveFrameColors(face).length < 2)
   )
     return {};
-  const assets = profileAssets(traits);
+  const assets = profileAssets(traits, faceFrame(face));
   const urls = [
     assets.frame,
     assets.background,

@@ -1,3 +1,4 @@
+import { M21_WALKER_MATERIALS } from './m21-walker-materials.js';
 import type { ModernPrintingProfile } from './modern-printing-profiles.js';
 
 /** Native-reviewed exact-source M21 component fits. Foil-only walkers transfer
@@ -84,6 +85,7 @@ export const M21_COMPONENT_CALIBRATION: Pick<
   },
   planeswalkers: {
     deckCollectorNumbers: ['320', '324', '328', '332', '336'],
+    frameRepaint: { Colourless: 0.7 },
     paperColors: {
       Colourless: '#eaebf1f0',
       W: '#f2e5d4f0',
@@ -112,6 +114,7 @@ export const M21_COMPONENT_CALIBRATION: Pick<
     },
   },
   componentMaterials: {
+    ...M21_WALKER_MATERIALS,
     'https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/frames/W.webp':
       {
         frame: {

@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "status": "unaffected-native-source-audit",
+  "eligibleForPublication": false,
+  "scope": "Same generated local raster and browser fallback fonts. Native table/inspect face, printing and artwork layers; text measurement/draw calls and frame descriptors. Excludes intentional M21 changes. No cached scans or actual artwork/color-fit certification, asynchronous material preparation or GPU benchmark.",
+  "source": {
+    "fontAddition": "88c35b63eecde234bf8ea54201111b1c0daf4766f1ef9429e364674267f17620",
+    "base": "89b320d41ed41ddaaf92e5c72f6390a5dbc9448f",
+    "current": "bff41d1e168a87d40923b211c3bd414f489f042b",
+    "beforeRenderer": "34a8a05e2e5dae4786486eb5d3fbac6b21cfc1ff9d0b47a06135f84f19de7e4a",
+    "afterRenderer": "1975ea9043b345aff81686d1c85eb76ed5dba6fe3554c287eefb4ec7d0c2d611",
+    "cases": "fd3441b272a6d78d4cceac643579da4d9dd52d5148724e9c8f1d49e356ac163c",
+    "tool": "e3260e36b43b90304866dccf477979df5cf2e5714b22198dbfff46082fb8483c"
+  },
+  "toolFile": "games/magic/tools/accuracy/m21-unaffected-component-review.mjs",
+  "summary": {
+    "cases": 250,
+    "pixelPairsIdentical": 1500,
+    "textCallPairsIdentical": 1500,
+    "geometryPairsIdentical": 1500,
+    "externalAssetRequests": 0
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-walker-material-review.json.gz",
+    "sha256": "5efc70ba6e643a43cb0a34ad83f490a1055e55982adcedee696df6479436f642",
+    "contentSha256": "3dac43e7552f800743cef210038a2749e6515ad22dc2a8d0ed9c6af59bd06825"
+  },
+  "review": [
+    "R5 limits the new atlas-slot pigment and colorless foreground coverage to exact M21 source families. All unrelated historical and modern donor cases match published0.6.11 native pixels, text calls and geometry.",
+    "This generated-art collateral audit does not certify changed M21 accuracy, actual external font/asset loading, scan normalization or set completion."
+  ]
+}

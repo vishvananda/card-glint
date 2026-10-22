@@ -13,6 +13,10 @@ try {
   const { calibratedManaTarget, calibratedFrameMaterials } = await module('calibration-profiles');
   const { printingCalibrationMaterials } = await module('printing-calibration-materials');
   const { canvasAssetUrls } = await module('canvas-assets');
+  const { modernWalkerFrameRepaint } = await module('modern-printing-profile');
+  const { profileAssets } = await module('assets');
+  const { resolveCardProfile } = await module('profile');
+  const { faceFrame } = await module('special-frames');
   const { specialPaperColor } = await module('special-rule-paint');
   const profile = MODERN_PRINTING_PROFILES.m21;
   const base = {
@@ -55,6 +59,33 @@ try {
       {},
     );
   }
+  const tall = {
+    ...walker,
+    rulesText: 'A static ability.\n+1: Draw a card.\n-3: Return a card.\n-10: Win the game.',
+  };
+  assert.equal(faceFrame(tall), 'planeswalker-large');
+  for (const face of [walker, tall]) {
+    const assets = profileAssets(resolveCardProfile(face), faceFrame(face));
+    const materials = calibratedFrameMaterials(face);
+    assert.deepEqual(Object.keys(materials).sort(), [assets.frame, assets.boxes].sort());
+    assert(Object.keys(materials).every((url) => canvasAssetUrls(face).includes(url)));
+    for (const url of Object.keys(materials))
+      assert.deepEqual(materials[url], profile.componentMaterials[url]);
+    assert.deepEqual(
+      printingCalibrationMaterials({ ...face, calibration: 'source' }).materials,
+      {},
+    );
+  }
+  assert.equal(modernWalkerFrameRepaint(walker, 'Colourless'), 0.7);
+  for (const face of [
+    base,
+    { ...walker, setCode: 'war' },
+    { ...walker, calibration: 'source' },
+    { ...walker, colorCalibration: undefined },
+    { ...walker, frameStyle: 'retro' },
+  ])
+    assert.equal(modernWalkerFrameRepaint(face, 'Colourless'), 0);
+  assert.equal(modernWalkerFrameRepaint(walker, 'U'), 0);
   assert.equal(specialPaperColor(walker), '#dfdfe2f0');
   assert.equal(specialPaperColor({ ...walker, collectorNumber: '324' }), '#d3e4ecf0');
   assert.equal(specialPaperColor({ ...walker, calibration: 'source' }), '#d3e4ecf0');

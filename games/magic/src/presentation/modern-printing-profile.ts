@@ -92,6 +92,14 @@ export function modernWalkerProfile(face: RenderedCardInput) {
     : undefined;
 }
 
+/** Coverage belongs to the exact foreground source/palette. Raw-source policy
+ * retains the original alpha, and unmeasured sets retain their prior behavior. */
+export function modernWalkerFrameRepaint(face: RenderedCardInput, palette: string): number {
+  return face.colorCalibration === 'set-hsb-v1' && face.calibration !== 'source'
+    ? (modernWalkerProfile(face)?.frameRepaint?.[palette] ?? 0)
+    : 0;
+}
+
 /** Booster/tall body fits are not transferred to unmeasured deck printings. */
 export function modernWalkerBodyProfile(face: RenderedCardInput) {
   const profile = modernWalkerProfile(face);

@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "open-component-outliers",
+  "renderer": "1975ea9043b345aff81686d1c85eb76ed5dba6fe3554c287eefb4ec7d0c2d611",
+  "items": [
+    {
+      "id": "planeswalker-art-spill",
+      "component": "art/frame",
+      "printings": [
+        {
+          "id": "9c017fa9-7021-417a-9c2e-3df409644fcf",
+          "name": "Ugin, the Spirit Dragon",
+          "number": "1"
+        },
+        {
+          "id": "98c85699-2daf-4e87-a3be-465d02bd64bb",
+          "name": "Basri Ket",
+          "number": "7"
+        },
+        {
+          "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
+          "name": "Garruk, Unleashed",
+          "number": "183"
+        }
+      ],
+      "status": "needs-masked-illustration",
+      "review": "Ugin wing crosses the right frame; Basri and Garruk heads cross the upper art rim. Flat art_crop plus the standard aperture does not reproduce these printed spills. Preserve the scan denominator and exclude illustration spill from material targets.",
+      "evidence": "games/magic/fixtures/accuracy/m21/walker-foreground-native-review.json"
+    },
+    {
+      "id": "planeswalker-starting-loyalty",
+      "component": "stats",
+      "status": "needs-shared-fit",
+      "scope": "All14 Original planeswalkers",
+      "review": "Starting-loyalty numerals tend to be slightly high/left and shorter than the printed ink. Compare actual fonts and shared geometry; do not add card offsets.",
+      "evidence": "games/magic/fixtures/accuracy/m21/starting-loyalty-ink-diagnostic.json"
+    }
+  ]
+}

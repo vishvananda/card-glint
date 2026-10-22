@@ -8,15 +8,15 @@
     "wording-flavor.ts",
     "wording.ts"
   ],
-  "revision": 4,
+  "revision": 5,
   "parent": {
-    "file": "games/magic/fixtures/accuracy/m21/style-source-compatibility-r3.json",
-    "sha256": "23cbf4e944bf65d5b99100975ae4b6e27ef0fdce115c7a7a9fe518eebfb440c5"
+    "file": "games/magic/fixtures/accuracy/m21/style-source-compatibility-r4.json",
+    "sha256": "280b7df782cda6352ec0a6affd695fbf80e5970c066120f240edb7eb3152166d"
   },
-  "scope": "R4 exact M21-only source reconstruction. All 1500 unrelated native pixel/text/geometry pairs match published 0.6.11 after fractional type metrics and the three shared type-family fits. This protects historical score identity; it does not certify M21 fits, pending normalization or set completion.",
+  "scope": "R5 exact M21-only source reconstruction. All 1500 unrelated native pixel/text/geometry pairs match published 0.6.11 after exact-source planeswalker foreground/panel pigment and colorless coverage fits. This protects historical score identity; it does not certify M21 fits, pending normalization or set completion.",
   "evidence": {
-    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-type-review.json",
-    "sha256": "31b8df5fb74506298b4ac45575da32e5a3a47e18fdf99eec541eeaa82682cc34"
+    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-walker-material-review.json",
+    "sha256": "17d34e0681724bbf54870ef124431039ff172a3fbca7b75a03facc8c6ed7c8b8"
   },
   "files": {
     "games/magic/fonts.css": {
@@ -41,33 +41,34 @@
     },
     "games/magic/src/presentation/calibration-profiles.ts": {
       "before": "650591d380f2f53ad646778bea5511851022bc242eb57c5f929ced3f5d380978",
-      "after": "606a53a28e0c519c9bb2099ed0ccdf9fcdd32f1458beb41530f36a43b79baeb4",
+      "after": "2a8cf9dd6c334a8e15d92c91a8bbe71ce021275490fe3d304d466c179ad03d9c",
       "reverseEdits": [
         { "start": 218, "count": 25, "lines": [] },
-        { "start": 152, "count": 26, "lines": ["  return materials;\n"] },
-        { "start": 95, "count": 4, "lines": [] },
+        { "start": 153, "count": 25, "lines": ["  return materials;\n"] },
+        { "start": 96, "count": 4, "lines": [] },
         {
-          "start": 70,
+          "start": 71,
           "count": 4,
           "lines": ["  if (!hasColorCalibration(face)) return undefined;\n"]
         },
         {
-          "start": 23,
+          "start": 24,
           "count": 1,
           "lines": ["import { printingColorSource } from './printing-color-source.js';\n"]
         },
         {
-          "start": 13,
+          "start": 14,
           "count": 1,
           "lines": ["import { resolveCardProfile } from './profile.js';\n"]
         },
-        { "start": 0, "count": 5, "lines": [] }
+        { "start": 0, "count": 6, "lines": [] }
       ],
       "historicalHashes": [
         "23503d1b5c08bc9fb76ff3a3285ad110122ee30f5e72b5db4cd118e2cc77ae71",
         "2d1cb4df3e7603704bac2996e727d842682359012d87a93e82a4f241ea0382a8",
         "425033cfeed4b022bfc76d53b46d554442013c10971b1e8a946ef2f0eb680087",
         "54337a66728a37dff4c18e3a4ea93b2cf0dcc2d3315cc9d90996515c9340fb29",
+        "606a53a28e0c519c9bb2099ed0ccdf9fcdd32f1458beb41530f36a43b79baeb4",
         "7e1d8ecc1fb1d90050a364d23ff3224cd38c4045f33bf6f413f80a9ba93c58ac",
         "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
         "96b75b0835ca63f37204eee642830193c7ce7500f564d1f4a1331f4a5f281468",
@@ -78,23 +79,23 @@
     },
     "games/magic/src/presentation/canvas-face.ts": {
       "before": "a7bae87a647699f8e6cbf32a37d809f94dac1d8fbbc0198cc8968aed8a3eb919",
-      "after": "8940745eceb8d8c5f008adf9ae2d798c4dda621d5e2db55254f629ab9b86b78e",
+      "after": "b8b554bd36833355d3f687f9a50d58635be997c3041547a59fdfedb7710a255d",
       "reverseEdits": [
-        { "start": 980, "count": 1, "lines": [] },
+        { "start": 987, "count": 1, "lines": [] },
         {
-          "start": 966,
+          "start": 973,
           "count": 11,
           "lines": ["        : 1,\n", "    'CardRenderer MTG Beleren',\n"]
         },
         {
-          "start": 962,
+          "start": 969,
           "count": 2,
           "lines": [
             "          context.measureText(face.typeLine ?? '').width * WALKER_GEOMETRY.typeWidth <=\n"
           ]
         },
         {
-          "start": 955,
+          "start": 962,
           "count": 4,
           "lines": [
             "  context.font = `${FACE_TEXT.typeFont * textScale}px \"CardRenderer MTG Beleren\", Georgia`;\n",
@@ -108,19 +109,20 @@
             "    false,\n"
           ]
         },
-        { "start": 870, "count": 1, "lines": [] },
+        { "start": 877, "count": 1, "lines": [] },
         {
-          "start": 856,
+          "start": 863,
           "count": 2,
           "lines": ["          (titleWidth - 0.5) / context.measureText(face.name).width,\n"]
         },
         {
-          "start": 845,
+          "start": 852,
           "count": 2,
           "lines": [
             "  context.font = `bold ${titleSize}px \"CardRenderer MTG Beleren\", Georgia`;\n"
           ]
         },
+        { "start": 781, "count": 7, "lines": [] },
         { "start": 609, "count": 1, "lines": ["  if (face.frameAssetFamily) {\n"] },
         {
           "start": 463,
@@ -139,6 +141,7 @@
         "751217ee8f50126bd9a84b1bbc4e9a457cdf1a763385b84789c191151e674a86",
         "7bc098b6924146c445d9ea84394996e9e56437c762f06fcd5b0229af7454fcae",
         "7d8db02ddd28f76b63f6435571f5b9dafc3e815b9fb15881cb305818c073f11b",
+        "8940745eceb8d8c5f008adf9ae2d798c4dda621d5e2db55254f629ab9b86b78e",
         "8d943f00ea5040ba99af9446ff04cdc9fb6968ef0345a3ae165e7254ff71e84a",
         "95a694d0eb976b5e77c3b042636c677de0034ebb551ab52da7f2be4f1c5f7fa1",
         "9b5948b7e640dcc134a0a7752acbe60665b55b4a339374d2d8913e101bd27a08",
@@ -584,7 +587,7 @@
     }
   },
   "newModules": {
-    "games/magic/src/presentation/m21-component-calibration.ts": "0bb14d7a992263738971ccf31ec2bafe825289e6b900da9be92c04cfa679952f",
+    "games/magic/src/presentation/m21-component-calibration.ts": "6ad72c57be11c7434194cc544dde29a2a1f1aeb28c99d3f24b9ae132cf78f27e",
     "games/magic/src/presentation/m21-land-plates.ts": "5c61596030b70dc60cb9b570cdc1ed0b64afa5ddc233ab262cb59ba3847fccf7",
     "games/magic/src/presentation/m21-ordinary-plates.ts": "6ea63fed6a3136ba7ef786f2fa5e705ee7a5d3cc9010191032be69b3d6bdc475",
     "games/magic/src/presentation/modern-artifact-layer.ts": "3d62228ba29fa0f937f4b81ee93e2ae1a12b68d4f32aa001c90d8c7aa984f30d",
@@ -592,7 +595,8 @@
     "games/magic/src/presentation/modern-footer-font.ts": "d0f26efefbc9673bc5991e2961bbe1ebc6e89c7d422214fad4c88840c8627de6",
     "games/magic/src/presentation/modern-heading-font.ts": "68cbf2cc9ae9a634a6c04923dcbe7a0523c494b8e79b4a2c07226f42237da7de",
     "games/magic/src/presentation/modern-land-layers.ts": "fb8f95ee58f65514e94adfd6432cf137a4d2f4ce5ca200d5749e14db1d96281e",
-    "games/magic/src/presentation/modern-printing-profile.ts": "c27ee973d146ed2cae0616f83cfde4bdcd956c335a9ebd80c3b1e50dc8a713f2",
-    "games/magic/src/presentation/modern-printing-profiles.ts": "1f5969ab0f663c1ebe6947c18751546613613700854d86092617683d923d8768"
+    "games/magic/src/presentation/modern-printing-profile.ts": "b3411cd0c82f2a7cb694ccd21eee461be0c0899a0329be0e4b505d311c6282ad",
+    "games/magic/src/presentation/modern-printing-profiles.ts": "4788bbfd0afdcfa2439082b8220c8533004fd16b65b2d5c976f8ee722883643e",
+    "games/magic/src/presentation/m21-walker-materials.ts": "bd44d33b3853765dbfe7022369a2c5ac12ad67f0aac188c839760a86b8f7d03e"
   }
 }
