@@ -1,3 +1,5 @@
+import { m21StyleAncestry } from '../games/magic/tools/accuracy/m21-style-ancestry.mjs';
+import { oracleFlavorAncestryProof } from '../games/magic/tools/accuracy/oracle-flavor-ancestry.mjs';
 import { additionalProfileDataModules } from '../games/magic/tools/accuracy/profile-data-modules.mjs';
 import { profileBodyAncestry } from '../games/magic/tools/accuracy/body-profile-ancestry.mjs';
 import { profileAdapterAncestry } from '../games/magic/tools/accuracy/profile-adapter-ancestry.mjs';
@@ -82,6 +84,12 @@ async function packMetadata(directory, beforeSymbols = false) {
 async function identity() {
   const executable = await stat(chromium.executablePath());
   return {
+    m21StyleRevision: hash(
+      await readFile('games/magic/fixtures/accuracy/m21/style-source-compatibility.json'),
+    ),
+    oracleFlavorRevision: hash(
+      await readFile('games/magic/fixtures/accuracy/oracle-flavor-ancestry.json'),
+    ),
     hostWorkerRevision: hash(
       await readFile('games/magic/fixtures/accuracy/host-worker/source-proof.json'),
     ),
@@ -288,6 +296,8 @@ async function verify() {
   const walkerGeometry = await walkerGeometryModules();
   const profileAdapter = await profileAdapterAncestry();
   const profileBody = await profileBodyAncestry();
+  const modernStyles = await m21StyleAncestry();
+  const oracleFlavor = await oracleFlavorAncestryProof();
   const profileData = await additionalProfileDataModules(
     new Set([...consolidation.newModules, ...alphaEditor.newModules]),
   );
@@ -295,6 +305,8 @@ async function verify() {
     (file) =>
       ![
         ...profileData,
+        ...Object.keys(modernStyles.newModules),
+        oracleFlavor.addition.file,
         ...Object.keys(profileBody.newModules),
         ...Object.keys(profileAdapter.newModules),
         ...Object.keys(hostWorker.dependencies),
@@ -349,6 +361,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(modernStyles.files, relative) ||
             Object.hasOwn(profileBody.files, relative) ||
             Object.hasOwn(profileAdapter.files, relative) ||
             Object.hasOwn(walkers.files, relative) ||

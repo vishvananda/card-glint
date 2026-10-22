@@ -1,3 +1,4 @@
+import { preM21StyleSource } from './m21-style-ancestry.mjs';
 // Exact default/candidate pixel equivalence for scoped rules reflow metadata.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -57,11 +58,11 @@ function restore(file, bytes, p) {
 }
 /** Immutable proof dependency reconstruction only; never approves score reuse. */
 export async function profileBodyProofDependency(file, bytes) {
-  return restore(file, bytes, await proof()).bytes;
+  return restore(file, await preM21StyleSource(file, bytes), await proof()).bytes;
 }
 export async function profileBodySource(file, bytes, canRestore) {
   const p = await proof(),
-    r = restore(file, bytes, p);
+    r = restore(file, await preM21StyleSource(file, bytes), p);
   if (!r.changed) return { bytes, changedProfile: false };
   return (await canRestore(p))
     ? { bytes: r.bytes, changedProfile: false }

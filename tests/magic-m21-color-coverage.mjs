@@ -171,7 +171,7 @@ try {
     { typeLine: 'Legendary Creature' },
     { typeLine: 'Artifact' },
     { typeLine: 'Planeswalker' },
-    { typeLine: 'Land', colors: [] },
+    { typeLine: 'Legendary Land', colors: [] },
     { setCode: 'unmeasured' },
     { colorCalibration: undefined },
     { borderColor: 'white' },
@@ -182,6 +182,7 @@ try {
       false,
       JSON.stringify(excluded),
     );
+  assert.equal(hasCalibratedFramePigment({ ...face, typeLine: 'Land', colors: [] }), true);
   assert.ok(!Object.keys(pigment).some((url) => url.includes('/legendary_crowns/')));
 } finally {
   await server.close();

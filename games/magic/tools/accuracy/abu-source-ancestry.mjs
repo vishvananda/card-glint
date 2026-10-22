@@ -61,6 +61,9 @@ async function earlyProof() {
 /** Exact printing/component footprint; wording readiness is separate from a
  * rendered-layout fit. Unchanged components may retain their old receipts. */
 export async function earlyCalibrationAffected(set, group, task, originalInput = false) {
+  // M21 styles changed intentionally; historical reconstruction cannot retain
+  // their old fits. References and original wording inputs keep independent guards.
+  if (set === 'm21' && !originalInput && task !== 'references') return true;
   const proof = await earlyProof(),
     ids = new Set(group.printingIds ?? []);
   if (originalInput && set !== '2ed') return false;

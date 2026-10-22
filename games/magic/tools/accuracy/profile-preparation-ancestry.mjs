@@ -1,3 +1,4 @@
+import { m21StyleProfileSource } from './m21-style-ancestry.mjs';
 import { profileBodySource } from './body-profile-ancestry.mjs';
 import {
   profileAdapterProofDependency,
@@ -88,6 +89,9 @@ async function inactive(p, set, readProfile) {
  * unchanged default profile. A changed/new profile retains current guards;
  * unknown helper edits reject even if a receipt marker is supplied. */
 export async function profilePreparationSource(file, bytes, set, readProfile = readOptional) {
+  const modern = await m21StyleProfileSource(file, bytes, set);
+  if (modern.changedProfile) return modern;
+  bytes = modern.bytes;
   const body = await profileBodySource(file, bytes, (p) => inactive(p, set, readProfile));
   if (body.changedProfile) return body;
   bytes = body.bytes;
