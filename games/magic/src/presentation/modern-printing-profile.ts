@@ -7,7 +7,19 @@ export function modernPrintingProfile(face: RenderedCardInput) {
 }
 export function modernPrintingProfileKey(face: RenderedCardInput): readonly unknown[] {
   const profile = modernPrintingProfile(face);
-  return profile ? [['modern-printing', face.setCode?.toLowerCase(), profile]] : [];
+  if (!profile) return [];
+  // A face key carries only the material it can paint, rather than six copies
+  // of the shared source masks for every card in a collection.
+  const { ordinaryPlates: _plates, ...style } = profile;
+  const plates = modernOrdinaryPlates(face);
+  const type = face.canonicalTypeLine ?? face.typeLine ?? '';
+  const color =
+    (face.artifact ?? /\bArtifact\b/.test(type))
+      ? 'a'
+      : (face.frameColors ?? face.colors ?? [])[0]?.toLowerCase();
+  const material =
+    plates && Object.entries(plates).find(([url]) => url.endsWith('/' + color + '.png'));
+  return [['modern-printing', face.setCode?.toLowerCase(), style, material ?? null]];
 }
 
 /** Source-compatible ordinary M15 information lines, including planeswalkers.
@@ -34,10 +46,12 @@ export function modernOrdinaryPlates(face: RenderedCardInput) {
     !plates ||
     (face.layout && face.layout !== 'normal') ||
     face.legendary ||
+    face.land ||
+    (face.borderColor !== undefined && face.borderColor !== 'black') ||
     /\b(Legendary|Land|Planeswalker|Saga|Class|Battle|Vehicle)\b/.test(type) ||
     /^Level up\b/m.test(face.rulesText ?? '') ||
     colors.length > 1 ||
-    (/\bArtifact\b/.test(type) ? colors.length > 0 : colors.length !== 1)
+    ((face.artifact ?? /\bArtifact\b/.test(type)) ? colors.length > 0 : colors.length !== 1)
   )
     return undefined;
   return plates;

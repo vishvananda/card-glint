@@ -37,7 +37,7 @@ export function printingColorSource(face: RenderedCardInput) {
   if (plate) {
     if (plate.rightFrame) return undefined;
     return {
-      key: `${set}/${border}/${face.frameAssetFamily}/${plate.frame.split('/').at(-1)}`,
+      key: `${set}/${border}/${face.frameAssetFamily ?? 'm15-accurate'}/${plate.frame.split('/').at(-1)}`,
       family: 'plate' as const,
       frame: plate.frame,
       rect: plate.rects.frame,

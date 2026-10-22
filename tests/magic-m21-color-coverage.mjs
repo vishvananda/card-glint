@@ -152,8 +152,21 @@ try {
       ([url, { blackPoint, outerStock, outerStockMaskSource, ...value }]) => [url, value],
     ),
   );
-  assert.deepEqual(pigment, evidence.profile.materials);
+  // The immutable component-source receipt remains historical evidence.
+  // The current default now uses the separately measured ordinary full plate.
+  assert.notDeepEqual(pigment, evidence.profile.materials);
+  assert(Object.keys(pigment).every((url) => url.includes('/m15/new/')));
+  const { modernOrdinaryPlates } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/modern-printing-profile.ts',
+  );
+  const selected = Object.fromEntries(
+    Object.entries(modernOrdinaryPlates(face)).map(
+      ([url, { blackPoint, outerStock, outerStockMaskSource, ...value }]) => [url, value],
+    ),
+  );
+  assert.deepEqual(pigment, selected);
   assert.equal(hasCalibratedFramePigment(face), true);
+  assert.equal(hasCalibratedFramePigment({ ...face, frameAssetFamily: 'm15-accurate' }), true);
   for (const excluded of [
     { typeLine: 'Legendary Creature' },
     { typeLine: 'Artifact' },
@@ -161,7 +174,6 @@ try {
     { typeLine: 'Land', colors: [] },
     { setCode: 'unmeasured' },
     { colorCalibration: undefined },
-    { frameAssetFamily: 'm15-accurate' },
     { borderColor: 'white' },
     { layout: 'token' },
   ])

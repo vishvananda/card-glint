@@ -1,3 +1,4 @@
+import { modernOrdinaryBaselineStudy } from './modern-ordinary-baseline-study.mjs';
 // Source-bound Original baseline. Registration and scoring are separate steps.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -10,9 +11,19 @@ import { root, hash, sourceHash, writeJson } from './common.mjs';
 const [inputFile, outputDirectory, ...options] = process.argv.slice(2);
 const allowed = ['--retain-modern-controls', '--retain-component-rules'];
 const study = allowed.find((flag) => options.includes(flag));
+const componentBaseline = options.includes('--component-source-baseline');
+assert(
+  !(componentBaseline && study),
+  'Do not combine a source baseline with a retained-layout trial',
+);
 const materialIndex = options.indexOf('--materials');
 const materialFile = materialIndex < 0 ? undefined : options[materialIndex + 1];
+assert(
+  !(componentBaseline && materialFile),
+  'A component-source baseline cannot recolor absent plates',
+);
 const expectedOptions = [
+  ...(componentBaseline ? ['--component-source-baseline'] : []),
   ...(study ? [study] : []),
   ...(materialFile ? ['--materials', materialFile] : []),
 ];
@@ -23,7 +34,7 @@ assert(
 );
 assert(
   outputDirectory,
-  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS]',
+  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline]',
 );
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
@@ -51,6 +62,7 @@ if (materials) {
 }
 const session = await openBrowser(inputs, {
   plugins: [
+    ...(componentBaseline ? [modernOrdinaryBaselineStudy()] : []),
     ...(study ? [modernPlateControlsStudy({ rules: study === '--retain-component-rules' })] : []),
     ...(materials ? [modernMaterialStudy()] : []),
   ],
@@ -61,6 +73,15 @@ try {
     await import('/games/magic/src/data/eager-wording.ts');
   });
   const source = {
+    ...(componentBaseline
+      ? {
+          componentSourceBaseline: {
+            toolHash: hash(
+              await readFile(new URL('./modern-ordinary-baseline-study.mjs', import.meta.url)),
+            ),
+          },
+        }
+      : {}),
     ...(materialBytes
       ? {
           materialStudy: {

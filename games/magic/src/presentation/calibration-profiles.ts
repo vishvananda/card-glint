@@ -1,3 +1,4 @@
+import { modernOrdinaryPlates } from './modern-printing-profile.js';
 import {
   hasPrintingStockCandidate,
   printingBlackPointMaterials,
@@ -86,6 +87,8 @@ function baseFrameMaterials(face: RenderedCardInput): Readonly<Record<string, Fr
   if (face.frameTemplate === 'future') return futureFrameMaterials(face);
   if (face.setCode?.toLowerCase() === 'plc') return planarFrameMaterials(face);
   if (!hasColorCalibration(face)) return {};
+  const ordinary = modernOrdinaryPlates(face);
+  if (ordinary) return ordinary;
   const dualPlan = retroDualFrame(face);
   if (dualPlan) {
     const result: Record<string, FrameHsb> = {};

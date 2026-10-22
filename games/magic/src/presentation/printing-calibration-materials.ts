@@ -34,8 +34,7 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
       ? undefined
       : ((plate ? planarCalibratedStock(original, plate.frame) : undefined) ??
         (ordinary ? stock : exact.calibratedPrintingStock(original)));
-  const measured =
-    choice === 'source' ? {} : { ...exact.calibratedFrameMaterials(original), ...ordinary };
+  const measured = choice === 'source' ? {} : exact.calibratedFrameMaterials(original);
   const materials: Record<string, FrameHsb> = explicitProfile ? {} : { ...measured };
   const fallbackAssets: string[] = [];
   let border = explicitProfile ? undefined : measuredStock;

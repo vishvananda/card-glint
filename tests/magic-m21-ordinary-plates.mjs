@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises';
+import { modernOrdinaryBaselineStudy } from '../games/magic/tools/accuracy/modern-ordinary-baseline-study.mjs';
 import assert from 'node:assert/strict';
 import { createServer } from 'vite';
 const server = await createServer({
@@ -6,7 +8,7 @@ const server = await createServer({
 });
 try {
   await server.ssrLoadModule('/games/magic/src/data/eager.ts');
-  const { modernOrdinaryPlates } = await server.ssrLoadModule(
+  const { modernOrdinaryPlates, modernPrintingProfileKey } = await server.ssrLoadModule(
     '/games/magic/src/presentation/modern-printing-profile.ts',
   );
   const { framePlate } = await server.ssrLoadModule(
@@ -37,6 +39,18 @@ try {
     '/games/magic/src/presentation/styled-symbol-placement.ts',
   );
   const { faceSetSymbol } = await server.ssrLoadModule('/games/magic/src/presentation/assets.ts');
+  const { printingColorSource } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/printing-color-source.ts',
+  );
+  assert(printingColorSource(base).key.includes('/m15-accurate/'));
+  const key = JSON.stringify(modernPrintingProfileKey(base));
+  assert(key.includes('/m15/new/w.png'));
+  assert(!key.includes('/m15/new/u.png'));
+  assert(
+    !JSON.stringify(modernPrintingProfileKey({ ...base, typeLine: 'Land', colors: [] })).includes(
+      '/m15/new/',
+    ),
+  );
   const snapshot = structuredClone(base),
     plate = framePlate(base);
   assert(modernOrdinaryPlates(base));
@@ -49,6 +63,15 @@ try {
   const urls = canvasAssetUrls(base);
   assert(urls.includes(plate.frame));
   assert(urls.includes(plate.border));
+  const { calibratedFrameMaterials, hasCalibratedFramePigment } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/calibration-profiles.ts',
+  );
+  const { colorCalibrationCoverage } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/color-calibration-coverage.ts',
+  );
+  assert(hasCalibratedFramePigment(base));
+  assert(colorCalibrationCoverage(base).frame);
+  assert.deepEqual(calibratedFrameMaterials(base), modernOrdinaryPlates(base));
   const resolved = printingCalibrationMaterials(base);
   assert.equal(resolved.border, '#16130e');
   assert(resolved.materials[plate.frame]?.outerStockMaskSource === plate.border);
@@ -74,6 +97,11 @@ try {
     { layout: 'transform' },
     { layout: 'planeswalker' },
     { legendary: true },
+    { land: true },
+    { artifact: true },
+    { borderColor: 'white' },
+    { borderColor: 'silver' },
+    { frameColors: ['R', 'G'] },
     { typeLine: 'Legendary Creature — Dog' },
     { typeLine: 'Land' },
     { typeLine: 'Artifact', colors: ['W'] },
@@ -101,6 +129,18 @@ try {
 } finally {
   await server.close();
 }
+const file = 'games/magic/src/presentation/modern-printing-profile.ts';
+const source = await readFile(file, 'utf8'),
+  plugin = modernOrdinaryBaselineStudy();
+const disabled = plugin.transform(source, '/' + file);
+const marker = 'export function modernOrdinaryPlates(';
+assert.equal(
+  disabled.code.slice(0, disabled.code.indexOf(marker)),
+  source.slice(0, source.indexOf(marker)),
+);
+assert(disabled.code.endsWith('return undefined; }\n'));
+assert.throws(() => plugin.transform(source + '// Changed helper\n', '/' + file));
+assert.equal(plugin.transform(source, '/other.ts'), undefined);
 console.log(
   'M21 ordinary plate source, shared materials, retained controls, source mode and excluded families passed.',
 );
