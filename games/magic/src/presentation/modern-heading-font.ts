@@ -1,3 +1,4 @@
+import type { CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { modernPrintingProfile } from './modern-printing-profile.js';
 import { canvasFonts } from './canvas-font-registry.js';
@@ -20,6 +21,23 @@ export function shapeModernHeading(text: string, family: string): string {
   return family === MODERN_HEADING_FAMILY
     ? text.replace(/n(?=[gjpy\u00fd\u00fe\u00ff\u1ef3J\s]|$)/gu, '\ue009')
     : text;
+}
+
+const UNADJUSTED_TYPE = { dx: 0, dy: 0, size: 1, width: 1 } as const;
+
+/** Match measurement and painting before the caller computes long-line fitting.
+ * Whole-pixel hinted advances accumulate differently for each word; do not
+ * compensate for that drift with per-card tracking. Context is caller-saved. */
+export function prepareModernTypeText(
+  context: CanvasContext,
+  face: RenderedCardInput,
+  source: 'plate' | 'components' | 'walker',
+) {
+  const adjustment = modernPrintingProfile(face)?.typeText?.[source];
+  if (!adjustment) return UNADJUSTED_TYPE;
+  context.textRendering = 'geometricPrecision';
+  context.fontKerning = 'normal';
+  return adjustment;
 }
 
 /** Resolve once during preparation, including worker FontFaceSet realms. */

@@ -1,6 +1,7 @@
 import {
   loadModernHeadingFont,
   modernHeadingFamily,
+  prepareModernTypeText,
   shapeModernHeading,
 } from './modern-heading-font.js';
 import { loadModernFooterFont } from './modern-footer-font.js';
@@ -952,15 +953,10 @@ export function paintAssembledFace(
   );
   // Preserve clearance on already crowded type lines; do not reduce their
   // font height merely to apply the shared width correction.
+  context.save();
+  const typeFit = prepareModernTypeText(context, face, planeswalker ? 'walker' : 'components');
   context.font = `${FACE_TEXT.typeFont * textScale}px "${headingFamily}", Georgia`;
-  paintFittedText(
-    context,
-    face.typeLine ?? '',
-    textX + (planeswalker ? 1.5 : 0),
-    typeCenter,
-    typeWidth,
-    FACE_TEXT.typeFont * textScale,
-    false,
+  const typeWidthScale =
     kind === 'normal' && !panel
       ? NORMAL_FRAME_GEOMETRY.typeWidthScale
       : planeswalker &&
@@ -968,11 +964,21 @@ export function paintAssembledFace(
             WALKER_GEOMETRY.typeWidth <=
             typeWidth * 0.97
         ? WALKER_GEOMETRY.typeWidth
-        : 1,
+        : 1;
+  paintFittedText(
+    context,
+    face.typeLine ?? '',
+    textX + (planeswalker ? 1.5 : 0) + typeFit.dx,
+    typeCenter + typeFit.dy,
+    typeWidth - typeFit.dx,
+    FACE_TEXT.typeFont * textScale * typeFit.size,
+    false,
+    typeWidthScale * typeFit.width,
     headingFamily,
     0,
     face.textInk,
   );
+  context.restore();
   paintPrintingElement(context, face, 'setSymbol', () =>
     paintAdjustedSymbols(context, originalSymbolBounds, face.symbolAdjustment?.set, () => {
       if (setIcon) {

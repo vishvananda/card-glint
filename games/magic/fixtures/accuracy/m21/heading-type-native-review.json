@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "adopted-shared-type-fits-native-review",
+  "eligibleForPublication": false,
+  "profileRevision": 7,
+  "scope": "Three source-family fits, Original wording, fixed affine scan normalization. Fill plus symmetric-edge regional objectives; backgrounds masked before candidate fitting. All56 production crops exactly match selected trials. Scan-pose certification and remaining component audits stay open.",
+  "source": {
+    "renderer": "699732b71e8c269493a5d5d6056efa08a795317d6dee9e6686e25efbeef8d42f",
+    "beforeScores": "04603558ae5a159ac36b3426f14ada146b35b62026b5f531ace1f389c93c7a0a",
+    "afterScores": "87a37d4532c45a432d546143591f918966f6084441f9b0fe8fa67d9243e55008",
+    "nativeCapture": "506cf8b23f627cd122cbd8d8cf20fcfa92c868114048369e7e769ab537c2aaa0",
+    "regionalFit": "a681d100eb32f5f0ad5b2055d89d3f4faab8c7bdc3c997c7f9646cd0f5a98412",
+    "integrationParity": "76b9c49ee77e9e13dcaa939a9a6327e3172619032e83663e848da638a17b90c8"
+  },
+  "summary": {
+    "cards": 297,
+    "nativeLayers": 594,
+    "before100": 78.2936227141113,
+    "after100": 78.8703964200728,
+    "typeBefore100": 90.29788111483357,
+    "typeAfter100": 96.69215554797593,
+    "improved": 285,
+    "regressed": 12,
+    "regionalFit": 51,
+    "unfittedDeckControls": 5,
+    "nativeParityMaxDelta": 0,
+    "coverage": 0.9277395068699427
+  },
+  "fits": [
+    {
+      "source": "plate",
+      "count": 36,
+      "controlCount": 0,
+      "before100": 81.95382041490966,
+      "after100": 94.83810609743722,
+      "adjustment": {
+        "dx": -1.25,
+        "dy": 0.5,
+        "size": 1.025,
+        "sx": 0.985,
+        "tracking": 0,
+        "optical": 0,
+        "precision": 1
+      },
+      "atBoundary": []
+    },
+    {
+      "source": "components",
+      "count": 6,
+      "controlCount": 0,
+      "before100": 72.73619091532663,
+      "after100": 85.71502199776026,
+      "adjustment": {
+        "dx": -0.75,
+        "dy": 0.25,
+        "size": 1,
+        "sx": 1.01,
+        "tracking": 0,
+        "optical": 0,
+        "precision": 1
+      },
+      "atBoundary": []
+    },
+    {
+      "source": "walker",
+      "count": 9,
+      "controlCount": 5,
+      "before100": 79.08724686306554,
+      "after100": 94.49461210819882,
+      "adjustment": {
+        "dx": -0.75,
+        "dy": 1.5,
+        "size": 1,
+        "sx": 1,
+        "tracking": 0,
+        "optical": 0,
+        "precision": 1
+      },
+      "atBoundary": []
+    }
+  ],
+  "review": [
+    "Contextual n forms and name typography remain unchanged. Fractional metrics are enabled only before M21 type measurement and paint, then restored; rules/P/T/footer retain their metrics.",
+    "Long type lines use the existing shrink policy with fractional measurements; no per-card spacing correction or scan realignment.",
+    "All fitting samples improve in the regional filled/edge objective, as do all five unfitted deck controls. Full-card broad type regions also include fixed frame edges, so their changes can differ from text-only scores."
+  ],
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/heading-type-native-review.json.gz",
+    "sha256": "73f2dcb6d0943ead581f4c53a1aa5127910ded37b67d5c211f4073468e78aafa",
+    "contentSha256": "ce5783799fd897622bc7c367337a335c49a520c63609ca862bd571df20c543ef"
+  }
+}

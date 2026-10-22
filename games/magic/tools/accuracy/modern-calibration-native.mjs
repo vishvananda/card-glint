@@ -67,6 +67,12 @@ assert(
   outputDirectory,
   'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline] [--land-layer-study] [--colored-artifact-study|--colored-artifact-pinlines-study] [--mana-study PARAMETERS]',
 );
+// The eager table registry imports generated per-set payloads. Rebuild before
+// source fingerprints and browser imports so a source edit cannot fit stale data.
+execFileSync(process.execPath, [path.join(root, 'games/magic/tools/build-set-data.mjs')], {
+  cwd: root,
+  stdio: 'inherit',
+});
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
 assert(inputs.entries.length && inputs.entries.every((e) => e.face.wordingMode === 'original'));

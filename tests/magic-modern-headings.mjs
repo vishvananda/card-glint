@@ -6,7 +6,7 @@ const server = await createServer({
 });
 try {
   await server.ssrLoadModule('/games/magic/src/data/eager.ts');
-  const { modernHeadingFamily, shapeModernHeading, MODERN_HEADING_FAMILY } =
+  const { modernHeadingFamily, prepareModernTypeText, shapeModernHeading, MODERN_HEADING_FAMILY } =
     await server.ssrLoadModule('/games/magic/src/presentation/modern-heading-font.ts');
   const { paintFittedText } = await server.ssrLoadModule(
     '/games/magic/src/presentation/canvas-text.ts',
@@ -37,6 +37,20 @@ try {
     assert.equal(shapeModernHeading(input, 'CardRenderer MTG Beleren'), input);
     assert.equal(shapeModernHeading(expected, MODERN_HEADING_FAMILY), expected);
     assert.equal(expected.length, input.length, 'Ink-span indices remain stable');
+  }
+  const ordinary = { textRendering: 'auto', fontKerning: 'auto' };
+  prepareModernTypeText(ordinary, { ...base, setCode: 'war' }, 'plate');
+  assert.deepEqual(ordinary, { textRendering: 'auto', fontKerning: 'auto' });
+  for (const source of ['plate', 'components', 'walker']) {
+    const context = { textRendering: 'auto', fontKerning: 'auto' };
+    const fit = prepareModernTypeText(context, base, source);
+    assert.equal(context.textRendering, 'geometricPrecision');
+    assert.equal(context.fontKerning, 'normal');
+    assert(fit.size > 0 && fit.width > 0);
+    assert.deepEqual(
+      prepareModernTypeText(context, { ...base, calibration: 'source' }, source),
+      fit,
+    );
   }
   const measured = [],
     painted = [];

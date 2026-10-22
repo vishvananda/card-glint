@@ -27,10 +27,19 @@ export interface ModernWalkerTextAdjustment {
   readonly leading: number;
 }
 
+export interface ModernHeadingAdjustment {
+  readonly dx: number;
+  readonly dy: number;
+  readonly size: number;
+  readonly width: number;
+}
+
 export interface ModernPrintingProfile {
   readonly revision: number;
   /** Intrinsic heading glyphs, independent of color calibration policy. */
   readonly headingFont?: 'beleren-2016';
+  /** Fractional design metrics and source-family fits in 488×680 painter units. */
+  readonly typeText?: Readonly<Record<'plate' | 'components' | 'walker', ModernHeadingAdjustment>>;
   readonly mana?: {
     readonly normal: ManaSymbolTransform;
     readonly walker: ManaSymbolTransform;
@@ -82,8 +91,13 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 6,
+    revision: 7,
     headingFont: 'beleren-2016',
+    typeText: {
+      plate: { dx: -1.25, dy: 0.5, size: 1.025, width: 0.985 },
+      components: { dx: -0.75, dy: 0.25, size: 1, width: 1.01 },
+      walker: { dx: -0.75, dy: 1.5, size: 1, width: 1 },
+    },
     ...M21_COMPONENT_CALIBRATION,
     ordinaryPlates: M21_ORDINARY_PLATES,
     landPlates: M21_LAND_PLATES,

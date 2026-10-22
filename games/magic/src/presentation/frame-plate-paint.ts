@@ -1,4 +1,4 @@
-import { modernHeadingFamily } from './modern-heading-font.js';
+import { modernHeadingFamily, prepareModernTypeText } from './modern-heading-font.js';
 import { paintModernArtifactLayer } from './modern-artifact-layer.js';
 import { paintModernLandLayers } from './modern-land-layers.js';
 import { modernOrdinaryPlates } from './modern-printing-profile.js';
@@ -227,18 +227,19 @@ export function paintFramePlateFace(
   const [x, y, w, h] = px(rects.type);
   c.save();
   const typeFit = planarLettering(face, plate.frame, 'type');
+  const modernType = prepareModernTypeText(c, face, 'plate');
   c.translate(typeFit.dx, typeFit.dy);
   paintColorshiftedHeading(c, face, plate.frame);
   c.font = `bold ${plate.typeSize}px "${family}", Georgia`;
   paintFittedText(
     c,
     face.typeLine ?? '',
-    x,
-    y + h / 2,
-    icon ? bounds[0] - x - 7 : w,
-    plate.typeSize * typeFit.size,
+    x + modernType.dx,
+    y + h / 2 + modernType.dy,
+    (icon ? bounds[0] - x - 7 : w) - modernType.dx,
+    plate.typeSize * typeFit.size * modernType.size,
     true,
-    1,
+    modernType.width,
     family,
     face.frameTreatment === 'colorshifted' ? 0.5 : 0,
     face.textInk,
