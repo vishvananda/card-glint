@@ -12,7 +12,12 @@ import { PLANESWALKER_RULE_GEOMETRY, planeswalkerRuleRows } from './planeswalker
 import { paintRulesLayout } from './rules-paint.js';
 import type { RulesLayout } from './rules-layout.js';
 import { planeswalkerLowerPanel } from './planeswalker-lower-frame.js';
-import { paintPlaneswalkerCost } from './planeswalker-loyalty.js';
+import {
+  paintPlaneswalkerCost,
+  planeswalkerCostAdjustment,
+  planeswalkerCostInkCenter,
+} from './planeswalker-loyalty.js';
+import type { ModernWalkerColonAdjustment } from './modern-printing-profiles.js';
 export function ruleBadgeAsset(kind: SingleFrame, badge: string): string | null {
   if (kind === 'saga') return /^(I|II|III|IV)$/.test(badge) ? componentAsset('saga', badge) : null;
   return componentAsset(
@@ -68,10 +73,26 @@ function paintPlaneswalkerPaperBase(context: CanvasContext, face: RenderedCardIn
   context.restore();
 }
 
-function paintAbilityColon(context: CanvasContext, x: number, center: number) {
+function paintAbilityColon(
+  context: CanvasContext,
+  x: number,
+  center: number,
+  adjustment?: ModernWalkerColonAdjustment,
+) {
   context.save();
+  if (adjustment) {
+    if (adjustment.fractionalMetrics) {
+      context.textRendering = 'geometricPrecision';
+      context.fontKerning = 'normal';
+    }
+    x += adjustment.dx;
+    center += adjustment.dy;
+    context.translate(x, 0);
+    context.scale(adjustment.width, 1);
+    x = 0;
+  }
   context.fillStyle = PLANESWALKER_RULE_GEOMETRY.colonInk;
-  context.font = `${PLANESWALKER_RULE_GEOMETRY.colonFontSize}px ${PLANESWALKER_RULE_GEOMETRY.colonFontFamily}`;
+  context.font = `${PLANESWALKER_RULE_GEOMETRY.colonFontSize * (adjustment?.size ?? 1)}px ${PLANESWALKER_RULE_GEOMETRY.colonFontFamily}`;
   context.textAlign = 'center';
   context.textBaseline = 'alphabetic';
   const ink = context.measureText(':');
@@ -92,6 +113,7 @@ export function paintSpecialRules(
   const kind = faceFrame(face),
     saga = kind === 'saga',
     rect = faceRects(face).rules;
+  const walker = saga ? undefined : modernWalkerProfile(face);
   const x = rect[0] * FACE_WIDTH,
     y = rect[1] * FACE_HEIGHT,
     w = rect[2] * FACE_WIDTH,
@@ -153,23 +175,33 @@ export function paintSpecialRules(
           context.shadowBlur = 3 * scale;
           context.shadowOffsetY = 2 * scale;
         }
-        context.drawImage(image, bx, by, badgeW, badgeH);
+        const graphic = walker?.badges;
+        if (graphic) {
+          const cost = planeswalkerCostAdjustment(badge, walker?.loyalty);
+          const width = badgeW * graphic.width,
+            height = badgeH * graphic.height;
+          context.drawImage(
+            image,
+            bx + (badgeW - width) / 2 + graphic.dx + (cost?.dx ?? 0),
+            by + (badgeH - height) / 2 + graphic.dy + (cost?.dy ?? 0),
+            width,
+            height,
+          );
+        } else context.drawImage(image, bx, by, badgeW, badgeH);
         context.restore();
       } else {
         context.fillStyle = '#29231c';
         context.fillRect(bx, by, badgeW, badgeH);
       }
       if (!saga) {
-        paintPlaneswalkerCost(
-          context,
-          badge,
-          [bx, by, badgeW, badgeH],
-          modernWalkerProfile(face)?.loyalty,
-        );
+        paintPlaneswalkerCost(context, badge, [bx, by, badgeW, badgeH], walker?.loyalty);
         paintAbilityColon(
           context,
           bx + badgeW + PLANESWALKER_RULE_GEOMETRY.colonOffsetX,
-          by + badgeH / 2,
+          walker?.colon
+            ? planeswalkerCostInkCenter(badge, by + badgeH / 2, walker.loyalty)
+            : by + badgeH / 2,
+          walker?.colon,
         );
       } else if (!image) {
         context.fillStyle = 'white';

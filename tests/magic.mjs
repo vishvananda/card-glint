@@ -280,6 +280,24 @@ const server = createServer(async (req, res) => {
   }
 });
 await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
+// Headless Linux can fail local() font matching even when fontconfig finds the
+// face. Load installed substitute outlines directly; never download test fonts.
+let fixtureFonts = null;
+for (const directory of [
+  '/usr/share/fonts/truetype/liberation2',
+  '/usr/share/fonts/truetype/liberation',
+]) {
+  try {
+    const [normal, italic] = await Promise.all(
+      ['Regular', 'Italic'].map((style) => readFile(`${directory}/LiberationSerif-${style}.ttf`)),
+    );
+    const source = (bytes) => `url("data:font/ttf;base64,${bytes.toString('base64')}")`;
+    fixtureFonts = { normal: source(normal), italic: source(italic) };
+    break;
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+}
 // This checks Canvas contracts; GPU completion/readback is covered by browser tests.
 const browser = await chromium.launch({ args: ['--no-sandbox', '--disable-gpu'] });
 try {
@@ -296,7 +314,11 @@ try {
       : route.fulfill({ status: 404, body: '' }),
   );
   await page.goto(`http://127.0.0.1:${server.address().port}/`);
+  await page.evaluate((fonts) => {
+    globalThis.__magicFixtureFonts = fonts;
+  }, fixtureFonts);
   const result = await page.evaluate(async (fixtures) => {
+    const fixtureFonts = globalThis.__magicFixtureFonts;
     const { magic, opticalDocument, withCardWording } = await import('/magic.js');
     const { loadCanvasFonts, layoutRules, retroTextLayout, faceManaAssets } = await import(
       '/magic-presentation.js'
@@ -325,7 +347,10 @@ try {
       ['Matrix', 'normal', '400 700'],
     ])
       document.fonts.add(
-        await new FontFace('CardRenderer MTG ' + family, local, { style, weight }).load(),
+        await new FontFace('CardRenderer MTG ' + family, fixtureFonts?.[style] ?? local, {
+          style,
+          weight,
+        }).load(),
       );
     await loadCanvasFonts(); // A failed attempt must be retryable after CSS/FontFaces arrive.
     const bitmap = document.createElement('canvas');
@@ -656,7 +681,10 @@ try {
       shortLegendsLayout.lines.some((line) => Math.abs(line.x + line.width / 2 - 244) > 0.01)
     )
       throw Error('Short Legends printing lost its large centered face');
-    const leftLegends = retroTextLayout(ctx, { ...shortLegends, rulesAlignment: { mode: 'left' } });
+    const leftLegends = retroTextLayout(ctx, {
+      ...shortLegends,
+      rulesAlignment: { mode: 'left' },
+    });
     if (leftLegends.lines.some((line) => line.x !== 72))
       throw Error('Legends ignores explicit left alignment');
     const explicitLegends = retroTextLayout(ctx, {
@@ -751,7 +779,10 @@ try {
       ...shortFourth,
       rulesParagraphs: [
         paladinParagraphs[0],
-        { role: 'flavor', runs: [{ text: 'A longer flavor passage. '.repeat(12), italic: true }] },
+        {
+          role: 'flavor',
+          runs: [{ text: 'A longer flavor passage. '.repeat(12), italic: true }],
+        },
       ],
     });
     if (longFourth.lines.some((line) => line.x !== longFourth.x))
@@ -1015,7 +1046,10 @@ try {
         runs: [{ text: 'Serendib Efreet does 1 damage to you during your upkeep.' }],
       },
     ];
-    const largeRevised = retroTextLayout(ctx, { ...shortRevised, rulesParagraphs: flyingPassage });
+    const largeRevised = retroTextLayout(ctx, {
+      ...shortRevised,
+      rulesParagraphs: flyingPassage,
+    });
     if (
       largeRevised.size !== 27.5 ||
       largeRevised.lines.length < 3 ||
@@ -1071,7 +1105,11 @@ try {
       ...fixtures[3],
       rulesParagraphs: [
         ...paragraphs,
-        { role: 'flavor', align: 'right', runs: [{ text: '—Original attribution', italic: true }] },
+        {
+          role: 'flavor',
+          align: 'right',
+          runs: [{ text: '—Original attribution', italic: true }],
+        },
       ],
     });
     const attribution = retro.lines.at(-1);
@@ -1334,13 +1372,15 @@ try {
             bottom = Math.max(bottom, Math.floor(i / 4 / canvas.width));
           }
         const width = ((right - left + 1) * 488) / canvas.width;
-        if (
-          customSymbol
-            ? width < 27 || width > 32
-            : coreShield
-              ? width < 55 || width > 60
-              : width < 47 || width > 52
-        )
+        let minimumWidth = customSymbol ? 27 : coreShield ? 55 : 47;
+        let maximumWidth = customSymbol ? 32 : coreShield ? 60 : 52;
+        if (setCode === 'm21') {
+          // The measured full-plate adapter uses a narrower symbol window.
+          // Thresholded black ink loses more antialiasing at the table tier.
+          minimumWidth = customSymbol ? 25 : tier === 'table' ? 50 : 54;
+          maximumWidth = customSymbol ? 29 : tier === 'table' ? 54 : 58;
+        }
+        if (width < minimumWidth || width > maximumWidth)
           throw Error(
             `Visible set glyph has the wrong size: ${setCode}, custom=${customSymbol}, ${tier}: ${width}`,
           );

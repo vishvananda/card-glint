@@ -105,6 +105,8 @@ export const M21_COMPONENT_CALIBRATION: Pick<
         fractionalMetrics: true,
       },
     },
+    colon: { dx: 1.5, dy: -1, size: 0.9625, width: 1.1, fractionalMetrics: true },
+    badges: { dx: -0.75, dy: 0.5, width: 1.105, height: 1.03 },
     paperColors: {
       Colourless: '#eaebf1f0',
       W: '#f2e5d4f0',

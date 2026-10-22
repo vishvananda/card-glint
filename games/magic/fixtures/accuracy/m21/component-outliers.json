@@ -2,7 +2,7 @@
   "schema": 1,
   "set": "m21",
   "status": "open-component-outliers",
-  "renderer": "e0887b48060b9525fb3adc7b5440776823ee8449598dee949b32cc3f8d3bbb73",
+  "renderer": "a6380d898971d80fa7527d5e8fe8dbd5fdf3e19d015ebbc22ba37b615c20b842",
   "items": [
     {
       "id": "planeswalker-art-spill",
@@ -29,8 +29,16 @@
       "component": "stats",
       "status": "shared-fit-adopted",
       "scope": "All14 Original planeswalkers",
-      "review": "All14 starting values and42 ability costs improve with shared role/width fits. Badge outline/shadow and colon review remains separate.",
+      "review": "All14 starting values and42 ability costs improve with shared role/width fits. Badge geometry and colons have their own adopted regional receipt; the shadow audit remains separate.",
       "evidence": "games/magic/fixtures/accuracy/m21/walker-loyalty-native-review.json"
+    },
+    {
+      "id": "planeswalker-badge-colon-residuals",
+      "component": "rules/badges",
+      "status": "shared-fit-adopted-with-residuals",
+      "scope": "All42 Original ability fields across14 printings",
+      "review": "Actual combined production improves40 of42 badge fields and40 of42 colon fields. Regressions: Ugin#1 first badge, Teferi#276 first badge, Teferi#275 second colon and Teferi#277 second colon. No printing-specific adjustment was added. Badge shadow, static wrapping and final normalization remain under review.",
+      "evidence": "games/magic/fixtures/accuracy/m21/walker-badge-colon-native-review.json"
     }
   ]
 }

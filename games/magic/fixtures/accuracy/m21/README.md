@@ -1,16 +1,21 @@
 # M21 calibration evidence
 
-The unreleased calibration branch is at profile revision 9. The
+The unreleased calibration branch is at profile revision 10. The
 [foreground material review](walker-foreground-native-review.json) improves all
 35 clean nonfoil planeswalker regions; mean OKLab distance falls from 4.87 to
 0.53 (times 100, smaller is better). The shared
 [loyalty review](walker-loyalty-native-review.json) improves all 14 starting
 values and 42 ability costs, including the multi-digit labels. Its native replay
 matches every selected crop and leaves pixels outside those regions unchanged.
-Neither review certifies the complete set.
+The [badge/colon review](walker-badge-colon-native-review.json) raises actual
+combined badge overlap from 61.95 to 86.48/100 and colon overlap from 36.01 to
+68.24/100. Each improves on 40 of 42 ability fields; all four residual field
+regressions stay listed. The 297-card diagnostic rises from 78.902 to
+78.935/100 with the same inputs, scan poses and metric. All 283 other faces and
+all 297 etchings remain byte-identical. These reviews do not certify the complete set.
 
 [Component outliers](component-outliers.json) retain missing illustration spill
-on Ugin, Basri and Garruk. Badge outlines/shadows, colons, remaining text/footer
+on Ugin, Basri and Garruk. Badge shadows, static wrapping, remaining text/footer
 and basic-symbol rim audits, scan-pose certification and modern-default transfer
 remain open. These branch measurements do not replace the published scores.
 

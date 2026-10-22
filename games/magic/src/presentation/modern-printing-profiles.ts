@@ -39,6 +39,17 @@ export interface ModernLoyaltyAdjustment extends ModernHeadingAdjustment {
   readonly fractionalMetrics?: boolean;
 }
 
+export interface ModernWalkerColonAdjustment extends ModernHeadingAdjustment {
+  readonly fractionalMetrics?: boolean;
+}
+
+export interface ModernWalkerBadgeAdjustment {
+  readonly dx: number;
+  readonly dy: number;
+  readonly width: number;
+  readonly height: number;
+}
+
 export interface ModernPrintingProfile {
   readonly revision: number;
   /** Intrinsic heading glyphs, independent of color calibration policy. */
@@ -63,6 +74,10 @@ export interface ModernPrintingProfile {
       /** Keep multi-digit costs inside the same source badge. */
       readonly wideCost: ModernLoyaltyAdjustment;
     };
+    /** Colon follows the visible cost ink, not the padded badge bitmap. */
+    readonly colon?: ModernWalkerColonAdjustment;
+    /** Scale the graphic about its center, then follow the reviewed cost translation. */
+    readonly badges?: ModernWalkerBadgeAdjustment;
     readonly paperColors: Readonly<Record<string, string>>;
     readonly rules: {
       readonly regular: ModernWalkerTextAdjustment;
@@ -104,7 +119,7 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 9,
+    revision: 10,
     headingFont: 'beleren-2016',
     typeText: {
       plate: { dx: -1.25, dy: 0.5, size: 1.025, width: 0.985 },

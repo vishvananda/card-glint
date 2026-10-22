@@ -34,6 +34,29 @@ export function paintPlaneswalkerLoyalty(
   );
 }
 
+type CostAdjustments = {
+  readonly cost: ModernLoyaltyAdjustment;
+  readonly wideCost: ModernLoyaltyAdjustment;
+};
+
+export function planeswalkerCostAdjustment(text: string, adjustments?: CostAdjustments) {
+  return adjustments?.[(text.match(/[0-9]/g)?.length ?? 0) > 1 ? 'wideCost' : 'cost'];
+}
+
+/** Shared visible-ink anchor for the cost label and its adjacent colon. */
+export function planeswalkerCostInkCenter(
+  text: string,
+  centerY: number,
+  adjustments?: CostAdjustments,
+): number {
+  const shape = text.startsWith('+') ? 'plus' : text === '0' ? 'zero' : 'minus';
+  return (
+    centerY +
+    PLANESWALKER_COST_GEOMETRY.numeralOffsetY[shape] +
+    (planeswalkerCostAdjustment(text, adjustments)?.dy ?? 0)
+  );
+}
+
 /** The source badge's black body is not centered in its image: plus has a top
  * point, minus a bottom point, and all three have transparent bottom padding.
  * Keep ability anchors independent of the visible numerals inside each shape. */
@@ -41,12 +64,9 @@ export function paintPlaneswalkerCost(
   c: CanvasContext,
   text: string,
   [x, y, width, height]: FaceRect,
-  adjustments?: {
-    readonly cost: ModernLoyaltyAdjustment;
-    readonly wideCost: ModernLoyaltyAdjustment;
-  },
+  adjustments?: CostAdjustments,
 ): void {
-  const adjustment = adjustments?.[(text.match(/[0-9]/g)?.length ?? 0) > 1 ? 'wideCost' : 'cost'];
+  const adjustment = planeswalkerCostAdjustment(text, adjustments);
   const geometry = PLANESWALKER_COST_GEOMETRY;
   const inkOffsetY =
     geometry.numeralOffsetY[text.startsWith('+') ? 'plus' : text === '0' ? 'zero' : 'minus'];

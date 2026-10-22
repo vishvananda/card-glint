@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "adopted-regional-native-fit-not-set-certification",
+  "source": {
+    "renderer": "a6380d898971d80fa7527d5e8fe8dbd5fdf3e19d015ebbc22ba37b615c20b842",
+    "beforeRenderer": "e0887b48060b9525fb3adc7b5440776823ee8449598dee949b32cc3f8d3bbb73",
+    "input": "01597eb2b6ab913fd0ea5d0a3a3464c0942afad862e63fc6fbc38ae6b4d5cafa",
+    "fullNative": "c6c8035430c409638c4ee45f0859e3a26de9105b7336a86fc56ae4e359368bf2",
+    "fullScores": "2fb240f770808c26794f2d1851aefef1903967824326ac88de6a2efbf04b46f3",
+    "normalizedReferences": "8221632fb3b9a60a103288364dccddf55a165b36adafd5bdea5964145a6886dd",
+    "badgeProposal": "89f7fc4559bcf5cc49c1c42b67faddcf3f0335d9570dfb325f80eaf8b62200bc",
+    "colonProposal": "002c31725e71f323abc84a73b9aa82de470ba97fdeaf5d5e0d9f3c57e8518184",
+    "nativeParity": "3f2cf27868527e75fdc56b968ca79171b87ceb831c322043638dcccdb12f6946",
+    "windowAudit": "75bfe74e1dd00a674e0c047a077409d964caa25777b304478db4691c1cc0cdef"
+  },
+  "method": {
+    "raster": [732, 1020],
+    "reference": [488, 680],
+    "framePoses": "Frozen v25 affine frame normalization, identical before/after; no text-derived or per-card render offsets.",
+    "fitTargets": {
+      "nonfoilPrintings": 9,
+      "distinctNames": 6,
+      "abilityFields": 27,
+      "weighting": "Each distinct nonfoil name weights one; four Teferi illustrations share one name; labels share each name weight."
+    },
+    "controls": { "foilOnlyPrintings": 5, "abilityFields": 15, "excludedFromFit": true },
+    "objective": "55% symmetric edge agreement and45% filled-ink overlap on grayscale, with fixed reference masks. Invert white-on-black badge samples. Badge fit measures the rim, not its shadow.",
+    "selection": "Shared cost-linked graphic scaling; nominal cost label rectangles are unchanged. Colons follow cost ink centers, not transparent bitmap padding or first ability lines. No card-specific adjustments.",
+    "validation": "Same development corpus plus five foil-only geometry controls, not an independent set. No actual zero-cost badge appears in M21; zero-cost transfer remains unvalidated."
+  },
+  "selected": {
+    "badge": { "dx": -0.75, "dy": 0.5, "width": 1.105, "height": 1.03 },
+    "colon": {
+      "anchor": "cost",
+      "precision": true,
+      "dx": 1.5,
+      "dy": -1,
+      "size": 0.9625,
+      "width": 1.1
+    }
+  },
+  "summary": {
+    "badge": {
+      "fields": 42,
+      "nonfoil": 27,
+      "meanBefore100": 61.953779433223296,
+      "meanAfter100": 86.47537812312623,
+      "improved": 40,
+      "regressed": [
+        {
+          "id": "9c017fa9-7021-417a-9c2e-3df409644fcf:0",
+          "name": "Ugin, the Spirit Dragon",
+          "number": "1",
+          "before": 0.790479401090266,
+          "after": 0.7770120915652101
+        },
+        {
+          "id": "a8bf5708-4222-46d2-b108-0ed4cf3c83c3:0",
+          "name": "Teferi, Master of Time",
+          "number": "276",
+          "before": 0.8149392311338444,
+          "after": 0.7385587821828506
+        }
+      ]
+    },
+    "colon": {
+      "fields": 42,
+      "nonfoil": 27,
+      "meanBefore100": 36.01100550067457,
+      "meanAfter100": 68.23829806658685,
+      "improved": 40,
+      "regressed": [
+        {
+          "id": "2d1ff397-2445-459a-ae4e-7bf1cd48f490:1",
+          "name": "Teferi, Master of Time",
+          "number": "275",
+          "before": 0.645141571403323,
+          "after": 0.5428552041531484
+        },
+        {
+          "id": "d4949a0b-e320-470a-ba54-07ac75b0053b:1",
+          "name": "Teferi, Master of Time",
+          "number": "277",
+          "before": 0.5503723158007825,
+          "after": 0.5279087165271671
+        }
+      ]
+    }
+  },
+  "nativeParity": {
+    "colonFieldsExact": 42,
+    "badgeFields": 42,
+    "badgeMaxGrayDelta": 1.0000038146972656,
+    "badgeGraySamplesDiffering": 26,
+    "badgeMeanGrayDelta": 0.00012711147837798171,
+    "note": "Isolated full native colon crops reproduce all selected proposal samples exactly. Badge crops differ at26 grayscale samples by at most one8-bit level because the native full-card cast shadow and crop-local replay quantize differently. Actual combined native metrics, not proposal metrics, are reported above."
+  },
+  "fullCardReplay": {
+    "printings": 297,
+    "layers": 594,
+    "changedFaces": 14,
+    "unaffectedFacesIdentical": 283,
+    "etchingsIdentical": 297,
+    "outsidePaddedWindows": 0,
+    "badgeWindowPaddingNative": 6,
+    "maximumTailDelta": 2,
+    "before100": 78.9016245418045,
+    "after100": 78.93537062530218,
+    "coverage": 0.9277395068699427,
+    "improved": 14,
+    "regressed": 0,
+    "unchanged": 283
+  },
+  "review": [
+    "Actual combined rendering improves40 of42 badge fields and40 of42 colon fields. All four regressed field measurements remain listed; the proposal-only all42 colon improvement is not claimed for combined rendering.",
+    "Native difference audit includes six native pixels of badge-shadow guard beyond the fitting crops; no pixels outside that support change. Low-opacity tails outside the smaller original crops differ by at most two8-bit levels.",
+    "Badge shadow pigment/blur, static ability wrapping, large basic-symbol rims, remaining rules/footer, final normalization certification and modern-default transfer remain separate. This receipt does not certify the whole set.",
+    "No new animation-time image decoding, font loading, readback or shader compilation. Geometry is applied during existing static face composition."
+  ],
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/walker-badge-colon-native-review.json.gz",
+    "sha256": "f398a109fa2ceec12fd1ceedc8056c6f090900b1bf456a39d9a88b9b7ed69718",
+    "contentSha256": "861e973c43be482cd5c4d2cecf5ee85555f00a93359696e412cf461b4be5e341"
+  }
+}
