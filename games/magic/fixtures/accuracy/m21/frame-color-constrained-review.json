@@ -1,0 +1,330 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "constrained-predictions-and-six-native-previews-not-adopted",
+  "scope": "219 nonfoil ordinary printings, six immutable source families, frozen normalized references. Predictions measure fixed color tiles. Six full native previews verify that the masks and constrained adjustments render; they do not constitute a complete set replay or whole-card score.",
+  "source": {
+    "proposalHash": "0e9ecea4c8ecc6634a414422e542e0e3047c1d9b0a4d2a89b0bf9f9f4397fb44",
+    "previewHash": "de80448dcf55c51059e7a21415b1b4e88f3db1446885564f3a0a7877339c634a",
+    "parametersHash": "2f8a7f809d89bfb7284e8ef8005022f721668aef950a05e2daf84e22156e88d9",
+    "toolHash": "26f2625f3bda62f0136142bee34bb9fdf9f2da91c1671530f93dc4ee136038bb",
+    "samplingHash": "0da0fe47b043632cae3a3a7e261b485252cec3fd726a52b261a89af448dbabc5"
+  },
+  "sampling": "Identical repeated frame strips use one complete strip, avoiding periodic stride aliases. Different paper samples use stratified pooled tiles. Clipping constraints use all pooled source tiles, splitting the budget between saturation and value.",
+  "maxPooledClipping": 0.01,
+  "windows": {
+    "frame": [
+      [26, 100, 7, 250],
+      [455, 100, 7, 250]
+    ],
+    "paper": [[50, 442, 388, 142]]
+  },
+  "groups": [
+    {
+      "source": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/m15/new/w.png",
+      "nonfoilPrintings": 42,
+      "parts": {
+        "frame": {
+          "adjustment": {
+            "hueDegrees": -3.311036789297532,
+            "saturationScale": 1.1285597826086962,
+            "brightnessScale": 1
+          },
+          "beforeMean": 2.647839762979798,
+          "afterMean": 2.559402476932437,
+          "worse": 20,
+          "meanClipping": 0,
+          "optimizationTiles": 72,
+          "pooledTiles": 3024
+        },
+        "paper": {
+          "adjustment": {
+            "hueDegrees": 0,
+            "saturationScale": 0.35,
+            "brightnessScale": 0.9609146341463415
+          },
+          "beforeMean": 2.4957548173291437,
+          "afterMean": 1.0813026612964687,
+          "worse": 7,
+          "meanClipping": 0,
+          "optimizationTiles": 1024,
+          "pooledTiles": 6688
+        }
+      }
+    },
+    {
+      "source": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/m15/new/u.png",
+      "nonfoilPrintings": 41,
+      "parts": {
+        "frame": {
+          "adjustment": {
+            "hueDegrees": 8.268635681240198,
+            "saturationScale": 1.0570810706851301,
+            "brightnessScale": 0.9560439560439561
+          },
+          "beforeMean": 7.425073265912366,
+          "afterMean": 2.136141197858816,
+          "worse": 3,
+          "meanClipping": 0,
+          "optimizationTiles": 72,
+          "pooledTiles": 2952
+        },
+        "paper": {
+          "adjustment": {
+            "hueDegrees": 13.083333333333371,
+            "saturationScale": 0.7768749999999998,
+            "brightnessScale": 0.975609756097561
+          },
+          "beforeMean": 1.8707494957664335,
+          "afterMean": 0.727229307884281,
+          "worse": 3,
+          "meanClipping": 0,
+          "optimizationTiles": 1024,
+          "pooledTiles": 6525
+        }
+      }
+    },
+    {
+      "source": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/m15/new/b.png",
+      "nonfoilPrintings": 40,
+      "parts": {
+        "frame": {
+          "adjustment": {
+            "hueDegrees": -38.63749999999999,
+            "saturationScale": 1.75,
+            "brightnessScale": 0.7369556451612903
+          },
+          "beforeMean": 7.410082315820238,
+          "afterMean": 1.779504761066812,
+          "worse": 0,
+          "meanClipping": 0,
+          "optimizationTiles": 72,
+          "pooledTiles": 2880
+        },
+        "paper": {
+          "adjustment": {
+            "hueDegrees": 0,
+            "saturationScale": 0.7074017467248992,
+            "brightnessScale": 0.9717574786324786
+          },
+          "beforeMean": 2.1170493061297098,
+          "afterMean": 1.0965971490853705,
+          "worse": 6,
+          "meanClipping": 0,
+          "optimizationTiles": 1024,
+          "pooledTiles": 6341
+        }
+      }
+    },
+    {
+      "source": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/m15/new/r.png",
+      "nonfoilPrintings": 42,
+      "parts": {
+        "frame": {
+          "adjustment": {
+            "hueDegrees": -2.6488549618320576,
+            "saturationScale": 1.1999999998800002,
+            "brightnessScale": 1.0148863636363636
+          },
+          "beforeMean": 5.474304247760163,
+          "afterMean": 2.518098996299512,
+          "worse": 0,
+          "meanClipping": 0,
+          "optimizationTiles": 72,
+          "pooledTiles": 3024
+        },
+        "paper": {
+          "adjustment": {
+            "hueDegrees": -4.900181488203316,
+            "saturationScale": 0.6862366230677764,
+            "brightnessScale": 0.9547325102880659
+          },
+          "beforeMean": 2.3445310056971223,
+          "afterMean": 0.8721291551933532,
+          "worse": 4,
+          "meanClipping": 0,
+          "optimizationTiles": 1024,
+          "pooledTiles": 6679
+        }
+      }
+    },
+    {
+      "source": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/m15/new/g.png",
+      "nonfoilPrintings": 41,
+      "parts": {
+        "frame": {
+          "adjustment": {
+            "hueDegrees": -0.9715909090908781,
+            "saturationScale": 1.0265866209262438,
+            "brightnessScale": 0.9298245614035088
+          },
+          "beforeMean": 3.248766569428037,
+          "afterMean": 1.7259820491583753,
+          "worse": 5,
+          "meanClipping": 0,
+          "optimizationTiles": 72,
+          "pooledTiles": 2952
+        },
+        "paper": {
+          "adjustment": {
+            "hueDegrees": 0,
+            "saturationScale": 0.35,
+            "brightnessScale": 0.9619405021834062
+          },
+          "beforeMean": 2.5268790356712754,
+          "afterMean": 1.0563863181001851,
+          "worse": 3,
+          "meanClipping": 0,
+          "optimizationTiles": 1024,
+          "pooledTiles": 6544
+        }
+      }
+    },
+    {
+      "source": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/m15/new/a.png",
+      "nonfoilPrintings": 13,
+      "parts": {
+        "frame": {
+          "adjustment": {
+            "hueDegrees": 18.260869565217376,
+            "saturationScale": 1.1304347826086951,
+            "brightnessScale": 1
+          },
+          "beforeMean": 3.8664946373099656,
+          "afterMean": 2.855261618737992,
+          "worse": 3,
+          "meanClipping": 0,
+          "optimizationTiles": 72,
+          "pooledTiles": 936
+        },
+        "paper": {
+          "adjustment": {
+            "hueDegrees": 0,
+            "saturationScale": 1.4812278761061959,
+            "brightnessScale": 0.9925694444444445
+          },
+          "beforeMean": 1.8340860983452845,
+          "afterMean": 1.4131328141595436,
+          "worse": 1,
+          "meanClipping": 0,
+          "optimizationTiles": 1024,
+          "pooledTiles": 2060
+        }
+      }
+    }
+  ],
+  "nativePreview": {
+    "completed": 6,
+    "faults": [],
+    "rows": [
+      {
+        "id": "c392a7e5-6ff5-4c2f-9590-f8811a724f44",
+        "name": "Alpine Watchdog",
+        "number": "2",
+        "referenceHash": "550d62229fda2a96274e44453286fd3a03c0ee7f836ff8cf3c1f81a8f2458e88",
+        "inputHash": "6beebdd532191321fb0980021cb0f739676dcf7f4c3b0e3f90c0239827db36da",
+        "variants": {
+          "before": {
+            "file": "c392a7e5-6ff5-4c2f-9590-f8811a724f44-before.png",
+            "sha256": "b7ed6c5fec2610d53aab03a7a8eb57a5f9bc9994adb8ff88af5542d316542a4e"
+          },
+          "after": {
+            "file": "c392a7e5-6ff5-4c2f-9590-f8811a724f44-after.png",
+            "sha256": "bdfb031001467f426717eb0d64eab8e6890f790e759739e5c4196ee8d95199e4"
+          }
+        }
+      },
+      {
+        "id": "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+        "name": "Cancel",
+        "number": "46",
+        "referenceHash": "0edbb74a1b613b73c9e27ecf2fe3df6eba821a7dc9cf8e237e77e8253543d09a",
+        "inputHash": "2f2339ffe1e8fa4a7f1985a96c3255a7c9166f3f8c759eed0771179ece1499b4",
+        "variants": {
+          "before": {
+            "file": "59e14910-ee2e-49ae-855e-46a8ab6cad82-before.png",
+            "sha256": "7db83b2392df4d2fdde0f9c1a98caf4a89be6a55a6c25410bb59a835b6f0a808"
+          },
+          "after": {
+            "file": "59e14910-ee2e-49ae-855e-46a8ab6cad82-after.png",
+            "sha256": "51f8dd89f8d6b34653da53d82320c147573479df4ffc9fd4ca5898d4161126e4"
+          }
+        }
+      },
+      {
+        "id": "6e4c9574-1ee3-461e-848f-8f02c6a8b7ee",
+        "name": "Alchemist's Gift",
+        "number": "87",
+        "referenceHash": "f84af8443f3b4bf16e46ee3e1e4ce88af2741f6ab779c216447909dda5ff51d6",
+        "inputHash": "19acd85c22008ce18b2b49c6af42e58f997a364dc7bec51bdb87625404a47de3",
+        "variants": {
+          "before": {
+            "file": "6e4c9574-1ee3-461e-848f-8f02c6a8b7ee-before.png",
+            "sha256": "5c6d1659b0ec3503685f8575f0bbce2fb7b07a1061a31e7a7d340b7c711200a1"
+          },
+          "after": {
+            "file": "6e4c9574-1ee3-461e-848f-8f02c6a8b7ee-after.png",
+            "sha256": "67bbd2d3720eedee168fdb019a671a2f0366068a9797f1cd3e7bf57d24118a26"
+          }
+        }
+      },
+      {
+        "id": "faca827d-0b35-48d7-acd6-13ecacc32b82",
+        "name": "Battle-Rattle Shaman",
+        "number": "130",
+        "referenceHash": "3d610f1f3eff010c01600444b5182e74f513e62e2bd8a3a8085d7f2b843edc62",
+        "inputHash": "0b913be1523428ea4212c7a75244bd386dfefc047d391acca8e9d24080372fab",
+        "variants": {
+          "before": {
+            "file": "faca827d-0b35-48d7-acd6-13ecacc32b82-before.png",
+            "sha256": "d95e268127eefdfb5b3a570397f09be02619205074520b4f33ca665c4ab11521"
+          },
+          "after": {
+            "file": "faca827d-0b35-48d7-acd6-13ecacc32b82-after.png",
+            "sha256": "8f8c7754da849d0b36a056022144932cfff96571c4661de823bd119604789721"
+          }
+        }
+      },
+      {
+        "id": "3d0ec3bd-d894-4861-abcb-7b2e4f4de05c",
+        "name": "Burlfist Oak",
+        "number": "174",
+        "referenceHash": "a53ce3e809ff5a26e6192e9cddc65362f65faa84b073c7be56a6e28fb0b86370",
+        "inputHash": "caada9a158e8f9c299329615b57e89acf6074535bb4dbc6e16ed18608b2af2c2",
+        "variants": {
+          "before": {
+            "file": "3d0ec3bd-d894-4861-abcb-7b2e4f4de05c-before.png",
+            "sha256": "f958e35f90f3fb3e914c117a3cf448386f689f78a4712377f5da2d25637f7aa1"
+          },
+          "after": {
+            "file": "3d0ec3bd-d894-4861-abcb-7b2e4f4de05c-after.png",
+            "sha256": "366ad02b25309bfadc6c6d2ca08bbeb7098d49f4de757af5e0c9e00ba07a0a35"
+          }
+        }
+      },
+      {
+        "id": "1e01bcb4-e823-4da5-b433-e75be3356367",
+        "name": "Chrome Replicator",
+        "number": "229",
+        "referenceHash": "91a70ce9c01ca0097e93c024780965f83007f4d1e0605023c6b19ecdad99e978",
+        "inputHash": "82cb81e67e859414f76308ec4b79392585ac20904014eb07644724b4a55c6205",
+        "variants": {
+          "before": {
+            "file": "1e01bcb4-e823-4da5-b433-e75be3356367-before.png",
+            "sha256": "b1f021bc27c3bb0bcf143a1291a8e52bec073d2ece2b7ed6ab64993006e90b0c"
+          },
+          "after": {
+            "file": "1e01bcb4-e823-4da5-b433-e75be3356367-after.png",
+            "sha256": "a75be7c1da73def92865c8491932f6a045774b284d72b37d8ecb2b45962a722b"
+          }
+        }
+      }
+    ]
+  },
+  "decisions": [
+    "White frame retains identity in the candidate preview; predicted frame gain is less than 0.1 Oklab delta. White paper retains its independent correction.",
+    "Red pooled frame clipping drops from one third in the earlier proposal to zero with the bounded fit. This is a tile-level finding; full-resolution texture and native color validation remain open.",
+    "New full-plate outer black is still uncalibrated. All 219 measured scan outer-stock medians are [22,19,14], agreeing with the existing M21 stock target; the new source plates measure [0,0,0] and lack a matching source binding.",
+    "Retain existing gold, colored-artifact, land, crown and planeswalker source cohorts pending their separate audits. Do not promote these ordinary source fits as universal defaults."
+  ]
+}

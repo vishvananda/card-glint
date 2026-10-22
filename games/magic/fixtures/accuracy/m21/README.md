@@ -90,3 +90,13 @@ so a dark frame correction does not dim their light paper.
 These values are not adopted. Red clipping, weak white-frame improvement,
 texture contrast and stock black point still need review. Other source families
 and donor transfer remain separate work. External source/preview PNGs stay local.
+
+The [constrained follow-up](frame-color-constrained-review.json) fixes periodic
+tile sampling and bounds pooled component clipping. The red frame prediction
+moves from 5.47 to 2.52 Oklab delta with no clipped sampled tiles. Black and green
+fits improve after retaining every region of their repeated source strips.
+Six new native previews use the revised values, retaining identity for the weak
+white-frame fit. Pixel-level color, texture and full-set replay remain open.
+The replacement plates also need their own stock binding: measured outer black
+is zero, while all 219 reference stock medians agree with the existing M21
+target of RGB (22, 19, 14). These are separate from the component-source binding.

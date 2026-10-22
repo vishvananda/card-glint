@@ -7,7 +7,16 @@ import { PNG } from 'pngjs';
 import { root, hash, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { sampleColor, fitHsb, evaluateHsb, center, quantile } from './hsb-color.mjs';
-const [inputFile, nativeDirectory, scoreDirectory, output] = process.argv.slice(2);
+import { poolColorTiles, colorScaleLimits } from './modern-color-fit-sampling.mjs';
+const [inputFile, nativeDirectory, scoreDirectory, output, flag, clippingValue] =
+  process.argv.slice(2);
+assert(flag === undefined || flag === '--max-clipping', 'Unknown color-fit option');
+const maxClipping = flag ? Number(clippingValue) : undefined;
+assert(
+  maxClipping === undefined ||
+    (Number.isFinite(maxClipping) && maxClipping >= 0 && maxClipping <= 0.1),
+  'Maximum clipping must be a fraction in [0, 0.1]',
+);
 assert(output, 'Usage: modern-frame-color-fit.mjs INPUTS NATIVE SCORES OUTPUT');
 const read = async (file) => {
   const raw = await readFile(file);
@@ -102,8 +111,7 @@ try {
     for (const part of ['frame', 'paper']) {
       const samples = group.rows.map((r) => r.parts[part].source);
       const allTiles = samples.flatMap((s) => s.tiles),
-        stride = Math.max(1, Math.ceil(allTiles.length / 1024));
-      const tiles = allTiles.filter((_, i) => i % stride === 0),
+        tiles = poolColorTiles(samples),
         rgb = center(samples.map((s) => s.rgb));
       const source = {
         rgb,
@@ -114,13 +122,33 @@ try {
         ),
       };
       const references = group.rows.map((r) => r.parts[part].reference);
-      const fit = fitHsb(source, references, model, math);
+      // Bound the upper tail before optimizing; a median-only color match can
+      // otherwise flatten saturated highlights while reporting a small delta.
+      const limits =
+        maxClipping === undefined ? undefined : colorScaleLimits(allTiles, maxClipping, math);
+      const constrainedModel = limits
+        ? {
+            ...model,
+            saturationScale: [
+              model.saturationScale[0],
+              Math.min(model.saturationScale[1], limits[0]),
+            ],
+            brightnessScale: [
+              model.brightnessScale[0],
+              Math.min(model.brightnessScale[1], limits[1]),
+            ],
+          }
+        : model;
+      const fit = fitHsb(source, references, constrainedModel, math);
       const evaluations = group.rows.map((r) => ({
         id: r.id,
         ...evaluateHsb(r.parts[part].source, r.parts[part].reference, fit.adjustment, math),
       }));
       parts[part] = {
         ...fit,
+        model: constrainedModel,
+        optimizationTiles: tiles.length,
+        pooledTiles: allTiles.length,
         sourceRgb: rgb,
         beforeMean: evaluations.reduce((s, r) => s + r.before, 0) / evaluations.length,
         afterMean: evaluations.reduce((s, r) => s + r.after, 0) / evaluations.length,
@@ -156,8 +184,14 @@ try {
       nativeHash: native.sha256,
       scoresHash: scores.sha256,
       toolHash: hash(await readFile(new URL(import.meta.url))),
+      samplingHash: hash(
+        await readFile(new URL('./modern-color-fit-sampling.mjs', import.meta.url)),
+      ),
     },
     windows,
+    maxClipping,
+    clippingPolicy:
+      'Pooled tile budget split equally between saturation and value; native pixels require independent validation.',
     model,
     groups: results,
     excluded,
