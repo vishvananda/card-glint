@@ -1,3 +1,4 @@
+import { modernArtifactLayerAssets } from './modern-artifact-layer.js';
 import { modernLandLayerAssets } from './modern-land-layers.js';
 import { modernOrdinaryPlates } from './modern-printing-profile.js';
 import { profileAssets } from './assets.js';
@@ -172,6 +173,7 @@ export function framePlateUrls(face: RenderedCardInput): string[] | null {
     ...(brush ? [brush] : []),
     plate.frame,
     ...modernLandLayerAssets(face),
+    ...modernArtifactLayerAssets(face),
     ...(plate.rightFrame ? [plate.rightFrame] : []),
     ...(plate.pinlines ? Object.values(plate.pinlines) : []),
     ...(face.power != null && face.toughness != null ? [plate.pt] : []),

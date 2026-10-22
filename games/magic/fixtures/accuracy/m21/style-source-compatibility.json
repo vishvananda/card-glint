@@ -3,8 +3,8 @@
   "base": "89b320d41ed41ddaaf92e5c72f6390a5dbc9448f",
   "scope": "Exact M21 style changes only. Historical reconstruction is not approval of current M21 fits or score reuse. Oracle-flavor API changes retain their independent proof. Unaffected native pixels/text calls/geometry agree across1500 pairs; material fits and scan normalization are separate.",
   "evidence": {
-    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-source-review.json",
-    "sha256": "d73bc5ee859b2215f6048e1fa3df59cf7c97c853c928f77a3056df38d6cb3cc0"
+    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-artifact-source-review.json",
+    "sha256": "484cbcc3e9b6567dcd4a98fa87d13ae928ca9924b95e76b067446e261fa7e324"
   },
   "files": {
     "games/magic/src/presentation/calibration-modern-sources.ts": {
@@ -106,31 +106,31 @@
     },
     "games/magic/src/presentation/early-hsb-material.ts": {
       "before": "c1aa91b12c064bd07973758038d97dc4892bbf011ff6adb6f04dff98ca9dbf62",
-      "after": "9c0a039114e812f6ed34e2c416569be945757c4015be39e1555a214b117aed36",
+      "after": "06dc525967a0f35f4cd71a5804b104a3a018739801d7dfc0b65974799d22e059",
       "reverseEdits": [
         {
-          "start": 120,
-          "count": 1,
+          "start": 123,
+          "count": 2,
           "lines": []
         },
         {
-          "start": 99,
-          "count": 1,
+          "start": 101,
+          "count": 2,
           "lines": []
         },
         {
-          "start": 88,
-          "count": 5,
+          "start": 89,
+          "count": 6,
           "lines": ["  const basicJobs = eighthBasicMaterialJobs(face, images),\n"]
         },
         {
-          "start": 24,
+          "start": 25,
           "count": 1,
           "lines": []
         },
         {
           "start": 0,
-          "count": 1,
+          "count": 2,
           "lines": []
         }
       ],
@@ -143,51 +143,51 @@
     },
     "games/magic/src/presentation/frame-plate-paint.ts": {
       "before": "4f93ee7a906ebaddce72fb1e00906172624431fa03c89ef2471ddba9df150e1c",
-      "after": "d713770dc59dfa015c390f69b88b4353391e69d684bf68dcde7d971dbdb896a0",
+      "after": "a6ab50131e15d7d20ca2f49f4a4fe3f56504a8dbe3fb80f00fefa4adcb808576",
       "reverseEdits": [
         {
-          "start": 273,
+          "start": 275,
           "count": 3,
           "lines": ["      sx + sw * 0.52,\n", "      sy + sh * 0.52,\n", "      sw * 0.85,\n"]
         },
         {
-          "start": 267,
+          "start": 269,
           "count": 1,
           "lines": ["    c.font = `bold 25px \"${family}\", Georgia`;\n"]
         },
         {
-          "start": 172,
+          "start": 174,
           "count": 6,
           "lines": ["    ty + th / 2,\n", "    cost.length ? adjustedMana[0] - tx - 8 : tw,\n"]
         },
         {
-          "start": 163,
+          "start": 165,
           "count": 2,
           "lines": ["  if (eighth) c.translate(...titleTranslation(face, 'eighth'));\n"]
         },
         {
-          "start": 147,
+          "start": 149,
           "count": 2,
           "lines": ["  const [tx, ty, tw, th] = px(rects.title),\n"]
         },
         {
-          "start": 140,
+          "start": 141,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 73,
           "count": 1,
           "lines": []
         },
         {
-          "start": 72,
-          "count": 1,
-          "lines": []
-        },
-        {
-          "start": 34,
+          "start": 35,
           "count": 2,
           "lines": []
         },
         {
           "start": 0,
-          "count": 2,
+          "count": 3,
           "lines": []
         }
       ],
@@ -199,15 +199,15 @@
     },
     "games/magic/src/presentation/frame-plates.ts": {
       "before": "fd7cde9cdb69c4f5a1d87ee97b99eec3377d5f3f3f8ec866111873dd745bd681",
-      "after": "aab17685ecd7813913847974427cf1c032d6bc41407cb5e99d4893de343009f2",
+      "after": "b691d514ddc9d8b758e6f1f923cce8cd3e7ce3091094a5f62c9e4c42d29530a8",
       "reverseEdits": [
         {
-          "start": 173,
-          "count": 1,
+          "start": 174,
+          "count": 2,
           "lines": []
         },
         {
-          "start": 147,
+          "start": 148,
           "count": 8,
           "lines": [
             "      right: (eighth ? 0.9147 : 1864 / 2010) - (eighth ? 2 : 1) / 488,\n",
@@ -217,7 +217,7 @@
           ]
         },
         {
-          "start": 136,
+          "start": 137,
           "count": 4,
           "lines": [
             "        : [0.086, 1780 / 2814, 0.828, 0.2875],\n",
@@ -225,7 +225,7 @@
           ]
         },
         {
-          "start": 118,
+          "start": 119,
           "count": 7,
           "lines": [
             "    pt: shifted\n",
@@ -236,12 +236,12 @@
           ]
         },
         {
-          "start": 45,
+          "start": 46,
           "count": 2,
           "lines": ["  if (!face.frameAssetFamily) return null;\n"]
         },
         {
-          "start": 11,
+          "start": 12,
           "count": 7,
           "lines": [
             "import { FACE_RECTS, cardStock, type FaceRect, type RenderedCardInput } from './face-layout.js';\n"
@@ -249,7 +249,7 @@
         },
         {
           "start": 0,
-          "count": 3,
+          "count": 4,
           "lines": []
         }
       ],
@@ -594,8 +594,9 @@
     "games/magic/src/presentation/modern-basic-material.ts": "6bd613599a3e53ac3d9a3919a8471205081914127455c2164a191fd41d3203e0",
     "games/magic/src/presentation/modern-footer-font.ts": "d0f26efefbc9673bc5991e2961bbe1ebc6e89c7d422214fad4c88840c8627de6",
     "games/magic/src/presentation/modern-land-layers.ts": "fb8f95ee58f65514e94adfd6432cf137a4d2f4ce5ca200d5749e14db1d96281e",
-    "games/magic/src/presentation/modern-printing-profile.ts": "50c93488654f9be3f82289168bb7b587d621ae9a0508cb68d2fdabfb903be339",
-    "games/magic/src/presentation/modern-printing-profiles.ts": "48560db55386dfad6ce4235599a3270293d859ba62cf8d1f567ad0e87cb2b444"
+    "games/magic/src/presentation/modern-printing-profile.ts": "6d0a895b95ec9c35fce025e228cec9733ad278127917c9572dda4beb8dfcb3fb",
+    "games/magic/src/presentation/modern-printing-profiles.ts": "48560db55386dfad6ce4235599a3270293d859ba62cf8d1f567ad0e87cb2b444",
+    "games/magic/src/presentation/modern-artifact-layer.ts": "3d62228ba29fa0f937f4b81ee93e2ae1a12b68d4f32aa001c90d8c7aa984f30d"
   },
   "changedSets": ["m21"],
   "oracleFlavorFilesExcluded": [
@@ -603,5 +604,6 @@
     "provider-card.ts",
     "wording-flavor.ts",
     "wording.ts"
-  ]
+  ],
+  "revision": 2
 }

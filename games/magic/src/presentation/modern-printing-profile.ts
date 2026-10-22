@@ -18,6 +18,7 @@ export function modernPrintingProfileKey(face: RenderedCardInput): readonly unkn
       face.setCode?.toLowerCase(),
       style,
       modernOrdinaryPlates(face) ?? null,
+      modernArtifactPinline(face) ?? null,
       land
         ? [
             land.profile.root,
@@ -66,8 +67,26 @@ export function modernLandPlates(face: RenderedCardInput) {
   return { profile, sources, dual: colors.length === 2 };
 }
 
-/** Exact-set ordinary source selection. Crowns, colored artifacts and
- * specialty frames keep their independently owned sources and geometry. */
+/** Exact-source pinlines over an artifact plate. The ordinary selector owns
+ * frame eligibility; source-local color fits never transfer between bitmaps. */
+export function modernArtifactPinline(face: RenderedCardInput) {
+  const colors = face.frameColors ?? face.colors ?? [];
+  const type = face.canonicalTypeLine ?? face.typeLine ?? '';
+  if (
+    !(face.artifact ?? /\bArtifact\b/.test(type)) ||
+    colors.length !== 1 ||
+    !modernOrdinaryPlates(face)
+  )
+    return undefined;
+  const root = manifest.CONJURER_ROOT + '/img/frames/m15/new';
+  const source = root + '/' + colors[0]!.toLowerCase() + '.png';
+  const correction = modernPrintingProfile(face)?.ordinaryPlates?.[source];
+  if (!correction) return undefined;
+  return { source, mask: root + '/pinline.png', correction };
+}
+
+/** Exact-set ordinary source selection. Crowns and specialty frames keep
+ * their independently owned sources and geometry. */
 export function modernOrdinaryPlates(face: RenderedCardInput) {
   const land = modernLandPlates(face);
   if (land)
@@ -91,7 +110,7 @@ export function modernOrdinaryPlates(face: RenderedCardInput) {
     /\b(Legendary|Land|Planeswalker|Saga|Class|Battle|Vehicle)\b/.test(type) ||
     /^Level up\b/m.test(face.rulesText ?? '') ||
     colors.length > 1 ||
-    (artifact ? colors.length > 0 : colors.length !== 1)
+    (!artifact && colors.length !== 1)
   )
     return undefined;
   return { [source]: plates[source]! };

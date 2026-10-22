@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "source-authored-colored-artifact-production-adoption",
+  "eligibleForPublication": false,
+  "scope": "All297 Original printings, including292 nonfoil references. Only the three ordinary colored artifacts change. Frozen comparison-only per-card scan poses and the same diagnostic metric/coverage; no certified normalization or set completion claim.",
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/colored-artifact-production-parity.json.gz",
+    "sha256": "b0cba482990bbd0ff42570fcb6cdb588a595e6034ac1bf990ada1fb96076c8e2",
+    "contentSha256": "afff7a5c91377e9893311d61c0a12d8443097ccffb0a9f23839587eb55eb4eb8"
+  },
+  "source": {
+    "rendererHash": "41171c39150ee9f7943673bfcf0af5f770614ca3daa630a5fcc1b76272c5ffb4",
+    "productionModuleHashes": {
+      "modern-artifact-layer.ts": "3d62228ba29fa0f937f4b81ee93e2ae1a12b68d4f32aa001c90d8c7aa984f30d",
+      "modern-printing-profile.ts": "6d0a895b95ec9c35fce025e228cec9733ad278127917c9572dda4beb8dfcb3fb",
+      "early-hsb-material.ts": "06dc525967a0f35f4cd71a5804b104a3a018739801d7dfc0b65974799d22e059",
+      "frame-plates.ts": "b691d514ddc9d8b758e6f1f923cce8cd3e7ce3091094a5f62c9e4c42d29530a8",
+      "frame-plate-paint.ts": "a6ab50131e15d7d20ca2f49f4a4fe3f56504a8dbe3fb80f00fefa4adcb808576"
+    },
+    "privateArtifacts": {
+      "native-m21-land-production-0611/capture.json": "0ad405894e2363f0ee020651978b30e910f6b91a73ba5748c88224969917dc13",
+      "native-m21-artifact-production-r2-0611/capture.json": "d8ebffa8c23027054ae8389657e8da7b5ef82e911b3c8ce5c64ebe9b291a5c77",
+      "native-colored-artifact-production-r2-0611/capture.json": "0e0cf391211e8a1f34b8302a835054ad4c949708572c1755bf02178c3af96865",
+      "score-m21-land-production-v25-0611/scores.json": "8aff00b555930efa0d45a0158d305a2dcf81d09e63e5757ec85757013f762b5a",
+      "score-m21-artifact-production-v25-0611/scores.json": "5ada0d27ef9cdceba6b3f443ff219fc6db6236860e8a30042e0d1d72149259ce",
+      "colored-artifact-production-full-scope-r2-0611.json": "0fb17e649b8298e63af2f306785e87db32cf0dc0e7c00e96dba41c1b0ab1dfda",
+      "colored-artifact-production-full-pair-0611.json": "6c77d3b105049e233757394e5fcd451c5cff67f12131523012a299a3b51d232d",
+      "artifact-score-reuse-proof-0611.json": "a8dc12f3983e15389efd0697b2388f4f283c32932e6e18fa1330774b4cdc997e"
+    }
+  },
+  "wholeStructure": {
+    "count": 297,
+    "before100": 78.11212085778767,
+    "after100": 78.18136490038343,
+    "delta100": 0.06924404259575988,
+    "improved": 3,
+    "regressed": 0,
+    "unchanged": 294
+  },
+  "coloredArtifactStructure": {
+    "count": 3,
+    "before100": 62.40416421506061,
+    "after100": 69.25932443204084,
+    "improved": 3,
+    "regressed": 0
+  },
+  "invariants": {
+    "otherFacesByteIdentical": 294,
+    "completeEtchingsByteIdentical": 297,
+    "changedFaceAlphaIdentical": 3,
+    "sameComponentEligibilityAndStatus": true
+  },
+  "scoreReuse": {
+    "reused": 294,
+    "freshlyMeasured": 3,
+    "method": "The complete input snapshot, per-printing normalized reference, frozen pose, native PNG, metric/preprocessing graph and scoring-tool identities agree. All native PNGs rehashed; the existing diagnostic runner validated every seeded row and reference before producing its final aggregate."
+  },
+  "prototypeParity": [
+    {
+      "id": "4d60e84e-be05-49da-9720-4225abe9d003",
+      "name": "Idol of Endurance",
+      "prototypeParity": {
+        "changedPixels": 732,
+        "maxChannelDelta": 2,
+        "bounds": [46, 900, 685, 947]
+      }
+    },
+    {
+      "id": "89e2bc57-8f18-4ba1-a11b-9d69d029f56a",
+      "name": "Malefic Scythe",
+      "prototypeParity": {
+        "changedPixels": 1463,
+        "maxChannelDelta": 3,
+        "bounds": [46, 900, 685, 947]
+      }
+    },
+    {
+      "id": "d43a3eb7-3daf-4667-b824-1f5d801c9341",
+      "name": "Witch's Cauldron",
+      "prototypeParity": {
+        "changedPixels": 1463,
+        "maxChannelDelta": 3,
+        "bounds": [46, 900, 685, 947]
+      }
+    }
+  ],
+  "review": [
+    "Full artifact plates retain the artifact paper/texture and add the actual color source through its authored pinline mask. No individual printing IDs select materials or geometry.",
+    "The bounded material bitmap cache owns each shared per-color/policy layer. Warm faces reuse the prepared layer; browser/OffscreenCanvas worker pixel parity and missing-mask rejection pass.",
+    "Production matches the selected prototype structure scores. Its only raster differences are a narrow antialiased lower-edge band, at most3/255, with unchanged alpha.",
+    "Plain artifact source without colored pinlines remains rejected because it changes frame scoring eligibility.",
+    "Witch\u2019s Cauldron still needs body/flavor wrapping review; the loaded normal/italic fonts and Original wording are confirmed. No single-card font exception was introduced.",
+    "Native captures now reject end-of-run renderer, font/asset metadata, generic raster-helper or capture-tool changes. Data was regenerated before this stable R2 capture.",
+    "Unrelated native-source compatibility is independently rechecked across1500 exact pairs in unaffected-native-artifact-source-review.json."
+  ]
+}

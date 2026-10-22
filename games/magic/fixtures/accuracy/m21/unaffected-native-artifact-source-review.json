@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "status": "unaffected-native-source-audit",
+  "eligibleForPublication": false,
+  "scope": "Same generated local raster and browser fallback fonts. Native table/inspect face, printing and artwork layers; text measurement/draw calls and frame descriptors. Excludes intentional M21 changes. No cached scans or actual artwork/color-fit certification, asynchronous material preparation or GPU benchmark.",
+  "source": {
+    "fontAddition": "4a174a7afd4ae5d41350f0cbe30b9dd4c0312a231e9802eb4c00e0df1bb58167",
+    "base": "89b320d41ed41ddaaf92e5c72f6390a5dbc9448f",
+    "current": "11bb1ef4b2774d8fbf03ae08fb2aa3faa298f91d",
+    "beforeRenderer": "34a8a05e2e5dae4786486eb5d3fbac6b21cfc1ff9d0b47a06135f84f19de7e4a",
+    "afterRenderer": "41171c39150ee9f7943673bfcf0af5f770614ca3daa630a5fcc1b76272c5ffb4",
+    "cases": "fd3441b272a6d78d4cceac643579da4d9dd52d5148724e9c8f1d49e356ac163c",
+    "tool": "e120f22a85548c67bed675b0f962e54a31c3013ad83b1630e46b33fae96ecbb8"
+  },
+  "summary": {
+    "cases": 250,
+    "tiers": ["table", "inspect"],
+    "layers": ["face", "printing", "artwork"],
+    "pixelPairsIdentical": 1500,
+    "textCallPairsIdentical": 1500,
+    "geometryPairsIdentical": 1500,
+    "externalAssetRequests": 0
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-artifact-source-review.json.gz",
+    "sha256": "4f754555987abd6d2e56369f669d52e0d157868b4294f41ec5be821cd4167f77",
+    "contentSha256": "b67f229c54922c6d7af11d5356cbb9a076ab860b3f241aa2005851fdc9a2a4fd"
+  },
+  "review": [
+    "The corpus includes historical frames and modern source-compatible donor cases on WAR and JMP. Every pair has identical native RGBA, text measurement/draw-call trace and frame descriptor hashes.",
+    "Existing asset metadata and browser backend sources match published0.6.11. The font stylesheet preserves every old byte and appends only the source-bound optional M21 Gotham declaration.",
+    "R2 follows the source-authored colored-artifact pinline adoption. The exact source reconstruction bridge preserves unrelated profiles only; changed M21 fits remain invalidated.",
+    "Real-font/default Oracle-flavor compatibility and complete cached-scan M21 replays have separate receipts. This synthetic audit does not certify actual material-color preparation, M21 fits, scan normalization or set completion."
+  ]
+}

@@ -1,10 +1,24 @@
 import assert from 'node:assert/strict';
+import { hash } from './common.mjs';
+const baselineSources = {
+  'modern-printing-profile.ts': '50c93488654f9be3f82289168bb7b587d621ae9a0508cb68d2fdabfb903be339',
+  'frame-plates.ts': 'aab17685ecd7813913847974427cf1c032d6bc41407cb5e99d4893de343009f2',
+  'frame-plate-paint.ts': 'd713770dc59dfa015c390f69b88b4353391e69d684bf68dcde7d971dbdb896a0',
+};
 /** Colored artifact source-only probe. Production selectors stay unchanged. */
 export function modernColoredArtifactStudy({ pinlines = false } = {}) {
   return {
     name: 'm21-colored-artifact-source-study',
     enforce: 'pre',
     transform(source, id) {
+      for (const [file, expected] of Object.entries(baselineSources))
+        if (id.endsWith('/presentation/' + file))
+          assert.equal(
+            hash(source),
+            expected,
+            'Replay this historical artifact experiment on its recorded pre-adoption source',
+          );
+
       if (id.endsWith('/presentation/modern-printing-profile.ts')) {
         const needle = 'export function modernOrdinaryPlates(face: RenderedCardInput) {';
         assert.equal(source.split(needle).length, 2);

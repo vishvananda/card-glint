@@ -229,7 +229,9 @@ These are diagnostic scores, not a completed-set certification.
 complete three-card ordinary cohort. A calibrated artifact plate plus the
 authored colored pinlines improves **62.40 to 69.26/100**, with all three cards
 improving and identical regional eligibility, alpha and etching output.
-This trial is not yet a production default. A plain artifact plate is rejected:
+The selected trial is now adopted on this calibration branch after the
+[complete production replay](colored-artifact-production-review.json). A plain
+artifact plate is rejected:
 it removes a scorable frame region on Witch's Cauldron.
 
 Historical evidence reuse is separate from M21 fit approval. The exact scoped
@@ -237,3 +239,16 @@ source compatibility receipt preserves unrelated native results; Unlimited's
 current-applicability wrapper additionally checks its original dependency
 guards and the exact certified profile in both eager and per-set delivery.
 An unknown shared-painter edit or changed Unlimited profile still rejects reuse.
+
+The colored-artifact production replay raises the staged whole-set structure
+index to **78.18/100**, with 3 improvements, no regressions and 294 unchanged
+faces. All 297 etchings are unchanged. Exact raster/input/reference/pose and metric
+identities allow 294 metrics to be reused; the 3 changed metrics are measured
+freshly. The diagnostic runner verifies every seeded row before aggregation.
+M21 remains incomplete pending the remaining source, mana, text and normalization
+checks and the compatible-modern default transfer.
+
+Run `npm run magic:data:build` before a native study, and finish source edits
+before capture. The capture runner checks source, font/asset metadata, generic
+raster helpers and its own tool identity again at the end; source drift leaves
+an explicit fault instead of accepting a mixed-version capture.

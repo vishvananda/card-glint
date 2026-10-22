@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { hash } from './common.mjs';
 
-const RECEIPT = '33080030d41f7c9fdd7c8cc018b2635673df4a2348f0aee053413db06e2846c3';
+const RECEIPT = 'e7066076c84fe8985bdb6868c659e9c47c4c79e869402b94868bae71f415db5f';
 let checked;
 /** Evidence for exact historical reconstruction, not current fit approval. */
 export async function m21StyleAncestry() {

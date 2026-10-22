@@ -54,7 +54,7 @@ assert(
 );
 assert(
   outputDirectory,
-  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline] [--land-layer-study] [--colored-artifact-study]',
+  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline] [--land-layer-study] [--colored-artifact-study|--colored-artifact-pinlines-study]',
 );
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
@@ -373,6 +373,22 @@ try {
     rows.push(row);
     await save();
     if (rows.length % 25 === 0) console.log(inputs.set, rows.length, '/', inputs.entries.length);
+  }
+  try {
+    assert.equal(
+      await sourceHash(path.join(root, 'games/magic/src')),
+      source.rendererHash,
+      'Renderer source changed during native capture; regenerate data before starting',
+    );
+    for (const [file, expected] of source.rasterHelpers)
+      assert.equal(hash(await readFile(path.join(root, 'packages/browser/src', file))), expected);
+    for (const [file, expected] of source.packMetadata)
+      assert.equal(hash(await readFile(path.join(root, 'games/magic', file))), expected);
+    assert.equal(hash(await readFile(new URL(import.meta.url))), source.toolHash);
+  } catch (error) {
+    session.faults.push('Native source stability check failed: ' + String(error));
+    await save();
+    throw error;
   }
   await save();
   assert.equal(session.faults.length, 0, 'Uncached or missing sources');
