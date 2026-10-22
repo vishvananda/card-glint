@@ -230,11 +230,13 @@ try {
           // Unlimited 0.6.7 is intentionally changed. Compare the original worker
           // transition on its verified historical profile. Current Unlimited
           // browser/worker pixels have their own positive parity test.
+          // M21 calibration intentionally changes its frames and typography too.
+          // Its current browser/worker parity is tested separately at all three tiers.
           for (const api of [
             before,
             label === 'walker'
               ? historicalWalker
-              : face.setCode === '2ed'
+              : ['2ed', 'm21'].includes(face.setCode)
                 ? historicalProfile
                 : current,
           ]) {

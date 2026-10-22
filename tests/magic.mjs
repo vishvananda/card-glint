@@ -1,3 +1,4 @@
+import { installedSerifFonts } from './magic-fixture-fonts.mjs';
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
@@ -282,22 +283,7 @@ const server = createServer(async (req, res) => {
 await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 // Headless Linux can fail local() font matching even when fontconfig finds the
 // face. Load installed substitute outlines directly; never download test fonts.
-let fixtureFonts = null;
-for (const directory of [
-  '/usr/share/fonts/truetype/liberation2',
-  '/usr/share/fonts/truetype/liberation',
-]) {
-  try {
-    const [normal, italic] = await Promise.all(
-      ['Regular', 'Italic'].map((style) => readFile(`${directory}/LiberationSerif-${style}.ttf`)),
-    );
-    const source = (bytes) => `url("data:font/ttf;base64,${bytes.toString('base64')}")`;
-    fixtureFonts = { normal: source(normal), italic: source(italic) };
-    break;
-  } catch (error) {
-    if (error.code !== 'ENOENT') throw error;
-  }
-}
+const fixtureFonts = await installedSerifFonts();
 // This checks Canvas contracts; GPU completion/readback is covered by browser tests.
 const browser = await chromium.launch({ args: ['--no-sandbox', '--disable-gpu'] });
 try {
