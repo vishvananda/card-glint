@@ -83,6 +83,9 @@ try {
   const { calibratedFrameMaterials, calibratedPrintingStock } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
+  const { calibratedPrintingStock: resolvedPrintingStock } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/printing-calibration-materials.ts',
+  );
   const { colorCalibrationCoverage } = await server.ssrLoadModule(
     '/games/magic/src/presentation/color-calibration-coverage.ts',
   );
@@ -100,8 +103,8 @@ try {
     assert.ok(Object.values(calibratedFrameMaterials(face)).some((m) => m.outerStockMaskSource));
     assert.equal(calibratedPrintingStock({ ...face, colorCalibration: undefined }), undefined);
     const modern = { ...face, setCode: 'm21', frameStyle: 'modern' };
-    assert.equal(calibratedPrintingStock(modern), '#16130e');
-    assert.equal(calibratedPrintingStock({ ...modern, layout: 'token' }), undefined);
+    assert.equal(resolvedPrintingStock(modern), '#16130e');
+    assert.equal(resolvedPrintingStock({ ...modern, layout: 'token' }), undefined);
     if (color === 'G')
       assert.equal(
         colorCalibrationCoverage(face).frame,

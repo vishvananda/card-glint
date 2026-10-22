@@ -1,3 +1,4 @@
+import { m21StyleProfileSource } from './m21-style-ancestry.mjs';
 import { artistReviewSource } from './artist-review-ancestry.mjs';
 import {
   preEarlyCalibrationSource,
@@ -60,7 +61,8 @@ export async function calibrationReport(ledger) {
           if (!checked.has(guardKey)) {
             try {
               const bytes = await readFile(root + '/' + file);
-              const artist = await artistReviewSource(file, bytes, set.set);
+              const modern = await m21StyleProfileSource(file, bytes, set.set);
+              const artist = await artistReviewSource(file, modern.bytes, set.set);
               const changedArtist = artist.changed;
               const early =
                 earlyAffected || changedArtist
@@ -78,6 +80,7 @@ export async function calibrationReport(ledger) {
                 guardKey,
                 new Set([
                   hash(bytes),
+                  hash(modern.bytes),
                   hash(early),
                   hash(scoped),
                   hash(

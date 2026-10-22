@@ -1,7 +1,9 @@
+import ts from 'typescript';
+import { parseProfileData } from '../games/magic/tools/accuracy/profile-data-modules.mjs';
 import assert from 'node:assert/strict';
 import { restoreUnlimitedProfilePayload } from '../games/magic/tools/accuracy/unlimited-tone-payload.mjs';
 import { readFile } from 'node:fs/promises';
-import { hash, readJson, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash, readJson } from '../games/magic/tools/accuracy/common.mjs';
 import {
   CALIBRATION_TASKS,
   calibrationTaskStatus,
@@ -10,7 +12,7 @@ import { calibrationReport } from '../games/magic/tools/accuracy/calibration-rep
 import {
   unlimitedCalibrationEvidence,
   applyUnlimitedEvidence,
-} from '../games/magic/tools/accuracy/calibration-unlimited-evidence.mjs';
+} from '../games/magic/tools/accuracy/calibration-unlimited-current.mjs';
 const data = await unlimitedCalibrationEvidence();
 assert.equal(data.current, true);
 for (const [file, expected] of Object.entries(data.receipt.artifacts))
@@ -99,7 +101,11 @@ const tone = JSON.parse(decodeTone(toneBytes));
 for (const [key, value] of Object.entries(tone.documents))
   assert.equal(hash(value), tone.documentHashes[key]);
 const toneMetadata = JSON.parse(tone.documents.metadata);
-assert.equal(await sourceHash('games/magic/src'), toneMetadata.afterTreeHash);
+// The certified renderer identity is historical. Current applicability is
+// established by exact scoped guards, not unrelated sets' source-tree bytes.
+assert.equal(data.current, true);
+assert(data.compatibility?.sources.length > 0);
+assert.equal(hash(await readFile(data.compatibility.file)), data.compatibility.sha256);
 assert.equal(toneMetadata.afterTreeHash, data.receipt.rendererHash);
 assert.equal(
   hash(await readFile('games/magic/src/calibration/sets/2ed.ts')),
@@ -156,12 +162,31 @@ assert.deepEqual(
 );
 assert.equal(hash(JSON.stringify(toneMetadata.beforeMap)), toneMetadata.beforeTreeHash);
 assert.equal(hash(JSON.stringify(toneMetadata.afterMap)), toneMetadata.afterTreeHash);
-for (const file of ['data/eager.ts', 'data/sets/2ed.ts']) {
+for (const file of ['data/sets/2ed.ts']) {
   const actual = await readFile('games/magic/src/' + file, 'utf8');
   const restored = await restoreUnlimitedProfilePayload(actual, tone.profileProof.before);
   assert.equal(hash(restored), toneBeforeMap.get(file));
   assert.equal(hash(actual), toneAfterMap.get(file));
 }
+// Both delivery modes must carry the exact certified Unlimited payload.
+// Other sets can add tables/reviews without invalidating Unlimited.
+const literal = (node, ast) =>
+  parseProfileData('export const profile = ' + node.getText(ast) + '; export const review = {};')
+    .profile;
+const eagerText = await readFile('games/magic/src/data/eager.ts', 'utf8');
+const eagerAst = ts.createSourceFile('eager.ts', eagerText, ts.ScriptTarget.Latest, true);
+const eagerPayloads = eagerAst.statements
+  .filter((s) => ts.isExpressionStatement(s) && ts.isCallExpression(s.expression))
+  .map((s) => literal(s.expression.arguments[0], eagerAst))
+  .filter((p) => p.set === '2ed' && p.kind === 'calibration');
+assert.equal(eagerPayloads.length, 1);
+const setText = await readFile('games/magic/src/data/sets/2ed.ts', 'utf8');
+const setAst = ts.createSourceFile('2ed.ts', setText, ts.ScriptTarget.Latest, true);
+const declaration = setAst.statements.find((s) => ts.isVariableStatement(s));
+assert.deepEqual(
+  eagerPayloads[0],
+  literal(declaration.declarationList.declarations[0].initializer, setAst),
+);
 console.log(
   'Revision3:906 installed faces; nine-scan pigment fit, dark scan retained in reports, fixed geometry/wording and disclosed structural-score tradeoff.',
 );

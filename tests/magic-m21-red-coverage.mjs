@@ -68,9 +68,8 @@ try {
   const { PRINTING_COLOR_PROFILES } = await server.ssrLoadModule(
     '/games/magic/src/presentation/printing-color-profiles.ts',
   );
-  const { calibratedFrameMaterials } = await server.ssrLoadModule(
-    '/games/magic/src/presentation/calibration-profiles.ts',
-  );
+  const { calibratedFrameMaterials, calibratedComponentDonorMaterials } =
+    await server.ssrLoadModule('/games/magic/src/presentation/calibration-profiles.ts');
   assert.deepEqual(ORDINARY_COLOR_PROFILES[receipt.key], receipt.profile);
   const source = receipt.source;
   assert.deepEqual(
@@ -85,7 +84,13 @@ try {
     setCode: 'm21',
     colorCalibration: 'set-hsb-v1',
   };
-  assert.deepEqual(calibratedFrameMaterials(face), receipt.profile.materials);
+  // This historical component fit remains available to source-compatible donors.
+  assert.deepEqual(calibratedComponentDonorMaterials(face), receipt.profile.materials);
+  const { modernOrdinaryPlates } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/modern-printing-profile.ts',
+  );
+  assert.deepEqual(calibratedFrameMaterials(face), modernOrdinaryPlates(face));
+  assert.notDeepEqual(calibratedFrameMaterials(face), receipt.profile.materials);
   assert.deepEqual(
     calibratedFrameMaterials({ ...face, legendary: true }),
     PRINTING_COLOR_PROFILES[receipt.key].materials,

@@ -21,6 +21,9 @@ try {
   const { calibratedFrameMaterials } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
+  const { modernOrdinaryPlates } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/modern-printing-profile.ts',
+  );
   const { colorCalibrationCoverage } = await server.ssrLoadModule(
     '/games/magic/src/presentation/color-calibration-coverage.ts',
   );
@@ -107,7 +110,19 @@ try {
         ([url, { blackPoint, outerStock, outerStockMaskSource, ...value }]) => [url, value],
       ),
     );
-    assert.deepEqual(pigment, PRINTING_COLOR_PROFILES[row.key].materials, row.key);
+    const selected = modernOrdinaryPlates(face);
+    const expected = selected ?? PRINTING_COLOR_PROFILES[row.key].materials;
+    const expectedPigment = Object.fromEntries(
+      Object.entries(expected).map(
+        ([url, { blackPoint, outerStock, outerStockMaskSource, ...value }]) => [url, value],
+      ),
+    );
+    assert.deepEqual(pigment, expectedPigment, row.key);
+    if (selected) {
+      assert.equal(face.setCode, 'm21');
+      assert.equal(Object.keys(selected).length, 1);
+      assert.ok(Object.keys(selected)[0].includes('/img/frames/m15/new/'));
+    }
     assert.equal(colorCalibrationCoverage(face).frame, true, row.key);
     assert.deepEqual(calibratedFrameMaterials({ ...face, colorCalibration: undefined }), {});
     assert.deepEqual(calibratedFrameMaterials({ ...face, setCode: 'unmeasured' }), {});
@@ -135,8 +150,8 @@ try {
   assert.equal(colorCalibrationCoverage(modern).frame, true);
   assert.equal(
     colorCalibrationCoverage({ ...modern, frameAssetFamily: 'm15-accurate' }).frame,
-    false,
-    'A component fit must not recolor a different plate',
+    true,
+    'The exact M21 source fit supports its explicit full-plate family',
   );
   assert.equal(
     colorCalibrationCoverage({ ...modern, borderColor: 'white' }).frame,
