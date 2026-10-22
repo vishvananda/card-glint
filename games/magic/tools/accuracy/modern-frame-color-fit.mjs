@@ -8,16 +8,26 @@ import { root, hash, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { sampleColor, fitHsb, evaluateHsb, center, quantile } from './hsb-color.mjs';
 import { poolColorTiles, colorScaleLimits } from './modern-color-fit-sampling.mjs';
-const [inputFile, nativeDirectory, scoreDirectory, output, flag, clippingValue] =
-  process.argv.slice(2);
-assert(flag === undefined || flag === '--max-clipping', 'Unknown color-fit option');
-const maxClipping = flag ? Number(clippingValue) : undefined;
+const [inputFile, nativeDirectory, scoreDirectory, output, ...options] = process.argv.slice(2);
+let maxClipping;
+let headerPanels = false;
+for (let i = 0; i < options.length; i++) {
+  if (options[i] === '--max-clipping') {
+    assert.equal(maxClipping, undefined, 'Duplicate clipping option');
+    maxClipping = Number(options[++i]);
+    assert(
+      Number.isFinite(maxClipping) && maxClipping >= 0 && maxClipping <= 0.1,
+      'Maximum clipping must be a fraction in [0, 0.1]',
+    );
+  } else if (options[i] === '--include-header-panels') {
+    assert(!headerPanels, 'Duplicate header-panel option');
+    headerPanels = true;
+  } else throw Error('Unknown color-fit option: ' + options[i]);
+}
 assert(
-  maxClipping === undefined ||
-    (Number.isFinite(maxClipping) && maxClipping >= 0 && maxClipping <= 0.1),
-  'Maximum clipping must be a fraction in [0, 0.1]',
+  output,
+  'Usage: modern-frame-color-fit.mjs INPUTS NATIVE SCORES OUTPUT [--max-clipping FRACTION] [--include-header-panels]',
 );
-assert(output, 'Usage: modern-frame-color-fit.mjs INPUTS NATIVE SCORES OUTPUT');
 const read = async (file) => {
   const raw = await readFile(file);
   return { data: JSON.parse(raw), sha256: hash(raw) };
@@ -42,6 +52,12 @@ const windows = {
     [455, 100, 7, 250],
   ],
   paper: [[50, 442, 388, 142]],
+  ...(headerPanels
+    ? {
+        namePaper: [[75, 33, 337, 13]],
+        typePaper: [[70, 385, 330, 17]],
+      }
+    : {}),
 };
 const groups = new Map(),
   excluded = [];
@@ -89,7 +105,7 @@ try {
     if (!g) groups.set(plate.frame, (g = { source: plate.frame, rows: [] }));
     const parts = {};
     for (const [part, patches] of Object.entries(windows)) {
-      const options = { tileSize: part === 'frame' ? 7 : 20, paper: part === 'paper' };
+      const options = { tileSize: part === 'frame' ? 7 : 20, paper: part !== 'frame' };
       parts[part] = {
         source: sampleColor(render, patches, options),
         reference: sampleColor(scan, patches, options),
@@ -108,7 +124,7 @@ try {
   const results = [];
   for (const group of groups.values()) {
     const parts = {};
-    for (const part of ['frame', 'paper']) {
+    for (const part of Object.keys(windows)) {
       const samples = group.rows.map((r) => r.parts[part].source);
       const allTiles = samples.flatMap((s) => s.tiles),
         tiles = poolColorTiles(samples),
@@ -169,6 +185,12 @@ try {
         count: group.rows.length,
         frame: [parts.frame.beforeMean, parts.frame.afterMean],
         paper: [parts.paper.beforeMean, parts.paper.afterMean],
+        ...(headerPanels
+          ? {
+              namePaper: [parts.namePaper.beforeMean, parts.namePaper.afterMean],
+              typePaper: [parts.typePaper.beforeMean, parts.typePaper.afterMean],
+            }
+          : {}),
       }),
     );
   }
@@ -190,6 +212,7 @@ try {
     },
     windows,
     maxClipping,
+    headerPanels,
     clippingPolicy:
       'Pooled tile budget split equally between saturation and value; native pixels require independent validation.',
     model,
