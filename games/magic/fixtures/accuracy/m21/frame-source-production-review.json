@@ -1,0 +1,833 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "adopted-on-calibration-branch-partial-set",
+  "initialSourceCommit": "c349440",
+  "finalNativeSourceCommit": "00f356e9997e980a1424324732174b1000898208",
+  "profileRevision": 4,
+  "scope": "Complete297 Original native faces with identical physical types, artist credits, normalized references, scan matrices, metric code and component eligibility on both sides.219 ordinary monocolor/colorless artifact source replacements;78 controls. The control disables only the source selector, without changing inputs or other styles. No per-card renderer exceptions.",
+  "source": {
+    "inputs-m21-ordinary-production-0611.json": "34badfce94984e4f8c6bccddfa3b00c4f2a334d7fb289feb6bf516ccc15b9dff",
+    "native-m21-ordinary-control-0611/capture.json": "1cb6bf66e07bb0ee44716919ddebda23127181bf7e7128e00c660b8240fa53cf",
+    "native-m21-ordinary-final-0611/capture.json": "18a7843d4a1ad7bc62e8b7bf69a3623edc9226bff4c662e7122097a167ee2ea9",
+    "score-m21-ordinary-control-v25-0611/scores.json": "55fe4466473086c9ce3fd503e0b71f04cc4789217543e8babfc0722f30717f66",
+    "score-m21-ordinary-final-v25-0611/scores.json": "8f49f8a55b5151918f9d13502f23cd22a74ac6bdef8f7f0116111e8ea5e48b10",
+    "ordinary-final-score-pair-0611.json": "97d01531c920d2ad98c66bf2f6f21b72b7cf546fc187a0eaa056d3d82a09872d",
+    "ordinary-final-material-audit-0611.json": "452a5621b1891aaf7ac6cdc48407e25ca444fc9cf75723ca50bfd683bfb890e8",
+    "ordinary-production-native-parity-0611.json.gz": "e6baccd82d78ca6dfb510769b82a5175c8b8f54df314e0bb7b5581cbfc38fcb4",
+    "ordinary-final-stage-pixel-parity-0611.json": "b139bbdd7896f309cc1d393d11251c3772353c7ccde63615e68ac1fa9dfa7790",
+    "ordinary-production-mana-interior-parity-0611.json": "a2a104554dc834efa989e4a1121bd23ffa3582c6f8d42a448671bde518061b42"
+  },
+  "rendererHashes": {
+    "before": "fe1a4cf13a53a4342873c84b87dc9c81e7a5ed5e123521a4089a3043ba40362e",
+    "after": "1e8aa4711b7729cb46f14e6023ac476179fb99ca7059ebd9f9a7e223a6151068"
+  },
+  "nativeScope": {
+    "total": 297,
+    "changedFaces": 219,
+    "outsideRegionChanges": 0,
+    "etchingChanges": 0
+  },
+  "finalStageByteParity": {
+    "schema": 1,
+    "files": 594,
+    "differences": [],
+    "beforeCaptureHash": "4580f84b2d7343af770853f1cffd24a15bd48b608d0f942167c91b3136ecee07",
+    "afterCaptureHash": "18a7843d4a1ad7bc62e8b7bf69a3623edc9226bff4c662e7122097a167ee2ea9",
+    "scope": "Whole census byte parity after explicit-override guards, source coverage resolution and key slimming. No score or completion approval."
+  },
+  "structure297": {
+    "count": 297,
+    "before100": 75.07711351677767,
+    "after100": 77.63072095380834,
+    "delta100": 2.5536074370307107,
+    "improved": 192,
+    "regressed": 27,
+    "unchanged": 78
+  },
+  "components": {
+    "title": {
+      "eligible": {
+        "count": 297,
+        "before100": 86.60549360500208,
+        "after100": 87.8687044853374,
+        "delta100": 1.2632108803353714,
+        "improved": 131,
+        "regressed": 88,
+        "unchanged": 78
+      },
+      "diagnostic": {
+        "count": 297,
+        "before100": 86.60549360500208,
+        "after100": 87.8687044853374,
+        "delta100": 1.2632108803353714,
+        "improved": 131,
+        "regressed": 88,
+        "unchanged": 78
+      }
+    },
+    "mana": {
+      "eligible": {
+        "count": 264,
+        "before100": 90.47041564310454,
+        "after100": 89.43098755507717,
+        "delta100": -1.039428088027387,
+        "improved": 98,
+        "regressed": 121,
+        "unchanged": 45
+      },
+      "diagnostic": {
+        "count": 264,
+        "before100": 90.47041564310454,
+        "after100": 89.43098755507717,
+        "delta100": -1.039428088027387,
+        "improved": 98,
+        "regressed": 121,
+        "unchanged": 45
+      }
+    },
+    "type": {
+      "eligible": {
+        "count": 297,
+        "before100": 85.31799262109041,
+        "after100": 89.9299172209106,
+        "delta100": 4.611924599820132,
+        "improved": 182,
+        "regressed": 37,
+        "unchanged": 78
+      },
+      "diagnostic": {
+        "count": 297,
+        "before100": 85.31799262109041,
+        "after100": 89.9299172209106,
+        "delta100": 4.611924599820132,
+        "improved": 182,
+        "regressed": 37,
+        "unchanged": 78
+      }
+    },
+    "rules": {
+      "eligible": {
+        "count": 297,
+        "before100": 59.44953389700716,
+        "after100": 59.45840075118125,
+        "delta100": 0.008866854174050108,
+        "improved": 117,
+        "regressed": 102,
+        "unchanged": 78
+      },
+      "diagnostic": {
+        "count": 297,
+        "before100": 59.44953389700716,
+        "after100": 59.45840075118125,
+        "delta100": 0.008866854174050108,
+        "improved": 117,
+        "regressed": 102,
+        "unchanged": 78
+      }
+    },
+    "symbol": {
+      "eligible": {
+        "count": 297,
+        "before100": 88.0102899657793,
+        "after100": 93.2014425933545,
+        "delta100": 5.191152627575197,
+        "improved": 213,
+        "regressed": 6,
+        "unchanged": 78
+      },
+      "diagnostic": {
+        "count": 297,
+        "before100": 88.0102899657793,
+        "after100": 93.2014425933545,
+        "delta100": 5.191152627575197,
+        "improved": 213,
+        "regressed": 6,
+        "unchanged": 78
+      }
+    },
+    "stats": {
+      "eligible": {
+        "count": 162,
+        "before100": 86.62573925335755,
+        "after100": 86.79174462766608,
+        "delta100": 0.1660053743085142,
+        "improved": 66,
+        "regressed": 40,
+        "unchanged": 56
+      },
+      "diagnostic": {
+        "count": 162,
+        "before100": 86.62573925335755,
+        "after100": 86.79174462766608,
+        "delta100": 0.1660053743085142,
+        "improved": 66,
+        "regressed": 40,
+        "unchanged": 56
+      }
+    },
+    "frame": {
+      "eligible": {
+        "count": 254,
+        "before100": 75.50570753681616,
+        "after100": 79.95027669512531,
+        "delta100": 4.4445691583092,
+        "improved": 129,
+        "regressed": 51,
+        "unchanged": 74
+      },
+      "diagnostic": {
+        "count": 297,
+        "before100": 75.72618622322638,
+        "after100": 81.88109366025829,
+        "delta100": 6.154907437031894,
+        "improved": 167,
+        "regressed": 52,
+        "unchanged": 78
+      }
+    },
+    "art": {
+      "eligible": {
+        "count": 297,
+        "before100": 66.37012708078666,
+        "after100": 74.92762994800108,
+        "delta100": 8.557502867214467,
+        "improved": 219,
+        "regressed": 0,
+        "unchanged": 78
+      },
+      "diagnostic": {
+        "count": 297,
+        "before100": 66.37012708078666,
+        "after100": 74.92762994800108,
+        "delta100": 8.557502867214467,
+        "improved": 219,
+        "regressed": 0,
+        "unchanged": 78
+      }
+    },
+    "credits": {
+      "eligible": {
+        "count": 0,
+        "before100": null,
+        "after100": null,
+        "delta100": null,
+        "improved": 0,
+        "regressed": 0,
+        "unchanged": 0
+      },
+      "diagnostic": {
+        "count": 297,
+        "before100": 86.71181245942464,
+        "after100": 86.7050816929956,
+        "delta100": -0.006730766429039036,
+        "improved": 1,
+        "regressed": 21,
+        "unchanged": 275
+      }
+    }
+  },
+  "color": {
+    "frame": {
+      "total": 219,
+      "measured": 219,
+      "missing": 0,
+      "beforeMeanDelta": 3.990458152335193,
+      "afterMeanDelta": 2.223843457892644,
+      "improved": 180,
+      "regressed": 39,
+      "beforeMedianTileSpread": 10.414057598927672,
+      "afterMedianTileSpread": 11.583915660279295,
+      "referenceMedianTileSpread": 12.84398627419321
+    },
+    "rulesPaper": {
+      "total": 219,
+      "measured": 219,
+      "missing": 0,
+      "beforeMeanDelta": 1.4003573962524827,
+      "afterMeanDelta": 0.9906014484650789,
+      "improved": 124,
+      "regressed": 61,
+      "beforeMedianTileSpread": 0.891087903710606,
+      "afterMedianTileSpread": 0.911434727923331,
+      "referenceMedianTileSpread": 1.012522590176475
+    },
+    "namePaper": {
+      "total": 219,
+      "measured": 219,
+      "missing": 0,
+      "beforeMeanDelta": 2.1430418875185104,
+      "afterMeanDelta": 1.19620916224195,
+      "improved": 188,
+      "regressed": 31,
+      "beforeMedianTileSpread": 1.5846053144188592,
+      "afterMedianTileSpread": 1.6559997459699747,
+      "referenceMedianTileSpread": 2.008901816377883
+    },
+    "typePaper": {
+      "total": 219,
+      "measured": 219,
+      "missing": 0,
+      "beforeMeanDelta": 2.627508893076007,
+      "afterMeanDelta": 1.1257263608742487,
+      "improved": 187,
+      "regressed": 32,
+      "beforeMedianTileSpread": 1.3443575140572126,
+      "afterMedianTileSpread": 2.179752536041721,
+      "referenceMedianTileSpread": 2.0009518622551368
+    }
+  },
+  "colorByMaterial": {
+    "A": {
+      "frame": {
+        "total": 13,
+        "measured": 13,
+        "missing": 0,
+        "beforeMeanDelta": 5.64437135688305,
+        "afterMeanDelta": 2.3812292325035602,
+        "improved": 11,
+        "regressed": 2,
+        "beforeMedianTileSpread": 10.957533490824044,
+        "afterMedianTileSpread": 13.82342168471305,
+        "referenceMedianTileSpread": 13.242052951365658
+      },
+      "rulesPaper": {
+        "total": 13,
+        "measured": 13,
+        "missing": 0,
+        "beforeMeanDelta": 0.6666552375659033,
+        "afterMeanDelta": 1.3856784313207877,
+        "improved": 0,
+        "regressed": 13,
+        "beforeMedianTileSpread": 0.9877681784635117,
+        "afterMedianTileSpread": 3.8908902089804003,
+        "referenceMedianTileSpread": 2.5278744715942643
+      },
+      "namePaper": {
+        "total": 13,
+        "measured": 13,
+        "missing": 0,
+        "beforeMeanDelta": 3.8918239269156008,
+        "afterMeanDelta": 1.087227773121022,
+        "improved": 13,
+        "regressed": 0,
+        "beforeMedianTileSpread": 1.4765958347567039,
+        "afterMedianTileSpread": 2.809995713778061,
+        "referenceMedianTileSpread": 1.5334021759985925
+      },
+      "typePaper": {
+        "total": 13,
+        "measured": 13,
+        "missing": 0,
+        "beforeMeanDelta": 3.874403038513085,
+        "afterMeanDelta": 1.14203579701548,
+        "improved": 13,
+        "regressed": 0,
+        "beforeMedianTileSpread": 1.3443575140572126,
+        "afterMedianTileSpread": 2.701636273918569,
+        "referenceMedianTileSpread": 1.4797478316645476
+      }
+    },
+    "B": {
+      "frame": {
+        "total": 40,
+        "measured": 40,
+        "missing": 0,
+        "beforeMeanDelta": 2.9809395479702183,
+        "afterMeanDelta": 1.9884114797446386,
+        "improved": 29,
+        "regressed": 11,
+        "beforeMedianTileSpread": 10.235768609951545,
+        "afterMedianTileSpread": 10.53911269610801,
+        "referenceMedianTileSpread": 11.78670940893813
+      },
+      "rulesPaper": {
+        "total": 40,
+        "measured": 40,
+        "missing": 0,
+        "beforeMeanDelta": 2.037888768780499,
+        "afterMeanDelta": 1.0765332578139817,
+        "improved": 34,
+        "regressed": 6,
+        "beforeMedianTileSpread": 0.8767755189876695,
+        "afterMedianTileSpread": 0.8426703086553997,
+        "referenceMedianTileSpread": 0.7289681294820978
+      },
+      "namePaper": {
+        "total": 40,
+        "measured": 40,
+        "missing": 0,
+        "beforeMeanDelta": 2.277386538053613,
+        "afterMeanDelta": 2.0714503702871694,
+        "improved": 31,
+        "regressed": 9,
+        "beforeMedianTileSpread": 5.621579179248108,
+        "afterMedianTileSpread": 2.4763609632878976,
+        "referenceMedianTileSpread": 2.251727822739207
+      },
+      "typePaper": {
+        "total": 40,
+        "measured": 40,
+        "missing": 0,
+        "beforeMeanDelta": 3.4747441142616546,
+        "afterMeanDelta": 1.7903767124574703,
+        "improved": 29,
+        "regressed": 11,
+        "beforeMedianTileSpread": 1.5181699387510623,
+        "afterMedianTileSpread": 2.5476420378690454,
+        "referenceMedianTileSpread": 1.9715976234659116
+      }
+    },
+    "G": {
+      "frame": {
+        "total": 41,
+        "measured": 41,
+        "missing": 0,
+        "beforeMeanDelta": 4.709480775998181,
+        "afterMeanDelta": 1.71342326143234,
+        "improved": 41,
+        "regressed": 0,
+        "beforeMedianTileSpread": 11.619409125540457,
+        "afterMedianTileSpread": 12.95014687358023,
+        "referenceMedianTileSpread": 14.066791535148216
+      },
+      "rulesPaper": {
+        "total": 41,
+        "measured": 41,
+        "missing": 0,
+        "beforeMeanDelta": 1.0458916189292558,
+        "afterMeanDelta": 1.0489793580222893,
+        "improved": 23,
+        "regressed": 18,
+        "beforeMedianTileSpread": 0.6636340361022435,
+        "afterMedianTileSpread": 0.8983184186326317,
+        "referenceMedianTileSpread": 0.7924167899496465
+      },
+      "namePaper": {
+        "total": 41,
+        "measured": 41,
+        "missing": 0,
+        "beforeMeanDelta": 1.5360786462229419,
+        "afterMeanDelta": 1.2152181423132307,
+        "improved": 30,
+        "regressed": 11,
+        "beforeMedianTileSpread": 1.243876043602222,
+        "afterMedianTileSpread": 1.5436355395179944,
+        "referenceMedianTileSpread": 1.1528804820129248
+      },
+      "typePaper": {
+        "total": 41,
+        "measured": 41,
+        "missing": 0,
+        "beforeMeanDelta": 2.1052788346625766,
+        "afterMeanDelta": 1.1301107509791992,
+        "improved": 34,
+        "regressed": 7,
+        "beforeMedianTileSpread": 1.9892256316296648,
+        "afterMedianTileSpread": 1.7844771187304351,
+        "referenceMedianTileSpread": 1.6998220944017697
+      }
+    },
+    "R": {
+      "frame": {
+        "total": 42,
+        "measured": 42,
+        "missing": 0,
+        "beforeMeanDelta": 3.506753910827575,
+        "afterMeanDelta": 2.335475895936599,
+        "improved": 41,
+        "regressed": 1,
+        "beforeMedianTileSpread": 10.414057598927672,
+        "afterMedianTileSpread": 11.04904852433847,
+        "referenceMedianTileSpread": 11.06321651934423
+      },
+      "rulesPaper": {
+        "total": 42,
+        "measured": 42,
+        "missing": 0,
+        "beforeMeanDelta": 0.8715040774953419,
+        "afterMeanDelta": 0.8661740244643173,
+        "improved": 6,
+        "regressed": 2,
+        "beforeMedianTileSpread": 0.7844992803033514,
+        "afterMedianTileSpread": 0.8404979789052506,
+        "referenceMedianTileSpread": 1.0821704037881807
+      },
+      "namePaper": {
+        "total": 42,
+        "measured": 42,
+        "missing": 0,
+        "beforeMeanDelta": 1.7899153619471984,
+        "afterMeanDelta": 0.9443719909231267,
+        "improved": 40,
+        "regressed": 2,
+        "beforeMedianTileSpread": 1.5846053144188592,
+        "afterMedianTileSpread": 1.2121124172315578,
+        "referenceMedianTileSpread": 1.2576842562922523
+      },
+      "typePaper": {
+        "total": 42,
+        "measured": 42,
+        "missing": 0,
+        "beforeMeanDelta": 2.1905514003006936,
+        "afterMeanDelta": 0.9287383067874655,
+        "improved": 39,
+        "regressed": 3,
+        "beforeMedianTileSpread": 4.072198770423961,
+        "afterMedianTileSpread": 1.5692660360279098,
+        "referenceMedianTileSpread": 1.8834670193859364
+      }
+    },
+    "U": {
+      "frame": {
+        "total": 41,
+        "measured": 41,
+        "missing": 0,
+        "beforeMeanDelta": 2.4047830134311914,
+        "afterMeanDelta": 2.2875925913414386,
+        "improved": 22,
+        "regressed": 19,
+        "beforeMedianTileSpread": 17.730127792062618,
+        "afterMedianTileSpread": 16.098647151348157,
+        "referenceMedianTileSpread": 22.06692284270252
+      },
+      "rulesPaper": {
+        "total": 41,
+        "measured": 41,
+        "missing": 0,
+        "beforeMeanDelta": 0.9099318179496612,
+        "afterMeanDelta": 0.723103577609405,
+        "improved": 26,
+        "regressed": 15,
+        "beforeMedianTileSpread": 0.9240575008041113,
+        "afterMedianTileSpread": 0.9727694048923935,
+        "referenceMedianTileSpread": 0.9580520897220295
+      },
+      "namePaper": {
+        "total": 41,
+        "measured": 41,
+        "missing": 0,
+        "beforeMeanDelta": 2.2506526358468912,
+        "afterMeanDelta": 0.8687464316141499,
+        "improved": 39,
+        "regressed": 2,
+        "beforeMedianTileSpread": 1.8563789467097793,
+        "afterMedianTileSpread": 3.4583133766477046,
+        "referenceMedianTileSpread": 2.568931288900619
+      },
+      "typePaper": {
+        "total": 41,
+        "measured": 41,
+        "missing": 0,
+        "beforeMeanDelta": 2.1546251904070757,
+        "afterMeanDelta": 0.7871805948941704,
+        "improved": 37,
+        "regressed": 4,
+        "beforeMedianTileSpread": 0.9204985102850182,
+        "afterMedianTileSpread": 4.203233490908486,
+        "referenceMedianTileSpread": 3.0117367618468753
+      }
+    },
+    "W": {
+      "frame": {
+        "total": 42,
+        "measured": 42,
+        "missing": 0,
+        "beforeMeanDelta": 5.769701099565636,
+        "afterMeanDelta": 2.7237533445975073,
+        "improved": 36,
+        "regressed": 6,
+        "beforeMedianTileSpread": 5.135942027253762,
+        "afterMedianTileSpread": 11.583915660279295,
+        "referenceMedianTileSpread": 10.405068905415728
+      },
+      "rulesPaper": {
+        "total": 42,
+        "measured": 42,
+        "missing": 0,
+        "beforeMeanDelta": 2.3739111612589796,
+        "afterMeanDelta": 1.1150442358505275,
+        "improved": 35,
+        "regressed": 7,
+        "beforeMedianTileSpread": 2.2947607069146763,
+        "afterMedianTileSpread": 1.8392803852343809,
+        "referenceMedianTileSpread": 2.1357761041169376
+      },
+      "namePaper": {
+        "total": 42,
+        "measured": 42,
+        "missing": 0,
+        "beforeMeanDelta": 2.3143945959014554,
+        "afterMeanDelta": 0.9493252266460226,
+        "improved": 35,
+        "regressed": 7,
+        "beforeMedianTileSpread": 1.025214093030738,
+        "afterMedianTileSpread": 1.6360574392573284,
+        "referenceMedianTileSpread": 2.535410849255071
+      },
+      "typePaper": {
+        "total": 42,
+        "measured": 42,
+        "missing": 0,
+        "beforeMeanDelta": 2.843052849333909,
+        "afterMeanDelta": 1.010871073954256,
+        "improved": 35,
+        "regressed": 7,
+        "beforeMedianTileSpread": 0.8549055067520559,
+        "afterMedianTileSpread": 2.3227251396298207,
+        "referenceMedianTileSpread": 2.181404187562046
+      }
+    }
+  },
+  "manaInteriors": {
+    "definition": {
+      "referenceSize": [488, 680],
+      "nativeSize": [732, 1020],
+      "insetDiscRadiusFractionOfDiameter": 0.44,
+      "right": 452.64928,
+      "centerY": 48.561800000000005,
+      "size": 23.426928000000004,
+      "gap": 1.84464,
+      "scale": 1.01
+    },
+    "summary": {
+      "total": 297,
+      "candidates": 219,
+      "controls": 78,
+      "withCost": 219,
+      "withoutCost": 0,
+      "discs": 454,
+      "exactDiscs": 454,
+      "maxChannelDelta": 0.0,
+      "meanAbsoluteChannelDelta": 0.0
+    }
+  },
+  "regressions": [
+    {
+      "id": "02392840-f0c4-462e-84ce-9a7cdd9f5efb",
+      "name": "Ranger's Guile",
+      "number": "199",
+      "before100": 79.41804962618882,
+      "after100": 74.99636739725908,
+      "delta100": -4.421682228929747
+    },
+    {
+      "id": "e854e6a3-8684-43fa-9560-ef4c3b62c935",
+      "name": "Unleash Fury",
+      "number": "170",
+      "before100": 80.82196354038895,
+      "after100": 77.63179601091434,
+      "delta100": -3.190167529474608
+    },
+    {
+      "id": "8f14abb0-0e9f-448e-85d7-6cb71f756c56",
+      "name": "Frantic Inventory",
+      "number": "50",
+      "before100": 85.10325385212482,
+      "after100": 82.13911484731508,
+      "delta100": -2.9641390048097294
+    },
+    {
+      "id": "9fd761f3-6b43-4150-8595-dc3abd85b06c",
+      "name": "Mazemind Tome",
+      "number": "232",
+      "before100": 74.80353034096689,
+      "after100": 72.10100561817467,
+      "delta100": -2.70252472279221
+    },
+    {
+      "id": "5360fe8c-41b0-4409-b03e-072f129fb352",
+      "name": "Read the Tides",
+      "number": "62",
+      "before100": 71.73172273190116,
+      "after100": 69.77824727234636,
+      "delta100": -1.9534754595547987
+    },
+    {
+      "id": "6da62557-9783-4e6c-9b5f-2b77dbf96909",
+      "name": "Titanic Growth",
+      "number": "210",
+      "before100": 83.05762283969085,
+      "after100": 81.21681362714381,
+      "delta100": -1.8408092125470454
+    },
+    {
+      "id": "8cbac0e4-f79f-476d-b410-d19ab3696606",
+      "name": "Roaming Ghostlight",
+      "number": "65",
+      "before100": 74.23423848181501,
+      "after100": 72.60860808699498,
+      "delta100": -1.6256303948200435
+    },
+    {
+      "id": "5f22116a-8b6a-4bbe-999f-7329e1e2b2d9",
+      "name": "Gnarled Sage",
+      "number": "187",
+      "before100": 83.08381225058105,
+      "after100": 81.96062386477482,
+      "delta100": -1.1231883858062286
+    },
+    {
+      "id": "38c18541-e95e-4ae0-be18-3bfcafa24ca2",
+      "name": "Turn to Slag",
+      "number": "168",
+      "before100": 65.76528663416468,
+      "after100": 64.67836541567344,
+      "delta100": -1.0869212184912436
+    },
+    {
+      "id": "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+      "name": "Cancel",
+      "number": "46",
+      "before100": 82.7058282326767,
+      "after100": 81.63336125485529,
+      "delta100": -1.0724669778214069
+    },
+    {
+      "id": "7e22c791-6ef9-4f13-a14d-4f795f48bb1c",
+      "name": "Volcanic Geyser",
+      "number": "171",
+      "before100": 82.82587329260932,
+      "after100": 81.80816553663857,
+      "delta100": -1.0177077559707537
+    },
+    {
+      "id": "6ea1ee60-5644-4f78-913d-32c36065957f",
+      "name": "Griffin Aerie",
+      "number": "22",
+      "before100": 64.05970774720242,
+      "after100": 63.18222996126853,
+      "delta100": -0.8774777859338889
+    },
+    {
+      "id": "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+      "name": "Llanowar Visionary",
+      "number": "193",
+      "before100": 76.25590147668629,
+      "after100": 75.44683332303191,
+      "delta100": -0.8090681536543687
+    },
+    {
+      "id": "b19de7a5-c291-405b-a2e6-8d3ac56e6570",
+      "name": "Rookie Mistake",
+      "number": "66",
+      "before100": 80.49206028989222,
+      "after100": 79.76039057472934,
+      "delta100": -0.7316697151628748
+    },
+    {
+      "id": "f19b4a80-41e1-4c5f-869a-682f08543f12",
+      "name": "Burn Bright",
+      "number": "134",
+      "before100": 79.2318897575083,
+      "after100": 78.71182892470976,
+      "delta100": -0.5200608327985412
+    },
+    {
+      "id": "9c224bf0-5641-4160-9d5c-46141ea8372a",
+      "name": "Tormod's Crypt",
+      "number": "241",
+      "before100": 85.96595118414899,
+      "after100": 85.4969715069888,
+      "delta100": -0.4689796771601973
+    },
+    {
+      "id": "ab7052f1-9736-47b6-9da3-8c5ca925ab54",
+      "name": "Traitorous Greed",
+      "number": "166",
+      "before100": 74.64745111497788,
+      "after100": 74.25547876989799,
+      "delta100": -0.3919723450798829
+    },
+    {
+      "id": "59fa8e8d-bcb8-47bf-b71a-df11c8d0f2c9",
+      "name": "Shock",
+      "number": "159",
+      "before100": 80.98828628740961,
+      "after100": 80.69355284044474,
+      "delta100": -0.2947334469648677
+    },
+    {
+      "id": "cce6289e-f665-4faa-8285-c843447f3e52",
+      "name": "Keen Glidemaster",
+      "number": "54",
+      "before100": 76.97416009971036,
+      "after100": 76.71570679710277,
+      "delta100": -0.25845330260758637
+    },
+    {
+      "id": "754b77b4-4cc4-4e49-a7a4-667401e7e063",
+      "name": "Double Vision",
+      "number": "142",
+      "before100": 77.8848222139017,
+      "after100": 77.644727646115,
+      "delta100": -0.24009456778668614
+    },
+    {
+      "id": "91af15cc-fdd5-4d72-a53a-314fa5353527",
+      "name": "See the Truth",
+      "number": "69",
+      "before100": 82.57665342468013,
+      "after100": 82.35603780422719,
+      "delta100": -0.22061562045295746
+    },
+    {
+      "id": "fbd306cf-6625-4414-b9e5-4b909bb1bb13",
+      "name": "Pitchburn Devils",
+      "number": "156",
+      "before100": 80.75612586530433,
+      "after100": 80.572165566564,
+      "delta100": -0.1839602987403266
+    },
+    {
+      "id": "73148b3b-73d3-4f57-8b67-1e91fbe112b9",
+      "name": "Feat of Resistance",
+      "number": "19",
+      "before100": 78.21348540043162,
+      "after100": 78.03033630339294,
+      "delta100": -0.18314909703868176
+    },
+    {
+      "id": "9f8cf3f9-4e3b-4af2-b5ef-a97eb1d2b674",
+      "name": "Bolt Hound",
+      "number": "131",
+      "before100": 79.49245252948172,
+      "after100": 79.37370068305086,
+      "delta100": -0.11875184643086456
+    },
+    {
+      "id": "b832abcc-9ffd-47bf-827a-01b303c610ee",
+      "name": "Rewind",
+      "number": "63",
+      "before100": 82.25726763125881,
+      "after100": 82.20924659843722,
+      "delta100": -0.048021032821599086
+    },
+    {
+      "id": "f2fa5133-c238-47e8-befd-3729a3e4303a",
+      "name": "Transmogrify",
+      "number": "167",
+      "before100": 78.50883234385407,
+      "after100": 78.46816912519074,
+      "delta100": -0.04066321866332823
+    },
+    {
+      "id": "da367981-9d6f-419f-9f58-f969b6183336",
+      "name": "Rain of Revelation",
+      "number": "61",
+      "before100": 65.97701047919726,
+      "after100": 65.96112844432197,
+      "delta100": -0.01588203487529194
+    }
+  ],
+  "limitations": [
+    "All scores remain diagnostic: existing comparison-only v25 poses are frozen, not a completed-set certificate. Five foil-only references stay in the layout denominator and out of paper-color fitting.",
+    "Mana interiors are unchanged on all454 selected discs. The mana structural component regresses about1point, so rims, shadows, placement, sizing and neighboring frame-edge effects remain an audit item.",
+    "Credits have no eligible whole-card component under this metric; use the separate credits diagnostic and existing footer review rather than claiming their fit from the whole total.",
+    "The other78 printings retain prior sources and are controls, not newly certified cohorts. Land, gold, colored artifact, crown and planeswalker source/geometry/material checks remain open.",
+    "Ordinary body text retains its existing spacing fit and font cap. This source/color adoption is not a complete text refit.",
+    "Exact printing data now has297 reviewed Original type lines and13 artist-credit corrections. That does not certify every body and flavor string.",
+    "Explicit frame choices and source colors remain authoritative. An11-variant test preserves existing component-frame donor materials after M21 adopts a different source. New source-family default transfer still requires validation.",
+    "Generic renderer/package/browser/showcase checks pass. Strict historical Magic source guards remain gated on a scoped compatibility receipt for the M21 painter changes; no receipt was bypassed."
+  ]
+}

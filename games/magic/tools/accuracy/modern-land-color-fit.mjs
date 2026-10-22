@@ -6,7 +6,8 @@ import { createServer } from 'vite';
 import { PNG } from 'pngjs';
 import { root, hash, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
-import { sampleColor } from './hsb-color.mjs';
+import { sampleColor, center, delta, quantile } from './hsb-color.mjs';
+import { poolColorTiles } from './modern-color-fit-sampling.mjs';
 import { fitModernColorParts } from './modern-color-parts.mjs';
 
 const [inputFile, nativeDir, scoreDir, output] = process.argv.slice(2);
@@ -48,7 +49,9 @@ const server = await createServer({
   server: { middlewareMode: true, hmr: false, ws: false },
 });
 const groups = new Map(),
-  excluded = [];
+  excluded = [],
+  neutralReferences = [],
+  neutralSources = { namePaper: [], typePaper: [] };
 try {
   await server.ssrLoadModule('/games/magic/src/data/eager.ts');
   const { framePlate } = await server.ssrLoadModule(
@@ -84,6 +87,35 @@ try {
     assert.deepEqual([scan.width, scan.height], [488, 680]);
     const plate = framePlate(e.face);
     assert(plate);
+    const basic = /\bBasic\b/.test(type);
+    if (plate.rightFrame) {
+      const parts = {},
+        missing = {};
+      for (const part of ['namePaper', 'typePaper']) {
+        const rects = [...windows[part].left, ...windows[part].right];
+        try {
+          parts[part] = sampleColor(scan, rects, { paper: true });
+        } catch (error) {
+          if (!/Too few usable color tiles/.test(error.message)) throw error;
+          missing[part] = error.message;
+        }
+      }
+      neutralReferences.push({
+        id: e.id,
+        name: e.card.name,
+        number: e.card.collector_number,
+        referenceHash: e.reference.sha256,
+        normalizedHash: r.normalizedReference.sha256,
+        poseHash: r.poseHash,
+        parts,
+        missing,
+      });
+    }
+    if (plate.frame.endsWith('/l.png') && !plate.rightFrame)
+      for (const part of ['namePaper', 'typePaper']) {
+        const rects = [...windows[part].left, ...windows[part].right];
+        neutralSources[part].push(sampleColor(render, rects, { paper: true }));
+      }
     const sources = plate.rightFrame
       ? [
           [plate.frame, ['left']],
@@ -97,6 +129,12 @@ try {
       const parts = {},
         missing = {};
       for (const [part, patches] of Object.entries(windows)) {
+        if (plate.rightFrame && (part === 'namePaper' || part === 'typePaper')) {
+          missing[part] =
+            'Nonbasic dual headers require a neutral source overlay; colored basic headers cannot drive their fit';
+          continue;
+        }
+
         const rects = sides.flatMap((side) => patches[side]),
           options = { tileSize: part === 'frame' ? 7 : 20, paper: part !== 'frame' };
         try {
@@ -110,6 +148,11 @@ try {
         }
       }
       g.rows.push({
+        headerClass: basic
+          ? 'colored-basic'
+          : plate.rightFrame
+            ? 'neutral-dual'
+            : 'neutral-colorless',
         id: e.id,
         name: e.card.name,
         number: e.card.collector_number,
@@ -156,6 +199,63 @@ try {
       }),
     );
   }
+  const neutralRows = neutralReferences.map((row) => ({
+    ...row,
+    parts: Object.fromEntries(
+      ['namePaper', 'typePaper'].flatMap((part) => {
+        const reference = row.parts[part],
+          samples = neutralSources[part];
+        if (!reference || !samples.length) return [];
+        const tiles = poolColorTiles(samples),
+          rgb = center(samples.map((s) => s.rgb));
+        return [
+          [
+            part,
+            {
+              source: {
+                rgb,
+                tiles,
+                spread: quantile(
+                  tiles.map((t) => delta(t, rgb)),
+                  0.9,
+                ),
+              },
+              reference,
+            },
+          ],
+        ];
+      }),
+    ),
+  }));
+  const neutralSource = [...groups.values()].find((g) => g.source.endsWith('/l.png'));
+  assert(
+    neutralSource && neutralSources.namePaper.length >= 3 && neutralSources.typePaper.length >= 3,
+    'Neutral source requires all three generic-land controls',
+  );
+  const neutralHeaders = {
+    source: neutralSource.source,
+    assetHash: neutralSource.assetHash,
+    sourceControlPrintings: neutralSources.namePaper.length,
+    nonfoilPrintings: neutralRows.length,
+    status: 'neutral-source-overlay-required-before-native-replay',
+    parts: fitModernColorParts(
+      { rows: neutralRows },
+      { namePaper: windows.namePaper, typePaper: windows.typePaper },
+      model,
+      0.01,
+      math,
+    ),
+    printings: neutralRows.map(({ parts, ...row }) => row),
+  };
+  console.log(
+    JSON.stringify({
+      neutralHeaderSource: neutralSource.source.split('/').at(-1),
+      cards: neutralRows.length,
+      parts: Object.fromEntries(
+        Object.entries(neutralHeaders.parts).map(([k, v]) => [k, [v.beforeMean, v.afterMean]]),
+      ),
+    }),
+  );
   const paths = [
     'modern-land-color-fit.mjs',
     'modern-color-parts.mjs',
@@ -171,7 +271,7 @@ try {
     denominator: inputs.value.entries.length,
     landPrintings: inputs.value.entries.length - excluded.length,
     policy:
-      'Frozen accepted nonfoil references and native whole-card rasters. One shared fit per immutable land source. Duals use only fully visible source halves: rules patches lie outside the .27..73 paper blend, and header/rail patches outside the .47..53 join. Singles pool both sides once per card. No scan movement, per-card color fit, gradient-center sampling or foil color targets. Native replay, source mask/contrast/black-point and geometry checks remain required.',
+      'Frozen accepted nonfoil references and native whole-card rasters. One shared fit per immutable land source. Duals use only fully visible source halves: rules patches lie outside the .27..73 paper blend, and header/rail patches outside the .47..53 join. Singles pool both sides once per card. Dual headers use a separate neutral generic-land source model; colored header fits use only basic lands. No scan movement, per-card color fit, gradient-center sampling or foil color targets. Native replay, source mask/contrast/black-point and geometry checks remain required.',
     source: {
       inputsHash: hash(inputs.bytes),
       nativeHash: hash(native.bytes),
@@ -184,6 +284,7 @@ try {
     maxClipping: 0.01,
     windows,
     groups: results,
+    neutralHeaders,
     excluded,
   });
 } finally {

@@ -57,7 +57,8 @@ joins the existing bounded bitmap cache. The exact set and immutable source URL
 must match. Uncalibrated sets, older frame families, special templates and custom
 rules retain their existing behavior. Source-color mode skips the glyph recolor.
 
-Required renderer checks and focused M21 tests pass. Release remains gated on
+The generic renderer checks and focused component tests pass. Strict historical
+Magic source guards remain enabled. Release remains gated on
 the scoped historical source/pixel compatibility proof for the new painter
 paths. The broader Magic test also reproduces a separator fixture overflow on
 the released 0.6.10 baseline with local substitute fonts; it is tracked separately
@@ -173,3 +174,45 @@ tests/magic-modern-inner-ink.mjs for exact, weak, ambiguous and noisy cases.
 
 These results remain partial. Paper color, structural overlap and line ink are
 separate diagnostics, and none alone certifies the complete M21 profile.
+
+## Ordinary sources adopted on the calibration branch
+
+[The production replay](frame-source-production-review.json) uses the real
+default resolver without study materials or retained-layout injection. Its
+297-card control disables only the new source selector. Both sides contain the
+same Original type lines and printed artist credits.
+
+The structure index improves **75.08 to 77.63/100**: 192 improve, 27 regress and
+78 remain unchanged. Component eligibility and coverage are identical.
+All 297 etchings and the 78 other-source faces remain identical. A fresh replay
+after override guards, material-coverage resolution and slimmer cache keys
+reproduces every one of the 594 native PNGs.
+
+The six shared materials live in m21-ordinary-plates.ts and are selected by
+semantic frame rules, without printing IDs. Existing component title, mana,
+P/T and body typography are retained. Only the relevant source material enters
+each face key, and preparation uses the existing bounded bitmap cache.
+
+Mana-disc interiors remain pixel-identical for all 454 selected discs, while
+the mana structural component drops from 90.47 to 89.43/100. Keep that regression
+visible: it does not certify the antialiased rim, shadow or surrounding frame.
+The structural total also excludes credits under this metric; footer accuracy
+still uses its separate diagnostic.
+
+These are partial-set improvements. The remaining source cohorts, final mana
+and text checks, historical source compatibility and modern default transfer
+must be completed before certifying M21 or publishing this calibration.
+
+## Land follow-up
+
+The land fit samples each contributing source only where it is fully visible:
+the paper halves lie outside the broad blend and the headers/rails outside the
+narrow join. It reuses the ordinary fit's clipping bounds and tile objective.
+Missing patches remain explicit.
+
+The first 33-card inspection found that basic lands use colored name/type
+paper, while the nonbasic land headers are neutral. Blending colored full
+plates tints those nonbasic headers incorrectly. Do not average the two
+header populations into one per-color fit or promote the raw land trial.
+A neutral source panel is needed for the nonbasic headers; paper gradients
+and colored rails remain independent.
