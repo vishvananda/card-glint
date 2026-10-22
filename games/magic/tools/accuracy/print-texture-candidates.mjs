@@ -6,12 +6,19 @@ import { chromium } from 'playwright';
 import { PNG } from 'pngjs';
 assert(
   process.argv[2],
-  'Usage: node games/magic/tools/accuracy/print-texture-candidates.mjs STUDY_DIRECTORY',
+  'Usage: node games/magic/tools/accuracy/print-texture-candidates.mjs STUDY_DIRECTORY [CANDIDATE_ID ...]',
 );
 const out = path.resolve(process.argv[2]);
-let dots = (await readFile('packages/browser/src/gpu/print-dots.ts', 'utf8')).match(
+const baseline = process.env.PRINT_TEXTURE_BASELINE;
+const shaderSource = (file) =>
+  readFile(baseline ? path.join(baseline, path.basename(file)) : file, 'utf8');
+let dots = (await shaderSource('packages/browser/src/gpu/print-dots.ts')).match(
   /export const PRINT_DOTS_GLSL = \x60([\s\S]*)\x60;/,
 )[1];
+assert(
+  !dots.includes('struct PrintPlate'),
+  'Historical texture study: set PRINT_TEXTURE_BASELINE to the original 0.6.9 print-dots.ts and printed-ink.ts sources.',
+);
 dots = dots.replace(
   'max(.015,printFootprint*.4)',
   'max(.015,length(vec2(printSpread,printFootprint*.4)))',
@@ -115,8 +122,10 @@ dots = dots.replace(
   'vec4 printFace(vec2 uv){',
   `
 vec3 printDotInk(vec3 ink,vec2 uv){
- if(studyGlobalBlur<=0.)return studyRawDotInk(ink,uv);
- vec2 stepUv=vec2(studyGlobalBlur)/printScreenSize();
+ float softness=studyGlobalBlur;
+ if(studyGlobalPatch>.5)softness*=smoothstep(.3,.7,patchNoise(vec2(uv.x,1.-uv.y)*studyPatchScale+vec2(52.7,19.1)));
+ if(softness<=0.)return studyRawDotInk(ink,uv);
+ vec2 stepUv=vec2(softness)/printScreenSize();
  vec3 result=vec3(0.);
  for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){
   float weight=(x==0?2.:1.)*(y==0?2.:1.)/16.;
@@ -127,7 +136,7 @@ vec3 printDotInk(vec3 ink,vec2 uv){
 vec4 printFace(vec2 uv){`,
 );
 
-let fragment = (await readFile('packages/browser/src/gpu/printed-ink.ts', 'utf8'))
+let fragment = (await shaderSource('packages/browser/src/gpu/printed-ink.ts'))
   .match(/const fragment = \x60([\s\S]*?)\x60;\nconst limit/)[1]
   .replace(
     /\$\{PRINT_DOTS_GLSL.replace\([^\n]*\)\}/,
@@ -135,7 +144,7 @@ let fragment = (await readFile('packages/browser/src/gpu/printed-ink.ts', 'utf8'
   )
   .replace(
     'uniform sampler2D face;',
-    'uniform sampler2D face;uniform float printSpread;uniform float blackFraction;uniform float inkTransparency;uniform vec3 studyPattern;uniform vec2 studyBlurRange;uniform vec2 studyPatchScale;float studyDotSpread;uniform vec2 studyGapParameters;float studyGapBoost;uniform vec2 studyRegistration;vec2 studyRegistrationUv;uniform vec3 studySeparation;uniform float studyGlobalBlur;uniform vec3 studyPhysical;uniform float studyCellSampling;',
+    'uniform sampler2D face;uniform float printSpread;uniform float blackFraction;uniform float inkTransparency;uniform vec3 studyPattern;uniform vec2 studyBlurRange;uniform vec2 studyPatchScale;float studyDotSpread;uniform vec2 studyGapParameters;float studyGapBoost;uniform vec2 studyRegistration;vec2 studyRegistrationUv;uniform vec3 studySeparation;uniform float studyGlobalBlur;uniform float studyGlobalPatch;uniform vec3 studyPhysical;uniform float studyCellSampling;',
   );
 const base = {
   amount: 0.35,
@@ -206,6 +215,80 @@ const variants = [
     cellSampling: 1,
   },
 ];
+variants.push(
+  {
+    ...base,
+    id: 'cmyk-cell-light',
+    label: 'CMYK cell-centered + more light gaps',
+    registration: [1, 0.28],
+    separation: [2, 1, 1],
+    globalBlur: 0.45,
+    physical: [0.3, 0.75, 0.08],
+    cellSampling: 1,
+    gaps: [0.04, 0.4],
+  },
+  {
+    ...base,
+    id: 'cmyk-cell-lighter',
+    label: 'CMYK cell-centered + larger light gaps',
+    registration: [1, 0.28],
+    separation: [2.6, 1, 1],
+    globalBlur: 0.45,
+    physical: [0.3, 0.75, 0.08],
+    cellSampling: 1,
+    gaps: [0.06, 0.54],
+  },
+);
+variants.push({
+  ...base,
+  id: 'f-variable-global-blur',
+  label: 'Stronger + varied global softness',
+  globalBlur: 0.7,
+  globalPatch: 1,
+});
+variants.push(
+  {
+    ...base,
+    id: 'f-variable-soft-limit',
+    label: 'Varied global blur · lower maximum',
+    globalBlur: 0.6,
+    globalPatch: 1,
+  },
+  {
+    ...base,
+    id: 'cmyk-larger-variable',
+    label: 'Larger CMYK light gaps · varied blur',
+    registration: [1, 0.28],
+    separation: [2.6, 1, 1],
+    globalBlur: 0.6,
+    globalPatch: 1,
+    physical: [0.3, 0.75, 0.08],
+    cellSampling: 1,
+    gaps: [0.06, 0.54],
+  },
+);
+variants.push({
+  ...base,
+  id: 'cmyk-approved-050',
+  label: 'CMYK varied blur · approved 0.5 maximum',
+  registration: [1, 0.28],
+  separation: [2.6, 1, 1],
+  globalBlur: 0.5,
+  globalPatch: 1,
+  physical: [0.3, 0.75, 0.08],
+  cellSampling: 1,
+  gaps: [0.06, 0.54],
+});
+const requested = process.argv.slice(3);
+for (const id of requested)
+  assert(
+    variants.some((v) => v.id === id),
+    'Unknown candidate: ' + id,
+  );
+const selected = requested.length ? variants.filter((v) => requested.includes(v.id)) : variants;
+const reportName = requested.length
+  ? 'texture-candidates-' + requested.join('_') + '.json'
+  : 'texture-candidates.json';
 const numbers = (await readdir(out))
   .flatMap((file) => {
     const m = /^face-(\d+)\.png$/.exec(file);
@@ -314,6 +397,7 @@ try {
           gl.uniform2fv(gl.getUniformLocation(program, 'studyRegistration'), v.registration);
           gl.uniform3fv(gl.getUniformLocation(program, 'studySeparation'), v.separation);
           gl.uniform1f(gl.getUniformLocation(program, 'studyGlobalBlur'), v.globalBlur);
+          gl.uniform1f(gl.getUniformLocation(program, 'studyGlobalPatch'), v.globalPatch ?? 0);
           gl.uniform3fv(gl.getUniformLocation(program, 'studyPhysical'), v.physical);
           gl.uniform1f(gl.getUniformLocation(program, 'studyCellSampling'), v.cellSampling ?? 0);
           const data = new Uint8Array(400 * 365 * 4);
@@ -327,7 +411,7 @@ try {
         }
         return result;
       },
-      { fragment, png: bytes.toString('base64'), variants },
+      { fragment, png: bytes.toString('base64'), variants: selected },
     );
     for (const row of rows) {
       const p = new PNG({ width: 400, height: 365 });
@@ -337,12 +421,12 @@ try {
     console.log('completed', number, rows.length);
   }
   await writeFile(
-    out + '/preview/texture-candidates.json',
+    out + '/preview/' + reportName,
     JSON.stringify(
       {
         sources,
         shaderHash: createHash('sha256').update(fragment).digest('hex'),
-        variants,
+        variants: selected,
         patches: [
           [120, 825, 120, 36],
           [306, 825, 120, 36],

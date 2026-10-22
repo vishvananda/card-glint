@@ -27,7 +27,7 @@ try {
     }),
   );
   await page.goto(url);
-  const report = await page.evaluate(async () => {
+  const report = await page.evaluate(async (defaults) => {
     const { createRenderer, IDENTITY, canvas } = await import('/packages/browser/src/index.ts');
     const count = 400,
       width = 96,
@@ -83,7 +83,7 @@ try {
         card: d.id,
         finish: finishes[i % finishes.length],
         cardstock: { amount: 0.35 },
-        printDots: { amount: 0.35, period: 16 },
+        printDots: defaults ? {} : { amount: 0.35, period: 16 },
         transform: [
           0.1,
           0,
@@ -178,6 +178,7 @@ try {
           : gl.getParameter(gl.RENDERER),
         scope:
           '400 distinct original Canvas faces, 96x134, 960x1340 target, six static finishes including full holofoil, shared eight mask geometries, cardstock and printing. CPU submission is not completed GPU time. SwiftShader is software GPU evidence.',
+        printing: defaults ? 'library-defaults' : 'large-period-stress',
         count,
         sourceSize: [width, height],
         targetSize: [960, 1340],
@@ -199,7 +200,7 @@ try {
     function glCleanup(c) {
       c.getContext('webgl2').getExtension('WEBGL_lose_context')?.loseContext();
     }
-  });
+  }, process.env.PERF_PRINT_DEFAULTS === '1');
   assert.equal(report.glError, 0);
   assert.equal(report.after.visible, 400);
   assert.equal(report.after.compositions, 400);

@@ -115,7 +115,8 @@ export interface Instance {
   wear?: { amount: number; seed?: number };
   /** Card-local coating relief over optical finishes. Amount 0..1; omitted/zero keeps smooth gloss. */
   cardstock?: { amount: number };
-  /** Opt-in process-ink dots. Empty settings use amount .35 and period 2 reference pixels at 732px card width.
+  /** Opt-in process-ink dots. Empty settings use amount .35, period 2 reference pixels at 732px card width,
+   * variation .5 and an unprinted .035-width rim.
    * Set artwork:false for scanned art; the recipe's artWindows remain unchanged. */
   printDots?: {
     amount?: number;

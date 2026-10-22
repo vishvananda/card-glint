@@ -285,8 +285,7 @@ decoding permits mip filtering, suppressing fine relief when cards shrink.
 Subsequent frames sample the map in the existing material pass. There are no
 reference face renders, per-frame uploads, readbacks or procedural noise calls.
 The coating modulates the finish response before abrasion and finish coverage,
-without an overall gain reduction. Gloss independently scales its clear-coat
-contribution by 0.9, whether or not cardstock is enabled. Other finishes retain
+without an overall gain reduction. The 0.6.10 gloss update raises reflections by 10%, whether or not cardstock is enabled; cardstock relief is 10% softer at the same amount. Other finishes retain
 their original strength. Static over-finish printing remains unaffected.
 Default/zero amounts preserve the smooth coating; regular printing ignores it.
 Disposal and context restoration follow
@@ -306,3 +305,11 @@ a shader during animation. Mixed groups and faces
 that exceed the cache bound preserve the per-instance shader path. Metrics count
 preparation passes and retained bytes; context restoration and disposal clear the
 cache. Benchmark completed frame time separately from CPU submission time.
+
+Print preparation borrows the unmodified source textures when the native raster
+tier makes the screen’s visibility exactly zero. Those aliases own no GPU memory
+and are never deleted by the printing cache. Small-card scenes therefore avoid
+duplicate print textures and procedural fallback work at invisible frequencies.
+Visible screens reuse source-cell samples and coarse impression fields across
+the nine blur taps. Art exclusions are applied before sampling; input alpha is
+preserved.

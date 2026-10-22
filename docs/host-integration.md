@@ -37,7 +37,7 @@ This avoids fine halftone screens aliasing into colored moiré during CSS rotati
 The helper watches CSS size and monitor/zoom density changes, caps output at the
 native size, and owns no animation loop. Native source textures and exports retain
 their resolution. Do not filter a canvas already rendered directly at its final
-projected resolution; `createRenderer` currently uploads ordinary face, mask, overlay and coverage textures at level 0 with linear filtering. Cached print-dot and cardstock textures have mipmaps. Host materials should generate face mipmaps and use trilinear minification, linear magnification and clamped edges.
+projected resolution; `createRenderer` uploads color faces and overlays with mipmaps and trilinear minification; masks and coverage retain level-0 linear filtering. Cached print-dot and cardstock textures also have mipmaps. Host materials should generate face mipmaps and use trilinear minification, linear magnification and clamped edges.
 `printSamplingVersion === 1` advertises this helper and continuous overlapping
 varied print dots (including hole screens). Print-dot preparation stays in the
 existing bounded printing cache, so tilting does not rebuild the screens.
@@ -401,3 +401,10 @@ using a larger source texture does not make dots physically smaller.
 
 Consumers that previously chose a different period per tier should now pass the
 same reference period at every tier. Existing 732px settings retain their scale.
+
+For a host-sampled print screen, `GLINT_PRINT_CELL_FACE(uv)` may be defined
+before `PRINT_DOTS_GLSL` to sample source-cell colors explicitly at mip level 0
+(for example with `textureLod` on the host texture array). Otherwise it uses
+`glintSampleFace`. Ordinary color sampling and derivative-based screen fading
+retain their existing contract. The native backend uses level 0 for these
+cell-centered samples so quantized cell coordinates cannot select unstable mips.

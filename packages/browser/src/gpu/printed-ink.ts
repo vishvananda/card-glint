@@ -1,14 +1,15 @@
 import { program, texture } from './etcher.js';
 import { PRINT_DOTS_GLSL } from './print-dots.js';
-import type { Texture } from './textures.js';
+import { textureMipBytes, type Texture } from './textures.js';
 import type { Instance, Rect } from '../types.js';
-import { printArtBounds, printDotValues } from '../print-settings.js';
+import { printArtBounds, printDotValues, printDotPeriodForWidth } from '../print-settings.js';
 
 const vertex = `#version 300 es
 out vec2 uv;
 void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);uv=p;gl_Position=vec4(p*2.-1.,0.,1.);}`;
 const fragment = `#version 300 es
 #define PRINT_DOT_ART_WINDOWS
+#define GLINT_PRINT_FACE(uv) textureLod(face,uv,0.)
 precision highp float;
 in vec2 uv;out vec4 color;uniform sampler2D face;
 vec3 previewInk(vec3 c){return mix(c*12.92,1.055*pow(max(c,vec3(0.)),vec3(1./2.4))-.055,step(vec3(.0031308),c));}
@@ -20,7 +21,7 @@ void main(){
  // Sample only the ink screen: averaging source texels would soften lettering.
  // This pass is cached per printing/settings, never rerun for pointer motion.
  if(printDotPeriodTexels()<4.){
-  vec4 source=texture(face,uv);vec3 ink=previewInk(source.rgb),sum=vec3(0.);
+  vec4 source=textureLod(face,uv,0.);vec3 ink=previewInk(source.rgb),sum=vec3(0.);
   vec2 pixel=1./vec2(textureSize(face,0));
   for(int y=0;y<2;y++)for(int x=0;x<2;x++){
    vec2 offset=(vec2(float(x),float(y))-.5)*.5;
@@ -30,17 +31,9 @@ void main(){
  }else color=printFace(uv);
 }`;
 const limit = 16 * 1024 * 1024;
-const sizeOf = (texture: Texture) => {
-  let w = texture.width,
-    h = texture.height,
-    bytes = 0;
-  while (true) {
-    bytes += w * h * 4;
-    if (w === 1 && h === 1) return bytes;
-    w = Math.max(1, Math.floor(w / 2));
-    h = Math.max(1, Math.floor(h / 2));
-  }
-};
+const sizeOf = (texture: Texture) => textureMipBytes(texture.width, texture.height);
+const invisibleAtTier = (texture: Texture, period: number) =>
+  1 / printDotPeriodForWidth(texture.width, period) >= 0.9;
 type Entry = {
   source: Texture;
   overlay?: Texture;
@@ -59,6 +52,7 @@ export class PrintedInk {
   private framebuffer: WebGLFramebuffer;
   private vao: WebGLVertexArrayObject;
   private entries: Entry[] = [];
+  private invisible = new WeakMap<WebGLTexture, Entry>();
   private frame = 0;
   bytes = 0;
   passes = 0;
@@ -78,8 +72,31 @@ export class PrintedInk {
     profile: NonNullable<Instance['printDots']>,
     windows: readonly Rect[] = [],
   ) {
-    const values = printDotValues(profile),
-      artwork = profile.artwork !== false,
+    const values = printDotValues(profile);
+    // The screen shader is identically inactive below this physical sampling
+    // threshold. Borrow the existing printing: no duplicate texture, pass or
+    // procedural per-frame fallback for dense small-card scenes.
+    if (
+      source.mipmapped &&
+      (!overlay || overlay.mipmapped) &&
+      (values[0]! <= 0 ||
+        (invisibleAtTier(source, values[1]!) && (!overlay || invisibleAtTier(overlay, values[1]!))))
+    ) {
+      const previous = this.invisible.get(source.texture);
+      if (previous && previous.overlay?.texture === overlay?.texture) return previous;
+      const entry: Entry = {
+        source,
+        overlay,
+        settings: 'invisible',
+        face: source,
+        top: overlay,
+        bytes: 0,
+        lastFrame: this.frame,
+      };
+      this.invisible.set(source.texture, entry);
+      return entry;
+    }
+    const artwork = profile.artwork !== false,
       settings = JSON.stringify([values, artwork, artwork ? [] : windows]);
     const index = this.entries.findIndex(
       (e) =>

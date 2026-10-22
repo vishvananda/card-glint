@@ -1,3 +1,4 @@
+import { preFinishSource } from '../games/magic/tools/accuracy/finish-ancestry.mjs';
 import { artistReviewProofDependency } from '../games/magic/tools/accuracy/artist-review-ancestry.mjs';
 import { profileDataGeneratorSource } from '../games/magic/tools/accuracy/profile-data-modules.mjs';
 import { profilePreparationProofDependency } from '../games/magic/tools/accuracy/profile-preparation-ancestry.mjs';
@@ -18,7 +19,10 @@ export async function hostWorkerProofSource(file) {
         file,
         profileDataGeneratorSource(
           file,
-          await artistReviewProofDependency(file, await readFile(file)),
+          await artistReviewProofDependency(
+            file,
+            await preFinishSource(file, await readFile(file)),
+          ),
         ),
       ),
     ),

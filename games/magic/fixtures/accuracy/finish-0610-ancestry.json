@@ -1,0 +1,309 @@
+{
+  "schema": 1,
+  "baselineCommit": "c3967a71d6ee35931e514960851bc82a900e3b77",
+  "scope": "finish-only-outside-flat-canvas-calibration",
+  "validation": ["evidence/print-dots-performance.json", "evidence/print-dots-pressure.json"],
+  "files": {
+    "packages/browser/src/gpu/cardstock.ts": {
+      "before": "2a8cdd9a83b237a0536386ee67e2835ce0ef4be8bdfd3fed9dacd18e43905091",
+      "after": "d6becdf5314afc2ed4563948ba8b6b68cba2fbfccb34a36d4c50a40ec3debb77",
+      "reverseEdits": [
+        {
+          "start": 114,
+          "count": 1,
+          "lines": [" return max(0.,1.+cardstockAmount*2.38*dot(slope,light));\n"]
+        }
+      ]
+    },
+    "packages/browser/src/gpu/foil-preview-shader.ts": {
+      "before": "4da5721556b4aeda0027e560ba1c1f67d11a8eaa3da1f43d4f48dfb3e84ca67b",
+      "after": "9e66953359393f8526ef3e3c0ca1466623c95279e23d147803da40f7a8255fe0",
+      "reverseEdits": [
+        {
+          "start": 164,
+          "count": 1,
+          "lines": ["    vec3 res=foilSheenBlend(base,clearCoat*(1.+satinHoverGain*.25));\n"]
+        }
+      ]
+    },
+    "packages/browser/src/gpu/print-dots.ts": {
+      "before": "3be36cc50b2c78db27110ccdb33bfe7d649f5cc3b6a4f057b8590acea73f1d25",
+      "after": "4de912a1ef57c5cc2a53e5ef6d845627c23f909d0096ed332730376e284b5b46",
+      "reverseEdits": [
+        {
+          "start": 150,
+          "count": 40,
+          "lines": [
+            " vec2 p=vec2(uv.x,1.-uv.y)*printScreenSize()/printDotsInfo.y;\n",
+            " float k=1.-max(max(ink.r,ink.g),ink.b);\n",
+            " vec3 cmy=clamp((1.-ink-k)/max(1.-k,.0001),0.,1.);\n",
+            " vec3 plates=vec3(inkScreen(p,cmy.x,vec2(-.258819,.965926),1.),inkScreen(p,cmy.y,vec2(.258819,.965926),5.),inkScreen(p,cmy.z,vec2(0.,1.),9.));\n",
+            " float black=inkScreen(p,k,vec2(.707107),13.);\n",
+            " vec3 screened=(1.-plates)*(1.-black);\n",
+            " return mix(ink,screened,printDotsInfo.x*visible);\n"
+          ]
+        },
+        {
+          "start": 148,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 145,
+          "count": 2,
+          "lines": [
+            "  vec2 edge=min(uv,1.-uv);float printAspect=GLINT_PRINT_SIZE.y/GLINT_PRINT_SIZE.x;\n",
+            "  visible*=smoothstep(printDotsInfo.w*.85,printDotsInfo.w*1.15,min(edge.x,edge.y*printAspect));\n"
+          ]
+        },
+        {
+          "start": 137,
+          "count": 3,
+          "lines": [" if(printDotsInfo.x<=0.)return ink;\n"]
+        },
+        {
+          "start": 84,
+          "count": 52,
+          "lines": []
+        },
+        {
+          "start": 74,
+          "count": 4,
+          "lines": [
+            " // Varied dots can cross cell borders. Union neighboring impressions instead\n",
+            " // of clipping each dot to its square cell, including reversed (hole) screens.\n",
+            " if(variation>0.)for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){\n"
+          ]
+        },
+        {
+          "start": 70,
+          "count": 3,
+          "lines": [
+            " float radius=sqrt(min(ink,1.-ink)/3.14159265),aa=max(.015,printFootprint*.4);\n",
+            " float variation=printDotsInfo.z;\n",
+            " float reach=(radius*(1.+.18*variation)*(holes?1.-.12*variation:1.+.12*variation)+aa)/(1.-.15*variation)+.25*variation;\n"
+          ]
+        },
+        {
+          "start": 67,
+          "count": 1,
+          "lines": [" vec2 q=mat2(axis.x,axis.y,-axis.y,axis.x)*p;\n"]
+        },
+        {
+          "start": 65,
+          "count": 1,
+          "lines": ["float inkScreen(vec2 p,float ink,vec2 axis,float channel){\n"]
+        },
+        {
+          "start": 53,
+          "count": 9,
+          "lines": [
+            "  // Stable impression irregularity. Neighboring dots stay on their plate's\n",
+            "  // screen, with subpixel registration shifts, ellipticity and uneven ink gain.\n",
+            "  cell-=(vec2(a,b)-.5)*.5*printDotsInfo.z;\n",
+            "  cell*=vec2(1.+(b-.5)*.3*printDotsInfo.z,1.-(b-.5)*.3*printDotsInfo.z);\n",
+            "  radius*=1.+(c-.5)*.36*printDotsInfo.z;\n",
+            "  radius*=holes?1.-.12*printDotsInfo.z:1.+.12*printDotsInfo.z;\n"
+          ]
+        },
+        {
+          "start": 50,
+          "count": 2,
+          "lines": [" if(printDotsInfo.z>0.){\n"]
+        },
+        {
+          "start": 49,
+          "count": 0,
+          "lines": [
+            " // Reject distant neighbors before hashing; only nearby impressions can touch.\n"
+          ]
+        },
+        {
+          "start": 43,
+          "count": 5,
+          "lines": []
+        },
+        {
+          "start": 26,
+          "count": 0,
+          "lines": [
+            "// Optional host contract. Without these defines the public shader is unchanged.\n"
+          ]
+        },
+        {
+          "start": 23,
+          "count": 0,
+          "lines": ["// The period describes the physical card, not the selected raster tier.\n"]
+        },
+        {
+          "start": 17,
+          "count": 3,
+          "lines": []
+        },
+        {
+          "start": 14,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 12,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 2,
+          "lines": [
+            "// Experimental process-ink screens, evaluated before finish and wear.\n",
+            "// Conventional C/M/Y/K angles: 105, 75, 90, 45 degrees. This is a visual\n",
+            "// approximation, not a color-managed press simulation or scan reconstruction.\n"
+          ]
+        }
+      ]
+    },
+    "packages/browser/src/gpu/printed-ink.ts": {
+      "before": "c0276d410f699dec581b3010086942a38680258de01e5f7a72c81d346319ca37",
+      "after": "80342c702c727ccccd5165b0ae9040b1a022a77e49625a6bc659a1b9426a91f9",
+      "reverseEdits": [
+        {
+          "start": 74,
+          "count": 25,
+          "lines": [
+            "    const values = printDotValues(profile),\n",
+            "      artwork = profile.artwork !== false,\n"
+          ]
+        },
+        {
+          "start": 54,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 33,
+          "count": 3,
+          "lines": [
+            "const sizeOf = (texture: Texture) => {\n",
+            "  let w = texture.width,\n",
+            "    h = texture.height,\n",
+            "    bytes = 0;\n",
+            "  while (true) {\n",
+            "    bytes += w * h * 4;\n",
+            "    if (w === 1 && h === 1) return bytes;\n",
+            "    w = Math.max(1, Math.floor(w / 2));\n",
+            "    h = Math.max(1, Math.floor(h / 2));\n",
+            "  }\n",
+            "};\n"
+          ]
+        },
+        {
+          "start": 23,
+          "count": 1,
+          "lines": [
+            "  vec4 source=texture(face,uv);vec3 ink=previewInk(source.rgb),sum=vec3(0.);\n"
+          ]
+        },
+        {
+          "start": 11,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 4,
+          "count": 1,
+          "lines": ["import { printArtBounds, printDotValues } from '../print-settings.js';\n"]
+        },
+        {
+          "start": 2,
+          "count": 1,
+          "lines": ["import type { Texture } from './textures.js';\n"]
+        }
+      ]
+    },
+    "packages/browser/src/gpu/shaders.ts": {
+      "before": "c40b93e1ffada9a9e0b678951e5e8fc5d3d3931cd40f347818a4c9c2b8846917",
+      "after": "a85c211864cb542bfebb9569d356cb7df0b08954d873d704bbbccdbff0e91b51",
+      "reverseEdits": [
+        {
+          "start": 112,
+          "count": 5,
+          "lines": [
+            " if(printDotsInfo.x>0.)printing=previewLinear(printDotInk(previewInk(top.rgb),uv));\n"
+          ]
+        },
+        {
+          "start": 59,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "packages/browser/src/gpu/studio-gloss-shader.ts": {
+      "before": "fda5f5cad9c12421a5618c45905acd2c7459bcb324a1c75d92999ea37e663136",
+      "after": "c82dfaa4ea715182de83ebd8f3e35819f432cda68b3f5031188c851296405d09",
+      "reverseEdits": [
+        {
+          "start": 24,
+          "count": 1,
+          "lines": ["  vec3 reflected=vec3(1.00,.99,.97)*source*fresnel*.78*1.10;\n"]
+        }
+      ]
+    },
+    "packages/browser/src/gpu/textures.ts": {
+      "before": "a159b62fdf8f0ed117553ab65db8143f794de9a969594ea053e5ac944b69ec7e",
+      "after": "ea992526fde571dd5bbfe8152b27cf9c2517d25d898bc983299cf8fdf78efdaa",
+      "reverseEdits": [
+        {
+          "start": 78,
+          "count": 1,
+          "lines": ["        return { texture: handle, width: w, height: h };\n"]
+        },
+        {
+          "start": 73,
+          "count": 4,
+          "lines": []
+        },
+        {
+          "start": 52,
+          "count": 1,
+          "lines": ["      w * h * 4,\n"]
+        },
+        {
+          "start": 8,
+          "count": 14,
+          "lines": []
+        }
+      ]
+    },
+    "packages/browser/src/print-settings.ts": {
+      "before": "3a34ed2d20367ce3a1a9cf0f341a615b14af8ec05e98bb7661c744dcf5d2c10d",
+      "after": "79e531525dc76f7b8190b2abb7e19f0423bc6ee5f35d0f15ab5061b2e85c75fe",
+      "reverseEdits": [
+        {
+          "start": 24,
+          "count": 1,
+          "lines": ["  inset: 0,\n"]
+        },
+        {
+          "start": 4,
+          "count": 4,
+          "lines": [
+            "export function printDotPeriodForWidth(width: number, period = DEFAULT_PRINT_DOTS.period): number {\n"
+          ]
+        }
+      ]
+    },
+    "packages/browser/src/types.ts": {
+      "before": "3e21292b806a43f9056677b4d901f73a971a3055e67c2543cc99ad974966a913",
+      "after": "76cc1ea4be698d42c6397a6d29acd5e9fe037e5cddb56f6f82579f4103773957",
+      "reverseEdits": [
+        {
+          "start": 117,
+          "count": 2,
+          "lines": [
+            "  /** Opt-in process-ink dots. Empty settings use amount .35 and period 2 reference pixels at 732px card width.\n"
+          ]
+        }
+      ]
+    }
+  }
+}
