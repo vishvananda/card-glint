@@ -304,6 +304,18 @@
           ]
         }
       ]
+    },
+    "packages/browser/src/finish.ts": {
+      "before": "31bbe8fe440e799dbe325b7902cee37108fdfc9898639af124eeef16560d0a72",
+      "after": "d27f14547c6ea13643a26ba6dcca8362d949af0b1bb1322e5babade865bc4a76",
+      "review": "Only two additive exports. The new modules declare classes and functions; Canvas composition never calls them. Native renderer and painter files are unchanged.",
+      "reverseEdits": [
+        {
+          "start": 9,
+          "count": 2,
+          "lines": []
+        }
+      ]
     }
   }
 }

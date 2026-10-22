@@ -127,7 +127,7 @@ The README's paired eight-second GIFs and MP4s are captured from the same render
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.6.10/card-glint-0.6.10.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.6.11/card-glint-0.6.11.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -148,7 +148,7 @@ For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
   import {
     createRenderer,
     IDENTITY,
-  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.6.10/browser.js';
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.6.11/browser.js';
 
   const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
   // Supply your own game pack/card recipes, then render as below.
@@ -282,7 +282,7 @@ describe the separation between repository code and external game assets.
 Set `Instance.cardstock` to `{ amount: 0.2 }` for subtle, irregular relief in the
 clear coating over any optical finish. The amount ranges from 0 to 1. It modulates reflected light;
 printing remains sharp. Relief varies the finish response locally without lowering its overall gain.
-Gloss reflection is 10% stronger in 0.6.10, with or without relief. Cardstock relief is 10% softer at the same amount.
+Gloss reflection is 10% stronger in 0.6.11, with or without relief. Cardstock relief is 10% softer at the same amount.
 Omitted or zero keeps the smooth coating,
 and regular printing ignores it. Pass the same `cardstock` option to `exportCard`
 for matching PNGs. Wear is applied above the coating, so exposed paper stays matte.
@@ -325,6 +325,8 @@ keep the per-instance procedural path. The cache is released on disposal and
 rebuilt after context loss. There are no per-frame CPU readbacks or texture uploads.
 
 Host-owned renderers can reuse the same print-dot preparation, cardstock relief
-map and selective finish coverage through `card-glint/finish`. See the
+map and selective finish coverage through `card-glint/finish`. `FinishTextures(gl)`
+prepares GPU textures directly in a host-owned WebGL2 context, including sources
+in texture-array layers, without CPU readback or a second context. See the
 [host material contracts](docs/host-integration.md#printing-and-coating-in-host-materials)
 for texture encoding, shader inputs, caching and ownership.

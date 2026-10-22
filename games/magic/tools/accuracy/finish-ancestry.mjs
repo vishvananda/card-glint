@@ -4,7 +4,7 @@ import { hash } from './common.mjs';
 
 // Reconstruct only the exact reviewed finish revision for historical flat-face
 // receipts. Current scores retain current identities; future edits fail closed.
-const receipt = '9e019da14e919088c70f4f62bee51be5645db1fbf6bea705d6993679f8093d85';
+const receipt = '667a8693b667d5a3f854a63a33e2c2e5334992ecbb372971656182bf3d03f162';
 let checked;
 export function finishAncestryProof() {
   return (checked ??= (async () => {

@@ -7,7 +7,7 @@ import {
 } from '../games/magic/tools/accuracy/finish-ancestry.mjs';
 
 const proof = await finishAncestryProof();
-assert.equal(Object.keys(proof.files).length, 9);
+assert.equal(Object.keys(proof.files).length, 10);
 for (const [file, change] of Object.entries(proof.files)) {
   const bytes = await readFile(file);
   assert.equal(hash(await preFinishSource(file, bytes)), change.before);
