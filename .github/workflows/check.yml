@@ -38,6 +38,18 @@ jobs:
       - run: npm run magic:data:check
       - run: npm run test:magic-lazy
       - run: npm run test:calibration-editor
+      # The Azure mirror repeatedly consumed most of the cold-job budget.
+      # Keep the signed Ubuntu repositories and the complete browser dependency set.
+      - name: Use primary Ubuntu archive for browser dependencies
+        run: |
+          for source in /etc/apt/sources.list /etc/apt/sources.list.d/*.sources; do
+            if [ -f "$source" ]; then
+              sudo sed -i \
+                -e 's|http://azure.archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' \
+                -e 's|https://azure.archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' \
+                "$source"
+            fi
+          done
       - run: npx playwright install --with-deps chromium webkit
       - run: npm run test:magic-lazy-browser
       - run: npm run test:magic-accuracy
