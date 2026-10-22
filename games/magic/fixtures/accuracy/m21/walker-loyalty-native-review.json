@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "adopted-regional-native-fit-not-set-certification",
+  "source": {
+    "renderer": "e0887b48060b9525fb3adc7b5440776823ee8449598dee949b32cc3f8d3bbb73",
+    "input": "db2680ff926405d8d2b3f97edef67e63a8c017ab42df4b878f92c1708283a399",
+    "beforeRenderer": "1975ea9043b345aff81686d1c85eb76ed5dba6fe3554c287eefb4ec7d0c2d611",
+    "beforeNative": "c64c730ee73a3599fbbf8f3880387868c12d15c6e4e6babc17ff5db44be50687",
+    "normalizedReferences": "77cf6878a7a965a57c88b5325a1f4ef5324c81d67774d1599b17bf942f7ec4ef",
+    "native": "ab30b929589866c0130e1245d4f390ae5e6a2ca76f082d61bb163fa492bc500c",
+    "startingStudy": "11d0af608bd7f72b4c555bf4e5a014a5fba7c8fcb993aeb33bf1afc1b611f359",
+    "costStudy": "a1bab2d77a33743e554b458124876c54fc8af4c9cd01597f88bc0207a3a53148",
+    "groupedCostStudy": "d9803b59f9822904f0aeca6b685a2f7c96373e4846a858385b0ec84b4a84a16e",
+    "nativeParity": "0e8594c3ae5396a726fb3768a2f66e25caae007945361b487cef6eb0d9fba335",
+    "fullNative": "a1930b06d523e20f605554f43f10469f8a6781eac8d3dd26e5595a9605ad0fb5",
+    "fullScores": "8221632fb3b9a60a103288364dccddf55a165b36adafd5bdea5964145a6886dd"
+  },
+  "method": {
+    "raster": [732, 1020],
+    "reference": [488, 680],
+    "framePoses": "Frozen affine frame normalization shared by every before/after; no text-derived or per-card rendering offsets.",
+    "objective": "55% symmetric edge agreement +45% filled-ink overlap, on inverted gray for white numerals. A fixed erased-native-background mask excludes the badge rim before evaluating candidates. Hollow ink cannot win by contributing extra edges.",
+    "fitTargets": {
+      "nonfoilPrintings": 9,
+      "distinctNames": 6,
+      "weighting": "Each distinct nonfoil planeswalker name weights one; four Teferi illustrations share one name. Within a name, ability labels share its weight."
+    },
+    "controls": { "foilOnlyPrintings": 5, "notColorOrFitTargets": true },
+    "search": "Coordinate descent over shared x/y, size and horizontal glyph scale; compare original Beleren and Beleren2016, Canvas auto and fractional metrics.",
+    "selection": "Starting loyalty uses the best shared fit. Ordinary ability labels retain the all-label fractional fit, which improves every ordinary label; its slightly higher-mean grouped alternative regresses one Teferi label and is rejected. Multi-digit labels have a separate width/position fit shared across both distinct names; it retains the badge ink limit.",
+    "validation": "Reused development scans and five foil-only geometry controls, not a fresh independent set. The multi-digit cohort has only two distinct names; transfer beyond M21 remains subject to the modern-default audit."
+  },
+  "selected": {
+    "starting": {
+      "family": "\"CardRenderer MTG Beleren\", Georgia",
+      "precision": true,
+      "dx": 1.75,
+      "dy": 2,
+      "size": 1.04,
+      "sx": 1.015
+    },
+    "cost": {
+      "family": "\"CardRenderer MTG Beleren 2016\", Georgia",
+      "precision": true,
+      "dx": 1.75,
+      "dy": 1.75,
+      "size": 1.03,
+      "sx": 1.045
+    },
+    "wideCost": {
+      "family": "\"CardRenderer MTG Beleren 2016\", Georgia",
+      "precision": true,
+      "dx": 1,
+      "dy": -0.25,
+      "size": 1.03,
+      "sx": 1.075
+    }
+  },
+  "summary": {
+    "cards": 14,
+    "glyphFields": 56,
+    "nativeFieldsMatch": 56,
+    "changesOutsideLoyaltyWindows": 0,
+    "etchingsUnchanged": 14,
+    "improvedFields": 56,
+    "starting": { "count": 14, "before100": 63.48902304693419, "after100": 81.63042229600052 },
+    "cost": { "count": 37, "before100": 58.333699713363764, "after100": 82.40795797900367 },
+    "wideCost": { "count": 5, "before100": 86.07321767005483, "after100": 93.46599279294765 }
+  },
+  "review": [
+    "All56 selected fields improve both filled/edge combined objective; all56 actual production crops match selected candidates within0.0002 grayscale units, with no pixel change outside their fixed windows. All14 native etching masks stay byte-identical.",
+    "The shared starting fit keeps the original Beleren font; ability costs use Beleren2016. Both explicitly request fractional metrics. Glyph scaling is bounded by the original badge maximum width.",
+    "No new image readback, decoding, font loading or compilation is introduced during animation. Adjustments apply during existing static face composition.",
+    "This resolves numeral typography only. Badge outlines/shadows, colons, remaining text/footer/basic-rim audits, final scan-pose certification, default transfer and release are separate."
+  ],
+  "fullCardReplay": {
+    "printings": 297,
+    "layers": 594,
+    "unaffectedFacesIdentical": 283,
+    "unchangedEtchings": 297,
+    "before100": 78.88787477141767,
+    "after100": 78.9016245418045,
+    "coverage": 0.9277395068699427,
+    "improved": 14,
+    "regressed": 0,
+    "unchanged": 283
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/walker-loyalty-native-review.json.gz",
+    "sha256": "e8e1bb596b5853a1bef27b0d96bdf02339ec308c473f789dcada1b4347b3c7c1",
+    "contentSha256": "c00e4312e13a9f2b6ab183ab0d1f2ee6e838d21b886f31f8700474b38629d989"
+  }
+}

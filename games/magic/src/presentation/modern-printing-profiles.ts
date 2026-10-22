@@ -34,6 +34,11 @@ export interface ModernHeadingAdjustment {
   readonly width: number;
 }
 
+export interface ModernLoyaltyAdjustment extends ModernHeadingAdjustment {
+  readonly font?: 'beleren-2016';
+  readonly fractionalMetrics?: boolean;
+}
+
 export interface ModernPrintingProfile {
   readonly revision: number;
   /** Intrinsic heading glyphs, independent of color calibration policy. */
@@ -52,6 +57,12 @@ export interface ModernPrintingProfile {
     readonly deckCollectorNumbers: readonly string[];
     /** Second pass over the same translucent foreground, never the background. */
     readonly frameRepaint?: Readonly<Record<string, number>>;
+    readonly loyalty?: {
+      readonly starting: ModernLoyaltyAdjustment;
+      readonly cost: ModernLoyaltyAdjustment;
+      /** Keep multi-digit costs inside the same source badge. */
+      readonly wideCost: ModernLoyaltyAdjustment;
+    };
     readonly paperColors: Readonly<Record<string, string>>;
     readonly rules: {
       readonly regular: ModernWalkerTextAdjustment;
@@ -93,7 +104,7 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 8,
+    revision: 9,
     headingFont: 'beleren-2016',
     typeText: {
       plate: { dx: -1.25, dy: 0.5, size: 1.025, width: 0.985 },

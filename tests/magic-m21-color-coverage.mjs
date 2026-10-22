@@ -167,9 +167,13 @@ try {
   assert.deepEqual(pigment, selected);
   assert.equal(hasCalibratedFramePigment(face), true);
   assert.equal(hasCalibratedFramePigment({ ...face, frameAssetFamily: 'm15-accurate' }), true);
+  for (const typeLine of ['Legendary Creature', 'Planeswalker']) {
+    const component = { ...face, typeLine };
+    assert.equal(hasCalibratedFramePigment(component), true);
+    assert.equal(hasCalibratedFramePigment({ ...component, calibration: 'source' }), false);
+    assert.equal(hasCalibratedFramePigment({ ...component, colorCalibration: undefined }), false);
+  }
   for (const excluded of [
-    { typeLine: 'Legendary Creature' },
-    { typeLine: 'Planeswalker' },
     { typeLine: 'Legendary Land', colors: [] },
     { setCode: 'unmeasured' },
     { colorCalibration: undefined },

@@ -1,4 +1,4 @@
-import { modernWalkerBodyProfile } from './modern-printing-profile.js';
+import { modernWalkerBodyProfile, modernWalkerProfile } from './modern-printing-profile.js';
 import { WALKER_GEOMETRY, paintWalkerGeometry } from './planeswalker-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { rulesInkVisible } from './rules-visibility.js';
@@ -160,7 +160,12 @@ export function paintSpecialRules(
         context.fillRect(bx, by, badgeW, badgeH);
       }
       if (!saga) {
-        paintPlaneswalkerCost(context, badge, [bx, by, badgeW, badgeH]);
+        paintPlaneswalkerCost(
+          context,
+          badge,
+          [bx, by, badgeW, badgeH],
+          modernWalkerProfile(face)?.loyalty,
+        );
         paintAbilityColon(
           context,
           bx + badgeW + PLANESWALKER_RULE_GEOMETRY.colonOffsetX,

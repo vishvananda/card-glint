@@ -2,7 +2,7 @@
   "schema": 1,
   "set": "m21",
   "status": "open-component-outliers",
-  "renderer": "1975ea9043b345aff81686d1c85eb76ed5dba6fe3554c287eefb4ec7d0c2d611",
+  "renderer": "e0887b48060b9525fb3adc7b5440776823ee8449598dee949b32cc3f8d3bbb73",
   "items": [
     {
       "id": "planeswalker-art-spill",
@@ -13,11 +13,7 @@
           "name": "Ugin, the Spirit Dragon",
           "number": "1"
         },
-        {
-          "id": "98c85699-2daf-4e87-a3be-465d02bd64bb",
-          "name": "Basri Ket",
-          "number": "7"
-        },
+        { "id": "98c85699-2daf-4e87-a3be-465d02bd64bb", "name": "Basri Ket", "number": "7" },
         {
           "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
           "name": "Garruk, Unleashed",
@@ -31,10 +27,10 @@
     {
       "id": "planeswalker-starting-loyalty",
       "component": "stats",
-      "status": "needs-shared-fit",
+      "status": "shared-fit-adopted",
       "scope": "All14 Original planeswalkers",
-      "review": "Starting-loyalty numerals tend to be slightly high/left and shorter than the printed ink. Compare actual fonts and shared geometry; do not add card offsets.",
-      "evidence": "games/magic/fixtures/accuracy/m21/starting-loyalty-ink-diagnostic.json"
+      "review": "All14 starting values and42 ability costs improve with shared role/width fits. Badge outline/shadow and colon review remains separate.",
+      "evidence": "games/magic/fixtures/accuracy/m21/walker-loyalty-native-review.json"
     }
   ]
 }

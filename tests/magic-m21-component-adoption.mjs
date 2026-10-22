@@ -13,7 +13,7 @@ try {
   const { calibratedManaTarget, calibratedFrameMaterials } = await module('calibration-profiles');
   const { printingCalibrationMaterials } = await module('printing-calibration-materials');
   const { canvasAssetUrls } = await module('canvas-assets');
-  const { modernWalkerFrameRepaint } = await module('modern-printing-profile');
+  const { modernWalkerFrameRepaint, modernWalkerProfile } = await module('modern-printing-profile');
   const { profileAssets } = await module('assets');
   const { resolveCardProfile } = await module('profile');
   const { faceFrame } = await module('special-frames');
@@ -77,6 +77,16 @@ try {
     );
   }
   assert.equal(modernWalkerFrameRepaint(walker, 'Colourless'), 0.7);
+  for (const face of [walker, tall, { ...walker, collectorNumber: '324' }])
+    assert.deepEqual(modernWalkerProfile(face)?.loyalty, profile.planeswalkers.loyalty);
+  for (const face of [base, { ...walker, setCode: 'war' }, { ...walker, frameStyle: 'retro' }])
+    assert.equal(modernWalkerProfile(face)?.loyalty, undefined);
+  // Source mode affects pigments; intrinsic printing typography remains selected.
+  assert.deepEqual(
+    modernWalkerProfile({ ...walker, calibration: 'source' })?.loyalty,
+    profile.planeswalkers.loyalty,
+  );
+
   for (const face of [
     base,
     { ...walker, setCode: 'war' },

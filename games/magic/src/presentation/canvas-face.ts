@@ -6,7 +6,11 @@ import {
 } from './modern-heading-font.js';
 import { loadModernFooterFont } from './modern-footer-font.js';
 import { framePlate } from './frame-plates.js';
-import { modernPrintingProfileKey, modernWalkerFrameRepaint } from './modern-printing-profile.js';
+import {
+  modernPrintingProfileKey,
+  modernWalkerFrameRepaint,
+  modernWalkerProfile,
+} from './modern-printing-profile.js';
 import { ALPHA_RULES_REVISION } from './early-text-tiers.js';
 import { retroDualFrameRevision } from './retro-dual-frame.js';
 import { WALKER_GEOMETRY, walkerSymbolSize } from './planeswalker-geometry.js';
@@ -1034,7 +1038,12 @@ export function paintAssembledFace(
   if (stats && kind !== 'leveler') {
     draw(assets.pt, rects.stats, 'stretch');
     if (kind.startsWith('planeswalker'))
-      paintPlaneswalkerLoyalty(context, stats.text, px(rects.stats));
+      paintPlaneswalkerLoyalty(
+        context,
+        stats.text,
+        px(rects.stats),
+        modernWalkerProfile(face)?.loyalty?.starting,
+      );
     else {
       const [sx, sy, sw] = px(rects.stats);
       context.fillStyle = '#17140f';

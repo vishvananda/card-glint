@@ -1,5 +1,19 @@
 # M21 calibration evidence
 
+The unreleased calibration branch is at profile revision 9. The
+[foreground material review](walker-foreground-native-review.json) improves all
+35 clean nonfoil planeswalker regions; mean OKLab distance falls from 4.87 to
+0.53 (times 100, smaller is better). The shared
+[loyalty review](walker-loyalty-native-review.json) improves all 14 starting
+values and 42 ability costs, including the multi-digit labels. Its native replay
+matches every selected crop and leaves pixels outside those regions unchanged.
+Neither review certifies the complete set.
+
+[Component outliers](component-outliers.json) retain missing illustration spill
+on Ugin, Basri and Garruk. Badge outlines/shadows, colons, remaining text/footer
+and basic-symbol rim audits, scan-pose certification and modern-default transfer
+remain open. These branch measurements do not replace the published scores.
+
 ## Type review proposal
 
 `type-line-proposal.json` records the 297 reviewed physical type lines and exact

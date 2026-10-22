@@ -1,3 +1,4 @@
+import type { ModernLoyaltyAdjustment } from './modern-printing-profiles.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect } from './face-layout.js';
 
@@ -19,8 +20,18 @@ export function paintPlaneswalkerLoyalty(
   c: CanvasContext,
   text: string,
   [x, y, width, height]: FaceRect,
+  adjustment?: ModernLoyaltyAdjustment,
 ): void {
-  paintLoyaltyInk(c, text, 24, x + width / 2, y + height / 2 + 2.5, width * 0.72);
+  paintAdjustedLoyaltyInk(
+    c,
+    text,
+    24,
+    x + width / 2,
+    y + height / 2 + 2.5,
+    width * 0.72,
+    1,
+    adjustment,
+  );
 }
 
 /** The source badge's black body is not centered in its image: plus has a top
@@ -30,11 +41,16 @@ export function paintPlaneswalkerCost(
   c: CanvasContext,
   text: string,
   [x, y, width, height]: FaceRect,
+  adjustments?: {
+    readonly cost: ModernLoyaltyAdjustment;
+    readonly wideCost: ModernLoyaltyAdjustment;
+  },
 ): void {
+  const adjustment = adjustments?.[(text.match(/[0-9]/g)?.length ?? 0) > 1 ? 'wideCost' : 'cost'];
   const geometry = PLANESWALKER_COST_GEOMETRY;
   const inkOffsetY =
     geometry.numeralOffsetY[text.startsWith('+') ? 'plus' : text === '0' ? 'zero' : 'minus'];
-  paintLoyaltyInk(
+  paintAdjustedLoyaltyInk(
     c,
     text,
     geometry.fontSize,
@@ -42,7 +58,49 @@ export function paintPlaneswalkerCost(
     y + height / 2 + inkOffsetY,
     width - geometry.horizontalInset,
     geometry.widthScale,
+    adjustment,
   );
+}
+
+/** Shared source-family fit, applied before static rasterization. Width scales
+ * the actual glyphs while retaining the badge's original maximum ink width. */
+function paintAdjustedLoyaltyInk(
+  c: CanvasContext,
+  text: string,
+  size: number,
+  centerX: number,
+  centerY: number,
+  maxWidth: number,
+  widthScale: number,
+  adjustment?: ModernLoyaltyAdjustment,
+): void {
+  if (!adjustment) {
+    paintLoyaltyInk(c, text, size, centerX, centerY, maxWidth, widthScale);
+    return;
+  }
+  c.save();
+  if (adjustment.fractionalMetrics) {
+    c.textRendering = 'geometricPrecision';
+    c.fontKerning = 'normal';
+  }
+  const x = centerX + adjustment.dx;
+  c.translate(x, 0);
+  c.scale(adjustment.width, 1);
+  const family =
+    adjustment.font === 'beleren-2016'
+      ? '"CardRenderer MTG Beleren 2016", Georgia'
+      : PLANESWALKER_COST_GEOMETRY.fontFamily;
+  paintLoyaltyInk(
+    c,
+    text,
+    size * adjustment.size,
+    0,
+    centerY + adjustment.dy,
+    maxWidth / adjustment.width,
+    widthScale,
+    family,
+  );
+  c.restore();
 }
 
 function paintLoyaltyInk(
@@ -53,10 +111,11 @@ function paintLoyaltyInk(
   centerY: number,
   maxWidth: number,
   widthScale = 1,
+  family: string = PLANESWALKER_COST_GEOMETRY.fontFamily,
 ): void {
   c.save();
   c.fillStyle = PLANESWALKER_COST_GEOMETRY.ink;
-  c.font = `${PLANESWALKER_COST_GEOMETRY.fontWeight} ${size}px ${PLANESWALKER_COST_GEOMETRY.fontFamily}`;
+  c.font = `${PLANESWALKER_COST_GEOMETRY.fontWeight} ${size}px ${family}`;
   c.textAlign = 'center';
   c.textBaseline = 'alphabetic';
   c.letterSpacing = '0px';

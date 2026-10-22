@@ -86,6 +86,25 @@ export const M21_COMPONENT_CALIBRATION: Pick<
   planeswalkers: {
     deckCollectorNumbers: ['320', '324', '328', '332', '336'],
     frameRepaint: { Colourless: 0.7 },
+    loyalty: {
+      starting: { dx: 1.75, dy: 2, size: 1.04, width: 1.015, fractionalMetrics: true },
+      cost: {
+        dx: 1.75,
+        dy: 1.75,
+        size: 1.03,
+        width: 1.045,
+        font: 'beleren-2016',
+        fractionalMetrics: true,
+      },
+      wideCost: {
+        dx: 1,
+        dy: -0.25,
+        size: 1.03,
+        width: 1.075,
+        font: 'beleren-2016',
+        fractionalMetrics: true,
+      },
+    },
     paperColors: {
       Colourless: '#eaebf1f0',
       W: '#f2e5d4f0',

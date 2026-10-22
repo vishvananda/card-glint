@@ -130,7 +130,10 @@ function baseFrameMaterials(face: RenderedCardInput): Readonly<Record<string, Fr
 
 /** An outer-stock-only correction does not establish pigment coverage. */
 export function hasCalibratedFramePigment(face: RenderedCardInput): boolean {
-  return Object.keys(baseFrameMaterials(face)).length > 0;
+  return (
+    Object.keys(baseFrameMaterials(face)).length > 0 ||
+    Object.keys(modernComponentMaterials(face)).length > 0
+  );
 }
 
 /** Source-bound black levels layer over the existing pigment fit. */

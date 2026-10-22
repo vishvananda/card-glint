@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "status": "unaffected-native-source-audit",
+  "eligibleForPublication": false,
+  "scope": "Same generated local raster and browser fallback fonts. Native table/inspect face, printing and artwork layers; text measurement/draw calls and frame descriptors. Excludes intentional M21 changes. No cached scans or actual artwork/color-fit certification, asynchronous material preparation or GPU benchmark.",
+  "source": {
+    "fontAddition": "88c35b63eecde234bf8ea54201111b1c0daf4766f1ef9429e364674267f17620",
+    "base": "89b320d41ed41ddaaf92e5c72f6390a5dbc9448f",
+    "current": "704b8a83aecd3f6a346a700822cc1ece7b57d0b0",
+    "beforeRenderer": "34a8a05e2e5dae4786486eb5d3fbac6b21cfc1ff9d0b47a06135f84f19de7e4a",
+    "afterRenderer": "e0887b48060b9525fb3adc7b5440776823ee8449598dee949b32cc3f8d3bbb73",
+    "cases": "fd3441b272a6d78d4cceac643579da4d9dd52d5148724e9c8f1d49e356ac163c",
+    "tool": "e3260e36b43b90304866dccf477979df5cf2e5714b22198dbfff46082fb8483c"
+  },
+  "toolFile": "games/magic/tools/accuracy/m21-unaffected-component-review.mjs",
+  "summary": {
+    "cases": 250,
+    "pixelPairsIdentical": 1500,
+    "textCallPairsIdentical": 1500,
+    "geometryPairsIdentical": 1500,
+    "externalAssetRequests": 0
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-walker-loyalty-review.json.gz",
+    "sha256": "5b82adaafeb3a0d0fda6853ac1b6fc305d14fea2ee748d3ca77d4a28193a4806",
+    "contentSha256": "2e069738f711ac288b807e4b53a323c716efc58b7fb32a482da35388552a521e"
+  },
+  "review": [
+    "R6 limits the shared starting-loyalty and ability-cost fits to exact M21 source families and reports the selected foreground pigment coverage. All unrelated historical and modern donor cases match published0.6.11 native pixels, text calls and geometry.",
+    "This generated-art collateral audit does not certify changed M21 accuracy, actual external font/asset loading, scan normalization or set completion."
+  ]
+}
