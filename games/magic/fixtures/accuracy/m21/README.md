@@ -316,3 +316,34 @@ node games/magic/tools/accuracy/modern-calibration-native.mjs \
 The shared fit uses fixed reference pixels and source-only paper arcs. The
 trial parameters bind the renderer, input snapshot, source hook and fit receipt.
 Neither script modifies production profiles or input cards.
+
+## Independent mana glyph fit
+
+[The glyph native trial](mana-glyph-native-review.json) searches filled-ink overlap
+inside the fixed candidate circles. It separates numeral and W/U/B/R/G scale and
+offsets from disc placement, paper color and shadow. Own-render controls recover
+the unchanged geometry; all527 normal cost tokens remain in the denominator.
+
+A complete297-card native replay changes exactly250 cost areas. All other face
+pixels, all alpha and all297 etchings stay identical. Actual filled-ink overlap
+improves W/U/B/G and numerals. Red's tiny predicted gain does not survive native
+rasterization, so its transform is rejected. X is measured explicitly but remains
+diagnostic because the existing per-color controls do not expose it.
+
+Mean broad mana is90.05/100 (production89.56; circle-only90.10). Whole-card score
+is78.219/100 (production78.181; circle-only78.224). These differing objectives
+remain visible; the fit is not automatically promoted. Color/shadow and remaining
+frame-family audits precede adoption. Full results and regressions are retained
+in the adjacent compressed receipt.
+
+```sh
+node --test games/magic/tools/accuracy/modern-mana-glyph-objective.test.mjs
+node games/magic/tools/accuracy/modern-mana-glyph-fit.mjs \
+  INPUTS CIRCLE_NATIVE CIRCLE_SCORES AUDIT CIRCLE_FIT CIRCLE_PARAMETERS OUTPUT
+node games/magic/tools/accuracy/modern-calibration-native.mjs \
+  INPUTS OUTPUT --mana-study PARAMETERS
+```
+
+The existing source-bound study accepts optional numeric and per-color glyph
+controls. Editor adjustments remain relative; unrelated sets, planeswalker costs,
+explicit older plates and cards without costs retain their defaults.

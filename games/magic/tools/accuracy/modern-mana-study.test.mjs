@@ -79,3 +79,57 @@ test('only M21 normal costs change; source types, noncost cards and editor delta
     await study.close();
   }
 });
+
+test('glyph study retains numeric and per-color controls and composes editor deltas', async () => {
+  const controls = {
+    ...parameters.rendererControls,
+    numberScale: 0.99,
+    numberDx: -0.2,
+    numberDy: 0.3,
+    glyphs: { U: { scale: 0.96, dx: -0.2, dy: 0.2 } },
+  };
+  for (const invalid of [
+    { glyphs: { X: { scale: 1, dx: 0, dy: 0 } } },
+    { glyphs: { U: { scale: 1.3, dx: 0, dy: 0 } } },
+    { numberScale: NaN },
+    { numberDy: 2 },
+    { unknown: 1 },
+  ])
+    assert.throws(() =>
+      modernManaStudy({
+        ...parameters,
+        rendererControls: { ...controls, ...invalid },
+      }),
+    );
+  const server = await createServer({
+    configFile: false,
+    server: { middlewareMode: true, hmr: false, ws: false },
+    plugins: [modernManaStudy({ ...parameters, rendererControls: controls })],
+  });
+  try {
+    await server.ssrLoadModule('/games/magic/src/data/eager.ts');
+    const { printingManaDefaults, printingManaAdjustment } = await server.ssrLoadModule('/' + file);
+    const face = {
+      setCode: 'm21',
+      typeLine: 'Creature',
+      colors: ['U'],
+      manaSymbols: ['2', 'U'],
+    };
+    const defaults = printingManaDefaults(face);
+    for (const [key, value] of Object.entries(controls)) assert.deepEqual(defaults[key], value);
+    const user = {
+      numberScale: 1.1,
+      numberDy: -0.1,
+      glyphs: { U: { scale: 1.02, dx: 0.5 }, R: { dy: -0.25 } },
+    };
+    const adjusted = printingManaAdjustment({ ...face, symbolAdjustment: { mana: user } });
+    assert.equal(adjusted.numberScale, 0.99 * 1.1);
+    assert.equal(adjusted.numberDy, 0.3 - 0.1);
+    assert.deepEqual(adjusted.glyphs.U, { scale: 0.96 * 1.02, dx: 0.3, dy: 0.2 });
+    assert.deepEqual(adjusted.glyphs.R, { dy: -0.25 });
+    assert.deepEqual(user.glyphs.U, { scale: 1.02, dx: 0.5 });
+    assert.equal(printingManaDefaults({ ...face, setCode: 'war' }).glyphs, undefined);
+  } finally {
+    await server.close();
+  }
+});

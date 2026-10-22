@@ -5,7 +5,10 @@ export function modernManaStudy(parameters) {
   assert.equal(parameters.schema, 1);
   assert.equal(parameters.set, 'm21');
   const controls = parameters.rendererControls;
-  assert.deepEqual(Object.keys(controls).sort(), ['dx', 'dy', 'scaleX', 'scaleY', 'spacing']);
+  const required = ['dx', 'dy', 'scaleX', 'scaleY', 'spacing'];
+  const optional = ['numberScale', 'numberDx', 'numberDy', 'glyphs'];
+  assert(required.every((key) => Object.hasOwn(controls, key)));
+  assert(Object.keys(controls).every((key) => [...required, ...optional].includes(key)));
   assert.equal(controls.scaleX, controls.scaleY, 'Only an isotropic disc fit was measured');
   const ranges = {
     dx: [-2, 2],
@@ -13,12 +16,24 @@ export function modernManaStudy(parameters) {
     spacing: [-2, 3],
     scaleX: [0.94, 1.04],
     scaleY: [0.94, 1.04],
+    numberScale: [0.88, 1.08],
+    numberDx: [-1.5, 1.5],
+    numberDy: [-1.5, 1.5],
   };
-  for (const [key, value] of Object.entries(controls))
+  for (const [key, value] of Object.entries(controls).filter(([key]) => key !== 'glyphs'))
     assert(
       Number.isFinite(value) && value >= ranges[key][0] && value <= ranges[key][1],
       'Invalid shared mana control',
     );
+  if (controls.glyphs !== undefined) {
+    assert(controls.glyphs && typeof controls.glyphs === 'object');
+    assert(Object.keys(controls.glyphs).every((key) => ['W', 'U', 'B', 'R', 'G'].includes(key)));
+    for (const delta of Object.values(controls.glyphs)) {
+      assert.deepEqual(Object.keys(delta).sort(), ['dx', 'dy', 'scale']);
+      assert(Number.isFinite(delta.scale) && delta.scale >= 0.9 && delta.scale <= 1.1);
+      assert([delta.dx, delta.dy].every((v) => Number.isFinite(v) && Math.abs(v) <= 1.1));
+    }
+  }
   return {
     name: 'm21-normal-mana-study',
     enforce: 'pre',
