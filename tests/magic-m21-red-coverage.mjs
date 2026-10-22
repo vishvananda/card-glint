@@ -91,8 +91,18 @@ try {
   );
   assert.deepEqual(calibratedFrameMaterials(face), modernOrdinaryPlates(face));
   assert.notDeepEqual(calibratedFrameMaterials(face), receipt.profile.materials);
+  // The old crown/paper receipt remains the donor baseline, while exact M21
+  // crowns use the newer source-bound component fits.
+  const { MODERN_PRINTING_PROFILES } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/modern-printing-profiles.ts',
+  );
+  const selected = MODERN_PRINTING_PROFILES.m21.componentMaterials;
+  const legendary = { ...PRINTING_COLOR_PROFILES[receipt.key].materials };
+  for (const url of new Set(Object.values(source.assets)))
+    if (selected[url]) legendary[url] = selected[url];
+  assert.deepEqual(calibratedFrameMaterials({ ...face, legendary: true }), legendary);
   assert.deepEqual(
-    calibratedFrameMaterials({ ...face, legendary: true }),
+    calibratedComponentDonorMaterials({ ...face, legendary: true }),
     PRINTING_COLOR_PROFILES[receipt.key].materials,
   );
   assert.deepEqual(calibratedFrameMaterials({ ...face, colorCalibration: undefined }), {});

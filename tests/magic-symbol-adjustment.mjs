@@ -64,7 +64,9 @@ try {
             ctx.fillStyle =
               url.includes('/symbols/') || url.includes('setSymbols') ? '#182332' : '#ccc1aa';
             ctx.fillRect(0, 0, c.width, c.height);
-            if (url.includes('/symbols/2.') || url.includes('/manaSymbols/2.')) {
+            // Default M21 fits move colored glyphs as well as the generic numeral.
+            // Every synthetic cost asset must therefore carry distinct disc/ink.
+            if (/\/(?:symbols|manaSymbols)\/(?:2|U|W)\./i.test(url)) {
               ctx.clearRect(0, 0, c.width, c.height);
               ctx.fillStyle = '#cac5c0';
               ctx.beginPath();
