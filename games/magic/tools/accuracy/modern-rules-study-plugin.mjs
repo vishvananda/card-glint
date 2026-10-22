@@ -23,8 +23,8 @@ export function modernRulesStudyPlugin() {
       } else if (id.endsWith('/presentation/rules-paint.ts')) {
         code = once(
           code,
-          '    ...RULES_TYPOGRAPHY,',
-          '    ...RULES_TYPOGRAPHY,\n    ...((globalThis as any).__modernRulesStudy?.typography ?? {}),',
+          '    flavorSeparator: face.frameAssetFamily',
+          '    ...((globalThis as any).__modernRulesStudy?.typography ?? {}),\n    flavorSeparator: face.frameAssetFamily',
         );
         code = once(
           code,
@@ -34,10 +34,10 @@ export function modernRulesStudyPlugin() {
             '  bounds.width += study.widthDelta ?? 0; bounds.height += study.heightDelta ?? 0;\n' +
             '  const reference =\n',
         );
-        assert.equal(code.split('24.5 * scale').length, 3);
-        code = code.replaceAll(
-          '24.5 * scale',
-          '((globalThis as any).__modernRulesStudy?.maximumSize ?? 24.5) * scale',
+        code = once(
+          code,
+          '  maximumSize = 24.5 * scale,',
+          '  maximumSize = ((globalThis as any).__modernRulesStudy?.maximumSize ?? 24.5) * scale,',
         );
       } else return;
       return { code, map: null };

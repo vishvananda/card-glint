@@ -1,3 +1,5 @@
+import { modernPrintingProfile } from './modern-printing-profile.js';
+import type { ModernPrintingProfile } from './modern-printing-profiles.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -26,11 +28,39 @@ export function ordinaryTextLayout(
   height = FACE_HEIGHT,
   scale = 1,
 ): RulesLayout {
+  const rules =
+    !/\bPlaneswalker\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '') &&
+    face.layout !== 'planeswalker'
+      ? modernPrintingProfile(face)?.rules
+      : undefined;
+  const baseline = measuredOrdinaryTextLayout(context, face, height, scale);
+  if (!rules) return baseline;
+  return measuredOrdinaryTextLayout(
+    context,
+    face,
+    height,
+    scale,
+    rules,
+    rules.capAtBaseSize ? baseline.size : 24.5 * scale,
+  );
+}
+
+function measuredOrdinaryTextLayout(
+  context: CanvasContext,
+  face: RenderedCardInput,
+  height: number,
+  scale: number,
+  calibration?: ModernPrintingProfile['rules'],
+  maximumSize = 24.5 * scale,
+): RulesLayout {
   const rects = faceRects(face);
   const planarStats = planarRulesStatsRect(face);
   const statsRect = planarStats ?? rects.stats;
   const typography = {
     ...RULES_TYPOGRAPHY,
+    ...(calibration
+      ? { leading: calibration.leading, paragraphGap: calibration.paragraphGap }
+      : {}),
     flavorSeparator: face.frameAssetFamily === 'eighth' ? false : hasFlavorSeparator(face.setCode),
   };
   const [x, y, width, h] = rects.rules;
@@ -87,7 +117,7 @@ export function ordinaryTextLayout(
       paragraphs,
       reference,
       bounds,
-      24.5 * scale,
+      maximumSize,
       15 * scale,
       3,
       { ...typography, balanceLines: true },
@@ -98,7 +128,7 @@ export function ordinaryTextLayout(
     face.rulesAlignment?.mode === 'left'
       ? paragraphs.map((p) => (p.role === 'rules' ? { ...p, align: 'left' as const } : p))
       : paragraphs;
-  let layout = layoutRules(context, fittedParagraphs, bounds, 24.5 * scale, 15 * scale, typography);
+  let layout = layoutRules(context, fittedParagraphs, bounds, maximumSize, 15 * scale, typography);
   // Longer Oracle wording may exceed the original printing's minimum size.
   // Keep all text and measured P/T clearance before using the PLC spacing pass.
   if (layout.overflow && planarStats)

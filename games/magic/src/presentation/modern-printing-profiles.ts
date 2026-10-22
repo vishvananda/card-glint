@@ -14,6 +14,12 @@ export interface ModernBasicLandSymbol {
 
 export interface ModernPrintingProfile {
   readonly revision: number;
+  readonly rules?: {
+    /** Shared ordinary typography; cap prevents spacing from growing a font. */
+    readonly leading: number;
+    readonly paragraphGap: number;
+    readonly capAtBaseSize: boolean;
+  };
   readonly largeLandSymbols?: Readonly<Record<string, ModernBasicLandSymbol>>;
   readonly footer: {
     readonly collectorFamily: string;
@@ -40,7 +46,8 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 2,
+    revision: 3,
+    rules: { leading: 0.975, paragraphGap: 0.4, capAtBaseSize: true },
     footer: {
       collectorFamily: 'CardRenderer MTG Gotham',
       collectorSize: 12.5,

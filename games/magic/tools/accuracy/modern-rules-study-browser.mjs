@@ -86,8 +86,15 @@ export async function measureRulesStudy(face, referenceUrl, candidates) {
   const rows = [];
   let expected;
   try {
+    globalThis.__modernRulesStudy = {};
+    const baselineSize = ordinaryTextLayout(c, face).size;
     for (const candidate of candidates) {
-      globalThis.__modernRulesStudy = candidate.adjustment;
+      globalThis.__modernRulesStudy = candidate.adjustment.retainSize
+        ? {
+            ...candidate.adjustment,
+            maximumSize: Math.min(baselineSize, candidate.adjustment.maximumSize ?? baselineSize),
+          }
+        : candidate.adjustment;
       c.resetTransform();
       c.fillStyle = '#fff';
       c.fillRect(0, 0, 732, 1020);
