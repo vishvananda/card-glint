@@ -1,3 +1,4 @@
+import { modernPrintingProfile } from './modern-printing-profile.js';
 import type { RenderedCardInput } from './face-layout.js';
 
 // Printed denominators are not Scryfall's total set size (which includes extras).
@@ -28,9 +29,14 @@ export function printingCollectorText(face: RenderedCardInput, modern = true): s
   if (!raw) return '';
   const style = PRINTINGS[face.setCode?.toLowerCase() ?? ''];
   const format = face.collectorFormat ?? style?.format ?? 'number-first';
-  const rarity = /^Basic (?:Snow )?Land\b/.test(face.typeLine ?? '')
-    ? 'L'
-    : (face.rarity ?? 'common')[0]!.toUpperCase();
+  const rarity =
+    (modern &&
+      face.rarity === 'common' &&
+      /\bLand\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '') &&
+      modernPrintingProfile(face)?.printedLandRarities.includes(raw)) ||
+    /^Basic (?:Snow )?Land\b/.test(face.typeLine ?? '')
+      ? 'L'
+      : (face.rarity ?? 'common')[0]!.toUpperCase();
   if (modern && format === 'rarity-first')
     return `${rarity} ${raw.split('/')[0]!.replace(/^(\d+)/, (n) => n.padStart(4, '0'))}`;
   // Bonus cards beyond the regular numbered set do not print a denominator.

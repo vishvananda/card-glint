@@ -1,3 +1,5 @@
+import { loadModernFooterFont } from './modern-footer-font.js';
+import { modernPrintingProfileKey } from './modern-printing-profile.js';
 import { ALPHA_RULES_REVISION } from './early-text-tiers.js';
 import { retroDualFrameRevision } from './retro-dual-frame.js';
 import { WALKER_GEOMETRY, walkerSymbolSize } from './planeswalker-geometry.js';
@@ -299,6 +301,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         resolveCardProfile(face),
         ...(face.printingOmissions?.length ? [face.printingOmissions] : []),
         ...(face.blackBorderLift ? [['border-ink', face.blackBorderLift]] : []),
+        ...modernPrintingProfileKey(face),
       ];
 }
 
@@ -451,7 +454,7 @@ export async function composeCardTexture(
     }
     if (input.paintLayer !== 'artwork')
       await Promise.all([
-        (hooks?.loadFonts ?? loadCanvasFonts)(),
+        (hooks?.loadFonts ?? loadCanvasFonts)().then(() => loadModernFooterFont(input.face)),
         nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),
         loadStandardTemplateFonts(input.face),
         faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),

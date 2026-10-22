@@ -1,5 +1,6 @@
 // Authoritative calibration tables. Shared frame algorithms stay in the painter.
 export const tables = [
+  { file: 'modern-printing-profiles', names: ['MODERN_PRINTING_PROFILES'] },
   {
     file: 'old-dual-hsb-profiles',
     names: ['DUAL_HSB_PROFILES', 'DUAL_MANA_TARGETS'],
