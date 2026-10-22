@@ -1,3 +1,5 @@
+import { fitModernColorParts } from '../games/magic/tools/accuracy/modern-color-parts.mjs';
+import { readFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { createServer } from 'vite';
 import {
@@ -39,6 +41,31 @@ try {
       }).length / tiles.length;
     assert(clipped <= budget, 'Combined component clipping respects the pooled budget');
   }
+  const { model } = JSON.parse(await readFile('games/magic/fixtures/accuracy/early-hsb-plan.json'));
+  const sample = {
+    rgb: [0.2, 0.4, 0.6],
+    tiles: [
+      [0.2, 0.4, 0.6],
+      [0.2, 0.4, 0.6],
+      [0.2, 0.4, 0.6],
+    ],
+    spread: 0,
+  };
+  const group = {
+    rows: [
+      { id: 'measured', parts: { paper: { source: sample, reference: sample } } },
+      { id: 'missing', parts: {} },
+    ],
+  };
+  const fit = fitModernColorParts(group, { paper: [], frame: [] }, model, 0.01, math);
+  assert.equal(fit.paper.status, 'measured');
+  assert.equal(fit.paper.totalCards, 2);
+  assert.equal(fit.paper.measuredCards, 1);
+  assert.equal(fit.paper.evaluations.length, 1);
+  assert(fit.paper.afterMean < 1e-8);
+  assert.equal(fit.frame.status, 'insufficient-clean-patches');
+  assert.equal(fit.frame.measuredCards, 0);
+  assert.equal(fit.frame.adjustment, undefined);
   assert.throws(() => colorScaleLimits(tiles, -1, math));
   assert.throws(() => poolColorTiles([]));
 } finally {

@@ -6,8 +6,8 @@ import { createServer } from 'vite';
 import { PNG } from 'pngjs';
 import { root, hash, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
-import { sampleColor, fitHsb, evaluateHsb, center, quantile } from './hsb-color.mjs';
-import { poolColorTiles, colorScaleLimits } from './modern-color-fit-sampling.mjs';
+import { sampleColor } from './hsb-color.mjs';
+import { fitModernColorParts } from './modern-color-parts.mjs';
 const [inputFile, nativeDirectory, scoreDirectory, output, ...options] = process.argv.slice(2);
 let maxClipping;
 let headerPanels = false;
@@ -123,56 +123,7 @@ try {
   }
   const results = [];
   for (const group of groups.values()) {
-    const parts = {};
-    for (const part of Object.keys(windows)) {
-      const samples = group.rows.map((r) => r.parts[part].source);
-      const allTiles = samples.flatMap((s) => s.tiles),
-        tiles = poolColorTiles(samples),
-        rgb = center(samples.map((s) => s.rgb));
-      const source = {
-        rgb,
-        tiles,
-        spread: quantile(
-          tiles.map((t) => Math.hypot(...t.map((v, i) => v - rgb[i]))),
-          0.9,
-        ),
-      };
-      const references = group.rows.map((r) => r.parts[part].reference);
-      // Bound the upper tail before optimizing; a median-only color match can
-      // otherwise flatten saturated highlights while reporting a small delta.
-      const limits =
-        maxClipping === undefined ? undefined : colorScaleLimits(allTiles, maxClipping, math);
-      const constrainedModel = limits
-        ? {
-            ...model,
-            saturationScale: [
-              model.saturationScale[0],
-              Math.min(model.saturationScale[1], limits[0]),
-            ],
-            brightnessScale: [
-              model.brightnessScale[0],
-              Math.min(model.brightnessScale[1], limits[1]),
-            ],
-          }
-        : model;
-      const fit = fitHsb(source, references, constrainedModel, math);
-      const evaluations = group.rows.map((r) => ({
-        id: r.id,
-        ...evaluateHsb(r.parts[part].source, r.parts[part].reference, fit.adjustment, math),
-      }));
-      parts[part] = {
-        ...fit,
-        model: constrainedModel,
-        optimizationTiles: tiles.length,
-        pooledTiles: allTiles.length,
-        sourceRgb: rgb,
-        beforeMean: evaluations.reduce((s, r) => s + r.before, 0) / evaluations.length,
-        afterMean: evaluations.reduce((s, r) => s + r.after, 0) / evaluations.length,
-        worse: evaluations.filter((r) => r.after > r.before).length,
-        meanClipping: evaluations.reduce((s, r) => s + r.clipping, 0) / evaluations.length,
-        evaluations,
-      };
-    }
+    const parts = fitModernColorParts(group, windows, model, maxClipping, math);
     results.push({
       source: group.source,
       nonfoilPrintings: group.rows.length,
@@ -206,6 +157,9 @@ try {
       nativeHash: native.sha256,
       scoresHash: scores.sha256,
       toolHash: hash(await readFile(new URL(import.meta.url))),
+      partsObjectiveHash: hash(
+        await readFile(new URL('./modern-color-parts.mjs', import.meta.url)),
+      ),
       samplingHash: hash(
         await readFile(new URL('./modern-color-fit-sampling.mjs', import.meta.url)),
       ),

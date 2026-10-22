@@ -6,7 +6,13 @@ import { PNG } from 'pngjs';
 import { hash, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { sampleColor, delta, median } from './hsb-color.mjs';
-const [inputFile, beforeDir, afterDir, scoreDir, parameterFile, output] = process.argv.slice(2);
+const [inputFile, beforeDir, afterDir, scoreDir, parameterFile, output, ...options] =
+  process.argv.slice(2);
+assert(
+  options.length === 0 || (options.length === 1 && options[0] === '--production'),
+  'Unknown material-audit option',
+);
+const production = options.length === 1;
 assert(
   output,
   'Usage: modern-native-material-audit.mjs INPUTS BEFORE AFTER SCORES PARAMETERS OUTPUT',
@@ -29,8 +35,18 @@ for (const capture of [before.value, after.value]) {
 }
 assert.equal(scores.value.definition.inputsHash, hash(input.bytes));
 assert.equal(parameters.value.schema, 1);
-assert.equal(after.value.source.materialStudy.parametersHash, hash(parameters.bytes));
-for (const key of ['rendererHash', 'rasterHelpers', 'packMetadata', 'components'])
+if (production) {
+  assert(
+    !after.value.source.materialStudy && !after.value.source.study,
+    'Production measurement must use unmodified native composition',
+  );
+} else assert.equal(after.value.source.materialStudy.parametersHash, hash(parameters.bytes));
+for (const key of [
+  ...(production ? [] : ['rendererHash']),
+  'rasterHelpers',
+  'packMetadata',
+  'components',
+])
   assert.deepEqual(
     before.value.source[key],
     after.value.source[key],
@@ -167,6 +183,9 @@ const report = {
     afterCaptureHash: hash(after.bytes),
     referenceScoresHash: hash(scores.bytes),
     parametersHash: hash(parameters.bytes),
+    materialBinding: production
+      ? 'Cohort selection only; actual production pixels and material implementation are bound by native capture and renderer hashes'
+      : 'Capture-bound injected material parameters',
     toolHash,
     colorMathHash: hash(await readFile(new URL('./hsb-color.mjs', import.meta.url))),
     windows,
