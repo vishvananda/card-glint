@@ -74,6 +74,12 @@ try {
   assert.deepEqual(calibratedFrameMaterials(base), modernOrdinaryPlates(base));
   const resolved = printingCalibrationMaterials(base);
   assert.equal(resolved.border, '#16130e');
+  for (const calibration of ['auto', 'printing', { profile: 'm21-modern' }]) {
+    const policy = printingCalibrationMaterials({ ...base, calibration });
+    assert.deepEqual(policy.materials, resolved.materials);
+    assert.equal(policy.border, resolved.border);
+  }
+
   assert(resolved.materials[plate.frame]?.outerStockMaskSource === plate.border);
   for (const extra of [{ colorCalibration: undefined }, { calibration: 'source' }])
     assert(!printingCalibrationMaterials({ ...base, ...extra }).materials[plate.frame]);

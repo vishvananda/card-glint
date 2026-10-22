@@ -35,9 +35,12 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
       : ((plate ? planarCalibratedStock(original, plate.frame) : undefined) ??
         (ordinary ? stock : exact.calibratedPrintingStock(original)));
   const measured = choice === 'source' ? {} : exact.calibratedFrameMaterials(original);
-  const materials: Record<string, FrameHsb> = explicitProfile ? {} : { ...measured };
+  // Selecting M21 defaults on a measured M21 plate must retain its exact source
+  // fit. Component donors for other sets remain separately source-compatible.
+  const useExact = !explicitProfile || Boolean(ordinary);
+  const materials: Record<string, FrameHsb> = useExact ? { ...measured } : {};
   const fallbackAssets: string[] = [];
-  let border = explicitProfile ? undefined : measuredStock;
+  let border = useExact ? measuredStock : undefined;
   let fallbackStock = false;
   if ((choice === 'auto' || explicitProfile) && supportsModernCalibration(face)) {
     const sources = modernCalibrationSources(face),
