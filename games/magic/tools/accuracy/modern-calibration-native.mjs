@@ -40,6 +40,19 @@ try {
         }
       : {}),
     rendererHash: await sourceHash(path.join(root, 'games/magic/src')),
+    // Styles/descriptors and URL aliases live outside src. Bind them explicitly
+    // so a font-weight-only change cannot resume an older pixel capture.
+    rasterHelpers: await Promise.all(
+      ['canvas-images.ts', 'canvas-raster.ts', 'image-cover.ts', 'asset-fetch.ts'].map(
+        async (file) => [file, hash(await readFile(path.join(root, 'packages/browser/src', file)))],
+      ),
+    ),
+    packMetadata: await Promise.all(
+      ['assets.json', 'fonts.css'].map(async (file) => [
+        file,
+        hash(await readFile(path.join(root, 'games/magic', file))),
+      ]),
+    ),
     inputsHash: hash(bytes),
     toolHash: hash(await readFile(new URL(import.meta.url))),
     commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),

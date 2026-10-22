@@ -85,6 +85,17 @@ const definition = {
   scoresHash: scores.sha256,
   parametersHash: parameters.sha256,
   rendererHash: await sourceHash(path.join(root, 'games/magic/src')),
+  rasterHelpers: await Promise.all(
+    ['canvas-images.ts', 'canvas-raster.ts', 'image-cover.ts', 'asset-fetch.ts'].map(
+      async (file) => [file, hash(await readFile(path.join(root, 'packages/browser/src', file)))],
+    ),
+  ),
+  packMetadata: await Promise.all(
+    ['assets.json', 'fonts.css'].map(async (file) => [
+      file,
+      hash(await readFile(path.join(root, 'games/magic', file))),
+    ]),
+  ),
   tools: await Promise.all(
     toolFiles.map(async (f) => [f, hash(await readFile(new URL(f, import.meta.url)))]),
   ),
@@ -92,6 +103,16 @@ const definition = {
     'Native1.5x isolated rules painting, fixed frozen scan pixels and semantic badge exclusions. No artwork or frame is redrawn. Shared candidates only; no scan pose changes. Search objective combines symmetric edge distances with filled-ink overlap and is distinct from the published score. All297 sources retained, with separate basic/PW rows. Selection requires complete comparable candidate coverage, then full-card native validation.',
 };
 assert.equal(definition.rendererHash, native.data.source.rendererHash);
+assert.deepEqual(
+  native.data.source.rasterHelpers,
+  definition.rasterHelpers,
+  'Refresh the native baseline: generic raster helpers changed',
+);
+assert.deepEqual(
+  native.data.source.packMetadata,
+  definition.packMetadata,
+  'Refresh the native baseline: font styles and asset aliases must be explicitly bound',
+);
 const rows = [];
 try {
   const previous = await read(path.join(output, 'study.json'));
