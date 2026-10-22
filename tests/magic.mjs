@@ -318,6 +318,7 @@ try {
       ['MPlantin', 'normal', '400'],
       ['MPlantin', 'italic', '400'],
       ['Relay', 'normal', '400'],
+      ['Gotham', 'normal', '400'],
       ['Artist Credit', 'normal', '400'],
       ['Chapter', 'normal', '550'],
       ['Matrix', 'normal', '400 700'],

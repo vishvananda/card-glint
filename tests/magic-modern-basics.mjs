@@ -163,7 +163,23 @@ try {
     source.getContext('2d').fillRect(0, 0, 100, 100);
     const image = await createImageBitmap(source),
       images = new Map([['probe-art', image]]);
-    const hooks = { loadFonts: async () => {}, loadImages: async () => ({ images, dispose() {} }) };
+    // This tests aperture composition, not measured font rasters. Register the
+    // public font contract locally rather than silently relying on fallbacks.
+    const { canvasFontAssets } = await import('/games/magic/src/presentation.ts');
+    let fontsReady;
+    const loadFonts = () =>
+      (fontsReady ??= Promise.all(
+        canvasFontAssets.map(async ({ family, style, weight }) => {
+          document.fonts.add(
+            await new FontFace(
+              family,
+              'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")',
+              { style, weight },
+            ).load(),
+          );
+        }),
+      ));
+    const hooks = { loadFonts, loadImages: async () => ({ images, dispose() {} }) };
     const samples = [];
     for (const setCode of ['m21', 'm15', 'war', 'fdn']) {
       const face = {
