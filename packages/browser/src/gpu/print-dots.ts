@@ -56,8 +56,10 @@ float plateDot(vec2 cell,vec2 id,float radius,bool holes,float channel,float aa,
   radius*=1.+(c-.5)*.36*variation;
   radius*=holes?1.-.12*variation:1.+.12*variation;
   // Stable ragged impression edges, not animated or screen-space grain.
+  #ifndef GLINT_PRINT_PROCEDURAL
   float phase=plateNoise(id,channel+83.)*6.2831853,theta=atan(cell.y,cell.x);
   radius*=1.+1.5*variation*(.035*sin(3.*theta+phase)+.018*sin(5.*theta-phase));
+#endif
  }
  return 1.-smoothstep(radius-aa,radius+aa,length(cell));
 }
@@ -103,7 +105,11 @@ PrintPlate preparePlate(vec2 p,vec2 uv,vec2 axis,float channel,vec2 offset,float
  vec2 registration=(offset+drift)*variation/printDotsInfo.y;
  p+=registration;
  vec2 q=plateRotation(axis)*p,origin=floor(q),f=fract(q),side=step(vec2(.5),f)*2.-1.;
+ #ifdef GLINT_PRINT_PROCEDURAL
+ float extent=0.;
+#else
  float extent=softness*(abs(axis.x)+abs(axis.y))/printDotsInfo.y+.00001;
+#endif
  bool crossX=min(f.x,1.-f.x)<extent,crossY=min(f.y,1.-f.y)<extent;
  float a=plateSource(origin,axis,channel),b=a,c=a,d=a;
  if(crossX)b=plateSource(origin+vec2(side.x,0.),axis,channel);
@@ -121,8 +127,12 @@ float screenedPlate(vec2 p,vec2 axis,float channel,PrintPlate plate,float aa,flo
  coverage=clamp(coverage-gaps*coverage*(1.-coverage),0.,1.);
  coverage=clamp(coverage+plate.density*coverage*(1.-coverage),0.,1.);
  vec2 drag=vec2(0.,.6*printDotsInfo.z/printDotsInfo.y);
+ #ifdef GLINT_PRINT_PROCEDURAL
+ return absorption*plateScreen(p,coverage,axis,channel,length(vec2(aa,drag.y*.70710678)));
+#else
  if(printDotsInfo.z<=0.)return absorption*plateScreen(p,coverage,axis,channel,aa);
  return absorption*(.25*plateScreen(p-drag,coverage,axis,channel,aa)+.5*plateScreen(p,coverage,axis,channel,aa)+.25*plateScreen(p+drag,coverage,axis,channel,aa));
+#endif
 }
 vec3 printDotInk(vec3 ink,vec2 uv){
  // Solid process black stays solid: cell-centered plate sampling must not
