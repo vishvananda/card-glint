@@ -122,7 +122,12 @@ try {
   assert.equal(framePlate({ ...base, setCode: 'war' }), null);
   assert(framePlate({ ...base, typeLine: 'Artifact', colors: [] }).frame.endsWith('/a.png'));
   assert.deepEqual(base, snapshot);
-  const materials = Object.values(modernOrdinaryPlates(base));
+  assert.equal(Object.keys(modernOrdinaryPlates(base)).length, 1);
+  assert.deepEqual(Object.keys(resolved.materials), [plate.frame]);
+  const { MODERN_PRINTING_PROFILES } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/modern-printing-profiles.ts',
+  );
+  const materials = Object.values(MODERN_PRINTING_PROFILES.m21.ordinaryPlates);
   assert.equal(materials.length, 6);
   for (const m of materials) {
     assert.equal(m.regions.length, 2);

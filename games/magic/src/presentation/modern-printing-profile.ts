@@ -59,5 +59,5 @@ export function modernOrdinaryPlates(face: RenderedCardInput) {
     (artifact ? colors.length > 0 : colors.length !== 1)
   )
     return undefined;
-  return plates;
+  return { [source]: plates[source]! };
 }
