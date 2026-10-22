@@ -2,7 +2,10 @@ import type { Instance, Rect } from './types.js';
 
 /** Period values are reference pixels at this card width, independent of tier. */
 export const PRINT_DOTS_REFERENCE_WIDTH = 732;
-export function printDotPeriodForWidth(width: number, period = DEFAULT_PRINT_DOTS.period): number {
+export function printDotPeriodForWidth(
+  width: number,
+  period: number = DEFAULT_PRINT_DOTS.period,
+): number {
   if (
     !Number.isFinite(width) ||
     width <= 0 ||
@@ -19,7 +22,7 @@ export const DEFAULT_PRINT_DOTS = Object.freeze({
   amount: 0.35,
   period: 2,
   variation: 0.5,
-  inset: 0,
+  inset: 0.035,
   artwork: true,
 });
 export function printDotValues(profile: Instance['printDots']): number[] {

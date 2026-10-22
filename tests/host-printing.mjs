@@ -383,6 +383,46 @@ color=vec4(cardstockGloss(uv,ink.rgb,ink.rgb*.6+vec3(.15)),ink.a);}`;
       } finally {
         gl.deleteTexture(hostStock);
       }
+      // Invisible native tiers borrow mipmapped inputs without owning them;
+      // a larger overlay still needs its own visible printing preparation.
+      const smallCanvas = document.createElement('canvas');
+      smallCanvas.width = smallCanvas.height = 8;
+      smallCanvas.getContext('2d').fillRect(0, 0, 8, 8);
+      const largeCanvas = document.createElement('canvas');
+      largeCanvas.width = largeCanvas.height = 128;
+      largeCanvas.getContext('2d').fillRect(0, 0, 128, 128);
+      const small = textures.upload('alias-small', smallCanvas);
+      const large = textures.upload('alias-overlay', largeCanvas);
+      const aliases = new PrintedInk(gl);
+      try {
+        const borrowed = aliases.prepare(small.value, undefined, {});
+        check(
+          borrowed.face === small.value && aliases.bytes === 0 && aliases.passes === 0,
+          'Invisible tier borrows the original texture without allocation',
+        );
+        check(
+          aliases.prepare(small.value, undefined, {}) === borrowed,
+          'Borrowed tier is reusable',
+        );
+        const mixed = aliases.prepare(small.value, large.value, { period: 16 });
+        check(
+          mixed.face !== small.value && mixed.top !== large.value && aliases.passes === 2,
+          'Visible overlay prevents a false invisible-tier shortcut',
+        );
+        aliases.dispose();
+        check(
+          gl.isTexture(small.value.texture) && gl.isTexture(large.value.texture),
+          'Printing disposal never deletes borrowed inputs',
+        );
+        check(
+          !gl.isTexture(mixed.face.texture) && !gl.isTexture(mixed.top.texture),
+          'Printing disposal releases owned prepared maps',
+        );
+      } finally {
+        aliases.dispose();
+        small.release();
+        large.release();
+      }
       check(gl.getError() === gl.NO_ERROR, 'No WebGL errors');
       return {
         zeroError,

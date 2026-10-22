@@ -6,6 +6,20 @@ export interface Texture {
   texture: WebGLTexture;
   width: number;
   height: number;
+  /** Color mip levels are owned and accounted by this texture store. */
+  mipmapped?: boolean;
+}
+/** Exact payload of the full 2D mip chain, including odd-sized rasters. */
+export function textureMipBytes(width: number, height: number): number {
+  let bytes = 0,
+    w = width,
+    h = height;
+  while (true) {
+    bytes += w * h * 4;
+    if (w === 1 && h === 1) return bytes;
+    w = Math.max(1, Math.floor(w / 2));
+    h = Math.max(1, Math.floor(h / 2));
+  }
 }
 export class TextureStore {
   readonly store: ResourceStore<Texture>;
@@ -36,7 +50,7 @@ export class TextureStore {
       h = source.height;
     return this.store.create(
       key,
-      w * h * 4,
+      srgb ? textureMipBytes(w, h) : w * h * 4,
       () => {
         const handle = texture(gl, w, h, srgb ? gl.SRGB8_ALPHA8 : gl.RGBA8, gl.RGBA)!;
         gl.activeTexture(gl.TEXTURE0);
@@ -57,8 +71,12 @@ export class TextureStore {
           gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, gl.RGBA, gl.UNSIGNED_BYTE, source);
         }
         gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+        if (srgb) {
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+          gl.generateMipmap(gl.TEXTURE_2D);
+        }
         this.uploads++;
-        return { texture: handle, width: w, height: h };
+        return { texture: handle, width: w, height: h, mipmapped: srgb };
       },
       priority,
     );

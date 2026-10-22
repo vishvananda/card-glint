@@ -127,7 +127,7 @@ The README's paired eight-second GIFs and MP4s are captured from the same render
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.6.1/card-glint-0.6.1.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.6.10/card-glint-0.6.10.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -148,7 +148,7 @@ For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
   import {
     createRenderer,
     IDENTITY,
-  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.6.1/browser.js';
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.6.10/browser.js';
 
   const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
   // Supply your own game pack/card recipes, then render as below.
@@ -282,7 +282,7 @@ describe the separation between repository code and external game assets.
 Set `Instance.cardstock` to `{ amount: 0.2 }` for subtle, irregular relief in the
 clear coating over any optical finish. The amount ranges from 0 to 1. It modulates reflected light;
 printing remains sharp. Relief varies the finish response locally without lowering its overall gain.
-Gloss separately uses a 10% softer clear-coat contribution, with or without relief.
+Gloss reflection is 10% stronger in 0.6.10, with or without relief. Cardstock relief is 10% softer at the same amount.
 Omitted or zero keeps the smooth coating,
 and regular printing ignores it. Pass the same `cardstock` option to `exportCard`
 for matching PNGs. Wear is applied above the coating, so exposed paper stays matte.
@@ -298,23 +298,22 @@ export parity, cache reuse, filtering and context restoration.
 ### Experimental printed dots
 
 `Instance.printDots = {}` adds rotated CMYK screens to
-printing before finish and wear. Amount is 0..1 (default 0.35); period is 2..16 source texture
-pixels (default 2). Variation ranges from 0 (ideal screen) to 1 (more uneven),
-defaulting to 0.5. Small stable position/size/shape differences and ink spread
-break up the ideal grid. Omitting the profile or setting amount to zero retains previous pixels. Pass the same option
+printing before finish and wear. Amount is 0..1 (default 0.35); period is 2..16 reference
+pixels at 732px card width (default 2), independent of raster tier. Variation ranges from 0 (ideal screen) to 1 (more uneven),
+defaulting to 0.5. Translucent CMYK impressions leave small light gaps. Stable plate offsets, ink spread and irregular edges
+break up the ideal grid. Global pattern softness varies across fixed random patches, capped at 0.5 reference pixels; it does not blur the source lettering. Omitting the profile or setting amount to zero retains previous pixels. Pass the same option
 to `exportCard`. The effect is optional on every finish. It uses screen derivatives to fade fine dots when a card
 shrinks, reducing aliasing. Larger periods make the pattern easier to inspect.
 
 This is an RGB-to-CMYK visual approximation, not a calibrated press profile.
 An optional `inset` (0..0.2, in card-width units) excludes an outer rim from
-the print effect; the default is 0. Game packs/hosts supply any desired rim.
+the print effect; the default is 0.035. Set `inset: 0` for full-bleed printing. Game packs/hosts can supply their own rim.
 For scanned illustrations, use `printDots: { artwork: false }`: dots still
 apply to the frame and lettering outside the recipe's `artWindows`. Generated
 illustrations can use `{}` (artwork included). Full-card scans should omit the
 profile entirely. `DEFAULT_PRINT_DOTS`, exported from both the root and finish
 entry, exposes the defaults for editors. Explicit settings continue to work.
-The period is measured in source pixels; this default was compared at 732px
-card width, and is not a resolution-independent press frequency. The conventional screen angles follow
+The period scales with card width, so 244, 488 and 732px faces share a physical screen frequency. The conventional screen angles follow
 [Adobe's prepress reference](https://helpx.adobe.com/indesign/desktop/print/ink-and-color-management/specify-halftone-frequency-and-resolution.html).
 
 Printing with matching instance settings is prepared once into a context-owned,

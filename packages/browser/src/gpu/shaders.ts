@@ -57,6 +57,7 @@ vec4 printFace(vec2 uv);
 ${CARDSTOCK_GLSL}
 ${foil}
 #ifdef PROCEDURAL_PRINT
+#define GLINT_PRINT_PROCEDURAL
 #define PRINT_DOT_ART_WINDOWS
 #define PRINT_DOT_ART_INSTANCE
 ${PRINT_DOTS_GLSL}
@@ -109,7 +110,11 @@ void main(){
  // satin response as the conventional finishes supplies an optional reflection.
  vec3 printing=top.rgb;
 #ifdef PROCEDURAL_PRINT
- if(printDotsInfo.x>0.)printing=previewLinear(printDotInk(previewInk(top.rgb),uv));
+ if(printDotsInfo.x>0. && top.a>0.) {
+  printUseLocalSource=true;
+  printing=previewLinear(printDotInk(previewInk(top.rgb),uv));
+  printUseLocalSource=false;
+ }
 #endif
  if(overlayFoil.y>0. && top.a>0.) {
    // Gold printing is metallic even without an etch mask. The zero-metal
