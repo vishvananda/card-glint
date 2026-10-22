@@ -26,6 +26,23 @@ export function modernLandLayerStudy() {
       const needle = '  paintMountedSecurityStamp(c, face, images);';
       assert.equal(source.split(needle).length, 2);
       const addition = [
+        '  const landTexture = (globalThis as any).__m21LandTexture;',
+        "  if (landTexture && layer !== 'etching') {",
+        '    const overlay = rasterCanvas();',
+        '    overlay.width = 732; overlay.height = 1020;',
+        '    try {',
+        "      const m = overlay.getContext('2d');",
+        "      if (!m) throw Error('Land texture composition needs Canvas2D');",
+        '      m.drawImage(required(landTexture.mask),0,0,732,1020);',
+        "      (globalThis as any).__m21LandTextureMask = (overlay as any).toDataURL().split(',')[1];",
+        "      m.globalCompositeOperation = 'source-in';",
+        '      m.drawImage(required(landTexture.source),0,0,732,1020);',
+        '      const pixels = m.getImageData(0,0,732,1020);',
+        '      colorFrame(pixels, landTexture.adjustment);',
+        '      m.putImageData(pixels,0,0);',
+        '      c.drawImage(overlay,0,0,W,H);',
+        '    } finally { overlay.width = overlay.height = 0; }',
+        '  }',
         '  const headers = (globalThis as any).__m21LandHeaders;',
         "  if (headers && plate.rightFrame && layer !== 'etching') {",
         '    const overlay = rasterCanvas();',
@@ -43,7 +60,10 @@ export function modernLandLayerStudy() {
         '  }',
         needle,
       ].join('\n');
-      return { code: source.replace(needle, addition), map: null };
+      return {
+        code: "import { colorFrame } from './frame-hsb.js';\n" + source.replace(needle, addition),
+        map: null,
+      };
     },
   };
 }

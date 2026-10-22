@@ -77,6 +77,14 @@ if (materials) {
     (materials.additionalAssets ?? []).every((url) => knownUrls.has(url)),
     'Unbound auxiliary asset',
   );
+  if (materials.landTexture) {
+    assert(landLayers);
+    assert.deepEqual(Object.keys(materials.landTexture).sort(), ['adjustment', 'mask', 'source']);
+    assert(
+      [materials.landTexture.mask, materials.landTexture.source].every((url) => knownUrls.has(url)),
+    );
+    assert(materials.materials[materials.landTexture.source], 'Unbound texture material');
+  }
   if (materials.landHeaders) {
     assert(landLayers && materials.dualHeaderMaterial);
     assert.deepEqual(Object.keys(materials.landHeaders).sort(), ['source', 'title', 'type']);
@@ -211,6 +219,7 @@ try {
           extraAssets,
           landLayers,
           landHeaders,
+          landTexture,
           dualHeaderMaterial,
         }) => {
           const { composeCardTexture } = await import(
@@ -224,6 +233,8 @@ try {
           let lease;
           globalThis.__m21LandLayers = landLayers;
           globalThis.__m21LandHeaders = null;
+          globalThis.__m21LandTexture = landTexture;
+          delete globalThis.__m21LandTextureMask;
           delete globalThis.__m21LandHeaderMask;
           try {
             if (landLayers && landHeaders) {
@@ -257,6 +268,12 @@ try {
                   width: image.width,
                   height: image.height,
                 };
+                if (layer === 'face' && globalThis.__m21LandTextureMask)
+                  result.textureMask = {
+                    png: globalThis.__m21LandTextureMask,
+                    width: image.width,
+                    height: image.height,
+                  };
                 if (layer === 'face' && globalThis.__m21LandHeaderMask)
                   result.headerMask = {
                     png: globalThis.__m21LandHeaderMask,
@@ -273,6 +290,8 @@ try {
             delete globalThis.__m21LandLayers;
             delete globalThis.__m21LandHeaders;
             delete globalThis.__m21LandHeaderMask;
+            delete globalThis.__m21LandTexture;
+            delete globalThis.__m21LandTextureMask;
           }
           return result;
         },
@@ -283,16 +302,18 @@ try {
           extraAssets: materials?.additionalAssets ?? [],
           landLayers,
           landHeaders: materials?.landHeaders ?? null,
+          landTexture: materials?.landTexture ?? null,
           dualHeaderMaterial: materials?.dualHeaderMaterial ?? null,
         },
       );
       for (const [layer, value] of Object.entries(rendered)) {
-        if (layer === 'headerMask') {
+        if (layer === 'headerMask' || layer === 'textureMask') {
           const png = Buffer.from(value.png, 'base64'),
-            file = e.id + '-header-mask.png';
+            file = e.id + '-' + layer + '.png';
           await writeFile(path.join(out, file), png);
           row.aux = {
-            headerMask: { file, sha256: hash(png), width: value.width, height: value.height },
+            ...row.aux,
+            [layer]: { file, sha256: hash(png), width: value.width, height: value.height },
           };
           continue;
         }

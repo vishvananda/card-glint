@@ -25,6 +25,7 @@ assert.deepEqual(poolColorTiles([{ tiles: strip.slice(0, 3) }, { tiles: strip.sl
 ]);
 const server = await createServer({
   configFile: false,
+  optimizeDeps: { noDiscovery: true },
   server: { middlewareMode: true, hmr: false, ws: false },
 });
 try {
