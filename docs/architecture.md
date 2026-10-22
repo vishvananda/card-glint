@@ -123,6 +123,15 @@ decoder internals, transient Canvas staging, GPU driver padding, WASM pages,
 shader programs, and display/depth buffers are additional allocations. Model
 inference shares the device and must be budgeted by the application too.
 
+Host renderers can use `FinishTextures(gl)` through the public finish entry to
+prepare native printing and cardstock in their own context. It owns reusable
+preparation programs and one borrowed cardstock map, restores touched host state,
+and never creates another context or performs CPU readback. Printing results are
+caller-owned textures; the host budgets, caches and deletes them. Array-layer
+sources use a temporary GPU copy. Context loss invalidates the helper and all
+GPU results; the host recreates them after restoration. This explicit public
+ownership does not expose the native renderer's private cache or context.
+
 ## Large scenes and current limits
 
 Rust consumes packed instance matrices, culls outside the view frustum, and
