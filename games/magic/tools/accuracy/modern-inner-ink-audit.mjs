@@ -9,8 +9,10 @@ import { hash, writeJson } from './common.mjs';
 
 // Fixed art-rim strips are free of text. Detect each ridge independently;
 // uncertain geometry is retained, never replaced by a brighter neighbor.
-export function measureArtRimInk(image) {
-  const geometry = measureWindows(image).art,
+export function measureArtRimInk(image, frozen) {
+  const geometry = frozen
+      ? Object.fromEntries(['left', 'right'].map((side) => [side, frozen[side].geometry]))
+      : measureWindows(image).art,
     gray = luminance(image);
   const sides = {};
   for (const side of ['left', 'right']) {
@@ -23,7 +25,8 @@ export function measureArtRimInk(image) {
         // Choose the darkest complete column, rather than individual dark pixels
         // from print noise or an adjacent illustration. Three fixed columns cover
         // fractional rasterization of a one-pixel ridge.
-        const columns = [-1, 0, 1]
+        const fixed = frozen?.[side].strips.find((s) => s.y === strip.y);
+        const columns = (frozen ? [fixed.x - x] : [-1, 0, 1])
           .map((dx) => {
             const samples = Array.from({ length: 30 }, (_, j) => {
               const pixel = (strip.y + j) * image.width + x + dx;
@@ -54,7 +57,11 @@ export function measureArtRimInk(image) {
 }
 
 async function main() {
-  const [inputFile, nativeDir, scoreDir, parameterFile, output] = process.argv.slice(2);
+  const [inputFile, nativeDir, scoreDir, parameterFile, output, ...options] = process.argv.slice(2);
+  assert(
+    options.length === 0 || (options.length === 2 && options[0] === '--geometry-from'),
+    'Unknown ink audit option',
+  );
   assert(output, 'Usage: modern-inner-ink-audit.mjs INPUTS NATIVE SCORES PARAMETERS OUTPUT');
   const read = async (f) => {
     const bytes = await readFile(f);
@@ -66,6 +73,11 @@ async function main() {
     read(path.join(scoreDir, 'scores.json')),
     read(parameterFile),
   ]);
+  const frozen = options.length ? await read(options[1]) : null;
+  if (frozen) {
+    assert.equal(frozen.data.schema, 1);
+    assert.equal(frozen.data.definition.inputsHash, hash(inputs.bytes));
+  }
   assert.equal(parameters.data.schema, 1);
   assert.equal(native.data.source.inputsHash, hash(inputs.bytes));
   assert.equal(scores.data.definition.inputsHash, hash(inputs.bytes));
@@ -84,6 +96,8 @@ async function main() {
   assert.equal(selected.size, parameters.data.ids.length);
   assert.equal(captures.size, census.size);
   assert.equal(references.size, census.size);
+  const frozenRows = frozen ? index(frozen.data.rows) : null;
+  if (frozenRows) assert.deepEqual([...frozenRows.keys()].sort(), [...selected].sort());
   const rows = [];
   for (const id of selected) {
     const e = census.get(id),
@@ -102,6 +116,14 @@ async function main() {
     assert.equal(hash(referenceBytes), s.normalizedReference.sha256);
     const reference = PNG.sync.read(referenceBytes, { checkCRC: true });
     assert.deepEqual([reference.width, reference.height], [488, 680]);
+    const fixed = frozenRows?.get(id);
+    if (fixed) {
+      assert.equal(fixed.referenceHash, s.normalizedReference.sha256);
+      assert.equal(fixed.poseHash, s.poseHash);
+      for (const side of ['left', 'right'])
+        for (const strip of fixed.rendered[side].strips)
+          assert(Number.isInteger(strip.x) && strip.x > 0 && strip.x < 488);
+    }
     rows.push({
       id,
       name: e.card.name,
@@ -110,7 +132,10 @@ async function main() {
       renderHash: n.layers.face.sha256,
       referenceHash: s.normalizedReference.sha256,
       poseHash: s.poseHash,
-      rendered: measureArtRimInk(normalize(PNG.sync.read(renderBytes, { checkCRC: true }))),
+      rendered: measureArtRimInk(
+        normalize(PNG.sync.read(renderBytes, { checkCRC: true })),
+        fixed?.rendered,
+      ),
       reference: measureArtRimInk(reference),
     });
   }
@@ -144,11 +169,12 @@ async function main() {
       nativeHash: hash(native.bytes),
       scoresHash: hash(scores.bytes),
       parametersHash: hash(parameters.bytes),
+      ...(frozen ? { frozenRidgeAuditHash: hash(frozen.bytes) } : {}),
       toolHash: hash(await readFile(new URL(import.meta.url))),
       detectorHash: hash(await readFile(new URL('./window-geometry.mjs', import.meta.url))),
       preprocessingHash: hash(await readFile(new URL('./pixels-pure.mjs', import.meta.url))),
       policy:
-        'Frozen accepted nonfoil references. Independent fixed art-ridge detectors measure color, without changing any pose or score. Use the darkest complete column in a three-column neighborhood, median over each 30-row strip, and require two reliable strips per side. Ambiguous/boundary/weak edges stay uncertain. This measures art side outlines only, not all interior ink or shape accuracy.',
+        'Frozen accepted nonfoil references. Independent fixed art-ridge detectors measure color, without changing any pose or score. Use the darkest complete column in a three-column neighborhood, median over each 30-row strip, and require two reliable strips per side. Ambiguous/boundary/weak edges stay uncertain. This measures art side outlines only, not all interior ink or shape accuracy. With --geometry-from, candidate colors are sampled at the baseline exact columns and preserve its denominator.',
     },
     summary: summary(rows),
     groups: Object.fromEntries(

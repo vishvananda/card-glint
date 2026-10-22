@@ -33,6 +33,22 @@ ridge(noise, 37, [22, 19, 14]);
 ridge(noise, 450, [22, 19, 14]);
 for (let y = 105; y < 345; y += 7) noise.data.set([0, 0, 0, 255], (y * 488 + 38) * 4);
 assert.deepEqual(measureArtRimInk(noise).left.rgb, [22, 19, 14]);
+// A candidate's weaker contrast cannot shrink the comparison denominator or
+// move sampling to a neighboring dark illustration column.
+const changed = image();
+ridge(changed, 37, [30, 29, 28]);
+ridge(changed, 450, [30, 29, 28]);
+ridge(changed, 38, [0, 0, 0]);
+ridge(changed, 449, [0, 0, 0]);
+const frozen = measureArtRimInk(changed, a);
+for (const side of ['left', 'right']) {
+  assert.equal(frozen[side].status, a[side].status);
+  assert.deepEqual(frozen[side].rgb, [30, 29, 28]);
+  assert.deepEqual(
+    frozen[side].strips.map((s) => s.x),
+    a[side].strips.map((s) => s.x),
+  );
+}
 console.log(
   'Modern inner rim measurement: exact, weak, incomplete, ambiguous and print-noise cases pass',
 );
