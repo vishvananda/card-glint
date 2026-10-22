@@ -1,0 +1,501 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "mana-disc-measurement-proposal-not-adopted",
+  "eligibleForPublication": false,
+  "scope": "Complete297 Original input census;264 cards carry567 mana-cost tokens. Existing native PNGs and frozen normalized references are verified by hash. This is a disc-geometry audit and proposal, not a renderer change, color/glyph/shadow fit, normalization certification or set completion.",
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/mana-disc-measurement.json.gz",
+    "sha256": "8eeaa8fbceae4e8ac1467aff36bdc9ad67eee3ecba555af5c81e92c2863ca4e4",
+    "contentSha256": "8542a9d5d4b227bb66e4d53bf755bf7137292be6598c5bad44e64cc65c7b30d1"
+  },
+  "source": {
+    "recordedFromCommit": "b7b324edc70c93816d7dd2513406151ec54e9c66",
+    "inputsHash": "4f9deabbe6ec058b02aa21dcf360440ef85ebe84a031c22bdcf7df282792ae1d",
+    "nativeHash": "d8ebffa8c23027054ae8389657e8da7b5ef82e911b3c8ce5c64ebe9b291a5c77",
+    "scoresHash": "5ada0d27ef9cdceba6b3f443ff219fc6db6236860e8a30042e0d1d72149259ce",
+    "rendererHash": "41171c39150ee9f7943673bfcf0af5f770614ca3daa630a5fcc1b76272c5ffb4",
+    "algorithm": "source-paper-arcs-saturated-v4",
+    "toolHash": "75ad9825ad09fd31bc7212eae39bd4a4a502a71eccae7f6555777ac917229da5",
+    "ringToolHash": "0aa1807fd444b668c075fc1c136bebde3e34330ec9dfffa45e37c1f7fcc033c1"
+  },
+  "nativeControls": {
+    "passed": 567,
+    "total": 567,
+    "allowedAbsoluteCenterAndRadiusError": 0.75,
+    "observedErrors": {
+      "x": {
+        "median": 0.0,
+        "min": -0.125,
+        "max": 0.25
+      },
+      "y": {
+        "median": 0.0,
+        "min": -0.125,
+        "max": 0.5
+      },
+      "radius": {
+        "median": 0.0,
+        "min": -0.375,
+        "max": 0.25
+      }
+    }
+  },
+  "scans": {
+    "detected": 521,
+    "searchBoundary": 46,
+    "eligibleNonfoilPairs": 509,
+    "allTokensRemainInDenominator": 567
+  },
+  "normalFrame": {
+    "total": 527,
+    "eligiblePairs": 487,
+    "diameterDelta": {
+      "median": -0.75,
+      "p10": -1.25,
+      "p90": -0.5
+    },
+    "sharedProposal": {
+      "schema": 1,
+      "status": "measurement-proposal-not-adopted",
+      "sourceAlgorithm": "source-paper-arcs-saturated-v4",
+      "normalDiscs": 487,
+      "nativeControls": {
+        "passed": 567,
+        "total": 567
+      },
+      "diameterRobustness": {
+        "median": -0.75,
+        "mad": 0.25,
+        "outlierThreshold": 1.0,
+        "kept": 451,
+        "rejectedAcceptedMeasurements": 36
+      },
+      "unroundedProposal": {
+        "scaleX": 0.9673140789095352,
+        "scaleY": 0.9673140789095352,
+        "spacing": 1.115191209349904,
+        "dx": -0.37499999999999983,
+        "dy": -0.125
+      },
+      "pitch": {
+        "pairs": 219,
+        "medianDelta": 0.0
+      },
+      "diameterDelta": -1,
+      "reviewOutliers": [
+        {
+          "id": "28ff52a2-4223-4551-b388-b4dd21cc1437",
+          "name": "Blood Glutton",
+          "symbol": "4",
+          "index": 0,
+          "delta": {
+            "dx": 1.625,
+            "dy": -0.375,
+            "diameter": 0.5
+          }
+        },
+        {
+          "id": "28ff52a2-4223-4551-b388-b4dd21cc1437",
+          "name": "Blood Glutton",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": 2.125,
+            "dy": -1.75,
+            "diameter": 4
+          }
+        },
+        {
+          "id": "c0bba170-5176-4fab-a10d-e23d70128875",
+          "name": "Crypt Lurker",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": -0.75,
+            "dy": 1.75,
+            "diameter": -3.5
+          }
+        },
+        {
+          "id": "49c07ea0-27ff-46fb-a41f-3e378c977b5d",
+          "name": "Duress",
+          "symbol": "B",
+          "index": 0,
+          "delta": {
+            "dx": -0.25,
+            "dy": -2.375,
+            "diameter": 3.5
+          }
+        },
+        {
+          "id": "2b85a552-2119-4d9c-b7c1-c09c2d9f2f38",
+          "name": "Finishing Blow",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": 0.625,
+            "dy": -1,
+            "diameter": 0.5
+          }
+        },
+        {
+          "id": "7737b578-8ae3-4846-b508-93ef40f25244",
+          "name": "Grasp of Darkness",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": -2.875,
+            "dy": -2.25,
+            "diameter": 3.75
+          }
+        },
+        {
+          "id": "975e4b8e-add9-439c-9463-e2facee96c10",
+          "name": "Infernal Scarring",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": 0,
+            "dy": -2.125,
+            "diameter": 2.5
+          }
+        },
+        {
+          "id": "88496096-fd9a-451a-85d9-31ccc3580623",
+          "name": "Kitesail Freebooter",
+          "symbol": "1",
+          "index": 0,
+          "delta": {
+            "dx": 0.375,
+            "dy": -2.625,
+            "diameter": 2.75
+          }
+        },
+        {
+          "id": "ae5d7f15-a86f-4eaa-8280-2e7f73c8ce3a",
+          "name": "Liliana's Devotee",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": 0.625,
+            "dy": -1.125,
+            "diameter": 0.75
+          }
+        },
+        {
+          "id": "3dc48b87-62cb-48f6-8979-e6fb98717b52",
+          "name": "Liliana's Standard Bearer",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": 0.125,
+            "dy": -1,
+            "diameter": 0.5
+          }
+        },
+        {
+          "id": "89e2bc57-8f18-4ba1-a11b-9d69d029f56a",
+          "name": "Malefic Scythe",
+          "symbol": "1",
+          "index": 0,
+          "delta": {
+            "dx": 1.875,
+            "dy": 0.5,
+            "diameter": 2.25
+          }
+        },
+        {
+          "id": "89e2bc57-8f18-4ba1-a11b-9d69d029f56a",
+          "name": "Malefic Scythe",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": -0.5,
+            "dy": -1.875,
+            "diameter": 4
+          }
+        },
+        {
+          "id": "d61b4b71-3cbb-4422-8ce7-657ca3bb6a82",
+          "name": "Masked Blackguard",
+          "symbol": "1",
+          "index": 0,
+          "delta": {
+            "dx": 1.125,
+            "dy": -0.625,
+            "diameter": 0.5
+          }
+        },
+        {
+          "id": "e3185b01-0d91-4927-98e9-bc9df6c20917",
+          "name": "Massacre Wurm",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": 1.25,
+            "dy": -0.875,
+            "diameter": 0.75
+          }
+        },
+        {
+          "id": "e3185b01-0d91-4927-98e9-bc9df6c20917",
+          "name": "Massacre Wurm",
+          "symbol": "B",
+          "index": 2,
+          "delta": {
+            "dx": -0.5,
+            "dy": -2.375,
+            "diameter": 2.75
+          }
+        },
+        {
+          "id": "32c5252e-ff15-4f86-ad63-d8286427e70f",
+          "name": "Necromentia",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": -0.625,
+            "dy": -2.625,
+            "diameter": 3.5
+          }
+        },
+        {
+          "id": "aac00055-640e-4749-8d23-d242e6d0b23a",
+          "name": "Peer into the Abyss",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": 0.75,
+            "dy": -1.125,
+            "diameter": 0.75
+          }
+        },
+        {
+          "id": "aac00055-640e-4749-8d23-d242e6d0b23a",
+          "name": "Peer into the Abyss",
+          "symbol": "B",
+          "index": 2,
+          "delta": {
+            "dx": -0.375,
+            "dy": -2.625,
+            "diameter": 3
+          }
+        },
+        {
+          "id": "660ec88f-2063-404a-853e-c985e21d17b0",
+          "name": "Rise Again",
+          "symbol": "4",
+          "index": 0,
+          "delta": {
+            "dx": 0.125,
+            "dy": -1.375,
+            "diameter": 1
+          }
+        },
+        {
+          "id": "abfcd08a-cfb5-4d34-b950-f57a88c5cb8e",
+          "name": "Sanguine Indulgence",
+          "symbol": "3",
+          "index": 0,
+          "delta": {
+            "dx": -0.5,
+            "dy": -2.625,
+            "diameter": 3.25
+          }
+        },
+        {
+          "id": "abfcd08a-cfb5-4d34-b950-f57a88c5cb8e",
+          "name": "Sanguine Indulgence",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": -0.375,
+            "dy": -2.625,
+            "diameter": 3.5
+          }
+        },
+        {
+          "id": "ff5444cb-0ecd-4482-a8d8-09332f382dbd",
+          "name": "Silversmote Ghoul",
+          "symbol": "2",
+          "index": 0,
+          "delta": {
+            "dx": 0,
+            "dy": -2.125,
+            "diameter": 2
+          }
+        },
+        {
+          "id": "9c0f60a6-b5c8-4704-8b61-94e8fc463e5d",
+          "name": "Village Rites",
+          "symbol": "B",
+          "index": 0,
+          "delta": {
+            "dx": 0.125,
+            "dy": -2.625,
+            "diameter": 3.75
+          }
+        },
+        {
+          "id": "d43a3eb7-3daf-4667-b824-1f5d801c9341",
+          "name": "Witch's Cauldron",
+          "symbol": "B",
+          "index": 0,
+          "delta": {
+            "dx": -0.375,
+            "dy": -2.125,
+            "diameter": 4
+          }
+        },
+        {
+          "id": "91d3e366-4da5-42c8-bbd5-a0c178c0da28",
+          "name": "Chandra's Magmutt",
+          "symbol": "1",
+          "index": 0,
+          "delta": {
+            "dx": -0.625,
+            "dy": 0.625,
+            "diameter": -2
+          }
+        },
+        {
+          "id": "76e42d07-57d9-4de4-8d41-eb42dd1573ed",
+          "name": "Onakke Ogre",
+          "symbol": "2",
+          "index": 0,
+          "delta": {
+            "dx": -0.25,
+            "dy": 0.5,
+            "diameter": -2
+          }
+        },
+        {
+          "id": "7c08c80f-f27c-4e3a-b048-143aea740096",
+          "name": "Hunter's Edge",
+          "symbol": "3",
+          "index": 0,
+          "delta": {
+            "dx": 2.5,
+            "dy": -2.25,
+            "diameter": 3.5
+          }
+        },
+        {
+          "id": "7dcdcfce-3f32-48f9-83f8-87b9ccbf92e3",
+          "name": "Jolrael, Mwonvuli Recluse",
+          "symbol": "G",
+          "index": 1,
+          "delta": {
+            "dx": 2.125,
+            "dy": -2.5,
+            "diameter": 2
+          }
+        },
+        {
+          "id": "c2c4a0e7-9ca4-4291-94de-165cc2ded822",
+          "name": "Ornery Dilophosaur",
+          "symbol": "3",
+          "index": 0,
+          "delta": {
+            "dx": 0,
+            "dy": 0.375,
+            "diameter": -2
+          }
+        },
+        {
+          "id": "a20d20f7-bc4d-42fa-9f5b-5bb330eb7f38",
+          "name": "Quirion Dryad",
+          "symbol": "1",
+          "index": 0,
+          "delta": {
+            "dx": 0,
+            "dy": 0.75,
+            "diameter": -2
+          }
+        },
+        {
+          "id": "a20d20f7-bc4d-42fa-9f5b-5bb330eb7f38",
+          "name": "Quirion Dryad",
+          "symbol": "G",
+          "index": 1,
+          "delta": {
+            "dx": 1.75,
+            "dy": -0.875,
+            "diameter": 1.75
+          }
+        },
+        {
+          "id": "e6ab63c8-0adc-4d74-aee5-a58ce5c0dad8",
+          "name": "Sporeweb Weaver",
+          "symbol": "G",
+          "index": 1,
+          "delta": {
+            "dx": 2.125,
+            "dy": -1.375,
+            "diameter": 2.5
+          }
+        },
+        {
+          "id": "46ff0b33-d153-4b0e-ac48-7e5ed70dea09",
+          "name": "Wildwood Scourge",
+          "symbol": "X",
+          "index": 0,
+          "delta": {
+            "dx": 1.375,
+            "dy": -2,
+            "diameter": 3.25
+          }
+        },
+        {
+          "id": "b231f941-4acb-46f2-81ae-16e5a28e65af",
+          "name": "Liliana's Scorn",
+          "symbol": "B",
+          "index": 1,
+          "delta": {
+            "dx": -1,
+            "dy": -2.375,
+            "diameter": 3
+          }
+        },
+        {
+          "id": "4073cbc6-11de-4d4a-bcd7-792f9b7c5219",
+          "name": "Predatory Wurm",
+          "symbol": "3",
+          "index": 0,
+          "delta": {
+            "dx": -1.125,
+            "dy": 0.875,
+            "diameter": -2.5
+          }
+        },
+        {
+          "id": "cceaf927-261e-4d61-9fac-eb8abbe87593",
+          "name": "Wildwood Patrol",
+          "symbol": "2",
+          "index": 0,
+          "delta": {
+            "dx": -0.875,
+            "dy": 0.875,
+            "diameter": -2.25
+          }
+        }
+      ]
+    }
+  },
+  "method": [
+    "Use source-bound cost geometry and subtract0.5 to express Canvas coordinates at pixel centers. Never refit the scan matrix to a mana candidate.",
+    "Known source paper colors identify paper-distance fields. Native-only paper arcs exclude glyphs and unavailable perimeter. Per-ray contrast is normalized and softly saturated so a stronger ink/shadow edge cannot dominate.",
+    "The source must recover its own known circle within0.75px before its scan comparison can contribute. All567 source circles pass; observed coordinate/radius error bounds are disclosed above.",
+    "Boundary-limited scans and foil-only observations remain explicit. Shared normal-frame fitting uses one median/MAD diameter-outlier policy across colors, with all rejected IDs retained.",
+    "The shared proposal uses451 geometry observations and219 adjacent-symbol pitch pairs. It is unrounded and unadopted; native full-card replay and glyph/shadow/color checks are still required.",
+    "Earlier signed/unsaturated detectors are retained as rejected diagnostics. Their large black/generic errors must not be promoted into renderer adjustments."
+  ],
+  "next": [
+    "Bracket the shared proposal with nearby scale, gap and translation candidates, then validate with real native renders and all-card regional metrics.",
+    "Use a cached perimeter objective for shared candidate optimization rather than repeating full searches or launching a browser for every comparison.",
+    "Keep planeswalker variants separate until their remaining frame and normalization audit is finished.",
+    "Audit numeral/glyph placement, individual-color pigment and shadow profile after shared disc geometry."
+  ],
+  "performanceScope": "Node PNG decoding and CPU numerical analysis of already-cached native rasters. Vite SSR loads the exact geometry; no Chromium or GPU rendering runs during this measurement. No GPU completion or scene-performance claim."
+}

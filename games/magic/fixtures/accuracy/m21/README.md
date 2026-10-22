@@ -252,3 +252,31 @@ Run `npm run magic:data:build` before a native study, and finish source edits
 before capture. The capture runner checks source, font/asset metadata, generic
 raster helpers and its own tool identity again at the end; source drift leaves
 an explicit fault instead of accepting a mixed-version capture.
+
+## Mana disc measurement
+
+[The complete mana audit](mana-disc-measurement-review.json) measures all
+567 cost tokens on 264 Original cards, using the existing native PNGs and frozen
+normalized scan rasters. It launches no Chromium. Vite SSR supplies the exact
+source geometry, and Node measures the cached pixels.
+
+All 567 native controls recover their known center/radius within 0.75px.
+The scan side produces 509 eligible nonfoil pairs; 46 search-boundary results
+remain flagged. Native-only paper arcs, source paper priors and softly saturated
+contrast prevent strong glyph/shadow edges from winning over the disc perimeter.
+Earlier ambiguous detectors are retained as rejected diagnostics.
+
+The normal-frame observations suggest roughly a one-pixel diameter reduction.
+A shared gap adjustment preserves the already-close center pitch. The proposal
+is **not adopted**: it needs native replay and independent numeral, glyph, shadow
+and color checks. Planeswalker variants retain their separate review.
+
+```sh
+node --test games/magic/tools/accuracy/modern-mana-ring.test.mjs
+node games/magic/tools/accuracy/modern-native-mana-audit.mjs \
+  INPUTS NATIVE SCORES AUDIT_JSON
+```
+
+The input must be the complete 297-card M21 Original snapshot and match both
+the native capture and current renderer. The tool verifies every used raster,
+checks tool/source stability and retains unsupported measurements explicitly.
