@@ -7,15 +7,21 @@ import { openBrowser } from './browser.mjs';
 import { modernPlateControlsStudy } from './modern-plate-controls-study.mjs';
 import { root, hash, sourceHash, writeJson } from './common.mjs';
 const [inputFile, outputDirectory, study] = process.argv.slice(2);
-assert([undefined, '--retain-modern-controls'].includes(study), 'Unknown native study');
-assert(outputDirectory, 'Usage: modern-calibration-native.mjs INPUTS OUT');
+assert(
+  [undefined, '--retain-modern-controls', '--retain-component-rules'].includes(study),
+  'Unknown native study',
+);
+assert(
+  outputDirectory,
+  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules]',
+);
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
 assert(inputs.entries.length && inputs.entries.every((e) => e.face.wordingMode === 'original'));
 const out = path.resolve(outputDirectory);
 await mkdir(out, { recursive: true });
 const session = await openBrowser(inputs, {
-  plugins: study ? [modernPlateControlsStudy()] : [],
+  plugins: study ? [modernPlateControlsStudy({ rules: study === '--retain-component-rules' })] : [],
 });
 try {
   await session.page.evaluate(async () => {

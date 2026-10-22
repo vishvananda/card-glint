@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 
 /** A source-bound experiment: preserve measured component lettering, cost
  * materials and P/T while replacing only the ordinary frame source. */
-export function modernPlateControlsStudy() {
+export function modernPlateControlsStudy({ rules = false } = {}) {
   const replace = (source, before, after, label) => {
     assert.equal(source.split(before).length, 2, 'Review retained plate control: ' + label);
     return source.replace(before, after);
@@ -63,6 +63,27 @@ export function modernPlateControlsStudy() {
           '      gap: eighth ? 1.5 : FACE_TEXT.manaGap,',
           'cost spacing',
         );
+        if (rules)
+          code = replace(
+            code,
+            ': [0.086, 1780 / 2814, 0.828, 0.2875],',
+            ': FACE_RECTS.rules,',
+            'component rules rectangle',
+          );
+      } else if (rules && id.endsWith('/presentation/rules-paint.ts')) {
+        code = replace(
+          code,
+          '  const bounds: Parameters<typeof layoutRules>[2] = {',
+          "  const componentRules = !face.frameAssetFamily || face.frameAssetFamily === 'm15-accurate';\n  const bounds: Parameters<typeof layoutRules>[2] = {",
+          'component rules padding policy',
+        );
+        for (const inset of [3.5, 7, 9.5, 8])
+          code = replace(
+            code,
+            `(face.frameAssetFamily ? 0 : ${inset})`,
+            `(componentRules ? ${inset} : 0)`,
+            'component rules inset ' + inset,
+          );
       } else if (id.endsWith('/presentation/frame-plate-paint.ts')) {
         code = replace(
           code,
