@@ -5,6 +5,7 @@ import { readFile, mkdir } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { openBrowser } from './browser.mjs';
 import { modernPlateControlsStudy } from './modern-plate-controls-study.mjs';
+import { modernMaterialStudy } from './modern-material-study.mjs';
 import { hash, root, sourceHash, writeJson } from './common.mjs';
 const [inputFile, parameterFile, output] = process.argv.slice(2);
 assert(output, 'Usage: modern-frame-color-preview.mjs INPUTS PARAMETERS OUTPUT');
@@ -18,25 +19,10 @@ const entries = parameters.ids.map((id) => inputs.entries.find((e) => e.id === i
 assert(entries.every(Boolean));
 const known = new Set(inputs.components.map((a) => a.url));
 assert(Object.keys(parameters.materials).every((url) => known.has(url)));
-const materialPlugin = {
-  name: 'm21-material-trial',
-  enforce: 'pre',
-  transform(source, id) {
-    if (!id.endsWith('/presentation/early-hsb-material.ts')) return;
-    const needle = '  const symbols = new Set([';
-    assert.equal(source.split(needle).length, 2);
-    const addition = [
-      '  for (const [url, value] of Object.entries((globalThis as any).__m21MaterialTrial ?? {})) {',
-      '    if (images.has(url)) adjustments.set(url, value as FrameHsb);',
-      '  }',
-      needle,
-    ].join('\n');
-    return { code: source.replace(needle, addition), map: null };
-  },
-};
+
 const session = await openBrowser(
   { ...inputs, entries },
-  { plugins: [modernPlateControlsStudy({ rules: true }), materialPlugin] },
+  { plugins: [modernPlateControlsStudy({ rules: true }), modernMaterialStudy()] },
 );
 await mkdir(output, { recursive: true });
 const sourceInfo = {
@@ -58,6 +44,7 @@ const sourceInfo = {
   tools: await Promise.all(
     [
       'modern-frame-color-preview.mjs',
+      'modern-material-study.mjs',
       'modern-plate-controls-study.mjs',
       'browser.mjs',
       'abu-assets.mjs',

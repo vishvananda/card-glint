@@ -5,23 +5,55 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { openBrowser } from './browser.mjs';
 import { modernPlateControlsStudy } from './modern-plate-controls-study.mjs';
+import { modernMaterialStudy } from './modern-material-study.mjs';
 import { root, hash, sourceHash, writeJson } from './common.mjs';
-const [inputFile, outputDirectory, study] = process.argv.slice(2);
+const [inputFile, outputDirectory, ...options] = process.argv.slice(2);
+const allowed = ['--retain-modern-controls', '--retain-component-rules'];
+const study = allowed.find((flag) => options.includes(flag));
+const materialIndex = options.indexOf('--materials');
+const materialFile = materialIndex < 0 ? undefined : options[materialIndex + 1];
+const expectedOptions = [
+  ...(study ? [study] : []),
+  ...(materialFile ? ['--materials', materialFile] : []),
+];
 assert(
-  [undefined, '--retain-modern-controls', '--retain-component-rules'].includes(study),
-  'Unknown native study',
+  options.length === expectedOptions.length &&
+    options.every((flag) => expectedOptions.includes(flag)),
+  'Unknown or duplicate native study option',
 );
 assert(
   outputDirectory,
-  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules]',
+  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS]',
 );
 const bytes = await readFile(inputFile),
   inputs = JSON.parse(bytes);
 assert(inputs.entries.length && inputs.entries.every((e) => e.face.wordingMode === 'original'));
 const out = path.resolve(outputDirectory);
 await mkdir(out, { recursive: true });
+const materialBytes = materialFile ? await readFile(materialFile) : null;
+const materials = materialBytes ? JSON.parse(materialBytes) : null;
+const materialIds = new Set(materials?.ids ?? []);
+if (materials) {
+  assert.equal(materials.schema, 1);
+  assert.equal(materialIds.size, materials.ids.length, 'Duplicate material study IDs');
+  assert(materialIds.size > 0);
+  const knownIds = new Set(inputs.entries.map((e) => e.id));
+  assert(
+    [...materialIds].every((id) => knownIds.has(id)),
+    'Unknown material study printing',
+  );
+  const knownUrls = new Set(inputs.components.map((a) => a.url));
+  assert(Object.keys(materials.materials).length > 0);
+  assert(
+    Object.keys(materials.materials).every((url) => knownUrls.has(url)),
+    'Unbound material source',
+  );
+}
 const session = await openBrowser(inputs, {
-  plugins: study ? [modernPlateControlsStudy({ rules: study === '--retain-component-rules' })] : [],
+  plugins: [
+    ...(study ? [modernPlateControlsStudy({ rules: study === '--retain-component-rules' })] : []),
+    ...(materials ? [modernMaterialStudy()] : []),
+  ],
 });
 try {
   await session.page.evaluate(async () => {
@@ -29,6 +61,16 @@ try {
     await import('/games/magic/src/data/eager-wording.ts');
   });
   const source = {
+    ...(materialBytes
+      ? {
+          materialStudy: {
+            parametersHash: hash(materialBytes),
+            toolHash: hash(await readFile(new URL('./modern-material-study.mjs', import.meta.url))),
+            selectedPrintings: materialIds.size,
+            unchangedMaterialControls: inputs.entries.length - materialIds.size,
+          },
+        }
+      : {}),
     ...(study
       ? {
           study: {
@@ -98,7 +140,7 @@ try {
     };
     try {
       const rendered = await session.page.evaluate(
-        async ({ face, id }) => {
+        async ({ face, id, materialValues }) => {
           const { composeCardTexture } = await import(
             '/games/magic/src/presentation/canvas-face.ts'
           );
@@ -112,6 +154,7 @@ try {
             face.illustration,
           );
           const result = {};
+          globalThis.__m21MaterialTrial = materialValues;
           try {
             for (const layer of ['face', 'etching']) {
               const image = await composeCardTexture(
@@ -137,10 +180,15 @@ try {
             }
           } finally {
             lease.dispose();
+            delete globalThis.__m21MaterialTrial;
           }
           return result;
         },
-        { face: e.face, id: e.id },
+        {
+          face: e.face,
+          id: e.id,
+          materialValues: materialIds.has(e.id) ? materials.materials : {},
+        },
       );
       for (const [layer, value] of Object.entries(rendered)) {
         assert.equal(value.width, 732);
