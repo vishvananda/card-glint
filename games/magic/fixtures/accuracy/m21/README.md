@@ -8,12 +8,18 @@ Only `typeLine` is certified: this does not approve body/flavor text, colors,
 layout or the set as a whole. Massacre Wurm prints **Creature — Wurm**, and
 Mazemind Tome prints **Artifact**.
 
-The proposal is deliberately not named `annotations*.json`, so it does not enter
-the generated public correction tables yet. The study's frozen Original inputs
-already include it. Adopting it requires registering it as an annotation source,
-rebuilding the catalogs and proving that unrelated historical native renders
-and score receipts remain compatible. Keep the existing Unlimited source guards
-until that scoped compatibility proof is in place.
+The source proposals stay immutable as review history. Their exact type and
+artist fields are now activated in annotations-type-line.json and
+annotations-artist-credit.json, then generated into the public per-set resolver
+data. [The content scope review](printing-content-scope-review.json) confirms
+that all 2,495 existing non-M21 wording reviews and all 195 existing artist
+reviews remain unchanged. The 29 existing M21 reviews retain every body and
+non-type field. The public API test checks all 297 Original type lines, all 13
+new credits, Oracle preservation, missing Original data and stale-scan rejection.
+
+The study's frozen inputs already contain the reviewed physical types.
+Captures with the 13 corrected credits must be regenerated before final scoring.
+A field review does not certify all wording or the complete set.
 
 ## Production component fit on the calibration branch
 
@@ -22,8 +28,8 @@ for the first adopted component fits. It is **not a set completion certificate**
 
 - Footer typography: credits diagnostic improves from **64.38 to 86.59/100**,
   all 297 printings improve. Every pixel above canonical y630 and every complete
-  etching remain unchanged. The 13 reviewed artist-string corrections remain
-  proposals and are not silently applied by the style profile.
+  etching remain unchanged. The 13 reviewed artist-string corrections are now activated separately
+  through the exact-printing resolver; the style profile never supplies strings.
 - Large basic symbols: all 15 improve; the complete-set structure diagnostic
   increases **73.09 to 74.27/100**. All 282 other faces and all 297 etchings stay
   pixel-identical. Five shared, source-bound color/geometry profiles are used.
