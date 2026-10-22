@@ -133,3 +133,173 @@ test('glyph study retains numeric and per-color controls and composes editor del
     await server.close();
   }
 });
+
+test('paper and shadow study binds both material sources and preserves other printing policies', async () => {
+  const costFile = 'games/magic/src/presentation/modern-cost-mana.ts';
+  const paletteFile = 'games/magic/src/presentation/calibration-profiles.ts';
+  const costSource = await readFile(costFile, 'utf8'),
+    paletteSource = await readFile(paletteFile, 'utf8');
+  const parametersWithColor = {
+    ...parameters,
+    paperTargets: { N: [206, 195, 195], B: [202, 193, 192], R: [242, 170, 134] },
+    shadow: [-1.25, 2.25],
+    source: {
+      ...parameters.source,
+      costSourceHash: hash(costSource),
+      paletteSourceHash: hash(paletteSource),
+    },
+  };
+  const plugin = modernManaStudy(parametersWithColor);
+  assert.throws(
+    () => plugin.transform(costSource + '\n', '/' + costFile),
+    /Changed cost material source/,
+  );
+  assert.throws(
+    () => plugin.transform(paletteSource + '\n', '/' + paletteFile),
+    /Changed mana palette source/,
+  );
+  for (const invalid of [
+    { paperTargets: { N: [-1, 2, 3] } },
+    { shadow: [1, 2] },
+    { shadow: [-1, Infinity] },
+  ])
+    assert.throws(() => modernManaStudy({ ...parametersWithColor, ...invalid }));
+  const servers = await Promise.all(
+    [[], [plugin]].map((plugins) =>
+      createServer({
+        configFile: false,
+        optimizeDeps: { noDiscovery: true },
+        server: { middlewareMode: true, hmr: false, ws: false },
+        plugins,
+      }),
+    ),
+  );
+  try {
+    const loaded = [];
+    for (const server of servers) {
+      await server.ssrLoadModule('/games/magic/src/data/eager.ts');
+      loaded.push({
+        cost: await server.ssrLoadModule('/' + costFile),
+        palette: await server.ssrLoadModule(
+          '/games/magic/src/presentation/printing-calibration-materials.ts',
+        ),
+      });
+    }
+    const [plain, study] = loaded;
+    const face = {
+      name: 'Cost',
+      setCode: 'm21',
+      typeLine: 'Creature',
+      colors: ['R'],
+      manaSymbols: ['2', 'R'],
+      colorCalibration: 'set-hsb-v1',
+    };
+    assert.deepEqual(study.cost.modernCostMana(face).paper, [206, 195, 195]);
+    assert.deepEqual(study.cost.modernCostMana(face).shadow, [-1.25, 2.25]);
+    assert.deepEqual(study.palette.calibratedManaTarget(face, 'R'), [
+      242 / 255,
+      170 / 255,
+      134 / 255,
+    ]);
+    assert.deepEqual(study.palette.calibratedManaTarget(face, 'B'), [
+      202 / 255,
+      193 / 255,
+      192 / 255,
+    ]);
+    assert.equal(
+      study.palette.calibratedManaTarget({ ...face, calibration: 'source' }, 'R'),
+      undefined,
+    );
+    assert.deepEqual(
+      study.cost.modernCostMana({ ...face, calibration: 'source' }).paper,
+      [202, 197, 192],
+    );
+    for (const extra of [
+      { setCode: 'war' },
+      { frameAssetFamily: 'eighth' },
+      { layout: 'planeswalker', typeLine: 'Planeswalker' },
+      { manaSymbols: [] },
+    ]) {
+      assert.deepEqual(
+        study.cost.modernCostMana({ ...face, ...extra }),
+        plain.cost.modernCostMana({ ...face, ...extra }),
+      );
+    }
+    assert.deepEqual(
+      study.palette.calibratedManaTarget({ ...face, setCode: 'war' }, 'R'),
+      plain.palette.calibratedManaTarget({ ...face, setCode: 'war' }, 'R'),
+    );
+    assert.deepEqual(
+      study.palette.calibratedManaTarget(face, 'W'),
+      plain.palette.calibratedManaTarget(face, 'W'),
+    );
+  } finally {
+    for (const server of servers) await server.close();
+  }
+});
+
+test('walker cohort uses its own circle placement and the same reviewed cost style without changing other frames', async () => {
+  const costFile = 'games/magic/src/presentation/modern-cost-mana.ts';
+  const paletteFile = 'games/magic/src/presentation/calibration-profiles.ts';
+  const p = {
+    ...parameters,
+    walkerControls: {
+      scaleX: 0.978,
+      scaleY: 0.978,
+      dx: -0.5,
+      dy: -0.6875,
+      spacing: 0.55,
+      numberScale: 0.99,
+    },
+    paperTargets: { N: [206, 195, 195], W: [251, 249, 218], U: [190, 220, 249] },
+    shadow: [-0.85, 2.35],
+    source: {
+      ...parameters.source,
+      costSourceHash: hash(await readFile(costFile)),
+      paletteSourceHash: hash(await readFile(paletteFile)),
+    },
+  };
+  const server = await createServer({
+    configFile: false,
+    optimizeDeps: { noDiscovery: true },
+    server: { middlewareMode: true, hmr: false, ws: false },
+    plugins: [modernManaStudy(p)],
+  });
+  try {
+    await server.ssrLoadModule('/games/magic/src/data/eager.ts');
+    const costs = await server.ssrLoadModule('/' + costFile),
+      placements = await server.ssrLoadModule('/' + file),
+      colors = await server.ssrLoadModule(
+        '/games/magic/src/presentation/printing-calibration-materials.ts',
+      );
+    const face = {
+      setCode: 'm21',
+      typeLine: 'Legendary Planeswalker — Test',
+      manaSymbols: ['3', 'U'],
+      colorCalibration: 'set-hsb-v1',
+    };
+    for (const layout of [undefined, 'normal', 'planeswalker']) {
+      const f = { ...face, layout };
+      assert.equal(placements.printingManaDefaults(f).dy, -0.6875);
+      assert.deepEqual(costs.modernCostMana(f).paper, [206, 195, 195]);
+      assert(costs.modernCostNumeralAsset(f, '8').endsWith('/8.svg'));
+      assert.deepEqual(colors.calibratedManaTarget(f, 'U'), [190 / 255, 220 / 255, 249 / 255]);
+      assert.equal(colors.calibratedManaTarget({ ...f, calibration: 'source' }, 'U'), undefined);
+    }
+    for (const extra of [
+      { setCode: 'war' },
+      { frameAssetFamily: 'eighth' },
+      { frameStyle: 'retro' },
+      { frameTemplate: 'future' },
+      { layout: 'split' },
+      { manaSymbols: [] },
+    ]) {
+      const f = { ...face, ...extra };
+      assert.equal(costs.modernCostMana(f), undefined);
+      assert.equal(placements.printingManaDefaults(f), undefined);
+    }
+    assert.equal(placements.printingManaDefaults({ ...face, typeLine: 'Creature' }).dy, -0.25);
+  } finally {
+    await server.close();
+  }
+});

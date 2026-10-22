@@ -11,9 +11,11 @@ import {
   manaCandidateCircle,
   manaCandidateControls,
 } from './modern-mana-objective.mjs';
-const [inputFile, nativeDirectory, scoreDirectory, auditFile, proposalFile, output] =
+const [inputFile, nativeDirectory, scoreDirectory, auditFile, proposalFile, output, option] =
   process.argv.slice(2);
 assert(output, 'Usage: modern-mana-shared-fit.mjs INPUTS NATIVE SCORES AUDIT PROPOSAL OUT');
+assert(option === undefined || option === '--planeswalkers', 'Unknown mana fit cohort');
+const walkers = option === '--planeswalkers';
 const start = performance.now();
 const read = async (file) => {
   const bytes = await readFile(file);
@@ -114,7 +116,7 @@ for (const row of audit.data.rows) {
     );
     return { ...disc, objects };
   });
-  if (row.kind === 'normal' && row.nonfoil)
+  if ((walkers ? row.kind.startsWith('planeswalker') : row.kind === 'normal') && row.nonfoil)
     rows.push({
       id: row.id,
       name: row.name,
@@ -125,12 +127,12 @@ for (const row of audit.data.rows) {
     });
 }
 assert.equal(parityCount, 1134);
-assert.equal(rows.length, 250);
+assert.equal(rows.length, walkers ? 9 : 250);
 assert.equal(
   rows.reduce((n, r) => n + r.discs.length, 0),
-  527,
+  walkers ? 25 : 527,
 );
-const scale = 1.01,
+const scale = walkers ? 1 : 1.01,
   radius = rows[0].discs[0].radius,
   size = (radius * 2) / scale,
   gap = 0.00378 * 488;
@@ -227,8 +229,9 @@ await writeJson(path.join(output, 'fit.json'), {
   schema: 1,
   status: 'shared-mana-proposal-not-native-adoption',
   eligibleForPublication: false,
-  scope:
-    'All250 nonfoil normal-frame M21 costs (527 symbols), including scan-search boundary cases. One shared isotropic diameter, center pitch and x/y offset; no per-card adjustment or scan pose changes. Per-card average weighting. The internal perimeter objective is not the public structural score; candidate must pass native full-card replay.',
+  scope: walkers
+    ? 'All9 nonfoil M21 planeswalker costs (25 symbols), regular and tall sources;5 foil-only controls remain outside the fit. One shared isotropic diameter, center pitch and x/y offset, fixed references and own-render controls. Native replay is required.'
+    : 'All250 nonfoil normal-frame M21 costs (527 symbols), including scan-search boundary cases. One shared isotropic diameter, center pitch and x/y offset; no per-card adjustment or scan pose changes. Per-card average weighting. The internal perimeter objective is not the public structural score; candidate must pass native full-card replay.',
   source: {
     inputsHash: inputs.sha256,
     nativeHash: capture.sha256,
@@ -247,7 +250,7 @@ await writeJson(path.join(output, 'fit.json'), {
   history,
   summary: {
     cards: rows.length,
-    discs: 527,
+    discs: walkers ? 25 : 527,
     improved: changed.filter((v) => v > 1e-7).length,
     regressed: changed.filter((v) => v < -1e-7).length,
     unchanged: changed.filter((v) => Math.abs(v) <= 1e-7).length,
@@ -262,6 +265,16 @@ await writeJson(path.join(output, 'fit.json'), {
   },
   candidates: { native: [...caches.native.values()], scan: [...caches.scan.values()] },
   rows: cardRows,
+  excludedCohorts: walkers
+    ? audit.data.rows
+        .filter((r) => !r.kind.startsWith('planeswalker') || !r.nonfoil)
+        .map((r) => ({
+          id: r.id,
+          name: r.name,
+          kind: r.kind,
+          reason: r.nonfoil ? 'separate-normal-cohort' : 'foil-only',
+        }))
+    : [],
 });
 console.log(
   JSON.stringify({

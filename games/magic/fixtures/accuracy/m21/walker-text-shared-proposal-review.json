@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "shared-ability-text-proposal-awaiting-native-replay",
+  "eligibleForPublication": false,
+  "scope": "Canonical frozen scan pixels; native1.5x isolated ability text; excludes badges/colons/shields, uses filled-ink plus symmetric edge objective. One shared candidate per ordinary/tall geometry; no per-card offsets or font sizes fitted. Own native raster is an independent placement control.",
+  "denominator": 14,
+  "nonfoilFitCards": 9,
+  "foilExcludedCards": 5,
+  "source": {
+    "inputs": "56456b7c74e36479373313fc012f43582a066fe3e791735a23424dbd1e5482f1",
+    "native": "4ca5c537d8020c813e787af29560790822af2ed849fa6a737d42a83af3bc03cf",
+    "scores": "3708f7ac2d3b664bca01f7a46012d7a60ce8411ad89c860238ad6ce81d466009",
+    "rendererHash": "41171c39150ee9f7943673bfcf0af5f770614ca3daa630a5fcc1b76272c5ffb4",
+    "tools": [
+      [
+        "modern-walker-text-study.mjs",
+        "e11c16531102ff770c9157cb171effb93dbb6bb2641f5469159e271dc7d40638"
+      ],
+      [
+        "modern-walker-text-study-plugin.mjs",
+        "7b7f0913acfab68f267cbdf241a8bfad7e46fa6c0f995a1cf1aaa44e63417cc5"
+      ],
+      [
+        "modern-walker-text-study-browser.mjs",
+        "d176f0afd4ab9781638680037c2f6a0836d28dd6445f0a6ff840c01c0c845f15"
+      ],
+      [
+        "text-filled-objective.mjs",
+        "b38164ba99ec13986c656feac0964a32d133b33faf53aa1dd06def8253cdd73a"
+      ],
+      [
+        "native-text-window.mjs",
+        "68ed75faeb318fa2e725a3ef3dbb38fb3ad24f0b0ceb8a8ca6557988d25c20bb"
+      ],
+      [
+        "abu-type-objective.mjs",
+        "16face636213a29cf3dbf275938711cf59b5d1c2410e5790094da94885ea0116"
+      ],
+      ["edges.mjs", "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"]
+    ]
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/walker-text-shared-proposal-review.json.gz",
+    "sha256": "6831617805f5109f773d1652427f4a5c665913f623d76f021adcf61efa232cef",
+    "contentSha256": "83da60fc3b6d3f2a6a09eeaeb7edfc5a8610fbb139d3b2d57ba5b2be57776a4c"
+  },
+  "groups": [
+    {
+      "large": false,
+      "cards": 5,
+      "beforeObjective": 0.510148571176062,
+      "afterObjective": 0.5574853416943704,
+      "candidate": {
+        "size": -0.5,
+        "dx": 1,
+        "dy": -1,
+        "width": -1,
+        "height": 0.5,
+        "leading": 1
+      },
+      "ownRenderControl": {
+        "size": 0,
+        "dx": 0,
+        "dy": 0,
+        "width": 0,
+        "height": 0,
+        "leading": 1
+      },
+      "boundsReached": [],
+      "candidates": 203
+    },
+    {
+      "large": true,
+      "cards": 4,
+      "beforeObjective": 0.47851253826230433,
+      "afterObjective": 0.6182252441847647,
+      "candidate": {
+        "size": 0,
+        "dx": -0.5,
+        "dy": 3,
+        "width": 0,
+        "height": 0,
+        "leading": 0.94
+      },
+      "ownRenderControl": {
+        "size": 0,
+        "dx": 0,
+        "dy": 0,
+        "width": 0,
+        "height": 0,
+        "leading": 0.9
+      },
+      "boundsReached": [],
+      "candidates": 206
+    }
+  ],
+  "note": "The optimization objective combines filled ink and symmetric edges and is not the published structural index. Both own-native controls recover the unchanged baseline. Only shared geometry classes fitted; text content and scan transforms retained. Requires full native candidate validation before adoption."
+}

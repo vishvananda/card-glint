@@ -1,0 +1,249 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "selected-mana-style-trials-awaiting-production-adoption",
+  "eligibleForPublication": false,
+  "scope": "Complete297 normal-cost trial plus an exact14-card PW subset. Placement is independently fitted for normal and PW title bars; glyph/paper/shadow style transfers after validation. Nine nonfoil PW scans determine pose; five foil-only PW transfers remain visible and were not color-fit samples. Frozen affine reference pixels and Original inputs retained.",
+  "source": {
+    "normalParameters": "d9ef7f35e2e416b474c4a6462adb4c311888aa8a7ff549e0c5877937b02fe353",
+    "walkerParameters": "1e1470da1a9c64f22a8c4631e5f54d93a84eba3984b3859488c23a60de18c4c7",
+    "normalNative": "6590788e3c32ccb680b40e46a33160bbe5f07567809f63140807318e76e1abc0",
+    "walkerNative": "1068ec2f932e495e3e22cd68eebbeadf69ade48f77b19fd2f951ec29fb5550af",
+    "normalScores": "7738dee43d009d157e00da4b702dc06bda1cc69b7fead9100c411029f952fbbd",
+    "walkerScores": "993819ac0cf52b28aa10474873961350503e23878328db2f16acc683becc5708",
+    "nativeScope": "3d13a891118af30673388e5dcd2e9fd581b79f904f31feb6408203d1b17a558e",
+    "inlineAudit": "3e5ceabe641187aa5b5f47cd1d06c53d0c7e34d941507ba66356bdc6b9ec8eed",
+    "pairs": "f3b32f317b68a0a49e90598438d254df6cb52f734bd12f0602d6d634a241f193",
+    "shadowFit": "62981c865bfa6c94c63d2ba8369ed84330af6a807397f7b9a5921d351d343f58",
+    "oldShadowFit": "d7dc14ca8d44e36715668d8c9475e133a2515f085d72a54ae7c88d4ac0e74fa7",
+    "numeralParity": "ac78fb3e70cdfec886c584f5ec038e2482f73ba7eac597c984a3633b721dad3f"
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/mana-paper-shadow-walker-native-review.json.gz",
+    "sha256": "61be2ca1ecf86c511cc15a166549ded5ce3069cbbbc1ef703f5a2907ea4eb0d4",
+    "contentSha256": "11fe46387755240b8f28bab81b5d3a6a10e3e462aec698828de6290018375c26"
+  },
+  "normal": {
+    "physicalChangedFaces": 251,
+    "unchangedFaces": 46,
+    "unchangedEtchings": 297,
+    "structure": {
+      "count": 297,
+      "before100": 78.18136490038341,
+      "after100": 78.27967704161789,
+      "delta100": 0.09831214123443348,
+      "improved": 208,
+      "regressed": 42,
+      "unchanged": 47
+    },
+    "mana": {
+      "eligible": {
+        "count": 264,
+        "before100": 89.55891975277562,
+        "after100": 90.8162706309795,
+        "delta100": 1.2573508782039435,
+        "improved": 208,
+        "regressed": 42,
+        "unchanged": 14
+      },
+      "diagnostic": {
+        "count": 264,
+        "before100": 89.55891975277562,
+        "after100": 90.8162706309795,
+        "delta100": 1.2573508782039435,
+        "improved": 208,
+        "regressed": 42,
+        "unchanged": 14
+      }
+    },
+    "rendererControls": {
+      "scaleX": 0.9806534292503055,
+      "scaleY": 0.9806534292503055,
+      "spacing": 0.6925319771602734,
+      "dx": -0.15624999999999944,
+      "dy": -0.25,
+      "numberScale": 0.99225,
+      "numberDx": -0.253125,
+      "numberDy": 0.3186650764469375,
+      "glyphs": {
+        "W": {
+          "scale": 0.9625,
+          "dx": -0.06373301528938749,
+          "dy": 0.3186650764469375
+        },
+        "U": {
+          "scale": 0.9625,
+          "dx": -0.1911990458681625,
+          "dy": 0.1911990458681625
+        },
+        "B": {
+          "scale": 1.0125,
+          "dx": -0.25493206115754996,
+          "dy": 0.44613110702571246
+        },
+        "G": {
+          "scale": 1.00625,
+          "dx": -0.1911990458681625,
+          "dy": -0.25493206115754996
+        }
+      }
+    },
+    "paperTargets": {
+      "N": [206, 195, 195],
+      "U": [190, 220, 249],
+      "B": [202, 193, 192],
+      "R": [242, 170, 134],
+      "G": [168, 205, 175]
+    },
+    "shadow": [-0.8460009541318374, 2.3558650764469373]
+  },
+  "walker": {
+    "cards": 14,
+    "nonfoilFitCards": 9,
+    "foilTransferCards": 5,
+    "structure": {
+      "count": 14,
+      "before100": 69.20510052002432,
+      "after100": 69.60132038613547,
+      "delta100": 0.3962198661111606,
+      "improved": 13,
+      "regressed": 1,
+      "unchanged": 0
+    },
+    "mana": {
+      "eligible": {
+        "count": 14,
+        "before100": 79.57849094338687,
+        "after100": 84.32939615767268,
+        "delta100": 4.750905214285832,
+        "improved": 13,
+        "regressed": 1,
+        "unchanged": 0
+      },
+      "diagnostic": {
+        "count": 14,
+        "before100": 79.57849094338687,
+        "after100": 84.32939615767268,
+        "delta100": 4.750905214285832,
+        "improved": 13,
+        "regressed": 1,
+        "unchanged": 0
+      }
+    },
+    "rendererControls": {
+      "scaleX": 0.9786570394547676,
+      "scaleY": 0.9786570394547676,
+      "spacing": 0.5511328861851883,
+      "dx": -0.5000000000000006,
+      "dy": -0.6875,
+      "numberScale": 0.99225,
+      "numberDx": -0.253125,
+      "numberDy": 0.3186650764469375,
+      "glyphs": {
+        "W": {
+          "scale": 0.9625,
+          "dx": -0.06373301528938749,
+          "dy": 0.3186650764469375
+        },
+        "U": {
+          "scale": 0.9625,
+          "dx": -0.1911990458681625,
+          "dy": 0.1911990458681625
+        },
+        "B": {
+          "scale": 1.0125,
+          "dx": -0.25493206115754996,
+          "dy": 0.44613110702571246
+        },
+        "G": {
+          "scale": 1.00625,
+          "dx": -0.1911990458681625,
+          "dy": -0.25493206115754996
+        }
+      }
+    },
+    "nonfoilStructuralImprovements": 9
+  },
+  "scopeAudit": {
+    "allAlphaUnchanged": true,
+    "allEtchingsUnchanged": true,
+    "outsideCostAndInlinePixels": 0,
+    "inlineCards": 53,
+    "inlineSymbols": 122,
+    "inlinePaperAudit": {
+      "1": {
+        "tokens": 25,
+        "beforeMeanRgbDistance": 21.04078999522997,
+        "afterMeanRgbDistance": 18.307649802996057,
+        "improved": 22
+      },
+      "2": {
+        "tokens": 14,
+        "beforeMeanRgbDistance": 25.194428849332848,
+        "afterMeanRgbDistance": 22.81263707207752,
+        "improved": 12
+      },
+      "3": {
+        "tokens": 5,
+        "beforeMeanRgbDistance": 28.740616609579142,
+        "afterMeanRgbDistance": 24.838773018087057,
+        "improved": 5
+      },
+      "4": {
+        "tokens": 6,
+        "beforeMeanRgbDistance": 10.089043196109625,
+        "afterMeanRgbDistance": 8.075195357644821,
+        "improved": 5
+      },
+      "5": {
+        "tokens": 2,
+        "beforeMeanRgbDistance": 22.728489810235025,
+        "afterMeanRgbDistance": 19.713915428853056,
+        "improved": 2
+      },
+      "7": {
+        "tokens": 1,
+        "beforeMeanRgbDistance": 19.72308292331602,
+        "afterMeanRgbDistance": 16.30950643030009,
+        "improved": 1
+      },
+      "B": {
+        "tokens": 9,
+        "beforeMeanRgbDistance": 36.047024948342695,
+        "afterMeanRgbDistance": 36.591828534330034,
+        "improved": 3
+      },
+      "G": {
+        "tokens": 7,
+        "beforeMeanRgbDistance": 105.86175453939784,
+        "afterMeanRgbDistance": 105.20665339284052,
+        "improved": 5
+      },
+      "R": {
+        "tokens": 8,
+        "beforeMeanRgbDistance": 26.72975314148635,
+        "afterMeanRgbDistance": 19.202943874653915,
+        "improved": 7
+      },
+      "U": {
+        "tokens": 9,
+        "beforeMeanRgbDistance": 14.560490343702762,
+        "afterMeanRgbDistance": 14.989011613785529,
+        "improved": 0
+      }
+    }
+  },
+  "selection": {
+    "R": "Retain the existing red glyph transform; the tiny analytical glyph gain failed native replay.",
+    "W": "Retain current paper color; rounded proposal is unchanged.",
+    "ink": "Retain existing ink. Scan blur/color bleed produced incompatible per-color inferred ink targets, so reject a global brightening.",
+    "X": "Unfitted independent X transform remains diagnostic, not silently substituted.",
+    "paperScope": "The shared paper palette also changes inline circles, including one no-cost card. Actual source-layout inline bounds were audited; do not label the trial cost-only.",
+    "shadowSource": "Guarded refit reads the actual baseline shadow and binds its source; reproduces the earlier selected physical offset exactly."
+  },
+  "limitations": [
+    "Regional structure is diagnostic; pose certification and remaining component/text audits still gate publication.",
+    "Title scoring windows overlap cost pixels; regional metric isolation remains open.",
+    "Inline color samples are a transfer audit with small fixed disc patches, not an independent color fit."
+  ]
+}

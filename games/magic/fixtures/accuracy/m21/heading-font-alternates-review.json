@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "heading-font-research-not-adopted",
+  "scope": "Pinned public upstream font inspection and28 native type-only default/final-form trials. No font binaries or card art distributed. Name/rules/footer unchanged in these font trials.",
+  "fontFiles": [
+    {
+      "file": "current.ttf",
+      "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/fonts/beleren-bold_P1.01.ttf",
+      "bytes": 92224,
+      "sha256": "281de1b0a3c32719eccb37230e2049999e0d31c6ff25e5fd41527a6ba49f8004"
+    },
+    {
+      "file": "cc-data.ttf",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/data/fonts/beleren-b.ttf",
+      "bytes": 92224,
+      "sha256": "281de1b0a3c32719eccb37230e2049999e0d31c6ff25e5fd41527a6ba49f8004"
+    },
+    {
+      "file": "cc-fonts.ttf",
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/beleren-b.ttf",
+      "bytes": 137124,
+      "sha256": "255129bc1f17d116027189dfccb892f9fc7a0e8f594ae8e707c4e8d9147e8f14"
+    },
+    {
+      "file": "mse.ttf",
+      "url": "https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/Magic%20-%20Fonts/beleren-bold_P1.01.ttf",
+      "bytes": 274760,
+      "sha256": "00d9238fe4816e91bb472a8f13e5d91150a473ae565068a968ad72482f17910d"
+    }
+  ],
+  "lowercaseN": [
+    {
+      "file": "mse.ttf",
+      "names": {
+        "1": ["Beleren"],
+        "2": ["Bold"],
+        "4": ["Beleren Bold"],
+        "5": ["Version P1.01"],
+        "6": ["Beleren-Bold"]
+      },
+      "unitsPerEm": 2048,
+      "nGlyph": "n",
+      "nAdvance": 1220,
+      "nBounds": [51, 0, 1190, 1044],
+      "nOutlineHash": "25bbe5069998c7c7636cb87d2b3a9917f07505108c6ef2bf74f5a5588082c005",
+      "alternateGlyphNames": ["N", "n"]
+    },
+    {
+      "file": "cc-data.ttf",
+      "names": {
+        "1": ["Beleren"],
+        "2": ["Bold"],
+        "4": ["Beleren Bold"],
+        "5": ["Version P1.01"],
+        "6": ["Beleren-Bold"]
+      },
+      "unitsPerEm": 2048,
+      "nGlyph": "n",
+      "nAdvance": 1220,
+      "nBounds": [51, 0, 1190, 1044],
+      "nOutlineHash": "25bbe5069998c7c7636cb87d2b3a9917f07505108c6ef2bf74f5a5588082c005",
+      "alternateGlyphNames": ["N", "n"]
+    },
+    {
+      "file": "current.ttf",
+      "names": {
+        "1": ["Beleren"],
+        "2": ["Bold"],
+        "4": ["Beleren Bold"],
+        "5": ["Version P1.01"],
+        "6": ["Beleren-Bold"]
+      },
+      "unitsPerEm": 2048,
+      "nGlyph": "n",
+      "nAdvance": 1220,
+      "nBounds": [51, 0, 1190, 1044],
+      "nOutlineHash": "25bbe5069998c7c7636cb87d2b3a9917f07505108c6ef2bf74f5a5588082c005",
+      "alternateGlyphNames": ["N", "n"]
+    },
+    {
+      "file": "cc-fonts.ttf",
+      "names": {
+        "1": ["Beleren2016"],
+        "2": ["Regular"],
+        "4": ["Beleren2016 Bold"],
+        "5": ["Version 1.200"],
+        "6": ["Beleren2016-Bold"]
+      },
+      "unitsPerEm": 1000,
+      "nGlyph": "n",
+      "nAdvance": 596,
+      "nBounds": [25, 0, 581, 510],
+      "nOutlineHash": "f89148fdc3086e8b770b078581e7fd70257e22ec7f4a5c4d1028a8df4527dcde",
+      "alternateGlyphNames": ["N", "n", "N.alt", "n.alt"]
+    }
+  ],
+  "discovery": "Current Beleren P1.01 and MSE share the same regular n outline and lack n.alt. Card Conjurer fonts/beleren-b.ttf is Beleren2016 Bold1.200, contains n.alt with identical596 advance and bbox25,-95,526,510 versus regular25,0,581,510. Built-in calt includes n before g and at selected word boundaries. Forced fina also substitutes f/h/k/m and must not be enabled globally from one glyph observation.",
+  "canvasFeatureProbe": {
+    "font": {
+      "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/fonts/beleren-b.ttf",
+      "sha256": "255129bc1f17d116027189dfccb892f9fc7a0e8f594ae8e707c4e8d9147e8f14",
+      "bytes": 137124,
+      "mime": "application/octet-stream",
+      "fetchedAt": "2026-10-22T15:55:36.042Z",
+      "etag": "W/\"904eed20f11d6452492eaf98bc0ce6afe91c8ce236d56d683d4c34b84aa075cf\"",
+      "lastModified": null
+    },
+    "rows": [
+      {
+        "name": "old",
+        "width": 1160,
+        "nWidth": 49,
+        "renderHash": "a8d2d550aae7984252054629421052ae4848ad3bd68ac83dd1e543489cc502d9"
+      },
+      {
+        "name": "new",
+        "width": 1160,
+        "nWidth": 49,
+        "renderHash": "3655429136213e0091097a24d1d5e4371de88022164abfe23acf68770db17d69"
+      },
+      {
+        "name": "new-calt-off",
+        "width": 1160,
+        "nWidth": 49,
+        "renderHash": "3655429136213e0091097a24d1d5e4371de88022164abfe23acf68770db17d69"
+      },
+      {
+        "name": "new-fina",
+        "width": 1160,
+        "nWidth": 49,
+        "renderHash": "05187931132e1978443f85e8ad792d4d46e98cc99aab75a44e2efbe93706c484"
+      },
+      {
+        "name": "new-aalt",
+        "width": 1111,
+        "nWidth": 49,
+        "renderHash": "05187931132e1978443f85e8ad792d4d46e98cc99aab75a44e2efbe93706c484"
+      }
+    ]
+  },
+  "nativeTrials": {
+    "cards": 28,
+    "baselineObjectiveMean": 0.777852391250992,
+    "contextualObjectiveMean": 0.7776634680807817,
+    "forcedFinalObjectiveMean": 0.777554604139864,
+    "note": "Type-band objectives are close and vary by card; this supports isolating shape from tracking/dash fit instead of treating an entire font switch as a proven improvement."
+  },
+  "fittingFinding": "Current paintFittedText lowers font size on overflow before Canvas width fitting. A height-preserving, bounded tracking and dash-gap policy needs separate measurement, especially on crowded Jolrael vs short types.",
+  "preview": "https://tetrarcum.com/m21/?typeFont=contextual"
+}

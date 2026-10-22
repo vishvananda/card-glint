@@ -89,7 +89,18 @@ const manaBytes = manaFile ? await readFile(manaFile) : null;
 const manaParameters = manaBytes ? JSON.parse(manaBytes) : null;
 if (manaParameters) {
   assert.equal(inputs.set, 'm21');
-  assert.equal(inputs.entries.length, 297);
+  if (manaParameters.cohort === 'planeswalkers')
+    assert(
+      inputs.entries.length === 14 &&
+        inputs.entries.every((e) =>
+          /\bPlaneswalker\b/.test(e.face.canonicalTypeLine ?? e.face.typeLine ?? ''),
+        ),
+      'Require the complete M21 walker census',
+    );
+  else {
+    assert(manaParameters.cohort === undefined);
+    assert.equal(inputs.entries.length, 297);
+  }
   assert.equal(manaParameters.source.inputsHash, hash(bytes));
   assert(inputs.entries.every((e) => !e.face.symbolAdjustment));
 }
@@ -167,6 +178,9 @@ try {
             parametersHash: hash(manaBytes),
             toolHash: hash(await readFile(new URL('./modern-mana-study.mjs', import.meta.url))),
             rendererControls: manaParameters.rendererControls,
+            ...(manaParameters.walkerControls
+              ? { walkerControls: manaParameters.walkerControls }
+              : {}),
           },
         }
       : {}),
