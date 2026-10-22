@@ -100,3 +100,8 @@ white-frame fit. Pixel-level color, texture and full-set replay remain open.
 The replacement plates also need their own stock binding: measured outer black
 is zero, while all 219 reference stock medians agree with the existing M21
 target of RGB (22, 19, 14). These are separate from the component-source binding.
+
+A subsequent native border-mask preview matches that stock target on all six
+materials. Alpha is unchanged, and every changed pixel remains within the
+outer band. Production source bindings, interior pinlines and dark frame
+texture are still separate checks; no replacement plate default is enabled.

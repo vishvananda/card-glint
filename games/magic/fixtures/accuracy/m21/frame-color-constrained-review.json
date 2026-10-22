@@ -324,7 +324,81 @@
   "decisions": [
     "White frame retains identity in the candidate preview; predicted frame gain is less than 0.1 Oklab delta. White paper retains its independent correction.",
     "Red pooled frame clipping drops from one third in the earlier proposal to zero with the bounded fit. This is a tile-level finding; full-resolution texture and native color validation remain open.",
-    "New full-plate outer black is still uncalibrated. All 219 measured scan outer-stock medians are [22,19,14], agreeing with the existing M21 stock target; the new source plates measure [0,0,0] and lack a matching source binding.",
+    "The native border mask reproduces the independently verified RGB (22,19,14) outer-stock target in six previews with no alpha changes or changes outside the outer band. Production source bindings and interior black/texture remain open.",
     "Retain existing gold, colored-artifact, land, crown and planeswalker source cohorts pending their separate audits. Do not promote these ordinary source fits as universal defaults."
-  ]
+  ],
+  "stockFollowUp": {
+    "status": "six-native-mask-checks-not-adopted",
+    "targetRgb": [22, 19, 14],
+    "nonfoilReferencePrintings": 219,
+    "referenceScope": "Four fixed outer-stock strips after frozen geometric normalization; every printing has the same target median, matching the existing M21 stock target.",
+    "scope": "Pinned native border mask applied during material preparation. Before variants remain byte-identical; all six alpha channels remain identical. No changes outside the outer band (x<0.075 or x>0.925 or y<0.065 or y>0.925). Interior pinlines and dark-texture black levels are separate audits.",
+    "source": {
+      "previewHash": "660078466b847feace1399b80dbd1b6ec61ccf2b8fb6274d1160a5ea894e7581",
+      "parametersHash": "0dbc25fa1f404f4bdae8b3e0e0cc5d6eb68096aeeb9d9dbbb4187323825ce38e",
+      "auditHash": "99381508e4664e769eedb83a3d2707ba2889d35f082a23773d032e1b98d4d859"
+    },
+    "rows": [
+      {
+        "id": "c392a7e5-6ff5-4c2f-9590-f8811a724f44",
+        "name": "Alpine Watchdog",
+        "beforeHash": "bdfb031001467f426717eb0d64eab8e6890f790e759739e5c4196ee8d95199e4",
+        "afterHash": "df490d33a5868f8ea8fb5b35b89280e8eb3577138c2bcd1449bc916b389c56a0",
+        "changedPixels": 125366,
+        "outsideOuterBand": 0,
+        "stockBefore": [0.0, 0.0, 0.0],
+        "stockAfter": [22.0, 19.0, 14.0]
+      },
+      {
+        "id": "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+        "name": "Cancel",
+        "beforeHash": "51f8dd89f8d6b34653da53d82320c147573479df4ffc9fd4ca5898d4161126e4",
+        "afterHash": "0c4758aaf50b31ea8466316d745ed7b87abab1a386fe5eab841576e1051b4cc1",
+        "changedPixels": 127666,
+        "outsideOuterBand": 0,
+        "stockBefore": [0.0, 0.0, 0.0],
+        "stockAfter": [22.0, 19.0, 14.0]
+      },
+      {
+        "id": "6e4c9574-1ee3-461e-848f-8f02c6a8b7ee",
+        "name": "Alchemist's Gift",
+        "beforeHash": "67bbd2d3720eedee168fdb019a671a2f0366068a9797f1cd3e7bf57d24118a26",
+        "afterHash": "55b7061aaa6c2908aac0bd14eaaef0b89206c0b38099fe7ace0f2fa9ce4484f8",
+        "changedPixels": 129589,
+        "outsideOuterBand": 0,
+        "stockBefore": [0.0, 0.0, 0.0],
+        "stockAfter": [22.0, 19.0, 14.0]
+      },
+      {
+        "id": "faca827d-0b35-48d7-acd6-13ecacc32b82",
+        "name": "Battle-Rattle Shaman",
+        "beforeHash": "8f8c7754da849d0b36a056022144932cfff96571c4661de823bd119604789721",
+        "afterHash": "582fe96bbd16b72020caf8557667328c0220fbc4ba60ed31199fa3702c6894f3",
+        "changedPixels": 125864,
+        "outsideOuterBand": 0,
+        "stockBefore": [0.0, 0.0, 0.0],
+        "stockAfter": [22.0, 19.0, 14.0]
+      },
+      {
+        "id": "3d0ec3bd-d894-4861-abcb-7b2e4f4de05c",
+        "name": "Burlfist Oak",
+        "beforeHash": "366ad02b25309bfadc6c6d2ca08bbeb7098d49f4de757af5e0c9e00ba07a0a35",
+        "afterHash": "999d0047e1ae30f0aa81ed1b33176b4ad301015363c3fadbcb30c5a42b46e60b",
+        "changedPixels": 126647,
+        "outsideOuterBand": 0,
+        "stockBefore": [0.0, 0.0, 0.0],
+        "stockAfter": [22.0, 19.0, 14.0]
+      },
+      {
+        "id": "1e01bcb4-e823-4da5-b433-e75be3356367",
+        "name": "Chrome Replicator",
+        "beforeHash": "a75be7c1da73def92865c8491932f6a045774b284d72b37d8ecb2b45962a722b",
+        "afterHash": "46fff67d80ea9ea7fd7da78c5df804adc336ef807f3d051a238a18cca94da11a",
+        "changedPixels": 125915,
+        "outsideOuterBand": 0,
+        "stockBefore": [0.0, 0.0, 0.0],
+        "stockAfter": [22.0, 19.0, 14.0]
+      }
+    ]
+  }
 }
