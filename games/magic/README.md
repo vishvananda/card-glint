@@ -613,7 +613,8 @@ text or other footer fields.
 `withCardWording(face, { oracle, original }, mode)` keeps the selected printing's
 frame, art and typography while choosing supplied wording and symbol style. The
 mode defaults to `oracle`; requesting an absent `original` throws. Each wording
-requires `typeLine` and `rulesText`, with optional styled `rulesParagraphs`, mana
+requires `typeLine` and `rulesText`, with optional styled `rulesParagraphs`, separate
+`flavorText`, mana
 cost, stats, and `name` for titles that differ in the original printing. Supply
 the title in both wordings when switching names. Missing paragraph overrides
 are cleared when switching modes.
@@ -644,6 +645,25 @@ uses the tilted T and Fourth through Seventh use the tilted-card mark where
 that era is supported.
 [Wizards' history of the tap symbol](https://magic.wizards.com/en/news/making-magic/25-random-things-about-magic-2009-02-16)
 describes those transitions.
+
+Use `includeFlavorText: true` to combine Oracle rules with the selected
+printing's flavor text. Supplied Oracle flavor takes precedence; otherwise the
+helper copies the `role: 'flavor'` paragraphs (including styling and alignment)
+or separate `flavorText` from `original`. It does not copy original rules or
+change either source record.
+
+```ts
+const visible = withCardWording(face, wordings, 'oracle', {
+  includeFlavorText: true,
+});
+```
+
+`includeFlavorText: false` omits Oracle flavor. Leaving it unspecified preserves
+the supplied Oracle wording. Original-mode selection always keeps the original
+printing intact. Automatic Oracle text fitting includes the flavor that will
+actually be displayed. The option is also accepted by `fromScryfallCard` and
+`fromMtgjsonCard`; those provider imports already include their supplied flavor
+by default.
 
 The fourth argument chooses `rulesAlignment: 'left' | 'original' | 'oracle'`.
 `left` disables automatic rules-text centering; flavor attributions retain their alignment. The other choices determine automatic centering

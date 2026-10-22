@@ -1,3 +1,4 @@
+import { oracleFlavorWording } from './wording-flavor.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { resolveCardProfile } from './profile.js';
 import { originalManaOrder } from './historic-mana-order.js';
@@ -9,6 +10,8 @@ export interface CardWording {
   name?: string;
   typeLine: string;
   rulesText: string;
+  /** Separate printing flavor, used by the opt-in Oracle flavor selection. */
+  flavorText?: string;
   rulesParagraphs?: readonly RulesParagraph[];
   manaSymbols?: string[];
   power?: string | number | null;
@@ -36,8 +39,18 @@ export function withCardWording(
   options: {
     rulesAlignment?: WordingAlignment;
     symbolStyle?: RenderedCardInput['symbolStyle'];
+    /** Oracle only: include supplied flavor, falling back to Original flavor.
+     * False removes Oracle flavor. Omission preserves the supplied wording. */
+    includeFlavorText?: boolean;
   } = {},
 ): RenderedCardInput {
+  if (options.includeFlavorText !== undefined && typeof options.includeFlavorText !== 'boolean')
+    throw Error('Flavor-text selection must be a boolean');
+  if (mode === 'oracle' && options.includeFlavorText !== undefined) {
+    const { includeFlavorText, ...selection } = options;
+    const oracle = oracleFlavorWording(wordings.oracle, wordings.original, includeFlavorText);
+    return withCardWording(face, { ...wordings, oracle }, mode, selection);
+  }
   const selected = wordings[mode];
   if (!selected) throw Error(`Missing ${mode} printing wording`);
   if (typeof selected.typeLine !== 'string' || typeof selected.rulesText !== 'string')

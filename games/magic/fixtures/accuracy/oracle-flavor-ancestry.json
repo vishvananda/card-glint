@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "status": "opt-in-oracle-flavor-default-input-compatibility",
+  "baselineVersion": "0.6.11",
+  "baselineCommit": "89b320d41ed41ddaaf92e5c72f6390a5dbc9448f",
+  "scope": "Exact removal of the additive Oracle-only option; default wording selection and provider imports must retain identical output. This is not whole-painter or M21 set completion certification.",
+  "files": {
+    "games/magic/src/presentation/wording.ts": {
+      "before": "0fd6688bfc7f9a432b45dfbe056afff28434f711ee9c6ae1dd06db80ce8976d8",
+      "after": "7fbdc2d0f4bf3497259746a81b1ab7dfe4eb21434afb4c9cb5057982c8c05d2e",
+      "reverseEdits": [
+        {
+          "start": 46,
+          "count": 7,
+          "lines": []
+        },
+        {
+          "start": 41,
+          "count": 3,
+          "lines": []
+        },
+        {
+          "start": 12,
+          "count": 2,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/provider-card.ts": {
+      "before": "a7190b28b6fce3098949e705143f3dd9836bcd5389c6ab71dcc9269665b5f2cb",
+      "after": "b9ad75618c0312b32ad6d350cee809cc5ca9de7144366d78ffbd860be39f1282",
+      "reverseEdits": [
+        {
+          "start": 91,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 14,
+          "count": 2,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/mtgjson-card.ts": {
+      "before": "55ec82611b198204c10257135069e3d900fe0bc6f0827d24c23ebb5c0e9eb93a",
+      "after": "0c0ae920bd567da43203a9ed7deaf40dbc66eb2ad0ca9a0cdcaf4a7cc540105e",
+      "reverseEdits": [
+        {
+          "start": 102,
+          "count": 5,
+          "lines": ["      { wording: options.wording, symbolStyle: options.symbolStyle },\n"]
+        }
+      ]
+    }
+  },
+  "addition": {
+    "file": "games/magic/src/presentation/wording-flavor.ts",
+    "sha256": "2d900166be38aca5c83e97195bb37263bffe5cd048d3219034210a2cef1292c1"
+  }
+}

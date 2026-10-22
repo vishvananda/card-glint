@@ -100,7 +100,11 @@ export function fromMtgjsonCard(
         security_stamp: row.securityStamp,
         textless: row.isTextless,
       },
-      { wording: options.wording, symbolStyle: options.symbolStyle },
+      {
+        wording: options.wording,
+        symbolStyle: options.symbolStyle,
+        includeFlavorText: options.includeFlavorText,
+      },
     ),
   );
   return providerFace(painted, layout, {

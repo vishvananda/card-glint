@@ -133,12 +133,12 @@ import wasmUrl from 'card-glint/renderer.wasm?url';
 const face: MagicCard = {name:'Example', typeLine:'Creature — Wizard', colors:['U'],power:'2',toughness:'2',blackBorderLift:0.03,setSymbolMask:'ink',printingOmissions:[{rect:[0.1,0.1,0.4,0.1],texts:['Example']}]};
 const selection: PrintingSelection = {preset:printingPresets[0]!.id,overrides:{calibration:'auto',collectorNumber:'7',elements:{artist:{offset:[2,0]}}}};
 export const presetFace = resolvePrintingPreset(face, selection);
-const importOptions:CardImportOptions={wording:'oracle'};export const imported=fromScryfallCard({name:'Probe',type_line:'Instant'},importOptions);export const importedMtgjson=fromMtgjsonCard({name:'Probe',type:'Instant'});
+const importOptions:CardImportOptions={wording:'oracle',includeFlavorText:true};export const imported=fromScryfallCard({name:'Probe',type_line:'Instant'},importOptions);export const importedMtgjson=fromMtgjsonCard({name:'Probe',type:'Instant'});
 const style:PrintingStyle=printingStyles[0]!;export const styleFace=resolvePrintingStyle(face,style,{overrides:{frameColors:['R']}}).face;
 const source: PrintingText = {typeLine:'Creature', rulesText:'', flavorText:'A fixture.'};
 export const resolved = resolvePrintingWording('unknown-printing', {oracle:source, original:source});
 export const credit: ResolvedPrintingArtist = resolvePrintingArtist('unknown-printing', face.artist);
-export const magicRecipe = magic.describe(withCardWording(face,resolved.wordings),'inspect');
+export const magicRecipe = magic.describe(withCardWording(face,resolved.wordings,'oracle',{includeFlavorText:true}),'inspect');
 export const opticalRecipe = opticalDocument(2,1,face,'silver');
 export async function example(canvas: HTMLCanvasElement) {
   const renderer = await createRenderer({ canvas, wasmUrl });

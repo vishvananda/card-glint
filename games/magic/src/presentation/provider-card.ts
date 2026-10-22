@@ -12,6 +12,8 @@ export interface CardImportOptions {
   /** Explicit illustrations replace provider art crops, including null to omit art. */
   illustrations?: readonly (string | null)[];
   symbolStyle?: 'original' | 'modern';
+  /** Oracle-only display choice; omission retains provider flavor as supplied. */
+  includeFlavorText?: boolean;
 }
 export type ProviderRecord = Record<string, unknown>;
 export function providerRecord(value: unknown): ProviderRecord {
@@ -87,6 +89,7 @@ export function providerWording(
   };
   return withCardWording(face, { oracle, original: printed }, mode, {
     symbolStyle: options.symbolStyle ?? 'original',
+    includeFlavorText: options.includeFlavorText,
   });
 }
 export function providerFace(

@@ -1,3 +1,4 @@
+import { preOracleFlavorSource } from '../games/magic/tools/accuracy/oracle-flavor-ancestry.mjs';
 import { preFinishSource } from '../games/magic/tools/accuracy/finish-ancestry.mjs';
 import { artistReviewProofDependency } from '../games/magic/tools/accuracy/artist-review-ancestry.mjs';
 import { profileDataGeneratorSource } from '../games/magic/tools/accuracy/profile-data-modules.mjs';
@@ -21,7 +22,7 @@ export async function hostWorkerProofSource(file) {
           file,
           await artistReviewProofDependency(
             file,
-            await preFinishSource(file, await readFile(file)),
+            await preFinishSource(file, await preOracleFlavorSource(file, await readFile(file))),
           ),
         ),
       ),
