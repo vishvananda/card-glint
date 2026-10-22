@@ -105,3 +105,40 @@ A subsequent native border-mask preview matches that stock target on all six
 materials. Alpha is unchanged, and every changed pixel remains within the
 outer band. Production source bindings, interior pinlines and dark frame
 texture are still separate checks; no replacement plate default is enabled.
+
+## Complete native material replay
+
+[Full replay and color diagnostics](frame-color-full-native-review.json) cover all
+297 Original printings on the current 0.6.11-based study. The six shared material
+corrections change exactly 219 nonfoil ordinary faces. The other 78 faces and all
+297 complete etchings remain pixel-identical; the compressed parity receipt
+records every printing and raster hash.
+
+Compared with the uncorrected replacement plate using current rules spacing,
+the whole structure diagnostic improves **77.62 to 78.03/100**. The nonfoil
+subset improves **77.80 to 78.21/100**. Frame color distance drops from 5.34 to
+2.22 and rules-paper distance from 2.24 to 0.99 in the fixed native color patches.
+These Oklab distances are separate from the structure index.
+
+The full pass exposed a problem that the six examples did not settle: applying
+the rules-paper tone to the name and type panels worsens black and green headers.
+Artifact type paper also needs a separate fit. Do not adopt this material trial
+until the existing source-local header masks have independent shared fits and a
+new native replay. All 37 whole-card regressions remain in the review. Gold,
+colored artifacts, lands, crowns, planeswalkers and final default transfer remain
+separate requirements.
+
+The capture tool now accepts a source-bound material profile. Its selected IDs
+declare the trial cohort; all other printings are controls. It records the
+profile and injection-tool hashes, with no production profile edits:
+
+```sh
+node games/magic/tools/accuracy/modern-calibration-native.mjs \
+  INPUTS OUTPUT --retain-component-rules --materials PARAMETERS
+node games/magic/tools/accuracy/modern-native-material-audit.mjs \
+  INPUTS BEFORE_NATIVE AFTER_NATIVE FROZEN_REFERENCE_SCORES PARAMETERS AUDIT_JSON
+```
+
+The material audit uses fixed frame, rules, name and type patches with the same
+dark-letter rejection. Missing observations stay explicit. Tile-center spread
+is only a coarse texture/color diagnostic; it does not certify fine print grain.
