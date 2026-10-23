@@ -75,6 +75,27 @@ try {
     );
   }
   assert(framePlate({ ...base, frameColors: ['W', 'R'] }).frame.endsWith('/lr.png'));
+  for (const face of [
+    { ...base, frameColors: ['W', 'U', 'R'] },
+    { ...base, frameColors: ['W', 'U', 'B', 'R', 'G'] },
+    { ...base, name: 'Fabled Passage', collectorNumber: '246' },
+  ]) {
+    const selected = modernLandPlates(face);
+    assert(selected && !selected.dual);
+    assert.equal(selected.sources.length, 1);
+    assert(selected.sources[0].endsWith('/lm.png'));
+    assert(framePlate(face).frame.endsWith('/lm.png'));
+    assert.equal(modernLandLayers(face).length, 1, 'Gold panels must not get neutral dual headers');
+    const material = modernOrdinaryPlates(face)[selected.sources[0]];
+    assert.deepEqual(material.paper, { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 });
+    assert.deepEqual(printingCalibrationMaterials(face).materials, modernOrdinaryPlates(face));
+    for (const calibration of ['auto', 'printing', { profile: 'm21-modern' }])
+      assert.deepEqual(
+        printingCalibrationMaterials({ ...face, calibration }).materials,
+        modernOrdinaryPlates(face),
+      );
+  }
+
   for (const extra of [
     { setCode: 'war', calibration: 'printing' },
     { frameStyle: 'retro' },
@@ -85,7 +106,6 @@ try {
     { land: false },
     { layout: 'transform' },
     { borderColor: 'white' },
-    { frameColors: ['W', 'U', 'R'] },
   ]) {
     assert.equal(modernLandPlates({ ...base, ...extra }), undefined, JSON.stringify(extra));
     assert.deepEqual(modernLandLayers({ ...base, ...extra }), []);
@@ -168,5 +188,5 @@ try {
   await session.close();
 }
 console.log(
-  'M21 land sources: basics/pairs, raw/calibrated policies, excluded families, assets and shared two-layer cache passed.',
+  'M21 land sources: basics/pairs/gold, raw/calibrated policies, excluded families, assets and shared two-layer cache passed.',
 );
