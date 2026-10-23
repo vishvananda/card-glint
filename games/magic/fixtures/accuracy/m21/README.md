@@ -683,3 +683,28 @@ Regenerate only this set with
 Other sets' records remain structurally unchanged. The normalization and ledger
 tests cover the palette split, unchanged-renderer pose reuse, scan/matrix
 invalidation, membership changes and preservation of manual reviews.
+
+## Follow-up text-size and orphan trials
+
+[The complete trials](ordinary-size-and-orphan-trials.json) retain all297 sources,
+268 ordinary text fields, seven global caps and six wording-only orphan policies.
+Every current control reproduces exactly between the two native-font studies.
+No renderer profile, wording, scan pose or public score was changed.
+
+Every smaller global cap worsens the whole-cohort text objective. A0.15 orphan
+threshold gives only+0.224/100 on the isolated text objective, improving5 fields
+and regressing4; Vryn Wingmare loses68.281 and Gloom Sower53.224. Larger thresholds
+fix several obvious extra wraps while creating worse regressions elsewhere.
+These are **unadopted**, including the candidate with the slightly higher mean.
+
+The proposal caps the whole rules/flavor block using actual fractional advances,
+without reading scan pixels or selecting a printing-specific offset. It shrinks
+at most10%, keeps unresolved or right-aligned paragraphs unchanged, and restores
+Canvas state even after errors. It remains an accuracy-tool option, not a library
+default. To reproduce, pass candidates with adjustments containing
+an orphanFill value from0.15 through0.4 to modern-rules-study.mjs. The compressed
+receipt records both complete parameter lists and every selected trial.
+
+Aligned zooms also reveal straight source quotation marks where the printing has
+curved marks. Body and flavor can require different fitting decisions. Audit those
+roles and printing typography before introducing another shared size rule.

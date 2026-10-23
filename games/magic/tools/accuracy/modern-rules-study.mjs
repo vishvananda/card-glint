@@ -56,6 +56,7 @@ for (const c of p.candidates) {
     }
     const ranges = {
       maximumSize: [15, 26],
+      orphanFill: [0.1, 0.45],
       dx: [-10, 10],
       dy: [-10, 10],
       widthDelta: [-30, 30],
@@ -70,6 +71,7 @@ const toolFiles = [
   'modern-rules-study.mjs',
   'modern-rules-study-plugin.mjs',
   'modern-rules-study-browser.mjs',
+  'modern-rules-orphan-study.mjs',
   'text-filled-objective.mjs',
   'abu-type-objective.mjs',
   'native-text-window.mjs',

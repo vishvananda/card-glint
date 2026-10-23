@@ -21,6 +21,9 @@ export function modernRulesStudyPlugin() {
             "{(globalThis as any).__modernRulesStudy?.fontFamily ?? 'CardRenderer MTG MPlantin'}\"",
         );
       } else if (id.endsWith('/presentation/rules-paint.ts')) {
+        code =
+          "import { orphanParagraphCap } from '/games/magic/tools/accuracy/modern-rules-orphan-study.mjs';\n" +
+          code;
         code = once(
           code,
           '    flavorSeparator: face.frameAssetFamily',
@@ -33,6 +36,7 @@ export function modernRulesStudyPlugin() {
             '  bounds.x += study.dx ?? 0; bounds.y += study.dy ?? 0;\n' +
             '  bounds.width += study.widthDelta ?? 0; bounds.height += study.heightDelta ?? 0;\n' +
             landEntryStudy +
+            '  if (study.orphanFill && calibration) maximumSize = orphanParagraphCap(context, paragraphs, bounds, maximumSize, typography, study.orphanFill);\n' +
             '  const reference =\n',
         );
         code = once(
