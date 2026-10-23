@@ -72,7 +72,7 @@ export function calibrationTaskStatus(group, task) {
     `Incomplete or inconsistent printing coverage: ${task}`,
   );
   if (task !== 'release') {
-    if (proof.validationKind === 'source-census') checkSourceCensus(group, proof);
+    if (proof.validationKind === 'source-census') checkSourceCensus(group, proof, task);
     else {
       assert.ok(
         proof.calibrationNames >= 3 && proof.validationNames >= 3,

@@ -1,0 +1,719 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "validated-scan-only-normalization",
+  "definition": {
+    "observationsHash": "c4012b9d8b890cf101f4d587355c1c4505120ece9118320e5a5ec3b3c9e71c49",
+    "templatesHash": "d1def05328dffdbda5783003d85486cf22778535c477c209510b00ce24d42952",
+    "normalizationHash": "7c90a70f6d969238efd6b6897cfbefd83f7f792e546fb75962d09054d571eaa5",
+    "visualReviewHash": "e3b4620a913d415c58408e078549b97943dd5fce823d7a0797bc20e237f6959e",
+    "toolHash": "55f50a76f38a64320ba625936be4d031842ae9fb7a891482c5bbaba6d9c9a441"
+  },
+  "policy": "Complete observed scan census. Physical geometry and normal-frame material families; gradient vectors use the matched outer-boundary interval for normalization and are normalized to L2 norm100 before taking population medians so pale cards cannot dominate the shared edge positions. Four tangential bins on each field, using finer eight-point quadrature on narrower bottom fields, retain local2D shape without consuming the reserve needed for tangential motion. Each bottom partition contains two left and one right strip, avoiding an accidental material/color split between fit and validation. A joint six-parameter affine fit samples small reviewed2D native fields with the exact inverse matrix (including tangential movement along curves). Ordinary families retain raw HSV value and0.8px Gaussian; reviewed PW geometries use one largest-variance encoded-RGB linear projection per strip and0.4px Gaussian, with the same bounded vertical multi-start grid on every PW. Fields retain accurate filter/channel/projection-axis metadata. Original unnormalized gradients preserve low-signal rejection. All coarse profiles are projected to HSV value before canonical resampling. Ordinary coarse and fine objectives share that channel; PW fine fields deliberately use the declared geometry-specific linear RGB projection. The earlier stepwise models only supply starting points; independent strips and known-raster controls gate the affine result. All colors, foil flags and materials remain in the denominator. Two disjoint field partitions jointly fit the fixed affine model; the third partition alone validates and certifies it. Validation and certification are the same held pixels, not two independent tests; no held-out-name or unseen-transfer claim. Scan poses are comparison-only and never enter renderer defaults.",
+  "controls": [
+    {
+      "kind": "known",
+      "sha256": "ad56cb07acc6d93263693b4b1ee407c9db15952983129fa9f30b172e1d36ec2d",
+      "inputHash": "1839ac7acd5788b12a102eba5d7d7d2253ab74db0f59d334dff456e185546dea",
+      "definition": {
+        "schema": 1,
+        "sourceGraphs": {
+          "affine": {
+            "hash": "c49caa64c7438e05dd26d25285dd4af3d6f8b2fe2c83d5b9e94da6f2d16e41c9",
+            "node": "v22.22.1",
+            "sources": [
+              ["edges.mjs", "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"],
+              [
+                "frame-patch-profiles.mjs",
+                "7e099207358744e063af6983c5867d6e96707eac76d3c670df9d8de34dacf083"
+              ],
+              ["metrics.mjs", "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"],
+              [
+                "modern-affine-fit.mjs",
+                "64a908de2921cb0a6edd2ee671adad4af9fab90a3efd7ee84e3d3c9c448bbc25"
+              ],
+              [
+                "native-frame-rgb-projection.mjs",
+                "3e421803a02bb30c80f0f70a3d827cac383968cc75bb4b72665ad5772b4faf5f"
+              ],
+              [
+                "pixels-pure.mjs",
+                "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              ],
+              [
+                "scan-gradient-fit.mjs",
+                "0ebe345abfdfede6ffc8ea2e46db8a482eb821a8f724bfa80acd7b90315a891d"
+              ],
+              [
+                "scan-transform.mjs",
+                "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+              ]
+            ]
+          },
+          "nativeFields": {
+            "hash": "6fb1e62ab587c8c071b703941e1424140b8b47a12bf26c5274ec65124407981e",
+            "node": "v22.22.1",
+            "sources": [
+              [
+                "modern-frame-policy.mjs",
+                "a6c04ca49987d4f2dc3c4fdbe2b312866ca296634e0e348cfc2ef02e2a451624"
+              ],
+              [
+                "modern-frame-value.mjs",
+                "726361bfd5615de8af63112f40af85b481bd6705832edc136e2b50152af7d575"
+              ],
+              [
+                "native-frame-patches.mjs",
+                "48436e0f987b1c56aefd5236e729778ef91e384b1a3e4fe72f2842f8d9c5dd30"
+              ],
+              [
+                "native-frame-rgb-projection.mjs",
+                "3e421803a02bb30c80f0f70a3d827cac383968cc75bb4b72665ad5772b4faf5f"
+              ],
+              [
+                "pixels-pure.mjs",
+                "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              ],
+              [
+                "scan-transform.mjs",
+                "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+              ]
+            ]
+          },
+          "coarse": {
+            "hash": "ff47fb5c78ac14531f7d88774715994841d2136f3e2f3dfa9cbb7a75cb86b6c5",
+            "node": "v22.22.1",
+            "sources": [
+              ["edges.mjs", "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"],
+              ["metrics.mjs", "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"],
+              [
+                "pixels-pure.mjs",
+                "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              ],
+              [
+                "printed-plate-registration.mjs",
+                "fad86e781cbe7a1cd35244c5fe4704985433a0deefa58ed61e78c900c2ac6b61"
+              ],
+              [
+                "scan-transform.mjs",
+                "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+              ]
+            ]
+          }
+        },
+        "graphToolHash": "6356e111869ad93ceec1940263e82db7108ba7cd6da2d75f619a23fe153cbccb",
+        "observationsHash": "c4012b9d8b890cf101f4d587355c1c4505120ece9118320e5a5ec3b3c9e71c49",
+        "normalizationHash": "7c90a70f6d969238efd6b6897cfbefd83f7f792e546fb75962d09054d571eaa5",
+        "templatesHash": "d1def05328dffdbda5783003d85486cf22778535c477c209510b00ce24d42952",
+        "controlsHash": "1839ac7acd5788b12a102eba5d7d7d2253ab74db0f59d334dff456e185546dea",
+        "toolHash": "d5fc2806413a7e71d1443089bc6a4f3d30c6afcf3bcec3b64fe0d641f9cc6ece",
+        "sources": {
+          "pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+          "modern-affine-fit.mjs": "64a908de2921cb0a6edd2ee671adad4af9fab90a3efd7ee84e3d3c9c448bbc25",
+          "frame-patch-profiles.mjs": "7e099207358744e063af6983c5867d6e96707eac76d3c670df9d8de34dacf083",
+          "native-frame-patches.mjs": "48436e0f987b1c56aefd5236e729778ef91e384b1a3e4fe72f2842f8d9c5dd30",
+          "modern-frame-value.mjs": "726361bfd5615de8af63112f40af85b481bd6705832edc136e2b50152af7d575",
+          "modern-frame-policy.mjs": "a6c04ca49987d4f2dc3c4fdbe2b312866ca296634e0e348cfc2ef02e2a451624",
+          "native-frame-rgb-projection.mjs": "3e421803a02bb30c80f0f70a3d827cac383968cc75bb4b72665ad5772b4faf5f",
+          "scan-transform.mjs": "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6",
+          "scan-boundary-profiles.mjs": "86296ce0f78f9b8699e5d364c37c0a18d6e2dd2f289c1bce19ec1539437703d1",
+          "printed-plate-registration.mjs": "fad86e781cbe7a1cd35244c5fe4704985433a0deefa58ed61e78c900c2ac6b61",
+          "scan-gradient-fit.mjs": "0ebe345abfdfede6ffc8ea2e46db8a482eb821a8f724bfa80acd7b90315a891d"
+        },
+        "limits": {
+          "cornerRms": 0.35,
+          "cornerMax": 0.6
+        },
+        "policy": "Recover a known full-resolution raster warp against the same frozen scan templates, then compare the recovered matrix with baselinePose*inverse(knownWarp). Report every selected source and perturbation, including baseline/controlled rejections. The thresholds are declared before evaluating controls. These are numerical recovery controls, not an independent corpus or held-out printing claim."
+      },
+      "summary": {
+        "total": 231,
+        "completed": 231,
+        "passed": 231,
+        "baselineRejected": 0,
+        "controlledRejected": 0,
+        "recoveryFailed": 0,
+        "maxCornerError": 0.268871075573247,
+        "families": {
+          "normal-crown/Artifact": {
+            "count": 7,
+            "passed": 7,
+            "maxCornerError": 0.053665115035263826
+          },
+          "normal-crown/B": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.14781536348635405
+          },
+          "normal-crown/G": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.17155311144203456
+          },
+          "normal-crown/Gold": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.059368617251227294
+          },
+          "normal-crown/R": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.06292613194415386
+          },
+          "normal-crown/U": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.05259604609497127
+          },
+          "normal-crown/W": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.059950254557638596
+          },
+          "normal-plain/Artifact": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.04938154938763503
+          },
+          "normal-plain/B": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.08588929806825535
+          },
+          "normal-plain/G": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.08246582424837667
+          },
+          "normal-plain/Gold": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.10627257284837102
+          },
+          "normal-plain/Land": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.06732868758439974
+          },
+          "normal-plain/R": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.057245705617838274
+          },
+          "normal-plain/U": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.07318029633072747
+          },
+          "normal-plain/W": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.06478655613743549
+          },
+          "planeswalker": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.2551670826597647
+          },
+          "planeswalker-large": {
+            "count": 14,
+            "passed": 14,
+            "maxCornerError": 0.268871075573247
+          }
+        }
+      }
+    },
+    {
+      "kind": "confirmation",
+      "sha256": "8f1722d60adeac6d03e3ce13bbdc77fd0a09a122b989b80925e50abbde4b5230",
+      "inputHash": "3edaa9f767960dd53c9102e32d99e1457918e4bf14b177c4611fe049ceed8ea5",
+      "definition": {
+        "schema": 1,
+        "sourceGraphs": {
+          "affine": {
+            "hash": "c49caa64c7438e05dd26d25285dd4af3d6f8b2fe2c83d5b9e94da6f2d16e41c9",
+            "node": "v22.22.1",
+            "sources": [
+              ["edges.mjs", "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"],
+              [
+                "frame-patch-profiles.mjs",
+                "7e099207358744e063af6983c5867d6e96707eac76d3c670df9d8de34dacf083"
+              ],
+              ["metrics.mjs", "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"],
+              [
+                "modern-affine-fit.mjs",
+                "64a908de2921cb0a6edd2ee671adad4af9fab90a3efd7ee84e3d3c9c448bbc25"
+              ],
+              [
+                "native-frame-rgb-projection.mjs",
+                "3e421803a02bb30c80f0f70a3d827cac383968cc75bb4b72665ad5772b4faf5f"
+              ],
+              [
+                "pixels-pure.mjs",
+                "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              ],
+              [
+                "scan-gradient-fit.mjs",
+                "0ebe345abfdfede6ffc8ea2e46db8a482eb821a8f724bfa80acd7b90315a891d"
+              ],
+              [
+                "scan-transform.mjs",
+                "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+              ]
+            ]
+          },
+          "nativeFields": {
+            "hash": "6fb1e62ab587c8c071b703941e1424140b8b47a12bf26c5274ec65124407981e",
+            "node": "v22.22.1",
+            "sources": [
+              [
+                "modern-frame-policy.mjs",
+                "a6c04ca49987d4f2dc3c4fdbe2b312866ca296634e0e348cfc2ef02e2a451624"
+              ],
+              [
+                "modern-frame-value.mjs",
+                "726361bfd5615de8af63112f40af85b481bd6705832edc136e2b50152af7d575"
+              ],
+              [
+                "native-frame-patches.mjs",
+                "48436e0f987b1c56aefd5236e729778ef91e384b1a3e4fe72f2842f8d9c5dd30"
+              ],
+              [
+                "native-frame-rgb-projection.mjs",
+                "3e421803a02bb30c80f0f70a3d827cac383968cc75bb4b72665ad5772b4faf5f"
+              ],
+              [
+                "pixels-pure.mjs",
+                "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              ],
+              [
+                "scan-transform.mjs",
+                "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+              ]
+            ]
+          },
+          "coarse": {
+            "hash": "ff47fb5c78ac14531f7d88774715994841d2136f3e2f3dfa9cbb7a75cb86b6c5",
+            "node": "v22.22.1",
+            "sources": [
+              ["edges.mjs", "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"],
+              ["metrics.mjs", "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"],
+              [
+                "pixels-pure.mjs",
+                "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              ],
+              [
+                "printed-plate-registration.mjs",
+                "fad86e781cbe7a1cd35244c5fe4704985433a0deefa58ed61e78c900c2ac6b61"
+              ],
+              [
+                "scan-transform.mjs",
+                "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+              ]
+            ]
+          }
+        },
+        "graphToolHash": "6356e111869ad93ceec1940263e82db7108ba7cd6da2d75f619a23fe153cbccb",
+        "observationsHash": "c4012b9d8b890cf101f4d587355c1c4505120ece9118320e5a5ec3b3c9e71c49",
+        "normalizationHash": "7c90a70f6d969238efd6b6897cfbefd83f7f792e546fb75962d09054d571eaa5",
+        "templatesHash": "d1def05328dffdbda5783003d85486cf22778535c477c209510b00ce24d42952",
+        "controlsHash": "3edaa9f767960dd53c9102e32d99e1457918e4bf14b177c4611fe049ceed8ea5",
+        "toolHash": "d5fc2806413a7e71d1443089bc6a4f3d30c6afcf3bcec3b64fe0d641f9cc6ece",
+        "sources": {
+          "pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+          "modern-affine-fit.mjs": "64a908de2921cb0a6edd2ee671adad4af9fab90a3efd7ee84e3d3c9c448bbc25",
+          "frame-patch-profiles.mjs": "7e099207358744e063af6983c5867d6e96707eac76d3c670df9d8de34dacf083",
+          "native-frame-patches.mjs": "48436e0f987b1c56aefd5236e729778ef91e384b1a3e4fe72f2842f8d9c5dd30",
+          "modern-frame-value.mjs": "726361bfd5615de8af63112f40af85b481bd6705832edc136e2b50152af7d575",
+          "modern-frame-policy.mjs": "a6c04ca49987d4f2dc3c4fdbe2b312866ca296634e0e348cfc2ef02e2a451624",
+          "native-frame-rgb-projection.mjs": "3e421803a02bb30c80f0f70a3d827cac383968cc75bb4b72665ad5772b4faf5f",
+          "scan-transform.mjs": "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6",
+          "scan-boundary-profiles.mjs": "86296ce0f78f9b8699e5d364c37c0a18d6e2dd2f289c1bce19ec1539437703d1",
+          "printed-plate-registration.mjs": "fad86e781cbe7a1cd35244c5fe4704985433a0deefa58ed61e78c900c2ac6b61",
+          "scan-gradient-fit.mjs": "0ebe345abfdfede6ffc8ea2e46db8a482eb821a8f724bfa80acd7b90315a891d"
+        },
+        "limits": {
+          "cornerRms": 0.35,
+          "cornerMax": 0.6
+        },
+        "policy": "Recover a known full-resolution raster warp against the same frozen scan templates, then compare the recovered matrix with baselinePose*inverse(knownWarp). Report every selected source and perturbation, including baseline/controlled rejections. The thresholds are declared before evaluating controls. These are numerical recovery controls, not an independent corpus or held-out printing claim."
+      },
+      "summary": {
+        "total": 891,
+        "completed": 891,
+        "passed": 891,
+        "baselineRejected": 0,
+        "controlledRejected": 0,
+        "recoveryFailed": 0,
+        "maxCornerError": 0.5473544229346258,
+        "families": {
+          "normal-crown/Artifact": {
+            "count": 3,
+            "passed": 3,
+            "maxCornerError": 0.04100374515805112
+          },
+          "normal-crown/B": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.048906510578798315
+          },
+          "normal-crown/G": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.047876316015436404
+          },
+          "normal-crown/Gold": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.06627921833351885
+          },
+          "normal-crown/R": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.04168424617833369
+          },
+          "normal-crown/U": {
+            "count": 9,
+            "passed": 9,
+            "maxCornerError": 0.05684196800260022
+          },
+          "normal-crown/W": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.04422215082653999
+          },
+          "normal-plain/Artifact": {
+            "count": 48,
+            "passed": 48,
+            "maxCornerError": 0.07060353009968352
+          },
+          "normal-plain/B": {
+            "count": 120,
+            "passed": 120,
+            "maxCornerError": 0.37465488124031454
+          },
+          "normal-plain/G": {
+            "count": 123,
+            "passed": 123,
+            "maxCornerError": 0.5473544229346258
+          },
+          "normal-plain/Gold": {
+            "count": 30,
+            "passed": 30,
+            "maxCornerError": 0.20004241990579832
+          },
+          "normal-plain/Land": {
+            "count": 99,
+            "passed": 99,
+            "maxCornerError": 0.31338484858841054
+          },
+          "normal-plain/R": {
+            "count": 126,
+            "passed": 126,
+            "maxCornerError": 0.07371574397511502
+          },
+          "normal-plain/U": {
+            "count": 123,
+            "passed": 123,
+            "maxCornerError": 0.06798580805676847
+          },
+          "normal-plain/W": {
+            "count": 126,
+            "passed": 126,
+            "maxCornerError": 0.05060628541624901
+          },
+          "planeswalker": {
+            "count": 30,
+            "passed": 30,
+            "maxCornerError": 0.4762295571219334
+          },
+          "planeswalker-large": {
+            "count": 12,
+            "passed": 12,
+            "maxCornerError": 0.14858655066690232
+          }
+        }
+      }
+    },
+    {
+      "kind": "value",
+      "sha256": "3e8318265a7b632f123e9ecf5e598a9fbc0138e35b0f23ee062369ab94d53400",
+      "inputHash": "0c31902ce52e0f4230b1e0b8da0bebbf6d802ece3f46f375a3511c965cde598c",
+      "definition": {
+        "schema": 1,
+        "sourceGraphs": {
+          "affine": {
+            "hash": "c49caa64c7438e05dd26d25285dd4af3d6f8b2fe2c83d5b9e94da6f2d16e41c9",
+            "node": "v22.22.1",
+            "sources": [
+              ["edges.mjs", "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"],
+              [
+                "frame-patch-profiles.mjs",
+                "7e099207358744e063af6983c5867d6e96707eac76d3c670df9d8de34dacf083"
+              ],
+              ["metrics.mjs", "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"],
+              [
+                "modern-affine-fit.mjs",
+                "64a908de2921cb0a6edd2ee671adad4af9fab90a3efd7ee84e3d3c9c448bbc25"
+              ],
+              [
+                "native-frame-rgb-projection.mjs",
+                "3e421803a02bb30c80f0f70a3d827cac383968cc75bb4b72665ad5772b4faf5f"
+              ],
+              [
+                "pixels-pure.mjs",
+                "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              ],
+              [
+                "scan-gradient-fit.mjs",
+                "0ebe345abfdfede6ffc8ea2e46db8a482eb821a8f724bfa80acd7b90315a891d"
+              ],
+              [
+                "scan-transform.mjs",
+                "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+              ]
+            ]
+          },
+          "nativeFields": {
+            "hash": "6fb1e62ab587c8c071b703941e1424140b8b47a12bf26c5274ec65124407981e",
+            "node": "v22.22.1",
+            "sources": [
+              [
+                "modern-frame-policy.mjs",
+                "a6c04ca49987d4f2dc3c4fdbe2b312866ca296634e0e348cfc2ef02e2a451624"
+              ],
+              [
+                "modern-frame-value.mjs",
+                "726361bfd5615de8af63112f40af85b481bd6705832edc136e2b50152af7d575"
+              ],
+              [
+                "native-frame-patches.mjs",
+                "48436e0f987b1c56aefd5236e729778ef91e384b1a3e4fe72f2842f8d9c5dd30"
+              ],
+              [
+                "native-frame-rgb-projection.mjs",
+                "3e421803a02bb30c80f0f70a3d827cac383968cc75bb4b72665ad5772b4faf5f"
+              ],
+              [
+                "pixels-pure.mjs",
+                "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              ],
+              [
+                "scan-transform.mjs",
+                "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+              ]
+            ]
+          },
+          "coarse": {
+            "hash": "ff47fb5c78ac14531f7d88774715994841d2136f3e2f3dfa9cbb7a75cb86b6c5",
+            "node": "v22.22.1",
+            "sources": [
+              ["edges.mjs", "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"],
+              ["metrics.mjs", "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"],
+              [
+                "pixels-pure.mjs",
+                "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+              ],
+              [
+                "printed-plate-registration.mjs",
+                "fad86e781cbe7a1cd35244c5fe4704985433a0deefa58ed61e78c900c2ac6b61"
+              ],
+              [
+                "scan-transform.mjs",
+                "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+              ]
+            ]
+          }
+        },
+        "graphToolHash": "6356e111869ad93ceec1940263e82db7108ba7cd6da2d75f619a23fe153cbccb",
+        "observationsHash": "c4012b9d8b890cf101f4d587355c1c4505120ece9118320e5a5ec3b3c9e71c49",
+        "normalizationHash": "7c90a70f6d969238efd6b6897cfbefd83f7f792e546fb75962d09054d571eaa5",
+        "templatesHash": "d1def05328dffdbda5783003d85486cf22778535c477c209510b00ce24d42952",
+        "controlsHash": "0c31902ce52e0f4230b1e0b8da0bebbf6d802ece3f46f375a3511c965cde598c",
+        "toolHash": "d5fc2806413a7e71d1443089bc6a4f3d30c6afcf3bcec3b64fe0d641f9cc6ece",
+        "sources": {
+          "pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+          "modern-affine-fit.mjs": "64a908de2921cb0a6edd2ee671adad4af9fab90a3efd7ee84e3d3c9c448bbc25",
+          "frame-patch-profiles.mjs": "7e099207358744e063af6983c5867d6e96707eac76d3c670df9d8de34dacf083",
+          "native-frame-patches.mjs": "48436e0f987b1c56aefd5236e729778ef91e384b1a3e4fe72f2842f8d9c5dd30",
+          "modern-frame-value.mjs": "726361bfd5615de8af63112f40af85b481bd6705832edc136e2b50152af7d575",
+          "modern-frame-policy.mjs": "a6c04ca49987d4f2dc3c4fdbe2b312866ca296634e0e348cfc2ef02e2a451624",
+          "native-frame-rgb-projection.mjs": "3e421803a02bb30c80f0f70a3d827cac383968cc75bb4b72665ad5772b4faf5f",
+          "scan-transform.mjs": "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6",
+          "scan-boundary-profiles.mjs": "86296ce0f78f9b8699e5d364c37c0a18d6e2dd2f289c1bce19ec1539437703d1",
+          "printed-plate-registration.mjs": "fad86e781cbe7a1cd35244c5fe4704985433a0deefa58ed61e78c900c2ac6b61",
+          "scan-gradient-fit.mjs": "0ebe345abfdfede6ffc8ea2e46db8a482eb821a8f724bfa80acd7b90315a891d"
+        },
+        "limits": {
+          "cornerRms": 0.35,
+          "cornerMax": 0.6
+        },
+        "policy": "Recover a known full-resolution raster warp against the same frozen scan templates, then compare the recovered matrix with baselinePose*inverse(knownWarp). Report every selected source and perturbation, including baseline/controlled rejections. The thresholds are declared before evaluating controls. These are numerical recovery controls, not an independent corpus or held-out printing claim."
+      },
+      "summary": {
+        "total": 594,
+        "completed": 594,
+        "passed": 594,
+        "baselineRejected": 0,
+        "controlledRejected": 0,
+        "recoveryFailed": 0,
+        "maxCornerError": 0.2783852683370198,
+        "families": {
+          "normal-crown/Artifact": {
+            "count": 2,
+            "passed": 2,
+            "maxCornerError": 0.04143103337325701
+          },
+          "normal-crown/B": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.07174759067324783
+          },
+          "normal-crown/G": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.0642300369291517
+          },
+          "normal-crown/Gold": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.07570846147883553
+          },
+          "normal-crown/R": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.04423474852264392
+          },
+          "normal-crown/U": {
+            "count": 6,
+            "passed": 6,
+            "maxCornerError": 0.05050061417751853
+          },
+          "normal-crown/W": {
+            "count": 4,
+            "passed": 4,
+            "maxCornerError": 0.04737106712334561
+          },
+          "normal-plain/Artifact": {
+            "count": 32,
+            "passed": 32,
+            "maxCornerError": 0.10386123072353944
+          },
+          "normal-plain/B": {
+            "count": 80,
+            "passed": 80,
+            "maxCornerError": 0.1374161405718451
+          },
+          "normal-plain/G": {
+            "count": 82,
+            "passed": 82,
+            "maxCornerError": 0.14112183940268536
+          },
+          "normal-plain/Gold": {
+            "count": 20,
+            "passed": 20,
+            "maxCornerError": 0.12565233801029074
+          },
+          "normal-plain/Land": {
+            "count": 66,
+            "passed": 66,
+            "maxCornerError": 0.17226466800043824
+          },
+          "normal-plain/R": {
+            "count": 84,
+            "passed": 84,
+            "maxCornerError": 0.09366785921042901
+          },
+          "normal-plain/U": {
+            "count": 82,
+            "passed": 82,
+            "maxCornerError": 0.12731151545483943
+          },
+          "normal-plain/W": {
+            "count": 84,
+            "passed": 84,
+            "maxCornerError": 0.07230202170441982
+          },
+          "planeswalker": {
+            "count": 20,
+            "passed": 20,
+            "maxCornerError": 0.2783852683370198
+          },
+          "planeswalker-large": {
+            "count": 8,
+            "passed": 8,
+            "maxCornerError": 0.12072957787179098
+          }
+        }
+      }
+    }
+  ],
+  "visual": {
+    "reviewedAt": "2026-10-23T05:54:49.966039+00:00",
+    "finding": "Inspected all eleven context sheets covering all297 scan boundaries. Physical outer rails and lower border remain visible. Printed content visible in the wider context crops stays outside the previously reviewed native matching footprints: bottom slots avoid the center stamp, lower legal line and upper flavor text. PW source illustrations crossing frame interiors remain source-detail residuals, not renderer-based normalization targets. Existing source-window reviews and native outside-mask byte-isolation checks remain required.",
+    "pages": [
+      {
+        "file": "page-01.jpg",
+        "sha256": "cb91bd4b9cf663b73ab3b76a10694fa0bd27897f87f1e6c3d4bca5215a167586"
+      },
+      {
+        "file": "page-02.jpg",
+        "sha256": "12685c6ed85a3eddb64b359a38b4177de1324860e562a8e88070e28736e70704"
+      },
+      {
+        "file": "page-03.jpg",
+        "sha256": "e2d3a749e7306281971336901c6654c12c42802e76ab3a524224bd9900a542f3"
+      },
+      {
+        "file": "page-04.jpg",
+        "sha256": "3f2140b56784c01fc541eb93ece2a9dcfc60a28921baff2c222c1034cc9b1481"
+      },
+      {
+        "file": "page-05.jpg",
+        "sha256": "27860ffa6292fc7d013c2139a6228110cc157e0f3bb37a5d68a691d7a2ffc7a2"
+      },
+      {
+        "file": "page-06.jpg",
+        "sha256": "23c1961cff202a2ee7bb0c1998805ae6f9b68a64ae127e08b686bfa927e0110e"
+      },
+      {
+        "file": "page-07.jpg",
+        "sha256": "48156a66b9fca1baa930c23ed70d149468acebcbd4c71b103fb00700c0dc865f"
+      },
+      {
+        "file": "page-08.jpg",
+        "sha256": "e8fb0d3130210991293782eb7d349fbd9ed1729bb316065843b7ed143e060950"
+      },
+      {
+        "file": "page-09.jpg",
+        "sha256": "fc47490f1e569821c20bc15afd50b8c22bc5f760ec59228aa9ed4ec626491274"
+      },
+      {
+        "file": "page-10.jpg",
+        "sha256": "6e7ae4d80be6a24fd91889026d7fb7b4c5a3e5c255eea9c34bd22b129b76da90"
+      },
+      {
+        "file": "page-11.jpg",
+        "sha256": "7c2c169100127c6fca4a22700072608440a1fc42a5186033d327b2554651b9a2"
+      }
+    ]
+  },
+  "summary": {
+    "printings": 297,
+    "nonfoil": 292,
+    "foilOnly": 5,
+    "accepted": 297,
+    "knownControls": 231,
+    "confirmationControls": 891,
+    "valueControls": 594,
+    "allControlsPassed": 1716,
+    "maxRecoveryError": 0.5473544229346258,
+    "frameFamilies": 17
+  },
+  "evidence": {
+    "file": "normalization-native-review.json.gz",
+    "sha256": "4348e4f4abc30ab617385e6155f5bc1063b12de4e18bb881fadd488a7de71736",
+    "contentSha256": "405661d4458829fdddb790d259a7027d442272f6cc5e10a205cf4fb2ee3adbda"
+  },
+  "limitations": "Comparison-only scan poses. Same development scans and population templates; no held-out-name transfer claim. Fit uses two disjoint strip partitions and certification uses the third; validation and certification share that held partition. These controls certify numerical recovery and physical boundary support, not renderer geometry, text alignment, frame color, foil pigment or complete-set fidelity."
+}

@@ -1,4 +1,8 @@
 import {
+  m21NormalizationEvidence,
+  applyM21Normalization,
+} from './calibration-m21-normalization.mjs';
+import {
   unlimitedCalibrationEvidence,
   applyUnlimitedEvidence,
 } from './calibration-unlimited-current.mjs';
@@ -103,6 +107,7 @@ const earlyGuards = Object.fromEntries(
   ),
 );
 const unlimitedEvidence = await unlimitedCalibrationEvidence();
+const m21Normalization = await m21NormalizationEvidence();
 const sets = [];
 try {
   await server.ssrLoadModule('/games/magic/src/data/eager.ts');
@@ -392,6 +397,7 @@ try {
           applyM21WhiteDefault(g, source, m21White, m21WhiteGuardsMatch);
           applyM21OriginalWording(g, m21Wording, m21WordingGuardsMatch);
           applyM21RedColor(g, source, m21Red, m21RedGuardsMatch);
+          applyM21Normalization(g, m21Normalization);
         }
         applyEarlyOriginalWording(g, earlyWording, earlyWordingGuardsMatch);
         g.tasks.release = {

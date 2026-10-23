@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "scope": "Only scan normalization may use a foil-only physical-boundary census; it must explicitly exclude pigment. Every other task retains the unchanged nonfoil rule. This receipt preserves historical nonfoil proof dependencies; it does not certify a new renderer or new pigment data.",
+  "file": "games/magic/tools/accuracy/calibration-census.mjs",
+  "before": "4e449bab84c6dddcee96caa0dd2b3e1c6daab5353e10d1f5be94c3501d147d48",
+  "after": "b6ba2fa4cb1eefb0471e6f3e4e48d645e5c53d630461f4d4fec7a490da3c5495",
+  "reverseEdits": [
+    {
+      "start": 8,
+      "count": 9,
+      "lines": [
+        "  assert.equal(\n",
+        "    group.references.nonfoil,\n",
+        "    group.printings,\n",
+        "    'Foil-only cards cannot certify a nonfoil census',\n",
+        "  );\n"
+      ]
+    },
+    {
+      "start": 4,
+      "count": 1,
+      "lines": ["export function checkSourceCensus(group, proof) {\n"]
+    }
+  ]
+}

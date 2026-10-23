@@ -620,3 +620,38 @@ after a known-palette blur test exposed estimator bias. Circle geometry and
 rendered paper medians are preserved. The ledger remains partial; type/body
 layout, generic numeral shape, text/frame metric separation and complete-set
 certification remain open. These are local 0.4.20 diagnostics, not hosted scores.
+
+## M21 scan normalization census
+
+The [scan-only certificate](fixtures/accuracy/m21/normalization-native-review.json)
+covers all 297 ordinary printings in 17 physical frame families. All 1,716
+known-raster recovery controls pass the predeclared 0.35-pixel RMS and 0.6-pixel
+maximum corner-error limits in the 488×680 comparison space; the largest measured
+corner error is 0.548 pixels. These controls include scale, translation, rotation,
+shear and brightness perturbations. They reuse development scans and population
+templates, so this is a complete source census rather than an independent-name
+holdout.
+
+Two disjoint strip partitions fit each comparison-only affine transform; a third
+partition checks boundary support. Validation and certification use that same
+held partition and must not be counted as separate tests. The full scan-boundary
+contact review covers all 297 printings. The certificate retains every transform,
+reference identity, control result, method identity and source-window review.
+The compressed evidence contains measurements and metadata, without scan pixels.
+
+Reproduce the certificate from a cached study with:
+
+```sh
+node games/magic/tools/accuracy/modern-normalization-certify.mjs \
+  observations.json templates.json normalization.json \
+  known/results.json confirmation/results.json value/results.json \
+  boundary-review/review.json normalization-native-review.json
+```
+
+The tool checks source/window identities, native field bytes, complete printing
+membership, declared control limits and recovered corner errors before writing
+the receipt. The five foil-only scans can validate physical boundary alignment;
+they remain excluded from nonfoil pigment calibration. This narrow normalization
+eligibility does not approve foil references for color work or change Unlimited's
+nonfoil certification. Frame geometry, typography, color, full-card outliers and
+release status remain separate checks.

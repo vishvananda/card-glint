@@ -1,3 +1,4 @@
+import { preNormalizationCensusSource } from './normalization-census-ancestry.mjs';
 import { modernDefaultAncestry, modernDefaultSetAffected } from './modern-default-ancestry.mjs';
 import { m21StyleProfileSource } from './m21-style-ancestry.mjs';
 import { artistReviewSource } from './artist-review-ancestry.mjs';
@@ -94,6 +95,7 @@ export async function calibrationReport(ledger) {
                 guardKey,
                 new Set([
                   hash(bytes),
+                  hash(await preNormalizationCensusSource(file, bytes)),
                   hash(modern.bytes),
                   hash(early),
                   hash(scoped),

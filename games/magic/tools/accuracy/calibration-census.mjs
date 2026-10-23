@@ -2,15 +2,19 @@ import assert from 'node:assert/strict';
 const digest = /^[a-f0-9]{64}$/;
 /** A finite printing family can contain fewer than three names. Certify its
  * full observed population without claiming an independent holdout or transfer. */
-export function checkSourceCensus(group, proof) {
+export function checkSourceCensus(group, proof, task) {
   const census = proof.sourceCensus ?? group.sourceCensus;
   assert(census && census.heldOut === false, 'A source census must disclose reused development');
   assert.equal(census.scope, 'all-ordinary-printings-in-variant');
-  assert.equal(
-    group.references.nonfoil,
-    group.printings,
-    'Foil-only cards cannot certify a nonfoil census',
-  );
+  if (task === 'normalization' && group.references.nonfoil !== group.printings) {
+    assert.equal(census.referenceUse, 'physical-boundary-only');
+    assert.equal(census.foilPigmentExcluded, true);
+  } else
+    assert.equal(
+      group.references.nonfoil,
+      group.printings,
+      'Foil-only cards cannot certify a nonfoil census',
+    );
   assert(Array.isArray(census.names) && census.names.length > 0);
   assert(census.names.every((n) => typeof n === 'string' && n.trim()));
   assert.equal(new Set(census.names).size, census.names.length);
