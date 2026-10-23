@@ -1,0 +1,179 @@
+{
+  "schema": 1,
+  "set": "8ed",
+  "status": "validated-nonfoil-scan-normalization",
+  "reviewedAt": "2026-10-23T21:47:49.434486+00:00",
+  "definition": {
+    "normalizationHash": "df4b4fda94f7ecff32223ab16f3ecd88883afee9d9bc00bdabda447179d0800e",
+    "controlScoresHash": "39327d7cf38bbb40d078d56e3a369963ab8b8bb18b865c502a0cbef520a22d83",
+    "inputHash": "991398ed7ca1851cc8a89d7d43f7914e4e1c4915144fe7459fb260f931558548",
+    "controlInputHash": "61287d2adc32392e2fb93e416036a086d66a78b88e11b81f7331890325cee31f",
+    "templateHash": "579435d1ca4c923813b4f018e8d718502a0b2d50f4128fd3c68863a9c680fe42",
+    "methodGraph": {
+      "hash": "3ac0ed6a5404e91e70cf3bccfc7afa5f4412afd1f701e4cb10a33484b34280d1",
+      "node": "v22.22.1",
+      "sources": [
+        ["edges.mjs", "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"],
+        [
+          "eighth-scan-registration.mjs",
+          "3ebe9290b09083a4d3f391ad4066ab947cbba2d3360d05003da6f5784e979b75"
+        ],
+        ["metrics.mjs", "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"],
+        [
+          "native-scan-frame-anchors.mjs",
+          "11ef4f6da6ddb285a6687e0c63e35b67862beedf81fa128d9ca88a943f86ad69"
+        ],
+        ["pixels-pure.mjs", "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"],
+        [
+          "scan-affine-anchor-fit.mjs",
+          "8d4742b1965e8c88d41f7201da1e27855f78acd8f4db08403274a1072a9304bb"
+        ],
+        [
+          "scan-frame-anchors.mjs",
+          "f2f116305f732ecff3b498ae48d5ae93576e0a57b361594fa5d025dd2fd405f7"
+        ],
+        ["scan-frame-fit.mjs", "6c18bbb80ce1118fd7df348a9af723a622dc89cc101f22518d5282fefa110501"],
+        ["scan-transform.mjs", "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"]
+      ]
+    },
+    "decoderLockHash": "fcfc47491eb5716e3b1c4254d41c234a4a867a49345d040a4abe2fd9ddb77035",
+    "normalizationToolHash": "9c30adc92f15e0bc61737735861e02a70ce68d880485c8f3c1c8a3366d015b3b",
+    "controlToolHash": "77dfae8c86806cea7d1a82650cb4ec57e7a2ec0665c955d0f46ebc750031942e",
+    "controlLimits": {
+      "cornerRms": 0.35,
+      "cornerMax": 0.6
+    },
+    "spatialControl": {
+      "replacedCentralRect": [38, 35, 412, 615],
+      "nativePixelCenterCoordinates": true,
+      "wordingAndArtExcluded": true
+    },
+    "referenceIdentity": "e1c5d5d1751cb1188f580bdbcb2466a9aaac6756741d590532a6ed28dcd24e0e",
+    "controlGenerator": {
+      "schema": 1,
+      "set": "8ed",
+      "inputHash": "61287d2adc32392e2fb93e416036a086d66a78b88e11b81f7331890325cee31f",
+      "normalizationHash": "74d53fe13b625ab6f1ab5000f417a7c12e6925966d5d22113736d4b1391b797c",
+      "selection": "All initially rejected references plus UUID-first two distinct card identities per material. Selection is fixed before control evaluation; no acceptance-score filtering.",
+      "selected": [
+        "0063ed19-494b-4199-9120-d479bfcb625a",
+        "006c18cf-b6d2-4fba-b9da-c9762fb3885b",
+        "00cf2252-5ead-47df-8150-06c81dc47584",
+        "013a1d59-af2a-4ae1-826e-88bd77c7ce5d",
+        "013d65c4-f471-4e05-84fd-cb83393bee49",
+        "01d56cde-e186-41e7-bcb2-80736a989678",
+        "025b3156-975d-4f64-b19c-172cb21266c5",
+        "03220cab-fc78-4323-bd34-b8dbebe35597",
+        "066b5162-8724-4df3-a3d5-274036d0049d",
+        "078e44c6-90bb-4294-9e0a-6194764af00c",
+        "08147258-2319-49d5-bfb1-cc4f817d9c72",
+        "0837dd6a-d413-40a4-a684-ec637a4f3d4a",
+        "0b1e748b-c836-45f1-96af-ced0cc5aed9f",
+        "1129d16c-de2b-4d21-a0fd-b63e4ba95d8d",
+        "34b5709c-d6bb-4866-a613-cbe93a918caa",
+        "5eedb94c-058e-4c3a-96cf-e6624c03d26e",
+        "8c78d392-9f2f-4241-9a10-6ac9b1e86154",
+        "9513c206-b578-4973-93cc-077e5a6658b0"
+      ],
+      "cases": [
+        {
+          "label": "identity",
+          "sx": 1,
+          "sy": 1,
+          "tx": 0,
+          "ty": 0,
+          "rotation": 0,
+          "shear": 0
+        },
+        {
+          "label": "translation",
+          "sx": 1,
+          "sy": 1,
+          "tx": 0.8,
+          "ty": -0.6,
+          "rotation": 0,
+          "shear": 0
+        },
+        {
+          "label": "uniform",
+          "sx": 1.0015,
+          "sy": 1.0015,
+          "tx": 0,
+          "ty": 0,
+          "rotation": 0,
+          "shear": 0
+        },
+        {
+          "label": "rotation",
+          "sx": 1,
+          "sy": 1,
+          "tx": 0,
+          "ty": 0,
+          "rotation": 0.08,
+          "shear": 0
+        },
+        {
+          "label": "shear",
+          "sx": 1,
+          "sy": 1,
+          "tx": 0,
+          "ty": 0,
+          "rotation": 0,
+          "shear": 0.08
+        },
+        {
+          "label": "axis-scale",
+          "sx": 1.0015,
+          "sy": 0.9985,
+          "tx": 0,
+          "ty": 0,
+          "rotation": 0,
+          "shear": 0
+        },
+        {
+          "label": "axis-scale-reverse",
+          "sx": 0.999,
+          "sy": 1.001,
+          "tx": 0,
+          "ty": 0,
+          "rotation": 0,
+          "shear": 0
+        },
+        {
+          "label": "combined",
+          "sx": 1.001,
+          "sy": 0.999,
+          "tx": 0.6,
+          "ty": -0.4,
+          "rotation": 0.06,
+          "shear": -0.04
+        }
+      ],
+      "limits": {
+        "cornerRms": 0.35,
+        "cornerMax": 0.6
+      },
+      "toolHash": "d355618b0a4649edabc1ff2f96972b40dfe5049f44d1f8f072981a95c21c0e1b",
+      "nativeWarpHelperHash": "4c39b9c9de5ae4196480cbfe7c8d79c348ad71274d043ebdb7a9c9c4be728005"
+    },
+    "controlManifestHash": "60d5fc685b17b46518f0341f7f74e5e40080fc8d126d312634b4254695836d74"
+  },
+  "summary": {
+    "printings": 357,
+    "accepted": 357,
+    "centralContentIsolationPassed": 357,
+    "controlSources": 18,
+    "knownRasterControls": 144,
+    "passedControls": 144,
+    "maximumKnownCornerError": 0.2886816788698763,
+    "maximumValidationRms": 0.34969778297432996,
+    "maximumSideP90": 1.104235931957965
+  },
+  "evidence": {
+    "file": "native-normalization-review.json.gz",
+    "sha256": "0e4c59b60de9f0a673a8f9672415c698696f1ebfc2f63ce6654c9aee981383dd",
+    "contentSha256": "dba287760471c428e2c2edcb60e6ca7a9485b781f072b544c0ef2976046f9011"
+  },
+  "scope": "Complete 357-printing nonfoil Eighth census. Every source uses the same native-resolution outer-boundary sampler and fixed six-parameter affine fit. Fit and validation strips are disjoint. The complete central printed area is replaced without changing any fit, including artwork, rules, headings, artist and legal text. No rendered pixels enter registration.",
+  "limitations": "Comparison-only poses, never renderer defaults. Same development references and frozen physical scan targets; no held-out-printing claim. Known-raster controls certify numerical recovery, not layout, typography, pigment, foil appearance or complete-set accuracy. All 350 foil-only references remain outside the nonfoil color/score census."
+}

@@ -50,17 +50,25 @@ node games/magic/tools/build-printing-corrections.mjs
 node games/magic/tools/build-set-data.mjs
 node games/magic/tools/accuracy/printing-calibration-inputs.mjs \
   8ed /path/to/study/inputs.json --fetch-assets
-node games/magic/tools/accuracy/modern-calibration-native.mjs \
+node games/magic/tools/accuracy/printing-calibration-native.mjs \
   /path/to/study/inputs.json /path/to/study/native
 node games/magic/tools/accuracy/printing-calibration-normalize.mjs \
   /path/to/study/inputs.json \
   games/magic/fixtures/accuracy/full-set-scan-templates/8ed.json \
-  /path/to/study/normalization
+  /path/to/study/normalization --eighth-native-affine
 ```
 
 The input builder rejects nonempty Oracle body fallbacks. It records unresolved
 printed types for scan review. Registration uses frozen physical scan targets and
-disjoint fit/validation strips, without consulting renderer pixels. The separate
+disjoint fit/validation strips, without consulting renderer pixels.
+The native sampler and fixed affine model accept all 357 nonfoil references.
+Replacing the central printed content leaves every fit unchanged; 144 known
+full-resolution raster-warp controls pass the fixed corner-error limits. The
+[normalization receipt](../fixtures/accuracy/8ed/native-normalization-review.json)
+records exact sources, numerical bounds and limitations. These are comparison
+poses, never per-card renderer adjustments.
+
+The separate
 `printing-calibration-score.mjs` takes a reviewed metric module explicitly;
 rejected poses remain listed with no numeric score. Do not mix metric identities
 when comparing runs or importing scores into a host.
@@ -75,3 +83,9 @@ cross-check matching white-border and black-border sets. Exact independent set
 profiles must win over inherited defaults. Transfer only values measured for the
 same frame source and layout; keep outer-stock colors separate, and do not treat
 inherited values as measurements of the receiving set.
+
+Native heading studies use an explicit, source-bound parameter file passed as
+the third argument to `printing-calibration-native.mjs`. A Vite study plugin
+applies the proposed size, width and position before the production painter
+measures the text. Zero-delta replays must match the unmodified capture. Study
+hooks are development tools and are absent from the shipped renderer.
