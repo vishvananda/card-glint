@@ -13,7 +13,11 @@
           "name": "Ugin, the Spirit Dragon",
           "number": "1"
         },
-        { "id": "98c85699-2daf-4e87-a3be-465d02bd64bb", "name": "Basri Ket", "number": "7" },
+        {
+          "id": "98c85699-2daf-4e87-a3be-465d02bd64bb",
+          "name": "Basri Ket",
+          "number": "7"
+        },
         {
           "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
           "name": "Garruk, Unleashed",
@@ -61,14 +65,14 @@
       "component": "rules/flavor",
       "status": "shared-fractional-fit-adopted-with-residuals",
       "scope": "All268 ordinary Original printing fields;187 improve,81 regress. Shared line limit prevents added wrapping; no per-card exception.",
-      "review": "Native adoption reproduces the independent frozen-source proposal on all297 faces and etchings. Original and Oracle independently fit their own wording with matching precise measure/paint states. Significant residuals include Goremand, Sanctum of Shattered Heights, Scoured Barrens and Rousing Read. Finishing Blow and Witch’s Cauldron still require the narrower short-paragraph/flavor policy review; their extra wraps are not claimed fixed.",
+      "review": "Native adoption reproduces the independent frozen-source proposal on all297 faces and etchings. Original and Oracle independently fit their own wording with matching precise measure/paint states. Significant residuals include Goremand, Sanctum of Shattered Heights, Scoured Barrens and Rousing Read. Finishing Blow and Witch\u2019s Cauldron still require the narrower short-paragraph/flavor policy review; their extra wraps are not claimed fixed.",
       "evidence": "games/magic/fixtures/accuracy/m21/typography-native-review.json"
     },
     {
       "id": "colored-artifact-paper-palette",
       "component": "paperColor",
       "status": "shared-palette-fit-adopted",
-      "scope": "All three ordinary colored artifacts in M21: Idol of Endurance, Malefic Scythe and Witch’s Cauldron.",
+      "scope": "All three ordinary colored artifacts in M21: Idol of Endurance, Malefic Scythe and Witch\u2019s Cauldron.",
       "review": "Nine native paper/name/type fields improve. The artifact bitmap, metal surround, source-local masks and pinlines are preserved. Only W/B have directly measured ordinary colored artifacts; U/R/G paper remains unchanged and unmeasured. One white and two black printings do not provide an independent white-card holdout.",
       "evidence": "games/magic/fixtures/accuracy/m21/artifact-paper-native-review.json"
     },
@@ -76,7 +80,7 @@
       "id": "ordinary-power-toughness",
       "component": "stats",
       "status": "shared-font-fit-adopted-with-residuals",
-      "scope": "All148 ordinary printed P/T fields, including Kinetic Augur’s */4.",
+      "scope": "All148 ordinary printed P/T fields, including Kinetic Augur\u2019s */4.",
       "review": "Keep existing font and anchor, use precise metrics at.97 size.127 improve,21 regress; all regressions are disclosed in the native receipt. The2016 font alternative is not promoted.",
       "evidence": "games/magic/fixtures/accuracy/m21/typography-native-review.json"
     },
@@ -107,10 +111,11 @@
     {
       "id": "planeswalker-outer-stock",
       "component": "blackLevels/outerStock",
-      "status": "confirmed-gap-auto-policy-proposal-needs-composited-color-review",
+      "status": "resolved-production-native-verified",
       "scope": "All14 M21 planeswalkers; nine nonfoil measured stock references and five foil-only render controls.",
-      "review": "Current surrounds use RGB9/8/6 while the nonfoil reference edges and283 other nonfoil cards use22/19/14. Existing auto policy produces22/19/14 with identical silhouette alpha and etching, but also affects transparent frame/paper and stamp-mount pixels. Revalidate those composited colors before making it the default; interior ink remains separate.",
-      "evidence": "games/magic/fixtures/accuracy/m21/outer-stock-native-review.json"
+      "review": "The shared stock and stamp-mount policy now uses RGB22/19/14. All292 nonfoil edge medians match;14 walker surrounds and67 additional stamp mounts changed. All297 alpha fields and etchings remain exact. Fixed paper/frame/name diagnostics disclose small translucent-layer color tradeoffs. Full native output now equals named-M21 output for297 cards. Interior ink remains separate.",
+      "evidence": "games/magic/fixtures/accuracy/m21/stock-native-review.json",
+      "historicalEvidence": "games/magic/fixtures/accuracy/m21/outer-stock-native-review.json"
     }
   ]
 }

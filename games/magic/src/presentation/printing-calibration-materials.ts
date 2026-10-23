@@ -32,30 +32,47 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
   const explicitProfile = typeof choice === 'object';
   if (explicitProfile && !supportsModernCalibration(face))
     throw Error('M21 calibration requires a modern frame.');
+  const style = modernPrintingProfile(original);
+  const independent = style?.inheritedFrom
+    ? independentModernComponentMaterials(original)
+    : undefined;
   const plate = framePlate(original);
   const ordinary =
     original.colorCalibration === 'set-hsb-v1' ? modernOrdinaryPlates(original) : undefined;
+  // The backing is part of the shared style too. Opaque ordinary plates
+  // previously concealed the raw darker fill; translucent component/PW frames
+  // expose it. Independent source-bound stock still takes precedence below.
+  const styleStock =
+    original.colorCalibration === 'set-hsb-v1' &&
+    style &&
+    (original.borderColor ?? 'black') === 'black'
+      ? stock
+      : undefined;
+  const knownStock =
+    choice === 'source' || ordinary ? undefined : exact.calibratedPrintingStock(original);
   const measuredStock =
     choice === 'source'
       ? undefined
       : ((plate ? planarCalibratedStock(original, plate.frame) : undefined) ??
-        (ordinary ? stock : exact.calibratedPrintingStock(original)));
+        (ordinary ? stock : (knownStock ?? styleStock)));
   const measured = choice === 'source' ? {} : exact.calibratedFrameMaterials(original);
-  // Selecting M21 defaults on a measured M21 plate must retain its exact source
-  // fit. Component donors for other sets remain separately source-compatible.
-  const useExact = !explicitProfile || Boolean(ordinary);
+  // A named M21 selection retains the matching source-bound style, including
+  // PW materials. Independently measured component sources keep their separate
+  // explicit-donor policy rather than being mislabeled as shared M21 fits.
+  const useExact = !explicitProfile || Boolean(ordinary) || Boolean(style && !independent);
   const materials: Record<string, FrameHsb> = useExact ? { ...measured } : {};
-  const style = modernPrintingProfile(original);
   const fallbackAssets: string[] = [];
-  const independent = style?.inheritedFrom
-    ? independentModernComponentMaterials(original)
-    : undefined;
   if (style?.inheritedFrom && choice !== 'source')
     for (const url of Object.keys(materials))
       if (!independent?.[url] && (ordinary?.[url] || style.componentMaterials?.[url]))
         fallbackAssets.push(url);
   let border = useExact ? measuredStock : undefined;
-  let fallbackStock = Boolean(style?.inheritedFrom && ordinary && border && choice !== 'source');
+  let fallbackStock = Boolean(
+    style?.inheritedFrom &&
+      (ordinary || (styleStock && !knownStock)) &&
+      border &&
+      choice !== 'source',
+  );
   if ((choice === 'auto' || explicitProfile) && supportsModernCalibration(face)) {
     const sources = modernCalibrationSources(face),
       profile = resolveCardProfile(face);

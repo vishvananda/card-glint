@@ -27,6 +27,9 @@ const pigment = (m: FrameHsb) =>
 export function resolvePrintingCalibration(input: RenderedCardInput): PrintingCalibrationReport {
   const result = printingCalibrationMaterials(input),
     { face, materials, assets } = result;
+  const inheritedStyle = modernPrintingProfile(face);
+  const sharedRevision = inheritedStyle?.revision ?? printingCalibrationProfiles[0]!.revision;
+  const printingRevision = face.setCode?.toLowerCase() === 'm21' ? sharedRevision : 1;
   const entries = Object.entries(materials);
   const component = (urls: string[]): PrintingCalibrationComponent => {
     if (!urls.length) return { status: 'source', assets: [] };
@@ -34,9 +37,9 @@ export function resolvePrintingCalibration(input: RenderedCardInput): PrintingCa
     return {
       status: fallback.length === urls.length ? 'fallback' : fallback.length ? 'mixed' : 'measured',
       ...(fallback.length === urls.length
-        ? { profile: 'm21-modern', revision: 1 }
+        ? { profile: 'm21-modern', revision: sharedRevision }
         : !fallback.length
-          ? { profile: `printing:${face.setCode?.toLowerCase() ?? ''}`, revision: 1 }
+          ? { profile: `printing:${face.setCode?.toLowerCase() ?? ''}`, revision: printingRevision }
           : {}),
       assets: urls,
     };
@@ -97,12 +100,11 @@ export function resolvePrintingCalibration(input: RenderedCardInput): PrintingCa
         profile: result.fallbackStock
           ? 'm21-modern'
           : `printing:${face.setCode?.toLowerCase() ?? ''}`,
-        revision: 1,
+        revision: result.fallbackStock ? sharedRevision : printingRevision,
         color: result.border,
         assets: entries.filter(([, m]) => m.outerStock).map(([url]) => url),
       }
     : { status: 'source', assets: [] };
-  const inheritedStyle = modernPrintingProfile(face);
   const defaults = inheritedStyle?.inheritedFrom
     ? {
         status: 'inherited' as const,

@@ -27,7 +27,7 @@ export const printingCalibrationApiVersion = 1 as const;
 export const printingCalibrationProfiles = Object.freeze([
   Object.freeze({
     id: 'm21-modern',
-    revision: 2,
+    revision: 15,
     label: 'Modern · M21 defaults',
     setCode: 'M21',
     note: 'Source-bound M21 frame, color, mana, heading, body and footer defaults. Printing content stays local; inherited values are not target-set measurements.',

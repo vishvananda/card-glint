@@ -13,8 +13,7 @@ export function securityStampMaterialJobs(face: RenderedCardInput, images: Canva
   if (!stamp) return [];
   const blackStock = cardStock(face.setCode, face.borderColor).border === '#090806';
   if (!blackStock && !stamp.rightImage) return [];
-  const target =
-    face.calibration === undefined ? '#090806' : (calibratedPrintingStock(face) ?? '#090806');
+  const target = calibratedPrintingStock(face) ?? '#090806';
   const rgb = [1, 3, 5].map((i) => parseInt(target.slice(i, i + 2), 16));
   const source = images.get(stamp.image);
   if (!source) throw Error('Authenticity stamp asset is unavailable.');

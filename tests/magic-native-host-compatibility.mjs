@@ -85,6 +85,9 @@ async function packMetadata(directory, beforeSymbols = false) {
 async function identity() {
   const executable = await stat(chromium.executablePath());
   return {
+    modernStockRevision: hash(
+      await readFile('games/magic/fixtures/accuracy/m21/stock-source-compatibility.json'),
+    ),
     modernDefaultRevision: hash(
       await readFile('games/magic/fixtures/accuracy/m21/modern-default-source-compatibility.json'),
     ),

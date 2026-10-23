@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { hash } from './common.mjs';
+import { preModernStockSource } from './modern-stock-ancestry.mjs';
 const RECEIPT = 'd844e6ac1b315fb24b7a8924f2865bb7d386f3a1029ba93c19acbdb9570ed929';
 let checked;
 export function modernDefaultAncestry() {
@@ -20,7 +21,7 @@ export function modernDefaultAncestry() {
       );
     for (const [file, e] of Object.entries(p.files))
       assert.equal(
-        hash(await readFile(file)),
+        hash(await preModernStockSource(file, await readFile(file))),
         e.after,
         'Unreviewed modern defaults source: ' + file,
       );
@@ -72,6 +73,14 @@ export function modernDefaultAncestry() {
 export async function preModernDefaultSource(file, bytes) {
   const p = await modernDefaultAncestry(),
     e = p.files[file];
+  // Older exact bytes still belong to their original guard. Only the reviewed
+  // post-default refinement is stripped before reconstructing that receipt.
+  if (e && hash(bytes) === e.before) return bytes;
+  try {
+    bytes = await preModernStockSource(file, bytes);
+  } catch (error) {
+    throw new Error('Unreviewed modern defaults source: ' + file, { cause: error });
+  }
   if (p.newModules[file]) {
     assert.equal(hash(bytes), p.newModules[file], 'Unreviewed modern defaults module: ' + file);
     return bytes;

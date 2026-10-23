@@ -655,3 +655,29 @@ they remain excluded from nonfoil pigment calibration. This narrow normalization
 eligibility does not approve foil references for color work or change Unlimited's
 nonfoil certification. Frame geometry, typography, color, full-card outliers and
 release status remain separate checks.
+
+### Shared modern stock and explicit profile selection
+
+The M21 stock adoption is recorded separately from the historical modern-default
+and style receipts in
+[stock-native-review.json](fixtures/accuracy/m21/stock-native-review.json).
+It covers all 297 native faces and etchings, 292 nonfoil edge references, and
+native parity with named-M21 selection. The five foil-only printings are
+transfer controls, never pigment targets. Small changes to translucent interior
+colors remain visible in the fixed-window measurements.
+
+Reproduce with the canonical Original input manifest, complete before/after
+native captures, and frozen score references from your local cache:
+
+```sh
+node games/magic/tools/accuracy/modern-stock-native-audit.mjs \
+  INPUTS BEFORE_NATIVE AFTER_NATIVE FROZEN_SCORES stock-audit.json
+node games/magic/tools/accuracy/modern-stock-policy-audit.mjs \
+  INPUTS AFTER_NATIVE NAMED_REFERENCE_NATIVE stock-policy.json
+```
+
+The policy tool checks all four material-selection modes and compares full
+native output against a separately captured named-M21 reference. It does not
+claim to render all four modes. The ancestry layer reverses only the five
+reviewed source edits to keep older receipts verifiable; unknown edits still
+fail. This stock receipt does not certify the rest of M21.

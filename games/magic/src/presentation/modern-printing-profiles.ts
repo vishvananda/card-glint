@@ -157,7 +157,7 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 14,
+    revision: 15,
     headingFont: 'beleren-2016',
     typeText: {
       plate: { dx: -1.25, dy: 0.5, size: 1.025, width: 0.985 },
