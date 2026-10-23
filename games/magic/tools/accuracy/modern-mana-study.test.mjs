@@ -101,6 +101,10 @@ test('glyph study retains numeric and per-color controls and composes editor del
         rendererControls: { ...controls, ...invalid },
       }),
     );
+  const plain = await createServer({
+    configFile: false,
+    server: { middlewareMode: true, hmr: false, ws: false },
+  });
   const server = await createServer({
     configFile: false,
     server: { middlewareMode: true, hmr: false, ws: false },
@@ -108,6 +112,8 @@ test('glyph study retains numeric and per-color controls and composes editor del
   });
   try {
     await server.ssrLoadModule('/games/magic/src/data/eager.ts');
+    await plain.ssrLoadModule('/games/magic/src/data/eager.ts');
+    const baseline = await plain.ssrLoadModule('/' + file);
     const { printingManaDefaults, printingManaAdjustment } = await server.ssrLoadModule('/' + file);
     const face = {
       setCode: 'm21',
@@ -128,9 +134,13 @@ test('glyph study retains numeric and per-color controls and composes editor del
     assert.deepEqual(adjusted.glyphs.U, { scale: 0.96 * 1.02, dx: 0.3, dy: 0.2 });
     assert.deepEqual(adjusted.glyphs.R, { dy: -0.25 });
     assert.deepEqual(user.glyphs.U, { scale: 1.02, dx: 0.5 });
-    assert.equal(printingManaDefaults({ ...face, setCode: 'war' }).glyphs, undefined);
+    assert.deepEqual(
+      printingManaDefaults({ ...face, setCode: 'war' }),
+      baseline.printingManaDefaults({ ...face, setCode: 'war' }),
+      'Study controls must not replace inherited production defaults',
+    );
   } finally {
-    await server.close();
+    await Promise.all([server.close(), plain.close()]);
   }
 });
 
@@ -259,6 +269,10 @@ test('walker cohort uses its own circle placement and the same reviewed cost sty
       paletteSourceHash: hash(await readFile(paletteFile)),
     },
   };
+  const plain = await createServer({
+    configFile: false,
+    server: { middlewareMode: true, hmr: false, ws: false },
+  });
   const server = await createServer({
     configFile: false,
     optimizeDeps: { noDiscovery: true },
@@ -267,6 +281,9 @@ test('walker cohort uses its own circle placement and the same reviewed cost sty
   });
   try {
     await server.ssrLoadModule('/games/magic/src/data/eager.ts');
+    await plain.ssrLoadModule('/games/magic/src/data/eager.ts');
+    const baselineCosts = await plain.ssrLoadModule('/' + costFile),
+      baselinePlacement = await plain.ssrLoadModule('/' + file);
     const costs = await server.ssrLoadModule('/' + costFile),
       placements = await server.ssrLoadModule('/' + file),
       colors = await server.ssrLoadModule(
@@ -295,11 +312,14 @@ test('walker cohort uses its own circle placement and the same reviewed cost sty
       { manaSymbols: [] },
     ]) {
       const f = { ...face, ...extra };
-      assert.equal(costs.modernCostMana(f), undefined);
-      assert.equal(placements.printingManaDefaults(f), undefined);
+      assert.deepEqual(costs.modernCostMana(f), baselineCosts.modernCostMana(f));
+      assert.deepEqual(
+        placements.printingManaDefaults(f),
+        baselinePlacement.printingManaDefaults(f),
+      );
     }
     assert.equal(placements.printingManaDefaults({ ...face, typeLine: 'Creature' }).dy, -0.25);
   } finally {
-    await server.close();
+    await Promise.all([server.close(), plain.close()]);
   }
 });
