@@ -1,10 +1,18 @@
+import assert from 'node:assert/strict';
+
 /** Inventory dimensions, not a claim that a layout has a working adapter.
  * Keep unusual ordinary printings and foil-only references in the denominator. */
-export function calibrationVariant(card) {
+export function calibrationVariant(card, { frameColors } = {}) {
+  if (frameColors !== undefined)
+    assert(
+      Array.isArray(frameColors) &&
+        frameColors.every((color) => typeof color === 'string' && /^[WUBRG]$/.test(color)),
+      'Reviewed frame palette must contain only WUBRG colors.',
+    );
   const type = card.type_line ?? '';
   const basic = /\bBasic\b/.test(type) && /\bLand\b/.test(type);
   const land = /\bLand\b/.test(type);
-  const palette = [...new Set((land ? card.produced_mana : card.colors) ?? [])]
+  const palette = [...new Set(frameColors ?? (land ? card.produced_mana : card.colors) ?? [])]
     .filter((c) => 'WUBRG'.includes(c))
     .sort((a, b) => 'WUBRG'.indexOf(a) - 'WUBRG'.indexOf(b));
   const kind = /\bPlaneswalker\b/.test(type)
@@ -35,6 +43,7 @@ export function calibrationVariant(card) {
     border: card.border_color ?? 'unknown',
     layout: card.layout ?? 'unknown',
     palette: palette.join('') || 'C',
+    ...(frameColors !== undefined ? { paletteSource: 'reviewed-printing' } : {}),
     kind,
     legendary,
     effects,

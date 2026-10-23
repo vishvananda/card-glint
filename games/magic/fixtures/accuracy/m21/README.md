@@ -614,3 +614,24 @@ retain actual current fingerprints. Older frame families may retain the tested
 historical dependency path. The land-entry text proposal remains unadopted,
 including Wind-Scarred Crag's counterexample; this source pass does not mark the
 set complete.
+
+## Current material inventory and scan identity
+
+The current inventory has **85 physical variants / 297 ordinary printings**:
+292 nonfoil-eligible and five foil-only. The reviewed gold palette places Fabled
+Passage in its own gold-land group, separate from neutral Animal Sanctuary.
+Every previous printing remains in the denominator; this is a material split,
+not a new scan or a new per-card renderer alignment.
+
+All 297 frozen affine poses remain certified across the 85 groups. Their
+source identity binds each group's scan bytes, matrices, shared templates and
+normalization method. Renderer assets, fonts and pigment changes do not
+invalidate an unchanged scan pose. Exact printing membership still gates
+component reviews: an approval for a former two-card group cannot silently
+approve either new singleton. Deliberate manual rejections remain preserved.
+
+Regenerate only this set with
+`MAGIC_ACCURACY_CACHE=YOUR_CACHE npm run magic:calibration:inventory -- m21`.
+Other sets' records remain structurally unchanged. The normalization and ledger
+tests cover the palette split, unchanged-renderer pose reuse, scan/matrix
+invalidation, membership changes and preservation of manual reviews.

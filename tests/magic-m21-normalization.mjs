@@ -28,7 +28,7 @@ const ledger = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/calibration-progress.json'),
 );
 const groups = ledger.sets.find((s) => s.set === 'm21').groups;
-assert.equal(groups.length, 84);
+assert.equal(groups.length, 85);
 let covered = 0,
   foilOnly = 0;
 for (const group of groups) {
@@ -46,6 +46,46 @@ for (const group of groups) {
 }
 assert.equal(covered, 297);
 assert.equal(foilOnly, 5);
+// Reviewed physical palettes separate gold Fabled Passage from neutral
+// Animal Sanctuary. Both retain their own independently certified scan pose.
+for (const [name, palette] of [
+  ['Fabled Passage', 'WUBRG'],
+  ['Animal Sanctuary', 'C'],
+]) {
+  const row = data.receipt.rows.find((row) => row.name === name);
+  const group = groups.find((group) => group.printingIds.includes(row.id));
+  assert.equal(group.printings, 1);
+  assert.equal(group.palette, palette);
+  assert.equal(calibrationTaskStatus(group, 'normalization').status, 'validated');
+}
+const scanOnly = structuredClone(groups[0]);
+const scanIdentity = scanOnly.sourceHashes.normalization;
+scanOnly.sourceHash = 'a'.repeat(64);
+scanOnly.sourceHashes.frameColor = 'b'.repeat(64);
+applyM21Normalization(scanOnly, data);
+assert.equal(
+  scanOnly.sourceHashes.normalization,
+  scanIdentity,
+  'Rendering assets cannot invalidate scan poses',
+);
+const alteredScan = structuredClone(data);
+const member = alteredScan.receipt.rows.find((row) => scanOnly.printingIds.includes(row.id));
+member.referenceHash = 'c'.repeat(64);
+applyM21Normalization(scanOnly, alteredScan);
+assert.notEqual(
+  scanOnly.sourceHashes.normalization,
+  scanIdentity,
+  'Different scan bytes must change pose identity',
+);
+const alteredPose = structuredClone(data);
+const pose = alteredPose.receipt.rows.find((row) => scanOnly.printingIds.includes(row.id));
+pose.transform = { ...pose.transform, tx: 1 };
+applyM21Normalization(scanOnly, alteredPose);
+assert.notEqual(
+  scanOnly.sourceHashes.normalization,
+  scanIdentity,
+  'Different matrices must change pose identity',
+);
 const foil = structuredClone(groups.find((g) => g.references.foilOnly));
 assert(foil);
 foil.tasks.frameColor = structuredClone(foil.tasks.normalization);
@@ -59,5 +99,5 @@ absent.printingIds.push('missing-scan');
 absent.printings++;
 assert.throws(() => applyM21Normalization(absent, data), /Missing M21 pose census/);
 console.log(
-  'M21 scan normalization: 297 printings/84 variants, 1,716 recovery controls, narrow foil-boundary eligibility, stale guards, missing-member rejection and unrelated-task preservation pass.',
+  'M21 scan normalization: 297 printings/85 variants, 1,716 recovery controls, narrow foil-boundary eligibility, stale guards, missing-member rejection and unrelated-task preservation pass.',
 );

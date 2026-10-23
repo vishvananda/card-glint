@@ -14,6 +14,7 @@ import { readObject } from './cache.mjs';
 import { printingScope, summarizeSet } from './rollout-policy.mjs';
 import { calibrationVariant, calibrationApplicability } from './calibration-groups.mjs';
 import { CALIBRATION_TASKS, calibrationSetStatus } from './calibration-ledger.mjs';
+import { preserveCalibrationReviews } from './calibration-reviews.mjs';
 import {
   applyM21Evidence,
   applyM21MonoEvidence,
@@ -123,6 +124,12 @@ try {
   const { calibratedFrameMaterials, hasCalibratedFramePigment } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
+  const { modernPrintingProfile } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/modern-printing-profile.ts',
+  );
+  const { resolveFrameColors } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/profile.ts',
+  );
   for (const set of inventory.sets.filter(
     (s) => s.status === 'major' && (!selectedSet || s.set === selectedSet),
   )) {
@@ -135,7 +142,22 @@ try {
     assert.equal(summary.ordinaryPrintings, set.ordinaryPrintings);
     const byGroup = new Map();
     for (const card of cards.filter((c) => printingScope(c).status === 'ordinary')) {
-      const variant = calibrationVariant(card);
+      // Only exact reviewed physical traits override the catalog palette.
+      // General produced-mana grouping stays unchanged for unreviewed sets.
+      const identity = {
+        name: card.name,
+        setCode: card.set,
+        collectorNumber: card.collector_number,
+        typeLine: card.type_line,
+        frameStyle: ['1993', '1997'].includes(card.frame) ? 'retro' : 'modern',
+        ...(card.frame === '2003' ? { frameAssetFamily: 'eighth' } : {}),
+        layout: card.layout,
+      };
+      const reviewed = modernPrintingProfile(identity)?.printedFrameColors?.[card.collector_number];
+      const variant = calibrationVariant(
+        card,
+        reviewed?.name === card.name ? { frameColors: resolveFrameColors(identity) } : {},
+      );
       if (!byGroup.has(variant.key)) byGroup.set(variant.key, { variant, cards: [] });
       byGroup.get(variant.key).cards.push(card);
     }
@@ -410,8 +432,7 @@ try {
       const saved = previous?.sets
         .find((s) => s.set === set.set)
         ?.groups.find((v) => v.key === g.key);
-      for (const [task, item] of Object.entries(saved?.tasks ?? {}))
-        if (item.reviewedAt) g.tasks[task] = item;
+      preserveCalibrationReviews(g, saved);
       if (set.set === '2ed') applyUnlimitedEvidence(g, unlimitedEvidence);
       // Queued sets keep exact variant denominators without duplicating every
       // printing UUID and applicability explanation from the frozen catalog.

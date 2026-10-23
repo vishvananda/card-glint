@@ -9,6 +9,7 @@ import {
   calibrationVariant,
   calibrationApplicability,
 } from '../games/magic/tools/accuracy/calibration-groups.mjs';
+import { preserveCalibrationReviews } from '../games/magic/tools/accuracy/calibration-reviews.mjs';
 import { calibrationReport } from '../games/magic/tools/accuracy/calibration-report.mjs';
 import { unlimitedCalibrationEvidence } from '../games/magic/tools/accuracy/calibration-unlimited-current.mjs';
 import { applyEarlyOriginalWording } from '../games/magic/tools/accuracy/calibration-original-wording.mjs';
@@ -140,6 +141,71 @@ const card = {
   nonfoil: true,
 };
 assert.equal(calibrationVariant(card).palette, 'UR');
+const beforePalette = structuredClone(card);
+assert.equal(
+  calibrationVariant(card, { frameColors: ['G', 'W', 'G', 'B', 'R', 'U'] }).palette,
+  'WUBRG',
+);
+assert.equal(calibrationVariant(card, { frameColors: [] }).palette, 'C');
+assert.equal(calibrationVariant(card).paletteSource, undefined);
+assert.equal(calibrationVariant(card, { frameColors: ['U'] }).paletteSource, 'reviewed-printing');
+assert.deepEqual(card, beforePalette);
+for (const frameColors of ['U', ['C'], [''], [null], [12]])
+  assert.throws(() => calibrationVariant(card, { frameColors }), /Reviewed frame palette/);
+
+// Deliberate reviews belong to an exact population; do not transfer a former
+// two-card decision to either newly separated material singleton.
+const reviewedGroup = {
+  scopeHash: h,
+  tasks: { rules: { status: 'rejected', reviewedAt: '2026-10-23', reason: 'Manual review' } },
+};
+const samePopulation = { scopeHash: h, tasks: {} };
+preserveCalibrationReviews(samePopulation, reviewedGroup);
+assert.deepEqual(samePopulation.tasks, reviewedGroup.tasks);
+samePopulation.tasks.rules.reason = 'Changed';
+assert.equal(reviewedGroup.tasks.rules.reason, 'Manual review');
+const changedPopulation = {
+  scopeHash: 'c'.repeat(64),
+  tasks: { rules: { status: 'needs-audit' } },
+};
+preserveCalibrationReviews(changedPopulation, reviewedGroup);
+assert.equal(changedPopulation.tasks.rules.status, 'needs-audit');
+
+const scanCertificate = {
+  status: 'validated',
+  reviewedAt: '2026-10-23',
+  proof: {
+    validationKind: 'source-census',
+    methodHash: h,
+    metricsHash: h,
+    scanTemplateHash: h,
+    sourceHash: h,
+    sourceCensus: { parametersHash: h },
+  },
+};
+const scanGroup = {
+  scopeHash: h,
+  tasks: {
+    normalization: {
+      ...structuredClone(scanCertificate),
+      proof: {
+        ...structuredClone(scanCertificate.proof),
+        sourceHash: 'd'.repeat(64),
+      },
+    },
+  },
+};
+preserveCalibrationReviews(scanGroup, { scopeHash: h, tasks: { normalization: scanCertificate } });
+assert.equal(scanGroup.tasks.normalization.proof.sourceHash, 'd'.repeat(64));
+const manualRejection = { ...scanCertificate, status: 'rejected' };
+preserveCalibrationReviews(scanGroup, { scopeHash: h, tasks: { normalization: manualRejection } });
+assert.equal(scanGroup.tasks.normalization.status, 'rejected');
+const changedMethod = structuredClone(scanCertificate);
+changedMethod.proof.methodHash = 'e'.repeat(64);
+scanGroup.tasks.normalization = changedMethod;
+preserveCalibrationReviews(scanGroup, { scopeHash: h, tasks: { normalization: scanCertificate } });
+assert.equal(scanGroup.tasks.normalization.proof.methodHash, h);
+
 assert.notEqual(
   calibrationVariant(card).key,
   calibrationVariant({ ...card, type_line: 'Legendary Land' }).key,

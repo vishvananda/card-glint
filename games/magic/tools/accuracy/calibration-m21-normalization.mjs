@@ -58,6 +58,24 @@ export function applyM21Normalization(group, data) {
   const rows = data.receipt.rows.filter((row) => group.printingIds.includes(row.id));
   assert.equal(rows.length, group.printings, 'Missing M21 pose census members');
   const names = [...new Set(rows.map((r) => r.name))].sort();
+  // A renderer/font/asset change cannot invalidate a frozen scan pose. Bind
+  // only this group's scan bytes, matrices, shared templates and fit method.
+  group.sourceHashes = {
+    ...group.sourceHashes,
+    normalization: hash(
+      JSON.stringify({
+        method: data.receipt.definition.toolHash,
+        templates: data.receipt.definition.templatesHash,
+        members: rows
+          .map((row) => ({
+            id: row.id,
+            referenceHash: row.referenceHash,
+            transform: row.transform,
+          }))
+          .sort((a, b) => a.id.localeCompare(b.id)),
+      }),
+    ),
+  };
   const sourceCensus = {
     scope: 'all-ordinary-printings-in-variant',
     heldOut: false,
