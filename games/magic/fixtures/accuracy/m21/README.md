@@ -493,3 +493,41 @@ The tool verifies inputs, decoded native pixels, reference hashes and frozen
 poses. It rejects changes outside the three panel supports, any changed etching,
 or any changed unrelated card. Reference scans and art remain external/cache
 assets; the receipt contains measurements and hashes only.
+
+## Profile revision 13: fractional body fitting and ordinary P/T
+
+[The complete native typography replay](typography-native-review.json) replaces
+default hinted body measurements with matching precise measurement, saved-request
+replay and painting. The old code retained floating values, but all 1,128 measured
+regular-text advances in this capture were whole pixels. The new fit uses a 24.25
+maximum size, 1.02 text width, .9875 leading and 1.25 rightward adjustment in the
+488×680 reference space. A content-derived legacy line limit prevents a spacing
+change from adding wrapped rows. Original and Oracle fit their own wording.
+
+The fixed 32-card semantic/density cohort selects the shared numerical proposal;
+the complete 268-card corpus retains every result. Native body overlap rises from
+53.845 to 59.548/100: 187 improve and 81 regress. This is a filled/edge glyph search
+index, distinct from the public whole-card structure index. Large residuals and
+the short rules/flavor wrapping examples remain in the receipt and outlier list;
+this is not a claim that every printing improved.
+
+All 148 ordinary P/T fields are reviewed. The existing font and anchor win, with
+precise metrics at .97 size: mean overlap 87.585 to 89.200/100, 127 improvements and 21
+regressions. The actually loaded 2016 font is rejected, including a 34.93-point
+asterisk regression on Kinetic Augur. No missing-font fallback is a valid trial.
+
+Actual production reproduces the independent proposal, injected into immutable
+profile 12 source, on all 297 native face and 297 etching pairs. 268 faces change;
+the other 29 and every etching remain byte-identical. The native audit also rejects
+changes outside body/P/T support, alpha changes and any baseline-objective drift.
+The new request test covers matching font states, replay, content retention,
+invalid line limits, wording isolation and unchanged unrelated-set defaults.
+
+Whole-card diagnostic structure rises 78.967 to 80.473/100. Aven Gagglemaster’s
+frame signal classification changes, so regional coverage is reported rather
+than assumed constant. Using only common eligible components still gives
+78.967 to 80.470/100. Investigate that signal gate before certification.
+[R10 collateral evidence](unaffected-native-typography-review.json) retains 1,500
+identical unrelated pixel/text/geometry pairs against published 0.6.11. M21 remains
+incomplete until the remaining component/source and normalization reviews,
+modern-default transfer, ledger and release work are finished.

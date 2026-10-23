@@ -9,6 +9,7 @@ import {
   rasterCanvas,
 } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
+import { paintModernStatsText } from './modern-stats-text.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
 import { paintPrintingElement } from './printing-elements.js';
 import { paintPlanarFrame, usesPlanarFrameGeometry } from './planar-frame-geometry.js';
@@ -275,13 +276,13 @@ export function paintFramePlateFace(
     c.font = `bold ${retained ? FACE_TEXT.statsFont : 25}px "${statsFamily}", Georgia`;
     c.textAlign = 'center';
     c.textBaseline = 'middle';
-    paintTextInk(
+    paintModernStatsText(
       c,
       `${face.power}/${face.toughness}`,
       sx + sw * (retained ? 0.5 : 0.52),
       retained ? sy + FACE_TEXT.statsLine / 2 + 2 : sy + sh * 0.52,
       retained ? sw : sw * 0.85,
-      face.textInk,
+      face,
     );
   }
   paintModernFooter(c, face);

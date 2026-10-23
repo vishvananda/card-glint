@@ -109,7 +109,14 @@ export interface ModernPrintingProfile {
   /** Palette-specific panels on the exact ordinary artifact source. */
   readonly artifactPapers?: Readonly<Record<string, ModernArtifactPaper>>;
   readonly landPlates?: ModernLandPlateProfile;
+  readonly statsText?: { readonly size: number; readonly fractionalMetrics: boolean };
   readonly rules?: {
+    readonly fractionalMetrics?: boolean;
+    readonly maximumSize?: number;
+    readonly textWidth?: number;
+    readonly dx?: number;
+    /** Keep the legacy wrap budget while refitting with new font advances. */
+    readonly preserveLineCount?: boolean;
     /** Shared ordinary typography; cap prevents spacing from growing a font. */
     readonly leading: number;
     readonly paragraphGap: number;
@@ -141,7 +148,7 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 12,
+    revision: 13,
     headingFont: 'beleren-2016',
     typeText: {
       plate: { dx: -1.25, dy: 0.5, size: 1.025, width: 0.985 },
@@ -152,7 +159,17 @@ export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingPro
     ordinaryPlates: M21_ORDINARY_PLATES,
     artifactPapers: M21_ARTIFACT_PAPERS,
     landPlates: M21_LAND_PLATES,
-    rules: { leading: 0.975, paragraphGap: 0.4, capAtBaseSize: true },
+    statsText: { size: 0.97, fractionalMetrics: true },
+    rules: {
+      leading: 0.9875,
+      paragraphGap: 0.4,
+      capAtBaseSize: false,
+      fractionalMetrics: true,
+      maximumSize: 24.25,
+      textWidth: 1.02,
+      dx: 1.25,
+      preserveLineCount: true,
+    },
     footer: {
       collectorFamily: 'CardRenderer MTG Gotham',
       collectorSize: 12.5,

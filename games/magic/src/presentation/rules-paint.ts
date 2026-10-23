@@ -42,7 +42,8 @@ export function ordinaryTextLayout(
     height,
     scale,
     rules,
-    rules.capAtBaseSize ? baseline.size : 24.5 * scale,
+    rules.capAtBaseSize ? baseline.size : (rules.maximumSize ?? 24.5) * scale,
+    rules.preserveLineCount ? baseline.lines.length || undefined : undefined,
   );
 }
 
@@ -53,6 +54,7 @@ function measuredOrdinaryTextLayout(
   scale: number,
   calibration?: ModernPrintingProfile['rules'],
   maximumSize = 24.5 * scale,
+  maximumLines?: number,
 ): RulesLayout {
   const rects = faceRects(face);
   const planarStats = planarRulesStatsRect(face);
@@ -60,7 +62,13 @@ function measuredOrdinaryTextLayout(
   const typography = {
     ...RULES_TYPOGRAPHY,
     ...(calibration
-      ? { leading: calibration.leading, paragraphGap: calibration.paragraphGap }
+      ? {
+          leading: calibration.leading,
+          paragraphGap: calibration.paragraphGap,
+          textWidth: calibration.textWidth,
+          fractionalMetrics: calibration.fractionalMetrics,
+          maximumLines,
+        }
       : {}),
     flavorSeparator: face.frameAssetFamily === 'eighth' ? false : hasFlavorSeparator(face.setCode),
   };
@@ -74,7 +82,7 @@ function measuredOrdinaryTextLayout(
   const stamp = mountedSecurityStamp(face);
   const componentRules = !face.frameAssetFamily || Boolean(modernOrdinaryPlates(face));
   const bounds: Parameters<typeof layoutRules>[2] = {
-    x: x * FACE_WIDTH + (componentRules ? 3.5 : 0),
+    x: x * FACE_WIDTH + (componentRules ? 3.5 : 0) + (calibration?.dx ?? 0) * scale,
     y: y * height + (componentRules ? 7 : 0),
     width: width * FACE_WIDTH - (componentRules ? 9.5 : 0),
     height: h * height - (componentRules ? 8 : 0),

@@ -2,7 +2,7 @@
   "schema": 1,
   "set": "m21",
   "status": "open-component-outliers",
-  "renderer": "166b7c401489f1acefcd1a18505a36f6afeae8084991fcce0170b2302c3654d8",
+  "renderer": "23e35e2ccf5557105770208ea6da4b612b78c73dc128bf1c19bc67fe13dbb142",
   "items": [
     {
       "id": "planeswalker-art-spill",
@@ -63,10 +63,10 @@
     {
       "id": "ordinary-rules-size-and-wrapping",
       "component": "rules/flavor",
-      "status": "needs-shared-size-fit",
-      "scope": "Next audit: Finishing Blow #99, Witch\u2019s Cauldron #129, Dire Fleet Warmonger #217, Meteorite #233",
-      "review": "Native zoom review shows oversized body text and changed line breaks in these low-scoring ordinary cards. Prior shared leading/paragraph-gap fit retained baseline font sizes. Calibrate a shared size/width policy against the complete ordinary corpus before modern-default transfer; do not hide these with per-card offsets. Straight quotation marks also differ from the printed curly forms.",
-      "evidence": "games/magic/fixtures/accuracy/m21/body-production-review.json"
+      "status": "shared-fractional-fit-adopted-with-residuals",
+      "scope": "All268 ordinary Original printing fields;187 improve,81 regress. Shared line limit prevents added wrapping; no per-card exception.",
+      "review": "Native adoption reproduces the independent frozen-source proposal on all297 faces and etchings. Original and Oracle independently fit their own wording with matching precise measure/paint states. Significant residuals include Goremand, Sanctum of Shattered Heights, Scoured Barrens and Rousing Read. Finishing Blow and Witch\u2019s Cauldron still require the narrower short-paragraph/flavor policy review; their extra wraps are not claimed fixed.",
+      "evidence": "games/magic/fixtures/accuracy/m21/typography-native-review.json"
     },
     {
       "id": "colored-artifact-paper-palette",
@@ -75,6 +75,22 @@
       "scope": "All three ordinary colored artifacts in M21: Idol of Endurance, Malefic Scythe and Witch\u2019s Cauldron.",
       "review": "Nine native paper/name/type fields improve. The artifact bitmap, metal surround, source-local masks and pinlines are preserved. Only W/B have directly measured ordinary colored artifacts; U/R/G paper remains unchanged and unmeasured. One white and two black printings do not provide an independent white-card holdout.",
       "evidence": "games/magic/fixtures/accuracy/m21/artifact-paper-native-review.json"
+    },
+    {
+      "id": "ordinary-power-toughness",
+      "component": "stats",
+      "status": "shared-font-fit-adopted-with-residuals",
+      "scope": "All148 ordinary printed P/T fields, including Kinetic Augur\u2019s */4.",
+      "review": "Keep existing font and anchor, use precise metrics at.97 size.127 improve,21 regress; all regressions are disclosed in the native receipt. The2016 font alternative is not promoted.",
+      "evidence": "games/magic/fixtures/accuracy/m21/typography-native-review.json"
+    },
+    {
+      "id": "aven-frame-signal-eligibility",
+      "component": "frame/metric",
+      "status": "needs-signal-gate-review",
+      "scope": "Aven Gagglemaster #5",
+      "review": "Frame classification changes from excluded low-signal to measured missing-ink after typography only. Native isolation proves the physical frame outside typography support is unchanged. Diagnose the text-sensitive frame gate before final normalization certification; use common-eligible-component paired scores meanwhile.",
+      "evidence": "games/magic/fixtures/accuracy/m21/typography-native-review.json"
     }
   ]
 }

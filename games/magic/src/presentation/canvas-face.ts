@@ -23,6 +23,7 @@ import {
 } from '../../../../packages/browser/src/canvas-raster.js';
 import { setCalibrationTextureKey } from '../calibration/cache-key.js';
 import { paintTextInk } from './text-ink.js';
+import { paintModernStatsText } from './modern-stats-text.js';
 import { rulesInkVisible, withRulesInk } from './rules-visibility.js';
 import { calibrationFace } from './calibration-input.js';
 import { calibratedPrintingStock } from './printing-calibration-materials.js';
@@ -1050,13 +1051,13 @@ export function paintAssembledFace(
       context.font = `bold ${FACE_TEXT.statsFont}px "CardRenderer MTG Beleren", Georgia`;
       context.textAlign = 'center';
       context.textBaseline = 'middle';
-      paintTextInk(
+      paintModernStatsText(
         context,
         stats.text,
         sx + sw / 2,
         sy + FACE_TEXT.statsLine / 2 + (kind === 'normal' ? 2 : 0),
         sw,
-        face.textInk,
+        face,
       );
     }
   }

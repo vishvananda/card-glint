@@ -29,6 +29,10 @@ export interface RulesLayout {
   separators: number[];
 }
 export interface RulesTypography {
+  /** Measure and paint with unhinted advances in the same font realm. */
+  fractionalMetrics?: boolean;
+  /** Shared refits may tighten spacing without introducing extra wrapped rows. */
+  maximumLines?: number;
   /** Positive horizontal letter scale. Does not scale mana discs or line height. */
   textWidth?: number;
   leading: number;
@@ -71,7 +75,16 @@ export function layoutRules(
   const textWidth = typography.textWidth ?? 1;
   if (!Number.isFinite(textWidth) || textWidth <= 0)
     throw Error('Magic rules text width must be finite and positive.');
+  if (
+    typography.maximumLines !== undefined &&
+    (!Number.isInteger(typography.maximumLines) || typography.maximumLines <= 0)
+  )
+    throw Error('Magic rules line limit must be a positive integer.');
   context.save();
+  if (typography.fractionalMetrics) {
+    context.textRendering = 'geometricPrecision';
+    context.fontKerning = 'normal';
+  }
   context.letterSpacing = '0px';
   context.textBaseline = 'alphabetic';
   context.textAlign = 'left';
@@ -194,12 +207,14 @@ export function layoutRules(
       );
       const offset = Math.max(topLimit, Math.min(bottomLimit - inkHeight, preferredTop)) - inkTop;
       layout = {
+        ...(typography.fractionalMetrics ? { fractionalMetrics: true } : {}),
         size,
         x: bounds.x,
         top: inkTop + offset,
         width: bounds.width,
         height: inkHeight,
         overflow:
+          (typography.maximumLines !== undefined && lines.length > typography.maximumLines) ||
           inkHeight > bottomLimit - topLimit + 0.01 ||
           lines.some((line) => line.width > bounds.width + 0.01),
         lines: lines.map((line) => ({

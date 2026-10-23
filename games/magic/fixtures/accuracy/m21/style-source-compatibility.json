@@ -8,15 +8,15 @@
     "wording-flavor.ts",
     "wording.ts"
   ],
-  "revision": 9,
+  "revision": 10,
   "parent": {
-    "file": "games/magic/fixtures/accuracy/m21/style-source-compatibility-r8.json",
-    "sha256": "522f8f38ab7f142016fd55a96a4e71fe7a0af22697574ac3b1576a6b045708ab"
+    "file": "games/magic/fixtures/accuracy/m21/style-source-compatibility-r9.json",
+    "sha256": "48302a14f819283f81beb07b3ae3f7e11e18992cecc1a4ff56238297ae0ae345"
   },
-  "scope": "R9 exact M21-only source reconstruction after source-local colored-artifact paper calibration. All1500 unrelated native pixel/text/geometry pairs match published0.6.11 in the same font environment. This protects historical source identity, not M21 completion or cross-environment raster equality.",
+  "scope": "R10 exact M21-only source reconstruction after fractional ordinary typography, content-derived line limits and P/T glyph fitting. All1500 unrelated native pixel/text/geometry pairs match published0.6.11 in the same font environment. This protects historical source identity, not M21 completion or cross-environment raster equality.",
   "evidence": {
-    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-artifact-paper-review.json",
-    "sha256": "38d2fa5a13b4cb5828f86bd54345a20ff546a79f245eb9932ba9d0bc7ff8eaa7"
+    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-typography-review.json",
+    "sha256": "dccc388f3aaa3c44135c448fd08958b36ecebded590748aa67b259f1ac57323a"
   },
   "files": {
     "games/magic/fonts.css": {
@@ -85,28 +85,30 @@
     },
     "games/magic/src/presentation/canvas-face.ts": {
       "before": "a7bae87a647699f8e6cbf32a37d809f94dac1d8fbbc0198cc8968aed8a3eb919",
-      "after": "41b87fa0317e2e0fd9c66680eabd6b9295c6646efb3b6650c06699c95279cb01",
+      "after": "c5506de94f420c6c81def1ec59658800d44e10c791fef95b0b6b2b8f3cc1f67d",
       "reverseEdits": [
+        { "start": 1059, "count": 1, "lines": ["        face.textInk,\n"] },
+        { "start": 1053, "count": 1, "lines": ["      paintTextInk(\n"] },
         {
-          "start": 1040,
+          "start": 1041,
           "count": 6,
           "lines": ["      paintPlaneswalkerLoyalty(context, stats.text, px(rects.stats));\n"]
         },
-        { "start": 991, "count": 1, "lines": [] },
+        { "start": 992, "count": 1, "lines": [] },
         {
-          "start": 977,
+          "start": 978,
           "count": 11,
           "lines": ["        : 1,\n", "    'CardRenderer MTG Beleren',\n"]
         },
         {
-          "start": 973,
+          "start": 974,
           "count": 2,
           "lines": [
             "          context.measureText(face.typeLine ?? '').width * WALKER_GEOMETRY.typeWidth <=\n"
           ]
         },
         {
-          "start": 966,
+          "start": 967,
           "count": 4,
           "lines": [
             "  context.font = `${FACE_TEXT.typeFont * textScale}px \"CardRenderer MTG Beleren\", Georgia`;\n",
@@ -120,33 +122,35 @@
             "    false,\n"
           ]
         },
-        { "start": 881, "count": 1, "lines": [] },
+        { "start": 882, "count": 1, "lines": [] },
         {
-          "start": 867,
+          "start": 868,
           "count": 2,
           "lines": ["          (titleWidth - 0.5) / context.measureText(face.name).width,\n"]
         },
         {
-          "start": 856,
+          "start": 857,
           "count": 2,
           "lines": [
             "  context.font = `bold ${titleSize}px \"CardRenderer MTG Beleren\", Georgia`;\n"
           ]
         },
-        { "start": 785, "count": 7, "lines": [] },
-        { "start": 613, "count": 1, "lines": ["  if (face.frameAssetFamily) {\n"] },
+        { "start": 786, "count": 7, "lines": [] },
+        { "start": 614, "count": 1, "lines": ["  if (face.frameAssetFamily) {\n"] },
         {
-          "start": 467,
+          "start": 468,
           "count": 3,
           "lines": ["        (hooks?.loadFonts ?? loadCanvasFonts)(),\n"]
         },
-        { "start": 314, "count": 1, "lines": [] },
+        { "start": 315, "count": 1, "lines": [] },
+        { "start": 25, "count": 1, "lines": [] },
         { "start": 0, "count": 13, "lines": [] }
       ],
       "historicalHashes": [
         "0fb65a5c2c8d3fa6afd8f27e1582e7162152f4a92a8cc7b509b5b5ce3e3c1028",
         "18eeedf2a721bfb49ccdc1c00f1cc27febff4986cdb3032be16553e439f1a039",
         "1df5d485586fd3b02b181a6fec285f6053422e01cedb19fa2a52619f5874314b",
+        "41b87fa0317e2e0fd9c66680eabd6b9295c6646efb3b6650c06699c95279cb01",
         "5af8c4c9f8b872a8567a97a5f0ee2c33ad2d2dc1ad91aea98179dfe5a30077e1",
         "69bd9d6959da4d97225a50b918182b2b652791a47606323874a57abaf3e66e44",
         "751217ee8f50126bd9a84b1bbc4e9a457cdf1a763385b84789c191151e674a86",
@@ -200,21 +204,27 @@
     },
     "games/magic/src/presentation/frame-plate-paint.ts": {
       "before": "4f93ee7a906ebaddce72fb1e00906172624431fa03c89ef2471ddba9df150e1c",
-      "after": "a44abcd65f6f2c3b140d1e0aba9771b078a622123215422dc121fa06b58fd9cf",
+      "after": "003b53161136b831d7276fbcd01f8565da560dc6a3f228b3bd9a9018f56e0664",
       "reverseEdits": [
         {
-          "start": 280,
-          "count": 3,
-          "lines": ["      sx + sw * 0.52,\n", "      sy + sh * 0.52,\n", "      sw * 0.85,\n"]
+          "start": 281,
+          "count": 4,
+          "lines": [
+            "      sx + sw * 0.52,\n",
+            "      sy + sh * 0.52,\n",
+            "      sw * 0.85,\n",
+            "      face.textInk,\n"
+          ]
         },
+        { "start": 278, "count": 1, "lines": ["    paintTextInk(\n"] },
         {
-          "start": 273,
+          "start": 274,
           "count": 2,
           "lines": ["    c.font = `bold 25px \"${family}\", Georgia`;\n"]
         },
-        { "start": 241, "count": 1, "lines": ["    1,\n"] },
+        { "start": 242, "count": 1, "lines": ["    1,\n"] },
         {
-          "start": 236,
+          "start": 237,
           "count": 4,
           "lines": [
             "    x,\n",
@@ -223,28 +233,29 @@
             "    plate.typeSize * typeFit.size,\n"
           ]
         },
-        { "start": 229, "count": 1, "lines": [] },
+        { "start": 230, "count": 1, "lines": [] },
         {
-          "start": 177,
+          "start": 178,
           "count": 6,
           "lines": ["    ty + th / 2,\n", "    cost.length ? adjustedMana[0] - tx - 8 : tw,\n"]
         },
         {
-          "start": 168,
+          "start": 169,
           "count": 2,
           "lines": ["  if (eighth) c.translate(...titleTranslation(face, 'eighth'));\n"]
         },
         {
-          "start": 149,
+          "start": 150,
           "count": 5,
           "lines": [
             "  const family = eighth ? 'CardRenderer MTG Matrix' : 'CardRenderer MTG Beleren';\n",
             "  const [tx, ty, tw, th] = px(rects.title),\n"
           ]
         },
-        { "start": 142, "count": 2, "lines": [] },
-        { "start": 74, "count": 1, "lines": [] },
-        { "start": 36, "count": 2, "lines": [] },
+        { "start": 143, "count": 2, "lines": [] },
+        { "start": 75, "count": 1, "lines": [] },
+        { "start": 37, "count": 2, "lines": [] },
+        { "start": 11, "count": 1, "lines": [] },
         { "start": 0, "count": 4, "lines": [] }
       ],
       "historicalHashes": [
@@ -252,6 +263,7 @@
         "4391552e441e05113afc1d8b57f90cffed32ebbe3559bc8e81ed64eea96996a7",
         "5a51f54eb2cbe9f20bca1006d5a5e131d0dc36325d2aa29d8c9c9c5280ceec55",
         "7e113676d695b48a8488646c69708511ec3666621ea976b5e450ba5daf4f6bc1",
+        "a44abcd65f6f2c3b140d1e0aba9771b078a622123215422dc121fa06b58fd9cf",
         "a6ab50131e15d7d20ca2f49f4a4fe3f56504a8dbe3fb80f00fefa4adcb808576"
       ]
     },
@@ -542,19 +554,19 @@
     },
     "games/magic/src/presentation/rules-paint.ts": {
       "before": "0a231299cd925f6ce9348d91315ff3afbfb573469202e430ad1a30bc5a3bbc09",
-      "after": "6c0cfda764278326159f38570b390a5ab74e4c0d3b5e275c54acc170fa313698",
+      "after": "ce69017d7ce77e55a04c9b0d886c9765e0d67a7755458f846fa7347e7990172a",
       "reverseEdits": [
-        { "start": 157, "count": 4, "lines": [] },
+        { "start": 165, "count": 4, "lines": [] },
         {
-          "start": 132,
+          "start": 140,
           "count": 1,
           "lines": [
             "  let layout = layoutRules(context, fittedParagraphs, bounds, 24.5 * scale, 15 * scale, typography);\n"
           ]
         },
-        { "start": 121, "count": 1, "lines": ["      24.5 * scale,\n"] },
+        { "start": 129, "count": 1, "lines": ["      24.5 * scale,\n"] },
         {
-          "start": 76,
+          "start": 84,
           "count": 4,
           "lines": [
             "    x: x * FACE_WIDTH + (face.frameAssetFamily ? 0 : 3.5),\n",
@@ -563,14 +575,15 @@
             "    height: h * height - (face.frameAssetFamily ? 0 : 8),\n"
           ]
         },
-        { "start": 74, "count": 1, "lines": [] },
-        { "start": 61, "count": 3, "lines": [] },
-        { "start": 31, "count": 25, "lines": [] },
+        { "start": 82, "count": 1, "lines": [] },
+        { "start": 63, "count": 9, "lines": [] },
+        { "start": 31, "count": 27, "lines": [] },
         { "start": 0, "count": 3, "lines": [] }
       ],
       "historicalHashes": [
         "213a6dd4dc74d723847d9c23b309b7a533555868b0a0b130aeca09f17a16a901",
         "28c71e0b9fc25e210b5b9b5e0a7848df1f73f3622d16df4492236f0cb3ee63a2",
+        "6c0cfda764278326159f38570b390a5ab74e4c0d3b5e275c54acc170fa313698",
         "7b669814d33185b117526c2ca5611a6fcc13f0d686563b7c35289b358414ee0f",
         "9160ac40bad37f224b11c0efe45f314fe82c86167e060a9f0d84234a0220866c",
         "98631523c7fdb62e4611d2a94aa14f787ce3e518a9b9b6f0d3142ec2ecbd8e15"
@@ -693,11 +706,19 @@
     },
     "games/magic/src/presentation/rules-layout.ts": {
       "before": "3d517e111b6522619b399a66b5085d23b0ca157a4e7f984b4aff606ab1ab6221",
-      "after": "b5745fe15f83da08eb957a4d675d8f14775de15528fa3df3478d6ecdb2e595fd",
-      "reverseEdits": [{ "start": 19, "count": 2, "lines": [] }],
+      "after": "3bdbc4ff79e44b91ee092e7151c22c2ec49e6fab76041f819fdd768fee0cff4f",
+      "reverseEdits": [
+        { "start": 216, "count": 1, "lines": [] },
+        { "start": 209, "count": 1, "lines": [] },
+        { "start": 83, "count": 4, "lines": [] },
+        { "start": 77, "count": 5, "lines": [] },
+        { "start": 31, "count": 4, "lines": [] },
+        { "start": 19, "count": 2, "lines": [] }
+      ],
       "historicalHashes": [
-        "f6ec36f29d36fbf909868ce240e03a487bbb4a2413af33d3c52f8e7641274952",
-        "845643c0a7504f4ed7dadff528ca75e1e818bdfe560f087e6ae91817d0013e40"
+        "845643c0a7504f4ed7dadff528ca75e1e818bdfe560f087e6ae91817d0013e40",
+        "b5745fe15f83da08eb957a4d675d8f14775de15528fa3df3478d6ecdb2e595fd",
+        "f6ec36f29d36fbf909868ce240e03a487bbb4a2413af33d3c52f8e7641274952"
       ],
       "historicalSourceReceipt": {
         "file": "games/magic/fixtures/accuracy/host-worker/source-proof.json",
@@ -716,8 +737,9 @@
     "games/magic/src/presentation/modern-heading-font.ts": "68cbf2cc9ae9a634a6c04923dcbe7a0523c494b8e79b4a2c07226f42237da7de",
     "games/magic/src/presentation/modern-land-layers.ts": "fb8f95ee58f65514e94adfd6432cf137a4d2f4ce5ca200d5749e14db1d96281e",
     "games/magic/src/presentation/modern-printing-profile.ts": "0a6e5c6e32b7cbf82b96808b732d497f015aee03e04844cb4bd89171b0df6443",
-    "games/magic/src/presentation/modern-printing-profiles.ts": "291212af5224b3665b1e0dbb3ad4958d2e99403e930905a6a56d68df7c9e3c91",
+    "games/magic/src/presentation/modern-printing-profiles.ts": "7074e0286cbf75ed91a0fac7cf2a8817c511f0bdc528ddb8eeb619e85109a916",
     "games/magic/src/presentation/m21-walker-materials.ts": "bd44d33b3853765dbfe7022369a2c5ac12ad67f0aac188c839760a86b8f7d03e",
-    "games/magic/src/presentation/m21-artifact-paper.ts": "5472a86b8a5ef4e378a84a961f65757086ee74a865a41e16157857c6db4690a8"
+    "games/magic/src/presentation/m21-artifact-paper.ts": "5472a86b8a5ef4e378a84a961f65757086ee74a865a41e16157857c6db4690a8",
+    "games/magic/src/presentation/modern-stats-text.ts": "7ec79dee76fe4be58eb06dfe2efde594923a3d595cbfb133fc90bef7de8976fc"
   }
 }

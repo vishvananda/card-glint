@@ -218,6 +218,9 @@ try {
       const faces = ['W', 'U', 'B', 'R', 'G'].map((color) => ({
         ...base,
         name: color + ' adept',
+        // Preserve the variable-power glyph as well as ordinary numerals.
+        power: color === 'U' ? '*' : base.power,
+        toughness: color === 'U' ? '4' : base.toughness,
         colors: [color],
         manaSymbols: ['2', color],
       }));
