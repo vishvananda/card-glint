@@ -94,6 +94,44 @@ npx prettier --write games/magic/fixtures/accuracy/m21/current-footer-content-ce
 node tests/magic-m21-footer-content-census.mjs
 ```
 
+## Post-release footer scoring check
+
+M21 calibration and modern defaults ship in 0.6.12. The
+[fixed-cell footer diagnostic](current-footer-region-diagnostic.json) compares
+cached 0.6.11 and 0.6.12 faces with the same Original inputs and frozen scan poses.
+It uses contrast-normalized HSV value, filled-ink overlap, edge F1 and distance.
+The full 297-card pass uses one Node process and no browser.
+
+The fixed cells improve on the edge metric for every printing. Their nonfoil
+means are:
+
+| Cell           | 0.6.11 edge F1 /100 | 0.6.12 edge F1 /100 |
+| -------------- | ------------------: | ------------------: |
+| Collector rows |              60.069 |              87.811 |
+| Artist area    |              65.504 |              91.876 |
+| Copyright area |              66.539 |              85.157 |
+
+These cells do not yet isolate each field. Some reference lettering reaches a
+cell edge or crosses into the neighboring row. The report flags those cases and
+does not approve a regional fit. The [method review](footer-region-method-review.json)
+records the 41 inspected printings and their disposition. Fractional raster shifts also improve filled
+overlap while lowering edge F1, so their placement suggestions remain unadopted.
+The released renderer and frozen whole-card scores retain their values.
+
+The next measurement change needs isolated painter masks and scan-only footer
+field segmentation. It must retain the fixed frame poses, preserve punctuation,
+detect missing ink and reject neighboring-field contamination. Cache the footer
+planes by source hash to avoid decoding illustrations for repeated comparisons.
+
+```sh
+node games/magic/tools/accuracy/modern-footer-region-census.mjs \
+  INPUTS RELEASED_NATIVE CURRENT_NATIVE SCORES \
+  games/magic/fixtures/accuracy/m21/current-footer-region-diagnostic.json
+npx prettier --write games/magic/fixtures/accuracy/m21/current-footer-region-diagnostic.json
+node tests/magic-modern-footer-regions.mjs
+node tests/magic-m21-footer-region-diagnostic.mjs
+```
+
 ## Earlier component reviews
 
 The unreleased calibration branch is at profile revision 11. The
