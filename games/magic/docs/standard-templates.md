@@ -1,11 +1,11 @@
 # Standard template defaults
 
-The [catalog](fixtures/templates/mse-standard.json) records numeric layout facts
+The [catalog](../fixtures/templates/mse-standard.json) records numeric layout facts
 and font names from Full Magic Pack revision
 `16f1d13bb7f5924613fc1ddc25da582beccfefb6`. Each style has its source URL and
 SHA-256. Dynamic expressions are marked unresolved; they are not evaluated or
 copied into the renderer. Images remain external references under the
-[Magic pack notice](NOTICE.md).
+[Magic pack notice](../NOTICE.md).
 
 Coordinates retain the source's native pixel dimensions. Text sizes are points:
 MSE's [`Font::toWxFont`](https://github.com/twanvl/MagicSetEditor2/blob/master/src/data/font.cpp)

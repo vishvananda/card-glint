@@ -1,6 +1,6 @@
 # Completing a set calibration
 
-The [progress ledger](fixtures/accuracy/calibration-progress.json) is the source of
+The [progress ledger](../fixtures/accuracy/calibration-progress.json) is the source of
 truth for completion. It covers the frozen 272-major-set inventory and keeps an
 explicit denominator for each frame/color/layout variant. The initial batch is
 Alpha, Beta, Unlimited, Revised, Eighth, M21, Arabian Nights, Antiquities, The Dark,
@@ -17,7 +17,7 @@ diagnostic scores are not automatically deployed to a review service, and the
 ledger's complete-set release checks remain open.
 
 The early-reprint group now has integrated frame/color, original-mana and heading
-candidates. [Title evidence](fixtures/accuracy/early-reprint-title.json) covers
+candidates. [Title evidence](../fixtures/accuracy/early-reprint-title.json) covers
 690 native renders and 683 accepted scan comparisons. Names use filled gray
 Goudy lettering with a dark shadow; both wording modes share the printing style.
 The repeated-validation title index improves as follows:
@@ -37,7 +37,7 @@ whether the remaining offsets come from normalization or printing variation.
 There are no per-card title offsets. Other text, expansion symbols, final
 whole-card review and publication remain part of the grouped release work.
 
-The [type-line evidence](fixtures/accuracy/early-reprint-type.json) adds 690 exact
+The [type-line evidence](../fixtures/accuracy/early-reprint-type.json) adds 690 exact
 native replays and 683 scan comparisons, using filled MPlantin strokes and the
 existing frame registrations. Fourth Edition lands now share the other materials'
 absolute type-line origin. Reused-validation type indexes rise from 0.525 to 0.772
@@ -48,14 +48,14 @@ cards. A separate gold-profile experiment did little to resolve that cluster, so
 the shared set profile is retained. These results do not close the remaining
 heading outliers or the overall set review.
 
-The [original-wording catalog](fixtures/accuracy/early-reprint-wording.json) now
+The [original-wording catalog](../fixtures/accuracy/early-reprint-wording.json) now
 includes 690 reviewed type lines, 27 additional rules/flavor entries, three printed
 artist credits and Fourth Edition Drain Life's original cost. The public resolvers
 reproduce the 690 original calibration inputs, preserve 37 earlier body reviews
 and leave Oracle wording unchanged. This validates the supplied text, not its
 typography; most rules still come from the caller's printing-specific provider data.
 
-The [footer evidence](fixtures/accuracy/early-reprint-footer.json) adds shared
+The [footer evidence](../fixtures/accuracy/early-reprint-footer.json) adds shared
 artist, copyright and power/toughness profiles for the same three sets. Credits
 use filled MPlantin ink with a separate shadow; copyright uses light or dark ink
 according to the printed material. Explicit host visibility, translation, legal
@@ -181,13 +181,13 @@ are finished, so regeneration preserves their provenance.
 The historic major-set audit's `complete` field means that its sampled audit
 finished. It must not be used as this ledger's set-completion flag.
 
-The [initial color-gap study](fixtures/accuracy/showcased-color-gap-review.json)
+The [initial color-gap study](../fixtures/accuracy/showcased-color-gap-review.json)
 is retained as historical evidence. M21's old color sampling windows overlapped
 the black art keyline; fixed clear-rail windows now separate pigment from geometry.
 White and Beta green candidates remain rejected. Other historical M21 outer-frame
 pigment fits need this audit too; paper fits are independent.
 
-The [M21 black adoption](fixtures/accuracy/m21-normal-color-adoption.json) closes
+The [M21 black adoption](../fixtures/accuracy/m21-normal-color-adoption.json) closes
 the ordinary nonlegendary black-frame pigment gap where scan registration passes.
 All 292 nonfoil printings were rendered: 40 change, 252 stay byte-identical, and
 central artwork, rules-box paper and outer-stock targets remain unchanged. The
@@ -195,7 +195,7 @@ central artwork, rules-box paper and outer-stock targets remain unchanged. The
 reserved names improve from 2.15 to 1.79. These are regional color distances,
 not whole-card accuracy percentages. All cohorts reuse development references.
 
-The [boundary receipt](fixtures/accuracy/m21-normal-boundaries.json) stores
+The [boundary receipt](../fixtures/accuracy/m21-normal-boundaries.json) stores
 independent scan-only scale/translation/rotation/skew transforms, reference
 hashes and frozen templates. It accepts 81 of 82 ordinary white/black scans and
 passes all 20 known-pose tests with a maximum residual of 0.19 canonical pixels.
@@ -206,7 +206,7 @@ installed in the review service. Colored artifacts, legendary crowns and
 planeswalkers remain separate gaps. Full-card, typography and release checks
 remain open; this is not complete-set certification.
 
-The [mono-color extension](fixtures/accuracy/m21-mono-boundaries.json) keeps the
+The [mono-color extension](../fixtures/accuracy/m21-mono-boundaries.json) keeps the
 white/black templates and poses identical and adds 41 blue and 41 green scans
 with passing method checks. Across all five colors, 205/206 scans pass boundary
 consistency, but only 163 are validated: red's known scale/skew recovery misses
@@ -215,7 +215,7 @@ scan poses remain rejected until the method improves. Passing real-scan
 correlations alone cannot close normalization. The independent test result is
 48/50, with 10/10 passing separately for white, blue, black and green.
 
-The [existing-pigment audit](fixtures/accuracy/m21-existing-pigment-audit.json)
+The [existing-pigment audit](../fixtures/accuracy/m21-existing-pigment-audit.json)
 remeasures blue, red and green in the corrected rail windows. Blue still needs a
 shared refit: its median error is 6.26 and 36 of 41 references exceed 5. Green's
 unchanged source passes aggregate gates, but five absolute outliers and visible
@@ -223,7 +223,7 @@ hue/texture differences keep its task open. Red's diagnostics remain unvalidated
 until its normalization method passes. No new rendering values are adopted by
 this audit, and no scan is excluded merely for having an inconvenient color.
 
-The [refined boundary study](fixtures/accuracy/m21-component-boundaries-v2.json)
+The [refined boundary study](../fixtures/accuracy/m21-component-boundaries-v2.json)
 supersedes those comparison poses. Cubic edge-profile interpolation and finer
 fitting steps pass all 80 known-transform tests, including the previously failing
 red and dual-land cases; the worst residual is 0.22 canonical pixels. The mono-color
@@ -234,7 +234,7 @@ Wind-Scarred Crag and three Plains scans remain rejected. These local comparison
 transforms do not change renderer geometry or replace historical color scores.
 Color proposals must be rescored against the refined poses before adoption.
 
-The [stock coverage receipt](fixtures/accuracy/modern-land-stock-transfer.json)
+The [stock coverage receipt](../fixtures/accuracy/modern-land-stock-transfer.json)
 extends the existing M21 outer-border target to 33 lands and 12 two-color cards.
 Native replay checks all 292 nonfoil M21 printings plus 13 actual legendary lands
 from other sets: 45 change and 260 remain pixel-identical. Thirteen synthetic
@@ -252,7 +252,7 @@ land paper/gradients, crowns, typography, foil-only references and full-card sco
 remain open. The black-level task stays partial until its interior-ink obligation
 is met.
 
-The [white-source review](fixtures/accuracy/m21-white-default.json) validates the
+The [white-source review](../fixtures/accuracy/m21-white-default.json) validates the
 unchanged ordinary M21 white-frame pigment. All 42 references have accepted
 normalization and native replay. Their largest regional color distance is 2.87;
 every one of ten ordered texture-bin colors is within 3.80, below the existing
@@ -263,7 +263,7 @@ An extra color curve made reserved cards worse, so this is a measured
 frequency, geometry, crowns and typography remain open; this does not certify
 the complete white card treatment.
 
-The [M21 wording audit](fixtures/accuracy/m21-original-wording.json) supplies
+The [M21 wording audit](../fixtures/accuracy/m21-original-wording.json) supplies
 original rules to all 292 ordinary nonfoil inputs: 287 exact-printing MTGJSON
 records and five scan-reviewed empty bodies. The earlier land color comparison
 accidentally used Oracle fallback despite its original-mode flag. Both released
@@ -280,7 +280,7 @@ approval. Original type lines, flavor formatting and MTGJSON transcription
 outliers still require their own review. No typography task is closed by this
 input audit.
 
-The [early-expansion wording audit](fixtures/accuracy/early-expansion-original-wording.json)
+The [early-expansion wording audit](../fixtures/accuracy/early-expansion-original-wording.json)
 provides original inputs for all 316 ordinary Arabian Nights, Antiquities and
 The Dark printings. Every type line was read from its exact scan; 215 differ from
 the previous Oracle-based inputs. Rules use 309 exact-printing MTGJSON records
@@ -303,14 +303,14 @@ The corrected 316-card native replay
 preserves every pixel outside type/rules/flavor regions. Arabian Nights Mountain
 retains its red palette when the type becomes `Land`; Goblin Caves and Goblin
 Shrine retain enchantment frames for `Enchant Land`. Explicit frame palettes
-also survive wording changes. The [compatibility receipt](fixtures/accuracy/early-expansion-wording-frame-compatibility.json)
+also survive wording changes. The [compatibility receipt](../fixtures/accuracy/early-expansion-wording-frame-compatibility.json)
 preserves the three failed first-pass renders as evidence, checks all 316
 historical and original-input frame/material selectors, and regenerates all
 292 M21 inputs byte-for-byte unchanged. This clears the wording regressions;
 unsupported frame materials, text fitting and the 34 unresolved scan poses
 remain open.
 
-The [original-wording text pilot](fixtures/accuracy/early-expansion-text-pilot.json)
+The [original-wording text pilot](../fixtures/accuracy/early-expansion-text-pilot.json)
 fits 18 existing development names, six per early-expansion set, using the
 previous Alpha search objective and frozen scan-only rasters. Each untouched
 layout and raster replays exactly; every fitted raster preserves all pixels
@@ -331,7 +331,7 @@ is wording evidence only. Aladdin's Lamp additionally needs its original two
 `5` cost numerals and the disc around the inline `X`; those are separate from
 the text-fit parameters.
 
-The [complete footer wording review](fixtures/accuracy/early-expansion-footer-wording.json)
+The [complete footer wording review](../fixtures/accuracy/early-expansion-footer-wording.json)
 extends that inspection to all 316 ARN/ATQ/DRK printings, including the 34 whose
 scan geometry remains rejected. ARN and ATQ print `Illus. ©` without a year;
 DRK adds `1994`. Nineteen printed artist strings differ from canonical metadata:
@@ -343,7 +343,7 @@ font and spacing remain a separate fitting task. The 19 spelling/attribution
 exceptions are now included in the public artist resolver and accuracy adapter;
 no rejected scan pose is certified by this wording review.
 
-The [shared text candidate study](fixtures/accuracy/early-expansion-shared-text.json)
+The [shared text candidate study](../fixtures/accuracy/early-expansion-shared-text.json)
 uses 79 development names to select one layout per set, then freezes those values
 for 189 reserved printings. Regional text indices improve from 0.424 to 0.540
 on ARN, 0.408 to 0.556 on ATQ, and 0.396 to 0.481 on DRK. Every candidate fits
@@ -353,7 +353,7 @@ or whole-card accuracy. Nineteen reserved printings regress by more than 0.05;
 the smaller printed type-size class still needs modeling. ATQ's development
 passages are too long to establish its short-text centering cutoff.
 
-Visual review also found [two DRK source outliers](fixtures/accuracy/drk/annotations-text-outliers.json):
+Visual review also found [two DRK source outliers](../fixtures/accuracy/drk/annotations-text-outliers.json):
 Carnivorous Plant has no printed rules, despite MTGJSON's `originalText` saying
 Defender; Hidden Path's flavor attribution is inline. The public resolver now
 preserves those original forms without changing Oracle wording. The historical
@@ -361,19 +361,19 @@ candidate scores retain the incorrect input and expose it as a limitation;
 refresh those inputs before the next fitting/replay pass. Renderer adoption,
 illustrator geometry, native full-set replay and release remain open.
 
-The [corrected-input replay](fixtures/accuracy/early-expansion-corrected-inputs.json)
+The [corrected-input replay](../fixtures/accuracy/early-expansion-corrected-inputs.json)
 now renders all 316 cards with those reviewed corrections. Exactly 21 renders
 change: 19 artist credits and two text bodies. Every pixel outside the affected
 regions remains identical to the preserved baseline. Original-input readiness
 is current again; the shared typography study above still uses its original
 historical inputs. A separate smaller-type-size trial uses the new baseline.
 
-The [M21 input compatibility check](fixtures/accuracy/m21-original-input-compatibility.json)
+The [M21 input compatibility check](../fixtures/accuracy/m21-original-input-compatibility.json)
 also repeats all 292 original inputs with their printing-source records and
 reviewed annotations. They remain identical. This extends input readiness;
 it does not relabel the existing native images or scores as a new measurement.
 
-The [compact-size trial](fixtures/accuracy/early-expansion-compact-text.json)
+The [compact-size trial](../fixtures/accuracy/early-expansion-compact-text.json)
 uses that corrected baseline and the same 79 development names. Its shared
 per-set size classes improve 166 of 189 reserved printings with no overflow.
 Reserved mean text indices are ARN 0.424 → 0.546, ATQ 0.408 → 0.560, and
@@ -385,14 +385,14 @@ Keep these candidates provisional while refining shared size/centering rules
 and fitting artist-credit placement and lettering. No per-card text defaults
 or scan-pose changes were adopted.
 
-A [width/leading refinement](fixtures/accuracy/early-expansion-width-text.json)
+A [width/leading refinement](../fixtures/accuracy/early-expansion-width-text.json)
 retains the same compact candidate for ARN and ATQ. The DRK training winner
 widens the panel four pixels and reduces leading, but its 71 reserved printings
 fall from 0.511 to 0.494. Forty-three worsen relative to the prior candidate;
 twenty-six improve. Reject that refinement rather than adopting the training
 gain. Neither text study has changed runtime defaults.
 
-A separate [em-dash diagnostic](fixtures/accuracy/early-expansion-dash-text.json)
+A separate [em-dash diagnostic](../fixtures/accuracy/early-expansion-dash-text.json)
 identifies an unbreakable-token problem: `creature—comes` forces Rukh Egg into
 the compact size class. Allowing a break after the inline dash restores regular
 type and improves its two text indices from 0.393/0.395 to 0.627/0.623. Banshee
@@ -404,7 +404,7 @@ or a released renderer change. Test style boundaries and broad layout behavior
 before adoption. Rukh Egg's printed discretionary hyphen in `ex-actly`, residual
 font weight and sparse-text centering remain separate review items.
 
-The [native dash integration](fixtures/accuracy/early-expansion-dash-native.json)
+The [native dash integration](../fixtures/accuracy/early-expansion-dash-native.json)
 extends that rule across style-run boundaries and tests attribution prefixes,
 inline symbols, explicit newlines, unused-break shaping and soft hyphens. Its
 316-card replay changes only the two Rukh Egg printings and Goblin Shrine;
@@ -415,21 +415,21 @@ shared typography, which was unadopted at that stage. Goblin Shrine's pose remai
 rejected and unscored. No set-wide text-calibration approval follows from this
 wrapping fix; historical 0.4.6 measurements remain separately identified.
 
-The [font-proportion study](fixtures/accuracy/early-expansion-text-proportions.json)
+The [font-proportion study](../fixtures/accuracy/early-expansion-text-proportions.json)
 keeps mana discs round while measuring letter width independently. Stable size
 classes improve the reused reserved sample to ARN 0.570 and ATQ 0.597; DRK keeps
 its earlier candidate at 0.515 because the new proportions regress there. These
 were private candidates at this stage, not independent validation. Runtime
 adoption follows below.
 Thirteen regressions greater than 0.05 remain across 189 reserved printings.
-The [short ATQ review](fixtures/accuracy/atq/short-text-review.json) supports
+The [short ATQ review](../fixtures/accuracy/atq/short-text-review.json) supports
 large centered flavor on Candelabra, while the next longer passages stay left
 aligned. The 130-character gate remains a shared hypothesis, not a proven
 historical typesetting formula.
 
 Before final typography adoption, seven original inputs receive exact-printing
-corrections: [Rukh Egg](fixtures/accuracy/arn/annotations-text-outliers.json)
-allows the printed `ex-actly` break; [Mishra's Factory and Candelabra](fixtures/accuracy/atq/annotations-text-outliers.json)
+corrections: [Rukh Egg](../fixtures/accuracy/arn/annotations-text-outliers.json)
+allows the printed `ex-actly` break; [Mishra's Factory and Candelabra](../fixtures/accuracy/atq/annotations-text-outliers.json)
 retain the final `Assem-bly` break, printed apostrophe, and missing activation
 colon respectively. Soft hyphens permit wrapping without forcing a line.
 The public resolver preserves Oracle wording and records scan provenance.
@@ -437,7 +437,7 @@ Recheck candidates against these corrected inputs on both sides. The scans
 also show uncircled generic activation costs; review that broader symbol-style
 policy before treating body text calibration as complete.
 
-The [native typography adoption](fixtures/accuracy/early-expansion-text-runtime.json)
+The [native typography adoption](../fixtures/accuracy/early-expansion-text-runtime.json)
 replays the retained shared settings with those corrected original inputs on
 both sides. All 316 cards render and every pixel outside body text is unchanged;
 all 282 accepted comparisons match the private candidate painter exactly. The
@@ -453,11 +453,11 @@ Review Gaea's Touch for narrower wrapping, Bog Imp and Sunken City for short
 heading/vertical placement, King Suleiman for quotation formatting, and
 Transmute Artifact for compact-text placement. Investigate shared frame/color
 insets and source-style rules before introducing any printing-specific layout.
-The [input compatibility extension](fixtures/accuracy/early-expansion-break-inputs.json)
+The [input compatibility extension](../fixtures/accuracy/early-expansion-break-inputs.json)
 proves that the new reviews change only seven bodies, preserve all unrelated
 face fields, and leave all 292 M21 adapter outputs identical.
 
-Fresh [whole-card scores](fixtures/accuracy/early-expansion-text-scores.json)
+Fresh [whole-card scores](../fixtures/accuracy/early-expansion-text-scores.json)
 increase the existing structural aggregate from 0.652 to 0.702 for ARN,
 0.634 to 0.692 for ATQ, and 0.645 to 0.681 for DRK. The separately labeled
 reviewed-credit aggregation improves too. Frame scoring strips overlap body
@@ -467,7 +467,7 @@ rules ink in a new metric revision and rescore both sides before using the
 frame component to judge geometry independently. Hosted charts have not
 adopted these local development scores or their reviewed-credit policy.
 
-The [Dark short-text follow-up](fixtures/accuracy/early-expansion-dark-short-text.json)
+The [Dark short-text follow-up](../fixtures/accuracy/early-expansion-dark-short-text.json)
 uses a narrower centered block and a shared line-count optical offset. Against
 identical corrected wording and fixed scan poses, all 17 affected scored cards
 improve and 80 remain unchanged: mean text-fit index 0.520 → 0.577. The 316-card
@@ -475,7 +475,7 @@ native replay preserves every non-body pixel and every ARN/ATQ face. Oracle
 fitting covers all three alignment choices. These repeatedly inspected scans
 remain development references, not independent validation.
 
-The [five-body wording receipt](fixtures/accuracy/early-expansion-followup-wording.json)
+The [five-body wording receipt](../fixtures/accuracy/early-expansion-followup-wording.json)
 isolates activation punctuation and inline flavor attributions on Drowned,
 Miracle Worker, Marsh Gas, Grave Robbers and Brothers of Fire. Other fields and
 all 292 M21 adapter outputs remain exact. Font weight, historical activation
@@ -484,7 +484,7 @@ still need review. The 34 unresolved poses remain unscored. Full-card aggregates
 for DRK are marked historical until they are recomputed with frame regions that
 do not include rules ink. This batch is included in 0.4.8; rules/flavor stay partial.
 
-The [red-frame boundary extension](fixtures/accuracy/early-expansion-boundary-normalization.json)
+The [red-frame boundary extension](../fixtures/accuracy/early-expansion-boundary-normalization.json)
 adds comparison poses for seven Antiquities and seventeen The Dark scans. It fits
 the art-box outline and checks the rules box independently, so a misplaced panel
 cannot help choose the scan transform. All 240 known-pose probes for the accepted
@@ -501,7 +501,7 @@ rasters use the tested canonical-resize-then-affine path. Renderer defaults and
 hosted review templates are unchanged. Red source/geometry and color fitting are
 next; outer-stock/corner certification and complete-set checks remain open.
 
-The [red-frame integration](fixtures/accuracy/early-expansion-red-frame.json)
+The [red-frame integration](../fixtures/accuracy/early-expansion-red-frame.json)
 uses those 24 qualified poses to compare ABU, Fourth and Seventh assets on
 identical opaque regions. Fourth wins for both Antiquities and The Dark, including
 the reserved geometry and texture checks. Shared set/color transforms replace
@@ -523,7 +523,7 @@ proof. This batch targets 0.4.9. Red headings, mana, set symbols and lower detai
 still need calibration; outer-stock/corner checks, fresh full-card aggregates and
 hosted template updates remain open.
 
-The [artist integration](fixtures/accuracy/early-expansion-artist.json) adopts
+The [artist integration](../fixtures/accuracy/early-expansion-artist.json) adopts
 shared MPlantin credit geometry and edge lettering for ARN, ATQ and DRK, including
 the reviewed copyright prefix/year. All 316 cards render; 268 match the fitting
 painter exactly. Every pixel outside the artist region is unchanged. Artist
@@ -531,7 +531,7 @@ overlap improves on all 282 accepted scans and all 189 reserved study printings.
 The 34 unresolved poses remain unscored. Artist task approval is recorded per
 variant only where its full printing scope has accepted measurements.
 
-Fresh [whole-card diagnostics](fixtures/accuracy/early-expansion-artist-scores.json)
+Fresh [whole-card diagnostics](../fixtures/accuracy/early-expansion-artist-scores.json)
 retain the older aggregate alongside a separately named, reviewed-credit
 aggregation. The older client policy excludes legal credits, so its aggregate
 does not change when only the artist region improves. With those reviewed
@@ -541,7 +541,7 @@ indices, not percentages of correctness. Carry the exact printing-credit proof
 through client/server score validation before using this aggregation in hosted
 charts; do not mix it with the old eligibility policy.
 
-The [ordinary red adoption](fixtures/accuracy/m21-red-color-adoption.json)
+The [ordinary red adoption](../fixtures/accuracy/m21-red-color-adoption.json)
 measures all 42 ordinary red M21 printings against the refined scan-only poses.
 One curve fitted on seven names passes every regional color/texture gate for
 ten reserved and twenty-five additional names. Median rail-color error improves
@@ -564,7 +564,7 @@ largest improvement. Blue and green candidates remain rejected by shadow or
 contrast gates. Previously stale historical audits are retained as stale rather
 than advanced through an unproven compatibility chain.
 
-The [Dark land/gold extension](fixtures/accuracy/early-expansion-dark-frames.json)
+The [Dark land/gold extension](../fixtures/accuracy/early-expansion-dark-frames.json)
 adds the seven previously excluded materials to frame/color coverage. Scan-only
 affine normalization passes all 18 directed same-material comparisons and
 independent synthetic recovery checks. Source geometry was selected before
@@ -577,7 +577,7 @@ historical scores. The ledger keeps these small cohorts partial: title, type,
 rules, mana/set symbols, artist and stats still need review, and land bevel and
 thin outer-outline differences remain visible. No hosted scores were uploaded.
 
-The [Dark typography transfer](fixtures/accuracy/early-expansion-dark-typography.json)
+The [Dark typography transfer](../fixtures/accuracy/early-expansion-dark-typography.json)
 extends the existing set title, artist and power/toughness profiles to those
 seven cards without fitting new values. All seven improve on fixed original
 inputs and scan poses. The local whole-card structural index changes from
@@ -591,7 +591,7 @@ Shadows has a small title-contrast regression. This batch targets
 and complete-set certification remain open. These are local development
 diagnostics; hosted charts have not adopted them.
 
-The [Dark symbol fit](fixtures/accuracy/early-expansion-dark-symbols.json)
+The [Dark symbol fit](../fixtures/accuracy/early-expansion-dark-symbols.json)
 measures the crescent on frozen scan-only poses, after comparing the Conjurer
 and Keyrune contours. Independent width/height and placement replace the former
 bulk profile. The oversized white source backing is removed; shared filled ink
@@ -606,7 +606,7 @@ Ball Lightning as unscored. Black stroke-width mismatch and frame-texture color
 remain review items. The ledger retains partial status; these are regional
 0.4.19 measurements, not complete-set certification or hosted scores.
 
-The [Dark mana refinement](fixtures/accuracy/early-expansion-dark-mana.json)
+The [Dark mana refinement](../fixtures/accuracy/early-expansion-dark-mana.json)
 uses opaque-source paper sampling and a shared 0.2 px ink expansion for black
 and red. Filled overlap, continuous coverage, area and outline diagnostics
 replace the initial overlap-only selection, which made red too heavy. Values
@@ -623,7 +623,7 @@ certification remain open. These are local 0.4.20 diagnostics, not hosted scores
 
 ## M21 scan normalization census
 
-The [scan-only certificate](fixtures/accuracy/m21/normalization-native-review.json)
+The [scan-only certificate](../fixtures/accuracy/m21/normalization-native-review.json)
 covers all 297 ordinary printings in 17 physical frame families. All 1,716
 known-raster recovery controls pass the predeclared 0.35-pixel RMS and 0.6-pixel
 maximum corner-error limits in the 488×680 comparison space; the largest measured
@@ -660,7 +660,7 @@ release status remain separate checks.
 
 The M21 stock adoption is recorded separately from the historical modern-default
 and style receipts in
-[stock-native-review-r2.json](fixtures/accuracy/m21/stock-native-review-r2.json).
+[stock-native-review-r2.json](../fixtures/accuracy/m21/stock-native-review-r2.json).
 It covers all 297 native faces and etchings, 292 nonfoil edge references, and
 native parity with named-M21 selection. The five foil-only printings are
 transfer controls, never pigment targets. Small changes to translucent interior

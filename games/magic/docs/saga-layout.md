@@ -3,7 +3,7 @@
 This is a measured improvement pass, not a claim of scan identity. It compares
 all 14 ordinary Dominaria Sagas plus six Saga faces from THB, KHM, MH2, DMU and
 NEO against the frozen v0.2.15 audit. The receipt is
-[`fixtures/accuracy/saga-native.json`](fixtures/accuracy/saga-native.json).
+[`fixtures/accuracy/saga-native.json`](../fixtures/accuracy/saga-native.json).
 
 ## Assets and rules investigated
 
@@ -96,7 +96,7 @@ uses the existing WUBRG pair order. Gold paper and frame material remain intact;
 land and transforming plates keep their existing treatment. The prepared
 overlay is cached by decoded source identity, with no mask readback.
 
-The [Kaldheim receipt](fixtures/accuracy/saga-colors.json) covers all 20 ordinary
+The [Kaldheim receipt](../fixtures/accuracy/saga-colors.json) covers all 20 ordinary
 nonfoil Sagas and all ten color pairs against identical v0.2.16 inputs. Seven
 scans pass the existing frame registration gates; the other thirteen remain
 visibly raw and unscored. This is visual coverage of the missing pieces, not a

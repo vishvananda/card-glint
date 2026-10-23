@@ -45,7 +45,7 @@ an incomplete progress report; it cannot certify complete coverage.
 
 Keep raster previews and source assets outside Git. Submit portable measurements,
 source receipts, rejected cases and profile values using the
-[set contribution guide](../../../calibrating-a-set.md). Record source-asset
+[set contribution guide](../../../docs/calibrating-a-set.md). Record source-asset
 limitations separately from completed measurements. Experimental reconstructed
 Alpha assets remain preview-only.
 
@@ -753,7 +753,7 @@ and whole-card scoring are still required before promoting the Unlimited profile
 ## Optional profile preparation and Unlimited dual-paper replay
 
 The optional stock-mask placement and source-bound mana ink policy are documented
-in the [contribution guide](../../../calibrating-a-set.md). Their preparation
+in the [contribution guide](../../../docs/calibrating-a-set.md). Their preparation
 receipt has 302 actual native Unlimited Original before/after pairs, all identical
 while the options are inactive, plus 25,200 metadata cases across 15 sets. It does
 not claim native Alpha/Beta or other-set pixel parity. New or changed full profiles

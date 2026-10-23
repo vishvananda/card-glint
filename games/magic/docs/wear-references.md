@@ -2,7 +2,7 @@
 
 The game-neutral renderer's worn-gloss treatment was informed by these Magic
 card condition references. No reference photographs or card artwork are bundled
-in the showcase. The pack's [fan notice and asset sources](NOTICE.md) apply.
+in the showcase. The pack's [fan notice and asset sources](../NOTICE.md) apply.
 
 - [Quiet Speculation: Playing the Damaged Lottery](https://www.quietspeculation.com/2020/12/playing-the-damaged-lottery/)
   shows played Magic cards with uneven white border loss and corner abrasion.

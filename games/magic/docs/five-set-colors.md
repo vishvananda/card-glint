@@ -23,8 +23,8 @@ Candidates are also recolored and composited through the actual asset pipeline,
 then checked again on reserved scans. Frame texture that an HSB transform cannot
 reproduce remains an asset issue. Values do not claim whole-card accuracy.
 
-- [Fit measurements, scan hashes and frozen poses](fixtures/accuracy/five-set-hsb-results.json)
-- [Raster admission, retained components and asset hashes](fixtures/accuracy/five-set-hsb-adoption.json)
+- [Fit measurements, scan hashes and frozen poses](../fixtures/accuracy/five-set-hsb-results.json)
+- [Raster admission, retained components and asset hashes](../fixtures/accuracy/five-set-hsb-adoption.json)
 
 Reproduce with `five-set-hsb.mjs <inventory-directory>`, then
 `five-set-hsb-texture.mjs` and `five-set-hsb-adopt.mjs` under `tools/accuracy/`.

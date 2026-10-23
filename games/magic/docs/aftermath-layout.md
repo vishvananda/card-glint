@@ -3,7 +3,7 @@
 The first pass covers all 15 ordinary AKH and 10 HOU aftermath printings with a
 nonfoil finish. It replaces two resized ordinary frames with pinned complete
 CardConjurer plates, clipped by half to preserve each color. No reference scans
-or illustration binaries are shipped. Source attribution is in [NOTICE](NOTICE.md).
+or illustration binaries are shipped. Source attribution is in [NOTICE](../NOTICE.md).
 
 The upper and rotated lower art apertures, image clipping, foil windows and
 etching targets share the same panel geometry. Mana shadows rotate with the
@@ -90,7 +90,7 @@ node games/magic/tools/accuracy/aftermath-text-search.mjs aftermath-native-final
 Captures refuse to overwrite an existing audit. Full source hashes, input
 records, registration matrices, rejected fits and raster hashes live under
 ignored `test-results/magic-accuracy/`. The compact
-[receipt](fixtures/accuracy/aftermath-native.json) binds the final audit. The local
+[receipt](../fixtures/accuracy/aftermath-native.json) binds the final audit. The local
 review application supplies original / v0.2.16 / current / red-green views and a
 button to inspect the lower panel upright. No review UI is included in the lib.
 

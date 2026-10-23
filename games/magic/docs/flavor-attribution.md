@@ -12,7 +12,7 @@ Eighth Edition and M21 both put credits at the left.
 
 The renderer uses an explicit set list for the middle group. It does not assume
 that a later retro frame or supplemental reprint uses the original-era policy.
-The [review fixture](fixtures/accuracy/flavor-attribution-policy.json) records
+The [review fixture](../fixtures/accuracy/flavor-attribution-policy.json) records
 printing IDs, source hashes, observations and known exceptions.
 
 Precedence:

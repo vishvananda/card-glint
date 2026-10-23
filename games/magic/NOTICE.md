@@ -48,7 +48,7 @@ U+E997) over its pale circular background. Historical colored mana glyphs
 reference the pinned CardConjurer `img/manaSymbols/old/` collection and
 [Full Magic Pack's old mana font](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/tree/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-mana-old.mse-symbol-font).
 Their original source palettes are rebound during cached preparation; no image
-binaries are redistributed. See [historical mana](historical-mana.md) for choices,
+binaries are redistributed. See [historical mana](docs/historical-mana.md) for choices,
 scan evidence and independent original/Oracle wording behavior.
 
 Replacement base plates (Eighth Edition and M15 Accurate), their masks and
@@ -117,13 +117,13 @@ assets. Power/toughness and artist lettering reference its
 `data/fonts/beleren-bsc.ttf` (Beleren Bold Small Caps), at the same pinned revision.
 Hybrid label interiors reuse the pinned Full Magic Pack neutral paper
 above. The source definitions and measured comparison scope are documented in
-[adventure-layout.md](adventure-layout.md). These remain external references;
+[adventure-layout.md](docs/adventure-layout.md). These remain external references;
 no source artwork, card scans or MSE binaries are included.
 
 Prepared plates and page/pinline/header masks use CardConjurer's
 `img/frames/prepare/regular/` at the same pinned revision. They reuse its M15
 statistics and crown assets and Beleren Bold Small Caps footer font. See
-[prepare-layout.md](prepare-layout.md) for source geometry, scan-bound wording
+[prepare-layout.md](docs/prepare-layout.md) for source geometry, scan-bound wording
 provenance and the ordinary SOS validation scope. These assets remain external
 references and are not redistributed in the showcase.
 

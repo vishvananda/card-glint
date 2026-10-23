@@ -38,7 +38,7 @@ their own scores. Rejected models remain raw and unscored. Text comparison uses
 local dark-letter contrast and edge distance, not RGB/color similarity.
 
 Final measurements and hashes are recorded in
-[the compact receipt](fixtures/accuracy/split-native.json). They are exploratory
+[the compact receipt](../fixtures/accuracy/split-native.json). They are exploratory
 cohort results, not independent typography validation or whole-card accuracy
 percentages. Size/spacing trials are shared by set, never saved per card.
 
@@ -82,10 +82,10 @@ for the stricter accepted cohort. Missing Guild Kit expansion symbols, source
 watermark omissions, artist capitalization, fine symbol sizing, paper colors
 and occasional line wraps remain visible review items.
 
-The [M15 receipt](fixtures/accuracy/split-modern.json) records 14/20 accepted
+The [M15 receipt](../fixtures/accuracy/split-modern.json) records 14/20 accepted
 fits. RNA left/right mean text-edge F1 changes from 0.406/0.371 to 0.552/0.380.
 Expansion, Colossus and Deploy retain wrapping regressions and remain flagged.
-The [modern Fuse receipt](fixtures/accuracy/split-modern-fuse.json) records 4/5
+The [modern Fuse receipt](../fixtures/accuracy/split-modern-fuse.json) records 4/5
 accepted fits; both reserved Wear // Tear printings improve on both halves.
 The 35 previous old/2003 split renders remain pixel-identical after this change.
 These measurements concern the indicated rules regions, not color or total

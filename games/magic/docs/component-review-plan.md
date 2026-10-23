@@ -79,7 +79,7 @@ their full width. Production-matched candidate crops test a shared right edge
 instead of a centered, width-constrained box. Eighteen development cards selected
 `right=451`, `yOffset=3`, retaining the existing font and shadow. Fourth Edition's
 printed Shapeshifter needs parentheses absent from Oracle. The new policy and
-wider metric windows are [frozen together](fixtures/accuracy/4ed/stats-wide-plan.json)
+wider metric windows are [frozen together](../fixtures/accuracy/4ed/stats-wide-plan.json)
 before opening a fresh Revised transfer cohort. Previously viewed Fifth Edition
 cards now count as development/exploratory evidence.
 

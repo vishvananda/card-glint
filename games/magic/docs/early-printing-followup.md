@@ -89,4 +89,4 @@ The per-card mana results and replay hashes are recorded in
 
 Source: [Card Conjurer ABU frame pack](https://github.com/Investigamer/cardconjurer/blob/2fcddba8966156d484cedf54d8214996748dd5e1/js/frames/packABU.js),
 [pinned stripe mask](https://github.com/joshbirnholz/cardconjurer/blob/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/old/abu/dualLand.png).
-Magic imagery belongs to Wizards of the Coast; see [fan notice](NOTICE.md).
+Magic imagery belongs to Wizards of the Coast; see [fan notice](../NOTICE.md).

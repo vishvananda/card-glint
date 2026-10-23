@@ -21,11 +21,11 @@ six preserve the previously approved Revised visual comparison. Revised's
 reviewed values and source masks remain frozen rather than being silently
 replaced by the new fit. Their new diagnostic flags remain visible.
 
-- [Frozen fit](fixtures/accuracy/old-dual-hsb-candidate.json)
-- [Reserved measurements](fixtures/accuracy/old-dual-hsb-results.json)
-- [Exact runtime inventory and reviewed overrides](fixtures/accuracy/old-dual-hsb-runtime.json)
-- [Rejected and unmeasured groups](fixtures/accuracy/old-dual-hsb-review.json)
-- [Source-asset review leads](fixtures/accuracy/old-dual-hsb-assets-review.json)
+- [Frozen fit](../fixtures/accuracy/old-dual-hsb-candidate.json)
+- [Reserved measurements](../fixtures/accuracy/old-dual-hsb-results.json)
+- [Exact runtime inventory and reviewed overrides](../fixtures/accuracy/old-dual-hsb-runtime.json)
+- [Rejected and unmeasured groups](../fixtures/accuracy/old-dual-hsb-review.json)
+- [Source-asset review leads](../fixtures/accuracy/old-dual-hsb-assets-review.json)
 
 This is deliberately less automatic coverage than the earlier combined fits.
 A rejected group receives source colors, not the old combined transform. Hosts
@@ -70,7 +70,7 @@ One reserved full-card render for each of the 53 active profiles gives median
 sampled frame/paper color error **6.22 → 1.00**, relative to the unadjusted source
 assets. Sampled art interiors are identical. These are color distances, not
 whole-card accuracy percentages. See the
-[raster audit](fixtures/accuracy/old-dual-hsb-raster-results.json).
+[raster audit](../fixtures/accuracy/old-dual-hsb-raster-results.json).
 
 The reviewed Revised red profile retains one visible outlier: Stone Giant's
 paper error is 6.11 versus 4.82 unadjusted. Its frame improves, and its appearance
@@ -82,7 +82,7 @@ and sample geometry also contribute.
 
 Urza's Saga, Legacy and Destiny white pass the new gates. The actual Destiny
 Jasmine Seer render reduces frame-contrast error from 2.33 in v0.2.11 to 0.08;
-shadow-chroma error drops from 2.99 to 1.84. The [regression measurements](fixtures/accuracy/old-dual-hsb-regressions.json) retain the renderer and reference identities.
+shadow-chroma error drops from 2.99 to 1.84. The [regression measurements](../fixtures/accuracy/old-dual-hsb-regressions.json) retain the renderer and reference identities.
 Frame textures now recolor near-white
 highlights along with the surrounding paper. The former white-pixel exemption
 created an exaggerated relief effect when paper was darkened. White mana-glyph

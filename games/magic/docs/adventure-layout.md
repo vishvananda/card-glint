@@ -41,7 +41,7 @@ Two CLB reprints instead contain unrelated original text and types on both
 records: Bonecrusher Giant and Embereth Shieldbreaker. These are invalid inputs,
 not font regressions. The adapter now rejects identical unsplit panel text unless
 scan review has supplied independent fields. The
-[reviewed corrections](fixtures/accuracy/adventure-printing-corrections.json)
+[reviewed corrections](../fixtures/accuracy/adventure-printing-corrections.json)
 are bound to exact scan hashes and preserve the rejected provider values. They
 also restore Oakhame Ranger's printed Elf Knight type without the later Ranger
 erratum. Changes to the physical scan require another review.
@@ -67,7 +67,7 @@ short spells into spare page space. It uses measured glyphs and style runs, not
 a character-count cutoff. Explicit left alignment is honored; a single short
 permanent rules line can center. Body text excludes the power/toughness badge.
 
-The [refined receipt](fixtures/accuracy/adventure-refined.json) records the
+The [refined receipt](../fixtures/accuracy/adventure-refined.json) records the
 complete cohort, hashes, regions, rejected fits and all 14 component regressions.
 No card overflows its text area. WOE and CLB retain the ELD-selected text policy.
 
@@ -93,7 +93,7 @@ Profiles were fitted on alternating accepted ELD mono-color cards. Remaining
 ELD cards and later sets are reserved checks. Neutral hues are locked to prevent
 near-gray paper from acquiring a spurious tint. Actual raster samples, rather
 than only predicted transformed medians, are retained in the paper receipt.
-The [paper receipt](fixtures/accuracy/adventure-paper.json) records mean Oklab
+The [paper receipt](../fixtures/accuracy/adventure-paper.json) records mean Oklab
 color distance ×100 (lower is better): reserved ELD 13.27 → 0.84, and WOE
 10.72 → 3.38. All admitted mono-color holdouts improve. Every normalized pose
 matches the uncalibrated comparison, and CLB's paper samples remain identical.

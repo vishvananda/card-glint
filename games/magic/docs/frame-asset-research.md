@@ -1,5 +1,10 @@
 # Existing old-frame source candidates
 
+> Historical study record. Results and pending-work statements describe the
+> versions named below. Use the [documentation index](README.md),
+> [current defaults](calibration-defaults.md) and [Lab](https://cardforge.fyi/lab/)
+> for current usage and status.
+
 ## Early expansion source review, 2026-10-15
 
 The Legends review reopens the earlier retain-current decision below. The
@@ -7,7 +12,7 @@ Seventh family is too broad a fallback for early expansions, and the current
 Legends gold plate has visibly smoother texture than the printings. Compare
 ABU, Fourth and the existing Revised crop before fitting typography or HSB.
 
-The [new source study](fixtures/accuracy/early-frame-source-review.json)
+The [new source study](../fixtures/accuracy/early-frame-source-review.json)
 contains 72 Legends cards selected before measurement, split equally between
 calibration and validation, plus 48 additional visual examples. Each source
 shares the same frozen scan poses. Signed grayscale boundary profiles fit one
@@ -42,7 +47,7 @@ examples reproduce the chosen geometry pixel-for-pixel in the production
 painter. Actual held-out boundary cosines range from 0.646 (land) to 0.885 (red);
 gold reaches 0.843. These are boundary diagnostics, not whole-card scores.
 
-The [Legends color study](fixtures/accuracy/legends-colors.json) fits frame and
+The [Legends color study](../fixtures/accuracy/legends-colors.json) fits frame and
 paper separately on the same 36 calibration cards, then checks 36 held-out
 cards and ordinary production exports. It limits highlight clipping and rejects
 improvements in median color that worsen shadow chroma, shadow lightness or
@@ -52,7 +57,7 @@ component errors below 5 Oklab units. The land texture uses bounded RGB channel
 gains: hue/saturation correction alone amplified its colored flecks and turned
 its gold outlines lime. Source pigment masks now isolate the art and paper
 outlines, preserving adjacent gray bevels and black keylines. The
-[outline study](fixtures/accuracy/legends-land-pins.json) fits four land cards and
+[outline study](../fixtures/accuracy/legends-land-pins.json) fits four land cards and
 checks four held-out cards with the same frozen scan poses. Actual held-out land
 frame color error falls from 9.74 to 2.68 Oklab units. Outline errors fall from
 7.10 to 2.39 around the art and from 11.46 to 2.23 around the paper. These masks
@@ -62,7 +67,7 @@ Irregular black/green masks preserve
 shadows crossing the paper edge. Profiles bind to exact source URLs and geometry
 and use the existing derived-material cache; no animation-time fitting is added.
 
-The [title study](fixtures/accuracy/legends-titles.json) uses the same frozen
+The [title study](../fixtures/accuracy/legends-titles.json) uses the same frozen
 72-card cohort. Gold and other materials independently choose a shared shift of
 18.5 canonical pixels left and 6 up. Actual painter replay improves every held-out
 title: mean two-polarity edge F1 rises from 0.637 to 0.745 for gold and from 0.640
@@ -77,7 +82,7 @@ boundary scoring run on the CPU; browser captures prepare the rasters. These
 measurements do not represent GPU completion time.
 
 The first comparison is recorded in
-[family results](fixtures/accuracy/old-frame-family-results.json): 35 source
+[family results](../fixtures/accuracy/old-frame-family-results.json): 35 source
 plates, 2,767 cached full scans, 717 set/material/layout/stock groups across
 63 major sets. The coverage inventory contains 13,603 printings; the comparison
 is a sample study, not a full rerender of that inventory.
@@ -352,7 +357,7 @@ and colored spell pinlines. The new base plates do not yet supply those crowns
 or spell pinlines. Revised dual-land paper remains unresolved.
 
 Twenty font files from the current pack, Card Conjurer and Full Magic Pack were
-loaded and inspected. The [font study](fixtures/assets/font-import-study.json)
+loaded and inspected. The [font study](../fixtures/assets/font-import-study.json)
 compares 19 body-text examples and 15 title examples across 23 cards. Within a
 comparison, the text, layout settings, frame and scan transform remain fixed.
 A separate diagnostic permits a small translation only. Header fonts are
@@ -394,7 +399,7 @@ symbols remain available for comparison. This fixes the M15 uncommon regression
 without a new per-rarity branch. Enlarged scans also show inverse coloring in the
 imported M15 rare and different numeric-shield treatment in 8ED/9ED. Seven
 inspected repositories carry identical M15 files, so switching among these forks
-cannot fix the source. The [source audit](fixtures/assets/styled-symbol-source-audit.json)
+cannot fix the source. The [source audit](../fixtures/assets/styled-symbol-source-audit.json)
 records blob identities, confirmed findings and remaining review work. This was
 a targeted audit, not validation of the entire imported inventory.
 
@@ -403,7 +408,7 @@ M15 costs move left 1 px and up 4 px. Eighth-family costs move left 2 px and dow
 1 px, with diameter reduced from 23 to 22 px. Both families' symbols move left
 2 px and scale to 95%. No card-specific renderer offsets were introduced.
 
-The [calibration report](fixtures/assets/frame-plate-import-calibration.json)
+The [calibration report](../fixtures/assets/frame-plate-import-calibration.json)
 records 23 source pairs, hashes and frozen per-card frame transforms. Eleven
 passed independent frame validation; the other twelve have no alignment score.
 M15 uses its lower rules-frame boundary because the collector area lacks an
@@ -441,7 +446,7 @@ metal/ink polarity and Eighth/Ninth Edition uncommon/rare material topology.
 The patch runs once before decoding in the shared encoded-source cache. It does
 not add a branch to an animated painter or redistribute vector path data.
 
-The [placement study](fixtures/assets/styled-symbol-placement-calibration.json)
+The [placement study](../fixtures/assets/styled-symbol-placement-calibration.json)
 covers 63 captures in nine sets, with 37 accepted frame fits across seven sets. Thirty-five
 accepted scans form the development cohort; two additional blue/green M21
 scans confirm the selected profile without refitting. Twenty-six frame fits
@@ -491,7 +496,7 @@ This check records final raster hashes and scores separately from search scores.
 ## Revised color alternatives after the major-set pass
 
 A color-only recheck of the existing ABU, Fourth and Seventh plates is recorded
-in [candidate measurements](fixtures/accuracy/revised-frame-color-candidates.json).
+in [candidate measurements](../fixtures/accuracy/revised-frame-color-candidates.json).
 It reuses the normalized Revised development and reserved cohorts from the color
 audit, so it is exploratory evidence rather than a fresh admission test.
 
@@ -556,7 +561,7 @@ ink centers for the plus, zero and minus badge shapes. Both painters isolate
 tracking, alignment and shadow state. Badge and shield artwork retain their
 existing geometry.
 
-The [loyalty review](fixtures/accuracy/planeswalker-loyalty-review.json) records
+The [loyalty review](../fixtures/accuracy/planeswalker-loyalty-review.json) records
 11 frozen M15/M21/WAR frame registrations and 29 accepted cost crops. Mean vertical
 ink-center error relative to each black body falls from 3.82 to 0.14 reference
 pixels for starting loyalty, and 1.53 to 0.47 for costs. Mean height error falls
@@ -583,7 +588,7 @@ The type-only two-polarity edge score improves from 76.90% to 80.98% on all 36
 held-out cards; each held-out card improves. Gold legends and the other frame
 materials use the same rule. Original and Oracle text use the same typography.
 
-The [type-line measurements](fixtures/accuracy/legends-types.json) retain the
+The [type-line measurements](../fixtures/accuracy/legends-types.json) retain the
 frozen scan-frame transformations, source hashes and candidate search. A simple
 translation alone failed to transfer on the ordinary-color group, so it was
 rejected. Size and position were then selected on the 36 training cards; all 72
@@ -611,7 +616,7 @@ symbol moves 3.25 pixels right and 1.5 down, with horizontal/vertical scales
 to the selected ordinary black-border Legends sources, including Oracle wording;
 explicit templates and custom expansion symbols retain their own geometry.
 
-The [symbol measurements](fixtures/accuracy/legends-symbols.json) reuse the frozen
+The [symbol measurements](../fixtures/accuracy/legends-symbols.json) reuse the frozen
 frame poses and the same 36 training/36 held-out cards. All 32 held-out mana rows
 improve, from 47.07% to 85.10% local edge overlap. All 36 held-out expansion symbols
 improve, from 58.93% with the original white-rim source to 83.46% after source and
@@ -626,7 +631,7 @@ Pixels outside the two symbol study regions remain unchanged. Disc colors,
 glyph/numeral shape, rules, artist and power/toughness remain separate passes.
 
 Legends' opt-in printing palette also uses independently measured blue, red and
-green mana-disc colors. The [material study](fixtures/accuracy/legends-mana-colors.json)
+green mana-disc colors. The [material study](../fixtures/accuracy/legends-mana-colors.json)
 samples the interior paper after the geometry fit and counts repeated symbols
 only once per card. Median held-out Oklab errors fall from 5.31 to 2.35 (blue),
 7.89 to 2.09 (red), and 9.24 to 2.75 (green). All 64 full-card material candidates

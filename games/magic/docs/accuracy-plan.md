@@ -1,9 +1,14 @@
 # Magic rendering accuracy
 
+> Historical study record. Results and pending-work statements describe the
+> versions named below. Use the [documentation index](README.md),
+> [current defaults](calibration-defaults.md) and [Lab](https://cardforge.fyi/lab/)
+> for current usage and status.
+
 ## Current rollout: old frames, then new frames
 
 The source-family comparison and old-frame HSB round are complete for 0.2.10.
-The [family coverage plan](fixtures/accuracy/old-frame-family-plan.json) freezes
+The [family coverage plan](../fixtures/accuracy/old-frame-family-plan.json) freezes
 63 set entries and their material cohorts. No alternative passed every structural
 admission check, so this round retains existing sources and carries uncertain
 geometry in the review queue. The [color results](hsb-calibration.md) admit
@@ -23,7 +28,7 @@ human/automatic trial informs the later text pass; it does not establish set
 defaults or complete whole-set scoring. Finish the old/new component passes
 before scaling that trial to the corpus. Historical reports remain archived
 evidence. Revised has a
-[validated shared stock profile](fixtures/accuracy/old-frame-registration-3ed.json)
+[validated shared stock profile](../fixtures/accuracy/old-frame-registration-3ed.json)
 against actual rendered boundaries, with remaining source-aspect differences
 reported separately. Its held-out error improves 1.81 → 1.25 canonical pixels;
 that historical study used one shared transform.
@@ -35,7 +40,7 @@ These are comparison transforms only, never per-card renderer settings. Reject
 weak or inconsistent fits explicitly; a shared set offset alone does not remove
 scan-to-scan variation. Preserve raw scores and historical shared-fit reports.
 Recalibrate all set-symbol placements under this policy, in old/new wave order.
-The [normalization rollout](fixtures/accuracy/symbol-normalization-rollout.json)
+The [normalization rollout](../fixtures/accuracy/symbol-normalization-rollout.json)
 retains every major-set frame group and marks previous placements provisional.
 Store per-card poses by scan checksum, frame-template hash, method and policy,
 including fit quality and rejection reasons. Evaluate rotation and global skew
@@ -83,7 +88,7 @@ from normalized native symbol bounds, using a deterministic development split.
 These references were previously observed; this is not a new blind holdout.
 The proposal must then pass production raster comparisons at both tiers, Census
 comparison, crop coverage, controls, type clearance and visual review. The
-[trial review](fixtures/accuracy/symbol-pose-trial-review.json) rejected the
+[trial review](../fixtures/accuracy/symbol-pose-trial-review.json) rejected the
 white Legends quarter-pixel shift and Tempest's red/green shifts. Their bounding
 box centers improved while the raster comparisons regressed. Keep the previous
 placements for these groups and investigate stencil/measurement differences.
@@ -107,7 +112,7 @@ an admitted frame template; these remain visible and excluded from normalized
 aggregates. Of 152 scored references, 106 have verified crop coverage and 46
 have uncertain segmentation. No known crop is clipped.
 
-The [review evidence](fixtures/accuracy/por-symbol-normalized-review.json) preserves
+The [review evidence](../fixtures/accuracy/por-symbol-normalized-review.json) preserves
 both baseline comparisons: two cards regress against the original baseline,
 and five regress against the more recent shared placement. All eight controls
 and all type-line pixels remain unchanged. The final candidate and full-set
@@ -363,7 +368,7 @@ for the asset/color queues. This does not certify text or frame accuracy.
 Reproduce from the recorded renderer revision with `symbol-study.mjs hml after`,
 `symbol-study-bounds.mjs hml after` and `symbol-study-audit.mjs hml after`.
 The full audit and exact provenance are in
-[hml-symbol-after-measurement.json](fixtures/accuracy/hml-symbol-after-measurement.json).
+[hml-symbol-after-measurement.json](../fixtures/accuracy/hml-symbol-after-measurement.json).
 Strict checks, build, package, browser, showcase and Magic accuracy suites pass.
 Next old-symbol studies: Alliances and Weatherlight. Their existing baselines
 remain frozen before this correction. Visions follows below.
@@ -391,7 +396,7 @@ inside the frozen symbol envelope, and type-line clearance is unchanged.
 
 Eight distinct cards regress in at least one tier. All eight scan/before/after
 crops were inspected; their names, scores and unresolved frame/stencil findings
-remain in [vis-symbol-review.json](fixtures/accuracy/vis-symbol-review.json).
+remain in [vis-symbol-review.json](../fixtures/accuracy/vis-symbol-review.json).
 Retain the measured size and printed treatment, but do not certify placement or
 claim every printing improves. Do not refit to the reserved examples. Raw scan
 positions and frame boundaries differ; independent registration is required to
@@ -402,7 +407,7 @@ Native reference segmentation is stable for 45/167; the remaining 122 printings
 are uncertain for this dark-ink detector and stay in the full structural audit.
 The six stable paired bounds are calibration-only, not full-set paired coverage.
 Exact provenance and results are in
-[vis-symbol-after-measurement.json](fixtures/accuracy/vis-symbol-after-measurement.json).
+[vis-symbol-after-measurement.json](../fixtures/accuracy/vis-symbol-after-measurement.json).
 Reproduce with the shared `symbol-study`, `symbol-study-bounds` and
 `symbol-study-audit` scripts at the recorded revision. Strict checks, build,
 package, browser, showcase and Magic accuracy suites pass.
@@ -461,8 +466,8 @@ Moving the banner's left boundary increases available type width by 2.5 pixels:
 11 printings have deterministic type-region changes, including Kaysa becoming
 uncompressed. Every other changed pixel remains inside the symbol envelope.
 Weatherlight has no type changes. The exact affected printings and review notes
-are in [all-symbol-review.json](fixtures/accuracy/all-symbol-review.json) and
-[wth-symbol-review.json](fixtures/accuracy/wth-symbol-review.json).
+are in [all-symbol-review.json](../fixtures/accuracy/all-symbol-review.json) and
+[wth-symbol-review.json](../fixtures/accuracy/wth-symbol-review.json).
 
 Full-set native reference segmentation is stable for 76/199 Alliances and
 67/167 Weatherlight printings. Uncertain cases remain in structural score
@@ -477,7 +482,7 @@ References and art are cached for the next six studies: Arabian Nights (92),
 Legends (310), Mirage (351), Tempest (350), Stronghold (143) and Portal (228).
 Their 1,474 ordinary-printing baselines and calibration templates are now frozen,
 with no failed captures; see
-[old-symbol-next-baselines.json](fixtures/accuracy/old-symbol-next-baselines.json).
+[old-symbol-next-baselines.json](../fixtures/accuracy/old-symbol-next-baselines.json).
 This is capture coverage, not completed calibration or accuracy certification.
 
 ### Arabian Nights and Legends checkpoint (2026-10-13)
@@ -548,8 +553,8 @@ Aligned calibration crops, the six worst aligned results per set and the six
 largest raw regressions on unvalidated LEG materials were inspected. The local
 gallery also shows Equinox as a full card. Exact results, exposure history and
 remaining hilt/column/frame issues are in
-[arn-symbol-review.json](fixtures/accuracy/arn-symbol-review.json) and
-[leg-symbol-review.json](fixtures/accuracy/leg-symbol-review.json).
+[arn-symbol-review.json](../fixtures/accuracy/arn-symbol-review.json) and
+[leg-symbol-review.json](../fixtures/accuracy/leg-symbol-review.json).
 Reproduce with the shared capture/bounds/audit scripts plus
 `symbol-study-registered.mjs <set> after` at the recorded revisions.
 
@@ -625,10 +630,10 @@ their original structural audit binds the renderer revision, and current frame
 source guards must still match. Synthetic cache/coverage checks and the Equinox
 reference regression are recorded alongside the renderer validation.
 
-See [mir-symbol-review.json](fixtures/accuracy/mir-symbol-review.json),
-[tmp-symbol-review.json](fixtures/accuracy/tmp-symbol-review.json),
-[sth-symbol-review.json](fixtures/accuracy/sth-symbol-review.json) and
-[por-symbol-review.json](fixtures/accuracy/por-symbol-review.json). The local
+See [mir-symbol-review.json](../fixtures/accuracy/mir-symbol-review.json),
+[tmp-symbol-review.json](../fixtures/accuracy/tmp-symbol-review.json),
+[sth-symbol-review.json](../fixtures/accuracy/sth-symbol-review.json) and
+[por-symbol-review.json](../fixtures/accuracy/por-symbol-review.json). The local
 gallery includes aligned calibration crops, six lowest aligned scores per set,
 the largest Tempest/Portal declines and unvalidated material examples. Tempest's bolt contour, Stronghold's fine
 grille, Portal's radial geometry/gray panels and the repeated material placement
@@ -767,7 +772,7 @@ painter is inaccurate. No frame assets have been replaced.
 This supersedes the initial 253-card proposal. Keep game-specific references,
 typography, geometry, and tools in this pack. Neither the browser backend nor the
 Rust core imports them. The public showcase uses only original repository assets.
-The pack's [fan-content notice](NOTICE.md) applies to the local reference work.
+The pack's [fan-content notice](../NOTICE.md) applies to the local reference work.
 
 ## Run it
 
@@ -824,7 +829,7 @@ The cache includes original wording for these printing records:
 | Tempest        | 346 / 350                                   |
 
 Fetch another cached set with `npm run magic:reference:text -- --set lea`.
-The [source manifest](fixtures/accuracy/printing-text-sources.json) records the
+The [source manifest](../fixtures/accuracy/printing-text-sources.json) records the
 upstream URLs, checksums, snapshot identities and missing printing IDs. These
 counts measure source coverage, not agreement with the scans. Alpha and Unlimited
 each have 16 missing entries: 15 with no Oracle rules and one with Oracle rules.
@@ -898,9 +903,9 @@ node games/magic/tools/accuracy/frame-registration.mjs corpus
 
 The study checks the frozen capture, image bytes and detector hash. Its source
 capture contains older Oracle text; only frame pixels enter its decision. See
-the [selection plan](fixtures/accuracy/3ed/frame-registration-plan.json),
-[frozen candidate](fixtures/accuracy/3ed/frame-registration-candidate.json) and
-[validation and corpus measurements](fixtures/accuracy/3ed/frame-registration-measurement.json).
+the [selection plan](../fixtures/accuracy/3ed/frame-registration-plan.json),
+[frozen candidate](../fixtures/accuracy/3ed/frame-registration-candidate.json) and
+[validation and corpus measurements](../fixtures/accuracy/3ed/frame-registration-measurement.json).
 
 ## Printed wording and text insets
 
@@ -920,10 +925,10 @@ blocks use x=72, width=344, and no extra paragraph/flavor gaps. Short centered
 passages and other sets retain their previous policies. The wider all-color trial
 was rejected because it regressed Energy Bolt.
 
-- [Policy and rejected trials](fixtures/accuracy/text-insets-plan.json)
-- [Paired measurements](fixtures/accuracy/text-insets-measurement.json)
-- [Full denominator and text-source counts](fixtures/accuracy/text-insets-corpus.json)
-- [Printing text source metadata](fixtures/accuracy/printing-text-sources.json)
+- [Policy and rejected trials](../fixtures/accuracy/text-insets-plan.json)
+- [Paired measurements](../fixtures/accuracy/text-insets-measurement.json)
+- [Full denominator and text-source counts](../fixtures/accuracy/text-insets-corpus.json)
+- [Printing text source metadata](../fixtures/accuracy/printing-text-sources.json)
 
 The local `text-insets-review/index.html` page shows scan/before/corrected crops;
 `main-review/index.html` separately compares against actual `main`. All examples
@@ -951,8 +956,8 @@ error remains in both frozen trial inputs and is flagged for correction before
 further fitting.
 
 `centered-sweep.mjs SET transfer` reproduces the frozen candidate on these reserved
-printings. [Selection and candidate](fixtures/accuracy/centered-text-plan.json)
-and [transfer review](fixtures/accuracy/centered-transfer-review.json) record scan
+printings. [Selection and candidate](../fixtures/accuracy/centered-text-plan.json)
+and [transfer review](../fixtures/accuracy/centered-transfer-review.json) record scan
 line endings, input/source hashes, scores and exclusions. These examples are now
 exposed development evidence. Next trials need fresh validation printings, an
 independent line-count/line-ending check, and a validated shared Revised alignment
@@ -991,10 +996,10 @@ Fifth Edition remain byte identical at both tiers. These are preservation checks
 not exhaustive accuracy claims for those sets. Renderer, package, browser,
 showcase, Magic and accuracy tests, rustfmt and native/WASM strict Clippy pass.
 
-- [Reservations and width candidates](fixtures/accuracy/4ed/centered-width-plan.json)
-- [Final six-card transfer](fixtures/accuracy/4ed/centered-final-transfer.json)
-- [Corpus metrics and line-ending checks](fixtures/accuracy/4ed/centered-measurement.json)
-- [Pixel-preservation evidence](fixtures/accuracy/4ed/centered-capture-check.json)
+- [Reservations and width candidates](../fixtures/accuracy/4ed/centered-width-plan.json)
+- [Final six-card transfer](../fixtures/accuracy/4ed/centered-final-transfer.json)
+- [Corpus metrics and line-ending checks](../fixtures/accuracy/4ed/centered-measurement.json)
+- [Pixel-preservation evidence](../fixtures/accuracy/4ed/centered-capture-check.json)
 
 The Fourth Edition refresh of local `main-review/index.html` adds Fear and Healing Salve alongside
 the existing examples, plus Righteousness as a remaining wrap-review case. All
@@ -1042,11 +1047,11 @@ package, browser, showcase, Magic and accuracy checks and native/WASM strict
 Clippy pass. The 96.8-second Node comparison measures offline scoring work, not
 renderer CPU submission or GPU completion time.
 
-- [Initial frozen candidate](fixtures/accuracy/3ed/centered-candidate.json)
-- [Width reservation and candidate](fixtures/accuracy/3ed/centered-width-plan.json)
-- [Six-card width validation](fixtures/accuracy/3ed/centered-width-transfer.json)
-- [Full-set metrics](fixtures/accuracy/3ed/centered-measurement.json)
-- [Capture and preservation checks](fixtures/accuracy/3ed/centered-capture-check.json)
+- [Initial frozen candidate](../fixtures/accuracy/3ed/centered-candidate.json)
+- [Width reservation and candidate](../fixtures/accuracy/3ed/centered-width-plan.json)
+- [Six-card width validation](../fixtures/accuracy/3ed/centered-width-transfer.json)
+- [Full-set metrics](../fixtures/accuracy/3ed/centered-measurement.json)
+- [Capture and preservation checks](../fixtures/accuracy/3ed/centered-capture-check.json)
 
 The local main comparison now has 13 examples, adding Flashfires, Hurricane,
 Crusade and Sol Ring. All nine previous examples retain both main and branch
@@ -1094,20 +1099,20 @@ the complete Revised pixel boundary and other-policy preservation. The full
 Node comparison took 84.3 seconds; this is offline image-scoring time, not CPU
 submission or GPU completion time.
 
-- [Frozen glyph candidate](fixtures/accuracy/3ed/inline-symbols-candidate.json)
-- [Independent reserved tap targets](fixtures/accuracy/3ed/inline-symbols-targets.json)
-- [Transfer review and failed score](fixtures/accuracy/3ed/inline-symbols-transfer.json)
-- [Complete-set measurements](fixtures/accuracy/3ed/inline-symbols-measurement.json)
-- [Pixel scope and preservation checks](fixtures/accuracy/3ed/inline-symbols-capture-check.json)
+- [Frozen glyph candidate](../fixtures/accuracy/3ed/inline-symbols-candidate.json)
+- [Independent reserved tap targets](../fixtures/accuracy/3ed/inline-symbols-targets.json)
+- [Transfer review and failed score](../fixtures/accuracy/3ed/inline-symbols-transfer.json)
+- [Complete-set measurements](../fixtures/accuracy/3ed/inline-symbols-measurement.json)
+- [Pixel scope and preservation checks](../fixtures/accuracy/3ed/inline-symbols-capture-check.json)
 
 ## References and cache
 
-[corpus.json](fixtures/accuracy/m21/corpus.json) records the exact printing UUIDs,
+[corpus.json](../fixtures/accuracy/m21/corpus.json) records the exact printing UUIDs,
 source pages, image hashes, inclusion categories, and exclusion reasons.
-[cohorts.json](fixtures/accuracy/m21/cohorts.json) freezes 16 typography calibration
+[cohorts.json](../fixtures/accuracy/m21/cohorts.json) freezes 16 typography calibration
 cards and eight held-out cards, plus seven frame calibration examples. Twenty-four
 body texts/type lines/styles were reviewed against the downloaded scans in
-[annotations.json](fixtures/accuracy/m21/annotations.json). A reference hash change
+[annotations.json](../fixtures/accuracy/m21/annotations.json). A reference hash change
 invalidates a reviewed annotation.
 
 The downloader follows paginated Scryfall search with `unique=prints`. It saves
@@ -1141,7 +1146,7 @@ This describes the original M21 study. New component comparisons follow the
 per-scan frame normalization policy above; keep these reports reproducible as
 historical evidence rather than silently replacing their transforms.
 
-[alignment.json](fixtures/accuracy/m21/alignment.json) is a frozen set/frame profile.
+[alignment.json](../fixtures/accuracy/m21/alignment.json) is a frozen set/frame profile.
 Every card in a frame family gets exactly the same translation, uniform scale,
 and rotation. Normal, legendary, and planeswalker families have separate entries.
 An uncalibrated family uses identity and is explicitly labeled. New sets need
@@ -1210,14 +1215,14 @@ security stamps, and existing special-layout typography remain visible limitatio
 ## Changes and next passes
 
 The second typography pass is recorded in
-[typography-measurement.json](fixtures/accuracy/m21/typography-measurement.json).
+[typography-measurement.json](../fixtures/accuracy/m21/typography-measurement.json).
 It retains the font sources and frame assets, measures actual glyph extents for
 vertical centering, separates line/paragraph/flavor gaps, and fits text around the
 power/toughness plate. A short final line in a long flavor passage can trigger a
 small size reduction. The maximum body size is 24.5 reference pixels. No printing
 IDs, scan coordinates, or set-specific text adjustments enter the painter.
 
-[typography.json](fixtures/accuracy/m21/typography.json) records reviewed line
+[typography.json](../fixtures/accuracy/m21/typography.json) records reviewed line
 breaks and approximate ink bounds for 24 cards. Run the browser-free measurement
 after comparison, before generating the report:
 
@@ -1250,8 +1255,8 @@ All other ordinary M20 printings stay in the diagnostic report.
 
 ### M20 transfer results
 
-The [frozen plan](fixtures/accuracy/m20/transfer-plan.json) and
-[transfer measurement](fixtures/accuracy/m20/transfer-measurement.json) record
+The [frozen plan](../fixtures/accuracy/m20/transfer-plan.json) and
+[transfer measurement](../fixtures/accuracy/m20/transfer-measurement.json) record
 343 ordinary M20 printings: 311 ordinary nonbasic/non-planeswalkers, 20 basics,
 and 12 planeswalkers. One promotional treatment is excluded. Both versions
 rendered all 343 without failures; 331 ordinary text layouts passed fit checks.
@@ -1312,7 +1317,7 @@ three ability rows, not an oversized card. M21's four entries are four ordinary
 art printings of Teferi, Master of Time. This existing row-count heuristic and its
 uncalibrated frame profile remain separate from ordinary-face typography.
 
-The first complete [measurement](fixtures/accuracy/m21/measurement.json) recorded
+The first complete [measurement](../fixtures/accuracy/m21/measurement.json) recorded
 297/297 successful comparisons, 20 alignment flags and zero measured ordinary-text
 overflows. Comparison took 71.3 seconds cold and 1.8 seconds with all 297 results
 cached on the development machine. Those times exclude download and capture.
@@ -1379,7 +1384,7 @@ per-frame rendering. CPU submission time must not be labeled GPU completion time
 
 ## Mirage and Tempest old-border baseline
 
-The [frozen survey](fixtures/accuracy/tmp/survey-measurement.json) adds all 350
+The [frozen survey](../fixtures/accuracy/tmp/survey-measurement.json) adds all 350
 ordinary printings from each set, including 20 basic lands each. All 700 produced
 inspect and table rasters and per-region scores without failures. Combined with
 M21/M20, coverage is now 1,340 printings and 72 reviewed printed bodies. This is
@@ -1506,7 +1511,7 @@ rectangle is reported separately from scan fidelity: most crossings are subpixel
 horizontal glyph overhangs, so raw clipping counts must not be described as
 hundreds of illegible cards.
 
-The [frozen transfer measurement](fixtures/accuracy/tmp/transfer-measurement-retro-type.json)
+The [frozen transfer measurement](../fixtures/accuracy/tmp/transfer-measurement-retro-type.json)
 records the paired results:
 
 | Fresh holdouts                         | Mirage, 7 confident | Tempest, 8 confident |
@@ -1596,7 +1601,7 @@ modern M21 holdouts are byte-identical inside the corners at both tiers. This
 corrects the formerly square raw previews; a scan-derived radius measurement
 remains separate work.
 
-[The detail measurement](fixtures/accuracy/tmp/details-measurement.json) compares
+[The detail measurement](../fixtures/accuracy/tmp/details-measurement.json) compares
 40 previously reviewed development cards with `40a3bbd`. Three existing Mirage
 alignment flags remain visible but are excluded from the component aggregates.
 These are not fresh holdouts and not a new independent transfer claim.
@@ -1677,7 +1682,7 @@ line and centered “{T}: Add {color} to your mana pool.” wording. Semantic su
 metadata remains intact for frame selection; explicit paragraph overrides still
 win. No per-card geometry was introduced.
 
-[The transfer measurement](fixtures/accuracy/tmp/transfer-measurement-retro-basics.json)
+[The transfer measurement](../fixtures/accuracy/tmp/transfer-measurement-retro-basics.json)
 pairs all 700 cards against `retro-details-all`, with identical face inputs and
 frozen alignment. This corrects historical content and layout, not typography
 alone. All 40 basic-land bodies and type lines improve by more than 0.02 at both
@@ -1719,7 +1724,7 @@ printed-detail page remains linked. Reference/art images stay local.
 
 ## Fourth Edition headers and credits
 
-The [Fourth Edition plan](fixtures/accuracy/4ed/details-plan.json) freezes a
+The [Fourth Edition plan](../fixtures/accuracy/4ed/details-plan.json) freezes a
 separate policy for nonland cards using the fourth-family plate. Six development
 cards established title and type placement, the complete mana row, credits,
 copyright and historical tap treatment. The six reserved nonland cards were
@@ -1728,7 +1733,7 @@ regression was then removed at `0467153`, restoring the previous shadow. At both
 tiers, every pixel outside the stats window matches the frozen header policy,
 and every pixel inside it matches the original baseline, across all 378 cards.
 
-[The paired measurement](fixtures/accuracy/4ed/details-measurement.json) covers
+[The paired measurement](../fixtures/accuracy/4ed/details-measurement.json) covers
 all 378 ordinary printings at both tiers with identical input, reference bytes,
 fonts and fixed alignment. Nine bodies/printing targets are reviewed; 369 remain
 Oracle diagnostics. A warning on either side excludes a card from paired
@@ -1786,13 +1791,13 @@ unmeasured, including alignment exclusions.
 
 ## Natural-width stats and the main-branch comparison
 
-The [stats plan](fixtures/accuracy/4ed/stats-wide-plan.json) replaces the initial
+The [stats plan](../fixtures/accuracy/4ed/stats-wide-plan.json) replaces the initial
 centered-offset trial with a shared right edge at 451px and a 3px downward shift.
 Wide expressions retain their natural width. Fourth Edition's subtractive
 Shapeshifter toughness includes its printed parentheses. The original failed
 trial remains archived; the new metric windows include the complete expression.
 
-[Paired measurements](fixtures/accuracy/3ed/stats-wide-measurement.json) cover
+[Paired measurements](../fixtures/accuracy/3ed/stats-wide-measurement.json) cover
 all 1,133 Fourth Edition, Fifth Edition and Revised cards without capture failures.
 The inspect-tier results below exclude the union of alignment warnings:
 
@@ -1806,12 +1811,12 @@ Fifth Edition's regressions are Keldon Warlord and Lhurgoyf. Shapeshifter also
 remains a width/shape review case. Revised uses dark numeric strokes with pale
 edges; light-ink scores cannot certify that treatment. Only four of its six
 reserved examples have confident alignment, with three gains and one regression.
-The [visual review](fixtures/accuracy/3ed/stats-wide-review.json) records the
+The [visual review](../fixtures/accuracy/3ed/stats-wide-review.json) records the
 reference hashes and next experiments. No per-card offsets were introduced.
 
 All 1,133 pairs preserve every pixel outside the expanded stats window at both
 tiers, and 48 MIR/TMP/M21 regression examples are byte-identical. After rejecting
-Revised, [adoption checks](fixtures/accuracy/3ed/stats-wide-adoption.json) verify
+Revised, [adoption checks](../fixtures/accuracy/3ed/stats-wide-adoption.json) verify
 all 306 restored cards match their original baseline exactly; 18 Fourth Edition
 and six Fifth Edition examples still match the measured candidate. Both tiers
 are checked. Existing frame assets and numerical font sources are retained.
@@ -1820,7 +1825,7 @@ The local `main-review/index.html` compares the actual `main` commit `0b0d408`
 with the current branch, using identical inputs and cached art. It includes five
 improvement examples and a clearly labeled Mtenda Herder typography regression.
 Each revision uses its original font stylesheet; main's failed italic face is
-recorded and its fallback is preserved. [Source hashes and scores](fixtures/accuracy/main-comparison.json)
+recorded and its fallback is preserved. [Source hashes and scores](../fixtures/accuracy/main-comparison.json)
 are committed; PNGs remain local. Reproduce with an isolated checkout of `main`
 and its dependencies available:
 
@@ -2152,11 +2157,11 @@ anchor at x49 and alphabetic baseline at y631, and adds the printed © mark.
 It uses the existing MPlantin font with paired light/dark edges. Beta retains
 its previous painter until a separate transfer check.
 
-The [frozen candidate](fixtures/accuracy/early-lettering-candidate.json) was
+The [frozen candidate](../fixtures/accuracy/early-lettering-candidate.json) was
 committed before opening the sixteen reserved title/credit crops. Credits pass
 on all thirteen reserved examples whose artist text matches the scan: five
 Alpha and eight Unlimited. Three Alpha source mismatches are excluded and
-recorded separately in the [transfer review](fixtures/accuracy/early-lettering-transfer.json).
+recorded separately in the [transfer review](../fixtures/accuracy/early-lettering-transfer.json).
 The same review rejects the title change despite aggregate overlap gains:
 several strokes look broken, individual titles regress, and Alpha's signed
 contrast correlation falls. Production titles are unchanged.
@@ -2169,17 +2174,17 @@ contrast correlation falls. Production titles are unchanged.
 | Unlimited / table   | 302   | .391 → .576                     | 295         | 0                 |
 
 These full-corpus values are diagnostics, not certification that every artist
-credit matches its printing. [Alpha measurements](fixtures/accuracy/lea/early-credits-measurement.json)
-and [Unlimited measurements](fixtures/accuracy/2ed/early-credits-measurement.json)
+credit matches its printing. [Alpha measurements](../fixtures/accuracy/lea/early-credits-measurement.json)
+and [Unlimited measurements](../fixtures/accuracy/2ed/early-credits-measurement.json)
 retain every pair. All pixels outside the credit area and the silhouette alpha
 are unchanged. All 64 development/reserved component rasters match the frozen
-prototype exactly. [Other-policy checks](fixtures/accuracy/early-credits-controls.json)
+prototype exactly. [Other-policy checks](../fixtures/accuracy/early-credits-controls.json)
 verify complete PNG equality for 64 cards at both sizes, including Revised after
 extracting its unchanged lettering helper.
 
 Shared identity registration remains explicit. The eight Unlimited development
 outer frames are centered within .4px; fitting internal art ridges would move
-that correctly centered outer frame. The [frame review](fixtures/accuracy/early-frame-review.json)
+that correctly centered outer frame. The [frame review](../fixtures/accuracy/early-frame-review.json)
 keeps the internal detector diagnostic because bevel/art peaks are ambiguous on
 several cards. Alpha's outer frame edge remains uncertain. No per-scan transform
 or coordinate adjustment is introduced. The paired audits run in Node; each took
@@ -2190,10 +2195,10 @@ The local `early-lettering/validation/index.html` preserves the rejected title
 experiment as well as the accepted credit candidate. `main-review/index.html`
 shows the production credit change against actual main with identical inputs.
 
-Six [printing-field corrections](fixtures/accuracy/early-printing-field-review.json)
+Six [printing-field corrections](../fixtures/accuracy/early-printing-field-review.json)
 are captured separately in `early-printing-fields`: three Alpha artist credits,
 Alpha Jade Statue's 3/6, and the printed X/X on Alpha Plague Rats and Unlimited
-Keldon Warlord. The [source-only audit](fixtures/accuracy/early-printing-field-measurement.json)
+Keldon Warlord. The [source-only audit](../fixtures/accuracy/early-printing-field-measurement.json)
 verifies the same renderer, frame assets and body layout, checks all 3,582 image
 files, and confirms identical full PNGs for the other 591 cards at both sizes.
 The local `early-printing-fields/index.html` shows all six corrected footers.
@@ -2204,7 +2209,7 @@ trial inputs and measurements remain frozen.
 
 ## Alpha mana and Unlimited transfer
 
-The [mana study](fixtures/accuracy/early-mana-plan.json) trains on twelve Alpha
+The [mana study](../fixtures/accuracy/early-mana-plan.json) trains on twelve Alpha
 costs and reserves twelve Alpha plus thirteen Unlimited costs. The candidate
 was committed before validation: rightmost center (432, 46), pitch 27, diameter
 23.9, and the existing historic font's original sun at 20.5px. It removes the
@@ -2214,7 +2219,7 @@ or whole-frame registration change was made.
 
 All reserved Alpha costs improve at both sizes. All reserved Unlimited costs
 improve at inspect size; Sol Ring loses .031 at table size and remains explicitly
-flagged. The [transfer review](fixtures/accuracy/early-mana-transfer.json) records
+flagged. The [transfer review](../fixtures/accuracy/early-mana-transfer.json) records
 every crop, score and the independent disc-center diagnostic.
 
 | Set / tier          | Changed costs | Median F1 before → after | Gains > .02 | Regressions > .02 |
@@ -2228,7 +2233,7 @@ The full-corpus audit found limitations missed by the small reserved cohort:
 several single red costs in Unlimited need a farther-right position, especially
 Lightning Bolt. Alpha Cyclopean Tomb has no printed cost, so its Oracle {4}
 is a source mismatch. All eight regression strips are inspected and recorded in
-[the corpus review](fixtures/accuracy/early-mana-corpus-review.json). Keep these
+[the corpus review](../fixtures/accuracy/early-mana-corpus-review.json). Keep these
 failures visible; do not certify the transferred geometry for every card.
 
 All 74 frozen prototype PNGs match production exactly, 44 cards with no supplied
@@ -2285,13 +2290,13 @@ capture step, never a requirement for scoring or searching local comparisons.
 
 ### Early text centering and styled margins
 
-The [27-card diagnostic](fixtures/accuracy/early-centered-measurement.json)
+The [27-card diagnostic](../fixtures/accuracy/early-centered-measurement.json)
 compares nine shared names across Alpha, Beta and Unlimited. Larger 32.5px
 printing reproduces the centered line endings on Howling Mine, Disenchant and
 Healing Salve; transferring Revised's 27.5px size directly did not. Mean body
 edge F1 increases from .425 to .467 at inspect size and .399 to .448 at table
 size. Twenty-one cards improve; all six Disenchant/Healing Salve scores regress.
-The [visual review](fixtures/accuracy/early-centered-review.json) retains those
+The [visual review](../fixtures/accuracy/early-centered-review.json) retains those
 failures, remaining vertical offsets, font-weight differences and a source
 mismatch on Alpha Force of Nature. These are development diagnostics, not
 whole-set accuracy or an independent holdout.
@@ -2301,7 +2306,7 @@ the source selectable independently from visible wording. Purelace exposed a
 separate margin bug: italic reminder runs bypassed both short and long text
 paths. Early/Revised text now retains the panel inset regardless of styling.
 Full Oracle reminders can shrink to fit, including Mesa Pegasus; they are not
-dropped to force agreement with scans. See the [wording API](README.md#original-printing-and-oracle-wording).
+dropped to force agreement with scans. See the [wording API](wording.md).
 
 ## Queued experiments after the early-set work
 
@@ -2401,14 +2406,14 @@ compared at 0/.008/.012/.016em. Structural edge scores barely respond to this
 small weight change; the choice rests on visual review and remains an optical
 approximation. The font asset still needs review for shape and weight fidelity.
 
-The frozen [plan](fixtures/accuracy/alpha-ink-insets-plan.json) and
-[per-card audit](fixtures/accuracy/lea/alpha-ink-insets-measurement.json) retain
+The frozen [plan](../fixtures/accuracy/alpha-ink-insets-plan.json) and
+[per-card audit](../fixtures/accuracy/lea/alpha-ink-insets-measurement.json) retain
 the rejected trial: applying the inset to original text reduced paired inspect
 body F1 from .485 to .427, with 94 declines over .02. Visual review of Gaea's
 Liege, Ironroot Treefolk and Shivan Dragon confirmed that the scan typography
 uses tight margins. The retained policy therefore limits the inset to Oracle
-wording; its [plan](fixtures/accuracy/alpha-ink-retained-plan.json) and
-[measurements](fixtures/accuracy/lea/alpha-ink-retained-measurement.json) preserve
+wording; its [plan](../fixtures/accuracy/alpha-ink-retained-plan.json) and
+[measurements](../fixtures/accuracy/lea/alpha-ink-retained-measurement.json) preserve
 the follow-up evidence. Northern Paladin's corrected
 flavor attribution/type changes its input, so it is excluded from paired scores.
 Check, strict native/WASM Clippy, build, Magic, package, browser, showcase and
@@ -2433,7 +2438,7 @@ chosen original/Oracle reference independently of the visible wording.
 Tenth Edition and M10–M14 use centered balanced lines for short rules-only blocks
 (up to three measured lines). Eighth/Ninth Wrath of God scans are left aligned,
 so the policy is set-scoped instead of inferred from the 2003 frame. The
-[visual survey](fixtures/accuracy/centering-era-review.json) records scan hashes,
+[visual survey](../fixtures/accuracy/centering-era-review.json) records scan hashes,
 wording and sources. Later M15/Origins/M19 samples have flavor or longer text;
 they do not establish when centering disappeared. Other sets and the precise
 length boundary remain review work. Post-audit inspection of the 17 newly centered
@@ -2443,7 +2448,7 @@ flagged for shared threshold review; no card-name/tap-symbol exception was added
 The 2003 geometry remains an explicitly
 unvalidated preview and is excluded from validated corpus accuracy claims.
 
-The [Fourth corpus report](fixtures/accuracy/4ed/centering-flavor-measurement.json)
+The [Fourth corpus report](../fixtures/accuracy/4ed/centering-flavor-measurement.json)
 covers all 378 cards without render failures or overflow. Against the older
 `text-insets` baseline, 376 unchanged-input pairs move from .534 → .590 inspect
 body F1 and .499 → .558 table F1, with 107 gains and two declines over .02 at
@@ -2453,7 +2458,7 @@ Paladin and the other changed-source input are excluded from paired aggregates.
 The newly centered flavor subset has 16 comparable inputs: inspect .435 → .588,
 table .394 → .560, with 15 gains and one decline over .02 at both tiers.
 
-The subsequent [isolated boundary audit](fixtures/accuracy/4ed/centering-boundary-measurement.json)
+The subsequent [isolated boundary audit](../fixtures/accuracy/4ed/centering-boundary-measurement.json)
 resolves both flags. A Fourth-only 150-character gate (mana tokens count as one)
 returns Sisters of the Flame to left alignment: body F1 .367 → .629 inspect and
 .336 → .596 table. Of 374 unchanged-input pairs, only Sisters changes; the other
@@ -2465,7 +2470,7 @@ Brothers of Fire and Wall of Brambles receive their printed colons too. These fo
 changed inputs are excluded from geometric deltas. Deathgrip's corrected absolute
 inspect body F1 is .547, with 5px p95 edge distance.
 
-The [frozen Fifth boundary sample](fixtures/accuracy/centering-length-boundary-plan.json)
+The [frozen Fifth boundary sample](../fixtures/accuracy/centering-length-boundary-plan.json)
 contains twelve nearest examples on either side of 150 characters, selected by
 color/artifact before viewing their scans. All twelve scans are left aligned.
 This rejects a cross-set transfer of the Fourth rule; it does not establish
@@ -2475,7 +2480,7 @@ approximation, not a recovered historical typesetting specification.
 On the single Tenth Edition Wrath development example, a fixed body crop and
 identity registration give edge F1 .204 → .337 and p95 edge distance 49.1 → 7.2px
 when switching from forced-left to automatic centering with identical words and
-assets. [The diagnostic](fixtures/accuracy/tenth-wrath-centering-measurement.json)
+assets. [The diagnostic](../fixtures/accuracy/tenth-wrath-centering-measurement.json)
 records raster hashes and scope. This is neither a held-out test nor a
 whole-card/2003-frame validation.
 
@@ -2486,7 +2491,7 @@ switching symbol modes, while its inline tap changes; Revised changes both.
 
 ### Northern Paladin source correction
 
-The [13-printing audit](fixtures/accuracy/northern-paladin-flavor-review.json)
+The [13-printing audit](../fixtures/accuracy/northern-paladin-flavor-review.json)
 finds the missing flavor attribution newline in LEA, LEB, 2ED, CED, CEI, 3ED, SUM
 and retro 30A #326. Both Scryfall and MTGJSON have the defect; switching providers
 would not repair it. Hash-bound partial corrections restore the break locally
@@ -2502,7 +2507,7 @@ is implied.
 
 ### Measured planeswalker abilities across M21 and M20
 
-The [frozen anchor policy](fixtures/accuracy/planeswalker-anchor-text-plan.json)
+The [frozen anchor policy](../fixtures/accuracy/planeswalker-anchor-text-plan.json)
 replaces estimated character widths with measured MPlantin runs. Normal panels
 keep equal badge anchors while fitting actual ink and checking adjacent text gaps.
 Taller panels allocate room from measured row demand. Passive text uses a smaller
@@ -2524,9 +2529,9 @@ independent typesetting cases.
 | M21 reserved    |     8 | .365 → .508          | .351 → .488        | 8 / 0                          |
 | M20 transfer    |    12 | .316 → .486          | .302 → .473        | 11 / 0                         |
 
-The [development report](fixtures/accuracy/walker-text-final-dev-development-measurement.json),
-[same-set report](fixtures/accuracy/walker-text-anchors-same-set-reserved-measurement.json)
-and [transfer report](fixtures/accuracy/walker-text-anchors-set-transfer-measurement.json)
+The [development report](../fixtures/accuracy/walker-text-final-dev-development-measurement.json),
+[same-set report](../fixtures/accuracy/walker-text-anchors-same-set-reserved-measurement.json)
+and [transfer report](../fixtures/accuracy/walker-text-anchors-set-transfer-measurement.json)
 contain all per-card body, badge and loyalty scores, raw and registered. Registration
 uses the previously frozen M21 frame transform, transferred unchanged to M20; no
 scan receives a fitted offset. Node scores frozen rasters without Chromium or a
@@ -2553,7 +2558,7 @@ correct source wording. These remain work items, not reasons to retune registrat
 
 ### Planeswalker component review and sparse text
 
-The [reviewed component plan](fixtures/accuracy/planeswalker-reviewed-components-plan.json)
+The [reviewed component plan](../fixtures/accuracy/planeswalker-reviewed-components-plan.json)
 records 70 cards: 14 M21, 12 M20, six M15 and 38 WAR. M15/WAR were initially
 reserved, but subsequent user review and iteration consumed that reservation.
 The final reports are confirmation on examined cards, not fresh held-out evidence.
@@ -2562,7 +2567,7 @@ explicitly unvalidated transfer; raw scores remain alongside it.
 
 The painter now uses regular MPlantin for the colon instead of the bold Beleren
 number font, taller ability badges with a soft shadow, and a wider starting-loyalty
-plate. A [bounded component search](fixtures/accuracy/planeswalker-loyalty-offset-study.json)
+plate. A [bounded component search](../fixtures/accuracy/planeswalker-loyalty-offset-study.json)
 across the 26 development cards identifies a shared right/up correction for the
 widened plate. Distance and overlap optima disagree by only about one pixel;
 the selected correction is +1px horizontally and −3px vertically. The source
@@ -2587,8 +2592,8 @@ needs an independent foreground check, beyond a conservative bounding rectangle.
 | M21/M20         |    26 | .497 → .507     | .459 → .622                 | .571 → .504           |
 | M15/WAR         |    44 | .374 → .411     | .457 → .640                 | .569 → .466           |
 
-The [M21/M20 report](fixtures/accuracy/walker-review-refined-development-measurement.json)
-and [M15/WAR report](fixtures/accuracy/walker-review-refined-set-transfer-measurement.json)
+The [M21/M20 report](../fixtures/accuracy/walker-review-refined-development-measurement.json)
+and [M15/WAR report](../fixtures/accuracy/walker-review-refined-set-transfer-measurement.json)
 include every card and both raster tiers. Chandra, Awakened Inferno's body F1
 improves .392 → .516 and Kasmina's .359 → .532. Ugin retains the text layout the
 user preferred; body F1 is nearly unchanged (.407 → .404). These are regional
@@ -2611,28 +2616,28 @@ annotations, not full rules certification. Both sides of the final M15 compariso
 use these corrections: the old renderer was recaptured at `08fa0e5`. Earlier M15
 reports containing the source artifacts are diagnostic history only.
 
-The subsequent [one-pixel type-strip follow-up](fixtures/accuracy/planeswalker-type-lowered-plan.json)
+The subsequent [one-pixel type-strip follow-up](../fixtures/accuracy/planeswalker-type-lowered-plan.json)
 lowers the strip again after user visual review. All 70 inputs and measured
 ability layouts are identical to the preceding pass, and all 70 render without
-overflow. The [M21/M20 follow-up](fixtures/accuracy/walker-type-lowered-development-measurement.json)
-and [M15/WAR follow-up](fixtures/accuracy/walker-type-lowered-set-transfer-measurement.json)
+overflow. The [M21/M20 follow-up](../fixtures/accuracy/walker-type-lowered-development-measurement.json)
+and [M15/WAR follow-up](../fixtures/accuracy/walker-type-lowered-set-transfer-measurement.json)
 retain the unchanged baseline and registration. Inspect type-strip F1 is now
 .466 and .465 respectively; the type/registration review flag remains open.
 
-The next [fractional-shadow follow-up](fixtures/accuracy/planeswalker-type-shadow-plan.json)
+The next [fractional-shadow follow-up](../fixtures/accuracy/planeswalker-type-shadow-plan.json)
 adds another 1px downward shift and extends the downward shadow offset from 2px
 to 2.5px. Canvas preserves fractional offsets at each raster density. All 70
 captures retain identical inputs and ability layouts, with no measured overflow.
 Compared with the preceding follow-up, inspect type-strip F1 changes .466 → .460
 for M21/M20 and .465 → .472 for M15/WAR; table-tier F1 improves .440 → .453 and
-.433 → .460 respectively. The [development report](fixtures/accuracy/walker-type-shadow-development-measurement.json)
-and [transfer confirmation](fixtures/accuracy/walker-type-shadow-set-transfer-measurement.json)
+.433 → .460 respectively. The [development report](../fixtures/accuracy/walker-type-shadow-development-measurement.json)
+and [transfer confirmation](../fixtures/accuracy/walker-type-shadow-set-transfer-measurement.json)
 retain raw and registered scores. Individual results remain mixed: Ugin's
 registered type F1 improves .434 → .514 while Chandra's declines .453 → .386.
 Keep the independent outline/ink and registration review open. The local
 comparison displays this latest version.
 
-The [type-box and symbol follow-up](fixtures/accuracy/planeswalker-type-symbol-plan.json)
+The [type-box and symbol follow-up](../fixtures/accuracy/planeswalker-type-symbol-plan.json)
 raises the plate's bottom edge 1px while extending its shadow offset by 1px,
 preserving the top and typography anchors. The initial top-trim interpretation
 was superseded by the user's clarification. M15 and M20 now crop the transparent
@@ -2642,12 +2647,12 @@ regression check paints padded synthetic symbols at both raster tiers.
 
 All 70 cards render without measured ability overflow. Inspect type-region F1
 is .473 for M21/M20 and .476 for M15/WAR; the
-[development](fixtures/accuracy/walker-type-symbol-development-measurement.json) and
-[confirmation](fixtures/accuracy/walker-type-symbol-set-transfer-measurement.json)
+[development](../fixtures/accuracy/walker-type-symbol-development-measurement.json) and
+[confirmation](../fixtures/accuracy/walker-type-symbol-set-transfer-measurement.json)
 reports retain every raw/registered result. These remain mixed regional scores,
 not proof of complete frame accuracy.
 
-The new [independent geometry audit](fixtures/accuracy/walker-type-symbol-geometry-measurement.json)
+The new [independent geometry audit](../fixtures/accuracy/walker-type-symbol-geometry-measurement.json)
 measures signed paper transitions in three fixed strips and lettering in a
 separate interior sample. It confirms the approximately 1px bottom-edge lift
 on 50/70 inspect pairs; 20 ambiguous cases remain uncertain. The straight lower
@@ -2658,7 +2663,7 @@ these measurements do not authorize another positioning change. Reproduce with
 `node games/magic/tools/accuracy/walker-type-geometry.mjs`. This runs on cached
 rasters in Node, without Chromium or GPU execution.
 
-The [material and lower-curve pass](fixtures/accuracy/planeswalker-materials-plan.json)
+The [material and lower-curve pass](../fixtures/accuracy/planeswalker-materials-plan.json)
 restores the full native heights of the existing planeswalker background and
 frame. The previous bounds cropped about 9px from each source at canonical size,
 hiding the lower curve. All 34 unique cached frame/background assets used by
@@ -2676,7 +2681,7 @@ does not fully match Karn. These are development measurements, not independent
 validation or a complete HSB calibration; printed texture and illustration
 composition remain missing.
 
-The [isolated comparison](fixtures/accuracy/walker-materials-isolation-measurement.json)
+The [isolated comparison](../fixtures/accuracy/walker-materials-isolation-measurement.json)
 checks the curve-only intermediate separately from the gray-fill change. All 70
 inputs and ability layouts are unchanged, with no measured overflow; the 67
 other cards have byte-identical rasters between the curve-only and final passes
@@ -2691,11 +2696,11 @@ change under downsampling. A fixed straight sample on M21 Ugin also shows the
 restored outer edge lower than the scan. Do not interpret the restored curve or
 the inspect gain as an accepted alignment. Measure the inner rim, outer curve
 and stamp separately before another shared geometry correction.
-The full [M21/M20](fixtures/accuracy/walker-materials-development-measurement.json)
-and [M15/WAR](fixtures/accuracy/walker-materials-set-transfer-measurement.json)
+The full [M21/M20](../fixtures/accuracy/walker-materials-development-measurement.json)
+and [M15/WAR](../fixtures/accuracy/walker-materials-set-transfer-measurement.json)
 reports preserve raw and registered scores for every region and card.
 
-The [lower-panel study](fixtures/accuracy/planeswalker-lower-panel-plan.json)
+The [lower-panel study](../fixtures/accuracy/planeswalker-lower-panel-plan.json)
 separates the inner paper rim from the outer colored curve using signed vertical
 transitions in four fixed strips. Single, merged, competing and boundary peaks
 remain uncertain. Synthetic tests cover displacement, brightness, gamma, grain,
@@ -2704,7 +2709,7 @@ missing transitions and distractors. No image registration is fitted by this too
 Both edges were 4–6px too low across the four examined sets. A shared 5px lift
 compresses only the existing background/frame/paper below the type opening;
 upper geometry, text and badge anchors are preserved. The
-[80-card geometry report](fixtures/accuracy/walker-lower-panel-geometry-measurement.json)
+[80-card geometry report](../fixtures/accuracy/walker-lower-panel-geometry-measurement.json)
 records source/capture hashes and both raster tiers. Upper pixels differ by at
 most one channel unit from source-rectangle rounding. On the 70 development
 cards, raw inspect median absolute error falls from 4.78 to .59px for the inner
@@ -2725,14 +2730,14 @@ Narset, Tibalt, Angrath, Ashiok, Dovin and Saheeli need a final glyph-bound fit
 against the actual paper aperture. This is visible in the new captures and must
 be corrected; nominal row-height checks are insufficient.
 
-The [paper-fit correction](fixtures/accuracy/planeswalker-paper-final-plan.json)
+The [paper-fit correction](../fixtures/accuracy/planeswalker-paper-final-plan.json)
 now constrains actual glyph blocks to the aperture, propagating downward from
 the top limit and upward from the bottom limit while preserving at least 8px
 between abilities. The existing divider is constrained to that gap. Only an
 impossible fit needs a smaller font; final overflow checks actual glyph bounds.
 An original dense two-row fixture exercises this failure in `test:magic`.
 
-The [80-card confirmation](fixtures/accuracy/walker-paper-final-measurement.json)
+The [80-card confirmation](../fixtures/accuracy/walker-paper-final-measurement.json)
 keeps every font size, printed input, line wrapping and loyalty anchor unchanged.
 34 cards move text or dividers; 46 retain byte-identical images at both tiers.
 All final ink lies inside the paper with at least an 8px inter-ability gap.
@@ -2755,7 +2760,7 @@ M19 also receives the visible-viewport crop already used for M20/M21. Custom
 symbols retain their existing behavior. These changes run only during cached
 face preparation, with no pixel readback or additional asset download.
 
-[The frozen plan](fixtures/accuracy/set-symbol-plan.json) selects the first
+[The frozen plan](../fixtures/accuracy/set-symbol-plan.json) selects the first
 normal card in each rarity/color bucket: 26 M21 development cards and 26 M19
 cards reserved before their scans were inspected. Previously seen M19
 planeswalkers are excluded. A shared 81-offset search favored two pixels left
@@ -2795,7 +2800,7 @@ in the local capture cache. The local review browser remains outside the repo.
 ## Uniform core-symbol scale and type-plate bevel
 
 The next pass addresses the observed width and height deficit together. The
-[policy](fixtures/accuracy/set-symbol-size-plan.json) freezes a 1.10 uniform scale
+[policy](../fixtures/accuracy/set-symbol-size-plan.json) freezes a 1.10 uniform scale
 about the existing normal-frame center and a 1.5px white or black rim. The type
 line reserves half the added width. Custom symbols and planeswalker geometry
 retain their existing behavior. Existing shield vectors and frame sprites remain.
@@ -2805,12 +2810,12 @@ cards. The selected candidate improves every card by more than .02 on all three
 inspect diagnostics: median paired edge F1 .597 → .920, signed contrast .556 →
 .907, Census .680 → .908. The 12% trial declines; 2px rims have mixed effects.
 These are component diagnostics, not percentages of whole-card accuracy.
-The [measurements](fixtures/accuracy/set-symbol-size-development-measurement.json)
+The [measurements](../fixtures/accuracy/set-symbol-size-development-measurement.json)
 retain each candidate, source hashes, fixed window and per-card results.
 
 The dark inset immediately above the normal type plate's lower outline now has
 a 20% white blend in a 2.3px band, faded at the ends. Six material examples improve
-in a separate [tone diagnosis](fixtures/accuracy/set-symbol-bevel-development-measurement.json);
+in a separate [tone diagnosis](../fixtures/accuracy/set-symbol-bevel-development-measurement.json);
 gold worsens and remains unchanged, as do unexamined land/colorless materials.
 The tone diagnosis samples one shared two-pixel displacement between the scanned
 and rendered bevel. It neither fits individual scans nor certifies the remaining
@@ -2827,15 +2832,15 @@ The paired production captures confirm the change at both tiers:
 
 All 54 cards also improve inspect signed contrast and Census by more than .02.
 At table size, M20 has 27 contrast gains and one stable result; none regress.
-The [M21](fixtures/accuracy/set-symbol-size-m21-measurement.json) and
-[M20](fixtures/accuracy/set-symbol-size-m20-measurement.json) reports retain
+The [M21](../fixtures/accuracy/set-symbol-size-m21-measurement.json) and
+[M20](../fixtures/accuracy/set-symbol-size-m20-measurement.json) reports retain
 per-card and per-tier scores. Mazemind Tome M21 #232 retains a shared-coordinate
 placement residual: its diagnostic peak is 2px right, with F1 .635 → .972.
 Cavalier of Night M20 #94 peaks at (1,1), .659 → .914 inspect. Those fitted
 diagnostic values are not the reported accuracy scores; neither card receives
 an individual rendering or scan transform. Both remain in the local review page.
 
-The [full-set plan](fixtures/accuracy/set-symbol-all-plan.json) covers 952 eligible
+The [full-set plan](../fixtures/accuracy/set-symbol-all-plan.json) covers 952 eligible
 M19/M20/M21 printings, retaining unsupported-layout exclusions in the denominator.
 Its complete before captures precede the initial symbol treatment. Intermediate
 v49 full captures were superseded by v50; partial captures are never scored.
@@ -2876,9 +2881,9 @@ M19 retains a larger contour mismatch despite its consistent improvement.
 Planeswalker windows contain nearby frame ink and are flagged separately;
 their declines must not be interpreted as isolated shield regressions.
 
-The [M19](fixtures/accuracy/set-symbol-all-m19-measurement.json),
-[M20](fixtures/accuracy/set-symbol-all-m20-measurement.json) and
-[M21](fixtures/accuracy/set-symbol-all-m21-measurement.json) reports preserve
+The [M19](../fixtures/accuracy/set-symbol-all-m19-measurement.json),
+[M20](../fixtures/accuracy/set-symbol-all-m20-measurement.json) and
+[M21](../fixtures/accuracy/set-symbol-all-m21-measurement.json) reports preserve
 every card, category, both tiers, paired metrics, diagnostic offsets and source
 hashes. No diagnostic offset is applied to a scan or individual card. Reproduce
 with `node games/magic/tools/accuracy/set-symbol-all-audit.mjs m19` (and m20/m21).
@@ -2895,8 +2900,8 @@ adds ink around the curved ends. Only the frame band containing the rules
 box's upper border shifts. Its bottom, rules text and other frame geometry
 retain their positions. This applies to normal frames, not planeswalkers.
 
-The [M21](fixtures/accuracy/normal-border-m21-measurement.json) and
-[M20](fixtures/accuracy/normal-border-m20-measurement.json) diagnostics revisit
+The [M21](../fixtures/accuracy/normal-border-m21-measurement.json) and
+[M20](../fixtures/accuracy/normal-border-m20-measurement.json) diagnostics revisit
 the 54 previously examined cards with fixed normalization and no fitted scan
 alignment. The audit requires byte-identical pixels outside the upper type
 and rules-border bands at both tiers, including the complete lower rules box,
@@ -2921,7 +2926,7 @@ to reproduce from the cached v50/v51 rasters.
 
 ## M15 and WAR symbol ink, outlines and geometry
 
-The [topology study](fixtures/accuracy/set-symbol-topology-plan.json) retains
+The [topology study](../fixtures/accuracy/set-symbol-topology-plan.json) retains
 the pinned M15 and WAR SVG stencils. Their interior holes now receive opaque
 white ink on commons and black ink on other rarities. Backing contours follow
 the stencil envelopes, with an outer rim and the existing core-symbol rarity
@@ -2950,8 +2955,8 @@ The first frozen pass validates all 50 reserved normal cards:
 
 All M15 diagnostics improve on every reserved card. WAR's Cruel Celebrant #188
 loses local-contrast agreement at both tiers despite edge/Census gains. The
-[M15](fixtures/accuracy/set-symbol-topology-m15-reserved-validation.json) and
-[WAR](fixtures/accuracy/set-symbol-topology-war-reserved-validation.json)
+[M15](../fixtures/accuracy/set-symbol-topology-m15-reserved-validation.json) and
+[WAR](../fixtures/accuracy/set-symbol-topology-war-reserved-validation.json)
 reports retain that result. Narrow symbol windows reduce frame-line distraction;
 larger contextual windows remain alongside them. Neither is a percentage of
 whole-card accuracy.
@@ -2965,7 +2970,7 @@ do not establish isolated symbol placement accuracy.
 ### WAR common rim and vertical follow-up
 
 Visual review identified a weak common white rim and symbols sitting low.
-The [follow-up policy](fixtures/accuracy/set-symbol-war-rim-plan.json) compares
+The [follow-up policy](../fixtures/accuracy/set-symbol-war-rim-plan.json) compares
 0/1/2px lifts and three common outline widths on the examined development
 cards. A 1px lift improves the aggregate diagnostics more than 0 or 2px. A 2px
 outline stroke leaves approximately 1px of white outside the black stencil;
@@ -2979,7 +2984,7 @@ table; signed contrast improves .789 → .834 and .765 → .811. Twelve improve
 edge F1 by more than .02 at each tier. Three regress on all three diagnostics
 at both tiers: Bolas's Citadel #79, Charity Extractor #81 and Dreadhorde Invasion
 #86. They are all black cards. Keep them flagged for shared frame/scan-alignment
-analysis; do not add individual offsets. The [full reserved report](fixtures/accuracy/set-symbol-rim-war-reserved-validation.json)
+analysis; do not add individual offsets. The [full reserved report](../fixtures/accuracy/set-symbol-rim-war-reserved-validation.json)
 also verifies unchanged pixels outside the symbol window and unchanged text.
 
 Reproduce the initial comparisons with
@@ -2992,7 +2997,7 @@ for M15/WAR and additional symbol topologies are still required.
 
 ### Complete M15/WAR symbol coverage
 
-The frozen [full-set plan](fixtures/accuracy/set-symbol-topology-all-plan.json)
+The frozen [full-set plan](../fixtures/accuracy/set-symbol-topology-all-plan.json)
 now covers 284 M15 and 274 WAR printings, including basics and planeswalkers.
 WAR's one special treatment is excluded explicitly. All 558 captures succeeded
 at both tiers, and every pixel outside the permitted symbol region is unchanged
@@ -3007,8 +3012,8 @@ M15 has no edge regressions. WAR retains Mountain #260 at both tiers and
 Tomik #34 at table tier. Liliana's Triumph #98 loses inspect contrast; Census
 regresses on #34/#98/#260 at inspect and Sorin #217 at table. These are v51→v53
 results, distinct from the earlier rim-only regressions. All individual scores
-remain in the [M15](fixtures/accuracy/set-symbol-topology-all-m15-measurement.json)
-and [WAR](fixtures/accuracy/set-symbol-topology-all-war-measurement.json) reports.
+remain in the [M15](../fixtures/accuracy/set-symbol-topology-all-m15-measurement.json)
+and [WAR](../fixtures/accuracy/set-symbol-topology-all-war-measurement.json) reports.
 
 Planeswalker context scores improve but still mix symbol and frame ink. The six
 M15 planeswalker captures also missed the base annotations' reviewed original
@@ -3017,8 +3022,8 @@ Before/after inputs are identical, so the symbol comparison remains valid;
 these captures cannot validate original typography. Fix annotation inheritance
 before the next typography capture.
 
-Independent [M15](fixtures/accuracy/normal-plate-symbol-m15-measurement.json) and
-[WAR](fixtures/accuracy/normal-plate-symbol-war-measurement.json) plate reports
+Independent [M15](../fixtures/accuracy/normal-plate-symbol-m15-measurement.json) and
+[WAR](../fixtures/accuracy/normal-plate-symbol-war-measurement.json) plate reports
 retain raw signed edge positions and confidence. Charity Extractor and
 Dreadhorde Invasion have similar title/type displacement, consistent with the
 whole-scan offset confirmed in visual review. Translation-only scan
@@ -3038,8 +3043,8 @@ translation within 4px, with at least two usable strips per edge and at most
 No scale, rotation, text, mana or set-symbol fit is performed. The lower rules
 edge remains a diagnostic because stamped and unstamped frames differ there.
 
-The frozen [WAR](fixtures/accuracy/scan-normalization-war-profile.json) and
-[M15](fixtures/accuracy/scan-normalization-m15-profile.json) templates currently
+The frozen [WAR](../fixtures/accuracy/scan-normalization-war-profile.json) and
+[M15](../fixtures/accuracy/scan-normalization-m15-profile.json) templates currently
 support nonlegendary normal modern frames. The CPU pass records raw and
 normalized scores for 485 such printings; the other 73 retain explicit
 unsupported status. Accepted y corrections cover 135/215 WAR and 181/270 M15
@@ -3060,8 +3065,8 @@ tracking, position and width-fitting policy. Special-layout title sizes remain
 24px. Ten WAR development cards and 50 additional WAR/M15 cards improve title
 edge overlap at both raster tiers, with raw and normalized references. All
 native pixels outside the title region remain identical. Full available name
-width is measured, excluding mana. The [WAR](fixtures/accuracy/normal-title-war-measurement.json)
-and [M15](fixtures/accuracy/normal-title-m15-measurement.json) reports retain
+width is measured, excluding mana. The [WAR](../fixtures/accuracy/normal-title-war-measurement.json)
+and [M15](../fixtures/accuracy/normal-title-m15-measurement.json) reports retain
 each result; these reused symbol cohorts are additional typography checks,
 not unseen scans. Transfer to other frame eras still needs measurement.
 Run `node games/magic/tools/accuracy/normal-title-study.mjs war capture` once
@@ -3078,7 +3083,7 @@ must retain their existing layout.
 The same density-conditioned trial was checked on 23 additional cards and
 regresses on seven, including God-Eternal Oketra, God-Eternal Bontu, Blindblast,
 Planewide Celebration, Roalesk, Genesis Hydra and Grindclock. The
-[experiment record](fixtures/accuracy/normal-dense-text-experiment.json) and
+[experiment record](../fixtures/accuracy/normal-dense-text-experiment.json) and
 frozen candidate template retain the results. Do not promote that rule yet.
 Next separate actual line widths, paragraph baselines and bottom/stat clearance;
 test margin changes without changing the font size. The local comparison's
@@ -3086,7 +3091,7 @@ test margin changes without changing the font size. The local comparison's
 
 ### Window and type-width pass (v55)
 
-The [frozen selection](fixtures/accuracy/normal-window-plan.json) covers 167
+The [frozen selection](../fixtures/accuracy/normal-window-plan.json) covers 167
 ordinary cards across WAR, M15, M19, M20 and M21 at both raster tiers. Art now
 has a separate inner aperture (4.5px inset per side) and a 1.5px black rim;
 previous painting covered that rim. Type lettering expands 2% where it fits,
@@ -3115,9 +3120,9 @@ the frozen v54 baseline with a required source hash. `window-geometry.mjs`
 measures paired edges and separates width errors from translation. Tests cover
 known translations, changed widths, tone/grain and absent edges.
 
-The [Revised](fixtures/accuracy/old-window-3ed-measurement.json),
-[Mirage](fixtures/accuracy/old-window-mir-measurement.json) and
-[Tempest](fixtures/accuracy/old-window-tmp-measurement.json) audits cover another
+The [Revised](../fixtures/accuracy/old-window-3ed-measurement.json),
+[Mirage](../fixtures/accuracy/old-window-mir-measurement.json) and
+[Tempest](../fixtures/accuracy/old-window-tmp-measurement.json) audits cover another
 61 cards without changing their rendering. They retain raw and existing frozen
 set/frame transforms. Unreviewed type wording is explicitly uncertified:
 Blue Elemental Blast still has `Instant` in the capture input while its scan

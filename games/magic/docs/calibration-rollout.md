@@ -101,7 +101,7 @@ whole-frame-only constraint no longer excludes this masked alternative.
 The v0.2.13 source recheck uses 212 nonfoil cards from Seventh Edition and the
 three Urza sets, preserving the original six fitting names per set and reserving
 all additional cached frame-study names. Of these, 172 pass frame normalization.
-The [follow-up receipt](fixtures/accuracy/old-symbol-alignment-v0213.json)
+The [follow-up receipt](../fixtures/accuracy/old-symbol-alignment-v0213.json)
 records the source identities, candidate deltas, scores and regressions. Detailed
 per-card transforms and image hashes remain in the local accuracy cache.
 
@@ -152,8 +152,8 @@ use the shared family setting. The badge asset itself is unchanged. Variable
 stats use five-point stars because the imported font encodes `*` as a dot.
 Fonts and brushes are loaded through existing preparation caches, not per frame.
 
-The [fit record](fixtures/accuracy/eighth-footer-fit.json) and
-[fresh-raster verification](fixtures/accuracy/eighth-footer-verified.json)
+The [fit record](../fixtures/accuracy/eighth-footer-fit.json) and
+[fresh-raster verification](../fixtures/accuracy/eighth-footer-verified.json)
 retain the reference and normalization identities. Names used for fitting in
 any printing cannot also count as reserved examples. On reserved names:
 

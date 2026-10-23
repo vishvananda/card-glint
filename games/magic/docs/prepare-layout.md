@@ -35,7 +35,7 @@ printings. MTGJSON's snapshot lacks `originalText` and `originalType` for both
 panels of every card. All 72 printed text panels were visually checked against
 their full scans. Current Scryfall face text matches those scans, including
 reminders and paragraph breaks. The
-[reviewed wording fixture](fixtures/accuracy/prepare-printing-text.json) records
+[reviewed wording fixture](../fixtures/accuracy/prepare-printing-text.json) records
 explicit original fields bound to the exact reference hashes. The adapter
 preserves the missing provider values and rejects changed scans; it does not
 silently treat future Oracle changes as original wording.
@@ -58,7 +58,7 @@ out of those areas. Main titles moved down one pixel and inset titles up one;
 header sizes remain close to the source definition. There are no per-card
 renderer settings.
 
-The [comparison receipt](fixtures/accuracy/prepare-native.json) records the full
+The [comparison receipt](../fixtures/accuracy/prepare-native.json) records the full
 cohort, input/renderer hashes, component scores, regressions and rejected fits.
 Local-contrast edge F1 is measured at a one-pixel tolerance; body and white inset
 header lettering use separate polarities. These are component diagnostics, not

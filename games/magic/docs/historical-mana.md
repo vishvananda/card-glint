@@ -25,9 +25,9 @@ recoloring, font loading or readback.
 
 ## Evidence and limits
 
-- [Glyph measurements, source URLs, scan hashes and normalization](fixtures/accuracy/mana-glyph-study.json)
-- [Adopted choices and review reasons](fixtures/accuracy/mana-glyph-decisions.json)
-- [108 scan-reviewed printed cost orders](fixtures/accuracy/historic-mana-order.json)
+- [Glyph measurements, source URLs, scan hashes and normalization](../fixtures/accuracy/mana-glyph-study.json)
+- [Adopted choices and review reasons](../fixtures/accuracy/mana-glyph-decisions.json)
+- [108 scan-reviewed printed cost orders](../fixtures/accuracy/historic-mana-order.json)
 
 Glyph comparison uses dark-ink overlap and symmetric boundary agreement rather
 than RGB differences. Frozen UUID cohorts separate fitting and held-out scans.
@@ -85,8 +85,8 @@ scale, 0.790 for the resized current font and 0.785 for resized MSE. The origina
 font at its existing size scores 0.777. ABU uses Conjurer; Beta has only two
 usable fitting samples and inherits this family choice. Other early white sets
 retain the font because their disc fits were rejected, not because they scored
-better. See [disc measurements](fixtures/accuracy/mana-glyph-sizing.json) and
-[shared size fits](fixtures/accuracy/mana-glyph-sizing-fit.json).
+better. See [disc measurements](../fixtures/accuracy/mana-glyph-sizing.json) and
+[shared size fits](../fixtures/accuracy/mana-glyph-sizing-fit.json).
 
 `symbolAdjustment.mana.glyphs` supplies per-color cost controls, for example
 `{ U: { scale: 0.95, dx: 0.25, dy: -0.25 } }`. Scale is relative to the selected
@@ -116,7 +116,7 @@ symbols and modern-symbol mode retain their existing artwork.
 Expansion occurs once during cached bitmap preparation. It preserves disc alpha
 and partial-alpha edge pixels; palette rebinding then applies the printing color.
 The material cache key includes both the palette and expansion amount. See
-[Beta material measurements](fixtures/accuracy/beta-mana-materials.json) for
+[Beta material measurements](../fixtures/accuracy/beta-mana-materials.json) for
 sample counts, source and scan identities, color errors, and rejected samples.
 These color and shape diagnostics are separate from the mana-region placement
 score; neither should be interpreted as a percentage of correct card pixels.
@@ -139,7 +139,7 @@ preparation pixel buffer, preserves disc alpha and flat paper, and participates
 in the bounded material cache. Repeated preparation performs no pixel readback.
 The source-color option disables both disc and ink recoloring.
 
-The [integration receipt](fixtures/accuracy/early-reprint-mana.json) records exact
+The [integration receipt](../fixtures/accuracy/early-reprint-mana.json) records exact
 native agreement with the measured prototype on all 690 printings and unchanged
 pixels on 98 controls from other sets. These checks verify implementation and
 scope; they are not scan-accuracy scores. The separate regional studies retain

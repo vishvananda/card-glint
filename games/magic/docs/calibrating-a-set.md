@@ -3,7 +3,7 @@
 Use this checklist for a calibration PR. Work in the Magic pack; the Rust core,
 browser backend and host apps should not need changes for a profile update.
 Keep scans and derived comparison images in the ignored local cache or PR artifacts.
-See [asset sources and fan notice](NOTICE.md).
+See [asset sources and fan notice](../NOTICE.md).
 
 ## Checklist
 
@@ -85,7 +85,7 @@ See [asset sources and fan notice](NOTICE.md).
    reference/wording hashes, baseline/candidate commits, asset/font hashes,
    browser, metric/template hashes, validation independence, changed values and
    remaining errors. Mark a component complete only when its whole applicable
-   scope passes the [completion contract](tools/accuracy/calibration-ledger.mjs).
+   scope passes the [completion contract](../tools/accuracy/calibration-ledger.mjs).
    A successful regional fit does not complete the set or publish a release.
 
 ## Measurement settings
@@ -112,9 +112,9 @@ candidate. Benchmark preparation and CPU submission separately from GPU completi
 
 The first consolidated profiles are:
 
-- [`src/calibration/sets/fem.ts`](src/calibration/sets/fem.ts)
-- [`src/calibration/sets/4ed.ts`](src/calibration/sets/4ed.ts)
-- [`src/calibration/sets/chr.ts`](src/calibration/sets/chr.ts)
+- [`src/calibration/sets/fem.ts`](../src/calibration/sets/fem.ts)
+- [`src/calibration/sets/4ed.ts`](../src/calibration/sets/4ed.ts)
+- [`src/calibration/sets/chr.ts`](../src/calibration/sets/chr.ts)
 
 Each file owns frame/stock/art geometry, source-bound frame/paper/black adjustments,
 heading and footer typography, mana geometry/pigment, and optional body and set-symbol
@@ -129,7 +129,7 @@ Explicit host controls keep their existing precedence. Revision changes invalida
 prepared face keys. Source fingerprints also change with the values.
 
 This adapter currently supports ordinary old-border ABU/Fourth plates. Adding a
-set needs one registration in [`profiles.ts`](src/calibration/profiles.ts) and a
+set needs one registration in [`profiles.ts`](../src/calibration/profiles.ts) and a
 scope/selector review; unsupported layouts need a painter adapter first. Other
 sets still have legacy tables. Migrate their existing values without pixel changes
 when opening their next calibration pass, then use this one-file contribution
@@ -139,7 +139,7 @@ receipts keep their original values and scores; a new revision needs new evidenc
 ## Commands and artifacts
 
 From a fresh checkout, install Node 22+, the pinned Rust toolchain and the
-[build prerequisites](../../README.md#build-and-run). Then:
+[build prerequisites](../../../README.md#build-and-run). Then:
 
 ```sh
 npm ci
@@ -152,7 +152,7 @@ node games/magic/tools/accuracy/calibration-study.mjs init 4ed test-results/4ed-
 
 Review the draft's original fields and exclusions. Add independent frame templates
 keyed by each entry's `group`, and component regions. Use the formats in
-[`calibration-study-example.json`](tools/accuracy/calibration-study-example.json).
+[`calibration-study-example.json`](../tools/accuracy/calibration-study-example.json).
 The example contains synthetic values; it does not certify any real printing.
 For an ink region, list its `fields` and review each field's wording provenance.
 Keep an unavailable field unmeasured instead of copying Oracle text into it.
@@ -178,14 +178,14 @@ It does **not** automatically choose fonts, certify templates or approve a fit.
 Use these shared modules for component-specific searches, retaining the final
 native replay as the acceptance check:
 
-| Task                        | Tool                                                                                                                                                                                                             |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Outer-corner alpha          | `node games/magic/tools/accuracy/corner-radius.mjs INPUT.json OUTPUT.json`; accepts a cached set snapshot or the committed non-Alpha corner study.                                                               |
-| Scan-only pose/cache        | [`scan-frame-cache.mjs`](tools/accuracy/scan-frame-cache.mjs), [`scan-frame-fit.mjs`](tools/accuracy/scan-frame-fit.mjs); templates remain separate from renderer profiles.                                      |
-| Bounded numeric fitting     | [`calibration-search.mjs`](tools/accuracy/calibration-search.mjs), `searchCalibration(initial, parameters, score)`; supply a cached regional painter/metric, use multiple starts and inspect boundary/tie flags. |
-| Fast lettering + filled ink | [`lettering-metrics.mjs`](tools/accuracy/lettering-metrics.mjs), [`letter-fill-metrics.mjs`](tools/accuracy/letter-fill-metrics.mjs).                                                                            |
-| Pigment and texture         | [`hsb-color.mjs`](tools/accuracy/hsb-color.mjs), [`hsb-texture.mjs`](tools/accuracy/hsb-texture.mjs); freeze text-free sampling masks first.                                                                     |
-| Coverage inventory/report   | `npm run magic:calibration:inventory`, `npm run magic:calibration:report`; use the completion contract for task evidence.                                                                                        |
+| Task                        | Tool                                                                                                                                                                                                                |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Outer-corner alpha          | `node games/magic/tools/accuracy/corner-radius.mjs INPUT.json OUTPUT.json`; accepts a cached set snapshot or the committed non-Alpha corner study.                                                                  |
+| Scan-only pose/cache        | [`scan-frame-cache.mjs`](../tools/accuracy/scan-frame-cache.mjs), [`scan-frame-fit.mjs`](../tools/accuracy/scan-frame-fit.mjs); templates remain separate from renderer profiles.                                   |
+| Bounded numeric fitting     | [`calibration-search.mjs`](../tools/accuracy/calibration-search.mjs), `searchCalibration(initial, parameters, score)`; supply a cached regional painter/metric, use multiple starts and inspect boundary/tie flags. |
+| Fast lettering + filled ink | [`lettering-metrics.mjs`](../tools/accuracy/lettering-metrics.mjs), [`letter-fill-metrics.mjs`](../tools/accuracy/letter-fill-metrics.mjs).                                                                         |
+| Pigment and texture         | [`hsb-color.mjs`](../tools/accuracy/hsb-color.mjs), [`hsb-texture.mjs`](../tools/accuracy/hsb-texture.mjs); freeze text-free sampling masks first.                                                                  |
+| Coverage inventory/report   | `npm run magic:calibration:inventory`, `npm run magic:calibration:report`; use the completion contract for task evidence.                                                                                           |
 
 Before opening the PR:
 

@@ -1,5 +1,10 @@
 # M21 calibration study
 
+> Historical study record. Results and pending-work statements describe the
+> versions named below. Use the [documentation index](README.md),
+> [current defaults](calibration-defaults.md) and [Lab](https://cardforge.fyi/lab/)
+> for current usage and status.
+
 Status: experimental. The current renderer defaults have not been replaced by
 these measurements. The shared comparison normalizer now passes all 1,716
 recovery controls on the complete 297-printing census; this does not complete
