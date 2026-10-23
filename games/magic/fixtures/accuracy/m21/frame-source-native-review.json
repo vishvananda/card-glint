@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "source-adoption-native-verified",
+  "scope": "All297 Original native M21 faces and etchings. Only Niambi, Radha and Fabled Passage change; each equals its independent frozen-source proposal. Input entries, font/raster helpers, existing assets, alpha and every etching remain unchanged. Three pinned assets extend the inventory. Source adoption is not set completion, independent pigment validation or a new scan normalization.",
+  "definition": {
+    "beforeRenderer": "decb416ef6ec0ba64a4d1d98cd458d3c1a44e63dbef0e84263573d693e6c304f",
+    "afterRenderer": "db9236587ffcd71d060b24a6cc90a32dd17943dead08ad2e16b77c11365ecd79",
+    "beforeCaptureHash": "1a02d1d627e456fa1858699cef7f5a8f9b38a7d9328d73c4b2de7c3bd7542d12",
+    "afterCaptureHash": "52f0a13e678500b9d954258ab5670f0c3bf0a89e6ef026c29102298ac34ac4ce",
+    "beforeInputsHash": "01597eb2b6ab913fd0ea5d0a3a3464c0942afad862e63fc6fbc38ae6b4d5cafa",
+    "afterInputsHash": "5ac6983a77a966bae32cfd04ab82d9145fefe461f4fbca7159ba2362ae93ff5f",
+    "crownProposalHash": "6cdfbd28cef34612f4f104c7939bd4aa00ef6fe7d9e76287fe2c16634e63693d",
+    "goldProposalHash": "4228eb35ec4207d27a68fb0e6d8d104bb10be1491cb927449504ef3a8a0dbc17",
+    "toolHash": "2388fcb3ab653c07aa936d3d052d265d9139cab795bcaa1fbbce1fd84aeb4263",
+    "assetAdditions": [
+      {
+        "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/legendary_crowns/WU.webp",
+        "sha256": "7e10abcf133b7812e6a5f4973a8626c61158992d2eb8288a5d2cc79821e350f7",
+        "bytes": 48460,
+        "mime": "image/webp",
+        "fetchedAt": "2026-10-23T08:57:15.520Z",
+        "etag": "W/\"bd4c-773e3f51a1d67738\"",
+        "lastModified": null
+      },
+      {
+        "url": "https://cdn.jsdelivr.net/gh/wingedsheep/mtg-card-renderer@b52888cda57a99b5b7dd47bc4fdfae47383a93f9/app/src/main/resources/static/card-rendering/assets/img/legendary_crowns/RG.webp",
+        "sha256": "a01399970120d2ad62ee4b6e101a224905e85ae06621fa602965b26adaa708cc",
+        "bytes": 65138,
+        "mime": "image/webp",
+        "fetchedAt": "2026-10-23T08:57:15.606Z",
+        "etag": "W/\"fe72-54abc323d2dd1225\"",
+        "lastModified": null
+      },
+      {
+        "url": "https://raw.githubusercontent.com/joshbirnholz/cardconjurer/33f2547137fe366b40e9e8dba4eb591af190fddf/img/frames/m15/new/lm.png",
+        "sha256": "d068542352b8681edbf93b2dbb38b3c39273a8c616b8072fca05995b7e77e4a0",
+        "bytes": 2518107,
+        "mime": "image/png",
+        "fetchedAt": "2026-10-23T09:23:46.733Z",
+        "etag": "W/\"1f0ebfa5533ef4cd5fd86c8d2482b9ff710bbd1f78d12ac234b2b35c568a0acb\"",
+        "lastModified": null
+      }
+    ]
+  },
+  "summary": {
+    "faces": 297,
+    "unchangedFaces": 294,
+    "changedFaces": 3,
+    "exactIndependentProposals": 3,
+    "unchangedEtchings": 297,
+    "alphaChanges": 0
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/frame-source-native-review.json.gz",
+    "sha256": "470884ccf45bac987167e15e4797dd61cc9979bea01d61d8cce4a97a9f20d631",
+    "contentSha256": "47743df7064da1a5a1766daae31fdba390e6d84a6733630dff3967bff0e8a264",
+    "bytes": 53369
+  },
+  "toolFile": "games/magic/tools/accuracy/modern-frame-source-native-audit.mjs",
+  "collateral": {
+    "cases": 287,
+    "pairs": 1722,
+    "faults": 0,
+    "scope": "Native table/inspect face, printing and artwork layers using generated local raster and browser fallback fonts. Production compares with an independently injected crown/gold-land proposal on immutable profile15 source. Old-era controls, exact-only policies, appearance overrides and metadata-leak controls are included. Actual source pigment is separately verified by the complete297-card native scan-bound adoption. This is collateral scope evidence, not scan calibration, real-font fidelity or a GPU benchmark.",
+    "evidence": {
+      "file": "games/magic/fixtures/accuracy/m21/frame-source-collateral.json.gz",
+      "sha256": "0b0dfa5e7237979629f66fdd17a569d0f2f5c44779e990c2cd7d57bb8e529e6e",
+      "contentSha256": "ca0fecd3afaf7451b7f92256e137cd0c1f4daada21ec1eb475e6201b58bbe1d9",
+      "bytes": 106434
+    }
+  },
+  "collateralToolFile": "games/magic/tools/accuracy/modern-frame-source-collateral.mjs",
+  "proposalToolFile": "games/magic/tools/accuracy/modern-frame-source-proposal.mjs",
+  "remaining": [
+    "Raw paired crowns have slightly worse structure while fixing the missing color tips; source-local pigment residuals remain visible.",
+    "Fabled Passage raw gold paper/name/type is substantially closer but has a remaining pigment delta.",
+    "Ordinary rules/flavor proposals, white basic sun rim, Teferi patterned paper and illustration spills remain separate open reviews.",
+    "This source adoption does not certify M21 or publish a release."
+  ]
+}

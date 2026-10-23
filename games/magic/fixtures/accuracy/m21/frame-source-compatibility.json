@@ -1,0 +1,178 @@
+{
+  "schema": 1,
+  "revision": 2,
+  "status": "reviewed-modern-frame-source-adoption",
+  "base": "20fdf343119b4722024e09a18a002a2f5e5b494b",
+  "beforeRendererHash": "decb416ef6ec0ba64a4d1d98cd458d3c1a44e63dbef0e84263573d693e6c304f",
+  "rendererHash": "de4ae64b43769cd9cd39a8ddc79fd9fa016e82ff0c5586ce2b9112c6bcbe6a3c",
+  "scope": "Exact seven-file source reconstruction for paired modern crowns, printing-local frame palettes, raw gold-land panels and synchronized public profile revision16. Historical receipts remain immutable. M21/compatible modern owners retain actual current source; older families retain the tested prior dependency path.",
+  "parents": [
+    {
+      "file": "games/magic/fixtures/accuracy/m21/stock-source-compatibility.json",
+      "sha256": "3440da1b1f624c16e98900aad8be22f3041b1df24a6c0144094796acdcdf3b72"
+    },
+    {
+      "file": "games/magic/fixtures/accuracy/m21/modern-default-source-compatibility.json",
+      "sha256": "d844e6ac1b315fb24b7a8924f2865bb7d386f3a1029ba93c19acbdb9570ed929"
+    },
+    {
+      "file": "games/magic/fixtures/accuracy/m21/style-source-compatibility.json",
+      "sha256": "bcabcd4c3225c9ee6d19349ced38538d2936df22e37a70d5874d6f3a85d6be79"
+    },
+    {
+      "file": "games/magic/fixtures/accuracy/m21/source-and-land-text-proposals.json",
+      "sha256": "846eee88bf51840ac32ec4bfd1336dc07bfa7d0b4f1c284cbe3f2d1b0b988fe4"
+    },
+    {
+      "file": "games/magic/fixtures/accuracy/m21/frame-source-compatibility-r1.json",
+      "sha256": "6a8cec8ae863ba6c7d600ef4eb2ff6faff2e25c7ab0d9a6f7671b838f6789f08"
+    }
+  ],
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/frame-source-native-review-r2.json",
+    "sha256": "1fe709044cc207b17f1d36cb80784306da98437f408bf54d1aafe0f06192a067"
+  },
+  "files": {
+    "games/magic/src/presentation/m21-land-plates.ts": {
+      "before": "5c61596030b70dc60cb9b570cdc1ed0b64afa5ddc233ab262cb59ba3847fccf7",
+      "after": "e4b3f3bf455a78350cc47d0f8dbaba8e4049c80fccdd53aa37f263a7a7e43966",
+      "historicalHashes": [],
+      "reverseEdits": [
+        {
+          "start": 23,
+          "count": 3,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/modern-default-profile.ts": {
+      "before": "a5ea3e009bbf31148e7fc67ed1168a7a049695c397ca92d42a458de85f9e49a3",
+      "after": "0e5c84d6b34421c8bea204ec5cc8438862ff8a738f62390344bb86774682da6d",
+      "historicalHashes": [],
+      "reverseEdits": [
+        {
+          "start": 28,
+          "count": 1,
+          "lines": []
+        },
+        {
+          "start": 7,
+          "count": 12,
+          "lines": [
+            "export function modernDefaultProfile(face: RenderedCardInput): ModernPrintingProfile | undefined {\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/modern-printing-profile.ts": {
+      "before": "06f172c76ecf04d9d89a6c32425ba996e7f2c64194d9643060864bbfaa20545b",
+      "after": "6d74ddf4f77bab36dc752dbcd14b2ae72f295c75d7c458b3ad0c8cd5020ca252",
+      "historicalHashes": ["0a6e5c6e32b7cbf82b96808b732d497f015aee03e04844cb4bd89171b0df6443"],
+      "reverseEdits": [
+        {
+          "start": 86,
+          "count": 6,
+          "lines": [
+            "  if (colors.length > 2) return undefined;\n",
+            "  const sources = colors.length\n",
+            "    ? colors.map((c) => profile.root + '/l' + c.toLowerCase() + '.png')\n",
+            "    : [profile.root + '/l.png'];\n"
+          ]
+        },
+        {
+          "start": 61,
+          "count": 1,
+          "lines": [
+            "export function supportsModernPrintingProfile(face: RenderedCardInput): boolean {\n"
+          ]
+        },
+        {
+          "start": 13,
+          "count": 14,
+          "lines": ["export function modernPrintingProfile(face: RenderedCardInput) {\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/modern-printing-profiles.ts": {
+      "before": "6e244d2c78bb4a73c75862b175eda8ae1abd2a6f78d851b059e2f6acf92e59c6",
+      "after": "401049b0841808ed8eb6b4049a724f9384e91931b751a521a7798253eb636d3f",
+      "historicalHashes": [
+        "4fe827cab24d5780f6bd99b71c5c1acf505121df9ee51745590d66ff4947f565",
+        "600f069a53c20e5a781819fcf94b3faa563602b31a63f1b68af797fed431ed14"
+      ],
+      "reverseEdits": [
+        {
+          "start": 172,
+          "count": 5,
+          "lines": ["    revision: 15,\n"]
+        },
+        {
+          "start": 75,
+          "count": 12,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/modern-style-scope.ts": {
+      "before": "798ad9591e8083364b146a5baf6195f3392a68f9ef69d3e20eaa6db770265650",
+      "after": "e6a62725d8fb2609524692d95736145a0630164f798d7d6344cec61a42d62a0f",
+      "historicalHashes": [],
+      "reverseEdits": [
+        {
+          "start": 4,
+          "count": 5,
+          "lines": [
+            "export function supportsModernStyleDefaults(face: RenderedCardInput): boolean {\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/printing-calibration-types.ts": {
+      "before": "17a818a17393b3e7242658ec7416358340f941ca704678896f580dc6bec9c7e6",
+      "after": "d63068d55f1461348f0876ca57104b963968a6974ea1580254b5d2a601dae5b1",
+      "historicalHashes": [
+        "a4ade02bac838f4fa57b3bc9da4b83f88583751f5a9eb3e0a00029b1db4863f3",
+        "c9aea16a4d7e04d0b6e7cf638561acb8de05a21483a5c201f5feae54ac26c4a3"
+      ],
+      "reverseEdits": [
+        {
+          "start": 29,
+          "count": 1,
+          "lines": ["    revision: 15,\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/profile.ts": {
+      "before": "ea190605089a1b96b47e640f950fef7385e3013303b24784718127060f7fa6f8",
+      "after": "14fbd24f6c82dd09a6ff65504b375969920f639b137668781fd78aa3ff667aa2",
+      "historicalHashes": [],
+      "reverseEdits": [
+        {
+          "start": 114,
+          "count": 5,
+          "lines": []
+        },
+        {
+          "start": 96,
+          "count": 6,
+          "lines": ["          : boxes,\n"]
+        },
+        {
+          "start": 27,
+          "count": 4,
+          "lines": []
+        },
+        {
+          "start": 0,
+          "count": 1,
+          "lines": []
+        }
+      ]
+    }
+  }
+}

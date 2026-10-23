@@ -1,3 +1,4 @@
+import type { FrameColor } from './profile.js';
 import { M21_COMPONENT_CALIBRATION } from './m21-component-calibration.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { M21_LAND_PLATES, type ModernLandPlateProfile } from './m21-land-plates.js';
@@ -72,6 +73,18 @@ export interface ModernPrintingProfile {
   /** Absent on measured exact-set profiles. Never implies target-set certification. */
   readonly inheritedFrom?: 'm21';
   readonly revision: number;
+  /** Compatible modern crowns retain their printed color-pair tips. */
+  readonly pairedLegendaryCrowns?: boolean;
+  /** Exact-printing appearance data; never transferred with style defaults. */
+  readonly printedFrameColors?: Readonly<
+    Record<
+      string,
+      {
+        readonly name: string;
+        readonly colors: readonly FrameColor[];
+      }
+    >
+  >;
   /** Intrinsic heading glyphs, independent of color calibration policy. */
   readonly headingFont?: 'beleren-2016';
   /** Fractional design metrics and source-family fits in 488×680 painter units. */
@@ -157,7 +170,11 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 15,
+    revision: 16,
+    pairedLegendaryCrowns: true,
+    printedFrameColors: {
+      '246': { name: 'Fabled Passage', colors: ['W', 'U', 'B', 'R', 'G'] },
+    },
     headingFont: 'beleren-2016',
     typeText: {
       plate: { dx: -1.25, dy: 0.5, size: 1.025, width: 0.985 },

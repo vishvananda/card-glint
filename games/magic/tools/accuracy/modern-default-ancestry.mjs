@@ -1,3 +1,4 @@
+import { modernFrameSourceAncestry } from './modern-frame-source-ancestry.mjs';
 // Exact reconstruction for historical receipts; it never certifies a target set.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -27,7 +28,7 @@ export function modernDefaultAncestry() {
       );
     for (const [file, digest] of Object.entries(p.newModules))
       assert.equal(
-        hash(await readFile(file)),
+        hash(await preModernStockSource(file, await readFile(file))),
         digest,
         'Unreviewed modern defaults module: ' + file,
       );
@@ -79,7 +80,10 @@ export async function preModernDefaultSource(file, bytes) {
   try {
     bytes = await preModernStockSource(file, bytes);
   } catch (error) {
-    throw new Error('Unreviewed modern defaults source: ' + file, { cause: error });
+    throw new Error(
+      'Unreviewed modern defaults ' + (p.newModules[file] ? 'module: ' : 'source: ') + file,
+      { cause: error },
+    );
   }
   if (p.newModules[file]) {
     assert.equal(hash(bytes), p.newModules[file], 'Unreviewed modern defaults module: ' + file);
@@ -101,7 +105,8 @@ export async function modernDefaultProfileSource(file, bytes, set, group) {
   if (set?.toLowerCase() === 'm21') return { bytes, changedProfile: false };
   const changed = await modernDefaultSetAffected(set, group);
   const stock = await modernStockAncestry();
-  if (changed && (p.files[file] || p.newModules[file] || stock.files[file]))
+  const frame = await modernFrameSourceAncestry();
+  if (changed && (p.files[file] || p.newModules[file] || stock.files[file] || frame.files[file]))
     return { bytes, changedProfile: true };
   return { bytes: await preModernDefaultSource(file, bytes), changedProfile: false };
 }

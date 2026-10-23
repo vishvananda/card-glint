@@ -584,3 +584,33 @@ basics/planeswalkers. `maximumSize` now overrides the actual calibrated maximum
 without changing the legacy line budget. Six independent native-font trial
 results verify that correction. These are accuracy-tool options, not new
 renderer defaults; full native adoption and component review are still required.
+
+## Profile revision 16: reviewed crown and land sources
+
+[Complete native adoption](frame-source-native-review-r2.json) supersedes the
+earlier source proposals. Paired WU/RG crowns restore Niambi and Radha's printed
+tips. Fabled Passage selects the pinned gold-land panel source from a reviewed
+set/number/name trait. Explicit palettes still win, semantic colors stay empty,
+and printing traits are stripped from inherited styles. Compatible modern sets
+inherit the paired-crown policy.
+
+Only those3 of297 native faces change. Every changed face reproduces the
+independent proposal; the other294 faces, every etching and every alpha field
+remain exact. Another1722 native comparisons cover the independent source
+proposal, old frames, explicit palettes and printing-content isolation. Both
+the style and public selector advertise revision16. The second complete capture
+and collateral replay include that metadata synchronization.
+
+Source-specific residuals remain disclosed: crown structure drops slightly
+while the missing color tips are restored, and raw gold panels retain modest
+pigment differences. Fabled Passage improves80.460 to86.411/100. The full
+297-card diagnostic mean is80.525/100;294 scores reuse identical rasters and3
+are recalculated. The metadata-only replay reuses all297 scores after verifying
+every face and etching hash.
+
+[Seven-file ancestry](frame-source-compatibility.json) preserves the immutable
+earlier receipts and rejects unknown source edits. M21 and affected modern sets
+retain actual current fingerprints. Older frame families may retain the tested
+historical dependency path. The land-entry text proposal remains unadopted,
+including Wind-Scarred Crag's counterexample; this source pass does not mark the
+set complete.

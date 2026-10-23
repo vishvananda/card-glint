@@ -1,3 +1,4 @@
+import { modernPrintingProfile } from './modern-printing-profile.js';
 import { basicLandColor } from './plate-basic-land.js';
 const COLOR_ORDER = 'WUBRG';
 
@@ -24,6 +25,10 @@ export type BoxAssetKey = 'Artifact' | 'B' | 'Colourless' | 'G' | 'Gold' | 'Land
 export type FrameColor = 'W' | 'U' | 'B' | 'R' | 'G';
 
 export interface CardProfileInput {
+  /** Optional exact-printing identity for reviewed physical palette traits. */
+  name?: string;
+  setCode?: string | null;
+  collectorNumber?: string | null;
   colors?: readonly string[];
   /** Printed frame palette when it differs from the card's rules colors. */
   frameColors?: readonly FrameColor[];
@@ -89,7 +94,12 @@ export function resolveCardProfile(input: CardProfileInput): CardProfile {
           ? colors.length > 1
             ? 'Gold'
             : colorKey
-          : boxes,
+          : legendary &&
+              colors.length === 2 &&
+              input.setCode &&
+              modernPrintingProfile(input)?.pairedLegendaryCrowns
+            ? colorKey
+            : boxes,
     pt: boxes,
     artifact,
     land,
@@ -102,6 +112,11 @@ export function resolveCardProfile(input: CardProfileInput): CardProfile {
 /** Presentation color selection never rewrites the card's semantic colors. */
 export function resolveFrameColors(input: CardProfileInput): string[] {
   if (input.frameColors !== undefined) return normalizeColors(input.frameColors);
+  const reviewed =
+    input.setCode && input.name && input.collectorNumber
+      ? modernPrintingProfile(input)?.printedFrameColors?.[input.collectorNumber]
+      : undefined;
+  if (reviewed && reviewed.name === input.name) return normalizeColors(reviewed.colors);
   const colors = normalizeColors(input.colors ?? []);
   const basic = basicLandColor(input);
   return colors.length === 0 && basic && input.land !== false ? [basic] : colors;

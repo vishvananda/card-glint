@@ -5,7 +5,18 @@ import { supportsModernStyleDefaults } from './modern-style-scope.js';
 
 const inherited = new WeakMap<ModernPrintingProfile, ModernPrintingProfile>();
 /** Reuse shared style data; physical printing content always remains set-local. */
-export function modernDefaultProfile(face: RenderedCardInput): ModernPrintingProfile | undefined {
+export function modernDefaultProfile(
+  face: Pick<
+    RenderedCardInput,
+    | 'setCode'
+    | 'frameStyle'
+    | 'frameAssetFamily'
+    | 'frameTreatment'
+    | 'frameTemplate'
+    | 'layout'
+    | 'calibration'
+  >,
+): ModernPrintingProfile | undefined {
   if (face.calibration === 'printing' || !supportsModernStyleDefaults(face)) return undefined;
   const source = MODERN_PRINTING_PROFILES.m21;
   if (!source) return undefined;
@@ -15,6 +26,7 @@ export function modernDefaultProfile(face: RenderedCardInput): ModernPrintingPro
       ...source,
       inheritedFrom: 'm21',
       printedLandRarities: Object.freeze([]),
+      printedFrameColors: Object.freeze({}),
       foilStarNumbers: Object.freeze([]),
       ...(source.planeswalkers
         ? {

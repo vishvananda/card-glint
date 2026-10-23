@@ -16,7 +16,7 @@ try {
     '/games/magic/src/presentation/printing-calibration-types.ts',
   );
   const profile = printingCalibrationProfiles.find((p) => p.id === 'm21-modern');
-  assert.equal(profile.revision, 15);
+  assert.equal(profile.revision, 16);
   const signature = (p) => ({
     materials: p.materials,
     border: p.border,
@@ -55,7 +55,7 @@ try {
           signature(implicit),
           typeLine + '/' + colors + '/' + JSON.stringify(calibration),
         );
-      assert.equal(resolvePrintingCalibration(face).components.border.revision, 15);
+      assert.equal(resolvePrintingCalibration(face).components.border.revision, 16);
       for (const extra of [
         { calibration: 'source' },
         { colorCalibration: undefined },
@@ -68,8 +68,8 @@ try {
       assert.equal(inherited.fallbackStock, true);
       const report = resolvePrintingCalibration(other);
       assert.equal(report.components.border.status, 'fallback');
-      assert.equal(report.components.border.revision, 15);
-      assert.equal(report.defaults.revision, 15);
+      assert.equal(report.components.border.revision, 16);
+      assert.equal(report.defaults.revision, 16);
       assert.deepEqual(
         signature(
           printingCalibrationMaterials({ ...other, calibration: { profile: 'm21-modern' } }),

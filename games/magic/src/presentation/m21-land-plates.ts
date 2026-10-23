@@ -21,6 +21,9 @@ const tones: Readonly<
     }
   >
 > = {
+  // The gold panels are a distinct pinned bitmap. Do not transfer neutral-gray
+  // saturation fits onto it; its raw panel pigment has its own native review.
+  lm: { paper: identity, name: identity, type: identity },
   l: {
     paper: {
       hueDegrees: 0,

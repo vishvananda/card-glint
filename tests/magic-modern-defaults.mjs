@@ -51,10 +51,77 @@ try {
     check(
       profile.printedLandRarities.length === 0 &&
         profile.foilStarNumbers.length === 0 &&
+        Object.keys(profile.printedFrameColors).length === 0 &&
         profile.planeswalkers.deckCollectorNumbers.length === 0,
       'M21 printing content leaked',
     );
     check(JSON.stringify(original) === saved, 'Host input mutated');
+    const { resolveCardProfile, resolveFrameColors } = await import(
+      '/games/magic/src/presentation/profile.ts'
+    );
+    const fabled = {
+      name: 'Fabled Passage',
+      setCode: 'm21',
+      collectorNumber: '246',
+      typeLine: 'Land',
+      land: true,
+      colors: [],
+    };
+    const unchangedFabled = JSON.stringify(fabled);
+    check(resolveCardProfile(fabled).frame === 'Gold', 'Reviewed gold land palette missing');
+    check(modernLandPlates(fabled)?.sources[0].endsWith('/lm.png'), 'Wrong gold land bitmap');
+    check(
+      resolveFrameColors({ ...fabled, frameColors: [] }).length === 0,
+      'Explicit neutral palette lost',
+    );
+    check(
+      resolveFrameColors({ ...fabled, frameColors: ['U'] }).join('') === 'U',
+      'Explicit color palette lost',
+    );
+    for (const other of [
+      { ...fabled, name: 'Custom land' },
+      { ...fabled, collectorNumber: '245' },
+      { ...fabled, setCode: 'war' },
+      { ...fabled, layout: 'modal_dfc', faces: [{ ...fabled }] },
+    ])
+      check(resolveFrameColors(other).length === 0, 'Exact printing palette leaked');
+    check(
+      resolveFrameColors({ ...fabled, wordingMode: 'oracle', rulesText: 'Changed wording.' })
+        .length === 5,
+      'Physical palette depended on displayed wording',
+    );
+    check(
+      JSON.stringify(fabled) === unchangedFabled && fabled.colors.length === 0,
+      'Physical palette changed semantic colors or host input',
+    );
+    const pair = {
+      ...original,
+      colors: ['R', 'G'],
+      typeLine: 'Legendary Creature — Elf',
+      legendary: true,
+    };
+    check(
+      resolveCardProfile({ ...pair, setCode: 'm21' }).crown === 'RG',
+      'Measured paired crown missing',
+    );
+    check(resolveCardProfile(pair).crown === 'RG', 'Inherited paired crown missing');
+    check(
+      resolveCardProfile({ ...pair, setCode: '8ed' }).crown === 'Gold',
+      'Old frame crown changed',
+    );
+    check(
+      resolveCardProfile({ ...pair, artifact: true }).crown === 'Gold',
+      'Artifact crown changed',
+    );
+    check(
+      resolveCardProfile({ ...pair, colors: ['W', 'U', 'B'] }).crown === 'Gold',
+      'Three-color crown changed',
+    );
+    check(
+      resolveCardProfile({ ...pair, calibration: 'printing' }).crown === 'Gold',
+      'Exact-only policy inherited crown',
+    );
+
     check(modernOrdinaryPlates(original), 'Ordinary native source default missing');
     const { canvasAssetUrls } = await import('/games/magic/src/presentation/canvas-assets.ts');
     check(
@@ -187,6 +254,8 @@ try {
       dedicatedLayouts: 8,
       historicalEraControls: 13,
       contentIsolation: true,
+      printingFramePalette: true,
+      pairedCrowns: true,
       sourcePolicy: true,
       independentFit: true,
       sharedCache: true,

@@ -2,7 +2,7 @@
   "schema": 1,
   "set": "m21",
   "status": "open-component-outliers",
-  "renderer": "23e35e2ccf5557105770208ea6da4b612b78c73dc128bf1c19bc67fe13dbb142",
+  "renderer": "de4ae64b43769cd9cd39a8ddc79fd9fa016e82ff0c5586ce2b9112c6bcbe6a3c",
   "items": [
     {
       "id": "planeswalker-art-spill",
@@ -121,18 +121,18 @@
     {
       "id": "two-color-legendary-crowns",
       "component": "frame/source",
-      "status": "confirmed-source-selection-error",
+      "status": "source-selection-fixed-with-pigment-residuals",
       "scope": "Niambi#222 and Radha#224; two-color ordinary nonartifact legendary creatures.",
-      "review": "Current source uses generic Gold crowns although exact WU and RG crown assets exist. Frozen-source full native proposals restore the missing colored tips. Source-specific pigment and outside-support parity still need review before adoption.",
-      "evidence": "games/magic/fixtures/accuracy/m21/source-and-land-text-proposals.json"
+      "review": "Paired WU/RG crowns restore the printed tips on Niambi and Radha. Both native faces exactly reproduce the frozen-source proposals; remaining294 faces and every etching/alpha field stay exact. Raw-source color residuals and small structure losses remain visible. Compatible modern styles inherit the crown policy; older families retain their existing sources.",
+      "evidence": "games/magic/fixtures/accuracy/m21/frame-source-native-review-r2.json"
     },
     {
       "id": "gold-land-palette",
       "component": "frame/paper/source",
-      "status": "confirmed-printing-palette-error",
+      "status": "exact-printing-trait-fixed-native-verified",
       "scope": "Fabled Passage#246.",
-      "review": "Current neutral gray header/paper differs from the gold printing. Independent English, German and Japanese reference scans agree on gold. Preserve semantic colors and explicit host overrides; use a reviewed printing trait rather than deriving a frame from Oracle text. Foreign scans are palette corroboration only.",
-      "evidence": "games/magic/fixtures/accuracy/m21/source-and-land-text-proposals.json"
+      "review": "Fabled Passage M21#246 now selects pinned gold-land panels through a reviewed printing trait guarded by set, collector number and name. Semantic colors remain empty and explicit frameColors win. The trait is stripped from inherited defaults; raw lm panel color never borrows the neutral gray saturation fit. Native output equals the independent proposal and improves structure80.460 to86.411/100.",
+      "evidence": "games/magic/fixtures/accuracy/m21/frame-source-native-review-r2.json"
     },
     {
       "id": "nonbasic-land-text-size",

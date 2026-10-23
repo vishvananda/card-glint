@@ -1,3 +1,7 @@
+import {
+  modernFrameSourceAncestry,
+  preModernFrameSource,
+} from './modern-frame-source-ancestry.mjs';
 import { preModernDefaultSource, modernDefaultProfileSource } from './modern-default-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -99,6 +103,12 @@ export async function preM21StyleSource(file, bytes) {
 /** An affected set keeps its actual new source fingerprints. Unrelated sets
  * may use the independently tested historical dependency path. */
 export async function m21StyleProfileSource(file, bytes, set, group) {
+  const frame = await modernFrameSourceAncestry();
+  if (frame.files[file]) {
+    await preModernFrameSource(file, bytes);
+    if (set?.toLowerCase() === 'm21' && hash(bytes) === frame.files[file].after)
+      return { bytes, changedProfile: true };
+  }
   const proof = await m21StyleAncestry(),
     entry = proof.files[file],
     digest = hash(bytes);

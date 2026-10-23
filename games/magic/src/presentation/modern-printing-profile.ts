@@ -11,7 +11,20 @@ import {
 } from '../data/tables.js';
 import { componentPrintingColorSource } from './printing-color-source.js';
 
-export function modernPrintingProfile(face: RenderedCardInput) {
+type ModernPrintingInput = Pick<
+  RenderedCardInput,
+  | 'setCode'
+  | 'frameStyle'
+  | 'frameAssetFamily'
+  | 'frameTreatment'
+  | 'frameTemplate'
+  | 'layout'
+  | 'faces'
+  | 'typeLine'
+  | 'canonicalTypeLine'
+  | 'calibration'
+>;
+export function modernPrintingProfile(face: ModernPrintingInput) {
   if (!supportsModernPrintingProfile(face)) return undefined;
   const exact = MODERN_PRINTING_PROFILES[face.setCode?.toLowerCase() ?? ''];
   const exactScope =
@@ -46,7 +59,7 @@ export function modernPrintingProfileKey(face: RenderedCardInput): readonly unkn
 
 /** Shared M15-era styles may reach dedicated layouts; each painter still owns
  * its apertures and geometry. Older families never inherit these styles. */
-export function supportsModernPrintingProfile(face: RenderedCardInput): boolean {
+export function supportsModernPrintingProfile(face: ModernPrintingInput): boolean {
   return supportsModernStyleDefaults(face);
 }
 
@@ -71,10 +84,12 @@ export function modernLandPlates(face: RenderedCardInput) {
   )
     return undefined;
   const colors = resolveFrameColors(face);
-  if (colors.length > 2) return undefined;
-  const sources = colors.length
-    ? colors.map((c) => profile.root + '/l' + c.toLowerCase() + '.png')
-    : [profile.root + '/l.png'];
+  const sources =
+    colors.length > 2
+      ? [profile.root + '/lm.png']
+      : colors.length
+        ? colors.map((c) => profile.root + '/l' + c.toLowerCase() + '.png')
+        : [profile.root + '/l.png'];
   if (!sources.every((source) => Object.hasOwn(profile.materials, source))) return undefined;
   return { profile, sources, dual: colors.length === 2 };
 }

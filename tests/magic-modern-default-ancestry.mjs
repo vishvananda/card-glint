@@ -37,12 +37,12 @@ for (const [file, e] of Object.entries(proof.files)) {
 }
 for (const file of Object.keys(proof.newModules)) {
   const current = await readFile(file);
-  assert.deepEqual(await preModernDefaultSource(file, current), current);
+  assert.equal(hash(await preModernDefaultSource(file, current)), proof.newModules[file]);
   await assert.rejects(
     preModernDefaultSource(file, Buffer.concat([current, Buffer.from('\n// unknown\n')])),
     /Unreviewed modern defaults module/,
   );
 }
 console.log(
-  'Modern default ancestry: independent native proposal, unchanged297 M21 faces/etchings, exact restoration, unknown-change rejection and scoped modern invalidation pass.',
+  'Modern default ancestry: historical independent proposal and297 unchanged pre-refinement M21 faces/etchings, exact restoration, unknown-change rejection and scoped modern invalidation pass.',
 );

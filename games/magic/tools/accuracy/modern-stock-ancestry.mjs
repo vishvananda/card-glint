@@ -1,3 +1,4 @@
+import { preModernFrameSource } from './modern-frame-source-ancestry.mjs';
 // Strip only the reviewed stock/material-policy delta for historical receipts.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -15,7 +16,11 @@ export function modernStockAncestry() {
     for (const parent of p.parents)
       assert.equal(hash(await readFile(parent.file)), parent.sha256, 'Changed modern stock parent');
     for (const [file, e] of Object.entries(p.files))
-      assert.equal(hash(await readFile(file)), e.after, 'Unreviewed modern stock source: ' + file);
+      assert.equal(
+        hash(await preModernFrameSource(file, await readFile(file))),
+        e.after,
+        'Unreviewed modern stock source: ' + file,
+      );
     const summaryBytes = await readFile(p.evidence.file);
     assert.equal(hash(summaryBytes), p.evidence.sha256);
     const summary = JSON.parse(summaryBytes);
@@ -64,6 +69,12 @@ export function modernStockAncestry() {
 export async function preModernStockSource(file, bytes) {
   const p = await modernStockAncestry(),
     e = p.files[file];
+  if (e && hash(bytes) === e.before) return bytes;
+  try {
+    bytes = await preModernFrameSource(file, bytes);
+  } catch (error) {
+    throw new Error('Unreviewed modern stock source: ' + file, { cause: error });
+  }
   if (!e || hash(bytes) === e.before) return bytes;
   assert.equal(hash(bytes), e.after, 'Unreviewed modern stock source: ' + file);
   const lines = bytes.toString().match(/[^\n]*\n|[^\n]+$/g) ?? [];

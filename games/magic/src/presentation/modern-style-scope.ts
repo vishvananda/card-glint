@@ -2,7 +2,11 @@ import type { RenderedCardInput } from './face-layout.js';
 import { PRE_M15_SETS } from './modern-predecessor-sets.js';
 
 /** Source-family eligibility, not a claim that an unmeasured printing is calibrated. */
-export function supportsModernStyleDefaults(face: RenderedCardInput): boolean {
+export type ModernStyleInput = Pick<
+  RenderedCardInput,
+  'setCode' | 'frameStyle' | 'frameAssetFamily' | 'frameTreatment' | 'frameTemplate' | 'layout'
+>;
+export function supportsModernStyleDefaults(face: ModernStyleInput): boolean {
   if (
     face.frameStyle === 'retro' ||
     face.frameAssetFamily === 'eighth' ||
