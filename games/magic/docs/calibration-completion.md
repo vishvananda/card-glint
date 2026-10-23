@@ -1,5 +1,11 @@
 # Completing a set calibration
 
+M21 profile 16 ships in 0.6.12. Its
+[publication receipt](../fixtures/accuracy/m21/release-0612-publication.json)
+ties the checked archives to the 297-printing native score census. All 85 variants
+have verified normalization and publication checks; other component checks remain
+open. See the [current M21 evidence](../fixtures/accuracy/m21/README.md).
+
 The [progress ledger](../fixtures/accuracy/calibration-progress.json) is the source of
 truth for completion. It covers the frozen 272-major-set inventory and keeps an
 explicit denominator for each frame/color/layout variant. The initial batch is

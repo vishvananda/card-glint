@@ -10,7 +10,7 @@ import {
 import { preWalkerSource } from './planeswalker-reconstruction/ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { fixtureRoot, root, hash, readJson } from './common.mjs';
+import { fixtureRoot, root, hash, readJson, sourceHash } from './common.mjs';
 import {
   CALIBRATION_TASKS,
   calibrationSetStatus,
@@ -33,7 +33,8 @@ function originalInputs(set, task) {
 
 export async function calibrationReport(ledger) {
   const current = structuredClone(ledger),
-    checked = new Map();
+    checked = new Map(),
+    runtimeChecked = new Map();
   for (const set of current.sets)
     for (const group of set.groups) {
       const dependencies = Object.entries(group.tasks ?? {}).flatMap(([task, item]) => [
@@ -62,6 +63,26 @@ export async function calibrationReport(ledger) {
             'The early-set batch changes this printing/component; its previous fit needs a current source-bound review.';
           continue;
         }
+        let runtimeCurrent = true;
+        for (const [directory, expected] of Object.entries(item.runtimeGuards ?? {})) {
+          assert.ok(!directory.startsWith('/') && !directory.split('/').includes('..'));
+          assert.match(expected, /^[a-f0-9]{64}$/);
+          if (!runtimeChecked.has(directory)) {
+            try {
+              runtimeChecked.set(directory, await sourceHash(root + '/' + directory));
+            } catch (error) {
+              if (error.code !== 'ENOENT') throw error;
+              runtimeChecked.set(directory, null);
+            }
+          }
+          if (runtimeChecked.get(directory) !== expected) {
+            runtimeCurrent = false;
+            item.status = 'stale';
+            item.reason = 'Runtime source changed after the published native/scoring replay.';
+            break;
+          }
+        }
+        if (!runtimeCurrent) continue;
         for (const [file, expected] of Object.entries({ ...group.guards, ...item.guards })) {
           assert.ok(!file.startsWith('/') && !file.split('/').includes('..'));
           const changedScope = group.kind === 'planeswalker' || set.set === 'm15';

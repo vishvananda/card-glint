@@ -1,0 +1,1261 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "published-renderer-and-matching-score-revision",
+  "reviewedAt": "2026-10-23T17:16:29.621Z",
+  "release": {
+    "assets": [
+      {
+        "apiUrl": "https://api.github.com/repos/vishvananda/card-glint/releases/assets/669615780",
+        "contentType": "application/zip",
+        "createdAt": "2026-10-23T15:54:26Z",
+        "downloadCount": 2,
+        "id": "RA_kwDOVECorM4n6Yak",
+        "label": "",
+        "name": "card-glint-0.6.12-browser.zip",
+        "size": 3321587,
+        "state": "uploaded",
+        "updatedAt": "2026-10-23T15:54:27Z",
+        "url": "https://github.com/vishvananda/card-glint/releases/download/v0.6.12/card-glint-0.6.12-browser.zip"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/vishvananda/card-glint/releases/assets/669615784",
+        "contentType": "application/x-gtar",
+        "createdAt": "2026-10-23T15:54:26Z",
+        "downloadCount": 2,
+        "id": "RA_kwDOVECorM4n6Yao",
+        "label": "",
+        "name": "card-glint-0.6.12.tgz",
+        "size": 3354144,
+        "state": "uploaded",
+        "updatedAt": "2026-10-23T15:54:26Z",
+        "url": "https://github.com/vishvananda/card-glint/releases/download/v0.6.12/card-glint-0.6.12.tgz"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/vishvananda/card-glint/releases/assets/669615786",
+        "contentType": "application/json",
+        "createdAt": "2026-10-23T15:54:26Z",
+        "downloadCount": 2,
+        "id": "RA_kwDOVECorM4n6Yaq",
+        "label": "",
+        "name": "release.json",
+        "size": 502,
+        "state": "uploaded",
+        "updatedAt": "2026-10-23T15:54:26Z",
+        "url": "https://github.com/vishvananda/card-glint/releases/download/v0.6.12/release.json"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/vishvananda/card-glint/releases/assets/669615785",
+        "contentType": "application/octet-stream",
+        "createdAt": "2026-10-23T15:54:26Z",
+        "downloadCount": 1,
+        "id": "RA_kwDOVECorM4n6Yap",
+        "label": "",
+        "name": "SHA256SUMS",
+        "size": 263,
+        "state": "uploaded",
+        "updatedAt": "2026-10-23T15:54:26Z",
+        "url": "https://github.com/vishvananda/card-glint/releases/download/v0.6.12/SHA256SUMS"
+      }
+    ],
+    "isDraft": false,
+    "isPrerelease": false,
+    "publishedAt": "2026-10-23T15:54:27Z",
+    "tagName": "v0.6.12",
+    "url": "https://github.com/vishvananda/card-glint/releases/tag/v0.6.12"
+  },
+  "workflow": {
+    "conclusion": "success",
+    "headSha": "d500e44246a7f27b047b02095ad5e3253450b57c",
+    "jobs": [
+      {
+        "completedAt": "2026-10-23T15:54:04Z",
+        "conclusion": "success",
+        "databaseId": 120495858723,
+        "name": "renderer",
+        "startedAt": "2026-10-23T15:21:05Z",
+        "status": "completed",
+        "steps": [
+          {
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/setup-node@v4",
+            "number": 3,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run rustup show",
+            "number": 4,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run Swatinem/rust-cache@v2",
+            "number": 5,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/cache@v4",
+            "number": 6,
+            "status": "completed"
+          },
+          {
+            "conclusion": "skipped",
+            "name": "Run cargo install wasm-bindgen-cli --version 0.2.127 --locked",
+            "number": 7,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm ci",
+            "number": 8,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run build",
+            "number": 9,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run check",
+            "number": 10,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:package",
+            "number": 11,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run magic:data:check",
+            "number": 12,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:magic-lazy",
+            "number": 13,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:calibration-editor",
+            "number": 14,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Use primary Ubuntu archive for browser dependencies",
+            "number": 15,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npx playwright install --with-deps chromium webkit",
+            "number": 16,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:magic-lazy-browser",
+            "number": 17,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:magic-accuracy",
+            "number": 18,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:set-symbol-masks",
+            "number": 19,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:foil-continuity",
+            "number": 20,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:normal-lighting",
+            "number": 21,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:printing-apis",
+            "number": 22,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:kernels",
+            "number": 23,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run cargo clippy --workspace --target wasm32-unknown-unknown -- -D warnings",
+            "number": 24,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Start preview",
+            "number": 25,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:browser",
+            "number": 26,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:showcase",
+            "number": 27,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:magic",
+            "number": 28,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run node tests/printing-presets-demo.mjs",
+            "number": 29,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:surfaces",
+            "number": 30,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:touch",
+            "number": 31,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:hover-isolation",
+            "number": 32,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:overlay-foil",
+            "number": 33,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:hologram",
+            "number": 34,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:coverage",
+            "number": 35,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:host",
+            "number": 36,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:distinct-faces",
+            "number": 37,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:worn",
+            "number": 38,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:cardstock",
+            "number": 39,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:print-sampling",
+            "number": 40,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:rain-fog",
+            "number": 41,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:ripple-budget",
+            "number": 42,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:ripple-geometry",
+            "number": 43,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:deformation",
+            "number": 44,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:parallax",
+            "number": 45,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:optics",
+            "number": 46,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run package:release",
+            "number": 47,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:release",
+            "number": 48,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:cdn-publish",
+            "number": 49,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 50,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 51,
+            "status": "completed"
+          },
+          {
+            "conclusion": "skipped",
+            "name": "Upload showcase",
+            "number": 52,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/cache@v4",
+            "number": 101,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run Swatinem/rust-cache@v2",
+            "number": 102,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/setup-node@v4",
+            "number": 103,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 104,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 105,
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/vishvananda/card-glint/actions/runs/39977507678/job/120495858723"
+      },
+      {
+        "completedAt": "2026-10-23T15:54:30Z",
+        "conclusion": "success",
+        "databaseId": 120512166901,
+        "name": "release",
+        "startedAt": "2026-10-23T15:54:07Z",
+        "status": "completed",
+        "steps": [
+          {
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/download-artifact@v4",
+            "number": 3,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/setup-node@v4",
+            "number": 4,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Select verified immutable release artifacts",
+            "number": 5,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Publish immutable CDN tree",
+            "number": 6,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Publish checked packages",
+            "number": 7,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/setup-node@v4",
+            "number": 13,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 14,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 15,
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/vishvananda/card-glint/actions/runs/39977507678/job/120512166901"
+      },
+      {
+        "completedAt": "2026-10-23T15:54:04Z",
+        "conclusion": "skipped",
+        "databaseId": 120512168987,
+        "name": "deploy",
+        "startedAt": "2026-10-23T15:54:04Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/vishvananda/card-glint/actions/runs/39977507678/job/120512168987"
+      }
+    ],
+    "status": "completed",
+    "updatedAt": "2026-10-23T15:54:31Z",
+    "url": "https://github.com/vishvananda/card-glint/actions/runs/39977507678"
+  },
+  "published": {
+    "version": "0.6.12",
+    "sourceCommit": "d500e44246a7f27b047b02095ad5e3253450b57c",
+    "rust": "rustc 1.98.0 (88d9e12ae 2026-08-18)",
+    "node": "v22.23.3",
+    "files": [
+      {
+        "name": "card-glint-0.6.12.tgz",
+        "bytes": 3354144,
+        "sha256": "63843d3c74622f9baf1d5f0383de14a9d43866ad201c861a680724fa41efaeff"
+      },
+      {
+        "name": "card-glint-0.6.12-browser.zip",
+        "bytes": 3321587,
+        "sha256": "343ecbcfdcf6feeb6b458cf3dd9ed79ac468d0d71b8c529b0da88bcf254b3410"
+      }
+    ]
+  },
+  "releaseManifestSha256": "86307d1b440efda83b0212e5419fafa24f9cc1ab80987c40b4e6fe681e5930fb",
+  "checksumsSha256": "07b597f1a9aa50c276f4a9bfd192bdb80f2e1078693ec9aa448197cbdfab01a8",
+  "checksumsVerified": true,
+  "rendererHash": "de4ae64b43769cd9cd39a8ddc79fd9fa016e82ff0c5586ce2b9112c6bcbe6a3c",
+  "toolFile": "games/magic/tools/accuracy/modern-publication-review.mjs",
+  "toolHash": "590067405dee3d6ead307ca5e6483a2daa596547b49c6041b25fc71a8f491f5b",
+  "nativeReplayHash": "fcb4b746cf6580261ff84338829462eb37b08237125e160dd108907333c1ec9c",
+  "metricsHash": "8a8554faf5f17ec7a86f7629745470e9bbfaf870bad3d3a47101905be30ae7e4",
+  "scanTemplateHash": "7c90a70f6d969238efd6b6897cfbefd83f7f792e546fb75962d09054d571eaa5",
+  "metricGraphHash": "dc799073df34b807f5ce03a565f5fc69ebe86489e4323f659eeed2182506181c",
+  "evidenceGuards": {
+    "games/magic/fixtures/accuracy/m21/current-component-census.json": "a9166a1f1dc39787999e6142f823d3cc705b606045af957f4c15018e01895367",
+    "games/magic/fixtures/accuracy/m21/current-component-census.json.gz": "3e7a2bdd92462ce437f6937a7032356a64dea405d8fa5a8ad0bf5ae11694ee73",
+    "games/magic/fixtures/accuracy/m21/release-0612-comparison.json": "41bb842c4d468a60dbd480a363bf4e162100812791393cfd09386c60c5555b62",
+    "games/magic/fixtures/accuracy/m21/release-0612-comparison.json.gz": "c5771ef49bf5a6afb1d4c6489b618af8750b08db5f6924b125132114c560b06a",
+    "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
+    "games/magic/fonts.css": "921f655e309f7ad2617a920aad812cd0a0a555ed1bb837e0fe962a55b1aedf76",
+    "games/magic/set-symbol-inventory.json": "188f0c08a805706161c43d1ded50453445afd6a1456862af5b6683d495801c8c",
+    "games/magic/symbol-svg-patches.json": "27135ee2e99861d65e19abad8b10df2c16926eec840d883bed7067f7c7223c7f"
+  },
+  "summary": {
+    "printings": 297,
+    "nonfoil": 292,
+    "foilOnly": 5,
+    "variants": 85,
+    "mean100": 80.52527289351097
+  },
+  "groups": [
+    {
+      "key": "2015/black/normal/B/artifact/ordinary/plain/none/nonfoil",
+      "scopeHash": "0e07ad84ba900347c308100de95058532d4335bf26e8e585cbb7dd99f45255cf",
+      "printingIds": [
+        "89e2bc57-8f18-4ba1-a11b-9d69d029f56a",
+        "d43a3eb7-3daf-4667-b824-1f5d801c9341"
+      ]
+    },
+    {
+      "key": "2015/black/normal/B/basic-land/ordinary/plain/none/nonfoil",
+      "scopeHash": "dcad764ed6e788cfafb16b9e29ac8e2c9c74989e58998392b09bd7708bf6bdc7",
+      "printingIds": [
+        "0863a079-1cc2-4388-85bb-a24eae251e99",
+        "30b3d647-3546-4ade-b395-f2370750a7a6",
+        "be68e315-ffef-40a8-8a46-1c042b148c03"
+      ]
+    },
+    {
+      "key": "2015/black/normal/B/creature/legendary/legendary/oval/nonfoil",
+      "scopeHash": "b3c8e0a37ee95e4103822a4d3eab64f536103bc1ed7c75907636ec9ff63a5ddb",
+      "printingIds": [
+        "0fe79ee4-c3f3-4a6b-a967-203ca3b70ee5",
+        "b0fd1009-cd3d-4b53-b9f1-dbc47e8708ab"
+      ]
+    },
+    {
+      "key": "2015/black/normal/B/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "197642424966cfb99e6be86f7b77b368ca6ac93ec87b9d0680c346e7a42ea6c1",
+      "printingIds": [
+        "053b59b4-a22c-4228-aadc-ae9da6bb465e",
+        "1945fc78-8aa4-46fb-9571-eaa1c4729e3d",
+        "28ff52a2-4223-4551-b388-b4dd21cc1437",
+        "31df3d95-bbdb-449d-9601-4fa844c3c640",
+        "56a95546-c45a-4da5-b1e8-d5658b5b7d53",
+        "5a64625f-937a-449e-b1fc-cd0f25b033f6",
+        "83437022-ba00-4370-83c2-ce1260336fcc",
+        "88496096-fd9a-451a-85d9-31ccc3580623",
+        "a1b4f7ec-ea2e-4d90-98cd-0c92bd9f64c1",
+        "ae5d7f15-a86f-4eaa-8280-2e7f73c8ce3a",
+        "c0bba170-5176-4fab-a10d-e23d70128875",
+        "c9cd537c-e40e-438f-a751-e0ad8f6e6283",
+        "cf3765b7-11e2-4837-b5e5-ca24adc0e33c",
+        "d00850e4-6be3-4246-ae45-c0e990e6d6e1",
+        "d61b4b71-3cbb-4422-8ce7-657ca3bb6a82",
+        "dc4513e1-9978-44ce-b7a5-4e2b5b63ad9e",
+        "f8067745-35b6-4abd-9ae9-712159a26c89",
+        "fcb8d414-7f80-4a61-a0f2-0f16bf53e1b9",
+        "ff5444cb-0ecd-4482-a8d8-09332f382dbd"
+      ]
+    },
+    {
+      "key": "2015/black/normal/B/creature/ordinary/plain/oval/nonfoil",
+      "scopeHash": "52eddc8ed44347c9d35a3cffdc474b853a3f242ad782bab4d98e3e8a615ec9c9",
+      "printingIds": [
+        "3dc48b87-62cb-48f6-8979-e6fb98717b52",
+        "ac38a51f-9a3b-451c-b72d-6d4e0b296fbd",
+        "df99f770-2c39-4025-a8a2-a5890f61eb53",
+        "e3185b01-0d91-4927-98e9-bc9df6c20917"
+      ]
+    },
+    {
+      "key": "2015/black/normal/B/planeswalker/ordinary/plain/oval/foil-only",
+      "scopeHash": "653ed2573fbbb11317477ecaabb9898d48a34565012107864a0f40fe4371300f",
+      "printingIds": ["921e3dc3-f8eb-4498-a6a8-b424952230cd"]
+    },
+    {
+      "key": "2015/black/normal/B/planeswalker/ordinary/plain/oval/nonfoil",
+      "scopeHash": "cbedec971cba29dad6fdfb69ef62908d6694bb43bab2627fcfd787c0fb2d764b",
+      "printingIds": ["e329a3e2-6702-4758-8aac-c3017e77b619"]
+    },
+    {
+      "key": "2015/black/normal/B/spell/legendary/legendary/none/nonfoil",
+      "scopeHash": "9c7a381b5e12f96859b96fd72a8c288890652e806c2a1a53d56c9a7fa9ea8976",
+      "printingIds": ["d1439412-618c-483d-89b9-5ea37f0f1edc"]
+    },
+    {
+      "key": "2015/black/normal/B/spell/ordinary/plain/none/nonfoil",
+      "scopeHash": "73f9606f2b65a13a3c9788cedaad8284abc70f68031f3cb8f129e1723a1aa8d3",
+      "printingIds": [
+        "08b78aa8-a63a-4aa2-bb82-3fbf2595ed7c",
+        "2b85a552-2119-4d9c-b7c1-c09c2d9f2f38",
+        "49c07ea0-27ff-46fb-a41f-3e378c977b5d",
+        "660ec88f-2063-404a-853e-c985e21d17b0",
+        "6e4c9574-1ee3-461e-848f-8f02c6a8b7ee",
+        "7737b578-8ae3-4846-b508-93ef40f25244",
+        "7a3f8bc2-ef66-474f-92a3-9c4df1670cec",
+        "833a8604-92d5-443b-9bc0-bd91c973ef07",
+        "975e4b8e-add9-439c-9463-e2facee96c10",
+        "9c0f60a6-b5c8-4704-8b61-94e8fc463e5d",
+        "abfcd08a-cfb5-4d34-b950-f57a88c5cb8e",
+        "f8eb4087-3a4c-4de8-8e29-f4cd71acb180"
+      ]
+    },
+    {
+      "key": "2015/black/normal/B/spell/ordinary/plain/oval/nonfoil",
+      "scopeHash": "0df2020dd66a1d00adc50714d86300c4bfc38f03cc3305b0b41c127d162250ec",
+      "printingIds": [
+        "32c5252e-ff15-4f86-ad63-d8286427e70f",
+        "56149192-ddc1-45a4-b7aa-be311da5fe8e",
+        "928558ab-e29a-44cb-ac2f-88443571f41a",
+        "aac00055-640e-4749-8d23-d242e6d0b23a",
+        "b231f941-4acb-46f2-81ae-16e5a28e65af"
+      ]
+    },
+    {
+      "key": "2015/black/normal/BG/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "f12b44c6101218300dc9d198d038a6fa0d8edcbfe39ff78f805471cd3e32cea1",
+      "printingIds": ["5d387b19-a0a7-45c0-b1e9-71ca55fb4adc"]
+    },
+    {
+      "key": "2015/black/normal/BG/land/ordinary/plain/none/nonfoil",
+      "scopeHash": "b5af07196e34fe23268c0ab705554571a6ff633ab0d76277026e2bde0770a62d",
+      "printingIds": ["69f28d7a-6480-4725-9719-2354921e6410"]
+    },
+    {
+      "key": "2015/black/normal/BG/land/ordinary/plain/oval/nonfoil",
+      "scopeHash": "370182f074f20ed5e96bcd57d828c8426c897e023538ea6cd85942c14675cb49",
+      "printingIds": ["c97929f8-ae80-4b4a-9d9b-2f3c7605edc8"]
+    },
+    {
+      "key": "2015/black/normal/BR/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "590214e096ea1d2baaaac65b2b5d1b9ff789cfdbd10ca5f5c884205395897d28",
+      "printingIds": ["1fa781df-859f-4346-9424-b3713b17e1f6"]
+    },
+    {
+      "key": "2015/black/normal/BR/land/ordinary/plain/none/nonfoil",
+      "scopeHash": "7682aa52973473db2e50a25d12f616e68da9d2365529455aeae72828448c60c2",
+      "printingIds": ["5d89a0e2-1163-4a11-b0df-deef2e6c8108"]
+    },
+    {
+      "key": "2015/black/normal/C/artifact-creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "28bde2ae10b2cdd88ddb8db5ca1302e7065111c701c6708d7cc252486dc681fc",
+      "printingIds": [
+        "1e01bcb4-e823-4da5-b433-e75be3356367",
+        "27305aad-f1bd-4895-8611-143bc0250bee",
+        "3bd39a06-c53a-42c2-b2df-028358f03406",
+        "7988fd09-32a4-406b-8e7f-e77393d680a7",
+        "cab69fbd-0179-4b02-adba-71d2a0eeea5c",
+        "eedce8ab-771a-4247-9504-72ae0629df83"
+      ]
+    },
+    {
+      "key": "2015/black/normal/C/artifact-creature/ordinary/plain/oval/nonfoil",
+      "scopeHash": "8cb0ec9d26643c0050b22ee01246bd77343c5933277d61870986a0d9f69abe36",
+      "printingIds": [
+        "7bbd2cab-538e-4932-a828-150e3e9d52ad",
+        "ad357ed4-b4f2-45b5-b7c4-3c6013a4ea3d"
+      ]
+    },
+    {
+      "key": "2015/black/normal/C/artifact/legendary/legendary/oval/nonfoil",
+      "scopeHash": "5bb1c17fecc9b932f4812ea4bebd71b882264d1cf0256d503464184c27929e61",
+      "printingIds": ["3af78d76-ad5c-44ba-880d-b834bcde5398"]
+    },
+    {
+      "key": "2015/black/normal/C/artifact/ordinary/plain/none/nonfoil",
+      "scopeHash": "445033b67bff958ec1eabdd07a20db602502b7fecb7b41c86181dbd70d2ce9ea",
+      "printingIds": [
+        "4e12530d-5509-46f1-8273-dce2c1f60965",
+        "973c166e-3e93-4ed5-b4c5-84dc158a8e4f",
+        "9c224bf0-5641-4160-9d5c-46141ea8372a",
+        "ec3a2c95-4e7a-43c5-90bd-6f1de7c82a5c"
+      ]
+    },
+    {
+      "key": "2015/black/normal/C/artifact/ordinary/plain/oval/nonfoil",
+      "scopeHash": "e1b6bfd6c16d4ee83f78753aef27a13bc5db34b9f91ab70a723b2672cef9588f",
+      "printingIds": ["9fd761f3-6b43-4150-8595-dc3abd85b06c"]
+    },
+    {
+      "key": "2015/black/normal/C/land/ordinary/plain/none/nonfoil",
+      "scopeHash": "da589af9e3891a2a2132610e45770818484d8534e05a1ecd1cae50cccd4bbed2",
+      "printingIds": ["0296c34b-120b-483e-8b49-6d432c04f9a4"]
+    },
+    {
+      "key": "2015/black/normal/C/land/ordinary/plain/oval/nonfoil",
+      "scopeHash": "fb736aac2216ad8b1e0d7bb3ae4cf94b25721f016e3e69f95edd45e514804462",
+      "printingIds": ["f8d7a2c7-666d-4fc6-bac8-ef8eb66e355d"]
+    },
+    {
+      "key": "2015/black/normal/C/planeswalker/ordinary/plain/oval/nonfoil",
+      "scopeHash": "423a75b444b3f1bf8a180ce98c7e49121625176b8e7637f3f9395adb9b0d1d31",
+      "printingIds": ["9c017fa9-7021-417a-9c2e-3df409644fcf"]
+    },
+    {
+      "key": "2015/black/normal/G/basic-land/ordinary/plain/none/nonfoil",
+      "scopeHash": "2c618e89408826fa60406c83fe7d605b59be53dbd974624afac1ddc805394c6d",
+      "printingIds": [
+        "3279314f-d639-4489-b2ab-3621bb3ca64b",
+        "a4df3e89-610c-4f42-a93a-e694342307cc",
+        "d4558304-7c17-4aa0-bd50-cdd95547f1a7"
+      ]
+    },
+    {
+      "key": "2015/black/normal/G/creature/legendary/legendary/oval/nonfoil",
+      "scopeHash": "de839a574f18ce221e32ede02244f6c49884716011709ad14bcb865c615ec66e",
+      "printingIds": [
+        "0b8aff2c-1f7b-4507-b914-53f8c4706b3d",
+        "7dcdcfce-3f32-48f9-83f8-87b9ccbf92e3"
+      ]
+    },
+    {
+      "key": "2015/black/normal/G/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "715b61e764ad6ad473921441ff59af02f51b8c8803549b62d294862f7686af9b",
+      "printingIds": [
+        "1776f5b4-1292-460f-9719-e1b603cee46c",
+        "17bc2af0-5a1d-4319-a285-6a15cf86be83",
+        "288b056a-ea80-4fdc-990d-0ee1e9a7bf64",
+        "3928bbce-87b7-4b28-9af4-20362935c909",
+        "3d0ec3bd-d894-4861-abcb-7b2e4f4de05c",
+        "4073cbc6-11de-4d4a-bcd7-792f9b7c5219",
+        "46700ccc-0975-49d1-b3fc-edb1eda3b624",
+        "46ff0b33-d153-4b0e-ac48-7e5ed70dea09",
+        "5f22116a-8b6a-4bbe-999f-7329e1e2b2d9",
+        "8059c52b-5d25-4052-b48a-e9e219a7a546",
+        "8bba47c1-a874-456e-bea3-e99e2d61cfba",
+        "a20d20f7-bc4d-42fa-9f5b-5bb330eb7f38",
+        "a3f6a13a-ab38-49d1-8712-f9c9135a23c8",
+        "c2c4a0e7-9ca4-4291-94de-165cc2ded822",
+        "c6cf27a3-9bcf-475c-a324-7c3af50496dd",
+        "cceaf927-261e-4d61-9fac-eb8abbe87593",
+        "d1abd95a-4ecc-479c-b200-5aaf7c993ef8",
+        "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+        "df520254-0c72-496b-9222-263ca9d3c5d5",
+        "f1d81cfc-cff8-4478-92b6-efbfc5084165",
+        "fe39e38e-76e5-4883-b530-d3e30e88ccad"
+      ]
+    },
+    {
+      "key": "2015/black/normal/G/creature/ordinary/plain/oval/nonfoil",
+      "scopeHash": "239ef773d97847beb09d3b38cee958c1c593e3900187013d54cccbc694a93e61",
+      "printingIds": [
+        "487116ab-b885-406b-aa54-56cb67eb3ca5",
+        "84a9485a-d356-4cbe-b257-b62008a21328",
+        "9e0fa0b6-5f3f-4669-84e8-2c38c9593d88",
+        "d51269cf-a333-4a64-94cd-245798d840d2",
+        "d6099863-8d3d-44bf-8d3b-dc3602119617",
+        "e6ab63c8-0adc-4d74-aee5-a58ce5c0dad8"
+      ]
+    },
+    {
+      "key": "2015/black/normal/G/planeswalker/ordinary/plain/oval/foil-only",
+      "scopeHash": "b67792f56f36074acf80f93127315903af8a1f7a4677c526f42a11b79e21e50f",
+      "printingIds": ["48133629-4a5b-4c91-b496-2ee94f6cbc4c"]
+    },
+    {
+      "key": "2015/black/normal/G/planeswalker/ordinary/plain/oval/nonfoil",
+      "scopeHash": "b497d2fcc90d7c2b775a1bff1b9af6d90a19753aa10ab4b6c42d78b5890efc84",
+      "printingIds": ["af2fdbec-bca2-4af5-9c2a-28b0b35b18a3"]
+    },
+    {
+      "key": "2015/black/normal/G/spell/legendary/legendary/none/nonfoil",
+      "scopeHash": "e21f4cda329bcc484a55980529e39ed8ea520af7e7d94d9751340f0ad7318baf",
+      "printingIds": ["5ca28cfd-1a1b-4176-8b07-993d3d7b7ae4"]
+    },
+    {
+      "key": "2015/black/normal/G/spell/ordinary/plain/none/nonfoil",
+      "scopeHash": "fa4f5d6be068ea514b55ec77e798ca2e1bd9b84704f982d10217ca48a97bc108",
+      "printingIds": [
+        "02392840-f0c4-462e-84ce-9a7cdd9f5efb",
+        "1947f64a-5ca0-4dda-8bbd-8472e72ecf18",
+        "3888197f-5da4-4413-9cad-b37a12ba1e60",
+        "3f1b4490-d96d-4448-835b-6cc453c1f344",
+        "4037e3b2-cb62-4f88-943d-3edcd6827c23",
+        "4a433310-3fe2-4156-864d-7a6b2638340b",
+        "531e1fc0-a3aa-4b57-87b2-79a31af5c922",
+        "6da62557-9783-4e6c-9b5f-2b77dbf96909",
+        "71a4860a-8bb6-45c0-b00a-b4a42da33ab9",
+        "7c08c80f-f27c-4e3a-b048-143aea740096",
+        "b41b6c8a-bd76-4b69-ae72-4c8acac379b4",
+        "bd328139-0dc1-403b-ad79-b1cf3479ac33"
+      ]
+    },
+    {
+      "key": "2015/black/normal/G/spell/ordinary/plain/oval/nonfoil",
+      "scopeHash": "46e683653b17658532624c89c4614063edb299ee09136d1425958bf2766af774",
+      "printingIds": [
+        "1cd8cee8-7ea0-4037-8a3b-39334dc064fb",
+        "43c037e3-7d1a-48ca-8ecc-276696592f62"
+      ]
+    },
+    {
+      "key": "2015/black/normal/R/basic-land/ordinary/plain/none/nonfoil",
+      "scopeHash": "92ac563cac08b220f220f4aa5958b17858d945a3f80bbd66eb4cd6c15373d289",
+      "printingIds": [
+        "70ff4fd5-c26f-4274-b899-1f995d4d8c25",
+        "b92c8925-ecfc-4ece-b83a-f12e98a938ab",
+        "ed6fd37e-a5b3-48c6-b881-cedadfd94833"
+      ]
+    },
+    {
+      "key": "2015/black/normal/R/creature/legendary/legendary/oval/nonfoil",
+      "scopeHash": "5a76f177591a8c7a88ba74799810673b2632b715791dddd42c8bdf6ef21103b9",
+      "printingIds": [
+        "034b8d6d-95ea-434a-967a-e6675a7ce88a",
+        "44b83bb7-00c8-4078-b27f-42a830a544b5"
+      ]
+    },
+    {
+      "key": "2015/black/normal/R/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "06b8415f5ab5505d765a8eaff64b3ff6279cc4fb0c867d3efde62044f66ef7fa",
+      "printingIds": [
+        "1b6d123c-c16d-43fa-b183-8a59c7e1a11e",
+        "386e5cb2-39c8-453d-a642-c5d9f8495601",
+        "4bfffc18-b36a-4dd5-909e-60ea9f8eb60b",
+        "6075e0a3-a0ab-4a11-8ad2-7dabb071d309",
+        "76e42d07-57d9-4de4-8d41-eb42dd1573ed",
+        "7b862e46-f5a2-4fce-98b5-2c5aa49ec648",
+        "7bf663d3-850b-4a24-8e4b-08311adf4ed0",
+        "869fb9f1-0d59-4874-aa52-ac665c3cc0e8",
+        "91d3e366-4da5-42c8-bbd5-a0c178c0da28",
+        "9f8cf3f9-4e3b-4af2-b5ef-a97eb1d2b674",
+        "baefa06e-28ba-41b9-866e-1ed0c4969852",
+        "d2bfec5d-3182-415a-afe8-0b5511cfd656",
+        "d47e9653-2a3a-4d37-8f3d-3dab4f468338",
+        "dc5e8221-fc2d-4d90-80f3-729606648c54",
+        "e7744fcf-2336-489d-bc05-f3fce78713a9",
+        "fa4bf664-3b92-4598-b905-2bc090958c8b",
+        "faca827d-0b35-48d7-acd6-13ecacc32b82",
+        "fbd306cf-6625-4414-b9e5-4b909bb1bb13"
+      ]
+    },
+    {
+      "key": "2015/black/normal/R/creature/ordinary/plain/oval/nonfoil",
+      "scopeHash": "b0424f1dc936401f7a9a86992e6680c8532794f08d972c8e0d2905e4d8977833",
+      "printingIds": [
+        "432ecd5f-966f-4403-a973-51e175a524a0",
+        "5d878dab-5ed2-4ef3-b2c7-472290892854",
+        "76cf0b50-155f-4e65-9e48-88b378ad93a1",
+        "ebb5e613-a803-42f3-840a-7089ac6b7e3d",
+        "ed875705-b7b6-4464-b16f-61629ffed04f"
+      ]
+    },
+    {
+      "key": "2015/black/normal/R/planeswalker/ordinary/plain/oval/foil-only",
+      "scopeHash": "3036d9688ec271c51cbe1e985b5946b06212807dba1b0d400f9e63deb52b94e0",
+      "printingIds": ["1e49ce44-5286-4310-88c2-f8a1402b113b"]
+    },
+    {
+      "key": "2015/black/normal/R/planeswalker/ordinary/plain/oval/nonfoil",
+      "scopeHash": "3e19488e57777e0e07b43a4ee20b3bc99634a1a9460189bec5eb55020f477834",
+      "printingIds": ["a4c3ca8c-c77c-43b8-84ad-796313ecc813"]
+    },
+    {
+      "key": "2015/black/normal/R/spell/legendary/legendary/none/nonfoil",
+      "scopeHash": "f926a53659388edf255dd56f0e1f2113835ae67318b24d3a1a732352882af3cf",
+      "printingIds": ["482ae7f4-3950-4766-8392-eea753e29426"]
+    },
+    {
+      "key": "2015/black/normal/R/spell/ordinary/plain/none/nonfoil",
+      "scopeHash": "edaf50f2df942b73eecc2561ecd7fd68692e4aac2f7795e81f600a748ec69117",
+      "printingIds": [
+        "064a6f1c-a058-4cc8-b467-5dbecb5eeb99",
+        "2ae12125-73a3-488b-98b8-9f982addac56",
+        "38c18541-e95e-4ae0-be18-3bfcafa24ca2",
+        "59fa8e8d-bcb8-47bf-b71a-df11c8d0f2c9",
+        "62584e4f-dac1-4d99-ac0a-6a2451603889",
+        "7e22c791-6ef9-4f13-a14d-4f795f48bb1c",
+        "8257c205-00cd-4d41-bd58-098575ea2343",
+        "a9a1cce7-1472-42fc-bfd3-c9ed9e563f03",
+        "ab7052f1-9736-47b6-9da3-8c5ca925ab54",
+        "bfe6a3a9-8d62-47c4-a78b-9baa9133a540",
+        "cb0e6279-8a66-4124-9def-fa0c83c26db9",
+        "d7ac8bdd-851f-449d-a108-70578eabf254",
+        "e854e6a3-8684-43fa-9560-ef4c3b62c935",
+        "f19b4a80-41e1-4c5f-869a-682f08543f12",
+        "f4af156d-0fbf-4a4e-b0c1-db7e95be4903"
+      ]
+    },
+    {
+      "key": "2015/black/normal/R/spell/ordinary/plain/oval/nonfoil",
+      "scopeHash": "98ddd07ea0ac712886f8240e7dea662dc73c9c02a32114690a71987f3a087e08",
+      "printingIds": [
+        "0b12e4b7-2c45-4795-94d3-901f89b8f290",
+        "754b77b4-4cc4-4e49-a7a4-667401e7e063",
+        "a31b6817-9b63-4d6f-a945-459b44ad184c",
+        "f2fa5133-c238-47e8-befd-3729a3e4303a"
+      ]
+    },
+    {
+      "key": "2015/black/normal/RG/creature/legendary/legendary/oval/nonfoil",
+      "scopeHash": "40ee0b47e88f18e4019b62b539244cb6072f04d9c807fa57044c67bfe9e20ca2",
+      "printingIds": ["2bbd37b1-49cb-4295-9a1f-fb85368a8f12"]
+    },
+    {
+      "key": "2015/black/normal/RG/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "8f3b4a814cd6a8a69cd0c34d13444e68a4c081b5f5d1323673522caa5ae2ebdd",
+      "printingIds": ["7bd3a903-23e0-4b5a-9c7e-390d5ced8371"]
+    },
+    {
+      "key": "2015/black/normal/RG/land/ordinary/plain/none/nonfoil",
+      "scopeHash": "c6f5265e35767c010c8af6b85f6072fc2cde86d45a9b9d29cff6ee62657378f9",
+      "printingIds": ["9daef8db-56a5-4b1e-b4bf-734d0516557c"]
+    },
+    {
+      "key": "2015/black/normal/U/basic-land/ordinary/plain/none/nonfoil",
+      "scopeHash": "73759b2769142ac15e2295b5e26d044d786eca11999b91577cc1f424716be598",
+      "printingIds": [
+        "017fb3fc-433e-4853-bbac-99fa04b40233",
+        "0600d6d5-f6a1-47c3-a898-733fab10bbf5",
+        "fc9a66a1-367c-4035-a22e-00fab55be5a0"
+      ]
+    },
+    {
+      "key": "2015/black/normal/U/creature/legendary/legendary/oval/nonfoil",
+      "scopeHash": "ae01c18aa027603902f2c13f211796843e9e02908fdfae4bcdaa7551c9e059b7",
+      "printingIds": ["cb078fbb-beb9-4c0b-be93-ed1e73e6f8d8"]
+    },
+    {
+      "key": "2015/black/normal/U/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "9a0dbb2560c695277cafcb748d456777c3f87a32ae96a71cafa5962d354cc0c5",
+      "printingIds": [
+        "0002ab72-834b-4c81-82b1-0d2760ea96b0",
+        "0360d27b-37e1-4e00-9cfc-b574efc38ea0",
+        "348955a0-e988-48d7-a6a0-a8045fcffd25",
+        "5449d71c-5c1b-44c6-9407-0212aa3c3e3a",
+        "59d38ef7-5017-4ea3-b97f-a8fe12d03e98",
+        "6ac0f66a-213f-463e-8ebb-35ff5940ea06",
+        "6d42d3dd-29df-44a1-89b8-994761eda77d",
+        "8cbac0e4-f79f-476d-b410-d19ab3696606",
+        "a188164c-01fe-4980-83a5-91d14e218cf5",
+        "a52e90c0-b012-4ce5-8462-1e33c7143de5",
+        "abb47990-a5a9-4a22-a8bb-d229b17132c6",
+        "ae981da0-f32c-49d5-bcb0-2b9255a4e1fe",
+        "c2776694-6183-498d-9a38-e4c5c9e78179",
+        "cb33529b-80bd-4f52-94cc-d8371c53ad75",
+        "cce6289e-f665-4faa-8285-c843447f3e52",
+        "d961c441-b76b-4bd8-b510-a3e073207a1b",
+        "dee1d595-a998-4652-931f-a1a72446f3a6"
+      ]
+    },
+    {
+      "key": "2015/black/normal/U/creature/ordinary/plain/oval/nonfoil",
+      "scopeHash": "04a8d5a27bd319930fe78d711cbf9e21846c91102fa1f9ced14580691c5d3cec",
+      "printingIds": [
+        "0540ee72-6370-4f70-9526-6f441b3cac1e",
+        "2810631f-c55c-4947-a26f-4d3ce76024b3",
+        "7a5a88e3-e73c-4b34-a645-06fe27e68cee",
+        "b1501118-5837-49b5-9446-0bc3032035ca",
+        "d67e4c42-a44f-456b-87e7-21ca56dc4630"
+      ]
+    },
+    {
+      "key": "2015/black/normal/U/planeswalker/ordinary/plain/oval/foil-only",
+      "scopeHash": "06aa4fc3229a4a882570915a3392a01a2184cae06133b73b0659d4e67c082b64",
+      "printingIds": ["62d05287-ad7f-4de8-9f68-8f36c62fae72"]
+    },
+    {
+      "key": "2015/black/normal/U/planeswalker/ordinary/plain/oval/nonfoil",
+      "scopeHash": "42222a8a9d57a32441bca9f5c40bacc8d346507861f079592711cc0a5b777d00",
+      "printingIds": [
+        "2d1ff397-2445-459a-ae4e-7bf1cd48f490",
+        "9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d",
+        "a8bf5708-4222-46d2-b108-0ed4cf3c83c3",
+        "d4949a0b-e320-470a-ba54-07ac75b0053b"
+      ]
+    },
+    {
+      "key": "2015/black/normal/U/spell/legendary/legendary/none/nonfoil",
+      "scopeHash": "bc84cada28102fa14b3b19d93bb0d201f85eb2523fd5215919e558a45ac910d8",
+      "printingIds": ["80b2fb65-5868-4cab-b45d-e103558ce7dc"]
+    },
+    {
+      "key": "2015/black/normal/U/spell/legendary/legendary/oval/nonfoil",
+      "scopeHash": "6faa399ceed010e3c30cb2df9dd3b91fc3908239d62b7fba5072cebff7a1a12a",
+      "printingIds": ["c38d1722-96b0-4756-9da9-fe18b1c80649"]
+    },
+    {
+      "key": "2015/black/normal/U/spell/ordinary/plain/none/nonfoil",
+      "scopeHash": "1a684be37e67300562acb0a02b725acade3b2bff6b478e394032593626146ce8",
+      "printingIds": [
+        "033afbd5-9937-4957-98ba-48e469a490bb",
+        "2dc0bafd-debc-4b62-9fe0-56b4aad02484",
+        "323db259-d35e-467d-9a46-4adcb2fc107c",
+        "393fc485-d3c1-4826-933d-89f66df769d4",
+        "5360fe8c-41b0-4409-b03e-072f129fb352",
+        "59e14910-ee2e-49ae-855e-46a8ab6cad82",
+        "64832674-beb1-446e-b2f7-8a5e271139a5",
+        "8f14abb0-0e9f-448e-85d7-6cb71f756c56",
+        "b19de7a5-c291-405b-a2e6-8d3ac56e6570",
+        "b832abcc-9ffd-47bf-827a-01b303c610ee",
+        "c26450d4-125f-423d-b074-3c959460c242",
+        "c82be2ca-8350-4cf5-83b6-e8b60a9e21c6",
+        "d3bc7176-abe0-47cf-a242-cf22a1f590be",
+        "d5acb8ef-5a57-4d10-b59c-2dbf84635084",
+        "da367981-9d6f-419f-9f58-f969b6183336",
+        "f5ed9f08-56e8-4e24-aae2-05270d7c1ba8"
+      ]
+    },
+    {
+      "key": "2015/black/normal/U/spell/ordinary/plain/oval/nonfoil",
+      "scopeHash": "4efae78634becb4bbba25a3d255831e79588ef06654b1be6110d58d08a97ff59",
+      "printingIds": [
+        "91af15cc-fdd5-4d72-a53a-314fa5353527",
+        "ad1bcb44-a562-4f66-b862-6d0ef3546ab4",
+        "b33ba0a8-04e9-4df6-af20-a3ca4470cdcc"
+      ]
+    },
+    {
+      "key": "2015/black/normal/UB/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "b9d8e0d85782c0a798e6f25cc085081d514614a28a095321f4a395eedbfecfb5",
+      "printingIds": ["e449f985-d149-49eb-87d9-7a325215f82d"]
+    },
+    {
+      "key": "2015/black/normal/UB/land/ordinary/plain/none/nonfoil",
+      "scopeHash": "428f74efd93e72f9270dd27323bf53a48a77a6de2681839196d7f5abfd5767d0",
+      "printingIds": ["b3b1afa0-9bb5-4566-a85e-86a5c03e0187"]
+    },
+    {
+      "key": "2015/black/normal/UG/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "e8b7c5a8028b299ff25b92e66740207fe1eb7b2d397e71bf0e3ca4aa6833b3df",
+      "printingIds": ["3be31fb0-115e-4e62-babd-16870f249f06"]
+    },
+    {
+      "key": "2015/black/normal/UG/land/ordinary/plain/none/nonfoil",
+      "scopeHash": "dc834eb1bf1f4ce72f1d6f1f587a158e1173229d80df4d5ac2304db940d0f47d",
+      "printingIds": ["f82851a5-5f70-488a-b21c-bdd65d2fca7c"]
+    },
+    {
+      "key": "2015/black/normal/UG/land/ordinary/plain/oval/nonfoil",
+      "scopeHash": "504b4edd0a2f1930d1238ea27c1f1e95d654da2cb480ec8a209436d4c9f490f7",
+      "printingIds": ["81634185-eb67-4d13-8b82-a662b8c9a7f0"]
+    },
+    {
+      "key": "2015/black/normal/UR/land/ordinary/plain/none/nonfoil",
+      "scopeHash": "b99ebde8c450801cdacda1b3f03f494322671a748a3a74fc201b9bc16b08b583",
+      "printingIds": ["e649fc68-fca5-4234-aff4-0ec2382a66d4"]
+    },
+    {
+      "key": "2015/black/normal/UR/land/ordinary/plain/oval/nonfoil",
+      "scopeHash": "d5c6ded86803fff6f5640a658824f9ca36ea2da8cb6138f34354cfece49aeaa1",
+      "printingIds": ["1652bb3c-c365-4046-b07e-3d861fa324c6"]
+    },
+    {
+      "key": "2015/black/normal/UR/spell/ordinary/plain/none/nonfoil",
+      "scopeHash": "78ea7065cbd18e4e18512438b33d94629a1f1dccd7ad3ea0b349eeb9a198b6c9",
+      "printingIds": ["6f1bace4-a327-4eb6-a6ef-8394e76c06b7"]
+    },
+    {
+      "key": "2015/black/normal/W/artifact/ordinary/plain/oval/nonfoil",
+      "scopeHash": "8a27e0b3b042b46adb97edf1e2f355ac175179c2009d9340404c102209ebcc2e",
+      "printingIds": ["4d60e84e-be05-49da-9720-4225abe9d003"]
+    },
+    {
+      "key": "2015/black/normal/W/basic-land/ordinary/plain/none/nonfoil",
+      "scopeHash": "b97f41053ddb10ee6167de4eb446355b60f46dc693a7d9b8e105c4b5d7cc8336",
+      "printingIds": [
+        "0d4e5bc1-f0c3-4ea7-a549-c36d932103b1",
+        "4be96696-aff8-4ef9-97dc-8221ef745de9",
+        "8a299a1e-1ce9-4668-a5f5-c587081acf6b"
+      ]
+    },
+    {
+      "key": "2015/black/normal/W/creature/legendary/legendary/oval/nonfoil",
+      "scopeHash": "abb19bc188be48c8927a4cfcf725917b948180640e13626013656d13ed9c4e89",
+      "printingIds": ["9b4e628f-5fc5-4c17-a07d-448d361d7e7c"]
+    },
+    {
+      "key": "2015/black/normal/W/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "d2739515d1fd3b58e3b380a6b793358f1ffb18938de315a12f24ff9c504a9b4e",
+      "printingIds": [
+        "08d1dd97-2675-4953-ab95-d47d23abfe05",
+        "17b59819-4746-4c67-b6e5-4157d498a065",
+        "31a500e6-01f5-4a3a-8839-68b9b515e919",
+        "3b43d7bc-173c-41eb-bba9-a9d94dcfc5fa",
+        "3f602ecc-c264-4f3e-adeb-d0186668653e",
+        "46666fba-d4a7-4687-8747-a42e4c6d853e",
+        "5ba81e67-8fa5-441c-bf14-2d75c168a617",
+        "600d3517-e370-47ae-ac4f-c7ef8995a89c",
+        "6911759c-7177-402c-a95a-f9f46efaf521",
+        "7a0ffa89-e6ee-466c-8edc-dd24c8b52e80",
+        "9c977c67-b0c0-40b0-b129-28de094aaf40",
+        "aa01cb8c-f080-456b-a91a-f1d7943a70b2",
+        "c392a7e5-6ff5-4c2f-9590-f8811a724f44",
+        "c5b57247-81cc-44ec-b5a9-0702111a98a8",
+        "ce2bc7ad-458d-445e-a0a9-7897b596fdd0",
+        "d2e3b99c-e48e-4f4d-ba7a-e9218137b432",
+        "db17f25a-32d1-469b-bb5f-f1761e227990",
+        "f234999b-54e9-40f5-a537-7d6ce169c710",
+        "fb4733e6-6fe2-4460-ac9f-82feb583d790",
+        "feb59931-8941-46fb-8e1c-f80ff3730dd9",
+        "ff87a671-054f-4357-8a62-450d36559a1b"
+      ]
+    },
+    {
+      "key": "2015/black/normal/W/creature/ordinary/plain/oval/nonfoil",
+      "scopeHash": "a5b07d70a3e89031e6a90313d4d86f8a50f3ca3f8c5095cfdfce6c88b0e5315c",
+      "printingIds": [
+        "1f44b96a-8498-414a-a4ac-54c80dfa9f23",
+        "4bd3014b-94bb-4a9f-92cf-239a2dcc7e97",
+        "74b1eae0-1bf8-4922-a9e3-45c01ece9005",
+        "a24e8dba-5c86-4e32-8a52-61402f7fe9f0",
+        "a8b94bc1-68d1-41dc-914c-a33ecb9aeb49"
+      ]
+    },
+    {
+      "key": "2015/black/normal/W/planeswalker/ordinary/plain/oval/foil-only",
+      "scopeHash": "ff0c4db60c3e1a708a527fe757a55d9cbe7b6804e3f349a64d3cd35179641383",
+      "printingIds": ["2688b45d-9d74-4d9f-9a63-29c82b48d64f"]
+    },
+    {
+      "key": "2015/black/normal/W/planeswalker/ordinary/plain/oval/nonfoil",
+      "scopeHash": "2d4186b23205f118cc179e3f5e2a1eb97653d2ddacaba7bc660788b71b61355b",
+      "printingIds": ["98c85699-2daf-4e87-a3be-465d02bd64bb"]
+    },
+    {
+      "key": "2015/black/normal/W/spell/legendary/legendary/none/nonfoil",
+      "scopeHash": "b09fa574926b719f75b5b7f3554483e341d9d9e39c1c9a89e15f6f700990a75e",
+      "printingIds": ["34a5478a-1a2c-4117-b543-da083ed2b562"]
+    },
+    {
+      "key": "2015/black/normal/W/spell/ordinary/plain/none/nonfoil",
+      "scopeHash": "a3aa6ce80d079187e4db599e54cab2b226369f2174a35ead9bac0eb5beb3dfc7",
+      "printingIds": [
+        "032f6c5a-8d88-4a55-a54b-28df42d801e1",
+        "5c23869b-c99a-49dd-9e29-fcc0eb63fad1",
+        "6ea1ee60-5644-4f78-913d-32c36065957f",
+        "73148b3b-73d3-4f57-8b67-1e91fbe112b9",
+        "8e742d49-e6f0-4016-ba4c-11878fad89cb",
+        "a3bd4bce-8ab0-40b9-aad7-7d57a011bb0b",
+        "a90c1ad0-83bd-471c-8d4c-e65bc2abaa18",
+        "c2e6fdc0-bdd4-4bba-b8f1-bbc8dfad038e",
+        "c3de35fd-425d-46b8-bc7d-c2f05d86858d",
+        "d5f80411-0a95-4e0a-b7a8-af23ddf385cc",
+        "d6467d96-e43a-4b1e-b6ce-578d991077b5",
+        "e8cca776-b0e4-4cd2-815f-36c1f86cf497"
+      ]
+    },
+    {
+      "key": "2015/black/normal/W/spell/ordinary/plain/oval/nonfoil",
+      "scopeHash": "2ef916eec38336625d09c1462d524271274d98dec7172e508838d7e4a4c9ddb2",
+      "printingIds": [
+        "17d154d3-7ae5-43ff-9978-d974285e2c89",
+        "577657ed-162f-4104-b0af-ee9733e90f20",
+        "61296b2d-4e5c-419a-8775-4e6af902c7b1",
+        "e70b7a73-484e-48f1-944c-3d38866cdc20"
+      ]
+    },
+    {
+      "key": "2015/black/normal/WB/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "23491caa97a5c26926ad2c46a1a7201ea47c6437b7349e78bbaa5cd7e548d6f8",
+      "printingIds": ["642e0c48-1f77-41e0-abbe-f570b757cd66"]
+    },
+    {
+      "key": "2015/black/normal/WB/land/ordinary/plain/none/nonfoil",
+      "scopeHash": "36da5e87ed59d47167a9b92adfc1d47c737a67e47498af8de48d60260f69205a",
+      "printingIds": ["feb3d45c-a28c-49d2-ab79-53ab42c7fdfd"]
+    },
+    {
+      "key": "2015/black/normal/WB/land/ordinary/plain/oval/nonfoil",
+      "scopeHash": "44b31b0a315d0130ba6daeee2630e40c022fa870ed23c9ddf692731826dca6af",
+      "printingIds": ["0f5b0f0a-dc16-45e2-91ab-28e0b9f66d00"]
+    },
+    {
+      "key": "2015/black/normal/WG/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "25761789084e304810742021435ff6542aea6ccbb10965195d7f710f266b94e1",
+      "printingIds": ["a328a93a-e720-46d5-a190-cc65d1c90cea"]
+    },
+    {
+      "key": "2015/black/normal/WG/land/ordinary/plain/none/nonfoil",
+      "scopeHash": "ea004e9be63095dc47680ab221d795c6dcf818686adaf6d0ce51dab520974189",
+      "printingIds": ["c8483586-9a07-4f54-a390-7dd97fcea5cb"]
+    },
+    {
+      "key": "2015/black/normal/WR/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "1c2818bfec33f41a45507b37667ee0607997edf26f0fdd3d413e2c2f813e8fbc",
+      "printingIds": ["43224e74-2c51-40bd-bc34-f66e990a3e33"]
+    },
+    {
+      "key": "2015/black/normal/WR/land/ordinary/plain/none/nonfoil",
+      "scopeHash": "848bb1312dac0d0500340aa7c6359cc51f7ee5af3f687190c9d2366f4f0057a9",
+      "printingIds": ["56d7428b-25a7-4185-8c3e-69017bd1ba6d"]
+    },
+    {
+      "key": "2015/black/normal/WR/land/ordinary/plain/oval/nonfoil",
+      "scopeHash": "db205cc46f4c10f64195086ec59402ff18148a44e15014074194ae0bdd22ea27",
+      "printingIds": ["2366499c-9d07-46bb-8488-6cd60056fa16"]
+    },
+    {
+      "key": "2015/black/normal/WU/creature/legendary/legendary/oval/nonfoil",
+      "scopeHash": "a6a7901368c57dd6af38af671f0585d93f0bce450f99fb749f9abb53ba0bc06c",
+      "printingIds": ["e21827eb-fa49-4784-a86b-aef164a5018e"]
+    },
+    {
+      "key": "2015/black/normal/WU/creature/ordinary/plain/none/nonfoil",
+      "scopeHash": "becec19a0cb516967e641796cca43ed4d7f1f497e75c969252e1ecccd0738191",
+      "printingIds": ["354b9ea4-3d55-48cc-b426-c46b1d1bb397"]
+    },
+    {
+      "key": "2015/black/normal/WU/land/ordinary/plain/none/nonfoil",
+      "scopeHash": "798758209c63b6906cf5a182874c176e6902b8baa1ecd77ca8de0258caf9dd6f",
+      "printingIds": ["0fee9b4b-1510-4b78-bdde-2e0bb319ee33"]
+    },
+    {
+      "key": "2015/black/normal/WUBRG/land/ordinary/plain/oval/nonfoil",
+      "scopeHash": "11ea0a87bf9375dee19a5280c7f43aa73d790a8d238f1bfe94b57fed7d3cce82",
+      "printingIds": ["d313d051-7295-4884-8cbf-f2f835fd45f4"]
+    },
+    {
+      "key": "2015/black/normal/WUBRG/spell/legendary/legendary/oval/nonfoil",
+      "scopeHash": "3d64b99c575fcdc0c0cf8e19fc5d25aa15c911b25d17b93a78786d31ee10c9e5",
+      "printingIds": ["ba91338c-1f6c-4b83-851f-98c3e9dea17b"]
+    }
+  ],
+  "scope": "Publication and exact native/score identity only. Does not approve reference content, geometry, pigment, typography, full-card outliers or complete-set status. Foil-only printings remain structural controls."
+}

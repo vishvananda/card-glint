@@ -1,6 +1,6 @@
 # M21 calibration evidence
 
-Current unreleased profile: **16**. The [component census](current-component-census.json)
+Published profile: **16**, in **0.6.12**. The [component census](current-component-census.json)
 covers all **297 Original printings / 85 physical variants**, with every scan,
 native face, etching and normalized reference hash rechecked. It imports the
 existing frozen-metric scores; it does not silently change the metric, refit
@@ -45,6 +45,54 @@ node tests/magic-modern-component-census.mjs
 The remaining sections preserve chronological experiment receipts. Their
 profile numbers, open-work notes and intermediate scores describe those
 snapshots; the latest census does **not** mark M21 complete.
+
+## Publication evidence
+
+The [publication receipt](release-0612-publication.json) verifies the two published
+archives against the release manifest and SHA256SUMS, successful renderer and
+publication jobs, and the exact source tag. It joins all 297 native faces and
+scores to the current component census, with the same Original inputs and scan
+poses. The receipt closes the release check for all 85 physical variants.
+
+This check approves publication and score identity. The ledger still keeps
+regional calibration and outlier review open. A whole-card mean cannot approve
+each component. Runtime or evidence changes make this publication proof stale;
+the report does not enqueue rescoring.
+
+To reproduce with downloaded release artifacts and saved GitHub API responses:
+
+```sh
+node games/magic/tools/accuracy/modern-publication-review.mjs \
+  RELEASE_DIRECTORY RELEASE_API_JSON WORKFLOW_API_JSON \
+  games/magic/fixtures/accuracy/m21/release-0612-publication.json
+npx prettier --write games/magic/fixtures/accuracy/m21/release-0612-publication.json
+MAGIC_ACCURACY_CACHE=YOUR_CACHE node games/magic/tools/accuracy/calibration-inventory.mjs m21
+node tests/magic-m21-publication.mjs
+```
+
+Obtain the metadata with `gh release view v0.6.12 --json
+tagName,publishedAt,url,isDraft,isPrerelease,assets` and `gh run view 39977507678
+--json conclusion,headSha,status,updatedAt,url,jobs`. Keep the downloaded archives,
+`release.json` and `SHA256SUMS` together. The importer checks the complete variant
+membership and preserves the unrelated task states.
+
+## Current footer content
+
+The [current footer-content census](current-footer-content-census.json) joins the
+existing 25-sheet scan review to all 297 current Original inputs and native faces.
+All seven fields match: artist, copyright/trademark text, collector serial,
+rarity letter, set code, language and finish marker. The tool checks the exact
+reference and normalized raster identity, including five foil-only wording
+controls. No card is dropped for having a long artist credit.
+
+This verifies strings and marks. Artist/legal/collector geometry still needs
+separate current measurements; the frozen score's credit gate remains unchanged.
+
+```sh
+node games/magic/tools/accuracy/modern-footer-content-census.mjs   INPUTS games/magic/fixtures/accuracy/m21/current-footer-content-census.json
+npx prettier --write games/magic/fixtures/accuracy/m21/current-footer-content-census.json
+node tests/magic-m21-footer-content-census.mjs
+```
 
 ## Earlier component reviews
 
