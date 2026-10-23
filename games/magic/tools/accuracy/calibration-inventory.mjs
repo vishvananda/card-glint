@@ -1,3 +1,4 @@
+import { m21ManaEvidence, applyM21Mana } from './calibration-m21-mana.mjs';
 import { m21PublicationEvidence, applyM21Publication } from './calibration-m21-publication.mjs';
 import {
   m21NormalizationEvidence,
@@ -141,6 +142,7 @@ const earlyGuards = Object.fromEntries(
 const unlimitedEvidence = await unlimitedCalibrationEvidence();
 const m21Normalization = await m21NormalizationEvidence();
 const m21Publication = await m21PublicationEvidence();
+const m21Mana = await m21ManaEvidence();
 const sets = [];
 try {
   await server.ssrLoadModule('/games/magic/src/data/eager.ts');
@@ -470,7 +472,10 @@ try {
         ?.groups.find((v) => v.key === g.key);
       preserveCalibrationReviews(g, saved);
       if (set.set === '2ed') applyUnlimitedEvidence(g, unlimitedEvidence);
-      if (set.set === 'm21') applyM21Publication(g, m21Publication);
+      if (set.set === 'm21') {
+        applyM21Publication(g, m21Publication);
+        applyM21Mana(g, m21Mana);
+      }
       // Queued sets keep exact variant denominators without duplicating every
       // printing UUID and applicability explanation from the frozen catalog.
       groups.push(

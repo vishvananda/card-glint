@@ -70,7 +70,8 @@ assert.equal(
   'Publication must not complete unfinished calibration',
 );
 const [report] = await calibrationReport({ sets: [set] });
-assert.equal(report.counts.validated, 170);
+assert.equal(report.byTask.release.validated, 85);
+assert.equal(report.byTask.normalization.validated, 85);
 assert.equal(report.complete, false);
 const changed = structuredClone(set);
 for (const group of changed.groups)

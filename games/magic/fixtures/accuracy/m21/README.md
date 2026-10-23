@@ -76,6 +76,42 @@ tagName,publishedAt,url,isDraft,isPrerelease,assets` and `gh run view 3997750767
 `release.json` and `SHA256SUMS` together. The importer checks the complete variant
 membership and preserves the unrelated task states.
 
+## Released mana calibration
+
+The [current mana adoption review](current-mana-adoption-review.json) closes
+cost geometry and color for **62 applicable physical variants**. The other
+23 variants have no mana cost. This reuses the measured shared fits already
+shipped in 0.6.12; it changes no renderer parameter.
+
+All **567 cost symbols on 264 Original printings** retain byte-identical native
+RGBA interiors from the profile6 adoption. The comparison checks 361,504 pixels
+inside the discs, inset by two reference pixels to exclude changing title
+backgrounds. Selected circle, pitch, glyph, number, paper and shadow controls
+match the earlier native-reviewed trials. Pinned mana assets and the shadow
+painting function also match. The current nonfoil mana structure index remains
+**91.167/100**; that structure index does not measure pigment accuracy by itself.
+
+The 259 nonfoil cards form a finite development census, without an independent
+holdout claim. Five foil-only walker cards receive a documented family transfer
+from nine measured nonfoil walkers covering all five colors and generic costs.
+Their scans do not fit nonfoil pigment. Inline symbols remain part of the rules
+review. These checks do not approve unrelated component tasks.
+
+Reproduce using the adopted and current cached native captures:
+
+```sh
+node games/magic/tools/accuracy/modern-mana-adoption-review.mjs \
+  ADOPTED_INPUTS ADOPTED_NATIVE CURRENT_INPUTS CURRENT_NATIVE \
+  games/magic/fixtures/accuracy/m21/current-mana-adoption-review.json
+npx prettier --write games/magic/fixtures/accuracy/m21/current-mana-adoption-review.json
+MAGIC_ACCURACY_CACHE=YOUR_CACHE node games/magic/tools/accuracy/calibration-inventory.mjs m21
+node tests/magic-m21-mana-reuse.mjs
+```
+
+The receipt binds every current printing to its scan, frozen pose, input and
+native face. Changed runtime, source assets or evidence makes the approval
+stale without scheduling a whole-library rescore.
+
 ## Current footer content
 
 The [current footer-content census](current-footer-content-census.json) joins the
