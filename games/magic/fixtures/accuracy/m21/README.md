@@ -774,3 +774,43 @@ python games/magic/tools/accuracy/modern-text-size-model.py \
 
 The model rejects adaptive per-printing centers as training actions. Its output
 shows development and exploratory fold results, including worst losses.
+
+## Follow-up typography and role-preservation audit
+
+[Follow-up evidence](typography-followup-review.json) keeps two complete studies:
+alternative regular/italic font pairs, and disabling the flavor orphan shrink.
+All 297 source controls reproduce the preceding study exactly; 268 ordinary
+fields are measured and the 29 basics/planeswalkers remain separate. The current
+font pair has the best cohort mean. Disabling flavor shrinking raises the mean
+slightly but loses 56.286/100 on Glorious Anthem, so neither change is adopted.
+
+The native size proposals also show why whole-field overlap alone is insufficient.
+The new offline audit separates rules from flavor using the **scan's** long divider
+line and fixed semantic badge masks. No proposed rendering defines its own
+comparison mask. Missing or ambiguous dividers require review. It checks both
+roles independently, then checks estimated ink line bands using connected
+components rather than row projection: descenders and next-line ascenders can
+overlap vertically without belonging to the same line.
+
+Of the 105 changed diagnostic faces, 22 fail these additional checks: 15 worsen
+estimated line-count error and seven lose more than 0.5/100 on one role. This
+catches Turn to Slag, Terror of the Peaks, Finishing Blow and Skeleton Archer.
+The remaining 83 are **candidates for further review**, not adopted printing
+overrides or proof of correct line breaks. Texture and partial badge strokes can
+still contaminate line-band estimates. Seasoned Hallowblade and Fungal Rebirth
+retain visible wrapping differences despite improved overlap. The complete
+105-card contact review and source hashes are recorded; external image pixels
+stay in the private reference cache.
+
+Run the audit against complete native captures and previously normalized scans:
+
+```sh
+node games/magic/tools/accuracy/modern-rules-role-review.mjs \
+  INPUTS BEFORE_NATIVE AFTER_NATIVE BEFORE_SCORES OUTPUT.json
+node tests/magic-modern-rules-roles.mjs
+```
+
+This path uses cached PNGs and shared semantic geometry with no Chromium,
+font loading, repainting or scan refit. It remains an offline selection
+diagnostic, distinct from the published whole-card metric and the completion
+ledger. Shared profile16 remains unchanged.

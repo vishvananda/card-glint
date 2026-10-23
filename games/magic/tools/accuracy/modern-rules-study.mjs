@@ -76,8 +76,10 @@ for (const candidates of candidateLists) {
           textWidth: [0.85, 1.15],
           centerOffset: [-15, 15],
         };
-        for (const [k, v] of Object.entries(value))
-          assert(ranges[k] && Number.isFinite(v) && v >= ranges[k][0] && v <= ranges[k][1]);
+        for (const [k, v] of Object.entries(value)) {
+          if (k === 'flavorOrphans') assert.equal(typeof v, 'boolean');
+          else assert(ranges[k] && Number.isFinite(v) && v >= ranges[k][0] && v <= ranges[k][1]);
+        }
         continue;
       }
       const ranges = {
