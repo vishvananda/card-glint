@@ -1,11 +1,25 @@
+import { modernDefaultProfile } from './modern-default-profile.js';
+import { supportsModernStyleDefaults } from './modern-style-scope.js';
 import { resolveCardProfile, resolveFrameColors } from './profile.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
-import { MODERN_PRINTING_PROFILES } from '../data/tables.js';
+import {
+  MODERN_PRINTING_PROFILES,
+  ORDINARY_COLOR_PROFILES,
+  PRINTING_COLOR_PROFILES,
+  LEGENDS_COLOR_PROFILES,
+} from '../data/tables.js';
+import { componentPrintingColorSource } from './printing-color-source.js';
 
 export function modernPrintingProfile(face: RenderedCardInput) {
   if (!supportsModernPrintingProfile(face)) return undefined;
-  return MODERN_PRINTING_PROFILES[face.setCode?.toLowerCase() ?? ''];
+  const exact = MODERN_PRINTING_PROFILES[face.setCode?.toLowerCase() ?? ''];
+  const exactScope =
+    !face.frameTemplate &&
+    !face.faces?.length &&
+    (!face.layout || face.layout === 'normal' || face.layout === 'planeswalker') &&
+    !/\b(Saga|Class|Battle)\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '');
+  return exact && exactScope ? exact : modernDefaultProfile(face);
 }
 export function modernPrintingProfileKey(face: RenderedCardInput): readonly unknown[] {
   const profile = modernPrintingProfile(face);
@@ -30,24 +44,22 @@ export function modernPrintingProfileKey(face: RenderedCardInput): readonly unkn
   ];
 }
 
-/** Source-compatible ordinary M15 information lines, including planeswalkers.
- * Source/color policies do not change typography. Explicit older/templates
- * retain their own footer. No donor or completion claim is made here. */
+/** Shared M15-era styles may reach dedicated layouts; each painter still owns
+ * its apertures and geometry. Older families never inherit these styles. */
 export function supportsModernPrintingProfile(face: RenderedCardInput): boolean {
-  return (
-    face.frameStyle !== 'retro' &&
-    (!face.frameAssetFamily || face.frameAssetFamily === 'm15-accurate') &&
-    !face.frameTemplate &&
-    !face.faces?.length &&
-    (!face.layout || face.layout === 'normal' || face.layout === 'planeswalker') &&
-    !/\b(Saga|Class|Battle)\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '')
-  );
+  return supportsModernStyleDefaults(face);
 }
 
 /** Exact pinned M15 land sources; no inferred calibration for crowns or other sets. */
 export function modernLandPlates(face: RenderedCardInput) {
   const profile = modernPrintingProfile(face)?.landPlates;
-  if (!profile || profile.root !== manifest.CONJURER_ROOT + '/img/frames/m15/new') return undefined;
+  if (
+    !profile ||
+    profile.root !== manifest.CONJURER_ROOT + '/img/frames/m15/new' ||
+    face.frameTemplate ||
+    face.faces?.length
+  )
+    return undefined;
   const traits = resolveCardProfile(face);
   if (
     !traits.land ||
@@ -85,7 +97,7 @@ export function modernArtifactPinline(face: RenderedCardInput) {
   return { source, mask: root + '/pinline.png', correction };
 }
 
-/** Exact profile-owned planeswalkers, without speculative donor inheritance. */
+/** Compatible planeswalker styles; inherited values remain labeled as defaults. */
 export function modernWalkerProfile(face: RenderedCardInput) {
   return /\bPlaneswalker\b/.test(face.canonicalTypeLine ?? face.typeLine ?? '')
     ? modernPrintingProfile(face)?.planeswalkers
@@ -106,7 +118,7 @@ export function modernWalkerBodyProfile(face: RenderedCardInput) {
   return profile?.deckCollectorNumbers.includes(face.collectorNumber ?? '') ? undefined : profile;
 }
 
-/** Exact-set ordinary source selection. Crowns and specialty frames keep
+/** Source-bound ordinary source selection. Crowns and specialty frames keep
  * their independently owned sources and geometry. */
 export function modernOrdinaryPlates(face: RenderedCardInput) {
   const land = modernLandPlates(face);
@@ -115,7 +127,9 @@ export function modernOrdinaryPlates(face: RenderedCardInput) {
       land.sources.map((source) => [source, land.profile.materials[source]!]),
     );
 
-  const plates = modernPrintingProfile(face)?.ordinaryPlates;
+  const style = modernPrintingProfile(face);
+  if (style?.inheritedFrom && independentModernComponentMaterials(face)) return undefined;
+  const plates = style?.ordinaryPlates;
   const type = face.canonicalTypeLine ?? face.typeLine ?? '';
   const colors = face.frameColors ?? face.colors ?? [];
   const artifact = face.artifact ?? /\bArtifact\b/.test(type);
@@ -123,6 +137,8 @@ export function modernOrdinaryPlates(face: RenderedCardInput) {
   const source = `${manifest.CONJURER_ROOT}/img/frames/m15/new/${sourceColor}.png`;
   if (
     !plates ||
+    face.frameTemplate ||
+    face.faces?.length ||
     !Object.hasOwn(plates, source) ||
     (face.layout && face.layout !== 'normal') ||
     face.legendary ||
@@ -162,5 +178,20 @@ export function modernArtifactPaperPalette(face: RenderedCardInput): string | un
     modernPrintingProfile(face)?.artifactPapers?.[palette] &&
     modernOrdinaryPlates(face)?.[source]
     ? palette
+    : undefined;
+}
+
+/** Existing source-bound component pigment wins over a new donor plate. */
+export function independentModernComponentMaterials(face: RenderedCardInput) {
+  const source = componentPrintingColorSource(face);
+  if (!source) return undefined;
+  const legendary = resolveCardProfile(face).legendary;
+  const fit =
+    (!legendary ? ORDINARY_COLOR_PROFILES[source.key] : undefined) ??
+    PRINTING_COLOR_PROFILES[source.key] ??
+    LEGENDS_COLOR_PROFILES[source.key];
+  return fit?.source === source.source &&
+    (fit.legendary === undefined || fit.legendary === legendary)
+    ? fit.materials
     : undefined;
 }

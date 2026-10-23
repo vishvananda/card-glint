@@ -16,12 +16,12 @@ try {
   assert.equal(modernHeadingFamily({ ...base, calibration: 'source' }), MODERN_HEADING_FAMILY);
   for (const extra of [
     { setCode: 'lea' },
-    { setCode: 'war' },
+    { setCode: 'war', calibration: 'printing' },
     { frameStyle: 'retro' },
     { frameAssetFamily: 'eighth' },
     { frameTemplate: 'future' },
-    { layout: 'saga' },
-    { faces: [{ name: 'Other' }] },
+    { layout: 'saga', calibration: 'printing' },
+    { faces: [{ name: 'Other' }], calibration: 'printing' },
   ])
     assert.equal(modernHeadingFamily({ ...base, ...extra }), undefined);
   for (const [input, expected] of [
@@ -39,7 +39,7 @@ try {
     assert.equal(expected.length, input.length, 'Ink-span indices remain stable');
   }
   const ordinary = { textRendering: 'auto', fontKerning: 'auto' };
-  prepareModernTypeText(ordinary, { ...base, setCode: 'war' }, 'plate');
+  prepareModernTypeText(ordinary, { ...base, setCode: 'war', calibration: 'printing' }, 'plate');
   assert.deepEqual(ordinary, { textRendering: 'auto', fontKerning: 'auto' });
   for (const source of ['plate', 'components', 'walker']) {
     const context = { textRendering: 'auto', fontKerning: 'auto' };

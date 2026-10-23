@@ -1,5 +1,6 @@
 import { faceFrame } from './special-frames.js';
 import {
+  independentModernComponentMaterials,
   modernOrdinaryPlates,
   modernPrintingProfile,
   modernWalkerProfile,
@@ -70,13 +71,20 @@ export function calibratedDualFrameProfile(face: RenderedCardInput): DualFrameHs
 }
 export function calibratedManaTarget(face: RenderedCardInput, symbol: string): Rgb | undefined {
   const measured = face.colorCalibration === 'set-hsb-v1' && face.calibration !== 'source';
-  if (!hasColorCalibration(face) && !(measured && modernWalkerProfile(face))) return undefined;
-  const modern = measured ? modernPrintingProfile(face)?.mana?.paperTargets[symbol] : undefined;
+  const style = measured ? modernPrintingProfile(face) : undefined;
+  if (
+    !hasColorCalibration(face) &&
+    !(measured && (modernWalkerProfile(face) || style?.inheritedFrom))
+  )
+    return undefined;
+  const key = `${face.setCode?.toLowerCase()}-${retroBorder(face)}-${symbol}`;
+  const exact = MANA_PRINTING_TARGETS[key] ?? DUAL_MANA_TARGETS[key];
+  if (style?.inheritedFrom && exact) return exact;
+  const modern = style?.mana?.paperTargets[symbol];
   if (modern) return [modern[0] / 255, modern[1] / 255, modern[2] / 255];
   const reprint = earlyReprintManaTarget(face, symbol);
   if (reprint) return reprint;
   if (face.setCode?.toLowerCase() === 'leg' && !legendsFrame(face)) return undefined;
-  const key = `${face.setCode?.toLowerCase()}-${retroBorder(face)}-${symbol}`;
   if (earlyExpansionMana(face)) {
     const variant = arabianManaVariant(face);
     return variant && (symbol === 'W' || symbol === 'B')
@@ -96,6 +104,10 @@ function baseFrameMaterials(face: RenderedCardInput): Readonly<Record<string, Fr
   if (face.setCode?.toLowerCase() === 'plc') return planarFrameMaterials(face);
   // Exact multi-plate materials have a source census rather than a single
   // printingColorSource descriptor. This does not expand inline-mana coverage.
+  if (modernPrintingProfile(face)?.inheritedFrom && face.colorCalibration === 'set-hsb-v1') {
+    const independent = independentModernComponentMaterials(face);
+    if (independent) return independent;
+  }
   const ordinary = modernOrdinaryPlates(face);
   if (ordinary && face.colorCalibration === 'set-hsb-v1') return ordinary;
   if (!hasColorCalibration(face)) return {};
@@ -154,7 +166,10 @@ export function calibratedFrameMaterials(
       ...source,
       url: dual.overlay,
     }).materials;
-  return { ...materials, ...modernComponentMaterials(face) };
+  const modern = modernComponentMaterials(face);
+  return modernPrintingProfile(face)?.inheritedFrom
+    ? { ...modern, ...materials }
+    : { ...materials, ...modern };
 }
 
 /** Exact selected URLs only: unused material variants are not asset dependencies.

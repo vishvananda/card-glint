@@ -496,6 +496,34 @@ for the full-set check that caught wrapping errors missed by the initial holdout
 Revised inline tap symbols now use the diagonal-T glyph from the existing
 historical-symbol font; later old-border sets keep their tilted-card mark.
 
+## Modern frame defaults
+
+Compatible M15-era frames use the shared M21 layout and typography when they have
+no exact profile. This includes source-compatible mana and basic-land symbols,
+headings, ordinary body text, power/toughness, footer styles and printing colors
+when color calibration is enabled. Dedicated layouts retain their own geometry.
+Older/2003 families and Futureshifted, flip and leveler layouts keep their own
+policies. An explicit M15 asset-family choice can override the implicit set era.
+
+Source-bound independent fits take precedence. M21 collector exceptions, rarity
+labels, foil-star printing IDs and planeswalker-deck collector IDs never transfer.
+Original and Oracle wording each fit their own text. These defaults are a starting
+point for other sets, not a claim that those printings have been calibrated.
+`resolvePrintingCalibration(face).defaults` identifies inherited styles.
+
+Use `calibration: 'printing'` for exact-set profiles only. `calibration: 'source'`
+keeps source colors while retaining the chosen frame's layout and typography.
+`calibration: 'auto'` also fills compatible material gaps. Existing
+`colorCalibration` controls remain supported.
+
+With `card-glint/magic/lazy`, await `prepareMagicCards(faces)` before synchronous
+asset, layout or cache-key queries. It loads M21 calibration only for compatible
+modern faces (or explicitly requested material defaults), never M21 wording.
+The lazy compositor does this automatically. `loadMagicSet(code)` also loads
+the shared calibration dependency for modern sets, preserving existing set-only
+callers. Face-aware preparation avoids that extra data for later retro treatments
+and exact-only policies. The compatibility `card-glint/magic` entry remains eager.
+
 ## Measured set colors
 
 Set `colorCalibration: 'set-hsb-v1'` to opt into admitted printing-color profiles. LEA, LEB, Revised, Eighth and M21

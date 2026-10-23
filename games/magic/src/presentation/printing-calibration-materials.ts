@@ -1,4 +1,8 @@
-import { modernOrdinaryPlates } from './modern-printing-profile.js';
+import {
+  modernOrdinaryPlates,
+  modernPrintingProfile,
+  independentModernComponentMaterials,
+} from './modern-printing-profile.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { cardStock } from './face-layout.js';
 import type { FrameHsb } from './frame-hsb.js';
@@ -39,9 +43,17 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
   // fit. Component donors for other sets remain separately source-compatible.
   const useExact = !explicitProfile || Boolean(ordinary);
   const materials: Record<string, FrameHsb> = useExact ? { ...measured } : {};
+  const style = modernPrintingProfile(original);
   const fallbackAssets: string[] = [];
+  const independent = style?.inheritedFrom
+    ? independentModernComponentMaterials(original)
+    : undefined;
+  if (style?.inheritedFrom && choice !== 'source')
+    for (const url of Object.keys(materials))
+      if (!independent?.[url] && (ordinary?.[url] || style.componentMaterials?.[url]))
+        fallbackAssets.push(url);
   let border = useExact ? measuredStock : undefined;
-  let fallbackStock = false;
+  let fallbackStock = Boolean(style?.inheritedFrom && ordinary && border && choice !== 'source');
   if ((choice === 'auto' || explicitProfile) && supportsModernCalibration(face)) {
     const sources = modernCalibrationSources(face),
       profile = resolveCardProfile(face);

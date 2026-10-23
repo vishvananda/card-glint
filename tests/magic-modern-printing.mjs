@@ -38,7 +38,7 @@ try {
       const p = modernBasicLandProfile(face);
       check(p?.source && p.sha256.length === 64, 'Missing bound glyph profile');
       for (const extra of [
-        { setCode: 'war' },
+        { setCode: 'war', calibration: 'printing' },
         { frameStyle: 'retro' },
         { frameAssetFamily: 'eighth' },
         { frameTemplate: 'future' },

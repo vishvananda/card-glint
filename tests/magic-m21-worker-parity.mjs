@@ -24,11 +24,16 @@ try {
     }),
   );
   await page.goto(url);
+  const defaultDonor = process.argv.includes('--defaults');
   const entry = process.argv.includes('--built')
-    ? '/dist/lib/magic-presentation.js'
-    : '/games/magic/src/presentation.ts';
+    ? defaultDonor
+      ? '/dist/lib/magic-lazy.js'
+      : '/dist/lib/magic-presentation.js'
+    : defaultDonor
+      ? '/games/magic/src/lazy.ts'
+      : '/games/magic/src/presentation.ts';
   const rows = await page.evaluate(
-    async ({ entry, fontSources, diagnose, cpuPixels }) => {
+    async ({ entry, fontSources, diagnose, cpuPixels, defaultDonor }) => {
       async function harness(scope, api, fonts, cpuPixels) {
         for (const { family, weight, style } of api.canvasFontAssets)
           (scope.document?.fonts ?? scope.fonts).add(
@@ -320,6 +325,20 @@ try {
           power: undefined,
           toughness: undefined,
         });
+      if (defaultDonor) {
+        const names = [
+          'U adept',
+          'W calibrated artifact',
+          'B calibrated artifact',
+          'Plains',
+          'Dual land',
+          'Legendary adept',
+          'regular walker',
+        ];
+        const selected = faces.filter((face) => names.includes(face.name));
+        if (selected.length !== 7) throw Error('Incomplete modern default worker matrix');
+        faces.splice(0, faces.length, ...selected.map((face) => ({ ...face, setCode: 'qzz' })));
+      }
       const rows = [];
       try {
         for (const face of faces)
@@ -444,9 +463,10 @@ try {
       fontSources: await installedSerifFonts(),
       diagnose: process.argv.includes('--diagnose'),
       cpuPixels: process.argv.includes('--cpu'),
+      defaultDonor,
     },
   );
-  assert.equal(rows.length, 264);
+  assert.equal(rows.length, defaultDonor ? 84 : 264);
   if (process.argv.includes('--diagnose'))
     for (const row of rows) if (row.debug) console.log(JSON.stringify(row.debug));
   for (const row of rows) {
@@ -483,8 +503,9 @@ try {
       cases: rows.length,
       exactPixelPairs: rows.filter((r) => r.before.hash === r.after.hash).length,
       rasterEquivalentPairs: rows.filter((r) => r.before.hash !== r.after.hash).length,
-      scope:
-        'Current M21 browser/real-worker assets, raster sizes, frame geometry and text draws/metrics match across22 roles, including both calibrated artifact paper palettes, Original/Oracle, all3 tiers, face/etching and transferable bitmap output. Raster tolerance: at most one8-bit level mean/card, three levels/64px tile; silhouette coverage stays within one raster pixel. Exact and bounded-raster pairs are separate. Synthetic assets and installed fonts prove portability, not scan accuracy.',
+      scope: defaultDonor
+        ? 'Inherited M21 defaults through the slim entry:7 roles, Original/Oracle,244/488/732 pixels, face/etching, real OffscreenCanvas worker and transferable ImageBitmap. Both calibrated artifact palettes, basic/dual lands, legend and planeswalker. Same bounded raster envelope as the exact-M21 matrix. Synthetic assets prove portability, not target-set scan accuracy.'
+        : 'Current M21 browser/real-worker assets, raster sizes, frame geometry and text draws/metrics match across22 roles, including both calibrated artifact paper palettes, Original/Oracle, all3 tiers, face/etching and transferable bitmap output. Raster tolerance: at most one8-bit level mean/card, three levels/64px tile; silhouette coverage stays within one raster pixel. Exact and bounded-raster pairs are separate. Synthetic assets and installed fonts prove portability, not scan accuracy.',
     }),
   );
 } finally {

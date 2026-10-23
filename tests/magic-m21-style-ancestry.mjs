@@ -1,3 +1,4 @@
+import { preModernDefaultSource } from '../games/magic/tools/accuracy/modern-default-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -26,7 +27,10 @@ for (const [file, e] of Object.entries(proof.files)) {
 }
 for (const file of Object.keys(proof.newModules)) {
   const current = await readFile(file);
-  assert.deepEqual(await preM21StyleSource(file, current), current);
+  assert.deepEqual(
+    await preM21StyleSource(file, current),
+    await preModernDefaultSource(file, current),
+  );
   await assert.rejects(
     preM21StyleSource(file, Buffer.concat([current, Buffer.from('\n// unknown\n')])),
     /Unreviewed M21 style module/,

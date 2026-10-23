@@ -7,7 +7,12 @@ export function visibleArt(face: RenderedCardInput): FaceRect {
 }
 const cache = new WeakMap<RenderedCardInput, readonly [FaceRect, FaceRect]>();
 const uv = ([x, y, w, h]: FaceRect): FaceRect => [x, 1 - y - h, x + w, 1 - y];
-export const DEFAULT_ART_BOUNDS = [uv(faceRects({ name: '' }).art), [0, 0, 0, 0]] as const;
+// No physical face is selected here. Keep the neutral geometry independent of
+// set-data preparation so importing the slim entry cannot require a donor table.
+export const DEFAULT_ART_BOUNDS = [
+  uv(faceRects({ name: '', calibration: 'printing' }).art),
+  [0, 0, 0, 0],
+] as const;
 export function faceArtBounds(face?: RenderedCardInput): readonly [FaceRect, FaceRect] {
   if (!face) return DEFAULT_ART_BOUNDS;
   const old = cache.get(face);

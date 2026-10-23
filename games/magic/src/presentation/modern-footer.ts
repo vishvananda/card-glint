@@ -33,7 +33,7 @@ export function paintModernFooter(c: CanvasContext, face: RenderedCardInput): vo
   paintPrintingElement(c, face, 'collector', () => {
     const text = printingCollectorText(face);
     if (!style || !text) return c.fillText(text, 30, 645);
-    const match = /^(\d{3}(?:\/274)?) ([CMRUL])$/.exec(text);
+    const match = /^(\d{3}(?:\/\d+)?) ([CMRUL])$/.exec(text);
     // Explicit host formats/numbers remain valid, with the measured font.
     if (!match) return c.fillText(text, 30, 645);
     c.fillText(match[1]!, 30, 645);

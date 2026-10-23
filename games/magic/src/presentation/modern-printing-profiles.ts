@@ -69,6 +69,8 @@ export interface ModernWalkerBadgeAdjustment {
 }
 
 export interface ModernPrintingProfile {
+  /** Absent on measured exact-set profiles. Never implies target-set certification. */
+  readonly inheritedFrom?: 'm21';
   readonly revision: number;
   /** Intrinsic heading glyphs, independent of color calibration policy. */
   readonly headingFont?: 'beleren-2016';

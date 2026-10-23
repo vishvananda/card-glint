@@ -76,7 +76,7 @@ try {
   }
   assert(framePlate({ ...base, frameColors: ['W', 'R'] }).frame.endsWith('/lr.png'));
   for (const extra of [
-    { setCode: 'war' },
+    { setCode: 'war', calibration: 'printing' },
     { frameStyle: 'retro' },
     { frameAssetFamily: 'eighth' },
     { frameTemplate: 'future' },

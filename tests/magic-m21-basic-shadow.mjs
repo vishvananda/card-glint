@@ -62,7 +62,7 @@ try {
       'Cast vector follows the raster transform',
     );
     for (const other of [
-      { ...face, setCode: 'war' },
+      { ...face, setCode: 'war', calibration: 'printing' },
       { ...face, frameAssetFamily: 'eighth' },
     ]) {
       c.setTransform(1.5, 0, 0, 1.5, 0, 0);
@@ -73,6 +73,11 @@ try {
         'Unreviewed source/set must preserve the previous shadow',
       );
     }
+    paintBasicLandSymbol(c, { ...face, setCode: 'war' }, images);
+    check(
+      close(calls.at(-1).dx, -1) && close(calls.at(-1).dy, 3) && close(calls.at(-1).blur, 1),
+      'Compatible inherited source must use canonical shadow',
+    );
     const count = calls.length;
     check(
       !paintBasicLandSymbol(c, { ...face, rulesText: 'Draw a card.' }, images) &&

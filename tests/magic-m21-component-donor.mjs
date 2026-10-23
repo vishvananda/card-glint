@@ -12,7 +12,10 @@ const legacy = await createServer({
       enforce: 'pre',
       transform(source, id) {
         if (!id.endsWith('/presentation/calibration-profiles.ts')) return;
-        const needle = '  return { ...materials, ...modernComponentMaterials(face) };';
+        const needle = `  const modern = modernComponentMaterials(face);
+  return modernPrintingProfile(face)?.inheritedFrom
+    ? { ...modern, ...materials }
+    : { ...materials, ...modern };`;
         assert.equal(source.split(needle).length, 2);
         return { code: source.replace(needle, '  return materials;'), map: null };
       },
@@ -55,13 +58,14 @@ try {
     );
     const face = { ...donor, setCode: 'qzz', calibration: 'auto' };
     const resolved = printingCalibrationMaterials(face);
-    assert(
-      !Object.keys(resolved.materials).some((url) => url.includes('/m15/new/')),
-      'New source leaked into component fallback',
-    );
+    const measured = printingCalibrationMaterials(donor);
     existingComponents += resolved.fallbackAssets.length;
     for (const url of resolved.fallbackAssets)
-      assert.deepEqual(resolved.materials[url], before.calibratedFrameMaterials(donor)[url]);
+      assert.deepEqual(
+        resolved.materials[url],
+        measured.materials[url],
+        'Inherited material differs from the same exact M21 source',
+      );
   }
   assert(existingComponents > 0, 'No pre-existing component fallback was exercised');
   const source = printingCalibrationMaterials({
@@ -73,7 +77,7 @@ try {
   });
   assert.deepEqual(source.materials, {});
   console.log(
-    'M21 component donor:11 frame/color variants exactly retain previous materials, black point and fallback sources.',
+    'M21 donor:11 source-local legacy material lookups remain unchanged; current inherited materials match the same exact M21 sources.',
   );
 } finally {
   await Promise.all([current.close(), legacy.close()]);

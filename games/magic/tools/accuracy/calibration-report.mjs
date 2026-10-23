@@ -1,3 +1,4 @@
+import { modernDefaultAncestry, modernDefaultSetAffected } from './modern-default-ancestry.mjs';
 import { m21StyleProfileSource } from './m21-style-ancestry.mjs';
 import { artistReviewSource } from './artist-review-ancestry.mjs';
 import {
@@ -41,6 +42,18 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        const modernDefaultsAffected = await modernDefaultSetAffected(set.set, group);
+        if (
+          modernDefaultsAffected &&
+          !original &&
+          task !== 'references' &&
+          item.proof?.modernDefaultsSource !== (await modernDefaultAncestry()).rendererHash
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Shared modern defaults changed this frame. Keep its reference/wording data; review rendered components against the current donor revision.';
+          continue;
+        }
         const earlyAffected = await earlyCalibrationAffected(set.set, group, task, original);
         if (earlyAffected && item.proof?.earlyBatchReceipt !== EARLY_SOURCE_RECEIPT) {
           item.status = original ? 'stale' : 'needs-audit';
@@ -55,13 +68,14 @@ export async function calibrationReport(ledger) {
             set.set +
             ':' +
             (earlyAffected ? 'early-current:' : 'early-compatible:') +
+            (modernDefaultsAffected ? 'modern-defaults-current:' : 'modern-defaults-compatible:') +
             (changedScope ? 'changed:' : 'other:') +
             (set.set === 'm21' ? 'm21-body-compatible:' : 'body-current:') +
             file;
           if (!checked.has(guardKey)) {
             try {
               const bytes = await readFile(root + '/' + file);
-              const modern = await m21StyleProfileSource(file, bytes, set.set);
+              const modern = await m21StyleProfileSource(file, bytes, set.set, group);
               const artist = await artistReviewSource(file, modern.bytes, set.set);
               const changedArtist = artist.changed;
               const early =

@@ -18,6 +18,8 @@ export interface PrintingCalibrationReport {
     interiorInk: PrintingCalibrationComponent;
     manaSymbols: PrintingCalibrationComponent;
   };
+  /** Shared modern style; inherited values do not certify this printing. */
+  defaults?: { status: 'inherited'; profile: 'm21-modern'; revision: number };
   notices: readonly string[];
 }
 export const printingCalibrationApiVersion = 1 as const;
@@ -25,10 +27,10 @@ export const printingCalibrationApiVersion = 1 as const;
 export const printingCalibrationProfiles = Object.freeze([
   Object.freeze({
     id: 'm21-modern',
-    revision: 1,
+    revision: 2,
     label: 'Modern · M21 defaults',
     setCode: 'M21',
-    note: 'Provisional transfer: shared source colors and outer border; other materials retain source colors.',
+    note: 'Source-bound M21 frame, color, mana, heading, body and footer defaults. Printing content stays local; inherited values are not target-set measurements.',
   }),
 ]);
 export function validatePrintingCalibration(

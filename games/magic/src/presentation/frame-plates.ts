@@ -182,6 +182,7 @@ export function framePlateUrls(face: RenderedCardInput): string[] | null {
       face.calibration !== undefined &&
       face.calibration !== 'source' &&
       face.calibration !== 'printing') ||
+    (face.colorCalibration === 'set-hsb-v1' && Boolean(modernOrdinaryPlates(face))) ||
     planarCalibratedStock(face, plate.frame) ||
     hasPrintingStockCandidate(face)
       ? [plate.border]

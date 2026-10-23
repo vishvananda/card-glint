@@ -95,7 +95,7 @@ try {
 
   assert.equal(modernCostNumeralAsset(explicit, '2'), modernCostNumeralAsset(base, '2'));
   for (const extra of [
-    { setCode: 'war' },
+    { setCode: 'war', calibration: 'printing' },
     { setCode: '8ed' },
     { frameStyle: 'retro' },
     { frameAssetFamily: 'eighth' },
@@ -115,7 +115,7 @@ try {
     { faces: [{ name: 'Other' }] },
   ])
     assert.equal(modernOrdinaryPlates({ ...base, ...extra }), undefined, JSON.stringify(extra));
-  assert.equal(framePlate({ ...base, setCode: 'war' }), null);
+  assert.equal(framePlate({ ...base, setCode: 'war', calibration: 'printing' }), null);
   assert(framePlate({ ...base, typeLine: 'Artifact', colors: [] }).frame.endsWith('/a.png'));
   assert.deepEqual(base, snapshot);
   assert.equal(Object.keys(modernOrdinaryPlates(base)).length, 1);

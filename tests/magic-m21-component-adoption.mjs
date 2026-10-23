@@ -79,7 +79,11 @@ try {
   assert.equal(modernWalkerFrameRepaint(walker, 'Colourless'), 0.7);
   for (const face of [walker, tall, { ...walker, collectorNumber: '324' }])
     assert.deepEqual(modernWalkerProfile(face)?.loyalty, profile.planeswalkers.loyalty);
-  for (const face of [base, { ...walker, setCode: 'war' }, { ...walker, frameStyle: 'retro' }])
+  for (const face of [
+    base,
+    { ...walker, setCode: 'war', calibration: 'printing' },
+    { ...walker, frameStyle: 'retro' },
+  ])
     assert.equal(modernWalkerProfile(face)?.loyalty, undefined);
   // Source mode affects pigments; intrinsic printing typography remains selected.
   assert.deepEqual(
@@ -89,7 +93,7 @@ try {
 
   for (const face of [
     base,
-    { ...walker, setCode: 'war' },
+    { ...walker, setCode: 'war', calibration: 'printing' },
     { ...walker, calibration: 'source' },
     { ...walker, colorCalibration: undefined },
     { ...walker, frameStyle: 'retro' },
@@ -99,7 +103,10 @@ try {
   assert.equal(specialPaperColor(walker), '#dfdfe2f0');
   assert.equal(specialPaperColor({ ...walker, collectorNumber: '324' }), '#d3e4ecf0');
   assert.equal(specialPaperColor({ ...walker, calibration: 'source' }), '#d3e4ecf0');
-  assert.equal(specialPaperColor({ ...walker, setCode: 'war' }), '#d3e4ecf0');
+  assert.equal(
+    specialPaperColor({ ...walker, setCode: 'war', calibration: 'printing' }),
+    '#d3e4ecf0',
+  );
   for (const extra of [
     { typeLine: 'Legendary Creature', legendary: true },
     { colors: ['U', 'R'] },
@@ -118,7 +125,11 @@ try {
   }
   for (const face of [base, { ...base, typeLine: 'Land', land: true, colors: [] }])
     assert(Object.keys(calibratedFrameMaterials(face)).every((url) => url.includes('/m15/new/')));
-  for (const extra of [{ setCode: 'war' }, { frameStyle: 'retro' }, { frameTemplate: 'future' }])
+  for (const extra of [
+    { setCode: 'war', calibration: 'printing' },
+    { frameStyle: 'retro' },
+    { frameTemplate: 'future' },
+  ])
     assert.notDeepEqual(printingManaDefaults({ ...base, ...extra }), profile.mana.normal);
 } finally {
   await server.close();

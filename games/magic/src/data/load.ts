@@ -1,3 +1,7 @@
+import {
+  modernSetUsesDefaults,
+  supportsModernStyleDefaults,
+} from '../presentation/modern-style-scope.js';
 import { setLoaders, wordingLoaders } from './loaders.js';
 import { hasSetData, registerSet, loadedSets, type SetData } from './registry.js';
 import type { RenderedCardInput } from '../presentation/face-layout.js';
@@ -7,10 +11,17 @@ const normalize = (code: string) => {
   if (!/^[a-z0-9]{2,8}$/.test(value)) throw RangeError('Invalid Magic set code');
   return value;
 };
-/** Load only this set's calibration. Concurrent calls
- * share one import; failures reject and are not retained as successful loads. */
+/** Load the set and its shared modern style dependency. Existing set-only
+ * callers can keep making synchronous queries after this resolves. Concurrent
+ * calls share imports; failed dependencies remain retryable. */
 export async function loadMagicSet(setCode: string): Promise<void> {
-  await loadSet(setCode, 'calibration', setLoaders);
+  const code = normalize(setCode);
+  await Promise.all([
+    loadSet(code, 'calibration', setLoaders),
+    ...(code !== 'm21' && modernSetUsesDefaults(code)
+      ? [loadSet('m21', 'calibration', setLoaders)]
+      : []),
+  ]);
 }
 export async function loadPrintingSet(setCode: string): Promise<void> {
   await loadSet(setCode, 'wording', wordingLoaders);
@@ -35,16 +46,21 @@ async function loadSet(
   await promise;
 }
 export const loadedMagicSets = loadedSets;
-/** Call before synchronous asset/layout/cache-key queries. Donor calibration is
- * loaded only for cards explicitly asking for automatic or named defaults. */
+/** Call before synchronous asset/layout/cache-key queries. The M21 style donor loads only for compatible
+ * modern faces or explicit automatic/named material defaults; wording stays separate. */
 export async function prepareMagicCards(faces: readonly RenderedCardInput[]): Promise<void> {
   const codes = new Set<string>();
   const visit = (face: RenderedCardInput, inheritedSet?: string | null) => {
     const set = face.setCode ?? inheritedSet;
     if (set) codes.add(normalize(set));
-    if (face.calibration === 'auto' || typeof face.calibration === 'object') codes.add('m21');
+    if (
+      (face.calibration !== 'printing' && supportsModernStyleDefaults({ ...face, setCode: set })) ||
+      face.calibration === 'auto' ||
+      typeof face.calibration === 'object'
+    )
+      codes.add('m21');
     for (const child of face.faces ?? []) visit(child, set);
   };
   for (const face of faces) visit(face);
-  await Promise.all([...codes].map(loadMagicSet));
+  await Promise.all([...codes].map((code) => loadSet(code, 'calibration', setLoaders)));
 }

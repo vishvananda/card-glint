@@ -12,9 +12,12 @@ export function modernOrdinaryBaselineStudy() {
       const marker = 'export function modernOrdinaryPlates(';
       assert.equal(source.split(marker).length, 2);
       const start = source.indexOf(marker);
-      assert.equal(
-        hash(source.slice(start)),
-        '966d7d689600a9b8314c58c235b4ae06c79e76674cf64ebeb1e17235b1a3b6d4',
+      assert(
+        [
+          '966d7d689600a9b8314c58c235b4ae06c79e76674cf64ebeb1e17235b1a3b6d4',
+          // M21 default transfer adds source-compatible independence guards.
+          '940aa356c3b15fc4d9c6a11e9f449ff87ed39853e84d1e98d264c5e44e1ab5d8',
+        ].includes(hash(source.slice(start))),
         'Review changed ordinary plate selector before rebuilding the baseline',
       );
       // The material-identity helper remains exported. With selection disabled,

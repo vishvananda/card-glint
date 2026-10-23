@@ -1,3 +1,4 @@
+import { modernDefaultAncestry } from '../games/magic/tools/accuracy/modern-default-ancestry.mjs';
 import { m21StyleAncestry } from '../games/magic/tools/accuracy/m21-style-ancestry.mjs';
 import { oracleFlavorAncestryProof } from '../games/magic/tools/accuracy/oracle-flavor-ancestry.mjs';
 import { additionalProfileDataModules } from '../games/magic/tools/accuracy/profile-data-modules.mjs';
@@ -84,6 +85,9 @@ async function packMetadata(directory, beforeSymbols = false) {
 async function identity() {
   const executable = await stat(chromium.executablePath());
   return {
+    modernDefaultRevision: hash(
+      await readFile('games/magic/fixtures/accuracy/m21/modern-default-source-compatibility.json'),
+    ),
     m21StyleRevision: hash(
       await readFile('games/magic/fixtures/accuracy/m21/style-source-compatibility.json'),
     ),
@@ -297,6 +301,7 @@ async function verify() {
   const profileAdapter = await profileAdapterAncestry();
   const profileBody = await profileBodyAncestry();
   const modernStyles = await m21StyleAncestry();
+  const modernDefaults = await modernDefaultAncestry();
   const oracleFlavor = await oracleFlavorAncestryProof();
   const profileData = await additionalProfileDataModules(
     new Set([...consolidation.newModules, ...alphaEditor.newModules]),
@@ -306,6 +311,7 @@ async function verify() {
       ![
         ...profileData,
         ...Object.keys(modernStyles.newModules),
+        ...Object.keys(modernDefaults.newModules),
         oracleFlavor.addition.file,
         ...Object.keys(profileBody.newModules),
         ...Object.keys(profileAdapter.newModules),
@@ -362,6 +368,7 @@ async function verify() {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
             Object.hasOwn(modernStyles.files, relative) ||
+            Object.hasOwn(modernDefaults.files, relative) ||
             Object.hasOwn(profileBody.files, relative) ||
             Object.hasOwn(profileAdapter.files, relative) ||
             Object.hasOwn(walkers.files, relative) ||

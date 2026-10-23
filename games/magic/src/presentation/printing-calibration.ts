@@ -1,3 +1,4 @@
+import { modernPrintingProfile } from './modern-printing-profile.js';
 import { colorCalibrationCoverage } from './color-calibration-coverage.js';
 import { eighthBasicProfile } from './eighth-basic-profile.js';
 import { isRevisedLand, REVISED_LAND_ASSET } from './revised-land-frame.js';
@@ -101,7 +102,24 @@ export function resolvePrintingCalibration(input: RenderedCardInput): PrintingCa
         assets: entries.filter(([, m]) => m.outerStock).map(([url]) => url),
       }
     : { status: 'source', assets: [] };
+  const inheritedStyle = modernPrintingProfile(face);
+  const defaults = inheritedStyle?.inheritedFrom
+    ? {
+        status: 'inherited' as const,
+        profile: 'm21-modern' as const,
+        revision: inheritedStyle.revision,
+      }
+    : undefined;
+  if (defaults && manaSymbols.status === 'measured' && correctedSymbols.length) {
+    manaSymbols.status = 'fallback';
+    manaSymbols.profile = 'm21-modern';
+    manaSymbols.revision = inheritedStyle!.revision;
+  }
   const notices: string[] = [];
+  if (defaults)
+    notices.push(
+      'Using shared M21 layout and typography defaults; this printing has not been independently calibrated.',
+    );
   if (result.fallbackStock || result.fallbackAssets.length)
     notices.push(
       'Using provisional M21 defaults for compatible materials; this is not a measured calibration of this printing.',
@@ -114,6 +132,7 @@ export function resolvePrintingCalibration(input: RenderedCardInput): PrintingCa
   return {
     mode: face.calibration ?? 'legacy',
     components: { frame, textBox, border, interiorInk, manaSymbols },
+    ...(defaults ? { defaults } : {}),
     notices,
   };
 }

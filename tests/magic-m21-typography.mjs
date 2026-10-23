@@ -159,7 +159,7 @@ try {
         'Oracle must independently fit its own text',
       );
       for (const setCode of ['lea', '8ed', 'war']) {
-        const other = ordinaryTextLayout(c, { ...face, setCode });
+        const other = ordinaryTextLayout(c, { ...face, setCode, calibration: 'printing' });
         check(!other.fractionalMetrics, 'Unrelated rules must retain their font policy ' + setCode);
         check(
           rulesLayoutRequest(other).typography.maximumLines === undefined,
@@ -192,6 +192,7 @@ try {
       paintModernStatsText(c, '2/3', 420, 625, 80, {
         ...face,
         setCode: 'war',
+        calibration: 'printing',
         typeLine: 'Creature',
       });
       check(

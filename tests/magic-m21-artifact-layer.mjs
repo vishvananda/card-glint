@@ -79,7 +79,7 @@ try {
   assert(!printingColorSource(ordinaryWhite).key.includes('/paper-'));
 
   for (const extra of [
-    { setCode: 'war' },
+    { setCode: 'war', calibration: 'printing' },
     { legendary: true },
     { typeLine: 'Legendary Artifact' },
     { colors: [] },

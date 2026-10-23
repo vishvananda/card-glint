@@ -1,3 +1,4 @@
+import { preModernDefaultSource, modernDefaultProfileSource } from './modern-default-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -44,10 +45,14 @@ export async function m21StyleAncestry() {
       evidence.source.tool,
     );
     for (const [file, digest] of Object.entries(p.newModules))
-      assert.equal(hash(await readFile(file)), digest, 'Unreviewed M21 style module: ' + file);
+      assert.equal(
+        hash(await preModernDefaultSource(file, await readFile(file))),
+        digest,
+        'Unreviewed M21 style module: ' + file,
+      );
     for (const [file, change] of Object.entries(p.files))
       assert.equal(
-        hash(await readFile(file)),
+        hash(await preModernDefaultSource(file, await readFile(file))),
         change.after,
         'Unreviewed M21 style source: ' + file,
       );
@@ -58,6 +63,23 @@ export async function m21StyleAncestry() {
  * guards; arbitrary changes still reject. This helper cannot approve M21 scores. */
 export async function preM21StyleSource(file, bytes) {
   const p = await m21StyleAncestry();
+  const historical = p.files[file],
+    historicalDigest = hash(bytes);
+  if (
+    historical &&
+    (historicalDigest === historical.before ||
+      historical.historicalHashes?.includes(historicalDigest))
+  )
+    return bytes;
+  try {
+    bytes = await preModernDefaultSource(file, bytes);
+  } catch (error) {
+    throw new Error(
+      (p.newModules[file] ? 'Unreviewed M21 style module: ' : 'Unreviewed M21 style source: ') +
+        file,
+      { cause: error },
+    );
+  }
   if (p.newModules[file]) {
     assert.equal(hash(bytes), p.newModules[file], 'Unreviewed M21 style module: ' + file);
     return bytes;
@@ -76,7 +98,15 @@ export async function preM21StyleSource(file, bytes) {
 
 /** An affected set keeps its actual new source fingerprints. Unrelated sets
  * may use the independently tested historical dependency path. */
-export async function m21StyleProfileSource(file, bytes, set) {
+export async function m21StyleProfileSource(file, bytes, set, group) {
+  const proof = await m21StyleAncestry(),
+    entry = proof.files[file],
+    digest = hash(bytes);
+  if (entry && (digest === entry.before || entry.historicalHashes?.includes(digest)))
+    return { bytes, changedProfile: set?.toLowerCase() === 'm21' };
+  const defaults = await modernDefaultProfileSource(file, bytes, set, group);
+  if (defaults.changedProfile) return defaults;
+  bytes = defaults.bytes;
   const p = await m21StyleAncestry(),
     restored = await preM21StyleSource(file, bytes);
   if (set?.toLowerCase() === 'm21' && (p.files[file] || p.newModules[file]))
