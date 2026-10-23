@@ -17,6 +17,8 @@ export interface RulesLine {
 export interface RulesLayout {
   /** Shared printing scale, including inline glyphs; coordinates are before this transform. */
   horizontalScale?: number;
+  /** Measurement and painting must use the same unhinted glyph advances. */
+  fractionalMetrics?: boolean;
   size: number;
   x: number;
   top: number;

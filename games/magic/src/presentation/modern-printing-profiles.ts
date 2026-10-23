@@ -39,6 +39,16 @@ export interface ModernLoyaltyAdjustment extends ModernHeadingAdjustment {
   readonly fractionalMetrics?: boolean;
 }
 
+export interface ModernWalkerStaticTextAdjustment {
+  readonly dx: number;
+  readonly dy: number;
+  readonly width: number;
+  readonly size: number;
+  readonly leading: number;
+  readonly textWidth: number;
+  readonly fractionalMetrics?: boolean;
+}
+
 export interface ModernWalkerColonAdjustment extends ModernHeadingAdjustment {
   readonly fractionalMetrics?: boolean;
 }
@@ -78,6 +88,8 @@ export interface ModernPrintingProfile {
     readonly colon?: ModernWalkerColonAdjustment;
     /** Scale the graphic about its center, then follow the reviewed cost translation. */
     readonly badges?: ModernWalkerBadgeAdjustment;
+    /** Static paragraphs fit independently inside the existing ability gaps. */
+    readonly staticText?: ModernWalkerStaticTextAdjustment;
     readonly paperColors: Readonly<Record<string, string>>;
     readonly rules: {
       readonly regular: ModernWalkerTextAdjustment;
@@ -119,7 +131,7 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 10,
+    revision: 11,
     headingFont: 'beleren-2016',
     typeText: {
       plate: { dx: -1.25, dy: 0.5, size: 1.025, width: 0.985 },

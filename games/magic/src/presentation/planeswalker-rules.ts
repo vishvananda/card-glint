@@ -2,7 +2,13 @@ import { modernWalkerBodyProfile } from './modern-printing-profile.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.js';
 import { faceFrame, faceRects, specialRules } from './special-frames.js';
-import { layoutRules, RULES_TYPOGRAPHY } from './rules-layout.js';
+import {
+  layoutRules,
+  rulesLayoutRequest,
+  RULES_TYPOGRAPHY,
+  type RulesLayout,
+} from './rules-layout.js';
+import type { ModernWalkerStaticTextAdjustment } from './modern-printing-profiles.js';
 import { planeswalkerInkLimits } from './planeswalker-lower-frame.js';
 export { planeswalkerInkLimits } from './planeswalker-lower-frame.js';
 export { PLANESWALKER_COST_GEOMETRY } from './planeswalker-loyalty.js';
@@ -44,7 +50,8 @@ export function planeswalkerRuleRows(context: CanvasContext, face: RenderedCardI
   const large = faceFrame(face) === 'planeswalker-large';
   const abilities = specialRules(face),
     sparse = !large && abilities.length < 3;
-  const adjustment = modernWalkerBodyProfile(face)?.rules[large ? 'tall' : 'regular'];
+  const body = modernWalkerBodyProfile(face);
+  const adjustment = body?.rules[large ? 'tall' : 'regular'];
   const rect = faceRects(face).rules;
   const x = rect[0] * FACE_WIDTH,
     y = rect[1] * FACE_HEIGHT + (adjustment?.dy ?? 0),
@@ -122,13 +129,14 @@ export function planeswalkerRuleRows(context: CanvasContext, face: RenderedCardI
   }
   const share = height / Math.max(1, rows.length);
   const textTops = paperTops();
-  let top = topInset;
+  let top = topInset,
+    previousTextBottom = inkTop - 8;
   return rows.map((row, index) => {
     const h = share;
     // Keep evenly spaced ability anchors, including a short static row. Text may
     // extend slightly across a nominal row edge, with explicit ink-gap checks.
     const textHeight = measured[index]!.height;
-    const layout = layoutRules(
+    let layout = layoutRules(
       context,
       [{ role: 'rules', runs: row.runs }],
       {
@@ -149,8 +157,74 @@ export function planeswalkerRuleRows(context: CanvasContext, face: RenderedCardI
         line.inkBounds[1] < inkTop - 0.01 ||
         line.inkBounds[1] + line.inkBounds[3] > inkBottom + 0.01,
     );
-    const result = { ...row, top, height: h, font, width: layout.width, layout };
+    const staticFit = !row.badges.length ? body?.staticText : undefined;
+    if (staticFit)
+      layout = fitStaticAbility(
+        context,
+        layout,
+        [
+          Math.max(inkTop, previousTextBottom + 8),
+          Math.min(inkBottom, (textTops[index + 1] ?? inkBottom + 8) - 8),
+        ],
+        staticFit,
+      );
+    previousTextBottom = layout.top + layout.height;
+    const result = {
+      ...row,
+      ...(staticFit ? { left: row.left + staticFit.dx } : {}),
+      top,
+      height: h,
+      font: layout.size,
+      width: layout.width,
+      layout,
+    };
     top += h;
     return result;
   });
+}
+
+/** Preserve the measured loyalty rows. Only unbadged text may use the spare
+ * paper between its existing center and adjacent ability ink. */
+function fitStaticAbility(
+  context: CanvasContext,
+  source: RulesLayout,
+  limits: readonly [number, number],
+  adjustment: ModernWalkerStaticTextAdjustment,
+): RulesLayout {
+  const request = rulesLayoutRequest(source);
+  if (!request) throw Error('Missing static-ability layout request');
+  const center = request.bounds.y + request.bounds.height / 2;
+  const half = Math.min(center - limits[0], limits[1] - center);
+  context.save();
+  try {
+    if (adjustment.fractionalMetrics) {
+      context.textRendering = 'geometricPrecision';
+      context.fontKerning = 'normal';
+    }
+    const size = source.size + adjustment.size;
+    const fitted = layoutRules(
+      context,
+      request.paragraphs,
+      {
+        ...request.bounds,
+        x: request.bounds.x + adjustment.dx,
+        y: (half > 0 ? center - half : limits[0]) + adjustment.dy,
+        width: request.bounds.width + adjustment.width,
+        height: half > 0 ? half * 2 : Math.max(0, limits[1] - limits[0]),
+        verticalLimits: limits,
+      },
+      size,
+      Math.min(size, 8),
+      {
+        ...request.typography,
+        leading: adjustment.leading,
+        textWidth: adjustment.textWidth,
+      },
+    );
+    fitted.overflow ||= source.overflow;
+    if (adjustment.fractionalMetrics) fitted.fractionalMetrics = true;
+    return fitted;
+  } finally {
+    context.restore();
+  }
 }

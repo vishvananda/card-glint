@@ -2,7 +2,7 @@
   "schema": 1,
   "set": "m21",
   "status": "open-component-outliers",
-  "renderer": "a6380d898971d80fa7527d5e8fe8dbd5fdf3e19d015ebbc22ba37b615c20b842",
+  "renderer": "7190c3b4eca96950157e93db45c09fb24b2d2fa8bc7cd44793477238e8bb9bc3",
   "items": [
     {
       "id": "planeswalker-art-spill",
@@ -13,7 +13,11 @@
           "name": "Ugin, the Spirit Dragon",
           "number": "1"
         },
-        { "id": "98c85699-2daf-4e87-a3be-465d02bd64bb", "name": "Basri Ket", "number": "7" },
+        {
+          "id": "98c85699-2daf-4e87-a3be-465d02bd64bb",
+          "name": "Basri Ket",
+          "number": "7"
+        },
         {
           "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
           "name": "Garruk, Unleashed",
@@ -37,8 +41,32 @@
       "component": "rules/badges",
       "status": "shared-fit-adopted-with-residuals",
       "scope": "All42 Original ability fields across14 printings",
-      "review": "Actual combined production improves40 of42 badge fields and40 of42 colon fields. Regressions: Ugin#1 first badge, Teferi#276 first badge, Teferi#275 second colon and Teferi#277 second colon. No printing-specific adjustment was added. Badge shadow, static wrapping and final normalization remain under review.",
+      "review": "Actual combined production improves40 of42 badge fields and40 of42 colon fields. Regressions: Ugin#1 first badge, Teferi#276 first badge, Teferi#275 second colon and Teferi#277 second colon. No printing-specific adjustment was added. Static wrapping has a separate adopted receipt. Badge shadow and final normalization remain under review.",
       "evidence": "games/magic/fixtures/accuracy/m21/walker-badge-colon-native-review.json"
+    },
+    {
+      "id": "planeswalker-static-wrapping",
+      "component": "rules/static",
+      "status": "shared-fit-adopted",
+      "scope": "Four nonfoil Teferi printings; one distinct wording, no independent content holdout",
+      "review": "Precise metrics recover all three printed lines at the existing font size. All four native crops, including the dependent following divider, reproduce fitted pixels exactly. No general rules-text precision change.",
+      "evidence": "games/magic/fixtures/accuracy/m21/walker-static-native-review.json"
+    },
+    {
+      "id": "teferi-patterned-paper",
+      "component": "rules/background",
+      "status": "needs-source-asset-review",
+      "scope": "Teferi printings75,275,276,277",
+      "review": "Aligned scans retain a visible illustration/pattern behind the static paragraph. The current flat paper fill does not reproduce it. Keep this distinct from text overlap and do not fit glyph placement or flat paper pigment to the pattern.",
+      "evidence": "games/magic/fixtures/accuracy/m21/walker-static-native-review.json"
+    },
+    {
+      "id": "ordinary-rules-size-and-wrapping",
+      "component": "rules/flavor",
+      "status": "needs-shared-size-fit",
+      "scope": "Next audit: Finishing Blow #99, Witch\u2019s Cauldron #129, Dire Fleet Warmonger #217, Meteorite #233",
+      "review": "Native zoom review shows oversized body text and changed line breaks in these low-scoring ordinary cards. Prior shared leading/paragraph-gap fit retained baseline font sizes. Calibrate a shared size/width policy against the complete ordinary corpus before modern-default transfer; do not hide these with per-card offsets. Straight quotation marks also differ from the printed curly forms.",
+      "evidence": "games/magic/fixtures/accuracy/m21/body-production-review.json"
     }
   ]
 }

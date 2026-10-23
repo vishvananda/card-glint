@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "adopted-regional-native-fit-not-set-certification",
+  "source": {
+    "renderer": "7190c3b4eca96950157e93db45c09fb24b2d2fa8bc7cd44793477238e8bb9bc3",
+    "beforeRenderer": "a6380d898971d80fa7527d5e8fe8dbd5fdf3e19d015ebbc22ba37b615c20b842",
+    "input": "01597eb2b6ab913fd0ea5d0a3a3464c0942afad862e63fc6fbc38ae6b4d5cafa",
+    "fullNative": "2ddb4519af35cc623480a595e35b18a7d8733d74f564eedf635f26e7cfba3909",
+    "fullScores": "25b3aa0b3a36d49df557cd9ce13d880829d8a59bfe6a1cdac4e1552f778d48dd",
+    "normalization": "7c90a70f6d969238efd6b6897cfbefd83f7f792e546fb75962d09054d571eaa5",
+    "proposal": "3b8f14a51c45591bc15eab3365db6e862d50045498492531f17e9a59c99da42d",
+    "nativeParity": "96efd60c2b61cd18720c165bafe8abc3ca340f2b46048eb5860aec97c1b973ab",
+    "scoreReuse": "a2851e0e3fe5426064f2ebbfffb962d18210fcdddfc41ca7c9524af14ac2b4d1",
+    "studyTool": "01b2e37612974be0d597755cb0feb623fea36bb29a6e97e53a2eca22e8155c8d"
+  },
+  "method": {
+    "raster": [732, 1020],
+    "reference": [488, 680],
+    "framePoses": "Frozen v25 affine frame normalization, unchanged; no text-derived poses or per-card renderer offsets.",
+    "targets": { "printings": 4, "distinctNames": 1, "nonfoil": 4, "independentHoldout": false },
+    "objective": "80% high-contrast glyph overlap plus20% complete grayscale field overlap. Both use55% symmetric edge agreement and45% filled-ink overlap. High-contrast preprocessing uses radius7 local mean,30/255 contrast floor and2x retained contrast on both images. Masks fixed before search.",
+    "dependencies": "Repaint the following divider at max(static ink bottom+3,min(nominal divider,next ability ink top-3)); include its full horizontal support in the native change audit.",
+    "validation": "Four Teferi illustrations share one wording, not four independent text-layout examples. Same font size17.25; all scan line breaks recovered. No general rules-text precision change."
+  },
+  "selected": {
+    "precision": true,
+    "dx": -1,
+    "dy": 1,
+    "width": -2,
+    "size": 0,
+    "leading": 0.97,
+    "textWidth": 1.02
+  },
+  "summary": {
+    "printings": 297,
+    "changedFaces": 4,
+    "unchangedFaces": 293,
+    "unchangedEtchings": 297,
+    "nativeFieldsExact": 4,
+    "nativeFieldsWithinFloatTolerance": 4,
+    "before100": 54.80067519075333,
+    "after100": 66.67267429239023,
+    "outsideChanges": 0,
+    "glyphBefore100": 63.890904829256826,
+    "glyphAfter100": 79.40022134051102,
+    "weightedBefore100": 62.072858901556124,
+    "weightedAfter100": 76.85471193088685
+  },
+  "fullCardReplay": {
+    "printings": 297,
+    "layers": 594,
+    "changedFaces": 4,
+    "unaffectedFacesIdentical": 293,
+    "etchingsIdentical": 297,
+    "reusedPixelIdenticalScores": 293,
+    "recalculatedScores": 4,
+    "before100": 78.93537062530218,
+    "after100": 78.96661522799893,
+    "improved": 4,
+    "regressed": 0,
+    "unchanged": 293,
+    "coverage": 0.9277395068699426
+  },
+  "review": [
+    "All four actual native crops reproduce the fitted samples exactly, including the moved divider. Pixels outside the declared static-text/divider support are unchanged.",
+    "Measurement and painting use the same precise metrics. Loyalty rows retain their existing layouts; smaller text remains the overflow fallback.",
+    "Badge shadows, basic-symbol rims, remaining text/footer, scan-pose certification and modern-default transfer remain separate. This receipt does not certify M21."
+  ],
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/walker-static-native-review.json.gz",
+    "sha256": "9a5c185dc9cd59d03155bcdadbd32a0ac9cba8938eb73d9f8fbcbb0f6ad96e3d",
+    "contentSha256": "61c20902a5a28209f04e14190d7a47b2afd85b630dea073394b38291e9395902"
+  }
+}

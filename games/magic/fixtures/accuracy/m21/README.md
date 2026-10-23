@@ -1,6 +1,6 @@
 # M21 calibration evidence
 
-The unreleased calibration branch is at profile revision 10. The
+The unreleased calibration branch is at profile revision 11. The
 [foreground material review](walker-foreground-native-review.json) improves all
 35 clean nonfoil planeswalker regions; mean OKLab distance falls from 4.87 to
 0.53 (times 100, smaller is better). The shared
@@ -12,10 +12,17 @@ combined badge overlap from 61.95 to 86.48/100 and colon overlap from 36.01 to
 68.24/100. Each improves on 40 of 42 ability fields; all four residual field
 regressions stay listed. The 297-card diagnostic rises from 78.902 to
 78.935/100 with the same inputs, scan poses and metric. All 283 other faces and
-all 297 etchings remain byte-identical. These reviews do not certify the complete set.
+all 297 etchings remain byte-identical. The [static-ability review](walker-static-native-review.json) recovers Teferi's
+three printed line breaks at the same 17.25 reference-pixel font size. Its joint
+glyph/field objective rises from 62.07 to 76.85/100. All four native crops match
+the proposal exactly, including the following divider's dependent movement.
+The 297-card diagnostic rises from 78.935 to 78.967/100; the other 293 faces and
+all 297 etchings are byte-identical. Scores for the 293 identical faces are
+reused only after matching inputs, references, poses, raster hashes, complete
+metric dependencies and preprocessing. These reviews do not certify the complete set.
 
 [Component outliers](component-outliers.json) retain missing illustration spill
-on Ugin, Basri and Garruk. Badge shadows, static wrapping, remaining text/footer
+on Ugin, Basri and Garruk. Badge shadows, remaining text/footer
 and basic-symbol rim audits, scan-pose certification and modern-default transfer
 remain open. These branch measurements do not replace the published scores.
 
@@ -76,12 +83,15 @@ joins the existing bounded bitmap cache. The exact set and immutable source URL
 must match. Uncalibrated sets, older frame families, special templates and custom
 rules retain their existing behavior. Source-color mode skips the glyph recolor.
 
-The generic renderer checks and focused component tests pass. Strict historical
-Magic source guards remain enabled. Release remains gated on
-the scoped historical source/pixel compatibility proof for the new painter
-paths. The broader Magic test also reproduces a separator fixture overflow on
-the released 0.6.10 baseline with local substitute fonts; it is tracked separately
-from these fits. Existing historical receipts are not rewritten or bypassed.
+The shared painter changes have an exact historical source reconstruction and
+a separate 250-case, 1,500-pair native compatibility audit. The current M21 worker
+test covers 20 frame roles, Original and Oracle wording, all three tiers, faces
+and etching masks. Asset requests, geometry and text measurement/draw calls must
+match exactly. It reports exact pixel pairs separately from bounded browser
+versus OffscreenCanvas raster differences; all etching masks must match exactly.
+Synthetic assets and installed fonts establish portability, not scan fidelity.
+The full-set release remains gated on the remaining regional audits, frozen
+normalization review and compatible modern-default transfer.
 
 ## Stable rules-spacing fit
 
