@@ -11,6 +11,7 @@ import { fitModernColorParts } from './modern-color-parts.mjs';
 const [inputFile, nativeDirectory, scoreDirectory, output, ...options] = process.argv.slice(2);
 let maxClipping;
 let headerPanels = false;
+let frozenReferenceRasters = false;
 for (let i = 0; i < options.length; i++) {
   if (options[i] === '--max-clipping') {
     assert.equal(maxClipping, undefined, 'Duplicate clipping option');
@@ -22,11 +23,14 @@ for (let i = 0; i < options.length; i++) {
   } else if (options[i] === '--include-header-panels') {
     assert(!headerPanels, 'Duplicate header-panel option');
     headerPanels = true;
+  } else if (options[i] === '--frozen-reference-rasters') {
+    assert(!frozenReferenceRasters);
+    frozenReferenceRasters = true;
   } else throw Error('Unknown color-fit option: ' + options[i]);
 }
 assert(
   output,
-  'Usage: eighth-frame-color-fit.mjs INPUTS NATIVE SCORES OUTPUT [--max-clipping FRACTION] [--include-header-panels]',
+  'Usage: eighth-frame-color-fit.mjs INPUTS NATIVE SCORES OUTPUT [--max-clipping FRACTION] [--include-header-panels] [--frozen-reference-rasters]',
 );
 const read = async (file) => {
   const raw = await readFile(file);
@@ -36,8 +40,10 @@ const inputs = await read(inputFile),
   native = await read(path.join(nativeDirectory, 'capture.json')),
   scores = await read(path.join(scoreDirectory, 'scores.json'));
 assert.equal(inputs.sha256, native.data.source.inputsHash);
-assert.equal(inputs.sha256, scores.data.definition.inputsHash);
-assert.equal(native.sha256, scores.data.definition.nativeCaptureHash);
+if (!frozenReferenceRasters) {
+  assert.equal(inputs.sha256, scores.data.definition.inputsHash);
+  assert.equal(native.sha256, scores.data.definition.nativeCaptureHash);
+}
 assert.equal(native.data.completed, 357);
 assert.deepEqual(native.data.faults, []);
 const server = await createServer({
@@ -48,8 +54,8 @@ const server = await createServer({
 });
 const windows = {
   frame: [
-    [33, 105, 6, 255],
-    [448, 105, 6, 255],
+    [27, 110, 4, 230],
+    [458, 110, 4, 230],
   ],
   paper: [[53, 437, 378, 150]],
   ...(headerPanels
@@ -103,13 +109,19 @@ try {
     assert.deepEqual([scan.width, scan.height], [488, 680]);
     let g = groups.get(plate.frame);
     if (!g) groups.set(plate.frame, (g = { source: plate.frame, rows: [] }));
-    const parts = {};
+    const parts = {},
+      samplingIssues = {};
     for (const [part, patches] of Object.entries(windows)) {
       const options = { tileSize: part === 'frame' ? 7 : 20, paper: part !== 'frame' };
-      parts[part] = {
-        source: sampleColor(render, patches, options),
-        reference: sampleColor(scan, patches, options),
-      };
+      try {
+        parts[part] = {
+          source: sampleColor(render, patches, options),
+          reference: sampleColor(scan, patches, options),
+        };
+      } catch (error) {
+        if (error.message !== 'Too few usable color tiles') throw error;
+        samplingIssues[part] = error.message;
+      }
     }
     g.rows.push({
       id: e.id,
@@ -119,6 +131,7 @@ try {
       nativeHash: n.layers.face.sha256,
       normalizedHash: s.normalizedReference.sha256,
       parts,
+      samplingIssues,
     });
   }
   const results = [];
@@ -167,6 +180,7 @@ try {
     windows,
     maxClipping,
     headerPanels,
+    frozenReferenceRasters,
     clippingPolicy:
       'Pooled tile budget split equally between saturation and value; native pixels require independent validation.',
     model,

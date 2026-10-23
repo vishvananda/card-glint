@@ -5,6 +5,9 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { root, hash, sourceHash, writeJson } from './common.mjs';
 import { openBrowser } from './browser.mjs';
+import { eighthInnerGeometryStudy } from './eighth-inner-geometry-study.mjs';
+import { eighthOuterRuleStudy } from './eighth-outer-rule-study.mjs';
+import { eighthManaPaperStudy } from './eighth-mana-paper-study.mjs';
 import { eighthFooterStudy } from './eighth-footer-native-study.mjs';
 import { eighthHeadingStudy } from './eighth-heading-study.mjs';
 import { modernMaterialStudy } from './modern-material-study.mjs';
@@ -88,6 +91,11 @@ const session = await openBrowser(inputs, {
   plugins: study
     ? [
         eighthHeadingStudy(study.headings, painterHash),
+        ...(study.innerGeometrySourceHash
+          ? [eighthInnerGeometryStudy(study.innerGeometrySourceHash)]
+          : []),
+        ...(study.outerRule ? [eighthOuterRuleStudy(study.outerRule, study.outerSourceHash)] : []),
+        ...(study.manaTargets ? [eighthManaPaperStudy(study.manaTargets, study.manaSources)] : []),
         ...(study.footer ? [eighthFooterStudy(study.footer, study.footerHash)] : []),
         ...(study.materials ? [modernMaterialStudy()] : []),
         ...(study.rules ? [modernRulesStudyPlugin(), eighthRulesStudyPlugin()] : []),
@@ -107,6 +115,9 @@ try {
     studyToolHash: hash(await readFile(new URL('./eighth-heading-study.mjs', import.meta.url))),
     studyDependencies: await Promise.all(
       [
+        'eighth-inner-geometry-study.mjs',
+        'eighth-outer-rule-study.mjs',
+        'eighth-mana-paper-study.mjs',
         'eighth-footer-native-study.mjs',
         'modern-material-study.mjs',
         'modern-rules-study-plugin.mjs',

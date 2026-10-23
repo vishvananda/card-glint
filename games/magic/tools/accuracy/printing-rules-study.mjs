@@ -29,6 +29,7 @@ assert.deepEqual(native.data.faults, []);
 assert(inputs.data.entries.every((e) => e.face.wordingMode === 'original'));
 const p = parameters.data;
 assert.equal(p.schema, 1);
+assert(p.cohort === undefined || p.cohort === 'nonbasic-land');
 assert.deepEqual(p.candidates[0], { id: 'current', adjustment: {} });
 assert.equal(new Set(p.candidates.map((c) => c.id)).size, p.candidates.length);
 const families = new Set(['CardRenderer MTG MPlantin', ...(p.fonts ?? []).map((f) => f.family)]);
@@ -145,12 +146,20 @@ const definition = {
 };
 assert.equal(definition.rendererHash, native.data.source.rendererHash);
 assert.deepEqual(
-  native.data.source.rasterHelpers,
+  native.data.source.rasterHelpers ??
+    definition.rasterHelpers.map(([file]) => [
+      file,
+      native.data.source.helpers?.find(([path]) => path === 'packages/browser/src/' + file)?.[1],
+    ]),
   definition.rasterHelpers,
   'Refresh the native baseline: generic raster helpers changed',
 );
 assert.deepEqual(
-  native.data.source.packMetadata,
+  native.data.source.packMetadata ??
+    definition.packMetadata.map(([file]) => [
+      file,
+      native.data.source.helpers?.find(([path]) => path === 'games/magic/' + file)?.[1],
+    ]),
   definition.packMetadata,
   'Refresh the native baseline: font styles and asset aliases must be explicitly bound',
 );
@@ -165,7 +174,7 @@ try {
 await mkdir(output, { recursive: true });
 const snapshot = { ...inputs.data, components: [...inputs.data.components, ...(p.fonts ?? [])] };
 const session = await openBrowser(snapshot, {
-  plugins: [modernRulesStudyPlugin(), eighthRulesStudyPlugin()],
+  plugins: [eighthRulesStudyPlugin(), modernRulesStudyPlugin()],
 });
 const save = () =>
   writeJson(path.join(output, 'study.json'), {
@@ -202,7 +211,11 @@ try {
       (face) => globalThis.__modernRulesApi.supportsRulesStudy(face),
       e.face,
     );
-    if (!supported) row.status = 'separate-basic-or-special-frame';
+    const outsideCohort =
+      p.cohort === 'nonbasic-land' &&
+      !/\bLand\b/.test(e.face.canonicalTypeLine ?? e.face.typeLine ?? '');
+    if (outsideCohort) row.status = 'outside-requested-cohort';
+    else if (!supported) row.status = 'separate-basic-or-special-frame';
     else {
       const png = await readFile(path.join(scoreDirectory, reference.normalizedReference.file));
       assert.equal(hash(png), reference.normalizedReference.sha256);
