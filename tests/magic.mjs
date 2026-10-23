@@ -1312,10 +1312,13 @@ try {
       if (setCode === 'm15') c.fillRect(2.5, 76, 315, 168);
       else c.fillRect(0, 93.3, 320, 133.4);
       const face = {
+        // Preserve the exact-printing symbol baseline; donor-default geometry
+        // is covered by its independent native adoption and worker matrices.
         ...fixtures[1],
         typeLine: 'Artifact',
         rulesText: '',
         setCode,
+        calibration: 'printing',
         rarity: 'common',
         setSymbolSource: 'keyrune',
         ...(customSymbol ? { setSymbol: 'test:padded-symbol' } : {}),

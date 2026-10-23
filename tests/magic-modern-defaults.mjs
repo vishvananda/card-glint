@@ -148,6 +148,14 @@ try {
         report.components.manaSymbols.status === 'fallback',
       'Inherited styles reported as measured',
     );
+    const exactOnly = printingCalibrationMaterials({ ...original, calibration: 'printing' });
+    check(
+      Object.keys(exactOnly.materials).length === 0 &&
+        !exactOnly.border &&
+        exactOnly.fallbackAssets.length === 0 &&
+        !exactOnly.fallbackStock,
+      'Exact-printing policy resolved inherited pigment/masks',
+    );
     const raw = printingCalibrationMaterials({ ...original, calibration: 'source' });
     check(Object.keys(raw.materials).length === 0 && !raw.border, 'Source colors changed');
     const independentFace = { ...original, setCode: 'qx1', colors: ['R'] };

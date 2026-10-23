@@ -1,4 +1,9 @@
 {
+  "revision": 2,
+  "parent": {
+    "file": "games/magic/fixtures/accuracy/m21/modern-default-source-compatibility-r1.json",
+    "sha256": "79ee947109f0fa19a0063219db4fbf96cdcfa5953a14206a2d1ed748b3420afe"
+  },
   "schema": 1,
   "base": "be2ac4eb8158175567585de0a9ea30bf783fa8a2",
   "scope": "Shared M21 source-bound defaults for compatible modern frames. Older families and exact-only policy remain on their previous path. Independent source-bound fits win. Printing-content exceptions do not transfer. This records adoption and source identity, not calibration of donor sets.",
@@ -89,6 +94,27 @@
       "after": "aa095144f74403637e663806200aa455ea080520b6f0c745d5808b7380e0742b",
       "reverseEdits": [{ "start": 184, "count": 1, "lines": [] }]
     },
+    "games/magic/src/presentation/mana-numeral.ts": {
+      "before": "423697a951751f113e6e10dcb5b8a6b6a6b4b1fd276e81ea80365d3453df16ca",
+      "after": "967d62db5fde6d5c8a2b3e95e49ca407861ab066e6767e4314fe27f9294a75a7",
+      "reverseEdits": [
+        { "start": 86, "count": 1, "lines": ["        image: leases[i]!.value,\n"] },
+        {
+          "start": 74,
+          "count": 10,
+          "lines": [
+            "    leases = await glyphs.acquireMany(\n",
+            "      sources.map(({ source, identity, cost, paperSample }) => ({\n",
+            "        key: `numeral-v2:${identity}:${cost ? JSON.stringify(cost) : 'source'}${paperSample ? ':' + paperSample : ''}`,\n",
+            "        bytes: source.width * source.height * 8,\n",
+            "        build: () => splitNumeral(source, cost, paperSample),\n",
+            "      })),\n",
+            "      signal,\n",
+            "    );\n"
+          ]
+        }
+      ]
+    },
     "games/magic/src/presentation/modern-footer.ts": {
       "before": "8fd57e6a2ddde97a81f44a4a5b87f1c02076c5b04c50fa38c9c7a068ee128919",
       "after": "9572a2afbf18fba8e5514bd19b182b8c5fbeebfe512f318e309eb1e61a301418",
@@ -173,11 +199,16 @@
     },
     "games/magic/src/presentation/printing-calibration-materials.ts": {
       "before": "0dba97b756918e1f6775b64466431bd6e2b6e4530daa02729036e3c5d91b5bfa",
-      "after": "3fba429cfee9182f63c3cbf3fec514fabe3c162c0adde46da3872edb9349e1cb",
+      "after": "21dbab5dffff8efcfed98a9b18d8f818563509635c396edf79f6561ec76a1a9b",
       "reverseEdits": [
-        { "start": 55, "count": 1, "lines": ["  let fallbackStock = false;\n"] },
-        { "start": 47, "count": 7, "lines": [] },
-        { "start": 45, "count": 1, "lines": [] },
+        { "start": 57, "count": 1, "lines": ["  let fallbackStock = false;\n"] },
+        { "start": 49, "count": 7, "lines": [] },
+        { "start": 47, "count": 1, "lines": [] },
+        {
+          "start": 28,
+          "count": 3,
+          "lines": ["  const original = { ...face, calibration: undefined };\n"]
+        },
         {
           "start": 0,
           "count": 5,
@@ -608,13 +639,13 @@
     "wwk",
     "zen"
   ],
-  "rendererHash": "93eadabc2cd1897b9dd8f0d3f39177941cf3044f3a9e48222226c4d1e0ae60ef",
+  "rendererHash": "e0873a1bacd9cfc38d8d3144a5832281b361d407160351a8194a557d2b4d1c15",
   "evidence": {
-    "file": "games/magic/fixtures/accuracy/m21/modern-default-native-review.json",
-    "sha256": "c43cb75579aec7a4bec63e7791a6441cf9df45e9f9ccb76d91aeddc33d2f4533"
+    "file": "games/magic/fixtures/accuracy/m21/modern-default-native-review-r2.json",
+    "sha256": "84d7d45c67adc2ae24b015d73e5e83240edc05cc8c129793e5a4e5e9bb5ea6a0"
   },
   "m21Evidence": {
-    "file": "games/magic/fixtures/accuracy/m21/modern-default-m21-native-review.json",
-    "sha256": "0c77e2e2f383f00ef380e40a870e927d4970b10605d925a04b3a96558c93f6ad"
+    "file": "games/magic/fixtures/accuracy/m21/modern-default-m21-native-review-r2.json",
+    "sha256": "01835d890577ec2817a5eb0651e9eb1580a59bcf7ae6a494d51e4a2ca11a4e27"
   }
 }

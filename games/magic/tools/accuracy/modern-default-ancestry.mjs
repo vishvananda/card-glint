@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { hash } from './common.mjs';
-const RECEIPT = '79ee947109f0fa19a0063219db4fbf96cdcfa5953a14206a2d1ed748b3420afe';
+const RECEIPT = 'd844e6ac1b315fb24b7a8924f2865bb7d386f3a1029ba93c19acbdb9570ed929';
 let checked;
 export function modernDefaultAncestry() {
   return (checked ??= (async () => {
@@ -12,6 +12,12 @@ export function modernDefaultAncestry() {
     );
     assert.equal(hash(bytes), RECEIPT, 'Changed modern default review');
     const p = JSON.parse(bytes);
+    if (p.parent)
+      assert.equal(
+        hash(await readFile(p.parent.file)),
+        p.parent.sha256,
+        'Changed prior modern default review',
+      );
     for (const [file, e] of Object.entries(p.files))
       assert.equal(
         hash(await readFile(file)),

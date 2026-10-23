@@ -141,6 +141,7 @@ try {
     );
     for (const [family, style, weight] of [
       ['Beleren', 'normal', '400 700'],
+      ['Beleren 2016', 'normal', '700'],
       ['Beleren Small Caps', 'normal', '700'],
       ['Matrix', 'normal', '700'],
       ['Matrix Small Caps', 'normal', '700'],
@@ -148,6 +149,7 @@ try {
       ['MPlantin', 'normal', '400'],
       ['MPlantin', 'italic', '400'],
       ['Relay', 'normal', '400'],
+      ['Gotham', 'normal', '400'],
       ['Artist Credit', 'normal', '400'],
       ['Goudy', 'normal', '400'],
       ['Historic Symbols', 'normal', '400'],
@@ -230,8 +232,11 @@ try {
     const face = {
       name: '',
       typeLine: '',
+      // This synthetic palette tests the original component/plate contract.
+      // Shared M21 defaults are exercised with native proposals and real workers.
       setCode: 'fin',
       rarity: 'rare',
+      calibration: 'printing',
       frameStyle: 'modern',
       illustration: 'https://test.invalid/art.svg',
       colors: ['W'],

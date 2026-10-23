@@ -26,7 +26,9 @@ const stockRgb = [22 / 255, 19 / 255, 14 / 255] as const;
 export function printingCalibrationMaterials(input: RenderedCardInput) {
   const face = calibrationFace(input),
     choice = face.calibration;
-  const original = { ...face, calibration: undefined };
+  // Exact-printing policy also excludes inherited layouts/material masks.
+  // Clearing it would resolve donor pigment against a different asset inventory.
+  const original = { ...face, calibration: choice === 'printing' ? choice : undefined };
   const explicitProfile = typeof choice === 'object';
   if (explicitProfile && !supportsModernCalibration(face))
     throw Error('M21 calibration requires a modern frame.');

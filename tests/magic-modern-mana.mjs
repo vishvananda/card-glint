@@ -25,8 +25,15 @@ try {
       '/games/magic/src/presentation/printing-mana-adjustment.ts'
     );
     const { paintMana } = await import('/games/magic/src/presentation/canvas-text.ts');
-    // Generic component defaults; exact M21 overrides have their own adoption test.
-    const face = { name: 'Probe', setCode: 'war', manaSymbols: ['3'], rulesText: 'Pay {3}.' };
+    // Preserve the historical component source control under exact-printing policy.
+    // Inherited M21 defaults have separate positive adoption and worker tests.
+    const face = {
+      name: 'Probe',
+      setCode: 'war',
+      calibration: 'printing',
+      manaSymbols: ['3'],
+      rulesText: 'Pay {3}.',
+    };
     const make = async (triangle) => {
       const c = document.createElement('canvas');
       c.width = c.height = 96;

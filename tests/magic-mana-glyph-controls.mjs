@@ -33,7 +33,12 @@ try {
       images = new Map([...'WUBRG'].map((s) => [manaSymbolAsset(s), bitmap]));
     const adjustment = { mana: { glyphs: { U: { scale: 0.82, dx: 2, dy: -1 } } } };
     validateSymbolAdjustment({ name: 'Test', symbolAdjustment: adjustment });
-    const face = { name: 'Test', manaSymbols: [...'WUBRG'], symbolAdjustment: adjustment };
+    const face = {
+      name: 'Test',
+      calibration: 'printing',
+      manaSymbols: [...'WUBRG'],
+      symbolAdjustment: adjustment,
+    };
     const signal = new AbortController().signal;
     const original = CanvasRenderingContext2D.prototype.getImageData;
     let reads = 0;
@@ -90,10 +95,45 @@ try {
         rejected.push(true);
       }
     }
+    // The M21 shared fit touches several colors, even when the host aliases
+    // their placeholder rasters. It must make one split and lease it once.
+    reads = 0;
+    CanvasRenderingContext2D.prototype.getImageData = function (...args) {
+      reads++;
+      return original.apply(this, args);
+    };
+    const aliased = await prepareManaNumerals(
+      { ...face, setCode: 'qzz', calibration: undefined, symbolAdjustment: undefined },
+      images,
+      signal,
+    );
+    const aliasCold = reads;
+    const aliasWarm = await prepareManaNumerals(
+      { ...face, setCode: 'qzz', calibration: undefined, symbolAdjustment: undefined },
+      images,
+      signal,
+    );
+    const aliasWarmReads = reads - aliasCold;
+    CanvasRenderingContext2D.prototype.getImageData = original;
+    const aliasGlyphs = [...aliased.images.manaGlyphs.values()];
+    if (aliasGlyphs.length < 2 || !aliasGlyphs.every((x) => x.image === aliasGlyphs[0].image))
+      throw Error('Aliased source must share its prepared bitmap');
+    aliased.dispose();
+    aliasWarm.dispose();
     prepared.dispose();
     warm.dispose();
     bitmap.close();
-    return { changed, other, edge, inlineChanges, cold, warmReads, rejected };
+    return {
+      changed,
+      other,
+      edge,
+      inlineChanges,
+      cold,
+      warmReads,
+      aliasCold,
+      aliasWarmReads,
+      rejected,
+    };
   });
   assert.ok(result.changed > 100, JSON.stringify(result));
   assert.equal(result.other, 0);
@@ -101,6 +141,8 @@ try {
   assert.equal(result.inlineChanges, 0);
   assert.equal(result.cold, 1);
   assert.equal(result.warmReads, 0);
+  assert.ok(result.aliasCold <= 1);
+  assert.equal(result.aliasWarmReads, 0);
   assert.ok(result.rejected.every(Boolean));
   console.log(
     'Per-color glyph controls preserve other colors, circle edges and inline symbols; warm preparation performs no pixel readback.',

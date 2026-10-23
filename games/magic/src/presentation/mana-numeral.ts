@@ -72,17 +72,19 @@ export async function prepareManaNumerals(
   });
   let leases: MaterialBitmapLease[] = [];
   try {
-    leases = await glyphs.acquireMany(
-      sources.map(({ source, identity, cost, paperSample }) => ({
-        key: `numeral-v2:${identity}:${cost ? JSON.stringify(cost) : 'source'}${paperSample ? ':' + paperSample : ''}`,
-        bytes: source.width * source.height * 8,
-        build: () => splitNumeral(source, cost, paperSample),
-      })),
-      signal,
-    );
+    const jobs = sources.map(({ source, identity, cost, paperSample }) => ({
+      key: `numeral-v2:${identity}:${cost ? JSON.stringify(cost) : 'source'}${paperSample ? ':' + paperSample : ''}`,
+      bytes: source.width * source.height * 8,
+      build: () => splitNumeral(source, cost, paperSample),
+    }));
+    // Hosts may alias several symbol URLs to one bitmap. The batch leases one
+    // split per distinct source/tone, then all aliases share that held value.
+    const unique = new Map(jobs.map((job) => [job.key, job]));
+    const indices = new Map([...unique.keys()].map((key, i) => [key, i]));
+    leases = await glyphs.acquireMany([...unique.values()], signal);
     sources.forEach(({ symbol, source }, i) => {
       (/^\d+$/.test(symbol) ? numerals : colored).set(symbol, {
-        image: leases[i]!.value,
+        image: leases[indices.get(jobs[i]!.key)!]!.value,
         width: source.width,
         height: source.height,
       });
