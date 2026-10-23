@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   M21_PUBLICATION,
   m21PublicationEvidence,
@@ -12,7 +13,23 @@ import {
 } from '../games/magic/tools/accuracy/calibration-ledger.mjs';
 import { calibrationReport } from '../games/magic/tools/accuracy/calibration-report.mjs';
 const data = await m21PublicationEvidence();
-assert.equal(data.current, true);
+const guardsMatch = (
+  await Promise.all(
+    Object.entries(data.guards).map(async ([file, digest]) => {
+      try {
+        return hash(await readFile(file)) === digest;
+      } catch {
+        return false;
+      }
+    }),
+  )
+).every(Boolean);
+assert.equal(
+  data.current,
+  guardsMatch && (await sourceHash('games/magic/src')) === data.receipt.rendererHash,
+);
+// Exercise the immutable published proof without claiming this worktree is its runtime.
+const historicalData = { ...data, current: true };
 const { receipt } = data;
 assert.equal(receipt.published.sourceCommit, 'd500e44246a7f27b047b02095ad5e3253450b57c');
 for (const mutate of [
@@ -54,12 +71,15 @@ assert.equal(
 for (const group of set.groups) {
   const g = structuredClone(group),
     before = structuredClone(g.tasks);
-  applyM21Publication(g, data);
+  applyM21Publication(g, historicalData);
   assert.equal(calibrationTaskStatus(g, 'release').status, 'validated');
   assert.equal(g.tasks.release.proof.coveredPrintings, g.printings);
   assert.deepEqual({ ...g.tasks, release: undefined }, { ...before, release: undefined });
   applyM21Publication(g, { ...data, current: false });
   assert.equal(calibrationTaskStatus(g, 'release').status, 'stale');
+  const live = structuredClone(group);
+  applyM21Publication(live, data);
+  assert.equal(calibrationTaskStatus(live, 'release').status, data.current ? 'validated' : 'stale');
   const bad = structuredClone(group);
   bad.printingIds = bad.printingIds.slice(1);
   assert.throws(() => applyM21Publication(bad, data));
@@ -70,7 +90,8 @@ assert.equal(
   'Publication must not complete unfinished calibration',
 );
 const [report] = await calibrationReport({ sets: [set] });
-assert.equal(report.byTask.release.validated, 85);
+assert.equal(report.byTask.release.validated ?? 0, data.current ? 85 : 0);
+assert.equal(report.byTask.release.stale ?? 0, data.current ? 0 : 85);
 assert.equal(report.byTask.normalization.validated, 85);
 assert.equal(report.complete, false);
 const changed = structuredClone(set);

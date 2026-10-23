@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { readCensus } from '../games/magic/tools/accuracy/modern-publication-review.mjs';
 import { checkFooterContent } from '../games/magic/tools/accuracy/modern-footer-content-census.mjs';
 const p = JSON.parse(
@@ -12,7 +12,6 @@ assert.equal(new Set(p.rows.map((r) => r.id)).size, 297);
 assert.equal(p.rows.filter((r) => r.nonfoil).length, 292);
 assert.equal(p.rows.filter((r) => !r.nonfoil).length, 5);
 assert.equal(p.summary.fields.length, 7);
-assert.equal(p.definition.rendererHash, await sourceHash('games/magic/src'));
 assert.equal(
   p.definition.toolHash,
   hash(await readFile('games/magic/tools/accuracy/modern-footer-content-census.mjs')),
@@ -21,6 +20,9 @@ const originalBytes = await readFile(p.definition.reviewFile);
 assert.equal(hash(originalBytes), p.definition.reviewHash);
 const review = new Map(JSON.parse(originalBytes).rows.map((r) => [r.id, r]));
 const census = await readCensus('games/magic/fixtures/accuracy/m21/current-component-census.json');
+// Bind the stored content review to its exact native release census. A newer
+// worktree must not silently renew this historical review's runtime identity.
+assert.equal(p.definition.rendererHash, census.detail.definition.rendererHash);
 const native = new Map(census.detail.rows.map((r) => [r.id, r]));
 for (const row of p.rows) {
   const r = review.get(row.id),

@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
 import { manaInterior, checkManaReuse } from '../games/magic/tools/accuracy/modern-mana-reuse.mjs';
 import {
   m21ManaEvidence,
@@ -28,7 +29,25 @@ assert.throws(() => manaInterior(image, { ...token, radiusX: 1 }));
 assert.throws(() => manaInterior({ ...image, width: 732 }, token));
 
 const data = await m21ManaEvidence();
-assert.equal(data.current, true);
+// A released receipt is immutable. Later, unrelated set work must make an
+// unmatched runtime stale rather than requiring the fixture to remain current.
+const guardsMatch = (
+  await Promise.all(
+    Object.entries(data.guards).map(async ([file, digest]) => {
+      try {
+        return hash(await readFile(file)) === digest;
+      } catch {
+        return false;
+      }
+    }),
+  )
+).every(Boolean);
+assert.equal(
+  data.current,
+  guardsMatch && (await sourceHash('games/magic/src')) === data.receipt.definition.rendererHash,
+);
+// Exercise the recorded valid proof's structure separately from live freshness.
+const historicalData = { ...data, current: true };
 for (const file of [
   'games/magic/assets.json',
   'games/magic/fonts.css',
@@ -72,7 +91,7 @@ let groups = 0,
 for (const group of set.groups) {
   const g = structuredClone(group),
     before = structuredClone(g.tasks);
-  applyM21Mana(g, data);
+  applyM21Mana(g, historicalData);
   if (!group.applicable.manaGeometry) {
     assert.deepEqual(g.tasks, before);
     continue;
@@ -96,6 +115,12 @@ for (const group of set.groups) {
     assert.equal(p.sourceCensus.heldOut, false);
     assert.equal(p.sourceCensus.members.length, group.printings);
   }
+  const live = structuredClone(group);
+  applyM21Mana(live, data);
+  assert.equal(
+    calibrationTaskStatus(live, 'manaGeometry').status,
+    data.current ? 'validated' : 'stale',
+  );
   const bad = structuredClone(group);
   bad.printingIds = bad.printingIds.slice(1);
   assert.throws(() => applyM21Mana(bad, data));
@@ -105,8 +130,9 @@ for (const group of set.groups) {
 assert.equal(groups, 62);
 assert.equal(foilGroups, 5);
 const [report] = await calibrationReport({ sets: [set] });
-assert.equal(report.byTask.manaGeometry.validated, 62);
-assert.equal(report.byTask.manaColor.validated, 62);
+assert.equal(report.byTask.manaGeometry.validated ?? 0, data.current ? 62 : 0);
+assert.equal(report.byTask.manaGeometry.stale ?? 0, data.current ? 0 : 62);
+assert.equal(report.byTask.manaColor.validated ?? 0, data.current ? 62 : 0);
 assert.equal(
   calibrationSetStatus(set).complete,
   false,
@@ -118,7 +144,7 @@ for (const g of changed.groups)
     g.tasks.manaGeometry.runtimeGuards['games/magic/src'] = '0'.repeat(64);
 const [stale] = await calibrationReport({ sets: [changed] });
 assert.equal(stale.byTask.manaGeometry.stale, 62);
-assert.equal(stale.byTask.manaColor.validated, 62);
+assert.equal(stale.byTask.manaColor.validated ?? 0, data.current ? 62 : 0);
 const fontChanged = structuredClone(set);
 for (const g of fontChanged.groups)
   if (g.applicable.manaColor) g.tasks.manaColor.guards['games/magic/fonts.css'] = '0'.repeat(64);
@@ -126,5 +152,5 @@ const [fontStale] = await calibrationReport({ sets: [fontChanged] });
 assert.equal(fontStale.byTask.manaColor.stale, 62);
 
 console.log(
-  'M21 released mana:567 exact native interiors/264 printings, shared fitted controls, pinned assets and unchanged shadow painter;62 geometry/color variants close. Five foil families transfer from nine nonfoil donors. Unknown changes, altered pixels/scope and unsupported holdout claims reject.',
+  'M21 released mana:567 exact native interiors/264 printings, shared fitted controls, pinned assets and unchanged shadow painter;62 geometry/color proof variants; live runtime freshness checked separately. Five foil families transfer from nine nonfoil donors. Unknown changes, altered pixels/scope and unsupported holdout claims reject.',
 );

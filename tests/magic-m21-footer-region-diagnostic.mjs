@@ -1,18 +1,19 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { readCensus } from '../games/magic/tools/accuracy/modern-publication-review.mjs';
 const file = 'games/magic/fixtures/accuracy/m21/current-footer-region-diagnostic.json';
 const { summary: p, detail: d } = await readCensus(file);
 assert.equal(d.status, 'current-fixed-cell-footer-diagnostics-not-calibration-approval');
 assert.equal(d.rows.length, 297);
 assert.equal(new Set(d.rows.map((r) => r.id)).size, 297);
-assert.equal(d.definition.rendererHash, await sourceHash('games/magic/src'));
 for (const [name, digest] of Object.entries(d.definition.sources))
   assert.equal(hash(await readFile('games/magic/tools/accuracy/' + name)), digest);
 const { detail: census } = await readCensus(
   'games/magic/fixtures/accuracy/m21/current-component-census.json',
 );
+// These are immutable release diagnostics, not approval of the current worktree.
+assert.equal(d.definition.rendererHash, census.definition.rendererHash);
 const byId = new Map(census.rows.map((r) => [r.id, r]));
 const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
 for (const row of d.rows) {
