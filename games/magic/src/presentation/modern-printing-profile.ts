@@ -134,5 +134,33 @@ export function modernOrdinaryPlates(face: RenderedCardInput) {
     (!artifact && colors.length !== 1)
   )
     return undefined;
-  return { [source]: plates[source]! };
+  const base = plates[source]!;
+  const paper = artifact
+    ? modernPrintingProfile(face)?.artifactPapers?.[colors[0] ?? '']
+    : undefined;
+  if (!paper) return { [source]: base };
+  if (!('mask' in base) || base.regions?.length !== 2)
+    throw Error('Colored artifact paper requires the source-local three-panel masks.');
+  return {
+    [source]: {
+      ...base,
+      paper: paper.paper,
+      regions: [
+        { ...base.regions[0]!, adjustment: paper.name },
+        { ...base.regions[1]!, adjustment: paper.type },
+      ],
+    },
+  };
+}
+
+/** Material identity distinguishes palettes that share the same artifact bitmap. */
+export function modernArtifactPaperPalette(face: RenderedCardInput): string | undefined {
+  const colors = face.frameColors ?? face.colors ?? [];
+  const palette = colors.length === 1 ? colors[0] : undefined;
+  const source = manifest.CONJURER_ROOT + '/img/frames/m15/new/a.png';
+  return palette &&
+    modernPrintingProfile(face)?.artifactPapers?.[palette] &&
+    modernOrdinaryPlates(face)?.[source]
+    ? palette
+    : undefined;
 }

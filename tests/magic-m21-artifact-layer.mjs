@@ -41,6 +41,43 @@ try {
     modernPrintingProfileKey(base),
     modernPrintingProfileKey({ ...base, colors: ['B'] }),
   );
+  const { printingColorSource } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/printing-color-source.ts',
+  );
+  const neutralFace = { ...base, colors: [] };
+  const neutral = Object.values(modernOrdinaryPlates(neutralFace))[0];
+  for (const color of ['W', 'B']) {
+    const face = { ...base, colors: [color] };
+    const plate = Object.values(modernOrdinaryPlates(face))[0];
+    // A colored artifact keeps its metal texture, aperture masks and edge ink;
+    // its three paper panels follow the printed palette independently.
+    const { paper, regions, ...surround } = plate;
+    const { paper: oldPaper, regions: oldRegions, ...oldSurround } = neutral;
+    assert.deepEqual(surround, oldSurround);
+    assert.deepEqual(
+      regions.map((r) => r.mask),
+      oldRegions.map((r) => r.mask),
+    );
+    assert.notDeepEqual(paper, oldPaper);
+    assert(
+      regions.every(
+        (r, i) => JSON.stringify(r.adjustment) !== JSON.stringify(oldRegions[i].adjustment),
+      ),
+    );
+    assert.notEqual(printingColorSource(face).key, printingColorSource(neutralFace).key);
+    assert.notEqual(printingColorSource(face).source, printingColorSource(neutralFace).source);
+    assert.notEqual(
+      printingColorSource(face).source,
+      printingColorSource({ ...face, colors: [color === 'W' ? 'B' : 'W'] }).source,
+    );
+  }
+  // M21 has no directly measured ordinary U/R/G artifact printings. They keep
+  // neutral paper until their own palette evidence exists.
+  for (const color of ['U', 'R', 'G'])
+    assert.deepEqual(Object.values(modernOrdinaryPlates({ ...base, colors: [color] }))[0], neutral);
+  const ordinaryWhite = { ...base, typeLine: 'Creature', colors: ['W'] };
+  assert(!printingColorSource(ordinaryWhite).key.includes('/paper-'));
+
   for (const extra of [
     { setCode: 'war' },
     { legendary: true },

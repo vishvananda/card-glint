@@ -8,15 +8,15 @@
     "wording-flavor.ts",
     "wording.ts"
   ],
-  "revision": 8,
+  "revision": 9,
   "parent": {
-    "file": "games/magic/fixtures/accuracy/m21/style-source-compatibility-r7.json",
-    "sha256": "4de5d4daa8e876cb289ca72b3a6642567a9fef8ef339e6bea0599a98ce5dd132"
+    "file": "games/magic/fixtures/accuracy/m21/style-source-compatibility-r8.json",
+    "sha256": "522f8f38ab7f142016fd55a96a4e71fe7a0af22697574ac3b1576a6b045708ab"
   },
-  "scope": "R8 exact M21-only source reconstruction. All1500 unrelated native pixel/text/geometry pairs match published0.6.11 after precise static-ability fitting with dependent divider clearance. This protects historical score identity; it does not certify M21 scan normalization, remaining regions or set completion.",
+  "scope": "R9 exact M21-only source reconstruction after source-local colored-artifact paper calibration. All1500 unrelated native pixel/text/geometry pairs match published0.6.11 in the same font environment. This protects historical source identity, not M21 completion or cross-environment raster equality.",
   "evidence": {
-    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-walker-static-review.json",
-    "sha256": "1bc44ec9b68130373593f75760868149a122543cc15cc99104e542755a65daad"
+    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-artifact-paper-review.json",
+    "sha256": "38d2fa5a13b4cb5828f86bd54345a20ff546a79f245eb9932ba9d0bc7ff8eaa7"
   },
   "files": {
     "games/magic/fonts.css": {
@@ -490,17 +490,25 @@
     },
     "games/magic/src/presentation/printing-color-source.ts": {
       "before": "3dce29973a45a4e1ea210d7750231bcd0bf8a4a3582914e18918f87cafeebfa2",
-      "after": "16f7a3c97f52384ba7aca6674062f0d3bdbc62e008e98629d4d4429f281a1119",
+      "after": "7e54d4aee7b794bacb2e22f184003319199cb862339667846735c69e9f3f9c90",
       "reverseEdits": [
-        { "start": 47, "count": 7, "lines": [] },
+        { "start": 53, "count": 7, "lines": [] },
         {
-          "start": 39,
+          "start": 46,
+          "count": 5,
+          "lines": ["      source: JSON.stringify([plate.frame, plate.rects]),\n"]
+        },
+        {
+          "start": 41,
           "count": 1,
           "lines": [
             "      key: `${set}/${border}/${face.frameAssetFamily}/${plate.frame.split('/').at(-1)}`,\n"
           ]
-        }
-      ]
+        },
+        { "start": 39, "count": 1, "lines": [] },
+        { "start": 9, "count": 1, "lines": [] }
+      ],
+      "historicalHashes": ["16f7a3c97f52384ba7aca6674062f0d3bdbc62e008e98629d4d4429f281a1119"]
     },
     "games/magic/src/presentation/printing-footer.ts": {
       "before": "3a7af04d3e7f59d3b48ce26e2101989378535c6018ecbcaa3a2c58ac730b1f05",
@@ -707,8 +715,9 @@
     "games/magic/src/presentation/modern-footer-font.ts": "d0f26efefbc9673bc5991e2961bbe1ebc6e89c7d422214fad4c88840c8627de6",
     "games/magic/src/presentation/modern-heading-font.ts": "68cbf2cc9ae9a634a6c04923dcbe7a0523c494b8e79b4a2c07226f42237da7de",
     "games/magic/src/presentation/modern-land-layers.ts": "fb8f95ee58f65514e94adfd6432cf137a4d2f4ce5ca200d5749e14db1d96281e",
-    "games/magic/src/presentation/modern-printing-profile.ts": "b3411cd0c82f2a7cb694ccd21eee461be0c0899a0329be0e4b505d311c6282ad",
-    "games/magic/src/presentation/modern-printing-profiles.ts": "fae3030da35b6d55709c78e01765950d832622823006b537152ade15a7fb258b",
-    "games/magic/src/presentation/m21-walker-materials.ts": "bd44d33b3853765dbfe7022369a2c5ac12ad67f0aac188c839760a86b8f7d03e"
+    "games/magic/src/presentation/modern-printing-profile.ts": "0a6e5c6e32b7cbf82b96808b732d497f015aee03e04844cb4bd89171b0df6443",
+    "games/magic/src/presentation/modern-printing-profiles.ts": "291212af5224b3665b1e0dbb3ad4958d2e99403e930905a6a56d68df7c9e3c91",
+    "games/magic/src/presentation/m21-walker-materials.ts": "bd44d33b3853765dbfe7022369a2c5ac12ad67f0aac188c839760a86b8f7d03e",
+    "games/magic/src/presentation/m21-artifact-paper.ts": "5472a86b8a5ef4e378a84a961f65757086ee74a865a41e16157857c6db4690a8"
   }
 }

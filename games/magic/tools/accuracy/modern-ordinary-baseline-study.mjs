@@ -14,13 +14,18 @@ export function modernOrdinaryBaselineStudy() {
       const start = source.indexOf(marker);
       assert.equal(
         hash(source.slice(start)),
-        'dd1ec695b339b1661daa2c554a6028462191eb18e486bd7b7426b1166efa8269',
+        '966d7d689600a9b8314c58c235b4ae06c79e76674cf64ebeb1e17235b1a3b6d4',
         'Review changed ordinary plate selector before rebuilding the baseline',
       );
+      // The material-identity helper remains exported. With selection disabled,
+      // it also reports no palette override, matching the component baseline.
+      const end = source.indexOf('\n/** Material identity', start);
+      assert(end > start, 'Missing reviewed artifact-paper identity helper');
       return {
         code:
           source.slice(0, start) +
-          'export function modernOrdinaryPlates(_face: RenderedCardInput) { return undefined; }\n',
+          'export function modernOrdinaryPlates(_face: RenderedCardInput) { return undefined; }\n' +
+          source.slice(end),
         map: null,
       };
     },

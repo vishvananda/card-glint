@@ -463,3 +463,33 @@ reuse of unrelated scores, not approval of changed M21 scores.
 M21 remains incomplete: foreground walker colors, remaining rules/heading
 outliers, basic-symbol rim/shadow, loyalty/footer checks and final normalization
 certification remain open. None of these diagnostics marks the set complete.
+
+## Profile revision 12: colored-artifact paper palettes
+
+[The native paper audit](artifact-paper-native-review.json) checks all three
+ordinary colored artifacts against their frozen nonfoil references. Their metal
+frames already had colored pinlines, but their name, type and rules panels were
+still using neutral artifact paper. Shared W/B panel tones now preserve the
+artifact texture and source-local masks. All nine measured fields improve:
+mean OKLab distance ×100 falls from 6.099 to 0.198. Lower is better. There is one
+white and two black printings; this is native verification of the fit, with no
+independent white-card holdout. U/R/G colored-artifact paper remains unmeasured.
+
+The same-environment replay proves that the other 294 faces and all 297 etching
+masks are byte-identical. A new committed-source baseline was necessary because
+installing system fallback fonts changed a few artist accents and symbol etching
+masks since the prior capture. These changes are excluded from the palette gain.
+Whole-card structural score stays essentially 78.967/100, as expected for a
+metric designed to suppress pigment differences.
+
+To repeat the isolation and color checks with cached complete native captures:
+
+```sh
+node games/magic/tools/accuracy/modern-artifact-paper-audit.mjs \
+  "$INPUTS" "$BEFORE" "$AFTER" "$SCORES" "$REPORT"
+```
+
+The tool verifies inputs, decoded native pixels, reference hashes and frozen
+poses. It rejects changes outside the three panel supports, any changed etching,
+or any changed unrelated card. Reference scans and art remain external/cache
+assets; the receipt contains measurements and hashes only.

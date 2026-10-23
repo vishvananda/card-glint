@@ -3,6 +3,14 @@ import type { ManaSymbolTransform } from './symbol-adjustment.js';
 import { M21_LAND_PLATES, type ModernLandPlateProfile } from './m21-land-plates.js';
 import type { FrameHsb } from './frame-hsb.js';
 import { M21_ORDINARY_PLATES } from './m21-ordinary-plates.js';
+import { M21_ARTIFACT_PAPERS } from './m21-artifact-paper.js';
+import type { HsbAdjustment } from './hsb.js';
+
+export interface ModernArtifactPaper {
+  readonly paper: HsbAdjustment;
+  readonly name: HsbAdjustment;
+  readonly type: HsbAdjustment;
+}
 
 export interface ModernBasicLandSymbol {
   readonly source: string;
@@ -98,6 +106,8 @@ export interface ModernPrintingProfile {
   };
   /** Exact-source ordinary monocolored spells and colorless artifacts only. */
   readonly ordinaryPlates?: Readonly<Record<string, FrameHsb>>;
+  /** Palette-specific panels on the exact ordinary artifact source. */
+  readonly artifactPapers?: Readonly<Record<string, ModernArtifactPaper>>;
   readonly landPlates?: ModernLandPlateProfile;
   readonly rules?: {
     /** Shared ordinary typography; cap prevents spacing from growing a font. */
@@ -131,7 +141,7 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 11,
+    revision: 12,
     headingFont: 'beleren-2016',
     typeText: {
       plate: { dx: -1.25, dy: 0.5, size: 1.025, width: 0.985 },
@@ -140,6 +150,7 @@ export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingPro
     },
     ...M21_COMPONENT_CALIBRATION,
     ordinaryPlates: M21_ORDINARY_PLATES,
+    artifactPapers: M21_ARTIFACT_PAPERS,
     landPlates: M21_LAND_PLATES,
     rules: { leading: 0.975, paragraphGap: 0.4, capAtBaseSize: true },
     footer: {

@@ -7,6 +7,7 @@ import { FACE_RECTS, type RenderedCardInput } from './face-layout.js';
 import { retroDualFrame } from './retro-dual-frame.js';
 
 import { isRevisedLand } from './revised-land-frame.js';
+import { modernArtifactPaperPalette } from './modern-printing-profile.js';
 
 /** The calibration source is game-owned and independent of scan registration.
  * Multi-plate lands and special layouts require separate measured cohorts. */
@@ -36,13 +37,18 @@ export function printingColorSource(face: RenderedCardInput) {
   const plate = framePlate(face);
   if (plate) {
     if (plate.rightFrame) return undefined;
+    const artifactPaper = modernArtifactPaperPalette(face);
     return {
-      key: `${set}/${border}/${face.frameAssetFamily ?? 'm15-accurate'}/${plate.frame.split('/').at(-1)}`,
+      key: `${set}/${border}/${face.frameAssetFamily ?? 'm15-accurate'}/${plate.frame.split('/').at(-1)}${artifactPaper ? '/paper-' + artifactPaper : ''}`,
       family: 'plate' as const,
       frame: plate.frame,
       rect: plate.rects.frame,
       assets: { frame: plate.frame, pt: plate.pt },
-      source: JSON.stringify([plate.frame, plate.rects]),
+      source: JSON.stringify([
+        plate.frame,
+        plate.rects,
+        ...(artifactPaper ? [['artifact-paper', artifactPaper]] : []),
+      ]),
     };
   }
   return componentPrintingColorSource(face);

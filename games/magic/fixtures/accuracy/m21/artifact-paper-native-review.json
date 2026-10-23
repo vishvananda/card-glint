@@ -1,0 +1,195 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "native-paper-palette-review-not-set-completion",
+  "definition": {
+    "inputsHash": "01597eb2b6ab913fd0ea5d0a3a3464c0942afad862e63fc6fbc38ae6b4d5cafa",
+    "beforeCaptureHash": "357a56bd5437bd098bd33c7033ad5217f626c20ef818fbd0f371b6670ab76bf2",
+    "afterCaptureHash": "4741a6588ef630fa0c576f76f51648a17b18ec8aaad1385c716e083bdcf252bc",
+    "referenceScoresHash": "25b3aa0b3a36d49df557cd9ce13d880829d8a59bfe6a1cdac4e1552f778d48dd",
+    "beforeRenderer": "7190c3b4eca96950157e93db45c09fb24b2d2fa8bc7cd44793477238e8bb9bc3",
+    "afterRenderer": "166b7c401489f1acefcd1a18505a36f6afeae8084991fcce0170b2302c3654d8",
+    "toolHash": "f26fb47a9cf61fbf31d81725faea12b48b2c749c6206e66e4b9ad2003466bf3e",
+    "normalizationHash": "7c90a70f6d969238efd6b6897cfbefd83f7f792e546fb75962d09054d571eaa5",
+    "panels": {
+      "paper": [50, 442, 388, 142],
+      "name": [75, 36, 280, 11],
+      "type": [70, 387, 305, 11]
+    },
+    "support": [
+      [29, 32, 431, 40],
+      [30, 382, 431, 39],
+      [34, 424, 421, 206]
+    ],
+    "method": "Full native Original faces, frozen frame-normalized nonfoil scans. Identical fixed paper windows and shared baseline/reference dark-ink exclusions, dilated two canonical pixels. No per-card shifts or pigment exceptions. OKLab distance is on a100 scale; lower is better."
+  },
+  "summary": {
+    "cards": 3,
+    "fields": 9,
+    "unrelatedFacesByteIdentical": 294,
+    "etchingsByteIdentical": 297,
+    "beforeMeanDeltaOKLab100": 6.099017202733581,
+    "afterMeanDeltaOKLab100": 0.19825081910331324,
+    "improved": 9,
+    "regressed": 0
+  },
+  "review": [
+    "All three ordinary colored artifacts are used: one white and two black printings. There is no independent white-card holdout; this is native verification of a shared palette fit, not independent fit validation.",
+    "U/R/G colored-artifact paper remains unmeasured and unchanged. The neutral artifact paper and metal surround retain their own source calibration.",
+    "Before and after must use matching font environments. Every unrelated face and every etching is decoded and compared exactly; source hashes alone do not prove cross-environment raster parity."
+  ],
+  "rows": [
+    {
+      "id": "4d60e84e-be05-49da-9720-4225abe9d003",
+      "name": "Idol of Endurance",
+      "number": "23",
+      "palette": "W",
+      "inputHash": "fbcd135ab221efa99ea02269350bc2bf3e8963a850e827d2701c4a70dc83bd39",
+      "referenceHash": "ad41f49dcf0c292e0eec5cd211f7493c75a604cd0d4b8d036efeb854814a69c0",
+      "poseHash": "2f6f81af2f5d41bdf086cd50143ba7b81d2b6a276e048c8718a1f7f94f862964",
+      "normalizedReferenceHash": "de682eb9e837f19fdb2d8876d4a4a14c294ef9ca285f64b8a336441011e2a5b7",
+      "beforeFaceHash": "295302c2d50df1d0a9723cf2dfff3740f4f948053b405c17681669c5ec01495d",
+      "afterFaceHash": "7672d4dd7b05dd9c3e38cf5823fb62e9c9ee674127ec70afc56ca9c6ba06f600",
+      "changedPixels": 233150,
+      "panels": {
+        "paper": {
+          "rect": [50, 442, 388, 142],
+          "pixels": 20608,
+          "beforeRGB": [0.8258854356959172, 0.8692485689926696, 0.8856191389597696],
+          "afterRGB": [0.9313860598585361, 0.9256934295455375, 0.9264976099133261],
+          "referenceRGB": [0.9336524555472319, 0.9254319662645694, 0.9256121742173182],
+          "beforeDeltaOKLab100": 5.448497919699944,
+          "afterDeltaOKLab100": 0.07721769075171023
+        },
+        "name": {
+          "rect": [75, 36, 280, 11],
+          "pixels": 2283,
+          "beforeRGB": [0.8078448549809378, 0.8513325260020663, 0.8763958671510886],
+          "afterRGB": [0.9204400814202407, 0.9115044703821379, 0.9077237552927746],
+          "referenceRGB": [0.920067334862138, 0.911811943349419, 0.9084555066003798],
+          "beforeDeltaOKLab100": 5.761735354611751,
+          "afterDeltaOKLab100": 0.027300704866666758
+        },
+        "type": {
+          "rect": [70, 387, 305, 11],
+          "pixels": 3155,
+          "beforeRGB": [0.8212137596718682, 0.8491644137845342, 0.8669798949690866],
+          "afterRGB": [0.9090208508126367, 0.8960380348653368, 0.8904496442000354],
+          "referenceRGB": [0.9091675212082104, 0.8963214319008492, 0.8899835306547635],
+          "beforeDeltaOKLab100": 4.519953402769315,
+          "afterDeltaOKLab100": 0.029282839821146902
+        }
+      }
+    },
+    {
+      "id": "89e2bc57-8f18-4ba1-a11b-9d69d029f56a",
+      "name": "Malefic Scythe",
+      "number": "112",
+      "palette": "B",
+      "inputHash": "483c40b409fb1634cfe2986e355da8d98b2f884e84f6f7811e999887c5447e73",
+      "referenceHash": "ff9f4411acf82b7f2c4c0626715bd2cad0edad98fe3ea9f757f1f553b32433c7",
+      "poseHash": "49633e23a9325210ea3e0a798f906736f4aed102add77108cb637d5ccc6ffc9c",
+      "normalizedReferenceHash": "cdaeacd74cdd0d6ade4067f8870c8536e61f106af7001e1c9aa33234273c1c0a",
+      "beforeFaceHash": "da46c7625c989fc2c92ca4be970d7e4e0f106a4935532f5b549d65f3f800817e",
+      "afterFaceHash": "e786e5e9ae0d0f8031535d4b53162db60c0862780c52b1023e80bf2507f85c67",
+      "changedPixels": 235854,
+      "panels": {
+        "paper": {
+          "rect": [50, 442, 388, 142],
+          "pixels": 26354,
+          "beforeRGB": [0.8163874368141656, 0.8621658058379859, 0.8791332788710375],
+          "afterRGB": [0.8871076608527091, 0.880420280732576, 0.9043702113156965],
+          "referenceRGB": [0.8906103475007245, 0.8796432286200857, 0.9024412709606251],
+          "beforeDeltaOKLab100": 2.9579581240922943,
+          "afterDeltaOKLab100": 0.12720646162682733
+        },
+        "name": {
+          "rect": [75, 36, 280, 11],
+          "pixels": 2388,
+          "beforeRGB": [0.8092849870265958, 0.8524567280848622, 0.8772818340066644],
+          "afterRGB": [0.7401139685354892, 0.7164400433540404, 0.7331576181561452],
+          "referenceRGB": [0.7461588990705197, 0.7181643511676187, 0.7360363911058635],
+          "beforeDeltaOKLab100": 9.505468205073706,
+          "afterDeltaOKLab100": 0.2724117295895299
+        },
+        "type": {
+          "rect": [70, 387, 305, 11],
+          "pixels": 2500,
+          "beforeRGB": [0.8196799999999719, 0.8477349019607533, 0.8657599999999748],
+          "afterRGB": [0.7721019607842998, 0.7521568627450964, 0.7699356862744973],
+          "referenceRGB": [0.7792925490195952, 0.751927843137258, 0.7667701960784259],
+          "beforeDeltaOKLab100": 6.672366156777911,
+          "afterDeltaOKLab100": 0.2657516562096691
+        }
+      }
+    },
+    {
+      "id": "d43a3eb7-3daf-4667-b824-1f5d801c9341",
+      "name": "Witch's Cauldron",
+      "number": "129",
+      "palette": "B",
+      "inputHash": "7bdba9bdbd0e657304f19be4782730dfd0dc7107d856e8de8a105e272acc36cc",
+      "referenceHash": "6e670db958acafb7c1a02774aea12c4f077cdfcfab44acd01643ea58394e0887",
+      "poseHash": "416e2e8107eedf227bbfa5f2ff7d9a57fb732f179a257baf47ac6d841d921e7b",
+      "normalizedReferenceHash": "fe1cc74b1738858e638357b69593affac96d74893caa98388848b908a480b92c",
+      "beforeFaceHash": "4362705be3789bf538bd26d9d4ac16a69a86e64debb05faeb097b8014e83dad4",
+      "afterFaceHash": "a4547b4166ce32e09fa4b9f1bf9465133a3c84fff548b1a04f77b41d91fa81ba",
+      "changedPixels": 240944,
+      "panels": {
+        "paper": {
+          "rect": [50, 442, 388, 142],
+          "pixels": 29941,
+          "beforeRGB": [0.812566020362772, 0.8580549590663722, 0.8745611467256044],
+          "afterRGB": [0.8827283199440412, 0.8761405928389097, 0.8994938411553409],
+          "referenceRGB": [0.8807378694436788, 0.8764111903735443, 0.8996744578059992],
+          "beforeDeltaOKLab100": 2.8116128017002064,
+          "afterDeltaOKLab100": 0.06738368030934186
+        },
+        "name": {
+          "rect": [75, 36, 280, 11],
+          "pixels": 2295,
+          "beforeRGB": [0.8082515271903576, 0.8514913067623479, 0.8764048015720702],
+          "afterRGB": [0.739207996924262, 0.7156341578025693, 0.73244991242685],
+          "referenceRGB": [0.7323320090563568, 0.714108248964092, 0.7303156905463817],
+          "beforeDeltaOKLab100": 9.913513445487803,
+          "afterDeltaOKLab100": 0.28640412834797246
+        },
+        "type": {
+          "rect": [70, 387, 305, 11],
+          "pixels": 3128,
+          "beforeRGB": [0.821236397372259, 0.8491938719221723, 0.8670177022215578],
+          "afterRGB": [0.7735695301138497, 0.7534577002156391, 0.7710859535630247],
+          "referenceRGB": [0.7609748758838563, 0.7475766009728694, 0.7664848803971709],
+          "beforeDeltaOKLab100": 7.30004941438929,
+          "afterDeltaOKLab100": 0.6312984804069545
+        }
+      }
+    }
+  ],
+  "toolFile": "games/magic/tools/accuracy/modern-artifact-paper-audit.mjs",
+  "profileRevision": 12,
+  "fullCardReplay": {
+    "before": {
+      "total": 297,
+      "measured": 297,
+      "acceptedPoses": 297,
+      "nonfoil": 292,
+      "meanStructure100": 78.96661522799891,
+      "meanRegionalCoverage": 0.9277395068699426,
+      "missingRegionMaps": []
+    },
+    "after": {
+      "total": 297,
+      "measured": 297,
+      "acceptedPoses": 297,
+      "nonfoil": 292,
+      "meanStructure100": 78.96667012733798,
+      "meanRegionalCoverage": 0.9277395068699429,
+      "missingRegionMaps": []
+    },
+    "metricGraph": "dc799073df34b807f5ce03a565f5fc69ebe86489e4323f659eeed2182506181c",
+    "beforeScoresHash": "da9cc6eb191afabe9f735960db61be406da0b59650d48f94e28bc8f4100fefc9",
+    "afterScoresHash": "a92adadb521a5df4f5b915297ec1491f93d3156f864b58bf5f819f3b93de182c",
+    "review": "The whole-card structural metric deliberately suppresses pigment differences. Its nearly unchanged result does not negate the independently measured paper-color improvement."
+  }
+}

@@ -145,7 +145,11 @@ assert.equal(
   disabled.code.slice(0, disabled.code.indexOf(marker)),
   source.slice(0, source.indexOf(marker)),
 );
-assert(disabled.code.endsWith('return undefined; }\n'));
+assert(disabled.code.includes('return undefined; }\n'));
+assert.equal(
+  disabled.code.slice(disabled.code.indexOf('/** Material identity')),
+  source.slice(source.indexOf('/** Material identity')),
+);
 assert.throws(() => plugin.transform(source + '// Changed helper\n', '/' + file));
 assert.equal(plugin.transform(source, '/other.ts'), undefined);
 // A global asset revision must not silently reuse a calibrated old plate.
