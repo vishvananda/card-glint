@@ -361,7 +361,10 @@ try {
     result.hidden.every((x) => x.text === ''),
     'Hidden groups must not emit visible footer text',
   );
-  assert.ok(result.texts.some((x) => x.text === '077/100 C'));
+  // Inherited modern footer defaults preserve the supplied denominator while
+  // placing rarity in its own fixed column.
+  assert.ok(result.texts.some((x) => x.text === '077/100'));
+  assert.ok(result.texts.some((x) => x.text === 'C'));
   assert.ok(result.texts.some((x) => x.text === 'TEST • FR'));
   assert.equal(result.serial, '042 C');
   assert.equal(result.noSymbol, null);

@@ -1,3 +1,4 @@
+import { installModernFixtureFonts } from './magic-fixture-fonts.mjs';
 import assert from 'node:assert/strict';
 import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
@@ -26,6 +27,7 @@ try {
   const page = await browser.newPage();
   await page.route('https://**/*', (route) => route.abort());
   await page.goto(server.resolvedUrls.local[0]);
+  await installModernFixtureFonts(page);
   const result = await page.evaluate(async () => {
     await import('/games/magic/src/data/eager.ts');
     await import('/games/magic/src/data/eager-wording.ts');

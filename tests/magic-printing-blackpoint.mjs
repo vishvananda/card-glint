@@ -104,7 +104,10 @@ try {
     assert.equal(calibratedPrintingStock({ ...face, colorCalibration: undefined }), undefined);
     const modern = { ...face, setCode: 'm21', frameStyle: 'modern' };
     assert.equal(resolvedPrintingStock(modern), '#16130e');
-    assert.equal(resolvedPrintingStock({ ...modern, layout: 'token' }), undefined);
+    assert.equal(
+      resolvedPrintingStock({ ...modern, layout: 'token', calibration: 'printing' }),
+      undefined,
+    );
     if (color === 'G')
       assert.equal(
         colorCalibrationCoverage(face).frame,

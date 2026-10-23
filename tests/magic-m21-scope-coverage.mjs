@@ -159,7 +159,11 @@ for (const [file, expected] of Object.entries({
 }))
   await assertNativeMagicSourceHash(file, expected);
 let whiteCount = 0;
-for (const g of m21.groups) {
+for (const current of m21.groups) {
+  // Exercise the historical importer on a clone. Current source-bound receipts
+  // may supersede these poses/materials and must not be relabeled historical.
+  const g = structuredClone(current);
+  applyM21WhiteDefault(g, white.source, white, true);
   if (g.tasks.frameColor.status === 'validated-default') {
     assert.equal(g.palette, 'W');
     assert.equal(g.legendary, false);
@@ -174,6 +178,7 @@ for (const g of m21.groups) {
   }
   const r = boundaries.rows.filter((r) => g.printingIds.includes(r.id));
   if (r.length) {
+    applyM21BoundaryRefinement(g, boundaries, true);
     const accepted = r.filter((r) => r.accepted).length;
     assert.equal(g.tasks.normalization.coveredPrintings, accepted);
     assert.equal(g.tasks.normalization.status, accepted === g.printings ? 'validated' : 'partial');
@@ -182,6 +187,7 @@ for (const g of m21.groups) {
     assert.equal(stale.tasks.normalization.status, 'stale');
   }
   if (stock.native.rows.some((r) => r.stockChanged && g.printingIds.includes(r.id))) {
+    applyM21StockTransfer(g, stock, true);
     assert.equal(g.tasks.blackLevels.status, 'partial', 'Outer stock cannot certify interior ink');
     const stale = structuredClone(g);
     applyM21StockTransfer(stale, stock, false);

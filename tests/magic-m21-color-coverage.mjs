@@ -116,8 +116,10 @@ for (const g of m21.groups) {
 const scorn = m21.groups.find((g) =>
   g.printingIds.includes(evidence.normalization.unresolved[0].id),
 );
-assert.equal(scorn.tasks.normalization.status, 'partial');
-assert.equal(scorn.tasks.frameColor.status, 'partial');
+// The later full scan-only census supersedes this historical rejected pose.
+// It does not certify historical pigment with the replacement normalization.
+assert.equal(scorn.tasks.normalization.status, 'validated');
+assert.equal(scorn.tasks.frameColor.status, 'needs-audit');
 const stale = structuredClone(scorn);
 applyM21Evidence(
   stale,
@@ -181,7 +183,7 @@ try {
     { layout: 'token' },
   ])
     assert.equal(
-      hasCalibratedFramePigment({ ...face, ...excluded }),
+      hasCalibratedFramePigment({ ...face, ...excluded, calibration: 'printing' }),
       false,
       JSON.stringify(excluded),
     );
@@ -194,7 +196,10 @@ try {
     assert.deepEqual(calibratedFrameMaterials(artifact), modernOrdinaryPlates(artifact));
     assert(Object.keys(calibratedFrameMaterials(artifact))[0].endsWith('/a.png'));
     assert(modernArtifactPinline(artifact).source.endsWith('/' + color.toLowerCase() + '.png'));
-    assert.equal(modernArtifactPinline({ ...artifact, setCode: 'unmeasured' }), undefined);
+    assert.equal(
+      modernArtifactPinline({ ...artifact, setCode: 'unmeasured', calibration: 'printing' }),
+      undefined,
+    );
   }
   assert.equal(hasCalibratedFramePigment({ ...face, typeLine: 'Land', colors: [] }), true);
   assert.ok(!Object.keys(pigment).some((url) => url.includes('/legendary_crowns/')));

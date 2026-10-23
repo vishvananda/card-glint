@@ -66,6 +66,7 @@ try {
   );
   await page.goto(url);
   const result = await page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
     const { preparePlaneswalkerMaterials } = await import(
       '/games/magic/src/presentation/planeswalker-material.ts'
     );
@@ -90,7 +91,7 @@ try {
       c.width = c.height = 0;
       return hash;
     }
-    const workerCode = `import{preparePlaneswalkerMaterials}from'${location.origin}/games/magic/src/presentation/planeswalker-material.ts';import{profileAssets}from'${location.origin}/games/magic/src/presentation/assets.ts';import{resolveCardProfile}from'${location.origin}/games/magic/src/presentation/profile.ts';import{faceFrame}from'${location.origin}/games/magic/src/presentation/special-frames.ts';const hashes=${hashes.toString()};self.onmessage=async({data})=>{const images=new Map(data.images);let prepared;try{if(typeof document!=='undefined')throw Error('Worker has document');prepared=await preparePlaneswalkerMaterials(data.face,images,new AbortController().signal);self.postMessage({hash:await hashes(prepared.images,profileAssets(resolveCardProfile(data.face),faceFrame(data.face)).background)});}catch(e){self.postMessage({error:e.message});}finally{prepared?.dispose();for(const i of images.values())i.close();}};`;
+    const workerCode = `import'${location.origin}/games/magic/src/data/eager.ts';import{preparePlaneswalkerMaterials}from'${location.origin}/games/magic/src/presentation/planeswalker-material.ts';import{profileAssets}from'${location.origin}/games/magic/src/presentation/assets.ts';import{resolveCardProfile}from'${location.origin}/games/magic/src/presentation/profile.ts';import{faceFrame}from'${location.origin}/games/magic/src/presentation/special-frames.ts';const hashes=${hashes.toString()};self.onmessage=async({data})=>{const images=new Map(data.images);let prepared;try{if(typeof document!=='undefined')throw Error('Worker has document');prepared=await preparePlaneswalkerMaterials(data.face,images,new AbortController().signal);self.postMessage({hash:await hashes(prepared.images,profileAssets(resolveCardProfile(data.face),faceFrame(data.face)).background)});}catch(e){self.postMessage({error:e.message});}finally{prepared?.dispose();for(const i of images.values())i.close();}};`;
     const workerUrl = URL.createObjectURL(new Blob([workerCode], { type: 'text/javascript' })),
       worker = new Worker(workerUrl, { type: 'module' }),
       rows = [],

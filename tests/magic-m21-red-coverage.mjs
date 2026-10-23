@@ -41,9 +41,12 @@ assert.equal(receipt.compatibility.summary.manaUnchanged, 645);
 assert.equal(receipt.compatibility.summary.stockUnchanged, 645);
 const ledger = await read('calibration-progress.json');
 let covered = 0;
-for (const g of ledger.sets.find((s) => s.set === 'm21').groups) {
+for (const current of ledger.sets.find((s) => s.set === 'm21').groups) {
+  // Keep the historical red importer's contract separate from newer sources.
+  const g = structuredClone(current);
   const rows = receipt.metrics.rows.filter((r) => g.printingIds.includes(r.id));
   if (!rows.length) continue;
+  applyM21RedColor(g, receipt.source, receipt, true);
   assert.equal(g.palette, 'R');
   assert.equal(g.legendary, false);
   assert.equal(g.tasks.frameColor.status, 'validated');

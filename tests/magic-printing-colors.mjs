@@ -133,8 +133,16 @@ try {
     }
     assert.equal(colorCalibrationCoverage(face).frame, true, row.key);
     assert.deepEqual(calibratedFrameMaterials({ ...face, colorCalibration: undefined }), {});
-    assert.deepEqual(calibratedFrameMaterials({ ...face, setCode: 'unmeasured' }), {});
-    assert.deepEqual(calibratedFrameMaterials({ ...face, layout: 'token' }), {});
+    // This negative control asks for independent printing fits only; modern
+    // donor defaults are separately labeled and tested by their adoption matrix.
+    assert.deepEqual(
+      calibratedFrameMaterials({ ...face, setCode: 'unmeasured', calibration: 'printing' }),
+      {},
+    );
+    assert.deepEqual(
+      calibratedFrameMaterials({ ...face, layout: 'token', calibration: 'printing' }),
+      {},
+    );
     assert.ok(study.rows.filter((r) => r.cohort === 'calibration').length >= 3);
     assert.ok(study.rows.filter((r) => r.cohort === 'validation').length >= 3);
     const ids = study.rows.map((r) => r.id);

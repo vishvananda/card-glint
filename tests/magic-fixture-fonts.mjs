@@ -19,3 +19,18 @@ export async function installedSerifFonts() {
   const local = 'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")';
   return { normal: local, italic: local };
 }
+
+/** New modern defaults require these aliases during preparation, even in tests
+ * which isolate a non-text component. Reuse installed outlines, never the CDN. */
+export async function installModernFixtureFonts(page) {
+  const fonts = await installedSerifFonts();
+  await page.evaluate(async (source) => {
+    for (const [family, weight] of [
+      ['Gotham', '400'],
+      ['Beleren 2016', '700'],
+    ])
+      document.fonts.add(
+        await new FontFace('CardRenderer MTG ' + family, source.normal, { weight }).load(),
+      );
+  }, fonts);
+}
