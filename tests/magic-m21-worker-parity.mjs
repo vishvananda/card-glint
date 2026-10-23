@@ -238,6 +238,14 @@ try {
           colors: ['G'],
           manaSymbols: ['4', 'G'],
         },
+        ...['W', 'B'].map((color) => ({
+          ...base,
+          name: color + ' calibrated artifact',
+          artifact: true,
+          typeLine: 'Artifact Creature — Golem',
+          colors: [color],
+          manaSymbols: ['4', color],
+        })),
         { ...base, name: 'Two color adept', colors: ['W', 'U'], manaSymbols: ['W', 'U'] },
         {
           ...base,
@@ -435,7 +443,7 @@ try {
       cpuPixels: process.argv.includes('--cpu'),
     },
   );
-  assert.equal(rows.length, 240);
+  assert.equal(rows.length, 264);
   if (process.argv.includes('--diagnose'))
     for (const row of rows) if (row.debug) console.log(JSON.stringify(row.debug));
   for (const row of rows) {
@@ -473,7 +481,7 @@ try {
       exactPixelPairs: rows.filter((r) => r.before.hash === r.after.hash).length,
       rasterEquivalentPairs: rows.filter((r) => r.before.hash !== r.after.hash).length,
       scope:
-        'Current M21 browser/real-worker assets, raster sizes, frame geometry and text draws/metrics match across20 roles, Original/Oracle, all3 tiers, face/etching and transferable bitmap output. Raster tolerance: at most one8-bit level mean/card, three levels/64px tile; silhouette coverage stays within one raster pixel. Exact and bounded-raster pairs are separate. Synthetic assets and installed fonts prove portability, not scan accuracy.',
+        'Current M21 browser/real-worker assets, raster sizes, frame geometry and text draws/metrics match across22 roles, including both calibrated artifact paper palettes, Original/Oracle, all3 tiers, face/etching and transferable bitmap output. Raster tolerance: at most one8-bit level mean/card, three levels/64px tile; silhouette coverage stays within one raster pixel. Exact and bounded-raster pairs are separate. Synthetic assets and installed fonts prove portability, not scan accuracy.',
     }),
   );
 } finally {
