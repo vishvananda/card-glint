@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "id": "c5b57247-81cc-44ec-b5a9-0702111a98a8",
+  "rect": [44, 619, 330, 14],
+  "method": "Fixed four-pixel derivative context; only edge support within the unchanged requested frame window is counted. No score or renderer change adopted.",
+  "rows": [
+    {
+      "label": "reference",
+      "localEdges": 0,
+      "contextEdges": 330,
+      "localRowCounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "contextRowCounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 330, 0]
+    },
+    {
+      "label": "before",
+      "localEdges": 0,
+      "contextEdges": 343,
+      "localRowCounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "contextRowCounts": [13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 330, 0]
+    },
+    {
+      "label": "after",
+      "localEdges": 10,
+      "contextEdges": 415,
+      "localRowCounts": [0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "contextRowCounts": [30, 32, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 330, 0]
+    }
+  ],
+  "legacyMetrics": {
+    "before": {
+      "status": "empty",
+      "edgeF1": null
+    },
+    "after": {
+      "status": "missing-ink",
+      "edgeF1": [0, 0, 0],
+      "meanDistance": null,
+      "p95Distance": null
+    }
+  },
+  "decision": "Use derivative context before cropping edge support. Keep frame eligibility anchored to actual frame evidence; exclude adjacent text through frame-specific support before adopting. This is a metric crop defect, not evidence of physical frame movement.",
+  "set": "m21",
+  "name": "Aven Gagglemaster",
+  "number": "5",
+  "status": "confirmed-metric-context-defect-not-renderer-movement",
+  "source": {
+    "beforeCapture": "4741a6588ef630fa0c576f76f51648a17b18ec8aaad1385c716e083bdcf252bc",
+    "afterCapture": "8f7200b2e8766961e369dabd7fd2ff9cb9ea4b2c3388c88022311d4f20205775",
+    "normalization": "7c90a70f6d969238efd6b6897cfbefd83f7f792e546fb75962d09054d571eaa5",
+    "metric": "9aa8a104719e9a8512fe064d0b87e78c354561313a3df41b53f3c4a66e0186d1"
+  },
+  "finding": "The old crop drops all330 actual bottom-frame edges from the reference and baseline. Four pixels of derivative context recover the same330-pixel horizontal edge at the same canonical row in reference, before and after. Added text edges in earlier rows explain the false empty-to-missing-ink eligibility transition.",
+  "limitations": "This validates the bottom frame edge, not all pose anchors or set completion. The report still uses the frozen original metric and common-eligible comparisons; no scores are silently replaced."
+}
