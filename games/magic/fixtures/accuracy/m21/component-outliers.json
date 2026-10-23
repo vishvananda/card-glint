@@ -117,6 +117,30 @@
       "evidence": "games/magic/fixtures/accuracy/m21/stock-native-review-r2.json",
       "historicalEvidence": "games/magic/fixtures/accuracy/m21/outer-stock-native-review.json",
       "priorAdoptionEvidence": "games/magic/fixtures/accuracy/m21/stock-native-review.json"
+    },
+    {
+      "id": "two-color-legendary-crowns",
+      "component": "frame/source",
+      "status": "confirmed-source-selection-error",
+      "scope": "Niambi#222 and Radha#224; two-color ordinary nonartifact legendary creatures.",
+      "review": "Current source uses generic Gold crowns although exact WU and RG crown assets exist. Frozen-source full native proposals restore the missing colored tips. Source-specific pigment and outside-support parity still need review before adoption.",
+      "evidence": "games/magic/fixtures/accuracy/m21/full-card-census-review.json"
+    },
+    {
+      "id": "gold-land-palette",
+      "component": "frame/paper/source",
+      "status": "confirmed-printing-palette-error",
+      "scope": "Fabled Passage#246.",
+      "review": "Current neutral gray header/paper differs from the gold printing. Independent English, German and Japanese reference scans agree on gold. Preserve semantic colors and explicit host overrides; use a reviewed printing trait rather than deriving a frame from Oracle text. Foreign scans are palette corroboration only.",
+      "evidence": "games/magic/fixtures/accuracy/m21/full-card-census-review.json"
+    },
+    {
+      "id": "nonbasic-land-text-size",
+      "component": "rules/flavor",
+      "status": "needs-shared-role-fit",
+      "scope": "Ordinary nonbasic lands, especially common duals and Temple cycle.",
+      "review": "Repeated first clauses wrap to two lines in the rebuild versus one in the printing. The full census confirms a shared role problem, separate from small per-scan alignment variation. Keep existing score regressions visible and test a shared physical-role rule before introducing exceptions.",
+      "evidence": "games/magic/fixtures/accuracy/m21/full-card-census-review.json"
     }
   ]
 }

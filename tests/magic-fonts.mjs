@@ -2,10 +2,12 @@
 // Accuracy captures separately require the pinned Magic fonts and record their hashes.
 export const syntheticFontCss = [
   ['Beleren', 'normal', '400 700'],
+  ['Beleren 2016', 'normal', '400 700'],
   ['Beleren Small Caps', 'normal', '700'],
   ['MPlantin', 'normal', '400'],
   ['MPlantin', 'italic', '400'],
   ['Relay', 'normal', '400'],
+  ['Gotham', 'normal', '400'],
   ['Artist Credit', 'normal', '400'],
 ]
   .map(
