@@ -123,6 +123,13 @@ export interface ModernPrintingProfile {
     readonly capAtBaseSize: boolean;
   };
   readonly largeLandSymbols?: Readonly<Record<string, ModernBasicLandSymbol>>;
+  /** Additional cast shadow in canonical painter pixels, only on a matching fitted source. */
+  readonly largeLandShadow?: {
+    readonly alpha: number;
+    readonly dx: number;
+    readonly dy: number;
+    readonly blur: number;
+  };
   readonly footer: {
     readonly collectorFamily: string;
     readonly collectorSize: number;
@@ -148,7 +155,7 @@ export interface ModernPrintingProfile {
 /** Canonical 488×680 painter units. Source/content review is separate from style. */
 export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingProfile>> = {
   m21: {
-    revision: 13,
+    revision: 14,
     headingFont: 'beleren-2016',
     typeText: {
       plate: { dx: -1.25, dy: 0.5, size: 1.025, width: 0.985 },
@@ -184,6 +191,7 @@ export const MODERN_PRINTING_PROFILES: Readonly<Record<string, ModernPrintingPro
       legalOffset: [-0.5, 0.5],
       collectorMarker: { center: [62, 652.5], size: [11, 10] },
     },
+    largeLandShadow: { alpha: 0.6, dx: -2 / 3, dy: 2, blur: 2 / 3 },
     largeLandSymbols: {
       W: {
         source:

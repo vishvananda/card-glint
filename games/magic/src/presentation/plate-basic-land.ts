@@ -71,12 +71,24 @@ export function paintBasicLandSymbol(
   if (!url) return false;
   const glyph = images.get(url);
   if (!glyph) throw Error(`Basic land symbol unavailable: ${url}`);
+  const profile = modernBasicLandProfile(face);
+  const shadow = profile && modernPrintingProfile(face)?.largeLandShadow;
   c.save();
-  c.shadowColor = '#0009';
-  c.shadowOffsetX = -1.5;
-  c.shadowOffsetY = 1.5;
-  c.shadowBlur = 1.5;
-  const geometry = modernBasicLandProfile(face)?.geometry;
+  if (shadow) {
+    // Canvas shadow offsets/blur are device pixels, unlike drawImage geometry.
+    // Transform the canonical cast vector once while preparing the static face.
+    const m = c.getTransform();
+    c.shadowColor = `rgba(0,0,0,${shadow.alpha})`;
+    c.shadowOffsetX = m.a * shadow.dx + m.c * shadow.dy;
+    c.shadowOffsetY = m.b * shadow.dx + m.d * shadow.dy;
+    c.shadowBlur = shadow.blur * Math.sqrt(Math.abs(m.a * m.d - m.b * m.c));
+  } else {
+    c.shadowColor = '#0009';
+    c.shadowOffsetX = -1.5;
+    c.shadowOffsetY = 1.5;
+    c.shadowBlur = 1.5;
+  }
+  const geometry = profile?.geometry;
   c.drawImage(
     glyph,
     geometry ? 244 + (166 - 244) * geometry.scaleX + geometry.dx : 166,

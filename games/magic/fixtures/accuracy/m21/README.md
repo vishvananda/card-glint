@@ -531,3 +531,19 @@ than assumed constant. Using only common eligible components still gives
 identical unrelated pixel/text/geometry pairs against published 0.6.11. M21 remains
 incomplete until the remaining component/source and normalization reviews,
 modern-default transfer, ledger and release work are finished.
+
+### Source-bound basic-land cast shadow (profile 14)
+
+The added cast shadow uses canonical painter units, transformed to Canvas device
+pixels during preparation. On the 15 nonfoil basics, a fixed six-pixel band around
+the existing source-alpha boundary improves from 85.556 to 86.929/100: 13 improve,
+two regress, worst delta −0.866. Geometry, tint and the source-baked bevel/ring stay
+fixed. The white sun's rim-color mismatch remains a separate source residual.
+
+All 15 native faces match the independent shadow proposal; the other 282 faces
+and all 297 etchings remain exact. The complete frozen-pose diagnostic index rises
+from 80.473 to 80.502/100. See [the receipt](basic-shadow-native-review.json) and
+[the audit tool](../../../tools/accuracy/modern-basic-shadow-native-audit.mjs).
+Canvas policy tests cover 244, 488 and 732 pixel tiers, transformed cast vectors,
+state restoration, retained unrelated defaults and custom rules.
+This regional fit does not certify the entire set.

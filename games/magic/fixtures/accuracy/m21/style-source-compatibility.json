@@ -8,15 +8,15 @@
     "wording-flavor.ts",
     "wording.ts"
   ],
-  "revision": 10,
+  "revision": 11,
   "parent": {
-    "file": "games/magic/fixtures/accuracy/m21/style-source-compatibility-r9.json",
-    "sha256": "48302a14f819283f81beb07b3ae3f7e11e18992cecc1a4ff56238297ae0ae345"
+    "file": "games/magic/fixtures/accuracy/m21/style-source-compatibility-r10.json",
+    "sha256": "f313e4a3988feb7340f95bbf251e26c00d8f18f38e97927781d7277c148196fe"
   },
-  "scope": "R10 exact M21-only source reconstruction after fractional ordinary typography, content-derived line limits and P/T glyph fitting. All1500 unrelated native pixel/text/geometry pairs match published0.6.11 in the same font environment. This protects historical source identity, not M21 completion or cross-environment raster equality.",
+  "scope": "R11 exact M21-only source reconstruction after source-bound basic-land cast-shadow fitting and canonical preparation-unit scaling. All1500 unrelated native pixel/text/geometry pairs match published0.6.11 in the same font environment. This protects historical source identity, not M21 completion or cross-environment raster equality.",
   "evidence": {
-    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-typography-review.json",
-    "sha256": "dccc388f3aaa3c44135c448fd08958b36ecebded590748aa67b259f1ac57323a"
+    "file": "games/magic/fixtures/accuracy/m21/unaffected-native-basic-shadow-review.json",
+    "sha256": "6969771beaf2c28672dc25f5a1bb7c05d8230b5dd9248ba7b1a3932ca24bd091"
   },
   "files": {
     "games/magic/fonts.css": {
@@ -450,9 +450,20 @@
     },
     "games/magic/src/presentation/plate-basic-land.ts": {
       "before": "e86083dd8f25e356c6d85bda8f3759a8c33da4248a4c1681ed044ebfabd68ca3",
-      "after": "f4c69b15872ac699deb3ed150c6e8327d565db66967d0332571c4612469ad995",
+      "after": "b2e9f5c314baa55d785c86854e980ebb33a8bafc3a24531377dabf85ebdc510d",
       "reverseEdits": [
-        { "start": 78, "count": 8, "lines": ["  c.drawImage(glyph, 166, 440, 156, 156);\n"] },
+        {
+          "start": 76,
+          "count": 22,
+          "lines": [
+            "  c.shadowColor = '#0009';\n",
+            "  c.shadowOffsetX = -1.5;\n",
+            "  c.shadowOffsetY = 1.5;\n",
+            "  c.shadowBlur = 1.5;\n",
+            "  c.drawImage(glyph, 166, 440, 156, 156);\n"
+          ]
+        },
+        { "start": 73, "count": 2, "lines": [] },
         {
           "start": 54,
           "count": 9,
@@ -462,7 +473,10 @@
         },
         { "start": 1, "count": 1, "lines": [] }
       ],
-      "historicalHashes": ["f30ecf43a0a6096de40c1d563f587a3b8e8517bb3b07a8d67a48a4a2d8f9cae0"]
+      "historicalHashes": [
+        "f30ecf43a0a6096de40c1d563f587a3b8e8517bb3b07a8d67a48a4a2d8f9cae0",
+        "f4c69b15872ac699deb3ed150c6e8327d565db66967d0332571c4612469ad995"
+      ]
     },
     "games/magic/src/presentation/printing-calibration-materials.ts": {
       "before": "cf9138efaf587cda0a074ebbeebbecf4beae4050b69ebe1a4463ad4fccc31bdc",
@@ -737,7 +751,7 @@
     "games/magic/src/presentation/modern-heading-font.ts": "68cbf2cc9ae9a634a6c04923dcbe7a0523c494b8e79b4a2c07226f42237da7de",
     "games/magic/src/presentation/modern-land-layers.ts": "fb8f95ee58f65514e94adfd6432cf137a4d2f4ce5ca200d5749e14db1d96281e",
     "games/magic/src/presentation/modern-printing-profile.ts": "0a6e5c6e32b7cbf82b96808b732d497f015aee03e04844cb4bd89171b0df6443",
-    "games/magic/src/presentation/modern-printing-profiles.ts": "7074e0286cbf75ed91a0fac7cf2a8817c511f0bdc528ddb8eeb619e85109a916",
+    "games/magic/src/presentation/modern-printing-profiles.ts": "600f069a53c20e5a781819fcf94b3faa563602b31a63f1b68af797fed431ed14",
     "games/magic/src/presentation/m21-walker-materials.ts": "bd44d33b3853765dbfe7022369a2c5ac12ad67f0aac188c839760a86b8f7d03e",
     "games/magic/src/presentation/m21-artifact-paper.ts": "5472a86b8a5ef4e378a84a961f65757086ee74a865a41e16157857c6db4690a8",
     "games/magic/src/presentation/modern-stats-text.ts": "7ec79dee76fe4be58eb06dfe2efde594923a3d595cbfb133fc90bef7de8976fc"
