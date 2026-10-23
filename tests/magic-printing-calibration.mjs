@@ -52,9 +52,18 @@ try {
       );
       const plates = modernOrdinaryPlates(f);
       if (plates) {
-        // Full M21 plates have a measured surround even when the legacy
-        // single-component stock descriptor has no matching source.
-        assert.equal(setCode, 'M21');
+        // Exact M21 plates and compatible inherited plates use the same
+        // backing. Inherited fits must remain distinguishable from measurements.
+        assert(['M15', 'M21', 'NEO'].includes(setCode));
+        const report = api.resolvePrintingCalibration(f);
+        assert.equal(report.components.frame.status, setCode === 'M21' ? 'measured' : 'fallback');
+        assert.equal(report.components.border.status, setCode === 'M21' ? 'measured' : 'fallback');
+        if (setCode !== 'M21')
+          assert.equal(
+            modernOrdinaryPlates({ ...f, calibration: 'printing' }),
+            undefined,
+            'Exact-printing mode must not inherit a plate',
+          );
         assert(Object.keys(plates).every((url) => url.includes('/m15/new/')));
         assert.equal(material.calibratedPrintingStock(f), '#16130e');
         plateStockCases++;
@@ -65,13 +74,24 @@ try {
       for (const [url, correction] of Object.entries(exact.calibratedFrameMaterials(f)))
         assert.deepEqual(auto[url], correction, 'Auto preserves each exact correction');
     }
-  assert.equal(plateStockCases, 5, 'All five M21 ordinary plate colors checked');
+  assert.equal(
+    plateStockCases,
+    15,
+    'Five exact M21 colors and ten inherited M15/NEO colors checked',
+  );
   assert.deepEqual(face, original);
   const report = api.resolvePrintingCalibration({ ...face, calibration: 'auto' });
   assert.equal(report.components.border.color, '#16130e');
   assert.equal(report.components.border.status, 'fallback');
   assert.equal(report.components.frame.status, 'fallback');
-  assert.equal(report.components.interiorInk.status, 'source');
+  assert.equal(report.components.interiorInk.status, 'fallback');
+  const exactOnly = api.resolvePrintingCalibration({ ...face, calibration: 'printing' });
+  for (const component of ['frame', 'textBox', 'border', 'interiorInk'])
+    assert.equal(
+      exactOnly.components[component].status,
+      'source',
+      'An unmeasured set must not inherit under exact-printing policy: ' + component,
+    );
   const chosen = resolvePrintingPreset(face, {
     preset: 'match',
     overrides: { calibration: 'auto' },
@@ -205,6 +225,11 @@ try {
     const f = { ...special, calibration: 'auto' };
     const m = material.printingCalibrationMaterials(f);
     assert.equal(m.border, '#16130e', JSON.stringify(special));
+    assert.deepEqual(
+      material.printingCalibrationMaterials(special).materials,
+      m.materials,
+      'Implicit and automatic defaults must share actual special-layout sources',
+    );
     const urls = new Set(canvasAssetUrls(f));
     for (const url of Object.keys(m.materials))
       assert.ok(urls.has(url), 'Only actual loaded sources receive corrections: ' + url);

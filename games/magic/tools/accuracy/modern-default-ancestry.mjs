@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { hash } from './common.mjs';
-import { preModernStockSource } from './modern-stock-ancestry.mjs';
+import { modernStockAncestry, preModernStockSource } from './modern-stock-ancestry.mjs';
 const RECEIPT = 'd844e6ac1b315fb24b7a8924f2865bb7d386f3a1029ba93c19acbdb9570ed929';
 let checked;
 export function modernDefaultAncestry() {
@@ -100,7 +100,9 @@ export async function modernDefaultProfileSource(file, bytes, set, group) {
   const p = await modernDefaultAncestry();
   if (set?.toLowerCase() === 'm21') return { bytes, changedProfile: false };
   const changed = await modernDefaultSetAffected(set, group);
-  if (changed && (p.files[file] || p.newModules[file])) return { bytes, changedProfile: true };
+  const stock = await modernStockAncestry();
+  if (changed && (p.files[file] || p.newModules[file] || stock.files[file]))
+    return { bytes, changedProfile: true };
   return { bytes: await preModernDefaultSource(file, bytes), changedProfile: false };
 }
 

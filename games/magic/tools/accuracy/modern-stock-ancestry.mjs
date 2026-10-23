@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { hash } from './common.mjs';
-const RECEIPT = '4efa35eafaf2861df63224a1f82d73611364c7a48a3d1e192d940dd949ac5ac9';
+const RECEIPT = '3440da1b1f624c16e98900aad8be22f3041b1df24a6c0144094796acdcdf3b72';
 let checked;
 export function modernStockAncestry() {
   return (checked ??= (async () => {

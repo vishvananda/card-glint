@@ -177,6 +177,17 @@ export function calibratedFrameMaterials(
 function modernComponentMaterials(face: RenderedCardInput): Readonly<Record<string, FrameHsb>> {
   const fit = modernPrintingProfile(face)?.componentMaterials;
   if (!fit || face.colorCalibration !== 'set-hsb-v1' || face.calibration === 'source') return {};
+  const kind = faceFrame(face);
+  // Dedicated layouts own their source inventory. A matching semantic palette
+  // does not make unused ordinary boxes or P/T assets part of that painter.
+  if (
+    face.frameTemplate ||
+    face.faces?.length ||
+    (face.layout && !['normal', 'planeswalker', 'token'].includes(face.layout)) ||
+    !['normal', 'planeswalker', 'planeswalker-large'].includes(kind) ||
+    (kind === 'normal' && framePlate(face))
+  )
+    return {};
   const traits = resolveCardProfile(face);
   if (
     traits.land ||

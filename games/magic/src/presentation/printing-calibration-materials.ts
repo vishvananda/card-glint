@@ -73,7 +73,10 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
       border &&
       choice !== 'source',
   );
-  if ((choice === 'auto' || explicitProfile) && supportsModernCalibration(face)) {
+  if (
+    (choice === 'auto' || explicitProfile || Boolean(styleStock && style?.inheritedFrom)) &&
+    supportsModernCalibration(face)
+  ) {
     const sources = modernCalibrationSources(face),
       profile = resolveCardProfile(face);
     const donor: RenderedCardInput = {
@@ -101,9 +104,12 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
     if (!border && cardStock(face.setCode, face.borderColor).border === '#090806') {
       border = stock;
       fallbackStock = true;
+    }
+    // Baked borders need their own edge correction even when the shared style
+    // already resolved the backing. Measured ordinary plates own their pigment.
+    if (fallbackStock && !ordinary && border === stock)
       for (const url of sources.stock)
         materials[url] = { ...(materials[url] ?? neutral), outerStock: stockRgb };
-    }
   }
   return {
     face,

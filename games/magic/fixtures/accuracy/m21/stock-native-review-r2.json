@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "adopted-shared-stock-policy-not-set-completion",
+  "scope": "Complete native Original census. Fixed stock patches and common paper windows; foil-only scans excluded from all pigment measurements. RGB distances are diagnostic bytes, material deltas are Oklab\u00d7100. This is stock adoption evidence, not whole-set completion.",
+  "definition": {
+    "inputsHash": "01597eb2b6ab913fd0ea5d0a3a3464c0942afad862e63fc6fbc38ae6b4d5cafa",
+    "beforeCaptureHash": "ab12495c9cd47de94407b2f66dd6a7635e8e239110a6d7337d70e11ce8e003f2",
+    "afterCaptureHash": "1a02d1d627e456fa1858699cef7f5a8f9b38a7d9328d73c4b2de7c3bd7542d12",
+    "beforeRenderer": "e0873a1bacd9cfc38d8d3144a5832281b361d407160351a8194a557d2b4d1c15",
+    "afterRenderer": "decb416ef6ec0ba64a4d1d98cd458d3c1a44e63dbef0e84263573d693e6c304f",
+    "scoresHash": "66c9805fc6948c214700073898f1c682fd6cdd55100ec777c39a7e9647dfc9f6",
+    "normalizationHash": "7c90a70f6d969238efd6b6897cfbefd83f7f792e546fb75962d09054d571eaa5",
+    "metricGraph": {
+      "hash": "dc799073df34b807f5ce03a565f5fc69ebe86489e4323f659eeed2182506181c",
+      "node": "v22.22.1",
+      "sources": [
+        [
+          "accuracy-metrics.mjs",
+          "9aa8a104719e9a8512fe064d0b87e78c354561313a3df41b53f3c4a66e0186d1"
+        ],
+        ["accuracy-policy.mjs", "847eefc4e0e172da8305cb662565a0e250213b61ce8bbd3a74cf338d7ed087f3"],
+        [
+          "accuracy-regions-planar.mjs",
+          "37545cfd59150132429ac9cd3becb0c24df4874e5e62f3b05060d0ffc8f7611b"
+        ],
+        [
+          "m21-planeswalker-regions.mjs",
+          "b2b58059c35a72023971d3ee05a3a40125041ce1ce4abf3c2f7dd9dcc67b1a70"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/edges.mjs",
+          "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/metrics.mjs",
+          "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/pixels-pure.mjs",
+          "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/scan-transform.mjs",
+          "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+        ]
+      ]
+    },
+    "toolHash": "bda614fb81264310949b2c9df33abdeabd8ce7a3e5e164c68fc0acfec3639042",
+    "stockRects": [
+      [7, 130, 6, 20],
+      [7, 210, 6, 20],
+      [7, 290, 6, 20],
+      [475, 130, 6, 20],
+      [475, 210, 6, 20],
+      [475, 290, 6, 20]
+    ],
+    "materialWindows": {
+      "frame": {
+        "rects": [
+          [26, 100, 7, 250],
+          [455, 100, 7, 250]
+        ],
+        "paper": false
+      },
+      "paper": {
+        "rects": [[110, 470, 310, 100]],
+        "paper": true
+      },
+      "name": {
+        "rects": [[75, 33, 337, 13]],
+        "paper": true
+      }
+    }
+  },
+  "summary": {
+    "faces": 297,
+    "unchangedFaces": 216,
+    "changedFaces": 81,
+    "unchangedEtchings": 297,
+    "alphaChanges": 0,
+    "stock": {
+      "nonfoil": 292,
+      "referenceRGB": [22, 19, 14],
+      "beforeMeanDistance": 0.5799109229453461,
+      "afterMeanDistance": 0,
+      "changedNonfoil": 76
+    },
+    "materials": {
+      "frame": {
+        "measured": 76,
+        "before": 2.8613732667322647,
+        "after": 2.8638857535290345
+      },
+      "paper": {
+        "measured": 76,
+        "before": 1.4579304240799904,
+        "after": 1.473035910802254
+      },
+      "name": {
+        "measured": 76,
+        "before": 1.521939618682991,
+        "after": 1.5323812751561674
+      }
+    }
+  },
+  "toolFile": "games/magic/tools/accuracy/modern-stock-native-audit.mjs",
+  "policyToolFile": "games/magic/tools/accuracy/modern-stock-policy-audit.mjs",
+  "policySummary": {
+    "faces": 297,
+    "exactNamedFaces": 297,
+    "exactNamedEtchings": 297,
+    "resolvedPolicies": 4
+  },
+  "scoreReplay": {
+    "before100": 80.5016982589363,
+    "after100": 80.50578819397853,
+    "coverage": 0.9284129075433442,
+    "reused": 297,
+    "recomputed": 0
+  },
+  "review": [
+    "One shared #16130e stock replaces the darker uncalibrated backing on14 planeswalkers. The67 other changed faces differ only at authenticity stamp mounts, which now use the same resolved stock under implicit and explicit policies.",
+    "All297 native faces and etchings equal the earlier named-M21 capture after the final routing correction. Pure material resolution agrees for implicit, automatic, exact-printing and named-M21 modes for every canonical input. This does not claim a native capture of every mode.",
+    "All292 nonfoil scan-edge medians match. Five foil-only scans remain boundary/transfer controls and never pigment targets. Alpha and all297 etchings remain exact. No scan transforms, per-card offsets or per-card color values changed.",
+    "The translucent walker layers shift slightly with the lighter backing. Fixed common paper windows disclose small increases in interior Oklab error; no extra palette fitting was used to hide them. Teferi patterned paper remains a separately tracked source residual.",
+    "R2 also restores baked outer-stock correction when an inherited backing is already present, and excludes unused ordinary component materials from dedicated-layout inventories. Full M21 native faces/etchings remain exact versus the prior adoption. The historical outer-stock-native-review.json remains an immutable pre-adoption diagnostic. This later receipt adopts the production policy; it does not retroactively approve that older explicit-auto proposal or mark the set complete."
+  ],
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/stock-native-review-r2.json.gz",
+    "sha256": "dbf66d49a9a1eababcd6b8bf244698c813a97f287ef76803dbe25cd87b268851",
+    "contentSha256": "5cf581254fc490497e43d5d52bbe878a8abe633f2aeed67fcde7311934e82546"
+  }
+}

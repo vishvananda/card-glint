@@ -1,0 +1,144 @@
+{
+  "schema": 1,
+  "revision": 1,
+  "base": "aaeb75ff134f64a9d0ba2b3cf56e76d2eb7ccd34",
+  "scope": "Exact post-default stock/material-policy reconstruction for historical receipts. Does not certify a target set or waive unknown source edits.",
+  "parents": [
+    {
+      "file": "games/magic/fixtures/accuracy/m21/modern-default-source-compatibility.json",
+      "sha256": "d844e6ac1b315fb24b7a8924f2865bb7d386f3a1029ba93c19acbdb9570ed929"
+    },
+    {
+      "file": "games/magic/fixtures/accuracy/m21/style-source-compatibility.json",
+      "sha256": "bcabcd4c3225c9ee6d19349ced38538d2936df22e37a70d5874d6f3a85d6be79"
+    }
+  ],
+  "beforeRendererHash": "e0873a1bacd9cfc38d8d3144a5832281b361d407160351a8194a557d2b4d1c15",
+  "rendererHash": "c164d86c499c1bb3fcf87b90b21e6e4c928a9ee28760f0564313d3b76c63ae44",
+  "files": {
+    "games/magic/src/presentation/modern-printing-profiles.ts": {
+      "before": "4fe827cab24d5780f6bd99b71c5c1acf505121df9ee51745590d66ff4947f565",
+      "after": "6e244d2c78bb4a73c75862b175eda8ae1abd2a6f78d851b059e2f6acf92e59c6",
+      "reverseEdits": [
+        {
+          "start": 159,
+          "count": 1,
+          "lines": ["    revision: 14,\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/printing-calibration-materials.ts": {
+      "before": "21dbab5dffff8efcfed98a9b18d8f818563509635c396edf79f6561ec76a1a9b",
+      "after": "0af2ae1284f85b09a89279d3b3fab4b06dc5d3304a668d07d4364074060db354",
+      "reverseEdits": [
+        {
+          "start": 69,
+          "count": 6,
+          "lines": [
+            "  let fallbackStock = Boolean(style?.inheritedFrom && ordinary && border && choice !== 'source');\n"
+          ]
+        },
+        {
+          "start": 64,
+          "count": 0,
+          "lines": [
+            "  const independent = style?.inheritedFrom\n",
+            "    ? independentModernComponentMaterials(original)\n",
+            "    : undefined;\n"
+          ]
+        },
+        {
+          "start": 63,
+          "count": 0,
+          "lines": ["  const style = modernPrintingProfile(original);\n"]
+        },
+        {
+          "start": 58,
+          "count": 4,
+          "lines": [
+            "  // Selecting M21 defaults on a measured M21 plate must retain its exact source\n",
+            "  // fit. Component donors for other sets remain separately source-compatible.\n",
+            "  const useExact = !explicitProfile || Boolean(ordinary);\n"
+          ]
+        },
+        {
+          "start": 56,
+          "count": 1,
+          "lines": ["        (ordinary ? stock : exact.calibratedPrintingStock(original)));\n"]
+        },
+        {
+          "start": 41,
+          "count": 11,
+          "lines": []
+        },
+        {
+          "start": 34,
+          "count": 4,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/printing-calibration-types.ts": {
+      "before": "c9aea16a4d7e04d0b6e7cf638561acb8de05a21483a5c201f5feae54ac26c4a3",
+      "after": "17a818a17393b3e7242658ec7416358340f941ca704678896f580dc6bec9c7e6",
+      "reverseEdits": [
+        {
+          "start": 29,
+          "count": 1,
+          "lines": ["    revision: 2,\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/printing-calibration.ts": {
+      "before": "282a26cbd50625edd715e9d9e471184c3b1e806d53c7bda37dc86af82602a482",
+      "after": "035a443159be9cd1aaf3ee88c8265f7f636f0152097ed9d7cbc42e54dd1bed1d",
+      "reverseEdits": [
+        {
+          "start": 107,
+          "count": 0,
+          "lines": ["  const inheritedStyle = modernPrintingProfile(face);\n"]
+        },
+        {
+          "start": 102,
+          "count": 1,
+          "lines": ["        revision: 1,\n"]
+        },
+        {
+          "start": 41,
+          "count": 1,
+          "lines": [
+            "          ? { profile: `printing:${face.setCode?.toLowerCase() ?? ''}`, revision: 1 }\n"
+          ]
+        },
+        {
+          "start": 39,
+          "count": 1,
+          "lines": ["        ? { profile: 'm21-modern', revision: 1 }\n"]
+        },
+        {
+          "start": 29,
+          "count": 3,
+          "lines": []
+        }
+      ]
+    },
+    "games/magic/src/presentation/security-stamp-material.ts": {
+      "before": "85f95588a87f9dc1e7eaeb759987211af1be6b160d1e11f9f9f486c2a85657dc",
+      "after": "d623a8b11c161d4953259fb39d43343607a9874b337952b5cd66af50b9ae2d38",
+      "reverseEdits": [
+        {
+          "start": 15,
+          "count": 1,
+          "lines": [
+            "  const target =\n",
+            "    face.calibration === undefined ? '#090806' : (calibratedPrintingStock(face) ?? '#090806');\n"
+          ]
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/m21/stock-native-review.json",
+    "sha256": "3b337111ad8721799d016f09c6568fc52229f8f957b86e64b51b03bcbbc48fe8"
+  }
+}

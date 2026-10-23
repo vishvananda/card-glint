@@ -660,7 +660,7 @@ release status remain separate checks.
 
 The M21 stock adoption is recorded separately from the historical modern-default
 and style receipts in
-[stock-native-review.json](fixtures/accuracy/m21/stock-native-review.json).
+[stock-native-review-r2.json](fixtures/accuracy/m21/stock-native-review-r2.json).
 It covers all 297 native faces and etchings, 292 nonfoil edge references, and
 native parity with named-M21 selection. The five foil-only printings are
 transfer controls, never pigment targets. Small changes to translucent interior
@@ -678,6 +678,6 @@ node games/magic/tools/accuracy/modern-stock-policy-audit.mjs \
 
 The policy tool checks all four material-selection modes and compares full
 native output against a separately captured named-M21 reference. It does not
-claim to render all four modes. The ancestry layer reverses only the five
+claim to render all four modes. The ancestry layer reverses only the six
 reviewed source edits to keep older receipts verifiable; unknown edits still
 fail. This stock receipt does not certify the rest of M21.

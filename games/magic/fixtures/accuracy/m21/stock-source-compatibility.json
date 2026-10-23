@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": 1,
+  "revision": 2,
   "base": "aaeb75ff134f64a9d0ba2b3cf56e76d2eb7ccd34",
   "scope": "Exact post-default stock/material-policy reconstruction for historical receipts. Does not certify a target set or waive unknown source edits.",
   "parents": [
@@ -11,10 +11,14 @@
     {
       "file": "games/magic/fixtures/accuracy/m21/style-source-compatibility.json",
       "sha256": "bcabcd4c3225c9ee6d19349ced38538d2936df22e37a70d5874d6f3a85d6be79"
+    },
+    {
+      "file": "games/magic/fixtures/accuracy/m21/stock-source-compatibility-r1.json",
+      "sha256": "4efa35eafaf2861df63224a1f82d73611364c7a48a3d1e192d940dd949ac5ac9"
     }
   ],
   "beforeRendererHash": "e0873a1bacd9cfc38d8d3144a5832281b361d407160351a8194a557d2b4d1c15",
-  "rendererHash": "c164d86c499c1bb3fcf87b90b21e6e4c928a9ee28760f0564313d3b76c63ae44",
+  "rendererHash": "decb416ef6ec0ba64a4d1d98cd458d3c1a44e63dbef0e84263573d693e6c304f",
   "files": {
     "games/magic/src/presentation/modern-printing-profiles.ts": {
       "before": "4fe827cab24d5780f6bd99b71c5c1acf505121df9ee51745590d66ff4947f565",
@@ -29,13 +33,24 @@
     },
     "games/magic/src/presentation/printing-calibration-materials.ts": {
       "before": "21dbab5dffff8efcfed98a9b18d8f818563509635c396edf79f6561ec76a1a9b",
-      "after": "0af2ae1284f85b09a89279d3b3fab4b06dc5d3304a668d07d4364074060db354",
+      "after": "30f2bedcf066fbcfc43443961e8a2087b2c0357938ec14ded4ca5652fb374a15",
       "reverseEdits": [
         {
+          "start": 112,
+          "count": 0,
+          "lines": ["    }\n"]
+        },
+        {
+          "start": 106,
+          "count": 4,
+          "lines": []
+        },
+        {
           "start": 69,
-          "count": 6,
+          "count": 10,
           "lines": [
-            "  let fallbackStock = Boolean(style?.inheritedFrom && ordinary && border && choice !== 'source');\n"
+            "  let fallbackStock = Boolean(style?.inheritedFrom && ordinary && border && choice !== 'source');\n",
+            "  if ((choice === 'auto' || explicitProfile) && supportsModernCalibration(face)) {\n"
           ]
         },
         {
@@ -135,10 +150,21 @@
           ]
         }
       ]
+    },
+    "games/magic/src/presentation/calibration-profiles.ts": {
+      "before": "a8f99bc3262a95686e4657a61e8ccfbaa45d6aabe53243739081192e7b3c4d93",
+      "after": "e2bad0e111e023d9f3aacfe2f7a5b9e3e63641fb2016b39125573764b79a837f",
+      "reverseEdits": [
+        {
+          "start": 179,
+          "count": 11,
+          "lines": []
+        }
+      ]
     }
   },
   "evidence": {
-    "file": "games/magic/fixtures/accuracy/m21/stock-native-review.json",
-    "sha256": "3b337111ad8721799d016f09c6568fc52229f8f957b86e64b51b03bcbbc48fe8"
+    "file": "games/magic/fixtures/accuracy/m21/stock-native-review-r2.json",
+    "sha256": "64944f40b9c924c6d44338ce591f90a2e6b12e7a18fb518afbf796a4b129d8c3"
   }
 }
