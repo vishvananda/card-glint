@@ -5,9 +5,13 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { root, hash, sourceHash, writeJson } from './common.mjs';
 import { openBrowser } from './browser.mjs';
+import { eighthFooterStudy } from './eighth-footer-native-study.mjs';
 import { eighthHeadingStudy } from './eighth-heading-study.mjs';
+import { modernMaterialStudy } from './modern-material-study.mjs';
+import { modernRulesStudyPlugin } from './modern-rules-study-plugin.mjs';
+import { eighthRulesStudyPlugin } from './eighth-rules-study-plugin.mjs';
 const [inputFile, out, studyFile] = process.argv.slice(2);
-assert(out, 'Usage: printing-calibration-native.mjs INPUTS OUT [EIGHTH_HEADINGS]');
+assert(out, 'Usage: printing-calibration-native.mjs INPUTS OUT [EIGHTH_STUDY]');
 execFileSync(process.execPath, [path.join(root, 'games/magic/tools/build-set-data.mjs')], {
   cwd: root,
   stdio: 'inherit',
@@ -27,13 +31,68 @@ if (study) {
   assert.equal(study.inputsHash, hash(inputBytes));
   assert.equal(study.rendererHash, rendererHash);
   assert.equal(study.painterHash, painterHash);
+  if (study.materials) {
+    const known = new Set(inputs.components.map((a) => a.url));
+    for (const [url, value] of Object.entries(study.materials)) {
+      assert(known.has(url), 'Material is absent from frozen input assets');
+      for (const p of [
+        'mask' in value ? value.frame : value,
+        ...('mask' in value ? [value.paper] : []),
+      ]) {
+        assert(Number.isFinite(p.hueDegrees) && Math.abs(p.hueDegrees) <= 180);
+        assert(
+          Number.isFinite(p.saturationScale) && p.saturationScale >= 0 && p.saturationScale <= 3,
+        );
+        assert(
+          Number.isFinite(p.brightnessScale) && p.brightnessScale >= 0.3 && p.brightnessScale <= 2,
+        );
+      }
+    }
+  }
+  if (study.rules) {
+    for (const [key, value] of Object.entries(study.rules)) {
+      if (key === 'typography') {
+        const bounds = {
+          leading: [0.8, 1.3],
+          paragraphGap: [0.1, 1.2],
+          flavorGap: [0.3, 2],
+          textWidth: [0.85, 1.15],
+        };
+        for (const [k, v] of Object.entries(value)) {
+          if (k === 'fractionalMetrics') assert.equal(typeof v, 'boolean');
+          else assert(bounds[k] && Number.isFinite(v) && v >= bounds[k][0] && v <= bounds[k][1]);
+        }
+      } else {
+        const bounds = {
+          maximumSize: [15, 26],
+          dx: [-10, 10],
+          dy: [-10, 10],
+          widthDelta: [-30, 30],
+          heightDelta: [-30, 30],
+        };
+        assert(
+          bounds[key] &&
+            Number.isFinite(value) &&
+            value >= bounds[key][0] &&
+            value <= bounds[key][1],
+        );
+      }
+    }
+  }
   assert(
     inputs.entries.every((e) => e.face.frameAssetFamily === 'eighth' && !e.face.frameTreatment),
   );
 }
 await mkdir(out, { recursive: true });
 const session = await openBrowser(inputs, {
-  plugins: study ? [eighthHeadingStudy(study.headings, painterHash)] : [],
+  plugins: study
+    ? [
+        eighthHeadingStudy(study.headings, painterHash),
+        ...(study.footer ? [eighthFooterStudy(study.footer, study.footerHash)] : []),
+        ...(study.materials ? [modernMaterialStudy()] : []),
+        ...(study.rules ? [modernRulesStudyPlugin(), eighthRulesStudyPlugin()] : []),
+      ]
+    : [],
 });
 try {
   await session.page.evaluate(async () => {
@@ -46,6 +105,16 @@ try {
     toolHash: hash(await readFile(new URL(import.meta.url))),
     studyHash: studyBytes ? hash(studyBytes) : null,
     studyToolHash: hash(await readFile(new URL('./eighth-heading-study.mjs', import.meta.url))),
+    studyDependencies: await Promise.all(
+      [
+        'eighth-footer-native-study.mjs',
+        'modern-material-study.mjs',
+        'modern-rules-study-plugin.mjs',
+        'modern-rules-orphan-study.mjs',
+        'modern-rules-typography-study.mjs',
+        'eighth-rules-study-plugin.mjs',
+      ].map(async (f) => [f, hash(await readFile(new URL(f, import.meta.url)))]),
+    ),
     painterHash,
     browser: await session.browser.version(),
     node: process.version,
@@ -101,7 +170,9 @@ try {
           e.face.illustration,
         );
         const result = {};
-        globalThis.__eighthHeadingStudy = study
+        globalThis.__m21MaterialTrial = study?.materials ?? {};
+        globalThis.__modernRulesStudy = study?.rules ?? {};
+        globalThis.__eighthHeadingStudy = study?.headings
           ? { name: e.face.name, typeLine: e.face.typeLine }
           : undefined;
         try {
@@ -129,11 +200,13 @@ try {
           }
         } finally {
           delete globalThis.__eighthHeadingStudy;
+          delete globalThis.__m21MaterialTrial;
+          delete globalThis.__modernRulesStudy;
           lease.dispose();
         }
         return result;
       },
-      { e, study: Boolean(study) },
+      { e, study },
     );
     const row = {
       id: e.id,
