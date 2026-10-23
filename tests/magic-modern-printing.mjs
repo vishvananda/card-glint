@@ -98,12 +98,11 @@ try {
         'Recolor leaked outside ink range',
       );
       let drawn;
-      const context = {
-        save() {},
-        restore() {},
-        drawImage(...args) {
-          drawn = args;
-        },
+      // Keep the complete Canvas API (including its preparation transform);
+      // only observe the geometry call instead of painting another bitmap.
+      const context = c;
+      context.drawImage = (...args) => {
+        drawn = args;
       };
       paintBasicLandSymbol(context, face, images);
       const g = p.geometry;
