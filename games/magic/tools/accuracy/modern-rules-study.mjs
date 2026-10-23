@@ -31,40 +31,71 @@ assert.equal(p.schema, 1);
 assert.deepEqual(p.candidates[0], { id: 'current', adjustment: {} });
 assert.equal(new Set(p.candidates.map((c) => c.id)).size, p.candidates.length);
 const families = new Set(['CardRenderer MTG MPlantin', ...(p.fonts ?? []).map((f) => f.family)]);
-for (const c of p.candidates) {
-  assert.match(c.id, /^[a-z0-9.-]+$/);
-  for (const [key, value] of Object.entries(c.adjustment)) {
-    if (key === 'retainSize' || key === 'fitLandEntryClause') {
-      assert.equal(typeof value, 'boolean');
-      continue;
-    }
-    if (key === 'fontFamily') {
-      assert(families.has(value));
-      continue;
-    }
-    if (key === 'typography') {
+const candidateLists = [p.candidates, ...Object.values(p.perPrinting ?? {})];
+for (const id of Object.keys(p.perPrinting ?? {}))
+  assert(
+    inputs.data.entries.some((entry) => entry.id === id),
+    'Unknown per-printing candidate',
+  );
+for (const candidates of candidateLists) {
+  assert(Array.isArray(candidates));
+  assert.deepEqual(
+    candidates.map((c) => c.id),
+    p.candidates.map((c) => c.id),
+  );
+  assert.deepEqual(candidates[0], { id: 'current', adjustment: {} });
+  for (const c of candidates) {
+    assert.match(c.id, /^[a-z0-9.-]+$/);
+    for (const [key, value] of Object.entries(c.adjustment)) {
+      if (
+        [
+          'retainSize',
+          'fitLandEntryClause',
+          'smartQuotes',
+          'ignoreLegacyLineBudget',
+          'preciseLegacyBudget',
+          'consistentBudget',
+        ].includes(key)
+      ) {
+        assert.equal(typeof value, 'boolean');
+        continue;
+      }
+      if (key === 'orphanScope') {
+        assert(['all', 'rules', 'single-rules', 'first-prose'].includes(value));
+        continue;
+      }
+      if (key === 'fontFamily') {
+        assert(families.has(value));
+        continue;
+      }
+      if (key === 'typography') {
+        const ranges = {
+          leading: [0.8, 1.3],
+          paragraphGap: [0.1, 1.2],
+          flavorGap: [0.3, 2],
+          textWidth: [0.85, 1.15],
+          centerOffset: [-15, 15],
+        };
+        for (const [k, v] of Object.entries(value))
+          assert(ranges[k] && Number.isFinite(v) && v >= ranges[k][0] && v <= ranges[k][1]);
+        continue;
+      }
       const ranges = {
-        leading: [0.8, 1.3],
-        paragraphGap: [0.1, 1.2],
-        flavorGap: [0.3, 2],
-        textWidth: [0.85, 1.15],
-        centerOffset: [-15, 15],
+        maximumSize: [15, 26],
+        orphanFill: [0.1, 0.45],
+        rulesSize: [0.85, 1.15],
+        flavorSize: [0.85, 1.15],
+        rulesWidth: [0.85, 1.15],
+        flavorWidth: [0.85, 1.15],
+        dx: [-10, 10],
+        dy: [-10, 10],
+        widthDelta: [-30, 30],
+        heightDelta: [-30, 30],
       };
-      for (const [k, v] of Object.entries(value))
-        assert(ranges[k] && Number.isFinite(v) && v >= ranges[k][0] && v <= ranges[k][1]);
-      continue;
+      assert(
+        ranges[key] && Number.isFinite(value) && value >= ranges[key][0] && value <= ranges[key][1],
+      );
     }
-    const ranges = {
-      maximumSize: [15, 26],
-      orphanFill: [0.1, 0.45],
-      dx: [-10, 10],
-      dy: [-10, 10],
-      widthDelta: [-30, 30],
-      heightDelta: [-30, 30],
-    };
-    assert(
-      ranges[key] && Number.isFinite(value) && value >= ranges[key][0] && value <= ranges[key][1],
-    );
   }
 }
 const toolFiles = [
@@ -72,6 +103,7 @@ const toolFiles = [
   'modern-rules-study-plugin.mjs',
   'modern-rules-study-browser.mjs',
   'modern-rules-orphan-study.mjs',
+  'modern-rules-typography-study.mjs',
   'text-filled-objective.mjs',
   'abu-type-objective.mjs',
   'native-text-window.mjs',
@@ -102,7 +134,10 @@ const definition = {
     toolFiles.map(async (f) => [f, hash(await readFile(new URL(f, import.meta.url)))]),
   ),
   scope:
-    'Native1.5x isolated rules painting, fixed frozen scan pixels and semantic badge exclusions. No artwork or frame is redrawn. Shared candidates only; no scan pose changes. Search objective combines symmetric edge distances with filled-ink overlap and is distinct from the published score. All297 sources retained, with separate basic/PW rows. Selection requires complete comparable candidate coverage, then full-card native validation.',
+    (p.perPrinting
+      ? 'Per-printing diagnostic size search; no shared-default or unseen-printing claim. '
+      : '') +
+    'Native1.5x isolated rules painting, fixed frozen scan pixels and semantic badge exclusions. No artwork or frame is redrawn. Candidate parameters are explicit; no scan pose changes. Search objective combines symmetric edge distances with filled-ink overlap and is distinct from the published score. All297 sources retained, with separate basic/PW rows. Selection requires complete comparable candidate coverage, then full-card native validation.',
 };
 assert.equal(definition.rendererHash, native.data.source.rendererHash);
 assert.deepEqual(
@@ -173,7 +208,7 @@ try {
           {
             face: e.face,
             url: 'data:image/png;base64,' + png.toString('base64'),
-            candidates: p.candidates,
+            candidates: p.perPrinting?.[e.id] ?? p.candidates,
           },
         ),
       );
@@ -204,7 +239,9 @@ try {
     .sort((a, b) => b.mean100 - a.mean100);
   await writeJson(path.join(output, 'summary.json'), {
     schema: 1,
-    status: 'search-proposal-requires-native-validation',
+    status: p.perPrinting
+      ? 'per-printing-proposal-requires-native-validation'
+      : 'search-proposal-requires-native-validation',
     sourceHash: hash(JSON.stringify(definition)),
     total: rows.length,
     measured: measured.length,

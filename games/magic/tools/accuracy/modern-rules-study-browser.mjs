@@ -16,6 +16,8 @@ const visible = (layout) =>
   layout.lines
     .flatMap((l) => l.runs.map((r) => r.text))
     .join('')
+    .replace(/[\u201c\u201d]/g, '"')
+    .replace(/[\u2018\u2019]/g, "'")
     .replace(/\s/g, '');
 export async function prepareRulesStudy(fonts) {
   await import('../../src/data/eager.ts');

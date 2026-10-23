@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import { createServer } from 'vite';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
+import { printingQuotes } from '../games/magic/tools/accuracy/modern-rules-typography-study.mjs';
+import { validateRulesNativePlan } from '../games/magic/tools/accuracy/modern-rules-native-plan.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { modernRulesStudyPlugin } from '../games/magic/tools/accuracy/modern-rules-study-plugin.mjs';
 const server = await createServer({
@@ -10,7 +12,7 @@ const server = await createServer({
   server: { middlewareMode: true, hmr: false },
 });
 try {
-  const { orphanParagraphCap } = await server.ssrLoadModule(
+  const { orphanParagraphCap, orphanParagraphs } = await server.ssrLoadModule(
     '/games/magic/tools/accuracy/modern-rules-orphan-study.mjs',
   );
   const context = {
@@ -39,6 +41,25 @@ try {
   };
   const paragraph = (text, extra = {}) => ({ role: 'rules', runs: [{ text }], ...extra });
   const typography = { fractionalMetrics: true, textWidth: 1 };
+  const opening = paragraph('Draw three cards, then discard a card.');
+  const activated = paragraph('{2}: Put a card on the bottom of your library.');
+  const keyword = paragraph('Flying');
+  const caption = paragraph('A deliberately short caption.', { role: 'flavor' });
+  assert.deepEqual(orphanParagraphs([opening, caption], 'first-prose'), [opening]);
+  assert.deepEqual(orphanParagraphs([keyword, opening], 'first-prose'), []);
+  assert.deepEqual(orphanParagraphs([activated, opening], 'first-prose'), []);
+  assert.deepEqual(
+    orphanParagraphs(
+      [paragraph(['First line.', 'Second line.'].join(String.fromCharCode(10)))],
+      'first-prose',
+    ),
+    [],
+  );
+  assert.deepEqual(orphanParagraphs([opening, activated, caption], 'rules'), [opening, activated]);
+  assert.deepEqual(orphanParagraphs([opening, activated], 'single-rules'), []);
+  assert.deepEqual(orphanParagraphs([opening, caption], 'single-rules'), [opening]);
+  assert.throws(() => orphanParagraphs([], 'unknown'), /Invalid orphan paragraph scope/);
+
   const cap = (paragraphs, width = 125) =>
     orphanParagraphCap(context, paragraphs, { width }, 20, typography, 0.25);
   assert.equal(cap([paragraph('aaaaa aaaaa')]), 20);
@@ -97,6 +118,14 @@ try {
   assert(result.includes('if (study.orphanFill && calibration)'));
   assert(!result.includes(';\\n'));
   assert(!source.includes('orphanParagraphCap'));
+  const layoutSource = await readFile('games/magic/src/presentation/rules-layout.ts', 'utf8');
+  const layoutProposal = modernRulesStudyPlugin().transform(
+    layoutSource,
+    '/presentation/rules-layout.ts',
+  ).code;
+  assert(layoutProposal.includes('typography.fractionalMetrics ?'));
+  assert.equal([...layoutProposal.matchAll(/paragraphWidth,/g)].length, 2);
+  assert(!layoutSource.includes('roleStudy'));
 } finally {
   await server.close();
 }
@@ -144,4 +173,78 @@ assert.equal(smallest.worst[0].name, 'Vryn Wingmare');
 assert(smallest.worst[0].delta100 < -68);
 console.log(
   'Complete trials: 268/268 current controls exact; all297 sources retained; seven worse global caps and severe orphan-rule regressions remain explicit and unadopted.',
+);
+
+assert.equal(printingQuotes('"A card," she said.'), '“A card,” she said.');
+assert.equal(printingQuotes("It's the card's text."), 'It’s the card’s text.');
+assert.equal(printingQuotes('Already “curved” text.'), 'Already “curved” text.');
+assert.equal(printingQuotes('("Quoted.")'), '(“Quoted.”)');
+assert.equal(printingQuotes('First line.\n"Second line."'), 'First line.\n“Second line.”');
+const digest = 'a'.repeat(64);
+const proposalInputs = {
+  set: 'm21',
+  entries: Array.from({ length: 297 }, (_, i) => ({
+    id: String(i),
+    face: { wordingMode: 'original', typeLine: 'Creature' },
+  })),
+};
+const plan = {
+  schema: 1,
+  set: 'm21',
+  inputsHash: digest,
+  rendererHash: digest,
+  selectionPolicy: 'Diagnostic native validation only',
+  adjustments: {
+    0: {
+      inputHash: hash(JSON.stringify(proposalInputs.entries[0].face)),
+      adjustment: { maximumSize: 23.75, smartQuotes: true, ignoreLegacyLineBudget: true },
+    },
+  },
+};
+assert.equal(validateRulesNativePlan(plan, proposalInputs, digest, digest), plan);
+for (const change of [
+  (p) => {
+    p.inputsHash = 'b'.repeat(64);
+  },
+  (p) => {
+    p.rendererHash = 'b'.repeat(64);
+  },
+  (p) => {
+    p.adjustments['0'].inputHash = 'b'.repeat(64);
+  },
+  (p) => {
+    p.adjustments['missing'] = p.adjustments['0'];
+  },
+  (p) => {
+    p.adjustments['0'].adjustment.maximumSize = NaN;
+  },
+  (p) => {
+    p.adjustments['0'].adjustment.maximumSize = 26.25;
+  },
+  (p) => {
+    p.adjustments['0'].adjustment.dx = 0.25;
+  },
+  (p) => {
+    p.adjustments['0'].adjustment.smartQuotes = 'true';
+  },
+]) {
+  const bad = structuredClone(plan);
+  change(bad);
+  assert.throws(() => validateRulesNativePlan(bad, proposalInputs, digest, digest));
+}
+for (const typeLine of ['Basic Land — Plains', 'Planeswalker — Teferi', 'Enchantment — Saga']) {
+  const badInputs = structuredClone(proposalInputs),
+    next = structuredClone(plan);
+  badInputs.entries[0].face.typeLine = typeLine;
+  next.adjustments['0'].inputHash = hash(JSON.stringify(badInputs.entries[0].face));
+  assert.throws(
+    () => validateRulesNativePlan(next, badInputs, digest, digest),
+    /ordinary nonbasic/,
+  );
+}
+const oracleInputs = structuredClone(proposalInputs);
+oracleInputs.entries[0].face.wordingMode = 'oracle';
+assert.throws(() => validateRulesNativePlan(plan, oracleInputs, digest, digest));
+console.log(
+  'Native text proposals: exact Original recipe/source binding, ordinary-only scope, no per-card offsets, printing punctuation and invalid-knob rejection pass.',
 );

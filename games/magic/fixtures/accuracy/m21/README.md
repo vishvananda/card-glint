@@ -708,3 +708,69 @@ receipt records both complete parameter lists and every selected trial.
 Aligned zooms also reveal straight source quotation marks where the printing has
 curved marks. Body and flavor can require different fitting decisions. Audit those
 roles and printing typography before introducing another shared size rule.
+
+## Per-printing size diagnostic and shared-model comparison
+
+[Complete evidence](printing-size-diagnostic-review.json) retains six native-font
+studies, all297 sources,268 ordinary fields, two complete native proposals and
+archived rendering methods. Current controls reproduce exactly in every study.
+The current renderer remains profile16; these are **not adopted runtime rules**.
+
+| Proposal                            | Whole-card before /100 | After /100 | Improved | Regressed |
+| ----------------------------------- | ---------------------: | ---------: | -------: | --------: |
+| Individual Original size diagnostic |                 80.525 |     83.284 |      105 |         0 |
+| Shared text-length/token model      |                 80.525 |     80.696 |       25 |        19 |
+
+The individual search uses a coarse fixed cap grid followed by quarter-pixel
+refinement, with current retained as a candidate. Only isolated text-objective
+gains of at least5/100 enter the native proposal. This is an in-sample finite
+printing fit, not evidence of a shared rule for other printings or Oracle text.
+All105 selected faces improve in the separate whole-card metric. The other192
+faces, every etching and every alpha field remain exact, with no changed pixels
+outside the rules region. Rules/flavor nonfoil mean rises65.247 to74.647/100.
+Scores reuse192 byte-identical faces;105 are recalculated.
+
+The shallow shared model uses only rules word count and inline-symbol count
+in its selected tree. It changes44 of54 selected cards, leaving253 faces exact.
+Its19 regressions remain explicit. Five Oracle-identity folds are exploratory:
+features were selected after examining this census, so no independent final
+validation is claimed. The model does not consume per-printing optimal centers.
+
+Fractional measurement still has an important limit: the existing line-count
+budget comes from a legacy pass that can use rounded advances. Both a fractional
+legacy budget and a fully consistent budget were tested, with and without
+printing punctuation. At the unchanged fit values, all four lower the complete
+text objective. They are unrefitted proposals, not production fixes.
+
+The [live experiment](https://tetrarcum.com/m21/textfit/) shows41 examples,
+including12 selected fits, with current shared M21 in the middle. Text patches
+come from a region where the full native rendering exactly matches the opaque,
+art-free baseline plate; no illustration pixels are hosted in the patch.
+The separate common-eligible score still improves80.523 to83.284/100 despite
+Aven Gagglemaster's retained frame-context eligibility issue.
+
+The study runner accepts an optional perPrinting object of candidate arrays,
+using exactly the global candidate IDs/order and retaining current first.
+Its output labels this as per-printing diagnostic search. To check a selected
+plan against full cards:
+
+```sh
+node games/magic/tools/accuracy/modern-calibration-native.mjs \
+  INPUTS NEW_NATIVE --rules-study PARAMETERS
+python games/magic/tools/accuracy/native-region-parity.py \
+  BASE_NATIVE NEW_NATIVE SCOPE.json.gz --region 36 427 416 206
+```
+
+A native text plan binds the exact Original recipes and renderer, allows only
+font caps, printing punctuation and line-budget policy, and rejects card-specific
+position/geometry knobs and unsupported frames. The native output carries an
+explicit study marker; it cannot masquerade as a production stock audit.
+Reproduce exploratory text-length models without image decoding:
+
+```sh
+python games/magic/tools/accuracy/modern-text-size-model.py \
+  INPUTS FIXED_CANDIDATE_STUDY MODEL.json
+```
+
+The model rejects adaptive per-printing centers as training actions. Its output
+shows development and exploratory fold results, including worst losses.

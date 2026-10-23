@@ -1,3 +1,5 @@
+import { modernRulesStudyPlugin } from './modern-rules-study-plugin.mjs';
+import { validateRulesNativePlan } from './modern-rules-native-plan.mjs';
 import { modernManaStudy } from './modern-mana-study.mjs';
 import { modernColoredArtifactStudy } from './modern-colored-artifact-study.mjs';
 import { modernLandLayerStudy } from './modern-land-layer-study.mjs';
@@ -12,6 +14,12 @@ import { modernPlateControlsStudy } from './modern-plate-controls-study.mjs';
 import { modernMaterialStudy } from './modern-material-study.mjs';
 import { root, hash, sourceHash, writeJson } from './common.mjs';
 const [inputFile, outputDirectory, ...options] = process.argv.slice(2);
+const rulesIndex = options.indexOf('--rules-study');
+const rulesFile = rulesIndex < 0 ? undefined : options[rulesIndex + 1];
+assert(
+  !rulesFile || options.length === 2,
+  'A rules proposal cannot combine with other study modes',
+);
 const allowed = ['--retain-modern-controls', '--retain-component-rules'];
 const study = allowed.find((flag) => options.includes(flag));
 const componentBaseline = options.includes('--component-source-baseline');
@@ -49,6 +57,7 @@ assert(
   'A component-source baseline cannot recolor absent plates',
 );
 const expectedOptions = [
+  ...(rulesFile ? ['--rules-study', rulesFile] : []),
   ...(coloredArtifact
     ? [artifactPinlines ? '--colored-artifact-pinlines-study' : '--colored-artifact-study']
     : []),
@@ -65,7 +74,7 @@ assert(
 );
 assert(
   outputDirectory,
-  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline] [--land-layer-study] [--colored-artifact-study|--colored-artifact-pinlines-study] [--mana-study PARAMETERS]',
+  'Usage: modern-calibration-native.mjs INPUTS OUT [--retain-modern-controls|--retain-component-rules] [--materials PARAMETERS] [--component-source-baseline] [--land-layer-study] [--colored-artifact-study|--colored-artifact-pinlines-study] [--mana-study PARAMETERS] [--rules-study PARAMETERS]',
 );
 // The eager table registry imports generated per-set payloads. Rebuild before
 // source fingerprints and browser imports so a source edit cannot fit stale data.
@@ -89,6 +98,15 @@ if (coloredArtifact)
       ),
     'Use the complete three-card ordinary colored-artifact cohort',
   );
+const rulesBytes = rulesFile ? await readFile(rulesFile) : null;
+const rulesParameters = rulesBytes
+  ? validateRulesNativePlan(
+      JSON.parse(rulesBytes),
+      inputs,
+      hash(bytes),
+      await sourceHash(path.join(root, 'games/magic/src')),
+    )
+  : null;
 const out = path.resolve(outputDirectory);
 await mkdir(out, { recursive: true });
 const manaBytes = manaFile ? await readFile(manaFile) : null;
@@ -164,6 +182,7 @@ if (materials) {
 }
 const session = await openBrowser(inputs, {
   plugins: [
+    ...(rulesParameters ? [modernRulesStudyPlugin()] : []),
     ...(manaParameters ? [modernManaStudy(manaParameters)] : []),
     ...(coloredArtifact ? [modernColoredArtifactStudy({ pinlines: artifactPinlines })] : []),
     ...(landLayers ? [modernLandLayerStudy()] : []),
@@ -178,6 +197,29 @@ try {
     await import('/games/magic/src/data/eager-wording.ts');
   });
   const source = {
+    ...(rulesBytes
+      ? {
+          study: {
+            name: '--rules-study',
+            toolHash: hash(
+              await readFile(new URL('./modern-rules-study-plugin.mjs', import.meta.url)),
+            ),
+          },
+          rulesStudy: {
+            parametersHash: hash(rulesBytes),
+            selectedPrintings: Object.keys(rulesParameters.adjustments).length,
+            selectionPolicy: rulesParameters.selectionPolicy,
+            tools: await Promise.all(
+              [
+                'modern-rules-study-plugin.mjs',
+                'modern-rules-orphan-study.mjs',
+                'modern-rules-typography-study.mjs',
+                'modern-rules-native-plan.mjs',
+              ].map(async (file) => [file, hash(await readFile(new URL(file, import.meta.url)))]),
+            ),
+          },
+        }
+      : {}),
     ...(manaParameters
       ? {
           manaStudy: {
@@ -308,6 +350,7 @@ try {
           landHeaders,
           landTexture,
           dualHeaderMaterial,
+          rulesAdjustment,
         }) => {
           const { composeCardTexture } = await import(
             '/games/magic/src/presentation/canvas-face.ts'
@@ -317,6 +360,7 @@ try {
           );
           const { loadAccuracyImages } = await import('/games/magic/tools/accuracy/abu-assets.mjs');
           const result = {};
+          globalThis.__modernRulesStudy = rulesAdjustment;
           let lease;
           globalThis.__m21LandLayers = landLayers;
           globalThis.__m21LandHeaders = null;
@@ -373,6 +417,7 @@ try {
             }
           } finally {
             lease?.dispose();
+            delete globalThis.__modernRulesStudy;
             delete globalThis.__m21MaterialTrial;
             delete globalThis.__m21LandLayers;
             delete globalThis.__m21LandHeaders;
@@ -391,6 +436,7 @@ try {
           landHeaders: materials?.landHeaders ?? null,
           landTexture: materials?.landTexture ?? null,
           dualHeaderMaterial: materials?.dualHeaderMaterial ?? null,
+          rulesAdjustment: rulesParameters?.adjustments[e.id]?.adjustment ?? {},
         },
       );
       for (const [layer, value] of Object.entries(rendered)) {
