@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "set": "m21",
+  "status": "complete-population-release-comparison-not-component-certification",
+  "definition": {
+    "schema": 1,
+    "set": "m21",
+    "beforeVersion": "0.6.11",
+    "afterVersion": "0.6.12",
+    "beforeCommit": "89b320d41ed41ddaaf92e5c72f6390a5dbc9448f",
+    "beforeRendererHash": "34a8a05e2e5dae4786486eb5d3fbac6b21cfc1ff9d0b47a06135f84f19de7e4a",
+    "afterRendererHash": "de4ae64b43769cd9cd39a8ddc79fd9fa016e82ff0c5586ce2b9112c6bcbe6a3c",
+    "beforeCaptureHash": "9b3b45338a9512c8ccbe7e983eef8f16b964d99cbabf013634f751d3fa36c2fe",
+    "afterCaptureHash": "fcb4b746cf6580261ff84338829462eb37b08237125e160dd108907333c1ec9c",
+    "beforeScoresHash": "0c6f77eee0f6fb77298272ec7271d9919ffbef31d8cc56b3ebdb4e88f82eb6c6",
+    "afterScoresHash": "8a8554faf5f17ec7a86f7629745470e9bbfaf870bad3d3a47101905be30ae7e4",
+    "inputsHash": "5ac6983a77a966bae32cfd04ab82d9145fefe461f4fbca7159ba2362ae93ff5f",
+    "normalizationHash": "7c90a70f6d969238efd6b6897cfbefd83f7f792e546fb75962d09054d571eaa5",
+    "metricGraph": {
+      "hash": "dc799073df34b807f5ce03a565f5fc69ebe86489e4323f659eeed2182506181c",
+      "node": "v22.22.1",
+      "sources": [
+        [
+          "accuracy-metrics.mjs",
+          "9aa8a104719e9a8512fe064d0b87e78c354561313a3df41b53f3c4a66e0186d1"
+        ],
+        ["accuracy-policy.mjs", "847eefc4e0e172da8305cb662565a0e250213b61ce8bbd3a74cf338d7ed087f3"],
+        [
+          "accuracy-regions-planar.mjs",
+          "37545cfd59150132429ac9cd3becb0c24df4874e5e62f3b05060d0ffc8f7611b"
+        ],
+        [
+          "m21-planeswalker-regions.mjs",
+          "b2b58059c35a72023971d3ee05a3a40125041ce1ce4abf3c2f7dd9dcc67b1a70"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/edges.mjs",
+          "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/metrics.mjs",
+          "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/pixels-pure.mjs",
+          "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"
+        ],
+        [
+          "vendor/card-glint/games/magic/tools/accuracy/scan-transform.mjs",
+          "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"
+        ]
+      ]
+    },
+    "preprocessingGraph": {
+      "hash": "81ac8a6dd25657810e1631f1e5b241d137a5b22f0512c53d5f3be6045202cbf7",
+      "node": "v22.22.1",
+      "sources": [
+        ["pixels-pure.mjs", "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b"],
+        ["scan-transform.mjs", "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6"]
+      ]
+    },
+    "scorerHash": "34b8a873624c86c550ef7b172d57d51532efb8e25a0ca70e62c0b244c0c70df8",
+    "beforeNativeToolHash": "a6cbbcd59fd84c2a102e90275e9e14365f14dc460dba6a7738086cd876d4aa32",
+    "afterNativeToolHash": "2ffce8f2306d6bcc557d2d64288d5e6ad7c7eb7bf00dd039023a80f0a0255b1b",
+    "method": "Full native face+etching capture at732x1020; exact released0.6.11 source versus production M21 profile16. No painting-study injection. Before capture adapter only selects the immutable source checkout and its own source/font/helper fingerprints. Both consume identical Original recipes and fixed independently certified affine scan poses. Pixel/reference hashes checked before scoring. Shared components use common eligible coverage for paired regional means."
+  },
+  "summary": {
+    "cards": 297,
+    "nonfoil": 292,
+    "metricCounts": {
+      "structure100": 297,
+      "commonStructure100": 297,
+      "artNeutralStructure100": 297,
+      "frame100": 255
+    },
+    "released": {
+      "structure100": 73.08491704352097,
+      "commonStructure100": 73.08586712045802,
+      "artNeutralStructure100": 73.74456206590799,
+      "frame100": 75.46580506126782
+    },
+    "best": {
+      "structure100": 80.52527289351093,
+      "commonStructure100": 80.52527289351092,
+      "artNeutralStructure100": 80.93791196529669,
+      "frame100": 81.15455624339651
+    },
+    "improved": 278,
+    "regressed": 19,
+    "meanCoverage": {
+      "released": 0.9298182654704393,
+      "best": 0.9284129075433423
+    }
+  },
+  "limitations": [
+    "Structure indices outof100, not percentages; color and saturation are not measured.",
+    "All297ordinaryprintings retained;5foil-onlyreferences are structural controls, never nonfoil color targets.",
+    "Legacy legal-credit content gates remain explicit; missing/low-signal components are not silently scored.",
+    "A full-population calibration/release comparison is not proof that every component/task is certified."
+  ],
+  "evidence": {
+    "file": "release-0612-comparison.json.gz",
+    "sha256": "c5771ef49bf5a6afb1d4c6489b618af8750b08db5f6924b125132114c560b06a",
+    "contentSha256": "4f628101a7609e39d8eb6ed7056d36ab60c81ad736c33bad0c860541092ce0a0"
+  }
+}

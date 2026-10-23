@@ -127,7 +127,7 @@ The README's paired eight-second GIFs and MP4s are captured from the same render
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.6.11/card-glint-0.6.11.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.6.12/card-glint-0.6.12.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
