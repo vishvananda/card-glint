@@ -201,6 +201,13 @@ try {
     providerLandPalette('Land', [], 'm21', '2015', ['W', 'U', 'B', 'R', 'G']),
     undefined,
   );
+  assert.deepEqual(providerLandPalette('Land', [], '8ed', '2003', ['W', 'U', 'B', 'R', 'G']), [
+    'W',
+    'U',
+    'B',
+    'R',
+    'G',
+  ]);
   assert.equal(providerLandPalette('Land — Forest', ['G'], 'fut', 'future', ['G']), undefined);
   console.log(
     'Original wording preserves basic/dual palettes, enchantment semantics, explicit overrides and frame cache identity.',

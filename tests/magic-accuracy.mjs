@@ -122,7 +122,8 @@ for (const frame of ['1993', '1997']) {
 }
 assert.equal(exclusion({ ...card, border_color: 'silver' }), 'special-treatment');
 assert.equal(qualityIssue({ ...card, frame: '1997', layout: 'split' }), 'unsupported-layout');
-assert.equal(qualityIssue({ ...card, frame: '2003' }), 'unsupported-layout');
+assert.equal(qualityIssue({ ...card, frame: '2003' }), null);
+assert.equal(qualityIssue({ ...card, frame: '2003', layout: 'split' }), 'unsupported-layout');
 assert.equal(landmarks('retro-seventh').length, 15);
 const artEntry = {
   card: { ...card, id: 'cb9b9a9d-ae4c-4e04-bf9d-cae48f01292c' },

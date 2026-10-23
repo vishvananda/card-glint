@@ -35,7 +35,10 @@ export function providerLandPalette(
   )
     throw Error('Invalid produced mana.');
   const palette = [...'WUBRG'].filter((c) => produced.includes(c)) as FrameColor[];
-  return palette.length >= 1 && palette.length <= 2 ? palette : undefined;
+  // The complete Eighth scan census confirms its rainbow land uses the gold
+  // plate. Keep unreviewed printing eras on the conservative two-color policy.
+  const maximum = set?.toLowerCase() === '8ed' && frame === '2003' ? 5 : 2;
+  return palette.length >= 1 && palette.length <= maximum ? palette : undefined;
 }
 
 /** MTGJSON has no produced_mana field. Accept only a literal tap-for-mana

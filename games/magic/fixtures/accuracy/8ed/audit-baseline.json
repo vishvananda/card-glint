@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "set": "8ed",
+  "status": "audit-in-progress",
+  "reviewedAt": "2026-10-23T21:14:11.433572+00:00",
+  "baselineRelease": "0.6.12",
+  "scope": "All 707 ordinary English printing records. Nonfoil layout/color baseline uses all 357 nonfoil scans; 350 foil-only references are retained in the inventory but excluded from pigment fitting. No default adoption or complete-set certification is claimed.",
+  "inventory": {
+    "all": 707,
+    "nonfoil": 357,
+    "foilOnly": 350,
+    "uniqueCards": 342
+  },
+  "baseline": {
+    "inputsSha256": "61287d2adc32392e2fb93e416036a086d66a78b88e11b81f7331890325cee31f",
+    "captureSha256": "fc00f72c7828ff5400e80935486686ed1afa56233974e848258f33af7a62f4c3",
+    "rendererHash": "de4ae64b43769cd9cd39a8ddc79fd9fa016e82ff0c5586ce2b9112c6bcbe6a3c",
+    "normalizationSha256": "74d53fe13b625ab6f1ab5000f417a7c12e6925966d5d22113736d4b1391b797c",
+    "scoresSha256": "29df6a10c64c38a2bb41d41ada3b765ab4b54bfbbf08587c14ad79d7c928cfdb",
+    "metricGraph": "9f1d07048c76c3b188af2a09672e3c728da3be3e01c820ac61fc788aacfd4cde",
+    "acceptedScans": 352,
+    "rejectedScans": 5,
+    "meanStructure100": 69.41513489611316,
+    "components": {
+      "title": {
+        "count": 352,
+        "mean100": 61.72655194369153
+      },
+      "mana": {
+        "count": 326,
+        "mean100": 76.13625698538333
+      },
+      "type": {
+        "count": 352,
+        "mean100": 74.44681589942867
+      },
+      "rules": {
+        "count": 352,
+        "mean100": 47.03364062479038
+      },
+      "symbol": {
+        "count": 352,
+        "mean100": 85.51777484989196
+      },
+      "stats": {
+        "count": 161,
+        "mean100": 75.11256030133428
+      },
+      "frame": {
+        "count": 352,
+        "mean100": 80.82259124083629
+      },
+      "art": {
+        "count": 352,
+        "mean100": 92.64423584066652
+      },
+      "credits": {
+        "count": 352,
+        "mean100": 56.193840971999066
+      }
+    }
+  },
+  "rejectedNormalization": [
+    {
+      "id": "8c78d392-9f2f-4241-9a10-6ac9b1e86154",
+      "name": "Ardent Militia",
+      "referenceHash": "fbb76a0df73d255060c1a3f9ab9d7c885933a76a540ebdcfb1dd5ffdeaf3c32d",
+      "reason": "no-validated-model"
+    },
+    {
+      "id": "34b5709c-d6bb-4866-a613-cbe93a918caa",
+      "name": "Circle of Protection: Black",
+      "referenceHash": "9a1c2761172d4ceb60853c3c0c3c399a1116f23d8f120b338167461cbae8558c",
+      "reason": "no-validated-model"
+    },
+    {
+      "id": "9513c206-b578-4973-93cc-077e5a6658b0",
+      "name": "Coastal Tower",
+      "referenceHash": "e8f451c776ab162709ab8997a472102edc2bbb4eadea648721af47d39b6dd6d4",
+      "reason": "no-validated-model"
+    },
+    {
+      "id": "5eedb94c-058e-4c3a-96cf-e6624c03d26e",
+      "name": "Urza's Mine",
+      "referenceHash": "b6e21aff70780905bd41be4b8be64386524fe2ad563fd44a76d42691111b370c",
+      "reason": "no-validated-model"
+    },
+    {
+      "id": "066b5162-8724-4df3-a3d5-274036d0049d",
+      "name": "Swamp",
+      "referenceHash": "5fc5f75a431470007a847a9c60e6fcdc6c4a6965052de92f84434a30a1afd874",
+      "reason": "no-validated-model"
+    }
+  ],
+  "completed": [
+    "Lab tests and live desktop/phone release/report/rendering checks",
+    "Complete cached reference/art inventory",
+    "Native baseline for all 357 nonfoil printings, with face and etching output",
+    "Physical scan normalization applied before baseline scoring",
+    "Visually reviewed 91 differing nonfoil type lines and 89 available foil counterparts; added 170 corrections beyond existing reviews",
+    "Corrected imported Eighth rainbow-land palette, preserving semantic colors and black/white border metadata"
+  ],
+  "remaining": [
+    "Review the five rejected physical scan normalizations",
+    "Headings: placement, font size, width and long-name fitting",
+    "Frame and art/rules apertures, pinlines and corners",
+    "Frame, paper, inner black level and stock colors; keep foil pigment excluded",
+    "Cost mana: discs, glyphs, numerals, spacing, shadows and color",
+    "Set symbols: all rarities, shape, outline, size and position",
+    "Rules and flavor: original wording, fitting, paragraph/line spacing and attributions",
+    "Artist brush/credit, copyright, trademark and collector line",
+    "Power/toughness badge, numerals, slash and variable stars",
+    "Basic lands: large glyphs, paper, pinlines and material masks",
+    "Complete native verification and scores after corrections",
+    "Source-bound fallback to other compatible Eighth-family sets; preserve exact profiles and distinguish white from black surrounds",
+    "Update Lab comparison/report and validate deployed consumer defaults"
+  ]
+}

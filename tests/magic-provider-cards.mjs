@@ -381,3 +381,16 @@ assert.deepEqual(battle, battleBefore);
 console.log(
   'PASS provider render routing, panel palettes, land colors, original panel boundaries, artwork pairing, historical cost order and reverse-side stamps',
 );
+
+for (const border_color of ['white', 'black']) {
+  const rainbow = fromScryfallCard({
+    ...land,
+    set: '8ed',
+    frame: '2003',
+    border_color,
+    produced_mana: ['W', 'U', 'B', 'R', 'G'],
+  });
+  assert.deepEqual(resolveFrameColors(rainbow), ['W', 'U', 'B', 'R', 'G']);
+  assert.deepEqual(rainbow.colors, []);
+  assert.equal(rainbow.borderColor, border_color);
+}

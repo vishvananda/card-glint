@@ -28,7 +28,7 @@ export function qualityIssue(card) {
   if (card.image_status !== 'highres_scan' || !card.highres_image)
     return 'reference-not-high-resolution';
   if (!card.image_uris?.png || !card.image_uris?.art_crop) return 'missing-reference-images';
-  if (!['1993', '1997', '2015'].includes(card.frame) || card.layout !== 'normal')
+  if (!['1993', '1997', '2003', '2015'].includes(card.frame) || card.layout !== 'normal')
     return 'unsupported-layout';
   return null;
 }
