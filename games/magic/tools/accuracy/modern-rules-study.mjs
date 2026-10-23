@@ -34,7 +34,7 @@ const families = new Set(['CardRenderer MTG MPlantin', ...(p.fonts ?? []).map((f
 for (const c of p.candidates) {
   assert.match(c.id, /^[a-z0-9.-]+$/);
   for (const [key, value] of Object.entries(c.adjustment)) {
-    if (key === 'retainSize') {
+    if (key === 'retainSize' || key === 'fitLandEntryClause') {
       assert.equal(typeof value, 'boolean');
       continue;
     }

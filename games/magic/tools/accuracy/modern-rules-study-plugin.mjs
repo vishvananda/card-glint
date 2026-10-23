@@ -32,15 +32,37 @@ export function modernRulesStudyPlugin() {
           '  const study = (globalThis as any).__modernRulesStudy ?? {};\n' +
             '  bounds.x += study.dx ?? 0; bounds.y += study.dy ?? 0;\n' +
             '  bounds.width += study.widthDelta ?? 0; bounds.height += study.heightDelta ?? 0;\n' +
+            landEntryStudy +
             '  const reference =\n',
         );
         code = once(
           code,
-          '  maximumSize = 24.5 * scale,',
-          '  maximumSize = ((globalThis as any).__modernRulesStudy?.maximumSize ?? 24.5) * scale,',
+          'rules.capAtBaseSize ? baseline.size : (rules.maximumSize ?? 24.5) * scale',
+          'rules.capAtBaseSize ? baseline.size : ((globalThis as any).__modernRulesStudy?.maximumSize ?? rules.maximumSize ?? 24.5) * scale',
         );
       } else return;
       return { code, map: null };
     },
   };
 }
+
+// Proposal only: preserve the current legacy line budget and reduce an entry
+// clause by its wording, rather than fitting separate values to individual scans.
+const landEntryStudy = `
+  if (study.fitLandEntryClause && calibration && face.land) {
+    const first = paragraphs.find(p => p.role === 'rules')?.runs.map(r => r.text).join('') ?? '';
+    const phrase = first.match(/^(.* enters the battlefield) tapped[.]$/)?.[1];
+    if (phrase) {
+      context.save();
+      try {
+        context.textRendering = 'geometricPrecision';
+        context.fontKerning = 'normal';
+        for (; maximumSize > 15 * scale; maximumSize -= .25 * scale) {
+          context.font = rulesFont(maximumSize, false);
+          if (context.measureText(phrase).width * (typography.textWidth ?? 1) <= bounds.width)
+            break;
+        }
+      } finally { context.restore(); }
+    }
+  }
+`;

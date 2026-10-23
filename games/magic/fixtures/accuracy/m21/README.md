@@ -547,3 +547,40 @@ from 80.473 to 80.502/100. See [the receipt](basic-shadow-native-review.json) an
 Canvas policy tests cover 244, 488 and 732 pixel tiers, transformed cast vectors,
 state restoration, retained unrelated defaults and custom rules.
 This regional fit does not certify the entire set.
+
+## Full-card census and remaining source/text proposals
+
+The [297-printing visual census](full-card-census-review.json) covers all25
+contact pages with Original wording and frozen affine poses. It discovers
+component defects; thumbnail inspection does not certify fine typography or
+set completion. The [source and land-text proposals](source-and-land-text-proposals.json)
+record the subsequent full native experiments separately from production.
+
+Paired crowns restore missing WU/RG tips on Niambi and Radha. Fabled Passage's
+gold-land source improves whole-card structure80.460 to86.411/100, with better
+paper/name/type colors. Neither source proposal is adopted yet.
+
+A wording-derived entry-clause size improves11 of18 nonbasic lands, leaves6
+native faces exact and regresses Wind-Scarred Crag. Mean whole-card structure
+rises77.350 to82.503/100, but the counterexample remains visible. Zoom also
+corrects the overview's broad line-count description: many opening clauses
+still have two lines; the words break at a different point.
+
+To replay the shared text experiment, run
+`modern-rules-study.mjs INPUTS NATIVE SCORES PARAMETERS OUT` with parameters:
+
+```json
+{
+  "schema": 1,
+  "candidates": [
+    { "id": "current", "adjustment": {} },
+    { "id": "entry-fit", "adjustment": { "fitLandEntryClause": true } }
+  ]
+}
+```
+
+The tool retains all297 inputs and reports268 ordinary fields separately from
+basics/planeswalkers. `maximumSize` now overrides the actual calibrated maximum
+without changing the legacy line budget. Six independent native-font trial
+results verify that correction. These are accuracy-tool options, not new
+renderer defaults; full native adoption and component review are still required.
