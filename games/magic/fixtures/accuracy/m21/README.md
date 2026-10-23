@@ -1,5 +1,53 @@
 # M21 calibration evidence
 
+Current unreleased profile: **16**. The [component census](current-component-census.json)
+covers all **297 Original printings / 85 physical variants**, with every scan,
+native face, etching and normalized reference hash rechecked. It imports the
+existing frozen-metric scores; it does not silently change the metric, refit
+poses or approve component calibration.
+
+Whole-card structure is **80.525/100** across all printings and **80.702/100**
+across the 292 nonfoil printings. Mean eligible nonfoil regional scores:
+
+| Region                   | Score /100 | Measured / expected |
+| ------------------------ | ---------: | ------------------: |
+| Title                    |     87.696 |           292 / 292 |
+| Mana cost                |     91.167 |           259 / 259 |
+| Type                     |     96.709 |           292 / 292 |
+| Set symbol               |     94.996 |           292 / 292 |
+| Rules and flavor         |     65.247 |           292 / 292 |
+| P/T and starting loyalty |     88.815 |           157 / 157 |
+| Frame boundaries         |     81.157 |           250 / 292 |
+
+The frame mean includes five zero-score missing-ink cases; 42 low-signal cases
+stay visible outside that mean. Credit overlap is **86.795/100 diagnostically**,
+but the frozen metric still labels all 297 credits as requiring content review.
+Those unapproved measurements do not enter the whole-card mean. Original legal
+and artist wording has a separate finite visual review. Rules/flavor and
+artist/legal are combined regions, so these numbers cannot independently
+approve either subcomponent. Foil-only printings remain structure controls,
+excluded from nonfoil regional means and all pigment fitting.
+
+The compressed census contains every printing's input, reference, affine-pose,
+face and etching hashes; scalar regional measurements; current material-group
+breakdowns; and the five lowest eligible examples per region. The emitter
+checks current runtime/font/helper fingerprints and exact native and score
+file identities. Regenerate with existing cached results:
+
+```sh
+MAGIC_ACCURACY_CACHE=YOUR_CACHE node games/magic/tools/accuracy/modern-component-census.mjs \
+  INPUTS NATIVE_DIRECTORY NORMALIZATION_DIRECTORY SCORES_DIRECTORY \
+  METRIC_MODULE games/magic/fixtures/accuracy/m21/current-component-census.json
+npx prettier --write games/magic/fixtures/accuracy/m21/current-component-census.json
+node tests/magic-modern-component-census.mjs
+```
+
+The remaining sections preserve chronological experiment receipts. Their
+profile numbers, open-work notes and intermediate scores describe those
+snapshots; the latest census does **not** mark M21 complete.
+
+## Earlier component reviews
+
 The unreleased calibration branch is at profile revision 11. The
 [foreground material review](walker-foreground-native-review.json) improves all
 35 clean nonfoil planeswalker regions; mean OKLab distance falls from 4.87 to

@@ -15,6 +15,7 @@ import { printingScope, summarizeSet } from './rollout-policy.mjs';
 import { calibrationVariant, calibrationApplicability } from './calibration-groups.mjs';
 import { CALIBRATION_TASKS, calibrationSetStatus } from './calibration-ledger.mjs';
 import { preserveCalibrationReviews } from './calibration-reviews.mjs';
+import { calibrationReport } from './calibration-report.mjs';
 import {
   applyM21Evidence,
   applyM21MonoEvidence,
@@ -79,7 +80,36 @@ const matchGuards = async (receipt) =>
 const m21RefinedGuardsMatch = await matchGuards(m21Refined);
 const m21StockGuardsMatch = await matchGuards(m21Stock);
 const m21WhiteGuardsMatch = await matchGuards(m21White);
-const m21WordingGuardsMatch = await matchGuards(m21Wording);
+// Exact content-helper extensions belong to every printing covered by the
+// reviewed wording receipt, independently of material-group membership.
+const wordingSet = previous?.sets.find((set) => set.set === 'm21');
+const reviewedIds = new Set(m21Wording.rows.map((row) => row.id));
+const wordingGroups = (wordingSet?.groups ?? []).filter(
+  (group) =>
+    group.tasks.rules?.originalInput?.status === 'ready' &&
+    group.printingIds.every((id) => reviewedIds.has(id)),
+);
+let inventoryM21Wording = m21Wording;
+let m21WordingGuardsMatch = await matchGuards(m21Wording);
+if (!m21WordingGuardsMatch && wordingGroups.length) {
+  const shared = wordingGroups[0].tasks.rules.originalInput;
+  // Never choose among disagreeing dependency reviews implicitly.
+  const identities = new Set(
+    wordingGroups.map((group) => hash(JSON.stringify(group.tasks.rules.originalInput.guards))),
+  );
+  if (identities.size === 1) {
+    const probe = structuredClone(wordingGroups[0]);
+    probe.tasks = { rules: { status: 'needs-audit', originalInput: structuredClone(shared) } };
+    const [report] = await calibrationReport({ sets: [{ ...wordingSet, groups: [probe] }] });
+    m21WordingGuardsMatch = report.originalRulesInputs.ready === probe.printings;
+    if (m21WordingGuardsMatch)
+      inventoryM21Wording = {
+        ...m21Wording,
+        methodGuards: shared.guards,
+        guardExtensions: shared.guardExtensions,
+      };
+  }
+}
 const m21RedGuardsMatch = await matchGuards(m21Red);
 const earlyWordingGuardsMatch = await matchGuards(earlyWording);
 const m21GuardsMatch = (
@@ -417,7 +447,11 @@ try {
           applyM21BoundaryRefinement(g, m21Refined, m21RefinedGuardsMatch);
           applyM21StockTransfer(g, m21Stock, m21StockGuardsMatch);
           applyM21WhiteDefault(g, source, m21White, m21WhiteGuardsMatch);
-          applyM21OriginalWording(g, m21Wording, m21WordingGuardsMatch);
+          applyM21OriginalWording(g, inventoryM21Wording, m21WordingGuardsMatch);
+          if (g.tasks.rules.originalInput && inventoryM21Wording.guardExtensions)
+            g.tasks.rules.originalInput.guardExtensions = structuredClone(
+              inventoryM21Wording.guardExtensions,
+            );
           applyM21RedColor(g, source, m21Red, m21RedGuardsMatch);
           applyM21Normalization(g, m21Normalization);
         }

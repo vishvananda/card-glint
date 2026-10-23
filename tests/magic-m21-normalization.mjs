@@ -56,6 +56,8 @@ for (const [name, palette] of [
   const group = groups.find((group) => group.printingIds.includes(row.id));
   assert.equal(group.printings, 1);
   assert.equal(group.palette, palette);
+  assert.equal(group.tasks.rules.originalInput.status, 'ready');
+  assert.equal(group.tasks.rules.originalInput.coveredPrintings, 1);
   assert.equal(calibrationTaskStatus(group, 'normalization').status, 'validated');
 }
 const scanOnly = structuredClone(groups[0]);

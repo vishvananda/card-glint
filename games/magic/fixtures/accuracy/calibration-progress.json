@@ -232372,7 +232372,7 @@
               "status": "needs-audit",
               "reason": "Existing work must be matched to this complete variant and current source.",
               "originalInput": {
-                "status": "stale",
+                "status": "ready",
                 "coveredPrintings": 1,
                 "sources": {
                   "mtgjson-original": 1
@@ -232385,13 +232385,37 @@
                   "games/magic/tools/accuracy/empty-printing-text.mjs": "c014fd2b2c2c950c7442338716f2cf5bc7fe50d3fbc9da4354a98fc034b1f911",
                   "games/magic/tools/accuracy/printing-fields.mjs": "e4ca47639659f2824326cc2428e7186ebe3d52a96df97f215bd78aeaa2d593e1",
                   "games/magic/fixtures/accuracy/m21/annotations-empty-rules.json": "85ae9b6e470a6bcce70792d4cd986f9f22644db5d63c8ed064806ed3f4874cdc",
-                  "games/magic/tools/accuracy/printed-artist.mjs": "f7292cf73fedcb36625ae41872be04eee67be9525c0092a3e5642d15b5964420",
-                  "games/magic/tools/accuracy/printed-text-outliers.mjs": "f36bac7347bf31ef91bb6c601658e21d8741d1dc9eca650d57a3ca910fed974c",
-                  "games/magic/fixtures/accuracy/drk/annotations-text-outliers.json": "c1cc481fe30edc76bc94b8d20ff96584763ef41a7aba86dc245c0e992b1de513",
+                  "games/magic/tools/accuracy/printed-artist.mjs": "b9246df0f1a5f37cb2283e6ba510e72434d4f281c0a7b3d5fe87184f389f7c7f",
+                  "games/magic/tools/accuracy/printed-text-outliers.mjs": "c889efd563d1df5b751a4a547ebff29df40cac3c2f6780e6503189a5e42141d2",
+                  "games/magic/fixtures/accuracy/drk/annotations-text-outliers.json": "02d1c74e639b60bf9d9e33788d452f5606dfab20a2f3e05a7e0d355ba245be2d",
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f",
-                  "games/magic/fixtures/accuracy/m21-original-wording.json": "e73178cd32199badfae7e488ed1278ada013445682a057008669b7689c495933"
+                  "games/magic/fixtures/accuracy/m21-original-wording.json": "e73178cd32199badfae7e488ed1278ada013445682a057008669b7689c495933",
+                  "games/magic/fixtures/accuracy/dark-wording-compatibility.json": "e5492379280ab54a2c88b7c4a481db312f9bcf26c907c53dc476639760585f04",
+                  "games/magic/fixtures/accuracy/dark-body-compatibility.json": "8a2a9f576b0268a2b114bc62d87c88df209766cdc4e33b60b0ec551344b8bd01",
+                  "games/magic/fixtures/accuracy/abu-wording-source-scope.json": "ac25fc9e210118c9fbb80fa384413b87a7217afde8827979821267b84694eb4c",
+                  "games/magic/fixtures/accuracy/abu-artist-credit-compatibility.json": "a262ad06181b15fba5a8967a19d4649d4b2be57828b4ef16d5185b77eeeb1c7d"
                 },
-                "reason": "Printing-sourced rules available; original type/flavor review and text calibration remain separate. Historical Oracle-input color checks are not text evidence."
+                "reason": "Printing-sourced rules available; original type/flavor review and text calibration remain separate. Historical Oracle-input color checks are not text evidence.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/drk/annotations-text-outliers.json": {
+                    "before": "48b11280dc49981446f193f87217c5f760fb49ea9d6b123d700b346c019bb3b7",
+                    "after": "02d1c74e639b60bf9d9e33788d452f5606dfab20a2f3e05a7e0d355ba245be2d",
+                    "evidence": "games/magic/fixtures/accuracy/dark-body-compatibility.json",
+                    "reason": "Add reviewed original activation colons for Goblin Wizard and Ghost Ship only. Preserve every existing annotation and original type line. Input readiness does not certify typography.",
+                    "previous": {
+                      "before": "9ac60049e7e81ecc726ce7eb2f7d1fb15fdbdbf956f1a55e18571b2cc936f6fe",
+                      "after": "48b11280dc49981446f193f87217c5f760fb49ea9d6b123d700b346c019bb3b7",
+                      "evidence": "games/magic/fixtures/accuracy/dark-wording-compatibility.json",
+                      "reason": "The only new annotation is Electric Eel (DRK). Existing annotations and all M21 original inputs are unchanged. This extends input readiness without promoting layout status."
+                    }
+                  },
+                  "games/magic/tools/accuracy/printed-text-outliers.mjs": {
+                    "before": "aaf666f30ca799bdb97148ca5adbdb1a1b164d32c4782ce82452e0f2afcdfce7",
+                    "after": "a22d4da9b37b6c04fa1c075a75251c53237ff484882a8fcbeb332d3411f2cfd6",
+                    "evidence": "games/magic/fixtures/accuracy/abu-wording-source-scope.json",
+                    "reason": "Original annotation outputs and stale-scan guards are preserved for all existing ARN/ATQ/DRK rows. LEA/LEB add multiple review sources. This extends input readiness only, not layout certification."
+                  }
+                }
               }
             },
             "flavor": {
@@ -250332,7 +250356,7 @@
               "status": "needs-audit",
               "reason": "Existing work must be matched to this complete variant and current source.",
               "originalInput": {
-                "status": "stale",
+                "status": "ready",
                 "coveredPrintings": 1,
                 "sources": {
                   "mtgjson-original": 1
@@ -250345,13 +250369,37 @@
                   "games/magic/tools/accuracy/empty-printing-text.mjs": "c014fd2b2c2c950c7442338716f2cf5bc7fe50d3fbc9da4354a98fc034b1f911",
                   "games/magic/tools/accuracy/printing-fields.mjs": "e4ca47639659f2824326cc2428e7186ebe3d52a96df97f215bd78aeaa2d593e1",
                   "games/magic/fixtures/accuracy/m21/annotations-empty-rules.json": "85ae9b6e470a6bcce70792d4cd986f9f22644db5d63c8ed064806ed3f4874cdc",
-                  "games/magic/tools/accuracy/printed-artist.mjs": "f7292cf73fedcb36625ae41872be04eee67be9525c0092a3e5642d15b5964420",
-                  "games/magic/tools/accuracy/printed-text-outliers.mjs": "f36bac7347bf31ef91bb6c601658e21d8741d1dc9eca650d57a3ca910fed974c",
-                  "games/magic/fixtures/accuracy/drk/annotations-text-outliers.json": "c1cc481fe30edc76bc94b8d20ff96584763ef41a7aba86dc245c0e992b1de513",
+                  "games/magic/tools/accuracy/printed-artist.mjs": "b9246df0f1a5f37cb2283e6ba510e72434d4f281c0a7b3d5fe87184f389f7c7f",
+                  "games/magic/tools/accuracy/printed-text-outliers.mjs": "c889efd563d1df5b751a4a547ebff29df40cac3c2f6780e6503189a5e42141d2",
+                  "games/magic/fixtures/accuracy/drk/annotations-text-outliers.json": "02d1c74e639b60bf9d9e33788d452f5606dfab20a2f3e05a7e0d355ba245be2d",
                   "games/magic/fixtures/accuracy/early-expansion-footer-wording.json": "af983522951158f7fce8829b39dc7538d35e0703765f45887310105b4bda794f",
-                  "games/magic/fixtures/accuracy/m21-original-wording.json": "e73178cd32199badfae7e488ed1278ada013445682a057008669b7689c495933"
+                  "games/magic/fixtures/accuracy/m21-original-wording.json": "e73178cd32199badfae7e488ed1278ada013445682a057008669b7689c495933",
+                  "games/magic/fixtures/accuracy/dark-wording-compatibility.json": "e5492379280ab54a2c88b7c4a481db312f9bcf26c907c53dc476639760585f04",
+                  "games/magic/fixtures/accuracy/dark-body-compatibility.json": "8a2a9f576b0268a2b114bc62d87c88df209766cdc4e33b60b0ec551344b8bd01",
+                  "games/magic/fixtures/accuracy/abu-wording-source-scope.json": "ac25fc9e210118c9fbb80fa384413b87a7217afde8827979821267b84694eb4c",
+                  "games/magic/fixtures/accuracy/abu-artist-credit-compatibility.json": "a262ad06181b15fba5a8967a19d4649d4b2be57828b4ef16d5185b77eeeb1c7d"
                 },
-                "reason": "Printing-sourced rules available; original type/flavor review and text calibration remain separate. Historical Oracle-input color checks are not text evidence."
+                "reason": "Printing-sourced rules available; original type/flavor review and text calibration remain separate. Historical Oracle-input color checks are not text evidence.",
+                "guardExtensions": {
+                  "games/magic/fixtures/accuracy/drk/annotations-text-outliers.json": {
+                    "before": "48b11280dc49981446f193f87217c5f760fb49ea9d6b123d700b346c019bb3b7",
+                    "after": "02d1c74e639b60bf9d9e33788d452f5606dfab20a2f3e05a7e0d355ba245be2d",
+                    "evidence": "games/magic/fixtures/accuracy/dark-body-compatibility.json",
+                    "reason": "Add reviewed original activation colons for Goblin Wizard and Ghost Ship only. Preserve every existing annotation and original type line. Input readiness does not certify typography.",
+                    "previous": {
+                      "before": "9ac60049e7e81ecc726ce7eb2f7d1fb15fdbdbf956f1a55e18571b2cc936f6fe",
+                      "after": "48b11280dc49981446f193f87217c5f760fb49ea9d6b123d700b346c019bb3b7",
+                      "evidence": "games/magic/fixtures/accuracy/dark-wording-compatibility.json",
+                      "reason": "The only new annotation is Electric Eel (DRK). Existing annotations and all M21 original inputs are unchanged. This extends input readiness without promoting layout status."
+                    }
+                  },
+                  "games/magic/tools/accuracy/printed-text-outliers.mjs": {
+                    "before": "aaf666f30ca799bdb97148ca5adbdb1a1b164d32c4782ce82452e0f2afcdfce7",
+                    "after": "a22d4da9b37b6c04fa1c075a75251c53237ff484882a8fcbeb332d3411f2cfd6",
+                    "evidence": "games/magic/fixtures/accuracy/abu-wording-source-scope.json",
+                    "reason": "Original annotation outputs and stale-scan guards are preserved for all existing ARN/ATQ/DRK rows. LEA/LEB add multiple review sources. This extends input readiness only, not layout certification."
+                  }
+                }
               }
             },
             "flavor": {
