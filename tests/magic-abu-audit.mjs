@@ -48,8 +48,16 @@ for (const [set, total] of [
   );
   const report = reports.find((r) => r.set === set);
   assert.equal(report.inventoryReady, true);
-  assert.equal(report.complete, false, 'Known title/dual-outline review must remain visible');
-  assert.ok(report.byTask.frameGeometry, 'Reopened land frame task remains in the report');
+  // The historical proof stays frozen. The newer complete source census and
+  // checked publication separately close its title/dual-outline review.
+  assert.equal(report.complete, true, 'The current audited baseline is published');
+  assert.equal(report.byTask.release.validated, report.groups);
+  assert(
+    ledger.sets
+      .find((s) => s.set === set)
+      .groups.every((g) => g.tasks.release.proof.version === '0.7.1'),
+  );
+  assert.ok(report.byTask.frameGeometry, 'Measured land frame task remains in the report');
   const rejected = scores.rows.filter((r) => !r.normalizationAccepted);
   assert.equal(total - rejected.length, review.sets[set].score.ranked);
 }

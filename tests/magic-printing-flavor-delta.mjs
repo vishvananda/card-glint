@@ -82,7 +82,13 @@ for (const r of reports) {
   assert.equal(r.counts['needs-audit'], 0);
   assert.equal(r.originalRulesInputs.ready, r.printings);
   assert.equal(r.originalTypeInputs.ready, r.printings);
-  assert.equal(r.complete, false);
+  assert.equal(r.complete, true);
+  assert.equal(r.byTask.release.validated, r.groups);
+  assert(
+    sets
+      .find((s) => s.set === r.set)
+      .groups.every((g) => g.tasks.release.proof.version === '0.7.1'),
+  );
 }
 console.log(
   'Flavor source:three exact Original corrections;2962 wording records otherwise preserved,222 artists unchanged;899 native replay,30 layer pairs,896 exact score reuses and no unrelated stale approvals.',
