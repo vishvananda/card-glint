@@ -1,3 +1,4 @@
+import { preAbuArtSource, abuArtHistoricalHash, abuArtAffected } from './abu-art-ancestry.mjs';
 // Exact three-printing data history; independent of calibration approval.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -23,7 +24,8 @@ export async function printingFlavorDelta() {
       p.validationSource.sha256,
     );
 
-    for (const f of Object.keys(p.files)) after[f] = await readFile(path.join(root, f), 'utf8');
+    for (const f of Object.keys(p.files))
+      after[f] = (await preAbuArtSource(f, await readFile(path.join(root, f)))).toString();
     assert.deepEqual(validatePrintingFlavorDelta(p, after, review), p.summary);
     const nz = await readFile(path.join(root, p.native.file));
     assert.equal(hash(nz), p.native.sha256);
@@ -108,6 +110,7 @@ export async function printingFlavorDelta() {
   })());
 }
 export async function prePrintingFlavorData(file, bytes) {
+  bytes = await preAbuArtSource(file, bytes);
   const p = await printingFlavorDelta(),
     e = p.files[file];
   // Older/foreign inputs are left to their owning historical validator. The
@@ -152,8 +155,9 @@ export async function printingFlavorRuntimeCompatible(
   const p = await printingFlavorDelta();
   return (
     expected === p.beforeRenderer &&
+    !(await abuArtAffected(set, task, original, group)) &&
     !(await printingFlavorAffected(set, task, original, group)) &&
-    (await (tree ??= sourceHash(path.join(root, directory)))) === p.afterRenderer &&
+    (await (tree ??= abuArtHistoricalHash(path.join(root, directory)))) === p.afterRenderer &&
     (await (historical ??= printingFlavorHistoricalHash(path.join(root, directory)))) ===
       p.beforeRenderer
   );

@@ -13,7 +13,7 @@ import {
 import { resolveFrameColors, resolveCardProfile } from './profile.js';
 import { faceSetSymbol } from './assets.js';
 import { faceManaAssets } from './mana-assets.js';
-import { retroDualFrame } from './retro-dual-frame.js';
+import { retroDualFrame, abuDualArtBottom } from './retro-dual-frame.js';
 import { legendsFrame } from './legends-frame.js';
 import { earlyExpansionFrame } from './early-expansion-frame.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
@@ -101,7 +101,7 @@ export function retroRects(face: RenderedCardInput) {
           : retroFamily(face) === 'fourth'
             ? [0.109, 0.093, 0.779, 0.453]
             : early
-              ? [0.116, 0.1043, 0.7654, 0.441]
+              ? [0.116, 0.1043, 0.7654, 0.441 - abuDualArtBottom(face) / H]
               : [0.12, 0.0991, 0.7667, 0.4429])) as FaceRect,
     type: [0.1074, 0.5486, 0.7852, 0.0543] as FaceRect,
     rules: [0.128, 0.6067, 0.744, 0.2724] as FaceRect,

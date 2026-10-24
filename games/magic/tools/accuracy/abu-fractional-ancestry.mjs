@@ -1,3 +1,4 @@
+import { preAbuArtSource } from './abu-art-ancestry.mjs';
 import { abuPaperAffected } from './abu-paper-ancestry.mjs';
 import { abuRasterAffected } from './abu-raster-ancestry.mjs';
 import { abuPerimeterAffected } from './abu-perimeter-ancestry.mjs';
@@ -28,7 +29,7 @@ export async function abuFractionalAncestry() {
     assert.deepEqual(p.affectedSets, ['lea', 'leb', '2ed']);
     for (const [file, e] of Object.entries(p.files))
       assert.equal(
-        hash(await readFile(path.join(root, file))),
+        hash(await preAbuArtSource(file, await readFile(path.join(root, file)))),
         e.after,
         'Unreviewed ABU fractional source: ' + file,
       );

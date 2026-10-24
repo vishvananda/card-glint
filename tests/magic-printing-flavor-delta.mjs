@@ -1,3 +1,7 @@
+import {
+  abuArtHistoricalHash,
+  preAbuArtSource,
+} from '../games/magic/tools/accuracy/abu-art-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -9,11 +13,12 @@ import {
 import { validatePrintingFlavorDelta } from '../games/magic/tools/accuracy/printing-flavor-data-check.mjs';
 import { calibrationReport } from '../games/magic/tools/accuracy/calibration-report.mjs';
 const p = await printingFlavorDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await abuArtHistoricalHash(), p.afterRenderer);
 assert.equal(await printingFlavorHistoricalHash(), p.beforeRenderer);
 const review = JSON.parse(await readFile(p.review.file)),
   after = {};
-for (const file of Object.keys(p.files)) after[file] = await readFile(file, 'utf8');
+for (const file of Object.keys(p.files))
+  after[file] = (await preAbuArtSource(file, await readFile(file))).toString();
 assert.deepEqual(validatePrintingFlavorDelta(p, after, review), p.summary);
 assert.deepEqual(p.summary, {
   wordingPrintings: 2962,

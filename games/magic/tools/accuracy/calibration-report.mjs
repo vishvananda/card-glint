@@ -1,3 +1,4 @@
+import { abuArtAffected, abuArtRuntimeCompatible, preAbuArtSource } from './abu-art-ancestry.mjs';
 import {
   printingFlavorAffected,
   printingFlavorApprovalCurrent,
@@ -78,6 +79,12 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (await abuArtAffected(set.set, task, original, group)) {
+          item.status = 'needs-audit';
+          item.reason =
+            'The shared Alpha/Beta dual art aperture is two pixels shorter. Geometry and full-card approvals need the current scoped evidence; unrelated components and Original wording retain their checks.';
+          continue;
+        }
         const flavorAffected = await printingFlavorAffected(set.set, task, original, group);
         if (flavorAffected && !(await printingFlavorApprovalCurrent(item, group))) {
           item.status = 'needs-audit';
@@ -172,6 +179,7 @@ export async function calibrationReport(ledger) {
           }
           if (
             runtimeChecked.get(directory) !== expected &&
+            !(await abuArtRuntimeCompatible(directory, expected, set.set, task, original, group)) &&
             !(await printingFlavorRuntimeCompatible(
               directory,
               expected,
@@ -242,7 +250,10 @@ export async function calibrationReport(ledger) {
                   new Set([hash(bytes), hash(await preAbuPerimeterSource(file, bytes))]),
                 );
               } else if (fractionalAffected && (await abuFractionalAncestry()).files[file]) {
-                checked.set(guardKey, new Set([hash(bytes)]));
+                checked.set(
+                  guardKey,
+                  new Set([hash(bytes), hash(await preAbuArtSource(file, bytes))]),
+                );
               } else {
                 const modern = await m21StyleProfileSource(file, bytes, set.set, group);
                 const artist = await artistReviewSource(file, modern.bytes, set.set);
@@ -263,6 +274,7 @@ export async function calibrationReport(ledger) {
                   guardKey,
                   new Set([
                     hash(bytes),
+                    hash(await preAbuArtSource(file, bytes)),
                     hash(await prePrintingFlavorData(file, bytes)),
                     hash(await preAbuPaperSource(file, bytes)),
                     hash(await preNormalizationCensusSource(file, bytes)),

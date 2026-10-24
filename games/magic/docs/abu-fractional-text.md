@@ -347,8 +347,8 @@ from 92.70 to 92.62/100. Paper-edge measurements remain identical.
 Whole-card mean rises from 69.22 to 72.61/100 across this nineteen-card cohort:
 eighteen gains and one regression greater than 0.5 point. Alpha Savannah loses
 4.10 points and stays in the report. The 2.25-pixel candidate has a slightly
-higher whole-card mean, but a larger residual height error. Neither candidate
-is adopted yet; the evidence does not introduce a per-card exception.
+higher whole-card mean, but a larger residual height error. The production
+replay below adopts the two-pixel candidate without a per-card exception.
 
 The study resizes the illustration aperture together with its prepared frame.
 Fixed border caps retain their thickness, and premultiplied-alpha interpolation
@@ -365,6 +365,50 @@ node games/magic/tools/accuracy/abu-dual-art-trials.mjs \
   "$ABU_INPUTS" "$ABU_ART_TRIALS"
 node games/magic/tools/accuracy/abu-dual-art-report.mjs \
   "$ABU_ART_TRIALS" "$ABU_INPUTS" "$LAB_METRIC_MODULE" "$ABU_ART_REPORT"
+```
+
+## Production art-height replay
+
+The [native census](../fixtures/accuracy/early-through-fourth/abu-art-native.json.gz)
+replays all 899 Original faces. All nineteen affected Alpha/Beta duals reproduce
+the measured two-pixel candidate exactly. The other 880 faces and cache identities
+remain unchanged, including every Unlimited printing. Original and both Oracle
+symbol modes preserve silhouettes, pixels outside the art/frame region and
+default set-symbol etching.
+
+The [layer checks](../fixtures/accuracy/early-through-fourth/abu-art-layers.json.gz)
+pair printing, artwork and a synthetic host-supplied etching mask on every
+affected printing. All 57 pairs use the same corrected aperture and shader UV
+bounds. Both face and etching keys change only for those nineteen cards;
+derivative masks must not retain the old illustration geometry.
+
+The [scoped source receipt](../fixtures/accuracy/early-through-fourth/abu-art-source-delta.json.gz)
+preserves historical source identities. Unchanged component approvals remain
+reusable; geometry and full-card reviews for the affected cards remain open.
+
+The [current score census](../fixtures/accuracy/early-through-fourth/abu-art-current-scores.json.gz)
+joins 880 unchanged native results and nineteen exact production matches to the
+measured candidate. It keeps the same references, scan transforms, inputs,
+metric graph, component eligibility and weights:
+
+| Set       | Current whole-card /100 |
+| --------- | ----------------------: |
+| Alpha     |                   68.10 |
+| Beta      |                   68.40 |
+| Unlimited |                   71.06 |
+
+These are development results, pending outlier review and publication.
+Alpha Savannah's 4.10-point art-height regression remains included.
+
+Run the earlier candidate sweep from its recorded source revision. Use the
+current checkout for production verification:
+
+```sh
+node games/magic/tools/accuracy/abu-art-native.mjs \
+  "$ABU_ART_REFERENCE" "$ABU_INPUTS" "$ABU_ART_TRIALS" "$ABU_ART_NATIVE"
+node games/magic/tools/accuracy/abu-art-layers.mjs \
+  "$ABU_ART_REFERENCE" "$ABU_INPUTS" "$ABU_ART_LAYERS"
+node tests/magic-abu-art-height.mjs
 ```
 
 ## Release and experimental preview

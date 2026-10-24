@@ -48,6 +48,11 @@ function hasAbuDualPerimeter(face: RenderedCardInput): boolean {
   );
 }
 
+/** Canonical art-height correction shared by Alpha/Beta duals. */
+export function abuDualArtBottom(face: RenderedCardInput): number {
+  return hasAbuDualPerimeter(face) ? 2 : 0;
+}
+
 /** Face-composition only. Reuse the prepared material; no decode or readback. */
 export function paintAbuDualPerimeter(
   c: CanvasContext,
@@ -85,7 +90,7 @@ export function paintAbuDualPerimeter(
 
 /** Invalidate only affected face rasters; default etching is unchanged. */
 export function retroDualFrameRevision(face: RenderedCardInput): string | undefined {
-  if (hasAbuDualPerimeter(face)) return 'abu-dual-perimeter-up2-paper-up6-v3';
+  if (hasAbuDualPerimeter(face)) return 'abu-dual-perimeter-up2-paper-up6-art-up2-v4';
   const dual = retroDualFrame(face);
   return dual && dual.outline !== dual.overlay ? 'abu-dual-outline-raster-v4' : undefined;
 }
