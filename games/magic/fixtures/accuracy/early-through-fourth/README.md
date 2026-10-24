@@ -61,6 +61,36 @@ The [Collectors wording preflight](collectors-original-preflight.json) records
 original-wording proposals before running their layout fits. Cached art/scans
 alone do not make those inputs ready for calibration.
 
+## Current score coverage for all 899 printings
+
+The [current score summary](abu-current-score-summary.json.gz) joins the exact
+899 native face identities to the frozen metric, the physical artist correction
+and the nineteen perimeter score updates. It includes every Alpha, Beta and
+Unlimited printing: **295 / 302 / 302**, with means **67.94 / 68.19 / 71.06 out of
+100**. These indices measure rendering accuracy; they are not correctness
+percentages or declarations that every calibration component is complete.
+
+Deathlace, Pestilence and Nether Shadow retain the same reference bytes and
+uniform matrices as the existing printed-corner recovery certificate. Their
+current native pixels match their measured score identities. Including those
+three certified poses closes the old Alpha aggregate's coverage gap without
+moving a scan, fitting renderer offsets or recalculating unchanged pixels.
+The older 292-card paired aggregate remains available for historical comparisons.
+
+The summary retains per-card component scores, input/reference/pose identities,
+source and metric graphs, and the corner certificates. It does not claim a
+new live server run or an Oracle score census. Typography and frame/texture
+review items remain open.
+
+```sh
+node games/magic/tools/accuracy/abu-current-score-summary.mjs "$PRIOR_ABU_INPUTS" "$CURRENT_ABU_INPUTS" "$CURRENT_ABU_SCORE_SUMMARY"
+```
+
+Both input snapshots must match the hashes recorded in the native and score
+receipts. The generator rejects changed semantic data, pixels or recovered
+poses; historical rejected flags are preserved separately from current
+certification.
+
 ## Installed Alpha/Beta perimeter correction
 
 The later [source delta](abu-perimeter-source-delta.json.gz) installs the simpler
