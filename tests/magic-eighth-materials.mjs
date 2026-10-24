@@ -125,7 +125,11 @@ try {
     };
     const p = eighthBasicProfile(face),
       images = new Map();
-    for (const url of [p.frame, p.glyph]) {
+    const { eighthPrintingProfile } = await import(
+      '/games/magic/src/presentation/eighth-printing-profile.ts'
+    );
+    const contour = eighthPrintingProfile(face).outerRule.source;
+    for (const url of [p.frame, p.glyph, contour]) {
       const c = document.createElement('canvas');
       c.width = 128;
       c.height = 180;
@@ -160,11 +164,17 @@ try {
         throw Error('Warm material not reused');
       b.dispose();
       const untouched = await prepareEarlyHsb(
-        { ...face, colorCalibration: undefined },
+        { ...face, colorCalibration: undefined, calibration: 'source' },
         images,
         signal,
       );
-      if (untouched.images !== images) throw Error('Color opt-in leaked into default rendering');
+      if (
+        untouched.images.get(p.frame) !== images.get(p.frame) ||
+        untouched.images.get(p.glyph) !== images.get(p.glyph)
+      )
+        throw Error('Color opt-in leaked into source frame/glyph');
+      if (!untouched.images.has('card-glint:eighth-stock-rule'))
+        throw Error('Geometry outline disappeared when color calibration was disabled');
       untouched.dispose();
       return { cold, warm, bytes: earlyHsbBitmapCache.stats.bytes };
     } finally {
@@ -173,9 +183,9 @@ try {
       for (const bitmap of images.values()) bitmap.close();
     }
   });
-  assert.equal(result.cold, 2);
+  assert.equal(result.cold, 3);
   assert.equal(result.warm, 0);
-  assert.equal(result.bytes, 128 * 180 * 4 * 2);
+  assert.equal(result.bytes, 128 * 180 * 4 * 2 + 732 * 1020 * 4);
   console.log(
     'Eighth basic materials: guarded sources, alpha/ink/neutral preservation and bounded warm cache reuse pass.',
     result,

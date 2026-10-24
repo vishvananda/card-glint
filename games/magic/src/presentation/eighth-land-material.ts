@@ -35,6 +35,7 @@ export function eighthLandPalettes(face: RenderedCardInput) {
 /** Shared land components keep the printing's paired order and gradient compositor.
  * Frame, pinline, panels and glyph all join the same bounded preparation batch. */
 export function eighthLandMaterialJobs(face: RenderedCardInput, images: CanvasImages) {
+  if (face.colorCalibration !== 'set-hsb-v1' || face.calibration === 'source') return [];
   const palettes = eighthLandPalettes(face);
   const color = basicLandColor(face),
     glyph = color && plateBasicSymbol(face);

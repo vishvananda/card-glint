@@ -13,7 +13,7 @@ const read = async (file) => {
 };
 const inputs = await read('inputs-final.json');
 const stages = await Promise.all(
-  ['scores-baseline-native', 'scores-reviewed-inputs-native', 'scores-complete-070'].map((s) =>
+  ['scores-baseline-native', 'scores-reviewed-inputs-native', 'scores-policy-070'].map((s) =>
     read(s + '/scores.json'),
   ),
 );
@@ -34,7 +34,16 @@ const captures = await Promise.all(
     read(s + '/capture.json'),
   ),
 );
-const completeCapture = await read('native-complete-070/capture.json');
+const completeCapture = await read('native-policy-070/capture.json');
+const pigmentCapture = await read('native-complete-070/capture.json');
+for (const row of completeCapture.value.rows) {
+  const prior = pigmentCapture.value.rows.find((r) => r.id === row.id);
+  assert(prior);
+  assert.equal(row.inputHash, prior.inputHash);
+  assert.equal(row.referenceHash, prior.referenceHash);
+  assert.deepEqual(row.layers, prior.layers, 'Source-color opt-out changed the calibrated census');
+}
+
 const verifyLayer = async (dir, layer) => {
   assert.equal(path.basename(layer.file), layer.file);
   const bytes = await readFile(path.join(directory, dir, layer.file));
@@ -91,7 +100,7 @@ for (const row of completeCapture.value.rows) {
   const prior = captures[1].value.rows.find((r) => r.id === row.id);
   assert(prior);
   for (const layer of ['face', 'etching']) {
-    await verifyLayer('native-complete-070', row.layers[layer]);
+    await verifyLayer('native-policy-070', row.layers[layer]);
     if (row.layers[layer].sha256 === prior.layers[layer].sha256) unchangedColorLayers++;
     else {
       assert.equal(layer, 'face', 'Color-only refinement changed etching coverage');
@@ -212,6 +221,15 @@ const body = {
     exactPreparationPairs: exactPairs,
     byColorOrMaterial: group('geometry'),
     byRarity: group('rarity'),
+  },
+  pigmentSourceReplay: {
+    scope:
+      'All714 calibrated face/etching layers are identical across the source-color opt-out fix. Existing pixel-bound pigment measurements remain applicable; source-color behavior is tested separately.',
+    beforeRenderer: pigmentCapture.value.source.rendererHash,
+    afterRenderer: completeCapture.value.source.rendererHash,
+    beforeCaptureHash: pigmentCapture.hash,
+    afterCaptureHash: completeCapture.hash,
+    exactPairs: 714,
   },
   finalTextChanges: changed,
   finalDualColorRefinements: { unchangedLayers: unchangedColorLayers, rows: colorRefinements },

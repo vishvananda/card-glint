@@ -15,6 +15,9 @@ const server = await createServer({
   server: { middlewareMode: true, hmr: false },
 });
 try {
+  const { profile: eighthProfile } = await server.ssrLoadModule(
+    '/games/magic/src/calibration/eighth/8ed.ts',
+  );
   const { PRINTING_COLOR_PROFILES } = await server.ssrLoadModule(
     '/games/magic/src/presentation/printing-color-profiles.ts',
   );
@@ -48,8 +51,19 @@ try {
       { setCode: 'fut' },
       { borderColor: 'white' },
       { layout: 'token' },
-    ])
-      assert.deepEqual(calibratedFrameMaterials({ ...face, ...excluded }), {});
+    ]) {
+      const candidate = calibratedFrameMaterials({ ...face, ...excluded });
+      if (excluded.setCode === 'fut' && !frameTreatment) {
+        assert(
+          Object.keys(candidate).some((url) => url.endsWith('/8th/u.png')),
+          'Ordinary FUT inherits the Eighth source baseline',
+        );
+        assert.deepEqual(
+          calibratedFrameMaterials({ ...face, ...excluded, calibration: 'printing' }),
+          {},
+        );
+      } else assert.deepEqual(candidate, {});
+    }
   }
   assert.deepEqual(calibratedFrameMaterials({ ...planar, typeLine: 'Land', colors: [] }), {});
   const mana = JSON.parse(
@@ -112,7 +126,17 @@ try {
     );
     const selected = modernOrdinaryPlates(face);
     const component = modernPrintingProfile(face)?.componentMaterials;
+    const eighth =
+      face.frameAssetFamily === 'eighth' && face.setCode?.toLowerCase() === '8ed'
+        ? Object.fromEntries(
+            Object.keys(materials).map((url) => [
+              url,
+              eighthProfile.materials[url.slice(eighthProfile.root.length + 1)],
+            ]),
+          )
+        : undefined;
     const expected =
+      eighth ??
       selected ??
       Object.fromEntries(
         Object.entries(PRINTING_COLOR_PROFILES[row.key].materials).map(([url, value]) => [
