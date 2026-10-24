@@ -78,6 +78,10 @@ Cross-stock samples improved from 73.96 to 76.22/100 on twelve 9ED cards and
 58.10 to 61.32/100 on seven nonfoil Mirrodin cards. These checks support using
 the default; they do not certify either receiving set.
 
+The [native pigment diagnostics](../fixtures/accuracy/8ed/native-pigment.json)
+retain fixed-window color and contrast differences separately from the structure
+index. Land groups use their physical frame palette, including City of Brass.
+
 ## What transfers
 
 Ordinary Eighth-style frames inherit compatible geometry, typography, mana,

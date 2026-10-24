@@ -7,9 +7,9 @@ import cv2
 study, output = map(Path, sys.argv[1:])
 load = lambda f: json.loads((study / f).read_text())
 inputs = load('inputs-final.json')
-scores = load('scores-complete-070/scores.json')
+scores = load('scores-policy-070/scores.json')
 before = load('native-reviewed-inputs/capture.json')
-after = load('native-complete-070/capture.json')
+after = load('native-policy-070/capture.json')
 by_id = {r['id']: r for r in scores['rows']}
 sha = lambda b: hashlib.sha256(b).hexdigest()
 def raster(file, digest):
@@ -45,15 +45,15 @@ for e in inputs['entries']:
     old=next(r for r in before['rows'] if r['id']==id)
     new=next(r for r in after['rows'] if r['id']==id)
     assert old['referenceHash']==new['referenceHash']==score['referenceHash']
-    scan=raster(study/'scores-complete-070'/score['normalizedReference']['file'],score['normalizedReference']['sha256'])
-    images=[raster(study/d/r['layers']['face']['file'],r['layers']['face']['sha256']) for d,r in [('native-reviewed-inputs',old),('native-complete-070',new)]]
+    scan=raster(study/'scores-policy-070'/score['normalizedReference']['file'],score['normalizedReference']['sha256'])
+    images=[raster(study/d/r['layers']['face']['file'],r['layers']['face']['sha256']) for d,r in [('native-reviewed-inputs',old),('native-policy-070',new)]]
     is_land=e['face'].get('land',False)
     parts={}
     for part,windows in (land if is_land else ordinary).items():
         target=sample(scan,windows); measured=[sample(im,windows) for im in images]
         errors=[float(np.linalg.norm(np.array(m['rgb'])-target['rgb'])) for m in measured]
         parts[part]={'reference':target,'before':measured[0],'after':measured[1],'rgbMedianDistanceBefore':errors[0],'rgbMedianDistanceAfter':errors[1]}
-    colors=e['card']['color_identity'] if is_land else e['card']['colors']
+    colors=e['face'].get('frameColors',e['card'].get('produced_mana',[])) if is_land else e['card']['colors']
     family=('land-' if is_land else '')+(''.join(colors) or ('neutral' if is_land else 'artifact'))
     rows.append({'id':id,'name':e['card']['name'],'referenceHash':score['referenceHash'],'poseHash':score['poseHash'],'family':family,'parts':parts})
 summary={}
@@ -68,7 +68,7 @@ for family in sorted({r['family'] for r in rows}):
     summary[family]={'printings':len(members),'parts':parts}
 body={'schema':1,'set':'8ed','scope':'All357 nonfoil native faces; fixed aligned reference rasters and fixed source-physical windows. Read-only robust tile-median RGB diagnostics, not physical ink measurements or independent holdout certification. Different artwork and printed letters are excluded by windows and robust tile medians. Texture identity and individual letter edges are not certified by these statistics.',
       'method':{'resize':'OpenCV INTER_AREA from732x1020 to488x680','tile':4,'textRejection':'discard darkest60percent of panel tiles; rails retained whole','ordinaryWindows':ordinary,'landWindows':land,'source':sha(Path(__file__).read_bytes())},
-      'definition':{'inputsHash':sha((study/'inputs-final.json').read_bytes()),'rendererHash':after['source']['rendererHash'],'nativeCaptureHash':sha((study/'native-complete-070/capture.json').read_bytes()),'scoresHash':sha((study/'scores-complete-070/scores.json').read_bytes())},
+      'definition':{'inputsHash':sha((study/'inputs-final.json').read_bytes()),'rendererHash':after['source']['rendererHash'],'nativeCaptureHash':sha((study/'native-policy-070/capture.json').read_bytes()),'scoresHash':sha((study/'scores-policy-070/scores.json').read_bytes())},
       'summary':summary,'rows':rows}
 output.write_text(json.dumps(body,indent=2)+'\n')
 print(json.dumps(summary,indent=2))
