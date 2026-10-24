@@ -136,7 +136,10 @@ export async function eighthRuntimeCompatible(directory, expected, set, group) {
           'Unreviewed Eighth executable/source: ' + file,
         );
       for (const file of files.filter((f) => payloadPattern.test(f))) {
-        const data = eighthPayloadData(await readFile(path.join(root, file), 'utf8'), file);
+        const data = eighthPayloadData(
+          (await preAbuFractionalSource(file, await readFile(path.join(root, file)))).toString(),
+          file,
+        );
         assert.equal(
           hash(JSON.stringify(dataBase(data))),
           p.payloadBaseHashes[file],
@@ -144,7 +147,12 @@ export async function eighthRuntimeCompatible(directory, expected, set, group) {
         );
       }
       const aggregate = eighthAggregateData(
-        await readFile(path.join(root, 'games/magic/src/data/eager.ts'), 'utf8'),
+        (
+          await preAbuFractionalSource(
+            'games/magic/src/data/eager.ts',
+            await readFile(path.join(root, 'games/magic/src/data/eager.ts')),
+          )
+        ).toString(),
       );
       assert.equal(
         hash(JSON.stringify(aggregate.map(dataBase))),

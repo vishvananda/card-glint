@@ -13043,25 +13043,46 @@
               }
             },
             "artist": {
-              "status": "partial",
+              "status": "validated",
               "evidence": [
                 "games/magic/fixtures/accuracy/abu-054/review.json",
-                "games/magic/fixtures/accuracy/early-through-fourth/abu-dual-frame-review.json"
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-dual-frame-review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/printing-artist-data-delta.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-tropical-artist-native.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-tropical-artist-score.json.gz"
               ],
               "proof": {
-                "rendererHash": "3beaed0fff6c7f150b3c42ec5e18664458e948db17a26cd148171eabdb0fc3e3",
-                "nativeReplayHash": "495fcd4b2b11a0044d73045ef6cca386cb7ca5091753bb986d761f7fa0d1aece",
-                "metricsHash": "5a2d9d97e96d460d4c6a1059855134d9994e9dcc1c349aab2002d760a1742d1d",
-                "scanTemplateHash": "2afca4893df661979b26dc402eb28996f9ce6d63c15700ecd2996e3bb92283fa",
-                "gatesPassed": false,
+                "rendererHash": "6e754a0ba05029ddb64ecb801714d2b7de7448a2aba7430926f2c340f2f896c0",
+                "nativeReplayHash": "dd2a91bfdb01698e4f55f89d387a341246d00966bb6e4279ddc24464c52a8f1e",
+                "metricsHash": "5f554d03f04cb607ba80346d651ca5435718b9d1c6998ff6d2144320d9b9aa8d",
+                "scanTemplateHash": "ec0063f8577ed22e8bc1b0541a4a0de0a2d48aa335b3f6b6e2b437b413d6eed3",
+                "gatesPassed": true,
                 "sourceHash": "a33ce0afdb18c2213c9e7a871cb5108218bd51fb9e7c635eb2afe8d48d6c540b",
-                "methodHash": "73428adc06f59eaffe7e509db0dbf6e2c1d38abc69928516a4692abacea084a9",
+                "methodHash": "dcfe3f3f0458f2f24918b29248769d2ede5253a03d34af8ca565592861a33802",
                 "scopeHash": "650300c12015f5abd60cb434f8018bf4c88b0ac7da487060a0c37c97deb52be5",
                 "coveredPrintings": 1,
-                "calibrationNames": 195,
-                "validationNames": 95,
-                "validationKind": "family-transfer",
-                "dualFrameReviewHash": "d2aaf2aa553d0b820e0f794bb7afb6591a021ca65b4224f31df986c9788c9687"
+                "calibrationNames": 1,
+                "validationNames": 1,
+                "validationKind": "source-census",
+                "dualFrameReviewHash": "d2aaf2aa553d0b820e0f794bb7afb6591a021ca65b4224f31df986c9788c9687",
+                "printingArtistSource": "6e754a0ba05029ddb64ecb801714d2b7de7448a2aba7430926f2c340f2f896c0",
+                "sourceCensus": {
+                  "heldOut": false,
+                  "scope": "all-ordinary-printings-in-variant",
+                  "names": ["Tropical Island"],
+                  "parametersHash": "91a4ae0b5f5601494a2d4abf1fd1cdda0216ae9ae3df58a94751e92b48bccb3a",
+                  "parameterScope": "Existing Alpha artist font/layout and material parameters; only the reviewed printed credit changes.",
+                  "members": [
+                    {
+                      "id": "a9c6c759-aabf-44e7-ba8c-33c5df232b56",
+                      "name": "Tropical Island",
+                      "referenceHash": "852aeb3cf83374d9ac80e9bfd9789f18d4a1db07b20c5eed57aa34b22e9dbf04",
+                      "poseHash": "ec0063f8577ed22e8bc1b0541a4a0de0a2d48aa335b3f6b6e2b437b413d6eed3",
+                      "inputHash": "b45fdacb1427d531d40dff42e9a58765c89b186999394256653dbc457f077671",
+                      "nativeFaceHash": "1579ca5d72f516ead23a50ff2a8e018afc673a3705d9605fb370d6bd0f33875b"
+                    }
+                  ]
+                }
               },
               "guards": {
                 "games/magic/fixtures/accuracy/abu-054/review.json": "c2dc6fb56e0f93f43546f325ca71d53c4f2d0dcf99157124a7c3c9353fc6099c",
@@ -13082,13 +13103,25 @@
                 "games/magic/fonts.css": "585e7da14eda49b836bc6aeca5632a13244fb5ad6721ca49e1d9af98a5f2e6cd",
                 "games/magic/assets.json": "1374da391bb03e9fb3dab16f078b6b776f4be3ed93ae1139fc54514a7ff238d3",
                 "games/magic/src/calibration/sets/lea-title.ts": "5504edecdaf28bef3a2b0e6ac36c601597a6e5eb102eec92b1da53fb8833f38f",
-                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226"
+                "games/magic/fixtures/accuracy/heading-spacing/promotion.json": "9482ea44a8ba748f8931130a11b94e72492c24966ec5be639795f42386d8a226",
+                "games/magic/src/data/generated-manifest.json": "cb00b6e05ddfb811fe2a576dd3283f5d250b8958c464ce052b01f0403d52bc27",
+                "games/magic/src/data/review-metadata.ts": "108392bd05c9ffd48c87e91f50abf14e0761a40c2264d79f73beb6b32ad008ac",
+                "games/magic/src/data/eager-wording.ts": "a3dad1d47224fa311b398558b5a1ca6b58bd5e4e12dd92c7b2b2a125b804a59d",
+                "games/magic/src/data/wording/lea.ts": "7c25e7940dfedcb59081ec72e466e25fa156c0dc1a80f054a029055e7f79a45d",
+                "games/magic/fixtures/accuracy/lea/annotations-artist-credit.json": "af67044d4a2b7b87e364589fb336f392ee017cc7b3a1da13aa3c414dada68956",
+                "games/magic/fixtures/accuracy/printing-review-catalog.json": "d802a547efcddd9febbbf8b7fa0e9f756553ba18452e7141354c2eec33f5ad79",
+                "games/magic/fixtures/accuracy/early-through-fourth/printing-artist-data-delta.json.gz": "333e24f55e128f20b61bf572a9284e2d62497a6a34e2e1a4ffe111ce319580a4",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-tropical-artist-native.json.gz": "05ce174ea82f86771775e34e0245b4fa3707816a528d1f34857901492a22492a",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-tropical-artist-score.json.gz": "062cf1dec6f16f31a158b3f994df9d07d0bd6dff9b60e083a2789d1ec0a21dd9"
               },
-              "reason": "The Alpha Tropical Island scan credits Mark Poole; the rebuild currently credits Jesper Myrfors. An exact-printing artist correction is required.",
+              "reason": "The exact Alpha scan credits Mark Poole. Original and both Oracle symbol modes use the corrected physical credit; native changes stay in the artist strip and etching is identical. Existing font/layout calibration is retained. Canonical provider attribution remains separate.",
               "transfer": {
                 "parent": "lea shared ABU material/typography cohort",
                 "scope": "Shared font, frame material, symbol and layout rules; every member replayed. Counts refer to the named parent cohort, not invented independent cards within this sparse variant.",
                 "localNames": { "calibration": 0, "validation": 1 }
+              },
+              "runtimeGuards": {
+                "games/magic/src": "6e754a0ba05029ddb64ecb801714d2b7de7448a2aba7430926f2c340f2f896c0"
               }
             },
             "footer": {
@@ -13138,7 +13171,7 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "Complete Original native text census is recorded. Shared fitting improves the set mean; manual wrapping and flavor typography outliers remain explicit.",
+              "reason": "Corrected artist input and one-card score update are current. Existing text-wrapping and dual-frame geometry review items remain open; the combined credit/legal diagnostic remains outside the aggregate metric.",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-source-proof.json",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-native.json.gz",
@@ -13147,32 +13180,45 @@
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-tiered.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-selected.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-metadata.json.gz",
-                "games/magic/fixtures/accuracy/2ed/text-size-review.json"
+                "games/magic/fixtures/accuracy/2ed/text-size-review.json",
+                "games/magic/fixtures/accuracy/early-through-fourth/printing-artist-data-delta.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-tropical-artist-native.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-tropical-artist-score.json.gz"
               ],
               "guards": {
                 "games/magic/src/presentation/alpha-typography.ts": "6408c3525e850516e527bb51204426e9b546eed19c3362aff2d8518819b2b41e",
                 "games/magic/src/presentation/canvas-face.ts": "be8fb39d283100b251af5ddb77df496977f1bada5eb2a2d0095cb496fdc1d7b1",
                 "games/magic/src/presentation/early-text-tiers.ts": "5450d964419694e00d75dc0d00c4e05f5502bd8e9f871d71d08ef46c107f2603",
-                "games/magic/src/presentation/retro-rules.ts": "b9831d1233fd03342903660f56d757f73d86aed875b9a80fe45e627c25909a08"
+                "games/magic/src/presentation/retro-rules.ts": "b9831d1233fd03342903660f56d757f73d86aed875b9a80fe45e627c25909a08",
+                "games/magic/src/data/generated-manifest.json": "cb00b6e05ddfb811fe2a576dd3283f5d250b8958c464ce052b01f0403d52bc27",
+                "games/magic/src/data/review-metadata.ts": "108392bd05c9ffd48c87e91f50abf14e0761a40c2264d79f73beb6b32ad008ac",
+                "games/magic/src/data/eager-wording.ts": "a3dad1d47224fa311b398558b5a1ca6b58bd5e4e12dd92c7b2b2a125b804a59d",
+                "games/magic/src/data/wording/lea.ts": "7c25e7940dfedcb59081ec72e466e25fa156c0dc1a80f054a029055e7f79a45d",
+                "games/magic/fixtures/accuracy/lea/annotations-artist-credit.json": "af67044d4a2b7b87e364589fb336f392ee017cc7b3a1da13aa3c414dada68956",
+                "games/magic/fixtures/accuracy/printing-review-catalog.json": "d802a547efcddd9febbbf8b7fa0e9f756553ba18452e7141354c2eec33f5ad79",
+                "games/magic/fixtures/accuracy/early-through-fourth/printing-artist-data-delta.json.gz": "333e24f55e128f20b61bf572a9284e2d62497a6a34e2e1a4ffe111ce319580a4",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-tropical-artist-native.json.gz": "05ce174ea82f86771775e34e0245b4fa3707816a528d1f34857901492a22492a",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-tropical-artist-score.json.gz": "062cf1dec6f16f31a158b3f994df9d07d0bd6dff9b60e083a2789d1ec0a21dd9"
               },
               "runtimeGuards": {
-                "games/magic/src": "7bb81fb0e88196808650a809057bf19df0935ce9ac1eab6164b7c9c139aee7ef"
+                "games/magic/src": "6e754a0ba05029ddb64ecb801714d2b7de7448a2aba7430926f2c340f2f896c0"
               },
               "coveredPrintings": 1,
               "proof": {
                 "sourceHash": "a33ce0afdb18c2213c9e7a871cb5108218bd51fb9e7c635eb2afe8d48d6c540b",
                 "scopeHash": "650300c12015f5abd60cb434f8018bf4c88b0ac7da487060a0c37c97deb52be5",
                 "gatesPassed": false,
-                "rendererHash": "7bb81fb0e88196808650a809057bf19df0935ce9ac1eab6164b7c9c139aee7ef",
+                "rendererHash": "6e754a0ba05029ddb64ecb801714d2b7de7448a2aba7430926f2c340f2f896c0",
                 "abuFractionalSource": "7bb81fb0e88196808650a809057bf19df0935ce9ac1eab6164b7c9c139aee7ef",
                 "methodHash": "57c29c106e66a2eb3a785eaa3a9bedc496ecdcea57172a78f63583c896d94ca0",
-                "nativeReplayHash": "0cb9b79db713b84bb087346bb440d54088558219e2086a3097ae7c2281eb239a",
-                "metricsHash": "d17f2f5f7118f92724eb6f5891df098346d31d6ce13341cafe9bdadfb3d6a861",
+                "nativeReplayHash": "dd2a91bfdb01698e4f55f89d387a341246d00966bb6e4279ddc24464c52a8f1e",
+                "metricsHash": "5f554d03f04cb607ba80346d651ca5435718b9d1c6998ff6d2144320d9b9aa8d",
                 "coveredPrintings": 1,
                 "calibrationNames": 1,
                 "validationNames": 1,
                 "validationKind": "reused-development",
-                "scanTemplateHash": "33498198ccb04a62462418e41478987259c937c1dcf708b78e1219822451494f"
+                "scanTemplateHash": "33498198ccb04a62462418e41478987259c937c1dcf708b78e1219822451494f",
+                "printingArtistSource": "6e754a0ba05029ddb64ecb801714d2b7de7448a2aba7430926f2c340f2f896c0"
               }
             },
             "release": {
@@ -18120,7 +18166,15 @@
           "reportSha256": "b37d47b04f514f486d647be36f86d4d56f41fefee6fae7587c315380b9efede6",
           "status": "development-not-published"
         },
-        "reason": "Fractional advances retain the printing size class and a safe row budget. Unusual manual wrapping and flavor-width differences remain in the review list; no complete-set certification is claimed."
+        "reason": "Fractional advances retain the printing size class and a safe row budget. Unusual manual wrapping and flavor-width differences remain in the review list; no complete-set certification is claimed.",
+        "physicalArtistUpdate": {
+          "id": "a9c6c759-aabf-44e7-ba8c-33c5df232b56",
+          "rendererHash": "6e754a0ba05029ddb64ecb801714d2b7de7448a2aba7430926f2c340f2f896c0",
+          "evidence": "games/magic/fixtures/accuracy/early-through-fourth/abu-tropical-artist-score.json.gz",
+          "reusedPrintingScores": 898,
+          "recomputedPrintingScores": 1,
+          "reason": "Old text/full-card census identities are retained. Only the corrected physical artist input has a new native replay; the combined unverified credits region is diagnostic, so aggregate means do not change."
+        }
       }
     },
     {

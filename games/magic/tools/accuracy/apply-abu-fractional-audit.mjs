@@ -3,11 +3,16 @@ import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import prettier from 'prettier';
-import { hash } from './common.mjs';
+import { hash, sourceHash } from './common.mjs';
 import { abuFractionalAncestry } from './abu-fractional-ancestry.mjs';
 const [baselineReportFile] = process.argv.slice(2);
 assert(baselineReportFile, 'Usage: apply-abu-fractional-audit.mjs BASELINE_CALIBRATION_REPORT');
 const p = await abuFractionalAncestry();
+assert.equal(
+  await sourceHash('games/magic/src'),
+  p.afterRenderer,
+  'Apply this historical audit only at its captured source; preserve newer printing corrections',
+);
 const report = JSON.parse(gunzipSync(await readFile(p.evidence.selected.file)));
 const native = JSON.parse(gunzipSync(await readFile(p.evidence.native.file)));
 const fullFile =

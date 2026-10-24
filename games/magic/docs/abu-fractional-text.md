@@ -102,10 +102,27 @@ The fixed-strip gradient diagnostic and direct corner review still show
 top/bottom transition differences. Keep geometry open; a shift that improves
 one strip is not permission to move an entire scan.
 
-The review also finds a physical credit mismatch on Alpha Tropical Island:
-the scan says Mark Poole, while the current rebuild says Jesper Myrfors.
-This remains an explicit artist task until the printing correction and its
-native replay are recorded.
+The review found a physical credit mismatch on Alpha Tropical Island.
+The scan credits Mark Poole; provider metadata credits Jesper Myrfors.
+The [reviewed correction](../fixtures/accuracy/lea/annotations-artist-credit.json)
+now supplies the printed credit without changing canonical artwork attribution.
+Its [native replay](../fixtures/accuracy/early-through-fourth/abu-tropical-artist-native.json.gz)
+checks Original and both Oracle symbol modes. Each changes 3,710 pixels inside
+the artist strip; all other pixels and etching masks remain identical.
+
+The [scoped score update](../fixtures/accuracy/early-through-fourth/abu-tropical-artist-score.json.gz)
+reproduces the old current-face score exactly and reuses the other 898 results.
+The aggregate does not change: the current metric excludes its combined
+artist/legal region until its content is verified. That region remains a
+diagnostic, and its edge score falls from 44.84 to 43.26 despite the corrected
+wording. Keep this result visible. It shows why word identity and physical
+source review must accompany image overlap. A later metric should separate
+verified artist text from unverified legal text.
+
+The [pure-data receipt](../fixtures/accuracy/early-through-fourth/printing-artist-data-delta.json.gz)
+proves that all 221 previous artist records and all 2,962 wording records are
+unchanged. Historical captures keep their original source identities; only this
+printing's artist/full-card approval needs a new replay.
 
 ## Reproduce from the cache
 

@@ -1,9 +1,14 @@
+import {
+  prePrintingArtistData,
+  printingArtistHistoricalHash,
+  printingArtistAffected,
+} from './printing-artist-data-ancestry.mjs';
 // Historical source reconstruction only; changed ABU rules never reuse old fits.
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
-import { hash, root, sourceHash } from './common.mjs';
+import { hash, root } from './common.mjs';
 const RECEIPT = '469f60094fbbcf5571dae480b829c546986d5f50ba071270847c6960eb5e1355';
 let checked;
 let runtimeChecked;
@@ -52,7 +57,12 @@ export async function abuFractionalAncestry() {
         assert.equal(data.capturedRenderer, p.capturedRenderer);
         assert.equal(data.currentRenderer, p.afterRenderer);
         assert.equal(
-          hash(await readFile(path.join(root, data.manifest.file))),
+          hash(
+            await prePrintingArtistData(
+              data.manifest.file,
+              await readFile(path.join(root, data.manifest.file)),
+            ),
+          ),
           data.manifest.afterSha256,
         );
         assert(data.manifest.generatedDataUnchanged && data.manifest.runtimeImports === 0);
@@ -73,6 +83,7 @@ export async function abuFractionalAncestry() {
   })());
 }
 export async function preAbuFractionalSource(file, bytes) {
+  bytes = await prePrintingArtistData(file, bytes);
   const p = await abuFractionalAncestry(),
     e = p.files[file];
   if (!e) return bytes;
@@ -98,11 +109,15 @@ export async function abuFractionalRuntimeCompatible(
   set,
   task,
   original = false,
+  group,
 ) {
-  if (directory !== 'games/magic/src' || abuFractionalAffected(set, task, original)) return false;
+  if (directory !== 'games/magic/src') return false;
   const p = await abuFractionalAncestry();
+  if (![p.beforeRenderer, p.afterRenderer].includes(expected)) return false;
+  if (expected === p.beforeRenderer && abuFractionalAffected(set, task, original)) return false;
+  if (await printingArtistAffected(set, task, original, group)) return false;
   return (
-    expected === p.beforeRenderer &&
-    (await (runtimeChecked ??= sourceHash(path.join(root, directory)))) === p.afterRenderer
+    (await (runtimeChecked ??= printingArtistHistoricalHash(path.join(root, directory)))) ===
+    p.afterRenderer
   );
 }

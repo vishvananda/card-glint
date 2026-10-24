@@ -1,7 +1,11 @@
+import {
+  printingArtistHistoricalHash,
+  printingArtistAffected,
+} from '../games/magic/tools/accuracy/printing-artist-data-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   abuFractionalAncestry,
   preAbuFractionalSource,
@@ -9,7 +13,7 @@ import {
   abuFractionalRuntimeCompatible,
 } from '../games/magic/tools/accuracy/abu-fractional-ancestry.mjs';
 const proof = await abuFractionalAncestry();
-assert.equal(await sourceHash('games/magic/src'), proof.afterRenderer);
+assert.equal(await printingArtistHistoricalHash(), proof.afterRenderer);
 assert.notEqual(
   proof.capturedRenderer,
   proof.afterRenderer,
@@ -52,8 +56,9 @@ for (const set of ['lea', 'leb', '2ed']) {
     'footer',
     'stats',
   ])
-    assert(
+    assert.equal(
       await abuFractionalRuntimeCompatible('games/magic/src', proof.beforeRenderer, set, task),
+      !(await printingArtistAffected(set, task)),
     );
 }
 for (const set of ['8ed', 'm21', '3ed', '4ed'])

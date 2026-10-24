@@ -1,3 +1,4 @@
+import { printingArtistDelta, printingArtistAffected } from './printing-artist-data-ancestry.mjs';
 import {
   abuFractionalAncestry,
   abuFractionalAffected,
@@ -55,6 +56,16 @@ export async function calibrationReport(ledger) {
       ]);
       for (const { task, item, original } of dependencies) {
         const fractionalAffected = abuFractionalAffected(set.set, task, original);
+        const artistDataAffected = await printingArtistAffected(set.set, task, original, group);
+        if (
+          artistDataAffected &&
+          item.proof?.printingArtistSource !== (await printingArtistDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Alpha Tropical Island has a corrected physical artist credit. Artist and full-card approvals need the current scoped replay; other printing wording and components are unchanged.';
+          continue;
+        }
         if (
           fractionalAffected &&
           item.proof?.abuFractionalSource !== (await abuFractionalAncestry()).afterRenderer
@@ -110,7 +121,14 @@ export async function calibrationReport(ledger) {
           if (
             runtimeChecked.get(directory) !== expected &&
             !(await eighthRuntimeCompatible(directory, expected, set.set, group)) &&
-            !(await abuFractionalRuntimeCompatible(directory, expected, set.set, task, original))
+            !(await abuFractionalRuntimeCompatible(
+              directory,
+              expected,
+              set.set,
+              task,
+              original,
+              group,
+            ))
           ) {
             runtimeCurrent = false;
             item.status = 'stale';
@@ -124,7 +142,7 @@ export async function calibrationReport(ledger) {
           const changedScope = group.kind === 'planeswalker' || set.set === 'm15';
           const guardKey =
             set.set +
-            ':' +
+            (artistDataAffected ? ':artist-current:' : ':artist-compatible:') +
             (earlyAffected ? 'early-current:' : 'early-compatible:') +
             (fractionalAffected ? 'fractional-current:' : 'fractional-compatible:') +
             (modernDefaultsAffected ? 'modern-defaults-current:' : 'modern-defaults-compatible:') +
@@ -134,7 +152,9 @@ export async function calibrationReport(ledger) {
           if (!checked.has(guardKey)) {
             try {
               const bytes = await readFile(root + '/' + file);
-              if (fractionalAffected && (await abuFractionalAncestry()).files[file]) {
+              if (artistDataAffected && (await printingArtistDelta()).files[file]) {
+                checked.set(guardKey, new Set([hash(bytes)]));
+              } else if (fractionalAffected && (await abuFractionalAncestry()).files[file]) {
                 checked.set(guardKey, new Set([hash(bytes)]));
               } else {
                 const modern = await m21StyleProfileSource(file, bytes, set.set, group);
