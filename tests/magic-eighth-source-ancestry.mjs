@@ -14,6 +14,10 @@ import {
   eighthAggregateData,
   runtimeCalibrationDataModules,
 } from '../games/magic/tools/accuracy/eighth-profile-data.mjs';
+const { abuFractionalAncestry } = await import(
+  '../games/magic/tools/accuracy/abu-fractional-ancestry.mjs'
+);
+const fractional = await abuFractionalAncestry();
 const proof = await eighthSourceAncestry();
 assert.equal(proof.native.cases, 266);
 assert.equal(proof.native.pairs, 1596);
@@ -24,7 +28,9 @@ for (const [file, entry] of Object.entries(proof.files)) {
   assert.deepEqual(await preEighthSource(file, prior), prior);
   await assert.rejects(
     preEighthSource(file, Buffer.concat([current, Buffer.from('\n// unknown\n')])),
-    /Unreviewed Eighth/,
+    fractional.files[file]
+      ? (error) => error.message.startsWith('Unreviewed ABU fractional source: ' + file)
+      : /Unreviewed Eighth/,
   );
   const donor = await eighthProfileSource(file, current, '8ed', {
     frame: '2003',
