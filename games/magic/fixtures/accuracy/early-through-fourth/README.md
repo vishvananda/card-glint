@@ -49,7 +49,19 @@ source receipts, rejected cases and profile values using the
 limitations separately from completed measurements. Experimental reconstructed
 Alpha assets remain preview-only.
 
-## Unlimited preparation
+## Current ABU text replay and next source check
+
+The [ABU text recheck](../../../docs/abu-fractional-text.md) records all 899 native
+faces, paired text and whole-card measurements, regression lists and current
+dual-frame limitations. The original frozen receipts above remain historical
+evidence; they do not approve the new text policy.
+
+The [Collectors wording preflight](collectors-original-preflight.json) records
+286 unresolved Oracle-fallback bodies in each of CED and CEI. Prepare reviewed
+original-wording proposals before running their layout fits. Cached art/scans
+alone do not make those inputs ready for calibration.
+
+## Unlimited preparation (historical)
 
 `2ed-stage.json` records all 302 cached scans/art objects and a numerically passing
 independent affine normalization. Visual boundary certification is still pending.

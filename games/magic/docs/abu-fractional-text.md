@@ -16,6 +16,29 @@ The three historical Alpha pose rejections—Deathlace, Pestilence and Nether
 Shadow—remain diagnostic rows outside the accepted mean. Their poses were not
 refit for this experiment. The data is reused development data, not a new holdout.
 
+## Whole-card check
+
+A separate direct replay recomputes every regional component with the Lab metric.
+The before/after score for each card uses the same eligible components and weights.
+
+| Set       | Before /100 | After /100 |
+| --------- | ----------: | ---------: |
+| Alpha     |       67.18 |      67.82 |
+| Beta      |       67.58 |      68.13 |
+| Unlimited |       70.67 |      71.06 |
+
+The medians and lower deciles also improve in all three sets. There are 270 gains
+and 59 regressions greater than 0.5 point. No card changes component eligibility;
+mean measured coverage is recorded separately from accuracy. As with the text
+study, the primary mean keeps the three historical Alpha pose flags unchanged.
+
+The [whole-card report](../fixtures/accuracy/early-through-fourth/abu-fractional-full-report.json.gz)
+contains every printing, component, coverage value, frame/material group and
+regression. The [raw metric results](../fixtures/accuracy/early-through-fourth/abu-fractional-full-score.json.gz)
+retain the metric dependency hashes. Preprocessing is verified against the pinned
+development commit. These are development measurements, not a published Lab revision
+or a declaration that the three sets are complete.
+
 ## Fitting policy
 
 Font sizes already used 0.25-pixel steps. The missing distinction was glyph

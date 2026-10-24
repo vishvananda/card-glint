@@ -114,6 +114,59 @@ for (const r of dual.rows) {
     assert(Math.abs(side.bestDiagnostic.shift) <= 4);
   }
 }
+
+const fullRaw = gunzipSync(await readFile(dualBase + 'abu-fractional-full-score.json.gz'));
+const full = JSON.parse(fullRaw);
+const common = JSON.parse(
+  gunzipSync(await readFile(dualBase + 'abu-fractional-full-report.json.gz')),
+);
+assert.equal(common.source.rawScoreHash, hash(fullRaw));
+assert.equal(
+  hash(await readFile('games/magic/tools/accuracy/abu-fractional-full-score.mjs')),
+  full.source.toolHash,
+);
+assert.equal(
+  hash(await readFile('games/magic/tools/accuracy/abu-fractional-full-report.mjs')),
+  common.source.reportToolHash,
+);
+assert.equal(full.source.nativeHash, proof.evidence.native.contentSha256);
+assert.equal(common.rows.length, 899);
+assert.equal(full.rows.length, 899);
+assert.equal(new Set(common.rows.map((r) => r.id)).size, 899);
+for (const r of common.rows) {
+  const n = selected.rows.find((n) => n.id === r.id);
+  assert.equal(r.beforeFaceHash, n.beforeFaceHash);
+  assert.equal(r.afterFaceHash, n.afterFaceHash);
+  assert.equal(r.referenceHash, n.referenceHash);
+  assert.equal(r.poseHash, n.poseHash);
+  assert.equal(r.accepted, n.accepted);
+  const a = r.scores.before,
+    b = r.scores.after,
+    c = r.comparison;
+  assert.deepEqual(c.eligibilityChanges, []);
+  assert.equal(a.expectedWeight, b.expectedWeight);
+  assert.equal(c.commonWeight, a.measuredWeight);
+  assert.equal(c.commonWeight, b.measuredWeight);
+  let weight = 0,
+    before = 0,
+    after = 0;
+  for (const key of c.commonComponents) {
+    assert(a.components[key].eligible && b.components[key].eligible);
+    assert.equal(a.components[key].weight, b.components[key].weight);
+    weight += a.components[key].weight;
+    before += a.components[key].weight * a.components[key].score100;
+    after += b.components[key].weight * b.components[key].score100;
+  }
+  assert.equal(weight, c.commonWeight);
+  assert(Math.abs(before / weight - c.before100) < 1e-10);
+  assert(Math.abs(after / weight - c.after100) < 1e-10);
+}
+for (const set of ['lea', 'leb', '2ed']) {
+  const result = common.sets[set];
+  assert(result.after100 > result.before100);
+  assert(result.medianAfter100 > result.medianBefore100);
+  assert(result.p10After100 > result.p10Before100);
+}
 console.log(
   'ABU audit:899native faces,0added rows, typed source restoration, explicit metadata close and unaffected-component reuse pass.',
 );

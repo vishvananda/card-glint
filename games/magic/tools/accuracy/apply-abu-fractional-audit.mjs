@@ -10,6 +10,12 @@ assert(baselineReportFile, 'Usage: apply-abu-fractional-audit.mjs BASELINE_CALIB
 const p = await abuFractionalAncestry();
 const report = JSON.parse(gunzipSync(await readFile(p.evidence.selected.file)));
 const native = JSON.parse(gunzipSync(await readFile(p.evidence.native.file)));
+const fullFile =
+  'games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-full-report.json.gz';
+const fullBytes = gunzipSync(await readFile(fullFile));
+const full = JSON.parse(fullBytes);
+assert.equal(full.source.nativeHash, p.evidence.native.contentSha256);
+assert.equal(full.rows.length, 899);
 const baseline = JSON.parse(await readFile(baselineReportFile));
 const file = 'games/magic/fixtures/accuracy/calibration-progress.json';
 const ledger = JSON.parse(await readFile(file));
@@ -39,6 +45,12 @@ for (const code of p.affectedSets) {
     after100: report.sets[code].after100,
     regressions: report.sets[code].regressions,
     normalizationReview: report.sets[code].normalizationReview,
+    fullCard: {
+      ...full.sets[code],
+      evidence: fullFile,
+      reportSha256: hash(fullBytes),
+      status: 'development-not-published',
+    },
     reason:
       'Fractional advances retain the printing size class and a safe row budget. Unusual manual wrapping and flavor-width differences remain in the review list; no complete-set certification is claimed.',
   };
