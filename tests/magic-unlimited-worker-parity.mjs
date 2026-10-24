@@ -171,6 +171,39 @@ try {
           toughness: undefined,
         },
       ];
+      // Exercise the current ABU typography branches independently of the
+      // frozen pre-worker historical comparison.
+      faces.push(
+        {
+          ...faces[1],
+          name: 'Word of Command',
+          rulesText:
+            "You may look at opponent's hand and choose any card opponent can legally play using mana from his or her mana pool or lands. Opponent must play this card immediately; you make all the decisions it calls for. This spell may not be countered after you have looked at opponent's hand.",
+        },
+        {
+          ...faces[0],
+          name: 'Howl from Beyond',
+          rulesText: 'Target creature gains +X/+0 until end of turn.',
+        },
+        {
+          ...faces[0],
+          name: 'Birds of Paradise',
+          rulesText:
+            'Flying\nTap to add one mana of any color to your mana pool. This tap may be played as an interrupt.',
+        },
+        {
+          ...faces[0],
+          name: 'Twiddle',
+          rulesText: 'Caster may tap or untap any one land, creature, or artifact in play.',
+        },
+        {
+          ...faces[1],
+          name: 'Dense original control',
+          rulesText:
+            'Tap to draw a card, then discard a card. You may use this ability only once each turn. At the beginning of your next upkeep, return this creature to your hand. ' +
+            'You may use this ability only during your upkeep, before drawing a card. If you do not, sacrifice this creature. This ability may not be countered.',
+        },
+      );
       const selected = abuDuals
         ? ['lea', 'leb', '2ed'].flatMap((setCode) => [
             ...['BG', 'UR', 'WU'].map((pair) => ({
@@ -190,7 +223,13 @@ try {
               name: setCode + ' basic control',
             },
           ])
-        : faces;
+        : ['lea', 'leb', '2ed'].flatMap((setCode) =>
+            faces.map((face) => ({
+              ...face,
+              setCode,
+              borderColor: setCode === '2ed' ? 'white' : 'black',
+            })),
+          );
       const modes = abuDuals
         ? [
             ['original', 'original'],
@@ -331,7 +370,7 @@ try {
       }),
     );
   }
-  assert.equal(rows.length, abuDuals ? 288 : 20);
+  assert.equal(rows.length, abuDuals ? 288 : 120);
   for (const row of rows) {
     assert.deepEqual(row.browser.size, row.worker.size);
     assert.deepEqual(row.browser.assets, row.worker.assets);
@@ -351,7 +390,7 @@ try {
       sparseTwoByteRoundingCases: rows.filter((r) => r.rounding).length,
       scope: abuDuals
         ? 'Current Alpha/Beta/Unlimited BG/UR/WU duals and basic controls: browser/worker geometry, alpha and asset requests match (at most 0.01% color pixels may differ by at most two byte levels at antialiased bitmap corners) at table/native/inspect/323px, Original and both Oracle symbol modes, face/default etching. Synthetic assets and local fonts test portability, not scan accuracy.'
-        : 'Current Unlimited browser/OffscreenCanvas pixels and requested assets match for white/black, artifact, dual/basic lands, Original/Oracle and table/native tiers. Synthetic assets and local fonts test portability, not scan accuracy.',
+        : 'Current Alpha/Beta/Unlimited browser/OffscreenCanvas pixels and requested assets match for white/black, artifact, dual/basic lands and reviewed text-flow branches, Original/Oracle and table/native tiers. Synthetic assets and local fonts test portability, not scan accuracy.',
     }),
   );
 } finally {

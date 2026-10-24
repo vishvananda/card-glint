@@ -232,42 +232,20 @@ try {
           // browser/worker pixels have their own positive parity test.
           // M21 calibration intentionally changes its frames and typography too.
           // Its current browser/worker parity is tested separately at all three tiers.
-          // Alpha/Beta dual perimeter updates likewise retain this historical
-          // proof; --abu-duals exercises their current browser/worker path.
+          // Alpha/Beta text and dual-perimeter calibration are intentional too.
+          // The current ABU parity replay covers their text and dual frames.
           for (const api of [
             before,
             label === 'walker'
               ? historicalWalker
-              : ['2ed', 'm21'].includes(face.setCode) || ['lea-dual', 'leb-dual'].includes(label)
+              : ['lea', 'leb', '2ed', 'm21'].includes(face.setCode)
                 ? historicalProfile
                 : current,
           ]) {
             requested = new Set();
             const c = await api.composeCardTexture(
               {
-                face:
-                  api === current && face.setCode === 'lea'
-                    ? {
-                        ...face,
-                        setCalibrationCandidate: current.createSetCalibrationCandidate(
-                          'lea',
-                          current.describeSetCalibration('lea').revision,
-                          Object.fromEntries(
-                            ['title', 'type'].flatMap((role) =>
-                              Object.entries({
-                                dx: 0,
-                                dy: 0,
-                                size: role === 'title' ? 27.8 : 22.2,
-                                width: 1,
-                                wordSpacing: 0,
-                                gray: 130,
-                                shadow: 1,
-                              }).map(([k, v]) => [role + '.' + k, v]),
-                            ),
-                          ),
-                        ),
-                      }
-                    : face,
+                face,
                 printingId: null,
                 printedImage: null,
               },
