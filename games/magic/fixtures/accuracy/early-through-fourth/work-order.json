@@ -35,5 +35,23 @@
   ],
   "metricFollowUps": [
     "Split verified artist metrics from unverified legal text; combined credit edge overlap can favor incorrect wording. Preserve source review and coverage labels."
+  ],
+  "preparation": [
+    {
+      "sets": ["ced", "cei"],
+      "evidence": "collectors-normalization-preparation.json.gz",
+      "distinctFrontImages": 302,
+      "printingIds": 604,
+      "baselineNumericalPassesPerSet": 260,
+      "expandedTopNumericalPassesPerSet": 297,
+      "status": "unreviewed-wording-and-numerical-preparation-only"
+    },
+    {
+      "sets": ["lea", "leb"],
+      "evidence": "abu-dual-outer-trials.json.gz",
+      "scores": "abu-dual-outer-scores.json.gz",
+      "status": "perimeter-candidate-awaits-final-profile-integration",
+      "note": "All 19 whole-card means improve; Alpha Savannah bottom-edge regression remains explicit. No runtime values adopted."
+    }
   ]
 }

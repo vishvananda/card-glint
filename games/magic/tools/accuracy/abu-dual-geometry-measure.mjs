@@ -47,6 +47,8 @@ function cosine(a, b) {
   }
   return aa && bb ? (100 * xy) / Math.sqrt(aa * bb) : null;
 }
+const perimeterOnly = capture.status === 'shared-perimeter-development-not-adopted';
+assert(perimeterOnly || capture.status === 'shared-geometry-development-not-adopted');
 const rows = [];
 for (const prior of reference.rows) {
   const related = capture.rows.filter((r) => r.id === prior.id);
@@ -71,6 +73,15 @@ for (const prior of reference.rows) {
     for (let i = 3; i < image.data.length; i += 4)
       if (image.data[i] !== original.data[i]) alphaChanged++;
     assert.equal(alphaChanged, 0, 'Stock/silhouette changed');
+    let interiorChanged = 0;
+    if (perimeterOnly)
+      for (let y = 68; y < 948; y++)
+        for (let x = 68; x < 664; x++) {
+          const i = (y * 732 + x) * 4;
+          if ([0, 1, 2, 3].some((k) => image.data[i + k] !== original.data[i + k]))
+            interiorChanged++;
+        }
+    if (perimeterOnly) assert.equal(interiorChanged, 0, 'Perimeter redraw changed interior pixels');
     for (const [side, rect] of Object.entries(reference.strips)) {
       const profile = edgeProfile(normalized, rect);
       const score = cosine(prior.sides[side].reference.edge, profile.edge);
@@ -80,7 +91,7 @@ for (const prior of reference.rows) {
       }
       sides[side] = { score100: score, delta: score - prior.sides[side].edgeCosine100 };
     }
-    rows.push({ ...row, alphaChanged, sides });
+    rows.push({ ...row, alphaChanged, ...(perimeterOnly ? { interiorChanged } : {}), sides });
   }
 }
 const groups = {
@@ -119,9 +130,15 @@ const summary = Object.fromEntries(
 );
 const result = {
   schema: 1,
-  status: 'bounded-shared-native-geometry-diagnostic',
+  status: perimeterOnly
+    ? 'bounded-perimeter-native-diagnostic'
+    : 'bounded-shared-native-geometry-diagnostic',
   scope:
-    '19 historical Original face inputs, fixed scan poses and RGB-gradient magnitudes. All 19 default rasters and 228 profiles reproduce exactly. Regional indices are out of 100, not whole-card scores. Both experiments move the entire source plate/art and may trade off independently aligned windows. No values are promoted by a mean gain.',
+    '19 historical Original face inputs, fixed scan poses and RGB-gradient magnitudes. All 19 default rasters and 228 profiles reproduce exactly. Regional indices are out of 100, not whole-card scores. ' +
+    (perimeterOnly
+      ? 'Perimeter-only redraw preserves all full interior pixels, art, typography and silhouette. '
+      : 'Both experiments move the entire source plate/art and may trade off independently aligned windows. ') +
+    'No values are promoted by a mean gain.',
   source: {
     captureHash: hash(cb),
     referenceReportHash: hash(rb),

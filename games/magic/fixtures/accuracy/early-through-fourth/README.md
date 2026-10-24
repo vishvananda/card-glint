@@ -61,6 +61,47 @@ The [Collectors wording preflight](collectors-original-preflight.json) records
 original-wording proposals before running their layout fits. Cached art/scans
 alone do not make those inputs ready for calibration.
 
+## Alpha/Beta dual perimeter trials
+
+[Shared-plate trials](abu-dual-geometry-trials.json.gz) test an upward translation
+and a small vertical compression through the native painter. All nineteen default
+controls and their 228 measured edge profiles reproduce exactly. Moving the
+whole plate improves the outer edge but worsens artwork or paper boundaries;
+those broad transforms are not adopted.
+
+The [perimeter-only trial](abu-dual-outer-trials.json.gz) erases and redraws just
+the outside strip. All fully interior pixels and silhouette alpha stay identical.
+Its compressed candidate raises the outer-edge index from 72.51 to 93.09/100;
+the art-edge index stays 79.95/100. The rules-box edge changes by less than 0.04.
+Alpha Savannah's bottom boundary regresses by 26.12 points, so retain that case
+explicitly rather than averaging it away or declaring its scan invalid.
+
+[Whole-card trial scores](abu-dual-outer-scores.json.gz) use the exact frozen
+metric graph and reproduce every baseline. Both candidates improve all nineteen
+card means by at least 0.74 points with unchanged component eligibility. A simple
+two-pixel upward perimeter shift gives slightly better whole-card means overall:
+Alpha 65.66 → 68.44/100; Beta 63.51 → 65.23/100. Adding compression improves the
+outer-edge diagnostic more, but gives Beta 65.20/100. This disagreement remains
+a review item. Neither local edge means nor a whole-card gain alone certifies
+all component geometry.
+
+These are development observations using the frozen Original face inputs,
+including Tropical Island's historical artist value. They do not undo its current
+reviewed credit or certify final Original/Oracle profile adoption. The trials
+change no shipped renderer values. Archive rasters outside Git.
+
+```sh
+node games/magic/tools/accuracy/abu-dual-geometry-trials.mjs "$ABU_INPUTS" "$ABU_NATIVE" "$DUAL_GEOMETRY_TRIALS"
+node games/magic/tools/accuracy/abu-dual-outer-trials.mjs "$ABU_INPUTS" "$ABU_NATIVE" "$DUAL_OUTER_TRIALS"
+node games/magic/tools/accuracy/abu-dual-geometry-measure.mjs "$DUAL_OUTER_TRIALS" "$DUAL_FRAME_RECHECK" "$DUAL_OUTER_REPORT"
+node games/magic/tools/accuracy/abu-dual-trial-scores.mjs "$DUAL_OUTER_TRIALS" "$ABU_INPUTS" "$HOST_METRIC" "$DUAL_OUTER_SCORES"
+```
+
+`DUAL_FRAME_RECHECK` is the uncompressed numerical report produced by
+`abu-dual-frame-recheck.mjs`. `HOST_METRIC` must be the same metric graph recorded
+in the frozen whole-card census; another implementation is rejected. The native
+tools need the source-object cache. No card-specific geometry or scan pose is fit.
+
 ## Collectors preparation: wording and scan boundaries
 
 The compressed [wording proposals](collectors-original-proposals.json.gz) contain
