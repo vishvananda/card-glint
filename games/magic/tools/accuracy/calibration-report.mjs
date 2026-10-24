@@ -134,7 +134,7 @@ export async function calibrationReport(ledger) {
           if (!checked.has(guardKey)) {
             try {
               const bytes = await readFile(root + '/' + file);
-              if (fractionalAffected) {
+              if (fractionalAffected && (await abuFractionalAncestry()).files[file]) {
                 checked.set(guardKey, new Set([hash(bytes)]));
               } else {
                 const modern = await m21StyleProfileSource(file, bytes, set.set, group);
@@ -186,6 +186,7 @@ export async function calibrationReport(ledger) {
     printings: set.inventory.ordinaryPrintings,
     nonfoil: set.groups.reduce((n, g) => n + g.references.nonfoil, 0),
     foilOnly: set.groups.reduce((n, g) => n + g.references.foilOnly, 0),
+    ...(set.textAudit ? { textAudit: set.textAudit } : {}),
     originalRulesInputs: originalInputs(set, 'rules'),
     originalTypeInputs: originalInputs(set, 'headings'),
     byTask: Object.fromEntries(

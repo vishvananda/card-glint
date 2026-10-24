@@ -2,9 +2,9 @@
 
 `plan.json` freezes the starting backlog for the 13 major sets (3,306 printings).
 The live completion authority remains `../calibration-progress.json`, not this
-planning snapshot. The [current work order](work-order.json) completes and
-releases Unlimited first, then prioritizes full M21 calibration and modern-frame
-defaults. The remaining early-set backlog stays queued. Large Collectors and Summer editions are included; their
+planning snapshot. The [current work order](work-order.json) starts with the
+Alpha/Beta/Unlimited text recheck, then resumes the remaining early-set backlog.
+Large Collectors and Summer editions are included; their
 fronts, borders and applicability must be checked rather than assumed to inherit
 Beta or Revised. The order starts with Alpha and Beta's reopened work, then
 proceeds chronologically through Fourth Edition.

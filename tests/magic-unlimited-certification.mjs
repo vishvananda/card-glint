@@ -56,21 +56,42 @@ assert.equal(
   'A historical release cannot certify new renderer pixels',
 );
 const reports = await calibrationReport({ sets: [set] });
-assert.equal(
-  reports[0].counts.validated,
-  340 + set.groups.filter((g) => g.tasks.release.status === 'validated').length,
-);
+// The historical census still verifies the unchanged profile. The new ABU
+// text policy has its own current replay and must not inherit old text/release approvals.
+const changedTasks = new Set(['rules', 'flavor', 'fullCard', 'release']);
+let expectedValidated = 0;
+for (const group of set.groups)
+  for (const task of Object.keys(CALIBRATION_TASKS)) {
+    if (group.applicable?.[task] === false) continue;
+    const recorded = group.tasks[task];
+    const outstanding = reports[0].outstanding.find(
+      (r) => r.group === group.key && r.task === task,
+    );
+    if (!changedTasks.has(task)) {
+      assert.equal(
+        outstanding,
+        undefined,
+        'Unchanged Unlimited component reopened: ' + group.key + '/' + task,
+      );
+      expectedValidated++;
+    } else if (['validated', 'validated-default'].includes(recorded.status)) {
+      assert.equal(outstanding, undefined, 'Exact unchanged native group lost approval');
+      expectedValidated++;
+    } else {
+      assert.equal(outstanding?.status, recorded.status, 'Current scoped review state was lost');
+    }
+  }
+assert.equal(reports[0].counts.validated, expectedValidated);
 assert.equal(reports[0].originalRulesInputs.ready, 302);
 assert.equal(reports[0].originalTypeInputs.ready, 302);
 assert.equal(reports[0].counts['needs-audit'], 0);
-assert.equal(
-  reports[0].complete,
-  set.groups.every((g) => g.tasks.release.status === 'validated'),
-);
-assert(reports[0].outstanding.every((r) => r.task === 'release'));
+assert.equal(reports[0].complete, false, 'A partial text audit cannot complete Unlimited');
+assert(reports[0].outstanding.every((r) => changedTasks.has(r.task)));
 // Group-level guards must invalidate every applicable dependent task.
 const tampered = structuredClone(set);
-tampered.groups[0].guards['games/magic/src/calibration/sets/2ed.ts'] = '0'.repeat(64);
+const guarded = tampered.groups.find((g) => g.tasks.fullCard.status === 'validated');
+assert(guarded, 'Need an unchanged approved group as a tamper control');
+guarded.guards['games/magic/src/calibration/sets/2ed.ts'] = '0'.repeat(64);
 const invalid = await calibrationReport({ sets: [tampered] });
 assert(invalid[0].outstanding.some((r) => r.task === 'fullCard' && r.status === 'stale'));
 assert(data.receipt.metricCoverage.includes('excluded'));

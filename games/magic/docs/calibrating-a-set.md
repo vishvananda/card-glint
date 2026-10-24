@@ -54,6 +54,13 @@ See [asset sources and fan notice](../NOTICE.md).
    centering from the selected original/Oracle wording reference. Check wrapping,
    baseline spacing, flavor gaps and attribution alignment, including overflow.
 
+   Fractional font-size steps and fractional glyph advances are separate settings.
+   Keep measurement and painting in the same font realm and metric mode. Check
+   small, regular and large text separately; a new wrapped row can move the whole
+   block even when the size is unchanged. Preserve the physical inset, try a small
+   size reduction, and retain every wrapping regression. See the
+   [ABU fractional-text recheck](abu-fractional-text.md).
+
 6. **Fit pigment after the geometry is fixed.** Fit frame and paper by material;
    retain separate masks where their adjustments differ, especially green and
    black. Measure interior black and outer stock separately; Alpha/Beta retain

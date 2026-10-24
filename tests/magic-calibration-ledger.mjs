@@ -269,8 +269,28 @@ assert.deepEqual(
 );
 const alphaReport = reports.find((s) => s.set === 'lea');
 assert.equal(alphaReport.byTask.headings.validated, alphaReport.groups);
-assert.ok(alphaReport.byTask.frameGeometry['needs-audit'] > 0);
-assert.ok(reports.find((s) => s.set === 'leb').byTask.frameGeometry['needs-audit'] > 0);
+// The complete dual census has been rechecked; measured shape residuals stay open.
+for (const [code, count] of [
+  ['lea', 9],
+  ['leb', 10],
+]) {
+  const current = reports.find((s) => s.set === code);
+  assert.equal(current.byTask.frameGeometry.partial, count);
+  assert.equal(current.byTask.frameColor.validated, current.groups);
+  assert.equal(current.complete, false);
+  const duals = ledger.sets
+    .find((s) => s.set === code)
+    .groups.filter((g) => g.tasks.frameGeometry.status === 'partial');
+  assert.equal(duals.length, count);
+  for (const g of duals) {
+    assert.equal(g.tasks.frameGeometry.proof.gatesPassed, false);
+    assert(
+      g.tasks.frameGeometry.evidence.includes(
+        'games/magic/fixtures/accuracy/early-through-fourth/abu-dual-frame-review.json',
+      ),
+    );
+  }
+}
 for (const group of ledger.sets.find((s) => s.set === 'lea').groups)
   assert.match(group.tasks.headings.reason, /Fresh 0\.6\.5 native heading audit/);
 for (const s of ledger.sets) {

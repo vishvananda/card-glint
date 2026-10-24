@@ -51,3 +51,6 @@ later releases. Check the current profile and Lab status before reusing values.
 - [M21 study history](m21-calibration-study.md): normalization and calibration experiments.
 - [Released M21 comparison](../fixtures/accuracy/m21/release-0612-comparison.json):
   all 297 ordinary printings, including regressions.
+
+- [Alpha/Beta/Unlimited fractional text recheck](abu-fractional-text.md):
+  full-corpus scores, guarded fitting, small-face reviews and reproduction.

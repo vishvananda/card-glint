@@ -83,6 +83,37 @@ assert.equal(simulacrum.afterLayout.lines.length, 6);
 const shadow = selected.rows.find((r) => r.set === 'lea' && r.name === 'Nether Shadow');
 assert.equal(shadow.afterLayout.lines.length, 7);
 assert(shadow.score.delta100 > 0);
+
+const dualBase = 'games/magic/fixtures/accuracy/early-through-fourth/';
+const dualRaw = gunzipSync(await readFile(dualBase + 'abu-dual-frame-recheck.json.gz'));
+const dual = JSON.parse(dualRaw);
+const dualReview = JSON.parse(await readFile(dualBase + 'abu-dual-frame-review.json'));
+assert.equal(hash(dualRaw), dualReview.measurementSha256);
+assert.equal(dual.rendererHash, proof.afterRenderer);
+assert.equal(dual.nativeHash, proof.evidence.native.contentSha256);
+assert.equal(dual.summary.inventory, 19);
+assert.equal(dual.summary.frameIdentical, 19);
+assert.equal(dual.rows.filter((r) => r.set === 'lea').length, 9);
+assert.equal(dual.rows.filter((r) => r.set === 'leb').length, 10);
+assert.equal(dualReview.rows.length, 19);
+assert.equal(
+  hash(await readFile('games/magic/tools/accuracy/abu-dual-frame-recheck.mjs')),
+  dual.toolHash,
+);
+for (const r of dual.rows) {
+  const n = selected.rows.find((n) => n.id === r.id);
+  assert(n);
+  assert.equal(r.referenceHash, n.referenceHash);
+  assert.equal(r.poseHash, n.poseHash);
+  assert.equal(r.renderHash, n.afterFaceHash);
+  assert.equal(r.nonRulesChanged, 0);
+  assert(dualReview.rows.some((v) => v.id === r.id && v.renderHash === r.renderHash));
+  for (const side of Object.values(r.sides)) {
+    assert(Number.isFinite(side.edgeCosine100));
+    assert(Number.isFinite(side.bestDiagnostic.cosine));
+    assert(Math.abs(side.bestDiagnostic.shift) <= 4);
+  }
+}
 console.log(
   'ABU audit:899native faces,0added rows, typed source restoration, explicit metadata close and unaffected-component reuse pass.',
 );
