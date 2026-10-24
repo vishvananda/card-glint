@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile, writeFile } from 'node:fs/promises';
-import { format } from 'prettier';
+import { format, resolveConfig } from 'prettier';
 import { execFileSync } from 'node:child_process';
 import { hash, sourceHash } from './common.mjs';
 import { checkPublication } from './modern-publication-review.mjs';
@@ -92,7 +92,13 @@ const receipt = {
   toolFile,
   toolHash,
 };
-await writeFile(output, await format(JSON.stringify(receipt), { parser: 'json' }));
+await writeFile(
+  output,
+  await format(JSON.stringify(receipt, null, 2) + '\n', {
+    ...(await resolveConfig(output)),
+    parser: 'json',
+  }),
+);
 // Hash the formatted receipt bytes used by the release task.
 const guards = { ...audit.guards, [output]: hash(await readFile(output)), [toolFile]: toolHash };
 for (const g of groups) {
@@ -121,5 +127,11 @@ for (const g of groups) {
     },
   };
 }
-await writeFile(ledgerFile, await format(JSON.stringify(ledger), { parser: 'json' }));
+await writeFile(
+  ledgerFile,
+  await format(JSON.stringify(ledger, null, 2) + '\n', {
+    ...(await resolveConfig(ledgerFile)),
+    parser: 'json',
+  }),
+);
 console.log(JSON.stringify(receipt.summary));
