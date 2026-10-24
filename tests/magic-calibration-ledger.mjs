@@ -1,3 +1,4 @@
+import { abuCurrentApproval } from '../games/magic/tools/accuracy/abu-current-review.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import {
@@ -269,21 +270,23 @@ assert.deepEqual(
 );
 const alphaReport = reports.find((s) => s.set === 'lea');
 assert.equal(alphaReport.byTask.headings.validated, alphaReport.groups);
-// The complete dual census has been rechecked; measured shape residuals stay open.
+// The complete dual census now has its current finite source review.
+// Source-pattern residuals remain visible without inventing per-card frame warps.
 for (const [code, count] of [
   ['lea', 9],
   ['leb', 10],
 ]) {
   const current = reports.find((s) => s.set === code);
-  assert.equal(current.byTask.frameGeometry.partial, count);
+  assert.equal(current.byTask.frameGeometry.validated, current.groups);
   assert.equal(current.byTask.frameColor.validated, current.groups);
   assert.equal(current.complete, false);
   const duals = ledger.sets
     .find((s) => s.set === code)
-    .groups.filter((g) => g.tasks.frameGeometry.status === 'partial');
+    .groups.filter((g) => g.tasks.frameGeometry.proof?.abuCurrentReview);
   assert.equal(duals.length, count);
   for (const g of duals) {
-    assert.equal(g.tasks.frameGeometry.proof.gatesPassed, false);
+    assert.equal(g.tasks.frameGeometry.proof.gatesPassed, true);
+    assert(await abuCurrentApproval(g.tasks.frameGeometry, g, 'frameGeometry', false, code));
     assert(
       g.tasks.frameGeometry.evidence.includes(
         'games/magic/fixtures/accuracy/early-through-fourth/abu-dual-frame-review.json',
