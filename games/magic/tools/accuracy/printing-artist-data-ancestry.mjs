@@ -1,3 +1,4 @@
+import { preAbuPerimeterSource } from './abu-perimeter-ancestry.mjs';
 // Exact pure-data history, independent of calibration approval.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -15,7 +16,8 @@ export async function printingArtistDelta() {
     assert.equal(hash(bytes), RECEIPT, 'Changed artist data receipt');
     const p = JSON.parse(gunzipSync(bytes)),
       after = {};
-    for (const f of Object.keys(p.files)) after[f] = await readFile(path.join(root, f), 'utf8');
+    for (const f of Object.keys(p.files))
+      after[f] = (await preAbuPerimeterSource(f, await readFile(path.join(root, f)))).toString();
     assert.deepEqual(validatePrintingArtistDelta(p, after), p.summary);
     const zip = await readFile(path.join(root, p.native.file));
     assert.equal(hash(zip), p.native.sha256);
@@ -60,6 +62,7 @@ export async function printingArtistDelta() {
   })());
 }
 export async function prePrintingArtistData(file, bytes) {
+  bytes = await preAbuPerimeterSource(file, bytes);
   const p = await printingArtistDelta(),
     entry = p.files[file];
   if (!entry) return bytes;

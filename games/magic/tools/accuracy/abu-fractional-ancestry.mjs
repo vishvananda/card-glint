@@ -1,3 +1,4 @@
+import { abuPerimeterAffected } from './abu-perimeter-ancestry.mjs';
 import {
   prePrintingArtistData,
   printingArtistHistoricalHash,
@@ -116,6 +117,7 @@ export async function abuFractionalRuntimeCompatible(
   if (![p.beforeRenderer, p.afterRenderer].includes(expected)) return false;
   if (expected === p.beforeRenderer && abuFractionalAffected(set, task, original)) return false;
   if (await printingArtistAffected(set, task, original, group)) return false;
+  if (await abuPerimeterAffected(set, task, original, group)) return false;
   return (
     (await (runtimeChecked ??= printingArtistHistoricalHash(path.join(root, directory)))) ===
     p.afterRenderer

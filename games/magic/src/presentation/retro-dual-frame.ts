@@ -1,3 +1,4 @@
+import type { CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
 import { retroLandColors } from './retro-land-colors.js';
@@ -38,8 +39,41 @@ export function retroDualFrame(face: RenderedCardInput) {
   };
 }
 
-/** Only these two printed outlines change. Other face cache identities stay byte-identical. */
+// The common AB dual perimeter sits two canonical pixels too low. Keep its
+// stock window, art and paper geometry independent: moving the entire plate
+// improves its outside edge but regresses the already aligned interior.
+function hasAbuDualPerimeter(face: RenderedCardInput): boolean {
+  return (
+    ['lea', 'leb'].includes(face.setCode?.toLowerCase() ?? '') && retroDualFrame(face) !== undefined
+  );
+}
+
+/** Face-composition only. Reuse the prepared material; no decode or readback. */
+export function paintAbuDualPerimeter(
+  c: CanvasContext,
+  face: RenderedCardInput,
+  frame: ImageBitmap,
+  stock: string,
+): void {
+  if (!hasAbuDualPerimeter(face)) return;
+  c.save();
+  try {
+    c.beginPath();
+    c.rect(0, 0, 488, 680);
+    c.rect(45, 45, 398, 587);
+    c.clip('evenodd');
+    const filter = c.filter;
+    c.filter = 'none';
+    c.fillStyle = stock;
+    c.fillRect(0, 0, 488, 680);
+    c.filter = filter;
+    c.drawImage(frame, 0, -2, 488, 680);
+  } finally {
+    c.restore();
+  }
+}
+
+/** Invalidate only affected face rasters; default etching is unchanged. */
 export function retroDualFrameRevision(face: RenderedCardInput): string | undefined {
-  if (face.setCode?.toLowerCase() !== 'leb' || !retroDualFrame(face)) return undefined;
-  return ['WU', 'UR'].includes(retroLandColors(face).join('')) ? 'beta-outline-ink-v2' : undefined;
+  return hasAbuDualPerimeter(face) ? 'abu-dual-perimeter-up2-v1' : undefined;
 }

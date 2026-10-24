@@ -1,3 +1,4 @@
+import { preAbuPerimeterSource } from '../games/magic/tools/accuracy/abu-perimeter-ancestry.mjs';
 import {
   preAbuFractionalSource,
   abuFractionalAncestry,
@@ -30,7 +31,7 @@ for (const [file, entry] of Object.entries(proof.files)) {
   assert.deepEqual(await preEarlyCalibrationSource(file, before), before);
   await assert.rejects(
     preEarlyCalibrationSource(file, Buffer.concat([current, Buffer.from('\n// unknown change\n')])),
-    /Unreviewed (?:early source|M21 style source|Eighth source|ABU fractional source)/,
+    /Unreviewed (?:early source|M21 style source|Eighth source|ABU fractional source|AB perimeter source)/,
   );
 }
 const unrelated = Buffer.from('Unrelated source is not rewritten');
@@ -101,7 +102,7 @@ for (const [file, entry] of Object.entries(oracleProof.files)) {
   assert.deepEqual(await preOracleInsetSource(file, original), original);
   await assert.rejects(
     preOracleInsetSource(file, Buffer.concat([current, Buffer.from('\n// unknown Oracle edit\n')])),
-    /Unreviewed (?:early source|M21 style source|Eighth source|ABU fractional source)/,
+    /Unreviewed (?:early source|M21 style source|Eighth source|ABU fractional source|AB perimeter source)/,
   );
 }
 console.log(
@@ -127,8 +128,10 @@ const historicalProfiles = async (file) =>
     : file.endsWith('/sets/2ed.ts')
       ? undefined
       : readFile(file);
+// Remove only the separately proven AB perimeter edit before testing optional
+// profile activation. It cannot authorize changes to the probed set profile.
 for (const [file, entry] of Object.entries(preparation.files)) {
-  const bytes = await readFile(file);
+  const bytes = await preAbuPerimeterSource(file, await readFile(file));
   assert.equal(hash(await preProfilePreparationSource(file, bytes, 'lea')), entry.before);
   assert.equal(hash(await preProfilePreparationSource(file, bytes, '4ed')), entry.before);
   assert.equal(

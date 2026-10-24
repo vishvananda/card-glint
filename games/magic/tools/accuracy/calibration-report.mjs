@@ -1,3 +1,9 @@
+import {
+  abuPerimeterApprovalCurrent,
+  preAbuPerimeterSource,
+  abuPerimeterAffected,
+  abuPerimeterRuntimeCompatible,
+} from './abu-perimeter-ancestry.mjs';
 import { printingArtistDelta, printingArtistAffected } from './printing-artist-data-ancestry.mjs';
 import {
   abuFractionalAncestry,
@@ -55,6 +61,13 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        const perimeterAffected = await abuPerimeterAffected(set.set, task, original, group);
+        if (perimeterAffected && !(await abuPerimeterApprovalCurrent(item, group))) {
+          item.status = 'needs-audit';
+          item.reason =
+            'The shared Alpha/Beta dual perimeter changed. Frame geometry and whole-card approvals need the current scoped native replay; unchanged interior components and source wording retain their own evidence.';
+          continue;
+        }
         const fractionalAffected = abuFractionalAffected(set.set, task, original);
         const artistDataAffected = await printingArtistAffected(set.set, task, original, group);
         if (
@@ -120,6 +133,14 @@ export async function calibrationReport(ledger) {
           }
           if (
             runtimeChecked.get(directory) !== expected &&
+            !(await abuPerimeterRuntimeCompatible(
+              directory,
+              expected,
+              set.set,
+              task,
+              original,
+              group,
+            )) &&
             !(await eighthRuntimeCompatible(directory, expected, set.set, group)) &&
             !(await abuFractionalRuntimeCompatible(
               directory,
@@ -153,7 +174,10 @@ export async function calibrationReport(ledger) {
             try {
               const bytes = await readFile(root + '/' + file);
               if (artistDataAffected && (await printingArtistDelta()).files[file]) {
-                checked.set(guardKey, new Set([hash(bytes)]));
+                checked.set(
+                  guardKey,
+                  new Set([hash(bytes), hash(await preAbuPerimeterSource(file, bytes))]),
+                );
               } else if (fractionalAffected && (await abuFractionalAncestry()).files[file]) {
                 checked.set(guardKey, new Set([hash(bytes)]));
               } else {

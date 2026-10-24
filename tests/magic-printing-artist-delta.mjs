@@ -1,3 +1,7 @@
+import {
+  preAbuPerimeterSource,
+  abuPerimeterDelta,
+} from '../games/magic/tools/accuracy/abu-perimeter-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
@@ -11,12 +15,12 @@ import { validatePrintingArtistDelta } from '../games/magic/tools/accuracy/print
 const p = await printingArtistDelta(),
   after = {};
 for (const [file, e] of Object.entries(p.files)) {
-  after[file] = await readFile(file, 'utf8');
+  after[file] = (await preAbuPerimeterSource(file, await readFile(file))).toString();
   assert.equal(hash(await prePrintingArtistData(file, Buffer.from(after[file]))), e.before);
   assert.equal(hash(await prePrintingArtistData(file, Buffer.from(e.beforeSource))), e.before);
   await assert.rejects(
     prePrintingArtistData(file, Buffer.from(after[file] + '\nunknown')),
-    /Unreviewed printing artist data/,
+    /Unreviewed (?:printing artist data|AB perimeter source)/,
   );
 }
 assert.deepEqual(validatePrintingArtistDelta(p, after), {
@@ -24,7 +28,9 @@ assert.deepEqual(validatePrintingArtistDelta(p, after), {
   addedArtists: 1,
   wordingPrintings: 2962,
 });
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+const perimeter = await abuPerimeterDelta();
+assert.equal(await sourceHash('games/magic/src'), perimeter.afterRenderer);
+assert.equal(perimeter.beforeRenderer, p.afterRenderer);
 assert.equal(await printingArtistHistoricalHash(), p.beforeRenderer);
 const mutate = (file, transform) => {
   const proof = structuredClone(p),

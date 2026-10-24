@@ -61,6 +61,48 @@ The [Collectors wording preflight](collectors-original-preflight.json) records
 original-wording proposals before running their layout fits. Cached art/scans
 alone do not make those inputs ready for calibration.
 
+## Installed Alpha/Beta perimeter correction
+
+The later [source delta](abu-perimeter-source-delta.json.gz) installs the simpler
+two-pixel upward perimeter shift. The entire frame and art stay in place; the
+painter clears and redraws only the outside strip using the already prepared
+source material. Stock-mask geometry and source pigment values are unchanged.
+
+[Native adoption](abu-perimeter-native.json.gz) covers all 899 current reviewed
+Original faces. The 880 unaffected faces reproduce their saved PNG bytes. The
+nineteen duals are paired before/after in Original and both Oracle symbol modes:
+114 layer comparisons preserve all fully interior pixels, silhouette alpha and
+default etching. Only those nineteen face cache identities change. Tropical
+Island uses its current reviewed Mark Poole credit in this adoption census.
+
+The [score patch](abu-perimeter-score-update.json.gz) recomputes nineteen faces
+and explicitly reuses the other 880 current scores. It retains the preceding
+artist correction and reproduces all nineteen pre-change scores with the exact
+frozen metric graph. Every affected card improves by at least 0.79 points.
+Fixed-pose set means become Alpha **67.90/100**, Beta **68.19/100** and Unlimited
+**71.06/100**. Alpha's paired aggregate retains its historical 292 accepted
+entries; the three old pose flags are not new rejections. Native face coverage
+is 899, separate from that historical aggregate denominator.
+
+The ledger keeps frame geometry and full-card review partial: interior lower
+boundaries, text wraps, texture and bevel differences still need work. Alpha
+Savannah's bottom-edge regression is preserved in the earlier regional trial
+evidence. Historical receipts stay immutable; the new exact source bridge
+allows unrelated reviews to retain their evidence and rejects unknown edits.
+A revision marker alone cannot approve the changed frame.
+
+```sh
+node games/magic/tools/accuracy/abu-perimeter-native.mjs "$PERIMETER_REFERENCE" "$CURRENT_ABU_INPUTS" "$ABU_NATIVE" "$ARTIST_NATIVE" "$PERIMETER_NATIVE"
+node games/magic/tools/accuracy/record-abu-perimeter-delta.mjs "$PERIMETER_REFERENCE" "$PERIMETER_NATIVE" "$CURRENT_ABU_INPUTS"
+node games/magic/tools/accuracy/abu-perimeter-score.mjs "$PERIMETER_NATIVE" "$CURRENT_ABU_INPUTS" "$HOST_METRIC" "$PERIMETER_SCORES"
+node tests/magic-abu-perimeter.mjs
+```
+
+The reference checkout must reproduce the source hash pinned in the adoption
+tool, including generated per-set payloads. New renderer bytes need a new
+capture directory and receipt. The source recorder is a maintainer tool:
+changing its receipt does not bypass source or native-pixel checks.
+
 ## Alpha/Beta dual perimeter trials
 
 [Shared-plate trials](abu-dual-geometry-trials.json.gz) test an upward translation

@@ -1,3 +1,4 @@
+import { paintAbuDualPerimeter } from './retro-dual-frame.js';
 import { paintLegacyCalibratedTitle } from './legacy-calibrated-title.js';
 import {
   type CanvasContext,
@@ -111,6 +112,7 @@ export function paintRetroFace(
     c.save();
     c.filter = retroFrameFilter(face);
     c.drawImage(frame, ...retroPx(rect.frame));
+    paintAbuDualPerimeter(c, face, frame, stock);
     paintRetroPaper(c, frame, retroFrameAsset(face));
     if (retroFrameAsset(face).endsWith('/seventh/regular/m.png')) paintRetroGoldBevel(c, frame);
     c.restore();
