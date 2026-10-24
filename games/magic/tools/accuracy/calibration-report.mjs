@@ -1,3 +1,8 @@
+import {
+  eighthSourceAncestry,
+  eighthDefaultSetAffected,
+  eighthRuntimeCompatible,
+} from './eighth-source-ancestry.mjs';
 import { preNormalizationCensusSource } from './normalization-census-ancestry.mjs';
 import { modernDefaultAncestry, modernDefaultSetAffected } from './modern-default-ancestry.mjs';
 import { m21StyleProfileSource } from './m21-style-ancestry.mjs';
@@ -44,6 +49,18 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        const eighthAffected = await eighthDefaultSetAffected(set.set, group);
+        if (
+          eighthAffected &&
+          !original &&
+          task !== 'references' &&
+          item.proof?.eighthDefaultsSource !== (await eighthSourceAncestry()).rendererHash
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'The Eighth-family source defaults changed. Reference and wording data remain reusable; rendered components need a current review.';
+          continue;
+        }
         const modernDefaultsAffected = await modernDefaultSetAffected(set.set, group);
         if (
           modernDefaultsAffected &&
@@ -75,7 +92,10 @@ export async function calibrationReport(ledger) {
               runtimeChecked.set(directory, null);
             }
           }
-          if (runtimeChecked.get(directory) !== expected) {
+          if (
+            runtimeChecked.get(directory) !== expected &&
+            !(await eighthRuntimeCompatible(directory, expected, set.set, group))
+          ) {
             runtimeCurrent = false;
             item.status = 'stale';
             item.reason = 'Runtime source changed after the published native/scoring replay.';

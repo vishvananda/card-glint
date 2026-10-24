@@ -1,3 +1,4 @@
+import { preEighthSource } from './eighth-source-ancestry.mjs';
 // Exact source reconstruction after the reviewed crown/land-source adoption.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -14,7 +15,11 @@ export function modernFrameSourceAncestry() {
     const p = JSON.parse(bytes);
     for (const parent of p.parents) assert.equal(hash(await readFile(parent.file)), parent.sha256);
     for (const [file, e] of Object.entries(p.files))
-      assert.equal(hash(await readFile(file)), e.after, 'Unreviewed modern frame source: ' + file);
+      assert.equal(
+        hash(await preEighthSource(file, await readFile(file))),
+        e.after,
+        'Unreviewed modern frame source: ' + file,
+      );
     const summaryBytes = await readFile(p.evidence.file);
     assert.equal(hash(summaryBytes), p.evidence.sha256);
     const summary = JSON.parse(summaryBytes);
@@ -75,6 +80,11 @@ export function modernFrameSourceAncestry() {
 /** Known historical versions pass only to their original stricter guards.
  * M21 and affected modern owners must still retain their current fingerprints. */
 export async function preModernFrameSource(file, bytes) {
+  try {
+    bytes = await preEighthSource(file, bytes);
+  } catch (error) {
+    throw new Error('Unreviewed modern frame source: ' + file, { cause: error });
+  }
   const p = await modernFrameSourceAncestry(),
     e = p.files[file];
   if (!e) return bytes;

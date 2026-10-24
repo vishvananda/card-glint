@@ -1,3 +1,4 @@
+import { eighthSourceAncestry } from '../games/magic/tools/accuracy/eighth-source-ancestry.mjs';
 import { modernDefaultAncestry } from '../games/magic/tools/accuracy/modern-default-ancestry.mjs';
 import { m21StyleAncestry } from '../games/magic/tools/accuracy/m21-style-ancestry.mjs';
 import { oracleFlavorAncestryProof } from '../games/magic/tools/accuracy/oracle-flavor-ancestry.mjs';
@@ -304,6 +305,7 @@ async function verify() {
   const profileAdapter = await profileAdapterAncestry();
   const profileBody = await profileBodyAncestry();
   const modernStyles = await m21StyleAncestry();
+  const eighth = await eighthSourceAncestry();
   const modernDefaults = await modernDefaultAncestry();
   const oracleFlavor = await oracleFlavorAncestryProof();
   const profileData = await additionalProfileDataModules(
@@ -313,6 +315,8 @@ async function verify() {
     (file) =>
       ![
         ...profileData,
+        ...eighth.dataModules,
+        ...Object.keys(eighth.newModules),
         ...Object.keys(modernStyles.newModules),
         ...Object.keys(modernDefaults.newModules),
         oracleFlavor.addition.file,
@@ -370,6 +374,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(eighth.files, relative) ||
             Object.hasOwn(modernStyles.files, relative) ||
             Object.hasOwn(modernDefaults.files, relative) ||
             Object.hasOwn(profileBody.files, relative) ||

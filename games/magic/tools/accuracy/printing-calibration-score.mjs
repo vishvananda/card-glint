@@ -1,3 +1,5 @@
+import { decoderLockMatches } from './decoder-lock.mjs';
+import { reusablePrintingScore } from './printing-score-reuse.mjs';
 // Diagnostic replay only: measured regions never certify a pending scan pose.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -7,11 +9,19 @@ import { PNG } from 'pngjs';
 import { hash, objectFile, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { metricSourceGraph } from './module-graph.mjs';
-const [inputFile, nativeDirectory, normalizationDirectory, metricFile, output, diagnostic] =
-  process.argv.slice(2);
+const [
+  inputFile,
+  nativeDirectory,
+  normalizationDirectory,
+  metricFile,
+  output,
+  diagnostic,
+  reuseFlag,
+  reuseFile,
+] = process.argv.slice(2);
 assert(
-  output && diagnostic === '--diagnostic',
-  'Usage: printing-calibration-score.mjs INPUTS NATIVE NORMALIZATION METRIC OUT --diagnostic',
+  output && diagnostic === '--diagnostic' && (reuseFlag === undefined || reuseFlag === '--reuse'),
+  'Usage: printing-calibration-score.mjs INPUTS NATIVE NORMALIZATION METRIC OUT --diagnostic [--reuse DESCRIPTOR]',
 );
 const read = async (file) => {
   const bytes = await readFile(file);
@@ -39,8 +49,62 @@ const metricGraph = await metricSourceGraph(metricFile),
     new URL('./pixels-pure.mjs', import.meta.url).pathname,
   ),
   { scoreRegions } = await import(pathToFileURL(path.resolve(metricFile)));
+let reuse;
+if (reuseFlag) {
+  assert(reuseFile, 'Missing reuse descriptor');
+  const descriptor = await read(reuseFile);
+  assert.equal(descriptor.data.schema, 1);
+  const d = descriptor.data;
+  const prior = await read(path.join(d.scoreDirectory, 'scores.json'));
+  const oldInput = await read(d.inputFile),
+    oldNative = await read(path.join(d.nativeDirectory, 'capture.json'));
+  assert.equal(prior.data.definition.inputsHash, hash(oldInput.bytes));
+  assert.equal(prior.data.definition.nativeCaptureHash, hash(oldNative.bytes));
+  assert.deepEqual(
+    prior.data.definition.metricGraph,
+    metricGraph,
+    'Metric changed: rescore without reuse',
+  );
+  assert.deepEqual(
+    prior.data.definition.preprocessingGraph,
+    preprocessingGraph,
+    'Preprocessing changed: rescore without reuse',
+  );
+  assert.equal(
+    prior.data.definition.normalizationHash,
+    hash(normalization.bytes),
+    'Poses changed: rescore without reuse',
+  );
+  const lock = oldNative.data.source.helpers.find(([f]) => f === 'package-lock.json')?.[1];
+  assert(lock, 'Missing decoder lock binding');
+  assert(
+    decoderLockMatches(
+      await readFile(new URL('../../../../package-lock.json', import.meta.url)),
+      lock,
+      d.rootVersion,
+    ),
+    'Decoder dependencies changed: rescore without reuse',
+  );
+  assert.equal(
+    oldNative.data.source.node,
+    process.version,
+    'Node runtime changed: rescore without reuse',
+  );
+  reuse = {
+    directory: d.scoreDirectory,
+    proof: {
+      descriptorHash: hash(descriptor.bytes),
+      scoresHash: hash(prior.bytes),
+      definitionHash: prior.data.definitionHash,
+      oldDecoderLock: lock,
+    },
+    rows: new Map(prior.data.rows.map((r) => [r.id, r])),
+    entries: new Map(oldInput.data.entries.map((e) => [e.id, e])),
+  };
+}
 const definition = {
   schema: 1,
+  ...(reuse ? { reuse: reuse.proof } : {}),
   set: inputs.data.set,
   inputsHash: hash(inputs.bytes),
   nativeCaptureHash: hash(native.bytes),
@@ -49,6 +113,12 @@ const definition = {
   metricGraph,
   preprocessingGraph,
   toolHash: hash(await readFile(new URL(import.meta.url))),
+  toolDependencies: await Promise.all(
+    ['printing-score-reuse.mjs', 'decoder-lock.mjs'].map(async (file) => [
+      file,
+      hash(await readFile(new URL(file, import.meta.url))),
+    ]),
+  ),
   scope:
     'Complete native Original census, with each reference transformed using its frozen comparison-only scan matrix. Every reference and native face is hash-checked. Unaccepted poses, unsupported scoring maps and foil-only references stay visible in the denominator. Scores are regional structure indices out of100, with explicit coverage, not percentages of visual fidelity. This diagnostic does not approve pending normalization, unverified wording, or set completion.',
 };
@@ -71,6 +141,7 @@ const aggregate = (items) => {
   const measured = items.filter((r) => r.metric?.structuralScore != null);
   return {
     total: items.length,
+    reusedMetrics: items.filter((r) => r.reusedFrom).length,
     measured: measured.length,
     acceptedPoses: items.filter((r) => r.poseAccepted).length,
     nonfoil: items.filter((r) => r.nonfoilEligible).length,
@@ -124,6 +195,27 @@ for (const e of inputs.data.entries) {
     assert.equal(prior.poseHash, hash(JSON.stringify(pose.transform)));
     const b = await readFile(path.join(output, prior.normalizedReference.file));
     assert.equal(hash(b), prior.normalizedReference.sha256, 'Cached normalized raster changed');
+    continue;
+  }
+  const reusable = reuse?.rows.get(e.id);
+  if (reuse && reusablePrintingScore(reusable, reuse.entries.get(e.id), e, face, pose, hash)) {
+    const bytes = await readFile(path.join(reuse.directory, reusable.normalizedReference.file));
+    assert.equal(
+      hash(bytes),
+      reusable.normalizedReference.sha256,
+      'Changed reused normalized reference',
+    );
+    const file = 'references/' + e.id + '.png';
+    await writeFile(path.join(output, file), bytes);
+    rows.push({
+      ...reusable,
+      normalizedReference: { file, sha256: hash(bytes) },
+      reusedFrom: {
+        definitionHash: reuse.proof.definitionHash,
+        scoresHash: reuse.proof.scoresHash,
+      },
+    });
+    await save();
     continue;
   }
   const reference = normalize(

@@ -52,6 +52,7 @@ for (const candidates of candidateLists) {
       if (
         [
           'retainSize',
+          'eighthFlavorOrphans',
           'fitLandEntryClause',
           'smartQuotes',
           'ignoreLegacyLineBudget',
@@ -73,8 +74,8 @@ for (const candidates of candidateLists) {
       if (key === 'typography') {
         const ranges = {
           leading: [0.8, 1.3],
-          paragraphGap: [0.1, 1.2],
-          flavorGap: [0.3, 2],
+          paragraphGap: [0, 1.2],
+          flavorGap: [0, 2],
           textWidth: [0.85, 1.15],
           centerOffset: [-15, 15],
         };
@@ -86,6 +87,7 @@ for (const candidates of candidateLists) {
       }
       const ranges = {
         maximumSize: [15, 26],
+        centerShortLines: [1, 3],
         orphanFill: [0.1, 0.45],
         rulesSize: [0.85, 1.15],
         flavorSize: [0.85, 1.15],

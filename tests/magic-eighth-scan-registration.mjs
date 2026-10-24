@@ -1,3 +1,4 @@
+import { decoderLockMatches } from '../games/magic/tools/accuracy/decoder-lock.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -119,9 +120,17 @@ assert.equal(
   ),
   gen.nativeWarpHelperHash,
 );
-assert.equal(
-  hash(await readFile(new URL('../package-lock.json', import.meta.url))),
-  receipt.definition.decoderLockHash,
+const decoderLockBytes = await readFile(new URL('../package-lock.json', import.meta.url));
+assert(decoderLockMatches(decoderLockBytes, receipt.definition.decoderLockHash, '0.6.12'));
+const changedDecoder = JSON.parse(decoderLockBytes);
+changedDecoder.packages['node_modules/pngjs'].integrity += '-changed';
+assert(
+  !decoderLockMatches(
+    Buffer.from(JSON.stringify(changedDecoder, null, 2) + '\n'),
+    receipt.definition.decoderLockHash,
+    '0.6.12',
+  ),
+  'A release-number exception must not authorize another decoder',
 );
 const corpus = JSON.parse(await readFile(new URL('corpus.json', dir)));
 const nonfoil = corpus.entries.filter((e) => !e.collectorNumber.includes('★'));

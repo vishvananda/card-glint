@@ -6,6 +6,7 @@ import {
   m21PublicationEvidence,
   applyM21Publication,
 } from '../games/magic/tools/accuracy/calibration-m21-publication.mjs';
+import { eighthRuntimeCompatible } from '../games/magic/tools/accuracy/eighth-source-ancestry.mjs';
 import { checkPublication } from '../games/magic/tools/accuracy/modern-publication-review.mjs';
 import {
   calibrationTaskStatus,
@@ -89,9 +90,15 @@ assert.equal(
   false,
   'Publication must not complete unfinished calibration',
 );
+const reportCurrent =
+  data.current ||
+  (await eighthRuntimeCompatible('games/magic/src', receipt.rendererHash, 'm21', {
+    frame: '2015',
+    layout: 'normal',
+  }));
 const [report] = await calibrationReport({ sets: [set] });
-assert.equal(report.byTask.release.validated ?? 0, data.current ? 85 : 0);
-assert.equal(report.byTask.release.stale ?? 0, data.current ? 0 : 85);
+assert.equal(report.byTask.release.validated ?? 0, reportCurrent ? 85 : 0);
+assert.equal(report.byTask.release.stale ?? 0, reportCurrent ? 0 : 85);
 assert.equal(report.byTask.normalization.validated, 85);
 assert.equal(report.complete, false);
 const changed = structuredClone(set);

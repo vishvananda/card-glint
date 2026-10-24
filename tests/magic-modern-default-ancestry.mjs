@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { preEighthSource } from '../games/magic/tools/accuracy/eighth-source-ancestry.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   modernDefaultAncestry,
@@ -30,10 +31,10 @@ for (const [file, e] of Object.entries(proof.files)) {
   assert.deepEqual(old.bytes, prior);
   const m21 = await modernDefaultProfileSource(file, current, 'm21');
   assert.equal(m21.changedProfile, false);
-  assert.deepEqual(m21.bytes, current);
+  assert.deepEqual(m21.bytes, await preEighthSource(file, current));
   const changed = await modernDefaultProfileSource(file, current, 'war');
   assert.equal(changed.changedProfile, true);
-  assert.deepEqual(changed.bytes, current);
+  assert.deepEqual(changed.bytes, await preEighthSource(file, current));
 }
 for (const file of Object.keys(proof.newModules)) {
   const current = await readFile(file);

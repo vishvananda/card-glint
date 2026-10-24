@@ -1,3 +1,4 @@
+import { preEighthSource } from '../games/magic/tools/accuracy/eighth-source-ancestry.mjs';
 import { preModernDefaultSource } from '../games/magic/tools/accuracy/modern-default-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -23,7 +24,7 @@ for (const [file, e] of Object.entries(proof.files)) {
   assert.deepEqual(unrelated.bytes, prior);
   const affected = await m21StyleProfileSource(file, current, 'm21');
   assert.equal(affected.changedProfile, true);
-  assert.deepEqual(affected.bytes, current);
+  assert.deepEqual(affected.bytes, await preEighthSource(file, current));
 }
 for (const file of Object.keys(proof.newModules)) {
   const current = await readFile(file);

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { eighthRuntimeCompatible } from '../games/magic/tools/accuracy/eighth-source-ancestry.mjs';
 import { manaInterior, checkManaReuse } from '../games/magic/tools/accuracy/modern-mana-reuse.mjs';
 import {
   m21ManaEvidence,
@@ -129,10 +130,16 @@ for (const group of set.groups) {
 }
 assert.equal(groups, 62);
 assert.equal(foilGroups, 5);
+const reportCurrent =
+  data.current ||
+  (await eighthRuntimeCompatible('games/magic/src', data.receipt.definition.rendererHash, 'm21', {
+    frame: '2015',
+    layout: 'normal',
+  }));
 const [report] = await calibrationReport({ sets: [set] });
-assert.equal(report.byTask.manaGeometry.validated ?? 0, data.current ? 62 : 0);
-assert.equal(report.byTask.manaGeometry.stale ?? 0, data.current ? 0 : 62);
-assert.equal(report.byTask.manaColor.validated ?? 0, data.current ? 62 : 0);
+assert.equal(report.byTask.manaGeometry.validated ?? 0, reportCurrent ? 62 : 0);
+assert.equal(report.byTask.manaGeometry.stale ?? 0, reportCurrent ? 0 : 62);
+assert.equal(report.byTask.manaColor.validated ?? 0, reportCurrent ? 62 : 0);
 assert.equal(
   calibrationSetStatus(set).complete,
   false,
@@ -144,7 +151,7 @@ for (const g of changed.groups)
     g.tasks.manaGeometry.runtimeGuards['games/magic/src'] = '0'.repeat(64);
 const [stale] = await calibrationReport({ sets: [changed] });
 assert.equal(stale.byTask.manaGeometry.stale, 62);
-assert.equal(stale.byTask.manaColor.validated ?? 0, data.current ? 62 : 0);
+assert.equal(stale.byTask.manaColor.validated ?? 0, reportCurrent ? 62 : 0);
 const fontChanged = structuredClone(set);
 for (const g of fontChanged.groups)
   if (g.applicable.manaColor) g.tasks.manaColor.guards['games/magic/fonts.css'] = '0'.repeat(64);

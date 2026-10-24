@@ -1,3 +1,4 @@
+import { eighthProfileSource } from './eighth-source-ancestry.mjs';
 import { modernFrameSourceAncestry } from './modern-frame-source-ancestry.mjs';
 // Exact reconstruction for historical receipts; it never certifies a target set.
 import assert from 'node:assert/strict';
@@ -101,6 +102,9 @@ export async function preModernDefaultSource(file, bytes) {
 /** New modern defaults invalidate affected modern receipts. Old families and
  * the proven-identical ordinary M21 census retain the prior dependency path. */
 export async function modernDefaultProfileSource(file, bytes, set, group) {
+  const eighth = await eighthProfileSource(file, bytes, set, group);
+  if (eighth.changedProfile) return eighth;
+  bytes = eighth.bytes;
   const p = await modernDefaultAncestry();
   if (set?.toLowerCase() === 'm21') return { bytes, changedProfile: false };
   const changed = await modernDefaultSetAffected(set, group);

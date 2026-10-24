@@ -1,3 +1,4 @@
+import { preEighthSource } from '../games/magic/tools/accuracy/eighth-source-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -21,7 +22,7 @@ for (const [file, e] of Object.entries(p.files)) {
   for (const set of ['m21', 'war']) {
     const result = await m21StyleProfileSource(file, current, set, { frame: '2015' });
     assert.equal(result.changedProfile, true, 'Missing actual modern owner: ' + file + '/' + set);
-    assert.deepEqual(result.bytes, current);
+    assert.deepEqual(result.bytes, await preEighthSource(file, current));
   }
   const old = await modernDefaultProfileSource(file, current, 'lea', { frame: '1993' });
   assert.equal(old.changedProfile, false);

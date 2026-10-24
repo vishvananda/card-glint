@@ -1,3 +1,4 @@
+import { eighthProfileSource } from './eighth-source-ancestry.mjs';
 import {
   modernFrameSourceAncestry,
   preModernFrameSource,
@@ -103,6 +104,9 @@ export async function preM21StyleSource(file, bytes) {
 /** An affected set keeps its actual new source fingerprints. Unrelated sets
  * may use the independently tested historical dependency path. */
 export async function m21StyleProfileSource(file, bytes, set, group) {
+  const eighth = await eighthProfileSource(file, bytes, set, group);
+  if (eighth.changedProfile) return eighth;
+  bytes = eighth.bytes;
   const frame = await modernFrameSourceAncestry();
   if (frame.files[file]) {
     await preModernFrameSource(file, bytes);
