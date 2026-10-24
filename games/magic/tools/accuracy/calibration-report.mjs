@@ -1,4 +1,9 @@
 import {
+  abuFractionalAncestry,
+  abuFractionalAffected,
+  abuFractionalRuntimeCompatible,
+} from './abu-fractional-ancestry.mjs';
+import {
   eighthSourceAncestry,
   eighthDefaultSetAffected,
   eighthRuntimeCompatible,
@@ -49,6 +54,16 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        const fractionalAffected = abuFractionalAffected(set.set, task, original);
+        if (
+          fractionalAffected &&
+          item.proof?.abuFractionalSource !== (await abuFractionalAncestry()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'ABU Original text uses a new fractional-metrics and small-face policy. Keep its unchanged frame and wording reviews; rules and full-card results need a current replay.';
+          continue;
+        }
         const eighthAffected = await eighthDefaultSetAffected(set.set, group);
         if (
           eighthAffected &&
@@ -94,7 +109,8 @@ export async function calibrationReport(ledger) {
           }
           if (
             runtimeChecked.get(directory) !== expected &&
-            !(await eighthRuntimeCompatible(directory, expected, set.set, group))
+            !(await eighthRuntimeCompatible(directory, expected, set.set, group)) &&
+            !(await abuFractionalRuntimeCompatible(directory, expected, set.set, task, original))
           ) {
             runtimeCurrent = false;
             item.status = 'stale';
@@ -110,6 +126,7 @@ export async function calibrationReport(ledger) {
             set.set +
             ':' +
             (earlyAffected ? 'early-current:' : 'early-compatible:') +
+            (fractionalAffected ? 'fractional-current:' : 'fractional-compatible:') +
             (modernDefaultsAffected ? 'modern-defaults-current:' : 'modern-defaults-compatible:') +
             (changedScope ? 'changed:' : 'other:') +
             (set.set === 'm21' ? 'm21-body-compatible:' : 'body-current:') +
@@ -117,34 +134,38 @@ export async function calibrationReport(ledger) {
           if (!checked.has(guardKey)) {
             try {
               const bytes = await readFile(root + '/' + file);
-              const modern = await m21StyleProfileSource(file, bytes, set.set, group);
-              const artist = await artistReviewSource(file, modern.bytes, set.set);
-              const changedArtist = artist.changed;
-              const early =
-                earlyAffected || changedArtist
-                  ? artist.bytes
-                  : await preEarlyCalibrationSource(file, artist.bytes, set.set);
-              const scoped =
-                earlyAffected || changedArtist || changedScope
-                  ? early
-                  : await preWalkerSource(file, early);
-              const ancestral =
-                file === 'games/magic/src/presentation/retro-paint.ts'
-                  ? await preAlphaEditorSource(file, scoped, set.set)
-                  : scoped;
-              checked.set(
-                guardKey,
-                new Set([
-                  hash(bytes),
-                  hash(await preNormalizationCensusSource(file, bytes)),
-                  hash(modern.bytes),
-                  hash(early),
-                  hash(scoped),
-                  hash(
-                    changedArtist ? ancestral : await compatibleHostWorkerSource(file, ancestral),
-                  ),
-                ]),
-              );
+              if (fractionalAffected) {
+                checked.set(guardKey, new Set([hash(bytes)]));
+              } else {
+                const modern = await m21StyleProfileSource(file, bytes, set.set, group);
+                const artist = await artistReviewSource(file, modern.bytes, set.set);
+                const changedArtist = artist.changed;
+                const early =
+                  earlyAffected || changedArtist
+                    ? artist.bytes
+                    : await preEarlyCalibrationSource(file, artist.bytes, set.set);
+                const scoped =
+                  earlyAffected || changedArtist || changedScope
+                    ? early
+                    : await preWalkerSource(file, early);
+                const ancestral =
+                  file === 'games/magic/src/presentation/retro-paint.ts'
+                    ? await preAlphaEditorSource(file, scoped, set.set)
+                    : scoped;
+                checked.set(
+                  guardKey,
+                  new Set([
+                    hash(bytes),
+                    hash(await preNormalizationCensusSource(file, bytes)),
+                    hash(modern.bytes),
+                    hash(early),
+                    hash(scoped),
+                    hash(
+                      changedArtist ? ancestral : await compatibleHostWorkerSource(file, ancestral),
+                    ),
+                  ]),
+                );
+              }
             } catch (error) {
               if (error.code !== 'ENOENT') throw error;
               checked.set(guardKey, null);

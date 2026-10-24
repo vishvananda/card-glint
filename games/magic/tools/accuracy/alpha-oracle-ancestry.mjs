@@ -1,3 +1,4 @@
+import { preAbuFractionalSource } from './abu-fractional-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -32,7 +33,7 @@ async function originalLayoutProof() {
     );
     for (const [file, entry] of Object.entries(proof.files)) {
       assert.equal(
-        hash(await readFile(file)),
+        hash(await preAbuFractionalSource(file, await readFile(file))),
         entry.after,
         'Unreviewed early source (Oracle inset): ' + file,
       );
@@ -44,6 +45,7 @@ async function originalLayoutProof() {
  * not grandfather Oracle measurements, changed printing text, face cache keys
  * or fresh renderer dependency identities. Unknown edits still fail closed. */
 export async function preOracleInsetSource(file, bytes) {
+  bytes = await preAbuFractionalSource(file, bytes);
   const proof = await originalLayoutProof();
   const entry = proof.files[file];
   if (!entry || hash(bytes) === entry.before || entry.ancestors.includes(hash(bytes))) return bytes;

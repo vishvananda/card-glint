@@ -1,3 +1,7 @@
+import {
+  preAbuFractionalSource,
+  abuFractionalAncestry,
+} from '../games/magic/tools/accuracy/abu-fractional-ancestry.mjs';
 import { profilePreparationProofDependency } from '../games/magic/tools/accuracy/profile-preparation-ancestry.mjs';
 import { profileAdapterProofDependency } from '../games/magic/tools/accuracy/profile-adapter-ancestry.mjs';
 import assert from 'node:assert/strict';
@@ -26,7 +30,7 @@ for (const [file, entry] of Object.entries(proof.files)) {
   assert.deepEqual(await preEarlyCalibrationSource(file, before), before);
   await assert.rejects(
     preEarlyCalibrationSource(file, Buffer.concat([current, Buffer.from('\n// unknown change\n')])),
-    /Unreviewed (?:early source|M21 style source|Eighth source)/,
+    /Unreviewed (?:early source|M21 style source|Eighth source|ABU fractional source)/,
   );
 }
 const unrelated = Buffer.from('Unrelated source is not rewritten');
@@ -56,6 +60,7 @@ const [reopened] = await calibrationReport({ ...ledger, sets: [lea] });
 assert.equal(reopened.byTask.rules['needs-audit'], 1);
 assert.equal(reopened.byTask.headings.validated, 1);
 group.tasks.rules.proof.earlyBatchReceipt = EARLY_SOURCE_RECEIPT;
+group.tasks.rules.proof.abuFractionalSource = (await abuFractionalAncestry()).afterRenderer;
 const [stale] = await calibrationReport({ ...ledger, sets: [lea] });
 assert.equal(stale.byTask.rules.stale, 1, 'A marker cannot authorize old source guards');
 console.log(
@@ -89,14 +94,14 @@ const oracleProof = JSON.parse(
   ),
 );
 for (const [file, entry] of Object.entries(oracleProof.files)) {
-  const current = await readFile(file);
+  const current = await preAbuFractionalSource(file, await readFile(file));
   assert.equal(hash(current), entry.after);
   const original = await preOracleInsetSource(file, current);
   assert.equal(hash(original), entry.before);
   assert.deepEqual(await preOracleInsetSource(file, original), original);
   await assert.rejects(
     preOracleInsetSource(file, Buffer.concat([current, Buffer.from('\n// unknown Oracle edit\n')])),
-    /Unreviewed (?:early source|M21 style source|Eighth source)/,
+    /Unreviewed (?:early source|M21 style source|Eighth source|ABU fractional source)/,
   );
 }
 console.log(

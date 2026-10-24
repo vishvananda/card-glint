@@ -12,10 +12,16 @@ import { TextFilledObjective } from './text-filled-objective.mjs';
 
 const [out, setArgument = 'lea,leb,2ed', limitArgument] = process.argv.slice(2);
 assert(out, 'Usage: early-fractional-text-study.mjs OUT [lea,leb,2ed] [LIMIT]');
-const limit = limitArgument === undefined ? undefined : Number(limitArgument);
+const dense = limitArgument === '--dense';
+const tiered = limitArgument === '--tiered' || dense;
+const limit = limitArgument === undefined || tiered ? undefined : Number(limitArgument);
 assert(limit === undefined || (Number.isInteger(limit) && limit > 0));
 const snapshot = await earlyFractionalInputs(setArgument.split(','));
 if (limit !== undefined) snapshot.entries = snapshot.entries.slice(0, limit);
+if (dense)
+  snapshot.entries = snapshot.entries.filter(
+    (e) => e.set === '2ed' && ['Living Wall', 'Mana Vault', 'Hypnotic Specter'].includes(e.name),
+  );
 const source = {
   rendererHash: await sourceHash(path.join(root, 'games/magic/src')),
   tools: await Promise.all(
@@ -32,7 +38,8 @@ const source = {
   ),
   fontsHash: hash(await readFile(path.join(root, 'games/magic/fonts.css'))),
   inputsHash: hash(JSON.stringify(snapshot)),
-  census: limit === undefined,
+  census: limit === undefined && !dense,
+  policy: tiered ? 'tiered' : 'all',
   metric:
     'Fixed rules region [54,405,390,197], 55% symmetric local-contrast edges + 45% filled ink. Diagnostic /100; no scan-pose fitting or asset/color change.',
 };
@@ -51,7 +58,7 @@ const session = await openBrowser(snapshot, {
       transform(source, id) {
         const file = id.split('/').at(-1);
         let code = source;
-        if (file === 'rules-layout.ts')
+        if (file === 'rules-layout.ts' && !tiered)
           code = replace(
             code,
             '): RulesLayout {',
@@ -63,13 +70,46 @@ const session = await openBrowser(snapshot, {
             '    ink.fillStyle = color;',
             "    ink.fillStyle = color;\n    if ((globalThis as any).__earlyFractionalPaint && layout.fractionalMetrics) {ink.textRendering='geometricPrecision';ink.fontKerning='normal';}",
           );
-        else if (file === 'retro-rules.ts')
+        else if (file === 'early-text-tiers.ts' && tiered) {
+          code = replace(
+            code,
+            '  if (chosen.overflow) chosen = base;',
+            `  if (chosen.overflow) chosen = base;
+  if ((globalThis as any).__earlyFractionalTiered && chosen.size < 30) {
+    const r=rulesLayoutRequest(chosen);
+    if (!r) throw Error('Missing selected early metrics request');
+    const precise=layoutRules(context,r.paragraphs,r.bounds,chosen.size,chosen.size,{...r.typography,fractionalMetrics:true});
+    if (!precise.overflow) chosen=precise;
+  }`,
+          );
+          code = replace(
+            code,
+            '      options.regularWidthDelta === undefined &&',
+            '      !(globalThis as any).__earlyFractionalTiered &&\n      options.regularWidthDelta === undefined &&',
+          );
+        } else if (file === 'alpha-typography.ts' && dense) {
+          const start = code.indexOf('export function reviewedSmallOriginal(');
+          const end = code.indexOf('/** Filled lettering', start);
+          const section = code.slice(start, end);
+          const changed = replace(
+            section,
+            "['lea', 'leb']",
+            "['lea', 'leb', ...((globalThis as any).__earlyDense ? ['2ed'] : [])]",
+          );
+          code = code.slice(0, start) + changed + code.slice(end);
+        } else if (file === 'retro-rules.ts')
           code = replace(
             code,
             '    return adjustCalibrationRules(context, face, layout);',
             '    const result=adjustCalibrationRules(context, face, layout);\n    (globalThis as any).__earlyLayout=result;\n    return result;',
           );
         else return;
+        if (file === 'retro-rules.ts' && dense)
+          code = replace(
+            code,
+            '    const retain =\n      base &&',
+            '    const retain =\n      !(globalThis as any).__earlyDense &&\n      base &&',
+          );
         const proof = { before: hash(source), after: hash(code) };
         if (transformed[file]) assert.deepEqual(transformed[file], proof);
         transformed[file] = proof;
@@ -101,46 +141,59 @@ try {
     const rect = [54, 405, 390, 197],
       gray = cropGray(scan, rect).gray;
     const objective = new TextFilledObjective(gray, 390, 197, new Uint8Array(gray.length).fill(1));
-    const result = await session.page.evaluate(async (entry) => {
-      const signal = new AbortController().signal;
-      const lease = await globalThis.__earlyAssets.loadAccuracyImages(
-        globalThis.__earlyUrls(entry.face),
-        signal,
-        entry.face.illustration,
-      );
-      const variants = [];
-      try {
-        for (const [id, fractional, paint] of [
-          ['current', false, false],
-          ['fractional-layout', true, false],
-          ['fractional-consistent', true, true],
-        ]) {
-          globalThis.__earlyFractional = fractional;
-          globalThis.__earlyFractionalPaint = paint;
-          delete globalThis.__earlyLayout;
-          const image = await globalThis.__earlyCompose(
-            { face: entry.face, printingId: entry.id, printedImage: null },
-            'inspect',
-            signal,
-            { loadImages: async () => ({ ...lease, dispose() {} }) },
-          );
-          try {
-            variants.push({
-              id,
-              png: image.toDataURL().split(',')[1],
-              layout: globalThis.__earlyLayout ?? null,
-            });
-          } finally {
-            image.width = image.height = 0;
+    const result = await session.page.evaluate(
+      async ({ entry, tiered, dense }) => {
+        const signal = new AbortController().signal;
+        const lease = await globalThis.__earlyAssets.loadAccuracyImages(
+          globalThis.__earlyUrls(entry.face),
+          signal,
+          entry.face.illustration,
+        );
+        const variants = [];
+        try {
+          const trialVariants = tiered
+            ? [
+                ['current', false, false],
+                ['fractional-tiered', true, false],
+              ]
+            : [
+                ['current', false, false],
+                ['fractional-layout', true, false],
+                ['fractional-consistent', true, true],
+              ];
+          for (const [id, fractional, paint] of trialVariants) {
+            globalThis.__earlyFractional = fractional && !tiered;
+            globalThis.__earlyFractionalTiered = fractional && tiered;
+            globalThis.__earlyDense = fractional && dense;
+            globalThis.__earlyFractionalPaint = paint;
+            delete globalThis.__earlyLayout;
+            const image = await globalThis.__earlyCompose(
+              { face: entry.face, printingId: entry.id, printedImage: null },
+              'inspect',
+              signal,
+              { loadImages: async () => ({ ...lease, dispose() {} }) },
+            );
+            try {
+              variants.push({
+                id,
+                png: image.toDataURL().split(',')[1],
+                layout: globalThis.__earlyLayout ?? null,
+              });
+            } finally {
+              image.width = image.height = 0;
+            }
           }
+        } finally {
+          delete globalThis.__earlyFractional;
+          delete globalThis.__earlyFractionalPaint;
+          delete globalThis.__earlyFractionalTiered;
+          delete globalThis.__earlyDense;
+          lease.dispose();
         }
-      } finally {
-        delete globalThis.__earlyFractional;
-        delete globalThis.__earlyFractionalPaint;
-        lease.dispose();
-      }
-      return variants;
-    }, entry);
+        return variants;
+      },
+      { entry, tiered, dense },
+    );
     const variants = [],
       baseline = PNG.sync.read(Buffer.from(result[0].png, 'base64'));
     for (const variant of result) {
@@ -202,6 +255,8 @@ try {
     );
   }
   assert.deepEqual(session.faults, []);
+  if (dense)
+    assert(transformed['alpha-typography.ts'], 'Dense-size prototype hook was not applied');
   assert.equal(
     source.rendererHash,
     await sourceHash(path.join(root, 'games/magic/src')),

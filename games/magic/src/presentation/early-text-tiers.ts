@@ -27,17 +27,18 @@ export interface EarlyTextTierOptions {
 }
 
 /** Face-cache identity for the shared Alpha original-only wrap safeguard. */
-export const ALPHA_RULES_REVISION = 'alpha-oracle-fixed-inset-v2';
+export const ALPHA_RULES_REVISION = 'abu-original-fractional-tiers-v3';
 
 /** Reviewed Alpha defaults. Oracle retains its established fitting/safe inset. */
 export function alphaTextLayout(
   context: CanvasContext,
   face: RenderedCardInput,
   base: RulesLayout | null,
+  fractionalMetrics = false,
 ): RulesLayout | null {
   if (!['lea', 'leb'].includes(face.setCode?.toLowerCase() ?? '') || !base) return base;
   if (face.wordingMode === 'oracle') return alphaRulesLayout(context, face, base);
-  return earlyTextTierLayout(context, face, base);
+  return earlyTextTierLayout(context, face, base, {}, fractionalMetrics);
 }
 
 /** Shared count-and-wrap policy in canonical card pixels. A size tier already
@@ -48,6 +49,7 @@ export function earlyTextTierLayout(
   face: RenderedCardInput,
   base: RulesLayout,
   options: EarlyTextTierOptions = {},
+  fractionalMetrics = false,
 ): RulesLayout {
   const request = rulesLayoutRequest(base);
   if (!request) throw Error('Missing native typography request');
@@ -140,6 +142,19 @@ export function earlyTextTierLayout(
     }
   }
   if (chosen.overflow) chosen = base;
+  if (fractionalMetrics && chosen.size < 30) {
+    const r = rulesLayoutRequest(chosen);
+    if (!r) throw Error('Missing selected early metrics request');
+    const precise = layoutRules(context, r.paragraphs, r.bounds, chosen.size, chosen.size, {
+      ...r.typography,
+      fractionalMetrics: true,
+    });
+    if (!precise.overflow)
+      chosen =
+        precise.lines.length === chosen.lines.length && precise.lines.length
+          ? shiftEarlyRules(precise, chosen.lines[0]!.baseline - precise.lines[0]!.baseline)
+          : precise;
+  }
   if (chosen.size >= 19) {
     const r = rulesLayoutRequest(chosen);
     if (!r) throw Error('Missing selected typography request');
@@ -177,6 +192,7 @@ export function earlyTextTierLayout(
     if (
       face.setCode?.toLowerCase() === 'lea' &&
       face.wordingMode !== 'oracle' &&
+      !fractionalMetrics &&
       options.regularWidthDelta === undefined &&
       regularWidthDelta === 0 &&
       !centered &&
@@ -242,5 +258,61 @@ export function earlyTextTierLayout(
       baseline: l.baseline + dy,
       inkBounds: [l.inkBounds[0], l.inkBounds[1] + dy, l.inkBounds[2], l.inkBounds[3]],
     })),
+  };
+}
+
+/** Preserve the printing's physical panel and line budget with unhinted advances.
+ * A quarter-pixel reduction can avoid a new row; no wider fallback is permitted. */
+export function fractionalEarlyRules(context: CanvasContext, original: RulesLayout): RulesLayout {
+  if (original.size >= 30 || !original.lines.length) return original;
+  const request = rulesLayoutRequest(original);
+  if (!request) throw Error('Missing final early text request');
+  const precise = layoutRules(
+    context,
+    request.paragraphs,
+    request.bounds,
+    original.size,
+    Math.max(10, original.size - 0.5),
+    { ...request.typography, fractionalMetrics: true, maximumLines: original.lines.length },
+  );
+  if (precise.overflow) return original;
+  const dy = original.lines[0]!.baseline - precise.lines[0]!.baseline;
+  const candidate: RulesLayout = {
+    ...precise,
+    ...(original.horizontalScale === undefined
+      ? {}
+      : { horizontalScale: original.horizontalScale }),
+    top: precise.top + dy,
+    lines: precise.lines.map((line) => ({
+      ...line,
+      baseline: line.baseline + dy,
+      inkBounds: [line.inkBounds[0], line.inkBounds[1] + dy, line.inkBounds[2], line.inkBounds[3]],
+    })),
+    separators: precise.separators.map((y) => y + dy),
+  };
+  return candidate.lines.some(
+    ({ inkBounds: [x, y, w, h] }) =>
+      y < 399 ||
+      y + h > 604 ||
+      x * (candidate.horizontalScale ?? 1) < 48 ||
+      (x + w) * (candidate.horizontalScale ?? 1) > 449,
+  )
+    ? original
+    : candidate;
+}
+
+/** Unchanged row counts retain their calibrated baseline grid; glyph bounds
+ * quantization alone must not move the printed block. */
+function shiftEarlyRules(layout: RulesLayout, dy: number): RulesLayout {
+  if (!dy) return layout;
+  return {
+    ...layout,
+    top: layout.top + dy,
+    lines: layout.lines.map((line) => ({
+      ...line,
+      baseline: line.baseline + dy,
+      inkBounds: [line.inkBounds[0], line.inkBounds[1] + dy, line.inkBounds[2], line.inkBounds[3]],
+    })),
+    separators: layout.separators.map((y) => y + dy),
   };
 }

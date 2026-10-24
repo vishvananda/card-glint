@@ -17,7 +17,7 @@ const server = await createServer({
       async load(id) {
         if (id === virtual) {
           const source = await readFile('games/magic/src/presentation/retro-rules.ts', 'utf8');
-          const needle = 'alphaTextLayout(context, face, base)';
+          const needle = 'alphaTextLayout(context, face, base, precise)';
           assert.equal(source.split(needle).length, 2, 'Alpha baseline hook changed');
           return source.replace(needle, 'base');
         }

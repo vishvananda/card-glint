@@ -1,3 +1,4 @@
+import { abuFractionalRuntimeCompatible } from './abu-fractional-ancestry.mjs';
 // Attach the finite nonfoil audit to the component ledger; never certify foils.
 import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
@@ -40,7 +41,14 @@ export async function eighthAuditEvidence() {
       ].map(async (f) => [f, hash(await readFile(f))]),
     ),
   );
-  const current = (await sourceHash('games/magic/src')) === receipt.definition.rendererHash;
+  const current =
+    (await sourceHash('games/magic/src')) === receipt.definition.rendererHash ||
+    (await abuFractionalRuntimeCompatible(
+      'games/magic/src',
+      receipt.definition.rendererHash,
+      '8ed',
+      'fullCard',
+    ));
   return { receipt, guards, current };
 }
 export function applyEighthAudit(set, { receipt, guards, current }) {

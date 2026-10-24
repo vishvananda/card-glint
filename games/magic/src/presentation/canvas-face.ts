@@ -190,7 +190,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     'canvas-face-v148',
     ...(dualFrameRevision ? [dualFrameRevision] : []),
     ...(input.layer !== 'etching' &&
-    face.setCode?.toLowerCase() === 'lea' &&
+    ['lea', 'leb', '2ed'].includes(face.setCode?.toLowerCase() ?? '') &&
     face.wordingMode !== 'oracle'
       ? [ALPHA_RULES_REVISION]
       : []),

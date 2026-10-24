@@ -1,0 +1,186 @@
+{
+  "schema": 1,
+  "base": "67b0ec3a5c282c8d84e5860fc77d95297afa881a",
+  "affectedSets": ["lea", "leb", "2ed"],
+  "affectedComponents": ["rules", "flavor", "fullCard", "release"],
+  "beforeRenderer": "f384b2f82f5fbfab1ecd82b7879c107e9eda327faa4e02199e2e31e475d4ec24",
+  "capturedRenderer": "49aeac226fc5ed1b0f1a0f943b91db6ef2adfc5daceb2602f012bfb46872b9e8",
+  "afterRenderer": "7bb81fb0e88196808650a809057bf19df0935ce9ac1eab6164b7c9c139aee7ef",
+  "nativeTool": {
+    "file": "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-native-tool.mjs.gz",
+    "sha256": "745bc9dcb13640af993b2449ed3bd75334cf11ecdb00ed262867ca6c13975612",
+    "contentSha256": "57c29c106e66a2eb3a785eaa3a9bedc496ecdcea57172a78f63583c896d94ca0"
+  },
+  "scope": "Original ABU regular/small faces use fractional advances after selecting their reviewed size/centering class. A row-budget guard keeps the calibrated inset and reduces size by at most0.5px when needed. Large balanced passages and Oracle layouts remain unchanged. Unlimited small-face reviews and the dense cutoff take priority over regular-density retention. Direct native scores retain their original source identity; a separate certificate approves the generated dependency-manifest refresh. This receipt cannot authorize changed rules to reuse old scores.",
+  "files": {
+    "games/magic/src/presentation/alpha-typography.ts": {
+      "before": "34afb57069e7b24a729b16cf76bc0bde060ee24a17636876716ec25677a9e703",
+      "after": "6408c3525e850516e527bb51204426e9b546eed19c3362aff2d8518819b2b41e",
+      "historicalHashes": [
+        "34afb57069e7b24a729b16cf76bc0bde060ee24a17636876716ec25677a9e703",
+        "cdacfb6f47f6d93fa705d504d8290553ea4db136d32a5eb215c8622be0da910c"
+      ],
+      "reverseEdits": [
+        {
+          "start": 18,
+          "count": 4,
+          "lines": [
+            "  if (face.wordingMode === 'oracle' || !['lea', 'leb'].includes(face.setCode?.toLowerCase() ?? ''))\n"
+          ]
+        },
+        {
+          "start": 2,
+          "count": 2,
+          "lines": [
+            "// Alpha and Beta scans share these small-face layouts and line breaks despite\n",
+            "// shorter text. The scan hashes and review are in lea/text-size-review.json.\n"
+          ]
+        }
+      ]
+    },
+    "games/magic/src/presentation/canvas-face.ts": {
+      "before": "32c8cceb2787dcc4d211e2658be898c7c39c3c061c22d9c466083f3435d3eee8",
+      "after": "be8fb39d283100b251af5ddb77df496977f1bada5eb2a2d0095cb496fdc1d7b1",
+      "historicalHashes": [
+        "0fb65a5c2c8d3fa6afd8f27e1582e7162152f4a92a8cc7b509b5b5ce3e3c1028",
+        "18eeedf2a721bfb49ccdc1c00f1cc27febff4986cdb3032be16553e439f1a039",
+        "1df5d485586fd3b02b181a6fec285f6053422e01cedb19fa2a52619f5874314b",
+        "32c8cceb2787dcc4d211e2658be898c7c39c3c061c22d9c466083f3435d3eee8",
+        "41b87fa0317e2e0fd9c66680eabd6b9295c6646efb3b6650c06699c95279cb01",
+        "5af8c4c9f8b872a8567a97a5f0ee2c33ad2d2dc1ad91aea98179dfe5a30077e1",
+        "69bd9d6959da4d97225a50b918182b2b652791a47606323874a57abaf3e66e44",
+        "751217ee8f50126bd9a84b1bbc4e9a457cdf1a763385b84789c191151e674a86",
+        "7bc098b6924146c445d9ea84394996e9e56437c762f06fcd5b0229af7454fcae",
+        "7d8db02ddd28f76b63f6435571f5b9dafc3e815b9fb15881cb305818c073f11b",
+        "8940745eceb8d8c5f008adf9ae2d798c4dda621d5e2db55254f629ab9b86b78e",
+        "8d943f00ea5040ba99af9446ff04cdc9fb6968ef0345a3ae165e7254ff71e84a",
+        "95a694d0eb976b5e77c3b042636c677de0034ebb551ab52da7f2be4f1c5f7fa1",
+        "9b5948b7e640dcc134a0a7752acbe60665b55b4a339374d2d8913e101bd27a08",
+        "a7bae87a647699f8e6cbf32a37d809f94dac1d8fbbc0198cc8968aed8a3eb919",
+        "af6bf37cc6c2bc08f0db0165c9baf0d1d9095a8eef4c2d808a2debe15f04638c",
+        "b7fb955f3d79dab288d6e89be408c401ded90e4f90114d954cd053c9a063a16c",
+        "b8b554bd36833355d3f687f9a50d58635be997c3041547a59fdfedb7710a255d",
+        "c5506de94f420c6c81def1ec59658800d44e10c791fef95b0b6b2b8f3cc1f67d",
+        "d1b69937bd27cf08274af799412a2eef560325ded415fbed3ecb2bd3a2092d1f",
+        "d764b6ad3b0d31f72abd4d3dbcd2b60221ea7563eea74fed90a5d967c213eb94",
+        "dba28540253e347283208ed282a086df693c9f2cfcea2685e8861b655628ac50",
+        "eb2ecb5fd757d969ae09d17dba76669963ccc9f1030973087ee74eeaed183706",
+        "f7d721c3dc2bd770831d45d9b99406891f1e2e7c36d85cc3a6e7775dbfe81a93",
+        "fd35ddb8f0160cffe8fa23de51ed2f1e06a64d2d77e2d9a2e1e5767c787a5ab8",
+        "fd8ee7cc6588a650f166cc5d3cd09ab157f31950ceeaf7546490ae5ab2e6df48"
+      ],
+      "reverseEdits": [
+        { "start": 192, "count": 1, "lines": ["    face.setCode?.toLowerCase() === 'lea' &&\n"] }
+      ]
+    },
+    "games/magic/src/presentation/early-text-tiers.ts": {
+      "before": "e3d3723291b5351d7771fcede0ee27c956dd263c3306c10c744bb797f530ac1d",
+      "after": "5450d964419694e00d75dc0d00c4e05f5502bd8e9f871d71d08ef46c107f2603",
+      "historicalHashes": [
+        "16d3a43a26e9eda4ce14ac2af18ce498ac0c2637e6ca018369dd3f3191aea40c",
+        "1cddfa1f6149773969507db272436d111fb5cef2700b1997c203e99969ea7062",
+        "4859b847a11ebfc65f9e16d26f635e31f3ef8b2f5698601b02c002cf0d37a9b6",
+        "98a0f8a7d41374a02af87eb03f65f2a1f82ef4754f266d81f7d8754a13155a17",
+        "d2529d551009b72218ee9f94bbf63d9232b03376794fbc73f1b8534b1336eedd",
+        "e3d3723291b5351d7771fcede0ee27c956dd263c3306c10c744bb797f530ac1d"
+      ],
+      "reverseEdits": [
+        { "start": 262, "count": 56, "lines": [] },
+        { "start": 194, "count": 1, "lines": [] },
+        { "start": 144, "count": 13, "lines": [] },
+        { "start": 51, "count": 1, "lines": [] },
+        {
+          "start": 40,
+          "count": 1,
+          "lines": ["  return earlyTextTierLayout(context, face, base);\n"]
+        },
+        { "start": 36, "count": 1, "lines": [] },
+        {
+          "start": 29,
+          "count": 1,
+          "lines": ["export const ALPHA_RULES_REVISION = 'alpha-oracle-fixed-inset-v2';\n"]
+        }
+      ]
+    },
+    "games/magic/src/presentation/retro-rules.ts": {
+      "before": "9fde9eff563e3bd0bd059fbb35d39b5e87c772030ece8697af653f92f6bff73e",
+      "after": "b9831d1233fd03342903660f56d757f73d86aed875b9a80fe45e627c25909a08",
+      "historicalHashes": [
+        "087abed2e5423514a46426401f27e5a9ffe2b01152fca2e3c2910e261be19210",
+        "0977d8e8c894256f5a1e5f5c05a791bd405b0f2fb249af054a6de3b7bb5087ff",
+        "7027bac0a2f211627f509a19e1b31951eff0fa2ff5e686e67ff3b4006a61940f",
+        "7401de2eec4899bbe09d3bbdcbfde07295f8a7c1280415cc79953a4b41f85df3",
+        "82d83257515d2475a9e6962f482da980444114abf71af3ec98c15d07f9b16f2a",
+        "95d90660b3304f55fcffaec425df5d38c8db4e0b888772a95b78be51620e5183",
+        "98b4803ace18ccab4cc8d063827faed4a56e23be072971c26ab67074a554309c",
+        "9fde9eff563e3bd0bd059fbb35d39b5e87c772030ece8697af653f92f6bff73e",
+        "bf9f14f0aa1967b642764a67e48933fbb117e6d5b420e93046ed84af9a5a6215",
+        "e3f6761c172772b9ec86fabb3d03568fe356f3995da61b63d12a6e5f997e945c"
+      ],
+      "reverseEdits": [
+        {
+          "start": 77,
+          "count": 12,
+          "lines": ["  return tiers ? withRulesLayoutRequests(context, calculate) : calculate();\n"]
+        },
+        {
+          "start": 73,
+          "count": 2,
+          "lines": [
+            "          : earlyTextTierLayout(context, face, base, tiers)\n",
+            "        : alphaTextLayout(context, face, base);\n"
+          ]
+        },
+        { "start": 61, "count": 1, "lines": [] },
+        { "start": 41, "count": 17, "lines": [] },
+        { "start": 35, "count": 4, "lines": ["  const calculate = () => {\n"] },
+        {
+          "start": 3,
+          "count": 1,
+          "lines": [
+            "import { alphaTextLayout, earlyTextTierLayout } from './early-text-tiers.js';\n"
+          ]
+        },
+        { "start": 0, "count": 1, "lines": [] }
+      ]
+    }
+  },
+  "evidence": {
+    "native": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-native.json.gz",
+      "sha256": "6ad93fa64a3ac653806a17076c7f22ddc157d32aa91884791874ca281be0ad37",
+      "contentSha256": "0cb9b79db713b84bb087346bb440d54088558219e2086a3097ae7c2281eb239a"
+    },
+    "unaffected": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-unaffected.json.gz",
+      "sha256": "671332a08dab54af09cce04405d9938c0e49198cf8d96eeee05f1618e8e02027",
+      "contentSha256": "0f56e58d2b6e194154f814fd491a590972dbe8c6c50758e6b5e4166d9470ecbc"
+    },
+    "raw": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-raw.json.gz",
+      "sha256": "cf884ca6f52de7e367cbb4758d011baba82823780a898930cc5340e448937497",
+      "contentSha256": "9c8b2488b3a771e083a1b99dbd4fc41dfc75d7edb9925a6f4cf84368c7afe803"
+    },
+    "tiered": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-tiered.json.gz",
+      "sha256": "3ba365cb4f7029adf9626d710e43a39b60086bc8a98985749ee59da846ccf423",
+      "contentSha256": "44de80cf7a8e504cd8898bf06c6bf8bf5a0bb2d4860911023bc497cd4ecafc3c"
+    },
+    "selected": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-selected.json.gz",
+      "sha256": "0bd4cda0c0ff60fc5368c48edf03d5a64eb2430f23bc3b7dda6333033b7fecba",
+      "contentSha256": "6c0805111aaf98fa8881ca0629a9901440cc1df186fc89f32d0163816f1f4aa8"
+    },
+    "metadata": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/abu-fractional-metadata.json.gz",
+      "sha256": "8863d300d6ee9f28b51e6c120a2d6b6b5337eb803f3ed7ce403d830655289b5d",
+      "contentSha256": "9e6c536a183e71f389155e37fa10999c1c10cc166907c72ce6c32eb0026af595"
+    }
+  },
+  "limitations": [
+    "Development scans and poses are reused; no independent holdout is claimed.",
+    "Three historical Alpha pose rejections remain visible outside the accepted metric aggregate.",
+    "Manual wrapping, flavor typography and source-frame residuals remain separate review items.",
+    "Text-region scores are not whole-card compliance scores or percentage fidelity."
+  ]
+}

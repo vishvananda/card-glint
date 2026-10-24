@@ -1,3 +1,4 @@
+import { preAbuFractionalSource } from './abu-fractional-ancestry.mjs';
 // Reconstruct only reviewed Eighth integration edits. This never approves a fit.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -35,13 +36,13 @@ export async function eighthSourceAncestry() {
       dataSet = new Set(dataModules);
     for (const [file, entry] of Object.entries(p.files))
       assert.equal(
-        hash(await readFile(path.join(root, file))),
+        hash(await preAbuFractionalSource(file, await readFile(path.join(root, file)))),
         entry.after,
         'Unreviewed Eighth integration: ' + file,
       );
     for (const [file, digest] of Object.entries(p.newModules))
       assert.equal(
-        hash(await readFile(path.join(root, file))),
+        hash(await preAbuFractionalSource(file, await readFile(path.join(root, file)))),
         digest,
         'Unreviewed Eighth module: ' + file,
       );
@@ -67,6 +68,7 @@ export async function eighthSourceAncestry() {
   })());
 }
 export async function preEighthSource(file, bytes) {
+  bytes = await preAbuFractionalSource(file, bytes);
   const p = await eighthSourceAncestry(),
     entry = p.files[file];
   if (p.newModules[file]) {
@@ -129,7 +131,7 @@ export async function eighthRuntimeCompatible(directory, expected, set, group) {
       );
       for (const file of universe)
         assert.equal(
-          hash(await readFile(path.join(root, file))),
+          hash(await preAbuFractionalSource(file, await readFile(path.join(root, file)))),
           p.sourceInventory[file],
           'Unreviewed Eighth executable/source: ' + file,
         );
@@ -165,7 +167,10 @@ export async function eighthRuntimeCompatible(directory, expected, set, group) {
       }
 
       for (const [file, digest] of Object.entries(p.runtimeMetadata))
-        assert.equal(hash(await readFile(path.join(root, file))), digest);
+        assert.equal(
+          hash(await preAbuFractionalSource(file, await readFile(path.join(root, file)))),
+          digest,
+        );
       const profiles = runtimeProfileHashes(aggregate);
       return {
         compatible: true,

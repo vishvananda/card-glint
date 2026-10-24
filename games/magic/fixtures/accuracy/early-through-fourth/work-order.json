@@ -1,39 +1,25 @@
 {
   "schema": 1,
-  "asOf": "2026-10-20",
-  "authority": "User requested Unlimited completion and release, followed by full M21 calibration and using its validated values as modern-frame defaults.",
+  "asOf": "2026-10-23",
+  "authority": "Resume the early-set review after the Eighth baseline release, starting with a fractional-text recheck of Alpha, Beta and Unlimited.",
   "active": {
-    "set": "2ed",
+    "sets": ["lea", "leb", "2ed"],
     "required": [
-      "Finish all calibration components",
-      "Integrate the complete profile",
-      "Verify every Original and Oracle face and etching",
-      "Review normalization and whole-card outliers",
-      "Publish a renderer release with passing required checks"
+      "Recheck original-printing inputs and frozen scan poses",
+      "Compare fractional glyph advances separately from fractional font-size steps",
+      "Preserve reviewed size/centering classes and independent Oracle fitting",
+      "Review dense text and text-size exceptions against scans",
+      "Verify full native adoption, cache-key scope and unchanged other frame families",
+      "Record remaining outliers without declaring entire sets complete"
     ]
   },
   "next": {
-    "set": "m21",
+    "set": "3ed",
     "required": [
-      "Full calibration across ordinary frame/color/card-kind groups, including legendary lands, basics and planeswalkers",
-      "Review original wording, reference quality and independent scan normalization",
-      "Verify every relevant regional component and whole-card score",
-      "Use the validated shared results as modern-frame defaults, retaining treatment-specific exceptions"
+      "Continue the chronological early-set calibration review through Fourth Edition",
+      "Reuse source-bound reviewed profiles and retain explicit material/frame exceptions"
     ]
   },
-  "deferredEarlySets": [
-    "lea",
-    "leb",
-    "ced",
-    "cei",
-    "arn",
-    "atq",
-    "3ed",
-    "leg",
-    "sum",
-    "drk",
-    "fem",
-    "4ed"
-  ],
-  "scopeNote": "The original 13-set/3306-printing early-set backlog is retained. This scheduling note does not change calibration or completion status."
+  "deferredEarlySets": ["ced", "cei", "arn", "atq", "leg", "sum", "drk", "fem", "4ed"],
+  "scopeNote": "The original 13-set/3306-printing backlog remains. This scheduling note does not itself change calibration completion status."
 }

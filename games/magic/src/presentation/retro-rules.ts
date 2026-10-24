@@ -1,6 +1,7 @@
+import { reviewedSmallOriginal } from './alpha-typography.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { earlyRulesModel } from './alpha-rules.js';
-import { alphaTextLayout, earlyTextTierLayout } from './early-text-tiers.js';
+import { alphaTextLayout, earlyTextTierLayout, fractionalEarlyRules } from './early-text-tiers.js';
 import { adjustCalibrationRules } from '../calibration/rules-adjustment.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import { calibratedBodyLayout } from '../calibration/body.js';
@@ -32,12 +33,33 @@ export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
 /** Null denotes the existing large-basic-symbol path, which has no body text. */
 export function retroTextLayout(context: CanvasContext, face: RenderedCardInput) {
   const tiers = earlyReprintFrame(face) && calibrationForFace(face)?.textTiers;
-  const calculate = () => {
+  const fractional =
+    face.wordingMode !== 'oracle' &&
+    ['lea', 'leb', '2ed'].includes(face.setCode?.toLowerCase() ?? '');
+  const calculate = (precise = false) => {
     const base = baseRetroTextLayout(context, face);
     const limit = tiers?.retainRegularAboveLines;
+    const paragraphs = tiers
+      ? wordingParagraphs({
+          rulesText: face.rulesText ?? '',
+          rulesParagraphs: face.rulesParagraphs,
+        })
+      : [];
+    const reference =
+      face.rulesAlignment?.mode === 'auto'
+        ? (face.rulesAlignment.reference ?? paragraphs)
+        : paragraphs;
+    // A regular-size retention rule cannot override an original small face or
+    // the shared dense-text cutoff. This classification uses the chosen wording.
+    const small =
+      tiers &&
+      (reviewedSmallOriginal(face, reference) ||
+        reference.reduce((sum, p) => sum + p.runs.reduce((n, r) => n + r.text.length, 0), 0) >
+          (tiers.mediumMaximum ?? 274));
     if (limit !== undefined && (!Number.isInteger(limit) || limit < 1))
       throw Error('Invalid regular density limit');
     const retain =
+      !small &&
       base &&
       face.wordingMode !== 'oracle' &&
       limit !== undefined &&
@@ -49,11 +71,22 @@ export function retroTextLayout(context: CanvasContext, face: RenderedCardInput)
       : tiers && base
         ? face.wordingMode === 'oracle'
           ? earlyRulesModel(context, face, base, tiers.regularWidthDelta)
-          : earlyTextTierLayout(context, face, base, tiers)
-        : alphaTextLayout(context, face, base);
+          : earlyTextTierLayout(context, face, base, tiers, precise)
+        : alphaTextLayout(context, face, base, precise);
     return adjustCalibrationRules(context, face, layout);
   };
-  return tiers ? withRulesLayoutRequests(context, calculate) : calculate();
+  const run = () => {
+    const legacy = calculate();
+    if (!fractional || !legacy || legacy.size >= 30) return legacy;
+    const precise = calculate(true);
+    // A font-metric change must not introduce another printed row. Keep the
+    // physical inset and use fractional size fitting when that budget is exceeded.
+    return precise?.fractionalMetrics && precise.lines.length <= legacy.lines.length
+      ? precise
+      : fractionalEarlyRules(context, legacy);
+  };
+  const result = tiers || fractional ? withRulesLayoutRequests(context, run) : run();
+  return result;
 }
 function baseRetroTextLayout(context: CanvasContext, face: RenderedCardInput) {
   if (retroBasicSymbol(face)) return null;

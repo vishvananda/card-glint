@@ -1,7 +1,7 @@
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 
-// Alpha and Beta scans share these small-face layouts and line breaks despite
-// shorter text. The scan hashes and review are in lea/text-size-review.json.
+// Alpha, Beta and Unlimited scans share these small-face layouts despite
+// shorter text. Scan reviews are in lea/text-size-review.json and the ABU audit.
 // Match original content too: Oracle wording and renamed/custom cards do not
 // inherit a printing exception merely because a title happens to match.
 const smallOriginals: Readonly<Record<string, string>> = {
@@ -16,7 +16,10 @@ export function reviewedSmallOriginal(
   face: RenderedCardInput,
   paragraphs: readonly RulesParagraph[],
 ): boolean {
-  if (face.wordingMode === 'oracle' || !['lea', 'leb'].includes(face.setCode?.toLowerCase() ?? ''))
+  if (
+    face.wordingMode === 'oracle' ||
+    !['lea', 'leb', '2ed'].includes(face.setCode?.toLowerCase() ?? '')
+  )
     return false;
   const expected = smallOriginals[face.name];
   return Boolean(
