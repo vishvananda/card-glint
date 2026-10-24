@@ -12,8 +12,9 @@ export const ABU_DUAL_BOX = {
 };
 const SOURCE_BOX = { left: 188, right: 1324, top: 1253, bottom: 1871 };
 const SOURCE_WIDTH = { left: 26, right: 29, top: 29, bottom: 28 };
-const horizontal = 6.375 / (488 / 1500);
-const vertical = 6.375 / (680 / 2100);
+export const ABU_DUAL_BAND_WIDTH = 6.375;
+const horizontal = ABU_DUAL_BAND_WIDTH / (488 / 1500);
+const vertical = ABU_DUAL_BAND_WIDTH / (680 / 2100);
 const width = { left: horizontal, right: horizontal, top: vertical, bottom: vertical };
 
 // Median colored-line samples from the pinned Card Conjurer ABU plates.

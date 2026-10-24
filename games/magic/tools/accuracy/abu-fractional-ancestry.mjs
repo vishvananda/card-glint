@@ -1,3 +1,4 @@
+import { abuPaperAffected } from './abu-paper-ancestry.mjs';
 import { abuRasterAffected } from './abu-raster-ancestry.mjs';
 import { abuPerimeterAffected } from './abu-perimeter-ancestry.mjs';
 import {
@@ -120,6 +121,7 @@ export async function abuFractionalRuntimeCompatible(
   if (await printingArtistAffected(set, task, original, group)) return false;
   if (await abuPerimeterAffected(set, task, original, group)) return false;
   if (await abuRasterAffected(set, task, original, group)) return false;
+  if (await abuPaperAffected(set, task, original, group)) return false;
   return (
     (await (runtimeChecked ??= printingArtistHistoricalHash(path.join(root, directory)))) ===
     p.afterRenderer

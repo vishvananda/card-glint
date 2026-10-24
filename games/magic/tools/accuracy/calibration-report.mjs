@@ -1,4 +1,10 @@
 import {
+  abuPaperAffected,
+  abuPaperApprovalCurrent,
+  abuPaperRuntimeCompatible,
+  preAbuPaperSource,
+} from './abu-paper-ancestry.mjs';
+import {
   abuRasterAffected,
   abuRasterRuntimeCompatible,
   abuRasterApprovalCurrent,
@@ -66,6 +72,13 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        const paperAffected = await abuPaperAffected(set.set, task, original, group);
+        if (paperAffected && !(await abuPaperApprovalCurrent(item, group))) {
+          item.status = 'needs-audit';
+          item.reason =
+            'The Alpha/Beta dual striped paper panel changed geometry. Frame/paper and full-card approvals require the new scoped replay; unchanged components and original wording retain their own evidence.';
+          continue;
+        }
         const rasterAffected = await abuRasterAffected(set.set, task, original, group);
         const rasterCurrent = rasterAffected && (await abuRasterApprovalCurrent(item, group));
         if (rasterAffected && !rasterCurrent) {
@@ -146,6 +159,14 @@ export async function calibrationReport(ledger) {
           }
           if (
             runtimeChecked.get(directory) !== expected &&
+            !(await abuPaperRuntimeCompatible(
+              directory,
+              expected,
+              set.set,
+              task,
+              original,
+              group,
+            )) &&
             !(await abuRasterRuntimeCompatible(
               directory,
               expected,
@@ -221,6 +242,7 @@ export async function calibrationReport(ledger) {
                   guardKey,
                   new Set([
                     hash(bytes),
+                    hash(await preAbuPaperSource(file, bytes)),
                     hash(await preNormalizationCensusSource(file, bytes)),
                     hash(modern.bytes),
                     hash(early),

@@ -21,7 +21,7 @@ for (const [file, e] of Object.entries(p.files)) {
   assert.equal(hash(await prePrintingArtistData(file, Buffer.from(e.beforeSource))), e.before);
   await assert.rejects(
     prePrintingArtistData(file, Buffer.from(after[file] + '\nunknown')),
-    /Unreviewed (?:printing artist data|AB perimeter source|AB raster source)/,
+    /Unreviewed (?:printing artist data|AB perimeter source|AB raster source|AB paper source)/,
   );
 }
 assert.deepEqual(validatePrintingArtistDelta(p, after), {

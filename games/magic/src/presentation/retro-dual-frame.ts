@@ -85,7 +85,7 @@ export function paintAbuDualPerimeter(
 
 /** Invalidate only affected face rasters; default etching is unchanged. */
 export function retroDualFrameRevision(face: RenderedCardInput): string | undefined {
-  if (hasAbuDualPerimeter(face)) return 'abu-dual-perimeter-up2-v2';
+  if (hasAbuDualPerimeter(face)) return 'abu-dual-perimeter-up2-paper-up6-v3';
   const dual = retroDualFrame(face);
   return dual && dual.outline !== dual.overlay ? 'abu-dual-outline-raster-v4' : undefined;
 }

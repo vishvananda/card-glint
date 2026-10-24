@@ -97,9 +97,9 @@ to drop a scan or mark the entire set complete.
 
 All nineteen printed Alpha/Beta dual lands have also been
 [rechecked against native frames](../fixtures/accuracy/early-through-fourth/abu-dual-frame-review.json).
-Frame pixels remain identical to the previously reviewed outline candidates.
-The fixed-strip gradient diagnostic and direct corner review still show
-top/bottom transition differences. Keep geometry open; a shift that improves
+That initial recheck retained the previously reviewed outline candidates.
+Subsequent perimeter and paper-panel updates are recorded below. The fixed-strip
+gradient diagnostic and direct corner review still show some transition differences. Keep geometry open; a shift that improves
 one strip is not permission to move an entire scan.
 
 The review found a physical credit mismatch on Alpha Tropical Island.
@@ -123,6 +123,51 @@ The [pure-data receipt](../fixtures/accuracy/early-through-fourth/printing-artis
 proves that all 221 previous artist records and all 2,962 wording records are
 unchanged. Historical captures keep their original source identities; only this
 printing's artist/full-card approval needs a new replay.
+
+## Current paper-panel replay
+
+The shared Alpha/Beta dual-land paper panel is now six canonical pixels shorter.
+Its fixed top and bottom caps preserve the physical border width; its striped
+interior resizes with the panel. Adjacent prepared stock fills the vacated band.
+Preparation remains cached, before lettering, with the existing source palette.
+
+The [panel study](../fixtures/accuracy/early-through-fourth/abu-paper-panel-trials.json.gz)
+compares eight candidates across all nineteen printings. The selected candidate
+improves eighteen whole-card indices; Alpha Savannah regresses by 5.71 points.
+It remains in the population and report. No per-printing warp or scan exclusion
+was added. Paper-edge mean improves from 76.45 to 89.08/100. The five-pixel
+candidate has a slightly higher whole-card mean, but weaker boundary agreement.
+
+The [production replay](../fixtures/accuracy/early-through-fourth/abu-paper-native.json.gz)
+covers all 899 Original faces. The nineteen affected faces reproduce the study
+candidate exactly. The other 880 rasters and keys remain identical. Paired
+Original and both Oracle symbol modes preserve silhouettes, outside-panel pixels
+and default etching.
+
+The [current scores](../fixtures/accuracy/early-through-fourth/abu-paper-current-scores.json.gz)
+reuse only exact native identities and keep references, poses, component
+eligibility and weights fixed:
+
+| Set       | Scored printings | Current whole-card /100 |
+| --------- | ---------------: | ----------------------: |
+| Alpha     |              295 |                   68.00 |
+| Beta      |              302 |                   68.29 |
+| Unlimited |              302 |                   71.06 |
+
+Fresh eroded paper-color samples support retaining the pigment settings: median
+Oklab error improves from 5.81 to 5.20; the largest individual increase is 1.02,
+within the existing allowance of 2. No HSB parameter was refitted.
+
+A rules-region index includes its background pattern. This replay changes that
+index while leaving font selection and text placement fixed. Use isolated ink
+and layout evidence when fitting typography. Keep the texture/pattern difference
+visible in whole-card results.
+
+The [four-edge review](../fixtures/accuracy/early-through-fourth/abu-anchor-source-review.json.gz)
+withholds three corner-based pose proposals because they lose bottom-frame
+support. Current scan poses remain fixed. Remaining art-bottom, frame texture
+and flavor/wrapping differences still require review; this update does not mark
+an entire set complete.
 
 ## Reproduce from the cache
 

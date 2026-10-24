@@ -1,9 +1,9 @@
+import { abuPaperAffected, abuPaperDelta } from './abu-paper-ancestry.mjs';
 import {
   preAbuRasterSource,
   abuRasterHistoricalHash,
   abuRasterAffected,
   abuRasterApprovalCurrent,
-  abuRasterDelta,
 } from './abu-raster-ancestry.mjs';
 // Reconstruct only the reviewed AB perimeter edit; never approve changed fits.
 import assert from 'node:assert/strict';
@@ -113,7 +113,8 @@ export async function abuPerimeterRuntimeCompatible(
     expected === p.beforeRenderer &&
     !(await abuPerimeterAffected(set, task, original, group)) &&
     !(await abuRasterAffected(set, task, original, group)) &&
-    (await sourceHash(path.join(root, directory))) === (await abuRasterDelta()).afterRenderer &&
+    !(await abuPaperAffected(set, task, original, group)) &&
+    (await sourceHash(path.join(root, directory))) === (await abuPaperDelta()).afterRenderer &&
     (await abuRasterHistoricalHash(path.join(root, directory))) === p.afterRenderer
   );
 }

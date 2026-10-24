@@ -1,3 +1,4 @@
+import { abuPaperAffected } from '../games/magic/tools/accuracy/abu-paper-ancestry.mjs';
 import { abuRasterAffected } from '../games/magic/tools/accuracy/abu-raster-ancestry.mjs';
 import { abuPerimeterAffected } from '../games/magic/tools/accuracy/abu-perimeter-ancestry.mjs';
 import {
@@ -62,7 +63,8 @@ for (const set of ['lea', 'leb', '2ed']) {
       await abuFractionalRuntimeCompatible('games/magic/src', proof.beforeRenderer, set, task),
       !(await printingArtistAffected(set, task)) &&
         !(await abuPerimeterAffected(set, task)) &&
-        !(await abuRasterAffected(set, task)),
+        !(await abuRasterAffected(set, task)) &&
+        !(await abuPaperAffected(set, task)),
     );
 }
 for (const set of ['8ed', 'm21', '3ed', '4ed'])

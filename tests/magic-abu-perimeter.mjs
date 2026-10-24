@@ -17,7 +17,7 @@ for (const [file, e] of Object.entries(p.files)) {
   assert.deepEqual(await preAbuPerimeterSource(file, prior), prior);
   await assert.rejects(
     preAbuPerimeterSource(file, Buffer.concat([raw, Buffer.from('// unknown')])),
-    /Unreviewed AB (?:perimeter|raster) source/,
+    /Unreviewed AB (?:perimeter|raster|paper) source/,
   );
 }
 const m = p.members[0],
@@ -153,7 +153,7 @@ try {
     assert(c.calls.some((v) => Array.isArray(v) && v[0] === 'draw'));
     assert.equal(c.filter, 'contrast(1.1)');
     assert.equal(c.fillStyle, 'original');
-    assert.equal(retroDualFrameRevision(m.face), 'abu-dual-perimeter-up2-v2');
+    assert.equal(retroDualFrameRevision(m.face), 'abu-dual-perimeter-up2-paper-up6-v3');
   }
   const face = p.members.find((m) => m.set === 'lea').face;
   for (const extra of [

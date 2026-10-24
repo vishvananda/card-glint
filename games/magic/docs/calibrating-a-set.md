@@ -77,7 +77,9 @@ See [asset sources and fan notice](../NOTICE.md).
    into calibration and validation cohorts. Include mean, median, lower decile,
    worst cards, regressions and unavailable counts. Use one-pixel edge F1 and
    distance for placement, plus filled-area overlap, local contrast and stroke
-   width for lettering. An edge-only gain can incorrectly favor hollow text.
+   width for lettering. An edge-only gain can incorrectly favor hollow text. A rules-area score also includes its background.
+   Check isolated ink or a flat-background rendering before changing typography;
+   moving frame patterns can change the area score with identical lettering.
    Keep color and corner metrics separate; these are similarity indices, not
    percentages of correctness. Check the integrated painter against the fitting
    prototype and verify unchanged pixels outside the intended regions. Review

@@ -31,7 +31,7 @@ for (const [file, entry] of Object.entries(proof.files)) {
   assert.deepEqual(await preEarlyCalibrationSource(file, before), before);
   await assert.rejects(
     preEarlyCalibrationSource(file, Buffer.concat([current, Buffer.from('\n// unknown change\n')])),
-    /Unreviewed (?:early source|M21 style source|Eighth source|ABU fractional source|AB perimeter source|AB raster source)/,
+    /Unreviewed (?:early source|M21 style source|Eighth source|ABU fractional source|AB perimeter source|AB raster source|AB paper source)/,
   );
 }
 const unrelated = Buffer.from('Unrelated source is not rewritten');
@@ -102,7 +102,7 @@ for (const [file, entry] of Object.entries(oracleProof.files)) {
   assert.deepEqual(await preOracleInsetSource(file, original), original);
   await assert.rejects(
     preOracleInsetSource(file, Buffer.concat([current, Buffer.from('\n// unknown Oracle edit\n')])),
-    /Unreviewed (?:early source|M21 style source|Eighth source|ABU fractional source|AB perimeter source|AB raster source)/,
+    /Unreviewed (?:early source|M21 style source|Eighth source|ABU fractional source|AB perimeter source|AB raster source|AB paper source)/,
   );
 }
 console.log(

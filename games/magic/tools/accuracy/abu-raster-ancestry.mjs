@@ -1,3 +1,10 @@
+import {
+  preAbuPaperSource,
+  abuPaperHistoricalHash,
+  abuPaperDelta,
+  abuPaperAffected,
+  abuPaperApprovalCurrent,
+} from './abu-paper-ancestry.mjs';
 // Reconstruct the exact reviewed raster-selection edit; this is not fit approval.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -20,7 +27,7 @@ export async function abuRasterDelta() {
     ]);
     for (const [f, e] of Object.entries(p.files)) {
       assert.equal(
-        hash(await readFile(path.join(root, f))),
+        hash(await preAbuPaperSource(f, await readFile(path.join(root, f)))),
         e.after,
         'Unreviewed AB raster source: ' + f,
       );
@@ -62,6 +69,7 @@ export async function abuRasterDelta() {
   })());
 }
 export async function preAbuRasterSource(file, bytes) {
+  bytes = await preAbuPaperSource(file, bytes);
   const p = await abuRasterDelta(),
     e = p.files[file];
   if (!e) return bytes;
@@ -112,7 +120,9 @@ export async function abuRasterRuntimeCompatible(
   return (
     expected === p.beforeRenderer &&
     !(await abuRasterAffected(set, task, original, group)) &&
-    (await sourceHash(path.join(root, directory))) === p.afterRenderer
+    !(await abuPaperAffected(set, task, original, group)) &&
+    (await sourceHash(path.join(root, directory))) === (await abuPaperDelta()).afterRenderer &&
+    (await abuPaperHistoricalHash(path.join(root, directory))) === p.afterRenderer
   );
 }
 
@@ -120,6 +130,9 @@ export async function abuRasterRuntimeCompatible(
 export async function abuRasterApprovalCurrent(item, group) {
   const p = await abuRasterDelta(),
     proof = item.proof;
+  const paper = await abuPaperDelta();
+  if (group.printingIds?.some((id) => paper.members.some((m) => m.id === id)))
+    return abuPaperApprovalCurrent(item, group);
   if (
     proof?.abuRasterSource !== p.afterRenderer ||
     proof.rendererHash !== p.afterRenderer ||

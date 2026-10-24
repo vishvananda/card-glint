@@ -1,3 +1,4 @@
+import { abuPaperHistoricalHash } from '../games/magic/tools/accuracy/abu-paper-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -12,7 +13,7 @@ import {
 } from '../games/magic/tools/accuracy/abu-raster-ancestry.mjs';
 import { preAbuPerimeterSource } from '../games/magic/tools/accuracy/abu-perimeter-ancestry.mjs';
 const p = await abuRasterDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await abuPaperHistoricalHash(), p.afterRenderer);
 assert.equal(await abuRasterHistoricalHash(), p.beforeRenderer);
 for (const [file, e] of Object.entries(p.files)) {
   const raw = await readFile(file),
@@ -21,7 +22,7 @@ for (const [file, e] of Object.entries(p.files)) {
   assert.deepEqual(await preAbuRasterSource(file, before), before);
   await assert.rejects(
     preAbuRasterSource(file, Buffer.concat([raw, Buffer.from('// hidden')])),
-    /Unreviewed AB raster source/,
+    /Unreviewed AB (?:raster|paper) source/,
   );
   // The new material file must also project through older ancestry readers.
   const older = await preAbuPerimeterSource(file, raw);
@@ -87,7 +88,7 @@ console.log(
   }),
 );
 
-const m = p.members[0],
+const m = p.members.find((m) => m.set === '2ed'),
   group = { printingIds: [m.id], printings: 1 };
 const item = {
   runtimeGuards: { 'games/magic/src': p.afterRenderer },
