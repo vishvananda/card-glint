@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { preEighthSource } from '../games/magic/tools/accuracy/eighth-source-ancestry.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   modernStockAncestry,
@@ -22,8 +23,8 @@ for (const [file, e] of Object.entries(proof.files)) {
     true,
     'Shared modern owners must retain their real source: ' + file,
   );
-  assert.deepEqual(modern.bytes, current);
-  const older = await modernDefaultProfileSource(file, current, '8ed', { frame: '2003' });
+  assert.deepEqual(modern.bytes, await preEighthSource(file, current));
+  const older = await modernDefaultProfileSource(file, current, 'lea', { frame: '1993' });
   assert.equal(older.changedProfile, false);
   if (file.endsWith('/security-stamp-material.ts')) assert.deepEqual(older.bytes, prior);
   await assert.rejects(

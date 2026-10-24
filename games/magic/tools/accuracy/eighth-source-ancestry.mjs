@@ -12,7 +12,7 @@ import {
   runtimePayloadBase,
   runtimeProfileHashes,
 } from './eighth-profile-data.mjs';
-const RECEIPT = '602dd392434e374d961e4b2d08836945ac4366ec3d39d69be0f984e5b19bc102';
+const RECEIPT = '48039c1c98ad41eb9cd5f39a01166766bd43ccfb8c815de9962fbd50faba54c9';
 let checked;
 let runtimeChecked;
 const payloadPattern = /^games\/magic\/src\/data\/(?:sets|wording)\/[a-z0-9]+[.]ts$/;

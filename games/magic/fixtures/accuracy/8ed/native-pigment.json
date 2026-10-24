@@ -1,0 +1,475 @@
+{
+  "schema": 1,
+  "set": "8ed",
+  "scope": "All357 nonfoil native faces; fixed aligned reference rasters and fixed source-physical windows. Read-only robust tile-median RGB diagnostics, not physical ink measurements or independent holdout certification. Different artwork and printed letters are excluded by windows and robust tile medians. Texture identity and individual letter edges are not certified by these statistics.",
+  "method": {
+    "resize": "OpenCV INTER_AREA from732x1020 to488x680",
+    "tile": 4,
+    "textRejection": "discard darkest60percent of panel tiles; rails retained whole",
+    "ordinaryWindows": {
+      "frame": [
+        [27, 110, 4, 230],
+        [458, 110, 4, 230]
+      ],
+      "paper": [[53, 437, 378, 150]],
+      "namePaper": [[75, 50, 337, 10]],
+      "typePaper": [[120, 400, 280, 8]]
+    },
+    "landWindows": {
+      "frame": [
+        [27, 110, 4, 230],
+        [458, 110, 4, 230]
+      ],
+      "paper": [
+        [70, 455, 78, 130],
+        [339, 455, 78, 130]
+      ],
+      "header": [
+        [265, 44, 100, 20],
+        [343, 393, 36, 16]
+      ]
+    },
+    "source": "ffdb4fb88d347d35d7b705200cb0565aae24ce5460ea331e0f0e7b4eaeb8dc94"
+  },
+  "definition": {
+    "inputsHash": "622128ece41afb985df9cb9deae542bbb88fe7d2d1b07ef8809d88b6b1408853",
+    "rendererHash": "337b3ec990af937c1b85925873c5c243a26375e393668499c8a22be4b9d878fc",
+    "nativeCaptureHash": "17fa33c36904ff9ae8455ae2b1190f55c51abb52aa339e02102509bf131978f0",
+    "scoresHash": "32bd6b811959e19e87a955a8903eb032db5c67a482e9a5cfb05421e80de8aa38"
+  },
+  "summary": {
+    "B": {
+      "printings": 58,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 26.103331393097292,
+          "medianRgbDistanceAfter": 7.5601275197032205,
+          "medianLumaSpreadReference": 71.74203499999999,
+          "medianLumaSpreadAfter": 75.30062
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 17.025667958669523,
+          "medianRgbDistanceAfter": 6.204804118710428,
+          "medianLumaSpreadReference": 5.590275000000005,
+          "medianLumaSpreadAfter": 4.5210899999999725
+        },
+        "namePaper": {
+          "medianRgbDistanceBefore": 29.76962574063942,
+          "medianRgbDistanceAfter": 10.409706365455797,
+          "medianLumaSpreadReference": 15.552739999999986,
+          "medianLumaSpreadAfter": 14.806709999999995
+        },
+        "typePaper": {
+          "medianRgbDistanceBefore": 32.705526790773106,
+          "medianRgbDistanceAfter": 7.781342823218125,
+          "medianLumaSpreadReference": 6.519199999999984,
+          "medianLumaSpreadAfter": 3.962599999999952
+        }
+      }
+    },
+    "G": {
+      "printings": 60,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 20.632946883461745,
+          "medianRgbDistanceAfter": 13.821685519285895,
+          "medianLumaSpreadReference": 50.17315999999999,
+          "medianLumaSpreadAfter": 55.90047000000001
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 9.327340542901997,
+          "medianRgbDistanceAfter": 9.650023035490966,
+          "medianLumaSpreadReference": 5.088585000000009,
+          "medianLumaSpreadAfter": 3.1444000000000045
+        },
+        "namePaper": {
+          "medianRgbDistanceBefore": 14.620069017232117,
+          "medianRgbDistanceAfter": 8.482773138557404,
+          "medianLumaSpreadReference": 6.686610000000002,
+          "medianLumaSpreadAfter": 6.554600000000022
+        },
+        "typePaper": {
+          "medianRgbDistanceBefore": 13.405932694011813,
+          "medianRgbDistanceAfter": 9.228013014579027,
+          "medianLumaSpreadReference": 5.015250000000009,
+          "medianLumaSpreadAfter": 4.338250000000016
+        }
+      }
+    },
+    "R": {
+      "printings": 58,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 23.87859791408708,
+          "medianRgbDistanceAfter": 13.28648336092449,
+          "medianLumaSpreadReference": 63.24489999999999,
+          "medianLumaSpreadAfter": 78.81034999999997
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 32.63999729088937,
+          "medianRgbDistanceAfter": 6.782229815054475,
+          "medianLumaSpreadReference": 4.558449999999979,
+          "medianLumaSpreadAfter": 4.13233000000001
+        },
+        "namePaper": {
+          "medianRgbDistanceBefore": 37.26086332933093,
+          "medianRgbDistanceAfter": 9.985954575812539,
+          "medianLumaSpreadReference": 3.359989999999982,
+          "medianLumaSpreadAfter": 1.5347000000000008
+        },
+        "typePaper": {
+          "medianRgbDistanceBefore": 38.03685215034858,
+          "medianRgbDistanceAfter": 9.70230761430215,
+          "medianLumaSpreadReference": 3.5271749999999997,
+          "medianLumaSpreadAfter": 2.001000000000033
+        }
+      }
+    },
+    "U": {
+      "printings": 61,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 28.39234051641393,
+          "medianRgbDistanceAfter": 8.810505093353047,
+          "medianLumaSpreadReference": 59.06428000000001,
+          "medianLumaSpreadAfter": 68.63456000000002
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 5.5901699437494745,
+          "medianRgbDistanceAfter": 5.315072906367325,
+          "medianLumaSpreadReference": 3.999999999999943,
+          "medianLumaSpreadAfter": 4.541840000000036
+        },
+        "namePaper": {
+          "medianRgbDistanceBefore": 26.296387584609413,
+          "medianRgbDistanceAfter": 8.860022573334675,
+          "medianLumaSpreadReference": 4.8328200000000265,
+          "medianLumaSpreadAfter": 3.8279600000000187
+        },
+        "typePaper": {
+          "medianRgbDistanceBefore": 28.360403734784878,
+          "medianRgbDistanceAfter": 7.224091638399945,
+          "medianLumaSpreadReference": 3.7121999999999957,
+          "medianLumaSpreadAfter": 3.5341000000000236
+        }
+      }
+    },
+    "W": {
+      "printings": 60,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 23.616161350152687,
+          "medianRgbDistanceAfter": 11.954195515052142,
+          "medianLumaSpreadReference": 16.585364999999996,
+          "medianLumaSpreadAfter": 18.37109000000001
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 11.794496408870868,
+          "medianRgbDistanceAfter": 12.394529612613601,
+          "medianLumaSpreadReference": 7.110424999999992,
+          "medianLumaSpreadAfter": 6.4304000000000485
+        },
+        "namePaper": {
+          "medianRgbDistanceBefore": 28.661561157454592,
+          "medianRgbDistanceAfter": 12.010339998389888,
+          "medianLumaSpreadReference": 9.320020000000014,
+          "medianLumaSpreadAfter": 7.476560000000006
+        },
+        "typePaper": {
+          "medianRgbDistanceBefore": 29.796983402044674,
+          "medianRgbDistanceAfter": 14.879675413745762,
+          "medianLumaSpreadReference": 5.209025000000011,
+          "medianLumaSpreadAfter": 3.8451500000000465
+        }
+      }
+    },
+    "artifact": {
+      "printings": 31,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 64.69833846398221,
+          "medianRgbDistanceAfter": 6.547900426854397,
+          "medianLumaSpreadReference": 34.580929999999995,
+          "medianLumaSpreadAfter": 74.49605999999997
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 31.835514759463212,
+          "medianRgbDistanceAfter": 5.766281297335398,
+          "medianLumaSpreadReference": 12.141000000000048,
+          "medianLumaSpreadAfter": 11.284400000000034
+        },
+        "namePaper": {
+          "medianRgbDistanceBefore": 8.215838362577491,
+          "medianRgbDistanceAfter": 25.0499500997507,
+          "medianLumaSpreadReference": 8.764420000000001,
+          "medianLumaSpreadAfter": 11.079880000000003
+        },
+        "typePaper": {
+          "medianRgbDistanceBefore": 12.658988901172163,
+          "medianRgbDistanceAfter": 7.802243267163617,
+          "medianLumaSpreadReference": 6.2663499999999885,
+          "medianLumaSpreadAfter": 7.879519999999985
+        }
+      }
+    },
+    "land-B": {
+      "printings": 4,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 6.333629509693582,
+          "medianRgbDistanceAfter": 6.333629509693582,
+          "medianLumaSpreadReference": 124.84329500000001,
+          "medianLumaSpreadAfter": 126.39379
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 1.5897247358851685,
+          "medianRgbDistanceAfter": 1.5897247358851685,
+          "medianLumaSpreadReference": 4.996574999999993,
+          "medianLumaSpreadAfter": 4.36220000000003
+        },
+        "header": {
+          "medianRgbDistanceBefore": 1.6919572339080922,
+          "medianRgbDistanceAfter": 1.6919572339080922,
+          "medianLumaSpreadReference": 18.95535000000001,
+          "medianLumaSpreadAfter": 21.108299999999986
+        }
+      }
+    },
+    "land-BR": {
+      "printings": 1,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 30.586966178423122,
+          "medianRgbDistanceAfter": 43.72713688317587,
+          "medianLumaSpreadReference": 130.47147999999999,
+          "medianLumaSpreadAfter": 129.50965
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 32.035136959282696,
+          "medianRgbDistanceAfter": 21.0535032714273,
+          "medianLumaSpreadReference": 46.87135000000002,
+          "medianLumaSpreadAfter": 50.384450000000015
+        },
+        "header": {
+          "medianRgbDistanceBefore": 50.24440267333268,
+          "medianRgbDistanceAfter": 14.916433890176299,
+          "medianLumaSpreadReference": 7.579399999999993,
+          "medianLumaSpreadAfter": 3.468500000000006
+        }
+      }
+    },
+    "land-BU": {
+      "printings": 1,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 23.488028865786077,
+          "medianRgbDistanceAfter": 33.171900759528384,
+          "medianLumaSpreadReference": 124.88148999999997,
+          "medianLumaSpreadAfter": 127.57840999999999
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 20.03746490951388,
+          "medianRgbDistanceAfter": 2.179449471770337,
+          "medianLumaSpreadReference": 71.09305,
+          "medianLumaSpreadAfter": 72.88045
+        },
+        "header": {
+          "medianRgbDistanceBefore": 14.230249470757707,
+          "medianRgbDistanceAfter": 26.67395733669828,
+          "medianLumaSpreadReference": 6.502600000000001,
+          "medianLumaSpreadAfter": 20.536100000000005
+        }
+      }
+    },
+    "land-G": {
+      "printings": 4,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 9.812769330834367,
+          "medianRgbDistanceAfter": 9.812769330834367,
+          "medianLumaSpreadReference": 119.551625,
+          "medianLumaSpreadAfter": 128.01729999999998
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 3.2988536207602897,
+          "medianRgbDistanceAfter": 3.2988536207602897,
+          "medianLumaSpreadReference": 6.747749999999996,
+          "medianLumaSpreadAfter": 3.6750999999999863
+        },
+        "header": {
+          "medianRgbDistanceBefore": 5.163971224306545,
+          "medianRgbDistanceAfter": 5.163971224306545,
+          "medianLumaSpreadReference": 7.163449999999997,
+          "medianLumaSpreadAfter": 8.681100000000015
+        }
+      }
+    },
+    "land-GR": {
+      "printings": 1,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 10.246950765959598,
+          "medianRgbDistanceAfter": 8.112490369793976,
+          "medianLumaSpreadReference": 117.20537,
+          "medianLumaSpreadAfter": 129.83587
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 11.937336386313323,
+          "medianRgbDistanceAfter": 19.817921182606415,
+          "medianLumaSpreadReference": 52.83589999999998,
+          "medianLumaSpreadAfter": 71.33795
+        },
+        "header": {
+          "medianRgbDistanceBefore": 17.613914953808536,
+          "medianRgbDistanceAfter": 10.161200716450788,
+          "medianLumaSpreadReference": 6.106899999999996,
+          "medianLumaSpreadAfter": 8.92779999999999
+        }
+      }
+    },
+    "land-GW": {
+      "printings": 1,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 10.633085159068369,
+          "medianRgbDistanceAfter": 11.152354011597732,
+          "medianLumaSpreadReference": 107.23659000000002,
+          "medianLumaSpreadAfter": 128.78336
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 31.196954979612993,
+          "medianRgbDistanceAfter": 13.444329659748751,
+          "medianLumaSpreadReference": 67.9546,
+          "medianLumaSpreadAfter": 73.92464999999999
+        },
+        "header": {
+          "medianRgbDistanceBefore": 97.88258272031854,
+          "medianRgbDistanceAfter": 4.636809247747852,
+          "medianLumaSpreadReference": 4.497399999999999,
+          "medianLumaSpreadAfter": 13.98230000000001
+        }
+      }
+    },
+    "land-R": {
+      "printings": 4,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 14.035734205905754,
+          "medianRgbDistanceAfter": 14.035734205905754,
+          "medianLumaSpreadReference": 125.07468999999998,
+          "medianLumaSpreadAfter": 128.79688
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 4.7824314929310034,
+          "medianRgbDistanceAfter": 4.7824314929310034,
+          "medianLumaSpreadReference": 6.756199999999993,
+          "medianLumaSpreadAfter": 3.9277999999999906
+        },
+        "header": {
+          "medianRgbDistanceBefore": 2.3316729157843388,
+          "medianRgbDistanceAfter": 2.3316729157843388,
+          "medianLumaSpreadReference": 5.474499999999978,
+          "medianLumaSpreadAfter": 3.4704999999999586
+        }
+      }
+    },
+    "land-U": {
+      "printings": 4,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 10.560807053284245,
+          "medianRgbDistanceAfter": 10.560807053284245,
+          "medianLumaSpreadReference": 119.63701499999999,
+          "medianLumaSpreadAfter": 125.60294999999999
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 8.520638025894746,
+          "medianRgbDistanceAfter": 8.520638025894746,
+          "medianLumaSpreadReference": 5.8541000000000025,
+          "medianLumaSpreadAfter": 3.8555999999999813
+        },
+        "header": {
+          "medianRgbDistanceBefore": 4.972650381738138,
+          "medianRgbDistanceAfter": 4.972650381738138,
+          "medianLumaSpreadReference": 9.155150000000006,
+          "medianLumaSpreadAfter": 10.354199999999992
+        }
+      }
+    },
+    "land-UW": {
+      "printings": 1,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 33.11061008196617,
+          "medianRgbDistanceAfter": 42.4808780511891,
+          "medianLumaSpreadReference": 129.31784,
+          "medianLumaSpreadAfter": 128.94432
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 38.839412971876904,
+          "medianRgbDistanceAfter": 16.170961628796228,
+          "medianLumaSpreadReference": 40.71555000000001,
+          "medianLumaSpreadAfter": 47.92845
+        },
+        "header": {
+          "medianRgbDistanceBefore": 60.0,
+          "medianRgbDistanceAfter": 11.090536506409418,
+          "medianLumaSpreadReference": 6.359399999999994,
+          "medianLumaSpreadAfter": 8.86420000000004
+        }
+      }
+    },
+    "land-W": {
+      "printings": 4,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 4.722615415538101,
+          "medianRgbDistanceAfter": 4.722615415538101,
+          "medianLumaSpreadReference": 110.35011499999999,
+          "medianLumaSpreadAfter": 123.52990999999999
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 4.500495894437684,
+          "medianRgbDistanceAfter": 4.500495894437684,
+          "medianLumaSpreadReference": 11.80332500000003,
+          "medianLumaSpreadAfter": 7.7502999999999815
+        },
+        "header": {
+          "medianRgbDistanceBefore": 2.0913923814706985,
+          "medianRgbDistanceAfter": 2.0913923814706985,
+          "medianLumaSpreadReference": 17.28415000000001,
+          "medianLumaSpreadAfter": 10.293999999999983
+        }
+      }
+    },
+    "land-neutral": {
+      "printings": 4,
+      "parts": {
+        "frame": {
+          "medianRgbDistanceBefore": 29.235710717477694,
+          "medianRgbDistanceAfter": 37.39862302499021,
+          "medianLumaSpreadReference": 141.48255499999996,
+          "medianLumaSpreadAfter": 126.69737999999998
+        },
+        "paper": {
+          "medianRgbDistanceBefore": 25.6891598961683,
+          "medianRgbDistanceAfter": 3.9349528776249674,
+          "medianLumaSpreadReference": 53.128375000000005,
+          "medianLumaSpreadAfter": 56.293475
+        },
+        "header": {
+          "medianRgbDistanceBefore": 22.339387433431092,
+          "medianRgbDistanceAfter": 5.211162418026421,
+          "medianLumaSpreadReference": 7.483649999999997,
+          "medianLumaSpreadAfter": 4.858599999999996
+        }
+      }
+    }
+  },
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/8ed/native-pigment.json.gz",
+    "sha256": "5cd3cc8bb59cbbe132a097e4a1faadb5ae0348635903b006713d570f291261cf",
+    "contentSha256": "d587dc832f40ceb86d362213683b93acf38757c6f3de228227b7ac04299cf5cf",
+    "rows": 357
+  }
+}

@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { eighthRulesStudyPlugin } from './eighth-rules-study-plugin.mjs';
 
 /** Offline text-only experiment. Current parameters are an empty object.
  * Every hook is source-bound; production code and host inputs stay untouched. */
@@ -12,6 +13,11 @@ export function modernRulesStudyPlugin() {
     enforce: 'pre',
     transform(source, id) {
       let code = source;
+      if (
+        id.endsWith('/presentation/rules-paint.ts') &&
+        /const baseline = measuredOrdinaryTextLayout\(\n/.test(code)
+      )
+        code = eighthRulesStudyPlugin().transform(code, id).code;
       if (id.endsWith('/presentation/rules-wrap.ts')) {
         code = once(
           code,

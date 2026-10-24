@@ -161,6 +161,35 @@ try {
     })),
     crowded,
   );
+  const { eighthLandPalettes } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/eighth-land-material.ts',
+  );
+  const dualFace = {
+    ...base,
+    typeLine: 'Land',
+    canonicalTypeLine: 'Land',
+    land: true,
+    frameColors: ['G', 'W'],
+    colorCalibration: 'set-hsb-v1',
+  };
+  const dualMaterials = eighthLandPalettes(dualFace);
+  assert.deepEqual(
+    dualMaterials.map((p) => p.url.split('/').pop()),
+    ['gl.png', 'wl.png'],
+    'Physical pair order differs from input W/G order',
+  );
+  assert.deepEqual(
+    dualMaterials.map((p) => p.palette),
+    [exact.landPalettes['dual-G'], exact.landPalettes['dual-W']],
+  );
+  assert.notDeepEqual(
+    exact.landPalettes['dual-G'].paper,
+    exact.landPalettes.G.paper,
+    'Dual paper does not borrow the basic-land pigment',
+  );
+  assert.deepEqual(eighthLandPalettes({ ...dualFace, borderColor: 'black' }), dualMaterials);
+  assert.deepEqual(eighthLandPalettes({ ...dualFace, calibration: 'source' }), []);
+  assert.deepEqual(eighthLandPalettes({ ...dualFace, setCode: 'mrd' }), dualMaterials);
   const rule = exact.originalRules['323'];
   const land = {
     ...base,

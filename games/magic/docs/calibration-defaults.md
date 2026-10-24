@@ -6,8 +6,8 @@ Compatible M15-era frames use the shared M21 layout and typography when they hav
 no exact profile. This includes source-compatible mana and basic-land symbols,
 headings, ordinary body text, power/toughness, footer styles and printing colors
 when color calibration is enabled. Dedicated layouts retain their own geometry.
-Older/2003 families and Futureshifted, flip and leveler layouts keep their own
-policies. An explicit M15 asset-family choice can override the implicit set era.
+Eighth/2003 frames use the separate Eighth baseline described below.
+Older families and Futureshifted, flip and leveler layouts keep their own policies. An explicit M15 asset-family choice can override the implicit set era.
 
 Source-bound independent fits take precedence. M21 collector exceptions, rarity
 labels, foil-star printing IDs and planeswalker-deck collector IDs never transfer.
@@ -27,6 +27,20 @@ The lazy compositor does this automatically. `loadMagicSet(code)` also loads
 the shared calibration dependency for modern sets, preserving existing set-only
 callers. Face-aware preparation avoids that extra data for later retro treatments
 and exact-only policies. The compatibility `card-glint/magic` entry remains eager.
+
+## Eighth-style defaults
+
+Ordinary Eighth-style frames inherit the named `8ed-eighth` baseline. The
+interior geometry and materials are shared, while white and black surrounds
+remain separate. Exact set or component fits win. The recipient keeps its
+expansion symbol, copyright and collector data. Printing-specific centering and
+Original wording exceptions do not transfer. Dedicated Planar Chaos and special
+layouts remain independent. See the [Eighth audit](eighth-edition.md).
+
+`loadMagicSet(code)` loads the Eighth donor for known Eighth-era sets;
+`prepareMagicCards(faces)` uses the actual selected frame and policy.
+Exact-only preparation avoids the donor, including faces with inherited set codes.
+Alpha-only views download neither modern donor.
 
 ## Measured set colors
 

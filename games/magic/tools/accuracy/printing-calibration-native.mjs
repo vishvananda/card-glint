@@ -90,7 +90,7 @@ await mkdir(out, { recursive: true });
 const session = await openBrowser(inputs, {
   plugins: study
     ? [
-        eighthHeadingStudy(study.headings, painterHash),
+        ...(study.headings ? [eighthHeadingStudy(study.headings, painterHash)] : []),
         ...(study.innerGeometrySourceHash
           ? [eighthInnerGeometryStudy(study.innerGeometrySourceHash)]
           : []),
@@ -98,7 +98,7 @@ const session = await openBrowser(inputs, {
         ...(study.manaTargets ? [eighthManaPaperStudy(study.manaTargets, study.manaSources)] : []),
         ...(study.footer ? [eighthFooterStudy(study.footer, study.footerHash)] : []),
         ...(study.materials ? [modernMaterialStudy()] : []),
-        ...(study.rules ? [modernRulesStudyPlugin(), eighthRulesStudyPlugin()] : []),
+        ...(study.rules ? [eighthRulesStudyPlugin(), modernRulesStudyPlugin()] : []),
       ]
     : [],
 });

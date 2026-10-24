@@ -25,7 +25,10 @@ export function eighthLandPalettes(face: RenderedCardInput) {
   return [plate.frame, ...(plate.rightFrame ? [plate.rightFrame] : [])].flatMap((url) => {
     const name = url.startsWith(p.root + '/') ? url.slice(p.root.length + 1) : '';
     const match = /^(?:([wubrgm])l|([l]))[.]png$/.exec(name);
-    const palette = match && p.landPalettes[(match[1] ?? match[2]!).toUpperCase()];
+    const color = match && (match[1] ?? match[2]!).toUpperCase();
+    // Two-color printings use the same assets with a different paper/header ink.
+    const palette =
+      color && ((plate.rightFrame && p.landPalettes['dual-' + color]) || p.landPalettes[color]);
     return palette ? [{ url, palette }] : [];
   });
 }

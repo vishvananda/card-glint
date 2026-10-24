@@ -1,0 +1,515 @@
+{
+  "schema": 1,
+  "set": "8ed",
+  "status": "full-nonfoil-audit-with-recorded-residuals",
+  "targetVersion": "0.7.0",
+  "scope": {
+    "ordinaryRecords": 707,
+    "nonfoilMeasured": 357,
+    "foilOnlyExcluded": 350,
+    "heldOut": false,
+    "wording": "Original with reviewed exact-printing corrections",
+    "posePolicy": "One frozen native affine physical-frame pose per scan; renderer never consumes it",
+    "metric": "Diagnostic structure index /100, not percentage fidelity or pigment accuracy",
+    "eligibility": "Development measurements. Publication and complete-set certification require their own gates."
+  },
+  "definition": {
+    "rendererHash": "337b3ec990af937c1b85925873c5c243a26375e393668499c8a22be4b9d878fc",
+    "inputsHash": "622128ece41afb985df9cb9deae542bbb88fe7d2d1b07ef8809d88b6b1408853",
+    "nativeCaptureHash": "17fa33c36904ff9ae8455ae2b1190f55c51abb52aa339e02102509bf131978f0",
+    "normalizationHash": "df4b4fda94f7ecff32223ab16f3ecd88883afee9d9bc00bdabda447179d0800e",
+    "metricGraph": "9f1d07048c76c3b188af2a09672e3c728da3be3e01c820ac61fc788aacfd4cde",
+    "scoreHashes": [
+      "7169a40181749e0aeaf4de3f6e0b1998a94e05970c138e88df5b7ed5d262dd80",
+      "adc1087afcc0047ef7827caeafb41ed74cfad2a88917486a524bacb560ae62c6",
+      "32bd6b811959e19e87a955a8903eb032db5c67a482e9a5cfb05421e80de8aa38"
+    ],
+    "toolHash": "5af0020f64160c7b5e9ec298515b827c5b61cdc6d42e547df8d5c0f5847ff91e"
+  },
+  "summary": {
+    "baseline100": 70.08838525604811,
+    "correctedInput100": 70.18640265240494,
+    "final100": 81.36350656817741,
+    "acceptedPoses": 357,
+    "regionalMeans100": {
+      "title": {
+        "printings": 357,
+        "before100": 62.670823719602026,
+        "after100": 93.25540639763489
+      },
+      "mana": {
+        "printings": 328,
+        "before100": 75.20474872185336,
+        "after100": 88.00651837954021
+      },
+      "type": {
+        "printings": 357,
+        "before100": 75.61070703267465,
+        "after100": 95.49506402727157
+      },
+      "rules": {
+        "printings": 357,
+        "before100": 47.266308165852934,
+        "after100": 58.42671643831453
+      },
+      "symbol": {
+        "printings": 357,
+        "before100": 87.514708136728,
+        "after100": 89.5294403446719
+      },
+      "stats": {
+        "printings": 162,
+        "before100": 78.81865853814749,
+        "after100": 81.7001665751182
+      },
+      "frame": {
+        "printings": 357,
+        "before100": 82.03194080972509,
+        "after100": 89.52173290630108
+      },
+      "art": {
+        "printings": 357,
+        "before100": 92.67764012821516,
+        "after100": 91.01269116195581
+      },
+      "credits": {
+        "printings": 357,
+        "before100": 58.276702023473014,
+        "after100": 72.27737740173598
+      }
+    },
+    "improvedPrintings": 353,
+    "regressedPrintings": 4,
+    "exactPreparationPairs": 714,
+    "byColorOrMaterial": {
+      "A": {
+        "printings": 31,
+        "before100": 71.60667721052467,
+        "after100": 81.16804126011611
+      },
+      "B": {
+        "printings": 58,
+        "before100": 66.08376985082698,
+        "after100": 79.56778811840974
+      },
+      "G": {
+        "printings": 60,
+        "before100": 70.20248199074997,
+        "after100": 79.42996083576142
+      },
+      "L": {
+        "printings": 29,
+        "before100": 72.73626186656102,
+        "after100": 88.95505270047028
+      },
+      "R": {
+        "printings": 58,
+        "before100": 71.27309330660697,
+        "after100": 81.50554320995533
+      },
+      "U": {
+        "printings": 61,
+        "before100": 70.51556229838083,
+        "after100": 79.53775668342448
+      },
+      "W": {
+        "printings": 60,
+        "before100": 70.78484794124394,
+        "after100": 83.1835335430393
+      }
+    },
+    "byRarity": {
+      "common": {
+        "printings": 133,
+        "before100": 70.15164375213601,
+        "after100": 81.85660621423112
+      },
+      "rare": {
+        "printings": 111,
+        "before100": 70.99992631931734,
+        "after100": 80.60540090727534
+      },
+      "uncommon": {
+        "printings": 113,
+        "before100": 69.42818855248022,
+        "after100": 81.52782051008006
+      }
+    }
+  },
+  "finalTextChanges": [
+    {
+      "id": "4907c728-f08d-4c14-96a2-c92f09dfa6d2",
+      "name": "Demystify",
+      "changedPixels": 6174,
+      "boundsNative": [74, 762, 511, 32]
+    },
+    {
+      "id": "b0038c0e-071f-4fee-bf23-d50d00014703",
+      "name": "Holy Strength",
+      "changedPixels": 6366,
+      "boundsNative": [73, 762, 536, 32]
+    },
+    {
+      "id": "b089b409-2156-4c94-890f-e8804ab5a50c",
+      "name": "Serra Angel",
+      "changedPixels": 43440,
+      "boundsNative": [73, 658, 571, 238]
+    },
+    {
+      "id": "7261bcea-27e0-417f-b3bf-7089c1e8bf1e",
+      "name": "Sunweb",
+      "changedPixels": 30660,
+      "boundsNative": [73, 646, 583, 264]
+    },
+    {
+      "id": "b0ff7228-3040-409e-865e-999bbb779f19",
+      "name": "Remove Soul",
+      "changedPixels": 6063,
+      "boundsNative": [75, 761, 517, 33]
+    },
+    {
+      "id": "810f874e-98e1-402b-b48e-14c3e2a624f0",
+      "name": "Steal Artifact",
+      "changedPixels": 6166,
+      "boundsNative": [73, 764, 533, 27]
+    },
+    {
+      "id": "f5a57368-881f-4f1b-8fdd-09e76836227e",
+      "name": "Wind Drake",
+      "changedPixels": 40144,
+      "boundsNative": [71, 660, 571, 236]
+    },
+    {
+      "id": "a0111ef4-f0be-4af3-981f-aa19a17a3d7b",
+      "name": "Wrath of Marit Lage",
+      "changedPixels": 42087,
+      "boundsNative": [72, 645, 556, 265]
+    },
+    {
+      "id": "818401a7-593d-4f04-a782-9fa486b8c2f6",
+      "name": "Shatter",
+      "changedPixels": 5267,
+      "boundsNative": [74, 761, 463, 33]
+    },
+    {
+      "id": "61bf7f43-c8db-417e-8600-3124f5fab097",
+      "name": "Stone Rain",
+      "changedPixels": 4740,
+      "boundsNative": [74, 762, 444, 32]
+    },
+    {
+      "id": "7fe7c1b5-6077-4b6c-a26b-8201f49dad10",
+      "name": "Two-Headed Dragon",
+      "changedPixels": 38746,
+      "boundsNative": [73, 645, 571, 265]
+    },
+    {
+      "id": "60e80de4-1d8f-4a4a-8108-5d3c36dce07b",
+      "name": "Viashino Sandstalker",
+      "changedPixels": 40435,
+      "boundsNative": [70, 646, 584, 264]
+    },
+    {
+      "id": "04ff34fb-7bc5-4484-ad73-067363a2cc16",
+      "name": "Stream of Life",
+      "changedPixels": 5970,
+      "boundsNative": [73, 761, 492, 33]
+    }
+  ],
+  "finalDualColorRefinements": {
+    "unchangedLayers": 709,
+    "rows": [
+      {
+        "id": "9513c206-b578-4973-93cc-077e5a6658b0",
+        "name": "Coastal Tower",
+        "before": "f6caa014042139985f2c984ef2d22352db93dbd0f0c467f6ed167d7ff6a73368",
+        "after": "ca0fd1b91f40538d637aafc7bf0894672d69371bcb5f047bd35b3fcc64f3e8b5"
+      },
+      {
+        "id": "66e7061a-3b13-466e-b4d0-2769a179b985",
+        "name": "Elfhame Palace",
+        "before": "a964dff12f46d3032495968c35d992965bc264b95831889461021e68677dd564",
+        "after": "cd368da2c120eaa33741bb0706d88469b5cc9a5e60d10eaf769d988b69c7c4e2"
+      },
+      {
+        "id": "3ac23896-d4c9-4543-9edc-1d1bb5c74611",
+        "name": "Salt Marsh",
+        "before": "60e9689f309bb13add11c7a51c56720f2d425833a43f07ffb8f430991ff2035f",
+        "after": "9b8e4ad2c86f97942993436f9e2f9552c44365eb669f50602dbb357cbc513813"
+      },
+      {
+        "id": "e008d427-b029-409e-b93a-efa86c8777c3",
+        "name": "Shivan Oasis",
+        "before": "7951ae56fa2564f07d7774ad3564e54cb04ad1a8924a667288b3aa796e25f413",
+        "after": "f5b43945b675422a48480422b25fd83a8db77cbf0cbf44123def232b7f0db175"
+      },
+      {
+        "id": "6f98c5c9-cd15-40f7-9aa1-575906df3eda",
+        "name": "Urborg Volcano",
+        "before": "0aa9209f99b19009cae8f2f71a97b8f38ee4089a3c5b94bf708ac940c402169d",
+        "after": "a2aacb29e518750437dd4133698a360c2457043f54fb121c5ea038ba566a97d1"
+      }
+    ]
+  },
+  "crossStock": {
+    "scope": "Finite cross-stock diagnostic on fixed donor physical targets and native affine poses; no new pose or complete receiving-set certification. All original provider faces and scan identities exactly paired. Black stock uses the observed MRD border; these are not independent held-out pigment samples.",
+    "sets": [
+      {
+        "set": "9ed",
+        "count": 12,
+        "before100": 73.96241660157324,
+        "after100": 76.22350046513931
+      },
+      {
+        "set": "mrd",
+        "count": 7,
+        "before100": 58.09893577143469,
+        "after100": 61.319165830724394
+      }
+    ]
+  },
+  "remainingReview": [
+    {
+      "component": "art",
+      "issue": "The physical aperture follows the measured frame, but the art_crop image and scan illustration are not identical crops on every printing. The separate art-region index is retained, including its regression; frame fitting never stretches a crop just to improve that score."
+    },
+    {
+      "component": "asset",
+      "issue": "Existing large white basic-land glyph has a heavier inner ring/baked bevel than the scan. Shared contour and placement are fitted; source-shape replacement is separate work."
+    },
+    {
+      "component": "asset",
+      "issue": "Source texture and baked bevels are not pixel-identical. Measured shared pigment/keyline corrections preserve their texture; matching average color is not a claim of exact texture."
+    },
+    {
+      "component": "rules/flavor",
+      "issue": "Some manual printing-specific line breaks and flavor orphans remain. A universal shrink rule was rejected because it regressed other cards; inspect the low-text list rather than overfit per scan."
+    },
+    {
+      "component": "foil",
+      "issue": "350 foil-only records are inventory and wording controls, excluded from ordinary pigment fitting. Their individual appearance has not been certified."
+    },
+    {
+      "component": "receiving sets",
+      "issue": "9ED/MRD samples validate baseline transfer only. Their own symbols, legal text and reviewed overrides remain; full receiving-set audits are still required."
+    }
+  ],
+  "lowTextReview": [
+    {
+      "id": "c85f9623-5900-473c-a3b1-f98473b9a545",
+      "name": "Obliterate",
+      "number": "204",
+      "rules100": 18.056893902264978,
+      "flavor100": null
+    },
+    {
+      "id": "0dc85607-dfdd-4989-b299-c68adb8c7159",
+      "name": "Oracle's Attendants",
+      "number": "32",
+      "rules100": 18.208221818130916,
+      "flavor100": null
+    },
+    {
+      "id": "59c47e6a-71d8-4eba-ad05-0e6745f81600",
+      "name": "Volcanic Hammer",
+      "number": "231",
+      "rules100": 18.385750857267006,
+      "flavor100": null
+    },
+    {
+      "id": "7e8cacd1-51e7-48af-a7ae-48832dc34a92",
+      "name": "Sea Eagle",
+      "number": "S4",
+      "rules100": 18.762381200972175,
+      "flavor100": null
+    },
+    {
+      "id": "88ed4258-eeb8-4c50-9119-8c54331bd219",
+      "name": "Yavimaya Enchantress",
+      "number": "290",
+      "rules100": 18.89216075503293,
+      "flavor100": null
+    },
+    {
+      "id": "2b1e6973-003a-4f3e-b793-2e59519b1b8c",
+      "name": "Enrage",
+      "number": "185",
+      "rules100": 18.98601707972675,
+      "flavor100": null
+    },
+    {
+      "id": "5c512d95-df1a-4712-8bba-7e20047d419f",
+      "name": "Emperor Crocodile",
+      "number": "246",
+      "rules100": 19.079083212884576,
+      "flavor100": null
+    },
+    {
+      "id": "078e44c6-90bb-4294-9e0a-6194764af00c",
+      "name": "Temporal Adept",
+      "number": "106",
+      "rules100": 19.159830316514064,
+      "flavor100": null
+    },
+    {
+      "id": "80ae1da2-f752-481c-a0e8-3c73f6b4ccbe",
+      "name": "Seasoned Marshal",
+      "number": "44",
+      "rules100": 19.27831333202177,
+      "flavor100": null
+    },
+    {
+      "id": "c9fef91f-3044-4c6e-b090-c3819ee61b9c",
+      "name": "Drudge Skeletons",
+      "number": "129",
+      "rules100": 19.382206795571435,
+      "flavor100": null
+    },
+    {
+      "id": "94d17787-1f59-4e88-ba57-e69f02bb3ffe",
+      "name": "Dwarven Demolition Team",
+      "number": "184",
+      "rules100": 19.79179413392859,
+      "flavor100": null
+    },
+    {
+      "id": "dabea8c3-630f-4b19-8d1e-47998b39866f",
+      "name": "Pyrotechnics",
+      "number": "211",
+      "rules100": 19.80646030049565,
+      "flavor100": null
+    },
+    {
+      "id": "48acfd80-eba3-4aa9-804c-563259ca84de",
+      "name": "Confiscate",
+      "number": "69",
+      "rules100": 19.82508592479884,
+      "flavor100": null
+    },
+    {
+      "id": "d75f7d29-9c73-4b5e-a6fd-5608bb737278",
+      "name": "Eastern Paladin",
+      "number": "131",
+      "rules100": 20.30899371230637,
+      "flavor100": null
+    },
+    {
+      "id": "4f829763-3dce-453f-a783-177ea085ee01",
+      "name": "Western Paladin",
+      "number": "173",
+      "rules100": 20.503717614802536,
+      "flavor100": null
+    },
+    {
+      "id": "7e1e905d-a911-40a7-a793-8535e840230e",
+      "name": "Naturalize",
+      "number": "270",
+      "rules100": 20.52934106387267,
+      "flavor100": null
+    },
+    {
+      "id": "91cc6efd-43cc-4350-bd44-9f20c5a4fdd0",
+      "name": "Beast of Burden",
+      "number": "292",
+      "rules100": 20.648451989764734,
+      "flavor100": null
+    },
+    {
+      "id": "83f46988-c3ee-42e9-ade6-0b6302b8b952",
+      "name": "Balance of Power",
+      "number": "62",
+      "rules100": 20.72794778919542,
+      "flavor100": null
+    },
+    {
+      "id": "13f6106d-6822-47b5-956e-20e17143a818",
+      "name": "Storm Crow",
+      "number": "104",
+      "rules100": 21.44748469512937,
+      "flavor100": null
+    },
+    {
+      "id": "2275b0a5-7777-49cb-9056-aef0a82424db",
+      "name": "Boomerang",
+      "number": "63",
+      "rules100": 21.534565578892035,
+      "flavor100": null
+    },
+    {
+      "id": "30d893a2-400c-459d-a26d-31f1f3b0642e",
+      "name": "Dingus Egg",
+      "number": "297",
+      "rules100": 22.1812468068757,
+      "flavor100": null
+    },
+    {
+      "id": "0d47101c-ead0-42a6-b37b-0e5d294959c9",
+      "name": "Crossbow Infantry",
+      "number": "15",
+      "rules100": 22.524962952125307,
+      "flavor100": null
+    },
+    {
+      "id": "03fd1dae-ccad-4f05-b720-b4b8600a298b",
+      "name": "Scathe Zombies",
+      "number": "160",
+      "rules100": 23.10824305839043,
+      "flavor100": null
+    },
+    {
+      "id": "229a4a86-b9ce-415c-9343-db4211cac7b8",
+      "name": "Fertile Ground",
+      "number": "248",
+      "rules100": 26.137936727594358,
+      "flavor100": null
+    },
+    {
+      "id": "c73b31b1-c347-4f1c-af4f-8ffbf9e8bf8a",
+      "name": "Jayemdae Tome",
+      "number": "306",
+      "rules100": 26.48996662670268,
+      "flavor100": null
+    },
+    {
+      "id": "c5448159-0516-4f35-a212-c3e1efa84c71",
+      "name": "Goblin King",
+      "number": "190",
+      "rules100": 26.51150811967049,
+      "flavor100": null
+    },
+    {
+      "id": "76da89df-edb9-482c-a3bb-e7cf650990cc",
+      "name": "Mind Slash",
+      "number": "145",
+      "rules100": 27.014726669034268,
+      "flavor100": null
+    },
+    {
+      "id": "00cf2252-5ead-47df-8150-06c81dc47584",
+      "name": "Lightning Elemental",
+      "number": "201",
+      "rules100": 27.053869465716602,
+      "flavor100": null
+    },
+    {
+      "id": "74733902-f177-4551-bc39-72f58860c890",
+      "name": "Sanctimony",
+      "number": "42",
+      "rules100": 40.18116612685586,
+      "flavor100": null
+    },
+    {
+      "id": "6d82d9b7-4b1c-447c-8044-9e114604017e",
+      "name": "Distorting Lens",
+      "number": "299",
+      "rules100": 41.329940570997756,
+      "flavor100": null
+    }
+  ],
+  "evidence": {
+    "file": "games/magic/fixtures/accuracy/8ed/full-audit.json.gz",
+    "sha256": "eb9b8d4d8207a6448cc2b9c0077bea3f5cbc2bc56e589c7f848cf7ced60d3700",
+    "contentSha256": "23dd486d7c8178d6e15bbfa3a034adca37c5439718c4d358b51c346db080f2a3",
+    "rows": 357
+  }
+}

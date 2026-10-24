@@ -551,6 +551,111 @@ export const profile: EighthPrintingProfile = {
         target: [0.22745098039215686, 0.4568627450980392, 0.29411764705882354],
       },
     },
+    'dual-W': {
+      header: {
+        hueDegrees: -28.24833147942161,
+        saturationScale: 1.1482788322990563,
+        brightnessScale: 0.7893015922249794,
+      },
+      paper: {
+        hueDegrees: -2.7822119179163582,
+        saturationScale: 1.0104483227056862,
+        brightnessScale: 0.9150319968656131,
+      },
+      pinline: {
+        hueDegrees: -8.203598940779898,
+        saturationScale: 0.4898632906133164,
+        brightnessScale: 0.9302788844621516,
+      },
+      glyph: {
+        source: [0.9882352941176471, 0.996078431372549, 1],
+        target: [0.9431372549019608, 0.9352941176470588, 0.9372549019607843],
+      },
+    },
+    'dual-U': {
+      header: {
+        hueDegrees: 166.61943605770085,
+        saturationScale: 0.5492672042478569,
+        brightnessScale: 0.8831142786622238,
+      },
+      paper: {
+        hueDegrees: 23.38942307692306,
+        saturationScale: 1.03087746270445,
+        brightnessScale: 0.9955749607535322,
+      },
+      pinline: {
+        hueDegrees: 17.557840616966587,
+        saturationScale: 0.5557142857142856,
+        brightnessScale: 1.1666666666666667,
+      },
+      glyph: {
+        source: [0, 0.4588235294117647, 0.7450980392156863],
+        target: [0.396078431372549, 0.4392156862745098, 0.7176470588235293],
+      },
+    },
+    'dual-B': {
+      header: {
+        hueDegrees: -11.731730769230719,
+        saturationScale: 1.4207270308870985,
+        brightnessScale: 0.9911174114342194,
+      },
+      paper: {
+        hueDegrees: -16.89635093167709,
+        saturationScale: 1.6615682779644116,
+        brightnessScale: 0.9821581327141635,
+      },
+      pinline: {
+        hueDegrees: -88.07559082483772,
+        saturationScale: 1.277991260837483,
+        brightnessScale: 1.308125,
+      },
+      glyph: {
+        source: [0.15294117647058825, 0.14901960784313725, 0.1411764705882353],
+        target: [0.11568627450980393, 0.09607843137254901, 0.12941176470588234],
+      },
+    },
+    'dual-R': {
+      header: {
+        hueDegrees: -21.7901993635741,
+        saturationScale: 0.3230541426295004,
+        brightnessScale: 0.8411102172164121,
+      },
+      paper: {
+        hueDegrees: -0.2210294738335783,
+        saturationScale: 0.9455415897771657,
+        brightnessScale: 0.9310783663598066,
+      },
+      pinline: {
+        hueDegrees: 3.0543379373086736,
+        saturationScale: 1.0001076704423102,
+        brightnessScale: 1.0559610705596107,
+      },
+      glyph: {
+        source: [0.9372549019607843, 0.2196078431372549, 0.15294117647058825],
+        target: [0.8196078431372549, 0.24901960784313726, 0.20588235294117646],
+      },
+    },
+    'dual-G': {
+      header: {
+        hueDegrees: -127.73447204968947,
+        saturationScale: 0.911145118230359,
+        brightnessScale: 0.9591346153846154,
+      },
+      paper: {
+        hueDegrees: -11.18661589055965,
+        saturationScale: 0.6588182655303928,
+        brightnessScale: 0.9346636861969805,
+      },
+      pinline: {
+        hueDegrees: -21.627829393491652,
+        saturationScale: 0.47678542547538166,
+        brightnessScale: 1.16243654822335,
+      },
+      glyph: {
+        source: [0, 0.4823529411764706, 0.2627450980392157],
+        target: [0.22745098039215686, 0.4568627450980392, 0.29411764705882354],
+      },
+    },
     L: {
       header: {
         hueDegrees: -13.994222689075514,

@@ -2,45 +2,115 @@
 
 [Magic pack](../README.md) · [Documentation index](README.md)
 
-Eighth Edition loads its Matrix header font only when selected. Frame geometry
-also drives GPU art windows, optical layers, hit regions and cache identity.
-Prior old-frame HSB and scan-offset profiles are not applied to these assets.
+Version 0.7.0 uses Eighth Edition as the default for ordinary cards that select
+`frameAssetFamily: 'eighth'`. Exact set and component fits take precedence.
+Black and white surrounds use separate colors; changing the surround does not
+recolor the interior frame.
 
-Ordinary white-border Eighth Edition basics use a shared inner-frame stretch,
-measured on ten printings and validated on nine others. Their art aperture follows
-the fitted frame; the outer stock, corners and independently calibrated lettering
-stay fixed. [Measurement and exclusions](../fixtures/accuracy/8ed/basic-land-geometry.json)
-record the exact source revision and frozen scan poses. Other Eighth-family sets
-and black-border treatments retain their existing geometry.
-With `colorCalibration: 'set-hsb-v1'`, these basics also receive separately masked
-header, paper and pinline colors, a shared outer-texture tone curve, and calibrated
-large mana-symbol fills. The source's black lines, transparent art aperture and
-neutral glyph shadows/highlights are preserved. Derived materials share the
-existing bounded cache; warm preparation adds no pixel readback.
-[Color measurements and limitations](../fixtures/accuracy/8ed/basic-land-colors.json)
-include all nineteen aligned printings and the remaining rejected scan.
+The authoritative values live in
+[`calibration/eighth/8ed.ts`](../src/calibration/eighth/8ed.ts).
+The profile owns frame geometry, materials, headings, rules, mana, credits,
+stats and large basic-land symbols. Matrix fonts load only when needed.
+Derived masks and materials use the existing bounded cache. Animation performs
+no decoding, font loading or pixel readback.
 
-## Full-set audit
+## Audit results
 
-The current audit covers 707 ordinary English printing records: 357 nonfoil
-references and 350 foil-only references. Foil references remain in the inventory
-but do not supply ordinary ink-color measurements. The
-[baseline report](../fixtures/accuracy/8ed/audit-baseline.json) lists the component
-scores, rejected scan poses, reviewed corrections and remaining work.
-These measurements are development diagnostics, not complete-set certification.
+The [full audit](../fixtures/accuracy/8ed/full-audit.json) covers all 357 ordinary
+English nonfoil printings, including the seven starter cards. Another 350
+foil-only records stay in the inventory and wording review; they do not fit
+ordinary pigment colors.
 
-Original types are reviewed against the printing rather than copied from Oracle
-or assumed correct because MTGJSON calls a field `originalType`. The
-[type reviews](../fixtures/accuracy/8ed/annotations-types.json) correct creature
-errata and pre-Aura enchantment labels. Each correction is bound to its printing
-UUID and scan hash; it leaves Oracle wording and unrelated original text alone.
+The diagnostic structure index improved from **70.19 to 81.36/100** using
+corrected Original wording, identical references, frozen scan poses and the same
+metric. The uncorrected 0.6.12 provider baseline scored 70.09/100 on those poses.
+These are development measurements, not a percentage of visual fidelity.
 
-Eighth's rainbow-land provider inputs now select the gold plate. Semantic colors
-remain unchanged, and the selected black or white surround remains explicit.
-Other unreviewed rainbow-land eras retain their previous import policy.
+| Component        | Before /100 | After /100 |
+| ---------------- | ----------: | ---------: |
+| Title            |       62.67 |      93.27 |
+| Type line        |       75.61 |      95.49 |
+| Cost symbols     |       75.20 |      88.01 |
+| Rules region     |       47.27 |      58.43 |
+| Expansion symbol |       87.51 |      89.53 |
+| Power/toughness  |       78.82 |      81.70 |
+| Frame            |       82.03 |      89.53 |
+| Credits          |       58.28 |      72.28 |
 
-To reproduce the baseline, run these commands from the repository root. Keep the
-cache and study output outside Git. Source images stay in the private cache.
+The fitted geometry follows the source frame, art aperture and rules box.
+An outline derived from the existing stock mask restores the missing thin
+inner line without a rectangular crop. Separate frame, paper and header
+adjustments preserve source texture. The black frame uses a measured tone
+curve so a flat brightness adjustment does not erase its highlights.
+
+Mana fitting treats disc diameter, row pitch, glyph placement and generic-number
+geometry separately. Paper colors come from ink-excluded annuli. The large
+basic-land symbols have separate contour fits and a shared canonical shadow.
+Expansion-symbol fitting uses the filled, styled SVG rather than its view box.
+
+Titles and type lines use native filled-letter measurements. Rules use a shared
+size ceiling and one-line centering for this printing. A bounded compact-leading
+rule keeps six crowded cards readable. Three Original land passages have
+content-bound size limits. Oracle wording fits its own text.
+
+[Exact printing reviews](../fixtures/accuracy/8ed/annotations-types.json) correct
+historical type lines. [Artist reviews](../fixtures/accuracy/8ed/annotations-artists.json)
+preserve printed names. The [serial review](../fixtures/accuracy/8ed/collector-review.json)
+covers starter denominators and foil metadata stars. City of Brass selects the
+Eighth gold land plate while preserving its semantic colors.
+
+## Scan normalization and regression checks
+
+The [normalization receipt](../fixtures/accuracy/8ed/native-normalization-review.json)
+accepts all 357 nonfoil scans. A fixed six-parameter affine fit accounts for
+translation, scale, rotation and shear using physical frame strips.
+Replacing central printed content changes none of the poses. All 144 known
+full-resolution raster-warp controls pass the fixed error limits.
+The renderer never receives these per-scan comparison poses.
+
+The [source compatibility receipt](../fixtures/accuracy/8ed/source-compatibility.json)
+records 266 unaffected cases and 1,596 exact native face/etching comparisons.
+It permits unchanged families to retain their scores while changed Eighth
+families require a fresh review. Unknown executable changes invalidate reuse.
+The final lazy-preparation fix also preserves all 714 Eighth face/etching images.
+
+Cross-stock samples improved from 73.96 to 76.22/100 on twelve 9ED cards and
+58.10 to 61.32/100 on seven nonfoil Mirrodin cards. These checks support using
+the default; they do not certify either receiving set.
+
+## What transfers
+
+Ordinary Eighth-style frames inherit compatible geometry, typography, mana,
+materials, basic-land glyphs and footer style when no exact fit exists.
+The recipient retains its set symbol, copyright year, collector denominator,
+printed wording and independently reviewed overrides. Black stock stays black;
+white stock stays white.
+
+Printing-specific one-line centering and Original text exceptions do not transfer.
+Planar Chaos, colorshifted, retro, planeswalker, split and other dedicated layouts
+retain their independent policies. Source assets without a measured color fit
+remain unchanged. The resolver reports inherited, exact and source components;
+a default does not mark a receiving set complete.
+
+Use `calibration: 'printing'` for exact-only data or `calibration: 'source'`
+for source colors with the selected layout. With `card-glint/magic/lazy`,
+await `prepareMagicCards(faces)` before synchronous asset or layout queries.
+Face-aware preparation avoids unrelated donor tables.
+
+## Remaining review
+
+Some source textures and baked bevels differ from the references. The large white
+basic-land symbol has a heavier inner ring. Some manually typeset flavor passages
+and line breaks need further work. A universal flavor-text shrink rule was
+rejected because it damaged other cards. The full audit includes a low-text
+review list and keeps these limitations visible.
+
+Foil-only appearance and full receiving-set calibration remain separate work.
+The audit does not grant complete-set or score-publication approval.
+
+## Reproduce the measurements
+
+Keep scans and generated images outside Git. Run from the repository root:
 
 ```sh
 export MAGIC_ACCURACY_CACHE=/path/to/private-cache
@@ -56,36 +126,21 @@ node games/magic/tools/accuracy/printing-calibration-normalize.mjs \
   /path/to/study/inputs.json \
   games/magic/fixtures/accuracy/full-set-scan-templates/8ed.json \
   /path/to/study/normalization --eighth-native-affine
+node games/magic/tools/accuracy/printing-calibration-score.mjs \
+  /path/to/study/inputs.json /path/to/study/native \
+  /path/to/study/normalization \
+  /path/to/reviewed/accuracy-metrics.mjs /path/to/study/scores --diagnostic
 ```
 
-The input builder rejects nonempty Oracle body fallbacks. It records unresolved
-printed types for scan review. Registration uses frozen physical scan targets and
-disjoint fit/validation strips, without consulting renderer pixels.
-The native sampler and fixed affine model accept all 357 nonfoil references.
-Replacing the central printed content leaves every fit unchanged; 144 known
-full-resolution raster-warp controls pass the fixed corner-error limits. The
-[normalization receipt](../fixtures/accuracy/8ed/native-normalization-review.json)
-records exact sources, numerical bounds and limitations. These are comparison
-poses, never per-card renderer adjustments.
+Use the same frozen poses and metric module for before/after results.
+`printing-lettering-masks.mjs NATIVE OUT` records actual filled glyphs; every
+instrumented full-card image must match the native capture before its masks are
+accepted. `printing-rules-study.mjs` reuses native text measurements for bounded
+parameter trials. Empty study adjustments must reproduce production output.
 
-The separate
-`printing-calibration-score.mjs` takes a reviewed metric module explicitly;
-rejected poses remain listed with no numeric score. Do not mix metric identities
-when comparing runs or importing scores into a host.
-
-`printing-lettering-masks.mjs NATIVE OUT` records filled glyph coverage from the
-actual painter. Every instrumented full-card image must exactly match the frozen
-native capture before its masks are kept. It supports placement and size studies;
-it does not approve a typography fit on its own.
-
-Before using Eighth as a shared default, verify the corrected native output and
-cross-check matching white-border and black-border sets. Exact independent set
-profiles must win over inherited defaults. Transfer only values measured for the
-same frame source and layout; keep outer-stock colors separate, and do not treat
-inherited values as measurements of the receiving set.
-
-Native heading studies use an explicit, source-bound parameter file passed as
-the third argument to `printing-calibration-native.mjs`. A Vite study plugin
-applies the proposed size, width and position before the production painter
-measures the text. Zero-delta replays must match the unmodified capture. Study
-hooks are development tools and are absent from the shipped renderer.
+`eighth-audit-report.mjs PRIVATE_STUDY OUTPUT_JSON` joins the named complete
+audit stages and checks all native hashes. The optional
+`eighth-native-pigment-audit.py PRIVATE_STUDY OUTPUT_JSON` measures fixed-window
+pigment statistics using NumPy and OpenCV. Neither tool changes scan poses or
+grants publication approval. See the general
+[calibration guide](calibrating-a-set.md) for submitting evidence.

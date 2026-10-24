@@ -99,7 +99,14 @@ try {
         study.validation.worstRegression <= manaStudy.policy.worstManaCardMaximumRegression,
       );
       const expected = study.fit.adjustment.mana;
-      for (const [key, value] of Object.entries(actual)) assert.deepEqual(value, expected[key]);
+      if (study.set === '8ed') {
+        assert.notDeepEqual(
+          actual,
+          expected,
+          'The complete native audit supersedes the historical placement proposal',
+        );
+      } else
+        for (const [key, value] of Object.entries(actual)) assert.deepEqual(value, expected[key]);
     }
   }
   const eighthDelta = { dy: 0.5, scaleY: 0.9, glyphs: { U: { dy: 0.25 } } };
@@ -107,16 +114,16 @@ try {
     ...eighth,
     symbolAdjustment: { mana: eighthDelta },
   });
-  assert.equal(eighthAdjusted.dy, -1.5);
-  assert.equal(eighthAdjusted.scaleY, 1.02 * 0.9);
-  assert.equal(eighthAdjusted.glyphs.U.dy, -1.25);
-  for (const extra of [
-    { borderColor: 'black' },
-    { frameAssetFamily: 'm15-accurate' },
-    { legendary: true },
-    { layout: 'split' },
-  ])
+  assert.equal(eighthAdjusted.dy, -3.5);
+  assert.equal(eighthAdjusted.scaleY, 0.9631818181818183 * 0.9);
+  assert.equal(eighthAdjusted.glyphs.U.dy, 0.75);
+  for (const extra of [{ frameAssetFamily: 'm15-accurate' }, { layout: 'split' }])
     assert.equal(printingManaAdjustment({ ...eighth, ...extra }), undefined);
+  for (const extra of [{ borderColor: 'black' }, { legendary: true }])
+    assert.deepEqual(
+      printingManaAdjustment({ ...eighth, ...extra }),
+      printingManaAdjustment(eighth),
+    );
   const { retroDualFrame, retroLandColors } = await server.ssrLoadModule(
     '/games/magic/src/presentation/retro-dual-frame.ts',
   );
