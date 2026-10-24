@@ -1,3 +1,6 @@
+import { paintEighthStockRule } from './eighth-stock-rule.js';
+import { eighthFrameGeometry, paintEighthFrame } from './eighth-frame-geometry.js';
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import { modernHeadingFamily, prepareModernTypeText } from './modern-heading-font.js';
 import { paintModernArtifactLayer } from './modern-artifact-layer.js';
 import { paintModernLandLayers } from './modern-land-layers.js';
@@ -87,7 +90,9 @@ export function paintFramePlateFace(
     c.restore();
     return;
   }
+  const measuredEighth = eighthFrameGeometry(face, plate.frame);
   if (usesEighthBasicGeometry(face, plate.frame)) paintEighthBasicFrame(c, required(plate.frame));
+  else if (measuredEighth) paintEighthFrame(c, required(plate.frame), measuredEighth);
   else if (usesPlanarFrameGeometry(face, plate.frame))
     paintPlanarFrame(c, required(plate.frame), face.frameTreatment === 'colorshifted');
   else c.drawImage(required(plate.frame), 0, 0, W, H);
@@ -99,7 +104,13 @@ export function paintFramePlateFace(
     mix.width = 732;
     mix.height = 1020;
     const m = mix.getContext('2d')!;
-    m.drawImage(required(plate.rightFrame), 0, 0, mix.width, mix.height);
+    const rightGeometry = eighthFrameGeometry(face, plate.rightFrame);
+    if (rightGeometry) {
+      m.save();
+      m.scale(1.5, 1.5);
+      paintEighthFrame(m, required(plate.rightFrame), rightGeometry);
+      m.restore();
+    } else m.drawImage(required(plate.rightFrame), 0, 0, mix.width, mix.height);
     const mask = rasterCanvas();
     mask.width = mix.width;
     mask.height = mix.height;
@@ -141,6 +152,7 @@ export function paintFramePlateFace(
           : 'planar'
         : undefined,
     );
+  paintEighthStockRule(c, face, images);
   paintModernLandLayers(c, face, images);
   paintModernArtifactLayer(c, face, images);
   paintMountedSecurityStamp(c, face, images);
@@ -229,7 +241,8 @@ export function paintFramePlateFace(
   c.save();
   const typeFit = planarLettering(face, plate.frame, 'type');
   const modernType = prepareModernTypeText(c, face, 'plate');
-  c.translate(typeFit.dx, typeFit.dy);
+  const eighthType = eighthPrintingProfile(face)?.headings.type;
+  c.translate(typeFit.dx + (eighthType?.dx ?? 0), typeFit.dy + (eighthType?.dy ?? 0));
   paintColorshiftedHeading(c, face, plate.frame);
   c.font = `bold ${plate.typeSize}px "${family}", Georgia`;
   paintFittedText(
@@ -240,7 +253,7 @@ export function paintFramePlateFace(
     (icon ? bounds[0] - x - 7 : w) - modernType.dx,
     plate.typeSize * typeFit.size * modernType.size,
     true,
-    modernType.width,
+    modernType.width * (eighthType?.width ?? 1),
     family,
     face.frameTreatment === 'colorshifted' ? 0.5 : 0,
     face.textInk,

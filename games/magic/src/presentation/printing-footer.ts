@@ -25,7 +25,10 @@ export function printingLegalText(face: RenderedCardInput): string | null {
 
 export function printingCollectorText(face: RenderedCardInput, modern = true): string {
   if (face.printingElements?.collector?.hidden) return '';
-  const raw = face.collectorNumber?.trim();
+  const supplied = face.collectorNumber?.trim();
+  // Scryfall splits Eighth's foil scans using a metadata star absent from the printed serial.
+  const raw =
+    face.setCode?.toLowerCase() === '8ed' ? supplied?.replace(/^(\d+)★$/, '$1') : supplied;
   if (!raw) return '';
   const style = PRINTINGS[face.setCode?.toLowerCase() ?? ''];
   const format = face.collectorFormat ?? style?.format ?? 'number-first';
@@ -42,7 +45,10 @@ export function printingCollectorText(face: RenderedCardInput, modern = true): s
   // Bonus cards beyond the regular numbered set do not print a denominator.
   const numbered = /^\d+$/.test(raw);
   const number = modern && numbered ? raw.padStart(3, '0') : raw;
-  const total = face.collectorTotal === undefined ? style?.total : face.collectorTotal;
-  const serial = total && numbered && Number(raw) <= total ? `${number}/${total}` : number;
+  const starter = face.setCode?.toLowerCase() === '8ed' && /^S[1-7]$/.test(raw);
+  const total =
+    face.collectorTotal === undefined ? (starter ? 7 : style?.total) : face.collectorTotal;
+  const serial =
+    total && (starter || (numbered && Number(raw) <= total)) ? `${number}/${total}` : number;
   return modern ? `${serial} ${rarity}` : serial;
 }

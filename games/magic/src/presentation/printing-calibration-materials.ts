@@ -1,3 +1,6 @@
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
+import { eighthFrameMaterials } from './eighth-materials.js';
+import { supportsEighthStyleDefaults } from './eighth-style-scope.js';
 import {
   modernOrdinaryPlates,
   modernPrintingProfile,
@@ -30,9 +33,18 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
   // Clearing it would resolve donor pigment against a different asset inventory.
   const original = { ...face, calibration: choice === 'printing' ? choice : undefined };
   const explicitProfile = typeof choice === 'object';
-  if (explicitProfile && !supportsModernCalibration(face))
-    throw Error('M21 calibration requires a modern frame.');
+  const namedEighth = explicitProfile && choice.profile === '8ed-eighth';
+  if (
+    explicitProfile &&
+    (namedEighth ? !supportsEighthStyleDefaults(face) : !supportsModernCalibration(face))
+  )
+    throw Error(
+      namedEighth
+        ? '8ED calibration requires an ordinary Eighth frame.'
+        : 'M21 calibration requires a modern frame.',
+    );
   const style = modernPrintingProfile(original);
+  const eighth = eighthPrintingProfile(original);
   const independent = style?.inheritedFrom
     ? independentModernComponentMaterials(original)
     : undefined;
@@ -59,7 +71,8 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
   // A named M21 selection retains the matching source-bound style, including
   // PW materials. Independently measured component sources keep their separate
   // explicit-donor policy rather than being mislabeled as shared M21 fits.
-  const useExact = !explicitProfile || Boolean(ordinary) || Boolean(style && !independent);
+  const useExact =
+    !explicitProfile || namedEighth || Boolean(ordinary) || Boolean(style && !independent);
   const materials: Record<string, FrameHsb> = useExact ? { ...measured } : {};
   const fallbackAssets: string[] = [];
   if (style?.inheritedFrom && choice !== 'source')
@@ -73,6 +86,14 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
       border &&
       choice !== 'source',
   );
+  if (eighth?.inheritedFrom && choice !== 'source') {
+    const independent = exact.calibratedFrameMaterials({ ...original, calibration: 'printing' });
+    for (const url of Object.keys(eighthFrameMaterials(original) ?? {}))
+      if (!independent[url]) fallbackAssets.push(url);
+    fallbackStock = Boolean(
+      border && !exact.calibratedPrintingStock({ ...original, calibration: 'printing' }),
+    );
+  }
   if (
     (choice === 'auto' || explicitProfile || Boolean(styleStock && style?.inheritedFrom)) &&
     supportsModernCalibration(face)
@@ -118,6 +139,7 @@ export function printingCalibrationMaterials(input: RenderedCardInput) {
     border,
     fallbackStock,
     fallbackAssets,
+    fallbackProfile: eighth?.inheritedFrom ? ('8ed-eighth' as const) : ('m21-modern' as const),
     assets: profileAssets(resolveCardProfile(face)),
     explicitProfile,
   };

@@ -1,3 +1,6 @@
+import { eighthFrameMaterials } from './eighth-materials.js';
+import { cardStock } from './face-layout.js';
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import { faceFrame } from './special-frames.js';
 import {
   independentModernComponentMaterials,
@@ -70,6 +73,16 @@ export function calibratedDualFrameProfile(face: RenderedCardInput): DualFrameHs
     : profile.adjustment;
 }
 export function calibratedManaTarget(face: RenderedCardInput, symbol: string): Rgb | undefined {
+  const eighth =
+    face.colorCalibration === 'set-hsb-v1' &&
+    face.calibration !== 'source' &&
+    eighthPrintingProfile(face)?.mana.paperTargets[symbol];
+  if (eighth) {
+    const inherited = eighthPrintingProfile(face)?.inheritedFrom;
+    const key = `${face.setCode?.toLowerCase()}-${retroBorder(face)}-${symbol}`;
+    const exact = inherited && (MANA_PRINTING_TARGETS[key] ?? DUAL_MANA_TARGETS[key]);
+    return exact || [eighth[0] / 255, eighth[1] / 255, eighth[2] / 255];
+  }
   const measured = face.colorCalibration === 'set-hsb-v1' && face.calibration !== 'source';
   const style = measured ? modernPrintingProfile(face) : undefined;
   if (
@@ -96,6 +109,14 @@ export function calibratedManaTarget(face: RenderedCardInput, symbol: string): R
 
 /** Every binding retains the exact pinned asset and geometry it was fitted to. */
 function baseFrameMaterials(face: RenderedCardInput): Readonly<Record<string, FrameHsb>> {
+  const eighth = eighthPrintingProfile(face),
+    shared = eighthFrameMaterials(face);
+  if (shared && Object.keys(shared).length) {
+    const independent = eighth?.inheritedFrom
+      ? baseFrameMaterials({ ...face, calibration: 'printing' })
+      : {};
+    return { ...shared, ...independent };
+  }
   const reprint = earlyReprintColors(face);
   if (reprint) return reprint.materials;
   const expansion = earlyExpansionColors(face);
@@ -209,6 +230,22 @@ function modernComponentMaterials(face: RenderedCardInput): Readonly<Record<stri
 
 /** Stock is measured separately; white stock and unknown sources stay unchanged. */
 export function calibratedPrintingStock(face: RenderedCardInput): string | undefined {
+  const eighth =
+    face.colorCalibration === 'set-hsb-v1' &&
+    face.calibration !== 'source' &&
+    eighthPrintingProfile(face);
+  if (eighth) {
+    const independent = eighth.inheritedFrom
+      ? calibratedPrintingStock({ ...face, calibration: 'printing' })
+      : undefined;
+    if (independent) return independent;
+    const stock = cardStock(face.setCode, face.borderColor).border;
+    return stock === '#eeedeb'
+      ? eighth.stock.white
+      : stock === '#090806'
+        ? eighth.stock.black
+        : undefined;
+  }
   const reprint = earlyReprintColors(face);
   if (reprint) return reprint.stock;
   const expansion = earlyExpansionColors(face);

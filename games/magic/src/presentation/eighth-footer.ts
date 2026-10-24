@@ -1,3 +1,4 @@
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { paintPrintingElement } from './printing-elements.js';
@@ -60,6 +61,8 @@ export function paintEighthFooter(
   images: CanvasImages,
   source = '',
 ): void {
+  const eighth = eighthPrintingProfile(face);
+  const fit = eighth?.footer;
   c.save();
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;
@@ -67,6 +70,12 @@ export function paintEighthFooter(
   if (face.power != null && face.toughness != null) {
     c.save();
     transformPlanarFooter(c, face, source, 'stats');
+    if (fit) {
+      const p = fit.stats;
+      c.translate(407 + p.dx, 627 + p.dy);
+      c.scale(p.width, p.height);
+      c.translate(-407, -627);
+    }
     const shifted = face.frameTreatment === 'colorshifted';
     c.fillStyle = shifted ? '#fff' : '#17140f';
     if (shifted) {
@@ -107,6 +116,12 @@ export function paintEighthFooter(
   const set = face.setCode?.toLowerCase();
   const x = set === '8ed' ? 75 : set === '9ed' ? 79 : 77;
   const early = set === '8ed' || set === '9ed';
+  // 9ED and MRD already own independently reviewed artist fits. Other inherited faces use
+  // the donor's absolute basis, not a multiplier of an unrelated legacy size.
+  const artistFit =
+    eighth?.inheritedFrom && ['9ed', 'mrd'].includes(set ?? '') ? undefined : fit?.artist;
+  const artistX = artistFit ? 75 : x;
+  const artistBaseline = artistFit ? 633 : early ? 633 : 634;
   const baseline = early ? 633 : 634;
   c.fillStyle = lightCredit(face) ? '#fff' : '#17140f';
   c.textBaseline = 'alphabetic';
@@ -118,11 +133,18 @@ export function paintEighthFooter(
       transformPlanarFooter(c, face, source, 'artist');
       const brush = images.get(brushUrl);
       if (!brush) throw Error(`Eighth Edition artist brush unavailable: ${brushUrl}`);
-      c.drawImage(brush, 36.5, baseline - 10, x - 39, 13.5);
-      c.font = `700 ${early ? 17.5 : 18}px "CardRenderer MTG Matrix", Georgia`;
+      c.drawImage(brush, 36.5, artistBaseline - 10, artistX - 39, 13.5);
+      c.font = `700 ${artistFit || early ? 17.5 : 18}px "CardRenderer MTG Matrix", Georgia`;
       // Keep long credits out of the badge; do not silently remove their wording.
       const right = face.power != null && face.toughness != null ? 350 : 448;
-      c.fillText(face.artist!, x, baseline, right - x);
+      if (artistFit) {
+        const p = artistFit;
+        c.translate(p.dx, p.dy);
+        c.translate(artistX, artistBaseline);
+        c.scale(p.width, p.height);
+        c.translate(-artistX, -artistBaseline);
+      }
+      c.fillText(face.artist!, artistX, artistBaseline, right - artistX);
       c.restore();
     }
   });

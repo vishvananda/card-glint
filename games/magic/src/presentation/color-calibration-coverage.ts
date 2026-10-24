@@ -1,3 +1,4 @@
+import { eighthLandPalettes } from './eighth-land-material.js';
 import type { RenderedCardInput } from './face-layout.js';
 import {
   hasCalibratedFramePigment,
@@ -26,6 +27,7 @@ export function colorCalibrationCoverage(face: RenderedCardInput): {
     frame:
       hasCalibratedFramePigment(face) ||
       !!basic ||
+      eighthLandPalettes(face).length > 0 ||
       (isRevisedLand(face) && hasColorCalibration(face) && revisedLandColors(face).length > 0),
     manaSymbols: [
       ...new Set([

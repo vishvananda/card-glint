@@ -1,3 +1,6 @@
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
+import { eighthLandPalettes } from './eighth-land-material.js';
+import { supportsEighthStyleDefaults } from './eighth-style-scope.js';
 import { modernPrintingProfile } from './modern-printing-profile.js';
 import { colorCalibrationCoverage } from './color-calibration-coverage.js';
 import { eighthBasicProfile } from './eighth-basic-profile.js';
@@ -28,8 +31,12 @@ export function resolvePrintingCalibration(input: RenderedCardInput): PrintingCa
   const result = printingCalibrationMaterials(input),
     { face, materials, assets } = result;
   const inheritedStyle = modernPrintingProfile(face);
-  const sharedRevision = inheritedStyle?.revision ?? printingCalibrationProfiles[0]!.revision;
-  const printingRevision = face.setCode?.toLowerCase() === 'm21' ? sharedRevision : 1;
+  const eighth = eighthPrintingProfile(face);
+  const sharedRevision =
+    eighth?.revision ?? inheritedStyle?.revision ?? printingCalibrationProfiles[0]!.revision;
+  const printingRevision = ['m21', '8ed'].includes(face.setCode?.toLowerCase() ?? '')
+    ? sharedRevision
+    : 1;
   const entries = Object.entries(materials);
   const component = (urls: string[]): PrintingCalibrationComponent => {
     if (!urls.length) return { status: 'source', assets: [] };
@@ -37,7 +44,7 @@ export function resolvePrintingCalibration(input: RenderedCardInput): PrintingCa
     return {
       status: fallback.length === urls.length ? 'fallback' : fallback.length ? 'mixed' : 'measured',
       ...(fallback.length === urls.length
-        ? { profile: 'm21-modern', revision: sharedRevision }
+        ? { profile: result.fallbackProfile, revision: sharedRevision }
         : !fallback.length
           ? { profile: `printing:${face.setCode?.toLowerCase() ?? ''}`, revision: printingRevision }
           : {}),
@@ -62,12 +69,14 @@ export function resolvePrintingCalibration(input: RenderedCardInput): PrintingCa
   );
   const coverage = colorCalibrationCoverage(face);
   const basic = eighthBasicProfile(face);
-  const procedural = basic?.frame ?? (isRevisedLand(face) ? REVISED_LAND_ASSET : undefined);
+  const landPalettes = eighthLandPalettes(face);
+  const procedural =
+    landPalettes[0]?.url ?? basic?.frame ?? (isRevisedLand(face) ? REVISED_LAND_ASSET : undefined);
   if (procedural && coverage.frame) {
     for (const c of [frame, textBox])
       Object.assign(c, {
-        status: 'measured',
-        profile: `printing:${face.setCode?.toLowerCase()}`,
+        status: eighth?.inheritedFrom ? 'fallback' : 'measured',
+        profile: eighth?.inheritedFrom ? '8ed-eighth' : `printing:${face.setCode?.toLowerCase()}`,
         revision: 1,
         assets: [procedural],
       });
@@ -98,33 +107,39 @@ export function resolvePrintingCalibration(input: RenderedCardInput): PrintingCa
     ? {
         status: result.fallbackStock ? 'fallback' : 'measured',
         profile: result.fallbackStock
-          ? 'm21-modern'
+          ? result.fallbackProfile
           : `printing:${face.setCode?.toLowerCase() ?? ''}`,
         revision: result.fallbackStock ? sharedRevision : printingRevision,
         color: result.border,
         assets: entries.filter(([, m]) => m.outerStock).map(([url]) => url),
       }
     : { status: 'source', assets: [] };
-  const defaults = inheritedStyle?.inheritedFrom
-    ? {
-        status: 'inherited' as const,
-        profile: 'm21-modern' as const,
-        revision: inheritedStyle.revision,
-      }
-    : undefined;
+  const defaults = eighth?.inheritedFrom
+    ? { status: 'inherited' as const, profile: '8ed-eighth' as const, revision: eighth.revision }
+    : inheritedStyle?.inheritedFrom
+      ? {
+          status: 'inherited' as const,
+          profile: 'm21-modern' as const,
+          revision: inheritedStyle.revision,
+        }
+      : undefined;
   if (defaults && manaSymbols.status === 'measured' && correctedSymbols.length) {
     manaSymbols.status = 'fallback';
-    manaSymbols.profile = 'm21-modern';
-    manaSymbols.revision = inheritedStyle!.revision;
+    manaSymbols.profile = defaults.profile;
+    manaSymbols.revision = defaults.revision;
   }
   const notices: string[] = [];
   if (defaults)
     notices.push(
-      'Using shared M21 layout and typography defaults; this printing has not been independently calibrated.',
+      eighth?.inheritedFrom
+        ? 'Using shared 8ED layout and typography defaults; this printing has not been independently calibrated.'
+        : 'Using shared M21 layout and typography defaults; this printing has not been independently calibrated.',
     );
   if (result.fallbackStock || result.fallbackAssets.length)
     notices.push(
-      'Using provisional M21 defaults for compatible materials; this is not a measured calibration of this printing.',
+      eighth?.inheritedFrom
+        ? 'Using provisional 8ED defaults for compatible materials; black and white surrounds remain separate. This is not a measured calibration of this printing.'
+        : 'Using provisional M21 defaults for compatible materials; this is not a measured calibration of this printing.',
     );
   if (
     (face.calibration === 'auto' || typeof face.calibration === 'object') &&
@@ -140,9 +155,22 @@ export function resolvePrintingCalibration(input: RenderedCardInput): PrintingCa
 }
 /** The host can show compatible named defaults beside the three policy choices. */
 export function printingCalibrationOptions(face: RenderedCardInput) {
-  return printingCalibrationProfiles.map((profile) => ({
-    ...profile,
-    supported: supportsModernCalibration(face),
-    ...(!supportsModernCalibration(face) ? { reason: 'Requires a modern frame.' } : {}),
-  }));
+  return printingCalibrationProfiles.map((profile) => {
+    const supported =
+      profile.id === '8ed-eighth'
+        ? supportsEighthStyleDefaults(face)
+        : supportsModernCalibration(face);
+    return {
+      ...profile,
+      supported,
+      ...(!supported
+        ? {
+            reason:
+              profile.id === '8ed-eighth'
+                ? 'Requires an ordinary Eighth frame.'
+                : 'Requires a modern frame.',
+          }
+        : {}),
+    };
+  });
 }

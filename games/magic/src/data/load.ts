@@ -1,4 +1,8 @@
 import {
+  eighthSetUsesDefaults,
+  supportsEighthStyleDefaults,
+} from '../presentation/eighth-style-scope.js';
+import {
   modernSetUsesDefaults,
   supportsModernStyleDefaults,
 } from '../presentation/modern-style-scope.js';
@@ -18,6 +22,9 @@ export async function loadMagicSet(setCode: string): Promise<void> {
   const code = normalize(setCode);
   await Promise.all([
     loadSet(code, 'calibration', setLoaders),
+    ...(code !== '8ed' && eighthSetUsesDefaults(code)
+      ? [loadSet('8ed', 'calibration', setLoaders)]
+      : []),
     ...(code !== 'm21' && modernSetUsesDefaults(code)
       ? [loadSet('m21', 'calibration', setLoaders)]
       : []),
@@ -53,6 +60,7 @@ export async function prepareMagicCards(faces: readonly RenderedCardInput[]): Pr
   const visit = (face: RenderedCardInput, inheritedSet?: string | null) => {
     const set = face.setCode ?? inheritedSet;
     if (set) codes.add(normalize(set));
+    if (face.calibration !== 'printing' && supportsEighthStyleDefaults(face)) codes.add('8ed');
     if (
       (face.calibration !== 'printing' && supportsModernStyleDefaults({ ...face, setCode: set })) ||
       face.calibration === 'auto' ||

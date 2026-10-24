@@ -1,3 +1,4 @@
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import {
   loadModernHeadingFont,
   modernHeadingFamily,
@@ -314,6 +315,9 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         ...(face.printingOmissions?.length ? [face.printingOmissions] : []),
         ...(face.blackBorderLift ? [['border-ink', face.blackBorderLift]] : []),
         ...modernPrintingProfileKey(face),
+        ...(eighthPrintingProfile(face)
+          ? [['eighth-printing', face.setCode?.toLowerCase(), eighthPrintingProfile(face)]]
+          : []),
       ];
 }
 

@@ -1,3 +1,5 @@
+import { eighthFrameGeometry, eighthFrameRect } from './eighth-frame-geometry.js';
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import { modernArtifactLayerAssets } from './modern-artifact-layer.js';
 import { modernLandLayerAssets } from './modern-land-layers.js';
 import { modernOrdinaryPlates } from './modern-printing-profile.js';
@@ -103,8 +105,15 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
   const frame = `${root}/${left}.png`;
   const basicGeometry = usesEighthBasicGeometry(face, frame);
   const planarGeometry = usesPlanarFrameGeometry(face, frame);
+  const measuredEighth = eighthFrameGeometry(face, frame);
   const interior = (rect: FaceRect) =>
-    basicGeometry ? eighthBasicRect(rect) : planarGeometry ? planarFrameRect(rect) : rect;
+    basicGeometry
+      ? eighthBasicRect(rect)
+      : measuredEighth
+        ? eighthFrameRect(rect, measuredEighth)
+        : planarGeometry
+          ? planarFrameRect(rect)
+          : rect;
   return {
     frame,
     rightFrame: right ? `${root}/${right}.png` : undefined,
@@ -141,7 +150,7 @@ export function framePlate(face: RenderedCardInput): FramePlate | null {
       stats: retained ? FACE_RECTS.stats : planarGeometry ? planarBadgeRect(stats, shifted) : stats,
       footer: eighth ? [150 / 2010, 1938 / 2100, 0.81, 0.04] : FACE_RECTS.footer,
     },
-    titleSize: eighth ? 29.2 : 26,
+    titleSize: eighth ? (eighthPrintingProfile(face)?.headings.title.size ?? 29.2) : 26,
     typeSize: eighth ? 24.3 : 22,
     // Shared family adjustments measured after frame-only scan normalization.
     // Cost discs have their own baseline; they do not follow font centering.
@@ -177,7 +186,8 @@ export function framePlateUrls(face: RenderedCardInput): string[] | null {
     ...(plate.rightFrame ? [plate.rightFrame] : []),
     ...(plate.pinlines ? Object.values(plate.pinlines) : []),
     ...(face.power != null && face.toughness != null ? [plate.pt] : []),
-    ...(cardStock(face.setCode, face.borderColor).border !== '#090806' ||
+    ...(Boolean(eighthPrintingProfile(face)) ||
+    cardStock(face.setCode, face.borderColor).border !== '#090806' ||
     (face.frameAssetFamily === 'm15-accurate' &&
       face.calibration !== undefined &&
       face.calibration !== 'source' &&

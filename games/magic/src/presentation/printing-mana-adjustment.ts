@@ -1,3 +1,5 @@
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
+import { historicalManaFamily } from './historical-mana.js';
 import { modernPrintingProfile, modernWalkerProfile } from './modern-printing-profile.js';
 import { arabianManaVariant } from './early-expansion-mana.js';
 import { earlyReprintManaDefaults } from './early-reprint-mana.js';
@@ -15,6 +17,16 @@ export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransfo
   if (reprint) return reprint;
   const planar = planarManaDefaults(face);
   if (planar) return planar;
+  const measuredEighth = eighthPrintingProfile(face)?.mana.transform;
+  if (measuredEighth) {
+    const glyphs = Object.fromEntries(
+      Object.entries(measuredEighth.glyphs ?? {}).filter(([color]) => {
+        const family = historicalManaFamily(face, color);
+        return !family || family === 'modern';
+      }),
+    );
+    return { ...measuredEighth, glyphs };
+  }
   const set = face.setCode?.toLowerCase() ?? '';
   if (usesModernCostMana(face)) {
     const fit = (face.manaSymbols?.length ?? 0) > 0 ? modernPrintingProfile(face)?.mana : undefined;

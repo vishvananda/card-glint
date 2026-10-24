@@ -1,3 +1,5 @@
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
+import { adjustedSymbolBounds } from './symbol-adjustment.js';
 import { modernOrdinaryPlates } from './modern-printing-profile.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
@@ -44,7 +46,11 @@ export function styledSymbolBounds(
   let result = bounds;
   if (profile && !face.setSymbol && isStyledSetSymbol(url) && profile.family === family)
     result = adjust(bounds, profile.delta);
-  return family ? calibratedStyledSymbolBounds(face, url, result, family) : result;
+  result = family ? calibratedStyledSymbolBounds(face, url, result, family) : result;
+  const eighth = eighthPrintingProfile(face);
+  return eighth && !eighth.inheritedFrom && !face.setSymbol && isStyledSetSymbol(url)
+    ? adjustedSymbolBounds(result, eighth.setSymbol)
+    : result;
 }
 
 /** Shared printing geometry only; stored scan transforms never enter painting. */

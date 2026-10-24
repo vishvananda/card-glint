@@ -1,3 +1,4 @@
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { modernPrintingProfile } from './modern-printing-profile.js';
 import { rulesInkVisible } from './rules-visibility.js';
@@ -71,8 +72,12 @@ export function paintBasicLandSymbol(
   if (!url) return false;
   const glyph = images.get(url);
   if (!glyph) throw Error(`Basic land symbol unavailable: ${url}`);
-  const profile = modernBasicLandProfile(face);
-  const shadow = profile && modernPrintingProfile(face)?.largeLandShadow;
+  const color = basicLandColor(face);
+  const eighth = eighthPrintingProfile(face);
+  const measured = color ? eighth?.largeLandSymbols[color] : undefined;
+  const profile = modernBasicLandProfile(face) ?? (measured?.source === url ? measured : undefined);
+  const shadow =
+    profile && (eighth?.largeLandShadow ?? modernPrintingProfile(face)?.largeLandShadow);
   c.save();
   if (shadow) {
     // Canvas shadow offsets/blur are device pixels, unlike drawImage geometry.

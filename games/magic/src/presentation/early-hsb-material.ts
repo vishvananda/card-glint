@@ -1,3 +1,6 @@
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
+import { eighthLandMaterialJobs } from './eighth-land-material.js';
+import { eighthStockRuleJobs } from './eighth-stock-rule.js';
 import { modernArtifactMaterialJobs } from './modern-artifact-layer.js';
 import { modernLandMaterialJobs } from './modern-land-layers.js';
 import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
@@ -58,7 +61,11 @@ export async function prepareEarlyHsb(
   for (const p of face.rulesParagraphs ?? [])
     for (const run of p.runs) for (const m of run.text.matchAll(/\{([^}]+)\}/g)) symbols.add(m[1]!);
   for (const symbol of symbols) {
-    const key = /^\d+$/.test(symbol) || (symbol === 'X' && earlyReprintMana(face)) ? 'N' : symbol,
+    const key =
+        /^\d+$/.test(symbol) ||
+        (symbol === 'X' && (earlyReprintMana(face) || Boolean(eighthPrintingProfile(face))))
+          ? 'N'
+          : symbol,
       original = historicalManaAsset(face, symbol),
       source = original?.discColor ?? BITMAP_MANA_COLORS[key],
       // Glyph replacement preserves the existing disc palette. Measured color
@@ -89,13 +96,16 @@ export async function prepareEarlyHsb(
     symbols.has('W') && historicalManaFamily(face, 'W') === 'historic-font';
   const landJobs = modernLandMaterialJobs(face, images);
   const artifactJobs = modernArtifactMaterialJobs(face, images);
+  const stockRuleJobs = eighthStockRuleJobs(face, images);
+  const eighthLands = eighthLandMaterialJobs(face, images);
   const basicJobs = [
-      ...eighthBasicMaterialJobs(face, images),
+      ...(eighthLands.length ? eighthLands : eighthBasicMaterialJobs(face, images)),
       ...modernBasicMaterialJobs(face, images),
     ],
     stampJobs = securityStampMaterialJobs(face, images),
     futureJobs = futureManaMaterialJobs(face, images);
   if (
+    !stockRuleJobs.length &&
     !adjustments.size &&
     !originalMaterials.length &&
     !basicJobs.length &&
@@ -121,6 +131,7 @@ export async function prepareEarlyHsb(
     return source ? [{ url, source, adjustment }] : [];
   });
   const jobs = [
+    ...stockRuleJobs,
     ...landJobs,
     ...artifactJobs,
     ...basicJobs,

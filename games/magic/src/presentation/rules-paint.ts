@@ -1,3 +1,5 @@
+import { eighthRulesMaximum, eighthCompactRules } from './eighth-rules.js';
+import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import { modernOrdinaryPlates } from './modern-printing-profile.js';
 import { modernPrintingProfile } from './modern-printing-profile.js';
 import type { ModernPrintingProfile } from './modern-printing-profiles.js';
@@ -15,6 +17,7 @@ import {
   rulesFont,
   RULES_TYPOGRAPHY,
   type RulesLayout,
+  type RulesTypography,
   type MeasuredRun,
 } from './rules-layout.js';
 import { shortCenteredRules } from './short-centered-rules.js';
@@ -34,8 +37,28 @@ export function ordinaryTextLayout(
     face.layout !== 'planeswalker'
       ? modernPrintingProfile(face)?.rules
       : undefined;
-  const baseline = measuredOrdinaryTextLayout(context, face, height, scale);
-  if (!rules) return baseline;
+  const eighthMaximum = eighthRulesMaximum(face);
+  const baseline = measuredOrdinaryTextLayout(
+    context,
+    face,
+    height,
+    scale,
+    undefined,
+    (eighthMaximum ?? 24.5) * scale,
+  );
+  if (!rules)
+    return eighthCompactRules(face, baseline, scale, (leading) =>
+      measuredOrdinaryTextLayout(
+        context,
+        face,
+        height,
+        scale,
+        undefined,
+        (eighthMaximum ?? 24.5) * scale,
+        undefined,
+        { leading },
+      ),
+    );
   return measuredOrdinaryTextLayout(
     context,
     face,
@@ -55,12 +78,14 @@ function measuredOrdinaryTextLayout(
   calibration?: ModernPrintingProfile['rules'],
   maximumSize = 24.5 * scale,
   maximumLines?: number,
+  style?: Pick<RulesTypography, 'leading'>,
 ): RulesLayout {
   const rects = faceRects(face);
   const planarStats = planarRulesStatsRect(face);
   const statsRect = planarStats ?? rects.stats;
   const typography = {
     ...RULES_TYPOGRAPHY,
+    flavorGap: eighthPrintingProfile(face)?.rules.flavorGap ?? RULES_TYPOGRAPHY.flavorGap,
     ...(calibration
       ? {
           leading: calibration.leading,
@@ -70,6 +95,7 @@ function measuredOrdinaryTextLayout(
           maximumLines,
         }
       : {}),
+    ...style,
     flavorSeparator: face.frameAssetFamily === 'eighth' ? false : hasFlavorSeparator(face.setCode),
   };
   const [x, y, width, h] = rects.rules;
@@ -115,11 +141,16 @@ function measuredOrdinaryTextLayout(
     face.rulesAlignment?.mode === 'auto'
       ? (face.rulesAlignment.reference ?? paragraphs)
       : paragraphs;
-  // These core sets retain centered short rules-only passages. Eighth/Ninth
-  // scans are left aligned; do not infer this policy from the 2003 frame alone.
+  // Centering belongs to a printing's typesetting policy, not its frame source.
+  // Eighth's measured one-line rule is not donated to expansion sets.
+  const shortLines =
+    eighthPrintingProfile(face)?.rules.shortCenterLines ??
+    (['10e', 'm10', 'm11', 'm12', 'm13', 'm14'].includes(face.setCode?.toLowerCase() ?? '')
+      ? 3
+      : undefined);
   if (
     face.rulesAlignment?.mode !== 'left' &&
-    ['10e', 'm10', 'm11', 'm12', 'm13', 'm14'].includes(face.setCode?.toLowerCase() ?? '') &&
+    shortLines !== undefined &&
     reference.every((p) => p.role === 'rules')
   ) {
     const centered = shortCenteredRules(
@@ -129,7 +160,7 @@ function measuredOrdinaryTextLayout(
       bounds,
       maximumSize,
       15 * scale,
-      3,
+      shortLines,
       { ...typography, balanceLines: true },
     );
     if (centered) return centered;
