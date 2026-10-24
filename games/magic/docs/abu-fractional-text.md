@@ -411,6 +411,49 @@ node games/magic/tools/accuracy/abu-art-layers.mjs \
 node tests/magic-abu-art-height.mjs
 ```
 
+## Text-flow follow-up
+
+Direct scan review found several differences that a set mean hid: Alpha/Beta
+Word of Command keeps six rows instead of the printed seven, Howl from Beyond
+retains an obsolete upward offset, and Unlimited Birds of Paradise selects the
+medium face instead of the large left-aligned layout.
+
+The [first flow study](../fixtures/accuracy/early-through-fourth/abu-flow-policy-trials.json.gz)
+covers 85 Original printings and seven native variants. It includes every dense
+passage, both content-reviewed small faces, existing placement reviews, low-score
+cases and ordinary/flavor controls. Empty controls reproduce current native
+images exactly. A blanket seven-row allowance regresses Unlimited Simulacrum by
+38.57 diagnostic points. Removing every centered offset regresses Alpha Twiddle.
+Neither blanket rule is adopted.
+
+The [refined study](../fixtures/accuracy/early-through-fourth/abu-refined-flow-trials.json.gz)
+renders eight variants for the same 85 printings. Normal-width small glyphs are
+measured only in the precise pass, preserving the original line budget. A
+content-matched Word of Command review permits its printed seventh row. Howl's
+obsolete offset is retired while Twiddle's valid offset remains. Short two-block
+keyword passages use the existing Beta large-layout geometry.
+
+| Refined diagnostic           | Result |
+| ---------------------------- | -----: |
+| Actual native variants       |    680 |
+| Changed printings            |     30 |
+| Gains greater than 0.5 point |     29 |
+| Regressions                  |      0 |
+| New unsafe layouts           |      0 |
+| Rules objective before /100  |  62.47 |
+| Rules objective after /100   |  64.80 |
+
+These are regional edge/filled-ink measurements on reused development scans,
+separate from published whole-card scores. All references, poses, wording and
+source assets stay fixed. Each report includes its exact method snapshots.
+The refined proposals still need production integration and a current replay.
+
+A [separate wording review](../fixtures/accuracy/early-through-fourth/abu-stasis-source-review.json)
+records all three Stasis scans: each prints “during upkeep,” while the cached
+Original body inserts “your.” Apply this exact source correction before fitting
+its wrapping. Oracle wording remains independent. The proposal is not yet in
+the shipped correction tables.
+
 ## Release and experimental preview
 
 When an updated Alpha calibration is published, refresh the
