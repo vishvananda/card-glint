@@ -329,3 +329,54 @@ directly. Do not ignore source-close failures or relabel old captures.
 The [source receipt](../fixtures/accuracy/early-through-fourth/abu-fractional-source-proof.json)
 binds native output, rejected trials, the text report and unchanged controls.
 These are Canvas/source checks, not GPU completion-time benchmarks.
+
+## Art-height measurement
+
+A separate [native art-height study](../fixtures/accuracy/early-through-fourth/abu-dual-art-height-trials.json.gz)
+renders seven candidates for each of the nineteen physical Alpha/Beta dual lands.
+It keeps the accepted scan transforms, original wording, source palette, outer
+frame and paper panel fixed. A zero-change control reproduces every current
+native raster exactly.
+
+The art top already agrees well; shortening the aperture from the bottom
+preserves that anchor. The shared two-pixel candidate reduces mean absolute
+top-to-bottom displacement from 1.79 to 0.36 canonical pixels. Art-bottom
+gradient agreement rises from 56.83 to 91.20/100, while art-top agreement changes
+from 92.70 to 92.62/100. Paper-edge measurements remain identical.
+
+Whole-card mean rises from 69.22 to 72.61/100 across this nineteen-card cohort:
+eighteen gains and one regression greater than 0.5 point. Alpha Savannah loses
+4.10 points and stays in the report. The 2.25-pixel candidate has a slightly
+higher whole-card mean, but a larger residual height error. Neither candidate
+is adopted yet; the evidence does not introduce a per-card exception.
+
+The study resizes the illustration aperture together with its prepared frame.
+Fixed border caps retain their thickness, and premultiplied-alpha interpolation
+avoids dark fringes at transparent edges. Reflow occurs after the existing
+color preparation. Synthetic checks cover fractional tiers, fixed top/outside
+pixels, invalid inputs and gradient displacement controls. The report includes
+the exact method sources and all 133 native results.
+
+To reproduce it with the frozen input snapshot and the same metric module:
+
+```sh
+node --test tests/magic-abu-dual-art-study.mjs
+node games/magic/tools/accuracy/abu-dual-art-trials.mjs \
+  "$ABU_INPUTS" "$ABU_ART_TRIALS"
+node games/magic/tools/accuracy/abu-dual-art-report.mjs \
+  "$ABU_ART_TRIALS" "$ABU_INPUTS" "$LAB_METRIC_MODULE" "$ABU_ART_REPORT"
+```
+
+## Release and experimental preview
+
+When an updated Alpha calibration is published, refresh the
+[experimental Alpha frame study](https://tetrarcum.com/alpha) with it.
+Regenerate both rebuild columns using the released renderer, original printing
+wording and current text/layout calibration. Keep the experimental frames in
+the experimental column and outside the library package.
+
+Refresh the runtime, baked printing layers, aperture masks and scores together.
+Version changed asset URLs so existing browsers receive the update. Verify the
+actual served renderer and card output before switching the live preview.
+Retain older score identities as history; do not label old measurements as
+results from the new release.
