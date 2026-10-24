@@ -196,6 +196,58 @@ missing or nonfinite measurements, and requires the declared position,
 reference-agreement and displacement gates. These are geometry-preservation
 checks; they do not estimate a new scan pose.
 
+## Shared flavor-width study
+
+Two native sweeps cover every flavor-bearing printing: 76 per set, plus three
+rules-only controls per set. Each sweep renders six candidates, for 2,844 full
+native faces. Current and reflow controls reproduce production exactly. Selected
+sizes, baselines, regular rules ink, scan poses and role row counts stay fixed.
+Candidates that add rows or overflow are reported and withheld.
+
+The first sweep changes italic glyph width by up to two percent. The second
+keeps glyph shapes unchanged and reduces only the flavor wrapping width.
+
+| Candidate                      | Alpha delta /100 | Beta delta /100 | Unlimited delta /100 |
+| ------------------------------ | ---------------: | --------------: | -------------------: |
+| Italic glyphs 1% wider         |            -2.48 |           -0.29 |                +2.60 |
+| Flavor wrap width 2px narrower |            +0.08 |           +0.77 |                +0.74 |
+
+These are fixed flavor-region edge/filled-ink objective deltas, not changes to
+the published whole-card metric. The glyph sweep has substantial regressions
+and is not adopted. The two-pixel wrap candidate improves eight Beta and seven
+Unlimited printings by more than 0.5 point, with one such regression in each set.
+Both are Dwarven Demolition Team: -2.66 in Beta and -1.21 in Unlimited. Alpha
+has three regressions against two improvements and retains its existing policy.
+
+Visual review identifies an input issue before any wrap candidate is promoted:
+Pearled Unicorn's supplied Original flavor joins its dash-prefixed attribution
+to the quotation. All three printing scans put the attribution on its own line.
+A narrower wrap can accidentally restore that break and receive a better score.
+Review and correct the printing source first, then repeat the shared-width fit.
+The [three-printing source review](../fixtures/accuracy/early-through-fourth/abu-flavor-attribution-source-review.json)
+records the exact proposed flavor correction without applying it. Northern Paladin
+already has separate flavor and attribution paragraphs.
+
+Neither sweep changes the runtime or closes a rules/flavor/full-card task. The
+[glyph-width evidence](../fixtures/accuracy/early-through-fourth/abu-flavor-glyph-width-trials.json.gz)
+and [wrap-width evidence](../fixtures/accuracy/early-through-fourth/abu-flavor-wrap-width-trials.json.gz)
+retain all candidates, regressions, native hashes and exact method snapshots.
+The captured `poseHash` identifies the sampler transform; the separate pose table
+joins it to the full normalization-report identity in the production census.
+
+Run a sweep using the frozen Original input snapshot and restored cache:
+
+```sh
+node games/magic/tools/accuracy/abu-flavor-width-study.mjs \
+  "$ABU_INPUTS" "$GLYPH_WIDTH_STUDY"
+node games/magic/tools/accuracy/abu-flavor-width-study.mjs \
+  "$ABU_INPUTS" "$FLAVOR_WRAP_STUDY" --wrap
+```
+
+Use `--pilot` or `--wrap-pilot` for the five-name diagnostic subset. The full
+sweeps are development censuses, not new holdouts. Exact historical methods are
+embedded in the evidence; newer CLI metadata descriptions may differ.
+
 ## Reproduce from the cache
 
 Use Node 22+, the repository dependencies and Playwright Chromium. Set
