@@ -12,6 +12,22 @@ try {
   await load.loadMagicSet('lea');
   assert(!load.loadedMagicSets().includes('8ed'), 'Alpha alone must not download the Eighth donor');
   assert(!load.loadedMagicSets().includes('m21'));
+  const beforeDonor = await server.ssrLoadModule(
+    '/games/magic/src/presentation/eighth-printing-profile.ts',
+  );
+  const exactOnly = {
+    name: 'Exact-only host',
+    setCode: '9ed',
+    frameAssetFamily: 'eighth',
+    typeLine: 'Creature',
+    calibration: 'printing',
+  };
+  await load.prepareMagicCards([exactOnly]);
+  assert(
+    !load.loadedMagicSets().includes('8ed'),
+    'Face-aware exact-only preparation must omit the donor',
+  );
+  assert.equal(beforeDonor.eighthPrintingProfile(exactOnly), undefined);
   await load.loadMagicSet('9ed');
   assert(load.loadedMagicSets().includes('8ed'), 'Set-only Eighth-era load needs its donor');
   assert(!load.loadedMagicSets().includes('m21'), 'Eighth frames do not need M21 data');

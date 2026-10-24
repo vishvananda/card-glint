@@ -8,7 +8,12 @@ const inherited = new WeakMap<EighthPrintingProfile, EighthPrintingProfile>();
  * The donor is descriptive and does not certify the receiving set. */
 export function eighthPrintingProfile(face: RenderedCardInput): EighthPrintingProfile | undefined {
   if (!supportsEighthStyleDefaults(face)) return undefined;
-  const exact = EIGHTH_PRINTING_PROFILES[face.setCode?.toLowerCase() ?? ''];
+  const code = face.setCode?.toLowerCase() ?? '';
+  // Exact-only consumers must not prepare an unrelated donor merely to discover
+  // that it has no exact entry. The registry checks prepared ownership on get.
+  const exact = Object.hasOwn(EIGHTH_PRINTING_PROFILES, code)
+    ? EIGHTH_PRINTING_PROFILES[code]
+    : undefined;
   const root = manifest.CONJURER_ROOT + '/img/frames/8th';
   if (exact?.root === root) return exact;
   if (face.calibration === 'printing') return undefined;

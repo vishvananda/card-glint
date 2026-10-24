@@ -60,7 +60,8 @@ export async function prepareMagicCards(faces: readonly RenderedCardInput[]): Pr
   const visit = (face: RenderedCardInput, inheritedSet?: string | null) => {
     const set = face.setCode ?? inheritedSet;
     if (set) codes.add(normalize(set));
-    if (face.calibration !== 'printing' && supportsEighthStyleDefaults(face)) codes.add('8ed');
+    if (face.calibration !== 'printing' && supportsEighthStyleDefaults({ ...face, setCode: set }))
+      codes.add('8ed');
     if (
       (face.calibration !== 'printing' && supportsModernStyleDefaults({ ...face, setCode: set })) ||
       face.calibration === 'auto' ||
