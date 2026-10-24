@@ -1,3 +1,4 @@
+import { abuFlowHistoricalHash } from '../games/magic/tools/accuracy/abu-flow-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -15,7 +16,7 @@ import {
   printingFlavorDelta,
 } from '../games/magic/tools/accuracy/printing-flavor-data-ancestry.mjs';
 const p = await abuArtDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await abuFlowHistoricalHash(), p.afterRenderer);
 assert.equal(await abuArtHistoricalHash(), p.beforeRenderer);
 assert.equal(
   await printingFlavorHistoricalHash(),
@@ -80,7 +81,11 @@ for (const m of p.members) {
 }
 assert(await abuArtAffected('lea', 'frameGeometry', false, {}), 'Unknown membership fails closed');
 assert(!(await abuArtAffected('lea', 'frameGeometry', false, { printingIds: ['unaffected-id'] })));
-assert(await abuArtRuntimeCompatible('games/magic/src', p.beforeRenderer, '2ed', 'fullCard'));
+assert(
+  await abuArtRuntimeCompatible('games/magic/src', p.beforeRenderer, '2ed', 'fullCard', false, {
+    printingIds: ['unaffected-id'],
+  }),
+);
 assert(!(await abuArtRuntimeCompatible('games/magic/src', '0'.repeat(64), '2ed', 'fullCard')));
 assert(
   !(await abuArtRuntimeCompatible('packages/browser/src', p.beforeRenderer, '2ed', 'fullCard')),

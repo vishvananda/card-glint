@@ -1,3 +1,4 @@
+import { earlyTextFlowRevision } from './alpha-typography.js';
 import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import {
   loadModernHeadingFont,
@@ -180,6 +181,13 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   const face = input.face;
   const dualFrameRevision =
     input.layer === 'etching' && !abuDualArtBottom(face) ? undefined : retroDualFrameRevision(face);
+  const flowRevision =
+    !input.printedImage &&
+    input.layer !== 'etching' &&
+    input.paintLayer !== 'artwork' &&
+    input.rulesText !== false
+      ? earlyTextFlowRevision(face)
+      : undefined;
   const content = faceContentKey(face, input.layer === 'etching');
   const stats =
     input.currentStats?.power != null && input.currentStats.toughness != null
@@ -190,6 +198,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     CONJURER_ROOT,
     'canvas-face-v148',
     ...(dualFrameRevision ? [dualFrameRevision] : []),
+    ...(flowRevision ? [flowRevision] : []),
     ...(input.layer !== 'etching' &&
     ['lea', 'leb', '2ed'].includes(face.setCode?.toLowerCase() ?? '') &&
     face.wordingMode !== 'oracle'

@@ -10,11 +10,11 @@ export function reviewedPrintingFields(entry, annotation) {
     if (seen.has(field)) throw Error(`Repeated printing field: ${field}`);
     seen.add(field);
     const value = annotation[field];
-    // Legacy full-body reviews can list these alongside partial field reviews.
-    // The adapter assembles their text separately; never return them as a type,
-    // cost, artist or stats field or infer a body review from their presence.
+    // Both full-body and field-only reviews can list body strings. The adapter
+    // assembles them separately. A field-only correction must not certify the
+    // other body field or become a type, cost, artist or stats review.
     if (['rulesText', 'flavorText'].includes(field)) {
-      if (annotation.reviewed !== true || typeof value !== 'string')
+      if (annotation.reviewed === false || typeof value !== 'string')
         throw Error(`Invalid reviewed printing field: ${field}`);
       continue;
     }

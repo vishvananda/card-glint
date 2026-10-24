@@ -1,3 +1,4 @@
+import { abuFlowAffected } from './abu-flow-ancestry.mjs';
 import { preAbuArtSource, abuArtHistoricalHash, abuArtAffected } from './abu-art-ancestry.mjs';
 // Exact three-printing data history; independent of calibration approval.
 import assert from 'node:assert/strict';
@@ -157,6 +158,7 @@ export async function printingFlavorRuntimeCompatible(
     expected === p.beforeRenderer &&
     !(await abuArtAffected(set, task, original, group)) &&
     !(await printingFlavorAffected(set, task, original, group)) &&
+    !(await abuFlowAffected(set, task, original, group)) &&
     (await (tree ??= abuArtHistoricalHash(path.join(root, directory)))) === p.afterRenderer &&
     (await (historical ??= printingFlavorHistoricalHash(path.join(root, directory)))) ===
       p.beforeRenderer

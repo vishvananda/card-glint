@@ -1,3 +1,4 @@
+import { preAbuFlowSource, abuFlowHistoricalHash, abuFlowAffected } from './abu-flow-ancestry.mjs';
 // Exact scoped art-height history. Projection proves source ancestry, never fit approval.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -23,7 +24,7 @@ export async function abuArtDelta() {
     for (const [file, e] of Object.entries(p.files)) {
       assert.equal(hash(e.beforeSource), e.before);
       assert.equal(
-        hash(await readFile(path.join(root, file))),
+        hash(await preAbuFlowSource(file, await readFile(path.join(root, file)))),
         e.after,
         'Unreviewed AB art-height source: ' + file,
       );
@@ -122,6 +123,7 @@ export async function abuArtDelta() {
   })());
 }
 export async function preAbuArtSource(file, bytes) {
+  bytes = await preAbuFlowSource(file, bytes);
   const p = await abuArtDelta(),
     e = p.files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
@@ -169,7 +171,8 @@ export async function abuArtRuntimeCompatible(
   return (
     expected === p.beforeRenderer &&
     !(await abuArtAffected(set, task, original, group)) &&
-    (await (tree ??= sourceHash(path.join(root, directory)))) === p.afterRenderer &&
+    !(await abuFlowAffected(set, task, original, group)) &&
+    (await (tree ??= abuFlowHistoricalHash(path.join(root, directory)))) === p.afterRenderer &&
     (await (historical ??= abuArtHistoricalHash(path.join(root, directory)))) === p.beforeRenderer
   );
 }

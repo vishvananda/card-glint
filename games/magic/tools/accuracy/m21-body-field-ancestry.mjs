@@ -1,3 +1,4 @@
+import { preAbuFlowToolSource } from './abu-flow-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -17,7 +18,10 @@ async function equivalence() {
     assert.ok(proof.rows.every((r) => r.beforeHash === r.afterHash));
     assert.equal(proof.printingFields.before, receipt.change.before);
     assert.equal(proof.printingFields.after, receipt.change.after);
-    assert.equal(hash(await readFile(receipt.change.file)), receipt.change.after);
+    assert.equal(
+      hash(preAbuFlowToolSource(receipt.change.file, await readFile(receipt.change.file))),
+      receipt.change.after,
+    );
     for (const item of [
       ...proof.dependencies,
       proof.tool,
@@ -25,7 +29,7 @@ async function equivalence() {
       proof.legacy,
     ])
       assert.equal(
-        hash(await readFile(item.file)),
+        hash(preAbuFlowToolSource(item.file, await readFile(item.file))),
         item.sha256,
         'Changed M21 body-field proof dependency: ' + item.file,
       );
@@ -41,6 +45,7 @@ async function equivalence() {
  * text, Oracle score, or renderer identity inherits this compatibility. */
 export async function preM21BodyFieldSource(file, bytes, set) {
   if (set !== 'm21' || file !== 'games/magic/tools/accuracy/printing-fields.mjs') return bytes;
+  bytes = preAbuFlowToolSource(file, bytes);
   const { change } = await equivalence();
   if (hash(bytes) === change.before) return bytes;
   assert.equal(hash(bytes), change.after, 'Unreviewed M21 body-field adapter');

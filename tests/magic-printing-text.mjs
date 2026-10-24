@@ -184,6 +184,16 @@ for (const field of ['rulesText', 'flavorText']) {
   const result = presentation(entry, { 'printing-a': review });
   assert.equal(result.contentStatus, 'scan-reviewed');
   assert.deepEqual(result.reviewedFields, [], 'Body fields are not type/artist/cost reviews');
+  const { reviewed: _reviewed, ...fieldOnly } = review;
+  const partial = presentation(entry, { 'printing-a': fieldOnly });
+  assert.equal(
+    partial.contentStatus,
+    'oracle-unverified',
+    'A field review is not a whole-body review',
+  );
+  assert.deepEqual(partial.reviewedFields, []);
+  assert.equal(partial.annotation[field], '');
+
   assert.throws(
     () => presentation(entry, { 'printing-a': { ...review, reviewed: false } }),
     /Invalid reviewed printing field/,
@@ -349,6 +359,7 @@ try {
     );
     assert.equal(Object.keys(fixture.cards).length, 43);
     for (const [id, row] of Object.entries(fixture.cards)) {
+      if (row.rulesText !== '' || row.reviewed !== true) continue;
       const input = {
         reference: { sha256: row.referenceHash },
         card: {
@@ -571,6 +582,7 @@ try {
       await readFile(`games/magic/fixtures/accuracy/${set}/annotations-empty-rules.json`),
     );
     for (const [id, row] of Object.entries(fixture.cards)) {
+      if (row.rulesText !== '' || row.reviewed !== true) continue;
       const input = {
         reference: { sha256: row.referenceHash },
         card: {
@@ -611,6 +623,52 @@ try {
   }
   assert.equal(emptyCount, 77);
   console.log('77 scan-bound empty rules, printed types, flavor and Oracle isolation pass.');
+  for (const set of ['lea', 'leb', '2ed']) {
+    const fixture = JSON.parse(
+      await readFile('games/magic/fixtures/accuracy/' + set + '/annotations-empty-rules.json'),
+    );
+    const [id, row] = Object.entries(fixture.cards).find(([, r]) => r.name === 'Stasis');
+    const input = {
+      reference: { sha256: row.referenceHash },
+      card: {
+        id,
+        name: row.name,
+        set,
+        frame: '1993',
+        type_line: 'Enchantment',
+        oracle_text: 'Oracle probe.',
+        flavor_text: 'Unreviewed flavor probe.',
+      },
+    };
+    const original = presentation(input);
+    assert.equal(original.annotation.reviewed, undefined);
+    assert.equal(original.annotation.rulesText, row.rulesText);
+    assert.equal(original.face.rulesParagraphs[0].runs[0].text, row.rulesText);
+    const calibrated = calibrationPresentation(
+      input,
+      {},
+      {
+        [id]: { originalText: row.rulesText.replace('during upkeep', 'during your upkeep') },
+      },
+    );
+    assert.equal(calibrated.wordingEvidence.rules, 'scan-reviewed');
+    assert.equal(calibrated.wordingEvidence.flavor, 'printing-metadata-unreviewed');
+    assert.equal(calibrated.face.rulesParagraphs[0].runs[0].text, row.rulesText);
+
+    assert.notEqual(
+      original.contentStatus,
+      'scan-reviewed',
+      'One field cannot certify the full body',
+    );
+    assert(original.face.rulesText.includes('Unreviewed flavor probe.'));
+    assert.throws(() => presentation({ ...input, reference: { sha256: 'stale' } }), /stale/);
+    const custom = presentation(input, { [id]: { rulesText: 'Caller body.' } });
+    assert(!custom.annotation.reviewedFields.includes('rulesText'));
+    assert.equal(custom.face.rulesParagraphs[0].runs[0].text, 'Caller body.');
+  }
+  console.log(
+    'Three field-only Stasis corrections preserve unreviewed flavor and caller isolation.',
+  );
 } finally {
   await wordingServer.close();
 }

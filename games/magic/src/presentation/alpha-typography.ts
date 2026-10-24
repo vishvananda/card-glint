@@ -1,3 +1,4 @@
+import { wordingParagraphs } from './wording.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 
 // Alpha, Beta and Unlimited scans share these small-face layouts despite
@@ -27,6 +28,67 @@ export function reviewedSmallOriginal(
       canonical(paragraphs.flatMap((p) => p.runs.map((r) => r.text)).join(' ')) ===
         canonical(expected),
   );
+}
+
+const originalAbu = (face: RenderedCardInput) =>
+  face.wordingMode !== 'oracle' &&
+  ['lea', 'leb', '2ed'].includes(face.setCode?.toLowerCase() ?? '');
+const characters = (paragraphs: readonly RulesParagraph[]) =>
+  paragraphs.reduce((n, p) => n + p.runs.reduce((sum, r) => sum + r.text.length, 0), 0);
+
+/** The same exact printed passage uses seven small-face rows in all three sets.
+ * Keep this review separate from the general line-preservation budget. */
+export function reviewedSmallRowMinimum(
+  face: RenderedCardInput,
+  paragraphs: readonly RulesParagraph[],
+): number {
+  return originalAbu(face) &&
+    face.name === 'Word of Command' &&
+    canonical(paragraphs.flatMap((p) => p.runs.map((r) => r.text)).join(' ')) === WORD_PASSAGE
+    ? 7
+    : 0;
+}
+const WORD_PASSAGE =
+  "You may look at opponent's hand and choose any card opponent can legally play using mana from his or her mana pool or lands. Opponent must play this card immediately; you make all the decisions it calls for. This spell may not be countered after you have looked at opponent's hand.";
+
+/** Short keyword-led passages keep the large left-aligned early printing class. */
+export function earlyKeywordBlock(
+  face: RenderedCardInput,
+  paragraphs: readonly RulesParagraph[],
+  count = characters(paragraphs),
+): boolean {
+  return (
+    originalAbu(face) &&
+    count <= 117 &&
+    paragraphs.length === 2 &&
+    paragraphs.every((p) => p.role === 'rules' && (p.align === undefined || p.align === 'left')) &&
+    paragraphs[0]!.runs.map((r) => r.text).join('').length <= 15
+  );
+}
+
+/** Only this original-printing body cohort needs new face pixels. */
+export function earlyTextFlowRevision(face: RenderedCardInput): string | undefined {
+  if (
+    !originalAbu(face) ||
+    face.frameTemplate ||
+    face.frameStyle === 'modern' ||
+    (face.layout && !['normal', 'token'].includes(face.layout)) ||
+    /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '')
+  )
+    return undefined;
+  const visible = wordingParagraphs({
+    rulesText: face.rulesText ?? '',
+    rulesParagraphs: face.rulesParagraphs,
+  });
+  const reference =
+    face.rulesAlignment?.mode === 'auto' ? (face.rulesAlignment.reference ?? visible) : visible;
+  const count = characters(reference);
+  return count > 274 ||
+    reviewedSmallOriginal(face, reference) ||
+    reviewedOriginalTextLayout(face, reference).centeredDy === 0 ||
+    earlyKeywordBlock(face, visible, count)
+    ? 'abu-original-flow-v1'
+    : undefined;
 }
 
 /** Filled lettering and shared physical placement; canonical card pixels. */
@@ -62,12 +124,12 @@ export function reviewedOriginalTextLayout(
         'All red creatures gain +1/+1 and all mountains provide an extra red mana when tapped.')
   )
     return { centeredWidth: 390, centeredDx: -6.5 };
+  if (face.name === 'Howl from Beyond' && text === 'Target creature gains +X/+0 until end of turn.')
+    return { centeredDx: -6.5, centeredDy: 0 };
   if (
-    (face.name === 'Howl from Beyond' &&
-      text === 'Target creature gains +X/+0 until end of turn.') ||
-    (set === 'lea' &&
-      face.name === 'Twiddle' &&
-      text === 'Caster may tap or untap any one land, creature, or artifact in play.')
+    set === 'lea' &&
+    face.name === 'Twiddle' &&
+    text === 'Caster may tap or untap any one land, creature, or artifact in play.'
   )
     return { centeredDx: -6.5, centeredDy: -16 };
   if (

@@ -1,3 +1,9 @@
+import {
+  abuFlowAffected,
+  abuFlowRuntimeCompatible,
+  preAbuFlowSource,
+  preAbuFlowToolSource,
+} from './abu-flow-ancestry.mjs';
 import { abuArtAffected, abuArtRuntimeCompatible, preAbuArtSource } from './abu-art-ancestry.mjs';
 import {
   printingFlavorAffected,
@@ -79,6 +85,12 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (await abuFlowAffected(set.set, task, original, group)) {
+          item.status = original ? 'stale' : 'needs-audit';
+          item.reason =
+            'Original ABU body fitting and three reviewed Stasis wordings changed. This cohort needs current body/reference/full-card evidence; unchanged components retain their scoped checks.';
+          continue;
+        }
         if (await abuArtAffected(set.set, task, original, group)) {
           item.status = 'needs-audit';
           item.reason =
@@ -179,6 +191,14 @@ export async function calibrationReport(ledger) {
           }
           if (
             runtimeChecked.get(directory) !== expected &&
+            !(await abuFlowRuntimeCompatible(
+              directory,
+              expected,
+              set.set,
+              task,
+              original,
+              group,
+            )) &&
             !(await abuArtRuntimeCompatible(directory, expected, set.set, task, original, group)) &&
             !(await printingFlavorRuntimeCompatible(
               directory,
@@ -252,7 +272,12 @@ export async function calibrationReport(ledger) {
               } else if (fractionalAffected && (await abuFractionalAncestry()).files[file]) {
                 checked.set(
                   guardKey,
-                  new Set([hash(bytes), hash(await preAbuArtSource(file, bytes))]),
+                  new Set([
+                    hash(bytes),
+                    hash(preAbuFlowToolSource(file, bytes)),
+                    hash(await preAbuFlowSource(file, bytes)),
+                    hash(await preAbuArtSource(file, bytes)),
+                  ]),
                 );
               } else {
                 const modern = await m21StyleProfileSource(file, bytes, set.set, group);
@@ -274,6 +299,8 @@ export async function calibrationReport(ledger) {
                   guardKey,
                   new Set([
                     hash(bytes),
+                    hash(preAbuFlowToolSource(file, bytes)),
+                    hash(await preAbuFlowSource(file, bytes)),
                     hash(await preAbuArtSource(file, bytes)),
                     hash(await prePrintingFlavorData(file, bytes)),
                     hash(await preAbuPaperSource(file, bytes)),

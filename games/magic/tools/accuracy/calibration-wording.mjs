@@ -5,7 +5,11 @@ import { presentation } from './adapter.mjs';
 export function calibrationPresentation(entry, annotations = {}, printingText = {}) {
   const result = presentation(entry, annotations, printingText);
   const original = printingText[entry.card.id];
-  const reviewed = result.annotation.reviewed === true;
+  const wholeReviewed = result.annotation.reviewed === true;
+  const reviewed =
+    wholeReviewed || result.annotation.reviewedFields?.includes('rulesText') === true;
+  const flavorReviewed =
+    wholeReviewed || result.annotation.reviewedFields?.includes('flavorText') === true;
   if (reviewed && !entry.reference?.sha256)
     throw Error(`Original rules review lacks a scan identity for ${entry.card.name}.`);
   const expected = reviewed
@@ -37,7 +41,7 @@ export function calibrationPresentation(entry, annotations = {}, printingText = 
           : 'unverified',
       // Printed flavor metadata is a separate reference, not proof of its
       // punctuation, attribution line breaks, or typographic emphasis.
-      flavor: reviewed ? 'scan-reviewed' : 'printing-metadata-unreviewed',
+      flavor: flavorReviewed ? 'scan-reviewed' : 'printing-metadata-unreviewed',
       referenceHash: entry.reference?.sha256 ?? null,
       printingTextUuid: original?.uuid ?? null,
     },

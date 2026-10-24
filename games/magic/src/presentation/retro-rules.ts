@@ -1,4 +1,4 @@
-import { reviewedSmallOriginal } from './alpha-typography.js';
+import { reviewedSmallOriginal, reviewedSmallRowMinimum } from './alpha-typography.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { earlyRulesModel } from './alpha-rules.js';
 import { alphaTextLayout, earlyTextTierLayout, fractionalEarlyRules } from './early-text-tiers.js';
@@ -75,15 +75,23 @@ export function retroTextLayout(context: CanvasContext, face: RenderedCardInput)
         : alphaTextLayout(context, face, base, precise);
     return adjustCalibrationRules(context, face, layout);
   };
+  const reviewedRows = reviewedSmallRowMinimum(
+    face,
+    wordingParagraphs({
+      rulesText: face.rulesText ?? '',
+      rulesParagraphs: face.rulesParagraphs,
+    }),
+  );
   const run = () => {
     const legacy = calculate();
     if (!fractional || !legacy || legacy.size >= 30) return legacy;
     const precise = calculate(true);
-    // A font-metric change must not introduce another printed row. Keep the
-    // physical inset and use fractional size fitting when that budget is exceeded.
-    return precise?.fractionalMetrics && precise.lines.length <= legacy.lines.length
+    // Preserve the established row budget, except for an exact reviewed printing
+    // passage. Keep its physical inset when fractional size fitting is needed.
+    return precise?.fractionalMetrics &&
+      precise.lines.length <= Math.max(legacy.lines.length, reviewedRows)
       ? precise
-      : fractionalEarlyRules(context, legacy);
+      : fractionalEarlyRules(context, legacy, tiers?.denseWidth ?? 1);
   };
   const result = tiers || fractional ? withRulesLayoutRequests(context, run) : run();
   return result;

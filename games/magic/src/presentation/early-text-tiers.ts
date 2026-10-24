@@ -4,7 +4,11 @@ import { layoutRules, rulesLayoutRequest, type RulesLayout } from './rules-layou
 import { alphaRulesLayout, earlyRulesModel } from './alpha-rules.js';
 import { retroPx, retroRects } from './retro-frame.js';
 import { wordingParagraphs } from './wording.js';
-import { reviewedSmallOriginal, reviewedOriginalTextLayout } from './alpha-typography.js';
+import {
+  reviewedSmallOriginal,
+  reviewedOriginalTextLayout,
+  earlyKeywordBlock,
+} from './alpha-typography.js';
 
 export interface EarlyTextTierOptions {
   readonly largeMaximum?: number;
@@ -79,6 +83,17 @@ export function earlyTextTierLayout(
     flavorSeparator: false,
   };
   const forceSmall = options.forceSmall ?? reviewedSmallOriginal(face, reference);
+  if (!forceSmall && earlyKeywordBlock(face, paragraphs, characters)) {
+    const keyword = layoutRules(
+      context,
+      paragraphs.map((p) => ({ ...p, align: 'left' as const })),
+      { x: 80, y: y + 6, width: options.largeFitWidth ?? 374, height: height - 8 },
+      32.5,
+      32.5,
+      { ...typography, leading: 1.1, balanceLines: true, centerOffset: 0 },
+    );
+    if (!keyword.overflow && keyword.lines.length <= 5) return keyword;
+  }
   let chosen: RulesLayout | undefined;
   if (
     !forceSmall &&
@@ -243,7 +258,7 @@ export function earlyTextTierLayout(
     { ...r.bounds, x: r.bounds.x + 10.5, width: r.bounds.width - 10.5 },
     chosen.size,
     chosen.size,
-    { ...r.typography, textWidth: options.denseWidth ?? 0.98 },
+    { ...r.typography, textWidth: options.denseWidth ?? (fractionalMetrics ? 1 : 0.98) },
   );
   if (shape.overflow) return chosen;
   // Narrowing may add a line. Preserve the block's optical center instead of
@@ -263,7 +278,11 @@ export function earlyTextTierLayout(
 
 /** Preserve the printing's physical panel and line budget with unhinted advances.
  * A quarter-pixel reduction can avoid a new row; no wider fallback is permitted. */
-export function fractionalEarlyRules(context: CanvasContext, original: RulesLayout): RulesLayout {
+export function fractionalEarlyRules(
+  context: CanvasContext,
+  original: RulesLayout,
+  smallTextWidth = 1,
+): RulesLayout {
   if (original.size >= 30 || !original.lines.length) return original;
   const request = rulesLayoutRequest(original);
   if (!request) throw Error('Missing final early text request');
@@ -273,7 +292,12 @@ export function fractionalEarlyRules(context: CanvasContext, original: RulesLayo
     request.bounds,
     original.size,
     Math.max(10, original.size - 0.5),
-    { ...request.typography, fractionalMetrics: true, maximumLines: original.lines.length },
+    {
+      ...request.typography,
+      ...(original.size < 19 ? { textWidth: smallTextWidth } : {}),
+      fractionalMetrics: true,
+      maximumLines: original.lines.length,
+    },
   );
   if (precise.overflow) return original;
   const dy = original.lines[0]!.baseline - precise.lines[0]!.baseline;

@@ -446,13 +446,56 @@ keyword passages use the existing Beta large-layout geometry.
 These are regional edge/filled-ink measurements on reused development scans,
 separate from published whole-card scores. All references, poses, wording and
 source assets stay fixed. Each report includes its exact method snapshots.
-The refined proposals still need production integration and a current replay.
+The production replay below verifies the refined proposals against actual renderer output.
 
 A [separate wording review](../fixtures/accuracy/early-through-fourth/abu-stasis-source-review.json)
 records all three Stasis scans: each prints “during upkeep,” while the cached
 Original body inserts “your.” Apply this exact source correction before fitting
-its wrapping. Oracle wording remains independent. The proposal is not yet in
-the shipped correction tables.
+its wrapping. Oracle wording remains independent. The three field-only corrections are now in the development correction tables;
+they have not yet been released.
+
+## Production body-flow replay
+
+The [current source receipt](../fixtures/accuracy/early-through-fourth/abu-flow-source-delta.json.gz)
+binds the four renderer files and three field-only Stasis corrections.
+The public Original resolver changes only those three semantic inputs. Oracle
+wording, types, artists and symbols remain unchanged.
+
+The [native replay](../fixtures/accuracy/early-through-fourth/abu-flow-native.json.gz)
+covers all 899 printings. Forty-seven Original face identities change; only
+33 raster images change. Every other image is byte-identical. The 44 layout
+candidates reproduce their frozen trial images exactly. Another 376 paired
+renders check both Oracle symbol modes and separate printing, artwork and
+etching layers. All Oracle, artwork and mask images remain identical, with no
+silhouette or outside-rules changes.
+
+The [whole-card score update](../fixtures/accuracy/early-through-fourth/abu-flow-current-scores.json.gz)
+recomputes those 33 images and reuses 866 exact identities. It preserves scan
+transforms, metric dependencies, component weights and score coverage.
+
+| Set       | Before /100 | Current /100 | Changed images |
+| --------- | ----------: | -----------: | -------------: |
+| Alpha     |      68.104 |       68.262 |             16 |
+| Beta      |      68.402 |       68.540 |             15 |
+| Unlimited |      71.059 |       71.063 |              2 |
+
+Thirty-two changed images improve. Unlimited Stasis loses 1.435 whole-card
+points after its physical wording correction; that result remains included.
+These are development scores, not a release or a claim of exact reproduction.
+Older component reviews remain reusable only where the exact source projection
+and scope support them. A source-history projection does not approve a new fit.
+
+```sh
+node games/magic/tools/accuracy/abu-flow-inputs.mjs \
+  "$ABU_BEFORE_INPUTS" "$ABU_FLOW_INPUTS" "$ABU_FLOW_INPUT_PROOF"
+node games/magic/tools/accuracy/abu-flow-native.mjs \
+  "$ABU_FLOW_REFERENCE" "$ABU_BEFORE_INPUTS" "$ABU_FLOW_INPUTS" \
+  "$ABU_FLOW_INPUT_PROOF" "$ABU_REFINED_TRIALS" "$ABU_FLOW_NATIVE"
+node games/magic/tools/accuracy/abu-flow-score.mjs \
+  "$ABU_FLOW_NATIVE" "$ABU_BEFORE_INPUTS" "$ABU_FLOW_INPUTS" \
+  "$LAB_METRIC" "$ABU_FLOW_SCORE"
+node tests/magic-abu-flow-adoption.mjs
+```
 
 ## Release and experimental preview
 

@@ -1,3 +1,4 @@
+import { abuFlowAffected } from '../games/magic/tools/accuracy/abu-flow-ancestry.mjs';
 import { validateUnlimitedRasterGeometry } from '../games/magic/tools/accuracy/unlimited-raster-geometry-policy.mjs';
 import { abuPaperDelta } from '../games/magic/tools/accuracy/abu-paper-ancestry.mjs';
 import { abuRasterDelta } from '../games/magic/tools/accuracy/abu-raster-ancestry.mjs';
@@ -127,7 +128,15 @@ for (const group of set.groups)
     );
     const outlineChanged =
       task === 'frameGeometry' && (await abuRasterAffected('2ed', task, false, group));
-    if (!changedTasks.has(task) && !outlineChanged) {
+    if (await abuFlowAffected('2ed', task, false, group)) {
+      if (['validated', 'validated-default'].includes(recorded.status))
+        assert.equal(
+          outstanding?.status,
+          'needs-audit',
+          'Changed Stasis reference needs a current review',
+        );
+      else assert.equal(outstanding?.status, recorded.status);
+    } else if (!changedTasks.has(task) && !outlineChanged) {
       assert.equal(
         outstanding,
         undefined,
@@ -142,13 +151,23 @@ for (const group of set.groups)
     }
   }
 assert.equal(reports[0].counts.validated, expectedValidated);
-assert.equal(reports[0].originalRulesInputs.ready, 302);
+const sourceChangedGroups = [];
+for (const group of set.groups)
+  if (await abuFlowAffected('2ed', 'rules', true, group)) sourceChangedGroups.push(group);
+const staleRules = sourceChangedGroups.reduce((sum, g) => sum + g.printings, 0);
+assert.equal(sourceChangedGroups.length, 1);
+assert.equal(reports[0].originalRulesInputs.ready, 302 - staleRules);
+assert.equal(reports[0].originalRulesInputs.stale, staleRules);
 assert.equal(reports[0].originalTypeInputs.ready, 302);
-assert.equal(reports[0].counts['needs-audit'], 0);
+assert.equal(reports[0].counts['needs-audit'], sourceChangedGroups.length);
 assert.equal(reports[0].complete, false, 'A partial text audit cannot complete Unlimited');
 for (const row of reports[0].outstanding) {
   if (changedTasks.has(row.task)) continue;
   const group = set.groups.find((g) => g.key === row.group);
+  if (row.task === 'references') {
+    assert(await abuFlowAffected('2ed', row.task, false, group));
+    continue;
+  }
   assert.equal(row.task, 'frameGeometry');
   assert(
     await abuRasterAffected('2ed', row.task, false, group),
