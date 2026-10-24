@@ -15,6 +15,10 @@ const ledger = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/calibration-progress.json'),
 );
 const set = ledger.sets.find((s) => s.set === '8ed');
+for (const g of set.groups.filter((g) => g.references.nonfoil === g.printings)) {
+  assert.equal(calibrationTaskStatus(g, 'release').status, 'validated');
+  assert.equal(g.tasks.release.proof.version, '0.7.0');
+}
 const clone = structuredClone(set);
 const foils = clone.groups.filter((g) => g.references.nonfoil !== g.printings);
 const saved = JSON.stringify(foils);
@@ -41,6 +45,11 @@ for (const g of clone.groups) {
       calibrationTaskStatus(g, task).status,
       g.applicable[task] === false ? 'not-applicable' : 'validated',
     );
+  assert.equal(
+    calibrationTaskStatus(g, 'release').status,
+    'pending',
+    'An audit alone cannot approve publication',
+  );
   assert.equal(calibrationTaskStatus(g, 'fullCard').status, 'partial');
   assert.equal(calibrationTaskStatus(g, 'paperColor').status, 'partial');
 }
