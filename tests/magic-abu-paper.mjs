@@ -1,3 +1,4 @@
+import { printingFlavorHistoricalHash } from '../games/magic/tools/accuracy/printing-flavor-data-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -11,7 +12,7 @@ import {
   abuPaperRuntimeCompatible,
 } from '../games/magic/tools/accuracy/abu-paper-ancestry.mjs';
 const p = await abuPaperDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await printingFlavorHistoricalHash('games/magic/src'), p.afterRenderer);
 assert.equal(await abuPaperHistoricalHash(), p.beforeRenderer);
 for (const [file, e] of Object.entries(p.files)) {
   const raw = await readFile(file),

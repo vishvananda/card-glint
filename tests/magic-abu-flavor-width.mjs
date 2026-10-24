@@ -83,3 +83,30 @@ for (const row of attribution.cards) {
 console.log(
   'Pearled Unicorn:three exact scan-bound attribution-break proposals retained separately from layout fits.',
 );
+
+const currentNativeBytes = gunzipSync(await readFile(prefix + 'abu-flavor-native.json.gz'));
+const correctedBytes = await readFile(prefix + 'abu-flavor-wrap-corrected-trials.json.gz');
+assert.equal(
+  hash(correctedBytes),
+  '1b97059e8595b8abc93d66594480b14fdd75c0956767b7622d7ac75878997751',
+);
+const corrected = JSON.parse(gunzipSync(correctedBytes));
+assert.equal(corrected.capture.source.closed, true);
+assert.deepEqual(
+  auditFlavorWidthStudy(
+    corrected.capture,
+    JSON.parse(currentNativeBytes),
+    selected,
+    hash(currentNativeBytes),
+    corrected.poses,
+  ),
+  corrected.summary,
+);
+assert.equal(
+  corrected.capture.source.inputHash,
+  JSON.parse(currentNativeBytes).source.afterInputHash,
+);
+assert.equal(hash(corrected.tools.study), corrected.capture.source.toolHash);
+console.log(
+  'Corrected attribution census:1422 additional native trials, same fixed-size/baseline/row safeguards; no wrap policy adopted.',
+);

@@ -1,3 +1,4 @@
+import { printingFlavorHistoricalHash } from './printing-flavor-data-ancestry.mjs';
 import { abuPaperAffected, abuPaperDelta } from './abu-paper-ancestry.mjs';
 import {
   preAbuRasterSource,
@@ -114,7 +115,8 @@ export async function abuPerimeterRuntimeCompatible(
     !(await abuPerimeterAffected(set, task, original, group)) &&
     !(await abuRasterAffected(set, task, original, group)) &&
     !(await abuPaperAffected(set, task, original, group)) &&
-    (await sourceHash(path.join(root, directory))) === (await abuPaperDelta()).afterRenderer &&
+    (await printingFlavorHistoricalHash(path.join(root, directory))) ===
+      (await abuPaperDelta()).afterRenderer &&
     (await abuRasterHistoricalHash(path.join(root, directory))) === p.afterRenderer
   );
 }

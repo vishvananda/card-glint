@@ -1,4 +1,10 @@
 import {
+  printingFlavorAffected,
+  printingFlavorApprovalCurrent,
+  printingFlavorRuntimeCompatible,
+  prePrintingFlavorData,
+} from './printing-flavor-data-ancestry.mjs';
+import {
   abuPaperAffected,
   abuPaperApprovalCurrent,
   abuPaperRuntimeCompatible,
@@ -72,6 +78,13 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        const flavorAffected = await printingFlavorAffected(set.set, task, original, group);
+        if (flavorAffected && !(await printingFlavorApprovalCurrent(item, group))) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Pearled Unicorn now preserves its printed attribution paragraph. This exact printing needs current flavor/reference/full-card evidence; unrelated wording and components retain their own checks.';
+          continue;
+        }
         const paperAffected = await abuPaperAffected(set.set, task, original, group);
         if (paperAffected && !(await abuPaperApprovalCurrent(item, group))) {
           item.status = 'needs-audit';
@@ -159,6 +172,14 @@ export async function calibrationReport(ledger) {
           }
           if (
             runtimeChecked.get(directory) !== expected &&
+            !(await printingFlavorRuntimeCompatible(
+              directory,
+              expected,
+              set.set,
+              task,
+              original,
+              group,
+            )) &&
             !(await abuPaperRuntimeCompatible(
               directory,
               expected,
@@ -242,6 +263,7 @@ export async function calibrationReport(ledger) {
                   guardKey,
                   new Set([
                     hash(bytes),
+                    hash(await prePrintingFlavorData(file, bytes)),
                     hash(await preAbuPaperSource(file, bytes)),
                     hash(await preNormalizationCensusSource(file, bytes)),
                     hash(modern.bytes),

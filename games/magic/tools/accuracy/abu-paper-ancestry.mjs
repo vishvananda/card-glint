@@ -1,3 +1,7 @@
+import {
+  prePrintingFlavorData,
+  printingFlavorHistoricalHash,
+} from './printing-flavor-data-ancestry.mjs';
 // Reconstruct the exact reviewed paper-panel edit; this is not fit approval.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -21,7 +25,7 @@ export async function abuPaperDelta() {
     ]);
     for (const [f, e] of Object.entries(p.files)) {
       assert.equal(
-        hash(await readFile(path.join(root, f))),
+        hash(await prePrintingFlavorData(f, await readFile(path.join(root, f)))),
         e.after,
         'Unreviewed AB paper source: ' + f,
       );
@@ -81,6 +85,7 @@ export async function abuPaperDelta() {
   })());
 }
 export async function preAbuPaperSource(file, bytes) {
+  bytes = await prePrintingFlavorData(file, bytes);
   const p = await abuPaperDelta(),
     e = p.files[file];
   if (!e) return bytes;
@@ -131,7 +136,7 @@ export async function abuPaperRuntimeCompatible(
   return (
     expected === p.beforeRenderer &&
     !(await abuPaperAffected(set, task, original, group)) &&
-    (await sourceHash(path.join(root, directory))) === p.afterRenderer
+    (await printingFlavorHistoricalHash(path.join(root, directory))) === p.afterRenderer
   );
 }
 

@@ -248,6 +248,44 @@ Use `--pilot` or `--wrap-pilot` for the five-name diagnostic subset. The full
 sweeps are development censuses, not new holdouts. Exact historical methods are
 embedded in the evidence; newer CLI metadata descriptions may differ.
 
+## Applied attribution correction
+
+The three Pearled Unicorn corrections are now applied in the existing printing
+annotations. Only the semantic break before the attribution changes. The
+[data receipt](../fixtures/accuracy/early-through-fourth/printing-flavor-data-delta.json.gz)
+checks all 2,962 wording records, both eager and per-set delivery, and all 222
+artist credits. Other wording, fonts, geometry and source assets are unchanged.
+
+The [native replay](../fixtures/accuracy/early-through-fourth/abu-flavor-native.json.gz)
+covers all 899 Original faces and 30 paired layer comparisons across the three
+printings. Alpha already wrapped at the same place, so its pixels are unchanged.
+Beta and Unlimited now put the complete author attribution on its own line.
+Oracle without flavor, silhouettes, outside-rules pixels and default etching
+remain identical. Oracle with Original fallback flavor receives the correction.
+
+The [updated scores](../fixtures/accuracy/early-through-fourth/abu-flavor-current-scores.json.gz)
+recompute the three changed semantic inputs and reuse the other 896 exact
+native/reference/pose/input tuples. The metric and component weights are fixed.
+
+| Pearled Unicorn | Whole card before /100 | After /100 | Rules region before /100 | After /100 |
+| --------------- | ---------------------: | ---------: | -----------------------: | ---------: |
+| Alpha           |                  73.45 |      73.45 |                    76.07 |      76.07 |
+| Beta            |                  71.58 |      72.01 |                    66.50 |      67.95 |
+| Unlimited       |                  69.66 |      70.31 |                    62.85 |      65.04 |
+
+The [repeated wrap study](../fixtures/accuracy/early-through-fourth/abu-flavor-wrap-corrected-trials.json.gz)
+uses the corrected inputs for all 228 flavor printings and nine controls. The
+two-pixel candidate still improves the flavor objective by 0.74 in Beta and
+0.70 in Unlimited, with one regression in each set. Alpha remains unchanged by
+the data correction and keeps its previous study result. No wrapping parameter
+is promoted by this data fix. Rules, flavor, full-card review and publication
+remain separate tasks.
+
+The source review above remains a historical proposal. This section and the
+new source/native receipts record its implementation. Older score receipts
+retain their original renderer identities; the exact data projection preserves
+only unaffected component approvals. Unknown data or painter changes still fail.
+
 ## Reproduce from the cache
 
 Use Node 22+, the repository dependencies and Playwright Chromium. Set

@@ -5,7 +5,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { PNG } from 'pngjs';
 import { hash, root, sourceHash, objectFile } from './common.mjs';
-import { abuPaperDelta } from './abu-paper-ancestry.mjs';
+import { printingFlavorDelta } from './printing-flavor-data-ancestry.mjs';
 import { openBrowser } from './browser.mjs';
 import { abuFlavorWidthPlugin } from './abu-flavor-width-plugin.mjs';
 import { normalize, cropGray } from './pixels-pure.mjs';
@@ -18,10 +18,10 @@ const wrapStudy = option?.includes('wrap') ?? false;
 const pilotStudy = option?.includes('pilot') ?? false;
 const bytes = await readFile(inputsFile),
   inputs = JSON.parse(bytes);
-const paper = await abuPaperDelta();
+const paper = await printingFlavorDelta();
 assert.equal(await sourceHash(path.join(root, 'games/magic/src')), paper.afterRenderer);
 const native = JSON.parse(gunzipSync(await readFile(paper.native.file)));
-assert.equal(hash(bytes), native.source.inputHash);
+assert.equal(hash(bytes), native.source.afterInputHash ?? native.source.inputHash);
 const controls = new Set(['Keldon Warlord', 'Animate Dead', 'Warp Artifact']);
 const pilot = new Set([
   'Scryb Sprites',

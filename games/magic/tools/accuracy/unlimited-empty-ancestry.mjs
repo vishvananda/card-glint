@@ -1,3 +1,4 @@
+import { prePrintingFlavorData } from './printing-flavor-data-ancestry.mjs';
 // The sole adapter change adds one scan-reviewed Unlimited entry. Historical
 // non-Unlimited input receipts retain the exact original adapter, never new data.
 import assert from 'node:assert/strict';
@@ -13,9 +14,8 @@ export async function preUnlimitedEmptySource(file, bytes) {
     'a6482b4145020847f58dcb1773fe16824197f3ebdda450c6bcf9c2f320c8dbc5',
     'Unreviewed Unlimited empty-text adapter',
   );
-  const annotation = await readFile(
-    'games/magic/fixtures/accuracy/2ed/annotations-empty-rules.json',
-  );
+  const annotationFile = 'games/magic/fixtures/accuracy/2ed/annotations-empty-rules.json';
+  const annotation = await prePrintingFlavorData(annotationFile, await readFile(annotationFile));
   assert.equal(
     hash(annotation),
     'a4e72637b024d92f84ebe26596433d87a15fa6f84b87b149c6b9a31c28c0bd0b',

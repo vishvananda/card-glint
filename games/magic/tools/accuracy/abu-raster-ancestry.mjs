@@ -1,3 +1,4 @@
+import { printingFlavorHistoricalHash } from './printing-flavor-data-ancestry.mjs';
 import {
   preAbuPaperSource,
   abuPaperHistoricalHash,
@@ -121,7 +122,8 @@ export async function abuRasterRuntimeCompatible(
     expected === p.beforeRenderer &&
     !(await abuRasterAffected(set, task, original, group)) &&
     !(await abuPaperAffected(set, task, original, group)) &&
-    (await sourceHash(path.join(root, directory))) === (await abuPaperDelta()).afterRenderer &&
+    (await printingFlavorHistoricalHash(path.join(root, directory))) ===
+      (await abuPaperDelta()).afterRenderer &&
     (await abuPaperHistoricalHash(path.join(root, directory))) === p.afterRenderer
   );
 }
