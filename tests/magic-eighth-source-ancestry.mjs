@@ -30,7 +30,7 @@ for (const [file, entry] of Object.entries(proof.files)) {
     preEighthSource(file, Buffer.concat([current, Buffer.from('\n// unknown\n')])),
     fractional.files[file]
       ? (error) => error.message.startsWith('Unreviewed ABU fractional source: ' + file)
-      : /Unreviewed (?:Eighth|AB perimeter source)/,
+      : /Unreviewed (?:Eighth|AB perimeter source|AB raster source)/,
   );
   const donor = await eighthProfileSource(file, current, '8ed', {
     frame: '2003',

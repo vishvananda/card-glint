@@ -232,11 +232,13 @@ try {
           // browser/worker pixels have their own positive parity test.
           // M21 calibration intentionally changes its frames and typography too.
           // Its current browser/worker parity is tested separately at all three tiers.
+          // Alpha/Beta dual perimeter updates likewise retain this historical
+          // proof; --abu-duals exercises their current browser/worker path.
           for (const api of [
             before,
             label === 'walker'
               ? historicalWalker
-              : ['2ed', 'm21'].includes(face.setCode)
+              : ['2ed', 'm21'].includes(face.setCode) || ['lea-dual', 'leb-dual'].includes(label)
                 ? historicalProfile
                 : current,
           ]) {

@@ -1,3 +1,4 @@
+import { abuRasterAffected } from '../games/magic/tools/accuracy/abu-raster-ancestry.mjs';
 import ts from 'typescript';
 import { parseProfileData } from '../games/magic/tools/accuracy/profile-data-modules.mjs';
 import assert from 'node:assert/strict';
@@ -57,7 +58,8 @@ assert.equal(
 );
 const reports = await calibrationReport({ sets: [set] });
 // The historical census still verifies the unchanged profile. The new ABU
-// text policy has its own current replay and must not inherit old text/release approvals.
+// text policy and five raster-outline variants have their own current replays
+// and must not inherit old approvals; every other component remains reusable.
 const changedTasks = new Set(['rules', 'flavor', 'fullCard', 'release']);
 let expectedValidated = 0;
 for (const group of set.groups)
@@ -67,7 +69,9 @@ for (const group of set.groups)
     const outstanding = reports[0].outstanding.find(
       (r) => r.group === group.key && r.task === task,
     );
-    if (!changedTasks.has(task)) {
+    const outlineChanged =
+      task === 'frameGeometry' && (await abuRasterAffected('2ed', task, false, group));
+    if (!changedTasks.has(task) && !outlineChanged) {
       assert.equal(
         outstanding,
         undefined,
@@ -86,7 +90,15 @@ assert.equal(reports[0].originalRulesInputs.ready, 302);
 assert.equal(reports[0].originalTypeInputs.ready, 302);
 assert.equal(reports[0].counts['needs-audit'], 0);
 assert.equal(reports[0].complete, false, 'A partial text audit cannot complete Unlimited');
-assert(reports[0].outstanding.every((r) => changedTasks.has(r.task)));
+for (const row of reports[0].outstanding) {
+  if (changedTasks.has(row.task)) continue;
+  const group = set.groups.find((g) => g.key === row.group);
+  assert.equal(row.task, 'frameGeometry');
+  assert(
+    await abuRasterAffected('2ed', row.task, false, group),
+    'Only the five repainted outline variants may reopen geometry',
+  );
+}
 // Group-level guards must invalidate every applicable dependent task.
 const tampered = structuredClone(set);
 const guarded = tampered.groups.find((g) => g.tasks.fullCard.status === 'validated');

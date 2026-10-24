@@ -30,7 +30,7 @@ export async function prepareRetroDualFrame(
     [
       {
         key: JSON.stringify([
-          'abu-dual-frame-v3',
+          'abu-dual-frame-v4',
           ...(plan.pinline ? [plan.pinline] : []),
           plan,
           base.width,
@@ -60,18 +60,12 @@ export async function prepareRetroDualFrame(
               const outline = required(plan.outline);
               c.save();
               c.beginPath();
-              c.rect(
-                (78 / 1500) * base.width,
-                (90 / 2100) * base.height,
-                (1344 / 1500) * base.width,
-                (1920 / 2100) * base.height,
-              );
-              c.rect(
-                (108 / 1500) * base.width,
-                (120 / 2100) * base.height,
-                (1284 / 1500) * base.width,
-                (1860 / 2100) * base.height,
-              );
+              // Selection edges stay in stock beyond the colored line. Snap
+              // them to source pixels so browser/worker clip coverage agrees.
+              const x = (v: number) => Math.round((v / 1500) * base.width);
+              const y = (v: number) => Math.round((v / 2100) * base.height);
+              c.rect(x(78), y(90), x(1422) - x(78), y(2010) - y(90));
+              c.rect(x(108), y(120), x(1392) - x(108), y(1980) - y(120));
               c.clip('evenodd');
               c.drawImage(outline, 0, 0, base.width, base.height);
               c.restore();

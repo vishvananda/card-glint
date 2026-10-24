@@ -1,4 +1,9 @@
 import {
+  abuRasterAffected,
+  abuRasterRuntimeCompatible,
+  abuRasterApprovalCurrent,
+} from './abu-raster-ancestry.mjs';
+import {
   abuPerimeterApprovalCurrent,
   preAbuPerimeterSource,
   abuPerimeterAffected,
@@ -61,6 +66,14 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        const rasterAffected = await abuRasterAffected(set.set, task, original, group);
+        const rasterCurrent = rasterAffected && (await abuRasterApprovalCurrent(item, group));
+        if (rasterAffected && !rasterCurrent) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Historical dual raster selection changed to remove a clip seam. Frame geometry and full-card approvals need the new scoped replay; other components and original wording retain their evidence.';
+          continue;
+        }
         const perimeterAffected = await abuPerimeterAffected(set.set, task, original, group);
         if (perimeterAffected && !(await abuPerimeterApprovalCurrent(item, group))) {
           item.status = 'needs-audit';
@@ -133,6 +146,14 @@ export async function calibrationReport(ledger) {
           }
           if (
             runtimeChecked.get(directory) !== expected &&
+            !(await abuRasterRuntimeCompatible(
+              directory,
+              expected,
+              set.set,
+              task,
+              original,
+              group,
+            )) &&
             !(await abuPerimeterRuntimeCompatible(
               directory,
               expected,

@@ -60,7 +60,17 @@ export function paintAbuDualPerimeter(
   try {
     c.beginPath();
     c.rect(0, 0, 488, 680);
-    c.rect(45, 45, 398, 587);
+    // This is a material-selection boundary, not a visible frame edge.
+    // Partial clip coverage would apply twice (stock fill, then frame draw),
+    // leaving a dark seam and differing between browser/worker backends.
+    const matrix = c.getTransform();
+    if (matrix.b !== 0 || matrix.c !== 0 || matrix.a <= 0 || matrix.d <= 0)
+      throw Error('Historical perimeter composition requires axis-aligned raster scaling.');
+    const x = (v: number) => (Math.round(v * matrix.a + matrix.e) - matrix.e) / matrix.a;
+    const y = (v: number) => (Math.round(v * matrix.d + matrix.f) - matrix.f) / matrix.d;
+    const left = x(45),
+      top = y(45);
+    c.rect(left, top, x(443) - left, y(632) - top);
     c.clip('evenodd');
     const filter = c.filter;
     c.filter = 'none';
@@ -75,5 +85,7 @@ export function paintAbuDualPerimeter(
 
 /** Invalidate only affected face rasters; default etching is unchanged. */
 export function retroDualFrameRevision(face: RenderedCardInput): string | undefined {
-  return hasAbuDualPerimeter(face) ? 'abu-dual-perimeter-up2-v1' : undefined;
+  if (hasAbuDualPerimeter(face)) return 'abu-dual-perimeter-up2-v2';
+  const dual = retroDualFrame(face);
+  return dual && dual.outline !== dual.overlay ? 'abu-dual-outline-raster-v4' : undefined;
 }

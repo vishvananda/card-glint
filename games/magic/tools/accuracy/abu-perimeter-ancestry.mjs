@@ -1,3 +1,10 @@
+import {
+  preAbuRasterSource,
+  abuRasterHistoricalHash,
+  abuRasterAffected,
+  abuRasterApprovalCurrent,
+  abuRasterDelta,
+} from './abu-raster-ancestry.mjs';
 // Reconstruct only the reviewed AB perimeter edit; never approve changed fits.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -21,7 +28,7 @@ export async function abuPerimeterDelta() {
     ]);
     for (const [f, e] of Object.entries(p.files)) {
       assert.equal(
-        hash(await readFile(path.join(root, f))),
+        hash(await preAbuRasterSource(f, await readFile(path.join(root, f)))),
         e.after,
         'Unreviewed AB perimeter source: ' + f,
       );
@@ -68,6 +75,7 @@ export async function abuPerimeterDelta() {
   })());
 }
 export async function preAbuPerimeterSource(file, bytes) {
+  bytes = await preAbuRasterSource(file, bytes);
   const p = await abuPerimeterDelta(),
     e = p.files[file];
   if (!e) return bytes;
@@ -104,7 +112,9 @@ export async function abuPerimeterRuntimeCompatible(
   return (
     expected === p.beforeRenderer &&
     !(await abuPerimeterAffected(set, task, original, group)) &&
-    (await sourceHash(path.join(root, directory))) === p.afterRenderer
+    !(await abuRasterAffected(set, task, original, group)) &&
+    (await sourceHash(path.join(root, directory))) === (await abuRasterDelta()).afterRenderer &&
+    (await abuRasterHistoricalHash(path.join(root, directory))) === p.afterRenderer
   );
 }
 
@@ -112,6 +122,8 @@ export async function abuPerimeterRuntimeCompatible(
 export async function abuPerimeterApprovalCurrent(item, group) {
   const p = await abuPerimeterDelta(),
     proof = item.proof;
+  if (group.printingIds?.some((id) => p.members.some((m) => m.id === id)))
+    return abuRasterApprovalCurrent(item, group);
   if (
     proof?.abuPerimeterSource !== p.afterRenderer ||
     proof.nativeReplayHash !== p.native.contentSha256 ||

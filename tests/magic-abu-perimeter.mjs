@@ -17,7 +17,7 @@ for (const [file, e] of Object.entries(p.files)) {
   assert.deepEqual(await preAbuPerimeterSource(file, prior), prior);
   await assert.rejects(
     preAbuPerimeterSource(file, Buffer.concat([raw, Buffer.from('// unknown')])),
-    /Unreviewed AB perimeter source/,
+    /Unreviewed AB (?:perimeter|raster) source/,
   );
 }
 const m = p.members[0],
@@ -69,7 +69,10 @@ const item = {
     },
   },
 };
-assert(await abuPerimeterApprovalCurrent(item, group));
+assert(
+  !(await abuPerimeterApprovalCurrent(item, group)),
+  'Old perimeter evidence cannot approve the newer raster-selection edit',
+);
 for (const mutate of [
   (x) => {
     x.proof.nativeReplayHash = '0'.repeat(64);
@@ -107,11 +110,14 @@ try {
     '/games/magic/src/presentation/retro-dual-frame.ts',
   );
   const image = {};
-  const context = () => {
+  const context = (matrix = { a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 }) => {
     const calls = [],
       stack = [];
     const c = {
       calls,
+      getTransform() {
+        return matrix;
+      },
       filter: 'contrast(1.1)',
       fillStyle: 'original',
       save() {
@@ -147,7 +153,7 @@ try {
     assert(c.calls.some((v) => Array.isArray(v) && v[0] === 'draw'));
     assert.equal(c.filter, 'contrast(1.1)');
     assert.equal(c.fillStyle, 'original');
-    assert.equal(retroDualFrameRevision(m.face), 'abu-dual-perimeter-up2-v1');
+    assert.equal(retroDualFrameRevision(m.face), 'abu-dual-perimeter-up2-v2');
   }
   const face = p.members.find((m) => m.set === 'lea').face;
   for (const extra of [
@@ -167,6 +173,29 @@ try {
     assert.deepEqual(c.calls, [], 'Unrelated frame must never enter perimeter drawing');
     assert.equal(retroDualFrameRevision(probe), undefined);
   }
+  // Standard tiers and an odd native width must select complete device
+  // pixels even when the context has a fractional translation.
+  for (const width of [244, 323, 488, 732]) {
+    const matrix = { a: width / 488, b: 0, c: 0, d: width / 488, e: 0.25, f: -0.125 };
+    const c = context(matrix);
+    paintAbuDualPerimeter(c, face, image, 'black');
+    const [, left, top, w, h] = c.calls.filter((v) => Array.isArray(v) && v[0] === 'rect')[1];
+    for (const value of [
+      left * matrix.a + matrix.e,
+      (left + w) * matrix.a + matrix.e,
+      top * matrix.d + matrix.f,
+      (top + h) * matrix.d + matrix.f,
+    ])
+      assert(Math.abs(value - Math.round(value)) < 1e-10);
+    // Source placement remains physical; only the selection ring is snapped.
+    assert.deepEqual(
+      c.calls.find((v) => Array.isArray(v) && v[0] === 'draw'),
+      ['draw', image, 0, -2, 488, 680],
+    );
+  }
+  const skewed = context({ a: 1, b: 0.1, c: 0, d: 1, e: 0, f: 0 });
+  assert.throws(() => paintAbuDualPerimeter(skewed, face, image, 'black'), /axis-aligned/);
+  assert.equal(skewed.calls.at(-1), 'restore');
   const c = context();
   c.fail = true;
   assert.throws(() => paintAbuDualPerimeter(c, face, image, 'black'), /paint failure/);

@@ -1,10 +1,11 @@
+import { abuRasterHistoricalHash } from '../games/magic/tools/accuracy/abu-raster-ancestry.mjs';
 import {
   preAbuPerimeterSource,
   abuPerimeterDelta,
 } from '../games/magic/tools/accuracy/abu-perimeter-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   printingArtistDelta,
   prePrintingArtistData,
@@ -20,7 +21,7 @@ for (const [file, e] of Object.entries(p.files)) {
   assert.equal(hash(await prePrintingArtistData(file, Buffer.from(e.beforeSource))), e.before);
   await assert.rejects(
     prePrintingArtistData(file, Buffer.from(after[file] + '\nunknown')),
-    /Unreviewed (?:printing artist data|AB perimeter source)/,
+    /Unreviewed (?:printing artist data|AB perimeter source|AB raster source)/,
   );
 }
 assert.deepEqual(validatePrintingArtistDelta(p, after), {
@@ -29,7 +30,7 @@ assert.deepEqual(validatePrintingArtistDelta(p, after), {
   wordingPrintings: 2962,
 });
 const perimeter = await abuPerimeterDelta();
-assert.equal(await sourceHash('games/magic/src'), perimeter.afterRenderer);
+assert.equal(await abuRasterHistoricalHash(), perimeter.afterRenderer);
 assert.equal(perimeter.beforeRenderer, p.afterRenderer);
 assert.equal(await printingArtistHistoricalHash(), p.beforeRenderer);
 const mutate = (file, transform) => {
