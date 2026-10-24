@@ -1,3 +1,7 @@
+import { validateUnlimitedRasterGeometry } from '../games/magic/tools/accuracy/unlimited-raster-geometry-policy.mjs';
+import { abuPaperDelta } from '../games/magic/tools/accuracy/abu-paper-ancestry.mjs';
+import { abuRasterDelta } from '../games/magic/tools/accuracy/abu-raster-ancestry.mjs';
+import { gunzipSync } from 'node:zlib';
 import { abuRasterAffected } from '../games/magic/tools/accuracy/abu-raster-ancestry.mjs';
 import ts from 'typescript';
 import { parseProfileData } from '../games/magic/tools/accuracy/profile-data-modules.mjs';
@@ -20,6 +24,58 @@ for (const [file, expected] of Object.entries(data.receipt.artifacts))
   assert.equal(hash(await readFile(file)), expected, 'Changed Unlimited evidence ' + file);
 const ledger = await readJson('games/magic/fixtures/accuracy/calibration-progress.json');
 const set = ledger.sets.find((s) => s.set === '2ed');
+
+const geometry = JSON.parse(
+  gunzipSync(
+    await readFile(
+      'games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz',
+    ),
+  ),
+);
+const paperDelta = await abuPaperDelta(),
+  rasterDelta = await abuRasterDelta();
+validateUnlimitedRasterGeometry(geometry, paperDelta, rasterDelta);
+for (const mutate of [
+  (r) => r.rows.pop(),
+  (r) => {
+    r.rows[1] = r.rows[0];
+  },
+  (r) => {
+    delete r.rows[0].strips.top;
+  },
+  (r) => {
+    r.rows[0].poseHash = '0'.repeat(64);
+  },
+  (r) => {
+    r.rows[0].currentFaceHash = '0'.repeat(64);
+  },
+  (r) => {
+    r.rows[0].strips.left.best.shift = 0.5;
+  },
+  (r) => {
+    r.rows[0].strips.left.referenceAfter100 = 0;
+  },
+  (r) => {
+    r.rows[0].strips.left.samePosition100 = Number.NaN;
+  },
+  (r) => {
+    r.rows[0].strips.left.negative[0].score = 100;
+  },
+]) {
+  const invalid = structuredClone(geometry);
+  mutate(invalid);
+  assert.throws(() => validateUnlimitedRasterGeometry(invalid, paperDelta, rasterDelta));
+}
+for (const row of geometry.rows) {
+  const group = set.groups.find((g) => g.printingIds.includes(row.id));
+  assert.equal(
+    group.tasks.frameGeometry.status,
+    'validated',
+    'Five unchanged raster-selection variants require their own geometry review',
+  );
+  assert.equal(group.tasks.frameGeometry.proof.exactCurrentRenderer, paperDelta.afterRenderer);
+}
+
 assert.equal(set.groups.length, 27);
 assert.equal(
   set.groups.reduce((n, g) => n + g.printings, 0),

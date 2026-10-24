@@ -42424,9 +42424,9 @@
               }
             },
             "frameGeometry": {
-              "status": "partial",
-              "reason": "Raster material-selection seams are removed and current Original scores replayed. Physical art/paper geometry, texture and typography residuals remain open; independent corner-position proposals have not been adopted.",
-              "reviewedAt": "2026-10-21",
+              "status": "validated",
+              "reason": "The raster-outline correction preserves the physical stock/frame/art/paper edges. Four text-free frame rails and eight unchanged interior strips retain their positions within 0.1 canonical pixel and reference overlap within 0.25/100; two-pixel displacement controls remain distinguishable. Current 899-printing replay confirms exact current Unlimited pixels. Text/full-card/release reviews remain separate.",
+              "reviewedAt": "2026-10-24",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-adoption.json",
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-tone-review.json",
@@ -42439,16 +42439,18 @@
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-release-replay.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-source-delta.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-native.json.gz",
-                "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz"
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-paper-native.json.gz"
               ],
               "proof": {
                 "sourceHash": "9e7b92fbfa09dd37b45d3598a06a647bf31fa7c93825a5021bfb408d8e19e3c5",
                 "scopeHash": "085262c6be01f5c3f080aeb95bb393943bbad41b122ed4407ddc4e33daaaf3af",
-                "gatesPassed": false,
+                "gatesPassed": true,
                 "rendererHash": "752ca897e46bd9651650ac6b5b97ba20f338095b8433ab0f5a71c666c4d93071",
-                "methodHash": "17fe0425f5dba552ad094829e412633b4ee0a6bc6c1db4af8e35528d25e3ad40",
+                "methodHash": "f6ace2ef53cda97f6b341b0da68b97f6babfd43bfd0993ddb6bb788c975171aa",
                 "nativeReplayHash": "de88ef8b6e6d68c0ddc17ba501ded393e436c33a1c3a118bcd698c075d801ec7",
-                "metricsHash": "1b8e3116f257f4833a6ac7eb546fdc112c88490fb877b336d5ea7a64e4e6f633",
+                "metricsHash": "7be27a2aee259d5d0cea7379b9e2908ef29bca7ef6890146760ff7ded4be6cd7",
                 "scanTemplateHash": "b52cb58c649cfcad4fe48fd905d7390a35e5a78aa34f07ea964739a1b4330fb9",
                 "coveredPrintings": 1,
                 "calibrationNames": 1,
@@ -42459,7 +42461,9 @@
                 "sourceCensus": {
                   "heldOut": false,
                   "scope": "all-ordinary-printings-in-variant",
-                  "parameterScope": "Pixel-aligned material selection only. No scan, physical geometry, palette or typography adjustment.",
+                  "names": ["Badlands"],
+                  "parametersHash": "30f1067162651153d33a1a2da534577d370987f0571f7fd395dae1027af12dfb",
+                  "parameterScope": "Existing geometry, zero new placement/size parameters. Raster-selection antialiasing is reviewed independently. Historical native identity is retained and joined by exact bytes to the latest 899-printing census.",
                   "members": [
                     {
                       "id": "5804dcd3-d41d-4cbd-9f8f-9736f2d37a64",
@@ -42470,7 +42474,8 @@
                       "nativeFaceHash": "5ffeb6709a9da9c3fdc6e3332f2aacce6e32513c308ea52dd8815492b3a4b65d"
                     }
                   ]
-                }
+                },
+                "exactCurrentRenderer": "7edb969eee987080fb14c25292542a9dcaa227d41d41e6731babcf253439b2af"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-source-delta.json.gz": "46cb570b41114f857261ca863f241e9dd5ef0f9ed4ff4165daa2a8d136542b5f",
@@ -42478,7 +42483,12 @@
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz": "fc59be25b036a71111877b4906bead2e8cc2d7133a3ba9186271a510a32a2e95",
                 "games/magic/src/data/generated-manifest.json": "0434506fddbe5fa1b2386a56bf9aea70dfcc0a04c8cbd3b56d6983a5df22df99",
                 "games/magic/src/presentation/retro-dual-frame.ts": "f75fb2ab11c3c93c30ec52167e88b0e3247b366e2966117a266f475e3134241a",
-                "games/magic/src/presentation/retro-dual-material.ts": "22522aaa9ccee283feaeb02f9070540ce5098a4079fa8628e8b6ced1c2e44673"
+                "games/magic/src/presentation/retro-dual-material.ts": "22522aaa9ccee283feaeb02f9070540ce5098a4079fa8628e8b6ced1c2e44673",
+                "games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz": "c2920601275d6d1c5dc536733b7e98bdfeacd5e26eaeaefdb613bf477d750d23",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-paper-native.json.gz": "7b9f4e6cd780f67d0925e2a726180ed927fab1661e7ce91f09a2123a8f3e4747",
+                "games/magic/tools/accuracy/unlimited-raster-geometry-review.mjs": "f6ace2ef53cda97f6b341b0da68b97f6babfd43bfd0993ddb6bb788c975171aa",
+                "games/magic/tools/accuracy/pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+                "games/magic/tools/accuracy/unlimited-raster-geometry-policy.mjs": "688411bb96d4031fe14dffeb7b196de4133d2a39da31acd058f0b5b52e982fd6"
               },
               "runtimeGuards": {
                 "games/magic/src": "752ca897e46bd9651650ac6b5b97ba20f338095b8433ab0f5a71c666c4d93071"
@@ -51435,9 +51445,9 @@
               }
             },
             "frameGeometry": {
-              "status": "partial",
-              "reason": "Raster material-selection seams are removed and current Original scores replayed. Physical art/paper geometry, texture and typography residuals remain open; independent corner-position proposals have not been adopted.",
-              "reviewedAt": "2026-10-21",
+              "status": "validated",
+              "reason": "The raster-outline correction preserves the physical stock/frame/art/paper edges. Four text-free frame rails and eight unchanged interior strips retain their positions within 0.1 canonical pixel and reference overlap within 0.25/100; two-pixel displacement controls remain distinguishable. Current 899-printing replay confirms exact current Unlimited pixels. Text/full-card/release reviews remain separate.",
+              "reviewedAt": "2026-10-24",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-adoption.json",
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-tone-review.json",
@@ -51450,16 +51460,18 @@
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-release-replay.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-source-delta.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-native.json.gz",
-                "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz"
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-paper-native.json.gz"
               ],
               "proof": {
                 "sourceHash": "fe5913a3e825cc85d542ff4e9c6cecfa773d3cd84e41919fe769c5da27b0ec62",
                 "scopeHash": "801bdcf23bd09aa1918763f6e8d6cb3e2a8899f9a173eae9c0cb3f30aab4d0ed",
-                "gatesPassed": false,
+                "gatesPassed": true,
                 "rendererHash": "752ca897e46bd9651650ac6b5b97ba20f338095b8433ab0f5a71c666c4d93071",
-                "methodHash": "17fe0425f5dba552ad094829e412633b4ee0a6bc6c1db4af8e35528d25e3ad40",
+                "methodHash": "f6ace2ef53cda97f6b341b0da68b97f6babfd43bfd0993ddb6bb788c975171aa",
                 "nativeReplayHash": "de88ef8b6e6d68c0ddc17ba501ded393e436c33a1c3a118bcd698c075d801ec7",
-                "metricsHash": "1b8e3116f257f4833a6ac7eb546fdc112c88490fb877b336d5ea7a64e4e6f633",
+                "metricsHash": "7be27a2aee259d5d0cea7379b9e2908ef29bca7ef6890146760ff7ded4be6cd7",
                 "scanTemplateHash": "b52cb58c649cfcad4fe48fd905d7390a35e5a78aa34f07ea964739a1b4330fb9",
                 "coveredPrintings": 1,
                 "calibrationNames": 1,
@@ -51470,7 +51482,9 @@
                 "sourceCensus": {
                   "heldOut": false,
                   "scope": "all-ordinary-printings-in-variant",
-                  "parameterScope": "Pixel-aligned material selection only. No scan, physical geometry, palette or typography adjustment.",
+                  "names": ["Taiga"],
+                  "parametersHash": "30f1067162651153d33a1a2da534577d370987f0571f7fd395dae1027af12dfb",
+                  "parameterScope": "Existing geometry, zero new placement/size parameters. Raster-selection antialiasing is reviewed independently. Historical native identity is retained and joined by exact bytes to the latest 899-printing census.",
                   "members": [
                     {
                       "id": "01006833-6007-4c16-9ebb-20d31c60a57a",
@@ -51481,7 +51495,8 @@
                       "nativeFaceHash": "cc2ebdd6031fe103d0cd5adb2dd930dd560141febf4cb7740296c21b620a3495"
                     }
                   ]
-                }
+                },
+                "exactCurrentRenderer": "7edb969eee987080fb14c25292542a9dcaa227d41d41e6731babcf253439b2af"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-source-delta.json.gz": "46cb570b41114f857261ca863f241e9dd5ef0f9ed4ff4165daa2a8d136542b5f",
@@ -51489,7 +51504,12 @@
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz": "fc59be25b036a71111877b4906bead2e8cc2d7133a3ba9186271a510a32a2e95",
                 "games/magic/src/data/generated-manifest.json": "0434506fddbe5fa1b2386a56bf9aea70dfcc0a04c8cbd3b56d6983a5df22df99",
                 "games/magic/src/presentation/retro-dual-frame.ts": "f75fb2ab11c3c93c30ec52167e88b0e3247b366e2966117a266f475e3134241a",
-                "games/magic/src/presentation/retro-dual-material.ts": "22522aaa9ccee283feaeb02f9070540ce5098a4079fa8628e8b6ced1c2e44673"
+                "games/magic/src/presentation/retro-dual-material.ts": "22522aaa9ccee283feaeb02f9070540ce5098a4079fa8628e8b6ced1c2e44673",
+                "games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz": "c2920601275d6d1c5dc536733b7e98bdfeacd5e26eaeaefdb613bf477d750d23",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-paper-native.json.gz": "7b9f4e6cd780f67d0925e2a726180ed927fab1661e7ce91f09a2123a8f3e4747",
+                "games/magic/tools/accuracy/unlimited-raster-geometry-review.mjs": "f6ace2ef53cda97f6b341b0da68b97f6babfd43bfd0993ddb6bb788c975171aa",
+                "games/magic/tools/accuracy/pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+                "games/magic/tools/accuracy/unlimited-raster-geometry-policy.mjs": "688411bb96d4031fe14dffeb7b196de4133d2a39da31acd058f0b5b52e982fd6"
               },
               "runtimeGuards": {
                 "games/magic/src": "752ca897e46bd9651650ac6b5b97ba20f338095b8433ab0f5a71c666c4d93071"
@@ -56743,9 +56763,9 @@
               }
             },
             "frameGeometry": {
-              "status": "partial",
-              "reason": "Raster material-selection seams are removed and current Original scores replayed. Physical art/paper geometry, texture and typography residuals remain open; independent corner-position proposals have not been adopted.",
-              "reviewedAt": "2026-10-21",
+              "status": "validated",
+              "reason": "The raster-outline correction preserves the physical stock/frame/art/paper edges. Four text-free frame rails and eight unchanged interior strips retain their positions within 0.1 canonical pixel and reference overlap within 0.25/100; two-pixel displacement controls remain distinguishable. Current 899-printing replay confirms exact current Unlimited pixels. Text/full-card/release reviews remain separate.",
+              "reviewedAt": "2026-10-24",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-adoption.json",
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-tone-review.json",
@@ -56758,16 +56778,18 @@
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-release-replay.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-source-delta.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-native.json.gz",
-                "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz"
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-paper-native.json.gz"
               ],
               "proof": {
                 "sourceHash": "caf763b7c44ea853827c5e07f10eec06c2babc57d8bc1e0fa2b673dbf1cb5f3b",
                 "scopeHash": "8e19a78ddb2afd45e85ec2b903ef11d86b8a480b94b798ae5b95d5fd185fa12d",
-                "gatesPassed": false,
+                "gatesPassed": true,
                 "rendererHash": "752ca897e46bd9651650ac6b5b97ba20f338095b8433ab0f5a71c666c4d93071",
-                "methodHash": "17fe0425f5dba552ad094829e412633b4ee0a6bc6c1db4af8e35528d25e3ad40",
+                "methodHash": "f6ace2ef53cda97f6b341b0da68b97f6babfd43bfd0993ddb6bb788c975171aa",
                 "nativeReplayHash": "de88ef8b6e6d68c0ddc17ba501ded393e436c33a1c3a118bcd698c075d801ec7",
-                "metricsHash": "1b8e3116f257f4833a6ac7eb546fdc112c88490fb877b336d5ea7a64e4e6f633",
+                "metricsHash": "7be27a2aee259d5d0cea7379b9e2908ef29bca7ef6890146760ff7ded4be6cd7",
                 "scanTemplateHash": "b52cb58c649cfcad4fe48fd905d7390a35e5a78aa34f07ea964739a1b4330fb9",
                 "coveredPrintings": 1,
                 "calibrationNames": 1,
@@ -56778,7 +56800,9 @@
                 "sourceCensus": {
                   "heldOut": false,
                   "scope": "all-ordinary-printings-in-variant",
-                  "parameterScope": "Pixel-aligned material selection only. No scan, physical geometry, palette or typography adjustment.",
+                  "names": ["Volcanic Island"],
+                  "parametersHash": "30f1067162651153d33a1a2da534577d370987f0571f7fd395dae1027af12dfb",
+                  "parameterScope": "Existing geometry, zero new placement/size parameters. Raster-selection antialiasing is reviewed independently. Historical native identity is retained and joined by exact bytes to the latest 899-printing census.",
                   "members": [
                     {
                       "id": "9dc7ab05-a5f5-4a02-87e7-3c47be35b5cb",
@@ -56789,7 +56813,8 @@
                       "nativeFaceHash": "1d817d11a76c036b7f651fb715ecbba681423752d71e0190a2a6463657660210"
                     }
                   ]
-                }
+                },
+                "exactCurrentRenderer": "7edb969eee987080fb14c25292542a9dcaa227d41d41e6731babcf253439b2af"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-source-delta.json.gz": "46cb570b41114f857261ca863f241e9dd5ef0f9ed4ff4165daa2a8d136542b5f",
@@ -56797,7 +56822,12 @@
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz": "fc59be25b036a71111877b4906bead2e8cc2d7133a3ba9186271a510a32a2e95",
                 "games/magic/src/data/generated-manifest.json": "0434506fddbe5fa1b2386a56bf9aea70dfcc0a04c8cbd3b56d6983a5df22df99",
                 "games/magic/src/presentation/retro-dual-frame.ts": "f75fb2ab11c3c93c30ec52167e88b0e3247b366e2966117a266f475e3134241a",
-                "games/magic/src/presentation/retro-dual-material.ts": "22522aaa9ccee283feaeb02f9070540ce5098a4079fa8628e8b6ced1c2e44673"
+                "games/magic/src/presentation/retro-dual-material.ts": "22522aaa9ccee283feaeb02f9070540ce5098a4079fa8628e8b6ced1c2e44673",
+                "games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz": "c2920601275d6d1c5dc536733b7e98bdfeacd5e26eaeaefdb613bf477d750d23",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-paper-native.json.gz": "7b9f4e6cd780f67d0925e2a726180ed927fab1661e7ce91f09a2123a8f3e4747",
+                "games/magic/tools/accuracy/unlimited-raster-geometry-review.mjs": "f6ace2ef53cda97f6b341b0da68b97f6babfd43bfd0993ddb6bb788c975171aa",
+                "games/magic/tools/accuracy/pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+                "games/magic/tools/accuracy/unlimited-raster-geometry-policy.mjs": "688411bb96d4031fe14dffeb7b196de4133d2a39da31acd058f0b5b52e982fd6"
               },
               "runtimeGuards": {
                 "games/magic/src": "752ca897e46bd9651650ac6b5b97ba20f338095b8433ab0f5a71c666c4d93071"
@@ -60559,9 +60589,9 @@
               }
             },
             "frameGeometry": {
-              "status": "partial",
-              "reason": "Raster material-selection seams are removed and current Original scores replayed. Physical art/paper geometry, texture and typography residuals remain open; independent corner-position proposals have not been adopted.",
-              "reviewedAt": "2026-10-21",
+              "status": "validated",
+              "reason": "The raster-outline correction preserves the physical stock/frame/art/paper edges. Four text-free frame rails and eight unchanged interior strips retain their positions within 0.1 canonical pixel and reference overlap within 0.25/100; two-pixel displacement controls remain distinguishable. Current 899-printing replay confirms exact current Unlimited pixels. Text/full-card/release reviews remain separate.",
+              "reviewedAt": "2026-10-24",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-adoption.json",
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-tone-review.json",
@@ -60574,16 +60604,18 @@
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-release-replay.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-source-delta.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-native.json.gz",
-                "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz"
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-paper-native.json.gz"
               ],
               "proof": {
                 "sourceHash": "7ca763b82502280f82d92d503332ea1fe8032b8c5e56034175edc5c3d45e2c10",
                 "scopeHash": "32a5c5c9f17feb8fb7e841782b3433bf7d5ee3c4b07d3b83f8c3ed3db8b57818",
-                "gatesPassed": false,
+                "gatesPassed": true,
                 "rendererHash": "752ca897e46bd9651650ac6b5b97ba20f338095b8433ab0f5a71c666c4d93071",
-                "methodHash": "17fe0425f5dba552ad094829e412633b4ee0a6bc6c1db4af8e35528d25e3ad40",
+                "methodHash": "f6ace2ef53cda97f6b341b0da68b97f6babfd43bfd0993ddb6bb788c975171aa",
                 "nativeReplayHash": "de88ef8b6e6d68c0ddc17ba501ded393e436c33a1c3a118bcd698c075d801ec7",
-                "metricsHash": "1b8e3116f257f4833a6ac7eb546fdc112c88490fb877b336d5ea7a64e4e6f633",
+                "metricsHash": "7be27a2aee259d5d0cea7379b9e2908ef29bca7ef6890146760ff7ded4be6cd7",
                 "scanTemplateHash": "b52cb58c649cfcad4fe48fd905d7390a35e5a78aa34f07ea964739a1b4330fb9",
                 "coveredPrintings": 1,
                 "calibrationNames": 1,
@@ -60594,7 +60626,9 @@
                 "sourceCensus": {
                   "heldOut": false,
                   "scope": "all-ordinary-printings-in-variant",
-                  "parameterScope": "Pixel-aligned material selection only. No scan, physical geometry, palette or typography adjustment.",
+                  "names": ["Scrubland"],
+                  "parametersHash": "30f1067162651153d33a1a2da534577d370987f0571f7fd395dae1027af12dfb",
+                  "parameterScope": "Existing geometry, zero new placement/size parameters. Raster-selection antialiasing is reviewed independently. Historical native identity is retained and joined by exact bytes to the latest 899-printing census.",
                   "members": [
                     {
                       "id": "7e18d625-0950-4062-8d41-f8b681eff234",
@@ -60605,7 +60639,8 @@
                       "nativeFaceHash": "fcfc2ea30328f6884b2d87163d1dbdf55f5150baa9dfdec4386688422b823d1b"
                     }
                   ]
-                }
+                },
+                "exactCurrentRenderer": "7edb969eee987080fb14c25292542a9dcaa227d41d41e6731babcf253439b2af"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-source-delta.json.gz": "46cb570b41114f857261ca863f241e9dd5ef0f9ed4ff4165daa2a8d136542b5f",
@@ -60613,7 +60648,12 @@
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz": "fc59be25b036a71111877b4906bead2e8cc2d7133a3ba9186271a510a32a2e95",
                 "games/magic/src/data/generated-manifest.json": "0434506fddbe5fa1b2386a56bf9aea70dfcc0a04c8cbd3b56d6983a5df22df99",
                 "games/magic/src/presentation/retro-dual-frame.ts": "f75fb2ab11c3c93c30ec52167e88b0e3247b366e2966117a266f475e3134241a",
-                "games/magic/src/presentation/retro-dual-material.ts": "22522aaa9ccee283feaeb02f9070540ce5098a4079fa8628e8b6ced1c2e44673"
+                "games/magic/src/presentation/retro-dual-material.ts": "22522aaa9ccee283feaeb02f9070540ce5098a4079fa8628e8b6ced1c2e44673",
+                "games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz": "c2920601275d6d1c5dc536733b7e98bdfeacd5e26eaeaefdb613bf477d750d23",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-paper-native.json.gz": "7b9f4e6cd780f67d0925e2a726180ed927fab1661e7ce91f09a2123a8f3e4747",
+                "games/magic/tools/accuracy/unlimited-raster-geometry-review.mjs": "f6ace2ef53cda97f6b341b0da68b97f6babfd43bfd0993ddb6bb788c975171aa",
+                "games/magic/tools/accuracy/pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+                "games/magic/tools/accuracy/unlimited-raster-geometry-policy.mjs": "688411bb96d4031fe14dffeb7b196de4133d2a39da31acd058f0b5b52e982fd6"
               },
               "runtimeGuards": {
                 "games/magic/src": "752ca897e46bd9651650ac6b5b97ba20f338095b8433ab0f5a71c666c4d93071"
@@ -62106,9 +62146,9 @@
               }
             },
             "frameGeometry": {
-              "status": "partial",
-              "reason": "Raster material-selection seams are removed and current Original scores replayed. Physical art/paper geometry, texture and typography residuals remain open; independent corner-position proposals have not been adopted.",
-              "reviewedAt": "2026-10-21",
+              "status": "validated",
+              "reason": "The raster-outline correction preserves the physical stock/frame/art/paper edges. Four text-free frame rails and eight unchanged interior strips retain their positions within 0.1 canonical pixel and reference overlap within 0.25/100; two-pixel displacement controls remain distinguishable. Current 899-printing replay confirms exact current Unlimited pixels. Text/full-card/release reviews remain separate.",
+              "reviewedAt": "2026-10-24",
               "evidence": [
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-tone-adoption.json",
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-dual-tone-review.json",
@@ -62121,16 +62161,18 @@
                 "games/magic/fixtures/accuracy/early-through-fourth/2ed-final-release-replay.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-source-delta.json.gz",
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-native.json.gz",
-                "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz"
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-paper-native.json.gz"
               ],
               "proof": {
                 "sourceHash": "246d2f0f8bca47bc3d4d5c8f007e4324f2f97c49908464656c9f0930f7cc8680",
                 "scopeHash": "7f016c118fd4550cdd0dc31cc12735285b9da70ca5387cf7cbec6289721cbdbf",
-                "gatesPassed": false,
+                "gatesPassed": true,
                 "rendererHash": "752ca897e46bd9651650ac6b5b97ba20f338095b8433ab0f5a71c666c4d93071",
-                "methodHash": "17fe0425f5dba552ad094829e412633b4ee0a6bc6c1db4af8e35528d25e3ad40",
+                "methodHash": "f6ace2ef53cda97f6b341b0da68b97f6babfd43bfd0993ddb6bb788c975171aa",
                 "nativeReplayHash": "de88ef8b6e6d68c0ddc17ba501ded393e436c33a1c3a118bcd698c075d801ec7",
-                "metricsHash": "1b8e3116f257f4833a6ac7eb546fdc112c88490fb877b336d5ea7a64e4e6f633",
+                "metricsHash": "7be27a2aee259d5d0cea7379b9e2908ef29bca7ef6890146760ff7ded4be6cd7",
                 "scanTemplateHash": "b52cb58c649cfcad4fe48fd905d7390a35e5a78aa34f07ea964739a1b4330fb9",
                 "coveredPrintings": 1,
                 "calibrationNames": 1,
@@ -62141,7 +62183,9 @@
                 "sourceCensus": {
                   "heldOut": false,
                   "scope": "all-ordinary-printings-in-variant",
-                  "parameterScope": "Pixel-aligned material selection only. No scan, physical geometry, palette or typography adjustment.",
+                  "names": ["Plateau"],
+                  "parametersHash": "30f1067162651153d33a1a2da534577d370987f0571f7fd395dae1027af12dfb",
+                  "parameterScope": "Existing geometry, zero new placement/size parameters. Raster-selection antialiasing is reviewed independently. Historical native identity is retained and joined by exact bytes to the latest 899-printing census.",
                   "members": [
                     {
                       "id": "de38f96c-5d17-4cf2-9951-f0866eadd011",
@@ -62152,7 +62196,8 @@
                       "nativeFaceHash": "c721639caf79e51da58263ec2e28caf3767642bbb993e937f49ef7f6ec3c7148"
                     }
                   ]
-                }
+                },
+                "exactCurrentRenderer": "7edb969eee987080fb14c25292542a9dcaa227d41d41e6731babcf253439b2af"
               },
               "guards": {
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-source-delta.json.gz": "46cb570b41114f857261ca863f241e9dd5ef0f9ed4ff4165daa2a8d136542b5f",
@@ -62160,7 +62205,12 @@
                 "games/magic/fixtures/accuracy/early-through-fourth/abu-raster-current-scores.json.gz": "fc59be25b036a71111877b4906bead2e8cc2d7133a3ba9186271a510a32a2e95",
                 "games/magic/src/data/generated-manifest.json": "0434506fddbe5fa1b2386a56bf9aea70dfcc0a04c8cbd3b56d6983a5df22df99",
                 "games/magic/src/presentation/retro-dual-frame.ts": "f75fb2ab11c3c93c30ec52167e88b0e3247b366e2966117a266f475e3134241a",
-                "games/magic/src/presentation/retro-dual-material.ts": "22522aaa9ccee283feaeb02f9070540ce5098a4079fa8628e8b6ced1c2e44673"
+                "games/magic/src/presentation/retro-dual-material.ts": "22522aaa9ccee283feaeb02f9070540ce5098a4079fa8628e8b6ced1c2e44673",
+                "games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz": "c2920601275d6d1c5dc536733b7e98bdfeacd5e26eaeaefdb613bf477d750d23",
+                "games/magic/fixtures/accuracy/early-through-fourth/abu-paper-native.json.gz": "7b9f4e6cd780f67d0925e2a726180ed927fab1661e7ce91f09a2123a8f3e4747",
+                "games/magic/tools/accuracy/unlimited-raster-geometry-review.mjs": "f6ace2ef53cda97f6b341b0da68b97f6babfd43bfd0993ddb6bb788c975171aa",
+                "games/magic/tools/accuracy/pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+                "games/magic/tools/accuracy/unlimited-raster-geometry-policy.mjs": "688411bb96d4031fe14dffeb7b196de4133d2a39da31acd058f0b5b52e982fd6"
               },
               "runtimeGuards": {
                 "games/magic/src": "752ca897e46bd9651650ac6b5b97ba20f338095b8433ab0f5a71c666c4d93071"
@@ -64085,6 +64135,19 @@
           },
           "retainedRegressions": [],
           "scope": "Native census of899 unchanged scan poses.19 panels rescored,880 exact identities reused. Fresh pigment checks retain the existing color choice without refitting. Geometry/text/source-pattern residuals remain explicit."
+        },
+        "rasterGeometryReview": {
+          "evidence": "games/magic/fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz",
+          "currentRenderer": "7edb969eee987080fb14c25292542a9dcaa227d41d41e6731babcf253439b2af",
+          "recordedNativeRenderer": "752ca897e46bd9651650ac6b5b97ba20f338095b8433ab0f5a71c666c4d93071",
+          "printings": 5,
+          "policy": {
+            "minimumPosition100": 99.5,
+            "maximumShiftPixels": 0.1,
+            "maximumReferenceLoss100": 0.25,
+            "minimumDisplacedLoss100": 1
+          },
+          "scope": "Five previously partial geometry tasks revalidated. No text/full-card/release completion or scan refit."
         }
       }
     },

@@ -169,6 +169,33 @@ support. Current scan poses remain fixed. Remaining art-bottom, frame texture
 and flavor/wrapping differences still require review; this update does not mark
 an entire set complete.
 
+## Unlimited geometry after raster cleanup
+
+The five Unlimited dual-land variants affected by raster selection retain their
+existing geometry approval. The
+[edge review](../fixtures/accuracy/early-through-fourth/2ed-raster-geometry-review.json.gz)
+checks four text-free outer rails and eight art/paper edges per printing.
+All sixty profiles retain the same measured position and reference agreement.
+Deliberate two-pixel shifts lose at least 11.99 points, so the check can detect
+movement. Native interior pixels and silhouettes also remain identical.
+
+This closes the geometry review for Badlands, Plateau, Scrubland, Taiga and
+Volcanic Island. It does not close text, full-card or publication tasks. The
+historical renderer identity stays attached to the original capture; exact
+native hashes connect it to the current replay.
+
+Reproduce the measurement with the raster replay and frozen input snapshot:
+
+```sh
+node games/magic/tools/accuracy/unlimited-raster-geometry-review.mjs \
+  "$ABU_RASTER_NATIVE" "$ABU_INPUTS" "$UNLIMITED_GEOMETRY_REVIEW"
+```
+
+The ledger importer checks all five identities and all twelve strips, rejects
+missing or nonfinite measurements, and requires the declared position,
+reference-agreement and displacement gates. These are geometry-preservation
+checks; they do not estimate a new scan pose.
+
 ## Reproduce from the cache
 
 Use Node 22+, the repository dependencies and Playwright Chromium. Set
