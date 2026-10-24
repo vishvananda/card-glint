@@ -481,7 +481,8 @@ transforms, metric dependencies, component weights and score coverage.
 
 Thirty-two changed images improve. Unlimited Stasis loses 1.435 whole-card
 points after its physical wording correction; that result remains included.
-These are development scores, not a release or a claim of exact reproduction.
+These finite-source scores reuse development references and do not claim exact reproduction.
+Publication is recorded separately below.
 Older component reviews remain reusable only where the exact source projection
 and scope support them. A source-history projection does not approve a new fit.
 
@@ -517,8 +518,16 @@ The [current review](../fixtures/accuracy/early-through-fourth/abu-current-revie
 accepts the shared library defaults as an audited baseline for all 899 Original
 printings. It binds the 33 changed images to direct aligned-scan review and
 retains the 866 exact image identities, existing component reviews and explicit
-outliers. The checklist has no open component or wording checks; actual
-publication and matching Lab scores remain required before set completion.
+outliers. The [0.7.1 publication receipt](../fixtures/accuracy/early-through-fourth/abu-publication-071.json)
+records the successful release checks, verified artifacts and all 899 current
+Original scores installed in [Lab](https://cardforge.fyi/lab/). Alpha, Beta and
+Unlimited are complete as audited baselines, with the disclosed residuals
+retained. Historical scores and reviews remain available.
+
+The [Alpha study](https://tetrarcum.com/alpha/) now uses the checked 0.7.1 runtime
+and both regenerated printing columns. Its 295 real printings have fresh paired
+scores; synthetic Volcanic Island remains excluded. The five experimental
+art-neutral regressions remain flagged for review.
 
 The review reader rejects missing members, changed image/reference/pose/input
 identities, foreign sets, altered group dependencies and markers without their

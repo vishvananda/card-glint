@@ -12,7 +12,6 @@ import {
 } from '../games/magic/tools/accuracy/calibration-groups.mjs';
 import { preserveCalibrationReviews } from '../games/magic/tools/accuracy/calibration-reviews.mjs';
 import { calibrationReport } from '../games/magic/tools/accuracy/calibration-report.mjs';
-import { unlimitedCalibrationEvidence } from '../games/magic/tools/accuracy/calibration-unlimited-current.mjs';
 import { applyEarlyOriginalWording } from '../games/magic/tools/accuracy/calibration-original-wording.mjs';
 import { preDarkWordingSource } from './magic-dark-wording-source-guard.mjs';
 import { preDarkBodySource } from './magic-dark-body-source-guard.mjs';
@@ -253,20 +252,18 @@ assert.deepEqual(
   eelGroup.tasks.rules.originalInput.sources,
 );
 assert.equal(reports.length, 272);
-const unlimitedReceipt = (await unlimitedCalibrationEvidence()).receipt;
-const unlimitedReleased = ledger.sets
-  .find((s) => s.set === '2ed')
-  .groups.every(
-    (g) =>
-      g.tasks.release.status === 'validated' &&
-      g.tasks.release.proof.rendererHash === unlimitedReceipt.rendererHash,
-  );
+const abuPublication = JSON.parse(
+  await readFile('games/magic/fixtures/accuracy/early-through-fourth/abu-publication-071.json'),
+);
+assert.equal(abuPublication.checksumsVerified, true);
+assert.equal(abuPublication.workflow.conclusion, 'success');
+assert.equal(abuPublication.published.sourceCommit, abuPublication.workflow.headSha);
 assert.deepEqual(
   reports
     .filter((s) => s.complete)
     .map((s) => s.set)
     .sort(),
-  unlimitedReleased ? ['2ed'] : [],
+  ['2ed', 'lea', 'leb'],
 );
 const alphaReport = reports.find((s) => s.set === 'lea');
 assert.equal(alphaReport.byTask.headings.validated, alphaReport.groups);
@@ -279,7 +276,7 @@ for (const [code, count] of [
   const current = reports.find((s) => s.set === code);
   assert.equal(current.byTask.frameGeometry.validated, current.groups);
   assert.equal(current.byTask.frameColor.validated, current.groups);
-  assert.equal(current.complete, false);
+  assert.equal(current.complete, true);
   const duals = ledger.sets
     .find((s) => s.set === code)
     .groups.filter((g) => g.tasks.frameGeometry.proof?.abuCurrentReview);

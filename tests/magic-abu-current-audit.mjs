@@ -14,7 +14,8 @@ const sets = ledger.sets.filter((s) => ['lea', 'leb', '2ed'].includes(s.set));
 const reports = await calibrationReport({ sets });
 for (const report of reports) {
   assert.equal(report.inventoryReady, true);
-  assert(report.outstanding.every((r) => r.task === 'release'));
+  assert.equal(report.outstanding.length, 0);
+  assert.equal(report.complete, true);
   assert.equal(report.originalRulesInputs.ready, report.printings);
   assert.equal(report.originalTypeInputs.ready, report.printings);
   assert.equal(report.counts.stale, 0);
@@ -27,6 +28,33 @@ for (const set of sets)
       assert(await abuCurrentApproval(group.tasks[task], group, task, false, set.set));
       assert.equal(group.tasks[task].proof.sourceCensus.heldOut, false);
     }
+const publicationFile =
+  'games/magic/fixtures/accuracy/early-through-fourth/abu-publication-071.json';
+const publicationBytes = await readFile(publicationFile);
+const publication = JSON.parse(publicationBytes);
+assert.equal(publication.published.version, '0.7.1');
+assert.equal(publication.workflow.status, 'completed');
+assert.equal(publication.workflow.conclusion, 'success');
+assert.equal(publication.workflow.headSha, publication.published.sourceCommit);
+assert.equal(publication.checksumsVerified, true);
+assert.equal(publication.rendererHash, a.flow.afterRenderer);
+assert.equal(publication.lab.scored, 899);
+assert.equal(publication.lab.unmatched, 0);
+assert.equal(publication.lab.metricPolicyDifferences, 0);
+assert.equal(publication.alphaPreview.version, '0.7.1');
+assert.equal(publication.alphaPreview.experimentalFramesShipped, false);
+const { hash } = await import('../games/magic/tools/accuracy/common.mjs');
+for (const set of sets)
+  for (const group of set.groups) {
+    const release = group.tasks.release;
+    assert.equal(release.status, 'validated');
+    assert.equal(release.proof.version, publication.published.version);
+    assert.equal(release.proof.publishedCommit, publication.published.sourceCommit);
+    assert.equal(release.proof.checksPassed, true);
+    assert.equal(release.proof.publicationReceiptHash, hash(publicationBytes));
+    assert.equal(release.guards[publicationFile], hash(publicationBytes));
+    assert(await abuCurrentApproval(release, group, 'release', false, set.set));
+  }
 const set = sets[0],
   group = set.groups.find((g) => g.tasks.rules.proof?.abuCurrentReview);
 const item = group.tasks.rules;

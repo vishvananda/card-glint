@@ -171,7 +171,11 @@ assert.equal(reports[0].originalRulesInputs.ready, 302 - staleRules);
 assert.equal(reports[0].originalRulesInputs.stale, staleRules);
 assert.equal(reports[0].originalTypeInputs.ready, 302);
 assert.equal(reports[0].counts['needs-audit'], unreviewedSourceGroups.length);
-assert.equal(reports[0].complete, false, 'An unpublished audit cannot complete Unlimited');
+assert.equal(
+  reports[0].complete,
+  true,
+  'The current audit has checked publication and matching Lab metrics',
+);
 for (const row of reports[0].outstanding) {
   if (changedTasks.has(row.task)) continue;
   const group = set.groups.find((g) => g.key === row.group);
