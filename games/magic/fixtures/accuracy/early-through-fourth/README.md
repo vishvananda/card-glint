@@ -61,6 +61,46 @@ The [Collectors wording preflight](collectors-original-preflight.json) records
 original-wording proposals before running their layout fits. Cached art/scans
 alone do not make those inputs ready for calibration.
 
+## Collectors preparation: wording and scan boundaries
+
+The compressed [wording proposals](collectors-original-proposals.json.gz) contain
+604 target-specific proposals from current reviewed Beta Original inputs. Each
+set has 216 type labels that differ from canonical data. These are unapproved:
+review the target scans before importing any field. Artist credits require a
+separate physical check. A donor's layout adjustments are never copied.
+
+[Normalization diagnostics](collectors-normalization-preparation.json.gz) retain
+both numerical runs and their templates. The old top search stopped at y30,
+while the inspected colored frame starts around y31–33. Extending that window
+to y34 raises numerical acceptance from 260 to 297 of 302 in each set, with no
+lost passes. The five remaining dark-bottom cases remain rejected; a future
+corner certificate needs independent evidence. The expanded band has only a
+sampled visual review and is not yet approved for renderer fitting.
+
+All 302 paired CED/CEI front references have identical cached bytes. They count
+as 302 distinct images, not 604 independent validation examples. Both runs
+reproduce identical numerical results for corresponding fronts.
+
+```sh
+node games/magic/tools/accuracy/collectors-wording-proposals.mjs "$ABU_INPUTS" "$COLLECTORS_PROPOSALS"
+node games/magic/tools/accuracy/early-scan-only-inputs.mjs ced "$COLLECTORS_STUDY/ced-registration"
+node games/magic/tools/accuracy/early-scan-only-inputs.mjs cei "$COLLECTORS_STUDY/cei-registration"
+node games/magic/tools/accuracy/early-calibration-normalize.mjs "$COLLECTORS_STUDY/ced-registration/scan-only-inputs.json" "$COLLECTORS_STUDY/ced-registration/normalization"
+node games/magic/tools/accuracy/collectors-calibration-normalize-v2.mjs "$COLLECTORS_STUDY/ced-registration/scan-only-inputs.json" "$COLLECTORS_STUDY/ced-registration/normalization-v2"
+```
+
+Repeat the last two commands for CEI, then archive both sets:
+
+```sh
+node games/magic/tools/accuracy/collectors-normalization-report.mjs "$COLLECTORS_STUDY" "$COLLECTORS_REPORT"
+node tests/magic-collectors-frame-band.mjs
+```
+
+The source-object cache is required through `MAGIC_ACCURACY_CACHE`. These tools
+neither render Oracle fallback text nor change shipped calibration values.
+Keep the separate experimental entry: editing the historical normalizer would
+invalidate earlier method receipts.
+
 ## Unlimited preparation (historical)
 
 `2ed-stage.json` records all 302 cached scans/art objects and a numerically passing
