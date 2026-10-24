@@ -1,3 +1,4 @@
+import { abuCurrentApproval } from './abu-current-review.mjs';
 import {
   abuFlowAffected,
   abuFlowRuntimeCompatible,
@@ -85,34 +86,42 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
-        if (await abuFlowAffected(set.set, task, original, group)) {
+        const currentAbu = await abuCurrentApproval(item, group, task, original, set.set);
+        if (item.proof?.abuCurrentReview && !currentAbu) {
+          item.status = original ? 'stale' : 'needs-audit';
+          item.reason =
+            'The current ABU review does not match this set, component, source dependency or complete native member census.';
+          continue;
+        }
+        if (!currentAbu && (await abuFlowAffected(set.set, task, original, group))) {
           item.status = original ? 'stale' : 'needs-audit';
           item.reason =
             'Original ABU body fitting and three reviewed Stasis wordings changed. This cohort needs current body/reference/full-card evidence; unchanged components retain their scoped checks.';
           continue;
         }
-        if (await abuArtAffected(set.set, task, original, group)) {
+        if (!currentAbu && (await abuArtAffected(set.set, task, original, group))) {
           item.status = 'needs-audit';
           item.reason =
             'The shared Alpha/Beta dual art aperture is two pixels shorter. Geometry and full-card approvals need the current scoped evidence; unrelated components and Original wording retain their checks.';
           continue;
         }
         const flavorAffected = await printingFlavorAffected(set.set, task, original, group);
-        if (flavorAffected && !(await printingFlavorApprovalCurrent(item, group))) {
+        if (flavorAffected && !currentAbu && !(await printingFlavorApprovalCurrent(item, group))) {
           item.status = 'needs-audit';
           item.reason =
             'Pearled Unicorn now preserves its printed attribution paragraph. This exact printing needs current flavor/reference/full-card evidence; unrelated wording and components retain their own checks.';
           continue;
         }
         const paperAffected = await abuPaperAffected(set.set, task, original, group);
-        if (paperAffected && !(await abuPaperApprovalCurrent(item, group))) {
+        if (paperAffected && !currentAbu && !(await abuPaperApprovalCurrent(item, group))) {
           item.status = 'needs-audit';
           item.reason =
             'The Alpha/Beta dual striped paper panel changed geometry. Frame/paper and full-card approvals require the new scoped replay; unchanged components and original wording retain their own evidence.';
           continue;
         }
         const rasterAffected = await abuRasterAffected(set.set, task, original, group);
-        const rasterCurrent = rasterAffected && (await abuRasterApprovalCurrent(item, group));
+        const rasterCurrent =
+          rasterAffected && (currentAbu || (await abuRasterApprovalCurrent(item, group)));
         if (rasterAffected && !rasterCurrent) {
           item.status = 'needs-audit';
           item.reason =
@@ -120,7 +129,7 @@ export async function calibrationReport(ledger) {
           continue;
         }
         const perimeterAffected = await abuPerimeterAffected(set.set, task, original, group);
-        if (perimeterAffected && !(await abuPerimeterApprovalCurrent(item, group))) {
+        if (perimeterAffected && !currentAbu && !(await abuPerimeterApprovalCurrent(item, group))) {
           item.status = 'needs-audit';
           item.reason =
             'The shared Alpha/Beta dual perimeter changed. Frame geometry and whole-card approvals need the current scoped native replay; unchanged interior components and source wording retain their own evidence.';
@@ -130,6 +139,7 @@ export async function calibrationReport(ledger) {
         const artistDataAffected = await printingArtistAffected(set.set, task, original, group);
         if (
           artistDataAffected &&
+          !currentAbu &&
           item.proof?.printingArtistSource !== (await printingArtistDelta()).afterRenderer
         ) {
           item.status = 'needs-audit';
@@ -139,6 +149,7 @@ export async function calibrationReport(ledger) {
         }
         if (
           fractionalAffected &&
+          !currentAbu &&
           item.proof?.abuFractionalSource !== (await abuFractionalAncestry()).afterRenderer
         ) {
           item.status = 'needs-audit';
@@ -171,7 +182,11 @@ export async function calibrationReport(ledger) {
           continue;
         }
         const earlyAffected = await earlyCalibrationAffected(set.set, group, task, original);
-        if (earlyAffected && item.proof?.earlyBatchReceipt !== EARLY_SOURCE_RECEIPT) {
+        if (
+          earlyAffected &&
+          !currentAbu &&
+          item.proof?.earlyBatchReceipt !== EARLY_SOURCE_RECEIPT
+        ) {
           item.status = original ? 'stale' : 'needs-audit';
           item.reason =
             'The early-set batch changes this printing/component; its previous fit needs a current source-bound review.';

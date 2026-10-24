@@ -510,3 +510,18 @@ Version changed asset URLs so existing browsers receive the update. Verify the
 actual served renderer and card output before switching the live preview.
 Retain older score identities as history; do not label old measurements as
 results from the new release.
+
+## Finite audit decision
+
+The [current review](../fixtures/accuracy/early-through-fourth/abu-current-review.json)
+accepts the shared library defaults as an audited baseline for all 899 Original
+printings. It binds the 33 changed images to direct aligned-scan review and
+retains the 866 exact image identities, existing component reviews and explicit
+outliers. The checklist has no open component or wording checks; actual
+publication and matching Lab scores remain required before set completion.
+
+The review reader rejects missing members, changed image/reference/pose/input
+identities, foreign sets, altered group dependencies and markers without their
+full evidence. Experimental reconstructed frames remain separate from this
+library audit. Beta Clone's wrapping, flavor punctuation and Alpha Savannah's
+source-pattern/art-edge loss remain visible follow-up issues.

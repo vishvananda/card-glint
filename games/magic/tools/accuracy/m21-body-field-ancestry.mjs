@@ -44,8 +44,9 @@ async function equivalence() {
 /** M21 historical original-input guards only. No other set, changed printing
  * text, Oracle score, or renderer identity inherits this compatibility. */
 export async function preM21BodyFieldSource(file, bytes, set) {
-  if (set !== 'm21' || file !== 'games/magic/tools/accuracy/printing-fields.mjs') return bytes;
+  if (set !== 'm21') return bytes;
   bytes = preAbuFlowToolSource(file, bytes);
+  if (file !== 'games/magic/tools/accuracy/printing-fields.mjs') return bytes;
   const { change } = await equivalence();
   if (hash(bytes) === change.before) return bytes;
   assert.equal(hash(bytes), change.after, 'Unreviewed M21 body-field adapter');

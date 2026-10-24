@@ -1,3 +1,4 @@
+import { abuCurrentApproval } from '../games/magic/tools/accuracy/abu-current-review.mjs';
 import { abuFlowAffected } from '../games/magic/tools/accuracy/abu-flow-ancestry.mjs';
 import { validateUnlimitedRasterGeometry } from '../games/magic/tools/accuracy/unlimited-raster-geometry-policy.mjs';
 import { abuPaperDelta } from '../games/magic/tools/accuracy/abu-paper-ancestry.mjs';
@@ -128,7 +129,13 @@ for (const group of set.groups)
     );
     const outlineChanged =
       task === 'frameGeometry' && (await abuRasterAffected('2ed', task, false, group));
-    if (await abuFlowAffected('2ed', task, false, group)) {
+    if (
+      ['validated', 'validated-default'].includes(recorded.status) &&
+      (await abuCurrentApproval(recorded, group, task, false, '2ed'))
+    ) {
+      assert.equal(outstanding, undefined, 'Exact current source census lost approval');
+      expectedValidated++;
+    } else if (await abuFlowAffected('2ed', task, false, group)) {
       if (['validated', 'validated-default'].includes(recorded.status))
         assert.equal(
           outstanding?.status,
@@ -154,13 +161,17 @@ assert.equal(reports[0].counts.validated, expectedValidated);
 const sourceChangedGroups = [];
 for (const group of set.groups)
   if (await abuFlowAffected('2ed', 'rules', true, group)) sourceChangedGroups.push(group);
-const staleRules = sourceChangedGroups.reduce((sum, g) => sum + g.printings, 0);
+const unreviewedSourceGroups = [];
+for (const group of sourceChangedGroups)
+  if (!(await abuCurrentApproval(group.tasks.rules.originalInput, group, 'rules', true, '2ed')))
+    unreviewedSourceGroups.push(group);
+const staleRules = unreviewedSourceGroups.reduce((sum, g) => sum + g.printings, 0);
 assert.equal(sourceChangedGroups.length, 1);
 assert.equal(reports[0].originalRulesInputs.ready, 302 - staleRules);
 assert.equal(reports[0].originalRulesInputs.stale, staleRules);
 assert.equal(reports[0].originalTypeInputs.ready, 302);
-assert.equal(reports[0].counts['needs-audit'], sourceChangedGroups.length);
-assert.equal(reports[0].complete, false, 'A partial text audit cannot complete Unlimited');
+assert.equal(reports[0].counts['needs-audit'], unreviewedSourceGroups.length);
+assert.equal(reports[0].complete, false, 'An unpublished audit cannot complete Unlimited');
 for (const row of reports[0].outstanding) {
   if (changedTasks.has(row.task)) continue;
   const group = set.groups.find((g) => g.key === row.group);
@@ -180,7 +191,13 @@ const guarded = tampered.groups.find((g) => g.tasks.fullCard.status === 'validat
 assert(guarded, 'Need an unchanged approved group as a tamper control');
 guarded.guards['games/magic/src/calibration/sets/2ed.ts'] = '0'.repeat(64);
 const invalid = await calibrationReport({ sets: [tampered] });
-assert(invalid[0].outstanding.some((r) => r.task === 'fullCard' && r.status === 'stale'));
+assert(
+  invalid[0].outstanding.some(
+    (r) =>
+      r.task === 'fullCard' &&
+      r.status === (guarded.tasks.fullCard.proof.abuCurrentReview ? 'needs-audit' : 'stale'),
+  ),
+);
 assert(data.receipt.metricCoverage.includes('excluded'));
 assert.equal(data.receipt.native.artistOnlyOriginalChanges, 0);
 assert.equal(data.receipt.native.historicalArtistCorrections, 13);
