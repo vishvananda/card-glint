@@ -1,3 +1,4 @@
+import { preAbuArtSource } from '../games/magic/tools/accuracy/abu-art-ancestry.mjs';
 import { abuPaperAffected } from '../games/magic/tools/accuracy/abu-paper-ancestry.mjs';
 import { abuRasterAffected } from '../games/magic/tools/accuracy/abu-raster-ancestry.mjs';
 import { abuPerimeterAffected } from '../games/magic/tools/accuracy/abu-perimeter-ancestry.mjs';
@@ -25,7 +26,7 @@ assert.notEqual(
 for (const [file, entry] of Object.entries(proof.files)) {
   const current = await readFile(file),
     before = await preAbuFractionalSource(file, current);
-  assert.equal(hash(current), entry.after);
+  assert.equal(hash(await preAbuArtSource(file, current)), entry.after);
   assert.equal(hash(before), entry.before);
   assert.deepEqual(await preAbuFractionalSource(file, before), before);
   await assert.rejects(

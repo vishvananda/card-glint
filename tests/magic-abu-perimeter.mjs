@@ -153,7 +153,7 @@ try {
     assert(c.calls.some((v) => Array.isArray(v) && v[0] === 'draw'));
     assert.equal(c.filter, 'contrast(1.1)');
     assert.equal(c.fillStyle, 'original');
-    assert.equal(retroDualFrameRevision(m.face), 'abu-dual-perimeter-up2-paper-up6-v3');
+    assert.equal(retroDualFrameRevision(m.face), 'abu-dual-perimeter-up2-paper-up6-art-up2-v4');
   }
   const face = p.members.find((m) => m.set === 'lea').face;
   for (const extra of [
