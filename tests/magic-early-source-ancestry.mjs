@@ -1,3 +1,4 @@
+import { abuFlowAffected } from '../games/magic/tools/accuracy/abu-flow-ancestry.mjs';
 import { preAbuPerimeterSource } from '../games/magic/tools/accuracy/abu-perimeter-ancestry.mjs';
 import {
   preAbuFractionalSource,
@@ -63,7 +64,20 @@ assert.equal(reopened.byTask.headings.validated, 1);
 group.tasks.rules.proof.earlyBatchReceipt = EARLY_SOURCE_RECEIPT;
 group.tasks.rules.proof.abuFractionalSource = (await abuFractionalAncestry()).afterRenderer;
 const [stale] = await calibrationReport({ ...ledger, sets: [lea] });
-assert.equal(stale.byTask.rules.stale, 1, 'A marker cannot authorize old source guards');
+assert.equal(
+  stale.byTask.rules[
+    (await abuFlowAffected('lea', 'rules', false, group)) ? 'needs-audit' : 'stale'
+  ],
+  1,
+  'A marker cannot authorize an old fit or old source guards',
+);
+group.tasks.headings.guards['games/magic/src/presentation/early-text-tiers.ts'] = '0'.repeat(64);
+const [badHeadingGuard] = await calibrationReport({ ...ledger, sets: [lea] });
+assert.equal(
+  badHeadingGuard.byTask.headings.stale,
+  1,
+  'An unchanged component still enforces its source guards',
+);
 console.log(
   'Component scope: changed rules reopen, unchanged headings survive, marker-only evidence fails closed.',
 );
