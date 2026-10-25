@@ -104,8 +104,16 @@ export function validatePrintingLayer(value: unknown): asserts value is Printing
     !['regular', 'full-art', 'clear'].includes(value.overrides.futureTreatment as string)
   )
     throw Error('Invalid future treatment');
+  const policy = (value.overrides as PrintingOverrides | undefined)?.calibration;
   resolvePrintingPreset(
-    { name: 'Style validation', typeLine: 'Creature', colors: ['U'] },
+    {
+      name: 'Style validation',
+      typeLine: 'Creature',
+      colors: ['U'],
+      ...(typeof policy === 'object' && policy?.profile === '8ed-eighth'
+        ? { setCode: '8ED', frameAssetFamily: 'eighth' as const }
+        : {}),
+    },
     {
       preset: 'match',
       ...(value.overrides
