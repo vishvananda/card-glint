@@ -41,6 +41,19 @@ are installed and no set-completion stage is approved by these files.
   green correction harms validation; white's full fit hits model bounds.
   Colors remain proposals pending integrated replay and final review.
 
+- `lettering-development.json.gz`: all 92 Original printings, exact released
+  controls and production-painter replay checks. The shared type-line geometry
+  improves every printing in its initial sweep. Retain the current artist
+  treatment: the alternative filled kernel loses. Title/P/T candidates and ink
+  tone still need integrated full-face verification; edge fits do not select tone.
+- `mana-development.json.gz`: 83 exact native controls and a retained-callback
+  grid with actual full-native sentinel parity. Keep existing shared cost
+  placement, sizing and spacing. All 69 colored rightmost discs are measurable;
+  14 translucent dark generic bubbles remain explicitly unmeasured. The common
+  ink candidate reduces validation pigment distance 16.52 → 1.43, while structural
+  overlap changes by −0.13/100. Disc palettes and whole-cost shrink candidates
+  are not adopted. These are component diagnostics, not whole-card scores.
+
 Cohorts are reused development evidence, not fresh holdouts. Frame geometry,
 pigment/black point, mana, expansion symbols, filled heading ink, footer/P/T,
 Oracle safety and unaffected controls still require their scoped checks.

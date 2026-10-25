@@ -110,3 +110,37 @@ copyright, color, source texture or overall accuracy. Inspect the native full
 card and overlays, replay the chosen values through the production painter,
 and check Oracle and unaffected sets before adopting a profile. See
 [the full calibration procedure](calibrating-a-set.md).
+
+## Check headings and footer ink
+
+Use `early-expansion-lettering-study.mjs` to measure titles, type lines,
+artist credits and power/toughness. Supply the same inputs, frozen poses and
+released capture as the body study:
+
+```sh
+node games/magic/tools/accuracy/early-expansion-lettering-study.mjs \
+  "$study_dir/inputs/inputs.json" \
+  "$study_dir/normalization/normalization.json" "$study_dir/released" \
+  ./lettering-candidates.json "$study_dir/lettering.json"
+```
+
+The definition has four arrays: `title`, `type`, `artist` and `stats`. An empty
+array measures only the released control. Each candidate has an `id` and a
+`profile` with `x`, `y`, `size`, `width`, `gray`, `trim` and `shadow`.
+Coordinates and sizes use 488 × 680 pixels; width is a multiplier and gray is
+0–255. Candidates use the existing filled title or footer painter. They do not
+change shipped defaults.
+
+Each released PNG must match exactly. Suppressing an element and replaying its
+actual painter must also match the default comparison crop. Candidate scores
+combine edges and filled ink, so a second outline does not win just by adding
+edges. Select one shared geometry using calibration names and report losses as
+well as mean gains. Retain the current treatment when alternatives do worse.
+
+For the first candidate in each array, the tool also renders black and white
+foregrounds with the same geometry and shadow. It estimates ink tone only on
+pixels with more than 85% foreground coverage, retaining the sample count and
+range. These are diagnostics: scan phase, glyph-width mismatch and texture can
+bias the inferred tone. Inspect native crops and verify full-face replays before
+adopting tone or geometry changes. Per-card probe values are not renderer
+exceptions, and this command does not certify a set.
