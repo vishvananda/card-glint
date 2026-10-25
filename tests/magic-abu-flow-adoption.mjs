@@ -1,7 +1,8 @@
+import { printingProfileGuardHistoricalHash } from '../games/magic/tools/accuracy/printing-profile-guard-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   abuFlowDelta,
   abuFlowHistoricalHash,
@@ -33,7 +34,7 @@ for (const file of ['annotations.json', 'annotations-empty-rules.json']) {
 }
 assert.equal(unchangedFieldReviews, 29, 'Retain all actual M21 annotation controls');
 const p = await abuFlowDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await printingProfileGuardHistoricalHash(), p.afterRenderer);
 assert.equal(await abuFlowHistoricalHash(), p.beforeRenderer);
 for (const [file, e] of Object.entries(p.files)) {
   const before = await preAbuFlowSource(file, await readFile(file));
