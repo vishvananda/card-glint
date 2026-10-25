@@ -96,6 +96,13 @@ separately. Previously inspected cards and alternate printings of one name
 are development evidence, not fresh holdouts. Every accepted candidate must
 preserve the complete text sequence and avoid overflow.
 
+Append an output directory to the typography command to verify one selected
+candidate through full native face and etching replays. This mode requires
+exactly the control and one candidate. It records prediction parity and rejects
+changes outside the rules region or to the silhouette and default etching.
+Identical complete layouts reuse their measured rasters within each card; the
+result records both candidate and raster-measurement counts.
+
 Regional edge scores help fit layout. They do not certify filled ink, ink tone,
 copyright, color, source texture or overall accuracy. Inspect the native full
 card and overlays, replay the chosen values through the production painter,

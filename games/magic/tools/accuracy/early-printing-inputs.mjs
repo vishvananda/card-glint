@@ -90,13 +90,14 @@ try {
     for (const source of annotations) {
       const row = source.data.cards?.[e.id];
       if (!row) continue;
-      // Historical layout studies also store name/cohort labels. Those are not
+      // Revised layout studies also store name/cohort labels. Those are not
       // printing corrections and need no scan binding; they must not overwrite
       // a separate wording review's status. Actual field changes remain strict.
       const payload = allowed.some(
         (key) => !['name', 'reviewed', 'referenceHash'].includes(key) && Object.hasOwn(row, key),
       );
       if (
+        set === '3ed' &&
         !payload &&
         (!Object.hasOwn(row, 'name') || row.name === e.card.name) &&
         !row.reviewedFields?.length

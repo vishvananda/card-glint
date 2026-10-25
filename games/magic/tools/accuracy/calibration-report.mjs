@@ -1,3 +1,4 @@
+import { preRevisedPreflightSource } from './revised-preflight-ancestry.mjs';
 import {
   printingProfileGuardRuntimeCompatible,
   prePrintingProfileGuardSource,
@@ -331,6 +332,9 @@ export async function calibrationReport(ledger) {
                     hash(await prePrintingFlavorData(file, bytes)),
                     hash(await preAbuPaperSource(file, bytes)),
                     hash(await preNormalizationCensusSource(file, bytes)),
+                    ...(set.set === '2ed'
+                      ? [hash(await preRevisedPreflightSource(file, bytes))]
+                      : []),
                     hash(modern.bytes),
                     hash(early),
                     hash(scoped),

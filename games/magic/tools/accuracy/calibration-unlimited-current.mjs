@@ -1,4 +1,9 @@
 import {
+  preRevisedPreflightSource,
+  revisedPreflightReview,
+  REVISED_PREFLIGHT_REVIEW,
+} from './revised-preflight-ancestry.mjs';
+import {
   preNormalizationCensusSource,
   normalizationCensusReview,
   NORMALIZATION_CENSUS_REVIEW,
@@ -21,7 +26,7 @@ export async function unlimitedCurrentGuards(receipt, readSource = readFile) {
         if (hash(bytes) === expected) return true;
         const before = await preNormalizationCensusSource(
           file,
-          await preM21StyleSource(file, bytes),
+          await preM21StyleSource(file, await preRevisedPreflightSource(file, bytes)),
         );
         if (hash(before) !== expected) return false;
         reused.push(file);
@@ -37,6 +42,7 @@ export async function unlimitedCalibrationEvidence(options) {
   const { current, reused } = await unlimitedCurrentGuards(data.receipt);
   const file = 'games/magic/fixtures/accuracy/m21/style-source-compatibility.json';
   const census = await normalizationCensusReview();
+  const revised = await revisedPreflightReview();
   return {
     ...data,
     current,
@@ -46,7 +52,10 @@ export async function unlimitedCalibrationEvidence(options) {
             file,
             sha256: hash(await readFile(file)),
             sources: reused,
-            reviews: [{ file: NORMALIZATION_CENSUS_REVIEW, sha256: census.sha256 }],
+            reviews: [
+              { file: NORMALIZATION_CENSUS_REVIEW, sha256: census.sha256 },
+              { file: REVISED_PREFLIGHT_REVIEW, sha256: revised.sha256 },
+            ],
           },
         }
       : {}),

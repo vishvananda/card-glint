@@ -78,7 +78,8 @@ try {
   bundleRoot = path.join(temporary, 'card-glint-' + version.version + '-browser');
   await readFile(path.join(bundleRoot, 'magic-presentation.js'));
 
-  session = await openBrowser(inputs, { plugins });
+  session = await openBrowser(inputs, { plugins, fonts: false });
+  await session.page.addStyleTag({ url: '/__baseline_bundle/magic.css' });
   for (const e of inputs.entries) {
     const pose = poses.rows.find((p) => p.id === e.id);
     assert(pose);
@@ -87,27 +88,18 @@ try {
     const result = await session.page.evaluate(
       async ({ face, id }) => {
         const api = await import('/__baseline_bundle/magic-presentation.js');
-        const { loadAccuracyImages } = await import('/games/magic/tools/accuracy/abu-assets.mjs');
         const signal = new AbortController().signal;
-        const lease = await loadAccuracyImages(
-          api.canvasAssetUrls(face),
+        // The archived release owns decoding, fonts and material preparation.
+        // The source checkout only supplies the immutable HTTP allowlist.
+        const c = await api.composeCardTexture(
+          { face, printingId: id, printedImage: null },
+          'inspect',
           signal,
-          face.illustration,
         );
         try {
-          const c = await api.composeCardTexture(
-            { face, printingId: id, printedImage: null },
-            'inspect',
-            signal,
-            { loadImages: async () => ({ images: lease.images, dispose() {} }) },
-          );
-          try {
-            return { png: c.toDataURL().split(',')[1], width: c.width, height: c.height };
-          } finally {
-            c.width = c.height = 0;
-          }
+          return { png: c.toDataURL().split(',')[1], width: c.width, height: c.height };
         } finally {
-          lease.dispose();
+          c.width = c.height = 0;
         }
       },
       { face: e.face, id: e.id },

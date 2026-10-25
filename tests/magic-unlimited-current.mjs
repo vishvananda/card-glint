@@ -32,6 +32,16 @@ await assert.rejects(
   }),
   /Unreviewed M21 style source/,
 );
+await assert.rejects(
+  unlimitedCurrentGuards(data.receipt, async (file) => {
+    const bytes = await readFile(file);
+    return file.endsWith('/early-printing-inputs.mjs')
+      ? Buffer.from(bytes.toString().replace("set === '3ed' &&", "set === '2ed' &&"))
+      : bytes;
+  }),
+  /Unreviewed Revised input-builder change/,
+  'A Revised-only input projection must reject changes that could affect Unlimited',
+);
 console.log(
   'Unlimited reuse: exact 141 dependency guards, named compatibility provenance, changed profile and unknown painter rejection passed.',
 );
