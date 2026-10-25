@@ -193,5 +193,36 @@
     "Frame/material/black-point, headings, mana, set symbol, artist/legal and stats audits",
     "Consolidated profile and full native/Oracle verification",
     "Ledger and release publication"
-  ]
+  ],
+  "counterproposal": {
+    "file": "constrained-selection.json",
+    "status": "cache-derived-shared-policy-proposal-not-implemented",
+    "summary": {
+      "all": {
+        "cards": 102,
+        "before100": 73.68170170289,
+        "candidate100": 77.67364082822616,
+        "improved": 48,
+        "regressed": 2,
+        "unchanged": 52
+      },
+      "calibration": {
+        "cards": 65,
+        "before100": 74.76523316246112,
+        "candidate100": 77.97880635183776,
+        "improved": 25,
+        "regressed": 1,
+        "unchanged": 39
+      },
+      "validation": {
+        "cards": 37,
+        "before100": 71.77820049012993,
+        "candidate100": 77.13753923269225,
+        "improved": 23,
+        "regressed": 1,
+        "unchanged": 13
+      }
+    },
+    "reason": "Retaining height-constrained regular layouts removes11of13 losses while preserving a mean gain of almost4/100. The remaining two losses need review; this policy is not yet installed."
+  }
 }
