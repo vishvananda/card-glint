@@ -139,6 +139,33 @@ try {
       () => resolvePrintingPreset(face, { preset, ...eighthChoice }),
       /ordinary Eighth frame/,
     );
+  for (const borderColor of ['white', 'black']) {
+    const resolved = resolvePrintingStyle(face, eighthStyle, {
+      overrides: { calibration: eighthPolicy, borderColor },
+    });
+    assert.equal(resolved.face.borderColor, borderColor);
+    assert.deepEqual(resolved.face.calibration, eighthPolicy);
+  }
+  for (const special of [
+    { typeLine: 'Legendary Planeswalker — Jace' },
+    { typeLine: 'Enchantment — Saga' },
+    { typeLine: 'Battle — Siege' },
+    { layout: 'adventure', faces: [face, face] },
+  ]) {
+    const incompatible = { ...face, ...special };
+    assert.throws(
+      () => resolvePrintingStyle(incompatible, eighthStyle, eighthChoice),
+      /ordinary Eighth frame|incompatible|not supported/i,
+    );
+  }
+  assert.throws(
+    () =>
+      resolvePrintingStyle(face, eighthStyle, {
+        overrides: { calibration: eighthPolicy, borderColor: 'silver' },
+      }),
+    /ordinary Eighth frame/,
+  );
+  assert.deepEqual(face, original, 'Profile/style selection must not mutate the imported card');
   for (const calibration of ['auto', 'printing', 'source', { profile: 'm21-modern' }]) {
     const result = resolvePrintingStyle(
       face,

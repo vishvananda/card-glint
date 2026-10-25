@@ -1,10 +1,14 @@
+import {
+  prePrintingProfileGuardSource,
+  printingProfileGuardHistoricalHash,
+} from './printing-profile-guard-ancestry.mjs';
 import flowTools from '../../fixtures/accuracy/early-through-fourth/abu-flow-tool-delta.json' with { type: 'json' };
 // Exact Original ABU body-policy history; source projection never grants fit approval.
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile, readdir } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
-import { root, hash, sourceHash } from './common.mjs';
+import { root, hash } from './common.mjs';
 import { validateAbuFlowData } from './abu-flow-data-check.mjs';
 const FILE = 'games/magic/fixtures/accuracy/early-through-fourth/abu-flow-source-delta.json.gz';
 const RECEIPT = '3f71859065b7455370505c99192e694199a3b9beadf0675c98185e3da5737abf';
@@ -23,7 +27,9 @@ export async function abuFlowDelta() {
     await read(p.validationSource);
     const after = {};
     for (const file of Object.keys(p.files))
-      after[file] = await readFile(path.join(root, file), 'utf8');
+      after[file] = (
+        await prePrintingProfileGuardSource(file, await readFile(path.join(root, file)))
+      ).toString();
     assert.deepEqual(validateAbuFlowData(p, after, review), p.summary);
     const capture = async (r) => {
       const raw = gunzipSync(await read(r));
@@ -146,6 +152,7 @@ export async function abuFlowDelta() {
   })());
 }
 export async function preAbuFlowSource(file, bytes) {
+  bytes = await prePrintingProfileGuardSource(file, bytes);
   const p = await abuFlowDelta(),
     e = p.files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
@@ -194,7 +201,8 @@ export async function abuFlowRuntimeCompatible(
   return (
     expected === p.beforeRenderer &&
     !(await abuFlowAffected(set, task, original, group)) &&
-    (await (tree ??= sourceHash(path.join(root, directory)))) === p.afterRenderer &&
+    (await (tree ??= printingProfileGuardHistoricalHash(path.join(root, directory)))) ===
+      p.afterRenderer &&
     (await (historical ??= abuFlowHistoricalHash())) === p.beforeRenderer
   );
 }

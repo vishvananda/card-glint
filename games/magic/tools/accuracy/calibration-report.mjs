@@ -1,3 +1,7 @@
+import {
+  printingProfileGuardRuntimeCompatible,
+  prePrintingProfileGuardSource,
+} from './printing-profile-guard-ancestry.mjs';
 import { abuCurrentApproval } from './abu-current-review.mjs';
 import {
   abuFlowAffected,
@@ -206,6 +210,7 @@ export async function calibrationReport(ledger) {
           }
           if (
             runtimeChecked.get(directory) !== expected &&
+            !(await printingProfileGuardRuntimeCompatible(directory, expected)) &&
             !(await abuFlowRuntimeCompatible(
               directory,
               expected,
@@ -282,13 +287,18 @@ export async function calibrationReport(ledger) {
               if (artistDataAffected && (await printingArtistDelta()).files[file]) {
                 checked.set(
                   guardKey,
-                  new Set([hash(bytes), hash(await preAbuPerimeterSource(file, bytes))]),
+                  new Set([
+                    hash(bytes),
+                    hash(await prePrintingProfileGuardSource(file, bytes)),
+                    hash(await preAbuPerimeterSource(file, bytes)),
+                  ]),
                 );
               } else if (fractionalAffected && (await abuFractionalAncestry()).files[file]) {
                 checked.set(
                   guardKey,
                   new Set([
                     hash(bytes),
+                    hash(await prePrintingProfileGuardSource(file, bytes)),
                     hash(preAbuFlowToolSource(file, bytes)),
                     hash(await preAbuFlowSource(file, bytes)),
                     hash(await preAbuArtSource(file, bytes)),
@@ -314,6 +324,7 @@ export async function calibrationReport(ledger) {
                   guardKey,
                   new Set([
                     hash(bytes),
+                    hash(await prePrintingProfileGuardSource(file, bytes)),
                     hash(preAbuFlowToolSource(file, bytes)),
                     hash(await preAbuFlowSource(file, bytes)),
                     hash(await preAbuArtSource(file, bytes)),
