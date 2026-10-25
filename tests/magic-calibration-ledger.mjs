@@ -358,9 +358,20 @@ for (const [set, count] of [
   ['drk', 122],
 ]) {
   const report = reports.find((r) => r.set === set);
-  assert.equal(report.originalRulesInputs.ready, count);
+  const styles =
+    set === 'arn'
+      ? JSON.parse(await readFile('games/magic/fixtures/accuracy/arn/annotations-body-style.json'))
+          .cards
+      : {};
+  const staleRules = ledger.sets
+    .find((s) => s.set === set)
+    .groups.filter((g) => g.printingIds.some((id) => Object.hasOwn(styles, id)))
+    .reduce((n, g) => n + g.printings, 0);
+  // New Original paragraph corrections invalidate only their older cohort
+  // receipts. The native profile evidence is not yet a ledger approval.
+  assert.equal(report.originalRulesInputs.ready, count - staleRules);
   assert.equal(report.originalTypeInputs.ready, count);
-  assert.equal(report.originalRulesInputs.stale, 0);
+  assert.equal(report.originalRulesInputs.stale, staleRules);
   assert.equal(report.originalTypeInputs.stale, 0);
   assert.equal(report.complete, false);
 }
@@ -387,7 +398,10 @@ assert.equal(first.tasks.headings.status, originalStatus, 'Input audit cannot ap
 first.tasks.rules.originalInput.guards = { 'missing-original-wording': h };
 first.tasks.headings.originalInput.guards = { 'missing-original-wording': h };
 const [alteredReport] = await calibrationReport({ sets: [altered] });
-assert.equal(alteredReport.originalRulesInputs.stale, first.printings);
+assert.equal(
+  alteredReport.originalRulesInputs.stale,
+  first.printings + reports.find((r) => r.set === 'arn').originalRulesInputs.stale,
+);
 assert.equal(alteredReport.originalTypeInputs.stale, first.printings);
 console.log(
   'Calibration ledger: full inventory, completion gates, stale evidence and foil denominators passed.',
