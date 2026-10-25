@@ -27,6 +27,20 @@ are installed and no set-completion stage is approved by these files.
   reviewed Original resolver, replay both baselines with the same corrected
   input, and confirm the candidate before finalizing text values.
 
+- `body-style-verified.json.gz`: both baselines now use the same two corrected
+  Original styles. The actual full-native mean is 75.40 → 78.88/100:
+  83 improve, six regress and three are unchanged. All 92 frozen scan poses
+  remain identical. These styles still await public resolver integration.
+- `body-refinement-rejections.json.gz`: width, fractional metrics, greedy
+  centering and last-line balancing probes. None replaces the selected shared
+  model. Kird Ape's wrap remains a residual; no per-card layout exception is used.
+- `color-native-development.json.gz`: 91 matching-source color audits and
+  28 paired white/green native trials. Half-strength corrections improve both
+  development cohorts. Green frame median perceptual distance is 3.34 → 1.98;
+  white paper is 3.12 → 1.80. These distances are not compliance scores. Full
+  green correction harms validation; white's full fit hits model bounds.
+  Colors remain proposals pending integrated replay and final review.
+
 Cohorts are reused development evidence, not fresh holdouts. Frame geometry,
 pigment/black point, mana, expansion symbols, filled heading ink, footer/P/T,
 Oracle safety and unaffected controls still require their scoped checks.

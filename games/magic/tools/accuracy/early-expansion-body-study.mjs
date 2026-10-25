@@ -64,6 +64,11 @@ const session = await openBrowser(inputs, {
             '      textWidth: 1,\n      leading: 1.1,',
             '      textWidth: p.largeWidth ?? 1,\n      leading: p.largeLeading ?? 1.1,',
           );
+          code = once(
+            code,
+            '      balanceLines: true,',
+            '      balanceLines: p.largeBalanceLines ?? true,',
+          );
           code = code.replaceAll('27.5,', '(p.large ?? 27.5),');
           code = once(
             code,
@@ -81,6 +86,12 @@ const session = await openBrowser(inputs, {
             '      textWidth: p.compactWidth ?? 1,\n      leading: set ===',
           );
           code = once(code, '    leading: 1,', '    leading: p.regularLeading ?? 1,');
+        } else if (file === 'rules-wrap.ts') {
+          code = once(
+            code,
+            '      const cost = rest.cost + (width - used) ** 2;',
+            '      const ratio = (globalThis as any).__expansionProbe?.lastLineWidth ?? 1;\n      const cost = rest.cost + (width * (lines === 1 ? ratio : 1) - used) ** 2;',
+          );
         } else if (file === 'rules-paint.ts') {
           code = once(
             code,

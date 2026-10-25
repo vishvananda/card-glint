@@ -88,7 +88,9 @@ Available probes are regular size, width and leading (`regular`, `textWidth`,
 `regularLeading`); compact size, width and leading (`compact`, `compactWidth`,
 `compactLeading`); centered size, width, leading and optical offset (`large`,
 `largeWidth`, `largeLeading`, `largeOffset`); `bounds`, `largeBounds`;
-and `fractionalMetrics`. Bounds use canonical 488 × 680 pixels. These are
+`largeBalanceLines`, `lastLineWidth` (the final-line target ratio in balanced
+wrapping; 1 retains production balancing), and `fractionalMetrics`. Bounds use
+canonical 488 × 680 pixels. These are
 measurement controls, not new public rendering options.
 
 Select one shared policy using calibration names only. Report validation

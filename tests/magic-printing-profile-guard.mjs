@@ -9,7 +9,29 @@ import {
 } from '../games/magic/tools/accuracy/printing-profile-guard-ancestry.mjs';
 const p = await printingProfileGuardDelta();
 for (const [file, entry] of Object.entries(p.files)) {
-  const current = await readFile(file);
+  let current = await readFile(file);
+  // The later report adds an exact, Unlimited-only projection for a Revised
+  // input-builder cleanup. It changes neither the renderer nor this older
+  // profile-validation receipt. Unknown report edits keep their own identity.
+  if (
+    file === 'games/magic/tools/accuracy/calibration-report.mjs' &&
+    hash(current) === 'c0966803e40f8ebc62f33633652a24691d678734144b66a70054c4bec18e0ee7'
+  ) {
+    current = Buffer.from(
+      current
+        .toString()
+        .replace(
+          "import { preRevisedPreflightSource } from './revised-preflight-ancestry.mjs';\n",
+          '',
+        )
+        .replace(
+          "                    ...(set.set === '2ed'\n" +
+            '                      ? [hash(await preRevisedPreflightSource(file, bytes))]\n' +
+            '                      : []),\n',
+          '',
+        ),
+    );
+  }
   assert.equal(hash(current), entry.after);
   assert.equal(hash(await prePrintingProfileGuardSource(file, current)), entry.before);
   assert.deepEqual(
