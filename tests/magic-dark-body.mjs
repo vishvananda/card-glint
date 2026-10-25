@@ -1,3 +1,4 @@
+import { preArnProfileSource } from '../games/magic/tools/accuracy/arn-profile-ancestry.mjs';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
@@ -23,6 +24,7 @@ assert.deepEqual(current, before, 'Unrelated original wording changed');
 
 const file = 'games/magic/src/presentation/early-expansion-text.ts';
 const virtual = 'games/magic/src/presentation/__dark-body-before.ts';
+const virtualAfter = 'games/magic/src/presentation/__dark-body-after.ts';
 const server = await createServer({
   configFile: false,
   optimizeDeps: { noDiscovery: true },
@@ -32,9 +34,12 @@ const server = await createServer({
       name: 'dark-body-baseline',
       resolveId(id) {
         if (id.endsWith('/__dark-body-before.ts')) return path.resolve(virtual);
+        if (id.endsWith('/__dark-body-after.ts')) return path.resolve(virtualAfter);
       },
       async load(id) {
         if (id === path.resolve(virtual)) return (await preDarkBodySource(file)).toString();
+        if (id === path.resolve(virtualAfter))
+          return (await preArnProfileSource(file, await readFile(file))).toString();
       },
     },
   ],
@@ -52,6 +57,9 @@ try {
       '/games/magic/src/presentation/__dark-body-before.ts'
     );
     const { earlyExpansionTextLayout: after } = await import(
+      '/games/magic/src/presentation/__dark-body-after.ts'
+    );
+    const { earlyExpansionTextLayout: current } = await import(
       '/games/magic/src/presentation/early-expansion-text.ts'
     );
     const { resolvePrintingWording } = await import('/games/magic/src/printing/resolve.ts');
@@ -78,6 +86,11 @@ try {
             const input = JSON.stringify({ face, paragraphs, reference });
             const a = before(c, face, paragraphs, reference),
               b = after(c, face, paragraphs, reference);
+            if (setCode === 'DRK')
+              check(
+                JSON.stringify(b) === JSON.stringify(current(c, face, paragraphs, reference)),
+                'Current DRK layout drifted from its historical scope receipt',
+              );
             check(
               sizeClass(a.size) === sizeClass(b.size),
               'Spacing changed the selected size class',

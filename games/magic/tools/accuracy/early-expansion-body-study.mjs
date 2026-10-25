@@ -76,6 +76,11 @@ const session = await openBrowser(inputs, {
           code = code.replaceAll('p.largeSize ?? 27.5', 'p.large ?? p.largeSize ?? 27.5');
           code = once(
             code,
+            '    flavorOrphans: false,',
+            '    flavorOrphans: p.flavorOrphans ?? false,',
+          );
+          code = once(
+            code,
             '      textWidth: 1,\n      leading: set ===',
             '      textWidth: p.compactWidth ?? 1,\n      leading: set ===',
           );
