@@ -47,7 +47,7 @@ for (const role of ['title', 'type', 'artist', 'stats']) {
         profile.gray >= 0 &&
         profile.gray <= 255 &&
         profile.trim >= 0 &&
-        profile.trim <= 0.5 &&
+        profile.trim <= 1.5 &&
         profile.shadow >= 0,
     );
   }
@@ -127,6 +127,7 @@ try {
           );
         const { paintTextInk } = await import('/games/magic/src/presentation/text-ink.ts'),
           { paintSolidTitle } = await import('/games/magic/src/presentation/solid-title.ts'),
+          { paintSolidArtist } = await import('/games/magic/src/presentation/solid-artist.ts'),
           { paintEarlyReprintFooterInk } = await import(
             '/games/magic/src/presentation/early-reprint-footer-ink.ts'
           );
@@ -161,6 +162,7 @@ try {
           'textRendering',
         ];
         let full, background, out, sc;
+        const scratch = [];
         try {
           full = await composeCardTexture(input, 'inspect', signal, hooks);
           const calls = {};
@@ -194,7 +196,47 @@ try {
             artist: [42, 613, 346, 35],
             stats: [390, 613, 76, 35],
           };
+          const paintOriginal = (role, context, state) => {
+            Object.assign(context, state.properties);
+            context.setTransform(state.matrix);
+            if (role === 'title') paintEarlyExpansionTitle(context, face, state.args.right);
+            if (role === 'artist') paintEarlyExpansionArtist(context, face);
+            if (role === 'stats') paintEarlyExpansionStats(context, face);
+            if (role === 'type')
+              paintTextInk(
+                context,
+                state.args.text,
+                state.args.x,
+                state.args.y,
+                state.args.width,
+                face.textInk,
+                'type',
+              );
+          };
           for (const [role, state] of Object.entries(calls)) {
+            // A wide dynamic P/T can enter the artist crop. Keep all other
+            // lettering in its original stack position instead of suppressing it.
+            const under = Object.assign(document.createElement('canvas'), {
+              width: 732,
+              height: 1020,
+            });
+            const over = Object.assign(document.createElement('canvas'), {
+              width: 732,
+              height: 1020,
+            });
+            scratch.push(under, over);
+            const underContext = under.getContext('2d'),
+              overContext = over.getContext('2d');
+            underContext.drawImage(background, 0, 0);
+            let above = false;
+            for (const [other, saved] of Object.entries(calls)) {
+              if (other === role) {
+                above = true;
+                continue;
+              }
+              paintOriginal(other, above ? overContext : underContext, saved);
+            }
+
             const rect = rects[role];
             if (role === 'title')
               rect[2] = Math.min(rect[2], Math.floor(state.args.right) - rect[0]);
@@ -210,7 +252,7 @@ try {
             const prepare = () => {
               c.resetTransform();
               c.clearRect(0, 0, 732, 1020);
-              c.drawImage(background, 0, 0);
+              c.drawImage(under, 0, 0);
               Object.assign(c, state.properties);
               c.setTransform(state.matrix);
             };
@@ -221,29 +263,27 @@ try {
                 Math.ceil(rect[2] * 1.5) + 4,
                 Math.ceil(rect[3] * 1.5) + 4,
               );
-            const gray = () =>
-              nativeGrayCrop(pixels(), rect, [
+            const gray = () => {
+              c.save();
+              c.resetTransform();
+              c.globalAlpha = 1;
+              c.globalCompositeOperation = 'source-over';
+              c.filter = 'none';
+              c.shadowColor = 'transparent';
+              c.drawImage(over, 0, 0);
+              c.restore();
+              return nativeGrayCrop(pixels(), rect, [
                 Math.floor(rect[0] * 1.5) - 1,
                 Math.floor(rect[1] * 1.5) - 1,
               ]);
+            };
             prepare();
-            if (role === 'title') paintEarlyExpansionTitle(c, face, state.args.right);
-            if (role === 'artist') paintEarlyExpansionArtist(c, face);
-            if (role === 'stats') paintEarlyExpansionStats(c, face);
-            if (role === 'type')
-              paintTextInk(
-                c,
-                state.args.text,
-                state.args.x,
-                state.args.y,
-                state.args.width,
-                face.textInk,
-                'type',
-              );
+            paintOriginal(role, c, state);
             const old = nativeGrayCrop(actual, rect),
               replay = gray(),
               parity = Math.max(...replay.map((v, i) => Math.abs(v - old[i])));
-            if (parity > 1.001) throw Error('Native default replay ' + role + ' ' + parity);
+            if (parity > 1.001)
+              throw Error('Native default replay ' + face.name + '/' + role + ' ' + parity);
             const trials = [{ id: 'current', score: objective.score(old) }];
             const paintProfile = (p) => {
               prepare();
@@ -260,7 +300,13 @@ try {
                 role === 'artist' || role === 'stats'
                   ? 'alphabetic'
                   : state.properties.textBaseline;
-              c.fillStyle = 'rgb(' + p.gray + ',' + p.gray + ',' + p.gray + ')';
+              c.fillStyle =
+                'rgb(' +
+                (p.tint
+                  ? p.tint.map((n) => Math.round(n * p.gray))
+                  : [p.gray, p.gray, p.gray]
+                ).join(',') +
+                ')';
               c.shadowColor = '#17140f';
               c.shadowBlur = 0;
               const text =
@@ -282,6 +328,8 @@ try {
                       ? 338 / p.width
                       : 132 / p.width;
               if (role === 'title' || role === 'type') paintSolidTitle(c, text, 0, 0, max, p);
+              else if (role === 'artist' && p.inkStyle === 'separate-shadow')
+                paintSolidArtist(c, text, 0, 0, max, p, c.fillStyle);
               else paintEarlyReprintFooterInk(c, text, max, p);
             };
             for (const candidate of definition[role]) {
@@ -318,11 +366,12 @@ try {
               };
             }
             roles[role] = { rect, parity, trials, tone };
+            under.width = under.height = over.width = over.height = 0;
           }
           return { png: full.toDataURL().split(',')[1], roles };
         } finally {
           delete globalThis.__letterProbe;
-          for (const c of [full, background, out, sc]) if (c) c.width = c.height = 0;
+          for (const c of [full, background, out, sc, ...scratch]) if (c) c.width = c.height = 0;
           lease.dispose();
         }
       },
@@ -348,7 +397,7 @@ try {
             schema: 1,
             status: rows.length === inputs.entries.length ? 'complete' : 'in-progress',
             scope:
-              'Shared filled-ink production-kernel proposals, frozen scan-only poses, exact native released controls and default replays. No per-card default; calibration-name selection and reused validation, no adoption. Tone probes invert actual black/white foreground replays at alpha>0.85 for the first shared candidate per role; aggregate calibration names only. Tone ranges diagnose misregistration and texture; they are not a license for per-card ink fitting.',
+              'Shared filled-ink production-kernel proposals, frozen scan-only poses, exact native released controls and default replays. Neighboring lettering retains its original draw order, including wide P/T inside artist crops. No per-card default; calibration-name selection and reused validation, no adoption. Tone probes invert actual black/white foreground replays at alpha>0.85 for the first shared candidate per role; aggregate calibration names only. Tone ranges diagnose misregistration and texture; they are not a license for per-card ink fitting.',
             set: inputs.set,
             rendererHash,
             inputHash: hash(raw[0]),
