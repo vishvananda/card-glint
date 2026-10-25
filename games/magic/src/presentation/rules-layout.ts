@@ -39,6 +39,8 @@ export interface RulesTypography {
   paragraphGap: number;
   flavorGap: number;
   flavorOrphans?: boolean;
+  /** Short printed quotations may intentionally retain a final orphan. */
+  flavorOrphanMinCharacters?: number;
   /** Only enable for printings whose dash-prefixed credits use right alignment. */
   flavorAttribution?: 'right';
   flavorSeparator?: boolean;
@@ -80,6 +82,9 @@ export function layoutRules(
     (!Number.isInteger(typography.maximumLines) || typography.maximumLines <= 0)
   )
     throw Error('Magic rules line limit must be a positive integer.');
+  const minimumFlavor = typography.flavorOrphanMinCharacters ?? 0;
+  if (!Number.isInteger(minimumFlavor) || minimumFlavor < 0)
+    throw Error('Magic flavor orphan threshold must be a nonnegative integer.');
   context.save();
   if (typography.fractionalMetrics) {
     context.textRendering = 'geometricPrecision';
@@ -114,6 +119,10 @@ export function layoutRules(
         if (
           paragraph.role === 'flavor' &&
           typography.flavorOrphans !== false &&
+          paragraph.runs.reduce(
+            (n, run) => n + run.text.replace(/\{[^}]+\}/g, '●').replaceAll('\u00ad', '').length,
+            0,
+          ) >= minimumFlavor &&
           rows.length > 2 &&
           rows.at(-1)!.reduce((n, run) => n + run.width, 0) < bounds.width * 0.3
         ) {

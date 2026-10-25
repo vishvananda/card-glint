@@ -40,7 +40,7 @@ export function paintEarlyExpansionStats(c: CanvasContext, face: RenderedCardInp
     // MPlantin maps U+2212 to blank ink. Its en dash supplies the printed long
     // minus while leaving the source's semantic power/toughness strings intact.
     const text = `${face.power}/${face.toughness}`.replaceAll('-', '–');
-    paintStatsInk(c, text, 132 / p.width, p, face.textInk);
+    paintEarlyExpansionStatsInk(c, text, 132 / p.width, p, face.textInk);
   } finally {
     c.restore();
   }
@@ -49,12 +49,13 @@ export function paintEarlyExpansionStats(c: CanvasContext, face: RenderedCardInp
 
 /** Filled light strokes and a separately thinned lower-right shadow. The mask
  * is prepared with the face, with no pixel readback, decoding or font loading. */
-function paintStatsInk(
+export function paintEarlyExpansionStatsInk(
   c: CanvasContext,
   text: string,
   maxWidth: number,
   p: { width: number; trim: number; shadow: number; shadowTrim: number },
   changes?: CardTextInk,
+  foreground: CanvasContext['fillStyle'] = '#f2eee3',
 ) {
   const layer = rasterCanvas();
   c.save();
@@ -73,7 +74,7 @@ function paintStatsInk(
     c.resetTransform();
     for (const [shift, trim, color] of [
       [p.shadow, p.shadowTrim, '#17140f'],
-      [0, p.trim, '#f2eee3'],
+      [0, p.trim, foreground],
     ] as const) {
       ink.resetTransform();
       ink.clearRect(0, 0, layer.width, layer.height);

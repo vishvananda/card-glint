@@ -1,3 +1,4 @@
+import { paintEarlyExpansionStatsInk } from './early-expansion-stats.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -50,7 +51,8 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
             : 'alphabetic';
       c.letterSpacing = '0px';
       const gray = 'gray' in p ? p.gray : profile.legalGray;
-      const tint = role === 'artist' ? profile.artist.tint : undefined;
+      const tint =
+        role === 'artist' ? profile.artist.tint : role === 'stats' ? profile.stats.tint : undefined;
       const rgb = tint ? tint.map((value) => Math.round(value * gray)) : [gray, gray, gray];
       c.fillStyle = 'rgb(' + rgb.join(',') + ')';
       c.shadowColor = role === 'legal' ? 'transparent' : '#17140f';
@@ -65,7 +67,16 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
         role === 'artist' && profile.artist.inkStyle === 'separate-shadow'
           ? paintSolidArtist(c, text, 0, 0, max, p, c.fillStyle)
           : paintEarlyReprintFooterInk(c, text, max, p);
-      if (role === 'stats') paintTextInk(c, text, 0, 0, max, face.textInk, 'stats', ink);
+      if (role === 'stats' && profile.stats.inkStyle === 'separate-shadow')
+        paintEarlyExpansionStatsInk(
+          c,
+          text,
+          max,
+          { ...p, shadowTrim: profile.stats.shadowTrim ?? 0 },
+          face.textInk,
+          c.fillStyle,
+        );
+      else if (role === 'stats') paintTextInk(c, text, 0, 0, max, face.textInk, 'stats', ink);
       else ink();
     } finally {
       c.restore();

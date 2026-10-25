@@ -126,22 +126,31 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
       'separate-shadow',
     ]);
   if (profile.expansionBody) {
-    for (const [key, value] of Object.entries(profile.expansionBody)) {
-      if (typeof value !== 'number') continue;
-      const count = key === 'threshold',
-        ratio = /Width|Leading/i.test(key),
-        offset = /offset/i.test(key);
-      number(
-        'expansionBody.' + key,
-        value,
-        'body',
-        'all',
-        offset ? -30 : ratio ? 0.5 : count ? 1 : 6,
-        offset ? 30 : ratio ? 1.5 : count ? 1000 : 48,
-        count ? 1 : ratio ? 0.005 : 0.25,
-        count ? 'count' : ratio ? 'ratio' : 'px',
-      );
-    }
+    const variants = [
+      ['expansionBody', profile.expansionBody, 'all'],
+      ['expansionBody.unconstrained', profile.expansionBody.unconstrained, 'unconstrained'],
+    ] as const;
+    for (const [path, values, scope] of variants)
+      for (const [key, value] of Object.entries(values ?? {})) {
+        if (typeof value === 'boolean') {
+          choice(path + '.' + key, value, 'body', scope);
+          continue;
+        }
+        if (typeof value !== 'number') continue;
+        const count = key === 'threshold' || key === 'flavorOrphanMinCharacters',
+          ratio = /Width|Leading/i.test(key),
+          offset = /offset/i.test(key);
+        number(
+          path + '.' + key,
+          value,
+          'body',
+          scope,
+          offset ? -30 : ratio ? 0.5 : count ? (key === 'threshold' ? 1 : 0) : 6,
+          offset ? 30 : ratio ? 1.5 : count ? 1000 : 48,
+          count ? 1 : ratio ? 0.005 : 0.25,
+          count ? 'count' : ratio ? 'ratio' : 'px',
+        );
+      }
     for (const [key, value] of Object.entries(profile.expansionBody.bounds ?? {}))
       number(
         'expansionBody.bounds.' + key,
@@ -171,6 +180,11 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
         );
       }
     }
+  if (profile.footer.stats.inkStyle !== undefined)
+    choice('footer.stats.inkStyle', profile.footer.stats.inkStyle, 'footer', 'all', [
+      'filled',
+      'separate-shadow',
+    ]);
   if (profile.footer.stats.baseline !== undefined)
     choice('footer.stats.baseline', profile.footer.stats.baseline, 'footer', 'all', [
       'alphabetic',
@@ -313,6 +327,7 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
   const rgb = (id: string, value: readonly number[], scope: string, max = 1) =>
     value.forEach((n, i) => number(`${id}.${i}`, n, 'colors', scope, 0, max, 0.005, 'sRGB ratio'));
   if (profile.footer.artist.tint) rgb('footer.artist.tint', profile.footer.artist.tint, 'all', 1.5);
+  if (profile.footer.stats.tint) rgb('footer.stats.tint', profile.footer.stats.tint, 'all', 1.5);
   for (const [variant, values] of Object.entries(profile.mana.variants ?? {})) {
     for (const [key, value] of Object.entries(values?.geometry ?? {})) {
       if (typeof value !== 'number') continue;

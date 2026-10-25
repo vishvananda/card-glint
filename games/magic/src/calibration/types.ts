@@ -40,6 +40,24 @@ export interface CalibratedSetSymbol {
   readonly sampling?: ImageSmoothingQuality;
 }
 export interface CalibratedExpansionBody {
+  readonly fractionalMetrics?: boolean;
+  readonly flavorOrphans?: boolean;
+  readonly flavorOrphanMinCharacters?: number;
+  /** Apply only when the unchanged layout has vertical space, or uses compact
+   * type. Height-constrained regular passages retain their proven line rhythm. */
+  readonly unconstrained?: Readonly<
+    Pick<
+      CalibratedExpansionBody,
+      | 'offset'
+      | 'regularLeading'
+      | 'compact'
+      | 'compactLeading'
+      | 'fractionalMetrics'
+      | 'flavorOrphans'
+      | 'flavorOrphanMinCharacters'
+    >
+  >;
+
   readonly bounds?: {
     readonly x: number;
     readonly y: number;
@@ -156,7 +174,12 @@ export interface SetCalibrationProfile {
       readonly lightGray: number;
       readonly darkGray: number;
     };
-    readonly stats: CalibratedLettering & { readonly baseline?: 'alphabetic' | 'middle' };
+    readonly stats: CalibratedLettering & {
+      readonly baseline?: 'alphabetic' | 'middle';
+      readonly inkStyle?: 'filled' | 'separate-shadow';
+      readonly shadowTrim?: number;
+      readonly tint?: Rgb;
+    };
   };
   /** default or printed source-set key (Chronicles); custom host symbols bypass these. */
   readonly setSymbols?: Readonly<Partial<Record<string, CalibratedSetSymbol>>>;

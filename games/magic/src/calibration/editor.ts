@@ -176,6 +176,18 @@ function validateProfile(profile: SetCalibrationProfile) {
       (expansion.bounds && (expansion.bounds.width < 20 || expansion.bounds.height < 20)))
   )
     throw Error('Invalid expansion body bounds or typography');
+  for (const policy of [expansion, expansion?.unconstrained]) {
+    if (!policy) continue;
+    if (
+      (policy.regularLeading ?? 1) <= 0 ||
+      (policy.compactLeading ?? 1) <= 0 ||
+      (policy.compact ?? 1) <= 0 ||
+      (policy.flavorOrphanMinCharacters !== undefined &&
+        (!Number.isInteger(policy.flavorOrphanMinCharacters) ||
+          policy.flavorOrphanMinCharacters < 0))
+    )
+      throw Error('Invalid expansion refinement or flavor threshold');
+  }
   for (const color of [
     ...Object.values(profile.colors),
     ...Object.values(profile.dualLand?.sources ?? {}),

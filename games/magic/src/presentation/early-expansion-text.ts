@@ -80,14 +80,38 @@ export function earlyExpansionTextLayout(
   )
     return null;
   const p = calibrationForFace(face)?.expansionBody ?? profiles[set];
+  const baseline = expansionBodyLayout(context, face, paragraphs, reference, set, p);
+  if (
+    !p.unconstrained ||
+    (baseline.top <= (p.bounds ?? defaultBounds).y + 0.01 && baseline.size >= 20)
+  )
+    return baseline;
+  const refined = expansionBodyLayout(context, face, paragraphs, reference, set, {
+    ...p,
+    ...p.unconstrained,
+    unconstrained: undefined,
+  });
+  return refined.overflow && !baseline.overflow ? baseline : refined;
+}
+
+function expansionBodyLayout(
+  context: CanvasContext,
+  face: RenderedCardInput,
+  paragraphs: readonly RulesParagraph[],
+  reference: readonly RulesParagraph[],
+  set: 'arn' | 'atq' | 'drk',
+  p: CalibratedExpansionBody,
+) {
   const bounds = p.bounds ?? defaultBounds;
   const minimum = face.wordingMode === 'oracle' ? 10 : 15;
   const typography: RulesTypography = {
+    fractionalMetrics: p.fractionalMetrics,
     textWidth: p.textWidth,
     leading: p.regularLeading ?? 1,
     paragraphGap: 0,
     flavorGap: 0,
-    flavorOrphans: false,
+    flavorOrphans: p.flavorOrphans ?? false,
+    flavorOrphanMinCharacters: p.flavorOrphanMinCharacters,
     flavorSeparator: false,
     centerOffset: p.offset,
   };
