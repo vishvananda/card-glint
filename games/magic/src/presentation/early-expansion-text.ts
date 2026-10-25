@@ -1,8 +1,10 @@
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { layoutRules, type RulesTypography } from './rules-layout.js';
+import { calibrationForFace } from '../calibration/selection.js';
+import type { CalibratedExpansionBody } from '../calibration/types.js';
 
-const profiles = {
+const profiles: Readonly<Record<'arn' | 'atq' | 'drk', CalibratedExpansionBody>> = {
   arn: {
     regular: 23,
     textWidth: 1,
@@ -27,8 +29,8 @@ const profiles = {
     compact: 15.5,
     compactLeading: 1.2,
   },
-} as const;
-const bounds = { x: 70, y: 414, width: 348, height: 184 };
+};
+const defaultBounds = { x: 70, y: 414, width: 348, height: 184 };
 const text = (p: RulesParagraph) => p.runs.map((run) => run.text).join('');
 const length = (paragraphs: readonly RulesParagraph[]) =>
   paragraphs.reduce(
@@ -77,11 +79,12 @@ export function earlyExpansionTextLayout(
     /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '')
   )
     return null;
-  const p = profiles[set];
+  const p = calibrationForFace(face)?.expansionBody ?? profiles[set];
+  const bounds = p.bounds ?? defaultBounds;
   const minimum = face.wordingMode === 'oracle' ? 10 : 15;
   const typography: RulesTypography = {
     textWidth: p.textWidth,
-    leading: 1,
+    leading: p.regularLeading ?? 1,
     paragraphGap: 0,
     flavorGap: 0,
     flavorOrphans: false,
@@ -100,8 +103,8 @@ export function earlyExpansionTextLayout(
     const largeStyle = {
       ...typography,
       textWidth: 1,
-      leading: 1.1,
-      centerOffset: dark ? 0 : -14,
+      leading: p.largeLeading ?? 1.1,
+      centerOffset: p.largeOffset ?? (dark ? 0 : -14),
       balanceLines: true,
       balanceCenteredOnly: true,
     };
@@ -109,17 +112,24 @@ export function earlyExpansionTextLayout(
       context,
       alignLarge(reference, dark),
       largeBounds,
-      27.5,
-      27.5,
+      p.largeSize ?? 27.5,
+      p.largeSize ?? 27.5,
       largeStyle,
     );
     if (!trial.overflow && trial.lines.length <= 5) {
       const centered = alignLarge(paragraphs, dark);
-      const visible = layoutRules(context, centered, largeBounds, 27.5, minimum, largeStyle);
+      const visible = layoutRules(
+        context,
+        centered,
+        largeBounds,
+        p.largeSize ?? 27.5,
+        minimum,
+        largeStyle,
+      );
       if (!dark || visible.lines.length >= 5) return visible;
       // Short DRK blocks sit slightly above geometric center. Use visible line
       // count so a longer Oracle body does not inherit the short original's bias.
-      return layoutRules(context, centered, largeBounds, 27.5, minimum, {
+      return layoutRules(context, centered, largeBounds, p.largeSize ?? 27.5, minimum, {
         ...largeStyle,
         centerOffset: -2 * (5 - visible.lines.length),
       });

@@ -24,9 +24,9 @@ console.log(
 
 const generator = 'games/magic/tools/build-set-data.mjs';
 const bytes = await readFile(generator);
-const before = profileDataGeneratorSource(generator, bytes);
+const before = await profileDataGeneratorSource(generator, bytes);
 assert(before.includes(Buffer.from("for (const code of ['fem', '4ed', 'chr'])")));
-assert.throws(() =>
+await assert.rejects(() =>
   profileDataGeneratorSource(generator, Buffer.concat([bytes, Buffer.from('\n// unknown edit')])),
 );
 const known = new Set(
@@ -34,6 +34,7 @@ const known = new Set(
 );
 assert.deepEqual(await additionalProfileDataModules(known), [
   'games/magic/src/calibration/sets/2ed.ts',
+  'games/magic/src/calibration/sets/arn.ts',
 ]);
 console.log(
   'Registered Unlimited literal values equal generated data; historical generator reconstruction rejects unknown edits.',

@@ -6,6 +6,7 @@ import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
 
 interface RetroSymbolGeometry {
+  placement?: 'native';
   right: number;
   centerY: number;
   width: number;

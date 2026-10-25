@@ -5,6 +5,7 @@ import type { CardProfile } from './profile.js';
 import { setSymbolVector } from './set-symbols.js';
 import { chroniclesSymbol } from './chronicles-symbols.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
+import { printingSetSymbolSource } from './set-symbol-source.js';
 
 export const RENDERER_COMPONENT_ROOT = manifest.RENDERER_COMPONENT_ROOT;
 
@@ -105,7 +106,7 @@ export function faceSetSymbol(face: RenderedCardInput, rarity = face.rarity): st
     setSymbolAsset(
       set === 'chr' ? (chroniclesSymbol(face.name) ?? '') : set,
       rarity,
-      face.setSymbolSource,
+      printingSetSymbolSource(face),
     )
   );
 }

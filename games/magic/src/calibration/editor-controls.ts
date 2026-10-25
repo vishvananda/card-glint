@@ -120,6 +120,39 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
       'top',
       'bottom',
     ]);
+  if (profile.footer.artist.inkStyle !== undefined)
+    choice('footer.artist.inkStyle', profile.footer.artist.inkStyle, 'footer', 'all', [
+      'filled',
+      'separate-shadow',
+    ]);
+  if (profile.expansionBody) {
+    for (const [key, value] of Object.entries(profile.expansionBody)) {
+      if (typeof value !== 'number') continue;
+      const count = key === 'threshold',
+        ratio = /Width|Leading/i.test(key),
+        offset = /offset/i.test(key);
+      number(
+        'expansionBody.' + key,
+        value,
+        'body',
+        'all',
+        offset ? -30 : ratio ? 0.5 : count ? 1 : 6,
+        offset ? 30 : ratio ? 1.5 : count ? 1000 : 48,
+        count ? 1 : ratio ? 0.005 : 0.25,
+        count ? 'count' : ratio ? 'ratio' : 'px',
+      );
+    }
+    for (const [key, value] of Object.entries(profile.expansionBody.bounds ?? {}))
+      number(
+        'expansionBody.bounds.' + key,
+        value,
+        'body',
+        'all',
+        0,
+        key === 'y' || key === 'height' ? 680 : 488,
+        0.25,
+      );
+  }
   if (profile.textTiers)
     for (const [key, value] of Object.entries(profile.textTiers)) {
       if (typeof value === 'boolean') choice(`textTiers.${key}`, value, 'body', 'all');
@@ -279,6 +312,26 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
   }
   const rgb = (id: string, value: readonly number[], scope: string, max = 1) =>
     value.forEach((n, i) => number(`${id}.${i}`, n, 'colors', scope, 0, max, 0.005, 'sRGB ratio'));
+  if (profile.footer.artist.tint) rgb('footer.artist.tint', profile.footer.artist.tint, 'all', 1.5);
+  for (const [variant, values] of Object.entries(profile.mana.variants ?? {})) {
+    for (const [key, value] of Object.entries(values?.geometry ?? {})) {
+      if (typeof value !== 'number') continue;
+      const ratio = /scale/i.test(key);
+      number(
+        'mana.variants.' + variant + '.geometry.' + key,
+        value,
+        'symbols',
+        variant,
+        ratio ? 0.7 : -12,
+        ratio ? 1.4 : 12,
+        ratio ? 0.005 : 0.25,
+        ratio ? 'ratio' : 'px',
+      );
+    }
+    for (const [symbol, paper] of Object.entries(values?.paper ?? {}))
+      if (paper)
+        rgb('mana.variants.' + variant + '.paper.' + symbol, paper, variant + '/' + symbol);
+  }
   rgb('mana.ink', profile.mana.ink, 'all');
   for (const [key, paper] of Object.entries(profile.mana.paper))
     if (paper) rgb(`mana.paper.${key}`, paper, key);

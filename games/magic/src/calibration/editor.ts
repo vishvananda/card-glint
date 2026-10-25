@@ -161,6 +161,21 @@ function validateProfile(profile: SetCalibrationProfile) {
     )
       throw Error('Invalid body bounds or typography range');
   }
+  const expansion = profile.expansionBody;
+  if (
+    expansion &&
+    (expansion.regular <= 0 ||
+      expansion.compact <= 0 ||
+      expansion.textWidth <= 0 ||
+      expansion.compactLeading <= 0 ||
+      (expansion.regularLeading ?? 1) <= 0 ||
+      (expansion.largeLeading ?? 1.1) <= 0 ||
+      (expansion.largeSize ?? 27.5) <= 0 ||
+      !Number.isInteger(expansion.threshold) ||
+      expansion.threshold < 1 ||
+      (expansion.bounds && (expansion.bounds.width < 20 || expansion.bounds.height < 20)))
+  )
+    throw Error('Invalid expansion body bounds or typography');
   for (const color of [
     ...Object.values(profile.colors),
     ...Object.values(profile.dualLand?.sources ?? {}),

@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "status": "integrated-native-verified-release-and-ledger-review-pending",
+  "rendererHash": "ac49697c6feecbb9798e2c8aa57ff50bfe9624ff238a39a9650fb67fe624bc3e",
+  "scope": {
+    "set": "arn",
+    "ordinaryNonfoilPrintings": 92,
+    "originalFaces": 92,
+    "oracleFaces": 276,
+    "unchangedOriginalControls": 1001,
+    "heldOut": false,
+    "validation": "Reused development names; full Original census. No fresh held-out accuracy claim."
+  },
+  "scores": {
+    "unit": "/100",
+    "beforeMean": 75.40428727122085,
+    "afterMean": 80.19641060143837,
+    "improved": 89,
+    "regressed": 3,
+    "losses": [
+      {
+        "id": "fcc1004f-7cee-420a-9f0e-2986ed3ab852",
+        "name": "Ring of Ma'rûf",
+        "delta100": -0.4812263351095192
+      },
+      {
+        "id": "5c1ba0b9-db01-447f-90cc-a2fc2c24146e",
+        "name": "Bird Maiden",
+        "delta100": -0.029480040232754412
+      },
+      {
+        "id": "95fde48b-e40a-4183-b324-1ec276dde015",
+        "name": "Magnetic Mountain",
+        "delta100": -0.027643963765733304
+      }
+    ]
+  },
+  "decisions": [
+    "Use the existing Keyrune ARN symbol with its gray blade and dark contour. The proposed dimmed-white Conjurer silhouette was rejected. Explicit Conjurer selection instead uses a checksum-bound path-attribute patch.",
+    "Mountain uses the ABU red-land source, shifted up two canonical pixels. Texture-aware gains/gamma preserve its contrast. This is a singleton material; no independent within-material validation exists.",
+    "Retain existing per-material frame choices except Mountain. Apply only the verified conservative white-paper and green-frame pigment adjustments.",
+    "Use filled title/type/P-T ink. Preserve artist positioning, warm gray and separate shadow. No separate legal line was printed; retain the copyright mark within the artist credit.",
+    "Keep all scan transforms unchanged and outside the painter. Shared set/material controls only; no card-specific geometry.",
+    "City in a Bottle uses italic set-name words. King Suleiman retains its attribution inline. These reviewed styles apply only to Original wording."
+  ],
+  "residuals": [
+    {
+      "name": "Bird Maiden",
+      "kind": "text-sizing",
+      "disposition": "The existing compact-class switch still makes this long flavor block visibly smaller than the printing. Retain as a shared size-class follow-up; do not hide it with an individual override."
+    },
+    {
+      "name": "Ring of Ma’rûf",
+      "kind": "small-aggregate-regression",
+      "disposition": "Largest full-card diagnostic loss, under0.5/100. Shared filled lettering and correct symbol material retained after full-card inspection; line-wrap and source texture residuals remain visible."
+    },
+    {
+      "name": "Magnetic Mountain",
+      "kind": "wrap-residual",
+      "disposition": "Small diagnostic loss; shared regular text policy retained. No per-card margin adjustment."
+    },
+    {
+      "name": "Kird Ape",
+      "kind": "wrap-residual",
+      "disposition": "Improves overall but a body-wrap residual remains. No printing-specific geometry."
+    },
+    {
+      "name": "Mountain",
+      "kind": "sparse-material",
+      "disposition": "Only one printing; source/texture improvement is directly reviewed, not an independent material transfer."
+    }
+  ],
+  "pending": [
+    "Complete source-bound ledger review and bundled release publication",
+    "Finish full Magic accuracy suite and review any resulting compatibility failures"
+  ],
+  "artifacts": [
+    "integrated-native.json.gz",
+    "integrated-scores.json.gz",
+    "unaffected-native.json.gz",
+    "keyrune-symbol-grid.json.gz",
+    "mountain-texture-fit.json.gz",
+    "source-delta.json.gz"
+  ]
+}

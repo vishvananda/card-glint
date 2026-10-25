@@ -1,3 +1,4 @@
+import { arnHistoricalSourceFiles } from './arn-profile-ancestry.mjs';
 import { preAbuFlowSource, abuFlowHistoricalHash, abuFlowAffected } from './abu-flow-ancestry.mjs';
 // Exact scoped art-height history. Projection proves source ancestry, never fit approval.
 import assert from 'node:assert/strict';
@@ -136,7 +137,7 @@ export async function abuArtHistoricalHash(directory = path.join(root, 'games/ma
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await arnHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preAbuArtSource(path.relative(root, f), await readFile(f))),
         ]),

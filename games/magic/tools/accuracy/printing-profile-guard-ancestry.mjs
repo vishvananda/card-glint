@@ -1,3 +1,4 @@
+import { preArnProfileSource, arnHistoricalSourceFiles } from './arn-profile-ancestry.mjs';
 // PR #11 only changes validation of an explicit, previously rejected profile.
 // Project these exact reviewed bytes for historical audits; never relax a painter guard.
 import assert from 'node:assert/strict';
@@ -31,6 +32,7 @@ export async function printingProfileGuardDelta() {
   })());
 }
 export async function prePrintingProfileGuardSource(file, bytes) {
+  bytes = await preArnProfileSource(file, bytes);
   const p = await printingProfileGuardDelta(),
     entry = p.files[file];
   if (!entry) return bytes;
@@ -51,7 +53,7 @@ export async function printingProfileGuardHistoricalHash(
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (file) => [
+        (await arnHistoricalSourceFiles(files)).map(async (file) => [
           path.relative(directory, file),
           hash(
             await prePrintingProfileGuardSource(path.relative(root, file), await readFile(file)),

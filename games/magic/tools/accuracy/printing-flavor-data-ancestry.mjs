@@ -1,3 +1,4 @@
+import { arnHistoricalSourceFiles } from './arn-profile-ancestry.mjs';
 import { abuFlowAffected } from './abu-flow-ancestry.mjs';
 import { preAbuArtSource, abuArtHistoricalHash, abuArtAffected } from './abu-art-ancestry.mjs';
 // Exact three-printing data history; independent of calibration approval.
@@ -126,7 +127,7 @@ export async function printingFlavorHistoricalHash(directory = path.join(root, '
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await arnHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await prePrintingFlavorData(path.relative(root, f), await readFile(f))),
         ]),

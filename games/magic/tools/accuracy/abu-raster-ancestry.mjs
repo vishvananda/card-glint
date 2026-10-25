@@ -1,3 +1,4 @@
+import { arnHistoricalSourceFiles } from './arn-profile-ancestry.mjs';
 import { printingFlavorHistoricalHash } from './printing-flavor-data-ancestry.mjs';
 import {
   preAbuPaperSource,
@@ -87,7 +88,7 @@ export async function abuRasterHistoricalHash(directory = path.join(root, 'games
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (file) => [
+        (await arnHistoricalSourceFiles(files)).map(async (file) => [
           path.relative(directory, file),
           hash(await preAbuRasterSource(path.relative(root, file), await readFile(file))),
         ]),

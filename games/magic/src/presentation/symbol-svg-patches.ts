@@ -7,6 +7,8 @@ interface SymbolPatch {
   recipe: string;
   pathCount?: number;
   fill?: string;
+  remove?: readonly number[];
+  fills?: Readonly<Record<string, string>>;
   outline?: { stroke: string; width: number };
 }
 const sources: Readonly<Record<string, SymbolPatch>> = patches.sources;
@@ -37,13 +39,27 @@ export async function patchSymbolSvg(url: string, blob: Blob): Promise<Blob> {
   if (
     root.localName !== 'svg' ||
     doc.querySelector('parsererror') ||
-    (!gradient && patch.recipe !== 'remove-outer-white')
+    (!gradient && !['remove-outer-white', 'printed-paths'].includes(patch.recipe))
   )
     throw Error(`Unexpected pinned symbol SVG: ${url}`);
   const set = (element: Element, attributes: Record<string, string>) => {
     for (const [name, value] of Object.entries(attributes)) element.setAttribute(name, value);
   };
-  if (patch.recipe === 'remove-outer-white') {
+  if (patch.recipe === 'printed-paths') {
+    if (paths.length !== patch.pathCount) throw Error('Unexpected printed symbol topology.');
+    const removed = patch.remove ?? [];
+    if (new Set(removed).size !== removed.length) throw Error('Repeated symbol removal.');
+    for (const index of removed) {
+      if (!Number.isInteger(index) || !paths[index]) throw Error('Invalid symbol removal.');
+      paths[index]!.remove();
+    }
+    for (const [key, fill] of Object.entries(patch.fills ?? {})) {
+      const index = Number(key);
+      if (!Number.isInteger(index) || !paths[index] || removed.includes(index))
+        throw Error('Invalid printed symbol fill.');
+      paths[index]!.style.fill = fill;
+    }
+  } else if (patch.recipe === 'remove-outer-white') {
     // The first silhouette is the oversized exterior rim. LEG's separate
     // white interior details remain intact; DRK has only a filled crescent.
     if (

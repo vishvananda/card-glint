@@ -1,3 +1,4 @@
+import { arnHistoricalSourceFiles } from './arn-profile-ancestry.mjs';
 import {
   prePrintingProfileGuardSource,
   printingProfileGuardHistoricalHash,
@@ -165,7 +166,7 @@ export async function abuFlowHistoricalHash(directory = path.join(root, 'games/m
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await arnHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preAbuFlowSource(path.relative(root, f), await readFile(f))),
         ]),

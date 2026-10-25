@@ -29,6 +29,8 @@ export interface CalibratedLettering {
   readonly gray: number;
 }
 export interface CalibratedSetSymbol {
+  /** Bypass legacy source-viewport conversion for directly measured placements. */
+  readonly placement?: 'native';
   readonly right: number;
   readonly centerY: number;
   readonly width: number;
@@ -36,6 +38,24 @@ export interface CalibratedSetSymbol {
   readonly crop: FaceRect;
   readonly outline?: number;
   readonly sampling?: ImageSmoothingQuality;
+}
+export interface CalibratedExpansionBody {
+  readonly bounds?: {
+    readonly x: number;
+    readonly y: number;
+    readonly width: number;
+    readonly height: number;
+  };
+  readonly regular: number;
+  readonly textWidth: number;
+  readonly threshold: number;
+  readonly offset: number;
+  readonly compact: number;
+  readonly compactLeading: number;
+  readonly regularLeading?: number;
+  readonly largeSize?: number;
+  readonly largeLeading?: number;
+  readonly largeOffset?: number;
 }
 export interface CalibratedBody {
   /** Absolute canonical bounds; font sizes/spacing use the same units as layoutRules. */
@@ -70,6 +90,8 @@ export interface SetCalibrationProfile {
   readonly set: string;
   readonly border: 'black' | 'white';
   readonly cornerRadius?: number;
+  /** A reviewed asset preference; explicit host source choices still win. */
+  readonly setSymbolSource?: 'keyrune' | 'cardconjurer';
   readonly frames: Readonly<Partial<Record<string, CalibratedFrame>>>;
   readonly dualLand?: CalibratedDualLand;
   readonly colors: Readonly<
@@ -88,6 +110,20 @@ export interface SetCalibrationProfile {
     readonly geometry: ManaSymbolTransform;
     readonly paper: Readonly<Partial<Record<string, Rgb>>>;
     readonly ink: Rgb;
+    /** Preserve the historical source sampler rather than the later opaque B sampler. */
+    readonly paperSample?: 'printing';
+    /** Variants are selected from printing metadata, not scan or card-specific positions. */
+    readonly variants?: Readonly<
+      Partial<
+        Record<
+          'light' | 'dark',
+          {
+            readonly geometry?: ManaSymbolTransform;
+            readonly paper?: Readonly<Partial<Record<string, Rgb>>>;
+          }
+        >
+      >
+    >;
     /** Source-bound stroke weight and paper sampler are one preparation policy.
      * Values are pixels per nominal 24px disc, not output-resolution pixels. */
     readonly sourceInk?: Readonly<
@@ -108,6 +144,9 @@ export interface SetCalibrationProfile {
   readonly footer: {
     readonly artist: CalibratedLettering & {
       readonly prefix?: string;
+      readonly inkStyle?: 'filled' | 'separate-shadow';
+      /** Channel ratios keep warm neutral ink while gray remains an effective control. */
+      readonly tint?: Rgb;
       readonly align?: CanvasTextAlign;
       readonly baseline?: CanvasTextBaseline;
       readonly maxWidth?: number;
@@ -123,6 +162,7 @@ export interface SetCalibrationProfile {
   readonly setSymbols?: Readonly<Partial<Record<string, CalibratedSetSymbol>>>;
   /** Omitted retains the established layout. Material override wins over default. */
   readonly body?: Readonly<Partial<Record<string, CalibratedBody>>>;
+  readonly expansionBody?: CalibratedExpansionBody;
   /** Shared count/wrap model for early printings; Oracle always keeps a safe inset. */
   readonly textTiers?: Readonly<
     Omit<EarlyTextTierOptions, 'forceSmall'> & { readonly retainRegularAboveLines?: number }

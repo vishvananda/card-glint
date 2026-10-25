@@ -12,6 +12,7 @@ export function paintSolidArtist(
   y: number,
   maxWidth: number,
   p: { width: number; shadow: number; trim: number },
+  fill: CanvasContext['fillStyle'] = '#f2eee3',
 ) {
   c.save();
   const layer = rasterCanvas();
@@ -30,7 +31,7 @@ export function paintSolidArtist(
     ink.textAlign = c.textAlign;
     ink.textBaseline = c.textBaseline;
     ink.letterSpacing = c.letterSpacing;
-    ink.fillStyle = '#f2eee3';
+    ink.fillStyle = fill;
     ink.fillText(text, x, y, maxWidth);
     if (p.trim > 0) {
       ink.globalCompositeOperation = 'destination-out';

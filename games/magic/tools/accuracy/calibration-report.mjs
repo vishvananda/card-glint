@@ -1,3 +1,4 @@
+import { arnProfileRuntimeCompatible } from './arn-profile-ancestry.mjs';
 import { preRevisedPreflightSource } from './revised-preflight-ancestry.mjs';
 import {
   printingProfileGuardRuntimeCompatible,
@@ -210,8 +211,18 @@ export async function calibrationReport(ledger) {
             }
           }
           if (
+            directory === 'games/magic/src' &&
+            set.set === 'arn' &&
+            runtimeChecked.get(directory) !== expected
+          ) {
+            runtimeCurrent = false;
+            break;
+          }
+          if (
             runtimeChecked.get(directory) !== expected &&
-            !(await printingProfileGuardRuntimeCompatible(directory, expected)) &&
+            !(await arnProfileRuntimeCompatible(directory, expected, set.set)) &&
+            (set.set === 'arn' ||
+              !(await printingProfileGuardRuntimeCompatible(directory, expected))) &&
             !(await abuFlowRuntimeCompatible(
               directory,
               expected,

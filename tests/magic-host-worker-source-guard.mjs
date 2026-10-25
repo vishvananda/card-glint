@@ -19,7 +19,7 @@ export async function hostWorkerProofSource(file) {
       file,
       await profilePreparationProofDependency(
         file,
-        profileDataGeneratorSource(
+        await profileDataGeneratorSource(
           file,
           await artistReviewProofDependency(
             file,

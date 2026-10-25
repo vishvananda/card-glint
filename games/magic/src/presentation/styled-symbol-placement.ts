@@ -10,6 +10,7 @@ import { cardStock } from './face-layout.js';
 import { retroBorder } from './retro-frame.js';
 import { resolveCardProfile } from './profile.js';
 import { legendsFrame } from './legends-frame.js';
+import { retroSymbolGeometry } from './retro-symbol-geometry.js';
 
 type Bounds = readonly [number, number, number, number];
 // Follow-ups retain the original bulk calibration's immutable evidence. Sixth
@@ -68,6 +69,7 @@ export function calibratedStyledSymbolBounds(
     (['component', 'm15-accurate'].includes(family) && resolveCardProfile(face).legendary)
   )
     return bounds;
+  if (family === 'retro' && retroSymbolGeometry(face)?.placement === 'native') return bounds;
   const border =
     face.borderColor ??
     (family === 'retro'

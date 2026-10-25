@@ -1,3 +1,4 @@
+import { arnHistoricalSourceFiles } from './arn-profile-ancestry.mjs';
 import { preAbuPerimeterSource } from './abu-perimeter-ancestry.mjs';
 // Exact pure-data history, independent of calibration approval.
 import assert from 'node:assert/strict';
@@ -79,7 +80,7 @@ export async function printingArtistHistoricalHash(directory = path.join(root, '
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (file) => [
+        (await arnHistoricalSourceFiles(files)).map(async (file) => [
           path.relative(directory, file),
           hash(await prePrintingArtistData(path.relative(root, file), await readFile(file))),
         ]),

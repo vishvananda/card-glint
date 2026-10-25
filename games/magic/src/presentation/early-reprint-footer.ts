@@ -6,6 +6,7 @@ import { paintPrintingElement } from './printing-elements.js';
 import { paintTextInk } from './text-ink.js';
 import { retroStatsText } from './retro-details.js';
 import { paintEarlyReprintFooterInk } from './early-reprint-footer-ink.js';
+import { paintSolidArtist } from './solid-artist.js';
 
 export function earlyReprintFooter(face: RenderedCardInput) {
   const frame = earlyReprintFrame(face);
@@ -49,7 +50,9 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
             : 'alphabetic';
       c.letterSpacing = '0px';
       const gray = 'gray' in p ? p.gray : profile.legalGray;
-      c.fillStyle = `rgb(${gray},${gray},${gray})`;
+      const tint = role === 'artist' ? profile.artist.tint : undefined;
+      const rgb = tint ? tint.map((value) => Math.round(value * gray)) : [gray, gray, gray];
+      c.fillStyle = 'rgb(' + rgb.join(',') + ')';
       c.shadowColor = role === 'legal' ? 'transparent' : '#17140f';
       c.shadowBlur = 0;
       const max =
@@ -58,7 +61,10 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
           : role === 'stats'
             ? 132 / p.width
             : Math.max(1, ((role === 'artist' ? 386 : 445) - p.x) / p.width);
-      const ink = () => paintEarlyReprintFooterInk(c, text, max, p);
+      const ink = () =>
+        role === 'artist' && profile.artist.inkStyle === 'separate-shadow'
+          ? paintSolidArtist(c, text, 0, 0, max, p, c.fillStyle)
+          : paintEarlyReprintFooterInk(c, text, max, p);
       if (role === 'stats') paintTextInk(c, text, 0, 0, max, face.textInk, 'stats', ink);
       else ink();
     } finally {

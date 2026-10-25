@@ -1,3 +1,4 @@
+import { preArnProfileSource } from '../games/magic/tools/accuracy/arn-profile-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
@@ -9,7 +10,7 @@ import {
 } from '../games/magic/tools/accuracy/printing-profile-guard-ancestry.mjs';
 const p = await printingProfileGuardDelta();
 for (const [file, entry] of Object.entries(p.files)) {
-  let current = await readFile(file);
+  let current = await preArnProfileSource(file, await readFile(file));
   // The later report adds an exact, Unlimited-only projection for a Revised
   // input-builder cleanup. It changes neither the renderer nor this older
   // profile-validation receipt. Unknown report edits keep their own identity.
@@ -61,7 +62,7 @@ assert.equal(
 );
 const manifestFile = 'games/magic/src/data/generated-manifest.json';
 const before = JSON.parse(p.files[manifestFile].beforeSource);
-const after = JSON.parse(await readFile(manifestFile));
+const after = JSON.parse(await preArnProfileSource(manifestFile, await readFile(manifestFile)));
 assert.deepEqual(after.files, before.files, 'Every generated runtime payload is unchanged');
 assert.deepEqual(Object.keys(after.sources), Object.keys(before.sources));
 for (const [file, digest] of Object.entries(after.sources)) {

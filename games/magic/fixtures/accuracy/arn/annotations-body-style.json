@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "set": "arn",
+  "status": "scan-reviewed-printing-corrections",
+  "scope": "Two exact printing/reference pairs. Inline styles and a flavor attribution break only; no per-card geometry or font override. Preserve the provider data and Oracle wording. Before finalizing the shared typography, replay both released and candidate renderers with these same corrected Original inputs. Quote-glyph punctuation is retained from the existing source in this proposal; no unreviewed Unicode substitution is introduced.",
+  "cards": {
+    "9598b346-a47d-4c4c-9571-156824e86b9c": {
+      "name": "City in a Bottle",
+      "referenceHash": "8ad4a4d12627367713f25554cbf625b28d530669daea4acf4e2a2f0c74a94a72",
+      "rulesText": "All cards from Arabian Nights must be discarded from play, except for City in a Bottle. While City in a Bottle is in play, no further cards from Arabian Nights can be played.",
+      "paragraphs": [
+        {
+          "role": "rules",
+          "runs": [
+            {
+              "text": "All cards from ",
+              "italic": false
+            },
+            {
+              "text": "Arabian Nights",
+              "italic": true
+            },
+            {
+              "text": " must be discarded from play, except for City in a Bottle. While City in a Bottle is in play, no further cards from ",
+              "italic": false
+            },
+            {
+              "text": "Arabian Nights",
+              "italic": true
+            },
+            {
+              "text": " can be played.",
+              "italic": false
+            }
+          ]
+        }
+      ],
+      "reviewed": true,
+      "reviewedFields": ["rulesText"],
+      "reviewNote": "The aligned full Scryfall scan shows both occurrences of Arabian Nights in italics. The frozen Original-mode input renders both in roman, changing line widths and wrapping. Rules wording otherwise matches."
+    },
+    "4d3dce0f-2168-4f63-b2f9-156a11beeea7": {
+      "name": "King Suleiman",
+      "referenceHash": "6a925116cf7af2180a174716a658c5b02f5d0b9fe0cd11339b6452149c35a261",
+      "rulesText": "Tap to destroy an Efreet or Djinn.",
+      "flavorText": "\"We made tempestuous winds obedient to Solomon . . . And many of the devils We also made obedient to him.\" —The Qur'an, 21:81",
+      "paragraphs": [
+        {
+          "role": "rules",
+          "runs": [
+            {
+              "text": "Tap to destroy an Efreet or Djinn.",
+              "italic": false
+            }
+          ]
+        },
+        {
+          "role": "flavor",
+          "runs": [
+            {
+              "text": "\"We made tempestuous winds obedient to Solomon . . . And many of the devils We also made obedient to him.\" —The Qur'an, 21:81",
+              "italic": true
+            }
+          ]
+        }
+      ],
+      "reviewed": true,
+      "reviewedFields": ["rulesText", "flavorText"],
+      "reviewNote": "The aligned full Scryfall scan places the dash-prefixed Qur'an attribution in the same italic paragraph after him. The source inserts a hard break and the renderer creates a separate paragraph. Join the attribution using normal wrapping, without a card-specific layout adjustment."
+    }
+  }
+}

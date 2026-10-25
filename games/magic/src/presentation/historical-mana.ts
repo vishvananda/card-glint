@@ -30,7 +30,12 @@ export function historicalManaAsset(face: RenderedCardInput, symbol: string) {
 /** Source-bound preparation policy; unmeasured printing/frame combinations keep
  * their existing sampler and glyph pixels. */
 export function historicalManaPaperSample(face: RenderedCardInput, symbol: string) {
-  if (symbol === 'B' && earlyReprintMana(face)) return 'opaque-percentile';
+  if (
+    symbol === 'B' &&
+    earlyReprintMana(face) &&
+    calibrationForFace(face)!.mana.paperSample !== 'printing'
+  )
+    return 'opaque-percentile';
   return printingInk(face, symbol)?.paperSample;
 }
 

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "a266ee6572f5e066bb3fa3abd2cd858dee10239c522d5e0e65426666c45b8ff1",
+  "revision": "25d6c69e1977ded6c288bcd8f527a7d451c513e2e0dfd761fec6f7a8b2bf08a6",
   "artistRevision": "3c1c3ee5ba999a73b5935ede8ff8636e27e3afa40d906ead9c2dc2c41969e7e6",
   "sets": {
     "0002ab72-834b-4c81-82b1-0d2760ea96b0": "m21",
@@ -13622,6 +13622,35 @@
     ],
     "4d3dce0f-2168-4f63-b2f9-156a11beeea7": [
       {
+        "source": "games/magic/fixtures/accuracy/arn/annotations-body-style.json",
+        "referenceSha256": "6a925116cf7af2180a174716a658c5b02f5d0b9fe0cd11339b6452149c35a261",
+        "reason": "The aligned full Scryfall scan places the dash-prefixed Qur'an attribution in the same italic paragraph after him. The source inserts a hard break and the renderer creates a separate paragraph. Join the attribution using normal wrapping, without a card-specific layout adjustment.",
+        "fields": {
+          "rulesText": "Tap to destroy an Efreet or Djinn.",
+          "flavorText": "\"We made tempestuous winds obedient to Solomon . . . And many of the devils We also made obedient to him.\" —The Qur'an, 21:81",
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "Tap to destroy an Efreet or Djinn.",
+                  "italic": false
+                }
+              ]
+            },
+            {
+              "role": "flavor",
+              "runs": [
+                {
+                  "text": "\"We made tempestuous winds obedient to Solomon . . . And many of the devils We also made obedient to him.\" —The Qur'an, 21:81",
+                  "italic": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
         "source": "games/magic/fixtures/accuracy/arn/annotations-printed-types.json",
         "referenceSha256": "6a925116cf7af2180a174716a658c5b02f5d0b9fe0cd11339b6452149c35a261",
         "reason": "Type line visually checked against this printing’s Scryfall scan. Rules, flavor, stats, artist and layout are separate obligations.",
@@ -24008,6 +24037,41 @@
       }
     ],
     "9598b346-a47d-4c4c-9571-156824e86b9c": [
+      {
+        "source": "games/magic/fixtures/accuracy/arn/annotations-body-style.json",
+        "referenceSha256": "8ad4a4d12627367713f25554cbf625b28d530669daea4acf4e2a2f0c74a94a72",
+        "reason": "The aligned full Scryfall scan shows both occurrences of Arabian Nights in italics. The frozen Original-mode input renders both in roman, changing line widths and wrapping. Rules wording otherwise matches.",
+        "fields": {
+          "rulesText": "All cards from Arabian Nights must be discarded from play, except for City in a Bottle. While City in a Bottle is in play, no further cards from Arabian Nights can be played.",
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "All cards from ",
+                  "italic": false
+                },
+                {
+                  "text": "Arabian Nights",
+                  "italic": true
+                },
+                {
+                  "text": " must be discarded from play, except for City in a Bottle. While City in a Bottle is in play, no further cards from ",
+                  "italic": false
+                },
+                {
+                  "text": "Arabian Nights",
+                  "italic": true
+                },
+                {
+                  "text": " can be played.",
+                  "italic": false
+                }
+              ]
+            }
+          ]
+        }
+      },
       {
         "source": "games/magic/fixtures/accuracy/arn/annotations-printed-types.json",
         "referenceSha256": "8ad4a4d12627367713f25554cbf625b28d530669daea4acf4e2a2f0c74a94a72",

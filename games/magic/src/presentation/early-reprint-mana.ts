@@ -1,6 +1,7 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
 import { calibrationForFace } from '../calibration/selection.js';
+import { arabianManaVariant } from './early-expansion-mana.js';
 
 /** Original glyphs can accompany either wording mode. Modern symbols and
  * unmeasured/custom frames retain their existing defaults. */
@@ -13,12 +14,18 @@ export function earlyReprintMana(face: RenderedCardInput): boolean {
   );
 }
 export function earlyReprintManaDefaults(face: RenderedCardInput) {
-  return earlyReprintMana(face) ? calibrationForFace(face)!.mana.geometry : undefined;
+  if (!earlyReprintMana(face)) return undefined;
+  const mana = calibrationForFace(face)!.mana,
+    variant = arabianManaVariant(face);
+  const extra = variant ? mana.variants?.[variant]?.geometry : undefined;
+  return extra ? { ...mana.geometry, ...extra } : mana.geometry;
 }
 export function earlyReprintManaTarget(face: RenderedCardInput, symbol: string) {
-  return earlyReprintMana(face)
-    ? calibrationForFace(face)!.mana.paper[symbol === 'X' ? 'N' : symbol]
-    : undefined;
+  if (!earlyReprintMana(face)) return undefined;
+  const mana = calibrationForFace(face)!.mana,
+    variant = arabianManaVariant(face);
+  const key = symbol === 'X' ? 'N' : symbol;
+  return (variant ? mana.variants?.[variant]?.paper?.[key] : undefined) ?? mana.paper[key];
 }
 export function earlyReprintManaInk(face: RenderedCardInput) {
   return face.calibration !== 'source' &&

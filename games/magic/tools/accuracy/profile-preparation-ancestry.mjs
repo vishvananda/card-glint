@@ -1,3 +1,4 @@
+import { preArnProfileSource } from './arn-profile-ancestry.mjs';
 import { m21StyleProfileSource } from './m21-style-ancestry.mjs';
 import { profileBodySource } from './body-profile-ancestry.mjs';
 import {
@@ -118,6 +119,7 @@ export async function preProfilePreparationSource(file, bytes, set, readProfile 
  * This deliberately has no set-data approval semantics. Fresh/profile scores
  * must use profilePreparationSource and retain changed-profile fingerprints. */
 export async function profilePreparationProofDependency(file, bytes) {
+  bytes = await preArnProfileSource(file, bytes);
   bytes = await profileAdapterProofDependency(file, bytes);
   const p = await proof(),
     entry = p.files[file];

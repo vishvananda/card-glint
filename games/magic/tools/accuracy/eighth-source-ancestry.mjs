@@ -1,3 +1,4 @@
+import { arnHistoricalSourceFiles } from './arn-profile-ancestry.mjs';
 import { preAbuFractionalSource } from './abu-fractional-ancestry.mjs';
 // Reconstruct only reviewed Eighth integration edits. This never approves a fit.
 import assert from 'node:assert/strict';
@@ -18,10 +19,12 @@ let checked;
 let runtimeChecked;
 const payloadPattern = /^games\/magic\/src\/data\/(?:sets|wording)\/[a-z0-9]+[.]ts$/;
 const relativeFiles = async () =>
-  (await readdir(path.join(root, 'games/magic/src'), { recursive: true, withFileTypes: true }))
-    .filter((e) => e.isFile() && /\.(?:ts|mjs|css|json)$/.test(e.name))
-    .map((e) => path.relative(root, path.join(e.parentPath, e.name)))
-    .sort();
+  arnHistoricalSourceFiles(
+    (await readdir(path.join(root, 'games/magic/src'), { recursive: true, withFileTypes: true }))
+      .filter((e) => e.isFile() && /\.(?:ts|mjs|css|json)$/.test(e.name))
+      .map((e) => path.relative(root, path.join(e.parentPath, e.name)))
+      .sort(),
+  );
 const dataBase = runtimePayloadBase;
 export async function eighthSourceAncestry() {
   return (checked ??= (async () => {

@@ -1,3 +1,4 @@
+import { preArnProfileSource } from './arn-profile-ancestry.mjs';
 // Data-only additions can be omitted from a historical executable inventory.
 // This does not authorize reuse of any current renderer/calibration scores.
 import assert from 'node:assert/strict';
@@ -98,7 +99,8 @@ export async function additionalProfileDataModules(known) {
 /** Historical generator reconstruction only. Current generated payloads are
  * independently checked against every authoritative source in their manifest.
  * Adding a registered data module must not grant it an older score identity. */
-export function profileDataGeneratorSource(file, bytes) {
+export async function profileDataGeneratorSource(file, bytes) {
+  bytes = await preArnProfileSource(file, bytes);
   if (file !== 'games/magic/tools/build-set-data.mjs') return bytes;
   const before = '67cc654df8eef2a6c9c14ea1066e04e89e075e52d04acd04e967053d02c91f5e',
     after = 'dfe7e032382f2544168affac70d3b88517ae17ff8d649704dfbda7d7fed10a4b';

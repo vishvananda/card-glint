@@ -31,7 +31,7 @@ export function alphaEditorAncestry(set) {
                 file,
                 await profilePreparationProofDependency(
                   file,
-                  profileDataGeneratorSource(
+                  await profileDataGeneratorSource(
                     file,
                     await artistReviewProofDependency(file, await readFile(file)),
                   ),

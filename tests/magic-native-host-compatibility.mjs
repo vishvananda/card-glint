@@ -1,3 +1,7 @@
+import {
+  arnProfileDelta,
+  arnHistoricalSourceFiles,
+} from '../games/magic/tools/accuracy/arn-profile-ancestry.mjs';
 import { eighthSourceAncestry } from '../games/magic/tools/accuracy/eighth-source-ancestry.mjs';
 import { modernDefaultAncestry } from '../games/magic/tools/accuracy/modern-default-ancestry.mjs';
 import { m21StyleAncestry } from '../games/magic/tools/accuracy/m21-style-ancestry.mjs';
@@ -311,7 +315,15 @@ async function verify() {
   const profileData = await additionalProfileDataModules(
     new Set([...consolidation.newModules, ...alphaEditor.newModules]),
   );
-  const currentFiles = (await sourceFiles(path.join(currentRoot, nativeDirectory))).filter(
+  const arn = await arnProfileDelta();
+  const historicalFiles = (
+    await arnHistoricalSourceFiles(
+      (await sourceFiles(path.join(currentRoot, nativeDirectory))).map(
+        (f) => nativeDirectory + '/' + f,
+      ),
+    )
+  ).map((f) => f.slice(nativeDirectory.length + 1));
+  const currentFiles = historicalFiles.filter(
     (file) =>
       ![
         ...profileData,
@@ -374,6 +386,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            (arn.files[relative]?.beforeSource !== null && Object.hasOwn(arn.files, relative)) ||
             Object.hasOwn(eighth.files, relative) ||
             Object.hasOwn(modernStyles.files, relative) ||
             Object.hasOwn(modernDefaults.files, relative) ||
