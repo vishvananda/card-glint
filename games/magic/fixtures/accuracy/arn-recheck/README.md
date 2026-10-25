@@ -54,6 +54,15 @@ are installed and no set-completion stage is approved by these files.
   overlap changes by −0.13/100. Disc palettes and whole-cost shrink candidates
   are not adopted. These are component diagnostics, not whole-card scores.
 
+- `symbol-development.json.gz`: the initial placement proposal passes all 92
+  actual native replay/isolation checks, but is rejected. Its regional fit
+  improves while whole-card mean falls 75.39 → 75.25/100. Zoom review finds a
+  white exterior rim where the scan has a black contour. Dimming is not a repair.
+  Four native examples with the two exterior white silhouettes removed and the
+  blade filled gray look closer. Refit geometry on that corrected source before
+  adopting any placement. The regional-reset optimization preserves all 7,544
+  trial scores exactly; this is analysis performance, not GPU throughput.
+
 Cohorts are reused development evidence, not fresh holdouts. Frame geometry,
 pigment/black point, mana, expansion symbols, filled heading ink, footer/P/T,
 Oracle safety and unaffected controls still require their scoped checks.
