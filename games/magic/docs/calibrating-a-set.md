@@ -306,3 +306,6 @@ parameter hash, and each reference, pose, input and native-face hash. State
 `heldOut: false`; this certifies the observed population only, with no claim
 of transfer to unseen printings. Regional measurements, outlier review and
 release checks still apply. The ledger rejects missing or duplicate members.
+
+For frozen released-browser baselines and native ARN/ATQ/DRK text-policy probes,
+see [early expansion probes](early-expansion-probes.md).
