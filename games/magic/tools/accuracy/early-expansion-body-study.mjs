@@ -48,11 +48,10 @@ const session = await openBrowser(inputs, {
         const file = id.split('/').at(-1);
         let code = source;
         if (file === 'early-expansion-text.ts') {
-          code = once(code, 'const bounds = {', 'const defaultBounds = {');
           code = once(
             code,
-            '  const p = profiles[set];',
-            '  const p = { ...profiles[set], ...((globalThis as any).__expansionProbe ?? {}) } as any;\n  const bounds = {...defaultBounds,...(p.bounds ?? {})};',
+            '  const p = calibrationForFace(face)?.expansionBody ?? profiles[set];',
+            '  const p = { ...(calibrationForFace(face)?.expansionBody ?? profiles[set]), ...((globalThis as any).__expansionProbe ?? {}) } as any;',
           );
           code = once(
             code,
@@ -61,7 +60,12 @@ const session = await openBrowser(inputs, {
           );
           code = once(
             code,
-            '      textWidth: 1,\n      leading: 1.1,',
+            '    const largeBounds = dark ? { ...bounds, x: 76, width: 336 } : bounds;',
+            '    const largeBounds = {...(dark ? { ...bounds, x: 76, width: 336 } : bounds),...(p.largeBounds ?? {})};',
+          );
+          code = once(
+            code,
+            '      textWidth: 1,\n      leading: p.largeLeading ?? 1.1,',
             '      textWidth: p.largeWidth ?? 1,\n      leading: p.largeLeading ?? 1.1,',
           );
           code = once(
@@ -69,23 +73,12 @@ const session = await openBrowser(inputs, {
             '      balanceLines: true,',
             '      balanceLines: p.largeBalanceLines ?? true,',
           );
-          code = code.replaceAll('27.5,', '(p.large ?? 27.5),');
-          code = once(
-            code,
-            '    const largeBounds = dark ? { ...bounds, x: 76, width: 336 } : bounds;',
-            '    const largeBounds = {...(dark ? { ...bounds, x: 76, width: 336 } : bounds),...(p.largeBounds ?? {})};',
-          );
-          code = once(
-            code,
-            '      centerOffset: dark ? 0 : -14,',
-            '      centerOffset: p.largeOffset ?? (dark ? 0 : -14),',
-          );
+          code = code.replaceAll('p.largeSize ?? 27.5', 'p.large ?? p.largeSize ?? 27.5');
           code = once(
             code,
             '      textWidth: 1,\n      leading: set ===',
             '      textWidth: p.compactWidth ?? 1,\n      leading: set ===',
           );
-          code = once(code, '    leading: 1,', '    leading: p.regularLeading ?? 1,');
         } else if (file === 'rules-wrap.ts') {
           code = once(
             code,

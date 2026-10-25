@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { root, hash, sourceHash } from './common.mjs';
-const RECEIPT = '2decd3ad68200e6ee979f44d6519c76af3e8ba5fe2c83e8d4046503ec43ea0b6';
+const RECEIPT = 'b12195919bb4f674aa86b388f8c21505a5035363d84d75d4a45cf7721c833bc9';
 let checked, tree;
 export function arnProfileDelta() {
   return (checked ??= (async () => {
@@ -59,4 +59,20 @@ export async function arnProfileRuntimeCompatible(directory, expected, set) {
     return true;
   })();
   return tree;
+}
+
+/** A historical dependency projection cannot validate the changed ARN profile. */
+export function arnProfileAffected(set, task, original = false, group) {
+  if (set?.toLowerCase() !== 'arn') return false;
+  if (original || task === 'references') {
+    if (original && task !== 'rules') return false;
+    const corrected = [
+      '9598b346-a47d-4c4c-9571-156824e86b9c',
+      '4d3dce0f-2168-4f63-b2f9-156a11beeea7',
+    ];
+    return (
+      !Array.isArray(group?.printingIds) || group.printingIds.some((id) => corrected.includes(id))
+    );
+  }
+  return task !== 'normalization';
 }

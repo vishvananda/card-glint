@@ -1,4 +1,8 @@
-import { arnProfileRuntimeCompatible } from './arn-profile-ancestry.mjs';
+import {
+  arnProfileRuntimeCompatible,
+  arnProfileAffected,
+  arnProfileDelta,
+} from './arn-profile-ancestry.mjs';
 import { preRevisedPreflightSource } from './revised-preflight-ancestry.mjs';
 import {
   printingProfileGuardRuntimeCompatible,
@@ -93,6 +97,16 @@ export async function calibrationReport(ledger) {
       ]);
       for (const { task, item, original } of dependencies) {
         const currentAbu = await abuCurrentApproval(item, group, task, original, set.set);
+        if (
+          arnProfileAffected(set.set, task, original, group) &&
+          item.proof?.rendererHash !== (await arnProfileDelta()).afterRenderer
+        ) {
+          item.status = original ? 'stale' : 'needs-audit';
+          item.reason =
+            'The consolidated Arabian Nights profile changes these rendered components or reviewed Original paragraphs. Earlier measurements stay historical until the current native profile is certified.';
+          continue;
+        }
+
         if (item.proof?.abuCurrentReview && !currentAbu) {
           item.status = original ? 'stale' : 'needs-audit';
           item.reason =

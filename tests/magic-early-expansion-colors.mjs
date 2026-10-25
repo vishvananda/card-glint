@@ -39,6 +39,7 @@ try {
   const { calibratedFrameMaterials, calibratedPrintingStock } = await server.ssrLoadModule(
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
+  const { profile: arn } = await server.ssrLoadModule('/games/magic/src/calibration/sets/arn.ts');
   assert.equal(Object.keys(EARLY_EXPANSION_COLORS).length, 22);
   let adopted = 0;
   for (const [key, profile] of Object.entries(EARLY_EXPANSION_COLORS)) {
@@ -60,7 +61,13 @@ try {
       materials: { [frame.asset]: profile.adjustment },
       stock: '#181510',
     });
-    assert.deepEqual(calibratedFrameMaterials(face), result.materials);
+    assert.deepEqual(
+      calibratedFrameMaterials(face),
+      setCode === 'arn' && ['W', 'G'].includes(material)
+        ? { [frame.asset]: arn.colors[material].adjustment }
+        : result.materials,
+    );
+
     assert.equal(calibratedPrintingStock(face), result.stock);
     assert.equal(profile.adjustment.blackPoint, undefined, 'No obsolete source ink curve');
     assert.equal(profile.adjustment.outerStock, undefined, 'Stock is recut independently');

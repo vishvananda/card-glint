@@ -58,7 +58,6 @@ try {
       for (const override of [
         { setCode: 'lea' },
         { setCode: '3ed' },
-        { setCode: 'arn' },
         { setCode: 'drk' },
         { setCode: 'ice' },
         { setCode: 'm21' },

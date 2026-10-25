@@ -122,7 +122,7 @@ try {
     assert.equal(earlyExpansionFrame({ ...land, name: 'Mountain', typeLine }), undefined);
   assert.ok(
     retroFrameAsset({ ...land, name: 'Mountain', typeLine: 'Basic Land — Mountain' }).endsWith(
-      '/seventh/regular/rl.png',
+      '/old/abu/rl.png',
     ),
   );
   // The separately certified sparse DRK cohorts now have their own profiles.

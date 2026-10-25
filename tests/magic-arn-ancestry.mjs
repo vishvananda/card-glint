@@ -7,6 +7,7 @@ import {
   preArnProfileSource,
   arnHistoricalSourceFiles,
   arnProfileRuntimeCompatible,
+  arnProfileAffected,
 } from '../games/magic/tools/accuracy/arn-profile-ancestry.mjs';
 const p = await arnProfileDelta();
 assert.equal(await sourceHash(root + '/games/magic/src'), p.afterRenderer);
@@ -70,3 +71,14 @@ assert(mean > 80 && mean < 81);
 console.log(
   'ARN exact source history;1001 unchanged controls;92 native Originals plus276 Oracle modes; changed ARN cannot inherit earlier scores.',
 );
+
+assert.equal(arnProfileAffected('arn', 'frameColor'), true);
+assert.equal(
+  arnProfileAffected('arn', 'rules', true, {
+    printingIds: ['9598b346-a47d-4c4c-9571-156824e86b9c'],
+  }),
+  true,
+);
+assert.equal(arnProfileAffected('arn', 'rules', true, { printingIds: ['unaffected-id'] }), false);
+assert.equal(arnProfileAffected('arn', 'normalization'), false);
+assert.equal(arnProfileAffected('lea', 'frameColor'), false);

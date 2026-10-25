@@ -288,8 +288,9 @@ try {
     const bodies =
       set === 'arn' ? { cards: {} } : await fixture(set + '/annotations-missing-rules.json');
     const outliers = await fixture(set + '/annotations-text-outliers.json');
+    const styles = set === 'arn' ? await fixture('arn/annotations-body-style.json') : { cards: {} };
     for (const [id, row] of Object.entries(types.cards)) {
-      const body = outliers.cards[id] ?? bodies.cards[id];
+      const body = styles.cards[id] ?? outliers.cards[id] ?? bodies.cards[id];
       if (outliers.cards[id]?.reviewed) reviewedBodies.add(id);
       const resolved = resolvePrintingWording(id, input, {
         referenceSha256: row.referenceHash,
@@ -302,7 +303,9 @@ try {
         flavor = body?.flavorText ?? original.flavorText;
       assert.equal(
         resolved.wordings.original.rulesText,
-        [rules, flavor.replaceAll('*', '')].filter(Boolean).join('\n'),
+        body?.paragraphs
+          ? body.paragraphs.map((p) => p.runs.map((r) => r.text).join('')).join('\n')
+          : [rules, flavor.replaceAll('*', '')].filter(Boolean).join('\n'),
       );
       assert.equal(
         resolvePrintingWording(id, input, { referenceSha256: '0'.repeat(64) }).provenance.status,

@@ -86,6 +86,14 @@ try {
       { symbolStyle: undefined, wordingMode: 'oracle' },
     ]) {
       const alternate = { ...face, ...override };
+      if (setCode === 'arn' && override.legendary) {
+        // The consolidated ordinary frame remains selected by an added host
+        // semantic flag; the flag does not invent a separate ARN gold frame.
+        assert.deepEqual(printingManaDefaults(alternate), p);
+        assert.deepEqual(calibratedManaTarget(alternate, 'U'), calibratedManaTarget(face, 'U'));
+        continue;
+      }
+
       if (override.frameStyle === 'modern') assert.notDeepEqual(printingManaDefaults(alternate), p);
       else assert.equal(printingManaDefaults(alternate), undefined);
       assert.equal(earlyManaNumeral(alternate), undefined);

@@ -7,6 +7,7 @@ import { chromium } from 'playwright';
 // Original geometry exercises material polarity and coordinate transforms.
 // Replace only checksum expectations in this test server; no third-party bytes.
 const synthetic = {
+  arn: '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path fill="#fff" d="M0 0H100V100H0Z"/><path fill="#fff" d="M5 5H95V95H5Z"/><path fill="#000" d="M10 10H90V90H10Z"/><path fill="#fff" d="M30 30H70V70H30Z"/></svg>',
   crescent:
     '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path style="fill:#ffffff" d="M0 0H100V100H0Z"/><path d="M10 10H90V90H10Z"/></svg>',
   monochrome:
@@ -21,15 +22,17 @@ for (const rule of Object.values(manifest.sources))
   rule.sha256 = createHash('sha256')
     .update(
       synthetic[
-        rule.recipe === 'remove-outer-white'
-          ? rule.pathCount === 2
-            ? 'crescent'
-            : 'monochrome'
-          : rule.recipe === 'm15'
-            ? 'm15'
-            : rule.recipe === 'white-outer-rim'
-              ? 'rim'
-              : 'numeric'
+        rule.recipe === 'printed-paths'
+          ? 'arn'
+          : rule.recipe === 'remove-outer-white'
+            ? rule.pathCount === 2
+              ? 'crescent'
+              : 'monochrome'
+            : rule.recipe === 'm15'
+              ? 'm15'
+              : rule.recipe === 'white-outer-rim'
+                ? 'rim'
+                : 'numeric'
       ],
     )
     .digest('hex');
@@ -59,15 +62,17 @@ try {
       contentType: 'image/svg+xml',
       headers: { 'Access-Control-Allow-Origin': '*' },
       body: synthetic[
-        url.includes('/leg-')
-          ? 'monochrome'
-          : url.includes('/drk-')
-            ? 'crescent'
-            : url.includes('/m15-')
-              ? 'm15'
-              : /\/[67]ed-/.test(url)
-                ? 'rim'
-                : 'numeric'
+        url.includes('/arn-')
+          ? 'arn'
+          : url.includes('/leg-')
+            ? 'monochrome'
+            : url.includes('/drk-')
+              ? 'crescent'
+              : url.includes('/m15-')
+                ? 'm15'
+                : /\/[67]ed-/.test(url)
+                  ? 'rim'
+                  : 'numeric'
       ],
     });
   });
@@ -91,6 +96,7 @@ try {
       signal = new AbortController().signal;
     const urls = ['m15', '8ed', '9ed', '7ed', '6ed'].map((code) => styledSetSymbol(code, 'rare'));
     urls.push(...['6ed', '7ed', '8ed', '9ed'].map((code) => styledSetSymbol(code, 'uncommon')));
+    urls.push(styledSetSymbol('arn', 'common'));
     urls.push(styledSetSymbol('leg', 'rare'));
     urls.push(styledSetSymbol('drk', 'common'));
     const parsed = [];
@@ -112,6 +118,13 @@ try {
     check(
       parsed.at(-2).querySelectorAll('path').length === 6,
       'Monochrome rim removal changed internal details',
+    );
+    const arn = parsed[urls.findIndex((url) => url.includes('/arn-'))].querySelectorAll('path');
+    check(
+      arn.length === 2 &&
+        arn[0].getAttribute('fill') === '#000' &&
+        ['#b3b3b3', 'rgb(179, 179, 179)'].includes(arn[1].style.fill),
+      'ARN must remove only the white exterior silhouettes and retain its black contour/gray blade',
     );
     const m15 = parsed[0].querySelectorAll('path');
     check(
@@ -283,7 +296,7 @@ try {
     host.dispose();
     return { urls };
   });
-  assert.equal(result.urls.length, 11);
+  assert.equal(result.urls.length, 12);
   for (const [i, url] of result.urls.entries())
     assert.equal(requests.get(url), i === 0 ? 2 : 1, 'Preparation fetched a warm source again');
   console.log('SVG patch materials/cache:', result);
