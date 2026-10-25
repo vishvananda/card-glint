@@ -1,4 +1,5 @@
 import { supportsModernCalibration } from './calibration-modern-sources.js';
+import { supportsEighthStyleDefaults } from './eighth-style-scope.js';
 import { calibrationFace } from './calibration-input.js';
 import { validatePrintingCalibration } from './printing-calibration-types.js';
 import { validateFutureTreatment } from './future-frame.js';
@@ -425,8 +426,15 @@ export function resolvePrintingPreset(
         resolvePrintingPreset({ ...child, layout: 'normal' }, selection),
       ),
     };
-  if (typeof face.calibration === 'object' && !supportsModernCalibration(face))
-    throw Error('M21 calibration requires a modern frame.');
+  if (typeof face.calibration === 'object') {
+    const eighth = face.calibration.profile === '8ed-eighth';
+    if (eighth ? !supportsEighthStyleDefaults(face) : !supportsModernCalibration(face))
+      throw Error(
+        eighth
+          ? '8ED calibration requires an ordinary Eighth frame.'
+          : 'M21 calibration requires a modern frame.',
+      );
+  }
   return calibrationFace(face);
 }
 

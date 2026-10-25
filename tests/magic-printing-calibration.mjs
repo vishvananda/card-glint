@@ -124,6 +124,21 @@ try {
       ),
     /modern/,
   );
+  const eighthPolicy = { profile: '8ed-eighth' };
+  const eighthChoice = { overrides: { calibration: eighthPolicy } };
+  const eighthPreset = resolvePrintingPreset(face, { preset: '8ed', ...eighthChoice });
+  assert.equal(eighthPreset.frameAssetFamily, 'eighth');
+  assert.deepEqual(eighthPreset.calibration, eighthPolicy);
+  const eighthStyle = printingStyles.find((s) => s.id === '8ed');
+  const eighthResult = resolvePrintingStyle(face, eighthStyle, eighthChoice);
+  assert.deepEqual(eighthResult.calibration.mode, eighthPolicy);
+  assert.deepEqual(eighthResult.selection.overrides.calibration, eighthPolicy);
+  assert.equal(printingStyleOptions(face, eighthStyle, eighthChoice)[0].supported, true);
+  for (const preset of ['m21', 'lea', 'plc-colorshifted'])
+    assert.throws(
+      () => resolvePrintingPreset(face, { preset, ...eighthChoice }),
+      /ordinary Eighth frame/,
+    );
   for (const calibration of ['auto', 'printing', 'source', { profile: 'm21-modern' }]) {
     const result = resolvePrintingStyle(
       face,
