@@ -56,7 +56,7 @@ export interface CalibratedExpansionBody {
       | 'flavorOrphans'
       | 'flavorOrphanMinCharacters'
     >
-  >;
+  > & { readonly minimumFreeSpace?: number };
 
   readonly bounds?: {
     readonly x: number;

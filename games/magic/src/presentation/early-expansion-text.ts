@@ -81,9 +81,10 @@ export function earlyExpansionTextLayout(
     return null;
   const p = calibrationForFace(face)?.expansionBody ?? profiles[set];
   const baseline = expansionBodyLayout(context, face, paragraphs, reference, set, p);
+  const freeSpace = (p.bounds ?? defaultBounds).height - baseline.height;
   if (
     !p.unconstrained ||
-    (baseline.top <= (p.bounds ?? defaultBounds).y + 0.01 && baseline.size >= 20)
+    (baseline.size >= 20 && freeSpace <= (p.unconstrained.minimumFreeSpace ?? 20) + 0.02)
   )
     return baseline;
   const refined = expansionBodyLayout(context, face, paragraphs, reference, set, {

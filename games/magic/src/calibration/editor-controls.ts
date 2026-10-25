@@ -138,6 +138,7 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
         }
         if (typeof value !== 'number') continue;
         const count = key === 'threshold' || key === 'flavorOrphanMinCharacters',
+          freeSpace = key === 'minimumFreeSpace',
           ratio = /Width|Leading/i.test(key),
           offset = /offset/i.test(key);
         number(
@@ -145,8 +146,8 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
           value,
           'body',
           scope,
-          offset ? -30 : ratio ? 0.5 : count ? (key === 'threshold' ? 1 : 0) : 6,
-          offset ? 30 : ratio ? 1.5 : count ? 1000 : 48,
+          offset ? -30 : ratio ? 0.5 : freeSpace ? 0 : count ? (key === 'threshold' ? 1 : 0) : 6,
+          offset ? 30 : ratio ? 1.5 : freeSpace ? 680 : count ? 1000 : 48,
           count ? 1 : ratio ? 0.005 : 0.25,
           count ? 'count' : ratio ? 'ratio' : 'px',
         );

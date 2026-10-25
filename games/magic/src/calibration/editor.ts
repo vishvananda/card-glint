@@ -176,6 +176,9 @@ function validateProfile(profile: SetCalibrationProfile) {
       (expansion.bounds && (expansion.bounds.width < 20 || expansion.bounds.height < 20)))
   )
     throw Error('Invalid expansion body bounds or typography');
+  const freeSpace = expansion?.unconstrained?.minimumFreeSpace;
+  if (freeSpace !== undefined && (!Number.isFinite(freeSpace) || freeSpace < 0))
+    throw Error('Invalid expansion free-space threshold');
   for (const policy of [expansion, expansion?.unconstrained]) {
     if (!policy) continue;
     if (
