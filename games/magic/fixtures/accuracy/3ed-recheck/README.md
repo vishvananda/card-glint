@@ -400,3 +400,31 @@ does not alter their pixels. Correct the source sampler before fitting a new
 black paper target or ink tone. The sampler observation is recorded in
 mana-paper-sampler-observation.json.gz; it is a diagnostic, not a new palette
 or completed color calibration.
+
+## Black-symbol paper recovery
+
+The native sampler fix now uses the existing opaque-paper percentile for the
+reviewed Revised historical black glyph. All 306 printings were replayed in
+four modes. RGB changes are confined to observed black-symbol bounds on 54
+Original and 51 Oracle-with-original-symbol faces; all alpha and text layouts
+are unchanged. Modern-symbol and etching outputs, including their cache keys,
+are unchanged. Three additional Oracle keys refresh conservatively.
+
+The fixed stock-normalized whole-card mean is 73.0680323 → 73.0700801/100:
+252 exact score reuses and 54 fresh comparisons, with 40 gains and 12 losses.
+This is a source-preparation correction, not a new palette or geometry fit.
+The proposed numeral and B/R/G size adjustments still require review against
+the corrected source. No whole-set completion is claimed.
+
+The black-paper-\*.json.gz files record the exact native hashes, observation-only
+bounds, whole-card results and before/after source. No external card images
+are shipped. Repeat the isolation check with frozen cached inputs and both
+native directories:
+
+    MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-black-paper-review.mjs \
+      inputs.json before-native after-native black-paper-review.json
+    node tests/magic-revised-black-paper.mjs
+
+The tool uses one browser and verifies that observation reproduces each changed
+native PNG exactly. The sampler remains part of cached asset preparation;
+painting and motion do not read back or decode its pixels.

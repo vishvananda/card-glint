@@ -5,6 +5,7 @@ import { earlyExpansionMana } from './early-expansion-mana.js';
 import { earlyReprintMana } from './early-reprint-mana.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import type { ManaColor } from './symbol-adjustment.js';
+import { isRetro, retroBorder, retroFamily } from './retro-frame.js';
 
 /** Glyph choice belongs to each printing/color, independently of its frame and
  * wording. Explicit original symbols also work with Oracle text. */
@@ -47,6 +48,12 @@ function printingInk(face: RenderedCardInput, symbol: string) {
       : undefined;
   const ink = measured ?? MANA_PRINTING_INK[`${face.setCode?.toLowerCase()}/${symbol}`];
   if (!ink || ink.family !== historicalManaFamily(face, symbol)) return undefined;
-  if (ink.paperSample && !earlyExpansionMana(face) && !reprint) return undefined;
+  const revised =
+    face.setCode?.toLowerCase() === '3ed' &&
+    isRetro(face) &&
+    (face.layout ?? 'normal') === 'normal' &&
+    retroBorder(face) === 'white' &&
+    retroFamily(face) === 'fourth';
+  if (ink.paperSample && !earlyExpansionMana(face) && !reprint && !revised) return undefined;
   return ink;
 }

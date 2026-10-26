@@ -68,7 +68,7 @@ import { paintShapedSetSymbol, shapedSetCode } from './shaped-set-symbol.js';
 import { isRetro, retroFrameAsset, retroBorder } from './retro-frame.js';
 import { paintRetroFace } from './retro-paint.js';
 import { loadRetroFont } from './retro-font.js';
-import { historicalManaFamily } from './historical-mana.js';
+import { historicalManaFamily, historicalManaPaperSample } from './historical-mana.js';
 import { hasExtraRules, extraRuleKey, extraRuleBlocks } from './extra-rules.js';
 import { paintExtraRules } from './extra-rule-paint.js';
 import { splitPanels, panelTransform, splitTextScale, splitHasFuse } from './split-layout.js';
@@ -224,6 +224,21 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       !face.printingElements?.artist?.hidden) ||
       (face.power != null && face.toughness != null))
       ? ['revised-footer-geometry-v1']
+      : []),
+    ...(!input.printedImage &&
+    input.layer !== 'etching' &&
+    input.paintLayer !== 'artwork' &&
+    face.setCode?.toLowerCase() === '3ed' &&
+    historicalManaPaperSample(face, 'B') === 'opaque-percentile' &&
+    ((!face.printingElements?.manaCost?.hidden && face.manaSymbols?.includes('B')) ||
+      (input.rulesText !== false &&
+        /\{B\}/.test(
+          [
+            face.rulesText ?? '',
+            ...(face.rulesParagraphs ?? []).flatMap((p) => p.runs.map((r) => r.text)),
+          ].join('\n'),
+        )))
+      ? ['revised-black-paper-v1']
       : []),
     ...(dualFrameRevision ? [dualFrameRevision] : []),
     ...(flowRevision ? [flowRevision] : []),

@@ -1,9 +1,13 @@
+import {
+  preRevisedBlackPaperSource,
+  revisedBlackPaperHistoricalHash,
+} from '../games/magic/tools/accuracy/revised-black-paper-ancestry.mjs';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { createServer } from './magic-vite.mjs';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   revisedFooterDelta,
   preRevisedFooterSource,
@@ -11,10 +15,10 @@ import {
   revisedFooterAffected,
 } from '../games/magic/tools/accuracy/revised-footer-ancestry.mjs';
 const p = await revisedFooterDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await revisedBlackPaperHistoricalHash(), p.afterRenderer);
 assert.equal(await revisedFooterHistoricalHash(), p.beforeRenderer);
 for (const [file, e] of Object.entries(p.files)) {
-  const bytes = await readFile(file);
+  const bytes = await preRevisedBlackPaperSource(file, await readFile(file));
   assert.equal(hash(bytes), e.after);
   assert.equal(hash(await preRevisedFooterSource(file, bytes)), e.before);
   const unknown = Buffer.concat([bytes, Buffer.from('\n// unknown edit\n')]);

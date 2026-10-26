@@ -36,6 +36,8 @@ export const MANA_PRINTING_TARGETS: Readonly<Record<string, Rgb>> = {
 export const MANA_PRINTING_INK: Readonly<
   Record<string, { family: string; pixels: number; paperSample?: 'opaque-percentile' }>
 > = {
+  // The 4%-height probe touches the skull's antialiased forehead on this source.
+  '3ed/B': { family: 'mse-old', pixels: 0, paperSample: 'opaque-percentile' },
   'leb/R': { family: 'mse-old', pixels: 0.4 },
   'drk/B': { family: 'mse-old', pixels: 0.2, paperSample: 'opaque-percentile' },
   'drk/R': { family: 'mse-old', pixels: 0.2, paperSample: 'opaque-percentile' },

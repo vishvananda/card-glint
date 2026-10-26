@@ -1,4 +1,5 @@
 // Authenticate exact source history only. This does not certify a whole footer.
+import { preRevisedBlackPaperSource } from './revised-black-paper-ancestry.mjs';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile, readdir } from 'node:fs/promises';
@@ -49,6 +50,7 @@ export function revisedFooterDelta() {
   })());
 }
 export async function preRevisedFooterSource(file, bytes) {
+  bytes = await preRevisedBlackPaperSource(file, bytes);
   const e = (await revisedFooterDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

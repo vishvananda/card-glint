@@ -1,3 +1,7 @@
+import {
+  revisedBlackPaperDelta,
+  revisedBlackPaperAffected,
+} from './revised-black-paper-ancestry.mjs';
 import { revisedFooterDelta, revisedFooterAffected } from './revised-footer-ancestry.mjs';
 import {
   revisedBodyArtistAffected,
@@ -113,6 +117,16 @@ export async function calibrationReport(ledger) {
       ]);
       for (const { task, item, original } of dependencies) {
         const currentAbu = await abuCurrentApproval(item, group, task, original, set.set);
+        if (
+          revisedBlackPaperAffected(set.set, task, original) &&
+          item.proof?.revisedBlackPaperSource !== (await revisedBlackPaperDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Revised historical black mana now samples opaque paper instead of the skull edge. Mana and inline-symbol/full-card evidence need current renders; unchanged frame, heading and footer components can reuse their evidence.';
+          continue;
+        }
+
         if (
           revisedFooterAffected(set.set, task, original, group) &&
           item.proof?.revisedFooterSource !== (await revisedFooterDelta()).afterRenderer
