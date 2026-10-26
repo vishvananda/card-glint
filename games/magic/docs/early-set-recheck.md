@@ -423,3 +423,47 @@ Use the exact corrected Original corpus and cached assets. Coordinates use
 cropping or displaying them at the canonical size. The full structural
 score fixture also records the Lab metric dependency graph; changing a pose,
 render, input or metric requires fresh scores.
+
+### Joint horizontal width/position diagnostic
+
+The next grid tests nine width scales (0.996–1.004) and 25 translations
+(±1.5 px in 0.125 px steps). Calibration paper strips alone select the candidate;
+validation scores cannot change it. Native captures then verify the proposed
+frame/art transformation and every unchanged Original baseline.
+
+| Frame | Width factor | x (px) | Interior index before → after | Four-side overlap before → after |
+| ----- | -----------: | -----: | ----------------------------: | -------------------------------: |
+| White |        1.002 | +0.250 |             78.05 → 77.74/100 |                92.17 → 91.32/100 |
+| Blue  |        0.999 | −0.250 |             73.54 → 73.68/100 |                93.34 → 92.94/100 |
+| Black |        1.000 |  0.000 |             73.77 → 73.77/100 |                92.31 → 92.31/100 |
+| Red   |        1.000 | −0.375 |             73.00 → 73.41/100 |                88.29 → 91.95/100 |
+| Green |        1.000 | +0.750 |             74.16 → 73.88/100 |                87.44 → 94.76/100 |
+
+Black's unconstrained optimum improves the calibration paper objective by less
+than 0.01/100 and slightly worsens validation. The native study retains zero.
+The other rows use their calibration winner. The combined interior index is
+74.5195 → 74.5168/100. White's conflict is smaller but remains unresolved.
+Green improves its frame component while the illustration-placement component
+loses 6.56/100; inspect illustration content separately from frame-edge geometry.
+No renderer values are adopted by this diagnostic.
+
+The second score pass reuses 309 exact previous results and computes 137 fresh
+ones. Reuse requires the same native PNG, Original input, reference image,
+normalization pose and complete metric dependency graph. All 446 score joins
+are verified. This saves scoring work without reusing a result across a changed
+scan alignment or geometry raster.
+
+The [width grid](../fixtures/accuracy/3ed-recheck/colored-width-probe.json.gz),
+[460 native captures](../fixtures/accuracy/3ed-recheck/colored-width-native-trials.json.gz)
+and [regional scores](../fixtures/accuracy/3ed-recheck/colored-width-geometry-scores.json.gz)
+record the experiment. Reproduce it against the same canonical reference poses
+and baseline as above:
+
+```sh
+node games/magic/tools/accuracy/revised-colored-width-diagnostic.mjs \
+  colored-horizontal-normalization.json baseline/capture.json baseline width-grid.json
+# Each material in shared-geometry.json has {"sx": widthFactor, "dx": offsetPixels}.
+MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/revised-colored-width-native-trials.mjs \
+  inputs.json baseline/capture.json width-native trials shared-geometry.json
+node tests/magic-revised-width-study.mjs
+```
