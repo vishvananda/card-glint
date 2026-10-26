@@ -1,6 +1,7 @@
 import unlimitedFinal from '../../fixtures/accuracy/2ed/annotations-artist-final.json' with { type: 'json' };
 import fixture from '../../fixtures/accuracy/planar-artist-review.json' with { type: 'json' };
 import early from '../../fixtures/accuracy/early-expansion-footer-wording.json' with { type: 'json' };
+import diacritics from '../../fixtures/accuracy/arn-artist-diacritics.json' with { type: 'json' };
 
 import alpha from '../../fixtures/accuracy/lea/annotations.json' with { type: 'json' };
 import alphaCredits from '../../fixtures/accuracy/lea/annotations-artist-credit.json' with { type: 'json' };
@@ -18,6 +19,7 @@ const credits = new Map([
   ),
   ...fixture.rows.map((row) => [row.id, { ...row, set: fixture.set }]),
   ...early.rows.filter((row) => !row.artistMatchesProvider).map((row) => [row.id, row]),
+  ...diacritics.rows.map((row) => [row.id, row]),
 ]);
 
 /** Exact physical credits, separate from providers' canonical artist metadata.

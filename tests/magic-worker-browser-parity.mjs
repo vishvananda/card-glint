@@ -234,6 +234,7 @@ try {
           // Its current browser/worker parity is tested separately at all three tiers.
           // Alpha/Beta text and dual-perimeter calibration are intentional too.
           // The current ABU parity replay covers their text and dual frames.
+          // Revised Original fractional metrics have a current worker parity replay too.
           // Matrix's alphabetic baseline is an intentional 0.7.3 correction.
           // Preserve this original host transition with its historical font
           // behavior; magic-matrix-worker-parity tests the current painter.
@@ -241,7 +242,7 @@ try {
             before,
             label === 'walker'
               ? historicalWalker
-              : ['lea', 'leb', '2ed', 'm21'].includes(face.setCode) || label === 'future'
+              : ['lea', 'leb', '2ed', '3ed', 'm21'].includes(face.setCode) || label === 'future'
                 ? historicalProfile
                 : current,
           ]) {

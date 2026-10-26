@@ -282,19 +282,41 @@ export function fractionalEarlyRules(
   context: CanvasContext,
   original: RulesLayout,
   smallTextWidth = 1,
+  printing?: Readonly<{ textWidth: number; right: number }>,
 ): RulesLayout {
+  if (
+    printing &&
+    (!Number.isFinite(printing.textWidth) ||
+      printing.textWidth <= 0 ||
+      !Number.isFinite(printing.right) ||
+      printing.right <= original.x ||
+      printing.right > 488)
+  )
+    throw RangeError('Invalid printing text geometry');
   if (original.size >= 30 || !original.lines.length) return original;
   const request = rulesLayoutRequest(original);
   if (!request) throw Error('Missing final early text request');
   const precise = layoutRules(
     context,
     request.paragraphs,
-    request.bounds,
+    printing
+      ? {
+          ...request.bounds,
+          width: Math.min(
+            printing.right - request.bounds.x,
+            request.bounds.width * printing.textWidth,
+          ),
+        }
+      : request.bounds,
     original.size,
     Math.max(10, original.size - 0.5),
     {
       ...request.typography,
-      ...(original.size < 19 ? { textWidth: smallTextWidth } : {}),
+      ...(printing
+        ? { textWidth: printing.textWidth }
+        : original.size < 19
+          ? { textWidth: smallTextWidth }
+          : {}),
       fractionalMetrics: true,
       maximumLines: original.lines.length,
     },

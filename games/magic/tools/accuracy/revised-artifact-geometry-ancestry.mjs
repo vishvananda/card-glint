@@ -1,3 +1,4 @@
+import { preRevisedBodyArtistSource } from './revised-body-artist-ancestry.mjs';
 // Exact history for the shared Revised artifact geometry and its color binding.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -143,6 +144,7 @@ export function revisedArtifactGeometryDelta() {
   })());
 }
 export async function preRevisedArtifactGeometrySource(file, bytes) {
+  bytes = await preRevisedBodyArtistSource(file, bytes);
   const e = (await revisedArtifactGeometryDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

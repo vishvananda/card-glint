@@ -1,3 +1,4 @@
+import { preRevisedBodyArtistSource } from '../games/magic/tools/accuracy/revised-body-artist-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -60,7 +61,8 @@ assert.equal(revisedWordingAffected('lea', 'rules'), false);
 assert.equal(p.nonRevisedWordingsUnchanged, 2874);
 assert.equal(p.artistCreditsUnchanged, 222);
 assert.equal(p.unchangedWordingModules.length, 28);
-for (const e of p.unchangedWordingModules) assert.equal(hash(await readFile(e.file)), e.sha256);
+for (const e of p.unchangedWordingModules)
+  assert.equal(hash(await preRevisedBodyArtistSource(e.file, await readFile(e.file))), e.sha256);
 const native = JSON.parse(
   gunzipSync(await readFile(p.artifacts['runtime-wording-native.json.gz'].file)),
 );

@@ -1,7 +1,8 @@
 # Arabian Nights recheck
 
-This is development evidence for the through-Fourth audit. No renderer values
-are installed and no set-completion stage is approved by these files.
+This is development evidence for the through-Fourth audit. The consolidated
+profile is installed on the working calibration branch. The earlier proposal
+files remain historical evidence; they do not approve set completion.
 
 - `baseline.json.gz`: 92 frozen nonfoil references, original-wording inputs,
   scan-only poses, published 0.7.2 native hashes and diagnostic scores. The
@@ -71,3 +72,10 @@ Images and artwork stay outside Git.
 
 See [the probe commands](../../../docs/early-expansion-probes.md) and
 [the full calibration procedure](../../../docs/calibrating-a-set.md).
+
+The physical artist review also corrects six exact Brian Snõddy credits to
+printed “Brian Snōddy”. All 92 credits were inspected. Original and both Oracle
+variants change only inside the artist region for those six printings; the other
+86 printings and all 92 etching layers remain unchanged. The source font lacks
+U+014D, so this retains the existing serif fallback. It does not certify the
+font or the complete footer.

@@ -14,6 +14,7 @@ import {
   modernWalkerProfile,
 } from './modern-printing-profile.js';
 import { ALPHA_RULES_REVISION } from './early-text-tiers.js';
+import { REVISED_RULES_REVISION, usesRevisedFractionalRules } from './retro-rules.js';
 import { retroDualFrameRevision, abuDualArtBottom } from './retro-dual-frame.js';
 import { WALKER_GEOMETRY, walkerSymbolSize } from './planeswalker-geometry.js';
 import { coverageMap, type CoverageMap } from '../../../../packages/browser/src/canvas-mask.js';
@@ -205,6 +206,13 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     CONJURER_ROOT,
     'canvas-face-v148',
     ...(matrixHeadings ? ['matrix-heading-alphabetic-v1'] : []),
+    ...(!input.printedImage &&
+    input.layer !== 'etching' &&
+    input.paintLayer !== 'artwork' &&
+    input.rulesText !== false &&
+    usesRevisedFractionalRules(face)
+      ? [REVISED_RULES_REVISION]
+      : []),
     ...(dualFrameRevision ? [dualFrameRevision] : []),
     ...(flowRevision ? [flowRevision] : []),
     ...(input.layer !== 'etching' &&

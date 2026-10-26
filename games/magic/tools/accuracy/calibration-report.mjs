@@ -1,4 +1,8 @@
 import {
+  revisedBodyArtistAffected,
+  revisedBodyArtistDelta,
+} from './revised-body-artist-ancestry.mjs';
+import {
   revisedWordingAffected,
   revisedWordingDelta,
   revisedWordingRuntimeCompatible,
@@ -108,6 +112,17 @@ export async function calibrationReport(ledger) {
       ]);
       for (const { task, item, original } of dependencies) {
         const currentAbu = await abuCurrentApproval(item, group, task, original, set.set);
+        if (
+          (await revisedBodyArtistAffected(set.set, task, original, group)) &&
+          item.proof?.revisedBodyArtistSource !== (await revisedBodyArtistDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            set.set === 'arn'
+              ? 'Six exact Arabian Nights physical artist credits now preserve their printed macron. Reuse unchanged components; these artist/full-card records need current evidence.'
+              : 'Revised Original rules now use shared fractional metrics and class-based text widths. The native regional fit is recorded; complete component and outlier review remains open.';
+          continue;
+        }
         if (
           revisedWordingAffected(set.set, task, original) &&
           (original

@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 import { createServer } from 'vite';
 const abuDuals = process.argv.includes('--abu-duals');
+const revised = process.argv.includes('--revised');
 const server = await createServer({
   configFile: false,
   root: fileURLToPath(new URL('..', import.meta.url)),
@@ -29,7 +30,7 @@ try {
     ? '/dist/lib/magic-presentation.js'
     : '/games/magic/src/presentation.ts';
   const rows = await page.evaluate(
-    async ({ entry, abuDuals }) => {
+    async ({ entry, abuDuals, revised }) => {
       async function harness(scope, api) {
         const local = 'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")';
         for (const { family, style, weight } of api.canvasFontAssets)
@@ -103,7 +104,8 @@ try {
         rows = [];
       const base = {
         name: 'Current profile adept',
-        setCode: '2ed',
+        setCode: revised ? '3ed' : '2ed',
+        ...(revised ? { wordingMode: 'original' } : {}),
         frameStyle: 'retro',
         borderColor: 'white',
         symbolStyle: 'original',
@@ -223,7 +225,7 @@ try {
               name: setCode + ' basic control',
             },
           ])
-        : ['lea', 'leb', '2ed'].flatMap((setCode) =>
+        : (revised ? ['3ed'] : ['lea', 'leb', '2ed']).flatMap((setCode) =>
             faces.map((face) => ({
               ...face,
               setCode,
@@ -240,8 +242,8 @@ try {
             ['original', 'original'],
             ['oracle', 'original'],
           ];
-      const tiers = abuDuals ? ['table', 'native', 'inspect', 323] : ['table', 'native'];
-      const layers = abuDuals ? ['face', 'etching'] : [undefined];
+      const tiers = abuDuals || revised ? ['table', 'native', 'inspect', 323] : ['table', 'native'];
+      const layers = abuDuals || revised ? ['face', 'etching'] : [undefined];
       try {
         for (const face of selected)
           for (const [wordingMode, symbolStyle] of modes)
@@ -306,6 +308,7 @@ try {
                   ) {
                     rows.push({
                       name: face.name,
+                      set: face.setCode,
                       wordingMode,
                       symbolStyle,
                       tier,
@@ -318,6 +321,7 @@ try {
                   }
                   rows.push({
                     name: face.name,
+                    set: face.setCode,
                     wordingMode,
                     symbolStyle,
                     tier,
@@ -332,6 +336,7 @@ try {
 
                 rows.push({
                   name: face.name,
+                  set: face.setCode,
                   wordingMode,
                   symbolStyle,
                   tier,
@@ -347,7 +352,7 @@ try {
       }
       return rows;
     },
-    { entry, abuDuals },
+    { entry, abuDuals, revised },
   );
   for (const row of rows.filter((r) => r.debug)) {
     const out = 'test-results/abu-worker-parity';
@@ -370,7 +375,8 @@ try {
       }),
     );
   }
-  assert.equal(rows.length, abuDuals ? 288 : 120);
+  assert.equal(rows.length, abuDuals ? 288 : revised ? 160 : 120);
+  if (revised) assert(rows.every((r) => r.set === '3ed'));
   for (const row of rows) {
     assert.deepEqual(row.browser.size, row.worker.size);
     assert.deepEqual(row.browser.assets, row.worker.assets);
@@ -390,7 +396,9 @@ try {
       sparseTwoByteRoundingCases: rows.filter((r) => r.rounding).length,
       scope: abuDuals
         ? 'Current Alpha/Beta/Unlimited BG/UR/WU duals and basic controls: browser/worker geometry, alpha and asset requests match (at most 0.01% color pixels may differ by at most two byte levels at antialiased bitmap corners) at table/native/inspect/323px, Original and both Oracle symbol modes, face/default etching. Synthetic assets and local fonts test portability, not scan accuracy.'
-        : 'Current Alpha/Beta/Unlimited browser/OffscreenCanvas pixels and requested assets match for white/black, artifact, dual/basic lands and reviewed text-flow branches, Original/Oracle and table/native tiers. Synthetic assets and local fonts test portability, not scan accuracy.',
+        : revised
+          ? 'Current Revised Original/Oracle body, land and etching browser/worker replay at table/native/inspect/323px. Synthetic assets and local fonts test portability, not scan accuracy.'
+          : 'Current Alpha/Beta/Unlimited browser/OffscreenCanvas pixels and requested assets match for white/black, artifact, dual/basic lands and reviewed text-flow branches, Original/Oracle and table/native tiers. Synthetic assets and local fonts test portability, not scan accuracy.',
     }),
   );
 } finally {

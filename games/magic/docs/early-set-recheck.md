@@ -3,17 +3,17 @@
 This pass covers ordinary printings through Fourth Edition. Collector's Edition
 (CED and CEI) and Summer Magic (SUM) are deferred.
 
-| Set                                               | Current result                                                      | Next gate                                                 |
-| ------------------------------------------------- | ------------------------------------------------------------------- | --------------------------------------------------------- |
-| Alpha, Beta, Unlimited                            | 899 printings retain their completed review and exact native pixels | Preserve their existing evidence                          |
-| Arabian Nights                                    | 92 native Originals; mean 75.40 → 80.20/100                         | Component certification and bundled release               |
-| Antiquities                                       | 102 native Originals; mean 73.68 → 80.87/100                        | Component certification and bundled release               |
-| Revised                                           | 306 original type lines reviewed; native baseline 71.14/100         | 306 frozen poses ready; body-source review before fitting |
-| Legends, The Dark, Fallen Empires, Fourth Edition | Earlier profiles and evidence remain available                      | Current-source recheck in release order                   |
+| Set                                               | Current result                                                      | Next gate                                                        |
+| ------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Alpha, Beta, Unlimited                            | 899 printings retain their completed review and exact native pixels | Preserve their existing evidence                                 |
+| Arabian Nights                                    | 92 native Originals; mean 75.40 → 80.20/100                         | Component certification and bundled release                      |
+| Antiquities                                       | 102 native Originals; mean 73.68 → 80.87/100                        | Component certification and bundled release                      |
+| Revised                                           | 306 Original inputs reviewed; 281 shared body-fit native replays    | Text/credit/heading and frame outlier review; full certification |
+| Legends, The Dark, Fallen Empires, Fourth Edition | Earlier profiles and evidence remain available                      | Current-source recheck in release order                          |
 
 These are structural similarity indices, not percentages of correct pixels.
 The two new profiles are committed work in progress; the published package remains
-0.7.2. A native replay or a regional improvement alone does not complete a set.
+0.7.3. A native replay or a regional improvement alone does not complete a set.
 
 ## Antiquities changes
 
@@ -467,3 +467,13 @@ MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/revised-colo
   inputs.json baseline/capture.json width-native trials shared-geometry.json
 node tests/magic-revised-width-study.mjs
 ```
+
+## Revised text checkpoint
+
+The Original-only fractional text fit is recorded in the
+[Revised evidence notes](../fixtures/accuracy/3ed-recheck/README.md). On 270
+accepted references the regional text objective improves from 64.67 to 68.63/100.
+All 281 nonland native renders match the selected prototype, with 843 unchanged
+Oracle/etching variants and 25 unchanged land Originals. The 55 regional losses
+remain visible in the receipt; shared defaults do not erase their review queue.
+This is an in-progress component fit, not complete-set certification.

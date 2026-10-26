@@ -1,16 +1,20 @@
+import {
+  preRevisedBodyArtistSource,
+  revisedBodyArtistHistoricalHash,
+} from '../games/magic/tools/accuracy/revised-body-artist-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   revisedArtifactGeometryDelta,
   preRevisedArtifactGeometrySource,
   revisedArtifactGeometryHistoricalHash,
 } from '../games/magic/tools/accuracy/revised-artifact-geometry-ancestry.mjs';
 const p = await revisedArtifactGeometryDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await revisedBodyArtistHistoricalHash(), p.afterRenderer);
 assert.equal(await revisedArtifactGeometryHistoricalHash(), p.beforeRenderer);
 for (const [file, entry] of Object.entries(p.files)) {
-  const bytes = await readFile(file);
+  const bytes = await preRevisedBodyArtistSource(file, await readFile(file));
   assert.equal(hash(bytes), entry.after);
   assert.equal(hash(await preRevisedArtifactGeometrySource(file, bytes)), entry.before);
   const unknown = Buffer.concat([bytes, Buffer.from('\n// unknown edit\n')]);

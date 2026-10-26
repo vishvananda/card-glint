@@ -30,6 +30,22 @@ export const RETRO_TYPOGRAPHY: Readonly<RulesTypography> = {
   flavorSeparator: false,
 };
 
+export const REVISED_RULES_REVISION = 'revised-original-fractional-v1';
+
+/** Original Revised typography only. Scan poses and explicit art/frame choices
+ * never enter this policy; land wording retains its separate measured inset. */
+export function usesRevisedFractionalRules(face: RenderedCardInput): boolean {
+  return (
+    face.setCode?.toLowerCase() === '3ed' &&
+    face.wordingMode === 'original' &&
+    face.frameStyle !== 'modern' &&
+    !face.frameTemplate &&
+    (!face.layout || face.layout === 'normal') &&
+    retroFamily(face) === 'fourth' &&
+    !isRevisedLand(face)
+  );
+}
+
 /** Null denotes the existing large-basic-symbol path, which has no body text. */
 export function retroTextLayout(context: CanvasContext, face: RenderedCardInput) {
   const tiers = earlyReprintFrame(face) && calibrationForFace(face)?.textTiers;
@@ -93,8 +109,13 @@ export function retroTextLayout(context: CanvasContext, face: RenderedCardInput)
       ? precise
       : fractionalEarlyRules(context, legacy, tiers?.denseWidth ?? 1);
   };
-  const result = tiers || fractional ? withRulesLayoutRequests(context, run) : run();
-  return result;
+  const revised = usesRevisedFractionalRules(face);
+  const result = tiers || fractional || revised ? withRulesLayoutRequests(context, run) : run();
+  if (!revised || !result) return result;
+  // Keep the measured short-text face. Regular/dense letters and their panel
+  // widen together; inline mana discs keep their existing physical size.
+  const textWidth = result.size >= 26 ? 1 : result.size >= 22.5 ? 1.01 : 1.02;
+  return fractionalEarlyRules(context, result, 1, { textWidth, right: 424 });
 }
 function baseRetroTextLayout(context: CanvasContext, face: RenderedCardInput) {
   if (retroBasicSymbol(face)) return null;

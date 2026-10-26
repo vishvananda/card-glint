@@ -191,6 +191,13 @@ for (const row of JSON.parse(await readFile(new URL(earlyArtistFile, root))).row
   if (!row.artistMatchesProvider)
     addArtist(row.id, earlyArtistFile, row.referenceHash, row.review, row.printedArtist);
 }
+const diacriticFile = 'arn-artist-diacritics.json';
+const diacritics = JSON.parse(await readFile(new URL(diacriticFile, root)));
+assert.equal(diacritics.status, 'artist-wording-reviewed');
+for (const row of diacritics.rows) {
+  rememberSet(row.id, row.set);
+  addArtist(row.id, diacriticFile, row.referenceHash, row.review, row.printedArtist);
+}
 const artistCatalog = Object.fromEntries(
   [...artistRows.entries()].sort(([a], [b]) => a.localeCompare(b)),
 );

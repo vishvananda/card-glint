@@ -1,3 +1,4 @@
+import { preRevisedBodyArtistSource } from './revised-body-artist-ancestry.mjs';
 // Exact metadata-helper reconstruction, separate from current score approval.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -43,13 +44,19 @@ function restore(file, bytes, p) {
 /** Pure immutable dependency reconstruction for historical differential tests.
  * This never approves changed printing inputs, profile data or score reuse. */
 export async function artistReviewProofDependency(file, bytes) {
-  return restore(file, bytes, await proof()).bytes;
+  const p = await proof();
+  return restore(file, file === p.file ? await preRevisedBodyArtistSource(file, bytes) : bytes, p)
+    .bytes;
 }
 /** Unknown/unscoped and Unlimited score paths retain the new helper identity. */
 export async function artistReviewSource(file, bytes, set) {
-  const restored = restore(file, bytes, await proof());
-  if (!restored.changed) return { bytes, changed: false };
+  const p = await proof();
+  const projected = file === p.file ? await preRevisedBodyArtistSource(file, bytes) : bytes;
   const code = typeof set === 'string' ? set.toLowerCase() : '';
+  if (hash(projected) !== hash(bytes) && (code === 'arn' || !/^[a-z0-9]{2,8}$/.test(code)))
+    return { bytes, changed: true };
+  const restored = restore(file, projected, p);
+  if (!restored.changed) return { bytes, changed: false };
   const unaffected = /^[a-z0-9]{2,8}$/.test(code) && code !== '2ed';
   return unaffected ? { bytes: restored.bytes, changed: false } : { bytes, changed: true };
 }

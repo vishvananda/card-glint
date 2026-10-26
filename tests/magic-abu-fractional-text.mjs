@@ -129,7 +129,7 @@ try {
                 .replace(/\s/g, '');
             check(content(a) === content(b), 'Text lost: ' + setCode + '/' + input.name);
             if (
-              !['lea', 'leb', '2ed'].includes(setCode) ||
+              !['lea', 'leb', '2ed', '3ed'].includes(setCode) ||
               wordingMode === 'oracle' ||
               a.size >= 30
             ) {
@@ -179,7 +179,7 @@ try {
     },
     await installedSerifFonts(),
   );
-  console.log('ABU fractional text:', result);
+  console.log('ABU/Revised bounded fractional text:', result);
 } finally {
   await browser?.close();
   await server.close();
