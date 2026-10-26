@@ -174,7 +174,7 @@ node games/magic/tools/accuracy/reviewed-original-inputs.mjs \
 This command requires the reviewed type inputs and exact scan identities.
 It applies reviewed rich paragraphs through the public wording API without
 loading fonts, images or Chromium. The source rules and flavor remain separate
-in the promotion draft. Its resolver/catalog integration is the next step.
+in the promotion draft. The reviewed corrections are now integrated into the runtime printing catalog; shared typography fitting remains pending.
 
 The artifact geometry trial is still unadopted. Under the original outer-stock
 normalization, translating the shared frame 1.25 px left raises its mean from 66.60 to 70.42/100, but 15 of 51 artifacts
@@ -243,3 +243,31 @@ Review independent art-frame boundaries and full-card overlays, resolve the
 flagged cases, and verify source-local color/native parity before adopting
 shared geometry. Use each row's original stock pose for physical borders and
 corners; the interior index does not certify them.
+
+## Revised semantic frame correction
+
+Original **Animate Artifact, Steal Artifact, Warp Artifact and Living Artifact**
+print “Enchant Artifact”. Their semantic card type is an enchantment. The frame
+asset already followed that semantic type, but frame/art geometry incorrectly
+matched the word “Artifact” in the printed type line. The mismatched source
+rectangle also prevented source-bound frame and text-box colors from applying.
+
+Geometry now uses the same card profile as asset selection. This changes no
+measured position, scale, color value or text policy. A complete native replay
+keeps the other 302 Original faces, all 306 body layouts and four affected
+Oracle controls exact. The four corrected Originals improve from 68.46 to
+75.09/100 on average; the 306-card baseline changes from 71.24 to 71.33/100.
+The reference scans, normalization matrices and metric implementation are
+unchanged. This fixes a semantic mismatch; it does not complete Revised.
+
+Replay with the frozen reviewed inputs and local reference cache:
+
+```sh
+MAGIC_ACCURACY_CACHE=/path/to/cache node   games/magic/tools/accuracy/revised-semantic-frame-review.mjs   corrected-inputs.json native-output all
+```
+
+The [source and native receipt](../fixtures/accuracy/3ed-recheck/semantic-frame-source-delta.json.gz)
+binds the exact runtime change, all 306 Originals, four Oracle/etching controls
+and the before/after scores. Unknown source changes retain their own identities.
+The earlier artifact translation study remains unadopted; its five flagged
+scan poses and independent art-frame validation are the next geometry work.

@@ -73,6 +73,35 @@ try {
       assert.equal(geometry.revisedArtRect({ ...face, ...override }), null);
     }
   }
+  // Original Enchant Artifact is an Aura, not the frame's Artifact material.
+  // Geometry, asset and source-bound pigment must all follow the same profile.
+  for (const color of ['U', 'B', 'G']) {
+    const original = {
+      name: 'Original artifact enchantment',
+      setCode: '3ed',
+      typeLine: 'Enchant Artifact',
+      canonicalTypeLine: 'Enchantment — Aura',
+      artifact: false,
+      colors: [color],
+      colorCalibration: 'set-hsb-v1',
+    };
+    const oracle = { ...original, typeLine: 'Enchantment — Aura' };
+    assert.deepEqual(geometry.revisedFrameRect(original), geometry.revisedFrameRect(oracle));
+    assert.deepEqual(geometry.revisedArtRect(original), geometry.revisedArtRect(oracle));
+    assert.equal(printingColorSource(original).source, printingColorSource(oracle).source);
+    assert.deepEqual(calibratedFrameMaterials(original), calibratedFrameMaterials(oracle));
+    assert(Object.keys(calibratedFrameMaterials(original)).length > 0);
+    for (const metadata of [
+      { artifact: undefined },
+      { artifact: true, canonicalTypeLine: 'Artifact' },
+      { artifact: false, canonicalTypeLine: 'Artifact' },
+    ]) {
+      const face = { ...original, ...metadata },
+        canonical = { ...face, typeLine: face.canonicalTypeLine };
+      assert.deepEqual(geometry.revisedFrameRect(face), geometry.revisedFrameRect(canonical));
+      assert.equal(printingColorSource(face).source, printingColorSource(canonical).source);
+    }
+  }
   const green = { name: 'Probe', setCode: '3ed', typeLine: 'Creature', colors: ['G'] };
   assert.deepEqual(
     geometry.revisedFrameRect({ ...green, colors: ['U'], frameColors: ['G'] }),

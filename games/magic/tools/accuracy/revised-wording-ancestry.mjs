@@ -1,3 +1,4 @@
+import { preRevisedSemanticSource } from './revised-semantic-ancestry.mjs';
 import { matrixHeadingDelta, preMatrixHeadingSource } from './matrix-heading-ancestry.mjs';
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -124,6 +125,7 @@ export async function revisedWordingDelta() {
  * Compare the entire generated manifest before reversing its two source digests;
  * unrelated payloads, source edits and formatting retain their actual identity. */
 export async function preRevisedMatrixSource(file, bytes) {
+  bytes = await preRevisedSemanticSource(file, bytes);
   if (file === 'games/magic/src/data/generated-manifest.json') {
     const wording = await revisedWordingDelta(),
       matrix = await matrixHeadingDelta(),

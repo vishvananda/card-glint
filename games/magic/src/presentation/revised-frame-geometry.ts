@@ -1,5 +1,5 @@
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
-import { resolveFrameColors } from './profile.js';
+import { resolveCardProfile, resolveFrameColors } from './profile.js';
 import { isRevisedLand } from './revised-land-frame.js';
 
 type Material = 'W' | 'U' | 'B' | 'R' | 'G' | 'A';
@@ -59,7 +59,7 @@ function material(face: RenderedCardInput): Material | null {
     return null;
   // Match retroFrameAsset: artifact type owns the plate, reviewed frame colors
   // own visible colored frames (including green-frame Serendib Efreet).
-  if (/\bArtifact\b/.test(face.typeLine ?? '')) return 'A';
+  if (resolveCardProfile(face).artifact) return 'A';
   const colors = resolveFrameColors(face);
   if (colors.length !== 1) return null;
   const color = colors[0];
