@@ -126,3 +126,48 @@ rotation/shear, brightness changes, missing or conflicting independent lines,
 and validation isolation. Removing every check-strip edge leaves the selected
 poses unchanged and rejects the cohort. Exact native painter checks and
 component comparisons are still required before adopting any renderer changes.
+
+## Footer workbench
+
+`footer-coarse-study.json.gz` retains the initial shared geometry sweep.
+`footer-fine-study.json.gz` refines it with the production painter.
+Every one of the 223 current Original cards must match its stored native PNG
+hash, and all 302 artist/P/T default replays must match before fitting starts.
+The public tool reproduces 683 common candidate scores from the earlier sweep
+exactly. The compressed reports contain measurements and hashes, not card art.
+
+The current proposals keep the font sizes:
+
+- Artist: move left 2 pixels and down 0.5 pixels; multiply glyph width by 1.02.
+- P/T: move left 0.5 pixels and down 0.5 pixels; keep glyph width.
+
+The artist regional objective improves from 68.53 to 72.31/100; 208 cards
+improve and 15 regress. The P/T result and per-color/cohort breakdowns are in
+`footer-proposal-review.json`. Both fitting cohorts improve, but validation
+names are reused development data. These are regional objectives, not new
+whole-card scores. Individual regressions remain listed for review.
+
+These proposals are not runtime defaults yet. Black/white foreground inversion
+also supplies tone diagnostics. Those estimates can be biased by residual
+misalignment, thin strokes and scan sharpening; check native-resolution glyph
+interiors before adopting new gray values. The selected tone geometry is
+recorded separately from the final geometry proposal.
+
+To repeat the refinement at the recorded renderer source:
+
+```sh
+gzip -dc games/magic/fixtures/accuracy/3ed-recheck/vertical-interior-normalization.json.gz > vertical.json
+gzip -dc games/magic/fixtures/accuracy/3ed-recheck/body-request-native.json.gz > native.json
+gzip -dc games/magic/fixtures/accuracy/3ed-recheck/footer-fine-definition.json.gz > definition.json
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-footer-native-study.mjs \
+  inputs.json vertical.json native.json definition.json new-footer-results.json
+node tests/magic-revised-footer-study.mjs
+```
+
+Use the coarse definition instead to repeat the wider sweep. The tool uses one
+browser for the entire set and reads only the affected native region during
+candidate scoring. The host CPU, Canvas2D and objective wall time does not
+measure GPU completion. If the renderer changes, regenerate the native capture
+with `printing-native-replay.mjs`; a changed production PNG cannot silently
+serve as the old control. Final native adoption, pigment checks and full-card
+verification remain required before closing the footer audit.

@@ -1,0 +1,329 @@
+{
+  "schema": 1,
+  "set": "3ed",
+  "status": "footer-geometry-proposal-not-adopted",
+  "scope": "223 original native cards and79 actual P/T regions after source-only normalization. Calibration-name ranking only; validation is reused development. Regional filled+edge objective, not whole-card accuracy. Renderer and published output remain unchanged.",
+  "rendererHash": "66a7acddb4d46973fb161a3ab5dd334fb40b296afa0860a305a4198d8f07fcf9",
+  "artifacts": {
+    "footer-coarse-study.json.gz": "09b04297eb16d3fe674df549cf55862ba3bab092e8d5761bc9f3924737d35c30",
+    "footer-fine-study.json.gz": "a537bba56ca86f6e4e69494dd47d7dfcb6163c98192f29e264504c61a8938314",
+    "footer-fine-definition.json.gz": "033036eec4374ad9e1be7ba1260cc55b6f9cbe2bbe9efec5c04ad75b1d039830",
+    "footer-coarse-definition.json.gz": "9383d713703c7ed41185bcc47e6e5e00d3f5cf8bec29fecf81832cda44b00ab9",
+    "footer-artist-state.json.gz": "ad07654237bb79a3cb4e7ef3a559eb83f8c43ed772d8aa5161a2cd5c8655bb94"
+  },
+  "reproducedCandidateScores": 683,
+  "parity": {
+    "nativeOriginals": 223,
+    "defaultReplays": 302,
+    "coarseFineSourceHooksIdentical": true,
+    "coarseFinePoseAndNativeHashesIdentical": true
+  },
+  "roles": {
+    "artist": {
+      "selected": {
+        "id": "-2/0.5/0/1.02",
+        "dx": -2,
+        "dy": 0.5,
+        "sizeDelta": 0,
+        "width": 1.02
+      },
+      "index": 11,
+      "all": {
+        "cards": 223,
+        "before100": 68.52928643008008,
+        "after100": 72.3073792176246,
+        "improved": 208,
+        "regressed": 15
+      },
+      "calibration": {
+        "cards": 152,
+        "before100": 68.67588885434596,
+        "after100": 72.6449796897908,
+        "improved": 144,
+        "regressed": 8
+      },
+      "validation": {
+        "cards": 71,
+        "before100": 68.21543335277866,
+        "after100": 71.5846289110153,
+        "improved": 64,
+        "regressed": 7
+      },
+      "byMaterial": {
+        "W": {
+          "cards": 39,
+          "before100": 74.40483855915927,
+          "after100": 78.69180282697029,
+          "improved": 39,
+          "regressed": 0
+        },
+        "U": {
+          "cards": 43,
+          "before100": 78.26316824591215,
+          "after100": 81.1649091658686,
+          "improved": 40,
+          "regressed": 3
+        },
+        "B": {
+          "cards": 38,
+          "before100": 60.18802588894177,
+          "after100": 62.150146633483,
+          "improved": 32,
+          "regressed": 6
+        },
+        "R": {
+          "cards": 39,
+          "before100": 66.81744769136134,
+          "after100": 71.61156817598334,
+          "improved": 37,
+          "regressed": 2
+        },
+        "G": {
+          "cards": 31,
+          "before100": 64.47534578022028,
+          "after100": 69.56363214670971,
+          "improved": 30,
+          "regressed": 1
+        },
+        "A": {
+          "cards": 33,
+          "before100": 64.33832644232493,
+          "after100": 68.31651011098108,
+          "improved": 30,
+          "regressed": 3
+        }
+      },
+      "worst": [
+        {
+          "id": "7e0c6c15-fba2-447a-a84c-01bb837b912e",
+          "name": "Mijae Djinn",
+          "material": "R",
+          "delta100": -3.823502277468893
+        },
+        {
+          "id": "fe4bf26c-cd9c-40e3-8a73-2f17f9a1d0e4",
+          "name": "Stasis",
+          "material": "U",
+          "delta100": -1.8026054937468228
+        },
+        {
+          "id": "dc95e03d-5521-4a01-8028-200b8467ce86",
+          "name": "Magnetic Mountain",
+          "material": "R",
+          "delta100": -1.7231035290662944
+        },
+        {
+          "id": "cd07c415-4f39-4011-b94a-4aab56dca7d7",
+          "name": "Nether Shadow",
+          "material": "B",
+          "delta100": -1.6679537833928615
+        },
+        {
+          "id": "f6623e8b-4f4c-49c8-ad48-257b8695c4fe",
+          "name": "Power Leak",
+          "material": "U",
+          "delta100": -1.253353450943584
+        },
+        {
+          "id": "88cbcf7e-9d66-4e1b-b056-8edf708fca84",
+          "name": "Desert Twister",
+          "material": "G",
+          "delta100": -0.860470771837818
+        },
+        {
+          "id": "5b61cb02-7eb7-4d85-8ced-7978cb1a81d2",
+          "name": "Lord of the Pit",
+          "material": "B",
+          "delta100": -0.8279494830610079
+        },
+        {
+          "id": "6774a228-ec9e-47d0-bc43-a92f5caf8398",
+          "name": "Weakness",
+          "material": "B",
+          "delta100": -0.5706910320367298
+        },
+        {
+          "id": "b871e9a7-ba3a-4891-adc6-68a11a4e4aa6",
+          "name": "Hurkyl's Recall",
+          "material": "U",
+          "delta100": -0.523721910936148
+        },
+        {
+          "id": "d89c1d2f-87a1-4463-af21-b837da3e7d74",
+          "name": "Drain Life",
+          "material": "B",
+          "delta100": -0.32353572161269994
+        }
+      ]
+    },
+    "stats": {
+      "selected": {
+        "id": "-0.5/0.5/0/1",
+        "dx": -0.5,
+        "dy": 0.5,
+        "sizeDelta": 0,
+        "width": 1
+      },
+      "index": 1,
+      "all": {
+        "cards": 79,
+        "before100": 78.96863842014284,
+        "after100": 79.81610656374895,
+        "improved": 64,
+        "regressed": 15
+      },
+      "calibration": {
+        "cards": 53,
+        "before100": 79.32457887745528,
+        "after100": 80.1616075984302,
+        "improved": 43,
+        "regressed": 10
+      },
+      "validation": {
+        "cards": 26,
+        "before100": 78.243067487929,
+        "after100": 79.1118159930526,
+        "improved": 21,
+        "regressed": 5
+      },
+      "byMaterial": {
+        "W": {
+          "cards": 9,
+          "before100": 85.38062785523354,
+          "after100": 86.3103197449149,
+          "improved": 9,
+          "regressed": 0
+        },
+        "U": {
+          "cards": 14,
+          "before100": 87.35183056215503,
+          "after100": 87.77374884666183,
+          "improved": 9,
+          "regressed": 5
+        },
+        "B": {
+          "cards": 19,
+          "before100": 73.0032100248995,
+          "after100": 73.09847704013033,
+          "improved": 12,
+          "regressed": 7
+        },
+        "R": {
+          "cards": 20,
+          "before100": 78.37122906221454,
+          "after100": 79.3790982170197,
+          "improved": 17,
+          "regressed": 3
+        },
+        "G": {
+          "cards": 11,
+          "before100": 78.2314224938708,
+          "after100": 79.88860508864217,
+          "improved": 11,
+          "regressed": 0
+        },
+        "A": {
+          "cards": 6,
+          "before100": 72.02332291234191,
+          "after100": 74.10322881678879,
+          "improved": 6,
+          "regressed": 0
+        }
+      },
+      "worst": [
+        {
+          "id": "551e5fdd-ed3a-4f44-b4d1-97900ef46373",
+          "name": "Will-o'-the-Wisp",
+          "material": "B",
+          "delta100": -2.839839256195953
+        },
+        {
+          "id": "fa35113b-5242-41f4-a989-42f2cd8002b6",
+          "name": "Sengir Vampire",
+          "material": "B",
+          "delta100": -2.0964625651948565
+        },
+        {
+          "id": "6cba931e-94b5-4fcc-8d5f-eb60664baf31",
+          "name": "Frozen Shade",
+          "material": "B",
+          "delta100": -1.714142102050209
+        },
+        {
+          "id": "c2a08993-d6c5-45ad-82dc-093c8b912a56",
+          "name": "Rock Hydra",
+          "material": "R",
+          "delta100": -1.0363869089506594
+        },
+        {
+          "id": "47e21390-c661-4717-bbb9-71eb63c6f01e",
+          "name": "Plague Rats",
+          "material": "B",
+          "delta100": -0.7283825168241109
+        },
+        {
+          "id": "beb3874f-b3dc-41ca-becc-4dcbb0549b33",
+          "name": "Wall of Air",
+          "material": "U",
+          "delta100": -0.6348115039416902
+        },
+        {
+          "id": "45066539-6bc2-467f-acfb-00938ba837ef",
+          "name": "Lord of Atlantis",
+          "material": "U",
+          "delta100": -0.6288387527390915
+        },
+        {
+          "id": "03dfa7f7-8f08-49f6-96fd-eebf16ceb499",
+          "name": "Granite Gargoyle",
+          "material": "R",
+          "delta100": -0.6133724459561396
+        },
+        {
+          "id": "59145073-2cfd-4153-a6d8-47ad42e739c3",
+          "name": "Drudge Skeletons",
+          "material": "B",
+          "delta100": -0.537451728663485
+        },
+        {
+          "id": "cd07c415-4f39-4011-b94a-4aab56dca7d7",
+          "name": "Nether Shadow",
+          "material": "B",
+          "delta100": -0.4182105251998247
+        }
+      ]
+    }
+  },
+  "pigment": {
+    "status": "diagnostic-not-adopted",
+    "reason": "Black/white foreground inversion is measured at coarse proposal geometry. Thin strokes, residual registration and scan sharpening can bias the resulting tone. Recheck at selected geometry and inspect actual glyph interiors before changing gray values.",
+    "selectedGeometry": {
+      "artist": "-2/1/0/1.02",
+      "stats": "0/1/0/1"
+    }
+  },
+  "next": [
+    "Check foreground tone against native-resolution scan glyph interiors and blackpoint",
+    "Render final shared geometry/tone through the unmodified production pipeline; verify all Original/Oracle/etching controls and full-card scores",
+    "Keep individual regressions for review; do not add per-card geometry defaults or mark Revised complete"
+  ],
+  "visualReview": {
+    "balanced": [
+      "Benalish Hero",
+      "Air Elemental",
+      "Black Knight",
+      "Atog",
+      "Birds of Paradise",
+      "Clockwork Beast"
+    ],
+    "outliers": [
+      "Mijae Djinn",
+      "Nether Shadow",
+      "Sengir Vampire",
+      "Hypnotic Specter",
+      "Will-o'-the-Wisp",
+      "Stasis"
+    ],
+    "notes": "Reviewed aligned scan/current footer crops. Apparent gray and width differences remain for inspection. Benalish Hero and Hypnotic Specter use identical MPlantin22,spacing,kerning,transform and226px natural artist advance; no font fallback or inherited-spacing difference was found between those renders. Do not infer a new font or per-card offsets from apparent contrast differences."
+  }
+}
