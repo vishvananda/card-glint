@@ -82,3 +82,47 @@ The metadata-only closure also has a complete score-reuse replay in
 `body-request-score-reuse.json.gz`: 306 reused scores, zero fresh calculations,
 and the same 73.04/100 mean. Native bytes, inputs, references, poses and the metric
 import graph all match.
+
+## Vertical registration for regional fits
+
+`vertical-parent-poses.json.gz` retains the 281 existing horizontal interior poses.
+They match `colored-horizontal-normalization.json.gz` and
+`artifact-pixel-normalization.json.gz` exactly. Physical frame colors govern
+membership: Serendib Efreet belongs to the green frame group.
+
+`vertical-interior-normalization.json.gz` adds comparison-only vertical
+translation and scale. It samples the original scan once at each candidate pose,
+using dark-going luminance transitions to avoid bright bevel and illustration
+edges. Only calibration names choose the templates and their zero-median
+translation/scale gauges. Validation names reuse earlier development data.
+
+Two disjoint strips select each pose. Four other strips check the frozen pose:
+each needs overlap of at least 90/100 and residual displacement no greater than
+0.5 reference pixels. Search limits and prior rejections remain exclusions.
+The resulting sample contains 223 accepted cards: 152 calibration and 71
+validation. All 58 excluded cards remain in the report. This does not classify
+their scans as bad.
+
+The art-bottom and exterior-rim bands remain diagnostics. In particular, the
+outer perimeter can align while the interior panels do not. Neither its high
+overlap nor a separately optimized check-strip score can approve an interior
+pose. These regional poses do not replace the stock poses used by the
+73.04/100 whole-card baseline and do not certify complete frame geometry.
+
+To reproduce with the local reference cache:
+
+```sh
+gzip -dc games/magic/fixtures/accuracy/3ed-recheck/corrected-original-inputs.json.gz > inputs.json
+gzip -dc games/magic/fixtures/accuracy/3ed-recheck/vertical-parent-poses.json.gz > parents.json
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-vertical-register.mjs \
+  inputs.json parents.json new-vertical-results.json
+node tests/magic-printed-vertical-fit.mjs
+node tests/magic-revised-vertical-registration.mjs
+```
+
+The tool uses CPU scan decoding and registration, without Chromium or card
+composition. Synthetic controls cover fractional translation/scale, stock
+rotation/shear, brightness changes, missing or conflicting independent lines,
+and validation isolation. Removing every check-strip edge leaves the selected
+poses unchanged and rejects the cohort. Exact native painter checks and
+component comparisons are still required before adopting any renderer changes.
