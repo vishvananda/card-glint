@@ -156,6 +156,26 @@ metrics on other corrections do not invalidate scan-confirmed content.
 Soft wrapping, line-end hyphenation, font metrics, generic-mana drawing and
 alignment remain separate work. Runtime correction promotion is pending.
 
+The corrected baseline also rebuilds each Original alignment reference through
+the production wording selector. All 306 references now match their selected
+Original paragraphs. The 24 fresh native replays match the isolated wording
+corrections exactly; the other 282 recipes, PNGs and scores are reused after
+identity checks. The source-only aggregate changes from 71.14 to 71.24/100.
+This small score change records correct content, not a shared typography fit.
+
+Rebuild these inputs before fitting text, rather than patching display text
+while leaving the automatic alignment reference unchanged:
+
+```sh
+node games/magic/tools/accuracy/reviewed-original-inputs.mjs \
+  original-inputs.json wording-promotion-draft.json.gz corrected-inputs.json
+```
+
+This command requires the reviewed type inputs and exact scan identities.
+It applies reviewed rich paragraphs through the public wording API without
+loading fonts, images or Chromium. The source rules and flavor remain separate
+in the promotion draft. Its resolver/catalog integration is the next step.
+
 The artifact geometry trial is still unadopted. Under the original outer-stock
 normalization, translating the shared frame 1.25 px left raises its mean from 66.60 to 70.42/100, but 15 of 51 artifacts
 regress and the worst loss is 9.27 points. Neither rarity nor the card's earliest

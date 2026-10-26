@@ -49,6 +49,22 @@
     "wording-promotion-draft.json.gz": {
       "sha256": "59f4afb259b02a1cf17aa43b1a1df7d30bcc976a8111838ff5e44c85ff1eb904",
       "contentSha256": "2eacab46753037501019b811995a76b0eb6ec2a121ed34d4a3beb08ee9d8624e"
+    },
+    "corrected-original-inputs.json.gz": {
+      "sha256": "61923d1262f6a679fc7583027b3e9e15b157c994c4c46e698a1260f5e1ddf149",
+      "contentSha256": "01de709f035ddb54242535bf13e78009dc213fd0dd2bd37c6f4364946c767e01"
+    },
+    "corrected-original-native.json.gz": {
+      "sha256": "191e931f72539dfe385c414b45d110bbee6c55f2dffc16c9ca977dafdbfad281",
+      "contentSha256": "762edea9e250cd6b5a7b37bf173378b28f902830ff0a0da374022169a6728fb6"
+    },
+    "assembled-wording-native.json.gz": {
+      "sha256": "25d2a71e3074e02c86e67992e9976a3dd0d46ef4bac80ef8a0e69129a94cedbd",
+      "contentSha256": "164f899507f18298959695ad7476170a9c58f888b2a5e73b8642eac90edc9d21"
+    },
+    "corrected-original-scores.json.gz": {
+      "sha256": "4e7c29464428583067aea5f309059de3f6f7ae59356ff815c3440e1b5a7975b9",
+      "contentSha256": "d5348ba250f7930a539175b0111e3f23f6aa757aeab2c930b1e683b04eeb29d0"
     }
   },
   "bodyReview": {
@@ -282,5 +298,24 @@
     "bodies": 24,
     "status": "not-loaded-by-runtime",
     "scope": "Prepared exact-printing annotation for the existing catalog builder; rules/flavor separated and rich paragraphs retained. Public resolver/native/source-history checks required before promotion."
+  },
+  "assembledOriginalReview": {
+    "cards": 306,
+    "nativeFresh": 24,
+    "exactReused": 282,
+    "publicApi": "withCardWording",
+    "originalSelfReferences": 306,
+    "sourceOnlyPixelParity": 24,
+    "scope": "Rebuilt the alignment reference as well as selected text through the production public API; same native pixels and freshly computed scores as the isolated source-only corrections. Runtime catalog promotion still pending.",
+    "summary": {
+      "cards": 306,
+      "fresh": 24,
+      "reused": 282,
+      "before100": 71.13740468528137,
+      "after100": 71.24334156441658,
+      "improved": 15,
+      "regressed": 7,
+      "unchanged": 284
+    }
   }
 }
