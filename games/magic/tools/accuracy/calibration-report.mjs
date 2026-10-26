@@ -1,4 +1,10 @@
 import {
+  revisedWordingAffected,
+  revisedWordingDelta,
+  revisedWordingRuntimeCompatible,
+  revisedOriginalSourceCurrent,
+} from './revised-wording-ancestry.mjs';
+import {
   atqProfileRuntimeCompatible,
   atqProfileAffected,
   atqProfileDelta,
@@ -102,6 +108,18 @@ export async function calibrationReport(ledger) {
       ]);
       for (const { task, item, original } of dependencies) {
         const currentAbu = await abuCurrentApproval(item, group, task, original, set.set);
+        if (
+          revisedWordingAffected(set.set, task, original) &&
+          (original
+            ? !(await revisedOriginalSourceCurrent(item, group, task))
+            : item.proof?.revisedWordingSource !== (await revisedWordingDelta()).afterRenderer)
+        ) {
+          item.status = original ? 'stale' : 'needs-audit';
+          item.reason =
+            'Revised Original wording now uses reviewed type lines and corrected paragraphs. Source wording has a separate census; rendered layout and full-card fits need current evidence.';
+          continue;
+        }
+
         if (
           atqProfileAffected(set.set, task, original) &&
           item.proof?.rendererHash !== (await atqProfileDelta()).afterRenderer
@@ -243,6 +261,7 @@ export async function calibrationReport(ledger) {
             directory === 'games/magic/src' &&
             set.set === 'arn' &&
             runtimeChecked.get(directory) !== expected &&
+            !(await revisedWordingRuntimeCompatible(directory, expected, set.set)) &&
             !(await atqProfileRuntimeCompatible(directory, expected, set.set))
           ) {
             runtimeCurrent = false;
@@ -250,6 +269,7 @@ export async function calibrationReport(ledger) {
           }
           if (
             runtimeChecked.get(directory) !== expected &&
+            !(await revisedWordingRuntimeCompatible(directory, expected, set.set)) &&
             !(await atqProfileRuntimeCompatible(directory, expected, set.set)) &&
             !(await arnProfileRuntimeCompatible(directory, expected, set.set)) &&
             (set.set === 'arn' ||

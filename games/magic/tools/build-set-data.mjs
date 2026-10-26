@@ -7,6 +7,7 @@ import { readFile, writeFile, mkdir, readdir, rm } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { format } from 'prettier';
 import { tables } from './set-data-tables.mjs';
+import { extendReviewSourceIndex } from './review-source-index.mjs';
 const check = process.argv.includes('--check');
 const root = new URL('../src/', import.meta.url),
   output = new URL('data/', root);
@@ -101,13 +102,19 @@ try {
   const reviews = JSON.parse(
     await readFile(new URL('../fixtures/accuracy/printing-review-catalog.json', root)),
   );
-  const sources = [
-    ...new Set(
-      [...Object.values(reviews.wording).flat(), ...Object.values(reviews.artists)].map(
-        (r) => r.source,
-      ),
-    ),
-  ].sort();
+  const sourceIndexFile = new URL('../fixtures/accuracy/review-source-index.json', root);
+  const previousIndex = JSON.parse(await readFile(sourceIndexFile));
+  const referencedSources = [
+    ...Object.values(reviews.wording).flat(),
+    ...Object.values(reviews.artists),
+  ].map((r) => r.source);
+  const sourceIndex = extendReviewSourceIndex(previousIndex, referencedSources, { check });
+  if (!check && JSON.stringify(sourceIndex) !== JSON.stringify(previousIndex))
+    await writeFile(
+      sourceIndexFile,
+      await format(JSON.stringify(sourceIndex), { parser: 'json', printWidth: 100 }),
+    );
+  const sources = sourceIndex.sources;
   const compact = ({ source, reason, ...value }) => ({
     ...value,
     evidence: sources.indexOf(source),
@@ -212,6 +219,8 @@ try {
   for (const url of [
     new URL(import.meta.url),
     new URL('set-data-tables.mjs', import.meta.url),
+    new URL('review-source-index.mjs', import.meta.url),
+    new URL('../fixtures/accuracy/review-source-index.json', import.meta.url),
     new URL('../assets.json', import.meta.url),
     new URL('../fixtures/accuracy/printing-review-catalog.json', import.meta.url),
   ])

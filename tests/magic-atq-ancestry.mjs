@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
-import { root, hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { root, hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   atqProfileDelta,
   preAtqProfileSource,
@@ -10,12 +10,16 @@ import {
   atqProfileRuntimeCompatible,
   atqProfileAffected,
 } from '../games/magic/tools/accuracy/atq-profile-ancestry.mjs';
+import {
+  preRevisedWordingSource,
+  revisedWordingHistoricalHash,
+} from '../games/magic/tools/accuracy/revised-wording-ancestry.mjs';
 const p = await atqProfileDelta();
-assert.equal(await sourceHash(root + '/games/magic/src'), p.afterRenderer);
+assert.equal(await revisedWordingHistoricalHash(), p.afterRenderer);
 assert.equal(await atqProfileHistoricalHash(), p.beforeRenderer);
 for (const [file, e] of Object.entries(p.files)) {
   const bytes = await readFile(file);
-  assert.equal(hash(bytes), e.after, file);
+  assert.equal(hash(await preRevisedWordingSource(file, bytes)), e.after, file);
   assert.equal(hash(await preAtqProfileSource(file, bytes)), e.before ?? e.after, file);
   const foreign = Buffer.concat([bytes, Buffer.from('\n// unreviewed edit\n')]);
   assert.deepEqual(await preAtqProfileSource(file, foreign), foreign);
@@ -27,7 +31,7 @@ assert.deepEqual(added, ['games/magic/src/calibration/sets/atq.ts']);
 assert.deepEqual(await atqHistoricalSourceFiles(added), []);
 for (const set of ['lea', 'leb', '2ed', 'arn'])
   assert(await atqProfileRuntimeCompatible('games/magic/src', p.beforeRenderer, set));
-for (const set of ['atq', undefined])
+for (const set of ['atq', '3ed', undefined])
   assert.equal(await atqProfileRuntimeCompatible('games/magic/src', p.beforeRenderer, set), false);
 assert.equal(await atqProfileRuntimeCompatible('games/magic/src', '0'.repeat(64), 'lea'), false);
 for (const task of ['frameColor', 'rules', 'setSymbol', 'manaColor', 'fullCard'])

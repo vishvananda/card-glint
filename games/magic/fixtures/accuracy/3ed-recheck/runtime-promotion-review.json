@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "set": "3ed",
+  "status": "runtime-original-wording-promoted-not-set-certification",
+  "rendererHash": "202c5ea9908f18d67c28a04d7a2f09a96bc587e46efb10b93e4bc0e781d8f833",
+  "scope": "306 reviewed Original type lines and 24 reviewed body/style corrections now resolve through the public printing API. Layout, geometry and typography approval are separate.",
+  "proof": {
+    "receipt": "wording-source-delta.json.gz",
+    "receiptSha256": "8bb343b6990670eb72b0b42014c5e713db5e42441958d9781b02d9c0ac2fdf01",
+    "freshOriginalNativeControls": 306,
+    "oracleInputControls": 1836,
+    "otherWordingRecordsUnchanged": 2874,
+    "artistCreditsUnchanged": 222,
+    "otherSetWordingModulesByteIdentical": 28
+  },
+  "scores": {
+    "before100": 71.13740468528137,
+    "correctedOriginalBaseline100": 71.24334156441658,
+    "scope": "Source correction only, fixed references/poses/metric graph. Not a typography fit or new frame-normalization certification."
+  },
+  "followup": [
+    {
+      "task": "semantic-frame-material",
+      "cards": ["Animate Artifact", "Steal Artifact", "Warp Artifact", "Living Artifact"],
+      "issue": "Original Enchant Artifact types select colored frame assets but receive artifact frame geometry. Resolve geometry from the same semantic profile as asset selection before fitting typography."
+    },
+    {
+      "task": "artifact-registration",
+      "accepted": 46,
+      "flagged": ["Aladdin's Ring", "Conservator", "Dingus Egg", "Ivory Tower", "Meekstone"],
+      "issue": "Printed-interior translation prototype has independent strip checks; review remaining scans and keep physical outer stock separate. No geometry adopted yet."
+    },
+    {
+      "task": "shared-typography",
+      "issue": "Fit heading/body/artist defaults after semantic geometry and printed-frame registration; complete the component census and release gates."
+    }
+  ],
+  "sheetControl": {
+    "status": "candidate-not-measured",
+    "url": "https://comics.ha.com/itm/memorabilia/trading-cards/magic-the-gathering-revised-edition-uncut-sheets-group-of-3-wizards-of-the-coast-1994-/a/7386-36036.s",
+    "description": "Auction describes three 11-by-11 Revised sheets. No sufficiently detailed source images acquired for calibration.",
+    "method": "Estimate sheet-wide perspective/distortion from the repeated grid, then measure printed art/paper edges at every cell. Compare offsets by sheet position, repeated printing and design origin. Use multiple sheets/captures to separate sheet variation from capture distortion; do not infer cutting offsets from uncut paper or generalize one sheet to every print run."
+  }
+}

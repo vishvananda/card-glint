@@ -1,3 +1,7 @@
+import {
+  preRevisedWordingSource,
+  revisedWordingRuntimeCompatible,
+} from './revised-wording-ancestry.mjs';
 // Exact ATQ source history authenticates older measurements, never changed fits.
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -23,6 +27,7 @@ export function atqProfileDelta() {
   })());
 }
 export async function preAtqProfileSource(file, bytes) {
+  bytes = await preRevisedWordingSource(file, bytes);
   const e = (await atqProfileDelta()).files[file];
   return e && e.beforeSource !== null && hash(bytes) === e.after
     ? Buffer.from(e.beforeSource)
@@ -59,11 +64,16 @@ export async function atqProfileHistoricalHash(directory = path.join(root, 'game
 }
 /** A measured unchanged tree may reuse older identities for unaffected sets only. */
 export async function atqProfileRuntimeCompatible(directory, expected, set) {
-  if (directory !== 'games/magic/src' || !set || set.toLowerCase() === 'atq') return false;
+  if (directory !== 'games/magic/src' || !set || ['atq', '3ed'].includes(set.toLowerCase()))
+    return false;
   const p = await atqProfileDelta();
   if (expected !== p.beforeRenderer) return false;
   tree ??= (async () => {
-    if ((await sourceHash(path.join(root, directory))) !== p.afterRenderer) return false;
+    if (
+      (await sourceHash(path.join(root, directory))) !== p.afterRenderer &&
+      !(await revisedWordingRuntimeCompatible(directory, p.afterRenderer, set))
+    )
+      return false;
     const z = await readFile(path.join(root, p.controls.file));
     assert.equal(hash(z), p.controls.sha256);
     const c = JSON.parse(gunzipSync(z));
