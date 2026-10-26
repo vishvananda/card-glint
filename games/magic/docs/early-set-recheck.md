@@ -331,3 +331,95 @@ a separate baseline checkout when replaying historical trials; the baseline
 Original capture must come from that exact source and input file. The historical
 baseline is commit `0578fa9`. The tool requires all assets in the local cache,
 including any Oracle-only symbols; captures never download them.
+
+## Revised colored-frame horizontal normalization
+
+The five ordinary colored frames now have a reproducible reference-only
+horizontal pass. It rebuilds median edge templates from actual resampled pixels
+after centering the calibration offsets. Reusing a template built before that
+centering could undo the zero-median convention on the next pixel fit.
+
+Three fixed refinement passes use only calibration scans and the two fit strips.
+The four verification strips are absent from parameter selection. Validation
+scans get one fit after the final templates are frozen. The original outer-stock
+pose is preserved for physical-border and corner measurements.
+
+| Physical frame | Cards | Accepted | Retained for review                                             |
+| -------------- | ----: | -------: | --------------------------------------------------------------- |
+| White          |    46 |       46 | None                                                            |
+| Blue           |    45 |       45 | None                                                            |
+| Black          |    46 |       45 | Unholy Strength                                                 |
+| Red            |    47 |       46 | Mons's Goblin Raiders                                           |
+| Green          |    46 |       41 | Cockatrice, Gaea's Liege, Lifelace, Scryb Sprites, Wall of Wood |
+
+The seven disagreements are in independent side strips, mostly near the lower
+left edge. Their full scans and enlarged strips were visually inspected. Keep
+them in the review inventory; the 90/100 overlap and 0.5 px residual gates have
+not changed. The recorded material label on Serendib Efreet is blue, while its
+reviewed physical frame is green. Grouping uses the physical frame metadata,
+without changing the printing's color or the archived inputs.
+
+This is a horizontal reference-registration checkpoint, not a new renderer
+profile or a complete set calibration. Vertical registration and the remaining
+frame, typography, credit and stat work are still open. Both cohorts have been
+used during development; these results are not a new holdout experiment.
+
+```sh
+MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/revised-colored-frame-normalize.mjs \
+  inputs.json games/magic/fixtures/accuracy/3ed-recheck/normalization-baseline.json.gz \
+  colored-horizontal-normalization.json
+node tests/magic-revised-centered-template.mjs
+```
+
+Use the corrected Original inputs extracted in the preceding instructions.
+The [metadata fixture](../fixtures/accuracy/3ed-recheck/colored-horizontal-normalization.json.gz)
+records all 230 memberships, exact templates, poses, exclusions and tool hashes.
+No scan images are shipped in that fixture.
+
+### Colored geometry follow-up: retain the current defaults
+
+A synthetic window-shift probe selected small shared translations. Native trials
+then rendered all 230 Originals at zero and at the proposed shift, holding each
+recipe's pigment values fixed. All 230 zero controls reproduce their archived
+PNG hashes; all body layouts and physical alpha masks remain unchanged.
+
+The full diagnostic does **not** support adopting the colored batch as-is:
+
+| Frame | Proposed x (px) | Interior index before → after | Four-side frame/art overlap before → after |
+| ----- | --------------: | ----------------------------: | -----------------------------------------: |
+| White |           +0.50 |             78.05 → 77.21/100 |                          92.17 → 90.02/100 |
+| Blue  |           −0.25 |             73.54 → 73.55/100 |                          93.34 → 93.10/100 |
+| Black |            0.00 |             73.77 → 73.77/100 |                          92.31 → 92.31/100 |
+| Red   |           −0.25 |             73.00 → 73.24/100 |                          88.29 → 91.02/100 |
+| Green |           +0.75 |             74.16 → 73.88/100 |                          87.44 → 94.76/100 |
+
+Across the 223 accepted poses, the interior index changes from 74.52 to
+74.35/100. White improves its paired paper-strip objective but worsens the
+independent art/frame bands. Translation alone cannot settle that disagreement;
+measure width and art-aperture geometry before selecting another shared fit.
+Some text-score ROIs also contain frame edges, so a changed regional score is
+not proof that the typography moved. Use isolated-ink checks for the text pass.
+These prototypes remain experimental; no colored renderer geometry or pigment
+values change at this checkpoint.
+
+The [native receipt](../fixtures/accuracy/3ed-recheck/colored-frame-native-trials.json.gz)
+and [full regional scores](../fixtures/accuracy/3ed-recheck/colored-frame-geometry-scores.json.gz)
+preserve the negative results as well as gains. The
+[shift probe](../fixtures/accuracy/3ed-recheck/colored-frame-shift-probe.json.gz)
+records every candidate and the calibration-only selection. Native images stay
+in the external reference cache/evidence workspace.
+
+```sh
+node games/magic/tools/accuracy/revised-colored-geometry-diagnostic.mjs \
+  colored-horizontal-normalization.json baseline/capture.json baseline probe.json
+# Write the selected per-color offsets from probe.json to shared-x.json.
+MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/revised-colored-native-trials.mjs \
+  inputs.json baseline/capture.json native-trials trials shared-x.json
+```
+
+The baseline is the complete native Original capture from commit `226f577`.
+Use the exact corrected Original corpus and cached assets. Coordinates use
+488 × 680 canonical pixels; inspect captures are 732 × 1020. Normalize before
+cropping or displaying them at the canonical size. The full structural
+score fixture also records the Lab metric dependency graph; changing a pose,
+render, input or metric requires fresh scores.
