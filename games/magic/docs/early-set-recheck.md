@@ -138,22 +138,26 @@ Balloon Brigade, Sedge Troll, Uthden Troll and Regeneration. These are exact
 printing corrections queued for promotion. No automatic colon-insertion rule
 is added to the renderer.
 
-The broader word-and-paragraph audit has checked the first 160 of 306 cards
-alphabetically. Six additional exact corrections record missing pump-cost colons
-and printed verse or attribution breaks on Bog Wraith, Dwarven Weaponsmith,
-Firebreathing, Frozen Shade, Granite Gargoyle and Holy Armor. Their native replays
-change only body pixels; the other 300 recipes are unchanged. Dwarven
-Weaponsmith's explicit breaks produce the same pixels as its current soft
-wrapping, so its score is reused. Holy Armor loses 0.11 points despite its
-scan-confirmed colon; source correctness takes priority over the score.
+The word-and-paragraph audit is now complete for all 306 Original bodies.
+It records 24 exact printing corrections, each verified through isolated native
+replays. The final additions include verse breaks, upright “(heads)” on Rock
+Hydra, and explicit empty Original rules for Wall of Stone and Wall of Wood.
+Those two cards had inherited modern wall reminders when source rules were
+missing. Eighteen activation colons were confirmed across the full audit,
+including inline and quoted abilities that the first paragraph-start detector
+missed. No generic punctuation-insertion rule is added.
 
 The [pre-fit review](../fixtures/accuracy/3ed-recheck/pre-fit-review.json)
-records the reviewed prefix, evidence and next index. Soft wrapping, printed
-line-end hyphenation, font size and generic-mana glyph style are separate
-typography questions. These source corrections still await runtime promotion.
+records the complete denominator and native checks. Unchanged recipes match
+current-source controls, and every changed pixel stays within the body.
+Dwarven Weaponsmith and Plague Rats retain identical pixels because current
+soft wrapping already produces their printed verse boundaries. Small negative
+metrics on other corrections do not invalidate scan-confirmed content.
+Soft wrapping, line-end hyphenation, font metrics, generic-mana drawing and
+alignment remain separate work. Runtime correction promotion is pending.
 
-The artifact geometry trial is still unadopted. Translating the shared frame
-1.25 px left raises its mean from 66.60 to 70.42/100, but 15 of 51 artifacts
+The artifact geometry trial is still unadopted. Under the original outer-stock
+normalization, translating the shared frame 1.25 px left raises its mean from 66.60 to 70.42/100, but 15 of 51 artifacts
 regress and the worst loss is 9.27 points. Neither rarity nor the card's earliest
 appearance in Alpha, Arabian Nights or Antiquities cleanly separates the losses.
 
@@ -166,8 +170,8 @@ scan processing or print-run variation. The texture target was selected using
 the scan-only type position, so this is diagnostic evidence, not independent
 alignment certification.
 
-Next, test frame-only interior normalization with independent verification
-strips. Keep the physical outer-stock pose for border and corner assessment.
+The follow-up below tests frame-only interior normalization with independent
+verification strips. Keep the physical outer-stock pose for border and corner assessment.
 Do not use title or body text to choose the pose, and do not hide stock errors
 by treating an interior structural score as whole-card certification.
 
@@ -179,3 +183,43 @@ compare frame geometry across cells; do not warp each card to its lettering.
 One sheet controls cutting and separate scan crops for that sheet, not every
 print run. The [investigation receipt](../fixtures/accuracy/3ed-recheck/artifact-alignment-review.json)
 records candidate results, source identities, limitations and the sheet protocol.
+
+## Revised artifact interior registration
+
+The outer-stock pose does not account for all displacement of the printed
+interior. The cached-scan command below tests paired text-box frame edges.
+It supports only Revised artifacts; other materials need reviewed strip geometry.
+
+```sh
+MAGIC_ACCURACY_CACHE=/path/to/cache node \
+  games/magic/tools/accuracy/revised-artifact-normalize.mjs \
+  inputs.json outer-normalization.json interior-normalization.json
+```
+
+The target uses calibration scans only. Two aligned median-template passes
+reduce single-scan noise. The median calibration translation stays zero, so the
+fit does not move the group's shared layout to match the renderer. Separate
+along-edge strips verify the proposed horizontal shift. Pixel replacement
+outside every declared strip must leave all extracted profiles unchanged.
+Inspect the strips themselves before applying this method to another frame.
+
+The test accepts 46 of 51 artifact poses numerically. On those same 46 cards,
+the shared 1.25 px left frame translation improves every interior structural
+score: 67.51 to 73.64/100. Horizontal frame-edge overlap improves from 70.76 to
+92.38/100. All 15 regressions from the previous outer-stock comparison are in
+this accepted group and now improve. These figures compare two renderer
+geometries under the same new scan poses; old-pose scores are not reused.
+
+Aladdin's Ring, Conservator, Dingus Egg, Ivory Tower and Meekstone remain flagged
+for frame-edge support or independent residual disagreement. They are excluded
+from both aggregate columns, not assigned a fallback interior pose. The portable
+tool reproduces all 51 prototype decisions and transforms exactly. Prior
+texture-only translation and affine proposals did not pass enough independent
+checks and remain unadopted.
+
+The [registration receipt](../fixtures/accuracy/3ed-recheck/interior-registration-review.json)
+retains all candidates and source identities. The renderer is unchanged.
+Review independent art-frame boundaries and full-card overlays, resolve the
+flagged cases, and verify source-local color/native parity before adopting
+shared geometry. Use each row's original stock pose for physical borders and
+corners; the interior index does not certify them.

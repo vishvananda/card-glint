@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "status": "numerical-interior-registration-and-geometry-evidence-not-adopted",
+  "set": "3ed",
+  "rendererHash": "e6d9d4fcc1f489130ace2dcfcf513b1901dc20c9f19e1a3029d2560e9ba0f6e4",
+  "scope": "51 Revised artifacts only, with unchanged Original inputs and native geometry trials. 46 pass frame-only numerical checks, including all15 cards that regressed under outer-stock normalization. Five excluded from every recalibrated aggregate; do not interpret this as306-card accuracy or physical-border certification.",
+  "artifacts": {
+    "artifact-interior-normalization-prototype.json.gz": {
+      "sha256": "32336f7fd5112fbfb379aece2d99dfc888c97f872b9288bcab6a6af2239e8c77",
+      "contentSha256": "25aa653a281d02a475bf3e648cbaf06efce2c478efef37cd37aac90d1b648ea7"
+    },
+    "artifact-interior-normalization.json.gz": {
+      "sha256": "03aee74b857f46905a06bd3d21b88733e42e6fae84cf0defddfeaef43f923eed",
+      "contentSha256": "92ce2586d8674422b409f10fb0bd44ea27e1cd7a0f2e731337a03a7355ce76e7"
+    },
+    "artifact-interior-geometry-scores.json.gz": {
+      "sha256": "7d79385c7e344c0eba34bcd1967a9e81eeb1916fec622b47ae2e7e8bf1882dee",
+      "contentSha256": "3410ebbbdface2ab736e7f34e25ae0265190b9062bbcc0346edc3ec19dc86755"
+    },
+    "artifact-texture-translation-proposal.json.gz": {
+      "sha256": "99c4fde53ed42ecb84726d4373c955deefb6b0c28b3bdb6cfafd6c1951829888",
+      "contentSha256": "662f123261661d582e513610a313a490e1a8ff1b2de9417b07d2e9dec7df40f7"
+    },
+    "artifact-texture-affine-proposal.json.gz": {
+      "sha256": "944c2a4cadc163431b32a32cb8c4ee559da5343a7e4c35aeff00cc6d3353acb9",
+      "contentSha256": "20538ed22935dd48e249d85d4484dac3643ee7902dd22c6b82c895aacc2f9336"
+    }
+  },
+  "portableReplay": {
+    "exactRows": 51,
+    "comparisonFields": [
+      "fit",
+      "validation",
+      "accepted",
+      "interiorDelta",
+      "transform",
+      "stockTransform"
+    ],
+    "scope": "Portable cached-scan tool reproduces prototype profiles, templates, gauge, decisions and all matrices exactly; previous46 fresh scores remain bound to identical per-card transforms, refs and native PNGs."
+  },
+  "notAdopted": [
+    "No renderer geometry or wordings changed in this experiment.",
+    "No scan transform enters renderer defaults.",
+    "Retain original stockTransform for outer-border and corner measurement.",
+    "Numerical acceptance still requires art-frame and full-card visual review.",
+    "Prior texture-only translation and affine proposals were not adopted because independent strips disagreed."
+  ],
+  "frameOnlySupport": "Fixed narrow paper-edge strips exclude text/illustration by coordinate review. Mutation of every pixel outside those strips leaves every extracted profile unchanged; this is extraction isolation, not automatic recognition of text.",
+  "rejected": ["Aladdin's Ring", "Conservator", "Dingus Egg", "Ivory Tower", "Meekstone"],
+  "next": [
+    "Review independent art edges and title/type movement in native overlays.",
+    "Resolve five flagged edge-shape/scale cases rather than changing fit thresholds.",
+    "Rebind source-local colors and verify native Original/Oracle/etching and unaffected cards before adopting shared geometry."
+  ],
+  "selectedSharedDx": -1.25,
+  "acceptedGroupCurrent100": 67.5109085648495,
+  "acceptedGroupCandidate100": 73.64329396812903,
+  "improved": 46,
+  "regressed": 0,
+  "validation": {
+    "cards": 14,
+    "whole100": 74.53208460881551,
+    "delta100": 6.235799435404892,
+    "internalHorizontal100": 91.85716817817908,
+    "worstDelta100": 4.531965600338217,
+    "improved": 14,
+    "regressed": 0,
+    "bands": {
+      "stockLeft": 82.99499120259816,
+      "stockRight": 80.89670753090624,
+      "stockTop": 88.21261061258359,
+      "stockBottom": 98.9374961921214,
+      "artLeft": 78.26817774608413,
+      "artRight": 94.05193069658215,
+      "artTop": 77.01136030904316,
+      "artBottom": 89.56595572828004,
+      "paperLeft": 96.86991770263451,
+      "paperRight": 98.2386465674156,
+      "paperTop": 86.24974536044583,
+      "paperBottom": 86.92989083892591
+    }
+  },
+  "frameBandBefore100": 70.75539127391974,
+  "frameBandAfter100": 92.38280751366482
+}
