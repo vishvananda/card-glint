@@ -311,6 +311,92 @@ native directories, rings, glyph audit, proposal definition, candidate inputs
 and a new output path. It rejects candidate recipes changed beyond the proposed
 glyph controls.
 
-The nonwhite proposals remain unadopted pending the complete mana review,
-including physical cost placement, pigment, numerals and outliers. These glyph
-scores do not replace full-card or full-set scores.
+These initial proposals remain unadopted. The combined review below also
+rejects blue and retains only the black/red/green glyph changes. Physical cost
+placement, pigment, numerals and outliers need their complete review. These
+glyph scores do not replace full-card or full-set scores.
+
+### Numeral search and reviewed combination
+
+The numeral study compares 11 existing font faces, including the MSE and
+CardConjurer MPlantin files, with the existing SVG numeral artwork. MSE's
+[old-mana configuration](https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-mana-old.mse-symbol-font/symbol-font)
+specifies MPlantin. Its font file is different from the current WOFF, so the
+study tests the actual cached files. None justifies replacing the whole numeral
+family. These fonts remain research assets; no new font is shipped.
+
+The font atoms use native Canvas2D rasterization and the painter's exact pixel
+phase. The native-rgba-crop helper reproduces full-card normalization byte for
+byte, including alpha. It avoids a full-card readback for every font trial.
+Source-mask resize candidates are explicitly approximate controls.
+
+The next study tests 37 actual production numeral transforms on 106 measured
+costs. Every card reproduces its existing native baseline, cropped sampling and
+first active full-composition control exactly. The objective winner enlarges
+digits by 6% and moves them up 0.5px, but loses 9.87/100 on the lone 7-cost
+example. The reviewed choice enlarges digits by 2% and moves them up 0.25px,
+with no horizontal shift. It improves both cohorts and has a worst measured
+shape loss of 1.84/100. Validation names are reused development data, and the
+rare-number regressions remain in the evidence.
+
+Full-card checks also reject the proposed blue enlargement. Its independent
+glyph score improves slightly, but its frame-positioned score and full-card
+group mean regress. The reviewed combination therefore retains both existing
+white and blue glyphs, applies the measured black/red/green transforms, and
+uses the milder numeral transform.
+
+| Measurement                                    | Current /100 | Reviewed prototype /100 |
+| ---------------------------------------------- | -----------: | ----------------------: |
+| Disc-relative glyph shape, 360 symbols         |        76.93 |                   82.84 |
+| Frame-positioned glyph overlap, same symbols   |        75.96 |                   80.33 |
+| Whole-card structural score, all 306 printings |        73.07 |                   73.13 |
+
+These are different objectives; do not compare their absolute values with one
+another. The whole-card result uses the same frozen stock poses and complete
+metric import graph. The input-comparison scorer verifies that only public
+symbol controls changed and that every old/new metric region plan is identical.
+It freshly scores 238 changed faces and reuses 68 identical rasters, including
+all 25 lands. Both input identities remain explicit.
+
+All 306 native faces retain their body layouts and alpha, and every changed
+RGB pixel stays inside the cost area. The selected black/red/green glyph masks
+match their individual native trials exactly; all 106 numeric masks reproduce
+the selected native grid result. White, blue and X masks remain unchanged.
+
+The mana-reviewed fixtures record this combination. The mana-combined fixtures
+retain the rejected intermediate blue enlargement so its regression remains
+reviewable. Font and numeral matrices are in mana-numeral-font-study and
+mana-numeral-native-study. No artwork is committed.
+
+To repeat the grids after preparing the common input, pose, ring, glyph-audit
+and native files described above:
+
+```sh
+gzip -dc games/magic/fixtures/accuracy/3ed-recheck/mana-numeral-font-definition.json.gz > fonts.json
+gzip -dc games/magic/fixtures/accuracy/3ed-recheck/mana-numeral-native-definition.json.gz > numbers.json
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-mana-numeral-study.mjs \
+  inputs.json poses.json new-native rings.json glyphs.json fonts.json font-results.json
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-mana-numeral-native-study.mjs \
+  inputs.json poses.json new-native rings.json glyphs.json numbers.json native-number-results.json
+node tests/magic-native-rgba-crop.mjs
+node tests/magic-revised-mana-numerals.mjs
+```
+
+Fetch the pinned additional font references into the same local cache before
+repeating the font grid. The native numeral grid uses the existing renderer
+assets. Both studies use one browser for the batch. Their CPU submission,
+rasterization and analysis wall time does not measure GPU completion.
+
+This combination is still a prototype. Mana paper/ink calibration, placement
+and outlier closure remain open before runtime adoption and complete mana
+certification. The frame, headings, other text ink and remaining set audits
+also remain open.
+
+A subsequent source-preparation probe found a concrete black-symbol issue.
+The fixed top-center paper sample reads [151, 148, 144] on the prepared
+160px skull bitmap, while its opaque paper percentile is [164, 160, 157].
+The six observed full native faces remain byte-identical, so this observation
+does not alter their pixels. Correct the source sampler before fitting a new
+black paper target or ink tone. The sampler observation is recorded in
+mana-paper-sampler-observation.json.gz; it is a diagnostic, not a new palette
+or completed color calibration.
