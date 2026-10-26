@@ -129,13 +129,41 @@ try {
     }
     // Interior coverage catches the edge-only masks that made Revised stats hollow.
     ctx.textBaseline = 'middle';
-    paintRevisedStats(ctx, '8/8', 600);
+    const nativeFill = ctx.fillText.bind(ctx);
+    const draws = [];
+    ctx.fillText = (...args) => {
+      draws.push({
+        args,
+        matrix: ctx.getTransform(),
+        font: ctx.font,
+        align: ctx.textAlign,
+        baseline: ctx.textBaseline,
+        letterSpacing: ctx.letterSpacing,
+      });
+      nativeFill(...args);
+    };
+    try {
+      paintRevisedStats(ctx, '8/8', 600);
+    } finally {
+      ctx.fillText = nativeFill;
+    }
     const actual = ctx.getImageData(0, 0, 488, 680).data;
+    // Match the foreground draw's location, independent of its calibration.
+    // The expected mask remains a solid fill; translated hollow ink still fails.
+    const foreground = draws.at(-1);
+    check(foreground, 'Revised stats need a foreground glyph draw');
+    ctx.resetTransform();
     ctx.clearRect(0, 0, 488, 680);
-    ctx.font = '27.25px "CardRenderer MTG MPlantin", Georgia';
-    ctx.textAlign = 'right';
+    ctx.setTransform(foreground.matrix);
+    ctx.font = foreground.font;
+    ctx.textAlign = foreground.align;
+    ctx.textBaseline = foreground.baseline;
+    ctx.letterSpacing = foreground.letterSpacing;
+    ctx.shadowColor = 'transparent';
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = 'source-over';
     ctx.fillStyle = '#fff';
-    ctx.fillText('8/8', 451, 611, 130);
+    nativeFill(...foreground.args);
     const mask = ctx.getImageData(0, 0, 488, 680).data;
     let opaque = 0,
       filled = 0;
@@ -148,7 +176,22 @@ try {
       opaque > 30 && filled / opaque > 0.95,
       'Revised P/T stroke interiors must contain solid gray ink',
     );
-    return { cases, opaque, filled };
+    ctx.save();
+    ctx.resetTransform();
+    ctx.clearRect(0, 0, 488, 680);
+    ctx.restore();
+    ctx.strokeStyle = '#d4d4d4';
+    ctx.lineWidth = 1;
+    ctx.strokeText(...foreground.args);
+    const hollow = ctx.getImageData(0, 0, 488, 680).data;
+    let hollowFilled = 0;
+    for (let i = 0; i < mask.length; i += 4)
+      if (mask[i + 3] > 245 && hollow[i + 3] > 245 && hollow[i] > 140) hollowFilled++;
+    check(
+      hollowFilled / opaque < 0.95,
+      'A hollow glyph control must fail the interior-coverage gate',
+    );
+    return { cases, opaque, filled, hollowFilled };
   });
   assert.equal(result.cases, 3);
   console.log(
