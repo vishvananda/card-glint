@@ -1,6 +1,8 @@
+import { revisedArtifactGeometryDelta } from '../games/magic/tools/accuracy/revised-artifact-geometry-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createServer } from './magic-vite.mjs';
+const artifact = await revisedArtifactGeometryDelta();
 const rebindings = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/revised-frame-native.json'),
 ).bindings;
@@ -111,9 +113,11 @@ try {
       face = { ...study.probe, name: 'Coverage probe', colorCalibration: 'set-hsb-v1' },
       materials = calibratedFrameMaterials(face);
     const rebound = rebindings.find((r) => r.key === row.key);
+    const artifactRebound = row.key === '3ed/white/retro/a.png';
+    if (artifactRebound) assert.equal(rebound?.afterSource, artifact.binding.before);
     assert.equal(
       PRINTING_COLOR_PROFILES[row.key].source,
-      rebound?.afterSource ?? study.source.source,
+      artifactRebound ? artifact.binding.after : (rebound?.afterSource ?? study.source.source),
     );
     if (rebound) {
       assert.equal(rebound.beforeSource, study.source.source);

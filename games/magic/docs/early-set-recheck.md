@@ -271,3 +271,63 @@ binds the exact runtime change, all 306 Originals, four Oracle/etching controls
 and the before/after scores. Unknown source changes retain their own identities.
 The earlier artifact translation study remains unadopted; its five flagged
 scan poses and independent art-frame validation are the next geometry work.
+
+## Revised artifact geometry adoption
+
+The artifact frame and art now move **1.25 canonical pixels left**. This is one
+shared material adjustment. The horizontal scale, vertical geometry, source
+texture, pigment values, text and mana positions do not change. The source-bound
+color signature follows the new rectangle, so the existing frame/paper correction
+remains active.
+
+The follow-up validates actual resampled scan pixels. Shifting an extracted
+one-dimensional edge profile had different rounding and blur behavior. The new
+tool samples only the required RGBA windows and matches full-image normalization
+byte for byte. Two fixed paper-edge strips select a translation within ±0.75 px
+in 0.125 px steps; four separate strips verify it. Neither rendered pixels nor
+text choose the scan pose. The calibration median refinement stays zero.
+
+Of 51 artifacts, 47 pass the unchanged overlap/residual checks. Armageddon Clock,
+Brass Man, Dancing Scimitar and Kormus Bell retain small right-edge disagreements
+and stay excluded from accepted-score summaries. Their scans were visually
+reviewed; they are retained for review, not replaced or given a per-card
+renderer offset. Physical white borders and corners still use the original
+stock transforms.
+
+The current Original corpus gives these results under the same frozen poses:
+
+| Measurement                         |    Before |     After |
+| ----------------------------------- | --------: | --------: |
+| Interior structural index, 47 cards | 66.92/100 | 73.64/100 |
+| Art/paper side-edge overlap         | 69.09/100 | 93.16/100 |
+
+All 47 improve. Selection uses only the 34-card calibration frame-edge mean;
+13 validation cards also improve. A quarter-pixel refinement retains the same
+choice. These are reused development cohorts, not a new holdout.
+
+The production painter reproduces the selected prototype on all 51 Originals
+and 204 Original/Oracle/symbol/etching variants. The other 255 Revised Originals,
+all 306 body layouts and the existing nonartifact Oracle/etching controls remain
+unchanged. The [source/native receipt](../fixtures/accuracy/3ed-recheck/artifact-geometry-source-delta.json.gz)
+binds all source changes, trial/score caches and exclusions. This regional
+improvement does not complete Revised; other material normalization, headings,
+rules, credits and stats still need their current full-set review.
+
+Reproduce the reference-only pixel refinement with the archived corpus:
+
+```sh
+gzip -dc games/magic/fixtures/accuracy/3ed-recheck/corrected-original-inputs.json.gz > inputs.json
+MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/revised-frame-pixel-fit.mjs \
+  inputs.json games/magic/fixtures/accuracy/3ed-recheck/artifact-interior-normalization.json.gz \
+  pixel-normalization.json
+```
+
+`revised-artifact-native-trials.mjs INPUTS BASELINE_CAPTURE OUTPUT MODE`
+captures shared geometry trials or unmodified native variants. `trials` tests
+the coarse/fine offsets; `variants` tests zero and −1.25 px across both wording
+and symbol options plus etching; `native` applies no experimental hooks.
+Offsets are relative to the selected checkout. Set `NATIVE_RENDERER_ROOT` to
+a separate baseline checkout when replaying historical trials; the baseline
+Original capture must come from that exact source and input file. The historical
+baseline is commit `0578fa9`. The tool requires all assets in the local cache,
+including any Oracle-only symbols; captures never download them.

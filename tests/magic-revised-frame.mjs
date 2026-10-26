@@ -1,7 +1,9 @@
+import { revisedArtifactGeometryDelta } from '../games/magic/tools/accuracy/revised-artifact-geometry-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { createServer } from './magic-vite.mjs';
+const artifact = await revisedArtifactGeometryDelta();
 const report = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/revised-frame-native.json'),
 );
@@ -32,7 +34,11 @@ try {
       colors: binding.material === 'A' ? [] : [binding.material],
       colorCalibration: 'set-hsb-v1',
     };
-    assert.equal(printingColorSource(face).source, binding.afterSource);
+    if (binding.material === 'A') assert.equal(binding.afterSource, artifact.binding.before);
+    assert.equal(
+      printingColorSource(face).source,
+      binding.material === 'A' ? artifact.binding.after : binding.afterSource,
+    );
     assert.equal(
       JSON.parse(binding.beforeSource)[0],
       JSON.parse(binding.afterSource)[0],

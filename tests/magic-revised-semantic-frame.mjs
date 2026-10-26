@@ -1,3 +1,7 @@
+import {
+  preRevisedArtifactGeometrySource,
+  revisedArtifactGeometryHistoricalHash,
+} from '../games/magic/tools/accuracy/revised-artifact-geometry-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { sourceHash, hash } from '../games/magic/tools/accuracy/common.mjs';
@@ -11,10 +15,10 @@ import {
   revisedWordingRuntimeCompatible,
 } from '../games/magic/tools/accuracy/revised-wording-ancestry.mjs';
 const p = await revisedSemanticDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await revisedArtifactGeometryHistoricalHash(), p.afterRenderer);
 for (const [file, entry] of Object.entries(p.files)) {
   const current = await readFile(file);
-  assert.equal(hash(current), entry.after);
+  assert.equal(hash(await preRevisedArtifactGeometrySource(file, current)), entry.after);
   assert.equal(hash(await preRevisedSemanticSource(file, current)), entry.before);
   const unknown = Buffer.concat([current, Buffer.from('\n// unrelated change\n')]);
   assert.deepEqual(await preRevisedSemanticSource(file, unknown), unknown);

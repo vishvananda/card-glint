@@ -389,7 +389,7 @@ export const PRINTING_COLOR_PROFILES: Readonly<Record<string, PrintingColorProfi
   },
   '3ed/white/retro/a.png': {
     source:
-      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png",[0.008708774590163905,0.012330294117647026,0.983253,0.991329]]',
+      '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png",[0.006147299180327839,0.012330294117647026,0.983253,0.991329]]',
     materials: {
       'https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png':
         {

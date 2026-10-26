@@ -1,3 +1,4 @@
+import { preRevisedArtifactGeometrySource } from './revised-artifact-geometry-ancestry.mjs';
 // Exact source history for the Original Enchant Artifact frame correction.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -113,6 +114,7 @@ export function revisedSemanticDelta() {
 }
 /** Unknown bytes keep their changed identity; this never approves a Revised fit. */
 export async function preRevisedSemanticSource(file, bytes) {
+  bytes = await preRevisedArtifactGeometrySource(file, bytes);
   const entry = (await revisedSemanticDelta()).files[file];
   return entry && hash(bytes) === entry.after ? Buffer.from(entry.beforeSource) : bytes;
 }
