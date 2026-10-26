@@ -31,7 +31,7 @@ export function paintRevisedStats(
   c.font = '27.25px "CardRenderer MTG MPlantin", Georgia';
   c.textAlign = 'right';
   // Stats use lighter ink than the title/artist on the reviewed W/G/B scans.
-  paintRetroGrayText(c, text, 451, y + 11, 130, 1.25, '#d4d4d4', liveChanges);
+  paintRetroGrayText(c, text, 450.5, y + 11.5, 130, 1.25, '#d4d4d4', liveChanges);
   c.restore();
 }
 
@@ -40,6 +40,8 @@ export function paintRevisedCredits(c: CanvasContext, artist: string) {
   c.font = '22px "CardRenderer MTG MPlantin", Georgia';
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
-  paintRetroGrayText(c, `Illus. © ${artist}`, 50, 642, 338, 1.25);
+  c.translate(48, 642.5);
+  c.scale(1.02, 1);
+  paintRetroGrayText(c, `Illus. © ${artist}`, 0, 0, 338 / 1.02, 1.25);
   c.restore();
 }

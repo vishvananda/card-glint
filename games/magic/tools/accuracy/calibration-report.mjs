@@ -1,3 +1,4 @@
+import { revisedFooterDelta, revisedFooterAffected } from './revised-footer-ancestry.mjs';
 import {
   revisedBodyArtistAffected,
   revisedBodyArtistDelta,
@@ -112,6 +113,16 @@ export async function calibrationReport(ledger) {
       ]);
       for (const { task, item, original } of dependencies) {
         const currentAbu = await abuCurrentApproval(item, group, task, original, set.set);
+        if (
+          revisedFooterAffected(set.set, task, original, group) &&
+          item.proof?.revisedFooterSource !== (await revisedFooterDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Revised illustrator and power/toughness placement changed. These records need the current footer renders; other components can reuse their existing evidence.';
+          continue;
+        }
+
         if (
           (await revisedBodyArtistAffected(set.set, task, original, group)) &&
           item.proof?.revisedBodyArtistSource !== (await revisedBodyArtistDelta()).afterRenderer

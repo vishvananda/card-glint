@@ -1,3 +1,7 @@
+import {
+  preRevisedFooterSource,
+  revisedFooterHistoricalHash,
+} from '../games/magic/tools/accuracy/revised-footer-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
@@ -10,10 +14,10 @@ import {
   revisedRequestHistoricalHash,
 } from '../games/magic/tools/accuracy/revised-body-request-ancestry.mjs';
 const p = await revisedRequestDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await revisedFooterHistoricalHash(), p.afterRenderer);
 assert.equal(await revisedRequestHistoricalHash(), p.beforeRenderer);
 for (const [f, e] of Object.entries(p.files)) {
-  const bytes = await readFile(f);
+  const bytes = await preRevisedFooterSource(f, await readFile(f));
   assert.equal(hash(bytes), e.after);
   assert.equal(hash(await preRevisedRequestSource(f, bytes)), e.before);
   const unknown = Buffer.concat([bytes, Buffer.from('\n// unknown source change\n')]);

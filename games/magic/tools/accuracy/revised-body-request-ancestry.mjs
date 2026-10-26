@@ -1,3 +1,4 @@
+import { preRevisedFooterSource } from './revised-footer-ancestry.mjs';
 // Exact metadata-only closure of the Revised fractional layout.
 // The native census proves that this does not create a new rendered revision.
 import assert from 'node:assert/strict';
@@ -71,6 +72,7 @@ export function revisedRequestDelta() {
   })());
 }
 export async function preRevisedRequestSource(file, bytes) {
+  bytes = await preRevisedFooterSource(file, bytes);
   const e = (await revisedRequestDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

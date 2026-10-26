@@ -59,7 +59,7 @@ const server = await createServer({
 try {
   await server.ssrLoadModule('/games/magic/src/data/eager.ts');
   await server.ssrLoadModule('/games/magic/src/data/eager-wording.ts');
-  const { cardTextureKey: after } = await server.ssrLoadModule(
+  const { cardTextureKey: currentAfter } = await server.ssrLoadModule(
       '/games/magic/src/presentation/canvas-face.ts',
     ),
     { cardTextureKey: before } = await server.ssrLoadModule(
@@ -69,6 +69,12 @@ try {
       '/games/magic/src/presentation/retro-rules.ts',
     ),
     { resolvePrintingArtist } = await server.ssrLoadModule('/games/magic/src/printing/artist.ts');
+  // This test isolates the earlier body-key change. The exact later footer
+  // revision and its affected/bypass scopes have their own native/key tests.
+  const after = (...args) =>
+    JSON.stringify(
+      JSON.parse(currentAfter(...args)).filter((value) => value !== 'revised-footer-geometry-v1'),
+    );
   const base = {
     name: 'A test creature',
     typeLine: 'Summon Test',
@@ -87,7 +93,7 @@ try {
     marker = 'revised-original-fractional-v1';
   assert(next.includes(marker));
   assert.deepEqual(
-    next.filter((v) => v !== marker),
+    next.filter((v) => v !== marker && v !== 'revised-footer-geometry-v1'),
     old,
   );
   for (const props of [

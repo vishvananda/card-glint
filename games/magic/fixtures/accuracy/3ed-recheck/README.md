@@ -147,7 +147,8 @@ improve and 15 regress. The P/T result and per-color/cohort breakdowns are in
 names are reused development data. These are regional objectives, not new
 whole-card scores. Individual regressions remain listed for review.
 
-These proposals are not runtime defaults yet. Black/white foreground inversion
+These geometry proposals are now runtime defaults for Revised nonland cards.
+Font sizes and ink colors remain unchanged. Black/white foreground inversion
 also supplies tone diagnostics. Those estimates can be biased by residual
 misalignment, thin strokes and scan sharpening; check native-resolution glyph
 interiors before adopting new gray values. The selected tone geometry is
@@ -167,7 +168,38 @@ node tests/magic-revised-footer-study.mjs
 Use the coarse definition instead to repeat the wider sweep. The tool uses one
 browser for the entire set and reads only the affected native region during
 candidate scoring. The host CPU, Canvas2D and objective wall time does not
-measure GPU completion. If the renderer changes, regenerate the native capture
-with `printing-native-replay.mjs`; a changed production PNG cannot silently
-serve as the old control. Final native adoption, pigment checks and full-card
-verification remain required before closing the footer audit.
+measure GPU completion. The historical workbench requires the pre-footer renderer at commit eae3a50.
+Run the archived study from that checkout. A different renderer needs a matching
+study definition and native capture; a changed PNG cannot silently serve as an
+old control. Pigment and outlier review remain required before closing the
+complete footer audit.
+
+## Footer adoption
+
+The footer-source-delta receipt records the exact source and cache-key change.
+The production painter reproduces all 1,224 prototype variants exactly.
+Its 843 changed nonland face variants are confined to footer RGB pixels, with
+unchanged alpha. All 306 etching masks and all 75 land wording variants remain
+byte-identical. The body layouts also remain unchanged.
+
+The 302 regional artist/P/T scores reproduce the selected proposals exactly.
+The footer-whole-card-scores fixture checks all 306 Originals with the same stock
+poses and metric graph: 73.04 → 73.07/100. It freshly scores 281 changed faces and
+reuses all 25 unchanged lands. This structural metric is less sensitive to the
+footer than the regional objective, so keep both measurements visible.
+
+The cache revision applies only to assembled Revised nonland cards with visible
+artist or P/T text. Scans, artwork-only output, masks, hidden or absent footer
+text, ordinary land recipes and other sets retain their keys. A host-supplied
+P/T pair on a land uses the revision because that text is drawn too. Source-history projection restores
+only exact reviewed bytes. It does not approve unknown source changes or carry
+older footer/full-card evidence forward as current validation.
+
+Native-resolution ink probes avoid the extra canonical downsample, but their
+gray estimates remain sensitive to the stroke mask, especially on black cards.
+No new ink palette is adopted from those probes. Frame, headings, mana, pigment
+and complete outlier/component review remain open for Revised.
+
+The final cache-scope closure also has 1,224 byte-identical native variants and
+306 exact score reuses in footer-final-score-reuse.json.gz. It changes no
+published metric or face pixels.

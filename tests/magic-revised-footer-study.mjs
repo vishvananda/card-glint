@@ -119,7 +119,7 @@ assert.deepEqual(review.roles.stats.selected, {
 });
 assert.equal(review.pigment.status, 'diagnostic-not-adopted');
 console.log(
-  'Revised footer study:223 exact native controls,302 default region replays,calibration-only ranking,shared geometry gains and explicit regressions; tone and runtime adoption remain pending.',
+  'Revised footer study:223 exact native controls,302 default region replays,calibration-only ranking,shared geometry gains and explicit regressions; historical proposals retained separately from the subsequent native adoption.',
 );
 
 const artistState = JSON.parse(await bytes('footer-artist-state'));
