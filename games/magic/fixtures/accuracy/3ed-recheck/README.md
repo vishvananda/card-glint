@@ -71,3 +71,14 @@ same stock transforms and metric graph: 71.97 → 73.04/100, with 215 gains,
 66 losses and 25 unchanged lands. The scorer recalculates the 281 changed native
 faces and reuses the 25 byte-identical land scores. This is a whole-card diagnostic,
 separate from the interior-normalized regional text fit.
+
+`body-request-source-delta.json.gz` and `body-request-native.json.gz` close a
+metadata-only follow-up: the translated fractional layout now retains its
+editable request even without an outer caller wrapper. All 306 production
+Original PNGs remain byte-identical. This preserves the preceding score census
+and face-cache revision.
+
+The metadata-only closure also has a complete score-reuse replay in
+`body-request-score-reuse.json.gz`: 306 reused scores, zero fresh calculations,
+and the same 73.04/100 mean. Native bytes, inputs, references, poses and the metric
+import graph all match.

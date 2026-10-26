@@ -101,3 +101,28 @@ assert(w.summary.all.current100 > w.summary.all.before100);
 console.log(
   'Revised body whole-card comparison:306 exact native/input/reference/pose/metric joins;281 fresh scores,25 exact reused land scores;215 gains and66 recorded losses.',
 );
+
+const reuseReport = await load('body-request-score-reuse.json.gz');
+const requestNative = await load('body-request-scoring-native.json.gz');
+const reuse = reuseReport.value;
+assert.equal(reuse.captureHash, hash(requestNative.bytes));
+assert.equal(reuse.priorHash, hash(whole.bytes));
+assert.equal(reuse.rendererHash, requestNative.value.source.rendererHash);
+assert.equal(reuse.inputHash, w.inputHash);
+assert.equal(reuse.posesHash, w.posesHash);
+assert.deepEqual(reuse.metricGraph, w.metricGraph);
+assert.deepEqual(reuse.reuse, { reused: 306, fresh: 0 });
+assert.equal(reuse.rows.length, 306);
+for (const r of reuse.rows) {
+  const previous = w.rows.find((x) => x.id === r.id),
+    native = requestNative.value.rows.find((x) => x.id === r.id);
+  assert.equal(r.nativeHash, native.modes.original.sha256);
+  assert.equal(r.nativeHash, previous.nativeHash);
+  assert.deepEqual(r.score, previous.score);
+  assert.equal(r.scoreReused, true);
+  assert.equal(r.delta100, 0);
+}
+assert.equal(reuse.summary.all.current100, w.summary.all.current100);
+console.log(
+  'Revised metadata-only closure reuses306 complete scores with identical native, input, reference, pose and metric identities.',
+);

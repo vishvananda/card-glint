@@ -1,3 +1,4 @@
+import { preRevisedRequestSource } from './revised-body-request-ancestry.mjs';
 // Exact history for the shared Revised Original fit and six physical ARN credits.
 // Projection authenticates historical evidence; it never approves a changed fit.
 import assert from 'node:assert/strict';
@@ -184,6 +185,7 @@ export function revisedBodyArtistDelta() {
   })());
 }
 export async function preRevisedBodyArtistSource(file, bytes) {
+  bytes = await preRevisedRequestSource(file, bytes);
   const e = (await revisedBodyArtistDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

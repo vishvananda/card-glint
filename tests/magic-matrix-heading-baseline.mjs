@@ -1,3 +1,4 @@
+import { preRevisedBodyArtistSource } from '../games/magic/tools/accuracy/revised-body-artist-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { chromium, webkit } from 'playwright';
 import { createServer } from './magic-vite.mjs';
@@ -152,7 +153,7 @@ for (const [file, value] of Object.entries(proof.files)) {
   const bytes = await readFile(file);
   if (file.endsWith('/generated-manifest.json'))
     assert.equal(hash(await preArnProfileSource(file, bytes)), value.before);
-  else assert.equal(hash(bytes), value.after);
+  else assert.equal(hash(await preRevisedBodyArtistSource(file, bytes)), value.after);
   assert.equal(
     hash(await preMatrixHeadingSource(file, Buffer.from(value.afterSource))),
     value.before,

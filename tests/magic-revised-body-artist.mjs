@@ -1,8 +1,12 @@
+import {
+  preRevisedRequestSource,
+  revisedRequestHistoricalHash,
+} from '../games/magic/tools/accuracy/revised-body-request-ancestry.mjs';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
 import { createServer } from './magic-vite.mjs';
-import { sourceHash, hash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   revisedBodyArtistDelta,
   preRevisedBodyArtistSource,
@@ -10,10 +14,10 @@ import {
   revisedBodyArtistAffected,
 } from '../games/magic/tools/accuracy/revised-body-artist-ancestry.mjs';
 const p = await revisedBodyArtistDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await revisedRequestHistoricalHash(), p.afterRenderer);
 assert.equal(await revisedBodyArtistHistoricalHash(), p.beforeRenderer);
 for (const [f, e] of Object.entries(p.files)) {
-  const bytes = await readFile(f);
+  const bytes = await preRevisedRequestSource(f, await readFile(f));
   assert.equal(hash(bytes), e.after);
   assert.equal(hash(await preRevisedBodyArtistSource(f, bytes)), e.before);
   const unknown = Buffer.concat([bytes, Buffer.from('\n// unknown change\n')]);

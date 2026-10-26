@@ -115,7 +115,9 @@ export function retroTextLayout(context: CanvasContext, face: RenderedCardInput)
   // Keep the measured short-text face. Regular/dense letters and their panel
   // widen together; inline mana discs keep their existing physical size.
   const textWidth = result.size >= 26 ? 1 : result.size >= 22.5 ? 1.01 : 1.02;
-  return fractionalEarlyRules(context, result, 1, { textWidth, right: 424 });
+  return withRulesLayoutRequests(context, () =>
+    fractionalEarlyRules(context, result, 1, { textWidth, right: 424 }),
+  );
 }
 function baseRetroTextLayout(context: CanvasContext, face: RenderedCardInput) {
   if (retroBasicSymbol(face)) return null;
