@@ -71,8 +71,30 @@ for (const e of inputs.entries) {
   assert.deepEqual(row.beforeScore, baselineScores.rows.find((r) => r.id === e.id).score);
   assert.equal(row.delta100, 100 * (row.score.structuralScore - row.beforeScore.structuralScore));
 }
+const costs = artifacts['body-cost-corrections.json.gz'];
+assert.equal(costs.inputHash, hash(inputBytes));
+assert.equal(costs.candidates.length, 9);
+assert.equal(Object.keys(costs.cards).length, 7);
+for (const [id, a] of Object.entries(costs.cards)) {
+  assert(!corrections.cards[id], 'Duplicate earlier correction');
+  const e = inputs.entries.find((e) => e.id === id);
+  assert(e);
+  assert.equal(a.referenceHash, e.reference.sha256);
+  assert.equal(a.reviewed, true);
+  assert.deepEqual(a.before, {
+    rulesText: e.face.rulesText,
+    rulesParagraphs: e.face.rulesParagraphs,
+  });
+  const prefix = /^((?:\{[0-9WUBRGT]+\})+): /;
+  assert(prefix.test(a.rulesText));
+  assert.equal(a.rulesText.replace(prefix, '$1 '), e.face.rulesText);
+  const ps = structuredClone(a.rulesParagraphs);
+  ps[0].runs[0].text = ps[0].runs[0].text.replace(prefix, '$1 ');
+  assert.deepEqual(ps, e.face.rulesParagraphs, 'Only the printed cost colon may change');
+}
+assert.match(costs.status, /runtime-promotion-pending/);
 assert.match(review.status, /not-set-certification/);
 assert.match(corrections.status, /runtime-promotion-pending/);
 console.log(
-  'Revised preflight:306 frozen originals/poses,304 exact current-source controls, two scan-backed text/style corrections and isolated native replays; no set certification.',
+  'Revised preflight:306 frozen originals/poses,304 exact current-source controls, two isolated native text/style replays plus seven additional scan-read cost colons; no set certification.',
 );

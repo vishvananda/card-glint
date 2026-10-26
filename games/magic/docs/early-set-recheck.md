@@ -132,6 +132,12 @@ need runtime promotion, and the remaining body content needs review before
 shared typography fitting. Do not compensate for text differences with margins
 or font sizes.
 
+The remaining paragraph-start mana costs were also checked directly in their
+scans. Seven more need a colon: Deathgrip, Pestilence, Wall of Bone, Goblin
+Balloon Brigade, Sedge Troll, Uthden Troll and Regeneration. These are exact
+printing corrections queued for promotion. No automatic colon-insertion rule
+is added to the renderer.
+
 The frame-band diagnostic also suggests a shared internal horizontal residual
 in the artifact frames, while their outer stock is close. This is a measurement
 lead, not an approved frame adjustment.
