@@ -219,6 +219,10 @@ export function paintFittedText(
   if (!(width > 0)) throw Error('Magic title/type plate has no text space.');
   text = shapeModernHeading(text, family);
   context.save();
+  // The pinned Matrix font has a positive hhea/OS2 descender. Engines disagree
+  // on its middle baseline (Linux Chromium treats it as alphabetic; macOS adds
+  // 0.2875 em). The fitted 2003-frame anchors use the alphabetic baseline.
+  if (family === 'CardRenderer MTG Matrix') context.textBaseline = 'alphabetic';
   context.font = `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`;
   const measured = context.measureText(text).width;
   // A long type already uses the available width. Expanding it would force a

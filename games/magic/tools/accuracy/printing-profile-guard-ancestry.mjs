@@ -1,3 +1,4 @@
+import { preMatrixHeadingSource } from './matrix-heading-ancestry.mjs';
 // PR #11 only changes validation of an explicit, previously rejected profile.
 // Project these exact reviewed bytes for historical audits; never relax a painter guard.
 import assert from 'node:assert/strict';
@@ -31,6 +32,7 @@ export async function printingProfileGuardDelta() {
   })());
 }
 export async function prePrintingProfileGuardSource(file, bytes) {
+  bytes = await preMatrixHeadingSource(file, bytes);
   const p = await printingProfileGuardDelta(),
     entry = p.files[file];
   if (!entry) return bytes;

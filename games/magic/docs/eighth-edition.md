@@ -14,6 +14,21 @@ stats and large basic-land symbols. Matrix fonts load only when needed.
 Derived masks and materials use the existing bounded cache. Animation performs
 no decoding, font loading or pixel readback.
 
+## Heading baselines
+
+From 0.7.3, Matrix names and type lines use explicit alphabetic baselines.
+The source font has a positive descender in its hhea and OS/2 typo metrics.
+Linux and macOS interpret its middle baseline differently, so a middle anchor
+can place the same letters about 7–9 canonical pixels apart. The calibrated
+positions are alphabetic anchors; changing their values would break the Linux fit.
+
+The [portability evidence](../fixtures/accuracy/8ed/heading-baseline/source-parity.json.gz)
+records four platform/engine metric probes, macOS Original/Oracle comparisons,
+and 714 byte-identical Linux native layers. This fix applies wherever the Matrix
+heading painter is used, including inherited Eighth defaults. Other fonts keep
+their existing baseline policy. It does not recalibrate any set or certify old
+client scores whose native images differ.
+
 ## Audit results
 
 The [full audit](../fixtures/accuracy/8ed/full-audit.json) covers all 357 ordinary

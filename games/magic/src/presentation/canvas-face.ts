@@ -188,6 +188,13 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     input.rulesText !== false
       ? earlyTextFlowRevision(face)
       : undefined;
+  const matrixHeadings =
+    !input.printedImage &&
+    input.layer !== 'etching' &&
+    input.paintLayer !== 'artwork' &&
+    (face.frameAssetFamily === 'eighth' ||
+      face.frameTemplate === 'future' ||
+      nativeSplitEra(face) === 'eighth');
   const content = faceContentKey(face, input.layer === 'etching');
   const stats =
     input.currentStats?.power != null && input.currentStats.toughness != null
@@ -197,6 +204,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
     'canvas-face-v148',
+    ...(matrixHeadings ? ['matrix-heading-alphabetic-v1'] : []),
     ...(dualFrameRevision ? [dualFrameRevision] : []),
     ...(flowRevision ? [flowRevision] : []),
     ...(input.layer !== 'etching' &&

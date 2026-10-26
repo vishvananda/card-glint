@@ -1,3 +1,4 @@
+import { preMatrixHeadingSource } from '../games/magic/tools/accuracy/matrix-heading-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
@@ -10,7 +11,7 @@ import {
 const p = await printingProfileGuardDelta();
 for (const [file, entry] of Object.entries(p.files)) {
   const current = await readFile(file);
-  assert.equal(hash(current), entry.after);
+  assert.equal(hash(await preMatrixHeadingSource(file, current)), entry.after);
   assert.equal(hash(await prePrintingProfileGuardSource(file, current)), entry.before);
   assert.deepEqual(
     await prePrintingProfileGuardSource(file, Buffer.from(entry.beforeSource)),
@@ -39,7 +40,7 @@ assert.equal(
 );
 const manifestFile = 'games/magic/src/data/generated-manifest.json';
 const before = JSON.parse(p.files[manifestFile].beforeSource);
-const after = JSON.parse(await readFile(manifestFile));
+const after = JSON.parse(await preMatrixHeadingSource(manifestFile, await readFile(manifestFile)));
 assert.deepEqual(after.files, before.files, 'Every generated runtime payload is unchanged');
 assert.deepEqual(Object.keys(after.sources), Object.keys(before.sources));
 for (const [file, digest] of Object.entries(after.sources)) {
