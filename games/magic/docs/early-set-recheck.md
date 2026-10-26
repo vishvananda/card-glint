@@ -138,6 +138,12 @@ Balloon Brigade, Sedge Troll, Uthden Troll and Regeneration. These are exact
 printing corrections queued for promotion. No automatic colon-insertion rule
 is added to the renderer.
 
+The broader word-and-paragraph audit has checked the first 10 cards
+alphabetically. They match the source after the recorded Aladdin's Ring
+correction. The [pre-fit review](../fixtures/accuracy/3ed-recheck/pre-fit-review.json)
+records the denominator and next index; the other bodies remain unverified by
+this pass.
+
 The frame-band diagnostic also suggests a shared internal horizontal residual
 in the artifact frames, while their outer stock is close. This is a measurement
 lead, not an approved frame adjustment.

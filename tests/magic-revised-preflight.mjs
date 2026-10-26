@@ -93,6 +93,34 @@ for (const [id, a] of Object.entries(costs.cards)) {
   assert.deepEqual(ps, e.face.rulesParagraphs, 'Only the printed cost colon may change');
 }
 assert.match(costs.status, /runtime-promotion-pending/);
+const content = artifacts['body-content-review.json.gz'];
+assert.equal(content.inputHash, hash(inputBytes));
+assert.equal(content.denominator, 306);
+assert.equal(content.checked, content.rows.length);
+assert(content.checked > 0 && content.checked < content.denominator);
+const alphabetical = inputs.entries.toSorted(
+  (a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id),
+);
+assert.deepEqual(
+  content.rows.map((r) => r.id),
+  alphabetical.slice(0, content.checked).map((r) => r.id),
+);
+for (const r of content.rows) {
+  const e = inputs.entries.find((e) => e.id === r.id),
+    a = corrections.cards[r.id];
+  assert.equal(r.referenceHash, e.reference.sha256);
+  assert.equal(r.inputHash, hash(JSON.stringify(e.face)));
+  assert.equal(r.reviewedRulesTextHash, hash(a?.rulesText ?? e.face.rulesText));
+  assert.equal(
+    r.reviewedParagraphsHash,
+    hash(JSON.stringify(a?.rulesParagraphs ?? e.face.rulesParagraphs)),
+  );
+  assert.equal(
+    r.decision,
+    a ? 'matches-with-recorded-correction' : 'matches-current-original-source',
+  );
+}
+assert.match(content.status, /not-set-certification/);
 assert.match(review.status, /not-set-certification/);
 assert.match(corrections.status, /runtime-promotion-pending/);
 console.log(
