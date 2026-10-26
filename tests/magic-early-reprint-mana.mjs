@@ -126,12 +126,14 @@ try {
         typeLine: 'Creature',
         colorCalibration: 'set-hsb-v1',
       }),
-      // Unlimited and ARN have measured historical ink profiles.
+      // Unlimited, ARN and ATQ have measured historical ink profiles.
       setCode === '2ed'
         ? [47 / 255, 46 / 255, 40 / 255]
         : setCode === 'arn'
           ? [14 / 255, 16 / 255, 10 / 255]
-          : undefined,
+          : setCode === 'atq'
+            ? [23 / 255, 24 / 255, 18 / 255]
+            : undefined,
     );
   const tone = {
     paper: [200 / 255, 180 / 255, 160 / 255],

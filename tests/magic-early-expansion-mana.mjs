@@ -60,6 +60,8 @@ try {
   const { calibratedManaTarget } = await server.ssrLoadModule(
     '/games/magic/src/presentation/printing-calibration-materials.ts',
   );
+  const { PRINTING_MANA_PROFILES } = await server.ssrLoadModule('/games/magic/src/data/tables.ts');
+  const { profile: atq } = await server.ssrLoadModule('/games/magic/src/calibration/sets/atq.ts');
   for (const setCode of ['arn', 'atq', 'drk']) {
     const face = {
       name: 'Scope probe',
@@ -71,7 +73,8 @@ try {
       colorCalibration: 'set-hsb-v1',
     };
     const p = printingManaDefaults(face);
-    assert.deepEqual(p, proof.profiles[setCode]);
+    assert.deepEqual(PRINTING_MANA_PROFILES[setCode], proof.profiles[setCode]);
+    assert.deepEqual(p, setCode === 'atq' ? atq.mana.geometry : proof.profiles[setCode]);
     assert.deepEqual(
       printingManaDefaults({ ...face, setCode: setCode.toUpperCase(), wordingMode: 'oracle' }),
       p,
@@ -86,9 +89,9 @@ try {
       { symbolStyle: undefined, wordingMode: 'oracle' },
     ]) {
       const alternate = { ...face, ...override };
-      if (setCode === 'arn' && override.legendary) {
+      if (['arn', 'atq'].includes(setCode) && override.legendary) {
         // The consolidated ordinary frame remains selected by an added host
-        // semantic flag; the flag does not invent a separate ARN gold frame.
+        // semantic flag; the flag does not invent a separate gold frame.
         assert.deepEqual(printingManaDefaults(alternate), p);
         assert.deepEqual(calibratedManaTarget(alternate, 'U'), calibratedManaTarget(face, 'U'));
         continue;

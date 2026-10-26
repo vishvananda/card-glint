@@ -40,6 +40,7 @@ try {
     '/games/magic/src/presentation/calibration-profiles.ts',
   );
   const { profile: arn } = await server.ssrLoadModule('/games/magic/src/calibration/sets/arn.ts');
+  const { profile: atq } = await server.ssrLoadModule('/games/magic/src/calibration/sets/atq.ts');
   assert.equal(Object.keys(EARLY_EXPANSION_COLORS).length, 22);
   let adopted = 0;
   for (const [key, profile] of Object.entries(EARLY_EXPANSION_COLORS)) {
@@ -65,7 +66,9 @@ try {
       calibratedFrameMaterials(face),
       setCode === 'arn' && ['W', 'G'].includes(material)
         ? { [frame.asset]: arn.colors[material].adjustment }
-        : result.materials,
+        : setCode === 'atq' && material === 'U'
+          ? { [frame.asset]: atq.colors.U.adjustment }
+          : result.materials,
     );
 
     assert.equal(calibratedPrintingStock(face), result.stock);
