@@ -1,4 +1,9 @@
 import {
+  atqProfileRuntimeCompatible,
+  atqProfileAffected,
+  atqProfileDelta,
+} from './atq-profile-ancestry.mjs';
+import {
   arnProfileRuntimeCompatible,
   arnProfileAffected,
   arnProfileDelta,
@@ -97,6 +102,16 @@ export async function calibrationReport(ledger) {
       ]);
       for (const { task, item, original } of dependencies) {
         const currentAbu = await abuCurrentApproval(item, group, task, original, set.set);
+        if (
+          atqProfileAffected(set.set, task, original) &&
+          item.proof?.rendererHash !== (await atqProfileDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'The consolidated Antiquities profile changes these rendered components. Original inputs and frame-only scan poses remain reusable; earlier fits need a current native review.';
+          continue;
+        }
+
         if (
           arnProfileAffected(set.set, task, original, group) &&
           item.proof?.rendererHash !== (await arnProfileDelta()).afterRenderer
@@ -227,15 +242,18 @@ export async function calibrationReport(ledger) {
           if (
             directory === 'games/magic/src' &&
             set.set === 'arn' &&
-            runtimeChecked.get(directory) !== expected
+            runtimeChecked.get(directory) !== expected &&
+            !(await atqProfileRuntimeCompatible(directory, expected, set.set))
           ) {
             runtimeCurrent = false;
             break;
           }
           if (
             runtimeChecked.get(directory) !== expected &&
+            !(await atqProfileRuntimeCompatible(directory, expected, set.set)) &&
             !(await arnProfileRuntimeCompatible(directory, expected, set.set)) &&
             (set.set === 'arn' ||
+              atqProfileAffected(set.set, task, original) ||
               !(await printingProfileGuardRuntimeCompatible(directory, expected))) &&
             !(await abuFlowRuntimeCompatible(
               directory,

@@ -1,5 +1,8 @@
 # Completing a set calibration
 
+See the [early-set recheck](early-set-recheck.md) for the current through-Fourth
+pass, accepted profile changes and remaining review gates.
+
 M21 profile 16 ships in 0.6.12. Its
 [publication receipt](../fixtures/accuracy/m21/release-0612-publication.json)
 ties the checked archives to the 297-printing native score census. All 85 variants

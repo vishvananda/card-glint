@@ -1,3 +1,7 @@
+import {
+  preAtqProfileSource,
+  atqProfileHistoricalHash,
+} from '../games/magic/tools/accuracy/atq-profile-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -10,9 +14,9 @@ import {
   arnProfileAffected,
 } from '../games/magic/tools/accuracy/arn-profile-ancestry.mjs';
 const p = await arnProfileDelta();
-assert.equal(await sourceHash(root + '/games/magic/src'), p.afterRenderer);
+assert.equal(await atqProfileHistoricalHash(), p.afterRenderer);
 for (const [file, e] of Object.entries(p.files)) {
-  const bytes = await readFile(file);
+  const bytes = await preAtqProfileSource(file, await readFile(file));
   assert.equal(hash(bytes), e.after, file);
   const projected = await preArnProfileSource(file, bytes);
   assert.equal(hash(projected), e.before ?? e.after, file);

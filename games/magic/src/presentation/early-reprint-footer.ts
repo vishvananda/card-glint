@@ -70,7 +70,8 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
       if (role === 'stats' && profile.stats.inkStyle === 'separate-shadow')
         paintEarlyExpansionStatsInk(
           c,
-          text,
+          // Preserve the expansion painter's visible MPlantin minus glyph.
+          text.replaceAll('-', '–'),
           max,
           { ...p, shadowTrim: profile.stats.shadowTrim ?? 0 },
           face.textInk,

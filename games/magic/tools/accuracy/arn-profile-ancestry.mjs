@@ -1,3 +1,8 @@
+import {
+  preAtqProfileSource,
+  atqHistoricalSourceFiles,
+  atqProfileRuntimeCompatible,
+} from './atq-profile-ancestry.mjs';
 // Exact source history for the ARN-only profile. Historical identity is not fit approval.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -23,6 +28,7 @@ export function arnProfileDelta() {
   })());
 }
 export async function preArnProfileSource(file, bytes) {
+  bytes = await preAtqProfileSource(file, bytes);
   const p = await arnProfileDelta(),
     e = p.files[file];
   if (!e || e.beforeSource === null || hash(bytes) !== e.after) return bytes;
@@ -32,7 +38,7 @@ export async function preArnProfileSource(file, bytes) {
 export async function arnHistoricalSourceFiles(files) {
   const p = await arnProfileDelta(),
     kept = [];
-  for (const file of files) {
+  for (const file of await atqHistoricalSourceFiles(files)) {
     const key = file.startsWith('games/') ? file : path.relative(root, file);
     const e = p.files[key];
     if (e?.beforeSource === null && hash(await readFile(path.join(root, key))) === e.after)
@@ -47,7 +53,11 @@ export async function arnProfileRuntimeCompatible(directory, expected, set) {
   const p = await arnProfileDelta();
   if (expected !== p.beforeRenderer) return false;
   tree ??= (async () => {
-    if ((await sourceHash(path.join(root, directory))) !== p.afterRenderer) return false;
+    if (
+      (await sourceHash(path.join(root, directory))) !== p.afterRenderer &&
+      !(await atqProfileRuntimeCompatible(directory, p.afterRenderer, set))
+    )
+      return false;
     const c = JSON.parse(gunzipSync(await readFile(path.join(root, p.controls.file))));
     assert.equal(hash(JSON.stringify(c)), p.controls.contentHash);
     assert.equal(c.status, 'complete');
