@@ -203,3 +203,114 @@ and complete outlier/component review remain open for Revised.
 The final cache-scope closure also has 1,224 byte-identical native variants and
 306 exact score reuses in footer-final-score-reuse.json.gz. It changes no
 published metric or face pixels.
+
+## Mana perimeter and glyph review
+
+The current cost study uses 223 independently checked nonland frame poses.
+The other 58 nonland scans stay excluded from fitting. There are 413 cost
+symbols on the accepted cards; 360 pass the additional perimeter checks.
+Low-contrast circles and detector results that contradict the known native
+circle construction remain explicit exclusions.
+
+The detector can measure either contrast direction. The scan must use the
+same physical edge polarity as the validated native circle. Choosing the
+strongest edge of either sign can select the glyph inside the circle instead.
+All 826 original positive-polarity results remain exactly unchanged by the
+optional detector extension. Synthetic subpixel, inverted-contrast, flat and
+search-boundary controls run in tests/magic-mana-ring.mjs.
+
+The rightmost-disc median radius difference is zero. Across accepted discs,
+the median scan-minus-render radius difference is -0.125px, horizontal offset
+is +0.375px, and vertical offset is zero. Adjacent pitch differs by -0.25px
+in both fitting cohorts. Color/material differences and low-contrast exclusions
+remain visible; these measurements do not yet select new shared cost geometry.
+
+The glyph audit preserves each glyph's size relative to its measured circle;
+it does not normalize ink bounds. Three relative ink thresholds reduce pigment
+and saturation sensitivity. Filled overlap contributes 70% and edge agreement
+30% to this regional objective. It is not a whole-card score.
+
+The binary-mask search proposes these relative glyph changes:
+
+| Glyph | Scale | Horizontal offset | Current /100 | Proposed mask /100 |
+| ----- | ----: | ----------------: | -----------: | -----------------: |
+| White |  1.04 |            -0.5px |        84.48 |              87.72 |
+| Blue  |  1.06 |                 0 |        86.73 |              87.68 |
+| Black |  1.04 |                 0 |        82.30 |              83.63 |
+| Red   |  1.06 |                 0 |        69.70 |              77.15 |
+| Green |  1.14 |            -0.5px |        69.42 |              89.53 |
+
+All proposed vertical offsets are zero. Calibration rows select the transforms;
+the separately reported validation names are reused development data. Every
+red and green sample improves in this approximate mask search. Smaller gains
+for other colors include individual regressions. These are proposals, not
+runtime defaults. Full native rendering, disc/background isolation and actual
+regional scores must confirm them before adoption.
+
+Numerals are audited separately and are not changed by this colored-glyph
+proposal. In particular, 2 and 4 need further shape/font review. Eroded-disc RGB
+samples are diagnostics only: print dots and weak contrast can bias them, so
+they are not adopted as new paper colors.
+
+The compressed evidence contains metadata, scores and hashes, not artwork:
+
+- mana-ring-positive-control: original one-polarity results.
+- mana-ring-checked: both polarities, known native controls and explicit exclusions.
+- mana-glyph-audit: shape, threshold stability and separate paper-color probes.
+- mana-glyph-fit: shared per-color proposal search and individual regressions.
+
+To repeat with cached art and a matching production native capture:
+
+```sh
+gzip -dc games/magic/fixtures/accuracy/3ed-recheck/corrected-original-inputs.json.gz > inputs.json
+gzip -dc games/magic/fixtures/accuracy/3ed-recheck/vertical-interior-normalization.json.gz > poses.json
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/printing-native-replay.mjs \
+  inputs.json new-native original input
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-mana-ring-study.mjs \
+  inputs.json poses.json new-native rings.json
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-mana-glyph-audit.mjs \
+  inputs.json poses.json new-native rings.json glyphs.json
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-mana-glyph-fit.mjs \
+  inputs.json poses.json new-native rings.json glyphs.json proposals.json
+node tests/magic-mana-ring.mjs
+node tests/magic-revised-mana-study.mjs
+```
+
+These measurements run on the CPU from cached images; the capture step uses
+one browser. No per-card scan transforms are added to the renderer. No complete
+mana, color, frame or set certification follows from this regional study.
+
+### Native proposal check
+
+The full production replay confirms improvements for blue, black, red and
+green, but rejects the white mask proposal:
+
+| Glyph | Current /100 | Actual native proposal /100 | Result                                               |
+| ----- | -----------: | --------------------------: | ---------------------------------------------------- |
+| White |        84.48 |                       82.98 | Reject this proposal                                 |
+| Blue  |        86.73 |                       87.73 | Improves both cohorts; individual regressions remain |
+| Black |        82.30 |                       86.74 | All 54 measured glyphs improve                       |
+| Red   |        69.70 |                       78.67 | 55 improve; one loses 0.81                           |
+| Green |        69.42 |                       91.55 | All 37 measured glyphs improve                       |
+
+White regresses in both cohorts despite improving in the binary-mask search.
+Keep its existing runtime values. This is an explicit negative control for
+using an approximate resize objective without checking actual rasterization.
+
+The replay uses the public relative glyph controls on 223 complete native
+faces. All changed RGB pixels stay inside the cost area; alpha, nearby text
+and artwork are unchanged. All 33 artifact controls remain byte-identical.
+The 116 measured generic numerals have identical masks and scores. The actual
+source-scan objectives also reproduce every baseline mask and score exactly.
+
+The prototype inputs, native capture metadata and review are stored in
+mana-glyph-prototype-inputs, mana-glyph-prototype-native and
+mana-glyph-native-review. Only hashes and metadata are committed. The
+revised-mana-native-review.mjs tool takes the original inputs, poses, two
+native directories, rings, glyph audit, proposal definition, candidate inputs
+and a new output path. It rejects candidate recipes changed beyond the proposed
+glyph controls.
+
+The nonwhite proposals remain unadopted pending the complete mana review,
+including physical cost placement, pigment, numerals and outliers. These glyph
+scores do not replace full-card or full-set scores.

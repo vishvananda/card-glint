@@ -2,8 +2,11 @@
 // or the mean of its interior. Keep this separate from whole-region scoring.
 export function outerManaCircle(
   image,
-  { x = 185, y = 32, range = 3, radiusRange = [10.5, 13.5] } = {},
+  { x = 185, y = 32, range = 3, radiusRange = [10.5, 13.5], polarity = 'light-on-dark' } = {},
 ) {
+  if (!['light-on-dark', 'dark-on-light'].includes(polarity))
+    throw Error('Unknown mana perimeter polarity');
+  const sign = polarity === 'dark-on-light' ? -1 : 1;
   const gray = Float32Array.from({ length: image.width * image.height }, (_, i) => {
     const p = i * 4;
     return 0.2126 * image.data[p] + 0.7152 * image.data[p + 1] + 0.0722 * image.data[p + 2];
@@ -28,8 +31,9 @@ export function outerManaCircle(
     for (let i = 0; i < rays.length; i++) {
       const [dx, dy] = rays[i];
       sectors[Math.floor(i / 8)] +=
-        (sample(cx + dx * (r - 0.55), cy + dy * (r - 0.55)) -
-          sample(cx + dx * (r + 0.55), cy + dy * (r + 0.55))) /
+        (sign *
+          (sample(cx + dx * (r - 0.55), cy + dy * (r - 0.55)) -
+            sample(cx + dx * (r + 0.55), cy + dy * (r + 0.55)))) /
         8;
     }
     sectors.sort((a, b) => a - b);
