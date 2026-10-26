@@ -1,8 +1,9 @@
+import { matrixHeadingDelta, preMatrixHeadingSource } from './matrix-heading-ancestry.mjs';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile, readdir } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
-import { root, hash, sourceHash } from './common.mjs';
+import { root, hash } from './common.mjs';
 
 export const REVISED_WORDING_RECEIPT =
   '8bb343b6990670eb72b0b42014c5e713db5e42441958d9781b02d9c0ac2fdf01';
@@ -119,14 +120,30 @@ export async function revisedWordingDelta() {
     return p;
   })());
 }
-/** Exact data history. Unknown bytes remain visible to historical hash guards. */
-export async function preRevisedWordingSource(file, bytes) {
-  const e = (await revisedWordingDelta()).files[file];
-  return e && e.beforeSource !== null && hash(bytes) === e.after
-    ? Buffer.from(e.beforeSource)
-    : bytes;
+/** Compose two immutable reviews: Revised data plus the independent Matrix fix.
+ * Compare the entire generated manifest before reversing its two source digests;
+ * unrelated payloads, source edits and formatting retain their actual identity. */
+export async function preRevisedMatrixSource(file, bytes) {
+  if (file === 'games/magic/src/data/generated-manifest.json') {
+    const wording = await revisedWordingDelta(),
+      matrix = await matrixHeadingDelta(),
+      before = wording.files[file].afterSource;
+    let combined = before;
+    for (const name of [
+      'games/magic/src/presentation/canvas-face.ts',
+      'games/magic/src/presentation/canvas-text.ts',
+    ]) {
+      const change = matrix.files[name],
+        oldEntry = JSON.stringify(name) + ': ' + JSON.stringify(change.before),
+        newEntry = JSON.stringify(name) + ': ' + JSON.stringify(change.after);
+      assert.equal(combined.split(oldEntry).length, 2, 'Reviewed Matrix source must occur once');
+      combined = combined.replace(oldEntry, newEntry);
+    }
+    if (hash(bytes) === hash(combined)) return Buffer.from(before);
+  }
+  return preMatrixHeadingSource(file, bytes);
 }
-export async function revisedWordingHistoricalHash(directory = path.join(root, 'games/magic/src')) {
+async function projectedWordingHash(directory, project) {
   const files = (await readdir(directory, { recursive: true, withFileTypes: true }))
     .filter((e) => e.isFile() && /\.(?:ts|mjs|css|json)$/.test(e.name))
     .map((e) => path.join(e.parentPath, e.name))
@@ -136,18 +153,33 @@ export async function revisedWordingHistoricalHash(directory = path.join(root, '
       await Promise.all(
         files.map(async (f) => [
           path.relative(directory, f),
-          hash(await preRevisedWordingSource(path.relative(root, f), await readFile(f))),
+          hash(await project(path.relative(root, f), await readFile(f))),
         ]),
       ),
     ),
   );
+}
+/** Retains the exact merged branch identity while removing only the Matrix fix. */
+export function revisedWordingMatrixHistoricalHash(directory = path.join(root, 'games/magic/src')) {
+  return projectedWordingHash(directory, preRevisedMatrixSource);
+}
+/** Exact data history. Unknown bytes remain visible to historical hash guards. */
+export async function preRevisedWordingSource(file, bytes) {
+  bytes = await preRevisedMatrixSource(file, bytes);
+  const e = (await revisedWordingDelta()).files[file];
+  return e && e.beforeSource !== null && hash(bytes) === e.after
+    ? Buffer.from(e.beforeSource)
+    : bytes;
+}
+export function revisedWordingHistoricalHash(directory = path.join(root, 'games/magic/src')) {
+  return projectedWordingHash(directory, preRevisedWordingSource);
 }
 /** New data never carries an old Revised fit forward. */
 export async function revisedWordingRuntimeCompatible(directory, expected, set) {
   if (directory !== 'games/magic/src' || !set || set.toLowerCase() === '3ed') return false;
   const p = await revisedWordingDelta();
   if (expected !== p.beforeRenderer) return false;
-  currentTree ??= sourceHash(path.join(root, directory));
+  currentTree ??= revisedWordingMatrixHistoricalHash(path.join(root, directory));
   if ((await currentTree) !== p.afterRenderer) return false;
   historical ??= revisedWordingHistoricalHash(path.join(root, directory));
   return (await historical) === p.beforeRenderer;

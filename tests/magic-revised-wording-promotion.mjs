@@ -6,6 +6,8 @@ import { extendReviewSourceIndex } from '../games/magic/tools/review-source-inde
 import {
   revisedWordingDelta,
   preRevisedWordingSource,
+  preRevisedMatrixSource,
+  revisedWordingMatrixHistoricalHash,
   revisedWordingHistoricalHash,
   revisedWordingRuntimeCompatible,
   revisedWordingAffected,
@@ -25,11 +27,11 @@ assert.throws(() => extendReviewSourceIndex(original, [prefix + '../outside.json
 assert.throws(() => extendReviewSourceIndex(original, ['other-pack/source.json']));
 
 const p = await revisedWordingDelta();
-assert.equal(await sourceHash(root + '/games/magic/src'), p.afterRenderer);
+assert.equal(await revisedWordingMatrixHistoricalHash(), p.afterRenderer);
 assert.equal(await revisedWordingHistoricalHash(), p.beforeRenderer);
 for (const [file, e] of Object.entries(p.files)) {
   const bytes = await readFile(file);
-  assert.equal(hash(bytes), e.after, file);
+  assert.equal(hash(await preRevisedMatrixSource(file, bytes)), e.after, file);
   const prior = await preRevisedWordingSource(file, bytes);
   assert.equal(hash(prior), e.beforeSource === null ? e.after : e.before, file);
   const foreign = Buffer.concat([bytes, Buffer.from('\n// unknown edit\n')]);
