@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "set": "3ed",
+  "status": "artifact-alignment-investigation-no-adoption",
+  "rendererHash": "e6d9d4fcc1f489130ace2dcfcf513b1901dc20c9f19e1a3029d2560e9ba0f6e4",
+  "scope": "51 artifacts, Original semantics and frozen outer-stock scan poses. Geometry prototype is unadopted. All four diagnostics are development evidence, not independent validation or physical-border certification.",
+  "artifacts": {
+    "artifact-geometry-native.json.gz": {
+      "sha256": "397295df21ff139c480b82df341e60e9c5326dc2708b7f14f454b358fe89a01e",
+      "contentSha256": "b5d2f3f3c2b18061c5a8472110b4e06eb8b28d1c0108a5809d5d7dc33fd9d10f"
+    },
+    "artifact-geometry-scores.json.gz": {
+      "sha256": "229b42cf1d060d481bf6bb2b2068250f58e038237bfb2a855729a47fa9fa81ac",
+      "contentSha256": "d2ec984328f3dcc2bc76608b8c95cb7d0ff421f80c39242a0207e753ed4d3122"
+    },
+    "artifact-type-coherence.json.gz": {
+      "sha256": "26e840ac5297adbe3145912286f4bf1f8764eb42474cb05b79b3c6175ef2b021",
+      "contentSha256": "249861e9bb3bd152c151ef7d255e158b234207165704a8d9d39e585f81a3fcd1"
+    },
+    "artifact-texture-coherence.json.gz": {
+      "sha256": "f77cf50a1bc6214bced0b8c45122cb1ea960ee62353dcd889d99b94707225272",
+      "contentSha256": "9b6feee27f2e71aa35b301ddb3c7424965c1d28a28e5fe12675b7596dabef446"
+    },
+    "artifact-origin-groups.json.gz": {
+      "sha256": "10c672af3528a39a23dd965e733918884209ccfabbf6e634edd694f0c062e415",
+      "contentSha256": "8b792a0b38e70967b99ffde04b8f120ac9e3738f16c87413b02940bf1f1da93f"
+    }
+  },
+  "conclusion": "Art and paper boundaries, printed type, and ink-free frame texture share horizontal displacement relative to the outer stock. Neither design origin nor rarity separates all gains/losses. Cutting/centering, scan processing and print-run variation remain possible causes. Do not adopt a shared renderer shift or align to text.",
+  "next": "Compare a frame-only interior pose using independent strips while retaining the existing outer-stock pose for physical borders and corners. Choose shared renderer geometry only after nuisance alignment; preserve both poses and evidence.",
+  "uncutSheetControl": {
+    "status": "candidate-found-image-resolution-unverified",
+    "source": "Heritage Auctions, lot 36036, auction 7386",
+    "url": "https://comics.ha.com/itm/memorabilia/trading-cards/magic-the-gathering-revised-edition-uncut-sheets-group-of-3-wizards-of-the-coast-1994-/a/7386-36036.s",
+    "description": "Auction documents three 11-by-11 Revised sheets; no external sheet image copied into repository.",
+    "protocol": [
+      "Prefer a flatbed scan or front-on photograph with roughly 8000 to 10000 pixels across an 11-card sheet; verify actual per-card pixel density, focus and compression.",
+      "Rectify the sheet with sheet/grid registration landmarks, controlling perspective and lens distortion. Do not independently warp cells to their text or art.",
+      "Measure art, paper, type and blank frame texture relative to the sheet grid. Compare the same cards and any duplicate sheet positions against individual Scryfall scans.",
+      "A sheet controls separate scan crops and cutting variation for that sheet; multiple sheets or runs are needed to distinguish persistent card-specific layout from run variation."
+    ]
+  },
+  "diagnosticTools": {
+    "3ed-artifact-geometry-native.mjs": "560bf75122e503b30ef5323314798b35efab3a81dedfede06e9bba4567448ade",
+    "score-3ed-artifact-geometry.mjs": "38eba768f7bf754466ce2240f8533c1baaddbb2a3fca5454e16b6228c2b80a42",
+    "3ed-artifact-scan-coherence.mjs": "92fb9c2a7422025b665df87316762c0cf17a239c4cf1699116b7db31da55c04c",
+    "3ed-artifact-texture-coherence.mjs": "68c2766c289a93bdf2684e2b3cc5943de9f9fefb6637b7af316660f7afd70f81"
+  },
+  "rarityGroups": {
+    "uncommon": {
+      "cards": 20,
+      "improved": 11,
+      "regressed": 9,
+      "meanDelta100": 2.7526833634146035
+    },
+    "rare": {
+      "cards": 31,
+      "improved": 25,
+      "regressed": 6,
+      "meanDelta100": 4.513981575012304
+    }
+  },
+  "textureMethod": {
+    "rect": [24, 106, 26, 228],
+    "feature": "Twice-blurred signed luminance derivatives; normalized dot correlation on interior margin 7; bilinear shifts in canonical pixels.",
+    "dx": [-5, 5, 0.25],
+    "dy": [-3, 3, 0.5],
+    "targetSelection": "One calibration scan nearest the scan-only median type position, Conservator; this target choice makes the result a diagnostic, not independent alignment certification.",
+    "limitations": "Source grain, local texture and one target may bias results. Type-line pixels diagnose co-motion only and must not define production normalization."
+  }
+}

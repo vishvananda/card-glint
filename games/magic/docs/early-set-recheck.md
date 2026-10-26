@@ -152,6 +152,30 @@ records the reviewed prefix, evidence and next index. Soft wrapping, printed
 line-end hyphenation, font size and generic-mana glyph style are separate
 typography questions. These source corrections still await runtime promotion.
 
-The frame-band diagnostic also suggests a shared internal horizontal residual
-in the artifact frames, while their outer stock is close. This is a measurement
-lead, not an approved frame adjustment.
+The artifact geometry trial is still unadopted. Translating the shared frame
+1.25 px left raises its mean from 66.60 to 70.42/100, but 15 of 51 artifacts
+regress and the worst loss is 9.27 points. Neither rarity nor the card's earliest
+appearance in Alpha, Arabian Nights or Antiquities cleanly separates the losses.
+
+A scan-only check shows that printed type moves with the art and paper boxes.
+An independent, ink-free frame-texture region also tracks that displacement
+(correlation magnitude 0.98). This indicates printed-frame displacement relative
+to the outer white border, rather than separate errors in every internal
+element. It does not establish whether the cause is cutting, card centering,
+scan processing or print-run variation. The texture target was selected using
+the scan-only type position, so this is diagnostic evidence, not independent
+alignment certification.
+
+Next, test frame-only interior normalization with independent verification
+strips. Keep the physical outer-stock pose for border and corner assessment.
+Do not use title or body text to choose the pose, and do not hide stock errors
+by treating an interior structural score as whole-card certification.
+
+A high-resolution uncut Revised sheet would provide a useful control. This
+[Heritage lot](https://comics.ha.com/itm/memorabilia/trading-cards/magic-the-gathering-revised-edition-uncut-sheets-group-of-3-wizards-of-the-coast-1994-/a/7386-36036.s)
+documents three 11-by-11 sheets, but the usable image resolution remains
+unverified. Rectify the sheet once from grid or registration landmarks and
+compare frame geometry across cells; do not warp each card to its lettering.
+One sheet controls cutting and separate scan crops for that sheet, not every
+print run. The [investigation receipt](../fixtures/accuracy/3ed-recheck/artifact-alignment-review.json)
+records candidate results, source identities, limitations and the sheet protocol.
