@@ -477,3 +477,27 @@ All 281 nonland native renders match the selected prototype, with 843 unchanged
 Oracle/etching variants and 25 unchanged land Originals. The 55 regional losses
 remain visible in the receipt; shared defaults do not erase their review queue.
 This is an in-progress component fit, not complete-set certification.
+
+## Revised footer checkpoint
+
+The source-only vertical registration now has 223 accepted nonland references.
+It fits two frame strips and checks four other strips after freezing the pose.
+The 58 excluded cards remain visible; an exclusion does not label a scan bad.
+Stock transforms remain separate from these regional comparison transforms.
+
+The shared footer fit is now in the painter. Artist text moves left 2 pixels
+and down 0.5 pixels, with glyph width multiplied by 1.02. P/T moves left and
+down 0.5 pixels. Font sizes and ink colors are unchanged. Artist regional scores
+improve from 68.53 to 72.31/100; P/T improves from 78.97 to 79.82/100. Individual
+regressions remain in the [review record](../fixtures/accuracy/3ed-recheck/footer-proposal-review.json).
+
+All 1,224 production variants match the selected native prototype. The 843
+changed face variants affect footer RGB only; alpha, body layouts, all 306
+etching masks and all 75 land wording variants remain unchanged. Frozen-stock
+whole-card structure moves from 73.04 to 73.07/100. A subsequent cache-scope
+fix preserves every native PNG and reuses all 306 scores without new metric
+calculations. See the [evidence notes](../fixtures/accuracy/3ed-recheck/README.md).
+
+This is a geometry checkpoint. The ink probes still need stronger validation,
+and Revised headings, mana, frame/pigment and full component/outlier review
+remain open. The through-Fourth Edition goal is not complete.
