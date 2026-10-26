@@ -4,7 +4,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { root, hash, sourceHash } from './common.mjs';
-const RECEIPT = '4fb95dc8bb7bc81f998d20390982f78bdaf3c0ae0a211b0a30e18803a8a5bd02';
+const RECEIPT = '0acf3cdd9f7521684a50f2e639540de4287efd769fece4bc21d7d52dda44c0b2';
 let checked, tree;
 export function atqProfileDelta() {
   return (checked ??= (async () => {

@@ -48,8 +48,8 @@ const n = artifacts['integrated-native.json.gz'],
   s = artifacts['integrated-scores.json.gz'];
 assert.equal(n.status, 'complete');
 assert.equal(n.completed, 102);
-assert.equal(n.source.rendererHash, p.afterRenderer);
-assert.equal(s.source.rendererHash, p.afterRenderer);
+assert.equal(n.source.rendererHash, p.priorRevision.rendererHash);
+assert.equal(s.source.rendererHash, p.priorRevision.rendererHash);
 assert.equal(s.source.nativeCaptureHash, p.artifacts['integrated-native.json.gz'].contentSha256);
 assert.equal(s.rows.length, 102);
 assert.equal(new Set(s.rows.map((r) => r.id)).size, 102);
@@ -93,12 +93,94 @@ for (const row of s.rows) {
 }
 assert.equal(reused, 101);
 const footer = artifacts['footer-parity.json.gz'];
-assert.equal(footer.rendererHash, p.afterRenderer);
+assert.equal(footer.rendererHash, p.priorRevision.rendererHash);
 for (const row of footer.rows.filter((r) => r.material !== 'U'))
   assert.equal(row.before, row.after);
 const controls = artifacts['unaffected-native.json.gz'];
 assert.equal(controls.rows.length, 991);
 for (const r of controls.rows) assert.equal(r.before, r.after);
+const parentReceipt = await readFile(p.priorRevision.receipt.file);
+assert.equal(hash(parentReceipt), p.priorRevision.receipt.sha256);
+const parent = JSON.parse(gunzipSync(parentReceipt));
+assert.equal(parent.afterRenderer, p.priorRevision.rendererHash);
+for (const [name, a] of Object.entries(parent.artifacts))
+  assert.deepEqual(p.artifacts[name], a, 'Historical artifact changed: ' + name);
+const latest = artifacts['rim-integrated-native.json.gz'],
+  scores = artifacts['rim-integrated-scores.json.gz'],
+  parity = artifacts['rim-parity.json.gz'],
+  prototype = artifacts['land-rim-prototype-native.json.gz'],
+  trials = artifacts['land-rim-prototype-scores.json.gz'];
+assert.equal(latest.status, 'complete');
+assert.equal(latest.source.rendererHash, p.afterRenderer);
+assert.equal(scores.source.rendererHash, p.afterRenderer);
+assert.equal(
+  scores.source.nativeCaptureHash,
+  p.artifacts['rim-integrated-native.json.gz'].contentSha256,
+);
+assert.equal(scores.source.priorScoresHash, p.artifacts['integrated-scores.json.gz'].contentSha256);
+assert.deepEqual(scores.source.reuse, {
+  reused: 81,
+  recomputed: 21,
+  reason:
+    '102 native PNGs verified, semantic faces/references/poses/metric graph identical; rescore only21 changed lands.',
+});
+assert.equal(scores.rows.length, 102);
+assert.equal(latest.rows.length, 102);
+assert.equal(parity.rows.length, 102);
+assert.equal(trials.summary['geometry-rim-s110'].all.improved, 21);
+assert.equal(trials.summary['geometry-rim-s110'].all.regressed, 0);
+assert(trials.summary['geometry-rim-s110'].calibration.delta100 > 9);
+assert(trials.summary['geometry-rim-s110'].validation.delta100 > 9);
+let lands = 0,
+  same = 0;
+for (const row of latest.rows) {
+  const old = n.rows.find((r) => r.id === row.id),
+    score = scores.rows.find((r) => r.id === row.id),
+    priorScore = s.rows.find((r) => r.id === row.id);
+  assert(old && score && priorScore);
+  assert.equal(row.referenceHash, old.referenceHash);
+  assert.equal(row.poseHash, old.poseHash);
+  assert.equal(score.candidateHash, row.images.original.sha256);
+  assert.deepEqual(score.before, priorScore.before);
+  for (const mode of ['original', 'oracleModern', 'oracleOriginalSymbols', 'oracleFlavor']) {
+    assert.deepEqual(row.images[mode].layout, old.images[mode].layout);
+    assert.equal(row.images[mode].layout?.overflow ?? false, false);
+  }
+  if (row.material === 'L') {
+    lands++;
+    const trial = prototype.rows.find((r) => r.id === row.id).trials['geometry-rim-s110'];
+    assert.equal(row.images.original.sha256, trial.sha256);
+    assert.equal(row.images.etching.sha256, trial.etchingHash);
+    assert(score.candidate.structuralScore > priorScore.candidate.structuralScore);
+  } else {
+    same++;
+    for (const mode of [
+      'original',
+      'oracleModern',
+      'oracleOriginalSymbols',
+      'oracleFlavor',
+      'etching',
+    ])
+      assert.equal(row.images[mode].sha256, old.images[mode].sha256);
+    assert.deepEqual(score.candidate, priorScore.candidate);
+  }
+}
+assert.equal(lands, 21);
+assert.equal(same, 81);
+assert.equal(scores.summary.all.improved, 101);
+assert.equal(scores.summary.all.regressed, 1);
+assert(scores.summary.all.candidate100 - scores.summary.all.before100 > 7);
+const allControls = artifacts['rim-unaffected-native-all.json.gz'];
+assert.equal(allControls.rendererHash, p.afterRenderer);
+assert.equal(allControls.rows.length, 1297);
+assert.deepEqual([...new Set(allControls.rows.map((r) => r.set))].sort(), [
+  '2ed',
+  '3ed',
+  'arn',
+  'lea',
+  'leb',
+]);
+for (const r of allControls.rows) assert.equal(r.before, r.after);
 console.log(
-  'ATQ exact source history;102 Original and306 Oracle renders;991 unchanged ABU/ARN controls; changed ATQ cannot inherit old fits.',
+  'ATQ revisions1–2:102 Originals/306 Oracle;21 improved lands,81 unchanged nonlands;1297 unchanged controls; immutable history and score reuse.',
 );

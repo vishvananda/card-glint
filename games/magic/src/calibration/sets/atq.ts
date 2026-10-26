@@ -3,7 +3,7 @@ import type { SetCalibrationProfile } from '../types.js';
 /** Shared set/material values; scans and per-card poses remain outside painting. */
 export const profile = {
   schema: 1,
-  revision: 1,
+  revision: 2,
   set: 'atq',
   border: 'black',
   cornerRadius: 0.045,
@@ -56,10 +56,10 @@ export const profile = {
     },
     L: {
       family: 'abu',
-      frame: [-0.013737704918032771, -0.011970588235294071, 1.0285, 1.021],
-      art: [0.10625396174863388, 0.0945051260504202, 0.785774, 0.45021238095238086],
+      frame: [-0.013737704918032771, -0.015961529411764694, 1.0285, 1.027126],
+      art: [0.10625396174863388, 0.09115303915966388, 0.785774, 0.4529136552380951],
       stockWindow: [
-        0.038803990666756966, 0.030084103446862763, 0.9222112784916465, 0.9372200417779069,
+        0.038803990666756966, 0.026345490420485073, 0.9222112784916465, 0.9428433620285743,
       ],
       assetKey: 'l',
     },
@@ -192,9 +192,35 @@ export const profile = {
     },
     'L-red': {
       source:
-        '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/l.png",[-0.013737704918032771,-0.011970588235294071,1.0285,1.021]]',
+        '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/l.png",[-0.013737704918032771,-0.015961529411764694,1.0285,1.027126]]',
       stock: '#181510',
       adjustment: {
+        accents: [
+          {
+            mask: {
+              rings: [
+                {
+                  outer: [0.095, 0.09, 0.81, 0.478],
+                  inner: [0.118, 0.107, 0.765, 0.44],
+                },
+                {
+                  outer: [0.123, 0.594, 0.755, 0.3],
+                  inner: [0.143, 0.612, 0.717, 0.265],
+                },
+              ],
+              hueCenter: 35,
+              hueRadius: 45,
+              hueFeather: 15,
+              saturation: [0.22, 0.55],
+              brightness: [0.3, 0.55],
+            },
+            adjustment: {
+              hueDegrees: 0,
+              saturationScale: 1.1,
+              brightnessScale: 0.95,
+            },
+          },
+        ],
         frame: {
           hueDegrees: 7.884638807432336,
           saturationScale: 0.47987074486465253,
@@ -388,9 +414,9 @@ export const profile = {
 } as const satisfies SetCalibrationProfile;
 
 export const review = {
-  revision: 1,
+  revision: 2,
   scope:
-    'All102 ordinary nonfoil Original printings. Shared finite source census; calibration-name selection, reused validation and frozen scan-only normalization. Integration pending.',
+    'All102 ordinary nonfoil Original printings. Shared finite source census; calibration-name selection, reused validation and frozen scan-only normalization. Shared land vertical scale1.006/offset-0.625px and source gold-rim accent added; native integration pending.',
   evidence: [
     'games/magic/fixtures/accuracy/atq-recheck/body-development.json.gz',
     'games/magic/fixtures/accuracy/atq-recheck/constrained-selection.json',

@@ -66,8 +66,8 @@ try {
       calibratedFrameMaterials(face),
       setCode === 'arn' && ['W', 'G'].includes(material)
         ? { [frame.asset]: arn.colors[material].adjustment }
-        : setCode === 'atq' && material === 'U'
-          ? { [frame.asset]: atq.colors.U.adjustment }
+        : setCode === 'atq' && ['U', 'L'].includes(material)
+          ? { [frame.asset]: atq.colors[material === 'L' ? 'L-red' : 'U'].adjustment }
           : result.materials,
     );
 

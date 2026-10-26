@@ -19,6 +19,13 @@ try {
   const { earlyExpansionTextLayout: fit } = await load('presentation/early-expansion-text');
   const p = setCalibrationProfile('atq');
   assert.equal(p.setSymbolSource, 'keyrune');
+  assert.equal(p.revision, 2);
+  assert.deepEqual(
+    JSON.parse(p.colors['L-red'].source)[1],
+    p.frames.L.frame,
+    'Color source must follow the scaled frame',
+  );
+  assert.equal(p.colors['L-red'].adjustment.accents.length, 1);
   const face = {
     name: 'Atog',
     setCode: 'atq',
@@ -45,6 +52,17 @@ try {
   assert.equal(faceSetSymbol(face), faceEtchingSymbol(face));
   assert.match(faceSetSymbol({ ...face, setSymbolSource: 'cardconjurer' }), /\/atq-c\.svg$/);
   assert.equal(faceSetSymbol({ ...face, printingElements: { setSymbol: { hidden: true } } }), null);
+  const { retroSetSymbol } = await load('presentation/retro-frame');
+  const reconstruction = { ...face, name: 'Reconstruction', collectorNumber: '12' };
+  assert.equal(retroSetSymbol(reconstruction), null, 'The native retro selection omits the anvil');
+  assert.equal(
+    retroSetSymbol({ ...reconstruction, wordingMode: 'oracle', symbolStyle: 'modern' }),
+    null,
+  );
+  assert.equal(
+    retroSetSymbol({ ...reconstruction, setSymbol: 'https://example.invalid/custom.svg' }),
+    'https://example.invalid/custom.svg',
+  );
   const description = describeSetCalibration('atq');
   assert.equal(description.adapter, 'profile');
   for (const id of [
