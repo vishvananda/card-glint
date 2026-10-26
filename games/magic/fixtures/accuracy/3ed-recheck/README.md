@@ -428,3 +428,33 @@ native directories:
 The tool uses one browser and verifies that observation reproduces each changed
 native PNG exactly. The sampler remains part of cached asset preparation;
 painting and motion do not read back or decode its pixels.
+
+## Forward palette trials
+
+The corrected sampler is the baseline for six native palette proposals.
+A deterministic sample selects six calibration and four reused development
+validation names per symbol category: 60 unique cards and 88 measured discs.
+The eroded stencil measures paper and ink independently. It never uses reference
+pixel brightness to decide which pixels count as paper.
+
+The shared [40, 44, 36] ink candidate and modest per-color paper updates lower
+the balanced color error from 10.8009 to 2.5545. This is a color-distance error,
+where lower is better; it is not the whole-card accuracy score. Every color and
+both cohorts improve over the baseline. The [32, 36, 28] ink candidate has a
+slightly better validation mean and median, so the tradeoff remains recorded.
+The initial targets come from the complete accepted stencil diagnostic.
+
+The mana-palette files preserve the proposal definition, actual native baseline
+identities, separate ink/paper measurements and dependency hashes. No palette,
+glyph-size or numeral default is adopted by this study. Full-card comparisons,
+scope checks, symbol placement and outlier review are still required.
+
+    MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-mana-palette-study.mjs inputs.json poses.json native rings.json definition.json new-results.json
+    node tests/magic-revised-mana-palette.mjs
+
+Use the checked ring file whose scan polarity matches the native disc. The
+strongest opposite-polarity edge can be an inner glyph, rather than the disc.
+Each baseline is checked against its complete native PNG and cropped RGBA.
+One browser serves the batch; fonts and images use the frozen offline cache.
+The timings cover CPU preparation, rasterization and readback, not GPU
+completion or interactive scene throughput.

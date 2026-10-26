@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "status": "reviewed-forward-palette-study-not-adopted",
+  "rendererHash": "ec2981cd163c3fadb80ba496ad7457cc55c0434f8b8c2b029f9329a2c809476b",
+  "artifacts": {
+    "study": {
+      "file": "mana-palette-forward.json.gz",
+      "sha256": "0517e339877ea9a43070ff156ab5fd1f1338d10cdb766b826d0d839743c69ae2",
+      "contentSha256": "07265fbd1af407093e40def1abd37aa291e794e93d8ba6a9bd0191f937616556"
+    },
+    "definition": {
+      "file": "mana-palette-definition.json.gz",
+      "sha256": "b481947bf2c762b6e84484374dd4b27565ed9a42d65ede7b1050667da95620ad",
+      "contentSha256": "5a960770a994182cbc9cb6df13a571a52dd52b7cc72a63fbf5cab0b9d16aff4e"
+    },
+    "native": {
+      "file": "mana-palette-geometry-native.json.gz",
+      "sha256": "33deb1af65e3c9ec355f4e2db1f7fbce3560a91ed18228cdcc1e517c6525e410",
+      "contentSha256": "6eb3672c0e08c301e5f51f22d721ae7c1aa7ea587b631d49e9ac9aeff72b1834"
+    },
+    "tone": {
+      "file": "mana-palette-tone.json.gz",
+      "sha256": "4d912888885c6977881d540a30a7eaadc3cd6e2e603d8f51d36cc1233a7b987f",
+      "contentSha256": "da7075df1864d8eb6a328eb4374db7dec3e3198e393de66c8362496f2719b6c0"
+    }
+  },
+  "modules": {
+    "native-rgba-crop.mjs": "24e7b66cf5d050065dadfd11e5cd7af0b7d5072de397853fb633dc911124ebd1",
+    "pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+    "scan-transform.mjs": "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6",
+    "mana-glyph-metrics.mjs": "7a26dc637d6057ce3d943683ae5217b11bdd4dba503c1e2051884e6fd83681f3",
+    "hsb-color.mjs": "3fb85263f156b39bfa34063b7c39faa5423bff0c034b51a7f131caafe895bf5a",
+    "edges.mjs": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b",
+    "metrics.mjs": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a",
+    "browser.mjs": "dca71569d14cfa23ca801c37ce111c334bc03a9b8fbf4a4f91386cf5211c3841",
+    "abu-assets.mjs": "8fb30fa998101db9027ec19cf0dc45ab1e08929b61d03b64608aedbd13dab492",
+    "common.mjs": "d4bc4e6795abb0d6bb31baafc39ea36491aea4ba6427992c3211ead3e5776347"
+  },
+  "scope": "Forward native palette experiment only. Shared ink candidate improves separate paper/ink color error across every color and both reused development cohorts. Full-card, placement and outlier certification remain separate. No palette or geometry default adopted."
+}
