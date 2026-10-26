@@ -8,7 +8,7 @@ This pass covers ordinary printings through Fourth Edition. Collector's Edition
 | Alpha, Beta, Unlimited                            | 899 printings retain their completed review and exact native pixels | Preserve their existing evidence                                      |
 | Arabian Nights                                    | 92 native Originals; mean 75.40 → 80.20/100                         | Component certification and bundled release                           |
 | Antiquities                                       | 102 native Originals; mean 73.68 → 78.79/100                        | Printing-detail outliers, component certification and bundled release |
-| Revised                                           | 306 original type lines reviewed, including 255 new transcriptions  | Independent frame normalization, then component fitting               |
+| Revised                                           | 306 original type lines reviewed; native baseline 71.14/100         | Independent frame normalization, then component fitting               |
 | Legends, The Dark, Fallen Empires, Fourth Edition | Earlier profiles and evidence remain available                      | Current-source recheck in release order                               |
 
 These are structural similarity indices, not percentages of correct pixels.
