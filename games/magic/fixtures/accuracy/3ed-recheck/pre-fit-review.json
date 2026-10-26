@@ -4,7 +4,7 @@
   "set": "3ed",
   "rendererHash": "e6d9d4fcc1f489130ace2dcfcf513b1901dc20c9f19e1a3029d2560e9ba0f6e4",
   "parentRendererHash": "07028c330522e97870708a188021963d7854f9d0c3f73e8c947b9bfdc75005ad",
-  "scope": "306 original type lines are reviewed. The all-card body corpus still needs content/paragraph review before typography fitting. Two exact target-printing corrections and frame-band diagnostics recorded; published renderer unchanged.",
+  "scope": "306 original type lines reviewed; 160/306 full Original bodies checked. Eight native-verified exact printing corrections and seven additional scan-read activation colons await runtime promotion. Body fitting and frame alignment remain uncertified; published renderer unchanged.",
   "artifacts": {
     "frame-bands-baseline.json.gz": {
       "sha256": "f62aff462e408efa37d628a1b412acb81129a7b054c29494c0f992fae4fb446e",
@@ -23,8 +23,16 @@
       "contentSha256": "35358dce013b728cf78fb5096f70a7a3a41b95f848a9bf6f83470421aee87e03"
     },
     "body-content-review.json.gz": {
-      "sha256": "98b506b54b2193d5d1a8b758debd9aae555965ea3383fe3eb9dc09f42cefe194",
-      "contentSha256": "013ea1a1c54698830c0559f64e269809ad9ddaa578cb290a4b0cbc259440b02b"
+      "sha256": "1b5243aa0d41e4ef190f125faa2d2a122939194f47759a3b43d546223e9b7e42",
+      "contentSha256": "cf1a6d6742f75512ac7b7322ed735bc5eba4ca2acbb1c3e76fa04b33751b38a8"
+    },
+    "body-batch-corrections.json.gz": {
+      "sha256": "1cb7b84a3b26936453fa3e59ea14b92cd81a5ae3f971bc34c3fbaf3cdb26c011",
+      "contentSha256": "d7441bcf61182cd794bae55c3c3ebc7f83c6f220ccd928e514e71304204ea2a5"
+    },
+    "body-batch-native.json.gz": {
+      "sha256": "471b74fc3da6799a57543efa290136c9f0c98acd357471a7c26e77eb846cc93d",
+      "contentSha256": "8c9129d2f98a61abf2accc838418e508c465ed7f079537dbdc50a4ba371fa780"
     }
   },
   "bodyReview": {
@@ -165,12 +173,80 @@
     "cards": 9,
     "initialNativeReviewed": 2,
     "additionalScanReviewed": 7,
-    "scope": "Candidate discovery limited to paragraph-start mana-token costs missing a colon; each was independently read in its target scan. Broader body content remains pending. No renderer-wide punctuation substitution."
+    "scope": "Historical nine-card paragraph-start-cost census only, not exhaustive. Subsequent pump-cost review confirms four more colons: Firebreathing, Frozen Shade, Granite Gargoyle and Holy Armor. Shivan Dragon, Wall of Fire and Wall of Water remain candidates pending direct scan review."
   },
   "bodyContentReview": {
-    "checked": 10,
+    "checked": 160,
     "denominator": 306,
-    "nextAlphabeticalIndex": 10,
+    "nextAlphabeticalIndex": 160,
     "scope": "Full Original word/paragraph check, separate from the nine-cost punctuation census. Partial; no body-fit or set certification."
+  },
+  "bodyBatchReview": {
+    "cards": 6,
+    "unchangedRecipeControls": 300,
+    "scope": "Four missing pump-cost colons and hard poem/attribution boundaries. Five changed native images remain inside the body. Dwarven Weaponsmith is byte-exact because its current soft wrapping already agrees. Negative score changes do not invalidate scan-confirmed source content.",
+    "runtimePromotion": "pending",
+    "results": [
+      {
+        "id": "e53412cc-2246-47b5-a212-edee7fac4a54",
+        "name": "Holy Armor",
+        "referenceHash": "311309545e712ffb5d7c50b1b61d06000541cb4aa66032a9b1a1e6ea68f309ba",
+        "poseHash": "3fa19053906102f9ddd32efa42b4b044fd9f5639a5ca4dee1ee3a8d0ed0e9987",
+        "changedPixels": 1036,
+        "scoreReused": false,
+        "outsideBody": 0,
+        "delta100": -0.1052246281324054
+      },
+      {
+        "id": "1173349b-beb9-44c8-aeb2-534ecf54fea0",
+        "name": "Bog Wraith",
+        "referenceHash": "42635418c22e762340de9933a4e943736042e0edd8a29b72ef769f9ef5f74b95",
+        "poseHash": "8a06bd4bdfaa576b85cc65ffff3c74a0d74cb2728fe8243df768f5622d5ac13e",
+        "changedPixels": 17526,
+        "scoreReused": false,
+        "outsideBody": 0,
+        "delta100": 1.8611474709267162
+      },
+      {
+        "id": "6cba931e-94b5-4fcc-8d5f-eb60664baf31",
+        "name": "Frozen Shade",
+        "referenceHash": "a50f119d94caeca14299f6e609833cc01ababde7215067ee05d3c2c24fffc553",
+        "poseHash": "942cedf9170029e8ddd9dc80b0d02bfd844680ab306f79fb2e17f81171079858",
+        "changedPixels": 917,
+        "scoreReused": false,
+        "outsideBody": 0,
+        "delta100": 0.33922088505082826
+      },
+      {
+        "id": "c83929b1-4826-4b84-823d-0997560b6bdc",
+        "name": "Dwarven Weaponsmith",
+        "referenceHash": "cd841f7c71316baba85dcd6781a4f7f3d15cf60fc18aaca5d3f67e4670b3de1e",
+        "poseHash": "0a323c83b6b5eba541dae00af3f12602181afc57896e9a1f0b519d6ef5a9da1a",
+        "changedPixels": 0,
+        "scoreReused": true,
+        "outsideBody": 0,
+        "delta100": 0
+      },
+      {
+        "id": "16682a6e-8d86-4ad6-a6b1-3171000cc708",
+        "name": "Firebreathing",
+        "referenceHash": "8c50f7871b2b176ff6408b5214215a3720eff60b7f5966ebf5ca5250c488e1cc",
+        "poseHash": "93bc2ea18ce681750515dd4bce65c0d46902587c975c5515a13d6daeca185076",
+        "changedPixels": 1016,
+        "scoreReused": false,
+        "outsideBody": 0,
+        "delta100": 0.48751493124995493
+      },
+      {
+        "id": "03dfa7f7-8f08-49f6-96fd-eebf16ceb499",
+        "name": "Granite Gargoyle",
+        "referenceHash": "a6111a3f4791af652516233dbdc6df58efa95f5746a82c21cd1dd4a7a94ba5f8",
+        "poseHash": "9203583711d9792060dcd4ea6e751c23d99233927dd675fd155da82e9834831a",
+        "changedPixels": 1036,
+        "scoreReused": false,
+        "outsideBody": 0,
+        "delta100": 0.35735716893467995
+      }
+    ]
   }
 }

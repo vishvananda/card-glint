@@ -138,11 +138,19 @@ Balloon Brigade, Sedge Troll, Uthden Troll and Regeneration. These are exact
 printing corrections queued for promotion. No automatic colon-insertion rule
 is added to the renderer.
 
-The broader word-and-paragraph audit has checked the first 10 cards
-alphabetically. They match the source after the recorded Aladdin's Ring
-correction. The [pre-fit review](../fixtures/accuracy/3ed-recheck/pre-fit-review.json)
-records the denominator and next index; the other bodies remain unverified by
-this pass.
+The broader word-and-paragraph audit has checked the first 160 of 306 cards
+alphabetically. Six additional exact corrections record missing pump-cost colons
+and printed verse or attribution breaks on Bog Wraith, Dwarven Weaponsmith,
+Firebreathing, Frozen Shade, Granite Gargoyle and Holy Armor. Their native replays
+change only body pixels; the other 300 recipes are unchanged. Dwarven
+Weaponsmith's explicit breaks produce the same pixels as its current soft
+wrapping, so its score is reused. Holy Armor loses 0.11 points despite its
+scan-confirmed colon; source correctness takes priority over the score.
+
+The [pre-fit review](../fixtures/accuracy/3ed-recheck/pre-fit-review.json)
+records the reviewed prefix, evidence and next index. Soft wrapping, printed
+line-end hyphenation, font size and generic-mana glyph style are separate
+typography questions. These source corrections still await runtime promotion.
 
 The frame-band diagnostic also suggests a shared internal horizontal residual
 in the artifact frames, while their outer stock is close. This is a measurement

@@ -93,6 +93,62 @@ for (const [id, a] of Object.entries(costs.cards)) {
   assert.deepEqual(ps, e.face.rulesParagraphs, 'Only the printed cost colon may change');
 }
 assert.match(costs.status, /runtime-promotion-pending/);
+const batch = artifacts['body-batch-corrections.json.gz'];
+const batchNative = artifacts['body-batch-native.json.gz'];
+assert.equal(Object.keys(batch.cards).length, 6);
+assert.equal(batchNative.rows.length, 6);
+assert.equal(batchNative.unchangedOriginals, 300);
+assert.equal(batchNative.rendererHash, controls.rendererHash);
+assert.equal(batchNative.controlsHash, hash(controlsBytes));
+assert.equal(batchNative.posesHash, hash(posesBytes));
+assert.deepEqual(batchNative.metricGraph, baselineScores.source.metricGraph);
+for (const row of batchNative.rows) {
+  const e = inputs.entries.find((e) => e.id === row.id);
+  const a = batch.cards[row.id];
+  const old = native.rows.find((r) => r.id === row.id);
+  assert(e && a && old);
+  assert.equal(a.reviewed, true);
+  assert.deepEqual(a.reviewedFields, ['rulesText', 'rulesParagraphs']);
+  assert(!corrections.cards[e.id] && !costs.cards[e.id], 'Duplicate earlier correction');
+  assert.equal(a.referenceHash, e.reference.sha256);
+  assert.deepEqual(a.before, {
+    rulesText: e.face.rulesText,
+    rulesParagraphs: e.face.rulesParagraphs,
+  });
+  assert.equal(row.referenceHash, e.reference.sha256);
+  assert.equal(row.poseHash, old.poseHash);
+  assert.equal(row.oldInputHash, hash(JSON.stringify(e.face)));
+  assert.equal(row.beforeHash, old.sha256);
+  assert.equal(
+    row.inputHash,
+    hash(
+      JSON.stringify({
+        ...e.face,
+        rulesText: a.rulesText,
+        rulesParagraphs: a.rulesParagraphs,
+      }),
+    ),
+  );
+  assert.equal(row.outsideBody, 0);
+  assert.equal(row.layoutAfter.overflow, false);
+  assert.deepEqual(row.beforeScore, baselineScores.rows.find((r) => r.id === e.id).score);
+  assert.equal(row.delta100, 100 * (row.score.structuralScore - row.beforeScore.structuralScore));
+  assert.equal(row.scoreReused, row.afterHash === row.beforeHash);
+  assert.equal(row.scoreReused, row.changedPixels === 0);
+  if (row.scoreReused) assert.deepEqual(row.score, row.beforeScore);
+}
+assert.match(batch.status, /runtime-promotion-pending/);
+const allCorrections = new Map();
+for (const file of [
+  'body-corrections-initial.json.gz',
+  'body-cost-corrections.json.gz',
+  'body-batch-corrections.json.gz',
+]) {
+  for (const [id, correction] of Object.entries(artifacts[file].cards)) {
+    assert(!allCorrections.has(id));
+    allCorrections.set(id, { file, correction });
+  }
+}
 const content = artifacts['body-content-review.json.gz'];
 assert.equal(content.inputHash, hash(inputBytes));
 assert.equal(content.denominator, 306);
@@ -107,7 +163,8 @@ assert.deepEqual(
 );
 for (const r of content.rows) {
   const e = inputs.entries.find((e) => e.id === r.id),
-    a = corrections.cards[r.id];
+    a = allCorrections.get(r.id)?.correction;
+  assert.equal(r.correction, allCorrections.get(r.id)?.file ?? null);
   assert.equal(r.referenceHash, e.reference.sha256);
   assert.equal(r.inputHash, hash(JSON.stringify(e.face)));
   assert.equal(r.reviewedRulesTextHash, hash(a?.rulesText ?? e.face.rulesText));
@@ -124,5 +181,5 @@ assert.match(content.status, /not-set-certification/);
 assert.match(review.status, /not-set-certification/);
 assert.match(corrections.status, /runtime-promotion-pending/);
 console.log(
-  'Revised preflight:306 frozen originals/poses,304 exact current-source controls, two isolated native text/style replays plus seven additional scan-read cost colons; no set certification.',
+  'Revised preflight:306 frozen originals/poses,160 bodies reviewed, eight native text/style replays and seven additional scan-read costs; no set certification.',
 );
