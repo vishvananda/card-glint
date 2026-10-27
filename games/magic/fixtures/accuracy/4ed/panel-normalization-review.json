@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "set": "4ed",
+  "status": "rejected-local-panel-warp-retain-stock",
+  "artifacts": {
+    "registration": {
+      "file": "games/magic/fixtures/accuracy/4ed/panel-registration.json.gz",
+      "sha256": "56ade06e2c2383d41925fdcda964a409705a3dfd55d83ee082a732a75f53bb0f",
+      "contentSha256": "1ee3164a977b599f008781922eb30a9b30c48eb485c698041c8f19413d84a8d1"
+    },
+    "text": {
+      "file": "games/magic/fixtures/accuracy/4ed/panel-text-rescore.json.gz",
+      "sha256": "46a806ba07f02630d1132fa8e89980ca04c3c2b0ab8ac5ebfcd604f0797ee234",
+      "contentSha256": "32abca5a79cfe3b494f19e8eed5bb4fd310cc1fae48fdd2a5fb7d3f898300df9"
+    },
+    "texture": {
+      "file": "games/magic/fixtures/accuracy/4ed/panel-texture-check.json.gz",
+      "sha256": "293984356ac2d20759d039fa3ec149ae974331f5c310aead8bf6dcc0ed07a817",
+      "contentSha256": "be1cf3101afb1d59900e8a51b17a4f10c2ac65c189dce4e4547cc2f290663690"
+    }
+  },
+  "rendererHash": "bc433ab4681297c3a055dc23ab082f3e099d40bbf619f6e12a3152ff76a1bb7c",
+  "inputHash": "5e940ac8a08abe43ea60d39c0f3a7f0da4c1460fac72725fba4bfdd01a94c727",
+  "purpose": "Audit source-only rules-panel alignment and test whether existing scan normalization explains the text-size errors.",
+  "registration": {
+    "cards": 378,
+    "accepted": 368,
+    "byMaterial": {
+      "W": {
+        "cards": 58,
+        "accepted": 58,
+        "baselineCertificateAccepted": 40,
+        "calibrationMedians": {
+          "sx": 0.9997499999999999,
+          "sy": 1.0002,
+          "tx": 0,
+          "ty": 0,
+          "rotation": 0,
+          "shear": 0
+        }
+      },
+      "U": {
+        "cards": 58,
+        "accepted": 58,
+        "baselineCertificateAccepted": 47,
+        "calibrationMedians": {
+          "sx": 0.9997750000000001,
+          "sy": 0.999925,
+          "tx": 0,
+          "ty": 0,
+          "rotation": 0,
+          "shear": 0
+        }
+      },
+      "B": {
+        "cards": 58,
+        "accepted": 57,
+        "baselineCertificateAccepted": 56,
+        "calibrationMedians": {
+          "sx": 0.9999249999999998,
+          "sy": 0.9999249999999998,
+          "tx": 0,
+          "ty": 0,
+          "rotation": 0,
+          "shear": 0
+        }
+      },
+      "R": {
+        "cards": 58,
+        "accepted": 58,
+        "baselineCertificateAccepted": 49,
+        "calibrationMedians": {
+          "sx": 0.9999999999999992,
+          "sy": 0.9999999999999992,
+          "tx": 0,
+          "ty": 0.05,
+          "rotation": 0,
+          "shear": 0
+        }
+      },
+      "G": {
+        "cards": 58,
+        "accepted": 58,
+        "baselineCertificateAccepted": 57,
+        "calibrationMedians": {
+          "sx": 1.0001000000000002,
+          "sy": 1.0001000000000002,
+          "tx": 0,
+          "ty": 0,
+          "rotation": 0,
+          "shear": 0
+        }
+      },
+      "A": {
+        "cards": 70,
+        "accepted": 70,
+        "baselineCertificateAccepted": 62,
+        "calibrationMedians": {
+          "sx": 1.000175,
+          "sy": 1.0002499999999999,
+          "tx": 0,
+          "ty": -0.025,
+          "rotation": 0,
+          "shear": 0
+        }
+      },
+      "L": {
+        "cards": 18,
+        "accepted": 9,
+        "baselineCertificateAccepted": 8,
+        "calibrationMedians": {
+          "sx": 1.0001,
+          "sy": 0.9996749999999999,
+          "tx": 0.05,
+          "ty": 0,
+          "rotation": 0,
+          "shear": 0
+        }
+      }
+    }
+  },
+  "text": {
+    "cards": 360,
+    "accepted": 359,
+    "currentStock100": 58.232003668730336,
+    "currentPanel100": 58.200979427160505,
+    "normalizationImproved": 179,
+    "normalizationRegressed": 180,
+    "narrowSelected": 37,
+    "narrowPanelDelta100": 2.631236075394874,
+    "narrowGains": 36,
+    "narrowLosses": 1,
+    "narrowStockDelta100": 2.649427172990874
+  },
+  "independentTexture": {
+    "before": {
+      "cards": 111,
+      "patches": 666,
+      "ncc": 0.9316034210393159,
+      "meanResidual": 0.44192556213279927,
+      "withinHalfPixel": 467
+    },
+    "after": {
+      "cards": 111,
+      "patches": 666,
+      "ncc": 0.9195046245510202,
+      "meanResidual": 0.5701167181201988,
+      "withinHalfPixel": 375
+    }
+  },
+  "scope": {
+    "panelPrintings": 378,
+    "nonlandTextPrintings": 360,
+    "independentTextureStripsPerScan": 6,
+    "textureExcludedLandPrintings": 18,
+    "rendererDefaultsChanged": false,
+    "wholeCardScoresChanged": false,
+    "fullSetComplete": false
+  },
+  "findings": [
+    "The local panel refit passes368 numerical cases but slightly reduces the regional text index on its359 accepted nonland cases.",
+    "The same narrower text-class slice improves36of37 cards with either pose. The font-size/centering problems are not explained by these small alignment differences.",
+    "Six independent frame-texture patches per card were excluded from pose selection. Their validation correlations fall and displacement residuals rise in every nonland material after local panel fitting.",
+    "Keep the existing stock-based transforms. A local box fit is insufficient evidence for a whole-frame warp.",
+    "Pooled land-border signatures differ by treatment. Low confidence in that pooled template does not establish a bad scan. Land grouping and shape review remain open.",
+    "Erg Raiders retains a usable stock certificate;the local refit fails a separate lower-edge check and is not promoted."
+  ],
+  "next": [
+    "Implement and validate shared text-size classes using the chosen original/Oracle wording reference;retain the existing regular,centered and ultra-dense fits unless a measured class replaces them.",
+    "Measure both27.5 and25 centered faces around the130-character candidate boundary;review Unstable Mutation and Gloom separately.",
+    "Use independent frame-texture checks alongside border checks for future normalization changes.",
+    "Require reviewed templates for the distinct land border treatments before declaring their normalization complete."
+  ],
+  "validation": "Every candidate pose is selected from reference-image frame strips;art,rules,headings and symbols do not select a transform. The untouched-strip check and exact one-pass native-source sampling are retained. Texture patches provide independent full-frame evidence. Reused development scans;no blind holdout or set-completion approval."
+}
