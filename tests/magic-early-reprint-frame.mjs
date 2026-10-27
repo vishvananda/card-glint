@@ -59,7 +59,8 @@ try {
         { setCode: 'lea' },
         { setCode: '3ed' },
         { setCode: 'drk' },
-        { setCode: 'ice' },
+        // Ice Age inherits Fourth by default; exact-printing mode still opts out.
+        { setCode: 'ice', calibration: 'printing' },
         { setCode: 'm21' },
         { frameStyle: 'modern' },
         { frameAssetFamily: 'eighth' },
