@@ -17,6 +17,15 @@ try {
     await import('/games/magic/src/data/eager-wording.ts');
     const m = await import('/games/magic/src/presentation.ts');
     // Synthetic geometry test: avoid network font dependencies.
+    for (const { family, weight, style } of m.canvasFontAssets)
+      document.fonts.add(
+        await new FontFace(
+          family,
+          'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")',
+          { weight, style },
+        ).load(),
+      );
+
     document.fonts.load = async () => [{ status: 'loaded' }];
     const hash = async (canvas) =>
       Array.from(

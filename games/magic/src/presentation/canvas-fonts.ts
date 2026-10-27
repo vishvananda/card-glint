@@ -1,4 +1,5 @@
 import fontCss from '../../fonts.css?raw';
+import { revisedTypeFontAsset } from './revised-lettering.js';
 import { retroFontAssets } from './retro-font.js';
 
 export interface CanvasFontAsset {
@@ -16,4 +17,5 @@ export const canvasFontAssets: readonly CanvasFontAsset[] = [
     style: /font-style:\s*([^;]+)/.exec(block!)?.[1]?.trim() ?? 'normal',
   })),
   ...retroFontAssets,
+  revisedTypeFontAsset,
 ];

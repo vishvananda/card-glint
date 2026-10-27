@@ -1,3 +1,4 @@
+import { loadRevisedTypeFont, usesRevisedTypeTypography } from './revised-lettering.js';
 import { earlyTextFlowRevision } from './alpha-typography.js';
 import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import {
@@ -269,6 +270,12 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       ? ['revised-black-paper-v1']
       : []),
     ...(revisedManaRevision(input) ? ['revised-mana-fit-v1'] : []),
+    ...(!input.printedImage &&
+    input.layer !== 'etching' &&
+    input.paintLayer !== 'artwork' &&
+    usesRevisedTypeTypography(calibrationFace(face))
+      ? ['revised-heading-fit-v1']
+      : []),
     ...(dualFrameRevision ? [dualFrameRevision] : []),
     ...(flowRevision ? [flowRevision] : []),
     ...(input.layer !== 'etching' &&
@@ -557,6 +564,7 @@ export async function composeCardTexture(
         ),
         nativeSplitEra(input.face) ? loadSplitFonts(input.face) : loadFramePlateFonts(input.face),
         loadStandardTemplateFonts(input.face),
+        loadRevisedTypeFont(input.face),
         faceFrame(input.face) === 'saga' ? loadSagaFont() : Promise.resolve(),
         isAdventure(input.face) || isPrepared(input.face) ? loadAdventureFont() : Promise.resolve(),
         isRetro(input.face) ||

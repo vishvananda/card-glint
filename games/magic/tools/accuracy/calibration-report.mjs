@@ -1,3 +1,4 @@
+import { revisedHeadingDelta, revisedHeadingAffected } from './revised-heading-ancestry.mjs';
 import { revisedManaFitDelta, revisedManaFitAffected } from './revised-mana-fit-ancestry.mjs';
 import {
   revisedBlackPaperDelta,
@@ -118,6 +119,16 @@ export async function calibrationReport(ledger) {
       ]);
       for (const { task, item, original } of dependencies) {
         const currentAbu = await abuCurrentApproval(item, group, task, original, set.set);
+        if (
+          revisedHeadingAffected(set.set, task, original, group) &&
+          item.proof?.revisedHeadingSource !== (await revisedHeadingDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Revised nonland headings now use the reviewed name geometry and regular Plantin type font with solid gray ink. Heading and whole-card evidence needs current renders; land, body, footer, mana, frame and other-set evidence remains separate.';
+          continue;
+        }
+
         if (
           revisedManaFitAffected(set.set, task, original) &&
           item.proof?.revisedManaFitSource !== (await revisedManaFitDelta()).afterRenderer

@@ -3,16 +3,16 @@
 This pass covers ordinary printings through Fourth Edition. Collector's Edition
 (CED and CEI) and Summer Magic (SUM) are deferred.
 
-| Set                                               | Current result                                                      | Next gate                                                        |
-| ------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| Alpha, Beta, Unlimited                            | 899 printings retain their completed review and exact native pixels | Preserve their existing evidence                                 |
-| Arabian Nights                                    | 92 native Originals; mean 75.40 → 80.20/100                         | Component certification and bundled release                      |
-| Antiquities                                       | 102 native Originals; mean 73.68 → 80.87/100                        | Component certification and bundled release                      |
-| Revised                                           | 306 Original inputs reviewed; 281 shared body-fit native replays    | Text/credit/heading and frame outlier review; full certification |
-| Legends, The Dark, Fallen Empires, Fourth Edition | Earlier profiles and evidence remain available                      | Current-source recheck in release order                          |
+| Set                                               | Current result                                                       | Next gate                                                        |
+| ------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Alpha, Beta, Unlimited                            | 899 printings retain their completed review and exact native pixels  | Preserve their existing evidence                                 |
+| Arabian Nights                                    | 92 native Originals; mean 75.40 → 80.20/100                          | Component certification and bundled release                      |
+| Antiquities                                       | 102 native Originals; mean 73.68 → 80.87/100                         | Component certification and bundled release                      |
+| Revised                                           | 306 Originals; body/footer, mana sizing/palette and headings adopted | Mana placement/ink, frame/land and outlier review; certification |
+| Legends, The Dark, Fallen Empires, Fourth Edition | Earlier profiles and evidence remain available                       | Current-source recheck in release order                          |
 
 These are structural similarity indices, not percentages of correct pixels.
-The two new profiles are committed work in progress; the published package remains
+The profiles are committed work in progress; the published package remains
 0.7.3. A native replay or a regional improvement alone does not complete a set.
 
 ## Antiquities changes
@@ -501,3 +501,23 @@ calculations. See the [evidence notes](../fixtures/accuracy/3ed-recheck/README.m
 This is a geometry checkpoint. The ink probes still need stronger validation,
 and Revised headings, mana, frame/pigment and full component/outlier review
 remain open. The through-Fourth Edition goal is not complete.
+
+## Revised heading checkpoint
+
+Revised nonlands now use the measured shared name geometry and regular Plantin
+type font with filled gray ink and a separate shadow. The new font is loaded
+once during face preparation in a document or worker; other fonts and sets
+retain their existing output. All 1,224 native variants match the independent
+prototype, with changes confined to the heading bands. Lands and etching masks
+retain their pixels and cache keys.
+
+The frozen-stock whole-card mean is 73.18 → 73.97/100, with 270 gains, 11 losses and 25
+unchanged lands. The regional type mean, using 223 accepted frame-interior poses,
+is 71.17 → 81.06/100 with no losses. The two measurements use different frozen
+reference transforms and must not be treated as the same score. The 11
+whole-card losses remain recorded and visually reviewed. See the
+[adoption notes](../fixtures/accuracy/3ed-recheck/README.md#revised-heading-adoption)
+for source, native, font-loading and cache-scope evidence.
+
+Revised still needs mana placement/ink, frame/land and outlier closure. This
+checkpoint does not mark the set or the through-Fourth pass complete.

@@ -586,3 +586,44 @@ executed tools, numerical modules, and native parity metadata. No external
 font, scan, or crop image bytes are included. Run
 `node tests/magic-revised-heading-study.mjs` to verify their hashes, pose/native
 joins, cohort coverage, explicit losses, and full-card/ROI parity.
+
+## Revised heading adoption
+
+The reviewed typography is now used by Revised nonlands. Names move two
+canonical pixels left and use a 1.03 horizontal scale. The type line uses the
+revision-pinned Plantin Pro regular font, a shared two-pixel left/four-pixel down
+translation, and solid gray ink with a lower-right shadow. One font-metric
+offset aligns the regular font to the previous baseline. Lands retain their
+separate typography.
+
+The font is listed in `canvasFontAssets`. Face preparation loads it once in the
+current document or worker font registry, shares concurrent requests, and allows
+retry after failure. It does not replace MPlantin for other sets or for body
+text. No public interface changes.
+
+All 1,224 native outputs match the independent pre-adoption-source prototype.
+The 843 changed face variants differ only in the heading bands. All 25 land
+printings and all 306 etching outputs retain pixels and keys. A scoped
+`revised-heading-fit-v1` key prevents unrelated sets, scans and artwork-only
+outputs from being invalidated.
+
+Using the existing frozen stock poses and full metric graph, mean whole-card
+structure rises from 73.1770 to 73.9678/100: 270 gains, 11 losses and 25 unchanged
+lands. The largest loss is Fastbond at 0.5151/100. The regional typography study
+uses the separately accepted frame-interior poses; those are not the stock
+poses used by this full-card diagnostic. Eight of the 11 stock-score losses
+have accepted interior poses and improve in the regional type objective.
+The other three retain their unresolved interior-alignment status. All 11 were
+inspected as scan/before/after heading crops; shared values are retained without
+per-card exceptions.
+
+The source receipt and metadata are `heading-source-delta.json.gz`,
+`heading-after.json.gz`, `heading-prototype.json.gz`,
+`heading-isolation.json.gz`, and `heading-whole-scores.json.gz`. Older heading
+study archives remain unchanged and describe their historical proposal stage.
+The adoption does not complete the remaining frame, mana placement/ink, land
+and outlier review, or certify Revised as a whole.
+
+```sh
+node tests/magic-revised-heading-adoption.mjs
+```

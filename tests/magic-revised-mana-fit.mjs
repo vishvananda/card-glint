@@ -1,3 +1,7 @@
+import {
+  preRevisedHeadingSource,
+  revisedHeadingHistoricalHash,
+} from '../games/magic/tools/accuracy/revised-heading-ancestry.mjs';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
@@ -11,10 +15,10 @@ import {
   revisedManaFitAffected,
 } from '../games/magic/tools/accuracy/revised-mana-fit-ancestry.mjs';
 const p = await revisedManaFitDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await revisedHeadingHistoricalHash(), p.afterRenderer);
 assert.equal(await revisedManaFitHistoricalHash(), p.beforeRenderer);
 for (const [file, e] of Object.entries(p.files)) {
-  const bytes = await readFile(file);
+  const bytes = await preRevisedHeadingSource(file, await readFile(file));
   assert.equal(hash(bytes), e.after);
   assert.equal(hash(await preRevisedManaFitSource(file, bytes)), e.before);
   const unknown = Buffer.concat([bytes, Buffer.from('\n// unknown change\n')]);
@@ -167,7 +171,7 @@ try {
       b = JSON.parse(next(input, 'inspect'));
     assert.equal(b.filter((v) => v === marker).length, expected ? 1 : 0);
     assert.deepEqual(
-      b.filter((v) => v !== marker),
+      b.filter((v) => v !== marker && v !== 'revised-heading-fit-v1'),
       a,
     );
   };

@@ -74,7 +74,10 @@ try {
   const after = (...args) =>
     JSON.stringify(
       JSON.parse(currentAfter(...args)).filter(
-        (value) => value !== 'revised-footer-geometry-v1' && value !== 'revised-mana-fit-v1',
+        (value) =>
+          value !== 'revised-footer-geometry-v1' &&
+          value !== 'revised-mana-fit-v1' &&
+          value !== 'revised-heading-fit-v1',
       ),
     );
   const base = {
@@ -95,7 +98,9 @@ try {
     marker = 'revised-original-fractional-v1';
   assert(next.includes(marker));
   assert.deepEqual(
-    next.filter((v) => v !== marker && v !== 'revised-footer-geometry-v1'),
+    next.filter(
+      (v) => v !== marker && v !== 'revised-footer-geometry-v1' && v !== 'revised-heading-fit-v1',
+    ),
     old,
   );
   for (const props of [

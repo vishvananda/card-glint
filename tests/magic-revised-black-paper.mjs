@@ -155,7 +155,9 @@ try {
       after = JSON.parse(next(input, 'inspect'));
     assert.equal(after.filter((v) => v === marker).length, expected ? 1 : 0);
     assert.deepEqual(
-      after.filter((v) => v !== marker && v !== 'revised-mana-fit-v1'),
+      after.filter(
+        (v) => v !== marker && v !== 'revised-mana-fit-v1' && v !== 'revised-heading-fit-v1',
+      ),
       before,
     );
   };

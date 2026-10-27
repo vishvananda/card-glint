@@ -163,7 +163,7 @@ try {
       b = JSON.parse(next(input(f, props), 'inspect'));
     assert.equal(b.filter((v) => v === marker).length, expected ? 1 : 0);
     assert.deepEqual(
-      b.filter((v) => v !== marker),
+      b.filter((v) => v !== marker && v !== 'revised-heading-fit-v1'),
       a,
     );
   };

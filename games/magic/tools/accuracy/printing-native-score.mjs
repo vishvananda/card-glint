@@ -33,8 +33,9 @@ assert(
   inputs.entries.every((e) => e.face.wordingMode === 'original'),
   'Only frozen Original wording may be scored by this audit tool',
 );
-assert.equal(capture.source.rendererHash, rendererHash);
-assert.equal(capture.source.inputHash, hash(input.bytes));
+const provenance = capture.source ?? capture;
+assert.equal(provenance.rendererHash, rendererHash);
+assert.equal(provenance.inputHash, hash(input.bytes));
 assert.equal(previous.inputHash, hash(input.bytes));
 assert.equal(previous.posesHash, hash(poses.bytes));
 assert.deepEqual(previous.metricGraph, graph, 'Scores require the same metric import graph');
@@ -108,6 +109,7 @@ await writeJson(output, {
   scope:
     'Fixed original inputs, references, stock poses and complete metric graph. Whole-card structural diagnostic; not component certification.',
   rendererHash,
+  toolHash: hash(await readFile(new URL(import.meta.url))),
   inputHash: hash(input.bytes),
   captureHash: hash(native.bytes),
   posesHash: hash(poses.bytes),

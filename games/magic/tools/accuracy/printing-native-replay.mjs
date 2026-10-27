@@ -35,7 +35,10 @@ try {
   await ssr.ssrLoadModule('/games/magic/src/data/eager-wording.ts');
   const { withCardWording } = await ssr.ssrLoadModule('/games/magic/src/presentation/wording.ts'),
     { resolvePrintingArtist } = await ssr.ssrLoadModule('/games/magic/src/printing/artist.ts'),
-    { canvasAssetUrls } = await ssr.ssrLoadModule('/games/magic/src/presentation/canvas-assets.ts');
+    { canvasAssetUrls } = await ssr.ssrLoadModule('/games/magic/src/presentation/canvas-assets.ts'),
+    { usesRevisedTypeTypography, revisedTypeFontAsset } = await ssr.ssrLoadModule(
+      '/games/magic/src/presentation/revised-lettering.ts',
+    );
   const known = new Set(
     [...(inputs.components ?? []), ...inputs.entries.flatMap((e) => [e.reference, e.art])]
       .filter(Boolean)
@@ -72,6 +75,13 @@ try {
         extraAssets.push(await cachedFetch(url, { offline: true }));
         known.add(url);
       }
+    if (
+      variants.some((v) => usesRevisedTypeTypography?.(v.face)) &&
+      !known.has(revisedTypeFontAsset.url)
+    ) {
+      extraAssets.push(await cachedFetch(revisedTypeFontAsset.url, { offline: true }));
+      known.add(revisedTypeFontAsset.url);
+    }
     recipes.set(e.id, { variants, provenance: resolved?.provenance ?? null });
   }
 } finally {

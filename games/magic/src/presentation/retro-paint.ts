@@ -68,6 +68,7 @@ import { retroTextLayout } from './retro-rules.js';
 import {
   usesRevisedLettering,
   paintRevisedTitle,
+  paintRevisedType,
   paintRevisedStats,
   paintRevisedCredits,
 } from './revised-lettering.js';
@@ -252,6 +253,7 @@ export function paintRetroFace(
         paintRevisedLandText(c, text, 'type', width, face.textInk)
     : (text: string, x: number, y: number, width: number) => {
         if (
+          !paintRevisedType(c, face, text, x, y, width) &&
           !paintEarlyReprintType(c, face, text, x + width) &&
           !paintEarlyExpansionType(c, face, text, x, y, width) &&
           !paintLegacyCalibratedTitle(c, face, x, y, width, 'type', text)

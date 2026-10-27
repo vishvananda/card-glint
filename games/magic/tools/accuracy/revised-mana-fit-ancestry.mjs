@@ -1,3 +1,4 @@
+import { preRevisedHeadingSource } from './revised-heading-ancestry.mjs';
 // Exact source history for the Revised mana geometry and palette.
 // Historical projection permits reuse; it does not certify current components.
 import assert from 'node:assert/strict';
@@ -62,6 +63,7 @@ export function revisedManaFitDelta() {
   })());
 }
 export async function preRevisedManaFitSource(file, bytes) {
+  bytes = await preRevisedHeadingSource(file, bytes);
   const e = (await revisedManaFitDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }
