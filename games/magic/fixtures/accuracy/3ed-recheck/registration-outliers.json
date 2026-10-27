@@ -3,7 +3,7 @@
   "status": "registration-outlier-review-queue-not-accepted",
   "set": "3ed",
   "scope": "Explain every frozen nonland rejection. Profile similarity is distinguished from independent displacement,upstream rejection and search bounds. Proposed transforms are diagnostics only;no pose or gate changes,and no scan is labelled defective.",
-  "toolHash": "8d89b5c3ba3de1b5d99be25d14d851eba40c4803b9661fd6544a25bc0eeedefe",
+  "toolHash": "0e04def9a28b7ea222333ba31024c8231b965b431b6f77b9821cca791fab3c81",
   "posesHash": "6f87def2ba630810da1b37f94515ea36b27967d04db4df1819fc07374eeccb41",
   "inputHash": "01de709f035ddb54242535bf13e78009dc213fd0dd2bd37c6f4364946c767e01",
   "summary": {
@@ -11,15 +11,15 @@
     "accepted": 223,
     "rejected": 58,
     "byQueue": {
-      "independent-displacement-review": 33,
+      "search-boundary-review": 4,
+      "independent-displacement-review": 30,
       "profile-shape-review": 13,
-      "search-boundary-review": 1,
       "parent-registration-review": 11
     },
     "overlappingFailureTypes": {
+      "vertical-search-boundary": 4,
       "independent-band-mismatch": 49,
       "fit-profile-mismatch": 8,
-      "vertical-search-boundary": 1,
       "parent-registration": 11
     }
   },
@@ -34,8 +34,8 @@
       "diagnosticTransform": {
         "matrix": [1.0003, 0, 0, 0.9993822935779817, -1, -0.35048165137613924]
       },
-      "failureTypes": ["independent-band-mismatch"],
-      "queue": "independent-displacement-review",
+      "failureTypes": ["vertical-search-boundary", "independent-band-mismatch"],
+      "queue": "search-boundary-review",
       "fit": {
         "top": {
           "score": 97.27318943891659,
@@ -152,8 +152,8 @@
       "diagnosticTransform": {
         "matrix": [1.00005, 0, 0, 0.9991325229357799, 1.925, -0.27555045871558875]
       },
-      "failureTypes": ["independent-band-mismatch"],
-      "queue": "independent-displacement-review",
+      "failureTypes": ["vertical-search-boundary", "independent-band-mismatch"],
+      "queue": "search-boundary-review",
       "fit": {
         "top": {
           "score": 99.45295461381221,
@@ -332,8 +332,8 @@
           1.4997706422018386
         ]
       },
-      "failureTypes": ["independent-band-mismatch"],
-      "queue": "independent-displacement-review",
+      "failureTypes": ["vertical-search-boundary", "independent-band-mismatch"],
+      "queue": "search-boundary-review",
       "fit": {
         "top": {
           "score": 99.77934059031804,

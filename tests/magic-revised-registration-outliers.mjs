@@ -25,9 +25,9 @@ try {
   assert.deepEqual(JSON.parse(await fs.readFile(output)), expected);
   assert.equal(expected.status, 'registration-outlier-review-queue-not-accepted');
   assert.deepEqual(expected.summary.byQueue, {
-    'independent-displacement-review': 33,
+    'independent-displacement-review': 30,
     'profile-shape-review': 13,
-    'search-boundary-review': 1,
+    'search-boundary-review': 4,
     'parent-registration-review': 11,
   });
   const all = Object.values(poses.groups).flatMap((g) => g.rows),
@@ -40,7 +40,7 @@ try {
     assert.equal(r.referenceHash, p.referenceHash);
     assert.deepEqual(r.diagnosticTransform, p.transform);
     if (r.queue === 'profile-shape-review') {
-      assert(p.parentAccepted && p.bounded);
+      assert(p.parentAccepted && p.bounded && !p.endpoints.boundary && !p.endpoints.coarseBoundary);
       assert(r.verification.every((b) => Math.abs(b.shift) <= 0.5));
       assert(!p.fitPassed || !p.independentPassed);
     }

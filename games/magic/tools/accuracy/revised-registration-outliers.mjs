@@ -26,13 +26,14 @@ for (const [material, g] of Object.entries(poses.groups))
     });
     const failureTypes = [];
     if (!r.parentAccepted) failureTypes.push('parent-registration');
-    if (!r.bounded) failureTypes.push('vertical-search-boundary');
+    const searchBoundary = !r.bounded || r.endpoints.boundary || r.endpoints.coarseBoundary;
+    if (searchBoundary) failureTypes.push('vertical-search-boundary');
     if (!r.fitPassed) failureTypes.push('fit-profile-mismatch');
     if (!r.independentPassed) failureTypes.push('independent-band-mismatch');
     assert(failureTypes.length, 'Unexplained rejected registration');
     const queue = !r.parentAccepted
       ? 'parent-registration-review'
-      : !r.bounded
+      : searchBoundary
         ? 'search-boundary-review'
         : verification.some((b) => !b.displacementPassed)
           ? 'independent-displacement-review'
