@@ -276,6 +276,21 @@ try {
         },
       );
       if (fourth) {
+        for (const text of [
+          'Unpredictable as the sea itself, Water Elementals shift without warning from tranquility to tempest. Capricious and fickle, they flow restlessly from one shape to another, expressing their moods with their physical forms.',
+          'The forest keeps its oldest stories.',
+        ]) {
+          const paragraphs = [{ role: 'flavor', runs: [{ text, italic: true }] }];
+          faces.push({
+            ...faces[1],
+            name:
+              text.length > 100 ? 'Regular pure-flavor control' : 'Centered pure-flavor control',
+            typeLine: 'Summon Elemental',
+            rulesText: text,
+            rulesParagraphs: paragraphs,
+            rulesAlignment: { mode: 'auto', reference: paragraphs },
+          });
+        }
         faces.push(
           {
             ...faces[1],
@@ -605,7 +620,7 @@ try {
       }),
     );
   }
-  assert.equal(rows.length, fourth ? 432 : abuDuals ? 288 : revised ? 160 : 120);
+  assert.equal(rows.length, fourth ? 480 : abuDuals ? 288 : revised ? 160 : 120);
   if (fourth) assert(rows.every((r) => r.set === '4ed'));
   if (revised) assert(rows.every((r) => r.set === '3ed'));
   for (const row of rows) {
@@ -632,7 +647,7 @@ try {
       boundedFilterPairs: rows.filter((r) => r.rasterEnvelope).length,
       sparseTwoByteRoundingCases: rows.filter((r) => r.rounding).length,
       scope: fourth
-        ? 'Current Fourth white-border profiles, pure/mixed/compact bodies, reviewed centered formatting and chosen wording reference and basic/nonbasic controls: exact browser/worker text metrics/draws, assets and masks at table/native/inspect/323px; face filters stay within one 8-bit level/card, three levels/64px tile with exact alpha, Original and both Oracle symbol modes, face/etching. Synthetic assets and local fonts test portability,not scan accuracy.'
+        ? 'Current Fourth white-border profiles, pure/mixed/compact and regular/centered pure-flavor bodies, reviewed centered formatting and chosen wording reference and basic/nonbasic controls: exact browser/worker text metrics/draws, assets and masks at table/native/inspect/323px; face filters stay within one 8-bit level/card, three levels/64px tile with exact alpha, Original and both Oracle symbol modes, face/etching. Synthetic assets and local fonts test portability,not scan accuracy.'
         : abuDuals
           ? 'Current Alpha/Beta/Unlimited BG/UR/WU duals and basic controls: browser/worker geometry, alpha and asset requests match (at most 0.01% color pixels may differ by at most two byte levels at antialiased bitmap corners) at table/native/inspect/323px, Original and both Oracle symbol modes, face/default etching. Synthetic assets and local fonts test portability, not scan accuracy.'
           : revised

@@ -55,14 +55,16 @@ const priorDirectory = await fs.mkdtemp(path.join(os.tmpdir(), 'glint-fourth-det
 let verified;
 try {
   await fs.cp('games/magic/src', priorDirectory, { recursive: true });
-  const { files } = await (
-    await import('../games/magic/tools/accuracy/ice-defaults-ancestry.mjs')
-  ).iceDefaultsDelta();
-  for (const [file, record] of Object.entries(files))
+  const sourceFiles = (
+    await fs.readdir('games/magic/src', { recursive: true, withFileTypes: true })
+  ).filter((e) => e.isFile() && /\.(ts|mjs|css|json)$/.test(e.name));
+  for (const entry of sourceFiles) {
+    const file = path.join(entry.parentPath, entry.name);
     await fs.writeFile(
       path.join(priorDirectory, path.relative('games/magic/src', file)),
-      record.beforeSource,
+      await preIceDefaultsSource(file, await fs.readFile(file)),
     );
+  }
   verified = await verifyMetadataRefresh(priorDirectory, metadata);
   const badMeta = structuredClone(metadata);
   badMeta.beforeRendererHash = '0'.repeat(64);

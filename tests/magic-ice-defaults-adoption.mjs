@@ -1,3 +1,7 @@
+import {
+  fourthFlavorHistoricalHash,
+  preFourthFlavorSource,
+} from '../games/magic/tools/accuracy/fourth-flavor-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -9,10 +13,10 @@ import {
 } from '../games/magic/tools/accuracy/ice-defaults-ancestry.mjs';
 import { fourthDetailsDelta } from '../games/magic/tools/accuracy/fourth-details-ancestry.mjs';
 const delta = await iceDefaultsDelta();
-assert.equal(await sourceHash('games/magic/src'), delta.afterRenderer);
+assert.equal(await fourthFlavorHistoricalHash(), delta.afterRenderer);
 assert.equal(await iceDefaultsHistoricalHash(), delta.beforeRenderer);
 for (const [file, r] of Object.entries(delta.files)) {
-  const b = await fs.readFile(file);
+  const b = await preFourthFlavorSource(file, await fs.readFile(file));
   assert.equal(hash(b), r.after);
   assert.equal(hash(await preIceDefaultsSource(file, b)), r.before);
   const unknown = Buffer.concat([b, Buffer.from('\n// unknown source edit\n')]);

@@ -114,6 +114,7 @@ import { paintFittedText, paintMana, paintSetSymbol } from './canvas-text.js';
 import { ordinaryTextLayout, paintRulesLayout } from './rules-paint.js';
 export { ordinaryTextLayout } from './rules-paint.js';
 export { retroTextLayout } from './retro-rules.js';
+import { fractionalFlavorRevision } from './retro-rules.js';
 import { paintEtchingMask, type EtchingResolver } from './canvas-etching.js';
 import { fullResolutionScan } from '../scan-url.js';
 import type { AbilityEmblem } from '../emblems.js';
@@ -241,6 +242,12 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     input.paintLayer !== 'artwork' &&
     fourthDetailRevision(face)
       ? [fourthDetailRevision(face)]
+      : []),
+    ...(!input.printedImage &&
+    input.layer !== 'etching' &&
+    input.paintLayer !== 'artwork' &&
+    fractionalFlavorRevision(face)
+      ? [fractionalFlavorRevision(face)]
       : []),
     ...(matrixHeadings ? ['matrix-heading-alphabetic-v1'] : []),
     ...(!input.printedImage &&

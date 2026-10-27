@@ -1,3 +1,4 @@
+import { fourthFlavorApproval } from './fourth-flavor-ancestry.mjs';
 import { preFourthDetailsSource, fourthDetailsApproval } from './fourth-details-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -85,6 +86,11 @@ export async function fourthCenteredAffected(set, task, original = false, group)
 export async function fourthCenteredApproval(item, group) {
   const p = await fourthCenteredDelta(),
     proof = item.proof;
+  if (
+    proof?.reviewedCenteringSource === p.afterRenderer &&
+    (await fourthFlavorApproval(item, group))
+  )
+    return true;
   if (
     proof?.reviewedCenteringSource === p.afterRenderer &&
     (await fourthDetailsApproval(item, group))

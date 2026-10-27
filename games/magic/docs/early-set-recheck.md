@@ -607,3 +607,18 @@ For the following release, calibrate Mirage and Onslaught independently. Compare
 Fourth, Mirage and Onslaught against each remaining major old-frame set, then
 choose the best donor per set. Keep independently calibrated set profiles ahead
 of inherited defaults. Do not replace every later old frame with Fourth.
+
+### Fourth pure-flavor precision
+
+The next typography pass covers all 19 flavor-only originals. Enabling the
+existing fractional policy in that path improves its regional index from
+45.97 to 55.53/100 and the 378-card whole mean from 80.09 to 80.22/100.
+It preserves native bounds, type range, spacing, alignment, centered sizes and
+explicit material choices. No per-card offsets or new font are introduced.
+
+Sixteen Fourth originals and four inherited Ice examples change inside the
+text region. Both Oracle modes, masks and other controls remain exact.
+362 Fourth whole-card scores are reused. See the
+[pure-flavor evidence](../fixtures/accuracy/4ed/flavor-fractional-adoption.json).
+Water Elemental's remaining wrap difference and the full normalization/source
+audit are still open.

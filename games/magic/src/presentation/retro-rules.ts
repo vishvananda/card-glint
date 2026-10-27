@@ -4,7 +4,11 @@ import { earlyRulesModel } from './alpha-rules.js';
 import { alphaTextLayout, earlyTextTierLayout, fractionalEarlyRules } from './early-text-tiers.js';
 import { adjustCalibrationRules } from '../calibration/rules-adjustment.js';
 import { calibrationForFace } from '../calibration/selection.js';
-import { calibratedBodyLayout, calibratedBodyClasses } from '../calibration/body.js';
+import {
+  calibratedBodyLayout,
+  calibratedBodyClasses,
+  isPureFlavorPair,
+} from '../calibration/body.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
 import { retroBasicPrinting } from './retro-basic.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
@@ -73,8 +77,9 @@ export function retroTextLayout(context: CanvasContext, face: RenderedCardInput)
     if (
       classes &&
       base &&
-      paragraphs.every((p) => p.role === 'rules') &&
-      reference.every((p) => p.role === 'rules')
+      ((paragraphs.every((p) => p.role === 'rules') &&
+        reference.every((p) => p.role === 'rules')) ||
+        isPureFlavorPair(paragraphs, reference))
     ) {
       const referenceBase =
         reference === paragraphs
@@ -326,4 +331,22 @@ function baseRetroTextLayout(context: CanvasContext, face: RenderedCardInput) {
       centerOffset: -18,
     },
   );
+}
+
+/** No font measurement or IO in cache queries. Centered flavor may keep identical
+ * pixels, but shares this semantic policy revision; unrelated faces keep keys. */
+export function fractionalFlavorRevision(face: RenderedCardInput) {
+  const frame = earlyReprintFrame(face);
+  const classes = frame && calibrationForFace(face)?.bodyClasses;
+  if (!classes?.typography.fractionalMetrics || !classes.materials.includes(frame?.material ?? ''))
+    return undefined;
+  const paragraphs = wordingParagraphs({
+    rulesText: face.rulesText ?? '',
+    rulesParagraphs: face.rulesParagraphs,
+  });
+  const reference =
+    face.rulesAlignment?.mode === 'auto'
+      ? (face.rulesAlignment.reference ?? paragraphs)
+      : paragraphs;
+  return isPureFlavorPair(paragraphs, reference) ? 'fractional-pure-flavor-v1' : undefined;
 }

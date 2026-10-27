@@ -221,3 +221,33 @@ fixed. Exact graph and image joins reuse 371 prior scores and seven prototype
 scores. The metadata-only capture refresh is separately verified and recorded;
 the raw capture's terminal source guard failed when the build manifest refreshed.
 This regional adoption does not complete the full Fourth audit.
+
+## Pure-flavor fractional metrics
+
+The [pure-flavor adoption](flavor-fractional-adoption.json) enables the profile's
+existing fractional-metrics policy for flavor-only bodies. It reuses the native
+layout request, including its bounds, type range, spacing and alignment.
+Centered sizes and explicit material choices remain authoritative. There are
+no per-card geometric values or new font assets.
+
+All 19 pure-flavor Originals were measured. Sixteen change; three centered
+cards retain their pixels. Their regional filled-ink/edge mean improves from
+45.97 to 55.53/100, with 15 gains, one 0.05-point loss and three ties.
+
+The full 378-card mean rises from 80.09 to 80.22/100. Sixteen changed pairs are
+rescored after reproducing their previous metrics; 362 exact native matches
+reuse their scores. Gray Ogre loses 0.0184 whole-card points. Water Elemental
+and other wrapping outliers remain open.
+
+The 1,968-variant replay includes 378 Fourth cards, 110 existing later-set
+controls and four additional Ice Age flavor-only cards. Twenty Original bodies
+change, including the four inherited Ice cases; all changes stay inside the
+text region. Oracle versions and etching masks retain exact pixels and keys.
+Three centered Fourth cards share the new semantic cache revision while
+retaining identical pixels. Byte-identical PNG controls skip decoding; all
+changed pixels and the fixed prototypes receive full RGBA checks.
+
+The source graph, original inputs, references, poses, metric definitions and
+historical guards are bound in the evidence. The normalization remains a
+development result awaiting visual boundary review. This regional change does
+not complete the Fourth or Ice Age audit.

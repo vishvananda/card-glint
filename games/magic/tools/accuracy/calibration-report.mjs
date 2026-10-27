@@ -1,3 +1,4 @@
+import { fourthFlavorAffected, fourthFlavorApproval } from './fourth-flavor-ancestry.mjs';
 import { fourthDetailsAffected, fourthDetailsApproval } from './fourth-details-ancestry.mjs';
 import { fourthCenteredAffected, fourthCenteredApproval } from './fourth-centered-ancestry.mjs';
 import { wallWordingAffected } from './wall-wording-data.mjs';
@@ -126,6 +127,14 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (
+          (await fourthFlavorAffected(set.set, task, original, group)) &&
+          !(await fourthFlavorApproval(item, group))
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Pure-flavor bodies now use fractional native metrics. Current body/whole-card evidence is required for affected groups. Words, margins, other regions and unrelated groups retain their evidence.';
+        }
         if (
           (await fourthDetailsAffected(set.set, task, original, group)) &&
           !(await fourthDetailsApproval(item, group))

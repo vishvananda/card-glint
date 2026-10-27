@@ -1,3 +1,4 @@
+import { fourthFlavorApproval } from './fourth-flavor-ancestry.mjs';
 import { preIceDefaultsSource } from './ice-defaults-ancestry.mjs';
 // Exact semantic-detail source/native evidence; historical receipts remain immutable.
 import assert from 'node:assert/strict';
@@ -106,6 +107,8 @@ export async function fourthDetailsAffected(set, task, original = false, group) 
 export async function fourthDetailsApproval(item, group) {
   const p = await fourthDetailsDelta(),
     proof = item.proof;
+  if (proof?.semanticDetailsSource === p.afterRenderer && (await fourthFlavorApproval(item, group)))
+    return true;
   if (
     proof?.semanticDetailsSource !== p.afterRenderer ||
     proof.nativeReplayHash !== p.native.contentSha256 ||

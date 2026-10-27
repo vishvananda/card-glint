@@ -1,3 +1,4 @@
+import { preFourthFlavorSource } from './fourth-flavor-ancestry.mjs';
 // Exact source projection for an inherited Ice Age default, not set validation.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -38,6 +39,7 @@ export function iceDefaultsDelta() {
   })());
 }
 export async function preIceDefaultsSource(file, bytes) {
+  bytes = await preFourthFlavorSource(file, bytes);
   const r = (await iceDefaultsDelta()).files[file];
   return r && hash(bytes) === r.after ? Buffer.from(r.beforeSource) : bytes;
 }

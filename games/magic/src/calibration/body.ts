@@ -1,6 +1,6 @@
 import type { CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, RulesParagraph } from '../presentation/face-layout.js';
-import { layoutRules, type RulesLayout } from '../presentation/rules-layout.js';
+import { layoutRules, rulesLayoutRequest, type RulesLayout } from '../presentation/rules-layout.js';
 import type { CalibratedBody, CalibratedBodyClasses } from './types.js';
 
 /** Fit the displayed wording; select a short-text policy using the supplied
@@ -43,6 +43,18 @@ export function calibratedBodyLayout(
   );
 }
 
+/** The same semantic pair selects both the fit and its scoped face revision. */
+export function isPureFlavorPair(
+  paragraphs: readonly RulesParagraph[],
+  reference: readonly RulesParagraph[],
+): boolean {
+  return (
+    paragraphs.length > 0 &&
+    reference.length > 0 &&
+    [...paragraphs, ...reference].every((p) => p.role === 'flavor')
+  );
+}
+
 /** Refine measured size classes without reclassifying already-correct text.
  * The reference layout chooses a class; visible Oracle text still fits safely. */
 export function calibratedBodyClasses(
@@ -54,6 +66,26 @@ export function calibratedBodyClasses(
   paragraphs: readonly RulesParagraph[],
   reference: readonly RulesParagraph[],
 ): RulesLayout {
+  // Pure flavor uses its existing physical request, not the rules-only
+  // centering/compact classifier. Fractional advances remove word-by-word
+  // rounding without changing margins, leading or the allowed type range.
+  if (isPureFlavorPair(paragraphs, reference)) {
+    if (!profile.typography.fractionalMetrics || referenceBase.size === profile.centered.size)
+      return base;
+    const request = rulesLayoutRequest(base);
+    if (!request) throw Error('Missing native flavor layout request');
+    // An explicit material-level choice, including false, remains authoritative.
+    if (request.typography.fractionalMetrics !== undefined) return base;
+    const precise = layoutRules(
+      context,
+      request.paragraphs,
+      request.bounds,
+      request.maximumSize,
+      request.minimumSize,
+      { ...request.typography, fractionalMetrics: true },
+    );
+    return precise.overflow ? base : precise;
+  }
   if (
     !reference.length ||
     !paragraphs.length ||
