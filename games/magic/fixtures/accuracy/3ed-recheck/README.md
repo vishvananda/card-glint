@@ -627,3 +627,34 @@ and outlier review, or certify Revised as a whole.
 ```sh
 node tests/magic-revised-heading-adoption.mjs
 ```
+
+## Mana placement follow-up
+
+The native placement study varies only shared cost translation and spacing.
+Disc size, glyphs, numerals and pigments stay fixed. It checks the full native
+baseline, the retained cost callback and one changed public-control sentinel
+per card before scoring the grid. One browser retains common decoded assets;
+only the cost region is read for each trial. This is preparation work, not a
+per-frame rendering benchmark.
+
+The full matrix covers all 223 accepted frame poses and 54 candidates. Its
+mean-minus-quarter-worst-loss selector retains the current shared placement.
+A mean-only choice moves right 0.25px: calibration improves 83.67 to 83.93/100
+and reused validation improves 82.53 to 82.76/100, with individual losses up to
+1.97/100. The black-material candidate improves 74.56 to 76.15/100, with 36 gains
+and 2 losses. These are row diagnostics; no mana-placement values were adopted.
+
+Independent perimeter measurements accept 361 of 413 circles. The measured
+adjacent pitch is 26.875px versus 27px in the renderer. Some row objectives prefer
+the opposite spacing direction. Check the physical perimeter, glyph placement,
+and remaining frame geometry before adopting either result. The 30-card pilot
+did not predict the full shared selection.
+
+The `mana-placement-*` files retain the full grid, pilot, circle measurements,
+executed tool and numerical modules. `mana-placement-review.json` records the
+mean-only and regularized candidates and their limitations.
+
+```sh
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-mana-ring-study.mjs inputs.json poses.json native new-rings.json
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-mana-placement-study.mjs inputs.json poses.json native new-rings.json new-placement.json full
+```

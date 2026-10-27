@@ -1,0 +1,318 @@
+{
+  "schema": 1,
+  "status": "native-mana-placement-diagnostic-not-adopted",
+  "rendererHash": "a5d1bebfb7f829aa9c1a68eb1704e32be1770985d36ae1e54b51a09f224d6b1f",
+  "artifacts": {
+    "full": {
+      "file": "mana-placement-full.json.gz",
+      "sha256": "7468d0d9c3d4c96e04af9151292e5fc300f315e8bb73db0518fe22d3e04d5137",
+      "contentSha256": "c70b98b53890f90b63bfa62c925b9f458c6f58e0456033baf670ee23ce964e34"
+    },
+    "pilot": {
+      "file": "mana-placement-pilot.json.gz",
+      "sha256": "b87f43789c89d977d81828c8700f758cdf1c8f41b2c854eb75e14874c373ab7b",
+      "contentSha256": "8f3024829d22879053043cec09d325fe93090ba81d40ec7c4c24b77f6de30f7c"
+    },
+    "rings": {
+      "file": "mana-placement-rings.json.gz",
+      "sha256": "5605a97e641bf940043f2b840ed47600a30cb6c6fab2b3a6a300c8e9dc1237e9",
+      "contentSha256": "d81cc4fb2d93620b46287a4e14c94621899b558611782265ee281766945b5817"
+    },
+    "tool": {
+      "file": "mana-placement-tool.mjs.gz",
+      "sha256": "e0008cb2e6420e8f5a0a9f6fca0a5690fe10bd2c2f404877a1bf76c1b118d4ef",
+      "contentSha256": "8e4ea024c2b625a047aa3bb1aeab64967c647a2f414854eab05ae3fbe68f9c25"
+    },
+    "modules": {
+      "file": "mana-placement-modules.json.gz",
+      "sha256": "264330ca3bd76457af03bc3b7b8c0cb52f7eb72915031ca3f422c962b24acf95",
+      "contentSha256": "ef9eae8908b64f8701d3476f2c08129a5712e77fbb2ec792e3b9512f8cbec6d6"
+    }
+  },
+  "scope": "223 accepted frame-interior poses,Original wording;58 rejected nonlands and25 lands remain outside.54 shared position/pitch candidates keep disc size,glyphs,numerals and color fixed. All223 baseline full PNGs equal the frozen native capture; zero retained-callback/crop error,and one changed public-control sentinel per card is byte-exact. Remaining grid points reuse that callback. No renderer defaults change.",
+  "selection": "Calibration mean minus one quarter of worst calibration loss; validation names are reused development data. This matrix selects current shared/W/U/artifact placement. Per-material candidates are proposals,not approved profiles. Mean-only ranking is also retained for review.",
+  "meanOnly": {
+    "index": 22,
+    "candidate": {
+      "name": "placement/0.25/0/0",
+      "delta": {
+        "dx": 0.25,
+        "dy": 0,
+        "spacing": 0
+      }
+    },
+    "summary": {
+      "calibration": {
+        "cards": 152,
+        "before100": 83.66928551274472,
+        "after100": 83.93019906213321,
+        "worstLoss100": 1.974392611665643
+      },
+      "validation": {
+        "cards": 71,
+        "before100": 82.53041801045833,
+        "after100": 82.75967837874028,
+        "worstLoss100": 1.4888251657588891
+      }
+    }
+  },
+  "groups": {
+    "all": {
+      "index": 0,
+      "candidate": {
+        "name": "current",
+        "delta": {}
+      },
+      "calibrationObjective": 0.8366928551274465,
+      "summary": {
+        "all": {
+          "cards": 223,
+          "before100": 83.30668644251008,
+          "after100": 83.30668644251008,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "calibration": {
+          "cards": 152,
+          "before100": 83.66928551274465,
+          "after100": 83.66928551274465,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "validation": {
+          "cards": 71,
+          "before100": 82.53041801045832,
+          "after100": 82.53041801045832,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        }
+      }
+    },
+    "W": {
+      "index": 0,
+      "candidate": {
+        "name": "current",
+        "delta": {}
+      },
+      "calibrationObjective": 0.878505725354717,
+      "summary": {
+        "all": {
+          "cards": 39,
+          "before100": 88.0643142700824,
+          "after100": 88.0643142700824,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "calibration": {
+          "cards": 30,
+          "before100": 87.8505725354717,
+          "after100": 87.8505725354717,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "validation": {
+          "cards": 9,
+          "before100": 88.77678671878463,
+          "after100": 88.77678671878463,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        }
+      }
+    },
+    "U": {
+      "index": 0,
+      "candidate": {
+        "name": "current",
+        "delta": {}
+      },
+      "calibrationObjective": 0.8521996149918759,
+      "summary": {
+        "all": {
+          "cards": 43,
+          "before100": 85.36973111946271,
+          "after100": 85.36973111946271,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "calibration": {
+          "cards": 28,
+          "before100": 85.21996149918759,
+          "after100": 85.21996149918759,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "validation": {
+          "cards": 15,
+          "before100": 85.64930107730954,
+          "after100": 85.64930107730954,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        }
+      }
+    },
+    "B": {
+      "index": 18,
+      "candidate": {
+        "name": "placement/0.25/-0.25/-0.125",
+        "delta": {
+          "dx": 0.25,
+          "dy": -0.25,
+          "spacing": -0.125
+        }
+      },
+      "calibrationObjective": 0.7723534087493009,
+      "summary": {
+        "all": {
+          "cards": 38,
+          "before100": 74.559480138916,
+          "after100": 76.1510869071007,
+          "gains": 36,
+          "losses": 2,
+          "worstLoss100": 0.19639615274726907
+        },
+        "calibration": {
+          "cards": 21,
+          "before100": 75.57366099902383,
+          "after100": 77.28443991311691,
+          "gains": 20,
+          "losses": 1,
+          "worstLoss100": 0.19639615274726907
+        },
+        "validation": {
+          "cards": 17,
+          "before100": 73.30666848819453,
+          "after100": 74.75106260555128,
+          "gains": 16,
+          "losses": 1,
+          "worstLoss100": 0.08053355640085247
+        }
+      }
+    },
+    "R": {
+      "index": 22,
+      "candidate": {
+        "name": "placement/0.25/0/0",
+        "delta": {
+          "dx": 0.25,
+          "dy": 0,
+          "spacing": 0
+        }
+      },
+      "calibrationObjective": 0.8265552803996982,
+      "summary": {
+        "all": {
+          "cards": 39,
+          "before100": 83.32445173746123,
+          "after100": 83.68903425016974,
+          "gains": 27,
+          "losses": 12,
+          "worstLoss100": 1.060227758315857
+        },
+        "calibration": {
+          "cards": 26,
+          "before100": 82.53871950971792,
+          "after100": 82.92058497954878,
+          "gains": 16,
+          "losses": 10,
+          "worstLoss100": 1.060227758315857
+        },
+        "validation": {
+          "cards": 13,
+          "before100": 84.89591619294788,
+          "after100": 85.22593279141162,
+          "gains": 11,
+          "losses": 2,
+          "worstLoss100": 0.669378557550826
+        }
+      }
+    },
+    "G": {
+      "index": 20,
+      "candidate": {
+        "name": "placement/0.25/-0.25/0.125",
+        "delta": {
+          "dx": 0.25,
+          "dy": -0.25,
+          "spacing": 0.125
+        }
+      },
+      "calibrationObjective": 0.8698346613599263,
+      "summary": {
+        "all": {
+          "cards": 31,
+          "before100": 86.31787599566975,
+          "after100": 86.60403821233353,
+          "gains": 18,
+          "losses": 13,
+          "worstLoss100": 0.6913661927172465
+        },
+        "calibration": {
+          "cards": 20,
+          "before100": 86.94105531268296,
+          "after100": 87.15630768417194,
+          "gains": 12,
+          "losses": 8,
+          "worstLoss100": 0.6913661927172465
+        },
+        "validation": {
+          "cards": 11,
+          "before100": 85.18482269200938,
+          "after100": 85.59991189990008,
+          "gains": 6,
+          "losses": 5,
+          "worstLoss100": 0.45581197991596545
+        }
+      }
+    },
+    "A": {
+      "index": 0,
+      "candidate": {
+        "name": "current",
+        "delta": {}
+      },
+      "calibrationObjective": 0.8237705945962843,
+      "summary": {
+        "all": {
+          "cards": 33,
+          "before100": 82.21867766982037,
+          "after100": 82.21867766982037,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "calibration": {
+          "cards": 27,
+          "before100": 82.37705945962843,
+          "after100": 82.37705945962843,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "validation": {
+          "cards": 6,
+          "before100": 81.5059596156841,
+          "after100": 81.5059596156841,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        }
+      }
+    }
+  },
+  "pilotTransfer": "The30-card pilot selected shared dx+0.25,dy0,spacing+0.125. That regularized winner did not survive the full223 matrix. Its green boundary fit also lost on both pilot validation cards. Do not adopt from the pilot.",
+  "independentGeometry": "361accepted circles out of413,plus140accepted adjacent pairs. Median all-circle source-minus-native dx+0.5,dy0,radius-0.125;median scan pitch26.875 versus27. Row-objective spacing and physical-perimeter measurements disagree for some materials;geometry and glyph positioning need separate review.",
+  "next": [
+    "Localize the objective to independently measured perimeters/glyph regions,or robustly fit dx-rightIndex*spacing from circle centers",
+    "Inspect black candidate(native row74.56->76.15/100,36gains2losses)and verify physical circle/glyph placement before adoption",
+    "Resolve frame/land exclusions and remaining Revised components;this diagnostic does not complete Revised or through-Fourth"
+  ]
+}
