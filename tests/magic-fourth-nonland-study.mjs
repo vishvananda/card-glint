@@ -16,7 +16,16 @@ const z = await fs.readFile(review.artifact.file),
   study = JSON.parse(raw);
 assert.equal(hash(z), review.artifact.sha256);
 assert.equal(hash(raw), review.artifact.contentSha256);
-assert.equal(hash(await fs.readFile(review.tool.file)), review.tool.sha256);
+// The CLI now supports new request studies. Preserve the exact original
+// implementation for this immutable rejected trial instead of rewriting it.
+const historicalTool = await fs.readFile(
+  'games/magic/fixtures/accuracy/4ed/nonland-study-original-tool.mjs.gz',
+);
+assert.equal(
+  hash(historicalTool),
+  '74f174846bc0444ef92a48dafbafa78a816d3950132a3a84ce351341a5a88af1',
+);
+assert.equal(hash(gunzipSync(historicalTool)), review.tool.sha256);
 assert.equal(study.toolHash, review.tool.sha256);
 assert(!/\/home\/|\/Users\/|127\.0\.0\.1/.test(raw.toString()));
 assert.equal(review.status, 'rejected-shared-nonland-policy');
