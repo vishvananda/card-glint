@@ -1,3 +1,4 @@
+import { preFourthDetailsSource, fourthDetailsApproval } from './fourth-details-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -63,6 +64,7 @@ export function fourthCenteredDelta() {
   })());
 }
 export async function preFourthCenteredSource(file, bytes) {
+  bytes = await preFourthDetailsSource(file, bytes);
   const e = (await fourthCenteredDelta()).files[file];
   return e && e.beforeSource !== null && hash(bytes) === e.after
     ? Buffer.from(e.beforeSource)
@@ -83,6 +85,11 @@ export async function fourthCenteredAffected(set, task, original = false, group)
 export async function fourthCenteredApproval(item, group) {
   const p = await fourthCenteredDelta(),
     proof = item.proof;
+  if (
+    proof?.reviewedCenteringSource === p.afterRenderer &&
+    (await fourthDetailsApproval(item, group))
+  )
+    return true;
   if (
     proof?.reviewedCenteringSource !== p.afterRenderer ||
     proof.nativeReplayHash !== p.native.contentSha256 ||

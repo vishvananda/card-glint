@@ -6,7 +6,7 @@ import { paintPrintingElement } from './printing-elements.js';
 import type { RenderedCardInput, FaceRect } from './face-layout.js';
 import { paintMana } from './canvas-text.js';
 import { paintEarlyMana } from './historic-cost.js';
-import { resolveFrameColors } from './profile.js';
+import { resolveFrameColors, resolveCardProfile } from './profile.js';
 import type { RetroSymbolPalette } from './retro-symbol-material.js';
 
 /** Shared right edge leaves room for wide expressions without squeezing their glyphs. */
@@ -32,7 +32,7 @@ export function retroStatsText(face: RenderedCardInput): string {
 /** Set policies measured from cached development scans; no per-card geometry. */
 export function retroPrintDetails(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
-  const fourth = set === '4ed' && !/\bLand\b/.test(face.typeLine ?? '');
+  const fourth = set === '4ed' && !resolveCardProfile(face).land;
   if (set !== 'mir' && set !== 'tmp' && !fourth) return null;
   const colors = resolveFrameColors(face);
   return {
@@ -68,6 +68,16 @@ export function retroPrintDetails(face: RenderedCardInput) {
             : '©1997 Wizards of the Coast, Inc.'
         : face.legalText,
   };
+}
+
+/** Old printed labels such as Enchant Land must use the ordinary detail policy.
+ * Invalidate only the rebuilt faces whose previous label-based branch differed. */
+export function fourthDetailRevision(face: RenderedCardInput) {
+  return face.setCode?.toLowerCase() === '4ed' &&
+    /\bLand\b/.test(face.typeLine ?? '') &&
+    !resolveCardProfile(face).land
+    ? 'fourth-semantic-details-v1'
+    : undefined;
 }
 
 /** The tilted-card tap mark, distinct from both the diagonal T and modern arrow. */

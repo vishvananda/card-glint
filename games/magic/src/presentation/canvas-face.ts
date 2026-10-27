@@ -15,6 +15,7 @@ import {
   modernWalkerProfile,
 } from './modern-printing-profile.js';
 import { ALPHA_RULES_REVISION } from './early-text-tiers.js';
+import { fourthDetailRevision } from './retro-details.js';
 import { REVISED_RULES_REVISION, usesRevisedFractionalRules } from './retro-rules.js';
 import { usesRevisedLettering } from './revised-lettering.js';
 import { retroDualFrameRevision, abuDualArtBottom } from './retro-dual-frame.js';
@@ -235,6 +236,12 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
     'canvas-face-v148',
+    ...(!input.printedImage &&
+    input.layer !== 'etching' &&
+    input.paintLayer !== 'artwork' &&
+    fourthDetailRevision(face)
+      ? [fourthDetailRevision(face)]
+      : []),
     ...(matrixHeadings ? ['matrix-heading-alphabetic-v1'] : []),
     ...(!input.printedImage &&
     input.layer !== 'etching' &&

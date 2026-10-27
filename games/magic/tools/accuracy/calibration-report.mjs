@@ -1,3 +1,4 @@
+import { fourthDetailsAffected, fourthDetailsApproval } from './fourth-details-ancestry.mjs';
 import { fourthCenteredAffected, fourthCenteredApproval } from './fourth-centered-ancestry.mjs';
 import { wallWordingAffected } from './wall-wording-data.mjs';
 import { fourthParagraphDelta, fourthParagraphAffected } from './fourth-paragraph-ancestry.mjs';
@@ -125,6 +126,15 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (
+          (await fourthDetailsAffected(set.set, task, original, group)) &&
+          !(await fourthDetailsApproval(item, group))
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Fourth Enchant Land costs now use semantic nonland geometry. The seven changed cost bands and current whole-card/publication evidence require review. Original words, other pixels and printing groups retain their evidence.';
+          continue;
+        }
         if (
           (await fourthCenteredAffected(set.set, task, original, group)) &&
           !(await fourthCenteredApproval(item, group))

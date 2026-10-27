@@ -1,3 +1,7 @@
+import {
+  fourthDetailsHistoricalHash,
+  preFourthDetailsSource,
+} from '../games/magic/tools/accuracy/fourth-details-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -17,10 +21,10 @@ import {
 } from '../games/magic/tools/accuracy/fourth-centered-data-check.mjs';
 
 const p = await fourthCenteredDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await fourthDetailsHistoricalHash(), p.afterRenderer);
 assert.equal(await fourthCenteredHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {
-  const current = await fs.readFile(file);
+  const current = await preFourthDetailsSource(file, await fs.readFile(file));
   assert.equal(hash(current), r.after);
   const restored = await preFourthCenteredSource(file, current);
   if (r.before !== null) assert.equal(hash(restored), r.before);

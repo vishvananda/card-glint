@@ -276,6 +276,29 @@ try {
         },
       );
       if (fourth) {
+        faces.push(
+          {
+            ...faces[1],
+            name: 'Printed land aura semantic control',
+            typeLine: 'Enchant Land',
+            canonicalTypeLine: 'Enchantment — Aura',
+            land: false,
+          },
+          {
+            ...faces[0],
+            name: 'Actual land semantic control',
+            typeLine: 'Land',
+            canonicalTypeLine: 'Land',
+            land: true,
+            creature: false,
+            artifact: false,
+            colors: [],
+            manaSymbols: [],
+            power: undefined,
+            toughness: undefined,
+            rulesText: '{T}: Add {C}.',
+          },
+        );
         const reviewedRules = [
           {
             role: 'rules',
@@ -582,7 +605,7 @@ try {
       }),
     );
   }
-  assert.equal(rows.length, fourth ? 384 : abuDuals ? 288 : revised ? 160 : 120);
+  assert.equal(rows.length, fourth ? 432 : abuDuals ? 288 : revised ? 160 : 120);
   if (fourth) assert(rows.every((r) => r.set === '4ed'));
   if (revised) assert(rows.every((r) => r.set === '3ed'));
   for (const row of rows) {

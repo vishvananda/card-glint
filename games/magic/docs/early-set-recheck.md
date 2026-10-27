@@ -590,3 +590,20 @@ Twist retains a wrapping residual. These development scans are not holdout data,
 and this improvement does not certify the whole set. See the
 [adoption receipt](../fixtures/accuracy/4ed/reviewed-centering-adoption.json)
 and [reproduction steps](../fixtures/accuracy/4ed/README.md#reviewed-original-centering).
+
+Fourth's subsequent semantic-detail fix raises the mean to **80.09/100**, with
+seven gains and no losses. It changes only the cost region of seven Original
+Enchant Land cards. Native Original/Oracle/mask isolation and exact score reuse
+are recorded in the Fourth semantic-detail adoption evidence.
+
+## Old-frame defaults: release sequence
+
+For the current pending release, Ice Age inherits Fourth Edition's measured
+frame and layout starting point where a matching material exists. Its own
+wording, historical symbols and black surround remain set-specific. Inheritance
+is not independent Ice Age validation or a completed checklist.
+
+For the following release, calibrate Mirage and Onslaught independently. Compare
+Fourth, Mirage and Onslaught against each remaining major old-frame set, then
+choose the best donor per set. Keep independently calibrated set profiles ahead
+of inherited defaults. Do not replace every later old frame with Fourth.

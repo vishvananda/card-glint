@@ -209,14 +209,15 @@ other text and component audits remain open.
 
 ## Enchant Land detail policy
 
-The [semantic-detail proposal](semantic-details-proposal.json) identifies seven
-Enchant Land cards that bypass Fourth's ordinary detail placement. The legacy
-check searches the printed type for Land despite an explicit nonland semantic
-flag. A prototype using the semantic trait raises their mean mana index from
-58.77 to 95.32/100. The whole-set mean would rise from 80.02 to 80.09/100, with
-seven gains, no losses and 371 exact native/score reuses.
+The [semantic-detail adoption](semantic-details-adoption.json) fixes seven Enchant
+Land cards that bypassed Fourth's ordinary cost placement. The selector now uses
+the semantic land trait. Their mana index rises from 58.77 to 95.32/100, and the
+whole-set mean rises from 80.02 to 80.09/100: seven gains, no losses.
 
-This is a measured proposal, not integrated behavior. It still needs the
-production selector change, Original/Oracle/etching isolation and historical
-source compatibility checks. Original wording, reference scans and poses stay
-fixed.
+The 1,512-variant native replay changes only those seven Original cost regions
+and their cache keys. The other 371 Originals, both Oracle modes and all etching
+masks retain exact pixels and keys. All words, reference scans and poses stay
+fixed. Exact graph and image joins reuse 371 prior scores and seven prototype
+scores. The metadata-only capture refresh is separately verified and recorded;
+the raw capture's terminal source guard failed when the build manifest refreshed.
+This regional adoption does not complete the full Fourth audit.

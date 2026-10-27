@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "set": "4ed",
+  "status": "semantic-detail-selector-integrated-full-set-audit-open",
+  "beforeRenderer": "6163dce1c733231772e8b9e5a80cf10bc2256a2dd49adacf241252292c79cd72",
+  "afterRenderer": "2b78eb485524707dbbf7ffa1c2a64b6d687e48a38c4d423ae41380326b4997f5",
+  "sourceReceipt": {
+    "file": "games/magic/fixtures/accuracy/4ed/semantic-details-source-delta.json.gz",
+    "sha256": "ebf29b8ca93f7bc8e32f1ca4cbc636d3533bf6fd4b2f3059c19ac333b05c3949",
+    "contentSha256": "fd923746aae8373c40aff02a90125c3a32558da5521b2fbc0dea4ccae586025a"
+  },
+  "nativeEvidence": {
+    "file": "games/magic/fixtures/accuracy/4ed/semantic-details-native-isolation.json.gz",
+    "sha256": "da8143072b89b0cfaf122a573f3f64a736a7d7f3b47a3d834f4918a3a63728d2",
+    "contentSha256": "c19d11ce3b289170b8f027f1a5dae99e9b4deb10bc1a53895dced9403f6d1a8c"
+  },
+  "metadataEvidence": {
+    "file": "games/magic/fixtures/accuracy/4ed/semantic-details-metadata-refresh.json.gz",
+    "sha256": "7eeae07f7ef927890c08cd7ced62fc8149916d83410e46da6eff4ea9afdb10c8",
+    "contentSha256": "41104c89487303b62a4df23b15e8fc7f8ea537f23508e55884e599d412c939cd"
+  },
+  "artifacts": {
+    "scores": {
+      "file": "games/magic/fixtures/accuracy/4ed/semantic-details-integrated-scores.json.gz",
+      "sha256": "fb1bce5272f2e77ca094a4ff8bc532f5f81225814a6b4945b3aa7019d0871369",
+      "contentSha256": "943602af71b9b9e9a0432fa8db2d79ab8709363ec578887bfd70b74a7a1e9e65"
+    },
+    "nativeTool": {
+      "file": "games/magic/fixtures/accuracy/4ed/semantic-details-native-tool.mjs.gz",
+      "sha256": "236e4d4b57d77bc0245b47cc0752e56f26a4f9d37ad9f1a94c212dd1136bdf44",
+      "contentSha256": "52e0fdf3222961eda16cee48f01cebb0a81297f47effe4231f0f21b96b65119a"
+    },
+    "scoreTool": {
+      "file": "games/magic/fixtures/accuracy/4ed/semantic-details-integrated-score-tool.mjs.gz",
+      "sha256": "97bb836b55bbe9ffad0b22e669745dbef0c73b070892657ff4b5b9e968230f8e",
+      "contentSha256": "a9795f36bd078b40e25c36ab8d6763736bc4feeb3ff7ab72216b61aec348b64f"
+    },
+    "metadataTool": {
+      "file": "games/magic/fixtures/accuracy/4ed/semantic-details-metadata-tool.mjs.gz",
+      "sha256": "80590daa7f0e3bcd7b559aa5bbc1bcbb02b47224b10f96f8e0ee98d82730696c",
+      "contentSha256": "c4a7a2a2330b3b5ad5d2ea8594014dcdf133cef865c1f808f331ad5e81cf451e"
+    }
+  },
+  "nativeCounts": {
+    "original": {
+      "changed": 7,
+      "unchanged": 371,
+      "keysChanged": 7
+    },
+    "oracle": {
+      "changed": 0,
+      "unchanged": 378,
+      "keysChanged": 0
+    },
+    "oracle-modern": {
+      "changed": 0,
+      "unchanged": 378,
+      "keysChanged": 0
+    },
+    "etching": {
+      "changed": 0,
+      "unchanged": 378,
+      "keysChanged": 0
+    }
+  },
+  "costRegionNative": [510, 24, 201, 87],
+  "wholeCard": {
+    "cards": 378,
+    "rankedCards": 378,
+    "before100": 80.02004902290798,
+    "current100": 80.0877298704352,
+    "improved": 7,
+    "regressed": 0
+  },
+  "reuse": {
+    "unchangedCurrent": 371,
+    "verifiedPrototype": 7,
+    "fresh": 0
+  },
+  "review": {
+    "cause": "Printed Enchant Land is an aura,not a land card. Select Fourth details from semantic land traits. The existing shared cost placement and spacing then apply;no card-specific offsets.",
+    "changedPrintings": 7,
+    "changedOriginalKeys": 7,
+    "unchangedOriginalPixels": 371,
+    "unchangedOraclePixels": 756,
+    "unchangedEtchingPixels": 378,
+    "wordChanges": 0,
+    "changedOutsideCostBand": 0,
+    "alphaChanges": 0,
+    "metadataRefresh": "The initial renderer-source check caught a generated manifest update during capture. The explicit metadata-only verifier reconstructs the complete captured source hash and proves all emitted tables unchanged. Original captured identity is retained;no executable source exception is accepted.",
+    "scores": "Every current Original PNG equals the measured prototype PNG under identical inputs,reference,pose,region plan and metric graph. Seven measured prototype scores and371 current scores reuse exact bytes;no rescore is needed."
+  },
+  "limitations": [
+    "Full-set component/source/normalization and publication audits remain open.",
+    "These use the cached development scans and existing frozen stock transforms,not new holdout evidence.",
+    "The source receipt reopens only affected mana geometry/color,whole-card and publication groups. Other components and Original input reviews retain their evidence.",
+    "No release or Lab rollout is implied by this integrated selector fix."
+  ]
+}
