@@ -62,7 +62,8 @@ for (const summary of review.rejectedCutoffs.candidates) {
     return (a.metric.score - b.metric.score) * 100;
   });
   assert.equal(deltas.filter((v) => v < -0.05).length, summary.lossesOver005);
-  assert.equal(deltas.reduce((a, b) => a + b, 0) / 360, summary.meanRegionDelta100);
+  // The receipt sums in Python; allow only floating-point accumulation roundoff.
+  assert(Math.abs(deltas.reduce((a, b) => a + b, 0) / 360 - summary.meanRegionDelta100) < 1e-12);
 }
 const native = JSON.parse(gunzipSync(await fs.readFile(p.native.file)));
 const prior = JSON.parse(gunzipSync(await fs.readFile(p.parentScores.file)));
