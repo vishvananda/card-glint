@@ -1,0 +1,2375 @@
+{
+  "schema": 1,
+  "set": "4ed",
+  "status": "rejected-shared-nonland-policy",
+  "rendererHash": "bc433ab4681297c3a055dc23ab082f3e099d40bbf619f6e12a3152ff76a1bb7c",
+  "inputHash": "5e940ac8a08abe43ea60d39c0f3a7f0da4c1460fac72725fba4bfdd01a94c727",
+  "metric": "TextFilledObjective;regional index,out of100;not the whole-card metric",
+  "artifact": {
+    "file": "games/magic/fixtures/accuracy/4ed/nonland-text-study.json.gz",
+    "sha256": "69f610cbb4acd3061a676a9fff49e9535800439ffeddd02c2667c41c3ed65a8c",
+    "contentSha256": "3bc9d5ca3771409cfe62a834fc6af80ca8e721189de2ccfddc608ad02e734f2a"
+  },
+  "tool": {
+    "file": "games/magic/tools/accuracy/fourth-nonland-text-study.mjs",
+    "sha256": "fbd01885657300958173340257a508f90ffca10aa15051aa30a89322752261fb"
+  },
+  "summary": {
+    "printings": 360,
+    "validCandidates": 358,
+    "invalidCandidates": 2,
+    "before100": 58.33632045516929,
+    "candidate100": 56.45666672238414,
+    "improved": 56,
+    "regressed": 82,
+    "unchanged": 220
+  },
+  "invalid": [
+    {
+      "id": "c2ea6dfe-64d6-451a-bd34-31546996e711",
+      "name": "Tempest Efreet",
+      "reason": "fixed class overflows the rules panel"
+    },
+    {
+      "id": "cad56033-c1f9-4477-9dd6-ba7009c30593",
+      "name": "Bronze Tablet",
+      "reason": "fixed class overflows the rules panel"
+    }
+  ],
+  "classification": [
+    {
+      "id": "51c931a4-297a-4f7f-8f71-6bdcbe4e94b7",
+      "faceHash": "f0f161f3df1d4dfed60d22a92c9ca2b8e644ed119ad9ae8ae44a2774ba7718a0",
+      "roles": ["rules", "flavor"],
+      "characters": 171
+    },
+    {
+      "id": "27de9b02-1810-41ee-aa90-5d89b6e1bf87",
+      "faceHash": "5c89e1dd6d344728b238d1cbc59d88e67cb958d814f8b7ca27eb79bdd9b93e94",
+      "roles": ["rules", "flavor"],
+      "characters": 159
+    },
+    {
+      "id": "a26d1c4d-af95-4b40-83a5-b51f8b2506db",
+      "faceHash": "bb377fc5ccbe1eac987d9aaaf99155ec4d3b155bb205938c22634f66a2a1f5e2",
+      "roles": ["rules"],
+      "characters": 184
+    },
+    {
+      "id": "b6ee58e5-f493-4e27-9639-5599a9573387",
+      "faceHash": "1d559d5cf36e67c4c035dacf57fb3bd79b172aeda795602c1de25ce322a2f186",
+      "roles": ["rules"],
+      "characters": 27
+    },
+    {
+      "id": "0794bc35-a8e1-4268-87b2-af5483ca6e5e",
+      "faceHash": "79cb30e25338b529e1ec3e13dbe19022538cc35cb490ed04f6302c62fe491bd4",
+      "roles": ["rules"],
+      "characters": 18
+    },
+    {
+      "id": "db3e219d-8e5e-44c7-97b3-2d489e2808b9",
+      "faceHash": "4db61b6cd71c80e7ed06b16d79e380ac94407f0f5cceeb50d70809240e4d653b",
+      "roles": ["rules"],
+      "characters": 247
+    },
+    {
+      "id": "fd204832-5f3b-4213-9c06-b89a296a9d47",
+      "faceHash": "2b088b358a734efb9fa550a40c2267a45826c3e82840acab0ada469e6fe24ab4",
+      "roles": ["rules", "flavor"],
+      "characters": 190
+    },
+    {
+      "id": "218b1327-5f76-4ee2-a93d-d2ba412043c2",
+      "faceHash": "ca3fd61c829051513ae76d879593b747057ae6a05025cd4ef23d214b85d6bebb",
+      "roles": ["rules"],
+      "characters": 110
+    },
+    {
+      "id": "eea35ac3-071d-4a42-9a7a-9104fe63bddc",
+      "faceHash": "011f74f8c82ec49fc40ef5e47e13722002fb4cc77f951f7c0494ccb7571d920e",
+      "roles": ["rules"],
+      "characters": 65
+    },
+    {
+      "id": "de62c833-c66b-442e-99ed-99ccd8eca024",
+      "faceHash": "3763b5ba7b32f28ab79b9f28a207aacf4d9ba0e28dd15bdcff55cbb485bf3f40",
+      "roles": ["rules"],
+      "characters": 107
+    },
+    {
+      "id": "90c6d853-dc3a-4eed-894a-b58bf6e56dc8",
+      "faceHash": "79e68c4f94ed5b15d4c25d3324dfb4a43aba7710e76a505b92cb58f6b33f9569",
+      "roles": ["rules", "flavor"],
+      "characters": 163
+    },
+    {
+      "id": "870ee86b-222b-4d7a-9c5b-ea10e1d73756",
+      "faceHash": "3007912ae7190fa3c5f19dff04e286f86b909d87db2015853378e48a6d68e3b8",
+      "roles": ["rules"],
+      "characters": 60
+    },
+    {
+      "id": "6bfddcee-704f-4189-8cb0-6025fe98d7e9",
+      "faceHash": "14484b4d96bc1c855200ecdd8e6425e256ae26321738f00ce3ad7197400275c5",
+      "roles": ["rules"],
+      "characters": 164
+    },
+    {
+      "id": "9971cbae-3f08-48c6-955a-76ce8ed41c6c",
+      "faceHash": "9b72376f0c424e75daf7b586ba614bf95f200373d209ceb51e9990107443f382",
+      "roles": ["rules"],
+      "characters": 161
+    },
+    {
+      "id": "4b7cdfd5-bef9-4f33-b81a-2a395c9bba29",
+      "faceHash": "209f4d94b6c210a628a39203743107262b1e044ebfdd9c7a2d27714ba54dc34c",
+      "roles": ["rules"],
+      "characters": 160
+    },
+    {
+      "id": "192c50c5-ef98-47bd-9cab-cb3feaf6080b",
+      "faceHash": "91ef11c6f57eb64e65b98bb7a1328f010666e53047415563f2634b1aa4ce4c9d",
+      "roles": ["rules"],
+      "characters": 161
+    },
+    {
+      "id": "f3575259-b019-47d0-a6d3-3fe4963294ae",
+      "faceHash": "25f5416ec4615cf98715566475509a3403d699a1615f2b703ee33483c4996f87",
+      "roles": ["rules"],
+      "characters": 159
+    },
+    {
+      "id": "92e1e153-cf5c-429a-9680-53b7c89dbd88",
+      "faceHash": "5b0c80b6c2e9bf0f3a72db07d56b68f20ed52d2735b35523207bb8ce26d65e90",
+      "roles": ["rules"],
+      "characters": 161
+    },
+    {
+      "id": "5df33281-bebc-4c2a-97ce-528a67574670",
+      "faceHash": "1e8f42b9b91d0c034624455b3b099e8f6061fdc44309653a55776273b7938a6d",
+      "roles": ["rules"],
+      "characters": 84
+    },
+    {
+      "id": "fb5428ef-847d-4ac1-b9a9-31afe155650f",
+      "faceHash": "e7554b549f62abd054fb0d970a727085cba01b8e6f5f7448627250e6b36231d7",
+      "roles": ["rules"],
+      "characters": 30
+    },
+    {
+      "id": "e9c54ffe-2479-4178-a5dc-dca7b564efce",
+      "faceHash": "a17e9d5da41a67dd9189d5d818510152cd05e5ff3e1cafa1868b1f6e534ed6bf",
+      "roles": ["rules"],
+      "characters": 27
+    },
+    {
+      "id": "a915f261-2cdc-499c-9163-da5b628b0127",
+      "faceHash": "6031f35c0f1684e93434bc315cd3c802742ba7000dcd9352e219aa2461d2acdc",
+      "roles": ["rules"],
+      "characters": 39
+    },
+    {
+      "id": "f59605bf-27d8-47ca-805e-527aab6ddf70",
+      "faceHash": "17a5655465aca831be69ed14cf004da40bf0d2f5c10b7981f94fb4e13b129164",
+      "roles": ["rules", "flavor"],
+      "characters": 138
+    },
+    {
+      "id": "b188d0d4-cd7c-4314-ae65-cb49e4674241",
+      "faceHash": "38956e59bfcfec38565b46fcae863a2edc76bdd4310e852f03bb9b0980e5d61a",
+      "roles": ["rules", "flavor"],
+      "characters": 97
+    },
+    {
+      "id": "acc41bca-73fc-42da-b639-b73a8de8a9c6",
+      "faceHash": "610058e1497c201cfaa18f45e6856a8b99e10639de25f50e141def2cc9209f63",
+      "roles": ["rules"],
+      "characters": 312
+    },
+    {
+      "id": "8f89968f-0182-4639-96fd-0dc94b6ad926",
+      "faceHash": "a5c29288d37ee8bd098fde9ffc6ca24d07d1b7ceecae846057f15a66e6a0e52b",
+      "roles": ["rules"],
+      "characters": 49
+    },
+    {
+      "id": "b7548dc7-11dc-4611-85a5-71bdb48d8a62",
+      "faceHash": "485b374370f90d7a85531485360ed5af6f95dfc9eb80dff965b58c6b87d6a11c",
+      "roles": ["rules"],
+      "characters": 110
+    },
+    {
+      "id": "afd08b3b-196e-43a5-9318-9dae9edc6d12",
+      "faceHash": "9b48c5a4102a9302c69d0659da54762981484dd9c740419ae64191c6c81c486c",
+      "roles": ["rules"],
+      "characters": 79
+    },
+    {
+      "id": "3a0b9dba-f621-4700-8a36-bf326e04cbac",
+      "faceHash": "135145760eea166f7627348c0f6136cbcb20b49b5ecf7fc80282eb3f1489595f",
+      "roles": ["rules"],
+      "characters": 94
+    },
+    {
+      "id": "77af9f19-66d1-44e5-9aed-955e6bfd9902",
+      "faceHash": "75f641eb75e6c9d90f6f1f9bf8cc956274a11f55de832699b9b912bd7315a095",
+      "roles": ["rules"],
+      "characters": 27
+    },
+    {
+      "id": "c0eff4d1-4ce6-48b1-84ae-a95bd1d04d16",
+      "faceHash": "2d3a825213c86e842f4a889dceaca296a0cd3ab667cfebb1fffcd2481ebe245d",
+      "roles": ["rules"],
+      "characters": 189
+    },
+    {
+      "id": "2acd8dd7-f561-487f-abae-4ad910db9d27",
+      "faceHash": "c1500a9cba217e6a03430b40f188a04f48c4e8edfa059d95ab5f4d4324fc8a31",
+      "roles": ["rules"],
+      "characters": 99
+    },
+    {
+      "id": "f2381234-cf5a-4baf-89f9-cdec15557cf4",
+      "faceHash": "05f5ea9c78dd25d77fabcf49c958e271a2399add1e1573653dcafabe0c7c90b3",
+      "roles": ["rules"],
+      "characters": 77
+    },
+    {
+      "id": "1301e203-7d9a-4735-8db3-7882ad70d343",
+      "faceHash": "c0084cd9fe46039793a516b40d3de424e329c2cbf477b3ec25ca349084f364e5",
+      "roles": ["rules"],
+      "characters": 195
+    },
+    {
+      "id": "60c0faf1-0c16-441a-97fd-6d4e91c894a5",
+      "faceHash": "38bb3296c24d2249367bf13ede62b77f66819a7fdb85e6a170fd2494e7bc105f",
+      "roles": ["rules", "flavor"],
+      "characters": 259
+    },
+    {
+      "id": "b52cdfe3-fca1-420c-b5c0-2366ea58345b",
+      "faceHash": "07bace512678f99a2d2a67142b0ee0926d70baa04ef2ecc1f49416cfcac46ade",
+      "roles": ["rules", "flavor"],
+      "characters": 194
+    },
+    {
+      "id": "09e97dce-6bef-480d-939e-d35cfbf6b989",
+      "faceHash": "c4259fea7841cc2200ecc8f20fd968f1530a4374d70aee36a837fe445d9eb8c9",
+      "roles": ["rules", "flavor"],
+      "characters": 111
+    },
+    {
+      "id": "da915d3c-8d43-44c2-9052-08c1cd2afa7b",
+      "faceHash": "a9d2777cf305ff51df0b947e9e387acde0d10f514746b21f3f33b2cf9337d3fa",
+      "roles": ["rules"],
+      "characters": 192
+    },
+    {
+      "id": "6acc78fc-1eab-47aa-993d-6781b2d2408a",
+      "faceHash": "cfc1fba681335d87ef986d3bb7edf3eb8d3a875b5e87e5042929749b673a14f5",
+      "roles": ["flavor"],
+      "characters": 223
+    },
+    {
+      "id": "0b107c80-0c9a-46cd-8f00-26c37f080ce7",
+      "faceHash": "72e379438e7d3ca2007d8d13a5f0560c709dfa0a753b82b2922a82a5d894370c",
+      "roles": ["rules"],
+      "characters": 294
+    },
+    {
+      "id": "d4942a9f-6b8f-438b-a2ea-366228038ed8",
+      "faceHash": "83854e2a5d1e91783d76b1084c64dcdd72f88dab29bba3f75693d1c3f5c4eb53",
+      "roles": ["rules", "flavor"],
+      "characters": 167
+    },
+    {
+      "id": "015cc1ad-8b9f-484c-aa7d-d44f7bc914d2",
+      "faceHash": "d78c541e444531eec9090fbf736889df49a71ca1f292b9048346d770bfce2602",
+      "roles": ["rules", "flavor"],
+      "characters": 216
+    },
+    {
+      "id": "5736fcc7-fa95-4ef4-b821-392ec00e03bf",
+      "faceHash": "86b89f7f53d3fee2f1d0360d2b401060f6527f2c662b700250a36f69def24c10",
+      "roles": ["rules"],
+      "characters": 145
+    },
+    {
+      "id": "543e8ec0-f36a-46a6-b7b1-e983e90a091a",
+      "faceHash": "7d9f16772f8ec029692f4f8a2323f48ba0c7338fc45282e6bf1fe0c328d8ed2f",
+      "roles": ["rules"],
+      "characters": 104
+    },
+    {
+      "id": "cd458c66-0183-4bad-a651-6fe52a6d14c4",
+      "faceHash": "c1dc6bbfb864c56f36408e1b90499683a99848450ec8633e29ff1e50ef3cdee7",
+      "roles": ["rules"],
+      "characters": 165
+    },
+    {
+      "id": "3fccc7f2-b317-40c4-9b55-658d67dca843",
+      "faceHash": "fd653ddda7fb4a1ff7180c5962b6dc0794c6aa3a9db95d4df271392592127f27",
+      "roles": ["rules"],
+      "characters": 54
+    },
+    {
+      "id": "b354858f-d25b-4264-8a0b-fecc3a58db6d",
+      "faceHash": "f3c39a5f2dc10d46a9d1bb7ce0d457cc1cc848ed8c155ab71a3addaff4ec3888",
+      "roles": ["rules", "flavor"],
+      "characters": 212
+    },
+    {
+      "id": "a2ee9127-d007-48e8-b797-88ef72bc7c8b",
+      "faceHash": "8159d7ecbc72090ae457d527d84da0b626186e13d9d3cec1477a8b74d7c048d1",
+      "roles": ["flavor"],
+      "characters": 229
+    },
+    {
+      "id": "7052825f-d9fc-4820-b8c4-dbc204730b7c",
+      "faceHash": "e30c171822030beb2336e17e22fcae4bb7bb27967231fc5171dfb50a89983ba9",
+      "roles": ["rules"],
+      "characters": 83
+    },
+    {
+      "id": "8072d00a-82ff-4406-bdf8-1af20cd3a170",
+      "faceHash": "ed4d029620424ad28bd58381196fcf00311eae89ff26911182876d1ed734059b",
+      "roles": ["rules", "flavor"],
+      "characters": 153
+    },
+    {
+      "id": "58838b77-3bac-41b7-8055-5737c07df12e",
+      "faceHash": "ae88bb6cc20b79697f8b7cd5e237bd79e8e1184532cbe47703c2fcfb288e8147",
+      "roles": ["rules"],
+      "characters": 185
+    },
+    {
+      "id": "8bd501ae-5814-4336-a45b-2b88cb85d29e",
+      "faceHash": "e34a0843c40a9072d24b6d4efd09460916b239b30a42416a0899a3686ea4ba08",
+      "roles": ["rules"],
+      "characters": 94
+    },
+    {
+      "id": "0c8527ac-27c3-4e2d-b46c-bfd6a1e1f778",
+      "faceHash": "d39f8800f24612e63427c2422ab8c29307ae8df14e5ab3e9072df4ee50d2e705",
+      "roles": ["rules", "flavor"],
+      "characters": 99
+    },
+    {
+      "id": "b0fed0e6-0e56-4987-b0dd-b294156c0233",
+      "faceHash": "637dbcca18b18b82c40e1df735ad6911ffc4a90c640a3faf1507cc48268bda07",
+      "roles": ["rules", "flavor"],
+      "characters": 180
+    },
+    {
+      "id": "18ffa85c-61c4-49b7-8946-ab353355a11c",
+      "faceHash": "3c75d934bcbe06421bbf5b2d7dbe16a2b6e19d618b546ea59fc9d34c951f7109",
+      "roles": ["rules", "flavor"],
+      "characters": 212
+    },
+    {
+      "id": "2e8f8a10-6984-46a7-a641-5f712dab5c57",
+      "faceHash": "b121f9a5ddf7931c982b63d3b32f111ff0fe7cc6c9e2e637f2a743e673f32b16",
+      "roles": ["rules", "flavor"],
+      "characters": 232
+    },
+    {
+      "id": "2d3c467f-0e33-43e8-b108-0ea00d6adcc2",
+      "faceHash": "ee32cc9c2af13665840cee8b0e06ab44b8ee62d0a5f5414fbf73a1ec21e9a937",
+      "roles": ["rules"],
+      "characters": 110
+    },
+    {
+      "id": "4566f6a3-4d25-4df0-84be-fe4201138955",
+      "faceHash": "cd6a391b8e277b5921ac5c88a42a2e641f077c4dac7994bcf3436e4da528024f",
+      "roles": ["rules"],
+      "characters": 19
+    },
+    {
+      "id": "e5cfaefb-764c-4c56-bdb3-5f0375168597",
+      "faceHash": "721a3471e2d5643283cd665f38508eb9c4cec19f1b046bab76b0fa5928030926",
+      "roles": ["rules", "flavor"],
+      "characters": 189
+    },
+    {
+      "id": "ea613c48-258b-499d-975b-f56fbef3c665",
+      "faceHash": "fb9b66a304d06217bd62f3587c14aa0b9025c04edaa145bea9867457ef521f6b",
+      "roles": ["rules"],
+      "characters": 197
+    },
+    {
+      "id": "c9ef569e-91e7-45f5-83b0-5a820242c628",
+      "faceHash": "e1c9ac2e2a7bbd2df6708be9d4c933251cc484df3af7e49a96539a8a5a9a0258",
+      "roles": ["rules"],
+      "characters": 65
+    },
+    {
+      "id": "ad34094d-a7ec-4b04-a288-4d4f1a07fc6b",
+      "faceHash": "12ff73541dad630049c926cc6ec80787dc350ca6d50d79af64a21cda98a32318",
+      "roles": ["rules"],
+      "characters": 104
+    },
+    {
+      "id": "988f7b31-24b2-45c2-89e4-ff6bd9e0c8c7",
+      "faceHash": "7af145df3b60c7d87be674434b45a455a3d2eb7ab6dc724707f4b80c773b9c7d",
+      "roles": ["rules"],
+      "characters": 57
+    },
+    {
+      "id": "1bb371e5-424e-42dd-9966-732c22e8ece8",
+      "faceHash": "6139ad9cf769481d63e666e62d5e3a0cd247d0c92b513e2c4a1cb09f331230cc",
+      "roles": ["rules"],
+      "characters": 32
+    },
+    {
+      "id": "e8493631-6c9c-40a8-b7de-ecf26ba6bf7d",
+      "faceHash": "ac497135ada79ed12aba2ff0260cf582dc3b0e831e0fa5d86abbf2fc66dc80dc",
+      "roles": ["rules"],
+      "characters": 21
+    },
+    {
+      "id": "717c5ee5-a033-4a58-bdcb-ef54e6c8b7a9",
+      "faceHash": "308a495a7a6c724cd509d2d04871fcbdf498b6bf1ce8ad65566d560c65f6beff",
+      "roles": ["rules"],
+      "characters": 137
+    },
+    {
+      "id": "e3009237-fb96-497f-9a6e-b93b8115528a",
+      "faceHash": "e93053db6c044ccf8f456f0e55e4ee631b8cebede06e8a43f869ba375bbb8a45",
+      "roles": ["rules"],
+      "characters": 137
+    },
+    {
+      "id": "fbfa8400-1820-4108-a7f3-6ae8a1897f0c",
+      "faceHash": "6449b56a5045ae4cebf87be148968bf2c3c0bb1cfd721080409f98d1bd8e064c",
+      "roles": ["rules"],
+      "characters": 182
+    },
+    {
+      "id": "9f67692d-9df6-4841-a36b-26c28110b63b",
+      "faceHash": "ef73273bd4bba4925922d8e256cd69a8eec2c21a2c415b81e7f1562d15c0c075",
+      "roles": ["rules"],
+      "characters": 121
+    },
+    {
+      "id": "8dc539ff-03f5-4bec-877a-061fb5d40de9",
+      "faceHash": "d3fffafa136b555716dfe72fd64503d17f8bb0d8f7ba5134ce9357ee9275ee17",
+      "roles": ["rules"],
+      "characters": 182
+    },
+    {
+      "id": "eb5a60e6-be5f-454e-a354-ab736839f092",
+      "faceHash": "8cba9d6259d0328d00a21b28365e9cbe98a55d5ab1cc4d77165fa80468dd44b5",
+      "roles": ["rules"],
+      "characters": 88
+    },
+    {
+      "id": "1867cb70-f615-4583-bf0b-fb1016209785",
+      "faceHash": "f89b0a46a0081c94d1edd5e540849a3edf8d538eea1d2115f74eb44eec4ec2b6",
+      "roles": ["rules"],
+      "characters": 29
+    },
+    {
+      "id": "ba099785-bfa0-4224-be19-0dcded94fba5",
+      "faceHash": "358964af96a7b7a36db20c336b60f1cdcd824ea9fe57182174047eba504191be",
+      "roles": ["rules", "flavor"],
+      "characters": 140
+    },
+    {
+      "id": "cfdd00f0-c6aa-4e8b-a035-fb3403711741",
+      "faceHash": "38510077da7e5d19498651218c55bd35760d3199b987a2ddc3eef3b61a2915ab",
+      "roles": ["rules", "flavor"],
+      "characters": 177
+    },
+    {
+      "id": "3af0b9ce-0a9c-4619-95c1-bbbfffa7fcec",
+      "faceHash": "891890338d506fd4e1f04d4c76b5f3a7c7e212d3a7467da26a494618e7efffa7",
+      "roles": ["rules", "flavor"],
+      "characters": 146
+    },
+    {
+      "id": "f512addb-5888-49f3-985b-53cc11831e5e",
+      "faceHash": "6775cffa7025d5ad4e98833730be311ac420d2c0f3da5c5ef67daea578fb79a7",
+      "roles": ["rules"],
+      "characters": 41
+    },
+    {
+      "id": "bee569a6-20b0-4d37-91d6-db18de4b90c6",
+      "faceHash": "f278b1aae7bdc76ea553612d679dbc66b55dec58674f6bdf2e75a471e3c4734f",
+      "roles": ["rules", "flavor"],
+      "characters": 185
+    },
+    {
+      "id": "84f18188-70fa-433e-a114-2f1dd49388ed",
+      "faceHash": "f0b0abd3a21747bbe5ffe526048feaff785b2b9caec907d97d1c5b4a5f7d7e63",
+      "roles": ["rules"],
+      "characters": 224
+    },
+    {
+      "id": "7b994bf9-5b3d-42c7-b4c6-f1029d78dd80",
+      "faceHash": "1cf366cf1c26b21e430d88b7e04f944c9e20e07bbb8eff533167fc1c227c6c3d",
+      "roles": ["rules"],
+      "characters": 47
+    },
+    {
+      "id": "fbc98990-7fb0-4f69-a80d-38443966b3ae",
+      "faceHash": "a206e2e937953ca6504a9531087921ffb8e475951690e30981f861a3ab61b5e6",
+      "roles": ["rules"],
+      "characters": 218
+    },
+    {
+      "id": "634dd3bd-d29b-4481-990b-f320e60c4f91",
+      "faceHash": "65c313c4394832c0b75b2cf37f5182c5aaf7fcbc37523578dbed82c2db2e869f",
+      "roles": ["rules"],
+      "characters": 76
+    },
+    {
+      "id": "846572ce-c8fd-402c-9212-8288336c75e8",
+      "faceHash": "f932251412ba6b38442b7ca8734f2f1bb1464d3815b74bf3e47119ef3763b764",
+      "roles": ["rules", "flavor"],
+      "characters": 148
+    },
+    {
+      "id": "41c57f8a-6592-49b4-acb1-9b30500d1e8c",
+      "faceHash": "a60506b3de817a384d94ed979093ba34425d4014db0d33f0450222b023092297",
+      "roles": ["rules"],
+      "characters": 174
+    },
+    {
+      "id": "71935f14-d7ca-4406-9263-b2c7f5f5b94f",
+      "faceHash": "6ad469ac0cd6fe53a56a177e6da1253143298756a7ad45e02d238ad0b0da1e5f",
+      "roles": ["rules", "flavor"],
+      "characters": 201
+    },
+    {
+      "id": "dd84fdcc-5463-45e9-9421-1d554ecdb8ae",
+      "faceHash": "eab1c651d513b32e26deb2ae25ad79d0af23f77e5275d33d540f0a2ec8a0d04e",
+      "roles": ["rules"],
+      "characters": 74
+    },
+    {
+      "id": "93661c9f-b529-4d82-b68d-3ce050f77e0d",
+      "faceHash": "558d89d04dfc33318c44670ee8a31c1949b48340870f682efe0f2b8ab89cbfed",
+      "roles": ["flavor"],
+      "characters": 235
+    },
+    {
+      "id": "2ae30614-f558-4627-8e08-bf8a30ecd5b9",
+      "faceHash": "ddbd2505b2ae53c2e317b11b16f56b73cda6d4acca22a8f951c52d5335a8cf08",
+      "roles": ["rules"],
+      "characters": 208
+    },
+    {
+      "id": "0bc15dcf-6f78-4968-8af9-c115dfa10e4c",
+      "faceHash": "81dfebcd69c7647b51c6833ae7a113ed2b99ff154208cb15553d5a729d4a9d5e",
+      "roles": ["rules", "flavor"],
+      "characters": 182
+    },
+    {
+      "id": "0d7b3b65-e1f9-4a0d-95a6-42c2c4a358e5",
+      "faceHash": "09e289b734e467f2bdf18051a9a3a6bd19c1f70dda964b365cd2e63b83525148",
+      "roles": ["rules"],
+      "characters": 55
+    },
+    {
+      "id": "daa120ce-63a6-4d5e-9801-123d5e05646e",
+      "faceHash": "98e467e675f28c325845598d8dc88c76c4dbb38a820406d2d3fe891e46ba51ee",
+      "roles": ["rules", "flavor"],
+      "characters": 164
+    },
+    {
+      "id": "0d7f104a-fb06-41a4-abd9-38f2c6017bbf",
+      "faceHash": "0ed22c690b94fcf2aa7e0fdb380c1a6cdeadc26c868b04df6336f60075df9209",
+      "roles": ["rules"],
+      "characters": 170
+    },
+    {
+      "id": "99f235d7-8f6b-4d17-bc36-6f2cb6d5deec",
+      "faceHash": "6bef1cbb5c6d9d960bfac5d7ab3dcbc9e84ebb587b98cf665ba3c74d0f35056b",
+      "roles": ["rules"],
+      "characters": 177
+    },
+    {
+      "id": "e91c51ab-c8b1-47be-8169-7f842712771c",
+      "faceHash": "c21b195afb38ea9fbdb2f2e9f5abd47505a73d1d952c1b8f731563780a58e0f7",
+      "roles": ["rules"],
+      "characters": 212
+    },
+    {
+      "id": "dc4e1161-5008-427f-a88e-5497a8eb84cd",
+      "faceHash": "51182e90ab81cb57ad1fc14435cf7cca184c3151f68ab843312fccb3710a2fda",
+      "roles": ["rules", "flavor"],
+      "characters": 207
+    },
+    {
+      "id": "6641a587-c066-4f0a-a951-b91d3f749eb2",
+      "faceHash": "53aee81e023ade5f2fc2b061fd5221a9a30afdadb03ccd6cd3fc03329254785a",
+      "roles": ["rules", "flavor"],
+      "characters": 158
+    },
+    {
+      "id": "138db623-393d-485a-8fa8-f1b1b933fce5",
+      "faceHash": "cb0afc8cf104f18bc22c13e2b2971f24c0cd1fcf92d371e0fb694464aec1a40b",
+      "roles": ["rules"],
+      "characters": 92
+    },
+    {
+      "id": "05eee3dd-e17f-4154-8f8d-29c5421cd89d",
+      "faceHash": "82958653624b141fa96758e628f307d4c03c0058e9bb093ef794af07da9835dc",
+      "roles": ["rules"],
+      "characters": 125
+    },
+    {
+      "id": "e474391c-9ff0-4db4-9352-3fc07eeb4b51",
+      "faceHash": "98996accadf3376efacce445ed4d33ca786a9f766d515aead564ad53be65123a",
+      "roles": ["rules", "flavor"],
+      "characters": 180
+    },
+    {
+      "id": "22e6e890-d1d0-4a9b-a453-5b51974a9dff",
+      "faceHash": "22c8bf2f309fccf79af5cb2c3e65f90b8dca95e53b6fb9e3343188f28d187c58",
+      "roles": ["rules", "flavor"],
+      "characters": 104
+    },
+    {
+      "id": "9b6906d0-4963-4f4b-aa29-ad98e9944107",
+      "faceHash": "e359f2a157974eabf4241e3ccac99b0dd422379f75c0bab5623892f7f34ff2fb",
+      "roles": ["rules"],
+      "characters": 48
+    },
+    {
+      "id": "51832cfb-0a2e-4674-bb36-38027a71ac6d",
+      "faceHash": "826ac828373866a3637d4976c86a4e63c74f2f18d774f73ba0ba45ac05d80dac",
+      "roles": ["rules"],
+      "characters": 273
+    },
+    {
+      "id": "cd21dc3d-c9e6-4592-a655-1a20ee13ae73",
+      "faceHash": "dd89a9638b2317fd410a44d9b5f8454a66b671ba936168dcda921d7218fa58b4",
+      "roles": ["rules"],
+      "characters": 235
+    },
+    {
+      "id": "008df307-f010-47bc-8548-65a1c7b1c4b8",
+      "faceHash": "ea5c8215baba5903b2df38e5c67db2a3c5fe3d7843678798f4985d0f948c8207",
+      "roles": ["rules"],
+      "characters": 64
+    },
+    {
+      "id": "f3d29fed-248d-4547-9455-3d69b1f2787d",
+      "faceHash": "f20dc852671e966394ebbe4feae713c43e619eaa92d7b4b6f50070464d159050",
+      "roles": ["rules"],
+      "characters": 79
+    },
+    {
+      "id": "dcd9ee1d-d1c5-4725-98fc-f6cff3a79512",
+      "faceHash": "e6327a8717079be969e96aacc6beb33aaf048cd2fdc8c00adb18343a4951fa1c",
+      "roles": ["rules"],
+      "characters": 32
+    },
+    {
+      "id": "226f89b4-cf98-4354-a2f4-3f63fe2dd99e",
+      "faceHash": "f12dbf02b71808228b26fb672c80c2899ed1bdf4b6e4d2901065b73aaa93a997",
+      "roles": ["rules"],
+      "characters": 80
+    },
+    {
+      "id": "185674a4-db97-444d-b0e9-7dcfc245ce4b",
+      "faceHash": "5242e7308a09371800902bddb9e59c9c0d146d0b2e0708c21c40256c5312dc53",
+      "roles": ["rules"],
+      "characters": 144
+    },
+    {
+      "id": "957fa561-d090-435d-a0da-f405edb7e591",
+      "faceHash": "21ff8f512736a43f9147d5d04994851392f5cb800a07357727c8caa2ba7bc1bc",
+      "roles": ["rules"],
+      "characters": 258
+    },
+    {
+      "id": "db401643-6114-4254-8e40-ea7605e5ed82",
+      "faceHash": "dbf04961da27f525c396df8f9e42dca0b649f7f94095abf8cf826e2fbc067295",
+      "roles": ["rules"],
+      "characters": 48
+    },
+    {
+      "id": "841ae3a3-30b5-4f0c-ad2f-af3d5e0da2e9",
+      "faceHash": "798122d774e0ee897a314796aaa49cf5f870d036d2f3814336d4f4a4b63039b3",
+      "roles": ["rules"],
+      "characters": 165
+    },
+    {
+      "id": "338948aa-463d-4af4-a0d6-64132512334c",
+      "faceHash": "7a5de040298fa9e028dd0ff5657953577f556bfba498a1bf46fd05d843c44907",
+      "roles": ["rules"],
+      "characters": 39
+    },
+    {
+      "id": "5828713a-edb3-4b11-b1f9-8f1bfc3c103f",
+      "faceHash": "2634f581646671966ddbc78119df64c82720949a2faac5904c68787b8b3e7914",
+      "roles": ["rules"],
+      "characters": 142
+    },
+    {
+      "id": "239435c8-3380-4556-9618-09fc0e40b69d",
+      "faceHash": "5d89ca22aa6033bb25f72d63bf8dc778b271b6696a3427eea1d7da486c7e6cee",
+      "roles": ["rules", "flavor"],
+      "characters": 202
+    },
+    {
+      "id": "78028eda-61b0-408c-b3fc-adc968d39b47",
+      "faceHash": "cf77c4fecc03b6f78ad1423552644e8244cec13ebc529c2db151eb4a890848ac",
+      "roles": ["rules", "flavor"],
+      "characters": 186
+    },
+    {
+      "id": "dadea972-714e-4f6d-8fb7-a59c0ac1e028",
+      "faceHash": "6f112582f20db6fbd7a9a9fa361c920708edd228652a8aa64f6d40fcdeb8ed78",
+      "roles": ["flavor"],
+      "characters": 221
+    },
+    {
+      "id": "032ee0fd-9eb3-4d81-9972-9e7f4c4d64e4",
+      "faceHash": "e8b81813795824814069139484e9675caca27446e5ae3740607953cb7bed4f62",
+      "roles": ["rules", "flavor"],
+      "characters": 146
+    },
+    {
+      "id": "a363bc91-8278-448e-9d5c-564e4b51eb62",
+      "faceHash": "7bed0be5d4fc3c4ffeda67d76411aada34d52511046827750ad33c2649849031",
+      "roles": ["rules"],
+      "characters": 95
+    },
+    {
+      "id": "cc1dc456-1f64-4f24-a646-84c57e641b3b",
+      "faceHash": "fbdae31a3379ba0a9b74e546974bcf5270caf8e75c7fa70e157cd718829407c8",
+      "roles": ["rules"],
+      "characters": 225
+    },
+    {
+      "id": "28f40650-9dd5-473d-a660-448672d475a5",
+      "faceHash": "a48b171c7e736221cac79bf0c0f8c130090d7d421dd5ca7c3c72e14af8423ce1",
+      "roles": ["rules", "flavor"],
+      "characters": 213
+    },
+    {
+      "id": "aca216e2-27a5-40e1-bb61-0ddcd8ee02ae",
+      "faceHash": "8038f51eb4c5040c2ed20135e12bb82f74fe019e33d96b496df49437851b59bf",
+      "roles": ["rules"],
+      "characters": 30
+    },
+    {
+      "id": "47716cf4-f35c-4613-9686-4e00b5063408",
+      "faceHash": "3f9cee86f248f7bd1e74bbb14c99f4776d22f9a9918279be4711a4b507fc3d73",
+      "roles": ["rules", "flavor"],
+      "characters": 172
+    },
+    {
+      "id": "59365350-d149-4c0d-a08f-eabdfb7cce3d",
+      "faceHash": "d658f073243873701b34015eba14a14988809cfce0b3958b1c86a6926787f690",
+      "roles": ["rules"],
+      "characters": 57
+    },
+    {
+      "id": "c50c3053-3cf3-40d3-bc9e-2fc292f11c34",
+      "faceHash": "b2cce4cd3676e3de7a9caa67346f6291f1d5006a65e40037eb44906decec11fc",
+      "roles": ["rules", "flavor"],
+      "characters": 105
+    },
+    {
+      "id": "fbf82ad6-b32e-41ea-abea-22b8eef69e67",
+      "faceHash": "8870496efbfe09bad768b1c3f298897464f79e7460bba740d042f73d87b99e42",
+      "roles": ["rules", "flavor"],
+      "characters": 145
+    },
+    {
+      "id": "f5de329d-fb08-4c4a-883f-1d77dc64470d",
+      "faceHash": "bfd09789c93a85a9999d1e4fac2cd7f070cdb11d6b29956fb61943a2f0f3bf55",
+      "roles": ["rules", "flavor"],
+      "characters": 102
+    },
+    {
+      "id": "07e975cc-e89d-4ac3-b9dc-dad202dacc14",
+      "faceHash": "a8689c38458de545e04bef0ab2fed6737cc459eddd84ee7f5cdf8fbc8b3cb009",
+      "roles": ["rules", "flavor"],
+      "characters": 226
+    },
+    {
+      "id": "23d9fb0a-1087-43cd-9e14-24c1685a2057",
+      "faceHash": "5d2394b545780aec11cd0a8f9fe561d64624343e4521e9cd99555b28c55e0e84",
+      "roles": ["rules"],
+      "characters": 80
+    },
+    {
+      "id": "8201b51b-da03-4207-805c-134e527c42e1",
+      "faceHash": "23872fc22d35164d55e196629d3919d7dae6bb69e62c972d0a7757d6b5138a66",
+      "roles": ["rules", "flavor"],
+      "characters": 188
+    },
+    {
+      "id": "3477f601-5374-4316-a74e-b5e198af482b",
+      "faceHash": "be9d4d4471bbc2b02c8c95a5bb3d4e016a9fade1d0a75f9f4737cedcaebeb4c4",
+      "roles": ["rules"],
+      "characters": 26
+    },
+    {
+      "id": "74e2ae05-29ec-4005-8d78-280a190601c4",
+      "faceHash": "16664e5d5ee1fd7b3d49a4173cfdb49e8f4882277b2d69940fb4fb21e6c3da55",
+      "roles": ["rules"],
+      "characters": 66
+    },
+    {
+      "id": "237e37fb-383d-432c-8ac3-1332096567db",
+      "faceHash": "c583682afec2bbc6576d6bba6bb4ae8a6c6a57cdf6e62510e6d884208297c5a1",
+      "roles": ["rules"],
+      "characters": 145
+    },
+    {
+      "id": "b9d10677-36f0-4339-a2c3-213e8ee1c51d",
+      "faceHash": "41e693633a50bf647d80550580b14fdb52d0d7f40f8ea5d56e28efb9d99e08f3",
+      "roles": ["rules"],
+      "characters": 267
+    },
+    {
+      "id": "d3d223d3-72c1-4240-9323-84484167c5e0",
+      "faceHash": "731898d8dff214b444a578082b1e8aa4d93287bf83a0d34f5182f1b37c4aa90d",
+      "roles": ["rules", "flavor"],
+      "characters": 186
+    },
+    {
+      "id": "cf371bd2-89ad-487e-8f27-37a6e75ca0f5",
+      "faceHash": "c273e5fae266f2845432f103ba0c252653b4dfc93662db193e9178f2eb2ae6e3",
+      "roles": ["rules"],
+      "characters": 176
+    },
+    {
+      "id": "472c83ff-66aa-485b-9ca7-aef8731de20a",
+      "faceHash": "890dffd187f7aca64554fe231f84661ce9e083c1ce10d71e02b4d9ebaae25dba",
+      "roles": ["rules"],
+      "characters": 173
+    },
+    {
+      "id": "5cbca45f-7b08-408b-9445-e3f2b9563f1b",
+      "faceHash": "1d51639faa77403457c724d03b37c438c10fcda66e5c455c32f6c758cf31844f",
+      "roles": ["rules"],
+      "characters": 34
+    },
+    {
+      "id": "126c1b02-01bd-4b70-9293-a89173b4cd32",
+      "faceHash": "783c6ff11b4412df87b2f8175f8f7bdb89789c27c2b425951aba79cc50751da3",
+      "roles": ["rules"],
+      "characters": 83
+    },
+    {
+      "id": "95547c2a-c01b-45ed-b775-f33c157b17a5",
+      "faceHash": "5c3febc71d8149eef2d47487db3b76394fa373e700ea2836b58dc9b9efe5a96c",
+      "roles": ["rules", "flavor"],
+      "characters": 241
+    },
+    {
+      "id": "f5a8573d-0e2d-4a7f-a47f-7e1bc472d4fa",
+      "faceHash": "13937c40cca65dec685ba85062f2a2251338fcf100b3fb30af16073188cae7f0",
+      "roles": ["rules"],
+      "characters": 115
+    },
+    {
+      "id": "76fb0c62-1c53-464e-a2df-59285f2d593d",
+      "faceHash": "3e7da3d7574375c3fbfa24cdf9c4a216b929b46fa1a6c68045791c7b78fbc868",
+      "roles": ["rules", "flavor"],
+      "characters": 228
+    },
+    {
+      "id": "5dba7b1e-90a0-419e-bcba-a6b19beacf29",
+      "faceHash": "9a60a2d9817e7e90e32ccb8ec7b5693c41366d0d5cc19b978cb400e0203231d8",
+      "roles": ["rules"],
+      "characters": 45
+    },
+    {
+      "id": "b5900350-be08-4904-8f1b-cc180ed08485",
+      "faceHash": "e7f44ad82de2ef4942f5f0f156cf8e9ce60a2182256740e015309def9add807b",
+      "roles": ["rules", "flavor"],
+      "characters": 223
+    },
+    {
+      "id": "398a2b0f-0b91-408c-8083-3bc89873b69f",
+      "faceHash": "15bad3c1c62620fcff3bce404351394e6c8cfc497a5da57178f1835a025bfaa9",
+      "roles": ["rules"],
+      "characters": 54
+    },
+    {
+      "id": "9691e76c-770d-4721-b758-805574227de1",
+      "faceHash": "0fea567a2c25aaa134b31291a125ea5d6adefa2ab018889a24309389dcc55f5a",
+      "roles": ["rules"],
+      "characters": 179
+    },
+    {
+      "id": "66b875b1-e534-4ed8-9ebd-8f4d5a066e7d",
+      "faceHash": "30fa052ff79fd0cb1d3c035710aa82851bf35548560726b27d0e1ae6f2bb63a9",
+      "roles": ["rules", "flavor"],
+      "characters": 102
+    },
+    {
+      "id": "c8c65bf9-cbab-45ee-9c6e-f8ee832dbe61",
+      "faceHash": "501dcaab9a8613a01b7f9e65b3afe7620473811300b1037797a6ee210a33d7bf",
+      "roles": ["rules", "flavor"],
+      "characters": 123
+    },
+    {
+      "id": "bbb6765c-a052-46dc-a589-200b8ba8c99f",
+      "faceHash": "68257809319331112cec9028129ad6beeba68e2928fe9a13fa4d09a9b1630c41",
+      "roles": ["rules"],
+      "characters": 142
+    },
+    {
+      "id": "7731dc37-2eac-4e60-bb0f-6230205a5323",
+      "faceHash": "033f0e2a529c569c13710a7965661bb490f201f543a55a120beffafbf552977b",
+      "roles": ["rules", "flavor"],
+      "characters": 161
+    },
+    {
+      "id": "1b6d9e96-0c7f-45c5-b6d0-6444ef84bab1",
+      "faceHash": "1be6b9f306a942502a56fdab30ef7350ac96d2beecabfe4698e800a614da2602",
+      "roles": ["rules"],
+      "characters": 176
+    },
+    {
+      "id": "db11b832-7584-4e4b-8d02-b03fe76dcbc3",
+      "faceHash": "58842082d6137a0bbcbd727d88f95803bb66dd7cede739bf9963a0581f277a1f",
+      "roles": ["rules", "flavor"],
+      "characters": 232
+    },
+    {
+      "id": "d0bcad9a-b69c-434a-8d48-6b727bd8e382",
+      "faceHash": "969332647eca004c6811cb49775ab36a1921bc62fe98f3917fa6593632ffc7c2",
+      "roles": ["rules"],
+      "characters": 193
+    },
+    {
+      "id": "90886a02-4c1f-48ea-8563-6d80c97d9f58",
+      "faceHash": "5dbc9d58d1abccb494e9e52caaac89da22294a34db0d9f79c3798567ef53f67a",
+      "roles": ["rules"],
+      "characters": 132
+    },
+    {
+      "id": "0a53418c-3720-4aa3-a525-6bc82c363844",
+      "faceHash": "84acb093379bd957963b23fcc400259b6070903ee47d1116dc22b9e7d9281ccf",
+      "roles": ["rules", "flavor"],
+      "characters": 194
+    },
+    {
+      "id": "901591cb-a7e9-47c1-96ff-3de7b39b1055",
+      "faceHash": "b6cbc73f34bf62507ef3d0db7df791ea77f0bfaa387ae5092ad595c47b29ba0f",
+      "roles": ["rules", "flavor"],
+      "characters": 259
+    },
+    {
+      "id": "018a02f9-81f7-412b-8e98-d7be3eb73eca",
+      "faceHash": "405acc9bc939d67a26a37cfcd0bf7e3902c97eab8101fb2e74765aa58d805877",
+      "roles": ["rules", "flavor"],
+      "characters": 234
+    },
+    {
+      "id": "2096e54e-1a55-4fd7-8415-a6f2fdb2a536",
+      "faceHash": "72a3f370f8f1c3587d1f0adad1680f44494304c1d7fc0d0df4bcfd572f1e6f04",
+      "roles": ["rules"],
+      "characters": 67
+    },
+    {
+      "id": "b2d51bdf-f118-4a1e-9060-bdf3c78697f2",
+      "faceHash": "a2b6cd0c163f7cbdf4a42ce4caccf0bdebc97e5a7574723def117acd0a570873",
+      "roles": ["rules", "flavor"],
+      "characters": 174
+    },
+    {
+      "id": "dbd55d32-e969-4d12-b101-a35db8a53921",
+      "faceHash": "11191716ca204d1eba69c71bfcbc1882f6eab5eda83d86d30c965a830d32474a",
+      "roles": ["flavor"],
+      "characters": 200
+    },
+    {
+      "id": "df0baaa9-c42b-413a-b10d-95689e4ddb50",
+      "faceHash": "8735775da98ff50522721fa1a32e5eb8ce28dd24c4275b858d0778e98b915706",
+      "roles": ["rules"],
+      "characters": 190
+    },
+    {
+      "id": "2e29882a-c194-48b8-ba18-439b0bda395e",
+      "faceHash": "3d70a567e9494620063016508068c9bc684f6ccd356c16d0d3ecdf9ccf11119c",
+      "roles": ["rules"],
+      "characters": 131
+    },
+    {
+      "id": "7c23232c-a264-4df9-824b-4111a5c6524c",
+      "faceHash": "a54ce2074226eb3ce936e0636769a465fb53a19a4233ea79ae6eb13ca8aad93d",
+      "roles": ["rules"],
+      "characters": 152
+    },
+    {
+      "id": "e4855db6-570c-4845-9074-a9df7611307a",
+      "faceHash": "9903f0269ef279985d72f050fd3fa5ad280ef1bc41f971c7ea86cd56149c5d59",
+      "roles": ["rules"],
+      "characters": 76
+    },
+    {
+      "id": "1df0c902-3fe1-4de7-9777-7ddb563b6cec",
+      "faceHash": "a1fdb8011715d4c47a54075c577ec7b0ff87bce61f1690588afafe46bf822c49",
+      "roles": ["rules"],
+      "characters": 125
+    },
+    {
+      "id": "deb5d44d-977d-4d0d-8242-17c8ffa7247c",
+      "faceHash": "5cbac5157f4221b072469b3559eeba18613512954a7e9d6b51b35b215713530c",
+      "roles": ["rules"],
+      "characters": 45
+    },
+    {
+      "id": "cbf5aa58-f68b-4197-9697-1e6653760853",
+      "faceHash": "6dfa4e59b9ffc544d8c99eb657d5e5c1a944260a21cfa1e59061264512e60c08",
+      "roles": ["rules", "flavor"],
+      "characters": 149
+    },
+    {
+      "id": "f52c3c85-1462-406c-8e3b-c25deda9c4e6",
+      "faceHash": "a1f110f3a9d26e9f80299ee281299ad924244fbfd34510e4da8d3ea7cedb3917",
+      "roles": ["rules"],
+      "characters": 27
+    },
+    {
+      "id": "d2aed701-5164-4c63-9539-3d2406970f46",
+      "faceHash": "fe1c22c849891abca2bc95c0df5870072282d0846b01dcdbbd95b85e69b92ecd",
+      "roles": ["rules", "flavor"],
+      "characters": 197
+    },
+    {
+      "id": "36ce3251-017f-4834-9935-0985c56cccb7",
+      "faceHash": "dcbeb6c535921f4d61dfdefb7a36e8ae8eb6173ae3d8ad77639264290a0382ea",
+      "roles": ["rules", "flavor"],
+      "characters": 181
+    },
+    {
+      "id": "edc2fcd5-e7a5-4a66-b385-82726ee6e3cc",
+      "faceHash": "ba7339a05695db6f44333740a4be56bda941cc2973ad470c59578704f72e4878",
+      "roles": ["rules"],
+      "characters": 86
+    },
+    {
+      "id": "548d4cd1-7cc6-44ee-872e-68e5bcc608fb",
+      "faceHash": "8bd92cbe6b641491d6939e3fc38a238ede2bbbc5836387dd309bd2d78b2b9ee0",
+      "roles": ["rules"],
+      "characters": 27
+    },
+    {
+      "id": "583ef317-8105-4917-ba3c-93de3eebd944",
+      "faceHash": "4aa0b6cae857b7002234c5869c6a543cfba9c865c8978a8c1c3bb088efa802bb",
+      "roles": ["rules", "flavor"],
+      "characters": 199
+    },
+    {
+      "id": "715472e1-585b-4379-b335-8f3b5e572d83",
+      "faceHash": "0ef5923790249e75245a679d7ec82db3e69ba14737b5a985ea772d1aeac2e0e1",
+      "roles": ["rules", "flavor"],
+      "characters": 160
+    },
+    {
+      "id": "a3c546db-0871-4a13-8654-c26ae9f9b50a",
+      "faceHash": "1c197eee2d30a19dfbcdf6db9b25f1eda1adb0c920667eaaef9117ed9725f598",
+      "roles": ["rules"],
+      "characters": 198
+    },
+    {
+      "id": "d86753ae-c8da-47d7-b97a-3c75f83ee929",
+      "faceHash": "e2ef530c13aec271dd4c25fa256ae5058078719029b7798323c92bb6b5a13410",
+      "roles": ["rules", "flavor"],
+      "characters": 197
+    },
+    {
+      "id": "92191f72-e3d7-4679-97a2-f0c2d19d7738",
+      "faceHash": "d40bb7a3a813504b0cc3a496508805c857b23851e4916f961b7ac75ac94334ae",
+      "roles": ["rules", "flavor"],
+      "characters": 147
+    },
+    {
+      "id": "6bccf9a0-8d93-4b5e-ada0-1f19f260e5a8",
+      "faceHash": "8c08c8b565938ecab2ac6c4fb24717e89df803b47b8af03d57603adbc401cc9e",
+      "roles": ["rules"],
+      "characters": 106
+    },
+    {
+      "id": "fc81a99a-0380-456f-8e81-753add511dbe",
+      "faceHash": "8e1cd70125beedec04d2f1c2a9c2ac4d38133eb25cf4c774db69528b915fba5b",
+      "roles": ["rules", "flavor"],
+      "characters": 201
+    },
+    {
+      "id": "426e477f-2873-4115-9527-a50a97769dd1",
+      "faceHash": "e3fd96622bdebda2c4fb0c091442edd6cc9ef6ef0250b76d9282ccc87147d93e",
+      "roles": ["rules"],
+      "characters": 130
+    },
+    {
+      "id": "66674f3a-e882-44f1-addc-d74605150c39",
+      "faceHash": "f2144a7034d7e44b838631321897d5999a4a435bc15ba2edeaf079c210cee72e",
+      "roles": ["rules", "flavor"],
+      "characters": 116
+    },
+    {
+      "id": "946f1a83-6fcc-45b0-91fc-9c75504a16f3",
+      "faceHash": "5eb641dcb113eee416fed302ad3dae789714ef231d3b40c533759841dad878ab",
+      "roles": ["rules"],
+      "characters": 35
+    },
+    {
+      "id": "99e9ff47-b98c-4ab6-a4bc-8914360c3f6d",
+      "faceHash": "02da62c2f433f54016e0b60ccb385f318f0664c847b0a1ff490067ad767aceeb",
+      "roles": ["rules"],
+      "characters": 118
+    },
+    {
+      "id": "476180df-8b88-4ead-b6c5-6ccb3e8a2cfd",
+      "faceHash": "c1c7479a7d0f8ce992e808301f9e61f52da0503e7669bb6cb0ed2df3c1cd5b1b",
+      "roles": ["rules"],
+      "characters": 143
+    },
+    {
+      "id": "cac8fc5c-368f-4b25-a33e-a32855037c4b",
+      "faceHash": "062e82e9e699e1bce27215b64d41b8220f99aad44dddde88c577a0af5358c8e0",
+      "roles": ["rules", "flavor"],
+      "characters": 221
+    },
+    {
+      "id": "26e23d23-92ca-4d74-88e8-e1137d7faaf1",
+      "faceHash": "38e584bb1b7b7481bf25eae1631bd16e01b4ce0aa08371888591ff277c4caa84",
+      "roles": ["rules"],
+      "characters": 120
+    },
+    {
+      "id": "5f41f868-454e-4075-9ef4-bcf3754d421c",
+      "faceHash": "592bb8d8c7ee66b8eb8322d2af1d3461dcd03b056ee6b944fbca19856e82a8cb",
+      "roles": ["rules"],
+      "characters": 187
+    },
+    {
+      "id": "349ff6e6-b914-4787-bb90-ea77a3550d23",
+      "faceHash": "fb2c23bc74fad8eec81f7ffb3024d2c1e713e7283d8b523a799fd57f18c7ae2d",
+      "roles": ["rules", "flavor"],
+      "characters": 219
+    },
+    {
+      "id": "3616f381-ca10-4945-b95e-96dfefa3c303",
+      "faceHash": "116d86c3c2674291964484cf171b82e41e1822b0c4c944461993a9815acb8ffb",
+      "roles": ["rules"],
+      "characters": 161
+    },
+    {
+      "id": "a5a859fd-28a3-470f-adf4-c6431ced27e1",
+      "faceHash": "e0a85a2a37a4ef41f41b0602ec61946d2df26a33ed1298654f379c6757970daf",
+      "roles": ["flavor"],
+      "characters": 232
+    },
+    {
+      "id": "19ec03ce-a8a3-42c3-a895-21cce1657411",
+      "faceHash": "3d90c1d9922d2f1e01af44df2c3b825736d2ef598309afc322210dc6486a38a5",
+      "roles": ["rules"],
+      "characters": 74
+    },
+    {
+      "id": "9d574075-9909-444a-817f-d6ad419aa62c",
+      "faceHash": "6ba07b023dcc9a57230b62f8f9041699a1d55a45300685a932a0bd7c7cae44b7",
+      "roles": ["rules", "flavor"],
+      "characters": 147
+    },
+    {
+      "id": "0261cd0f-e763-49b5-96ed-5e5767a3d8d7",
+      "faceHash": "799d9afdc6b10f8c30697a84c759d681e61540eefd376b19f4f830d55a1b3e27",
+      "roles": ["flavor"],
+      "characters": 210
+    },
+    {
+      "id": "afe078d7-cdde-44bb-942e-417123ebeccb",
+      "faceHash": "904f41c8785eec5769abee634eb3f64b3aa753648a82609ae9af599e6055b01a",
+      "roles": ["rules"],
+      "characters": 159
+    },
+    {
+      "id": "294892cb-3927-4bf0-97ca-f37bdd0b9de5",
+      "faceHash": "eded325eac78f50eb5453a1d7515a73dd563cece555e05bd7b7d5653fb6e7251",
+      "roles": ["rules", "flavor"],
+      "characters": 179
+    },
+    {
+      "id": "7601b15a-53d8-499f-837b-abf369d1e3f4",
+      "faceHash": "d788d17af089486f83bbdce11c48867a5c38431fa966b4eb606ed812c29d45a3",
+      "roles": ["rules", "flavor"],
+      "characters": 94
+    },
+    {
+      "id": "ed0de18a-1dad-49f1-8127-09aa07b69eb0",
+      "faceHash": "85b63887f3e549675bac4eb321739638e8672952fcd97a475dba64f891324ac1",
+      "roles": ["rules"],
+      "characters": 19
+    },
+    {
+      "id": "f1aebd61-311c-4269-aa75-5c004639178d",
+      "faceHash": "384095940ec4639eec21c6e3d77a2d3ee6c9fa67cd17b1bb857d93a4ca7980fb",
+      "roles": ["rules", "flavor"],
+      "characters": 158
+    },
+    {
+      "id": "866df71c-856c-451d-a11b-c2086c265868",
+      "faceHash": "659adb440b676f2788fc6eebb6d4c5e4c5a5f0c3dc99316bfd9e22f2c4ab1eb3",
+      "roles": ["rules", "flavor"],
+      "characters": 125
+    },
+    {
+      "id": "92dd4aef-6d15-4d74-96cf-1cc51812b541",
+      "faceHash": "e5db97755cd61587210b672aa07b7d595ccbdb4ceec377a3375cac4a3ebe48c3",
+      "roles": ["rules", "flavor"],
+      "characters": 172
+    },
+    {
+      "id": "25f4f0c1-a43e-4282-b20e-91c711c57521",
+      "faceHash": "fc97a768abb1242722090673c2e79ca882d87ec6f4785a4c4600b00fc85d20fa",
+      "roles": ["rules"],
+      "characters": 150
+    },
+    {
+      "id": "11bf2cc0-799f-4eb8-b338-ed7543f469e7",
+      "faceHash": "ef2dfde759c60347e77c3941d8fb2b810b1f317165a3d685a5a54ddcc13c54ed",
+      "roles": ["flavor"],
+      "characters": 213
+    },
+    {
+      "id": "6ac25236-c2f2-48df-8dbb-d4f9ce790cfb",
+      "faceHash": "5f463ed119ef8c325ee72be4fd66fadac27f2862f67e7d90892e4392db1b601a",
+      "roles": ["flavor"],
+      "characters": 153
+    },
+    {
+      "id": "5c2c27de-e788-4ad7-b1e3-030e7ef00471",
+      "faceHash": "a284dd163d45007b148d5087d05031281fadec4c162f3f8f4901427e7be1459e",
+      "roles": ["flavor"],
+      "characters": 247
+    },
+    {
+      "id": "c1c0ab2b-04bf-4cba-8efa-3d1d0ab4f50d",
+      "faceHash": "d31228b0f75d8b8ed8da2742c56835a63548fe23a0a17e43416af051badc9606",
+      "roles": ["rules"],
+      "characters": 47
+    },
+    {
+      "id": "f9dbfdc1-a598-4c72-9b0d-91207bd067ab",
+      "faceHash": "6c30f24e6b52db871af80d479b38822ea84261ce749a62d9dda20897e0b1d7bd",
+      "roles": ["rules"],
+      "characters": 27
+    },
+    {
+      "id": "3db90782-fa89-4470-bec5-27614e88a0a9",
+      "faceHash": "c4390cc252452ea4c30cc75d70e7e8459e206bbeafa1eb94583de7a96816db6e",
+      "roles": ["rules", "flavor"],
+      "characters": 208
+    },
+    {
+      "id": "d882105f-2de0-46ae-b673-01508c016cc6",
+      "faceHash": "d2f5dc59a94fc4f8f79f055fb085817c241126ac5994f04c9966e23548d23c94",
+      "roles": ["rules", "flavor"],
+      "characters": 254
+    },
+    {
+      "id": "b1a32db7-e1a8-47d8-a708-987bcbf0636e",
+      "faceHash": "228d150e512c71517808676a1327b1fe39a52e2e1436e635213cedd91b818594",
+      "roles": ["rules"],
+      "characters": 263
+    },
+    {
+      "id": "9521375e-0bc1-45ef-b513-6d332a25f9d2",
+      "faceHash": "db7e3c4bca6bbd6959f373cc9aa586ecff4eefef874bfaedca67c903ea74dd54",
+      "roles": ["rules"],
+      "characters": 59
+    },
+    {
+      "id": "993a14d5-a33d-426e-ab49-c3226a6fcdca",
+      "faceHash": "d91de427e9c57afe90b734eb7a08e173083cdd4fe9ebbdc334d34b2b902f946c",
+      "roles": ["rules"],
+      "characters": 170
+    },
+    {
+      "id": "a01f27b7-f1d0-4fb6-b743-ca7a810ef85c",
+      "faceHash": "b7daeb0123a91f4a12d285b8a7b4e462252a279320added4038f6b3165180d13",
+      "roles": ["rules"],
+      "characters": 186
+    },
+    {
+      "id": "e7169e26-e700-4e71-b959-4592a03f3c9f",
+      "faceHash": "123054207e06b34bc59f2a55a1164514d967c85ca6a2be84aa98d4b3c9525840",
+      "roles": ["rules"],
+      "characters": 89
+    },
+    {
+      "id": "ffb4f505-bc05-44ac-9190-60101f813c65",
+      "faceHash": "c014e26309eeb66533272c0a99a0f71f9897bbd7752d6d788b4ae0646ca306e3",
+      "roles": ["rules"],
+      "characters": 90
+    },
+    {
+      "id": "9f31c715-9ab8-4578-989f-141099b6750c",
+      "faceHash": "27cf74af494c0e36d8b715a036e6cf48b8b64e12230d849b223d51b64fd0053a",
+      "roles": ["flavor"],
+      "characters": 263
+    },
+    {
+      "id": "19281eb4-f5b6-4b27-8c65-7e56d2a8ab77",
+      "faceHash": "8e16d1e2a19a17d017f7ad8e294e8b7547fad7a7d0410a821c5b5f288ee0ba6d",
+      "roles": ["rules", "flavor"],
+      "characters": 241
+    },
+    {
+      "id": "56cc0d8b-2d4b-4c3b-a9af-b5fae35e6ec5",
+      "faceHash": "600b9905b432836925ad4520b2db90be8f24771ba44a9d8a333b990ba1fd2db6",
+      "roles": ["rules"],
+      "characters": 46
+    },
+    {
+      "id": "0b5717af-a1a3-45cb-8b05-7543eed5532a",
+      "faceHash": "bf65549804db532df80df98a7e1c946cf6bc91c3028e42d4fad0c49287a31038",
+      "roles": ["rules"],
+      "characters": 172
+    },
+    {
+      "id": "5e32142d-b161-4497-a6cd-ba4c67e16a6f",
+      "faceHash": "2731396c3f6bcd41a9b69991d81126e96cbb380d7b0c2eb52f6c4195246a70a0",
+      "roles": ["rules", "flavor"],
+      "characters": 224
+    },
+    {
+      "id": "a54246c9-5e5c-484e-a546-ae1f9fd020f3",
+      "faceHash": "1f93018e04c75d4ef630a52cf6e3137cd3f673ea55da1bce685ab8dbc00415fe",
+      "roles": ["rules"],
+      "characters": 59
+    },
+    {
+      "id": "bbd44196-aa28-4143-872d-592c6fc175a9",
+      "faceHash": "cb8b44e863dae6898951bd5c12f73573f33b1cafb9470611f062daa477f48d8a",
+      "roles": ["rules"],
+      "characters": 24
+    },
+    {
+      "id": "70846483-9c23-42c4-9f9f-1fc5cda17c77",
+      "faceHash": "73fae1691d478f8405406a7b42642c63282413c6f3157e3b207447c439486619",
+      "roles": ["rules", "flavor"],
+      "characters": 241
+    },
+    {
+      "id": "a39ab53c-133a-4211-8499-aea00ed3ee1d",
+      "faceHash": "b600b418a726a95ccc3dc442e02f45401b675ade4b93bd2ea06d146c0796ee4f",
+      "roles": ["rules", "flavor"],
+      "characters": 150
+    },
+    {
+      "id": "c2069f9b-578a-45da-bd52-3c208465be88",
+      "faceHash": "be8367831ca59c4240a773148c0dea1eeabfd832bdd60f5fdf73135f8d309c1d",
+      "roles": ["rules"],
+      "characters": 73
+    },
+    {
+      "id": "265de55e-63d2-4a5d-9078-858da70f2a08",
+      "faceHash": "b2d717bc3c4ec4653e3f574c0398df4f52107b4f8aa7cfd47f03554a2696d464",
+      "roles": ["rules"],
+      "characters": 255
+    },
+    {
+      "id": "b9029bfb-fcff-4f80-a423-c2cfdc881c61",
+      "faceHash": "7485f11ad984224f6a81d25cd037bba16d1c9d4dde2573eef052b8c24b9938f9",
+      "roles": ["rules"],
+      "characters": 20
+    },
+    {
+      "id": "c2ea6dfe-64d6-451a-bd34-31546996e711",
+      "faceHash": "5931912cebf6cfe738895b48773d603efa5a66f44e927e7719e8cb2ace1dc4b7",
+      "roles": ["rules"],
+      "characters": 505
+    },
+    {
+      "id": "4b58ca62-6532-45e5-ad51-84a388d5cc4d",
+      "faceHash": "f4db4cdcab0a6dee46d2910027235c3e51ac6d1d8fc8f38e35456dea053cd3c6",
+      "roles": ["rules", "flavor"],
+      "characters": 175
+    },
+    {
+      "id": "9483f5d0-c627-43ed-bfaa-1559855c8a6d",
+      "faceHash": "c3e75fec99362ac5efbad76a6ba02e8372ed30a9503911e76219332f03f99772",
+      "roles": ["rules"],
+      "characters": 17
+    },
+    {
+      "id": "28dea433-2dee-4faf-a868-6af664c6af4a",
+      "faceHash": "3a7a0f1f3edb44f3b4915881931b703c24df1d95a02574dc3bc44250f2c91914",
+      "roles": ["rules", "flavor"],
+      "characters": 140
+    },
+    {
+      "id": "b25b81fb-1d0f-4c0c-8d54-fbf9c1d54578",
+      "faceHash": "680b2fea124d8efff1f7f6a29c5fadf7120d93136643d5a0cfa675687154dd2a",
+      "roles": ["rules", "flavor"],
+      "characters": 158
+    },
+    {
+      "id": "ccd7753b-0f01-42f3-9a5b-fe1ac6e7441d",
+      "faceHash": "d31de71e76bd0affa41674b2e92006d5d90550b505750c2c9f04fe251241ff4c",
+      "roles": ["rules", "flavor"],
+      "characters": 192
+    },
+    {
+      "id": "8c4b68e0-ec8b-4dad-91ee-dc1da5db6251",
+      "faceHash": "c5ebddfb5bcfb6e8d6de9b535f08abe8ab5ab936a1f14cb4923447cb2a1bac5b",
+      "roles": ["rules", "flavor"],
+      "characters": 254
+    },
+    {
+      "id": "77071f4c-d00b-4c79-a2e6-6be0720af36b",
+      "faceHash": "dc3825a08e6f73c8a07b2c006fdb26048578c82a327162260bac5a5962d204e7",
+      "roles": ["rules", "flavor"],
+      "characters": 206
+    },
+    {
+      "id": "58e780b8-8002-47d4-9d0c-bd65a40ea34e",
+      "faceHash": "0c920951f36386bfca0870d3843c57c022c0fb2a0ab5653653296d21b9091d9c",
+      "roles": ["rules"],
+      "characters": 135
+    },
+    {
+      "id": "b8852e36-204c-4b3a-a4f8-33a98548fa7b",
+      "faceHash": "c055c426662fc8e149a316d74bffde94cb3b6031498b0ff1b991b0fa124f889f",
+      "roles": ["rules"],
+      "characters": 88
+    },
+    {
+      "id": "6f449835-5e20-4244-b7f4-c22838910076",
+      "faceHash": "45a930a6a716bdc461412511e2886ebdb4f81aff33b2402266869a002f206bc9",
+      "roles": ["rules", "flavor"],
+      "characters": 172
+    },
+    {
+      "id": "e42eb95f-638d-410c-a830-a414fb2494ec",
+      "faceHash": "8d44b9acbe1eaa349aabb373c3ce3e8ffa52c445df221bea32ab77341905a9d5",
+      "roles": ["rules"],
+      "characters": 218
+    },
+    {
+      "id": "3406dfe1-68e9-4757-9487-0b556c97d07a",
+      "faceHash": "7a128f6620ae4f5b96f145cec25a5f33755c2b3492a0b425a338c10ac9312ac7",
+      "roles": ["rules"],
+      "characters": 93
+    },
+    {
+      "id": "57e9cf07-a335-4725-a124-0e983721f2f8",
+      "faceHash": "cca0872075754ca7e12bd66b27882bd98597dddbb505fc6cea286933767c752e",
+      "roles": ["flavor"],
+      "characters": 224
+    },
+    {
+      "id": "86873be9-21eb-496c-b278-4c9847563b0f",
+      "faceHash": "6d45b84ac546b743ad5c21c3db4eaa451420c8a50842478f01f83f225c6f01a1",
+      "roles": ["rules", "flavor"],
+      "characters": 196
+    },
+    {
+      "id": "5603ce3f-3b39-4433-8ccf-44b44dc99de5",
+      "faceHash": "af3079a295afbc6b55ee81e26a3ae3e9a7b93ff4d7979e3523ef33d83bd2ba2e",
+      "roles": ["rules"],
+      "characters": 25
+    },
+    {
+      "id": "e85ab895-d2b9-47f5-91f0-07b0cb43fc7c",
+      "faceHash": "c60a605e31d97e6a63ae1b25c8fb863f70b3ebb899b5e75cb230b8a1194cb972",
+      "roles": ["flavor"],
+      "characters": 103
+    },
+    {
+      "id": "906095f6-25c7-4f61-8513-9d75e32aab02",
+      "faceHash": "e9807842616365799f5acbf70a57fc0a5784a6be2cad6ad94f4855fdf3ede8e6",
+      "roles": ["rules", "flavor"],
+      "characters": 146
+    },
+    {
+      "id": "efd21750-856f-4017-a728-dcbf3f506f20",
+      "faceHash": "e26ae6280d7a580e46d1cf600ce68f8966aabed33224bc184b3aafee79395445",
+      "roles": ["rules", "flavor"],
+      "characters": 170
+    },
+    {
+      "id": "a1959de7-e945-438c-a90a-158e21c4d5bf",
+      "faceHash": "10b383f3a340df2515c00dce566ed6f45e50f2795ff4cee246f48d91bb136c02",
+      "roles": ["rules"],
+      "characters": 45
+    },
+    {
+      "id": "ccef1a44-faf8-42bd-aaff-778f65d18ae9",
+      "faceHash": "a823a49a689a30690fd0b925cd9d47c5bfeb4b775b07244357bf0ab094658431",
+      "roles": ["rules"],
+      "characters": 77
+    },
+    {
+      "id": "7d9ff903-176f-45e7-82fd-e9705c1c719f",
+      "faceHash": "8082f17615f2dec8d3ba643f669b844111b9870bd1a78152d6495fd4af6b9a96",
+      "roles": ["rules", "flavor"],
+      "characters": 233
+    },
+    {
+      "id": "4d9e1c1b-bc7c-41b8-a983-b1c60f558547",
+      "faceHash": "59f7ae8dd1a2f5f4959b43e1ec27eb0124528bce8196fbed14204679a5672930",
+      "roles": ["rules"],
+      "characters": 257
+    },
+    {
+      "id": "c6ce96a5-76f1-48ca-854d-a37fb6a023a0",
+      "faceHash": "d4def8791e9253ffbb9dfaf333b4fea03c1488ea7d8e82b3b09e1fffd5d11cc4",
+      "roles": ["rules"],
+      "characters": 45
+    },
+    {
+      "id": "9dd711db-661d-4e2c-b817-0905e26ed929",
+      "faceHash": "8588f6b7589d906d79029c4647cf99db164fdfd2e2a5bcadda4cf3d0b4f3d256",
+      "roles": ["rules", "flavor"],
+      "characters": 231
+    },
+    {
+      "id": "38fc72de-2093-477b-b39e-696339d2fdbc",
+      "faceHash": "3320537e1eff2a4065cebc0d396d8133eecb207531dbab215255b90cfe642cd4",
+      "roles": ["flavor"],
+      "characters": 210
+    },
+    {
+      "id": "8457f271-4075-4694-a1c0-280aff910953",
+      "faceHash": "5c6aa7d0d49f214b26429c0490aa14214a4747a581367a74a1d55b584998f385",
+      "roles": ["rules"],
+      "characters": 70
+    },
+    {
+      "id": "0eeb4671-e6f6-4f64-83f8-8c2a56defa1b",
+      "faceHash": "df056517983a95224714c104b6b616c4cda692424d681530e9f43ce3d234f0d0",
+      "roles": ["rules"],
+      "characters": 173
+    },
+    {
+      "id": "c6c93c85-5263-4770-b937-704e57912478",
+      "faceHash": "a4441fd5bbaf596eb74775c281e1e1674f240fba1f56ae4c64af58c7c1b286ac",
+      "roles": ["flavor"],
+      "characters": 238
+    },
+    {
+      "id": "e4e748b0-4041-4266-a777-e1b8a5533e80",
+      "faceHash": "30e61d3601af2e8235ffc414b1d6078c7f9b0be82832e3f9b9a014c0ff23954a",
+      "roles": ["rules", "flavor"],
+      "characters": 165
+    },
+    {
+      "id": "71f1d97c-5bfa-4791-9004-5f2464908c30",
+      "faceHash": "43fe783a34dbb292e193d3249635913969a36c2332e7fed725e0958963f415dd",
+      "roles": ["rules", "flavor"],
+      "characters": 212
+    },
+    {
+      "id": "925adfb2-cfe3-4847-9db0-20bbe4e7baf1",
+      "faceHash": "4bdc736d814ed7b9dee96dabcbb1d766c24fc9bfe0e9a3abb2e97e3d2926c998",
+      "roles": ["rules", "flavor"],
+      "characters": 173
+    },
+    {
+      "id": "e1ca1cc3-e588-4ef7-b846-d5dba3c875a0",
+      "faceHash": "8863448301c7bde37dc79e8b17e4e4a4fa35bbf7c1a9014e3ccd75f7b47d97b7",
+      "roles": ["rules"],
+      "characters": 66
+    },
+    {
+      "id": "bf312acb-2fa6-440a-964b-424ad8abc331",
+      "faceHash": "23f18f2f26abbf38c4294ec2c3e76cdb4b68aa42606a78bdd71837ff9f7f4598",
+      "roles": ["rules"],
+      "characters": 144
+    },
+    {
+      "id": "2cbe717c-313c-4a8c-85a5-d23d3796ff26",
+      "faceHash": "7d79efffdb7496e10881d898a5605c62a2d3e8d3867a5248c5d8499639c42555",
+      "roles": ["rules"],
+      "characters": 197
+    },
+    {
+      "id": "36d5c0df-3db4-4e2d-9688-223383e02b02",
+      "faceHash": "26d47760bd0578a6f5e2e1f32ac0412555f536db3a564d31438b225b9c0c9a81",
+      "roles": ["rules"],
+      "characters": 126
+    },
+    {
+      "id": "75d972d7-5ed9-49c1-8d27-ec162771284d",
+      "faceHash": "6f682c543a48de16a72e2181a85e7d09e5f8bda7457d0b3708105d17264915d6",
+      "roles": ["rules", "flavor"],
+      "characters": 166
+    },
+    {
+      "id": "7abc17aa-8f6b-4156-b148-fc049e1d316a",
+      "faceHash": "e788f47d9077d267469f4d07ff3cbff3d6fb21e14b239eab2053114176f418a8",
+      "roles": ["rules"],
+      "characters": 319
+    },
+    {
+      "id": "16524bd2-0d88-451c-a394-7d5fe204dfc6",
+      "faceHash": "115ea3f383c114e584c37c7499c008186b960fd609118b173ac99ae433ffa99c",
+      "roles": ["rules", "flavor"],
+      "characters": 233
+    },
+    {
+      "id": "0db4a4ef-20a8-415f-8d7d-a6740b482f73",
+      "faceHash": "7720d55dd28e799b9d82a464258970aa4b549fd423b1bbb71e8c6db77cca9b35",
+      "roles": ["rules"],
+      "characters": 160
+    },
+    {
+      "id": "2338aeec-63f6-4cc1-833e-77d44994a7ca",
+      "faceHash": "3d56bcb22d78c3204cb603c1803a6ad2c220ff0ac735d427f171b80ad840c686",
+      "roles": ["rules"],
+      "characters": 52
+    },
+    {
+      "id": "504e4e18-a70c-47d6-8331-2ca3c6210a98",
+      "faceHash": "9b9907ea5fe654d596fc0013465ef623926135afa4e2846ef442baf8f4da6e9e",
+      "roles": ["rules"],
+      "characters": 50
+    },
+    {
+      "id": "27c01d57-2bd4-433e-bea7-1acc70d14be3",
+      "faceHash": "ef0423ae2f3b1dbeae1cf0c2831d3e6896ba44c9c3a144239730877bf2027b22",
+      "roles": ["rules"],
+      "characters": 201
+    },
+    {
+      "id": "5697b2e7-25c5-4ae0-a9ac-48cbc6a94c15",
+      "faceHash": "5c7ffe870288a4e3c090b683700ee2998bf0c8401c3b5273420af81c92e59a1a",
+      "roles": ["rules"],
+      "characters": 52
+    },
+    {
+      "id": "ca9af432-3997-426a-b532-52333c3c50c4",
+      "faceHash": "a74f58af698fcdf9c5672f6e85568058efc84ba45c3e73b56cba7db5928b8039",
+      "roles": ["rules", "flavor"],
+      "characters": 187
+    },
+    {
+      "id": "281e8da8-1383-460e-b74e-ad56f1b6d007",
+      "faceHash": "82af16b8ac948242426079edda3877bfaa3f420239b1be4f8c86cc2b3103e336",
+      "roles": ["rules", "flavor"],
+      "characters": 205
+    },
+    {
+      "id": "8d8f8c01-6f1c-4902-a7fd-c9cf04b28461",
+      "faceHash": "b2ab06d6620ea64395d27b36940d89d2c02df56895a3f02e65403fcdb6d70d10",
+      "roles": ["rules", "flavor"],
+      "characters": 204
+    },
+    {
+      "id": "ca367627-9be3-4e80-a214-0b3f0f2ab867",
+      "faceHash": "0d0a7820234b61b83f726b4d8304ddb8207d7af27943e37a007211bcacd8f5e2",
+      "roles": ["rules"],
+      "characters": 27
+    },
+    {
+      "id": "b1a9682c-ecca-4caa-9e5a-17874167082b",
+      "faceHash": "71e20f9f8a10bd0b550754adfe6656e382d1e8fe99ca7465f72ffe6af2de243d",
+      "roles": ["rules"],
+      "characters": 268
+    },
+    {
+      "id": "c63c16a5-588e-4ef1-9e79-4d36127cd84b",
+      "faceHash": "d483551d934d77092e03585f0b4d09ff8f025a62d80d70a74ae0e5a3208f6012",
+      "roles": ["rules", "flavor"],
+      "characters": 168
+    },
+    {
+      "id": "d8f84fc8-69b4-4756-9634-4d6c17ec88a1",
+      "faceHash": "ab671340d9c8f1a55495fde22d68b387db16fa18f619b88ed7e057f15775ab8f",
+      "roles": ["rules", "flavor"],
+      "characters": 192
+    },
+    {
+      "id": "19dd44e3-d62c-405d-a620-7dc871eef81c",
+      "faceHash": "d116f5a0f555f911d683184e65927692aaded983c83769681af49dcf58b64518",
+      "roles": ["rules"],
+      "characters": 251
+    },
+    {
+      "id": "b1c8b995-f3d9-435a-8360-4047a619b23b",
+      "faceHash": "e548ae13d5cda03160fafc17848ef0a5617349838de1bae84390a15daf731d29",
+      "roles": ["rules"],
+      "characters": 25
+    },
+    {
+      "id": "227c2abc-d484-4198-863c-3266a83249c6",
+      "faceHash": "993fe66fc1ab65cf9a4b227e0ca80c62850999f78117a661bfa2ef545c86001d",
+      "roles": ["rules"],
+      "characters": 20
+    },
+    {
+      "id": "de2d276d-7a73-4a8f-9803-a37301bc2905",
+      "faceHash": "d2b982fb4b03ea49c1e1f8734fc234aa400aa8d5a2b915b03ef9d0ef0e3d8078",
+      "roles": ["rules"],
+      "characters": 166
+    },
+    {
+      "id": "c7a314a0-14cb-4df1-8f2f-653455f13b09",
+      "faceHash": "6518f6f7c0ae157e2cca422eefe4435db5c81908692abe4ee9b45b08fa09b43a",
+      "roles": ["rules", "flavor"],
+      "characters": 235
+    },
+    {
+      "id": "96e30d22-da86-49a1-a319-22e8a909d443",
+      "faceHash": "f829ddb0bba680eb09d9224168b20dfd19a061ac5b0f1f753f91253caac9970a",
+      "roles": ["rules", "flavor"],
+      "characters": 200
+    },
+    {
+      "id": "bbd66c7c-19fb-4daa-996e-70107d732732",
+      "faceHash": "67b739f3fc7dcd25c3bc9428a7233f72ccc2a513a4e0d6eb6a777437ad667bc2",
+      "roles": ["rules", "flavor"],
+      "characters": 97
+    },
+    {
+      "id": "d702bd22-6079-4f4c-9540-42cf2a29f4a3",
+      "faceHash": "44745e3a267791111466ef5e1235264288da203fb1b0376cda7f79bf1f5a8ebd",
+      "roles": ["flavor"],
+      "characters": 177
+    },
+    {
+      "id": "39f236da-8391-487b-88d4-a45342bfff62",
+      "faceHash": "3f233285c3ce79cdbdb9a0b6d8ab72013821af7de14bd75a932c21341f42f5fa",
+      "roles": ["rules", "flavor"],
+      "characters": 186
+    },
+    {
+      "id": "f4144ca4-4817-4bb9-929b-613fc609bdb5",
+      "faceHash": "a17b3c51d03f9b17cef8575bd5138395ef00e32f53c9ed06971ea6d1d139ce3c",
+      "roles": ["rules"],
+      "characters": 86
+    },
+    {
+      "id": "2137757c-161c-4a3b-9a99-0fd23aa0c847",
+      "faceHash": "cc1ae3a162296de83dc89ddc56eeac9489383145dc938eb6457e2210811bdc27",
+      "roles": ["rules", "flavor"],
+      "characters": 202
+    },
+    {
+      "id": "0547a390-ceee-4b8a-9d0e-36d8778ec693",
+      "faceHash": "3efacbe72696006f28f071cf145766d21587dcaddea46167841db79b05537782",
+      "roles": ["rules"],
+      "characters": 63
+    },
+    {
+      "id": "b0f4724e-f22e-4156-97fd-1adfccc47be3",
+      "faceHash": "db509fcdeaf96be8c6a146595a43a742beecfac476032a4d319d8e460f19fa19",
+      "roles": ["rules"],
+      "characters": 114
+    },
+    {
+      "id": "4aea57a2-2753-4014-9724-2701455a6be8",
+      "faceHash": "922e1b3f2581071b842dcc08f2192be85e30c58c6e32fd06e22c7e847831f702",
+      "roles": ["rules"],
+      "characters": 78
+    },
+    {
+      "id": "3d4f72de-51e9-45c2-853b-1b6668416417",
+      "faceHash": "67a9ad0abb8860b417ff9e060f5fb794fc04e7383741ba6aacddcc43c2906130",
+      "roles": ["rules", "flavor"],
+      "characters": 178
+    },
+    {
+      "id": "42e7cf40-c136-4fcb-a947-558b713b39f6",
+      "faceHash": "4d576fca606a3225ef46507218639add7dba7eea2b380642cabedb94aefaac06",
+      "roles": ["rules"],
+      "characters": 203
+    },
+    {
+      "id": "d9907bbb-12aa-4826-9a65-b2ddda5fc1e2",
+      "faceHash": "8a2e5d29a91b42242caf2c9526501b5f5b0c08515b625e83cb9034abf3f65e22",
+      "roles": ["rules", "flavor"],
+      "characters": 270
+    },
+    {
+      "id": "3fc1716d-5817-49f4-a9db-c162e6ceacbf",
+      "faceHash": "afe67b882e2d0df52db3b743a0759f27dc1290409f3850db0740c7495faa2395",
+      "roles": ["rules", "flavor"],
+      "characters": 245
+    },
+    {
+      "id": "44135b17-69e7-4002-a6e0-d76f4c0c423b",
+      "faceHash": "bb96b9e64f3cf6cf83a94b9af6406f0ab2dc395fa3462e81ed27db74e8d907c5",
+      "roles": ["rules"],
+      "characters": 87
+    },
+    {
+      "id": "2fa3fe10-0f6e-4b7f-98fc-3a21c399c38a",
+      "faceHash": "5ef99ffcf4a9d4abd7db7ac137870bdabda1738fb4d69c88d1213e268598061d",
+      "roles": ["rules"],
+      "characters": 284
+    },
+    {
+      "id": "0bc11285-0891-4cc3-a056-b698911166c7",
+      "faceHash": "3a90dfcda9b8356fe671d7b82d181c11cf616d19c24b98479d9b179a67a8d4b4",
+      "roles": ["rules", "flavor"],
+      "characters": 243
+    },
+    {
+      "id": "ebf5ea1c-0ea7-4b84-b886-ebd346f4e154",
+      "faceHash": "77c6b821b40a86393cd242d774f2a5f8ac8e59c72728a0d72c5645b3aca1ddcf",
+      "roles": ["rules", "flavor"],
+      "characters": 170
+    },
+    {
+      "id": "a81f7a0f-183f-438b-b252-738d8d30c245",
+      "faceHash": "31662f15944af05a58ae158432f558d46e8704039271bea28d8bfec36e5999b8",
+      "roles": ["rules"],
+      "characters": 242
+    },
+    {
+      "id": "196b83a1-2a25-498d-83b8-8faacd79909d",
+      "faceHash": "d67324ff7a529c346f794de1bf579b5b8791c0820e860e2afa476652e57681e5",
+      "roles": ["rules"],
+      "characters": 129
+    },
+    {
+      "id": "cd2cb84e-c079-486e-87ad-d188fe38bc76",
+      "faceHash": "51724d4983cc579c41e2fcaacb3505df44b01b252d9823bb61431d40f4c6e550",
+      "roles": ["rules"],
+      "characters": 240
+    },
+    {
+      "id": "d1924860-4532-40c2-b0e8-28584d22ccb5",
+      "faceHash": "963b2920a011ff72b4db9b8fb07e1c3a732745c7dbb291c2de173ba525ceacb6",
+      "roles": ["rules"],
+      "characters": 288
+    },
+    {
+      "id": "7ab18c6d-2705-473e-b404-75660ff28736",
+      "faceHash": "ccd181e8f0b4db69105fab7a84c147f1dd1df28a0a5493b14c1d5f5160f38a1d",
+      "roles": ["rules"],
+      "characters": 110
+    },
+    {
+      "id": "cad56033-c1f9-4477-9dd6-ba7009c30593",
+      "faceHash": "103acaec45d11d48cd01c719258d4bb317b15d01759babc9ba62fdde39ca6a90",
+      "roles": ["rules"],
+      "characters": 470
+    },
+    {
+      "id": "e7ca1534-0049-4672-9677-99f1ba00fb78",
+      "faceHash": "9899fa23bc1c0be628c20ba14a4734c63c4160eeebe345af347248990a6d360f",
+      "roles": ["rules"],
+      "characters": 85
+    },
+    {
+      "id": "0dd9b203-fa4c-4383-a671-265101f4453a",
+      "faceHash": "b3915a59666622e0ecaa0002c2d7b2189b38c755ccec1f03dbccdeb8dbc8605e",
+      "roles": ["rules", "flavor"],
+      "characters": 168
+    },
+    {
+      "id": "4a92484b-064c-4588-a1ea-6de8fd485ca4",
+      "faceHash": "02d4e8cb407b68e2014b38e0dac8dbb521f5c8fb99939ff9ba530e8cb307869a",
+      "roles": ["rules"],
+      "characters": 331
+    },
+    {
+      "id": "40dc8595-32b9-4045-bae3-5078c9a17527",
+      "faceHash": "e02abeb76913cbec7b3a323217fe2aea2453bffaf2e9d5cd335d89678fb1963a",
+      "roles": ["rules"],
+      "characters": 327
+    },
+    {
+      "id": "063acc0f-8062-4461-b0f5-8c3a835e1fbf",
+      "faceHash": "17ff29ee39f281d3450ec334a8bf3419825ba73a23c3db8f2f409192ac9a2ce6",
+      "roles": ["rules", "flavor"],
+      "characters": 193
+    },
+    {
+      "id": "f6639eea-d0ae-4f0d-a8da-1b863b482b68",
+      "faceHash": "6fe241f1c695c464b3578a21f3e9f173914cebb78c2941ebbfbfd7da1e8ab1a0",
+      "roles": ["rules"],
+      "characters": 36
+    },
+    {
+      "id": "6065242b-e14e-44fa-bbe0-00f070f0140a",
+      "faceHash": "f6ad363c3a550c89e1f26259b52512e769f1bb03795685d38888df539c6e522b",
+      "roles": ["rules"],
+      "characters": 91
+    },
+    {
+      "id": "c05c17c7-49c2-41f2-842e-d980e7d62613",
+      "faceHash": "5fa23876fe8773b71ea59b9f7d2ad13e8c6f8d1a0c9c03b0fb561604cb92de22",
+      "roles": ["rules"],
+      "characters": 157
+    },
+    {
+      "id": "28cbcab8-5593-4ef0-8689-77e71fb1c41a",
+      "faceHash": "07429dd327d7b587e210f2da698fd69da72a5703323918c31a54eef986ca6c84",
+      "roles": ["rules", "flavor"],
+      "characters": 196
+    },
+    {
+      "id": "c0662881-664f-47d2-8164-b4727125ba0b",
+      "faceHash": "b66ab258e4988e5538ecb94da6d7e4327856d35e31c0db5b503247fa7d804fdd",
+      "roles": ["rules", "flavor"],
+      "characters": 156
+    },
+    {
+      "id": "23d2c7c2-5696-49a0-b6b0-789bfe839f8d",
+      "faceHash": "3a33c29f0890bd71f744516a975be92e63a9e530ede935a3a419f6ad4078f7b1",
+      "roles": ["rules", "flavor"],
+      "characters": 172
+    },
+    {
+      "id": "b9c44bba-5eaa-41a6-a11a-0bc8fb751ad8",
+      "faceHash": "d69fc368974a691c41a75aeba98268e47e363368fc111e5b6fdb64e397ce6ffa",
+      "roles": ["rules"],
+      "characters": 113
+    },
+    {
+      "id": "fb9b9085-6dd7-44fc-b3a5-7f797c34f8dc",
+      "faceHash": "7225fe9abb56f14e6cd0da2b25d3dbffbcce081331bdcbc29cb90fbcda85d0ed",
+      "roles": ["rules"],
+      "characters": 111
+    },
+    {
+      "id": "80ecbbb3-2d0d-49dc-90b3-1b396d47bf56",
+      "faceHash": "f0413ac48fcc914ea04b18f613ce59a296b13d51404d2445153076c099f0cebf",
+      "roles": ["rules", "flavor"],
+      "characters": 153
+    },
+    {
+      "id": "b665f9dc-a5df-4ad7-9067-9b48f942bdde",
+      "faceHash": "8ad37bfdba195292e42e729741bd05d777e4a0aee438691990688ee263f01c78",
+      "roles": ["rules"],
+      "characters": 123
+    },
+    {
+      "id": "6f7a41cc-277a-4d95-a30c-91bf5aa7ac11",
+      "faceHash": "0ee7b39ede3eb52ca1680f1fd01dbbc97f48180943fa0054b3824b085f3c1330",
+      "roles": ["rules", "flavor"],
+      "characters": 213
+    },
+    {
+      "id": "300428ea-7909-4c2b-81cc-a03d51030bcb",
+      "faceHash": "3e8fb369d1126645cb2b900a43a138517cc6d0225ba9f26a86617512849e67cf",
+      "roles": ["rules"],
+      "characters": 139
+    },
+    {
+      "id": "4d71a210-eb2c-4bcc-ae3b-f60a6fb615cb",
+      "faceHash": "1316d04aedb9a5e0c88babebc6781fd55cf151732bb4f1a24eae4027c5e19711",
+      "roles": ["rules"],
+      "characters": 32
+    },
+    {
+      "id": "d0f96f18-8340-4b50-9b4c-3c72c0bbc2f2",
+      "faceHash": "682210207516c3fc1e7fd461f690c192799c10122c7798ceb00b25deb5526104",
+      "roles": ["rules", "flavor"],
+      "characters": 205
+    },
+    {
+      "id": "d0a6e224-72df-4f1f-93d1-5114779aed2c",
+      "faceHash": "d9c7bccec43bff9befb559b4b6db286d51a038d3ef1e14a340b4a5eee5d86981",
+      "roles": ["rules"],
+      "characters": 242
+    },
+    {
+      "id": "673c0a08-1aaf-4976-8eea-c93a9f9486fa",
+      "faceHash": "270cd182e5e64a06f0248ce5d4c02e286fe20d50c2366ddf74dc6533ccb2822f",
+      "roles": ["rules"],
+      "characters": 54
+    },
+    {
+      "id": "a4df1be4-364e-4582-929a-05f2905f8ce6",
+      "faceHash": "0b3946cdcd46838a4a6a4e1e8289fa21aae5845ec702934a0409bb9860465ab4",
+      "roles": ["rules"],
+      "characters": 62
+    },
+    {
+      "id": "b8846e66-fd42-4e74-80fe-858944108d40",
+      "faceHash": "480fc3d66a8a907962df5e85e72a18529d496efc9124c751c31dc57a52601c47",
+      "roles": ["rules"],
+      "characters": 155
+    },
+    {
+      "id": "14f378af-ea54-4035-9e3e-e8cf980d1e84",
+      "faceHash": "ac95f3e685355f519659c43ae2321815030e2d6c96403ce22766c2037e93455a",
+      "roles": ["rules"],
+      "characters": 159
+    },
+    {
+      "id": "eff5624d-fffa-48c1-91f3-f03585e45c69",
+      "faceHash": "a90df469f276f2bd289afff73cad13cbe1bcde852a05a956deb67cdaa8664860",
+      "roles": ["rules", "flavor"],
+      "characters": 208
+    },
+    {
+      "id": "044e5475-4ab5-45c5-b86d-9b4720e7ba0c",
+      "faceHash": "7dd352379c582fc6bed1afb45eb4dbe29bfb8c0f5bf92e0f36f50f899cfbe1ce",
+      "roles": ["rules"],
+      "characters": 98
+    },
+    {
+      "id": "ac15b58c-80b4-4da7-8ed6-d963702eda3a",
+      "faceHash": "005302268f1c6c52cc23c4decf30b77ef7f6c641f5834f49f4ced31a5822506f",
+      "roles": ["rules", "flavor"],
+      "characters": 199
+    },
+    {
+      "id": "4009fceb-9140-457b-b980-875f6a2f70fd",
+      "faceHash": "3838f4599009393a179c79dc6c498f03716378a0e8831594865edc7bed05a290",
+      "roles": ["rules"],
+      "characters": 20
+    },
+    {
+      "id": "3bd054ed-9c91-4bc6-9d0d-0c045c089bd9",
+      "faceHash": "c2e1782ba857ceb836150934ea3afd646908b352af606eb5aff24e7cc55e5478",
+      "roles": ["rules"],
+      "characters": 130
+    },
+    {
+      "id": "b811a515-87a2-4dee-8689-48bfba12e6c5",
+      "faceHash": "0f8867fc9d348a660d329ef0fef69ee2ea0a3a85c99b53e4fdc0d954c6f58e17",
+      "roles": ["rules"],
+      "characters": 242
+    },
+    {
+      "id": "3be9942c-89b3-422f-bb9d-b55f51a22a37",
+      "faceHash": "73b2f583a194bffb0a96df9489a0800e5845581bb728406905b003b6be7da703",
+      "roles": ["rules"],
+      "characters": 269
+    },
+    {
+      "id": "c9714ce0-7fc3-4bf3-ad65-68555a9d2f35",
+      "faceHash": "75eb3cbf202933313029c9fd7aa18304486437cdd71e0beaffa59598ec07f611",
+      "roles": ["rules"],
+      "characters": 83
+    },
+    {
+      "id": "f16f7d28-1bc2-44b6-973b-c60d966101a6",
+      "faceHash": "c0c169a48c163f3091c5799e568e6d142bbf8a8f0675d293f417c50016762460",
+      "roles": ["rules", "flavor"],
+      "characters": 194
+    },
+    {
+      "id": "0f7b5921-3e10-47e7-98a7-8411a18313bf",
+      "faceHash": "ba7cbd8992ccddf4dad4aa8684e85bddec259a660ddbec940291cf13ccc8e9be",
+      "roles": ["rules"],
+      "characters": 182
+    },
+    {
+      "id": "d427396c-f1ef-46ac-b130-ed1e51e826a3",
+      "faceHash": "0c04f0d87e457fd90e8c496737e274851edf22443f5a4157d13d55762358e7d2",
+      "roles": ["rules"],
+      "characters": 116
+    },
+    {
+      "id": "837605e3-f4c2-4b60-8478-f21ca8734ef2",
+      "faceHash": "cf50fcb309b7141c4e3d968f1cf4d44e57ca7c00d7436864d5e782a209828a64",
+      "roles": ["flavor"],
+      "characters": 125
+    },
+    {
+      "id": "c64c2dff-9c11-4c91-a606-b5de704f18d4",
+      "faceHash": "877417f029029487e2b70c432d3f946c020235db5e2fc2464ba847c6a12e590c",
+      "roles": ["rules", "flavor"],
+      "characters": 197
+    },
+    {
+      "id": "2aeb3ce1-1e7f-4269-a326-700f27e9e932",
+      "faceHash": "62330c0591618e3a2573feb7b51a1ec9435201cd5eb7b71eee9f8a840a09e345",
+      "roles": ["rules", "flavor"],
+      "characters": 171
+    },
+    {
+      "id": "cc49d724-b46d-449b-bd2b-03551e130a06",
+      "faceHash": "7969cbfea92df33d6e21019f51c3ce7d9f2bb189f26ac8450d8f8b2be292ffa4",
+      "roles": ["rules"],
+      "characters": 118
+    },
+    {
+      "id": "e4e507bc-441d-4f44-85d4-cf93ca199d2e",
+      "faceHash": "87d53ceec1871b5997fba32aa8a719f03638b8e6fdcf1f9e7ae423f28d4cfe7a",
+      "roles": ["rules"],
+      "characters": 238
+    },
+    {
+      "id": "88bf9da4-4647-4c66-a3ce-fab7ca9618d1",
+      "faceHash": "781d4b62695ec174a34c1440349dd9191e7f73386a6b826fff687b4401d8b668",
+      "roles": ["rules"],
+      "characters": 62
+    },
+    {
+      "id": "0b9d1526-9888-41bc-b77d-88d62325e0b2",
+      "faceHash": "d17eeed5f2d2d9dffb5f29df1a323e78a5565d54512e3bf86512c91493e4a832",
+      "roles": ["rules"],
+      "characters": 178
+    },
+    {
+      "id": "8ccacae0-f8db-45e0-b25a-35418fd24389",
+      "faceHash": "0ad917a0817f1053888aabb1252896169491ab771afde225e36d36e5996a20e1",
+      "roles": ["rules"],
+      "characters": 141
+    },
+    {
+      "id": "6a225462-947c-49d7-81b2-91f875664dca",
+      "faceHash": "ca02a6321c93222aebac9f1302d2d3b341c4caa0d86143ffccf615579799774f",
+      "roles": ["rules"],
+      "characters": 69
+    },
+    {
+      "id": "d566993f-18a6-4e5c-abc3-0fe9a03e97d2",
+      "faceHash": "34098352465e52709e4a867573a6507a3a9ecc4d1a6fc2a58476eb0579a1f77f",
+      "roles": ["rules"],
+      "characters": 164
+    },
+    {
+      "id": "4750787e-9fef-4bdf-b2e3-e410c84999f2",
+      "faceHash": "408272bc780a9faf81149d240fd02edd33a0402dca9b94922e121891bb3d9e7d",
+      "roles": ["rules", "flavor"],
+      "characters": 216
+    },
+    {
+      "id": "49c1a2b2-50f0-4ed0-bd8f-06cd6aada04f",
+      "faceHash": "7a959125e0ff84f7ac56dfeb2e267c7de87b567ff225a9781efbb462258d768e",
+      "roles": ["rules"],
+      "characters": 390
+    },
+    {
+      "id": "f9d01a2e-2687-4b37-aed6-63202cd81231",
+      "faceHash": "53c76146154ef710a47c76e943080700dcc3b79941bf008e60657b91a5ecd707",
+      "roles": ["rules"],
+      "characters": 90
+    },
+    {
+      "id": "1e19104f-55d5-40e5-a61d-ddba2cf5a527",
+      "faceHash": "4960da2ccb7077d02e33105c80d55002b1f2621d216ae311f5f545de3ef4ea7d",
+      "roles": ["rules", "flavor"],
+      "characters": 204
+    },
+    {
+      "id": "98e77be1-3c29-40b4-9c47-44fa2d9d4454",
+      "faceHash": "a05b02cea3ca9167f4347cc22bad822269f1bf02ef2a5f257cadd02eda9bb568",
+      "roles": ["rules"],
+      "characters": 159
+    },
+    {
+      "id": "09294401-a895-4084-8302-196a946863d6",
+      "faceHash": "0720bf841131f401546afd68114de904c2d67bb6f1852e14d158973c65205c11",
+      "roles": ["rules", "flavor"],
+      "characters": 252
+    },
+    {
+      "id": "97dd1daa-0b5d-4d0c-9a67-a59083038f2d",
+      "faceHash": "12946bc70453475bfd893397f19268d57ece31234ce9ce33d1f76286676fbaa1",
+      "roles": ["rules", "flavor"],
+      "characters": 206
+    },
+    {
+      "id": "ad580bfc-8827-4a8a-a5ec-b6195b3146bb",
+      "faceHash": "ae0c622d1855a13c14ec7ddc42ee179bd3350d59ce345bd44153587223b3e631",
+      "roles": ["rules", "flavor"],
+      "characters": 199
+    },
+    {
+      "id": "b622e694-858d-482f-a67d-0e52d268708c",
+      "faceHash": "036f026e74fdd62fae32783a80afe1258afac7e28ea93992584d860b34158265",
+      "roles": ["rules"],
+      "characters": 242
+    },
+    {
+      "id": "d60ee90d-5f7b-4294-8d52-9744fada8d36",
+      "faceHash": "c5fdc05b3fbb39a25dac55f9c6bb748d3c09c4405e58be90e41e8a138b831f18",
+      "roles": ["rules"],
+      "characters": 69
+    },
+    {
+      "id": "6a51abf0-8661-4776-929d-35b7bd345e21",
+      "faceHash": "46713e4f70cfbc90b99ce1207795fbe65048e855a49324bb9d856ec6db6022ad",
+      "roles": ["rules"],
+      "characters": 159
+    },
+    {
+      "id": "aaab84be-bb96-437b-a9a7-aa7a11ffd21d",
+      "faceHash": "18f5ed4f5d9f858684c7475955ca2db87797ad6fea2fd7d4eb83a84085cd96c2",
+      "roles": ["rules", "flavor"],
+      "characters": 262
+    }
+  ],
+  "exploratorySlices": [
+    {
+      "maxCharacters": 130,
+      "selected": 37,
+      "invalid": 0,
+      "improved": 36,
+      "regressed": 1,
+      "totalCensusMeanGain100": 2.6420676530659,
+      "ids": [
+        "05eee3dd-e17f-4154-8f8d-29c5421cd89d",
+        "0b107c80-0c9a-46cd-8f00-26c37f080ce7",
+        "196b83a1-2a25-498d-83b8-8faacd79909d",
+        "1df0c902-3fe1-4de7-9777-7ddb563b6cec",
+        "218b1327-5f76-4ee2-a93d-d2ba412043c2",
+        "26e23d23-92ca-4d74-88e8-e1137d7faaf1",
+        "2d3c467f-0e33-43e8-b108-0ea00d6adcc2",
+        "2fa3fe10-0f6e-4b7f-98fc-3a21c399c38a",
+        "3406dfe1-68e9-4757-9487-0b556c97d07a",
+        "36d5c0df-3db4-4e2d-9688-223383e02b02",
+        "398a2b0f-0b91-408c-8083-3bc89873b69f",
+        "3a0b9dba-f621-4700-8a36-bf326e04cbac",
+        "3bd054ed-9c91-4bc6-9d0d-0c045c089bd9",
+        "3be9942c-89b3-422f-bb9d-b55f51a22a37",
+        "40dc8595-32b9-4045-bae3-5078c9a17527",
+        "426e477f-2873-4115-9527-a50a97769dd1",
+        "4a92484b-064c-4588-a1ea-6de8fd485ca4",
+        "543e8ec0-f36a-46a6-b7b1-e983e90a091a",
+        "6bccf9a0-8d93-4b5e-ada0-1f19f260e5a8",
+        "7ab18c6d-2705-473e-b404-75660ff28736",
+        "7abc17aa-8f6b-4156-b148-fc049e1d316a",
+        "99e9ff47-b98c-4ab6-a4bc-8914360c3f6d",
+        "9f67692d-9df6-4841-a36b-26c28110b63b",
+        "acc41bca-73fc-42da-b639-b73a8de8a9c6",
+        "ad34094d-a7ec-4b04-a288-4d4f1a07fc6b",
+        "b0f4724e-f22e-4156-97fd-1adfccc47be3",
+        "b665f9dc-a5df-4ad7-9067-9b48f942bdde",
+        "b7548dc7-11dc-4611-85a5-71bdb48d8a62",
+        "b8852e36-204c-4b3a-a4f8-33a98548fa7b",
+        "b9c44bba-5eaa-41a6-a11a-0bc8fb751ad8",
+        "cc49d724-b46d-449b-bd2b-03551e130a06",
+        "ccef1a44-faf8-42bd-aaff-778f65d18ae9",
+        "d427396c-f1ef-46ac-b130-ed1e51e826a3",
+        "de62c833-c66b-442e-99ed-99ccd8eca024",
+        "f5a8573d-0e2d-4a7f-a47f-7e1bc472d4fa",
+        "fb9b9085-6dd7-44fc-b3a5-7f797c34f8dc",
+        "fbc98990-7fb0-4f69-a80d-38443966b3ae"
+      ]
+    },
+    {
+      "maxCharacters": 140,
+      "selected": 43,
+      "invalid": 0,
+      "improved": 41,
+      "regressed": 2,
+      "totalCensusMeanGain100": 2.8876737353912696,
+      "ids": [
+        "05eee3dd-e17f-4154-8f8d-29c5421cd89d",
+        "0b107c80-0c9a-46cd-8f00-26c37f080ce7",
+        "196b83a1-2a25-498d-83b8-8faacd79909d",
+        "1df0c902-3fe1-4de7-9777-7ddb563b6cec",
+        "218b1327-5f76-4ee2-a93d-d2ba412043c2",
+        "26e23d23-92ca-4d74-88e8-e1137d7faaf1",
+        "2d3c467f-0e33-43e8-b108-0ea00d6adcc2",
+        "2e29882a-c194-48b8-ba18-439b0bda395e",
+        "2fa3fe10-0f6e-4b7f-98fc-3a21c399c38a",
+        "300428ea-7909-4c2b-81cc-a03d51030bcb",
+        "3406dfe1-68e9-4757-9487-0b556c97d07a",
+        "36d5c0df-3db4-4e2d-9688-223383e02b02",
+        "398a2b0f-0b91-408c-8083-3bc89873b69f",
+        "3a0b9dba-f621-4700-8a36-bf326e04cbac",
+        "3bd054ed-9c91-4bc6-9d0d-0c045c089bd9",
+        "3be9942c-89b3-422f-bb9d-b55f51a22a37",
+        "40dc8595-32b9-4045-bae3-5078c9a17527",
+        "426e477f-2873-4115-9527-a50a97769dd1",
+        "4a92484b-064c-4588-a1ea-6de8fd485ca4",
+        "543e8ec0-f36a-46a6-b7b1-e983e90a091a",
+        "58e780b8-8002-47d4-9d0c-bd65a40ea34e",
+        "6bccf9a0-8d93-4b5e-ada0-1f19f260e5a8",
+        "717c5ee5-a033-4a58-bdcb-ef54e6c8b7a9",
+        "7ab18c6d-2705-473e-b404-75660ff28736",
+        "7abc17aa-8f6b-4156-b148-fc049e1d316a",
+        "90886a02-4c1f-48ea-8563-6d80c97d9f58",
+        "99e9ff47-b98c-4ab6-a4bc-8914360c3f6d",
+        "9f67692d-9df6-4841-a36b-26c28110b63b",
+        "acc41bca-73fc-42da-b639-b73a8de8a9c6",
+        "ad34094d-a7ec-4b04-a288-4d4f1a07fc6b",
+        "b0f4724e-f22e-4156-97fd-1adfccc47be3",
+        "b665f9dc-a5df-4ad7-9067-9b48f942bdde",
+        "b7548dc7-11dc-4611-85a5-71bdb48d8a62",
+        "b8852e36-204c-4b3a-a4f8-33a98548fa7b",
+        "b9c44bba-5eaa-41a6-a11a-0bc8fb751ad8",
+        "cc49d724-b46d-449b-bd2b-03551e130a06",
+        "ccef1a44-faf8-42bd-aaff-778f65d18ae9",
+        "d427396c-f1ef-46ac-b130-ed1e51e826a3",
+        "de62c833-c66b-442e-99ed-99ccd8eca024",
+        "e3009237-fb96-497f-9a6e-b93b8115528a",
+        "f5a8573d-0e2d-4a7f-a47f-7e1bc472d4fa",
+        "fb9b9085-6dd7-44fc-b3a5-7f797c34f8dc",
+        "fbc98990-7fb0-4f69-a80d-38443966b3ae"
+      ]
+    },
+    {
+      "maxCharacters": 150,
+      "selected": 52,
+      "invalid": 0,
+      "improved": 45,
+      "regressed": 7,
+      "totalCensusMeanGain100": 2.694862490738447,
+      "ids": [
+        "05eee3dd-e17f-4154-8f8d-29c5421cd89d",
+        "0b107c80-0c9a-46cd-8f00-26c37f080ce7",
+        "185674a4-db97-444d-b0e9-7dcfc245ce4b",
+        "196b83a1-2a25-498d-83b8-8faacd79909d",
+        "1df0c902-3fe1-4de7-9777-7ddb563b6cec",
+        "218b1327-5f76-4ee2-a93d-d2ba412043c2",
+        "237e37fb-383d-432c-8ac3-1332096567db",
+        "25f4f0c1-a43e-4282-b20e-91c711c57521",
+        "26e23d23-92ca-4d74-88e8-e1137d7faaf1",
+        "2d3c467f-0e33-43e8-b108-0ea00d6adcc2",
+        "2e29882a-c194-48b8-ba18-439b0bda395e",
+        "2fa3fe10-0f6e-4b7f-98fc-3a21c399c38a",
+        "300428ea-7909-4c2b-81cc-a03d51030bcb",
+        "3406dfe1-68e9-4757-9487-0b556c97d07a",
+        "36d5c0df-3db4-4e2d-9688-223383e02b02",
+        "398a2b0f-0b91-408c-8083-3bc89873b69f",
+        "3a0b9dba-f621-4700-8a36-bf326e04cbac",
+        "3bd054ed-9c91-4bc6-9d0d-0c045c089bd9",
+        "3be9942c-89b3-422f-bb9d-b55f51a22a37",
+        "40dc8595-32b9-4045-bae3-5078c9a17527",
+        "426e477f-2873-4115-9527-a50a97769dd1",
+        "476180df-8b88-4ead-b6c5-6ccb3e8a2cfd",
+        "4a92484b-064c-4588-a1ea-6de8fd485ca4",
+        "543e8ec0-f36a-46a6-b7b1-e983e90a091a",
+        "5736fcc7-fa95-4ef4-b821-392ec00e03bf",
+        "5828713a-edb3-4b11-b1f9-8f1bfc3c103f",
+        "58e780b8-8002-47d4-9d0c-bd65a40ea34e",
+        "6bccf9a0-8d93-4b5e-ada0-1f19f260e5a8",
+        "717c5ee5-a033-4a58-bdcb-ef54e6c8b7a9",
+        "7ab18c6d-2705-473e-b404-75660ff28736",
+        "7abc17aa-8f6b-4156-b148-fc049e1d316a",
+        "8ccacae0-f8db-45e0-b25a-35418fd24389",
+        "90886a02-4c1f-48ea-8563-6d80c97d9f58",
+        "99e9ff47-b98c-4ab6-a4bc-8914360c3f6d",
+        "9f67692d-9df6-4841-a36b-26c28110b63b",
+        "acc41bca-73fc-42da-b639-b73a8de8a9c6",
+        "ad34094d-a7ec-4b04-a288-4d4f1a07fc6b",
+        "b0f4724e-f22e-4156-97fd-1adfccc47be3",
+        "b665f9dc-a5df-4ad7-9067-9b48f942bdde",
+        "b7548dc7-11dc-4611-85a5-71bdb48d8a62",
+        "b8852e36-204c-4b3a-a4f8-33a98548fa7b",
+        "b9c44bba-5eaa-41a6-a11a-0bc8fb751ad8",
+        "bbb6765c-a052-46dc-a589-200b8ba8c99f",
+        "bf312acb-2fa6-440a-964b-424ad8abc331",
+        "cc49d724-b46d-449b-bd2b-03551e130a06",
+        "ccef1a44-faf8-42bd-aaff-778f65d18ae9",
+        "d427396c-f1ef-46ac-b130-ed1e51e826a3",
+        "de62c833-c66b-442e-99ed-99ccd8eca024",
+        "e3009237-fb96-497f-9a6e-b93b8115528a",
+        "f5a8573d-0e2d-4a7f-a47f-7e1bc472d4fa",
+        "fb9b9085-6dd7-44fc-b3a5-7f797c34f8dc",
+        "fbc98990-7fb0-4f69-a80d-38443966b3ae"
+      ]
+    }
+  ],
+  "decision": "Retain the renderer defaults. The broad policy loses accuracy and overflows two dense cards. The narrowed slices are post-hoc diagnostics on the same development census and do not authorize an implementation.",
+  "next": [
+    "Preserve the already-correct regular22.5 and centered layouts. Test a130-character centering rule and compact class only where the nominal fit calls for it.",
+    "Measure larger centered text with both27.5 and25 faces;Gloom and Ball Lightning show that one large size is insufficient.",
+    "Keep ultra-dense cards in a separate fit:Tempest Efreet and Bronze Tablet overflow the fixed15.5/1.2-leading candidate.",
+    "Review Unstable Mutation as a printing-style outlier beyond the proposed shared centering cutoff.",
+    "Measure italic line widths on Water Elemental alongside Earth Elemental;reducing every flavor-only block regresses good fits.",
+    "Validate printed-interior normalization and full native Original/Oracle/mask effects before adopting another set-wide text policy."
+  ],
+  "validation": "All360 default native PNGs and isolated body replays match the current capture. Each valid candidate has zero alpha changes and zero changed pixels outside the rules region. Scans use frozen provisional stock poses. Reused development scans;no blind holdout and no full-set approval."
+}
