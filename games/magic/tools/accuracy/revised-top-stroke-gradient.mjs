@@ -11,6 +11,9 @@ export function revisedTopStrokeGradient(image, rect) {
   );
   assert.equal(image.data.length, w * h * 4);
   const data = new Uint8Array(image.data);
+  // Extend the first safe row(y55) upward so name descenders cannot enter
+  // the smoothing margin. The frame stroke remains sampled at its true phase.
+  for (let row = 0; row < 4; row++) data.set(data.subarray(4 * w * 4, 5 * w * 4), row * w * 4);
   // The window begins at canonical y51. Extend y64 through its unused tail,
   // before the illustration begins. This removes art transitions before the
   // gradient smoothing step, preserving the source sampling phase.

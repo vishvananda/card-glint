@@ -18,6 +18,15 @@ function raster(art, shift = 0) {
     }
   return { width, height, data };
 }
+const heading = raster(0);
+for (let y = 0; y < 4; y++)
+  for (let x = 0; x < heading.width; x++)
+    heading.data.set([x % 3 ? 20 : 250, 20, 60, 255], (y * heading.width + x) * 4);
+assert.deepEqual(
+  revisedTopStrokeGradient(heading, rect),
+  revisedTopStrokeGradient(raster(0), rect),
+  'Heading pixels in the smoothing margin must not become frame geometry',
+);
 const baseline = revisedTopStrokeGradient(raster(0), rect);
 for (const color of [0, 40, 100, 180, 250])
   assert.deepEqual(
