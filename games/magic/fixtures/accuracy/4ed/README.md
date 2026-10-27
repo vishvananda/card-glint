@@ -111,3 +111,51 @@ node games/magic/tools/accuracy/wall-wording-native-review.mjs PRIVATE_CONFIG.js
 The private configuration lists the two sets and each before/after input file
 and native capture. All 680 printings in four modes must pass. The committed
 receipt contains hashes and measurements; scan images stay in the local cache.
+
+## Native request and printed-row audit
+
+The two studies replay all 360 nonland Originals against the same frozen stock
+poses and exact native baseline. The inner-paper objective excludes the bevel.
+All 720 baseline replays match the native PNGs exactly. Lands are excluded from
+these typography trials.
+
+Unconstrained fractional refitting raises the regional text index from 58.30 to
+62.19/100. Capping each request at its existing fitted size and row budget, with
+at most a 0.5 px reduction, gives 61.96/100. Both policies have 250 gains, 66
+losses and 44 changes within 0.05 points. These are regional measurements, not
+new whole-card scores.
+
+Neither policy is promoted. Bird Maiden grows from six rows to eight in the
+unconstrained trial; the bounded trial keeps six. Hill Giant still has five rows,
+but fractional refitting changes correct word breaks while increasing pixel
+overlap. Scathe Zombies improves from eight to its seven printed rows. The six
+[printed-row targets](printed-row-targets.json) check exact normalized words and
+row boundaries independently of overlap. Content mismatches remain explicit.
+
+The [review](native-request-review.json) binds both full studies, reports,
+definitions, fitting tools and objective sources. Reused development data is
+disclosed. Current production profiles and the 79.70/100 whole-card mean stay
+unchanged. The remaining fit needs shared size/width and centering rules, with
+separate review of mixed and flavor passages.
+
+Run either definition against current, Original-wording inputs and a matching
+native capture:
+
+```sh
+MAGIC_ACCURACY_CACHE=/path/to/cache node \
+  games/magic/tools/accuracy/fourth-nonland-text-study.mjs \
+  inputs.json native/capture.json stock-poses.json output-directory \
+  games/magic/fixtures/accuracy/4ed/native-request-budget-definition.json
+
+node games/magic/tools/accuracy/fourth-body-request-report.mjs \
+  inputs.json output-directory/study.json \
+  games/magic/fixtures/accuracy/4ed/printed-row-targets.json report.json
+
+node tests/magic-text-row-agreement.mjs
+node tests/magic-fourth-request-measurement.mjs
+```
+
+For the unconstrained control, use
+`native-request-unconstrained-definition.json`. Historical receipts retain
+their original tool sources; exact numerical reproduction needs the matching
+renderer, assets, fonts, poses and objective versions.

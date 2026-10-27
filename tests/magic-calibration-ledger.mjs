@@ -263,8 +263,28 @@ assert.deepEqual(
     .filter((s) => s.complete)
     .map((s) => s.set)
     .sort(),
-  ['2ed', 'lea', 'leb'],
+  ['lea', 'leb'],
 );
+const unlimitedReport = reports.find((s) => s.set === '2ed');
+assert.equal(unlimitedReport.complete, false);
+assert.equal(unlimitedReport.counts['needs-audit'], 8);
+assert.equal(unlimitedReport.originalRulesInputs.stale, 45);
+assert.deepEqual([...new Set(unlimitedReport.outstanding.map((r) => r.task))].sort(), [
+  'flavor',
+  'fullCard',
+  'release',
+  'rules',
+]);
+const wallIds = ['2a2cab55-fc64-4b3f-bc46-a1a297d2d448', 'b55d8375-ea70-4dd0-950e-3dbf3dfdd4f6'];
+const wallGroups = ledger.sets
+  .find((s) => s.set === '2ed')
+  .groups.filter((g) => g.printingIds.some((id) => wallIds.includes(id)));
+assert.equal(wallGroups.length, 2);
+assert.deepEqual(
+  [...new Set(unlimitedReport.outstanding.map((r) => r.group))].sort(),
+  wallGroups.map((g) => g.key).sort(),
+);
+
 const alphaReport = reports.find((s) => s.set === 'lea');
 assert.equal(alphaReport.byTask.headings.validated, alphaReport.groups);
 // The complete dual census now has its current finite source review.

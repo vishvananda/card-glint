@@ -61,6 +61,14 @@ See [asset sources and fan notice](../NOTICE.md).
    size reduction, and retain every wrapping regression. See the
    [ABU fractional-text recheck](abu-fractional-text.md).
 
+   Record the printed row breaks for difficult examples. Compare the words at
+   each break as well as the row count: two five-row layouts can wrap differently.
+   The offline `textRowAgreement` helper in
+   `tools/accuracy/text-row-agreement.mjs` rejects mismatched wording and reports
+   matching row boundaries separately from pixel overlap. A higher overlap score
+   does not justify changing correct wrapping. See Fourth's
+   [scan-bound row targets](../fixtures/accuracy/4ed/printed-row-targets.json).
+
 6. **Fit pigment after the geometry is fixed.** Fit frame and paper by material;
    retain separate masks where their adjustments differ, especially green and
    black. Measure interior black and outer stock separately; Alpha/Beta retain

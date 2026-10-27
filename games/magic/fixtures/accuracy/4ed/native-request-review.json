@@ -1,0 +1,205 @@
+{
+  "schema": 1,
+  "set": "4ed",
+  "status": "measurement-only-no-production-change",
+  "rendererHash": "04f9319986cdaed806670d2a7108edbc9988d0a9f8d41502adfe180527f395ce",
+  "coverage": {
+    "ordinaryPrintings": 378,
+    "nonlandPrintings": 360,
+    "excludedLands": 18,
+    "nativeBaselineReplays": 720,
+    "sharedPolicies": 9,
+    "printedRowTargets": 6,
+    "holdout": false
+  },
+  "artifacts": {
+    "native-request-budget-definition.json": {
+      "file": "games/magic/fixtures/accuracy/4ed/native-request-budget-definition.json",
+      "sha256": "196c5a5ecc266c9f57038715c09bee7062d1a826834eb157262f3c958bd9168f",
+      "contentSha256": "196c5a5ecc266c9f57038715c09bee7062d1a826834eb157262f3c958bd9168f"
+    },
+    "native-request-budget-report.json": {
+      "file": "games/magic/fixtures/accuracy/4ed/native-request-budget-report.json",
+      "sha256": "494142842a2aa71ada2267b012e5e7b147aefb2f6714f67c44f66ad75df7e4ed",
+      "contentSha256": "494142842a2aa71ada2267b012e5e7b147aefb2f6714f67c44f66ad75df7e4ed"
+    },
+    "native-request-budget-study.json.gz": {
+      "file": "games/magic/fixtures/accuracy/4ed/native-request-budget-study.json.gz",
+      "sha256": "b8705197059016be9703117ecdfee529dbeb8e319a1823542c2cb2c1d6ef9f09",
+      "contentSha256": "4ff0968a97b678eeeed8ea228a7a53d8926dff34c7d60fe61ea78a7a8d1f1eef"
+    },
+    "native-request-budget-tool.mjs.gz": {
+      "file": "games/magic/fixtures/accuracy/4ed/native-request-budget-tool.mjs.gz",
+      "sha256": "1d3ba36ff43d1c3d6758b44b6ee1658a317684ab1dbcf1c615c2952743536054",
+      "contentSha256": "a3f9f77fdb1bb3e0cca5281ac296a80917cd31cae42ddcdfd5f622e48554d058"
+    },
+    "native-request-objective-sources.json.gz": {
+      "file": "games/magic/fixtures/accuracy/4ed/native-request-objective-sources.json.gz",
+      "sha256": "3ae0e703ba12ca5b416b1f19357eb1d24813009c51c6a4b7280d898db35e1eca",
+      "contentSha256": "865df7d7cb82a44bc7303e839676caf67894f77d1aac6284caf75f88f8a117bf"
+    },
+    "native-request-report-tool.mjs.gz": {
+      "file": "games/magic/fixtures/accuracy/4ed/native-request-report-tool.mjs.gz",
+      "sha256": "68eae330e6477d6975bfa373c55311638532d9461269e79a3b3ce17bebb60c7d",
+      "contentSha256": "754c7106526ccfacb8cc099e0bd6c0d65e98107e31e2012b7583a6cd1f13bd8f"
+    },
+    "native-request-row-tool.mjs.gz": {
+      "file": "games/magic/fixtures/accuracy/4ed/native-request-row-tool.mjs.gz",
+      "sha256": "07c596a4920ed144e281654e9776da981ca64fbab383f185093e61ce011d05af",
+      "contentSha256": "f50a19169877d7a326ea566b458f8d0e5fe700b3818571b67905ccc28ec32833"
+    },
+    "native-request-unconstrained-definition.json": {
+      "file": "games/magic/fixtures/accuracy/4ed/native-request-unconstrained-definition.json",
+      "sha256": "a449225b69600e819e58c96bd6d538b5d6e9ec187b39d2078b8abd60d04132db",
+      "contentSha256": "a449225b69600e819e58c96bd6d538b5d6e9ec187b39d2078b8abd60d04132db"
+    },
+    "native-request-unconstrained-report.json": {
+      "file": "games/magic/fixtures/accuracy/4ed/native-request-unconstrained-report.json",
+      "sha256": "6cd067b46d88a5f95de332a3f08acf9c868792ea579c531ea5ed19e63dad0ee5",
+      "contentSha256": "6cd067b46d88a5f95de332a3f08acf9c868792ea579c531ea5ed19e63dad0ee5"
+    },
+    "native-request-unconstrained-study.json.gz": {
+      "file": "games/magic/fixtures/accuracy/4ed/native-request-unconstrained-study.json.gz",
+      "sha256": "ddf22671e960ba4b5ec653a27a276942634a4ffae6530efae46673d53c9a2ef5",
+      "contentSha256": "bbe4f067b1a3748bebd43e1d6079a23f843ff7035d64392a342b582ecfa27000"
+    },
+    "native-request-unconstrained-tool.mjs.gz": {
+      "file": "games/magic/fixtures/accuracy/4ed/native-request-unconstrained-tool.mjs.gz",
+      "sha256": "4c16e0cafc251ae2dc312da597989d1f6c2e6bf8781805df1e2048c7cc0d6334",
+      "contentSha256": "c2c323fd82dc45fdc76d88fbef9d5570fe7e2f1b51ae14752a529fe72d21212a"
+    },
+    "printed-row-targets.json": {
+      "file": "games/magic/fixtures/accuracy/4ed/printed-row-targets.json",
+      "sha256": "f699d64e4b5687ee8ff94b9432e9206c9852dd3612799b4a40ca69a1bac52559",
+      "contentSha256": "f699d64e4b5687ee8ff94b9432e9206c9852dd3612799b4a40ca69a1bac52559"
+    }
+  },
+  "comparisons": {
+    "unconstrained": {
+      "candidate": "fractional-center-0",
+      "summary": {
+        "all": {
+          "printings": 360,
+          "measured": 360,
+          "invalid": 0,
+          "before100": 58.301831562675744,
+          "current100": 62.190249192633736,
+          "delta100": 3.888417629957985,
+          "improved": 250,
+          "regressed": 66,
+          "within005": 44
+        },
+        "roles": {
+          "flavor+rules": {
+            "printings": 124,
+            "measured": 124,
+            "invalid": 0,
+            "before100": 54.07358977005745,
+            "current100": 60.74457634022353,
+            "delta100": 6.67098657016605,
+            "improved": 98,
+            "regressed": 25,
+            "within005": 1
+          },
+          "rules": {
+            "printings": 217,
+            "measured": 217,
+            "invalid": 0,
+            "before100": 61.79807546129408,
+            "current100": 63.60706842306993,
+            "delta100": 1.8089929617758458,
+            "improved": 137,
+            "regressed": 38,
+            "within005": 42
+          },
+          "flavor": {
+            "printings": 19,
+            "measured": 19,
+            "invalid": 0,
+            "before100": 45.9658871565963,
+            "current100": 55.443599755487114,
+            "delta100": 9.477712598890811,
+            "improved": 15,
+            "regressed": 3,
+            "within005": 1
+          }
+        }
+      }
+    },
+    "budget": {
+      "candidate": "fractional-budget-center",
+      "summary": {
+        "all": {
+          "printings": 360,
+          "measured": 360,
+          "invalid": 0,
+          "before100": 58.301831562675744,
+          "current100": 61.95995653386844,
+          "delta100": 3.658124971192688,
+          "improved": 250,
+          "regressed": 66,
+          "within005": 44
+        },
+        "roles": {
+          "flavor+rules": {
+            "printings": 124,
+            "measured": 124,
+            "invalid": 0,
+            "before100": 54.07358977005745,
+            "current100": 60.89448127139978,
+            "delta100": 6.820891501342304,
+            "improved": 100,
+            "regressed": 23,
+            "within005": 1
+          },
+          "rules": {
+            "printings": 217,
+            "measured": 217,
+            "invalid": 0,
+            "before100": 61.79807546129408,
+            "current100": 63.15245052124642,
+            "delta100": 1.354375059952347,
+            "improved": 135,
+            "regressed": 40,
+            "within005": 42
+          },
+          "flavor": {
+            "printings": 19,
+            "measured": 19,
+            "invalid": 0,
+            "before100": 45.9658871565963,
+            "current100": 55.29404796992592,
+            "delta100": 9.328160813329612,
+            "improved": 15,
+            "regressed": 3,
+            "within005": 1
+          }
+        }
+      }
+    }
+  },
+  "decisions": [
+    "Do not adopt a global vertical translation. It reduces the text index across the complete census.",
+    "Do not adopt unconstrained fractional refitting. Bird Maiden grows from6 to8 rows as a different fitted size becomes feasible.",
+    "The row-budget candidate caps size at the existing fitted size and permits at most0.5px reduction; failure retains the baseline. Bird Maiden retains6rows. This reduces the largest regression but does not eliminate wrapping changes.",
+    "Hill Giant retains5rows with both policies,but the words at row ends change. Its original wrapping already agrees with the physical printing. A higher pixel overlap is insufficient for promotion.",
+    "Scathe Zombies improves from8 to7rows and matches all reviewed printed word boundaries under both center-anchored fractional policies.",
+    "Keep current production defaults and whole-card scores. Next fit shared size/width and centering classes using printed row and glyph measurements;retain mixed/flavor and pure-rules outliers."
+  ],
+  "limits": [
+    "Fixed retained stock transforms;their prior normalization limits still apply.",
+    "All development scans reused. These are regional text indices,not new whole-card scores.",
+    "These tools do not add per-card rendering exceptions or approve a set."
+  ],
+  "visualReview": {
+    "method": "Six scan/current/size-fit zooms inspected. OCR proposals manually corrected into scan-bound printed rows.",
+    "cards": [
+      "Hill Giant",
+      "Water Elemental",
+      "Scathe Zombies",
+      "Unstable Mutation",
+      "Magnetic Mountain",
+      "Mons's Goblin Raiders"
+    ]
+  }
+}

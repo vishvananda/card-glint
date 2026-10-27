@@ -6,14 +6,46 @@ import { openBrowser } from './browser.mjs';
 import { hash, sourceHash, root } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { objectFile } from './common.mjs';
-const [inputFile, captureFile, posesFile, out] = process.argv.slice(2);
-assert(out, 'Usage: fourth-nonland-text-study.mjs INPUTS NATIVE_CAPTURE STOCK_POSES NEW_OUTPUT');
+const [inputFile, captureFile, posesFile, out, definitionFile] = process.argv.slice(2);
+assert(
+  out,
+  'Usage: fourth-nonland-text-study.mjs INPUTS NATIVE_CAPTURE STOCK_POSES NEW_OUTPUT [REQUEST_DEFINITION]',
+);
 const inputBytes = await fs.readFile(inputFile),
   inputs = JSON.parse(inputBytes),
   captureBytes = await fs.readFile(captureFile),
   capture = JSON.parse(captureBytes),
   posesBytes = await fs.readFile(posesFile),
   poses = JSON.parse(posesBytes);
+const definitionBytes = definitionFile ? await fs.readFile(definitionFile) : undefined;
+const requestStudy = definitionBytes ? JSON.parse(definitionBytes) : undefined;
+if (requestStudy) {
+  assert.equal(requestStudy.schema, 1);
+  assert.equal(requestStudy.mode, 'native-request');
+  assert.equal(requestStudy.candidates[0].id, 'current');
+  assert.deepEqual(requestStudy.candidates[0], { id: 'current' });
+  assert.equal(
+    new Set(requestStudy.candidates.map((c) => c.id)).size,
+    requestStudy.candidates.length,
+  );
+  for (const c of requestStudy.candidates.slice(1)) {
+    assert.deepEqual(
+      Object.keys(c).sort(),
+      [
+        'dy',
+        'fractionalMetrics',
+        'id',
+        'preserveBaseline',
+        ...(c.retainRowBudget === undefined ? [] : ['retainRowBudget']),
+      ].sort(),
+    );
+    assert.equal(typeof c.id, 'string');
+    assert.equal(typeof c.fractionalMetrics, 'boolean');
+    assert.equal(typeof c.preserveBaseline, 'boolean');
+    if (c.retainRowBudget !== undefined) assert.equal(typeof c.retainRowBudget, 'boolean');
+    assert(Number.isFinite(c.dy) && Math.abs(c.dy) <= 20);
+  }
+}
 assert.equal(inputs.set, '4ed');
 assert.equal(inputs.entries.length, 378);
 assert.equal(capture.status, 'complete');
@@ -56,11 +88,14 @@ const definition = {
   schema: 1,
   status: 'running',
   scope:
+    requestStudy?.scope ??
     'All360 Fourth nonland printings. Exploratory shared class policy selected from24 diagnostic examples;full reused census,not a blind holdout. Original wording,frozen provisional stock poses,default native pixels and isolated body replay preserved. No production changes or per-card geometry.',
+  ...(requestStudy ? { requestStudy, definitionHash: hash(definitionBytes) } : {}),
   inputHash: hash(inputBytes),
   baselineHash: hash(captureBytes),
   posesHash: hash(posesBytes),
   browser: session.browser.version(),
+  objective: requestStudy ? { kind: 'filled-ink-and-edges', rect: [76, 419, 336, 177] } : undefined,
   rendererHash: await sourceHash(path.join(root, 'games/magic/src')),
   toolHash: hash(await fs.readFile(new URL(import.meta.url))),
   rows,
@@ -74,11 +109,13 @@ try {
     const e = inputs.entries.find((e) => e.id === ref.id),
       baseline = capture.rows.find((r) => r.id === e.id).modes.original;
     const result = await session.page.evaluate(
-      async ({ e, scan, baseline }) => {
+      async ({ e, scan, baseline, requestStudy }) => {
         const { composeCardTexture } = await import('/games/magic/src/presentation/canvas-face.ts'),
           { canvasAssetUrls } = await import('/games/magic/src/presentation/canvas-assets.ts'),
           { loadAccuracyImages } = await import('/games/magic/tools/accuracy/abu-assets.mjs'),
-          { layoutRules } = await import('/games/magic/src/presentation/rules-layout.ts'),
+          { layoutRules, rulesLayoutRequest } = await import(
+            '/games/magic/src/presentation/rules-layout.ts'
+          ),
           { paintRulesLayout } = await import('/games/magic/src/presentation/rules-paint.ts'),
           { TextFilledObjective } = await import(
             '/games/magic/tools/accuracy/text-filled-objective.mjs'
@@ -90,7 +127,7 @@ try {
           input = { face, printingId: e.id, printedImage: null },
           lease = await loadAccuracyImages(canvasAssetUrls(face), signal, face.illustration),
           hooks = { loadImages: async () => ({ ...lease, dispose() {} }) },
-          rect = [60, 415, 370, 186];
+          rect = requestStudy ? [76, 419, 336, 177] : [60, 415, 370, 186];
         let full, background, body;
         try {
           delete globalThis.__fourthBodyHook;
@@ -153,8 +190,9 @@ try {
           const c = canvas.getContext('2d', { willReadFrequently: true }),
             trials = [],
             basic = false,
-            candidates = [{ id: 'current' }];
-          candidates.push({ id: 'shared-class-policy', large: 25, regularLines: 6, offset: -4 });
+            candidates = requestStudy?.candidates ?? [{ id: 'current' }];
+          if (!requestStudy)
+            candidates.push({ id: 'shared-class-policy', large: 25, regularLines: 6, offset: -4 });
           let replayDifference = null,
             bestPng,
             fixedPng,
@@ -167,7 +205,47 @@ try {
             c.setTransform(body.matrix);
             let layout = body.layout,
               selectedClass = 'current';
-            if (candidate.id !== 'current') {
+            if (requestStudy && candidate.id !== 'current') {
+              if (candidate.fractionalMetrics) {
+                const request = rulesLayoutRequest(body.layout);
+                if (!request) throw Error('Missing exact native layout request: ' + face.name);
+                layout = layoutRules(
+                  c,
+                  request.paragraphs,
+                  request.bounds,
+                  candidate.retainRowBudget ? body.layout.size : request.maximumSize,
+                  candidate.retainRowBudget
+                    ? Math.max(request.minimumSize, body.layout.size - 0.5)
+                    : request.minimumSize,
+                  {
+                    ...request.typography,
+                    fractionalMetrics: true,
+                    ...(candidate.retainRowBudget
+                      ? { maximumLines: body.layout.lines.length }
+                      : {}),
+                  },
+                );
+              }
+              // Preserve the old layout if a fractional request cannot fit
+              // its existing row budget within half a canonical pixel.
+              if (candidate.retainRowBudget && layout.overflow) layout = body.layout;
+              const dy =
+                candidate.dy +
+                (candidate.preserveBaseline && layout.lines.length
+                  ? body.layout.lines[0].baseline - layout.lines[0].baseline
+                  : 0);
+              layout = {
+                ...layout,
+                top: layout.top + dy,
+                lines: layout.lines.map((l) => ({
+                  ...l,
+                  baseline: l.baseline + dy,
+                  inkBounds: [l.inkBounds[0], l.inkBounds[1] + dy, l.inkBounds[2], l.inkBounds[3]],
+                })),
+                separators: layout.separators.map((v) => v + dy),
+              };
+              selectedClass = 'native-request';
+            } else if (candidate.id !== 'current') {
               const bounds = { x: 72, y: 414, width: 344, height: 184 },
                 style = {
                   fractionalMetrics: true,
@@ -261,8 +339,19 @@ try {
               )
                 outside++;
             }
-            if (outside || alpha)
+            if (alpha || (outside && candidate.id === 'current'))
               throw Error('Body candidate changed unrelated native pixels ' + face.name);
+            if (outside) {
+              trials.push({
+                candidate,
+                selectedClass,
+                invalid: true,
+                outside,
+                alpha,
+                reason: 'Candidate ink escapes the allowed native body region',
+              });
+              continue;
+            }
 
             if (candidate.id === 'current') {
               const original = full.getContext('2d').getImageData(0, 0, 732, 1020);
@@ -306,7 +395,7 @@ try {
           lease.dispose();
         }
       },
-      { e, baseline, scan: 'data:image/png;base64,' + ref.png.toString('base64') },
+      { e, baseline, requestStudy, scan: 'data:image/png;base64,' + ref.png.toString('base64') },
     );
     const { bestPng, fixedPng, ...observations } = result;
     await fs.writeFile(out + '/' + e.id + '-best.png', Buffer.from(bestPng, 'base64'));
