@@ -1,8 +1,12 @@
+import {
+  fourthCenteredHistoricalHash,
+  preFourthCenteredSource,
+} from '../games/magic/tools/accuracy/fourth-centered-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { createServer } from './magic-vite.mjs';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   wallReviews,
   wallPaths,
@@ -13,10 +17,10 @@ import {
   validateWallWordingData,
 } from '../games/magic/tools/accuracy/wall-wording-data.mjs';
 const p = await wallWordingDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await fourthCenteredHistoricalHash(), p.afterRenderer);
 assert.equal(await wallWordingHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {
-  const b = await fs.readFile(file);
+  const b = await preFourthCenteredSource(file, await fs.readFile(file));
   assert.equal(hash(b), r.after);
   assert.equal(hash(await preWallWordingSource(file, b)), r.before);
   const unknown = Buffer.concat([b, Buffer.from('\n// unknown edit\n')]);

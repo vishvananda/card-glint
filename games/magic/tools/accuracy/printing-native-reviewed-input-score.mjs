@@ -30,8 +30,9 @@ assert(
       'fourth-nonland',
       'fourth-paragraph',
       'wall-wording',
+      'fourth-centered',
     ].includes(changeKind),
-  'Usage: printing-native-reviewed-input-score.mjs BEFORE_INPUTS AFTER_INPUTS BEFORE_CAPTURE AFTER_CAPTURE POSES PRIOR_SCORES METRICS POLICY NEW_OUTPUT [symbols|leg-artist|fourth-basic-body|fourth-nonbasic|fourth-nonland|fourth-paragraph|wall-wording]',
+  'Usage: printing-native-reviewed-input-score.mjs BEFORE_INPUTS AFTER_INPUTS BEFORE_CAPTURE AFTER_CAPTURE POSES PRIOR_SCORES METRICS POLICY NEW_OUTPUT [symbols|leg-artist|fourth-basic-body|fourth-nonbasic|fourth-nonland|fourth-paragraph|wall-wording|fourth-centered]',
 );
 const files = [
     beforeInputFile,
@@ -58,7 +59,7 @@ assert.equal(prior.inputHash, hash(bytes[0]));
 assert.equal(prior.posesHash ?? prior.sources?.poses, hash(bytes[4]));
 assert.equal(before.inputHash, hash(bytes[0]));
 assert.equal(after.inputHash, hash(bytes[1]));
-let artistDelta, bodyDelta, nonbasicDelta, nonlandDelta, paragraphDelta, wallDelta;
+let artistDelta, bodyDelta, nonbasicDelta, nonlandDelta, paragraphDelta, wallDelta, centeredDelta;
 if (changeKind === 'leg-artist') {
   const { legArtistDelta } = await import('./leg-artist-data-ancestry.mjs');
   artistDelta = await legArtistDelta();
@@ -71,6 +72,13 @@ if (changeKind === 'leg-artist') {
   assert.equal(beforeInputs.set, '4ed');
   assert.equal(before.rendererHash, bodyDelta.beforeRenderer);
   assert.equal(after.rendererHash, bodyDelta.afterRenderer);
+} else if (changeKind === 'fourth-centered') {
+  const { fourthCenteredDelta } = await import('./fourth-centered-ancestry.mjs');
+  centeredDelta = await fourthCenteredDelta();
+  assert.equal(beforeInputs.set, '4ed');
+  assert.deepEqual(policyGraph, prior.policyGraph);
+  assert.equal(before.rendererHash, centeredDelta.beforeRenderer);
+  assert.equal(after.rendererHash, centeredDelta.afterRenderer);
 } else if (changeKind === 'wall-wording') {
   const { wallWordingDelta } = await import('./wall-wording-data.mjs');
   wallDelta = await wallWordingDelta();
@@ -101,7 +109,13 @@ if (changeKind === 'leg-artist') {
   assert.equal(after.rendererHash, nonbasicDelta.afterRenderer);
 } else assert.equal(before.rendererHash, after.rendererHash);
 const scopedDelta =
-  artistDelta ?? bodyDelta ?? nonbasicDelta ?? nonlandDelta ?? paragraphDelta ?? wallDelta;
+  artistDelta ??
+  bodyDelta ??
+  nonbasicDelta ??
+  nonlandDelta ??
+  paragraphDelta ??
+  wallDelta ??
+  centeredDelta;
 assert.equal(prior.rendererHash, bodyDelta ? bodyDelta.historicalRenderer : before.rendererHash);
 assert.equal(before.status, 'complete');
 assert.equal(after.status, 'complete');
@@ -129,7 +143,23 @@ for (const e of beforeInputs.entries) {
   assert.deepEqual(next.card, e.card);
   assert.deepEqual(next.reference, e.reference);
   assert.deepEqual(next.art, e.art);
-  if (wallDelta) {
+  if (centeredDelta) {
+    const file = 'games/magic/fixtures/accuracy/4ed/annotations-typography.json';
+    const review = JSON.parse(centeredDelta.files[file].afterSource).cards[e.id];
+    if (!review) assert.deepEqual(next.face, e.face);
+    else {
+      assert.equal(review.referenceHash, e.reference.sha256);
+      assert.deepEqual(
+        review.paragraphs.map(({ align, ...p }) => p),
+        e.face.rulesParagraphs,
+      );
+      assert.deepEqual(next.face, {
+        ...e.face,
+        rulesParagraphs: review.paragraphs,
+        rulesAlignment: { mode: 'auto', reference: review.paragraphs },
+      });
+    }
+  } else if (wallDelta) {
     const review = wallDelta.reviews.find((r) => r.id === e.id && r.set === beforeInputs.set);
     if (!review) assert.deepEqual(next.face, e.face);
     else {
@@ -191,7 +221,14 @@ for (const e of beforeInputs.entries) {
     assert.equal(e.face.artist, review.providerArtist);
     assert.equal(next.face.artist, review.printedArtist);
     assert.equal(old.poseAccepted, p.accepted);
-  } else if (bodyDelta || nonbasicDelta || nonlandDelta || paragraphDelta || wallDelta)
+  } else if (
+    bodyDelta ||
+    nonbasicDelta ||
+    nonlandDelta ||
+    paragraphDelta ||
+    wallDelta ||
+    centeredDelta
+  )
     assert.equal(old.poseAccepted, p.accepted);
   else assert(p.accepted);
   assert.equal(old.poseHash, hash(JSON.stringify(p.transform)));
@@ -264,19 +301,22 @@ assert.deepEqual(
 await writeJson(output, {
   schema: 1,
   set: beforeInputs.set,
-  status: wallDelta
-    ? 'complete-native-wall-wording-comparison'
-    : paragraphDelta
-      ? 'complete-native-fourth-paragraph-comparison'
-      : nonlandDelta
-        ? 'complete-native-fourth-nonland-comparison'
-        : nonbasicDelta
-          ? 'complete-native-fourth-nonbasic-comparison'
-          : bodyDelta
-            ? 'complete-native-fourth-basic-body-comparison'
-            : artistDelta
-              ? 'complete-native-artist-input-comparison'
-              : 'complete-native-mana-input-comparison',
+  status: centeredDelta
+    ? 'complete-native-reviewed-centering-comparison'
+    : wallDelta
+      ? 'complete-native-wall-wording-comparison'
+      : paragraphDelta
+        ? 'complete-native-fourth-paragraph-comparison'
+        : nonlandDelta
+          ? 'complete-native-fourth-nonland-comparison'
+          : nonbasicDelta
+            ? 'complete-native-fourth-nonbasic-comparison'
+            : bodyDelta
+              ? 'complete-native-fourth-basic-body-comparison'
+              : artistDelta
+                ? 'complete-native-artist-input-comparison'
+                : 'complete-native-mana-input-comparison',
+  ...(centeredDelta ? { centeredNativeProofHash: centeredDelta.native.contentSha256 } : {}),
   ...(wallDelta ? { wallNativeProofHash: wallDelta.native.contentSha256 } : {}),
   ...(paragraphDelta ? { paragraphNativeProofHash: paragraphDelta.native.contentSha256 } : {}),
   ...(nonlandDelta ? { nonlandNativeProofHash: nonlandDelta.native.contentSha256 } : {}),

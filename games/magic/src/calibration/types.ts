@@ -200,7 +200,9 @@ export interface SetCalibrationProfile {
   };
   /** default or printed source-set key (Chronicles); custom host symbols bypass these. */
   readonly setSymbols?: Readonly<Partial<Record<string, CalibratedSetSymbol>>>;
-  /** Omitted retains the established layout. Material override wins over default. */
+  /** Omitted retains the established layout. Material overrides win. The centered
+   * entry applies only to an explicitly centered wording reference; default is
+   * the remaining fallback. All entries use the same measured body contract. */
   readonly body?: Readonly<Partial<Record<string, CalibratedBody>>>;
   readonly expansionBody?: CalibratedExpansionBody;
   readonly bodyClasses?: CalibratedBodyClasses;

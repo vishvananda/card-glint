@@ -96,6 +96,10 @@ for (const file of files) {
       if (r.paragraphs) fields.rulesParagraphs = r.paragraphs;
     }
     if (r.flavorReviewNote && Object.hasOwn(r, 'flavorText')) fields.flavorText = r.flavorText;
+    if (r.paragraphScope !== undefined) {
+      assert.equal(r.paragraphScope, 'rules-only');
+      assert(fields.rulesParagraphs?.every((p) => p.role === 'rules'));
+    }
     add(
       id,
       undefined,
@@ -108,6 +112,7 @@ for (const file of files) {
         data.note ??
         'Scan-reviewed original wording.',
       fields,
+      r.paragraphScope,
     );
   }
 }

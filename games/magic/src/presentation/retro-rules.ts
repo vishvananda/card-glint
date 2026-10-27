@@ -175,8 +175,21 @@ function baseRetroTextLayout(context: CanvasContext, face: RenderedCardInput) {
   if (expansion) return expansion;
   const frame = earlyReprintFrame(face);
   const body = frame && calibrationForFace(face)?.body;
-  const fitted = body && (body[frame.material!] ?? body.default);
-  if (fitted) return calibratedBodyLayout(context, face, fitted, paragraphs, reference);
+  const reviewedCenter =
+    !forcedLeft &&
+    reference.length > 0 &&
+    reference.every((p) => p.align === 'center') &&
+    paragraphs.every((p) => p.align === undefined || p.align === 'center');
+  const fitted =
+    body && (body[frame.material!] ?? (reviewedCenter ? body.centered : undefined) ?? body.default);
+  if (fitted)
+    return calibratedBodyLayout(
+      context,
+      face,
+      fitted,
+      fitted === body?.centered ? paragraphs.map((p) => ({ ...p, align: 'center' })) : paragraphs,
+      reference,
+    );
   const set = face.setCode?.toLowerCase();
   // Original Mirage–Scourge printings use right-aligned attribution lines;
   // early sets and Eighth Edition onward use a different policy.

@@ -3,7 +3,7 @@ import type { SetCalibrationProfile } from '../types.js';
 /** Shared printing defaults. Scan transforms and reference images belong in evidence. */
 export const profile = {
   schema: 1,
-  revision: 4,
+  revision: 5,
   set: '4ed',
   border: 'white',
   frames: {
@@ -223,12 +223,7 @@ export const profile = {
         '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png",[0.008376442622950769,0.005957058823529423,0.9827660000000001,0.987892]]',
       stock: '#ededef',
       adjustment: {
-        frame: {
-          hueDegrees: 0,
-          saturationScale: 1,
-          brightnessScale: 1,
-          valueGamma: 1,
-        },
+        frame: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1, valueGamma: 1 },
         paper: {
           hueDegrees: -5.317285781971651,
           saturationScale: 0.8604202774412151,
@@ -689,18 +684,8 @@ export const profile = {
         '["https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/abu/l.png",[-0.012768442622950831,-0.015110294117647041,1.024,1.0225]]',
       stock: '#ededef',
       adjustment: {
-        frame: {
-          hueDegrees: 0,
-          saturationScale: 1,
-          brightnessScale: 1,
-          valueGamma: 1,
-        },
-        paper: {
-          hueDegrees: 0,
-          saturationScale: 1,
-          brightnessScale: 1,
-          valueGamma: 1,
-        },
+        frame: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1, valueGamma: 1 },
+        paper: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1, valueGamma: 1 },
         mask: {
           kind: 'rect',
           rect: [0.13934426229508196, 0.6088235294117647, 0.723360655737705, 0.2705882352941177],
@@ -754,31 +739,11 @@ export const profile = {
       scaleY: 0.995,
       spacing: 0.25,
       glyphs: {
-        U: {
-          scale: 1.04,
-          dx: 0,
-          dy: -0.5,
-        },
-        W: {
-          scale: 1,
-          dx: 0.5,
-          dy: 0,
-        },
-        B: {
-          scale: 1.05,
-          dx: 0,
-          dy: 0,
-        },
-        R: {
-          scale: 1.1,
-          dx: -0.25,
-          dy: 0.5,
-        },
-        G: {
-          scale: 1.13,
-          dx: 0,
-          dy: -0.25,
-        },
+        U: { scale: 1.04, dx: 0, dy: -0.5 },
+        W: { scale: 1, dx: 0.5, dy: 0 },
+        B: { scale: 1.05, dx: 0, dy: 0 },
+        R: { scale: 1.1, dx: -0.25, dy: 0.5 },
+        G: { scale: 1.13, dx: 0, dy: -0.25 },
       },
       numberScale: 1,
       numberDx: 0,
@@ -811,12 +776,7 @@ export const profile = {
     compact: { nominalMinimum: 17.5, nominalMaximum: 21.75, size: 15.5, leading: 1.2 },
   },
   expansionBody: {
-    bounds: {
-      x: 72,
-      y: 414,
-      width: 344,
-      height: 184,
-    },
+    bounds: { x: 72, y: 414, width: 344, height: 184 },
     regular: 22.5,
     textWidth: 1,
     threshold: 100,
@@ -828,21 +788,11 @@ export const profile = {
     largeLeading: 1,
     largeOffset: -12,
     fractionalMetrics: true,
-    unconstrained: {
-      offset: -6,
-      compact: 15.5,
-      compactLeading: 1.2,
-      minimumFreeSpace: 40,
-    },
+    unconstrained: { offset: -6, compact: 15.5, compactLeading: 1.2, minimumFreeSpace: 40 },
   },
   body: {
     'L-W': {
-      bounds: {
-        x: 64,
-        y: 414,
-        width: 360,
-        height: 184,
-      },
+      bounds: { x: 64, y: 414, width: 360, height: 184 },
       maximumSize: 25,
       minimumSize: 15,
       typography: {
@@ -855,19 +805,10 @@ export const profile = {
         flavorSeparator: false,
         centerOffset: -12.5,
       },
-      centered: {
-        maxCharacters: 100,
-        maxLines: 1,
-        maximumSize: 25,
-      },
+      centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
     'L-U': {
-      bounds: {
-        x: 64,
-        y: 414,
-        width: 360,
-        height: 184,
-      },
+      bounds: { x: 64, y: 414, width: 360, height: 184 },
       maximumSize: 25,
       minimumSize: 15,
       typography: {
@@ -880,19 +821,10 @@ export const profile = {
         flavorSeparator: false,
         centerOffset: -12.5,
       },
-      centered: {
-        maxCharacters: 100,
-        maxLines: 1,
-        maximumSize: 25,
-      },
+      centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
     'L-B': {
-      bounds: {
-        x: 64,
-        y: 414,
-        width: 360,
-        height: 184,
-      },
+      bounds: { x: 64, y: 414, width: 360, height: 184 },
       maximumSize: 25,
       minimumSize: 15,
       typography: {
@@ -905,19 +837,10 @@ export const profile = {
         flavorSeparator: false,
         centerOffset: -12.5,
       },
-      centered: {
-        maxCharacters: 100,
-        maxLines: 1,
-        maximumSize: 25,
-      },
+      centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
     'L-R': {
-      bounds: {
-        x: 64,
-        y: 414,
-        width: 360,
-        height: 184,
-      },
+      bounds: { x: 64, y: 414, width: 360, height: 184 },
       maximumSize: 25,
       minimumSize: 15,
       typography: {
@@ -930,19 +853,10 @@ export const profile = {
         flavorSeparator: false,
         centerOffset: -12.5,
       },
-      centered: {
-        maxCharacters: 100,
-        maxLines: 1,
-        maximumSize: 25,
-      },
+      centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
     'L-G': {
-      bounds: {
-        x: 64,
-        y: 414,
-        width: 360,
-        height: 184,
-      },
+      bounds: { x: 64, y: 414, width: 360, height: 184 },
       maximumSize: 25,
       minimumSize: 15,
       typography: {
@@ -955,41 +869,30 @@ export const profile = {
         flavorSeparator: false,
         centerOffset: -12.5,
       },
-      centered: {
-        maxCharacters: 100,
-        maxLines: 1,
-        maximumSize: 25,
+      centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
+    },
+    centered: {
+      bounds: { x: 72, y: 424, width: 344, height: 164 },
+      maximumSize: 26,
+      minimumSize: 15,
+      typography: {
+        fractionalMetrics: true,
+        textWidth: 0.97,
+        leading: 1,
+        paragraphGap: 0,
+        flavorGap: 0,
+        flavorOrphans: false,
+        flavorSeparator: false,
+        centerOffset: -4,
+        balanceLines: true,
+        balanceCenteredOnly: true,
       },
     },
   },
-  title: {
-    size: 27.25,
-    x: 41.5,
-    y: 41,
-    width: 1.015,
-    shadow: 1,
-    trim: 0.3,
-    gray: 232,
-  },
-  type: {
-    x: 42.75,
-    y: 390.5,
-    size: 23,
-    width: 0.98,
-    shadow: 0.75,
-    trim: 0.2,
-    gray: 239,
-  },
+  title: { size: 27.25, x: 41.5, y: 41, width: 1.015, shadow: 1, trim: 0.3, gray: 232 },
+  type: { x: 42.75, y: 390.5, size: 23, width: 0.98, shadow: 0.75, trim: 0.2, gray: 239 },
   footer: {
-    artist: {
-      x: 43,
-      y: 626.5,
-      size: 19,
-      width: 1,
-      shadow: 1.25,
-      trim: 0.2,
-      gray: 238,
-    },
+    artist: { x: 43, y: 626.5, size: 19, width: 1, shadow: 1.25, trim: 0.2, gray: 238 },
     legal: {
       x: 41.25,
       y: 640.5,
@@ -1000,20 +903,12 @@ export const profile = {
       lightGray: 205,
       darkGray: 42,
     },
-    stats: {
-      x: 451.75,
-      y: 634.5,
-      size: 27,
-      width: 1.03,
-      shadow: 1,
-      trim: 0.3,
-      gray: 238,
-    },
+    stats: { x: 451.75, y: 634.5, size: 27, width: 1.03, shadow: 1, trim: 0.3, gray: 238 },
   },
 } as const satisfies SetCalibrationProfile;
 
 export const review = {
-  revision: 4,
+  revision: 5,
   scope: 'Ordinary nonfoil printing; see per-component evidence and outstanding tasks.',
   evidence: [
     'games/magic/fixtures/accuracy/early-reprint-frame-color.json',
@@ -1024,6 +919,7 @@ export const review = {
     'games/magic/fixtures/accuracy/4ed/basic-body-proposal.json',
     'games/magic/fixtures/accuracy/4ed/nonbasic-body-adoption.json',
     'games/magic/fixtures/accuracy/4ed/nonland-body-adoption.json',
+    'games/magic/fixtures/accuracy/4ed/reviewed-centering-adoption.json',
   ],
   pending: ['rules', 'flavor', 'setSymbol', 'fullCard', 'release'],
 } as const;

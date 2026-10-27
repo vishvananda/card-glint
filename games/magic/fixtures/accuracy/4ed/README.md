@@ -134,8 +134,8 @@ row boundaries independently of overlap. Content mismatches remain explicit.
 
 The [review](native-request-review.json) binds both full studies, reports,
 definitions, fitting tools and objective sources. Reused development data is
-disclosed. Current production profiles and the 79.70/100 whole-card mean stay
-unchanged. The remaining fit needs shared size/width and centering rules, with
+disclosed. At that checkpoint, production profiles and the 79.70/100 whole-card mean
+were unchanged. The remaining fit needs shared size/width and centering rules, with
 separate review of mixed and flavor passages.
 
 Run either definition against current, Original-wording inputs and a matching
@@ -165,3 +165,44 @@ It adds reviewed rows for Purelace, Mind Twist, Drain Power, Simulacrum, Brainwa
 and Wooden Sphere. The original six targets and both historical study receipts
 remain unchanged. These examples include centered and left-aligned blocks of
 similar length; a character cutoff alone cannot distinguish them.
+
+## Reviewed Original centering
+
+The [reviewed formatting](annotations-typography.json) adds centered alignment to
+twelve exact Original printings. One editable `body.centered` profile supplies
+size and spacing. There are no per-card size, offset or soft-wrap overrides.
+The words, runs and logical paragraphs are unchanged. A rules-only review
+preserves caller flavor; a mixed-body review retains the exact printed body.
+
+The [adoption receipt](reviewed-centering-adoption.json) binds the source delta,
+portable fitting study, all 1,512 native variants and 378 whole-card scores.
+The mean is 79.70 → 80.02/100: twelve gains, no regressions and 366 exact score
+reuses. Both Oracle modes, etching masks and all pixels outside those twelve
+bodies are unchanged. These scans were used in fitting; they are not a holdout.
+
+Run the shared recipe comparison with the captured inputs before the formatting
+change. Every current default replay must match that native baseline before a
+trial is scored. Asset fetching is disabled; the snapshot and cache supply bytes.
+
+```sh
+MAGIC_ACCURACY_CACHE=/path/to/cache node \
+  games/magic/tools/accuracy/fourth-centered-policy-study.mjs \
+  before-inputs.json before-native/capture.json stock-poses.json new-output \
+  games/magic/fixtures/accuracy/4ed/reviewed-centering-study-definition.json
+
+node games/magic/tools/accuracy/fourth-centered-native-review.mjs \
+  private-native-config.json native-isolation.json
+
+node tests/magic-fourth-reviewed-centering.mjs
+```
+
+The private native configuration names `beforeInputs`, `afterInputs`,
+`beforeCapture`, `afterCapture` and `prototype` files. The prototype is the
+portable study's `study.json`; its saved candidate PNGs are checked against the
+integrated production captures. No images or private paths are shipped.
+
+The global character limit stays unchanged. The separate
+[expanded-cutoff definition](expanded-centering-study-definition.json) runs the
+rejected count-only approach across all 360 nonlands. Similar word lengths do
+not prove the same printed alignment. Mind Twist still has a wrapping residual;
+other text and component audits remain open.

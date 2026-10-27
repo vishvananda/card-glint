@@ -568,3 +568,25 @@ evidence. The old publication receipt is retained as historical evidence.
 A provider's original-text field is a candidate reference, not proof of printed
 wording. Check added keywords and reminder lines against the full scan before
 fitting typography. A present field can still contain later Oracle wording.
+
+## Fourth Edition reviewed centering
+
+Twelve Original blocks are centered in their scans but lacked paragraph alignment
+in the imported data. Reviewed formatting now selects one shared centered body
+profile: 26 px maximum size, fractional metrics and 0.97 text width. Words,
+logical paragraphs and rich runs remain unchanged. Nine rules-only corrections
+preserve caller flavor; three mixed blocks retain their printed flavor layout.
+An Oracle render uses its chosen alignment reference independently.
+
+All 378 printings were replayed in four modes. Only the twelve Original bodies
+change. The other 366 Originals, both Oracle modes and all etching masks keep
+exact PNG bytes. Profile revision changes cache keys, so score reuse is based on
+verified pixels, inputs, assets, frozen poses and the unchanged metric graph.
+
+The whole-card mean rises from 79.70 to 80.02/100, with twelve gains and no
+regressions. Extending the global character cutoff was rejected: it incorrectly
+centers already correct blocks such as the Circle of Protection cycle. Mind
+Twist retains a wrapping residual. These development scans are not holdout data,
+and this improvement does not certify the whole set. See the
+[adoption receipt](../fixtures/accuracy/4ed/reviewed-centering-adoption.json)
+and [reproduction steps](../fixtures/accuracy/4ed/README.md#reviewed-original-centering).

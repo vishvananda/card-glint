@@ -1,3 +1,4 @@
+import { preFourthCenteredSource } from './fourth-centered-ancestry.mjs';
 // Exact empty-rules reviews; preserve every unrelated printing and caller flavor.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -235,6 +236,7 @@ export function wallWordingDelta() {
   })());
 }
 export async function preWallWordingSource(file, bytes) {
+  bytes = await preFourthCenteredSource(file, bytes);
   const e = (await wallWordingDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

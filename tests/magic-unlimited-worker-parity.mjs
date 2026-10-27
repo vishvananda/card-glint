@@ -276,7 +276,60 @@ try {
         },
       );
       if (fourth) {
+        const reviewedRules = [
+          {
+            role: 'rules',
+            align: 'center',
+            runs: [
+              {
+                text: "If target creature is put into the graveyard, Creature Bond deals damage equal to the creature's toughness to that creature's controller.",
+              },
+            ],
+          },
+        ];
+        const reviewedMixed = [
+          {
+            role: 'rules',
+            align: 'center',
+            runs: [
+              {
+                text: 'Target creature cannot attack unless its controller pays an additional {3}.',
+              },
+            ],
+          },
+          {
+            role: 'flavor',
+            align: 'center',
+            runs: [
+              {
+                text: "They're not your friends; they despise you. I'm the only one you can count on. Trust me.",
+                italic: true,
+              },
+            ],
+          },
+        ];
         faces.push(
+          {
+            ...faces[1],
+            name: 'Reviewed centered pure control',
+            typeLine: 'Enchantment',
+            rulesParagraphs: reviewedRules,
+            rulesAlignment: { mode: 'auto', reference: reviewedRules },
+          },
+          {
+            ...faces[0],
+            name: 'Reviewed centered mixed control',
+            typeLine: 'Enchantment',
+            rulesParagraphs: reviewedMixed,
+            rulesAlignment: { mode: 'auto', reference: reviewedMixed },
+          },
+          {
+            ...faces[1],
+            name: 'Reviewed Original reference with longer visible wording',
+            typeLine: 'Enchantment',
+            rulesText: 'Target creature gains flying until end of turn. '.repeat(9),
+            rulesAlignment: { mode: 'auto', reference: reviewedRules },
+          },
           {
             ...faces[1],
             name: 'Two-ability paragraph control',
@@ -529,7 +582,7 @@ try {
       }),
     );
   }
-  assert.equal(rows.length, fourth ? 312 : abuDuals ? 288 : revised ? 160 : 120);
+  assert.equal(rows.length, fourth ? 384 : abuDuals ? 288 : revised ? 160 : 120);
   if (fourth) assert(rows.every((r) => r.set === '4ed'));
   if (revised) assert(rows.every((r) => r.set === '3ed'));
   for (const row of rows) {
@@ -556,7 +609,7 @@ try {
       boundedFilterPairs: rows.filter((r) => r.rasterEnvelope).length,
       sparseTwoByteRoundingCases: rows.filter((r) => r.rounding).length,
       scope: fourth
-        ? 'Current Fourth white-border profiles, pure/mixed/compact bodies, chosen wording reference and basic/nonbasic controls: exact browser/worker text metrics/draws, assets and masks at table/native/inspect/323px; face filters stay within one 8-bit level/card, three levels/64px tile with exact alpha, Original and both Oracle symbol modes, face/etching. Synthetic assets and local fonts test portability,not scan accuracy.'
+        ? 'Current Fourth white-border profiles, pure/mixed/compact bodies, reviewed centered formatting and chosen wording reference and basic/nonbasic controls: exact browser/worker text metrics/draws, assets and masks at table/native/inspect/323px; face filters stay within one 8-bit level/card, three levels/64px tile with exact alpha, Original and both Oracle symbol modes, face/etching. Synthetic assets and local fonts test portability,not scan accuracy.'
         : abuDuals
           ? 'Current Alpha/Beta/Unlimited BG/UR/WU duals and basic controls: browser/worker geometry, alpha and asset requests match (at most 0.01% color pixels may differ by at most two byte levels at antialiased bitmap corners) at table/native/inspect/323px, Original and both Oracle symbol modes, face/default etching. Synthetic assets and local fonts test portability, not scan accuracy.'
           : revised

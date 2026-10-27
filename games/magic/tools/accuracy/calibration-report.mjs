@@ -1,3 +1,4 @@
+import { fourthCenteredAffected, fourthCenteredApproval } from './fourth-centered-ancestry.mjs';
 import { wallWordingAffected } from './wall-wording-data.mjs';
 import { fourthParagraphDelta, fourthParagraphAffected } from './fourth-paragraph-ancestry.mjs';
 import { fourthNonlandDelta, fourthNonlandAffected } from './fourth-nonland-ancestry.mjs';
@@ -124,6 +125,15 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (
+          (await fourthCenteredAffected(set.set, task, original, group)) &&
+          !(await fourthCenteredApproval(item, group))
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Reviewed Original paragraph alignment selects the shared centered body profile. Changed rules/flavor and whole-card evidence needs the current native census; unchanged words, other components and printing groups retain their reviews.';
+          continue;
+        }
         if (await wallWordingAffected(set.set, task, original, group)) {
           item.status = original ? 'stale' : 'needs-audit';
           item.reason =
