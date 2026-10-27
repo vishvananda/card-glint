@@ -34,7 +34,8 @@ for (const r of proposal.landWordingCensus) {
     assert(r.providerRules.includes('Add 1 colorless'));
     assert(r.providerRules.includes('\n{1}:'));
     assert(r.observedRules.includes('Add one colorless'));
-    assert(r.observedRules.includes('\n1:'));
+    assert(r.observedRules.includes('\n{1}:'));
+    assert.equal(r.observedRules, r.providerRules.replace('Add 1 colorless', 'Add one colorless'));
   }
 }
 for (const r of proposal.rows) {

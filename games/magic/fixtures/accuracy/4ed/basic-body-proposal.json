@@ -676,7 +676,7 @@
       "collectorNumber": "361",
       "referenceHash": "04684f661b8f58914936ad3bfdb6cff3958da77db54ff9c0d164c753680efc69",
       "providerRules": "{T}: Add 1 colorless mana to your mana pool.\n{1}: Mishra's Factory becomes an Assembly Worker, a 2/2 artifact creature, until end of turn. Assembly Worker still counts as a land but cannot be tapped for mana the turn it comes into play.\n{T}: Target Assembly Worker gets +1/+1 until end of turn.",
-      "observedRules": "{T}: Add one colorless mana to your mana pool.\n1: Mishra's Factory becomes an Assembly Worker, a 2/2 artifact creature, until end of turn. Assembly Worker still counts as a land but cannot be tapped for mana the turn it comes into play.\n{T}: Target Assembly Worker gets +1/+1 until end of turn.",
+      "observedRules": "{T}: Add one colorless mana to your mana pool.\n{1}: Mishra's Factory becomes an Assembly Worker, a 2/2 artifact creature, until end of turn. Assembly Worker still counts as a land but cannot be tapped for mana the turn it comes into play.\n{T}: Target Assembly Worker gets +1/+1 until end of turn.",
       "wordingMatches": false,
       "status": "source-read-not-public-correction"
     },
@@ -857,5 +857,11 @@
     "Fix the scan-confirmed Mishra's Factory wording through the reviewed public correction path before fitting its body",
     "Fit Oasis and Strip Mine separately from one-line basics; retain the full land denominator",
     "Recompute only changed scores after actual native integration; retain every regional regression"
-  ]
+  ],
+  "wordingReviewCorrection": {
+    "printingId": "aff8d4f1-eaad-4afb-9097-2afab133f707",
+    "field": "landWordingCensus.observedRules",
+    "correction": "Retain the generic {1} activation symbol. High-magnification source pixels show its faint pale disc;only the first ability changes from 1 colorless to one colorless.",
+    "scope": "This corrects the nonbasic wording draft only. The15 basic-land prototype inputs,metrics,native integration and source-history receipt remain unchanged."
+  }
 }
