@@ -1,0 +1,146 @@
+{
+  "schema": 1,
+  "set": "4ed",
+  "status": "basic-land-baseline-correction-proposed-nonbasic-transfer-rejected",
+  "scope": "112 current Original native faces,15 basics and97 nonbasic controls;183 WUBRGT occurrences. Fixed scan-only poses and fixed words, circle size, intrinsic glyph shape and palette. Nine whole-symbol vertical offsets are fractions of symbol size. Reused development scans; no independent holdout.",
+  "rendererChanges": 0,
+  "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+  "inputHash": "590689c941be92148f5f7d4fef8676577f3642c38ec5c1f8c5cbe66bf792ca37",
+  "captureHash": "b0b1f1b885858fa2fe87785637e53862207aeb5ab273cfc814d8b8ac66ddd8c8",
+  "posesHash": "021bae821e371ccdea7aa9d9db1df47219227c1fb4b935ebc2113f1951ab37ef",
+  "refinementHash": "72d9b0a16c149d02d40f1710c6c44689006e4cc9f258d9aa4c951808f93eb713",
+  "nativeControls": 112,
+  "occurrences": 183,
+  "artifacts": {
+    "inline-baseline-fit.json.gz": {
+      "sha256": "58599051c28cb79f2814bb57080ce2f3f39c6db30728731287d50238cea648f8",
+      "contentSha256": "b2d71b88fa52892867f3b4e6629c423672c89ac03de7e065d3cfc877d802a961"
+    },
+    "inline-baseline-report.json.gz": {
+      "sha256": "a3e7d10a4e08d3c8c79a32358a1ff12938f9fb3fe8babce6b40a424191a7e76c",
+      "contentSha256": "8a2f3413d398f93440c048c50235366db21031fc2cba6c229517a503576947eb"
+    },
+    "inline-baseline-preview.json.gz": {
+      "sha256": "830370cfa53fc1f7dec21026f8e7491bacdda51655e693c259fcad18b565d1cd",
+      "contentSha256": "c7c94c46af4df44f9a1a65296fe602dcd476baac46777b6e8073991b7f3765f8"
+    },
+    "inline-baseline-fit-tool.mjs.gz": {
+      "sha256": "af24b52d4917c4289eb75795cbc999ab71d1d4f39583926e9fd35978be12d774",
+      "contentSha256": "b3b9bbda70eaae04491103be42d3313f53f5eeec76bed04b2045ef8f21b2343e"
+    },
+    "inline-baseline-report-tool.mjs.gz": {
+      "sha256": "5ae3bb18b16a6ba453083b64256ac68231158deca5c33a336f87f25353396a6d",
+      "contentSha256": "01f3f2ecae799acdbf31b31dcdffd2de52835e3ededc1f35b10eea82319c06d2"
+    },
+    "inline-baseline-preview-tool.mjs.gz": {
+      "sha256": "f1c3e4a82b1d069b7f97d15c36ceb0389705e27635305a7cec6f00a16ded8651",
+      "contentSha256": "e6e41646576dedbbbcab061095cfc115a758896a5280499aebdf87e5ff8fbdd3"
+    }
+  },
+  "methods": {
+    "games/magic/tools/accuracy/fourth-inline-baseline-fit.mjs": "b3b9bbda70eaae04491103be42d3313f53f5eeec76bed04b2045ef8f21b2343e",
+    "games/magic/tools/accuracy/fourth-inline-baseline-report.mjs": "01f3f2ecae799acdbf31b31dcdffd2de52835e3ededc1f35b10eea82319c06d2",
+    "games/magic/tools/accuracy/fourth-inline-baseline-preview.mjs": "e6e41646576dedbbbcab061095cfc115a758896a5280499aebdf87e5ff8fbdd3"
+  },
+  "results": {
+    "basicsMinusTwoPixelsAtSize20": {
+      "dy": -0.1,
+      "before100": 64.8644858465791,
+      "after100": 82.34504264502063,
+      "cardMeanBefore100": 64.86448584657909,
+      "cardMeanAfter100": 82.34504264502063,
+      "gains": 30,
+      "losses": 0,
+      "worstLosses": []
+    },
+    "nonbasicsSameRelativeOffset": {
+      "dy": -0.1,
+      "before100": 45.41591139416054,
+      "after100": 43.81940557393864,
+      "cardMeanBefore100": 46.151294714130536,
+      "cardMeanAfter100": 44.601400719132066,
+      "gains": 42,
+      "losses": 111,
+      "worstLosses": [
+        {
+          "id": "f3d29fed-248d-4547-9455-3d69b1f2787d",
+          "name": "Stasis",
+          "basic": false,
+          "before100": 60.2991048432014,
+          "after100": 44.29070422960809,
+          "delta100": -16.008400613593317
+        },
+        {
+          "id": "88bf9da4-4647-4c66-a3ce-fab7ca9618d1",
+          "name": "Rod of Ruin",
+          "basic": false,
+          "before100": 68.94269875422017,
+          "after100": 54.7107855434571,
+          "delta100": -14.23191321076308
+        },
+        {
+          "id": "265de55e-63d2-4a5d-9078-858da70f2a08",
+          "name": "Stone Giant",
+          "basic": false,
+          "before100": 60.36954227102096,
+          "after100": 47.385644659391936,
+          "delta100": -12.983897611629025
+        },
+        {
+          "id": "19281eb4-f5b6-4b27-8c65-7e56d2a8ab77",
+          "name": "Orcish Artillery",
+          "basic": false,
+          "before100": 58.887445363268235,
+          "after100": 46.260934767031095,
+          "delta100": -12.62651059623714
+        },
+        {
+          "id": "226f89b4-cf98-4354-a2f4-3f63fe2dd99e",
+          "name": "Sunken City",
+          "basic": false,
+          "before100": 60.9822430205718,
+          "after100": 48.81178900002371,
+          "delta100": -12.170454020548094
+        },
+        {
+          "id": "e7ca1534-0049-4672-9677-99f1ba00fb78",
+          "name": "Celestial Prism",
+          "basic": false,
+          "before100": 61.80512025085261,
+          "after100": 49.67811487117888,
+          "delta100": -12.127005379673728
+        },
+        {
+          "id": "4a92484b-064c-4588-a1ea-6de8fd485ca4",
+          "name": "Clockwork Avian",
+          "basic": false,
+          "before100": 54.85296873725795,
+          "after100": 42.83847347885283,
+          "delta100": -12.014495258405123
+        },
+        {
+          "id": "a3c546db-0871-4a13-8654-c26ae9f9b50a",
+          "name": "Xenic Poltergeist",
+          "basic": false,
+          "before100": 51.41631076521753,
+          "after100": 40.3668045969224,
+          "delta100": -11.049506168295132
+        }
+      ]
+    }
+  },
+  "decision": "The shared basic-land -0.1*symbolSize offset improves every one of30 basic symbols. Do not transfer it across all rules text:111 nonbasic occurrences regress and card-weighted mean drops. No production default or completion status changes in this receipt.",
+  "visualReview": {
+    "nativeControls": 7,
+    "prototypes": 7,
+    "changedRegion": "Only inline-symbol windows; alpha and all other pixels exact.",
+    "cards": ["Plains", "Island", "Swamp", "Mountain", "Forest", "Sunken City", "Stasis"],
+    "observations": "The upward move visibly improves basic-land word/symbol baselines. Sunken City and Stasis demonstrate nonbasic regression. Tap disc palette and intrinsic glyph differences remain separate from placement.",
+    "assets": "Private cached comparisons only; no scan or derived image bytes are distributed."
+  },
+  "next": [
+    "Integrate the shared basic-land-only symbol baseline through an editable body typography value; keep words and all97 nonbasic controls unchanged.",
+    "Confirm actual native whole-card changes and score the15 basics before adoption; retain all other native variants and source history.",
+    "Review tap-disc colors and glyph shape independently after placement; do not infer a universal size rule from text-size slices whose adjacent words may still differ."
+  ]
+}

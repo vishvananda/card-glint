@@ -481,3 +481,39 @@ MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-basic
 MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-basic-word-prototype.mjs INPUTS BEFORE/capture.json NEW_FIT/study.json NEW_PROTOTYPE
 node tests/magic-fourth-basic-word-adoption.mjs
 ```
+
+## Inline-symbol baseline after the word fit
+
+The word-position adoption leaves the basic-land symbols too low. The
+[baseline review](inline-baseline-review.json) tests nine vertical offsets on
+all 112 Fourth Edition cards containing WUBRGT symbols, with the words, symbol
+size, glyph, colors and scan poses fixed. Every default native PNG remains
+exact.
+
+Moving each whole basic-land symbol up by 10% of its size (2 reference pixels
+for the 20-pixel circles) improves all 30 basic-land occurrences. Their regional
+index rises from 64.86 to 82.35/100. The same move lowers the other 97 cards'
+card-weighted index from 46.15 to 44.60/100, with 111 occurrence losses.
+Sunken City and Stasis are retained visual controls. This rejects a universal
+offset.
+
+The basic-land correction is proposed, not integrated. Add an editable body
+typography value scoped to the five basic-land groups, then verify native
+pixels and whole-card scores before adopting it. Tap-disc colors and glyph
+shape need separate review. These regional indices do not replace the current
+378-card whole-card result or approve the set.
+
+```sh
+node games/magic/tools/accuracy/fourth-inline-baseline-fit.mjs \
+  INPUTS.json CURRENT_NATIVE/capture.json STOCK_POSES.json \
+  LAND_REFINEMENT.json NEW_PRIVATE_STUDY.json
+node games/magic/tools/accuracy/fourth-inline-baseline-report.mjs \
+  NEW_PRIVATE_STUDY.json NEW_PRIVATE_REPORT.json
+node games/magic/tools/accuracy/fourth-inline-baseline-preview.mjs \
+  INPUTS.json CURRENT_NATIVE/capture.json NEW_PRIVATE_PREVIEW
+```
+
+The fit composes each card once and replays only its local symbols. The preview
+checks seven native controls and verifies that changes remain inside
+symbol windows with exact alpha. Keep generated scans and comparison images in
+private cache storage.
