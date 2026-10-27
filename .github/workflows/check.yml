@@ -13,9 +13,9 @@ concurrency:
 jobs:
   renderer:
     runs-on: ubuntu-24.04
-    # Native historical replays plus software-GPU finish checks exceed 25m
+    # Native historical replays plus software-GPU finish checks exceed 45m
     # on a cold runner. Keep a bounded budget without dropping coverage.
-    timeout-minutes: 45
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
