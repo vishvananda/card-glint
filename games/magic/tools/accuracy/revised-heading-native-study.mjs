@@ -36,7 +36,17 @@ for (const role of ['title', 'type']) {
         c.width >= 0.9 &&
         c.width <= 1.1,
     );
-    assert(!c.font || ['Goudy', 'MPlantin'].includes(c.font));
+    assert(
+      !c.font ||
+        ['Goudy', 'MPlantin', ...(definition.fonts ?? []).map((f) => f.id)].includes(c.font),
+    );
+    assert(c.gray === undefined || (Number.isFinite(c.gray) && c.gray >= 0 && c.gray <= 255));
+    assert(c.offset === undefined || (Number.isFinite(c.offset) && c.offset >= 0 && c.offset <= 2));
+    assert(
+      c.wordSpacing === undefined ||
+        (Number.isFinite(c.wordSpacing) && Math.abs(c.wordSpacing) <= 3),
+    );
+    assert(c.shadow === undefined || ['native', 'solid'].includes(c.shadow));
   }
 }
 const moduleNames = [
@@ -48,6 +58,8 @@ const moduleNames = [
   'metrics.mjs',
   'browser.mjs',
   'abu-assets.mjs',
+  'native-rgba-crop.mjs',
+  'hsb-color.mjs',
 ];
 const moduleHashes = async () =>
   Object.fromEntries(
@@ -84,11 +96,28 @@ const plugin = {
   },
 };
 const session = await openBrowser(
-  { ...inputs, components: [...(inputs.components ?? []), ...capture.extraAssets] },
+  {
+    ...inputs,
+    components: [
+      ...(inputs.components ?? []),
+      ...capture.extraAssets,
+      ...(definition.fonts ?? []).map((f) => f.asset),
+    ],
+  },
   { plugins: [plugin] },
 );
 await fs.writeFile(output, JSON.stringify({ status: 'running' }), { flag: 'wx' });
 try {
+  await session.page.evaluate(async (fonts) => {
+    for (const font of fonts) {
+      const r = await fetch(font.asset.url);
+      if (!r.ok) throw Error('Study font unavailable');
+      const f = new FontFace('CardRenderer MTG ' + font.id, await r.arrayBuffer(), {
+        weight: '400',
+      });
+      document.fonts.add(await f.load());
+    }
+  }, definition.fonts ?? []);
   for (const [material, g] of Object.entries(poses.groups)) {
     const eligible = g.rows.filter((p) => p.accepted),
       selected =
@@ -125,6 +154,8 @@ try {
               '/games/magic/src/presentation/retro-lettering.ts'
             ),
             { paintTextInk } = await import('/games/magic/src/presentation/text-ink.ts'),
+            { nativeRgbaCrop } = await import('/games/magic/tools/accuracy/native-rgba-crop.mjs'),
+            { delta } = await import('/games/magic/tools/accuracy/hsb-color.mjs'),
             { TextFilledObjective } = await import(
               '/games/magic/tools/accuracy/text-filled-objective.mjs'
             ),
@@ -257,16 +288,22 @@ try {
                 replayed = read(),
                 parity = Math.max(...replayed.map((v, i) => Math.abs(v - referenceNative[i])));
               if (parity > 1.001) throw Error('Heading baseline parity ' + role + ' ' + parity);
-              const scores = [];
-              for (const p of definition[role]) {
+              const readRaster = () => c.getImageData(0, 0, w, h);
+              const draw = (p, override) => {
                 setup();
                 c.save();
                 const title = role === 'title',
                   x = title ? 40 : s.args.x,
                   y = s.args.y,
                   family = p.font ?? (title ? 'Goudy' : 'MPlantin'),
-                  width = title ? s.args.maxWidth + s.args.originalX - (x + p.dx) : s.args.width;
+                  width = title ? s.args.maxWidth + s.args.originalX - (x + p.dx) : s.args.width,
+                  shade = override ?? p.gray,
+                  fill =
+                    shade === undefined
+                      ? undefined
+                      : 'rgb(' + [shade, shade, shade].join(',') + ')';
                 c.translate(x + p.dx, y + p.dy);
+                const nativeLine = c.measureText('Hg');
                 c.scale(p.width, 1);
                 c.font =
                   (title ? 26 : 21.7) +
@@ -274,15 +311,134 @@ try {
                   'px "CardRenderer MTG ' +
                   family +
                   '", Georgia';
-                if (title) paintRetroGrayText(c, s.args.text, 0, 0, width / p.width, 1);
-                else paintTextInk(c, s.args.text, 0, 0, width / p.width, e.face.textInk, 'type');
+                if (p.font && p.alignFont) {
+                  const line = c.measureText('Hg');
+                  c.translate(
+                    0,
+                    (-nativeLine.actualBoundingBoxAscent +
+                      nativeLine.actualBoundingBoxDescent +
+                      line.actualBoundingBoxAscent -
+                      line.actualBoundingBoxDescent) /
+                      2,
+                  );
+                }
+                c.wordSpacing =
+                  (parseFloat(s.props.wordSpacing) || 0) + (p.wordSpacing ?? 0) + 'px';
+                if (title)
+                  paintRetroGrayText(
+                    c,
+                    s.args.text,
+                    0,
+                    0,
+                    width / p.width,
+                    p.offset ?? 1,
+                    fill ?? '#ababab',
+                  );
+                else if (p.shadow === 'solid')
+                  paintRetroGrayText(
+                    c,
+                    s.args.text,
+                    0,
+                    0,
+                    width / p.width,
+                    p.offset ?? 1,
+                    fill ?? String(s.props.fillStyle),
+                    e.face.textInk,
+                    'type',
+                  );
+                else {
+                  if (fill) c.fillStyle = fill;
+                  if (p.offset !== undefined) c.shadowOffsetX = c.shadowOffsetY = p.offset * 1.5;
+                  paintTextInk(c, s.args.text, 0, 0, width / p.width, e.face.textInk, 'type');
+                }
                 c.restore();
-                const image = read();
+                const raster = readRaster();
+                return {
+                  gray: nativeGrayCrop(raster, rect, origin),
+                  rgba: definition.measureColor ? nativeRgbaCrop(raster, rect, origin) : null,
+                };
+              };
+              const trimmed = (a) => {
+                const sorted = a.slice().sort((a, b) => a - b),
+                  kept = sorted.slice(Math.floor(a.length * 0.1), Math.ceil(a.length * 0.9));
+                return kept.reduce((s, v) => s + v, 0) / kept.length;
+              };
+              const scores = [];
+              for (const p of definition[role]) {
+                const image = draw(p);
                 if (p.id === 'current') {
-                  const d = Math.max(...image.map((v, i) => Math.abs(v - referenceNative[i])));
+                  const d = Math.max(...image.gray.map((v, i) => Math.abs(v - referenceNative[i])));
                   if (d > 1.001) throw Error('Candidate default parity ' + role + ' ' + d);
                 }
-                scores.push(objective.score(values(image)));
+                const score = objective.score(values(image.gray));
+                if (definition.measureColor) {
+                  const black = draw(p, 0).rgba,
+                    white = draw(p, 255).rgba,
+                    core = [];
+                  for (let i = 0; i < rect[2] * rect[3]; i++)
+                    if (
+                      [0, 1, 2].every((k) => white.data[i * 4 + k] - black.data[i * 4 + k] >= 230)
+                    )
+                      core.push(i);
+                  if (core.length >= 8) {
+                    const reference = [0, 1, 2].map((k) =>
+                        trimmed(
+                          core.map(
+                            (i) =>
+                              refPixels.data[
+                                ((Math.floor(i / rect[2]) + rect[1]) * 488 +
+                                  (i % rect[2]) +
+                                  rect[0]) *
+                                  4 +
+                                  k
+                              ],
+                          ),
+                        ),
+                      ),
+                      rendered = [0, 1, 2].map((k) =>
+                        trimmed(core.map((i) => image.rgba.data[i * 4 + k])),
+                      );
+                    const q = (a, p) => {
+                      const v = a.slice().sort((a, b) => a - b),
+                        at = (v.length - 1) * p,
+                        l = Math.floor(at),
+                        h = Math.ceil(at);
+                      return l === h ? v[l] : v[l] * (h - at) + v[h] * (at - l);
+                    };
+                    const referenceQuantiles = Object.fromEntries(
+                      [0.2, 0.5, 0.8].map((f) => [
+                        String(f),
+                        [0, 1, 2].map((k) =>
+                          q(
+                            core.map(
+                              (i) =>
+                                refPixels.data[
+                                  ((Math.floor(i / rect[2]) + rect[1]) * 488 +
+                                    (i % rect[2]) +
+                                    rect[0]) *
+                                    4 +
+                                    k
+                                ],
+                            ),
+                            f,
+                          ),
+                        ),
+                      ]),
+                    );
+                    score.ink = {
+                      pixels: core.length,
+                      referenceQuantiles,
+                      reference,
+                      rendered,
+                      error: delta(
+                        reference.map((v) => v / 255),
+                        rendered.map((v) => v / 255),
+                      ),
+                    };
+                  } else
+                    score.ink = { pixels: core.length, status: 'insufficient-opaque-glyph-core' };
+                }
+                scores.push(score);
               }
               result[role] = {
                 rect,
@@ -328,7 +484,7 @@ try {
         : 'native-revised-heading-study-not-adopted',
     modules,
     scope:
-      'Fixed frame poses and Original wording. Retained role commands on native pixel-phase ROI canvases; zero-replay controls and full native PNG hashes. Filled painters only; per-material light/dark polarity is an explicit pilot heuristic. No ink/default fit adopted.',
+      'Fixed frame poses and Original wording. Retained role commands on native pixel-phase ROI canvases; zero-replay controls and full native PNG hashes. Filled painters only; per-material light/dark polarity is an explicit pilot heuristic. Reference ink uses a high-opacity native black/white glyph stencil, never reference brightness. No defaults adopted.',
     rendererHash,
     sources: Object.fromEntries(files.map((f, i) => [path.basename(f), hash(bytes[i])])),
     toolHash,

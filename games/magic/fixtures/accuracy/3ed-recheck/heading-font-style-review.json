@@ -1,0 +1,771 @@
+{
+  "schema": 1,
+  "status": "native-heading-font-style-proposals-not-adopted",
+  "rendererHash": "d31b46679733d81e96c200afc8770540ffd43d4f529fdce8c0eeb1090042d36a",
+  "dependencyCommit": "3717373",
+  "artifacts": {
+    "study": {
+      "file": "heading-font-style-study.json.gz",
+      "sha256": "d77d2b112413862430cc87a31a9435212bf0e95b154424920f350053a31f2a8c",
+      "contentSha256": "a1d21fb0270844e8df5a7f59aca953bc09e392eff80130108f40bff936fb5612"
+    },
+    "pilot": {
+      "file": "heading-font-style-pilot.json.gz",
+      "sha256": "cd488255897c299734be86ab8de1338fd7cb8161b640fc4eafafcc9d0d227479",
+      "contentSha256": "75033173f18ab5913d6184ef2967766d744341f1edfa710af148ffc5eb9c5dbf"
+    },
+    "summary": {
+      "file": "heading-font-style-summary.json.gz",
+      "sha256": "cb0badda2a3ed98cf3f5fc2dd536e1a57b68420665f0189c4fa6050882a31afb",
+      "contentSha256": "cdcb63f31062c573b2dcd4ece559829349cbc06a1adf286596b29fa025092143"
+    },
+    "definition": {
+      "file": "heading-font-style-definition.json.gz",
+      "sha256": "439c361d92f45cfd363a7284da83dea936172ee7da19c7fa593dfc966ffaa52e",
+      "contentSha256": "bd7b89b584213344682a2bd50932a1dc2e0cae7aa898a0dd2455f90657f95b86"
+    },
+    "tool": {
+      "file": "heading-font-style-tool.mjs.gz",
+      "sha256": "0f63dfe1b5d0d9c1a1d4d4c31838c73d1218b865235f989a2fdcf31bf3b617ac",
+      "contentSha256": "d7d44c75e469c9331e854003a20c2d25034e60b93996e90bf4ce4ed797056fee"
+    },
+    "modules": {
+      "file": "heading-font-style-modules.json.gz",
+      "sha256": "28615bff2998bd9b2bdec46957d03168c254cff07d8830817cd2fe0ea623da86",
+      "contentSha256": "2efb619be3dcd6a0be39267c5a30b48aa42c36063c41f7e710fff51d6001494a"
+    },
+    "preview": {
+      "file": "heading-font-style-native-parity.json.gz",
+      "sha256": "751634f0d7da11633d61a3e07488dee1e38f41f393a8b39021b234a47b6c1927",
+      "contentSha256": "cb50adc07cac6d73d13fcebe0f495f1cb3eb89b150bac0173f47b2b0f365c98c"
+    },
+    "previewTool": {
+      "file": "heading-font-style-preview-tool.mjs.gz",
+      "sha256": "f09d121a7dbceaf193812052b0cfb84aa27e7c6490dea7523932ac56affde5e3",
+      "contentSha256": "b4628b09e41a3681ad89665262c7ce322d588013bb570fbeba10475358052bb0"
+    },
+    "reviewTool": {
+      "file": "heading-font-style-review-tool.mjs.gz",
+      "sha256": "8b115b639ff4f914a81d3a0035ab142937c9d6f0b6a4cf62d6d4fd7e5b12b888",
+      "contentSha256": "9535a22318fd06a99bb9009a189480700397f417b3785257870a175d3fe25347"
+    }
+  },
+  "scope": "223 accepted Original nonland poses:152calibration and71reused development-validation.58rejected nonlands and25lands excluded. All223 native hashes match and all role replays have zero gray error. Three external font references are cached and pinned; no font or scan bytes are included.",
+  "nativeParity": "24 exact regional scores from six full-card calibration examples:current,PlantinPro171,PlantinPro210,andMSE171. Gray190 is only an unscored preview.",
+  "proposals": {
+    "title": {
+      "index": 4,
+      "candidate": {
+        "id": "geometry/-2/1.03/0",
+        "dx": -2,
+        "dy": 0,
+        "sizeDelta": 0,
+        "width": 1.03,
+        "wordSpacing": 0
+      },
+      "summaries": {
+        "all": {
+          "cards": 223,
+          "before100": 72.1862781413962,
+          "after100": 73.78722433899317,
+          "medianChange100": 1.33758789972227,
+          "gains": 168,
+          "losses": 55,
+          "worstLoss100": 6.065510094645132,
+          "ink": {
+            "cards": 223,
+            "meanOklabDistance": 8.493927121749834,
+            "medianOklabDistance": 6.506861457876171,
+            "referenceRgb": [149.01540754043015, 149.20404354155963, 144.68433311413827],
+            "renderedRgb": [170.03642753770797, 169.9830806276992, 169.93313065610795]
+          }
+        },
+        "calibration": {
+          "cards": 152,
+          "before100": 72.30557500571943,
+          "after100": 73.93145064344378,
+          "medianChange100": 1.4076830501181359,
+          "gains": 111,
+          "losses": 41,
+          "worstLoss100": 4.4468620191080666,
+          "ink": {
+            "cards": 152,
+            "meanOklabDistance": 7.793637643645149,
+            "medianOklabDistance": 6.09734338648593,
+            "referenceRgb": [152.20923329519735, 151.65571082688393, 146.723831213016],
+            "renderedRgb": [170.07719788149853, 170.02041386158467, 169.9680989444182]
+          }
+        },
+        "validation": {
+          "cards": 71,
+          "before100": 71.93088203749296,
+          "after100": 73.47845816608476,
+          "medianChange100": 1.2059371261276874,
+          "gains": 57,
+          "losses": 14,
+          "worstLoss100": 6.065510094645132,
+          "ink": {
+            "cards": 71,
+            "meanOklabDistance": 9.993138398819024,
+            "medianOklabDistance": 9.473029782880964,
+            "referenceRgb": [142.1779214175482, 143.955403719457, 140.3180836630197],
+            "renderedRgb": [169.9491445481844, 169.903155957972, 169.8582689684582]
+          }
+        },
+        "W": {
+          "cards": 39,
+          "before100": 77.32183864593625,
+          "after100": 79.09599404540363,
+          "medianChange100": 2.1173972650847417,
+          "gains": 29,
+          "losses": 10,
+          "worstLoss100": 5.348868915737725,
+          "ink": {
+            "cards": 39,
+            "meanOklabDistance": 3.220819874005996,
+            "medianOklabDistance": 2.877826505695677,
+            "referenceRgb": [173.6103841195063, 168.7383906634835, 160.93296650272848],
+            "renderedRgb": [170.57348246450934, 170.54482036969247, 170.50012183362188]
+          }
+        },
+        "U": {
+          "cards": 43,
+          "before100": 75.80401501473571,
+          "after100": 76.54159592043031,
+          "medianChange100": 0.8365314299209503,
+          "gains": 30,
+          "losses": 13,
+          "worstLoss100": 2.0247356672730477,
+          "ink": {
+            "cards": 43,
+            "meanOklabDistance": 5.299934372312726,
+            "medianOklabDistance": 5.144299465329844,
+            "referenceRgb": [140.79133989069967, 171.9329624362487, 180.40151183175243],
+            "renderedRgb": [170.098564906101, 170.44903109979018, 170.51865850068418]
+          }
+        },
+        "B": {
+          "cards": 38,
+          "before100": 71.02969132398181,
+          "after100": 72.76991989184769,
+          "medianChange100": 2.022904413445903,
+          "gains": 29,
+          "losses": 9,
+          "worstLoss100": 6.065510094645132,
+          "ink": {
+            "cards": 38,
+            "meanOklabDistance": 14.349383979835054,
+            "medianOklabDistance": 14.628932469107905,
+            "referenceRgb": [124.47558910377683, 127.84764476287323, 123.53380683651022],
+            "renderedRgb": [169.3623382684909, 169.3870577258023, 169.33502640270572]
+          }
+        },
+        "R": {
+          "cards": 39,
+          "before100": 67.59533379149272,
+          "after100": 70.08412910096918,
+          "medianChange100": 2.5284733043033802,
+          "gains": 32,
+          "losses": 7,
+          "worstLoss100": 3.2009775072163738,
+          "ink": {
+            "cards": 39,
+            "meanOklabDistance": 11.046725374644165,
+            "medianOklabDistance": 11.84747693531974,
+            "referenceRgb": [166.54296470716537, 129.7376393347249, 122.32000036479796],
+            "renderedRgb": [170.37008018159818, 169.69964892046113, 169.6188707477401]
+          }
+        },
+        "G": {
+          "cards": 31,
+          "before100": 72.56511156317957,
+          "after100": 74.04922188729716,
+          "medianChange100": 1.246255364874116,
+          "gains": 22,
+          "losses": 9,
+          "worstLoss100": 1.7615645782507072,
+          "ink": {
+            "cards": 31,
+            "meanOklabDistance": 10.847972506134601,
+            "medianOklabDistance": 11.27044328622408,
+            "referenceRgb": [128.6662237553408, 142.13398372668212, 134.5757647640048],
+            "renderedRgb": [169.5703414549535, 169.7203275231501, 169.63746392768883]
+          }
+        },
+        "A": {
+          "cards": 33,
+          "before100": 67.80457351721539,
+          "after100": 69.22590199733364,
+          "medianChange100": 1.1539404037105516,
+          "gains": 26,
+          "losses": 7,
+          "worstLoss100": 3.0940482917637624,
+          "ink": {
+            "cards": 33,
+            "meanOklabDistance": 6.916683833924399,
+            "medianOklabDistance": 6.136494908240173,
+            "referenceRgb": [157.32431332171348, 150.74106541098936, 139.2224909206791],
+            "renderedRgb": [170.14050507400384, 169.98018162338747, 169.83796136510233]
+          }
+        }
+      },
+      "losses": [
+        {
+          "id": "94c40a45-6439-4405-8562-11a9000a1061",
+          "name": "Nettling Imp",
+          "material": "B",
+          "cohort": "validation",
+          "change100": -6.065510094645132
+        },
+        {
+          "id": "e82a9dd8-653a-4410-b78f-303aaf69d11e",
+          "name": "Personal Incarnation",
+          "material": "W",
+          "cohort": "validation",
+          "change100": -5.348868915737725
+        },
+        {
+          "id": "d954e8a7-6b22-4f53-9435-ff1f7782a3d4",
+          "name": "Howl from Beyond",
+          "material": "B",
+          "cohort": "calibration",
+          "change100": -4.4468620191080666
+        },
+        {
+          "id": "cd07c415-4f39-4011-b94a-4aab56dca7d7",
+          "name": "Nether Shadow",
+          "material": "B",
+          "cohort": "validation",
+          "change100": -4.1358074078141405
+        },
+        {
+          "id": "881e5922-b464-4a1a-b074-664bd6c0a7f6",
+          "name": "Demonic Tutor",
+          "material": "B",
+          "cohort": "calibration",
+          "change100": -3.5588770556799987
+        },
+        {
+          "id": "f6de6b0d-dd8c-4ab9-8de3-b083a36b24b7",
+          "name": "Hurloon Minotaur",
+          "material": "R",
+          "cohort": "calibration",
+          "change100": -3.2009775072163738
+        },
+        {
+          "id": "c83929b1-4826-4b84-823d-0997560b6bdc",
+          "name": "Dwarven Weaponsmith",
+          "material": "R",
+          "cohort": "calibration",
+          "change100": -3.1262512348224747
+        },
+        {
+          "id": "2bc5e073-2903-4a28-9c23-07a0482ae09a",
+          "name": "Celestial Prism",
+          "material": "A",
+          "cohort": "calibration",
+          "change100": -3.0940482917637624
+        },
+        {
+          "id": "e2285cf5-f1c0-42d2-8203-297d2a5b9ec2",
+          "name": "Earth Elemental",
+          "material": "R",
+          "cohort": "validation",
+          "change100": -2.7681534470601177
+        },
+        {
+          "id": "4945ec9e-eda7-42ad-88b7-ba14f9d95e54",
+          "name": "Royal Assassin",
+          "material": "B",
+          "cohort": "calibration",
+          "change100": -2.7160062830112297
+        },
+        {
+          "id": "33a5daf6-ce4f-4d00-8458-b7d1a9e037bc",
+          "name": "Scavenging Ghoul",
+          "material": "B",
+          "cohort": "calibration",
+          "change100": -2.5574138030422633
+        },
+        {
+          "id": "6ece570a-f480-40fd-a2b1-26a89c44e732",
+          "name": "Demonic Attorney",
+          "material": "B",
+          "cohort": "calibration",
+          "change100": -2.2798744707873464
+        },
+        {
+          "id": "37df20a7-9299-434c-84ca-8019851ee31b",
+          "name": "Chaoslace",
+          "material": "R",
+          "cohort": "validation",
+          "change100": -2.1298064589053145
+        },
+        {
+          "id": "d8ab7fb5-9903-4723-a4a0-d142ef3aae8e",
+          "name": "Control Magic",
+          "material": "U",
+          "cohort": "calibration",
+          "change100": -2.0247356672730477
+        },
+        {
+          "id": "74da83ea-8302-4927-a355-331636950572",
+          "name": "Guardian Angel",
+          "material": "W",
+          "cohort": "calibration",
+          "change100": -1.810634777157738
+        },
+        {
+          "id": "01e7b0bc-1c6c-48f4-8b72-1a809f536c6c",
+          "name": "Birds of Paradise",
+          "material": "G",
+          "cohort": "calibration",
+          "change100": -1.7615645782507072
+        },
+        {
+          "id": "bab7e4b7-acdd-4316-ae64-b182e4d9cacd",
+          "name": "Stream of Life",
+          "material": "G",
+          "cohort": "calibration",
+          "change100": -1.7254349316040307
+        },
+        {
+          "id": "cb9b9a9d-ae4c-4e04-bf9d-cae48f01292c",
+          "name": "Lightning Bolt",
+          "material": "R",
+          "cohort": "calibration",
+          "change100": -1.7122976272674562
+        },
+        {
+          "id": "dffd3a5f-066b-40c2-99e0-dba1771c899d",
+          "name": "Animate Wall",
+          "material": "W",
+          "cohort": "calibration",
+          "change100": -1.6112646052615975
+        },
+        {
+          "id": "fa35113b-5242-41f4-a989-42f2cd8002b6",
+          "name": "Sengir Vampire",
+          "material": "B",
+          "cohort": "validation",
+          "change100": -1.4872744037230157
+        },
+        {
+          "id": "6e6cfaae-ea9e-4c54-858e-381f8bf441a9",
+          "name": "Ironroot Treefolk",
+          "material": "G",
+          "cohort": "calibration",
+          "change100": -1.4118381184422768
+        },
+        {
+          "id": "e62fec16-b5a0-47a6-9ccf-cebe79043627",
+          "name": "Living Artifact",
+          "material": "G",
+          "cohort": "calibration",
+          "change100": -1.4005601405366996
+        },
+        {
+          "id": "ea2c2bf3-357d-4595-9b24-3451bd2d0179",
+          "name": "Ley Druid",
+          "material": "G",
+          "cohort": "calibration",
+          "change100": -1.3462089002476363
+        },
+        {
+          "id": "4f9d6c2b-3492-4360-90cf-649608d4910f",
+          "name": "Wall of Bone",
+          "material": "B",
+          "cohort": "validation",
+          "change100": -1.2459855594568414
+        },
+        {
+          "id": "ba5fcfc5-0715-4c6c-8325-3b54a138634e",
+          "name": "Nevinyrral's Disk",
+          "material": "A",
+          "cohort": "calibration",
+          "change100": -1.1308057374006197
+        },
+        {
+          "id": "6663f9e2-f752-42cf-97a0-01a14ca0aa1b",
+          "name": "Volcanic Eruption",
+          "material": "U",
+          "cohort": "calibration",
+          "change100": -1.0379964492737925
+        },
+        {
+          "id": "23c35f2c-0442-46f3-966b-667bad6e0e27",
+          "name": "Eye for an Eye",
+          "material": "W",
+          "cohort": "calibration",
+          "change100": -1.0150822646556423
+        },
+        {
+          "id": "6d528ffd-89b3-44ee-a370-e4b53d6604be",
+          "name": "Vesuvan Doppelganger",
+          "material": "U",
+          "cohort": "validation",
+          "change100": -1.0009903555371236
+        },
+        {
+          "id": "fc24e53b-5074-4791-9277-46e14a70db3a",
+          "name": "Unstable Mutation",
+          "material": "U",
+          "cohort": "calibration",
+          "change100": -0.9553210335590645
+        },
+        {
+          "id": "851a8475-30d1-466f-b0be-6f1a0f2772b5",
+          "name": "Thoughtlace",
+          "material": "U",
+          "cohort": "calibration",
+          "change100": -0.7728234776070542
+        },
+        {
+          "id": "32123652-4f71-4f0b-b317-39e6df039b4f",
+          "name": "Crumble",
+          "material": "G",
+          "cohort": "calibration",
+          "change100": -0.7570060240171816
+        },
+        {
+          "id": "ad034b0a-655b-465b-a8bb-3d4eee59abdf",
+          "name": "Roc of Kher Ridges",
+          "material": "R",
+          "cohort": "validation",
+          "change100": -0.6681826949650804
+        },
+        {
+          "id": "b1dd930a-a7d8-4cdd-9c4f-78b2b249ce38",
+          "name": "Ivory Cup",
+          "material": "A",
+          "cohort": "calibration",
+          "change100": -0.6635371151655578
+        },
+        {
+          "id": "dc95e03d-5521-4a01-8028-200b8467ce86",
+          "name": "Magnetic Mountain",
+          "material": "R",
+          "cohort": "validation",
+          "change100": -0.6295095199789991
+        },
+        {
+          "id": "0892ec35-8bab-4fe5-8cc9-a25032d4bc8d",
+          "name": "Blue Elemental Blast",
+          "material": "U",
+          "cohort": "validation",
+          "change100": -0.574997539986899
+        },
+        {
+          "id": "5cbc686e-a8ef-40de-b79a-803ef42f8384",
+          "name": "Mana Vault",
+          "material": "A",
+          "cohort": "calibration",
+          "change100": -0.4406872241145665
+        },
+        {
+          "id": "7545fe51-dbe5-4d4c-87a8-86d54734bf33",
+          "name": "Samite Healer",
+          "material": "W",
+          "cohort": "calibration",
+          "change100": -0.37384839460046226
+        },
+        {
+          "id": "0d42f473-3e3f-4441-b7ee-6819a3a8f52e",
+          "name": "Copy Artifact",
+          "material": "U",
+          "cohort": "calibration",
+          "change100": -0.3676902552036454
+        },
+        {
+          "id": "37414560-8187-4c5b-8245-05d77b25c454",
+          "name": "Holy Strength",
+          "material": "W",
+          "cohort": "calibration",
+          "change100": -0.34522876414209147
+        },
+        {
+          "id": "2bd6f6a8-153f-4263-941a-e3387c2a22ad",
+          "name": "Ivory Tower",
+          "material": "A",
+          "cohort": "calibration",
+          "change100": -0.33645987722564774
+        },
+        {
+          "id": "3300b080-a6f5-4a4a-8faf-0206fbfe8988",
+          "name": "Healing Salve",
+          "material": "W",
+          "cohort": "calibration",
+          "change100": -0.3153609090414622
+        },
+        {
+          "id": "d919330b-5023-4b9c-b82f-20095354326c",
+          "name": "Instill Energy",
+          "material": "G",
+          "cohort": "calibration",
+          "change100": -0.2569898758296052
+        },
+        {
+          "id": "55368e1d-2573-4779-ad7c-027071380447",
+          "name": "Water Elemental",
+          "material": "U",
+          "cohort": "calibration",
+          "change100": -0.24269768601172803
+        },
+        {
+          "id": "2a600805-dd79-419d-9866-f8c29643f0f8",
+          "name": "The Rack",
+          "material": "A",
+          "cohort": "calibration",
+          "change100": -0.24267419948451607
+        },
+        {
+          "id": "e7bf32d8-dad7-4192-8cb6-ae75d8204ba3",
+          "name": "Unsummon",
+          "material": "U",
+          "cohort": "calibration",
+          "change100": -0.21525643769998437
+        },
+        {
+          "id": "b316838d-2414-4d0c-a25f-132b7462064a",
+          "name": "Karma",
+          "material": "W",
+          "cohort": "validation",
+          "change100": -0.20846092478457035
+        },
+        {
+          "id": "b0af9d4c-b3e5-4953-b4ca-7f34f67bdbeb",
+          "name": "Wall of Ice",
+          "material": "G",
+          "cohort": "calibration",
+          "change100": -0.18160581069451842
+        },
+        {
+          "id": "4390978b-f647-4720-8caa-00eeecff8471",
+          "name": "Wall of Swords",
+          "material": "W",
+          "cohort": "calibration",
+          "change100": -0.1623697049100814
+        },
+        {
+          "id": "0fec5898-f288-4fb6-a2d3-2ea6d20594bf",
+          "name": "Mana Short",
+          "material": "U",
+          "cohort": "calibration",
+          "change100": -0.14760021605757512
+        },
+        {
+          "id": "61fb9f2d-be6b-4073-91d8-68ca58046da9",
+          "name": "Magical Hack",
+          "material": "U",
+          "cohort": "validation",
+          "change100": -0.09608636046064545
+        },
+        {
+          "id": "aa710039-5378-440c-b584-e9d72d1683c9",
+          "name": "Living Lands",
+          "material": "G",
+          "cohort": "calibration",
+          "change100": -0.0741502241638825
+        },
+        {
+          "id": "057d2410-30d3-4b7a-9dc3-f2512c1cf31c",
+          "name": "Swords to Plowshares",
+          "material": "W",
+          "cohort": "calibration",
+          "change100": -0.04468440145677377
+        },
+        {
+          "id": "f0049925-d95d-40ed-ba02-7f7fbe4cf6b5",
+          "name": "Lifetap",
+          "material": "U",
+          "cohort": "validation",
+          "change100": -0.04369420840893978
+        },
+        {
+          "id": "516858c9-7679-4a65-a787-36a2cf175ede",
+          "name": "Living Wall",
+          "material": "A",
+          "cohort": "calibration",
+          "change100": -0.037748955901839576
+        },
+        {
+          "id": "beb3874f-b3dc-41ca-becc-4dcbb0549b33",
+          "name": "Wall of Air",
+          "material": "U",
+          "cohort": "calibration",
+          "change100": -0.03321786175980446
+        }
+      ],
+      "reason": "Highest calibration mean-minus-quarter-worst-loss among this matrix. Both reused cohorts improve.55 losses remain explicit and require native visual review before adoption."
+    },
+    "type": {
+      "index": 13,
+      "candidate": {
+        "id": "fixed/Plantin Pro/171",
+        "dx": -2,
+        "dy": 4,
+        "sizeDelta": 0,
+        "width": 1,
+        "gray": 171,
+        "shadow": "solid",
+        "font": "Plantin Pro",
+        "alignFont": true
+      },
+      "summaries": {
+        "all": {
+          "cards": 223,
+          "before100": 71.16903664708501,
+          "after100": 81.06320004538296,
+          "medianChange100": 9.65695056438436,
+          "gains": 223,
+          "losses": 0,
+          "worstLoss100": 0,
+          "ink": {
+            "cards": 223,
+            "meanOklabDistance": 7.38573246964832,
+            "medianOklabDistance": 6.0906713352123845,
+            "referenceRgb": [149.3854556187086, 150.17309909580794, 145.32703403079032],
+            "renderedRgb": [169.50240237411296, 169.43034080181346, 169.35095848830986]
+          }
+        },
+        "calibration": {
+          "cards": 152,
+          "before100": 70.84631829025348,
+          "after100": 80.64441401326214,
+          "medianChange100": 9.353011838643072,
+          "gains": 152,
+          "losses": 0,
+          "worstLoss100": 0,
+          "ink": {
+            "cards": 152,
+            "meanOklabDistance": 6.924244601613957,
+            "medianOklabDistance": 5.70029062956335,
+            "referenceRgb": [151.9559883084603, 151.66898049956527, 146.4015771093872],
+            "renderedRgb": [169.52975233957505, 169.4496778975509, 169.36507582763213]
+          }
+        },
+        "validation": {
+          "cards": 71,
+          "before100": 71.85992665044255,
+          "after100": 81.95975605781057,
+          "medianChange100": 10.41757902739403,
+          "gains": 71,
+          "losses": 0,
+          "worstLoss100": 0,
+          "ink": {
+            "cards": 71,
+            "meanOklabDistance": 8.373706496989497,
+            "medianOklabDistance": 7.6311905442042445,
+            "referenceRgb": [143.88234338149346, 146.97064876663742, 143.0266037780194],
+            "renderedRgb": [169.44385033537836, 169.3889430757274, 169.3207354520133]
+          }
+        },
+        "W": {
+          "cards": 39,
+          "before100": 62.48622055578379,
+          "after100": 75.01714580071099,
+          "medianChange100": 13.794024877944743,
+          "gains": 39,
+          "losses": 0,
+          "worstLoss100": 0,
+          "ink": {
+            "cards": 39,
+            "meanOklabDistance": 3.214193407893689,
+            "medianOklabDistance": 2.594195684296287,
+            "referenceRgb": [166.16864220995157, 162.1702527739956, 155.77364503945864],
+            "renderedRgb": [170.19735777615375, 170.14444657209, 170.0414418316891]
+          }
+        },
+        "U": {
+          "cards": 43,
+          "before100": 74.75035322050047,
+          "after100": 78.12884625050266,
+          "medianChange100": 3.089820270415433,
+          "gains": 43,
+          "losses": 0,
+          "worstLoss100": 0,
+          "ink": {
+            "cards": 43,
+            "meanOklabDistance": 4.685379971758731,
+            "medianOklabDistance": 4.2949661164946455,
+            "referenceRgb": [141.28538670456504, 169.77996876112994, 177.4446077118645],
+            "renderedRgb": [169.65993606612776, 170.08240056078196, 170.18379643052938]
+          }
+        },
+        "B": {
+          "cards": 38,
+          "before100": 71.55502419444396,
+          "after100": 82.086632609424,
+          "medianChange100": 10.832693261522447,
+          "gains": 38,
+          "losses": 0,
+          "worstLoss100": 0,
+          "ink": {
+            "cards": 38,
+            "meanOklabDistance": 13.322379422418829,
+            "medianOklabDistance": 13.017795720639109,
+            "referenceRgb": [125.78117241703282, 130.0137035393492, 125.60372477489261],
+            "renderedRgb": [168.77669180589368, 168.8151292923642, 168.75094326041793]
+          }
+        },
+        "R": {
+          "cards": 39,
+          "before100": 70.38988785077031,
+          "after100": 84.36126871025084,
+          "medianChange100": 14.605718579489624,
+          "gains": 39,
+          "losses": 0,
+          "worstLoss100": 0,
+          "ink": {
+            "cards": 39,
+            "meanOklabDistance": 8.473474705967467,
+            "medianOklabDistance": 8.884368871942174,
+            "referenceRgb": [171.07422427288648, 139.10201927173534, 130.65657365120978],
+            "renderedRgb": [170.07637835019023, 169.18118622067684, 169.0875954190097]
+          }
+        },
+        "G": {
+          "cards": 31,
+          "before100": 69.28000939096773,
+          "after100": 83.37525998616496,
+          "medianChange100": 15.224647327397046,
+          "gains": 31,
+          "losses": 0,
+          "worstLoss100": 0,
+          "ink": {
+            "cards": 31,
+            "meanOklabDistance": 8.83417444177036,
+            "medianOklabDistance": 7.892375330644249,
+            "referenceRgb": [136.23484405768934, 146.63516961769088, 135.3869075118599],
+            "renderedRgb": [168.92118781866225, 169.12897363429033, 168.9515590166075]
+          }
+        },
+        "A": {
+          "cards": 33,
+          "before100": 79.01486501375608,
+          "after100": 84.78393808157705,
+          "medianChange100": 5.255596823467257,
+          "gains": 33,
+          "losses": 0,
+          "worstLoss100": 0,
+          "ink": {
+            "cards": 33,
+            "meanOklabDistance": 6.3520642351081325,
+            "medianOklabDistance": 6.220550972998491,
+            "referenceRgb": [154.00752921846674, 150.0676617942243, 140.51806830322454],
+            "renderedRgb": [169.17914117132858, 169.02272727272728, 168.82708697552454]
+          }
+        }
+      },
+      "losses": [],
+      "reason": "All223 improve. Gray171 retains the existing title/artist gray and lowers mean ink distance to7.39 vs12.68 for gray190, sacrificing only0.157/100 in mean shape. Stencil ink means are diagnostic, not literal ink targets. Separate exact native adoption and source/cache-scope proof still required."
+    }
+  },
+  "pending": [
+    "Native visual review of title regressions",
+    "Scoped runtime adoption, new font loader and lazy-data coverage",
+    "Full native comparison and cache/source evidence",
+    "Remaining Revised components and excluded frame cases",
+    "Other through-Fourth set audits and bundled publication"
+  ]
+}

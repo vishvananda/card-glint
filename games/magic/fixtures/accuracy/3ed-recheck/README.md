@@ -539,3 +539,50 @@ a small native-resolution ROI with the original pixel phase. The complete PNG
 hash is calculated inside the browser once per printing; each candidate sends
 only measurement values. Timings cover CPU composition and raster readback,
 not GPU completion or interactive renderer throughput.
+
+### Heading fonts, ink, and native replay
+
+The follow-up trial compares three cached, revision-pinned Plantin files with
+the existing type font. It also tests filled gray ink, a lower-right shadow,
+and shared name spacing. No hollow or embossed candidates are used. Font
+substitution uses one optical vertical offset measured from the native and
+candidate fonts' `Hg` bounds; it does not fit an offset for each scan.
+
+The style report keeps shape and ink diagnostics separate. The shape rank uses
+the calibration mean minus one quarter of its worst loss. The validation names
+are reused development data. They report transfer within this finite set, not
+an independent holdout. Ink samples use high-opacity glyph stencils recovered
+from black/white renderer endpoints. Scan brightness never chooses the stencil.
+Residual registration, thin strokes, and halftone can still expose background
+inside it, so the sampled RGB means are not literal printing-ink targets.
+
+Reproduce the trial with the same cached Original inputs, frozen frame poses,
+native capture, and archived candidate definition:
+
+```sh
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-heading-native-study.mjs inputs.json poses.json native definition.json new-results.json full
+node games/magic/tools/accuracy/revised-heading-style-review.mjs new-results.json new-review.json
+MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-heading-type-preview.mjs inputs.json poses.json native pilot.json new-preview-directory
+```
+
+The preview command renders six calibration examples through the full painter
+and checks 24 regional scores against the pilot. Its scan crops and card images
+stay in the requested local output directory. The gray190 variant is a visual
+trial without a corresponding pilot score. This heading study excludes 58
+rejected nonland frame poses and all 25 lands. It cannot certify those cards,
+other components, or completion of Revised.
+
+The full follow-up matrix contains 18 title candidates and 23 type candidates.
+The proposed title shift/width is -2px and 1.03: its mean is 73.79/100 versus
+72.19/100, with 168 gains and 55 explicit losses. The proposed type uses the
+pinned Plantin Pro regular font, -2px/+4px translation, and gray171 with a
+lower-right shadow. It improves all 223 examples from 71.17 to 81.06/100.
+Gray190 scores 0.157/100 higher on shape but has a worse mean ink distance
+(12.68 versus 7.39), so the review retains gray171. These are regional proposals,
+not a full-card score or deployed defaults.
+
+The `heading-font-style-*` archives retain the complete trial, pilot, definitions,
+executed tools, numerical modules, and native parity metadata. No external
+font, scan, or crop image bytes are included. Run
+`node tests/magic-revised-heading-study.mjs` to verify their hashes, pose/native
+joins, cohort coverage, explicit losses, and full-card/ROI parity.
