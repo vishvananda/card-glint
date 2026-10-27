@@ -325,3 +325,63 @@ adopted. The scan normalization explains that outlier more convincingly.
 The remaining source, typography, black-level, land-asset and visual boundary
 audits stay open. The checklist records measured work as partial and absent
 components as not applicable; neither state approves the entire set.
+
+## Public Original input replay
+
+The compressed [input review](original-input-review.json.gz) checks all 378
+Fourth printings against the native capture. It independently reconstructs
+Original text from cached MTGJSON and Scryfall fields, then applies the public
+reviewed-correction resolver. Both eager and per-set lazy APIs produce the
+exact frozen face, including paragraph structure and Original alignment inputs.
+The lazy wording path loads no calibration tables.
+
+This is input readiness evidence, not approval of scan transcription, layout,
+black levels or the whole set. Existing checklist audits remain open. Negative
+controls cover stale scan hashes, absent Original wording, caller immutability
+and unchanged Oracle wording. Reproduce with the pinned provider cache:
+
+```sh
+MAGIC_ACCURACY_CACHE=/path/to/cache node \
+  games/magic/tools/accuracy/fourth-original-input-review.mjs \
+  games/magic/fixtures/accuracy/4ed/flavor-fractional-inputs.json.gz \
+  games/magic/fixtures/accuracy/4ed/flavor-fractional-native-capture.json.gz \
+  original-input-review.json
+node tests/magic-fourth-original-inputs.mjs
+```
+
+## Frame shadow and keyline measurements
+
+The [dark-frame diagnostic](frame-dark-audit.json.gz) measures every current
+Original face against the frozen normalized scan. Four frame patches exclude
+all card content. Four separate outer-stock patches and six vertical strips
+outside the art measure the surround and thin dark-line regions independently.
+
+The table gives rendered minus reference RGB in the darkest five percent of
+the frame patches, in 8-bit channel values:
+
+| Material | Cards | Dark-tail RGB difference |
+| -------- | ----: | ------------------------ |
+| A        |    70 | 6, 6.5, 6                |
+| B        |    58 | 2, 3.5, 2                |
+| G        |    58 | 1, 7, 4                  |
+| L        |    18 | 7, 3, 4.5                |
+| R        |    58 | 10, -1, 0.25             |
+| U        |    58 | -9, 0, -4.5              |
+| W        |    58 | -3, -1, 1                |
+
+There is no single neutral black correction: blue needs different channel
+changes from red, green and artifact. Median surround values match the
+provider's cleaned white background; that does not certify physical paper.
+Dark-line strips have larger mismatches on artifact, red, white and land.
+Their values also depend on line width, bevel color and resampling, so they
+must not be used as a pure-black target without a geometry check. No color,
+geometry, score or completed-task approval is changed by this diagnostic.
+
+The output binds every scan, native face and pose, including the Forest #378
+refinement, and the measurement sources. It contains numerical observations
+only. Run the following with the matching native PNGs and cached scans:
+
+```sh
+MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-frame-dark-audit.mjs \
+  inputs.json native/capture.json poses.json land-registration.json frame-dark-audit.json
+```
