@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "set": "4ed",
+  "status": "one-reference-only-refinement-measured-global-audit-open",
+  "artifacts": {
+    "registration": {
+      "file": "games/magic/fixtures/accuracy/4ed/land-color-registration.json.gz",
+      "sha256": "988f3659dfb873e40608df0d4650baf27bd126095ef1c1c1d82fce3da9213ae6",
+      "contentSha256": "72d9b0a16c149d02d40f1710c6c44689006e4cc9f258d9aa4c951808f93eb713"
+    },
+    "scores": {
+      "file": "games/magic/fixtures/accuracy/4ed/land-normalization-scores.json.gz",
+      "sha256": "efc82776097f3e9880af7db9f5a2339a9c9bb68bd65e4aede156b2f64ada0bda",
+      "contentSha256": "fc910a5331c927b03c4948e3fa0849636eeae06a384be1e6b46140c22bf867e8"
+    },
+    "parentPoses": {
+      "file": "games/magic/fixtures/accuracy/4ed/land-normalization-parent.json.gz",
+      "sha256": "4b478ce71df4b147dc7608a478241efdf2de924fa01be91f6cb629ee97bb3d44",
+      "contentSha256": "021bae821e371ccdea7aa9d9db1df47219227c1fb4b935ebc2113f1951ab37ef"
+    },
+    "registrationTool": {
+      "file": "games/magic/fixtures/accuracy/4ed/land-color-registration-tool.mjs.gz",
+      "sha256": "224257ecb68c4fe9ad7a6c57e4c9a9ea78d1fc6f5848b76a4a310b5d8afe76f6",
+      "contentSha256": "f26bfa92fba1fe5a94818df48bc4b5260b6305e9f2e430881fc08272e106360b"
+    },
+    "scoreTool": {
+      "file": "games/magic/fixtures/accuracy/4ed/land-normalization-score-tool.mjs.gz",
+      "sha256": "766254e102b466cbd908a34e40cfb3523bc0dc280d4a54b04738fa7c86b0e70f",
+      "contentSha256": "fad2eb91bdc74cda512b7d760b910b2ec7010b3b95f77fd501f412f79b2d914d"
+    }
+  },
+  "headerDiagnostic": {
+    "file": "games/magic/fixtures/accuracy/4ed/header-region-diagnostic.json",
+    "sha256": "972cd844234aa0a56ed47d85e91df9a0ed3a5cfd18267556ca474992cef0f385"
+  },
+  "rendererHash": "ebd9257e96f6203214b792f66dbe835fc2997199973d828946ce3d824ffc9262",
+  "inputHash": "590689c941be92148f5f7d4fef8676577f3642c38ec5c1f8c5cbe66bf792ca37",
+  "summary": {
+    "cards": 378,
+    "fresh": 1,
+    "reused": 377,
+    "before100": 80.22271475279103,
+    "current100": 80.2674903668789
+  },
+  "selection": {
+    "measured": 15,
+    "panelPassed": 13,
+    "accepted": 1,
+    "unchanged": 14
+  },
+  "selected": [
+    {
+      "id": "b794073f-4188-45c9-9e65-c9d7f2ecc24b",
+      "name": "Forest",
+      "collectorNumber": "378",
+      "referenceHash": "369ceff01cba3036055eaa2d43183d3c82d39385aa7c64e8ea0e34963a183744",
+      "nativeHash": "4ae80fb5e4ad774e3352dcfb1f1c5b69753b749cb06b97f2c737b02984e9ab8e",
+      "parentTransform": {
+        "matrix": [
+          0.999649996193615, -8.723591922708333e-5, -1.349628416837112e-20, 0.9958500037919157,
+          -0.3, 1.0999999999999999
+        ]
+      },
+      "transform": {
+        "matrix": [
+          1.0041484211764853, -8.762848086360511e-5, -1.3557017447128776e-20, 1.0003313288089783,
+          -0.5013499999999997, -0.7450500000000013
+        ]
+      },
+      "texture": {
+        "beforeNcc": 0.5696173561930941,
+        "afterNcc": 0.8763592105012646,
+        "beforeResidual": 2.0615528128088303,
+        "afterResidual": 0.6035533905932737,
+        "minimumPatchDelta": 0.14505186911298107,
+        "weak": false
+      },
+      "before100": 62.95529465558993,
+      "after100": 79.88047678080335
+    }
+  ],
+  "visualReview": {
+    "scope": "Forest378 aligned scan before/after against unchanged native rebuild;full-card frame,art and rules-panel edges inspected. Reference shifts toward matching frame,not just heading ink. Printed paper texture and tap glyph remain asset differences. Artist/art component losses remain in the numerical evidence.",
+    "referenceSelection": "Per-color scan median templates; independent outer-frame texture patches with two different high-confidence peer scans. Art,text,renderer and accuracy scores did not select transforms. No independent held-out card claim."
+  },
+  "limits": [
+    "The other14 basic-land poses are retained because the independent gate did not support changing them. Nonbasic lands were not fitted by this method.",
+    "Whole-set stock normalization remains development evidence awaiting remaining visual boundary review. This does not mark any complete component group or set.",
+    "This is a stored per-scan comparison transform,not a renderer offset,frame edit or typography adjustment.",
+    "Header-region crops reveal texture and border contamination but tighter crops do not consistently improve comparisons. The published scoring windows and metric definitions remain unchanged."
+  ],
+  "reproduction": "Use fourth-land-registration.mjs then fourth-land-pose-score.mjs with the frozen Original inputs,native capture,parent poses and unchanged metric/policy modules. The scoring tool reruns registration from source cache and requires exact evidence reproduction before calculating new scores.",
+  "localRuns": {
+    "registrationExit": 0,
+    "scoreWithRegistrationReproductionExit": 0
+  }
+}

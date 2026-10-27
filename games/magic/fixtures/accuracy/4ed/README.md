@@ -251,3 +251,77 @@ The source graph, original inputs, references, poses, metric definitions and
 historical guards are bound in the evidence. The normalization remains a
 development result awaiting visual boundary review. This regional change does
 not complete the Fourth or Ice Age audit.
+
+## Exact group membership and component applicability
+
+The [membership review](membership-review.json) binds all 378 frozen Original
+inputs to the unchanged 18 catalog groups. Each group now records its printing
+IDs, membership identity and applicable components. Sixty component tasks are
+not applicable: six land groups have no mana cost, five groups have no flavor,
+twelve have no statistics, all eighteen have no printed expansion symbol, and
+thirteen have no dedicated layout component. Inline land symbols remain part
+of rules and special-component review.
+
+This repairs the checklist; it adds no calibration or completion approval.
+Existing component fits, unresolved audits, source wording and scores are
+unchanged. The tool rejects missing, duplicated, foreign or regrouped printings,
+changed scan/art identities, and Original content that contradicts an exclusion.
+It preserves every other set's ledger bytes.
+
+```sh
+node games/magic/tools/accuracy/fourth-membership-review.mjs \
+  games/magic/fixtures/accuracy/4ed/flavor-fractional-inputs.json.gz \
+  review.json
+node tests/magic-fourth-membership.mjs
+```
+
+The command previews changes. Add `--apply` to update only Fourth's ledger entry.
+Re-running it against the reviewed ledger produces no further task changes.
+
+## Land normalization and heading diagnostics
+
+The [land review](land-normalization-review.json) tests all fifteen basic-land
+scans using separate color templates. Panel fitting, model selection and
+certification use disjoint scan strips. Six other frame-texture patches must
+also improve against two different, well-supported peer scans. Replacing every
+pixel outside the panel strips leaves their extracted profiles unchanged.
+
+Thirteen panel fits pass, but only Forest #378 also passes the independent
+texture gates. Its texture correlation improves from 0.570 to 0.876, and its
+mean residual displacement falls from 2.06 to 0.60 pixels. The other fourteen
+poses remain unchanged. These are reused development scans, not a blind holdout.
+
+With the renderer, wording and metric fixed, Forest rises from 62.96 to
+79.88/100. Its title rises from 32.84 to 83.03/100. Art and credits lose some
+overlap; those losses remain in the report. Across all 378 cards, one new pose
+is scored and 377 exact scores are reused: 80.22 becomes 80.27/100. The stored
+transform is for comparison only. It adds no renderer offset or per-card layout.
+
+The scoring tool recreates the complete scan-only registration from cached
+reference bytes and requires exact evidence reproduction before scoring. The
+receipt binds the source methods, frozen parent poses, native capture, inputs,
+region plans and full metric/policy graphs. Numerical source artifacts are
+included; external scan and rendered image files remain in the local cache.
+
+```sh
+gzip -dc games/magic/fixtures/accuracy/4ed/flavor-fractional-inputs.json.gz > inputs.json
+gzip -dc games/magic/fixtures/accuracy/4ed/land-normalization-parent.json.gz > poses.json
+MAGIC_ACCURACY_CACHE=/path/to/cache node \
+  games/magic/tools/accuracy/fourth-land-registration.mjs \
+  inputs.json poses.json new-land-registration.json
+node tests/magic-fourth-land-normalization.mjs
+```
+
+Run `fourth-land-pose-score.mjs` with those inputs, the matching native capture
+and PNG directory, parent poses, new registration, previous whole scores and
+unchanged metric/policy modules. Its usage message gives the argument order.
+
+The separate [heading-window diagnostic](header-region-diagnostic.json) measures
+fifteen basics and twelve deterministic nonland controls. Empty heading windows
+contain substantial frame edges. Tighter windows change the metric but do not
+consistently improve it or resolve Forest #378. No scoring-window change is
+adopted. The scan normalization explains that outlier more convincingly.
+
+The remaining source, typography, black-level, land-asset and visual boundary
+audits stay open. The checklist records measured work as partial and absent
+components as not applicable; neither state approves the entire set.

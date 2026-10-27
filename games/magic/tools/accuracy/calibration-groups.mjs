@@ -75,7 +75,7 @@ export function calibrationApplicability(cards) {
     flavor: faces.some((c) => c.flavor_text),
     stats: faces.some((c) => c.power != null || c.loyalty != null || c.defense != null),
     // Early core printings intentionally have no expansion symbol.
-    setSymbol: any((c) => !['lea', 'leb', '2ed', '3ed'].includes(c.set)),
+    setSymbol: any((c) => !['lea', 'leb', '2ed', '3ed', '4ed'].includes(c.set)),
     specialComponents: any(
       (c) =>
         c.layout !== 'normal' ||
