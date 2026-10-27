@@ -1,3 +1,4 @@
+import { wallWordingAffected } from '../games/magic/tools/accuracy/wall-wording-data.mjs';
 import { abuCurrentApproval } from '../games/magic/tools/accuracy/abu-current-review.mjs';
 import { abuFlowAffected } from '../games/magic/tools/accuracy/abu-flow-ancestry.mjs';
 import { validateUnlimitedRasterGeometry } from '../games/magic/tools/accuracy/unlimited-raster-geometry-policy.mjs';
@@ -129,7 +130,10 @@ for (const group of set.groups)
     );
     const outlineChanged =
       task === 'frameGeometry' && (await abuRasterAffected('2ed', task, false, group));
-    if (
+    if (await wallWordingAffected('2ed', task, false, group)) {
+      assert.equal(outstanding?.status, 'needs-audit');
+      assert.match(outstanding.reason, /physical Wall of Stone\/Wood printing/);
+    } else if (
       ['validated', 'validated-default'].includes(recorded.status) &&
       (await abuCurrentApproval(recorded, group, task, false, '2ed'))
     ) {
@@ -160,21 +164,29 @@ for (const group of set.groups)
 assert.equal(reports[0].counts.validated, expectedValidated);
 const sourceChangedGroups = [];
 for (const group of set.groups)
-  if (await abuFlowAffected('2ed', 'rules', true, group)) sourceChangedGroups.push(group);
+  if (
+    (await abuFlowAffected('2ed', 'rules', true, group)) ||
+    (await wallWordingAffected('2ed', 'rules', true, group))
+  )
+    sourceChangedGroups.push(group);
 const unreviewedSourceGroups = [];
 for (const group of sourceChangedGroups)
   if (!(await abuCurrentApproval(group.tasks.rules.originalInput, group, 'rules', true, '2ed')))
     unreviewedSourceGroups.push(group);
 const staleRules = unreviewedSourceGroups.reduce((sum, g) => sum + g.printings, 0);
-assert.equal(sourceChangedGroups.length, 1);
+assert.equal(sourceChangedGroups.length, 3);
+assert.equal(unreviewedSourceGroups.length, 2);
+assert.equal(staleRules, 45);
+for (const group of unreviewedSourceGroups)
+  assert(await wallWordingAffected('2ed', 'rules', true, group));
 assert.equal(reports[0].originalRulesInputs.ready, 302 - staleRules);
 assert.equal(reports[0].originalRulesInputs.stale, staleRules);
 assert.equal(reports[0].originalTypeInputs.ready, 302);
-assert.equal(reports[0].counts['needs-audit'], unreviewedSourceGroups.length);
+assert.equal(reports[0].counts['needs-audit'], unreviewedSourceGroups.length * 4);
 assert.equal(
   reports[0].complete,
-  true,
-  'The current audit has checked publication and matching Lab metrics',
+  false,
+  'Two corrected Wall inputs need current body/full-card and publication review',
 );
 for (const row of reports[0].outstanding) {
   if (changedTasks.has(row.task)) continue;
