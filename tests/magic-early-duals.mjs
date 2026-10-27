@@ -35,7 +35,6 @@ try {
   );
   for (const extra of [
     { setCode: '2ed' },
-    { setCode: '3ed' },
     { borderColor: 'white' },
     { layout: 'split' },
     { typeLine: 'Enchantment — Saga' },
@@ -43,6 +42,17 @@ try {
     { wordingMode: 'oracle' },
   ])
     assert.equal(printingManaAdjustment({ ...adjustedFace, ...extra }), delta);
+  // The native Revised audit now supplies defaults; caller deltas stay relative.
+  const revised = printingManaAdjustment({ ...adjustedFace, setCode: '3ed' });
+  assert.equal(revised.dx, delta.dx);
+  assert.equal(revised.dy, delta.dy);
+  assert.equal(revised.numberDy, delta.numberDy - 0.25);
+  assert.equal(revised.numberScale, 1.02);
+  assert.deepEqual(revised.glyphs.W, delta.glyphs.W);
+  assert.equal(revised.glyphs.B.scale, 1.04);
+  assert.equal(revised.glyphs.R.scale, 1.06);
+  assert.equal(revised.glyphs.G.scale, 1.14);
+  assert.deepEqual(adjustedFace, frozenInput);
   const alpha = printingManaAdjustment({ ...adjustedFace, setCode: 'lea' });
   assert.equal(alpha.dy, 1, 'Alpha combines its audited half-pixel offset with editor delta');
   assert.equal(alpha.glyphs.W.scale, 1.04 * 1.1);
@@ -84,6 +94,16 @@ try {
       // validated numeral-source and shadow study, not adopted retroactively.
       assert.equal(study.adopt, false);
       assert.notDeepEqual(actual, study.fit.adjustment.mana);
+    } else if (study.set === '3ed') {
+      // Preserve the rejected old disc-placement proposal. The later native
+      // audit changes inner glyphs/numerals and pigment, not circle geometry.
+      assert.equal(study.adopt, false);
+      assert(actual);
+      assert.notDeepEqual(actual, study.fit.adjustment.mana);
+      for (const key of ['dx', 'dy', 'scaleX', 'scaleY', 'spacing'])
+        assert.equal(actual[key], undefined);
+      assert.equal(actual.numberScale, 1.02);
+      assert.equal(actual.numberDy, -0.25);
     } else
       assert.equal(!!actual, study.adopt, 'Rejected study candidates must not become defaults');
     assert.equal(study.rows.length, 72);
