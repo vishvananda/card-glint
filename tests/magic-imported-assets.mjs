@@ -139,24 +139,11 @@ try {
       retroSetSymbol({ setCode: 'ice' }).endsWith('/ice-c.svg'),
       'Ice Age bypassed imported default',
     );
-    for (const [family, style, weight] of [
-      ['Beleren', 'normal', '400 700'],
-      ['Beleren 2016', 'normal', '700'],
-      ['Beleren Small Caps', 'normal', '700'],
-      ['Matrix', 'normal', '700'],
-      ['Matrix Small Caps', 'normal', '700'],
-      ['ModMatrix', 'normal', '700'],
-      ['MPlantin', 'normal', '400'],
-      ['MPlantin', 'italic', '400'],
-      ['Relay', 'normal', '400'],
-      ['Gotham', 'normal', '400'],
-      ['Artist Credit', 'normal', '400'],
-      ['Goudy', 'normal', '400'],
-      ['Historic Symbols', 'normal', '400'],
-    ])
+    const { canvasFontAssets } = await import('/games/magic/src/presentation/canvas-fonts.ts');
+    for (const { family, style, weight } of canvasFontAssets)
       document.fonts.add(
         await new FontFace(
-          'CardRenderer MTG ' + family,
+          family,
           'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")',
           { style, weight },
         ).load(),

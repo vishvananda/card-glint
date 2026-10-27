@@ -77,19 +77,9 @@ try {
       if (!condition) throw Error(message);
     };
     const local = 'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")';
-    for (const [family, style, weight] of [
-      ['Goudy', 'normal', '400'],
-      ['Historic Symbols', 'normal', '400'],
-      ['Beleren', 'normal', '400 700'],
-      ['Beleren Small Caps', 'normal', '700'],
-      ['MPlantin', 'normal', '400'],
-      ['MPlantin', 'italic', '400'],
-      ['Relay', 'normal', '400'],
-      ['Artist Credit', 'normal', '400'],
-    ])
-      document.fonts.add(
-        await new FontFace('CardRenderer MTG ' + family, local, { style, weight }).load(),
-      );
+    const { canvasFontAssets } = await import('/games/magic/src/presentation/canvas-fonts.ts');
+    for (const { family, style, weight } of canvasFontAssets)
+      document.fonts.add(await new FontFace(family, local, { style, weight }).load());
     const face = {
         name: 'Test specimen',
         typeLine: 'Artifact',
