@@ -1,3 +1,4 @@
+import { usesFourthDefaults } from '../calibration/selection.js';
 import {
   eighthSetUsesDefaults,
   supportsEighthStyleDefaults,
@@ -22,6 +23,7 @@ export async function loadMagicSet(setCode: string): Promise<void> {
   const code = normalize(setCode);
   await Promise.all([
     loadSet(code, 'calibration', setLoaders),
+    ...(code === 'ice' ? [loadSet('4ed', 'calibration', setLoaders)] : []),
     ...(code !== '8ed' && eighthSetUsesDefaults(code)
       ? [loadSet('8ed', 'calibration', setLoaders)]
       : []),
@@ -60,6 +62,7 @@ export async function prepareMagicCards(faces: readonly RenderedCardInput[]): Pr
   const visit = (face: RenderedCardInput, inheritedSet?: string | null) => {
     const set = face.setCode ?? inheritedSet;
     if (set) codes.add(normalize(set));
+    if (usesFourthDefaults({ ...face, setCode: set })) codes.add('4ed');
     if (face.calibration !== 'printing' && supportsEighthStyleDefaults({ ...face, setCode: set }))
       codes.add('8ed');
     if (

@@ -1,6 +1,6 @@
 import type { RenderedCardInput } from './face-layout.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
-import { calibrationForFace } from '../calibration/selection.js';
+import { calibrationForFace, usesFourthDefaults } from '../calibration/selection.js';
 import { arabianManaVariant } from './early-expansion-mana.js';
 
 /** Original glyphs can accompany either wording mode. Modern symbols and
@@ -21,14 +21,15 @@ export function earlyReprintManaDefaults(face: RenderedCardInput) {
   return extra ? { ...mana.geometry, ...extra } : mana.geometry;
 }
 export function earlyReprintManaTarget(face: RenderedCardInput, symbol: string) {
-  if (!earlyReprintMana(face)) return undefined;
+  if (!earlyReprintMana(face) || usesFourthDefaults(face)) return undefined;
   const mana = calibrationForFace(face)!.mana,
     variant = arabianManaVariant(face);
   const key = symbol === 'X' ? 'N' : symbol;
   return (variant ? mana.variants?.[variant]?.paper?.[key] : undefined) ?? mana.paper[key];
 }
 export function earlyReprintManaInk(face: RenderedCardInput) {
-  return face.calibration !== 'source' &&
+  return !usesFourthDefaults(face) &&
+    face.calibration !== 'source' &&
     face.colorCalibration === 'set-hsb-v1' &&
     earlyReprintMana(face)
     ? calibrationForFace(face)!.mana.ink

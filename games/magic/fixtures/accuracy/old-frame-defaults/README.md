@@ -1,6 +1,8 @@
 # Old-frame default comparison
 
-This is a development pilot, not a new default or completed set calibration.
+The table below records the original development pilot. The subsequent
+[Ice Age adoption](ice-inheritance.json) is an inherited starting point in the
+pending release; none of these results completes a target-set calibration.
 The [live comparison](https://tetrarcum.com/early-sets/old-defaults/) contains all
 110 examples, including rejected alignments.
 
@@ -90,3 +92,49 @@ To select a fresh pilot from the cached set inventory, use
 `old-frame-default-inputs.mjs SET NEW_OUTPUT`. Its imported type candidates
 require scan review before scoring. A changed scan, source or wording needs new
 evidence. No library interfaces or runtime defaults are changed here.
+
+## Release sequence
+
+The pending release enables inherited Fourth defaults for ordinary Ice Age
+monocolor, artifact and supported land materials. Gold and custom frames keep
+their existing sources. This is a starting point, not an independently calibrated
+Ice Age profile or a completed set audit. Exact-printing policy opts out.
+
+The following release should:
+
+1. Calibrate Mirage and Onslaught independently, including frame geometry,
+   source-bound frame/text-box colors and black level, headings, body, mana and
+   set symbols, artist, legal text and power/toughness.
+2. Compare Fourth, Mirage and Onslaught as complete donor profiles for each
+   remaining major old-frame set. Use unchanged Original printing inputs and art,
+   one frozen scan-only normalization per card, and identical metric definitions.
+3. Report alignment coverage and component/color breakdowns alongside the whole
+   score. Exclude rejected poses from the mean and retain them for review.
+   Compare every cached ordinary nonfoil printing when available, rather than
+   selecting only examples that favor a candidate.
+4. Select the best donor per set, preserving target wording, symbol eras and
+   surround color. Keep exact independent profiles and host overrides ahead of
+   inherited defaults. Record unavailable materials and unresolved close results;
+   inheritance must never mark a set independently complete.
+
+The first comparison already shows why this needs three donors: Fourth improves
+the Ice Age development cohort, while current Mirage/Urza/Onslaught sources beat
+the Fourth replacement. Those pilot numbers do not certify entire sets.
+
+## Ice Age integration check
+
+The unmodified production painter renders 488 frozen cards in four modes
+(1,952 variants). All 378 Fourth cards retain exact Original, both Oracle and
+etching pixels/keys. All 81 Mirage, Urza's Saga and Onslaught Original controls
+also remain exact. The 29 Ice Age examples use the new inherited policy except
+for three gold cards, which retain their existing defaults.
+
+The 17 accepted Ice Age poses reproduce the pilot's 44.54 → 60.77/100 mean:
+16 gains and one loss. The other 12 scans are retained but excluded. This does
+not measure an entire set or certify every material/color.
+
+The production footer adds the matching 1995 copyright line. That line falls
+outside this pilot metric's legal-text coverage, so its appearance does not
+change the reported mean. Original printed artist names still need an Ice Age
+source audit. The archived review records these limits and the exact source,
+native, input, metric and parent-evidence bindings.

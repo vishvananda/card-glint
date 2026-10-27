@@ -1,3 +1,4 @@
+import { usesFourthDefaults } from '../calibration/selection.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -32,7 +33,8 @@ export function retroStatsText(face: RenderedCardInput): string {
 /** Set policies measured from cached development scans; no per-card geometry. */
 export function retroPrintDetails(face: RenderedCardInput) {
   const set = face.setCode?.toLowerCase();
-  const fourth = set === '4ed' && !resolveCardProfile(face).land;
+  const inheritedFourth = usesFourthDefaults(face);
+  const fourth = (set === '4ed' || inheritedFourth) && !resolveCardProfile(face).land;
   if (set !== 'mir' && set !== 'tmp' && !fourth) return null;
   const colors = resolveFrameColors(face);
   return {
@@ -45,10 +47,10 @@ export function retroPrintDetails(face: RenderedCardInput) {
     manaGap: fourth ? 3.6 : 1.7,
     statsShadow: fourth ? 1 : 1.5,
     statsOpaqueShadow: !fourth,
-    setRight: set === 'mir' ? 434 : 432.5,
-    setCenterY: set === 'mir' ? 388 : 387.5,
-    setHeight: set === 'mir' ? 26 : 23.4,
-    setOutline: 1.25,
+    setRight: inheritedFourth ? undefined : set === 'mir' ? 434 : 432.5,
+    setCenterY: inheritedFourth ? undefined : set === 'mir' ? 388 : 387.5,
+    setHeight: inheritedFourth ? undefined : set === 'mir' ? 26 : 23.4,
+    setOutline: inheritedFourth ? undefined : 1.25,
     artistX: fourth ? 42.5 : 52,
     artistBaseline: fourth ? 628.5 : 624,
     artistSize: 19.5,

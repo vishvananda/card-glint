@@ -44,13 +44,23 @@ Alpha-only views download neither modern donor.
 
 ## Older-frame defaults
 
-Older sets use their measured set/material values where available, then legacy
-family layout and assets. They do not yet share a complete inherited profile
-like M21 or Eighth. A Fourth-derived donor is being compared separately from its
-source assets and pigment. The initial pilot supports family-specific donors
-rather than one default for all old frames. See the
+Ice Age now uses Fourth Edition's profile as an inherited starting point for
+ordinary monocolor, artifact and supported land frames. Its black surround,
+Original wording, mana glyph era and expansion symbol remain local. Gold,
+custom frames and exact-printing policies keep their existing defaults.
+Independent set profiles take precedence. Enable printing colors as described
+below to use the donor's source-bound frame/paper adjustments.
+
+The lazy loader shares the Fourth calibration chunk; it does not load Fourth
+wording or ship a duplicate Ice Age profile. The calibration report labels these
+materials as fallback from `printing:4ed` and includes an inheritance notice.
+It does not mark Ice Age independently calibrated.
+
+Other old sets retain their existing profiles and family fallbacks. For the next
+release, independently fit Mirage and Onslaught, then compare Fourth, Mirage and
+Onslaught as donors for each remaining set. See the
 [experiment and reproduction steps](../fixtures/accuracy/old-frame-defaults/README.md).
-These experimental values are not selectable published defaults.
+There is no named, universally applicable old-frame profile.
 
 ## Measured set colors
 

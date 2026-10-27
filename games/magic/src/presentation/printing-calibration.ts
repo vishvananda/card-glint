@@ -1,3 +1,5 @@
+import { usesFourthDefaults, calibrationForFace } from '../calibration/selection.js';
+import { earlyReprintFrame } from './early-reprint-frame.js';
 import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import { eighthLandPalettes } from './eighth-land-material.js';
 import { supportsEighthStyleDefaults } from './eighth-style-scope.js';
@@ -129,6 +131,18 @@ export function resolvePrintingCalibration(input: RenderedCardInput): PrintingCa
     manaSymbols.revision = defaults.revision;
   }
   const notices: string[] = [];
+  if (usesFourthDefaults(face) && earlyReprintFrame(face)) {
+    const donor = calibrationForFace(face)!;
+    for (const part of [frame, textBox, interiorInk])
+      if (part.status !== 'source') {
+        part.status = 'fallback';
+        part.profile = 'printing:4ed';
+        part.revision = donor.revision;
+      }
+    notices.push(
+      'Using Fourth Edition frame and layout defaults with Ice Age symbols and black surround; this printing has not been independently calibrated.',
+    );
+  }
   if (defaults)
     notices.push(
       eighth?.inheritedFrom

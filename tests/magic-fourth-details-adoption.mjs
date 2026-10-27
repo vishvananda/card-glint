@@ -1,3 +1,9 @@
+import {
+  iceDefaultsHistoricalHash,
+  preIceDefaultsSource,
+} from '../games/magic/tools/accuracy/ice-defaults-ancestry.mjs';
+import os from 'node:os';
+import path from 'node:path';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -16,10 +22,10 @@ import {
 import { fourthCenteredApproval } from '../games/magic/tools/accuracy/fourth-centered-ancestry.mjs';
 import { verifyMetadataRefresh } from '../games/magic/tools/accuracy/abu-metadata-refresh.mjs';
 const p = await fourthDetailsDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await iceDefaultsHistoricalHash(), p.afterRenderer);
 assert.equal(await fourthDetailsHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {
-  const b = await fs.readFile(file);
+  const b = await preIceDefaultsSource(file, await fs.readFile(file));
   assert.equal(hash(b), r.after);
   assert.equal(hash(await preFourthDetailsSource(file, b)), r.before);
   const unknown = Buffer.concat([b, Buffer.from('\n// unreviewed edit\n')]);
@@ -44,11 +50,28 @@ const native = JSON.parse(await read(p.native)),
   metadata = JSON.parse(await read(p.metadata)),
   prior = JSON.parse(await read(p.parentScores)),
   prototype = JSON.parse(await read(p.prototypeScores));
-const verified = await verifyMetadataRefresh('games/magic/src', metadata);
+// Reconstruct the exact earlier graph before checking its metadata-only capture.
+const priorDirectory = await fs.mkdtemp(path.join(os.tmpdir(), 'glint-fourth-details-'));
+let verified;
+try {
+  await fs.cp('games/magic/src', priorDirectory, { recursive: true });
+  const { files } = await (
+    await import('../games/magic/tools/accuracy/ice-defaults-ancestry.mjs')
+  ).iceDefaultsDelta();
+  for (const [file, record] of Object.entries(files))
+    await fs.writeFile(
+      path.join(priorDirectory, path.relative('games/magic/src', file)),
+      record.beforeSource,
+    );
+  verified = await verifyMetadataRefresh(priorDirectory, metadata);
+  const badMeta = structuredClone(metadata);
+  badMeta.beforeRendererHash = '0'.repeat(64);
+  await assert.rejects(() => verifyMetadataRefresh(priorDirectory, badMeta));
+} finally {
+  await fs.rm(priorDirectory, { recursive: true, force: true });
+}
 assert.deepEqual(verified, native.metadataRefresh);
-const badMeta = structuredClone(metadata);
-badMeta.beforeRendererHash = '0'.repeat(64);
-await assert.rejects(() => verifyMetadataRefresh('games/magic/src', badMeta));
+
 const report = JSON.parse(
     await fs.readFile('games/magic/fixtures/accuracy/4ed/semantic-details-adoption.json'),
   ),

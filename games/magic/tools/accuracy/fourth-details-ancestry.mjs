@@ -1,3 +1,4 @@
+import { preIceDefaultsSource } from './ice-defaults-ancestry.mjs';
 // Exact semantic-detail source/native evidence; historical receipts remain immutable.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -72,6 +73,7 @@ export function fourthDetailsDelta() {
   })());
 }
 export async function preFourthDetailsSource(file, bytes) {
+  bytes = await preIceDefaultsSource(file, bytes);
   const e = (await fourthDetailsDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }
