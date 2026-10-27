@@ -58,7 +58,12 @@ assert.deepEqual(lazy.loadedMagicSets(), []);
 assert.throws(() => lazy.describeSetCalibration('4ed'), /not prepared/);
 await Promise.all([lazy.loadMagicSet('4ed'), lazy.loadMagicSet('4ED')]);
 assert.deepEqual(lazy.loadedMagicSets(), ['4ed']);
-assert.equal(lazy.describeSetCalibration('4ed').revision, 1);
+const fourthProfileSource = await readFile('games/magic/src/calibration/sets/4ed.ts', 'utf8');
+const fourthRevision = /export const profile = \{[\s\S]*?revision:\s*(\d+)/.exec(
+  fourthProfileSource,
+)?.[1];
+assert.ok(fourthRevision, 'Missing literal Fourth calibration revision');
+assert.equal(lazy.describeSetCalibration('4ed').revision, Number(fourthRevision));
 const face = {
   name: 'Probe',
   setCode: '4ed',
