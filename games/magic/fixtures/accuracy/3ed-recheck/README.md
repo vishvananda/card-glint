@@ -504,3 +504,38 @@ loaded module. It adds public geometry controls and a separately keyed palette
 override only in historical-symbol modes. Asset access remains offline and
 content-addressed. The timing covers composition, readback and analysis, not
 GPU completion or interactive scene throughput.
+
+## Coarse name/type study
+
+The next heading study uses all 223 accepted nonland frame poses with frozen
+Original wording. The 58 excluded nonland poses and 25 lands remain outside
+this fit. All 223 complete native PNG hashes match the runtime baseline, and
+both heading roles replay with zero gray error.
+
+The 12-card pilot suggested widening names. The full sample does not support
+that choice under the shared selection rule, so no name default changes.
+For type lines, the coarse shared candidate moves 2px left and 4px down:
+the regional filled/edge objective improves 71.1690 → 78.1212/100, with 221
+gains and two small losses. Flight loses 0.6871 and Psychic Venom 0.1190.
+Both development cohorts improve. Blue cards prefer a smaller vertical move
+than the other colors; finer shared measurements are still needed.
+
+These are proposals only. The choice uses calibration mean minus one quarter
+of the worst calibration loss. Validation is reused development data and is
+not used for selection. Light/dark text polarity is an explicit per-material
+pilot heuristic. Further geometry, gray/shadow matching and native prototype
+review must precede runtime adoption.
+
+The heading-coarse files archive the complete matrix, definition, selection,
+exact executed tool source and numerical helpers. Current tools may evolve;
+historical source hashes refer to those archives and the dependency commit
+recorded in the review. No external card images are included.
+
+    MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-heading-native-study.mjs inputs.json poses.json native definition.json new-results.json full
+    node tests/magic-revised-heading-study.mjs
+
+The study reuses one browser and its loaded assets. Each role is repainted on
+a small native-resolution ROI with the original pixel phase. The complete PNG
+hash is calculated inside the browser once per printing; each candidate sends
+only measurement values. Timings cover CPU composition and raster readback,
+not GPU completion or interactive renderer throughput.
