@@ -161,6 +161,24 @@ function validateProfile(profile: SetCalibrationProfile) {
     )
       throw Error('Invalid body bounds or typography range');
   }
+  const classes = profile.bodyClasses;
+  if (
+    classes &&
+    (classes.bounds.width < 20 ||
+      classes.bounds.height < 20 ||
+      !Number.isInteger(classes.centered.maxCharacters) ||
+      !Number.isInteger(classes.centered.maxLines) ||
+      classes.centered.maxCharacters < 1 ||
+      classes.centered.maxLines < 1 ||
+      classes.centered.size <= 0 ||
+      classes.compact.nominalMinimum <= 0 ||
+      classes.compact.nominalMaximum <= classes.compact.nominalMinimum ||
+      classes.compact.size <= 0 ||
+      classes.compact.leading <= 0 ||
+      classes.typography.leading <= 0 ||
+      (classes.typography.textWidth ?? 1) <= 0)
+  )
+    throw Error('Invalid body size classes, bounds or typography');
   const expansion = profile.expansionBody;
   if (
     expansion &&

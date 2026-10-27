@@ -1,3 +1,4 @@
+import { fourthNonlandDelta, fourthNonlandAffected } from './fourth-nonland-ancestry.mjs';
 import { fourthNonbasicDelta, fourthNonbasicAffected } from './fourth-nonbasic-ancestry.mjs';
 import { fourthBasicBodyDelta, fourthBasicBodyAffected } from './fourth-basic-body-ancestry.mjs';
 import { legArtistDelta, legArtistAffected } from './leg-artist-data-ancestry.mjs';
@@ -121,6 +122,15 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (
+          (await fourthNonlandAffected(set.set, task, original, group)) &&
+          item.proof?.fourthNonlandSource !== (await fourthNonlandDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Fourth Edition nonland rules use measured size classes. Only affected rules and whole-card evidence require current review; wording, lands and other components retain their evidence.';
+          continue;
+        }
         if (
           (await fourthNonbasicAffected(set.set, task, original, group)) &&
           item.proof?.fourthNonbasicSource !== (await fourthNonbasicDelta()).afterRenderer

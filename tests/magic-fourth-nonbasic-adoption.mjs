@@ -1,7 +1,11 @@
+import {
+  fourthNonlandHistoricalHash,
+  preFourthNonlandSource,
+} from '../games/magic/tools/accuracy/fourth-nonland-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import { createServer } from './magic-vite.mjs';
 import {
   fourthNonbasicDelta,
@@ -12,10 +16,10 @@ import {
 import { validateFourthNonbasicData } from '../games/magic/tools/accuracy/fourth-nonbasic-data-check.mjs';
 import { presentation } from '../games/magic/tools/accuracy/adapter.mjs';
 const p = await fourthNonbasicDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await fourthNonlandHistoricalHash(), p.afterRenderer);
 assert.equal(await fourthNonbasicHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {
-  const bytes = await fs.readFile(file);
+  const bytes = await preFourthNonlandSource(file, await fs.readFile(file));
   assert.equal(hash(bytes), r.after);
   assert.equal(hash(await preFourthNonbasicSource(file, bytes)), r.before);
   const unknown = Buffer.concat([bytes, Buffer.from('\n// unknown change\n')]);

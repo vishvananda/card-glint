@@ -88,6 +88,23 @@ export interface CalibratedBody {
     readonly maximumSize: number;
   };
 }
+/** Measured refinements of the existing nominal layout, using the host's wording reference. */
+export interface CalibratedBodyClasses {
+  readonly materials: readonly string[];
+  readonly bounds: CalibratedBody['bounds'];
+  readonly typography: Readonly<RulesTypography>;
+  readonly centered: {
+    readonly maxCharacters: number;
+    readonly maxLines: number;
+    readonly size: number;
+  };
+  readonly compact: {
+    readonly nominalMinimum: number;
+    readonly nominalMaximum: number;
+    readonly size: number;
+    readonly leading: number;
+  };
+}
 /** Source-bound ABU dual plates. Geometry is shared; the full-frame outline
  * and narrow paper bands have independent semantic palettes. */
 export interface CalibratedDualLand {
@@ -186,6 +203,7 @@ export interface SetCalibrationProfile {
   /** Omitted retains the established layout. Material override wins over default. */
   readonly body?: Readonly<Partial<Record<string, CalibratedBody>>>;
   readonly expansionBody?: CalibratedExpansionBody;
+  readonly bodyClasses?: CalibratedBodyClasses;
   /** Shared count/wrap model for early printings; Oracle always keeps a safe inset. */
   readonly textTiers?: Readonly<
     Omit<EarlyTextTierOptions, 'forceSmall'> & { readonly retainRegularAboveLines?: number }

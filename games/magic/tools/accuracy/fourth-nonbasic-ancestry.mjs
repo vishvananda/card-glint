@@ -1,3 +1,4 @@
+import { preFourthNonlandSource } from './fourth-nonland-ancestry.mjs';
 // Known Fourth nonbasic changes project to their exact prior source; unknown edits remain visible.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -45,6 +46,7 @@ export function fourthNonbasicDelta() {
   })());
 }
 export async function preFourthNonbasicSource(file, bytes) {
+  bytes = await preFourthNonlandSource(file, bytes);
   const e = (await fourthNonbasicDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

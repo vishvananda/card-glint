@@ -116,6 +116,19 @@ export function checkSetProfile(profile, review, manifest) {
     rect(symbol.crop);
     assert.ok(symbol.width > 0 && symbol.height > 0);
   }
+  if (profile.bodyClasses) {
+    const p = profile.bodyClasses;
+    assert(p.materials.length > 0 && new Set(p.materials).size === p.materials.length);
+    assert(p.materials.every((m) => Object.hasOwn(profile.frames, m)));
+    rect([p.bounds.x, p.bounds.y, p.bounds.width, p.bounds.height], false);
+    assert(p.centered.size >= 6 && p.centered.size <= 45);
+    assert(Number.isInteger(p.centered.maxCharacters) && p.centered.maxCharacters > 0);
+    assert(Number.isInteger(p.centered.maxLines) && p.centered.maxLines > 0);
+    assert(p.compact.nominalMinimum > 0 && p.compact.nominalMaximum > p.compact.nominalMinimum);
+    assert(p.compact.size >= 6 && p.compact.size <= p.compact.nominalMaximum);
+    assert(p.compact.leading > 0 && p.compact.leading <= 2);
+    assert(p.typography.leading > 0 && p.typography.leading <= 2);
+  }
   for (const body of Object.values(profile.body ?? {})) {
     rect(Object.values(body.bounds), false);
     assert.ok(

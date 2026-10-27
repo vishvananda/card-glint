@@ -41,3 +41,31 @@ node tests/magic-fourth-panel-diagnostic.mjs
 The texture command also writes grayscale patch observations. Keep those observations with the private cache. The repository stores the measured correlations and border profiles, not the patch pixels.
 
 These tools use cached PNGs and CPU measurements. They do not launch Chromium or compose new faces. Their elapsed time is not renderer submission time or GPU completion time.
+
+## Integrated nonland text classes
+
+The optional `bodyClasses` profile refines pure rules passages. A new centered
+passage must contain at most 130 normalized characters and fit within six lines
+at 25 reference pixels. Compact passages use 15.5 pixels only when their existing
+nominal size is at least 17.5 and below 21.75 pixels. Mixed rules/flavor passages,
+already-centered text, denser text, explicit alignment and all land bodies retain
+their existing policy. Classification follows the host-selected Original or
+Oracle reference; the displayed wording is fitted separately.
+
+These values and their bounds/spacing controls are available in the public set
+profile editor. They can be changed in `calibration/sets/4ed.ts` without changing
+the painter. The native review tool verifies all 378 cards in four modes and all
+122 Dark printings as unaffected controls:
+
+```sh
+node games/magic/tools/accuracy/fourth-nonland-native-review.mjs \
+ INPUTS.json BEFORE/capture.json AFTER/capture.json PROTOTYPE_DIRECTORY \
+ SELECTED_IDS.json DARK_BEFORE/capture.json DARK_AFTER/capture.json NEW_PRIVATE_PROOF.json
+node tests/magic-body-classes.mjs
+node tests/magic-fourth-nonland-adoption.mjs
+```
+
+See `nonland-body-adoption.json` for the integrated score and its limits. Gloom's
+printed five-line centered passage remains an outlier; the shared rule does not
+reproduce that line structure. This regional change does not close the complete
+Fourth Edition audit.

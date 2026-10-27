@@ -4,7 +4,7 @@ import { earlyRulesModel } from './alpha-rules.js';
 import { alphaTextLayout, earlyTextTierLayout, fractionalEarlyRules } from './early-text-tiers.js';
 import { adjustCalibrationRules } from '../calibration/rules-adjustment.js';
 import { calibrationForFace } from '../calibration/selection.js';
-import { calibratedBodyLayout } from '../calibration/body.js';
+import { calibratedBodyLayout, calibratedBodyClasses } from '../calibration/body.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
 import { retroBasicPrinting } from './retro-basic.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
@@ -49,22 +49,47 @@ export function usesRevisedFractionalRules(face: RenderedCardInput): boolean {
 /** Null denotes the existing large-basic-symbol path, which has no body text. */
 export function retroTextLayout(context: CanvasContext, face: RenderedCardInput) {
   const tiers = earlyReprintFrame(face) && calibrationForFace(face)?.textTiers;
+  const classProfile = earlyReprintFrame(face) && calibrationForFace(face)?.bodyClasses;
+  const classes = classProfile?.materials.includes(earlyReprintFrame(face)?.material ?? '')
+    ? classProfile
+    : undefined;
   const fractional =
     face.wordingMode !== 'oracle' &&
     ['lea', 'leb', '2ed'].includes(face.setCode?.toLowerCase() ?? '');
   const calculate = (precise = false) => {
-    const base = baseRetroTextLayout(context, face);
+    let base = baseRetroTextLayout(context, face);
     const limit = tiers?.retainRegularAboveLines;
-    const paragraphs = tiers
-      ? wordingParagraphs({
-          rulesText: face.rulesText ?? '',
-          rulesParagraphs: face.rulesParagraphs,
-        })
-      : [];
+    const paragraphs =
+      tiers || classes
+        ? wordingParagraphs({
+            rulesText: face.rulesText ?? '',
+            rulesParagraphs: face.rulesParagraphs,
+          })
+        : [];
     const reference =
       face.rulesAlignment?.mode === 'auto'
         ? (face.rulesAlignment.reference ?? paragraphs)
         : paragraphs;
+    if (
+      classes &&
+      base &&
+      paragraphs.every((p) => p.role === 'rules') &&
+      reference.every((p) => p.role === 'rules')
+    ) {
+      const referenceBase =
+        reference === paragraphs
+          ? base
+          : baseRetroTextLayout(context, { ...face, rulesParagraphs: reference });
+      base = calibratedBodyClasses(
+        context,
+        face,
+        classes,
+        base,
+        referenceBase ?? base,
+        paragraphs,
+        reference,
+      );
+    }
     // A regular-size retention rule cannot override an original small face or
     // the shared dense-text cutoff. This classification uses the chosen wording.
     const small =
@@ -110,7 +135,8 @@ export function retroTextLayout(context: CanvasContext, face: RenderedCardInput)
       : fractionalEarlyRules(context, legacy, tiers?.denseWidth ?? 1);
   };
   const revised = usesRevisedFractionalRules(face);
-  const result = tiers || fractional || revised ? withRulesLayoutRequests(context, run) : run();
+  const result =
+    tiers || classes || fractional || revised ? withRulesLayoutRequests(context, run) : run();
   if (!revised || !result) return result;
   // Keep the measured short-text face. Regular/dense letters and their panel
   // widen together; inline mana discs keep their existing physical size.

@@ -163,6 +163,51 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
         0.25,
       );
   }
+  if (profile.bodyClasses) {
+    const scope = 'size classes';
+    for (const [key, value] of Object.entries(profile.bodyClasses.bounds))
+      number(
+        'bodyClasses.bounds.' + key,
+        value,
+        'body',
+        scope,
+        0,
+        key === 'y' || key === 'height' ? 680 : 488,
+        0.25,
+      );
+    for (const family of ['centered', 'compact'] as const)
+      for (const [key, value] of Object.entries(profile.bodyClasses[family])) {
+        const count = key === 'maxCharacters' || key === 'maxLines';
+        const ratio = key === 'leading';
+        number(
+          'bodyClasses.' + family + '.' + key,
+          value,
+          'body',
+          scope,
+          count ? 1 : ratio ? 0.5 : 6,
+          key === 'maxCharacters' ? 1000 : key === 'maxLines' ? 30 : ratio ? 2 : 48,
+          count ? 1 : ratio ? 0.01 : 0.25,
+          count ? 'count' : ratio ? 'ratio' : 'px',
+        );
+      }
+    for (const [key, value] of Object.entries(profile.bodyClasses.typography)) {
+      if (typeof value === 'boolean') choice('bodyClasses.typography.' + key, value, 'body', scope);
+      else if (typeof value === 'number') {
+        const offset = key === 'centerOffset';
+        const ratio = key === 'textWidth' || key === 'leading';
+        number(
+          'bodyClasses.typography.' + key,
+          value,
+          'body',
+          scope,
+          offset ? -24 : ratio ? 0.5 : 0,
+          offset ? 24 : ratio ? 2 : 30,
+          ratio ? 0.01 : 0.25,
+          ratio ? 'ratio' : 'px',
+        );
+      }
+    }
+  }
   if (profile.textTiers)
     for (const [key, value] of Object.entries(profile.textTiers)) {
       if (typeof value === 'boolean') choice(`textTiers.${key}`, value, 'body', 'all');

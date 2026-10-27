@@ -56,9 +56,11 @@ try {
   const source = (color) => sourceRoot + color.toLowerCase() + 'l.png';
   const neutral = { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 };
   const data = {
+    // Only the two synthetic frames below are available in this adapter probe.
     ...structuredClone(base),
     revision: 1,
     set: '2ed',
+    bodyClasses: undefined,
     frames: { W: base.frames.W, 'L-dual': geometry },
     colors: {
       'L-dual': {

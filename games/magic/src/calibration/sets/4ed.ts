@@ -3,7 +3,7 @@ import type { SetCalibrationProfile } from '../types.js';
 /** Shared printing defaults. Scan transforms and reference images belong in evidence. */
 export const profile = {
   schema: 1,
-  revision: 3,
+  revision: 4,
   set: '4ed',
   border: 'white',
   frames: {
@@ -794,6 +794,22 @@ export const profile = {
     },
     ink: [0.2235294117647059, 0.25098039215686274, 0.21176470588235294],
   },
+  bodyClasses: {
+    materials: ['W', 'U', 'B', 'R', 'G', 'A'],
+    bounds: { x: 72, y: 414, width: 344, height: 184 },
+    typography: {
+      fractionalMetrics: true,
+      textWidth: 1,
+      leading: 1,
+      paragraphGap: 0,
+      flavorGap: 0,
+      flavorOrphans: false,
+      flavorSeparator: false,
+      centerOffset: -4,
+    },
+    centered: { maxCharacters: 130, maxLines: 6, size: 25 },
+    compact: { nominalMinimum: 17.5, nominalMaximum: 21.75, size: 15.5, leading: 1.2 },
+  },
   expansionBody: {
     bounds: {
       x: 72,
@@ -997,7 +1013,7 @@ export const profile = {
 } as const satisfies SetCalibrationProfile;
 
 export const review = {
-  revision: 3,
+  revision: 4,
   scope: 'Ordinary nonfoil printing; see per-component evidence and outstanding tasks.',
   evidence: [
     'games/magic/fixtures/accuracy/early-reprint-frame-color.json',
@@ -1007,6 +1023,7 @@ export const review = {
     'games/magic/fixtures/accuracy/early-reprint-footer.json',
     'games/magic/fixtures/accuracy/4ed/basic-body-proposal.json',
     'games/magic/fixtures/accuracy/4ed/nonbasic-body-adoption.json',
+    'games/magic/fixtures/accuracy/4ed/nonland-body-adoption.json',
   ],
   pending: ['rules', 'flavor', 'setSymbol', 'fullCard', 'release'],
 } as const;
