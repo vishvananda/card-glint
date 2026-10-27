@@ -6,6 +6,7 @@ import { chromium } from 'playwright';
 import { createServer } from 'vite';
 const abuDuals = process.argv.includes('--abu-duals');
 const revised = process.argv.includes('--revised');
+const fourth = process.argv.includes('--fourth');
 const server = await createServer({
   configFile: false,
   root: fileURLToPath(new URL('..', import.meta.url)),
@@ -30,13 +31,58 @@ try {
     ? '/dist/lib/magic-presentation.js'
     : '/games/magic/src/presentation.ts';
   const rows = await page.evaluate(
-    async ({ entry, abuDuals, revised }) => {
-      async function harness(scope, api) {
+    async ({ entry, abuDuals, revised, fourth }) => {
+      async function harness(scope, api, cpuAssets = false) {
         const local = 'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")';
         for (const { family, style, weight } of api.canvasFontAssets)
           (scope.document?.fonts ?? scope.fonts).add(
             await new FontFace(family, local, { style, weight }).load(),
           );
+        let textTrace = [];
+        const patched = [];
+        if (cpuAssets)
+          for (const prototype of [
+            scope.CanvasRenderingContext2D?.prototype,
+            scope.OffscreenCanvasRenderingContext2D?.prototype,
+          ].filter(Boolean))
+            for (const method of ['measureText', 'fillText', 'strokeText']) {
+              const original = prototype[method];
+              prototype[method] = function (...args) {
+                const result = original.apply(this, args),
+                  m = this.getTransform();
+                textTrace.push([
+                  method,
+                  args,
+                  this.font,
+                  this.textAlign,
+                  this.textBaseline,
+                  this.textRendering,
+                  String(this.fillStyle),
+                  String(this.strokeStyle),
+                  this.shadowColor,
+                  this.shadowBlur,
+                  this.shadowOffsetX,
+                  this.shadowOffsetY,
+                  this.fontKerning,
+                  this.letterSpacing,
+                  this.wordSpacing,
+                  [m.a, m.b, m.c, m.d, m.e, m.f],
+                  method === 'measureText'
+                    ? [
+                        result.width,
+                        result.actualBoundingBoxLeft,
+                        result.actualBoundingBoxRight,
+                        result.actualBoundingBoxAscent,
+                        result.actualBoundingBoxDescent,
+                      ]
+                    : null,
+                ]);
+                return result;
+              };
+              patched.push(() => {
+                prototype[method] = original;
+              });
+            }
         const images = new Map();
         let requested;
         const loadImages = async (urls, signal) => {
@@ -56,7 +102,27 @@ try {
               ctx.fillRect(5, 10, 54, 45);
               ctx.fillStyle = '#292823';
               ctx.fillRect(28, 12, 8, 32);
-              bitmap = c.transferToImageBitmap();
+              if (cpuAssets) {
+                // Canonical CPU bytes keep source bitmaps independent of a
+                // window/worker's GPU-backed Canvas2D rasterization.
+                const pixels = new Uint8ClampedArray(64 * 64 * 4);
+                const rgb = [
+                  90 + (seed % 120),
+                  90 + ((seed >>> 8) % 120),
+                  90 + ((seed >>> 16) % 120),
+                ];
+                for (let y = 0; y < 64; y++)
+                  for (let x = 0; x < 64; x++) {
+                    const color =
+                      x >= 28 && x < 36 && y >= 12 && y < 44
+                        ? [41, 40, 35]
+                        : x >= 5 && x < 59 && y >= 10 && y < 55
+                          ? [213, 196, 161]
+                          : rgb;
+                    pixels.set([...color, 255], (y * 64 + x) * 4);
+                  }
+                bitmap = await createImageBitmap(new ImageData(pixels, 64, 64));
+              } else bitmap = c.transferToImageBitmap();
               images.set(url, bitmap);
               c.width = c.height = 0;
             }
@@ -67,6 +133,7 @@ try {
         return {
           async draw(face, tier, layer, debug = false) {
             requested = new Set();
+            textTrace = [];
             const c = await api.composeCardTexture(
               { face, printingId: null, printedImage: null, layer },
               tier,
@@ -84,6 +151,7 @@ try {
               size: [out.width, out.height],
               hash,
               assets: [...requested].sort(),
+              ...(cpuAssets ? { textTrace } : {}),
               ...(debug ? { pixels: Array.from(pixels) } : {}),
             };
             if (c instanceof ImageBitmap) c.close();
@@ -93,19 +161,20 @@ try {
           },
           dispose() {
             for (const b of images.values()) b.close();
+            for (const restore of patched.reverse()) restore();
           },
         };
       }
       const api = await import(entry),
-        main = await harness(globalThis, api);
-      const workerCode = `import * as api from '${location.origin}${entry}';const ready=(${harness.toString()})(globalThis,api);onmessage=async({data})=>{try{if(typeof document!=='undefined')throw Error('Worker has document');const h=await ready;postMessage({ok:true,value:await h.draw(data.face,data.tier,data.layer,data.debug)});}catch(e){postMessage({ok:false,error:e.stack??e.message});}};`;
+        main = await harness(globalThis, api, fourth);
+      const workerCode = `import * as api from '${location.origin}${entry}';const ready=(${harness.toString()})(globalThis,api,${fourth});onmessage=async({data})=>{try{if(typeof document!=='undefined')throw Error('Worker has document');const h=await ready;postMessage({ok:true,value:await h.draw(data.face,data.tier,data.layer,data.debug)});}catch(e){postMessage({ok:false,error:e.stack??e.message});}};`;
       const workerUrl = URL.createObjectURL(new Blob([workerCode], { type: 'text/javascript' })),
         worker = new Worker(workerUrl, { type: 'module' }),
         rows = [];
       const base = {
         name: 'Current profile adept',
-        setCode: revised ? '3ed' : '2ed',
-        ...(revised ? { wordingMode: 'original' } : {}),
+        setCode: fourth ? '4ed' : revised ? '3ed' : '2ed',
+        ...(revised || fourth ? { wordingMode: 'original' } : {}),
         frameStyle: 'retro',
         borderColor: 'white',
         symbolStyle: 'original',
@@ -206,12 +275,48 @@ try {
             'You may use this ability only during your upkeep, before drawing a card. If you do not, sacrifice this creature. This ability may not be countered.',
         },
       );
+      if (fourth) {
+        faces.push(
+          {
+            ...faces[1],
+            name: 'Two-ability paragraph control',
+            typeLine: 'Enchantment',
+            rulesText:
+              'White spells cost an additional {3} to cast.\nWhite enchantments with activation costs require an additional {3} to use.',
+          },
+          {
+            ...faces[0],
+            name: 'Explicit mixed paragraph control',
+            rulesParagraphs: [
+              { role: 'rules', runs: [{ text: 'First strike.' }] },
+              {
+                role: 'flavor',
+                runs: [{ text: 'A memory of the original printing.', italic: true }],
+              },
+            ],
+          },
+          {
+            ...faces[1],
+            name: 'Chosen reference fitting control',
+            rulesText: 'Target creature gains flying until end of turn. '.repeat(9),
+            rulesAlignment: {
+              mode: 'auto',
+              reference: [
+                {
+                  role: 'rules',
+                  runs: [{ text: 'Target creature gains flying until end of turn.' }],
+                },
+              ],
+            },
+          },
+        );
+      }
       const selected = abuDuals
         ? ['lea', 'leb', '2ed'].flatMap((setCode) => [
             ...['BG', 'UR', 'WU'].map((pair) => ({
               ...faces.find((f) => f.name === 'Bayou'),
               setCode,
-              borderColor: setCode === '2ed' ? 'white' : 'black',
+              borderColor: setCode === '2ed' || setCode === '4ed' ? 'white' : 'black',
               name: setCode + ' dual ' + pair,
               frameColors: pair.split(''),
               producedMana: pair.split(''),
@@ -221,29 +326,31 @@ try {
             {
               ...faces.find((f) => f.name === 'Island'),
               setCode,
-              borderColor: setCode === '2ed' ? 'white' : 'black',
+              borderColor: setCode === '2ed' || setCode === '4ed' ? 'white' : 'black',
               name: setCode + ' basic control',
             },
           ])
-        : (revised ? ['3ed'] : ['lea', 'leb', '2ed']).flatMap((setCode) =>
+        : (fourth ? ['4ed'] : revised ? ['3ed'] : ['lea', 'leb', '2ed']).flatMap((setCode) =>
             faces.map((face) => ({
               ...face,
               setCode,
-              borderColor: setCode === '2ed' ? 'white' : 'black',
+              borderColor: setCode === '2ed' || setCode === '4ed' ? 'white' : 'black',
             })),
           );
-      const modes = abuDuals
-        ? [
-            ['original', 'original'],
-            ['oracle', 'original'],
-            ['oracle', 'modern'],
-          ]
-        : [
-            ['original', 'original'],
-            ['oracle', 'original'],
-          ];
-      const tiers = abuDuals || revised ? ['table', 'native', 'inspect', 323] : ['table', 'native'];
-      const layers = abuDuals || revised ? ['face', 'etching'] : [undefined];
+      const modes =
+        abuDuals || fourth
+          ? [
+              ['original', 'original'],
+              ['oracle', 'original'],
+              ['oracle', 'modern'],
+            ]
+          : [
+              ['original', 'original'],
+              ['oracle', 'original'],
+            ];
+      const tiers =
+        abuDuals || revised || fourth ? ['table', 'native', 'inspect', 323] : ['table', 'native'];
+      const layers = abuDuals || revised || fourth ? ['face', 'etching'] : [undefined];
       try {
         for (const face of selected)
           for (const [wordingMode, symbolStyle] of modes)
@@ -294,6 +401,53 @@ try {
                     workerDebug.value.hash !== other.value.hash
                   )
                     throw Error('A parity fixture changed between repeated captures');
+                  // Match the established M21 portability envelope: exact
+                  // typography and assets, bounded HTML/Offscreen filter pixels.
+                  if (fourth && layer !== 'etching') {
+                    const [width, height] = mainDebug.size,
+                      nx = Math.ceil(width / 64);
+                    const tiles = new Float64Array(nx * Math.ceil(height / 64));
+                    let total = 0;
+                    for (let y = 0; y < height; y++)
+                      for (let x = 0; x < width; x++)
+                        for (let k = 0; k < 4; k++) {
+                          const i = (y * width + x) * 4 + k;
+                          const d = Math.abs(mainDebug.pixels[i] - workerDebug.value.pixels[i]);
+                          total += d;
+                          tiles[Math.floor(y / 64) * nx + Math.floor(x / 64)] += d;
+                        }
+                    let maxTileMAE = 0;
+                    for (let i = 0; i < tiles.length; i++) {
+                      const w = Math.min(64, width - (i % nx) * 64),
+                        h = Math.min(64, height - Math.floor(i / nx) * 64);
+                      maxTileMAE = Math.max(maxTileMAE, tiles[i] / (w * h * 4));
+                    }
+                    const envelope = {
+                      meanAbsoluteDelta: total / (width * height * 4),
+                      maxTileMAE,
+                      alphaChanges,
+                      maxColorDelta,
+                      changedPixels,
+                    };
+                    if (
+                      envelope.meanAbsoluteDelta <= 1 &&
+                      envelope.maxTileMAE <= 3 &&
+                      alphaChanges === 0
+                    ) {
+                      rows.push({
+                        name: face.name,
+                        set: face.setCode,
+                        wordingMode,
+                        symbolStyle,
+                        tier,
+                        layer,
+                        browser,
+                        worker: other.value,
+                        rasterEnvelope: envelope,
+                      });
+                      continue;
+                    }
+                  }
                   const rounding = {
                     changedPixels,
                     maxColorDelta,
@@ -352,7 +506,7 @@ try {
       }
       return rows;
     },
-    { entry, abuDuals, revised },
+    { entry, abuDuals, revised, fourth },
   );
   for (const row of rows.filter((r) => r.debug)) {
     const out = 'test-results/abu-worker-parity';
@@ -375,12 +529,18 @@ try {
       }),
     );
   }
-  assert.equal(rows.length, abuDuals ? 288 : revised ? 160 : 120);
+  assert.equal(rows.length, fourth ? 312 : abuDuals ? 288 : revised ? 160 : 120);
+  if (fourth) assert(rows.every((r) => r.set === '4ed'));
   if (revised) assert(rows.every((r) => r.set === '3ed'));
   for (const row of rows) {
     assert.deepEqual(row.browser.size, row.worker.size);
     assert.deepEqual(row.browser.assets, row.worker.assets);
-    if (row.rounding) {
+    if (fourth) assert.deepEqual(row.browser.textTrace, row.worker.textTrace);
+    if (row.rasterEnvelope) {
+      assert(fourth && row.layer !== 'etching');
+      assert(row.rasterEnvelope.meanAbsoluteDelta <= 1 && row.rasterEnvelope.maxTileMAE <= 3);
+      assert.equal(row.rasterEnvelope.alphaChanges, 0);
+    } else if (row.rounding) {
       assert(
         abuDuals &&
           row.rounding.alphaChanges === 0 &&
@@ -393,12 +553,15 @@ try {
     JSON.stringify({
       entry,
       cases: rows.length,
+      boundedFilterPairs: rows.filter((r) => r.rasterEnvelope).length,
       sparseTwoByteRoundingCases: rows.filter((r) => r.rounding).length,
-      scope: abuDuals
-        ? 'Current Alpha/Beta/Unlimited BG/UR/WU duals and basic controls: browser/worker geometry, alpha and asset requests match (at most 0.01% color pixels may differ by at most two byte levels at antialiased bitmap corners) at table/native/inspect/323px, Original and both Oracle symbol modes, face/default etching. Synthetic assets and local fonts test portability, not scan accuracy.'
-        : revised
-          ? 'Current Revised Original/Oracle body, land and etching browser/worker replay at table/native/inspect/323px. Synthetic assets and local fonts test portability, not scan accuracy.'
-          : 'Current Alpha/Beta/Unlimited browser/OffscreenCanvas pixels and requested assets match for white/black, artifact, dual/basic lands and reviewed text-flow branches, Original/Oracle and table/native tiers. Synthetic assets and local fonts test portability, not scan accuracy.',
+      scope: fourth
+        ? 'Current Fourth white-border profiles, pure/mixed/compact bodies, chosen wording reference and basic/nonbasic controls: exact browser/worker text metrics/draws, assets and masks at table/native/inspect/323px; face filters stay within one 8-bit level/card, three levels/64px tile with exact alpha, Original and both Oracle symbol modes, face/etching. Synthetic assets and local fonts test portability,not scan accuracy.'
+        : abuDuals
+          ? 'Current Alpha/Beta/Unlimited BG/UR/WU duals and basic controls: browser/worker geometry, alpha and asset requests match (at most 0.01% color pixels may differ by at most two byte levels at antialiased bitmap corners) at table/native/inspect/323px, Original and both Oracle symbol modes, face/default etching. Synthetic assets and local fonts test portability, not scan accuracy.'
+          : revised
+            ? 'Current Revised Original/Oracle body, land and etching browser/worker replay at table/native/inspect/323px. Synthetic assets and local fonts test portability, not scan accuracy.'
+            : 'Current Alpha/Beta/Unlimited browser/OffscreenCanvas pixels and requested assets match for white/black, artifact, dual/basic lands and reviewed text-flow branches, Original/Oracle and table/native tiers. Synthetic assets and local fonts test portability, not scan accuracy.',
     }),
   );
 } finally {

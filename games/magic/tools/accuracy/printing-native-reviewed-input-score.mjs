@@ -22,10 +22,15 @@ const [
 ] = process.argv.slice(2);
 assert(
   output &&
-    ['symbols', 'leg-artist', 'fourth-basic-body', 'fourth-nonbasic', 'fourth-nonland'].includes(
-      changeKind,
-    ),
-  'Usage: printing-native-reviewed-input-score.mjs BEFORE_INPUTS AFTER_INPUTS BEFORE_CAPTURE AFTER_CAPTURE POSES PRIOR_SCORES METRICS POLICY NEW_OUTPUT [symbols|leg-artist|fourth-basic-body|fourth-nonbasic|fourth-nonland]',
+    [
+      'symbols',
+      'leg-artist',
+      'fourth-basic-body',
+      'fourth-nonbasic',
+      'fourth-nonland',
+      'fourth-paragraph',
+    ].includes(changeKind),
+  'Usage: printing-native-reviewed-input-score.mjs BEFORE_INPUTS AFTER_INPUTS BEFORE_CAPTURE AFTER_CAPTURE POSES PRIOR_SCORES METRICS POLICY NEW_OUTPUT [symbols|leg-artist|fourth-basic-body|fourth-nonbasic|fourth-nonland|fourth-paragraph]',
 );
 const files = [
     beforeInputFile,
@@ -52,7 +57,7 @@ assert.equal(prior.inputHash, hash(bytes[0]));
 assert.equal(prior.posesHash ?? prior.sources?.poses, hash(bytes[4]));
 assert.equal(before.inputHash, hash(bytes[0]));
 assert.equal(after.inputHash, hash(bytes[1]));
-let artistDelta, bodyDelta, nonbasicDelta, nonlandDelta;
+let artistDelta, bodyDelta, nonbasicDelta, nonlandDelta, paragraphDelta;
 if (changeKind === 'leg-artist') {
   const { legArtistDelta } = await import('./leg-artist-data-ancestry.mjs');
   artistDelta = await legArtistDelta();
@@ -65,6 +70,13 @@ if (changeKind === 'leg-artist') {
   assert.equal(beforeInputs.set, '4ed');
   assert.equal(before.rendererHash, bodyDelta.beforeRenderer);
   assert.equal(after.rendererHash, bodyDelta.afterRenderer);
+} else if (changeKind === 'fourth-paragraph') {
+  const { fourthParagraphDelta } = await import('./fourth-paragraph-ancestry.mjs');
+  paragraphDelta = await fourthParagraphDelta();
+  assert.deepEqual(policyGraph, prior.policyGraph);
+  assert.equal(beforeInputs.set, '4ed');
+  assert.equal(before.rendererHash, paragraphDelta.beforeRenderer);
+  assert.equal(after.rendererHash, paragraphDelta.afterRenderer);
 } else if (changeKind === 'fourth-nonland') {
   const { fourthNonlandDelta } = await import('./fourth-nonland-ancestry.mjs');
   nonlandDelta = await fourthNonlandDelta();
@@ -80,7 +92,7 @@ if (changeKind === 'leg-artist') {
   assert.equal(before.rendererHash, nonbasicDelta.beforeRenderer);
   assert.equal(after.rendererHash, nonbasicDelta.afterRenderer);
 } else assert.equal(before.rendererHash, after.rendererHash);
-const scopedDelta = artistDelta ?? bodyDelta ?? nonbasicDelta ?? nonlandDelta;
+const scopedDelta = artistDelta ?? bodyDelta ?? nonbasicDelta ?? nonlandDelta ?? paragraphDelta;
 assert.equal(prior.rendererHash, bodyDelta ? bodyDelta.historicalRenderer : before.rendererHash);
 assert.equal(before.status, 'complete');
 assert.equal(after.status, 'complete');
@@ -108,7 +120,22 @@ for (const e of beforeInputs.entries) {
   assert.deepEqual(next.card, e.card);
   assert.deepEqual(next.reference, e.reference);
   assert.deepEqual(next.art, e.art);
-  if (nonbasicDelta) {
+  if (paragraphDelta) {
+    const path = 'games/magic/fixtures/accuracy/4ed/annotations-text-outliers.json';
+    const review = JSON.parse(paragraphDelta.files[path].afterSource).cards[e.id];
+    if (!paragraphDelta.ids.includes(e.id)) assert.deepEqual(next.face, e.face);
+    else {
+      assert(review);
+      assert.equal(review.referenceHash, e.reference.sha256);
+      assert.equal(review.rulesText.replace('\n', ' '), e.face.rulesText);
+      assert.deepEqual(next.face, {
+        ...e.face,
+        rulesText: review.rulesText,
+        rulesParagraphs: review.paragraphs,
+        rulesAlignment: { ...e.face.rulesAlignment, reference: review.paragraphs },
+      });
+    }
+  } else if (nonbasicDelta) {
     const review = JSON.parse(nonbasicDelta.annotation.source).cards[e.id];
     if (!review) assert.deepEqual(next.face, e.face);
     else {
@@ -140,7 +167,8 @@ for (const e of beforeInputs.entries) {
     assert.equal(e.face.artist, review.providerArtist);
     assert.equal(next.face.artist, review.printedArtist);
     assert.equal(old.poseAccepted, p.accepted);
-  } else if (bodyDelta || nonbasicDelta || nonlandDelta) assert.equal(old.poseAccepted, p.accepted);
+  } else if (bodyDelta || nonbasicDelta || nonlandDelta || paragraphDelta)
+    assert.equal(old.poseAccepted, p.accepted);
   else assert(p.accepted);
   assert.equal(old.poseHash, hash(JSON.stringify(p.transform)));
   assert.equal(old.referenceHash, b.referenceHash);
@@ -212,29 +240,34 @@ assert.deepEqual(
 await writeJson(output, {
   schema: 1,
   set: beforeInputs.set,
-  status: nonlandDelta
-    ? 'complete-native-fourth-nonland-comparison'
-    : nonbasicDelta
-      ? 'complete-native-fourth-nonbasic-comparison'
-      : bodyDelta
-        ? 'complete-native-fourth-basic-body-comparison'
-        : artistDelta
-          ? 'complete-native-artist-input-comparison'
-          : 'complete-native-mana-input-comparison',
+  status: paragraphDelta
+    ? 'complete-native-fourth-paragraph-comparison'
+    : nonlandDelta
+      ? 'complete-native-fourth-nonland-comparison'
+      : nonbasicDelta
+        ? 'complete-native-fourth-nonbasic-comparison'
+        : bodyDelta
+          ? 'complete-native-fourth-basic-body-comparison'
+          : artistDelta
+            ? 'complete-native-artist-input-comparison'
+            : 'complete-native-mana-input-comparison',
+  ...(paragraphDelta ? { paragraphNativeProofHash: paragraphDelta.native.contentSha256 } : {}),
   ...(nonlandDelta ? { nonlandNativeProofHash: nonlandDelta.native.contentSha256 } : {}),
   ...(artistDelta ? { artistNativeProofHash: artistDelta.native.contentSha256 } : {}),
   ...(bodyDelta ? { bodyNativeProofHash: bodyDelta.native.contentSha256 } : {}),
   ...(nonbasicDelta ? { nonbasicNativeProofHash: nonbasicDelta.native.contentSha256 } : {}),
   scope:
-    (nonlandDelta
-      ? 'Exact37-body native isolation with identical inputs and retained lands;rejected stock poses remain outside aggregate means. '
-      : nonbasicDelta
-        ? 'Exact three-land layout isolation and one reviewed Original lexical correction; provider and Oracle inputs stay unchanged. Rejected stock poses remain outside aggregate means. '
-        : bodyDelta
-          ? 'Exact body-profile native isolation links the current before capture to the archived scoring baseline. Input faces are identical and rejected poses stay outside aggregate means. '
-          : artistDelta
-            ? 'Exact physical artist strings validated by the data-only native receipt;rejected poses stay outside aggregate means. '
-            : '') +
+    (paragraphDelta
+      ? 'One exact Original paragraph correction;all lexical content,Oracle faces,geometry and scan poses retained. '
+      : nonlandDelta
+        ? 'Exact37-body native isolation with identical inputs and retained lands;rejected stock poses remain outside aggregate means. '
+        : nonbasicDelta
+          ? 'Exact three-land layout isolation and one reviewed Original lexical correction; provider and Oracle inputs stay unchanged. Rejected stock poses remain outside aggregate means. '
+          : bodyDelta
+            ? 'Exact body-profile native isolation links the current before capture to the archived scoring baseline. Input faces are identical and rejected poses stay outside aggregate means. '
+            : artistDelta
+              ? 'Exact physical artist strings validated by the data-only native receipt;rejected poses stay outside aggregate means. '
+              : '') +
     'Explicit Original native comparisons with fixed content,art,references and stock poses. Every input delta is checked; the old/new complete metric region plans are identical. Native files are verified and unchanged rasters alone reuse prior scores under the same full metric graph. Fresh scores use the actual candidate face. This comparison changes no source data or renderer defaults and does not certify a complete set.',
   rendererHash: after.rendererHash,
   beforeInputHash: hash(bytes[0]),

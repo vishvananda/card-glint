@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "set": "4ed",
+  "status": "original-paragraph-integrated-full-set-audit-open",
+  "beforeRenderer": "b5291622bfd1c94a98d551233d817d4bbd939b1475f016232f33e77050fcdb65",
+  "afterRenderer": "e3162f05ff132f51495cd549bde7efa7409675131a0c8aff5334db7d71c5dd09",
+  "sourceReceipt": {
+    "file": "games/magic/fixtures/accuracy/4ed/paragraph-source-delta.json.gz",
+    "sha256": "b71f31caba084e590ee6bbc1b556a54b3c5215fac600cd74add377ab32e1c570",
+    "contentSha256": "507c082f6820e3ab64f991a4befb14098339bf28c7d01ffe77db84aaf911377e"
+  },
+  "nativeEvidence": {
+    "file": "games/magic/fixtures/accuracy/4ed/paragraph-native-isolation.json.gz",
+    "sha256": "fe0860948d30b8a689d04199a43ebabae105235d8c115c02cdbd702c2e61096e",
+    "contentSha256": "cb06364804f62284b68c05928a7aa43ee54d33ef6a4fdd63f8451c6b80d463b3"
+  },
+  "artifacts": {
+    "nativeTool": {
+      "file": "games/magic/fixtures/accuracy/4ed/paragraph-native-tool.mjs.gz",
+      "sha256": "55ca6d216b394ad02f6a4c5aa9139fd5a23bfaaec697afc6a0ede4b24004d142",
+      "contentSha256": "b4823412a99652b19da5d6a6c7e27e45d57f764e999275b66d96827593e1bff1"
+    },
+    "scores": {
+      "file": "games/magic/fixtures/accuracy/4ed/paragraph-whole-scores.json.gz",
+      "sha256": "3fbd7686d98cb87a8a8c4f7d62c079509bba44b1c9f7bdfc5e0acc2521a76f5a",
+      "contentSha256": "19e1d163a47f48885ecb51d5fa18b1d4d25c84e25150e0c086528bb77a8b1b2b"
+    },
+    "scoreTool": {
+      "file": "games/magic/fixtures/accuracy/4ed/paragraph-score-tool.mjs.gz",
+      "sha256": "4dc2988394bbaf78bd3a9b9e791b3f72fbdce6f9180c196602f905db26100c87",
+      "contentSha256": "073fc57af318705f1c8bf2ba479159139d071ccd5b14be67a28f0eb7d72abe4b"
+    }
+  },
+  "nativeCounts": {
+    "original": {
+      "changed": 1,
+      "unchanged": 377,
+      "keysChanged": 1
+    },
+    "oracle": {
+      "changed": 0,
+      "unchanged": 378,
+      "keysChanged": 0
+    },
+    "oracle-modern": {
+      "changed": 0,
+      "unchanged": 378,
+      "keysChanged": 0
+    },
+    "etching": {
+      "changed": 0,
+      "unchanged": 378,
+      "keysChanged": 0
+    }
+  },
+  "wholeCard": {
+    "cards": 378,
+    "rankedCards": 378,
+    "before100": 79.6148109498071,
+    "current100": 79.65514173446755,
+    "improved": 1,
+    "regressed": 0
+  },
+  "scoreReuse": {
+    "reused": 377,
+    "fresh": 1
+  },
+  "correction": {
+    "printingId": "f5a8573d-0e2d-4a7f-a47f-7e1bc472d4fa",
+    "name": "Gloom",
+    "referenceHash": "7cc92d7e4c514cd854630b41add5e82b253a0ac7ae2348cfd4fb3083674387a4",
+    "scope": "Original rules only;replace the space between the two printed abilities with one paragraph break. No lexical or geometry changes.",
+    "before100": 68.32452996824799,
+    "current100": 83.56956656990491,
+    "delta100": 15.245036601656924
+  },
+  "controls": {
+    "originalUnchanged": 377,
+    "oracleUnchanged": 378,
+    "oracleModernUnchanged": 378,
+    "etchingsUnchanged": 378,
+    "landBodiesUnchanged": 18
+  },
+  "visualReview": {
+    "method": "Equal-scale scan,current body-class render and reviewed paragraph probe;integrated native pixels exactly match the reviewed probe.",
+    "observations": [
+      "The five centered rows now match the printing’s two-ability structure.",
+      "The shared25px class is retained. No printing-specific size,position or line-wrap overrides were added.",
+      "Oracle wording and both Oracle symbol modes keep exact pixels;alpha,frame,art and masks are unchanged."
+    ]
+  },
+  "limitations": [
+    "Reused cached scan and existing stock transform;not a fresh holdout.",
+    "Small font/texture differences remain;this is a source-structure correction,not proof of perfect typography.",
+    "Unstable Mutation and other existing text,frame/color,symbol,footer and complete-set audits remain separate.",
+    "No renderer release or Lab rollout is implied. Scores are structure indices out of100."
+  ]
+}

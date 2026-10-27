@@ -1,8 +1,12 @@
+import {
+  fourthParagraphHistoricalHash,
+  preFourthParagraphSource,
+} from '../games/magic/tools/accuracy/fourth-paragraph-ancestry.mjs';
 // Integrated nonland policy keeps exact source history and scoped score reuse.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   fourthNonlandDelta,
   fourthNonlandHistoricalHash,
@@ -11,10 +15,10 @@ import {
 } from '../games/magic/tools/accuracy/fourth-nonland-ancestry.mjs';
 import { validateFourthNonlandData } from '../games/magic/tools/accuracy/fourth-nonland-data-check.mjs';
 const p = await fourthNonlandDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await fourthParagraphHistoricalHash(), p.afterRenderer);
 assert.equal(await fourthNonlandHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {
-  const b = await fs.readFile(file);
+  const b = await preFourthParagraphSource(file, await fs.readFile(file));
   assert.equal(hash(b), r.after);
   assert.equal(hash(await preFourthNonlandSource(file, b)), r.before);
   const changed = Buffer.concat([b, Buffer.from('\n// unreviewed change\n')]);

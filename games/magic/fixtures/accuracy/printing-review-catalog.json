@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "d9b56e0f3ea197b232450c2f6138073bd1418d55c1f067c583214695dca87206",
+  "revision": "3921e2d97e12c1c924bb83e5409eede0e4626f333a4d91b7dad0f66c05011034",
   "artistRevision": "5f5beffaec61f0cd8735763f2665ca1bd41f619c4d0cfe2b6ae7b5c9c36430be",
   "sets": {
     "00012bd8-ed68-4978-a22d-f450c8a6e048": "3ed",
@@ -42127,6 +42127,35 @@
         "reason": "Type line visually checked against this printing’s cached Scryfall scan. This review certifies original type wording only.",
         "fields": {
           "typeLine": "Enchantment"
+        }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/4ed/annotations-text-outliers.json",
+        "referenceSha256": "7cc92d7e4c514cd854630b41add5e82b253a0ac7ae2348cfd4fb3083674387a4",
+        "reason": "The physical printing separates the white-spell and white-enchantment abilities into two paragraphs. Preserve that logical paragraph break;no forced line wraps or geometry overrides. Oracle wording is unchanged.",
+        "fields": {
+          "rulesText": "White spells cost an additional {3} to cast.\nWhite enchantments with activation costs require an additional {3} to use.",
+          "flavorText": "",
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "White spells cost an additional {3} to cast.",
+                  "italic": false
+                }
+              ]
+            },
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "White enchantments with activation costs require an additional {3} to use.",
+                  "italic": false
+                }
+              ]
+            }
+          ]
         }
       }
     ],

@@ -1,3 +1,4 @@
+import { preFourthParagraphSource } from './fourth-paragraph-ancestry.mjs';
 // Strict, exact-source ancestry for the reviewed Fourth nonland size classes.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -53,6 +54,7 @@ export function fourthNonlandDelta() {
   })());
 }
 export async function preFourthNonlandSource(file, bytes) {
+  bytes = await preFourthParagraphSource(file, bytes);
   const e = (await fourthNonlandDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

@@ -65,7 +65,32 @@ node tests/magic-body-classes.mjs
 node tests/magic-fourth-nonland-adoption.mjs
 ```
 
-See `nonland-body-adoption.json` for the integrated score and its limits. Gloom's
-printed five-line centered passage remains an outlier; the shared rule does not
-reproduce that line structure. This regional change does not close the complete
-Fourth Edition audit.
+See `nonland-body-adoption.json` for the body-class score and its limits. The
+subsequent `paragraph-adoption.json` corrects Gloom's Original source: the two
+abilities are separate paragraphs. The shared 25-pixel class then reproduces all
+five printed rows, improving its whole-card score from 68.32 to 83.57/100. Both
+public wording resolvers apply the reviewed correction; Oracle is unchanged.
+This source correction does not close the complete Fourth Edition audit.
+
+## Paragraph-correction verification
+
+The paragraph update raises the 378-card whole-card mean to 79.66/100. Its native
+receipt retains all 377 other Originals, all Oracle renders and all etching
+masks. Only Gloom's Original recipe key changes. Scores are reused only after
+checking exact native bytes, reference identities, scan transforms and metric
+region plans.
+
+```sh
+node games/magic/tools/accuracy/fourth-paragraph-native-review.mjs \
+  BEFORE_INPUTS.json AFTER_INPUTS.json BEFORE/capture.json AFTER/capture.json \
+  REVIEWED_PROBE/capture.json ANNOTATION.json NEW_PRIVATE_PROOF.json
+node tests/magic-fourth-paragraph-adoption.mjs
+node tests/magic-unlimited-worker-parity.mjs --fourth
+node tests/magic-unlimited-worker-parity.mjs --fourth --built
+```
+
+The worker checks use synthetic bitmaps and installed fonts. They verify exact
+text calls/metrics, assets and masks across four sizes, three wording/symbol
+modes and 13 faces. Face-filter differences use the established M21 raster
+envelope: at most one 8-bit level of mean error per card and three per 64-pixel
+tile, with exact alpha. They are portability checks, not scan-calibration scores.

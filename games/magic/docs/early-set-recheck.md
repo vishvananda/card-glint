@@ -11,7 +11,7 @@ This pass covers ordinary printings through Fourth Edition. Collector's Edition
 | Revised                           | 306 Originals; body/footer, mana sizing/palette and headings adopted | Mana placement/ink, frame/land and outlier review; certification |
 | Legends, The Dark, Fallen Empires | Earlier profiles and evidence remain available                       | Current-source recheck in release order                          |
 
-| Fourth Edition | 378 Originals; land and narrow nonland body updates; 79.61/100 | Text outliers, remaining component audits and bundled release |
+| Fourth Edition | 378 Originals; land and narrow nonland body updates; 79.66/100 | Text outliers, remaining component audits and bundled release |
 
 These are structural similarity indices, not percentages of correct pixels.
 The profiles are committed work in progress; the published package remains
@@ -526,17 +526,20 @@ checkpoint does not mark the set or the through-Fourth pass complete.
 
 ## Fourth Edition text classes
 
-The integrated nonland rule improves the fixed-pose whole-card mean from
-78.84 to 79.61/100. Thirty-six printings improve, Gloom regresses 0.62 points,
-and 341 native faces retain their exact pixels and prior scores. All 18 land
-bodies and all 378 etching masks remain unchanged. Original and Oracle wording
-are fitted independently; all 1,512 native variants have no text overflow.
-The 122 Dark printings in four modes retain their pixels and layouts.
+The body classes and corrected Gloom paragraph improve the fixed-pose whole-card
+mean from 78.84 to 79.66/100. Thirty-seven printings improve and 341 native faces
+retain their exact pixels and prior scores. All 18 land bodies and all 378
+etching masks remain unchanged. Original and Oracle wording are fitted
+independently; all 1,512 native variants have no text overflow. The preceding
+body-only update also retains 122 Dark printings in four modes.
 
 The rule uses shared size/length classes, with editable bounds and spacing in
 the consolidated set profile. It preserves existing mixed/flavor, centered and
-very dense passages. Gloom's printed five-line structure and other retained
-outliers still need review. See the [adoption receipt](../fixtures/accuracy/4ed/nonland-body-adoption.json)
-and [reproduction commands](../fixtures/accuracy/4ed/README.md). This evidence uses
-reused scans and the retained stock transforms; it does not approve the rejected
+very dense passages. Gloom's input had joined two printed abilities; correcting
+the logical paragraph break restores all five printed rows at the shared size.
+Other retained outliers, including Unstable Mutation, still need review. See the
+[body-class receipt](../fixtures/accuracy/4ed/nonland-body-adoption.json),
+[paragraph correction](../fixtures/accuracy/4ed/paragraph-adoption.json) and
+[reproduction commands](../fixtures/accuracy/4ed/README.md). These measurements
+reuse scans and the retained stock transforms. They do not approve the rejected
 local-panel warp or mark the set complete.

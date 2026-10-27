@@ -1,3 +1,4 @@
+import { preFourthParagraphSource } from '../games/magic/tools/accuracy/fourth-paragraph-ancestry.mjs';
 import {
   fourthNonlandHistoricalHash,
   preFourthNonlandSource,
@@ -100,7 +101,12 @@ for (const task of [
 ])
   assert(!(await fourthNonbasicAffected('4ed', task, false, factory)));
 assert.equal(
-  hash(await fs.readFile('games/magic/fixtures/accuracy/4ed/annotations-text-outliers.json')),
+  hash(
+    await preFourthParagraphSource(
+      'games/magic/fixtures/accuracy/4ed/annotations-text-outliers.json',
+      await fs.readFile('games/magic/fixtures/accuracy/4ed/annotations-text-outliers.json'),
+    ),
+  ),
   p.annotation.sha256,
 );
 const annotation = JSON.parse(p.annotation.source),

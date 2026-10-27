@@ -1,3 +1,4 @@
+import { fourthParagraphDelta, fourthParagraphAffected } from './fourth-paragraph-ancestry.mjs';
 import { fourthNonlandDelta, fourthNonlandAffected } from './fourth-nonland-ancestry.mjs';
 import { fourthNonbasicDelta, fourthNonbasicAffected } from './fourth-nonbasic-ancestry.mjs';
 import { fourthBasicBodyDelta, fourthBasicBodyAffected } from './fourth-basic-body-ancestry.mjs';
@@ -122,6 +123,15 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (
+          (await fourthParagraphAffected(set.set, task, original, group)) &&
+          item.proof?.fourthParagraphSource !== (await fourthParagraphDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Gloom has a reviewed Original paragraph break. Only its Original rules input, rendered rules and whole-card evidence require current review; other printing fields and variants retain their evidence.';
+          continue;
+        }
         if (
           (await fourthNonlandAffected(set.set, task, original, group)) &&
           item.proof?.fourthNonlandSource !== (await fourthNonlandDelta()).afterRenderer
