@@ -1,3 +1,4 @@
+import { preFourthBasicWordSource } from './fourth-basic-word-ancestry.mjs';
 // Exact native/source ancestry. A regional fit never marks a whole set complete.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -69,6 +70,7 @@ export function fourthFlavorDelta() {
   })());
 }
 export async function preFourthFlavorSource(file, bytes) {
+  bytes = await preFourthBasicWordSource(file, bytes);
   const r = (await fourthFlavorDelta()).files[file];
   return r && hash(bytes) === r.after ? Buffer.from(r.beforeSource) : bytes;
 }

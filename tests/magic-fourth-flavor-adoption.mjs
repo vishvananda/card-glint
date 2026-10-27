@@ -1,3 +1,7 @@
+import {
+  preFourthBasicWordSource,
+  fourthBasicWordHistoricalHash,
+} from '../games/magic/tools/accuracy/fourth-basic-word-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -19,10 +23,10 @@ import {
   fourthCenteredApproval,
 } from '../games/magic/tools/accuracy/fourth-centered-ancestry.mjs';
 const p = await fourthFlavorDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await fourthBasicWordHistoricalHash(), p.afterRenderer);
 assert.equal(await fourthFlavorHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {
-  const b = await fs.readFile(file);
+  const b = await preFourthBasicWordSource(file, await fs.readFile(file));
   assert.equal(hash(b), r.after);
   assert.equal(hash(await preFourthFlavorSource(file, b)), r.before);
   const unknown = Buffer.concat([b, Buffer.from('\n// unreviewed change\n')]);

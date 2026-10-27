@@ -3,7 +3,7 @@ import type { SetCalibrationProfile } from '../types.js';
 /** Shared printing defaults. Scan transforms and reference images belong in evidence. */
 export const profile = {
   schema: 1,
-  revision: 5,
+  revision: 6,
   set: '4ed',
   border: 'white',
   frames: {
@@ -792,7 +792,7 @@ export const profile = {
   },
   body: {
     'L-W': {
-      bounds: { x: 64, y: 414, width: 360, height: 184 },
+      bounds: { x: 62.5, y: 414, width: 360, height: 184 },
       maximumSize: 25,
       minimumSize: 15,
       typography: {
@@ -808,7 +808,7 @@ export const profile = {
       centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
     'L-U': {
-      bounds: { x: 64, y: 414, width: 360, height: 184 },
+      bounds: { x: 62.5, y: 414, width: 360, height: 184 },
       maximumSize: 25,
       minimumSize: 15,
       typography: {
@@ -824,7 +824,7 @@ export const profile = {
       centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
     'L-B': {
-      bounds: { x: 64, y: 414, width: 360, height: 184 },
+      bounds: { x: 62.5, y: 414, width: 360, height: 184 },
       maximumSize: 25,
       minimumSize: 15,
       typography: {
@@ -840,7 +840,7 @@ export const profile = {
       centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
     'L-R': {
-      bounds: { x: 64, y: 414, width: 360, height: 184 },
+      bounds: { x: 62.5, y: 414, width: 360, height: 184 },
       maximumSize: 25,
       minimumSize: 15,
       typography: {
@@ -856,7 +856,7 @@ export const profile = {
       centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
     'L-G': {
-      bounds: { x: 64, y: 414, width: 360, height: 184 },
+      bounds: { x: 62.5, y: 414, width: 360, height: 184 },
       maximumSize: 25,
       minimumSize: 15,
       typography: {
@@ -908,7 +908,7 @@ export const profile = {
 } as const satisfies SetCalibrationProfile;
 
 export const review = {
-  revision: 5,
+  revision: 6,
   scope: 'Ordinary nonfoil printing; see per-component evidence and outstanding tasks.',
   evidence: [
     'games/magic/fixtures/accuracy/early-reprint-frame-color.json',
@@ -920,6 +920,7 @@ export const review = {
     'games/magic/fixtures/accuracy/4ed/nonbasic-body-adoption.json',
     'games/magic/fixtures/accuracy/4ed/nonland-body-adoption.json',
     'games/magic/fixtures/accuracy/4ed/reviewed-centering-adoption.json',
+    'games/magic/fixtures/accuracy/4ed/basic-word-adoption.json',
   ],
   pending: ['rules', 'flavor', 'setSymbol', 'fullCard', 'release'],
 } as const;

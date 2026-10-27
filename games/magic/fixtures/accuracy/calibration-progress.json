@@ -173309,8 +173309,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 3 Original native/input/reference/pose joins in this group are scored at 79.19/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 3 current Original native/reference/pose joins score 81.69/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -173324,7 +173324,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -173339,6 +173340,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 3,
+                "mean100": 81.6873983764951,
+                "minimum100": 80.73852468634901,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 3,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -173448,8 +173457,24 @@
             },
             "rules": {
               "status": "partial",
-              "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "reason": "Original basic-land words use one shared 1.5px left shift, with unchanged size, width and vertical position. Symbol windows were excluded during fitting. Inline glyph, disc and tap matching remains open.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
+              ],
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+              "proof": {
+                "basicWordSource": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "basicWordNative": "fb7fbb68e99ce25e77d2c8a4d7b98769079a5f4ff45bcb703fe5d8ca5a872980"
+              }
+            },
+            "specialComponents": {
+              "status": "partial",
+              "reason": "All fifteen printed basic-land inline symbols were measured. Header transforms and land-only fits regress other rules symbols; disc, glyph and tap calibration remains open.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/4ed/inline-symbol-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
+              ]
             }
           },
           "printingIds": [
@@ -173586,8 +173611,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 32 Original native/input/reference/pose joins in this group are scored at 81.10/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 32 current Original native/reference/pose joins score 81.10/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -173601,7 +173626,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -173616,6 +173642,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 32,
+                "mean100": 81.09899895605652,
+                "minimum100": 72.64644439102015,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 32,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -173951,8 +173985,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 26 Original native/input/reference/pose joins in this group are scored at 81.73/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 26 current Original native/reference/pose joins score 81.73/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -173966,7 +174000,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -173981,6 +174016,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 26,
+                "mean100": 81.7291570274031,
+                "minimum100": 68.63038052397702,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 26,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -174296,8 +174339,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 21 Original native/input/reference/pose joins in this group are scored at 79.88/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 21 current Original native/reference/pose joins score 79.88/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -174311,7 +174354,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -174326,6 +174370,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 21,
+                "mean100": 79.8848625119662,
+                "minimum100": 68.02413343909554,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 21,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -174650,8 +174702,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 49 Original native/input/reference/pose joins in this group are scored at 80.16/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 49 current Original native/reference/pose joins score 80.16/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -174665,7 +174717,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -174680,6 +174733,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 49,
+                "mean100": 80.1615017142225,
+                "minimum100": 73.71149131463856,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 49,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -175016,8 +175077,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 3 Original native/input/reference/pose joins in this group are scored at 72.85/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 3 current Original native/reference/pose joins score 72.85/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -175031,7 +175092,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -175046,6 +175108,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 3,
+                "mean100": 72.85394934045817,
+                "minimum100": 68.20470235505393,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 3,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -175296,8 +175366,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 3 Original native/input/reference/pose joins in this group are scored at 81.44/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 3 current Original native/reference/pose joins score 83.62/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -175311,7 +175381,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -175326,6 +175397,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 3,
+                "mean100": 83.61889417204843,
+                "minimum100": 82.71945187546616,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 3,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -175435,8 +175514,24 @@
             },
             "rules": {
               "status": "partial",
-              "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "reason": "Original basic-land words use one shared 1.5px left shift, with unchanged size, width and vertical position. Symbol windows were excluded during fitting. Inline glyph, disc and tap matching remains open.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
+              ],
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+              "proof": {
+                "basicWordSource": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "basicWordNative": "fb7fbb68e99ce25e77d2c8a4d7b98769079a5f4ff45bcb703fe5d8ca5a872980"
+              }
+            },
+            "specialComponents": {
+              "status": "partial",
+              "reason": "All fifteen printed basic-land inline symbols were measured. Header transforms and land-only fits regress other rules symbols; disc, glyph and tap calibration remains open.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/4ed/inline-symbol-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
+              ]
             }
           },
           "printingIds": [
@@ -175573,8 +175668,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 31 Original native/input/reference/pose joins in this group are scored at 81.42/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 31 current Original native/reference/pose joins score 81.42/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -175588,7 +175683,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -175603,6 +175699,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 31,
+                "mean100": 81.41589836717196,
+                "minimum100": 75.09595156861678,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 31,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -175937,8 +176041,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 27 Original native/input/reference/pose joins in this group are scored at 81.90/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 27 current Original native/reference/pose joins score 81.90/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -175952,7 +176056,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -175967,6 +176072,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 27,
+                "mean100": 81.89560986836548,
+                "minimum100": 72.31979379258065,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 27,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -176281,8 +176394,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 3 Original native/input/reference/pose joins in this group are scored at 81.88/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 3 current Original native/reference/pose joins score 83.97/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -176296,7 +176409,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -176311,6 +176425,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 3,
+                "mean100": 83.970487467516,
+                "minimum100": 83.09738952477639,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 3,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -176420,8 +176542,24 @@
             },
             "rules": {
               "status": "partial",
-              "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "reason": "Original basic-land words use one shared 1.5px left shift, with unchanged size, width and vertical position. Symbol windows were excluded during fitting. Inline glyph, disc and tap matching remains open.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
+              ],
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+              "proof": {
+                "basicWordSource": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "basicWordNative": "fb7fbb68e99ce25e77d2c8a4d7b98769079a5f4ff45bcb703fe5d8ca5a872980"
+              }
+            },
+            "specialComponents": {
+              "status": "partial",
+              "reason": "All fifteen printed basic-land inline symbols were measured. Header transforms and land-only fits regress other rules symbols; disc, glyph and tap calibration remains open.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/4ed/inline-symbol-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
+              ]
             }
           },
           "printingIds": [
@@ -176558,8 +176696,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 29 Original native/input/reference/pose joins in this group are scored at 78.69/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 29 current Original native/reference/pose joins score 78.69/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -176573,7 +176711,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -176588,6 +176727,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 29,
+                "mean100": 78.69035100925275,
+                "minimum100": 70.57261146886447,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 29,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -176920,8 +177067,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 29 Original native/input/reference/pose joins in this group are scored at 78.72/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 29 current Original native/reference/pose joins score 78.72/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -176935,7 +177082,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -176950,6 +177098,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 29,
+                "mean100": 78.71743058398766,
+                "minimum100": 69.68586082271293,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 29,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -177266,8 +177422,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 3 Original native/input/reference/pose joins in this group are scored at 79.88/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 3 current Original native/reference/pose joins score 82.97/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -177281,7 +177437,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -177296,6 +177453,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 3,
+                "mean100": 82.96511134153344,
+                "minimum100": 82.91363546603225,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 3,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -177405,8 +177570,24 @@
             },
             "rules": {
               "status": "partial",
-              "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "reason": "Original basic-land words use one shared 1.5px left shift, with unchanged size, width and vertical position. Symbol windows were excluded during fitting. Inline glyph, disc and tap matching remains open.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
+              ],
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+              "proof": {
+                "basicWordSource": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "basicWordNative": "fb7fbb68e99ce25e77d2c8a4d7b98769079a5f4ff45bcb703fe5d8ca5a872980"
+              }
+            },
+            "specialComponents": {
+              "status": "partial",
+              "reason": "All fifteen printed basic-land inline symbols were measured. Header transforms and land-only fits regress other rules symbols; disc, glyph and tap calibration remains open.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/4ed/inline-symbol-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
+              ]
             }
           },
           "printingIds": [
@@ -177543,8 +177724,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 22 Original native/input/reference/pose joins in this group are scored at 79.65/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 22 current Original native/reference/pose joins score 79.65/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -177558,7 +177739,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -177573,6 +177755,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 22,
+                "mean100": 79.652280756515,
+                "minimum100": 69.59826720751198,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 22,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -177898,8 +178088,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 36 Original native/input/reference/pose joins in this group are scored at 79.92/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 36 current Original native/reference/pose joins score 79.92/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -177913,7 +178103,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -177928,6 +178119,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 36,
+                "mean100": 79.92325038127079,
+                "minimum100": 70.20099007143561,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 36,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -178251,8 +178450,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 3 Original native/input/reference/pose joins in this group are scored at 79.61/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 3 current Original native/reference/pose joins score 80.02/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -178266,7 +178465,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -178281,6 +178481,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 3,
+                "mean100": 80.01517569131836,
+                "minimum100": 78.40474548108065,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 3,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -178390,8 +178598,24 @@
             },
             "rules": {
               "status": "partial",
-              "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "reason": "Original basic-land words use one shared 1.5px left shift, with unchanged size, width and vertical position. Symbol windows were excluded during fitting. Inline glyph, disc and tap matching remains open.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
+              ],
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+              "proof": {
+                "basicWordSource": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "basicWordNative": "fb7fbb68e99ce25e77d2c8a4d7b98769079a5f4ff45bcb703fe5d8ca5a872980"
+              }
+            },
+            "specialComponents": {
+              "status": "partial",
+              "reason": "All fifteen printed basic-land inline symbols were measured. Header transforms and land-only fits regress other rules symbols; disc, glyph and tap calibration remains open.",
+              "evidence": [
+                "games/magic/fixtures/accuracy/4ed/inline-symbol-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
+              ]
             }
           },
           "printingIds": [
@@ -178528,8 +178752,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 16 Original native/input/reference/pose joins in this group are scored at 78.30/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 16 current Original native/reference/pose joins score 78.30/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -178543,7 +178767,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -178558,6 +178783,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 16,
+                "mean100": 78.2985973313129,
+                "minimum100": 70.5812699321904,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 16,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {
@@ -178877,8 +179110,8 @@
             },
             "fullCard": {
               "status": "partial",
-              "reason": "All 42 Original native/input/reference/pose joins in this group are scored at 81.16/100. The complete Fourth checkpoint is 80.27/100 with 377 exact score reuses and one independently gated scan-pose correction. Source/component/visual audits remain open; not a complete-set approval.",
-              "rendererHash": "d097f331164f131805bc2cde09b09c042297ba7f3a0637bef6c4dd6eec3a9382",
+              "reason": "All 42 current Original native/reference/pose joins score 81.16/100. The full Fourth checkpoint is 80.35/100 after the shared basic-word correction. Every actual PNG matches its measured prototype or unchanged control. Component and visual audits remain open.",
+              "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
               "guards": {
                 "games/magic/src/presentation/calibration-profiles.ts": "8f1915b28c3a7e8bed7f2c90f8bcd1dd37a843ff7460e51db9b5312795a299e8",
                 "games/magic/src/presentation/retro-frame.ts": "8dc3b5b597b2938e7b0515dc8ce80a48c855b614bba930777d09caf193af9ec9",
@@ -178892,7 +179125,8 @@
               },
               "evidence": [
                 "games/magic/fixtures/accuracy/early-reprint-frame-color.json",
-                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json"
+                "games/magic/fixtures/accuracy/4ed/land-normalization-review.json",
+                "games/magic/fixtures/accuracy/4ed/basic-word-adoption.json"
               ],
               "guardExtensions": {
                 "games/magic/src/presentation/calibration-profiles.ts": {
@@ -178907,6 +179141,14 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "latestNativeScore": {
+                "cards": 42,
+                "mean100": 81.15804825289646,
+                "minimum100": 69.69346241463877,
+                "rendererHash": "bf7342586d0d17cb44e9deddfd85dae4ff44891d1a6d51ab6d3121125af9fc23",
+                "nativeJoined": 42,
+                "evidence": "games/magic/fixtures/accuracy/4ed/basic-word-current-native-scores.json.gz"
               }
             },
             "manaGeometry": {

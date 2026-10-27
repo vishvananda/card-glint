@@ -435,3 +435,49 @@ MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-inlin
 MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-inline-symbol-candidate.mjs INPUTS NATIVE/capture.json FIT.json NEW_PROTOTYPES all-inline
 MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-inline-symbol-score.mjs INPUTS POSES LAND_REFINEMENT NEW_PROTOTYPES SCORES.json
 ```
+
+## Shared basic-land word position
+
+The [adopted word fit](basic-word-adoption.json) moves the five basic-land body
+defaults 1.5 canonical pixels left. Size 25, text width 1.01, vertical position,
+leading, wording and symbols retain their previous values. The authoritative
+change is in the single Fourth set profile; its revision is now 6.
+
+All fifteen Original scans are included. One fixed union of semantic symbol
+windows is masked throughout each search, so tap or mana artwork cannot pull
+the word fit off target. The coarse search tests size, width, x and y. A finer
+search confirms the shared horizontal correction. Individual best-fit previews
+are diagnostics only and are not runtime overrides.
+
+The fine-search word mean rises from 82.24 to 93.84/100. Fourteen scans gain and
+one loses 0.51 points. With the published whole-card metric unchanged, the
+fifteen basics rise from 80.40 to 82.45/100. The full 378-card mean rises from
+80.27 to 80.35/100, with fourteen gains and one 0.30-point Plains loss retained.
+
+Native replay checks 492 frozen cards in four variants. Exactly twenty Original
+faces change: fifteen Fourth and five inherited Ice Age basics. Every changed
+face and key matches the independently rendered data-table prototype. All 1,948
+other PNG pairs are byte-identical, including every Oracle and etching image.
+Changed pixels stay within the single rules line; alpha is unchanged.
+
+Profile revision keys change for 378 Fourth and 30 eligible Ice Age cards.
+Three gold Ice cards and all other controls retain their keys. The new score
+receipt joins all 378 actual Original PNGs to their measured pixels and reuses
+their metric results explicitly. Historical prototype scores retain their
+original renderer identity.
+
+Exact source validation permits only the five x values, profile/review revision
+and the new evidence link, plus the corresponding generated payloads and
+manifest. Historical evidence is projected through that known data delta;
+unrecognized edits remain unrecognized. Source transcription, inline symbols,
+frame/keyline materials and complete-set certification remain open.
+
+Reproduce using the pre-change source inventory in the delta receipt, the
+existing cached references and the pinned native inputs:
+
+```sh
+gzip -dc games/magic/fixtures/accuracy/4ed/basic-word-fine-grid.json.gz > GRID.json
+MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-basic-word-fit.mjs INPUTS BEFORE/capture.json POSES LAND_REFINEMENT NEW_FIT GRID.json
+MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-basic-word-prototype.mjs INPUTS BEFORE/capture.json NEW_FIT/study.json NEW_PROTOTYPE
+node tests/magic-fourth-basic-word-adoption.mjs
+```
