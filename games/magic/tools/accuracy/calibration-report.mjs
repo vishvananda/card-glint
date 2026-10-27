@@ -1,3 +1,4 @@
+import { legArtistDelta, legArtistAffected } from './leg-artist-data-ancestry.mjs';
 import { revisedHeadingDelta, revisedHeadingAffected } from './revised-heading-ancestry.mjs';
 import { revisedManaFitDelta, revisedManaFitAffected } from './revised-mana-fit-ancestry.mjs';
 import {
@@ -118,6 +119,15 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (
+          (await legArtistAffected(set.set, task, original, group)) &&
+          item.proof?.legArtistSource !== (await legArtistDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'The exact Legends printing has a reviewed physical artist-credit correction. Artist and full-card evidence for affected printings needs current inputs; other wording,geometry and printing groups retain their evidence.';
+          continue;
+        }
         const currentAbu = await abuCurrentApproval(item, group, task, original, set.set);
         if (
           revisedHeadingAffected(set.set, task, original, group) &&

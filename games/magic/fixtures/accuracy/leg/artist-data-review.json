@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "set": "leg",
+  "status": "physical-artist-inputs-promoted-not-typography-approval",
+  "printings": 310,
+  "correctedArtists": 40,
+  "nativeVariants": 1240,
+  "sourceReceipt": "games/magic/fixtures/accuracy/leg/artist-data-source-delta.json.gz",
+  "nativeEvidence": "games/magic/fixtures/accuracy/leg/artist-native-isolation.json.gz",
+  "artifacts": {
+    "scores": {
+      "file": "games/magic/fixtures/accuracy/leg/artist-whole-scores.json.gz",
+      "sha256": "bd7025da78797c965c4efd423c2ffe8724a0097057ff60c41ce0c8fe0ecb5d5a",
+      "contentSha256": "64f84915bdeecdaaf1de6af820a7918558e0398fb358e2ee21d15bae08c07a1e"
+    },
+    "scoreTool": {
+      "file": "games/magic/fixtures/accuracy/leg/artist-score-tool.mjs.gz",
+      "sha256": "5cadcc8157005b81522f8322adb3cb7e04950c8bbe92f2955b779adfa43b1550",
+      "contentSha256": "277524625f2e423b76906ea3c3e268c363aa345cc3dd02d77d312d82c2c79b09"
+    }
+  },
+  "artistStrip": {
+    "measured": 40,
+    "before100": 72.40052349761508,
+    "after100": 74.10724776821768,
+    "gains": 34,
+    "losses": 6
+  },
+  "wholeCard": {
+    "cards": 310,
+    "rankedCards": 308,
+    "before100": 74.53590400421822,
+    "current100": 74.53590400421822,
+    "improved": 0,
+    "regressed": 0
+  },
+  "scoreReuse": {
+    "reused": 270,
+    "fresh": 40
+  },
+  "regionalRegressions": [
+    {
+      "id": "45b1e60d-54dd-41cd-b9a2-00890725a3df",
+      "name": "Kasimir the Lone Wolf",
+      "before100": 75.97487825733313,
+      "after100": 75.108053028592
+    },
+    {
+      "id": "b9211949-66a5-4039-ac6d-3e42b008b58e",
+      "name": "Livonya Silone",
+      "before100": 78.05627912056093,
+      "after100": 77.68301257251038
+    },
+    {
+      "id": "f079c74e-a39a-40f9-9c7e-9319c0c189c6",
+      "name": "Ramses Overdark",
+      "before100": 78.01771524040669,
+      "after100": 77.37225574674899
+    },
+    {
+      "id": "d11f90e7-ced1-4d80-8083-99acbf459ad7",
+      "name": "Riven Turnbull",
+      "before100": 78.65651484845317,
+      "after100": 77.20303910327029
+    },
+    {
+      "id": "7a20dcb0-5350-40e0-82d3-c8d0186fc9d2",
+      "name": "Sol'kanar the Swamp King",
+      "before100": 77.89142199251269,
+      "after100": 76.8894483330597
+    },
+    {
+      "id": "83717eb2-220e-4086-be09-dee9174798b8",
+      "name": "The Lady of the Mountain",
+      "before100": 76.98794342468193,
+      "after100": 75.85437143447737
+    }
+  ],
+  "limitations": [
+    "The40 text corrections are visually confirmed physical credits,independent of edge ranking",
+    "All other artist text,card content,layouts,fonts,artwork and frame values remain unchanged",
+    "Artist/legal parts remain unranked in the whole-card metric,so its mean stays74.535904/100;regional credit gains are separate",
+    "Artist typography and full-set calibration still need their full audits;the six regional losses remain review items"
+  ]
+}

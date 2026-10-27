@@ -1,9 +1,13 @@
+import {
+  preLegArtistDataSource,
+  legArtistHistoricalHash,
+} from '../games/magic/tools/accuracy/leg-artist-data-ancestry.mjs';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { createServer } from './magic-vite.mjs';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   revisedHeadingDelta,
   preRevisedHeadingSource,
@@ -11,10 +15,10 @@ import {
   revisedHeadingAffected,
 } from '../games/magic/tools/accuracy/revised-heading-ancestry.mjs';
 const p = await revisedHeadingDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await legArtistHistoricalHash(), p.afterRenderer);
 assert.equal(await revisedHeadingHistoricalHash(), p.beforeRenderer);
 for (const [file, e] of Object.entries(p.files)) {
-  const b = await readFile(file);
+  const b = await preLegArtistDataSource(file, await readFile(file));
   assert.equal(hash(b), e.after);
   assert.equal(hash(await preRevisedHeadingSource(file, b)), e.before);
   const unknown = Buffer.concat([b, Buffer.from('\n// unreviewed change\n')]);

@@ -1,3 +1,4 @@
+import { preLegArtistDataSource } from './leg-artist-data-ancestry.mjs';
 // Exact source history for the Revised heading font, ink and shared geometry.
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -35,6 +36,7 @@ export function revisedHeadingDelta() {
   })());
 }
 export async function preRevisedHeadingSource(file, bytes) {
+  bytes = await preLegArtistDataSource(file, bytes);
   const e = (await revisedHeadingDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }
