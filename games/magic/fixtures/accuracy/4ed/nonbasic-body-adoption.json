@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "set": "4ed",
+  "status": "nonbasic-body-integrated-full-set-audit-open",
+  "beforeRenderer": "66b245fbd2ed8880eba5aea970a7031e36b03554e0ff3b7c3a14027728471324",
+  "afterRenderer": "bc433ab4681297c3a055dc23ab082f3e099d40bbf619f6e12a3152ff76a1bb7c",
+  "sourceReceipt": "games/magic/fixtures/accuracy/4ed/nonbasic-source-delta.json.gz",
+  "nativeEvidence": "games/magic/fixtures/accuracy/4ed/nonbasic-native-isolation.json.gz",
+  "artifacts": {
+    "nativeTool": {
+      "file": "games/magic/fixtures/accuracy/4ed/nonbasic-native-tool.mjs.gz",
+      "sha256": "b92670b30a0f99c5d66a66bee36844a19145ce5d80b3fe20b3aabf5696de34b0",
+      "contentSha256": "05362f994d71945076b7358601500f25db6b44f43fb87ea5623d815203f114d6"
+    },
+    "scores": {
+      "file": "games/magic/fixtures/accuracy/4ed/nonbasic-whole-scores.json.gz",
+      "sha256": "6cc0b3c71b741312b1e51a14999178b76564c1fd1bda55b790f8ba9bfe2f752e",
+      "contentSha256": "2744e1114713e6e37514a2ad9df3aa9e2fb7b278926de39eb13153ed25faad58"
+    },
+    "scoreTool": {
+      "file": "games/magic/fixtures/accuracy/4ed/nonbasic-score-tool.mjs.gz",
+      "sha256": "4846f79347d34c1979bd6d0bba6f264b1ffe93269850407a58cd83c7a2ae52ea",
+      "contentSha256": "3c283f07e2a4fcf85615bbfecb89cd73265650c9aa97a67418d70b3dbe497e5e"
+    }
+  },
+  "nativeCounts": {
+    "original": {
+      "changed": 3,
+      "unchanged": 375,
+      "keysChanged": 378
+    },
+    "oracle": {
+      "changed": 3,
+      "unchanged": 375,
+      "keysChanged": 378
+    },
+    "oracle-modern": {
+      "changed": 3,
+      "unchanged": 375,
+      "keysChanged": 378
+    },
+    "etching": {
+      "changed": 0,
+      "unchanged": 378,
+      "keysChanged": 378
+    }
+  },
+  "wordingCorrection": {
+    "printingId": "aff8d4f1-eaad-4afb-9097-2afab133f707",
+    "change": "Original first ability: 1 colorless → one colorless. The faint generic {1} activation disc is retained.",
+    "annotation": "games/magic/fixtures/accuracy/4ed/annotations-text-outliers.json",
+    "oracleUnchanged": true
+  },
+  "wholeCard": {
+    "cards": 378,
+    "rankedCards": 378,
+    "before100": 78.74156686117576,
+    "current100": 78.84494699062122,
+    "improved": 3,
+    "regressed": 0
+  },
+  "landGroup": {
+    "cards": 18,
+    "rankedCards": 18,
+    "before100": 76.03244362479033,
+    "current100": 78.20342634314514,
+    "improved": 3,
+    "regressed": 0
+  },
+  "scoreReuse": {
+    "reused": 375,
+    "fresh": 3
+  },
+  "improvements": [
+    {
+      "id": "aff8d4f1-eaad-4afb-9097-2afab133f707",
+      "name": "Mishra's Factory",
+      "before100": 64.51102473067945,
+      "current100": 76.92833824350838
+    },
+    {
+      "id": "1d51a6de-7bb4-4e3d-82a7-a298c8d742ef",
+      "name": "Oasis",
+      "before100": 51.69750361467982,
+      "current100": 68.20470235505393
+    },
+    {
+      "id": "a5899b46-226b-4be6-8e80-d2396f54210d",
+      "name": "Strip Mine",
+      "before100": 63.27563074562883,
+      "current100": 73.42880742281221
+    }
+  ],
+  "visualReview": {
+    "method": "Fixed-pose scan,previous native and integrated native rules panels at equal scale;all3 examined.",
+    "observations": [
+      "Oasis reproduces the two centered source rows and a much closer baseline.",
+      "Strip Mine now matches the source rules/flavor row counts and vertical gap;individual line endings and texture remain imperfect.",
+      "Mishra’s Factory reproduces the seven source rows with the corrected one colorless wording and faint generic activation disc retained.",
+      "Frame/paper color,bevels,inline symbol scale and other regional details retain separate audit obligations."
+    ]
+  },
+  "controls": {
+    "originalUnchanged": 375,
+    "basicBodiesUnchanged": 15,
+    "etchingsUnchanged": 378,
+    "darkPrintings": 122,
+    "darkNativeVariants": 488
+  },
+  "limitations": [
+    "Finite3-card nonbasic census uses reused development scans,not a new blind holdout.",
+    "Outer-stock poses remain provisional;printed-interior and remaining full-set component audits stay open.",
+    "Shared rules also change the3 Oracle layouts;Oracle content is preserved and current masks retain exact pixels.",
+    "All means are structure indices out of100;artist/legal diagnostics remain unranked.",
+    "No whole-set completion or release approval is granted by this regional adoption."
+  ]
+}

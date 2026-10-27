@@ -1,7 +1,11 @@
+import {
+  fourthNonbasicHistoricalHash,
+  preFourthNonbasicSource,
+} from '../games/magic/tools/accuracy/fourth-nonbasic-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   fourthBasicBodyDelta,
   fourthBasicBodyHistoricalHash,
@@ -9,10 +13,10 @@ import {
   fourthBasicBodyAffected,
 } from '../games/magic/tools/accuracy/fourth-basic-body-ancestry.mjs';
 const p = await fourthBasicBodyDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await fourthNonbasicHistoricalHash(), p.afterRenderer);
 assert.equal(await fourthBasicBodyHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {
-  const bytes = await fs.readFile(file);
+  const bytes = await preFourthNonbasicSource(file, await fs.readFile(file));
   assert.equal(hash(bytes), r.after);
   assert.equal(hash(await preFourthBasicBodySource(file, bytes)), r.before);
   const unknown = Buffer.concat([bytes, Buffer.from('\n// unknown change\n')]);

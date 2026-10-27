@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "acdea5143ffaaada5933bdf209e80624baa8c517786ff77af0d50fd46b7c2774",
+  "revision": "d9b56e0f3ea197b232450c2f6138073bd1418d55c1f067c583214695dca87206",
   "artistRevision": "5f5beffaec61f0cd8735763f2665ca1bd41f619c4d0cfe2b6ae7b5c9c36430be",
   "sets": {
     "00012bd8-ed68-4978-a22d-f450c8a6e048": "3ed",
@@ -30584,6 +30584,44 @@
         "reason": "Type line visually checked against this printing’s cached Scryfall scan. This review certifies original type wording only.",
         "fields": {
           "typeLine": "Land"
+        }
+      },
+      {
+        "source": "games/magic/fixtures/accuracy/4ed/annotations-text-outliers.json",
+        "referenceSha256": "04684f661b8f58914936ad3bfdb6cff3958da77db54ff9c0d164c753680efc69",
+        "reason": "The printing spells out one colorless. Its activation cost retains the faint generic {1} disc,confirmed at high magnification. Other printing fields keep their separate evidence.",
+        "fields": {
+          "rulesText": "{T}: Add one colorless mana to your mana pool.\n{1}: Mishra's Factory becomes an Assembly Worker, a 2/2 artifact creature, until end of turn. Assembly Worker still counts as a land but cannot be tapped for mana the turn it comes into play.\n{T}: Target Assembly Worker gets +1/+1 until end of turn.",
+          "flavorText": "",
+          "rulesParagraphs": [
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "{T}: Add one colorless mana to your mana pool.",
+                  "italic": false
+                }
+              ]
+            },
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "{1}: Mishra's Factory becomes an Assembly Worker, a 2/2 artifact creature, until end of turn. Assembly Worker still counts as a land but cannot be tapped for mana the turn it comes into play.",
+                  "italic": false
+                }
+              ]
+            },
+            {
+              "role": "rules",
+              "runs": [
+                {
+                  "text": "{T}: Target Assembly Worker gets +1/+1 until end of turn.",
+                  "italic": false
+                }
+              ]
+            }
+          ]
         }
       }
     ],

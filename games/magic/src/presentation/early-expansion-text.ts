@@ -1,3 +1,4 @@
+import { earlyReprintFrame } from './early-reprint-frame.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 import { layoutRules, type RulesTypography } from './rules-layout.js';
@@ -69,17 +70,20 @@ export function earlyExpansionTextLayout(
   reference: readonly RulesParagraph[],
 ) {
   const set = face.setCode?.toLowerCase();
+  if (set !== 'arn' && set !== 'atq' && set !== 'drk' && set !== '4ed') return null;
+  const fourth = set === '4ed';
   if (
-    (set !== 'arn' && set !== 'atq' && set !== 'drk') ||
+    (fourth && earlyReprintFrame(face)?.material !== 'L') ||
     face.frameTemplate ||
     face.frameAssetFamily ||
     face.frameStyle === 'modern' ||
-    (face.borderColor && face.borderColor !== 'black') ||
+    (face.borderColor && face.borderColor !== (fourth ? 'white' : 'black')) ||
     (face.layout && face.layout !== 'normal') ||
     /\b(Saga|Class|Planeswalker|Battle)\b/.test(face.typeLine ?? '')
   )
     return null;
-  const p = calibrationForFace(face)?.expansionBody ?? profiles[set];
+  const p = calibrationForFace(face)?.expansionBody ?? (fourth ? undefined : profiles[set]);
+  if (!p) return null;
   const baseline = expansionBodyLayout(context, face, paragraphs, reference, set, p);
   const freeSpace = (p.bounds ?? defaultBounds).height - baseline.height;
   if (
@@ -100,7 +104,7 @@ function expansionBodyLayout(
   face: RenderedCardInput,
   paragraphs: readonly RulesParagraph[],
   reference: readonly RulesParagraph[],
-  set: 'arn' | 'atq' | 'drk',
+  set: 'arn' | 'atq' | 'drk' | '4ed',
   p: CalibratedExpansionBody,
 ) {
   const bounds = p.bounds ?? defaultBounds;

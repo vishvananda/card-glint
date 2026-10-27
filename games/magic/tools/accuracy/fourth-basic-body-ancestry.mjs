@@ -1,3 +1,4 @@
+import { preFourthNonbasicSource } from './fourth-nonbasic-ancestry.mjs';
 // Exact data history is separate from any component or complete-set approval.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -41,6 +42,7 @@ export function fourthBasicBodyDelta() {
   })());
 }
 export async function preFourthBasicBodySource(file, bytes) {
+  bytes = await preFourthNonbasicSource(file, bytes);
   const e = (await fourthBasicBodyDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

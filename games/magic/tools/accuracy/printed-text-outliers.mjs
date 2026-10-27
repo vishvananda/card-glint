@@ -1,3 +1,4 @@
+import fourth from '../../fixtures/accuracy/4ed/annotations-text-outliers.json' with { type: 'json' };
 import arabian from '../../fixtures/accuracy/arn/annotations-text-outliers.json' with { type: 'json' };
 import antiquities from '../../fixtures/accuracy/atq/annotations-text-outliers.json' with { type: 'json' };
 import dark from '../../fixtures/accuracy/drk/annotations-text-outliers.json' with { type: 'json' };
@@ -7,7 +8,9 @@ import alphaTypes from '../../fixtures/accuracy/lea/annotations-colored-types.js
 import betaTypes from '../../fixtures/accuracy/leb/annotations-colored-types.json' with { type: 'json' };
 import beta from '../../fixtures/accuracy/leb/annotations-text-outliers.json' with { type: 'json' };
 
-const reviews = new Map([arabian, antiquities, dark].map((review) => [review.set, [review]]));
+const reviews = new Map(
+  [arabian, antiquities, dark, fourth].map((review) => [review.set, [review]]),
+);
 reviews.set('lea', [alphaTypes, alpha, alphaCosts]);
 reviews.set('leb', [betaTypes, beta]);
 

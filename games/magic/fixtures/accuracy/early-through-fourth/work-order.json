@@ -1,25 +1,20 @@
 {
   "schema": 1,
-  "asOf": "2026-10-25",
+  "asOf": "2026-10-27",
   "authority": "Continue the through-Fourth-Edition audit after the published ABU baseline. User deferred Collectors, International Collectors and Summer Magic on 2026-10-25.",
   "active": {
-    "sets": ["arn"],
+    "sets": ["arn", "atq", "3ed", "leg", "drk", "fem", "4ed"],
     "required": [
-      "Freeze all original-printing fields and nonfoil scan/reference identities; review mismatches before typography fitting.",
-      "Validate Arabian Nights frame-only normalization and choose the source family/geometry before pigment fitting.",
-      "Check frame/paper/black and mana color without discarding rejected trials or flattening texture.",
-      "Fit mana/set symbols, name/type, rules/flavor, artist/legal and P/T using filled-ink and edge measurements, keeping shared set/material rules.",
-      "Capture the full native scope plus Oracle/unchanged-family controls, review outliers, and retain explicit sparse/asset limitations.",
-      "Publish matching evidence and Lab numbers before calling the full set complete."
+      "Finish the remaining audits of original wording, scan normalization, frames, colors, mana and set symbols, headings, text, credits, and statistics in the seven unpublished early-set profiles.",
+      "Retain the published Alpha, Beta, and Unlimited reviews and verify that shared changes preserve their rendering.",
+      "Integrate regional improvements with exact native comparisons, source dependencies, and score reuse. Numerical stock alignment and regional gains alone do not prove whole-set accuracy.",
+      "Review the remaining outliers and asset limitations, run renderer checks, and publish the combined batch with matching Lab evidence and scores."
     ]
   },
   "next": {
-    "sets": ["atq", "3ed", "leg", "drk", "fem", "4ed"],
+    "sets": [],
     "required": [
-      "Proceed chronologically through the remaining early sets after the active Arabian Nights audit.",
-      "Migrate each opened set to one-file calibrated defaults without unrelated pixel changes, then measure its own source-bound values.",
-      "Preserve original wording, per-scan frozen normalization, nonfoil material evidence, independent validation and explicit sparse-family transfers.",
-      "Bundle reviewed calibrations into releases; keep incomplete components visible and reuse unchanged scores only under exact dependency guards."
+      "Publish the full reviewed through-Fourth batch after its remaining component audits and outlier dispositions;Collectors Editions and Summer Magic stay deferred."
     ]
   },
   "scopeNote": "The historical 13-set/3306-printing backlog remains recorded. Current requested scope excludes deferred CED, CEI and SUM; that deferral is not calibration completion.",
@@ -104,5 +99,46 @@
     "integratedScores": "../arn-recheck/integrated-scores.json.gz",
     "integratedReview": "../arn-recheck/integrated-review.json",
     "unaffectedControls": "../arn-recheck/unaffected-native.json.gz"
+  },
+  "currentBatch": {
+    "status": "regional-improvements-integrated-full-scope-open",
+    "ordinaryPrintings": 2396,
+    "publishedBaseline": "0.7.3",
+    "retainedPublishedSets": ["lea", "leb", "2ed"],
+    "fourthLands": {
+      "evidence": "../4ed/nonbasic-body-adoption.json",
+      "basicEvidence": "../4ed/basic-body-adoption.json",
+      "changedOriginalBodies": 18,
+      "totalOriginalPrintings": 378,
+      "wholeBeforeLandWork100": 78.27923317962002,
+      "wholeCurrent100": 78.84494699062122,
+      "landCurrent100": 78.20342634314514,
+      "latestScoreReuse": {
+        "reused": 375,
+        "fresh": 3
+      },
+      "status": "land-bodies-reviewed-other-components-open"
+    },
+    "legendsCredits": {
+      "evidence": "../leg/artist-data-source-delta.json.gz",
+      "correctedPrintings": 40,
+      "censusPrintings": 310,
+      "status": "physical-credit-data-reviewed-other-components-open"
+    },
+    "laterBaselines": {
+      "evidence": "later-native-baseline-review.json",
+      "printings": 997,
+      "status": "native-baselines-not-full-set-certification"
+    },
+    "remainingBySet": {
+      "arn": "Close source-bound component ledger and retained typography/texture outlier dispositions;regional integration is verified.",
+      "atq": "Close dense-body and artifact/land frame-normalization outliers and the remaining component audits.",
+      "3ed": "Close printed-interior alignment rejects,frame/land geometry and mana placement;keep rejected broad shifts unadopted.",
+      "leg": "Finish remaining frame,normalization,body,mana/symbol,heading and lower-component audits;review2 baseline alignment rejects.",
+      "drk": "Finish printed-interior and remaining component/outlier audits against the current122-printing baseline.",
+      "fem": "Finish printed-interior and remaining component/outlier audits against the current187-printing baseline.",
+      "4ed": "Finish normalization against the printed frame, frame and paper colors, black levels, mana, headings, nonland text, artist and legal credits, and P/T audits. Land text integration alone does not close the set."
+    },
+    "release": "Unpublished branch;full checks and matching Lab rollout remain required."
   }
 }

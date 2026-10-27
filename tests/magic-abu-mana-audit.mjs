@@ -1,3 +1,4 @@
+import { preFourthNonbasicSource } from '../games/magic/tools/accuracy/fourth-nonbasic-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -11,7 +12,9 @@ const review = JSON.parse(await readFile(root + 'study-review.json'));
 const scope = JSON.parse(
   await readFile('games/magic/fixtures/accuracy/abu-wording-source-scope.json'),
 );
-const annotationSource = await readFile(scope.file, 'utf8');
+const annotationSource = (
+  await preFourthNonbasicSource(scope.file, await readFile(scope.file))
+).toString();
 assert.equal(hash(annotationSource), scope.after);
 assert.equal(
   hash(

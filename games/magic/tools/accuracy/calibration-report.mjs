@@ -1,3 +1,4 @@
+import { fourthNonbasicDelta, fourthNonbasicAffected } from './fourth-nonbasic-ancestry.mjs';
 import { fourthBasicBodyDelta, fourthBasicBodyAffected } from './fourth-basic-body-ancestry.mjs';
 import { legArtistDelta, legArtistAffected } from './leg-artist-data-ancestry.mjs';
 import { revisedHeadingDelta, revisedHeadingAffected } from './revised-heading-ancestry.mjs';
@@ -120,6 +121,15 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (
+          (await fourthNonbasicAffected(set.set, task, original, group)) &&
+          item.proof?.fourthNonbasicSource !== (await fourthNonbasicDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Fourth Edition nonbasic-land bodies now use measured shared size classes; Mishra’s Factory also has an exact Original wording correction. Only affected body inputs, rules and whole-card evidence require current review.';
+          continue;
+        }
         if (
           (await fourthBasicBodyAffected(set.set, task, original, group)) &&
           item.proof?.fourthBasicBodySource !== (await fourthBasicBodyDelta()).afterRenderer
