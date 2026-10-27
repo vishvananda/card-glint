@@ -41,3 +41,39 @@ assert.throws(() => textRowAgreement('not rows', []), TypeError);
 console.log(
   'Printed-row audit distinguishes wrapping from pixel overlap and rejects changed wording.',
 );
+
+// The extended targets retain the original six reviews and use the same words
+// and scan identities as the exact native baseline; only printed breaks differ.
+{
+  const fs = await import('node:fs/promises');
+  const { gunzipSync } = await import('node:zlib');
+  const base = JSON.parse(
+    await fs.readFile('games/magic/fixtures/accuracy/4ed/printed-row-targets.json'),
+  );
+  const extended = JSON.parse(
+    await fs.readFile('games/magic/fixtures/accuracy/4ed/printed-row-targets-extended.json'),
+  );
+  const study = JSON.parse(
+    gunzipSync(
+      await fs.readFile(
+        'games/magic/fixtures/accuracy/4ed/native-request-unconstrained-study.json.gz',
+      ),
+    ),
+  );
+  assert.equal(extended.parent, 'games/magic/fixtures/accuracy/4ed/printed-row-targets.json');
+  assert.deepEqual(extended.rows.slice(0, base.rows.length), base.rows);
+  assert.equal(extended.rows.length, 12);
+  assert.equal(new Set(extended.rows.map((r) => r.id)).size, 12);
+  for (const row of extended.rows) {
+    const native = study.rows.find((r) => r.id === row.id);
+    assert(native);
+    assert.equal(row.referenceHash, native.referenceHash);
+    assert.equal(
+      textRowAgreement(
+        row.printedRows,
+        native.trials[0].layout.lines.map((l) => l.text),
+      ).status,
+      'measured',
+    );
+  }
+}

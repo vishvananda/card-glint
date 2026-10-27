@@ -159,3 +159,9 @@ For the unconstrained control, use
 `native-request-unconstrained-definition.json`. Historical receipts retain
 their original tool sources; exact numerical reproduction needs the matching
 renderer, assets, fonts, poses and objective versions.
+
+The next fit can use the [twelve-target extension](printed-row-targets-extended.json).
+It adds reviewed rows for Purelace, Mind Twist, Drain Power, Simulacrum, Brainwash
+and Wooden Sphere. The original six targets and both historical study receipts
+remain unchanged. These examples include centered and left-aligned blocks of
+similar length; a character cutoff alone cannot distinguish them.
