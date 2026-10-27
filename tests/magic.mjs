@@ -306,9 +306,8 @@ try {
   const result = await page.evaluate(async (fixtures) => {
     const fixtureFonts = globalThis.__magicFixtureFonts;
     const { magic, opticalDocument, withCardWording } = await import('/magic.js');
-    const { loadCanvasFonts, layoutRules, retroTextLayout, faceManaAssets } = await import(
-      '/magic-presentation.js'
-    );
+    const { loadCanvasFonts, layoutRules, retroTextLayout, faceManaAssets, canvasFontAssets } =
+      await import('/magic-presentation.js');
     let missingFontsRejected = false;
     try {
       await loadCanvasFonts();
@@ -318,22 +317,9 @@ try {
     if (!missingFontsRejected) throw Error('Missing font stylesheet was silently accepted');
     // Original test content, using local system outlines; no third-party fonts in CI.
     const local = 'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")';
-    for (const [family, style, weight] of [
-      ['Goudy', 'normal', '400'],
-      ['Historic Symbols', 'normal', '400'],
-      ['Beleren', 'normal', '400 700'],
-      ['Beleren 2016', 'normal', '700'],
-      ['Beleren Small Caps', 'normal', '700'],
-      ['MPlantin', 'normal', '400'],
-      ['MPlantin', 'italic', '400'],
-      ['Relay', 'normal', '400'],
-      ['Gotham', 'normal', '400'],
-      ['Artist Credit', 'normal', '400'],
-      ['Chapter', 'normal', '550'],
-      ['Matrix', 'normal', '400 700'],
-    ])
+    for (const { family, style, weight } of canvasFontAssets)
       document.fonts.add(
-        await new FontFace('CardRenderer MTG ' + family, fixtureFonts?.[style] ?? local, {
+        await new FontFace(family, fixtureFonts?.[style] ?? local, {
           style,
           weight,
         }).load(),
