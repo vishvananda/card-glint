@@ -5,6 +5,12 @@ import os from 'node:os';
 import { build } from 'vite';
 const root = process.cwd(),
   temporary = await mkdtemp(path.join(os.tmpdir(), 'card-glint-consumer-'));
+const fourthSource = await readFile(
+  path.join(root, 'games/magic/src/calibration/sets/4ed.ts'),
+  'utf8',
+);
+const fourthRevision = /export const profile = \{[\s\S]*?revision:\s*(\d+)/.exec(fourthSource)?.[1];
+if (!fourthRevision) throw Error('Missing literal Fourth calibration revision');
 try {
   const packed = JSON.parse(
     execFileSync('npm', ['pack', '--json', '--pack-destination', temporary], { encoding: 'utf8' }),
@@ -40,7 +46,7 @@ try {
     for (const fn of [canvas, closeRaster, decodeCanvasImage, ellipsizedText]) assert.equal(typeof fn, 'function');
     assert.deepEqual(loadedMagicSets(), []);
     await loadMagicSet('4ed');
-    assert.equal(describeSetCalibration('4ed').revision, 1);
+    assert.equal(describeSetCalibration('4ed').revision, ${Number(fourthRevision)});
     const face = {name:'Probe',setCode:'lea',frameStyle:'retro',colors:['W']};
     await prepareMagicCards([face]);
     assert.ok(faceRects(face));

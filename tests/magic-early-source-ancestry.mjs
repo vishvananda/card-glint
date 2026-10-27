@@ -1,3 +1,4 @@
+import { preFourthBasicBodySource } from '../games/magic/tools/accuracy/fourth-basic-body-ancestry.mjs';
 import { abuFlowAffected } from '../games/magic/tools/accuracy/abu-flow-ancestry.mjs';
 import { preAbuPerimeterSource } from '../games/magic/tools/accuracy/abu-perimeter-ancestry.mjs';
 import {
@@ -141,13 +142,17 @@ const historicalProfiles = async (file) =>
     ? historicalScopes
     : file.endsWith('/sets/2ed.ts')
       ? undefined
-      : readFile(file);
+      : preFourthBasicBodySource(file, await readFile(file));
 // Remove only the separately proven AB perimeter edit before testing optional
 // profile activation. It cannot authorize changes to the probed set profile.
 for (const [file, entry] of Object.entries(preparation.files)) {
   const bytes = await preAbuPerimeterSource(file, await readFile(file));
   assert.equal(hash(await preProfilePreparationSource(file, bytes, 'lea')), entry.before);
-  assert.equal(hash(await preProfilePreparationSource(file, bytes, '4ed')), entry.before);
+  assert.deepEqual(
+    await preProfilePreparationSource(file, bytes, '4ed'),
+    bytes,
+    'Current Fourth body data activates the helper and must retain its current guards',
+  );
   assert.equal(
     hash(await preProfilePreparationSource(file, bytes, undefined, historicalProfiles)),
     entry.before,

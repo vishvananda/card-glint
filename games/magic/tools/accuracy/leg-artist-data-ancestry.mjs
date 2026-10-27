@@ -1,3 +1,4 @@
+import { preFourthBasicBodySource } from './fourth-basic-body-ancestry.mjs';
 // Exact inert credit-data projection;this is not typography or set approval.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -37,6 +38,7 @@ export function legArtistDelta() {
   })());
 }
 export async function preLegArtistDataSource(file, bytes) {
+  bytes = await preFourthBasicBodySource(file, bytes);
   const e = (await legArtistDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

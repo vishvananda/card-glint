@@ -28,6 +28,7 @@ try {
   const { profile: base } = await server.ssrLoadModule('/games/magic/src/calibration/sets/4ed.ts');
   const profile = {
     ...structuredClone(base),
+    revision: 1,
     set: '2ed',
     textTiers: {
       mediumSize: 22.5,

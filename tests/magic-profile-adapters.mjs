@@ -57,6 +57,7 @@ try {
   const neutral = { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 };
   const data = {
     ...structuredClone(base),
+    revision: 1,
     set: '2ed',
     frames: { W: base.frames.W, 'L-dual': geometry },
     colors: {

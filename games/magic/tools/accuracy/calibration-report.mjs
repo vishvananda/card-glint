@@ -1,3 +1,4 @@
+import { fourthBasicBodyDelta, fourthBasicBodyAffected } from './fourth-basic-body-ancestry.mjs';
 import { legArtistDelta, legArtistAffected } from './leg-artist-data-ancestry.mjs';
 import { revisedHeadingDelta, revisedHeadingAffected } from './revised-heading-ancestry.mjs';
 import { revisedManaFitDelta, revisedManaFitAffected } from './revised-mana-fit-ancestry.mjs';
@@ -119,6 +120,15 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (
+          (await fourthBasicBodyAffected(set.set, task, original, group)) &&
+          item.proof?.fourthBasicBodySource !== (await fourthBasicBodyDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Fourth Edition basic-land Original text now uses the shared measured body layout. Rules and whole-card evidence for these printings needs current renders; wording,other components and other materials retain their evidence.';
+          continue;
+        }
         if (
           (await legArtistAffected(set.set, task, original, group)) &&
           item.proof?.legArtistSource !== (await legArtistDelta()).afterRenderer

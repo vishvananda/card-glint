@@ -21,8 +21,8 @@ const [
   changeKind = 'symbols',
 ] = process.argv.slice(2);
 assert(
-  output && ['symbols', 'leg-artist'].includes(changeKind),
-  'Usage: printing-native-reviewed-input-score.mjs BEFORE_INPUTS AFTER_INPUTS BEFORE_CAPTURE AFTER_CAPTURE POSES PRIOR_SCORES METRICS POLICY NEW_OUTPUT [symbols|leg-artist]',
+  output && ['symbols', 'leg-artist', 'fourth-basic-body'].includes(changeKind),
+  'Usage: printing-native-reviewed-input-score.mjs BEFORE_INPUTS AFTER_INPUTS BEFORE_CAPTURE AFTER_CAPTURE POSES PRIOR_SCORES METRICS POLICY NEW_OUTPUT [symbols|leg-artist|fourth-basic-body]',
 );
 const files = [
     beforeInputFile,
@@ -49,15 +49,22 @@ assert.equal(prior.inputHash, hash(bytes[0]));
 assert.equal(prior.posesHash, hash(bytes[4]));
 assert.equal(before.inputHash, hash(bytes[0]));
 assert.equal(after.inputHash, hash(bytes[1]));
-let artistDelta;
+let artistDelta, bodyDelta;
 if (changeKind === 'leg-artist') {
   const { legArtistDelta } = await import('./leg-artist-data-ancestry.mjs');
   artistDelta = await legArtistDelta();
   assert.equal(beforeInputs.set, 'leg');
   assert.equal(before.rendererHash, artistDelta.beforeRenderer);
   assert.equal(after.rendererHash, artistDelta.afterRenderer);
+} else if (changeKind === 'fourth-basic-body') {
+  const { fourthBasicBodyDelta } = await import('./fourth-basic-body-ancestry.mjs');
+  bodyDelta = await fourthBasicBodyDelta();
+  assert.equal(beforeInputs.set, '4ed');
+  assert.equal(before.rendererHash, bodyDelta.beforeRenderer);
+  assert.equal(after.rendererHash, bodyDelta.afterRenderer);
 } else assert.equal(before.rendererHash, after.rendererHash);
-assert.equal(prior.rendererHash, before.rendererHash);
+const scopedDelta = artistDelta ?? bodyDelta;
+assert.equal(prior.rendererHash, bodyDelta ? bodyDelta.historicalRenderer : before.rendererHash);
 assert.equal(before.status, 'complete');
 assert.equal(after.status, 'complete');
 assert.deepEqual(before.faults, []);
@@ -88,8 +95,8 @@ for (const e of beforeInputs.entries) {
   const { [mutableField]: ignoredBefore, ...baseFace } = e.face,
     { [mutableField]: ignoredAfter, ...nextFace } = next.face;
   assert.deepEqual(
-    nextFace,
-    baseFace,
+    bodyDelta ? next.face : nextFace,
+    bodyDelta ? e.face : baseFace,
     'This comparison permits only the explicitly selected reviewed input field',
   );
   if (artistDelta) {
@@ -98,7 +105,8 @@ for (const e of beforeInputs.entries) {
     assert.equal(e.face.artist, review.providerArtist);
     assert.equal(next.face.artist, review.printedArtist);
     assert.equal(old.poseAccepted, p.accepted);
-  } else assert(p.accepted);
+  } else if (bodyDelta) assert.equal(old.poseAccepted, p.accepted);
+  else assert(p.accepted);
   assert.equal(old.poseHash, hash(JSON.stringify(p.transform)));
   assert.equal(old.referenceHash, b.referenceHash);
   assert.equal(a.referenceHash, b.referenceHash);
@@ -132,14 +140,14 @@ for (const e of beforeInputs.entries) {
   rows.push({
     id: e.id,
     name: e.name,
-    material: artistDelta
+    material: scopedDelta
       ? e.material
       : e.face.artifact
         ? 'A'
         : e.face.land
           ? 'L'
           : (e.face.frameColors ?? e.face.colors)[0],
-    ...(artistDelta
+    ...(scopedDelta
       ? { poseAccepted: p.accepted, aggregateEligible: old.aggregateEligible, status: old.status }
       : {}),
     cohort: p.cohort,
@@ -169,15 +177,20 @@ assert.deepEqual(
 await writeJson(output, {
   schema: 1,
   set: beforeInputs.set,
-  status: artistDelta
-    ? 'complete-native-artist-input-comparison'
-    : 'complete-native-mana-input-comparison',
+  status: bodyDelta
+    ? 'complete-native-fourth-basic-body-comparison'
+    : artistDelta
+      ? 'complete-native-artist-input-comparison'
+      : 'complete-native-mana-input-comparison',
   ...(artistDelta ? { artistNativeProofHash: artistDelta.native.contentSha256 } : {}),
+  ...(bodyDelta ? { bodyNativeProofHash: bodyDelta.native.contentSha256 } : {}),
   scope:
-    (artistDelta
-      ? 'Exact physical artist strings validated by the data-only native receipt;rejected poses stay outside aggregate means. '
-      : '') +
-    'Explicit Original input controls on a fixed renderer,content,art,references and stock poses. Every input delta is checked; the old/new complete metric region plans are identical. Native files are verified and unchanged rasters alone reuse prior scores under the same full metric graph. Fresh scores use the actual candidate face. This comparison changes no source data or renderer defaults and does not certify a complete set.',
+    (bodyDelta
+      ? 'Exact body-profile native isolation links the current before capture to the archived scoring baseline. Input faces are identical and rejected poses stay outside aggregate means. '
+      : artistDelta
+        ? 'Exact physical artist strings validated by the data-only native receipt;rejected poses stay outside aggregate means. '
+        : '') +
+    'Explicit Original native comparisons with fixed content,art,references and stock poses. Every input delta is checked; the old/new complete metric region plans are identical. Native files are verified and unchanged rasters alone reuse prior scores under the same full metric graph. Fresh scores use the actual candidate face. This comparison changes no source data or renderer defaults and does not certify a complete set.',
   rendererHash: after.rendererHash,
   beforeInputHash: hash(bytes[0]),
   inputHash: hash(bytes[1]),
@@ -193,12 +206,12 @@ await writeJson(output, {
   summary: Object.fromEntries(
     ['all', ...new Set(rows.map((r) => r.material))].map((k) => {
       const a = rows.filter((r) => k === 'all' || r.material === k),
-        ranked = artistDelta ? a.filter((r) => r.aggregateEligible) : a;
+        ranked = scopedDelta ? a.filter((r) => r.aggregateEligible) : a;
       return [
         k,
         {
           cards: a.length,
-          ...(artistDelta ? { rankedCards: ranked.length } : {}),
+          ...(scopedDelta ? { rankedCards: ranked.length } : {}),
           before100: mean(ranked.map((r) => 100 * r.beforeScore.structuralScore)),
           current100: mean(ranked.map((r) => 100 * r.score.structuralScore)),
           improved: a.filter((r) => r.delta100 > 1e-9).length,

@@ -3,7 +3,7 @@ import type { SetCalibrationProfile } from '../types.js';
 /** Shared printing defaults. Scan transforms and reference images belong in evidence. */
 export const profile = {
   schema: 1,
-  revision: 1,
+  revision: 2,
   set: '4ed',
   border: 'white',
   frames: {
@@ -794,6 +794,133 @@ export const profile = {
     },
     ink: [0.2235294117647059, 0.25098039215686274, 0.21176470588235294],
   },
+  body: {
+    'L-W': {
+      bounds: {
+        x: 64,
+        y: 414,
+        width: 360,
+        height: 184,
+      },
+      maximumSize: 25,
+      minimumSize: 15,
+      typography: {
+        fractionalMetrics: true,
+        textWidth: 1.01,
+        leading: 1,
+        paragraphGap: 0,
+        flavorGap: 0,
+        flavorOrphans: false,
+        flavorSeparator: false,
+        centerOffset: -12.5,
+      },
+      centered: {
+        maxCharacters: 100,
+        maxLines: 1,
+        maximumSize: 25,
+      },
+    },
+    'L-U': {
+      bounds: {
+        x: 64,
+        y: 414,
+        width: 360,
+        height: 184,
+      },
+      maximumSize: 25,
+      minimumSize: 15,
+      typography: {
+        fractionalMetrics: true,
+        textWidth: 1.01,
+        leading: 1,
+        paragraphGap: 0,
+        flavorGap: 0,
+        flavorOrphans: false,
+        flavorSeparator: false,
+        centerOffset: -12.5,
+      },
+      centered: {
+        maxCharacters: 100,
+        maxLines: 1,
+        maximumSize: 25,
+      },
+    },
+    'L-B': {
+      bounds: {
+        x: 64,
+        y: 414,
+        width: 360,
+        height: 184,
+      },
+      maximumSize: 25,
+      minimumSize: 15,
+      typography: {
+        fractionalMetrics: true,
+        textWidth: 1.01,
+        leading: 1,
+        paragraphGap: 0,
+        flavorGap: 0,
+        flavorOrphans: false,
+        flavorSeparator: false,
+        centerOffset: -12.5,
+      },
+      centered: {
+        maxCharacters: 100,
+        maxLines: 1,
+        maximumSize: 25,
+      },
+    },
+    'L-R': {
+      bounds: {
+        x: 64,
+        y: 414,
+        width: 360,
+        height: 184,
+      },
+      maximumSize: 25,
+      minimumSize: 15,
+      typography: {
+        fractionalMetrics: true,
+        textWidth: 1.01,
+        leading: 1,
+        paragraphGap: 0,
+        flavorGap: 0,
+        flavorOrphans: false,
+        flavorSeparator: false,
+        centerOffset: -12.5,
+      },
+      centered: {
+        maxCharacters: 100,
+        maxLines: 1,
+        maximumSize: 25,
+      },
+    },
+    'L-G': {
+      bounds: {
+        x: 64,
+        y: 414,
+        width: 360,
+        height: 184,
+      },
+      maximumSize: 25,
+      minimumSize: 15,
+      typography: {
+        fractionalMetrics: true,
+        textWidth: 1.01,
+        leading: 1,
+        paragraphGap: 0,
+        flavorGap: 0,
+        flavorOrphans: false,
+        flavorSeparator: false,
+        centerOffset: -12.5,
+      },
+      centered: {
+        maxCharacters: 100,
+        maxLines: 1,
+        maximumSize: 25,
+      },
+    },
+  },
   title: {
     size: 27.25,
     x: 41.5,
@@ -845,7 +972,7 @@ export const profile = {
 } as const satisfies SetCalibrationProfile;
 
 export const review = {
-  revision: 1,
+  revision: 2,
   scope: 'Ordinary nonfoil printing; see per-component evidence and outstanding tasks.',
   evidence: [
     'games/magic/fixtures/accuracy/early-reprint-frame-color.json',
@@ -853,6 +980,7 @@ export const review = {
     'games/magic/fixtures/accuracy/early-reprint-title.json',
     'games/magic/fixtures/accuracy/early-reprint-type.json',
     'games/magic/fixtures/accuracy/early-reprint-footer.json',
+    'games/magic/fixtures/accuracy/4ed/basic-body-proposal.json',
   ],
   pending: ['rules', 'flavor', 'setSymbol', 'fullCard', 'release'],
 } as const;

@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "set": "4ed",
+  "status": "basic-body-integrated-full-set-audit-open",
+  "beforeRenderer": "2eaaefe84fb6cc7485c6fc9367aa15035f92ecf0fa6817dac31d65641b315c75",
+  "afterRenderer": "66b245fbd2ed8880eba5aea970a7031e36b03554e0ff3b7c3a14027728471324",
+  "sourceReceipt": "games/magic/fixtures/accuracy/4ed/basic-body-source-delta.json.gz",
+  "nativeEvidence": "games/magic/fixtures/accuracy/4ed/basic-body-native-isolation.json.gz",
+  "artifacts": {
+    "nativeTool": {
+      "file": "games/magic/fixtures/accuracy/4ed/basic-body-native-tool.mjs.gz",
+      "sha256": "5a52c12350d1d5985798e47cf61b83f8980551f3dfd0a2caffcd5d1ace20e472",
+      "contentSha256": "a288b38385c23d2e73baaf0e2e38e53c392e76e08656ab3c27ed500199730f0f"
+    },
+    "scores": {
+      "file": "games/magic/fixtures/accuracy/4ed/basic-body-whole-scores.json.gz",
+      "sha256": "929640676d1b2621fe70844ac513e1fde17d6bce6e1bd987c1b4362a9c0dea40",
+      "contentSha256": "f03d670ffdc896413a1b6f768aeddea90dbc20263951cebf4487187f5e0325dc"
+    },
+    "scoreTool": {
+      "file": "games/magic/fixtures/accuracy/4ed/basic-body-score-tool.mjs.gz",
+      "sha256": "deab0515efa1fdf9ea16f99264f51a07ada878f35c12edcb05d1e7dc3f52996c",
+      "contentSha256": "1d1bc13aac547b900119a33c44f2184f0a497cdcabbaa65e47682fbf4d64b932"
+    }
+  },
+  "nativeCounts": {
+    "original": {
+      "changed": 15,
+      "unchanged": 363,
+      "keysChanged": 378
+    },
+    "oracle": {
+      "changed": 0,
+      "unchanged": 378,
+      "keysChanged": 378
+    },
+    "oracle-modern": {
+      "changed": 0,
+      "unchanged": 378,
+      "keysChanged": 378
+    },
+    "etching": {
+      "changed": 0,
+      "unchanged": 378,
+      "keysChanged": 378
+    }
+  },
+  "textObjective": {
+    "printings": 15,
+    "names": 5,
+    "before100": 37.76539124831444,
+    "candidate100": 78.18311179763674,
+    "improved": 15,
+    "regressed": 0,
+    "metric": "TextFilledObjective: symmetric edge distance plus filled-ink overlap; not the published whole-card metric"
+  },
+  "wholeCard": {
+    "cards": 378,
+    "rankedCards": 378,
+    "before100": 78.27923317962002,
+    "current100": 78.74156686117576,
+    "improved": 15,
+    "regressed": 0
+  },
+  "landGroup": {
+    "cards": 18,
+    "rankedCards": 18,
+    "before100": 66.32343631211988,
+    "current100": 76.03244362479033,
+    "improved": 15,
+    "regressed": 0
+  },
+  "scoreReuse": {
+    "reused": 363,
+    "fresh": 15
+  },
+  "limitations": [
+    "Only15 one-line original basics change;363 Originals and1134 Oracle/mask images retain their exact native pixels",
+    "Numerical outer-stock normalization remains provisional;printed-interior validation and broader source/frame audits remain open",
+    "The two-polarity text objective and whole-card structure indices have distinct scopes;artist/legal diagnostics remain outside the aggregate",
+    "Mishra's Factory wording still needs its reviewed public correction,and all three nonbasic-land body fits remain open",
+    "No complete-set or release approval is granted by this regional integration"
+  ],
+  "visualReview": {
+    "scope": "One representative of each of the five basic-land materials;all15 source bodies and native changes are retained in the measured census. This is a regional review,not frame or full-set approval.",
+    "printings": [
+      "639e47dc-c90f-4f55-9b3a-721240ec04ed",
+      "b06bbd6e-eb0d-45fc-88ef-0e085d6505ef",
+      "84634023-5c94-4dcc-9449-abf73ecea542",
+      "0c5c9379-b686-4823-b85a-eaf2c4b63205",
+      "119c4d73-5b71-446a-a739-25d494591aa1"
+    ],
+    "method": "Compare the fixed-pose scan,before face and integrated face at the same scale. Reference and derived images remain in the private accuracy cache.",
+    "observations": [
+      "Shared text baseline and line span are visibly closer across all five materials",
+      "Frame and paper textures,mana ink and other components retain their separate audit obligations",
+      "No per-printing geometry or text override is used for the15 basics"
+    ]
+  }
+}

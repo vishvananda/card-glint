@@ -1,8 +1,12 @@
+import {
+  fourthBasicBodyHistoricalHash,
+  preFourthBasicBodySource,
+} from '../games/magic/tools/accuracy/fourth-basic-body-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { createServer } from './magic-vite.mjs';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   legArtistDelta,
   legArtistHistoricalHash,
@@ -10,7 +14,7 @@ import {
   legArtistAffected,
 } from '../games/magic/tools/accuracy/leg-artist-data-ancestry.mjs';
 const p = await legArtistDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await fourthBasicBodyHistoricalHash(), p.afterRenderer);
 assert.equal(await legArtistHistoricalHash(), p.beforeRenderer);
 assert.deepEqual(p.summary, {
   existingArtists: 228,
@@ -19,7 +23,7 @@ assert.deepEqual(p.summary, {
   reviewedCredits: 310,
 });
 for (const [file, e] of Object.entries(p.files)) {
-  const current = await fs.readFile(file);
+  const current = await preFourthBasicBodySource(file, await fs.readFile(file));
   assert.equal(hash(current), e.after);
   assert.equal(hash(await preLegArtistDataSource(file, current)), e.before);
   const unknown = Buffer.concat([current, Buffer.from('\n// unknown change\n')]);
