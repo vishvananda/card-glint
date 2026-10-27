@@ -1,0 +1,498 @@
+{
+  "schema": 1,
+  "status": "native-mana-geometry-diagnostic-not-adopted",
+  "rendererHash": "a5d1bebfb7f829aa9c1a68eb1704e32be1770985d36ae1e54b51a09f224d6b1f",
+  "artifacts": {
+    "direct": {
+      "file": "mana-native-direct.json.gz",
+      "sha256": "df5655f6ee28c0ef250e3aaeec4ccc38e39df9d945e661e04a78a6567e32d214",
+      "contentSha256": "28e0dbb778a9248178ee8669c947977a6e516385863d55b48b9aa93cdf0be353"
+    },
+    "qualifiedSelection": {
+      "file": "mana-native-qualifiedSelection.json.gz",
+      "sha256": "84fed239a8bd6925c1c7d0e3ad47897ec00b6c2d92fd0d76836a22d490a5ad09",
+      "contentSha256": "f47c54aada04456595e0a5676e65225a222bb9a2b3488c33953ffd6676bf9bfd"
+    },
+    "qualified": {
+      "file": "mana-native-qualified.json.gz",
+      "sha256": "77d65501a49af36a4229d8e6233ada429c9f2cf016339a2e516c45199027f2bd",
+      "contentSha256": "25348f2c61bd8fa31820f058743345793ec062f5ed7522aad59ab55527ea918d"
+    },
+    "circleWhole": {
+      "file": "mana-native-circleWhole.json.gz",
+      "sha256": "5b4b88beac1f41d05977b78f1500106fca3ab611ad3d5c4bd88156ff53e024c4",
+      "contentSha256": "84da030c1d3a5b90a261cdee7f2cdc06d19a196ae8c7599b154ac5ebc7a9697a"
+    },
+    "circleRegions": {
+      "file": "mana-native-circleRegions.json.gz",
+      "sha256": "8a8d2cfedfd32902d375c6b61d7e9d0f322eb4d97280d77c06fc1c17a74e8d19",
+      "contentSha256": "4e222059791f5739df59d0197bd091d2a67ccc6c16f3d894ca5f1ab0d3d45bbb"
+    },
+    "blackWhole": {
+      "file": "mana-native-blackWhole.json.gz",
+      "sha256": "674d8f45081dc4da63329bee0a3585f0dadaedcca42ab0106ebd749b4e1bf831",
+      "contentSha256": "64707d000033f8537edb5400bfe0d27936c4c71eda811f3ba13b84b0613902b9"
+    },
+    "blackRegions": {
+      "file": "mana-native-blackRegions.json.gz",
+      "sha256": "0e86402f6cd771a6678bb0935b26fa968e8ba1d584468125e28b281b29edd180",
+      "contentSha256": "f4a1eadc6014aef88003db907608d934c094cc0bd6422ff17485d86730175ac5"
+    },
+    "tools": {
+      "file": "mana-native-tools.json.gz",
+      "sha256": "1679a2084b9e52336d2d1bba25a7efaee7229b493c349a5aaff79683e7385351",
+      "contentSha256": "671366176f7a2e209132fc3c205f29ec14623a04fd08b60198fa85099cb72643"
+    }
+  },
+  "scope": "Revised Original wording and symbols;223 accepted independent interior frame poses,413 discs. All306 actual native Original face variants checked for whole-card comparisons under frozen stock poses. These pose systems are different and their scores must not be conflated. No renderer defaults,registration acceptance,release status or completion checklists change.",
+  "qualification": {
+    "nativeCircles": 413,
+    "qualified": 359,
+    "previousLooseAccepted": 386,
+    "selectionAndHardenedRowsIdentical": true,
+    "method": "Direct732px scan sampling,known native disc construction,independent contrast polarity,bounded physical center/radius prior,fixed half-pixel-sigma filter. Reject stronger unresolved edges,ambiguous polarity and search-boundary fits. The final helper also validates raster shape and does not cache mutable image buffers.",
+    "limitation": "54 perimeters remain unresolved or fail native controls;39 of these have weak,boundary or competing reference edges. This does not label a card or scan defective.58 nonland frame registrations and25 lands remain outside this regional study."
+  },
+  "circlePrototype": {
+    "selection": {
+      "status": "physical-circle-translation-prototype-not-adopted",
+      "sourceInputHash": "01de709f035ddb54242535bf13e78009dc213fd0dd2bd37c6f4364946c767e01",
+      "qualifiedRingsHash": "f47c54aada04456595e0a5676e65225a222bb9a2b3488c33953ffd6676bf9bfd",
+      "scope": "Per-material shared costtranslation from calibration-only circle centers. Size,spacing,glyphs,numerals,pigments,frames,poses and wording frozen. W/U/lands unchanged. No per-card fit.",
+      "proposals": {
+        "B": {
+          "dx": 0.75,
+          "dy": 0,
+          "spacing": 0,
+          "calibrationLoss": 0.07334145339257227,
+          "cards": 21
+        },
+        "R": {
+          "dx": 0.5,
+          "dy": 0.25,
+          "spacing": 0,
+          "calibrationLoss": 0.08770252486490862,
+          "cards": 26
+        },
+        "G": {
+          "dx": 0.25,
+          "dy": 0.125,
+          "spacing": 0,
+          "calibrationLoss": 0.06757541396542859,
+          "cards": 20
+        },
+        "A": {
+          "dx": 0.375,
+          "dy": 0.375,
+          "spacing": 0,
+          "calibrationLoss": 0.04642045956773705,
+          "cards": 27
+        }
+      }
+    },
+    "whole": {
+      "all": {
+        "cards": 306,
+        "before100": 73.96782315965456,
+        "current100": 73.97338985576444,
+        "improved": 98,
+        "regressed": 92
+      },
+      "W": {
+        "cards": 46,
+        "before100": 76.11755305853653,
+        "current100": 76.11755305853653,
+        "improved": 0,
+        "regressed": 0
+      },
+      "U": {
+        "cards": 45,
+        "before100": 73.04451314315529,
+        "current100": 73.04451314315529,
+        "improved": 0,
+        "regressed": 0
+      },
+      "G": {
+        "cards": 46,
+        "before100": 75.20259185492691,
+        "current100": 75.20697589784812,
+        "improved": 24,
+        "regressed": 22
+      },
+      "B": {
+        "cards": 46,
+        "before100": 73.4080379356834,
+        "current100": 73.42822528701032,
+        "improved": 26,
+        "regressed": 20
+      },
+      "R": {
+        "cards": 47,
+        "before100": 72.54817608750092,
+        "current100": 72.56698434363685,
+        "improved": 24,
+        "regressed": 23
+      },
+      "A": {
+        "cards": 51,
+        "before100": 72.49470862814701,
+        "current100": 72.48861327198642,
+        "improved": 24,
+        "regressed": 27
+      },
+      "L": {
+        "cards": 25,
+        "before100": 76.10639872814129,
+        "current100": 76.10639872814129,
+        "improved": 0,
+        "regressed": 0
+      }
+    },
+    "regional": {
+      "all": {
+        "all": {
+          "cards": 223,
+          "before100": 83.30668644251004,
+          "after100": 83.48565294479221,
+          "gains": 79,
+          "losses": 62,
+          "worstLoss100": 3.0426235205976537
+        },
+        "calibration": {
+          "cards": 152,
+          "before100": 83.66928551274474,
+          "after100": 83.88179871882625,
+          "gains": 53,
+          "losses": 41,
+          "worstLoss100": 3.0426235205976537
+        },
+        "validation": {
+          "cards": 71,
+          "before100": 82.53041801045836,
+          "after100": 82.63756621728272,
+          "gains": 26,
+          "losses": 21,
+          "worstLoss100": 2.8628060896150775
+        }
+      },
+      "W": {
+        "all": {
+          "cards": 39,
+          "before100": 88.06431427008238,
+          "after100": 88.06431427008238,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "calibration": {
+          "cards": 30,
+          "before100": 87.8505725354717,
+          "after100": 87.8505725354717,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "validation": {
+          "cards": 9,
+          "before100": 88.77678671878465,
+          "after100": 88.77678671878465,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        }
+      },
+      "U": {
+        "all": {
+          "cards": 43,
+          "before100": 85.36973111946271,
+          "after100": 85.36973111946271,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "calibration": {
+          "cards": 28,
+          "before100": 85.21996149918762,
+          "after100": 85.21996149918762,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        },
+        "validation": {
+          "cards": 15,
+          "before100": 85.64930107730957,
+          "after100": 85.64930107730957,
+          "gains": 0,
+          "losses": 0,
+          "worstLoss100": 0
+        }
+      },
+      "B": {
+        "all": {
+          "cards": 38,
+          "before100": 74.55948013891599,
+          "after100": 75.78389367306171,
+          "gains": 29,
+          "losses": 9,
+          "worstLoss100": 2.661942446704735
+        },
+        "calibration": {
+          "cards": 21,
+          "before100": 75.57366099902382,
+          "after100": 77.05234363231767,
+          "gains": 17,
+          "losses": 4,
+          "worstLoss100": 2.661942446704735
+        },
+        "validation": {
+          "cards": 17,
+          "before100": 73.30666848819453,
+          "after100": 74.2169848998632,
+          "gains": 12,
+          "losses": 5,
+          "worstLoss100": 1.450033971564424
+        }
+      },
+      "R": {
+        "all": {
+          "cards": 39,
+          "before100": 83.32445173746125,
+          "after100": 83.38989337033193,
+          "gains": 20,
+          "losses": 19,
+          "worstLoss100": 3.0426235205976537
+        },
+        "calibration": {
+          "cards": 26,
+          "before100": 82.53871950971792,
+          "after100": 82.64769621543081,
+          "gains": 12,
+          "losses": 14,
+          "worstLoss100": 3.0426235205976537
+        },
+        "validation": {
+          "cards": 13,
+          "before100": 84.8959161929479,
+          "after100": 84.87428768013409,
+          "gains": 8,
+          "losses": 5,
+          "worstLoss100": 2.8628060896150775
+        }
+      },
+      "G": {
+        "all": {
+          "cards": 31,
+          "before100": 86.31787599566977,
+          "after100": 86.20351133240122,
+          "gains": 15,
+          "losses": 16,
+          "worstLoss100": 1.2752188479659976
+        },
+        "calibration": {
+          "cards": 20,
+          "before100": 86.94105531268295,
+          "after100": 86.8505800534933,
+          "gains": 10,
+          "losses": 10,
+          "worstLoss100": 1.2752188479659976
+        },
+        "validation": {
+          "cards": 11,
+          "before100": 85.18482269200939,
+          "after100": 85.02702274859736,
+          "gains": 5,
+          "losses": 6,
+          "worstLoss100": 1.1868643430355652
+        }
+      },
+      "A": {
+        "all": {
+          "cards": 33,
+          "before100": 82.21867766982037,
+          "after100": 82.04821999075234,
+          "gains": 15,
+          "losses": 18,
+          "worstLoss100": 2.3413985417360172
+        },
+        "calibration": {
+          "cards": 27,
+          "before100": 82.37705945962844,
+          "after100": 82.38542178779431,
+          "gains": 14,
+          "losses": 13,
+          "worstLoss100": 1.746346178921221
+        },
+        "validation": {
+          "cards": 6,
+          "before100": 81.50595961568409,
+          "after100": 80.53081190406353,
+          "gains": 1,
+          "losses": 5,
+          "worstLoss100": 2.3413985417360172
+        }
+      }
+    },
+    "decision": "Do not adopt broad circle translations. The all-card mean barely changes;green and artifact regional means regress,and red validation loses. Perimeter-only placement is insufficient when glyph alignment differs."
+  },
+  "blackRowPrototype": {
+    "selection": {
+      "status": "black-row-placement-prototype-not-adopted",
+      "sourceInputHash": "01de709f035ddb54242535bf13e78009dc213fd0dd2bd37c6f4364946c767e01",
+      "placementStudyHash": "c70b98b53890f90b63bfa62c925b9f458c6f58e0456033baf670ee23ce964e34",
+      "scope": "Only shared B-material Original historical cost position and spacing. Glyphs,numerals,size,palette,frames,wording and frozen poses unchanged.",
+      "proposal": {
+        "dx": 0.25,
+        "dy": -0.25,
+        "spacing": -0.125
+      }
+    },
+    "whole": {
+      "all": {
+        "cards": 306,
+        "before100": 73.96782315965456,
+        "current100": 73.96948631414735,
+        "improved": 28,
+        "regressed": 18
+      },
+      "W": {
+        "cards": 46,
+        "before100": 76.11755305853653,
+        "current100": 76.11755305853653,
+        "improved": 0,
+        "regressed": 0
+      },
+      "U": {
+        "cards": 45,
+        "before100": 73.04451314315529,
+        "current100": 73.04451314315529,
+        "improved": 0,
+        "regressed": 0
+      },
+      "G": {
+        "cards": 46,
+        "before100": 75.20259185492691,
+        "current100": 75.20259185492691,
+        "improved": 0,
+        "regressed": 0
+      },
+      "B": {
+        "cards": 46,
+        "before100": 73.4080379356834,
+        "current100": 73.4191015286137,
+        "improved": 28,
+        "regressed": 18
+      },
+      "R": {
+        "cards": 47,
+        "before100": 72.54817608750092,
+        "current100": 72.54817608750092,
+        "improved": 0,
+        "regressed": 0
+      },
+      "A": {
+        "cards": 51,
+        "before100": 72.49470862814701,
+        "current100": 72.49470862814701,
+        "improved": 0,
+        "regressed": 0
+      },
+      "L": {
+        "cards": 25,
+        "before100": 76.10639872814129,
+        "current100": 76.10639872814129,
+        "improved": 0,
+        "regressed": 0
+      }
+    },
+    "regional": {
+      "all": {
+        "cards": 38,
+        "before100": 74.55948013891599,
+        "after100": 76.15108690710072,
+        "gains": 36,
+        "losses": 2,
+        "worstLoss100": 0.19639615274726907
+      },
+      "calibration": {
+        "cards": 21,
+        "before100": 75.57366099902382,
+        "after100": 77.2844399131169,
+        "gains": 20,
+        "losses": 1,
+        "worstLoss100": 0.19639615274726907
+      },
+      "validation": {
+        "cards": 17,
+        "before100": 73.30666848819453,
+        "after100": 74.75106260555128,
+        "gains": 16,
+        "losses": 1,
+        "worstLoss100": 0.08053355640085247
+      }
+    },
+    "independentPhysicalLoss": {
+      "all": {
+        "current": {
+          "cards": 38,
+          "meanCardHuberLoss": 0.25441365707628366
+        },
+        "circle": {
+          "cards": 38,
+          "meanCardHuberLoss": 0.07213500450826896
+        },
+        "row": {
+          "cards": 38,
+          "meanCardHuberLoss": 0.15349139901918227
+        }
+      },
+      "calibration": {
+        "current": {
+          "cards": 21,
+          "meanCardHuberLoss": 0.2739754898845729
+        },
+        "circle": {
+          "cards": 21,
+          "meanCardHuberLoss": 0.07334145339257227
+        },
+        "row": {
+          "cards": 21,
+          "meanCardHuberLoss": 0.17351305894712862
+        }
+      },
+      "validation": {
+        "current": {
+          "cards": 17,
+          "meanCardHuberLoss": 0.23024904007780872
+        },
+        "circle": {
+          "cards": 17,
+          "meanCardHuberLoss": 0.07064468529824723
+        },
+        "row": {
+          "cards": 17,
+          "meanCardHuberLoss": 0.12875876028466027
+        }
+      }
+    },
+    "decision": "Retain as a candidate:dx+0.25,dy-0.25,spacing-0.125 improves both reused cohorts in mana-row overlap and independent equal-card perimeter residual. Actual native renders improve36/38 accepted rows;two losses are below0.2/100. Fullstock-pose whole-card gains are much smaller and18/46 black cards lose. Resolve remaining frame cases and complete symbol-mode/key/native-isolation checks before promoting.",
+    "regionalLosses": [
+      {
+        "id": "5b61cb02-7eb7-4d85-8ced-7978cb1a81d2",
+        "name": "Lord of the Pit",
+        "delta100": -0.19639615274726907
+      },
+      {
+        "id": "b83d7331-e573-4dea-901a-de9150d4b5c0",
+        "name": "Sorceress Queen",
+        "delta100": -0.08053355640085247
+      }
+    ]
+  },
+  "proof": "The regional scorer reads actual full-card native PNGs,no retained callback or browser is needed for rescoring. It verifies all source/reference/input/native hashes,baseline equality to the archived223-row objective within1e-12,and every changed pixel remains in the cost window. Whole comparisons reuse only byte-identical faces:116 circle-prototype reuses and260 black-prototype reuses.",
+  "validation": "Calibration and validation names are reused development data,not untouched holdouts. Geometry proposals are shared by material and never fitted per card. Disc size,glyph scale,numerals,palette,frame assets,wording and reference poses stay fixed.",
+  "next": [
+    "Finish Revised registration and land/frame review",
+    "Confirm black candidate across unresolved poses and all symbol modes before adoption",
+    "Finish ARN/ATQ component outliers and full LEG/DRK/FEM/4ED audits;retain ABU reviews"
+  ]
+}

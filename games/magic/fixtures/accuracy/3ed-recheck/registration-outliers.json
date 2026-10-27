@@ -1,0 +1,3480 @@
+{
+  "schema": 1,
+  "status": "registration-outlier-review-queue-not-accepted",
+  "set": "3ed",
+  "scope": "Explain every frozen nonland rejection. Profile similarity is distinguished from independent displacement,upstream rejection and search bounds. Proposed transforms are diagnostics only;no pose or gate changes,and no scan is labelled defective.",
+  "toolHash": "8d89b5c3ba3de1b5d99be25d14d851eba40c4803b9661fd6544a25bc0eeedefe",
+  "posesHash": "6f87def2ba630810da1b37f94515ea36b27967d04db4df1819fc07374eeccb41",
+  "inputHash": "01de709f035ddb54242535bf13e78009dc213fd0dd2bd37c6f4364946c767e01",
+  "summary": {
+    "cards": 281,
+    "accepted": 223,
+    "rejected": 58,
+    "byQueue": {
+      "independent-displacement-review": 33,
+      "profile-shape-review": 13,
+      "search-boundary-review": 1,
+      "parent-registration-review": 11
+    },
+    "overlappingFailureTypes": {
+      "independent-band-mismatch": 49,
+      "fit-profile-mismatch": 8,
+      "vertical-search-boundary": 1,
+      "parent-registration": 11
+    }
+  },
+  "rows": [
+    {
+      "id": "5670c4c0-b8c3-4100-8cd9-c176b29fe01c",
+      "name": "Crusade",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "5c9ba7d887c00a7906929e8b599304eb1e52405cf0f61ed959d605c65dd6c275",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0003, 0, 0, 0.9993822935779817, -1, -0.35048165137613924]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 97.27318943891659,
+          "shift": -0.125,
+          "bestScore": 97.50316087040804
+        },
+        "bottom": {
+          "score": 90.26426410720823,
+          "shift": -0.875,
+          "bestScore": 99.31454496294039
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.20577711819773,
+          "shift": -0.25,
+          "bestScore": 98.61230892675961,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 89.63854886971174,
+          "shift": -0.875,
+          "bestScore": 99.3085571590584,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 87.58366957012703,
+          "shift": -0.875,
+          "bestScore": 99.7918022712149,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 87.92142830120386,
+          "shift": -0.875,
+          "bestScore": 99.83738292474904,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "d023e930-f974-40a8-8832-9357350bc7ae",
+      "name": "Lance",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "67ef7f61cb9f6a577bdfbf2b88711b0b8d7510070342c4c30b6f048ccb2f0a0a",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.9998, 0, 0, 0.999341376146789, 0.925, -1.2001376146788953]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.86586283215752,
+          "shift": 0,
+          "bestScore": 99.86586283215752
+        },
+        "bottom": {
+          "score": 99.75056246241108,
+          "shift": 0.125,
+          "bestScore": 99.8487062886907
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.9085119766168,
+          "shift": 0,
+          "bestScore": 99.9085119766168,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 91.33424491593561,
+          "shift": -0.875,
+          "bestScore": 99.43395750099563,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 86.79999718967241,
+          "shift": -0.875,
+          "bestScore": 99.57347694087284,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 94.13732046312242,
+          "shift": -0.625,
+          "bestScore": 99.59464664676403,
+          "similarityPassed": true,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "b9e9b348-121b-42d3-b7be-d6a83dca9157",
+      "name": "Purelace",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "c9b37aa14c1023f333d30452ea565167532a20c6b33df3dd46f12dc58c59ebae",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.00005, 0, 0, 0.9991325229357799, 1.925, -0.27555045871558875]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.45295461381221,
+          "shift": 0.125,
+          "bestScore": 99.47913140081829
+        },
+        "bottom": {
+          "score": 90.51836638905652,
+          "shift": -0.875,
+          "bestScore": 99.00565498052019
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.25611855452684,
+          "shift": 0.125,
+          "bestScore": 99.38318717438848,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 89.20667381305978,
+          "shift": -0.875,
+          "bestScore": 99.01928922892513,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 87.06887920159214,
+          "shift": -0.875,
+          "bestScore": 99.50867051652321,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 86.77956656409324,
+          "shift": -0.875,
+          "bestScore": 99.68582217810989,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "c159804d-8757-4172-a661-4f9ee068fce1",
+      "name": "Resurrection",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "afc5ae96010ccfb4c220f9cca5462c95e24c311da8f7680f314de5e31c6d322b",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99995, 0, 0, 0.9983445756880734, -1.05, -0.5884633027522803]
+      },
+      "failureTypes": ["fit-profile-mismatch", "independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.12552107790462,
+          "shift": 0.125,
+          "bestScore": 99.31482213448972
+        },
+        "bottom": {
+          "score": 89.71993471095361,
+          "shift": -1,
+          "bestScore": 99.72677266257493
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.35238319770806,
+          "shift": 0.25,
+          "bestScore": 99.15813372880021,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 89.650632093782,
+          "shift": -1,
+          "bestScore": 99.82531106821497,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 87.2630688141133,
+          "shift": -0.875,
+          "bestScore": 99.3619981558388,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 86.85402843064612,
+          "shift": -0.875,
+          "bestScore": 99.0856642951899,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "97fa5f07-46ba-408d-a861-bdb1791cc188",
+      "name": "Serra Angel",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "004bfa7e6f8bc387191c8bb2c967c03928cfe32cae22ea3ef237ab70cbfa088c",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.9994500000000001, 0, 0, 1.0008253899082569, -0.05, -0.5992775229357912]
+      },
+      "failureTypes": ["fit-profile-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 76.17470086318573,
+          "shift": 0.375,
+          "bestScore": 77.77519099413628
+        },
+        "bottom": {
+          "score": 99.81739812720573,
+          "shift": -0.125,
+          "bestScore": 99.84588113002576
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 97.21292107434397,
+          "shift": -0.375,
+          "bestScore": 98.92014491603906,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.89257080691445,
+          "shift": 0,
+          "bestScore": 99.89257080691445,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 98.36672363895035,
+          "shift": -0.125,
+          "bestScore": 98.64684119552976,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 99.19991052968204,
+          "shift": -0.25,
+          "bestScore": 99.82391005460072,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "d55a1479-6654-4e8e-9a27-44e23753f8be",
+      "name": "Veteran Bodyguard",
+      "material": "W",
+      "cohort": "calibration",
+      "referenceHash": "69c897d6dc2daa9d5a1de8212b26dc8862fa26b8b05780defab884145a511a6a",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [
+          0.9997, 6.050733815561019e-20, 0.00026185175365905466, 0.9997411926605503, 1.175,
+          1.4997706422018386
+        ]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.77934059031804,
+          "shift": 0,
+          "bestScore": 99.77934059031804
+        },
+        "bottom": {
+          "score": 91.43444753595162,
+          "shift": -0.875,
+          "bestScore": 99.64467256564474
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.9752911042342,
+          "shift": 0,
+          "bestScore": 98.9752911042342,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 89.51727133890998,
+          "shift": -1,
+          "bestScore": 99.67188296394039,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 86.58652583279648,
+          "shift": -0.875,
+          "bestScore": 99.71537611270921,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 87.07610198575019,
+          "shift": -0.875,
+          "bestScore": 99.83585974409057,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "bb38dcd5-4f12-461c-96a8-867a5b63c5c1",
+      "name": "White Ward",
+      "material": "W",
+      "cohort": "validation",
+      "referenceHash": "f4bbb162971691a51dc6c0532fc3a907f46d6dec2fbd1a76b12d62a3a97b082b",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.00015, 0, 0, 1.00015, 1.05, -0.775]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 98.30897305559947,
+          "shift": 0,
+          "bestScore": 98.30897305559947
+        },
+        "bottom": {
+          "score": 99.91350467188735,
+          "shift": 0,
+          "bestScore": 99.91350467188735
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.11661138591874,
+          "shift": -0.125,
+          "bestScore": 98.19188440082245,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.4591215919991,
+          "shift": -0.125,
+          "bestScore": 99.74624411394808,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 86.27355625226355,
+          "shift": -0.875,
+          "bestScore": 99.56543955195856,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 91.5143414023433,
+          "shift": -0.75,
+          "bestScore": 99.64311622486832,
+          "similarityPassed": true,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "4765276e-ad80-4734-b485-36eebf1b6ae1",
+      "name": "Mahamoti Djinn",
+      "material": "U",
+      "cohort": "validation",
+      "referenceHash": "f23cda48a15bc8e7b8914c009aee62ec2a8e1371877d292c08b9b98be604e10f",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.00015, 0, 0, 0.9987736467889909, 1, -0.35072247706420884]
+      },
+      "failureTypes": ["fit-profile-mismatch", "independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 80.14225907159921,
+          "shift": 0,
+          "bestScore": 80.14225907159921
+        },
+        "bottom": {
+          "score": 99.95177826067506,
+          "shift": 0,
+          "bestScore": 99.95177826067506
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 79.29437221036251,
+          "shift": 0.125,
+          "bestScore": 79.55252801160012,
+          "similarityPassed": false,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.72930328294075,
+          "shift": -0.125,
+          "bestScore": 99.95712337336913,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 99.79509126430072,
+          "shift": 0,
+          "bestScore": 99.79509126430072,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 99.85968141375638,
+          "shift": 0,
+          "bestScore": 99.85968141375638,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "563194a8-e7b2-4edb-ba02-f84cfd206771",
+      "name": "Sleight of Mind",
+      "material": "U",
+      "cohort": "calibration",
+      "referenceHash": "24cd0c60edc7c7b7b5a544553c8558d2f67cd0430d87ece5c9bda5623131cc24",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99985, 0, 0, 1.0012259403669725, -1.025, -0.42438073394496545]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 98.43915161259198,
+          "shift": -0.25,
+          "bestScore": 99.09964099862448
+        },
+        "bottom": {
+          "score": 92.86884286420532,
+          "shift": 0.625,
+          "bestScore": 99.82772094105071
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.45663754436451,
+          "shift": -0.125,
+          "bestScore": 98.73545558377953,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 93.24655548530944,
+          "shift": 0.625,
+          "bestScore": 99.83305292069197,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 98.82013635715063,
+          "shift": 0.125,
+          "bestScore": 99.20993958654822,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 99.71299887720527,
+          "shift": 0,
+          "bestScore": 99.71299887720527,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "eed73f84-ad08-44f8-a4fe-cd324ec1da92",
+      "name": "Animate Dead",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "1c255874972c6bd78b4383140acb7d10f9b38a2846123ab2df7a6918d918067c",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0002000000000002, 0, 0, 0.9992414220183486, -1.75, -1.3252522935779778]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.81155404713064,
+          "shift": 0,
+          "bestScore": 99.81155404713064
+        },
+        "bottom": {
+          "score": 99.85587830969844,
+          "shift": -0.25,
+          "bestScore": 99.96799220026062
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 79.37620290224257,
+          "shift": -3.875,
+          "bestScore": 88.56931912347,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.59074996005063,
+          "shift": -0.25,
+          "bestScore": 99.93803446400294,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 96.19495920301829,
+          "shift": -0.375,
+          "bestScore": 97.98901625406025,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 98.92291107849302,
+          "shift": -0.25,
+          "bestScore": 99.63114512821377,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "0f1a0d5c-bf25-49ff-8af0-cdb2e00c50d9",
+      "name": "Contract from Below",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "c1d634bf5a37fb204bc10a53de7f005e7b7ebe09e302746e0f6f1d3aa64ce484",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0001, 0, 0, 0.9994118577981651, 0.625, 0.812155963302758]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 98.35846267772614,
+          "shift": 0,
+          "bestScore": 98.35846267772614
+        },
+        "bottom": {
+          "score": 99.88989553357914,
+          "shift": -0.125,
+          "bestScore": 99.89348912240669
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 96.67818930152684,
+          "shift": -0.125,
+          "bestScore": 96.73713461700237,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.80482548583787,
+          "shift": -0.125,
+          "bestScore": 99.87377857338086,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 95.17024544630135,
+          "shift": 0.25,
+          "bestScore": 95.96180464919955,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 92.56885311696068,
+          "shift": 0.625,
+          "bestScore": 99.14105826972569,
+          "similarityPassed": true,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "f550c4e2-a9ba-4bd6-9ba6-94fa5b02e27a",
+      "name": "Darkpact",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "d79e1e96fe72ffa181c5089358afe185f6237e24eaacec2a8b7094a60cfba364",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.00005, 0, 0, 1.00005, 2, 0.07500000000000001]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 95.10512014124076,
+          "shift": -0.25,
+          "bestScore": 95.76140249554861
+        },
+        "bottom": {
+          "score": 99.33916006932702,
+          "shift": 0.125,
+          "bestScore": 99.34858150546137
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 95.24797106819183,
+          "shift": -0.375,
+          "bestScore": 96.29732596672326,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.59506212202196,
+          "shift": 0.125,
+          "bestScore": 99.69193225225116,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 92.16462237817858,
+          "shift": 0.375,
+          "bestScore": 95.8503862967854,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 87.55478806163174,
+          "shift": 0.125,
+          "bestScore": 87.87542264992392,
+          "similarityPassed": false,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "b4cfeebf-d893-4fdf-b3fc-f1f9528f4d04",
+      "name": "Demonic Hordes",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "5d48e3db5b059bf75eef7e7c9b61d81dd64c9b4afba679b8bda48d158fdbe355",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99975, 0, 0, 1.0015844036697248, 0.15000000000000002, -0.3740825688073546]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.14462569050143,
+          "shift": 0,
+          "bestScore": 99.14462569050143
+        },
+        "bottom": {
+          "score": 98.92558918685205,
+          "shift": 0.5,
+          "bestScore": 99.45386424287992
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.38554437866351,
+          "shift": -0.125,
+          "bestScore": 98.5548094888418,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 96.63613406903794,
+          "shift": 0.625,
+          "bestScore": 98.30776561562567,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 87.12651518406942,
+          "shift": 0.75,
+          "bestScore": 97.95920733806064,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 89.38832371355122,
+          "shift": 0.875,
+          "bestScore": 99.68755334237042,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "02104733-fb20-43bb-8370-1993528abbdf",
+      "name": "Erg Raiders",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "4ae426354a091abd6b979d3df345cc5173b190d5711018d8784fc6e86f34dcae",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99995, 0, 0, 1.0001793463302753, 0.075, -1.2123910550458734]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.01560478093572,
+          "shift": 0,
+          "bestScore": 99.01560478093572
+        },
+        "bottom": {
+          "score": 99.4450266871965,
+          "shift": 0,
+          "bestScore": 99.4450266871965
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.22046409847388,
+          "shift": -0.125,
+          "bestScore": 98.39136052788204,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.78302160611486,
+          "shift": 0.125,
+          "bestScore": 99.81117853924626,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 93.95954988780088,
+          "shift": -0.625,
+          "bestScore": 97.87351974701255,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 99.38562771031056,
+          "shift": 0,
+          "bestScore": 99.38562771031056,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "3230ac66-cb75-43cc-b652-b28e2962d163",
+      "name": "Mind Twist",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "fc5dc505c5c7bde25dc27e7dcfd5f7ad6d4bb9f46bf7c4a1b56d8043581bb08e",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0002000000000002, 0, 0, 0.9992823853211011, 0.7, -1.3004128440366898]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.55716371547865,
+          "shift": 0.125,
+          "bestScore": 99.56325018041687
+        },
+        "bottom": {
+          "score": 99.6384200428121,
+          "shift": -0.25,
+          "bestScore": 99.80518732246996
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.44685382232423,
+          "shift": 0,
+          "bestScore": 99.44685382232423,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 98.22516031680287,
+          "shift": -0.5,
+          "bestScore": 99.64250344601007,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 91.23589507214095,
+          "shift": -0.625,
+          "bestScore": 95.2848079251962,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 98.12249883331943,
+          "shift": 0.25,
+          "bestScore": 98.9180583007269,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "bc1b6d40-fdb0-40c3-983d-67a7bfb96cea",
+      "name": "Simulacrum",
+      "material": "B",
+      "cohort": "calibration",
+      "referenceHash": "807d4daa7a057b1778d83b1cd2a77758c62b8207c68d49b75a7135954effb0f2",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0001, 0, 0, 0.9929891972477064, -0.225, 1.4587672018348603]
+      },
+      "failureTypes": [
+        "vertical-search-boundary",
+        "fit-profile-mismatch",
+        "independent-band-mismatch"
+      ],
+      "queue": "search-boundary-review",
+      "fit": {
+        "top": {
+          "score": 48.407647381375554,
+          "shift": 3.75,
+          "bestScore": 96.47509566756032
+        },
+        "bottom": {
+          "score": 99.90086009041272,
+          "shift": 0,
+          "bestScore": 99.90086009041272
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 32.864793211526866,
+          "shift": 4,
+          "bestScore": 99.21260742460693,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.74820288530721,
+          "shift": -0.125,
+          "bestScore": 99.77241246215739,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 64.48407728342306,
+          "shift": 1,
+          "bestScore": 88.57879013591753,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 80.62136361377195,
+          "shift": 1.25,
+          "bestScore": 93.553525968577,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "3ac35077-91e9-446c-9cb2-e2cfb9fa2962",
+      "name": "Unholy Strength",
+      "material": "B",
+      "cohort": "validation",
+      "referenceHash": "f2e60fce983f1b51374283efef3903f5fe5ddff7e5a8dccd585321d940ca93c6",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.00005, 0, 0, 0.9982150458715598, 0.5, -1.3759174311926454]
+      },
+      "failureTypes": ["parent-registration"],
+      "queue": "parent-registration-review",
+      "fit": {
+        "top": {
+          "score": 99.34186989628276,
+          "shift": -0.125,
+          "bestScore": 99.52333639566568
+        },
+        "bottom": {
+          "score": 99.54132363162567,
+          "shift": -0.25,
+          "bestScore": 99.6226775679107
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.692944505781,
+          "shift": -0.125,
+          "bestScore": 98.88361342315949,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 98.26729906539067,
+          "shift": -0.5,
+          "bestScore": 99.17202224665061,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 98.05241588583077,
+          "shift": -0.25,
+          "bestScore": 98.98144962993165,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 98.50195253327885,
+          "shift": -0.25,
+          "bestScore": 99.22025321208874,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "ce71d4c8-3835-4065-8089-82a64846dbcb",
+      "name": "Disintegrate",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "68bde3623daaae6b04455c07106b82299a775275077585789911176249a5a34c",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.9998, 0, 0, 0.9998, -0.024999999999999994, 0.725]
+      },
+      "failureTypes": ["fit-profile-mismatch", "independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 87.49532438388482,
+          "shift": 0.125,
+          "bestScore": 87.64767756943132
+        },
+        "bottom": {
+          "score": 99.9505127240443,
+          "shift": 0,
+          "bestScore": 99.9505127240443
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 89.9346584933441,
+          "shift": 0.125,
+          "bestScore": 90.3191330195457,
+          "similarityPassed": false,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.81991824449544,
+          "shift": 0,
+          "bestScore": 99.81991824449544,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 99.11297998504965,
+          "shift": 0,
+          "bestScore": 99.11297998504965,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 99.54811247236228,
+          "shift": 0.125,
+          "bestScore": 99.59464110472203,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "63539181-5393-41b8-baf3-9a690d17f4ce",
+      "name": "Fire Elemental",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "eed0f237602b44783c746a72f7e32e8660850594911129c4a3e096c877390ed6",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99995, 0, 0, 0.9994913073394496, -0.5, -0.8252522935779778]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 94.37017178839287,
+          "shift": 0.25,
+          "bestScore": 95.68807277029187
+        },
+        "bottom": {
+          "score": 99.95228171658509,
+          "shift": 0,
+          "bestScore": 99.95228171658509
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 95.13260194793297,
+          "shift": 0.25,
+          "bestScore": 96.26432334704397,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.91416460244245,
+          "shift": 0,
+          "bestScore": 99.91416460244245,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 96.35246733378956,
+          "shift": -0.375,
+          "bestScore": 98.45652754977444,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 94.29884958568489,
+          "shift": -0.625,
+          "bestScore": 99.46431428318466,
+          "similarityPassed": true,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "c987a3ec-a775-4140-ad49-18025e59dc3d",
+      "name": "Hill Giant",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "6d34f5676f6c0d71e41c25d2129c3cff41a130c61a4490e4e10d055f963e0030",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [
+          1.0001999961915207, 0.00008724387728797452, 0.0004361796426391879, 0.9991914868051616,
+          2.1, -0.6002408256880696
+        ]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.48314446494234,
+          "shift": 0,
+          "bestScore": 99.48314446494234
+        },
+        "bottom": {
+          "score": 99.8878103432968,
+          "shift": 0,
+          "bestScore": 99.8878103432968
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.63589030423961,
+          "shift": -0.125,
+          "bestScore": 99.70466732776069,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.78490564581587,
+          "shift": 0,
+          "bestScore": 99.78490564581587,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 95.6470676614209,
+          "shift": -0.5,
+          "bestScore": 99.46613774405706,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 92.39442459087276,
+          "shift": -0.75,
+          "bestScore": 98.88835642572052,
+          "similarityPassed": true,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "967a26e0-8dca-4215-9935-b77a7dd4dde0",
+      "name": "Kird Ape",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "03edb958e781d19c1edbc21a987eef5bbe6ed9a1c3a0eda2fbbe00f74c5a4577",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.00015, 0, 0, 0.9999206077981653, 0.575, 1.537362385321103]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 98.69490045659387,
+          "shift": 0.25,
+          "bestScore": 99.24479039596771
+        },
+        "bottom": {
+          "score": 99.77002527328061,
+          "shift": 0.125,
+          "bestScore": 99.95225487719385
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 83.74622067455383,
+          "shift": 0.5,
+          "bestScore": 86.78345926717144,
+          "similarityPassed": false,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.22860785409496,
+          "shift": 0.25,
+          "bestScore": 99.88462715896603,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 97.94027442950467,
+          "shift": 0.125,
+          "bestScore": 98.18247517617024,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 99.2697972445506,
+          "shift": 0.125,
+          "bestScore": 99.59203850991939,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "b59d2329-5a0c-407b-aed2-2e19feaf70ed",
+      "name": "Mana Flare",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "a13e6d0624a8967b8caf42860f3dc3680d974728f995fad022a6555dfbd92166",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.9997, 0, 0, 0.999012133027523, 1.1, 0.5871387614678956]
+      },
+      "failureTypes": ["fit-profile-mismatch", "independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 80.84003595817552,
+          "shift": 0.125,
+          "bestScore": 81.24732392790061
+        },
+        "bottom": {
+          "score": 99.6489511523153,
+          "shift": 0.125,
+          "bestScore": 99.67994101672157
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 80.91751447621107,
+          "shift": 0,
+          "bestScore": 80.91751447621107,
+          "similarityPassed": false,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.79532835952159,
+          "shift": 0,
+          "bestScore": 99.79532835952159,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 98.97981922224602,
+          "shift": 0.125,
+          "bestScore": 99.04237244181854,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 99.37548237148953,
+          "shift": -0.125,
+          "bestScore": 99.48482650983591,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "6e81e219-c840-4844-be87-0449ab0fa645",
+      "name": "Mons's Goblin Raiders",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "2fa6f8c55fd3ed91fae25131043ccad8a1a7750394bc228a5ad4c3f6829828e6",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99995, 0, 0, 0.9997206536697247, -0.75, -0.5125974770642183]
+      },
+      "failureTypes": ["parent-registration"],
+      "queue": "parent-registration-review",
+      "fit": {
+        "top": {
+          "score": 99.5296799904979,
+          "shift": -0.125,
+          "bestScore": 99.55396024428947
+        },
+        "bottom": {
+          "score": 99.77384469890129,
+          "shift": 0,
+          "bestScore": 99.77384469890129
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.61069342817865,
+          "shift": -0.125,
+          "bestScore": 99.81540573053285,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.81368946478592,
+          "shift": 0,
+          "bestScore": 99.81368946478592,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 99.1396272782417,
+          "shift": 0,
+          "bestScore": 99.1396272782417,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 98.55796108753614,
+          "shift": 0,
+          "bestScore": 98.55796108753614,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "71a941f4-3bdc-40b6-8b24-d73136283f51",
+      "name": "Orcish Oriflamme",
+      "material": "R",
+      "cohort": "calibration",
+      "referenceHash": "855a11aa9875682edb0a04f3897a48eca519daec89f1c3bd7a0f4bd279d2069c",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0001, 0, 0, 1.00055876146789, 0.825, -0.5247821100917469]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 97.99579168314216,
+          "shift": 0,
+          "bestScore": 97.99579168314216
+        },
+        "bottom": {
+          "score": 99.95116701732965,
+          "shift": 0,
+          "bestScore": 99.95116701732965
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.03282225139958,
+          "shift": 0.125,
+          "bestScore": 99.16396464408577,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.31326589663867,
+          "shift": 0.125,
+          "bestScore": 99.80559028896964,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 89.81420234810895,
+          "shift": 0.25,
+          "bestScore": 91.13620956969348,
+          "similarityPassed": false,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 94.157224705747,
+          "shift": 0.25,
+          "bestScore": 95.05055786736806,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "667c227f-a3b7-4040-8b67-75a6fc209e67",
+      "name": "Wall of Stone",
+      "material": "R",
+      "cohort": "validation",
+      "referenceHash": "e6fce70aae2be6b9a8164e227e35572bcb95b6346a18186d39e67d5b77df3e29",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1, 0, 0, 1.0009174311926605, 1.925, 0.5004587155963227]
+      },
+      "failureTypes": ["fit-profile-mismatch", "independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 87.36630635534533,
+          "shift": -0.375,
+          "bestScore": 88.93406578305824
+        },
+        "bottom": {
+          "score": 99.78296130936349,
+          "shift": 0.125,
+          "bestScore": 99.93270505409825
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 88.32655328721071,
+          "shift": -0.5,
+          "bestScore": 92.06998714630888,
+          "similarityPassed": false,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.09362199491191,
+          "shift": 0.25,
+          "bestScore": 99.85040091202738,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 95.1090406471398,
+          "shift": -0.5,
+          "bestScore": 98.01492043395577,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 88.40166857231937,
+          "shift": -0.5,
+          "bestScore": 91.6552915817511,
+          "similarityPassed": false,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "35415199-0f1d-4398-a48f-f78697a51105",
+      "name": "Serendib Efreet",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "d4df515ddc0674a46f340f8e7f13110a6cdc04fd275bc68ee4229a6050524f55",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0002499999999999, 0, 0, 1.0002499999999999, -2.05, -0.575]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 97.22583742726334,
+          "shift": -0.375,
+          "bestScore": 98.20633612151033
+        },
+        "bottom": {
+          "score": 97.20244866256917,
+          "shift": 0.25,
+          "bestScore": 97.77538537509749
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.07522067055214,
+          "shift": -0.25,
+          "bestScore": 99.66557513096373,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.14167567667518,
+          "shift": 0.125,
+          "bestScore": 99.3521109287667,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 89.55003422358904,
+          "shift": -0.375,
+          "bestScore": 90.7924997718069,
+          "similarityPassed": false,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 90.84238880127184,
+          "shift": -0.25,
+          "bestScore": 91.73155455005902,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "3c5d9117-135f-4a88-950a-41bf164ebc21",
+      "name": "Cockatrice",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "d7f96646d68a201744f2b2b8c483645618d9fee76aec5c4c6e8714f2ee67ea60",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0001, 0, 0, 1.0001, 0.925, 2]
+      },
+      "failureTypes": ["parent-registration"],
+      "queue": "parent-registration-review",
+      "fit": {
+        "top": {
+          "score": 99.57576275659649,
+          "shift": 0,
+          "bestScore": 99.57576275659649
+        },
+        "bottom": {
+          "score": 99.2069241835365,
+          "shift": 0,
+          "bestScore": 99.2069241835365
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.73233449193128,
+          "shift": -0.125,
+          "bestScore": 99.83969494212431,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.33124447095554,
+          "shift": 0,
+          "bestScore": 99.33124447095554,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 90.25466922428679,
+          "shift": 0.25,
+          "bestScore": 91.56945276830957,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 93.77302197644435,
+          "shift": -0.125,
+          "bestScore": 93.94400066583741,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "56cb88db-2c6b-4d17-be16-2a89218efe4c",
+      "name": "Force of Nature",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "6257f1861244dfa5f901bb310291eeff8727cd29b0715931856352f7adb03093",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99975, 0, 0, 0.9988327981651377, 1, -0.2504587155963227]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 95.25735476322387,
+          "shift": 0.375,
+          "bestScore": 97.51654241351193
+        },
+        "bottom": {
+          "score": 98.98356945983335,
+          "shift": -0.125,
+          "bestScore": 99.14365153074388
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 96.47783567349067,
+          "shift": 0.25,
+          "bestScore": 97.85210298185285,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 95.53335966602909,
+          "shift": -0.625,
+          "bestScore": 99.33353663369859,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 99.43889033947042,
+          "shift": 0,
+          "bestScore": 99.43889033947042,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 98.38069542428084,
+          "shift": 0,
+          "bestScore": 98.38069542428084,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "6f80ad09-ebff-47cb-93ab-9bc7e0e10056",
+      "name": "Fungusaur",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "db9571b7e4ffa194a37a02d3e988190893d3fe8e53ab7afada2455ff636ef637",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [
+          1.000799996189236, -0.00008743643193837101, -1.3549139024279789e-20, 1.0008965061047093,
+          -1.625, -0.5869552752293672
+        ]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 99.34664512184361,
+          "shift": 0,
+          "bestScore": 99.34664512184361
+        },
+        "bottom": {
+          "score": 99.41850608710234,
+          "shift": 0,
+          "bestScore": 99.41850608710234
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 97.31582006153408,
+          "shift": -0.25,
+          "bestScore": 97.94310442032922,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 98.17930884481002,
+          "shift": -0.125,
+          "bestScore": 98.28213077791925,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 90.85264610855012,
+          "shift": -0.25,
+          "bestScore": 91.90229161871889,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 87.94970045500132,
+          "shift": 0.125,
+          "bestScore": 88.24626639615526,
+          "similarityPassed": false,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "6c36ac7d-2ff0-4350-9b10-968f94b19842",
+      "name": "Gaea's Liege",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "7cc44be1fcb37f1b463d40028a321d4ef44e94c1f801ed676e8fcab07668a802",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [
+          1.0005999961899976, 0.00008739893137779319, 0.0001744631171223682, 1.000517083268617, 1.2,
+          1.0004587155963227
+        ]
+      },
+      "failureTypes": ["parent-registration"],
+      "queue": "parent-registration-review",
+      "fit": {
+        "top": {
+          "score": 98.94765257562098,
+          "shift": 0.125,
+          "bestScore": 99.07870679947133
+        },
+        "bottom": {
+          "score": 98.91491878004061,
+          "shift": 0.125,
+          "bestScore": 98.9882569559785
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 90.86471371313561,
+          "shift": 0.125,
+          "bestScore": 91.21973382201054,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 96.94040956682537,
+          "shift": -0.5,
+          "bestScore": 99.59903297734229,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 90.1223062135151,
+          "shift": 0.5,
+          "bestScore": 95.03680089142564,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 92.98968707861566,
+          "shift": 0.5,
+          "bestScore": 96.31413573657525,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "b1466b4c-407d-4220-b5ee-474d7d8a24a7",
+      "name": "Kudzu",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "c09234b1eedc0b4f84d1e71b220ee46408d018559aa54b2377de17cf1ef9d521",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1, 0, 0, 1.0011467889908257, 0.325, 1.1880733944954034]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 94.07240789513742,
+          "shift": -0.25,
+          "bestScore": 94.43982739027146
+        },
+        "bottom": {
+          "score": 99.42369547662895,
+          "shift": 0,
+          "bestScore": 99.42369547662895
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 92.41968760020879,
+          "shift": -0.25,
+          "bestScore": 93.05221281019578,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.22075865942736,
+          "shift": 0,
+          "bestScore": 99.22075865942736,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 93.2258074559526,
+          "shift": -0.375,
+          "bestScore": 94.82818814574328,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 89.10675465335164,
+          "shift": -0.5,
+          "bestScore": 91.56334755475538,
+          "similarityPassed": false,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "5fc40d6f-1f1c-4f50-8971-9de5f477038b",
+      "name": "Lifelace",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "30745e7042b5610b48301ce2e25b5d0e6942cb7dc82effba91f8729a52ff18d1",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99995, 0, 0, 0.9994913073394496, 0.325, -0.00022935779816134205]
+      },
+      "failureTypes": ["parent-registration"],
+      "queue": "parent-registration-review",
+      "fit": {
+        "top": {
+          "score": 99.73384272873811,
+          "shift": 0,
+          "bestScore": 99.73384272873811
+        },
+        "bottom": {
+          "score": 99.2703622008167,
+          "shift": -0.125,
+          "bestScore": 99.35178362523101
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.70492592868521,
+          "shift": 0.125,
+          "bestScore": 99.03745568975671,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 96.13542956201233,
+          "shift": -0.5,
+          "bestScore": 98.82723145241144,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 93.23547455014618,
+          "shift": 0.25,
+          "bestScore": 93.92161057752227,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 97.17794901093168,
+          "shift": -0.125,
+          "bestScore": 97.30882418760443,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "6d6deae3-3ed4-47eb-bf4a-4a766ce18135",
+      "name": "Llanowar Elves",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "c3749976583e4d6a0ae59518bce0e22d2e1c8b79be579f4f42c2bcbaad205d5f",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.9997, 0, 0, 0.9992414220183486, -0.7, 0.6247706422018386]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 97.23691198050348,
+          "shift": 0.125,
+          "bestScore": 97.38668972418664
+        },
+        "bottom": {
+          "score": 97.93078806979369,
+          "shift": 0.25,
+          "bestScore": 98.55320869173633
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 94.56465322768004,
+          "shift": 0.125,
+          "bestScore": 94.70784467488754,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 97.57741428755675,
+          "shift": -0.375,
+          "bestScore": 99.18192364108448,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 80.35003422955475,
+          "shift": -1.375,
+          "bestScore": 97.21563476031523,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 89.41398510980372,
+          "shift": -0.875,
+          "bestScore": 97.7188028694263,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "1b9e1d37-47cd-41d7-9fee-b8504c689462",
+      "name": "Scryb Sprites",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "00735fdb1b48cfa1da6cf034e61ef47c631afa5a19d082a688ff299a907ae892",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0001000000000002, 0, 0, 1.000788142201835, 1.85, 1.0378268348623796]
+      },
+      "failureTypes": ["parent-registration"],
+      "queue": "parent-registration-review",
+      "fit": {
+        "top": {
+          "score": 99.0579499323655,
+          "shift": -0.125,
+          "bestScore": 99.15568271521087
+        },
+        "bottom": {
+          "score": 96.8875085976415,
+          "shift": -0.375,
+          "bestScore": 97.9791824463936
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.56947998849529,
+          "shift": -0.25,
+          "bestScore": 98.8877343699582,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 97.8608178126593,
+          "shift": -0.25,
+          "bestScore": 98.46331819153401,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 98.30193155759466,
+          "shift": 0.125,
+          "bestScore": 98.48775854476798,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 98.9008563861016,
+          "shift": -0.125,
+          "bestScore": 98.93869108587224,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "bf1889aa-59e9-4d67-ab53-9aec071ab67a",
+      "name": "Shanodin Dryads",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "88c2a253ebea0c09ee37a7379e02256e54e3aba4466beb9b80500e6159600456",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99995, 0, 0, 1.0013260779816513, 0.575, 1.4756536697247593]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.30120910440715,
+          "shift": 0,
+          "bestScore": 99.30120910440715
+        },
+        "bottom": {
+          "score": 98.60020463917225,
+          "shift": 0.125,
+          "bestScore": 98.83211012245546
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 96.45506615188636,
+          "shift": -0.125,
+          "bestScore": 96.51895446233402,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 95.20608918596322,
+          "shift": 0.625,
+          "bestScore": 99.29469896363955,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 91.27206133213227,
+          "shift": 0.625,
+          "bestScore": 98.0721172566411,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 96.29902223018522,
+          "shift": 0.5,
+          "bestScore": 99.04578704142872,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "3aea108b-367b-43d9-b50d-c18954b2a82d",
+      "name": "Timber Wolves",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "fd3075452a1eecbeb9ca2fd5ce7fec9ca8a2569e3a19df51e7cb1bc8ef1af514",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.9998, 0, 0, 0.9995706880733946, 1.175, 1.487373853211011]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.09588498604923,
+          "shift": -0.125,
+          "bestScore": 99.10997846590502
+        },
+        "bottom": {
+          "score": 98.09685754824656,
+          "shift": -0.375,
+          "bestScore": 99.44429866887077
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.2631122474131,
+          "shift": -0.125,
+          "bestScore": 99.4319255261636,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 92.73224926649492,
+          "shift": -0.625,
+          "bestScore": 98.27412746224564,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 91.94510109624176,
+          "shift": -0.375,
+          "bestScore": 93.84853798985768,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 98.36944876330462,
+          "shift": -0.125,
+          "bestScore": 98.65688325201131,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "5722c349-bf3d-4ac0-8fdd-bf170401c419",
+      "name": "Tranquility",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "373ec183ba251a04e3bd5047f02a81b0af25212b6a606fb81a1b288133e0e764",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.9996, 0, 0, 1.001434128440367, -1.1, 0.5510091743119114]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 98.80912690791894,
+          "shift": 0,
+          "bestScore": 98.80912690791894
+        },
+        "bottom": {
+          "score": 96.51867002945143,
+          "shift": 0.375,
+          "bestScore": 97.85958227995077
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.23704929863945,
+          "shift": -0.125,
+          "bestScore": 99.3454773168948,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 96.17831838673708,
+          "shift": 0.5,
+          "bestScore": 98.55763341087368,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 94.16957128447265,
+          "shift": 0.375,
+          "bestScore": 96.53202352064463,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 93.06702525466342,
+          "shift": 0.625,
+          "bestScore": 97.50243333516848,
+          "similarityPassed": true,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "354de08d-41a8-4d6c-85d6-2413393ac181",
+      "name": "Verduran Enchantress",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "a258459bf0a77be9820e2430eaf3ef8dc3f1715f0e5fa41f7d88cc94b648ea92",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0002499999999999, 0, 0, 1.000020584862385, 1.425, 0.11237385321101107]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 99.54597932802575,
+          "shift": 0,
+          "bestScore": 99.54597932802575
+        },
+        "bottom": {
+          "score": 97.39983478351634,
+          "shift": 0.375,
+          "bestScore": 98.55785215703392
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.82786219719543,
+          "shift": 0,
+          "bestScore": 99.82786219719543,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.4459516725001,
+          "shift": -0.125,
+          "bestScore": 99.57213372816827,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 94.29231928584603,
+          "shift": -0.25,
+          "bestScore": 94.73060485193365,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 86.99618174461104,
+          "shift": -0.5,
+          "bestScore": 89.7196411398675,
+          "similarityPassed": false,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "9d4f8eb6-2c3c-49e7-a41d-33c138d853c9",
+      "name": "Wall of Wood",
+      "material": "G",
+      "cohort": "calibration",
+      "referenceHash": "4eb2591917e3c9063227703961771f1e2c12d0a9ab5c8a338095586dd62a91d5",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.9999, 0, 0, 0.9992119954128441, 0.05000000000000002, -0.7628784403669668]
+      },
+      "failureTypes": ["parent-registration"],
+      "queue": "parent-registration-review",
+      "fit": {
+        "top": {
+          "score": 98.3706111066013,
+          "shift": 0,
+          "bestScore": 98.3706111066013
+        },
+        "bottom": {
+          "score": 99.19164385103424,
+          "shift": 0,
+          "bestScore": 99.19164385103424
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 96.41348590423809,
+          "shift": 0,
+          "bestScore": 96.41348590423809,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 98.03238503426871,
+          "shift": -0.25,
+          "bestScore": 98.82528729696662,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 99.09816277301728,
+          "shift": 0,
+          "bestScore": 99.09816277301728,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 99.30334932148143,
+          "shift": -0.125,
+          "bestScore": 99.43421481554293,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "3fd08a5d-0dad-4bce-86c0-dea431038859",
+      "name": "Wanderlust",
+      "material": "G",
+      "cohort": "validation",
+      "referenceHash": "a3164f16a061f73689aa0391a894b706918665988a47af7a94c10233cb3dfec8",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0002000000000002, 0, 0, 1.0008882110091746, 1.25, -0.31215596330275797]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.29709917791523,
+          "shift": -0.125,
+          "bestScore": 99.55903997979904
+        },
+        "bottom": {
+          "score": 98.87908141766724,
+          "shift": 0,
+          "bestScore": 98.87908141766724
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 93.0134581966144,
+          "shift": -0.5,
+          "bestScore": 95.06169484378168,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 96.36792920433095,
+          "shift": -0.375,
+          "bestScore": 98.4381905209479,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 94.37951718996455,
+          "shift": -0.625,
+          "bestScore": 99.14091138014473,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 96.85809668873722,
+          "shift": -0.375,
+          "bestScore": 98.6967314881907,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "ee486c26-f0bc-4275-ab1b-a9e57721f036",
+      "name": "Armageddon Clock",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "68ff432955dd3e66e5bed10215bfc19cbfe40799d53860d7148dd061496d9840",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.9999, 0, 0, 1.000588004587156, -0.15, 1.187844036697242]
+      },
+      "failureTypes": ["parent-registration", "fit-profile-mismatch", "independent-band-mismatch"],
+      "queue": "parent-registration-review",
+      "fit": {
+        "top": {
+          "score": 82.84420765105237,
+          "shift": 0.25,
+          "bestScore": 83.36337641898955
+        },
+        "bottom": {
+          "score": 99.79653306712416,
+          "shift": 0,
+          "bestScore": 99.79653306712416
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 78.6888206394748,
+          "shift": 0.25,
+          "bestScore": 79.33942599221454,
+          "similarityPassed": false,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.89185982467205,
+          "shift": 0,
+          "bestScore": 99.89185982467205,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 91.81735146851565,
+          "shift": -0.625,
+          "bestScore": 96.79652207058022,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 97.22990527612556,
+          "shift": -0.375,
+          "bestScore": 99.1739890348215,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "0ba1daee-a5ac-4d9e-b681-3e3c7a3eb095",
+      "name": "Brass Man",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "8cad2b59208e41bc61b02e728ef6a58ba881b04f564a8cbf7e0076e504cc8efd",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [
+          1.0001999847660832, 0.00017472798487150058, -0.00017451547102090544, 1.0008173242062217,
+          -0.975, -0.9494954128440443
+        ]
+      },
+      "failureTypes": ["parent-registration"],
+      "queue": "parent-registration-review",
+      "fit": {
+        "top": {
+          "score": 99.21556891905047,
+          "shift": -0.125,
+          "bestScore": 99.27734110464402
+        },
+        "bottom": {
+          "score": 99.86466764737311,
+          "shift": 0,
+          "bestScore": 99.86466764737311
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.8956169455161,
+          "shift": -0.125,
+          "bestScore": 99.09297007872925,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.8809148763685,
+          "shift": 0,
+          "bestScore": 99.8809148763685,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 98.00439719428174,
+          "shift": 0,
+          "bestScore": 98.00439719428174,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 98.61370908385773,
+          "shift": 0,
+          "bestScore": 98.61370908385773,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "f973046b-ce81-4e35-89f3-a6e857d751b8",
+      "name": "Crystal Rod",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "cf17b0b1fe88c280ec3e603168b82ac38b628de18d420c26afa1ee01af60c85c",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [
+          1.0006999999999997, 6.059565982564647e-20, 0.00026177321384092064, 0.9998999999999999,
+          -0.825, -1.225
+        ]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.23889545464829,
+          "shift": -0.25,
+          "bestScore": 99.65637909588061
+        },
+        "bottom": {
+          "score": 99.90512616213019,
+          "shift": 0,
+          "bestScore": 99.90512616213019
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.97562948739444,
+          "shift": -0.125,
+          "bestScore": 99.2513788754429,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.72807197084818,
+          "shift": -0.125,
+          "bestScore": 99.86373662968371,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 85.19836189513602,
+          "shift": -1,
+          "bestScore": 97.96719841699877,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 88.98453418218313,
+          "shift": -0.875,
+          "bestScore": 98.86657266801971,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "e3d92537-7934-4191-8836-2f61ff6ab2fa",
+      "name": "Dancing Scimitar",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "2a5edca5db7b02d30fcab55faab4d03ffba99a09047385dec244c70891c2b638",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [
+          0.999649996193615, 0.00008719590275037361, -0.00026187792861264645, 0.9998411277534266,
+          -1.375, -0.12522935779816136
+        ]
+      },
+      "failureTypes": ["parent-registration", "independent-band-mismatch"],
+      "queue": "parent-registration-review",
+      "fit": {
+        "top": {
+          "score": 98.24954212882687,
+          "shift": 0.125,
+          "bestScore": 98.69187469806253
+        },
+        "bottom": {
+          "score": 99.71304129757011,
+          "shift": -0.125,
+          "bestScore": 99.7980271978712
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 96.67607358803836,
+          "shift": 0.125,
+          "bestScore": 96.90126928334155,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.48381853314652,
+          "shift": -0.125,
+          "bestScore": 99.74405706938498,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 82.19352817411138,
+          "shift": -1.125,
+          "bestScore": 97.64662680241628,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 81.94066975176838,
+          "shift": -1.125,
+          "bestScore": 97.51757083693599,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "ce56c997-202c-4175-809b-2dd65cd2ab2a",
+      "name": "Dingus Egg",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "9322d45a3a9e7058aa968d43620e351191f53eb8c0343afcd75b4aa8c4283c70",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99975, 0, 0, 0.9992913990825688, 1.4249999999999998, -0.10024082568806959]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 98.47975676406274,
+          "shift": -0.125,
+          "bestScore": 98.54560072631693
+        },
+        "bottom": {
+          "score": 99.86799621286812,
+          "shift": 0,
+          "bestScore": 99.86799621286812
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.32746764799046,
+          "shift": -0.125,
+          "bestScore": 99.46411463906253,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.8813124676958,
+          "shift": 0,
+          "bestScore": 99.8813124676958,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 86.55419482340474,
+          "shift": -1,
+          "bestScore": 99.39694130966393,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 85.66995423509391,
+          "shift": -1.125,
+          "bestScore": 99.59480891822915,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "af4f8926-9a9e-4b2d-8224-118655f12809",
+      "name": "Disrupting Scepter",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "036486daf710f0d3a0de875f0580fd13b4b0286d9fed293f35586789878f6d93",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0001499999999999, 0, 0, 0.999920607798165, -1.325, 1.237373853211011]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.4665076006769,
+          "shift": 0,
+          "bestScore": 99.4665076006769
+        },
+        "bottom": {
+          "score": 99.7879871532539,
+          "shift": 0,
+          "bestScore": 99.7879871532539
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 96.61752621442044,
+          "shift": 0.375,
+          "bestScore": 98.3844147655368,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.85995549959058,
+          "shift": 0,
+          "bestScore": 99.85995549959058,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 90.88791211796631,
+          "shift": -0.625,
+          "bestScore": 95.29150885262123,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 91.21642053928572,
+          "shift": -0.375,
+          "bestScore": 92.52546480208638,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "396360d2-3604-499c-9fc3-75b75970c047",
+      "name": "Ebony Horse",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "bda986a2f3240de824a09c62ca0c993454dddcab5878f673347e366c193b0e34",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0002499999999999, 0, 0, 1.0011676605504585, 0.05, 1.1503669724770567]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "profile-shape-review",
+      "fit": {
+        "top": {
+          "score": 98.15418722638638,
+          "shift": -0.25,
+          "bestScore": 99.06832848169343
+        },
+        "bottom": {
+          "score": 99.865180895863,
+          "shift": -0.125,
+          "bestScore": 99.89498348759659
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 75.48007330876368,
+          "shift": -0.25,
+          "bestScore": 75.75237022544776,
+          "similarityPassed": false,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.79408579394607,
+          "shift": -0.125,
+          "bestScore": 99.88375699273534,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 98.86126076226545,
+          "shift": -0.25,
+          "bestScore": 99.35090543433127,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 97.14878053740208,
+          "shift": -0.375,
+          "bestScore": 99.00526461489717,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "a7d975c6-ca94-4255-8ac5-56113da9f97e",
+      "name": "Glasses of Urza",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "05f940aabc20bef634ebd14c13b693e498cdfbafa09013f004b678fa253d6494",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99975, 0, 0, 1.0004794151376148, -0.05, -1.2123910550458734]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 98.5268842952919,
+          "shift": -0.125,
+          "bestScore": 98.80922299477
+        },
+        "bottom": {
+          "score": 99.58479312027087,
+          "shift": -0.125,
+          "bestScore": 99.80980712381476
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 97.93302719671776,
+          "shift": -0.125,
+          "bestScore": 98.22813882737253,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.49535778506184,
+          "shift": -0.125,
+          "bestScore": 99.71914923630426,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 91.95053065127,
+          "shift": -0.625,
+          "bestScore": 97.23240136560952,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 95.3311238889052,
+          "shift": -0.375,
+          "bestScore": 97.89887598517018,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "1a3068eb-2250-4c7b-8ed5-2366ff6cd0e1",
+      "name": "Helm of Chatzuk",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "aac2598d2c42e16113eb5067abd55c8e915545b6758325f65c4304de3d9f9567",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [
+          1.00005, -6.058407831785594e-20, -0.00034892623823057454, 1.0000585321100919, -0.425,
+          -0.7997935779816552
+        ]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 96.54354487512927,
+          "shift": -0.125,
+          "bestScore": 96.6609199522243
+        },
+        "bottom": {
+          "score": 99.45411311887946,
+          "shift": -0.125,
+          "bestScore": 99.80609285569872
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.26668431701823,
+          "shift": -0.25,
+          "bestScore": 98.61065708141345,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.31196511667186,
+          "shift": -0.125,
+          "bestScore": 99.79117530942457,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 91.05476127685645,
+          "shift": -0.75,
+          "bestScore": 98.67868190679505,
+          "similarityPassed": true,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 89.53443311114238,
+          "shift": -0.875,
+          "bestScore": 99.49102488196951,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "5ffb4de8-505e-4e83-8a8b-05c968a03f04",
+      "name": "Iron Star",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "720651acfa84be1f14346631ce927d6c41886b882581c83a118313a0c896f586",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.00005, 0, 0, 1.0002793692660552, 1.375, 1.1876146788990807]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 98.99489553469763,
+          "shift": -0.125,
+          "bestScore": 99.19507841977163
+        },
+        "bottom": {
+          "score": 99.8424872937186,
+          "shift": 0,
+          "bestScore": 99.8424872937186
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 99.1007245937233,
+          "shift": -0.25,
+          "bestScore": 99.48106018729077,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.50772319813058,
+          "shift": 0.125,
+          "bestScore": 99.80802372943388,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 96.21953588117661,
+          "shift": -0.25,
+          "bestScore": 97.17126038345367,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 85.15523414712943,
+          "shift": -1.125,
+          "bestScore": 98.88855597211432,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "7071d294-842c-4539-aba1-c68cd5c79848",
+      "name": "Kormus Bell",
+      "material": "A",
+      "cohort": "calibration",
+      "referenceHash": "69779042d816a9434cb037a4cb0aa8004423e77ce021647c6aa7b8879d59cd92",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.9999, 0, 0, 0.9999, 1.65, 0.6]
+      },
+      "failureTypes": ["parent-registration", "independent-band-mismatch"],
+      "queue": "parent-registration-review",
+      "fit": {
+        "top": {
+          "score": 97.4560611335892,
+          "shift": -0.125,
+          "bestScore": 97.59327152500076
+        },
+        "bottom": {
+          "score": 99.2449256334531,
+          "shift": -0.125,
+          "bestScore": 99.41762589173403
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.10326052594135,
+          "shift": 0.25,
+          "bestScore": 98.64349772855672,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.49229047049404,
+          "shift": -0.125,
+          "bestScore": 99.60238044430427,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 83.57162807488544,
+          "shift": -1.125,
+          "bestScore": 95.65997671803467,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 84.36414008867568,
+          "shift": -0.875,
+          "bestScore": 94.1488423351172,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "0634ab23-4691-4c77-9b8f-bfd9d99b31a1",
+      "name": "Library of Leng",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "a87ef262b6ca6f0f370597620fac44cd375f6be1dcfee42836fe15746d0820be",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0000499999999999, 0, 0, 1.0000499999999999, -1.4, -0.5]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.1078307899488,
+          "shift": -0.125,
+          "bestScore": 99.32082555031558
+        },
+        "bottom": {
+          "score": 99.75297324865264,
+          "shift": -0.125,
+          "bestScore": 99.81630725270118
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 97.55766303180685,
+          "shift": -0.125,
+          "bestScore": 97.76825562629514,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.81873009660937,
+          "shift": -0.125,
+          "bestScore": 99.90428391764986,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 86.33973345464865,
+          "shift": -0.875,
+          "bestScore": 98.04117524769835,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 78.20124999976406,
+          "shift": -1.125,
+          "bestScore": 94.6376550878364,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "ef24fb75-49c7-48eb-a0b3-dc08d7f691ec",
+      "name": "Obsianus Golem",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "b0e14d1d707e78b42bf3dc852a884890a04648d65dbc6926d19536de9e33f958",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [
+          0.999549984775983, 0.0001744543844973958, -0.00008726209949809946, 0.99995, 0.75, -0.575
+        ]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.28448431805809,
+          "shift": -0.125,
+          "bestScore": 99.32016237936024
+        },
+        "bottom": {
+          "score": 99.7797996853466,
+          "shift": 0,
+          "bestScore": 99.7797996853466
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.5539049222936,
+          "shift": -0.125,
+          "bestScore": 98.7211888350672,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.73690403800171,
+          "shift": 0.125,
+          "bestScore": 99.88969426530684,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 87.75525585352779,
+          "shift": -0.875,
+          "bestScore": 99.37107681305298,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 94.44573366144336,
+          "shift": -0.5,
+          "bestScore": 98.83294112163188,
+          "similarityPassed": true,
+          "displacementPassed": true
+        }
+      ]
+    },
+    {
+      "id": "0d84e378-dc64-4e69-a49d-1c210ca3506c",
+      "name": "Onulet",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "92dddb7ae171cb95e68242471a2fa446e307b80a55fe05a0b88274ef0f3ef704",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0001, 0, 0, 1.0010175229357798, -0.925, 0.2504587155963227]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.34426413144188,
+          "shift": -0.125,
+          "bestScore": 99.50614177950413
+        },
+        "bottom": {
+          "score": 99.91441200413885,
+          "shift": 0,
+          "bestScore": 99.91441200413885
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.73389675094955,
+          "shift": -0.125,
+          "bestScore": 98.84541177236862,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.93747000095357,
+          "shift": 0,
+          "bestScore": 99.93747000095357,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 97.45358994843473,
+          "shift": -0.25,
+          "bestScore": 97.9977415894197,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 91.43510439519325,
+          "shift": -0.75,
+          "bestScore": 98.94441126428033,
+          "similarityPassed": true,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "d057a91c-d2a7-48ec-aa16-f033499de166",
+      "name": "Primal Clay",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "55cdf6d1a750e6b96283e1b6a77b67ac75734b5e012a14efa0509c5ad7f7c3ae",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.00005, 0, 0, 1.0007381077981652, 0.625, 0.562844036697242]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 98.86638263037037,
+          "shift": -0.125,
+          "bestScore": 99.12287775433687
+        },
+        "bottom": {
+          "score": 99.87766994795712,
+          "shift": 0,
+          "bestScore": 99.87766994795712
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.05375509032477,
+          "shift": -0.25,
+          "bestScore": 98.36136490855363,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.6992945590848,
+          "shift": 0,
+          "bestScore": 99.6992945590848,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 89.66645364960404,
+          "shift": -0.75,
+          "bestScore": 97.8244259891337,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 87.83473164741015,
+          "shift": -0.875,
+          "bestScore": 98.27569017316932,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "919f184b-421c-413c-a95c-05bb145f93ba",
+      "name": "Rocket Launcher",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "82891faabc4529f41e42d33c4178f9cba0e0185b8bda0fcb4e25f2770e29df47",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [0.99995, 0, 0, 0.99995, -0.44999999999999996, -0.5]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.42989980110077,
+          "shift": -0.25,
+          "bestScore": 99.84640498410893
+        },
+        "bottom": {
+          "score": 99.92543264310804,
+          "shift": 0,
+          "bestScore": 99.92543264310804
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.58236288852177,
+          "shift": -0.25,
+          "bestScore": 99.30686979007233,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.813202043861,
+          "shift": 0,
+          "bestScore": 99.813202043861,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 85.15321288404436,
+          "shift": -1,
+          "bestScore": 99.11944739629709,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 94.98118030335974,
+          "shift": -0.625,
+          "bestScore": 99.77072172326504,
+          "similarityPassed": true,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "803fd65f-4ca6-4fe4-abc2-72aa32ebb3a5",
+      "name": "Sol Ring",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "a4fe958556829b70652bed8f4c720ed2eb95a12df7d6f80b0ffea95dbac57853",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.0001999999999998, 0, 0, 1.0011176146788987, -2.625, -0.2995871559633103]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.21381238171143,
+          "shift": -0.25,
+          "bestScore": 99.74729934783797
+        },
+        "bottom": {
+          "score": 99.87175407714571,
+          "shift": 0,
+          "bestScore": 99.87175407714571
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.99420621420992,
+          "shift": -0.125,
+          "bestScore": 99.18972469686639,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.89683581714625,
+          "shift": 0,
+          "bestScore": 99.89683581714625,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 85.14878230823611,
+          "shift": -1,
+          "bestScore": 97.78626132126311,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 82.8493248774691,
+          "shift": -1.125,
+          "bestScore": 96.01600011502941,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    },
+    {
+      "id": "f5c6d64b-f49c-4b41-bd25-3d29c896a9a8",
+      "name": "Winter Orb",
+      "material": "A",
+      "cohort": "validation",
+      "referenceHash": "451240a7c1d2f9326ea1e7f47bb5843e8514174b473532d3b384c0b27ba47706",
+      "accepted": false,
+      "diagnosticTransform": {
+        "matrix": [1.00005, 0, 0, 1.0011968463302754, -0.625, -0.28704128440367915]
+      },
+      "failureTypes": ["independent-band-mismatch"],
+      "queue": "independent-displacement-review",
+      "fit": {
+        "top": {
+          "score": 99.5250081083483,
+          "shift": -0.125,
+          "bestScore": 99.75074225725638
+        },
+        "bottom": {
+          "score": 99.68865912929887,
+          "shift": 0,
+          "bestScore": 99.68865912929887
+        }
+      },
+      "verification": [
+        {
+          "key": "checkTop",
+          "score": 98.75075801912084,
+          "shift": -0.25,
+          "bestScore": 99.26326054250643,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "checkBottom",
+          "score": 99.62075840246625,
+          "shift": 0.125,
+          "bestScore": 99.67728497709132,
+          "similarityPassed": true,
+          "displacementPassed": true
+        },
+        {
+          "key": "certificatePaperTopLeft",
+          "score": 85.05949785787213,
+          "shift": -0.875,
+          "bestScore": 96.45340068162092,
+          "similarityPassed": false,
+          "displacementPassed": false
+        },
+        {
+          "key": "certificatePaperTopRight",
+          "score": 82.20877318727223,
+          "shift": -1.25,
+          "bestScore": 98.02919523084654,
+          "similarityPassed": false,
+          "displacementPassed": false
+        }
+      ]
+    }
+  ]
+}
