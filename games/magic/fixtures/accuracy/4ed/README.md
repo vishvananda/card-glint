@@ -385,3 +385,53 @@ only. Run the following with the matching native PNGs and cached scans:
 MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-frame-dark-audit.mjs \
   inputs.json native/capture.json poses.json land-registration.json frame-dark-audit.json
 ```
+
+## Inline-symbol experiment
+
+The [inline review](inline-symbol-review.json) starts with all fifteen basic
+lands and then checks all 112 Fourth cards containing tap or colored inline
+symbols. Original wording, text layout and frame-normalized scans stay fixed.
+All 112 native control PNGs reproduce exactly. Prototype changes stay inside
+the symbol windows; headers, words, art and other face pixels remain unchanged.
+
+Header glyph adjustments are not a suitable shared inline default. They improve
+all three blue, black and green basics but worsen all three white and red ones.
+A separate search measures glyph scale and position within stationary circles,
+plus a shared tap shape and palette. It uses filled-ink overlap and symmetric
+edges, rather than color differences or edge overlap alone.
+
+The basic-land fit is checked on all 112 cards below. Offsets are relative to
+symbol size in this variant. Counts are symbol occurrences, not distinct cards.
+
+| Symbol | Occurrences | Current /100 | Candidate /100 | Gains / losses |
+| ------ | ----------: | -----------: | -------------: | -------------: |
+| T      |          81 |        51.53 |          52.40 |        38 / 43 |
+| W      |          11 |        56.91 |          62.90 |          7 / 4 |
+| U      |          21 |        42.71 |          47.57 |         15 / 6 |
+| B      |          29 |        50.08 |          53.68 |        15 / 14 |
+| R      |          24 |        40.38 |          45.71 |         21 / 3 |
+| G      |          17 |        55.34 |          69.89 |         15 / 2 |
+
+The tap change loses on 43 occurrences and gains on 38. Black and blue include
+large regressions on well-matched existing examples, including Deathgrip and
+Sunken City. No new renderer defaults are adopted.
+
+The basic-land glyph search repeatedly prefers offsets toward its upper-left
+boundary. These may compensate for whole-line or circle placement. Fit the
+printed words with symbol areas masked, then measure circle geometry, before
+treating those offsets as intrinsic glyph corrections. The existing perimeter
+detector is not reliable at this inline size: it rejects many circles in our
+own native images. Its unresolved observations remain in the evidence.
+
+The efficient fitter composes each native card once and tries glyphs in a small
+saved window. It still uses one offline browser for font/canvas painting.
+This is an offline search measurement, not animation work or a GPU benchmark.
+
+Reproduce with the matching input, native PNGs, cached scans and frozen poses:
+
+```sh
+gzip -dc games/magic/fixtures/accuracy/4ed/inline-symbol-wide-grid.json.gz > GRID.json
+MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-inline-symbol-fit.mjs INPUTS NATIVE/capture.json POSES LAND_REFINEMENT FIT.json GRID.json
+MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-inline-symbol-candidate.mjs INPUTS NATIVE/capture.json FIT.json NEW_PROTOTYPES all-inline
+MAGIC_ACCURACY_CACHE=/path/to/cache node games/magic/tools/accuracy/fourth-inline-symbol-score.mjs INPUTS POSES LAND_REFINEMENT NEW_PROTOTYPES SCORES.json
+```
