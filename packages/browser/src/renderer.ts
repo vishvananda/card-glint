@@ -11,6 +11,7 @@ import { TextureStore, type Texture } from './gpu/textures.js';
 import { Preparer, type Prepared } from './prepare.js';
 import { paintRaster, closeRaster, layersOf } from './raster.js';
 import { surfaceSeed, validateDeformation, exportScale } from './deformation.js';
+import { DEFAULT_PRINT_DOTS } from './print-settings.js';
 import {
   IDENTITY,
   type Budgets,
@@ -52,6 +53,7 @@ export class Renderer {
   private documents = new Map<number, CardDocument>();
   private prepared = new Map<number, Prepared>();
   private jobs = new Map<number, Job>();
+  private revisionControllers = new WeakMap<CardDocument, AbortController>();
   private instances: readonly Instance[] = [];
   private sceneLayers: readonly SceneLayer[] = [];
   private sceneLayerGeneration = 0;
@@ -82,7 +84,7 @@ export class Renderer {
     )
       throw RangeError('Preparation concurrency must be 1–4');
     this.assets = new AssetStore(this.budgets.cpuBytes);
-    this.device = new Device(options.canvas);
+    this.device = new Device(options.canvas, options.invalidate, options.onError);
     this.textures = new TextureStore(
       this.device.gl,
       this.budgets.gpuBytes,
@@ -111,6 +113,7 @@ export class Renderer {
       if (this.documents.get(document.id) === document) continue;
       this.cancel(document.id);
       this.documents.set(document.id, document);
+      this.revisionControllers.set(document, new AbortController());
     }
   }
   releaseCards(ids: Uint32Array) {
@@ -161,11 +164,36 @@ export class Renderer {
   }
   ready(id: number, revision: number, signal?: AbortSignal): Promise<void> {
     this.assertLive();
+    if (this.lost) return Promise.reject(Error('Graphics context is lost'));
     const document = this.documents.get(id);
     if (!document || document.revision !== revision)
       return Promise.reject(Error('Requested revision is not current'));
     this.failed.delete(document);
-    const promise = this.enqueue(document);
+    const device = this.device;
+    const promise = this.enqueue(document).then(async () => {
+      const revisionSignal = this.revisionControllers.get(document)!.signal;
+      revisionSignal.throwIfAborted();
+      signal?.throwIfAborted();
+      if (this.device !== device || this.lost) throw Error('Graphics context changed');
+      for (;;) {
+        const instances = this.instances;
+        const leases = await this.prepareDevice(
+          device,
+          this.prepared.get(id)!,
+          instances.filter((item) => item.card === id),
+          revisionSignal,
+        );
+        for (const lease of leases) lease.release();
+        revisionSignal.throwIfAborted();
+        signal?.throwIfAborted();
+        this.assertLive();
+        if (this.device !== device || this.lost)
+          throw new DOMException('Graphics context changed', 'AbortError');
+        if (this.documents.get(id) !== document)
+          throw new DOMException('Revision invalidated', 'AbortError');
+        if (this.instances === instances) break;
+      }
+    });
     if (!signal) return promise;
     return new Promise((resolve, reject) => {
       if (signal.aborted) {
@@ -204,16 +232,28 @@ export class Renderer {
       if (job.started) continue;
       job.started = true;
       this.active++;
-      const preparer = this.preparer;
+      const preparer = this.preparer,
+        device = this.device;
       void preparer
         .prepare(job.document, job.controller.signal)
-        .then((prepared) => {
+        .then(async (prepared) => {
           job.controller.signal.throwIfAborted();
-          if (this.documents.get(job.document.id) !== job.document)
-            throw Error('Superseded preparation');
-          this.prepared.set(job.document.id, prepared);
-          job.resolve();
-          this.options.invalidate?.();
+          const leases = await this.prepareDevice(
+            device,
+            prepared,
+            this.instances.filter((item) => item.card === job.document.id),
+            job.controller.signal,
+          );
+          try {
+            job.controller.signal.throwIfAborted();
+            if (this.documents.get(job.document.id) !== job.document)
+              throw Error('Superseded preparation');
+            this.prepared.set(job.document.id, prepared);
+            job.resolve();
+            this.options.invalidate?.();
+          } finally {
+            for (const lease of leases) lease.release();
+          }
         })
         .catch((error) => {
           if (!job.controller.signal.aborted) this.failed.add(job.document);
@@ -227,6 +267,11 @@ export class Renderer {
     }
   }
   private cancel(id: number) {
+    const document = this.documents.get(id);
+    if (document)
+      this.revisionControllers
+        .get(document)
+        ?.abort(new DOMException('Revision invalidated', 'AbortError'));
     const job = this.jobs.get(id);
     if (!job) return;
     job.controller.abort(new DOMException('Revision invalidated', 'AbortError'));
@@ -260,6 +305,23 @@ export class Renderer {
           recipe: prepared.document.recipe,
         }
       : null;
+  }
+  private async prepareDevice(
+    device: Device,
+    prepared: Prepared,
+    list: readonly Instance[],
+    signal?: AbortSignal,
+  ) {
+    const leases: Lease<Texture>[] = [];
+    try {
+      signal?.throwIfAborted();
+      if (!this.material(prepared, leases)) throw Error('Prepared working set exceeds GPU budget');
+      await device.prepare(prepared.document.recipe, list, signal);
+      return leases;
+    } catch (error) {
+      for (const lease of leases) lease.release();
+      throw error;
+    }
   }
   render(frame: Frame): Metrics {
     this.assertLive();
@@ -313,21 +375,31 @@ export class Renderer {
             });
         }
         if (
-          material !== current &&
-          (!material ||
-            !current ||
-            material.face !== current.face ||
-            material.mask !== current.mask ||
-            material.overlay !== current.overlay ||
-            material.coverage !== current.coverage ||
-            material.hologram !== current.hologram ||
-            material.hologramSettings !== current.hologramSettings ||
-            material.recipe.cornerRadius !== current.recipe.cornerRadius ||
-            material.recipe.finishCoverageBase !== current.recipe.finishCoverageBase ||
-            material.recipe.overlayFoil?.tone !== current.recipe.overlayFoil?.tone ||
-            material.recipe.overlayFoil?.strength !== current.recipe.overlayFoil?.strength ||
-            JSON.stringify(material.recipe.artWindows) !==
-              JSON.stringify(current.recipe.artWindows))
+          (group.length > 0 &&
+            ((group[0]!.finish ?? 'regular') !== (instance.finish ?? 'regular') ||
+              Boolean(
+                group[0]!.printDots &&
+                  (group[0]!.printDots.amount ?? DEFAULT_PRINT_DOTS.amount) > 0,
+              ) !==
+                Boolean(
+                  instance.printDots &&
+                    (instance.printDots.amount ?? DEFAULT_PRINT_DOTS.amount) > 0,
+                ))) ||
+          (material !== current &&
+            (!material ||
+              !current ||
+              material.face !== current.face ||
+              material.mask !== current.mask ||
+              material.overlay !== current.overlay ||
+              material.coverage !== current.coverage ||
+              material.hologram !== current.hologram ||
+              material.hologramSettings !== current.hologramSettings ||
+              material.recipe.cornerRadius !== current.recipe.cornerRadius ||
+              material.recipe.finishCoverageBase !== current.recipe.finishCoverageBase ||
+              material.recipe.overlayFoil?.tone !== current.recipe.overlayFoil?.tone ||
+              material.recipe.overlayFoil?.strength !== current.recipe.overlayFoil?.strength ||
+              JSON.stringify(material.recipe.artWindows) !==
+                JSON.stringify(current.recipe.artWindows)))
         ) {
           flush();
           current = material;
@@ -367,6 +439,8 @@ export class Renderer {
         throw new DOMException('Stale scene layer preparation', 'AbortError');
     };
     try {
+      if (snapshot.length) await this.device.prepareLayers();
+      assertCurrent();
       for (const layer of snapshot) {
         const key = 'scene:' + layer.raster.key,
           hit = textures.store.acquire(key);
@@ -421,7 +495,7 @@ export class Renderer {
       readbacks: this.textures.readbacks,
       draws: this.device.draws,
       visible: this.visible,
-      pending: this.jobs.size + this.sceneLayerPending,
+      pending: this.jobs.size + this.sceneLayerPending + this.device.pending,
       gpu: this.textures.store.stats,
       cpu: this.assets.store.stats,
       scratchBytes: this.textures.scratchBytes,
@@ -435,7 +509,7 @@ export class Renderer {
     if (!Number.isSafeInteger(epoch) || epoch <= this.epoch) throw Error('Epoch must increase');
     this.epoch = epoch;
     this.sceneLayerGeneration++;
-    for (const id of this.jobs.keys()) this.cancel(id);
+    for (const id of this.documents.keys()) this.cancel(id);
     this.documents.clear();
     this.prepared.clear();
     this.sceneLayers = [];
@@ -451,7 +525,7 @@ export class Renderer {
   private contextLost = (event: Event) => {
     event.preventDefault();
     this.lost = true;
-    for (const id of this.jobs.keys()) this.cancel(id);
+    for (const id of this.documents.keys()) this.cancel(id);
     this.prepared.clear();
     this.sceneLayerGeneration++;
     this.preparer.dispose();
@@ -464,7 +538,7 @@ export class Renderer {
     this.preparer.dispose();
     this.textures.dispose();
     this.device.dispose();
-    this.device = new Device(this.options.canvas);
+    this.device = new Device(this.options.canvas, this.options.invalidate, this.options.onError);
     this.textures = new TextureStore(
       this.device.gl,
       this.budgets.gpuBytes,
@@ -473,6 +547,8 @@ export class Renderer {
     );
     this.preparer = new Preparer(this.textures, this.options.rasterHost ?? this.assets);
     this.lost = false;
+    for (const document of this.documents.values())
+      this.revisionControllers.set(document, new AbortController());
     this.failed = new WeakSet();
     const layers = this.sceneLayers;
     this.sceneLayers = [];
@@ -510,36 +586,49 @@ export class Renderer {
     await this.ready(id, options.revision);
     const document = this.documents.get(id)!;
     if (document.revision !== options.revision) throw Error('Export revision changed');
+    if (!Number.isInteger(options.width) || options.width < 1 || options.width > 2048)
+      throw RangeError('Invalid export size');
+    const scale = exportScale(options.deformation, options.width);
+    const instance: Instance = {
+      id: options.instanceId ?? 0,
+      card: id,
+      finish: options.finish,
+      normal: options.normal,
+      rainFog: options.rainFog,
+      wear: options.wear,
+      cardstock: options.cardstock,
+      printDots: options.printDots,
+      deformation: options.deformation,
+      transform: [2 * scale, 0, 0, 0, 0, -2 * scale, 0, 0, 0, 0, 1, 0, -scale, scale, 0, 1],
+    };
+    validateInstance(instance);
+    const device = this.device,
+      epoch = this.epoch;
+    const leases = await this.prepareDevice(
+      device,
+      this.prepared.get(id)!,
+      [instance],
+      this.revisionControllers.get(document)!.signal,
+    );
+    for (const lease of leases) lease.release();
+    this.assertLive();
+    if (this.lost || this.device !== device || this.epoch !== epoch)
+      throw Error('Graphics context changed during export');
+    if (this.documents.get(id) !== document) throw Error('Export revision changed');
     const canvas = this.options.canvas,
       oldSize = [canvas.width, canvas.height],
       oldInstances = this.instances,
       oldLayers = this.sceneLayers,
       oldFrame = this.lastFrame;
-    if (!Number.isInteger(options.width) || options.width < 1 || options.width > 2048)
-      throw RangeError('Invalid export size');
     let promise: Promise<Blob>;
-    const scale = exportScale(options.deformation, options.width);
-    const restoreMotion = this.device.isolateMotion();
+    const restoreMotion = device.isolateMotion();
     try {
       canvas.width = options.width;
       canvas.height = Math.round(
         (options.width * document.recipe.color.size[1]) / document.recipe.color.size[0],
       );
       this.sceneLayers = [];
-      this.updateScene([
-        {
-          id: options.instanceId ?? 0,
-          card: id,
-          finish: options.finish,
-          normal: options.normal,
-          rainFog: options.rainFog,
-          wear: options.wear,
-          cardstock: options.cardstock,
-          printDots: options.printDots,
-          deformation: options.deformation,
-          transform: [2 * scale, 0, 0, 0, 0, -2 * scale, 0, 0, 0, 0, 1, 0, -scale, scale, 0, 1],
-        },
-      ]);
+      this.updateScene([instance]);
       this.render({
         viewProjection: IDENTITY,
         pointer: options.pointer,
@@ -564,7 +653,7 @@ export class Renderer {
   }
   dispose() {
     if (this.disposed) return;
-    for (const id of this.jobs.keys()) this.cancel(id);
+    for (const id of this.documents.keys()) this.cancel(id);
     this.disposed = true;
     this.sceneLayerGeneration++;
     if (!this.lost) this.device.begin({ viewProjection: IDENTITY });

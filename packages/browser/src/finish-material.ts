@@ -1,4 +1,4 @@
-import { GpuEtcher, program } from './gpu/etcher.js';
+import { GpuEtcher, program, programAsync } from './gpu/etcher.js';
 import { Caustics } from './gpu/caustics.js';
 import type { Rect } from './types.js';
 import type { CardDocument, Instance, Lease, RasterHost } from './types.js';
@@ -176,7 +176,7 @@ export class FinishResources {
     document: CardDocument,
     host: RasterHost,
     signal: AbortSignal,
-    snapshot: (mask: Texture, coverage?: Texture) => T,
+    snapshot: (mask: Texture, coverage: Texture | undefined, signal: AbortSignal) => T | Promise<T>,
   ): Promise<T> {
     return this.documentResource(signal, async (signal) => {
       signal.throwIfAborted();
@@ -209,8 +209,21 @@ export class FinishResources {
             document.recipe.color.size,
           );
         }
+        if (!this.copy) {
+          const copy = await programAsync(this.gl, copyFragment, undefined, signal);
+          try {
+            signal.throwIfAborted();
+            if (this.disposed || this.gl.isContextLost())
+              throw Error('Finish resources unavailable');
+            if (this.copy) this.gl.deleteProgram(copy);
+            else this.copy = copy;
+          } catch (error) {
+            this.gl.deleteProgram(copy);
+            throw error;
+          }
+        }
         signal.throwIfAborted();
-        return snapshot(mask.value, coverage?.value);
+        return await snapshot(mask.value, coverage?.value, signal);
       } finally {
         coverage?.release();
         mask?.release();
@@ -234,24 +247,98 @@ export class FinishResources {
       }
     });
   }
-  /** Preparation-only linear R8, bottom row first. No Canvas copy or row flip. */
+  /** Preparation-only linear R8, bottom row first, with asynchronous GPU readback. */
   async documentMaskData(
     document: CardDocument,
     host: RasterHost,
     signal: AbortSignal,
   ): Promise<CoverageMap> {
-    return this.prepareDocumentMask(document, host, signal, (mask, coverage) => {
-      this.draw(mask.texture, mask.width, mask.height, undefined, coverage);
-      const gl = this.gl,
-        rgba = new Uint8Array(mask.width * mask.height * 4);
-      gl.pixelStorei(gl.PACK_ALIGNMENT, 1);
-      gl.readPixels(0, 0, mask.width, mask.height, gl.RGBA, gl.UNSIGNED_BYTE, rgba);
-      if (this.disposed || gl.isContextLost()) throw Error('Finish resources unavailable');
-      signal.throwIfAborted();
-      const data = new Uint8Array(mask.width * mask.height);
-      for (let i = 0; i < data.length; i++) data[i] = rgba[i * 4]!;
-      return { width: mask.width, height: mask.height, rowOrder: 'bottom-up', data };
+    return this.prepareDocumentMask(document, host, signal, async (mask, coverage, signal) => {
+      const gl = this.gl;
+      const buffer = gl.createBuffer();
+      if (!buffer) throw Error('Finish mask readback buffer unavailable');
+      let fence: WebGLSync | null = null;
+      try {
+        const read = gl.getParameter(gl.READ_FRAMEBUFFER_BINDING) as WebGLFramebuffer | null;
+        const draw = gl.getParameter(gl.DRAW_FRAMEBUFFER_BINDING) as WebGLFramebuffer | null;
+        const pack = gl.getParameter(gl.PIXEL_PACK_BUFFER_BINDING) as WebGLBuffer | null;
+        const alignment = gl.getParameter(gl.PACK_ALIGNMENT) as number;
+        const rowLength = gl.getParameter(gl.PACK_ROW_LENGTH) as number;
+        const skipRows = gl.getParameter(gl.PACK_SKIP_ROWS) as number;
+        const skipPixels = gl.getParameter(gl.PACK_SKIP_PIXELS) as number;
+        gl.bindFramebuffer(gl.READ_FRAMEBUFFER, null);
+        const readBuffer = gl.getParameter(gl.READ_BUFFER) as number;
+        try {
+          this.draw(mask.texture, mask.width, mask.height, undefined, coverage);
+          gl.readBuffer(gl.BACK);
+          gl.bindBuffer(gl.PIXEL_PACK_BUFFER, buffer);
+          gl.bufferData(gl.PIXEL_PACK_BUFFER, mask.width * mask.height * 4, gl.STREAM_READ);
+          gl.pixelStorei(gl.PACK_ALIGNMENT, 1);
+          gl.pixelStorei(gl.PACK_ROW_LENGTH, 0);
+          gl.pixelStorei(gl.PACK_SKIP_ROWS, 0);
+          gl.pixelStorei(gl.PACK_SKIP_PIXELS, 0);
+          gl.readPixels(0, 0, mask.width, mask.height, gl.RGBA, gl.UNSIGNED_BYTE, 0);
+          fence = gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0);
+          if (!fence) throw Error('Finish mask readback fence unavailable');
+          gl.flush();
+        } finally {
+          gl.pixelStorei(gl.PACK_ALIGNMENT, alignment);
+          gl.pixelStorei(gl.PACK_ROW_LENGTH, rowLength);
+          gl.pixelStorei(gl.PACK_SKIP_ROWS, skipRows);
+          gl.pixelStorei(gl.PACK_SKIP_PIXELS, skipPixels);
+          gl.bindBuffer(gl.PIXEL_PACK_BUFFER, pack);
+          gl.bindFramebuffer(gl.READ_FRAMEBUFFER, null);
+          gl.readBuffer(readBuffer);
+          gl.bindFramebuffer(gl.READ_FRAMEBUFFER, read);
+          gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER, draw);
+        }
+        await this.waitForReadback(fence, signal);
+        signal.throwIfAborted();
+        if (this.disposed || gl.isContextLost()) throw Error('Finish resources unavailable');
+        const rgba = new Uint8Array(mask.width * mask.height * 4);
+        const resumePack = gl.getParameter(gl.PIXEL_PACK_BUFFER_BINDING) as WebGLBuffer | null;
+        try {
+          gl.bindBuffer(gl.PIXEL_PACK_BUFFER, buffer);
+          gl.getBufferSubData(gl.PIXEL_PACK_BUFFER, 0, rgba);
+        } finally {
+          gl.bindBuffer(gl.PIXEL_PACK_BUFFER, resumePack);
+        }
+        if (gl.isContextLost()) throw Error('Context lost during finish mask readback');
+        const data = new Uint8Array(mask.width * mask.height);
+        for (let i = 0; i < data.length; i++) data[i] = rgba[i * 4]!;
+        return { width: mask.width, height: mask.height, rowOrder: 'bottom-up' as const, data };
+      } finally {
+        gl.deleteSync(fence);
+        gl.deleteBuffer(buffer);
+      }
     });
+  }
+  private async waitForReadback(fence: WebGLSync, signal: AbortSignal): Promise<void> {
+    let timer: number | undefined;
+    let abort: (() => void) | undefined;
+    try {
+      await new Promise<void>((resolve, reject) => {
+        abort = () => reject(signal.reason ?? new DOMException('Aborted', 'AbortError'));
+        signal.addEventListener('abort', abort, { once: true });
+        const poll = () => {
+          try {
+            signal.throwIfAborted();
+            if (this.disposed || this.gl.isContextLost())
+              throw Error('Finish resources unavailable');
+            const status = this.gl.clientWaitSync(fence, 0, 0);
+            if (status === this.gl.WAIT_FAILED) throw Error('Finish mask readback failed');
+            if (status === this.gl.TIMEOUT_EXPIRED) timer = window.setTimeout(poll, 4);
+            else resolve();
+          } catch (error) {
+            reject(error);
+          }
+        };
+        timer = window.setTimeout(poll, 0);
+      });
+    } finally {
+      window.clearTimeout(timer);
+      if (abort) signal.removeEventListener('abort', abort);
+    }
   }
   caustics(time: number): HTMLCanvasElement {
     if (this.disposed || this.gl.isContextLost()) throw Error('Finish resources unavailable');

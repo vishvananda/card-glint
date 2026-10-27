@@ -155,6 +155,23 @@ shared with `createRenderer`; importing the finish entry point or calling
 Aborts, context loss and `dispose()` cancel standalone work. Dispose the
 `FinishResources` owner when the host's resource scope ends.
 
+`FinishResources.documentMaskData(document, rasterHost, signal)` returns
+`{width, height, rowOrder: 'bottom-up', data: Uint8Array}` instead of a canvas.
+The bytes contain the same linear R8 coverage, with no row flip or color conversion.
+It submits `readPixels` into a pixel-pack buffer, inserts and flushes a GPU fence,
+then yields between zero-timeout `clientWaitSync` polls. It calls `getBufferSubData`
+only after the fence signals. There is no synchronous CPU `readPixels` fallback.
+The GPU transfer uses RGBA bytes for portable default-framebuffer readback, then
+extracts the red channel into the returned R8 array.
+
+The serial preparation slot and mask/coverage leases remain held until readback
+finishes or fails. Abort, context loss and disposal reject pending work and release
+the fence and transfer buffer. Submission restores the previous pixel-pack buffer,
+alignment, row length, skip rows/pixels, read framebuffer/read-buffer selection
+and draw framebuffer before yielding. The final buffer copy separately restores
+the pixel-pack binding current at that moment. No saved GL state spans an `await`.
+Cache the returned bytes outside animation, using the same identity as a canvas mask.
+
 ### Printing and coating in host materials
 
 `card-glint/finish` exports `PRINT_DOTS_GLSL`, `CARDSTOCK_GLSL` and the `FinishMap`
@@ -229,6 +246,7 @@ available for renderers that cannot share their context.
 import { FinishTextures } from 'card-glint/finish';
 
 const finishes = new FinishTextures(gl);
+await finishes.ready(signal);
 const printing = finishes.printDots(
   { texture: sourceTexture, width, height },
   {}, // native print defaults
@@ -237,11 +255,14 @@ const printing = finishes.printDots(
 const coating = finishes.cardstock();
 // Bind printing.texture as the face; disable procedural print dots.
 // Bind coating.texture as the shared linear cardstockMap.
+// For pool draws, borrow the shared light map at explicit elapsed seconds:
+const light = finishes.caustics(time);
+// Bind light.texture as the linear causticsMap; never upload it through a canvas.
 // Tilt now samples these maps without regenerating them.
 
 // On printing-cache eviction:
 gl.deleteTexture(printing.texture);
-// On scene teardown (also releases the borrowed coating map):
+// On scene teardown (also releases both borrowed maps):
 finishes.dispose();
 ```
 
@@ -266,7 +287,7 @@ const printing = finishes.printDots(
 
 Each layer must contain the full face at those exact dimensions, without atlas
 padding. Array sources use one temporary GPU-only copy into a 2D source, then
-the same native pass. Every result is a `FinishTexture` describing a complete
+the same native pass. Every printing result is a `FinishTexture` describing a complete
 `TEXTURE_2D` with all mip levels, clamped edges, trilinear minification and linear
 magnification. Printing results use `SRGB8_ALPHA8` and retain straight alpha.
 They are **caller-owned**: cache by immutable source revision (including array
@@ -283,24 +304,47 @@ Its linear `RGBA8` channels contain packed slopes, including alpha, matching
 into this shared map. The helper releases it on disposal. Coating amount stays
 a material input; changing it does not prepare another map.
 
-Preparation restores the host bindings and draw state it touches on both success
-and failure, including separate read/draw framebuffers, program, VAO, active
-texture unit and unit-zero texture/sampler, pixel-unpack buffer, viewport,
-color mask and capability enables. It does not consume the host's GL error
+`caustics(time)` returns a **borrowed** 512×512 linear `R8` `FinishTexture` in
+the supplied context. It uses repeat wrapping, linear minification/magnification
+and level zero only, without mipmaps. Supply finite, nonnegative elapsed seconds
+that remain finite after `Math.fround`; the shared light pass runs at most once
+for each successive float32 time. Repeated calls at the same float32 time return
+the same descriptor without another pass or state capture. The map changes in
+place when time changes. Bind it directly as `causticsMap` for `SURFACE_GLSL`;
+do not delete, modify or render into it. It performs no canvas copy, readback
+or re-upload, and all pool materials can sample it during that frame.
+
+Preparation and caustics updates restore the host bindings and draw state they touch
+on both success and failure, including separate read/draw framebuffers, program,
+VAO and element buffer, active texture unit and unit-zero texture/sampler,
+pixel-unpack buffer, viewport, color mask, clear color, separate blend equations
+and RGB/alpha blend functions, and capability enables. They do not consume the host's GL error
 queue. Run outside occlusion queries and pause transform feedback first; those
 active operations are rejected rather than disturbed. Unbind a current program
 marked for deletion before preparation: switching away would destroy it, making
 state restoration impossible, so this state is also rejected. Frameworks that cache GL
 state can keep their cache after these calls. Disposal invalidates owned
-resources, so stop sampling the borrowed coating before disposing.
+resources, so stop sampling both borrowed maps before disposing.
 
-Create one helper per context lifetime and prepare outside animation. Shader
-compilation is lazy on first use; subsequent calls reuse programs and scratch
-objects. Printing is one GPU render pass plus mip generation, with the extra
-GPU copy for array sources. The helper has no unbounded printing cache. The
-shared coating costs approximately 4 MB including mipmaps. Synchronous GL state
-queries happen only during preparation, never during tilt. CPU submission time
-is not GPU completion time; use a GPU timer query when measuring the pass.
+Create one helper per context lifetime. Call `await finishes.ready(signal)` before
+the first synchronous preparation or caustics update to compile printing,
+cardstock and caustics programs without an immediate link-status wait when
+`KHR_parallel_shader_compile` is available. Compilation finishes before resource
+initialization captures/restores host state; no state snapshot spans an `await`.
+Concurrent callers share initialization. Aborting one caller rejects only that
+caller's wait, without canceling another caller's initialization. Disposal or
+context loss cancels the shared work. Real compilation failures reject readiness;
+callers may retry an aborted/failed warmup while the owner remains live.
+
+For compatibility, synchronous methods still initialize missing programs when
+called without awaiting readiness. Such first calls can block on shader linking.
+Subsequent calls reuse programs and scratch objects. Printing is one GPU render
+pass plus mip generation, with the extra GPU copy for array sources. The helper
+has no unbounded printing cache. The shared coating costs approximately 4 MB
+including mipmaps; caustics uses a fixed 704,512 bytes for its map and index buffer.
+State queries run during preparation and each changed caustics time, not for
+unchanged pose-only printing/coating reuse. CPU submission time is not GPU
+completion time; use a GPU timer query when measuring the pass.
 
 After context loss, discard all cached GPU handles, dispose this helper and
 create a fresh helper after restoration. The old helper remains invalid even

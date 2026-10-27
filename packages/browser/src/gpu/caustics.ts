@@ -1,4 +1,5 @@
-import { program, texture } from './etcher.js';
+import { program, programAsync, texture } from './etcher.js';
+import { withFinishTextureState } from '../finish-texture-state.js';
 import { WATER_WAVES_GLSL } from './water-waves.js';
 
 const cells = 192,
@@ -41,35 +42,60 @@ export class Caustics {
   private indices: WebGLBuffer;
   private clock: WebGLUniformLocation | null;
   private time = NaN;
-  constructor(private gl: WebGL2RenderingContext) {
-    this.shader = program(gl, fragment, vertex)!;
-    this.clock = gl.getUniformLocation(this.shader, 'time');
-    this.map = texture(gl, size, size)!;
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
-    this.framebuffer = gl.createFramebuffer()!;
-    gl.bindFramebuffer(gl.FRAMEBUFFER, this.framebuffer);
-    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, this.map, 0);
-    if (gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE) {
-      gl.deleteTexture(this.map);
-      gl.deleteFramebuffer(this.framebuffer);
-      gl.deleteProgram(this.shader);
-      throw Error('Caustics framebuffer is incomplete');
+  static async create(gl: WebGL2RenderingContext, signal?: AbortSignal): Promise<Caustics> {
+    const shader = await programAsync(gl, fragment, vertex, signal);
+    try {
+      signal?.throwIfAborted();
+      if (gl.isContextLost()) throw Error('Context lost during caustics preparation');
+      return withFinishTextureState(gl, () => new Caustics(gl, shader));
+    } catch (error) {
+      gl.deleteProgram(shader);
+      throw error;
     }
-    this.vao = gl.createVertexArray()!;
-    this.indices = gl.createBuffer()!;
-    gl.bindVertexArray(this.vao);
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.indices);
-    const indices = new Uint16Array(cells * cells * 6);
-    for (let y = 0; y < cells; y++)
-      for (let x = 0; x < cells; x++) {
-        const a = y * (cells + 1) + x,
-          b = a + cells + 1;
-        indices.set([a, a + 1, b, b, a + 1, b + 1], (y * cells + x) * 6);
-      }
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW);
-    gl.bindVertexArray(null);
-    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  }
+  constructor(
+    private gl: WebGL2RenderingContext,
+    shader?: WebGLProgram,
+  ) {
+    this.shader = shader ?? program(gl, fragment, vertex)!;
+    this.clock = gl.getUniformLocation(this.shader, 'time');
+    const map = texture(gl, size, size);
+    const framebuffer = gl.createFramebuffer();
+    const vao = gl.createVertexArray();
+    const buffer = gl.createBuffer();
+    try {
+      if (!map || !framebuffer || !vao || !buffer) throw Error('Caustics resources unavailable');
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, map, 0);
+      if (gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE)
+        throw Error('Caustics framebuffer is incomplete');
+      gl.bindVertexArray(vao);
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffer);
+      const indices = new Uint16Array(cells * cells * 6);
+      for (let y = 0; y < cells; y++)
+        for (let x = 0; x < cells; x++) {
+          const a = y * (cells + 1) + x,
+            b = a + cells + 1;
+          indices.set([a, a + 1, b, b, a + 1, b + 1], (y * cells + x) * 6);
+        }
+      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW);
+      this.map = map;
+      this.framebuffer = framebuffer;
+      this.vao = vao;
+      this.indices = buffer;
+    } catch (error) {
+      gl.deleteTexture(map);
+      gl.deleteFramebuffer(framebuffer);
+      gl.deleteVertexArray(vao);
+      gl.deleteBuffer(buffer);
+      if (!shader) gl.deleteProgram(this.shader);
+      throw error;
+    } finally {
+      gl.bindVertexArray(null);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    }
   }
   prepare(time: number) {
     time = Math.fround(time);
