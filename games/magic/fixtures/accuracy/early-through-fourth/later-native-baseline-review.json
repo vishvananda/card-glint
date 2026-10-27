@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "status": "complete-later-set-baselines-not-calibration-approval",
+  "evidence": {
+    "file": "later-native-baselines.json.gz",
+    "sha256": "4686b568c1f7b4091c3cc72ddaa02bf2df73647b103464266f285b54db826280",
+    "contentSha256": "28e2c9a42f5f1c67e0139dad864f2ffa359dd1a432bae112c24939cb46869281"
+  },
+  "rendererHash": "a5d1bebfb7f829aa9c1a68eb1704e32be1770985d36ae1e54b51a09f224d6b1f",
+  "printings": 997,
+  "nativeVariants": 3988,
+  "acceptedStockPoses": 995,
+  "summary": {
+    "leg": {
+      "cards": 310,
+      "acceptedPoses": 308,
+      "rankedDiagnostics": 308,
+      "alignmentReview": 2,
+      "contentReview": 0,
+      "acceptedPoseMean100": 74.53590400421822,
+      "allPoseDiagnosticMean100": 74.55231915542485,
+      "meanCoverage": 0.9580802778334364
+    },
+    "drk": {
+      "cards": 122,
+      "acceptedPoses": 122,
+      "rankedDiagnostics": 122,
+      "alignmentReview": 0,
+      "contentReview": 0,
+      "acceptedPoseMean100": 79.14628262946167,
+      "allPoseDiagnosticMean100": 79.14628262946167,
+      "meanCoverage": 0.958068085395241
+    },
+    "fem": {
+      "cards": 187,
+      "acceptedPoses": 187,
+      "rankedDiagnostics": 187,
+      "alignmentReview": 0,
+      "contentReview": 0,
+      "acceptedPoseMean100": 72.22169243542683,
+      "allPoseDiagnosticMean100": 72.22169243542683,
+      "meanCoverage": 0.958454401523456
+    },
+    "4ed": {
+      "cards": 378,
+      "acceptedPoses": 378,
+      "rankedDiagnostics": 378,
+      "alignmentReview": 0,
+      "contentReview": 0,
+      "acceptedPoseMean100": 78.27923317962002,
+      "allPoseDiagnosticMean100": 78.27923317962002,
+      "meanCoverage": 0.9537963842202752
+    }
+  },
+  "limitations": [
+    "All means are structure indices out of100,not percentages of correctness",
+    "Artist/legal credit parts are diagnostic and excluded by the metric policy",
+    "Numerical outer-stock acceptance does not certify printed-interior normalization or visual frame boundaries",
+    "This is a baseline for remaining full audits,not completion or release approval"
+  ]
+}

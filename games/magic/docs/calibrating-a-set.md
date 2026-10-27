@@ -184,6 +184,20 @@ The evidence runner reports fixed-window edge and filled-ink metrics; attach
 separate pigment, corner and layout measurements when those components change.
 It does **not** automatically choose fonts, certify templates or approve a fit.
 
+To score a frozen `printing-native-replay.mjs` capture without starting a browser,
+use a metric module that exports `scoreRegions(scan, render, card, face)`:
+
+```sh
+node games/magic/tools/accuracy/printing-native-baseline-score.mjs INPUTS.json CAPTURE.json NORMALIZATION.json METRICS.mjs OUTPUT
+```
+
+The report retains every printing and labels alignment/content review rows.
+Rejected poses and rows with less than 0.65 verified metric coverage stay outside
+the accepted-pose mean. Numerical pose acceptance still needs visual review.
+Rerun the command to resume completed rows: the tool checks input, PNG, pose,
+metric-graph and decoder identities before reuse. Changed identities require a
+new output directory. Scoring does not certify a component or set.
+
 Use these shared modules for component-specific searches, retaining the final
 native replay as the acceptance check:
 
