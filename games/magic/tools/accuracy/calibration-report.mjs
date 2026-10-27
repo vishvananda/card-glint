@@ -1,3 +1,4 @@
+import { revisedManaFitDelta, revisedManaFitAffected } from './revised-mana-fit-ancestry.mjs';
 import {
   revisedBlackPaperDelta,
   revisedBlackPaperAffected,
@@ -117,6 +118,16 @@ export async function calibrationReport(ledger) {
       ]);
       for (const { task, item, original } of dependencies) {
         const currentAbu = await abuCurrentApproval(item, group, task, original, set.set);
+        if (
+          revisedManaFitAffected(set.set, task, original) &&
+          item.proof?.revisedManaFitSource !== (await revisedManaFitDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Revised historical mana now uses reviewed glyph/numeral sizing and separate paper/ink calibration. Mana, inline-symbol and full-card evidence needs current renders; unrelated components and other printing styles retain their evidence.';
+          continue;
+        }
+
         if (
           revisedBlackPaperAffected(set.set, task, original) &&
           item.proof?.revisedBlackPaperSource !== (await revisedBlackPaperDelta()).afterRenderer

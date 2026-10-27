@@ -1,3 +1,4 @@
+import { preRevisedManaFitSource } from './revised-mana-fit-ancestry.mjs';
 // Exact source history for the Revised black-symbol paper sampler.
 // Historical projection permits reuse; it does not certify current components.
 import assert from 'node:assert/strict';
@@ -58,6 +59,7 @@ export function revisedBlackPaperDelta() {
   })());
 }
 export async function preRevisedBlackPaperSource(file, bytes) {
+  bytes = await preRevisedManaFitSource(file, bytes);
   const e = (await revisedBlackPaperDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

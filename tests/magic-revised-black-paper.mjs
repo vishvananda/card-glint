@@ -1,9 +1,13 @@
+import {
+  preRevisedManaFitSource,
+  revisedManaFitHistoricalHash,
+} from '../games/magic/tools/accuracy/revised-mana-fit-ancestry.mjs';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { createServer } from './magic-vite.mjs';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   revisedBlackPaperDelta,
   preRevisedBlackPaperSource,
@@ -11,10 +15,10 @@ import {
   revisedBlackPaperAffected,
 } from '../games/magic/tools/accuracy/revised-black-paper-ancestry.mjs';
 const p = await revisedBlackPaperDelta();
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await revisedManaFitHistoricalHash(), p.afterRenderer);
 assert.equal(await revisedBlackPaperHistoricalHash(), p.beforeRenderer);
 for (const [file, e] of Object.entries(p.files)) {
-  const bytes = await readFile(file);
+  const bytes = await preRevisedManaFitSource(file, await readFile(file));
   assert.equal(hash(bytes), e.after);
   assert.equal(hash(await preRevisedBlackPaperSource(file, bytes)), e.before);
   const unknown = Buffer.concat([bytes, Buffer.from('\n// unreviewed change\n')]);
@@ -151,7 +155,7 @@ try {
       after = JSON.parse(next(input, 'inspect'));
     assert.equal(after.filter((v) => v === marker).length, expected ? 1 : 0);
     assert.deepEqual(
-      after.filter((v) => v !== marker),
+      after.filter((v) => v !== marker && v !== 'revised-mana-fit-v1'),
       before,
     );
   };

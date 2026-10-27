@@ -18,6 +18,24 @@ export function historicalManaFamily(face: RenderedCardInput, symbol: string) {
   return HISTORICAL_MANA_GLYPHS[face.setCode?.toLowerCase() ?? '']?.[symbol];
 }
 
+/** Revised fits bind the complete reviewed frame and historical symbol inventory. */
+export function revisedManaSource(face: RenderedCardInput): boolean {
+  return (
+    face.setCode?.toLowerCase() === '3ed' &&
+    isRetro(face) &&
+    (face.layout ?? 'normal') === 'normal' &&
+    !(face.legendary ?? /\bLegendary\b/.test(face.typeLine ?? '')) &&
+    !/^Level up\b/m.test(face.rulesText ?? '') &&
+    retroBorder(face) === 'white' &&
+    retroFamily(face) === 'fourth' &&
+    historicalManaFamily(face, 'W') === 'historic-font' &&
+    historicalManaFamily(face, 'U') === 'conjurer-old' &&
+    historicalManaFamily(face, 'B') === 'mse-old' &&
+    historicalManaFamily(face, 'R') === 'mse-old' &&
+    historicalManaFamily(face, 'G') === 'conjurer-old'
+  );
+}
+
 export function historicalManaAsset(face: RenderedCardInput, symbol: string) {
   const family = historicalManaFamily(face, symbol);
   const asset =

@@ -68,7 +68,11 @@ import { paintShapedSetSymbol, shapedSetCode } from './shaped-set-symbol.js';
 import { isRetro, retroFrameAsset, retroBorder } from './retro-frame.js';
 import { paintRetroFace } from './retro-paint.js';
 import { loadRetroFont } from './retro-font.js';
-import { historicalManaFamily, historicalManaPaperSample } from './historical-mana.js';
+import {
+  historicalManaFamily,
+  historicalManaPaperSample,
+  revisedManaSource,
+} from './historical-mana.js';
 import { hasExtraRules, extraRuleKey, extraRuleBlocks } from './extra-rules.js';
 import { paintExtraRules } from './extra-rule-paint.js';
 import { splitPanels, panelTransform, splitTextScale, splitHasFuse } from './split-layout.js';
@@ -170,6 +174,30 @@ export function inspectionCardFace(input: CardTextureInput): CardTextureInput {
     : input;
 }
 
+/** A mana-only revision preserves caches for scans, masks and unrelated printings. */
+function revisedManaRevision(input: CardTextureInput): string | undefined {
+  if (input.printedImage || input.layer === 'etching' || input.paintLayer === 'artwork')
+    return undefined;
+  const face = calibrationFace(input.face);
+  if (!revisedManaSource(face)) return undefined;
+  const cost = face.printingElements?.manaCost?.hidden ? [] : (face.manaSymbols ?? []);
+  const geometry = cost.some((symbol) => /^[BRG]$|^\d+$/.test(symbol));
+  const calibrated =
+    face.calibration !== 'source' &&
+    ['set-hsb-v1', 'early-hsb-v1'].includes(face.colorCalibration ?? '');
+  const rules =
+    input.rulesText !== false
+      ? [
+          face.rulesText ?? '',
+          ...(face.rulesParagraphs ?? []).flatMap((p) => p.runs.map((r) => r.text)),
+        ].join('\n')
+      : '';
+  const pigment =
+    calibrated &&
+    (cost.some((symbol) => /^[WUBRG]$|^\d+$/.test(symbol)) || /\{(?:[WUBRG]|\d+)\}/.test(rules));
+  return geometry || pigment ? 'revised-mana-fit-v1' : undefined;
+}
+
 export function cardTextureKey(input: CardTextureInput, tier: TextureTier): string {
   if (input.custom)
     return JSON.stringify([
@@ -240,6 +268,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
         )))
       ? ['revised-black-paper-v1']
       : []),
+    ...(revisedManaRevision(input) ? ['revised-mana-fit-v1'] : []),
     ...(dualFrameRevision ? [dualFrameRevision] : []),
     ...(flowRevision ? [flowRevision] : []),
     ...(input.layer !== 'etching' &&

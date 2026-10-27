@@ -69,11 +69,13 @@ try {
       '/games/magic/src/presentation/retro-rules.ts',
     ),
     { resolvePrintingArtist } = await server.ssrLoadModule('/games/magic/src/printing/artist.ts');
-  // This test isolates the earlier body-key change. The exact later footer
-  // revision and its affected/bypass scopes have their own native/key tests.
+  // Isolate the earlier body-key change. Later footer/mana revisions have
+  // their own exact-source, native and affected/bypass cache tests.
   const after = (...args) =>
     JSON.stringify(
-      JSON.parse(currentAfter(...args)).filter((value) => value !== 'revised-footer-geometry-v1'),
+      JSON.parse(currentAfter(...args)).filter(
+        (value) => value !== 'revised-footer-geometry-v1' && value !== 'revised-mana-fit-v1',
+      ),
     );
   const base = {
     name: 'A test creature',

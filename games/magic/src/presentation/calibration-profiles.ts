@@ -1,3 +1,4 @@
+import { revisedManaSource } from './historical-mana.js';
 import { eighthFrameMaterials } from './eighth-materials.js';
 import { cardStock } from './face-layout.js';
 import { eighthPrintingProfile } from './eighth-printing-profile.js';
@@ -90,6 +91,10 @@ export function calibratedManaTarget(face: RenderedCardInput, symbol: string): R
     !(measured && (modernWalkerProfile(face) || style?.inheritedFrom))
   )
     return undefined;
+  if (face.calibration !== 'source' && revisedManaSource(face)) {
+    const target = MANA_PRINTING_TARGETS[`3ed-original-white-${symbol}`];
+    if (target) return target;
+  }
   const key = `${face.setCode?.toLowerCase()}-${retroBorder(face)}-${symbol}`;
   const exact = MANA_PRINTING_TARGETS[key] ?? DUAL_MANA_TARGETS[key];
   if (style?.inheritedFrom && exact) return exact;

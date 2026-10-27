@@ -1,0 +1,258 @@
+// Observe actual painted historical mana bounds; reject changes elsewhere.
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import fs from 'node:fs/promises';
+import { PNG } from 'pngjs';
+import { createServer } from 'vite';
+import { root, hash, sourceHash, writeJson } from './common.mjs';
+import { openBrowser } from './browser.mjs';
+const [inputFile, beforeDirectory, afterDirectory, prototypeDirectory, output] =
+  process.argv.slice(2);
+assert(output, 'Usage: revised-mana-adoption-review.mjs INPUTS BEFORE AFTER PROTOTYPE NEW_OUTPUT');
+const inputBytes = await fs.readFile(inputFile),
+  inputs = JSON.parse(inputBytes),
+  beforeBytes = await fs.readFile(path.join(beforeDirectory, 'capture.json')),
+  afterBytes = await fs.readFile(path.join(afterDirectory, 'capture.json')),
+  before = JSON.parse(beforeBytes),
+  after = JSON.parse(afterBytes),
+  prototypeBytes = await fs.readFile(path.join(prototypeDirectory, 'capture.json')),
+  prototype = JSON.parse(prototypeBytes),
+  rendererHash = await sourceHash(path.join(root, 'games/magic/src'));
+assert.equal(before.status, 'complete');
+assert.equal(after.status, 'complete');
+assert.equal(prototype.status, 'complete');
+assert.equal(prototype.experiment.sourceRendererHash, before.rendererHash);
+assert.equal(prototype.inputHash, before.inputHash);
+assert.deepEqual(prototype.faults, []);
+assert.equal(after.rendererHash, rendererHash);
+assert.equal(before.inputHash, hash(inputBytes));
+assert.equal(after.inputHash, hash(inputBytes));
+assert.deepEqual(before.faults, []);
+assert.deepEqual(after.faults, []);
+assert.equal(inputs.entries.length, 306);
+assert.deepEqual(
+  before.rows.map((r) => r.id),
+  after.rows.map((r) => r.id),
+);
+const ssr = await createServer({ configFile: false, server: { middlewareMode: true, hmr: false } });
+let wording;
+try {
+  await ssr.ssrLoadModule('/games/magic/src/data/eager.ts');
+  await ssr.ssrLoadModule('/games/magic/src/data/eager-wording.ts');
+  wording = (await ssr.ssrLoadModule('/games/magic/src/presentation/wording.ts')).withCardWording;
+} finally {
+  await ssr.close();
+}
+const hook = [
+  '  if (/^[WUBRG]$|^\\d+$/.test(symbol)) {',
+  '    const t = context.getTransform();',
+  '    const p = [[x,y],[x+size,y],[x,y+size],[x+size,y+size]]',
+  '      .map(([u,v]) => [t.a*u+t.c*v+t.e,t.b*u+t.d*v+t.f]);',
+  '    const left=Math.floor(Math.min(...p.map(v=>v[0])))-2;',
+  '    const top=Math.floor(Math.min(...p.map(v=>v[1])))-2;',
+  '    const right=Math.ceil(Math.max(...p.map(v=>v[0])))+2;',
+  '    const bottom=Math.ceil(Math.max(...p.map(v=>v[1])))+2;',
+  '    (globalThis.__manaFitBounds ??= []).push([left,top,right-left,bottom-top]);',
+  '  }',
+  '',
+].join('\n');
+const transformed = {};
+const session = await openBrowser(
+  { ...inputs, components: [...(inputs.components ?? []), ...after.extraAssets] },
+  {
+    plugins: [
+      {
+        name: 'observe-black-mana-bounds',
+        enforce: 'pre',
+        transform(code, id) {
+          let needle, inserted;
+          if (id.endsWith('/games/magic/src/presentation/canvas-text.ts')) {
+            needle = "  if (symbol === 'W' && images.originalWhiteGlyph) {";
+            inserted = hook;
+          } else if (id.endsWith('/games/magic/src/presentation/historical-white.ts')) {
+            needle =
+              '  // The font supplies only the black glyph; its outline and disc size differ.';
+            inserted = "  { const context=c, symbol='W';\n" + hook + '  }\n';
+          } else return;
+          assert.equal(code.split(needle).length, 2);
+          const after = code.replace(needle, inserted + needle),
+            file = id.split('/').at(-1),
+            proof = { before: hash(code), after: hash(after) };
+          if (transformed[file]) assert.deepEqual(transformed[file], proof);
+          transformed[file] = proof;
+          return after;
+        },
+      },
+    ],
+  },
+);
+const rows = [],
+  counts = {};
+await fs.writeFile(output, JSON.stringify({ status: 'running' }), { flag: 'wx' });
+try {
+  for (const e of inputs.entries) {
+    const b = before.rows.find((r) => r.id === e.id),
+      a = after.rows.find((r) => r.id === e.id),
+      p = prototype.rows.find((r) => r.id === e.id);
+    assert.equal(b.referenceHash, a.referenceHash);
+    assert.equal(b.artHash, a.artHash);
+    const modes = {};
+    for (const mode of ['original', 'oracle', 'oracle-modern', 'etching']) {
+      const v = b.modes[mode],
+        w = a.modes[mode],
+        bb = await fs.readFile(path.join(beforeDirectory, v.file)),
+        ab = await fs.readFile(path.join(afterDirectory, w.file));
+      assert.equal(hash(bb), v.sha256);
+      assert.equal(hash(ab), w.sha256);
+      const pv = p.modes[mode],
+        pb = await fs.readFile(path.join(prototypeDirectory, pv.file));
+      assert.equal(hash(pb), pv.sha256);
+      assert.equal(
+        w.sha256,
+        pv.sha256,
+        'Adoption differs from independent prototype: ' + e.name + '/' + mode,
+      );
+      assert.deepEqual(w.layout, pv.layout);
+      assert.equal(v.inputHash, w.inputHash);
+      assert.deepEqual(v.layout, w.layout);
+      const changed = v.sha256 !== w.sha256,
+        keyChanged = v.keyHash !== w.keyHash;
+      if (changed) assert(keyChanged, 'Visible change without fresh key');
+      if (['oracle-modern', 'etching'].includes(mode)) {
+        assert(!changed);
+        assert(!keyChanged);
+      }
+      const item = {
+        prototype: pv.sha256,
+        prototypeInputHash: pv.inputHash,
+        before: v.sha256,
+        after: w.sha256,
+        inputHash: w.inputHash,
+        keyBefore: v.keyHash,
+        keyAfter: w.keyHash,
+        changed,
+        keyChanged,
+      };
+      if (changed) {
+        const face =
+          mode === 'original'
+            ? e.face
+            : wording(
+                e.face,
+                {
+                  original: e.face,
+                  oracle: {
+                    typeLine: e.card.type_line,
+                    rulesText: e.card.oracle_text ?? '',
+                    power: e.card.power,
+                    toughness: e.card.toughness,
+                  },
+                },
+                'oracle',
+                { symbolStyle: 'original' },
+              );
+        assert.equal(hash(JSON.stringify(face)), w.inputHash);
+        const observed = await session.page.evaluate(
+          async ({ face, id }) => {
+            await import('/games/magic/src/data/eager.ts');
+            await import('/games/magic/src/data/eager-wording.ts');
+            const { composeCardTexture } = await import(
+                '/games/magic/src/presentation/canvas-face.ts'
+              ),
+              { canvasAssetUrls } = await import('/games/magic/src/presentation/canvas-assets.ts'),
+              { loadAccuracyImages } = await import('/games/magic/tools/accuracy/abu-assets.mjs'),
+              signal = new AbortController().signal,
+              lease = await loadAccuracyImages(canvasAssetUrls(face), signal, face.illustration);
+            globalThis.__manaFitBounds = [];
+            try {
+              const c = await composeCardTexture(
+                { face, printingId: id, printedImage: null },
+                'inspect',
+                signal,
+                {
+                  loadImages: async () => ({ ...lease, dispose() {} }),
+                },
+              );
+              try {
+                return { png: c.toDataURL().split(',')[1], bounds: globalThis.__manaFitBounds };
+              } finally {
+                c.width = c.height = 0;
+              }
+            } finally {
+              lease.dispose();
+            }
+          },
+          { face, id: e.id },
+        );
+        assert.equal(
+          hash(Buffer.from(observed.png, 'base64')),
+          w.sha256,
+          'Observation changed raster',
+        );
+        assert(observed.bounds.length);
+        const p = PNG.sync.read(bb),
+          n = PNG.sync.read(ab);
+        assert.equal(p.width, 732);
+        assert.equal(p.height, 1020);
+        assert.equal(n.width, p.width);
+        assert.equal(n.height, p.height);
+        let pixels = 0,
+          outside = 0,
+          alpha = 0;
+        for (let i = 0; i < p.width * p.height; i++) {
+          const at = i * 4;
+          if (p.data[at + 3] !== n.data[at + 3]) alpha++;
+          if ([0, 1, 2].every((c) => p.data[at + c] === n.data[at + c])) continue;
+          pixels++;
+          const x = i % p.width,
+            y = Math.floor(i / p.width);
+          if (!observed.bounds.some(([l, t, w, h]) => x >= l && x < l + w && y >= t && y < t + h))
+            outside++;
+        }
+        assert(pixels);
+        assert.equal(outside, 0, e.name + '/' + mode);
+        assert.equal(alpha, 0);
+        item.isolation = { pixels, outside, alpha, bounds: observed.bounds };
+      }
+      const c = (counts[mode] ??= { changed: 0, unchanged: 0, keysChanged: 0 });
+      c[changed ? 'changed' : 'unchanged']++;
+      c.keysChanged += +keyChanged;
+      modes[mode] = item;
+    }
+    rows.push({
+      id: e.id,
+      name: e.name,
+      referenceHash: a.referenceHash,
+      artHash: a.artHash,
+      modes,
+    });
+    if (rows.length % 25 === 0)
+      console.log('Mana adoption isolation', rows.length, '/', inputs.entries.length);
+  }
+  assert.deepEqual(Object.keys(transformed).sort(), ['canvas-text.ts', 'historical-white.ts']);
+  assert.deepEqual(session.faults, []);
+  assert.equal(await sourceHash(path.join(root, 'games/magic/src')), rendererHash);
+  await writeJson(output, {
+    schema: 1,
+    status: 'native-revised-mana-adoption-isolation',
+    scope:
+      'All306 printings and four modes exactly reproduce the independently controlled pre-adoption prototype. Actual mana paint bounds isolate RGB changes;alpha/layouts/content stay fixed. Modern-symbol and etching keys/pixels unchanged. No whole-set certification claim.',
+    prototypeCaptureHash: hash(prototypeBytes),
+    prototypeToolHash: prototype.toolHash,
+    transformed,
+    beforeRenderer: before.rendererHash,
+    afterRenderer: rendererHash,
+    inputHash: hash(inputBytes),
+    beforeCaptureHash: hash(beforeBytes),
+    afterCaptureHash: hash(afterBytes),
+    toolHash: hash(await fs.readFile(new URL(import.meta.url))),
+    hookHash: hash(hook),
+    browser: session.browser.version(),
+    faults: session.faults,
+    counts,
+    rows,
+  });
+  console.log(JSON.stringify(counts));
+} finally {
+  await session.close();
+}

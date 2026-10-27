@@ -5,6 +5,15 @@ import type { Rgb } from './hsb.js';
  * Evidence: fixtures/accuracy/{beta-mana-materials,showcased-mana-colors,
  * legends-mana-colors}.json. */
 export const MANA_PRINTING_TARGETS: Readonly<Record<string, Rgb>> = {
+  // Revised historical sources; modern-symbol palettes retain their existing keys.
+  '3ed-original-white-W': [0.8521319233711989, 0.8537300452588441, 0.7805140237036171],
+  '3ed-original-white-U': [0.7197916769966878, 0.8574870629987649, 0.8848519514014757],
+  '3ed-original-white-B': [0.6183897045560648, 0.598906967079761, 0.5711638942333385],
+  '3ed-original-white-R': [0.8453954458863518, 0.725346913054003, 0.6595513163330279],
+  '3ed-original-white-G': [0.738278558074136, 0.8178270999757926, 0.7143458161436361],
+  '3ed-original-white-N': [0.7546753932012926, 0.7437237486701979, 0.7230634678276427],
+  '3ed-original-white-INK': [0.1568627450980392, 0.17254901960784313, 0.1411764705882353],
+
   'leg-black-U': [0.6941176470588235, 0.9019607843137255, 0.8823529411764706],
   'leg-black-R': [0.8941176470588236, 0.7568627450980392, 0.5764705882352941],
   'leg-black-G': [0.7098039215686275, 0.8509803921568627, 0.5803921568627451],

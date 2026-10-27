@@ -11,6 +11,28 @@ export const MODERN_MANA_OVERRIDES: Readonly<Record<string, ManaSymbolTransform>
 
 /** Shared printing defaults, measured after independent scan-frame normalization. */
 export const PRINTING_MANA_PROFILES: Readonly<Record<string, ManaSymbolTransform>> = {
+  '3ed': {
+    numberScale: 1.02,
+    numberDx: 0,
+    numberDy: -0.25,
+    glyphs: {
+      B: {
+        scale: 1.04,
+        dx: 0,
+        dy: 0,
+      },
+      R: {
+        scale: 1.06,
+        dx: 0,
+        dy: 0,
+      },
+      G: {
+        scale: 1.14,
+        dx: -0.5,
+        dy: 0,
+      },
+    },
+  },
   arn: {
     dx: 5.25,
     dy: -7.75,

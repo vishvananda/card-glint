@@ -458,3 +458,49 @@ Each baseline is checked against its complete native PNG and cropped RGBA.
 One browser serves the batch; fonts and images use the frozen offline cache.
 The timings cover CPU preparation, rasterization and readback, not GPU
 completion or interactive scene throughput.
+
+## Adopted historical mana fit
+
+The runtime now uses the reviewed B/R/G inner-glyph controls and conservative
+numeric scale/offset with the shared [40, 44, 36] ink and per-color paper targets.
+Disc placement, pitch, diameter, W/U glyph size and the X glyph are unchanged.
+The new palette is separate from the legacy modern-symbol palette.
+
+All 306 printings were replayed in four modes. All 1,224 native results exactly
+match the independently controlled pre-adoption source prototype. The 306
+Original and 291 Oracle-with-original-symbol changes are confined to observed
+mana-symbol bounds. Alpha, text layouts and all pixels outside those bounds
+remain unchanged. Fifteen Oracle basic-land keys refresh conservatively while
+their large-symbol images remain identical. Modern-symbol and etching outputs
+keep their previous pixels and keys.
+
+The complete Original whole-card mean is 73.0700801 → 73.1770012/100. All 306
+new scores are exact reuses of the reviewed prototype's rasters with matching
+reference, stock pose, semantic region plan and full metric graph. Current and
+prototype recipe hashes are retained separately; public-input geometry knobs
+were not relabeled as renderer defaults.
+
+Blue and black whole-card gradient means fall slightly. The palette improves
+their separate paper/ink color error and relative filled-glyph overlap; black
+glyph overlap improves 87.3380 → 87.9244/100. The gradient metric is sensitive
+to changed contrast. This tradeoff and individual outliers remain in the evidence.
+No hollow or darker ink was selected solely to raise an edge score.
+
+The mana-fit files record source history, four-mode native parity, actual-symbol
+pixel isolation and exact score reuse. Caller deltas remain relative to the
+printing defaults. Source-color, modern-symbol and unrelated printing/frame
+combinations preserve their previous palette. Mana circle placement and the
+remaining Revised component/outlier audit are still open.
+
+    MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-mana-prototype-replay.mjs inputs.json prototype-native variants input prototype-definition.json
+    MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/printing-native-replay.mjs inputs.json adopted-native variants input
+    MAGIC_ACCURACY_CACHE="$CACHE" node games/magic/tools/accuracy/revised-mana-adoption-review.mjs inputs.json before-native adopted-native prototype-native new-isolation.json
+    node tests/magic-revised-mana-fit.mjs
+
+The prototype definition specifies set 3ed, an exact pre-adoption source snapshot,
+the palette definition with selection ink-40, and the reviewed geometry definition.
+The replay tool restores that source and records its hash and every changed
+loaded module. It adds public geometry controls and a separately keyed palette
+override only in historical-symbol modes. Asset access remains offline and
+content-addressed. The timing covers composition, readback and analysis, not
+GPU completion or interactive scene throughput.

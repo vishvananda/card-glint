@@ -1,5 +1,5 @@
 import { eighthPrintingProfile } from './eighth-printing-profile.js';
-import { historicalManaFamily } from './historical-mana.js';
+import { historicalManaFamily, revisedManaSource } from './historical-mana.js';
 import { modernPrintingProfile, modernWalkerProfile } from './modern-printing-profile.js';
 import { arabianManaVariant } from './early-expansion-mana.js';
 import { earlyReprintManaDefaults } from './early-reprint-mana.js';
@@ -39,6 +39,7 @@ export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransfo
   const early = ['lea', 'leb', '3ed', 'arn', 'atq', 'drk'].includes(set);
   if (
     !base ||
+    (set === '3ed' && !revisedManaSource(face)) ||
     face.frameTemplate !== undefined ||
     /^Level up\b/m.test(face.rulesText ?? '') ||
     (face.layout ?? 'normal') !== 'normal' ||
