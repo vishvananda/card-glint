@@ -94,3 +94,20 @@ text calls/metrics, assets and masks across four sizes, three wording/symbol
 modes and 13 faces. Face-filter differences use the established M21 raster
 envelope: at most one 8-bit level of mean error per card and three per 64-pixel
 tile, with exact alpha. They are portability checks, not scan-calibration scores.
+
+## Empty Wall rules
+
+The later Wall source review removes unprinted reminder rules from Fourth's
+Wall of Stone and Wall of Wood. Caller flavor and Oracle are retained. Its two
+fresh scores and 376 exact score reuses raise Fourth's whole-card mean to
+79.70/100. See [the four-printing review](../early-through-fourth/wall-wording-review.json),
+which also covers the two Unlimited printings.
+
+```sh
+node tests/magic-wall-wording.mjs
+node games/magic/tools/accuracy/wall-wording-native-review.mjs PRIVATE_CONFIG.json NEW_PRIVATE_PROOF.json
+```
+
+The private configuration lists the two sets and each before/after input file
+and native capture. All 680 printings in four modes must pass. The committed
+receipt contains hashes and measurements; scan images stay in the local cache.

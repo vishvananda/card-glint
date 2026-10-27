@@ -1,3 +1,4 @@
+import { preWallWordingSource } from './wall-wording-data.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -43,6 +44,7 @@ export function fourthParagraphDelta() {
   })());
 }
 export async function preFourthParagraphSource(file, bytes) {
+  bytes = await preWallWordingSource(file, bytes);
   const e = (await fourthParagraphDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

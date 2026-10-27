@@ -1,3 +1,4 @@
+import { wallWordingAffected } from './wall-wording-data.mjs';
 // Current finite ABU review: exact native evidence plus disclosed residuals.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -118,6 +119,7 @@ export async function abuCurrentAudit() {
  * must be the exact reviewed native/source/metric identity. No other component
  * or original field inherits this review. Publication has its own ledger gate. */
 export async function abuCurrentApproval(item, group, task, original = false, setCode) {
+  if (await wallWordingAffected(setCode, task, original, group)) return false;
   const proof = item.proof;
   if (!proof?.abuCurrentReview || !['lea', 'leb', '2ed'].includes(setCode)) return false;
   const a = await abuCurrentAudit(),

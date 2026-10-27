@@ -1,3 +1,4 @@
+import { wallWordingAffected } from './wall-wording-data.mjs';
 import { fourthParagraphDelta, fourthParagraphAffected } from './fourth-paragraph-ancestry.mjs';
 import { fourthNonlandDelta, fourthNonlandAffected } from './fourth-nonland-ancestry.mjs';
 import { fourthNonbasicDelta, fourthNonbasicAffected } from './fourth-nonbasic-ancestry.mjs';
@@ -123,6 +124,12 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (await wallWordingAffected(set.set, task, original, group)) {
+          item.status = original ? 'stale' : 'needs-audit';
+          item.reason =
+            'The physical Wall of Stone/Wood printing has flavor only. Its provider rules were incorrect; affected Original inputs, body/flavor, whole-card and publication evidence require current review. Other printing groups and components retain their evidence.';
+          continue;
+        }
         if (
           (await fourthParagraphAffected(set.set, task, original, group)) &&
           item.proof?.fourthParagraphSource !== (await fourthParagraphDelta()).afterRenderer

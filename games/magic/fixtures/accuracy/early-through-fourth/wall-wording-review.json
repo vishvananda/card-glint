@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "status": "four-printing-source-correction-integrated-set-audits-open",
+  "beforeRenderer": "e3162f05ff132f51495cd549bde7efa7409675131a0c8aff5334db7d71c5dd09",
+  "afterRenderer": "04f9319986cdaed806670d2a7108edbc9988d0a9f8d41502adfe180527f395ce",
+  "sourceReceipt": {
+    "file": "games/magic/fixtures/accuracy/early-through-fourth/wall-wording-source-delta.json.gz",
+    "sha256": "1a9bb31bf83a9bb670a81f6a88aa12364198d9a5b5081b4f0e489ca831d514d7",
+    "contentSha256": "55de1b4fc02983fce679e129db15826d372b8e4b2035cea8af24304e90681a41"
+  },
+  "nativeEvidence": {
+    "file": "games/magic/fixtures/accuracy/early-through-fourth/wall-wording-native-isolation.json.gz",
+    "sha256": "64f387ef8b7c36cf43e84ed7fddbc51c432bb29906154fbfdda9df36ea218275",
+    "contentSha256": "35a608c7da224073e9642fa42b742e3cf9e1ee1593e65ca1395c3489a5af705b"
+  },
+  "providers": [
+    {
+      "set": "2ed",
+      "url": "https://mtgjson.com/api/v5/2ED.json",
+      "sha256": "a91d72d089271717a76dd3f2badb5d9817b776a6dbdca2cebf95bc44e962c2a0",
+      "fetchedAt": "2026-10-12T15:22:22.968Z",
+      "reviews": [
+        {
+          "id": "2a2cab55-fc64-4b3f-bc46-a1a297d2d448",
+          "name": "Wall of Stone",
+          "referenceHash": "c059b941884d189605ea8250c6add807038f6ebe8ffd7900c7eb0b544498c25b",
+          "cachedOriginalText": "(Walls can't attack.)",
+          "reviewedOriginalRules": ""
+        },
+        {
+          "id": "b55d8375-ea70-4dd0-950e-3dbf3dfdd4f6",
+          "name": "Wall of Wood",
+          "referenceHash": "2236f6e01553a2acdca32c087a959d1de227ae2d483c0032c82ce66bcc79b854",
+          "cachedOriginalText": "Defender (This creature can't attack.)",
+          "reviewedOriginalRules": ""
+        }
+      ]
+    },
+    {
+      "set": "4ed",
+      "url": "https://mtgjson.com/api/v5/4ED.json",
+      "sha256": "2c57b154ad474dd5f0ea604fd105034be57ea25e1a64dad311576edca6a681dd",
+      "fetchedAt": "2026-10-12T15:22:21.702Z",
+      "reviews": [
+        {
+          "id": "8c4b68e0-ec8b-4dad-91ee-dc1da5db6251",
+          "name": "Wall of Stone",
+          "referenceHash": "ed8c26a3f6e013264929c564147d64a92ba26753e6eb684ef36bb80c535055e2",
+          "cachedOriginalText": "(Walls can't attack.)",
+          "reviewedOriginalRules": ""
+        },
+        {
+          "id": "39f236da-8391-487b-88d4-a45342bfff62",
+          "name": "Wall of Wood",
+          "referenceHash": "90cbaa21394591a246a542708b7fd73fd41ddff5d68a2b335ab8dfc712decde3",
+          "cachedOriginalText": "Defender (This creature can't attack.)",
+          "reviewedOriginalRules": ""
+        }
+      ]
+    }
+  ],
+  "artifacts": {
+    "nativeTool": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/wall-wording-native-tool.mjs.gz",
+      "sha256": "cc3cebec74df2b70710dd2a119c2b056b31e009873b24aefae84e0ff3ad73d25",
+      "contentSha256": "b593811f9c42988c7e80e42666e32d5248fbae102e9e3189a42e111b33e653cf"
+    },
+    "scoreTool": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/wall-wording-score-tool.mjs.gz",
+      "sha256": "a7780bcea8e19628ca640d7f9dd11ad094e0ee7eff95368171f44fbad987e4a5",
+      "contentSha256": "c205a571660fa97d9feaa6b65b59b1477098713b80d5c3235334a8cbecef1fd0"
+    },
+    "baselineReuse": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/wall-wording-2ed-baseline-reuse.json.gz",
+      "sha256": "24a2bc8464daeb63c5a69107feb5f7d5d54c731d960c5ca4d040cf8128f9ebec",
+      "contentSha256": "68298976554b77fedf7b8ed4cdf56bf1255e3e082b7abd42792dc1d4d8a1b2ff"
+    },
+    "baselineReuseTool": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/wall-wording-baseline-reuse-tool.mjs.gz",
+      "sha256": "5774aaeec67091c7c36b2127af03f1d7d07c042d1530af721b31c629c77325c1",
+      "contentSha256": "5c86e8b3b3d59bd7a76ddd09d66b0e515c3bad30e3dff24140ed9fc54c34d3d2"
+    },
+    "2edScores": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/wall-wording-2ed-scores.json.gz",
+      "sha256": "b74f50971a05dc0bc97a06fac988d0e5605c16de9c6f5207651a401c5b90d384",
+      "contentSha256": "b1354b0dd56b95f86afc752ed8e79805ff40834b3db3f02c086406dc62224baf"
+    },
+    "4edScores": {
+      "file": "games/magic/fixtures/accuracy/early-through-fourth/wall-wording-4ed-scores.json.gz",
+      "sha256": "372d91b2ae294ff953f6bdfd9c19b01080cc5b02006326933902510ad6e405d7",
+      "contentSha256": "0303e7852b95b35ee3efc384fae94f135ccb789fe97f3a08a456db69a8e140a5"
+    }
+  },
+  "sets": {
+    "2ed": {
+      "wholeCard": {
+        "cards": 302,
+        "rankedCards": 302,
+        "before100": 71.06342590688114,
+        "current100": 71.09362233734348,
+        "improved": 2,
+        "regressed": 0
+      },
+      "reuse": {
+        "reused": 300,
+        "fresh": 2
+      },
+      "counts": {
+        "original": {
+          "changed": 2,
+          "unchanged": 300,
+          "keysChanged": 2
+        },
+        "oracle": {
+          "changed": 0,
+          "unchanged": 302,
+          "keysChanged": 0
+        },
+        "oracle-modern": {
+          "changed": 0,
+          "unchanged": 302,
+          "keysChanged": 0
+        },
+        "etching": {
+          "changed": 0,
+          "unchanged": 302,
+          "keysChanged": 0
+        }
+      },
+      "changes": [
+        {
+          "id": "2a2cab55-fc64-4b3f-bc46-a1a297d2d448",
+          "name": "Wall of Stone",
+          "before100": 62.07007733026649,
+          "current100": 67.67968576778641,
+          "delta100": 5.6096084375199196
+        },
+        {
+          "id": "b55d8375-ea70-4dd0-950e-3dbf3dfdd4f6",
+          "name": "Wall of Wood",
+          "before100": 68.35243819038233,
+          "current100": 71.86215175249076,
+          "delta100": 3.5097135621084297
+        }
+      ]
+    },
+    "4ed": {
+      "wholeCard": {
+        "cards": 378,
+        "rankedCards": 378,
+        "before100": 79.65514173446755,
+        "current100": 79.69552483022856,
+        "improved": 2,
+        "regressed": 0
+      },
+      "reuse": {
+        "reused": 376,
+        "fresh": 2
+      },
+      "counts": {
+        "original": {
+          "changed": 2,
+          "unchanged": 376,
+          "keysChanged": 2
+        },
+        "oracle": {
+          "changed": 0,
+          "unchanged": 378,
+          "keysChanged": 0
+        },
+        "oracle-modern": {
+          "changed": 0,
+          "unchanged": 378,
+          "keysChanged": 0
+        },
+        "etching": {
+          "changed": 0,
+          "unchanged": 378,
+          "keysChanged": 0
+        }
+      },
+      "changes": [
+        {
+          "id": "8c4b68e0-ec8b-4dad-91ee-dc1da5db6251",
+          "name": "Wall of Stone",
+          "before100": 71.01207974546135,
+          "current100": 82.20248397569534,
+          "delta100": 11.190404230234009
+        },
+        {
+          "id": "39f236da-8391-487b-88d4-a45342bfff62",
+          "name": "Wall of Wood",
+          "before100": 75.89293620278129,
+          "current100": 79.96734217020817,
+          "delta100": 4.074405967426886
+        }
+      ]
+    }
+  },
+  "visualReview": {
+    "method": "All4 full scans read separately,then fixed-pose scan/before/after rules crops inspected. Reused development data,not a holdout.",
+    "observations": [
+      "All4 physical panels contain flavor only. Wall/Defender reminders in the cached originalText are not printed.",
+      "Removing those rules retains caller flavor and Oracle wording. No per-card geometry or font override is used.",
+      "Fourth Wall of Wood naturally returns to the existing centered flavor policy. Other font,wrap and baseline residuals remain."
+    ]
+  },
+  "controls": {
+    "printings": 680,
+    "nativeVariants": 2720,
+    "changedOriginals": 4,
+    "unchangedOriginals": 676,
+    "unchangedOracle": 680,
+    "unchangedOracleModern": 680,
+    "unchangedEtchings": 680,
+    "freshScores": 4,
+    "reusedScores": 676
+  },
+  "completion": {
+    "lea": "unchanged complete finite audit",
+    "leb": "unchanged complete finite audit",
+    "unlimited": "2 affected frame groups reopened for Original rules input,body/flavor,full-card and publication review;25 other groups remain validated",
+    "fourth": "Existing component and complete-set audits remain open"
+  },
+  "limitations": [
+    "This corrects provider data,not every remaining typography difference.",
+    "Current metrics and frozen scan transforms are unchanged. Unlimited baseline scores reuse302 exact historical native/reference/input/full-pose and metric-graph joins;unrecorded component diagnostics are not invented.",
+    "No new release or Lab rollout is claimed. Old Unlimited publication receipts cannot approve the2 newly corrected groups until current review/publication."
+  ]
+}

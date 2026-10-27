@@ -1,3 +1,4 @@
+import { wallReviews } from '../games/magic/tools/accuracy/wall-wording-data.mjs';
 import {
   abuArtHistoricalHash,
   preAbuArtSource,
@@ -79,11 +80,21 @@ const sets = ledger.sets.filter((s) => ['lea', 'leb', '2ed'].includes(s.set));
 const reports = await calibrationReport({ sets });
 for (const r of reports) {
   assert.equal(r.counts.stale, 0);
-  assert.equal(r.counts['needs-audit'], 0);
-  assert.equal(r.originalRulesInputs.ready, r.printings);
+  const groups = sets
+    .find((s) => s.set === r.set)
+    .groups.filter((g) => wallReviews.some((w) => w.set === r.set && g.printingIds.includes(w.id)));
+  assert.equal(r.counts['needs-audit'], groups.length * 4);
+  assert.equal(
+    r.originalRulesInputs.ready,
+    r.printings - groups.reduce((n, g) => n + g.printings, 0),
+  );
+  assert.equal(
+    r.originalRulesInputs.stale,
+    groups.reduce((n, g) => n + g.printings, 0),
+  );
   assert.equal(r.originalTypeInputs.ready, r.printings);
-  assert.equal(r.complete, true);
-  assert.equal(r.byTask.release.validated, r.groups);
+  assert.equal(r.complete, groups.length === 0);
+  assert.equal(r.byTask.release.validated, r.groups - groups.length);
   assert(
     sets
       .find((s) => s.set === r.set)

@@ -1,9 +1,13 @@
+import {
+  wallWordingHistoricalHash,
+  preWallWordingSource,
+} from '../games/magic/tools/accuracy/wall-wording-data.mjs';
 // Public paragraph correction and exact native/data/score ancestry.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { createServer } from './magic-vite.mjs';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
   fourthParagraphDelta,
   fourthParagraphHistoricalHash,
@@ -17,10 +21,10 @@ import {
 import { printedTextOutlierAnnotation } from '../games/magic/tools/accuracy/printed-text-outliers.mjs';
 const p = await fourthParagraphDelta(),
   id = p.ids[0];
-assert.equal(await sourceHash('games/magic/src'), p.afterRenderer);
+assert.equal(await wallWordingHistoricalHash(), p.afterRenderer);
 assert.equal(await fourthParagraphHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {
-  const b = await fs.readFile(file);
+  const b = await preWallWordingSource(file, await fs.readFile(file));
   assert.equal(hash(b), r.after);
   assert.equal(hash(await preFourthParagraphSource(file, b)), r.before);
   const unknown = Buffer.concat([b, Buffer.from('\n// unknown edit\n')]);

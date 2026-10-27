@@ -29,8 +29,9 @@ assert(
       'fourth-nonbasic',
       'fourth-nonland',
       'fourth-paragraph',
+      'wall-wording',
     ].includes(changeKind),
-  'Usage: printing-native-reviewed-input-score.mjs BEFORE_INPUTS AFTER_INPUTS BEFORE_CAPTURE AFTER_CAPTURE POSES PRIOR_SCORES METRICS POLICY NEW_OUTPUT [symbols|leg-artist|fourth-basic-body|fourth-nonbasic|fourth-nonland|fourth-paragraph]',
+  'Usage: printing-native-reviewed-input-score.mjs BEFORE_INPUTS AFTER_INPUTS BEFORE_CAPTURE AFTER_CAPTURE POSES PRIOR_SCORES METRICS POLICY NEW_OUTPUT [symbols|leg-artist|fourth-basic-body|fourth-nonbasic|fourth-nonland|fourth-paragraph|wall-wording]',
 );
 const files = [
     beforeInputFile,
@@ -57,7 +58,7 @@ assert.equal(prior.inputHash, hash(bytes[0]));
 assert.equal(prior.posesHash ?? prior.sources?.poses, hash(bytes[4]));
 assert.equal(before.inputHash, hash(bytes[0]));
 assert.equal(after.inputHash, hash(bytes[1]));
-let artistDelta, bodyDelta, nonbasicDelta, nonlandDelta, paragraphDelta;
+let artistDelta, bodyDelta, nonbasicDelta, nonlandDelta, paragraphDelta, wallDelta;
 if (changeKind === 'leg-artist') {
   const { legArtistDelta } = await import('./leg-artist-data-ancestry.mjs');
   artistDelta = await legArtistDelta();
@@ -70,6 +71,13 @@ if (changeKind === 'leg-artist') {
   assert.equal(beforeInputs.set, '4ed');
   assert.equal(before.rendererHash, bodyDelta.beforeRenderer);
   assert.equal(after.rendererHash, bodyDelta.afterRenderer);
+} else if (changeKind === 'wall-wording') {
+  const { wallWordingDelta } = await import('./wall-wording-data.mjs');
+  wallDelta = await wallWordingDelta();
+  assert.deepEqual(policyGraph, prior.policyGraph);
+  assert(['2ed', '4ed'].includes(beforeInputs.set));
+  assert.equal(before.rendererHash, wallDelta.beforeRenderer);
+  assert.equal(after.rendererHash, wallDelta.afterRenderer);
 } else if (changeKind === 'fourth-paragraph') {
   const { fourthParagraphDelta } = await import('./fourth-paragraph-ancestry.mjs');
   paragraphDelta = await fourthParagraphDelta();
@@ -92,7 +100,8 @@ if (changeKind === 'leg-artist') {
   assert.equal(before.rendererHash, nonbasicDelta.beforeRenderer);
   assert.equal(after.rendererHash, nonbasicDelta.afterRenderer);
 } else assert.equal(before.rendererHash, after.rendererHash);
-const scopedDelta = artistDelta ?? bodyDelta ?? nonbasicDelta ?? nonlandDelta ?? paragraphDelta;
+const scopedDelta =
+  artistDelta ?? bodyDelta ?? nonbasicDelta ?? nonlandDelta ?? paragraphDelta ?? wallDelta;
 assert.equal(prior.rendererHash, bodyDelta ? bodyDelta.historicalRenderer : before.rendererHash);
 assert.equal(before.status, 'complete');
 assert.equal(after.status, 'complete');
@@ -120,7 +129,22 @@ for (const e of beforeInputs.entries) {
   assert.deepEqual(next.card, e.card);
   assert.deepEqual(next.reference, e.reference);
   assert.deepEqual(next.art, e.art);
-  if (paragraphDelta) {
+  if (wallDelta) {
+    const review = wallDelta.reviews.find((r) => r.id === e.id && r.set === beforeInputs.set);
+    if (!review) assert.deepEqual(next.face, e.face);
+    else {
+      assert.equal(review.referenceHash, e.reference.sha256);
+      const flavor = e.face.rulesParagraphs.filter((p) => p.role === 'flavor');
+      assert.deepEqual(next.face, {
+        ...e.face,
+        rulesText: flavor.map((p) => p.runs.map((r) => r.text).join('')).join('\n'),
+        rulesParagraphs: flavor,
+        ...(e.face.rulesAlignment?.mode === 'auto'
+          ? { rulesAlignment: { ...e.face.rulesAlignment, reference: flavor } }
+          : {}),
+      });
+    }
+  } else if (paragraphDelta) {
     const path = 'games/magic/fixtures/accuracy/4ed/annotations-text-outliers.json';
     const review = JSON.parse(paragraphDelta.files[path].afterSource).cards[e.id];
     if (!paragraphDelta.ids.includes(e.id)) assert.deepEqual(next.face, e.face);
@@ -167,7 +191,7 @@ for (const e of beforeInputs.entries) {
     assert.equal(e.face.artist, review.providerArtist);
     assert.equal(next.face.artist, review.printedArtist);
     assert.equal(old.poseAccepted, p.accepted);
-  } else if (bodyDelta || nonbasicDelta || nonlandDelta || paragraphDelta)
+  } else if (bodyDelta || nonbasicDelta || nonlandDelta || paragraphDelta || wallDelta)
     assert.equal(old.poseAccepted, p.accepted);
   else assert(p.accepted);
   assert.equal(old.poseHash, hash(JSON.stringify(p.transform)));
@@ -240,34 +264,39 @@ assert.deepEqual(
 await writeJson(output, {
   schema: 1,
   set: beforeInputs.set,
-  status: paragraphDelta
-    ? 'complete-native-fourth-paragraph-comparison'
-    : nonlandDelta
-      ? 'complete-native-fourth-nonland-comparison'
-      : nonbasicDelta
-        ? 'complete-native-fourth-nonbasic-comparison'
-        : bodyDelta
-          ? 'complete-native-fourth-basic-body-comparison'
-          : artistDelta
-            ? 'complete-native-artist-input-comparison'
-            : 'complete-native-mana-input-comparison',
+  status: wallDelta
+    ? 'complete-native-wall-wording-comparison'
+    : paragraphDelta
+      ? 'complete-native-fourth-paragraph-comparison'
+      : nonlandDelta
+        ? 'complete-native-fourth-nonland-comparison'
+        : nonbasicDelta
+          ? 'complete-native-fourth-nonbasic-comparison'
+          : bodyDelta
+            ? 'complete-native-fourth-basic-body-comparison'
+            : artistDelta
+              ? 'complete-native-artist-input-comparison'
+              : 'complete-native-mana-input-comparison',
+  ...(wallDelta ? { wallNativeProofHash: wallDelta.native.contentSha256 } : {}),
   ...(paragraphDelta ? { paragraphNativeProofHash: paragraphDelta.native.contentSha256 } : {}),
   ...(nonlandDelta ? { nonlandNativeProofHash: nonlandDelta.native.contentSha256 } : {}),
   ...(artistDelta ? { artistNativeProofHash: artistDelta.native.contentSha256 } : {}),
   ...(bodyDelta ? { bodyNativeProofHash: bodyDelta.native.contentSha256 } : {}),
   ...(nonbasicDelta ? { nonbasicNativeProofHash: nonbasicDelta.native.contentSha256 } : {}),
   scope:
-    (paragraphDelta
-      ? 'One exact Original paragraph correction;all lexical content,Oracle faces,geometry and scan poses retained. '
-      : nonlandDelta
-        ? 'Exact37-body native isolation with identical inputs and retained lands;rejected stock poses remain outside aggregate means. '
-        : nonbasicDelta
-          ? 'Exact three-land layout isolation and one reviewed Original lexical correction; provider and Oracle inputs stay unchanged. Rejected stock poses remain outside aggregate means. '
-          : bodyDelta
-            ? 'Exact body-profile native isolation links the current before capture to the archived scoring baseline. Input faces are identical and rejected poses stay outside aggregate means. '
-            : artistDelta
-              ? 'Exact physical artist strings validated by the data-only native receipt;rejected poses stay outside aggregate means. '
-              : '') +
+    (wallDelta
+      ? 'Four exact empty Original rules fields,with caller flavor and Oracle preserved;only two printings per set change. '
+      : paragraphDelta
+        ? 'One exact Original paragraph correction;all lexical content,Oracle faces,geometry and scan poses retained. '
+        : nonlandDelta
+          ? 'Exact37-body native isolation with identical inputs and retained lands;rejected stock poses remain outside aggregate means. '
+          : nonbasicDelta
+            ? 'Exact three-land layout isolation and one reviewed Original lexical correction; provider and Oracle inputs stay unchanged. Rejected stock poses remain outside aggregate means. '
+            : bodyDelta
+              ? 'Exact body-profile native isolation links the current before capture to the archived scoring baseline. Input faces are identical and rejected poses stay outside aggregate means. '
+              : artistDelta
+                ? 'Exact physical artist strings validated by the data-only native receipt;rejected poses stay outside aggregate means. '
+                : '') +
     'Explicit Original native comparisons with fixed content,art,references and stock poses. Every input delta is checked; the old/new complete metric region plans are identical. Native files are verified and unchanged rasters alone reuse prior scores under the same full metric graph. Fresh scores use the actual candidate face. This comparison changes no source data or renderer defaults and does not certify a complete set.',
   rendererHash: after.rendererHash,
   beforeInputHash: hash(bytes[0]),

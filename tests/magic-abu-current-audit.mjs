@@ -1,3 +1,7 @@
+import {
+  wallWordingAffected,
+  wallReviews,
+} from '../games/magic/tools/accuracy/wall-wording-data.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import {
@@ -12,20 +16,35 @@ const ledger = JSON.parse(
 );
 const sets = ledger.sets.filter((s) => ['lea', 'leb', '2ed'].includes(s.set));
 const reports = await calibrationReport({ sets });
+const affectedGroups = (set) =>
+  set.groups.filter((g) =>
+    wallReviews.some((r) => r.set === set.set && g.printingIds.includes(r.id)),
+  );
+assert.equal(affectedGroups(sets.find((s) => s.set === '2ed')).length, 2);
+
 for (const report of reports) {
   assert.equal(report.inventoryReady, true);
-  assert.equal(report.outstanding.length, 0);
-  assert.equal(report.complete, true);
-  assert.equal(report.originalRulesInputs.ready, report.printings);
+  const reopened = affectedGroups(sets.find((s) => s.set === report.set));
+  const reopenedPrintings = reopened.reduce((n, g) => n + g.printings, 0);
+  assert.equal(report.outstanding.length, reopened.length * 4);
+  assert.equal(report.complete, reopened.length === 0);
+  assert.equal(report.originalRulesInputs.ready, report.printings - reopenedPrintings);
+  assert.equal(report.originalRulesInputs.stale, reopenedPrintings);
+  for (const entry of report.outstanding)
+    assert(['rules', 'flavor', 'fullCard', 'release'].includes(entry.task));
+
   assert.equal(report.originalTypeInputs.ready, report.printings);
   assert.equal(report.counts.stale, 0);
-  assert.equal(report.counts['needs-audit'], 0);
+  assert.equal(report.counts['needs-audit'], reopened.length * 4);
 }
 for (const set of sets)
   for (const group of set.groups)
     for (const task of ['rules', 'flavor', 'fullCard']) {
       if (group.applicable?.[task] === false) continue;
-      assert(await abuCurrentApproval(group.tasks[task], group, task, false, set.set));
+      assert.equal(
+        await abuCurrentApproval(group.tasks[task], group, task, false, set.set),
+        !(await wallWordingAffected(set.set, task, false, group)),
+      );
       assert.equal(group.tasks[task].proof.sourceCensus.heldOut, false);
     }
 const publicationFile =
@@ -53,7 +72,10 @@ for (const set of sets)
     assert.equal(release.proof.checksPassed, true);
     assert.equal(release.proof.publicationReceiptHash, hash(publicationBytes));
     assert.equal(release.guards[publicationFile], hash(publicationBytes));
-    assert(await abuCurrentApproval(release, group, 'release', false, set.set));
+    assert.equal(
+      await abuCurrentApproval(release, group, 'release', false, set.set),
+      !(await wallWordingAffected(set.set, 'release', false, group)),
+    );
   }
 const set = sets[0],
   group = set.groups.find((g) => g.tasks.rules.proof?.abuCurrentReview);
@@ -131,5 +153,5 @@ delete fake.tasks.release.proof.publishedCommit;
 delete fake.tasks.release.proof.checksPassed;
 assert.throws(() => calibrationTaskStatus(fake, 'release'), /not a released calibration/);
 console.log(
-  'ABU finite review:899 exact native/metric members,33 visually reviewed changes,19 current art candidates; all component/source checks ready, release separate; missing/foreign/changed evidence and forged publication reject.',
+  'ABU finite review:899 exact native/metric members,33 visually reviewed changes,19 current art candidates; historical review preserved, only two Unlimited Wall source groups reopened; missing/foreign/changed evidence and forged publication reject.',
 );

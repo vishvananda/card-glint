@@ -5,13 +5,13 @@ This pass covers ordinary printings through Fourth Edition. Collector's Edition
 
 | Set                               | Current result                                                       | Next gate                                                        |
 | --------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| Alpha, Beta, Unlimited            | 899 printings retain their completed review and exact native pixels  | Preserve their existing evidence                                 |
+| Alpha, Beta                       | 597 printings retain their completed review and exact native pixels  | Preserve their existing evidence                                 |
+| Unlimited                         | 302 Originals; two Wall source corrections; 71.09/100                | Reapprove the two affected source/body groups and publish        |
 | Arabian Nights                    | 92 native Originals; mean 75.40 → 80.20/100                          | Component certification and bundled release                      |
 | Antiquities                       | 102 native Originals; mean 73.68 → 80.87/100                         | Component certification and bundled release                      |
 | Revised                           | 306 Originals; body/footer, mana sizing/palette and headings adopted | Mana placement/ink, frame/land and outlier review; certification |
 | Legends, The Dark, Fallen Empires | Earlier profiles and evidence remain available                       | Current-source recheck in release order                          |
-
-| Fourth Edition | 378 Originals; land and narrow nonland body updates; 79.66/100 | Text outliers, remaining component audits and bundled release |
+| Fourth Edition                    | 378 Originals; land and narrow nonland body updates; 79.70/100       | Text outliers, remaining component audits and bundled release    |
 
 These are structural similarity indices, not percentages of correct pixels.
 The profiles are committed work in progress; the published package remains
@@ -543,3 +543,28 @@ Other retained outliers, including Unstable Mutation, still need review. See the
 [reproduction commands](../fixtures/accuracy/4ed/README.md). These measurements
 reuse scans and the retained stock transforms. They do not approve the rejected
 local-panel warp or mark the set complete.
+
+## Empty Wall rules
+
+The cached MTGJSON snapshots give Wall of Stone and Wall of Wood rules that are
+absent from their Unlimited and Fourth Edition scans. The four printing-specific
+reviews set Original rules to empty and preserve caller flavor, rich text,
+printed types and Oracle wording. Alpha, Beta and Revised already had corrections
+for these cards.
+
+All 680 current native printings were replayed in four modes. Only the four
+Original bodies change; every Oracle face, etching mask, frame and illustration
+is unchanged. Unlimited's 302 baseline scores also match their historical native
+bytes, inputs, references, poses and metric graph, so no baseline rescore is needed.
+The updated means are 71.09/100 for Unlimited and 79.70/100 for Fourth. See the
+[review and score receipts](../fixtures/accuracy/early-through-fourth/wall-wording-review.json).
+
+Unlimited's affected green and red creature groups are reopened for Original
+rules inputs, rules/flavor, whole-card and publication review. The report uses
+group granularity: 45 printings share these two groups, while only two inputs
+changed. The other 25 groups and all unrelated component checks retain their
+evidence. The old publication receipt is retained as historical evidence.
+
+A provider's original-text field is a candidate reference, not proof of printed
+wording. Check added keywords and reminder lines against the full scan before
+fitting typography. A present field can still contain later Oracle wording.
