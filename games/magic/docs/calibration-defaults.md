@@ -42,6 +42,16 @@ layouts remain independent. See the [Eighth audit](eighth-edition.md).
 Exact-only preparation avoids the donor, including faces with inherited set codes.
 Alpha-only views download neither modern donor.
 
+## Older-frame defaults
+
+Older sets use their measured set/material values where available, then legacy
+family layout and assets. They do not yet share a complete inherited profile
+like M21 or Eighth. A Fourth-derived donor is being compared separately from its
+source assets and pigment. The initial pilot supports family-specific donors
+rather than one default for all old frames. See the
+[experiment and reproduction steps](../fixtures/accuracy/old-frame-defaults/README.md).
+These experimental values are not selectable published defaults.
+
 ## Measured set colors
 
 Set `colorCalibration: 'set-hsb-v1'` to opt into admitted printing-color profiles. LEA, LEB, Revised, Eighth and M21

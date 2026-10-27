@@ -206,3 +206,17 @@ The global character limit stays unchanged. The separate
 rejected count-only approach across all 360 nonlands. Similar word lengths do
 not prove the same printed alignment. Mind Twist still has a wrapping residual;
 other text and component audits remain open.
+
+## Enchant Land detail policy
+
+The [semantic-detail proposal](semantic-details-proposal.json) identifies seven
+Enchant Land cards that bypass Fourth's ordinary detail placement. The legacy
+check searches the printed type for Land despite an explicit nonland semantic
+flag. A prototype using the semantic trait raises their mean mana index from
+58.77 to 95.32/100. The whole-set mean would rise from 80.02 to 80.09/100, with
+seven gains, no losses and 371 exact native/score reuses.
+
+This is a measured proposal, not integrated behavior. It still needs the
+production selector change, Original/Oracle/etching isolation and historical
+source compatibility checks. Original wording, reference scans and poses stay
+fixed.

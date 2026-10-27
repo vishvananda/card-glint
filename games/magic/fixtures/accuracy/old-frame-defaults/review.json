@@ -1,0 +1,657 @@
+{
+  "schema": 1,
+  "status": "development-default-comparison-no-production-adoption",
+  "scope": "110 deterministic ordinary English nonfoil pilot printings from ICE,MIR,USG,ONS. Source scan and art assets remain external. Native control PNGs replay exactly;one frozen scan-only pose serves all candidates. Original type lines manually checked against exact scans;51 imported modernized lines replaced in experimental inputs only.",
+  "rendererHash": "6163dce1c733231772e8b9e5a80cf10bc2256a2dd49adacf241252292c79cd72",
+  "artifacts": {
+    "old-frame-default-inputs": {
+      "file": "games/magic/fixtures/accuracy/old-frame-defaults/old-frame-default-inputs.mjs.gz",
+      "sha256": "4f83b2cd014385cc9bc81120627ff461fb8bd19f42614eb98f39c67f49966d56",
+      "contentSha256": "058b15ab1b06529d17a0e9e1918ab3494eab77ff636beeff31cf47eba17262bb"
+    },
+    "old-frame-default-hooks": {
+      "file": "games/magic/fixtures/accuracy/old-frame-defaults/old-frame-default-hooks.mjs.gz",
+      "sha256": "e314ff236e84f15eb3084229065ac5aebc091fa5e9c4931d2686a60c67ec13a6",
+      "contentSha256": "a71644a907f0a16449ca9a8d3edf43e3e3af0b938d996cdea5d30b62e01eb4f4"
+    },
+    "old-frame-default-registration": {
+      "file": "games/magic/fixtures/accuracy/old-frame-defaults/old-frame-default-registration.mjs.gz",
+      "sha256": "03ab2a58d82554f2c0086586af90426a9242179bafad9e0b8c004df5afc76f5d",
+      "contentSha256": "f0e84b83d9b0852936bd2b9c8f3abb4b0bb10da67bfef83ce58ac5176f8cdb11"
+    },
+    "old-frame-default-study": {
+      "file": "games/magic/fixtures/accuracy/old-frame-defaults/old-frame-default-study.mjs.gz",
+      "sha256": "67588f0192be6ba17e0a69751365b0c79d1edfbd7ffca48899950b8b1f6dec1a",
+      "contentSha256": "7f20faaa46cc1b1f4b89f28670064617c4ed382a8b8a28e265b72b9b03f55448"
+    },
+    "printing-native-replay": {
+      "file": "games/magic/fixtures/accuracy/old-frame-defaults/printing-native-replay.mjs.gz",
+      "sha256": "775a74c1591b1dc675a92d4a04be19b3cbfd31145567c0644135be7fbad4694b",
+      "contentSha256": "a5c91379aa04d4bc418ce89e7e75147b271fedf8597c17c92cf9a6f59ad1ec55"
+    },
+    "frameIsolation": {
+      "file": "games/magic/fixtures/accuracy/old-frame-defaults/frame-isolation.json.gz",
+      "sha256": "6f2410ca239848dabf4416b85180eeb67a7a94307ce692af1c10be3a20199ae6",
+      "contentSha256": "15be4cd52d1b246ab3ca7567edcc42f08a125a824eaa713559c4a3fbc41f6865"
+    },
+    "viewerCheck": {
+      "file": "games/magic/fixtures/accuracy/old-frame-defaults/viewer-check.json.gz",
+      "sha256": "e316de20d3f7e3978e60f2b2fa823de87e6084bb3c77c2a00a44ee1937cdeafa",
+      "contentSha256": "b8cf7b3e4e60660debe0906cc024a87752f7dd5dc441f5477435ee38ee57cd1b"
+    },
+    "numericalSources": {
+      "file": "games/magic/fixtures/accuracy/old-frame-defaults/numerical-sources.json.gz",
+      "sha256": "617fb6cf37e93010966a9a321b0551414cd5e81e4fbd8c809c91e3ef2d7f3c95",
+      "contentSha256": "f40ea264274a07f7b5ddc731771d97bf40c50ee0baf7c77067072089dbfdcfb0"
+    }
+  },
+  "sets": [
+    {
+      "set": "ice",
+      "cards": 29,
+      "alignment": {
+        "cards": 29,
+        "accepted": 17,
+        "rejected": 12
+      },
+      "summary": {
+        "current": {
+          "cards": 17,
+          "whole100": 44.53581360041517,
+          "components": {
+            "title": {
+              "cards": 17,
+              "score100": 36.53986934578577
+            },
+            "mana": {
+              "cards": 9,
+              "score100": 50.675860531108285
+            },
+            "type": {
+              "cards": 17,
+              "score100": 52.086758482848694
+            },
+            "rules": {
+              "cards": 17,
+              "score100": 27.50421632429361
+            },
+            "frame": {
+              "cards": 17,
+              "score100": 49.72132094370146
+            },
+            "art": {
+              "cards": 17,
+              "score100": 73.97956706364236
+            },
+            "credits": {
+              "cards": 17,
+              "score100": 29.549860637399632
+            },
+            "stats": {
+              "cards": 3,
+              "score100": 26.383336285852483
+            }
+          },
+          "improved": 0,
+          "regressed": 0
+        },
+        "fourth-layout": {
+          "cards": 17,
+          "whole100": 47.19134594966417,
+          "components": {
+            "title": {
+              "cards": 17,
+              "score100": 40.94559119226037
+            },
+            "mana": {
+              "cards": 9,
+              "score100": 62.56424011774985
+            },
+            "type": {
+              "cards": 17,
+              "score100": 55.99490197987743
+            },
+            "rules": {
+              "cards": 17,
+              "score100": 31.025074169570953
+            },
+            "frame": {
+              "cards": 17,
+              "score100": 49.72379133836642
+            },
+            "art": {
+              "cards": 17,
+              "score100": 73.97956706364236
+            },
+            "credits": {
+              "cards": 17,
+              "score100": 36.886986270846066
+            },
+            "stats": {
+              "cards": 3,
+              "score100": 40.18911222849779
+            }
+          },
+          "improved": 16,
+          "regressed": 1
+        },
+        "fourth-frame-layout": {
+          "cards": 17,
+          "whole100": 60.768807235645006,
+          "components": {
+            "title": {
+              "cards": 17,
+              "score100": 73.78034650476252
+            },
+            "mana": {
+              "cards": 9,
+              "score100": 86.18455662059927
+            },
+            "type": {
+              "cards": 17,
+              "score100": 60.070711172738854
+            },
+            "rules": {
+              "cards": 17,
+              "score100": 46.47959414908397
+            },
+            "frame": {
+              "cards": 17,
+              "score100": 63.484638468732015
+            },
+            "art": {
+              "cards": 17,
+              "score100": 71.57262962984547
+            },
+            "credits": {
+              "cards": 17,
+              "score100": 44.36007340463484
+            },
+            "stats": {
+              "cards": 3,
+              "score100": 60.87679465134409
+            }
+          },
+          "improved": 16,
+          "regressed": 1
+        }
+      },
+      "artifacts": {
+        "inputs": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/ice-inputs.json.gz",
+          "sha256": "dcf4fbda675183bfa601376df17d2c4791bb31ad72bfcb4f9e760743cc7a150b",
+          "contentSha256": "fed66ffde74933980c5109a93b2dace1ff9698d55ac29df50f1586b64666a6f6"
+        },
+        "native": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/ice-native.json.gz",
+          "sha256": "5e30339b925a2b026def360e9b607cee33fff7e640dc6db4b1ba964aee2c55f8",
+          "contentSha256": "ca37b0e8cfbcba351d2d7df6d21ed6aef67228bcaf853904299837c967a62a8a"
+        },
+        "study": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/ice-study.json.gz",
+          "sha256": "620ffe73d98da76acd4211c8596f53b86d48998b6c6471a049a4d000956ccb18",
+          "contentSha256": "e655933abc1a47ca509b32dfab7364dd1502a07bf228373d95ec78c77f53ed57"
+        }
+      }
+    },
+    {
+      "set": "mir",
+      "cards": 29,
+      "alignment": {
+        "cards": 29,
+        "accepted": 17,
+        "rejected": 12
+      },
+      "summary": {
+        "current": {
+          "cards": 17,
+          "whole100": 66.29101158294735,
+          "components": {
+            "title": {
+              "cards": 17,
+              "score100": 77.52875274961136
+            },
+            "mana": {
+              "cards": 10,
+              "score100": 88.96122725240775
+            },
+            "type": {
+              "cards": 17,
+              "score100": 75.88768360157604
+            },
+            "rules": {
+              "cards": 17,
+              "score100": 50.176474609185426
+            },
+            "frame": {
+              "cards": 17,
+              "score100": 63.444694365471854
+            },
+            "art": {
+              "cards": 17,
+              "score100": 85.56665608943457
+            },
+            "credits": {
+              "cards": 17,
+              "score100": 52.95908937819208
+            },
+            "stats": {
+              "cards": 5,
+              "score100": 43.54032520666974
+            }
+          },
+          "improved": 0,
+          "regressed": 0
+        },
+        "fourth-layout": {
+          "cards": 17,
+          "whole100": 61.71540108735765,
+          "components": {
+            "title": {
+              "cards": 17,
+              "score100": 64.16051334155975
+            },
+            "mana": {
+              "cards": 10,
+              "score100": 66.5296254368079
+            },
+            "type": {
+              "cards": 17,
+              "score100": 69.02522849248857
+            },
+            "rules": {
+              "cards": 17,
+              "score100": 47.14980488233691
+            },
+            "frame": {
+              "cards": 17,
+              "score100": 63.449231654744445
+            },
+            "art": {
+              "cards": 17,
+              "score100": 85.56665608943457
+            },
+            "credits": {
+              "cards": 17,
+              "score100": 56.30633583857275
+            },
+            "stats": {
+              "cards": 5,
+              "score100": 27.740253219315935
+            }
+          },
+          "improved": 0,
+          "regressed": 17
+        },
+        "fourth-frame-layout": {
+          "cards": 17,
+          "whole100": 45.12451906981861,
+          "components": {
+            "title": {
+              "cards": 17,
+              "score100": 31.618389973563726
+            },
+            "mana": {
+              "cards": 10,
+              "score100": 46.797328033018296
+            },
+            "type": {
+              "cards": 17,
+              "score100": 49.18525263137672
+            },
+            "rules": {
+              "cards": 17,
+              "score100": 32.28127124173793
+            },
+            "frame": {
+              "cards": 17,
+              "score100": 51.584526927664406
+            },
+            "art": {
+              "cards": 17,
+              "score100": 66.64992654736423
+            },
+            "credits": {
+              "cards": 17,
+              "score100": 51.88477865434757
+            },
+            "stats": {
+              "cards": 5,
+              "score100": 29.573473619692525
+            }
+          },
+          "improved": 0,
+          "regressed": 17
+        }
+      },
+      "artifacts": {
+        "inputs": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/mir-inputs.json.gz",
+          "sha256": "a35d6900504d498ae0aa25557a22270fa94012444c759256af1c94c6e89eb920",
+          "contentSha256": "94508bffc621292dfce4e55664fe4db741daf097f43422b176f5896826ef44c4"
+        },
+        "native": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/mir-native.json.gz",
+          "sha256": "476f0d21f314aa0bc120aa84a0b7fbadf7c3dc487c762a1fb5349483b2f8c036",
+          "contentSha256": "29d9489a060807c50bd2d9f7ce62c877f9484f9d44d1c5a6ed0655067dd58acb"
+        },
+        "study": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/mir-study.json.gz",
+          "sha256": "1e0ca2c66925d3ea241760994c9c22be5f16527d8c6a8e1af8432a8f6b8b8cd9",
+          "contentSha256": "832880b9d350863fe1d77cf9978dea2064ae2eda5f4bc875eb59d366e91fbc15"
+        }
+      }
+    },
+    {
+      "set": "usg",
+      "cards": 26,
+      "alignment": {
+        "cards": 26,
+        "accepted": 20,
+        "rejected": 6
+      },
+      "summary": {
+        "current": {
+          "cards": 20,
+          "whole100": 65.89870767955853,
+          "components": {
+            "title": {
+              "cards": 20,
+              "score100": 78.93087918914973
+            },
+            "mana": {
+              "cards": 14,
+              "score100": 87.42841964323391
+            },
+            "type": {
+              "cards": 20,
+              "score100": 82.57069408053061
+            },
+            "rules": {
+              "cards": 20,
+              "score100": 46.965317614070926
+            },
+            "frame": {
+              "cards": 20,
+              "score100": 63.10161882298036
+            },
+            "art": {
+              "cards": 20,
+              "score100": 82.57844942077006
+            },
+            "credits": {
+              "cards": 20,
+              "score100": 62.8981368251302
+            },
+            "stats": {
+              "cards": 6,
+              "score100": 40.515729029661266
+            }
+          },
+          "improved": 0,
+          "regressed": 0
+        },
+        "fourth-layout": {
+          "cards": 20,
+          "whole100": 62.59864389725459,
+          "components": {
+            "title": {
+              "cards": 20,
+              "score100": 63.16925178932532
+            },
+            "mana": {
+              "cards": 14,
+              "score100": 74.81859198398672
+            },
+            "type": {
+              "cards": 20,
+              "score100": 74.06925523042803
+            },
+            "rules": {
+              "cards": 20,
+              "score100": 46.910483710863474
+            },
+            "frame": {
+              "cards": 20,
+              "score100": 63.10101299778586
+            },
+            "art": {
+              "cards": 20,
+              "score100": 82.57844942077006
+            },
+            "credits": {
+              "cards": 20,
+              "score100": 62.8981368251302
+            },
+            "stats": {
+              "cards": 6,
+              "score100": 40.515729029661266
+            }
+          },
+          "improved": 1,
+          "regressed": 19
+        },
+        "fourth-frame-layout": {
+          "cards": 20,
+          "whole100": 49.62873475465243,
+          "components": {
+            "title": {
+              "cards": 20,
+              "score100": 32.67735672550054
+            },
+            "mana": {
+              "cards": 14,
+              "score100": 52.68495610063272
+            },
+            "type": {
+              "cards": 20,
+              "score100": 57.92691376271408
+            },
+            "rules": {
+              "cards": 20,
+              "score100": 35.912944490428124
+            },
+            "frame": {
+              "cards": 20,
+              "score100": 56.86758991543868
+            },
+            "art": {
+              "cards": 20,
+              "score100": 69.46634881243176
+            },
+            "credits": {
+              "cards": 20,
+              "score100": 53.899287668615095
+            },
+            "stats": {
+              "cards": 6,
+              "score100": 45.256731149545296
+            }
+          },
+          "improved": 0,
+          "regressed": 20
+        }
+      },
+      "artifacts": {
+        "inputs": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/usg-inputs.json.gz",
+          "sha256": "6f0db6bed032e1eb8d9c24dfd4b8f7829b5a0739e6fde2583232a1a7d6d84cc5",
+          "contentSha256": "1b26f10c53afebe09f1dc3059ebff054c8bd19bca1ed8310d4027cfbacc6b732"
+        },
+        "native": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/usg-native.json.gz",
+          "sha256": "f740e08aa96a2a96b5d423fe635c06e507adafc01959682a3456449e72d5eed5",
+          "contentSha256": "9035369979167b185ba21b5c89fc6d85f51f0e0523a86bdb4a3c396e07faa345"
+        },
+        "study": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/usg-study.json.gz",
+          "sha256": "94c07ac2e7ae9577fa4f49bbff833e901ffc3a51770181af6a7e678dddb32ebf",
+          "contentSha256": "ae7c99424263e13299a4b8f70ea3171ed236026ac609619e742c74a0f45d24bc"
+        }
+      }
+    },
+    {
+      "set": "ons",
+      "cards": 26,
+      "alignment": {
+        "cards": 26,
+        "accepted": 15,
+        "rejected": 11
+      },
+      "summary": {
+        "current": {
+          "cards": 15,
+          "whole100": 60.18613245741879,
+          "components": {
+            "title": {
+              "cards": 15,
+              "score100": 66.72511087373472
+            },
+            "mana": {
+              "cards": 8,
+              "score100": 63.7442662138094
+            },
+            "type": {
+              "cards": 15,
+              "score100": 62.786575680920706
+            },
+            "rules": {
+              "cards": 15,
+              "score100": 42.83320796262446
+            },
+            "frame": {
+              "cards": 15,
+              "score100": 65.54992489106773
+            },
+            "art": {
+              "cards": 15,
+              "score100": 84.74498906490314
+            },
+            "credits": {
+              "cards": 15,
+              "score100": 30.02029501860149
+            },
+            "stats": {
+              "cards": 2,
+              "score100": 40.200695662880534
+            }
+          },
+          "improved": 0,
+          "regressed": 0
+        },
+        "fourth-layout": {
+          "cards": 15,
+          "whole100": 56.327356969116636,
+          "components": {
+            "title": {
+              "cards": 15,
+              "score100": 55.20884751489136
+            },
+            "mana": {
+              "cards": 8,
+              "score100": 61.56509975293262
+            },
+            "type": {
+              "cards": 15,
+              "score100": 57.170392366773534
+            },
+            "rules": {
+              "cards": 15,
+              "score100": 36.928441782637584
+            },
+            "frame": {
+              "cards": 15,
+              "score100": 65.54679217713229
+            },
+            "art": {
+              "cards": 15,
+              "score100": 84.74498906490314
+            },
+            "credits": {
+              "cards": 15,
+              "score100": 31.084303058582858
+            },
+            "stats": {
+              "cards": 2,
+              "score100": 20.57380851491765
+            }
+          },
+          "improved": 0,
+          "regressed": 15
+        },
+        "fourth-frame-layout": {
+          "cards": 15,
+          "whole100": 45.44061067461507,
+          "components": {
+            "title": {
+              "cards": 15,
+              "score100": 34.540582294877495
+            },
+            "mana": {
+              "cards": 8,
+              "score100": 48.23000897066963
+            },
+            "type": {
+              "cards": 15,
+              "score100": 41.28012185447533
+            },
+            "rules": {
+              "cards": 15,
+              "score100": 33.381778070116894
+            },
+            "frame": {
+              "cards": 15,
+              "score100": 53.63282238087748
+            },
+            "art": {
+              "cards": 15,
+              "score100": 65.39889884759204
+            },
+            "credits": {
+              "cards": 15,
+              "score100": 30.389546178855092
+            },
+            "stats": {
+              "cards": 2,
+              "score100": 21.32686071745268
+            }
+          },
+          "improved": 1,
+          "regressed": 14
+        }
+      },
+      "artifacts": {
+        "inputs": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/ons-inputs.json.gz",
+          "sha256": "10ce36181b8466c2bc9c63cc8f8a8a6acb7a04c8b78021291d7283d80081e9aa",
+          "contentSha256": "9743ba0aa40ae73149cb38ec2e2061fc010408a51e405be9c95a3708bf08b686"
+        },
+        "native": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/ons-native.json.gz",
+          "sha256": "e36075aa2d0a010ebe2573aaa116c6296beacf984fe5b994316cd2f840f98c62",
+          "contentSha256": "78e41c333835fdb35c8383ac49e95d594dfab085a4a8f9fcc95747e61702bd66"
+        },
+        "study": {
+          "file": "games/magic/fixtures/accuracy/old-frame-defaults/ons-study.json.gz",
+          "sha256": "880fd13240ec8adb465fe56b68c38c03c047a39fb424da59ccac0aa0a9966744",
+          "contentSha256": "c62dd10edb2be8737c88c5a0b8759f8db0ff615f4d4bfc4359cf1bcb04816f87"
+        }
+      }
+    }
+  ],
+  "comparisonUrl": "https://tetrarcum.com/early-sets/old-defaults/",
+  "decision": {
+    "early": "Fourth source-bound frames and shared layout are promising for the early post-Fourth family;validate full set before adoption.",
+    "middle": "Retain current later-frame defaults. Calibrate Mirage as a middle-period donor rather than copying Fourth.",
+    "late": "Retain current later-frame defaults. Calibrate Onslaught as a late-period donor;use Urza\u2019s Saga as an intervening transfer check.",
+    "seventh": "Its distinct frame assets and black/white stock need separate validation.",
+    "productionChanges": false
+  },
+  "limitations": [
+    "These are development examples,not full-set scores or held-out transfer validation.",
+    "Only69 of110 scan poses satisfy the conservative outer-strip registration gates. All41 rejected rows remain visible,diagnostic and excluded from means. Do not certify scan geometry from affine stretch.",
+    "Existing gold assets are retained when Fourth has no donor. Historical glyph eras and current target-set mana paper/ink are retained;layout values alone are tested separately.",
+    "Rules are provider Original text and have not received a complete scan-wording audit. Type lines were independently checked. Copyright strings preserve current output and are not certified against these printings.",
+    "No inherited old-frame API or replacement mid/late default has been published. The through-Fourth objective remains active."
+  ]
+}
