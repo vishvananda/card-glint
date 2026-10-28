@@ -1,3 +1,4 @@
+import { fourthSourceInputCurrent } from './fourth-source-approval.mjs';
 import { fourthFlavorAffected, fourthFlavorApproval } from './fourth-flavor-ancestry.mjs';
 import { fourthDetailsAffected, fourthDetailsApproval } from './fourth-details-ancestry.mjs';
 import { fourthCenteredAffected, fourthCenteredApproval } from './fourth-centered-ancestry.mjs';
@@ -117,7 +118,8 @@ function originalInputs(set, task) {
 export async function calibrationReport(ledger) {
   const current = structuredClone(ledger),
     checked = new Map(),
-    runtimeChecked = new Map();
+    runtimeChecked = new Map(),
+    fourthSourceChecked = new Map();
   for (const set of current.sets)
     for (const group of set.groups) {
       const dependencies = Object.entries(group.tasks ?? {}).flatMap(([task, item]) => [
@@ -127,6 +129,17 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (original && item.proof?.fourthSourceReadiness) {
+          if (!(await fourthSourceInputCurrent(item, group, task, set, fourthSourceChecked))) {
+            item.status = 'stale';
+            item.reason =
+              'Original input review no longer matches its reviewed fields, source dependencies or printing membership.';
+          }
+          // A current field-level census supersedes older input migrations;
+          // parent typography, material and whole-card approvals remain independent.
+          continue;
+        }
+
         if (
           (await fourthFlavorAffected(set.set, task, original, group)) &&
           !(await fourthFlavorApproval(item, group))

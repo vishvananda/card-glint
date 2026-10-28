@@ -173404,11 +173404,33 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 3,
+                "field": "type",
+                "scanReviewedPrintings": 3,
+                "sources": {
+                  "scan-reviewed-matching-original": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
               "status": "partial",
-              "reason": "All 3 original type lines reviewed; 0 bodies scan-reviewed and 3 provider-original. Public resolvers reproduce the frozen calibration inputs. Unreviewed wording fields and final reference-quality closeout remain open.",
+              "reason": "All 3 physical names,type lines,mana sentences and empty flavor panels match the frozen Original inputs and both public resolvers. Source-transcription readiness is recorded separately;artist/legal and remaining reference/component closeout remain open.",
               "rendererHash": "1c110f895fb0aec89509f1519a5c20362f99cab4f67946c852c363bdf71b3c6a",
               "guards": {
                 "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json": "b6f1b9eb9e91e1b7d6b3a9269adcab3be429b7a850c8ab72734feab56a94e861",
@@ -173418,7 +173440,10 @@
                 "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
                 "games/magic/src/printing/artist.ts": "45d083bd006df75b775165ba12944394ab2980a12cb8ac0f9b936b067dd43d56"
               },
-              "evidence": ["games/magic/fixtures/accuracy/early-reprint-wording.json"]
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-reprint-wording.json",
+                "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json"
+              ]
             },
             "artist": {
               "status": "partial",
@@ -173487,6 +173512,28 @@
                 "basicWordNative": "fb7fbb68e99ce25e77d2c8a4d7b98769079a5f4ff45bcb703fe5d8ca5a872980",
                 "basicSymbolSource": "36be60f78b232e5311f4be839c3fc44e016b6eacdbb6a745260b0a8ed612ce7e",
                 "basicSymbolNative": "f0fdaebde234fa6f6d3047feaff49340577f293eff6c727c249509214c6e486b"
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 3,
+                "field": "rules",
+                "scanReviewedPrintings": 3,
+                "sources": {
+                  "scan-reviewed-matching-original": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Names,type and complete rules boxes were visually read on every basic-land scan. Original mana sentences and empty flavor match both public APIs and native inputs. Glyph shape/color and layout remain separate."
               }
             },
             "specialComponents": {
@@ -173756,6 +173803,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 32,
+                "field": "type",
+                "scanReviewedPrintings": 32,
+                "sources": {
+                  "scan-reviewed-matching-original": 32
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -173842,7 +173911,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 32,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 32
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -174131,6 +174222,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 26,
+                "field": "type",
+                "scanReviewedPrintings": 26,
+                "sources": {
+                  "scan-reviewed-matching-original": 26
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -174203,7 +174316,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 26,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 26
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -174486,6 +174621,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 21,
+                "field": "type",
+                "scanReviewedPrintings": 21,
+                "sources": {
+                  "scan-reviewed-matching-original": 21
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -174572,7 +174729,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 21,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 21
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -174850,6 +175029,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 49,
+                "field": "type",
+                "scanReviewedPrintings": 49,
+                "sources": {
+                  "scan-reviewed-matching-original": 49
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -174922,7 +175123,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 49,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 49
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -175186,6 +175409,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 3,
+                "field": "type",
+                "scanReviewedPrintings": 3,
+                "sources": {
+                  "scan-reviewed-matching-original": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -175258,7 +175503,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 3,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -175476,11 +175743,33 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 3,
+                "field": "type",
+                "scanReviewedPrintings": 3,
+                "sources": {
+                  "scan-reviewed-matching-original": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
               "status": "partial",
-              "reason": "All 3 original type lines reviewed; 0 bodies scan-reviewed and 3 provider-original. Public resolvers reproduce the frozen calibration inputs. Unreviewed wording fields and final reference-quality closeout remain open.",
+              "reason": "All 3 physical names,type lines,mana sentences and empty flavor panels match the frozen Original inputs and both public resolvers. Source-transcription readiness is recorded separately;artist/legal and remaining reference/component closeout remain open.",
               "rendererHash": "1c110f895fb0aec89509f1519a5c20362f99cab4f67946c852c363bdf71b3c6a",
               "guards": {
                 "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json": "b6f1b9eb9e91e1b7d6b3a9269adcab3be429b7a850c8ab72734feab56a94e861",
@@ -175490,7 +175779,10 @@
                 "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
                 "games/magic/src/printing/artist.ts": "45d083bd006df75b775165ba12944394ab2980a12cb8ac0f9b936b067dd43d56"
               },
-              "evidence": ["games/magic/fixtures/accuracy/early-reprint-wording.json"]
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-reprint-wording.json",
+                "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json"
+              ]
             },
             "artist": {
               "status": "partial",
@@ -175559,6 +175851,28 @@
                 "basicWordNative": "fb7fbb68e99ce25e77d2c8a4d7b98769079a5f4ff45bcb703fe5d8ca5a872980",
                 "basicSymbolSource": "36be60f78b232e5311f4be839c3fc44e016b6eacdbb6a745260b0a8ed612ce7e",
                 "basicSymbolNative": "f0fdaebde234fa6f6d3047feaff49340577f293eff6c727c249509214c6e486b"
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 3,
+                "field": "rules",
+                "scanReviewedPrintings": 3,
+                "sources": {
+                  "scan-reviewed-matching-original": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Names,type and complete rules boxes were visually read on every basic-land scan. Original mana sentences and empty flavor match both public APIs and native inputs. Glyph shape/color and layout remain separate."
               }
             },
             "specialComponents": {
@@ -175828,6 +176142,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 31,
+                "field": "type",
+                "scanReviewedPrintings": 31,
+                "sources": {
+                  "scan-reviewed-matching-original": 31
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -175914,7 +176250,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 31,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 31
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -176202,6 +176560,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 27,
+                "field": "type",
+                "scanReviewedPrintings": 27,
+                "sources": {
+                  "scan-reviewed-matching-original": 27
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -176274,7 +176654,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 27,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 27
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -176516,11 +176918,33 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 3,
+                "field": "type",
+                "scanReviewedPrintings": 3,
+                "sources": {
+                  "scan-reviewed-matching-original": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
               "status": "partial",
-              "reason": "All 3 original type lines reviewed; 0 bodies scan-reviewed and 3 provider-original. Public resolvers reproduce the frozen calibration inputs. Unreviewed wording fields and final reference-quality closeout remain open.",
+              "reason": "All 3 physical names,type lines,mana sentences and empty flavor panels match the frozen Original inputs and both public resolvers. Source-transcription readiness is recorded separately;artist/legal and remaining reference/component closeout remain open.",
               "rendererHash": "1c110f895fb0aec89509f1519a5c20362f99cab4f67946c852c363bdf71b3c6a",
               "guards": {
                 "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json": "b6f1b9eb9e91e1b7d6b3a9269adcab3be429b7a850c8ab72734feab56a94e861",
@@ -176530,7 +176954,10 @@
                 "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
                 "games/magic/src/printing/artist.ts": "45d083bd006df75b775165ba12944394ab2980a12cb8ac0f9b936b067dd43d56"
               },
-              "evidence": ["games/magic/fixtures/accuracy/early-reprint-wording.json"]
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-reprint-wording.json",
+                "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json"
+              ]
             },
             "artist": {
               "status": "partial",
@@ -176599,6 +177026,28 @@
                 "basicWordNative": "fb7fbb68e99ce25e77d2c8a4d7b98769079a5f4ff45bcb703fe5d8ca5a872980",
                 "basicSymbolSource": "36be60f78b232e5311f4be839c3fc44e016b6eacdbb6a745260b0a8ed612ce7e",
                 "basicSymbolNative": "f0fdaebde234fa6f6d3047feaff49340577f293eff6c727c249509214c6e486b"
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 3,
+                "field": "rules",
+                "scanReviewedPrintings": 3,
+                "sources": {
+                  "scan-reviewed-matching-original": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Names,type and complete rules boxes were visually read on every basic-land scan. Original mana sentences and empty flavor match both public APIs and native inputs. Glyph shape/color and layout remain separate."
               }
             },
             "specialComponents": {
@@ -176868,6 +177317,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 29,
+                "field": "type",
+                "scanReviewedPrintings": 29,
+                "sources": {
+                  "scan-reviewed-matching-original": 29
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -176954,7 +177425,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 29,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 29
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -177240,6 +177733,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 29,
+                "field": "type",
+                "scanReviewedPrintings": 29,
+                "sources": {
+                  "scan-reviewed-matching-original": 29
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -177312,7 +177827,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 29,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 29
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -177556,11 +178093,33 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 3,
+                "field": "type",
+                "scanReviewedPrintings": 3,
+                "sources": {
+                  "scan-reviewed-matching-original": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
               "status": "partial",
-              "reason": "All 3 original type lines reviewed; 0 bodies scan-reviewed and 3 provider-original. Public resolvers reproduce the frozen calibration inputs. Unreviewed wording fields and final reference-quality closeout remain open.",
+              "reason": "All 3 physical names,type lines,mana sentences and empty flavor panels match the frozen Original inputs and both public resolvers. Source-transcription readiness is recorded separately;artist/legal and remaining reference/component closeout remain open.",
               "rendererHash": "1c110f895fb0aec89509f1519a5c20362f99cab4f67946c852c363bdf71b3c6a",
               "guards": {
                 "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json": "b6f1b9eb9e91e1b7d6b3a9269adcab3be429b7a850c8ab72734feab56a94e861",
@@ -177570,7 +178129,10 @@
                 "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
                 "games/magic/src/printing/artist.ts": "45d083bd006df75b775165ba12944394ab2980a12cb8ac0f9b936b067dd43d56"
               },
-              "evidence": ["games/magic/fixtures/accuracy/early-reprint-wording.json"]
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-reprint-wording.json",
+                "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json"
+              ]
             },
             "artist": {
               "status": "partial",
@@ -177639,6 +178201,28 @@
                 "basicWordNative": "fb7fbb68e99ce25e77d2c8a4d7b98769079a5f4ff45bcb703fe5d8ca5a872980",
                 "basicSymbolSource": "36be60f78b232e5311f4be839c3fc44e016b6eacdbb6a745260b0a8ed612ce7e",
                 "basicSymbolNative": "f0fdaebde234fa6f6d3047feaff49340577f293eff6c727c249509214c6e486b"
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 3,
+                "field": "rules",
+                "scanReviewedPrintings": 3,
+                "sources": {
+                  "scan-reviewed-matching-original": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Names,type and complete rules boxes were visually read on every basic-land scan. Original mana sentences and empty flavor match both public APIs and native inputs. Glyph shape/color and layout remain separate."
               }
             },
             "specialComponents": {
@@ -177908,6 +178492,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 22,
+                "field": "type",
+                "scanReviewedPrintings": 22,
+                "sources": {
+                  "scan-reviewed-matching-original": 22
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -177994,7 +178600,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 22,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 22
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -178273,6 +178901,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 36,
+                "field": "type",
+                "scanReviewedPrintings": 36,
+                "sources": {
+                  "scan-reviewed-matching-original": 36
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -178345,7 +178995,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 36,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 36
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -178596,11 +179268,33 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 3,
+                "field": "type",
+                "scanReviewedPrintings": 3,
+                "sources": {
+                  "scan-reviewed-matching-original": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
               "status": "partial",
-              "reason": "All 3 original type lines reviewed; 0 bodies scan-reviewed and 3 provider-original. Public resolvers reproduce the frozen calibration inputs. Unreviewed wording fields and final reference-quality closeout remain open.",
+              "reason": "All 3 physical names,type lines,mana sentences and empty flavor panels match the frozen Original inputs and both public resolvers. Source-transcription readiness is recorded separately;artist/legal and remaining reference/component closeout remain open.",
               "rendererHash": "1c110f895fb0aec89509f1519a5c20362f99cab4f67946c852c363bdf71b3c6a",
               "guards": {
                 "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json": "b6f1b9eb9e91e1b7d6b3a9269adcab3be429b7a850c8ab72734feab56a94e861",
@@ -178610,7 +179304,10 @@
                 "games/magic/src/printing/resolve.ts": "875228ba6cac71cf4d0832209260e0c877b148d93a8d2283b99d1ff95eb3c0dc",
                 "games/magic/src/printing/artist.ts": "45d083bd006df75b775165ba12944394ab2980a12cb8ac0f9b936b067dd43d56"
               },
-              "evidence": ["games/magic/fixtures/accuracy/early-reprint-wording.json"]
+              "evidence": [
+                "games/magic/fixtures/accuracy/early-reprint-wording.json",
+                "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json"
+              ]
             },
             "artist": {
               "status": "partial",
@@ -178679,6 +179376,28 @@
                 "basicWordNative": "fb7fbb68e99ce25e77d2c8a4d7b98769079a5f4ff45bcb703fe5d8ca5a872980",
                 "basicSymbolSource": "36be60f78b232e5311f4be839c3fc44e016b6eacdbb6a745260b0a8ed612ce7e",
                 "basicSymbolNative": "f0fdaebde234fa6f6d3047feaff49340577f293eff6c727c249509214c6e486b"
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 3,
+                "field": "rules",
+                "scanReviewedPrintings": 3,
+                "sources": {
+                  "scan-reviewed-matching-original": 3
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Names,type and complete rules boxes were visually read on every basic-land scan. Original mana sentences and empty flavor match both public APIs and native inputs. Glyph shape/color and layout remain separate."
               }
             },
             "specialComponents": {
@@ -178948,6 +179667,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 16,
+                "field": "type",
+                "scanReviewedPrintings": 16,
+                "sources": {
+                  "scan-reviewed-matching-original": 16
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -179034,7 +179775,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 16,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 16
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -179307,6 +180070,28 @@
                   "evidence": "games/magic/fixtures/accuracy/early-reprint-footer.json",
                   "reason": "Exact source reconstruction; 690 native footer matches and 98 unchanged controls. Existing geometry and typography measurements retain their original measured source."
                 }
+              },
+              "originalInput": {
+                "status": "ready",
+                "coveredPrintings": 42,
+                "field": "type",
+                "scanReviewedPrintings": 42,
+                "sources": {
+                  "scan-reviewed-matching-original": 42
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching."
               }
             },
             "references": {
@@ -179379,7 +180164,29 @@
             "rules": {
               "status": "partial",
               "reason": "Shared Original body size classes, reviewed centering, paragraph corrections and fractional flavor metrics are integrated. Current native scores are recorded; remaining wrapping, source-wording and typography outliers require review.",
-              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"]
+              "evidence": ["games/magic/fixtures/accuracy/4ed/land-normalization-review.json"],
+              "originalInput": {
+                "status": "partial",
+                "coveredPrintings": 42,
+                "field": "rules",
+                "scanReviewedPrintings": 0,
+                "sources": {
+                  "original-public-source": 42
+                },
+                "proof": {
+                  "fourthSourceReadiness": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "guards": {
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz": "f378d22feb02bd8075a67e5f3abe76570e1a46f8da7d164ba83fecbe7f5a2870"
+                },
+                "evidence": [
+                  "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+                  "games/magic/fixtures/accuracy/4ed/annotations-printed-types.json",
+                  "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json",
+                  "games/magic/fixtures/accuracy/4ed/original-source-public-input-review.json.gz"
+                ],
+                "reason": "Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted."
+              }
             },
             "flavor": {
               "status": "partial",
@@ -179462,6 +180269,23 @@
           "actualNativeJoined": 378
         },
         "evidence": "games/magic/fixtures/accuracy/4ed/basic-symbol-adoption.json"
+      },
+      "sourceInputReadiness": {
+        "status": "types-ready-basic-bodies-ready-other-bodies-partial",
+        "inputHash": "590689c941be92148f5f7d4fef8676577f3642c38ec5c1f8c5cbe66bf792ca37",
+        "summary": {
+          "typeReady": 378,
+          "rulesScanReviewed": 15,
+          "rulesProviderOrOtherReview": 363,
+          "eagerExact": 378,
+          "lazyExact": 378,
+          "changedInputs": 0
+        },
+        "evidence": [
+          "games/magic/fixtures/accuracy/4ed/original-source-readiness.json.gz",
+          "games/magic/fixtures/accuracy/4ed/basic-original-source-review.json"
+        ],
+        "scope": "Exact original type inputs are reviewed for all378 cards. Fifteen complete basic-land rules boxes are newly read. Other363 bodies retain provider/correction provenance and API/native parity,but complete transcription remains unapproved. No parent calibration task is certified."
       }
     },
     {

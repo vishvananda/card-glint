@@ -523,3 +523,37 @@ The fit composes each card once and replays only its local symbols. The preview
 checks seven native controls and verifies that changes remain inside
 symbol windows with exact alpha. Keep generated scans and comparison images in
 private cache storage.
+
+## Original input readiness
+
+The source census now records reviewed type inputs for all 378 printings and
+visually read complete rules boxes for all 15 basics. It reuses the existing
+physical type-line annotations. The basic review covers names, the printed
+Land type, the mana sentence and empty flavor. Both public wording APIs
+reproduce the frozen native inputs exactly.
+
+| Original field | Ready | Partial | Unrecorded |
+| -------------- | ----: | ------: | ---------: |
+| Type line      |   378 |       0 |          0 |
+| Rules body     |    15 |     363 |          0 |
+
+The other 363 bodies have printing-specific provider data and reviewed
+corrections where available. Their complete scan transcription is still open.
+Source readiness is separate from font, color, layout and whole-card approval.
+Rendering and the current pixel scores are unchanged.
+
+The report checks the exact printing membership, reviewed scan hashes, public
+API input hashes and current wording-code dependencies. A changed source or
+an unsupported promotion makes the field review stale. The detailed dependency
+list is stored once in the bound receipt.
+
+```sh
+node games/magic/tools/accuracy/fourth-source-readiness.mjs \
+  INPUTS.json NATIVE_PROOF.json PUBLIC_INPUT_REVIEW.json \
+  TYPES.json BODIES.json LEDGER.json NEW_REVIEW.json
+node tests/magic-fourth-source-readiness.mjs
+```
+
+See [the basic scan review](basic-original-source-review.json) and the
+[source census](original-source-readiness.json.gz). Generated scan panels remain
+in private cache storage.
