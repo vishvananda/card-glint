@@ -2,7 +2,10 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { root } from '../games/magic/tools/accuracy/common.mjs';
-import { validateFourthSourceReadiness } from '../games/magic/tools/accuracy/fourth-source-readiness.mjs';
+import {
+  validateFourthSourceReadiness,
+  loadFourthBodyReviews,
+} from '../games/magic/tools/accuracy/fourth-source-readiness.mjs';
 import {
   fourthSourceFiles,
   fourthSourceReadinessProof,
@@ -23,15 +26,21 @@ for (const [key, field] of [
   ['bodies', 'bodies'],
 ])
   data[key] = await read(fourthSourceFiles[field]);
+data.bodies = await loadFourthBodyReviews(data.bodies);
 const result = validateFourthSourceReadiness(data);
 assert.deepEqual(result.summary, {
   typeReady: 378,
-  rulesScanReviewed: 15,
-  rulesProviderOrOtherReview: 363,
+  rulesScanReviewed: 33,
+  rulesProviderOrOtherReview: 345,
   eagerExact: 378,
   lazyExact: 378,
   changedInputs: 0,
 });
+const same = data.bodies.cards.find((r) => r.name === 'Armageddon');
+assert.equal(
+  same.rulesText,
+  data.publicInputs.rows.find((r) => r.id === same.id).providerOracle.rulesText,
+);
 const cache = new Map();
 let ready = 0,
   partial = 0,
@@ -42,11 +51,18 @@ for (const group of set.groups) {
   assert(await fourthSourceInputCurrent(type, group, 'headings', set, cache));
   assert(await fourthSourceInputCurrent(rules, group, 'rules', set, cache));
   typeReady += type.coveredPrintings;
-  if (rules.status === 'ready') ready += rules.coveredPrintings;
-  else partial += rules.coveredPrintings;
+  ready += rules.readyPrintings;
+  partial += rules.partialPrintings;
   const bad = structuredClone(rules);
   bad.coveredPrintings++;
   assert.equal(await fourthSourceInputCurrent(bad, group, 'rules', set, cache), false);
+  const incorrectPartition = structuredClone(rules);
+  incorrectPartition.readyPrintings++;
+  incorrectPartition.partialPrintings--;
+  assert.equal(
+    await fourthSourceInputCurrent(incorrectPartition, group, 'rules', set, cache),
+    false,
+  );
   if (rules.status === 'partial') {
     const promoted = structuredClone(rules);
     promoted.status = 'ready';
@@ -58,9 +74,23 @@ for (const group of set.groups) {
   }
 }
 assert.equal(typeReady, 378);
-assert.equal(ready, 15);
-assert.equal(partial, 363);
+assert.equal(ready, 33);
+assert.equal(partial, 345);
+const { calibrationReport } = await import('../games/magic/tools/accuracy/calibration-report.mjs');
+const [report] = await calibrationReport({ ...ledger, sets: [set] });
+assert.deepEqual(report.originalRulesInputs, { ready: 33, partial: 345, stale: 0, unrecorded: 0 });
+assert.deepEqual(report.originalTypeInputs, { ready: 378, partial: 0, stale: 0, unrecorded: 0 });
+
 for (const mutate of [
+  (d) => {
+    const r = d.bodies.cards.find((r) => r.name === 'Wall of Ice');
+    r.flavorParagraphs[0] += String.fromCharCode(10) + r.flavorParagraphs.splice(1, 1)[0];
+  },
+  (d) => {
+    const r = d.bodies.cards.find((r) => r.name === 'Wall of Brambles');
+    r.flavorText = r.flavorText.replace('Aiken', 'Wrong name');
+  },
+
   (d) => {
     d.bodies.cards[0].referenceHash = '0'.repeat(64);
   },
@@ -71,7 +101,7 @@ for (const mutate of [
     ).providerOracle.rulesText;
   },
   (d) => {
-    d.bodies.cards.pop();
+    d.bodies.cards.shift();
   },
   (d) => {
     d.bodies.cards[0].typeLine = 'Basic Land — Plains';
@@ -129,5 +159,35 @@ assert(
   ),
 );
 console.log(
-  'Fourth Original readiness:378 reviewed type inputs,15 scan-read basic bodies,363 explicit partial bodies;foreign scans,Oracle substitution,missing/duplicate members,changed source and unjustified promotion reject. Parent calibrations remain open.',
+  'Fourth Original readiness:378 reviewed type inputs,33 scan-read bodies,345 explicit partial bodies;foreign scans,Oracle substitution,missing/duplicate members,changed source and unjustified promotion reject. Parent calibrations remain open.',
 );
+
+// Exact reporting history preserves old assertions without accepting foreign code.
+const { preFourthSourceReport } = await import(
+  '../games/magic/tools/accuracy/fourth-source-report-ancestry.mjs'
+);
+const reportFile = 'games/magic/tools/accuracy/calibration-report.mjs';
+const reportBytes = await fs.readFile(root + '/' + reportFile);
+const before = gunzipSync(
+  await fs.readFile(root + '/games/magic/fixtures/accuracy/4ed/pre-source-readiness-report.mjs.gz'),
+);
+assert.deepEqual(await preFourthSourceReport(reportFile, reportBytes), before);
+assert.deepEqual(await preFourthSourceReport(reportFile, before), before);
+const foreignReport = Buffer.concat([reportBytes, Buffer.from('\n// unreviewed code\n')]);
+assert.deepEqual(await preFourthSourceReport(reportFile, foreignReport), foreignReport);
+assert.deepEqual(await preFourthSourceReport('other-file.mjs', reportBytes), reportBytes);
+
+const index = await read(fourthSourceFiles.bodies);
+for (const mutate of [
+  (v) => v.reviews.push(v.reviews[0]),
+  (v) => {
+    v.reviews[0].sha256 = '0'.repeat(64);
+  },
+  (v) => {
+    v.reviews[0].file = 'games/magic/fixtures/accuracy/4ed/../foreign.json';
+  },
+]) {
+  const bad = structuredClone(index);
+  mutate(bad);
+  await assert.rejects(() => loadFourthBodyReviews(bad));
+}

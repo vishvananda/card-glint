@@ -107,7 +107,10 @@ function originalInputs(set, task) {
   return set.groups.reduce(
     (counts, group) => {
       const input = group.tasks?.[task]?.originalInput;
-      if (input) counts[input.status] = (counts[input.status] ?? 0) + input.coveredPrintings;
+      if (input?.proof?.fourthSourceReadiness && ['ready', 'partial'].includes(input.status)) {
+        counts.ready += input.readyPrintings;
+        counts.partial += input.partialPrintings;
+      } else if (input) counts[input.status] = (counts[input.status] ?? 0) + input.coveredPrintings;
       counts.unrecorded += group.printings - (input?.coveredPrintings ?? 0);
       return counts;
     },

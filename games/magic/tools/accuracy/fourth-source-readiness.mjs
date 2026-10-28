@@ -4,8 +4,48 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
 import { PNG } from 'pngjs';
-import { hash, objectFile, writeJson } from './common.mjs';
+import { hash, objectFile, writeJson, root } from './common.mjs';
 import { reviewGroupMembership } from './calibration-group-membership.mjs';
+
+/** Each review is immutable and content-addressed; new batches extend the index. */
+export async function loadFourthBodyReviews(index) {
+  assert.equal(index.schema, 1);
+  assert.equal(index.set, '4ed');
+  assert.equal(index.status, 'reviewed-original-body-sources');
+  assert(index.reviews.length > 0);
+  assert.equal(new Set(index.reviews.map((r) => r.file)).size, index.reviews.length);
+  const cards = [],
+    reviewGuards = {};
+  let inputHash;
+  for (const ref of index.reviews) {
+    assert(
+      ref.file.startsWith('games/magic/fixtures/accuracy/4ed/') &&
+        !ref.file.split('/').includes('..'),
+    );
+    const bytes = await fs.readFile(root + '/' + ref.file);
+    assert.equal(hash(bytes), ref.sha256, 'Changed body review: ' + ref.file);
+    const review = JSON.parse(bytes);
+    assert(
+      ['scan-read-matching-original-basic-fields', 'scan-read-matching-original-fields'].includes(
+        review.status,
+      ),
+    );
+    assert.equal(review.set, '4ed');
+    if (inputHash === undefined) inputHash = review.inputHash;
+    assert.equal(review.inputHash, inputHash);
+    cards.push(...review.cards);
+    reviewGuards[ref.file] = ref.sha256;
+  }
+  assert.equal(new Set(cards.map((r) => r.id)).size, cards.length, 'Duplicate body review');
+  return {
+    schema: 1,
+    set: '4ed',
+    status: 'scan-read-matching-original-fields',
+    inputHash,
+    cards,
+    reviewGuards,
+  };
+}
 
 export function validateFourthSourceReadiness({ input, native, publicInputs, types, bodies, set }) {
   const entries = input.entries.filter((e) => e.card.set === '4ed');
@@ -33,14 +73,22 @@ export function validateFourthSourceReadiness({ input, native, publicInputs, typ
   assert.equal(new Set(publicInputs.rows.map((r) => r.id)).size, 378);
   assert.equal(types.status, 'scan-reviewed-original-wording');
   assert.deepEqual(Object.keys(types.cards).sort(), entries.map((e) => e.id).sort());
-  assert.equal(bodies.status, 'scan-read-matching-original-basic-fields');
+  assert.equal(bodies.status, 'scan-read-matching-original-fields');
   assert.equal(bodies.inputHash, publicInputs.inputHash);
   const basics = entries.filter(
     (e) => /\bBasic\b/.test(e.card.type_line) && /\bLand\b/.test(e.card.type_line),
   );
   assert.equal(basics.length, 15);
-  assert.equal(bodies.cards.length, 15);
-  assert.deepEqual(bodies.cards.map((r) => r.id).sort(), basics.map((e) => e.id).sort());
+  assert(bodies.cards.length >= basics.length && bodies.cards.length <= entries.length);
+  assert.equal(new Set(bodies.cards.map((r) => r.id)).size, bodies.cards.length);
+  assert(
+    bodies.cards.every((r) => entries.some((e) => e.id === r.id)),
+    'Foreign body review',
+  );
+  assert(
+    basics.every((e) => bodies.cards.some((r) => r.id === e.id)),
+    'Missing basic-land review',
+  );
   const rows = [];
   for (const e of entries) {
     const api = publicInputs.rows.find((r) => r.id === e.id),
@@ -73,14 +121,15 @@ export function validateFourthSourceReadiness({ input, native, publicInputs, typ
         e.face.rulesText,
         'Scan transcription does not match Original rules',
       );
-      assert.notEqual(
-        body.rulesText,
-        api.providerOracle.rulesText,
-        'Oracle was used for Original review',
+      const flavor = body.flavorParagraphs ?? (body.flavorText === '' ? [] : [body.flavorText]);
+      assert.equal(body.flavorText, flavor.join('\n'));
+      assert.deepEqual(
+        flavor,
+        e.face.rulesParagraphs
+          .filter((p) => p.role === 'flavor')
+          .map((p) => p.runs.map((r) => r.text).join('')),
+        'Reviewed flavor or logical paragraph changed',
       );
-      assert.equal(body.flavorText, '');
-      assert.equal(api.providerOriginal.flavorText, '');
-      assert(!e.face.rulesParagraphs.some((p) => p.role === 'flavor'), 'Unreviewed flavor present');
       assert.equal(body.quality.lang, e.card.lang);
       assert.equal(body.quality.lang, 'en');
       assert.equal(body.quality.nonfoil, e.card.nonfoil);
@@ -125,8 +174,8 @@ export function validateFourthSourceReadiness({ input, native, publicInputs, typ
   return {
     summary: {
       typeReady: 378,
-      rulesScanReviewed: 15,
-      rulesProviderOrOtherReview: 363,
+      rulesScanReviewed: bodies.cards.length,
+      rulesProviderOrOtherReview: entries.length - bodies.cards.length,
       eagerExact: 378,
       lazyExact: 378,
       changedInputs: 0,
@@ -147,7 +196,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       return f.endsWith('.gz') ? gunzipSync(b) : b;
     }),
   );
-  const [input, native, publicInputs, types, bodies, ledger] = raw.map((b) => JSON.parse(b));
+  const [input, native, publicInputs, types, bodyIndex, ledger] = raw.map((b) => JSON.parse(b));
+  const bodies = await loadFourthBodyReviews(bodyIndex);
   assert.equal(hash(raw[0]), publicInputs.inputHash);
   const set = ledger.sets.find((s) => s.set === '4ed');
   const result = validateFourthSourceReadiness({ input, native, publicInputs, types, bodies, set });
@@ -164,7 +214,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     set: '4ed',
     status: 'reviewed-fourth-original-input-coverage',
     scope:
-      'Source readiness only. Reuses378 prior physical type-line reviews and newly reads15 complete basic-land rules boxes. Both public wording APIs reproduce every frozen Original input. No remaining363 body transcription,geometry,font,color,artist/legal or full-set approval is inferred.',
+      'Source readiness only. Reuses378 physical type-line reviews and explicitly indexed complete body reviews. Both public wording APIs reproduce every frozen Original input. Unreviewed bodies,geometry,font,color,artist/legal and full-set approval remain independent.',
     rendererHash: native.afterRenderer,
     inputHash: publicInputs.inputHash,
     inventoryIdentity: set.inventory.sourceIdentity,
@@ -172,6 +222,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       ['inputs', 'native', 'publicInputs', 'types', 'bodies'].map((k, i) => [k, hash(raw[i])]),
     ),
     sourceGuards: publicInputs.methodGuards,
+    bodyReviewGuards: bodies.reviewGuards,
     toolHash: hash(await fs.readFile(new URL(import.meta.url))),
     ...result,
   });

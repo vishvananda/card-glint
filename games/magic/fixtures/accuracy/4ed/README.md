@@ -527,7 +527,8 @@ private cache storage.
 ## Original input readiness
 
 The source census now records reviewed type inputs for all 378 printings and
-visually read complete rules boxes for all 15 basics. It reuses the existing
+complete rules-box reviews for 33 printings: 15 basics, 11 short-text cards
+and seven longer or flavor-text cases. It reuses the existing
 physical type-line annotations. The basic review covers names, the printed
 Land type, the mana sentence and empty flavor. Both public wording APIs
 reproduce the frozen native inputs exactly.
@@ -535,9 +536,9 @@ reproduce the frozen native inputs exactly.
 | Original field | Ready | Partial | Unrecorded |
 | -------------- | ----: | ------: | ---------: |
 | Type line      |   378 |       0 |          0 |
-| Rules body     |    15 |     363 |          0 |
+| Rules body     |    33 |     345 |          0 |
 
-The other 363 bodies have printing-specific provider data and reviewed
+The other 345 bodies have printing-specific provider data and reviewed
 corrections where available. Their complete scan transcription is still open.
 Source readiness is separate from font, color, layout and whole-card approval.
 Rendering and the current pixel scores are unchanged.
@@ -550,10 +551,20 @@ list is stored once in the bound receipt.
 ```sh
 node games/magic/tools/accuracy/fourth-source-readiness.mjs \
   INPUTS.json NATIVE_PROOF.json PUBLIC_INPUT_REVIEW.json \
-  TYPES.json BODIES.json LEDGER.json NEW_REVIEW.json
+  TYPES.json BODY_REVIEW_INDEX.json LEDGER.json NEW_REVIEW.json
 node tests/magic-fourth-source-readiness.mjs
 ```
 
 See [the basic scan review](basic-original-source-review.json) and the
-[source census](original-source-readiness.json.gz). Generated scan panels remain
+[extended source census](original-source-readiness-r2.json.gz). Generated scan panels remain
 in private cache storage.
+
+The extension preserves the first census and indexes immutable review batches.
+It counts reviewed cards individually inside partially reviewed groups. Equal
+Original and Oracle wording is valid when the printing-specific source and scan
+agree. Flavor words, poem lines and attributions are checked as logical paragraphs.
+
+The [review index](original-body-source-index.json) binds each immutable batch.
+The report keeps historical calibration assertions valid through an exact,
+hash-checked reporting-source projection. Unknown reporting edits are not
+projected, and this reporting history never approves a renderer or a fit.

@@ -1,3 +1,4 @@
+import { preFourthSourceReport } from './fourth-source-report-ancestry.mjs';
 // Exact source projection for a measured placement change, never whole-set approval.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -105,6 +106,7 @@ export function fourthBasicSymbolDelta() {
   })());
 }
 export async function preFourthBasicSymbolSource(file, bytes) {
+  bytes = await preFourthSourceReport(file, bytes);
   const r = (await fourthBasicSymbolDelta()).files[file];
   return r && hash(bytes) === r.after ? Buffer.from(r.beforeSource) : bytes;
 }

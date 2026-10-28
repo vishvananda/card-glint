@@ -3,7 +3,10 @@ import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { isDeepStrictEqual } from 'node:util';
 import { root, hash } from './common.mjs';
-import { validateFourthSourceReadiness } from './fourth-source-readiness.mjs';
+import {
+  validateFourthSourceReadiness,
+  loadFourthBodyReviews,
+} from './fourth-source-readiness.mjs';
 
 const base = 'games/magic/fixtures/accuracy/4ed/';
 export const fourthSourceFiles = {
@@ -11,9 +14,9 @@ export const fourthSourceFiles = {
   native: base + 'basic-symbol-native-review.json.gz',
   publicInputs: base + 'original-source-public-input-review.json.gz',
   types: base + 'annotations-printed-types.json',
-  bodies: base + 'basic-original-source-review.json',
-  receipt: base + 'original-source-readiness.json.gz',
-  producer: base + 'original-source-readiness-tool.mjs.gz',
+  bodies: base + 'original-body-source-index.json',
+  receipt: base + 'original-source-readiness-r2.json.gz',
+  producer: base + 'original-source-readiness-r2-tool.mjs.gz',
   validator: 'games/magic/tools/accuracy/fourth-source-readiness.mjs',
 };
 const decode = (file, raw) => (file.endsWith('.gz') ? gunzipSync(raw) : raw);
@@ -37,7 +40,7 @@ export async function fourthSourceReadinessProof(set) {
     native = docs.native,
     publicInputs = docs.publicInputs,
     types = docs.types,
-    bodies = docs.bodies;
+    bodies = await loadFourthBodyReviews(docs.bodies);
   assert.equal(p.inputHash, hash(decode(fourthSourceFiles.input, bytes.input)));
   for (const key of ['native', 'publicInputs', 'types', 'bodies'])
     assert.equal(p.sources[key], hash(decode(fourthSourceFiles[key], bytes[key])));
@@ -47,6 +50,7 @@ export async function fourthSourceReadinessProof(set) {
   assert.equal(p.rendererHash, native.afterRenderer);
   assert.equal(p.inventoryIdentity, set.inventory.sourceIdentity);
   assert.deepEqual(p.sourceGuards, publicInputs.methodGuards);
+  assert.deepEqual(p.bodyReviewGuards, bodies.reviewGuards);
   for (const [file, expected] of Object.entries(p.sourceGuards))
     assert.equal(
       hash(await fs.readFile(root + '/' + file)),
@@ -81,6 +85,8 @@ export function fourthSourceInputDescriptor(review, group, field) {
   return {
     status: reviewed.length === group.printings ? 'ready' : 'partial',
     coveredPrintings: group.printings,
+    readyPrintings: reviewed.length,
+    partialPrintings: group.printings - reviewed.length,
     field,
     scanReviewedPrintings: reviewed.length,
     sources:
@@ -99,7 +105,7 @@ export function fourthSourceInputDescriptor(review, group, field) {
       field === 'type'
         ? 'Every physical type-line review matches both public Original wording APIs and the exact native input. Type wording readiness does not approve name/type geometry or font matching.'
         : reviewed.length === group.printings
-          ? 'Names,type and complete rules boxes were visually read on every basic-land scan. Original mana sentences and empty flavor match both public APIs and native inputs. Glyph shape/color and layout remain separate.'
+          ? 'Names,type and complete rules boxes were visually read on every covered scan. Printing-specific rules and flavor match both public APIs and native inputs. Glyph shape/color and layout remain separate.'
           : 'Both public APIs reproduce every Original body from printing-specific providers and exact reviewed corrections. Complete scan transcription is still pending for this group;Oracle text is not substituted.',
   };
 }
@@ -121,6 +127,8 @@ export async function fourthSourceInputCurrent(item, group, task, set, checked =
     const keys = [
       'status',
       'coveredPrintings',
+      'readyPrintings',
+      'partialPrintings',
       'field',
       'scanReviewedPrintings',
       'sources',
