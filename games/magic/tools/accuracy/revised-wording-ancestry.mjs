@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preRevisedSemanticSource } from './revised-semantic-ancestry.mjs';
 import { matrixHeadingDelta, preMatrixHeadingSource } from './matrix-heading-ancestry.mjs';
 import assert from 'node:assert/strict';
@@ -153,7 +154,7 @@ async function projectedWordingHash(directory, project) {
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await project(path.relative(root, f), await readFile(f))),
         ]),

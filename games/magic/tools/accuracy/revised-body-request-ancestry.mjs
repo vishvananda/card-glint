@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preRevisedFooterSource } from './revised-footer-ancestry.mjs';
 // Exact metadata-only closure of the Revised fractional layout.
 // The native census proves that this does not create a new rendered revision.
@@ -84,7 +85,7 @@ export async function revisedRequestHistoricalHash(directory = path.join(root, '
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preRevisedRequestSource(path.relative(root, f), await readFile(f))),
         ]),

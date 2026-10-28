@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {
   oldFrameSourceDelta,
+  oldFrameAuditToolsDelta,
   preOldFrameSource,
   oldFrameHistoricalSourceFiles,
 } from '../games/magic/tools/accuracy/old-frame-source-ancestry.mjs';
@@ -39,3 +40,11 @@ assert.equal(delta.nativeProof.count, 65);
 console.log(
   'Exact source-family receipt reconstructs the parent renderer, verifies 65 unchanged native controls and refuses foreign source bytes.',
 );
+
+const routing = await oldFrameAuditToolsDelta();
+for (const [file, e] of Object.entries(routing.files)) {
+  const bytes = await fs.readFile(path.join(root, file));
+  assert.equal(hash(await preOldFrameSource(file, bytes)), e.before);
+  const foreign = Buffer.concat([bytes, Buffer.from('\n// foreign edit\n')]);
+  assert.equal(await preOldFrameSource(file, foreign), foreign);
+}

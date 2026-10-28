@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preRevisedHeadingSource } from './revised-heading-ancestry.mjs';
 // Exact source history for the Revised mana geometry and palette.
 // Historical projection permits reuse; it does not certify current components.
@@ -75,7 +76,7 @@ export async function revisedManaFitHistoricalHash(directory = path.join(root, '
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preRevisedManaFitSource(path.relative(root, f), await readFile(f))),
         ]),

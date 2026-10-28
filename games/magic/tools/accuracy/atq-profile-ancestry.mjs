@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import {
   preRevisedWordingSource,
   revisedWordingRuntimeCompatible,
@@ -37,7 +38,7 @@ export async function preAtqProfileSource(file, bytes) {
 export async function atqHistoricalSourceFiles(files) {
   const p = await atqProfileDelta(),
     kept = [];
-  for (const file of files) {
+  for (const file of await oldFrameHistoricalSourceFiles(files)) {
     const key = file.startsWith('games/') ? file : path.relative(root, file);
     const e = p.files[key];
     if (e?.beforeSource === null && hash(await readFile(path.join(root, key))) === e.after)

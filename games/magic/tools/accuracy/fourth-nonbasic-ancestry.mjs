@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preFourthNonlandSource } from './fourth-nonland-ancestry.mjs';
 // Known Fourth nonbasic changes project to their exact prior source; unknown edits remain visible.
 import assert from 'node:assert/strict';
@@ -73,7 +74,7 @@ export async function fourthNonbasicHistoricalHash(directory = path.join(root, '
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preFourthNonbasicSource(path.relative(root, f), await fs.readFile(f))),
         ]),

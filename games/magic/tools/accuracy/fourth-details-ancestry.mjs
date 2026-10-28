@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { fourthFlavorApproval } from './fourth-flavor-ancestry.mjs';
 import { preIceDefaultsSource } from './ice-defaults-ancestry.mjs';
 // Exact semantic-detail source/native evidence; historical receipts remain immutable.
@@ -86,7 +87,7 @@ export async function fourthDetailsHistoricalHash(directory = path.join(root, 'g
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preFourthDetailsSource(path.relative(root, f), await fs.readFile(f))),
         ]),

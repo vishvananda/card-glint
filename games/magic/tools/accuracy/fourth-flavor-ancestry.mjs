@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preFourthBasicWordSource } from './fourth-basic-word-ancestry.mjs';
 // Exact native/source ancestry. A regional fit never marks a whole set complete.
 import assert from 'node:assert/strict';
@@ -82,7 +83,7 @@ export async function fourthFlavorHistoricalHash(directory = path.join(root, 'ga
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(
             await preFourthFlavorSource(

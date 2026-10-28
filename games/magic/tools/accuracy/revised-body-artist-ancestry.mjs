@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preRevisedRequestSource } from './revised-body-request-ancestry.mjs';
 // Exact history for the shared Revised Original fit and six physical ARN credits.
 // Projection authenticates historical evidence; it never approves a changed fit.
@@ -199,7 +200,7 @@ export async function revisedBodyArtistHistoricalHash(
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preRevisedBodyArtistSource(path.relative(root, f), await readFile(f))),
         ]),

@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preRevisedManaFitSource } from './revised-mana-fit-ancestry.mjs';
 // Exact source history for the Revised black-symbol paper sampler.
 // Historical projection permits reuse; it does not certify current components.
@@ -73,7 +74,7 @@ export async function revisedBlackPaperHistoricalHash(
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preRevisedBlackPaperSource(path.relative(root, f), await readFile(f))),
         ]),

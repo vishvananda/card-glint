@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preFourthBasicSymbolSource } from './fourth-basic-symbol-ancestry.mjs';
 // Exact data projection preserves historical receipts, never complete-set approval.
 import assert from 'node:assert/strict';
@@ -116,7 +117,7 @@ export async function fourthBasicWordHistoricalHash(
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preFourthBasicWordSource(path.relative(root, f), await fs.readFile(f))),
         ]),

@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preFourthNonbasicSource } from './fourth-nonbasic-ancestry.mjs';
 // Exact data history is separate from any component or complete-set approval.
 import assert from 'node:assert/strict';
@@ -63,7 +64,7 @@ export async function fourthBasicBodyHistoricalHash(
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preFourthBasicBodySource(path.relative(root, f), await fs.readFile(f))),
         ]),

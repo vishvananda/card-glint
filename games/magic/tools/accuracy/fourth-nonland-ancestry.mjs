@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preFourthParagraphSource } from './fourth-paragraph-ancestry.mjs';
 // Strict, exact-source ancestry for the reviewed Fourth nonland size classes.
 import assert from 'node:assert/strict';
@@ -72,7 +73,7 @@ export async function fourthNonlandHistoricalHash(directory = path.join(root, 'g
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preFourthNonlandSource(path.relative(root, f), await fs.readFile(f))),
         ]),

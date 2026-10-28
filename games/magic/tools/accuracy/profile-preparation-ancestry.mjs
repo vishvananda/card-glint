@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preArnProfileSource } from './arn-profile-ancestry.mjs';
 import { m21StyleProfileSource } from './m21-style-ancestry.mjs';
 import { profileBodySource } from './body-profile-ancestry.mjs';
@@ -78,7 +79,9 @@ async function inactive(p, set, readProfile) {
   // Without a set, every full profile must remain on its proven data. Partial
   // profiles such as lea-title do not activate these optional capabilities.
   const files = Object.keys(p.profileDependencies).sort();
-  const expectedCodes = files.map((file) => file.slice(directory.length, -3)).sort();
+  const expectedCodes = (await oldFrameHistoricalSourceFiles(files))
+    .map((file) => file.slice(directory.length, -3))
+    .sort();
   if (JSON.stringify([...active].sort()) !== JSON.stringify(expectedCodes)) return false;
   for (const file of files) {
     const actual = await readProfile(file);

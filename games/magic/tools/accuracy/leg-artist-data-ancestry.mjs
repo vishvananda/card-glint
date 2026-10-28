@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preFourthBasicBodySource } from './fourth-basic-body-ancestry.mjs';
 // Exact inert credit-data projection;this is not typography or set approval.
 import assert from 'node:assert/strict';
@@ -50,7 +51,7 @@ export async function legArtistHistoricalHash(directory = path.join(root, 'games
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preLegArtistDataSource(path.relative(root, f), await fs.readFile(f))),
         ]),

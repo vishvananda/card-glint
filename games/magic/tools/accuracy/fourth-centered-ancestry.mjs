@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { fourthFlavorApproval } from './fourth-flavor-ancestry.mjs';
 import { preFourthDetailsSource, fourthDetailsApproval } from './fourth-details-ancestry.mjs';
 import assert from 'node:assert/strict';
@@ -138,7 +139,7 @@ export async function fourthCenteredHistoricalHash(directory = path.join(root, '
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preFourthCenteredSource(path.relative(root, f), await fs.readFile(f))),
         ]),

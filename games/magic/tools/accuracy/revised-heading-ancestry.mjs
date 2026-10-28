@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preLegArtistDataSource } from './leg-artist-data-ancestry.mjs';
 // Exact source history for the Revised heading font, ink and shared geometry.
 import assert from 'node:assert/strict';
@@ -48,7 +49,7 @@ export async function revisedHeadingHistoricalHash(directory = path.join(root, '
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preRevisedHeadingSource(path.relative(root, f), await readFile(f))),
         ]),

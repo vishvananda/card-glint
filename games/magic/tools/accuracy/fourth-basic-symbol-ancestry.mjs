@@ -1,3 +1,4 @@
+import { preOldFrameSource, oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preFourthSourceReport } from './fourth-source-report-ancestry.mjs';
 // Exact source projection for a measured placement change, never whole-set approval.
 import assert from 'node:assert/strict';
@@ -106,6 +107,7 @@ export function fourthBasicSymbolDelta() {
   })());
 }
 export async function preFourthBasicSymbolSource(file, bytes) {
+  bytes = await preOldFrameSource(file, bytes);
   bytes = await preFourthSourceReport(file, bytes);
   const r = (await fourthBasicSymbolDelta()).files[file];
   return r && hash(bytes) === r.after ? Buffer.from(r.beforeSource) : bytes;
@@ -120,7 +122,7 @@ export async function fourthBasicSymbolHistoricalHash(
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preFourthBasicSymbolSource(path.relative(root, f), await fs.readFile(f))),
         ]),

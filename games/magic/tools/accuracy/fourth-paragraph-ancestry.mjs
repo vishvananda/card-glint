@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preWallWordingSource } from './wall-wording-data.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -64,7 +65,7 @@ export async function fourthParagraphHistoricalHash(
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preFourthParagraphSource(path.relative(root, f), await fs.readFile(f))),
         ]),

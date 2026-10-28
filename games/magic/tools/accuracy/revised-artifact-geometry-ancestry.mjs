@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preRevisedBodyArtistSource } from './revised-body-artist-ancestry.mjs';
 // Exact history for the shared Revised artifact geometry and its color binding.
 import assert from 'node:assert/strict';
@@ -158,7 +159,7 @@ export async function revisedArtifactGeometryHistoricalHash(
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (file) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (file) => [
           path.relative(directory, file),
           hash(
             await preRevisedArtifactGeometrySource(path.relative(root, file), await readFile(file)),

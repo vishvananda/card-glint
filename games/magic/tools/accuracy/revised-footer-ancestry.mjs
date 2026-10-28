@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 // Authenticate exact source history only. This does not certify a whole footer.
 import { preRevisedBlackPaperSource } from './revised-black-paper-ancestry.mjs';
 import assert from 'node:assert/strict';
@@ -62,7 +63,7 @@ export async function revisedFooterHistoricalHash(directory = path.join(root, 'g
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preRevisedFooterSource(path.relative(root, f), await readFile(f))),
         ]),

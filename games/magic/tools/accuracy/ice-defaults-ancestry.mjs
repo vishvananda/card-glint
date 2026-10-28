@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preFourthFlavorSource } from './fourth-flavor-ancestry.mjs';
 // Exact source projection for an inherited Ice Age default, not set validation.
 import assert from 'node:assert/strict';
@@ -51,7 +52,7 @@ export async function iceDefaultsHistoricalHash(directory = path.join(root, 'gam
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preIceDefaultsSource(path.relative(root, f), await fs.readFile(f))),
         ]),
