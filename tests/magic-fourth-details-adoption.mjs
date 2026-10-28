@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from '../games/magic/tools/accuracy/old-frame-source-ancestry.mjs';
 import {
   iceDefaultsHistoricalHash,
   preIceDefaultsSource,
@@ -58,8 +59,16 @@ try {
   const sourceFiles = (
     await fs.readdir('games/magic/src', { recursive: true, withFileTypes: true })
   ).filter((e) => e.isFile() && /\.(ts|mjs|css|json)$/.test(e.name));
+  const retained = new Set(
+    await oldFrameHistoricalSourceFiles(sourceFiles.map((e) => path.join(e.parentPath, e.name))),
+  );
   for (const entry of sourceFiles) {
     const file = path.join(entry.parentPath, entry.name);
+    if (!retained.has(file)) {
+      // Only exact, receipt-bound additions are absent from this historical graph.
+      await fs.rm(path.join(priorDirectory, path.relative('games/magic/src', file)));
+      continue;
+    }
     await fs.writeFile(
       path.join(priorDirectory, path.relative('games/magic/src', file)),
       await preIceDefaultsSource(file, await fs.readFile(file)),

@@ -5,7 +5,12 @@ import path from 'node:path';
 import { openBrowser } from './browser.mjs';
 import { cachedFetch } from './cache.mjs';
 import { hash, root, sourceHash, writeJson } from './common.mjs';
-const [inputFile, poseFile, exportedDirectory, geometryFiles, out] = process.argv.slice(2);
+const [inputFile, poseFile, exportedDirectory, geometryFiles, out, profileFile, materialMode] =
+  process.argv.slice(2);
+assert(materialMode === undefined || ['--material-only', '--pilot'].includes(materialMode));
+const pilot = materialMode === '--pilot';
+const materialOnly = materialMode === '--material-only';
+const toolHash = hash(await fs.readFile(new URL(import.meta.url)));
 assert(out, 'Use INPUTS POSES EXPORTED_DIRECTORY GEOMETRY_FILES_COMMA_SEPARATED NEW_OUTPUT');
 await fs.mkdir(out);
 const ib = await fs.readFile(inputFile),
@@ -38,12 +43,22 @@ for (const c of candidates)
     sources.find((a) => a.url === c.asset.url).sha256,
     c.asset.sourceSha256 ?? c.asset.sha256,
   );
+const profileBytes = profileFile ? await fs.readFile(profileFile) : undefined;
+const candidateProfile = profileBytes ? JSON.parse(profileBytes) : undefined;
+if (candidateProfile) assert.equal(candidateProfile.set, input.set);
 const selected = [];
 for (const key of new Set(exported.rows.map((r) => r.key))) {
   for (const cohort of ['calibration', 'validation', 'development']) {
     const group = exported.rows.filter((r) => r.accepted && r.key === key && r.cohort === cohort);
     if (group.length) selected.push(group[0]);
   }
+}
+if (candidateProfile && !materialOnly && !pilot)
+  selected.splice(0, selected.length, ...exported.rows);
+if (materialOnly) {
+  const seen = new Set();
+  const unique = selected.filter((r) => !seen.has(r.key) && seen.add(r.key));
+  selected.splice(0, selected.length, ...unique);
 }
 const module = 'games/magic/src/calibration/profiles.ts';
 const before = await fs.readFile(path.join(root, module)),
@@ -116,11 +131,17 @@ try {
     }
     profiles[family] = p;
   }
+  if (candidateProfile) profiles.candidate = candidateProfile;
   await writeJson(path.join(out, 'profiles.json'), profiles);
   for (const r of selected) {
-    const e = input.entries.find((e) => e.id === r.id);
+    const originalEntry = input.entries.find((e) => e.id === r.id);
+    const e = materialOnly
+      ? { ...originalEntry, face: { ...originalEntry.face, rulesText: '', rulesParagraphs: [] } }
+      : originalEntry;
     assert.equal(e.face.wordingMode, 'original');
-    for (const c of candidates.filter((c) => c.key === r.key)) {
+    for (const c of candidateProfile
+      ? [{ family: 'candidate' }]
+      : candidates.filter((c) => c.key === r.key)) {
       const profile = profiles[c.family],
         profileHash = hash(JSON.stringify(profile));
       const result = await session.page.evaluate(
@@ -129,19 +150,32 @@ try {
           const { composeCardTexture } = await import(
             '/games/magic/src/presentation/canvas-face.ts'
           );
-          const image = await composeCardTexture(
-            { face: e.face, printingId: e.id, printedImage: null },
-            'inspect',
-            new AbortController().signal,
+          const { canvasAssetUrls } = await import(
+            '/games/magic/src/presentation/canvas-assets.ts'
           );
+          const { loadAccuracyImages } = await import('/games/magic/tools/accuracy/abu-assets.mjs');
+          const signal = new AbortController().signal;
+          const lease = await loadAccuracyImages(
+            canvasAssetUrls(e.face),
+            signal,
+            e.face.illustration,
+          );
+          let image;
           try {
+            image = await composeCardTexture(
+              { face: e.face, printingId: e.id, printedImage: null },
+              'inspect',
+              signal,
+              { loadImages: async () => ({ ...lease, dispose() {} }) },
+            );
             return {
               png: image.toDataURL().split(',')[1],
               width: image.width,
               height: image.height,
             };
           } finally {
-            image.width = image.height = 0;
+            if (image) image.width = image.height = 0;
+            lease.dispose();
           }
         },
         { e, profile },
@@ -160,33 +194,49 @@ try {
         width: result.width,
         height: result.height,
         profileHash,
+        accepted: r.accepted,
         inputHash: hash(JSON.stringify(e.face)),
         referenceHash: e.reference.sha256,
         normalizedReferenceHash: r.normalizedHash,
       });
       console.log(input.set, rows.length, c.family, e.name);
     }
-    const scan = await fs.readFile(path.join(exportedDirectory, e.id + '.png'));
-    assert.equal(hash(scan), r.normalizedHash);
-    await fs.writeFile(path.join(out, e.id + '-scan.png'), scan);
+    if (r.accepted) {
+      const scan = await fs.readFile(path.join(exportedDirectory, e.id + '.png'));
+      assert.equal(hash(scan), r.normalizedHash);
+      await fs.writeFile(path.join(out, e.id + '-scan.png'), scan);
+    }
   }
   assert.deepEqual(session.faults, []);
   assert.equal(rendererHash, await sourceHash(path.join(root, 'games/magic/src')));
+  assert.equal(
+    toolHash,
+    hash(await fs.readFile(new URL(import.meta.url))),
+    'Capture tool changed during execution',
+  );
   await writeJson(path.join(out, 'capture.json'), {
     schema: 1,
     complete: true,
     set: input.set,
     source: {
       rendererHash,
+      ...(profileBytes ? { profileHash: hash(profileBytes) } : {}),
+      materialOnly,
+      pilot,
       inputHash: hash(ib),
       posesHash: hash(pb),
       exportedHash: hash(eb),
       geometryHashes: reports.map((r) => r.hash),
-      toolHash: hash(await fs.readFile(new URL(import.meta.url))),
+      toolHash,
       transform: { before: hash(before), after: transformHash },
     },
-    scope:
-      'Native source candidates with identical Fourth typography as an unfitted control, neutral color adjustments, Original wording and frozen scan poses. One printing per material/cohort; small cohorts development-only. No profile installed or set approved.',
+    scope: materialOnly
+      ? 'Native clean material controls with visible body text explicitly empty. These are not full-card accuracy faces.'
+      : candidateProfile && pilot
+        ? 'Native profile pilot on frozen material/name cohorts. Original wording is preserved; no profile installed or set approved.'
+        : candidateProfile
+          ? 'Full-inventory native profile candidate; rejected scan poses do not prevent rendering, but remain excluded from comparison. Original wording is frozen. No profile installed or set approved.'
+          : 'Native source candidates with identical Fourth typography as an unfitted control, neutral color adjustments, Original wording and frozen scan poses. One printing per material/cohort; small cohorts development-only. No profile installed or set approved.',
     rows,
     faults: session.faults,
   });

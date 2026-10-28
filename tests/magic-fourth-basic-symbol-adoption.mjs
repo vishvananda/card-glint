@@ -1,3 +1,7 @@
+import {
+  preOldFrameSource,
+  oldFrameSourceRuntimeCompatible,
+} from '../games/magic/tools/accuracy/old-frame-source-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -12,10 +16,13 @@ import {
   fourthBasicSymbolPaths,
 } from '../games/magic/tools/accuracy/fourth-basic-symbol-source-check.mjs';
 const p = await fourthBasicSymbolDelta();
-assert.equal(await sourceHash(root + '/games/magic/src'), p.afterRenderer);
+assert(
+  (await sourceHash(root + '/games/magic/src')) === p.afterRenderer ||
+    (await oldFrameSourceRuntimeCompatible('games/magic/src', p.afterRenderer)),
+);
 assert.equal(await fourthBasicSymbolHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {
-  const bytes = await fs.readFile(root + '/' + file);
+  const bytes = await preOldFrameSource(file, await fs.readFile(root + '/' + file));
   assert.equal(hash(bytes), r.after);
   assert.equal(hash(await preFourthBasicSymbolSource(file, bytes)), r.before);
   const unknown = Buffer.concat([bytes, Buffer.from('\n// unreviewed\n')]);

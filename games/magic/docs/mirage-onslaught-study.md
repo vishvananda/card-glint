@@ -202,3 +202,80 @@ reference directory, comma-separated geometry reports and a new output directory
 Then run `old-frame-native-source-colors.mjs` with that exported directory,
 the native output and a new JSON filename. Both tools require the local cache;
 native capture rejects every uncached external request.
+
+## Pigment spread and native text trials
+
+Median color alone can match a background's average while losing its contrast.
+Use clean native material controls to fit both average pigment and texture spread.
+The distribution fitter uses six shared parameters: hue, saturation, value gain,
+value exponent and two white-balance gains. It uses the same filtering on source
+and reference pixels. Dark keylines stay out of this fit because black level is a
+separate measurement.
+
+```sh
+node games/magic/tools/accuracy/old-frame-native-source-study.mjs \
+  inputs.json poses.json geometry-inputs geometry.json material-controls \
+  candidate-profile.json --material-only
+python3 games/magic/tools/accuracy/old_frame_color_distribution.py \
+  geometry-inputs material-controls initial-colors.json pigment-proposal.json
+python3 tests/magic_old_frame_color_test.py
+```
+
+The default family is `mse-old` and the default materials are `WUBRGMA`.
+Use `--family seventh-mirage --materials L` for the Mirage-specific land source.
+Do not mix different nonbasic-land paper treatments into one pigment target.
+A fixed clipping limit can reject a proposal even when its average color improves.
+Inspect a native replay after fitting; a numerical proposal does not certify the
+mask, source texture or black level.
+
+The body and heading tools replay the production painters. They first require
+an exact match to the frozen full-card native control. Candidate lettering is
+then painted on a neutral background. The text objective combines symmetric
+edges with filled-ink overlap, so hollow outlines cannot win just by adding edges.
+Heading strips exclude the frame rails. Light lettering is measured separately
+from its dark shadow.
+
+```sh
+node games/magic/tools/accuracy/old-frame-body-study.mjs \
+  inputs.json poses.json geometry-inputs/inputs.json native-capture \
+  candidate-profile.json body-candidates.json body-study.json
+node games/magic/tools/accuracy/old-frame-heading-study.mjs \
+  inputs.json poses.json geometry-inputs/inputs.json native-capture \
+  candidate-profile.json heading-candidates.json heading-study.json
+```
+
+Start a body definition with `{"id":"current"}`, then add candidates with numeric
+`adjustment` deltas. For example:
+
+```json
+{
+  "maximumPerCohort": 3,
+  "candidates": [
+    { "id": "current" },
+    {
+      "id": "spacing-trial",
+      "adjustment": { "leading": 0.04, "rightMargin": -2, "paragraphGap": 0.1 }
+    }
+  ]
+}
+```
+
+Omit `maximumPerCohort` for the full nonland body inventory. The heading tool
+takes a `roles` list, such as `["title", "type", "artist", "stats"]`.
+Its candidates use `delta: { dx, dy, size, width }`, or role-specific deltas.
+Width is a multiplier; the other values use canonical pixels. A centered artist
+credit also needs an explicit `maxWidth`; a left-aligned width limit cannot be
+reused after moving its anchor to the center.
+
+Select shared values using calibration names. Report validation names separately,
+then run the complete inventory. Inspect changed line counts and sizes, especially
+flavor text and dense passages. The full body trials exposed substantial
+regressions on Feral Shadow, Nettletooth Djinn and Sage Aven despite better
+aggregate scores. Those proposals have not been adopted.
+
+The compact measurements and review queue are in
+[`typography-color-study.json`](../fixtures/accuracy/mirage-onslaught/typography-color-study.json).
+Its text scores are offline fitting objectives, not published whole-card scores.
+Artist wording, copyright and collector text still require their own source
+review. For example, Mirage's Crystal Vein prints “Pat Morrissey”; the imported
+artist string says “Pat Lewis.” That difference must not become a geometry fix.

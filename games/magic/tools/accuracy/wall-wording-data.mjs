@@ -1,3 +1,4 @@
+import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import { preFourthCenteredSource } from './fourth-centered-ancestry.mjs';
 // Exact empty-rules reviews; preserve every unrelated printing and caller flavor.
 import assert from 'node:assert/strict';
@@ -260,7 +261,7 @@ export async function wallWordingHistoricalHash(directory = path.join(root, 'gam
   return hash(
     JSON.stringify(
       await Promise.all(
-        files.map(async (f) => [
+        (await oldFrameHistoricalSourceFiles(files)).map(async (f) => [
           path.relative(directory, f),
           hash(await preWallWordingSource(path.relative(root, f), await fs.readFile(f))),
         ]),

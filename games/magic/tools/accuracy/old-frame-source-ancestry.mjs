@@ -44,7 +44,7 @@ export function oldFrameSourceDelta() {
 
 const AUDIT_FILE =
   'games/magic/fixtures/accuracy/mirage-onslaught/source-family-audit-tools.json.gz';
-const AUDIT_HASH = '067da35cc5e37b8ec947c6d323c964454a933ccafa6c1de3c502ae38fe8f79bb';
+const AUDIT_HASH = '38e810a60f431b4cf0b0aecc676d62c2d259bda1bf88489c2edf3779dd64721e';
 let auditChecked;
 export function oldFrameAuditToolsDelta() {
   return (auditChecked ??= (async () => {
@@ -54,9 +54,14 @@ export function oldFrameAuditToolsDelta() {
     assert.equal(p.schema, 1);
     assert.equal(p.kind, 'old-frame-audit-routing');
     assert.equal(p.familyAdapterReceipt, RECEIPT);
-    assert.equal(Object.keys(p.files).length, 21);
+    assert.equal(Object.keys(p.files).length, 23);
     for (const [file, e] of Object.entries(p.files)) {
-      assert(file.startsWith('games/magic/tools/accuracy/') && file.endsWith('ancestry.mjs'));
+      assert(
+        file.startsWith('games/magic/tools/accuracy/') &&
+          (file.endsWith('ancestry.mjs') ||
+            file.endsWith('/set-profile-check.mjs') ||
+            file.endsWith('/wall-wording-data.mjs')),
+      );
       assert.equal(hash(e.beforeSource), e.before);
       assert.match(e.after, /^[a-f0-9]{64}$/);
     }

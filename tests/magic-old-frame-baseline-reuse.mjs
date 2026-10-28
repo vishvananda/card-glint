@@ -59,14 +59,14 @@ try {
     '../games/magic/tools/accuracy/old-frame-set-baseline-score.mjs',
     import.meta.url,
   ).pathname;
-  const run = (pose, out, reuse = false) =>
+  const run = (pose, out, reuse = false, nativeFile = capture.file) =>
     spawnSync(
       process.execPath,
       [
         cli,
         input.file,
         pose,
-        capture.file,
+        nativeFile,
         metric,
         path.join(dir, out),
         ...(reuse ? [path.join(dir, 'baseline.json'), parent.file] : []),
@@ -94,6 +94,17 @@ try {
   const stale = run(parent.file, 'stale.json', true);
   assert.notEqual(stale.status, 0);
   assert.match(stale.stderr, /Metric graph changed/);
+  const renamed = JSON.parse(await fs.readFile(capture.file, 'utf8'));
+  renamed.rows[0].file = 'candidate-one.png';
+  await fs.rename(path.join(dir, 'one.png'), path.join(dir, 'candidate-one.png'));
+  const named = await put('named-capture.json', renamed);
+  check(run(parent.file, 'named-scores.json', false, named.file));
+  assert.deepEqual((await read('named-scores.json')).reuse, { reused: 0, fresh: 2, rejected: 0 });
+  renamed.rows[0].file = '../one.png';
+  const unsafe = await put('unsafe-capture.json', renamed);
+  const invalid = run(parent.file, 'unsafe-scores.json', false, unsafe.file);
+  assert.notEqual(invalid.status, 0);
+  assert.match(invalid.stderr, /Invalid native capture filename/);
   console.log(
     'Frozen baseline reuse preserves unchanged rows, rescores changed poses, excludes rejected poses and rejects stale metric graphs.',
   );

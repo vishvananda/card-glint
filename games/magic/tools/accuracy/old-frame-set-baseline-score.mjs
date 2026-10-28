@@ -87,7 +87,9 @@ for (const e of input.entries) {
   reuse.fresh++;
   const ref = await fs.readFile(objectFile(e.reference));
   assert.equal(hash(ref), e.reference.sha256);
-  const rendered = await fs.readFile(path.join(path.dirname(captureFile), e.id + '.png'));
+  const file = native.file ?? e.id + '.png';
+  assert.match(file, /^[a-z0-9-]+\.png$/i, 'Invalid native capture filename');
+  const rendered = await fs.readFile(path.join(path.dirname(captureFile), file));
   assert.equal(hash(rendered), native.sha256);
   const reviewedType = ['scan-reviewed-field', 'legacy-annotation'].includes(
     e.wordingEvidence.typeSource,
