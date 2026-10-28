@@ -7,8 +7,10 @@ import { hash, objectFile, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { manaGlyphMask, compareManaGlyph, GLYPH_SIZE } from './mana-glyph-metrics.mjs';
 import { median } from './hsb-color.mjs';
-const [inputFile, poseFile, nativeDirectory, ringFile, out] = process.argv.slice(2);
-assert(out, 'Use INPUTS POSES NATIVE_DIRECTORY RING_MEASUREMENTS NEW_OUTPUT');
+const [inputFile, poseFile, nativeDirectory, ringFile, out, mode] = process.argv.slice(2);
+assert(out, 'Use INPUTS POSES NATIVE_DIRECTORY RING_MEASUREMENTS NEW_OUTPUT [--numerals]');
+assert(mode === undefined || mode === '--numerals');
+const symbols = mode === '--numerals' ? ['N'] : ['W', 'U', 'B', 'R', 'G'];
 const files = [inputFile, poseFile, path.join(nativeDirectory, 'capture.json'), ringFile],
   raw = await Promise.all(files.map((f) => fs.readFile(f))),
   [inputs, poses, capture, rings] = raw.map((b) => JSON.parse(b));
@@ -51,7 +53,7 @@ function transformed(ink, c, radius) {
   return out;
 }
 const rows = [];
-for (const r of rings.rows.filter((r) => r.accepted && /^[WUBRG]$/.test(r.symbol))) {
+for (const r of rings.rows.filter((r) => r.accepted && symbols.includes(r.symbol))) {
   const e = inputs.entries.find((e) => e.id === r.id),
     p = poses.rows.find((p) => p.id === r.id),
     native = capture.rows.find((n) => n.id === r.id);
@@ -118,7 +120,7 @@ for (const r of rings.rows.filter((r) => r.accepted && /^[WUBRG]$/.test(r.symbol
 }
 const mean = (a) => a.reduce((s, v) => s + v, 0) / a.length,
   groups = {};
-for (const symbol of ['W', 'U', 'B', 'R', 'G']) {
+for (const symbol of symbols) {
   const rs = rows.filter((r) => r.accepted && r.symbol === symbol),
     cal = rs.filter((r) => r.cohort === 'calibration');
   assert(cal.length >= 3);
@@ -163,7 +165,7 @@ await writeJson(out, {
   status: 'glyph-mask-proposals-need-native-validation',
   set: inputs.set,
   scope:
-    'One shared relative transform per color, selected on calibration names using filled-mask and edge overlap minus a worst-regression penalty. Three relative ink thresholds preserve size and position within independently measured discs. No per-card render adjustment or scan transformation. Binary resizing is a proposal only; native replay is mandatory. Numerals are not fitted here.',
+    'One shared relative transform per color, selected on calibration names using filled-mask and edge overlap minus a worst-regression penalty. Three relative ink thresholds preserve size and position within independently measured discs. No per-card render adjustment or scan transformation. Binary resizing is a proposal only; native replay is mandatory. The optional numeral mode measures a shared numeral transform in generic discs; colored glyphs remain separate.',
   sources: {
     input: hash(raw[0]),
     poses: hash(raw[1]),

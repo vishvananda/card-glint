@@ -1,0 +1,3698 @@
+{
+  "schema": 1,
+  "status": "artifact-source-repair-proposals-not-whole-set-approval",
+  "scope": "ARN and ATQ artifact only. Exact native full-card controls match the current public painter on all 59 frozen inputs. Shared source clipping intersects the aperture with measured colored-source bounds; art geometry is unchanged. HSV/gamma/WB uses independent calibration names and fixed poses. Actual full-card validation checks all printings, including regressions, and byte-identical illustration interiors. No production profile or Lab renderer is changed by this study.",
+  "sets": {
+    "arn": {
+      "status": "native-validated-candidate-not-installed",
+      "printings": 14,
+      "sources": {
+        "inputs.json": "12128415643ff086106a55ab0ccef882be468fa4c1ccf460b8585d6c574b2dbf",
+        "poses.json": "cee5f07486faae19e53f5aa40096af0550b7fd35f9f0264b47c686b6168daf6a",
+        "before-profile.json": "08c8c36899e18ee96fc5cdde4c02d306dcc9b2c4517e3a7b3793937837c4205c",
+        "candidate-profile-v2.json": "53b5eec3665c1144b7d0c292569b3f87672cc6271eb83abd8e42185848e410f9",
+        "before-native/capture.json": "207024f0073dd179c943fa8fb425f64e4b91c7f47ed9f9dfedfcb4ff27088b99",
+        "candidate-native-v2/capture.json": "5080fa11c5fb7515e9954a60d246b45f93efe527da709a8f5fbc794cd330e5df",
+        "clip-only-native/capture.json": "3f18eedc59d85ff79309152973cbdeae94c834587d0906a4fd7e8c02a5a8225f",
+        "exported/inputs.json": "8fbad1603893f4fde9640a8a5b2c5540f6c5f1c1c8ea803b03e087159f653239"
+      },
+      "method": {
+        "tool": "8fb547522406c835dcd2263706dcfba3f76928eb27286b6ca21494d7f8fc3ce4",
+        "color": "b495eba57ebcdb8aa3cca9a3eb4fbcfec81ea913ae36ec58c33f05b70b67d99c",
+        "scope": "Real native full faces and fixed normalized scans. Existing words, typography, art rectangle and all nonartifact profile data are unchanged. Artifact illustration interiors must be byte-identical. Clip-only controls may change only stock-window boundary bands. Color fields use equal clamped filtering; paperClear uses an additional 11px closing to exclude lettering while the original 3px paper diagnostic is retained; every printing and outlier remains reported."
+      },
+      "sourceFringe": {
+        "schema": 1,
+        "status": "source-stock-fringe-measurement",
+        "source": {
+          "image": "57adae1b5031a53f4b1078e7e6d0048e122ca43df419d65cf1b1950e03da7354",
+          "before": "08c8c36899e18ee96fc5cdde4c02d306dcc9b2c4517e3a7b3793937837c4205c",
+          "after": "3dfbb478bfc2e7fddacf503c10662fba97dde3a55e01b33d5f185c5a19d85a96",
+          "tool": "1413a1cf70848d556b1c084cc41976d541f4be5a809768903392e8ad6c974a9e"
+        },
+        "scope": "Opaque near-white pixels connected to the source perimeter; transparent art holes and enclosed light frame paper are excluded. Inverse source mapping and fractional aperture coverage estimate exposed source-stock area in canonical straight side strips. No scan pixels or per-card fit are used.",
+        "values": {
+          "before": {
+            "total": 554.6166716354671,
+            "left": 544.6563754776348,
+            "right": 9.960296157832312
+          },
+          "after": {
+            "total": 2.7236383648204803,
+            "left": 0.0,
+            "right": 2.7236383648204807
+          }
+        }
+      },
+      "cohorts": {
+        "calibration": {
+          "frame": {
+            "names": 9,
+            "before": 2.6408227057525866,
+            "after": 2.4575629546850117,
+            "improved": 7,
+            "unchanged": 0,
+            "worstRegression": 0.8587760925788821
+          },
+          "paper": {
+            "names": 9,
+            "before": 2.3738139301029895,
+            "after": 2.2221190585466113,
+            "improved": 5,
+            "unchanged": 0,
+            "worstRegression": 0.40217514468206694
+          },
+          "paperClear": {
+            "names": 9,
+            "before": 1.9479747573395056,
+            "after": 1.55291007846093,
+            "improved": 8,
+            "unchanged": 0,
+            "worstRegression": 0.12549536260476146
+          }
+        },
+        "validation": {
+          "frame": {
+            "names": 5,
+            "before": 2.926550959517787,
+            "after": 2.2921542771228696,
+            "improved": 3,
+            "unchanged": 0,
+            "worstRegression": 0.5970186809464266
+          },
+          "paper": {
+            "names": 5,
+            "before": 2.183419861133408,
+            "after": 2.0626995156907775,
+            "improved": 3,
+            "unchanged": 0,
+            "worstRegression": 0.2464876592071117
+          },
+          "paperClear": {
+            "names": 5,
+            "before": 1.7648189544384778,
+            "after": 1.3443585338047666,
+            "improved": 5,
+            "unchanged": 0,
+            "worstRegression": 0.0
+          }
+        }
+      },
+      "rows": [
+        {
+          "id": "8fecc5d2-5298-4d47-b085-f160603f220e",
+          "name": "Aladdin's Lamp",
+          "cohort": "calibration",
+          "beforeNative": "f609385085440eebd1d7879cc301b206235390ff303c26b51f68495917eb4d74",
+          "afterNative": "f3fdef447de7b8be9ca6bd6ba8ca8b84635a440fd20d6fd48939bdf6b35b7e46",
+          "referenceHash": "339ad7ed31ac195399396fde7374dc08a729f4e97f3f608ec96657297f87aacf",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.7005306276475345,
+                "medianDeltaE": 1.7466543324218635,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 5.093840703014518
+              },
+              "after": {
+                "pairedDeltaE": 3.13436273659755,
+                "medianDeltaE": 2.968126235451651,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 5.093840703014518
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.3337586468092395,
+                "medianDeltaE": 0.971937441435603,
+                "lumaSpread": 8.079295206673287,
+                "referenceSpread": 6.5538405033249925
+              },
+              "after": {
+                "pairedDeltaE": 1.9714736838088596,
+                "medianDeltaE": 0.027974653210578602,
+                "lumaSpread": 7.470040703333569,
+                "referenceSpread": 6.5538405033249925
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.129183211095969,
+                "medianDeltaE": 1.7088068416392228,
+                "lumaSpread": 4.010759838147515,
+                "referenceSpread": 3.158664019697166
+              },
+              "after": {
+                "pairedDeltaE": 1.5192266068667413,
+                "medianDeltaE": 1.043887902742614,
+                "lumaSpread": 2.9088875772112943,
+                "referenceSpread": 3.158664019697166
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "bb2b74a2-cb74-4b54-b9c6-78c63f14cf5b",
+          "name": "Aladdin's Ring",
+          "cohort": "calibration",
+          "beforeNative": "edcb46b5cd5c3a3693826dc441638b75fb62097054237ae17db84322016097f3",
+          "afterNative": "eb540f32dc790b852977f93b0a5129445c20df21bda1b4b79dd0d48a69c3a24a",
+          "referenceHash": "289f4aa357054d0092fdf4b0fd68f2d9332f43f8b1bae2db03583e18794517c9",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.272037291880779,
+                "medianDeltaE": 2.949446380135928,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 4.9506527285314466
+              },
+              "after": {
+                "pairedDeltaE": 4.130813384459661,
+                "medianDeltaE": 4.142308479293238,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 4.9506527285314466
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.567770278027121,
+                "medianDeltaE": 1.8971935019932014,
+                "lumaSpread": 7.078150121614057,
+                "referenceSpread": 4.793338431191863
+              },
+              "after": {
+                "pairedDeltaE": 1.974760566843835,
+                "medianDeltaE": 1.0200444145666259,
+                "lumaSpread": 6.342525078843575,
+                "referenceSpread": 4.793338431191863
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.8344326413990526,
+                "medianDeltaE": 2.645003794919272,
+                "lumaSpread": 3.924341752860705,
+                "referenceSpread": 3.425786300819056
+              },
+              "after": {
+                "pairedDeltaE": 2.2270131932084745,
+                "medianDeltaE": 2.0487442944699317,
+                "lumaSpread": 2.9533687903036565,
+                "referenceSpread": 3.425786300819056
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "c474cd6b-5610-49eb-ac98-918d900efe8b",
+          "name": "Bottle of Suleiman",
+          "cohort": "calibration",
+          "beforeNative": "54433419c41368296554e574f11d77da17be56668dccf7b2df86674e1f02eee3",
+          "afterNative": "a5ac190a165c9b679aff99c8ba7cc6799cbb7de7f575e0268032742ee4e7df6a",
+          "referenceHash": "cb9c413340a34267c66ac63b64ceba6b694d3d4c45eeb93994c571a1f5ee3d30",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.4759110705208767,
+                "medianDeltaE": 1.2684416191806764,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 5.031986845185155
+              },
+              "after": {
+                "pairedDeltaE": 2.187911945724651,
+                "medianDeltaE": 1.9925240429770237,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 5.031986845185155
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.4474356984574133,
+                "medianDeltaE": 1.811980313216504,
+                "lumaSpread": 6.388688378780671,
+                "referenceSpread": 4.04196369378872
+              },
+              "after": {
+                "pairedDeltaE": 1.8144491122959425,
+                "medianDeltaE": 0.9094496069686396,
+                "lumaSpread": 5.8334469728679395,
+                "referenceSpread": 4.04196369378872
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.592243635987416,
+                "medianDeltaE": 2.2864851229014436,
+                "lumaSpread": 3.868468758246313,
+                "referenceSpread": 3.159319108872083
+              },
+              "after": {
+                "pairedDeltaE": 1.8885505276784724,
+                "medianDeltaE": 1.5645045368346278,
+                "lumaSpread": 2.8565735318288765,
+                "referenceSpread": 3.159319108872083
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "1a364362-e42b-415c-9d95-b6ec7139f5e7",
+          "name": "Brass Man",
+          "cohort": "validation",
+          "beforeNative": "30d658d737c9bf891ea83087f5370e2725ebc30b334cf5b2f5eeb7e557989c4d",
+          "afterNative": "2b43d76e1289e18fc051839507469a20d91e84fee49fe2a2fe6c2d51612402af",
+          "referenceHash": "ccefadf6d5f25df5437e37de50c6c539a41228f69d1fb7deccd0407117676edf",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.065335146460083,
+                "medianDeltaE": 2.4102345504035347,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 5.167929404951499
+              },
+              "after": {
+                "pairedDeltaE": 1.433788076824143,
+                "medianDeltaE": 1.0945551554256723,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 5.167929404951499
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.2287497528754314,
+                "medianDeltaE": 0.7991175062051971,
+                "lumaSpread": 11.12209704371706,
+                "referenceSpread": 12.64802383838144
+              },
+              "after": {
+                "pairedDeltaE": 2.444246593837755,
+                "medianDeltaE": 1.5263257114928643,
+                "lumaSpread": 10.768589968757192,
+                "referenceSpread": 12.64802383838144
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.3756958483570858,
+                "medianDeltaE": 0.6838684507074374,
+                "lumaSpread": 3.9675610713968745,
+                "referenceSpread": 2.7551784927218548
+              },
+              "after": {
+                "pairedDeltaE": 1.1725844694240848,
+                "medianDeltaE": 0.7877265028207068,
+                "lumaSpread": 2.9465218410639538,
+                "referenceSpread": 2.7551784927218548
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "9598b346-a47d-4c4c-9571-156824e86b9c",
+          "name": "City in a Bottle",
+          "cohort": "validation",
+          "beforeNative": "fe528a92a3306785b13443b244d2a8399ae19e56374f10f9620fee202c9737c5",
+          "afterNative": "9056d6fbce5ecb69c7a86d7e1088c42d8dbf41cf0ced61d657d726e8e44958c4",
+          "referenceHash": "8ad4a4d12627367713f25554cbf625b28d530669daea4acf4e2a2f0c74a94a72",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.8395390621070975,
+                "medianDeltaE": 1.9550100555000252,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 5.022403959422361
+              },
+              "after": {
+                "pairedDeltaE": 3.436557743053524,
+                "medianDeltaE": 3.254136016876693,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 5.022403959422361
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.1198089740983357,
+                "medianDeltaE": 1.0141659567390622,
+                "lumaSpread": 7.3976533063561885,
+                "referenceSpread": 6.335664733213564
+              },
+              "after": {
+                "pairedDeltaE": 1.790688421801861,
+                "medianDeltaE": 0.2149418260049372,
+                "lumaSpread": 6.8305753454049984,
+                "referenceSpread": 6.335664733213564
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.0719995116413212,
+                "medianDeltaE": 1.822998813797503,
+                "lumaSpread": 3.8755246874143,
+                "referenceSpread": 3.2405938730231343
+              },
+              "after": {
+                "pairedDeltaE": 1.509782521322649,
+                "medianDeltaE": 1.1500186377204493,
+                "lumaSpread": 2.857889500678956,
+                "referenceSpread": 3.2405938730231343
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "1eb2e494-1414-4d1f-91d2-7cb20acdb128",
+          "name": "Dancing Scimitar",
+          "cohort": "calibration",
+          "beforeNative": "287bd857dcd81df1de97fb5e28d21291c3085ed612f34763f412cf463a9d9cc0",
+          "afterNative": "b8ded686aabea7bf77083ce53219d5701217c5737541aefc13291ff5689c1640",
+          "referenceHash": "18ad0823d6ff71f4af5a00bfef1d3416575221cae19affa8008e3258586dee64",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.597010418303391,
+                "medianDeltaE": 1.11608934687236,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 4.4845129835722535
+              },
+              "after": {
+                "pairedDeltaE": 1.8395544342239774,
+                "medianDeltaE": 1.6687847098343644,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 4.4845129835722535
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.596568474176645,
+                "medianDeltaE": 0.6712339680347621,
+                "lumaSpread": 6.35436297358839,
+                "referenceSpread": 5.276046134312784
+              },
+              "after": {
+                "pairedDeltaE": 1.2997508923879748,
+                "medianDeltaE": 0.4473507721591498,
+                "lumaSpread": 5.730654630484544,
+                "referenceSpread": 5.276046134312784
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.7724661868250096,
+                "medianDeltaE": 1.2915978026934858,
+                "lumaSpread": 3.8596644136289715,
+                "referenceSpread": 3.340153318101724
+              },
+              "after": {
+                "pairedDeltaE": 1.2012202999831627,
+                "medianDeltaE": 0.5447386745713182,
+                "lumaSpread": 2.8903573651843817,
+                "referenceSpread": 3.340153318101724
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "9ae81ec7-2b7d-4301-8114-032be5e6b663",
+          "name": "Ebony Horse",
+          "cohort": "calibration",
+          "beforeNative": "bdc03d3105c30485264016c5ed34cc718b7ad27cfad6ac92f370ea96c52288c0",
+          "afterNative": "6ce4a09a381727642a7c407f77e888b8e58ac1feb7cbb476c740b7eaf640c6b8",
+          "referenceHash": "fc05d819638ace7f3120144d5b65d2e8d531da33fd23837d5a2802fd409fa273",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.41991080447122,
+                "medianDeltaE": 1.187819007529429,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 5.388714389144833
+              },
+              "after": {
+                "pairedDeltaE": 1.4811363087001284,
+                "medianDeltaE": 1.2241462403257974,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 5.388714389144833
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 3.0963565116644434,
+                "medianDeltaE": 2.2979032321900204,
+                "lumaSpread": 7.856095413366404,
+                "referenceSpread": 7.547825878928583
+              },
+              "after": {
+                "pairedDeltaE": 3.4985316563465103,
+                "medianDeltaE": 3.0847973532557913,
+                "lumaSpread": 7.250066936402866,
+                "referenceSpread": 7.547825878928583
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.966352763112588,
+                "medianDeltaE": 1.4569238428854805,
+                "lumaSpread": 4.067635233297007,
+                "referenceSpread": 3.3401324630494944
+              },
+              "after": {
+                "pairedDeltaE": 2.0918481257173496,
+                "medianDeltaE": 1.770252982444543,
+                "lumaSpread": 2.9712216502728928,
+                "referenceSpread": 3.3401324630494944
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "4b71ff49-ee0a-4065-9131-380468d62a30",
+          "name": "Flying Carpet",
+          "cohort": "calibration",
+          "beforeNative": "8c70aba6267b761d20e9381199299d33673e22adee227277650d72b70264a8a6",
+          "afterNative": "2e230d37578ac5e732848978cedba3f8607faf60b20095296024658ac5b4f9f1",
+          "referenceHash": "90cd94306741cac0ba7e2bfef51659ffd4197d1ffb262db6fd519f335434977d",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.3406657398752273,
+                "medianDeltaE": 1.2152807301055064,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 5.530522180635089
+              },
+              "after": {
+                "pairedDeltaE": 1.9726811525486363,
+                "medianDeltaE": 1.783711448586724,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 5.530522180635089
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.20997336292343,
+                "medianDeltaE": 0.5744180890802616,
+                "lumaSpread": 11.96626567971627,
+                "referenceSpread": 10.03069022722154
+              },
+              "after": {
+                "pairedDeltaE": 2.270297629261221,
+                "medianDeltaE": 1.0230997997212337,
+                "lumaSpread": 11.521463709697578,
+                "referenceSpread": 10.03069022722154
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.4787968899779804,
+                "medianDeltaE": 0.7132735347557532,
+                "lumaSpread": 3.9726341184984637,
+                "referenceSpread": 3.2611709305455094
+              },
+              "after": {
+                "pairedDeltaE": 1.148587515719472,
+                "medianDeltaE": 0.2319330974930976,
+                "lumaSpread": 2.9622122791826966,
+                "referenceSpread": 3.2611709305455094
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "71504078-a16f-4dc4-9626-0ecc42b1e93b",
+          "name": "Jandor's Ring",
+          "cohort": "calibration",
+          "beforeNative": "9db7e21a469f6ee2f7baca90fb3f54f1e0bc8fc49dbf5d75cd82ad956de1f730",
+          "afterNative": "86ef697f69336f4c7f00c8d27ffde882bd1e964d34c146c2363f4dd9bdd668bd",
+          "referenceHash": "e811bc0e5d82d6dd68f969fdaaa39e11edf421da6cd678d07e371060dcf56d90",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.5585393560056895,
+                "medianDeltaE": 0.9170494106080528,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 4.165643970938282
+              },
+              "after": {
+                "pairedDeltaE": 2.3228051160405627,
+                "medianDeltaE": 2.178179189455973,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 4.165643970938282
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.7975858078721547,
+                "medianDeltaE": 0.219512128392674,
+                "lumaSpread": 11.188488885629111,
+                "referenceSpread": 10.678141596036529
+              },
+              "after": {
+                "pairedDeltaE": 1.9527655492517881,
+                "medianDeltaE": 1.0428567168600529,
+                "lumaSpread": 10.644344924834648,
+                "referenceSpread": 10.678141596036529
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.2809254496293765,
+                "medianDeltaE": 0.48682784440076765,
+                "lumaSpread": 4.014190436202458,
+                "referenceSpread": 3.159519821783896
+              },
+              "after": {
+                "pairedDeltaE": 1.0982586994570136,
+                "medianDeltaE": 0.32083581571686465,
+                "lumaSpread": 2.9782046450367305,
+                "referenceSpread": 3.159519821783896
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "bc4f4b92-7d4e-4b03-8cb4-e6b356c338b4",
+          "name": "Jandor's Saddlebags",
+          "cohort": "validation",
+          "beforeNative": "2ca435205586eec36d0d43bfead618550d9e0f58134c952958b660006bc1a26d",
+          "afterNative": "36d01532f1b30d6051dbf7f225b7c52fc47d4ae376ec6c4c47fc80f302412578",
+          "referenceHash": "f7dd4aa17dd04fa84b06f62cd4c492889b85d43aa4c02911297a6365745b1cde",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.7752450576734105,
+                "medianDeltaE": 1.4367632201536222,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 5.016744014060393
+              },
+              "after": {
+                "pairedDeltaE": 2.7911894365586147,
+                "medianDeltaE": 2.54036060076082,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 5.016744014060393
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.8920937745164412,
+                "medianDeltaE": 1.1526052781584137,
+                "lumaSpread": 6.897656901199256,
+                "referenceSpread": 4.645203071742832
+              },
+              "after": {
+                "pairedDeltaE": 1.4526581927332924,
+                "medianDeltaE": 0.25789597548411924,
+                "lumaSpread": 6.117068411069438,
+                "referenceSpread": 4.645203071742832
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.0828590433508967,
+                "medianDeltaE": 1.6112213110498799,
+                "lumaSpread": 3.944297546472675,
+                "referenceSpread": 3.360720790775995
+              },
+              "after": {
+                "pairedDeltaE": 1.4755634455129951,
+                "medianDeltaE": 0.8787185596346531,
+                "lumaSpread": 2.890999099772318,
+                "referenceSpread": 3.360720790775995
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "bfffb65d-851d-4dc9-9233-d53abf955dcd",
+          "name": "Jeweled Bird",
+          "cohort": "validation",
+          "beforeNative": "19224fd402200eefd373e89cbdbca9d96a6afe36746a8efc6999cebd4f10a273",
+          "afterNative": "c3b5269cc66a377507d3b4b43f0fe29509935c96f8868167fd7bcdc77ff01095",
+          "referenceHash": "34084b2ef2629fe7b7d4629373df62d33afd8a6b2ea58c34303e995767f50161",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.5262508253841647,
+                "medianDeltaE": 1.8073450572996055,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 3.7755997287409526
+              },
+              "after": {
+                "pairedDeltaE": 1.8079150530527732,
+                "medianDeltaE": 0.83288083241248,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 3.7755997287409526
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.410501480883437,
+                "medianDeltaE": 1.1462603468641763,
+                "lumaSpread": 8.395876513656109,
+                "referenceSpread": 7.20283621081329
+              },
+              "after": {
+                "pairedDeltaE": 2.6569891400905488,
+                "medianDeltaE": 1.8636089347663354,
+                "lumaSpread": 7.803445854069524,
+                "referenceSpread": 7.20283621081329
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.4237227202895548,
+                "medianDeltaE": 0.6396464558803776,
+                "lumaSpread": 3.9198220646651905,
+                "referenceSpread": 3.3301191833272736
+              },
+              "after": {
+                "pairedDeltaE": 1.2687434565844802,
+                "medianDeltaE": 0.7034146375783498,
+                "lumaSpread": 2.924034634347583,
+                "referenceSpread": 3.3301191833272736
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "d2e9decf-47b7-44e0-b380-8055b6011021",
+          "name": "Pyramids",
+          "cohort": "calibration",
+          "beforeNative": "cc167601db93fec06667e2e94ac856156416a9027532d306f6f5f61ee2a98341",
+          "afterNative": "32ac4999b7c86fe9e138bd658efa5746cc05ab08308ef0404cbe954a7e78906c",
+          "referenceHash": "f7c4bba5932d15a1b0fcf5ceafcb0eae8f9e9d04df439b018812ada152813da1",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.1813987024218275,
+                "medianDeltaE": 2.146321629520066,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 4.723895833101399
+              },
+              "after": {
+                "pairedDeltaE": 3.084882879819981,
+                "medianDeltaE": 3.150114129224097,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 4.723895833101399
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.0886979075402845,
+                "medianDeltaE": 1.071236996179137,
+                "lumaSpread": 11.328455053689712,
+                "referenceSpread": 9.362673042436532
+              },
+              "after": {
+                "pairedDeltaE": 1.703525109376922,
+                "medianDeltaE": 0.21919159444867037,
+                "lumaSpread": 10.868305432569624,
+                "referenceSpread": 9.362673042436532
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.8595271989508149,
+                "medianDeltaE": 1.3375888474668844,
+                "lumaSpread": 4.066919392500434,
+                "referenceSpread": 2.989303470752247
+              },
+              "after": {
+                "pairedDeltaE": 1.305424251626356,
+                "medianDeltaE": 0.6898133731705847,
+                "lumaSpread": 3.038920775670617,
+                "referenceSpread": 2.989303470752247
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "fcc1004f-7cee-420a-9f0e-2986ed3ab852",
+          "name": "Ring of Ma'r\u00fbf",
+          "cohort": "calibration",
+          "beforeNative": "d7002bcc814f11fa6702b7617cc0be888fa38e8dd88f81f8208d870cfbad2074",
+          "afterNative": "8afe7348ac9929e70371a9b2273b633dd0b5b57ba6266ba12aed6459478de881",
+          "referenceHash": "c2f4c92208da82f7d23a3a3cdebbf6bcb1305d4eed1a487fa8819b32aa85cfca",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.2214003406467353,
+                "medianDeltaE": 0.3599243856049205,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 4.764051309558637
+              },
+              "after": {
+                "pairedDeltaE": 1.963918634049959,
+                "medianDeltaE": 1.6542018025134637,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 4.764051309558637
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 3.226178683456172,
+                "medianDeltaE": 1.8635976476276734,
+                "lumaSpread": 7.537965730502871,
+                "referenceSpread": 7.210596857254603
+              },
+              "after": {
+                "pairedDeltaE": 3.5135173273464444,
+                "medianDeltaE": 2.5484809592299515,
+                "lumaSpread": 6.993748613932205,
+                "referenceSpread": 7.210596857254603
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.617844839077346,
+                "medianDeltaE": 1.0261514643719505,
+                "lumaSpread": 3.928746175988307,
+                "referenceSpread": 3.0608740406751545
+              },
+              "after": {
+                "pairedDeltaE": 1.49606148589133,
+                "medianDeltaE": 1.1378835096872768,
+                "lumaSpread": 2.9271226422862284,
+                "referenceSpread": 3.0608740406751545
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "8f99a520-b8a9-40b0-9854-48aac297c5ee",
+          "name": "Sandals of Abdallah",
+          "cohort": "validation",
+          "beforeNative": "d8f588be26277767ccefcde407c7bd85a28cea60ab9d8d922df836f7749c4a26",
+          "afterNative": "eed278c0e922bb4c4c3e52b438de3bef4243c34a44672216e8227116886118e6",
+          "referenceHash": "6ce241c8da498ca793c5e3ec281b2a8361ac703c178c53212e72746a1f9a0b7c",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.4263847059641805,
+                "medianDeltaE": 1.1149099442797021,
+                "lumaSpread": 10.415641328923853,
+                "referenceSpread": 5.378039659781519
+              },
+              "after": {
+                "pairedDeltaE": 1.9913210761252937,
+                "medianDeltaE": 1.6907290018870056,
+                "lumaSpread": 4.792668329163352,
+                "referenceSpread": 5.378039659781519
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.2659453232933946,
+                "medianDeltaE": 0.979962539585446,
+                "lumaSpread": 12.382771378755585,
+                "referenceSpread": 10.602624557251705
+              },
+              "after": {
+                "pairedDeltaE": 1.9689152299904304,
+                "medianDeltaE": 0.26596993268030616,
+                "lumaSpread": 11.785147849073585,
+                "referenceSpread": 10.602624557251705
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.8698176485535294,
+                "medianDeltaE": 1.4646013625077887,
+                "lumaSpread": 3.9290193550030272,
+                "referenceSpread": 3.4025041444825987
+              },
+              "after": {
+                "pairedDeltaE": 1.2951187761796232,
+                "medianDeltaE": 0.7714812038880623,
+                "lumaSpread": 2.947535564803716,
+                "referenceSpread": 3.4025041444825987
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        }
+      ],
+      "clipControls": [
+        {
+          "id": "8fecc5d2-5298-4d47-b085-f160603f220e",
+          "name": "Aladdin's Lamp",
+          "changedPixels": 3190,
+          "changedOutsideBoundary": 0,
+          "whiteSidePixelsBefore": 0,
+          "whiteSidePixelsAfter": 0,
+          "meanSideBrightnessBefore": 108.98760683760685,
+          "meanSideBrightnessAfter": 46.424786324786325
+        },
+        {
+          "id": "1a364362-e42b-415c-9d95-b6ec7139f5e7",
+          "name": "Brass Man",
+          "changedPixels": 3190,
+          "changedOutsideBoundary": 0,
+          "whiteSidePixelsBefore": 0,
+          "whiteSidePixelsAfter": 0,
+          "meanSideBrightnessBefore": 108.98760683760685,
+          "meanSideBrightnessAfter": 46.424786324786325
+        }
+      ],
+      "before": {
+        "frame": {
+          "family": "fourth",
+          "frame": [
+            0.00794918032786887, 0.004855000000000054, 0.9861749999999999, 0.9923109999999999
+          ],
+          "art": [0.11182628032786886, 0.093690460952381, 0.7810505999999998, 0.44937512428571424],
+          "stockWindow": [
+            0.03883726207645951, 0.03183110554486049, 0.9217417574769129, 0.9359733064602023
+          ],
+          "assetKey": "a"
+        },
+        "color": {
+          "source": "[\"https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png\",[0.00794918032786887,0.004855000000000054,0.9861749999999999,0.9923109999999999]]",
+          "stock": "#181510",
+          "adjustment": {
+            "frame": {
+              "hueDegrees": 7.632246618375651,
+              "saturationScale": 0.35000000000000253,
+              "brightnessScale": 1.1734718355876625,
+              "valueGamma": 1.2754055770415957
+            },
+            "paper": {
+              "hueDegrees": 0,
+              "saturationScale": 0.35,
+              "brightnessScale": 0.9869263698630137
+            },
+            "mask": {
+              "kind": "rect",
+              "rect": [
+                0.12443195206516984, 0.6097999281178866, 0.7552933652001211, 0.2785431891697616
+              ],
+              "feather": 0.0013333333333333333
+            }
+          }
+        }
+      },
+      "candidate": {
+        "frame": {
+          "family": "fourth",
+          "frame": [
+            0.00794918032786887, 0.004855000000000054, 0.9861749999999999, 0.9923109999999999
+          ],
+          "art": [0.11182628032786886, 0.093690460952381, 0.7810505999999998, 0.44937512428571424],
+          "stockWindow": [
+            0.041314767827868866, 0.03183110554486049, 0.9181289249999999, 0.9359733064602023
+          ],
+          "assetKey": "a"
+        },
+        "color": {
+          "source": "[\"https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png\",[0.00794918032786887,0.004855000000000054,0.9861749999999999,0.9923109999999999]]",
+          "stock": "#181510",
+          "adjustment": {
+            "frame": {
+              "hueDegrees": -0.21551113000639094,
+              "saturationScale": 0.549109164462508,
+              "brightnessScale": 0.8348270128228742,
+              "valueGamma": 0.746193424526035,
+              "rgbScale": [0.9578346253839087, 1.0018891080910126, 1.0420530094214437]
+            },
+            "paper": {
+              "hueDegrees": 1.1290995352226694,
+              "saturationScale": 0.6729518016197511,
+              "brightnessScale": 1.002847031691434,
+              "valueGamma": 0.8892581220469289,
+              "rgbScale": [0.9784841893247943, 0.9908665760144548, 1.0314092178062277]
+            },
+            "mask": {
+              "kind": "rect",
+              "rect": [
+                0.12443195206516984, 0.6097999281178866, 0.7552933652001211, 0.2785431891697616
+              ],
+              "feather": 0.0013333333333333333
+            }
+          }
+        }
+      },
+      "paperFitTool": "546adc8c42c520b7570c7aa569e8c420bbcf1c126d96d2553d9bad91981aa4dc",
+      "rejectedCandidate": {
+        "reason": "3px ink suppression before pooled reference fitting did not improve full native paper fields; replaced with ink clearing per reference before pooling.",
+        "cohorts": {
+          "calibration": {
+            "frame": {
+              "names": 9,
+              "before": 2.6408227057525866,
+              "after": 2.4575629546850117,
+              "improved": 7,
+              "unchanged": 0,
+              "worstRegression": 0.8587760925788821
+            },
+            "paper": {
+              "names": 9,
+              "before": 2.3738139301029895,
+              "after": 2.436184638013392,
+              "improved": 3,
+              "unchanged": 0,
+              "worstRegression": 0.6672912649085316
+            },
+            "paperClear": {
+              "names": 9,
+              "before": 1.9479747573395056,
+              "after": 2.570925932161219,
+              "improved": 2,
+              "unchanged": 0,
+              "worstRegression": 1.2695879026968377
+            }
+          },
+          "validation": {
+            "frame": {
+              "names": 5,
+              "before": 2.926550959517787,
+              "after": 2.2921542771228696,
+              "improved": 3,
+              "unchanged": 0,
+              "worstRegression": 0.5970186809464266
+            },
+            "paper": {
+              "names": 5,
+              "before": 2.183419861133408,
+              "after": 2.2080562087269167,
+              "improved": 2,
+              "unchanged": 0,
+              "worstRegression": 0.4501411859714719
+            },
+            "paperClear": {
+              "names": 5,
+              "before": 1.7648189544384778,
+              "after": 2.4657478736819356,
+              "improved": 0,
+              "unchanged": 0,
+              "worstRegression": 1.180037440993658
+            }
+          }
+        }
+      }
+    },
+    "atq": {
+      "status": "native-validated-candidate-not-installed",
+      "printings": 45,
+      "sources": {
+        "inputs.json": "47cc8a56dffacce24ea00b27ae08d356029c335473565d61ec1c9dd895225fbe",
+        "poses.json": "17b9583e11f3781bb2f98ce06f974596140117e35ae5cd55bc0468095c65bc32",
+        "before-profile.json": "d18cc15d9c35122fcd16d0ffb2074f8212d897fa1acefa474818fdaa5fe65be9",
+        "candidate-profile-v2.json": "1e3777df26d93c4e3685e02fd87e8ef9a578675a55a731de35128044e01f1e0f",
+        "before-native/capture.json": "db3a421307cd7bfab632d02d368e0a0c10ee489cbb09be5cf079531a8c864d79",
+        "candidate-native-v2/capture.json": "e4f328797a20b054bb3e3b396a44fa5cffa93ed6f19c260c0b985c84f78c63d9",
+        "clip-only-native/capture.json": "9fad9bd2c02bc39f18357d9f2fca83e2d6fac9d73d99db082b0f8a530b691842",
+        "exported/inputs.json": "e0ca628e837cc38297f8153c0e261d17ab17114eb6195912f448c47a18c0f14f"
+      },
+      "method": {
+        "tool": "8fb547522406c835dcd2263706dcfba3f76928eb27286b6ca21494d7f8fc3ce4",
+        "color": "b495eba57ebcdb8aa3cca9a3eb4fbcfec81ea913ae36ec58c33f05b70b67d99c",
+        "scope": "Real native full faces and fixed normalized scans. Existing words, typography, art rectangle and all nonartifact profile data are unchanged. Artifact illustration interiors must be byte-identical. Clip-only controls may change only stock-window boundary bands. Color fields use equal clamped filtering; paperClear uses an additional 11px closing to exclude lettering while the original 3px paper diagnostic is retained; every printing and outlier remains reported."
+      },
+      "sourceFringe": {
+        "schema": 1,
+        "status": "source-stock-fringe-measurement",
+        "source": {
+          "image": "57adae1b5031a53f4b1078e7e6d0048e122ca43df419d65cf1b1950e03da7354",
+          "before": "d18cc15d9c35122fcd16d0ffb2074f8212d897fa1acefa474818fdaa5fe65be9",
+          "after": "64957f4825adb9a00be8203e9cc5b8e30f0d50e761fee30a36c9025bf0d12c14",
+          "tool": "1413a1cf70848d556b1c084cc41976d541f4be5a809768903392e8ad6c974a9e"
+        },
+        "scope": "Opaque near-white pixels connected to the source perimeter; transparent art holes and enclosed light frame paper are excluded. Inverse source mapping and fractional aperture coverage estimate exposed source-stock area in canonical straight side strips. No scan pixels or per-card fit are used.",
+        "values": {
+          "before": {
+            "total": 42.21244712814263,
+            "left": 33.09932840375183,
+            "right": 9.113118724390796
+          },
+          "after": {
+            "total": 2.5638319440833826,
+            "left": 0.0,
+            "right": 2.5638319440833826
+          }
+        }
+      },
+      "cohorts": {
+        "calibration": {
+          "frame": {
+            "names": 33,
+            "before": 5.2860310977926535,
+            "after": 3.6807835542640226,
+            "improved": 33,
+            "unchanged": 0,
+            "worstRegression": 0.18771230475846745
+          },
+          "paper": {
+            "names": 33,
+            "before": 2.5289267465849683,
+            "after": 2.5920595410307703,
+            "improved": 16,
+            "unchanged": 0,
+            "worstRegression": 1.4323414104703525
+          },
+          "paperClear": {
+            "names": 33,
+            "before": 2.5377673385411015,
+            "after": 1.9521518504395876,
+            "improved": 24,
+            "unchanged": 0,
+            "worstRegression": 1.4157880362889288
+          }
+        },
+        "validation": {
+          "frame": {
+            "names": 11,
+            "before": 6.276566841480395,
+            "after": 4.50095009799209,
+            "improved": 11,
+            "unchanged": 0,
+            "worstRegression": 0.0
+          },
+          "paper": {
+            "names": 11,
+            "before": 2.6038167500385105,
+            "after": 2.3610060458355915,
+            "improved": 6,
+            "unchanged": 0,
+            "worstRegression": 0.9469231094212973
+          },
+          "paperClear": {
+            "names": 11,
+            "before": 2.7126079882806953,
+            "after": 1.7782355031609385,
+            "improved": 10,
+            "unchanged": 0,
+            "worstRegression": 0.25896644371453426
+          }
+        }
+      },
+      "rows": [
+        {
+          "id": "b094f8dd-0184-41a2-9767-e848a6e4eac1",
+          "name": "Amulet of Kroog",
+          "cohort": "calibration",
+          "beforeNative": "e88642ced2a0ebffbc3ce97eb4f48f88646d6f854fd7d21dc9eb6ac4e003a68c",
+          "afterNative": "4f9a0104c2f37e9446c1ecf3c457721a0aa4c2805ceab593c1af72bc0b1f74bc",
+          "referenceHash": "cbfdfde9ebc0421b51747e086d74d9503cda3545f805585f1afa73ad33113e45",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 6.66223096478733,
+                "medianDeltaE": 6.636752059649815,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.18166854747154
+              },
+              "after": {
+                "pairedDeltaE": 4.849368847715253,
+                "medianDeltaE": 4.8702568197407015,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.18166854747154
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.073403694957622,
+                "medianDeltaE": 1.2541993216667204,
+                "lumaSpread": 6.206185440776412,
+                "referenceSpread": 4.756741512288965
+              },
+              "after": {
+                "pairedDeltaE": 1.9288945950158805,
+                "medianDeltaE": 0.48024289033042633,
+                "lumaSpread": 6.33674422820566,
+                "referenceSpread": 4.756741512288965
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.3517014059963866,
+                "medianDeltaE": 2.1911966431978396,
+                "lumaSpread": 3.3936674507940023,
+                "referenceSpread": 3.7676464679987753
+              },
+              "after": {
+                "pairedDeltaE": 1.3952977288688944,
+                "medianDeltaE": 0.5362446271807678,
+                "lumaSpread": 3.4828037585136418,
+                "referenceSpread": 3.7676464679987753
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "44a31889-6a8d-450c-a73d-381a7ff28bf9",
+          "name": "Armageddon Clock",
+          "cohort": "calibration",
+          "beforeNative": "5d97c209e9f78068f9442a79e734e2e2f18784abb619d13f3a0b125dfc525bad",
+          "afterNative": "f861a86ba04be730088be81c31845716769c9bb479a693a92e7f5859496b74b8",
+          "referenceHash": "c0ce3ff6e26978ab2c319ba81fa13b132833d3728c34c6a57b2c59eab444d47f",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 5.44253294405395,
+                "medianDeltaE": 5.548346612769146,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.610063028311007
+              },
+              "after": {
+                "pairedDeltaE": 3.5099923720036577,
+                "medianDeltaE": 3.639365067720014,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.610063028311007
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 3.274759121194662,
+                "medianDeltaE": 2.903442407923853,
+                "lumaSpread": 8.25459263914663,
+                "referenceSpread": 8.09912201252817
+              },
+              "after": {
+                "pairedDeltaE": 2.2758796584880168,
+                "medianDeltaE": 1.3208009378317318,
+                "lumaSpread": 8.418109856975686,
+                "referenceSpread": 8.09912201252817
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 4.251870048125608,
+                "medianDeltaE": 4.1014611145465985,
+                "lumaSpread": 3.4729343765497966,
+                "referenceSpread": 3.453941696024909
+              },
+              "after": {
+                "pairedDeltaE": 2.6846147280682273,
+                "medianDeltaE": 2.457596748779849,
+                "lumaSpread": 3.5729266145134497,
+                "referenceSpread": 3.453941696024909
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "cdcccb0f-ce96-453b-9e82-41d87f52e58b",
+          "name": "Ashnod's Altar",
+          "cohort": "calibration",
+          "beforeNative": "b0af9c607c0a0e9af7922b9a976f68b2cd11a717791e09cc2d1e3444e8273b6c",
+          "afterNative": "dccd1a5533384bc9881cf97c5d974a27cf9707513d37fb37fcbf1f986ffeaa82",
+          "referenceHash": "a1e4b7a24c2318c6e089de81f6897df42cefa45f23863d5e6b4dc26be83a97c6",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.263221255960555,
+                "medianDeltaE": 2.8725017429814357,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.12094513692567
+              },
+              "after": {
+                "pairedDeltaE": 1.8151652967807752,
+                "medianDeltaE": 1.3472546444413873,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.12094513692567
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.416237578457614,
+                "medianDeltaE": 1.0267629289115294,
+                "lumaSpread": 8.409235974448514,
+                "referenceSpread": 8.43031603342126
+              },
+              "after": {
+                "pairedDeltaE": 3.288032549952253,
+                "medianDeltaE": 2.381463070887368,
+                "lumaSpread": 8.638068684299649,
+                "referenceSpread": 8.43031603342126
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.473128565135004,
+                "medianDeltaE": 0.8768593025474614,
+                "lumaSpread": 3.484639921397914,
+                "referenceSpread": 3.84265794993518
+              },
+              "after": {
+                "pairedDeltaE": 1.5081289780787714,
+                "medianDeltaE": 1.1276858190804004,
+                "lumaSpread": 3.569433161920721,
+                "referenceSpread": 3.84265794993518
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "aeeec853-dd3f-4ac3-8b20-c07fada8888f",
+          "name": "Ashnod's Battle Gear",
+          "cohort": "calibration",
+          "beforeNative": "79ca8ad4d9262e0337a7b12e9ce2c36ca071229a4c622fd11c28ad848abaf315",
+          "afterNative": "da32cea3b0477f75bb2ecd8f74560a793332e5f4d42e67d401fdfc6aea408019",
+          "referenceHash": "c93bfe38d4741fca38658208f49ad9d724c7307b437e63b01b011cd127d74aae",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 4.9251862496260355,
+                "medianDeltaE": 4.858373413676772,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.143229423372352
+              },
+              "after": {
+                "pairedDeltaE": 2.9870889015904836,
+                "medianDeltaE": 2.958360312094346,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.143229423372352
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.1591816051436905,
+                "medianDeltaE": 1.2230033858965101,
+                "lumaSpread": 7.575687135227627,
+                "referenceSpread": 5.353492463454668
+              },
+              "after": {
+                "pairedDeltaE": 2.1061559792620344,
+                "medianDeltaE": 0.5498786925289846,
+                "lumaSpread": 7.762816256934668,
+                "referenceSpread": 5.353492463454668
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.0864513702069787,
+                "medianDeltaE": 1.8496610535599347,
+                "lumaSpread": 3.4372592124619072,
+                "referenceSpread": 3.4120093775173332
+              },
+              "after": {
+                "pairedDeltaE": 1.3734619006044397,
+                "medianDeltaE": 0.3696689010511075,
+                "lumaSpread": 3.556852126944454,
+                "referenceSpread": 3.4120093775173332
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "2aa5b289-36ba-49b1-a5ac-f23bf71f8241",
+          "name": "Ashnod's Transmogrant",
+          "cohort": "calibration",
+          "beforeNative": "650b2428acf9bead928861d475b452f1aa5d304e93256630b65be4cdb89f5e34",
+          "afterNative": "ccdedcee6d42530a790c34596a7b18919732f51714ee885f12ea4c66d781caa0",
+          "referenceHash": "b1afda7775ea1ff6a1279f3012d3edddf8580d9068ff44710a29bb9f7e988b91",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.2874078916886686,
+                "medianDeltaE": 3.32323616267549,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 6.107203132879291
+              },
+              "after": {
+                "pairedDeltaE": 1.5541231563485454,
+                "medianDeltaE": 1.296139562125626,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 6.107203132879291
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.1124758697085135,
+                "medianDeltaE": 0.6023899414495864,
+                "lumaSpread": 7.620747988777444,
+                "referenceSpread": 8.314561153899213
+              },
+              "after": {
+                "pairedDeltaE": 2.558688205581223,
+                "medianDeltaE": 1.503782304925711,
+                "lumaSpread": 7.805380361294079,
+                "referenceSpread": 8.314561153899213
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.029067601410419,
+                "medianDeltaE": 1.7922935722074336,
+                "lumaSpread": 3.374559649427822,
+                "referenceSpread": 3.5850102662286276
+              },
+              "after": {
+                "pairedDeltaE": 1.2419062189326757,
+                "medianDeltaE": 0.3630512230118949,
+                "lumaSpread": 3.467734422176605,
+                "referenceSpread": 3.5850102662286276
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "f7a69e35-d209-41c0-aa3c-c78414617075",
+          "name": "Battering Ram",
+          "cohort": "validation",
+          "beforeNative": "1c403448b4039b5397aef26502d3b0d2a2822086ecbc946c7d4c4da9be21c304",
+          "afterNative": "67a30c37f8e9d619d0bcb32966ed187789888bd66d8f294c882565201b455949",
+          "referenceHash": "533cee1699828c6bb80d4d4ebc039380ad0c178d0de12724fb5faad3609eaa06",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 6.79711631658569,
+                "medianDeltaE": 6.649540091401576,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.639859189817253
+              },
+              "after": {
+                "pairedDeltaE": 4.933599281967627,
+                "medianDeltaE": 4.847082309473327,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.639859189817253
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.242955283739032,
+                "medianDeltaE": 1.6502926942168945,
+                "lumaSpread": 7.494934579946655,
+                "referenceSpread": 7.044063110880772
+              },
+              "after": {
+                "pairedDeltaE": 1.7117216142453322,
+                "medianDeltaE": 0.13281892867069467,
+                "lumaSpread": 7.690766914028025,
+                "referenceSpread": 7.044063110880772
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.680408211543359,
+                "medianDeltaE": 2.463608319658217,
+                "lumaSpread": 3.364518412564743,
+                "referenceSpread": 3.5413595561881284
+              },
+              "after": {
+                "pairedDeltaE": 1.4159778506439784,
+                "medianDeltaE": 0.8040287739244296,
+                "lumaSpread": 3.454244782078253,
+                "referenceSpread": 3.5413595561881284
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "6fb10552-dd47-4f8a-ac7c-8c2b61e56736",
+          "name": "Bronze Tablet",
+          "cohort": "validation",
+          "beforeNative": "59861e638fd99d12ccb186422b3e8d81c590351902886dbed56ff9ec49bbd9cb",
+          "afterNative": "47d0d7f70e3bee8eea299929dec685751062e5aa6e63b90767f73641f11c63f8",
+          "referenceHash": "e86cd747340011575a6538be41191f9a3a1547e187cbaee973f9391ae6054acb",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 9.23936031873613,
+                "medianDeltaE": 9.060084701838429,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.553037658901216
+              },
+              "after": {
+                "pairedDeltaE": 7.4541504212117635,
+                "medianDeltaE": 7.283532104473692,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.553037658901216
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.706566801846871,
+                "medianDeltaE": 2.2444540836840465,
+                "lumaSpread": 5.552554139794108,
+                "referenceSpread": 3.3147806002630453
+              },
+              "after": {
+                "pairedDeltaE": 1.899460721330638,
+                "medianDeltaE": 0.6692986913041448,
+                "lumaSpread": 5.683876870656713,
+                "referenceSpread": 3.3147806002630453
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 3.059361769909953,
+                "medianDeltaE": 2.877557219508196,
+                "lumaSpread": 3.4536278093405093,
+                "referenceSpread": 3.121100128202714
+              },
+              "after": {
+                "pairedDeltaE": 1.7899933934960044,
+                "medianDeltaE": 1.2399666579745505,
+                "lumaSpread": 3.526392275746282,
+                "referenceSpread": 3.121100128202714
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "35a335bf-7358-460f-b7c9-1e8bc4300f64",
+          "name": "Candelabra of Tawnos",
+          "cohort": "calibration",
+          "beforeNative": "da1af60600b741282ac0a0180314a7527bc9d703ff202d0ea9adeaa1295095da",
+          "afterNative": "5ae64c28d43f19dfa2aed9555ad3d29e9db3796d520472b9182c291412ca1318",
+          "referenceHash": "25efb09314c3cd784d5e33cbb57836a3ba86aa661c41685ec43f8f2324df5024",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 1.8937764925314424,
+                "medianDeltaE": 1.4611277405448722,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.410972949495319
+              },
+              "after": {
+                "pairedDeltaE": 2.08148879728991,
+                "medianDeltaE": 1.910514685180414,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.410972949495319
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 3.2570568934955237,
+                "medianDeltaE": 3.0076591093204543,
+                "lumaSpread": 8.52321610190091,
+                "referenceSpread": 8.15152600084753
+              },
+              "after": {
+                "pairedDeltaE": 4.689398303965876,
+                "medianDeltaE": 4.589262163600975,
+                "lumaSpread": 8.703977934015173,
+                "referenceSpread": 8.15152600084753
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.9740678266203915,
+                "medianDeltaE": 1.6296641163974113,
+                "lumaSpread": 3.4128066391430623,
+                "referenceSpread": 3.897680854012131
+              },
+              "after": {
+                "pairedDeltaE": 3.3898558629093203,
+                "medianDeltaE": 3.2939713852393684,
+                "lumaSpread": 3.5474186600710556,
+                "referenceSpread": 3.897680854012131
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "64975352-8d35-4d02-94ac-fa0c6ee12409",
+          "name": "Clay Statue",
+          "cohort": "calibration",
+          "beforeNative": "fa2c3d1f1a8d4ecd4c4ba094c454b7a3d08f2947f2f04a9af97eac7cd9caa625",
+          "afterNative": "3f80b38cce240778b7a4b937bda6d710e928b74adce808a9ee93c3152d1391af",
+          "referenceHash": "f070a7c37844791dbda4ca24ad76ae90f6f70397f9c63bb9b35b9c991e68bd21",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.701417163519933,
+                "medianDeltaE": 3.4691247051838014,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.151122028652354
+              },
+              "after": {
+                "pairedDeltaE": 1.9247968659566308,
+                "medianDeltaE": 1.6543741835570809,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.151122028652354
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.5586507206492555,
+                "medianDeltaE": 0.5975377529200453,
+                "lumaSpread": 6.385955277816679,
+                "referenceSpread": 6.046173181086223
+              },
+              "after": {
+                "pairedDeltaE": 2.5708207534190213,
+                "medianDeltaE": 2.1196226873397053,
+                "lumaSpread": 6.544482959096021,
+                "referenceSpread": 6.046173181086223
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.2833602110508875,
+                "medianDeltaE": 0.6192450231525144,
+                "lumaSpread": 3.447485176503007,
+                "referenceSpread": 3.5945191645028407
+              },
+              "after": {
+                "pairedDeltaE": 1.5363053537442668,
+                "medianDeltaE": 1.131580781032927,
+                "lumaSpread": 3.544645691104431,
+                "referenceSpread": 3.5945191645028407
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "1dea8c2f-4aea-478d-aee7-cba1f74edd6c",
+          "name": "Clockwork Avian",
+          "cohort": "calibration",
+          "beforeNative": "d608faec2a0bd4b710726e4bb08d7b39b46cec2d30554bf98f1d2fc93b0fb452",
+          "afterNative": "9c1a9410999d7ca63a44cd5a8d2cf00b99665341fb5ffa2b00f705088961d2b2",
+          "referenceHash": "3b1ae80a147078d2e5ec673cfb0e819142182fa0b7278b206d44b8cdc0f129f1",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.8843405574107575,
+                "medianDeltaE": 2.371426750432298,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.499802590713376
+              },
+              "after": {
+                "pairedDeltaE": 1.8631771247523785,
+                "medianDeltaE": 0.5785376004168211,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.499802590713376
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.0883915818448147,
+                "medianDeltaE": 1.0193378303057556,
+                "lumaSpread": 8.206302334932424,
+                "referenceSpread": 8.559866070272404
+              },
+              "after": {
+                "pairedDeltaE": 3.126197815000632,
+                "medianDeltaE": 2.5285428461390773,
+                "lumaSpread": 8.428857721417149,
+                "referenceSpread": 8.559866070272404
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.2094794550608088,
+                "medianDeltaE": 0.43116790862205895,
+                "lumaSpread": 3.474032081092282,
+                "referenceSpread": 3.560511842499159
+              },
+              "after": {
+                "pairedDeltaE": 1.7143525580362997,
+                "medianDeltaE": 1.3994847826721855,
+                "lumaSpread": 3.5577620513169372,
+                "referenceSpread": 3.560511842499159
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "067c44e9-1b23-42fd-9acb-daafb62c32a2",
+          "name": "Colossus of Sardia",
+          "cohort": "calibration",
+          "beforeNative": "673d2e5f75ec5ec505059f3b7234eccfc9cad41ccfcea996f436a5995a3fc30e",
+          "afterNative": "2332ca431df3f32c4460fd355bdadb4c76be387221212b9d206b214b3747af66",
+          "referenceHash": "0ca0ec2b264750e283384fcee299aa64af27521092c44f8df78216f640c24e32",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.3203126401792975,
+                "medianDeltaE": 2.7500187385230133,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.246972373930447
+              },
+              "after": {
+                "pairedDeltaE": 1.8513932804809043,
+                "medianDeltaE": 1.1131378861706283,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.246972373930447
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.1588494253897186,
+                "medianDeltaE": 0.7739779813329296,
+                "lumaSpread": 7.820519539865933,
+                "referenceSpread": 7.796076542894015
+              },
+              "after": {
+                "pairedDeltaE": 2.7277788554365676,
+                "medianDeltaE": 1.769105940311933,
+                "lumaSpread": 8.041881642954241,
+                "referenceSpread": 7.796076542894015
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.6854407741701543,
+                "medianDeltaE": 1.298703733483125,
+                "lumaSpread": 3.484242158112283,
+                "referenceSpread": 3.299513655299191
+              },
+              "after": {
+                "pairedDeltaE": 1.4011014568974323,
+                "medianDeltaE": 0.7550383310525982,
+                "lumaSpread": 3.543885026745386,
+                "referenceSpread": 3.299513655299191
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "6c6df9db-0a46-40a5-ae9d-59f47dae9056",
+          "name": "Coral Helm",
+          "cohort": "calibration",
+          "beforeNative": "01d9b0adbcbd1eb1559fdfb2f0a32144f297895ba0bf4ff43de5ba9c11cccaad",
+          "afterNative": "b40f1c175e7b750226b30c9c5571254fc7585381ea7ac1da29c8fc8c3ab17c47",
+          "referenceHash": "f43d43be60295e516fad4cf055a3cfac3d7460cea18a5ece94fbf3b4c389e495",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 11.722733351828582,
+                "medianDeltaE": 11.68269205656976,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.416583017336462
+              },
+              "after": {
+                "pairedDeltaE": 9.899805823220479,
+                "medianDeltaE": 9.870551016532065,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.416583017336462
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 4.698888191011122,
+                "medianDeltaE": 4.2493075390802275,
+                "lumaSpread": 8.036368818913243,
+                "referenceSpread": 5.45374446051704
+              },
+              "after": {
+                "pairedDeltaE": 3.4578499147366575,
+                "medianDeltaE": 2.6826267387659843,
+                "lumaSpread": 8.288536915719025,
+                "referenceSpread": 5.45374446051704
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 4.777534058972861,
+                "medianDeltaE": 4.662988267251649,
+                "lumaSpread": 3.459117132805012,
+                "referenceSpread": 3.222294140421833
+              },
+              "after": {
+                "pairedDeltaE": 3.185872435799568,
+                "medianDeltaE": 3.009572216597902,
+                "lumaSpread": 3.563070277700975,
+                "referenceSpread": 3.222294140421833
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "720d871d-1e7b-482e-bd1e-8ec79519fb86",
+          "name": "Cursed Rack",
+          "cohort": "calibration",
+          "beforeNative": "757120d6b0fe2858d6c65219bfefc7252776af50c606e847f462b70a460b7910",
+          "afterNative": "125b5cdb220671857b886021e508122e220c1daec4e3c42f6deb68906073e37f",
+          "referenceHash": "4834bf11cb681305e6601555700b58cdea6448208120acb012569a9ac738175a",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 4.3607106897241215,
+                "medianDeltaE": 4.246193723813599,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.381078354496914
+              },
+              "after": {
+                "pairedDeltaE": 2.3956198878689747,
+                "medianDeltaE": 2.292459267365822,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.381078354496914
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.3862801897958008,
+                "medianDeltaE": 0.6057919038513692,
+                "lumaSpread": 6.49113683136574,
+                "referenceSpread": 6.436254495491123
+              },
+              "after": {
+                "pairedDeltaE": 1.7726236211690591,
+                "medianDeltaE": 1.0878727332107734,
+                "lumaSpread": 6.694971048635667,
+                "referenceSpread": 6.436254495491123
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.7300129566230247,
+                "medianDeltaE": 1.4690694424170643,
+                "lumaSpread": 3.368036591711532,
+                "referenceSpread": 3.37968164657807
+              },
+              "after": {
+                "pairedDeltaE": 1.197460388740688,
+                "medianDeltaE": 0.26018670612306366,
+                "lumaSpread": 3.4985256072925686,
+                "referenceSpread": 3.37968164657807
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "07793a71-1106-4303-b620-e403bd378020",
+          "name": "Dragon Engine",
+          "cohort": "calibration",
+          "beforeNative": "1bc5956512b453fb028f7dafe0ca3c870dc743062c8f379cfbc3e10c3f63f280",
+          "afterNative": "7afc8c0b7f2b8c2d4622baca1b909256e4fc440ed70e8eb50bd40a493271d3a0",
+          "referenceHash": "e4f011357a87af8dfc3330e4837a90d5337c785ce9eb62691af4bc84cf608f68",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 4.910737175978915,
+                "medianDeltaE": 4.854389342579618,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.660468686260499
+              },
+              "after": {
+                "pairedDeltaE": 3.1834885570335274,
+                "medianDeltaE": 3.1410770003484014,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.660468686260499
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.7869568929243143,
+                "medianDeltaE": 1.0618142943124869,
+                "lumaSpread": 6.206772978466613,
+                "referenceSpread": 5.1934091113438825
+              },
+              "after": {
+                "pairedDeltaE": 1.5858296469760642,
+                "medianDeltaE": 0.5788508343943708,
+                "lumaSpread": 6.368902977085755,
+                "referenceSpread": 5.1934091113438825
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.2450614424542716,
+                "medianDeltaE": 2.03409156608359,
+                "lumaSpread": 3.447788927208273,
+                "referenceSpread": 3.7421481484726904
+              },
+              "after": {
+                "pairedDeltaE": 1.292495787260873,
+                "medianDeltaE": 0.3852052655306249,
+                "lumaSpread": 3.512181690313132,
+                "referenceSpread": 3.7421481484726904
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "bb6af436-bcfd-4d47-a1aa-e84b587a725a",
+          "name": "Feldon's Cane",
+          "cohort": "calibration",
+          "beforeNative": "9090c73d005f0189476e1afea384a2893ea54c0b13efe4888ab7616691bc43e4",
+          "afterNative": "36cfb095d0d8df0b4021c2f1f17a36cb39cb789e31da5cc34551e765423436ca",
+          "referenceHash": "f539c5fffca3c0dc894eb468ec2dd7e53041cc3df74dcb9ba22227038c7b367d",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.3400646998713297,
+                "medianDeltaE": 3.103829853159643,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.548972358787562
+              },
+              "after": {
+                "pairedDeltaE": 1.591265820347083,
+                "medianDeltaE": 1.220726221226614,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.548972358787562
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.7485502321462367,
+                "medianDeltaE": 0.8878078916975704,
+                "lumaSpread": 7.728811579334993,
+                "referenceSpread": 7.955209889530934
+              },
+              "after": {
+                "pairedDeltaE": 2.747815328993395,
+                "medianDeltaE": 2.3938095416618554,
+                "lumaSpread": 7.899407421749006,
+                "referenceSpread": 7.955209889530934
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.3206289037487864,
+                "medianDeltaE": 0.8002168022356133,
+                "lumaSpread": 3.4588124701891654,
+                "referenceSpread": 3.7802083891820493
+              },
+              "after": {
+                "pairedDeltaE": 1.3927341299127378,
+                "medianDeltaE": 0.9652329822773876,
+                "lumaSpread": 3.5449857477770075,
+                "referenceSpread": 3.7802083891820493
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "856be1dd-a20b-49c2-be9d-7db76c7efd8b",
+          "name": "Golgothian Sylex",
+          "cohort": "calibration",
+          "beforeNative": "befe56e3c09b0fe42016dccccc643293086ef6a491bf43c5f0c72e62a0c49250",
+          "afterNative": "6b9b8c6176c831ab5ece8d29d0ed9d06134e09e05afd895cde7c351fba169fe9",
+          "referenceHash": "ba7c2d954f31cde121488383e1eaa61064fb0794ea148136dd3955cb09293d87",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.39060762857388,
+                "medianDeltaE": 3.1529639144781227,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.802235140948552
+              },
+              "after": {
+                "pairedDeltaE": 1.4985254702663637,
+                "medianDeltaE": 1.150097181474339,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.802235140948552
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.1328356522095704,
+                "medianDeltaE": 1.2842793198840463,
+                "lumaSpread": 7.550997707657214,
+                "referenceSpread": 6.501896170441601
+              },
+              "after": {
+                "pairedDeltaE": 3.1414670595528333,
+                "medianDeltaE": 2.7761227827010306,
+                "lumaSpread": 7.695356172195189,
+                "referenceSpread": 6.501896170441601
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.341594114096218,
+                "medianDeltaE": 0.5478858930740343,
+                "lumaSpread": 3.464342232627071,
+                "referenceSpread": 3.7429255898002056
+              },
+              "after": {
+                "pairedDeltaE": 1.958733727231741,
+                "medianDeltaE": 1.7480923330953908,
+                "lumaSpread": 3.5631258332978644,
+                "referenceSpread": 3.7429255898002056
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "4c7a7348-c82e-453c-975c-e5365e152a3a",
+          "name": "Grapeshot Catapult",
+          "cohort": "calibration",
+          "beforeNative": "12622cf646fea4cbeeb348b1626134ffb372b3d4eec63ca67ff1e46437b0fce6",
+          "afterNative": "2555a8726f6a80fffdebb5d627121b799a179f9ef0be9e73fc5aee5fb80dadad",
+          "referenceHash": "f506e9a55afb198b60194c20e9da8479c1e0c75424f20c1dee6c9c7b55d2dd11",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.8395244117942733,
+                "medianDeltaE": 3.5808347673145238,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.210083168988965
+              },
+              "after": {
+                "pairedDeltaE": 2.0872350951630256,
+                "medianDeltaE": 1.7083802912174681,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.210083168988965
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.841724847879421,
+                "medianDeltaE": 0.7064258353189229,
+                "lumaSpread": 6.36781341216256,
+                "referenceSpread": 5.4956547607738155
+              },
+              "after": {
+                "pairedDeltaE": 2.0428431249551093,
+                "medianDeltaE": 0.9552556533056566,
+                "lumaSpread": 6.548317215366328,
+                "referenceSpread": 5.4956547607738155
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.214962638335412,
+                "medianDeltaE": 2.0099833371365885,
+                "lumaSpread": 3.36007317493785,
+                "referenceSpread": 4.0001053485003935
+              },
+              "after": {
+                "pairedDeltaE": 1.4223220361023148,
+                "medianDeltaE": 0.3345277139599975,
+                "lumaSpread": 3.4881984904445718,
+                "referenceSpread": 4.0001053485003935
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "a5f23039-45ca-4c15-af50-bfd40ea26453",
+          "name": "Ivory Tower",
+          "cohort": "calibration",
+          "beforeNative": "55ce0d890874d3e5129a5d52ef0387f8af69116f5bfd6ac73fdab445372eaac9",
+          "afterNative": "76a1d07db06390b7f74a752369bc11db48930f2fc63ba21e30349e7dcc161802",
+          "referenceHash": "89e16886110a7068d78349980f0fce4b9f7a5cd7d6b7f5955c5db72f1a987c6c",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 9.848823671979037,
+                "medianDeltaE": 9.745586537068112,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.787230842488144
+              },
+              "after": {
+                "pairedDeltaE": 8.166433682339756,
+                "medianDeltaE": 8.075970652325228,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.787230842488144
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.791567472123119,
+                "medianDeltaE": 2.412672101017998,
+                "lumaSpread": 6.437804585913376,
+                "referenceSpread": 3.4140021960605615
+              },
+              "after": {
+                "pairedDeltaE": 2.0310015662046665,
+                "medianDeltaE": 0.9228295871248179,
+                "lumaSpread": 6.544768729139339,
+                "referenceSpread": 3.4140021960605615
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 3.122492243134369,
+                "medianDeltaE": 2.8423435434516793,
+                "lumaSpread": 3.378926450206554,
+                "referenceSpread": 3.5452702621182386
+              },
+              "after": {
+                "pairedDeltaE": 1.8999425350158046,
+                "medianDeltaE": 1.2574755607205381,
+                "lumaSpread": 3.497512092286015,
+                "referenceSpread": 3.5452702621182386
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "5a5b7c5a-ee63-4a1b-9a0f-fb0a309168df",
+          "name": "Jalum Tome",
+          "cohort": "calibration",
+          "beforeNative": "50b2db7ab2b15e29c2a17bf883f46e4cd60548c5496b90a36aaa3b024a1da5be",
+          "afterNative": "c8a7acc60d6f794e15b4b2b7b276d9ba63bbb2e540d8dd4a445e064230c34b33",
+          "referenceHash": "0cf6d6daa0c7108eb17c0cdf4578033542563aa6c93ecfa0c8e06eb0e2285abe",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 4.058275027102862,
+                "medianDeltaE": 4.105725152999132,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.861682765111475
+              },
+              "after": {
+                "pairedDeltaE": 2.1670002801801083,
+                "medianDeltaE": 2.2032138840770137,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.861682765111475
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.4487606779192492,
+                "medianDeltaE": 0.4870440597898688,
+                "lumaSpread": 6.892093926082888,
+                "referenceSpread": 6.631317847000895
+              },
+              "after": {
+                "pairedDeltaE": 1.8637006128592375,
+                "medianDeltaE": 1.2955587243076347,
+                "lumaSpread": 7.051753020228002,
+                "referenceSpread": 6.631317847000895
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.665312749642547,
+                "medianDeltaE": 1.470332371548936,
+                "lumaSpread": 3.4600194381432026,
+                "referenceSpread": 3.170100070225379
+              },
+              "after": {
+                "pairedDeltaE": 1.1507078206382606,
+                "medianDeltaE": 0.33774855937038817,
+                "lumaSpread": 3.5684343841595467,
+                "referenceSpread": 3.170100070225379
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "b28ba599-5299-4831-a118-1712ada10ef6",
+          "name": "Mightstone",
+          "cohort": "validation",
+          "beforeNative": "0909a296761d7674562febad1405590da2bd36486b6529ffb86756beaa1688af",
+          "afterNative": "806bbf7c9ce194914eec135f24207cf65eb0029677580539478b44cb95b69176",
+          "referenceHash": "1c15b07f482c64cc93e254e447acbe8c77ca69e8993bee2a4370273241f55459",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 10.600473563568205,
+                "medianDeltaE": 10.433694490102761,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.8847402481825615
+              },
+              "after": {
+                "pairedDeltaE": 8.768925385562824,
+                "medianDeltaE": 8.615621753781333,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.8847402481825615
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 4.078886211036539,
+                "medianDeltaE": 3.7721897643648563,
+                "lumaSpread": 6.405415510591506,
+                "referenceSpread": 3.275338637622982
+              },
+              "after": {
+                "pairedDeltaE": 2.693469194084732,
+                "medianDeltaE": 2.174603902934779,
+                "lumaSpread": 6.5616350188090085,
+                "referenceSpread": 3.275338637622982
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 4.395644054603004,
+                "medianDeltaE": 4.295639378065489,
+                "lumaSpread": 3.4320626725882764,
+                "referenceSpread": 3.5261494616142475
+              },
+              "after": {
+                "pairedDeltaE": 2.816638190447128,
+                "medianDeltaE": 2.6305980503009114,
+                "lumaSpread": 3.533118460188134,
+                "referenceSpread": 3.5261494616142475
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "107646bc-2181-49f4-8821-1eaa46291855",
+          "name": "Millstone",
+          "cohort": "calibration",
+          "beforeNative": "fbf64437c4a6381d693506c40de619ac92efd8cf34c7b95a890e890d0a3b6f90",
+          "afterNative": "608497b78c1778f71302db45581b5e21e2ce1578b3d656c1275e1e2fd02dc9c6",
+          "referenceHash": "389c5a32d06027a7a25f44f6ec4a38c2cb909909751cd7e45be16e9616368e3c",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 5.188667499000302,
+                "medianDeltaE": 5.285912806501157,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 6.315745662630268
+              },
+              "after": {
+                "pairedDeltaE": 3.3201363807428663,
+                "medianDeltaE": 3.443903602086947,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 6.315745662630268
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.7180393293045357,
+                "medianDeltaE": 2.3301417759565237,
+                "lumaSpread": 7.228845951787832,
+                "referenceSpread": 7.53676689616718
+              },
+              "after": {
+                "pairedDeltaE": 1.814745772354311,
+                "medianDeltaE": 0.7850938196738986,
+                "lumaSpread": 7.4203455223779695,
+                "referenceSpread": 7.53676689616718
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 3.4743924851124666,
+                "medianDeltaE": 3.340524383315744,
+                "lumaSpread": 3.4914168022570746,
+                "referenceSpread": 3.3396107728180136
+              },
+              "after": {
+                "pairedDeltaE": 1.9775688952639612,
+                "medianDeltaE": 1.700216503340081,
+                "lumaSpread": 3.5777979384293723,
+                "referenceSpread": 3.3396107728180136
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "8f6b4652-a1d4-418f-a89b-6a977a920a9e",
+          "name": "Mishra's War Machine",
+          "cohort": "calibration",
+          "beforeNative": "cdb98541187d316f33bb958861a49eec9c1e3fc8705ec4bb3c65c66d44d2dc5e",
+          "afterNative": "f30bf9b8b95f46c8018dd7caf9b7cab203e99f21f6d9920e6ba41eb8470261a4",
+          "referenceHash": "855d35ba082050b4b131153aa9600075d262035e26104c23310d8482661b0903",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 5.160678044220889,
+                "medianDeltaE": 5.21786673149876,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.523333935245511
+              },
+              "after": {
+                "pairedDeltaE": 3.223459517276922,
+                "medianDeltaE": 3.3031945600366535,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.523333935245511
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.1409963793352493,
+                "medianDeltaE": 1.5952058568880723,
+                "lumaSpread": 7.686188994218901,
+                "referenceSpread": 6.520727378067425
+              },
+              "after": {
+                "pairedDeltaE": 1.606034982464907,
+                "medianDeltaE": 0.11236706539452866,
+                "lumaSpread": 7.834363513367782,
+                "referenceSpread": 6.520727378067425
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.5991795112703606,
+                "medianDeltaE": 2.4199265527470977,
+                "lumaSpread": 3.4399133444243946,
+                "referenceSpread": 3.595834466648018
+              },
+              "after": {
+                "pairedDeltaE": 1.4445496979351837,
+                "medianDeltaE": 0.7297301318434004,
+                "lumaSpread": 3.542429703062233,
+                "referenceSpread": 3.595834466648018
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "1ba61ccd-4429-4f7c-b9f3-30867878d88e",
+          "name": "Obelisk of Undoing",
+          "cohort": "validation",
+          "beforeNative": "5f4a92edb0610cfdc4b09dd4effd65c33941f3f5ecbe5c68e8f93f6040c21c50",
+          "afterNative": "459ab182dca36b3235ba1edd51e58b7517c1efe0ddebdbe5acef2ec95f76bfc2",
+          "referenceHash": "363cdf22c7a38e527de0c3f3689373a3de8ff5db8f0351c15715c0ca2aff1744",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.7883968859881927,
+                "medianDeltaE": 2.492133689790875,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 6.014754857023452
+              },
+              "after": {
+                "pairedDeltaE": 1.5531470799520777,
+                "medianDeltaE": 1.065928163241831,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 6.014754857023452
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.358411517060265,
+                "medianDeltaE": 1.1084885396089417,
+                "lumaSpread": 7.081038549049268,
+                "referenceSpread": 7.137396311899458
+              },
+              "after": {
+                "pairedDeltaE": 3.3053346264815624,
+                "medianDeltaE": 2.532843997458217,
+                "lumaSpread": 7.255981499166242,
+                "referenceSpread": 7.137396311899458
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.3522081434618891,
+                "medianDeltaE": 0.7963215491142803,
+                "lumaSpread": 3.410159702674642,
+                "referenceSpread": 3.8075697666633768
+              },
+              "after": {
+                "pairedDeltaE": 1.6111745871764234,
+                "medianDeltaE": 1.2201706148310387,
+                "lumaSpread": 3.484109309950112,
+                "referenceSpread": 3.8075697666633768
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "d77fe8e2-8438-473e-ace5-01baddd2c4ed",
+          "name": "Onulet",
+          "cohort": "validation",
+          "beforeNative": "963fb8079191d9a77c9befa213142c736a56d6a91873e6778f95d448efa4b383",
+          "afterNative": "ae149324bed9850453299cc74e3323d715bd5175d0d73a638a1f78f27b740bdd",
+          "referenceHash": "248566df30c1926be99bcba10231f980354cddb361701acfd2afd5ef5e1bf2d9",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.5581534377601685,
+                "medianDeltaE": 3.2787151340929697,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.394895798611776
+              },
+              "after": {
+                "pairedDeltaE": 1.7540714800096087,
+                "medianDeltaE": 1.2574719817941207,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.394895798611776
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.6564109419505095,
+                "medianDeltaE": 0.7904308385714873,
+                "lumaSpread": 7.007169040990591,
+                "referenceSpread": 7.1644436179092885
+              },
+              "after": {
+                "pairedDeltaE": 2.293481095797593,
+                "medianDeltaE": 1.6756664062342135,
+                "lumaSpread": 7.1392541727536285,
+                "referenceSpread": 7.1644436179092885
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.9269388973904928,
+                "medianDeltaE": 1.611035236792575,
+                "lumaSpread": 3.480233490202178,
+                "referenceSpread": 3.4268077197629254
+              },
+              "after": {
+                "pairedDeltaE": 1.3367923513568845,
+                "medianDeltaE": 0.6504186891472872,
+                "lumaSpread": 3.6120589887144616,
+                "referenceSpread": 3.4268077197629254
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "59cc9bdb-7cf2-4795-bac7-ffff605c9eb0",
+          "name": "Ornithopter",
+          "cohort": "calibration",
+          "beforeNative": "2c00b3634b60308a5a0d2ced4bced97bf2cfe4945b37bf3e4ff55a012320cc2d",
+          "afterNative": "2715c60380689dc1dfaece13d27f90a70cc621c1fd7c7e00b30f4f5c8edc76cb",
+          "referenceHash": "652c0267d9edc03c8c8ab5995ad5bcfda56532301d4d49f71e4324007e3cac65",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.236637629234337,
+                "medianDeltaE": 1.8581819103404018,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.948120325100813
+              },
+              "after": {
+                "pairedDeltaE": 1.2308847994641559,
+                "medianDeltaE": 0.7538380346908278,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.948120325100813
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.7329558981800193,
+                "medianDeltaE": 2.264803833348163,
+                "lumaSpread": 6.139385759693894,
+                "referenceSpread": 6.200905004468449
+              },
+              "after": {
+                "pairedDeltaE": 4.07686021062223,
+                "medianDeltaE": 3.8357218087540423,
+                "lumaSpread": 6.282276379275098,
+                "referenceSpread": 6.200905004468449
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.5826652193181998,
+                "medianDeltaE": 1.0614737366806415,
+                "lumaSpread": 3.4271260905529566,
+                "referenceSpread": 3.609156965077076
+              },
+              "after": {
+                "pairedDeltaE": 2.75537895327613,
+                "medianDeltaE": 2.62024136340237,
+                "lumaSpread": 3.5243567398382303,
+                "referenceSpread": 3.609156965077076
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "ab9d0e3f-cf7c-41f8-bcd7-bb08ea8cc2f8",
+          "name": "Primal Clay",
+          "cohort": "validation",
+          "beforeNative": "62fffe412ac2c4831259a6e233ea0bb5aea74ff5d4be5f084eb155b9b0dda3ef",
+          "afterNative": "763afc596c3e3dfa4f3eaac06813c184decda96ab822c4717e55be65300d187a",
+          "referenceHash": "2c9aa6e2e1198e37854cbb36232aaadf4d0e5d52187ffa96515fda491fbac5ec",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 11.943357944911773,
+                "medianDeltaE": 11.86721902604272,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.781367931281811
+              },
+              "after": {
+                "pairedDeltaE": 10.115857198579171,
+                "medianDeltaE": 10.041188411953335,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.781367931281811
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 4.470716089864073,
+                "medianDeltaE": 4.126917272182918,
+                "lumaSpread": 8.433828437843172,
+                "referenceSpread": 4.682992428689969
+              },
+              "after": {
+                "pairedDeltaE": 3.0485725094429834,
+                "medianDeltaE": 2.559038348384549,
+                "lumaSpread": 8.657822330985777,
+                "referenceSpread": 4.682992428689969
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 4.74770631703654,
+                "medianDeltaE": 4.649347455654063,
+                "lumaSpread": 3.466350698497689,
+                "referenceSpread": 3.6804407376858417
+              },
+              "after": {
+                "pairedDeltaE": 3.1559222742872715,
+                "medianDeltaE": 2.9832745469906703,
+                "lumaSpread": 3.5673737857401133,
+                "referenceSpread": 3.6804407376858417
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "0fd7c711-3ff4-4691-914f-242e6737066c",
+          "name": "Rakalite",
+          "cohort": "validation",
+          "beforeNative": "da2fe68dcc4e890676a067c260615eaf3d5bc88a47be82b30cfa7c41a68b6074",
+          "afterNative": "7aae061a91202765e3ad1f01f5277785a8ec66635c4973cc3812fcb2d3a60060",
+          "referenceHash": "23e751a6a2ff50a17aacf7bf148c32f9ce55f05ef59966b203295915d513baf0",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.285836842216953,
+                "medianDeltaE": 3.0175442915821185,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 6.467099955167455
+              },
+              "after": {
+                "pairedDeltaE": 1.6950327935696805,
+                "medianDeltaE": 1.2176881995586393,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 6.467099955167455
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.44183462165504,
+                "medianDeltaE": 0.6055223960166588,
+                "lumaSpread": 7.716307334751271,
+                "referenceSpread": 6.609689533570751
+              },
+              "after": {
+                "pairedDeltaE": 2.7477604510979443,
+                "medianDeltaE": 1.2083054025839872,
+                "lumaSpread": 7.9211888835646445,
+                "referenceSpread": 6.609689533570751
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.0020331245644796,
+                "medianDeltaE": 1.7888837221048195,
+                "lumaSpread": 3.4009441576498545,
+                "referenceSpread": 4.059534210246618
+              },
+              "after": {
+                "pairedDeltaE": 1.258554503215069,
+                "medianDeltaE": 0.1425422504844579,
+                "lumaSpread": 3.4909472967493915,
+                "referenceSpread": 4.059534210246618
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "d5bb2093-78a8-4a6c-abe7-9a5afc181ec5",
+          "name": "Rocket Launcher",
+          "cohort": "validation",
+          "beforeNative": "761b8f2ea53b2faad7fa29786a828ff88677e40fdfad63864ec991d88706f194",
+          "afterNative": "643a06beef4458e9b3cc0bb1a0000f43c82d7f1abb072f35b35f155f963bc29d",
+          "referenceHash": "511a1be4333dbe5955952bc8b4d6c38ca40e7a998efc812403b19716a20654c1",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 4.31027991810521,
+                "medianDeltaE": 4.4217904637021865,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.509706558393079
+              },
+              "after": {
+                "pairedDeltaE": 2.4362810173707166,
+                "medianDeltaE": 2.5303959027176095,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.509706558393079
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.9013996532299242,
+                "medianDeltaE": 1.0373833675118393,
+                "lumaSpread": 7.510622866166006,
+                "referenceSpread": 6.6000950299377585
+              },
+              "after": {
+                "pairedDeltaE": 1.9242722507031598,
+                "medianDeltaE": 0.5998155327911946,
+                "lumaSpread": 7.69469551294959,
+                "referenceSpread": 6.6000950299377585
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.2178770783654986,
+                "medianDeltaE": 1.9609549675218705,
+                "lumaSpread": 3.4463214048462976,
+                "referenceSpread": 3.532308787543126
+              },
+              "after": {
+                "pairedDeltaE": 1.4087043781229847,
+                "medianDeltaE": 0.3533634945944819,
+                "lumaSpread": 3.5326003168897113,
+                "referenceSpread": 3.532308787543126
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "cc278af4-b60d-41b7-b9d7-36c8aefca1a7",
+          "name": "Shapeshifter",
+          "cohort": "calibration",
+          "beforeNative": "685cbbc4433077956acb40ff32e93d5845cf32e0aba6b79759b58191f366a421",
+          "afterNative": "2ee911fcf4318d15346183dc44c8323258ad1196c2f91cb3713eee6f70772d66",
+          "referenceHash": "3a867b07cc4969a48c5c41c4a60d16957ccf6353fe93c0f828dbae48a297b101",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 9.344638483637393,
+                "medianDeltaE": 9.353618638957812,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.158613447752547
+              },
+              "after": {
+                "pairedDeltaE": 7.6041927724035325,
+                "medianDeltaE": 7.621559854636543,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.158613447752547
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 3.2249366188038704,
+                "medianDeltaE": 2.7280095357409473,
+                "lumaSpread": 7.340118701465126,
+                "referenceSpread": 4.028628578908588
+              },
+              "after": {
+                "pairedDeltaE": 2.2496587202911837,
+                "medianDeltaE": 1.1449899590799788,
+                "lumaSpread": 7.527474655001698,
+                "referenceSpread": 4.028628578908588
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 3.517743441280268,
+                "medianDeltaE": 3.470750912145403,
+                "lumaSpread": 3.4071720118706628,
+                "referenceSpread": 3.68233912518674
+              },
+              "after": {
+                "pairedDeltaE": 2.104421445658724,
+                "medianDeltaE": 1.7926753691062836,
+                "lumaSpread": 3.484485098581569,
+                "referenceSpread": 3.68233912518674
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "a6bf858d-bba9-4a16-9045-55384b1de633",
+          "name": "Staff of Zegon",
+          "cohort": "validation",
+          "beforeNative": "c8a0d2904228df31ddc189fd9ea5be9e9f17c97bd69d4212af8e5e44b00298d0",
+          "afterNative": "3c6d744691f2498cbfec3b76f2862caaa556418bf1085babbf9e74f81760efe4",
+          "referenceHash": "00173578b1223a021e95bb23f311646d3c45f337af7c75dd16f0267b85732ab8",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 4.366175133402226,
+                "medianDeltaE": 4.22738398686119,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.622211768516427
+              },
+              "after": {
+                "pairedDeltaE": 2.400669546218506,
+                "medianDeltaE": 2.2857884264539026,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.622211768516427
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.2502526112290995,
+                "medianDeltaE": 1.1457352500232962,
+                "lumaSpread": 7.1470676426741875,
+                "referenceSpread": 6.2243389733031895
+              },
+              "after": {
+                "pairedDeltaE": 2.1662386613762603,
+                "medianDeltaE": 0.6113737251222167,
+                "lumaSpread": 7.322220632538434,
+                "referenceSpread": 6.2243389733031895
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.348381162388297,
+                "medianDeltaE": 2.1852918653964357,
+                "lumaSpread": 3.462658126166185,
+                "referenceSpread": 4.0214187352013875
+              },
+              "after": {
+                "pairedDeltaE": 1.2474230227405922,
+                "medianDeltaE": 0.533837438603524,
+                "lumaSpread": 3.5544883463947574,
+                "referenceSpread": 4.0214187352013875
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "a64d4f93-0c04-4078-aec0-7e9de92f260f",
+          "name": "Su-Chi",
+          "cohort": "calibration",
+          "beforeNative": "00055972d03f56a10e5ad736659ed2b80f7a2ddb0e211b745562392384a48271",
+          "afterNative": "9b62f96536ad252b22c71ad3b0a98adebfeb5dd4e2106d5a78cd5b06d02a9e53",
+          "referenceHash": "05e9de7c7534c96ce20f87051eefd41183d0c7e810f87eda46d87c4989ff5fe7",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.5787208983698897,
+                "medianDeltaE": 2.1395212481635664,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.883929730829207
+              },
+              "after": {
+                "pairedDeltaE": 2.176151862967908,
+                "medianDeltaE": 1.7044432274885046,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.883929730829207
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.6504211155546893,
+                "medianDeltaE": 0.5223685922122134,
+                "lumaSpread": 7.170394451337581,
+                "referenceSpread": 7.557368688580279
+              },
+              "after": {
+                "pairedDeltaE": 1.9699916133745994,
+                "medianDeltaE": 1.2108867433917376,
+                "lumaSpread": 7.367597377831492,
+                "referenceSpread": 7.557368688580279
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.3556283594224365,
+                "medianDeltaE": 2.0876887892492535,
+                "lumaSpread": 3.5063496630862168,
+                "referenceSpread": 3.7060932904897537
+              },
+              "after": {
+                "pairedDeltaE": 1.397159337321823,
+                "medianDeltaE": 0.4774716921692193,
+                "lumaSpread": 3.58023662874829,
+                "referenceSpread": 3.7060932904897537
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "6d7a2718-301f-4191-b348-0c44c7c07d43",
+          "name": "Tablet of Epityr",
+          "cohort": "calibration",
+          "beforeNative": "ab3052e8d36b5801cea9aca951d818ba2d770e9fa18eda4622e6394406c51acd",
+          "afterNative": "bd24d7e375081e89db8d5b12ad64f2c85f74c868bbcd0eaac7f5a015a5aab016",
+          "referenceHash": "96ca6296b70c03e5aa0d3dac695045c061161cdf181368d04c1b871928f11c87",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 5.899319114371611,
+                "medianDeltaE": 5.863965050395014,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.570200939307034
+              },
+              "after": {
+                "pairedDeltaE": 4.163645460856348,
+                "medianDeltaE": 4.157651968283319,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.570200939307034
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.747461268380808,
+                "medianDeltaE": 1.9838244812245207,
+                "lumaSpread": 6.9255015065259435,
+                "referenceSpread": 4.863321539819587
+              },
+              "after": {
+                "pairedDeltaE": 2.130700276311151,
+                "medianDeltaE": 0.4116951672909268,
+                "lumaSpread": 7.119251875027932,
+                "referenceSpread": 4.863321539819587
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 3.3611481858746033,
+                "medianDeltaE": 3.3262980130987754,
+                "lumaSpread": 3.4293413824330155,
+                "referenceSpread": 3.874428332674973
+              },
+              "after": {
+                "pairedDeltaE": 1.96607700043451,
+                "medianDeltaE": 1.673231855984584,
+                "lumaSpread": 3.5243532532756916,
+                "referenceSpread": 3.874428332674973
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "c27bc1de-8246-4dc8-af51-ec21def9e226",
+          "name": "Tawnos's Coffin",
+          "cohort": "calibration",
+          "beforeNative": "5fb3a732beebcfde530b709e4920d3d2d584c08a89f1f9558e7b80851d7fe625",
+          "afterNative": "f0d6364f1edede0806caaa82ba28119571072106c555dd4b21f02542c2da90a8",
+          "referenceHash": "c5a9398210dabb4e349bdb254561fa60a062c09b7ee3a823b70ab17604b1facf",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.823962596723708,
+                "medianDeltaE": 2.4916441372481177,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.820242909137285
+              },
+              "after": {
+                "pairedDeltaE": 1.3546281480887248,
+                "medianDeltaE": 0.5974188699499,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.820242909137285
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.6849670702621329,
+                "medianDeltaE": 0.6398633662274061,
+                "lumaSpread": 5.287965142088047,
+                "referenceSpread": 5.035326079170332
+              },
+              "after": {
+                "pairedDeltaE": 2.4984776289692183,
+                "medianDeltaE": 2.1312557426254535,
+                "lumaSpread": 5.461228909949445,
+                "referenceSpread": 5.035326079170332
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.5921016920427398,
+                "medianDeltaE": 1.0826875024138147,
+                "lumaSpread": 3.474221618063633,
+                "referenceSpread": 3.867093954492873
+              },
+              "after": {
+                "pairedDeltaE": 1.48839554332028,
+                "medianDeltaE": 0.703153522111358,
+                "lumaSpread": 3.580787294412424,
+                "referenceSpread": 3.867093954492873
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "978f09dd-121a-4da5-ba16-5c03fbdce084",
+          "name": "Tawnos's Wand",
+          "cohort": "validation",
+          "beforeNative": "e90d5db9e44fff31f935a6c32048964e38e130d8571fa5619ac3805dbfcb39d0",
+          "afterNative": "2eb82a79a6de1f5030d561b7e81ecc28d48f36cf706a59ed8b91aeb0fc15be7d",
+          "referenceHash": "065aa42d1fd83bd056e3e54a01c445b99e2cd8457011ad432a0575fce2db88d2",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 4.939753495704056,
+                "medianDeltaE": 4.767702133933426,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.719724083211741
+              },
+              "after": {
+                "pairedDeltaE": 3.0540433868360086,
+                "medianDeltaE": 2.900026786380867,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.719724083211741
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.7970420856386493,
+                "medianDeltaE": 0.47262135873067745,
+                "lumaSpread": 7.892673898058278,
+                "referenceSpread": 6.710219592232647
+              },
+              "after": {
+                "pairedDeltaE": 2.4968168771196515,
+                "medianDeltaE": 1.7584576860589334,
+                "lumaSpread": 8.108249604768226,
+                "referenceSpread": 6.710219592232647
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.5366004160143507,
+                "medianDeltaE": 0.9340756235423289,
+                "lumaSpread": 3.432613866714429,
+                "referenceSpread": 3.7145877013607165
+              },
+              "after": {
+                "pairedDeltaE": 1.446990579409637,
+                "medianDeltaE": 0.8221560768486008,
+                "lumaSpread": 3.546478082721727,
+                "referenceSpread": 3.7145877013607165
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "3035cead-a501-4204-9154-5fd648577d32",
+          "name": "Tawnos's Weaponry",
+          "cohort": "calibration",
+          "beforeNative": "12fee88f372aa0c968f27959a766c935fc24958eaf246961803eea623be5c80a",
+          "afterNative": "6000b33fc59bc2b5d746ffb32bace2fe7fc9d5cfa10a46bae03f4e1f02a2f94b",
+          "referenceHash": "f29919f48552cea63c0bbc9f1c722ac08b16dd3be0b4e29554d10e34976b8305",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.2432877386244297,
+                "medianDeltaE": 1.8964137493443018,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.982008637069335
+              },
+              "after": {
+                "pairedDeltaE": 1.2722307128205421,
+                "medianDeltaE": 0.8195949998900356,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.982008637069335
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.299347487375803,
+                "medianDeltaE": 1.358311070045608,
+                "lumaSpread": 7.378330940626066,
+                "referenceSpread": 6.711249046350975
+              },
+              "after": {
+                "pairedDeltaE": 3.3268090636618677,
+                "medianDeltaE": 2.8970531490917555,
+                "lumaSpread": 7.586275850476376,
+                "referenceSpread": 6.711249046350975
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.366833082241706,
+                "medianDeltaE": 0.4236549018595767,
+                "lumaSpread": 3.356736975538288,
+                "referenceSpread": 4.283641534225879
+              },
+              "after": {
+                "pairedDeltaE": 1.9666876385536138,
+                "medianDeltaE": 1.5597180179401977,
+                "lumaSpread": 3.4605005737851413,
+                "referenceSpread": 4.283641534225879
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "cca371f0-e7c9-4154-8e1d-47576c0202bc",
+          "name": "Tawnos's Weaponry",
+          "cohort": "calibration",
+          "beforeNative": "fab1d82b889ceeb85e56abdc0542bcda06bbe33e3fcaf021e18b824fdcb90203",
+          "afterNative": "7de106b42b728d7ab3d4570884ab6145324f71284382dcf75f740f5005da0bfd",
+          "referenceHash": "beb23665954dbb2b4342ca279758e0ce581825691ed09c0036b63a176228202c",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 11.712251116628478,
+                "medianDeltaE": 11.723144446084595,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.497423947943281
+              },
+              "after": {
+                "pairedDeltaE": 9.939850743202538,
+                "medianDeltaE": 9.960297603024548,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.497423947943281
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 5.500937578002095,
+                "medianDeltaE": 5.027308471692572,
+                "lumaSpread": 7.425156539348288,
+                "referenceSpread": 3.825236079661143
+              },
+              "after": {
+                "pairedDeltaE": 4.040030814539536,
+                "medianDeltaE": 3.4389317201144265,
+                "lumaSpread": 7.60929674835854,
+                "referenceSpread": 3.825236079661143
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 6.169137276591948,
+                "medianDeltaE": 6.469500715832677,
+                "lumaSpread": 3.348950220333047,
+                "referenceSpread": 4.736935707499212
+              },
+              "after": {
+                "pairedDeltaE": 4.547450449642305,
+                "medianDeltaE": 4.809369841859067,
+                "lumaSpread": 3.473377177222803,
+                "referenceSpread": 4.736935707499212
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "23eb19f9-2e8f-4bf0-9bf8-868e6da70e2d",
+          "name": "Tetravus",
+          "cohort": "calibration",
+          "beforeNative": "93109bd1c79969e43ed5bb2901668d8696709b7a971c67db9fe3c38bff8b05c0",
+          "afterNative": "429f81df623924443bd3db5ccec137bf9045e53514165722a5fb3593ed94e2a8",
+          "referenceHash": "0ec3d97f26b211de4068fbeff848ba8a444ae0a334899110bb58a3d6ef0f4390",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 3.6069760717077646,
+                "medianDeltaE": 3.5778852724243353,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 6.768294320305179
+              },
+              "after": {
+                "pairedDeltaE": 1.7819437936286913,
+                "medianDeltaE": 1.6106530259612253,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 6.768294320305179
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.7301080730322802,
+                "medianDeltaE": 1.0205570544716909,
+                "lumaSpread": 5.296187096486326,
+                "referenceSpread": 4.886811974124594
+              },
+              "after": {
+                "pairedDeltaE": 1.7779594502285088,
+                "medianDeltaE": 1.0288710025273717,
+                "lumaSpread": 5.42818774955065,
+                "referenceSpread": 4.886811974124594
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.353312091847534,
+                "medianDeltaE": 2.1570647645513747,
+                "lumaSpread": 3.3988569757985254,
+                "referenceSpread": 3.984354193576445
+              },
+              "after": {
+                "pairedDeltaE": 1.3803993098757932,
+                "medianDeltaE": 0.6524058582066408,
+                "lumaSpread": 3.5125259573267176,
+                "referenceSpread": 3.984354193576445
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "ec0686ba-1277-4412-a397-7a6227808311",
+          "name": "The Rack",
+          "cohort": "calibration",
+          "beforeNative": "c8761601cec35d6cf0b1b1f24397b1f8bf5c76d7087ea343241ad442b98e10fb",
+          "afterNative": "44d44d9fa008a44dc9acdf4108f0ffd548d75ebd5a10c1ac97421620886102e9",
+          "referenceHash": "96f4908ec1538ef9ef2036113a86ebefd5120ad4ed1f19203ccf237787b0c5ac",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 8.673730585272592,
+                "medianDeltaE": 8.54536866306952,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.963743421796096
+              },
+              "after": {
+                "pairedDeltaE": 6.922297420766607,
+                "medianDeltaE": 6.8050005920760475,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.963743421796096
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.7760035386542703,
+                "medianDeltaE": 2.142721270502148,
+                "lumaSpread": 7.8460487490249475,
+                "referenceSpread": 4.602240958156878
+              },
+              "after": {
+                "pairedDeltaE": 2.160941122353182,
+                "medianDeltaE": 0.6098984122691519,
+                "lumaSpread": 8.06000391187528,
+                "referenceSpread": 4.602240958156878
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.8666388378792362,
+                "medianDeltaE": 2.667206019719398,
+                "lumaSpread": 3.397495086454183,
+                "referenceSpread": 3.379511531424939
+              },
+              "after": {
+                "pairedDeltaE": 1.7069871531444525,
+                "medianDeltaE": 1.0288046023180566,
+                "lumaSpread": 3.5256540201685227,
+                "referenceSpread": 3.379511531424939
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "a79c99e1-722a-44b6-8fa3-2be3f0c193d8",
+          "name": "Triskelion",
+          "cohort": "calibration",
+          "beforeNative": "d457f19ed68b4dfb8fd546487ca7e2cd1e4504a4b3147e925c2ff7f6e1484d14",
+          "afterNative": "3eab70c6ed90d7111847bbda2cf0ebe4331aeaa6f6049912f9eff0794a66ca8d",
+          "referenceHash": "27cb2a8606c83e3ad06d21eee1664dd2840afcdda334e35f4d6fa1ffae9d88ea",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 8.750659808428802,
+                "medianDeltaE": 8.751705672899309,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.873328284944778
+              },
+              "after": {
+                "pairedDeltaE": 6.865651182556796,
+                "medianDeltaE": 6.884909565789821,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.873328284944778
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 3.4880270993504583,
+                "medianDeltaE": 3.095624523080177,
+                "lumaSpread": 7.157947476405746,
+                "referenceSpread": 5.973983718031228
+              },
+              "after": {
+                "pairedDeltaE": 2.4241059323707117,
+                "medianDeltaE": 1.5141072384320617,
+                "lumaSpread": 7.333457480141137,
+                "referenceSpread": 5.973983718031228
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 4.161769455942053,
+                "medianDeltaE": 4.101829514940691,
+                "lumaSpread": 3.4385947210427426,
+                "referenceSpread": 3.129675117582309
+              },
+              "after": {
+                "pairedDeltaE": 2.5966322190072093,
+                "medianDeltaE": 2.447856227670397,
+                "lumaSpread": 3.539037727657135,
+                "referenceSpread": 3.129675117582309
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "448e1811-fb16-4390-ac22-b7066a4a019c",
+          "name": "Urza's Avenger",
+          "cohort": "calibration",
+          "beforeNative": "1a353e9a3e6e4acd569ea16097ce135556328aee06dded26855faba1d497a240",
+          "afterNative": "300611cbdb57eb206e1026615ef3286aaca4f8ce8fb10818ac5adaa5fba62633",
+          "referenceHash": "80ecae4cddf33623a18f857e2c1e33b77faf626329fdc94278ecaf90902d6c99",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 10.469860587190874,
+                "medianDeltaE": 10.438124424184094,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 6.209074318464647
+              },
+              "after": {
+                "pairedDeltaE": 8.563818837540682,
+                "medianDeltaE": 8.545813121964155,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 6.209074318464647
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 4.918843263898444,
+                "medianDeltaE": 4.8572330436581534,
+                "lumaSpread": 7.397981240576135,
+                "referenceSpread": 6.341974825817598
+              },
+              "after": {
+                "pairedDeltaE": 3.4775018948318053,
+                "medianDeltaE": 3.249359782132641,
+                "lumaSpread": 7.59355162870563,
+                "referenceSpread": 6.341974825817598
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 5.755285044073536,
+                "medianDeltaE": 5.7893451989520495,
+                "lumaSpread": 3.462235158039162,
+                "referenceSpread": 3.112593500863392
+              },
+              "after": {
+                "pairedDeltaE": 4.117616064117855,
+                "medianDeltaE": 4.123186630479559,
+                "lumaSpread": 3.5430479763598255,
+                "referenceSpread": 3.112593500863392
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "f3728537-86d3-42be-9046-90bba1bfafc1",
+          "name": "Urza's Chalice",
+          "cohort": "calibration",
+          "beforeNative": "014add680e1c70e9722b864700c9ee506aba02bbe3ee4146f98495382b5bb391",
+          "afterNative": "b435f1f4c70fa7855c08d8fc01bac104c0f614033d0b1789c312d887772e693b",
+          "referenceHash": "19e33a8ed445e45a67a81e72cab739c98fc2cb5da765eb7542103f783bd773a5",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 6.7110407928211515,
+                "medianDeltaE": 6.485164085596999,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.604064620505765
+              },
+              "after": {
+                "pairedDeltaE": 4.7859456379073215,
+                "medianDeltaE": 4.602406308981823,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.604064620505765
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.7707292531209835,
+                "medianDeltaE": 2.191517843312638,
+                "lumaSpread": 6.922640761921828,
+                "referenceSpread": 5.539150758490008
+              },
+              "after": {
+                "pairedDeltaE": 2.100524963942289,
+                "medianDeltaE": 0.6043651157036707,
+                "lumaSpread": 7.0654721922366885,
+                "referenceSpread": 5.539150758490008
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 3.2057171837269776,
+                "medianDeltaE": 3.0918769706857767,
+                "lumaSpread": 3.3972316401807645,
+                "referenceSpread": 3.1676605188649565
+              },
+              "after": {
+                "pairedDeltaE": 1.8397425467459414,
+                "medianDeltaE": 1.4173561278185847,
+                "lumaSpread": 3.4926479304647318,
+                "referenceSpread": 3.1676605188649565
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "438f0c61-a61d-4a9e-b21f-4e86420c7913",
+          "name": "Urza's Miter",
+          "cohort": "calibration",
+          "beforeNative": "ecda28719833fc9bef7a5ea849669928305bd1df7178cd3f4b4560389d6d1d67",
+          "afterNative": "5f906bb521e512eacab3c13be3a47f6b26d0e2dca3a5e4ac0e5035226da96635",
+          "referenceHash": "e8e0ed83ba9a861697da5ebb4dcb3873027b19edc5246dda765c0333a1f869e0",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 2.391490474428552,
+                "medianDeltaE": 2.098797565596186,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 5.15870535014924
+              },
+              "after": {
+                "pairedDeltaE": 1.0838470726844667,
+                "medianDeltaE": 0.3314634167767058,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 5.15870535014924
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.6848761454906316,
+                "medianDeltaE": 1.949877872923191,
+                "lumaSpread": 7.92067990640235,
+                "referenceSpread": 8.33343679811801
+              },
+              "after": {
+                "pairedDeltaE": 3.9375350346279023,
+                "medianDeltaE": 3.5192376171439275,
+                "lumaSpread": 8.094727347931741,
+                "referenceSpread": 8.33343679811801
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.2812799229461147,
+                "medianDeltaE": 0.428575308299671,
+                "lumaSpread": 3.39163815343565,
+                "referenceSpread": 4.137203691232161
+              },
+              "after": {
+                "pairedDeltaE": 2.2286077561822806,
+                "medianDeltaE": 2.052769898948377,
+                "lumaSpread": 3.4371084039489075,
+                "referenceSpread": 4.137203691232161
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "b1dda179-c49a-4995-ba5a-db93ac43dbe7",
+          "name": "Wall of Spears",
+          "cohort": "validation",
+          "beforeNative": "9372cb54b106fded64b2ab9959f7ee0aef1492b7bdc44203e8631e3ff2f1aefa",
+          "afterNative": "c7be3e6922d6acb0e98a80f88f05f0c5c87f6b9c04869e10a2349455365826f8",
+          "referenceHash": "8fab96c98eb440fc63ebd9e0c46addb534377f9eb798b5d0e12860a0def597fc",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 7.21333139930575,
+                "medianDeltaE": 7.432593324730928,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 6.095987313345108
+              },
+              "after": {
+                "pairedDeltaE": 5.344673486635003,
+                "medianDeltaE": 5.590161666960272,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 6.095987313345108
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.737508433173614,
+                "medianDeltaE": 2.450790417275523,
+                "lumaSpread": 6.7497887540563735,
+                "referenceSpread": 5.5552839668420395
+              },
+              "after": {
+                "pairedDeltaE": 1.6839385025116491,
+                "medianDeltaE": 0.8541286706895878,
+                "lumaSpread": 6.860357491441437,
+                "referenceSpread": 5.5552839668420395
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 3.571528695809782,
+                "medianDeltaE": 3.5008335886011306,
+                "lumaSpread": 3.4593402721748157,
+                "referenceSpread": 3.4955057176295545
+              },
+              "after": {
+                "pairedDeltaE": 2.0724194038743535,
+                "medianDeltaE": 1.8211633705744035,
+                "lumaSpread": 3.565200561368065,
+                "referenceSpread": 3.4955057176295545
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "46adf48f-99d2-440e-9129-794584c1ea21",
+          "name": "Weakstone",
+          "cohort": "calibration",
+          "beforeNative": "0b79999a5352a43938bb6257f79f5303d85bead9fe41ddc6b3531819b19ad10d",
+          "afterNative": "01e5344b39ba79683f71b304fa855dcda6d23fb951907f5e3842af75c7fb9304",
+          "referenceHash": "029b03b920dfe9d9f55abc83ede2a50ba75603c4f28f34fd0c292e46194df0b3",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 4.787083074037197,
+                "medianDeltaE": 4.58785402455897,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 3.8911677620768637
+              },
+              "after": {
+                "pairedDeltaE": 2.9968060896024866,
+                "medianDeltaE": 2.851527199591868,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 3.8911677620768637
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 1.8579689961958648,
+                "medianDeltaE": 0.7314612160076682,
+                "lumaSpread": 6.525135767211577,
+                "referenceSpread": 5.7245347673821945
+              },
+              "after": {
+                "pairedDeltaE": 2.744471029962607,
+                "medianDeltaE": 2.2234190448427995,
+                "lumaSpread": 6.702831971585955,
+                "referenceSpread": 5.7245347673821945
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 1.222303513986598,
+                "medianDeltaE": 0.559378407969482,
+                "lumaSpread": 3.3950010257805863,
+                "referenceSpread": 3.419814360008755
+              },
+              "after": {
+                "pairedDeltaE": 1.6640238000894445,
+                "medianDeltaE": 1.2699587302541455,
+                "lumaSpread": 3.520396739062903,
+                "referenceSpread": 3.419814360008755
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        },
+        {
+          "id": "27cf53e3-76f6-4831-800e-1259394d779d",
+          "name": "Yotian Soldier",
+          "cohort": "calibration",
+          "beforeNative": "02c883e156268c2af08663a2ddaf661d6927edcd48c05119fd0a131176922850",
+          "afterNative": "7e48adda9ea9a7b54ae3e25a4d894e453f215539eacaca93c9dac1a6161eeb36",
+          "referenceHash": "282006e926b7cf54c9de29b0b750df15f28270c1fbfa30636f56623dd548d3c8",
+          "metrics": {
+            "frame": {
+              "before": {
+                "pairedDeltaE": 6.29414999364129,
+                "medianDeltaE": 6.232436355297751,
+                "lumaSpread": 5.766839620024844,
+                "referenceSpread": 4.734061163924985
+              },
+              "after": {
+                "pairedDeltaE": 4.43518115312833,
+                "medianDeltaE": 4.416379851517095,
+                "lumaSpread": 4.687222397703827,
+                "referenceSpread": 4.734061163924985
+              }
+            },
+            "paper": {
+              "before": {
+                "pairedDeltaE": 2.1223196220965237,
+                "medianDeltaE": 1.3143423350910695,
+                "lumaSpread": 6.375265420466403,
+                "referenceSpread": 5.887636625529657
+              },
+              "after": {
+                "pairedDeltaE": 1.8786982925716413,
+                "medianDeltaE": 0.3627640544700122,
+                "lumaSpread": 6.550124788178824,
+                "referenceSpread": 5.887636625529657
+              }
+            },
+            "paperClear": {
+              "before": {
+                "pairedDeltaE": 2.656787842056551,
+                "medianDeltaE": 2.478088207740018,
+                "lumaSpread": 3.484365672977374,
+                "referenceSpread": 3.4001272760109447
+              },
+              "after": {
+                "pairedDeltaE": 1.4461714575341662,
+                "medianDeltaE": 0.823468774811097,
+                "lumaSpread": 3.614625492181711,
+                "referenceSpread": 3.4001272760109447
+              }
+            }
+          },
+          "artChanged": 0,
+          "paperUnchanged": false
+        }
+      ],
+      "clipControls": [
+        {
+          "id": "b094f8dd-0184-41a2-9767-e848a6e4eac1",
+          "name": "Amulet of Kroog",
+          "changedPixels": 3000,
+          "changedOutsideBoundary": 0,
+          "whiteSidePixelsBefore": 0,
+          "whiteSidePixelsAfter": 0,
+          "meanSideBrightnessBefore": 84.44910256410257,
+          "meanSideBrightnessAfter": 49.09641025641026
+        },
+        {
+          "id": "f7a69e35-d209-41c0-aa3c-c78414617075",
+          "name": "Battering Ram",
+          "changedPixels": 3000,
+          "changedOutsideBoundary": 0,
+          "whiteSidePixelsBefore": 0,
+          "whiteSidePixelsAfter": 0,
+          "meanSideBrightnessBefore": 84.44910256410257,
+          "meanSideBrightnessAfter": 49.09641025641026
+        }
+      ],
+      "before": {
+        "frame": {
+          "family": "fourth",
+          "frame": [0.006204737704918072, 0.0046099999999999475, 0.988123, 0.9928020000000001],
+          "art": [0.1102870270382514, 0.09348941714285709, 0.7825934159999999, 0.4495974771428572],
+          "stockWindow": [
+            0.038803990666756966, 0.030084103446862763, 0.9222112784916465, 0.9372200417779069
+          ],
+          "assetKey": "a"
+        },
+        "color": {
+          "source": "[\"https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png\",[0.006204737704918072,0.0046099999999999475,0.988123,0.9928020000000001]]",
+          "stock": "#181510",
+          "adjustment": {
+            "frame": {
+              "hueDegrees": 0,
+              "saturationScale": 1,
+              "brightnessScale": 1
+            },
+            "paper": {
+              "hueDegrees": 2.363636363636374,
+              "saturationScale": 0.7043207881567981,
+              "brightnessScale": 0.995433789954338
+            },
+            "mask": {
+              "kind": "rect",
+              "rect": [
+                0.12443195206516984, 0.6097999281178866, 0.7552933652001211, 0.2785431891697616
+              ],
+              "feather": 0.0013333333333333333
+            }
+          }
+        }
+      },
+      "candidate": {
+        "frame": {
+          "family": "fourth",
+          "frame": [0.006204737704918072, 0.0046099999999999475, 0.988123, 0.9928020000000001],
+          "art": [0.1102870270382514, 0.09348941714285709, 0.7825934159999999, 0.4495974771428572],
+          "stockWindow": [
+            0.0396362325382514, 0.03049376642857138, 0.9199425129999999, 0.9368103787961982
+          ],
+          "assetKey": "a"
+        },
+        "color": {
+          "source": "[\"https://cdn.jsdelivr.net/gh/Investigamer/cardconjurer@2fcddba8966156d484cedf54d8214996748dd5e1/img/frames/old/fourth/a.png\",[0.006204737704918072,0.0046099999999999475,0.988123,0.9928020000000001]]",
+          "stock": "#181510",
+          "adjustment": {
+            "frame": {
+              "hueDegrees": -2.002350743753932,
+              "saturationScale": 0.581795274332515,
+              "brightnessScale": 0.8337109156731138,
+              "valueGamma": 0.7482192507973854,
+              "rgbScale": [1.0123767511090804, 1.0069612255736127, 0.9809459739175763]
+            },
+            "paper": {
+              "hueDegrees": 4.025295290715398,
+              "saturationScale": 0.681312222046106,
+              "brightnessScale": 1.016462156383666,
+              "valueGamma": 0.9919923286040149,
+              "rgbScale": [0.991850156730185, 1.0029680705826796, 1.0052332058680706]
+            },
+            "mask": {
+              "kind": "rect",
+              "rect": [
+                0.12443195206516984, 0.6097999281178866, 0.7552933652001211, 0.2785431891697616
+              ],
+              "feather": 0.0013333333333333333
+            }
+          }
+        }
+      },
+      "paperFitTool": "546adc8c42c520b7570c7aa569e8c420bbcf1c126d96d2553d9bad91981aa4dc",
+      "rejectedCandidate": {
+        "reason": "3px ink suppression before pooled reference fitting did not improve full native paper fields; replaced with ink clearing per reference before pooling.",
+        "cohorts": {
+          "calibration": {
+            "frame": {
+              "names": 33,
+              "before": 5.2860310977926535,
+              "after": 3.6807835542640226,
+              "improved": 33,
+              "unchanged": 0,
+              "worstRegression": 0.18771230475846745
+            },
+            "paper": {
+              "names": 33,
+              "before": 2.5289267465849683,
+              "after": 2.5289267465849683,
+              "improved": 0,
+              "unchanged": 34,
+              "worstRegression": 0.0
+            },
+            "paperClear": {
+              "names": 33,
+              "before": 2.5377673385411015,
+              "after": 2.5377673385411015,
+              "improved": 0,
+              "unchanged": 34,
+              "worstRegression": 0.0
+            }
+          },
+          "validation": {
+            "frame": {
+              "names": 11,
+              "before": 6.276566841480395,
+              "after": 4.50095009799209,
+              "improved": 11,
+              "unchanged": 0,
+              "worstRegression": 0.0
+            },
+            "paper": {
+              "names": 11,
+              "before": 2.6038167500385105,
+              "after": 2.6038167500385105,
+              "improved": 0,
+              "unchanged": 11,
+              "worstRegression": 0.0
+            },
+            "paperClear": {
+              "names": 11,
+              "before": 2.7126079882806953,
+              "after": 2.7126079882806953,
+              "improved": 0,
+              "unchanged": 11,
+              "worstRegression": 0.0
+            }
+          }
+        }
+      }
+    }
+  }
+}

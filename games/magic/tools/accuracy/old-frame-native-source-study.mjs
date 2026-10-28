@@ -11,6 +11,17 @@ assert(materialMode === undefined || ['--material-only', '--pilot'].includes(mat
 const pilot = materialMode === '--pilot';
 const materialOnly = materialMode === '--material-only';
 const toolHash = hash(await fs.readFile(new URL(import.meta.url)));
+const assetConfiguration = async () =>
+  Object.fromEntries(
+    await Promise.all(
+      ['assets.json', 'set-symbol-inventory.json', 'symbol-svg-patches.json'].map(async (file) => [
+        file,
+        hash(await fs.readFile(path.join(root, 'games/magic', file))),
+      ]),
+    ),
+  );
+const assetConfigurationBefore = await assetConfiguration();
+
 assert(out, 'Use INPUTS POSES EXPORTED_DIRECTORY GEOMETRY_FILES_COMMA_SEPARATED NEW_OUTPUT');
 await fs.mkdir(out);
 const ib = await fs.readFile(inputFile),
@@ -22,7 +33,7 @@ const eb = await fs.readFile(path.join(exportedDirectory, 'inputs.json')),
   exported = JSON.parse(eb);
 assert.equal(exported.inputHash, hash(ib));
 const reports = [];
-for (const f of geometryFiles.split(',')) {
+for (const f of geometryFiles === '-' ? [] : geometryFiles.split(',')) {
   const raw = await fs.readFile(f),
     data = JSON.parse(raw);
   assert.equal(data.status, 'shared-source-geometry-candidates-not-adopted');
@@ -46,6 +57,20 @@ for (const c of candidates)
 const profileBytes = profileFile ? await fs.readFile(profileFile) : undefined;
 const candidateProfile = profileBytes ? JSON.parse(profileBytes) : undefined;
 if (candidateProfile) assert.equal(candidateProfile.set, input.set);
+if (geometryFiles === '-') {
+  assert(candidateProfile, 'Profile-only replay requires an explicit profile');
+  for (const url of new Set(
+    Object.values(candidateProfile.colors).map((c) => JSON.parse(c.source)[0]),
+  ))
+    sources.push(await cachedFetch(url, { offline: true }));
+}
+
+if (candidateProfile?.setSymbolSource === 'keyrune') {
+  const manifest = JSON.parse(await fs.readFile(path.join(root, 'games/magic/assets.json')));
+  sources.push(
+    await cachedFetch(manifest.KEYRUNE_ROOT + '/' + input.set + '.svg', { offline: true }),
+  );
+}
 if (candidateProfile?.basicSymbol?.originalLetters) {
   const manifest = JSON.parse(await fs.readFile(path.join(root, 'games/magic/assets.json')));
   for (const color of 'wubrg')
@@ -223,11 +248,17 @@ try {
     hash(await fs.readFile(new URL(import.meta.url))),
     'Capture tool changed during execution',
   );
+  assert.deepEqual(
+    await assetConfiguration(),
+    assetConfigurationBefore,
+    'Asset configuration changed during capture',
+  );
   await writeJson(path.join(out, 'capture.json'), {
     schema: 1,
     complete: true,
     set: input.set,
     source: {
+      assetConfiguration: assetConfigurationBefore,
       rendererHash,
       ...(profileBytes ? { profileHash: hash(profileBytes) } : {}),
       materialOnly,

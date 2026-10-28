@@ -110,7 +110,14 @@ try {
     globalThis.__bodyProfile = profile;
   }, profile);
   let entries = input.entries.filter(
-    (e) => e.material !== 'L' && poses.rows.find((r) => r.id === e.id)?.accepted,
+    (e) =>
+      (definition.onlyLands ? e.material === 'L' : e.material !== 'L') &&
+      !(
+        definition.onlyLands &&
+        profile.basicSymbol?.originalLetters &&
+        /\bBasic Land\b/.test(e.card.type_line)
+      ) &&
+      poses.rows.find((r) => r.id === e.id)?.accepted,
   );
   if (definition.maximumPerCohort) {
     const selected = [];

@@ -14,6 +14,7 @@ const synthetic = {
     '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path style="fill:#ffffff" d="M0 0H100V100H0Z"/><path d="M10 10H90V90H10Z"/><path fill="#fff" d="M20 20H25V80H20Z"/><path fill="#fff" d="M30 20H35V80H30Z"/><path fill="#fff" d="M40 20H45V80H40Z"/><path fill="#fff" d="M50 20H55V80H50Z"/><path fill="#fff" d="M60 20H65V80H60Z"/></svg>',
   m15: '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="160"><path d="M0 0H300V160H0Z"/><linearGradient id="g"><stop stop-color="#4488aa"/><stop offset="1" stop-color="#ddeeff"/></linearGradient><path fill="url(#g)" d="M30 30H50V90H30Z"/><path fill="url(#g)" d="M60 30H80V90H60Z"/><path fill="url(#g)" d="M90 30H110V90H90Z"/><path fill="url(#g)" d="M120 30H140V90H120Z"/><path fill="url(#g)" d="M150 30H170V90H150Z"/></svg>',
   rim: '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><radialGradient id="g"><stop stop-color="#888"/><stop offset="1" stop-color="#ddd"/></radialGradient><path d="M0 0H100V100H0Z"/><path fill="#333" d="M5 5H95V95H5Z"/><path fill="url(#g)" d="M10 10H90V90H10Z"/></svg>',
+  ons: '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><radialGradient id="g"><stop stop-color="#888"/><stop offset="1" stop-color="#ddd"/></radialGradient><path style="fill:#ffffff" d="M0 0H100V100H0Z"/><path style="fill:#536e78" d="M5 5H95V95H5Z"/><path style="fill:url(#g)" d="M10 10H90V90H10Z"/></svg>',
   numeric:
     '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="500"><linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" x2="300" gradientTransform="matrix(1 0 0 1 0 0)"><stop stop-color="#4488aa"/><stop offset="1" stop-color="#ddeeff"/></linearGradient><path fill="#fff" d="M0 0H600V500H0Z"/><path d="M10 10H590V490H10Z"/><g transform="matrix(2 0 0 2 0 0)"><path style="fill:url(#g)" d="M80 20H220V220H80Z M10 40H70V200H10Z M230 40H290V200H230Z"/></g><path d="M250 100H270V350H250Z"/></svg>',
 };
@@ -23,7 +24,9 @@ for (const rule of Object.values(manifest.sources))
     .update(
       synthetic[
         rule.recipe === 'printed-paths'
-          ? 'arn'
+          ? rule.pathCount === 3
+            ? 'ons'
+            : 'arn'
           : rule.recipe === 'remove-outer-white'
             ? rule.pathCount === 2
               ? 'crescent'
@@ -62,17 +65,19 @@ try {
       contentType: 'image/svg+xml',
       headers: { 'Access-Control-Allow-Origin': '*' },
       body: synthetic[
-        url.includes('/arn-')
-          ? 'arn'
-          : url.includes('/leg-')
-            ? 'monochrome'
-            : url.includes('/drk-')
-              ? 'crescent'
-              : url.includes('/m15-')
-                ? 'm15'
-                : /\/[67]ed-/.test(url)
-                  ? 'rim'
-                  : 'numeric'
+        url.includes('/ons-')
+          ? 'ons'
+          : url.includes('/arn-')
+            ? 'arn'
+            : url.includes('/leg-')
+              ? 'monochrome'
+              : url.includes('/drk-')
+                ? 'crescent'
+                : url.includes('/m15-')
+                  ? 'm15'
+                  : /\/[67]ed-/.test(url)
+                    ? 'rim'
+                    : 'numeric'
       ],
     });
   });
@@ -99,6 +104,7 @@ try {
     urls.push(styledSetSymbol('arn', 'common'));
     urls.push(styledSetSymbol('leg', 'rare'));
     urls.push(styledSetSymbol('drk', 'common'));
+    urls.push(styledSetSymbol('ons', 'uncommon'), styledSetSymbol('ons', 'rare'));
     const parsed = [];
     for (const url of urls) {
       const sources = await resolveCanvasSources([url, url], signal);
@@ -110,13 +116,13 @@ try {
         doc = new DOMParser().parseFromString(encoded, 'image/svg+xml');
       parsed.push(doc);
       check(
-        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v6',
+        doc.documentElement.getAttribute('data-card-glint-patch') === 'symbol-svg-v7',
         'Patch revision missing',
       );
       sources.dispose();
     }
     check(
-      parsed.at(-2).querySelectorAll('path').length === 6,
+      parsed[urls.findIndex((url) => url.includes('/leg-'))].querySelectorAll('path').length === 6,
       'Monochrome rim removal changed internal details',
     );
     const arn = parsed[urls.findIndex((url) => url.includes('/arn-'))].querySelectorAll('path');
@@ -148,7 +154,25 @@ try {
         check(doc.querySelector('radialGradient'), 'Historical gradient lost');
       }
     }
-    for (const code of ['6ed', '7ed', '8ed', '9ed']) {
+    for (const [i, url] of urls.entries()) {
+      if (!url.includes('/ons-')) continue;
+      const paths = parsed[i].querySelectorAll('path');
+      check(paths.length === 3, 'ONS contour patch changed topology');
+      check(
+        ['#ffffff', 'rgb(255, 255, 255)'].includes(paths[0].style.fill),
+        'ONS lost its exterior white rim',
+      );
+      check(
+        ['#161612', 'rgb(22, 22, 18)'].includes(paths[1].style.fill),
+        'ONS contour must use dark ink',
+      );
+      check(
+        paths[2].style.fill.replaceAll('"', '') === 'url(#g)' &&
+          parsed[i].querySelector('radialGradient#g'),
+        'ONS metallic field must retain its gradient',
+      );
+    }
+    for (const code of ['6ed', '7ed', '8ed', '9ed', 'ons']) {
       const common = styledSetSymbol(code, 'common'),
         original = new Blob(['unchanged common']);
       check(
@@ -296,7 +320,7 @@ try {
     host.dispose();
     return { urls };
   });
-  assert.equal(result.urls.length, 12);
+  assert.equal(result.urls.length, 14);
   for (const [i, url] of result.urls.entries())
     assert.equal(requests.get(url), i === 0 ? 2 : 1, 'Preparation fetched a warm source again');
   console.log('SVG patch materials/cache:', result);

@@ -54,7 +54,7 @@ for (const symbol of ['W', 'U', 'B', 'R', 'G', 'N'])
       )
       .sort((a, b) => hash(a.name.toLowerCase()).localeCompare(hash(b.name.toLowerCase())));
     entries.push(
-      ...rr.filter((e) => e.face.manaSymbols.length === 1).slice(0, 2),
+      ...rr.filter((e) => e.face.manaSymbols.length === 1).slice(0, symbol === 'N' ? 5 : 2),
       ...rr.filter((e) => e.face.manaSymbols.length > 1).slice(0, 3),
     );
   }

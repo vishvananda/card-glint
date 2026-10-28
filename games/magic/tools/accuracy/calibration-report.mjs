@@ -1,3 +1,4 @@
+import { preOnslaughtSymbolSource } from './old-frame-symbol-source-ancestry.mjs';
 import { fourthSourceInputCurrent } from './fourth-source-approval.mjs';
 import { fourthFlavorAffected, fourthFlavorApproval } from './fourth-flavor-ancestry.mjs';
 import { fourthDetailsAffected, fourthDetailsApproval } from './fourth-details-ancestry.mjs';
@@ -517,6 +518,7 @@ export async function calibrationReport(ledger) {
                   guardKey,
                   new Set([
                     hash(bytes),
+                    hash(await preOnslaughtSymbolSource(file, bytes, set.set)),
                     hash(await prePrintingProfileGuardSource(file, bytes)),
                     hash(await preAbuPerimeterSource(file, bytes)),
                   ]),
@@ -526,6 +528,7 @@ export async function calibrationReport(ledger) {
                   guardKey,
                   new Set([
                     hash(bytes),
+                    hash(await preOnslaughtSymbolSource(file, bytes, set.set)),
                     hash(await prePrintingProfileGuardSource(file, bytes)),
                     hash(preAbuFlowToolSource(file, bytes)),
                     hash(await preAbuFlowSource(file, bytes)),
@@ -552,6 +555,7 @@ export async function calibrationReport(ledger) {
                   guardKey,
                   new Set([
                     hash(bytes),
+                    hash(await preOnslaughtSymbolSource(file, bytes, set.set)),
                     hash(await prePrintingProfileGuardSource(file, bytes)),
                     hash(preAbuFlowToolSource(file, bytes)),
                     hash(await preAbuFlowSource(file, bytes)),

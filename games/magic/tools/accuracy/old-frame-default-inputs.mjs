@@ -11,8 +11,8 @@ import { presentation } from './adapter.mjs';
 import { fetchComponents } from './components.mjs';
 const [set, out] = process.argv.slice(2);
 assert(
-  ['ice', 'mir', 'usg', 'ons'].includes(set) && out,
-  'Usage: old-frame-default-inputs.mjs ice|mir|usg|ons NEW_OUTPUT',
+  /^[a-z0-9]{2,8}$/.test(set ?? '') && out,
+  'Usage: old-frame-default-inputs.mjs SET NEW_OUTPUT',
 );
 await fs.access(out).then(
   () => {
@@ -30,6 +30,7 @@ const cards = (
 const ordinary = cards.filter(
   (c) =>
     printingScope(c).status === 'ordinary' &&
+    ['1993', '1997'].includes(c.frame) &&
     c.layout === 'normal' &&
     c.finishes.includes('nonfoil') &&
     !referenceIssue(c),
@@ -152,12 +153,37 @@ try {
 } finally {
   await server.close();
 }
-assert(entries.length >= 20);
-const components = await fetchComponents(entries, {}, (e) => e.face);
+assert(entries.length > 0, 'No eligible printing inputs');
+const sampleCoverage = Object.fromEntries(
+  Object.entries(groups).map(([key, available]) => [
+    key,
+    {
+      availableNames: new Set(available.map((e) => e.card.name)).size,
+      selected: selected.filter((e) => bucket(e.card) === key).length,
+      prepared: entries.filter((e) => e.material === key).length,
+    },
+  ]),
+);
+let components;
+try {
+  components = await fetchComponents(entries, {}, (e) => e.face);
+} catch (error) {
+  await writeJson(out + '.unresolved.json', {
+    status: 'unresolved-components-not-a-renderable-pilot',
+    set,
+    source: source.sha256,
+    sampleCoverage,
+    excluded,
+    entries,
+    failure: String(error),
+  });
+  throw error;
+}
 await writeJson(out, {
   schema: 1,
   set,
   status: 'development-pilot-not-full-set',
+  sampleCoverage,
   scope:
     'Deterministic short/median/long printed-body examples per mono color,artifact and multicolor,plus each basic and three nonbasic lands. Nonfoil,ordinary,English paper. Imported Original text/type remains candidate data unless exact-printing review exists. No Oracle fallback for nonempty rules;not a source audit or holdout.',
   selection: {
