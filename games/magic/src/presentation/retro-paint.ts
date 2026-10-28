@@ -1,3 +1,4 @@
+import { paintRetroFramePlate } from './retro-frame-plate.js';
 import { paintAbuDualPerimeter } from './retro-dual-frame.js';
 import { paintLegacyCalibratedTitle } from './legacy-calibrated-title.js';
 import {
@@ -112,10 +113,11 @@ export function paintRetroFace(
   if (frame) {
     c.save();
     c.filter = retroFrameFilter(face);
-    c.drawImage(frame, ...retroPx(rect.frame));
+    paintRetroFramePlate(c, frame, rect.frame, earlyReprintFrame(face));
     paintAbuDualPerimeter(c, face, frame, stock);
-    paintRetroPaper(c, frame, retroFrameAsset(face));
-    if (retroFrameAsset(face).endsWith('/seventh/regular/m.png')) paintRetroGoldBevel(c, frame);
+    paintRetroPaper(c, frame, retroFrameAsset(face), rect.frame);
+    if (retroFrameAsset(face).endsWith('/seventh/regular/m.png'))
+      paintRetroGoldBevel(c, frame, rect.frame);
     c.restore();
   }
   const stockWindow =

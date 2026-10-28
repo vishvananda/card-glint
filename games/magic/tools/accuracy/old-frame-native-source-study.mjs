@@ -1,0 +1,195 @@
+// Native replay of source candidates. Does not install profiles or fit typography.
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { openBrowser } from './browser.mjs';
+import { cachedFetch } from './cache.mjs';
+import { hash, root, sourceHash, writeJson } from './common.mjs';
+const [inputFile, poseFile, exportedDirectory, geometryFiles, out] = process.argv.slice(2);
+assert(out, 'Use INPUTS POSES EXPORTED_DIRECTORY GEOMETRY_FILES_COMMA_SEPARATED NEW_OUTPUT');
+await fs.mkdir(out);
+const ib = await fs.readFile(inputFile),
+  pb = await fs.readFile(poseFile);
+const input = JSON.parse(ib),
+  poses = JSON.parse(pb);
+assert.equal(poses.inputHash, hash(ib));
+const eb = await fs.readFile(path.join(exportedDirectory, 'inputs.json')),
+  exported = JSON.parse(eb);
+assert.equal(exported.inputHash, hash(ib));
+const reports = [];
+for (const f of geometryFiles.split(',')) {
+  const raw = await fs.readFile(f),
+    data = JSON.parse(raw);
+  assert.equal(data.status, 'shared-source-geometry-candidates-not-adopted');
+  reports.push({ hash: hash(raw), results: data.results });
+}
+const candidates = reports.flatMap((r) => r.results);
+const sources = await Promise.all(
+  [...new Set(candidates.map((c) => c.asset.url))].map((url) =>
+    cachedFetch(url, { offline: true }),
+  ),
+);
+for (const suffix of ['old/abu/border.svg', 'old/fourth/borderBlack.png']) {
+  const manifest = JSON.parse(await fs.readFile(path.join(root, 'games/magic/assets.json')));
+  sources.push(await cachedFetch(manifest.RETRO_ROOT + '/img/frames/' + suffix, { offline: true }));
+}
+for (const c of candidates)
+  assert.equal(
+    sources.find((a) => a.url === c.asset.url).sha256,
+    c.asset.sourceSha256 ?? c.asset.sha256,
+  );
+const selected = [];
+for (const key of new Set(exported.rows.map((r) => r.key))) {
+  for (const cohort of ['calibration', 'validation', 'development']) {
+    const group = exported.rows.filter((r) => r.accepted && r.key === key && r.cohort === cohort);
+    if (group.length) selected.push(group[0]);
+  }
+}
+const module = 'games/magic/src/calibration/profiles.ts';
+const before = await fs.readFile(path.join(root, module)),
+  rendererHash = await sourceHash(path.join(root, 'games/magic/src'));
+let transformHash;
+const session = await openBrowser(
+  { ...input, components: [...input.components, ...sources] },
+  {
+    plugins: [
+      {
+        name: 'isolated-source-profile-replay',
+        enforce: 'pre',
+        transform(code, id) {
+          if (!id.endsWith('/' + module)) return;
+          assert.equal(hash(code), hash(before));
+          const needle =
+            'return profileSets.includes(set) ? setCalibrationProfiles[set] : undefined;';
+          assert.equal(code.split(needle).length, 2);
+          const next = code.replace(
+            needle,
+            'return (globalThis as any).__sourceStudyProfile?.set === set ? (globalThis as any).__sourceStudyProfile : profileSets.includes(set) ? setCalibrationProfiles[set] : undefined;',
+          );
+          transformHash = hash(next);
+          return next;
+        },
+      },
+    ],
+  },
+);
+const rows = [],
+  profiles = {};
+try {
+  await session.page.evaluate(async () => {
+    await import('/games/magic/src/data/eager.ts');
+    await import('/games/magic/src/data/eager-wording.ts');
+    await document.fonts.ready;
+  });
+  const base = await session.page.evaluate(
+    async () => (await import('/games/magic/src/calibration/sets/4ed.ts')).profile,
+  );
+  const materialKey = (key) => (key.length === 2 && key.endsWith('L') ? 'L-' + key[0] : key);
+  for (const family of new Set(candidates.map((c) => c.family))) {
+    const p = structuredClone(base);
+    p.set = input.set;
+    p.border = 'black';
+    p.revision = 1;
+    p.frames = {};
+    p.colors = {};
+    for (const c of candidates.filter((c) => c.family === family)) {
+      assert(c.art, 'Candidate has no measured illustration aperture');
+      const actualFamily = family === 'seventh-mirage' ? 'seventh' : family;
+      const assetKey =
+        family === 'mse-old'
+          ? c.asset.url.split('/').at(-1).replace('card.jpg', '')
+          : c.asset.url.split('/').at(-1).replace('.png', '');
+      const key = materialKey(c.key);
+      p.frames[key] = {
+        family: actualFamily,
+        assetKey,
+        frame: c.frame,
+        art: c.art,
+        stockWindow: [24 / 488, 26 / 680, 440 / 488, 627 / 680],
+      };
+      const pigment = key === 'L' ? 'L-red' : key;
+      p.colors[pigment] = {
+        source: JSON.stringify([c.asset.url, c.frame]),
+        stock: '#101010',
+        adjustment: { hueDegrees: 0, saturationScale: 1, brightnessScale: 1 },
+      };
+    }
+    profiles[family] = p;
+  }
+  await writeJson(path.join(out, 'profiles.json'), profiles);
+  for (const r of selected) {
+    const e = input.entries.find((e) => e.id === r.id);
+    assert.equal(e.face.wordingMode, 'original');
+    for (const c of candidates.filter((c) => c.key === r.key)) {
+      const profile = profiles[c.family],
+        profileHash = hash(JSON.stringify(profile));
+      const result = await session.page.evaluate(
+        async ({ e, profile }) => {
+          globalThis.__sourceStudyProfile = profile;
+          const { composeCardTexture } = await import(
+            '/games/magic/src/presentation/canvas-face.ts'
+          );
+          const image = await composeCardTexture(
+            { face: e.face, printingId: e.id, printedImage: null },
+            'inspect',
+            new AbortController().signal,
+          );
+          try {
+            return {
+              png: image.toDataURL().split(',')[1],
+              width: image.width,
+              height: image.height,
+            };
+          } finally {
+            image.width = image.height = 0;
+          }
+        },
+        { e, profile },
+      );
+      const png = Buffer.from(result.png, 'base64'),
+        file = c.family + '-' + e.id + '.png';
+      await fs.writeFile(path.join(out, file), png);
+      rows.push({
+        id: e.id,
+        name: e.name,
+        key: r.key,
+        cohort: r.cohort,
+        family: c.family,
+        file,
+        sha256: hash(png),
+        width: result.width,
+        height: result.height,
+        profileHash,
+        inputHash: hash(JSON.stringify(e.face)),
+        referenceHash: e.reference.sha256,
+        normalizedReferenceHash: r.normalizedHash,
+      });
+      console.log(input.set, rows.length, c.family, e.name);
+    }
+    const scan = await fs.readFile(path.join(exportedDirectory, e.id + '.png'));
+    assert.equal(hash(scan), r.normalizedHash);
+    await fs.writeFile(path.join(out, e.id + '-scan.png'), scan);
+  }
+  assert.deepEqual(session.faults, []);
+  assert.equal(rendererHash, await sourceHash(path.join(root, 'games/magic/src')));
+  await writeJson(path.join(out, 'capture.json'), {
+    schema: 1,
+    complete: true,
+    set: input.set,
+    source: {
+      rendererHash,
+      inputHash: hash(ib),
+      posesHash: hash(pb),
+      exportedHash: hash(eb),
+      geometryHashes: reports.map((r) => r.hash),
+      toolHash: hash(await fs.readFile(new URL(import.meta.url))),
+      transform: { before: hash(before), after: transformHash },
+    },
+    scope:
+      'Native source candidates with identical Fourth typography as an unfitted control, neutral color adjustments, Original wording and frozen scan poses. One printing per material/cohort; small cohorts development-only. No profile installed or set approved.',
+    rows,
+    faults: session.faults,
+  });
+} finally {
+  await session.close();
+}

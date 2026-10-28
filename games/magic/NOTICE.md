@@ -170,3 +170,9 @@ The package does not redistribute these external asset binaries. Hosts own
 asset downloading, caching and any permission prompts. Availability on GitHub
 does not establish permission; users must have the required rights. Offline
 hosts must arrange for permitted assets to be available before use.
+
+The optional old-frame calibration adapter also references the pinned
+[Full Magic Pack old style](https://github.com/MagicSetEditorPacks/Full-Magic-Pack/tree/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-old.mse-style).
+Its JPEG plates remain external URLs. The adapter uses the style's declared
+illustration field to leave room for separately supplied artwork. These source
+references do not include external artwork or change the repository license.

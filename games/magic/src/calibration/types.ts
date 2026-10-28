@@ -10,7 +10,7 @@ import type { DualBorderGeometry } from '../presentation/dual-land-pinline.js';
 
 /** Canonical rectangles are normalized; lettering uses 488 × 680 pixels. */
 export interface CalibratedFrame {
-  readonly family: 'abu' | 'fourth';
+  readonly family: 'abu' | 'fourth' | 'seventh' | 'mse-old';
   readonly assetKey: string;
   readonly frame: FaceRect;
   readonly art: FaceRect;

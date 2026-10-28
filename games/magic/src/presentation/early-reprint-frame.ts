@@ -1,5 +1,5 @@
 import { calibrationForFace } from '../calibration/selection.js';
-import manifest from '../../assets.json' with { type: 'json' };
+import { calibratedFrameSource } from '../calibration/frame-source.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
 import { retroLandColors } from './retro-land-colors.js';
@@ -71,8 +71,6 @@ export function earlyReprintFrame(face: RenderedCardInput) {
     dual,
     material,
     profile: `${set}/${pigment}`,
-    asset:
-      dual?.base ??
-      `${manifest.RETRO_ROOT}/img/frames/old/${geometry.family}/${geometry.assetKey}.png`,
+    asset: dual?.base ?? calibratedFrameSource(geometry),
   };
 }

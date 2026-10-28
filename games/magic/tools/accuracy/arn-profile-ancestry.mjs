@@ -1,3 +1,4 @@
+import { preOldFrameSource, oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import {
   preAtqProfileSource,
   atqHistoricalSourceFiles,
@@ -28,6 +29,7 @@ export function arnProfileDelta() {
   })());
 }
 export async function preArnProfileSource(file, bytes) {
+  bytes = await preOldFrameSource(file, bytes);
   bytes = await preAtqProfileSource(file, bytes);
   const p = await arnProfileDelta(),
     e = p.files[file];
@@ -38,7 +40,7 @@ export async function preArnProfileSource(file, bytes) {
 export async function arnHistoricalSourceFiles(files) {
   const p = await arnProfileDelta(),
     kept = [];
-  for (const file of await atqHistoricalSourceFiles(files)) {
+  for (const file of await atqHistoricalSourceFiles(await oldFrameHistoricalSourceFiles(files))) {
     const key = file.startsWith('games/') ? file : path.relative(root, file);
     const e = p.files[key];
     if (e?.beforeSource === null && hash(await readFile(path.join(root, key))) === e.after)

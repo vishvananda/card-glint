@@ -1,8 +1,14 @@
+import type { FaceRect } from './face-layout.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 /** The seventh-family white source adds a gray inner left/bottom bevel absent
  * from the reviewed printings (Mirage through Seventh Edition). Expand its retained paper texture to the keyline;
  * never move the outer frame, keyline, art window or their baked shadows. */
-export function paintRetroPaper(context: CanvasContext, frame: ImageBitmap, asset: string) {
+export function paintRetroPaper(
+  context: CanvasContext,
+  frame: ImageBitmap,
+  asset: string,
+  target: FaceRect = [0, 0, 1, 1],
+) {
   if (!asset.endsWith('/seventh/regular/w.png')) return;
   context.drawImage(
     frame,
@@ -10,9 +16,9 @@ export function paintRetroPaper(context: CanvasContext, frame: ImageBitmap, asse
     (1258 / 2100) * frame.height,
     (1160 / 1500) * frame.width,
     (585 / 2100) * frame.height,
-    (160 / 1500) * 488,
-    (1256 / 2100) * 680,
-    (1184 / 1500) * 488,
-    (605 / 2100) * 680,
+    (target[0] + (160 / 1500) * target[2]) * 488,
+    (target[1] + (1256 / 2100) * target[3]) * 680,
+    (1184 / 1500) * 488 * target[2],
+    (605 / 2100) * 680 * target[3],
   );
 }

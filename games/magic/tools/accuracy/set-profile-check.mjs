@@ -29,12 +29,14 @@ export function checkSetProfile(profile, review, manifest) {
       if (p[key] !== undefined) assert.ok(p[key] >= 0 && p[key] <= 255);
   };
   for (const [key, frame] of Object.entries(profile.frames)) {
-    assert.ok(['abu', 'fourth'].includes(frame.family));
-    assert.match(frame.assetKey, /^[a-z]+$/);
+    assert.ok(['abu', 'fourth', 'seventh', 'mse-old'].includes(frame.family));
+    assert.match(frame.assetKey, /^[a-z][a-zA-Z]*$/);
     for (const field of ['frame', 'art', 'stockWindow']) rect(frame[field]);
     if (frame.stockMaskFrame !== undefined) rect(frame.stockMaskFrame);
     const source = JSON.stringify([
-      `${manifest.RETRO_ROOT}/img/frames/old/${frame.family}/${frame.assetKey}.png`,
+      frame.family === 'mse-old'
+        ? `${manifest.MSE_TEMPLATE_ROOT}/magic-old.mse-style/${frame.assetKey}card.jpg`
+        : `${manifest.RETRO_ROOT}/img/frames/${frame.family === 'seventh' ? 'seventh/regular' : 'old/' + frame.family}/${frame.assetKey}.png`,
       frame.frame,
     ]);
     for (const [color, adjustment] of Object.entries(profile.colors))

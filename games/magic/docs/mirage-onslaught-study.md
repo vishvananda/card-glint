@@ -171,3 +171,34 @@ The compact measurements in
 [`geometry-source-review.json`](../fixtures/accuracy/mirage-onslaught/geometry-source-review.json)
 are candidates. Native rendering, color, headings, mana, set symbols, body text,
 artist, copyright and stats still need validation before adoption.
+
+## Native source replay
+
+The painter can now test pinned ABU, Fourth, Seventh and MSE old-style sources
+through the same profile contract. MSE's opaque illustration placeholder is
+clipped using its declared image field; source images are never mutated. Paper
+and gold-bevel repairs follow a calibrated Seventh plate's placement.
+
+The adapter retains the existing default output. An exact parent-source replay
+checks 65 material/basic probes across Mirage, Unlimited, Fallen Empires, Fourth
+and Chronicles, using each set's normal border stock. All native PNGs are
+byte-identical. The source-history receipt restores only those exact reviewed
+bytes; unknown revisions remain visible to older audit guards.
+
+Source-family pilots contain 77 Mirage and 71 Onslaught native renders.
+Typography is held at Fourth's values in these pilots, so their text and
+copyright are **unfitted controls**. In particular, each set needs its own
+copyright text. Color proposals use the frozen calibration names and report
+validation names separately.
+
+Onslaught nonbasic lands cannot share one paper-color fit: scans include gray,
+single-color, gold and two-color gradient panels. Separate those printed
+treatments before fitting their pigment or judging land-source candidates.
+The new families are available for experiments; no MIR/ONS defaults have yet
+been installed.
+
+Run `old-frame-native-source-study.mjs` with the frozen input, pose, exported
+reference directory, comma-separated geometry reports and a new output directory.
+Then run `old-frame-native-source-colors.mjs` with that exported directory,
+the native output and a new JSON filename. Both tools require the local cache;
+native capture rejects every uncached external request.
