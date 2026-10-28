@@ -1,0 +1,637 @@
+{
+  "schema": 1,
+  "status": "shared-body-size-trials-rejected-not-per-card-fit",
+  "sets": {
+    "mir": {
+      "inputHash": "a4d244205a392b377ec1f809b58e38f438936bb8aa23bcb70bb3aeb82ad50abb",
+      "poseHash": "f844f08b5f752b248172735eefce6471ec20c0979c953d7c4c003dca1d062a69",
+      "nativeHash": "66f451c358bde276ef36165d013ea5f560e03dc280a7c9d1cc92d9f64dca6f8b",
+      "method": {
+        "rendererHash": "8070c1de1259548470c4b7735a442936f0d215f9a4783eb9ab9f5dd675ed3f83",
+        "inputHash": "a4d244205a392b377ec1f809b58e38f438936bb8aa23bcb70bb3aeb82ad50abb",
+        "poseHash": "f844f08b5f752b248172735eefce6471ec20c0979c953d7c4c003dca1d062a69",
+        "exportedHash": "09c1cf3d1a97cb213f124ea13a09b96327b710aecba821ff1fc05ac31898521d",
+        "nativeHash": "66f451c358bde276ef36165d013ea5f560e03dc280a7c9d1cc92d9f64dca6f8b",
+        "profileHash": "0cc7d237ea547e3af24edeaf935b279c42b9530fc7b7e84886247caa0cab2fc9",
+        "definitionHash": "3e7533edc1dbfb3a381429286ca251e4aae5883fb23185c60a2ba209e39cc858",
+        "toolHash": "93e8d15a56dd0a8c99683ad3768b6aab967a0f842ba5a4c961f1d0ba82bba71e",
+        "dependencies": {
+          "text-filled-objective.mjs": "b38164ba99ec13986c656feac0964a32d133b33faf53aa1dd06def8253cdd73a",
+          "edges.mjs": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b",
+          "abu-type-objective.mjs": "16face636213a29cf3dbf275938711cf59b5d1c2410e5790094da94885ea0116",
+          "pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+          "scan-transform.mjs": "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6",
+          "abu-assets.mjs": "8fb30fa998101db9027ec19cf0dc45ab1e08929b61d03b64608aedbd13dab492",
+          "browser.mjs": "dca71569d14cfa23ca801c37ce111c334bc03a9b8fbf4a4f91386cf5211c3841"
+        },
+        "sources": {
+          "games/magic/src/presentation/retro-rules.ts": {
+            "before": "1de3bbec17b400aaabeedeeec7c695005cba5316c16ee18aa2a7933b89864ac9",
+            "after": "d39db77da8975e7994a451d6aa3970054e14884c0e7e275e309f2374c885b71d"
+          },
+          "games/magic/src/presentation/rules-paint.ts": {
+            "before": "b329c5880a0ee5700ad100006c9f485f29e72360781358ddd6e0e21df19906a2",
+            "after": "df5f42cb651c4856624a9fbe0fd720f6e4e2fe8fe9aa9eb65c9a189d03385667"
+          },
+          "games/magic/src/calibration/profiles.ts": {
+            "before": "8ab0613e03ece64582b32d24b837f543f749ea2ed86505793fa8f6c1d4677899",
+            "after": "fb4fbae9b119ad64ac3234f23f51f9902d3ec87d93dba6c966bfb3d38e5ecad5"
+          }
+        }
+      },
+      "reportHash": "2531f147300411b255702563eb323c6938a4a9d33a0be3d842af5871a380648a",
+      "selected": "current",
+      "trials": [
+        {
+          "id": "current",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.4291670727050677,
+              "gain": 0.0,
+              "improved": 0,
+              "regressed": 0,
+              "worstRegression": 0
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.4295183236432079,
+              "gain": 0.0,
+              "improved": 0,
+              "regressed": 0,
+              "worstRegression": 0
+            }
+          }
+        },
+        {
+          "id": "fractional-s20-l1-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.27422087521908045,
+              "gain": -0.15494619748598723,
+              "improved": 7,
+              "regressed": 21,
+              "worstRegression": 0.44040997640560153
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.3270380323731887,
+              "gain": -0.10248029127001919,
+              "improved": 8,
+              "regressed": 20,
+              "worstRegression": 0.3211092148869884
+            }
+          }
+        },
+        {
+          "id": "fractional-s20-l1-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.2923446976126026,
+              "gain": -0.13682237509246511,
+              "improved": 7,
+              "regressed": 21,
+              "worstRegression": 0.44040997640560153
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.3555793074617422,
+              "gain": -0.07393901618146573,
+              "improved": 9,
+              "regressed": 19,
+              "worstRegression": 0.3069994853181149
+            }
+          }
+        },
+        {
+          "id": "fractional-s20-l1.06-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.29314916516139267,
+              "gain": -0.13601790754367507,
+              "improved": 7,
+              "regressed": 21,
+              "worstRegression": 0.45123387621861627
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.352417164315865,
+              "gain": -0.07710115932734293,
+              "improved": 9,
+              "regressed": 19,
+              "worstRegression": 0.3445186361380144
+            }
+          }
+        },
+        {
+          "id": "fractional-s20-l1.06-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.313316715451267,
+              "gain": -0.11585035725380069,
+              "improved": 8,
+              "regressed": 20,
+              "worstRegression": 0.45123387621861627
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.38121729219442324,
+              "gain": -0.048301031448784656,
+              "improved": 9,
+              "regressed": 19,
+              "worstRegression": 0.3273673999501589
+            }
+          }
+        },
+        {
+          "id": "fractional-s22.5-l1-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.3871472834380976,
+              "gain": -0.042019789266970094,
+              "improved": 7,
+              "regressed": 21,
+              "worstRegression": 0.30386328116658307
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.3874342307378272,
+              "gain": -0.042084092905380746,
+              "improved": 11,
+              "regressed": 17,
+              "worstRegression": 0.446105699369005
+            }
+          }
+        },
+        {
+          "id": "fractional-s22.5-l1-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.4141091647686323,
+              "gain": -0.015057907936435402,
+              "improved": 9,
+              "regressed": 19,
+              "worstRegression": 0.3185030592538104
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.4220559962454092,
+              "gain": -0.007462327397798696,
+              "improved": 11,
+              "regressed": 16,
+              "worstRegression": 0.37167316944170614
+            }
+          }
+        },
+        {
+          "id": "fractional-s22.5-l1.06-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.4169477183049418,
+              "gain": -0.012219354400125863,
+              "improved": 8,
+              "regressed": 19,
+              "worstRegression": 0.3397037354030016
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.452105041556877,
+              "gain": 0.022586717913669025,
+              "improved": 11,
+              "regressed": 17,
+              "worstRegression": 0.18020470859118387
+            }
+          }
+        },
+        {
+          "id": "fractional-s22.5-l1.06-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.4253168900077965,
+              "gain": -0.0038501826972712214,
+              "improved": 11,
+              "regressed": 17,
+              "worstRegression": 0.3454088688201287
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.44710361661568065,
+              "gain": 0.01758529297247277,
+              "improved": 12,
+              "regressed": 15,
+              "worstRegression": 0.1383403629207588
+            }
+          }
+        },
+        {
+          "id": "fractional-s25-l1-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.3925726147241791,
+              "gain": -0.03659445798088858,
+              "improved": 12,
+              "regressed": 16,
+              "worstRegression": 0.4161081772947521
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.3494129730803555,
+              "gain": -0.08010535056285241,
+              "improved": 11,
+              "regressed": 16,
+              "worstRegression": 0.446105699369005
+            }
+          }
+        },
+        {
+          "id": "fractional-s25-l1-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.4045077588940549,
+              "gain": -0.02465931381101282,
+              "improved": 10,
+              "regressed": 18,
+              "worstRegression": 0.4161081772947521
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.3633423417016499,
+              "gain": -0.06617598194155802,
+              "improved": 13,
+              "regressed": 15,
+              "worstRegression": 0.4302543081087259
+            }
+          }
+        },
+        {
+          "id": "fractional-s25-l1.06-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.39472563035345515,
+              "gain": -0.03444144235161251,
+              "improved": 11,
+              "regressed": 17,
+              "worstRegression": 0.4397198173060239
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.4204756246274309,
+              "gain": -0.00904269901577703,
+              "improved": 12,
+              "regressed": 16,
+              "worstRegression": 0.45516484595788936
+            }
+          }
+        },
+        {
+          "id": "fractional-s25-l1.06-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 28,
+              "mean": 0.37948443410536503,
+              "gain": -0.04968263859970269,
+              "improved": 10,
+              "regressed": 18,
+              "worstRegression": 0.39823403390705175
+            },
+            "validation": {
+              "count": 28,
+              "mean": 0.3962653766123539,
+              "gain": -0.033252947030854,
+              "improved": 12,
+              "regressed": 16,
+              "worstRegression": 0.4503789749617229
+            }
+          }
+        }
+      ]
+    },
+    "ons": {
+      "inputHash": "9d9ca763901ea939ab706cb4baa0adf2b24ebb22783bf8fd9376fc8d7679d996",
+      "poseHash": "94e26c5c8ff66581dc6b460add825f13939a62ff2766a7acd30742eecf3c3691",
+      "nativeHash": "471afcdc650326926dbcd84ed8059bd8a4ce2897f0365ff7f46442675b11ff8f",
+      "method": {
+        "rendererHash": "8070c1de1259548470c4b7735a442936f0d215f9a4783eb9ab9f5dd675ed3f83",
+        "inputHash": "9d9ca763901ea939ab706cb4baa0adf2b24ebb22783bf8fd9376fc8d7679d996",
+        "poseHash": "94e26c5c8ff66581dc6b460add825f13939a62ff2766a7acd30742eecf3c3691",
+        "exportedHash": "8b3d110c0945adb04f2d4175bd119928a3b5b81aa00f6fac9f3d1b728a74b548",
+        "nativeHash": "471afcdc650326926dbcd84ed8059bd8a4ce2897f0365ff7f46442675b11ff8f",
+        "profileHash": "217c978ab5b2620cd7bf01274f832cc0e770008874acdeb3d2776b95e669955b",
+        "definitionHash": "3e7533edc1dbfb3a381429286ca251e4aae5883fb23185c60a2ba209e39cc858",
+        "toolHash": "93e8d15a56dd0a8c99683ad3768b6aab967a0f842ba5a4c961f1d0ba82bba71e",
+        "dependencies": {
+          "text-filled-objective.mjs": "b38164ba99ec13986c656feac0964a32d133b33faf53aa1dd06def8253cdd73a",
+          "edges.mjs": "5e23345ecb83ee286b960209c186b6ddbd343d64774dee070c0a87cdb4494a4b",
+          "abu-type-objective.mjs": "16face636213a29cf3dbf275938711cf59b5d1c2410e5790094da94885ea0116",
+          "pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+          "scan-transform.mjs": "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6",
+          "abu-assets.mjs": "8fb30fa998101db9027ec19cf0dc45ab1e08929b61d03b64608aedbd13dab492",
+          "browser.mjs": "dca71569d14cfa23ca801c37ce111c334bc03a9b8fbf4a4f91386cf5211c3841"
+        },
+        "sources": {
+          "games/magic/src/presentation/retro-rules.ts": {
+            "before": "1de3bbec17b400aaabeedeeec7c695005cba5316c16ee18aa2a7933b89864ac9",
+            "after": "d39db77da8975e7994a451d6aa3970054e14884c0e7e275e309f2374c885b71d"
+          },
+          "games/magic/src/presentation/rules-paint.ts": {
+            "before": "b329c5880a0ee5700ad100006c9f485f29e72360781358ddd6e0e21df19906a2",
+            "after": "df5f42cb651c4856624a9fbe0fd720f6e4e2fe8fe9aa9eb65c9a189d03385667"
+          },
+          "games/magic/src/calibration/profiles.ts": {
+            "before": "8ab0613e03ece64582b32d24b837f543f749ea2ed86505793fa8f6c1d4677899",
+            "after": "fb4fbae9b119ad64ac3234f23f51f9902d3ec87d93dba6c966bfb3d38e5ecad5"
+          }
+        }
+      },
+      "reportHash": "044eeada913f6b1827f58f605a4614f66f250ec220377fb4e2284f2801609964",
+      "selected": "current",
+      "trials": [
+        {
+          "id": "current",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.4775743749951324,
+              "gain": 0.0,
+              "improved": 0,
+              "regressed": 0,
+              "worstRegression": 0
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.5085409547226355,
+              "gain": 0.0,
+              "improved": 0,
+              "regressed": 0,
+              "worstRegression": 0
+            }
+          }
+        },
+        {
+          "id": "fractional-s20-l1-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.27562234796743573,
+              "gain": -0.20195202702769666,
+              "improved": 4,
+              "regressed": 19,
+              "worstRegression": 0.4275285511172589
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.2968526479349537,
+              "gain": -0.2116883067876818,
+              "improved": 3,
+              "regressed": 20,
+              "worstRegression": 0.4464179935982314
+            }
+          }
+        },
+        {
+          "id": "fractional-s20-l1-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.2968781811749692,
+              "gain": -0.18069619382016314,
+              "improved": 4,
+              "regressed": 19,
+              "worstRegression": 0.38318093469734593
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.30581802730605046,
+              "gain": -0.202722927416585,
+              "improved": 3,
+              "regressed": 20,
+              "worstRegression": 0.4464179935982314
+            }
+          }
+        },
+        {
+          "id": "fractional-s20-l1.06-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.2906253353915056,
+              "gain": -0.18694903960362683,
+              "improved": 4,
+              "regressed": 19,
+              "worstRegression": 0.41691533028696376
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.3127982271751143,
+              "gain": -0.19574272754752117,
+              "improved": 3,
+              "regressed": 20,
+              "worstRegression": 0.4958398408042265
+            }
+          }
+        },
+        {
+          "id": "fractional-s20-l1.06-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.3118929058561753,
+              "gain": -0.16568146913895712,
+              "improved": 4,
+              "regressed": 19,
+              "worstRegression": 0.42225862434743006
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.3244246123393518,
+              "gain": -0.18411634238328367,
+              "improved": 3,
+              "regressed": 20,
+              "worstRegression": 0.4958398408042265
+            }
+          }
+        },
+        {
+          "id": "fractional-s22.5-l1-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.41437013818136004,
+              "gain": -0.06320423681377232,
+              "improved": 7,
+              "regressed": 16,
+              "worstRegression": 0.39946118787796125
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.43777052143945583,
+              "gain": -0.07077043328317967,
+              "improved": 3,
+              "regressed": 20,
+              "worstRegression": 0.2283736069056682
+            }
+          }
+        },
+        {
+          "id": "fractional-s22.5-l1-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.4314755202381071,
+              "gain": -0.04609885475702535,
+              "improved": 6,
+              "regressed": 17,
+              "worstRegression": 0.4677216854615933
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.459571603437225,
+              "gain": -0.04896935128541052,
+              "improved": 5,
+              "regressed": 18,
+              "worstRegression": 0.17069612932106493
+            }
+          }
+        },
+        {
+          "id": "fractional-s22.5-l1.06-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.45489965085990575,
+              "gain": -0.022674724135226646,
+              "improved": 7,
+              "regressed": 16,
+              "worstRegression": 0.4249101136206742
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.45492804304053097,
+              "gain": -0.053612911682104525,
+              "improved": 4,
+              "regressed": 18,
+              "worstRegression": 0.24518725661177
+            }
+          }
+        },
+        {
+          "id": "fractional-s22.5-l1.06-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.44706673616757014,
+              "gain": -0.030507638827562186,
+              "improved": 8,
+              "regressed": 15,
+              "worstRegression": 0.4201743362243413
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.4680709409689982,
+              "gain": -0.04047001375363729,
+              "improved": 6,
+              "regressed": 16,
+              "worstRegression": 0.19050265791345322
+            }
+          }
+        },
+        {
+          "id": "fractional-s25-l1-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.3407780448832607,
+              "gain": -0.1367963301118717,
+              "improved": 4,
+              "regressed": 19,
+              "worstRegression": 0.39946118787796125
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.3313808958783929,
+              "gain": -0.1771600588442426,
+              "improved": 2,
+              "regressed": 20,
+              "worstRegression": 0.6004208928018528
+            }
+          }
+        },
+        {
+          "id": "fractional-s25-l1-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.33770911421768995,
+              "gain": -0.13986526077744244,
+              "improved": 4,
+              "regressed": 19,
+              "worstRegression": 0.4677216854615933
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.3369155106480877,
+              "gain": -0.17162544407454777,
+              "improved": 1,
+              "regressed": 21,
+              "worstRegression": 0.6004208928018528
+            }
+          }
+        },
+        {
+          "id": "fractional-s25-l1.06-f0.6",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.3683411924473042,
+              "gain": -0.10923318254782824,
+              "improved": 5,
+              "regressed": 18,
+              "worstRegression": 0.34226636303157354
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.3388442442054493,
+              "gain": -0.1696967105171862,
+              "improved": 2,
+              "regressed": 21,
+              "worstRegression": 0.613734209158618
+            }
+          }
+        },
+        {
+          "id": "fractional-s25-l1.06-f0.8",
+          "groups": {
+            "calibration": {
+              "count": 23,
+              "mean": 0.34717245671548996,
+              "gain": -0.1304019182796424,
+              "improved": 4,
+              "regressed": 19,
+              "worstRegression": 0.3271394917533884
+            },
+            "validation": {
+              "count": 23,
+              "mean": 0.3174108547608803,
+              "gain": -0.19113009996175517,
+              "improved": 2,
+              "regressed": 21,
+              "worstRegression": 0.613734209158618
+            }
+          }
+        }
+      ]
+    }
+  },
+  "scope": "Frozen scan-only references and exact candidate native controls. Name-hash ranks selected four calibration and validation examples per material. Twelve absolute shared body policies test three maximum sizes, two line spacings and two flavor gaps, all with fractional metrics. Selection uses calibration filled/edge objective means; validation is diagnostic. No global candidate beats the current policy on calibration means. Retain current rules and keep conspicuous per-printing outliers for the automatic text-fitting phase rather than introducing a harmful shared override."
+}

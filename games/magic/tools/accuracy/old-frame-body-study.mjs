@@ -1,3 +1,4 @@
+import { artifactSourceRepairDelta } from './artifact-source-repair-ancestry.mjs';
 // Text-only shared body trials using the production layout and painter.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -46,7 +47,15 @@ assert.equal(poses.inputHash, hash(raw[0]));
 assert.equal(capture.source.inputHash, hash(raw[0]));
 assert(capture.complete && !capture.faults.length);
 const rendererHash = await sourceHash(path.join(root, 'games/magic/src'));
-assert.equal(capture.source.rendererHash, rendererHash);
+if (capture.source.rendererHash !== rendererHash) {
+  const repair = await artifactSourceRepairDelta();
+  assert.equal(capture.source.rendererHash, repair.beforeRenderer);
+  assert.equal(rendererHash, repair.afterRenderer);
+  assert(
+    !repair.affectedSets.includes(input.set),
+    'Changed material requires fresh native controls',
+  );
+}
 assert.deepEqual(definition.candidates[0], { id: 'current' });
 assert(
   definition.candidates.length <= 100 &&
@@ -119,6 +128,7 @@ try {
       ) &&
       poses.rows.find((r) => r.id === e.id)?.accepted,
   );
+  if (definition.names) entries = entries.filter((e) => definition.names.includes(e.name));
   if (definition.maximumPerCohort) {
     const selected = [];
     for (const key of new Set(entries.map((e) => e.material)))
@@ -348,7 +358,13 @@ try {
             trials.push(observation);
           }
           out.width = out.height = sc.width = sc.height = 0;
-          return { baseline, trials, rasterMeasurements: memo.size };
+          return {
+            baseline,
+            trials,
+            rasterMeasurements: memo.size,
+            nativeRequest: rulesLayoutRequest(body.layout),
+            contextState: body.properties,
+          };
         } finally {
           delete globalThis.__bodyCapture;
           if (full) full.width = full.height = 0;
