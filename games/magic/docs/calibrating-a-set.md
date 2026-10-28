@@ -249,6 +249,13 @@ Candidates never change global defaults. Keep original wording and scan poses
 fixed; fitting/validation cohorts, proposal storage and release approval belong
 to the host. An empty candidate preserves the released printing policy.
 
+A body profile can expose `typography.symbolOffsetY` for inline mana and tap
+symbols. It moves the whole symbol vertically in fractions of its drawn
+diameter; negative values move up. The default is zero and the allowed range
+is -0.5 to 0.5. It preserves word positions, wrapping, circle size and glyph
+shape. Measure symbol placement after the adjacent words align, and check
+other text sizes before sharing a value across body groups.
+
 LEA currently has a **name and type-line** adapter (`description.adapter === 'title'`).
 It exposes horizontal/vertical deltas, font size, horizontal scale (0.001 ratio
 steps), independent word spacing in canonical 488 × 680 pixels, filled gray ink

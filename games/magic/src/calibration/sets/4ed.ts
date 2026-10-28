@@ -3,7 +3,7 @@ import type { SetCalibrationProfile } from '../types.js';
 /** Shared printing defaults. Scan transforms and reference images belong in evidence. */
 export const profile = {
   schema: 1,
-  revision: 6,
+  revision: 7,
   set: '4ed',
   border: 'white',
   frames: {
@@ -804,6 +804,7 @@ export const profile = {
         flavorOrphans: false,
         flavorSeparator: false,
         centerOffset: -12.5,
+        symbolOffsetY: -0.1,
       },
       centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
@@ -820,6 +821,7 @@ export const profile = {
         flavorOrphans: false,
         flavorSeparator: false,
         centerOffset: -12.5,
+        symbolOffsetY: -0.1,
       },
       centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
@@ -836,6 +838,7 @@ export const profile = {
         flavorOrphans: false,
         flavorSeparator: false,
         centerOffset: -12.5,
+        symbolOffsetY: -0.1,
       },
       centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
@@ -852,6 +855,7 @@ export const profile = {
         flavorOrphans: false,
         flavorSeparator: false,
         centerOffset: -12.5,
+        symbolOffsetY: -0.1,
       },
       centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
@@ -868,6 +872,7 @@ export const profile = {
         flavorOrphans: false,
         flavorSeparator: false,
         centerOffset: -12.5,
+        symbolOffsetY: -0.1,
       },
       centered: { maxCharacters: 100, maxLines: 1, maximumSize: 25 },
     },
@@ -908,7 +913,7 @@ export const profile = {
 } as const satisfies SetCalibrationProfile;
 
 export const review = {
-  revision: 6,
+  revision: 7,
   scope: 'Ordinary nonfoil printing; see per-component evidence and outstanding tasks.',
   evidence: [
     'games/magic/fixtures/accuracy/early-reprint-frame-color.json',
@@ -921,6 +926,7 @@ export const review = {
     'games/magic/fixtures/accuracy/4ed/nonland-body-adoption.json',
     'games/magic/fixtures/accuracy/4ed/reviewed-centering-adoption.json',
     'games/magic/fixtures/accuracy/4ed/basic-word-adoption.json',
+    'games/magic/fixtures/accuracy/4ed/basic-symbol-adoption.json',
   ],
   pending: ['rules', 'flavor', 'setSymbol', 'fullCard', 'release'],
 } as const;

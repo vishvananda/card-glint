@@ -1,3 +1,4 @@
+import { preFourthBasicSymbolSource } from './fourth-basic-symbol-ancestry.mjs';
 // Exact data projection preserves historical receipts, never complete-set approval.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -100,6 +101,7 @@ export function fourthBasicWordDelta() {
   })());
 }
 export async function preFourthBasicWordSource(file, bytes) {
+  bytes = await preFourthBasicSymbolSource(file, bytes);
   const r = (await fourthBasicWordDelta()).files[file];
   return r && hash(bytes) === r.after ? Buffer.from(r.beforeSource) : bytes;
 }

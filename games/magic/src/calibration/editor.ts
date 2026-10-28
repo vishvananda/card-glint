@@ -157,7 +157,9 @@ function validateProfile(profile: SetCalibrationProfile) {
       body.bounds.width < 20 ||
       body.bounds.height < 20 ||
       body.typography.leading <= 0 ||
-      (body.typography.textWidth ?? 1) <= 0
+      (body.typography.textWidth ?? 1) <= 0 ||
+      !Number.isFinite(body.typography.symbolOffsetY ?? 0) ||
+      Math.abs(body.typography.symbolOffsetY ?? 0) > 0.5
     )
       throw Error('Invalid body bounds or typography range');
   }
@@ -176,7 +178,9 @@ function validateProfile(profile: SetCalibrationProfile) {
       classes.compact.size <= 0 ||
       classes.compact.leading <= 0 ||
       classes.typography.leading <= 0 ||
-      (classes.typography.textWidth ?? 1) <= 0)
+      (classes.typography.textWidth ?? 1) <= 0 ||
+      !Number.isFinite(classes.typography.symbolOffsetY ?? 0) ||
+      Math.abs(classes.typography.symbolOffsetY ?? 0) > 0.5)
   )
     throw Error('Invalid body size classes, bounds or typography');
   const expansion = profile.expansionBody;

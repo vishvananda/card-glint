@@ -484,7 +484,7 @@ node tests/magic-fourth-basic-word-adoption.mjs
 
 ## Inline-symbol baseline after the word fit
 
-The word-position adoption leaves the basic-land symbols too low. The
+The word-position audit found the basic-land symbols too low. The
 [baseline review](inline-baseline-review.json) tests nine vertical offsets on
 all 112 Fourth Edition cards containing WUBRGT symbols, with the words, symbol
 size, glyph, colors and scan poses fixed. Every default native PNG remains
@@ -497,11 +497,17 @@ card-weighted index from 46.15 to 44.60/100, with 111 occurrence losses.
 Sunken City and Stasis are retained visual controls. This rejects a universal
 offset.
 
-The basic-land correction is proposed, not integrated. Add an editable body
-typography value scoped to the five basic-land groups, then verify native
-pixels and whole-card scores before adopting it. Tap-disc colors and glyph
-shape need separate review. These regional indices do not replace the current
-378-card whole-card result or approve the set.
+The [adopted correction](basic-symbol-adoption.json) sets
+`typography.symbolOffsetY: -0.1` in the five basic-land body profiles. The signed
+editor control moves whole symbols in units of their drawn diameter; word
+layout is unchanged.
+
+All 492 cards in four variants passed native comparison: the fifteen Fourth
+and five inherited Ice Original renders match their independent prototypes;
+the other 1,948 PNGs and all text layouts are exact. Fourth's fifteen fresh
+whole-card scores improve from 82.45 to 82.94/100, with no losses. The 378-card
+mean rises from 80.35 to 80.37/100. Tap-disc colors, intrinsic glyph shapes and
+the remaining component audits stay open.
 
 ```sh
 node games/magic/tools/accuracy/fourth-inline-baseline-fit.mjs \

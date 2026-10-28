@@ -194,14 +194,15 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
       if (typeof value === 'boolean') choice('bodyClasses.typography.' + key, value, 'body', scope);
       else if (typeof value === 'number') {
         const offset = key === 'centerOffset';
-        const ratio = key === 'textWidth' || key === 'leading';
+        const symbol = key === 'symbolOffsetY';
+        const ratio = key === 'textWidth' || key === 'leading' || symbol;
         number(
           'bodyClasses.typography.' + key,
           value,
           'body',
           scope,
-          offset ? -24 : ratio ? 0.5 : 0,
-          offset ? 24 : ratio ? 2 : 30,
+          symbol ? -0.5 : offset ? -24 : ratio ? 0.5 : 0,
+          symbol ? 0.5 : offset ? 24 : ratio ? 2 : 30,
           ratio ? 0.01 : 0.25,
           ratio ? 'ratio' : 'px',
         );
@@ -350,8 +351,8 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
           value,
           'body',
           scope,
-          key === 'centerOffset' ? -20 : 0,
-          key === 'centerOffset' ? 20 : 3,
+          key === 'symbolOffsetY' ? -0.5 : key === 'centerOffset' ? -20 : 0,
+          key === 'symbolOffsetY' ? 0.5 : key === 'centerOffset' ? 20 : 3,
           0.01,
           'ratio',
         );

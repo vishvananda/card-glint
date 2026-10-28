@@ -236,7 +236,7 @@ export function paintRulesLayout(
           context,
           run.text,
           x + run.size * 0.025,
-          line.baseline - run.size * 0.72,
+          line.baseline - run.size * 0.72 + run.size * 0.8 * (layout.symbolOffsetY ?? 0),
           run.size * 0.8,
           images,
         );

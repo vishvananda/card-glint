@@ -19,6 +19,8 @@ export interface RulesLayout {
   horizontalScale?: number;
   /** Measurement and painting must use the same unhinted glyph advances. */
   fractionalMetrics?: boolean;
+  /** Whole-symbol vertical shift in symbol diameters; text does not reflow. */
+  symbolOffsetY?: number;
   size: number;
   x: number;
   top: number;
@@ -35,6 +37,8 @@ export interface RulesTypography {
   maximumLines?: number;
   /** Positive horizontal letter scale. Does not scale mana discs or line height. */
   textWidth?: number;
+  /** Whole-symbol vertical shift in symbol diameters; positive moves down. */
+  symbolOffsetY?: number;
   leading: number;
   paragraphGap: number;
   flavorGap: number;
@@ -82,6 +86,11 @@ export function layoutRules(
     (!Number.isInteger(typography.maximumLines) || typography.maximumLines <= 0)
   )
     throw Error('Magic rules line limit must be a positive integer.');
+  if (
+    !Number.isFinite(typography.symbolOffsetY ?? 0) ||
+    Math.abs(typography.symbolOffsetY ?? 0) > 0.5
+  )
+    throw Error('Magic inline symbol offset must be finite and within half a diameter.');
   const minimumFlavor = typography.flavorOrphanMinCharacters ?? 0;
   if (!Number.isInteger(minimumFlavor) || minimumFlavor < 0)
     throw Error('Magic flavor orphan threshold must be a nonnegative integer.');
@@ -217,6 +226,9 @@ export function layoutRules(
       const offset = Math.max(topLimit, Math.min(bottomLimit - inkHeight, preferredTop)) - inkTop;
       layout = {
         ...(typography.fractionalMetrics ? { fractionalMetrics: true } : {}),
+        ...(typography.symbolOffsetY === undefined
+          ? {}
+          : { symbolOffsetY: typography.symbolOffsetY }),
         size,
         x: bounds.x,
         top: inkTop + offset,

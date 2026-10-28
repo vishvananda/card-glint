@@ -1,8 +1,12 @@
+import {
+  preFourthBasicSymbolSource,
+  fourthBasicSymbolHistoricalHash,
+} from '../games/magic/tools/accuracy/fourth-basic-symbol-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { createServer } from 'vite';
-import { hash, sourceHash, root } from '../games/magic/tools/accuracy/common.mjs';
+import { hash, root } from '../games/magic/tools/accuracy/common.mjs';
 import {
   fourthBasicWordDelta,
   preFourthBasicWordSource,
@@ -13,10 +17,10 @@ import {
   fourthBasicWordPaths,
 } from '../games/magic/tools/accuracy/fourth-basic-word-data-check.mjs';
 const p = await fourthBasicWordDelta();
-assert.equal(await sourceHash(root + '/games/magic/src'), p.afterRenderer);
+assert.equal(await fourthBasicSymbolHistoricalHash(), p.afterRenderer);
 assert.equal(await fourthBasicWordHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {
-  const bytes = await fs.readFile(root + '/' + file);
+  const bytes = await preFourthBasicSymbolSource(file, await fs.readFile(root + '/' + file));
   assert.equal(hash(bytes), r.after);
   assert.equal(hash(await preFourthBasicWordSource(file, bytes)), r.before);
   const unknown = Buffer.concat([bytes, Buffer.from('\n// unreviewed change\n')]);
@@ -55,9 +59,9 @@ try {
   const { usesFourthDefaults } = await ssr.ssrLoadModule(
     '/games/magic/src/calibration/selection.ts',
   );
-  assert.equal(api.describeSetCalibration('4ed').revision, 6);
-  assert.throws(() => api.createSetCalibrationCandidate('4ed', 5, {}), /revision changed/);
-  assert.deepEqual(api.createSetCalibrationCandidate('4ed', 6, {}).values, {});
+  assert.equal(api.describeSetCalibration('4ed').revision, 7);
+  assert.throws(() => api.createSetCalibrationCandidate('4ed', 6, {}), /revision changed/);
+  assert.deepEqual(api.createSetCalibrationCandidate('4ed', 7, {}).values, {});
   const expectedKeys = new Set(
     input.entries
       .filter((e) => e.card.set === '4ed' || usesFourthDefaults(e.face))
