@@ -9,6 +9,9 @@ const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const userAgent = 'card-glint-accuracy/1.0 (https://github.com/vishvananda/card-glint)';
 // Only the pinned styles/includes used by our standard-template painter.
 const templateRoots = [
+  'magic-old.mse-style',
+  'magic-agclassic.mse-style',
+  'magic-veryold.mse-style',
   'magic-future.mse-style',
   'magic-future-textless.mse-style',
   'magic-future-common.mse-include',

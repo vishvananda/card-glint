@@ -69,3 +69,26 @@ assert.throws(() => peerProfiles({ width: 244, height: 340 }), /488/);
 console.log(
   'Peer-gradient registration recovers translation and rotation under brightness changes, ignores all pixels outside frozen frame strips, and rejects missing validation support.',
 );
+
+// Exposure changes must not turn a supported edge into missing frame geometry.
+const dim = fitPeerProfiles(peerProfiles(image(2, -1.5, 0.1)), template);
+assert(dim.accepted, 'Dim but coherent frame edges were rejected');
+assert(Math.abs(dim.parameters.tx + 2) < 0.25 && Math.abs(dim.parameters.ty - 1.5) < 0.25);
+const flat = { width: 488, height: 680, data: new Uint8Array(488 * 680 * 4).fill(127) };
+assert.equal(fitPeerProfiles(peerProfiles(flat), template).accepted, false);
+for (let seed = 1; seed <= 16; seed++) {
+  let state = seed;
+  const data = new Uint8Array(488 * 680 * 4);
+  for (let i = 0; i < data.length; i++) {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+    data[i] = i % 4 === 3 ? 255 : 80 + (state >>> 28);
+  }
+  assert.equal(
+    fitPeerProfiles(peerProfiles({ width: 488, height: 680, data }), template).accepted,
+    false,
+    'Noise-only frame ' + seed + ' accepted',
+  );
+}
+console.log(
+  'Contrast-invariant edges retain dim positive controls and reject flat/noise-only frames under unchanged geometric gates.',
+);

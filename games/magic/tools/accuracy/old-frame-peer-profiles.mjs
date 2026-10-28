@@ -4,7 +4,7 @@ import { luminance } from './pixels-pure.mjs';
 import { median } from './metrics.mjs';
 import { oldDefaultPose } from './old-frame-default-registration.mjs';
 
-export const PEER_PROFILE_VERSION = 'old-frame-peer-gradients-v2';
+export const PEER_PROFILE_VERSION = 'old-frame-peer-gradients-v3';
 // Side strips stop outside artwork, rules, names and copyright.
 // The 11-pixel footprints alternate fit/validation without overlapping.
 export const PEER_SAMPLE_BOUNDS = Object.freeze({
@@ -91,7 +91,10 @@ export function fitPeerProfiles(profiles, template) {
         aa += a * a;
         bb += b * b;
       }
-      return aa > 100 && bb > 100 ? dot / Math.sqrt(aa * bb) : -1;
+      // Absolute energy rejects identical dim edges solely because of ink or
+      // scan exposure. Normalize every non-flat profile; correlation, four-side
+      // support and independent residual limits still reject noise/ambiguity.
+      return aa > 0 && bb > 0 ? Math.max(-1, Math.min(1, dot / Math.sqrt(aa * bb))) : -1;
     };
     const scores = Array.from({ length: 49 }, (_, j) => ({
       shift: -6 + j * 0.25,

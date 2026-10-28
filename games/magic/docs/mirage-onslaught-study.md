@@ -109,3 +109,65 @@ choice. Shared geometry must be fitted and replayed before adoption.
 Run `npm run test:magic-old-frame-census` for input identity, correction isolation,
 profile-content exclusion, known-pose recovery and rejection checks. The usual
 renderer checks also apply when changing public data or rendering.
+
+## Recover normalization without moving accepted references
+
+The recovery pass preserves all 688 previously accepted scan transforms byte for
+byte. It removes an absolute gradient-energy cutoff that rejected dim but coherent
+frame edges. Correlation, side coverage, independent residual, rotation and skew
+gates remain unchanged. Synthetic dim frames pass; flat and noise-only images
+remain rejected.
+
+Mirage now accepts 350/351 scans; Onslaught accepts 344/350. Six additional scans
+were recovered. The seven remaining scans remain rejected and visible in evidence.
+They receive no accepted accuracy score.
+
+The offline baseline scorer accepts optional parent score and pose files.
+It reuses a row only when the input, native face, reference, metric graph and
+transform identities match. Changed transforms rescore only affected rows.
+Changing a metric dependency invalidates the parent scores. The regression test
+covers unchanged rows, a two-pixel displacement, rejected registration and a
+changed metric graph.
+
+## Compare source geometry and texture separately
+
+Export fixed, normalized references before fitting shared source geometry:
+
+```sh
+node games/magic/tools/accuracy/old-frame-geometry-inputs.mjs \
+  inputs.json poses.json family-screen.json geometry-inputs
+python3 -m venv .venv-calibration
+.venv-calibration/bin/pip install -r games/magic/tools/accuracy/requirements-old-frame.txt
+.venv-calibration/bin/python tests/magic_old_frame_geometry_test.py
+.venv-calibration/bin/python tests/magic_old_frame_paper_test.py
+.venv-calibration/bin/python games/magic/tools/accuracy/old_frame_geometry.py \
+  geometry-inputs "$MAGIC_ACCURACY_CACHE" geometry.json
+.venv-calibration/bin/python games/magic/tools/accuracy/old_frame_texture.py \
+  geometry-inputs geometry.json "$MAGIC_ACCURACY_CACHE" rails.json
+.venv-calibration/bin/python games/magic/tools/accuracy/old_frame_paper_texture.py \
+  geometry-inputs geometry.json "$MAGIC_ACCURACY_CACHE" paper.json
+```
+
+The four shared parameters are horizontal/vertical translation and scale.
+Name-hash cohorts are balanced within each frame material; alternate printings
+of one name remain together. Fit, validation and certificate strips do not
+share pixels. Small cohorts are development checks, not independent validation.
+
+A sharp rim can score well while the paper pattern is wrong. Side rails and
+paper therefore have separate diagnostics. Paper reports both lightness and a
+fixed yellow-blue color direction. Onslaught blue reverses the lightness balance
+of some source textures: its negative grayscale correlation does **not** indicate
+a different pattern. The fixed color-direction correlation reaches approximately
+0.84 on calibration names with the ABU source. Do not select a source from
+grayscale correlation alone.
+
+Pinned MSE old-style sources are also being compared. Their illustration field
+is explicitly removed in private diagnostic derivatives using the source style's
+45/51/286/233 rectangle at 375×523. Original cached assets remain unchanged.
+The additional-source exporter records source and derivative hashes. These
+experiments do not install new frame assets or certify a whole set.
+
+The compact measurements in
+[`geometry-source-review.json`](../fixtures/accuracy/mirage-onslaught/geometry-source-review.json)
+are candidates. Native rendering, color, headings, mana, set symbols, body text,
+artist, copyright and stats still need validation before adoption.

@@ -13,8 +13,8 @@ import {
   fitPeerProfiles,
 } from './old-frame-peer-profiles.mjs';
 
-const [inputFile, output] = process.argv.slice(2);
-assert(output, 'Use INPUTS NEW_POSES_OUTPUT');
+const [inputFile, output, parentFile] = process.argv.slice(2);
+assert(output, 'Use INPUTS NEW_POSES_OUTPUT [FROZEN_PARENT_POSES]');
 await fs.access(output).then(
   () => {
     throw Error('Output already exists');
@@ -26,6 +26,12 @@ await fs.access(output).then(
 const raw = await fs.readFile(inputFile),
   input = JSON.parse(raw);
 assert.equal(input.status, 'full-original-input-census');
+const parentRaw = parentFile ? await fs.readFile(parentFile) : undefined;
+const parent = parentRaw ? JSON.parse(parentRaw) : undefined;
+if (parent) {
+  assert.equal(parent.inputHash, hash(raw));
+  assert.equal(parent.rows.length, input.entries.length);
+}
 const basics = new Set(['Plains', 'Island', 'Swamp', 'Mountain', 'Forest']);
 const sourceHashes = async () =>
   Object.fromEntries(
@@ -61,13 +67,21 @@ const templates = Object.fromEntries(
     peerTemplate(references.filter((r) => r.material === m).map((r) => r.profiles)),
   ]),
 );
+if (parent) assert.deepEqual(parent.templates, templates, 'Frozen source references changed');
 const rows = references.map((r) => {
+  const prior = parent?.rows.find((p) => p.id === r.id);
+  if (parent) assert.equal(prior?.referenceHash, r.referenceHash);
+  if (prior?.accepted)
+    return { ...prior, acceptanceSource: 'frozen-parent', parentPoseHash: hash(parentRaw) };
   const fit = fitPeerProfiles(r.profiles, templates[r.material]);
   return {
     id: r.id,
     material: r.material,
     referenceHash: r.referenceHash,
     ...fit,
+    ...(prior
+      ? { acceptanceSource: 'contrast-invariant-recovery', previousReason: prior.reason }
+      : {}),
     ...(!fit.accepted
       ? { rejectedCandidate: fit.transform, transform: { matrix: [1, 0, 0, 1, 0, 0] } }
       : {}),
@@ -94,6 +108,12 @@ await writeJson(output, {
   templates,
   scope:
     "Source-only per-material median gradient templates; basic land treatments have separate scan peers (minimum three), with their small cohorts explicitly retained. All scans are development references, not held-out validation cards. Alternating disjoint strips independently validate per-scan translation, scale, rotation and shear using unchanged geometric limits. Templates preserve each material's median frame placement rather than forcing different frame colors onto one luminance edge. No renderer, artwork, rules or title enters the objective. Rejected fits are explicit and never accepted scores. Provisional geometry normalization does not certify asset shape or texture.",
+  ...(parent
+    ? {
+        parentPoseHash: hash(parentRaw),
+        frozenAccepted: parent.rows.filter((r) => r.accepted).length,
+      }
+    : {}),
   summary,
   rows,
 });

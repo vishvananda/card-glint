@@ -7,8 +7,10 @@ import { PNG } from 'pngjs';
 import { hash, objectFile, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { metricSourceGraph } from './module-graph.mjs';
-const [inputFile, posesFile, captureFile, metricsFile, out] = process.argv.slice(2);
-assert(out, 'Use INPUTS POSES NATIVE_CAPTURE METRICS NEW_OUTPUT');
+const [inputFile, posesFile, captureFile, metricsFile, out, parentScoresFile, parentPosesFile] =
+  process.argv.slice(2);
+assert(out, 'Use INPUTS POSES NATIVE_CAPTURE METRICS NEW_OUTPUT [PARENT_SCORES PARENT_POSES]');
+assert.equal(Boolean(parentScoresFile), Boolean(parentPosesFile));
 await fs.access(out).then(
   () => {
     throw Error('Output already exists');
@@ -32,6 +34,24 @@ assert.equal(poses.rows.length, input.entries.length);
 const { scoreRegions } = await import(pathToFileURL(path.resolve(metricsFile)));
 const graph = await metricSourceGraph(path.resolve(metricsFile)),
   rows = [];
+const parentScoreBytes = parentScoresFile ? await fs.readFile(parentScoresFile) : undefined;
+const parentPoseBytes = parentPosesFile ? await fs.readFile(parentPosesFile) : undefined;
+const parentScores = parentScoreBytes ? JSON.parse(parentScoreBytes) : undefined;
+const parentPoses = parentPoseBytes ? JSON.parse(parentPoseBytes) : undefined;
+if (parentScores) {
+  assert.equal(parentScores.inputHash, hash(ib));
+  assert.equal(parentScores.captureHash, hash(cb));
+  assert.equal(parentScores.poseHash, hash(parentPoseBytes));
+  assert.equal(parentPoses.inputHash, hash(ib));
+  assert.equal(
+    parentScores.metrics.hash,
+    graph.hash,
+    'Metric graph changed; score this baseline without a reuse parent',
+  );
+  assert.equal(parentScores.rows.length, input.entries.length);
+  assert.equal(parentPoses.rows.length, input.entries.length);
+}
+const reuse = { reused: 0, fresh: 0, rejected: 0 };
 for (const e of input.entries) {
   const pose = poses.rows.find((p) => p.id === e.id),
     native = capture.rows.find((r) => r.id === e.id);
@@ -40,6 +60,7 @@ for (const e of input.entries) {
   assert.equal(native.referenceHash, e.reference.sha256);
   assert.equal(native.inputHash, hash(JSON.stringify(e.face)));
   if (!pose.accepted) {
+    reuse.rejected++;
     rows.push({
       id: e.id,
       name: e.name,
@@ -49,6 +70,21 @@ for (const e of input.entries) {
     });
     continue;
   }
+  const oldScore = parentScores?.rows.find((r) => r.id === e.id);
+  const oldPose = parentPoses?.rows.find((r) => r.id === e.id);
+  const poseTransformHash = hash(JSON.stringify(pose.transform));
+  if (
+    oldScore?.score &&
+    oldPose?.accepted &&
+    oldScore.referenceHash === e.reference.sha256 &&
+    oldScore.nativeHash === native.sha256 &&
+    hash(JSON.stringify(oldPose.transform)) === poseTransformHash
+  ) {
+    rows.push({ ...oldScore, poseTransformHash, scoreSource: 'exact-parent-score-reuse' });
+    reuse.reused++;
+    continue;
+  }
+  reuse.fresh++;
   const ref = await fs.readFile(objectFile(e.reference));
   assert.equal(hash(ref), e.reference.sha256);
   const rendered = await fs.readFile(path.join(path.dirname(captureFile), e.id + '.png'));
@@ -77,6 +113,8 @@ for (const e of input.entries) {
     status: 'diagnostic-measured',
     referenceHash: e.reference.sha256,
     nativeHash: native.sha256,
+    poseTransformHash,
+    scoreSource: 'fresh-frozen-pose-score',
     typeVerified: reviewedType,
     score,
   });
@@ -131,8 +169,12 @@ await writeJson(out, {
   node: process.version,
   scope:
     'Released native Original pixels with one frozen per-scan frame pose. Type regions with provisional provider wording remain ineligible. Rejected normalization never receives an accepted score. Source/provider body text is identified separately; these baseline numbers do not certify whole-set source review or calibration completion.',
+  reuse,
+  ...(parentScores
+    ? { parentScoreHash: hash(parentScoreBytes), parentPoseHash: hash(parentPoseBytes) }
+    : {}),
   summary,
   materials,
   rows,
 });
-console.log(JSON.stringify({ set: input.set, summary }));
+console.log(JSON.stringify({ set: input.set, summary, reuse }));
