@@ -186,6 +186,26 @@ export interface SetCalibrationProfile {
     /** Known original basic names whose provider represents the printed icon as W/U/B/R/G. */
     readonly originalLetters?: boolean;
     readonly bounds?: FaceRect;
+    /** Source-bound flat ink excludes a source bitmap's baked bevel/shadow.
+     * Placement is center-anchored in canonical face pixels. */
+    readonly symbols?: Readonly<
+      Partial<
+        Record<
+          ManaColor,
+          {
+            readonly source: string;
+            readonly key: Rgb;
+            readonly ink: Rgb;
+            readonly placement?: {
+              readonly dx?: number;
+              readonly dy?: number;
+              readonly scaleX?: number;
+              readonly scaleY?: number;
+            };
+          }
+        >
+      >
+    >;
   };
   readonly title: CalibratedLettering;
   readonly type: CalibratedLettering;

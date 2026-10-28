@@ -3,6 +3,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {
   oldFrameSourceDelta,
+  oldFrameBasicIconsDelta,
+  preBasicIconsSource,
   oldFrameArtWindowDelta,
   oldFrameOptionalComponentsDelta,
   preOptionalComponentsSource,
@@ -62,7 +64,10 @@ for (const file of files) {
     hash(
       await preArtWindowSource(
         path.relative(root, file),
-        await preOptionalComponentsSource(path.relative(root, file), bytes),
+        await preOptionalComponentsSource(
+          path.relative(root, file),
+          await preBasicIconsSource(path.relative(root, file), bytes),
+        ),
       ),
     ),
   ]);
@@ -73,7 +78,10 @@ for (const [file, e] of Object.entries(art.files)) {
     hash(
       await preArtWindowSource(
         file,
-        await preOptionalComponentsSource(file, await fs.readFile(path.join(root, file))),
+        await preOptionalComponentsSource(
+          file,
+          await preBasicIconsSource(file, await fs.readFile(path.join(root, file))),
+        ),
       ),
     ),
     e.before,
@@ -90,12 +98,22 @@ const components = await oldFrameOptionalComponentsDelta(),
 for (const file of files)
   beforeComponents.push([
     path.relative(path.join(root, 'games/magic/src'), file),
-    hash(await preOptionalComponentsSource(path.relative(root, file), await fs.readFile(file))),
+    hash(
+      await preOptionalComponentsSource(
+        path.relative(root, file),
+        await preBasicIconsSource(path.relative(root, file), await fs.readFile(file)),
+      ),
+    ),
   ]);
 assert.equal(hash(JSON.stringify(beforeComponents)), components.beforeRenderer);
 for (const [file, e] of Object.entries(components.files)) {
   assert.equal(
-    hash(await preOptionalComponentsSource(file, await fs.readFile(path.join(root, file)))),
+    hash(
+      await preOptionalComponentsSource(
+        file,
+        await preBasicIconsSource(file, await fs.readFile(path.join(root, file))),
+      ),
+    ),
     e.before,
   );
   const foreign = Buffer.from('foreign optional component source');
@@ -103,4 +121,24 @@ for (const [file, e] of Object.entries(components.files)) {
 }
 console.log(
   'Optional printing components reconstruct their exact parent and preserve all 65 native family controls.',
+);
+
+const basic = await oldFrameBasicIconsDelta(),
+  beforeBasic = [];
+for (const file of files)
+  beforeBasic.push([
+    path.relative(path.join(root, 'games/magic/src'), file),
+    hash(await preBasicIconsSource(path.relative(root, file), await fs.readFile(file))),
+  ]);
+assert.equal(hash(JSON.stringify(beforeBasic)), basic.beforeRenderer);
+for (const [file, e] of Object.entries(basic.files)) {
+  assert.equal(
+    hash(await preBasicIconsSource(file, await fs.readFile(path.join(root, file)))),
+    e.before,
+  );
+  const foreign = Buffer.from('foreign basic icon source');
+  assert.equal(await preBasicIconsSource(file, foreign), foreign);
+}
+console.log(
+  'Optional flat basic icons reconstruct their exact parent; 65 native defaults stay unchanged.',
 );

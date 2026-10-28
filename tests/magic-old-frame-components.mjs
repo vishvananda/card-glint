@@ -48,6 +48,12 @@ try {
       '/games/magic/src/presentation/early-reprint-footer.ts'
     );
     const { framePaperMask } = await import('/games/magic/src/presentation/frame-paper-mask.ts');
+    const { colorFrame } = await import('/games/magic/src/presentation/frame-hsb.ts');
+    const { earlyReprintColors } = await import(
+      '/games/magic/src/presentation/early-reprint-colors.ts'
+    );
+    const { retroBasicSymbol } = await import('/games/magic/src/presentation/retro-frame.ts');
+
     const { calibrationControls } = await import('/games/magic/src/calibration/editor-controls.ts');
 
     const check = (v, m) => {
@@ -253,6 +259,56 @@ try {
       rejected = true;
     }
     check(rejected, 'Invalid paper mask accepted');
+    const raw = {
+      width: 5,
+      height: 1,
+      data: new Uint8ClampedArray([
+        0, 123, 67, 255, 0, 0, 0, 180, 240, 240, 240, 255, 0, 123, 67, 128, 0, 0, 0, 0,
+      ]),
+    };
+    const ink = {
+      hueDegrees: 0,
+      saturationScale: 1,
+      brightnessScale: 1,
+      symbolInk: { key: [0, 123 / 255, 67 / 255], ink: [87 / 255, 125 / 255, 76 / 255] },
+    };
+    colorFrame(raw, ink);
+    equal(
+      Array.from(raw.data.slice(0, 4)),
+      [87, 125, 76, 255],
+      'Symbol ink did not retain its core',
+    );
+    check(raw.data[7] === 0 && raw.data[11] === 0, 'Baked source bevel/shadow survived');
+    equal(Array.from(raw.data.slice(12, 16)), [87, 125, 76, 128], 'Ink antialias coverage changed');
+    const snapshot = Array.from(raw.data);
+    let malformed = false;
+    try {
+      colorFrame(raw, { ...ink, symbolInk: { ...ink.symbolInk, key: [NaN, 0, 0] } });
+    } catch {
+      malformed = true;
+    }
+    check(
+      malformed && JSON.stringify(snapshot) === JSON.stringify(Array.from(raw.data)),
+      'Invalid ink mutated source pixels',
+    );
+    profile.basicSymbol.symbols = {
+      G: {
+        source: retroBasicSymbol(face),
+        key: ink.symbolInk.key,
+        ink: ink.symbolInk.ink,
+        placement: { dx: 1, dy: 0, scaleX: 1.15, scaleY: 1.15 },
+      },
+    };
+    const url = retroBasicSymbol(face);
+    check(
+      earlyReprintColors({ ...face, colorCalibration: 'set-hsb-v1' }).materials[url].symbolInk,
+      'Basic-symbol material was not prepared',
+    );
+    profile.basicSymbol.symbols.G.source = 'https://example.invalid/stale.png';
+    check(
+      !earlyReprintColors({ ...face, colorCalibration: 'set-hsb-v1' }).materials[url],
+      'Stale source inherited basic ink',
+    );
     delete globalThis.__componentProfile;
     return {
       retainedRows: adjusted.lines.length,

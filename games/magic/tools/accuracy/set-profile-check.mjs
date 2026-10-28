@@ -74,6 +74,24 @@ export function checkSetProfile(profile, review, manifest) {
       assert(x >= 0 && y >= 0 && x + w <= 1 && y + h <= 1);
     }
   }
+  for (const [color, spec] of Object.entries(profile.basicSymbol?.symbols ?? {})) {
+    assert.match(color, /^[WUBRG]$/);
+    assert.equal(
+      spec.source,
+      manifest.RETRO_ROOT + '/img/frames/m15/basics/' + color.toLowerCase() + '.png',
+    );
+    for (const rgb of [spec.key, spec.ink])
+      assert(rgb.length === 3 && rgb.every((v) => v >= 0 && v <= 1));
+    const { dx = 0, dy = 0, scaleX = 1, scaleY = 1 } = spec.placement ?? {};
+    assert(
+      Math.abs(dx) <= 12 &&
+        Math.abs(dy) <= 12 &&
+        scaleX >= 0.7 &&
+        scaleX <= 1.4 &&
+        scaleY >= 0.7 &&
+        scaleY <= 1.4,
+    );
+  }
   for (const p of Object.values(profile.rulesPlacement ?? {})) {
     assert(p.baselineScale >= 0.9 && p.baselineScale <= 1.1);
     assert(p.offset.length === 2 && p.offset.every((v) => Math.abs(v) <= 8));

@@ -127,6 +127,22 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
         'card fraction',
       ),
     );
+  for (const [color, spec] of Object.entries(profile.basicSymbol?.symbols ?? {})) {
+    if (!spec?.placement) continue;
+    for (const key of ['dx', 'dy', 'scaleX', 'scaleY'] as const) {
+      const scale = /scale/.test(key);
+      number(
+        'basicSymbol.symbols.' + color + '.placement.' + key,
+        spec.placement[key] ?? (scale ? 1 : 0),
+        'symbols',
+        'basic ' + color,
+        scale ? 0.7 : -12,
+        scale ? 1.4 : 12,
+        scale ? 0.005 : 0.125,
+        scale ? 'ratio' : 'px',
+      );
+    }
+  }
   for (const [scope, p] of Object.entries(profile.rulesPlacement ?? {})) {
     if (!p) continue;
     number(
@@ -430,6 +446,8 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
   }
   const rgb = (id: string, value: readonly number[], scope: string, max = 1) =>
     value.forEach((n, i) => number(`${id}.${i}`, n, 'colors', scope, 0, max, 0.005, 'sRGB ratio'));
+  for (const [color, spec] of Object.entries(profile.basicSymbol?.symbols ?? {}))
+    if (spec) rgb('basicSymbol.symbols.' + color + '.ink', spec.ink, 'basic ' + color);
   if (profile.footer.artist.tint) rgb('footer.artist.tint', profile.footer.artist.tint, 'all', 1.5);
   if (profile.footer.stats.tint) rgb('footer.stats.tint', profile.footer.stats.tint, 'all', 1.5);
   for (const [variant, values] of Object.entries(profile.mana.variants ?? {})) {

@@ -338,3 +338,29 @@ release checks still apply. The ledger rejects missing or duplicate members.
 
 For frozen released-browser baselines and native ARN/ATQ/DRK text-policy probes,
 see [early expansion probes](early-expansion-probes.md).
+
+### Large basic-land symbols
+
+A profile can keep a source bitmap's flat printed ink while discarding its baked
+bevel and shadow. Under `basicSymbol.symbols`, each W/U/B/R/G entry records the
+exact `source` URL, its flat source `key` color and the target `ink` color.
+RGB values range from 0 to 1. Optional `placement` values use `dx`, `dy`,
+`scaleX` and `scaleY`; translation is measured in the 488 × 680 reference
+space and independent scaling stays anchored at the symbol's center. A different
+source URL does not receive the correction. Preparation is cached with the
+asset; drawing does not read pixels.
+
+Use `old-frame-basic-templates.mjs` with frozen inputs, a candidate profile and
+its native capture directory to record actual bitmap coverage. Its unchanged
+full-card controls must match before extracting templates. Then
+`old_frame_basic_fit.py` measures translation and independent scales against
+the normalized scans while solving foreground ink and a background color plane.
+Inspect the fitted contour and any second ink color, such as a white symbol's
+inner ring. Flat ink extraction cannot recover a missing contour or approve an
+incorrect source.
+
+Run `python3 tests/magic-old-frame-basic-fit.py` for known-transform and
+negative controls. Repeated basic-land illustrations provide development
+measurements, not independent card-name validation. Replay the shared per-color
+proposal through the native painter and report regional and whole-card changes
+before adopting it.

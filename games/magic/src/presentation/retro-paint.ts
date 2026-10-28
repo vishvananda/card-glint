@@ -40,7 +40,7 @@ import { historicalBackingKey } from './historical-symbol-backing.js';
 import { symbolOutlineKey } from './symbol-svg-patches.js';
 import { resolveCardProfile } from './profile.js';
 import { usesMonochromeSetSymbol, historicalSetOutline } from './historical-set-symbol.js';
-import { retroBasicPrinting } from './retro-basic.js';
+import { retroBasicPrinting, simpleBasicMana } from './retro-basic.js';
 import { isRevisedLand } from './revised-land-frame.js';
 import { usesRevisedFrameGeometry } from './revised-frame-geometry.js';
 import { paintRevisedLandText } from './revised-land-text.js';
@@ -365,13 +365,32 @@ export function paintRetroFace(
       ? retroPx(bounds)
       : [rx + (rw - rw * 0.4) / 2, ry + (rh - rh * 0.75) / 2, rw * 0.4, rh * 0.75];
     const scale = Math.min(bw / basic.width, bh / basic.height);
-    c.drawImage(
-      basic,
-      bounds ? bx + (bw - basic.width * scale) / 2 : rx + (rw - basic.width * scale) / 2,
-      bounds ? by + (bh - basic.height * scale) / 2 : ry + (rh - basic.height * scale) / 2,
-      basic.width * scale,
-      basic.height * scale,
-    );
+    let gx = bounds ? bx + (bw - basic.width * scale) / 2 : rx + (rw - basic.width * scale) / 2;
+    let gy = bounds ? by + (bh - basic.height * scale) / 2 : ry + (rh - basic.height * scale) / 2;
+    let gw = basic.width * scale,
+      gh = basic.height * scale;
+    const color = simpleBasicMana(face);
+    const spec =
+      color &&
+      calibrationForFace(face)?.basicSymbol?.symbols?.[color as 'W' | 'U' | 'B' | 'R' | 'G'];
+    if (spec && spec.source === retroBasicSymbol(face) && spec.placement) {
+      const { dx = 0, dy = 0, scaleX = 1, scaleY = 1 } = spec.placement;
+      if (
+        ![dx, dy, scaleX, scaleY].every(Number.isFinite) ||
+        Math.abs(dx) > 12 ||
+        Math.abs(dy) > 12 ||
+        scaleX < 0.7 ||
+        scaleX > 1.4 ||
+        scaleY < 0.7 ||
+        scaleY > 1.4
+      )
+        throw Error('Invalid large basic-symbol placement');
+      gx += dx - (gw * (scaleX - 1)) / 2;
+      gy += dy - (gh * (scaleY - 1)) / 2;
+      gw *= scaleX;
+      gh *= scaleY;
+    }
+    c.drawImage(basic, gx, gy, gw, gh);
   } else {
     const layout = retroTextLayout(c, face);
     if (layout)

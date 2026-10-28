@@ -20,6 +20,10 @@ export interface DualFrameHsb {
 }
 export type FrameHsb = (HsbAdjustment | DualFrameHsb) & {
   blackPoint?: FrameBlackPoint;
+  /** Isolated symbol material only. Retain color-keyed ink coverage, removing
+   * baked stock-colored bevels/shadows before tinting the existing alpha. */
+  symbolInk?: { key: Rgb; ink: Rgb };
+
   blend?: FrameMaterialBlend;
   /** Edge-connected stock on precomposed plates; prepared once with the material. */
   outerStock?: Rgb;
@@ -64,6 +68,32 @@ export function colorFrame(
       textureMask.data.length !== image.data.length)
   )
     throw RangeError('Frame texture correction needs its source selection');
+  if (adjustment.symbolInk) {
+    const { key, ink } = adjustment.symbolInk;
+    if (
+      [key, ink].some(
+        (rgb) => rgb.length !== 3 || rgb.some((v) => !Number.isFinite(v) || v < 0 || v > 1),
+      ) ||
+      'mask' in adjustment ||
+      adjustment.blackPoint ||
+      adjustment.outerStock ||
+      adjustment.blend ||
+      adjustment.hueDegrees !== 0 ||
+      adjustment.saturationScale !== 1 ||
+      adjustment.brightnessScale !== 1 ||
+      (adjustment.valueGamma ?? 1) !== 1 ||
+      adjustment.rgbScale?.some((v) => v !== 1)
+    )
+      throw RangeError('Invalid isolated symbol ink');
+    for (let i = 0; i < image.data.length; i += 4) {
+      if (!image.data[i + 3]) continue;
+      const distance = Math.hypot(...key.map((v, k) => image.data[i + k]! / 255 - v));
+      const coverage = Math.max(0, Math.min(1, (0.12 - distance) / 0.04));
+      image.data[i + 3] = Math.round(image.data[i + 3]! * coverage);
+      for (let k = 0; k < 3; k++) image.data[i + k] = Math.round(ink[k]! * 255);
+    }
+    return;
+  }
   const dual = 'mask' in adjustment ? adjustment : undefined,
     mask = dual ? framePaperMask(image, dual.mask) : undefined,
     frame = 'mask' in adjustment ? adjustment.frame : adjustment,
