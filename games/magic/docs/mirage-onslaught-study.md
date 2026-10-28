@@ -30,8 +30,10 @@ initial provider-based inputs. All 701 type lines now have field-specific scan
 reviews in each set's `type-printing-review.json`. These reviews certify
 only the printed type. They are calibration inputs and are not promoted into the
 public correction catalog until the corresponding profiles are ready. Provider
-body text, flavor, artist and layout need their
-own checks.
+body text, flavor and layout need their own checks. Artist credits now have
+separate exact-scan reviews for all 701 printings; 29 Mirage and 14 Onslaught
+credits differ from the providers' normalized aliases. The input producer reads
+those literal credits without promoting them into the public correction catalog.
 
 Rules-only corrections preserve the caller's flavor paragraphs and Oracle
 wording. A different scan hash cannot inherit an exact-scan correction.
@@ -279,3 +281,65 @@ Its text scores are offline fitting objectives, not published whole-card scores.
 Artist wording, copyright and collector text still require their own source
 review. For example, Mirage's Crystal Vein prints “Pat Morrissey”; the imported
 artist string says “Pat Lewis.” That difference must not become a geometry fix.
+
+## Keep art content and frame rims separate
+
+Rim-only registration does not certify the art aperture. A candidate can match
+the frame well while placing its illustration several pixels too high. Compare
+the interior illustration gradients using the already frozen scan poses. Use
+calibration-name medians for shared aperture changes; report validation names and
+small basic-land development groups separately. Diagnostic per-card transforms
+must never become per-card rendering corrections.
+
+Moving the whole frame to correct the illustration improved art overlap to more
+than 96/100, but damaged frame and type-line scores. That candidate was rejected.
+An optional `frames[material].artWindow` instead maps the source image field to
+the calibrated `art` rectangle. It keeps the original whole-image affine sampling
+below a declared source anchor. Preserve the type-line region as well as rules
+and footer pixels; an anchor below the type line changed its bezel and was also
+narrowed. Source colors stay bound to the unchanged frame placement.
+
+The optional painter changes no existing defaults: all 65 preexisting native
+family controls are byte-identical. A second check compares every candidate's
+RGBA pixels below its anchor with the unchanged parent:
+
+```sh
+node games/magic/tools/accuracy/old-frame-art-window-parity.mjs   parent-native candidate-native candidate-profile.json lower-parity.json
+```
+
+This check includes rejected scan poses because it compares native renders,
+without resampling scans. The two native pixels at the clipping boundary are
+excluded to avoid counting antialias support.
+
+## Measure mana paper before fitting glyphs
+
+Mirage and Onslaught have light mana-disc paper over the frame. The general
+two-polarity detector sometimes preferred a stronger dark edge inside a glyph.
+The study-specific detector declares the light-paper polarity for the whole set;
+it does not choose a polarity per scan. Synthetic tests reject flat backgrounds,
+noise, inverted discs and out-of-bounds circles while retaining a paper rim
+around a stronger internal glyph.
+
+The frozen name-hash sample measures 53 Mirage and 55 Onslaught costs, covering
+all five colors and generic discs. Scan transforms remain unchanged. Circle size,
+position, pitch, paper pigment and ink are reported separately. Adjacent-disc
+pitch needs its own radius, vertical-consistency and physical-spacing checks.
+
+```sh
+node tests/magic-old-frame-mana-disc.mjs
+node games/magic/tools/accuracy/old-frame-native-mana-measure.mjs   inputs.json poses.json exported-inputs.json native-directory mana.json
+node games/magic/tools/accuracy/old-frame-mana-glyph-study.mjs   inputs.json poses.json native-directory mana.json glyph-proposals.json
+```
+
+Glyph proposals use three relative ink thresholds, filled-mask overlap and edge
+overlap within measured circles. They preserve the glyph's position and size
+relative to its disc. Calibration names select one transform per color with a
+worst-regression penalty; validation remains separate. Binary mask resizing is
+only a proposal: replay the actual native painter before adopting values.
+
+Text trials that change width, fractional fitting and paragraph spacing together
+can improve the mean while breaking printed quote wrapping. Preserve the
+existing font size and line breaks when testing baseline placement. Full-set
+trials are required: even a retained-wrap leading adjustment can regress dense
+seven-line passages that already fit correctly. Such passages need a shared
+height constraint rather than card-specific fixes.

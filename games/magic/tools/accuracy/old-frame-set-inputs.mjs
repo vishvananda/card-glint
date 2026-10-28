@@ -52,6 +52,17 @@ export function originalFields(card, mtg, text, annotation = {}) {
   };
 }
 
+/** Exact reviewed credit, rather than the provider's normalized artist alias. */
+export function originalArtist(card, fallback, annotation = {}) {
+  if (!annotation.reviewedFields?.includes('artist')) return fallback;
+  assert.equal(annotation.name, card.name);
+  assert.equal(annotation.collectorNumber, card.collector_number);
+  assert.match(annotation.referenceHash, /^[a-f0-9]{64}$/);
+  assert.equal(typeof annotation.artist, 'string');
+  assert(annotation.artist.trim().length > 0);
+  return annotation.artist;
+}
+
 async function main(set, out) {
   assert(['mir', 'ons'].includes(set) && out, 'Use mir|ons NEW_OUTPUT');
   await fs.access(out).then(
@@ -104,7 +115,11 @@ async function main(set, out) {
       .filter(
         (f) =>
           /^annotations(?:-[a-z0-9-]+)?\.json$/.test(f) ||
-          ['source-gap-review.json', 'type-printing-review.json'].includes(f),
+          [
+            'source-gap-review.json',
+            'type-printing-review.json',
+            'artist-printing-review.json',
+          ].includes(f),
       )
       .sort()
       .map(async (file) => {
@@ -181,7 +196,7 @@ async function main(set, out) {
         fields.typeLine,
         'Unexpected Original type override',
       );
-      const artist = resolvePrintingArtist(e.id, base.artist, {
+      const artist = resolvePrintingArtist(e.id, originalArtist(e.card, base.artist, annotation), {
         referenceSha256: e.reference.sha256,
       });
       assert.notEqual(resolved.provenance.status, 'reference-mismatch');
@@ -205,6 +220,9 @@ async function main(set, out) {
         publishedWording: published.provenance,
         calibrationReviewHash: hash(JSON.stringify(annotation)),
         artist: artist.provenance,
+        artistSource: annotation.reviewedFields?.includes('artist')
+          ? 'scan-reviewed-field'
+          : 'provider-or-published-correction',
       };
     }
   } finally {

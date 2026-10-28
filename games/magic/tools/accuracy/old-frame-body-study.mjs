@@ -251,7 +251,42 @@ try {
             if (candidate.id === 'current') layout = body.layout;
             else if (candidate.body)
               layout = calibratedBodyLayout(c, e.face, candidate.body, paragraphs, reference);
-            else {
+            else if (candidate.baselineScale !== undefined || candidate.translate) {
+              const factor = candidate.baselineScale ?? 1;
+              const [dx, dy] = candidate.translate ?? [0, 0];
+              if (
+                !Number.isFinite(factor) ||
+                factor < 0.9 ||
+                factor > 1.1 ||
+                ![dx, dy].every((v) => Number.isFinite(v) && Math.abs(v) <= 8)
+              )
+                throw Error('Invalid retained-wrap placement trial');
+              const first = body.layout.lines[0]?.baseline ?? 0;
+              const last = body.layout.lines.at(-1)?.baseline ?? first;
+              const added = (last - first) * (factor - 1);
+              const offset = (b) => (b - first) * (factor - 1) - added / 2 + dy;
+              layout = {
+                ...body.layout,
+                x: body.layout.x + dx,
+                top: body.layout.top - added / 2 + dy,
+                height: body.layout.height + added,
+                lines: body.layout.lines.map((line) => {
+                  const shift = offset(line.baseline);
+                  return {
+                    ...line,
+                    ...(line.x === undefined ? {} : { x: line.x + dx }),
+                    baseline: line.baseline + shift,
+                    inkBounds: [
+                      line.inkBounds[0] + dx,
+                      line.inkBounds[1] + shift,
+                      ...line.inkBounds.slice(2),
+                    ],
+                  };
+                }),
+                separators: body.layout.separators.map((y) => y + offset(y)),
+              };
+              if (layout.top < 412 || layout.top + layout.height > 603) layout.overflow = true;
+            } else {
               const priorProfile = globalThis.__bodyProfile;
               globalThis.__bodyProfile = {
                 ...priorProfile,

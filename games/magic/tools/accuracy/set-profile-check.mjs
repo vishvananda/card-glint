@@ -33,6 +33,16 @@ export function checkSetProfile(profile, review, manifest) {
     assert.match(frame.assetKey, /^[a-z][a-zA-Z]*$/);
     for (const field of ['frame', 'art', 'stockWindow']) rect(frame[field]);
     if (frame.stockMaskFrame !== undefined) rect(frame.stockMaskFrame);
+    if (frame.artWindow !== undefined) {
+      const [sx, sy, sw, sh] = frame.artWindow.source;
+      const anchor = frame.artWindow.lowerAnchor;
+      rect(frame.artWindow.source);
+      assert.ok([sx, sy, sw, sh, anchor].every(Number.isFinite));
+      assert.ok(sx > 0 && sy > 0 && sx + sw < 1 && sy + sh < anchor && anchor <= 1);
+      const [fx, fy, fw, fh] = frame.frame;
+      const [ax, ay, aw, ah] = frame.art;
+      assert.ok(ax > fx && ay > fy && ax + aw < fx + fw && ay + ah < fy + fh * anchor);
+    }
     const source = JSON.stringify([
       frame.family === 'mse-old'
         ? `${manifest.MSE_TEMPLATE_ROOT}/magic-old.mse-style/${frame.assetKey}card.jpg`

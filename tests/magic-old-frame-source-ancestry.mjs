@@ -3,6 +3,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {
   oldFrameSourceDelta,
+  oldFrameArtWindowDelta,
+  preArtWindowSource,
   oldFrameAuditToolsDelta,
   preOldFrameSource,
   oldFrameHistoricalSourceFiles,
@@ -48,3 +50,25 @@ for (const [file, e] of Object.entries(routing.files)) {
   const foreign = Buffer.concat([bytes, Buffer.from('\n// foreign edit\n')]);
   assert.equal(await preOldFrameSource(file, foreign), foreign);
 }
+
+const art = await oldFrameArtWindowDelta(),
+  parent = [];
+for (const file of files) {
+  const bytes = await fs.readFile(file);
+  parent.push([
+    path.relative(path.join(root, 'games/magic/src'), file),
+    hash(await preArtWindowSource(path.relative(root, file), bytes)),
+  ]);
+}
+assert.equal(hash(JSON.stringify(parent)), art.beforeRenderer);
+for (const [file, e] of Object.entries(art.files)) {
+  assert.equal(
+    hash(await preArtWindowSource(file, await fs.readFile(path.join(root, file)))),
+    e.before,
+  );
+  const foreign = Buffer.from('foreign art-window source revision');
+  assert.equal(await preArtWindowSource(file, foreign), foreign);
+}
+console.log(
+  'Optional art-window source reconstructs its exact parent and preserves all 65 default native controls.',
+);

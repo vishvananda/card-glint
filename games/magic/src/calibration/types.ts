@@ -18,6 +18,12 @@ export interface CalibratedFrame {
   /** Use the pinned family stock mask at an independent placement. When present,
    * this preserves its curved aperture instead of drawing stockWindow. */
   readonly stockMaskFrame?: FaceRect;
+  /** Optional source-local aperture remap. The target is art; pixels below the
+   * source anchor retain their original placement and sampling phase. */
+  readonly artWindow?: {
+    readonly source: FaceRect;
+    readonly lowerAnchor: number;
+  };
 }
 export interface CalibratedLettering {
   readonly x: number;

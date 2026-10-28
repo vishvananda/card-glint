@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import { originalFields } from '../games/magic/tools/accuracy/old-frame-set-inputs.mjs';
+import {
+  originalFields,
+  originalArtist,
+} from '../games/magic/tools/accuracy/old-frame-set-inputs.mjs';
 const review = JSON.parse(
   await fs.readFile('games/magic/fixtures/accuracy/mir/source-gap-review.json'),
 );
@@ -68,4 +71,29 @@ assert.throws(() =>
 );
 console.log(
   'Old-frame census fields preserve explicit empty rules, reject Oracle fallback and foreign printing identities, and keep provider types provisional.',
+);
+
+const artistReview = {
+  name: card.name,
+  collectorNumber: card.collector_number,
+  referenceHash: 'a'.repeat(64),
+  reviewedFields: ['artist'],
+  artist: 'Printed Credit',
+};
+assert.equal(originalArtist(card, 'Normalized Credit', artistReview), 'Printed Credit');
+assert.equal(
+  originalArtist(card, 'Normalized Credit', { ...artistReview, reviewedFields: [] }),
+  'Normalized Credit',
+);
+for (const bad of [
+  { ...artistReview, name: 'Foreign card' },
+  { ...artistReview, collectorNumber: '0' },
+  { ...artistReview, referenceHash: 'bad' },
+  { ...artistReview, artist: '' },
+  { ...artistReview, artist: null },
+])
+  assert.throws(() => originalArtist(card, 'Normalized Credit', bad));
+assert.deepEqual(card, before);
+console.log(
+  'Reviewed artist credits preserve literal printing aliases and reject foreign or malformed reviews.',
 );
