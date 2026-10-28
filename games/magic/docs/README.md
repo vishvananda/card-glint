@@ -45,6 +45,8 @@ later releases. Check the current profile and Lab status before reusing values.
 
 ## Study history and queued work
 
+- [Mirage/Onslaught study](mirage-onslaught-study.md): current source checks, scan normalization and independent default calibration.
+
 - [Earlier accuracy examples](accuracy-examples.md): commands and past set results.
 - [Accuracy pipeline history](accuracy-plan.md): development studies.
 - [Accuracy backlog](accuracy-backlog.md): recorded issues and follow-up work.

@@ -1,0 +1,1395 @@
+{
+  "schema": 1,
+  "status": "source-preflight-and-released-baselines-only",
+  "baselineRelease": "0.7.4",
+  "releaseCommit": "784a78abaaf3e1fcabe7be3bc1dc789961f2b6c5",
+  "scope": "No calibration defaults, frame choices, public correction tables or completion approvals are promoted. Original types are scan-reviewed calibration inputs. Baseline metrics are diagnostic; provider rules, unverified credits and rejected poses remain explicit. All source scans are development references, not held-out validation cards.",
+  "sets": {
+    "mir": {
+      "inventory": 351,
+      "nonfoil": 351,
+      "excluded": [],
+      "censusHash": "77776173a211a92ed35c57eb8825c9e1c8c8fe50c432de4d15630f5d2a97d422",
+      "rendererHash": "36be60f78b232e5311f4be839c3fc44e016b6eacdbb6a745260b0a8ed612ce7e",
+      "inputToolHash": "fbc68891985ebefd789545e6b00a881496e586ad2ccbcdab1cb630892ee0eab8",
+      "sourceInventoryHash": "4415201b040bd07749a3a23dec1a0ae4c21eee9d29fe40f44dc833d0492df6ef",
+      "wordingProvider": {
+        "url": "https://mtgjson.com/api/v5/MIR.json",
+        "sha256": "e30c896de83e87de75078f77d06209ef40ace8904773dbb255aaca47aea8ddd0",
+        "bytes": 1428189
+      },
+      "reviewFiles": {
+        "source-gap-review.json": "e559e9ea17f205607fecee33ab123577b912fce9899da8c97a5836b99ebb26da",
+        "type-printing-review.json": "50c8940b15dc52a055d879ddb7543ae9106949c47ff8823dc370d36025ea078e"
+      },
+      "sourceSummary": {
+        "types": {
+          "scan-reviewed-field": 351
+        },
+        "rules": {
+          "scan-reviewed-field": 27,
+          "mtgjson-original-text": 324
+        }
+      },
+      "normalization": {
+        "method": "old-frame-peer-gradients-v2",
+        "poseHash": "4198005678e282fc5a08a0653fbe5583ce38c87d5b103f414efbec78dde914b4",
+        "inputHash": "c36a3e793ea92e6dd26db9fdfba978df723cd51f9beaa43726abeaa1b82b23c5",
+        "scope": "Source-only per-material median gradient templates; basic land treatments have separate scan peers (minimum three), with their small cohorts explicitly retained. All scans are development references, not held-out validation cards. Alternating disjoint strips independently validate per-scan translation, scale, rotation and shear using unchanged geometric limits. Templates preserve each material's median frame placement rather than forcing different frame colors onto one luminance edge. No renderer, artwork, rules or title enters the objective. Rejected fits are explicit and never accepted scores. Provisional geometry normalization does not certify asset shape or texture.",
+        "summary": {
+          "total": 351,
+          "accepted": 348,
+          "rejected": 3
+        },
+        "sourceHashes": {
+          "old-frame-peer-registration.mjs": "047eb9368e7f62ed8aa31a3669ec4b8db51d3ab2b9de349bceec652eccbbfcd5",
+          "old-frame-peer-profiles.mjs": "a015b46c69d7168596bac3243464d4ee82889dd439a4f635c8936e230a9cadd7",
+          "old-frame-default-registration.mjs": "f0e84b83d9b0852936bd2b9c8f3abb4b0bb10da67bfef83ce58ac5176f8cdb11",
+          "scan-frame-fit.mjs": "6c18bbb80ce1118fd7df348a9af723a622dc89cc101f22518d5282fefa110501",
+          "scan-affine-fit.mjs": "33e0748c3852f976b9eae6549a53b083221fec4e3427dbf6a96a0db42e4f0f77",
+          "pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+          "scan-transform.mjs": "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6",
+          "metrics.mjs": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a",
+          "common.mjs": "d4bc4e6795abb0d6bb31baafc39ea36491aea4ba6427992c3211ead3e5776347"
+        },
+        "node": "v22.22.1",
+        "lockHash": "f7601fb046add90d0832bcf0b720a3c0e195237d031adf3c5cb1c6f3d710aea6",
+        "sampleBounds": {
+          "left": [7, 45],
+          "right": [443, 483],
+          "top": [7, 32],
+          "bottom": [646, 674]
+        },
+        "rejected": [
+          {
+            "id": "08798c53-46f3-4a51-9284-491730605b2b",
+            "name": "Abyssal Hunter",
+            "reason": "insufficient-frame-support"
+          },
+          {
+            "id": "33124133-ed2c-4b86-a135-ac76f4fe4da5",
+            "name": "Harbinger of Night",
+            "reason": "insufficient-frame-support"
+          },
+          {
+            "id": "0966a4e7-bf0f-4880-a4ba-8641fb7e4519",
+            "name": "Phyrexian Vault",
+            "reason": "no-validated-model"
+          }
+        ]
+      },
+      "baseline": {
+        "scoreArtifactHash": "f9d66ee0f427581f2af970b9b5e3401f95b135e299c4a2374c72cc1ed4c1cc9f",
+        "captureHash": "71e4f4fbd5884d9cf06ec1ea6dce795198a0d93fd56d905a99013798cf71078d",
+        "measurementInputHash": "c36a3e793ea92e6dd26db9fdfba978df723cd51f9beaa43726abeaa1b82b23c5",
+        "poseHash": "4198005678e282fc5a08a0653fbe5583ce38c87d5b103f414efbec78dde914b4",
+        "metricGraphHash": "9f1d07048c76c3b188af2a09672e3c728da3be3e01c820ac61fc788aacfd4cde",
+        "summary": {
+          "total": 351,
+          "measured": 348,
+          "rejected": 3,
+          "structuralMean100": 66.02787494412982,
+          "components": {
+            "title": {
+              "measured": 348,
+              "mean100": 74.25932937492728
+            },
+            "mana": {
+              "measured": 321,
+              "mean100": 87.49981018938132
+            },
+            "type": {
+              "measured": 348,
+              "mean100": 81.0393160727779
+            },
+            "rules": {
+              "measured": 348,
+              "mean100": 47.947386962166796
+            },
+            "symbol": {
+              "measured": 348,
+              "mean100": 73.71600878624058
+            },
+            "stats": {
+              "measured": 151,
+              "mean100": 44.46016368850453
+            },
+            "frame": {
+              "measured": 348,
+              "mean100": 62.45532323255515
+            },
+            "art": {
+              "measured": 348,
+              "mean100": 89.2217073233628
+            },
+            "credits": {
+              "measured": 0,
+              "mean100": null
+            }
+          }
+        },
+        "materials": {
+          "W": {
+            "total": 51,
+            "measured": 51,
+            "rejected": 0,
+            "structuralMean100": 68.90023580304333,
+            "components": {
+              "title": {
+                "measured": 51,
+                "mean100": 77.23571539733062
+              },
+              "mana": {
+                "measured": 51,
+                "mean100": 86.04978920116359
+              },
+              "type": {
+                "measured": 51,
+                "mean100": 68.36333047474504
+              },
+              "rules": {
+                "measured": 51,
+                "mean100": 46.730949482399836
+              },
+              "symbol": {
+                "measured": 51,
+                "mean100": 73.35301770040067
+              },
+              "stats": {
+                "measured": 25,
+                "mean100": 47.92325282475501
+              },
+              "frame": {
+                "measured": 51,
+                "mean100": 80.7579713714106
+              },
+              "art": {
+                "measured": 51,
+                "mean100": 89.58120161283883
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "U": {
+            "total": 51,
+            "measured": 51,
+            "rejected": 0,
+            "structuralMean100": 60.33259056388349,
+            "components": {
+              "title": {
+                "measured": 51,
+                "mean100": 65.4315538049721
+              },
+              "mana": {
+                "measured": 51,
+                "mean100": 76.7006923143486
+              },
+              "type": {
+                "measured": 51,
+                "mean100": 68.31868400139173
+              },
+              "rules": {
+                "measured": 51,
+                "mean100": 48.24578292172545
+              },
+              "symbol": {
+                "measured": 51,
+                "mean100": 55.67908480882666
+              },
+              "stats": {
+                "measured": 23,
+                "mean100": 41.984969613428746
+              },
+              "frame": {
+                "measured": 51,
+                "mean100": 56.99193990631781
+              },
+              "art": {
+                "measured": 51,
+                "mean100": 89.55317284530797
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "B": {
+            "total": 51,
+            "measured": 49,
+            "rejected": 2,
+            "structuralMean100": 65.46090248488451,
+            "components": {
+              "title": {
+                "measured": 49,
+                "mean100": 74.81522664996879
+              },
+              "mana": {
+                "measured": 49,
+                "mean100": 93.70377247083924
+              },
+              "type": {
+                "measured": 49,
+                "mean100": 87.01608639201436
+              },
+              "rules": {
+                "measured": 49,
+                "mean100": 45.322069040265454
+              },
+              "symbol": {
+                "measured": 49,
+                "mean100": 78.17075195572997
+              },
+              "stats": {
+                "measured": 24,
+                "mean100": 49.67758271604305
+              },
+              "frame": {
+                "measured": 49,
+                "mean100": 55.47385906069479
+              },
+              "art": {
+                "measured": 49,
+                "mean100": 89.12275521413304
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "R": {
+            "total": 51,
+            "measured": 51,
+            "rejected": 0,
+            "structuralMean100": 71.10240072371376,
+            "components": {
+              "title": {
+                "measured": 51,
+                "mean100": 79.0007082408224
+              },
+              "mana": {
+                "measured": 51,
+                "mean100": 91.64561468414941
+              },
+              "type": {
+                "measured": 51,
+                "mean100": 91.10211426279001
+              },
+              "rules": {
+                "measured": 51,
+                "mean100": 48.96358856636705
+              },
+              "symbol": {
+                "measured": 51,
+                "mean100": 80.04102824273177
+              },
+              "stats": {
+                "measured": 26,
+                "mean100": 45.126010876691154
+              },
+              "frame": {
+                "measured": 51,
+                "mean100": 74.03159900769303
+              },
+              "art": {
+                "measured": 51,
+                "mean100": 88.9514869554393
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "G": {
+            "total": 51,
+            "measured": 51,
+            "rejected": 0,
+            "structuralMean100": 62.11923443622274,
+            "components": {
+              "title": {
+                "measured": 51,
+                "mean100": 82.43605575475274
+              },
+              "mana": {
+                "measured": 51,
+                "mean100": 89.85122486892384
+              },
+              "type": {
+                "measured": 51,
+                "mean100": 85.4759838286777
+              },
+              "rules": {
+                "measured": 51,
+                "mean100": 47.66870675997587
+              },
+              "symbol": {
+                "measured": 51,
+                "mean100": 75.27916082002844
+              },
+              "stats": {
+                "measured": 26,
+                "mean100": 38.604756521060644
+              },
+              "frame": {
+                "measured": 51,
+                "mean100": 38.7951237733815
+              },
+              "art": {
+                "measured": 51,
+                "mean100": 89.0624142083764
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "M": {
+            "total": 36,
+            "measured": 36,
+            "rejected": 0,
+            "structuralMean100": 60.78141938354045,
+            "components": {
+              "title": {
+                "measured": 36,
+                "mean100": 59.685101127096054
+              },
+              "mana": {
+                "measured": 36,
+                "mean100": 85.79986111079337
+              },
+              "type": {
+                "measured": 36,
+                "mean100": 86.95224366181041
+              },
+              "rules": {
+                "measured": 36,
+                "mean100": 42.327728871382654
+              },
+              "symbol": {
+                "measured": 36,
+                "mean100": 72.46805790134596
+              },
+              "stats": {
+                "measured": 17,
+                "mean100": 46.586432651433675
+              },
+              "frame": {
+                "measured": 36,
+                "mean100": 51.5816817365632
+              },
+              "art": {
+                "measured": 36,
+                "mean100": 88.88767377144366
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "A": {
+            "total": 33,
+            "measured": 32,
+            "rejected": 1,
+            "structuralMean100": 71.15978131051874,
+            "components": {
+              "title": {
+                "measured": 32,
+                "mean100": 77.95722737663804
+              },
+              "mana": {
+                "measured": 32,
+                "mean100": 89.07955766355835
+              },
+              "type": {
+                "measured": 32,
+                "mean100": 80.86761233703683
+              },
+              "rules": {
+                "measured": 32,
+                "mean100": 50.7062758910389
+              },
+              "symbol": {
+                "measured": 32,
+                "mean100": 85.15210733544993
+              },
+              "stats": {
+                "measured": 10,
+                "mean100": 38.85178026354951
+              },
+              "frame": {
+                "measured": 32,
+                "mean100": 74.60058399116485
+              },
+              "art": {
+                "measured": 32,
+                "mean100": 88.70716810118883
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "L": {
+            "total": 27,
+            "measured": 27,
+            "rejected": 0,
+            "structuralMean100": 71.09980078458358,
+            "components": {
+              "title": {
+                "measured": 27,
+                "mean100": 74.95184840394661
+              },
+              "mana": {
+                "measured": 0,
+                "mean100": null
+              },
+              "type": {
+                "measured": 27,
+                "mean100": 83.09569083554919
+              },
+              "rules": {
+                "measured": 27,
+                "mean100": 57.27591843422801
+              },
+              "symbol": {
+                "measured": 27,
+                "mean100": 73.59703046024954
+              },
+              "stats": {
+                "measured": 0,
+                "mean100": null
+              },
+              "frame": {
+                "measured": 27,
+                "mean100": 73.80243791565417
+              },
+              "art": {
+                "measured": 27,
+                "mean100": 89.96264634472725
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          }
+        },
+        "cacheValidation": {
+          "exactInputFaces": 350,
+          "freshEqualPixelFaces": [
+            {
+              "id": "025dfd44-f611-42e3-9e22-f630599f0591",
+              "nativeHash": "7272a1f5af25fe6aa835d91c0062f419abfcaedd6d9c105ebec84beb41004b4f",
+              "refreshCaptureHash": "ae4e6925759b5ea4dd8980eddea406f241ad964cd8369466a735559ad58377c0"
+            }
+          ],
+          "referencesArtMetadataComponentsAndEligibilityUnchanged": true
+        }
+      },
+      "familyScreen": {
+        "artifactHash": "2e21c5fb2d0cf836869748cfca85d2c62ce78942cc6bf56963445d9d1f892936",
+        "method": "old-family-opaque-profiles-v3",
+        "scope": "Identical fixed opaque frame strips and scan-only frozen poses for all candidates. Source asset default rectangles only, not optimized family geometry; this screen is not a final family choice, HSB fit, held-out validation or whole-card compliance score. Text/art centers never score; ambiguous normalization stays explicit.",
+        "groups": {
+          "W": {
+            "abu": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 50.904230429301386
+            },
+            "fourth": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 46.93948550694777
+            },
+            "seventh": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 70.89052338655618
+            }
+          },
+          "U": {
+            "abu": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 59.69020125387257
+            },
+            "fourth": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 64.91526086320951
+            },
+            "seventh": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 56.03741278960485
+            }
+          },
+          "B": {
+            "abu": {
+              "inventory": 51,
+              "measured": 49,
+              "mean": 54.66364908973004
+            },
+            "fourth": {
+              "inventory": 51,
+              "measured": 49,
+              "mean": 52.969781858169874
+            },
+            "seventh": {
+              "inventory": 51,
+              "measured": 49,
+              "mean": 67.04564600759406
+            }
+          },
+          "R": {
+            "abu": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 46.45796596230526
+            },
+            "fourth": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 52.36792101519096
+            },
+            "seventh": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 61.09790107451146
+            }
+          },
+          "G": {
+            "abu": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 45.84061477819521
+            },
+            "fourth": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 63.87370795669375
+            },
+            "seventh": {
+              "inventory": 51,
+              "measured": 51,
+              "mean": 61.599374742587635
+            }
+          },
+          "M": {
+            "fourth": {
+              "inventory": 36,
+              "measured": 36,
+              "mean": 67.81886663774345
+            },
+            "seventh": {
+              "inventory": 36,
+              "measured": 36,
+              "mean": 60.671683885906546
+            }
+          },
+          "A": {
+            "abu": {
+              "inventory": 33,
+              "measured": 32,
+              "mean": 57.95180465035442
+            },
+            "fourth": {
+              "inventory": 33,
+              "measured": 32,
+              "mean": 56.73942252250663
+            },
+            "seventh": {
+              "inventory": 33,
+              "measured": 32,
+              "mean": 79.54366781243239
+            }
+          },
+          "L": {
+            "abu": {
+              "inventory": 7,
+              "measured": 7,
+              "mean": 46.92593773881655
+            },
+            "fourth": {
+              "inventory": 7,
+              "measured": 7,
+              "mean": 58.292478404903584
+            },
+            "seventh": {
+              "inventory": 7,
+              "measured": 7,
+              "mean": 52.14660353346058
+            }
+          },
+          "WL": {
+            "abu": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 65.87442592658222
+            },
+            "seventh": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 75.11489694444182
+            }
+          },
+          "UL": {
+            "abu": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 64.1529594897931
+            },
+            "seventh": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 81.9934916991385
+            }
+          },
+          "BL": {
+            "abu": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 52.67019002267551
+            },
+            "seventh": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 86.7450843865079
+            }
+          },
+          "RL": {
+            "abu": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 56.931837433061304
+            },
+            "seventh": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 81.47724214694155
+            }
+          },
+          "GL": {
+            "abu": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 61.91282783744582
+            },
+            "seventh": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 62.38011365761296
+            }
+          }
+        }
+      },
+      "remaining": [
+        "rejected-scan-review",
+        "shared-source-family-geometry",
+        "frame-and-art-window-replay",
+        "frame-paper-color-and-black-levels",
+        "heading-and-type-typography",
+        "mana-geometry-and-color",
+        "set-symbol-geometry-and-color",
+        "rules-and-flavor-fitting",
+        "printed-artist-and-legal-verification",
+        "artist-and-copyright-calibration",
+        "power-toughness",
+        "whole-set-native-validation",
+        "later-set-donor-comparison"
+      ]
+    },
+    "ons": {
+      "inventory": 351,
+      "nonfoil": 350,
+      "excluded": [
+        {
+          "id": "0ee5aa80-32cc-486e-bbb2-5386eadaf4ca",
+          "name": "Embermage Goblin",
+          "number": "200★",
+          "reason": "foil-only"
+        }
+      ],
+      "censusHash": "b7670c3972dcc4607ba8504885857cb0f14986953b21fe80de47a0e8859c9827",
+      "rendererHash": "36be60f78b232e5311f4be839c3fc44e016b6eacdbb6a745260b0a8ed612ce7e",
+      "inputToolHash": "fbc68891985ebefd789545e6b00a881496e586ad2ccbcdab1cb630892ee0eab8",
+      "sourceInventoryHash": "2ba5af5a69d1ed00396e25cb2d74bdc2ba94f8b09ae4f8064af1dca2280edd8e",
+      "wordingProvider": {
+        "url": "https://mtgjson.com/api/v5/ONS.json",
+        "sha256": "1ffc66bae78ffb879de648143d0b4eae89f02ddf2c68f562b767726dec48a270",
+        "bytes": 2500782
+      },
+      "reviewFiles": {
+        "source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
+        "type-printing-review.json": "4b414d6124bcd4fc6e5d3068ded5a308dadef6591fcd41fe674981954c6c5473"
+      },
+      "sourceSummary": {
+        "types": {
+          "scan-reviewed-field": 350
+        },
+        "rules": {
+          "mtgjson-original-text": 348,
+          "scan-reviewed-field": 2
+        }
+      },
+      "normalization": {
+        "method": "old-frame-peer-gradients-v2",
+        "poseHash": "f949a897c5979db4d66392b0cb53ff7f4b4e69b0941716667d51c569a96d6ace",
+        "inputHash": "2826c7d0e31a2de7a6e6a21a3a330794acec9cadc6e2469d88ce5ed247db16f0",
+        "scope": "Source-only per-material median gradient templates; basic land treatments have separate scan peers (minimum three), with their small cohorts explicitly retained. All scans are development references, not held-out validation cards. Alternating disjoint strips independently validate per-scan translation, scale, rotation and shear using unchanged geometric limits. Templates preserve each material's median frame placement rather than forcing different frame colors onto one luminance edge. No renderer, artwork, rules or title enters the objective. Rejected fits are explicit and never accepted scores. Provisional geometry normalization does not certify asset shape or texture.",
+        "summary": {
+          "total": 350,
+          "accepted": 340,
+          "rejected": 10
+        },
+        "sourceHashes": {
+          "old-frame-peer-registration.mjs": "047eb9368e7f62ed8aa31a3669ec4b8db51d3ab2b9de349bceec652eccbbfcd5",
+          "old-frame-peer-profiles.mjs": "a015b46c69d7168596bac3243464d4ee82889dd439a4f635c8936e230a9cadd7",
+          "old-frame-default-registration.mjs": "f0e84b83d9b0852936bd2b9c8f3abb4b0bb10da67bfef83ce58ac5176f8cdb11",
+          "scan-frame-fit.mjs": "6c18bbb80ce1118fd7df348a9af723a622dc89cc101f22518d5282fefa110501",
+          "scan-affine-fit.mjs": "33e0748c3852f976b9eae6549a53b083221fec4e3427dbf6a96a0db42e4f0f77",
+          "pixels-pure.mjs": "6f7651a6f4a82ea3fe595ae7d17bb8baab49ed88d304bb74f43064d3514fd80b",
+          "scan-transform.mjs": "8edee26ad6f4ce0c423359a7ddc1ee6e7f78a9a9b73de3a457fa052494e881b6",
+          "metrics.mjs": "91ec2830064d2d0ff4f378f32ca4e6b3cc9291af0b823d636b5779fe59b5948a",
+          "common.mjs": "d4bc4e6795abb0d6bb31baafc39ea36491aea4ba6427992c3211ead3e5776347"
+        },
+        "node": "v22.22.1",
+        "lockHash": "f7601fb046add90d0832bcf0b720a3c0e195237d031adf3c5cb1c6f3d710aea6",
+        "sampleBounds": {
+          "left": [7, 45],
+          "right": [443, 483],
+          "top": [7, 32],
+          "bottom": [646, 674]
+        },
+        "rejected": [
+          {
+            "id": "16ebef2c-8bb2-4816-a628-0062f95e512e",
+            "name": "Ebonblade Reaper",
+            "reason": "insufficient-frame-support"
+          },
+          {
+            "id": "56b34afa-0183-49aa-aa5f-03e070020136",
+            "name": "Fade from Memory",
+            "reason": "insufficient-frame-support"
+          },
+          {
+            "id": "3bbfd715-0772-4516-8cd8-89495dbccf4a",
+            "name": "Oversold Cemetery",
+            "reason": "insufficient-frame-support"
+          },
+          {
+            "id": "c826d786-0d96-4f77-94ae-6907fbce51e0",
+            "name": "Soulless One",
+            "reason": "insufficient-frame-support"
+          },
+          {
+            "id": "bbc779d9-3200-4369-9289-1a8e90e243b9",
+            "name": "Undead Gladiator",
+            "reason": "insufficient-frame-support"
+          },
+          {
+            "id": "8698c46b-2628-4482-88f9-e37a01ade274",
+            "name": "Elvish Guidance",
+            "reason": "insufficient-frame-support"
+          },
+          {
+            "id": "c7d810b8-1a15-46cc-9d9d-871ac43b7036",
+            "name": "Elvish Pathcutter",
+            "reason": "insufficient-frame-support"
+          },
+          {
+            "id": "e41680e2-6689-4263-a5a3-9fb2e4280d52",
+            "name": "Silklash Spider",
+            "reason": "no-validated-model"
+          },
+          {
+            "id": "d8ddab06-aff7-4c40-bcaa-10cbfe899dd9",
+            "name": "Lonely Sandbar",
+            "reason": "insufficient-frame-support"
+          },
+          {
+            "id": "fd7babbe-f8c1-4e7c-8de2-2224dd357de4",
+            "name": "Plains",
+            "reason": "insufficient-frame-support"
+          }
+        ]
+      },
+      "baseline": {
+        "scoreArtifactHash": "a9a685660746857dd14dc813165189832a72af1daaf99a7a2a0e1e4ed5800811",
+        "captureHash": "0d762a097bfcd8eee473af8cb1723b8a2d96364308c7df6e0b6d42bcccea65b1",
+        "measurementInputHash": "2826c7d0e31a2de7a6e6a21a3a330794acec9cadc6e2469d88ce5ed247db16f0",
+        "poseHash": "f949a897c5979db4d66392b0cb53ff7f4b4e69b0941716667d51c569a96d6ace",
+        "metricGraphHash": "9f1d07048c76c3b188af2a09672e3c728da3be3e01c820ac61fc788aacfd4cde",
+        "summary": {
+          "total": 350,
+          "measured": 340,
+          "rejected": 10,
+          "structuralMean100": 62.18402071067625,
+          "components": {
+            "title": {
+              "measured": 340,
+              "mean100": 67.2011374008582
+            },
+            "mana": {
+              "measured": 303,
+              "mean100": 60.88594187020262
+            },
+            "type": {
+              "measured": 340,
+              "mean100": 71.70161654836463
+            },
+            "rules": {
+              "measured": 340,
+              "mean100": 48.75717135167108
+            },
+            "symbol": {
+              "measured": 340,
+              "mean100": 69.48466538888091
+            },
+            "stats": {
+              "measured": 169,
+              "mean100": 41.652427341552595
+            },
+            "frame": {
+              "measured": 340,
+              "mean100": 65.06610750403756
+            },
+            "art": {
+              "measured": 340,
+              "mean100": 86.93529057356844
+            },
+            "credits": {
+              "measured": 0,
+              "mean100": null
+            }
+          }
+        },
+        "materials": {
+          "W": {
+            "total": 61,
+            "measured": 61,
+            "rejected": 0,
+            "structuralMean100": 65.5078871958507,
+            "components": {
+              "title": {
+                "measured": 61,
+                "mean100": 72.20620118873502
+              },
+              "mana": {
+                "measured": 61,
+                "mean100": 69.33344287568124
+              },
+              "type": {
+                "measured": 61,
+                "mean100": 64.05288924488673
+              },
+              "rules": {
+                "measured": 61,
+                "mean100": 49.170304433701716
+              },
+              "symbol": {
+                "measured": 61,
+                "mean100": 68.57208303567505
+              },
+              "stats": {
+                "measured": 35,
+                "mean100": 38.62280387416546
+              },
+              "frame": {
+                "measured": 61,
+                "mean100": 78.53542949289921
+              },
+              "art": {
+                "measured": 61,
+                "mean100": 86.98987424297464
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "U": {
+            "total": 61,
+            "measured": 61,
+            "rejected": 0,
+            "structuralMean100": 61.751974133347744,
+            "components": {
+              "title": {
+                "measured": 61,
+                "mean100": 57.44918238421707
+              },
+              "mana": {
+                "measured": 61,
+                "mean100": 56.99053881241547
+              },
+              "type": {
+                "measured": 61,
+                "mean100": 75.05312324962817
+              },
+              "rules": {
+                "measured": 61,
+                "mean100": 48.68766852115403
+              },
+              "symbol": {
+                "measured": 61,
+                "mean100": 64.25046624803669
+              },
+              "stats": {
+                "measured": 33,
+                "mean100": 38.789836280894015
+              },
+              "frame": {
+                "measured": 61,
+                "mean100": 71.59581216676088
+              },
+              "art": {
+                "measured": 61,
+                "mean100": 85.45893413999516
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "B": {
+            "total": 61,
+            "measured": 56,
+            "rejected": 5,
+            "structuralMean100": 59.2642110208871,
+            "components": {
+              "title": {
+                "measured": 56,
+                "mean100": 69.86798679675232
+              },
+              "mana": {
+                "measured": 56,
+                "mean100": 48.31149069977676
+              },
+              "type": {
+                "measured": 56,
+                "mean100": 80.44595296413067
+              },
+              "rules": {
+                "measured": 56,
+                "mean100": 49.431759270244335
+              },
+              "symbol": {
+                "measured": 56,
+                "mean100": 72.41906536025805
+              },
+              "stats": {
+                "measured": 31,
+                "mean100": 45.29151502286601
+              },
+              "frame": {
+                "measured": 56,
+                "mean100": 48.79358444604748
+              },
+              "art": {
+                "measured": 56,
+                "mean100": 88.16103847556028
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "R": {
+            "total": 61,
+            "measured": 61,
+            "rejected": 0,
+            "structuralMean100": 65.71772671858893,
+            "components": {
+              "title": {
+                "measured": 61,
+                "mean100": 65.27699366425449
+              },
+              "mana": {
+                "measured": 61,
+                "mean100": 62.41486566682704
+              },
+              "type": {
+                "measured": 61,
+                "mean100": 76.58563830230774
+              },
+              "rules": {
+                "measured": 61,
+                "mean100": 51.300078270710124
+              },
+              "symbol": {
+                "measured": 61,
+                "mean100": 75.54006983230074
+              },
+              "stats": {
+                "measured": 31,
+                "mean100": 44.030714812474756
+              },
+              "frame": {
+                "measured": 61,
+                "mean100": 73.33124266698297
+              },
+              "art": {
+                "measured": 61,
+                "mean100": 86.99372745412185
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "G": {
+            "total": 61,
+            "measured": 58,
+            "rejected": 3,
+            "structuralMean100": 60.4932699170664,
+            "components": {
+              "title": {
+                "measured": 58,
+                "mean100": 72.13974788331497
+              },
+              "mana": {
+                "measured": 58,
+                "mean100": 66.40500423343673
+              },
+              "type": {
+                "measured": 58,
+                "mean100": 71.69422279402662
+              },
+              "rules": {
+                "measured": 58,
+                "mean100": 51.22515423900263
+              },
+              "symbol": {
+                "measured": 58,
+                "mean100": 69.9559886774867
+              },
+              "stats": {
+                "measured": 38,
+                "mean100": 41.92739799599036
+              },
+              "frame": {
+                "measured": 58,
+                "mean100": 50.04318557735509
+              },
+              "art": {
+                "measured": 58,
+                "mean100": 86.96719839998329
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "A": {
+            "total": 6,
+            "measured": 6,
+            "rejected": 0,
+            "structuralMean100": 66.71386896816979,
+            "components": {
+              "title": {
+                "measured": 6,
+                "mean100": 80.93876149464313
+              },
+              "mana": {
+                "measured": 6,
+                "mean100": 63.07282888236944
+              },
+              "type": {
+                "measured": 6,
+                "mean100": 71.69741753754458
+              },
+              "rules": {
+                "measured": 6,
+                "mean100": 54.202860821792605
+              },
+              "symbol": {
+                "measured": 6,
+                "mean100": 68.38192147405893
+              },
+              "stats": {
+                "measured": 1,
+                "mean100": 45.167239113897786
+              },
+              "frame": {
+                "measured": 6,
+                "mean100": 68.19044283983841
+              },
+              "art": {
+                "measured": 6,
+                "mean100": 86.89051304733938
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          },
+          "L": {
+            "total": 39,
+            "measured": 37,
+            "rejected": 2,
+            "structuralMean100": 57.92555363638744,
+            "components": {
+              "title": {
+                "measured": 37,
+                "mean100": 64.19368913524158
+              },
+              "mana": {
+                "measured": 0,
+                "mean100": null
+              },
+              "type": {
+                "measured": 37,
+                "mean100": 57.51178742074764
+              },
+              "rules": {
+                "measured": 37,
+                "mean100": 38.22547310492007
+              },
+              "symbol": {
+                "measured": 37,
+                "mean100": 64.63405226566809
+              },
+              "stats": {
+                "measured": 0,
+                "mean100": null
+              },
+              "frame": {
+                "measured": 37,
+                "mean100": 66.13991507954799
+              },
+              "art": {
+                "measured": 37,
+                "mean100": 87.28500996854638
+              },
+              "credits": {
+                "measured": 0,
+                "mean100": null
+              }
+            }
+          }
+        },
+        "cacheValidation": {
+          "exactInputFaces": 350,
+          "freshEqualPixelFaces": [],
+          "referencesArtMetadataComponentsAndEligibilityUnchanged": true
+        }
+      },
+      "familyScreen": {
+        "artifactHash": "b05b4d9c25c45a2225f132fbf9710cfbbb020a7da22c1137cf4600cab73c4d4f",
+        "method": "old-family-opaque-profiles-v3",
+        "scope": "Identical fixed opaque frame strips and scan-only frozen poses for all candidates. Source asset default rectangles only, not optimized family geometry; this screen is not a final family choice, HSB fit, held-out validation or whole-card compliance score. Text/art centers never score; ambiguous normalization stays explicit.",
+        "groups": {
+          "W": {
+            "abu": {
+              "inventory": 61,
+              "measured": 61,
+              "mean": 46.985663694862
+            },
+            "fourth": {
+              "inventory": 61,
+              "measured": 61,
+              "mean": 43.469047639628904
+            },
+            "seventh": {
+              "inventory": 61,
+              "measured": 61,
+              "mean": 66.38154534506394
+            }
+          },
+          "U": {
+            "abu": {
+              "inventory": 61,
+              "measured": 61,
+              "mean": 53.08452468512449
+            },
+            "fourth": {
+              "inventory": 61,
+              "measured": 61,
+              "mean": 53.83747822752548
+            },
+            "seventh": {
+              "inventory": 61,
+              "measured": 61,
+              "mean": 68.07229232184724
+            }
+          },
+          "B": {
+            "abu": {
+              "inventory": 61,
+              "measured": 56,
+              "mean": 56.62734121999465
+            },
+            "fourth": {
+              "inventory": 61,
+              "measured": 56,
+              "mean": 54.71274871204777
+            },
+            "seventh": {
+              "inventory": 61,
+              "measured": 56,
+              "mean": 74.07510743319366
+            }
+          },
+          "R": {
+            "abu": {
+              "inventory": 61,
+              "measured": 61,
+              "mean": 49.42628063727438
+            },
+            "fourth": {
+              "inventory": 61,
+              "measured": 61,
+              "mean": 49.128739142957826
+            },
+            "seventh": {
+              "inventory": 61,
+              "measured": 61,
+              "mean": 70.51785520955922
+            }
+          },
+          "G": {
+            "abu": {
+              "inventory": 61,
+              "measured": 58,
+              "mean": 48.73058352058019
+            },
+            "fourth": {
+              "inventory": 61,
+              "measured": 58,
+              "mean": 61.8207070157312
+            },
+            "seventh": {
+              "inventory": 61,
+              "measured": 58,
+              "mean": 68.36430055308142
+            }
+          },
+          "A": {
+            "abu": {
+              "inventory": 6,
+              "measured": 6,
+              "mean": 48.632370914171965
+            },
+            "fourth": {
+              "inventory": 6,
+              "measured": 6,
+              "mean": 52.58302903413536
+            },
+            "seventh": {
+              "inventory": 6,
+              "measured": 6,
+              "mean": 72.97509250237331
+            }
+          },
+          "L": {
+            "abu": {
+              "inventory": 19,
+              "measured": 18,
+              "mean": 46.62860439802618
+            },
+            "fourth": {
+              "inventory": 19,
+              "measured": 18,
+              "mean": 45.35106317013429
+            },
+            "seventh": {
+              "inventory": 19,
+              "measured": 18,
+              "mean": 55.59054406994561
+            }
+          },
+          "WL": {
+            "abu": {
+              "inventory": 4,
+              "measured": 3,
+              "mean": 52.939329251007
+            },
+            "seventh": {
+              "inventory": 4,
+              "measured": 3,
+              "mean": 38.976240406456675
+            }
+          },
+          "UL": {
+            "abu": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 50.71107849741154
+            },
+            "seventh": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 56.19305873549707
+            }
+          },
+          "BL": {
+            "abu": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 53.016549653992584
+            },
+            "seventh": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 66.42690499200648
+            }
+          },
+          "RL": {
+            "abu": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 51.87920545315801
+            },
+            "seventh": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 54.734139127750204
+            }
+          },
+          "GL": {
+            "abu": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 44.95326097964964
+            },
+            "seventh": {
+              "inventory": 4,
+              "measured": 4,
+              "mean": 63.12023139053522
+            }
+          }
+        }
+      },
+      "remaining": [
+        "rejected-scan-review",
+        "shared-source-family-geometry",
+        "frame-and-art-window-replay",
+        "frame-paper-color-and-black-levels",
+        "heading-and-type-typography",
+        "mana-geometry-and-color",
+        "set-symbol-geometry-and-color",
+        "rules-and-flavor-fitting",
+        "printed-artist-and-legal-verification",
+        "artist-and-copyright-calibration",
+        "power-toughness",
+        "whole-set-native-validation",
+        "later-set-donor-comparison"
+      ]
+    }
+  }
+}
