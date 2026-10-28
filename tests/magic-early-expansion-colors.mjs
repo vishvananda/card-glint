@@ -64,10 +64,10 @@ try {
     });
     assert.deepEqual(
       calibratedFrameMaterials(face),
-      setCode === 'arn' && ['W', 'G'].includes(material)
+      setCode === 'arn' && ['W', 'G', 'A'].includes(material)
         ? { [frame.asset]: arn.colors[material].adjustment }
-        : setCode === 'atq' && ['U', 'L'].includes(material)
-          ? { [frame.asset]: atq.colors[material === 'L' ? 'L-red' : 'U'].adjustment }
+        : setCode === 'atq' && ['U', 'L', 'A'].includes(material)
+          ? { [frame.asset]: atq.colors[material === 'L' ? 'L-red' : material].adjustment }
           : result.materials,
     );
 
