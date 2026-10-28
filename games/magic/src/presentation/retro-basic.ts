@@ -1,3 +1,4 @@
+import { calibrationForFace } from '../calibration/selection.js';
 import type { RenderedCardInput, RulesParagraph } from './face-layout.js';
 
 const basics: Readonly<Record<string, string>> = {
@@ -9,6 +10,26 @@ const basics: Readonly<Record<string, string>> = {
 };
 /** Recognize only the unmodified basic-land reminder, respecting explicit paragraph overrides. */
 export function simpleBasicMana(face: RenderedCardInput): string | null {
+  if (
+    calibrationForFace(face)?.basicSymbol?.originalLetters &&
+    face.wordingMode === 'original' &&
+    face.typeLine === 'Land' &&
+    face.canonicalTypeLine === 'Basic Land — ' + face.name &&
+    basics[face.name] === face.rulesText
+  ) {
+    const p = face.rulesParagraphs;
+    if (
+      !p ||
+      (p.length === 1 &&
+        p[0]!.role === 'rules' &&
+        !p[0]!.align &&
+        p[0]!.runs.length === 1 &&
+        !p[0]!.runs[0]!.italic &&
+        p[0]!.runs[0]!.text === face.rulesText)
+    )
+      return face.rulesText!;
+    return null;
+  }
   if (!/\bBasic Land\b/.test(face.typeLine ?? '')) return null;
   const raw = face.rulesText ?? '';
   const match = /^\(?\{T\}: Add \{([WUBRG])\}\.\)?$/.exec(raw);

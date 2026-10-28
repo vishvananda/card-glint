@@ -38,7 +38,18 @@ export function earlyReprintFrame(face: RenderedCardInput) {
     const landColors =
       face.frameColors ??
       (basic ? [basic] : calibrationForFace(face)!.dualLand ? retroLandColors(face) : []);
-    if (landColors.length === 2) {
+    const named =
+      face.frameColors === undefined
+        ? calibrationForFace(face)!.landMaterials?.[face.name]
+        : undefined;
+    const explicit =
+      face.frameColors && !calibrationForFace(face)!.dualLand
+        ? ['L-' + face.frameColors.join(''), 'L-' + [...face.frameColors].reverse().join('')].find(
+            (key) => Boolean(calibrationForFace(face)!.frames[key]),
+          )
+        : undefined;
+    if (named || explicit) material = named ?? explicit;
+    else if (landColors.length === 2) {
       dual = earlyReprintDual(calibrationForFace(face)!, retroLandColors(face));
       if (!dual) return undefined;
       material = 'L-dual';

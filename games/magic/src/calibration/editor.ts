@@ -38,7 +38,7 @@ export function describeSetCalibration(set: string): SetCalibrationDescription {
     revision: profile?.revision ?? title?.revision ?? null,
     controls: profile ? calibrationControls(profile) : title ? titleCalibrationControls(title) : [],
     notice: profile
-      ? 'Ordinary ABU/Fourth plates only. Geometry, lettering, symbols and pigment use the native painter. Source assets and masks remain fixed.'
+      ? 'Ordinary old-frame plates only. Geometry, lettering, symbols and pigment use the native painter. Source assets and masks remain fixed.'
       : title
         ? 'Name and type controls use the native Alpha painter. Offsets are deltas from the existing shared placements. Frame, body, symbols and footer remain on their established calibration; full-profile editing is not available yet.'
         : 'This set does not yet have a consolidated profile adapter. Existing symbol and text diagnostic tools remain available.',
@@ -149,6 +149,28 @@ function buildCandidate(candidate: SetCalibrationCandidate): SetCalibrationProfi
   return profile;
 }
 function validateProfile(profile: SetCalibrationProfile) {
+  for (const f of Object.values(profile.frames))
+    if (f?.artWindow) {
+      const [x, y, w, h] = f.art,
+        [fx, fy, fw, fh] = f.frame;
+      if (x <= fx || y <= fy || x + w >= fx + fw || y + h >= fy + fh * f.artWindow.lowerAnchor)
+        throw Error('Art aperture exceeds its source anchor');
+    }
+  const basic = profile.basicSymbol?.bounds;
+  if (
+    basic &&
+    (basic[0] < 0 ||
+      basic[1] < 0 ||
+      basic[2] <= 0 ||
+      basic[3] <= 0 ||
+      basic[0] + basic[2] > 1 ||
+      basic[1] + basic[3] > 1)
+  )
+    throw Error('Invalid basic-symbol bounds');
+  for (const p of Object.values(profile.rulesPlacement ?? {}))
+    if (p && p.verticalLimits[0] >= p.verticalLimits[1])
+      throw Error('Invalid retained rules limits');
+
   for (const body of Object.values(profile.body ?? {})) {
     if (!body) continue;
     if (

@@ -1,3 +1,4 @@
+import { calibrationForFace } from '../calibration/selection.js';
 import { paintRetroFramePlate } from './retro-frame-plate.js';
 import { paintAbuDualPerimeter } from './retro-dual-frame.js';
 import { paintLegacyCalibratedTitle } from './legacy-calibrated-title.js';
@@ -26,7 +27,7 @@ import { paintEarlyExpansionTitle } from './early-expansion-title.js';
 import { paintEarlyReprintTitle } from './early-reprint-title.js';
 import { retroTypePlacement, paintEarlyExpansionType } from './retro-type.js';
 import { paintEarlyReprintType } from './early-reprint-type.js';
-import { paintEarlyReprintFooter } from './early-reprint-footer.js';
+import { paintEarlyReprintFooter, earlyReprintFooter } from './early-reprint-footer.js';
 import { paintPrintingLegendsFooter } from './printing-legends-footer.js';
 import { paintUrzaFooter } from './retro-urza-footer.js';
 import { isStyledSetSymbol } from './styled-set-symbols.js';
@@ -359,11 +360,15 @@ export function paintRetroFace(
   c.fillStyle = '#17140f';
   const basic = images.get(retroBasicSymbol(face) ?? '');
   if (basic && rulesInkVisible(c)) {
-    const scale = Math.min((rw * 0.4) / basic.width, (rh * 0.75) / basic.height);
+    const bounds = earlyReprintFrame(face) && calibrationForFace(face)?.basicSymbol?.bounds;
+    const [bx, by, bw, bh] = bounds
+      ? retroPx(bounds)
+      : [rx + (rw - rw * 0.4) / 2, ry + (rh - rh * 0.75) / 2, rw * 0.4, rh * 0.75];
+    const scale = Math.min(bw / basic.width, bh / basic.height);
     c.drawImage(
       basic,
-      rx + (rw - basic.width * scale) / 2,
-      ry + (rh - basic.height * scale) / 2,
+      bounds ? bx + (bw - basic.width * scale) / 2 : rx + (rw - basic.width * scale) / 2,
+      bounds ? by + (bh - basic.height * scale) / 2 : ry + (rh - basic.height * scale) / 2,
       basic.width * scale,
       basic.height * scale,
     );
@@ -446,7 +451,11 @@ function paintRetroExtras(c: CanvasContext, face: RenderedCardInput, legal: bool
       c.restore();
     });
   const customNumber = face.collectorNumber?.trim();
-  if (customNumber && face.collectorTotal !== undefined)
+  if (
+    customNumber &&
+    face.collectorTotal !== undefined &&
+    earlyReprintFooter(face)?.legal.collectorTotal === undefined
+  )
     paintPrintingElement(c, face, 'collector', () => {
       c.save();
       c.shadowColor = 'transparent';

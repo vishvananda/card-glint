@@ -59,6 +59,44 @@ export function checkSetProfile(profile, review, manifest) {
         assert.match(adjustment.stock, /^#[0-9a-f]{6}$/i);
       }
   }
+  for (const [name, material] of Object.entries(profile.landMaterials ?? {})) {
+    assert(name.trim().length > 0);
+    assert(material.startsWith('L') && profile.frames[material], 'Unknown land material');
+  }
+  if (profile.basicSymbol) {
+    assert(
+      profile.basicSymbol.originalLetters === undefined ||
+        typeof profile.basicSymbol.originalLetters === 'boolean',
+    );
+    if (profile.basicSymbol.bounds) {
+      rect(profile.basicSymbol.bounds);
+      const [x, y, w, h] = profile.basicSymbol.bounds;
+      assert(x >= 0 && y >= 0 && x + w <= 1 && y + h <= 1);
+    }
+  }
+  for (const p of Object.values(profile.rulesPlacement ?? {})) {
+    assert(p.baselineScale >= 0.9 && p.baselineScale <= 1.1);
+    assert(p.offset.length === 2 && p.offset.every((v) => Math.abs(v) <= 8));
+    assert(p.verticalLimits.length === 2 && p.verticalLimits[0] < p.verticalLimits[1]);
+    if (p.maximumHeight !== undefined) assert(p.maximumHeight > 0 && p.maximumHeight <= 240);
+  }
+  const legal = profile.footer.legal;
+  if (legal.align !== undefined) assert(['left', 'right', 'center'].includes(legal.align));
+  if (legal.maxWidth !== undefined) assert(legal.maxWidth > 0 && legal.maxWidth <= 488);
+  if (legal.collectorTotal !== undefined)
+    assert(Number.isInteger(legal.collectorTotal) && legal.collectorTotal > 0);
+  if (legal.lightMaterials !== undefined)
+    assert(legal.lightMaterials.every((m) => Object.hasOwn(profile.frames, m)));
+  for (const c of Object.values(profile.colors)) {
+    const adj = c.adjustment;
+    const masks = [adj.mask, ...(adj.regions ?? []).map((r) => r.mask)].filter(Boolean);
+    for (const mask of masks)
+      if (mask.kind === 'linear') {
+        rect(mask.rect);
+        const [x, y, w, h] = mask.rect;
+        assert(x >= 0 && y >= 0 && x + w <= 1 && y + h <= 1 && mask.feather > 0);
+      }
+  }
   if (profile.dualLand) {
     const dual = profile.dualLand,
       frame = profile.frames['L-dual'];

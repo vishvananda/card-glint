@@ -4,6 +4,7 @@ import type { Rgb } from './hsb.js';
 /** All coordinates belong to the pinned source image, never a card scan. */
 export type PaperMask =
   | { kind: 'rect'; rect: FaceRect; feather: number }
+  | { kind: 'linear'; rect: FaceRect; feather: number }
   | {
       kind: 'polygon';
       points: readonly (readonly [number, number])[];
@@ -74,7 +75,19 @@ export function framePaperMask(image: FramePixels, spec: PaperMask): Float32Arra
       }
     return values;
   }
-  if (spec.kind === 'rect') {
+  if (spec.kind === 'rect' || spec.kind === 'linear') {
+    if (
+      spec.kind === 'linear' &&
+      (![...spec.rect, spec.feather].every(Number.isFinite) ||
+        spec.rect[0] < 0 ||
+        spec.rect[1] < 0 ||
+        spec.rect[2] <= 0 ||
+        spec.rect[3] <= 0 ||
+        spec.rect[0] + spec.rect[2] > 1 ||
+        spec.rect[1] + spec.rect[3] > 1 ||
+        spec.feather <= 0)
+    )
+      throw Error('Invalid linear paper mask');
     const [left, top, w, h] = spec.rect;
     for (let y = 0; y < height; y++)
       for (let x = 0; x < width; x++) {
@@ -84,7 +97,9 @@ export function framePaperMask(image: FramePixels, spec: PaperMask): Float32Arra
           y / height - top,
           top + h - y / height,
         );
-        values[y * width + x] = smooth(distance / spec.feather + 0.5);
+        values[y * width + x] =
+          smooth(distance / spec.feather + 0.5) *
+          (spec.kind === 'linear' ? Math.max(0, Math.min(1, (x / width - left) / w)) : 1);
       }
     return values;
   }

@@ -14,9 +14,12 @@ export function earlyReprintFooter(face: RenderedCardInput) {
   if (!frame) return undefined;
   const set = face.setCode!.toLowerCase();
   const p = calibrationForFace(face)!.footer;
-  const light =
-    ['B', 'G', 'A'].includes(frame.material ?? '') ||
-    (set === 'fem' && face.name === 'Ebon Stronghold');
+  const light = p.legal.lightMaterials
+    ? p.legal.lightMaterials.some(
+        (m) => frame.material === m || frame.material?.startsWith(m + '-'),
+      )
+    : ['B', 'G', 'A'].includes(frame.material ?? '') ||
+      (set === 'fem' && face.name === 'Ebon Stronghold');
   return {
     ...p,
     legalGray: light ? p.legal.lightGray : p.legal.darkGray,
@@ -34,15 +37,24 @@ export function earlyReprintFooter(face: RenderedCardInput) {
 export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInput): boolean {
   const profile = earlyReprintFooter(face);
   if (!profile) return false;
-  const paint = (role: 'artist' | 'legal' | 'stats', text: string) => {
-    const p = profile[role];
+  const paint = (
+    role: 'artist' | 'legal' | 'stats',
+    text: string,
+    override?: { x: number; width: number; maxWidth: number; align: 'left' },
+  ) => {
+    const p = { ...profile[role], ...override };
     c.save();
     try {
       c.translate(p.x, p.y);
       c.scale(p.width, 1);
       c.font = `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
       c.textAlign =
-        role === 'artist' ? (profile.artist.align ?? 'left') : role === 'stats' ? 'right' : 'left';
+        role === 'artist'
+          ? (profile.artist.align ?? 'left')
+          : role === 'stats'
+            ? 'right'
+            : (profile.legal.align ?? 'left');
+      if (override) c.textAlign = override.align;
       c.textBaseline =
         role === 'artist'
           ? (profile.artist.baseline ?? 'alphabetic')
@@ -57,12 +69,15 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
       c.fillStyle = 'rgb(' + rgb.join(',') + ')';
       c.shadowColor = role === 'legal' ? 'transparent' : '#17140f';
       c.shadowBlur = 0;
-      const max =
-        role === 'artist' && profile.artist.maxWidth !== undefined
-          ? profile.artist.maxWidth / p.width
-          : role === 'stats'
-            ? 132 / p.width
-            : Math.max(1, ((role === 'artist' ? 386 : 445) - p.x) / p.width);
+      const max = override
+        ? override.maxWidth / p.width
+        : role === 'legal' && profile.legal.maxWidth !== undefined
+          ? profile.legal.maxWidth / p.width
+          : role === 'artist' && profile.artist.maxWidth !== undefined
+            ? profile.artist.maxWidth / p.width
+            : role === 'stats'
+              ? 132 / p.width
+              : Math.max(1, ((role === 'artist' ? 386 : 445) - p.x) / p.width);
       const ink = () =>
         role === 'artist' && profile.artist.inkStyle === 'separate-shadow'
           ? paintSolidArtist(c, text, 0, 0, max, p, c.fillStyle)
@@ -88,7 +103,44 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
     paintPrintingElement(c, face, 'artist', () =>
       paint('artist', `${profile.artist.prefix ?? 'Illus. '}${face.artist}`),
     );
-  if (profile.legalText)
+  if (profile.legal.collectorTotal !== undefined) {
+    const total =
+      face.collectorTotal === undefined ? profile.legal.collectorTotal : face.collectorTotal;
+    const number = face.collectorNumber?.trim();
+    const collector = number ? number + (total ? '/' + total : '') : '';
+    const legal = profile.legalText ?? '';
+    const prefix = legal + (legal && collector ? ' ' : '');
+    const p = profile.legal;
+    c.save();
+    let advance: number, width: number;
+    try {
+      c.font = `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
+      c.letterSpacing = '0px';
+      advance = c.measureText(prefix).width;
+      width = c.measureText(prefix + collector).width;
+    } finally {
+      c.restore();
+    }
+    const sx = Math.min(p.width, (p.maxWidth ?? 440) / Math.max(1, width));
+    const align = p.align ?? 'left';
+    const start =
+      p.x - (align === 'center' ? (width * sx) / 2 : align === 'right' ? width * sx : 0);
+    // Measure the complete line once. Hiding either component preserves the
+    // other's position, and host offsets remain in canonical face pixels.
+    if (legal)
+      paintPrintingElement(c, face, 'legal', () =>
+        paint('legal', legal, { x: start, width: sx, maxWidth: 488, align: 'left' }),
+      );
+    if (collector)
+      paintPrintingElement(c, face, 'collector', () =>
+        paint('legal', collector, {
+          x: start + advance * sx,
+          width: sx,
+          maxWidth: 488,
+          align: 'left',
+        }),
+      );
+  } else if (profile.legalText)
     paintPrintingElement(c, face, 'legal', () => paint('legal', profile.legalText!));
   return true;
 }

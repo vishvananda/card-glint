@@ -108,7 +108,48 @@ export async function preArtWindowSource(file, bytes) {
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }
 
+const COMPONENT_FILE =
+  'games/magic/fixtures/accuracy/mirage-onslaught/optional-components-source-delta.json.gz';
+const COMPONENT_HASH = '24c52953a6f970b79dcaf94152ffd6e55bcfc7cc4e0d4b8123848c06998a57d3';
+let componentChecked;
+export function oldFrameOptionalComponentsDelta() {
+  return (componentChecked ??= (async () => {
+    const zipped = await fs.readFile(path.join(root, COMPONENT_FILE));
+    assert.equal(hash(zipped), COMPONENT_HASH, 'Changed optional-component receipt');
+    const p = JSON.parse(gunzipSync(zipped));
+    assert.equal(p.schema, 1);
+    assert.equal(p.kind, 'old-frame-optional-components');
+    assert.equal(p.beforeRenderer, (await oldFrameArtWindowDelta()).afterRenderer);
+    assert.equal(Object.keys(p.files).length, 11);
+    for (const e of Object.values(p.files)) {
+      assert.equal(hash(e.beforeSource), e.before);
+      assert.match(e.after, /^[a-f0-9]{64}$/);
+    }
+    const { nativeProof, nativeTool, ...draft } = p;
+    assert.equal(nativeProof.source.deltaHash, hash(JSON.stringify(draft, null, 2) + '\n'));
+    assert.equal(nativeProof.source.rendererHash, p.afterRenderer);
+    assert.equal(nativeProof.status, 'unchanged-native-frame-family-controls');
+    assert.equal(nativeProof.count, 65);
+    assert.equal(nativeProof.changed, 0);
+    assert.equal(nativeProof.rows.length, 65);
+    assert.equal(new Set(nativeProof.rows.map((r) => r.id)).size, 65);
+    for (const row of nativeProof.rows) {
+      assert.match(row.inputHash, /^[a-f0-9]{64}$/);
+      assert.match(row.sha256, /^[a-f0-9]{64}$/);
+    }
+    assert.equal(nativeProof.source.toolHash, nativeTool.sha256);
+    assert.equal(hash(await fs.readFile(path.join(root, nativeTool.file))), nativeTool.sha256);
+    return p;
+  })());
+}
+export async function preOptionalComponentsSource(file, bytes) {
+  const p = await oldFrameOptionalComponentsDelta(),
+    e = p.files[file];
+  return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
+}
+
 export async function preOldFrameSource(file, bytes) {
+  bytes = await preOptionalComponentsSource(file, bytes);
   bytes = await preArtWindowSource(file, bytes);
   const tools = await oldFrameAuditToolsDelta();
   const tool = tools.files[file];
@@ -138,9 +179,13 @@ export async function oldFrameSourceRuntimeCompatible(directory, expected) {
   if (directory !== 'games/magic/src') return false;
   const p = await oldFrameSourceDelta();
   const art = await oldFrameArtWindowDelta();
+  const component = await oldFrameOptionalComponentsDelta();
   const actual = await sourceHash(path.join(root, directory));
   return (
-    (expected === p.beforeRenderer && [p.afterRenderer, art.afterRenderer].includes(actual)) ||
-    (expected === art.beforeRenderer && actual === art.afterRenderer)
+    (expected === p.beforeRenderer &&
+      [p.afterRenderer, art.afterRenderer, component.afterRenderer].includes(actual)) ||
+    (expected === art.beforeRenderer &&
+      [art.afterRenderer, component.afterRenderer].includes(actual)) ||
+    (expected === component.beforeRenderer && actual === component.afterRenderer)
   );
 }

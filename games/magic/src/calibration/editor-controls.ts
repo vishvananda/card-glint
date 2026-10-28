@@ -1,3 +1,4 @@
+import type { HsbAdjustment } from '../presentation/hsb.js';
 import { dualCalibrationControls } from './dual-controls.js';
 import type { SetCalibrationProfile } from './types.js';
 import type { CalibrationControl, CalibrationGroup, CalibrationValue } from './editor-types.js';
@@ -82,7 +83,7 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
       ? profile.footer[role.slice(7) as keyof SetCalibrationProfile['footer']]
       : profile[role as 'title' | 'type'];
     for (const [key, value] of Object.entries(p)) {
-      if (typeof value !== 'number') continue;
+      if (typeof value !== 'number' || key === 'collectorTotal') continue;
       const gray = /gray/i.test(key),
         ratio = key === 'width';
       number(
@@ -106,6 +107,62 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
         ratio ? 'ratio' : gray ? 'sRGB 0–255' : 'px',
       );
     }
+  }
+  if (profile.footer.legal.align !== undefined)
+    choice('footer.legal.align', profile.footer.legal.align, 'footer', 'all', [
+      'left',
+      'center',
+      'right',
+    ]);
+  if (profile.basicSymbol?.bounds)
+    profile.basicSymbol.bounds.forEach((value, i) =>
+      number(
+        'basicSymbol.bounds.' + i,
+        value,
+        'symbols',
+        'basic lands',
+        i < 2 ? 0 : 0.01,
+        1,
+        0.0005,
+        'card fraction',
+      ),
+    );
+  for (const [scope, p] of Object.entries(profile.rulesPlacement ?? {})) {
+    if (!p) continue;
+    number(
+      'rulesPlacement.' + scope + '.baselineScale',
+      p.baselineScale,
+      'body',
+      scope,
+      0.9,
+      1.1,
+      0.005,
+      'ratio',
+    );
+    p.offset.forEach((value, i) =>
+      number('rulesPlacement.' + scope + '.offset.' + i, value, 'body', scope, -8, 8, 0.25),
+    );
+    p.verticalLimits.forEach((value, i) =>
+      number(
+        'rulesPlacement.' + scope + '.verticalLimits.' + i,
+        value,
+        'body',
+        scope,
+        0,
+        680,
+        0.25,
+      ),
+    );
+    if (p.maximumHeight !== undefined)
+      number(
+        'rulesPlacement.' + scope + '.maximumHeight',
+        p.maximumHeight,
+        'body',
+        scope,
+        1,
+        240,
+        0.25,
+      );
   }
   if (profile.footer.artist.align !== undefined)
     choice('footer.artist.align', profile.footer.artist.align, 'footer', 'all', [
@@ -401,13 +458,19 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
     if (!pigment) continue;
     choice(`colors.${scope}.stock`, pigment.stock, 'colors', scope);
     const adjustment = pigment.adjustment;
-    const tones =
+    const tones: (readonly [string, HsbAdjustment])[] =
       'mask' in adjustment
-        ? ([
+        ? [
             ['frame', adjustment.frame],
             ['paper', adjustment.paper],
-          ] as const)
-        : ([['', adjustment]] as const);
+            ...(adjustment.regions ?? []).map(
+              (r, i) => ['regions.' + i + '.adjustment', r.adjustment] as const,
+            ),
+            ...(adjustment.accents ?? []).map(
+              (r, i) => ['accents.' + i + '.adjustment', r.adjustment] as const,
+            ),
+          ]
+        : [['', adjustment]];
     for (const [part, tone] of tones) {
       const prefix = `colors.${scope}.adjustment${part ? '.' + part : ''}`;
       for (const key of ['hueDegrees', 'saturationScale', 'brightnessScale', 'valueGamma'] as const)

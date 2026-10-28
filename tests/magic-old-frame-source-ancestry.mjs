@@ -4,6 +4,8 @@ import path from 'node:path';
 import {
   oldFrameSourceDelta,
   oldFrameArtWindowDelta,
+  oldFrameOptionalComponentsDelta,
+  preOptionalComponentsSource,
   preArtWindowSource,
   oldFrameAuditToolsDelta,
   preOldFrameSource,
@@ -57,13 +59,23 @@ for (const file of files) {
   const bytes = await fs.readFile(file);
   parent.push([
     path.relative(path.join(root, 'games/magic/src'), file),
-    hash(await preArtWindowSource(path.relative(root, file), bytes)),
+    hash(
+      await preArtWindowSource(
+        path.relative(root, file),
+        await preOptionalComponentsSource(path.relative(root, file), bytes),
+      ),
+    ),
   ]);
 }
 assert.equal(hash(JSON.stringify(parent)), art.beforeRenderer);
 for (const [file, e] of Object.entries(art.files)) {
   assert.equal(
-    hash(await preArtWindowSource(file, await fs.readFile(path.join(root, file)))),
+    hash(
+      await preArtWindowSource(
+        file,
+        await preOptionalComponentsSource(file, await fs.readFile(path.join(root, file))),
+      ),
+    ),
     e.before,
   );
   const foreign = Buffer.from('foreign art-window source revision');
@@ -71,4 +83,24 @@ for (const [file, e] of Object.entries(art.files)) {
 }
 console.log(
   'Optional art-window source reconstructs its exact parent and preserves all 65 default native controls.',
+);
+
+const components = await oldFrameOptionalComponentsDelta(),
+  beforeComponents = [];
+for (const file of files)
+  beforeComponents.push([
+    path.relative(path.join(root, 'games/magic/src'), file),
+    hash(await preOptionalComponentsSource(path.relative(root, file), await fs.readFile(file))),
+  ]);
+assert.equal(hash(JSON.stringify(beforeComponents)), components.beforeRenderer);
+for (const [file, e] of Object.entries(components.files)) {
+  assert.equal(
+    hash(await preOptionalComponentsSource(file, await fs.readFile(path.join(root, file)))),
+    e.before,
+  );
+  const foreign = Buffer.from('foreign optional component source');
+  assert.equal(await preOptionalComponentsSource(file, foreign), foreign);
+}
+console.log(
+  'Optional printing components reconstruct their exact parent and preserve all 65 native family controls.',
 );

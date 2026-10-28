@@ -46,6 +46,15 @@ for (const c of candidates)
 const profileBytes = profileFile ? await fs.readFile(profileFile) : undefined;
 const candidateProfile = profileBytes ? JSON.parse(profileBytes) : undefined;
 if (candidateProfile) assert.equal(candidateProfile.set, input.set);
+if (candidateProfile?.basicSymbol?.originalLetters) {
+  const manifest = JSON.parse(await fs.readFile(path.join(root, 'games/magic/assets.json')));
+  for (const color of 'wubrg')
+    sources.push(
+      await cachedFetch(manifest.RETRO_ROOT + '/img/frames/m15/basics/' + color + '.png', {
+        offline: true,
+      }),
+    );
+}
 const selected = [];
 for (const key of new Set(exported.rows.map((r) => r.key))) {
   for (const cohort of ['calibration', 'validation', 'development']) {

@@ -4,7 +4,7 @@ import type { Rgb } from '../presentation/hsb.js';
 import type { ManaSymbolTransform, ManaColor } from '../presentation/symbol-adjustment.js';
 import type { ManaGlyphFamily } from '../presentation/historical-mana-profiles.js';
 import type { RulesTypography } from '../presentation/rules-layout.js';
-import type { CalibrationRulesAdjustment } from './rules-adjustment.js';
+import type { CalibrationRulesAdjustment, CalibrationRulesPlacement } from './rules-adjustment.js';
 import type { EarlyTextTierOptions } from '../presentation/early-text-tiers.js';
 import type { DualBorderGeometry } from '../presentation/dual-land-pinline.js';
 
@@ -180,6 +180,13 @@ export interface SetCalibrationProfile {
       >
     >;
   };
+  /** Reviewed printing-specific land paper classes; never inherited by name. */
+  readonly landMaterials?: Readonly<Record<string, string>>;
+  readonly basicSymbol?: {
+    /** Known original basic names whose provider represents the printed icon as W/U/B/R/G. */
+    readonly originalLetters?: boolean;
+    readonly bounds?: FaceRect;
+  };
   readonly title: CalibratedLettering;
   readonly type: CalibratedLettering;
   readonly footer: {
@@ -194,6 +201,11 @@ export interface SetCalibrationProfile {
     };
     readonly legal: Omit<CalibratedLettering, 'gray'> & {
       readonly defaultText?: string;
+      readonly align?: 'left' | 'center' | 'right';
+      readonly maxWidth?: number;
+      readonly lightMaterials?: readonly string[];
+      /** Set vocabulary, not a total inferred from the target's set code. */
+      readonly collectorTotal?: number;
       readonly lightGray: number;
       readonly darkGray: number;
     };
@@ -218,4 +230,6 @@ export interface SetCalibrationProfile {
   >;
   /** Shared deltas retain the printing's existing length/centering policy. */
   readonly rulesAdjustments?: Readonly<Partial<Record<string, CalibrationRulesAdjustment>>>;
+  /** Post-layout placement retains font size, rows, runs and wrapping. */
+  readonly rulesPlacement?: Readonly<Partial<Record<string, CalibrationRulesPlacement>>>;
 }

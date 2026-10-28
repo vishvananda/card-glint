@@ -87,7 +87,7 @@ const session = await openBrowser(
               '  if ((globalThis as any).__headingCapture?.("type",c,{face,text,right})) return true;\n' +
               needle;
           } else if (id.endsWith('/early-reprint-footer.ts')) {
-            needle = '    const p = profile[role];';
+            needle = '    const p = { ...profile[role], ...override };';
             replacement =
               '    if ((globalThis as any).__headingCapture?.(role,c,{face,text})) return;\n' +
               needle;
@@ -109,7 +109,9 @@ try {
     globalThis.__headingProfile = p;
   }, profile);
   let entries = input.entries.filter(
-    (e) => e.material !== 'L' && poses.rows.find((r) => r.id === e.id)?.accepted,
+    (e) =>
+      (definition.includeLands || e.material !== 'L') &&
+      poses.rows.find((r) => r.id === e.id)?.accepted,
   );
   const selected = [];
   for (const key of new Set(entries.map((e) => e.material)))
@@ -146,7 +148,7 @@ try {
         const { paintEarlyReprintType } = await import(
           '/games/magic/src/presentation/early-reprint-type.ts'
         );
-        const { paintEarlyReprintFooter } = await import(
+        const { paintEarlyReprintFooter, earlyReprintFooter } = await import(
           '/games/magic/src/presentation/early-reprint-footer.ts'
         );
         const { TextFilledObjective } = await import(
@@ -162,6 +164,8 @@ try {
         const probes = {};
         try {
           globalThis.__headingCapture = (role, c, args) => {
+            if (role === 'legal' && probes[role])
+              args = { ...args, text: probes[role].args.text + ' ' + args.text };
             probes[role] = {
               args,
               matrix: Array.from([
@@ -239,10 +243,12 @@ try {
                     ? [366, 617, 87, 26]
                     : role === 'artist'
                       ? [48, 614, 326, 23]
-                      : [48, 636, 392, 19];
+                      : [48, 631, 392, 24];
             const gray = cropGray(reference, rect).gray;
             // Light filled letters are compared as ink, rather than rewarding their dark shadows.
-            const invert = role !== 'legal' || definition.lightLegal;
+            const invert =
+              role !== 'legal' ||
+              (definition.lightLegal ?? earlyReprintFooter(e.face).legalGray > 127);
             const convert = (g) => (invert ? Float32Array.from(g, (v) => 255 - v) : g);
             const mask = new Uint8Array(gray.length).fill(1),
               objective = new TextFilledObjective(convert(gray), rect[2], rect[3], mask);

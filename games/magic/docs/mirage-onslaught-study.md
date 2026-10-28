@@ -343,3 +343,66 @@ existing font size and line breaks when testing baseline placement. Full-set
 trials are required: even a retained-wrap leading adjustment can regress dense
 seven-line passages that already fit correctly. Such passages need a shared
 height constraint rather than card-specific fixes.
+
+## Review complete layouts without composing complete faces
+
+A layout census uses the production font measurements and rules policy while
+loading fonts only once. It does not decode illustrations, compose card faces,
+align scans or draw a GPU scene:
+
+```sh
+node games/magic/tools/accuracy/old-frame-layout-census.mjs \
+  inputs.json before-profile.json after-profile.json layout-census.json
+```
+
+The current component experiment preserves font size and every wrapped row on
+all 635 non-land cards. Onslaught's twenty basics switch from literal provider
+letters to the large-icon path. The recorded Canvas measurement time excludes
+browser and font startup and is not a face-rendering or GPU benchmark.
+
+Optional profile fields support these experiments:
+
+- `rulesPlacement` moves measured baselines and origins after wrapping. A maximum
+  block height preserves dense passages; vertical limits keep an unsafe proposal
+  on its existing layout. Fit only the materials included in the trial.
+- `basicSymbol.originalLetters` recognizes a known original basic name, its exact
+  canonical subtype, and one unmodified W/U/B/R/G paragraph. Explicit custom
+  rules remain text. `basicSymbol.bounds` can fit the resulting icon.
+- `landMaterials` records reviewed printing-specific paper classes. Explicit
+  host frame colors take priority. Do not copy these card-name facts into a donor
+  profile for another set.
+- `footer.legal` can center a combined legal/collector line, select light ink by
+  material, and declare a reviewed printed collector total. Legal and collector
+  visibility and offsets remain independent; hiding one does not move the other.
+  Host legal text and collector totals remain authoritative.
+- A source-local `linear` paper mask blends a second tone continuously across
+  the feathered paper rectangle. It is prepared by the existing material cache.
+  Source assets and masks remain immutable in the editor; region pigment values
+  are editable.
+
+New fields retain existing defaults when omitted. The optional-component source
+receipt proves 65 identical native family controls. A stronger full-set replay
+also preserves all 658 faces whose printed artist credit did not change; the
+other 43 faces change only after their reviewed literal credits are supplied.
+
+## Reuse normalization after a credit review
+
+```sh
+node games/magic/tools/accuracy/old-frame-artist-input-lineage.mjs \
+  prior-inputs.json reviewed-inputs.json prior-poses.json exported-references reviewed-inputs
+```
+
+The tool checks exact scan, artwork, frame classification, credit and input
+identities. Only reviewed artist strings and equivalent explicit
+`italic: false` metadata may differ. Every pose row remains unchanged. Existing
+normalized images are checksum-verified and linked into the new private output.
+References recovered by the prior scan-only pass are resampled using their
+already frozen poses. This operation reuses no rendered faces or accuracy
+scores and approves no new scan alignment.
+
+The compact
+[`component-fit-study.json`](../fixtures/accuracy/mirage-onslaught/component-fit-study.json)
+records the latest full-set experiments and remaining work. These are candidates,
+not installed profiles or completed sets. In particular, large-icon ink colors,
+nonbasic-land pigment, copyright fitting, dense reminder wrapping and set-symbol
+measurement remain separate review gates.
