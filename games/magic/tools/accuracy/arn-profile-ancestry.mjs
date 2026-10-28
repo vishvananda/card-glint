@@ -1,3 +1,4 @@
+import { preArtifactSourceRepair } from './artifact-source-repair-ancestry.mjs';
 import {
   preAtqProfileSource,
   atqHistoricalSourceFiles,
@@ -41,7 +42,10 @@ export async function arnHistoricalSourceFiles(files) {
   for (const file of await atqHistoricalSourceFiles(files)) {
     const key = file.startsWith('games/') ? file : path.relative(root, file);
     const e = p.files[key];
-    if (e?.beforeSource === null && hash(await readFile(path.join(root, key))) === e.after)
+    if (
+      e?.beforeSource === null &&
+      hash(await preArtifactSourceRepair(key, await readFile(path.join(root, key)))) === e.after
+    )
       continue;
     kept.push(file);
   }

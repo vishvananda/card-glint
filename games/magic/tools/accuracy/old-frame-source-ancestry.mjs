@@ -1,3 +1,8 @@
+import { preOnslaughtSymbolSource } from './old-frame-symbol-source-ancestry.mjs';
+import {
+  preArtifactSourceRepair,
+  artifactSourceRepairDelta,
+} from './artifact-source-repair-ancestry.mjs';
 // Exact source history for additional old-frame families; no fit approval.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -183,6 +188,8 @@ export function oldFrameBasicIconsDelta() {
   })());
 }
 export async function preBasicIconsSource(file, bytes) {
+  bytes = await preOnslaughtSymbolSource(file, bytes);
+  bytes = await preArtifactSourceRepair(file, bytes);
   const p = await oldFrameBasicIconsDelta(),
     e = p.files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
@@ -216,13 +223,18 @@ export async function oldFrameHistoricalSourceFiles(files) {
   return kept;
 }
 /** The receipt changes no selected defaults. Foreign changes cannot reuse it. */
-export async function oldFrameSourceRuntimeCompatible(directory, expected) {
+export async function oldFrameSourceRuntimeCompatible(directory, expected, set) {
   if (directory !== 'games/magic/src') return false;
   const p = await oldFrameSourceDelta();
   const art = await oldFrameArtWindowDelta();
   const component = await oldFrameOptionalComponentsDelta();
   const basic = await oldFrameBasicIconsDelta();
-  const actual = await sourceHash(path.join(root, directory));
+  let actual = await sourceHash(path.join(root, directory));
+  const repair = await artifactSourceRepairDelta();
+  if (actual === repair.afterRenderer && set && !repair.affectedSets.includes(set.toLowerCase())) {
+    if (expected === repair.beforeRenderer) return true;
+    actual = repair.beforeRenderer;
+  }
   return (
     (expected === p.beforeRenderer &&
       [p.afterRenderer, art.afterRenderer, component.afterRenderer, basic.afterRenderer].includes(

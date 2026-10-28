@@ -1,3 +1,4 @@
+import { preArtifactSourceRepair } from './artifact-source-repair-ancestry.mjs';
 import { oldFrameHistoricalSourceFiles } from './old-frame-source-ancestry.mjs';
 import {
   preRevisedWordingSource,
@@ -41,7 +42,10 @@ export async function atqHistoricalSourceFiles(files) {
   for (const file of await oldFrameHistoricalSourceFiles(files)) {
     const key = file.startsWith('games/') ? file : path.relative(root, file);
     const e = p.files[key];
-    if (e?.beforeSource === null && hash(await readFile(path.join(root, key))) === e.after)
+    if (
+      e?.beforeSource === null &&
+      hash(await preArtifactSourceRepair(key, await readFile(path.join(root, key)))) === e.after
+    )
       continue;
     kept.push(file);
   }

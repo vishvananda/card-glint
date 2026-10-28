@@ -3,7 +3,7 @@ import type { SetCalibrationProfile } from '../types.js';
 /** Shared printing defaults. Scan poses and reference pixels remain in evidence. */
 export const profile = {
   schema: 1,
-  revision: 1,
+  revision: 2,
   set: 'arn',
   border: 'black',
   cornerRadius: 0.045,
@@ -59,7 +59,7 @@ export const profile = {
       frame: [0.00794918032786887, 0.004855000000000054, 0.9861749999999999, 0.9923109999999999],
       art: [0.11182628032786886, 0.093690460952381, 0.7810505999999998, 0.44937512428571424],
       stockWindow: [
-        0.03883726207645951, 0.03183110554486049, 0.9217417574769129, 0.9359733064602023,
+        0.041314767827868866, 0.03183110554486049, 0.9181289249999999, 0.9359733064602023,
       ],
       assetKey: 'a',
     },
@@ -209,15 +209,18 @@ export const profile = {
       stock: '#181510',
       adjustment: {
         frame: {
-          hueDegrees: 7.632246618375651,
-          saturationScale: 0.35000000000000253,
-          brightnessScale: 1.1734718355876625,
-          valueGamma: 1.2754055770415957,
+          hueDegrees: -0.21551113000639094,
+          saturationScale: 0.549109164462508,
+          brightnessScale: 0.8348270128228742,
+          valueGamma: 0.746193424526035,
+          rgbScale: [0.9578346253839087, 1.0018891080910126, 1.0420530094214437],
         },
         paper: {
-          hueDegrees: 0,
-          saturationScale: 0.35,
-          brightnessScale: 0.9869263698630137,
+          hueDegrees: 1.1290995352226694,
+          saturationScale: 0.6729518016197511,
+          brightnessScale: 1.002847031691434,
+          valueGamma: 0.8892581220469289,
+          rgbScale: [0.9784841893247943, 0.9908665760144548, 1.0314092178062277],
         },
         mask: {
           kind: 'rect',
@@ -432,10 +435,11 @@ export const profile = {
 } as const satisfies SetCalibrationProfile;
 
 export const review = {
-  revision: 1,
+  revision: 2,
   scope:
     'Ordinary nonfoil Original printings, unchanged scan-only normalization. Shared rules and native source family selection; isolated regions tested, integrated verification pending.',
   evidence: [
+    'games/magic/fixtures/accuracy/mirage-onslaught/artifact-source-repair-study.json',
     'games/magic/fixtures/accuracy/arn-recheck/baseline.json.gz',
     'games/magic/fixtures/accuracy/arn-recheck/body-style-verified.json.gz',
     'games/magic/fixtures/accuracy/arn-recheck/color-native-development.json.gz',

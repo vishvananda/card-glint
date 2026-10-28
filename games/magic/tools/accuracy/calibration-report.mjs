@@ -1,4 +1,11 @@
-import { preOnslaughtSymbolSource } from './old-frame-symbol-source-ancestry.mjs';
+import {
+  artifactSourceRepairAffected,
+  artifactSourceRepairDelta,
+} from './artifact-source-repair-ancestry.mjs';
+import {
+  preOnslaughtSymbolSource,
+  onslaughtSymbolSourceReview,
+} from './old-frame-symbol-source-ancestry.mjs';
 import { fourthSourceInputCurrent } from './fourth-source-approval.mjs';
 import { fourthFlavorAffected, fourthFlavorApproval } from './fourth-flavor-ancestry.mjs';
 import { fourthDetailsAffected, fourthDetailsApproval } from './fourth-details-ancestry.mjs';
@@ -133,6 +140,29 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (
+          set.set === 'ons' &&
+          !original &&
+          ['setSymbol', 'fullCard', 'release'].includes(task) &&
+          item.guards?.['games/magic/symbol-svg-patches.json'] !==
+            (await onslaughtSymbolSourceReview()).afterSha256
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Onslaught uncommon/rare symbols now use reviewed dark contours. Symbol and whole-card reviews must bind the current source recipe; other sets and Original wording remain reusable.';
+          continue;
+        }
+
+        if (
+          artifactSourceRepairAffected(set.set, group, task, original) &&
+          item.proof?.artifactSourceRepair !== (await artifactSourceRepairDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Artifact source margins and pigment curves changed for this material. Review its current frame/paper and whole-card replay; original wording, fixed scan poses and other materials retain their evidence.';
+          continue;
+        }
+
         if (original && item.proof?.fourthSourceReadiness) {
           if (!(await fourthSourceInputCurrent(item, group, task, set, fourthSourceChecked))) {
             item.status = 'stale';

@@ -18,7 +18,7 @@ import {
 const p = await fourthBasicSymbolDelta();
 assert(
   (await sourceHash(root + '/games/magic/src')) === p.afterRenderer ||
-    (await oldFrameSourceRuntimeCompatible('games/magic/src', p.afterRenderer)),
+    (await oldFrameSourceRuntimeCompatible('games/magic/src', p.afterRenderer, '4ed')),
 );
 assert.equal(await fourthBasicSymbolHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {

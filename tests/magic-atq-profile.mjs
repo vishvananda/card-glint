@@ -19,7 +19,7 @@ try {
   const { earlyExpansionTextLayout: fit } = await load('presentation/early-expansion-text');
   const p = setCalibrationProfile('atq');
   assert.equal(p.setSymbolSource, 'keyrune');
-  assert.equal(p.revision, 2);
+  assert.equal(p.revision, 3);
   assert.deepEqual(
     JSON.parse(p.colors['L-red'].source)[1],
     p.frames.L.frame,

@@ -3,7 +3,7 @@ import type { SetCalibrationProfile } from '../types.js';
 /** Shared set/material values; scans and per-card poses remain outside painting. */
 export const profile = {
   schema: 1,
-  revision: 2,
+  revision: 3,
   set: 'atq',
   border: 'black',
   cornerRadius: 0.045,
@@ -50,7 +50,7 @@ export const profile = {
       frame: [0.006204737704918072, 0.0046099999999999475, 0.988123, 0.9928020000000001],
       art: [0.1102870270382514, 0.09348941714285709, 0.7825934159999999, 0.4495974771428572],
       stockWindow: [
-        0.038803990666756966, 0.030084103446862763, 0.9222112784916465, 0.9372200417779069,
+        0.0396362325382514, 0.03049376642857138, 0.9199425129999999, 0.9368103787961982,
       ],
       assetKey: 'a',
     },
@@ -174,14 +174,18 @@ export const profile = {
       stock: '#181510',
       adjustment: {
         frame: {
-          hueDegrees: 0,
-          saturationScale: 1,
-          brightnessScale: 1,
+          hueDegrees: -2.002350743753932,
+          saturationScale: 0.581795274332515,
+          brightnessScale: 0.8337109156731138,
+          valueGamma: 0.7482192507973854,
+          rgbScale: [1.0123767511090804, 1.0069612255736127, 0.9809459739175763],
         },
         paper: {
-          hueDegrees: 2.363636363636374,
-          saturationScale: 0.7043207881567981,
-          brightnessScale: 0.995433789954338,
+          hueDegrees: 4.025295290715398,
+          saturationScale: 0.681312222046106,
+          brightnessScale: 1.016462156383666,
+          valueGamma: 0.9919923286040149,
+          rgbScale: [0.991850156730185, 1.0029680705826796, 1.0052332058680706],
         },
         mask: {
           kind: 'rect',
@@ -414,10 +418,11 @@ export const profile = {
 } as const satisfies SetCalibrationProfile;
 
 export const review = {
-  revision: 2,
+  revision: 3,
   scope:
     'All102 ordinary nonfoil Original printings. Shared finite source census; calibration-name selection, reused validation and frozen scan-only normalization. Shared land vertical scale1.006/offset-0.625px and source gold-rim accent added; native integration pending.',
   evidence: [
+    'games/magic/fixtures/accuracy/mirage-onslaught/artifact-source-repair-study.json',
     'games/magic/fixtures/accuracy/atq-recheck/body-development.json.gz',
     'games/magic/fixtures/accuracy/atq-recheck/constrained-selection.json',
     'games/magic/fixtures/accuracy/atq-recheck/flavor-orphan-development.json.gz',
