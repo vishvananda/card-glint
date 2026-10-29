@@ -98,7 +98,15 @@ try {
       }
 
       if (override.frameStyle === 'modern') assert.notDeepEqual(printingManaDefaults(alternate), p);
-      else assert.equal(printingManaDefaults(alternate), undefined);
+      else if (
+        setCode === 'arn' &&
+        (override.symbolStyle === 'modern' || override.wordingMode === 'oracle')
+      ) {
+        // Modern glyphs retain the measured frame placement, without the
+        // historical numeral or colored-glyph transforms.
+        const { dx, dy, scaleX, scaleY, spacing } = p;
+        assert.deepEqual(printingManaDefaults(alternate), { dx, dy, scaleX, scaleY, spacing });
+      } else assert.equal(printingManaDefaults(alternate), undefined);
       assert.equal(earlyManaNumeral(alternate), undefined);
       assert.notDeepEqual(calibratedManaTarget(alternate, 'U'), calibratedManaTarget(face, 'U'));
     }
