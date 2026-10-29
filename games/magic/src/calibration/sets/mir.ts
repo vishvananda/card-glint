@@ -643,7 +643,7 @@ export const profile = {
       lightGray: 205,
       darkGray: 42,
       defaultText: '\u00a91996 Wizards of the Coast, Inc. All rights reserved.',
-      lightMaterials: ['U', 'B', 'G', 'A'],
+      lightMaterials: ['U', 'B', 'G', 'M', 'A'],
     },
     stats: {
       x: 444.75,

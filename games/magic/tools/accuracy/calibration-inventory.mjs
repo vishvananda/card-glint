@@ -1,3 +1,4 @@
+import { applyMirageOnslaughtCensus } from './calibration-mirage-onslaught.mjs';
 import { m21ManaEvidence, applyM21Mana } from './calibration-m21-mana.mjs';
 import { m21PublicationEvidence, applyM21Publication } from './calibration-m21-publication.mjs';
 import {
@@ -39,7 +40,20 @@ assert(
   !selectedSet || inventory.sets.some((s) => s.set === selectedSet && s.status === 'major'),
   'Unknown major set',
 );
-const active = new Set(['lea', 'leb', '2ed', '3ed', '8ed', 'm21', 'arn', 'atq', 'drk', 'leg']);
+const active = new Set([
+  'lea',
+  'leb',
+  '2ed',
+  '3ed',
+  '8ed',
+  'm21',
+  'arn',
+  'atq',
+  'drk',
+  'leg',
+  'mir',
+  'ons',
+]);
 const file = fixtureRoot + '/calibration-progress.json';
 let previous;
 try {
@@ -519,7 +533,7 @@ if (selectedSet) {
   const updated = new Map(sets.map((s) => [s.set, s]));
   sets.splice(0, sets.length, ...previous.sets.map((s) => updated.get(s.set) ?? s));
 }
-await writeJson(file, {
+const nextLedger = {
   schemaVersion: 1,
   asOf: inventory.asOf,
   policy:
@@ -527,7 +541,9 @@ await writeJson(file, {
   inventoryHash: hash(await readFile(fixtureRoot + '/rollout-inventory.json')),
   tasks: CALIBRATION_TASKS,
   sets,
-});
+};
+await applyMirageOnslaughtCensus(nextLedger, { onlyCurrent: true });
+await writeJson(file, nextLedger);
 console.log(
   `Inventoried ${sets.length} sets / ${sets.reduce((n, s) => n + s.groups.length, 0)} variants. ${sets.filter((s) => calibrationSetStatus(s).complete).length} complete.`,
 );

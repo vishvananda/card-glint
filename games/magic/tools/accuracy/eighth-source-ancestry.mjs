@@ -162,10 +162,15 @@ export async function eighthRuntimeCompatible(directory, expected, set, group) {
         p.aggregateBaseHash,
         'Changed non-Eighth eager payload',
       );
-      const generated = JSON.parse(await readFile(path.join(root, manifestPath)));
+      const manifestBytes = await readFile(path.join(root, manifestPath));
+      const generated = JSON.parse(manifestBytes);
+      const historicalGenerated = JSON.parse(
+        await preAbuFractionalSource(manifestPath, manifestBytes),
+      );
       assert.equal(generated.schema, 1);
+      assert.equal(historicalGenerated.schema, 1);
       assert.deepEqual(
-        Object.keys(generated.files).sort(),
+        Object.keys(historicalGenerated.files).sort(),
         Object.keys(p.generatedFiles).sort(),
         'Unreviewed generated payload inventory',
       );

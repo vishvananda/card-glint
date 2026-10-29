@@ -32,6 +32,7 @@ const current = (
 const extras = [
   'games/magic/tools/build-set-data.mjs',
   'games/magic/tools/accuracy/old-frame-source-ancestry.mjs',
+  'games/magic/tools/accuracy/eighth-source-ancestry.mjs',
   'games/magic/tools/accuracy/calibration-report.mjs',
   'games/magic/fixtures/accuracy/printing-review-catalog.json',
   'games/magic/fixtures/accuracy/review-source-index.json',
@@ -61,14 +62,14 @@ for (const file of [...new Set([...Object.keys(snapshot), ...current, ...extras]
     beforeSource,
   };
 }
-const controls = await read('adoption-foreign-native-v7.json');
+const controls = await read('adoption-foreign-native-v8.json');
 assert.equal(controls.afterHash, afterRenderer);
 assert.equal(controls.beforeHash, beforeRenderer);
-const completed = await read('default-installed-v4/complete.json');
+const completed = await read('default-installed-v5/complete.json');
 assert(completed.complete);
 assert.equal(completed.rendererHash, afterRenderer);
 const sets = await Promise.all(
-  completed.sets.map((code) => read('default-installed-v4/' + code + '.json')),
+  completed.sets.map((code) => read('default-installed-v5/' + code + '.json')),
 );
 for (const set of sets) {
   assert.equal(set.source.rendererHash, afterRenderer);
@@ -78,8 +79,8 @@ for (const set of sets) {
 const sum = (k) => sets.reduce((a, s) => a + s[k], 0);
 const printings = {};
 for (const set of ['mir', 'ons']) {
-  const native = await read(set + '-installed-native-v3/capture.json');
-  const original = await read(set + '-public-source-parity-v5.json');
+  const native = await read(set + '-installed-native-v4/capture.json');
+  const original = await read(set + '-public-source-parity-v6.json');
   assert.equal(native.source.rendererHash, afterRenderer);
   assert.equal(original.source.renderer, afterRenderer);
   printings[set] = { native, original };
@@ -168,7 +169,7 @@ const data = {
   beforeRenderer,
   afterRenderer,
   scope:
-    'Exact production installation and immutable shared defaults. Native Original faces equal the reviewed complete candidates; all pilot faces preserve target footer commands. This receipt preserves historical source identity for unaffected sets. It does not approve inherited defaults as independent set calibrations, certify rejected scan poses or publish a release.',
+    'Exact production installation and immutable shared defaults. Native Original faces equal the reviewed complete candidates except the isolated Mirage gold copyright correction; all pilot faces preserve target footer commands. This receipt preserves historical source identity for unaffected sets. It does not approve inherited defaults as independent set calibrations, certify rejected scan poses or publish a release.',
   affectedSets: ['mir', 'ons', ...sets.map((s) => s.set).filter((s) => s !== 'ice')].sort(),
   files,
   tools,
@@ -226,7 +227,7 @@ const review = {
         components: latest.sets[set].summary.components,
         materials: latest.sets[set].materials,
         metricReuse:
-          'Exact complete-native-candidate pixel identity, unchanged scan poses and metric graph',
+          'Exact native candidate pixels except scan-reviewed Mirage gold copyright ink; unchanged scan poses and metric graph',
       },
     ]),
   ),

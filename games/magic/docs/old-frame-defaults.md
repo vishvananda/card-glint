@@ -30,7 +30,8 @@ explicit custom frame selections do not inherit these defaults.
 - Independent profile: games/magic/src/calibration/sets/SET.ts.
 - Shared starting-point choices: games/magic/src/calibration/old-frame-default-values.ts.
 - Frozen donor study: games/magic/fixtures/accuracy/mirage-onslaught/default-donor-review.json.
-- Installed replay and color decisions: games/magic/fixtures/accuracy/mirage-onslaught/production-adoption.json.gz.\n- Current numbers and remaining checks: games/magic/fixtures/accuracy/mirage-onslaught/installed-review.json.
+- Installed replay and color decisions: games/magic/fixtures/accuracy/mirage-onslaught/production-adoption.json.gz.
+- Current numbers and remaining checks: games/magic/fixtures/accuracy/mirage-onslaught/installed-review.json.
 
 Use loadMagicSet(set) before synchronous queries, or prepareMagicCards(faces)
 before composing a collection. These load only the required donor tables.
