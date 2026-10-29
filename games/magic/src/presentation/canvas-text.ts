@@ -85,6 +85,10 @@ export function paintMana(
     return;
   }
   const numeric = /^\d+$/.test(symbol);
+  if (numeric && !adjustment && images.manaRulesNumeral) {
+    paintEarlyManaNumeral(context, symbol, x, y, size, images.manaRulesNumeral, {});
+    return;
+  }
   if (numeric && adjustment && images.manaCostNumeral) {
     paintEarlyManaNumeral(context, symbol, x, y, size, images.manaCostNumeral, adjustment);
     return;

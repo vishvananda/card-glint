@@ -3,7 +3,7 @@ import type { SetCalibrationProfile } from '../types.js';
 /** Shared printing defaults. Scan poses and reference pixels remain in evidence. */
 export const profile = {
   schema: 1,
-  revision: 2,
+  revision: 3,
   set: 'arn',
   border: 'black',
   cornerRadius: 0.045,
@@ -325,6 +325,10 @@ export const profile = {
       N: [0.7254901960784313, 0.7294117647058823, 0.7254901960784313],
     },
     ink: [0.054901960784313725, 0.06274509803921569, 0.0392156862745098],
+    inlineGeneric: {
+      A: { paper: [160 / 255, 172 / 255, 174 / 255], alpha: 1 },
+      R: { paper: [96 / 255, 52 / 255, 46 / 255], alpha: 0.8 },
+    },
     paperSample: 'printing',
     variants: {
       light: {

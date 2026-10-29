@@ -151,6 +151,11 @@ export interface SetCalibrationProfile {
     readonly geometry: ManaSymbolTransform;
     readonly paper: Readonly<Partial<Record<string, Rgb>>>;
     readonly ink: Rgb;
+    /** Generic discs printed inside rules text can differ from the header.
+     * Material keys are frame materials, not card names or scan identities. */
+    readonly inlineGeneric?: Readonly<
+      Record<string, { readonly paper: Rgb; readonly alpha: number }>
+    >;
     /** Preserve the historical source sampler rather than the later opaque B sampler. */
     readonly paperSample?: 'printing';
     /** Variants are selected from printing metadata, not scan or card-specific positions. */

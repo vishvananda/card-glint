@@ -33,6 +33,9 @@ try {
   const { earlyExpansionTextLayout } = await server.ssrLoadModule(
     '/games/magic/src/presentation/early-expansion-text.ts',
   );
+  const { earlyInlineManaNumeral } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/early-inline-mana.ts',
+  );
   const profile = setCalibrationProfile('arn');
   assert.equal(profile.setSymbolSource, 'keyrune');
   const face = {
@@ -49,7 +52,20 @@ try {
     modern = { ...face, symbolStyle: 'modern' };
   assert.equal(printingManaDefaults(face).numberScale, 0.87);
   assert.equal(printingManaDefaults(light).numberScale, 1.01);
-  assert.equal(printingManaDefaults(modern), undefined);
+  const geometry = printingManaDefaults(modern);
+  assert.deepEqual(geometry, {
+    dx: profile.mana.geometry.dx,
+    dy: profile.mana.geometry.dy,
+    scaleX: profile.mana.geometry.scaleX,
+    scaleY: profile.mana.geometry.scaleY,
+    spacing: profile.mana.geometry.spacing,
+  });
+  assert.deepEqual(
+    printingManaDefaults({ ...modern, symbolStyle: undefined, wordingMode: 'oracle' }),
+    geometry,
+  );
+  assert.equal(geometry.numberScale, undefined);
+  assert.equal(geometry.glyphs, undefined);
   assert.equal(historicalManaPaperSample(face, 'B'), undefined, 'Preserve the original B sampler');
   assert.match(faceSetSymbol(face), /\/arn\.svg$/);
   assert.equal(faceSetSymbol(face), faceEtchingSymbol(face));
@@ -58,6 +74,24 @@ try {
     faceSetSymbol({ ...face, setSymbol: 'https://example.invalid/custom.svg' }),
     'https://example.invalid/custom.svg',
   );
+  const inlineFace = { ...face, colors: ['R'], colorCalibration: 'set-hsb-v1' };
+  assert.deepEqual(earlyInlineManaNumeral(inlineFace), { fill: 'rgba(96,52,46,0.8)' });
+  assert.deepEqual(earlyInlineManaNumeral({ ...inlineFace, typeLine: 'Artifact', colors: [] }), {
+    fill: 'rgba(160,172,174,1)',
+  });
+  assert.equal(earlyInlineManaNumeral({ ...inlineFace, symbolStyle: 'modern' }), undefined);
+  assert.equal(earlyInlineManaNumeral({ ...inlineFace, calibration: 'source' }), undefined);
+  assert.equal(earlyInlineManaNumeral({ ...inlineFace, setCode: 'atq' }), undefined);
+  const marginUser = { dx: 0.5, dy: 1, scaleX: 1.1, numberDy: 0.75 };
+  const { printingManaAdjustment } = await server.ssrLoadModule(
+    '/games/magic/src/presentation/printing-mana-adjustment.ts',
+  );
+  const adjusted = printingManaAdjustment({ ...modern, symbolAdjustment: { mana: marginUser } });
+  assert.equal(adjusted.dx, geometry.dx + 0.5);
+  assert.equal(adjusted.dy, geometry.dy + 1);
+  assert.equal(adjusted.scaleX, geometry.scaleX * 1.1);
+  assert.equal(adjusted.numberDy, 0.75);
+  assert.equal(printingManaDefaults({ ...modern, frameTemplate: 'future' }), undefined);
   const mountain = { ...face, name: 'Mountain', typeLine: 'Land', colors: [], land: true };
   assert.equal(earlyReprintFrame(mountain).assetKey, 'rl');
   assert.equal(earlyReprintFrame(mountain).family, 'abu');
@@ -65,6 +99,8 @@ try {
   const description = describeSetCalibration('arn');
   assert.equal(description.adapter, 'profile');
   for (const id of [
+    'mana.inlineGeneric.A.alpha',
+    'mana.inlineGeneric.R.paper.0',
     'expansionBody.regular',
     'expansionBody.offset',
     'expansionBody.largeSize',

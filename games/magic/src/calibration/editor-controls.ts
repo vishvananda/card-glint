@@ -470,6 +470,19 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
         rgb('mana.variants.' + variant + '.paper.' + symbol, paper, variant + '/' + symbol);
   }
   rgb('mana.ink', profile.mana.ink, 'all');
+  for (const [material, tone] of Object.entries(profile.mana.inlineGeneric ?? {})) {
+    rgb('mana.inlineGeneric.' + material + '.paper', tone.paper, 'Inline generic / ' + material);
+    number(
+      'mana.inlineGeneric.' + material + '.alpha',
+      tone.alpha,
+      'colors',
+      'Inline generic / ' + material,
+      0,
+      1,
+      0.01,
+      'opacity',
+    );
+  }
   for (const [key, paper] of Object.entries(profile.mana.paper))
     if (paper) rgb(`mana.paper.${key}`, paper, key);
   for (const [scope, pigment] of Object.entries(profile.colors)) {

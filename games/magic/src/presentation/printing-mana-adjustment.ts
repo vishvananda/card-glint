@@ -13,6 +13,19 @@ import { MODERN_COMPONENT_MANA } from './printing-mana-profiles.js';
 
 /** Resolve frame defaults first, then printing overrides and caller deltas. */
 export function printingManaDefaults(face: RenderedCardInput): ManaSymbolTransform | undefined {
+  // Glyph selection must not discard ARN's measured frame anchors. Keep modern
+  // glyphs/numerals untouched; only disc placement, size and pitch transfer.
+  if (
+    face.setCode?.toLowerCase() === 'arn' &&
+    (face.symbolStyle === 'modern' ||
+      (face.symbolStyle === undefined && face.wordingMode === 'oracle'))
+  ) {
+    const measured = earlyReprintManaDefaults({ ...face, symbolStyle: 'original' });
+    if (measured) {
+      const { dx, dy, scaleX, scaleY, spacing } = measured;
+      return { dx, dy, scaleX, scaleY, spacing };
+    }
+  }
   const reprint = earlyReprintManaDefaults(face);
   if (reprint) return reprint;
   const planar = planarManaDefaults(face);

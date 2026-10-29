@@ -1,4 +1,5 @@
 import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
+import { earlyInlineManaNumeral } from './early-inline-mana.js';
 import { earlyManaNumeral } from './early-expansion-mana.js';
 import { modernCostMana, modernCostNumeralAsset } from './modern-cost-mana.js';
 import { manaSymbolAsset } from './assets.js';
@@ -28,6 +29,7 @@ export async function prepareManaNumerals(
   signal: AbortSignal,
 ): Promise<{ images: CanvasImages; dispose(): void }> {
   const a = printingManaAdjustment(face);
+  const inline = earlyInlineManaNumeral(face);
   const cost = modernCostMana(face);
   const historical = earlyManaNumeral(face);
   const numbers =
@@ -35,6 +37,7 @@ export async function prepareManaNumerals(
     (!!cost || (!!a && (!!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1)));
   if (
     !historical &&
+    !inline &&
     !cost &&
     !numbers &&
     !a?.glyphs &&
@@ -93,6 +96,7 @@ export async function prepareManaNumerals(
       images: Object.assign(new Map(images), {
         manaCostShadow: cost?.shadow,
         manaCostNumeral: historical,
+        manaRulesNumeral: inline,
         manaColors: images.manaColors,
         manaInkColor: images.manaInkColor,
         originalManaGlyphs: images.originalManaGlyphs,
