@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preArnSymbolRoleSource } from '../games/magic/tools/accuracy/arn-symbol-role-ancestry.mjs';
 const base = 'games/magic/fixtures/accuracy/3ed-recheck/';
 async function load(name) {
   const bytes = gunzipSync(await readFile(base + name + '.json.gz'));
@@ -210,7 +211,13 @@ console.log(
 );
 
 const paperProbe = await load('mana-paper-sampler-observation'),
-  source = await readFile('games/magic/src/presentation/mana-numeral.ts', 'utf8');
+  // The sampler observation predates the source-bound ARN symbol-role addition.
+  source = (
+    await preArnSymbolRoleSource(
+      'games/magic/src/presentation/mana-numeral.ts',
+      await readFile('games/magic/src/presentation/mana-numeral.ts'),
+    )
+  ).toString();
 assert.equal(paperProbe.value.status, 'native-paper-sampler-observation');
 assert.equal(paperProbe.value.proof.source, hash(source));
 const marker = '    let darkest = sample;';
