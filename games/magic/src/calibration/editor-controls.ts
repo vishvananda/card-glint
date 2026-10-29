@@ -85,26 +85,29 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
     for (const [key, value] of Object.entries(p)) {
       if (typeof value !== 'number' || key === 'collectorTotal') continue;
       const gray = /gray/i.test(key),
-        ratio = key === 'width';
+        ratio = key === 'width',
+        weight = key === 'weight';
       number(
         `${role}.${key}`,
         value,
         role.startsWith('footer') ? 'footer' : 'lettering',
         'all',
-        key === 'x' || key === 'y' ? 0 : ratio ? 0.6 : 0,
-        key === 'x' || key === 'maxWidth'
-          ? 488
-          : key === 'y'
-            ? 680
-            : gray
-              ? 255
-              : key === 'size'
-                ? 60
-                : ratio
-                  ? 1.5
-                  : 4,
-        gray ? 1 : 0.05,
-        ratio ? 'ratio' : gray ? 'sRGB 0–255' : 'px',
+        weight ? 100 : key === 'x' || key === 'y' ? 0 : ratio ? 0.6 : 0,
+        weight
+          ? 900
+          : key === 'x' || key === 'maxWidth'
+            ? 488
+            : key === 'y'
+              ? 680
+              : gray
+                ? 255
+                : key === 'size'
+                  ? 60
+                  : ratio
+                    ? 1.5
+                    : 4,
+        weight ? 100 : gray ? 1 : 0.05,
+        weight ? 'CSS weight' : ratio ? 'ratio' : gray ? 'sRGB 0–255' : 'px',
       );
     }
   }
@@ -311,6 +314,19 @@ export function calibrationControls(profile: SetCalibrationProfile): Calibration
       'middle',
     ]);
   controls.push(...dualCalibrationControls(profile));
+  for (const [material, paper] of Object.entries(profile.mana.costGenericPaper ?? {}))
+    paper.forEach((value, channel) =>
+      number(
+        'mana.costGenericPaper.' + material + '.' + channel,
+        value,
+        'symbols',
+        'generic cost · ' + material,
+        0,
+        1,
+        1 / 255,
+        'sRGB 0–1',
+      ),
+    );
   const mana = profile.mana.geometry;
   for (const key of [
     'dx',

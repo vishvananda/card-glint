@@ -49,7 +49,9 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
     try {
       c.translate(p.x, p.y);
       c.scale(p.width, 1);
-      c.font = `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
+      const weight =
+        role === 'stats' && profile.stats.weight !== undefined ? profile.stats.weight + ' ' : '';
+      c.font = weight + `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
       c.textAlign =
         role === 'artist'
           ? (profile.artist.align ?? 'left')

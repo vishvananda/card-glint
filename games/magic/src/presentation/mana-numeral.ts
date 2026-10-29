@@ -1,5 +1,6 @@
 import { rasterCanvas } from '../../../../packages/browser/src/canvas-raster.js';
 import { earlyInlineManaNumeral } from './early-inline-mana.js';
+import { earlyCostGenericPaper } from './early-cost-mana.js';
 import { earlyManaNumeral } from './early-expansion-mana.js';
 import { modernCostMana, modernCostNumeralAsset } from './modern-cost-mana.js';
 import { manaSymbolAsset } from './assets.js';
@@ -31,10 +32,14 @@ export async function prepareManaNumerals(
   const a = printingManaAdjustment(face);
   const inline = earlyInlineManaNumeral(face);
   const cost = modernCostMana(face);
+  const generic = earlyCostGenericPaper(face);
+  const genericTone = generic ? { paper: generic.map((v) => Math.round(v * 255)) } : undefined;
   const historical = earlyManaNumeral(face);
   const numbers =
     !historical &&
-    (!!cost || (!!a && (!!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1)));
+    (!!cost ||
+      !!genericTone ||
+      (!!a && (!!(a.numberDx || a.numberDy) || (a.numberScale ?? 1) !== 1)));
   if (
     !historical &&
     !inline &&
@@ -52,7 +57,7 @@ export async function prepareManaNumerals(
     const delta = colorGlyphTransform(a, symbol);
     const changed = !!delta && (!!(delta.dx || delta.dy) || (delta.scale ?? 1) !== 1);
     if (
-      !(/^\d+$/.test(symbol) && numbers) &&
+      !((/^\d+$/.test(symbol) || (symbol === 'X' && !!genericTone)) && numbers) &&
       !changed &&
       (images.manaGlyphScales?.[symbol] ?? 1) === 1
     )
@@ -68,7 +73,7 @@ export async function prepareManaNumerals(
         symbol,
         source,
         identity,
-        cost: costUrl ? cost : undefined,
+        cost: costUrl ? cost : /^\d+$/.test(symbol) || symbol === 'X' ? genericTone : undefined,
         paperSample: historicalManaPaperSample(face, symbol),
       },
     ];
@@ -86,7 +91,7 @@ export async function prepareManaNumerals(
     const indices = new Map([...unique.keys()].map((key, i) => [key, i]));
     leases = await glyphs.acquireMany([...unique.values()], signal);
     sources.forEach(({ symbol, source }, i) => {
-      (/^\d+$/.test(symbol) ? numerals : colored).set(symbol, {
+      (/^\d+$/.test(symbol) || (symbol === 'X' && !!genericTone) ? numerals : colored).set(symbol, {
         image: leases[indices.get(jobs[i]!.key)!]!.value,
         width: source.width,
         height: source.height,
@@ -96,6 +101,9 @@ export async function prepareManaNumerals(
       images: Object.assign(new Map(images), {
         manaCostShadow: cost?.shadow,
         manaCostNumeral: historical,
+        ...(genericTone
+          ? { manaCostGenericPaper: 'rgb(' + genericTone.paper.join(',') + ')' }
+          : {}),
         manaRulesNumeral: inline,
         manaColors: images.manaColors,
         manaInkColor: images.manaInkColor,
@@ -114,7 +122,7 @@ export async function prepareManaNumerals(
 }
 async function splitNumeral(
   source: ImageBitmap,
-  cost?: ReturnType<typeof modernCostMana>,
+  cost?: { readonly paper: readonly number[]; readonly ink?: readonly number[] },
   paperSample?: 'opaque-percentile',
 ): Promise<ImageBitmap> {
   const canvas = rasterCanvas();
@@ -157,7 +165,7 @@ async function splitNumeral(
         Math.min(1, difference.reduce((n, v, k) => n + v * (paper[k]! - p[i + k]!), 0) / length),
       );
       p[i + 3] = Math.round(p[i + 3]! * opacity);
-      for (let k = 0; k < 3; k++) p[i + k] = cost?.ink[k] ?? ink[k]!;
+      for (let k = 0; k < 3; k++) p[i + k] = cost?.ink?.[k] ?? ink[k]!;
     }
     canvas.width = source.width * 2;
     c.putImageData(background, 0, 0);

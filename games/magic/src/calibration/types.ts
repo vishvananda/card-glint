@@ -151,6 +151,8 @@ export interface SetCalibrationProfile {
     readonly geometry: ManaSymbolTransform;
     readonly paper: Readonly<Partial<Record<string, Rgb>>>;
     readonly ink: Rgb;
+    /** Header-only generic disc paper by physical frame material. Inline symbols retain their own policy. */
+    readonly costGenericPaper?: Readonly<Record<string, Rgb>>;
     /** Generic discs printed inside rules text can differ from the header.
      * Material keys are frame materials, not card names or scan identities. */
     readonly inlineGeneric?: Readonly<
@@ -235,6 +237,8 @@ export interface SetCalibrationProfile {
       readonly darkGray: number;
     };
     readonly stats: CalibratedLettering & {
+      /** CSS font weight; omitted preserves the original regular-face request. */
+      readonly weight?: number;
       readonly baseline?: 'alphabetic' | 'middle';
       readonly inkStyle?: 'filled' | 'separate-shadow';
       readonly shadowTrim?: number;

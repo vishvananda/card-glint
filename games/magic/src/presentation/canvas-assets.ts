@@ -40,6 +40,8 @@ export interface CanvasImages extends ReadonlyMap<string, ImageBitmap> {
   /** Face-preparation palette for procedural/fallback mana discs. */
   readonly manaCostShadow?: readonly [number, number];
   readonly manaCostNumeral?: EarlyManaNumeral;
+  /** Cost-only numeric discs; never reused by inline symbols or colored mana. */
+  readonly manaCostGenericPaper?: string;
   readonly manaRulesNumeral?: EarlyManaNumeral;
   readonly manaNumerals?: ReadonlyMap<string, ManaNumeral>;
   readonly manaGlyphs?: ReadonlyMap<string, ManaNumeral>;

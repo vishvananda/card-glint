@@ -95,13 +95,14 @@ export function paintMana(
   }
   const glyphDelta = colorGlyphTransform(adjustment, symbol);
   const defaultScale = images.manaGlyphScales?.[symbol] ?? 1;
-  const numeral = numeric
-    ? adjustment
-      ? images.manaNumerals?.get(symbol)
-      : undefined
-    : defaultScale !== 1 || glyphDelta
-      ? images.manaGlyphs?.get(symbol)
-      : undefined;
+  const numeral =
+    numeric || (symbol === 'X' && !!images.manaCostGenericPaper)
+      ? adjustment
+        ? images.manaNumerals?.get(symbol)
+        : undefined
+      : defaultScale !== 1 || glyphDelta
+        ? images.manaGlyphs?.get(symbol)
+        : undefined;
   const image = images.get(manaSymbolAsset(symbol) ?? '');
   context.save();
   // A title's shadow must not leak into a shadow-free inline or historical symbol.
@@ -117,7 +118,11 @@ export function paintMana(
     context.shadowOffsetX = dx * matrix.a + dy * matrix.c;
     context.shadowOffsetY = dx * matrix.b + dy * matrix.d;
   }
-  context.fillStyle = images.manaColors?.[symbol] ?? MANA_COLORS[symbol] ?? GENERIC_MANA_COLOR;
+  context.fillStyle =
+    ((numeric || symbol === 'X') && adjustment ? images.manaCostGenericPaper : undefined) ??
+    images.manaColors?.[symbol] ??
+    MANA_COLORS[symbol] ??
+    GENERIC_MANA_COLOR;
   context.beginPath();
   context.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
   context.fill();
