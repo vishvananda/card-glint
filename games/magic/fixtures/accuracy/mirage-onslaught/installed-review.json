@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "published-native-calibrations-lab-pending",
+  "status": "published-and-deployed-native-calibrations",
   "plannedVersion": "0.7.5",
   "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
   "receipt": "4267c5b798ba24ba3229a7b09f8fab3d7fde9d4045a6865dcfa2bd2eedf46f64",
@@ -1419,7 +1419,7 @@
       "targetFooterPreserved": 23
     }
   ],
-  "pending": ["Deploy the matching Lab revision and verify native audit display."],
+  "pending": [],
   "completeCensus": {
     "file": "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz",
     "sha256": "2531840a4ca415ade228c4bed58a40bf8f0d7c3c65684c4abad10276ae43fb9f",
@@ -1436,5 +1436,18 @@
     "version": "0.7.5",
     "sourceCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
     "url": "https://github.com/vishvananda/card-glint/releases/tag/v0.7.5"
+  },
+  "deployment": {
+    "version": "0.7.5",
+    "url": "https://cardforge.fyi/lab/calibration",
+    "alternateUrl": "https://tetrarcum.com/calibration",
+    "verifiedAt": "2026-10-29T09:42:25.072825Z",
+    "rendererCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+    "checks": [
+      "Published release archives and checksums match the renderer source.",
+      "Both public report origins show current 0.7.5 calibration.",
+      "Chromium desktop/mobile viewport audits and seven Original/Oracle card rebuilds passed.",
+      "Persistent SQLite backup and all table counts were verified; background scoring resumed."
+    ]
   }
 }
