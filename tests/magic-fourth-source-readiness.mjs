@@ -1,3 +1,4 @@
+import { preOldFrameAdoptionSource } from '../games/magic/tools/accuracy/old-frame-adoption-ancestry.mjs';
 import { preArtifactSourceRepair } from '../games/magic/tools/accuracy/artifact-source-repair-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -173,13 +174,20 @@ const before = gunzipSync(
   await fs.readFile(root + '/games/magic/fixtures/accuracy/4ed/pre-source-readiness-report.mjs.gz'),
 );
 assert.deepEqual(
-  await preFourthSourceReport(reportFile, await preArtifactSourceRepair(reportFile, reportBytes)),
+  await preFourthSourceReport(
+    reportFile,
+    await preArtifactSourceRepair(
+      reportFile,
+      await preOldFrameAdoptionSource(reportFile, reportBytes),
+    ),
+  ),
   before,
 );
 assert.deepEqual(await preFourthSourceReport(reportFile, before), before);
 const foreignReport = Buffer.concat([reportBytes, Buffer.from('\n// unreviewed code\n')]);
 assert.deepEqual(await preFourthSourceReport(reportFile, foreignReport), foreignReport);
 assert.deepEqual(await preArtifactSourceRepair(reportFile, foreignReport), foreignReport);
+assert.deepEqual(await preOldFrameAdoptionSource(reportFile, foreignReport), foreignReport);
 assert.deepEqual(await preFourthSourceReport('other-file.mjs', reportBytes), reportBytes);
 
 const index = await read(fourthSourceFiles.bodies);

@@ -1,3 +1,4 @@
+import { preOldFrameAdoptionSource } from '../games/magic/tools/accuracy/old-frame-adoption-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -25,7 +26,7 @@ assert.deepEqual(review.summary, {
 });
 for (const [file, expected] of Object.entries(review.methodGuards))
   assert.equal(
-    hash(await fs.readFile(root + '/' + file)),
+    hash(await preOldFrameAdoptionSource(file, await fs.readFile(root + '/' + file))),
     expected,
     file + ' changed; repeat Original input review',
   );

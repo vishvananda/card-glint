@@ -1,3 +1,4 @@
+import { preOldFrameAdoptionSource } from './old-frame-adoption-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -53,7 +54,7 @@ export async function fourthSourceReadinessProof(set) {
   assert.deepEqual(p.bodyReviewGuards, bodies.reviewGuards);
   for (const [file, expected] of Object.entries(p.sourceGuards))
     assert.equal(
-      hash(await fs.readFile(root + '/' + file)),
+      hash(await preOldFrameAdoptionSource(file, await fs.readFile(root + '/' + file))),
       expected,
       'Changed Original source dependency: ' + file,
     );

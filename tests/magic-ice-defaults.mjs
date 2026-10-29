@@ -64,9 +64,6 @@ try {
   assert.equal(originalRulesSymbols('ice'), paintHistoricMana);
   for (const extra of [
     { colors: ['U', 'R'] },
-    { setCode: 'mir' },
-    { setCode: 'ons' },
-    { setCode: 'usg' },
     { calibration: 'printing' },
     { frameStyle: 'modern' },
     { layout: 'saga' },
@@ -76,6 +73,16 @@ try {
   ]) {
     assert.equal(usesFourthDefaults({ ...face, ...extra }), false);
     assert.equal(calibrationForFace({ ...face, ...extra }), undefined);
+  }
+  for (const setCode of ['mir', 'ons', 'usg']) {
+    const other = { ...face, setCode };
+    await load.prepareMagicCards([other]);
+    assert.equal(usesFourthDefaults(other), false);
+    assert.equal(
+      calibrationForFace(other).set,
+      setCode,
+      'New independent profiles/defaults must not inherit the Ice Age Fourth branch',
+    );
   }
   assert.equal(
     earlyReprintFrame({ ...face, colors: ['U', 'R'] }),
