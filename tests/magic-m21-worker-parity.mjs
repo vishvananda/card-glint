@@ -24,7 +24,19 @@ try {
     }),
   );
   await page.goto(url);
-  const defaultDonor = process.argv.includes('--defaults');
+  const oldDefaults = process.argv.includes('--old-defaults');
+  const defaultDonor = oldDefaults || process.argv.includes('--defaults');
+  const oldChoices = oldDefaults
+    ? (await server.ssrLoadModule('/games/magic/src/calibration/old-frame-default-values.ts'))
+        .oldFrameDefaults
+    : {};
+  const oldSets = oldDefaults
+    ? [
+        ...Object.entries(oldChoices).map(([set, p]) => [set, p.border]),
+        ['mir', 'black'],
+        ['ons', 'black'],
+      ]
+    : [];
   const entry = process.argv.includes('--built')
     ? defaultDonor
       ? '/dist/lib/magic-lazy.js'
@@ -33,7 +45,7 @@ try {
       ? '/games/magic/src/lazy.ts'
       : '/games/magic/src/presentation.ts';
   const rows = await page.evaluate(
-    async ({ entry, fontSources, diagnose, cpuPixels, defaultDonor }) => {
+    async ({ entry, fontSources, diagnose, cpuPixels, defaultDonor, oldDefaults, oldSets }) => {
       async function harness(scope, api, fonts, cpuPixels) {
         for (const { family, weight, style } of api.canvasFontAssets)
           (scope.document?.fonts ?? scope.fonts).add(
@@ -325,7 +337,81 @@ try {
           power: undefined,
           toughness: undefined,
         });
-      if (defaultDonor) {
+      if (oldDefaults) {
+        const oldBase = {
+          ...base,
+          frameStyle: 'retro',
+          symbolStyle: 'original',
+          typeLine: 'Summon Wizard',
+          flavorText: 'A memory of the original printing.',
+        };
+        const selected = oldSets.map(([setCode, borderColor]) => ({
+          ...oldBase,
+          setCode,
+          borderColor,
+          name: setCode + ' default control',
+          colors: ['U'],
+          manaSymbols: ['2', 'U'],
+        }));
+        for (const setCode of ['mir', 'ons', '7ed', 'all']) {
+          const borderColor = oldSets.find(([code]) => code === setCode)[1];
+          const common = { ...oldBase, setCode, borderColor };
+          for (const color of ['W', 'B', 'R', 'G'])
+            selected.push({
+              ...common,
+              name: setCode + ' ' + color + ' control',
+              colors: [color],
+              manaSymbols: ['2', color],
+            });
+          selected.push(
+            {
+              ...common,
+              name: setCode + ' gold control',
+              typeLine: 'Summon Legend',
+              legendary: true,
+              colors: ['W', 'B'],
+              manaSymbols: ['W', 'B'],
+            },
+            {
+              ...common,
+              name: setCode + ' artifact control',
+              typeLine: 'Artifact Creature',
+              artifact: true,
+              colors: [],
+              manaSymbols: ['4'],
+            },
+            {
+              ...common,
+              name: 'Forest',
+              typeLine: 'Land',
+              land: true,
+              creature: false,
+              colors: [],
+              frameColors: ['G'],
+              producedMana: ['G'],
+              manaSymbols: [],
+              rulesText: '',
+              power: undefined,
+              toughness: undefined,
+            },
+            {
+              ...common,
+              name: setCode + ' dual land',
+              typeLine: 'Land',
+              land: true,
+              creature: false,
+              colors: [],
+              frameColors: ['U', 'R'],
+              producedMana: ['U', 'R'],
+              manaSymbols: [],
+              rulesText: '{T}: Add {U} or {R}.',
+              power: undefined,
+              toughness: undefined,
+            },
+          );
+        }
+        faces.splice(0, faces.length, ...selected);
+      } else if (defaultDonor) {
         const names = [
           'U adept',
           'W calibrated artifact',
@@ -464,9 +550,16 @@ try {
       diagnose: process.argv.includes('--diagnose'),
       cpuPixels: process.argv.includes('--cpu'),
       defaultDonor,
+      oldDefaults,
+      oldSets,
     },
   );
-  assert.equal(rows.length, defaultDonor ? 84 : 264);
+  assert.equal(rows.length, oldDefaults ? (oldSets.length + 32) * 12 : defaultDonor ? 84 : 264);
+  if (oldDefaults)
+    assert.deepEqual(
+      new Set(rows.map((r) => r.name).filter((n) => n.endsWith(' default control'))),
+      new Set(oldSets.map(([code]) => code + ' default control')),
+    );
   if (process.argv.includes('--diagnose'))
     for (const row of rows) if (row.debug) console.log(JSON.stringify(row.debug));
   for (const row of rows) {
@@ -503,9 +596,11 @@ try {
       cases: rows.length,
       exactPixelPairs: rows.filter((r) => r.before.hash === r.after.hash).length,
       rasterEquivalentPairs: rows.filter((r) => r.before.hash !== r.after.hash).length,
-      scope: defaultDonor
-        ? 'Inherited M21 defaults through the slim entry:7 roles, Original/Oracle,244/488/732 pixels, face/etching, real OffscreenCanvas worker and transferable ImageBitmap. Both calibrated artifact palettes, basic/dual lands, legend and planeswalker. Same bounded raster envelope as the exact-M21 matrix. Synthetic assets prove portability, not target-set scan accuracy.'
-        : 'Current M21 browser/real-worker assets, raster sizes, frame geometry and text draws/metrics match across22 roles, including both calibrated artifact paper palettes, Original/Oracle, all3 tiers, face/etching and transferable bitmap output. Raster tolerance: at most one8-bit level mean/card, three levels/64px tile; silhouette coverage stays within one raster pixel. Exact and bounded-raster pairs are separate. Synthetic assets and installed fonts prove portability, not scan accuracy.',
+      scope: oldDefaults
+        ? 'Every34 old-frame starting default plus independent MIR/ONS through the slim entry. Original/Oracle,244/488/732 pixels, face/etching, actual OffscreenCanvas worker and transferable bitmaps. Extra color, gold, artifact and basic/dual land cases cover both donors, the Fourth branch, white stock and mixed/neutral pigment policies. Assets, geometry and text traces stay exact; existing M21 raster bounds are unchanged. Synthetic assets test portability, not scan accuracy.'
+        : defaultDonor
+          ? 'Inherited M21 defaults through the slim entry:7 roles, Original/Oracle,244/488/732 pixels, face/etching, real OffscreenCanvas worker and transferable ImageBitmap. Both calibrated artifact palettes, basic/dual lands, legend and planeswalker. Same bounded raster envelope as the exact-M21 matrix. Synthetic assets prove portability, not target-set scan accuracy.'
+          : 'Current M21 browser/real-worker assets, raster sizes, frame geometry and text draws/metrics match across22 roles, including both calibrated artifact paper palettes, Original/Oracle, all3 tiers, face/etching and transferable bitmap output. Raster tolerance: at most one8-bit level mean/card, three levels/64px tile; silhouette coverage stays within one raster pixel. Exact and bounded-raster pairs are separate. Synthetic assets and installed fonts prove portability, not scan accuracy.',
     }),
   );
 } finally {

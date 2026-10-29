@@ -237,6 +237,9 @@ try {
           // Revised Original fractional metrics have a current worker parity replay too.
           // Fourth's reviewed body classes are intentional current changes too;
           // --fourth positive worker replay covers their current output.
+          // Urza's Saga intentionally inherits the measured 0.7.5 Mirage default.
+          // Current independent/donor profiles have their own positive lazy
+          // browser/worker matrix across every old-frame default set.
           // Matrix's alphabetic baseline is an intentional 0.7.3 correction.
           // Preserve this original host transition with its historical font
           // behavior; magic-matrix-worker-parity tests the current painter.
@@ -244,7 +247,7 @@ try {
             before,
             label === 'walker'
               ? historicalWalker
-              : ['lea', 'leb', '2ed', '3ed', '4ed', 'm21'].includes(face.setCode) ||
+              : ['lea', 'leb', '2ed', '3ed', '4ed', 'm21', 'usg'].includes(face.setCode) ||
                   label === 'future'
                 ? historicalProfile
                 : current,
