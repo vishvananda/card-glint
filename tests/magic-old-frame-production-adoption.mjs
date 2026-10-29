@@ -1,3 +1,4 @@
+import { arnSymbolRoleRuntimeParent } from '../games/magic/tools/accuracy/arn-symbol-role-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -25,7 +26,7 @@ assert.equal(review.defaults.length, 34);
 assert.equal(review.sets.mir.printings + review.sets.ons.printings, 701);
 
 assert.equal(
-  await sourceHash(path.join(root, 'games/magic/src')),
+  await arnSymbolRoleRuntimeParent(await sourceHash(path.join(root, 'games/magic/src')), 'mir'),
   p.afterRenderer,
   'Production adoption source is not current',
 );
@@ -77,7 +78,11 @@ for (const set of [
   'm21',
 ]) {
   assert.equal(await oldFrameAdoptionRuntimeParent(p.afterRenderer, set), p.beforeRenderer);
-  assert(await oldFrameSourceRuntimeCompatible('games/magic/src', p.beforeRenderer, set), set);
+  assert.equal(
+    await oldFrameSourceRuntimeCompatible('games/magic/src', p.beforeRenderer, set),
+    set !== 'arn',
+    set,
+  );
 }
 for (const set of p.affectedSets) {
   assert.equal(await oldFrameAdoptionRuntimeParent(p.afterRenderer, set), p.afterRenderer);

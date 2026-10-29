@@ -40,6 +40,21 @@ const server = await createServer({
   configFile: false,
   server: { middlewareMode: true },
   optimizeDeps: { noDiscovery: true },
+  plugins: [
+    {
+      name: 'exact-historical-artifact-profile',
+      enforce: 'pre',
+      async transform(source, id) {
+        if (!id.endsWith('/calibration/sets/arn.ts')) return;
+        return (
+          await preOldFrameAdoptionSource(
+            'games/magic/src/calibration/sets/arn.ts',
+            Buffer.from(source),
+          )
+        ).toString();
+      },
+    },
+  ],
 });
 try {
   for (const set of p.affectedSets) {

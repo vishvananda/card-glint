@@ -1,3 +1,8 @@
+import {
+  preArnSymbolRoleSource,
+  arnSymbolRoleHistoricalFiles,
+  arnSymbolRoleRuntimeParent,
+} from './arn-symbol-role-ancestry.mjs';
 // Exact production adoption history. Historical replay is never a fit approval.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -70,6 +75,7 @@ export function oldFrameAdoptionDelta() {
   })());
 }
 export async function preOldFrameAdoptionSource(file, bytes) {
+  bytes = await preArnSymbolRoleSource(file, bytes);
   const entry = (await oldFrameAdoptionDelta()).files[file];
   return entry && entry.beforeSource !== null && hash(bytes) === entry.after
     ? Buffer.from(entry.beforeSource)
@@ -77,6 +83,7 @@ export async function preOldFrameAdoptionSource(file, bytes) {
 }
 /** Unknown revisions and foreign additions stay visible to historical verifiers. */
 export async function oldFrameAdoptionHistoricalFiles(files) {
+  files = await arnSymbolRoleHistoricalFiles(files);
   const p = await oldFrameAdoptionDelta(),
     kept = [];
   for (const file of files) {
@@ -89,6 +96,7 @@ export async function oldFrameAdoptionHistoricalFiles(files) {
   return kept;
 }
 export async function oldFrameAdoptionRuntimeParent(actual, set) {
+  actual = await arnSymbolRoleRuntimeParent(actual, set);
   const p = await oldFrameAdoptionDelta();
   return actual === p.afterRenderer && set && !p.affectedSets.includes(set.toLowerCase())
     ? p.beforeRenderer

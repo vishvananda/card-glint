@@ -1,3 +1,4 @@
+import { arnSymbolRoleRuntimeParent } from '../games/magic/tools/accuracy/arn-symbol-role-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -7,7 +8,10 @@ const file = 'games/magic/fixtures/accuracy/mirage-onslaught/complete-census.jso
 const bytes = await fs.readFile(file);
 assert.equal(hash(bytes), '2531840a4ca415ade228c4bed58a40bf8f0d7c3c65684c4abad10276ae43fb9f');
 const p = JSON.parse(gunzipSync(bytes));
-assert.equal(p.rendererHash, await sourceHash('games/magic/src'));
+assert.equal(
+  p.rendererHash,
+  await arnSymbolRoleRuntimeParent(await sourceHash('games/magic/src'), 'mir'),
+);
 assert.equal(
   p.sourceAdoption,
   hash(

@@ -51,3 +51,6 @@ material prediction alone is insufficient evidence for promotion.
 
 The score report reopens only the changed artifact frame/paper and whole-card
 tasks. Original wording, scan poses and other materials keep their evidence.
+
+For the separate ARN cost/inline-symbol correction, see
+[Arabian Nights symbol roles](arn-inline-symbols.md).

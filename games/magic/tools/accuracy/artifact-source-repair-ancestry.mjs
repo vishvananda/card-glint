@@ -1,3 +1,4 @@
+import { preArnSymbolRoleSource } from './arn-symbol-role-ancestry.mjs';
 // Exact, scoped compatibility for two artifact materials; no set approval.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -69,6 +70,7 @@ export function artifactSourceRepairDelta() {
   })());
 }
 export async function preArtifactSourceRepair(file, bytes) {
+  bytes = await preArnSymbolRoleSource(file, bytes);
   const e = (await artifactSourceRepairDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

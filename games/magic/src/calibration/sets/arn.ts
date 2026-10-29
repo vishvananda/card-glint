@@ -439,10 +439,11 @@ export const profile = {
 } as const satisfies SetCalibrationProfile;
 
 export const review = {
-  revision: 2,
+  revision: 3,
   scope:
-    'Ordinary nonfoil Original printings, unchanged scan-only normalization. Shared rules and native source family selection; isolated regions tested, integrated verification pending.',
+    'Ordinary nonfoil printings. Header placement is independent of modern glyph selection; Original inline generic discs have separate material pigments. All 92 Original and both Oracle symbol modes replayed; broader frame/component certification remains open.',
   evidence: [
+    'games/magic/fixtures/accuracy/arn-recheck/symbol-roles-076.json.gz',
     'games/magic/fixtures/accuracy/mirage-onslaught/artifact-source-repair-study.json',
     'games/magic/fixtures/accuracy/arn-recheck/baseline.json.gz',
     'games/magic/fixtures/accuracy/arn-recheck/body-style-verified.json.gz',

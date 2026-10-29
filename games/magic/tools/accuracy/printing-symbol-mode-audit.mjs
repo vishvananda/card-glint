@@ -2,30 +2,42 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { createServer } from 'vite';
 import { PNG } from 'pngjs';
 import { openBrowser } from './browser.mjs';
 import { cachedFetch } from './cache.mjs';
 import { root, hash, sourceHash, writeJson } from './common.mjs';
-const [inputFile, out, baseline = 'HEAD'] = process.argv.slice(2);
-assert(out, 'Usage: printing-symbol-mode-audit.mjs INPUTS NEW_OUTPUT BASELINE_GIT_REF');
+const [inputFile, out, baselineRoot] = process.argv.slice(2);
+assert(
+  baselineRoot,
+  'Usage: printing-symbol-mode-audit.mjs INPUTS NEW_OUTPUT BASELINE_SOURCE_ROOT',
+);
 await fs.mkdir(out, { recursive: false });
 const inputBytes = await fs.readFile(inputFile),
   input = JSON.parse(inputBytes);
-const files = execFileSync('git', ['diff', '--name-only', baseline, '--', 'games/magic/src'], {
-  cwd: root,
-  encoding: 'utf8',
-})
-  .trim()
-  .split('\n')
-  .filter(Boolean);
+const files = (
+  await fs.readdir(path.join(root, 'games/magic/src'), { recursive: true, withFileTypes: true })
+)
+  .filter((e) => e.isFile() && /\.(ts|mjs|json|css)$/.test(e.name))
+  .map((e) => path.relative(root, path.join(e.parentPath, e.name)))
+  .sort();
 const changes = {};
 for (const file of files) {
-  const before = execFileSync('git', ['show', baseline + ':' + file], { cwd: root });
+  let before;
+  try {
+    before = await fs.readFile(path.join(baselineRoot, file));
+  } catch (e) {
+    if (e.code !== 'ENOENT') throw e;
+  }
   const after = await fs.readFile(path.join(root, file));
-  changes[file] = { before: hash(before), after: hash(after), beforeSource: before.toString() };
+  if (before && hash(before) === hash(after)) continue;
+  changes[file] = {
+    before: before ? hash(before) : null,
+    after: hash(after),
+    beforeSource: before?.toString() ?? null,
+  };
 }
+const beforeRenderer = await sourceHash(path.join(baselineRoot, 'games/magic/src'));
 const afterRenderer = await sourceHash(path.join(root, 'games/magic/src'));
 const server = await createServer({
   root,
@@ -82,26 +94,7 @@ for (const phase of ['before', 'after']) {
   const session = await openBrowser(
     { ...input, components },
     {
-      plugins:
-        phase === 'before'
-          ? [
-              {
-                name: 'exact-reviewed-source-parent',
-                enforce: 'pre',
-                transform(source, id) {
-                  const file = path.relative(root, id.split('?')[0]),
-                    change = changes[file];
-                  if (!change) return;
-                  assert.equal(
-                    hash(source),
-                    change.after,
-                    'Unexpected source during baseline replay: ' + file,
-                  );
-                  return change.beforeSource;
-                },
-              },
-            ]
-          : [],
+      sourceRoot: phase === 'before' ? baselineRoot : root,
     },
   );
   try {
@@ -216,7 +209,7 @@ await writeJson(path.join(out, 'audit.json'), {
   schema: 1,
   status: 'complete-native-symbol-mode-replay',
   source: {
-    baseline,
+    beforeRenderer,
     afterRenderer,
     inputHash: hash(inputBytes),
     toolHash: hash(await fs.readFile(new URL(import.meta.url))),
