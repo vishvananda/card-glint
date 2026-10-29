@@ -124,11 +124,24 @@ try {
     assert.equal(DUAL_HSB_PROFILES[key], undefined, 'Foil-only frame cohort was adopted');
   for (const key of scope.excludedManaKeys)
     assert.equal(DUAL_MANA_TARGETS[key], undefined, 'Foil-only mana cohort was adopted');
-  for (const setCode of ['usg', 'uds'])
-    assert.ok(
-      calibratedDualFrameProfile({ ...face, setCode, colors: ['W'] }),
-      setCode + ' white regression',
+  for (const setCode of ['usg', 'uds']) {
+    const inherited = { ...face, setCode, colors: ['W'] };
+    const replacement = earlyReprintFrame(inherited);
+    assert.ok(replacement, setCode + ' measured replacement missing');
+    assert.equal(
+      calibratedDualFrameProfile(inherited),
+      undefined,
+      setCode + ' obsolete pigment must not bypass the replacement',
     );
+    assert.ok(
+      calibratedFrameMaterials(inherited)[replacement.asset],
+      setCode + ' replacement pigment missing',
+    );
+    assert.ok(
+      calibratedDualFrameProfile({ ...inherited, calibration: 'printing' }),
+      setCode + ' independent printing-only pigment regression',
+    );
+  }
 
   const image = { width: 64, height: 64, data: new Uint8ClampedArray(64 * 64 * 4) };
   const put = (x, y, rgb, alpha = 255) => image.data.set([...rgb, alpha], (y * 64 + x) * 4);
