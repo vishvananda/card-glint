@@ -1,3 +1,4 @@
+import { oldFrameAdoptionAffected, oldFrameAdoptionDelta } from './old-frame-adoption-ancestry.mjs';
 import {
   artifactSourceRepairAffected,
   artifactSourceRepairDelta,
@@ -140,6 +141,16 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (
+          (await oldFrameAdoptionAffected(set.set, task, original)) &&
+          item.proof?.oldFrameAdoption !== (await oldFrameAdoptionDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'The installed old-frame profile or inherited starting point changed. This component needs a current source-bound review; a donor recommendation does not complete a set audit.';
+          continue;
+        }
+
         if (
           set.set === 'ons' &&
           !original &&

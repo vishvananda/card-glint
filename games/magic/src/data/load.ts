@@ -1,3 +1,8 @@
+import {
+  oldFrameDefaultDonor,
+  oldFrameDefaultColorDonor,
+  inheritedOldFrameDefault,
+} from '../calibration/old-frame-defaults.js';
 import { usesFourthDefaults } from '../calibration/selection.js';
 import {
   eighthSetUsesDefaults,
@@ -23,7 +28,12 @@ export async function loadMagicSet(setCode: string): Promise<void> {
   const code = normalize(setCode);
   await Promise.all([
     loadSet(code, 'calibration', setLoaders),
-    ...(code === 'ice' ? [loadSet('4ed', 'calibration', setLoaders)] : []),
+    ...(oldFrameDefaultDonor(code)
+      ? [loadSet(oldFrameDefaultDonor(code)!, 'calibration', setLoaders)]
+      : []),
+    ...(oldFrameDefaultColorDonor(code)
+      ? [loadSet(oldFrameDefaultColorDonor(code)!, 'calibration', setLoaders)]
+      : []),
     ...(code !== '8ed' && eighthSetUsesDefaults(code)
       ? [loadSet('8ed', 'calibration', setLoaders)]
       : []),
@@ -63,6 +73,12 @@ export async function prepareMagicCards(faces: readonly RenderedCardInput[]): Pr
     const set = face.setCode ?? inheritedSet;
     if (set) codes.add(normalize(set));
     if (usesFourthDefaults({ ...face, setCode: set })) codes.add('4ed');
+    const oldDonor = inheritedOldFrameDefault({ ...face, setCode: set })?.donor;
+    if (oldDonor) {
+      codes.add(oldDonor);
+      const palette = oldFrameDefaultColorDonor(set);
+      if (palette) codes.add(palette);
+    }
     if (face.calibration !== 'printing' && supportsEighthStyleDefaults({ ...face, setCode: set }))
       codes.add('8ed');
     if (

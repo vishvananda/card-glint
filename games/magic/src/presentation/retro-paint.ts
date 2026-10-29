@@ -1,3 +1,4 @@
+import { inheritedOldFrameManaBase } from '../calibration/old-frame-defaults.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import { paintRetroFramePlate } from './retro-frame-plate.js';
 import { paintAbuDualPerimeter } from './retro-dual-frame.js';
@@ -155,13 +156,14 @@ export function paintRetroFace(
   const [x, y, w, h] = retroPx(rect.title),
     cost = face.manaSymbols ?? [],
     mana = retroManaPlacement(face),
-    size = mana?.[3] ?? details?.manaSize ?? 23.4,
-    gap = mana ? mana[2] - size : (details?.manaGap ?? 1.7),
+    manaBase = (earlyReprintFrame(face) ? inheritedOldFrameManaBase(face) : undefined) ?? details,
+    size = mana?.[3] ?? manaBase?.manaSize ?? 23.4,
+    gap = mana ? mana[2] - size : (manaBase?.manaGap ?? 1.7),
     costW = cost.length * (size + gap),
     costX = mana
       ? mana[0] + size / 2 - costW + gap
-      : details
-        ? details.manaRight - costW + gap
+      : manaBase
+        ? manaBase.manaRight - costW + gap
         : x + w - costW;
   const early = ['lea', '2ed'].includes(face.setCode?.toLowerCase() ?? '');
   const manaBounds: FaceRect =
@@ -174,7 +176,7 @@ export function paintRetroFace(
         ]
       : [
           costX,
-          mana ? mana[1] - size / 2 : (details?.manaTop ?? y + h / 2 - size / 2),
+          mana ? mana[1] - size / 2 : (manaBase?.manaTop ?? y + h / 2 - size / 2),
           Math.max(0, costW - gap),
           size,
         ];
@@ -224,7 +226,7 @@ export function paintRetroFace(
             c,
             s,
             costX + i * (size + gap) - (cost.length - 1 - i) * (costAdjustment?.spacing ?? 0),
-            mana ? mana[1] - size / 2 : (details?.manaTop ?? y + h / 2 - size / 2),
+            mana ? mana[1] - size / 2 : (manaBase?.manaTop ?? y + h / 2 - size / 2),
             size,
             images,
             false,

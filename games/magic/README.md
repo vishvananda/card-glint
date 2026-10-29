@@ -111,6 +111,8 @@ issue. Include the printing ID, renderer version, wording mode and a description
 of the mismatch.
 
 For a calibration PR, follow [Calibrate a set](docs/calibrating-a-set.md).
+See [old-frame starting defaults](docs/old-frame-defaults.md) for measured donor
+choices and their coverage limits.
 It covers original data review, frame-only scan normalization, component fitting,
 validation, one-file set profiles and evidence. Read the
 [source map](docs/source-map.md) before changing a painter.

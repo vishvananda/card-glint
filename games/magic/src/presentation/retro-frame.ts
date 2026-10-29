@@ -1,3 +1,4 @@
+import { isOldFrameDefaultSet } from '../calibration/old-frame-defaults.js';
 import { hasPrintingStockCandidate } from './printing-blackpoint.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import { hasNoPrintedSetSymbol } from './historical-set-symbol.js';
@@ -47,7 +48,8 @@ export function isRetro(face: RenderedCardInput): boolean {
     return false;
   return (
     face.frameStyle === 'retro' ||
-    (face.frameStyle !== 'modern' && oldSets.has(face.setCode?.toLowerCase() ?? ''))
+    (face.frameStyle !== 'modern' &&
+      (oldSets.has(face.setCode?.toLowerCase() ?? '') || isOldFrameDefaultSet(face.setCode)))
   );
 }
 export function retroEarly(face: RenderedCardInput) {

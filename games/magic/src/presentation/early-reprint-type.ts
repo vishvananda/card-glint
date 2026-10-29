@@ -1,3 +1,4 @@
+import { retainsOldFrameComponent } from '../calibration/old-frame-defaults.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -8,6 +9,7 @@ import { paintTextInk } from './text-ink.js';
 /** Shared original/Oracle typography. Absolute origins also correct the old
  * Fourth Edition land inset. Keep the caller's set-symbol clearance. */
 export function earlyReprintType(face: RenderedCardInput) {
+  if (retainsOldFrameComponent(face, 'type')) return undefined;
   return earlyReprintFrame(face) ? calibrationForFace(face)!.type : undefined;
 }
 

@@ -1,3 +1,4 @@
+import { preOldFrameAdoptionSource } from '../games/magic/tools/accuracy/old-frame-adoption-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {
@@ -11,7 +12,7 @@ import { createServer } from './magic-vite.mjs';
 
 const p = await artifactSourceRepairDelta();
 for (const [file, entry] of Object.entries(p.files)) {
-  const bytes = await fs.readFile(file);
+  const bytes = await preOldFrameAdoptionSource(file, await fs.readFile(file));
   assert.equal(hash(await preArtifactSourceRepair(file, bytes)), entry.before);
   const foreign = Buffer.concat([bytes, Buffer.from('\n// foreign edit\n')]);
   assert.deepEqual(await preArtifactSourceRepair(file, foreign), foreign);

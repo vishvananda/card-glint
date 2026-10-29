@@ -1,0 +1,256 @@
+import type { OldFrameDefault } from './old-frame-defaults.js';
+
+/** Development starting points, not independent set calibration.
+ * Sources and rejected scans: fixtures/accuracy/mirage-onslaught/default-donor-review.json.
+ * Footer, set symbols and printing facts remain target-owned. */
+export const oldFrameDefaults: Readonly<Record<string, OldFrameDefault>> = {
+  ice: {
+    donor: '4ed',
+    border: 'black',
+    stock: '#080808',
+    retain: [],
+  },
+  vis: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#17140f',
+    retain: [],
+  },
+  '5ed': {
+    donor: 'mir',
+    border: 'white',
+    stock: '#eeedeb',
+    retain: ['mana'],
+  },
+  tmp: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#080808',
+    retain: ['rules'],
+  },
+  usg: {
+    donor: 'mir',
+    materialPalettes: { W: 'source' },
+    border: 'black',
+    stock: '#181510',
+    retain: ['title', 'mana'],
+  },
+  '7ed': {
+    donor: 'mir',
+    materialPalettes: { U: 'source', G: 'ons' },
+    pigment: {
+      W: {
+        source:
+          '["https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-old.mse-style/wcard.jpg",[-0.001045081967213201,-0.007882352941176557,1.0025000000000002,1.0090000000000001]]',
+        frame: {
+          hueDegrees: 10.905760313211992,
+          saturationScale: 0.9018475693078511,
+          brightnessScale: 0.9944601970518206,
+          valueGamma: 0.7184258866107253,
+          rgbScale: [0.9841223604100684, 0.9969718789841865, 1.01922012824248],
+        },
+        paper: {
+          hueDegrees: 11.51996845434791,
+          saturationScale: 0.6770456105672296,
+          brightnessScale: 1.1298624370561754,
+          valueGamma: 0.8344807915302515,
+          rgbScale: [0.9678349812465361, 0.9899512137568719, 1.0437221312816405],
+        },
+      },
+      B: {
+        source:
+          '["https://raw.githubusercontent.com/MagicSetEditorPacks/Full-Magic-Pack/16f1d13bb7f5924613fc1ddc25da582beccfefb6/data/magic-old.mse-style/bcard.jpg",[-0.0005901639344259955,0.0014558823529411732,1.0019999999999996,0.9965]]',
+        frame: {
+          hueDegrees: -179.99999996626087,
+          saturationScale: 0.3228575402674925,
+          brightnessScale: 0.7331598551435111,
+          valueGamma: 0.7729866947283267,
+          rgbScale: [0.8971232610265468, 1.1243275803736956, 0.9914139336201415],
+        },
+        paper: {
+          hueDegrees: -1.7591910252524003,
+          saturationScale: 1.2373981755283008,
+          brightnessScale: 1.0880248742553484,
+          valueGamma: 1.1075436924500106,
+          rgbScale: [0.9123209433984318, 0.9996741574853106, 1.0964627699945009],
+        },
+      },
+    },
+    border: 'white',
+    stock: '#eeedeb',
+    retain: [],
+  },
+  inv: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#080808',
+    retain: [],
+  },
+  ody: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#181510',
+    retain: ['title', 'mana', 'rules'],
+  },
+  lgn: {
+    donor: 'mir',
+    palette: 'ons',
+    border: 'black',
+    stock: '#080808',
+    retain: ['title', 'type'],
+  },
+  '6ed': {
+    donor: 'mir',
+    border: 'white',
+    stock: '#eeedeb',
+    retain: [],
+  },
+  all: {
+    donor: '4ed',
+    border: 'black',
+    stock: '#080808',
+    retain: ['type'],
+  },
+  apc: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#080808',
+    retain: ['title', 'mana'],
+  },
+  brb: {
+    donor: 'mir',
+    palette: 'source',
+    border: 'white',
+    stock: '#eeedeb',
+    retain: ['rules'],
+  },
+  btd: {
+    donor: 'mir',
+    border: 'white',
+    stock: '#eeedeb',
+    retain: ['mana', 'rules'],
+  },
+  exo: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#080808',
+    retain: ['title', 'mana', 'rules'],
+  },
+  hml: {
+    donor: '4ed',
+    border: 'black',
+    stock: '#080808',
+    retain: [],
+  },
+  jud: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#080808',
+    retain: ['title', 'type', 'mana'],
+  },
+  mmq: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#080808',
+    retain: ['title', 'rules'],
+  },
+  nem: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#181510',
+    retain: ['title'],
+  },
+  p02: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#080808',
+    retain: ['rules'],
+  },
+  pcy: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#181510',
+    retain: ['title'],
+  },
+  pls: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#181510',
+    retain: ['title'],
+  },
+  por: {
+    donor: 'mir',
+    palette: 'source',
+    border: 'black',
+    stock: '#080808',
+    retain: ['mana', 'rules'],
+  },
+  ptk: {
+    donor: 'mir',
+    palette: 'source',
+    border: 'white',
+    stock: '#eeedeb',
+    retain: [],
+  },
+  s99: {
+    donor: 'mir',
+    border: 'white',
+    stock: '#eeedeb',
+    retain: ['mana', 'rules'],
+  },
+  sth: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#080808',
+    retain: [],
+  },
+  tor: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#080808',
+    retain: ['title', 'type'],
+  },
+  uds: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#181510',
+    retain: ['title', 'mana'],
+  },
+  ulg: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#181510',
+    retain: ['title', 'mana'],
+  },
+  wth: {
+    donor: 'mir',
+    border: 'black',
+    stock: '#17140f',
+    retain: ['title', 'rules'],
+  },
+  scg: {
+    donor: 'mir',
+    palette: 'ons',
+    border: 'black',
+    stock: '#080808',
+    retain: ['title'],
+  },
+  itp: {
+    donor: '4ed',
+    border: 'white',
+    stock: '#eeedeb',
+    retain: ['title', 'type', 'mana', 'rules'],
+  },
+  ath: {
+    donor: 'mir',
+    border: 'white',
+    stock: '#eeedeb',
+    retain: ['title', 'type', 'mana', 'rules'],
+  },
+  rqs: {
+    donor: '4ed',
+    border: 'white',
+    stock: '#eeedeb',
+    retain: ['title', 'type', 'mana', 'rules'],
+  },
+};

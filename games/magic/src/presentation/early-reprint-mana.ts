@@ -1,3 +1,4 @@
+import { retainsOldFrameComponent } from '../calibration/old-frame-defaults.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { earlyReprintFrame } from './early-reprint-frame.js';
 import { calibrationForFace, usesFourthDefaults } from '../calibration/selection.js';
@@ -8,6 +9,7 @@ import { arabianManaVariant } from './early-expansion-mana.js';
 export function earlyReprintMana(face: RenderedCardInput): boolean {
   return (
     !!earlyReprintFrame(face) &&
+    !retainsOldFrameComponent(face, 'mana') &&
     !/^Level up\b/m.test(face.rulesText ?? '') &&
     face.symbolStyle !== 'modern' &&
     !(face.symbolStyle === undefined && face.wordingMode === 'oracle')

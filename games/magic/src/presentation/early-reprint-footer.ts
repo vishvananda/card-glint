@@ -1,3 +1,4 @@
+import { inheritedOldFrameDefault } from '../calibration/old-frame-defaults.js';
 import { paintEarlyExpansionStatsInk } from './early-expansion-stats.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { calibrationForFace } from '../calibration/selection.js';
@@ -10,6 +11,7 @@ import { paintEarlyReprintFooterInk } from './early-reprint-footer-ink.js';
 import { paintSolidArtist } from './solid-artist.js';
 
 export function earlyReprintFooter(face: RenderedCardInput) {
+  if (inheritedOldFrameDefault(face)) return undefined;
   const frame = earlyReprintFrame(face);
   if (!frame) return undefined;
   const set = face.setCode!.toLowerCase();

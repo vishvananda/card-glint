@@ -1,13 +1,19 @@
 import type { RenderedCardInput } from '../presentation/face-layout.js';
 import type { SetCalibrationProfile } from './types.js';
 import { setCalibrationProfile } from './profiles.js';
+import { inheritedOldFrameProfile } from './inherited-old-frame.js';
 import { setTitleCalibration } from './title-profiles.js';
 import { resolveSetTitleCalibration, resolveSetCalibrationCandidate } from './editor.js';
 
 /** Candidate scope is printing identity, never a scan or host-global setting. */
 export function calibrationForFace(face: RenderedCardInput) {
   const candidate = face.setCalibrationCandidate;
-  if (!candidate) return setCalibrationProfile(face.setCode) ?? inheritedFourthProfile(face);
+  if (!candidate)
+    return (
+      setCalibrationProfile(face.setCode) ??
+      inheritedFourthProfile(face) ??
+      inheritedOldFrameProfile(face)
+    );
   if (candidate.set !== face.setCode?.toLowerCase())
     throw Error('Calibration candidate belongs to another set');
   if (setTitleCalibration(candidate.set)) {

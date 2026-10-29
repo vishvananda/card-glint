@@ -1,3 +1,4 @@
+import { oldFrameAdoptionHistoricalFiles } from '../games/magic/tools/accuracy/old-frame-adoption-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -15,12 +16,12 @@ import {
 } from '../games/magic/tools/accuracy/old-frame-source-ancestry.mjs';
 import { root, hash } from '../games/magic/tools/accuracy/common.mjs';
 const delta = await oldFrameSourceDelta();
-const files = (
-  await fs.readdir(path.join(root, 'games/magic/src'), { recursive: true, withFileTypes: true })
-)
-  .filter((e) => e.isFile() && /\.(?:ts|mjs|css|json)$/.test(e.name))
-  .map((e) => path.join(e.parentPath, e.name))
-  .sort();
+const files = await oldFrameAdoptionHistoricalFiles(
+  (await fs.readdir(path.join(root, 'games/magic/src'), { recursive: true, withFileTypes: true }))
+    .filter((e) => e.isFile() && /\.(?:ts|mjs|css|json)$/.test(e.name))
+    .map((e) => path.join(e.parentPath, e.name))
+    .sort(),
+);
 const original = [];
 for (const file of await oldFrameHistoricalSourceFiles(files)) {
   const key = path.relative(root, file),

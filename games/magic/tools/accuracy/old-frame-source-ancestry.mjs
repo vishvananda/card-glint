@@ -1,3 +1,8 @@
+import {
+  preOldFrameAdoptionSource,
+  oldFrameAdoptionHistoricalFiles,
+  oldFrameAdoptionRuntimeParent,
+} from './old-frame-adoption-ancestry.mjs';
 import { preOnslaughtSymbolSource } from './old-frame-symbol-source-ancestry.mjs';
 import {
   preArtifactSourceRepair,
@@ -188,6 +193,7 @@ export function oldFrameBasicIconsDelta() {
   })());
 }
 export async function preBasicIconsSource(file, bytes) {
+  bytes = await preOldFrameAdoptionSource(file, bytes);
   bytes = await preOnslaughtSymbolSource(file, bytes);
   bytes = await preArtifactSourceRepair(file, bytes);
   const p = await oldFrameBasicIconsDelta(),
@@ -210,7 +216,7 @@ export async function preOldFrameSource(file, bytes) {
 export async function oldFrameHistoricalSourceFiles(files) {
   const p = await oldFrameSourceDelta(),
     kept = [];
-  for (const file of files) {
+  for (const file of await oldFrameAdoptionHistoricalFiles(files)) {
     const key = file.startsWith('games/') ? file : path.relative(root, file);
     const e = p.files[key];
     if (
@@ -230,6 +236,9 @@ export async function oldFrameSourceRuntimeCompatible(directory, expected, set) 
   const component = await oldFrameOptionalComponentsDelta();
   const basic = await oldFrameBasicIconsDelta();
   let actual = await sourceHash(path.join(root, directory));
+  const adoptedParent = await oldFrameAdoptionRuntimeParent(actual, set);
+  if (adoptedParent !== actual && expected === adoptedParent) return true;
+  actual = adoptedParent;
   const repair = await artifactSourceRepairDelta();
   if (actual === repair.afterRenderer && set && !repair.affectedSets.includes(set.toLowerCase())) {
     if (expected === repair.beforeRenderer) return true;
