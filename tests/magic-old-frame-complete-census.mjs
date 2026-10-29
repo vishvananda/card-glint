@@ -119,3 +119,27 @@ assert.deepEqual(
 console.log(
   'Complete nonfoil census:701 exact Original native/scan/score members;694 prior scan poses, isolated gold copyright amendments,7 audited recoveries, current per-variant reviews and one explicit foil-only follow-up. No publication is inferred.',
 );
+
+// The authoritative checked report retains unaffected source-bound reviews.
+const { calibrationReport } = await import('../games/magic/tools/accuracy/calibration-report.mjs');
+const scoped = { ...ledger, sets: ledger.sets.filter((s) => ['mir', 'ons'].includes(s.set)) };
+const reports = await calibrationReport(scoped);
+for (const report of reports) {
+  const set = scoped.sets.find((s) => s.set === report.set);
+  const nonfoil = new Set(set.groups.filter((g) => g.references.nonfoil > 0).map((g) => g.key));
+  assert.deepEqual(
+    report.outstanding.filter((o) => nonfoil.has(o.group)),
+    [],
+    report.set,
+  );
+}
+const tampered = structuredClone(scoped);
+tampered.sets
+  .find((s) => s.set === 'mir')
+  .groups.find((g) => g.references.nonfoil > 0).tasks.references.runtimeGuards['games/magic/src'] =
+  'f'.repeat(64);
+const rejected = (await calibrationReport(tampered)).find((s) => s.set === 'mir');
+assert(rejected.outstanding.some((o) => o.task === 'references' && o.status === 'stale'));
+console.log(
+  'Checked MIR/ONS reports preserve reviewed nonfoil components across scoped ARN changes; unknown runtime identities still reject.',
+);

@@ -1,3 +1,4 @@
+import { arnSymbolRoleRuntimeParent } from './arn-symbol-role-ancestry.mjs';
 import { oldFrameAdoptionAffected, oldFrameAdoptionDelta } from './old-frame-adoption-ancestry.mjs';
 import {
   artifactSourceRepairAffected,
@@ -475,6 +476,11 @@ export async function calibrationReport(ledger) {
           }
           if (
             runtimeChecked.get(directory) !== expected &&
+            !(
+              directory === 'games/magic/src' &&
+              (await arnSymbolRoleRuntimeParent(runtimeChecked.get(directory), set.set)) ===
+                expected
+            ) &&
             !(await revisedWordingRuntimeCompatible(directory, expected, set.set)) &&
             !(await atqProfileRuntimeCompatible(directory, expected, set.set)) &&
             !(await arnProfileRuntimeCompatible(directory, expected, set.set)) &&
