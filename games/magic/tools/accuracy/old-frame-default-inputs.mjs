@@ -6,13 +6,15 @@ import { createServer } from 'vite';
 import { cacheRoot, root, hash, writeJson, sourceHash } from './common.mjs';
 import { cachedFetch, readObject } from './cache.mjs';
 import { printingScope, referenceIssue } from './rollout-policy.mjs';
-import { printingTextIndex } from './printing-text.mjs';
+import { oldFramePilotText } from './old-frame-pilot-text.mjs';
 import { presentation } from './adapter.mjs';
 import { fetchComponents } from './components.mjs';
-const [set, out] = process.argv.slice(2);
+const [set, out, mode] = process.argv.slice(2);
+assert(mode === undefined || mode === '--frame-only');
+const frameOnly = mode === '--frame-only';
 assert(
   /^[a-z0-9]{2,8}$/.test(set ?? '') && out,
-  'Usage: old-frame-default-inputs.mjs SET NEW_OUTPUT',
+  'Usage: old-frame-default-inputs.mjs SET NEW_OUTPUT [--frame-only]',
 );
 await fs.access(out).then(
   () => {
@@ -38,8 +40,8 @@ const ordinary = cards.filter(
 const source = await cachedFetch('https://mtgjson.com/api/v5/' + set.toUpperCase() + '.json'),
   sourceData = JSON.parse(await readObject(source)).data;
 const rows = ordinary.map((card) => ({ id: card.id, card })),
-  text = printingTextIndex({ set, entries: rows }, sourceData);
-const pool = rows.filter((e) => text.cards[e.id] || !e.card.oracle_text);
+  text = oldFramePilotText({ set, entries: rows }, sourceData);
+const pool = rows.filter((e) => frameOnly || text.cards[e.id] || !e.card.oracle_text);
 const bucket = (c) =>
   /\bLand\b/.test(c.type_line)
     ? 'L'
@@ -97,14 +99,15 @@ try {
       );
     assert.equal(matches.length, 1);
     const mtg = matches[0];
-    if (!mtg.originalType && !card.printed_type_line) {
+    if (!frameOnly && !mtg.originalType && !card.printed_type_line) {
       excluded.push({ id: card.id, name: card.name, reason: 'missing-original-type' });
       continue;
     }
     const reference = await cachedFetch(card.image_uris.png),
       art = await cachedFetch(card.image_uris.art_crop);
     const entry = { id: card.id, card, reference, art, category: 'normal', cohort: 'development' };
-    const candidateType = card.printed_type_line ?? mtg.originalType;
+    const candidateType =
+      card.printed_type_line ?? mtg.originalType ?? (frameOnly ? card.type_line : undefined);
     const original = presentation(
       entry,
       { [card.id]: { typeLine: candidateType } },
@@ -137,14 +140,23 @@ try {
       { rulesAlignment: 'original', symbolStyle: 'original' },
     );
     Object.assign(face, { colorCalibration: 'set-hsb-v1' });
+    if (frameOnly) Object.assign(face, { rulesText: '', rulesParagraphs: [], flavorText: '' });
     entries.push({
       ...entry,
       name: card.name,
       material: bucket(card),
       face,
       wordingEvidence: {
-        rules: text.cards[card.id] ? 'mtgjson-original-text' : 'empty-oracle-and-original',
-        type: card.printed_type_line ? 'scryfall-printed-type' : 'mtgjson-original-type-candidate',
+        rules: frameOnly
+          ? 'explicitly-empty-frame-only-study'
+          : text.cards[card.id]
+            ? 'mtgjson-original-text'
+            : 'empty-oracle-and-original',
+        type: frameOnly
+          ? 'provider-type-not-assessed'
+          : card.printed_type_line
+            ? 'scryfall-printed-type'
+            : 'mtgjson-original-type-candidate',
         provenance: wordings.provenance,
         reviewed: false,
       },
@@ -183,8 +195,12 @@ await writeJson(out, {
   schema: 1,
   set,
   status: 'development-pilot-not-full-set',
+  comparisonMode: frameOnly ? 'frame-art-only' : 'regional',
   sampleCoverage,
   scope:
+    (frameOnly
+      ? 'Original source wording unavailable. Frame/illustration comparison only; body and flavor explicitly blank, title/type/footer excluded from ranking. '
+      : '') +
     'Deterministic short/median/long printed-body examples per mono color,artifact and multicolor,plus each basic and three nonbasic lands. Nonfoil,ordinary,English paper. Imported Original text/type remains candidate data unless exact-printing review exists. No Oracle fallback for nonempty rules;not a source audit or holdout.',
   selection: {
     method: 'printed-body-length-quantiles-v1',

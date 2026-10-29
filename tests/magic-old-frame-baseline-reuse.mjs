@@ -59,7 +59,7 @@ try {
     '../games/magic/tools/accuracy/old-frame-set-baseline-score.mjs',
     import.meta.url,
   ).pathname;
-  const run = (pose, out, reuse = false, nativeFile = capture.file) =>
+  const run = (pose, out, reuse = false, nativeFile = capture.file, parentCaptureFile) =>
     spawnSync(
       process.execPath,
       [
@@ -69,7 +69,13 @@ try {
         nativeFile,
         metric,
         path.join(dir, out),
-        ...(reuse ? [path.join(dir, 'baseline.json'), parent.file] : []),
+        ...(reuse
+          ? [
+              path.join(dir, 'baseline.json'),
+              parent.file,
+              ...(parentCaptureFile ? [parentCaptureFile] : []),
+            ]
+          : []),
       ],
       { encoding: 'utf8', env: { ...process.env, MAGIC_ACCURACY_CACHE: dir } },
     );
@@ -78,6 +84,33 @@ try {
   check(run(parent.file, 'baseline.json'));
   check(run(parent.file, 'same.json', true));
   assert.deepEqual((await read('same.json')).reuse, { reused: 2, fresh: 0, rejected: 0 });
+  const nextCapture = await put('next-capture.json', {
+    ...JSON.parse(await fs.readFile(capture.file, 'utf8')),
+    source: { inputHash: input.hash, rendererHash: 'new-renderer-same-pixels' },
+  });
+  check(run(parent.file, 'next-same-pixels.json', true, nextCapture.file, capture.file));
+  assert.deepEqual((await read('next-same-pixels.json')).reuse, {
+    reused: 2,
+    fresh: 0,
+    rejected: 0,
+  });
+  const differentPng = PNG.sync.write({ width: 4, height: 4, data: Buffer.alloc(64, 128) });
+  await fs.writeFile(path.join(dir, 'new-one.png'), differentPng);
+  const changedNativeData = JSON.parse(await fs.readFile(nextCapture.file, 'utf8'));
+  Object.assign(changedNativeData.rows[0], { file: 'new-one.png', sha256: hash(differentPng) });
+  const changedNative = await put('changed-native.json', changedNativeData);
+  check(run(parent.file, 'changed-native-scores.json', true, changedNative.file, capture.file));
+  assert.deepEqual((await read('changed-native-scores.json')).reuse, {
+    reused: 1,
+    fresh: 1,
+    rejected: 0,
+  });
+  const noParent = run(parent.file, 'unbound-new-capture.json', true, nextCapture.file);
+  assert.notEqual(noParent.status, 0);
+  await fs.writeFile(path.join(dir, 'one.png'), Buffer.from('corrupt native bytes'));
+  const corrupt = run(parent.file, 'corrupt-cached-face.json', true);
+  assert.notEqual(corrupt.status, 0, 'Cached rows must verify current PNG bytes');
+  await fs.writeFile(path.join(dir, 'one.png'), png);
   poses.rows[0].transform.matrix[4] += 2;
   const changed = await put('changed.json', poses);
   check(run(changed.file, 'changed-scores.json', true));

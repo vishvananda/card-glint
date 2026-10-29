@@ -46,16 +46,20 @@ def main(root, set_code, version, out, candidate_version=12):
     rows=[]
     for r in after["rows"]:
         b=next(x for x in before["rows"] if x["id"]==r["id"])
-        assert b["inputHash"]==r["inputHash"] and b["normalizedReferenceHash"]==r["normalizedReferenceHash"]
+        assert b["inputHash"]==r["inputHash"] and b["accepted"]==r["accepted"]
+        assert b.get("normalizedReferenceHash")==r.get("normalizedReferenceHash")
         a=read_image(bd,b); c=read_image(ad,r)
-        ref_file=ad/(r["id"]+"-scan.png")
-        assert digest(ref_file)==r["normalizedReferenceHash"]
-        ref=normalize(Image.open(ref_file))
         key=r["key"]; material="L-"+key[0] if len(key)==2 and key.endswith("L") else key
         rect=np.asarray(new["frames"][material]["art"])*[488,680,488,680]
         x,y,w,h=rect
         interior=np.s_[int(np.ceil(y))+3:int(np.floor(y+h))-3,int(np.ceil(x))+3:int(np.floor(x+w))-3]
         assert np.array_equal(a[interior],c[interior]),r["name"]+": art changed"
+        if not r["accepted"]:
+            rows.append(dict(id=r["id"],name=r["name"],key=key,status="rejected-reference",artUnchanged=True))
+            continue
+        ref_file=ad/(r["id"]+"-scan.png")
+        assert digest(ref_file)==r["normalizedReferenceHash"]
+        ref=normalize(Image.open(ref_file))
         ink_a,ink_ref=keyline_pairs(a,ref,rect); ink_c,_=keyline_pairs(c,ref,rect)
         metrics={"ink":dict(before=error(ink_a,ink_ref),after=error(ink_c,ink_ref))}
         for part, patches in [("frame",FRAME),("paper",PAPER)]:
@@ -66,16 +70,18 @@ def main(root, set_code, version, out, candidate_version=12):
                                contrastReference=contrast(ref,part))
         rows.append(dict(id=r["id"],name=r["name"],key=key,cohort=r["cohort"],before=b["sha256"],
                          after=r["sha256"],reference=r["normalizedReferenceHash"],artUnchanged=True,metrics=metrics))
+        if len(rows)%50==0: print(set_code,len(rows),"native color checks",flush=True)
     groups={}
     for key in sorted({r["key"] for r in rows}):
-        group=[r for r in rows if r["key"]==key]
+        group=[r for r in rows if r["key"]==key and "metrics" in r]
+        if not group: continue
         groups[key]={part:{metric:float(np.mean([r["metrics"][part][metric] for r in group]))
                            for metric in group[0]["metrics"][part]}
                      for part in ["ink","frame","paper"]}
     result=dict(schema=1,status=("native-low-tone-pilot-not-full-set-approval" if after["source"]["pilot"] else "native-full-inventory-low-tone-review-not-set-approval"),set=set_code,
                 source=dict(beforeCapture=digest(bd/"capture.json"),afterCapture=digest(ad/"capture.json"),
                             beforeProfile=digest(bp),afterProfile=digest(ap),tool=digest(__file__)),
-                scope="Actual full-face native output on frozen references and identical wording. Illustration interiors must remain byte-identical. Keyline, texture/paper color and luminance spread are reported; full-inventory validation is still required.",
+                scope="Actual full-face native output on frozen references and identical wording. Illustration interiors must remain byte-identical. Keyline, texture/paper color and luminance spread are reported. Rejected references stay listed without metrics; whole-set approval is separate.",
                 groups=groups,rows=rows)
     out.write_text(json.dumps(result,indent=2)+"\n")
     print(set_code, json.dumps(groups))

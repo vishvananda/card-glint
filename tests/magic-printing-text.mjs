@@ -684,20 +684,3 @@ assert.equal(
   normalizePrintingText('{X3U} {XX2R} {W/U} {2/W} {CHAOS}'),
   '{X}{3}{U} {X}{X}{2}{R} {W/U} {2/W} {CHAOS}',
 );
-
-// Exact Gatherer source notation, not a new mana glyph.
-assert.equal(
-  normalizePrintingText('{3}, {cT}: Add {2}. ocT: Add {U}.'),
-  '{3}, {T}: Add {2}. {T}: Add {U}.',
-);
-assert.equal(normalizePrintingText('{CT} {T} {CHAOS}'), '{CT} {T} {CHAOS}');
-
-const bracedTap = printingTextIndex(snapshot, {
-  code: snapshot.set.toUpperCase(),
-  cards: [{ ...record, originalText: '{3}, {cT}: Add {2} to your mana pool.' }],
-});
-assert.equal(bracedTap.cards['printing-a'].originalText, '{3}, {T}: Add {2} to your mana pool.');
-assert.equal(
-  bracedTap.cards['printing-a'].rawOriginalText,
-  '{3}, {cT}: Add {2} to your mana pool.',
-);

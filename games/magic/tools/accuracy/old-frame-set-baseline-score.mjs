@@ -7,10 +7,23 @@ import { PNG } from 'pngjs';
 import { hash, objectFile, writeJson } from './common.mjs';
 import { normalize } from './pixels-pure.mjs';
 import { metricSourceGraph } from './module-graph.mjs';
-const [inputFile, posesFile, captureFile, metricsFile, out, parentScoresFile, parentPosesFile] =
-  process.argv.slice(2);
-assert(out, 'Use INPUTS POSES NATIVE_CAPTURE METRICS NEW_OUTPUT [PARENT_SCORES PARENT_POSES]');
+const [
+  inputFile,
+  posesFile,
+  captureFile,
+  metricsFile,
+  out,
+  parentScoresFile,
+  parentPosesFile,
+  parentCaptureFile,
+] = process.argv.slice(2);
+assert(
+  out,
+  'Use INPUTS POSES NATIVE_CAPTURE METRICS NEW_OUTPUT [PARENT_SCORES PARENT_POSES [PARENT_CAPTURE]]',
+);
 assert.equal(Boolean(parentScoresFile), Boolean(parentPosesFile));
+assert(!parentCaptureFile || parentScoresFile, 'Capture reuse needs parent scores and poses');
+const toolHash = hash(await fs.readFile(new URL(import.meta.url)));
 await fs.access(out).then(
   () => {
     throw Error('Output already exists');
@@ -38,9 +51,20 @@ const parentScoreBytes = parentScoresFile ? await fs.readFile(parentScoresFile) 
 const parentPoseBytes = parentPosesFile ? await fs.readFile(parentPosesFile) : undefined;
 const parentScores = parentScoreBytes ? JSON.parse(parentScoreBytes) : undefined;
 const parentPoses = parentPoseBytes ? JSON.parse(parentPoseBytes) : undefined;
+const parentCaptureBytes = parentCaptureFile ? await fs.readFile(parentCaptureFile) : cb;
+const parentCapture = JSON.parse(parentCaptureBytes);
 if (parentScores) {
+  assert(
+    [toolHash, 'b81a35e507316911497823068f184b20f90702a023763125d451f249c33d47da'].includes(
+      parentScores.toolHash,
+    ),
+    'Unrecognized parent scoring method',
+  );
+  assert(parentCapture.complete && !parentCapture.faults.length);
+  assert.equal(parentCapture.source.inputHash, hash(ib));
+  assert.equal(parentCapture.rows.length, input.entries.length);
   assert.equal(parentScores.inputHash, hash(ib));
-  assert.equal(parentScores.captureHash, hash(cb));
+  assert.equal(parentScores.captureHash, hash(parentCaptureBytes));
   assert.equal(parentScores.poseHash, hash(parentPoseBytes));
   assert.equal(parentPoses.inputHash, hash(ib));
   assert.equal(
@@ -70,8 +94,21 @@ for (const e of input.entries) {
     });
     continue;
   }
+  const ref = await fs.readFile(objectFile(e.reference));
+  assert.equal(hash(ref), e.reference.sha256);
+  const file = native.file ?? e.id + '.png';
+  assert.match(file, /^[a-z0-9-]+\.png$/i, 'Invalid native capture filename');
+  const rendered = await fs.readFile(path.join(path.dirname(captureFile), file));
+  assert.equal(hash(rendered), native.sha256);
   const oldScore = parentScores?.rows.find((r) => r.id === e.id);
   const oldPose = parentPoses?.rows.find((r) => r.id === e.id);
+  if (oldScore?.score) {
+    const oldNative = parentCapture.rows.find((r) => r.id === e.id);
+    assert(oldNative);
+    assert.equal(oldScore.nativeHash, oldNative.sha256);
+    assert.equal(oldNative.inputHash, native.inputHash);
+    assert.equal(oldNative.referenceHash, native.referenceHash);
+  }
   const poseTransformHash = hash(JSON.stringify(pose.transform));
   if (
     oldScore?.score &&
@@ -85,12 +122,6 @@ for (const e of input.entries) {
     continue;
   }
   reuse.fresh++;
-  const ref = await fs.readFile(objectFile(e.reference));
-  assert.equal(hash(ref), e.reference.sha256);
-  const file = native.file ?? e.id + '.png';
-  assert.match(file, /^[a-z0-9-]+\.png$/i, 'Invalid native capture filename');
-  const rendered = await fs.readFile(path.join(path.dirname(captureFile), file));
-  assert.equal(hash(rendered), native.sha256);
   const reviewedType = ['scan-reviewed-field', 'legacy-annotation'].includes(
     e.wordingEvidence.typeSource,
   );
@@ -151,6 +182,8 @@ const summarize = (rr) => {
     ),
   };
 };
+assert.equal(hash(await fs.readFile(new URL(import.meta.url))), toolHash);
+assert.deepEqual(await metricSourceGraph(path.resolve(metricsFile)), graph);
 const summary = summarize(rows),
   materials = Object.fromEntries(
     [...new Set(rows.map((r) => r.material))].map((m) => [
@@ -167,13 +200,17 @@ await writeJson(out, {
   poseHash: hash(pb),
   captureHash: hash(cb),
   metrics: graph,
-  toolHash: hash(await fs.readFile(new URL(import.meta.url))),
+  toolHash,
   node: process.version,
   scope:
     'Released native Original pixels with one frozen per-scan frame pose. Type regions with provisional provider wording remain ineligible. Rejected normalization never receives an accepted score. Source/provider body text is identified separately; these baseline numbers do not certify whole-set source review or calibration completion.',
   reuse,
   ...(parentScores
-    ? { parentScoreHash: hash(parentScoreBytes), parentPoseHash: hash(parentPoseBytes) }
+    ? {
+        parentScoreHash: hash(parentScoreBytes),
+        parentPoseHash: hash(parentPoseBytes),
+        parentCaptureHash: hash(parentCaptureBytes),
+      }
     : {}),
   summary,
   materials,

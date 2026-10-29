@@ -20,6 +20,14 @@ await fs.mkdir(out);
 const bytes = await fs.readFile(inputsFile),
   inputs = JSON.parse(bytes);
 assert.equal(inputs.status, 'development-pilot-not-full-set');
+assert(
+  inputs.comparisonMode === undefined ||
+    ['regional', 'frame-art-only'].includes(inputs.comparisonMode),
+);
+const selectionWeights =
+  inputs.comparisonMode === 'frame-art-only'
+    ? { frame: 75, art: 25 }
+    : { frame: 30, art: 10, title: 15, type: 15, rules: 20, mana: 10 };
 const donorBytes = await fs.readFile(donorsFile),
   donors = JSON.parse(donorBytes);
 assert.deepEqual(Object.keys(donors).sort(), ['4ed', 'mir', 'ons']);
@@ -218,7 +226,7 @@ try {
         rulesSource: 'MTGJSON original text',
       });
       // A declared common weighting compares defaults, not printing compliance.
-      const weights = { frame: 30, art: 10, title: 15, type: 15, rules: 20, mana: 10 };
+      const weights = selectionWeights;
       let total = 0,
         weight = 0;
       for (const [key, w] of Object.entries(weights)) {
@@ -300,9 +308,13 @@ await writeJson(path.join(out, 'study.json'), {
     parentStudyHash: parentBytes ? hash(parentBytes) : null,
     reuse,
   },
+  comparisonMode: inputs.comparisonMode ?? 'regional',
   scope:
+    (inputs.comparisonMode === 'frame-art-only'
+      ? 'Frame/illustration ranking only; no text or footer conclusions. '
+      : '') +
     'Deterministic ordinary nonfoil development names. All donor trials share the same independently observed scan frame target/affine pose. Donor set symbols, named land assignments, copyright wording and collector totals are removed; target symbol vocabulary and current legal words remain. Explicit black/white target stock is preserved. Unmatched frame classes must retain byte-identical current native faces and are reported as fallback, never as adopted donor evidence. Effective policy means include those same fallback cards, so all donors have the same denominator. This is a starting-default comparison, not calibration or completion of target sets.',
-  selectionWeights: { frame: 30, art: 10, title: 15, type: 15, rules: 20, mana: 10 },
+  selectionWeights,
   target,
   transformed,
   groups,
