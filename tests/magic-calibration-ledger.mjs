@@ -263,7 +263,7 @@ assert.deepEqual(
     .filter((s) => s.complete)
     .map((s) => s.set)
     .sort(),
-  ['lea', 'leb'],
+  ['lea', 'leb', 'mir'],
 );
 const unlimitedReport = reports.find((s) => s.set === '2ed');
 assert.equal(unlimitedReport.complete, false);
