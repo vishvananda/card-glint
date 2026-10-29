@@ -1181,6 +1181,9 @@ try {
               typeLine: '',
               colors: ['W', 'B'],
               frameStyle: 'retro',
+              // Inspect the unmodified seventh-family plate; donor calibration
+              // for Tempest has a different source transform and paper geometry.
+              calibration: 'printing',
               setCode: 'tmp',
             },
             printingId: null,
