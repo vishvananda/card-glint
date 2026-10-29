@@ -8,7 +8,11 @@ import { hash, sourceHash, root, cacheRoot } from './common.mjs';
 import { readObject } from './cache.mjs';
 import { printingScope } from './rollout-policy.mjs';
 import { calibrationVariant, calibrationApplicability } from './calibration-groups.mjs';
-import { CALIBRATION_TASKS, calibrationSetStatus } from './calibration-ledger.mjs';
+import {
+  CALIBRATION_TASKS,
+  calibrationSetStatus,
+  calibrationTaskStatus,
+} from './calibration-ledger.mjs';
 import { checkPublication } from './modern-publication-review.mjs';
 import { parseProfileData } from './profile-data-modules.mjs';
 const FILE = 'games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz';
@@ -69,6 +73,11 @@ export async function applyMirageOnslaughtCensus(ledger, { onlyCurrent = false }
     ),
   ])
     sharedGuards[f] = hash(await fs.readFile(path.join(root, f)));
+  if (publication)
+    for (const [file, expected] of Object.entries(publication.auditEvidence)) {
+      assert.equal(hash(await fs.readFile(path.join(root, file))), expected);
+      sharedGuards[file] = expected;
+    }
   for (const code of ['mir', 'ons']) {
     const study = evidence.sets[code],
       set = ledger.sets.find((s) => s.set === code);
@@ -303,6 +312,27 @@ export async function applyMirageOnslaughtCensus(ledger, { onlyCurrent = false }
       set.inventory.ordinaryPrintings,
     );
     set.groups = groups;
+    if (publication) {
+      const evidenceFile = 'games/magic/fixtures/accuracy/' + code + '/native-audit-075.json';
+      assert(publication.auditEvidence[evidenceFile]);
+      set.audit = {
+        version: publication.published.version,
+        rendererHash: epoch,
+        structure100: study.scores.summary.structuralMean100,
+        nonfoil: study.members.length,
+        evidence: evidenceFile,
+        pendingFoilOnlyPrintings: cards.filter((c) => !c.nonfoil).length,
+        nonfoilComplete: groups
+          .filter((g) => g.references.nonfoil > 0)
+          .every((g) =>
+            Object.keys(CALIBRATION_TASKS).every((t) =>
+              ['validated', 'validated-default', 'not-applicable'].includes(
+                calibrationTaskStatus(g, t).status,
+              ),
+            ),
+          ),
+      };
+    }
     set.inventory.review = {
       ...set.inventory.review,
       nonfoilCensus: {

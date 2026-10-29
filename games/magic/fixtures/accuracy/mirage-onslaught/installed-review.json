@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "installed-native-calibrations-release-pending",
+  "status": "published-native-calibrations-lab-pending",
   "plannedVersion": "0.7.5",
   "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
   "receipt": "4267c5b798ba24ba3229a7b09f8fab3d7fde9d4045a6865dcfa2bd2eedf46f64",
@@ -1419,9 +1419,7 @@
       "targetFooterPreserved": 23
     }
   ],
-  "pending": [
-    "Finish historical regression checks and publish 0.7.5 with the matching Lab revision."
-  ],
+  "pending": ["Deploy the matching Lab revision and verify native audit display."],
   "completeCensus": {
     "file": "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz",
     "sha256": "2531840a4ca415ade228c4bed58a40bf8f0d7c3c65684c4abad10276ae43fb9f",
@@ -1431,5 +1429,12 @@
     "unchangedScores": 658,
     "amendedFooters": 36,
     "recovered": 7
+  },
+  "publication": {
+    "file": "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
+    "sha256": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+    "version": "0.7.5",
+    "sourceCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+    "url": "https://github.com/vishvananda/card-glint/releases/tag/v0.7.5"
   }
 }
