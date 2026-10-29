@@ -36,6 +36,8 @@ assert.deepEqual(await additionalProfileDataModules(known), [
   'games/magic/src/calibration/sets/2ed.ts',
   'games/magic/src/calibration/sets/arn.ts',
   'games/magic/src/calibration/sets/atq.ts',
+  'games/magic/src/calibration/sets/mir.ts',
+  'games/magic/src/calibration/sets/ons.ts',
 ]);
 console.log(
   'Registered Unlimited literal values equal generated data; historical generator reconstruction rejects unknown edits.',

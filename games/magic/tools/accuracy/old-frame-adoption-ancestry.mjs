@@ -5,7 +5,7 @@ import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { root, hash } from './common.mjs';
 const FILE = 'games/magic/fixtures/accuracy/mirage-onslaught/production-adoption.json.gz';
-const SHA = '1617c947ceec109e7665757cf818db1f41b274076dee5f01958ae6417a0301ed';
+const SHA = 'd3837e370e18ea2b059c7412065c9ab3d77d5153b0a7d45f6543915836b7231c';
 let checked;
 export function oldFrameAdoptionDelta() {
   return (checked ??= (async () => {

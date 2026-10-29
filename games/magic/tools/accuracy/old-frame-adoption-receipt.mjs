@@ -1,3 +1,4 @@
+import { format } from 'prettier';
 import { createServer } from 'vite';
 // Bundle exact source ancestry and native installation evidence, without artwork.
 import assert from 'node:assert/strict';
@@ -248,7 +249,7 @@ const review = {
 };
 await fs.writeFile(
   path.join(path.dirname(output), 'installed-review.json'),
-  JSON.stringify(review, null, 2) + '\\n',
+  await format(JSON.stringify(review), { parser: 'json', printWidth: 100 }),
   { flag: 'wx' },
 );
 

@@ -11,6 +11,19 @@ import {
 import { oldFrameSourceRuntimeCompatible } from '../games/magic/tools/accuracy/old-frame-source-ancestry.mjs';
 import { sourceHash, hash, root } from '../games/magic/tools/accuracy/common.mjs';
 const p = await oldFrameAdoptionDelta();
+const review = JSON.parse(
+  await fs.readFile('games/magic/fixtures/accuracy/mirage-onslaught/installed-review.json'),
+);
+assert.equal(review.rendererHash, p.afterRenderer);
+assert.equal(
+  review.receipt,
+  hash(
+    await fs.readFile('games/magic/fixtures/accuracy/mirage-onslaught/production-adoption.json.gz'),
+  ),
+);
+assert.equal(review.defaults.length, 34);
+assert.equal(review.sets.mir.printings + review.sets.ons.printings, 701);
+
 assert.equal(
   await sourceHash(path.join(root, 'games/magic/src')),
   p.afterRenderer,
