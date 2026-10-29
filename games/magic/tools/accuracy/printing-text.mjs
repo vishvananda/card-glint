@@ -9,6 +9,8 @@ export function normalizePrintingText(text) {
       .replace(/\\r(?=\n|$)/g, '')
       .replace(/\r\n/g, '\n')
       .replace(/\bocT\b/g, '{T}')
+      // Gatherer's braced tilted-card token; SCG scan-reviewed examples retain raw input.
+      .replace(/\{cT\}/g, '{T}')
       // Legacy Gatherer hybrid notation (e.g. FUT Graven Cairns). Parentheses
       // inside this exact mana token are notation, not italic reminder text.
       .replace(
