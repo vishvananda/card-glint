@@ -1,3 +1,8 @@
+import {
+  preOnsSymbolStatsSource,
+  onsSymbolStatsHistoricalFiles,
+  onsSymbolStatsRuntimeParent,
+} from './ons-symbol-stats-ancestry.mjs';
 // Reviewed source compatibility, never a calibration or score approval.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -83,12 +88,14 @@ export function arnSymbolRoleDelta() {
   })());
 }
 export async function preArnSymbolRoleSource(file, bytes) {
+  bytes = await preOnsSymbolStatsSource(file, bytes);
   const e = (await arnSymbolRoleDelta()).files[file];
   return e && e.beforeSource !== null && hash(bytes) === e.after
     ? Buffer.from(e.beforeSource)
     : bytes;
 }
 export async function arnSymbolRoleHistoricalFiles(files) {
+  files = await onsSymbolStatsHistoricalFiles(files);
   const p = await arnSymbolRoleDelta(),
     kept = [];
   for (const file of files) {
@@ -100,7 +107,8 @@ export async function arnSymbolRoleHistoricalFiles(files) {
   }
   return kept;
 }
-export async function arnSymbolRoleRuntimeParent(actual, set) {
+export async function arnSymbolRoleRuntimeParent(actual, set, task, original = false, group) {
+  actual = await onsSymbolStatsRuntimeParent(actual, set, task, original, group);
   const p = await arnSymbolRoleDelta();
   return actual === p.afterRenderer && set && set.toLowerCase() !== 'arn'
     ? p.beforeRenderer

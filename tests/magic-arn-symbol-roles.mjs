@@ -1,3 +1,8 @@
+import {
+  preOnsSymbolStatsSource,
+  onsSymbolStatsHistoricalFiles,
+  onsSymbolStatsRuntimeParent,
+} from '../games/magic/tools/accuracy/ons-symbol-stats-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -9,7 +14,10 @@ import {
   arnSymbolRoleRuntimeParent,
 } from '../games/magic/tools/accuracy/arn-symbol-role-ancestry.mjs';
 const p = await arnSymbolRoleDelta();
-assert.equal(await sourceHash(path.join(root, 'games/magic/src')), p.afterRenderer);
+assert.equal(
+  await onsSymbolStatsRuntimeParent(await sourceHash(path.join(root, 'games/magic/src')), 'arn'),
+  p.afterRenderer,
+);
 const entries = (
   await fs.readdir(path.join(root, 'games/magic/src'), { recursive: true, withFileTypes: true })
 )
@@ -27,9 +35,9 @@ for (const file of await arnSymbolRoleHistoricalFiles(entries)) {
 }
 assert.equal(hash(JSON.stringify(parent)), p.beforeRenderer);
 const native = [];
-for (const file of entries) {
+for (const file of await onsSymbolStatsHistoricalFiles(entries)) {
   const key = path.relative(root, file),
-    bytes = await fs.readFile(file),
+    bytes = await preOnsSymbolStatsSource(key, await fs.readFile(file)),
     metadata = p.metadataOnly.files[key];
   if (metadata) {
     assert.equal(hash(bytes), metadata.after);
@@ -66,7 +74,7 @@ assert.equal(
   'Native replay source no longer reconstructs exactly',
 );
 for (const [file, e] of Object.entries(p.files)) {
-  const bytes = await fs.readFile(path.join(root, file));
+  const bytes = await preOnsSymbolStatsSource(file, await fs.readFile(path.join(root, file)));
   assert.equal(hash(bytes), e.after, file);
   const foreign = Buffer.concat([bytes, Buffer.from('\n// foreign source\n')]);
   assert.equal(await preArnSymbolRoleSource(file, foreign), foreign);

@@ -8,7 +8,8 @@ import { hash, root, sourceHash, objectFile, writeJson } from './common.mjs';
 import { PNG } from 'pngjs';
 import { normalize } from './pixels-pure.mjs';
 
-const [inputFile, posesFile, cohortFile, developmentFile, out] = process.argv.slice(2);
+const [inputFile, posesFile, cohortFile, developmentFile, out, definitionFile] =
+  process.argv.slice(2);
 assert(out, 'Use INPUTS POSES COHORTS PRIOR_DEVELOPMENT_NAMES NEW_OUTPUT');
 await fs.mkdir(out);
 const raw = await Promise.all(
@@ -20,7 +21,15 @@ assert.equal(input.set, 'ons');
 assert.equal(poses.inputHash, hash(raw[0]));
 const toolHash = hash(await fs.readFile(new URL(import.meta.url)));
 const rendererHash = await sourceHash(path.join(root, 'games/magic/src'));
-const entries = input.entries.filter((e) => e.face.power != null && e.face.toughness != null);
+const definitionBytes = definitionFile ? await fs.readFile(definitionFile) : undefined;
+const definition = definitionBytes ? JSON.parse(definitionBytes) : undefined;
+const entries = input.entries.filter(
+  (e) =>
+    e.face.power != null &&
+    e.face.toughness != null &&
+    (!definition?.calibrationOnly ||
+      (!prior.has(e.name) && cohorts.rows.find((r) => r.id === e.id)?.cohort === 'calibration')),
+);
 const region = [374, 604, 80, 42];
 const parameters = [{ id: 'released', weight: null, size: 28, width: 1.03, trim: 0.3, gray: 238 }];
 for (const weight of [400, 700])
@@ -34,6 +43,10 @@ for (const weight of [400, 700])
         trim: 0,
         gray: 250,
       });
+if (definition) {
+  assert(Array.isArray(definition.parameters) && definition.parameters[0]?.id === 'released');
+  parameters.splice(0, parameters.length, ...definition.parameters);
+}
 const css = await fs.readFile(path.join(root, 'games/magic/fonts.css'), 'utf8');
 const fonts = await Promise.all(
   [...new Set([...css.matchAll(/url\('([^']+)'\)/g)].map((m) => m[1]))].map((url) =>
@@ -163,6 +176,7 @@ await writeJson(path.join(out, 'study.json'), {
   status: 'regional-stats-candidates-not-adopted',
   source: {
     rendererHash,
+    ...(definitionBytes ? { definition: hash(definitionBytes) } : {}),
     inputs: hash(raw[0]),
     poses: hash(raw[1]),
     cohorts: hash(raw[2]),

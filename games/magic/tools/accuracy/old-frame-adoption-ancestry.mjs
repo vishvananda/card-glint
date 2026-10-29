@@ -89,7 +89,10 @@ export async function oldFrameAdoptionHistoricalFiles(files) {
   for (const file of files) {
     const key = file.startsWith('games/') ? file : path.relative(root, file);
     const e = p.files[key];
-    if (e?.beforeSource === null && hash(await fs.readFile(path.join(root, key))) === e.after)
+    if (
+      e?.beforeSource === null &&
+      hash(await preArnSymbolRoleSource(key, await fs.readFile(path.join(root, key)))) === e.after
+    )
       continue;
     kept.push(file);
   }

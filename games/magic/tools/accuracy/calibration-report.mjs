@@ -1,3 +1,4 @@
+import { onsSymbolStatsAffected, onsSymbolStatsDelta } from './ons-symbol-stats-ancestry.mjs';
 import { arnSymbolRoleRuntimeParent } from './arn-symbol-role-ancestry.mjs';
 import { oldFrameAdoptionAffected, oldFrameAdoptionDelta } from './old-frame-adoption-ancestry.mjs';
 import {
@@ -142,6 +143,15 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        if (
+          (await onsSymbolStatsAffected(set.set, task, original, group)) &&
+          item.proof?.onsSymbolStats !== (await onsSymbolStatsDelta()).afterRenderer
+        ) {
+          item.status = 'needs-audit';
+          item.reason =
+            'Onslaught cost-disc paper and filled P/T changed. This component needs the current regional/native receipt; unchanged text, frames, scan poses and other sets retain their evidence.';
+          continue;
+        }
         if (
           (await oldFrameAdoptionAffected(set.set, task, original)) &&
           item.proof?.oldFrameAdoption !== (await oldFrameAdoptionDelta()).afterRenderer
@@ -478,8 +488,13 @@ export async function calibrationReport(ledger) {
             runtimeChecked.get(directory) !== expected &&
             !(
               directory === 'games/magic/src' &&
-              (await arnSymbolRoleRuntimeParent(runtimeChecked.get(directory), set.set)) ===
-                expected
+              (await arnSymbolRoleRuntimeParent(
+                runtimeChecked.get(directory),
+                set.set,
+                task,
+                original,
+                group,
+              )) === expected
             ) &&
             !(await revisedWordingRuntimeCompatible(directory, expected, set.set)) &&
             !(await atqProfileRuntimeCompatible(directory, expected, set.set)) &&

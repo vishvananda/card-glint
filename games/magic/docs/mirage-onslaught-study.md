@@ -406,3 +406,65 @@ records the latest full-set experiments and remaining work. These are candidates
 not installed profiles or completed sets. In particular, large-icon ink colors,
 nonbasic-land pigment, copyright fitting, dense reminder wrapping and set-symbol
 measurement remain separate review gates.
+
+## Onslaught cost paper and P/T recheck
+
+The [regional receipt](../fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz)
+records a follow-up to the published 0.7.6 profile. It compares all 350 ordinary
+nonfoil cards using the same Original wording, artwork, scan poses and metric.
+The foil-only alternate is still deferred.
+
+P/T uses filled MPlantin at weight 700, without stroke trimming. The size remains
+28 canonical pixels; the right anchor moves 0.25 px. Fixed-position filled-ink
+overlap changes from 62.64 to 78.61/100 on 75 calibration names and from 61.66 to
+78.40/100 on 91 validation names. Eight previously inspected names are recorded
+separately. Validation was inspected during an earlier provisional trial, so the
+final result is a repeated component check. All 174 creatures improve. Hollow
+lettering and deliberate 2 px shifts score worse.
+
+Generic casting-cost paper is measured by physical frame material. The integer
+RGB targets are W (191,173,167), U (196,184,160), B (191,178,174), R (208,206,205),
+G (200,189,187), and artifact (206,194,176). The measurement covers 274 numeric/X
+discs on 272 cards. It gives each card one weight, uses the inner 70% of a disc,
+and samples a fixed luminance quantile to exclude the numeral. Targets use
+calibration names. Both cohorts have lower median color error for every material;
+individual scan outliers remain in the receipt.
+
+The whole-card structural mean changes from 76.48 to 76.71/100. This metric is
+unchanged. Its edge-based P/T component can still favor thin lettering on a few
+cards; the filled-ink check and visual review are needed alongside it. Foothill
+Guide has the largest whole-card regression, 0.42 points, despite improved
+filled-ink overlap. Do not choose a hollow glyph to maximize this structural index.
+
+All 1,400 native mode comparisons preserve rules layout, alpha and every pixel
+outside P/T and generic cost discs. Etching masks are identical. Modern-symbol
+mode changes only P/T. Another 574 native controls cover explicit foreign frames
+and all inherited old-frame defaults in both stock colors. They are identical.
+The cost-paper field is not transferred to donor consumers or inline symbols.
+
+The optional profile fields are `footer.stats.weight` and
+`mana.costGenericPaper[material]`. Omitted fields preserve prior rendering.
+The latter affects numeric and X casting costs only. Disc preparation shares
+the existing cached atlas; warm preparation and painting add no readbacks.
+
+To repeat the study, first freeze Original inputs, accepted scan-only poses and
+name cohorts. Pass the eight prior inspected names as the development file:
+
+```sh
+node games/magic/tools/accuracy/old-frame-stats-study.mjs \
+  inputs.json poses.json cohorts.json development-names.json stats-output definition.json
+python3 games/magic/tools/accuracy/old-frame-stats-filled-analysis.py \
+  stats-output filled-overlap.json
+node games/magic/tools/accuracy/old-frame-generic-paper-study.mjs \
+  inputs.json poses.json cohorts.json generic-paper.json
+python3 games/magic/tools/accuracy/old-frame-symbol-stats-delta.py \
+  before-native after-native generic-paper.json native-delta.json
+npm run test:magic-ons
+```
+
+The Python diagnostics require Pillow, NumPy and SciPy. The native-delta tool
+requires only Pillow and NumPy. Native captures come from
+`printing-native-replay.mjs` in `variants` mode. Capture the released source in a
+separate checkout using `NATIVE_RENDERER_ROOT`; never replace the production
+painter for the final comparison. These tools compare pixels and do not measure
+GPU completion time.

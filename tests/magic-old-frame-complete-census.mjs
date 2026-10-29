@@ -1,3 +1,7 @@
+import {
+  onsSymbolStatsAffected,
+  onsSymbolStatsDelta,
+} from '../games/magic/tools/accuracy/ons-symbol-stats-ancestry.mjs';
 import { arnSymbolRoleRuntimeParent } from '../games/magic/tools/accuracy/arn-symbol-role-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -127,11 +131,21 @@ const reports = await calibrationReport(scoped);
 for (const report of reports) {
   const set = scoped.sets.find((s) => s.set === report.set);
   const nonfoil = new Set(set.groups.filter((g) => g.references.nonfoil > 0).map((g) => g.key));
-  assert.deepEqual(
-    report.outstanding.filter((o) => nonfoil.has(o.group)),
-    [],
-    report.set,
-  );
+  const expected = [];
+  for (const group of set.groups.filter((g) => nonfoil.has(g.key)))
+    for (const [task, item] of Object.entries(group.tasks))
+      if (
+        ['validated', 'validated-default'].includes(item.status) &&
+        (await onsSymbolStatsAffected(set.set, task, false, group)) &&
+        item.proof?.onsSymbolStats !== (await onsSymbolStatsDelta()).afterRenderer
+      )
+        expected.push(group.key + '::' + task);
+  const actual = report.outstanding.filter((o) => nonfoil.has(o.group));
+  assert.deepEqual(actual.map((o) => o.group + '::' + o.task).sort(), expected.sort(), report.set);
+  for (const row of actual) {
+    assert.equal(row.status, 'needs-audit');
+    assert.match(row.reason, /Onslaught cost-disc paper and filled P\/T changed/);
+  }
 }
 const tampered = structuredClone(scoped);
 tampered.sets
@@ -141,5 +155,5 @@ tampered.sets
 const rejected = (await calibrationReport(tampered)).find((s) => s.set === 'mir');
 assert(rejected.outstanding.some((o) => o.task === 'references' && o.status === 'stale'));
 console.log(
-  'Checked MIR/ONS reports preserve reviewed nonfoil components across scoped ARN changes; unknown runtime identities still reject.',
+  'Checked MIR/ONS reports preserve unchanged components across scoped source changes; changed Onslaught cost paper/P/T requires a new receipt, and unknown runtime identities still reject.',
 );

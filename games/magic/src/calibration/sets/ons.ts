@@ -3,7 +3,7 @@ import type { SetCalibrationProfile } from '../types.js';
 /** Shared printing values; scan poses and references stay in evidence. */
 export const profile = {
   schema: 1,
-  revision: 1,
+  revision: 2,
   set: 'ons',
   border: 'black',
   frames: {
@@ -1012,6 +1012,14 @@ export const profile = {
     },
   },
   mana: {
+    costGenericPaper: {
+      W: [0.7490196078431373, 0.6784313725490196, 0.6549019607843137],
+      U: [0.7686274509803922, 0.7215686274509804, 0.6274509803921569],
+      B: [0.7490196078431373, 0.6980392156862745, 0.6823529411764706],
+      R: [0.8156862745098039, 0.807843137254902, 0.803921568627451],
+      G: [0.7843137254901961, 0.7411764705882353, 0.7333333333333333],
+      A: [0.807843137254902, 0.7607843137254902, 0.6901960784313725],
+    },
     geometry: {
       dx: 5.0,
       dy: -2.125,
@@ -1105,13 +1113,14 @@ export const profile = {
       collectorTotal: 350,
     },
     stats: {
-      x: 444.75,
+      x: 445,
       y: 635.5,
       size: 28,
       width: 1.03,
       shadow: 1,
-      trim: 0.3,
-      gray: 238,
+      trim: 0,
+      gray: 252,
+      weight: 700,
     },
   },
   rulesPlacement: {
@@ -1309,10 +1318,11 @@ export const profile = {
 } as const satisfies SetCalibrationProfile;
 
 export const review = {
-  revision: 1,
+  revision: 2,
   scope:
-    'Ordinary nonfoil printing. Full native candidates are measured; installed replay and publication are pending.',
+    'Ordinary nonfoil printing. Regional casting-cost paper and filled P/T corrections require the full native replay and unchanged-region checks in the linked evidence; publication remains separate.',
   evidence: [
+    'games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz',
     'games/magic/fixtures/accuracy/mirage-onslaught/latest-native-candidates.json',
     'games/magic/fixtures/accuracy/mirage-onslaught/body-size-policy-review.json',
     'games/magic/fixtures/accuracy/ons/type-printing-review.json',
