@@ -5,7 +5,7 @@ import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { hash, root } from './common.mjs';
 const FILE = 'games/magic/fixtures/accuracy/arn-recheck/symbol-roles-076.json.gz';
-const SHA = 'c4a6b80ef4382364fa671c25c56509677cc55557dd32309cc2ebd253c26d1205';
+const SHA = '1825d5950005cbb42126f5be5077e7156c7dfc0c83cd626a365fd32076732d5d';
 let checked;
 export function arnSymbolRoleDelta() {
   return (checked ??= (async () => {

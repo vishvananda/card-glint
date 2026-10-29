@@ -22,8 +22,8 @@ changes and 83 modern cost changes stay inside the relevant regions.
 Silhouettes are unchanged. Another 182 native controls from other frame
 families are byte-identical.
 
-The receipt also records exact source reconstruction and a metadata-only review
-update. Historical results remain attached to their original source revision.
+The receipt also records exact source reconstruction, a review-metadata update,
+and conversion of six arithmetic ratios into equivalent literal numbers. Historical results remain attached to their original source revision.
 This regional fix does not certify the full ARN calibration or its client scan
 registration.
 

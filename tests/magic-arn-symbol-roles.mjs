@@ -33,12 +33,20 @@ for (const file of entries) {
     metadata = p.metadataOnly.files[key];
   if (metadata) {
     assert.equal(hash(bytes), metadata.after);
-    if (key.endsWith('/arn.ts'))
+    if (key.endsWith('/arn.ts')) {
+      let folded = metadata.nativeSource;
+      assert.equal(Object.keys(p.metadataOnly.literalDivisions).length, 6);
+      for (const [expression, literal] of Object.entries(p.metadataOnly.literalDivisions)) {
+        assert.match(expression, /^\d+ \/ 255$/);
+        assert.equal(literal, String(Number(expression.split(' ')[0]) / 255));
+        assert.equal(folded.split(expression).length, 2);
+        folded = folded.replace(expression, literal);
+      }
       assert.equal(
         bytes.toString().split('export const review =')[0],
-        metadata.nativeSource.split('export const review =')[0],
+        folded.split('export const review =')[0],
       );
-    else {
+    } else {
       const profile = p.metadataOnly.files['games/magic/src/calibration/sets/arn.ts'];
       assert.equal(bytes.toString().split(profile.after).length, 2);
       assert.equal(
