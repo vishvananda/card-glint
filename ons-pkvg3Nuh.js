@@ -1,0 +1,4225 @@
+const e = {
+  set: "ons",
+  kind: "wording",
+  tables: {
+    printingCorrections: {
+      "0356ae45-e5ca-46b9-8ebc-42bf4776e89c": [
+        {
+          referenceSha256: "4e42b72f7e8379ba25eb9c1d5c33518996a8b0ca7265c7b43b16f6a3e6ac3a88",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "05788d63-6210-44f2-9ae4-e55e9507a3a9": [
+        {
+          referenceSha256: "b4657d657e350c89bbe7cf7d14df227092a26bbdcabc4c9c9303212b23241dd2",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "05df2792-4971-49e8-a8f2-17700e247500": [
+        {
+          referenceSha256: "dd5a8ecd7f45904bba09819f0d53912ef2f0de0d46539b95666159179b7614d6",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "05f9bdca-0d54-46c7-b803-9083dfc9ee24": [
+        {
+          referenceSha256: "da77006c60fe3fbbdd51b7bc5ae0871c834abb78a5e0ffd8bae26b5090dd58ac",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "0774771c-5373-4636-9174-d06e7d635183": [
+        {
+          referenceSha256: "60453d8b1c0df218ca57c2c2325478e940201f1fb0a9a8292bcb5d1688475bf4",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "07f567dc-8a60-40e1-b947-199872d8df08": [
+        {
+          referenceSha256: "a7491a4dc82e4ae5bd6a3c4f4778618fcea94be60896bb7571686a71db96038f",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "0a96a608-9237-41c1-824c-89d5fad939ad": [
+        {
+          referenceSha256: "ab1c5a1a8a81a77dbfe78a05feae8a51f0c360750f3afc1a613bdb72a34fdb2f",
+          fields: { typeLine: "Creature — Insect" },
+          evidence: 92
+        }
+      ],
+      "0aaa43b0-601f-4b99-a328-541b04d5696d": [
+        {
+          referenceSha256: "62d73d10725cdc5e3fa93eb57b236340af65907e8a7d92ffc90b429e0ab81795",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "0b09315c-d6ff-4fdb-8774-c6402b45e959": [
+        {
+          referenceSha256: "9b858efc8f70c9e73637620973ad4bb81a0cddf1358f274defb81e3901f2eac8",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "0b0d8543-78c9-4d7f-b45e-44ecf023d276": [
+        {
+          referenceSha256: "8a6d7b06057d07700ef4b0c56757dd2261afde1c9fe192aaddf78a2e3e2a62ff",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "0b872f85-60c5-44c4-956d-a8aa8132908b": [
+        {
+          referenceSha256: "f3b40c500cd1503277b8a4eca5ec282800de8202828abb6ff7a79245543cf396",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "0c16e565-0b7f-46b1-a091-64c47c923a9f": [
+        {
+          referenceSha256: "ce441d2fafa7382408f8d09bac16df1bd96e4497d4c56e5e4ffd7b4dd6dc4765",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "0d07ebe6-76cf-4345-b59b-9954496c44d0": [
+        {
+          referenceSha256: "1ccf32397ca12d0e94771da8e4d9670fa9f35678886741cbd0ebcadda0366928",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "0d4dd156-a2c1-4fab-b9f4-3302a4e8835a": [
+        {
+          referenceSha256: "3d7bbf6b4b63320523b323ff131142957ff867461eb330b683da2f9803f17d58",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "0d563ebb-ecd1-406c-9d69-c101acdeced7": [
+        {
+          referenceSha256: "6769a97faf9887a9c34bd3b88fb32aae2bc85d0eb2c931bef28c51dab080a4ab",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "0d6d7d88-d82b-40f4-bf57-ec5d7c480689": [
+        {
+          referenceSha256: "fb7eaf40b3eedde90610daf2edcac89f57dcf77246848e4642b915c40e55a66b",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "0dedef8a-5527-40dc-9ad9-bcee4cf30a76": [
+        {
+          referenceSha256: "abccbd598ffa5e7f04702edf22337257c164a6d1ffd865b88917f01245e86446",
+          fields: { typeLine: "Creature — Cleric Avatar" },
+          evidence: 92
+        }
+      ],
+      "0e4f3eff-ac99-41e2-9003-9630cdb3ae23": [
+        {
+          referenceSha256: "df18d46d4d44dee265a717e2dc55409cdb9ae22922c7421d8305498b4f8ed16f",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "0e9d6e81-1869-4ab7-8a4e-477d5c4aed6b": [
+        {
+          referenceSha256: "4415846301e4ec6148cfdcaf01ff9f3616a1400f0c6fccb4f61d890d90a935fe",
+          fields: { typeLine: "Creature — Bird Soldier" },
+          evidence: 92
+        }
+      ],
+      "0ea5c6e0-8361-4214-997b-32a66b19fae9": [
+        {
+          referenceSha256: "89dd7aa8996e560a85ddd96c08f670d2053a7a2b41d4f1434728e8450981b215",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "0edc37c6-b6a8-424f-95dd-928d03c28542": [
+        {
+          referenceSha256: "e11812514caf96dd9ad6c50c2358a439f4c65933f27db62d27f55f3a88426ec1",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "0f037e99-75fb-4a2a-b4c6-448ef21b16a3": [
+        {
+          referenceSha256: "0e971429196245060b482d5e0603d6965e6126e1a0a7c121ffc598b25bc517bc",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "0f7585c8-9e21-4eef-afc1-2852de23db2f": [
+        {
+          referenceSha256: "2022754ce421c311e8fa52b9dd7c37d4136269873247e35934c960e6adc59a4b",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "1038436d-aea5-4508-8b37-c2cfa32c2771": [
+        {
+          referenceSha256: "55ec056e70f738b8c6a5226754579f7722b12ac3218baf95e33ba9963e3ce6ff",
+          fields: { typeLine: "Creature — Soldier" },
+          evidence: 92
+        }
+      ],
+      "107492b9-03a8-4d53-a0cf-4814ffbec409": [
+        {
+          referenceSha256: "57dab99a599aa5457c74592f44db0bd70f875b2ba03dc84da94cd677acb14e75",
+          fields: { typeLine: "Creature — Zombie Bird" },
+          evidence: 92
+        }
+      ],
+      "1082eea2-5e83-48d4-b02b-a22e7cbe2054": [
+        {
+          referenceSha256: "c31cd49f0f6820bb86e48546707b8a2db64301cde26d549238f93a60f0405966",
+          fields: { typeLine: "Creature — Illusion" },
+          evidence: 92
+        }
+      ],
+      "10a34e31-97f1-40e8-9d91-a8139af7f096": [
+        {
+          referenceSha256: "cd470e2ae34132f2473f868604500e71d9a3df43623c02220de5ffdd3770e3fc",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "13bf5786-e41a-4839-b8a0-5c7a413b23d0": [
+        {
+          referenceSha256: "8f4b7601c52b4d3f46e8fdf5be3d86d826e63073461ee75a7c9562b903e5396e",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "143e9057-267a-4c78-b72a-4f8018b627a8": [
+        {
+          referenceSha256: "44595fd52e65950474fe16b96a7eefb6fe5dc587df559e20e9866bd3cba36505",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "150d5229-b1a5-42cf-bf6a-04d246f1124f": [
+        {
+          referenceSha256: "77a0ec32a97440f7ef24c1ba13b6813f6c663f71f6932d3fc635ea1eb3d69be2",
+          fields: { typeLine: "Creature — Druid Legend" },
+          evidence: 92
+        }
+      ],
+      "15326971-a53b-45f2-8f1d-1b82935286e1": [
+        {
+          referenceSha256: "52680bf42e07318b843a9113f6a8029042e0a962664b78bcb243ab66e32ef317",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "15a4460d-3fe8-4b1f-9990-0a19c3345367": [
+        {
+          referenceSha256: "37518acea72c7e0f66f66600650b2186347870eeae8383928401e383f180a6ed",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "16ebef2c-8bb2-4816-a628-0062f95e512e": [
+        {
+          referenceSha256: "6a3d49b16baa4115d398e3dad1cbc02f72bfc0534882aa269ae47a1d1983b36d",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "189a09b8-46d2-4ef6-b7cc-9e510d1ea0b8": [
+        {
+          referenceSha256: "0321972944e43d448b7b58d4cffb78b09ac6f6122855392e573cbb0f049afe75",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "1b15d04c-62cb-4704-8cc7-9842cef27a1b": [
+        {
+          referenceSha256: "b4284a9b62f38472b2c8309a3d8de0a9955e05e414762f01e3308f8d3faec9cd",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "1b713448-853a-41ee-a302-963e9c1c1c65": [
+        {
+          referenceSha256: "f6d4f63894f9bea51cb8772d96a1fe8758666b7654441716d0de50b981a68614",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "1bc2da43-c0e1-4fbf-b309-a75e105c29c1": [
+        {
+          referenceSha256: "7dd3fc8f25902cfbcb63cd3c6677ccbd52fe841cbd9c5fa0342f16b671848492",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "1c75f9c8-9640-4f64-b32a-916436e461fc": [
+        {
+          referenceSha256: "10b061d3ff98dcd48e8ea5d762eb56c8c3a900958b3ffbb0d17770139c06d433",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "1c964473-7c54-4c2d-a3eb-dba01c842103": [
+        {
+          referenceSha256: "b597e58342c6a97d902a605c4a3315f3b8aa664cc8f7cbf0359210bcdf0f5e88",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "1d1790cb-34e4-4f23-8a13-1906fd9a956f": [
+        {
+          referenceSha256: "a90fd29a84a9a8b18ce4888a8dbac85609f768147939808f872a7f837affabb0",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "1d47ddca-a363-4ab7-b7f2-d0e0043c9916": [
+        {
+          referenceSha256: "e6a58c55cfa696b08f5a033dd02a8c2aafce2f455d4eeb166de35ebd2b44f4cd",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "1d4b887a-d928-4f6c-aa37-a0b09e87b91e": [
+        {
+          referenceSha256: "a2a5680e2909e64785eca0a42ac97652618fe72916a4b5b99c954705b9a3360f",
+          fields: { typeLine: "Creature — Bird" },
+          evidence: 92
+        }
+      ],
+      "1d513dde-7c5f-46f1-b871-5290595bdbbe": [
+        {
+          referenceSha256: "28fd8f627ac6436266d956e6b4ef16a6089f953e85a297df9751c61b3a11eab9",
+          fields: { typeLine: "Creature — Clone" },
+          evidence: 92
+        }
+      ],
+      "1dac3bfe-884b-4875-bc7d-df564eb014cd": [
+        {
+          referenceSha256: "54bf6b887d54c114f1d1b98fdd9d5acda948d20f1305d3c5fd34bdffdc38ece7",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "1e81e5fc-0e18-4dd8-a505-aa7dba8521a8": [
+        {
+          referenceSha256: "4439931ab19fd7b2e96d379e0a541eb0e5814b0c212c7ff71c820f2fc90c75a8",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "1ea572b5-ff68-45aa-8200-78ee7f64a0ce": [
+        {
+          referenceSha256: "24506be0d38f97eb79678efd33587015f6afa39b7a0017258b9e6da18a447f1b",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "1ebb4668-eebf-4b7e-ae29-75fff5963868": [
+        {
+          referenceSha256: "589296a990f9d0d13ef39c0b3dd7ab5f34934b27c66e040ba7c0bf4522c6d2b0",
+          fields: { typeLine: "Creature — Elf Lord" },
+          evidence: 92
+        }
+      ],
+      "1ff31ece-f132-4107-9415-fcf30e251167": [
+        {
+          referenceSha256: "90caf0e28e4c05fd6cebc0eefc18b5284ea31eae0796b13a44fae0f309181c2c",
+          fields: { typeLine: "Creature — Zombie Insect" },
+          evidence: 92
+        }
+      ],
+      "22061b5e-81d3-4c7f-ab39-7ee719c13cef": [
+        {
+          referenceSha256: "4285f583e46a4fc76ff281cdf7937449751e156f13ba15d57581af19181bd9d2",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "245aba23-2abb-4084-b4cb-d06e46de2108": [
+        {
+          referenceSha256: "be48f502221b08753715218207d817e4528f0bf75023d367f619ebfb9d7571e8",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "246a2758-0096-43b9-8193-d6ae5b41b6e6": [
+        {
+          referenceSha256: "5109a6faf48f291b3f5575288508f078633f30da083ff14d0707d149cb5c793a",
+          fields: { typeLine: "Creature — Bird Wizard" },
+          evidence: 92
+        }
+      ],
+      "2593a6a6-dc21-4742-acb8-f7092931b1ce": [
+        {
+          referenceSha256: "d9db8674668ffb049fff0e3ddf8522ff1cde121f87f799941824ab4583224418",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "2970831a-738b-476f-9d46-39f10a1f91e7": [
+        {
+          referenceSha256: "f5c5376821825974f1cd4e19e400a75800cee148252fc681eb9173ae0e6585f6",
+          fields: { typeLine: "Creature — Dwarf" },
+          evidence: 92
+        }
+      ],
+      "29906eca-0823-4cd6-890f-e5b93cc50a11": [
+        {
+          referenceSha256: "8442374085b6888752fe69fec9dfa551577c58ef527bbd849e4335ee20dc646f",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "2a02d6d5-27be-4301-a467-5b49491d0d4f": [
+        {
+          referenceSha256: "37ef467207301daf6859293ef240bfeaca743863a70e98da56935066bd53565e",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "2a8cc948-28ff-4bbe-b8c9-71de37478023": [
+        {
+          referenceSha256: "bd72ff7bc22ed618c66546fee555a89a1c835c38238a07aac95bda69f263979c",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "2be66eaf-222b-4c40-a9fa-aad56b9218e0": [
+        {
+          referenceSha256: "25315df1322adb16605cb3996a06007d70c2aa56ccfaa8295f0400d5a1ec2cc5",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "2c6b767b-49e5-4845-9b3f-29540e5fa330": [
+        {
+          referenceSha256: "c7ddecfed6d3bbb549593a2338fa10d7c5cd6633ba5a97efebd40cc75fc6630d",
+          fields: { typeLine: "Creature — Elf", rulesText: "" },
+          evidence: 92
+        },
+        {
+          referenceSha256: "c7ddecfed6d3bbb549593a2338fa10d7c5cd6633ba5a97efebd40cc75fc6630d",
+          paragraphScope: "rules-only",
+          fields: { rulesParagraphs: [] },
+          evidence: 92
+        }
+      ],
+      "2c88b942-06d5-45d8-a4d8-6ca864f65516": [
+        {
+          referenceSha256: "f4fb74de57176c9b2efdc819f0770106c842f7e4093226bcdb4dda97012b1a17",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "2cd9abc9-f289-4294-bc0f-4addc8b92a4e": [
+        {
+          referenceSha256: "19ccefef7cde8c2865df4f3b10f05eb9dc2d4434c60ef558d89e0ed81817465f",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "2d9e3793-7ddc-45c5-b25d-acd5cb96026f": [
+        {
+          referenceSha256: "af34aebd49eb93d0c3479e3780c2050ce958ed36b1df49e61654b5ec4241737c",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "2deba175-8c02-492d-b404-5d842910c095": [
+        {
+          referenceSha256: "e546d18abec85fdcb4e92633d0946b01e22a5e5752dd7d20eadf795264984319",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "2fe86733-7851-4c2a-8d94-dba6f071b94d": [
+        {
+          referenceSha256: "368edf20b0faa0ea48899a35abd36df9a9980f35b3699e248ad0fa163a70bc87",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "301cb538-a931-4916-927b-4986046b1158": [
+        {
+          referenceSha256: "aec24a03c97dc9d7e7040c0881962d701bbf0eb2729e40b121820112d2cc6f77",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "30f6b4a2-5780-46e9-b239-459d2cf37743": [
+        {
+          referenceSha256: "12a6602d8d01bbbfa43c5623163d752d7369ab75e48aa56c90f31e22215c411d",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "314d5e89-55f7-42b4-af19-d4d0f499a265": [
+        {
+          referenceSha256: "45160940db5c8958d462699ed9db31baf7179fb6ece6cfb58b800bb8f58534b6",
+          fields: { typeLine: "Creature — Wizard Legend" },
+          evidence: 92
+        }
+      ],
+      "32a2ee45-7f1d-40a8-82b4-ab3b705417ea": [
+        {
+          referenceSha256: "b6b6f9deec40254846b4a9f681457522621ffe58f581a0c78b424137dd83be13",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "33af35c6-7802-4366-ad20-1e330b4957ef": [
+        {
+          referenceSha256: "5d467ec6d60fec5270becb117004af45386a08162e70a64215c5834f0594c249",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "33f69670-e494-42b8-9148-fe105ec61aa0": [
+        {
+          referenceSha256: "876705c8759058724c3eaa6d033fe65c71cc239c2b511d628819e3e26f893090",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "35724e9f-efa6-47e7-ab4d-7defe38ba576": [
+        {
+          referenceSha256: "8eada56563706869313c4800e81ddd9faa83eade08a30742400fa23ebccb4350",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "36e062ec-df51-40c0-ad8a-2ee1cb8f8f17": [
+        {
+          referenceSha256: "70f5f4d26e31dee4d135d708191aa68c1c09f65d7b14505eefdab189cc000caa",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "3767f568-36b1-4064-835e-4dd7576b7b8b": [
+        {
+          referenceSha256: "8ce227073d981a5d3b95bb9ec26d4669482239bcadbdb6c548a5c56f0b74e9a4",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "37775f40-10de-4f5d-abb2-c49e682039de": [
+        {
+          referenceSha256: "d89c053cec7b13b4c620562041170a9ff81531e350d995b5eb2abec319bea01e",
+          fields: { typeLine: "Creature — Goblin Avatar" },
+          evidence: 92
+        }
+      ],
+      "38315ba3-57a0-4aa0-b1bc-4b1fcdd763d4": [
+        {
+          referenceSha256: "ca522a157af7d5aef0bd135fdd256df17a472582c808017d45d01b3815452c77",
+          fields: { typeLine: "Creature — Insect Druid" },
+          evidence: 92
+        }
+      ],
+      "38737f38-26bd-417c-b6b4-53f26e4e8044": [
+        {
+          referenceSha256: "7658a1852918e31458d91d2798e846315761448093100a5ef70dd0b07d98d6b5",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "3a7a7bf3-1b0c-415d-9c57-73ac55b1f915": [
+        {
+          referenceSha256: "568145efba01a6cd239e11b8cb1a01d20aad9ef31cd76ab47b70ca318a0536e1",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "3a9a1ecf-29f6-474e-bbcf-3455d388aa94": [
+        {
+          referenceSha256: "89923b8ee851c02dc1e4d9c65b9b112b18e72847b4be818a1d8f0d3918df229e",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "3bbfd715-0772-4516-8cd8-89495dbccf4a": [
+        {
+          referenceSha256: "38076d119df1905636ec3bf7cf28aa99dbd00d2b7d161f56049531fecd59e646",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "3bdaef0f-9965-463b-902d-72ec24b2db7b": [
+        {
+          referenceSha256: "b809e5bf4083c2a5aead08d9426fab885bb517bcdcd044e16764de7721d18897",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "3bf6987e-a6e4-4a88-af0b-cf3b2d2b80c7": [
+        {
+          referenceSha256: "023fe8850ab170feca01d16b9c2834f9bf5bd986ee2162a80739337cf2bec041",
+          fields: { typeLine: "Creature — Soldier Rebel" },
+          evidence: 92
+        }
+      ],
+      "3ca3e348-47cc-41d6-999a-60d1206aaf06": [
+        {
+          referenceSha256: "aee649b088826a89bdac80fc0849ef7a6dbcd1a760ea8c06597ccbec8249c99c",
+          fields: { typeLine: "Creature — Cleric Mercenary" },
+          evidence: 92
+        }
+      ],
+      "3cbd82d5-d64f-4833-b1a9-9652fcfa1578": [
+        {
+          referenceSha256: "5adcab8e1f6e1a190432d73534a462e05a0e054638464b75da87ee9fdf50bc72",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "3cdfa8b3-393b-4bb6-9265-faa4ab7126d2": [
+        {
+          referenceSha256: "0afa5852f8325d17fb100353e9000fdfcf7a8e9420ab379210a1a3e248d04f10",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "3d251490-41bb-4ad3-bfd0-a5e66ee42598": [
+        {
+          referenceSha256: "9f14532f5b83fa56c818ac306bd45d9d549ad36710c8d7e38c653b7009c00ae6",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "3e48715c-6ff7-4b0c-aa7e-a2c901215426": [
+        {
+          referenceSha256: "d2d7da43de7f31bde81b6bddab93533b3f784efddba854711346e11c0b57c3c9",
+          fields: { typeLine: "Creature — Elemental Legend" },
+          evidence: 92
+        }
+      ],
+      "4052a5af-20b2-4817-8c94-78d488ee220f": [
+        {
+          referenceSha256: "4cb419ff6c804bfb92bb20ff100c5ce20ecc4945dcdadfd5639dd2b355486a6d",
+          fields: { typeLine: "Creature — Basilisk" },
+          evidence: 92
+        }
+      ],
+      "409adb7b-6dcb-4e7f-a5dd-c0adf12140a4": [
+        {
+          referenceSha256: "d5888b32e4f426894c8bf81495967c0d2e3792022096f1fb1b4ed4c47c70ad9a",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "41b65eba-140b-4c1d-b796-8134b7c1ede8": [
+        {
+          referenceSha256: "2917aaafa21128503f62c926cc6536977d75a6a02540e29684f4ada9fa8082b8",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "41bb314f-237a-43fc-95c8-b26188dc4476": [
+        {
+          referenceSha256: "226aa84518bba076dfecdda5fd228ef10f844ece6757285736d2ff97245c33a2",
+          fields: { typeLine: "Artifact" },
+          evidence: 92
+        }
+      ],
+      "4289bdcb-6eea-458f-a4eb-89e26264673a": [
+        {
+          referenceSha256: "056cf8c7e7e1ec40d5798dba6befc6828406b5a80d7d4e737a5230acf6bbf9f7",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "455c6923-8d0e-4a7f-a5c0-add8db519ee3": [
+        {
+          referenceSha256: "c9933fe0f4a290b8e50e583a3196976ead0211625e4dbf368cd12e11c2564961",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "45be3811-a223-4c45-9b24-0317f2d53c60": [
+        {
+          referenceSha256: "911e9e3bd417715595935a0cce92841184f1701d3d7b2759ffe695566c590249",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "46d7aaea-226b-4820-8db2-89dcdcbcc557": [
+        {
+          referenceSha256: "8d810ea494c3379dc430f051e4573b771a9fc1b3e99eb8cb1e97a802027f4923",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "47c40269-80a5-454f-83dd-dae1c11500c0": [
+        {
+          referenceSha256: "57fb79e15cf959c8b31a807883114e90ed9c48a69b1ebaf0a616ab6921b2cbdb",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "48f3ad80-d000-496a-b704-d09e07981b6e": [
+        {
+          referenceSha256: "0a9dc36606503f471b10f9c95b4bc007ad02de7b32deab10dafb1151db0c54a5",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "4a0fa75a-a82b-44cd-965f-07e0fe7a111a": [
+        {
+          referenceSha256: "478be91fe87396aa9e2b8d31e2340a5c88147470b4d0089193d864459a0476b7",
+          fields: { typeLine: "Creature — Zombie" },
+          evidence: 92
+        }
+      ],
+      "4abde0d7-266b-41bd-ade1-c4d93507eb16": [
+        {
+          referenceSha256: "9d9716a07d69a8b9b7640b8b9220fc4a35dba0d84664f33667f05c881b418fcb",
+          fields: { typeLine: "Artifact" },
+          evidence: 92
+        }
+      ],
+      "4b0c5d14-4fab-4034-a2d3-0d851ef67cbd": [
+        {
+          referenceSha256: "7d7d7594f67bb2c16eb9ddad14cd4c0539c24518ffcab881a11d20e041582aab",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "4bdf6e2a-1bf5-4d63-a58b-883cfb1ea0fa": [
+        {
+          referenceSha256: "4854adff2e6631c699b15fb688d07d38a4f2b4232386ea4ef976ad8b50d2e629",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "4c03afc5-7ca3-4ac6-a06e-091e2cce13a0": [
+        {
+          referenceSha256: "bdce11af68f3c65f9e7a426ce5c9e714537bfa246f0c735ebc6397fae98d6f99",
+          fields: { typeLine: "Creature — Bird Wizard" },
+          evidence: 92
+        }
+      ],
+      "4cc8a6e6-ed62-4784-ba9a-b1f703fc6119": [
+        {
+          referenceSha256: "23e37432d7a7ca8f424810a900e28e36819e2307c6bd1e483a11bc2f004e2086",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "4d0d666a-8e31-466c-937f-54df910f664e": [
+        {
+          referenceSha256: "63d34ac1b86e0794c9e1a15d74022fda1f83cb4b6831d9a135d1a15dac3b8c0e",
+          fields: { typeLine: "Creature — Zombie Beast" },
+          evidence: 92
+        }
+      ],
+      "4d399b71-c365-492c-976e-2c79d97d08bc": [
+        {
+          referenceSha256: "8eecffb4849ec011bd3a9b3826c5c8598331f9505bf319c37c0da6daa90f332e",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "4d8edfee-7837-450a-bcf3-a7bb25670056": [
+        {
+          referenceSha256: "6268f1771e14ed130a86dee9c2ac2d27e8e4eb8938cd0885cd64f1fb4edebfa8",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "5189f152-f075-4090-97dd-b7686d813865": [
+        {
+          referenceSha256: "4c29748d70b4521bf2e1c0c4d82e24a9a9b6766e22ab43d4cb1cdeeb37d6da69",
+          fields: { typeLine: "Creature — Bird Cleric" },
+          evidence: 92
+        }
+      ],
+      "524fd470-e535-47ea-98a0-6187e429dfe1": [
+        {
+          referenceSha256: "e19c2fb13351c4b084a75070bd34481f35a404b9725a0512007a5580885ffe4f",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "52f464a9-586c-4cf3-894b-b407c9f4dcb8": [
+        {
+          referenceSha256: "02f48266bc44b6618274abac9abf496b655207874ca6a0f2ce7a74522d2d76b8",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "5360a871-6932-45b2-bc94-1bd414e38906": [
+        {
+          referenceSha256: "6e92e8f103206635b33755006c60270ab5aca216786f26476317678d7d0e363b",
+          fields: { typeLine: "Creature — Ogre" },
+          evidence: 92
+        }
+      ],
+      "5595a57a-a76c-467b-afaf-5affffc24f35": [
+        {
+          referenceSha256: "1a3683cd1faea4f6deb3880e975619abbda71629adb55012e63dc06ebed624d7",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "55d16883-5e98-4dd2-92dd-0ba92f1099cb": [
+        {
+          referenceSha256: "bbc2498aac6bcd46b49225e530a66f7eeb5575f1c0e6633bc8ce28bc58e74ed0",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "55e0e300-db79-4328-ba1d-9c3910e47f52": [
+        {
+          referenceSha256: "9180dc2fd4374473ef1c9df3222fc21fbd3e4a793d1549ece1991594683da0b8",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "56125660-2307-4270-a947-f1f4ad63841c": [
+        {
+          referenceSha256: "a766b408f629599f3a37b9c259ff6feeb7083fb1e14bd3c4b2a636353a1062e5",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "56b34afa-0183-49aa-aa5f-03e070020136": [
+        {
+          referenceSha256: "04887477d18be9fe64cb67a13626b7323449e3f7575c700628975961edb57e30",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "57dcf434-5c67-440a-8b67-2df7307e92bd": [
+        {
+          referenceSha256: "1a2c1b4a9a6e3f03c91001a38554b5f8633bf88c2d212084fb3e49f47c97eba6",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "58561356-4a97-467b-88e5-412e633715fb": [
+        {
+          referenceSha256: "90cace2896953de99087bcdb2e212f1813d0bc61405dc2a40af8e6099943d0e3",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "5874e312-1010-43f2-b330-82bc9fcc9f53": [
+        {
+          referenceSha256: "64b66434abc0e013a9b4a4ddefa2609a8ce427541fe8e02b9dddd59ab8a06271",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "58f9eb25-4140-4ecf-bcaa-1b193d884007": [
+        {
+          referenceSha256: "add5f95ad680749d967088354311881ed6997a3622402aebc0fb01bf290e0b6c",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "59262684-86e3-4485-9e35-202771c3eaa6": [
+        {
+          referenceSha256: "aefadbbb896d569d2f40af20f8ee86948191c35e713894b8fd96ac028eb7b4c7",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "5b08b0a6-c94e-4407-8a24-c8202497b5f2": [
+        {
+          referenceSha256: "08f4bb01eca4b666d168eee543c04a2da920d7f869b6c9f421d1ff6bd86c0dc3",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "5b0d9c2f-356c-4f27-8560-8ffceadac31c": [
+        {
+          referenceSha256: "d1ca7125d444fa33f024219e0d9b0a7e07161c24deec3c44fc9c30bef6ec9571",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "5e33aaf7-7490-4b64-a966-82fbf7ca8686": [
+        {
+          referenceSha256: "a21760c5f70d36b4d9eece4df4871187dd792ed2b62ab281c59a25dd0d3c4771",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "5fdfc473-8477-4c04-a4e7-ecac1b0a5716": [
+        {
+          referenceSha256: "97094eee5951baab644d08e263df449586d8c116a64cd59724a3c959423cdb43",
+          fields: { typeLine: "Creature — Elf Wizard" },
+          evidence: 92
+        }
+      ],
+      "61f50a1a-f3d0-4fcf-bd32-0e173b0d3247": [
+        {
+          referenceSha256: "638c2e339e08cab2899a8856693df8d9f668ff22dbb665fd9bb9f58c195ad4cb",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "65162b24-8a3b-4b92-a831-6f23f809c76f": [
+        {
+          referenceSha256: "0df78b41df8ff54519cd8ea0f81dcb4a58f36ccff68410cbbd084eef463af582",
+          fields: { typeLine: "Creature — Bird Soldier" },
+          evidence: 92
+        }
+      ],
+      "653cc07b-0f53-4b5b-9c5f-885b8b4a6e5f": [
+        {
+          referenceSha256: "49e2cff8d3a7e5fd6add2a721b4df2aea2c3049f06cc36f09a33b9244fd10a46",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "65dd1364-ff36-4cb9-ad93-e6fcbcb942cf": [
+        {
+          referenceSha256: "e88001959901d6ee6d5ef4d31be725297a256c51e50ec5970246b3b251ab64cf",
+          fields: { typeLine: "Creature — Cat Giant Legend" },
+          evidence: 92
+        }
+      ],
+      "685edfe8-9770-47c6-95fb-0816f3126f04": [
+        {
+          referenceSha256: "e043ffcda77d3e2dc8c641c02014fb53863e05eb06e3ccb818d3c982d9c9a021",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "688bd665-4948-4961-aec5-f17782257f9b": [
+        {
+          referenceSha256: "df58679dd703fbbb398aa537bd15921095578c7b43f80e78ecec225d36fcfa40",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "68c72226-6f52-4322-8b14-18737293dfa0": [
+        {
+          referenceSha256: "dcee955086223fa9ec8db734fb369d10597247ddf345a88050645465ae4881d4",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "69b58b6b-24cd-4440-b99c-d88d44b3c41c": [
+        {
+          referenceSha256: "4f8e5a4c0775a6ee3dc864b0f4bcc107418c2fef1358de852b4d4fb1fe731dbf",
+          fields: { typeLine: "Creature — Zombie Giant" },
+          evidence: 92
+        }
+      ],
+      "69db0298-f6d5-450f-add3-a28c0a43f33f": [
+        {
+          referenceSha256: "bf28cbe9b5993affd811bd9cfa46161b7eecff12e05ea30cb4486b941eef2239",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "6b24af94-9632-47da-9bf3-e81bb743cd43": [
+        {
+          referenceSha256: "0307d7f07704528d7dc51b42b6a1c89222ba0a2bbe0f0e125cfff82ff0de5521",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "6bfe64f9-8b03-41f6-a47b-fade397ad9d1": [
+        {
+          referenceSha256: "bd5d5e3585b29f6c805ee7b2a2675cd9305f80f5afdd4e9a9286691d36af5d2c",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "6caae974-f531-469d-8c6a-2077c4f3294a": [
+        {
+          referenceSha256: "d4ee2d81db57f92c40f9f3fda45296f13f0e7fbb0423e067c01293183742a5e3",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "6e208be1-8b24-4048-90b2-6389f08043d1": [
+        {
+          referenceSha256: "fc14c8b914b160fe9bef56f438350d37a38fa4714ac85993be891907277328ac",
+          fields: { typeLine: "Artifact Creature — Golem" },
+          evidence: 92
+        }
+      ],
+      "6e8c0e52-8482-4c33-bc5d-26eaad922e72": [
+        {
+          referenceSha256: "b9c6603d3e3613a6214b7cc2c12fbad7f36b769f140f08cf70643f61972412c7",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "6f7b5ddf-d5a6-42bf-a196-7e834dbdb3dc": [
+        {
+          referenceSha256: "05b01651fa4b422921efae3dcc349e0101c07cebb080b651b1958d02958374e7",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "70ea023e-e66d-4049-b7bc-5e660804f088": [
+        {
+          referenceSha256: "950e2db4a235a234f619c45423646818de609f668a5906f1a8643673cc3808dc",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "72cc64b9-f5b9-42d3-9921-564c4c9f2c77": [
+        {
+          referenceSha256: "b6bd67116e1342c4b4d6cd7bb28460c7b0d9926e5301a820a6a1917525b88420",
+          fields: { typeLine: "Creature — Insect" },
+          evidence: 92
+        }
+      ],
+      "72de2f66-0b86-4c21-b4c8-c2d97e3fd095": [
+        {
+          referenceSha256: "00ce7be03542701aeaf005dc6956397c33cd025c4d11c6e76d754c73dc196b4a",
+          fields: { typeLine: "Creature — Demon" },
+          evidence: 92
+        }
+      ],
+      "738cbf9b-e3d3-4568-93ce-7915b248e5b3": [
+        {
+          referenceSha256: "15f029ca97052f3f3843d1c3ef26ed6b7cc9c470f5cc75fb4f79622e8df1b02e",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "7441e7f9-a326-4f61-b7b1-e0dbed06046f": [
+        {
+          referenceSha256: "f5429a1293281993555d618b6cd4e5b73769221abb20337bc84039d385880a39",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "746b98bf-5398-4a00-b4fe-a990ea9cfd77": [
+        {
+          referenceSha256: "b1a51234cf14d9b61d501ea9950d3e52b3a3cc0c9f2beb17f3d540926cd06cd3",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "74cc7ab0-a5db-4ae9-af9a-89fd5aaaab57": [
+        {
+          referenceSha256: "3df4a5a53fafea171d2de9b7229b039c7f7ae5dd6f07acf991f57723c9c8f775",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "75a71d29-29eb-43c4-b0f3-457435e8f629": [
+        {
+          referenceSha256: "e277bce83669772f5852f4ca75f56d766357ce158e682645e04c8a5d3f830f05",
+          fields: { typeLine: "Creature — Soldier" },
+          evidence: 92
+        }
+      ],
+      "75def198-99d6-4b0a-8878-5151f44bc0a4": [
+        {
+          referenceSha256: "c660a5d482619ba7c8dbcd0890cd6f1a9df7f9e7a7a3381add7206822f4b9926",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "7652dc61-9170-4895-a0bf-c32a1ee0350e": [
+        {
+          referenceSha256: "2469d861934a8aee9c983eb572f78bc0f5568504d1581503033b57bc058586e0",
+          fields: { typeLine: "Creature — Zombie Cleric" },
+          evidence: 92
+        }
+      ],
+      "79cf3535-3f80-4b76-aad3-dd851e6885a6": [
+        {
+          referenceSha256: "901a4c552db27bda77f64f0fd55397a38372b3a8d85b62e6bfbc95edcc290c59",
+          fields: { typeLine: "Creature — Wizard Avatar" },
+          evidence: 92
+        }
+      ],
+      "7a4b41c4-0d14-4b9c-8e0c-a626ba6b104d": [
+        {
+          referenceSha256: "6a918b089dcd8b56a441d2df54fb2736feee9d21417e813d72bfd8a5ebddfe44",
+          fields: { typeLine: "Creature — Bird Wizard" },
+          evidence: 92
+        }
+      ],
+      "7a7c5941-9c8a-4a40-9efb-a84f05c58e53": [
+        {
+          referenceSha256: "fafa4a31b2aa5983ee9d560c10900a4d984992959687b59d06ecdde8651e8443",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "7aa97b25-1ea0-4351-ab9f-f06c8bb4d044": [
+        {
+          referenceSha256: "5bf7007128706cf539bceab25a44936e6d6906c5f92531bac2abc23e718d2316",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "7b0af992-80e0-4ac6-a828-5eaac47eaff6": [
+        {
+          referenceSha256: "f7abd61ee68a68f29be4bf806509d2821c98fa119b2eeed7ad8a776d206ab863",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "7bf7d68a-dbd0-45f3-acbb-59ee38e6057e": [
+        {
+          referenceSha256: "07ef0da62c6170c3390f28446a32e1d36a38d8f251157abe2dee822a967c78d7",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "7e505e8e-51aa-4415-81e6-cf022279edb0": [
+        {
+          referenceSha256: "ed4632831411b515e8ded79730c2b27a1e21bc7e1dc8df5356674378f4dbb2e0",
+          fields: { typeLine: "Creature — Bird Cleric" },
+          evidence: 92
+        }
+      ],
+      "7e689df7-b85d-4346-bee8-5e978b5cbbbc": [
+        {
+          referenceSha256: "e226324c075425860c1a93ecf9ddfdeecd7135418a64b79210ff4a500bbfb22f",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "7e71fc2d-643b-4fad-89a8-624d330895d6": [
+        {
+          referenceSha256: "34671275978db20d4bb3b398b7539abcb79527a20d28198235a109eb9119ef9a",
+          fields: { typeLine: "Creature — Elf Druid" },
+          evidence: 92
+        }
+      ],
+      "7f2a29cf-4b2e-44c0-af73-512d6fed0dae": [
+        {
+          referenceSha256: "5c768b82f43bab21644ac0c07f9890b4ddd7af50ed42b01e36b4a9914a8590eb",
+          fields: { typeLine: "Creature — Orgg" },
+          evidence: 92
+        }
+      ],
+      "7f2caba5-9f30-4b5e-833e-68c85a47ef7c": [
+        {
+          referenceSha256: "b1e14a33deb322bcf44eed8d76bc7c1b62b233e7efcf533467ae8e2722ce40ae",
+          fields: { typeLine: "Creature — Dragon Legend" },
+          evidence: 92
+        }
+      ],
+      "7f379966-6a0a-434c-8682-1cf528a9a4a1": [
+        {
+          referenceSha256: "1e1c67613e5a809dddc5a45442a3ff159daf23e7f073ccd7fa9d4918fb0d4b61",
+          fields: { typeLine: "Artifact" },
+          evidence: 92
+        }
+      ],
+      "7fbbb075-5795-425f-9e33-70cb922eea16": [
+        {
+          referenceSha256: "84084754b093ee1900bb9488b4b73a53d9682a4cb2814319e5bd71c86bf846d0",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "80b59844-c9d4-4bc1-86e6-4cc596d9165d": [
+        {
+          referenceSha256: "616735d728d9b894a32979e5c2279fa2eecef7ec3c9089cb13fa3570349f477d",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "82105090-5f71-4690-9ade-187354311ae3": [
+        {
+          referenceSha256: "c0a779534ec4222b88c1e18ab06a800bffa374619d9ca3f55200eb0912e50f06",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "8284476c-a7c8-4a6c-8021-ee997e9270ce": [
+        {
+          referenceSha256: "0d4999453f15c16b3c27ce01135d63a48e425aee0ad3c5c422739af797e9184c",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "829069cf-7e63-4443-b679-65ad15d6ca5e": [
+        {
+          referenceSha256: "e9310a980ae959be1d8426f753ec3556ba50c98f7b7f4fe2ef5ad878872ce47c",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "830d1980-f460-4be2-9379-c3f74c8318f3": [
+        {
+          referenceSha256: "f33b7b57fe12d7267e0c82d829f6a9bab66bad5a7ac87c37867e942bf140c622",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "835a4eed-a308-428d-ac85-e385b5d47d8e": [
+        {
+          referenceSha256: "c6f315de649905a65abe1950e158097c84842632b5589c23510fb3bba6ca2ae1",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "83c92b5d-103c-4719-a850-690a7010291a": [
+        {
+          referenceSha256: "0b151a776d435f3f85ddc9f9f628990b2dd163c08ccee3d2b2f5382c96091038",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "8496e9c2-4c13-4307-bda7-b88512a21a6a": [
+        {
+          referenceSha256: "8a8a0fc7c91d663815592ce28bf20692093e0714b4870a4b2026e34e02097d12",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "854a255e-fd89-4c5d-b97b-416a9ac70960": [
+        {
+          referenceSha256: "27d5c765a6629b8ebe75e5dfd3f861dd4ff4a7802b4117e0335f7bdb6d839499",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "857c2b6c-cfdf-4c88-a334-2937cb7db603": [
+        {
+          referenceSha256: "7cb6a635c09e689a88954e4318dcbbd20ae65abda7179c337381372ceea269a0",
+          fields: { typeLine: "Creature — Wurm" },
+          evidence: 92
+        }
+      ],
+      "85be34ac-7bc2-4da2-8d9c-2412b9946073": [
+        {
+          referenceSha256: "1c755c03e4c81d37295ee08bbbaeda2f5da87561411ea8f636f197e1f1342418",
+          fields: { typeLine: "Creature — Shapeshifter" },
+          evidence: 92
+        }
+      ],
+      "867de3d2-2178-4931-823e-ff439e1a45ea": [
+        {
+          referenceSha256: "e941567410bb9074259da9181b6302a0f3ba5bbe468030beaf21f8aa2a4205a4",
+          fields: { typeLine: "Creature — Wizard Lord" },
+          evidence: 92
+        }
+      ],
+      "8698c46b-2628-4482-88f9-e37a01ade274": [
+        {
+          referenceSha256: "d9decde3a1b8e460c9bbcfd95e4f38d6bf2e7ed04866d8045d74e6102f1dba2e",
+          fields: { typeLine: "Enchant Land" },
+          evidence: 92
+        }
+      ],
+      "86ecc098-aa2b-4bae-80d5-4d02128ef837": [
+        {
+          referenceSha256: "cc585d536e67d5044392b554b47ee5804c83e9804501b57264102d3e0eed08ae",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "87551307-6b5f-4f12-aa1f-4beebefad3b3": [
+        {
+          referenceSha256: "80167cf37a78e35963021db3f6089ff21085c76d18a85304ea29ee4b4235c2a3",
+          fields: { typeLine: "Creature — Soldier" },
+          evidence: 92
+        }
+      ],
+      "87b29d1e-9c06-4ad1-8178-b3eaa212f6f1": [
+        {
+          referenceSha256: "3e3757622b31bcc554186067277f73af46ed59d5d5a4d05b4add117a9bc7089c",
+          fields: { typeLine: "Creature — Zombie Cleric" },
+          evidence: 92
+        }
+      ],
+      "894556d8-6d5c-431b-a45d-26cd37c5f456": [
+        {
+          referenceSha256: "5deebc3a9a3af1f2d51124ae715f68b192a8099b9b476f67c2bebe91e4e61abe",
+          fields: { typeLine: "Creature — Zombie Centaur" },
+          evidence: 92
+        }
+      ],
+      "8953e11b-cc3a-4c8d-9d7e-04bf90c77027": [
+        {
+          referenceSha256: "b75f8862940f13e0487a52f36951155836621dea91300c173c00038dcbf3bc15",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "8a4bed3f-845c-4822-b8af-8b511dce6fe2": [
+        {
+          referenceSha256: "a3ef0af78584e93b3a71f7469ce19e08f00c573a55db2782c3ca67358ec208f0",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "8b3b4448-50f0-4996-94a1-db9ce356d925": [
+        {
+          referenceSha256: "3f6c01388e79a7ff7d58756492706ca5355cb9fbebfd170ddfbcce88fee90094",
+          fields: { typeLine: "Creature — Wall" },
+          evidence: 92
+        }
+      ],
+      "8c870a66-4cd5-4a8d-9948-feffa7d4ff11": [
+        {
+          referenceSha256: "970fb78e3c1d8eb87f95c3e075744ef3821932d1b5ea05283a60b4903aa7fa6e",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "8ce3a3a1-3569-4909-a604-f78d4888781e": [
+        {
+          referenceSha256: "5a1c4c1b1c982aefc0c435581af16a86e23b5532883fe4fe09a8c993602ecf6f",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "8d6363ea-3814-4014-ad9e-1066c72d907c": [
+        {
+          referenceSha256: "c5555acb12d2e415e8f72b7f7d67b15237c2b611b65022a00575956e4bbed15a",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "8d7d5d79-73d8-4f1a-9dda-4de5f41539d9": [
+        {
+          referenceSha256: "bb65a60484be53d585084535bc7630d73ce4b848ec94a9043c2b112098b96112",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "8e10b125-eaa6-4630-a6fe-6b1805921f07": [
+        {
+          referenceSha256: "6a00c06e7dc4d811695ace87d8d592d50c536e386ac7303093b33e8102e9d5e7",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "9047075e-9fca-484d-bb79-32c0d6821281": [
+        {
+          referenceSha256: "5c8dcf552f4c2861042c47e4a7d0a46a20a709cb150312cc3a2a72c3260a9b84",
+          fields: { typeLine: "Creature — Soldier", rulesText: "" },
+          evidence: 92
+        },
+        {
+          referenceSha256: "5c8dcf552f4c2861042c47e4a7d0a46a20a709cb150312cc3a2a72c3260a9b84",
+          paragraphScope: "rules-only",
+          fields: { rulesParagraphs: [] },
+          evidence: 92
+        }
+      ],
+      "90865f52-c062-4505-a204-b4d7d4b3fc4c": [
+        {
+          referenceSha256: "e16e57c9057389569ac4c1b921afdfc22dd155c9838b466c52fc361e4c8f51ed",
+          fields: { typeLine: "Creature — Wizard Legend" },
+          evidence: 92
+        }
+      ],
+      "91be6441-8a45-43e4-8d12-a886dcaadbd3": [
+        {
+          referenceSha256: "7aea6f6284a5559ae0e6b17df3c9c0e598a7359859f62cd88ac16eeaca33125f",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "939a7354-162c-489d-955d-4df17b930e1c": [
+        {
+          referenceSha256: "80738fdde980db8ac2bb97ffbb651f27f34c45e4ef90d673eaeb0071a7ead1b0",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "93d9e9ea-9f88-4206-8960-b5ebe839ee16": [
+        {
+          referenceSha256: "e246562ed0ec582555954d31fbb7cb159481c73e96cd216ace95deee21b9d82e",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "952c021f-74c9-455f-9cd9-f0d354e8bea8": [
+        {
+          referenceSha256: "02ac7d9b10f40cb941970a2f35f2b028eef16c14efc9ece252ff6df1ba8a178d",
+          fields: { typeLine: "Creature — Zombie Cleric" },
+          evidence: 92
+        }
+      ],
+      "95e4f28b-c7a7-4450-b477-73e4559f0276": [
+        {
+          referenceSha256: "76a04c0245bb5f9fc4281a71db6e12176b3ca72bd5535b5fbe2e7da0ec13814c",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "998bad32-1927-4e12-9527-efa55b86cae0": [
+        {
+          referenceSha256: "40c271354fdff6c4295ec9267b6d3788a463821f2ff3c170d6e228f76b6a0ef0",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "99982622-98bc-45ae-8642-41cd543f32a8": [
+        {
+          referenceSha256: "3055331a106169a7533135f4138fb1c4f3bdbe817823b4b2c81c1f920888dac9",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "9a0d3142-4224-4b51-885d-33c8938418c1": [
+        {
+          referenceSha256: "bb510ec34a5c325ed502facb8ff5b6f73334639532daa6043240536dd6d938da",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "9a60ac8e-11eb-433f-86f9-8e593b38c617": [
+        {
+          referenceSha256: "07abf54f46997e0ecdf907efa9b56c1489ac1e4bb10c182b4fcc52a071858f03",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "9a8321af-d667-44e7-8c03-3957286604b9": [
+        {
+          referenceSha256: "2d83766aff49b8969bf0fd375d17f64632783f8e7d5cb8aa0f496b82a890cf2d",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "9b40f6eb-e2a4-46d2-8822-b0f3dc508b73": [
+        {
+          referenceSha256: "86d5556157d1b61ef82c235422f93a78b05739ba38fd0b03fb37d69d933e74c8",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "9c444503-42a8-4952-819b-bbca89b06abc": [
+        {
+          referenceSha256: "6ce55a7b3831baabe535e08eedb729cc408f51558ea9c46d8e3c36d74b6392df",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "9c940a6b-3c5e-4ce2-92b6-63e2cb575c15": [
+        {
+          referenceSha256: "7f235335cf953bb478f583479947cbc2912e1176c1d0dba9ff693b0bc5f0f0f3",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "9ce4be1e-97dd-45ec-89e5-2fb56145c098": [
+        {
+          referenceSha256: "b84f6f5d5f51462a295cb76bea02730ea6579a2a6b62f6391391ecc6fda4623a",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "9e43d62c-488a-4c8d-b193-bacbf8037761": [
+        {
+          referenceSha256: "404326c7b61a2074592b157dc9afdb547f4f71f90ec742bd149fd643e96ac6cb",
+          fields: { typeLine: "Creature — Zombie Beast" },
+          evidence: 92
+        }
+      ],
+      "9e4f796a-6831-4d83-824d-88fd2148b4c1": [
+        {
+          referenceSha256: "27a51201840323168c41b9ce3e9cf4e7b7a58662331f7e46fa9167830b72414c",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "9e80d109-b73f-4b5d-b9e4-534e8d69633f": [
+        {
+          referenceSha256: "124b291c02d68b21bd9329eac8369139580b66abe60fb40ab0305f396b9dbcff",
+          fields: { typeLine: "Creature — Illusion" },
+          evidence: 92
+        }
+      ],
+      "9ef71f42-87e5-4b1d-aac1-3752b81cee7c": [
+        {
+          referenceSha256: "1ba2a65f85b3ea199a168bdc4e618851c691cea95ad0d1f439864a6a2e67131a",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "9f608a7e-5555-4554-a6e7-fe00e0bbe753": [
+        {
+          referenceSha256: "18d55a3f985a4e37b3216895e350b2871997e75c38cba9d0063ea60002324137",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "a164420c-3619-4f5e-81cf-2aa5a4553bc3": [
+        {
+          referenceSha256: "7295d85c3724a1a4a8debce771ba651a299c9ab20c2e695249f652f336c412e4",
+          fields: { typeLine: "Creature — Zombie" },
+          evidence: 92
+        }
+      ],
+      "a1ea7219-6ab6-471a-afe7-d7da1df434c7": [
+        {
+          referenceSha256: "a580f031d7fb1cccf842776b26f537f8aaef017e291696767a18c841d81df575",
+          fields: { typeLine: "Creature — Soldier" },
+          evidence: 92
+        }
+      ],
+      "a25b2697-5d7f-490a-8474-c775096e681e": [
+        {
+          referenceSha256: "2fbdcd9203c9cce9defa402bede4c253aadfabd57c794057369ae1d6c20839cc",
+          fields: { typeLine: "Creature — Illusion Mutant" },
+          evidence: 92
+        }
+      ],
+      "a37be9a8-ef69-4c62-8455-e129e62fe69a": [
+        {
+          referenceSha256: "9523a9a9bd49f1077200ec9bd428fb37b7d6ffaaa0210c1d7fc26466dc3f66a9",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "a45ac59c-654d-44de-b266-532d44b34137": [
+        {
+          referenceSha256: "7bc496e9988a6c68cbf488565ae3b8649708f49cb38b444315248eaeedc095e0",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "a5064cd2-8762-4e08-8c3c-be6f31e9ab61": [
+        {
+          referenceSha256: "866b5ddb27cbfaacde026462d3857b729c043fc5ed2f6a7fe930a2f0bce07caa",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "a559e844-06c9-4953-bc2c-a58e4170fe47": [
+        {
+          referenceSha256: "27904a3d7a80c4005843abee049a88df3cf594d1cb7b4827cec6a5ebe76e29bb",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "a5ae8050-b644-41db-b1e9-d9bad2173485": [
+        {
+          referenceSha256: "6ba7f005f9ab50a41c86bf966c62719772573c9e7fdd6a94cdec8564fc14f6b6",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "a60313ca-10cc-4c33-a557-1401c5721e3b": [
+        {
+          referenceSha256: "8cb86aa1b31f1f4fe16b0aabe7c20975bd5ad50da593031caf041a3ce94d1b47",
+          fields: { typeLine: "Creature — Wurm" },
+          evidence: 92
+        }
+      ],
+      "a6285f63-a5d8-4b8b-a6dd-51ce7968fbaf": [
+        {
+          referenceSha256: "7dc79732770ea782f23b5637ed6533f0f6e6848cbda2da2800986621ffc4741b",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "a6d74c30-ebca-4684-ad84-3ca19193ad88": [
+        {
+          referenceSha256: "251d0fc234ddc48b1374967dd84b50633c2131feb20af0eac89ee83888d4d5db",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "a74d7aa2-c6ff-432d-b671-cef58c6736c6": [
+        {
+          referenceSha256: "d7dd63d278bae2689d3505430432ccb460bd9437f8992d34fe707cb417011c0b",
+          fields: { typeLine: "Creature — Soldier Lord" },
+          evidence: 92
+        }
+      ],
+      "a804f3c0-5ebf-43ca-b200-09f7c1bbe902": [
+        {
+          referenceSha256: "68f0ccf0dfe7834e3a0805ead4446825168377b4df835844c5341ba31482ddeb",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "aab525ad-1f62-4d9c-9b74-c7b0048da452": [
+        {
+          referenceSha256: "72683d9a797c2b2c84f15ce0f78120181153df001dd040f06cd4b9e337baed6f",
+          fields: { typeLine: "Creature — Zombie Beast" },
+          evidence: 92
+        }
+      ],
+      "ace5e601-2583-4d9c-8bdf-aa33666c717c": [
+        {
+          referenceSha256: "9396fe238197857be6b329121d39d5a74945b48d3c7deef5f32c5d34c7bff007",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "ad96e158-bf2b-4f3e-9692-0f79efdd94f5": [
+        {
+          referenceSha256: "04b544f18ac8e1068c6893255a53d74151955540c2314e7abdffbbc4bd72800b",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "ae596e8c-04f5-48b0-b5e2-683c74912e85": [
+        {
+          referenceSha256: "7d0fa37d89532258c03d647cf0322918254cae20c7ef4904e37e1ca72f2996c9",
+          fields: { typeLine: "Artifact" },
+          evidence: 92
+        }
+      ],
+      "ae76705f-ec95-48b0-9e26-84ce40c9514b": [
+        {
+          referenceSha256: "99fe8089491a40443b86305a87d01820f86764101c37bd345b70b834bb439a12",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "ae85fafb-114b-4fd8-ac4c-5ada57054705": [
+        {
+          referenceSha256: "06f06d5e3d0de73ad55ad74b135237654673cd90fa097b413204c1feedefec8b",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "aeaea4bc-dcea-4340-a039-ebc97b944673": [
+        {
+          referenceSha256: "266e71cc97c6429cf9e1d06664f3651af75b10974df42504979543794da0010c",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "af5d1be2-d6ae-4820-aa01-62f261b0f110": [
+        {
+          referenceSha256: "93c59b55bd1bd27fd5b9a48c1015ac151874c4665c3d5f2cdb75d335540e9ebe",
+          fields: { typeLine: "Creature — Wall" },
+          evidence: 92
+        }
+      ],
+      "afcb7cef-8aeb-4c84-88e9-6df17768e292": [
+        {
+          referenceSha256: "e77938e637ec66870bbff1d8d74cc8e1d41db3836eb51ffd6a7c208f050d0ce2",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "b2048d84-b5e6-405c-9091-1997a0c4e1a5": [
+        {
+          referenceSha256: "500827ca319bc17e5608eb629307ef04517c0b85382d39ae3d576f4789643e86",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "b361b42d-401f-440a-bae9-35338b5dde0e": [
+        {
+          referenceSha256: "f29c1ade88b864168cb9688662d8369bb3f5b5ea423f6421316db46d06effe49",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "b36fc40c-6a68-4192-91d9-2031c7d32e05": [
+        {
+          referenceSha256: "c5e87f519ac24d8344a4b4ffd9553a127fb72647a84b6f4085fbae933ef1ce5b",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "b3dd3ce7-e0e3-4412-9983-ff933584f59b": [
+        {
+          referenceSha256: "c90b76a7619c86e8d27188c64b44f06f13846ed144b3ff47edd70d5b26c1e4bf",
+          fields: { typeLine: "Creature — Cephalid" },
+          evidence: 92
+        }
+      ],
+      "b4e3d844-d3b4-41d8-921d-c1cb3af343f8": [
+        {
+          referenceSha256: "2145f9a3a0fa3350e7c5ba94b7597c19bb4995982ff79a34991469921d01bca6",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "b54d72ba-05ce-4299-a7c3-a9e9f126fffb": [
+        {
+          referenceSha256: "0c2068deedb766c41e75e7e8456ba74348aaded5d0759c88c32c35bd59db8eaf",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "b5f246e3-2193-4820-9c59-07b480300fbe": [
+        {
+          referenceSha256: "c28d51b68b96e082d782583a9ca37481b47c288a15249967a36aec96a292a2c2",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "b5ff5c7d-7823-4d1e-8abb-77e2d8126996": [
+        {
+          referenceSha256: "5d12a4bf60e623fedad1092d87f3da14929570022754bd0b9634a5a417ff884b",
+          fields: { typeLine: "Creature — Bird Soldier" },
+          evidence: 92
+        }
+      ],
+      "b6473b4d-1f59-4216-ace9-f3e5306266fb": [
+        {
+          referenceSha256: "dea0890dc9161e223853cdc17be6a4e7b92ff82ca2b4ab43fb84f39789cb44f1",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "b6d39f35-c7b2-43b2-aee3-4ff2cd3e37e7": [
+        {
+          referenceSha256: "d478a80fbe2154d02856141587d7a92f806342f23f57b873cf11a3aa2103c3f6",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "b71117d0-5cf7-4041-b568-00bd8a975dd8": [
+        {
+          referenceSha256: "ddf95243aba429d03953fbcc10be93cb7cf0b297d3555d4a4be9440249bcce92",
+          fields: { typeLine: "Creature — Goblin Lord" },
+          evidence: 92
+        }
+      ],
+      "b72257f5-0cf9-45ca-8dc7-a1a93bd7dd1e": [
+        {
+          referenceSha256: "0b383013b0e16de2c680fd4cbe7a73b8ea1409d9ee9049f9f99eac8f7af09b6c",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "b7890ba2-aa42-4c8d-bbc1-94fb1d4150fc": [
+        {
+          referenceSha256: "51fa8587b9cfe1f1a22024067bb1902b1a4467a43f1447960da760d56d97cde6",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "b83c6245-4b37-430d-af10-2581804fff08": [
+        {
+          referenceSha256: "d3966849aa756d78ab8a7a41a19b7f5e634b722d4c523aead1de35764c6bbae6",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "b88c530a-abc3-4cc4-8a48-5b76e1504a3c": [
+        {
+          referenceSha256: "4519821523a5859f67a669caf8af9881bee07702fd377d8c794f077cec7561e9",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "b8cb25b0-e4c3-4a4e-b722-ea30e695f917": [
+        {
+          referenceSha256: "385c9558a802ce2d356dc91abe13e0fa38dd22c2338c6b5e0262bf43559ed0ba",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "b90da5c3-fd8f-445d-809f-e129870d7449": [
+        {
+          referenceSha256: "d7ba5afef90cc607780352251b377c31bf91ad2efad70dccdc0039049cd42ecc",
+          fields: { typeLine: "Creature — Soldier" },
+          evidence: 92
+        }
+      ],
+      "b9196ce7-3ff4-4dda-a628-559ada11c9ba": [
+        {
+          referenceSha256: "d6f23e270c2dd16656b2829efee94cf50026501f8e33aadc674f9c4b717f736f",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "b9c04fd3-021a-4011-be9b-0d268557aa06": [
+        {
+          referenceSha256: "33c52f539494a7912d7fd6ac6676503a10e267a15a5aaff8ba62ba5daab28c29",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "bb237330-ac2e-411d-836c-6628f96f3262": [
+        {
+          referenceSha256: "b9bca07acdda5bad57cd4cbe5a07713106ed12940873854da484cc3c4c5f3fd9",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "bb4815b7-fc20-44a4-ad1c-66d92993557f": [
+        {
+          referenceSha256: "1c8d2e24d82cef789c4d1266d5131eb147099539ac30dc669c42994bb2cede0c",
+          fields: { typeLine: "Creature — Goblin Wizard" },
+          evidence: 92
+        }
+      ],
+      "bb61443d-e47a-4fe1-b777-67a3670a5a56": [
+        {
+          referenceSha256: "0476bbef7e010db20f3c22c3642be995d26bb5807bc2879b4da9984fbcca3275",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "bbc779d9-3200-4369-9289-1a8e90e243b9": [
+        {
+          referenceSha256: "abe69fac2265bf3fb5efd8d2c52d751807d9abbe65eb5d93891b9a25a4f1cec1",
+          fields: { typeLine: "Creature — Zombie Barbarian" },
+          evidence: 92
+        }
+      ],
+      "bc148c21-cbe6-4cea-899b-e62501b59a00": [
+        {
+          referenceSha256: "9787d31132bde5a3bbcad545e55198c3454165e47267adaadfceef9ccbf89813",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "bc8320ef-af97-4cf6-9aaf-17818174d842": [
+        {
+          referenceSha256: "4aa845ccbb5becfb09194599f85fc999651a8e7e7df77f782b0fe1b078201819",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "bd8b17df-615c-4cc1-af1a-2fc35a985af9": [
+        {
+          referenceSha256: "409aba35aeec0a9b8278ccac1729fa6b5eb0098aefd7a5729bafe526d7a49d7e",
+          fields: { typeLine: "Creature — Bird Soldier" },
+          evidence: 92
+        }
+      ],
+      "be0110ba-49e4-4729-8a84-4d408b20df53": [
+        {
+          referenceSha256: "0b70fc349f931be09711dcdfdc0867da49838a81e6b0f21b9a6f632a0ddb9c56",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "be95ab7c-0e77-4293-aa48-ee54902a363f": [
+        {
+          referenceSha256: "5d2f335fe59738065bbdd681d537ac386f65e99099e4db34dd74b9f61568064a",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "bfd891ba-cf6a-4b83-a421-3a7c346ada31": [
+        {
+          referenceSha256: "806f39f02330316e533e6c33c07041b3ea635eac581e987f277f8587a7547c19",
+          fields: { typeLine: "Creature — Specter" },
+          evidence: 92
+        }
+      ],
+      "c0acc41f-b55b-47cb-8803-d39d72788799": [
+        {
+          referenceSha256: "934d0c24a6e4ba452bd650686005c4f27af3ae4cc527c5aca30e190c76599fea",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "c129f361-8769-4f9a-9745-eb5d0c085b88": [
+        {
+          referenceSha256: "6c2bdc9f0249574454f509d09415b454dcbc90adb16d177a3f01a7e6cecb29fd",
+          fields: { typeLine: "Creature — Cleric Soldier" },
+          evidence: 92
+        }
+      ],
+      "c2213eac-cea4-4dfd-90c4-c1f466967e2e": [
+        {
+          referenceSha256: "37b0bcd09ddcf12c52c27d2606b73c5e8dc14246e9009a0e24c67aa7f87eeb71",
+          fields: { typeLine: "Creature — Angel" },
+          evidence: 92
+        }
+      ],
+      "c2dc8061-a855-4a81-9eb7-350b355a9b3f": [
+        {
+          referenceSha256: "2a8d6ba7a0f878e6b0342156dbc28d40cdf7874cb15816db255b42507cfa05f1",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "c33db646-b30d-4a15-9f8a-63bda74e2d81": [
+        {
+          referenceSha256: "79352bbad88b7f5716f672eb27609e3eaedd9b96d520b0dd153acfa03b91a092",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "c3710c68-3f71-4d76-8bd2-001f0e8036f5": [
+        {
+          referenceSha256: "02182ec6867e6eab8b6171c7f9ca9d382372d93177655446d7b93e5f935c48ba",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "c39f3e91-571a-4990-b1e8-db2a5bac34af": [
+        {
+          referenceSha256: "1b66f3f88c1ed65e050276a9998627214ba9d0c726756aa7c98e1cb31ee2a54b",
+          fields: { typeLine: "Creature — Zombie" },
+          evidence: 92
+        }
+      ],
+      "c46f324b-63c6-4fb5-a80a-e9da51c3eb77": [
+        {
+          referenceSha256: "6c8b753ed8b4a98c7c3e336548b32f424e0374f127b0eb712c965eb9356f3bf3",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "c4e7fadf-40f1-45ff-97ef-5830381accc9": [
+        {
+          referenceSha256: "36507722924b3c09eb3513a844a79c06c2c224f3f0dff696cabfbe7a46761026",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "c5202668-a32c-4473-b272-e86264992576": [
+        {
+          referenceSha256: "67d6ce67f9c3da1927e063dc1a22af44e2b7bbcb3cf9cd86455e1afe980cfcc1",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "c5869f08-fac8-44b6-8142-7d7ecccab414": [
+        {
+          referenceSha256: "4be03d572242e2435ec59c9aae4911791223385bdf5bebb0b8e29103ae7f09ae",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "c5d91378-f831-40ef-a79b-b044af1470e0": [
+        {
+          referenceSha256: "6f5f646ba031ce835e43b7f3780a833a57e9ec049203576fa9eb41221ddefe81",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "c7284e32-de54-4c83-a7de-7b249c47319a": [
+        {
+          referenceSha256: "8cbb64eda3f703bc8cb451e5ca63f0f8d18f1954e03a24b11daf3ac5882559b9",
+          fields: { typeLine: "Creature — Soldier" },
+          evidence: 92
+        }
+      ],
+      "c7d810b8-1a15-46cc-9d9d-871ac43b7036": [
+        {
+          referenceSha256: "ac9599ce81598e7bf4d7861b13cba806e3694ad2dff508d7f81f40aa9ebf2710",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "c826d786-0d96-4f77-94ae-6907fbce51e0": [
+        {
+          referenceSha256: "8c99c35696453a389b1d1029fc1e27d68fa4e174169aa727f9807d2326f74b0c",
+          fields: { typeLine: "Creature — Zombie Avatar" },
+          evidence: 92
+        }
+      ],
+      "c8a47d41-b893-46b9-90c9-ccd8f9f78855": [
+        {
+          referenceSha256: "16cbd1ed2310a42efbb78f045ece88664dca23f15ce16d4a7734518c75e549c6",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "c95d5cb7-3121-430b-80c3-84c75e5f869e": [
+        {
+          referenceSha256: "bca27fcaeb8a70577792552f7e7043a4fc706da44e82ef3ce4fe566215bc6a9a",
+          fields: { typeLine: "Enchant Land" },
+          evidence: 92
+        }
+      ],
+      "c98182d6-5b25-4493-9286-f29633e1bec4": [
+        {
+          referenceSha256: "36ced18fa72e279c57e0b686c8e42700d24f41891f23554e4bd7dee1a9fbfdbe",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "c99c5707-d5f2-4675-bfca-e801e6b0f627": [
+        {
+          referenceSha256: "064b1fc6c201ce2c0b39e51f8ba125019804d3c060c94e3b8e05405dce10ba40",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "c9d58030-a95a-4221-93bc-30a59344e30b": [
+        {
+          referenceSha256: "b76a5b21ba368ac0194ea471c06775a38b286a60c2d3870e17adc6c9263e814f",
+          fields: { typeLine: "Creature — Zombie Cleric" },
+          evidence: 92
+        }
+      ],
+      "ca1babca-b285-4b00-8b46-ed946c9a027f": [
+        {
+          referenceSha256: "43405f03c191919c680783ecda36ea278c8f1eb049c498bea6a5e7e703420a4e",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "cbbff06c-5f92-4320-8b70-df3c8344f600": [
+        {
+          referenceSha256: "0024bf5ec9deb3b399706834c37ca3d422fea9af999a1bd0855aeb4cb42d6518",
+          fields: { typeLine: "Creature — Bird Soldier" },
+          evidence: 92
+        }
+      ],
+      "cc5856ac-e710-44ee-8516-6070f4f31ce5": [
+        {
+          referenceSha256: "ad35cd527a9e80c02640c150d0bd7b091ae6cc156954725f144615233cedeab7",
+          fields: { typeLine: "Creature — Bird" },
+          evidence: 92
+        }
+      ],
+      "cd6cc30a-9ed4-4f36-95cb-6f0a2b8dce02": [
+        {
+          referenceSha256: "b6f6c8941423b6867b67911553d223c0753bf0c28e8af853859fbeb472e54bbb",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "cd7727a7-0cdf-4fd5-82b4-e6587c10ca80": [
+        {
+          referenceSha256: "6fb60fb98bd656118579eff521f75e6b1e11f0c5ad5a24fb97e06b77dcf5c441",
+          fields: { typeLine: "Creature — Cleric" },
+          evidence: 92
+        }
+      ],
+      "cd888ca8-0ebe-46f0-9317-3b193ccc43fb": [
+        {
+          referenceSha256: "1f0305760be0d2879f88dea6909f925fb243ea89bb52417df29a99bac1c9c94c",
+          fields: { typeLine: "Creature — Soldier" },
+          evidence: 92
+        }
+      ],
+      "cdad38f7-9dfa-4f1b-9fac-41ab2b253f53": [
+        {
+          referenceSha256: "b909ccda42f5e538e95a3e2b0f695c5eb10b09900683ebb9b8085fa3dd650fe3",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "cdddab92-3e1f-49dc-afd0-8c84d0d952c2": [
+        {
+          referenceSha256: "8aa4b660fc78ecdff564b93a3a6a790f323a40774114ae34e36273c8c0199d98",
+          fields: { typeLine: "Creature — Zombie Cat" },
+          evidence: 92
+        }
+      ],
+      "cdee956e-76b1-4ba7-a387-2fbfb853507d": [
+        {
+          referenceSha256: "d4310640ce0895b18d40b362f14537b6fd6d0fa3c890ce2ec3b03cae66c8e4e8",
+          fields: { typeLine: "Creature — Cleric Lord" },
+          evidence: 92
+        }
+      ],
+      "ce6adcfe-b0f7-4a96-bab2-f76c84ef5ca6": [
+        {
+          referenceSha256: "8437c8d4b377e52377a4c8f6443a7504f9952fd5de61de76770afd9906603c1a",
+          fields: { typeLine: "Creature — Gorgon Legend" },
+          evidence: 92
+        }
+      ],
+      "cec3a260-6c50-401d-a0ff-bf49a973e1a1": [
+        {
+          referenceSha256: "dc80ee671cc88f583d64beead63b47d25f8aa3423e367a190f70762658519e76",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "cef584c5-6e2d-419b-9c11-a1b6c9c9ab2a": [
+        {
+          referenceSha256: "484aadb668b663be8a52cad9992f88cb3c86a2d4fe6e674c7f7b0777ad9452c6",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "d0df839f-dc4c-44b0-82c7-cb2037172ac5": [
+        {
+          referenceSha256: "59cccff24b64c4476c4ee0448419961b21dd75013099690477524d2f6b9424e3",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "d14993b6-ed8d-4b9b-b54c-2837b343a61e": [
+        {
+          referenceSha256: "7c14998b7addf74849eae510a3441e66b49743deb8f37a9228e9a80406585d8e",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "d2cfff37-655f-4107-abf3-e6f63d0e4de2": [
+        {
+          referenceSha256: "0b912de190de2534c34688fe19242acf88d7c40d00c1257deff0327cef09ffff",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "d2dcb8ed-23e7-4cee-9f43-042232c6035a": [
+        {
+          referenceSha256: "99800e75cb3a359a23359a3ca4e491ecae30e6e2c6c02afe259563fb7aedfc5d",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "d4de14d1-441f-4d65-bd12-df0506530015": [
+        {
+          referenceSha256: "5adf9408fb063cd34b61fda6eeaaebe5c5051b6c04ac9722a8b6633e393f721f",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "d5cf8876-4c7d-4779-9363-d0a58bb7d851": [
+        {
+          referenceSha256: "caa3c63d5227e5a755226b5033e9014f3920e5ff89c96d69ac7a6b7f7cea6f61",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "d5e55695-16cc-4373-8078-959f1ded4c6d": [
+        {
+          referenceSha256: "a15d51d29a0b8330ca97b6d5ebf7472172c2c760a51252196cba3a1b99c28c5b",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "d775d729-0ad9-4b14-9d44-6282f6936e07": [
+        {
+          referenceSha256: "cb38c8fb9bb05308d5e4e9f24e73693bb3f0e24e6297a13e32ef375e223a41e7",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "d83db110-42e7-4823-a686-b83205faf503": [
+        {
+          referenceSha256: "331b3ffe6f147c32e99a49ffa60c5e5d9df9b3ab7e97296f1320566c7d1d5de3",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "d8ddab06-aff7-4c40-bcaa-10cbfe899dd9": [
+        {
+          referenceSha256: "9c279b10cbb125ed8c0236d8927974c9a026dabb1d4234677dffe56ffc5d371e",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "d993c973-2eb6-423c-8ee9-10749a751524": [
+        {
+          referenceSha256: "e7ad51f0075a56453e5b79b9be2f1c0f5fb053b2907aa068105df4e1e46150db",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "da24ef56-8d54-4146-97e9-4abded807545": [
+        {
+          referenceSha256: "1d2b8026c7bb009a9c83eb7341b0cf292a8835c67eab310ac310155ee957fa03",
+          fields: { typeLine: "Creature — Bird Soldier" },
+          evidence: 92
+        }
+      ],
+      "da6efd31-ab5e-46ff-80d2-9382438e302c": [
+        {
+          referenceSha256: "09039ed9215e0731b1119cc700d59686539ba2b85a2c47b855a4a2534fc0c2a6",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "da84de0e-a4cd-4dff-8ee3-87c9debf0969": [
+        {
+          referenceSha256: "27a3533696d05fa6d6ef83eb1c495c3314d8cc45f90ad9d6f9a1af0ca58450e5",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "db909e95-7979-41f0-b17a-874c4137fcc1": [
+        {
+          referenceSha256: "36999348acb028d507bbdc5c950e549c07a67bc1a05377e552e2d5629e8554e4",
+          fields: { typeLine: "Creature — Zombie" },
+          evidence: 92
+        }
+      ],
+      "de9676b6-6812-44e5-ad70-f498fbad0e18": [
+        {
+          referenceSha256: "dd2e34c71f67e2904a9976950ded465cc95b4534c454ccdaf7baa9caa4eaa583",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "df0b6c7a-0891-492d-8e07-6a198bf2ccc4": [
+        {
+          referenceSha256: "2307ae14dc7cc5815db520c892dba66b0b7f59e3abdb9315414d38d0457b9ddd",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "dfd2628f-63c4-4e19-83ea-26041650faab": [
+        {
+          referenceSha256: "057dce84dcd80f830c4aece055bb7a53b29d2bd656b9e5dadef8153486227879",
+          fields: { typeLine: "Creature — Wizard" },
+          evidence: 92
+        }
+      ],
+      "e0ddcf4a-1943-49dd-a02c-75804ce4bc3e": [
+        {
+          referenceSha256: "73418d53ea04b689d6b069acb8ed337f8723fea239940fdb48454ba66a6754a7",
+          fields: { typeLine: "Creature — Cat" },
+          evidence: 92
+        }
+      ],
+      "e18dc249-a343-4198-bef9-e8092a2bac15": [
+        {
+          referenceSha256: "5e1242136511b24c9e83d9dd9f59bc4ff705770b04357320ec2647824112a060",
+          fields: { typeLine: "Creature — Zombie Lord" },
+          evidence: 92
+        }
+      ],
+      "e1abae21-ed8f-4e21-b227-f721b840c11f": [
+        {
+          referenceSha256: "280714a0cd88fbb656e6d6008c0213d50ae1850f8ec14082d36e00712aa962c9",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "e394e096-ea70-4813-9039-e4bd065d0a17": [
+        {
+          referenceSha256: "94d6753d1e971123e6c3ed4e308c3975d553942d6f8add5f2aa0b39c78373359",
+          fields: { typeLine: "Creature — Illusion" },
+          evidence: 92
+        }
+      ],
+      "e41680e2-6689-4263-a5a3-9fb2e4280d52": [
+        {
+          referenceSha256: "d3e57aa494cb858d6b29890b169af80b47f0ad6988435d81f6b563127964f1ab",
+          fields: { typeLine: "Creature — Spider" },
+          evidence: 92
+        }
+      ],
+      "e52ed647-bd30-40a5-b648-0b98d1a3fd4a": [
+        {
+          referenceSha256: "9a31cc8a5a165497d0f73d7aa72d3eb37f4972e67ed87bb274d82d7e25e1fe87",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "e7209cc8-b519-4f27-87d8-b12e239a121f": [
+        {
+          referenceSha256: "cd8e3559f7e14671a391d3fbce122ff2e9f32c9c50b1de6edc47aa9b9a22811d",
+          fields: { typeLine: "Creature — Zombie Goblin" },
+          evidence: 92
+        }
+      ],
+      "e7e320a6-88e2-4be1-97e2-30e0f3c2e450": [
+        {
+          referenceSha256: "7a4b7cda80091837357ff386b8e1b4f965bf08c05ce9b231614ed4d9718f7723",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "e822161d-0434-4578-aecd-c9ef0b84bd4e": [
+        {
+          referenceSha256: "21ce2776356f8f180a12b780be6542c9d7189143112a2d402183fc9136065d16",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "e89156b5-8bdb-41d1-a7aa-63f770a9b070": [
+        {
+          referenceSha256: "821ca2a845a00191b8c7f832ae337c9daf652a5809f712df676b6eca7e1e2155",
+          fields: { typeLine: "Creature — Bird Beast" },
+          evidence: 92
+        }
+      ],
+      "e89610e9-f1d3-4332-901a-2598bf01d61d": [
+        {
+          referenceSha256: "8c21ee31d304da4a3dc058c336436c86088e3517148fc436609257bfa3c03efd",
+          fields: { typeLine: "Artifact" },
+          evidence: 92
+        }
+      ],
+      "e8aade2d-5cf5-44f6-9095-aa3756b1c1dd": [
+        {
+          referenceSha256: "5f9ea455922c1cf7c66159a3e799d7c696358ae20493eb6443eda8f51caa286f",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "e92e197e-ef7e-46bb-9533-5f9819d545b2": [
+        {
+          referenceSha256: "37cbd8c0f60b6551e1dc2a50bacfa9a8155b8889ee597ab4163a3b2e0f901218",
+          fields: { typeLine: "Sorcery" },
+          evidence: 92
+        }
+      ],
+      "e93577bd-2711-443c-aa88-a235345d7800": [
+        {
+          referenceSha256: "efaf36bc734d79ffc0b4ecc7010727c5c98abd0951f7f9eb7dc4edfb28a1282c",
+          fields: { typeLine: "Creature — Dragon" },
+          evidence: 92
+        }
+      ],
+      "e9d06a1f-00b7-440d-849d-efc466d73f29": [
+        {
+          referenceSha256: "e33fc2a377a83617089a16365871fe03f11b9a85867c9f3ffac529cab21a46d8",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "ea338499-26a0-44e5-8999-f264644184d1": [
+        {
+          referenceSha256: "79f01bea2807918d6dd0dab4e4b47e9914ac28f100a9f2b6d22532b1c75e457e",
+          fields: { typeLine: "Creature — Elf Avatar" },
+          evidence: 92
+        }
+      ],
+      "ea454280-f7f4-4315-bb46-b56050c02c97": [
+        {
+          referenceSha256: "eae6742798b63e89b77a35d29f439985cb06c45035066d88db301b2a4e42f766",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "eb227f65-9189-41ed-94a0-2aa21cad26f5": [
+        {
+          referenceSha256: "ded9c2b8e02355dc9d66fca7d933133cfbeafc3e36298f57790cad2bf93a7e54",
+          fields: { typeLine: "Creature — Soldier" },
+          evidence: 92
+        }
+      ],
+      "eb2e9b7e-434e-477f-b3e8-e85ceb913650": [
+        {
+          referenceSha256: "8e8eb830612ba328dc3ae52c69bf2f5549ffa14518291af5c914f341ae3bf238",
+          fields: { typeLine: "Creature — Soldier" },
+          evidence: 92
+        }
+      ],
+      "eb545dcd-3a7a-46a7-9c35-d28faebc6d17": [
+        {
+          referenceSha256: "5ae50ecd49d43804d8154a4a40376c3224319a0e766ab70320597347b068d98a",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "ebaa7a26-8516-4d71-a524-77b2d3f030d5": [
+        {
+          referenceSha256: "62349098356dd428e66be42a238fbf0f9a03ced3ef9eb99c8d7123945e45d937",
+          fields: { typeLine: "Creature — Illusion Wall" },
+          evidence: 92
+        }
+      ],
+      "ec9796ac-11e2-4295-bf00-f684d0111970": [
+        {
+          referenceSha256: "ae7f0dea5c2bde650541daa99a5b8224bdc946465b3a0eb40eb8af3d5634e6ea",
+          fields: { typeLine: "Creature — Bird" },
+          evidence: 92
+        }
+      ],
+      "ee262fde-8df1-431f-9e5c-0cafe9212b49": [
+        {
+          referenceSha256: "fda147a8e41674dc5eaac3339c559c829e55225acb8a18d5983a8ba5970f36ae",
+          fields: { typeLine: "Enchant Creature" },
+          evidence: 92
+        }
+      ],
+      "ef397db1-2d99-4cb0-a6e9-6f72d615ebad": [
+        {
+          referenceSha256: "7e4d88c1571161ba9f26bf8db7cf2b78634dc341931a698d0fd41b1c2436eb21",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "efa2d660-7c93-4087-a6e5-49c2ad21eb5a": [
+        {
+          referenceSha256: "838fb687c313c8e0fb3511ae1c27dbdfebf76968cc55692094c457568429afae",
+          fields: { typeLine: "Creature — Cleric Wizard" },
+          evidence: 92
+        }
+      ],
+      "efe12afd-da41-436e-af84-fa3b36a58030": [
+        {
+          referenceSha256: "41031ff4b841e15630a0ff8afeaf5b6f5545eb5abf12a9b178986eef5f2f5e9f",
+          fields: { typeLine: "Creature — Zombie" },
+          evidence: 92
+        }
+      ],
+      "efe72820-952f-4c53-9ee7-ea7ea54fc848": [
+        {
+          referenceSha256: "d491e00979c98a472ad00e63e214a19732d9c9af8eb2ca5b44442b00ae6818cc",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "f1b91a5a-9328-4fc6-a2f6-a7879281e145": [
+        {
+          referenceSha256: "d456c88f90e95e83e8ae27e32da192b9294a2d09ba6628dcbe526c826f91ab21",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "f2c79e64-91bf-4e87-a4fd-3136ea67c5bb": [
+        {
+          referenceSha256: "f1917c0c95952d4405a8c8fd6b223e731b64ab10749bcff7d52823dbf1c7d5d5",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "f46894d1-2503-43fa-938e-7bbf19101d13": [
+        {
+          referenceSha256: "1780011e912639e897e4b78a6a4d7780ba0497f5df4a2a0e21a2f7401353c5e6",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "f50f60a8-e99a-4891-b474-a21abee38970": [
+        {
+          referenceSha256: "330ab028e84cdcb8b83cb6c08281dec6b85e0641bb5153558846822164d9f843",
+          fields: { typeLine: "Creature — Goblin Wizard" },
+          evidence: 92
+        }
+      ],
+      "f525d7ce-37d3-4989-beb4-173447cb5294": [
+        {
+          referenceSha256: "44b6016e0b074708c1ce9f95762c9787ba5cfeca75972e9e60ae9513c11b2d01",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "f6601ab1-3862-4aff-82be-be15493fe4b0": [
+        {
+          referenceSha256: "1df9be024bfb1516e63de89ca246aaf23afadc0e38bf772f57131db1f2f49ff7",
+          fields: { typeLine: "Creature — Nomad Cleric" },
+          evidence: 92
+        }
+      ],
+      "f6c4df1f-f148-42ec-8e22-e7114216927d": [
+        {
+          referenceSha256: "0d61ad4e3759994daaab9c5f0b12d56225b032d4ce7548499542f9ddceb2dfcf",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "f7c1aa30-0271-48d9-b9d0-3b1da26d98bf": [
+        {
+          referenceSha256: "184d278c6ecfe9c36ec5f2df1b659248555f93312e3f94afd71bcc48a89f2369",
+          fields: { typeLine: "Creature — Elf" },
+          evidence: 92
+        }
+      ],
+      "f94aa774-9036-4016-8880-4bde2710cb90": [
+        {
+          referenceSha256: "b7024b5ea0a42730547ed0fdd2e98782f6341c2d819c670b9167d72ba36d26ca",
+          fields: { typeLine: "Instant" },
+          evidence: 92
+        }
+      ],
+      "fb652a5c-464e-4ba4-a4ab-1181be70cf7a": [
+        {
+          referenceSha256: "ac6ef2cef255b016096ce5909f4389111640becc4a10c34a402110bd507e8ac8",
+          fields: { typeLine: "Enchant Land" },
+          evidence: 92
+        }
+      ],
+      "fc2de8a4-0d84-4f7c-bbe4-3a31172186ab": [
+        {
+          referenceSha256: "428cc08bf2b52645c7a8a52e54b81efbadee258195522afcb752edcf2e3b7bc5",
+          fields: { typeLine: "Creature — Beast" },
+          evidence: 92
+        }
+      ],
+      "fd194fb1-0d3a-4eff-a446-240d18dad43c": [
+        {
+          referenceSha256: "c89a8468286e99aab7909b43efb7a93667e538fae78727bbba32ccc8b9fb74f2",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "fd7babbe-f8c1-4e7c-8de2-2224dd357de4": [
+        {
+          referenceSha256: "912b6db8df3a3d86f24ac430abdcd4c3d14dfabcc5e2e284aeb3687bb70c453c",
+          fields: { typeLine: "Land" },
+          evidence: 92
+        }
+      ],
+      "fdb9565f-5b09-4127-b169-3146079dab84": [
+        {
+          referenceSha256: "50a13d9217e85a1420cb8177e984e434f56bbc87a212e740dcf743de13534209",
+          fields: { typeLine: "Enchantment" },
+          evidence: 92
+        }
+      ],
+      "feff65ca-aedf-4434-b701-590d600d1a0b": [
+        {
+          referenceSha256: "5463bb05c30d378f54deb04b6a1af7724babd3fffc02d1d3efa53d0686e97ed7",
+          fields: { typeLine: "Creature — Goblin" },
+          evidence: 92
+        }
+      ],
+      "ff34e303-c94a-4f5f-b9f6-8d48e6aac383": [
+        {
+          referenceSha256: "97d2a81354abdc021e6feb6820b226117cb66c4264114f23a1f92311b70481d1",
+          fields: { typeLine: "Creature — Illusion" },
+          evidence: 92
+        }
+      ]
+    },
+    artistCredits: {
+      "0356ae45-e5ca-46b9-8ebc-42bf4776e89c": {
+        referenceSha256: "4e42b72f7e8379ba25eb9c1d5c33518996a8b0ca7265c7b43b16f6a3e6ac3a88",
+        artist: "Tony Szczudlo",
+        evidence: 92
+      },
+      "05788d63-6210-44f2-9ae4-e55e9507a3a9": {
+        referenceSha256: "b4657d657e350c89bbe7cf7d14df227092a26bbdcabc4c9c9303212b23241dd2",
+        artist: "Justin Sweet",
+        evidence: 92
+      },
+      "05df2792-4971-49e8-a8f2-17700e247500": {
+        referenceSha256: "dd5a8ecd7f45904bba09819f0d53912ef2f0de0d46539b95666159179b7614d6",
+        artist: "Mark Brill",
+        evidence: 92
+      },
+      "05f9bdca-0d54-46c7-b803-9083dfc9ee24": {
+        referenceSha256: "da77006c60fe3fbbdd51b7bc5ae0871c834abb78a5e0ffd8bae26b5090dd58ac",
+        artist: "Tony Szczudlo",
+        evidence: 92
+      },
+      "0774771c-5373-4636-9174-d06e7d635183": {
+        referenceSha256: "60453d8b1c0df218ca57c2c2325478e940201f1fb0a9a8292bcb5d1688475bf4",
+        artist: "Ron Spencer",
+        evidence: 92
+      },
+      "07f567dc-8a60-40e1-b947-199872d8df08": {
+        referenceSha256: "a7491a4dc82e4ae5bd6a3c4f4778618fcea94be60896bb7571686a71db96038f",
+        artist: "Greg & Tim Hildebrandt",
+        evidence: 92
+      },
+      "0a96a608-9237-41c1-824c-89d5fad939ad": {
+        referenceSha256: "ab1c5a1a8a81a77dbfe78a05feae8a51f0c360750f3afc1a613bdb72a34fdb2f",
+        artist: "Glen Angus",
+        evidence: 92
+      },
+      "0aaa43b0-601f-4b99-a328-541b04d5696d": {
+        referenceSha256: "62d73d10725cdc5e3fa93eb57b236340af65907e8a7d92ffc90b429e0ab81795",
+        artist: "Bradley Williams",
+        evidence: 92
+      },
+      "0b09315c-d6ff-4fdb-8774-c6402b45e959": {
+        referenceSha256: "9b858efc8f70c9e73637620973ad4bb81a0cddf1358f274defb81e3901f2eac8",
+        artist: "Jerry Tiritilli",
+        evidence: 92
+      },
+      "0b0d8543-78c9-4d7f-b45e-44ecf023d276": {
+        referenceSha256: "8a6d7b06057d07700ef4b0c56757dd2261afde1c9fe192aaddf78a2e3e2a62ff",
+        artist: "Jeff Easley",
+        evidence: 92
+      },
+      "0b872f85-60c5-44c4-956d-a8aa8132908b": {
+        referenceSha256: "f3b40c500cd1503277b8a4eca5ec282800de8202828abb6ff7a79245543cf396",
+        artist: "Kev Walker",
+        evidence: 92
+      },
+      "0c16e565-0b7f-46b1-a091-64c47c923a9f": {
+        referenceSha256: "ce441d2fafa7382408f8d09bac16df1bd96e4497d4c56e5e4ffd7b4dd6dc4765",
+        artist: "Iain McCaig",
+        evidence: 92
+      },
+      "0d07ebe6-76cf-4345-b59b-9954496c44d0": {
+        referenceSha256: "1ccf32397ca12d0e94771da8e4d9670fa9f35678886741cbd0ebcadda0366928",
+        artist: "Mark Brill",
+        evidence: 92
+      },
+      "0d4dd156-a2c1-4fab-b9f4-3302a4e8835a": {
+        referenceSha256: "3d7bbf6b4b63320523b323ff131142957ff867461eb330b683da2f9803f17d58",
+        artist: "Monte Michael Moore",
+        evidence: 92
+      },
+      "0d563ebb-ecd1-406c-9d69-c101acdeced7": {
+        referenceSha256: "6769a97faf9887a9c34bd3b88fb32aae2bc85d0eb2c931bef28c51dab080a4ab",
+        artist: "Monte Michael Moore",
+        evidence: 92
+      },
+      "0d6d7d88-d82b-40f4-bf57-ec5d7c480689": {
+        referenceSha256: "fb7eaf40b3eedde90610daf2edcac89f57dcf77246848e4642b915c40e55a66b",
+        artist: "Kev Walker",
+        evidence: 92
+      },
+      "0dedef8a-5527-40dc-9ad9-bcee4cf30a76": {
+        referenceSha256: "abccbd598ffa5e7f04702edf22337257c164a6d1ffd865b88917f01245e86446",
+        artist: "Justin Sweet",
+        evidence: 92
+      },
+      "0e4f3eff-ac99-41e2-9003-9630cdb3ae23": {
+        referenceSha256: "df18d46d4d44dee265a717e2dc55409cdb9ae22922c7421d8305498b4f8ed16f",
+        artist: "Dany Orizio",
+        evidence: 92
+      },
+      "0e9d6e81-1869-4ab7-8a4e-477d5c4aed6b": {
+        referenceSha256: "4415846301e4ec6148cfdcaf01ff9f3616a1400f0c6fccb4f61d890d90a935fe",
+        artist: "Jim Nelson",
+        evidence: 92
+      },
+      "0ea5c6e0-8361-4214-997b-32a66b19fae9": {
+        referenceSha256: "89dd7aa8996e560a85ddd96c08f670d2053a7a2b41d4f1434728e8450981b215",
+        artist: "Rebecca Guay",
+        evidence: 92
+      },
+      "0edc37c6-b6a8-424f-95dd-928d03c28542": {
+        referenceSha256: "e11812514caf96dd9ad6c50c2358a439f4c65933f27db62d27f55f3a88426ec1",
+        artist: "Anthony S. Waters",
+        evidence: 92
+      },
+      "0f037e99-75fb-4a2a-b4c6-448ef21b16a3": {
+        referenceSha256: "0e971429196245060b482d5e0603d6965e6126e1a0a7c121ffc598b25bc517bc",
+        artist: "Heather Hudson",
+        evidence: 92
+      },
+      "0f7585c8-9e21-4eef-afc1-2852de23db2f": {
+        referenceSha256: "2022754ce421c311e8fa52b9dd7c37d4136269873247e35934c960e6adc59a4b",
+        artist: "Rob Alexander",
+        evidence: 92
+      },
+      "1038436d-aea5-4508-8b37-c2cfa32c2771": {
+        referenceSha256: "55ec056e70f738b8c6a5226754579f7722b12ac3218baf95e33ba9963e3ce6ff",
+        artist: "Roger Raupp",
+        evidence: 92
+      },
+      "107492b9-03a8-4d53-a0cf-4814ffbec409": {
+        referenceSha256: "57dab99a599aa5457c74592f44db0bd70f875b2ba03dc84da94cd677acb14e75",
+        artist: "Tony Szczudlo",
+        evidence: 92
+      },
+      "1082eea2-5e83-48d4-b02b-a22e7cbe2054": {
+        referenceSha256: "c31cd49f0f6820bb86e48546707b8a2db64301cde26d549238f93a60f0405966",
+        artist: "Glen Angus",
+        evidence: 92
+      },
+      "10a34e31-97f1-40e8-9d91-a8139af7f096": {
+        referenceSha256: "cd470e2ae34132f2473f868604500e71d9a3df43623c02220de5ffdd3770e3fc",
+        artist: "Jerry Tiritilli",
+        evidence: 92
+      },
+      "13bf5786-e41a-4839-b8a0-5c7a413b23d0": {
+        referenceSha256: "8f4b7601c52b4d3f46e8fdf5be3d86d826e63073461ee75a7c9562b903e5396e",
+        artist: "Darrell Riche",
+        evidence: 92
+      },
+      "143e9057-267a-4c78-b72a-4f8018b627a8": {
+        referenceSha256: "44595fd52e65950474fe16b96a7eefb6fe5dc587df559e20e9866bd3cba36505",
+        artist: "rk post",
+        evidence: 92
+      },
+      "150d5229-b1a5-42cf-bf6a-04d246f1124f": {
+        referenceSha256: "77a0ec32a97440f7ef24c1ba13b6813f6c663f71f6932d3fc635ea1eb3d69be2",
+        artist: "Matthew D. Wilson",
+        evidence: 92
+      },
+      "15326971-a53b-45f2-8f1d-1b82935286e1": {
+        referenceSha256: "52680bf42e07318b843a9113f6a8029042e0a962664b78bcb243ab66e32ef317",
+        artist: "Nelson DeCastro",
+        evidence: 92
+      },
+      "15a4460d-3fe8-4b1f-9990-0a19c3345367": {
+        referenceSha256: "37518acea72c7e0f66f66600650b2186347870eeae8383928401e383f180a6ed",
+        artist: "Jim Nelson",
+        evidence: 92
+      },
+      "16ebef2c-8bb2-4816-a628-0062f95e512e": {
+        referenceSha256: "6a3d49b16baa4115d398e3dad1cbc02f72bfc0534882aa269ae47a1d1983b36d",
+        artist: "Wayne England",
+        evidence: 92
+      },
+      "189a09b8-46d2-4ef6-b7cc-9e510d1ea0b8": {
+        referenceSha256: "0321972944e43d448b7b58d4cffb78b09ac6f6122855392e573cbb0f049afe75",
+        artist: "Randy Elliott",
+        evidence: 92
+      },
+      "1b15d04c-62cb-4704-8cc7-9842cef27a1b": {
+        referenceSha256: "b4284a9b62f38472b2c8309a3d8de0a9955e05e414762f01e3308f8d3faec9cd",
+        artist: "Christopher Moeller",
+        evidence: 92
+      },
+      "1b713448-853a-41ee-a302-963e9c1c1c65": {
+        referenceSha256: "f6d4f63894f9bea51cb8772d96a1fe8758666b7654441716d0de50b981a68614",
+        artist: "Eric Peterson",
+        evidence: 92
+      },
+      "1bc2da43-c0e1-4fbf-b309-a75e105c29c1": {
+        referenceSha256: "7dd3fc8f25902cfbcb63cd3c6677ccbd52fe841cbd9c5fa0342f16b671848492",
+        artist: "David Martin",
+        evidence: 92
+      },
+      "1c75f9c8-9640-4f64-b32a-916436e461fc": {
+        referenceSha256: "10b061d3ff98dcd48e8ea5d762eb56c8c3a900958b3ffbb0d17770139c06d433",
+        artist: "Alex Horley-Orlandelli",
+        evidence: 92
+      },
+      "1c964473-7c54-4c2d-a3eb-dba01c842103": {
+        referenceSha256: "b597e58342c6a97d902a605c4a3315f3b8aa664cc8f7cbf0359210bcdf0f5e88",
+        artist: "Anthony S. Waters",
+        evidence: 92
+      },
+      "1d1790cb-34e4-4f23-8a13-1906fd9a956f": {
+        referenceSha256: "a90fd29a84a9a8b18ce4888a8dbac85609f768147939808f872a7f837affabb0",
+        artist: "Thomas M. Baxa",
+        evidence: 92
+      },
+      "1d47ddca-a363-4ab7-b7f2-d0e0043c9916": {
+        referenceSha256: "e6a58c55cfa696b08f5a033dd02a8c2aafce2f455d4eeb166de35ebd2b44f4cd",
+        artist: "Ron Spencer",
+        evidence: 92
+      },
+      "1d4b887a-d928-4f6c-aa37-a0b09e87b91e": {
+        referenceSha256: "a2a5680e2909e64785eca0a42ac97652618fe72916a4b5b99c954705b9a3360f",
+        artist: "Heather Hudson",
+        evidence: 92
+      },
+      "1d513dde-7c5f-46f1-b871-5290595bdbbe": {
+        referenceSha256: "28fd8f627ac6436266d956e6b4ef16a6089f953e85a297df9751c61b3a11eab9",
+        artist: "Carl Critchlow",
+        evidence: 92
+      },
+      "1dac3bfe-884b-4875-bc7d-df564eb014cd": {
+        referenceSha256: "54bf6b887d54c114f1d1b98fdd9d5acda948d20f1305d3c5fd34bdffdc38ece7",
+        artist: "Matt Thompson",
+        evidence: 92
+      },
+      "1e81e5fc-0e18-4dd8-a505-aa7dba8521a8": {
+        referenceSha256: "4439931ab19fd7b2e96d379e0a541eb0e5814b0c212c7ff71c820f2fc90c75a8",
+        artist: "Glen Angus",
+        evidence: 92
+      },
+      "1ea572b5-ff68-45aa-8200-78ee7f64a0ce": {
+        referenceSha256: "24506be0d38f97eb79678efd33587015f6afa39b7a0017258b9e6da18a447f1b",
+        artist: "Dave Dorman",
+        evidence: 92
+      },
+      "1ebb4668-eebf-4b7e-ae29-75fff5963868": {
+        referenceSha256: "589296a990f9d0d13ef39c0b3dd7ab5f34934b27c66e040ba7c0bf4522c6d2b0",
+        artist: "Pete Venters",
+        evidence: 92
+      },
+      "1ff31ece-f132-4107-9415-fcf30e251167": {
+        referenceSha256: "90caf0e28e4c05fd6cebc0eefc18b5284ea31eae0796b13a44fae0f309181c2c",
+        artist: "Carl Critchlow",
+        evidence: 92
+      },
+      "22061b5e-81d3-4c7f-ab39-7ee719c13cef": {
+        referenceSha256: "4285f583e46a4fc76ff281cdf7937449751e156f13ba15d57581af19181bd9d2",
+        artist: "Carl Critchlow",
+        evidence: 92
+      },
+      "245aba23-2abb-4084-b4cb-d06e46de2108": {
+        referenceSha256: "be48f502221b08753715218207d817e4528f0bf75023d367f619ebfb9d7571e8",
+        artist: "Greg Staples",
+        evidence: 92
+      },
+      "246a2758-0096-43b9-8193-d6ae5b41b6e6": {
+        referenceSha256: "5109a6faf48f291b3f5575288508f078633f30da083ff14d0707d149cb5c793a",
+        artist: "Iain McCaig",
+        evidence: 92
+      },
+      "2593a6a6-dc21-4742-acb8-f7092931b1ce": {
+        referenceSha256: "d9db8674668ffb049fff0e3ddf8522ff1cde121f87f799941824ab4583224418",
+        artist: "Justin Sweet",
+        evidence: 92
+      },
+      "2970831a-738b-476f-9d46-39f10a1f91e7": {
+        referenceSha256: "f5c5376821825974f1cd4e19e400a75800cee148252fc681eb9173ae0e6585f6",
+        artist: "Gary Ruddell",
+        evidence: 92
+      },
+      "29906eca-0823-4cd6-890f-e5b93cc50a11": {
+        referenceSha256: "8442374085b6888752fe69fec9dfa551577c58ef527bbd849e4335ee20dc646f",
+        artist: "Dave Dorman",
+        evidence: 92
+      },
+      "2a02d6d5-27be-4301-a467-5b49491d0d4f": {
+        referenceSha256: "37ef467207301daf6859293ef240bfeaca743863a70e98da56935066bd53565e",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "2a8cc948-28ff-4bbe-b8c9-71de37478023": {
+        referenceSha256: "bd72ff7bc22ed618c66546fee555a89a1c835c38238a07aac95bda69f263979c",
+        artist: "Arnie Swekel",
+        evidence: 92
+      },
+      "2be66eaf-222b-4c40-a9fa-aad56b9218e0": {
+        referenceSha256: "25315df1322adb16605cb3996a06007d70c2aa56ccfaa8295f0400d5a1ec2cc5",
+        artist: "David Martin",
+        evidence: 92
+      },
+      "2c6b767b-49e5-4845-9b3f-29540e5fa330": {
+        referenceSha256: "c7ddecfed6d3bbb549593a2338fa10d7c5cd6633ba5a97efebd40cc75fc6630d",
+        artist: "Christopher Moeller",
+        evidence: 92
+      },
+      "2c88b942-06d5-45d8-a4d8-6ca864f65516": {
+        referenceSha256: "f4fb74de57176c9b2efdc819f0770106c842f7e4093226bcdb4dda97012b1a17",
+        artist: "Greg & Tim Hildebrandt",
+        evidence: 92
+      },
+      "2cd9abc9-f289-4294-bc0f-4addc8b92a4e": {
+        referenceSha256: "19ccefef7cde8c2865df4f3b10f05eb9dc2d4434c60ef558d89e0ed81817465f",
+        artist: "Scott Hampton",
+        evidence: 92
+      },
+      "2d9e3793-7ddc-45c5-b25d-acd5cb96026f": {
+        referenceSha256: "af34aebd49eb93d0c3479e3780c2050ce958ed36b1df49e61654b5ec4241737c",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "2deba175-8c02-492d-b404-5d842910c095": {
+        referenceSha256: "e546d18abec85fdcb4e92633d0946b01e22a5e5752dd7d20eadf795264984319",
+        artist: "Ben Thompson",
+        evidence: 92
+      },
+      "2fe86733-7851-4c2a-8d94-dba6f071b94d": {
+        referenceSha256: "368edf20b0faa0ea48899a35abd36df9a9980f35b3699e248ad0fa163a70bc87",
+        artist: "Bradley Williams",
+        evidence: 92
+      },
+      "301cb538-a931-4916-927b-4986046b1158": {
+        referenceSha256: "aec24a03c97dc9d7e7040c0881962d701bbf0eb2729e40b121820112d2cc6f77",
+        artist: "Edward P. Beard, Jr.",
+        evidence: 92
+      },
+      "30f6b4a2-5780-46e9-b239-459d2cf37743": {
+        referenceSha256: "12a6602d8d01bbbfa43c5623163d752d7369ab75e48aa56c90f31e22215c411d",
+        artist: "Carl Critchlow",
+        evidence: 92
+      },
+      "314d5e89-55f7-42b4-af19-d4d0f499a265": {
+        referenceSha256: "45160940db5c8958d462699ed9db31baf7179fb6ece6cfb58b800bb8f58534b6",
+        artist: "Kev Walker",
+        evidence: 92
+      },
+      "32a2ee45-7f1d-40a8-82b4-ab3b705417ea": {
+        referenceSha256: "b6b6f9deec40254846b4a9f681457522621ffe58f581a0c78b424137dd83be13",
+        artist: "David Martin",
+        evidence: 92
+      },
+      "33af35c6-7802-4366-ad20-1e330b4957ef": {
+        referenceSha256: "5d467ec6d60fec5270becb117004af45386a08162e70a64215c5834f0594c249",
+        artist: "Wayne England",
+        evidence: 92
+      },
+      "33f69670-e494-42b8-9148-fe105ec61aa0": {
+        referenceSha256: "876705c8759058724c3eaa6d033fe65c71cc239c2b511d628819e3e26f893090",
+        artist: "Scott M. Fischer",
+        evidence: 92
+      },
+      "35724e9f-efa6-47e7-ab4d-7defe38ba576": {
+        referenceSha256: "8eada56563706869313c4800e81ddd9faa83eade08a30742400fa23ebccb4350",
+        artist: "Alex Horley-Orlandelli",
+        evidence: 92
+      },
+      "36e062ec-df51-40c0-ad8a-2ee1cb8f8f17": {
+        referenceSha256: "70f5f4d26e31dee4d135d708191aa68c1c09f65d7b14505eefdab189cc000caa",
+        artist: "Tony Szczudlo",
+        evidence: 92
+      },
+      "3767f568-36b1-4064-835e-4dd7576b7b8b": {
+        referenceSha256: "8ce227073d981a5d3b95bb9ec26d4669482239bcadbdb6c548a5c56f0b74e9a4",
+        artist: "Roger Raupp",
+        evidence: 92
+      },
+      "37775f40-10de-4f5d-abb2-c49e682039de": {
+        referenceSha256: "d89c053cec7b13b4c620562041170a9ff81531e350d995b5eb2abec319bea01e",
+        artist: "Ron Spencer",
+        evidence: 92
+      },
+      "38315ba3-57a0-4aa0-b1bc-4b1fcdd763d4": {
+        referenceSha256: "ca522a157af7d5aef0bd135fdd256df17a472582c808017d45d01b3815452c77",
+        artist: "Keith Garletts",
+        evidence: 92
+      },
+      "38737f38-26bd-417c-b6b4-53f26e4e8044": {
+        referenceSha256: "7658a1852918e31458d91d2798e846315761448093100a5ef70dd0b07d98d6b5",
+        artist: "Carl Critchlow",
+        evidence: 92
+      },
+      "3a7a7bf3-1b0c-415d-9c57-73ac55b1f915": {
+        referenceSha256: "568145efba01a6cd239e11b8cb1a01d20aad9ef31cd76ab47b70ca318a0536e1",
+        artist: "Greg Staples",
+        evidence: 92
+      },
+      "3a9a1ecf-29f6-474e-bbcf-3455d388aa94": {
+        referenceSha256: "89923b8ee851c02dc1e4d9c65b9b112b18e72847b4be818a1d8f0d3918df229e",
+        artist: "Ron Spencer",
+        evidence: 92
+      },
+      "3bbfd715-0772-4516-8cd8-89495dbccf4a": {
+        referenceSha256: "38076d119df1905636ec3bf7cf28aa99dbd00d2b7d161f56049531fecd59e646",
+        artist: "Thomas M. Baxa",
+        evidence: 92
+      },
+      "3bdaef0f-9965-463b-902d-72ec24b2db7b": {
+        referenceSha256: "b809e5bf4083c2a5aead08d9426fab885bb517bcdcd044e16764de7721d18897",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "3bf6987e-a6e4-4a88-af0b-cf3b2d2b80c7": {
+        referenceSha256: "023fe8850ab170feca01d16b9c2834f9bf5bd986ee2162a80739337cf2bec041",
+        artist: "Ron Spencer",
+        evidence: 92
+      },
+      "3ca3e348-47cc-41d6-999a-60d1206aaf06": {
+        referenceSha256: "aee649b088826a89bdac80fc0849ef7a6dbcd1a760ea8c06597ccbec8249c99c",
+        artist: "Mark Brill",
+        evidence: 92
+      },
+      "3cbd82d5-d64f-4833-b1a9-9652fcfa1578": {
+        referenceSha256: "5adcab8e1f6e1a190432d73534a462e05a0e054638464b75da87ee9fdf50bc72",
+        artist: "Matt Cavotta",
+        evidence: 92
+      },
+      "3cdfa8b3-393b-4bb6-9265-faa4ab7126d2": {
+        referenceSha256: "0afa5852f8325d17fb100353e9000fdfcf7a8e9420ab379210a1a3e248d04f10",
+        artist: "Bob Petillo",
+        evidence: 92
+      },
+      "3d251490-41bb-4ad3-bfd0-a5e66ee42598": {
+        referenceSha256: "9f14532f5b83fa56c818ac306bd45d9d549ad36710c8d7e38c653b7009c00ae6",
+        artist: "Anthony S. Waters",
+        evidence: 92
+      },
+      "3e48715c-6ff7-4b0c-aa7e-a2c901215426": {
+        referenceSha256: "d2d7da43de7f31bde81b6bddab93533b3f784efddba854711346e11c0b57c3c9",
+        artist: "Carl Critchlow",
+        evidence: 92
+      },
+      "4052a5af-20b2-4817-8c94-78d488ee220f": {
+        referenceSha256: "4cb419ff6c804bfb92bb20ff100c5ce20ecc4945dcdadfd5639dd2b355486a6d",
+        artist: "Franz Vohwinkel",
+        evidence: 92
+      },
+      "409adb7b-6dcb-4e7f-a5dd-c0adf12140a4": {
+        referenceSha256: "d5888b32e4f426894c8bf81495967c0d2e3792022096f1fb1b4ed4c47c70ad9a",
+        artist: "Eric Peterson",
+        evidence: 92
+      },
+      "41b65eba-140b-4c1d-b796-8134b7c1ede8": {
+        referenceSha256: "2917aaafa21128503f62c926cc6536977d75a6a02540e29684f4ada9fa8082b8",
+        artist: "Paolo Parente",
+        evidence: 92
+      },
+      "41bb314f-237a-43fc-95c8-b26188dc4476": {
+        referenceSha256: "226aa84518bba076dfecdda5fd228ef10f844ece6757285736d2ff97245c33a2",
+        artist: "Doug Chaffee",
+        evidence: 92
+      },
+      "4289bdcb-6eea-458f-a4eb-89e26264673a": {
+        referenceSha256: "056cf8c7e7e1ec40d5798dba6befc6828406b5a80d7d4e737a5230acf6bbf9f7",
+        artist: "Alex Horley-Orlandelli",
+        evidence: 92
+      },
+      "455c6923-8d0e-4a7f-a5c0-add8db519ee3": {
+        referenceSha256: "c9933fe0f4a290b8e50e583a3196976ead0211625e4dbf368cd12e11c2564961",
+        artist: "Glen Angus",
+        evidence: 92
+      },
+      "45be3811-a223-4c45-9b24-0317f2d53c60": {
+        referenceSha256: "911e9e3bd417715595935a0cce92841184f1701d3d7b2759ffe695566c590249",
+        artist: "Heather Hudson",
+        evidence: 92
+      },
+      "46d7aaea-226b-4820-8db2-89dcdcbcc557": {
+        referenceSha256: "8d810ea494c3379dc430f051e4573b771a9fc1b3e99eb8cb1e97a802027f4923",
+        artist: "Daren Bader",
+        evidence: 92
+      },
+      "47c40269-80a5-454f-83dd-dae1c11500c0": {
+        referenceSha256: "57fb79e15cf959c8b31a807883114e90ed9c48a69b1ebaf0a616ab6921b2cbdb",
+        artist: "Pete Venters",
+        evidence: 92
+      },
+      "48f3ad80-d000-496a-b704-d09e07981b6e": {
+        referenceSha256: "0a9dc36606503f471b10f9c95b4bc007ad02de7b32deab10dafb1151db0c54a5",
+        artist: "Greg & Tim Hildebrandt",
+        evidence: 92
+      },
+      "4a0fa75a-a82b-44cd-965f-07e0fe7a111a": {
+        referenceSha256: "478be91fe87396aa9e2b8d31e2340a5c88147470b4d0089193d864459a0476b7",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "4abde0d7-266b-41bd-ade1-c4d93507eb16": {
+        referenceSha256: "9d9716a07d69a8b9b7640b8b9220fc4a35dba0d84664f33667f05c881b418fcb",
+        artist: "Matthew Mitchell",
+        evidence: 92
+      },
+      "4b0c5d14-4fab-4034-a2d3-0d851ef67cbd": {
+        referenceSha256: "7d7d7594f67bb2c16eb9ddad14cd4c0539c24518ffcab881a11d20e041582aab",
+        artist: "Christopher Moeller",
+        evidence: 92
+      },
+      "4bdf6e2a-1bf5-4d63-a58b-883cfb1ea0fa": {
+        referenceSha256: "4854adff2e6631c699b15fb688d07d38a4f2b4232386ea4ef976ad8b50d2e629",
+        artist: "Pete Venters",
+        evidence: 92
+      },
+      "4c03afc5-7ca3-4ac6-a06e-091e2cce13a0": {
+        referenceSha256: "bdce11af68f3c65f9e7a426ce5c9e714537bfa246f0c735ebc6397fae98d6f99",
+        artist: "Randy Gallegos",
+        evidence: 92
+      },
+      "4cc8a6e6-ed62-4784-ba9a-b1f703fc6119": {
+        referenceSha256: "23e37432d7a7ca8f424810a900e28e36819e2307c6bd1e483a11bc2f004e2086",
+        artist: "Alan Pollack",
+        evidence: 92
+      },
+      "4d0d666a-8e31-466c-937f-54df910f664e": {
+        referenceSha256: "63d34ac1b86e0794c9e1a15d74022fda1f83cb4b6831d9a135d1a15dac3b8c0e",
+        artist: "Thomas M. Baxa",
+        evidence: 92
+      },
+      "4d399b71-c365-492c-976e-2c79d97d08bc": {
+        referenceSha256: "8eecffb4849ec011bd3a9b3826c5c8598331f9505bf319c37c0da6daa90f332e",
+        artist: "Justin Sweet",
+        evidence: 92
+      },
+      "4d8edfee-7837-450a-bcf3-a7bb25670056": {
+        referenceSha256: "6268f1771e14ed130a86dee9c2ac2d27e8e4eb8938cd0885cd64f1fb4edebfa8",
+        artist: "John Matson",
+        evidence: 92
+      },
+      "5189f152-f075-4090-97dd-b7686d813865": {
+        referenceSha256: "4c29748d70b4521bf2e1c0c4d82e24a9a9b6766e22ab43d4cb1cdeeb37d6da69",
+        artist: "John Avon",
+        evidence: 92
+      },
+      "524fd470-e535-47ea-98a0-6187e429dfe1": {
+        referenceSha256: "e19c2fb13351c4b084a75070bd34481f35a404b9725a0512007a5580885ffe4f",
+        artist: "Tony Szczudlo",
+        evidence: 92
+      },
+      "52f464a9-586c-4cf3-894b-b407c9f4dcb8": {
+        referenceSha256: "02f48266bc44b6618274abac9abf496b655207874ca6a0f2ce7a74522d2d76b8",
+        artist: "John Avon",
+        evidence: 92
+      },
+      "5360a871-6932-45b2-bc94-1bd414e38906": {
+        referenceSha256: "6e92e8f103206635b33755006c60270ab5aca216786f26476317678d7d0e363b",
+        artist: "Ron Spencer",
+        evidence: 92
+      },
+      "5595a57a-a76c-467b-afaf-5affffc24f35": {
+        referenceSha256: "1a3683cd1faea4f6deb3880e975619abbda71629adb55012e63dc06ebed624d7",
+        artist: "Eric Peterson",
+        evidence: 92
+      },
+      "55d16883-5e98-4dd2-92dd-0ba92f1099cb": {
+        referenceSha256: "bbc2498aac6bcd46b49225e530a66f7eeb5575f1c0e6633bc8ce28bc58e74ed0",
+        artist: "Luca Zontini",
+        evidence: 92
+      },
+      "55e0e300-db79-4328-ba1d-9c3910e47f52": {
+        referenceSha256: "9180dc2fd4374473ef1c9df3222fc21fbd3e4a793d1549ece1991594683da0b8",
+        artist: "Keith Garletts",
+        evidence: 92
+      },
+      "56125660-2307-4270-a947-f1f4ad63841c": {
+        referenceSha256: "a766b408f629599f3a37b9c259ff6feeb7083fb1e14bd3c4b2a636353a1062e5",
+        artist: "Matt Cavotta",
+        evidence: 92
+      },
+      "56b34afa-0183-49aa-aa5f-03e070020136": {
+        referenceSha256: "04887477d18be9fe64cb67a13626b7323449e3f7575c700628975961edb57e30",
+        artist: "David Martin",
+        evidence: 92
+      },
+      "57dcf434-5c67-440a-8b67-2df7307e92bd": {
+        referenceSha256: "1a2c1b4a9a6e3f03c91001a38554b5f8633bf88c2d212084fb3e49f47c97eba6",
+        artist: "Greg & Tim Hildebrandt",
+        evidence: 92
+      },
+      "58561356-4a97-467b-88e5-412e633715fb": {
+        referenceSha256: "90cace2896953de99087bcdb2e212f1813d0bc61405dc2a40af8e6099943d0e3",
+        artist: "Doug Chaffee",
+        evidence: 92
+      },
+      "5874e312-1010-43f2-b330-82bc9fcc9f53": {
+        referenceSha256: "64b66434abc0e013a9b4a4ddefa2609a8ce427541fe8e02b9dddd59ab8a06271",
+        artist: "Doug Chaffee",
+        evidence: 92
+      },
+      "58f9eb25-4140-4ecf-bcaa-1b193d884007": {
+        referenceSha256: "add5f95ad680749d967088354311881ed6997a3622402aebc0fb01bf290e0b6c",
+        artist: "Luca Zontini",
+        evidence: 92
+      },
+      "59262684-86e3-4485-9e35-202771c3eaa6": {
+        referenceSha256: "aefadbbb896d569d2f40af20f8ee86948191c35e713894b8fd96ac028eb7b4c7",
+        artist: "Mark Brill",
+        evidence: 92
+      },
+      "5b08b0a6-c94e-4407-8a24-c8202497b5f2": {
+        referenceSha256: "08f4bb01eca4b666d168eee543c04a2da920d7f869b6c9f421d1ff6bd86c0dc3",
+        artist: "Wayne England",
+        evidence: 92
+      },
+      "5b0d9c2f-356c-4f27-8560-8ffceadac31c": {
+        referenceSha256: "d1ca7125d444fa33f024219e0d9b0a7e07161c24deec3c44fc9c30bef6ec9571",
+        artist: "Darrell Riche",
+        evidence: 92
+      },
+      "5e33aaf7-7490-4b64-a966-82fbf7ca8686": {
+        referenceSha256: "a21760c5f70d36b4d9eece4df4871187dd792ed2b62ab281c59a25dd0d3c4771",
+        artist: "Greg & Tim Hildebrandt",
+        evidence: 92
+      },
+      "5fdfc473-8477-4c04-a4e7-ecac1b0a5716": {
+        referenceSha256: "97094eee5951baab644d08e263df449586d8c116a64cd59724a3c959423cdb43",
+        artist: "Rebecca Guay",
+        evidence: 92
+      },
+      "61f50a1a-f3d0-4fcf-bd32-0e173b0d3247": {
+        referenceSha256: "638c2e339e08cab2899a8856693df8d9f668ff22dbb665fd9bb9f58c195ad4cb",
+        artist: "Alan Pollack",
+        evidence: 92
+      },
+      "65162b24-8a3b-4b92-a831-6f23f809c76f": {
+        referenceSha256: "0df78b41df8ff54519cd8ea0f81dcb4a58f36ccff68410cbbd084eef463af582",
+        artist: "Randy Gallegos",
+        evidence: 92
+      },
+      "653cc07b-0f53-4b5b-9c5f-885b8b4a6e5f": {
+        referenceSha256: "49e2cff8d3a7e5fd6add2a721b4df2aea2c3049f06cc36f09a33b9244fd10a46",
+        artist: "Carl Critchlow",
+        evidence: 92
+      },
+      "65dd1364-ff36-4cb9-ad93-e6fcbcb942cf": {
+        referenceSha256: "e88001959901d6ee6d5ef4d31be725297a256c51e50ec5970246b3b251ab64cf",
+        artist: "Daren Bader",
+        evidence: 92
+      },
+      "685edfe8-9770-47c6-95fb-0816f3126f04": {
+        referenceSha256: "e043ffcda77d3e2dc8c641c02014fb53863e05eb06e3ccb818d3c982d9c9a021",
+        artist: "Brian Snoddy",
+        evidence: 92
+      },
+      "688bd665-4948-4961-aec5-f17782257f9b": {
+        referenceSha256: "df58679dd703fbbb398aa537bd15921095578c7b43f80e78ecec225d36fcfa40",
+        artist: "Matt Cavotta",
+        evidence: 92
+      },
+      "68c72226-6f52-4322-8b14-18737293dfa0": {
+        referenceSha256: "dcee955086223fa9ec8db734fb369d10597247ddf345a88050645465ae4881d4",
+        artist: "Rob Alexander",
+        evidence: 92
+      },
+      "69b58b6b-24cd-4440-b99c-d88d44b3c41c": {
+        referenceSha256: "4f8e5a4c0775a6ee3dc864b0f4bcc107418c2fef1358de852b4d4fb1fe731dbf",
+        artist: "Justin Sweet",
+        evidence: 92
+      },
+      "69db0298-f6d5-450f-add3-a28c0a43f33f": {
+        referenceSha256: "bf28cbe9b5993affd811bd9cfa46161b7eecff12e05ea30cb4486b941eef2239",
+        artist: "Rebecca Guay",
+        evidence: 92
+      },
+      "6b24af94-9632-47da-9bf3-e81bb743cd43": {
+        referenceSha256: "0307d7f07704528d7dc51b42b6a1c89222ba0a2bbe0f0e125cfff82ff0de5521",
+        artist: "Rebecca Guay",
+        evidence: 92
+      },
+      "6bfe64f9-8b03-41f6-a47b-fade397ad9d1": {
+        referenceSha256: "bd5d5e3585b29f6c805ee7b2a2675cd9305f80f5afdd4e9a9286691d36af5d2c",
+        artist: "Greg Staples",
+        evidence: 92
+      },
+      "6caae974-f531-469d-8c6a-2077c4f3294a": {
+        referenceSha256: "d4ee2d81db57f92c40f9f3fda45296f13f0e7fbb0423e067c01293183742a5e3",
+        artist: "Bradley Williams",
+        evidence: 92
+      },
+      "6e208be1-8b24-4048-90b2-6389f08043d1": {
+        referenceSha256: "fc14c8b914b160fe9bef56f438350d37a38fa4714ac85993be891907277328ac",
+        artist: "Edward P. Beard, Jr.",
+        evidence: 92
+      },
+      "6e8c0e52-8482-4c33-bc5d-26eaad922e72": {
+        referenceSha256: "b9c6603d3e3613a6214b7cc2c12fbad7f36b769f140f08cf70643f61972412c7",
+        artist: "Bradley Williams",
+        evidence: 92
+      },
+      "6f7b5ddf-d5a6-42bf-a196-7e834dbdb3dc": {
+        referenceSha256: "05b01651fa4b422921efae3dcc349e0101c07cebb080b651b1958d02958374e7",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "70ea023e-e66d-4049-b7bc-5e660804f088": {
+        referenceSha256: "950e2db4a235a234f619c45423646818de609f668a5906f1a8643673cc3808dc",
+        artist: "Thomas M. Baxa",
+        evidence: 92
+      },
+      "72cc64b9-f5b9-42d3-9921-564c4c9f2c77": {
+        referenceSha256: "b6bd67116e1342c4b4d6cd7bb28460c7b0d9926e5301a820a6a1917525b88420",
+        artist: "Anthony S. Waters",
+        evidence: 92
+      },
+      "72de2f66-0b86-4c21-b4c8-c2d97e3fd095": {
+        referenceSha256: "00ce7be03542701aeaf005dc6956397c33cd025c4d11c6e76d754c73dc196b4a",
+        artist: "Mark Zug",
+        evidence: 92
+      },
+      "738cbf9b-e3d3-4568-93ce-7915b248e5b3": {
+        referenceSha256: "15f029ca97052f3f3843d1c3ef26ed6b7cc9c470f5cc75fb4f79622e8df1b02e",
+        artist: "Daren Bader",
+        evidence: 92
+      },
+      "7441e7f9-a326-4f61-b7b1-e0dbed06046f": {
+        referenceSha256: "f5429a1293281993555d618b6cd4e5b73769221abb20337bc84039d385880a39",
+        artist: "Scott M. Fischer",
+        evidence: 92
+      },
+      "746b98bf-5398-4a00-b4fe-a990ea9cfd77": {
+        referenceSha256: "b1a51234cf14d9b61d501ea9950d3e52b3a3cc0c9f2beb17f3d540926cd06cd3",
+        artist: "Heather Hudson",
+        evidence: 92
+      },
+      "74cc7ab0-a5db-4ae9-af9a-89fd5aaaab57": {
+        referenceSha256: "3df4a5a53fafea171d2de9b7229b039c7f7ae5dd6f07acf991f57723c9c8f775",
+        artist: "Matt Cavotta",
+        evidence: 92
+      },
+      "75a71d29-29eb-43c4-b0f3-457435e8f629": {
+        referenceSha256: "e277bce83669772f5852f4ca75f56d766357ce158e682645e04c8a5d3f830f05",
+        artist: "Brian Snoddy",
+        evidence: 92
+      },
+      "75def198-99d6-4b0a-8878-5151f44bc0a4": {
+        referenceSha256: "c660a5d482619ba7c8dbcd0890cd6f1a9df7f9e7a7a3381add7206822f4b9926",
+        artist: "Rebecca Guay",
+        evidence: 92
+      },
+      "7652dc61-9170-4895-a0bf-c32a1ee0350e": {
+        referenceSha256: "2469d861934a8aee9c983eb572f78bc0f5568504d1581503033b57bc058586e0",
+        artist: "Dave Dorman",
+        evidence: 92
+      },
+      "79cf3535-3f80-4b76-aad3-dd851e6885a6": {
+        referenceSha256: "901a4c552db27bda77f64f0fd55397a38372b3a8d85b62e6bfbc95edcc290c59",
+        artist: "Mark Tedin",
+        evidence: 92
+      },
+      "7a4b41c4-0d14-4b9c-8e0c-a626ba6b104d": {
+        referenceSha256: "6a918b089dcd8b56a441d2df54fb2736feee9d21417e813d72bfd8a5ebddfe44",
+        artist: "Anthony S. Waters",
+        evidence: 92
+      },
+      "7a7c5941-9c8a-4a40-9efb-a84f05c58e53": {
+        referenceSha256: "fafa4a31b2aa5983ee9d560c10900a4d984992959687b59d06ecdde8651e8443",
+        artist: "Anthony S. Waters",
+        evidence: 92
+      },
+      "7aa97b25-1ea0-4351-ab9f-f06c8bb4d044": {
+        referenceSha256: "5bf7007128706cf539bceab25a44936e6d6906c5f92531bac2abc23e718d2316",
+        artist: "Dan Frazier",
+        evidence: 92
+      },
+      "7b0af992-80e0-4ac6-a828-5eaac47eaff6": {
+        referenceSha256: "f7abd61ee68a68f29be4bf806509d2821c98fa119b2eeed7ad8a776d206ab863",
+        artist: "John Avon",
+        evidence: 92
+      },
+      "7bf7d68a-dbd0-45f3-acbb-59ee38e6057e": {
+        referenceSha256: "07ef0da62c6170c3390f28446a32e1d36a38d8f251157abe2dee822a967c78d7",
+        artist: "Rob Alexander",
+        evidence: 92
+      },
+      "7e505e8e-51aa-4415-81e6-cf022279edb0": {
+        referenceSha256: "ed4632831411b515e8ded79730c2b27a1e21bc7e1dc8df5356674378f4dbb2e0",
+        artist: "Dan Frazier",
+        evidence: 92
+      },
+      "7e689df7-b85d-4346-bee8-5e978b5cbbbc": {
+        referenceSha256: "e226324c075425860c1a93ecf9ddfdeecd7135418a64b79210ff4a500bbfb22f",
+        artist: "Greg Staples",
+        evidence: 92
+      },
+      "7e71fc2d-643b-4fad-89a8-624d330895d6": {
+        referenceSha256: "34671275978db20d4bb3b398b7539abcb79527a20d28198235a109eb9119ef9a",
+        artist: "Christopher Rush",
+        evidence: 92
+      },
+      "7f2a29cf-4b2e-44c0-af73-512d6fed0dae": {
+        referenceSha256: "5c768b82f43bab21644ac0c07f9890b4ddd7af50ed42b01e36b4a9914a8590eb",
+        artist: "Kev Walker",
+        evidence: 92
+      },
+      "7f2caba5-9f30-4b5e-833e-68c85a47ef7c": {
+        referenceSha256: "b1e14a33deb322bcf44eed8d76bc7c1b62b233e7efcf533467ae8e2722ce40ae",
+        artist: "Darrell Riche",
+        evidence: 92
+      },
+      "7f379966-6a0a-434c-8682-1cf528a9a4a1": {
+        referenceSha256: "1e1c67613e5a809dddc5a45442a3ff159daf23e7f073ccd7fa9d4918fb0d4b61",
+        artist: "David Martin",
+        evidence: 92
+      },
+      "7fbbb075-5795-425f-9e33-70cb922eea16": {
+        referenceSha256: "84084754b093ee1900bb9488b4b73a53d9682a4cb2814319e5bd71c86bf846d0",
+        artist: "Monte Michael Moore",
+        evidence: 92
+      },
+      "80b59844-c9d4-4bc1-86e6-4cc596d9165d": {
+        referenceSha256: "616735d728d9b894a32979e5c2279fa2eecef7ec3c9089cb13fa3570349f477d",
+        artist: "Glen Angus",
+        evidence: 92
+      },
+      "82105090-5f71-4690-9ade-187354311ae3": {
+        referenceSha256: "c0a779534ec4222b88c1e18ab06a800bffa374619d9ca3f55200eb0912e50f06",
+        artist: "Wayne England",
+        evidence: 92
+      },
+      "8284476c-a7c8-4a6c-8021-ee997e9270ce": {
+        referenceSha256: "0d4999453f15c16b3c27ce01135d63a48e425aee0ad3c5c422739af797e9184c",
+        artist: "Ron Spencer",
+        evidence: 92
+      },
+      "829069cf-7e63-4443-b679-65ad15d6ca5e": {
+        referenceSha256: "e9310a980ae959be1d8426f753ec3556ba50c98f7b7f4fe2ef5ad878872ce47c",
+        artist: "Jim Nelson",
+        evidence: 92
+      },
+      "830d1980-f460-4be2-9379-c3f74c8318f3": {
+        referenceSha256: "f33b7b57fe12d7267e0c82d829f6a9bab66bad5a7ac87c37867e942bf140c622",
+        artist: "David Martin",
+        evidence: 92
+      },
+      "835a4eed-a308-428d-ac85-e385b5d47d8e": {
+        referenceSha256: "c6f315de649905a65abe1950e158097c84842632b5589c23510fb3bba6ca2ae1",
+        artist: "David Martin",
+        evidence: 92
+      },
+      "83c92b5d-103c-4719-a850-690a7010291a": {
+        referenceSha256: "0b151a776d435f3f85ddc9f9f628990b2dd163c08ccee3d2b2f5382c96091038",
+        artist: "Edward P. Beard, Jr.",
+        evidence: 92
+      },
+      "8496e9c2-4c13-4307-bda7-b88512a21a6a": {
+        referenceSha256: "8a8a0fc7c91d663815592ce28bf20692093e0714b4870a4b2026e34e02097d12",
+        artist: "Heather Hudson",
+        evidence: 92
+      },
+      "854a255e-fd89-4c5d-b97b-416a9ac70960": {
+        referenceSha256: "27d5c765a6629b8ebe75e5dfd3f861dd4ff4a7802b4117e0335f7bdb6d839499",
+        artist: "David Martin",
+        evidence: 92
+      },
+      "857c2b6c-cfdf-4c88-a334-2937cb7db603": {
+        referenceSha256: "7cb6a635c09e689a88954e4318dcbbd20ae65abda7179c337381372ceea269a0",
+        artist: "Bob Petillo",
+        evidence: 92
+      },
+      "85be34ac-7bc2-4da2-8d9c-2412b9946073": {
+        referenceSha256: "1c755c03e4c81d37295ee08bbbaeda2f5da87561411ea8f636f197e1f1342418",
+        artist: "Arnie Swekel",
+        evidence: 92
+      },
+      "867de3d2-2178-4931-823e-ff439e1a45ea": {
+        referenceSha256: "e941567410bb9074259da9181b6302a0f3ba5bbe468030beaf21f8aa2a4205a4",
+        artist: "rk post",
+        evidence: 92
+      },
+      "8698c46b-2628-4482-88f9-e37a01ade274": {
+        referenceSha256: "d9decde3a1b8e460c9bbcfd95e4f38d6bf2e7ed04866d8045d74e6102f1dba2e",
+        artist: "Greg & Tim Hildebrandt",
+        evidence: 92
+      },
+      "86ecc098-aa2b-4bae-80d5-4d02128ef837": {
+        referenceSha256: "cc585d536e67d5044392b554b47ee5804c83e9804501b57264102d3e0eed08ae",
+        artist: "Terese Nielsen",
+        evidence: 92
+      },
+      "87551307-6b5f-4f12-aa1f-4beebefad3b3": {
+        referenceSha256: "80167cf37a78e35963021db3f6089ff21085c76d18a85304ea29ee4b4235c2a3",
+        artist: "Kev Walker",
+        evidence: 92
+      },
+      "87b29d1e-9c06-4ad1-8178-b3eaa212f6f1": {
+        referenceSha256: "3e3757622b31bcc554186067277f73af46ed59d5d5a4d05b4add117a9bc7089c",
+        artist: "Thomas M. Baxa",
+        evidence: 92
+      },
+      "894556d8-6d5c-431b-a45d-26cd37c5f456": {
+        referenceSha256: "5deebc3a9a3af1f2d51124ae715f68b192a8099b9b476f67c2bebe91e4e61abe",
+        artist: "Jerry Tiritilli",
+        evidence: 92
+      },
+      "8953e11b-cc3a-4c8d-9d7e-04bf90c77027": {
+        referenceSha256: "b75f8862940f13e0487a52f36951155836621dea91300c173c00038dcbf3bc15",
+        artist: "Wayne England",
+        evidence: 92
+      },
+      "8a4bed3f-845c-4822-b8af-8b511dce6fe2": {
+        referenceSha256: "a3ef0af78584e93b3a71f7469ce19e08f00c573a55db2782c3ca67358ec208f0",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "8b3b4448-50f0-4996-94a1-db9ce356d925": {
+        referenceSha256: "3f6c01388e79a7ff7d58756492706ca5355cb9fbebfd170ddfbcce88fee90094",
+        artist: "Anthony S. Waters",
+        evidence: 92
+      },
+      "8c870a66-4cd5-4a8d-9948-feffa7d4ff11": {
+        referenceSha256: "970fb78e3c1d8eb87f95c3e075744ef3821932d1b5ea05283a60b4903aa7fa6e",
+        artist: "Dave Dorman",
+        evidence: 92
+      },
+      "8ce3a3a1-3569-4909-a604-f78d4888781e": {
+        referenceSha256: "5a1c4c1b1c982aefc0c435581af16a86e23b5532883fe4fe09a8c993602ecf6f",
+        artist: "Dany Orizio",
+        evidence: 92
+      },
+      "8d6363ea-3814-4014-ad9e-1066c72d907c": {
+        referenceSha256: "c5555acb12d2e415e8f72b7f7d67b15237c2b611b65022a00575956e4bbed15a",
+        artist: "Anthony S. Waters",
+        evidence: 92
+      },
+      "8d7d5d79-73d8-4f1a-9dda-4de5f41539d9": {
+        referenceSha256: "bb65a60484be53d585084535bc7630d73ce4b848ec94a9043c2b112098b96112",
+        artist: "Alan Pollack",
+        evidence: 92
+      },
+      "8e10b125-eaa6-4630-a6fe-6b1805921f07": {
+        referenceSha256: "6a00c06e7dc4d811695ace87d8d592d50c536e386ac7303093b33e8102e9d5e7",
+        artist: "Pete Venters",
+        evidence: 92
+      },
+      "9047075e-9fca-484d-bb79-32c0d6821281": {
+        referenceSha256: "5c8dcf552f4c2861042c47e4a7d0a46a20a709cb150312cc3a2a72c3260a9b84",
+        artist: "Dave Dorman",
+        evidence: 92
+      },
+      "90865f52-c062-4505-a204-b4d7d4b3fc4c": {
+        referenceSha256: "e16e57c9057389569ac4c1b921afdfc22dd155c9838b466c52fc361e4c8f51ed",
+        artist: "Justin Sweet",
+        evidence: 92
+      },
+      "91be6441-8a45-43e4-8d12-a886dcaadbd3": {
+        referenceSha256: "7aea6f6284a5559ae0e6b17df3c9c0e598a7359859f62cd88ac16eeaca33125f",
+        artist: "Terese Nielsen",
+        evidence: 92
+      },
+      "939a7354-162c-489d-955d-4df17b930e1c": {
+        referenceSha256: "80738fdde980db8ac2bb97ffbb651f27f34c45e4ef90d673eaeb0071a7ead1b0",
+        artist: "Alan Pollack",
+        evidence: 92
+      },
+      "93d9e9ea-9f88-4206-8960-b5ebe839ee16": {
+        referenceSha256: "e246562ed0ec582555954d31fbb7cb159481c73e96cd216ace95deee21b9d82e",
+        artist: "Gary Ruddell",
+        evidence: 92
+      },
+      "952c021f-74c9-455f-9cd9-f0d354e8bea8": {
+        referenceSha256: "02ac7d9b10f40cb941970a2f35f2b028eef16c14efc9ece252ff6df1ba8a178d",
+        artist: "Greg Staples",
+        evidence: 92
+      },
+      "95e4f28b-c7a7-4450-b477-73e4559f0276": {
+        referenceSha256: "76a04c0245bb5f9fc4281a71db6e12176b3ca72bd5535b5fbe2e7da0ec13814c",
+        artist: "Luca Zontini",
+        evidence: 92
+      },
+      "998bad32-1927-4e12-9527-efa55b86cae0": {
+        referenceSha256: "40c271354fdff6c4295ec9267b6d3788a463821f2ff3c170d6e228f76b6a0ef0",
+        artist: "Mark Zug",
+        evidence: 92
+      },
+      "99982622-98bc-45ae-8642-41cd543f32a8": {
+        referenceSha256: "3055331a106169a7533135f4138fb1c4f3bdbe817823b4b2c81c1f920888dac9",
+        artist: "DiTerlizzi",
+        evidence: 92
+      },
+      "9a0d3142-4224-4b51-885d-33c8938418c1": {
+        referenceSha256: "bb510ec34a5c325ed502facb8ff5b6f73334639532daa6043240536dd6d938da",
+        artist: "Trevor Hairsine",
+        evidence: 92
+      },
+      "9a60ac8e-11eb-433f-86f9-8e593b38c617": {
+        referenceSha256: "07abf54f46997e0ecdf907efa9b56c1489ac1e4bb10c182b4fcc52a071858f03",
+        artist: "Randy Gallegos",
+        evidence: 92
+      },
+      "9a8321af-d667-44e7-8c03-3957286604b9": {
+        referenceSha256: "2d83766aff49b8969bf0fd375d17f64632783f8e7d5cb8aa0f496b82a890cf2d",
+        artist: "Carl Critchlow",
+        evidence: 92
+      },
+      "9b40f6eb-e2a4-46d2-8822-b0f3dc508b73": {
+        referenceSha256: "86d5556157d1b61ef82c235422f93a78b05739ba38fd0b03fb37d69d933e74c8",
+        artist: "Christopher Moeller",
+        evidence: 92
+      },
+      "9c444503-42a8-4952-819b-bbca89b06abc": {
+        referenceSha256: "6ce55a7b3831baabe535e08eedb729cc408f51558ea9c46d8e3c36d74b6392df",
+        artist: "Matt Thompson",
+        evidence: 92
+      },
+      "9c940a6b-3c5e-4ce2-92b6-63e2cb575c15": {
+        referenceSha256: "7f235335cf953bb478f583479947cbc2912e1176c1d0dba9ff693b0bc5f0f0f3",
+        artist: "Mark Brill",
+        evidence: 92
+      },
+      "9ce4be1e-97dd-45ec-89e5-2fb56145c098": {
+        referenceSha256: "b84f6f5d5f51462a295cb76bea02730ea6579a2a6b62f6391391ecc6fda4623a",
+        artist: "Greg & Tim Hildebrandt",
+        evidence: 92
+      },
+      "9e43d62c-488a-4c8d-b193-bacbf8037761": {
+        referenceSha256: "404326c7b61a2074592b157dc9afdb547f4f71f90ec742bd149fd643e96ac6cb",
+        artist: "Dany Orizio",
+        evidence: 92
+      },
+      "9e4f796a-6831-4d83-824d-88fd2148b4c1": {
+        referenceSha256: "27a51201840323168c41b9ce3e9cf4e7b7a58662331f7e46fa9167830b72414c",
+        artist: "Jim Nelson",
+        evidence: 92
+      },
+      "9e80d109-b73f-4b5d-b9e4-534e8d69633f": {
+        referenceSha256: "124b291c02d68b21bd9329eac8369139580b66abe60fb40ab0305f396b9dbcff",
+        artist: "Randy Gallegos",
+        evidence: 92
+      },
+      "9ef71f42-87e5-4b1d-aac1-3752b81cee7c": {
+        referenceSha256: "1ba2a65f85b3ea199a168bdc4e618851c691cea95ad0d1f439864a6a2e67131a",
+        artist: "Matt Cavotta",
+        evidence: 92
+      },
+      "9f608a7e-5555-4554-a6e7-fe00e0bbe753": {
+        referenceSha256: "18d55a3f985a4e37b3216895e350b2871997e75c38cba9d0063ea60002324137",
+        artist: "Gary Ruddell",
+        evidence: 92
+      },
+      "a164420c-3619-4f5e-81cf-2aa5a4553bc3": {
+        referenceSha256: "7295d85c3724a1a4a8debce771ba651a299c9ab20c2e695249f652f336c412e4",
+        artist: "Randy Gallegos",
+        evidence: 92
+      },
+      "a1ea7219-6ab6-471a-afe7-d7da1df434c7": {
+        referenceSha256: "a580f031d7fb1cccf842776b26f537f8aaef017e291696767a18c841d81df575",
+        artist: "Dany Orizio",
+        evidence: 92
+      },
+      "a25b2697-5d7f-490a-8474-c775096e681e": {
+        referenceSha256: "2fbdcd9203c9cce9defa402bede4c253aadfabd57c794057369ae1d6c20839cc",
+        artist: "John Avon",
+        evidence: 92
+      },
+      "a37be9a8-ef69-4c62-8455-e129e62fe69a": {
+        referenceSha256: "9523a9a9bd49f1077200ec9bd428fb37b7d6ffaaa0210c1d7fc26466dc3f66a9",
+        artist: "Franz Vohwinkel",
+        evidence: 92
+      },
+      "a45ac59c-654d-44de-b266-532d44b34137": {
+        referenceSha256: "7bc496e9988a6c68cbf488565ae3b8649708f49cb38b444315248eaeedc095e0",
+        artist: "Jerry Tiritilli",
+        evidence: 92
+      },
+      "a5064cd2-8762-4e08-8c3c-be6f31e9ab61": {
+        referenceSha256: "866b5ddb27cbfaacde026462d3857b729c043fc5ed2f6a7fe930a2f0bce07caa",
+        artist: "David Martin",
+        evidence: 92
+      },
+      "a559e844-06c9-4953-bc2c-a58e4170fe47": {
+        referenceSha256: "27904a3d7a80c4005843abee049a88df3cf594d1cb7b4827cec6a5ebe76e29bb",
+        artist: "Dave Dorman",
+        evidence: 92
+      },
+      "a5ae8050-b644-41db-b1e9-d9bad2173485": {
+        referenceSha256: "6ba7f005f9ab50a41c86bf966c62719772573c9e7fdd6a94cdec8564fc14f6b6",
+        artist: "Alex Horley-Orlandelli",
+        evidence: 92
+      },
+      "a60313ca-10cc-4c33-a557-1401c5721e3b": {
+        referenceSha256: "8cb86aa1b31f1f4fe16b0aabe7c20975bd5ad50da593031caf041a3ce94d1b47",
+        artist: "Matt Cavotta",
+        evidence: 92
+      },
+      "a6285f63-a5d8-4b8b-a6dd-51ce7968fbaf": {
+        referenceSha256: "7dc79732770ea782f23b5637ed6533f0f6e6848cbda2da2800986621ffc4741b",
+        artist: "Doug Chaffee",
+        evidence: 92
+      },
+      "a6d74c30-ebca-4684-ad84-3ca19193ad88": {
+        referenceSha256: "251d0fc234ddc48b1374967dd84b50633c2131feb20af0eac89ee83888d4d5db",
+        artist: "Nelson DeCastro",
+        evidence: 92
+      },
+      "a74d7aa2-c6ff-432d-b671-cef58c6736c6": {
+        referenceSha256: "d7dd63d278bae2689d3505430432ccb460bd9437f8992d34fe707cb417011c0b",
+        artist: "Terese Nielsen",
+        evidence: 92
+      },
+      "a804f3c0-5ebf-43ca-b200-09f7c1bbe902": {
+        referenceSha256: "68f0ccf0dfe7834e3a0805ead4446825168377b4df835844c5341ba31482ddeb",
+        artist: "Kev Walker",
+        evidence: 92
+      },
+      "aab525ad-1f62-4d9c-9b74-c7b0048da452": {
+        referenceSha256: "72683d9a797c2b2c84f15ce0f78120181153df001dd040f06cd4b9e337baed6f",
+        artist: "Glen Angus",
+        evidence: 92
+      },
+      "ace5e601-2583-4d9c-8bdf-aa33666c717c": {
+        referenceSha256: "9396fe238197857be6b329121d39d5a74945b48d3c7deef5f32c5d34c7bff007",
+        artist: "Ben Thompson",
+        evidence: 92
+      },
+      "ad96e158-bf2b-4f3e-9692-0f79efdd94f5": {
+        referenceSha256: "04b544f18ac8e1068c6893255a53d74151955540c2314e7abdffbbc4bd72800b",
+        artist: "Jerry Tiritilli",
+        evidence: 92
+      },
+      "ae596e8c-04f5-48b0-b5e2-683c74912e85": {
+        referenceSha256: "7d0fa37d89532258c03d647cf0322918254cae20c7ef4904e37e1ca72f2996c9",
+        artist: "Corey D. Macourek",
+        evidence: 92
+      },
+      "ae76705f-ec95-48b0-9e26-84ce40c9514b": {
+        referenceSha256: "99fe8089491a40443b86305a87d01820f86764101c37bd345b70b834bb439a12",
+        artist: "Greg Staples",
+        evidence: 92
+      },
+      "ae85fafb-114b-4fd8-ac4c-5ada57054705": {
+        referenceSha256: "06f06d5e3d0de73ad55ad74b135237654673cd90fa097b413204c1feedefec8b",
+        artist: "Edward P. Beard, Jr.",
+        evidence: 92
+      },
+      "aeaea4bc-dcea-4340-a039-ebc97b944673": {
+        referenceSha256: "266e71cc97c6429cf9e1d06664f3651af75b10974df42504979543794da0010c",
+        artist: "Randy Elliott",
+        evidence: 92
+      },
+      "af5d1be2-d6ae-4820-aa01-62f261b0f110": {
+        referenceSha256: "93c59b55bd1bd27fd5b9a48c1015ac151874c4665c3d5f2cdb75d335540e9ebe",
+        artist: "Sam Wood",
+        evidence: 92
+      },
+      "afcb7cef-8aeb-4c84-88e9-6df17768e292": {
+        referenceSha256: "e77938e637ec66870bbff1d8d74cc8e1d41db3836eb51ffd6a7c208f050d0ce2",
+        artist: "Heather Hudson",
+        evidence: 92
+      },
+      "b2048d84-b5e6-405c-9091-1997a0c4e1a5": {
+        referenceSha256: "500827ca319bc17e5608eb629307ef04517c0b85382d39ae3d576f4789643e86",
+        artist: "Alan Pollack",
+        evidence: 92
+      },
+      "b361b42d-401f-440a-bae9-35338b5dde0e": {
+        referenceSha256: "f29c1ade88b864168cb9688662d8369bb3f5b5ea423f6421316db46d06effe49",
+        artist: "John Avon",
+        evidence: 92
+      },
+      "b36fc40c-6a68-4192-91d9-2031c7d32e05": {
+        referenceSha256: "c5e87f519ac24d8344a4b4ffd9553a127fb72647a84b6f4085fbae933ef1ce5b",
+        artist: "Greg Staples",
+        evidence: 92
+      },
+      "b3dd3ce7-e0e3-4412-9983-ff933584f59b": {
+        referenceSha256: "c90b76a7619c86e8d27188c64b44f06f13846ed144b3ff47edd70d5b26c1e4bf",
+        artist: "Justin Sweet",
+        evidence: 92
+      },
+      "b4e3d844-d3b4-41d8-921d-c1cb3af343f8": {
+        referenceSha256: "2145f9a3a0fa3350e7c5ba94b7597c19bb4995982ff79a34991469921d01bca6",
+        artist: "Rob Alexander",
+        evidence: 92
+      },
+      "b54d72ba-05ce-4299-a7c3-a9e9f126fffb": {
+        referenceSha256: "0c2068deedb766c41e75e7e8456ba74348aaded5d0759c88c32c35bd59db8eaf",
+        artist: "David Martin",
+        evidence: 92
+      },
+      "b5f246e3-2193-4820-9c59-07b480300fbe": {
+        referenceSha256: "c28d51b68b96e082d782583a9ca37481b47c288a15249967a36aec96a292a2c2",
+        artist: "Bradley Williams",
+        evidence: 92
+      },
+      "b5ff5c7d-7823-4d1e-8abb-77e2d8126996": {
+        referenceSha256: "5d12a4bf60e623fedad1092d87f3da14929570022754bd0b9634a5a417ff884b",
+        artist: "Dan Frazier",
+        evidence: 92
+      },
+      "b6473b4d-1f59-4216-ace9-f3e5306266fb": {
+        referenceSha256: "dea0890dc9161e223853cdc17be6a4e7b92ff82ca2b4ab43fb84f39789cb44f1",
+        artist: "John Matson",
+        evidence: 92
+      },
+      "b6d39f35-c7b2-43b2-aee3-4ff2cd3e37e7": {
+        referenceSha256: "d478a80fbe2154d02856141587d7a92f806342f23f57b873cf11a3aa2103c3f6",
+        artist: "Sam Wood",
+        evidence: 92
+      },
+      "b71117d0-5cf7-4041-b568-00bd8a975dd8": {
+        referenceSha256: "ddf95243aba429d03953fbcc10be93cb7cf0b297d3555d4a4be9440249bcce92",
+        artist: "Greg & Tim Hildebrandt",
+        evidence: 92
+      },
+      "b72257f5-0cf9-45ca-8dc7-a1a93bd7dd1e": {
+        referenceSha256: "0b383013b0e16de2c680fd4cbe7a73b8ea1409d9ee9049f9f99eac8f7af09b6c",
+        artist: "Greg & Tim Hildebrandt",
+        evidence: 92
+      },
+      "b7890ba2-aa42-4c8d-bbc1-94fb1d4150fc": {
+        referenceSha256: "51fa8587b9cfe1f1a22024067bb1902b1a4467a43f1447960da760d56d97cde6",
+        artist: "Ben Thompson",
+        evidence: 92
+      },
+      "b83c6245-4b37-430d-af10-2581804fff08": {
+        referenceSha256: "d3966849aa756d78ab8a7a41a19b7f5e634b722d4c523aead1de35764c6bbae6",
+        artist: "Scott M. Fischer",
+        evidence: 92
+      },
+      "b88c530a-abc3-4cc4-8a48-5b76e1504a3c": {
+        referenceSha256: "4519821523a5859f67a669caf8af9881bee07702fd377d8c794f077cec7561e9",
+        artist: "Greg Staples",
+        evidence: 92
+      },
+      "b8cb25b0-e4c3-4a4e-b722-ea30e695f917": {
+        referenceSha256: "385c9558a802ce2d356dc91abe13e0fa38dd22c2338c6b5e0262bf43559ed0ba",
+        artist: "Brian Snoddy",
+        evidence: 92
+      },
+      "b90da5c3-fd8f-445d-809f-e129870d7449": {
+        referenceSha256: "d7ba5afef90cc607780352251b377c31bf91ad2efad70dccdc0039049cd42ecc",
+        artist: "Mark Zug",
+        evidence: 92
+      },
+      "b9196ce7-3ff4-4dda-a628-559ada11c9ba": {
+        referenceSha256: "d6f23e270c2dd16656b2829efee94cf50026501f8e33aadc674f9c4b717f736f",
+        artist: "Iain McCaig",
+        evidence: 92
+      },
+      "b9c04fd3-021a-4011-be9b-0d268557aa06": {
+        referenceSha256: "33c52f539494a7912d7fd6ac6676503a10e267a15a5aaff8ba62ba5daab28c29",
+        artist: "Pete Venters",
+        evidence: 92
+      },
+      "bb237330-ac2e-411d-836c-6628f96f3262": {
+        referenceSha256: "b9bca07acdda5bad57cd4cbe5a07713106ed12940873854da484cc3c4c5f3fd9",
+        artist: "Ron Spencer",
+        evidence: 92
+      },
+      "bb4815b7-fc20-44a4-ad1c-66d92993557f": {
+        referenceSha256: "1c8d2e24d82cef789c4d1266d5131eb147099539ac30dc669c42994bb2cede0c",
+        artist: "Edward P. Beard, Jr.",
+        evidence: 92
+      },
+      "bb61443d-e47a-4fe1-b777-67a3670a5a56": {
+        referenceSha256: "0476bbef7e010db20f3c22c3642be995d26bb5807bc2879b4da9984fbcca3275",
+        artist: "Franz Vohwinkel",
+        evidence: 92
+      },
+      "bbc779d9-3200-4369-9289-1a8e90e243b9": {
+        referenceSha256: "abe69fac2265bf3fb5efd8d2c52d751807d9abbe65eb5d93891b9a25a4f1cec1",
+        artist: "Jeff Easley",
+        evidence: 92
+      },
+      "bc148c21-cbe6-4cea-899b-e62501b59a00": {
+        referenceSha256: "9787d31132bde5a3bbcad545e55198c3454165e47267adaadfceef9ccbf89813",
+        artist: "Alan Pollack",
+        evidence: 92
+      },
+      "bc8320ef-af97-4cf6-9aaf-17818174d842": {
+        referenceSha256: "4aa845ccbb5becfb09194599f85fc999651a8e7e7df77f782b0fe1b078201819",
+        artist: "Alan Pollack",
+        evidence: 92
+      },
+      "bd8b17df-615c-4cc1-af1a-2fc35a985af9": {
+        referenceSha256: "409aba35aeec0a9b8278ccac1729fa6b5eb0098aefd7a5729bafe526d7a49d7e",
+        artist: "Ron Spencer",
+        evidence: 92
+      },
+      "be0110ba-49e4-4729-8a84-4d408b20df53": {
+        referenceSha256: "0b70fc349f931be09711dcdfdc0867da49838a81e6b0f21b9a6f632a0ddb9c56",
+        artist: "Edward P. Beard, Jr.",
+        evidence: 92
+      },
+      "be95ab7c-0e77-4293-aa48-ee54902a363f": {
+        referenceSha256: "5d2f335fe59738065bbdd681d537ac386f65e99099e4db34dd74b9f61568064a",
+        artist: "Christopher Rush",
+        evidence: 92
+      },
+      "bfd891ba-cf6a-4b83-a421-3a7c346ada31": {
+        referenceSha256: "806f39f02330316e533e6c33c07041b3ea635eac581e987f277f8587a7547c19",
+        artist: "Daren Bader",
+        evidence: 92
+      },
+      "c0acc41f-b55b-47cb-8803-d39d72788799": {
+        referenceSha256: "934d0c24a6e4ba452bd650686005c4f27af3ae4cc527c5aca30e190c76599fea",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "c129f361-8769-4f9a-9745-eb5d0c085b88": {
+        referenceSha256: "6c2bdc9f0249574454f509d09415b454dcbc90adb16d177a3f01a7e6cecb29fd",
+        artist: "Mark Tedin",
+        evidence: 92
+      },
+      "c2213eac-cea4-4dfd-90c4-c1f466967e2e": {
+        referenceSha256: "37b0bcd09ddcf12c52c27d2606b73c5e8dc14246e9009a0e24c67aa7f87eeb71",
+        artist: "Michael Sutfin",
+        evidence: 92
+      },
+      "c2dc8061-a855-4a81-9eb7-350b355a9b3f": {
+        referenceSha256: "2a8d6ba7a0f878e6b0342156dbc28d40cdf7874cb15816db255b42507cfa05f1",
+        artist: "Carl Critchlow",
+        evidence: 92
+      },
+      "c33db646-b30d-4a15-9f8a-63bda74e2d81": {
+        referenceSha256: "79352bbad88b7f5716f672eb27609e3eaedd9b96d520b0dd153acfa03b91a092",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "c3710c68-3f71-4d76-8bd2-001f0e8036f5": {
+        referenceSha256: "02182ec6867e6eab8b6171c7f9ca9d382372d93177655446d7b93e5f935c48ba",
+        artist: "Adam Rex",
+        evidence: 92
+      },
+      "c39f3e91-571a-4990-b1e8-db2a5bac34af": {
+        referenceSha256: "1b66f3f88c1ed65e050276a9998627214ba9d0c726756aa7c98e1cb31ee2a54b",
+        artist: "Daren Bader",
+        evidence: 92
+      },
+      "c46f324b-63c6-4fb5-a80a-e9da51c3eb77": {
+        referenceSha256: "6c8b753ed8b4a98c7c3e336548b32f424e0374f127b0eb712c965eb9356f3bf3",
+        artist: "Edward P. Beard, Jr.",
+        evidence: 92
+      },
+      "c4e7fadf-40f1-45ff-97ef-5830381accc9": {
+        referenceSha256: "36507722924b3c09eb3513a844a79c06c2c224f3f0dff696cabfbe7a46761026",
+        artist: "Monte Michael Moore",
+        evidence: 92
+      },
+      "c5202668-a32c-4473-b272-e86264992576": {
+        referenceSha256: "67d6ce67f9c3da1927e063dc1a22af44e2b7bbcb3cf9cd86455e1afe980cfcc1",
+        artist: "Tony Szczudlo",
+        evidence: 92
+      },
+      "c5869f08-fac8-44b6-8142-7d7ecccab414": {
+        referenceSha256: "4be03d572242e2435ec59c9aae4911791223385bdf5bebb0b8e29103ae7f09ae",
+        artist: "Tony Szczudlo",
+        evidence: 92
+      },
+      "c5d91378-f831-40ef-a79b-b044af1470e0": {
+        referenceSha256: "6f5f646ba031ce835e43b7f3780a833a57e9ec049203576fa9eb41221ddefe81",
+        artist: "Wayne England",
+        evidence: 92
+      },
+      "c7284e32-de54-4c83-a7de-7b249c47319a": {
+        referenceSha256: "8cbb64eda3f703bc8cb451e5ca63f0f8d18f1954e03a24b11daf3ac5882559b9",
+        artist: "Iain McCaig",
+        evidence: 92
+      },
+      "c7d810b8-1a15-46cc-9d9d-871ac43b7036": {
+        referenceSha256: "ac9599ce81598e7bf4d7861b13cba806e3694ad2dff508d7f81f40aa9ebf2710",
+        artist: "Todd Lockwood",
+        evidence: 92
+      },
+      "c826d786-0d96-4f77-94ae-6907fbce51e0": {
+        referenceSha256: "8c99c35696453a389b1d1029fc1e27d68fa4e174169aa727f9807d2326f74b0c",
+        artist: "Thomas M. Baxa",
+        evidence: 92
+      },
+      "c8a47d41-b893-46b9-90c9-ccd8f9f78855": {
+        referenceSha256: "16cbd1ed2310a42efbb78f045ece88664dca23f15ce16d4a7734518c75e549c6",
+        artist: "Iain McCaig",
+        evidence: 92
+      },
+      "c95d5cb7-3121-430b-80c3-84c75e5f869e": {
+        referenceSha256: "bca27fcaeb8a70577792552f7e7043a4fc706da44e82ef3ce4fe566215bc6a9a",
+        artist: "John Avon",
+        evidence: 92
+      },
+      "c98182d6-5b25-4493-9286-f29633e1bec4": {
+        referenceSha256: "36ced18fa72e279c57e0b686c8e42700d24f41891f23554e4bd7dee1a9fbfdbe",
+        artist: "Arnie Swekel",
+        evidence: 92
+      },
+      "c99c5707-d5f2-4675-bfca-e801e6b0f627": {
+        referenceSha256: "064b1fc6c201ce2c0b39e51f8ba125019804d3c060c94e3b8e05405dce10ba40",
+        artist: "Greg Staples",
+        evidence: 92
+      },
+      "c9d58030-a95a-4221-93bc-30a59344e30b": {
+        referenceSha256: "b76a5b21ba368ac0194ea471c06775a38b286a60c2d3870e17adc6c9263e814f",
+        artist: "Pete Venters",
+        evidence: 92
+      },
+      "ca1babca-b285-4b00-8b46-ed946c9a027f": {
+        referenceSha256: "43405f03c191919c680783ecda36ea278c8f1eb049c498bea6a5e7e703420a4e",
+        artist: "Tony Szczudlo",
+        evidence: 92
+      },
+      "cbbff06c-5f92-4320-8b70-df3c8344f600": {
+        referenceSha256: "0024bf5ec9deb3b399706834c37ca3d422fea9af999a1bd0855aeb4cb42d6518",
+        artist: "Dan Frazier",
+        evidence: 92
+      },
+      "cc5856ac-e710-44ee-8516-6070f4f31ce5": {
+        referenceSha256: "ad35cd527a9e80c02640c150d0bd7b091ae6cc156954725f144615233cedeab7",
+        artist: "Heather Hudson",
+        evidence: 92
+      },
+      "cd6cc30a-9ed4-4f36-95cb-6f0a2b8dce02": {
+        referenceSha256: "b6f6c8941423b6867b67911553d223c0753bf0c28e8af853859fbeb472e54bbb",
+        artist: "Edward P. Beard, Jr.",
+        evidence: 92
+      },
+      "cd7727a7-0cdf-4fd5-82b4-e6587c10ca80": {
+        referenceSha256: "6fb60fb98bd656118579eff521f75e6b1e11f0c5ad5a24fb97e06b77dcf5c441",
+        artist: "Rebecca Guay",
+        evidence: 92
+      },
+      "cd888ca8-0ebe-46f0-9317-3b193ccc43fb": {
+        referenceSha256: "1f0305760be0d2879f88dea6909f925fb243ea89bb52417df29a99bac1c9c94c",
+        artist: "Brian Snoddy",
+        evidence: 92
+      },
+      "cdad38f7-9dfa-4f1b-9fac-41ab2b253f53": {
+        referenceSha256: "b909ccda42f5e538e95a3e2b0f695c5eb10b09900683ebb9b8085fa3dd650fe3",
+        artist: "Rob Alexander",
+        evidence: 92
+      },
+      "cdddab92-3e1f-49dc-afd0-8c84d0d952c2": {
+        referenceSha256: "8aa4b660fc78ecdff564b93a3a6a790f323a40774114ae34e36273c8c0199d98",
+        artist: "John Matson",
+        evidence: 92
+      },
+      "cdee956e-76b1-4ba7-a387-2fbfb853507d": {
+        referenceSha256: "d4310640ce0895b18d40b362f14537b6fd6d0fa3c890ce2ec3b03cae66c8e4e8",
+        artist: "Kev Walker",
+        evidence: 92
+      },
+      "ce6adcfe-b0f7-4a96-bab2-f76c84ef5ca6": {
+        referenceSha256: "8437c8d4b377e52377a4c8f6443a7504f9952fd5de61de76770afd9906603c1a",
+        artist: "Kev Walker",
+        evidence: 92
+      },
+      "cec3a260-6c50-401d-a0ff-bf49a973e1a1": {
+        referenceSha256: "dc80ee671cc88f583d64beead63b47d25f8aa3423e367a190f70762658519e76",
+        artist: "rk post",
+        evidence: 92
+      },
+      "cef584c5-6e2d-419b-9c11-a1b6c9c9ab2a": {
+        referenceSha256: "484aadb668b663be8a52cad9992f88cb3c86a2d4fe6e674c7f7b0777ad9452c6",
+        artist: "Alex Horley-Orlandelli",
+        evidence: 92
+      },
+      "d0df839f-dc4c-44b0-82c7-cb2037172ac5": {
+        referenceSha256: "59cccff24b64c4476c4ee0448419961b21dd75013099690477524d2f6b9424e3",
+        artist: "Christopher Rush",
+        evidence: 92
+      },
+      "d14993b6-ed8d-4b9b-b54c-2837b343a61e": {
+        referenceSha256: "7c14998b7addf74849eae510a3441e66b49743deb8f37a9228e9a80406585d8e",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "d2cfff37-655f-4107-abf3-e6f63d0e4de2": {
+        referenceSha256: "0b912de190de2534c34688fe19242acf88d7c40d00c1257deff0327cef09ffff",
+        artist: "Mark Tedin",
+        evidence: 92
+      },
+      "d2dcb8ed-23e7-4cee-9f43-042232c6035a": {
+        referenceSha256: "99800e75cb3a359a23359a3ca4e491ecae30e6e2c6c02afe259563fb7aedfc5d",
+        artist: "Jerry Tiritilli",
+        evidence: 92
+      },
+      "d4de14d1-441f-4d65-bd12-df0506530015": {
+        referenceSha256: "5adf9408fb063cd34b61fda6eeaaebe5c5051b6c04ac9722a8b6633e393f721f",
+        artist: "Carl Critchlow",
+        evidence: 92
+      },
+      "d5cf8876-4c7d-4779-9363-d0a58bb7d851": {
+        referenceSha256: "caa3c63d5227e5a755226b5033e9014f3920e5ff89c96d69ac7a6b7f7cea6f61",
+        artist: "Darrell Riche",
+        evidence: 92
+      },
+      "d5e55695-16cc-4373-8078-959f1ded4c6d": {
+        referenceSha256: "a15d51d29a0b8330ca97b6d5ebf7472172c2c760a51252196cba3a1b99c28c5b",
+        artist: "Rebecca Guay",
+        evidence: 92
+      },
+      "d775d729-0ad9-4b14-9d44-6282f6936e07": {
+        referenceSha256: "cb38c8fb9bb05308d5e4e9f24e73693bb3f0e24e6297a13e32ef375e223a41e7",
+        artist: "Eric Peterson",
+        evidence: 92
+      },
+      "d83db110-42e7-4823-a686-b83205faf503": {
+        referenceSha256: "331b3ffe6f147c32e99a49ffa60c5e5d9df9b3ab7e97296f1320566c7d1d5de3",
+        artist: "Pete Venters",
+        evidence: 92
+      },
+      "d8ddab06-aff7-4c40-bcaa-10cbfe899dd9": {
+        referenceSha256: "9c279b10cbb125ed8c0236d8927974c9a026dabb1d4234677dffe56ffc5d371e",
+        artist: "Heather Hudson",
+        evidence: 92
+      },
+      "d993c973-2eb6-423c-8ee9-10749a751524": {
+        referenceSha256: "e7ad51f0075a56453e5b79b9be2f1c0f5fb053b2907aa068105df4e1e46150db",
+        artist: "John Avon",
+        evidence: 92
+      },
+      "da24ef56-8d54-4146-97e9-4abded807545": {
+        referenceSha256: "1d2b8026c7bb009a9c83eb7341b0cf292a8835c67eab310ac310155ee957fa03",
+        artist: "Greg Staples",
+        evidence: 92
+      },
+      "da6efd31-ab5e-46ff-80d2-9382438e302c": {
+        referenceSha256: "09039ed9215e0731b1119cc700d59686539ba2b85a2c47b855a4a2534fc0c2a6",
+        artist: "John Avon",
+        evidence: 92
+      },
+      "da84de0e-a4cd-4dff-8ee3-87c9debf0969": {
+        referenceSha256: "27a3533696d05fa6d6ef83eb1c495c3314d8cc45f90ad9d6f9a1af0ca58450e5",
+        artist: "Thomas M. Baxa",
+        evidence: 92
+      },
+      "db909e95-7979-41f0-b17a-874c4137fcc1": {
+        referenceSha256: "36999348acb028d507bbdc5c950e549c07a67bc1a05377e552e2d5629e8554e4",
+        artist: "Thomas M. Baxa",
+        evidence: 92
+      },
+      "de9676b6-6812-44e5-ad70-f498fbad0e18": {
+        referenceSha256: "dd2e34c71f67e2904a9976950ded465cc95b4534c454ccdaf7baa9caa4eaa583",
+        artist: "Mark Brill",
+        evidence: 92
+      },
+      "df0b6c7a-0891-492d-8e07-6a198bf2ccc4": {
+        referenceSha256: "2307ae14dc7cc5815db520c892dba66b0b7f59e3abdb9315414d38d0457b9ddd",
+        artist: "Wayne England",
+        evidence: 92
+      },
+      "dfd2628f-63c4-4e19-83ea-26041650faab": {
+        referenceSha256: "057dce84dcd80f830c4aece055bb7a53b29d2bd656b9e5dadef8153486227879",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "e0ddcf4a-1943-49dd-a02c-75804ce4bc3e": {
+        referenceSha256: "73418d53ea04b689d6b069acb8ed337f8723fea239940fdb48454ba66a6754a7",
+        artist: "Arnie Swekel",
+        evidence: 92
+      },
+      "e18dc249-a343-4198-bef9-e8092a2bac15": {
+        referenceSha256: "5e1242136511b24c9e83d9dd9f59bc4ff705770b04357320ec2647824112a060",
+        artist: "Adam Rex",
+        evidence: 92
+      },
+      "e1abae21-ed8f-4e21-b227-f721b840c11f": {
+        referenceSha256: "280714a0cd88fbb656e6d6008c0213d50ae1850f8ec14082d36e00712aa962c9",
+        artist: "David Martin",
+        evidence: 92
+      },
+      "e394e096-ea70-4813-9039-e4bd065d0a17": {
+        referenceSha256: "94d6753d1e971123e6c3ed4e308c3975d553942d6f8add5f2aa0b39c78373359",
+        artist: "Anthony S. Waters",
+        evidence: 92
+      },
+      "e41680e2-6689-4263-a5a3-9fb2e4280d52": {
+        referenceSha256: "d3e57aa494cb858d6b29890b169af80b47f0ad6988435d81f6b563127964f1ab",
+        artist: "Iain McCaig",
+        evidence: 92
+      },
+      "e52ed647-bd30-40a5-b648-0b98d1a3fd4a": {
+        referenceSha256: "9a31cc8a5a165497d0f73d7aa72d3eb37f4972e67ed87bb274d82d7e25e1fe87",
+        artist: "Matthew Mitchell",
+        evidence: 92
+      },
+      "e7209cc8-b519-4f27-87d8-b12e239a121f": {
+        referenceSha256: "cd8e3559f7e14671a391d3fbce122ff2e9f32c9c50b1de6edc47aa9b9a22811d",
+        artist: "Thomas M. Baxa",
+        evidence: 92
+      },
+      "e7e320a6-88e2-4be1-97e2-30e0f3c2e450": {
+        referenceSha256: "7a4b7cda80091837357ff386b8e1b4f965bf08c05ce9b231614ed4d9718f7723",
+        artist: "Matt Cavotta",
+        evidence: 92
+      },
+      "e822161d-0434-4578-aecd-c9ef0b84bd4e": {
+        referenceSha256: "21ce2776356f8f180a12b780be6542c9d7189143112a2d402183fc9136065d16",
+        artist: "Luca Zontini",
+        evidence: 92
+      },
+      "e89156b5-8bdb-41d1-a7aa-63f770a9b070": {
+        referenceSha256: "821ca2a845a00191b8c7f832ae337c9daf652a5809f712df676b6eca7e1e2155",
+        artist: "Jeff Miracola",
+        evidence: 92
+      },
+      "e89610e9-f1d3-4332-901a-2598bf01d61d": {
+        referenceSha256: "8c21ee31d304da4a3dc058c336436c86088e3517148fc436609257bfa3c03efd",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "e8aade2d-5cf5-44f6-9095-aa3756b1c1dd": {
+        referenceSha256: "5f9ea455922c1cf7c66159a3e799d7c696358ae20493eb6443eda8f51caa286f",
+        artist: "David Day",
+        evidence: 92
+      },
+      "e92e197e-ef7e-46bb-9533-5f9819d545b2": {
+        referenceSha256: "37cbd8c0f60b6551e1dc2a50bacfa9a8155b8889ee597ab4163a3b2e0f901218",
+        artist: "Ron Spears",
+        evidence: 92
+      },
+      "e93577bd-2711-443c-aa88-a235345d7800": {
+        referenceSha256: "efaf36bc734d79ffc0b4ecc7010727c5c98abd0951f7f9eb7dc4edfb28a1282c",
+        artist: "Ron Spencer",
+        evidence: 92
+      },
+      "e9d06a1f-00b7-440d-849d-efc466d73f29": {
+        referenceSha256: "e33fc2a377a83617089a16365871fe03f11b9a85867c9f3ffac529cab21a46d8",
+        artist: "Mark Tedin",
+        evidence: 92
+      },
+      "ea338499-26a0-44e5-8999-f264644184d1": {
+        referenceSha256: "79f01bea2807918d6dd0dab4e4b47e9914ac28f100a9f2b6d22532b1c75e457e",
+        artist: "Mark Zug",
+        evidence: 92
+      },
+      "ea454280-f7f4-4315-bb46-b56050c02c97": {
+        referenceSha256: "eae6742798b63e89b77a35d29f439985cb06c45035066d88db301b2a4e42f766",
+        artist: "Heather Hudson",
+        evidence: 92
+      },
+      "eb227f65-9189-41ed-94a0-2aa21cad26f5": {
+        referenceSha256: "ded9c2b8e02355dc9d66fca7d933133cfbeafc3e36298f57790cad2bf93a7e54",
+        artist: "Glen Angus",
+        evidence: 92
+      },
+      "eb2e9b7e-434e-477f-b3e8-e85ceb913650": {
+        referenceSha256: "8e8eb830612ba328dc3ae52c69bf2f5549ffa14518291af5c914f341ae3bf238",
+        artist: "Dany Orizio",
+        evidence: 92
+      },
+      "eb545dcd-3a7a-46a7-9c35-d28faebc6d17": {
+        referenceSha256: "5ae50ecd49d43804d8154a4a40376c3224319a0e766ab70320597347b068d98a",
+        artist: "Doug Chaffee",
+        evidence: 92
+      },
+      "ebaa7a26-8516-4d71-a524-77b2d3f030d5": {
+        referenceSha256: "62349098356dd428e66be42a238fbf0f9a03ced3ef9eb99c8d7123945e45d937",
+        artist: "Franz Vohwinkel",
+        evidence: 92
+      },
+      "ec9796ac-11e2-4295-bf00-f684d0111970": {
+        referenceSha256: "ae7f0dea5c2bde650541daa99a5b8224bdc946465b3a0eb40eb8af3d5634e6ea",
+        artist: "Glen Angus",
+        evidence: 92
+      },
+      "ee262fde-8df1-431f-9e5c-0cafe9212b49": {
+        referenceSha256: "fda147a8e41674dc5eaac3339c559c829e55225acb8a18d5983a8ba5970f36ae",
+        artist: "Matthew D. Wilson",
+        evidence: 92
+      },
+      "ef397db1-2d99-4cb0-a6e9-6f72d615ebad": {
+        referenceSha256: "7e4d88c1571161ba9f26bf8db7cf2b78634dc341931a698d0fd41b1c2436eb21",
+        artist: "Bradley Williams",
+        evidence: 92
+      },
+      "efa2d660-7c93-4087-a6e5-49c2ad21eb5a": {
+        referenceSha256: "838fb687c313c8e0fb3511ae1c27dbdfebf76968cc55692094c457568429afae",
+        artist: "Christopher Moeller",
+        evidence: 92
+      },
+      "efe12afd-da41-436e-af84-fa3b36a58030": {
+        referenceSha256: "41031ff4b841e15630a0ff8afeaf5b6f5545eb5abf12a9b178986eef5f2f5e9f",
+        artist: "Dany Orizio",
+        evidence: 92
+      },
+      "efe72820-952f-4c53-9ee7-ea7ea54fc848": {
+        referenceSha256: "d491e00979c98a472ad00e63e214a19732d9c9af8eb2ca5b44442b00ae6818cc",
+        artist: "Jim Nelson",
+        evidence: 92
+      },
+      "f1b91a5a-9328-4fc6-a2f6-a7879281e145": {
+        referenceSha256: "d456c88f90e95e83e8ae27e32da192b9294a2d09ba6628dcbe526c826f91ab21",
+        artist: "Eric Peterson",
+        evidence: 92
+      },
+      "f2c79e64-91bf-4e87-a4fd-3136ea67c5bb": {
+        referenceSha256: "f1917c0c95952d4405a8c8fd6b223e731b64ab10749bcff7d52823dbf1c7d5d5",
+        artist: "Justin Sweet",
+        evidence: 92
+      },
+      "f46894d1-2503-43fa-938e-7bbf19101d13": {
+        referenceSha256: "1780011e912639e897e4b78a6a4d7780ba0497f5df4a2a0e21a2f7401353c5e6",
+        artist: "Greg Staples",
+        evidence: 92
+      },
+      "f50f60a8-e99a-4891-b474-a21abee38970": {
+        referenceSha256: "330ab028e84cdcb8b83cb6c08281dec6b85e0641bb5153558846822164d9f843",
+        artist: "Pete Venters",
+        evidence: 92
+      },
+      "f525d7ce-37d3-4989-beb4-173447cb5294": {
+        referenceSha256: "44b6016e0b074708c1ce9f95762c9787ba5cfeca75972e9e60ae9513c11b2d01",
+        artist: "Heather Hudson",
+        evidence: 92
+      },
+      "f6601ab1-3862-4aff-82be-be15493fe4b0": {
+        referenceSha256: "1df9be024bfb1516e63de89ca246aaf23afadc0e38bf772f57131db1f2f49ff7",
+        artist: "Greg & Tim Hildebrandt",
+        evidence: 92
+      },
+      "f6c4df1f-f148-42ec-8e22-e7114216927d": {
+        referenceSha256: "0d61ad4e3759994daaab9c5f0b12d56225b032d4ce7548499542f9ddceb2dfcf",
+        artist: "Matt Cavotta",
+        evidence: 92
+      },
+      "f7c1aa30-0271-48d9-b9d0-3b1da26d98bf": {
+        referenceSha256: "184d278c6ecfe9c36ec5f2df1b659248555f93312e3f94afd71bcc48a89f2369",
+        artist: "Darrell Riche",
+        evidence: 92
+      },
+      "f94aa774-9036-4016-8880-4bde2710cb90": {
+        referenceSha256: "b7024b5ea0a42730547ed0fdd2e98782f6341c2d819c670b9167d72ba36d26ca",
+        artist: "Gary Ruddell",
+        evidence: 92
+      },
+      "fb652a5c-464e-4ba4-a4ab-1181be70cf7a": {
+        referenceSha256: "ac6ef2cef255b016096ce5909f4389111640becc4a10c34a402110bd507e8ac8",
+        artist: "Alan Pollack",
+        evidence: 92
+      },
+      "fc2de8a4-0d84-4f7c-bbe4-3a31172186ab": {
+        referenceSha256: "428cc08bf2b52645c7a8a52e54b81efbadee258195522afcb752edcf2e3b7bc5",
+        artist: "Mark Zug",
+        evidence: 92
+      },
+      "fd194fb1-0d3a-4eff-a446-240d18dad43c": {
+        referenceSha256: "c89a8468286e99aab7909b43efb7a93667e538fae78727bbba32ccc8b9fb74f2",
+        artist: "Heather Hudson",
+        evidence: 92
+      },
+      "fd7babbe-f8c1-4e7c-8de2-2224dd357de4": {
+        referenceSha256: "912b6db8df3a3d86f24ac430abdcd4c3d14dfabcc5e2e284aeb3687bb70c453c",
+        artist: "David Day",
+        evidence: 92
+      },
+      "fdb9565f-5b09-4127-b169-3146079dab84": {
+        referenceSha256: "50a13d9217e85a1420cb8177e984e434f56bbc87a212e740dcf743de13534209",
+        artist: "Wayne England",
+        evidence: 92
+      },
+      "feff65ca-aedf-4434-b701-590d600d1a0b": {
+        referenceSha256: "5463bb05c30d378f54deb04b6a1af7724babd3fffc02d1d3efa53d0686e97ed7",
+        artist: "Trevor Hairsine",
+        evidence: 92
+      },
+      "ff34e303-c94a-4f5f-b9f6-8d48e6aac383": {
+        referenceSha256: "97d2a81354abdc021e6feb6820b226117cb66c4264114f23a1f92311b70481d1",
+        artist: "Matthew Mitchell",
+        evidence: 92
+      }
+    }
+  }
+};
+export {
+  e as default
+};
