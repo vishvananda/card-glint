@@ -430,6 +430,23 @@ try {
                   ? 'in-progress'
                   : 'rejected',
             reason: gap.next,
+            ...(set.set === 'm21' &&
+            gap.status === 'rejected' &&
+            colorGaps.status === 'component-study-not-adopted'
+              ? {
+                  status: 'needs-audit',
+                  reason:
+                    'A historical color proposal was rejected and was not adopted. The retained frame needs its own current component review; this is not a failed released calibration.',
+                  proposalReview: {
+                    status: 'rejected',
+                    kind: 'discarded-proposal',
+                    reason: gap.next,
+                    historicalKey: source.key,
+                    receiptStatus: colorGaps.status,
+                    evidence: ['games/magic/fixtures/accuracy/showcased-color-gap-review.json'],
+                  },
+                }
+              : {}),
             evidence: ['games/magic/fixtures/accuracy/showcased-color-gap-review.json'],
             historicalKey: source.key,
             componentMeasurements: gap.summary.validation,

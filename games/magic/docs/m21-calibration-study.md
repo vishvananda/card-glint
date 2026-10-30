@@ -586,3 +586,17 @@ and basic-land work.
 Use `modern-calibration-native.mjs INPUTS OUTPUT --retain-modern-controls`
 for this isolated experiment. Its plugin assertions fail on source drift, and
 the capture records the study hash. Normal capture behavior is unchanged.
+
+## Historical diagnostics and the current checklist
+
+The October 2026 ledger review separates historical experiments from current
+calibration checks. Four blue frame groups came from a diagnostic-only pigment
+audit, and two legendary white groups inherited a rejected, unadopted curve.
+Their outcomes remain recorded under proposalReview. The current component
+needs evidence review; those experiments do not reject the published renderer.
+A new failure of a selected calibration still reports rejected.
+
+Publication, scan normalization, mana and each typography or material component
+have separate evidence. Publishing 0.6.12 did not approve every regional
+component. Historical green publication indicators must not imply that all
+component checks passed.

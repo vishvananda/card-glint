@@ -360385,7 +360385,7 @@
             },
             "frameColor": {
               "status": "stale",
-              "reason": "18/18 ordinary red frame pigments pass current/raw color and texture gates with original-wording native replay. Paper, crowns and typography remain separate; Chandra's Firemaw remains a reference/printing-batch review item.",
+              "reason": "Source or receipt dependencies differ; revalidate this retained color measurement. Historical result: 18/18 ordinary red frame pigments pass current/raw color and texture gates with original-wording native replay. Paper, crowns and typography remain separate; Chandra's Firemaw remains a reference/printing-batch review item.",
               "evidence": ["games/magic/fixtures/accuracy/m21-red-color-adoption.json"],
               "coveredPrintings": 18,
               "measurements": {
@@ -361268,7 +361268,7 @@
             },
             "frameColor": {
               "status": "stale",
-              "reason": "5/5 ordinary red frame pigments pass current/raw color and texture gates with original-wording native replay. Paper, crowns and typography remain separate; Chandra's Firemaw remains a reference/printing-batch review item.",
+              "reason": "Source or receipt dependencies differ; revalidate this retained color measurement. Historical result: 5/5 ordinary red frame pigments pass current/raw color and texture gates with original-wording native replay. Paper, crowns and typography remain separate; Chandra's Firemaw remains a reference/printing-batch review item.",
               "evidence": ["games/magic/fixtures/accuracy/m21-red-color-adoption.json"],
               "coveredPrintings": 5,
               "measurements": {
@@ -363394,7 +363394,7 @@
             },
             "frameColor": {
               "status": "stale",
-              "reason": "15/15 ordinary red frame pigments pass current/raw color and texture gates with original-wording native replay. Paper, crowns and typography remain separate; Chandra's Firemaw remains a reference/printing-batch review item.",
+              "reason": "Source or receipt dependencies differ; revalidate this retained color measurement. Historical result: 15/15 ordinary red frame pigments pass current/raw color and texture gates with original-wording native replay. Paper, crowns and typography remain separate; Chandra's Firemaw remains a reference/printing-batch review item.",
               "evidence": ["games/magic/fixtures/accuracy/m21-red-color-adoption.json"],
               "coveredPrintings": 15,
               "measurements": {
@@ -364213,7 +364213,7 @@
             },
             "frameColor": {
               "status": "stale",
-              "reason": "4/4 ordinary red frame pigments pass current/raw color and texture gates with original-wording native replay. Paper, crowns and typography remain separate; Chandra's Firemaw remains a reference/printing-batch review item.",
+              "reason": "Source or receipt dependencies differ; revalidate this retained color measurement. Historical result: 4/4 ordinary red frame pigments pass current/raw color and texture gates with original-wording native replay. Paper, crowns and typography remain separate; Chandra's Firemaw remains a reference/printing-batch review item.",
               "evidence": ["games/magic/fixtures/accuracy/m21-red-color-adoption.json"],
               "coveredPrintings": 4,
               "measurements": {
@@ -366893,9 +366893,16 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "rejected",
+              "status": "needs-audit",
               "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
-              "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+              "reason": "A historical diagnostic found blue pigment outliers. It was not a newly run validation of the released calibration; current color evidence still needs review.",
+              "proposalReview": {
+                "status": "rejected",
+                "kind": "historical-diagnostic",
+                "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+                "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+                "receiptStatus": "diagnostic-not-adopted"
+              },
               "measurements": {
                 "all": {
                   "cards": 41,
@@ -366903,9 +366910,18 @@
                   "after": 6.255671472135709,
                   "worstRegression": 4.254696001389628,
                   "texture": {
-                    "shadowChroma": { "before": 5.509333316746385, "after": 0.35330648664364667 },
-                    "shadowLightness": { "before": 5.153072475051612, "after": 2.981916594230072 },
-                    "contrastError": { "before": 3.496113375513797, "after": 1.1689255166754542 }
+                    "shadowChroma": {
+                      "before": 5.509333316746385,
+                      "after": 0.35330648664364667
+                    },
+                    "shadowLightness": {
+                      "before": 5.153072475051612,
+                      "after": 2.981916594230072
+                    },
+                    "contrastError": {
+                      "before": 3.496113375513797,
+                      "after": 1.1689255166754542
+                    }
                   },
                   "flags": ["absolute-error", "printing-regression"]
                 },
@@ -366915,9 +366931,18 @@
                   "after": 6.7205510989506205,
                   "worstRegression": 1.160951331023008,
                   "texture": {
-                    "shadowChroma": { "before": 5.585975499401314, "after": 0.2378250932611734 },
-                    "shadowLightness": { "before": 4.764257684911572, "after": 3.3707313843701128 },
-                    "contrastError": { "before": 3.657014403057495, "after": 1.3298265442191521 }
+                    "shadowChroma": {
+                      "before": 5.585975499401314,
+                      "after": 0.2378250932611734
+                    },
+                    "shadowLightness": {
+                      "before": 4.764257684911572,
+                      "after": 3.3707313843701128
+                    },
+                    "contrastError": {
+                      "before": 3.657014403057495,
+                      "after": 1.3298265442191521
+                    }
                   },
                   "flags": ["absolute-error"]
                 },
@@ -366927,9 +366952,18 @@
                   "after": 5.691410140863364,
                   "worstRegression": 0.6274980261886567,
                   "texture": {
-                    "shadowChroma": { "before": 5.768731978054606, "after": 0.47839391850596397 },
-                    "shadowLightness": { "before": 5.415329039035144, "after": 2.71966003024654 },
-                    "contrastError": { "before": 3.3320835838411718, "after": 1.0048957250028288 }
+                    "shadowChroma": {
+                      "before": 5.768731978054606,
+                      "after": 0.47839391850596397
+                    },
+                    "shadowLightness": {
+                      "before": 5.415329039035144,
+                      "after": 2.71966003024654
+                    },
+                    "contrastError": {
+                      "before": 3.3320835838411718,
+                      "after": 1.0048957250028288
+                    }
                   },
                   "flags": ["absolute-error"]
                 },
@@ -366939,9 +366973,18 @@
                   "after": 5.895010457080428,
                   "worstRegression": 4.254696001389628,
                   "texture": {
-                    "shadowChroma": { "before": 5.4730725606136374, "after": 0.34160218274519705 },
-                    "shadowLightness": { "before": 5.324050265457242, "after": 2.810938803824442 },
-                    "contrastError": { "before": 3.458897653497271, "after": 1.1317097946589278 }
+                    "shadowChroma": {
+                      "before": 5.4730725606136374,
+                      "after": 0.34160218274519705
+                    },
+                    "shadowLightness": {
+                      "before": 5.324050265457242,
+                      "after": 2.810938803824442
+                    },
+                    "contrastError": {
+                      "before": 3.458897653497271,
+                      "after": 1.1317097946589278
+                    }
                   },
                   "flags": ["absolute-error", "printing-regression"]
                 }
@@ -367807,9 +367850,16 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "rejected",
+              "status": "needs-audit",
               "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
-              "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+              "reason": "A historical diagnostic found blue pigment outliers. It was not a newly run validation of the released calibration; current color evidence still needs review.",
+              "proposalReview": {
+                "status": "rejected",
+                "kind": "historical-diagnostic",
+                "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+                "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+                "receiptStatus": "diagnostic-not-adopted"
+              },
               "measurements": {
                 "all": {
                   "cards": 41,
@@ -367817,9 +367867,18 @@
                   "after": 6.255671472135709,
                   "worstRegression": 4.254696001389628,
                   "texture": {
-                    "shadowChroma": { "before": 5.509333316746385, "after": 0.35330648664364667 },
-                    "shadowLightness": { "before": 5.153072475051612, "after": 2.981916594230072 },
-                    "contrastError": { "before": 3.496113375513797, "after": 1.1689255166754542 }
+                    "shadowChroma": {
+                      "before": 5.509333316746385,
+                      "after": 0.35330648664364667
+                    },
+                    "shadowLightness": {
+                      "before": 5.153072475051612,
+                      "after": 2.981916594230072
+                    },
+                    "contrastError": {
+                      "before": 3.496113375513797,
+                      "after": 1.1689255166754542
+                    }
                   },
                   "flags": ["absolute-error", "printing-regression"]
                 },
@@ -367829,9 +367888,18 @@
                   "after": 6.7205510989506205,
                   "worstRegression": 1.160951331023008,
                   "texture": {
-                    "shadowChroma": { "before": 5.585975499401314, "after": 0.2378250932611734 },
-                    "shadowLightness": { "before": 4.764257684911572, "after": 3.3707313843701128 },
-                    "contrastError": { "before": 3.657014403057495, "after": 1.3298265442191521 }
+                    "shadowChroma": {
+                      "before": 5.585975499401314,
+                      "after": 0.2378250932611734
+                    },
+                    "shadowLightness": {
+                      "before": 4.764257684911572,
+                      "after": 3.3707313843701128
+                    },
+                    "contrastError": {
+                      "before": 3.657014403057495,
+                      "after": 1.3298265442191521
+                    }
                   },
                   "flags": ["absolute-error"]
                 },
@@ -367841,9 +367909,18 @@
                   "after": 5.691410140863364,
                   "worstRegression": 0.6274980261886567,
                   "texture": {
-                    "shadowChroma": { "before": 5.768731978054606, "after": 0.47839391850596397 },
-                    "shadowLightness": { "before": 5.415329039035144, "after": 2.71966003024654 },
-                    "contrastError": { "before": 3.3320835838411718, "after": 1.0048957250028288 }
+                    "shadowChroma": {
+                      "before": 5.768731978054606,
+                      "after": 0.47839391850596397
+                    },
+                    "shadowLightness": {
+                      "before": 5.415329039035144,
+                      "after": 2.71966003024654
+                    },
+                    "contrastError": {
+                      "before": 3.3320835838411718,
+                      "after": 1.0048957250028288
+                    }
                   },
                   "flags": ["absolute-error"]
                 },
@@ -367853,9 +367930,18 @@
                   "after": 5.895010457080428,
                   "worstRegression": 4.254696001389628,
                   "texture": {
-                    "shadowChroma": { "before": 5.4730725606136374, "after": 0.34160218274519705 },
-                    "shadowLightness": { "before": 5.324050265457242, "after": 2.810938803824442 },
-                    "contrastError": { "before": 3.458897653497271, "after": 1.1317097946589278 }
+                    "shadowChroma": {
+                      "before": 5.4730725606136374,
+                      "after": 0.34160218274519705
+                    },
+                    "shadowLightness": {
+                      "before": 5.324050265457242,
+                      "after": 2.810938803824442
+                    },
+                    "contrastError": {
+                      "before": 3.458897653497271,
+                      "after": 1.1317097946589278
+                    }
                   },
                   "flags": ["absolute-error", "printing-regression"]
                 }
@@ -370412,9 +370498,16 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "rejected",
+              "status": "needs-audit",
               "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
-              "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+              "reason": "A historical diagnostic found blue pigment outliers. It was not a newly run validation of the released calibration; current color evidence still needs review.",
+              "proposalReview": {
+                "status": "rejected",
+                "kind": "historical-diagnostic",
+                "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+                "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+                "receiptStatus": "diagnostic-not-adopted"
+              },
               "measurements": {
                 "all": {
                   "cards": 41,
@@ -370422,9 +370515,18 @@
                   "after": 6.255671472135709,
                   "worstRegression": 4.254696001389628,
                   "texture": {
-                    "shadowChroma": { "before": 5.509333316746385, "after": 0.35330648664364667 },
-                    "shadowLightness": { "before": 5.153072475051612, "after": 2.981916594230072 },
-                    "contrastError": { "before": 3.496113375513797, "after": 1.1689255166754542 }
+                    "shadowChroma": {
+                      "before": 5.509333316746385,
+                      "after": 0.35330648664364667
+                    },
+                    "shadowLightness": {
+                      "before": 5.153072475051612,
+                      "after": 2.981916594230072
+                    },
+                    "contrastError": {
+                      "before": 3.496113375513797,
+                      "after": 1.1689255166754542
+                    }
                   },
                   "flags": ["absolute-error", "printing-regression"]
                 },
@@ -370434,9 +370536,18 @@
                   "after": 6.7205510989506205,
                   "worstRegression": 1.160951331023008,
                   "texture": {
-                    "shadowChroma": { "before": 5.585975499401314, "after": 0.2378250932611734 },
-                    "shadowLightness": { "before": 4.764257684911572, "after": 3.3707313843701128 },
-                    "contrastError": { "before": 3.657014403057495, "after": 1.3298265442191521 }
+                    "shadowChroma": {
+                      "before": 5.585975499401314,
+                      "after": 0.2378250932611734
+                    },
+                    "shadowLightness": {
+                      "before": 4.764257684911572,
+                      "after": 3.3707313843701128
+                    },
+                    "contrastError": {
+                      "before": 3.657014403057495,
+                      "after": 1.3298265442191521
+                    }
                   },
                   "flags": ["absolute-error"]
                 },
@@ -370446,9 +370557,18 @@
                   "after": 5.691410140863364,
                   "worstRegression": 0.6274980261886567,
                   "texture": {
-                    "shadowChroma": { "before": 5.768731978054606, "after": 0.47839391850596397 },
-                    "shadowLightness": { "before": 5.415329039035144, "after": 2.71966003024654 },
-                    "contrastError": { "before": 3.3320835838411718, "after": 1.0048957250028288 }
+                    "shadowChroma": {
+                      "before": 5.768731978054606,
+                      "after": 0.47839391850596397
+                    },
+                    "shadowLightness": {
+                      "before": 5.415329039035144,
+                      "after": 2.71966003024654
+                    },
+                    "contrastError": {
+                      "before": 3.3320835838411718,
+                      "after": 1.0048957250028288
+                    }
                   },
                   "flags": ["absolute-error"]
                 },
@@ -370458,9 +370578,18 @@
                   "after": 5.895010457080428,
                   "worstRegression": 4.254696001389628,
                   "texture": {
-                    "shadowChroma": { "before": 5.4730725606136374, "after": 0.34160218274519705 },
-                    "shadowLightness": { "before": 5.324050265457242, "after": 2.810938803824442 },
-                    "contrastError": { "before": 3.458897653497271, "after": 1.1317097946589278 }
+                    "shadowChroma": {
+                      "before": 5.4730725606136374,
+                      "after": 0.34160218274519705
+                    },
+                    "shadowLightness": {
+                      "before": 5.324050265457242,
+                      "after": 2.810938803824442
+                    },
+                    "contrastError": {
+                      "before": 3.458897653497271,
+                      "after": 1.1317097946589278
+                    }
                   },
                   "flags": ["absolute-error", "printing-regression"]
                 }
@@ -371256,9 +371385,16 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "rejected",
+              "status": "needs-audit",
               "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
-              "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+              "reason": "A historical diagnostic found blue pigment outliers. It was not a newly run validation of the released calibration; current color evidence still needs review.",
+              "proposalReview": {
+                "status": "rejected",
+                "kind": "historical-diagnostic",
+                "reason": "Existing blue fit fails absolute color and per-printing regression gates in clear rails. Retain prior rendering until a replacement passes.",
+                "evidence": ["games/magic/fixtures/accuracy/m21-existing-pigment-audit.json"],
+                "receiptStatus": "diagnostic-not-adopted"
+              },
               "measurements": {
                 "all": {
                   "cards": 41,
@@ -371266,9 +371402,18 @@
                   "after": 6.255671472135709,
                   "worstRegression": 4.254696001389628,
                   "texture": {
-                    "shadowChroma": { "before": 5.509333316746385, "after": 0.35330648664364667 },
-                    "shadowLightness": { "before": 5.153072475051612, "after": 2.981916594230072 },
-                    "contrastError": { "before": 3.496113375513797, "after": 1.1689255166754542 }
+                    "shadowChroma": {
+                      "before": 5.509333316746385,
+                      "after": 0.35330648664364667
+                    },
+                    "shadowLightness": {
+                      "before": 5.153072475051612,
+                      "after": 2.981916594230072
+                    },
+                    "contrastError": {
+                      "before": 3.496113375513797,
+                      "after": 1.1689255166754542
+                    }
                   },
                   "flags": ["absolute-error", "printing-regression"]
                 },
@@ -371278,9 +371423,18 @@
                   "after": 6.7205510989506205,
                   "worstRegression": 1.160951331023008,
                   "texture": {
-                    "shadowChroma": { "before": 5.585975499401314, "after": 0.2378250932611734 },
-                    "shadowLightness": { "before": 4.764257684911572, "after": 3.3707313843701128 },
-                    "contrastError": { "before": 3.657014403057495, "after": 1.3298265442191521 }
+                    "shadowChroma": {
+                      "before": 5.585975499401314,
+                      "after": 0.2378250932611734
+                    },
+                    "shadowLightness": {
+                      "before": 4.764257684911572,
+                      "after": 3.3707313843701128
+                    },
+                    "contrastError": {
+                      "before": 3.657014403057495,
+                      "after": 1.3298265442191521
+                    }
                   },
                   "flags": ["absolute-error"]
                 },
@@ -371290,9 +371444,18 @@
                   "after": 5.691410140863364,
                   "worstRegression": 0.6274980261886567,
                   "texture": {
-                    "shadowChroma": { "before": 5.768731978054606, "after": 0.47839391850596397 },
-                    "shadowLightness": { "before": 5.415329039035144, "after": 2.71966003024654 },
-                    "contrastError": { "before": 3.3320835838411718, "after": 1.0048957250028288 }
+                    "shadowChroma": {
+                      "before": 5.768731978054606,
+                      "after": 0.47839391850596397
+                    },
+                    "shadowLightness": {
+                      "before": 5.415329039035144,
+                      "after": 2.71966003024654
+                    },
+                    "contrastError": {
+                      "before": 3.3320835838411718,
+                      "after": 1.0048957250028288
+                    }
                   },
                   "flags": ["absolute-error"]
                 },
@@ -371302,9 +371465,18 @@
                   "after": 5.895010457080428,
                   "worstRegression": 4.254696001389628,
                   "texture": {
-                    "shadowChroma": { "before": 5.4730725606136374, "after": 0.34160218274519705 },
-                    "shadowLightness": { "before": 5.324050265457242, "after": 2.810938803824442 },
-                    "contrastError": { "before": 3.458897653497271, "after": 1.1317097946589278 }
+                    "shadowChroma": {
+                      "before": 5.4730725606136374,
+                      "after": 0.34160218274519705
+                    },
+                    "shadowLightness": {
+                      "before": 5.324050265457242,
+                      "after": 2.810938803824442
+                    },
+                    "contrastError": {
+                      "before": 3.458897653497271,
+                      "after": 1.1317097946589278
+                    }
                   },
                   "flags": ["absolute-error", "printing-regression"]
                 }
@@ -375318,8 +375490,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "rejected",
-              "reason": "Audit clear-rail source defaults and remaining full-set references; do not adopt the rejected curve.",
+              "status": "needs-audit",
+              "reason": "A historical color proposal was rejected and was not adopted. The retained frame needs its own current component review; this is not a failed released calibration.",
               "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"],
               "historicalKey": "m21/black/components/W/W",
               "componentMeasurements": {
@@ -375329,10 +375501,27 @@
                 "after": 2.6663083522977993,
                 "worstRegression": 2.095393418125587,
                 "texture": {
-                  "shadowChroma": { "before": 0.7412328620914117, "after": 1.0152779317521397 },
-                  "shadowLightness": { "before": 1.5547305557486513, "after": 3.8255559498070246 },
-                  "contrastError": { "before": 1.0318889040911268, "after": 0.7189647031963453 }
+                  "shadowChroma": {
+                    "before": 0.7412328620914117,
+                    "after": 1.0152779317521397
+                  },
+                  "shadowLightness": {
+                    "before": 1.5547305557486513,
+                    "after": 3.8255559498070246
+                  },
+                  "contrastError": {
+                    "before": 1.0318889040911268,
+                    "after": 0.7189647031963453
+                  }
                 }
+              },
+              "proposalReview": {
+                "status": "rejected",
+                "kind": "discarded-proposal",
+                "reason": "Audit clear-rail source defaults and remaining full-set references; do not adopt the rejected curve.",
+                "historicalKey": "m21/black/components/W/W",
+                "receiptStatus": "component-study-not-adopted",
+                "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
               }
             },
             "paperColor": {
@@ -375956,7 +376145,7 @@
             },
             "frameColor": {
               "status": "stale",
-              "reason": "21/21 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
+              "reason": "Source or receipt dependencies differ; revalidate this retained color measurement. Historical result: 21/21 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
               "evidence": ["games/magic/fixtures/accuracy/m21-white-default.json"],
               "coveredPrintings": 21,
               "measurements": {
@@ -376809,7 +376998,7 @@
             },
             "frameColor": {
               "status": "stale",
-              "reason": "5/5 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
+              "reason": "Source or receipt dependencies differ; revalidate this retained color measurement. Historical result: 5/5 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
               "evidence": ["games/magic/fixtures/accuracy/m21-white-default.json"],
               "coveredPrintings": 5,
               "measurements": {
@@ -378286,8 +378475,8 @@
               "reason": "Existing work must be matched to this complete variant and current source."
             },
             "frameColor": {
-              "status": "rejected",
-              "reason": "Audit clear-rail source defaults and remaining full-set references; do not adopt the rejected curve.",
+              "status": "needs-audit",
+              "reason": "A historical color proposal was rejected and was not adopted. The retained frame needs its own current component review; this is not a failed released calibration.",
               "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"],
               "historicalKey": "m21/black/components/W/W",
               "componentMeasurements": {
@@ -378297,10 +378486,27 @@
                 "after": 2.6663083522977993,
                 "worstRegression": 2.095393418125587,
                 "texture": {
-                  "shadowChroma": { "before": 0.7412328620914117, "after": 1.0152779317521397 },
-                  "shadowLightness": { "before": 1.5547305557486513, "after": 3.8255559498070246 },
-                  "contrastError": { "before": 1.0318889040911268, "after": 0.7189647031963453 }
+                  "shadowChroma": {
+                    "before": 0.7412328620914117,
+                    "after": 1.0152779317521397
+                  },
+                  "shadowLightness": {
+                    "before": 1.5547305557486513,
+                    "after": 3.8255559498070246
+                  },
+                  "contrastError": {
+                    "before": 1.0318889040911268,
+                    "after": 0.7189647031963453
+                  }
                 }
+              },
+              "proposalReview": {
+                "status": "rejected",
+                "kind": "discarded-proposal",
+                "reason": "Audit clear-rail source defaults and remaining full-set references; do not adopt the rejected curve.",
+                "historicalKey": "m21/black/components/W/W",
+                "receiptStatus": "component-study-not-adopted",
+                "evidence": ["games/magic/fixtures/accuracy/showcased-color-gap-review.json"]
               }
             },
             "paperColor": {
@@ -378834,7 +379040,7 @@
             },
             "frameColor": {
               "status": "stale",
-              "reason": "12/12 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
+              "reason": "Source or receipt dependencies differ; revalidate this retained color measurement. Historical result: 12/12 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
               "evidence": ["games/magic/fixtures/accuracy/m21-white-default.json"],
               "coveredPrintings": 12,
               "measurements": {
@@ -379510,7 +379716,7 @@
             },
             "frameColor": {
               "status": "stale",
-              "reason": "4/4 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
+              "reason": "Source or receipt dependencies differ; revalidate this retained color measurement. Historical result: 4/4 unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.",
               "evidence": ["games/magic/fixtures/accuracy/m21-white-default.json"],
               "coveredPrintings": 4,
               "measurements": {
