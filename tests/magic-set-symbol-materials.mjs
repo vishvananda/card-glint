@@ -97,8 +97,9 @@ try {
             gl.readPixels(0, 0, c.width, c.height, gl.RGBA, gl.UNSIGNED_BYTE, a);
             return a;
           };
-          const draw = (card, finish, extra = {}) => {
+          const draw = async (card, finish, extra = {}) => {
             renderer.updateScene([{ id: 17, card, finish, transform, ...extra }]);
+            await renderer.ready(card, 1);
             renderer.render(frame);
             return take();
           };
@@ -108,15 +109,15 @@ try {
             preparedReads = sourceReads,
             finishes = [];
           for (const finish of ['etched', 'opal']) {
-            const ink = draw(1, finish),
-              solid = draw(2, finish);
+            const ink = await draw(1, finish),
+              solid = await draw(2, finish);
             const changed = difference(ink, solid);
             if (changed <= 0.01) throw Error(finish + ' still renders the solid silhouette');
             const extras = {
                 cardstock: { amount: 0.2 },
                 printDots: { amount: 0.15, period: 3, variation: 1 },
               },
-              textured = draw(1, finish, extras);
+              textured = await draw(1, finish, extras);
             if (difference(ink, textured) <= 0.01)
               throw Error('Printing/stock effects did not reach the final material');
             const options = {
@@ -147,7 +148,7 @@ try {
                 throw Error(key + ' changed when enabling printed effects');
             if (preparedReads !== sourceReads)
               throw Error('Material toggles reread symbol/art pixels');
-            for (let i = 0; i < 3; i++) draw(1, finish, extras);
+            for (let i = 0; i < 3; i++) await draw(1, finish, extras);
             finishes.push({ finish, changed, previewExportDifference: 0 });
           }
           if (gl.getError() !== 0) throw Error('WebGL error');
