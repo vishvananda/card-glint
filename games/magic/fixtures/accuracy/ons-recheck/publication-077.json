@@ -1,0 +1,464 @@
+{
+  "schema": 1,
+  "status": "published-verified-manual-patch",
+  "reviewedAt": "2026-10-30T02:02:03.458Z",
+  "method": "Complete renderer CI passed for identical renderer/build/test source, with an explicit strict version-only qualification when commits differ. Official GitHub downloads match their manifest, sizes and checksums. This receipt does not claim an automated release job ran.",
+  "release": {
+    "assets": [
+      {
+        "apiUrl": "https://api.github.com/repos/vishvananda/card-glint/releases/assets/690594480",
+        "contentType": "application/zip",
+        "createdAt": "2026-10-30T02:01:20Z",
+        "downloadCount": 0,
+        "id": "RA_kwDOVECorM4pKaKw",
+        "label": "",
+        "name": "card-glint-0.7.7-browser.zip",
+        "size": 3947593,
+        "state": "uploaded",
+        "updatedAt": "2026-10-30T02:01:20Z",
+        "url": "https://github.com/vishvananda/card-glint/releases/download/v0.7.7/card-glint-0.7.7-browser.zip"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/vishvananda/card-glint/releases/assets/690594486",
+        "contentType": "application/x-gtar",
+        "createdAt": "2026-10-30T02:01:20Z",
+        "downloadCount": 0,
+        "id": "RA_kwDOVECorM4pKaK2",
+        "label": "",
+        "name": "card-glint-0.7.7.tgz",
+        "size": 3985026,
+        "state": "uploaded",
+        "updatedAt": "2026-10-30T02:01:20Z",
+        "url": "https://github.com/vishvananda/card-glint/releases/download/v0.7.7/card-glint-0.7.7.tgz"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/vishvananda/card-glint/releases/assets/690594481",
+        "contentType": "application/json",
+        "createdAt": "2026-10-30T02:01:20Z",
+        "downloadCount": 0,
+        "id": "RA_kwDOVECorM4pKaKx",
+        "label": "",
+        "name": "release.json",
+        "size": 499,
+        "state": "uploaded",
+        "updatedAt": "2026-10-30T02:01:20Z",
+        "url": "https://github.com/vishvananda/card-glint/releases/download/v0.7.7/release.json"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/vishvananda/card-glint/releases/assets/690594485",
+        "contentType": "application/octet-stream",
+        "createdAt": "2026-10-30T02:01:20Z",
+        "downloadCount": 0,
+        "id": "RA_kwDOVECorM4pKaK1",
+        "label": "",
+        "name": "SHA256SUMS",
+        "size": 261,
+        "state": "uploaded",
+        "updatedAt": "2026-10-30T02:01:20Z",
+        "url": "https://github.com/vishvananda/card-glint/releases/download/v0.7.7/SHA256SUMS"
+      }
+    ],
+    "isDraft": false,
+    "isPrerelease": false,
+    "publishedAt": "2026-10-30T02:01:21Z",
+    "tagName": "v0.7.7",
+    "url": "https://github.com/vishvananda/card-glint/releases/tag/v0.7.7"
+  },
+  "workflow": {
+    "conclusion": "success",
+    "headSha": "b3502ee6da9efe58b9485ded992a3b4a576dc570",
+    "jobs": [
+      {
+        "completedAt": "2026-10-29T22:58:23Z",
+        "conclusion": "success",
+        "databaseId": 123763044886,
+        "name": "renderer",
+        "startedAt": "2026-10-29T22:10:40Z",
+        "status": "completed",
+        "steps": [
+          { "conclusion": "success", "name": "Set up job", "number": 1, "status": "completed" },
+          {
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/setup-node@v4",
+            "number": 3,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run rustup show",
+            "number": 4,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run Swatinem/rust-cache@v2",
+            "number": 5,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/cache@v4",
+            "number": 6,
+            "status": "completed"
+          },
+          {
+            "conclusion": "skipped",
+            "name": "Run cargo install wasm-bindgen-cli --version 0.2.127 --locked",
+            "number": 7,
+            "status": "completed"
+          },
+          { "conclusion": "success", "name": "Run npm ci", "number": 8, "status": "completed" },
+          {
+            "conclusion": "success",
+            "name": "Run npm run build",
+            "number": 9,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run check",
+            "number": 10,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:package",
+            "number": 11,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run magic:data:check",
+            "number": 12,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:magic-lazy",
+            "number": 13,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:calibration-editor",
+            "number": 14,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Use primary Ubuntu archive for browser dependencies",
+            "number": 15,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npx playwright install --with-deps chromium webkit",
+            "number": 16,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:magic-lazy-browser",
+            "number": 17,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:magic-accuracy",
+            "number": 18,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:set-symbol-masks",
+            "number": 19,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:foil-continuity",
+            "number": 20,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:normal-lighting",
+            "number": 21,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:printing-apis",
+            "number": 22,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:kernels",
+            "number": 23,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run cargo clippy --workspace --target wasm32-unknown-unknown -- -D warnings",
+            "number": 24,
+            "status": "completed"
+          },
+          { "conclusion": "success", "name": "Start preview", "number": 25, "status": "completed" },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:browser",
+            "number": 26,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:showcase",
+            "number": 27,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:magic",
+            "number": 28,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run node tests/printing-presets-demo.mjs",
+            "number": 29,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:surfaces",
+            "number": 30,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:touch",
+            "number": 31,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:hover-isolation",
+            "number": 32,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:overlay-foil",
+            "number": 33,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:hologram",
+            "number": 34,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:coverage",
+            "number": 35,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:host",
+            "number": 36,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:distinct-faces",
+            "number": 37,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:worn",
+            "number": 38,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:cardstock",
+            "number": 39,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:print-sampling",
+            "number": 40,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:rain-fog",
+            "number": 41,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:ripple-budget",
+            "number": 42,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:ripple-geometry",
+            "number": 43,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:deformation",
+            "number": 44,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:parallax",
+            "number": 45,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:optics",
+            "number": 46,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run package:release",
+            "number": 47,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:release",
+            "number": 48,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run npm run test:cdn-publish",
+            "number": 49,
+            "status": "completed"
+          },
+          {
+            "conclusion": "skipped",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 50,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 51,
+            "status": "completed"
+          },
+          {
+            "conclusion": "skipped",
+            "name": "Upload showcase",
+            "number": 52,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/cache@v4",
+            "number": 101,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run Swatinem/rust-cache@v2",
+            "number": 102,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/setup-node@v4",
+            "number": 103,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 104,
+            "status": "completed"
+          },
+          { "conclusion": "success", "name": "Complete job", "number": 105, "status": "completed" }
+        ],
+        "url": "https://github.com/vishvananda/card-glint/actions/runs/40963805985/job/123763044886"
+      },
+      {
+        "completedAt": "2026-10-29T22:58:23Z",
+        "conclusion": "skipped",
+        "databaseId": 123783449920,
+        "name": "release",
+        "startedAt": "2026-10-29T22:58:23Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/vishvananda/card-glint/actions/runs/40963805985/job/123783449920"
+      },
+      {
+        "completedAt": "2026-10-29T22:58:23Z",
+        "conclusion": "skipped",
+        "databaseId": 123783450423,
+        "name": "deploy",
+        "startedAt": "2026-10-29T22:58:23Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/vishvananda/card-glint/actions/runs/40963805985/job/123783450423"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/vishvananda/card-glint/actions/runs/40963805985"
+  },
+  "qualification": {
+    "kind": "strict-version-metadata-only",
+    "ciCommit": "b3502ee6da9efe58b9485ded992a3b4a576dc570",
+    "releaseCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
+    "changedFiles": ["docs/releases/0.7.7.md", "package-lock.json", "package.json"]
+  },
+  "published": {
+    "version": "0.7.7",
+    "sourceCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
+    "rust": "rustc 1.98.0 (88d9e12ae 2026-08-18)",
+    "node": "v22.22.1",
+    "files": [
+      {
+        "name": "card-glint-0.7.7.tgz",
+        "bytes": 3985026,
+        "sha256": "ec8ac4eaf5954ed83561eced9775fd54845b7f15b53ad0ff65dbfd70bf5c3bcd"
+      },
+      {
+        "name": "card-glint-0.7.7-browser.zip",
+        "bytes": 3947593,
+        "sha256": "b896b67db3bb097c340f1177668b5cebf4652a40d6a35a31bf9af9eab056000a"
+      }
+    ]
+  },
+  "checksumsVerified": true,
+  "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+  "nativeEvidence": {
+    "file": "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
+    "sha256": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95"
+  },
+  "regionalEvidence": {
+    "file": "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz",
+    "sha256": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
+  },
+  "methodFile": "games/magic/tools/accuracy/ons-symbol-stats-publication.mjs",
+  "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0"
+}

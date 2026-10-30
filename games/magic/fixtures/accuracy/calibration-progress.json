@@ -238887,7 +238887,9 @@
             "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
             "printings": 350,
             "structure100": 76.71316292120027,
-            "publication": "pending"
+            "publication": "released",
+            "version": "0.7.7",
+            "sourceCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2"
           }
         }
       },
@@ -240386,9 +240388,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.868Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -240417,24 +240421,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "2d06288b6c9bfec64839f993280092d9d75ce7ae03d160fe93c28d210fea93a6",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 26,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -240457,7 +240465,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -242719,9 +242727,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.868Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -242750,24 +242760,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "6cfd9d7baea6fe249a4a93107e6ef8591dd71763bc52bbf6a0b65b9b993f2e4a",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 34,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -242790,7 +242804,7 @@
             "stats": "79e92cfcb56b31d11b2272b5f3a5a13b935ed5037112cd4ed7b7406cada32386",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -244192,9 +244206,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.869Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -244223,24 +244239,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "bc088c6582658e931406cbe0dd968e9fdc71118760796927bdaa41d65dc6c479",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 1,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -244263,7 +244283,7 @@
             "stats": "79e92cfcb56b31d11b2272b5f3a5a13b935ed5037112cd4ed7b7406cada32386",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -245815,9 +245835,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.869Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -245846,24 +245868,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "a7ed47508bec2da4c68c33bc87cd511ed4de29c9c11b0a653732e60b8624d83e",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 28,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -245886,7 +245912,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -248082,9 +248108,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.869Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -248113,24 +248141,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "a3f5dfa03d7ccc48dea20572034aa85dcbf65293598844dffe1a2ca28319bfc1",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 31,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -248153,7 +248185,7 @@
             "stats": "79e92cfcb56b31d11b2272b5f3a5a13b935ed5037112cd4ed7b7406cada32386",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -249555,9 +249587,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.869Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -249586,24 +249620,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "966018adeeb09cd8167a15fa5731172634fd6960b6d37f7d5ac32769d910f794",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 2,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -249626,7 +249664,7 @@
             "stats": "79e92cfcb56b31d11b2272b5f3a5a13b935ed5037112cd4ed7b7406cada32386",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -251641,9 +251679,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.870Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -251672,24 +251712,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "fb42da1c1353a5767884602af443f6119db0693fe0470150e1a4ab25c911615d",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 33,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -251712,7 +251756,7 @@
             "stats": "79e92cfcb56b31d11b2272b5f3a5a13b935ed5037112cd4ed7b7406cada32386",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -253535,9 +253579,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.870Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -253566,24 +253612,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "9589a12de23412e37aab08611fe04910c02a09f40e87f42faff2847ee5b79684",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 27,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -253606,7 +253656,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -254945,9 +254995,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.870Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -254976,24 +255028,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "c39fd893a932e180d69d939cc8bd5ea9120e864c7dd8d13aad5fe20ac5bc8ce2",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 1,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -255016,7 +255072,7 @@
             "stats": "79e92cfcb56b31d11b2272b5f3a5a13b935ed5037112cd4ed7b7406cada32386",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -256606,9 +256662,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.870Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -256637,24 +256695,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "918d7b51752ab4d812ce8c353913f208aaafdd08cad384fd6f5015099aa45159",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 30,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -256677,7 +256739,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -258863,9 +258925,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.871Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -258894,24 +258958,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "8a2b59615a514f0756b64845ab0c4dfd045ad78b1cda376225ff35352da309a2",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 30,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -258934,7 +259002,7 @@
             "stats": "79e92cfcb56b31d11b2272b5f3a5a13b935ed5037112cd4ed7b7406cada32386",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -260418,9 +260486,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.871Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -260449,24 +260519,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "b707385cb0e12beba2099e2b260cae4ecff1ca349789ae82e51fd86ff48697ea",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 1,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -260489,7 +260563,7 @@
             "stats": "79e92cfcb56b31d11b2272b5f3a5a13b935ed5037112cd4ed7b7406cada32386",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -261908,9 +261982,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.871Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -261939,24 +262015,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "acc15bd12b9357776dc4c1c42c9f14dc19485f4d7eda0658e08cab8e3139fca1",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 21,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -261979,7 +262059,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -264308,9 +264388,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.871Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -264339,24 +264421,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "8de9895ddb6c5282f0b0940eb5fd299f7f7f30f8e56457795cd9938227d34b1e",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 38,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -264379,7 +264465,7 @@
             "stats": "79e92cfcb56b31d11b2272b5f3a5a13b935ed5037112cd4ed7b7406cada32386",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -265844,9 +265930,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.872Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -265875,24 +265963,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "ac47be390fbbd5b3847a01c083dc3689741e3829bb000f3bc94543270751e110",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 2,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -265915,7 +266007,7 @@
             "stats": "79e92cfcb56b31d11b2272b5f3a5a13b935ed5037112cd4ed7b7406cada32386",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -267038,9 +267130,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.872Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -267069,24 +267163,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "46138f23431174b803f28fad8511082988565035e6ed67231acc39ee9054bcbd",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 5,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -267109,7 +267207,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -268200,9 +268298,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.872Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -268231,24 +268331,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "2599b472569ec30b4e0ab086930a41473a13455289233da4f579b89bb9f32d34",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 1,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -268271,7 +268375,7 @@
             "stats": "79e92cfcb56b31d11b2272b5f3a5a13b935ed5037112cd4ed7b7406cada32386",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "baa97b45456a04e385926f29479da5d66ee2aa07f05b078d6c673f1938d8db9f",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -269114,9 +269218,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.873Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -269145,24 +269251,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "e50a06a9597b5274bd2a167ddba88dbf871a5f5e12cfbdf01669e0b305eee2ce",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 1,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -269185,7 +269295,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -270042,9 +270152,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.873Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -270073,24 +270185,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "7b82b825e68f192b4954bd444c6ca023e3b0fcabf8337fddd88e9abf4a94a9b1",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 13,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -270113,7 +270229,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -271066,9 +271182,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.873Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -271097,24 +271215,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "988558118b3e4ab4874ac60a7604c701b9e370ff9f310409ee302a93295c8b2b",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 1,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -271137,7 +271259,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -271980,9 +272102,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.874Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -272011,24 +272135,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "2c73b59a1e6f38aaf0d379242b6903fab572c116c8e29907ce53018614c39482",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 1,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -272051,7 +272179,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -272894,9 +273022,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.874Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -272925,24 +273055,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "33e3f9d8f4f9608bc94a5ba40d04a6880ed7082b92cca14b20f4200bffd46dba",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 1,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -272965,7 +273099,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -273808,9 +273942,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.874Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -273839,24 +273975,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "4aebbd7573015e2d40784d1287cc02345fe06051d98380ef50ccea2fb1c1b9a9",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 1,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -273879,7 +274019,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -274722,9 +274862,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.874Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -274753,24 +274895,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "d482bc8d15aad795b9389f630b0f10359eb17dd27233d6d54228c5ddc28f0b15",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 1,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -274793,7 +274939,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -275691,9 +275837,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.875Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -275722,24 +275870,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "307710a8279598d14180590532bb4a97e7c46a317c1889a8aef14d7b904c0f86",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 4,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -275762,7 +275914,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -276684,9 +276836,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.875Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -276715,24 +276869,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "5c18b7a275856d5cfaca2b15faf9fdda1f6f88c183af6160f284b96837c267c5",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 4,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -276755,7 +276913,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -277677,9 +277835,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.875Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -277708,24 +277868,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "6d8ad00ec07866d90230182fdd35e2d2f00b3338de3875cf96cb892151fce62d",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 4,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -277748,7 +277912,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -278670,9 +278834,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.876Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -278701,24 +278867,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "878e42552279aa2bf71f3dfe98222929b1c73a6e3fe3daaf25543beba54a4506",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 4,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -278741,7 +278911,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -279663,9 +279833,11 @@
             },
             "release": {
               "status": "validated",
-              "reviewedAt": "2026-10-29T08:56:37.142Z",
-              "reason": "Published 0.7.5 artifacts and complete release CI match this full nonfoil native/scoring census. The foil-only alternate remains a separate follow-up.",
+              "reviewedAt": "2026-10-30T02:02:03.876Z",
+              "reason": "Published 0.7.7 archives and complete exact-source CI match all350 nonfoil native/scoring members. The foil-only alternate remains deferred.",
               "evidence": [
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json",
                 "games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz"
               ],
@@ -279694,24 +279866,28 @@
                 "games/magic/fixtures/accuracy/ons/source-gap-review.json": "6bb17ccd8ca62d2368827ececa52ea0c8bac4d8e73913967f18724e5df45ffa4",
                 "games/magic/fixtures/accuracy/mir/native-audit-075.json": "89016790b258000b8c89751396461137b6024f587cd54002d96adf9938d13339",
                 "games/magic/fixtures/accuracy/ons/native-audit-075.json": "95c84b52857fdf80dcb0d50d50b816adefe48595088ac66da4cf4051632f0cca",
-                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16"
+                "games/magic/fixtures/accuracy/mirage-onslaught/publication-075.json": "e54e0678bc06baa5207a952502d6e2ad77de572937f7eb88870ac045dbbb3b16",
+                "games/magic/fixtures/accuracy/ons-recheck/publication-077.json": "667ba441f2c9bf7f7f6920ab84c5e2572dc9626240e317be0db67a1e4a74ab9b",
+                "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json": "5340c023f2418d62acdf80c4c3b71ed6661fa184c88c18ef13523fcae9997b95",
+                "games/magic/fixtures/accuracy/ons-recheck/symbols-and-stats-077.json.gz": "a5d689cb1023a7dafdd911d465eb68eec7ff9463f65e8fb106cc02b5eebbe4f8"
               },
               "runtimeGuards": {
-                "games/magic/src": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "games/magic/src": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               },
               "proof": {
-                "sourceHash": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07",
+                "sourceHash": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083",
                 "scopeHash": "2bf422d8d5aee7c1a80ba7b27fc64d42309b71f8eba6701aed16506898b011f8",
                 "gatesPassed": true,
-                "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-                "methodHash": "bd3cec74f28e76bf99bcda9f7200fe350182c7e5f8fc120f2315b6e688734559",
-                "nativeReplayHash": "44a43a90442e7bd83089104e7d7eb546b6f8db1b2972c69b1d73de83ecb7d8ba",
-                "metricsHash": "e4e34f836660d0c632faad8b7323285814c7c1f9f868c3fd7ad046c764701769",
+                "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+                "methodHash": "d4a22e572ed51f58e6c96120513b171548060d748d619e4f83fb9ad74d3278a0",
+                "nativeReplayHash": "5e18d80773c2aca1cc734c7b132aee45b4b3d037fb28d4d224119fd1f45c1941",
+                "metricsHash": "826c4cf681a3614b63b8843a55f5a580fca413ad93f3182db6b401d08a1fc0fb",
                 "coveredPrintings": 4,
-                "version": "0.7.5",
-                "publishedCommit": "c1758166c3126955b713bd6ada4cd8cbe00ae4c8",
+                "version": "0.7.7",
+                "publishedCommit": "ecb8448ce39477122b9168a2cde5ed9d18f074b2",
                 "checksPassed": true,
-                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c"
+                "oldFrameAdoption": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
+                "onsSymbolStats": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c"
               }
             }
           },
@@ -279734,7 +279910,7 @@
             "stats": "f953da6b6e25b8f96ac37abfe40b3d28c08f62d02e8db6189a2fbf69d4dfb0c3",
             "specialComponents": "267afd1446d1bb0ec4c1c3f3fe5bc108bf8d8d09e1030c6996d8c0fcf2dbb898",
             "fullCard": "e17f60e268bd59783b56c9c2a32fc44dc72938469418d7510cc2f73eb641370b",
-            "release": "cabd95c7204af10c604afe0920ecd5b4d5e4319c8c1266dabdf40528ea7a0d07"
+            "release": "8225237122bdddae65a30910a4fdbf2017a7d7fe23096ec9fd4c7a8ffe08d083"
           },
           "sourceCensus": {
             "heldOut": false,
@@ -279780,11 +279956,11 @@
         }
       ],
       "audit": {
-        "version": "0.7.5",
-        "rendererHash": "92d25748fe582f8f13d70714909a8c78acbea9d516c443abef7b2e0c8259216c",
-        "structure100": 76.47953313264169,
+        "version": "0.7.7",
+        "rendererHash": "954fe2c3a82342c6551c72e62fe5d895f02960857321c55bf36644773f84b65c",
+        "structure100": 76.71316292120027,
         "nonfoil": 350,
-        "evidence": "games/magic/fixtures/accuracy/ons/native-audit-075.json",
+        "evidence": "games/magic/fixtures/accuracy/ons-recheck/native-audit-077.json",
         "pendingFoilOnlyPrintings": 1,
         "nonfoilComplete": true
       }
