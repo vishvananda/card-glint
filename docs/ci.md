@@ -45,12 +45,16 @@ The runner records each command's process wall time in evidence/ci-times-N.json.
 This includes process startup, CPU work, I/O and GPU waits. It does not measure
 hardware GPU throughput or cached-frame submission performance.
 
-baseline.json contains scheduling estimates from the previous Ubuntu 24.04
-software-GPU run. Initial per-command estimates divide suite time by command
-count; they are not individual benchmarks. The longest estimated checks are
-assigned first to the least-loaded job. CI uploads actual command timings and
-lists the slowest checks in its summary, so estimates can be revised from
-measurements.
+baseline.json contains individual command timings from Ubuntu 24.04
+software-GPU CI. Failed-case timings are excluded. These observations guide
+scheduling; they are not hardware performance benchmarks. The longest checks
+are assigned first to the least-loaded job. CI uploads actual command timings
+and lists the slowest checks in its summary.
+
+The first complete four-job run passed all 350 checks in about 21 minutes,
+including build and setup. Its longest job was unevenly loaded, so the current
+plan uses those individual observations to balance subsequent runs. This is
+one measured run, not a duration guarantee.
 
 Build artifacts include generated set data, WASM, browser bundles and checked
 release archives. Every verification job uses the same build. Browser dependencies
