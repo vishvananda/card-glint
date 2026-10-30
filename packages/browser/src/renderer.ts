@@ -11,7 +11,6 @@ import { TextureStore, type Texture } from './gpu/textures.js';
 import { Preparer, type Prepared } from './prepare.js';
 import { paintRaster, closeRaster, layersOf } from './raster.js';
 import { surfaceSeed, validateDeformation, exportScale } from './deformation.js';
-import { DEFAULT_PRINT_DOTS } from './print-settings.js';
 import {
   IDENTITY,
   type Budgets,
@@ -377,15 +376,7 @@ export class Renderer {
         }
         if (
           (group.length > 0 &&
-            ((group[0]!.finish ?? 'regular') !== (instance.finish ?? 'regular') ||
-              Boolean(
-                group[0]!.printDots &&
-                  (group[0]!.printDots.amount ?? DEFAULT_PRINT_DOTS.amount) > 0,
-              ) !==
-                Boolean(
-                  instance.printDots &&
-                    (instance.printDots.amount ?? DEFAULT_PRINT_DOTS.amount) > 0,
-                ))) ||
+            (group[0]!.finish ?? 'regular') !== (instance.finish ?? 'regular')) ||
           (material !== current &&
             (!material ||
               !current ||
