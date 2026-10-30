@@ -38,10 +38,16 @@ try {
     { borderColor: 'white' },
     { layout: 'split' },
     { typeLine: 'Enchantment — Saga' },
-    { symbolStyle: 'modern' },
-    { wordingMode: 'oracle' },
   ])
     assert.equal(printingManaAdjustment({ ...adjustedFace, ...extra }), delta);
+  for (const extra of [{ symbolStyle: 'modern' }, { wordingMode: 'oracle' }]) {
+    const modern = printingManaAdjustment({ ...adjustedFace, ...extra });
+    assert.equal(modern.dx, defaults.dx + delta.dx);
+    assert.equal(modern.dy, delta.dy);
+    assert.equal(modern.spacing, defaults.spacing);
+    assert.equal(modern.numberDy, delta.numberDy);
+    assert.deepEqual(modern.glyphs, delta.glyphs);
+  }
   // The native Revised audit now supplies defaults; caller deltas stay relative.
   const revised = printingManaAdjustment({ ...adjustedFace, setCode: '3ed' });
   assert.equal(revised.dx, delta.dx);
