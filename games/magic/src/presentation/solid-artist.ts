@@ -1,3 +1,4 @@
+import { paintFontText, strokeFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -21,7 +22,7 @@ export function paintSolidArtist(
     c.shadowColor = 'transparent';
     c.shadowOffsetX = c.shadowOffsetY = 0;
     c.fillStyle = '#17140f';
-    c.fillText(text, x + p.shadow / p.width, y + p.shadow, maxWidth);
+    paintFontText(c, text, x + p.shadow / p.width, y + p.shadow, maxWidth);
     layer.width = c.canvas.width;
     layer.height = c.canvas.height;
     const ink = layer.getContext('2d');
@@ -32,12 +33,12 @@ export function paintSolidArtist(
     ink.textBaseline = c.textBaseline;
     ink.letterSpacing = c.letterSpacing;
     ink.fillStyle = fill;
-    ink.fillText(text, x, y, maxWidth);
+    paintFontText(ink, text, x, y, maxWidth);
     if (p.trim > 0) {
       ink.globalCompositeOperation = 'destination-out';
       ink.globalAlpha = 0.65;
       ink.lineWidth = p.trim * 2;
-      ink.strokeText(text, x, y, maxWidth);
+      strokeFontText(ink, text, x, y, maxWidth);
     }
     c.resetTransform();
     c.drawImage(layer, 0, 0);

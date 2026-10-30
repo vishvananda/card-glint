@@ -1,3 +1,4 @@
+import { paintFontText, strokeFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -86,13 +87,13 @@ export function paintEarlyExpansionStatsInk(
       paintTextInk(ink, text, x, shift, maxWidth, changes, 'stats', () => {
         // Span colors change the foreground, retaining the printing's shadow.
         if (shift) ink.fillStyle = color;
-        ink.fillText(text, x, shift, maxWidth);
+        paintFontText(ink, text, x, shift, maxWidth);
       });
       if (trim > 0) {
         ink.globalCompositeOperation = 'destination-out';
         ink.globalAlpha = 0.65;
         ink.lineWidth = trim * 2;
-        ink.strokeText(text, x, shift, maxWidth);
+        strokeFontText(ink, text, x, shift, maxWidth);
       }
       c.drawImage(layer, 0, 0);
     }

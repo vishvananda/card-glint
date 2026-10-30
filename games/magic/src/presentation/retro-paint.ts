@@ -1,3 +1,4 @@
+import { paintFontText } from './font-geometry.js';
 import { inheritedOldFrameManaBase } from '../calibration/old-frame-defaults.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import { paintRetroFramePlate } from './retro-frame-plate.js';
@@ -205,7 +206,7 @@ export function paintRetroFace(
     !paintEarlyExpansionTitle(c, face, titleX + titleWidth) &&
     !paintLegacyCalibratedTitle(c, face, titleX, titleY, titleWidth)
   )
-    c.fillText(face.name, titleX, titleY, titleWidth);
+    paintFontText(c, face.name, titleX, titleY, titleWidth);
   c.restore();
   const modernSymbols =
     face.symbolStyle === 'modern' ||
@@ -453,7 +454,7 @@ export function paintRetroFace(
         const [fx, fy, fw, fh] = retroPx(rect.footer);
         c.textAlign = 'center';
         c.font = '15.6px "CardRenderer MTG MPlantin", Georgia';
-        c.fillText(`Illus. ${face.artist}`, fx + fw / 2, fy + fh / 2, fw);
+        paintFontText(c, `Illus. ${face.artist}`, fx + fw / 2, fy + fh / 2, fw);
       }
     });
   paintRetroExtras(c, face, !details);
@@ -468,7 +469,7 @@ function paintRetroExtras(c: CanvasContext, face: RenderedCardInput, legal: bool
       c.fillStyle = cardStock(face.setCode, face.borderColor).ink;
       c.font = '10px "CardRenderer MTG MPlantin", Georgia';
       c.textAlign = 'left';
-      c.fillText(face.legalText!, 49, 646, 390);
+      paintFontText(c, face.legalText!, 49, 646, 390);
       c.restore();
     });
   const customNumber = face.collectorNumber?.trim();
@@ -483,7 +484,8 @@ function paintRetroExtras(c: CanvasContext, face: RenderedCardInput, legal: bool
       c.fillStyle = cardStock(face.setCode, face.borderColor).ink;
       c.font = '10px "CardRenderer MTG MPlantin", Georgia';
       c.textAlign = 'right';
-      c.fillText(
+      paintFontText(
+        c,
         customNumber + (face.collectorTotal ? '/' + face.collectorTotal : ''),
         439,
         660,

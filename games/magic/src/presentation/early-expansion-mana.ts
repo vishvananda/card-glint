@@ -1,3 +1,4 @@
+import { measureFontText, paintFontText } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
@@ -70,7 +71,7 @@ export function paintEarlyManaNumeral(
   context.textAlign = 'left';
   context.textBaseline = 'alphabetic';
   context.fillStyle = '#111';
-  const m = context.measureText(symbol),
+  const m = measureFontText(context, symbol),
     scale =
       (size * 0.7 * (adjustment.numberScale ?? 1)) /
       (m.actualBoundingBoxAscent + m.actualBoundingBoxDescent);
@@ -79,7 +80,8 @@ export function paintEarlyManaNumeral(
     y + size / 2 + (adjustment.numberDy ?? 0),
   );
   context.scale(scale, scale);
-  context.fillText(
+  paintFontText(
+    context,
     symbol,
     (m.actualBoundingBoxLeft - m.actualBoundingBoxRight) / 2,
     (m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2,

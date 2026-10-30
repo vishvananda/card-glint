@@ -1,3 +1,4 @@
+import { measureFontText, paintFontText } from './font-geometry.js';
 import { modernPrintingProfile } from './modern-printing-profile.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintPrintingElement, type PrintingElements } from './printing-elements.js';
@@ -32,12 +33,12 @@ export function paintModernFooter(c: CanvasContext, face: RenderedCardInput): vo
   c.font = `${style?.collectorSize ?? 11}px "${style?.collectorFamily ?? 'CardRenderer MTG Relay'}", sans-serif`;
   paintPrintingElement(c, face, 'collector', () => {
     const text = printingCollectorText(face);
-    if (!style || !text) return c.fillText(text, 30, 645);
+    if (!style || !text) return paintFontText(c, text, 30, 645);
     const match = /^(\d{3}(?:\/\d+)?) ([CMRUL])$/.exec(text);
     // Explicit host formats/numbers remain valid, with the measured font.
-    if (!match) return c.fillText(text, 30, 645);
-    c.fillText(match[1]!, 30, 645);
-    c.fillText(match[2]!, style.collectorRarityX, 645);
+    if (!match) return paintFontText(c, text, 30, 645);
+    paintFontText(c, match[1]!, 30, 645);
+    paintFontText(c, match[2]!, style.collectorRarityX, 645);
   });
   const set = (face.collectorSetCode ?? face.setCode)?.trim().toUpperCase() ?? '';
   const code = set ? `${set} • ${face.collectorLanguage?.toUpperCase() ?? 'EN'}` : '';
@@ -46,19 +47,25 @@ export function paintModernFooter(c: CanvasContext, face: RenderedCardInput): vo
       profile?.foilStarNumbers.includes(face.collectorNumber ?? '') && set === 'M21'
         ? style?.collectorMarker
         : undefined;
-    if (!marker) return c.fillText(code, 30, 658);
+    if (!marker) return paintFontText(c, code, 30, 658);
     const prefix = set + ' ',
       language = ' ' + (face.collectorLanguage?.toUpperCase() ?? 'EN');
-    c.fillText(prefix, 30, 658);
-    c.fillText(language, 30 + c.measureText(prefix).width + c.measureText('•').width, 658);
-    const m = c.measureText('★'),
+    paintFontText(c, prefix, 30, 658);
+    paintFontText(
+      c,
+      language,
+      30 + measureFontText(c, prefix).width + measureFontText(c, '•').width,
+      658,
+    );
+    const m = measureFontText(c, '★'),
       width = m.actualBoundingBoxLeft + m.actualBoundingBoxRight,
       height = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
     if (!(width > 0 && height > 0)) throw Error('Modern collector marker has no glyph ink');
     c.save();
     c.translate(marker.center[0], marker.center[1]);
     c.scale(marker.size[0] / width, marker.size[1] / height);
-    c.fillText(
+    paintFontText(
+      c,
       '★',
       (m.actualBoundingBoxLeft - m.actualBoundingBoxRight) / 2,
       (m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2,
@@ -67,16 +74,16 @@ export function paintModernFooter(c: CanvasContext, face: RenderedCardInput): vo
   });
   const legal = printingLegalText(face);
   const stats = (face.power != null && face.toughness != null) || face.loyalty != null;
-  let left = 30 + c.measureText(code).width + (code ? 7 : 0);
+  let left = 30 + measureFontText(c, code).width + (code ? 7 : 0);
   paintPrintingElement(c, face, 'artist', () => {
     if (face.artist) {
       c.letterSpacing = '0px';
       c.font = `${style?.artistSize ?? 11}px "CardRenderer MTG Artist Credit", sans-serif`;
-      c.fillText('a', left, 658);
-      left += c.measureText('a').width + 2;
+      paintFontText(c, 'a', left, 658);
+      left += measureFontText(c, 'a').width + 2;
       c.letterSpacing = `${style?.artistTracking ?? 0}px`;
       c.font = `700 ${style?.artistSize ?? 11}px "CardRenderer MTG Beleren Small Caps", Georgia`;
-      c.fillText(face.artist, left, 658, Math.max(1, (legal && stats ? 272 : 456) - left));
+      paintFontText(c, face.artist, left, 658, Math.max(1, (legal && stats ? 272 : 456) - left));
     }
   });
   if (legal) {
@@ -84,7 +91,9 @@ export function paintModernFooter(c: CanvasContext, face: RenderedCardInput): vo
     c.letterSpacing = `${style?.legalTracking ?? 0}px`;
     c.font = `${style?.legalSize ?? 10}px "CardRenderer MTG MPlantin", Georgia`;
     // Creature and planeswalker badges reserve the upper right footer row.
-    paintPrintingElement(c, face, 'legal', () => c.fillText(legal, 456, stats ? 658 : 645, 178));
+    paintPrintingElement(c, face, 'legal', () =>
+      paintFontText(c, legal, 456, stats ? 658 : 645, 178),
+    );
   }
   c.restore();
 }

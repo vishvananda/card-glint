@@ -1,3 +1,4 @@
+import { measureFontText } from './font-geometry.js';
 import { inheritedOldFrameDefault } from '../calibration/old-frame-defaults.js';
 import { paintEarlyExpansionStatsInk } from './early-expansion-stats.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
@@ -120,8 +121,8 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
     try {
       c.font = `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
       c.letterSpacing = '0px';
-      advance = c.measureText(prefix).width;
-      width = c.measureText(prefix + collector).width;
+      advance = measureFontText(c, prefix).width;
+      width = measureFontText(c, prefix + collector).width;
     } finally {
       c.restore();
     }

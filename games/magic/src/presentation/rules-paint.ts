@@ -1,3 +1,4 @@
+import { paintFontText, strokeFontText } from './font-geometry.js';
 import { eighthRulesMaximum, eighthCompactRules } from './eighth-rules.js';
 import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import { modernOrdinaryPlates } from './modern-printing-profile.js';
@@ -278,14 +279,14 @@ function paintScaledText(
 ) {
   const scale = run.textWidth ?? 1;
   if (scale === 1) {
-    if (stroke) context.strokeText(run.text, x, y);
-    else context.fillText(run.text, x, y);
+    if (stroke) strokeFontText(context, run.text, x, y);
+    else paintFontText(context, run.text, x, y);
     return;
   }
   context.save();
   context.translate(x, y);
   context.scale(scale, 1);
-  if (stroke) context.strokeText(run.text, 0, 0);
-  else context.fillText(run.text, 0, 0);
+  if (stroke) strokeFontText(context, run.text, 0, 0);
+  else paintFontText(context, run.text, 0, 0);
   context.restore();
 }

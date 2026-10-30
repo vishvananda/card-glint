@@ -1,3 +1,4 @@
+import { paintFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -121,22 +122,23 @@ export function paintModernSplitFooter(
     ...new Set((face.faces ?? []).map((f) => f.artist ?? face.artist ?? '').filter(Boolean)),
   ].join(' & ');
   c.font = '11px "CardRenderer MTG Relay", sans-serif';
-  c.fillText(
+  paintFontText(
+    c,
     `${face.collectorNumber ?? ''} ${(face.rarity ?? 'common')[0]!.toUpperCase()}`,
     32,
     646,
   );
-  c.fillText(`${face.setCode?.toUpperCase() ?? ''} • EN`, 32, 660);
+  paintFontText(c, `${face.setCode?.toUpperCase() ?? ''} • EN`, 32, 660);
   if (artists) {
     c.font = '11px "CardRenderer MTG Artist Credit", serif';
-    c.fillText('a', 95, 660);
+    paintFontText(c, 'a', 95, 660);
     c.font = '700 11px "CardRenderer MTG Beleren Small Caps", serif';
-    c.fillText(artists, 110, 660, 193);
+    paintFontText(c, artists, 110, 660, 193);
   }
   if (face.legalText) {
     c.textAlign = 'right';
     c.font = '10px "CardRenderer MTG MPlantin", Georgia';
-    c.fillText(face.legalText, 455, 646, 170);
+    paintFontText(c, face.legalText, 455, 646, 170);
   }
   if (hasOvalSecurityStamp(face)) {
     const stamp = images.get(PLAIN_SECURITY_STAMP);

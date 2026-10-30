@@ -1,3 +1,4 @@
+import { measureFontText, paintFontText } from './font-geometry.js';
 import { modernWalkerBodyProfile, modernWalkerProfile } from './modern-printing-profile.js';
 import { WALKER_GEOMETRY, paintWalkerGeometry } from './planeswalker-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
@@ -95,8 +96,9 @@ function paintAbilityColon(
   context.font = `${PLANESWALKER_RULE_GEOMETRY.colonFontSize * (adjustment?.size ?? 1)}px ${PLANESWALKER_RULE_GEOMETRY.colonFontFamily}`;
   context.textAlign = 'center';
   context.textBaseline = 'alphabetic';
-  const ink = context.measureText(':');
-  context.fillText(
+  const ink = measureFontText(context, ':');
+  paintFontText(
+    context,
     ':',
     x,
     center +
@@ -208,7 +210,7 @@ export function paintSpecialRules(
         context.textAlign = 'center';
         context.textBaseline = 'middle';
         context.font = 'bold 19px "CardRenderer MTG Beleren", Georgia';
-        context.fillText(badge, bx + badgeW / 2, by + badgeH / 2, badgeW - 3);
+        paintFontText(context, badge, bx + badgeW / 2, by + badgeH / 2, badgeW - 3);
       }
     });
   }

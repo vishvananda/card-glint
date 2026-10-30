@@ -1,3 +1,4 @@
+import { paintFontText, strokeFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -28,11 +29,11 @@ export function paintSolidTitle(
   ink.textBaseline = c.textBaseline;
   ink.letterSpacing = c.letterSpacing;
   ink.fillStyle = colors?.fill ?? `rgb(${p.gray},${p.gray},${p.gray})`;
-  ink.fillText(text, x, y, maxWidth);
+  paintFontText(ink, text, x, y, maxWidth);
   if (p.trim > 0) {
     ink.globalCompositeOperation = 'destination-out';
     ink.lineWidth = p.trim * 2;
-    ink.strokeText(text, x, y, maxWidth);
+    strokeFontText(ink, text, x, y, maxWidth);
   }
   c.resetTransform();
   c.shadowColor = colors?.shadow ?? '#17140f';

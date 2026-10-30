@@ -1,3 +1,4 @@
+import { measureFontText } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintRetroGrayText } from './retro-lettering.js';
 import type { RenderedCardInput, CardTextInk } from './face-layout.js';
@@ -95,9 +96,9 @@ export function paintRevisedType(
 ): boolean {
   if (!usesRevisedTypeTypography(face)) return false;
   c.save();
-  const native = c.measureText('Hg');
+  const native = measureFontText(c, 'Hg');
   c.font = '21.7px "CardRenderer MTG Revised Plantin", Georgia';
-  const line = c.measureText('Hg');
+  const line = measureFontText(c, 'Hg');
   // One font-metric alignment, shared by the set; never a scan-specific offset.
   const opticalY =
     (-native.actualBoundingBoxAscent +

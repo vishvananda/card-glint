@@ -1,3 +1,4 @@
+import { measureFontText, paintFontText } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { CardTextInk } from './face-layout.js';
 
@@ -9,8 +10,9 @@ export function paintTextInk(
   width: number | undefined,
   ink?: CardTextInk,
   role: 'type' | 'stats' = 'stats',
-  paint = () => (width == null ? c.fillText(text, x, y) : c.fillText(text, x, y, width)),
-  measure = (value: string) => c.measureText(value).width,
+  paint = () =>
+    width == null ? paintFontText(c, text, x, y) : paintFontText(c, text, x, y, width),
+  measure = (value: string) => measureFontText(c, value).width,
 ) {
   const spans = role === 'type' ? ink?.typeLine : ink?.stats;
   if (!spans?.length) {

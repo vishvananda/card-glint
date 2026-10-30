@@ -1,3 +1,5 @@
+import { FONT_GEOMETRY_REVISION } from './font-geometry.js';
+import { measureFontText, paintFontText } from './font-geometry.js';
 import { loadRevisedTypeFont, usesRevisedTypeTypography } from './revised-lettering.js';
 import { earlyTextFlowRevision } from './alpha-typography.js';
 import { eighthPrintingProfile } from './eighth-printing-profile.js';
@@ -237,6 +239,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
     'canvas-face-v148',
+    ...(!input.printedImage && input.paintLayer !== 'artwork' ? [FONT_GEOMETRY_REVISION] : []),
     ...(!input.printedImage &&
     input.layer !== 'etching' &&
     input.paintLayer !== 'artwork' &&
@@ -766,7 +769,8 @@ export function paintAssembledFace(
       context.fillStyle = 'white';
       context.textAlign = 'center';
       context.textBaseline = 'middle';
-      context.fillText(
+      paintFontText(
+        context,
         'Fuse (You may cast one or both halves of this card from your hand.)',
         FACE_WIDTH / 2,
         FACE_HEIGHT - 12,
@@ -983,7 +987,7 @@ export function paintAssembledFace(
         Math.min(
           WALKER_GEOMETRY.titleWidth,
           (titleWidth - 0.5) /
-            context.measureText(shapeModernHeading(face.name, headingFamily)).width,
+            measureFontText(context, shapeModernHeading(face.name, headingFamily)).width,
         ),
       )
     : 1;
@@ -1088,7 +1092,7 @@ export function paintAssembledFace(
     kind === 'normal' && !panel
       ? NORMAL_FRAME_GEOMETRY.typeWidthScale
       : planeswalker &&
-          context.measureText(shapeModernHeading(face.typeLine ?? '', headingFamily)).width *
+          measureFontText(context, shapeModernHeading(face.typeLine ?? '', headingFamily)).width *
             WALKER_GEOMETRY.typeWidth <=
             typeWidth * 0.97
         ? WALKER_GEOMETRY.typeWidth

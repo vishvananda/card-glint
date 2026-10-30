@@ -1,3 +1,4 @@
+import { measureFontText } from './font-geometry.js';
 import type { CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 
@@ -45,7 +46,7 @@ export function battleReverseStatsLayout(
     context.textAlign = 'right';
     context.textBaseline = 'alphabetic';
     context.letterSpacing = '0px';
-    const metrics = context.measureText(text),
+    const metrics = measureFontText(context, text),
       [left, top, width, height] = BATTLE_REVERSE_STATS.rect,
       x = left + width,
       baseline = top + height - metrics.actualBoundingBoxDescent;

@@ -1,3 +1,4 @@
+import { paintFontText } from './font-geometry.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import {
   type CanvasContext,
@@ -177,7 +178,8 @@ function paintSplitFooter(
     c.shadowOffsetX = m.a + m.c;
     c.shadowOffsetY = m.b + m.d;
   }
-  c.fillText(
+  paintFontText(
+    c,
     `${old ? 'Illus. ' : ''}${half.artist ?? parent.artist ?? ''}`,
     old ? 177 : 60,
     g.artistY,
@@ -187,7 +189,8 @@ function paintSplitFooter(
   c.shadowOffsetX = c.shadowOffsetY = 0;
   c.font = `${old ? 10.2 : 10}px "CardRenderer MTG MPlantin", Georgia`;
   if (parent.legalText)
-    c.fillText(
+    paintFontText(
+      c,
       `${parent.legalText}${parent.collectorNumber ? ' ' + parent.collectorNumber : ''}`,
       old ? 177 : 36,
       g.legalY,

@@ -1,3 +1,4 @@
+import { measureFontText, paintFontText } from './font-geometry.js';
 import { shapeModernHeading } from './modern-heading-font.js';
 import {
   type CanvasContext,
@@ -41,11 +42,11 @@ export function rulesLines(
     for (const token of tokens) {
       // Break a long unspaced word, too: effective text and localization may contain one.
       const parts =
-        !token.symbol && context.measureText(token.text).width > width
+        !token.symbol && measureFontText(context, token.text).width > width
           ? [...token.text].map((text) => ({ text, symbol: false }))
           : [token];
       for (const part of parts) {
-        const measured = part.symbol ? size * 0.94 : context.measureText(part.text).width;
+        const measured = part.symbol ? size * 0.94 : measureFontText(context, part.text).width;
         if (used + measured > width && line.length) {
           output.push(line);
           line = [];
@@ -169,7 +170,7 @@ export function paintMana(
   context.textAlign = 'center';
   context.textBaseline = 'middle';
   context.font = `bold ${size * 0.62}px Georgia`;
-  context.fillText(symbol, x + size / 2, y + size / 2, size * 0.9);
+  paintFontText(context, symbol, x + size / 2, y + size / 2, size * 0.9);
   context.restore();
 }
 
@@ -195,7 +196,7 @@ export function paintRules(
       for (const token of line) {
         if (token.symbol)
           paintMana(context, token.text, left + size * 0.07, y + size * 0.03, size * 0.8, images);
-        else context.fillText(token.text, left, y);
+        else paintFontText(context, token.text, left, y);
         left += token.width;
       }
       y += size;
@@ -228,12 +229,8 @@ export function paintFittedText(
   if (!(width > 0)) throw Error('Magic title/type plate has no text space.');
   text = shapeModernHeading(text, family);
   context.save();
-  // The pinned Matrix font has a positive hhea/OS2 descender. Engines disagree
-  // on its middle baseline (Linux Chromium treats it as alphabetic; macOS adds
-  // 0.2875 em). The fitted 2003-frame anchors use the alphabetic baseline.
-  if (family === 'CardRenderer MTG Matrix') context.textBaseline = 'alphabetic';
   context.font = `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`;
-  const measured = context.measureText(text).width;
+  const measured = measureFontText(context, text).width;
   // A long type already uses the available width. Expanding it would force a
   // smaller font height without gaining any horizontal space.
   if (widthScale > 1 && measured * widthScale > width) widthScale = 1;

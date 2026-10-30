@@ -1,3 +1,4 @@
+import { paintFontText } from './font-geometry.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import {
   type CanvasContext,
@@ -105,7 +106,7 @@ export function paintSagaFace(
     c.fillStyle = '#65605a';
     c.font = 'italic 20px "CardRenderer MTG MPlantin", Georgia';
     c.textAlign = 'left';
-    c.fillText(`${face.reverseStats.power}/${face.reverseStats.toughness}`, 41, 553);
+    paintFontText(c, `${face.reverseStats.power}/${face.reverseStats.toughness}`, 41, 553);
   }
   if (rulesInkVisible(c)) {
     const rules = sagaRuleLayout(c, face);
@@ -129,7 +130,8 @@ export function paintSagaFace(
         c.textAlign = 'center';
         c.textBaseline = 'middle';
         c.font = `550 ${SAGA_MARKER_GEOMETRY.fontSize}px "${SAGA_MARKER_GEOMETRY.fontFamily}", Georgia`;
-        c.fillText(
+        paintFontText(
+          c,
           badge,
           SAGA_MARKER_GEOMETRY.centerX,
           center + SAGA_MARKER_GEOMETRY.numeralOffsetY,
@@ -142,20 +144,21 @@ export function paintSagaFace(
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
   c.font = '11px "CardRenderer MTG Relay", sans-serif';
-  c.fillText(
+  paintFontText(
+    c,
     `${face.collectorNumber ?? ''}  ${(face.rarity ?? 'common')[0]!.toUpperCase()}`,
     32,
     645,
   );
-  c.fillText(`${face.setCode?.toUpperCase() ?? ''} • EN`, 32, 658);
+  paintFontText(c, `${face.setCode?.toUpperCase() ?? ''} • EN`, 32, 658);
   c.font = '11px "CardRenderer MTG Artist Credit", serif';
-  if (face.artist) c.fillText('a', 93, 658);
+  if (face.artist) paintFontText(c, 'a', 93, 658);
   c.font = '11px "CardRenderer MTG Beleren", serif';
-  c.fillText(face.artist ?? '', 108, 658, 210);
+  paintFontText(c, face.artist ?? '', 108, 658, 210);
   if (face.legalText) {
     c.textAlign = 'right';
     c.font = '10px "CardRenderer MTG MPlantin", Georgia';
-    c.fillText(face.legalText, 454, 646, 182);
+    paintFontText(c, face.legalText, 454, 646, 182);
   }
   c.restore();
 }

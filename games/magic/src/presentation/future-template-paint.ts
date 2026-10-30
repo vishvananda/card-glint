@@ -1,3 +1,4 @@
+import { measureFontText, paintFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   type CanvasRaster,
@@ -141,9 +142,10 @@ export function paintFutureTemplate(
     c.font = `400 ${artistSize}px "CardRenderer MTG Matrix"`;
     const artist = face.artist ?? '';
     paintPrintingElement(c, face, 'artist', () => {
-      c.fillText(artist, right, artistY, right - 70);
+      paintFontText(c, artist, right, artistY, right - 70);
       const brush = parts.brush ? images.get(parts.brush) : undefined;
-      if (brush) c.drawImage(brush, right - c.measureText(artist).width - 40, artistY - 10, 36, 8);
+      if (brush)
+        c.drawImage(brush, right - measureFontText(c, artist).width - 40, artistY - 10, 36, 8);
     });
     const legal = printingLegalText(face),
       number = printingCollectorText(face, false);
@@ -151,9 +153,9 @@ export function paintFutureTemplate(
       c.font = '11.804px "CardRenderer MTG MPlantin"';
       const line = [legal, number].filter(Boolean).join(' ');
       if (!face.printingElements?.legal?.offset && !face.printingElements?.collector?.offset)
-        c.fillText(line, right - 0.25, 641.25, right - 40);
+        paintFontText(c, line, right - 0.25, 641.25, right - 40);
       else {
-        const width = c.measureText(line).width,
+        const width = measureFontText(c, line).width,
           fit = Math.min(1, (right - 40) / Math.max(1, width));
         c.save();
         c.translate(right - 0.25, 641.25);
@@ -161,13 +163,13 @@ export function paintFutureTemplate(
         const run = (text: string, x: number) => {
           c.save();
           c.scale(fit, 1);
-          c.fillText(text, x, 0);
+          paintFontText(c, text, x, 0);
           c.restore();
         };
         if (legal) paintPrintingElement(c, face, 'legal', () => run(legal, -width));
         if (number)
           paintPrintingElement(c, face, 'collector', () =>
-            run(number, -c.measureText(number).width),
+            run(number, -measureFontText(c, number).width),
           );
         c.restore();
       }

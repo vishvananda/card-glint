@@ -1,3 +1,4 @@
+import { paintFontText } from './font-geometry.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
@@ -47,18 +48,18 @@ export function paintAdventureFooter(
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
   c.font = '11px "CardRenderer MTG Relay", sans-serif';
-  c.fillText(adventureCollectorText(face), 32, 645);
-  c.fillText(`${face.setCode?.toUpperCase() ?? ''} • EN`, 32, 658);
+  paintFontText(c, adventureCollectorText(face), 32, 645);
+  paintFontText(c, `${face.setCode?.toUpperCase() ?? ''} • EN`, 32, 658);
   if (face.artist) {
     c.font = '11px "CardRenderer MTG Artist Credit", serif';
-    c.fillText('a', 93, 658);
+    paintFontText(c, 'a', 93, 658);
     c.font = '700 11px "CardRenderer MTG Beleren Small Caps", serif';
-    c.fillText(face.artist, 108, 658, 210);
+    paintFontText(c, face.artist, 108, 658, 210);
   }
   if (face.legalText) {
     c.textAlign = 'right';
     c.font = '10px "CardRenderer MTG MPlantin", Georgia';
-    c.fillText(face.legalText, 454, 658, 182);
+    paintFontText(c, face.legalText, 454, 658, 182);
   }
 }
 

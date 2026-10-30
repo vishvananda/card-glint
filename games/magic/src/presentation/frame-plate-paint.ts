@@ -158,7 +158,7 @@ export function paintFramePlateFace(
   paintMountedSecurityStamp(c, face, images);
   c.fillStyle = '#17140f';
   c.textAlign = 'left';
-  c.textBaseline = 'middle';
+  c.textBaseline = eighth && !usesPlanarFrameGeometry(face, plate.frame) ? 'alphabetic' : 'middle';
   const costAdjustment = printingManaAdjustment(face);
   const family = eighth
     ? 'CardRenderer MTG Matrix'

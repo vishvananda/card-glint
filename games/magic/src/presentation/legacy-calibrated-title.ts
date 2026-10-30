@@ -1,3 +1,4 @@
+import { paintFontText } from './font-geometry.js';
 import type { CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { setTitleCalibration } from '../calibration/title-profiles.js';
@@ -48,7 +49,7 @@ export function paintLegacyCalibratedTitle(
   // Apply the width ratio after the existing fit, including long compressed headings.
   const maxWidth = Math.max(1, width - p.dx);
   if (role === 'type') paintTextInk(c, text, 0, 0, maxWidth, face.textInk, 'type');
-  else c.fillText(text, 0, 0, maxWidth);
+  else paintFontText(c, text, 0, 0, maxWidth);
   c.restore();
   return true;
 }

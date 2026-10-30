@@ -1,3 +1,4 @@
+import { measureFontText, paintFontText } from './font-geometry.js';
 import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
@@ -23,11 +24,11 @@ export function eighthArtistBrush(face: RenderedCardInput): string | null {
  * independent of the font's legacy character encoding. */
 function paintStats(c: CanvasContext, text: string): void {
   if (!text.includes('*')) {
-    c.fillText(text, 407, 627, 78);
+    paintFontText(c, text, 407, 627, 78);
     return;
   }
   const runs = text.split(/(\*)/).filter(Boolean);
-  const widths = runs.map((run) => (run === '*' ? 15 : c.measureText(run).width));
+  const widths = runs.map((run) => (run === '*' ? 15 : measureFontText(c, run).width));
   const width = widths.reduce((sum, v) => sum + v, 0);
   c.save();
   c.translate(407, 0);
@@ -47,7 +48,7 @@ function paintStats(c: CanvasContext, text: string): void {
       }
       c.closePath();
       c.fill();
-    } else c.fillText(run, x, 627);
+    } else paintFontText(c, run, x, 627);
     x += widths[i]!;
   }
   c.restore();
@@ -94,7 +95,7 @@ export function paintEighthFooter(
         : (value: string) =>
             value
               .split(/(\*)/)
-              .reduce((sum, run) => sum + (run === '*' ? 15 : c.measureText(run).width), 0);
+              .reduce((sum, run) => sum + (run === '*' ? 15 : measureFontText(c, run).width), 0);
       paintTextInk(
         c,
         text,
@@ -144,7 +145,7 @@ export function paintEighthFooter(
         c.scale(p.width, p.height);
         c.translate(-artistX, -artistBaseline);
       }
-      c.fillText(face.artist!, artistX, artistBaseline, right - artistX);
+      paintFontText(c, face.artist!, artistX, artistBaseline, right - artistX);
       c.restore();
     }
   });
@@ -156,21 +157,21 @@ export function paintEighthFooter(
   // Keep the original single call unless independent movement is requested.
   if (!face.printingElements?.collector?.offset && !face.printingElements?.legal?.offset) {
     const line = [legal, number].filter(Boolean).join(' ');
-    if (line) c.fillText(line, 36.5, baseline + 13, 409);
+    if (line) paintFontText(c, line, 36.5, baseline + 13, 409);
   } else {
     const line = [legal, number].filter(Boolean).join(' '),
-      fit = Math.min(1, 409 / Math.max(1, c.measureText(line).width));
+      fit = Math.min(1, 409 / Math.max(1, measureFontText(c, line).width));
     c.translate(36.5, baseline + 13);
     const run = (text: string, x: number) => {
       c.save();
       c.scale(fit, 1);
-      c.fillText(text, x, 0);
+      paintFontText(c, text, x, 0);
       c.restore();
     };
     if (legal) paintPrintingElement(c, face, 'legal', () => run(legal, 0));
     if (number)
       paintPrintingElement(c, face, 'collector', () =>
-        run(number, c.measureText(legal ? legal + ' ' : '').width),
+        run(number, measureFontText(c, legal ? legal + ' ' : '').width),
       );
   }
   c.restore();

@@ -1,3 +1,4 @@
+import { measureFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -13,10 +14,10 @@ function footerGlyphs(
   const base = text.replaceAll('ō', 'o');
   c[method](base, 0, 0, maxWidth);
   if (base === text) return;
-  const natural = c.measureText(base).width,
+  const natural = measureFontText(c, base).width,
     scale = Math.min(1, maxWidth / natural),
-    o = c.measureText('o').width,
-    bar = c.measureText('ˉ').width;
+    o = measureFontText(c, 'o').width,
+    bar = measureFontText(c, 'ˉ').width;
   const left = -(c.textAlign === 'right'
     ? natural * scale
     : c.textAlign === 'center'
@@ -27,7 +28,7 @@ function footerGlyphs(
   try {
     for (let i = 0; i < text.length; i++)
       if (text[i] === 'ō') {
-        const end = c.measureText(base.slice(0, i + 1)).width;
+        const end = measureFontText(c, base.slice(0, i + 1)).width;
         c[method]('ˉ', left + (end - o + (o - bar) / 2) * scale, 0, bar * scale);
       }
   } finally {

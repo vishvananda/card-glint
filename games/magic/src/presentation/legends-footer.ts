@@ -1,3 +1,4 @@
+import { strokeFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -54,7 +55,7 @@ function paint(c: CanvasContext, text: string, style: Lettering, liveChanges?: C
   paintTextInk(ink, text, 0, 0, style.maximum / style.width, liveChanges);
   ink.globalCompositeOperation = 'destination-out';
   ink.lineWidth = 2 * style.inset;
-  ink.strokeText(text, 0, 0, style.maximum / style.width);
+  strokeFontText(ink, text, 0, 0, style.maximum / style.width);
   c.save();
   c.resetTransform();
   c.shadowColor = '#17140f';

@@ -1,3 +1,4 @@
+import { paintFontText } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { AbilityEmblem } from '../emblems.js';
 import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.js';
@@ -66,7 +67,8 @@ export function paintCardStatus(
   context.fillStyle = '#17140f';
   context.textAlign = 'center';
   context.textBaseline = 'middle';
-  context.fillText(
+  paintFontText(
+    context,
     `${stats.power}/${stats.toughness}`,
     x + width / 2,
     inspection ? y + height / 2 - FACE_WIDTH * 0.01 : y + height * 0.48,

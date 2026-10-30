@@ -1,3 +1,4 @@
+import { paintFontText, strokeFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -33,11 +34,11 @@ export function paintInsetText(
     c.fillStyle = context.fillStyle;
     c.textAlign = context.textAlign;
     c.textBaseline = context.textBaseline;
-    c.fillText(text, x, y, width);
+    paintFontText(c, text, x, y, width);
     c.globalCompositeOperation = 'destination-out';
     c.lineWidth = stroke;
     c.strokeStyle = '#000';
-    c.strokeText(text, x, y, width);
+    strokeFontText(c, text, x, y, width);
     context.drawImage(
       ink,
       0,

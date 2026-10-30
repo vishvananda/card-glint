@@ -1,3 +1,4 @@
+import { measureFontText, paintFontText } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { paintPrintingElement } from './printing-elements.js';
@@ -19,7 +20,7 @@ export function paintUrzaFooter(c: CanvasContext, face: RenderedCardInput): bool
   // Long supplied credits must stay outside the creature's stats box.
   const artistWidth = face.power != null && face.toughness != null ? 292 : 365;
   paintPrintingElement(c, face, 'artist', () => {
-    if (face.artist) c.fillText(`Illus. ${face.artist}`, 244, 626, artistWidth);
+    if (face.artist) paintFontText(c, `Illus. ${face.artist}`, 244, 626, artistWidth);
   });
   if (face.power != null && face.toughness != null) {
     c.shadowColor = '#000b';
@@ -61,22 +62,22 @@ export function paintUrzaFooter(c: CanvasContext, face: RenderedCardInput): bool
       : face.legalText;
   const line = [legal, number].filter(Boolean).join(' ');
   if (!face.printingElements?.legal?.offset && !face.printingElements?.collector?.offset) {
-    if (line) c.fillText(line, 244, 640, 365);
+    if (line) paintFontText(c, line, 244, 640, 365);
   } else if (line) {
-    const width = c.measureText(line).width,
+    const width = measureFontText(c, line).width,
       fit = Math.min(1, 365 / Math.max(1, width));
     c.translate(244, 640);
     c.textAlign = 'left';
     const run = (text: string, x: number) => {
       c.save();
       c.scale(fit, 1);
-      c.fillText(text, x, 0);
+      paintFontText(c, text, x, 0);
       c.restore();
     };
     if (legal) paintPrintingElement(c, face, 'legal', () => run(legal, -width / 2));
     if (number)
       paintPrintingElement(c, face, 'collector', () =>
-        run(number, width / 2 - c.measureText(number).width),
+        run(number, width / 2 - measureFontText(c, number).width),
       );
   }
   c.restore();

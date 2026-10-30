@@ -1,3 +1,4 @@
+import { paintFontText } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
@@ -65,7 +66,7 @@ export function paintFutureMana(c: CanvasContext, face: RenderedCardInput, image
         c.fillStyle = '#111';
         c.textAlign = 'center';
         c.textBaseline = 'middle';
-        c.fillText(symbol, 0, 0, size * 0.73);
+        paintFontText(c, symbol, 0, 0, size * 0.73);
         c.restore();
       }
     } else paintMana(c, symbol, px, py, size, images, false);

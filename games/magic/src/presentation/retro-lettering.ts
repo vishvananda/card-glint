@@ -1,3 +1,4 @@
+import { paintFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -40,9 +41,9 @@ export function paintRetroLetterEdges(
     ink.setTransform(matrix);
     ink.globalCompositeOperation = 'source-over';
     ink.fillStyle = color;
-    ink.fillText(text, x + shift, y + shift, maxWidth);
+    paintFontText(ink, text, x + shift, y + shift, maxWidth);
     ink.globalCompositeOperation = 'destination-out';
-    ink.fillText(text, x + subtract, y + subtract, maxWidth);
+    paintFontText(ink, text, x + subtract, y + subtract, maxWidth);
     c.drawImage(layer, 0, 0);
   }
   layer.width = layer.height = 0;
@@ -65,7 +66,7 @@ export function paintRetroGrayText(
   c.shadowOffsetX = c.shadowOffsetY = 0;
   paintTextInk(c, text, x + offset, y + offset, maxWidth, liveChanges, liveRole, () => {
     c.fillStyle = '#17140f';
-    c.fillText(text, x + offset, y + offset, maxWidth);
+    paintFontText(c, text, x + offset, y + offset, maxWidth);
   });
   c.fillStyle = fill;
   paintTextInk(c, text, x, y, maxWidth, liveChanges, liveRole);

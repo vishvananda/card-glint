@@ -1,3 +1,4 @@
+import { paintFontText } from './font-geometry.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import {
   type CanvasContext,
@@ -85,7 +86,7 @@ export function paintStandardTemplate(
       c.textAlign = 'right';
       c.textBaseline = 'alphabetic';
       c.letterSpacing = '0px';
-      c.fillText(reverse.text, reverse.x, reverse.baseline);
+      paintFontText(c, reverse.text, reverse.x, reverse.baseline);
     }
     const icon = images.get(faceSetSymbol(face) ?? '');
     if (icon) {

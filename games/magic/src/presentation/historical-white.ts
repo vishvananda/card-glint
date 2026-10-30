@@ -1,3 +1,4 @@
+import { measureFontText, paintFontText } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { ManaGlyphTransform } from './symbol-adjustment.js';
 
@@ -25,13 +26,14 @@ export function paintOriginalWhite(
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
   const glyph = '\ue997';
-  const m = c.measureText(glyph);
+  const m = measureFontText(c, glyph);
   const width = m.actualBoundingBoxLeft + m.actualBoundingBoxRight;
   const height = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
   const scale = (whiteSize * (adjustment?.scale ?? 1)) / Math.max(width, height);
   c.translate(x + size / 2 + (adjustment?.dx ?? 0), y + size / 2 + (adjustment?.dy ?? 0));
   c.scale(scale, scale);
-  c.fillText(
+  paintFontText(
+    c,
     glyph,
     (m.actualBoundingBoxLeft - m.actualBoundingBoxRight) / 2,
     (m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2,

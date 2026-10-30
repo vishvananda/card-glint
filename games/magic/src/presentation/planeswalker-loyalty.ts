@@ -1,3 +1,4 @@
+import { measureFontText, paintFontText } from './font-geometry.js';
 import type { ModernLoyaltyAdjustment } from './modern-printing-profiles.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect } from './face-layout.js';
@@ -140,13 +141,13 @@ function paintLoyaltyInk(
   c.textBaseline = 'alphabetic';
   c.letterSpacing = '0px';
   c.shadowColor = 'transparent';
-  const metrics = c.measureText(text);
+  const metrics = measureFontText(c, text);
   const fittedWidth = Math.min(maxWidth, metrics.width * widthScale);
   const scale = Math.min(1, fittedWidth / Math.max(1, metrics.width));
   const x =
     centerX + ((metrics.actualBoundingBoxLeft - metrics.actualBoundingBoxRight) * scale) / 2;
   const baseline =
     centerY + (metrics.actualBoundingBoxAscent - metrics.actualBoundingBoxDescent) / 2;
-  c.fillText(text, x, baseline, fittedWidth);
+  paintFontText(c, text, x, baseline, fittedWidth);
   c.restore();
 }
