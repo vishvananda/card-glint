@@ -130,7 +130,7 @@ The README's paired eight-second GIFs and MP4s are captured from the same render
 install the prebuilt package directly:
 
 ```sh
-npm install https://github.com/vishvananda/card-glint/releases/download/v0.7.6/card-glint-0.7.6.tgz
+npm install https://github.com/vishvananda/card-glint/releases/download/v0.7.9/card-glint-0.7.9.tgz
 ```
 
 The package includes JavaScript, WASM and TypeScript declarations; no Rust build
@@ -151,7 +151,7 @@ For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
   import {
     createRenderer,
     IDENTITY,
-  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.7.6/browser.js';
+  } from 'https://cdn.jsdelivr.net/gh/vishvananda/card-glint@cdn-v0.7.9/browser.js';
 
   const renderer = await createRenderer({ canvas: document.querySelector('canvas') });
   // Supply your own game pack/card recipes, then render as below.
@@ -203,6 +203,7 @@ renderer.updateScene([
     transform: [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
   },
 ]);
+await renderer.ready(1, 1);
 renderer.render({ viewProjection: IDENTITY, pointer: [0.5, 0.5] });
 // On unmount:
 renderer.dispose();

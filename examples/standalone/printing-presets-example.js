@@ -81,10 +81,10 @@ async function preview(id) {
     const previous = active;
     active = request;
     paint();
+    if (previous) renderer.releaseCards(new Uint32Array([previous]));
     await renderer.ready(request, 1);
     if (request !== revision) return;
     paint();
-    if (previous) renderer.releaseCards(new Uint32Array([previous]));
     $('status').textContent = 'Preview: ' + printingPresets.find((p) => p.id === id).label;
   } catch (error) {
     if (request === revision) $('status').textContent = error.message;
