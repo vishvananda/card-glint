@@ -13,6 +13,7 @@ import {
   preModernSymbolPlacementSource,
   originalSymbolPlacementRuntimeParent,
 } from '../games/magic/tools/accuracy/modern-symbol-placement-ancestry.mjs';
+import { preModernSymbolReportSource } from '../games/magic/tools/accuracy/modern-symbol-report-ancestry.mjs';
 const p = await onsSymbolStatsDelta();
 assert.equal(
   await originalSymbolPlacementRuntimeParent(await sourceHash(path.join(root, 'games/magic/src'))),
@@ -36,14 +37,18 @@ assert.equal(hash(JSON.stringify(projected)), p.beforeRenderer);
 for (const [file, e] of Object.entries(p.files)) {
   const bytes = await preModernSymbolPlacementSource(
     file,
-    await fs.readFile(path.join(root, file)),
+    await preModernSymbolReportSource(file, await fs.readFile(path.join(root, file))),
   );
   assert.equal(hash(bytes), e.after, file);
   const foreign = Buffer.concat([bytes, Buffer.from('\n// unrelated edit\n')]);
   assert.equal(await preOnsSymbolStatsSource(file, foreign), foreign);
 }
 for (const [file, expected] of Object.entries(p.tools))
-  assert.equal(hash(await fs.readFile(path.join(root, file))), expected, file);
+  assert.equal(
+    hash(await preModernSymbolReportSource(file, await fs.readFile(path.join(root, file)))),
+    expected,
+    file,
+  );
 for (const set of ['lea', 'leb', '2ed', 'arn', 'atq', 'mir', 'ody', '7ed', '8ed', 'm21'])
   assert.equal(await onsSymbolStatsRuntimeParent(p.afterRenderer, set), p.beforeRenderer);
 assert.equal(await onsSymbolStatsRuntimeParent(p.afterRenderer, 'ons'), p.afterRenderer);

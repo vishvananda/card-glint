@@ -5,6 +5,12 @@ import path from 'node:path';
 import { root } from '../games/magic/tools/accuracy/common.mjs';
 import { calibrationReport } from '../games/magic/tools/accuracy/calibration-report.mjs';
 import { modernSymbolPlacementDelta } from '../games/magic/tools/accuracy/modern-symbol-placement-ancestry.mjs';
+import { preModernSymbolReportSource } from '../games/magic/tools/accuracy/modern-symbol-report-ancestry.mjs';
+const file = 'games/magic/tools/accuracy/calibration-report.mjs';
+const bytes = await fs.readFile(path.join(root, file));
+assert.notDeepEqual(await preModernSymbolReportSource(file, bytes), bytes);
+const foreign = Buffer.concat([bytes, Buffer.from('\n// unrelated change\n')]);
+assert.equal(await preModernSymbolReportSource(file, foreign), foreign);
 const ledger = JSON.parse(
   await fs.readFile(path.join(root, 'games/magic/fixtures/accuracy/calibration-progress.json')),
 );

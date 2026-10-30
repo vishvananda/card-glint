@@ -1,3 +1,4 @@
+import { preModernSymbolReportSource } from './modern-symbol-report-ancestry.mjs';
 // Exact regional source compatibility; this never certifies a set or a donor fit.
 import {
   preModernSymbolPlacementSource,
@@ -67,6 +68,7 @@ export function onsSymbolStatsDelta() {
   })());
 }
 export async function preOnsSymbolStatsSource(file, bytes) {
+  bytes = await preModernSymbolReportSource(file, bytes);
   bytes = await preModernSymbolPlacementSource(file, bytes);
   const e = (await onsSymbolStatsDelta()).files[file];
   return e && e.beforeSource !== null && hash(bytes) === e.after

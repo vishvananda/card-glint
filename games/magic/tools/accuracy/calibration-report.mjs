@@ -1,3 +1,4 @@
+import { preModernSymbolReportSource } from './modern-symbol-report-ancestry.mjs';
 import {
   originalSymbolPlacementRuntimeParent,
   preModernSymbolPlacementSource,
@@ -649,6 +650,7 @@ export async function calibrationReport(ledger) {
               // Preserve the newest Original proof as well as older regional
               // ancestors; older projections can legitimately rewind past it.
               checked.get(guardKey).add(hash(await preModernSymbolPlacementSource(file, bytes)));
+              checked.get(guardKey).add(hash(await preModernSymbolReportSource(file, bytes)));
             } catch (error) {
               if (error.code !== 'ENOENT') throw error;
               checked.set(guardKey, null);
