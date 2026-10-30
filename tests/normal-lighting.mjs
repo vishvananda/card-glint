@@ -65,7 +65,7 @@ try {
       for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) n++;
       return n;
     };
-    function draw(finish, n, pointer, lighting, stock = false) {
+    async function draw(finish, n, pointer, lighting, stock = false) {
       renderer.updateScene([
         {
           id: 1,
@@ -78,6 +78,7 @@ try {
             : {}),
         },
       ]);
+      await renderer.ready(1, 1);
       renderer.render({
         viewProjection: IDENTITY,
         pointer,
@@ -101,13 +102,13 @@ try {
         'holofoil',
       ]) {
         const n = normal(-0.08),
-          first = draw(finish, n, [0.1, 0.9], 'studio'),
-          other = draw(finish, n, [0.9, 0.1], 'studio');
+          first = await draw(finish, n, [0.1, 0.9], 'studio'),
+          other = await draw(finish, n, [0.9, 0.1], 'studio');
         const pointerChanges = difference(first, other),
-          posed = draw(finish, normal(0.14), [0.1, 0.9], 'studio'),
+          posed = await draw(finish, normal(0.14), [0.1, 0.9], 'studio'),
           poseChanges = difference(first, posed);
-        const legacy = draw(finish, n, [0.2, 0.8]),
-          explicit = draw(finish, n, [0.2, 0.8], 'pointer'),
+        const legacy = await draw(finish, n, [0.2, 0.8]),
+          explicit = await draw(finish, n, [0.2, 0.8], 'pointer'),
           defaultChanges = difference(legacy, explicit);
         checks.push({ finish, pointerChanges, poseChanges, defaultChanges });
         if (pointerChanges)
@@ -116,17 +117,17 @@ try {
           throw Error(finish + ' does not respond to surface pose: ' + poseChanges);
         if (defaultChanges) throw Error(finish + ' changed its default mode');
       }
-      const stockA = draw('gloss', normal(-0.08), [0, 1], 'studio', true),
-        stockB = draw('gloss', normal(-0.08), [1, 0], 'studio', true);
+      const stockA = await draw('gloss', normal(-0.08), [0, 1], 'studio', true),
+        stockB = await draw('gloss', normal(-0.08), [1, 0], 'studio', true);
       if (difference(stockA, stockB)) throw Error('Printed coating still responds to pointer');
-      const legacyGlossA = draw('gloss', [0, 0, 1], [0.1, 0.9]),
-        legacyGlossB = draw('gloss', [0, 0, 1], [0.9, 0.1]);
+      const legacyGlossA = await draw('gloss', [0, 0, 1], [0.1, 0.9]),
+        legacyGlossB = await draw('gloss', [0, 0, 1], [0.9, 0.1]);
       if (difference(legacyGlossA, legacyGlossB) < 1000)
         throw Error('Default gloss must retain pointer-based compatibility');
       const centroids = [];
       for (const finish of ['gloss', 'prismatic'])
         for (const angle of [-0.08, 0, 0.08]) {
-          const data = draw(finish, normal(angle), [0.5, 0.5], 'studio');
+          const data = await draw(finish, normal(angle), [0.5, 0.5], 'studio');
           let sx = 0,
             sy = 0,
             total = 0;
@@ -155,7 +156,7 @@ try {
               JSON.stringify(row),
           );
       }
-      const live = draw('prismatic', normal(-0.08), [0.5, 0.5], 'studio'),
+      const live = await draw('prismatic', normal(-0.08), [0.5, 0.5], 'studio'),
         png = await renderer.exportCard(1, {
           revision: 1,
           width,
@@ -173,7 +174,7 @@ try {
         exportChanges = difference(live, exported);
       if (exportChanges) throw Error('PNG disagrees with live normal lighting: ' + exportChanges);
       const before = JSON.stringify(renderer.metrics);
-      for (let i = 0; i < 20; i++) draw('prismatic', normal(i * 0.01), [0.5, 0.5], 'studio');
+      for (let i = 0; i < 20; i++) await draw('prismatic', normal(i * 0.01), [0.5, 0.5], 'studio');
       const warm = JSON.parse(before);
       for (const key of ['compositions', 'maskBuilds', 'edgeBuilds', 'uploads', 'readbacks'])
         if (renderer.metrics[key] !== warm[key]) throw Error(key + ' changed during warm motion');

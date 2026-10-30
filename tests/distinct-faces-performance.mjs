@@ -105,6 +105,8 @@ try {
         normal: [0.1, 0.15, 0.9836158],
       }));
       renderer.updateScene(instances);
+      // Native compilation is preparation, outside first/warm submission timing.
+      await Promise.all(documents.map((d) => renderer.ready(d.id, d.revision)));
       const gl = target.getContext('webgl2');
       const first = performance.now();
       renderer.render({ viewProjection: IDENTITY, time: 1 });

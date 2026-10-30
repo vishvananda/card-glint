@@ -152,7 +152,7 @@ try {
         for (const normalMotion of [false, true])
           for (const center of [-0.09, -0.05, 0, 0.05, 0.09])
             for (const axis of [0, 1]) {
-              const draw = (offset) => {
+              const draw = async (offset) => {
                 const pointer = [0.5, 0.5];
                 pointer[axis] += center + offset;
                 const rx = normalMotion ? (pointer[1] - 0.5) * 0.3 : 0,
@@ -170,13 +170,14 @@ try {
                     ],
                   },
                 ]);
+                await renderer.ready(1, 1);
                 renderer.render({ viewProjection: IDENTITY, pointer, time: 1 });
                 const b = new Uint8Array(128 * 180 * 4);
                 gpu.readPixels(0, 0, 128, 180, gpu.RGBA, gpu.UNSIGNED_BYTE, b);
                 return b;
               };
-              const a = draw(-1 / 1024),
-                b = draw(1 / 1024);
+              const a = await draw(-1 / 1024),
+                b = await draw(1 / 1024);
               let change = 0;
               for (let i = 0; i < a.length; i += 4)
                 change +=

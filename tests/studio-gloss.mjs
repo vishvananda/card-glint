@@ -72,7 +72,7 @@ try {
         normal: [sy, -sx * cy, cx * cy],
       };
     }
-    function draw(rx, ry, finish = 'gloss', pointer = [0.5, 0.5], time = 0, roll = 0) {
+    async function draw(rx, ry, finish = 'gloss', pointer = [0.5, 0.5], time = 0, roll = 0) {
       const p = pose(rx, ry),
         c = Math.cos(roll),
         s = Math.sin(roll);
@@ -85,6 +85,7 @@ try {
       const [nx, ny, nz] = p.normal;
       p.normal = [c * nx - s * ny, s * nx + c * ny, nz];
       renderer.updateScene([{ id: 1, card: 1, finish, ...p }]);
+      await renderer.ready(1, 1);
       renderer.render({
         lighting: 'studio',
         viewProjection: projection,
@@ -96,14 +97,14 @@ try {
       gl.readPixels(0, 0, output.width, output.height, gl.RGBA, gl.UNSIGNED_BYTE, bytes);
       return bytes;
     }
-    const a = draw(0, -0.12),
-      fixed = draw(0, -0.12, 'gloss', [0.95, 0.05], 55);
+    const a = await draw(0, -0.12),
+      fixed = await draw(0, -0.12, 'gloss', [0.95, 0.05], 55);
     let pointerChanges = 0;
     for (let i = 0; i < a.length; i++) if (a[i] !== fixed[i]) pointerChanges++;
     // Rotating a uniform planar card in its own plane must leave the light
     // fixed in the scene wherever the two silhouettes overlap.
-    const flat = draw(0, 0),
-      rolled = draw(0, 0, 'gloss', [0.5, 0.5], 0, 0.4);
+    const flat = await draw(0, 0),
+      rolled = await draw(0, 0, 'gloss', [0.5, 0.5], 0, 0.4);
     let rollCompared = 0,
       rollError = 0;
     for (let i = 0; i < flat.length; i += 4)
@@ -114,8 +115,8 @@ try {
       }
     const samples = [];
     for (const angle of [-0.45, -0.25, -0.12, 0, 0.25, 0.45]) {
-      const ink = draw(0, angle, 'regular'),
-        coat = draw(0, angle);
+      const ink = await draw(0, angle, 'regular'),
+        coat = await draw(0, angle);
       let sum = 0,
         max = 0,
         count = 0,
@@ -137,7 +138,7 @@ try {
       });
     }
     const { IDENTITY } = await import('/packages/browser/src/index.ts');
-    function billboard(normal, pointer, time = 0) {
+    async function billboard(normal, pointer, time = 0) {
       renderer.updateScene([
         {
           id: 1,
@@ -147,6 +148,7 @@ try {
           transform: [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
         },
       ]);
+      await renderer.ready(1, 1);
       renderer.render({
         lighting: 'studio',
         viewProjection: IDENTITY,
@@ -158,9 +160,9 @@ try {
       gl.readPixels(0, 0, output.width, output.height, gl.RGBA, gl.UNSIGNED_BYTE, bytes);
       return bytes;
     }
-    const twoD = billboard([0, 0, 1], [0.5, 0.5]),
-      twoDFixed = billboard([0, 0, 1], [0.9, 0.1], 50);
-    const turned = billboard(pose(0, -0.12).normal, [0.5, 0.5]);
+    const twoD = await billboard([0, 0, 1], [0.5, 0.5]),
+      twoDFixed = await billboard([0, 0, 1], [0.9, 0.1], 50);
+    const turned = await billboard(pose(0, -0.12).normal, [0.5, 0.5]);
     let twoDPointerChanges = 0,
       twoDPoseChanges = 0;
     for (let i = 0; i < twoD.length; i++) {

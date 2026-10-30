@@ -165,6 +165,7 @@ export class Renderer {
   ready(id: number, revision: number, signal?: AbortSignal): Promise<void> {
     this.assertLive();
     if (this.lost) return Promise.reject(Error('Graphics context is lost'));
+    if (signal?.aborted) return Promise.reject(signal.reason);
     const document = this.documents.get(id);
     if (!document || document.revision !== revision)
       return Promise.reject(Error('Requested revision is not current'));

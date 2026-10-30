@@ -60,7 +60,7 @@ try {
         },
       ]);
       await r.ready(1, 1);
-      const draw = ({
+      const draw = async ({
         id = 17,
         time = 0,
         pointer = [0.5, 0.5],
@@ -79,14 +79,15 @@ try {
             deformation,
           },
         ]);
+        await r.ready(1, 1);
         r.render({ viewProjection: api.IDENTITY, time, pointer });
         return pixels();
       };
-      const first = draw(),
-        later = draw({ time: 200 }),
-        alternate = draw({ id: 18 }),
-        persisted = draw({ id: 18, seed: 17 });
-      const light = draw({ pointer: [0.22, 0.64] });
+      const first = await draw(),
+        later = await draw({ time: 200 }),
+        alternate = await draw({ id: 18 }),
+        persisted = await draw({ id: 18, seed: 17 });
+      const light = await draw({ pointer: [0.22, 0.64] });
       let invalid = 0;
       for (const wear of [
         { amount: -1 },
@@ -114,18 +115,19 @@ try {
         'heat',
         'pool',
       ]) {
-        const fresh = draw({ finish, amount: 0 }),
-          light = draw({ finish, amount: 0.25 }),
-          played = draw({ finish, amount: 0.6 }),
-          heavy = draw({ finish });
+        const fresh = await draw({ finish, amount: 0 }),
+          light = await draw({ finish, amount: 0.25 }),
+          played = await draw({ finish, amount: 0.6 }),
+          heavy = await draw({ finish });
         layered[finish] = {
           light: difference(fresh, light),
           played: difference(fresh, played),
           heavy: difference(fresh, heavy),
         };
       }
-      const fresh = draw({ amount: 0 });
+      const fresh = await draw({ amount: 0 });
       r.updateScene([{ id: 17, card: 1, transform, finish: 'gloss' }]);
+      await r.ready(1, 1);
       r.render({ viewProjection: api.IDENTITY, time: 0 });
       const freshDifference = difference(fresh, pixels());
       const gain = { edge: 0, interior: 0 },
@@ -153,7 +155,7 @@ try {
         }
       const before = r.metrics;
       for (let i = 0; i < 8; i++)
-        draw({ time: i, pointer: [i / 8, 0.5], finish: 'prismatic', amount: i / 8 });
+        await draw({ time: i, pointer: [i / 8, 0.5], finish: 'prismatic', amount: i / 8 });
       const after = r.metrics;
       const exported = async (id, time, seed) => {
         const blob = await r.exportCard(1, {
@@ -171,11 +173,11 @@ try {
         exportOther = await exported(18, 0),
         exportPersisted = await exported(18, 0, 17);
       const equal = (a, b) => a.length === b.length && difference(a, b) === 0;
-      const deformed = (seed) =>
-        draw({ seed, time: 2, deformation: { kind: 'heat', amount: 0.012 } }).filter(
+      const deformed = async (seed) =>
+        (await draw({ seed, time: 2, deformation: { kind: 'heat', amount: 0.012 } })).filter(
           (_, i) => i % 4 === 3,
         );
-      const silhouetteDifference = difference(deformed(17), deformed(18));
+      const silhouetteDifference = difference(await deformed(17), await deformed(18));
       return {
         timeDifference: difference(first, later),
         freshDifference,

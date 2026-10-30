@@ -62,7 +62,8 @@ try {
     };
     const bounds = [0.35, 0.8, 0.3, 0.12];
     let revision = 0;
-    let phase = 'initial';
+    let phase = 'initial',
+      currentRevision = 0;
     const documentFor = (hologram) => ({
       id: 1,
       revision: ++revision,
@@ -80,10 +81,16 @@ try {
       const d = documentFor(hologram);
       phase = 'prepare revision ' + d.revision;
       renderer.upsertCards([d]);
+      currentRevision = d.revision;
       await renderer.ready(1, d.revision);
       return d;
     };
-    const read = (finish = 'regular', pointer = [0.5, 0.5], normal = [0, 0, 1]) => {
+    const read = async (
+      finish = 'regular',
+      pointer = [0.5, 0.5],
+      normal = [0, 0, 1],
+      wait = true,
+    ) => {
       renderer.updateScene([
         {
           id: 1,
@@ -93,6 +100,7 @@ try {
           transform: [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
         },
       ]);
+      if (wait) await renderer.ready(1, currentRevision);
       renderer.render({ viewProjection: IDENTITY, pointer, time: 2 });
       const c = canvas(size),
         ctx = c.getContext('2d');
@@ -124,14 +132,14 @@ try {
     };
     try {
       await set();
-      const regular = read(),
-        foil = read('prismatic'),
-        gloss = read('gloss'),
-        holofoil = read('holofoil');
+      const regular = await read(),
+        foil = await read('prismatic'),
+        gloss = await read('gloss'),
+        holofoil = await read('holofoil');
       const nativeHolofoil = {
         prism: diff(foil, holofoil),
         gloss: diff(gloss, holofoil),
-        motion: diff(holofoil, read('holofoil', [0.2, 0.75], [0.22, -0.14, 0.96])),
+        motion: diff(holofoil, await read('holofoil', [0.2, 0.75], [0.22, -0.14, 0.96])),
       };
       const nativePng = await renderer.exportCard(1, {
         revision,
@@ -149,14 +157,14 @@ try {
       nativeCanvas.width = nativeCanvas.height = 0;
       const h = { mask, rect: bounds, strength: 0.8, seed: 48 };
       await set(h);
-      const neutral = read(),
-        tilted = read('regular', [0.2, 0.75], [0.22, -0.14, 0.96]);
-      const foilHolo = read('prismatic');
+      const neutral = await read(),
+        tilted = await read('regular', [0.2, 0.75], [0.22, -0.14, 0.96]);
+      const foilHolo = await read('prismatic');
       const differences = {
         regular: diff(regular, neutral),
         foil: diff(foil, foilHolo),
-        gloss: diff(gloss, read('gloss')),
-        holofoil: diff(holofoil, read('holofoil')),
+        gloss: diff(gloss, await read('gloss')),
+        holofoil: diff(holofoil, await read('holofoil')),
         angle: diff(neutral, tilted),
       };
       const changedAt = (x, y) => {
@@ -252,14 +260,15 @@ try {
           ],
         };
         renderer.upsertCards([d]);
+        currentRevision = d.revision;
         await renderer.ready(1, d.revision);
-        return read();
+        return await read();
       };
       const uncoatedOverlay = await paintOverlay();
       const coatedOverlay = await paintOverlay(h);
       differences.overFinish = diff(uncoatedOverlay, coatedOverlay);
       await set(h);
-      const final = read();
+      const final = await read();
       phase = 'export A';
       const exportA = new Uint8Array(
         await (
@@ -302,7 +311,7 @@ try {
       await restored;
       phase = 'context restore';
       await renderer.ready(1, revision);
-      const restoredPixels = read();
+      const restoredPixels = await read();
       const restoredEqual = final.every((v, i) => v === restoredPixels[i]);
       phase = 'failed mask';
       const failed = documentFor({
@@ -322,7 +331,7 @@ try {
       } catch {
         failedMaskRejected = true;
       }
-      const retained = read();
+      const retained = await read('regular', [0.5, 0.5], [0, 0, 1], false);
       const atomic = retained.every((v, i) => v === restoredPixels[i]);
       let invalid = 0;
       for (const bad of [

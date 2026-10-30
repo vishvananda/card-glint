@@ -64,7 +64,7 @@ try {
       gl.readPixels(0, 0, 128, 192, gl.RGBA, gl.UNSIGNED_BYTE, data);
       return data;
     };
-    const draw = (printDots, mixed = false) => {
+    const draw = async (printDots, mixed = false) => {
       const instance = { id: 1, card: 1, transform, printDots };
       renderer.updateScene(
         mixed
@@ -79,6 +79,7 @@ try {
             ]
           : [instance],
       );
+      await renderer.ready(1, 1);
       renderer.render(frame);
       return pixels();
     };
@@ -107,15 +108,15 @@ try {
       // Default physical dots are unresolved at this thumbnail tier and must fade.
       // Use a resolvable physical period for the independent artwork-mask checks.
       const visibleSettings = { ...DEFAULT_PRINT_DOTS, period: 12 };
-      const off = draw(),
-        defaults = draw({}),
-        explicit = draw(DEFAULT_PRINT_DOTS),
-        visible = draw(visibleSettings),
-        excluded = draw({ ...visibleSettings, artwork: false });
+      const off = await draw(),
+        defaults = await draw({}),
+        explicit = await draw(DEFAULT_PRINT_DOTS),
+        visible = await draw(visibleSettings),
+        excluded = await draw({ ...visibleSettings, artwork: false });
       const prepared = renderer.metrics.surfacePasses;
-      const repeat = draw({ ...visibleSettings, artwork: false });
+      const repeat = await draw({ ...visibleSettings, artwork: false });
       const repeated = renderer.metrics.surfacePasses;
-      const mixed = draw({ ...visibleSettings, artwork: false }, true);
+      const mixed = await draw({ ...visibleSettings, artwork: false }, true);
       const out = await renderer.exportCard(1, {
         revision: 1,
         width: 128,

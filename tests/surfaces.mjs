@@ -104,6 +104,7 @@ try {
         finishes = {};
       for (const finish of ['rain', 'heat', 'pool']) {
         r.updateScene(scene(finish));
+        await r.ready(1, 1);
         const a = render(1),
           still = render(1),
           b = render(2);

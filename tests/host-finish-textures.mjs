@@ -168,6 +168,9 @@ try {
       gl.viewport(7, 11, 29, 31);
       gl.scissor(3, 5, 13, 17);
       gl.colorMask(false, true, false, true);
+      gl.clearColor(0.1, 0.2, 0.3, 0.4);
+      gl.blendEquationSeparate(gl.FUNC_REVERSE_SUBTRACT, gl.FUNC_SUBTRACT);
+      gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ZERO);
       caps.forEach((cap, i) => (i % 2 ? gl.disable(cap) : gl.enable(cap)));
       gl.activeTexture(gl.TEXTURE0);
       gl.bindTexture(gl.TEXTURE_2D, source);
@@ -186,6 +189,14 @@ try {
       gl.VIEWPORT,
       gl.SCISSOR_BOX,
       gl.COLOR_WRITEMASK,
+      gl.ELEMENT_ARRAY_BUFFER_BINDING,
+      gl.COLOR_CLEAR_VALUE,
+      gl.BLEND_EQUATION_RGB,
+      gl.BLEND_EQUATION_ALPHA,
+      gl.BLEND_SRC_RGB,
+      gl.BLEND_SRC_ALPHA,
+      gl.BLEND_DST_RGB,
+      gl.BLEND_DST_ALPHA,
       gl.TEXTURE_BINDING_2D,
       gl.TEXTURE_BINDING_2D_ARRAY,
     ];
@@ -307,6 +318,29 @@ try {
       gl.useProgram(hostProgram);
       equalState(before);
       check(gl.getError() === gl.NO_ERROR, 'Preparation emits no GL errors');
+      const aborted = new AbortController();
+      const caller = textures.ready(aborted.signal).then(
+        () => {
+          throw Error('Aborted warmup caller resolved');
+        },
+        (error) => check(error.name === 'AbortError', 'Warmup abort reason'),
+      );
+      const shared = textures.ready();
+      aborted.abort();
+      await caller;
+      await shared;
+      equalState(before);
+      const programsAfterWarmup = live.Program.size;
+      await textures.ready();
+      check(live.Program.size === programsAfterWarmup, 'Warmup is shared and cached');
+      const light = textures.caustics(1.25);
+      equalState(before);
+      check(textures.caustics(1.25) === light, 'Same-time shared caustics descriptor');
+      check(textures.caustics(1.5) === light, 'Caustics updates borrowed texture in place');
+      equalState(before);
+      for (const time of [NaN, Infinity, -1, Number.MAX_VALUE])
+        rejects(() => textures.caustics(time), 'Invalid caustics time');
+      check(contextCalls === 0 && readbacks === 0, 'Warmup/caustics has no contexts or readback');
       // Compare against the existing public native pass, including alpha and row orientation.
       HTMLCanvasElement.prototype.getContext = getContext;
       gl.readPixels = readPixels;

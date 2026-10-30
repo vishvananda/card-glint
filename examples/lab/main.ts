@@ -339,6 +339,7 @@ const ready = (async () => {
     { once: true },
   );
   renderer.updateScene(instances());
+  await Promise.all(documents.map((d) => renderer.ready(d.id, d.revision)));
   renderer.render({ viewProjection: IDENTITY });
   return renderer;
 })();

@@ -169,6 +169,7 @@ try {
         { id: 1, card: 1, transform, finish: 'opal' },
         { id: 2, card: 2, transform: [...transform.slice(0, 14), -0.3, 1], finish: 'regular' },
       ]);
+      await Promise.all(docs.map((d) => r.ready(d.id, d.revision)));
       r.render({ viewProjection: api.IDENTITY });
       const overlapping = pixels();
       const badge = {
@@ -372,6 +373,7 @@ try {
         ],
       })),
     );
+    await Promise.all(window.lab.documents.map((d) => r.ready(d.id, d.revision)));
     const times = [];
     for (let i = 0; i < 12; i++) {
       const start = performance.now();

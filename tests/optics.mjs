@@ -48,6 +48,7 @@ try {
           transform: [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
         },
       ]);
+      await r.ready(1, 1);
       const gl = c.getContext('webgl2');
       const frame = (time) => {
         r.render({ viewProjection: api.IDENTITY, time });

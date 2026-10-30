@@ -51,6 +51,7 @@ try {
       select.value = value;
       select.dispatchEvent(new Event('change'));
       renderer.updateScene(window.lab.instances());
+      await Promise.all(window.lab.documents.map((d) => renderer.ready(d.id, d.revision)));
       renderer.render({
         viewProjection: window.lab.api.IDENTITY,
         time: window.lab.motionState().time,

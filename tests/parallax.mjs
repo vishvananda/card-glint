@@ -72,6 +72,7 @@ try {
         const centers = [];
         for (const x of [-0.35, 0, 0.35]) {
           r.updateScene([{ id: 1, card: 1, finish, normal: [x, 0, 1], transform }]);
+          await r.ready(finish === 'regular' ? 4 : 1, 1);
           frame(2);
           centers.push(centroid(pixels()));
         }
@@ -89,12 +90,14 @@ try {
             w = s / 3.5;
           const turn = [1.6 * c, 0, 0, w, 0, -1.6, 0, 0, 0, 0, 1, 0, -0.8 * c, 0.8, 0, 1 - w / 2];
           r.updateScene([{ id: 1, card: 4, finish, normal: [s, 0, c], transform: turn }]);
+          await r.ready(4, 1);
           frame(2);
           centers.push(centroid(pixels()));
         }
         anchored[finish] = centers;
       }
       r.updateScene([{ id: 1, card: 2, finish: 'pool', transform }]);
+      await r.ready(2, 1);
       frame(2);
       const data = pixels(),
         values = [];

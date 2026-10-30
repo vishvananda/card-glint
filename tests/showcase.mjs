@@ -41,6 +41,7 @@ try {
   await page.evaluate(async () => {
     const renderer = await window.lab.ready;
     renderer.updateScene(window.lab.instances());
+    await Promise.all(window.lab.documents.map((d) => renderer.ready(d.id, d.revision)));
     renderer.render({ viewProjection: window.lab.api.IDENTITY, time: 2 });
   });
   assert.deepEqual(

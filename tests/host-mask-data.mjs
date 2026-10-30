@@ -67,7 +67,81 @@ try {
         CanvasRenderingContext2D.prototype.getImageData = () => {
           throw Error('R8 snapshot must not read a Canvas');
         };
-        map = await resources.documentMaskData(doc, host, signal);
+        const prototype = WebGL2RenderingContext.prototype;
+        const methods = [
+          'readPixels',
+          'fenceSync',
+          'clientWaitSync',
+          'getBufferSubData',
+          'deleteBuffer',
+          'deleteSync',
+        ];
+        const original = Object.fromEntries(methods.map((name) => [name, prototype[name]]));
+        let fence,
+          signaled = false,
+          submitted = 0,
+          copied = 0,
+          deletedBuffers = 0,
+          deletedFences = 0;
+        let cancel,
+          blocking = false;
+        prototype.readPixels = function (...args) {
+          if (typeof args[6] !== 'number' || !this.getParameter(this.PIXEL_PACK_BUFFER_BINDING))
+            throw Error('Mask readback must target a PBO, not CPU memory');
+          submitted++;
+          if (cancel) setTimeout(() => cancel.abort(), 0);
+          return original.readPixels.apply(this, args);
+        };
+        prototype.fenceSync = function (...args) {
+          signaled = false;
+          return (fence = original.fenceSync.apply(this, args));
+        };
+        prototype.clientWaitSync = function (...args) {
+          if (args[2] !== 0) throw Error('Mask readback blocks on a GPU fence');
+          if (blocking) return this.TIMEOUT_EXPIRED;
+          const status = original.clientWaitSync.apply(this, args);
+          if (
+            args[0] === fence &&
+            (status === this.ALREADY_SIGNALED || status === this.CONDITION_SATISFIED)
+          )
+            signaled = true;
+          return status;
+        };
+        prototype.getBufferSubData = function (...args) {
+          if (!signaled) throw Error('Mask bytes copied before fence completion');
+          copied++;
+          return original.getBufferSubData.apply(this, args);
+        };
+        prototype.deleteBuffer = function (...args) {
+          deletedBuffers++;
+          return original.deleteBuffer.apply(this, args);
+        };
+        prototype.deleteSync = function (...args) {
+          deletedFences++;
+          return original.deleteSync.apply(this, args);
+        };
+        try {
+          map = await resources.documentMaskData(doc, host, signal);
+          if (submitted !== 1 || copied !== 1 || deletedBuffers !== 1 || deletedFences !== 1)
+            throw Error('Successful PBO readback leaks or repeats work');
+          blocking = true;
+          cancel = new AbortController();
+          let rejected = false;
+          try {
+            await resources.documentMaskData(doc, host, cancel.signal);
+          } catch (error) {
+            rejected = error.name === 'AbortError';
+          }
+          if (!rejected || copied !== 1 || deletedBuffers !== 2 || deletedFences !== 2)
+            throw Error('Aborted PBO readback copied bytes or leaked resources');
+          blocking = false;
+          cancel = undefined;
+          const retry = await resources.documentMaskData(doc, host, signal);
+          if (String(retry.data) !== String(map.data) || submitted !== 3 || copied !== 2)
+            throw Error('Readback queue did not recover after cancellation');
+        } finally {
+          for (const name of methods) prototype[name] = original[name];
+        }
       } finally {
         CanvasRenderingContext2D.prototype.getImageData = old;
       }

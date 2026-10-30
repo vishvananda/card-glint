@@ -26,8 +26,9 @@ try {
       return data;
     };
     const difference = (a, b) => a.reduce((s, v, i) => s + Math.abs(v - b[i]), 0) / a.length;
-    const draw = (rainFog, finish = 'rain') => {
+    const draw = async (rainFog, finish = 'rain') => {
       renderer.updateScene([{ id: 17, card: 1, finish, transform, rainFog }]);
+      await renderer.ready(1, 1);
       renderer.render(frame);
       return pixels();
     };
@@ -61,12 +62,12 @@ try {
         },
       ]);
       await renderer.ready(1, 1);
-      const original = draw(undefined),
-        identity = draw(1),
-        low = draw(0.7),
-        high = draw(1.3),
-        clear = draw(0),
-        heavy = draw(2),
+      const original = await draw(undefined),
+        identity = await draw(1),
+        low = await draw(0.7),
+        high = await draw(1.3),
+        clear = await draw(0),
+        heavy = await draw(2),
         warm = renderer.metrics;
       const unrelated = [];
       for (const finish of [
@@ -79,22 +80,26 @@ try {
         'heat',
         'pool',
       ])
-        unrelated.push({ finish, difference: difference(draw(0, finish), draw(2, finish)) });
+        unrelated.push({
+          finish,
+          difference: difference(await draw(0, finish), await draw(2, finish)),
+        });
       let rejected = 0,
         atomic = true;
-      draw(0.7);
+      await draw(0.7);
       for (const value of [-0.01, 2.01, NaN, Infinity]) {
         try {
-          draw(value);
+          await draw(value);
         } catch {
           rejected++;
         }
+        await renderer.ready(1, 1);
         renderer.render(frame);
         atomic &&= difference(low, pixels()) === 0;
       }
-      for (let i = 0; i < 10; i++) draw((i % 3) * 0.5);
+      for (let i = 0; i < 10; i++) await draw((i % 3) * 0.5);
       const cached = renderer.metrics;
-      draw(0.7);
+      await draw(0.7);
       const blob = await renderer.exportCard(1, {
           revision: 1,
           width,
@@ -122,7 +127,7 @@ try {
         lowDifference: difference(identity, low),
         highDifference: difference(identity, high),
         clearHeavyDifference: difference(clear, heavy),
-        repeatDifference: difference(low, draw(0.7)),
+        repeatDifference: difference(low, await draw(0.7)),
         exportDifference: difference(low, flipped),
         unrelated,
         rejected,

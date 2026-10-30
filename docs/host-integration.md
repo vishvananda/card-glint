@@ -172,6 +172,23 @@ and draw framebuffer before yielding. The final buffer copy separately restores
 the pixel-pack binding current at that moment. No saved GL state spans an `await`.
 Cache the returned bytes outside animation, using the same identity as a canvas mask.
 
+### Standalone finish readiness
+
+For a deterministic first draw, select the scene instances before awaiting
+`ready(id, revision)`. Readiness includes their finish, local coating and printing
+programs. Await readiness again when selecting a previously unused finish.
+Preparation remains cached; pose-only animation needs no additional readiness calls.
+
+    renderer.updateScene(instances);
+    await Promise.all(documents.map(d => renderer.ready(d.id, d.revision)));
+    renderer.render(frame);
+
+An interactive host can render immediately and honor its `invalidate` callback:
+uncached groups appear when their programs are ready. `metrics.pending` includes
+this compilation work. Export prepares its explicitly requested finish itself.
+`FinishTextures` synchronous helpers remain supported; its new `ready(signal?)`
+method moves their initial compilation into asynchronous preparation.
+
 ### Printing and coating in host materials
 
 `card-glint/finish` exports `PRINT_DOTS_GLSL`, `CARDSTOCK_GLSL` and the `FinishMap`

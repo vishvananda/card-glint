@@ -29,7 +29,7 @@ try {
     };
     const difference = (a, b) => a.reduce((n, v, i) => n + Math.abs(v - b[i]), 0) / a.length;
     const frame = { viewProjection: api.IDENTITY, pointer: [0.88, 0.15], time: 0 };
-    const draw = (amount, finish = 'gloss', options = {}) => {
+    const draw = async (amount, finish = 'gloss', options = {}) => {
       r.updateScene([
         {
           id: 17,
@@ -40,6 +40,7 @@ try {
           ...options,
         },
       ]);
+      await r.ready(1, 1);
       r.render(frame);
       return pixels();
     };
@@ -71,23 +72,23 @@ try {
         },
       ]);
       await r.ready(1, 1);
-      const original = draw(),
-        zero = draw(0),
+      const original = await draw(),
+        zero = await draw(0),
         initial = r.metrics;
-      const medium = draw(0.2),
+      const medium = await draw(0.2),
         allocated = r.metrics,
-        strong = draw(1);
-      const regular0 = draw(0, 'regular'),
-        regular1 = draw(1, 'regular');
-      const dots0 = draw(0, 'regular', { printDots: { amount: 0, period: 7 } }),
-        dots1 = draw(0, 'regular', { printDots: { amount: 0.35, period: 7 } });
+        strong = await draw(1);
+      const regular0 = await draw(0, 'regular'),
+        regular1 = await draw(1, 'regular');
+      const dots0 = await draw(0, 'regular', { printDots: { amount: 0, period: 7 } }),
+        dots1 = await draw(0, 'regular', { printDots: { amount: 0.35, period: 7 } });
       const cachedPrinting = r.metrics;
-      const repeatedDots = draw(0, 'regular', { printDots: { amount: 0.35, period: 7 } }),
+      const repeatedDots = await draw(0, 'regular', { printDots: { amount: 0.35, period: 7 } }),
         repeatedMetrics = r.metrics;
       const dotRepeatDifference = difference(dots1, repeatedDots);
       // A second, occluded instance with different settings forces the bounded
       // cache's procedural fallback without changing the visible geometry.
-      const mixed = (amount) => {
+      const mixed = async (amount) => {
         const behind = [...transform];
         behind[14] = 0.5;
         r.updateScene([
@@ -100,11 +101,12 @@ try {
             printDots: { amount: 0.1, period: 7 },
           },
         ]);
+        await r.ready(1, 1);
         r.render(frame);
         return pixels();
       };
-      const mixedZeroDifference = difference(regular0, mixed(0)),
-        mixedDotDifference = difference(regular0, mixed(0.35)),
+      const mixedZeroDifference = difference(regular0, await mixed(0)),
+        mixedDotDifference = difference(regular0, await mixed(0.35)),
         mixedMetrics = r.metrics;
       const dotDifference = difference(dots0, dots1),
         dotZeroDifference = difference(regular0, dots0);
@@ -123,31 +125,32 @@ try {
         { amount: 0.2, inset: Infinity },
       ])
         try {
-          draw(0, 'regular', { printDots });
+          await draw(0, 'regular', { printDots });
         } catch {
           invalidDots++;
         }
-      const foil0 = draw(0, 'prismatic'),
-        foil1 = draw(1, 'prismatic');
+      const foil0 = await draw(0, 'prismatic'),
+        foil1 = await draw(1, 'prismatic');
       frame.time = 100;
-      const later = draw(0.2);
+      const later = await draw(0.2);
       frame.time = 0;
       const spec = { amount: 0.2 };
       r.updateScene([{ id: 17, card: 1, transform, finish: 'gloss', cardstock: spec }]);
       spec.amount = 1;
+      await r.ready(1, 1);
       r.render(frame);
       const isolated = pixels();
       frame.pointer = [0.1, 0.7];
-      const tilted = draw(0.2, 'gloss', { normal: [-0.2, 0.1, Math.sqrt(0.95)] });
+      const tilted = await draw(0.2, 'gloss', { normal: [-0.2, 0.1, Math.sqrt(0.95)] });
       frame.pointer = [0.88, 0.15];
       let rejected = 0;
       for (const amount of [-1, 1.01, NaN, Infinity])
         try {
-          draw(amount);
+          await draw(amount);
         } catch {
           rejected++;
         }
-      draw(0.2);
+      await draw(0.2);
       const png = await r.exportCard(1, {
         revision: 1,
         width,
@@ -170,12 +173,12 @@ try {
         );
       const exportDifference = difference(medium, flipped);
       // A second textured instance and animated intensity must reuse the map.
-      for (let i = 0; i < 8; i++) draw(i / 8, 'gloss', { id: 18 });
+      for (let i = 0; i < 8; i++) await draw(i / 8, 'gloss', { id: 18 });
       const warm = r.metrics;
       c.width = 73;
       c.height = 102;
-      const tiny0 = draw(0),
-        tiny1 = draw(0.2),
+      const tiny0 = await draw(0),
+        tiny1 = await draw(0.2),
         tinyDifference = difference(tiny0, tiny1);
       c.width = width;
       c.height = height;
@@ -193,7 +196,7 @@ try {
       extension.restoreContext();
       await restored;
       await r.ready(1, 1);
-      const restoredPixels = draw(0.2);
+      const restoredPixels = await draw(0.2);
       return {
         cachedPrinting,
         repeatedMetrics,
