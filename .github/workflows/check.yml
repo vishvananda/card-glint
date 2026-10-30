@@ -48,10 +48,7 @@ jobs:
             dist/releases/release.json
             dist/releases/SHA256SUMS
             packages/browser/generated/
-            games/magic/src/data/eager.ts
-            games/magic/src/data/eager-wording.ts
-            games/magic/src/data/generated-manifest.json
-            games/magic/src/data/sets/
+            games/magic/src/data/
       - name: Upload showcase
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5
