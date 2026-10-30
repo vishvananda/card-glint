@@ -140,6 +140,9 @@ function resize() {
 const ready = (async () => {
   const renderer = await createRenderer({
     canvas: surface,
+    invalidate: () => {
+      dirty = true;
+    },
     onError: (error) => {
       status.textContent = String(error);
       console.error(error);
