@@ -82,7 +82,11 @@ export function applyM21WhiteDefault(group, source, receipt, guardsMatch) {
     complete = rows.length === group.printings;
   group.tasks.frameColor = {
     status: !current ? 'stale' : complete ? 'validated-default' : 'partial',
-    reason: `${rows.length}/${group.printings} unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.`,
+    reason:
+      (!current
+        ? 'Source or receipt dependencies differ; revalidate this retained color measurement. Historical result: '
+        : '') +
+      `${rows.length}/${group.printings} unchanged native white-frame pigments pass absolute regional and ten-bin texture color checks. Paper, plates, texture frequency, geometry and typography remain separate.`,
     evidence: ['games/magic/fixtures/accuracy/m21-white-default.json'],
     coveredPrintings: rows.length,
     measurements: receipt.summaries,
@@ -145,7 +149,11 @@ export function applyM21RedColor(group, source, receipt, guardsMatch) {
   const complete = rows.length === group.printings;
   group.tasks.frameColor = {
     status: !current ? 'stale' : complete ? 'validated' : 'partial',
-    reason: `${rows.length}/${group.printings} ordinary red frame pigments pass current/raw color and texture gates with original-wording native replay. Paper, crowns and typography remain separate; Chandra's Firemaw remains a reference/printing-batch review item.`,
+    reason:
+      (!current
+        ? 'Source or receipt dependencies differ; revalidate this retained color measurement. Historical result: '
+        : '') +
+      `${rows.length}/${group.printings} ordinary red frame pigments pass current/raw color and texture gates with original-wording native replay. Paper, crowns and typography remain separate; Chandra's Firemaw remains a reference/printing-batch review item.`,
     evidence: ['games/magic/fixtures/accuracy/m21-red-color-adoption.json'],
     coveredPrintings: rows.length,
     measurements: receipt.metrics.summaries,
