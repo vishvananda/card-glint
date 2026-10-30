@@ -72,7 +72,7 @@ try {
         const centers = [];
         for (const x of [-0.35, 0, 0.35]) {
           r.updateScene([{ id: 1, card: 1, finish, normal: [x, 0, 1], transform }]);
-          await r.ready(finish === 'regular' ? 4 : 1, 1);
+          await r.ready(1, 1);
           frame(2);
           centers.push(centroid(pixels()));
         }

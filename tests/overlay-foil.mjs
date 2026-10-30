@@ -45,7 +45,7 @@ try {
       },
       layers: [{ id: 'printing', order: 0, stage: 'over-finish', raster: raster(true) }],
     });
-    const read = (time, pointer = [0.5, 0.5]) => {
+    const read = async (time, pointer = [0.5, 0.5]) => {
       r.updateScene([
         {
           id: 1,
@@ -54,6 +54,7 @@ try {
           transform: [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
         },
       ]);
+      await r.ready(1, revision);
       r.render({ viewProjection: IDENTITY, time, pointer });
       const c = canvas([160, 220]),
         ctx = c.getContext('2d');
@@ -68,9 +69,9 @@ try {
         await r.ready(1, revision);
         rows.push({
           tone: tone ?? 'none',
-          a: read(1),
-          b: read(3),
-          tilted: read(3, [0.1, 0.7]),
+          a: await read(1),
+          b: await read(3),
+          tilted: await read(3, [0.1, 0.7]),
           metrics: r.metrics,
         });
       }
