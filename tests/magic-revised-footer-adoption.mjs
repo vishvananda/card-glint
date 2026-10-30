@@ -1,3 +1,4 @@
+import { withoutModernCostRevision } from './magic-key-history.mjs';
 import {
   preRevisedBlackPaperSource,
   revisedBlackPaperHistoricalHash,
@@ -160,7 +161,7 @@ try {
   const input = (f, props = {}) => ({ face: f, printingId: null, printedImage: null, ...props });
   const check = (f, props, expected) => {
     const a = JSON.parse(old(input(f, props), 'inspect')),
-      b = JSON.parse(next(input(f, props), 'inspect'));
+      b = JSON.parse(withoutModernCostRevision(next(input(f, props), 'inspect')));
     assert.equal(b.filter((v) => v === marker).length, expected ? 1 : 0);
     assert.deepEqual(
       b.filter((v) => v !== marker && v !== 'revised-heading-fit-v1'),

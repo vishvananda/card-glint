@@ -1,3 +1,4 @@
+import { withoutModernCostRevision } from './magic-key-history.mjs';
 import {
   preLegArtistDataSource,
   legArtistHistoricalHash,
@@ -137,7 +138,7 @@ try {
   const check = (f, props = {}, expected = true) => {
     const input = { face: f, printingId: null, printedImage: null, ...props },
       a = JSON.parse(old(input, 'inspect')),
-      b = JSON.parse(next(input, 'inspect'));
+      b = JSON.parse(withoutModernCostRevision(next(input, 'inspect')));
     assert.equal(b.filter((v) => v === marker).length, expected ? 1 : 0);
     assert.deepEqual(
       b.filter((v) => v !== marker),

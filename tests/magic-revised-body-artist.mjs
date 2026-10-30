@@ -1,3 +1,4 @@
+import { withoutModernCostRevision } from './magic-key-history.mjs';
 import {
   preRevisedRequestSource,
   revisedRequestHistoricalHash,
@@ -73,7 +74,7 @@ try {
   // their own exact-source, native and affected/bypass cache tests.
   const after = (...args) =>
     JSON.stringify(
-      JSON.parse(currentAfter(...args)).filter(
+      JSON.parse(withoutModernCostRevision(currentAfter(...args))).filter(
         (value) =>
           value !== 'revised-footer-geometry-v1' &&
           value !== 'revised-mana-fit-v1' &&

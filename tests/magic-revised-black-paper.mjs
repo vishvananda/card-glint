@@ -1,3 +1,4 @@
+import { withoutModernCostRevision } from './magic-key-history.mjs';
 import {
   preRevisedManaFitSource,
   revisedManaFitHistoricalHash,
@@ -152,7 +153,7 @@ try {
   const check = (f, props = {}, expected = true) => {
     const input = { face: f, printingId: null, printedImage: null, ...props },
       before = JSON.parse(old(input, 'inspect')),
-      after = JSON.parse(next(input, 'inspect'));
+      after = JSON.parse(withoutModernCostRevision(next(input, 'inspect')));
     assert.equal(after.filter((v) => v === marker).length, expected ? 1 : 0);
     assert.deepEqual(
       after.filter(
