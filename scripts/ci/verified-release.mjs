@@ -1,5 +1,7 @@
 import { execFileSync } from 'node:child_process';
-import { readFile, appendFile } from 'node:fs/promises';
+import { readFile, appendFile, mkdtemp, cp, rm } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /** Release only the exact commit checked by this repository's main workflow. */
@@ -56,29 +58,44 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     'repos/' + repository + '/actions/runs/' + run.id + '/artifacts?per_page=100',
   );
   const artifact = verifiedArtifact(artifacts.artifacts, run, commit);
-  execFileSync(
-    'gh',
-    [
-      'run',
-      'download',
-      String(run.id),
-      '--repo',
-      repository,
-      '--name',
-      artifact.name,
-      '--dir',
-      '.',
-    ],
-    { stdio: 'inherit' },
-  );
-  const manifest = JSON.parse(await readFile('dist/releases/release.json'));
-  const pkg = JSON.parse(await readFile('package.json'));
-  if (
-    manifest.sourceCommit !== commit ||
-    manifest.version !== pkg.version ||
-    process.env.GITHUB_REF_NAME !== 'v' + manifest.version
-  )
-    throw Error('Downloaded release provenance does not match the tag');
+  const directory = await mkdtemp(path.join(os.tmpdir(), 'card-glint-verified-'));
+  try {
+    execFileSync(
+      'gh',
+      [
+        'run',
+        'download',
+        String(run.id),
+        '--repo',
+        repository,
+        '--name',
+        artifact.name,
+        '--dir',
+        directory,
+      ],
+      { stdio: 'inherit' },
+    );
+    const release = path.join(directory, 'dist/releases');
+    const manifest = JSON.parse(await readFile(path.join(release, 'release.json')));
+    const pkg = JSON.parse(await readFile('package.json'));
+    if (
+      manifest.sourceCommit !== commit ||
+      manifest.version !== pkg.version ||
+      process.env.GITHUB_REF_NAME !== 'v' + manifest.version
+    )
+      throw Error('Downloaded release provenance does not match the tag');
+    const after = api('repos/' + repository + '/actions/runs/' + run.id);
+    selectVerifiedRun([after], commit, repository);
+    if (after.run_attempt !== run.run_attempt)
+      throw Error('Main CI was rerun during artifact download; retry after it finishes');
+    const unchanged = api('repos/' + repository + '/actions/artifacts/' + artifact.id);
+    if (unchanged.expired || unchanged.digest !== artifact.digest)
+      throw Error('Verified artifact changed during download');
+    // Restore only immutable archives; never overwrite tracked generated source.
+    await cp(release, 'dist/releases', { recursive: true, force: false, errorOnExist: true });
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
   const message = 'Reusing checked build from ' + run.html_url + ' (commit ' + commit + ').';
   console.log(message);
   if (process.env.GITHUB_STEP_SUMMARY)
