@@ -78,9 +78,9 @@ prepared/uploaded once through the existing bounded cache, without mask readback
 View/normal changes move the reflection over stationary diffraction grooves.
 Fixed view, pointer and seed produce a deterministic still; elapsed time alone
 does not animate the coating. Export and context recovery retain that identity.
-The context compiles ordinary and coated shader variants once. Uncoated cards
-use the ordinary program, keeping the additional coating's shader cost out of
-their draws. Switching between them never compiles a shader during rendering.
+The context lazily caches programs by finish, local coating and procedural
+printing. Uncoated cards use a program without the local coating. Non-liquid
+finishes omit the rain, heat and pool shader source entirely.
 
 ## Cache ownership
 
@@ -115,6 +115,32 @@ Stale jobs cannot replace a new revision. `resetEpoch` cancels jobs, clears scen
 and retained texture/image caches, and clears the canvas. Context loss invalidates
 GPU handles while keeping visible document recipes and decoded images for
 recovery. Texture IDs are monotonic and stale leases are generation-checked.
+
+### Native shader readiness
+
+`createRenderer` allocates the native device without compiling material variants.
+`ready(id, revision, signal?)` waits for the face textures and the variants needed
+by that card's current scene instances. With no scene instances it prepares the
+regular finish. Pool caustics, cardstock and cached-print helpers initialize only
+when requested by those instances.
+
+The compiler submits both shaders and links without querying individual compile
+status. With `KHR_parallel_shader_compile`, it polls `COMPLETION_STATUS_KHR` on
+later tasks, then checks link status. Uniform lookup, program binding and drawing
+occur only after completion. Without that extension, it yields a task before the
+final link-status query, but WebGL provides no nonblocking completion query and
+the driver can still stall that task.
+
+Changing a scene to an uncached finish schedules compilation outside the render
+call. Pending groups are not drawn; the renderer calls `invalidate` when a program
+or helper becomes available. Hosts must honor that callback even for stationary
+scenes. `Metrics.pending` includes native program/helper compilation. PNG export
+prepares its explicit finish and printing settings before changing the live canvas.
+
+Revision replacement, release and epoch reset reject that revision's outstanding
+readiness/export waits without cancelling shared context-owned programs. Caller
+abort cancels its readiness wait. Context loss and disposal abort pending compiler
+polls; restoration creates a new device and lazily rebuilds its programs.
 
 Default limits are 64 MiB of resident GPU payload, 32 MiB of retained decoded
 images, and a 16 MiB etching scratch ceiling, with two preparation jobs and four
@@ -175,8 +201,8 @@ uploads a 192-byte instance record, including independent rain fog density.
 Rain evaluates eighteen candidate drops; rain and heat use five
 face samples for softening. Pool evaluates six surface waves and four bounded
 ripples, then samples the face and a **separate projected-light map** (five taps
-to soften mesh boundaries and narrow ray folds). Programs
-compile once per context. The original finishes skip the optical branches.
+to soften mesh boundaries and narrow ray folds). Programs are compiled lazily
+once per requested finish/coating/printing combination and context.
 
 The pool light pass refracts a 192×192-cell mesh through the shared height field
 onto a 512×512 R8 receiving plane. Source-to-destination footprint area determines
@@ -192,8 +218,9 @@ pool cards means no light pass. `surfacePasses` reports its cumulative count;
 `draws` continues to count card and scene-layer submissions. `surfaceBytes`
 reports the fixed **704,512 bytes** for the R8 map and index buffer per context,
 separate from the CPU/GPU asset-cache budgets and etching scratch. This bounded
-allocation is created with the context and released with it. It adds no texture
-uploads/readbacks during animation. GPU fragment cost still grows with area and
+allocation is created when pool preparation is first requested and released with
+the context. It adds no texture uploads/readbacks during animation. GPU fragment
+cost still grows with area and
 overdraw, while the shared light pass has a fixed cost. Browser pixel tests use
 software rendering; CPU submission timings are not hardware GPU completion/FPS.
 
@@ -288,9 +315,9 @@ supply time, animation scheduling and reduced-motion policy.
 
 `Instance.cardstock.amount` is a game-neutral optical-coating parameter (0..1).
 The browser backend stores one extra instance float. A context-owned relief map
-contains two 16-bit analytical slopes in RGBA8; its shader is compiled with the
-context and the fixed map is generated on first textured finish draw. Linear
-decoding permits mip filtering, suppressing fine relief when cards shrink.
+contains two 16-bit analytical slopes in RGBA8. Its program initializes lazily
+through native readiness, and the fixed map is generated on first textured finish
+draw. Linear decoding permits mip filtering, suppressing fine relief when cards shrink.
 Subsequent frames sample the map in the existing material pass. There are no
 reference face renders, per-frame uploads, readbacks or procedural noise calls.
 The coating modulates the finish response before abrasion and finish coverage,
@@ -307,11 +334,11 @@ Artwork exclusion reuses the recipe's normalized art windows. A single extra
 instance float selects inclusion in mixed groups; cached preparation receives the
 same rectangles as uniforms. No coverage readback or extra per-frame pass is needed. A one-time GPU pass stores linear
 shader output in sRGB targets, retaining dark-ink precision. Mipmaps filter fine
-dots as geometry shrinks. Homogeneous instance groups sample these textures in
-the normal finish pass, whose shader excludes procedural screen evaluation.
-Both variants compile at context creation, so switching settings never compiles
-a shader during animation. Mixed groups and faces
-that exceed the cache bound preserve the per-instance shader path. Metrics count
+dots as geometry shrinks. Homogeneous instance groups sample these textures and
+disable their procedural screen amount. They retain the procedural-capable material
+variant so cache overflow can use the existing per-instance path. Material variants
+and helper programs initialize lazily through readiness rather than context creation.
+Mixed settings and faces that exceed the cache bound preserve per-instance evaluation. Metrics count
 preparation passes and retained bytes; context restoration and disposal clear the
 cache. Benchmark completed frame time separately from CPU submission time.
 

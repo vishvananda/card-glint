@@ -1,12 +1,5 @@
-import { program, texture } from './etcher.js';
-import {
-  vertex,
-  fragment,
-  hologramFragment,
-  imageFragment,
-  proceduralFragment,
-  proceduralHologramFragment,
-} from './shaders.js';
+import { programAsync, texture } from './etcher.js';
+import { vertex, materialFragment, imageFragment } from './shaders.js';
 import type { Texture } from './textures.js';
 import type { FaceRecipe, Frame, Instance, SceneLayer } from '../types.js';
 import { SurfaceMotion } from '../surface-motion.js';
@@ -39,11 +32,12 @@ export interface Material {
 }
 export class Device {
   readonly gl: WebGL2RenderingContext;
-  private foil: WebGLProgram;
-  private holographic: WebGLProgram;
-  private procedural: WebGLProgram;
-  private proceduralHolographic: WebGLProgram;
-  private image: WebGLProgram;
+  private programs = new Map<string, { promise: Promise<WebGLProgram>; value?: WebGLProgram }>();
+  private image?: WebGLProgram;
+  private imagePending?: Promise<WebGLProgram>;
+  private lifetime = new AbortController();
+  private reported = new Set<unknown>();
+  private compiling = 0;
   private vao: WebGLVertexArrayObject;
   private quad: WebGLBuffer;
   private instances: WebGLBuffer;
@@ -52,14 +46,21 @@ export class Device {
   private instanceCapacity = 0;
   private staging = new Float32Array();
   private motion = new SurfaceMotion();
-  private caustics: Caustics;
-  private cardstock: Cardstock;
-  private printedInk: PrintedInk;
+  private caustics?: Caustics;
+  private cardstock?: Cardstock;
+  private printedInk?: PrintedInk;
+  private causticsPending?: Promise<Caustics>;
+  private cardstockPending?: Promise<Cardstock>;
+  private printedInkPending?: Promise<PrintedInk>;
   private uniforms = new WeakMap<WebGLProgram, Map<string, WebGLUniformLocation | null>>();
   private frameUniforms = new Map<WebGLProgram, Frame>();
   private bounds = new WeakMap<FaceRecipe, Float32Array>();
   draws = 0;
-  constructor(readonly canvas: HTMLCanvasElement) {
+  constructor(
+    readonly canvas: HTMLCanvasElement,
+    private invalidate?: () => void,
+    private onError?: (error: unknown) => void,
+  ) {
     const gl = canvas.getContext('webgl2', {
       alpha: true,
       antialias: true,
@@ -68,18 +69,6 @@ export class Device {
     });
     if (!gl) throw Error('WebGL2 is required');
     this.gl = gl;
-    this.caustics = new Caustics(gl);
-    this.cardstock = new Cardstock(gl);
-    this.printedInk = new PrintedInk(gl);
-    this.foil = program(gl, fragment, vertex)!;
-    // Compile both variants once with the context. Uncoated cards keep the
-    // smaller original shader rather than paying its register/branch cost.
-    this.holographic = program(gl, hologramFragment, vertex)!;
-    // Compile screen evaluation separately: ordinary and cached printing must
-    // not pay its register/branch cost, even when every amount would be zero.
-    this.procedural = program(gl, proceduralFragment, vertex)!;
-    this.proceduralHolographic = program(gl, proceduralHologramFragment, vertex)!;
-    this.image = program(gl, imageFragment, vertex)!;
     this.vao = gl.createVertexArray()!;
     this.quad = gl.createBuffer()!;
     this.instances = gl.createBuffer()!;
@@ -126,9 +115,151 @@ export class Device {
     gl.vertexAttribDivisor(15, 1);
     gl.bindVertexArray(null);
   }
+  private activePrint(item: Instance) {
+    return Boolean(item.printDots && (item.printDots.amount ?? DEFAULT_PRINT_DOTS.amount) > 0);
+  }
+  private key(recipe: FaceRecipe, finish: Instance['finish'], procedural: boolean) {
+    return `${finish ?? 'regular'}:${Boolean(recipe.hologram?.strength)}:${procedural}`;
+  }
+  private changed = () => {
+    if (!this.disposed && !this.gl.isContextLost()) this.invalidate?.();
+  };
+  private report = (error: unknown) => {
+    if (this.disposed || this.gl.isContextLost() || this.reported.has(error)) return;
+    this.reported.add(error);
+    this.onError?.(error);
+  };
+  private compile(recipe: FaceRecipe, finish: Instance['finish'], procedural: boolean) {
+    const key = this.key(recipe, finish, procedural);
+    let entry = this.programs.get(key);
+    if (!entry) {
+      this.compiling++;
+      const next: { promise: Promise<WebGLProgram>; value?: WebGLProgram } = {
+        promise: Promise.resolve().then(() =>
+          programAsync(
+            this.gl,
+            materialFragment(
+              kinds[finish ?? 'regular'],
+              Boolean(recipe.hologram?.strength),
+              procedural,
+            ),
+            vertex,
+            this.lifetime.signal,
+          ),
+        ),
+      };
+      next.promise = next.promise
+        .then((shader) => {
+          if (this.disposed) {
+            if (!this.gl.isContextLost()) this.gl.deleteProgram(shader);
+            throw this.lifetime.signal.reason;
+          }
+          next.value = shader;
+          this.changed();
+          return shader;
+        })
+        .finally(() => this.compiling--);
+      this.programs.set(key, (entry = next));
+    }
+    return entry.promise;
+  }
+  async prepare(recipe: FaceRecipe, list: readonly Instance[], signal?: AbortSignal) {
+    signal?.throwIfAborted();
+    if (this.disposed) throw Error('Device disposed');
+    const pending: Promise<unknown>[] = [];
+    if (!list.length) pending.push(this.compile(recipe, 'regular', false));
+    const seen = new Set<string>();
+    for (const item of list) {
+      const procedural = this.activePrint(item),
+        key = this.key(recipe, item.finish, procedural);
+      if (!seen.has(key)) {
+        seen.add(key);
+        pending.push(this.compile(recipe, item.finish, procedural));
+      }
+    }
+    if (list.some((item) => item.finish === 'pool')) {
+      if (!this.causticsPending) this.compiling++;
+      this.causticsPending ??= Promise.resolve()
+        .then(() => Caustics.create(this.gl, this.lifetime.signal))
+        .then((value) => {
+          if (this.disposed) {
+            if (!this.gl.isContextLost()) value.dispose();
+            throw this.lifetime.signal.reason;
+          }
+          this.caustics = value;
+          this.changed();
+          return value;
+        })
+        .finally(() => this.compiling--);
+      pending.push(this.causticsPending);
+    }
+    if (
+      list.some(
+        (item) => item.finish && item.finish !== 'regular' && (item.cardstock?.amount ?? 0) > 0,
+      )
+    ) {
+      if (!this.cardstockPending) this.compiling++;
+      this.cardstockPending ??= Promise.resolve()
+        .then(() => Cardstock.create(this.gl, this.lifetime.signal))
+        .then((value) => {
+          if (this.disposed) {
+            if (!this.gl.isContextLost()) value.dispose();
+            throw this.lifetime.signal.reason;
+          }
+          this.cardstock = value;
+          this.changed();
+          return value;
+        })
+        .finally(() => this.compiling--);
+      pending.push(this.cardstockPending);
+    }
+    if (list.some((item) => this.activePrint(item))) {
+      if (!this.printedInkPending) this.compiling++;
+      this.printedInkPending ??= Promise.resolve()
+        .then(() => PrintedInk.create(this.gl, this.lifetime.signal))
+        .then((value) => {
+          if (this.disposed) {
+            if (!this.gl.isContextLost()) value.dispose();
+            throw this.lifetime.signal.reason;
+          }
+          this.printedInk = value;
+          this.changed();
+          return value;
+        })
+        .finally(() => this.compiling--);
+      pending.push(this.printedInkPending);
+    }
+    const ready = Promise.all(pending).then(() => {});
+    if (!signal) return ready;
+    await new Promise<void>((resolve, reject) => {
+      const abort = () => reject(signal.reason);
+      signal.addEventListener('abort', abort, { once: true });
+      if (signal.aborted) abort();
+      ready.then(resolve, reject).finally(() => signal.removeEventListener('abort', abort));
+    });
+  }
+  prepareLayers() {
+    if (this.disposed) return Promise.reject(Error('Device disposed'));
+    if (!this.imagePending) this.compiling++;
+    return (this.imagePending ??= Promise.resolve()
+      .then(() => programAsync(this.gl, imageFragment, vertex, this.lifetime.signal))
+      .then((shader) => {
+        if (this.disposed) {
+          if (!this.gl.isContextLost()) this.gl.deleteProgram(shader);
+          throw this.lifetime.signal.reason;
+        }
+        this.image = shader;
+        this.changed();
+        return shader;
+      })
+      .finally(() => this.compiling--));
+  }
+  get pending() {
+    return this.compiling;
+  }
   begin(frame: Frame) {
     this.motion.begin();
-    this.printedInk.beginFrame();
+    this.printedInk?.beginFrame();
     this.frameUniforms.clear();
     const gl = this.gl;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
@@ -192,15 +323,7 @@ export class Device {
       this.frameUniforms.set(shader, frame);
     }
   }
-  draw(material: Material, frame: Frame, list: readonly Instance[]) {
-    const gl = this.gl;
-    if (list.some((item) => item.finish === 'pool')) this.caustics.prepare(frame.time ?? 0);
-    if (
-      list.some(
-        (item) => item.finish && item.finish !== 'regular' && (item.cardstock?.amount ?? 0) > 0,
-      )
-    )
-      this.cardstock.prepare();
+  private printing(material: Material, list: readonly Instance[]) {
     const profile = list[0]?.printDots;
     const settings = printDotValues(profile);
     const homogeneous =
@@ -212,26 +335,35 @@ export class Device {
             printDotValues(item.printDots).every((value, i) => value === settings[i]) &&
             (item.printDots?.artwork !== false) === (profile.artwork !== false),
         ));
-    const printed = homogeneous
-      ? this.printedInk.prepare(
+    return homogeneous
+      ? this.printedInk?.prepare(
           material.face,
           material.overlay,
           profile,
           material.recipe.artWindows,
         )
       : undefined;
-    const procedural =
-      !printed &&
-      list.some(
-        (item) => item.printDots && (item.printDots.amount ?? DEFAULT_PRINT_DOTS.amount) > 0,
-      );
-    const p = material.recipe.hologram?.strength
-      ? procedural
-        ? this.proceduralHolographic
-        : this.holographic
-      : procedural
-        ? this.procedural
-        : this.foil;
+  }
+  draw(material: Material, frame: Frame, list: readonly Instance[]) {
+    const gl = this.gl;
+    const procedural = list.some((item) => this.activePrint(item));
+    const p = this.programs.get(this.key(material.recipe, list[0]?.finish, procedural))?.value;
+    const pool = list.some((item) => item.finish === 'pool');
+    const coated = list.some(
+      (item) => item.finish && item.finish !== 'regular' && (item.cardstock?.amount ?? 0) > 0,
+    );
+    if (
+      !p ||
+      (pool && !this.caustics) ||
+      (coated && !this.cardstock) ||
+      (procedural && !this.printedInk)
+    ) {
+      void this.prepare(material.recipe, list).catch(this.report);
+      return;
+    }
+    if (pool) this.caustics!.prepare(frame.time ?? 0);
+    if (coated) this.cardstock!.prepare();
+    const printed = this.printing(material, list);
     this.bind(p, frame, list, Boolean(printed));
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
@@ -242,9 +374,9 @@ export class Device {
       ['mask', material.mask.texture],
       ['overlay', printed?.top?.texture ?? material.overlay?.texture ?? this.blank],
       ['coverage', material.coverage?.texture ?? this.blank],
-      ['caustics', this.caustics.map],
+      ['caustics', this.caustics?.map ?? this.blank],
       ['hologramMask', material.hologram?.texture ?? this.blank],
-      ['cardstockMap', this.cardstock.map ?? this.blank],
+      ['cardstockMap', this.cardstock?.map ?? this.blank],
     ] as const;
     bindings.forEach(([name, t], i) => {
       gl.activeTexture(gl.TEXTURE0 + i);
@@ -283,6 +415,10 @@ export class Device {
   drawLayer(layer: SceneLayer, image: Texture, frame: Frame) {
     const gl = this.gl,
       p = this.image;
+    if (!p) {
+      void this.prepareLayers().catch(this.report);
+      return;
+    }
     this.bind(p, frame, [{ id: 0, card: 0, transform: layer.transform }]);
     if (layer.depth === 'ignore') gl.disable(gl.DEPTH_TEST);
     else {
@@ -303,26 +439,29 @@ export class Device {
   dispose() {
     if (this.disposed) return;
     this.disposed = true;
+    this.lifetime.abort(new DOMException('Device disposed', 'AbortError'));
     this.motion.clear();
     const gl = this.gl;
-    gl.deleteProgram(this.foil);
-    gl.deleteProgram(this.holographic);
-    gl.deleteProgram(this.procedural);
-    gl.deleteProgram(this.proceduralHolographic);
-    gl.deleteProgram(this.image);
+    if (gl.isContextLost()) return;
+    for (const entry of this.programs.values()) if (entry.value) gl.deleteProgram(entry.value);
+    if (this.image) gl.deleteProgram(this.image);
     gl.deleteVertexArray(this.vao);
     gl.deleteBuffer(this.quad);
     gl.deleteBuffer(this.instances);
     gl.deleteTexture(this.blank);
-    this.caustics.dispose();
-    this.cardstock.dispose();
-    this.printedInk.dispose();
+    this.caustics?.dispose();
+    this.cardstock?.dispose();
+    this.printedInk?.dispose();
   }
   get surfacePasses() {
-    return this.caustics.passes + this.cardstock.passes + this.printedInk.passes;
+    return (
+      (this.caustics?.passes ?? 0) + (this.cardstock?.passes ?? 0) + (this.printedInk?.passes ?? 0)
+    );
   }
   get surfaceBytes() {
-    return this.caustics.bytes + this.cardstock.bytes + this.printedInk.bytes;
+    return (
+      (this.caustics?.bytes ?? 0) + (this.cardstock?.bytes ?? 0) + (this.printedInk?.bytes ?? 0)
+    );
   }
   end() {
     this.motion.end();

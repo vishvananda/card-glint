@@ -1,4 +1,5 @@
-import { program, texture } from './etcher.js';
+import { program, programAsync, texture } from './etcher.js';
+import { withFinishTextureState } from '../finish-texture-state.js';
 
 const width = 732,
   height = 1020;
@@ -35,8 +36,22 @@ export class Cardstock {
   bytes = 0;
   passes = 0;
   private shader: WebGLProgram;
-  constructor(private gl: WebGL2RenderingContext) {
-    this.shader = program(gl, fragment, vertex)!;
+  static async create(gl: WebGL2RenderingContext, signal?: AbortSignal): Promise<Cardstock> {
+    const shader = await programAsync(gl, fragment, vertex, signal);
+    try {
+      signal?.throwIfAborted();
+      if (gl.isContextLost()) throw Error('Context lost during cardstock preparation');
+      return withFinishTextureState(gl, () => new Cardstock(gl, shader));
+    } catch (error) {
+      gl.deleteProgram(shader);
+      throw error;
+    }
+  }
+  constructor(
+    private gl: WebGL2RenderingContext,
+    shader?: WebGLProgram,
+  ) {
+    this.shader = shader ?? program(gl, fragment, vertex)!;
   }
   prepare() {
     if (this.map) return;

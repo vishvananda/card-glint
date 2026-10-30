@@ -1,4 +1,5 @@
-import { program, texture } from './etcher.js';
+import { program, programAsync, texture } from './etcher.js';
+import { withFinishTextureState } from '../finish-texture-state.js';
 import { PRINT_DOTS_GLSL } from './print-dots.js';
 import { textureMipBytes, type Texture } from './textures.js';
 import type { Instance, Rect } from '../types.js';
@@ -56,10 +57,32 @@ export class PrintedInk {
   private frame = 0;
   bytes = 0;
   passes = 0;
-  constructor(private gl: WebGL2RenderingContext) {
-    this.shader = program(gl, fragment, vertex)!;
-    this.framebuffer = gl.createFramebuffer()!;
-    this.vao = gl.createVertexArray()!;
+  static async create(gl: WebGL2RenderingContext, signal?: AbortSignal): Promise<PrintedInk> {
+    const shader = await programAsync(gl, fragment, vertex, signal);
+    try {
+      signal?.throwIfAborted();
+      if (gl.isContextLost()) throw Error('Context lost during printing preparation');
+      return withFinishTextureState(gl, () => new PrintedInk(gl, shader));
+    } catch (error) {
+      gl.deleteProgram(shader);
+      throw error;
+    }
+  }
+  constructor(
+    private gl: WebGL2RenderingContext,
+    shader?: WebGLProgram,
+  ) {
+    this.shader = shader ?? program(gl, fragment, vertex)!;
+    const framebuffer = gl.createFramebuffer();
+    const vao = gl.createVertexArray();
+    if (!framebuffer || !vao) {
+      gl.deleteFramebuffer(framebuffer);
+      gl.deleteVertexArray(vao);
+      if (!shader) gl.deleteProgram(this.shader);
+      throw Error('Printing resources unavailable');
+    }
+    this.framebuffer = framebuffer;
+    this.vao = vao;
   }
   /** Protect the active working set. Overflow uses the existing procedural path
    * instead of evicting and rebuilding the same printing on every frame. */

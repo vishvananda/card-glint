@@ -29,31 +29,93 @@ const combine =
   `uniform usampler2D strength;uniform usampler2D softened;out vec4 color;
 void main(){ivec2 p=ivec2(gl_FragCoord.xy);uint a=min(255u,max(texelFetch(strength,p,0).r,texelFetch(softened,p,0).r)*2u);color=vec4(float(a)/255.,0.,0.,1.);}`;
 
-export function program(gl, fragment, vs = vertex) {
+function link(gl, fragment, vs) {
   const shaders = [],
     p = gl.createProgram();
+  if (!p) throw Error('WebGL program allocation failed');
   try {
     for (const [kind, source] of [
       [gl.VERTEX_SHADER, vs],
       [gl.FRAGMENT_SHADER, fragment],
     ]) {
       const shader = gl.createShader(kind);
+      if (!shader) throw Error('WebGL shader allocation failed');
       shaders.push(shader);
       gl.shaderSource(shader, source);
       gl.compileShader(shader);
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
-        throw Error(gl.getShaderInfoLog(shader));
       gl.attachShader(p, shader);
     }
     gl.linkProgram(p);
-    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw Error(gl.getProgramInfoLog(p));
-    return p;
+    return { p, shaders };
   } catch (error) {
     gl.deleteProgram(p);
     throw error;
   } finally {
-    for (const s of shaders) gl.deleteShader(s);
+    for (const shader of shaders) gl.deleteShader(shader);
   }
+}
+function linked(gl, p, shaders) {
+  if (gl.getProgramParameter(p, gl.LINK_STATUS)) return p;
+  const details = shaders.map((shader) => gl.getShaderInfoLog(shader)).filter(Boolean);
+  throw Error([gl.getProgramInfoLog(p), ...details].filter(Boolean).join('\n'));
+}
+export function program(gl, fragment, vs = vertex) {
+  const { p, shaders } = link(gl, fragment, vs);
+  try {
+    return linked(gl, p, shaders);
+  } catch (error) {
+    gl.deleteProgram(p);
+    throw error;
+  }
+}
+/**
+ * @param {AbortSignal} [signal]
+ * @returns {Promise<WebGLProgram>}
+ */
+export function programAsync(gl, fragment, vs = vertex, signal) {
+  if (signal?.aborted) return Promise.reject(signal.reason);
+  if (gl.isContextLost()) return Promise.reject(Error('Graphics context is lost'));
+  return new Promise((resolve, reject) => {
+    const extension = gl.getExtension('KHR_parallel_shader_compile');
+    let pending, timer;
+    const cleanup = () => {
+      clearTimeout(timer);
+      signal?.removeEventListener('abort', abort);
+      gl.canvas.removeEventListener('webglcontextlost', lost);
+    };
+    const fail = (error) => {
+      cleanup();
+      if (pending && !gl.isContextLost()) gl.deleteProgram(pending.p);
+      pending = undefined;
+      reject(error);
+    };
+    const abort = () => fail(signal.reason);
+    const lost = () => fail(new DOMException('Graphics context is lost', 'AbortError'));
+    const poll = () => {
+      if (signal?.aborted) return abort();
+      if (gl.isContextLost()) return lost();
+      try {
+        if (extension && !gl.getProgramParameter(pending.p, extension.COMPLETION_STATUS_KHR)) {
+          timer = setTimeout(poll, 8);
+          return;
+        }
+        const shader = linked(gl, pending.p, pending.shaders);
+        cleanup();
+        pending = undefined;
+        resolve(shader);
+      } catch (error) {
+        fail(error);
+      }
+    };
+    signal?.addEventListener('abort', abort, { once: true });
+    gl.canvas.addEventListener('webglcontextlost', lost, { once: true });
+    try {
+      pending = link(gl, fragment, vs);
+      timer = setTimeout(poll, 0);
+    } catch (error) {
+      fail(error);
+    }
+  });
 }
 export function texture(gl, w, h, internal = gl.R8, format = gl.RED, type = gl.UNSIGNED_BYTE) {
   const t = gl.createTexture();

@@ -38,11 +38,15 @@ studioVirtual=viewProjection==mat4(1.)?1.:0.;
 vec4 eye=inverse(viewProjection)*vec4(0.,0.,1.,0.);
 studioCamera=abs(eye.w)>.00001?vec4(eye.xyz/eye.w,1.):vec4(normalize(eye.xyz),0.);
 gl_Position=viewProjection*world;}`;
-const foil = foilShader()
-  .replace('uniform float previewKind;', 'flat in float previewKind;')
-  .replaceAll('texture2D(mask,uv).r*hasMask', 'edgeCoverage(uv)')
-  .replaceAll('texture2D(face,', 'printFace(');
-export const fragment = `#version 300 es
+export function materialFragment(finish: number, hologram: boolean, procedural: boolean) {
+  const liquid = finish >= 5 && finish < 8;
+  const foil = foilShader()
+    .replace('uniform float previewKind;', `const float previewKind=${finish.toFixed(1)};`)
+    .replaceAll('texture2D(mask,uv).r*hasMask', 'edgeCoverage(uv)')
+    .replaceAll('texture2D(face,', 'printFace(');
+  return `#version 300 es
+${hologram ? '#define LOCAL_HOLOGRAM' : ''}
+${procedural ? '#define PROCEDURAL_PRINT' : ''}
 precision highp float;
 in vec2 v_uv;in vec3 v_normal;flat in vec2 wearInfo;
 in vec3 studioPosition;flat in vec4 studioCamera;flat in float studioVirtual;
@@ -64,7 +68,7 @@ ${PRINT_DOTS_GLSL}
 #else
 vec4 printFace(vec2 uv){return texture(face,uv);}
 #endif
-${SURFACE_GLSL.replaceAll('texture(face,', 'printFace(')}
+${liquid ? SURFACE_GLSL.replaceAll('texture(face,', 'printFace(') : 'uniform float surfaceTime;flat in vec4 surfaceInfo;'}
 ${DEFORMATION_GLSL}
 ${WORN_GLSL}
 #ifdef LOCAL_HOLOGRAM
@@ -96,7 +100,7 @@ void main(){
  if(studioLighting>.5)view=studioVirtual>.5?studioCardView(uv,normalize(v_normal)):normalize(studioCamera.xyz-studioPosition*studioCamera.w);
  vec3 optical;
  if(previewKind==8. && studioVirtual<.5 && studioLighting>.5)optical=studioGloss(previewInk(printFace(uv).rgb),normalize(v_normal),normalize(studioCamera.xyz-studioPosition*studioCamera.w),studioPosition);
- else optical=previewKind>=5. && previewKind<8. ? animatedSurface(uv,normalize(v_normal)) : previewFoil(uv,normalize(v_normal),view);
+ else optical=${liquid ? 'animatedSurface(uv,normalize(v_normal))' : 'previewFoil(uv,normalize(v_normal),view)'};
  vec3 shaded=previewLinear(optical);
  vec3 base=printFace(uv).rgb;
  if(cardstockAmount>0. && previewKind>.5)shaded=previewLinear(cardstockGloss(uv,previewInk(base),previewInk(shaded)));
@@ -130,18 +134,7 @@ void main(){
  out_color=vec4(printed,1.);
 #endif
 }`;
-export const hologramFragment = fragment.replace(
-  '#version 300 es',
-  '#version 300 es\n#define LOCAL_HOLOGRAM',
-);
-export const proceduralFragment = fragment.replace(
-  '#version 300 es',
-  '#version 300 es\n#define PROCEDURAL_PRINT',
-);
-export const proceduralHologramFragment = hologramFragment.replace(
-  '#version 300 es',
-  '#version 300 es\n#define PROCEDURAL_PRINT',
-);
+}
 export const imageFragment = `#version 300 es
 precision highp float;in vec2 v_uv;uniform sampler2D face;out vec4 out_color;
 void main(){out_color=texture(face,vec2(v_uv.x,1.-v_uv.y));if(out_color.a<.001)discard;}`;

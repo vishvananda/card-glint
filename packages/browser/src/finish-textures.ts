@@ -1,3 +1,4 @@
+import { Caustics } from './gpu/caustics.js';
 import { Cardstock } from './gpu/cardstock.js';
 import { texture } from './gpu/etcher.js';
 import { PrintedInk } from './gpu/printed-ink.js';
@@ -15,7 +16,7 @@ export interface FinishTextureSource {
   readonly layer?: number;
 }
 
-/** A complete, clamped TEXTURE_2D with trilinear mipmaps and linear magnification. */
+/** A level-zero TEXTURE_2D; filtering, format and ownership depend on its producer. */
 export interface FinishTexture {
   readonly texture: WebGLTexture;
   readonly width: number;
@@ -24,17 +25,23 @@ export interface FinishTexture {
 
 /** Native GPU preparation in a host-owned context. No context creation, uploads
  * or readPixels. Cache results outside animation, by immutable source/settings.
- * Printing textures belong to the caller; the shared cardstock belongs to this
- * owner. After context loss, dispose and create a new owner and source textures. */
+ * Printing textures belong to the caller; shared cardstock and caustics belong to
+ * this owner. After context loss, dispose and recreate this owner and sources. */
 export class FinishTextures {
   private ink?: PrintedInk;
   private stock?: Cardstock;
   private stockMap?: FinishTexture;
+  private pool?: Caustics;
+  private poolMap?: FinishTexture;
+  private poolTime = NaN;
+  private warming?: Promise<void>;
+  private warmupController?: AbortController;
   private sampler?: WebGLSampler;
   private disposed = false;
   private lost = false;
   private onLost = () => {
     this.lost = true;
+    this.warmupController?.abort();
   };
 
   constructor(private readonly gl: WebGL2RenderingContext) {
@@ -45,6 +52,54 @@ export class FinishTextures {
   private available() {
     if (this.disposed || this.lost || this.gl.isContextLost())
       throw Error('Finish textures unavailable; recreate after context loss');
+  }
+
+  async ready(signal?: AbortSignal): Promise<void> {
+    this.available();
+    signal?.throwIfAborted();
+    if (this.ink && this.stock && this.pool) return;
+    if (!this.warming) {
+      const controller = new AbortController();
+      this.warmupController = controller;
+      this.warming = this.warm(controller.signal).finally(() => {
+        this.warming = undefined;
+        this.warmupController = undefined;
+      });
+    }
+    let abort: (() => void) | undefined;
+    try {
+      if (signal) {
+        await new Promise<void>((resolve, reject) => {
+          abort = () => reject(signal.reason ?? new DOMException('Aborted', 'AbortError'));
+          signal.addEventListener('abort', abort, { once: true });
+          this.warming!.then(resolve, reject);
+        });
+      } else await this.warming;
+      signal?.throwIfAborted();
+      this.available();
+    } finally {
+      if (abort) signal?.removeEventListener('abort', abort);
+    }
+  }
+
+  private async warm(signal: AbortSignal): Promise<void> {
+    const accept = <T extends { dispose(): void }>(helper: T, current?: T): T => {
+      try {
+        signal.throwIfAborted();
+        this.available();
+        if (current) {
+          helper.dispose();
+          return current;
+        }
+        return helper;
+      } catch (error) {
+        if (!this.lost && !this.gl.isContextLost()) helper.dispose();
+        throw error;
+      }
+    };
+    if (!this.ink) this.ink = accept(await PrintedInk.create(this.gl, signal), this.ink);
+    if (!this.stock) this.stock = accept(await Cardstock.create(this.gl, signal), this.stock);
+    if (!this.pool) this.pool = accept(await Caustics.create(this.gl, signal), this.pool);
   }
 
   /** Allocate one caller-owned SRGB8_ALPHA8 printing texture. Delete it with
@@ -130,6 +185,20 @@ export class FinishTextures {
     });
   }
 
+  caustics(time: number): FinishTexture {
+    this.available();
+    time = Math.fround(time);
+    if (!Number.isFinite(time) || time < 0) throw Error('Invalid caustics time');
+    if (this.poolMap && this.poolTime === time) return this.poolMap;
+    return withFinishTextureState(this.gl, () => {
+      this.pool ??= new Caustics(this.gl);
+      this.pool.prepare(time);
+      this.available();
+      this.poolTime = time;
+      return (this.poolMap ??= { texture: this.pool.map, width: 512, height: 512 });
+    });
+  }
+
   private copyLayer(source: FinishTextureSource): WebGLTexture {
     const gl = this.gl;
     const framebuffer = gl.createFramebuffer();
@@ -158,20 +227,24 @@ export class FinishTextures {
     }
   }
 
-  /** Releases helper programs, scratch resources and borrowed cardstock only. */
+  /** Releases helper programs, scratch resources and borrowed maps only. */
   dispose() {
     if (this.disposed) return;
     this.disposed = true;
+    this.warmupController?.abort();
     this.gl.canvas.removeEventListener('webglcontextlost', this.onLost);
     // Lost-context objects are already released and must not be submitted to a
     // restored context. Only this context generation's live handles need deletion.
     if (!this.lost && !this.gl.isContextLost()) {
       this.ink?.dispose();
       this.stock?.dispose();
+      this.pool?.dispose();
       this.gl.deleteSampler(this.sampler ?? null);
     }
     this.ink = undefined;
     this.stock = undefined;
+    this.pool = undefined;
+    this.poolMap = undefined;
     this.sampler = undefined;
     this.stockMap = undefined;
   }
