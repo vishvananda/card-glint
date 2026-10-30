@@ -1,3 +1,7 @@
+import {
+  originalSymbolPlacementRuntimeParent,
+  preModernSymbolPlacementSource,
+} from './modern-symbol-placement-ancestry.mjs';
 import { onsSymbolStatsAffected, onsSymbolStatsDelta } from './ons-symbol-stats-ancestry.mjs';
 import { arnSymbolRoleRuntimeParent } from './arn-symbol-role-ancestry.mjs';
 import { oldFrameAdoptionAffected, oldFrameAdoptionDelta } from './old-frame-adoption-ancestry.mjs';
@@ -488,6 +492,11 @@ export async function calibrationReport(ledger) {
             runtimeChecked.get(directory) !== expected &&
             !(
               directory === 'games/magic/src' &&
+              (await originalSymbolPlacementRuntimeParent(runtimeChecked.get(directory))) ===
+                expected
+            ) &&
+            !(
+              directory === 'games/magic/src' &&
               (await arnSymbolRoleRuntimeParent(
                 runtimeChecked.get(directory),
                 set.set,
@@ -637,6 +646,9 @@ export async function calibrationReport(ledger) {
                   ]),
                 );
               }
+              // Preserve the newest Original proof as well as older regional
+              // ancestors; older projections can legitimately rewind past it.
+              checked.get(guardKey).add(hash(await preModernSymbolPlacementSource(file, bytes)));
             } catch (error) {
               if (error.code !== 'ENOENT') throw error;
               checked.set(guardKey, null);
