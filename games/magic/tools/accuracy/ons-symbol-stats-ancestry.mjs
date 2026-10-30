@@ -1,4 +1,8 @@
 // Exact regional source compatibility; this never certifies a set or a donor fit.
+import {
+  preModernSymbolPlacementSource,
+  originalSymbolPlacementRuntimeParent,
+} from './modern-symbol-placement-ancestry.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -63,6 +67,7 @@ export function onsSymbolStatsDelta() {
   })());
 }
 export async function preOnsSymbolStatsSource(file, bytes) {
+  bytes = await preModernSymbolPlacementSource(file, bytes);
   const e = (await onsSymbolStatsDelta()).files[file];
   return e && e.beforeSource !== null && hash(bytes) === e.after
     ? Buffer.from(e.beforeSource)
@@ -105,6 +110,7 @@ export async function onsSymbolStatsAffected(set, task, original = false, group)
   return group.printingIds.some((id) => changed.has(id));
 }
 export async function onsSymbolStatsRuntimeParent(actual, set, task, original = false, group) {
+  if (set) actual = await originalSymbolPlacementRuntimeParent(actual);
   const p = await onsSymbolStatsDelta();
   const changed =
     set?.toLowerCase() === 'ons' &&

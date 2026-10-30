@@ -98,10 +98,7 @@ try {
       }
 
       if (override.frameStyle === 'modern') assert.notDeepEqual(printingManaDefaults(alternate), p);
-      else if (
-        setCode === 'arn' &&
-        (override.symbolStyle === 'modern' || override.wordingMode === 'oracle')
-      ) {
+      else if (override.symbolStyle === 'modern' || override.wordingMode === 'oracle') {
         // Modern glyphs retain the measured frame placement, without the
         // historical numeral or colored-glyph transforms.
         const { dx, dy, scaleX, scaleY, spacing } = p;

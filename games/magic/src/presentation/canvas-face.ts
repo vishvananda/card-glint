@@ -336,9 +336,17 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
     face.collectorSetCode,
     ...(face.calibration !== undefined ? [['printing-calibration-v1', face.calibration]] : []),
   ];
-  const printingOptions = options.some((v) => v !== undefined)
-    ? [['printing-elements-v1', ...options]]
-    : [];
+  const printingOptions = [
+    ...(options.some((v) => v !== undefined) ? [['printing-elements-v1', ...options]] : []),
+    // Recursion below also versions split/child faces. Original and etching
+    // keys retain their exact previous identity.
+    ...(!mask &&
+    isRetro(face) &&
+    (face.symbolStyle === 'modern' ||
+      (face.symbolStyle === undefined && face.wordingMode === 'oracle'))
+      ? [['modern-retro-cost-geometry-v1']]
+      : []),
+  ];
   const panels = splitPanels(face);
   if (panels.length)
     return [

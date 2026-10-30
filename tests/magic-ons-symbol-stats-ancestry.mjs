@@ -9,8 +9,15 @@ import {
   onsSymbolStatsRuntimeParent,
   preOnsSymbolStatsSource,
 } from '../games/magic/tools/accuracy/ons-symbol-stats-ancestry.mjs';
+import {
+  preModernSymbolPlacementSource,
+  originalSymbolPlacementRuntimeParent,
+} from '../games/magic/tools/accuracy/modern-symbol-placement-ancestry.mjs';
 const p = await onsSymbolStatsDelta();
-assert.equal(await sourceHash(path.join(root, 'games/magic/src')), p.afterRenderer);
+assert.equal(
+  await originalSymbolPlacementRuntimeParent(await sourceHash(path.join(root, 'games/magic/src'))),
+  p.afterRenderer,
+);
 const entries = (
   await fs.readdir(path.join(root, 'games/magic/src'), { recursive: true, withFileTypes: true })
 )
@@ -27,7 +34,10 @@ for (const file of await onsSymbolStatsHistoricalFiles(entries)) {
 }
 assert.equal(hash(JSON.stringify(projected)), p.beforeRenderer);
 for (const [file, e] of Object.entries(p.files)) {
-  const bytes = await fs.readFile(path.join(root, file));
+  const bytes = await preModernSymbolPlacementSource(
+    file,
+    await fs.readFile(path.join(root, file)),
+  );
   assert.equal(hash(bytes), e.after, file);
   const foreign = Buffer.concat([bytes, Buffer.from('\n// unrelated edit\n')]);
   assert.equal(await preOnsSymbolStatsSource(file, foreign), foreign);

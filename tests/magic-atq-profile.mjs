@@ -46,7 +46,10 @@ try {
   assert.equal(earlyReprintFooter(face).stats.shadowTrim, 0.2);
   assert.deepEqual(p.mana.ink, [23 / 255, 24 / 255, 18 / 255]);
   assert.equal(printingManaDefaults(face).dy, -7.75);
-  assert.equal(printingManaDefaults({ ...face, symbolStyle: 'modern' }), undefined);
+  const modernCost = printingManaDefaults({ ...face, symbolStyle: 'modern' });
+  assert.equal(modernCost.dy, -7.75);
+  assert.equal(modernCost.glyphs, undefined);
+  assert.equal(modernCost.numberScale, undefined);
   assert.equal(historicalManaPaperSample(face, 'B'), undefined);
   assert.match(faceSetSymbol(face), /\/atq\.svg$/);
   assert.equal(faceSetSymbol(face), faceEtchingSymbol(face));

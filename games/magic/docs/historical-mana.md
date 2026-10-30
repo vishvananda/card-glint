@@ -146,3 +146,20 @@ scope; they are not scan-accuracy scores. The separate regional studies retain
 reused validation cohorts, color regressions and thin-glyph exclusions. Original
 wording was supplied to both sides of this replay. Remaining symbol, typography
 and whole-card gates stay open for the grouped release.
+
+## Modern symbols on historical frames
+
+Selecting modern symbols changes the glyph treatment, not the printed frame's
+mana-cost anchors. The renderer keeps the historical cost's measured position,
+disc size and pitch, then applies caller adjustments. It does not copy vintage
+glyph offsets, numeral fitting or pigment colors into modern symbols.
+
+Run the configuration audit against an existing source checkout:
+
+    node games/magic/tools/accuracy/symbol-placement-audit.mjs BASELINE_ROOT REPORT.json
+
+For native image controls, use symbol-mode-placement-replay.mjs with prepared
+printing inputs and the existing accuracy asset cache. The frozen review in
+fixtures/accuracy/modern-symbol-placement/review.json.gz records the 0.7.8
+audit, exact source hashes and synthetic controls. Configuration coverage and
+native controls do not certify a set's scan accuracy.
