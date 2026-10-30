@@ -25,7 +25,6 @@ window.exampleReady = (async () => {
       ),
     },
   ]);
-  await renderer.ready(1, 1);
   renderer.updateScene([
     {
       id: 1,

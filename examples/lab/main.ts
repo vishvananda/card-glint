@@ -150,8 +150,6 @@ const ready = (async () => {
   });
   resize();
   renderer.upsertCards(documents);
-  await Promise.all(documents.map((d) => renderer.ready(d.id, d.revision)));
-  status.textContent = 'Hover or drag a card to tilt it. Swipe beside or between cards to scroll.';
   const input = new ShowcaseInput(
     surface,
     (x, y) => renderer.hitTest(x, y),
@@ -343,6 +341,7 @@ const ready = (async () => {
   );
   renderer.updateScene(instances());
   await Promise.all(documents.map((d) => renderer.ready(d.id, d.revision)));
+  status.textContent = 'Hover or drag a card to tilt it. Swipe beside or between cards to scroll.';
   renderer.render({ viewProjection: IDENTITY });
   return renderer;
 })();

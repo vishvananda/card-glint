@@ -193,7 +193,6 @@ renderer.upsertCards([
     ),
   },
 ]);
-await renderer.ready(1, 1);
 // Local unit quad → clip space; this example assumes a 720 × 1000 canvas.
 renderer.updateScene([
   {
