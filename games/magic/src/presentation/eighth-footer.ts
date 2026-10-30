@@ -1,4 +1,4 @@
-import { measureFontText, paintFontText } from './font-geometry.js';
+import { measureFontText, paintFontText, setFont } from './font-geometry.js';
 import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
@@ -85,7 +85,7 @@ export function paintEighthFooter(
       c.shadowOffsetY = 0.0015 * 680;
     }
     const statsFont = planarStatsFont(face, source);
-    c.font = `700 29px "${statsFont ?? 'CardRenderer MTG Matrix Small Caps'}", Georgia`;
+    setFont(c, `700 29px "${statsFont ?? 'CardRenderer MTG Matrix Small Caps'}", Georgia`);
     c.textAlign = 'center';
     c.textBaseline = 'middle';
     const text = `${face.power}/${face.toughness}`;
@@ -135,7 +135,7 @@ export function paintEighthFooter(
       const brush = images.get(brushUrl);
       if (!brush) throw Error(`Eighth Edition artist brush unavailable: ${brushUrl}`);
       c.drawImage(brush, 36.5, artistBaseline - 10, artistX - 39, 13.5);
-      c.font = `700 ${artistFit || early ? 17.5 : 18}px "CardRenderer MTG Matrix", Georgia`;
+      setFont(c, `700 ${artistFit || early ? 17.5 : 18}px "CardRenderer MTG Matrix", Georgia`);
       // Keep long credits out of the badge; do not silently remove their wording.
       const right = face.power != null && face.toughness != null ? 350 : 448;
       if (artistFit) {
@@ -153,7 +153,7 @@ export function paintEighthFooter(
     number = printingCollectorText(face, false);
   c.save();
   transformPlanarFooter(c, face, source, 'legal');
-  c.font = '10px "CardRenderer MTG MPlantin", Georgia';
+  setFont(c, '10px "CardRenderer MTG MPlantin", Georgia');
   // Keep the original single call unless independent movement is requested.
   if (!face.printingElements?.collector?.offset && !face.printingElements?.legal?.offset) {
     const line = [legal, number].filter(Boolean).join(' ');

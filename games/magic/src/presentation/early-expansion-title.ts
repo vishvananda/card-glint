@@ -1,3 +1,4 @@
+import { setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { resolveFrameColors } from './profile.js';
@@ -43,7 +44,7 @@ export function paintEarlyExpansionTitle(
   c.save();
   c.translate(p.x, p.y);
   c.scale(p.width, 1);
-  c.font = `${p.size}px "CardRenderer MTG Goudy", Georgia`;
+  setFont(c, `${p.size}px "CardRenderer MTG Goudy", Georgia`);
   const width = Math.max(1, (right - p.x) / p.width);
   paintSolidTitle(c, face.name, 0, 0, width, p);
   c.restore();

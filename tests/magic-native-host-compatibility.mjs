@@ -1,3 +1,4 @@
+import { fontGeometryHistory } from '../games/magic/tools/accuracy/font-geometry-ancestry.mjs';
 import {
   arnProfileDelta,
   arnHistoricalSourceFiles,
@@ -316,6 +317,7 @@ async function verify() {
     new Set([...consolidation.newModules, ...alphaEditor.newModules]),
   );
   const arn = await arnProfileDelta();
+  const fontGeometry = await fontGeometryHistory();
   const historicalFiles = (
     await arnHistoricalSourceFiles(
       (await sourceFiles(path.join(currentRoot, nativeDirectory))).map(
@@ -386,6 +388,7 @@ async function verify() {
         async load(id) {
           const relative = path.relative(currentRoot, id.split('?')[0]);
           if (
+            Object.hasOwn(fontGeometry.files, relative) ||
             (arn.files[relative]?.beforeSource !== null && Object.hasOwn(arn.files, relative)) ||
             Object.hasOwn(eighth.files, relative) ||
             Object.hasOwn(modernStyles.files, relative) ||

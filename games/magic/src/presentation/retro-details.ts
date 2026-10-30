@@ -1,4 +1,4 @@
-import { measureFontText, paintFontText } from './font-geometry.js';
+import { measureFontText, paintFontText, setFont } from './font-geometry.js';
 import { usesFourthDefaults } from '../calibration/selection.js';
 import {
   type CanvasContext,
@@ -133,7 +133,7 @@ function paintTap(
   c.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
   c.fill();
   c.fillStyle = '#0d0f0f';
-  c.font = `${size * fontScale}px "CardRenderer MTG Historic Symbols"`;
+  setFont(c, `${size * fontScale}px "CardRenderer MTG Historic Symbols"`);
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
   const m = measureFontText(c, glyph);
@@ -218,13 +218,13 @@ export function paintRetroCredits(
       c.fillStyle = '#f2eee3';
       c.shadowColor = '#000';
       c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
-      c.font = `${details.artistSize}px "CardRenderer MTG MPlantin", Georgia`;
+      setFont(c, `${details.artistSize}px "CardRenderer MTG MPlantin", Georgia`);
       paintFontText(c, `Illus. ${face.artist}`, details.artistX, details.artistBaseline, 338);
     }
   });
   c.shadowColor = 'transparent';
   c.fillStyle = details.legalLight ? '#f2eee3' : '#17140f';
-  c.font = `${details.legalSize}px "CardRenderer MTG MPlantin", Georgia`;
+  setFont(c, `${details.legalSize}px "CardRenderer MTG MPlantin", Georgia`);
   if (details.legalText)
     paintPrintingElement(c, face, 'legal', () =>
       paintFontText(c, details.legalText!, details.artistX, details.legalBaseline, 380),

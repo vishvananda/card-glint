@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
-import { createHash } from 'node:crypto';
-import { chromium, webkit } from 'playwright';
+import { fontBytes } from './magic-font-assets.mjs';
+import { chromium, webkit, firefox } from 'playwright';
 import { createServer } from './magic-vite.mjs';
 const fonts = JSON.parse(
   await fs.readFile('games/magic/src/presentation/font-geometry.json', 'utf8'),
@@ -11,26 +11,8 @@ const fonts = JSON.parse(
 const cache = process.env.CARD_GLINT_FONT_CACHE || path.join(os.tmpdir(), 'card-glint-fonts');
 await fs.mkdir(cache, { recursive: true });
 const bytes = new Map();
-for (const f of fonts) {
-  const file = path.join(cache, f.sha256);
-  let value;
-  try {
-    value = await fs.readFile(file);
-  } catch {
-    const r = await fetch(f.source, {
-      headers: { 'User-Agent': 'card-glint-font-geometry-test/1' },
-    });
-    if (!r.ok) throw Error('Font request failed: ' + f.family + ' ' + r.status);
-    value = Buffer.from(await r.arrayBuffer());
-    await fs.writeFile(file, value);
-  }
-  assert.equal(
-    createHash('sha256').update(value).digest('hex'),
-    f.sha256,
-    'Changed font bytes: ' + f.family,
-  );
-  bytes.set(f.sha256, value);
-}
+for (const f of fonts) bytes.set(f.sha256, await fontBytes(f, cache));
+
 const server = await createServer({
   configFile: false,
   optimizeDeps: { noDiscovery: true },
@@ -76,7 +58,7 @@ try {
     'Every registered face needs reviewed geometry',
   );
   for (const name of (process.env.FONT_ENGINES || 'chromium,webkit').split(',')) {
-    const engine = { chromium, webkit }[name];
+    const engine = { chromium, webkit, firefox }[name];
     assert(engine, 'Unknown font test engine');
     const browser = await engine.launch({
       headless: true,
@@ -135,6 +117,40 @@ try {
               ),
             );
         }
+      }
+      if (name === 'chromium') {
+        const workerResult = await page.evaluate(
+          (options) =>
+            new Promise((resolve, reject) => {
+              const worker = new Worker('/tests/fixtures/magic-font-geometry-worker.mjs', {
+                type: 'module',
+              });
+              const timer = setTimeout(() => {
+                worker.terminate();
+                reject(Error('Font worker timed out'));
+              }, 60000);
+              worker.onmessage = ({ data }) => {
+                clearTimeout(timer);
+                worker.terminate();
+                if (data.error) reject(Error(data.error));
+                else resolve(data.result);
+              };
+              worker.onerror = (e) => {
+                clearTimeout(timer);
+                worker.terminate();
+                reject(Error(e.message));
+              };
+              worker.postMessage(options);
+            }),
+          options,
+        );
+        assert.deepEqual(workerResult.wraps, actual.wraps, 'Document/worker wrapping differs');
+        assert.deepEqual(workerResult.rows, actual.rows, 'Document/worker font geometry differs');
+        console.log(
+          'Worker FontFaceSet and OffscreenCanvas match all ' +
+            actual.rows.length +
+            ' document cases',
+        );
       }
       output.engines.push({ name, rows: actual.rows.length, wraps: actual.wraps.length });
       console.log(

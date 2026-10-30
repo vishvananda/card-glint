@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { AbilityEmblem } from '../emblems.js';
 import { FACE_HEIGHT, FACE_WIDTH, type RenderedCardInput } from './face-layout.js';
@@ -63,7 +63,10 @@ export function paintCardStatus(
     context.fill();
     context.stroke();
   }
-  context.font = `bold ${FACE_WIDTH * (inspection ? 0.0625 : 0.13)}px "CardRenderer MTG Beleren", Georgia, serif`;
+  setFont(
+    context,
+    `bold ${FACE_WIDTH * (inspection ? 0.0625 : 0.13)}px "CardRenderer MTG Beleren", Georgia, serif`,
+  );
   context.fillStyle = '#17140f';
   context.textAlign = 'center';
   context.textBaseline = 'middle';

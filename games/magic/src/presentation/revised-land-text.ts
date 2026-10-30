@@ -1,3 +1,4 @@
+import { setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput, RulesParagraph, CardTextInk } from './face-layout.js';
 import { layoutRules, type RulesLayout } from './rules-layout.js';
@@ -45,7 +46,7 @@ export function paintRevisedLandText(
   c.save();
   c.translate(p.x, p.y);
   c.scale(p.width, 1);
-  c.font = `${p.size}px "CardRenderer MTG ${kind === 'title' ? 'Goudy' : 'MPlantin'}", Georgia`;
+  setFont(c, `${p.size}px "CardRenderer MTG ${kind === 'title' ? 'Goudy' : 'MPlantin'}", Georgia`);
   c.textAlign = 'left';
   c.textBaseline = kind === 'artist' ? 'alphabetic' : 'middle';
   paintRetroGrayText(

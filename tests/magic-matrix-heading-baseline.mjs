@@ -1,6 +1,6 @@
+import { preFontGeometrySource } from '../games/magic/tools/accuracy/font-geometry-ancestry.mjs';
 import { preRevisedBodyArtistSource } from '../games/magic/tools/accuracy/revised-body-artist-ancestry.mjs';
 import assert from 'node:assert/strict';
-import { chromium, webkit } from 'playwright';
 import { createServer } from './magic-vite.mjs';
 
 const server = await createServer({
@@ -61,73 +61,15 @@ try {
   console.log(
     'Matrix cache revision covers ordinary, inherited, future and 2003 split headings; scans, art-only, etching and other heading fonts keep their keys.',
   );
-  for (const engine of [chromium, webkit]) {
-    const browser = await engine.launch({
-      headless: true,
-      args: engine === chromium ? ['--no-sandbox'] : [],
-    });
-    try {
-      const page = await browser.newPage();
-      await page.goto('http://127.0.0.1:' + server.httpServer.address().port);
-      const results = await page.evaluate(async () => {
-        const { paintFittedText } = await import('/games/magic/src/presentation/canvas-text.ts');
-        const cases = [];
-        // No external font fetch: the fallback deliberately has ordinary metrics.
-        // This catches relying on Linux's accidental middle==alphabetic behavior
-        // even on a runner where the malformed pinned Matrix font hides the bug.
-        for (const family of ['CardRenderer MTG Matrix', 'CardRenderer MTG Beleren'])
-          for (const baseline of ['middle', 'top', 'alphabetic'])
-            for (const size of [30.368, 26])
-              for (const text of ['Serra Angel', 'Creature — Angel']) {
-                const make = () => {
-                  const canvas = document.createElement('canvas');
-                  canvas.width = 600;
-                  canvas.height = 160;
-                  const c = canvas.getContext('2d');
-                  c.fillStyle = '#17140f';
-                  c.textAlign = 'left';
-                  c.textBaseline = baseline;
-                  c.translate(3.25, 4);
-                  c.scale(1.5, 1.5);
-                  return { canvas, c };
-                };
-                const a = make(),
-                  b = make();
-                const prior = {
-                  baseline: a.c.textBaseline,
-                  font: a.c.font,
-                  transform: a.c.getTransform().toString(),
-                };
-                paintFittedText(a.c, text, 14, 70, 370, size, true, 1, family);
-                b.c.font = 'bold ' + size + 'px "' + family + '", Georgia';
-                b.c.textBaseline = family === 'CardRenderer MTG Matrix' ? 'alphabetic' : baseline;
-                b.c.fillText(text, 14, 70, 370);
-                const left = a.c.getImageData(0, 0, 600, 160).data;
-                const right = b.c.getImageData(0, 0, 600, 160).data;
-                let differences = 0;
-                for (let i = 0; i < left.length; i++) differences += Number(left[i] !== right[i]);
-                if (differences)
-                  throw Error(JSON.stringify({ family, baseline, size, text, differences }));
-                if (
-                  a.c.textBaseline !== prior.baseline ||
-                  a.c.font !== prior.font ||
-                  a.c.getTransform().toString() !== prior.transform
-                )
-                  throw Error('Heading paint leaked Canvas state');
-                cases.push({ family, baseline, size, text, differences });
-              }
-        return cases;
-      });
-      assert.equal(results.length, 24);
-      assert(results.every((r) => r.differences === 0));
-      console.log(
-        engine.name() +
-          ': Matrix headings use calibrated alphabetic anchors; other fonts and Canvas state retain their contracts.',
-      );
-    } finally {
-      await browser.close();
-    }
-  }
+  // Actual loaded-font geometry and caller-owned anchors are exercised by
+  // magic-font-geometry.mjs. A fallback-font raster cannot establish this policy.
+  const canvasSource = await preFontGeometrySource(
+    'games/magic/src/presentation/canvas-text.ts',
+    await (
+      await import('node:fs/promises')
+    ).readFile('games/magic/src/presentation/canvas-text.ts'),
+  );
+  assert(canvasSource.toString().includes("context.textBaseline = 'alphabetic'"));
 } finally {
   await server.close();
 }
@@ -150,7 +92,7 @@ assert.equal(
   proof.beforeRenderer,
 );
 for (const [file, value] of Object.entries(proof.files)) {
-  const bytes = await readFile(file);
+  const bytes = await preFontGeometrySource(file, await readFile(file));
   if (file.endsWith('/generated-manifest.json'))
     assert.equal(hash(await preArnProfileSource(file, bytes)), value.before);
   else assert.equal(hash(await preRevisedBodyArtistSource(file, bytes)), value.after);

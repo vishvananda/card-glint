@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
@@ -36,7 +36,7 @@ export function paintAdventureFooter(
     c.fillStyle = '#17140f';
     c.textAlign = 'center';
     c.textBaseline = 'middle';
-    c.font = '700 25px "CardRenderer MTG Beleren Small Caps", Georgia';
+    setFont(c, '700 25px "CardRenderer MTG Beleren Small Caps", Georgia');
     paintTextInk(c, `${face.power}/${face.toughness}`, 420, 627, 77, face.textInk);
   }
   if (hasOvalSecurityStamp(face)) {
@@ -47,18 +47,18 @@ export function paintAdventureFooter(
   c.fillStyle = '#fff';
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
-  c.font = '11px "CardRenderer MTG Relay", sans-serif';
+  setFont(c, '11px "CardRenderer MTG Relay", sans-serif');
   paintFontText(c, adventureCollectorText(face), 32, 645);
   paintFontText(c, `${face.setCode?.toUpperCase() ?? ''} • EN`, 32, 658);
   if (face.artist) {
-    c.font = '11px "CardRenderer MTG Artist Credit", serif';
+    setFont(c, '11px "CardRenderer MTG Artist Credit", serif');
     paintFontText(c, 'a', 93, 658);
-    c.font = '700 11px "CardRenderer MTG Beleren Small Caps", serif';
+    setFont(c, '700 11px "CardRenderer MTG Beleren Small Caps", serif');
     paintFontText(c, face.artist, 108, 658, 210);
   }
   if (face.legalText) {
     c.textAlign = 'right';
-    c.font = '10px "CardRenderer MTG MPlantin", Georgia';
+    setFont(c, '10px "CardRenderer MTG MPlantin", Georgia');
     paintFontText(c, face.legalText, 454, 658, 182);
   }
 }

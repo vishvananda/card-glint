@@ -1,4 +1,4 @@
-import { FONT_GEOMETRY_REVISION } from './font-geometry.js';
+import { FONT_GEOMETRY_REVISION, setFont } from './font-geometry.js';
 import { measureFontText, paintFontText } from './font-geometry.js';
 import { loadRevisedTypeFont, usesRevisedTypeTypography } from './revised-lettering.js';
 import { earlyTextFlowRevision } from './alpha-typography.js';
@@ -239,7 +239,9 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     RENDERER_COMPONENT_ROOT,
     CONJURER_ROOT,
     'canvas-face-v148',
-    ...(!input.printedImage && input.paintLayer !== 'artwork' ? [FONT_GEOMETRY_REVISION] : []),
+    ...((!input.printedImage || stats !== null) && input.paintLayer !== 'artwork'
+      ? [FONT_GEOMETRY_REVISION]
+      : []),
     ...(!input.printedImage &&
     input.layer !== 'etching' &&
     input.paintLayer !== 'artwork' &&
@@ -765,7 +767,7 @@ export function paintAssembledFace(
     if (layer === 'artwork') return;
     paintModernFooter(context, face);
     if (splitHasFuse(face) && rulesInkVisible(context)) {
-      context.font = '14px "CardRenderer MTG MPlantin", Georgia';
+      setFont(context, '14px "CardRenderer MTG MPlantin", Georgia');
       context.fillStyle = 'white';
       context.textAlign = 'center';
       context.textBaseline = 'middle';
@@ -976,7 +978,7 @@ export function paintAssembledFace(
   const titleSize =
     (kind === 'normal' && !panel ? FACE_TEXT.normalTitleFont : FACE_TEXT.titleFont) * textScale;
   const headingFamily = modernHeadingFamily(face) ?? 'CardRenderer MTG Beleren';
-  context.font = `bold ${titleSize}px "${headingFamily}", Georgia`;
+  setFont(context, `bold ${titleSize}px "${headingFamily}", Georgia`);
   context.letterSpacing = `${FACE_TEXT.titleTracking}px`;
   context.save();
   if (kind === 'normal' && !panel) context.translate(...titleTranslation(face, 'modern'));
@@ -1087,7 +1089,7 @@ export function paintAssembledFace(
   // font height merely to apply the shared width correction.
   context.save();
   const typeFit = prepareModernTypeText(context, face, planeswalker ? 'walker' : 'components');
-  context.font = `${FACE_TEXT.typeFont * textScale}px "${headingFamily}", Georgia`;
+  setFont(context, `${FACE_TEXT.typeFont * textScale}px "${headingFamily}", Georgia`);
   const typeWidthScale =
     kind === 'normal' && !panel
       ? NORMAL_FRAME_GEOMETRY.typeWidthScale
@@ -1168,7 +1170,7 @@ export function paintAssembledFace(
     else {
       const [sx, sy, sw] = px(rects.stats);
       context.fillStyle = '#17140f';
-      context.font = `bold ${FACE_TEXT.statsFont}px "CardRenderer MTG Beleren", Georgia`;
+      setFont(context, `bold ${FACE_TEXT.statsFont}px "CardRenderer MTG Beleren", Georgia`);
       context.textAlign = 'center';
       context.textBaseline = 'middle';
       paintModernStatsText(

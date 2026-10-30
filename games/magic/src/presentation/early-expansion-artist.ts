@@ -1,3 +1,4 @@
+import { setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { paintRetroLetterEdges } from './retro-lettering.js';
@@ -47,7 +48,7 @@ export function paintEarlyExpansionArtist(c: CanvasContext, face: RenderedCardIn
   c.save();
   c.translate(p.x, p.y);
   c.scale(p.width, 1);
-  c.font = `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
+  setFont(c, `${p.size}px "CardRenderer MTG MPlantin", Georgia`);
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
   c.letterSpacing = '0px';

@@ -1,3 +1,4 @@
+import { setFont } from './font-geometry.js';
 import type { CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { modernPrintingProfile } from './modern-printing-profile.js';
@@ -16,7 +17,10 @@ export function paintModernStatsText(
   if (!fit) return paintTextInk(c, text, x, y, width, face.textInk);
   c.save();
   try {
-    c.font = c.font.replace(/([\d.]+)px/, (_, size: string) => `${Number(size) * fit.size}px`);
+    setFont(
+      c,
+      c.font.replace(/([\d.]+)px/, (_, size: string) => `${Number(size) * fit.size}px`),
+    );
     if (fit.fractionalMetrics) {
       c.textRendering = 'geometricPrecision';
       c.fontKerning = 'normal';

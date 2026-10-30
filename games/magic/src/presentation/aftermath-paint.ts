@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import {
   type CanvasContext,
   type CanvasRaster,
@@ -163,7 +163,7 @@ export function paintAftermathFace(
     c.fillStyle = '#fff';
     c.textAlign = 'left';
     c.textBaseline = 'alphabetic';
-    c.font = '11px "CardRenderer MTG Relay", sans-serif';
+    setFont(c, '11px "CardRenderer MTG Relay", sans-serif');
     paintFontText(
       c,
       `${face.collectorNumber ?? ''}  ${(face.rarity ?? 'common')[0]!.toUpperCase()}`,
@@ -171,13 +171,13 @@ export function paintAftermathFace(
       645,
     );
     paintFontText(c, `${face.setCode?.toUpperCase() ?? ''} • EN`, 32, 658);
-    c.font = '11px "CardRenderer MTG Artist Credit", serif';
+    setFont(c, '11px "CardRenderer MTG Artist Credit", serif');
     if (face.artist) paintFontText(c, 'a', 93, 658);
-    c.font = '11px "CardRenderer MTG Beleren", serif';
+    setFont(c, '11px "CardRenderer MTG Beleren", serif');
     paintFontText(c, face.artist ?? '', 108, 658, 220);
     if (face.legalText) {
       c.textAlign = 'right';
-      c.font = '10px "CardRenderer MTG MPlantin", Georgia';
+      setFont(c, '10px "CardRenderer MTG MPlantin", Georgia');
       paintFontText(c, face.legalText, 454, 646, 177);
     }
   }

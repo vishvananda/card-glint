@@ -1,4 +1,4 @@
-import { measureFontText } from './font-geometry.js';
+import { measureFontText, setFont } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -53,7 +53,7 @@ export function paintEarlyReprintFooterInk(
       ink = layer.getContext('2d');
     if (!ink) throw Error('Footer ink needs a Canvas2D context');
     ink.setTransform(matrix);
-    ink.font = c.font;
+    setFont(ink, c.font);
     ink.textAlign = c.textAlign;
     ink.textBaseline = c.textBaseline;
     ink.letterSpacing = c.letterSpacing;

@@ -1,4 +1,4 @@
-import { measureFontText } from './font-geometry.js';
+import { measureFontText, setFont } from './font-geometry.js';
 import { inheritedOldFrameDefault } from '../calibration/old-frame-defaults.js';
 import { paintEarlyExpansionStatsInk } from './early-expansion-stats.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
@@ -52,7 +52,7 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
       c.scale(p.width, 1);
       const weight =
         role === 'stats' && profile.stats.weight !== undefined ? profile.stats.weight + ' ' : '';
-      c.font = weight + `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
+      setFont(c, weight + `${p.size}px "CardRenderer MTG MPlantin", Georgia`);
       c.textAlign =
         role === 'artist'
           ? (profile.artist.align ?? 'left')
@@ -119,7 +119,7 @@ export function paintEarlyReprintFooter(c: CanvasContext, face: RenderedCardInpu
     c.save();
     let advance: number, width: number;
     try {
-      c.font = `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
+      setFont(c, `${p.size}px "CardRenderer MTG MPlantin", Georgia`);
       c.letterSpacing = '0px';
       advance = measureFontText(c, prefix).width;
       width = measureFontText(c, prefix + collector).width;

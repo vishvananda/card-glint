@@ -14,11 +14,44 @@ interface FontGeometry {
 interface FontRun {
   readonly geometry: FontGeometry;
   readonly size: number;
+  readonly weight: number;
 }
 const faces: readonly FontGeometry[] = catalog;
 const runs = new Map<string, FontRun | null>();
 const reference = new WeakMap<FontGeometry, Map<string, TextMetrics>>();
 const REFERENCE_SIZE = 1000;
+const FONT_SUBPIXELS = 64;
+const fontSize = (size: number) => Math.round(size * FONT_SUBPIXELS) / FONT_SUBPIXELS;
+
+/** Quantize before native assignment, rather than trusting a lossy CSS getter.
+ * Engines serialize fractional font sizes at different precisions. */
+export function setFont(context: CanvasContext, font: string): void {
+  const normalized = font.replace(
+    /([\d.]+)px\b/,
+    (_, value: string) => String(fontSize(Number(value))) + 'px',
+  );
+  const family = /["'](CardRenderer MTG [^"']+)["']/.exec(normalized);
+  const run = fontRun(normalized);
+  if (!family || !run) {
+    context.font = normalized;
+    return;
+  }
+  const [minimum = 400, maximum = minimum] = run.geometry.weight.split(' ').map(Number);
+  const weight = Math.max(minimum, Math.min(maximum, run.weight));
+  // A named face owns its outlines. Pin its available style/weight instead of
+  // asking the operating system to invent a bold or oblique variant.
+  const prefix = run.geometry.style === 'normal' ? '' : run.geometry.style + ' ';
+  context.font =
+    prefix +
+    weight +
+    ' ' +
+    run.size +
+    'px "' +
+    run.geometry.family +
+    '"' +
+    normalized.slice(family.index + family[0].length);
+}
+
 const extents = new WeakMap<FontGeometry, Map<string, readonly [number, number] | null>>();
 
 /** Frame coordinates own their anchor. A font family never changes it. */
@@ -28,7 +61,7 @@ function fontRun(font: string): FontRun | undefined {
   if (runs.has(font)) return runs.get(font) ?? undefined;
   const family = /["'](CardRenderer MTG [^"']+)["']/.exec(font)?.[1];
   if (!family) return undefined;
-  const size = Number(/([\d.]+)px\b/.exec(font)?.[1]);
+  const size = fontSize(Number(/([\d.]+)px\b/.exec(font)?.[1]));
   if (!(size > 0 && Number.isFinite(size))) throw Error('Invalid Magic font size');
   const style = /\b(?:italic|oblique)\b/.test(font) ? 'italic' : 'normal';
   const weight = /\bbold\b/.test(font)
@@ -55,7 +88,7 @@ function fontRun(font: string): FontRun | undefined {
   };
   const geometry = [...candidates].sort((a, b) => rank(a) - rank(b))[0];
   if (!geometry) throw Error('Magic font has no reviewed geometry: ' + family);
-  const run = { geometry, size };
+  const run = { geometry, size, weight };
   if (runs.size >= 256) runs.clear();
   runs.set(font, run);
   return run;
@@ -65,8 +98,8 @@ function inkExtents(geometry: FontGeometry, text: string): readonly [number, num
   let cache = extents.get(geometry);
   if (!cache) extents.set(geometry, (cache = new Map()));
   if (cache.has(text)) return cache.get(text) ?? undefined;
-  let bottom = 0,
-    top = 0;
+  let bottom = Infinity,
+    top = -Infinity;
   for (const character of text) {
     const code = character.codePointAt(0);
     const value = code === undefined ? undefined : geometry.glyphs[String(code)];
@@ -78,10 +111,13 @@ function inkExtents(geometry: FontGeometry, text: string): readonly [number, num
       // Host-provided characters outside this font retain native fallback ink.
       return undefined;
     }
+    if (low === 0 && high === 0) continue;
     bottom = Math.min(bottom, low);
     top = Math.max(top, high);
   }
-  const value = [bottom / geometry.unitsPerEm, top / geometry.unitsPerEm] as const;
+  const value = Number.isFinite(bottom)
+    ? ([bottom / geometry.unitsPerEm, top / geometry.unitsPerEm] as const)
+    : ([0, 0] as const);
   if (cache.size >= 2048) cache.clear();
   cache.set(text, value);
   return value;
@@ -131,6 +167,7 @@ function referenceMetrics(context: CanvasContext, text: string, run: FontRun): T
   if (!cache) reference.set(run.geometry, (cache = new Map()));
   const previous = cache.get(key);
   if (previous) return previous;
+  context.save();
   context.font = referenceFont;
   context.letterSpacing = letterSpacing;
   context.wordSpacing = wordSpacing;
@@ -140,7 +177,7 @@ function referenceMetrics(context: CanvasContext, text: string, run: FontRun): T
     cache.set(key, metrics);
     return metrics;
   } finally {
-    context.font = font;
+    context.restore();
     context.letterSpacing = letter;
     context.wordSpacing = word;
   }

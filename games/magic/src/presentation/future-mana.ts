@@ -1,4 +1,5 @@
-import { paintFontText } from './font-geometry.js';
+import { canvasFonts } from './canvas-font-registry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import manifest from '../../assets.json' with { type: 'json' };
 import type { RenderedCardInput } from './face-layout.js';
@@ -62,7 +63,7 @@ export function paintFutureMana(c: CanvasContext, face: RenderedCardInput, image
         c.save();
         c.translate(px + size / 2 - (0.75 * size) / 38.125, py + size / 2 + (1.75 * size) / 38.125);
         c.scale(0.9375, 1);
-        c.font = `700 ${(size * 31.25) / 38.125}px "CardRenderer MTG MPlantin"`;
+        setFont(c, `400 ${(size * 31.25) / 38.125}px "CardRenderer MTG MPlantin Bold"`);
         c.fillStyle = '#111';
         c.textAlign = 'center';
         c.textBaseline = 'middle';
@@ -71,4 +72,19 @@ export function paintFutureMana(c: CanvasContext, face: RenderedCardInput, image
       }
     } else paintMana(c, symbol, px, py, size, images, false);
   });
+}
+
+let numeralFont: Promise<void> | undefined;
+export function loadFutureManaFont(face: RenderedCardInput): Promise<void> {
+  if (!face.manaSymbols?.some((symbol) => /^(?:\d+|X)$/.test(symbol))) return Promise.resolve();
+  return (numeralFont ??= canvasFonts()
+    .load('400 32px "CardRenderer MTG MPlantin Bold"')
+    .then((fonts) => {
+      if (!fonts.length || fonts.some((font) => font.status !== 'loaded'))
+        throw Error('Futureshifted mana needs the pinned MPlantin Bold font');
+    })
+    .catch((error: unknown) => {
+      numeralFont = undefined;
+      throw error;
+    }));
 }

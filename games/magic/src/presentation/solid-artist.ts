@@ -1,4 +1,4 @@
-import { paintFontText, strokeFontText } from './font-geometry.js';
+import { paintFontText, setFont, strokeFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -28,7 +28,7 @@ export function paintSolidArtist(
     const ink = layer.getContext('2d');
     if (!ink) throw Error('Artist ink needs a Canvas2D context');
     ink.setTransform(matrix);
-    ink.font = c.font;
+    setFont(ink, c.font);
     ink.textAlign = c.textAlign;
     ink.textBaseline = c.textBaseline;
     ink.letterSpacing = c.letterSpacing;

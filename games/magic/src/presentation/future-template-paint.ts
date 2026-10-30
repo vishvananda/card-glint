@@ -1,4 +1,4 @@
-import { measureFontText, paintFontText } from './font-geometry.js';
+import { measureFontText, paintFontText, setFont } from './font-geometry.js';
 import {
   type CanvasContext,
   type CanvasRaster,
@@ -109,7 +109,7 @@ export function paintFutureTemplate(
       c.fillStyle = light ? '#fff' : '#111';
       c.textAlign = 'center';
       c.textBaseline = 'middle';
-      c.font = '700 29.97px "CardRenderer MTG Matrix Small Caps"';
+      setFont(c, '700 29.97px "CardRenderer MTG Matrix Small Caps"');
       c.save();
       c.translate(g.stats[0] + g.stats[2] / 2 - 1.5, g.stats[1] + g.stats[3] / 2 - 0.25);
       c.scale(0.99, 1);
@@ -139,7 +139,7 @@ export function paintFutureTemplate(
       full = futureTreatment(face) === 'full-art',
       artistSize = full ? 16.6 : 17.845,
       artistY = full ? 627 : 626.5;
-    c.font = `400 ${artistSize}px "CardRenderer MTG Matrix"`;
+    setFont(c, `400 ${artistSize}px "CardRenderer MTG Matrix"`);
     const artist = face.artist ?? '';
     paintPrintingElement(c, face, 'artist', () => {
       paintFontText(c, artist, right, artistY, right - 70);
@@ -150,7 +150,7 @@ export function paintFutureTemplate(
     const legal = printingLegalText(face),
       number = printingCollectorText(face, false);
     if (legal || number) {
-      c.font = '11.804px "CardRenderer MTG MPlantin"';
+      setFont(c, '11.804px "CardRenderer MTG MPlantin"');
       const line = [legal, number].filter(Boolean).join(' ');
       if (!face.printingElements?.legal?.offset && !face.printingElements?.collector?.offset)
         paintFontText(c, line, right - 0.25, 641.25, right - 40);

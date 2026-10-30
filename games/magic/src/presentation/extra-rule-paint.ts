@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
@@ -44,7 +44,7 @@ export function paintExtraRules(
     context.clip();
     context.fillStyle = block.color ?? '#17140f';
     if (['stats', 'level'].includes(block.kind)) {
-      context.font = `${font}px "CardRenderer MTG Beleren", Georgia`;
+      setFont(context, `${font}px "CardRenderer MTG Beleren", Georgia`);
       context.textAlign = 'center';
       context.textBaseline = 'middle';
       const lines = block.text.split('\n');
@@ -62,12 +62,15 @@ export function paintExtraRules(
       );
       if (block.kind === 'stats') firstStats = false;
     } else if (block.align === 'right') {
-      context.font = `${font}px "CardRenderer MTG MPlantin", Georgia`;
+      setFont(context, `${font}px "CardRenderer MTG MPlantin", Georgia`);
       context.textAlign = 'right';
       context.textBaseline = 'middle';
       paintFontText(context, block.text, x + width, y + height / 2, width);
     } else {
-      context.font = `${block.italic ? 'italic ' : ''}${font}px "CardRenderer MTG MPlantin", Georgia`;
+      setFont(
+        context,
+        `${block.italic ? 'italic ' : ''}${font}px "CardRenderer MTG MPlantin", Georgia`,
+      );
       const textHeight =
         rulesLines(context, block.text, width, font).length * font +
         (block.text.split('\n').length - 1) * FACE_TEXT.paragraphGap;

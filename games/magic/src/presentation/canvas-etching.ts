@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { visibleArt } from './art-apertures.js';
 import { splitPanels, panelTransform } from './split-layout.js';
@@ -189,7 +189,7 @@ async function paintMask(
         context.scale(w / 100, h / 100);
         context.fillStyle = 'white';
         context.fill(new Path2D(ETCHED_SET_MARK_PATH));
-        context.font = 'bold 43px Georgia';
+        setFont(context, 'bold 43px Georgia');
         context.textAlign = 'center';
         context.textBaseline = 'alphabetic';
         paintFontText(context, etchedSetLabel(face.setCode), 50, 65);

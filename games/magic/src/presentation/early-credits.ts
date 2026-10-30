@@ -1,3 +1,4 @@
+import { setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { alphaTypography } from './alpha-typography.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -10,7 +11,7 @@ export function usesEarlyCredits(face: RenderedCardInput): boolean {
 
 export function paintEarlyCredits(c: CanvasContext, artist: string, setCode?: string | null) {
   c.save();
-  c.font = '22.5px "CardRenderer MTG MPlantin", Georgia';
+  setFont(c, '22.5px "CardRenderer MTG MPlantin", Georgia');
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
   paintRetroGrayText(

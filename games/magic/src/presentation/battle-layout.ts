@@ -1,4 +1,4 @@
-import { measureFontText } from './font-geometry.js';
+import { measureFontText, setFont } from './font-geometry.js';
 import type { CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 
@@ -42,7 +42,7 @@ export function battleReverseStatsLayout(
   const text = `${face.reverseStats.power}/${face.reverseStats.toughness}`;
   context.save();
   try {
-    context.font = BATTLE_REVERSE_STATS.font;
+    setFont(context, BATTLE_REVERSE_STATS.font);
     context.textAlign = 'right';
     context.textBaseline = 'alphabetic';
     context.letterSpacing = '0px';

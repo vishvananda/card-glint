@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { rulesInkVisible } from './rules-visibility.js';
@@ -87,7 +87,7 @@ export function templateStats(
 ) {
   if (face.power == null || face.toughness == null) return;
   const [x, y, w, h] = rect;
-  c.font = `bold ${size * POINT}px "${family}", Georgia`;
+  setFont(c, `bold ${size * POINT}px "${family}", Georgia`);
   c.textAlign = 'center';
   c.textBaseline = 'middle';
   paintTextInk(c, `${face.power}/${face.toughness}`, x + w / 2, y + h / 2, w, face.textInk);
@@ -102,10 +102,10 @@ export function templateFooter(
   c.fillStyle = color;
   c.textAlign = 'left';
   c.textBaseline = 'top';
-  c.font = `${10 * POINT}px "CardRenderer MTG Matrix", Georgia`;
+  setFont(c, `${10 * POINT}px "CardRenderer MTG Matrix", Georgia`);
   paintFontText(c, face.artist ?? '', x, y, w);
   if (face.legalText) {
-    c.font = `${6.5 * POINT}px "CardRenderer MTG MPlantin", Georgia`;
+    setFont(c, `${6.5 * POINT}px "CardRenderer MTG MPlantin", Georgia`);
     paintFontText(c, face.legalText, x, y + 14, w);
   }
 }

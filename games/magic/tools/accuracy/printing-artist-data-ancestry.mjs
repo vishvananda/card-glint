@@ -1,3 +1,4 @@
+import { preFontGeometrySource } from './font-geometry-ancestry.mjs';
 import { arnHistoricalSourceFiles } from './arn-profile-ancestry.mjs';
 import { preAbuPerimeterSource } from './abu-perimeter-ancestry.mjs';
 // Exact pure-data history, independent of calibration approval.
@@ -58,7 +59,10 @@ export async function printingArtistDelta() {
       prior.afterFaceHash,
     );
     for (const [f, digest] of Object.entries(p.sharedAssets))
-      assert.equal(hash(await readFile(path.join(root, f))), digest);
+      assert.equal(
+        hash(await preFontGeometrySource(f, await readFile(path.join(root, f)))),
+        digest,
+      );
     return p;
   })());
 }

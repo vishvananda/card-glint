@@ -1,4 +1,4 @@
-import { measureFontText, paintFontText } from './font-geometry.js';
+import { measureFontText, paintFontText, setFont } from './font-geometry.js';
 import type { ModernLoyaltyAdjustment } from './modern-printing-profiles.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { FaceRect } from './face-layout.js';
@@ -136,7 +136,7 @@ function paintLoyaltyInk(
 ): void {
   c.save();
   c.fillStyle = PLANESWALKER_COST_GEOMETRY.ink;
-  c.font = `${PLANESWALKER_COST_GEOMETRY.fontWeight} ${size}px ${family}`;
+  setFont(c, `${PLANESWALKER_COST_GEOMETRY.fontWeight} ${size}px ${family}`);
   c.textAlign = 'center';
   c.textBaseline = 'alphabetic';
   c.letterSpacing = '0px';

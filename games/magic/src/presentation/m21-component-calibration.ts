@@ -87,7 +87,7 @@ export const M21_COMPONENT_CALIBRATION: Pick<
     deckCollectorNumbers: ['320', '324', '328', '332', '336'],
     frameRepaint: { Colourless: 0.7 },
     loyalty: {
-      starting: { dx: 1.75, dy: 2, size: 1.04, width: 1.015, fractionalMetrics: true },
+      starting: { dx: 0, dy: 0, size: 1.04, width: 1.015, fractionalMetrics: true },
       cost: {
         dx: 1.75,
         dy: 1.75,

@@ -1,3 +1,4 @@
+import { setFont } from './font-geometry.js';
 import { retainsOldFrameComponent } from '../calibration/old-frame-defaults.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { calibrationForFace } from '../calibration/selection.js';
@@ -22,7 +23,7 @@ export function paintEarlyReprintTitle(
   c.save();
   c.translate(p.x, p.y);
   c.scale(p.width, 1);
-  c.font = `${p.size}px "CardRenderer MTG Goudy", Georgia`;
+  setFont(c, `${p.size}px "CardRenderer MTG Goudy", Georgia`);
   paintSolidTitle(c, face.name, 0, 0, Math.max(1, (right - p.x) / p.width), p);
   c.restore();
   return true;

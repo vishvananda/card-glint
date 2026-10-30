@@ -1,4 +1,4 @@
-import { measureFontText, paintFontText } from './font-geometry.js';
+import { measureFontText, paintFontText, setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { ManaGlyphTransform } from './symbol-adjustment.js';
 
@@ -22,7 +22,7 @@ export function paintOriginalWhite(
   c.fill();
   c.clip();
   c.fillStyle = ink;
-  c.font = '100px "CardRenderer MTG Historic Symbols"';
+  setFont(c, '100px "CardRenderer MTG Historic Symbols"');
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
   const glyph = '\ue997';

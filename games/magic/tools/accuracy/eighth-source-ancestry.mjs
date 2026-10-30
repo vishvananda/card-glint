@@ -1,3 +1,4 @@
+import { preFontGeometrySource } from './font-geometry-ancestry.mjs';
 import { arnHistoricalSourceFiles } from './arn-profile-ancestry.mjs';
 import { preAbuFractionalSource } from './abu-fractional-ancestry.mjs';
 // Reconstruct only reviewed Eighth integration edits. This never approves a fit.
@@ -71,6 +72,7 @@ export async function eighthSourceAncestry() {
   })());
 }
 export async function preEighthSource(file, bytes) {
+  bytes = await preFontGeometrySource(file, bytes);
   bytes = await preAbuFractionalSource(file, bytes);
   const p = await eighthSourceAncestry(),
     entry = p.files[file];

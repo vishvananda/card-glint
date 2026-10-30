@@ -1,4 +1,4 @@
-import { measureFontText, paintFontText } from './font-geometry.js';
+import { measureFontText, paintFontText, setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintTextInk } from './text-ink.js';
 import { paintPrintingElement } from './printing-elements.js';
@@ -16,7 +16,7 @@ export function paintUrzaFooter(c: CanvasContext, face: RenderedCardInput): bool
   c.shadowColor = '#17140f';
   c.shadowOffsetX = c.shadowOffsetY = 1.5 * c.getTransform().a;
   c.fillStyle = '#f2eee3';
-  c.font = '19px "CardRenderer MTG MPlantin", Georgia';
+  setFont(c, '19px "CardRenderer MTG MPlantin", Georgia');
   // Long supplied credits must stay outside the creature's stats box.
   const artistWidth = face.power != null && face.toughness != null ? 292 : 365;
   paintPrintingElement(c, face, 'artist', () => {
@@ -24,7 +24,7 @@ export function paintUrzaFooter(c: CanvasContext, face: RenderedCardInput): bool
   });
   if (face.power != null && face.toughness != null) {
     c.shadowColor = '#000b';
-    c.font = '27.8px "CardRenderer MTG MPlantin", Georgia';
+    setFont(c, '27.8px "CardRenderer MTG MPlantin", Georgia');
     c.textBaseline = 'middle';
     c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
     paintTextInk(
@@ -39,7 +39,7 @@ export function paintUrzaFooter(c: CanvasContext, face: RenderedCardInput): bool
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;
   c.textBaseline = 'alphabetic';
-  c.font = '9.5px "CardRenderer MTG MPlantin", Georgia';
+  setFont(c, '9.5px "CardRenderer MTG MPlantin", Georgia');
   const colors = resolveFrameColors(face);
   const lightLegal =
     !/\bLand\b/.test(face.typeLine ?? '') &&

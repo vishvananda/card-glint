@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import {
   type CanvasContext,
@@ -167,9 +167,12 @@ function paintSplitFooter(
   c.fillStyle = old ? '#eeeae1' : '#17140f';
   c.textAlign = old ? 'center' : 'left';
   c.textBaseline = 'middle';
-  c.font = old
-    ? '19px "CardRenderer MTG MPlantin", Georgia'
-    : '700 14px "CardRenderer MTG Matrix", Georgia';
+  setFont(
+    c,
+    old
+      ? '19px "CardRenderer MTG MPlantin", Georgia'
+      : '700 14px "CardRenderer MTG Matrix", Georgia',
+  );
   const brush = images.get(`${CONJURER_ROOT}/img/manaSymbols/brush.svg`);
   if (!old && brush) c.drawImage(brush, 36, g.artistY - 4, 20, 8);
   if (old) {
@@ -187,7 +190,7 @@ function paintSplitFooter(
   );
   c.shadowColor = 'transparent';
   c.shadowOffsetX = c.shadowOffsetY = 0;
-  c.font = `${old ? 10.2 : 10}px "CardRenderer MTG MPlantin", Georgia`;
+  setFont(c, `${old ? 10.2 : 10}px "CardRenderer MTG MPlantin", Georgia`);
   if (parent.legalText)
     paintFontText(
       c,

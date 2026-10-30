@@ -1,4 +1,4 @@
-import { measureFontText, paintFontText } from './font-geometry.js';
+import { measureFontText, paintFontText, setFont } from './font-geometry.js';
 import { modernPrintingProfile } from './modern-printing-profile.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintPrintingElement, type PrintingElements } from './printing-elements.js';
@@ -30,7 +30,10 @@ export function paintModernFooter(c: CanvasContext, face: RenderedCardInput): vo
   c.fillStyle = cardStock(face.setCode, face.borderColor).ink;
   c.textBaseline = 'alphabetic';
   c.textAlign = 'left';
-  c.font = `${style?.collectorSize ?? 11}px "${style?.collectorFamily ?? 'CardRenderer MTG Relay'}", sans-serif`;
+  setFont(
+    c,
+    `${style?.collectorSize ?? 11}px "${style?.collectorFamily ?? 'CardRenderer MTG Relay'}", sans-serif`,
+  );
   paintPrintingElement(c, face, 'collector', () => {
     const text = printingCollectorText(face);
     if (!style || !text) return paintFontText(c, text, 30, 645);
@@ -78,18 +81,18 @@ export function paintModernFooter(c: CanvasContext, face: RenderedCardInput): vo
   paintPrintingElement(c, face, 'artist', () => {
     if (face.artist) {
       c.letterSpacing = '0px';
-      c.font = `${style?.artistSize ?? 11}px "CardRenderer MTG Artist Credit", sans-serif`;
+      setFont(c, `${style?.artistSize ?? 11}px "CardRenderer MTG Artist Credit", sans-serif`);
       paintFontText(c, 'a', left, 658);
       left += measureFontText(c, 'a').width + 2;
       c.letterSpacing = `${style?.artistTracking ?? 0}px`;
-      c.font = `700 ${style?.artistSize ?? 11}px "CardRenderer MTG Beleren Small Caps", Georgia`;
+      setFont(c, `700 ${style?.artistSize ?? 11}px "CardRenderer MTG Beleren Small Caps", Georgia`);
       paintFontText(c, face.artist, left, 658, Math.max(1, (legal && stats ? 272 : 456) - left));
     }
   });
   if (legal) {
     c.textAlign = 'right';
     c.letterSpacing = `${style?.legalTracking ?? 0}px`;
-    c.font = `${style?.legalSize ?? 10}px "CardRenderer MTG MPlantin", Georgia`;
+    setFont(c, `${style?.legalSize ?? 10}px "CardRenderer MTG MPlantin", Georgia`);
     // Creature and planeswalker badges reserve the upper right footer row.
     paintPrintingElement(c, face, 'legal', () =>
       paintFontText(c, legal, 456, stats ? 658 : 645, 178),

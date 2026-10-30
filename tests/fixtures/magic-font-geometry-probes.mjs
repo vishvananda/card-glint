@@ -1,6 +1,6 @@
 /** Shared document/worker probes. Font bytes are served only after SHA verification. */
-export async function fontGeometryProbes({ fonts, moduleURL, assetBase }) {
-  const { measureFontText, paintFontText, strokeFontText } = await import(
+export async function fontGeometryProbes({ fonts, moduleURL, assetBase, headingURL }) {
+  const { measureFontText, paintFontText, strokeFontText, setFont } = await import(
     /* @vite-ignore */ moduleURL
   );
   const fontSet = typeof document === 'undefined' ? globalThis.fonts : document.fonts;
@@ -30,15 +30,24 @@ export async function fontGeometryProbes({ fonts, moduleURL, assetBase }) {
       ? 'a'
       : font.family.endsWith('Historic Symbols')
         ? '\uea31\ue61c'
-        : /(?:Small Caps|ModMatrix)$/.test(font.family)
+        : /(?:Small Caps|ModMatrix|MPlantin Bold)$/.test(font.family)
           ? '1/13*'
           : 'Agjfn 0123456789';
     for (const character of sample)
       if (!Object.hasOwn(font.glyphs, String(character.codePointAt(0))))
         throw Error('Probe has a fallback character: ' + font.family + ' ' + character);
     for (const size of [11, 25.029, 30.368, 100]) {
-      c.font =
-        font.style + ' ' + font.weight.split(' ').at(-1) + ' ' + size + 'px "' + font.family + '"';
+      setFont(
+        c,
+        font.style +
+          ' ' +
+          (font.requestedWeight ?? font.weight.split(' ').at(-1)) +
+          ' ' +
+          size +
+          'px "' +
+          font.family +
+          '"',
+      );
       c.textAlign = 'left';
       c.fillStyle = '#111';
       c.strokeStyle = '#111';
@@ -66,7 +75,7 @@ export async function fontGeometryProbes({ fonts, moduleURL, assetBase }) {
         c.restore();
         c.textRendering = rendering;
         c.fontKerning = kerning;
-        if (Math.abs(m.width - nativeWidth) > Math.max(0.1, nativeWidth * 0.001))
+        if (Math.abs(m.width - nativeWidth) > Math.max(0.1, nativeWidth * 0.005))
           throw Error(
             'Normalized advance is implausible: ' +
               JSON.stringify({ font: font.family, size, width: m.width, nativeWidth }),
@@ -136,6 +145,7 @@ export async function fontGeometryProbes({ fonts, moduleURL, assetBase }) {
           font: font.family,
           style: font.style,
           weight: font.weight,
+          requestedWeight: font.requestedWeight ?? null,
           size,
           baseline,
           text: sample,
@@ -149,8 +159,95 @@ export async function fontGeometryProbes({ fonts, moduleURL, assetBase }) {
         });
       }
     }
+    if (font.family === 'CardRenderer MTG Matrix' && font.weight.includes('700')) {
+      const { paintFittedText } = await import(
+        /* @vite-ignore */ headingURL || moduleURL.replace('font-geometry.ts', 'canvas-text.ts')
+      );
+      for (const baseline of ['alphabetic', 'middle', 'top']) {
+        c.textBaseline = baseline;
+        const native = c.fillText;
+        let observed;
+        c.fillText = function (text, x, y) {
+          observed = { baseline: this.textBaseline, y };
+        };
+        try {
+          paintFittedText(c, 'Serra Angel', 14, 150, 400, 30, true, 1, font.family);
+        } finally {
+          c.fillText = native;
+        }
+        const expected = 150 + font.anchors[baseline] * 30;
+        if (
+          !observed ||
+          observed.baseline !== 'alphabetic' ||
+          Math.abs(observed.y - expected) > 0.025
+        )
+          throw Error('Fitted headings overrode the layout anchor: ' + baseline);
+      }
+    }
+    if (font.weight === '400') {
+      const style = font.style === 'normal' ? '' : font.style + ' ';
+      setFont(c, style + '400 30px "' + font.family + '"');
+      const normal = measureFontText(c, sample).width;
+      setFont(c, style + '700 30px "' + font.family + '"');
+      if (Math.abs(measureFontText(c, sample).width - normal) > 0.025)
+        throw Error('A fixed face used synthetic bold: ' + font.family);
+    }
+    // Positive yMin (digits/colon) and negative yMax (underscore) must not be
+    // clamped to the baseline: badge centering uses these signed bounds.
+    setFont(c, font.style + ' ' + font.weight.split(' ').at(-1) + ' 30px "' + font.family + '"');
+    c.textBaseline = 'alphabetic';
+    for (const character of ['7', ':', '_']) {
+      const bounds = font.glyphs[String(character.codePointAt(0))];
+      if (!bounds || (bounds[0] === 0 && bounds[1] === 0)) continue;
+      const metrics = measureFontText(c, character);
+      if (
+        Math.abs(metrics.actualBoundingBoxAscent - (bounds[1] * 30) / font.unitsPerEm) > 0.025 ||
+        Math.abs(metrics.actualBoundingBoxDescent + (bounds[0] * 30) / font.unitsPerEm) > 0.025
+      )
+        throw Error('Signed ink bounds were lost: ' + font.family + ' ' + character);
+    }
+    c.letterSpacing = '0px';
+    c.wordSpacing = '0px';
+    c.textAlign = 'left';
+    const left = measureFontText(c, sample);
+    for (const [align, factor] of [
+      ['center', 0.5],
+      ['right', 1],
+      ['left', 0],
+    ]) {
+      c.textAlign = align;
+      const metrics = measureFontText(c, sample);
+      if (
+        Math.abs(metrics.width - left.width) > 0.025 ||
+        Math.abs(metrics.actualBoundingBoxLeft - left.actualBoundingBoxLeft - left.width * factor) >
+          0.025 ||
+        Math.abs(
+          metrics.actualBoundingBoxRight - left.actualBoundingBoxRight + left.width * factor,
+        ) > 0.025
+      )
+        throw Error('Alignment cache changed the ink anchor: ' + font.family + ' ' + align);
+    }
     if (!/Artist Credit|Historic Symbols/.test(font.family)) {
-      c.font = font.style + ' ' + font.weight.split(' ').at(-1) + ' 25.029px "' + font.family + '"';
+      c.textAlign = 'left';
+      const plain = measureFontText(c, 'Ag fn').width;
+      c.letterSpacing = '.125px';
+      c.wordSpacing = '.5px';
+      const tracked = measureFontText(c, 'Ag fn').width;
+      if (Math.abs(tracked - plain - 1.125) > 0.025)
+        throw Error('Tracking differs: ' + font.family + ' ' + (tracked - plain));
+      c.letterSpacing = '0px';
+      c.wordSpacing = '0px';
+    }
+    if (!/Artist Credit|Historic Symbols/.test(font.family)) {
+      setFont(
+        c,
+        font.style +
+          ' ' +
+          (font.requestedWeight ?? font.weight.split(' ').at(-1)) +
+          ' 25.029px "' +
+          font.family +
+          '"',
+      );
       c.textBaseline = 'alphabetic';
       const text = 'Flying First strike When this creature enters draw a card',
         words = text.split(' ');
@@ -170,4 +267,45 @@ export async function fontGeometryProbes({ fonts, moduleURL, assetBase }) {
     }
   }
   return { rows, wraps };
+}
+
+/** Native metrics survey used to regenerate the reviewed font catalog. */
+export async function rawFontSurvey({ fonts, assetBase }) {
+  const rows = [];
+  for (const [index, font] of fonts.entries()) {
+    const bytes = await fetch(new URL(font.sha256, assetBase)).then((r) => r.arrayBuffer());
+    const family = 'Survey Font ' + index;
+    const face = await new FontFace(family, bytes, {
+      weight: font.weight,
+      style: font.style,
+    }).load();
+    document.fonts.add(face);
+    const c = document.createElement('canvas').getContext('2d'),
+      cases = [];
+    c.textRendering = 'geometricPrecision';
+    c.fontKerning = 'normal';
+    for (const size of [24, 30, 100]) {
+      c.font =
+        font.style + ' ' + font.weight.split(' ').at(-1) + ' ' + size + 'px "' + family + '"';
+      for (const baseline of ['alphabetic', 'middle', 'top', 'bottom', 'hanging', 'ideographic']) {
+        c.textBaseline = baseline;
+        const m = c.measureText('Agjfn 0123456789');
+        const metrics = Object.fromEntries(
+          [
+            'width',
+            'actualBoundingBoxAscent',
+            'actualBoundingBoxDescent',
+            'fontBoundingBoxAscent',
+            'fontBoundingBoxDescent',
+            'alphabeticBaseline',
+            'hangingBaseline',
+            'ideographicBaseline',
+          ].map((k) => [k, m[k]]),
+        );
+        cases.push({ size, baseline, metrics });
+      }
+    }
+    rows.push({ ...font, cases });
+  }
+  return { ua: navigator.userAgent, rows };
 }

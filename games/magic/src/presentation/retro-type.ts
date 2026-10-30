@@ -1,3 +1,4 @@
+import { setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { alphaTypography } from './alpha-typography.js';
 import type { RenderedCardInput } from './face-layout.js';
@@ -31,7 +32,7 @@ export function paintEarlyExpansionType(
   c.save();
   c.translate(x + p.dx, y + p.dy);
   c.scale(p.width, 1);
-  c.font = `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
+  setFont(c, `${p.size}px "CardRenderer MTG MPlantin", Georgia`);
   c.fillStyle = `rgb(${p.gray},${p.gray},${p.gray})`;
   c.shadowColor = '#17140f';
   c.shadowBlur = 0;

@@ -1,0 +1,47 @@
+name: Font geometry across platforms
+on:
+  workflow_call:
+  workflow_dispatch:
+concurrency:
+  group: font-geometry-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  font-geometry:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            engines: chromium,webkit,firefox
+            browsers: chromium webkit firefox
+          - os: macos-latest
+            engines: chromium,webkit,firefox
+            browsers: chromium webkit firefox
+          - os: windows-latest
+            engines: chromium,firefox
+            browsers: chromium firefox
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      FONT_ENGINES: ${{ matrix.engines }}
+      CARD_GLINT_FONT_CACHE: .font-cache
+      FONT_GEOMETRY_RECEIPT: font-geometry-result.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - uses: actions/cache@v4
+        with:
+          path: .font-cache
+          key: font-bytes-${{ hashFiles('games/magic/src/presentation/font-geometry.json') }}
+      - run: npx playwright install --with-deps ${{ matrix.browsers }}
+      - run: node games/magic/tools/build-set-data.mjs
+      - run: npm run test:magic-fonts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: font-geometry-${{ matrix.os }}
+          path: font-geometry-result.json

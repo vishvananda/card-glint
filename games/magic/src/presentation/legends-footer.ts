@@ -1,4 +1,4 @@
-import { strokeFontText } from './font-geometry.js';
+import { setFont, strokeFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -47,7 +47,7 @@ function paint(c: CanvasContext, text: string, style: Lettering, liveChanges?: C
   ink.setTransform(matrix);
   ink.translate(style.x, 640);
   ink.scale(style.width, 1);
-  ink.font = `${style.size}px "CardRenderer MTG MPlantin", Georgia`;
+  setFont(ink, `${style.size}px "CardRenderer MTG MPlantin", Georgia`);
   ink.textAlign = style.align;
   ink.textBaseline = 'alphabetic';
   ink.letterSpacing = '0px';

@@ -1,4 +1,4 @@
-import { measureFontText } from './font-geometry.js';
+import { measureFontText, setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { paintRetroGrayText } from './retro-lettering.js';
 import type { RenderedCardInput, CardTextInk } from './face-layout.js';
@@ -23,7 +23,7 @@ export function paintRevisedTitle(
   c.save();
   c.translate(38, y);
   c.scale(1.03, 1);
-  c.font = '26px "CardRenderer MTG Goudy", Georgia';
+  setFont(c, '26px "CardRenderer MTG Goudy", Georgia');
   paintRetroGrayText(c, text, 0, 0, (maxWidth + originalX - 38) / 1.03, 1);
   c.restore();
 }
@@ -35,7 +35,7 @@ export function paintRevisedStats(
   liveChanges?: CardTextInk,
 ) {
   c.save();
-  c.font = '27.25px "CardRenderer MTG MPlantin", Georgia';
+  setFont(c, '27.25px "CardRenderer MTG MPlantin", Georgia');
   c.textAlign = 'right';
   // Stats use lighter ink than the title/artist on the reviewed W/G/B scans.
   paintRetroGrayText(c, text, 450.5, y + 11.5, 130, 1.25, '#d4d4d4', liveChanges);
@@ -44,7 +44,7 @@ export function paintRevisedStats(
 
 export function paintRevisedCredits(c: CanvasContext, artist: string) {
   c.save();
-  c.font = '22px "CardRenderer MTG MPlantin", Georgia';
+  setFont(c, '22px "CardRenderer MTG MPlantin", Georgia');
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
   c.translate(48, 642.5);
@@ -97,7 +97,7 @@ export function paintRevisedType(
   if (!usesRevisedTypeTypography(face)) return false;
   c.save();
   const native = measureFontText(c, 'Hg');
-  c.font = '21.7px "CardRenderer MTG Revised Plantin", Georgia';
+  setFont(c, '21.7px "CardRenderer MTG Revised Plantin", Georgia');
   const line = measureFontText(c, 'Hg');
   // One font-metric alignment, shared by the set; never a scan-specific offset.
   const opticalY =

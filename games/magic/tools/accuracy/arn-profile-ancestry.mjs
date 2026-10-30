@@ -1,3 +1,4 @@
+import { preFontGeometrySource } from './font-geometry-ancestry.mjs';
 import { preArtifactSourceRepair } from './artifact-source-repair-ancestry.mjs';
 import {
   preAtqProfileSource,
@@ -29,6 +30,7 @@ export function arnProfileDelta() {
   })());
 }
 export async function preArnProfileSource(file, bytes) {
+  bytes = await preFontGeometrySource(file, bytes);
   bytes = await preAtqProfileSource(file, bytes);
   const p = await arnProfileDelta(),
     e = p.files[file];

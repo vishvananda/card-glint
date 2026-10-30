@@ -1,3 +1,4 @@
+import { setFont } from './font-geometry.js';
 import { retainsOldFrameComponent } from '../calibration/old-frame-defaults.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { calibrationForFace } from '../calibration/selection.js';
@@ -24,7 +25,7 @@ export function paintEarlyReprintType(
   c.save();
   c.translate(p.x, p.y);
   c.scale(p.width, 1);
-  c.font = `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
+  setFont(c, `${p.size}px "CardRenderer MTG MPlantin", Georgia`);
   c.fillStyle = `rgb(${p.gray},${p.gray},${p.gray})`;
   c.shadowColor = '#17140f';
   c.shadowBlur = 0;

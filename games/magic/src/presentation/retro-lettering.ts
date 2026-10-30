@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -27,7 +27,7 @@ export function paintRetroLetterEdges(
   const ink = layer.getContext('2d');
   if (!ink) throw Error('Retro lettering needs a Canvas2D context');
   const matrix = c.getTransform();
-  ink.font = c.font;
+  setFont(ink, c.font);
   ink.textAlign = c.textAlign;
   ink.textBaseline = c.textBaseline;
   ink.letterSpacing = c.letterSpacing;

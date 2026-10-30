@@ -1,3 +1,4 @@
+import { preFontGeometrySource, fontGeometryHistoricalFiles } from './font-geometry-ancestry.mjs';
 import {
   preOldFrameAdoptionSource,
   oldFrameAdoptionHistoricalFiles,
@@ -193,6 +194,7 @@ export function oldFrameBasicIconsDelta() {
   })());
 }
 export async function preBasicIconsSource(file, bytes) {
+  bytes = await preFontGeometrySource(file, bytes);
   bytes = await preOldFrameAdoptionSource(file, bytes);
   bytes = await preOnslaughtSymbolSource(file, bytes);
   bytes = await preArtifactSourceRepair(file, bytes);
@@ -202,6 +204,7 @@ export async function preBasicIconsSource(file, bytes) {
 }
 
 export async function preOldFrameSource(file, bytes) {
+  bytes = await preFontGeometrySource(file, bytes);
   bytes = await preBasicIconsSource(file, bytes);
   bytes = await preOptionalComponentsSource(file, bytes);
   bytes = await preArtWindowSource(file, bytes);
@@ -216,7 +219,9 @@ export async function preOldFrameSource(file, bytes) {
 export async function oldFrameHistoricalSourceFiles(files) {
   const p = await oldFrameSourceDelta(),
     kept = [];
-  for (const file of await oldFrameAdoptionHistoricalFiles(files)) {
+  for (const file of await oldFrameAdoptionHistoricalFiles(
+    await fontGeometryHistoricalFiles(files),
+  )) {
     const key = file.startsWith('games/') ? file : path.relative(root, file);
     const e = p.files[key];
     if (

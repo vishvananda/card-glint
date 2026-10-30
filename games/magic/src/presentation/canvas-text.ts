@@ -1,4 +1,4 @@
-import { measureFontText, paintFontText } from './font-geometry.js';
+import { measureFontText, paintFontText, setFont } from './font-geometry.js';
 import { shapeModernHeading } from './modern-heading-font.js';
 import {
   type CanvasContext,
@@ -169,7 +169,7 @@ export function paintMana(
   context.fillStyle = symbol === 'B' ? 'white' : '#17140f';
   context.textAlign = 'center';
   context.textBaseline = 'middle';
-  context.font = `bold ${size * 0.62}px Georgia`;
+  setFont(context, `bold ${size * 0.62}px Georgia`);
   paintFontText(context, symbol, x + size / 2, y + size / 2, size * 0.9);
   context.restore();
 }
@@ -185,7 +185,10 @@ export function paintRules(
 ) {
   if (!rulesInkVisible(context)) return;
   const size = typeof font === 'number' ? font : font.size;
-  context.font = `${typeof font !== 'number' && font.italic ? 'italic ' : ''}${size}px "CardRenderer MTG MPlantin", Georgia`;
+  setFont(
+    context,
+    `${typeof font !== 'number' && font.italic ? 'italic ' : ''}${size}px "CardRenderer MTG MPlantin", Georgia`,
+  );
   const paragraphs = text
     .split('\n')
     .map((paragraph) => rulesLines(context, paragraph, width, size));
@@ -229,7 +232,7 @@ export function paintFittedText(
   if (!(width > 0)) throw Error('Magic title/type plate has no text space.');
   text = shapeModernHeading(text, family);
   context.save();
-  context.font = `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`;
+  setFont(context, `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`);
   const measured = measureFontText(context, text).width;
   // A long type already uses the available width. Expanding it would force a
   // smaller font height without gaining any horizontal space.
@@ -242,7 +245,7 @@ export function paintFittedText(
   }
   if (measured > width) {
     size = Math.max(size * 0.78, (size * width) / measured);
-    context.font = `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`;
+    setFont(context, `${bold ? 'bold ' : ''}${size}px "${family}", Georgia`);
   }
   paintTextInk(
     context,

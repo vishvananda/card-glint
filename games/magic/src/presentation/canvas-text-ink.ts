@@ -1,4 +1,4 @@
-import { paintFontText, strokeFontText } from './font-geometry.js';
+import { paintFontText, setFont, strokeFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -30,7 +30,7 @@ export function paintInsetText(
   try {
     c.scale(scale, scale);
     c.translate(-left, -top);
-    c.font = context.font;
+    setFont(c, context.font);
     c.fillStyle = context.fillStyle;
     c.textAlign = context.textAlign;
     c.textBaseline = context.textBaseline;

@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import {
   type CanvasContext,
@@ -104,7 +104,7 @@ export function paintSagaFace(
   }
   if (face.reverseStats && face.layout === 'transform') {
     c.fillStyle = '#65605a';
-    c.font = 'italic 20px "CardRenderer MTG MPlantin", Georgia';
+    setFont(c, 'italic 20px "CardRenderer MTG MPlantin", Georgia');
     c.textAlign = 'left';
     paintFontText(c, `${face.reverseStats.power}/${face.reverseStats.toughness}`, 41, 553);
   }
@@ -129,7 +129,10 @@ export function paintSagaFace(
         c.fillStyle = '#17140f';
         c.textAlign = 'center';
         c.textBaseline = 'middle';
-        c.font = `550 ${SAGA_MARKER_GEOMETRY.fontSize}px "${SAGA_MARKER_GEOMETRY.fontFamily}", Georgia`;
+        setFont(
+          c,
+          `550 ${SAGA_MARKER_GEOMETRY.fontSize}px "${SAGA_MARKER_GEOMETRY.fontFamily}", Georgia`,
+        );
         paintFontText(
           c,
           badge,
@@ -143,7 +146,7 @@ export function paintSagaFace(
   c.fillStyle = '#fff';
   c.textAlign = 'left';
   c.textBaseline = 'alphabetic';
-  c.font = '11px "CardRenderer MTG Relay", sans-serif';
+  setFont(c, '11px "CardRenderer MTG Relay", sans-serif');
   paintFontText(
     c,
     `${face.collectorNumber ?? ''}  ${(face.rarity ?? 'common')[0]!.toUpperCase()}`,
@@ -151,13 +154,13 @@ export function paintSagaFace(
     645,
   );
   paintFontText(c, `${face.setCode?.toUpperCase() ?? ''} • EN`, 32, 658);
-  c.font = '11px "CardRenderer MTG Artist Credit", serif';
+  setFont(c, '11px "CardRenderer MTG Artist Credit", serif');
   if (face.artist) paintFontText(c, 'a', 93, 658);
-  c.font = '11px "CardRenderer MTG Beleren", serif';
+  setFont(c, '11px "CardRenderer MTG Beleren", serif');
   paintFontText(c, face.artist ?? '', 108, 658, 210);
   if (face.legalText) {
     c.textAlign = 'right';
-    c.font = '10px "CardRenderer MTG MPlantin", Georgia';
+    setFont(c, '10px "CardRenderer MTG MPlantin", Georgia');
     paintFontText(c, face.legalText, 454, 646, 182);
   }
   c.restore();

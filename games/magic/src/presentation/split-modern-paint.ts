@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -121,7 +121,7 @@ export function paintModernSplitFooter(
   const artists = [
     ...new Set((face.faces ?? []).map((f) => f.artist ?? face.artist ?? '').filter(Boolean)),
   ].join(' & ');
-  c.font = '11px "CardRenderer MTG Relay", sans-serif';
+  setFont(c, '11px "CardRenderer MTG Relay", sans-serif');
   paintFontText(
     c,
     `${face.collectorNumber ?? ''} ${(face.rarity ?? 'common')[0]!.toUpperCase()}`,
@@ -130,14 +130,14 @@ export function paintModernSplitFooter(
   );
   paintFontText(c, `${face.setCode?.toUpperCase() ?? ''} • EN`, 32, 660);
   if (artists) {
-    c.font = '11px "CardRenderer MTG Artist Credit", serif';
+    setFont(c, '11px "CardRenderer MTG Artist Credit", serif');
     paintFontText(c, 'a', 95, 660);
-    c.font = '700 11px "CardRenderer MTG Beleren Small Caps", serif';
+    setFont(c, '700 11px "CardRenderer MTG Beleren Small Caps", serif');
     paintFontText(c, artists, 110, 660, 193);
   }
   if (face.legalText) {
     c.textAlign = 'right';
-    c.font = '10px "CardRenderer MTG MPlantin", Georgia';
+    setFont(c, '10px "CardRenderer MTG MPlantin", Georgia');
     paintFontText(c, face.legalText, 455, 646, 170);
   }
   if (hasOvalSecurityStamp(face)) {

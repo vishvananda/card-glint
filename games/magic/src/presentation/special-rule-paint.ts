@@ -1,4 +1,4 @@
-import { measureFontText, paintFontText } from './font-geometry.js';
+import { measureFontText, paintFontText, setFont } from './font-geometry.js';
 import { modernWalkerBodyProfile, modernWalkerProfile } from './modern-printing-profile.js';
 import { WALKER_GEOMETRY, paintWalkerGeometry } from './planeswalker-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
@@ -93,7 +93,10 @@ function paintAbilityColon(
     x = 0;
   }
   context.fillStyle = PLANESWALKER_RULE_GEOMETRY.colonInk;
-  context.font = `${PLANESWALKER_RULE_GEOMETRY.colonFontSize * (adjustment?.size ?? 1)}px ${PLANESWALKER_RULE_GEOMETRY.colonFontFamily}`;
+  setFont(
+    context,
+    `${PLANESWALKER_RULE_GEOMETRY.colonFontSize * (adjustment?.size ?? 1)}px ${PLANESWALKER_RULE_GEOMETRY.colonFontFamily}`,
+  );
   context.textAlign = 'center';
   context.textBaseline = 'alphabetic';
   const ink = measureFontText(context, ':');
@@ -150,7 +153,10 @@ export function paintSpecialRules(
     context.textAlign = 'left';
     if (row.layout) paintRulesLayout(context, row.layout, images);
     else {
-      context.font = `${row.reminder ? 'italic ' : ''}${row.font}px "CardRenderer MTG MPlantin", Georgia`;
+      setFont(
+        context,
+        `${row.reminder ? 'italic ' : ''}${row.font}px "CardRenderer MTG MPlantin", Georgia`,
+      );
       const textHeight = rulesLines(context, row.text, row.width, row.font).length * row.font;
       paintRules(
         context,
@@ -209,7 +215,7 @@ export function paintSpecialRules(
         context.fillStyle = 'white';
         context.textAlign = 'center';
         context.textBaseline = 'middle';
-        context.font = 'bold 19px "CardRenderer MTG Beleren", Georgia';
+        setFont(context, 'bold 19px "CardRenderer MTG Beleren", Georgia');
         paintFontText(context, badge, bx + badgeW / 2, by + badgeH / 2, badgeW - 3);
       }
     });

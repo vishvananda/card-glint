@@ -1,4 +1,4 @@
-import { measureFontText, paintFontText } from './font-geometry.js';
+import { measureFontText, paintFontText, setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import type { ManaSymbolTransform } from './symbol-adjustment.js';
@@ -67,7 +67,7 @@ export function paintEarlyManaNumeral(
   context.beginPath();
   context.arc(x + size / 2 - 0.25, y + size / 2 - 0.5, (size / 2) * 0.81, 0, Math.PI * 2);
   context.fill();
-  context.font = '100px "CardRenderer MTG MPlantin"';
+  setFont(context, '100px "CardRenderer MTG MPlantin"');
   context.textAlign = 'left';
   context.textBaseline = 'alphabetic';
   context.fillStyle = '#111';

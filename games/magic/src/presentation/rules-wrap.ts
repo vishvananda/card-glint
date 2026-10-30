@@ -1,4 +1,4 @@
-import { measureFontText } from './font-geometry.js';
+import { measureFontText, setFont } from './font-geometry.js';
 import { type CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import { symbolTextParts, type RulesRun } from './face-layout.js';
 
@@ -76,7 +76,7 @@ function measure(
     else merged.push({ ...piece });
   }
   return merged.map((piece) => {
-    context.font = rulesFont(size, piece.italic);
+    setFont(context, rulesFont(size, piece.italic));
     const metrics = measureFontText(context, piece.text);
     return {
       ...piece,

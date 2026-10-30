@@ -1,3 +1,4 @@
+import { preFontGeometrySource } from '../font-geometry-ancestry.mjs';
 import { preWalkerGeometry } from './geometry-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -29,6 +30,7 @@ export async function walkerAncestry() {
   }));
 }
 export async function preWalkerSource(file, bytes) {
+  bytes = await preFontGeometrySource(file, bytes);
   bytes = await preWalkerGeometry(file, bytes);
   const proof = await walkerAncestry();
   const c = proof.files[file];

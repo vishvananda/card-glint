@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import { inheritedOldFrameManaBase } from '../calibration/old-frame-defaults.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import { paintRetroFramePlate } from './retro-frame-plate.js';
@@ -186,7 +186,7 @@ export function paintRetroFace(
   const adjustedMana = adjustedSymbolBounds(spacedBounds, costAdjustment);
   c.shadowColor = '#000b';
   c.shadowOffsetX = c.shadowOffsetY = c.getTransform().a;
-  c.font = '27.8px "CardRenderer MTG Goudy", Georgia';
+  setFont(c, '27.8px "CardRenderer MTG Goudy", Georgia');
   const titleX = details?.titleX ?? x;
   const titleY = y + h / 2 + (details?.titleYOffset ?? 0),
     titleWidth = Math.max(
@@ -253,7 +253,7 @@ export function paintRetroFace(
   const originalBounds = calibratedStyledSymbolBounds(face, symbolUrl, baseBounds, 'retro');
   const symbolBounds = adjustedSymbolBounds(originalBounds, face.symbolAdjustment?.set);
   const typePlacement = retroTypePlacement(face);
-  c.font = `${typePlacement.fontSize}px "CardRenderer MTG MPlantin", Georgia`;
+  setFont(c, `${typePlacement.fontSize}px "CardRenderer MTG MPlantin", Georgia`);
   const paintType = isRevisedLand(face)
     ? (text: string, _x: number, _y: number, width: number) =>
         paintRevisedLandText(c, text, 'type', width, face.textInk)
@@ -424,7 +424,7 @@ export function paintRetroFace(
   c.shadowColor = details?.statsOpaqueShadow ? '#000' : '#000b';
   if (details) c.shadowOffsetX = c.shadowOffsetY = details.statsShadow * c.getTransform().a;
   c.fillStyle = alphaTypography(face.setCode)?.statsInk ?? retroInk(face);
-  c.font = '27.8px "CardRenderer MTG MPlantin", Georgia';
+  setFont(c, '27.8px "CardRenderer MTG MPlantin", Georgia');
   c.textBaseline = 'middle';
   if (face.power != null && face.toughness != null && !paintEarlyExpansionStats(c, face)) {
     const [sx, sy, sw, sh] = retroPx(rect.stats);
@@ -453,7 +453,7 @@ export function paintRetroFace(
       else if (face.artist) {
         const [fx, fy, fw, fh] = retroPx(rect.footer);
         c.textAlign = 'center';
-        c.font = '15.6px "CardRenderer MTG MPlantin", Georgia';
+        setFont(c, '15.6px "CardRenderer MTG MPlantin", Georgia');
         paintFontText(c, `Illus. ${face.artist}`, fx + fw / 2, fy + fh / 2, fw);
       }
     });
@@ -467,7 +467,7 @@ function paintRetroExtras(c: CanvasContext, face: RenderedCardInput, legal: bool
       c.save();
       c.shadowColor = 'transparent';
       c.fillStyle = cardStock(face.setCode, face.borderColor).ink;
-      c.font = '10px "CardRenderer MTG MPlantin", Georgia';
+      setFont(c, '10px "CardRenderer MTG MPlantin", Georgia');
       c.textAlign = 'left';
       paintFontText(c, face.legalText!, 49, 646, 390);
       c.restore();
@@ -482,7 +482,7 @@ function paintRetroExtras(c: CanvasContext, face: RenderedCardInput, legal: bool
       c.save();
       c.shadowColor = 'transparent';
       c.fillStyle = cardStock(face.setCode, face.borderColor).ink;
-      c.font = '10px "CardRenderer MTG MPlantin", Georgia';
+      setFont(c, '10px "CardRenderer MTG MPlantin", Georgia');
       c.textAlign = 'right';
       paintFontText(
         c,

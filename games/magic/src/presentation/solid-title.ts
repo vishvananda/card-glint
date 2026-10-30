@@ -1,4 +1,4 @@
-import { paintFontText, strokeFontText } from './font-geometry.js';
+import { paintFontText, setFont, strokeFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -24,7 +24,7 @@ export function paintSolidTitle(
   const ink = layer.getContext('2d');
   if (!ink) throw Error('Solid title needs a Canvas2D context');
   ink.setTransform(matrix);
-  ink.font = c.font;
+  setFont(ink, c.font);
   ink.textAlign = c.textAlign;
   ink.textBaseline = c.textBaseline;
   ink.letterSpacing = c.letterSpacing;

@@ -1,4 +1,4 @@
-import { paintFontText } from './font-geometry.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import type { CanvasContext } from '../../../../packages/browser/src/canvas-raster.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { setTitleCalibration } from '../calibration/title-profiles.js';
@@ -42,7 +42,10 @@ export function paintLegacyCalibratedTitle(
   const shadow = c.getTransform().a * p.shadow;
   c.translate(x + p.dx, y + p.dy);
   c.scale(p.width, 1);
-  c.font = `${p.size}px "${role === 'title' ? 'CardRenderer MTG Goudy' : 'CardRenderer MTG MPlantin'}", Georgia`;
+  setFont(
+    c,
+    `${p.size}px "${role === 'title' ? 'CardRenderer MTG Goudy' : 'CardRenderer MTG MPlantin'}", Georgia`,
+  );
   if (p.wordSpacing) c.wordSpacing = `${p.wordSpacing}px`;
   c.fillStyle = `rgb(${p.gray},${p.gray},${p.gray})`;
   c.shadowOffsetX = c.shadowOffsetY = shadow;

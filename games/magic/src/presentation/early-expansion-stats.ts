@@ -1,4 +1,4 @@
-import { paintFontText, strokeFontText } from './font-geometry.js';
+import { paintFontText, setFont, strokeFontText } from './font-geometry.js';
 import {
   type CanvasContext,
   rasterCanvas,
@@ -34,7 +34,7 @@ export function paintEarlyExpansionStats(c: CanvasContext, face: RenderedCardInp
   try {
     c.translate(p.x, p.y);
     c.scale(p.width, 1);
-    c.font = `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
+    setFont(c, `${p.size}px "CardRenderer MTG MPlantin", Georgia`);
     c.textAlign = 'right';
     c.textBaseline = 'alphabetic';
     c.letterSpacing = '0px';
@@ -66,7 +66,7 @@ export function paintEarlyExpansionStatsInk(
     const ink = layer.getContext('2d');
     if (!ink) throw Error('Stats ink needs a Canvas2D context');
     const matrix = c.getTransform();
-    ink.font = c.font;
+    setFont(ink, c.font);
     ink.textAlign = c.textAlign;
     ink.textBaseline = c.textBaseline;
     ink.letterSpacing = c.letterSpacing;

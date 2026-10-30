@@ -1,3 +1,4 @@
+import { setFont } from './font-geometry.js';
 import { paintEighthStockRule } from './eighth-stock-rule.js';
 import { eighthFrameGeometry, paintEighthFrame } from './eighth-frame-geometry.js';
 import { eighthPrintingProfile } from './eighth-printing-profile.js';
@@ -177,7 +178,7 @@ export function paintFramePlateFace(
     size,
   ];
   const adjustedMana = adjustedSymbolBounds(manaBounds, costAdjustment);
-  c.font = `bold ${plate.titleSize}px "${family}", Georgia`;
+  setFont(c, `bold ${plate.titleSize}px "${family}", Georgia`);
   c.save();
   if (eighth || retained) c.translate(...titleTranslation(face, eighth ? 'eighth' : 'modern'));
   if (retained) c.letterSpacing = `${FACE_TEXT.titleTracking}px`;
@@ -244,7 +245,7 @@ export function paintFramePlateFace(
   const eighthType = eighthPrintingProfile(face)?.headings.type;
   c.translate(typeFit.dx + (eighthType?.dx ?? 0), typeFit.dy + (eighthType?.dy ?? 0));
   paintColorshiftedHeading(c, face, plate.frame);
-  c.font = `bold ${plate.typeSize}px "${family}", Georgia`;
+  setFont(c, `bold ${plate.typeSize}px "${family}", Georgia`);
   paintFittedText(
     c,
     face.typeLine ?? '',
@@ -286,7 +287,7 @@ export function paintFramePlateFace(
   if (face.power != null && face.toughness != null) {
     const [sx, sy, sw, sh] = px(rects.stats);
     const statsFamily = eighth ? 'CardRenderer MTG Matrix' : 'CardRenderer MTG Beleren';
-    c.font = `bold ${retained ? FACE_TEXT.statsFont : 25}px "${statsFamily}", Georgia`;
+    setFont(c, `bold ${retained ? FACE_TEXT.statsFont : 25}px "${statsFamily}", Georgia`);
     c.textAlign = 'center';
     c.textBaseline = 'middle';
     paintModernStatsText(

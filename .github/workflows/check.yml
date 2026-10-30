@@ -10,6 +10,8 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  font-geometry:
+    uses: ./.github/workflows/font-geometry.yml
   build:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -109,7 +111,7 @@ jobs:
   # Preserve the required check name and require every shard to succeed.
   renderer:
     if: always()
-    needs: [build, verify]
+    needs: [build, verify, font-geometry]
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
@@ -131,9 +133,11 @@ jobs:
         env:
           BUILD_RESULT: ${{ needs.build.result }}
           VERIFY_RESULT: ${{ needs.verify.result }}
+          FONT_RESULT: ${{ needs.font-geometry.result }}
         run: |
           test "$BUILD_RESULT" = success
           test "$VERIFY_RESULT" = success
+          test "$FONT_RESULT" = success
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: renderer

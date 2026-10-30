@@ -1,4 +1,5 @@
-import { paintFontText } from './font-geometry.js';
+import { loadFutureManaFont } from './future-mana.js';
+import { paintFontText, setFont } from './font-geometry.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import {
   type CanvasContext,
@@ -82,7 +83,7 @@ export function paintStandardTemplate(
     const reverse = battleReverseStatsLayout(c, face);
     if (reverse) {
       c.fillStyle = BATTLE_REVERSE_STATS.color;
-      c.font = reverse.font;
+      setFont(c, reverse.font);
       c.textAlign = 'right';
       c.textBaseline = 'alphabetic';
       c.letterSpacing = '0px';
@@ -120,7 +121,7 @@ export function loadStandardTemplateFonts(face: RenderedCardInput): Promise<void
         throw error;
       }));
   }
-  return (templateFonts ??= Promise.all([
+  const prepared = (templateFonts ??= Promise.all([
     canvasFonts().load('400 24px "CardRenderer MTG Matrix"'),
     canvasFonts().load('700 24px "CardRenderer MTG Matrix"'),
     canvasFonts().load('700 24px "CardRenderer MTG Matrix Small Caps"'),
@@ -130,4 +131,7 @@ export function loadStandardTemplateFonts(face: RenderedCardInput): Promise<void
       templateFonts = undefined;
       throw error;
     }));
+  return face.frameTemplate === 'future'
+    ? Promise.all([prepared, loadFutureManaFont(face)]).then(() => undefined)
+    : prepared;
 }

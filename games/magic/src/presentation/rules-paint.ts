@@ -1,4 +1,4 @@
-import { paintFontText, strokeFontText } from './font-geometry.js';
+import { paintFontText, setFont, strokeFontText } from './font-geometry.js';
 import { eighthRulesMaximum, eighthCompactRules } from './eighth-rules.js';
 import { eighthPrintingProfile } from './eighth-printing-profile.js';
 import { modernOrdinaryPlates } from './modern-printing-profile.js';
@@ -242,7 +242,7 @@ export function paintRulesLayout(
           images,
         );
       else {
-        ink.font = rulesFont(run.size, run.italic);
+        setFont(ink, rulesFont(run.size, run.italic));
         paintScaledText(ink, run, x, line.baseline, false);
       }
       x += run.width;
@@ -255,7 +255,7 @@ export function paintRulesLayout(
       let x = line.x ?? layout.x;
       for (const run of line.runs) {
         if (!run.symbol) {
-          ink.font = rulesFont(run.size, run.italic);
+          setFont(ink, rulesFont(run.size, run.italic));
           ink.lineWidth = run.size * inkInsetEm * 2;
           paintScaledText(ink, run, x, line.baseline, true);
         }
