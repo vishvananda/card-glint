@@ -34,6 +34,7 @@ window.exampleReady = (async () => {
       transform: [2, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1, 0, -1, 1, 0, 1],
     },
   ]);
+  await renderer.ready(1, 1);
   const paint = (pointer = [0.5, 0.5]) => renderer.render({ viewProjection: IDENTITY, pointer });
   paint();
   canvas.onpointermove = (event) => {

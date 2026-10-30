@@ -23,6 +23,7 @@ const source = {
 const $ = (id) => document.getElementById(id),
   renderer = await createRenderer({
     canvas: $('card'),
+    invalidate: paint,
     wasmUrl: new URL('./renderer_bg.wasm', import.meta.url),
   });
 let preset = 'm21',
@@ -79,6 +80,9 @@ async function preview(id) {
     }
     const previous = active;
     active = request;
+    paint();
+    await renderer.ready(request, 1);
+    if (request !== revision) return;
     paint();
     if (previous) renderer.releaseCards(new Uint32Array([previous]));
     $('status').textContent = 'Preview: ' + printingPresets.find((p) => p.id === id).label;

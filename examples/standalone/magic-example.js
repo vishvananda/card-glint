@@ -23,7 +23,7 @@ editor.value = JSON.stringify(
   null,
   2,
 );
-const renderer = await createRenderer({ canvas });
+const renderer = await createRenderer({ canvas, invalidate: paint });
 let revision = 0;
 let pointer = [0.5, 0.5];
 function paint() {
