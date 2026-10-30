@@ -1,3 +1,4 @@
+import { preDeferredGpuSource } from './deferred-gpu-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from './common.mjs';
@@ -21,6 +22,7 @@ export function finishAncestryProof() {
   })());
 }
 export async function preFinishSource(file, bytes) {
+  bytes = await preDeferredGpuSource(file, bytes);
   const change = (await finishAncestryProof()).files[file];
   if (!change) return bytes;
   assert.equal(hash(bytes), change.after, 'Unreviewed finish source: ' + file);

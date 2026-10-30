@@ -1,3 +1,4 @@
+import { preDeferredGpuSource } from '../games/magic/tools/accuracy/deferred-gpu-ancestry.mjs';
 import { preM21StyleSource } from '../games/magic/tools/accuracy/m21-style-ancestry.mjs';
 import { preOracleFlavorSource } from '../games/magic/tools/accuracy/oracle-flavor-ancestry.mjs';
 import { preFinishSource } from '../games/magic/tools/accuracy/finish-ancestry.mjs';
@@ -27,7 +28,10 @@ export async function hostWorkerProofSource(file) {
               file,
               await preOracleFlavorSource(
                 file,
-                await preM21StyleSource(file, await readFile(file)),
+                await preM21StyleSource(
+                  file,
+                  await preDeferredGpuSource(file, await readFile(file)),
+                ),
               ),
             ),
           ),

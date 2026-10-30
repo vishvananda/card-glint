@@ -81,7 +81,7 @@
     "test:ci": "node scripts/ci/run.mjs",
     "test:ci:list": "node scripts/ci/run.mjs --list --shards 4",
     "test:ci-plan": "node --test tests/ci-plan.test.mjs",
-    "test:gpu-lifecycle": "node --test tests/gpu-program.test.mjs && node tests/gpu-readiness.mjs && node tests/gpu-material-parity.mjs"
+    "test:gpu-lifecycle": "node --test tests/gpu-program.test.mjs && node tests/gpu-readiness.mjs && node tests/gpu-material-parity.mjs && node tests/magic-deferred-gpu-ancestry.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
