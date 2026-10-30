@@ -110,7 +110,10 @@ npm run test:parallax          # recessed ink, floor illumination and shared lig
 npm run test:package           # independent packed-library consumer
 ```
 
-CI runs these checks and uploads browser evidence. `npm run format` applies
+CI builds once and distributes the complete, deduplicated test plan across four
+verification jobs. It uploads per-check timings and browser evidence. See the
+[CI and release guide](docs/ci.md) for reproducing a job and publishing the exact
+verified build. `npm run format` applies
 rustfmt and Prettier. Native and WASM Clippy run with warnings denied; unsafe
 Rust is forbidden.
 
@@ -138,8 +141,8 @@ with local artwork. Keep the WASM and its matching JavaScript files together.
 Release checksums and source/toolchain metadata accompany both archives.
 
 To package a source checkout yourself, build it and run `npm run package:release`.
-CI tests the extracted browser ZIP as well as an independent npm consumer; pushing
-a matching `vX.Y.Z` tag publishes those checked artifacts to GitHub Releases.
+CI tests the extracted browser ZIP as well as an independent npm consumer. After
+main CI passes, pushing a matching `vX.Y.Z` tag publishes those checked artifacts to GitHub Releases.
 
 For direct inclusion in an HTML page, use the version-pinned **jsDelivr** build:
 

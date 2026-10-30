@@ -1,8 +1,7 @@
 name: CI
 on:
   push:
-    branches: ['**']
-    tags: ['v*']
+    branches: [main]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -11,11 +10,9 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  renderer:
+  build:
     runs-on: ubuntu-24.04
-    # Native historical replays plus software-GPU finish checks exceed 45m
-    # on a cold runner. Keep a bounded budget without dropping coverage.
-    timeout-minutes: 75
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -34,12 +31,52 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run check
-      - run: npm run test:package
       - run: npm run magic:data:check
-      - run: npm run test:magic-lazy
-      - run: npm run test:calibration-editor
-      # Hosted runners may select Azure through a mirror+file URI.
-      # Keep the signed Ubuntu repositories and the complete browser dependency set.
+      - run: cargo clippy --workspace --target wasm32-unknown-unknown -- -D warnings
+      - run: npm run package:release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: renderer-build
+          retention-days: 14
+          overwrite: true
+          path: |
+            dist/lib/
+            dist/types/
+            dist/lab/
+            dist/releases/*.tgz
+            dist/releases/*.zip
+            dist/releases/release.json
+            dist/releases/SHA256SUMS
+            packages/browser/generated/
+            games/magic/src/data/eager.ts
+            games/magic/src/data/eager-wording.ts
+            games/magic/src/data/generated-manifest.json
+            games/magic/src/data/sets/
+      - name: Upload showcase
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist/lab
+  verify:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: renderer-build
+          path: .
       - name: Use primary Ubuntu archive for browser dependencies
         run: |
           for source in /etc/apt/sources.list /etc/apt/sources.list.d/*.sources /etc/apt/sources.list.d/*.list /etc/apt/apt-mirrors*.txt; do
@@ -51,66 +88,55 @@ jobs:
             fi
           done
       - run: npx playwright install --with-deps chromium webkit
-      - run: npm run test:magic-lazy-browser
-      - run: npm run test:magic-accuracy
-      - run: npm run test:set-symbol-masks
-      - run: npm run test:foil-continuity
-      - run: npm run test:normal-lighting
-      - run: npm run test:printing-apis
-      - run: npm run test:kernels
-      - run: cargo clippy --workspace --target wasm32-unknown-unknown -- -D warnings
       - name: Start preview
         run: |
-          npm run preview > /tmp/card-glint-preview.log 2>&1 &
+          npm run preview -- --strictPort > /tmp/card-glint-preview.log 2>&1 &
           for attempt in {1..60}; do
             if curl -fsS http://127.0.0.1:4283/card-glint/ > /dev/null; then exit 0; fi
             sleep 1
           done
           cat /tmp/card-glint-preview.log
           exit 1
-      - run: npm run test:browser
-      - run: npm run test:showcase
-      - run: npm run test:magic
-      - run: node tests/printing-presets-demo.mjs
-      - run: npm run test:surfaces
-      - run: npm run test:touch
-      - run: npm run test:hover-isolation
-      - run: npm run test:overlay-foil
-      - run: npm run test:hologram
-      - run: npm run test:coverage
-      - run: npm run test:host
-      - run: npm run test:distinct-faces
-      - run: npm run test:worn
-      - run: npm run test:cardstock
-      - run: npm run test:print-sampling
-      - run: npm run test:rain-fog
-      - run: npm run test:ripple-budget
-      - run: npm run test:ripple-geometry
-      - run: npm run test:deformation
-      - run: npm run test:parallax
-      - run: npm run test:optics
-      - run: npm run package:release
-      - run: npm run test:release
-      - run: npm run test:cdn-publish
-      - uses: actions/upload-artifact@v4
-        if: startsWith(github.ref, 'refs/tags/v')
-        with:
-          name: release-packages
-          path: |
-            dist/releases/*.tgz
-            dist/releases/*.zip
-            dist/releases/release.json
-            dist/releases/SHA256SUMS
+      - name: Verify shard
+        run: npm run test:ci -- --shards 4 --shard ${{ matrix.shard }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: renderer-evidence
-          path: evidence/
-      - name: Upload showcase
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v5
+          name: ci-times-${{ matrix.shard }}
+          path: evidence/ci-times-${{ matrix.shard }}.json
+      - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          path: dist/lab
+          name: renderer-evidence-${{ matrix.shard }}
+          path: evidence/
+  # Preserve the required check name and require every shard to succeed.
+  renderer:
+    if: always()
+    needs: [build, verify]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        if: needs.build.result == 'success'
+        with:
+          pattern: ci-times-*
+          merge-multiple: true
+          path: ci-results
+      - name: Check complete test coverage and report timing
+        if: needs.build.result == 'success'
+        run: node scripts/ci/report.mjs --results ci-results --shards 4
+      - name: Require successful build and every verification job
+        if: always()
+        env:
+          BUILD_RESULT: ${{ needs.build.result }}
+          VERIFY_RESULT: ${{ needs.verify.result }}
+        run: |
+          test "$BUILD_RESULT" = success
+          test "$VERIFY_RESULT" = success
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: renderer
@@ -130,37 +156,3 @@ jobs:
       - name: Deploy showcase
         id: deployment
         uses: actions/deploy-pages@v5
-  release:
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: renderer
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          name: release-packages
-          path: release-packages
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Select verified immutable release artifacts
-        id: artifacts
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-        run: node scripts/release-artifacts.mjs release-packages
-      - name: Publish immutable CDN tree
-        run: node scripts/publish-cdn.mjs release-packages
-      - name: Publish checked packages
-        if: steps.artifacts.outputs.published != 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-        run: |
-          VERSION="${GITHUB_REF_NAME#v}"
-          gh release create "$GITHUB_REF_NAME" release-packages/* \
-            --verify-tag --title "card-glint $GITHUB_REF_NAME" \
-            --notes-file "docs/releases/$VERSION.md"
