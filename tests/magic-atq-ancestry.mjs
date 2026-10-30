@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile } from './magic-font-history-view.mjs';
 import { gunzipSync } from 'node:zlib';
 import { root, hash } from '../games/magic/tools/accuracy/common.mjs';
 import {

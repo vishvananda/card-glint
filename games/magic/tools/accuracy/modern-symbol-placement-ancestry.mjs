@@ -1,3 +1,4 @@
+import { preFontGeometrySource } from './font-geometry-ancestry.mjs';
 // Compatibility for Original accuracy measurements, never Oracle-modern faces.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -46,6 +47,7 @@ export function modernSymbolPlacementDelta() {
   })());
 }
 export async function preModernSymbolPlacementSource(file, bytes) {
+  bytes = await preFontGeometrySource(file, bytes);
   const e = (await modernSymbolPlacementDelta()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }

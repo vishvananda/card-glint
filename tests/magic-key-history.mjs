@@ -8,6 +8,7 @@ export function withoutModernCostRevision(key) {
       ? value
           .filter(
             (entry) =>
+              entry !== 'explicit-font-geometry-v1' &&
               !(
                 Array.isArray(entry) &&
                 entry.length === 1 &&

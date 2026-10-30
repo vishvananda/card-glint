@@ -1,3 +1,4 @@
+import { preFontGeometrySource } from './font-geometry-ancestry.mjs';
 import {
   preArnSymbolRoleSource,
   arnSymbolRoleHistoricalFiles,
@@ -75,6 +76,7 @@ export function oldFrameAdoptionDelta() {
   })());
 }
 export async function preOldFrameAdoptionSource(file, bytes) {
+  bytes = await preFontGeometrySource(file, bytes);
   bytes = await preArnSymbolRoleSource(file, bytes);
   const entry = (await oldFrameAdoptionDelta()).files[file];
   return entry && entry.beforeSource !== null && hash(bytes) === entry.after

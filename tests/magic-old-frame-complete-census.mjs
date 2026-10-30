@@ -1,12 +1,14 @@
+import { fontGeometryTaskAffected } from '../games/magic/tools/accuracy/font-geometry-ancestry.mjs';
 import {
   onsSymbolStatsAffected,
   onsSymbolStatsDelta,
 } from '../games/magic/tools/accuracy/ons-symbol-stats-ancestry.mjs';
 import { arnSymbolRoleRuntimeParent } from '../games/magic/tools/accuracy/arn-symbol-role-ancestry.mjs';
 import assert from 'node:assert/strict';
-import fs from 'node:fs/promises';
+import fs from './magic-font-history-view.mjs';
 import { gunzipSync } from 'node:zlib';
-import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { sourceHash } from './magic-font-history-view.mjs';
 import { calibrationSetStatus } from '../games/magic/tools/accuracy/calibration-ledger.mjs';
 const file = 'games/magic/fixtures/accuracy/mirage-onslaught/complete-census.json.gz';
 const bytes = await fs.readFile(file);
@@ -136,15 +138,21 @@ for (const report of reports) {
     for (const [task, item] of Object.entries(group.tasks))
       if (
         ['validated', 'validated-default'].includes(item.status) &&
-        (await onsSymbolStatsAffected(set.set, task, false, group)) &&
-        item.proof?.onsSymbolStats !== (await onsSymbolStatsDelta()).afterRenderer
+        (fontGeometryTaskAffected(task) ||
+          ((await onsSymbolStatsAffected(set.set, task, false, group)) &&
+            item.proof?.onsSymbolStats !== (await onsSymbolStatsDelta()).afterRenderer))
       )
         expected.push(group.key + '::' + task);
   const actual = report.outstanding.filter((o) => nonfoil.has(o.group));
   assert.deepEqual(actual.map((o) => o.group + '::' + o.task).sort(), expected.sort(), report.set);
   for (const row of actual) {
-    assert.equal(row.status, 'needs-audit');
-    assert.match(row.reason, /Onslaught cost-disc paper and filled P\/T changed/);
+    if (fontGeometryTaskAffected(row.task)) {
+      assert.equal(row.status, 'stale');
+      assert.match(row.reason, /Typography geometry changed in 0\.7\.10/);
+    } else {
+      assert.equal(row.status, 'needs-audit');
+      assert.match(row.reason, /Onslaught cost-disc paper and filled P\/T changed/);
+    }
   }
 }
 const tampered = structuredClone(scoped);

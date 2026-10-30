@@ -1,6 +1,6 @@
 import { preOldFrameAdoptionSource } from '../games/magic/tools/accuracy/old-frame-adoption-ancestry.mjs';
 import assert from 'node:assert/strict';
-import fs from 'node:fs/promises';
+import fs from './magic-font-history-view.mjs';
 import {
   artifactSourceRepairDelta,
   artifactSourceRepairAffected,
@@ -33,7 +33,11 @@ for (const set of ['arn', 'atq']) {
     false,
   );
 }
-assert(await oldFrameSourceRuntimeCompatible('games/magic/src', p.beforeRenderer, '4ed'));
+assert.equal(
+  await oldFrameSourceRuntimeCompatible('games/magic/src', p.beforeRenderer, '4ed'),
+  false,
+  'New font geometry requires current review even on unrelated sets',
+);
 assert.equal(await oldFrameSourceRuntimeCompatible('games/magic/src', p.beforeRenderer), false);
 
 const server = await createServer({

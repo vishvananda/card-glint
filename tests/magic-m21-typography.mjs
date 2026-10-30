@@ -173,7 +173,8 @@ try {
       painted.length = 0;
       paintModernStatsText(c, '2/3', 420, 625, 80, { ...face, typeLine: 'Creature' });
       check(
-        painted.length === 1 && painted[0].font.includes('29.1px'),
+        painted.length === 1 &&
+          Math.abs(Number(/([\d.]+)px/.exec(painted[0].font)[1]) - 29.1) <= 1 / 128,
         'P/T shared size must apply once',
       );
       check(painted[0].rendering === 'geometricPrecision', 'P/T precise raster mode');
@@ -196,8 +197,10 @@ try {
         typeLine: 'Creature',
       });
       check(
-        painted.length === 1 && painted[0].font === previous && painted[0].rendering === 'auto',
-        'Unrelated P/T unchanged',
+        painted.length === 1 &&
+          painted[0].font === previous &&
+          painted[0].rendering === 'geometricPrecision',
+        'Unrelated P/T retains its font and size under shared precise rasterization',
       );
       return {
         unboundedLines: first.lines.length,

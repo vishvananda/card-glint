@@ -595,7 +595,14 @@ try {
     const balanceBox = {
       x: 0,
       y: 0,
-      width: ctx.measureText('word word word word word').width + 0.1,
+      width:
+        layoutRules(
+          ctx,
+          [{ role: 'rules', runs: [{ text: 'word word word word word' }] }],
+          { x: 0, y: 0, width: 10000, height: 100 },
+          24,
+          24,
+        ).lines[0].width + 0.1,
       height: 200,
     };
     const balanceText = [{ role: 'rules', runs: [{ text: 'word word word word word word word' }] }];

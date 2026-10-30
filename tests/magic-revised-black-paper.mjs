@@ -5,7 +5,7 @@ import {
 } from '../games/magic/tools/accuracy/revised-mana-fit-ancestry.mjs';
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { readFile } from 'node:fs/promises';
+import { readFile } from './magic-font-history-view.mjs';
 import { gunzipSync } from 'node:zlib';
 import { createServer } from './magic-vite.mjs';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';

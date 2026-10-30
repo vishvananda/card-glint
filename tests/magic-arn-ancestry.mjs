@@ -3,9 +3,10 @@ import {
   atqProfileHistoricalHash,
 } from '../games/magic/tools/accuracy/atq-profile-ancestry.mjs';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile } from './magic-font-history-view.mjs';
 import { gunzipSync } from 'node:zlib';
-import { root, hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { root, hash } from '../games/magic/tools/accuracy/common.mjs';
+import { sourceHash } from './magic-font-history-view.mjs';
 import {
   arnProfileDelta,
   preArnProfileSource,

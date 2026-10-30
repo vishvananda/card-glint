@@ -1,6 +1,6 @@
 import { arnSymbolRoleRuntimeParent } from '../games/magic/tools/accuracy/arn-symbol-role-ancestry.mjs';
 import assert from 'node:assert/strict';
-import fs from 'node:fs/promises';
+import fs from './magic-font-history-view.mjs';
 import path from 'node:path';
 import {
   oldFrameAdoptionDelta,
@@ -10,7 +10,8 @@ import {
   oldFrameAdoptionAffected,
 } from '../games/magic/tools/accuracy/old-frame-adoption-ancestry.mjs';
 import { oldFrameSourceRuntimeCompatible } from '../games/magic/tools/accuracy/old-frame-source-ancestry.mjs';
-import { sourceHash, hash, root } from '../games/magic/tools/accuracy/common.mjs';
+import { hash, root } from '../games/magic/tools/accuracy/common.mjs';
+import { sourceHash } from './magic-font-history-view.mjs';
 const p = await oldFrameAdoptionDelta();
 const review = JSON.parse(
   await fs.readFile('games/magic/fixtures/accuracy/mirage-onslaught/installed-review.json'),
@@ -80,7 +81,7 @@ for (const set of [
   assert.equal(await oldFrameAdoptionRuntimeParent(p.afterRenderer, set), p.beforeRenderer);
   assert.equal(
     await oldFrameSourceRuntimeCompatible('games/magic/src', p.beforeRenderer, set),
-    set !== 'arn',
+    false,
     set,
   );
 }

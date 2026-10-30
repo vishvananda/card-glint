@@ -7,7 +7,9 @@ import { installedSerifFonts } from './magic-fixture-fonts.mjs';
 import { preAbuFractionalSource } from '../games/magic/tools/accuracy/abu-fractional-ancestry.mjs';
 
 const virtual = path.resolve('games/magic/src/presentation/__abu-fractional-before.ts');
+// This replays the historical transition; live font/document/worker parity has its own gate.
 const server = await createServer({
+  fontGeometryHistory: true,
   configFile: false,
   optimizeDeps: { noDiscovery: true },
   server: { host: '127.0.0.1', port: 0, hmr: false },

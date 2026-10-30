@@ -1,3 +1,4 @@
+import { loadVerifiedFonts } from './magic-verified-fonts.mjs';
 import assert from 'node:assert/strict';
 import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
@@ -82,18 +83,15 @@ try {
     }),
   );
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/__title_test`);
+  await loadVerifiedFonts(page, ['CardRenderer MTG Goudy']);
   const results = await page.evaluate(async () => {
     await import('/games/magic/src/data/eager.ts');
     await import('/games/magic/src/data/eager-wording.ts');
     const { earlyReprintTitle, paintEarlyReprintTitle } = await import(
       '/games/magic/src/presentation/early-reprint-title.ts'
     );
-    document.fonts.add(
-      await new FontFace(
-        'CardRenderer MTG Goudy',
-        'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")',
-      ).load(),
-    );
+    const catalog = (await import('/games/magic/src/presentation/font-geometry.json')).default;
+    const geometry = catalog.find((f) => f.family === 'CardRenderer MTG Goudy');
     const results = [];
     for (const setCode of ['fem', '4ed', 'chr']) {
       const face = { name: 'MAMMOTH MIRROR', setCode, colors: ['R'], typeLine: 'Summon Giant' };
@@ -127,12 +125,19 @@ try {
         m.scale(1.5, 1.5);
         m.translate(p.x, p.y);
         m.scale(p.width, 1);
-        m.font = `${p.size}px "CardRenderer MTG Goudy", Georgia`;
-        m.textBaseline = 'middle';
+        m.font = `${Math.round(p.size * 64) / 64}px "CardRenderer MTG Goudy", Georgia`;
+        m.textBaseline = 'alphabetic';
         m.textAlign = 'left';
+        m.textRendering = 'geometricPrecision';
+        m.fontKerning = 'normal';
         m.letterSpacing = '0px';
         m.fillStyle = '#fff';
-        m.fillText(face.name, 0, 0, (450 - p.x) / p.width);
+        m.fillText(
+          face.name,
+          0,
+          geometry.anchors.middle * (Math.round(p.size * 64) / 64),
+          (450 - p.x) / p.width,
+        );
         const actual = c.getImageData(0, 0, 732, 135).data;
         const filled = m.getImageData(0, 0, 732, 135).data;
         const cores = [];

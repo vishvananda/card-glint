@@ -263,30 +263,27 @@ assert.deepEqual(
     .filter((s) => s.complete)
     .map((s) => s.set)
     .sort(),
-  ['lea', 'leb', 'mir'],
+  [],
 );
 const unlimitedReport = reports.find((s) => s.set === '2ed');
 assert.equal(unlimitedReport.complete, false);
-assert.equal(unlimitedReport.counts['needs-audit'], 8);
+assert(unlimitedReport.counts.stale > 0);
 assert.equal(unlimitedReport.originalRulesInputs.stale, 45);
-assert.deepEqual([...new Set(unlimitedReport.outstanding.map((r) => r.task))].sort(), [
-  'flavor',
-  'fullCard',
-  'release',
-  'rules',
-]);
+assert(
+  unlimitedReport.outstanding.some(
+    (r) =>
+      r.task === 'rules' && r.status === 'stale' && /Typography geometry changed/.test(r.reason),
+  ),
+);
 const wallIds = ['2a2cab55-fc64-4b3f-bc46-a1a297d2d448', 'b55d8375-ea70-4dd0-950e-3dbf3dfdd4f6'];
 const wallGroups = ledger.sets
   .find((s) => s.set === '2ed')
   .groups.filter((g) => g.printingIds.some((id) => wallIds.includes(id)));
 assert.equal(wallGroups.length, 2);
-assert.deepEqual(
-  [...new Set(unlimitedReport.outstanding.map((r) => r.group))].sort(),
-  wallGroups.map((g) => g.key).sort(),
-);
+for (const g of wallGroups) assert(unlimitedReport.outstanding.some((r) => r.group === g.key));
 
 const alphaReport = reports.find((s) => s.set === 'lea');
-assert.equal(alphaReport.byTask.headings.validated, alphaReport.groups);
+assert.equal(alphaReport.byTask.headings.stale, alphaReport.groups);
 // The complete dual census now has its current finite source review.
 // Source-pattern residuals remain visible without inventing per-card frame warps.
 for (const [code, count] of [
@@ -296,7 +293,8 @@ for (const [code, count] of [
   const current = reports.find((s) => s.set === code);
   assert.equal(current.byTask.frameGeometry.validated, current.groups);
   assert.equal(current.byTask.frameColor.validated, current.groups);
-  assert.equal(current.complete, true);
+  assert.equal(current.complete, false);
+  assert.equal(current.byTask.rules.stale, current.groups);
   const duals = ledger.sets
     .find((s) => s.set === code)
     .groups.filter((g) => g.tasks.frameGeometry.proof?.abuCurrentReview);

@@ -1,3 +1,5 @@
+import { fontGeometryRegionalParent } from './font-geometry-ancestry.mjs';
+import { fontGeometryRequiresReview, fontGeometryTaskAffected } from './font-geometry-ancestry.mjs';
 import { preModernSymbolReportSource } from './modern-symbol-report-ancestry.mjs';
 import {
   originalSymbolPlacementRuntimeParent,
@@ -148,6 +150,28 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
+        const fontBound =
+          item.runtimeGuards?.['games/magic/src'] ||
+          Object.keys({ ...group.guards, ...item.guards }).some(
+            (file) => file === 'games/magic/fonts.css' || file.startsWith('games/magic/src/'),
+          );
+        if (
+          fontBound &&
+          fontGeometryTaskAffected(task, original) &&
+          (await fontGeometryRequiresReview())
+        ) {
+          const directory = 'games/magic/src';
+          if (!runtimeChecked.has(directory))
+            runtimeChecked.set(directory, await sourceHash(root + '/' + directory));
+          const actual = runtimeChecked.get(directory);
+          if (item.proof?.rendererHash !== actual && item.runtimeGuards?.[directory] !== actual) {
+            item.status = 'stale';
+            item.reason =
+              'Typography geometry changed in 0.7.10. The prior fit is retained as historical evidence; current text and full-card scores need a fresh render. This is not a failed fit.';
+            continue;
+          }
+        }
+
         if (
           (await onsSymbolStatsAffected(set.set, task, original, group)) &&
           item.proof?.onsSymbolStats !== (await onsSymbolStatsDelta()).afterRenderer
@@ -479,10 +503,14 @@ export async function calibrationReport(ledger) {
               runtimeChecked.set(directory, null);
             }
           }
+          const scopedRuntime =
+            directory === 'games/magic/src'
+              ? await fontGeometryRegionalParent(runtimeChecked.get(directory), task, original)
+              : runtimeChecked.get(directory);
           if (
             directory === 'games/magic/src' &&
             set.set === 'arn' &&
-            runtimeChecked.get(directory) !== expected &&
+            scopedRuntime !== expected &&
             !(await revisedWordingRuntimeCompatible(directory, expected, set.set)) &&
             !(await atqProfileRuntimeCompatible(directory, expected, set.set))
           ) {
@@ -490,21 +518,15 @@ export async function calibrationReport(ledger) {
             break;
           }
           if (
-            runtimeChecked.get(directory) !== expected &&
+            scopedRuntime !== expected &&
             !(
               directory === 'games/magic/src' &&
-              (await originalSymbolPlacementRuntimeParent(runtimeChecked.get(directory))) ===
-                expected
+              (await originalSymbolPlacementRuntimeParent(scopedRuntime)) === expected
             ) &&
             !(
               directory === 'games/magic/src' &&
-              (await arnSymbolRoleRuntimeParent(
-                runtimeChecked.get(directory),
-                set.set,
-                task,
-                original,
-                group,
-              )) === expected
+              (await arnSymbolRoleRuntimeParent(scopedRuntime, set.set, task, original, group)) ===
+                expected
             ) &&
             !(await revisedWordingRuntimeCompatible(directory, expected, set.set)) &&
             !(await atqProfileRuntimeCompatible(directory, expected, set.set)) &&

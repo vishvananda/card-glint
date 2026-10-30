@@ -1,3 +1,4 @@
+import { loadVerifiedFonts } from './magic-verified-fonts.mjs';
 import assert from 'node:assert/strict';
 import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
@@ -12,6 +13,7 @@ try {
   const page = await browser.newPage();
   await page.route('https://**/*', (route) => route.abort());
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}`);
+  await loadVerifiedFonts(page, ['CardRenderer MTG Beleren']);
   const result = await page.evaluate(async () => {
     await import('/games/magic/src/data/eager.ts');
     await import('/games/magic/src/data/eager-wording.ts');
@@ -73,11 +75,17 @@ try {
     const fillText = c.fillText.bind(c);
     c.fillText = (text, x, y, ...rest) => {
       const transform = c.getTransform();
-      if (text === 'Sorcery' && transform.b > 0)
-        typeAnchors.push([
-          transform.a * x + transform.c * y + transform.e,
-          transform.b * x + transform.d * y + transform.f,
-        ]);
+      if (text === 'Sorcery' && transform.b > 0) {
+        const m = c.measureText(text),
+          points = [
+            [x - m.actualBoundingBoxLeft, y - m.actualBoundingBoxAscent],
+            [x + m.actualBoundingBoxRight, y + m.actualBoundingBoxDescent],
+          ].map(([px, py]) => [
+            transform.a * px + transform.c * py + transform.e,
+            transform.b * px + transform.d * py + transform.f,
+          ]);
+        typeAnchors.push([(points[0][0] + points[1][0]) / 2, Math.min(points[0][1], points[1][1])]);
+      }
       fillText(text, x, y, ...rest);
     };
     paintAftermathFace(c, face, images);
@@ -139,8 +147,9 @@ try {
   assert.ok(result.typeAnchors.length > 0);
   for (const [x, y] of result.typeAnchors)
     assert.ok(
-      x >= 241 && x <= 249 && y >= 379 && y <= 384,
-      'Sideways type text starts inside the printed type plate',
+      x >= 241 && x <= 249 && y >= 379 && y <= 389,
+      'Sideways type ink is centered across the plate and begins inside its nine-pixel inset: ' +
+        JSON.stringify([x, y]),
     );
   assert.deepEqual(
     result.full,

@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
-import fs from 'node:fs/promises';
+import fs from './magic-font-history-view.mjs';
 import path from 'node:path';
-import { root, hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { root, hash } from '../games/magic/tools/accuracy/common.mjs';
+import { sourceHash } from './magic-font-history-view.mjs';
 import {
   onsSymbolStatsDelta,
   onsSymbolStatsAffected,

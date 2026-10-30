@@ -1,3 +1,4 @@
+import { preFontGeometrySource } from './font-geometry-ancestry.mjs';
 // The historical report-tool checksum is provenance, not a new pixel metric.
 // Reconstruct only this exact reviewed metadata delta; unknown edits stay raw.
 import assert from 'node:assert/strict';
@@ -7,6 +8,7 @@ import { gunzipSync } from 'node:zlib';
 import { root, hash } from './common.mjs';
 let checked;
 export async function preModernSymbolReportSource(file, bytes) {
+  bytes = await preFontGeometrySource(file, bytes);
   const p = await (checked ??= (async () => {
     const packed = await fs.readFile(
       path.join(

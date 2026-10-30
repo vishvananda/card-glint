@@ -18,7 +18,10 @@ interface FontRun {
 }
 const faces: readonly FontGeometry[] = catalog;
 const runs = new Map<string, FontRun | null>();
-const reference = new WeakMap<FontGeometry, Map<string, TextMetrics>>();
+const reference = new WeakMap<
+  FontGeometry,
+  WeakMap<CanvasContext['measureText'], Map<string, TextMetrics>>
+>();
 const REFERENCE_SIZE = 1000;
 const FONT_SUBPIXELS = 64;
 const fontSize = (size: number) => Math.round(size * FONT_SUBPIXELS) / FONT_SUBPIXELS;
@@ -163,8 +166,12 @@ function referenceMetrics(context: CanvasContext, text: string, run: FontRun): T
     context.fontVariantCaps,
     text,
   ]);
-  let cache = reference.get(run.geometry);
-  if (!cache) reference.set(run.geometry, (cache = new Map()));
+  let implementations = reference.get(run.geometry);
+  if (!implementations) reference.set(run.geometry, (implementations = new WeakMap()));
+  // Native canvases share their implementation. A host adapter or test double
+  // must not reuse metrics measured by a different implementation.
+  let cache = implementations.get(context.measureText);
+  if (!cache) implementations.set(context.measureText, (cache = new Map()));
   const previous = cache.get(key);
   if (previous) return previous;
   context.save();
@@ -178,6 +185,7 @@ function referenceMetrics(context: CanvasContext, text: string, run: FontRun): T
     return metrics;
   } finally {
     context.restore();
+    context.font = font;
     context.letterSpacing = letter;
     context.wordSpacing = word;
   }

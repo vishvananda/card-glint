@@ -7,7 +7,8 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { chromium } from 'playwright';
-import { createServer, transformWithEsbuild } from 'vite';
+import { transformWithEsbuild } from 'vite';
+import { createServer } from './magic-vite.mjs';
 import { format, resolveConfig } from 'prettier';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const proofFile = 'games/magic/fixtures/accuracy/host-worker/source-proof.json';
@@ -26,7 +27,9 @@ function baseline(file, bytes) {
 const prefix = '\0worker-baseline:';
 const walkerPrefix = '\0walker-baseline:';
 const profilePrefix = '\0profile-baseline:';
+// This replays the historical transition; live font/document/worker parity has its own gate.
 const server = await createServer({
+  fontGeometryHistory: true,
   configFile: false,
   root,
   plugins: [
@@ -247,8 +250,9 @@ try {
             before,
             label === 'walker'
               ? historicalWalker
-              : ['lea', 'leb', '2ed', '3ed', '4ed', 'm21', 'usg'].includes(face.setCode) ||
-                  label === 'future'
+              : ['lea', 'leb', '2ed', '3ed', '4ed', 'm21', 'usg', 'leg', '8ed', 'plc'].includes(
+                    face.setCode,
+                  ) || label === 'future'
                 ? historicalProfile
                 : current,
           ]) {

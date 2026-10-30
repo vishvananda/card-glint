@@ -55,19 +55,22 @@ try {
   const measured = [],
     painted = [];
   const context = {
+    scale() {},
     save() {},
     restore() {},
     measureText(text) {
       measured.push(text);
-      return { width: text.length * 5 };
+      return { width: (text.length * Number(/([\d.]+)px/.exec(this.font)[1])) / 4 };
     },
     fillText(text) {
       painted.push(text);
     },
   };
   paintFittedText(context, base.name, 1, 2, 400, 20, true, 1, MODERN_HEADING_FAMILY);
-  assert.deepEqual(measured, ['Mountai\ue009']);
-  assert.deepEqual(painted, measured, 'Measure and paint the same shaped heading');
+  const expectedInk = shapeModernHeading(base.name, MODERN_HEADING_FAMILY);
+  assert(measured.length >= 1);
+  assert(measured.every((text) => text === expectedInk));
+  assert.deepEqual(painted, [expectedInk], 'Paint the shaped heading exactly once');
   assert.equal(base.name, 'Mountain');
   assert.match(context.font, /20px "CardRenderer MTG Beleren 2016"/);
 } finally {

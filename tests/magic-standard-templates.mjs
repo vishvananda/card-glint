@@ -1,3 +1,4 @@
+import { loadVerifiedFonts } from './magic-verified-fonts.mjs';
 import assert from 'node:assert/strict';
 import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
@@ -12,6 +13,12 @@ try {
   const page = await browser.newPage();
   await page.route('https://**/*', (r) => r.abort());
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}`);
+  await loadVerifiedFonts(page, [
+    'CardRenderer MTG ModMatrix',
+    'CardRenderer MTG Beleren',
+    'CardRenderer MTG Matrix',
+    'CardRenderer MTG MPlantin',
+  ]);
   const result = await page.evaluate(async () => {
     await import('/games/magic/src/data/eager.ts');
     await import('/games/magic/src/data/eager-wording.ts');
@@ -131,7 +138,23 @@ try {
       const paintedText = [];
       const fillText = context.fillText.bind(context);
       context.fillText = (text, x, y, ...args) => {
-        paintedText.push({ text, x, y, font: context.font });
+        const m = context.measureText(text);
+        const base = new DOMMatrix()
+          .translate(0, 680)
+          .rotate(-90)
+          .scale(680 / 523, 488 / 375);
+        const local = base.inverse().multiply(context.getTransform());
+        const anchor = local.transformPoint(new DOMPoint(x, y));
+        const ink = local.transformPoint(
+          new DOMPoint(x, y + (m.actualBoundingBoxDescent - m.actualBoundingBoxAscent) / 2),
+        );
+        paintedText.push({
+          text,
+          x: anchor.x,
+          y: anchor.y,
+          inkCenterY: ink.y,
+          font: context.font,
+        });
         return fillText(text, x, y, ...args);
       };
       paintStandardTemplate(context, face, images);
@@ -243,12 +266,17 @@ try {
     assert.ok(row.reminder.inkBounds[0] >= 455);
     const reverseInk = row.paintedText.filter((entry) => entry.text === '4/4');
     assert.equal(reverseInk.length, 1);
-    assert.equal(reverseInk[0].x, 485);
+    near([reverseInk[0].x], [485], 1 / 64);
     assert.match(reverseInk[0].font, /ModMatrix/);
     assert.ok(
       row.paintedText.some(
-        (entry) => entry.text === row.defense && entry.x >= 480 && entry.y >= 336 && entry.y <= 360,
+        (entry) =>
+          entry.text === row.defense &&
+          entry.x >= 480 - 1 / 64 &&
+          entry.inkCenterY >= 336 &&
+          entry.inkCenterY <= 360,
       ),
+      JSON.stringify(row.paintedText.filter((entry) => entry.text === row.defense)),
     );
     assert.equal(row.fontRestored, true);
     assert.equal(row.noReminder, null);

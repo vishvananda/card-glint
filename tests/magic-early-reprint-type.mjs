@@ -1,3 +1,4 @@
+import { loadVerifiedFonts } from './magic-verified-fonts.mjs';
 import assert from 'node:assert/strict';
 import { createServer } from './magic-vite.mjs';
 import { chromium } from 'playwright';
@@ -85,18 +86,15 @@ try {
     }),
   );
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/__title_test`);
+  await loadVerifiedFonts(page, ['CardRenderer MTG MPlantin']);
   const results = await page.evaluate(async () => {
     await import('/games/magic/src/data/eager.ts');
     await import('/games/magic/src/data/eager-wording.ts');
     const { earlyReprintType, paintEarlyReprintType } = await import(
       '/games/magic/src/presentation/early-reprint-type.ts'
     );
-    document.fonts.add(
-      await new FontFace(
-        'CardRenderer MTG MPlantin',
-        'local("Times New Roman"), local("Liberation Serif"), local("DejaVu Serif")',
-      ).load(),
-    );
+    const catalog = (await import('/games/magic/src/presentation/font-geometry.json')).default;
+    const geometry = catalog.find((f) => f.family === 'CardRenderer MTG MPlantin');
     const results = [];
     for (const setCode of ['fem', '4ed', 'chr']) {
       const face = { name: 'Type probe', setCode, colors: ['R'], typeLine: 'MAMMOTH MIRROR' };
@@ -130,12 +128,19 @@ try {
         m.scale(1.5, 1.5);
         m.translate(p.x, p.y);
         m.scale(p.width, 1);
-        m.font = `${p.size}px "CardRenderer MTG MPlantin", Georgia`;
-        m.textBaseline = 'middle';
+        m.font = `${Math.round(p.size * 64) / 64}px "CardRenderer MTG MPlantin", Georgia`;
+        m.textBaseline = 'alphabetic';
         m.textAlign = 'left';
+        m.textRendering = 'geometricPrecision';
+        m.fontKerning = 'normal';
         m.letterSpacing = '0px';
         m.fillStyle = '#fff';
-        m.fillText(face.typeLine, 0, 0, (450 - p.x) / p.width);
+        m.fillText(
+          face.typeLine,
+          0,
+          geometry.anchors.middle * (Math.round(p.size * 64) / 64),
+          (450 - p.x) / p.width,
+        );
         const actual = c.getImageData(0, 0, 732, 1020).data;
         const filled = m.getImageData(0, 0, 732, 1020).data;
         const cores = [];

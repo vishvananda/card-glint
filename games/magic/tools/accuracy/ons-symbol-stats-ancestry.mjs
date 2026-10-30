@@ -1,3 +1,4 @@
+import { fontGeometryHistoricalFiles } from './font-geometry-ancestry.mjs';
 import { preModernSymbolReportSource } from './modern-symbol-report-ancestry.mjs';
 // Exact regional source compatibility; this never certifies a set or a donor fit.
 import {
@@ -76,6 +77,7 @@ export async function preOnsSymbolStatsSource(file, bytes) {
     : bytes;
 }
 export async function onsSymbolStatsHistoricalFiles(files) {
+  files = await fontGeometryHistoricalFiles(files);
   const p = await onsSymbolStatsDelta(),
     kept = [];
   for (const file of files) {

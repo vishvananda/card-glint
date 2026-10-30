@@ -16,9 +16,10 @@ import {
   fourthBasicSymbolPaths,
 } from '../games/magic/tools/accuracy/fourth-basic-symbol-source-check.mjs';
 const p = await fourthBasicSymbolDelta();
-assert(
-  (await sourceHash(root + '/games/magic/src')) === p.afterRenderer ||
-    (await oldFrameSourceRuntimeCompatible('games/magic/src', p.afterRenderer, '4ed')),
+assert.equal(
+  await oldFrameSourceRuntimeCompatible('games/magic/src', p.afterRenderer, '4ed'),
+  false,
+  'Current typography is newer than this historical symbol proof',
 );
 assert.equal(await fourthBasicSymbolHistoricalHash(), p.beforeRenderer);
 for (const [file, r] of Object.entries(p.files)) {

@@ -1,7 +1,9 @@
+import { fontGeometryHistoricalFiles } from '../games/magic/tools/accuracy/font-geometry-ancestry.mjs';
 import assert from 'node:assert/strict';
-import fs from 'node:fs/promises';
+import fs from './magic-font-history-view.mjs';
 import path from 'node:path';
-import { hash, root, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { hash, root } from '../games/magic/tools/accuracy/common.mjs';
+import { sourceHash } from './magic-font-history-view.mjs';
 import {
   modernSymbolPlacementDelta,
   preModernSymbolPlacementSource,
@@ -17,7 +19,7 @@ const entries = (
   .map((e) => path.join(e.parentPath, e.name))
   .sort();
 const projected = [];
-for (const file of entries)
+for (const file of await fontGeometryHistoricalFiles(entries))
   projected.push([
     path.relative(path.join(root, 'games/magic/src'), file),
     hash(await preModernSymbolPlacementSource(path.relative(root, file), await fs.readFile(file))),

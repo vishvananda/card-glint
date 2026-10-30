@@ -162,9 +162,16 @@ try {
     '/games/magic/src/presentation/legacy-calibrated-title.ts',
   );
   const titleCalls = [];
+  const titleStates = [];
   const titleContext = {
-    save() {},
-    restore() {},
+    font: '10px sans-serif',
+    measureText: ctx.measureText,
+    save() {
+      titleStates.push(this.font);
+    },
+    restore() {
+      this.font = titleStates.pop();
+    },
     getTransform() {
       return { a: 1 };
     },

@@ -16,7 +16,12 @@ const ledger = JSON.parse(
 );
 const ons = ledger.sets.find((s) => s.set === 'ons');
 const report = await calibrationReport({ ...ledger, sets: [ons] });
-assert.deepEqual(report[0].byTask.release, { validated: 29, 'needs-reference': 1 });
+assert.deepEqual(report[0].byTask.release, { stale: 29, 'needs-reference': 1 });
+assert(
+  report[0].outstanding
+    .filter((row) => row.task === 'release' && row.status === 'stale')
+    .every((row) => /Typography geometry changed/.test(row.reason)),
+);
 const unknown = structuredClone(ons);
 const source = (await modernSymbolPlacementDelta()).beforeRenderer;
 const target = unknown.groups.find(
@@ -25,7 +30,7 @@ const target = unknown.groups.find(
 assert(target, 'Fixture must exercise the latest Original published guard');
 target.tasks.release.runtimeGuards['games/magic/src'] = 'f'.repeat(64);
 const rejected = await calibrationReport({ ...ledger, sets: [unknown] });
-assert.deepEqual(rejected[0].byTask.release, { validated: 28, stale: 1, 'needs-reference': 1 });
+assert.deepEqual(rejected[0].byTask.release, { stale: 29, 'needs-reference': 1 });
 console.log(
-  'Modern-only placement retains all 29 ONS Original release guards; an unknown runtime remains stale.',
+  'Historical modern-only placement remains verified; changed typography and foreign runtime identities cannot reuse the 29 old release scores.',
 );

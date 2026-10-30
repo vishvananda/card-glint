@@ -1,8 +1,29 @@
+import { preFontGeometrySource } from '../games/magic/tools/accuracy/font-geometry-ancestry.mjs';
+import { root } from '../games/magic/tools/accuracy/common.mjs';
+import path from 'node:path';
 import { createServer as createViteServer } from 'vite';
 /** Private painter tests exercise the synchronous compatibility contract.
  * The separate lazy tests start fresh module graphs and verify preparation. */
 export async function createServer(options) {
-  const server = await createViteServer(options);
+  const { fontGeometryHistory, ...viteOptions } = options;
+  if (fontGeometryHistory) {
+    viteOptions.plugins = [
+      {
+        name: 'explicit-pre-font-evidence-view',
+        enforce: 'pre',
+        async transform(code, id) {
+          const file = path.relative(root, id.split('?')[0]);
+          if (!file.startsWith('games/magic/')) return;
+          const historical = await preFontGeometrySource(file, Buffer.from(code));
+          return historical.toString() === code
+            ? undefined
+            : { code: historical.toString(), map: null };
+        },
+      },
+      ...(viteOptions.plugins || []),
+    ];
+  }
+  const server = await createViteServer(viteOptions);
   const load = server.ssrLoadModule.bind(server);
   let initialized;
   server.ssrLoadModule = async (...args) => {

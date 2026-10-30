@@ -1,0 +1,431 @@
+{
+  "schema": 1,
+  "scope": "Starting-loyalty numeral placement only. No whole-card or whole-set approval.",
+  "referenceWidth": 488,
+  "baselineVersion": "0.7.9",
+  "candidate": "645520ffcdd444b085fc5cdef98014e556db585d",
+  "engine": "native macOS Chrome",
+  "method": {
+    "registration": "Compare numeral bounding-box center relative to the filled shield body centroid; scale offsets by shield bounding-box width/height. Scan translation and shield size do not move the render.",
+    "darkThreshold": 65,
+    "whiteThreshold": 155,
+    "canonicalCrop": [310, 550, 178, 130],
+    "shieldSearchROI": [80, 40, 78, 66],
+    "captureDisplayScale": 2,
+    "notes": "Four-neighbor components; flood-fill the enclosed shield to include its numeral hole. Average errors include raster threshold and scan uncertainty."
+  },
+  "startingLoyaltyBefore": {
+    "dx": 1.75,
+    "dy": 2
+  },
+  "startingLoyaltyAfter": {
+    "dx": 0,
+    "dy": 0
+  },
+  "rows": [
+    {
+      "name": "Ugin, the Spirit Dragon",
+      "set": "m21",
+      "id": "9c017fa9-7021-417a-9c2e-3df409644fcf",
+      "reference": "https://cards.scryfall.io/png/front/9/c/9c017fa9-7021-417a-9c2e-3df409644fcf.png?1783930748",
+      "referenceHash": "56ea3b56cf3e438c5601d007e97f73f8118af2189b8bc733c84c4ddc498ce53f",
+      "scan": {
+        "body": {
+          "x": 117.74030243261012,
+          "y": 70.39907955292571,
+          "w": 61,
+          "h": 36
+        },
+        "digit": {
+          "x": 118,
+          "y": 73.5,
+          "w": 11,
+          "h": 18
+        }
+      },
+      "released079": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 117.5,
+            "y": 73.5,
+            "w": 10,
+            "h": 18
+          }
+        },
+        "error": [1.2065776742358532, 1.8639632820035836],
+        "distance": 2.220402846472228
+      },
+      "candidate": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 116,
+            "y": 71.5,
+            "w": 11,
+            "h": 18
+          }
+        },
+        "error": [-0.2934223257641469, -0.13603671799641637],
+        "distance": 0.32342332924524425
+      }
+    },
+    {
+      "name": "Chandra, Heart of Fire",
+      "set": "m21",
+      "id": "a4c3ca8c-c77c-43b8-84ad-796313ecc813",
+      "reference": "https://cards.scryfall.io/png/front/a/4/a4c3ca8c-c77c-43b8-84ad-796313ecc813.png?1783930694",
+      "referenceHash": "4d31823661997ca2307216abd6b9c3642ac2ed77c84131352da7c12e62d1e69d",
+      "scan": {
+        "body": {
+          "x": 118.45191040843214,
+          "y": 71.766139657444,
+          "w": 60,
+          "h": 36
+        },
+        "digit": {
+          "x": 118.5,
+          "y": 74.5,
+          "w": 10,
+          "h": 18
+        }
+      },
+      "released079": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 118,
+            "y": 74,
+            "w": 11,
+            "h": 17
+          }
+        },
+        "error": [1.9242958448201315, 2.7412195005362685],
+        "distance": 3.3492086899015914
+      },
+      "candidate": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 116.5,
+            "y": 72,
+            "w": 10,
+            "h": 17
+          }
+        },
+        "error": [0.4242958448201314, 0.7412195005362685],
+        "distance": 0.8540686810244621
+      }
+    },
+    {
+      "name": "Liliana, Waker of the Dead",
+      "set": "m21",
+      "id": "e329a3e2-6702-4758-8aac-c3017e77b619",
+      "reference": "https://cards.scryfall.io/png/front/e/3/e329a3e2-6702-4758-8aac-c3017e77b619.png?1783930705",
+      "referenceHash": "d0c2e35c399f151aafe8cb23470cefef444a7cccec98d7f238df2e293c74a72b",
+      "scan": {
+        "body": {
+          "x": 118.9259501965924,
+          "y": 70.29423328964613,
+          "w": 61,
+          "h": 35
+        },
+        "digit": {
+          "x": 118.5,
+          "y": 73.5,
+          "w": 12,
+          "h": 18
+        }
+      },
+      "released079": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 117.5,
+            "y": 74,
+            "w": 12,
+            "h": 17
+          }
+        },
+        "error": [1.9147056927749233, 2.162067028646319],
+        "distance": 2.8880151880321234
+      },
+      "candidate": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 116,
+            "y": 72,
+            "w": 11,
+            "h": 17
+          }
+        },
+        "error": [0.4147056927749232, 0.16206702864631906],
+        "distance": 0.4452488443490626
+      }
+    },
+    {
+      "name": "Basri Ket",
+      "set": "m21",
+      "id": "98c85699-2daf-4e87-a3be-465d02bd64bb",
+      "reference": "https://cards.scryfall.io/png/front/9/8/98c85699-2daf-4e87-a3be-465d02bd64bb.png?1783930745",
+      "referenceHash": "b65b4fcf0b818b9bc7d15aaaf8c29fc4435cc76551a81cec292ff279fd2b21bd",
+      "scan": {
+        "body": {
+          "x": 117.5464807436919,
+          "y": 70.1746347941567,
+          "w": 60,
+          "h": 35
+        },
+        "digit": {
+          "x": 117.5,
+          "y": 73,
+          "w": 10,
+          "h": 17
+        }
+      },
+      "released079": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 118,
+            "y": 73.5,
+            "w": 9,
+            "h": 18
+          }
+        },
+        "error": [2.02359469684288, 2.0642057619860674],
+        "distance": 2.8906540652432122
+      },
+      "candidate": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 116.5,
+            "y": 71.5,
+            "w": 10,
+            "h": 18
+          }
+        },
+        "error": [0.5235946968428798, 0.06420576198606742],
+        "distance": 0.5275166219506252
+      }
+    },
+    {
+      "name": "Garruk, Unleashed",
+      "set": "m21",
+      "id": "af2fdbec-bca2-4af5-9c2a-28b0b35b18a3",
+      "reference": "https://cards.scryfall.io/png/front/a/f/af2fdbec-bca2-4af5-9c2a-28b0b35b18a3.png?1783930676",
+      "referenceHash": "b8ee722b04e0070b20e73f23a04c61bd66978d0d7e0aadcc1b15d1f76e3afe19",
+      "scan": {
+        "body": {
+          "x": 118.58815875081328,
+          "y": 69.9206245933637,
+          "w": 60,
+          "h": 36
+        },
+        "digit": {
+          "x": 118,
+          "y": 72.5,
+          "w": 11,
+          "h": 18
+        }
+      },
+      "released079": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 117.5,
+            "y": 74,
+            "w": 12,
+            "h": 17
+          }
+        },
+        "error": [2.092356604320325, 2.8999956846759574],
+        "distance": 3.576021690479807
+      },
+      "candidate": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 116,
+            "y": 72,
+            "w": 11,
+            "h": 17
+          }
+        },
+        "error": [0.5923566043203252, 0.8999956846759574],
+        "distance": 1.0774407543420899
+      }
+    },
+    {
+      "name": "Teferi, Master of Time",
+      "set": "m21",
+      "id": "9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d",
+      "reference": "https://cards.scryfall.io/png/front/9/c/9c0c61e3-9f3d-4e7f-9046-0ea336dd8a2d.png?1783930718",
+      "referenceHash": "91c0bf0ae94f6196a16a8916163630c5d4fff8e97fc68468099b5b09ee7f0eec",
+      "scan": {
+        "body": {
+          "x": 118.13600525624179,
+          "y": 69.72141918528253,
+          "w": 61,
+          "h": 36
+        },
+        "digit": {
+          "x": 118.5,
+          "y": 72.5,
+          "w": 10,
+          "h": 18
+        }
+      },
+      "released079": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 118,
+            "y": 73.5,
+            "w": 9,
+            "h": 18
+          }
+        },
+        "error": [1.5988609183144589, 2.195256793036977],
+        "distance": 2.715788766360217
+      },
+      "candidate": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 116.5,
+            "y": 71.5,
+            "w": 10,
+            "h": 18
+          }
+        },
+        "error": [0.09886091831445892, 0.19525679303697707],
+        "distance": 0.21885770810520477
+      }
+    },
+    {
+      "name": "Jace, Wielder of Mysteries",
+      "set": "war",
+      "id": "6adb7d73-4482-4930-8497-cffd169b57e2",
+      "reference": "https://cards.scryfall.io/png/front/6/a/6adb7d73-4482-4930-8497-cffd169b57e2.png?1783933463",
+      "referenceHash": "14333e1c689497b7627f42f27fbc4fb7fe884e9721eede7b3a9652c0c750ac97",
+      "scan": {
+        "body": {
+          "x": 116.44021376085504,
+          "y": 69.89245156980628,
+          "w": 60,
+          "h": 35
+        },
+        "digit": {
+          "x": 116,
+          "y": 73,
+          "w": 11,
+          "h": 17
+        }
+      },
+      "released079": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 117.5,
+            "y": 74,
+            "w": 12,
+            "h": 17
+          }
+        },
+        "error": [1.93701436486418, 2.265897781958482],
+        "distance": 2.9809926883463755
+      },
+      "candidate": {
+        "geometry": {
+          "body": {
+            "x": 116.02521008403362,
+            "y": 68.44897959183673,
+            "w": 63,
+            "h": 37
+          },
+          "digit": {
+            "x": 116,
+            "y": 72,
+            "w": 11,
+            "h": 17
+          }
+        },
+        "error": [0.43701436486418005, 0.2658977819584818],
+        "distance": 0.5115497879464744
+      }
+    }
+  ],
+  "meanError": {
+    "released079": 2.9458691335479363,
+    "candidate": 0.5654436752804519
+  },
+  "allExamplesImprove": true
+}
