@@ -8,7 +8,10 @@ await alphaInkProof();
 const file = 'games/magic/src/presentation/retro-paint.ts';
 const virtual = 'games/magic/src/presentation/__alpha-ink-before.ts';
 const alphaAfter = 'games/magic/src/presentation/__alpha-ink-after.ts';
+// Replay this immutable ink transition with its original font graph.
+// Current font geometry has independent document/worker/platform checks.
 const server = await createServer({
+  fontGeometryHistory: true,
   configFile: false,
   optimizeDeps: { noDiscovery: true },
   server: { host: '127.0.0.1', port: 0, hmr: false },
