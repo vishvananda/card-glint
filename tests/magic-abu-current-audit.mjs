@@ -26,15 +26,24 @@ for (const report of reports) {
   assert.equal(report.inventoryReady, true);
   const reopened = affectedGroups(sets.find((s) => s.set === report.set));
   const reopenedPrintings = reopened.reduce((n, g) => n + g.printings, 0);
-  assert.equal(report.outstanding.length, reopened.length * 4);
-  assert.equal(report.complete, reopened.length === 0);
+  assert.equal(
+    report.outstanding.filter((o) => o.status === 'needs-audit').length,
+    reopened.length * 4,
+  );
+  assert.equal(report.complete, false);
   assert.equal(report.originalRulesInputs.ready, report.printings - reopenedPrintings);
   assert.equal(report.originalRulesInputs.stale, reopenedPrintings);
   for (const entry of report.outstanding)
-    assert(['rules', 'flavor', 'fullCard', 'release'].includes(entry.task));
+    if (entry.status === 'stale') assert.match(entry.reason, /Typography geometry changed/);
+    else assert(['rules', 'flavor', 'fullCard', 'release'].includes(entry.task));
 
   assert.equal(report.originalTypeInputs.ready, report.printings);
-  assert.equal(report.counts.stale, 0);
+  assert.equal(
+    report.counts.stale,
+    report.outstanding.filter(
+      (o) => o.status === 'stale' && /Typography geometry changed/.test(o.reason),
+    ).length,
+  );
   assert.equal(report.counts['needs-audit'], reopened.length * 4);
 }
 for (const set of sets)

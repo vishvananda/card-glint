@@ -137,9 +137,9 @@ const reportCurrent =
     layout: 'normal',
   }));
 const [report] = await calibrationReport({ sets: [set] });
-assert.equal(report.byTask.manaGeometry.validated ?? 0, reportCurrent ? 62 : 0);
-assert.equal(report.byTask.manaGeometry.stale ?? 0, reportCurrent ? 0 : 62);
-assert.equal(report.byTask.manaColor.validated ?? 0, reportCurrent ? 62 : 0);
+assert.equal(report.byTask.manaGeometry.validated ?? 0, 0);
+assert.equal(report.byTask.manaGeometry.stale ?? 0, 62);
+assert.equal(report.byTask.manaColor.validated ?? 0, 0);
 assert.equal(
   calibrationSetStatus(set).complete,
   false,
@@ -151,7 +151,7 @@ for (const g of changed.groups)
     g.tasks.manaGeometry.runtimeGuards['games/magic/src'] = '0'.repeat(64);
 const [stale] = await calibrationReport({ sets: [changed] });
 assert.equal(stale.byTask.manaGeometry.stale, 62);
-assert.equal(stale.byTask.manaColor.validated ?? 0, reportCurrent ? 62 : 0);
+assert.equal(stale.byTask.manaColor.validated ?? 0, 0);
 const fontChanged = structuredClone(set);
 for (const g of fontChanged.groups)
   if (g.applicable.manaColor) g.tasks.manaColor.guards['games/magic/fonts.css'] = '0'.repeat(64);

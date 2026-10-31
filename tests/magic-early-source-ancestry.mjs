@@ -60,19 +60,18 @@ delete group.tasks.rules.proof.earlyBatchReceipt;
 group.tasks.rules.guards['games/magic/src/presentation/early-text-tiers.ts'] =
   proof.files['games/magic/src/presentation/early-text-tiers.ts'].before;
 const [reopened] = await calibrationReport({ ...ledger, sets: [lea] });
-assert.equal(reopened.byTask.rules['needs-audit'], 1);
-assert.equal(reopened.byTask.headings.validated, 1);
+assert.equal(reopened.byTask.rules.stale, 1);
+assert.equal(reopened.byTask.headings.stale, 1);
 group.tasks.rules.proof.earlyBatchReceipt = EARLY_SOURCE_RECEIPT;
 group.tasks.rules.proof.abuFractionalSource = (await abuFractionalAncestry()).afterRenderer;
 const [stale] = await calibrationReport({ ...ledger, sets: [lea] });
 assert.equal(
-  stale.byTask.rules[
-    (await abuFlowAffected('lea', 'rules', false, group)) ? 'needs-audit' : 'stale'
-  ],
+  stale.byTask.rules.stale,
   1,
   'A marker cannot authorize an old fit or old source guards',
 );
 group.tasks.headings.guards['games/magic/src/presentation/early-text-tiers.ts'] = '0'.repeat(64);
+group.tasks.frameColor.guards['games/magic/src/presentation/early-text-tiers.ts'] = '0'.repeat(64);
 const [badHeadingGuard] = await calibrationReport({ ...ledger, sets: [lea] });
 assert.equal(
   badHeadingGuard.byTask.headings.stale,
@@ -222,4 +221,10 @@ for (const [file, entry] of Object.entries(preparation.files)) {
 }
 console.log(
   'Profile preparation ancestry: 302 actual native pairs and 25,200 metadata cases; inactive defaults restore, changed/new profiles bypass restoration, unknown edits reject.',
+);
+
+assert.equal(
+  badHeadingGuard.byTask.frameColor.stale,
+  1,
+  'A bad source guard also rejects a previously unchanged non-text component',
 );

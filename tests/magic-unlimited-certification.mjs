@@ -1,3 +1,4 @@
+import { fontGeometryTaskAffected } from '../games/magic/tools/accuracy/font-geometry-ancestry.mjs';
 import { wallWordingAffected } from '../games/magic/tools/accuracy/wall-wording-data.mjs';
 import { abuCurrentApproval } from '../games/magic/tools/accuracy/abu-current-review.mjs';
 import { abuFlowAffected } from '../games/magic/tools/accuracy/abu-flow-ancestry.mjs';
@@ -134,6 +135,12 @@ for (const group of set.groups)
       assert.equal(outstanding?.status, 'needs-audit');
       assert.match(outstanding.reason, /physical Wall of Stone\/Wood printing/);
     } else if (
+      fontGeometryTaskAffected(task) &&
+      ['validated', 'validated-default'].includes(recorded.status)
+    ) {
+      assert.equal(outstanding?.status, 'stale');
+      assert.match(outstanding.reason, /Typography geometry changed/);
+    } else if (
       ['validated', 'validated-default'].includes(recorded.status) &&
       (await abuCurrentApproval(recorded, group, task, false, '2ed'))
     ) {
@@ -189,7 +196,7 @@ assert.equal(
   'Two corrected Wall inputs need current body/full-card and publication review',
 );
 for (const row of reports[0].outstanding) {
-  if (changedTasks.has(row.task)) continue;
+  if (changedTasks.has(row.task) || fontGeometryTaskAffected(row.task)) continue;
   const group = set.groups.find((g) => g.key === row.group);
   if (row.task === 'references') {
     assert(await abuFlowAffected('2ed', row.task, false, group));

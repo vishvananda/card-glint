@@ -146,7 +146,7 @@ for (const report of reports) {
   const actual = report.outstanding.filter((o) => nonfoil.has(o.group));
   assert.deepEqual(actual.map((o) => o.group + '::' + o.task).sort(), expected.sort(), report.set);
   for (const row of actual) {
-    if (fontGeometryTaskAffected(row.task)) {
+    if (/Typography geometry changed/.test(row.reason)) {
       assert.equal(row.status, 'stale');
       assert.match(row.reason, /Typography geometry changed in 0\.7\.10/);
     } else {

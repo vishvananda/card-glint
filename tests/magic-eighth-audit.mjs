@@ -63,7 +63,13 @@ corrupt.groups.find((g) => g.references.nonfoil === g.printings).tasks.headings.
   'games/magic/src'
 ] = '0'.repeat(64);
 const [badReport] = await calibrationReport({ sets: [corrupt] });
-assert.equal(badReport.byTask.headings.stale, 1);
+assert.equal(report.byTask.headings.stale, expected);
+assert.equal(badReport.byTask.headings.stale, expected);
+assert.equal(
+  badReport.byTask.normalization.validated,
+  expected,
+  'Text changes do not invalidate frame-only poses',
+);
 const omitted = structuredClone(data);
 omitted.receipt.rows.pop();
 assert.throws(() => applyEighthAudit(structuredClone(set), omitted), /omits/);

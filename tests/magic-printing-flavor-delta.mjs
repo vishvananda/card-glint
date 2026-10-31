@@ -79,7 +79,12 @@ const ledger = JSON.parse(
 const sets = ledger.sets.filter((s) => ['lea', 'leb', '2ed'].includes(s.set));
 const reports = await calibrationReport({ sets });
 for (const r of reports) {
-  assert.equal(r.counts.stale, 0);
+  assert.equal(
+    r.counts.stale,
+    r.outstanding.filter(
+      (o) => o.status === 'stale' && /Typography geometry changed/.test(o.reason),
+    ).length,
+  );
   const groups = sets
     .find((s) => s.set === r.set)
     .groups.filter((g) => wallReviews.some((w) => w.set === r.set && g.printingIds.includes(w.id)));
@@ -93,8 +98,8 @@ for (const r of reports) {
     groups.reduce((n, g) => n + g.printings, 0),
   );
   assert.equal(r.originalTypeInputs.ready, r.printings);
-  assert.equal(r.complete, groups.length === 0);
-  assert.equal(r.byTask.release.validated, r.groups - groups.length);
+  assert.equal(r.complete, false);
+  assert.equal(r.byTask.release.stale, r.groups - groups.length);
   assert(
     sets
       .find((s) => s.set === r.set)

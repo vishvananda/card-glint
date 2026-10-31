@@ -50,8 +50,8 @@ for (const [set, total] of [
   assert.equal(report.inventoryReady, true);
   // The historical proof stays frozen. The newer complete source census and
   // checked publication separately close its title/dual-outline review.
-  assert.equal(report.complete, true, 'The current audited baseline is published');
-  assert.equal(report.byTask.release.validated, report.groups);
+  assert.equal(report.complete, false, 'Published historical text requires a current font replay');
+  assert.equal(report.byTask.release.stale, report.groups);
   assert(
     ledger.sets
       .find((s) => s.set === set)

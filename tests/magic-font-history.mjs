@@ -106,3 +106,5 @@ assert.equal(
 console.log(
   'Current typography cannot reuse historical scores; exact unchanged regions and wording keep bounded reuse.',
 );
+
+assert.equal(await fontGeometryRegionalParent(actualRenderer, 'unknown-region'), actualRenderer);

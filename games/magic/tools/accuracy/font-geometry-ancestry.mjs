@@ -5,7 +5,7 @@ import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { root, hash, sourceHash } from './common.mjs';
 const FILE = 'games/magic/fixtures/accuracy/font-geometry/source-history.json.gz';
-const SHA = 'a2bfb8c0a629aaea7f7ece8a2be824457b74b1828fdf7ac18359723f0accb163';
+const SHA = '3d724929498173bb50445fd6f1213856cc87708dd632ac9491952c0dad5ee92f';
 let checked;
 export function fontGeometryHistory() {
   return (checked ??= (async () => {
@@ -98,7 +98,19 @@ export function fontGeometryTaskAffected(task, original = false) {
 
 let regionalParent;
 export async function fontGeometryRegionalParent(actual, task, original = false) {
-  if (fontGeometryTaskAffected(task, original)) return actual;
+  if (
+    !original &&
+    ![
+      'references',
+      'normalization',
+      'frameGeometry',
+      'frameColor',
+      'paperColor',
+      'blackLevels',
+      'setSymbol',
+    ].includes(task)
+  )
+    return actual;
   regionalParent ??= (async () => {
     const directory = path.join(root, 'games/magic/src');
     const current = await sourceHash(directory);

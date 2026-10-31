@@ -150,28 +150,6 @@ export async function calibrationReport(ledger) {
         ...(item.originalInput ? [{ task, item: item.originalInput, original: true }] : []),
       ]);
       for (const { task, item, original } of dependencies) {
-        const fontBound =
-          item.runtimeGuards?.['games/magic/src'] ||
-          Object.keys({ ...group.guards, ...item.guards }).some(
-            (file) => file === 'games/magic/fonts.css' || file.startsWith('games/magic/src/'),
-          );
-        if (
-          fontBound &&
-          fontGeometryTaskAffected(task, original) &&
-          (await fontGeometryRequiresReview())
-        ) {
-          const directory = 'games/magic/src';
-          if (!runtimeChecked.has(directory))
-            runtimeChecked.set(directory, await sourceHash(root + '/' + directory));
-          const actual = runtimeChecked.get(directory);
-          if (item.proof?.rendererHash !== actual && item.runtimeGuards?.[directory] !== actual) {
-            item.status = 'stale';
-            item.reason =
-              'Typography geometry changed in 0.7.10. The prior fit is retained as historical evidence; current text and full-card scores need a fresh render. This is not a failed fit.';
-            continue;
-          }
-        }
-
         if (
           (await onsSymbolStatsAffected(set.set, task, original, group)) &&
           item.proof?.onsSymbolStats !== (await onsSymbolStatsDelta()).afterRenderer
@@ -491,6 +469,28 @@ export async function calibrationReport(ledger) {
             'The early-set batch changes this printing/component; its previous fit needs a current source-bound review.';
           continue;
         }
+        const fontBound =
+          item.runtimeGuards?.['games/magic/src'] ||
+          Object.keys({ ...group.guards, ...item.guards }).some(
+            (file) => file === 'games/magic/fonts.css' || file.startsWith('games/magic/src/'),
+          );
+        if (
+          fontBound &&
+          fontGeometryTaskAffected(task, original) &&
+          (await fontGeometryRequiresReview())
+        ) {
+          const directory = 'games/magic/src';
+          if (!runtimeChecked.has(directory))
+            runtimeChecked.set(directory, await sourceHash(root + '/' + directory));
+          const actual = runtimeChecked.get(directory);
+          if (item.proof?.rendererHash !== actual && item.runtimeGuards?.[directory] !== actual) {
+            item.status = 'stale';
+            item.reason =
+              'Typography geometry changed in 0.7.10. The prior fit is retained as historical evidence; current text and full-card scores need a fresh render. This is not a failed fit.';
+            continue;
+          }
+        }
+
         let runtimeCurrent = true;
         for (const [directory, expected] of Object.entries(item.runtimeGuards ?? {})) {
           assert.ok(!directory.startsWith('/') && !directory.split('/').includes('..'));

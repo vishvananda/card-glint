@@ -185,7 +185,8 @@ function referenceMetrics(context: CanvasContext, text: string, run: FontRun): T
     return metrics;
   } finally {
     context.restore();
-    context.font = font;
+    // Adapters also restore the requested grid; the CSS getter can lose digits.
+    context.font = font.replace(/[\d.]+px\b/, String(run.size) + 'px');
     context.letterSpacing = letter;
     context.wordSpacing = word;
   }

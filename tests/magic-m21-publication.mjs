@@ -97,8 +97,8 @@ const reportCurrent =
     layout: 'normal',
   }));
 const [report] = await calibrationReport({ sets: [set] });
-assert.equal(report.byTask.release.validated ?? 0, reportCurrent ? 85 : 0);
-assert.equal(report.byTask.release.stale ?? 0, reportCurrent ? 0 : 85);
+assert.equal(report.byTask.release.validated ?? 0, 0);
+assert.equal(report.byTask.release.stale ?? 0, 85);
 assert.equal(report.byTask.normalization.validated, 85);
 assert.equal(report.complete, false);
 const changed = structuredClone(set);
