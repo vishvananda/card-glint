@@ -1,13 +1,14 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
+import { preSoftwareFinishSource } from '../games/magic/tools/accuracy/software-finish-ancestry.mjs';
 import {
   deferredGpuProof,
   preDeferredGpuSource,
 } from '../games/magic/tools/accuracy/deferred-gpu-ancestry.mjs';
 const proof = await deferredGpuProof();
 for (const [file, e] of Object.entries(proof.files)) {
-  const bytes = await readFile(file);
+  const bytes = await preSoftwareFinishSource(file, await readFile(file));
   assert.equal(hash(bytes), e.after, 'Unreviewed current GPU source: ' + file);
   assert.equal(hash(await preDeferredGpuSource(file, bytes)), e.before);
   const future = Buffer.concat([bytes, Buffer.from('// future edit')]);

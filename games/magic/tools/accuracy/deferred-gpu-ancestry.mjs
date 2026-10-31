@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { hash } from './common.mjs';
+import { preSoftwareFinishSource } from './software-finish-ancestry.mjs';
 const file = 'games/magic/fixtures/accuracy/deferred-gpu/review.json.gz';
 const digest = '5664fe13aec241181a9323ce0c2a15d390cd5c3cac6d74cb19fd3a4f5fd3b8f1';
 let checked;
@@ -35,6 +36,7 @@ export function deferredGpuProof() {
   })());
 }
 export async function preDeferredGpuSource(file, bytes) {
+  bytes = await preSoftwareFinishSource(file, bytes);
   const e = (await deferredGpuProof()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }
