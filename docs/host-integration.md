@@ -561,3 +561,31 @@ before `PRINT_DOTS_GLSL` to sample source-cell colors explicitly at mip level 0
 `glintSampleFace`. Ordinary color sampling and derivative-based screen fading
 retain their existing contract. The native backend uses level 0 for these
 cell-centered samples so quantized cell coordinates cannot select unstable mips.
+
+## Software rendering profiles
+
+`createRenderer({ canvas, finishQuality: 'auto' })` selects cheaper finish
+preparation when WebGL identifies a software rasterizer such as SwiftShader or
+llvmpipe. An unknown or hidden device identity keeps full detail. The library's
+compatibility default remains `'full'`; hosts can also request `'reduced'`
+explicitly. `renderer.finishQuality` reports the resolved choice, and
+`finishQualityVersion === 1` detects this API.
+
+Reduced preparation uses the existing analytic CMYK filter in place of the
+full spread/blur filter, caps cached printing at 488 pixels wide, and halves
+both dimensions of the shared cardstock relief map. The print period remains
+relative to card width, and minification fades fine screens. Artwork exclusion,
+coverage, alpha, layout and card data retain their existing contracts. Printing
+and coating maps remain cached through pointer motion.
+
+A host can also lower its output canvas resolution and frame rate for this
+profile. Keep its source face and normalized geometry consistent, scale copies
+explicitly, and apply the same profile to exports. Software detection does not
+choose an artwork or face-texture tier, alter the host's saved finishes, or
+change its GPU residency budget. A Canvas2D-only host can still use the game
+pack's compositor if WebGL is unavailable.
+
+Use `npm run test:software-finishes` with the preview server running to verify
+driver selection, unchanged unshaded content, active effects and warm cache
+reuse. Test wall times that force a readback include CPU submission, GPU work
+and copying; they are not hardware GPU timings or an FPS guarantee.

@@ -14,11 +14,18 @@ const fragment = `#version 300 es
 #define GLINT_PRINT_FACE(uv) textureLod(face,uv,0.)
 precision highp float;
 in vec2 uv;out vec4 color;uniform sampler2D face;
+#ifdef GLINT_REDUCED_PRINT
+uniform float printTargetWidth;
+#endif
 vec3 previewInk(vec3 c){return mix(c*12.92,1.055*pow(max(c,vec3(0.)),vec3(1./2.4))-.055,step(vec3(.0031308),c));}
 vec3 previewLinear(vec3 c){return mix(c/12.92,pow(max((c+.055)/1.055,vec3(0.)),vec3(2.4)),step(vec3(.04045),c));}
 ${PRINT_DOTS_GLSL.replace('flat in vec4 printDotsInfo;', 'uniform vec4 printDotsInfo;')}
 void main(){
+ #ifdef GLINT_REDUCED_PRINT
+ printFootprint=(float(textureSize(face,0).x)/printTargetWidth)/printDotPeriodTexels();
+ #else
  printFootprint=1./printDotPeriodTexels();
+ #endif
  // Fine screens need pixel-area coverage before they enter the mip chain.
  // Sample only the ink screen: averaging source texels would soften lettering.
  // This pass is cached per printing/settings, never rerun for pointer motion.
@@ -33,7 +40,6 @@ void main(){
  }else color=printFace(uv);
 }`;
 const limit = 16 * 1024 * 1024;
-const sizeOf = (texture: Texture) => textureMipBytes(texture.width, texture.height);
 const invisibleAtTier = (texture: Texture, period: number) =>
   1 / printDotPeriodForWidth(texture.width, period) >= 0.9;
 type Entry = {
@@ -68,13 +74,16 @@ export class PrintedInk {
     // color, registration, period, art exclusion and alpha semantics stay intact.
     const source =
       quality === 'reduced'
-        ? fragment.replace('#version 300 es', '#version 300 es\n#define GLINT_PRINT_PROCEDURAL')
+        ? fragment.replace(
+            '#version 300 es',
+            '#version 300 es\n#define GLINT_PRINT_PROCEDURAL\n#define GLINT_REDUCED_PRINT',
+          )
         : fragment;
     const shader = await programAsync(gl, source, vertex, signal);
     try {
       signal?.throwIfAborted();
       if (gl.isContextLost()) throw Error('Context lost during printing preparation');
-      return withFinishTextureState(gl, () => new PrintedInk(gl, shader));
+      return withFinishTextureState(gl, () => new PrintedInk(gl, shader, quality));
     } catch (error) {
       gl.deleteProgram(shader);
       throw error;
@@ -83,6 +92,7 @@ export class PrintedInk {
   constructor(
     private gl: WebGL2RenderingContext,
     shader?: WebGLProgram,
+    private quality: FinishQuality = 'full',
   ) {
     this.shader = shader ?? program(gl, fragment, vertex)!;
     const framebuffer = gl.createFramebuffer();
@@ -95,6 +105,14 @@ export class PrintedInk {
     }
     this.framebuffer = framebuffer;
     this.vao = vao;
+  }
+  private outputSize(source: Texture) {
+    const width = this.quality === 'reduced' ? Math.min(488, source.width) : source.width;
+    return [width, Math.max(1, Math.round((source.height * width) / source.width))] as const;
+  }
+  private outputBytes(source: Texture) {
+    const [width, height] = this.outputSize(source);
+    return textureMipBytes(width, height);
   }
   /** Protect the active working set. Overflow uses the existing procedural path
    * instead of evicting and rebuilding the same printing on every frame. */
@@ -145,7 +163,7 @@ export class PrintedInk {
       this.entries.push(entry);
       return entry;
     }
-    const bytes = sizeOf(source) + (overlay ? sizeOf(overlay) : 0);
+    const bytes = this.outputBytes(source) + (overlay ? this.outputBytes(overlay) : 0);
     if (bytes > limit) return undefined;
     while (this.bytes + bytes > limit) {
       const victim = this.entries.findIndex(
@@ -172,8 +190,7 @@ export class PrintedInk {
   /** Uncached native preparation. The caller owns and deletes the returned texture. */
   paint(source: Texture, values: number[], windows: readonly Rect[] = [], artwork = true): Texture {
     const gl = this.gl,
-      w = source.width,
-      h = source.height;
+      [w, h] = this.outputSize(source);
     // A renderable sRGB target preserves dark-ink precision. WebGL performs the
     // linear-to-sRGB store and normal decode when the material samples it.
     const map = texture(gl, w, h, gl.SRGB8_ALPHA8, gl.RGBA)!;
@@ -194,6 +211,8 @@ export class PrintedInk {
       gl.activeTexture(gl.TEXTURE0);
       gl.bindTexture(gl.TEXTURE_2D, source.texture);
       gl.uniform1i(gl.getUniformLocation(this.shader, 'face'), 0);
+      if (this.quality === 'reduced')
+        gl.uniform1f(gl.getUniformLocation(this.shader, 'printTargetWidth'), w);
       gl.uniform4fv(gl.getUniformLocation(this.shader, 'printDotsInfo'), values);
       gl.uniform4fv(
         gl.getUniformLocation(this.shader, 'printArtBounds[0]'),
