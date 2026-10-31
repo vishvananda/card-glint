@@ -1,3 +1,4 @@
+import type { FinishQuality } from '../finish-quality.js';
 import { program, programAsync, texture } from './etcher.js';
 import { withFinishTextureState } from '../finish-texture-state.js';
 
@@ -30,18 +31,22 @@ void main(){
  * Compile at context creation; allocate/generate once on first textured finish.
  * No per-frame noise evaluation, uploads, copies or CPU pixel readbacks. */
 export class Cardstock {
-  readonly width = width;
-  readonly height = height;
+  readonly width: number;
+  readonly height: number;
   map?: WebGLTexture;
   bytes = 0;
   passes = 0;
   private shader: WebGLProgram;
-  static async create(gl: WebGL2RenderingContext, signal?: AbortSignal): Promise<Cardstock> {
+  static async create(
+    gl: WebGL2RenderingContext,
+    signal?: AbortSignal,
+    quality: FinishQuality = 'full',
+  ): Promise<Cardstock> {
     const shader = await programAsync(gl, fragment, vertex, signal);
     try {
       signal?.throwIfAborted();
       if (gl.isContextLost()) throw Error('Context lost during cardstock preparation');
-      return withFinishTextureState(gl, () => new Cardstock(gl, shader));
+      return withFinishTextureState(gl, () => new Cardstock(gl, shader, quality));
     } catch (error) {
       gl.deleteProgram(shader);
       throw error;
@@ -50,12 +55,17 @@ export class Cardstock {
   constructor(
     private gl: WebGL2RenderingContext,
     shader?: WebGLProgram,
+    quality: FinishQuality = 'full',
   ) {
+    this.width = quality === 'reduced' ? width / 2 : width;
+    this.height = quality === 'reduced' ? height / 2 : height;
     this.shader = shader ?? program(gl, fragment, vertex)!;
   }
   prepare() {
     if (this.map) return;
-    const gl = this.gl;
+    const gl = this.gl,
+      width = this.width,
+      height = this.height;
     const map = texture(gl, width, height, gl.RGBA8, gl.RGBA)!;
     const framebuffer = gl.createFramebuffer()!;
     const vao = gl.createVertexArray()!;

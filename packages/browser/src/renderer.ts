@@ -6,6 +6,7 @@ import {
 } from './validation.js';
 import init, { SceneCore } from '../generated/renderer.js';
 import { AssetStore } from './assets.js';
+import type { FinishQuality, FinishQualityPreference } from './finish-quality.js';
 import { Device, type Material } from './gpu/device.js';
 import { TextureStore, type Texture } from './gpu/textures.js';
 import { Preparer, type Prepared } from './prepare.js';
@@ -31,6 +32,8 @@ export interface RendererOptions {
   budgets?: Partial<Budgets>;
   invalidate?: () => void;
   onError?: (error: unknown) => void;
+  /** Defaults to full. Auto reduces finish preparation on identified software GPUs. */
+  finishQuality?: FinishQualityPreference;
 }
 interface Job {
   document: CardDocument;
@@ -83,7 +86,12 @@ export class Renderer {
     )
       throw RangeError('Preparation concurrency must be 1–4');
     this.assets = new AssetStore(this.budgets.cpuBytes);
-    this.device = new Device(options.canvas, options.invalidate, options.onError);
+    this.device = new Device(
+      options.canvas,
+      options.invalidate,
+      options.onError,
+      options.finishQuality,
+    );
     this.textures = new TextureStore(
       this.device.gl,
       this.budgets.gpuBytes,
@@ -93,6 +101,9 @@ export class Renderer {
     this.preparer = new Preparer(this.textures, options.rasterHost ?? this.assets);
     options.canvas.addEventListener('webglcontextlost', this.contextLost);
     options.canvas.addEventListener('webglcontextrestored', this.contextRestored);
+  }
+  get finishQuality(): FinishQuality {
+    return this.device.finishQuality;
   }
   private assertLive() {
     if (this.disposed) throw Error('Renderer disposed');
@@ -530,7 +541,12 @@ export class Renderer {
     this.preparer.dispose();
     this.textures.dispose();
     this.device.dispose();
-    this.device = new Device(this.options.canvas, this.options.invalidate, this.options.onError);
+    this.device = new Device(
+      this.options.canvas,
+      this.options.invalidate,
+      this.options.onError,
+      this.options.finishQuality,
+    );
     this.textures = new TextureStore(
       this.device.gl,
       this.budgets.gpuBytes,

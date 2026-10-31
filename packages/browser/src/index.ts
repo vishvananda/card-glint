@@ -20,3 +20,7 @@ export {
   PRINT_DOTS_REFERENCE_WIDTH,
   printDotPeriodForWidth,
 } from './print-settings.js';
+
+/** Optional full/reduced finish preparation profiles. */
+export const finishQualityVersion = 1;
+export type { FinishQuality, FinishQualityPreference } from './finish-quality.js';

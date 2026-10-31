@@ -1,3 +1,8 @@
+import {
+  finishQuality,
+  type FinishQuality,
+  type FinishQualityPreference,
+} from '../finish-quality.js';
 import { programAsync, texture } from './etcher.js';
 import { vertex, materialFragment, imageFragment } from './shaders.js';
 import type { Texture } from './textures.js';
@@ -32,6 +37,7 @@ export interface Material {
 }
 export class Device {
   readonly gl: WebGL2RenderingContext;
+  readonly finishQuality: FinishQuality;
   private programs = new Map<string, { promise: Promise<WebGLProgram>; value?: WebGLProgram }>();
   private image?: WebGLProgram;
   private imagePending?: Promise<WebGLProgram>;
@@ -60,6 +66,7 @@ export class Device {
     readonly canvas: HTMLCanvasElement,
     private invalidate?: () => void,
     private onError?: (error: unknown) => void,
+    quality?: FinishQualityPreference,
   ) {
     const gl = canvas.getContext('webgl2', {
       alpha: true,
@@ -69,6 +76,7 @@ export class Device {
     });
     if (!gl) throw Error('WebGL2 is required');
     this.gl = gl;
+    this.finishQuality = finishQuality(gl, quality);
     this.vao = gl.createVertexArray()!;
     this.quad = gl.createBuffer()!;
     this.instances = gl.createBuffer()!;
@@ -200,7 +208,7 @@ export class Device {
     ) {
       if (!this.cardstockPending) this.compiling++;
       this.cardstockPending ??= Promise.resolve()
-        .then(() => Cardstock.create(this.gl, this.lifetime.signal))
+        .then(() => Cardstock.create(this.gl, this.lifetime.signal, this.finishQuality))
         .then((value) => {
           if (this.disposed) {
             if (!this.gl.isContextLost()) value.dispose();
@@ -216,7 +224,7 @@ export class Device {
     if (list.some((item) => this.activePrint(item))) {
       if (!this.printedInkPending) this.compiling++;
       this.printedInkPending ??= Promise.resolve()
-        .then(() => PrintedInk.create(this.gl, this.lifetime.signal))
+        .then(() => PrintedInk.create(this.gl, this.lifetime.signal, this.finishQuality))
         .then((value) => {
           if (this.disposed) {
             if (!this.gl.isContextLost()) value.dispose();

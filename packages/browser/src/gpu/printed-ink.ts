@@ -1,3 +1,4 @@
+import type { FinishQuality } from '../finish-quality.js';
 import { program, programAsync, texture } from './etcher.js';
 import { withFinishTextureState } from '../finish-texture-state.js';
 import { PRINT_DOTS_GLSL } from './print-dots.js';
@@ -57,8 +58,19 @@ export class PrintedInk {
   private frame = 0;
   bytes = 0;
   passes = 0;
-  static async create(gl: WebGL2RenderingContext, signal?: AbortSignal): Promise<PrintedInk> {
-    const shader = await programAsync(gl, fragment, vertex, signal);
+  static async create(
+    gl: WebGL2RenderingContext,
+    signal?: AbortSignal,
+    quality: FinishQuality = 'full',
+  ): Promise<PrintedInk> {
+    // The pressure/mixed-instance analytic filter is also a bounded software-GPU
+    // option: one coverage tap instead of nine times three spread taps. Cached
+    // color, registration, period, art exclusion and alpha semantics stay intact.
+    const source =
+      quality === 'reduced'
+        ? fragment.replace('#version 300 es', '#version 300 es\n#define GLINT_PRINT_PROCEDURAL')
+        : fragment;
+    const shader = await programAsync(gl, source, vertex, signal);
     try {
       signal?.throwIfAborted();
       if (gl.isContextLost()) throw Error('Context lost during printing preparation');

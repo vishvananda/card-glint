@@ -82,7 +82,8 @@
     "test:ci:list": "node scripts/ci/run.mjs --list --shards 4",
     "test:ci-plan": "node --test tests/ci-plan.test.mjs",
     "test:gpu-lifecycle": "node --test tests/gpu-program.test.mjs && node tests/gpu-readiness.mjs && node tests/gpu-material-parity.mjs && node tests/magic-deferred-gpu-ancestry.mjs",
-    "test:magic-fonts": "node --test tests/magic-font-boundary.test.mjs && node tests/magic-font-geometry.mjs"
+    "test:magic-fonts": "node --test tests/magic-font-boundary.test.mjs && node tests/magic-font-geometry.mjs",
+    "test:software-finishes": "node tests/finish-quality.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
