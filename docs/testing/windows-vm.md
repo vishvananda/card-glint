@@ -39,7 +39,8 @@ sudo chattr +C "$VM_ROOT/state"
 ```
 
 The disk is sparse: 96 GiB is its virtual capacity, not its initial allocation.
-The guest has 8 GiB RAM and four vCPUs. The managed process is limited to 10 GiB
+The guest has 8 GiB RAM and four vCPUs with a fixed Broadwell-v4 CPU model.
+The host must support that instruction set. The managed process is limited to 10 GiB
 host memory, no host swap, three CPU equivalents and six hours. It has lower
 CPU/I/O priority. The host's KVM group is granted to that process only.
 
@@ -216,6 +217,8 @@ the VM. Probe results are recorded independently of the console.
 
 The six-hour process limit is intentional; the launcher can start a new bounded
 session when needed. Neither service is enabled automatically at host boot.
+Stop the VM before replacing its launcher files. Update SDK/probe inputs only
+between matrices.
 
 ## Interpret the results
 

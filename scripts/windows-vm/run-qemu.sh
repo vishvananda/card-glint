@@ -19,7 +19,8 @@ for ((attempt=0;attempt<100;attempt++)); do [[ -S "$root/state/tpm.sock" ]] && b
 [[ -S "$root/state/tpm.sock" ]] || { echo 'TPM socket did not become ready.' >&2; exit 1; }
 args=(
  -name card-glint-windows -machine q35,accel=kvm,smm=on
- -cpu host,hv_relaxed,hv_vapic,hv_spinlocks=0x1fff -smp 4,cores=4,threads=1 -m 8192
+ # Keep the guest feature set stable; do not expose host nested-VMX features.
+ -cpu Broadwell-v4,hv_relaxed,hv_vapic,hv_spinlocks=0x1fff -smp 4,cores=4,threads=1 -m 8192
  -global driver=cfi.pflash01,property=secure,value=on
  -drive if=pflash,format=raw,unit=0,file=/usr/share/OVMF/OVMF_CODE_4M.secboot.fd,readonly=on
  -drive "if=pflash,format=raw,unit=1,file=$root/state/OVMF_VARS.fd"
