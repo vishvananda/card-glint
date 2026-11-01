@@ -144,7 +144,14 @@ try {
     report.rows.push(row);
     await progress('finish', row);
   });
-  await page.exposeFunction('recordAdapter', (identity) => progress('adapter', identity));
+  await page.exposeFunction('recordAdapter', (identity) => {
+    if (identity.renderer) {
+      const expected = backend === 'warp' ? /basic render driver|warp/i : /swiftshader/i;
+      if (backend !== 'default' && !expected.test(identity.renderer))
+        throw Error('Requested software backend was not selected: ' + identity.renderer);
+    }
+    return progress('adapter', identity);
+  });
   await page.goto(base + '/probe.html');
   await progress('page-evaluation');
   const run = page.evaluate(

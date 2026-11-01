@@ -112,6 +112,19 @@ through QEMU user networking; no guest login or debugging port is exposed.
 
 ## Run and inspect a probe
 
+After installing the chosen browser and its dependencies, run a sequential matrix:
+
+```sh
+python3 "$VM_ROOT/tools/run-matrix.py" "$VM_ROOT" \
+  --browser chromium --backend swiftshader --suite all
+```
+
+This runs both low and high finish/stress cases plus a regular-face control,
+with unique job IDs and a JSON summary under `results/`. It records a fingerprint
+of the SDK and probe files and rejects inputs that change during the run. Only
+one matrix producer may own the queue. Use `--suite stress` for just the two
+many-face cases. Keep the VM and controller running for the full matrix.
+
 Write one job atomically to `$VM_ROOT/tools/job.json`:
 
 ```json

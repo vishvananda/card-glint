@@ -88,6 +88,27 @@ class ControlTransportTests(unittest.TestCase):
         self.assertEqual(self.call('POST', '/event', extra_headers={'Content-Length': 'invalid'})[0], 400)
         self.assertEqual(self.call('POST', '/event', extra_headers={'Content-Length': str(5 * 1024 * 1024)})[0], 413)
 
+    @unittest.skipUnless(shutil.which('node'), 'Node is needed for the matrix integration check')
+    def test_matrix_runs_both_quality_levels_and_saves_reports(self):
+        guest = self.root / 'matrix-guest'
+        (guest / 'runner').mkdir(parents=True)
+        shutil.copyfile(Path(__file__).with_name('guest-agent.mjs'), guest / 'guest-agent.mjs')
+        (guest / 'settings.json').write_text(json.dumps({'base': f'http://127.0.0.1:{self.port}', 'token': 'fixture-token'}))
+        (self.root / 'tools/payload/shader-probe.mjs').write_text('console.log(JSON.stringify({stage:"report", supported:true, selectedQuality:process.argv[3], rows:Array.from({length:10},()=>({})), errors:[]}));')
+        agent = subprocess.Popen([shutil.which('node'), str(guest / 'guest-agent.mjs')], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+        try:
+            matrix = subprocess.run([sys.executable, str(Path(__file__).with_name('run-matrix.py')), str(self.root), '--suite', 'finishes', '--prefix', 'fixture-matrix', '--timeout', '30'], capture_output=True, text=True, timeout=20)
+            self.assertEqual(matrix.returncode, 0, matrix.stdout + matrix.stderr)
+            summary = json.loads((self.root / 'results/matrix-fixture-matrix.json').read_text())
+            self.assertEqual([row['job']['quality'] for row in summary['cases']], ['reduced', 'full'])
+            self.assertTrue(all(row['status'] == 'pass' for row in summary['cases']))
+            self.assertEqual(len(summary['fingerprint']), 64)
+        finally:
+            (self.root / 'tools/job.json').unlink(missing_ok=True)
+            agent.terminate()
+            agent.wait(timeout=5)
+            agent.stderr.close()
+
     def test_bootstrap_marks_existing_installation_to_prevent_accidental_reinstall(self):
         self.assertEqual(self.call('POST', '/event', json.dumps({'stage': 'bootstrap'}))[0], 200)
         self.assertTrue((self.root / 'state/installed').exists())
