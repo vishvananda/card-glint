@@ -2,10 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { programAsync, program } from '../packages/browser/src/gpu/etcher.js';
 
-function context({ parallel = true, fail = false } = {}) {
+function context({ parallel = true, fail = false, queued = false, metal = false } = {}) {
   const events = [],
     canvas = new EventTarget();
   let complete = false,
+    submitted = !queued,
     lost = false,
     next = 0;
   const gl = {
@@ -14,7 +15,15 @@ function context({ parallel = true, fail = false } = {}) {
     FRAGMENT_SHADER: 2,
     LINK_STATUS: 3,
     isContextLost: () => lost,
-    getExtension: () => (parallel ? { COMPLETION_STATUS_KHR: 4 } : null),
+    getExtension: (name) =>
+      name === 'WEBGL_debug_renderer_info'
+        ? metal
+          ? { UNMASKED_RENDERER_WEBGL: 5 }
+          : null
+        : parallel
+          ? { COMPLETION_STATUS_KHR: 4 }
+          : null,
+    getParameter: () => 'ANGLE (Intel, ANGLE Metal Renderer: Intel UHD Graphics 630)',
     createProgram: () => ({ id: next++ }),
     createShader: () => ({ id: next++ }),
     shaderSource() {},
@@ -25,6 +34,10 @@ function context({ parallel = true, fail = false } = {}) {
     linkProgram() {
       events.push('link');
     },
+    flush() {
+      events.push('flush');
+      submitted = true;
+    },
     deleteShader() {
       events.push('delete shader');
     },
@@ -34,10 +47,10 @@ function context({ parallel = true, fail = false } = {}) {
     getProgramParameter(_p, key) {
       if (key === 4) {
         events.push('completion');
-        return complete;
+        return complete && submitted;
       }
       assert.equal(key, 3);
-      if (parallel) assert(complete, 'link status queried before completion');
+      if (parallel && !metal) assert(complete, 'link status queried before completion');
       events.push('status');
       return !fail;
     },
@@ -68,6 +81,44 @@ test('parallel compilation yields and waits for completion before link inspectio
   assert(await pending);
   assert.equal(c.events.filter((x) => x === 'status').length, 1);
   assert(!c.events.includes('delete program'));
+});
+
+test('ANGLE Metal finalizes a stale completion query after a bounded asynchronous wait', async () => {
+  const c = context({ metal: true }),
+    abort = new AbortController(),
+    start = performance.now();
+  const deadline = setTimeout(() => abort.abort(), 2500);
+  try {
+    const pending = programAsync(c.gl, 'fragment', undefined, abort.signal);
+    await new Promise((resolve) => setTimeout(resolve, 25));
+    assert(!c.events.includes('status'), 'Normal asynchronous compilation gets the first chance');
+    assert(await pending);
+    assert(performance.now() - start >= 1000);
+    assert.equal(c.events.filter((event) => event === 'status').length, 1);
+  } finally {
+    clearTimeout(deadline);
+    abort.abort();
+  }
+});
+
+test('detached preparation submits its link without relying on a drawing frame', async () => {
+  const c = context({ queued: true }),
+    abort = new AbortController();
+  c.complete();
+  const deadline = setTimeout(() => abort.abort(), 500);
+  try {
+    assert(await programAsync(c.gl, 'fragment', undefined, abort.signal));
+    assert.deepEqual(c.events.filter((event) => event !== 'delete shader').slice(0, 4), [
+      'compile',
+      'compile',
+      'link',
+      'flush',
+    ]);
+    assert.equal(c.events.filter((event) => event === 'flush').length, 1);
+  } finally {
+    clearTimeout(deadline);
+    abort.abort();
+  }
 });
 
 test('fallback yields before link status; synchronous API remains available', async () => {

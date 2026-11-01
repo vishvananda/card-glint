@@ -68,6 +68,18 @@ export function program(gl, fragment, vs = vertex) {
     throw error;
   }
 }
+const completionFallback = new WeakMap();
+function metalCompletionFallback(gl) {
+  if (!completionFallback.has(gl)) {
+    const debug = gl.getExtension('WEBGL_debug_renderer_info');
+    completionFallback.set(
+      gl,
+      !!debug &&
+        /ANGLE.*Metal Renderer/i.test(String(gl.getParameter(debug.UNMASKED_RENDERER_WEBGL))),
+    );
+  }
+  return completionFallback.get(gl);
+}
 /**
  * @param {AbortSignal} [signal]
  * @returns {Promise<WebGLProgram>}
@@ -77,6 +89,8 @@ export function programAsync(gl, fragment, vs = vertex, signal) {
   if (gl.isContextLost()) return Promise.reject(Error('Graphics context is lost'));
   return new Promise((resolve, reject) => {
     const extension = gl.getExtension('KHR_parallel_shader_compile');
+    const fallback = extension && metalCompletionFallback(gl),
+      started = performance.now();
     let pending, timer;
     const cleanup = () => {
       clearTimeout(timer);
@@ -96,8 +110,14 @@ export function programAsync(gl, fragment, vs = vertex, signal) {
       if (gl.isContextLost()) return lost();
       try {
         if (extension && !gl.getProgramParameter(pending.p, extension.COMPLETION_STATUS_KHR)) {
-          timer = setTimeout(poll, 8);
-          return;
+          // ANGLE/Metal can leave completion false until focus changes even
+          // when LINK_STATUS can already finalize the program. Keep the usual
+          // non-blocking path first; bound only this driver's stale polling.
+          // Finalization may briefly block if a cold native compile is ongoing.
+          if (!fallback || performance.now() - started < 1000) {
+            timer = setTimeout(poll, 8);
+            return;
+          }
         }
         const shader = linked(gl, pending.p, pending.shaders);
         cleanup();
@@ -111,6 +131,10 @@ export function programAsync(gl, fragment, vs = vertex, signal) {
     gl.canvas.addEventListener('webglcontextlost', lost, { once: true });
     try {
       pending = link(gl, fragment, vs);
+      // Preparation can run on a detached canvas with drawing paused. Submit
+      // the link before non-blocking polling; there may be no RAF boundary to
+      // flush this context's command queue. flush() submits without waiting.
+      gl.flush();
       timer = setTimeout(poll, 0);
     } catch (error) {
       fail(error);
