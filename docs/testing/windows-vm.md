@@ -88,7 +88,7 @@ Run these commands from the repository as the normal host user:
 
 ```sh
 cp scripts/windows-vm/*.{py,sh,ps1,mjs} "$VM_ROOT/tools/"
-cp scripts/windows-vm/{guest-agent.ps1,shader-probe.mjs,install-browsers.mjs} \
+cp scripts/windows-vm/{guest-agent.ps1,guest-agent.mjs,shader-probe.mjs,install-browsers.mjs} \
   "$VM_ROOT/tools/payload/"
 python3 "$VM_ROOT/tools/prepare-answer.py" "$VM_ROOT"
 bash "$VM_ROOT/tools/start-vm.sh" "$VM_ROOT" install

@@ -1,6 +1,7 @@
 import http.client
 import json
 import socket
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -101,6 +102,35 @@ class ControlTransportTests(unittest.TestCase):
         payload['jobId'] = '../outside'
         self.assertEqual(self.call('POST', '/event', json.dumps(payload))[0], 200)
         self.assertFalse((self.root / 'outside.json').exists())
+
+    @unittest.skipUnless(shutil.which('node'), 'Node is needed for the guest coordinator check')
+    def test_coordinator_returns_child_exit_and_both_logs(self):
+        guest = self.root / 'guest'
+        (guest / 'runner').mkdir(parents=True)
+        shutil.copyfile(Path(__file__).with_name('guest-agent.mjs'), guest / 'guest-agent.mjs')
+        (guest / 'settings.json').write_text(json.dumps({'base': f'http://127.0.0.1:{self.port}', 'token': 'fixture-token'}))
+        (self.root / 'tools/payload/smoke.mjs').write_text('console.log("child complete"); console.error("diagnostic warning");')
+        job = self.root / 'tools/job.json'
+        job.write_text(json.dumps({'id': 'coordinator-smoke', 'script': 'smoke.mjs', 'backend': 'default', 'quality': 'reduced', 'browser': 'msedge', 'timeoutSeconds': 30}))
+        agent = subprocess.Popen([shutil.which('node'), str(guest / 'guest-agent.mjs')], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+        try:
+            result = self.root / 'results/coordinator-smoke.json'
+            deadline = time.monotonic() + 10
+            while not result.exists() and time.monotonic() < deadline:
+                if agent.poll() is not None:
+                    self.fail(agent.stderr.read().decode())
+                time.sleep(.05)
+            self.assertTrue(result.exists(), 'Coordinator must return completion without a redirected-process deadlock')
+            data = json.loads(result.read_text())
+            self.assertEqual(data['exitCode'], 0)
+            self.assertFalse(data['timedOut'])
+            self.assertIn('child complete', data['stdout'])
+            self.assertIn('diagnostic warning', data['stderr'])
+        finally:
+            job.unlink(missing_ok=True)
+            agent.terminate()
+            agent.wait(timeout=5)
+            agent.stderr.close()
 
 
 if __name__ == '__main__':

@@ -286,6 +286,13 @@ try {
   console.log(
     JSON.stringify({ stage: 'report', ...report, completedAt: new Date().toISOString() }),
   );
-  if (browser) await browser.close();
+  await progress('report', { report });
+  if (browser) {
+    await progress('closing-browser');
+    await browser.close();
+    await progress('browser-closed');
+  }
+  server.closeAllConnections();
   await new Promise((resolve) => server.close(resolve));
+  await progress('probe-complete');
 }

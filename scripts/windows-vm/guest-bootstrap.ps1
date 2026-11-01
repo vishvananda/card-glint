@@ -30,6 +30,7 @@ try {
     $Npm = Start-Process -FilePath $Node -ArgumentList @($NpmCli,'install','--prefix',$Runner,'--ignore-scripts','--no-audit','--no-fund','playwright@1.60.0') -NoNewWindow -PassThru -Wait -RedirectStandardOutput (Join-Path $Root 'npm-install.log') -RedirectStandardError (Join-Path $Root 'npm-install-errors.log')
     if ($Npm.ExitCode -ne 0) { throw 'Playwright installation failed' }
     Invoke-WebRequest -UseBasicParsing -Headers $Headers -Uri "$($Config.base)/payload/guest-agent.ps1" -OutFile (Join-Path $Root 'guest-agent.ps1')
+    Invoke-WebRequest -UseBasicParsing -Headers $Headers -Uri "$($Config.base)/payload/guest-agent.mjs" -OutFile (Join-Path $Root 'guest-agent.mjs')
     $Action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument '-NoProfile -ExecutionPolicy Bypass -File C:\Glint\guest-agent.ps1'
     $Trigger = New-ScheduledTaskTrigger -AtLogOn -User "$env:COMPUTERNAME\$env:USERNAME"
     $Principal = New-ScheduledTaskPrincipal -UserId "$env:COMPUTERNAME\$env:USERNAME" -LogonType Interactive -RunLevel Limited
