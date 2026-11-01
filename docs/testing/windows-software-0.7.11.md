@@ -11,6 +11,7 @@ This is a diagnostic sample from 2026-11-01, using the verified published 0.7.11
 - KVM on an x86 Linux host, four guest vCPUs and 8 GiB RAM. The VM service was limited to three CPU equivalents and 10 GiB host memory, without swap. No host out-of-memory kill or VM restart occurred.
 - Actual backends: ANGLE SwiftShader/Vulkan and ANGLE Microsoft Basic Render Driver/D3D11 (WARP). This does not validate physical Intel, AMD or NVIDIA drivers.
 - Fresh browser processes per case; OS/driver caches were not flushed. The probes use synthetic canvas faces and a shared mask shape, without game assets, external images or custom font downloads. Diagnostic instrumentation and deadlines evolved during the investigation; the renderer archive and stress dimensions stayed fixed.
+- The guest display could blank during unattended runs. These are graphics-command completion checks, not display-presentation or scanout benchmarks.
 
 ## Mixed finishes
 

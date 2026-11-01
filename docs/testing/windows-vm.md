@@ -196,6 +196,24 @@ bash "$VM_ROOT/tools/start-vm.sh" "$VM_ROOT"
 
 `screendump` writes `results/console.png`. To use an interactive VNC client,
 forward a local port through SSH to the remote `$VM_ROOT/state/vnc.sock`.
+On macOS, a local noVNC bridge also works when the native VNC client refuses
+passwordless Unix-socket sessions. Install `novnc websockify` from the host's
+package repository, then run on the VM host:
+
+```sh
+systemd-run --user --collect --unit=glint-windows-console \
+  -p MemoryMax=256M -p CPUQuota=50% -p RuntimeMaxSec=3600 \
+  websockify --web=/usr/share/novnc --unix-target="$VM_ROOT/state/vnc.sock" \
+  127.0.0.1:6088
+```
+
+On the client, run `ssh -N -L 6088:127.0.0.1:6088 vm-host`, then open
+`http://127.0.0.1:6088/vnc.html?autoconnect=true&resize=scale`.
+Keep both listeners on loopback. Stop the console bridge with
+`systemctl --user stop glint-windows-console.service` when finished.
+The guest can blank its idle display; wake it with Escape rather than resetting
+the VM. Probe results are recorded independently of the console.
+
 The six-hour process limit is intentional; the launcher can start a new bounded
 session when needed. Neither service is enabled automatically at host boot.
 
