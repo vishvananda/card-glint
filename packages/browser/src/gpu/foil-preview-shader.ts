@@ -152,6 +152,7 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
   if(studioLighting>.5)lamp=normalize(studioLampPosition);
 
   if(previewKind==9.)return holofoil(uv,base,normal,view,317./4294967295.,holofoilGrainFilter);
+#if !defined(GLINT_FINISH_KIND) || GLINT_FINISH_KIND == 8
   if(previewKind==8.) {
     // Compatibility varnish from 0.5.3: the legacy foil pointer moves its sheen.
     float sweep=dot(cardUv*vec2(.86,1.20)-(bg-.5)*1.25,dir133)-.42;
@@ -165,6 +166,8 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     vec3 res=foilSheenBlend(base,clearCoat*1.10*(1.+satinHoverGain*.25));
     return mix(base,applyStudioGlare(res,rT,.52),.9);
   }
+#endif
+#if !defined(GLINT_FINISH_KIND) || GLINT_FINISH_KIND == 1
   if(previewKind==1.) {
     // Etched gold foil: embossed contour bevels, warm champagne-gold leaf, and micro-sparkle (+10% gold highlight).
     float fineLine=smoothstep(.24,.88,etched)*art;
@@ -198,8 +201,12 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     vec3 champagne=mix(vec3(.92,.775,.45),vec3(.99,.935,.76),innerCore*.53+pillar*.47);
     vec3 warmSpectrum=mix(champagne,iridescentBands(cardUv.y*.55-bg.y*.55,2.),.08);
 
+#ifdef GLINT_REDUCED_FINISH
+    float glit=0.,geom=.5;
+#else
     float glit=microSparkle(cardUv,(ptr-.5)*.02,1.15);
     float geom=embossFacetPattern(cardUv*1.8);
+#endif
     float stampTex=(.78+.22*geom)*(.31+.69*textPreserve);
     float metalMask=clamp(fineLine*.86+stamp*stampTex*.82,0.,1.);
     float sheenStrength=(.036+pillar*.050)*spot+metalMask*(.17+pillar*.29+spot*.23+ridgeGlint*.31);
@@ -208,6 +215,8 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     vec3 res=foilSheenBlend(base,shine*(1.+satinHoverGain*.30));
     return applyStudioGlare(res,rT,.40);
   }
+#endif
+#if !defined(GLINT_FINISH_KIND) || GLINT_FINISH_KIND == 2
   if(previewKind==2.) {
     // Prismatic foil: natural mylar rainbow diffraction bands with contour catch.
     float phase1=dot(cardUv-(bg-.5)*1.35,dir115);
@@ -232,6 +241,8 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     vec3 tinted=mix(dodged,blendOverlay(base,prism),clamp(sheet*.05,0.,.045));
     return applyStudioGlare(tinted,rT,.45);
   }
+#endif
+#if !defined(GLINT_FINISH_KIND) || GLINT_FINISH_KIND == 3
   if(previewKind==3.) {
     // Cold silver foil: brushed-aluminum grain with twin specular silver beams.
     float fineLine=smoothstep(.33,.90,etched)*art;
@@ -255,7 +266,9 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     vec3 res=foilSheenBlend(base,shine*(1.+satinHoverGain*.32));
     return applyStudioGlare(res,rT,.42);
   }
+#endif
   vec2 tilt=(GLINT_LIGHTING_POINTER-.5)*2.;
+#if !defined(GLINT_FINISH_KIND) || GLINT_FINISH_KIND == 4
   if(previewKind==4.) {
     // Opal embossed foil: contour relief bevels and mother-of-pearl nacre.
     vec4 facet=opalFacet(uv,tilt,normal,view);
@@ -287,7 +300,11 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     base=base*(1.+(h*.86+stamp*textPreserve*.74)*(shade-.48)*.58)+vec3(.66,.97,.84)*glint*(h*.75+stamp*textPreserve*(.39+ridgeEdge*.54));
     base=mix(base,facet.rgb,facet.a*.85*(.20+.80*clamp(h+stamp*textPreserve,0.,1.)));
 
+#ifdef GLINT_REDUCED_FINISH
+    float glit=0.;
+#else
     float glit=microSparkle(cardUv,(ptr-.5)*.02,1.10);
+#endif
     float opalMask=clamp(h*.78+stamp*(.34+.66*textPreserve)*(.68+.27*wave),0.,1.);
     vec3 shine=nacre*wave*((.12+.135*spot)*spot+opalMask*(.20+.30*spot+highlight*.22))
              +mix(nacre,vec3(1.),.60)*glit*(.039+.255*opalMask)*(.32+.68*spot);
@@ -295,6 +312,7 @@ vec3 previewFoil(vec2 uv, vec3 normal, vec3 view) {
     vec3 res=foilSheenBlend(base,shine*(1.+satinHoverGain*.32));
     return applyStudioGlare(res,rT,.47);
   }
+#endif
 
 ${options.liquid ? LIQUID_FOIL_GLSL : ''}
   return base;

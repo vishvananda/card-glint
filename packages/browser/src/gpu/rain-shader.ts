@@ -19,7 +19,12 @@ vec4 rainField(vec2 uv,vec3 normal){
  vec2 beadShear=vec2(normal.x*.26+surfaceInfo.x*.42,normal.y*.10+surfaceInfo.y*.16);
  float streamShear=normal.x*.15+surfaceInfo.x*.22;
  // Fine stationary beads form and evaporate at independent times.
+#ifdef GLINT_REDUCED_FINISH
+ // Tiny low-quality cards retain central beads; omit subpixel neighboring caps.
+ for(int y=0;y<=0;y++)for(int x=0;x<=0;x++){
+#else
  for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){
+#endif
   vec2 id=cell+vec2(float(x),float(y)),initial=surfaceHash2(id+seed);
   float cycle=9.+initial.y*11.,clock=t+initial.x*cycle,age=mod(clock,cycle);
   vec2 rnd=surfaceHash2(id+seed+floor(clock/cycle)*vec2(17.1,29.3));
@@ -65,14 +70,20 @@ vec3 rainGlass(vec2 uv,vec3 normal){
  vec2 radius=vec2(.0056,.0056/aspect)*dry;
  vec2 baseUv=windowSceneUv(uv,normal)+bend;
  vec4 bounds=surfaceWindow(uv);
+#ifdef GLINT_REDUCED_FINISH
+ vec3 linearInk=windowInk(baseUv,bounds)*.40;
+#else
  vec3 linearInk=windowInk(baseUv,bounds)*mix(.40,.22,dry*.45);
+#endif
  linearInk+=(windowInk(baseUv+vec2(radius.x,0.),bounds)+windowInk(baseUv-vec2(radius.x,0.),bounds)
   +windowInk(baseUv+vec2(0.,radius.y),bounds)+windowInk(baseUv-vec2(0.,radius.y),bounds))*.15;
+ #ifndef GLINT_REDUCED_FINISH
  if(dry>.02){
   vec2 diag=radius*.55;
   linearInk+=(windowInk(baseUv+diag,bounds)+windowInk(baseUv-diag,bounds)
    +windowInk(baseUv+vec2(diag.x,-diag.y),bounds)+windowInk(baseUv+vec2(-diag.x,diag.y),bounds))*(.045*dry);
  }
+ #endif
  vec3 ink=previewInk(linearInk);
 
  // Physical card response behind the pane: artwork contours & frame lines catch light on tilt.

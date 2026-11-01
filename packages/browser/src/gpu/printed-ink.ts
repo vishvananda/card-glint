@@ -42,6 +42,22 @@ void main(){
 const limit = 16 * 1024 * 1024;
 const invisibleAtTier = (texture: Texture, period: number) =>
   1 / printDotPeriodForWidth(texture.width, period) >= 0.9;
+/** True only when both uploaded mip chains already represent the filtered-out
+ * screen. Share this decision with Device before compiling printing shaders. */
+export function invisiblePrinting(
+  source: Texture,
+  overlay: Texture | undefined,
+  profile: NonNullable<Instance['printDots']>,
+) {
+  const values = printDotValues(profile);
+  return Boolean(
+    source.mipmapped &&
+      (!overlay || overlay.mipmapped) &&
+      (values[0]! <= 0 ||
+        (invisibleAtTier(source, values[1]!) &&
+          (!overlay || invisibleAtTier(overlay, values[1]!)))),
+  );
+}
 type Entry = {
   source: Texture;
   overlay?: Texture;
@@ -129,12 +145,7 @@ export class PrintedInk {
     // The screen shader is identically inactive below this physical sampling
     // threshold. Borrow the existing printing: no duplicate texture, pass or
     // procedural per-frame fallback for dense small-card scenes.
-    if (
-      source.mipmapped &&
-      (!overlay || overlay.mipmapped) &&
-      (values[0]! <= 0 ||
-        (invisibleAtTier(source, values[1]!) && (!overlay || invisibleAtTier(overlay, values[1]!))))
-    ) {
+    if (invisiblePrinting(source, overlay, profile)) {
       const previous = this.invisible.get(source.texture);
       if (previous && previous.overlay?.texture === overlay?.texture) return previous;
       const entry: Entry = {

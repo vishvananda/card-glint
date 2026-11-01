@@ -326,8 +326,9 @@ export class Renderer {
     const leases: Lease<Texture>[] = [];
     try {
       signal?.throwIfAborted();
-      if (!this.material(prepared, leases)) throw Error('Prepared working set exceeds GPU budget');
-      await device.prepare(prepared.document.recipe, list, signal);
+      const material = this.material(prepared, leases);
+      if (!material) throw Error('Prepared working set exceeds GPU budget');
+      await device.prepare(material, list, signal);
       return leases;
     } catch (error) {
       for (const lease of leases) lease.release();

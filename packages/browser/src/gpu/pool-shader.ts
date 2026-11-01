@@ -8,6 +8,10 @@ vec3 floorIrradiance(vec2 p){
  // A small receiving footprint softens subpixel ray folds / mesh boundaries,
  // like a light source with finite angular extent instead of an ideal point,
  // and yields the local caustic gradient for prismatic dispersion at zero extra taps.
+#ifdef GLINT_REDUCED_FINISH
+ // Keep the evolving irradiance, with no five-tap dispersion reconstruction.
+ return vec3(texture(caustics,p).r*8.,0.,0.);
+#else
  vec2 radius=1.25/vec2(textureSize(caustics,0));
  float c0=texture(caustics,p).r;
  float cxP=texture(caustics,p+vec2(radius.x,0.)).r,cxN=texture(caustics,p-vec2(radius.x,0.)).r;
@@ -15,6 +19,7 @@ vec3 floorIrradiance(vec2 p){
  float light=(c0*.4+(cxP+cxN+cyP+cyN)*.15)*8.;
  vec2 grad=vec2(cxP-cxN,cyP-cyN)*8.;
  return vec3(light,grad);
+#endif
 }
 // Outward-radiating shallow-water wave train around a connected stroke capsule.
 // Leaves calm water behind in the interior as the 2.5-cycle wave packet expands.

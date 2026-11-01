@@ -1,3 +1,4 @@
+import type { FinishQuality } from '../finish-quality.js';
 import { foilShader } from './foil-preview-shader.js';
 import { SURFACE_GLSL } from './surface-shader.js';
 import { DEFORMATION_GLSL } from './deformation-shader.js';
@@ -38,13 +39,20 @@ studioVirtual=viewProjection==mat4(1.)?1.:0.;
 vec4 eye=inverse(viewProjection)*vec4(0.,0.,1.,0.);
 studioCamera=abs(eye.w)>.00001?vec4(eye.xyz/eye.w,1.):vec4(normalize(eye.xyz),0.);
 gl_Position=viewProjection*world;}`;
-export function materialFragment(finish: number, hologram: boolean, procedural: boolean) {
+export function materialFragment(
+  finish: number,
+  hologram: boolean,
+  procedural: boolean,
+  quality: FinishQuality = 'full',
+) {
   const liquid = finish >= 5 && finish < 8;
   const foil = foilShader()
     .replace('uniform float previewKind;', `const float previewKind=${finish.toFixed(1)};`)
     .replaceAll('texture2D(mask,uv).r*hasMask', 'edgeCoverage(uv)')
     .replaceAll('texture2D(face,', 'printFace(');
   return `#version 300 es
+#define GLINT_FINISH_KIND ${finish}
+${quality === 'reduced' ? '#define GLINT_REDUCED_FINISH' : ''}
 ${hologram ? '#define LOCAL_HOLOGRAM' : ''}
 ${procedural ? '#define PROCEDURAL_PRINT' : ''}
 precision highp float;

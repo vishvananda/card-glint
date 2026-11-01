@@ -1,12 +1,18 @@
 /** Buoyant rising thermal plumes, schlieren shimmer filaments, and tilt-reactive mirage glare. */
 export const HEAT_GLSL = `
 vec3 heatMirageInk(vec2 uv,vec2 r,vec4 bounds){
+#ifdef GLINT_REDUCED_FINISH
+ vec3 c=windowInk(uv,bounds)*.52;
+#else
  vec3 c=windowInk(uv,bounds)*.20;
+#endif
  vec2 r1=r*.65,r2=r*.82;
  c+=(windowInk(uv+vec2(r1.x,0.),bounds)+windowInk(uv-vec2(r1.x,0.),bounds)
   +windowInk(uv+vec2(0.,r1.y),bounds)+windowInk(uv-vec2(0.,r1.y),bounds))*.12;
+ #ifndef GLINT_REDUCED_FINISH
  c+=(windowInk(uv+vec2(r2.x,r2.y),bounds)+windowInk(uv+vec2(-r2.x,r2.y),bounds)
   +windowInk(uv+vec2(r2.x,-r2.y),bounds)+windowInk(uv+vec2(-r2.x,-r2.y),bounds))*.08;
+ #endif
  return previewInk(c);
 }
 vec3 heatHaze(vec2 uv,vec3 normal){

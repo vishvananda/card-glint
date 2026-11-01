@@ -67,12 +67,26 @@ float surfaceReflection(vec2 uv,vec3 normal,float sharpness){
  if(studioLighting>.5){view=studioCardView(uv,normal);lamp=normalize(studioLampPosition-studioCardPosition(uv,normal));}
  return pow(max(0.,dot(reflect(-view,normal),lamp)),sharpness);
 }
+#if !defined(GLINT_FINISH_KIND) || GLINT_FINISH_KIND == 5
 ${RAIN_GLSL}
+#endif
+#if !defined(GLINT_FINISH_KIND) || GLINT_FINISH_KIND == 6
 ${HEAT_GLSL}
+#endif
+#if !defined(GLINT_FINISH_KIND) || GLINT_FINISH_KIND == 7
 ${POOL_GLSL}
+#endif
 vec3 animatedSurface(vec2 uv,vec3 normal){
+#if !defined(GLINT_FINISH_KIND) || GLINT_FINISH_KIND == 5
  if(previewKind==5.)return rainGlass(uv,normal);
+#endif
+#if !defined(GLINT_FINISH_KIND) || GLINT_FINISH_KIND == 6
  if(previewKind==6.)return heatHaze(uv,normal);
+#endif
+#if !defined(GLINT_FINISH_KIND) || GLINT_FINISH_KIND == 7
  return poolWater(uv,normal);
+#else
+ return vec3(0.); // The selected rain/heat branch above always returns.
+#endif
 }
 `;
