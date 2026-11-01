@@ -5,7 +5,7 @@ import { chromium, firefox } from 'playwright';
 const [backend = 'default', quality = 'auto', engine = 'msedge'] = process.argv.slice(2);
 const stress = process.env.GLINT_PROBE_STRESS === '1';
 const stressProfile = process.env.GLINT_STRESS_PROFILE || 'mixed';
-if (!['mixed', 'regular'].includes(stressProfile)) throw Error('Invalid stress profile');
+if (!['mixed', 'regular', 'bare'].includes(stressProfile)) throw Error('Invalid stress profile');
 const evaluationBudgetMs = stress
   ? backend === 'warp'
     ? 540000

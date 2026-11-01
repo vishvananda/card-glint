@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('root', type=Path)
 parser.add_argument('--browser', choices=['msedge', 'chromium', 'firefox'], default='msedge')
 parser.add_argument('--backend', choices=['default', 'warp', 'swiftshader'], default='default')
-parser.add_argument('--suite', choices=['finishes', 'stress', 'control', 'all'], default='all')
+parser.add_argument('--suite', choices=['finishes', 'stress', 'control', 'bare', 'all'], default='all')
 parser.add_argument('--timeout', type=int, default=600)
 parser.add_argument('--prefix', default=time.strftime('%Y%m%dT%H%M%SZ', time.gmtime()) + '-' + uuid.uuid4().hex[:6])
 args = parser.parse_args()
@@ -33,7 +33,7 @@ def fingerprint():
     digest = hashlib.sha256()
     files = list((root / 'tools/sdk').rglob('*'))
     files += [root / 'tools/payload' / name for name in [
-        'shader-probe.mjs', 'stress-scene.mjs', 'stress-probe.mjs', 'stress-control-probe.mjs',
+        'shader-probe.mjs', 'stress-scene.mjs', 'stress-probe.mjs', 'stress-control-probe.mjs', 'stress-bare-probe.mjs',
     ]]
     for file in sorted(files):
         if file.is_file():
@@ -54,9 +54,9 @@ def report_from(result):
     return report
 
 
-scripts = {'finishes': 'shader-probe.mjs', 'stress': 'stress-probe.mjs', 'control': 'stress-control-probe.mjs'}
+scripts = {'finishes': 'shader-probe.mjs', 'stress': 'stress-probe.mjs', 'control': 'stress-control-probe.mjs', 'bare': 'stress-bare-probe.mjs'}
 suites = list(scripts) if args.suite == 'all' else [args.suite]
-plan = [(suite, quality) for suite in suites for quality in (['reduced'] if suite == 'control' else ['reduced', 'full'])]
+plan = [(suite, quality) for suite in suites for quality in (['reduced'] if suite in ['control', 'bare'] else ['reduced', 'full'])]
 summary = {'schema': 1, 'browser': args.browser, 'backend': args.backend, 'fingerprint': fingerprint(), 'cases': []}
 summary_path = root / 'results' / ('matrix-' + args.prefix + '.json')
 lock = (root / 'state/queue.lock').open('w')

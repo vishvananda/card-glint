@@ -4,6 +4,9 @@ Use a dedicated Windows evaluation VM to reproduce browser shader preparation,
 software graphics and timeout failures. The probes use the published renderer
 and synthetic, locally drawn card faces. They do not import a game pack.
 
+The [0.7.11 results](windows-software-0.7.11.md) include recovered Windows page
+stalls, high/low quality checks and many-face controls.
+
 Microsoft's former [prebuilt VM link](https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/)
 now redirects to its developer documentation. The
 [Enterprise evaluation ISO](https://www.microsoft.com/en-us/evalcenter/download-windows-11-enterprise)
@@ -119,7 +122,7 @@ python3 "$VM_ROOT/tools/run-matrix.py" "$VM_ROOT" \
   --browser chromium --backend swiftshader --suite all
 ```
 
-This runs both low and high finish/stress cases plus a regular-face control,
+This runs both low and high finish/stress cases plus regular and bare controls,
 with unique job IDs and a JSON summary under `results/`. It records a fingerprint
 of the SDK and probe files and rejects inputs that change during the run. Only
 one matrix producer may own the queue. Use `--suite stress` for just the two
@@ -170,6 +173,8 @@ driver work; CPU submission time does not. The cold software-driver budget is
 longer than the warmed-frame budget. Run this separately at `full` and `reduced`.
 `stress-control-probe.mjs` repeats the same faces and sizes with regular finishes
 as a control for face-count overhead versus finish shading.
+`stress-bare-probe.mjs` also disables print dots and cardstock to measure the
+remaining face rendering cost (`--suite bare` in the matrix runner).
 
 Use `warp` for Firefox's forced software path; its launcher does not support
 Chromium's `swiftshader` selection. Always inspect the reported adapter.

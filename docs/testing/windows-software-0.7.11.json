@@ -1,0 +1,1988 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "renderer": "0.7.11",
+  "archiveSha256": "72134682381303b952e315a6a0b733c9921310df9ec67a5e08d5f4f1b2577b47",
+  "scope": "Synthetic faces in headed Windows browsers on a KVM VM without GPU passthrough. Four guest vCPUs, 8 GiB guest RAM; host service capped at three CPU equivalents and 10 GiB without swap. GPU completion numbers are fence wall times, not GPU timestamp-query durations. Sequential diagnostic samples, not a controlled throughput benchmark.",
+  "runs": {
+    "edge-default-reduced-002": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 98817,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "156.0.4314.58",
+        "engine": "msedge",
+        "backend": "default",
+        "quality": "reduced",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "vendor": "Google Inc. (Google)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "reduced",
+        "rows": [
+          {
+            "finish": "regular",
+            "selectedQuality": "reduced",
+            "readyMs": 183.59999999962747,
+            "submitMs": 7.5,
+            "captureMs": 5448.100000000093,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "gloss",
+            "selectedQuality": "reduced",
+            "readyMs": 54.39999999990687,
+            "submitMs": 2.7000000001862645,
+            "captureMs": 5654.600000000093,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "etched",
+            "selectedQuality": "reduced",
+            "readyMs": 38.3000000002794,
+            "submitMs": 1,
+            "captureMs": 4774.0999999996275,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "prismatic",
+            "selectedQuality": "reduced",
+            "readyMs": 43,
+            "submitMs": 0.39999999990686774,
+            "captureMs": 5506.5,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "cold",
+            "selectedQuality": "reduced",
+            "readyMs": 36.3000000002794,
+            "submitMs": 0.39999999990686774,
+            "captureMs": 5134.5,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "holofoil",
+            "selectedQuality": "reduced",
+            "readyMs": 40.10000000009313,
+            "submitMs": 0.39999999990686774,
+            "captureMs": 5173.600000000093,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "opal",
+            "selectedQuality": "reduced",
+            "readyMs": 34.700000000186265,
+            "submitMs": 0.6000000000931323,
+            "captureMs": 6053.600000000093,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "rain",
+            "selectedQuality": "reduced",
+            "readyMs": 45.59999999962747,
+            "submitMs": 0.5,
+            "captureMs": 20611.5,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "heat",
+            "selectedQuality": "reduced",
+            "readyMs": 71.70000000018626,
+            "submitMs": 0.39999999990686774,
+            "captureMs": 22261.600000000093,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "pool",
+            "selectedQuality": "reduced",
+            "readyMs": 139.39999999990687,
+            "submitMs": 1.1000000000931323,
+            "captureMs": 6520.200000000186,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          }
+        ],
+        "errors": []
+      }
+    },
+    "edge-swiftshader-full-002": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 92652,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "156.0.4314.58",
+        "engine": "msedge",
+        "backend": "swiftshader",
+        "quality": "full",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "vendor": "Google Inc. (Google)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "full",
+        "rows": [
+          {
+            "finish": "regular",
+            "selectedQuality": "full",
+            "readyMs": 412.8000000002794,
+            "submitMs": 7.699999999720603,
+            "captureMs": 4902.299999999814,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "gloss",
+            "selectedQuality": "full",
+            "readyMs": 84.89999999990687,
+            "submitMs": 2.3999999999068677,
+            "captureMs": 6074.700000000186,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "etched",
+            "selectedQuality": "full",
+            "readyMs": 42.3000000002794,
+            "submitMs": 0.599999999627471,
+            "captureMs": 5280.399999999907,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "prismatic",
+            "selectedQuality": "full",
+            "readyMs": 32.10000000009313,
+            "submitMs": 0.7999999998137355,
+            "captureMs": 4893.5,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "cold",
+            "selectedQuality": "full",
+            "readyMs": 35.5,
+            "submitMs": 0.5,
+            "captureMs": 5025.799999999814,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "holofoil",
+            "selectedQuality": "full",
+            "readyMs": 35.700000000186265,
+            "submitMs": 0.8999999999068677,
+            "captureMs": 5255.799999999814,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "opal",
+            "selectedQuality": "full",
+            "readyMs": 35,
+            "submitMs": 0.2999999998137355,
+            "captureMs": 5332.9000000003725,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "rain",
+            "selectedQuality": "full",
+            "readyMs": 52.700000000186265,
+            "submitMs": 1.1000000000931323,
+            "captureMs": 19656.700000000186,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "heat",
+            "selectedQuality": "full",
+            "readyMs": 56.6999999997206,
+            "submitMs": 0.5,
+            "captureMs": 18665.700000000186,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "pool",
+            "selectedQuality": "full",
+            "readyMs": 103,
+            "submitMs": 0.6999999997206032,
+            "captureMs": 6314.5,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          }
+        ],
+        "errors": []
+      }
+    },
+    "chromium-swiftshader-reduced-002": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 153027,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "148.0.7778.96",
+        "engine": "chromium",
+        "backend": "swiftshader",
+        "quality": "reduced",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "vendor": "Google Inc. (Google)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "reduced",
+        "mode": "finishes",
+        "rows": [
+          {
+            "finish": "regular",
+            "selectedQuality": "reduced",
+            "readyMs": 341.60000000009313,
+            "submitMs": 6.7999999998137355,
+            "captureMs": 4769.899999999907,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "gloss",
+            "selectedQuality": "reduced",
+            "readyMs": 96.89999999990687,
+            "submitMs": 3.6999999997206032,
+            "captureMs": 6069.699999999721,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "etched",
+            "selectedQuality": "reduced",
+            "readyMs": 33.700000000186265,
+            "submitMs": 0.599999999627471,
+            "captureMs": 7537.799999999814,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "prismatic",
+            "selectedQuality": "reduced",
+            "readyMs": 35.6999999997206,
+            "submitMs": 0.8000000002793968,
+            "captureMs": 5704.399999999907,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "cold",
+            "selectedQuality": "reduced",
+            "readyMs": 35.39999999990687,
+            "submitMs": 1.7000000001862645,
+            "captureMs": 5712.700000000186,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "holofoil",
+            "selectedQuality": "reduced",
+            "readyMs": 59.299999999813735,
+            "submitMs": 2.8999999999068677,
+            "captureMs": 5792.5,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "opal",
+            "selectedQuality": "reduced",
+            "readyMs": 66,
+            "submitMs": 1.6000000000931323,
+            "captureMs": 6552.399999999907,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "rain",
+            "selectedQuality": "reduced",
+            "readyMs": 45.5,
+            "submitMs": 2.8000000002793968,
+            "captureMs": 20996.600000000093,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "heat",
+            "selectedQuality": "reduced",
+            "readyMs": 77.89999999990687,
+            "submitMs": 0.5,
+            "captureMs": 23017.5,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "pool",
+            "selectedQuality": "reduced",
+            "readyMs": 112.60000000009313,
+            "submitMs": 1.3000000002793968,
+            "captureMs": 8298.200000000186,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          }
+        ],
+        "errors": []
+      }
+    },
+    "chromium-swiftshader-full-002": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 91834,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "148.0.7778.96",
+        "engine": "chromium",
+        "backend": "swiftshader",
+        "quality": "full",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "vendor": "Google Inc. (Google)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "full",
+        "mode": "finishes",
+        "rows": [
+          {
+            "finish": "regular",
+            "selectedQuality": "full",
+            "readyMs": 336.1999999997206,
+            "submitMs": 7.800000000279397,
+            "captureMs": 4546.5,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "gloss",
+            "selectedQuality": "full",
+            "readyMs": 80.60000000009313,
+            "submitMs": 3.2000000001862645,
+            "captureMs": 6446.799999999814,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "etched",
+            "selectedQuality": "full",
+            "readyMs": 31,
+            "submitMs": 0.39999999990686774,
+            "captureMs": 5123.0999999996275,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "prismatic",
+            "selectedQuality": "full",
+            "readyMs": 36.1999999997206,
+            "submitMs": 0.5,
+            "captureMs": 5382.5,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "cold",
+            "selectedQuality": "full",
+            "readyMs": 34.6999999997206,
+            "submitMs": 2.8000000002793968,
+            "captureMs": 4805.5,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "holofoil",
+            "selectedQuality": "full",
+            "readyMs": 35.59999999962747,
+            "submitMs": 1.6000000005587935,
+            "captureMs": 5002.200000000186,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "opal",
+            "selectedQuality": "full",
+            "readyMs": 36.39999999944121,
+            "submitMs": 2.6000000005587935,
+            "captureMs": 5707.199999999255,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "rain",
+            "selectedQuality": "full",
+            "readyMs": 58,
+            "submitMs": 0.599999999627471,
+            "captureMs": 20572.299999999814,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "heat",
+            "selectedQuality": "full",
+            "readyMs": 45.799999999813735,
+            "submitMs": 2.2000000001862645,
+            "captureMs": 19890.200000000186,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "pool",
+            "selectedQuality": "full",
+            "readyMs": 87.1000000005588,
+            "submitMs": 1,
+            "captureMs": 5305.9000000003725,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          }
+        ],
+        "errors": []
+      }
+    },
+    "firefox-warp-reduced-003": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 266549,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "150.0.2",
+        "engine": "firefox",
+        "backend": "warp",
+        "quality": "reduced",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Microsoft, Microsoft Basic Render Driver Direct3D11 vs_5_0 ps_5_0), or similar",
+          "vendor": "Google Inc. (Microsoft)",
+          "version": "WebGL 2.0",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "reduced",
+        "mode": "finishes",
+        "rows": [
+          {
+            "finish": "regular",
+            "selectedQuality": "reduced",
+            "readyMs": 17687,
+            "submitMs": 3,
+            "captureMs": 362,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "gloss",
+            "selectedQuality": "reduced",
+            "readyMs": 14544,
+            "submitMs": 11,
+            "captureMs": 576,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "etched",
+            "selectedQuality": "reduced",
+            "readyMs": 10445,
+            "submitMs": 3,
+            "captureMs": 611,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "prismatic",
+            "selectedQuality": "reduced",
+            "readyMs": 10493,
+            "submitMs": 2,
+            "captureMs": 540,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "cold",
+            "selectedQuality": "reduced",
+            "readyMs": 12182,
+            "submitMs": 4,
+            "captureMs": 407,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "holofoil",
+            "selectedQuality": "reduced",
+            "readyMs": 12058,
+            "submitMs": 2,
+            "captureMs": 529,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "opal",
+            "selectedQuality": "reduced",
+            "readyMs": 13141,
+            "submitMs": 1,
+            "captureMs": 530,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "rain",
+            "selectedQuality": "reduced",
+            "readyMs": 78071,
+            "submitMs": 7,
+            "captureMs": 1875,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "heat",
+            "selectedQuality": "reduced",
+            "readyMs": 61704,
+            "submitMs": 8,
+            "captureMs": 1914,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "pool",
+            "selectedQuality": "reduced",
+            "readyMs": 13215,
+            "submitMs": 5,
+            "captureMs": 658,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          }
+        ],
+        "errors": []
+      }
+    },
+    "firefox-warp-full-003": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 333922,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "150.0.2",
+        "engine": "firefox",
+        "backend": "warp",
+        "quality": "full",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Microsoft, Microsoft Basic Render Driver Direct3D11 vs_5_0 ps_5_0), or similar",
+          "vendor": "Google Inc. (Microsoft)",
+          "version": "WebGL 2.0",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "full",
+        "mode": "finishes",
+        "rows": [
+          {
+            "finish": "regular",
+            "selectedQuality": "full",
+            "readyMs": 103569,
+            "submitMs": 3,
+            "captureMs": 453,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "gloss",
+            "selectedQuality": "full",
+            "readyMs": 15541,
+            "submitMs": 4,
+            "captureMs": 721,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "etched",
+            "selectedQuality": "full",
+            "readyMs": 12222,
+            "submitMs": 4,
+            "captureMs": 596,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "prismatic",
+            "selectedQuality": "full",
+            "readyMs": 11665,
+            "submitMs": 3,
+            "captureMs": 455,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "cold",
+            "selectedQuality": "full",
+            "readyMs": 11251,
+            "submitMs": 1,
+            "captureMs": 509,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "holofoil",
+            "selectedQuality": "full",
+            "readyMs": 11407,
+            "submitMs": 1,
+            "captureMs": 499,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "opal",
+            "selectedQuality": "full",
+            "readyMs": 12092,
+            "submitMs": 0,
+            "captureMs": 504,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "rain",
+            "selectedQuality": "full",
+            "readyMs": 60730,
+            "submitMs": 1,
+            "captureMs": 1865,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "heat",
+            "selectedQuality": "full",
+            "readyMs": 59931,
+            "submitMs": 3,
+            "captureMs": 1908,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "pool",
+            "selectedQuality": "full",
+            "readyMs": 11734,
+            "submitMs": 2,
+            "captureMs": 604,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          }
+        ],
+        "errors": []
+      }
+    },
+    "firefox-default-reduced-003": {
+      "exitCode": 2,
+      "timedOut": false,
+      "elapsedMs": 18323,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "150.0.2",
+        "engine": "firefox",
+        "backend": "default",
+        "quality": "reduced",
+        "headless": false,
+        "supported": false,
+        "mode": "finishes",
+        "rows": [],
+        "errors": []
+      }
+    },
+    "edge-warp-reduced-002": {
+      "exitCode": 1,
+      "timedOut": false,
+      "elapsedMs": 161106,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "156.0.4314.58",
+        "engine": "msedge",
+        "backend": "warp",
+        "quality": "reduced",
+        "headless": false,
+        "rows": [
+          {
+            "finish": "regular",
+            "selectedQuality": "reduced",
+            "readyMs": 11024.19999999972,
+            "submitMs": 16.200000000186265,
+            "captureMs": 718.6999999997206,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "gloss",
+            "selectedQuality": "reduced",
+            "readyMs": 14868.200000000186,
+            "submitMs": 7,
+            "captureMs": 766.1999999997206,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "etched",
+            "selectedQuality": "reduced",
+            "readyMs": 12676.600000000093,
+            "submitMs": 1.7000000001862645,
+            "captureMs": 509.89999999990687,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "prismatic",
+            "selectedQuality": "reduced",
+            "readyMs": 11518.299999999814,
+            "submitMs": 1.3000000002793968,
+            "captureMs": 545.7999999998137,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "cold",
+            "selectedQuality": "reduced",
+            "readyMs": 12115.80000000028,
+            "submitMs": 0.7999999998137355,
+            "captureMs": 563.5,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "holofoil",
+            "selectedQuality": "reduced",
+            "readyMs": 11492.100000000093,
+            "submitMs": 2.1000000000931323,
+            "captureMs": 576.6999999997206,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "opal",
+            "selectedQuality": "reduced",
+            "readyMs": 12337.400000000373,
+            "submitMs": 1.7999999998137355,
+            "captureMs": 637.8999999999069,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          }
+        ],
+        "errors": [],
+        "error": "Probe exceeded its 150 second evaluation deadline"
+      }
+    },
+    "edge-warp-full-002": {
+      "exitCode": 1,
+      "timedOut": false,
+      "elapsedMs": 161197,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "156.0.4314.58",
+        "engine": "msedge",
+        "backend": "warp",
+        "quality": "full",
+        "headless": false,
+        "mode": "finishes",
+        "rows": [
+          {
+            "finish": "regular",
+            "selectedQuality": "full",
+            "readyMs": 97826.70000000019,
+            "submitMs": 14.299999999813735,
+            "captureMs": 598.2000000001863,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "gloss",
+            "selectedQuality": "full",
+            "readyMs": 14757,
+            "submitMs": 16.600000000093132,
+            "captureMs": 637.6000000000931,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "etched",
+            "selectedQuality": "full",
+            "readyMs": 11568.5,
+            "submitMs": 1.7999999998137355,
+            "captureMs": 699.4000000003725,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          },
+          {
+            "finish": "prismatic",
+            "selectedQuality": "full",
+            "readyMs": 11469.19999999972,
+            "submitMs": 2.8000000002793968,
+            "captureMs": 472.90000000037253,
+            "opaquePixels": 82860,
+            "compositions": 1,
+            "maskBuilds": 1,
+            "pending": 0,
+            "gpuBytes": 525152
+          }
+        ],
+        "errors": [],
+        "error": "Probe exceeded its evaluation deadline"
+      }
+    },
+    "chromium-stress-reduced-003": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 105876,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "148.0.7778.96",
+        "engine": "chromium",
+        "backend": "swiftshader",
+        "quality": "reduced",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "vendor": "Google Inc. (Google)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "reduced",
+        "mode": "stress",
+        "rows": [
+          {
+            "phase": "stress",
+            "count": 100,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 177120,
+            "maxMainThreadGapMs": 851.1000000005588,
+            "readyMs": 1604.2999999998137,
+            "coldSubmitMs": 36.799999999813735,
+            "coldCompletionMs": 33555.700000000186,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 1190.2999999998137,
+            "warmMaxCompletionMs": 1282.9000000003725,
+            "warmMedianSubmitMs": 5.599999999627471,
+            "compositions": 100,
+            "maskBuilds": 1,
+            "uploads": 100,
+            "pending": 0,
+            "gpuBytes": 11055940,
+            "jsHeapBytes": 2387537
+          },
+          {
+            "phase": "stress",
+            "count": 300,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 531360,
+            "maxMainThreadGapMs": 721.7999999998137,
+            "readyMs": 638.3999999994412,
+            "coldSubmitMs": 114.8999999994412,
+            "coldCompletionMs": 3589,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 3335.300000000745,
+            "warmMaxCompletionMs": 3815.4000000003725,
+            "warmMedianSubmitMs": 12.5,
+            "compositions": 300,
+            "maskBuilds": 1,
+            "uploads": 300,
+            "pending": 0,
+            "gpuBytes": 33126340,
+            "jsHeapBytes": 5777162
+          },
+          {
+            "phase": "cached-revisit",
+            "count": 100,
+            "submitMs": 6.6000000005587935,
+            "completionMs": 1214.5,
+            "compositions": 300,
+            "uploads": 300
+          }
+        ],
+        "guestMemory": {
+          "totalBytes": 8499523584,
+          "minAvailableBytes": 4278824960
+        },
+        "errors": []
+      }
+    },
+    "chromium-stress-full-003": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 130921,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "148.0.7778.96",
+        "engine": "chromium",
+        "backend": "swiftshader",
+        "quality": "full",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "vendor": "Google Inc. (Google)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "full",
+        "mode": "stress",
+        "rows": [
+          {
+            "phase": "stress",
+            "count": 100,
+            "selectedQuality": "full",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 177120,
+            "maxMainThreadGapMs": 713.4000000003725,
+            "readyMs": 1075.7000000001863,
+            "coldSubmitMs": 395.69999999925494,
+            "coldCompletionMs": 45803.799999999814,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 2226.899999999441,
+            "warmMaxCompletionMs": 2484.2999999998137,
+            "warmMedianSubmitMs": 11.299999999813735,
+            "compositions": 100,
+            "maskBuilds": 1,
+            "uploads": 100,
+            "pending": 0,
+            "gpuBytes": 11055940,
+            "jsHeapBytes": 5337492
+          },
+          {
+            "phase": "stress",
+            "count": 300,
+            "selectedQuality": "full",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 531360,
+            "maxMainThreadGapMs": 979.6000000005588,
+            "readyMs": 722.5999999996275,
+            "coldSubmitMs": 115.5,
+            "coldCompletionMs": 6220.5999999996275,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 3459.2000000001863,
+            "warmMaxCompletionMs": 3880.0999999996275,
+            "warmMedianSubmitMs": 13.799999999813735,
+            "compositions": 300,
+            "maskBuilds": 1,
+            "uploads": 300,
+            "pending": 0,
+            "gpuBytes": 33126340,
+            "jsHeapBytes": 6015220
+          },
+          {
+            "phase": "cached-revisit",
+            "count": 100,
+            "submitMs": 10.799999999813735,
+            "completionMs": 1206.3999999994412,
+            "compositions": 300,
+            "uploads": 300
+          }
+        ],
+        "guestMemory": {
+          "totalBytes": 8499523584,
+          "minAvailableBytes": 4255367168
+        },
+        "errors": []
+      }
+    },
+    "edge-warp-stress-reduced-003": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 170723,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "156.0.4314.58",
+        "engine": "msedge",
+        "backend": "warp",
+        "quality": "reduced",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Microsoft, Microsoft Basic Render Driver (0x0000008C) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "vendor": "Google Inc. (Microsoft)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": true
+        },
+        "supported": true,
+        "selectedQuality": "reduced",
+        "mode": "stress",
+        "rows": [
+          {
+            "phase": "stress",
+            "count": 100,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 177120,
+            "maxMainThreadGapMs": 532.7999999998137,
+            "readyMs": 141443.10000000056,
+            "coldSubmitMs": 488.6000000005588,
+            "coldCompletionMs": 8979.900000000373,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 181,
+            "warmMaxCompletionMs": 262.69999999925494,
+            "warmMedianSubmitMs": 12,
+            "compositions": 100,
+            "maskBuilds": 1,
+            "uploads": 100,
+            "pending": 0,
+            "gpuBytes": 11055940,
+            "jsHeapBytes": 5746964
+          },
+          {
+            "phase": "stress",
+            "count": 300,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 531360,
+            "maxMainThreadGapMs": 422.29999999981374,
+            "readyMs": 324.79999999981374,
+            "coldSubmitMs": 55.59999999962747,
+            "coldCompletionMs": 1867.2000000001863,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 539.3000000007451,
+            "warmMaxCompletionMs": 658.5999999996275,
+            "warmMedianSubmitMs": 44.39999999944121,
+            "compositions": 300,
+            "maskBuilds": 1,
+            "uploads": 300,
+            "pending": 0,
+            "gpuBytes": 33126340,
+            "jsHeapBytes": 6110704
+          },
+          {
+            "phase": "cached-revisit",
+            "count": 100,
+            "submitMs": 6.8999999994412065,
+            "completionMs": 162.5,
+            "compositions": 300,
+            "uploads": 300
+          }
+        ],
+        "guestMemory": {
+          "totalBytes": 8499523584,
+          "minAvailableBytes": 4163145728
+        },
+        "errors": []
+      }
+    },
+    "edge-warp-stress-full-003": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 251823,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "156.0.4314.58",
+        "engine": "msedge",
+        "backend": "warp",
+        "quality": "full",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Microsoft, Microsoft Basic Render Driver (0x0000008C) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "vendor": "Google Inc. (Microsoft)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": true
+        },
+        "supported": true,
+        "selectedQuality": "full",
+        "mode": "stress",
+        "stressProfile": "mixed",
+        "rows": [
+          {
+            "phase": "stress",
+            "profile": "mixed",
+            "count": 100,
+            "selectedQuality": "full",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 177120,
+            "maxMainThreadGapMs": 694.9000000003725,
+            "readyMs": 224120.60000000056,
+            "coldSubmitMs": 588.4000000003725,
+            "coldCompletionMs": 6133.4000000003725,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 181.70000000018626,
+            "warmMaxCompletionMs": 214.09999999962747,
+            "warmMedianSubmitMs": 9.400000000372529,
+            "compositions": 100,
+            "maskBuilds": 1,
+            "uploads": 100,
+            "pending": 0,
+            "gpuBytes": 11055940,
+            "jsHeapBytes": 5037228
+          },
+          {
+            "phase": "stress",
+            "profile": "mixed",
+            "count": 300,
+            "selectedQuality": "full",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 531360,
+            "maxMainThreadGapMs": 348.79999999981374,
+            "readyMs": 274.09999999962747,
+            "coldSubmitMs": 27.399999999441206,
+            "coldCompletionMs": 1793.2999999998137,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 500.79999999981374,
+            "warmMaxCompletionMs": 575.4000000003725,
+            "warmMedianSubmitMs": 38,
+            "compositions": 300,
+            "maskBuilds": 1,
+            "uploads": 300,
+            "pending": 0,
+            "gpuBytes": 33126340,
+            "jsHeapBytes": 3524123
+          },
+          {
+            "phase": "cached-revisit",
+            "count": 100,
+            "submitMs": 8.900000000372529,
+            "completionMs": 199.90000000037253,
+            "compositions": 300,
+            "uploads": 300
+          }
+        ],
+        "guestMemory": {
+          "totalBytes": 8499523584,
+          "minAvailableBytes": 4199735296
+        },
+        "errors": []
+      }
+    },
+    "firefox-warp-stress-reduced-003": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 340315,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "150.0.2",
+        "engine": "firefox",
+        "backend": "warp",
+        "quality": "reduced",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Microsoft, Microsoft Basic Render Driver Direct3D11 vs_5_0 ps_5_0), or similar",
+          "vendor": "Google Inc. (Microsoft)",
+          "version": "WebGL 2.0",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "reduced",
+        "mode": "stress",
+        "stressProfile": "mixed",
+        "rows": [
+          {
+            "phase": "stress",
+            "profile": "mixed",
+            "count": 100,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 179840,
+            "maxMainThreadGapMs": 196673,
+            "readyMs": 308709,
+            "coldSubmitMs": 105,
+            "coldCompletionMs": 5894,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 213,
+            "warmMaxCompletionMs": 227,
+            "warmMedianSubmitMs": 12,
+            "compositions": 100,
+            "maskBuilds": 1,
+            "uploads": 100,
+            "pending": 0,
+            "gpuBytes": 11055940,
+            "jsHeapBytes": null
+          },
+          {
+            "phase": "stress",
+            "profile": "mixed",
+            "count": 300,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 539520,
+            "maxMainThreadGapMs": 2094,
+            "readyMs": 2059,
+            "coldSubmitMs": 103,
+            "coldCompletionMs": 639,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 460,
+            "warmMaxCompletionMs": 510,
+            "warmMedianSubmitMs": 41,
+            "compositions": 300,
+            "maskBuilds": 1,
+            "uploads": 300,
+            "pending": 0,
+            "gpuBytes": 33126340,
+            "jsHeapBytes": null
+          },
+          {
+            "phase": "cached-revisit",
+            "count": 100,
+            "submitMs": 9,
+            "completionMs": 241,
+            "compositions": 300,
+            "uploads": 300
+          }
+        ],
+        "guestMemory": {
+          "totalBytes": 8499523584,
+          "minAvailableBytes": 4433141760
+        },
+        "errors": []
+      }
+    },
+    "firefox-warp-stress-full-003": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 356954,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "150.0.2",
+        "engine": "firefox",
+        "backend": "warp",
+        "quality": "full",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Microsoft, Microsoft Basic Render Driver Direct3D11 vs_5_0 ps_5_0), or similar",
+          "vendor": "Google Inc. (Microsoft)",
+          "version": "WebGL 2.0",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "full",
+        "mode": "stress",
+        "stressProfile": "mixed",
+        "rows": [
+          {
+            "phase": "stress",
+            "profile": "mixed",
+            "count": 100,
+            "selectedQuality": "full",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 179840,
+            "maxMainThreadGapMs": 135669,
+            "readyMs": 322560,
+            "coldSubmitMs": 140,
+            "coldCompletionMs": 5712,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 189,
+            "warmMaxCompletionMs": 218,
+            "warmMedianSubmitMs": 9,
+            "compositions": 100,
+            "maskBuilds": 1,
+            "uploads": 100,
+            "pending": 0,
+            "gpuBytes": 11055940,
+            "jsHeapBytes": null
+          },
+          {
+            "phase": "stress",
+            "profile": "mixed",
+            "count": 300,
+            "selectedQuality": "full",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 539520,
+            "maxMainThreadGapMs": 2216,
+            "readyMs": 2172,
+            "coldSubmitMs": 97,
+            "coldCompletionMs": 580,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 469,
+            "warmMaxCompletionMs": 563,
+            "warmMedianSubmitMs": 36,
+            "compositions": 300,
+            "maskBuilds": 1,
+            "uploads": 300,
+            "pending": 0,
+            "gpuBytes": 33126340,
+            "jsHeapBytes": null
+          },
+          {
+            "phase": "cached-revisit",
+            "count": 100,
+            "submitMs": 9,
+            "completionMs": 241,
+            "compositions": 300,
+            "uploads": 300
+          }
+        ],
+        "guestMemory": {
+          "totalBytes": 8499523584,
+          "minAvailableBytes": 4491526144
+        },
+        "errors": []
+      }
+    },
+    "chromium-control-reduced-004": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 47143,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "148.0.7778.96",
+        "engine": "chromium",
+        "backend": "swiftshader",
+        "quality": "reduced",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "vendor": "Google Inc. (Google)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "reduced",
+        "mode": "stress",
+        "stressProfile": "regular",
+        "rows": [
+          {
+            "phase": "stress",
+            "profile": "regular",
+            "count": 100,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 177120,
+            "maxMainThreadGapMs": 978.3000000007451,
+            "readyMs": 972.5,
+            "coldSubmitMs": 22.200000000186265,
+            "coldCompletionMs": 2912.300000000745,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 669.7999999998137,
+            "warmMaxCompletionMs": 689.6000000005588,
+            "warmMedianSubmitMs": 4.7000000001862645,
+            "compositions": 100,
+            "maskBuilds": 1,
+            "uploads": 100,
+            "pending": 0,
+            "gpuBytes": 11055940,
+            "jsHeapBytes": 6040290
+          },
+          {
+            "phase": "stress",
+            "profile": "regular",
+            "count": 300,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 531360,
+            "maxMainThreadGapMs": 851.1999999992549,
+            "readyMs": 523.5999999996275,
+            "coldSubmitMs": 16.200000000186265,
+            "coldCompletionMs": 1880.2999999998137,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 1895.5,
+            "warmMaxCompletionMs": 1939,
+            "warmMedianSubmitMs": 13.099999999627471,
+            "compositions": 300,
+            "maskBuilds": 1,
+            "uploads": 300,
+            "pending": 0,
+            "gpuBytes": 33126340,
+            "jsHeapBytes": 3188121
+          },
+          {
+            "phase": "cached-revisit",
+            "count": 100,
+            "submitMs": 6.300000000745058,
+            "completionMs": 668.3000000007451,
+            "compositions": 300,
+            "uploads": 300
+          }
+        ],
+        "guestMemory": {
+          "totalBytes": 8499523584,
+          "minAvailableBytes": 4682006528
+        },
+        "errors": []
+      }
+    },
+    "edge-warp-control-reduced-004": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 28196,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "156.0.4314.58",
+        "engine": "msedge",
+        "backend": "warp",
+        "quality": "reduced",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Microsoft, Microsoft Basic Render Driver (0x0000008C) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "vendor": "Google Inc. (Microsoft)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": true
+        },
+        "supported": true,
+        "selectedQuality": "reduced",
+        "mode": "stress",
+        "stressProfile": "regular",
+        "rows": [
+          {
+            "phase": "stress",
+            "profile": "regular",
+            "count": 100,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 177120,
+            "maxMainThreadGapMs": 251.8999999994412,
+            "readyMs": 11034.100000000559,
+            "coldSubmitMs": 20.800000000745058,
+            "coldCompletionMs": 1098.1000000005588,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 135.29999999981374,
+            "warmMaxCompletionMs": 162.90000000037253,
+            "warmMedianSubmitMs": 10.600000000558794,
+            "compositions": 100,
+            "maskBuilds": 1,
+            "uploads": 100,
+            "pending": 0,
+            "gpuBytes": 11055940,
+            "jsHeapBytes": 5932064
+          },
+          {
+            "phase": "stress",
+            "profile": "regular",
+            "count": 300,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 531360,
+            "maxMainThreadGapMs": 359.5,
+            "readyMs": 277.8999999994412,
+            "coldSubmitMs": 26.90000000037253,
+            "coldCompletionMs": 1643.7999999998137,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 319.29999999981374,
+            "warmMaxCompletionMs": 365,
+            "warmMedianSubmitMs": 19.299999999813735,
+            "compositions": 300,
+            "maskBuilds": 1,
+            "uploads": 300,
+            "pending": 0,
+            "gpuBytes": 33126340,
+            "jsHeapBytes": 8987073
+          },
+          {
+            "phase": "cached-revisit",
+            "count": 100,
+            "submitMs": 5.900000000372529,
+            "completionMs": 90.30000000074506,
+            "compositions": 300,
+            "uploads": 300
+          }
+        ],
+        "guestMemory": {
+          "totalBytes": 8499523584,
+          "minAvailableBytes": 4613292032
+        },
+        "errors": []
+      }
+    },
+    "bare-chromium-006-bare-reduced": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 25606,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "148.0.7778.96",
+        "engine": "chromium",
+        "backend": "swiftshader",
+        "quality": "reduced",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "vendor": "Google Inc. (Google)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": false
+        },
+        "supported": true,
+        "selectedQuality": "reduced",
+        "mode": "stress",
+        "stressProfile": "bare",
+        "rows": [
+          {
+            "phase": "stress",
+            "profile": "bare",
+            "count": 100,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 177120,
+            "maxMainThreadGapMs": 496.3999999994412,
+            "readyMs": 481.40000000037253,
+            "coldSubmitMs": 17.5,
+            "coldCompletionMs": 523.5,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 172.69999999925494,
+            "warmMaxCompletionMs": 181.19999999925494,
+            "warmMedianSubmitMs": 6.2999999998137355,
+            "compositions": 100,
+            "maskBuilds": 1,
+            "uploads": 100,
+            "pending": 0,
+            "gpuBytes": 11055940,
+            "jsHeapBytes": 6463737
+          },
+          {
+            "phase": "stress",
+            "profile": "bare",
+            "count": 300,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 531360,
+            "maxMainThreadGapMs": 1035.7000000001863,
+            "readyMs": 1020.9000000003725,
+            "coldSubmitMs": 15.800000000745058,
+            "coldCompletionMs": 390.20000000018626,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 381.30000000074506,
+            "warmMaxCompletionMs": 466.30000000074506,
+            "warmMedianSubmitMs": 10.099999999627471,
+            "compositions": 300,
+            "maskBuilds": 1,
+            "uploads": 300,
+            "pending": 0,
+            "gpuBytes": 33126340,
+            "jsHeapBytes": 5131379
+          },
+          {
+            "phase": "cached-revisit",
+            "count": 100,
+            "submitMs": 6.6000000005587935,
+            "completionMs": 196.90000000037253,
+            "compositions": 300,
+            "uploads": 300
+          }
+        ],
+        "guestMemory": {
+          "totalBytes": 8499523584,
+          "minAvailableBytes": 4469096448
+        },
+        "errors": []
+      }
+    },
+    "bare-warp-006-bare-reduced": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedMs": 28055,
+      "report": {
+        "os": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64"
+        },
+        "browserVersion": "156.0.4314.58",
+        "engine": "msedge",
+        "backend": "warp",
+        "quality": "reduced",
+        "headless": false,
+        "identity": {
+          "renderer": "ANGLE (Microsoft, Microsoft Basic Render Driver (0x0000008C) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "vendor": "Google Inc. (Microsoft)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "parallelCompile": true
+        },
+        "supported": true,
+        "selectedQuality": "reduced",
+        "mode": "stress",
+        "stressProfile": "bare",
+        "rows": [
+          {
+            "phase": "stress",
+            "profile": "bare",
+            "count": 100,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 177120,
+            "maxMainThreadGapMs": 249.3999999994412,
+            "readyMs": 1991.2000000001863,
+            "coldSubmitMs": 13.900000000372529,
+            "coldCompletionMs": 775.2999999998137,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 151.90000000037253,
+            "warmMaxCompletionMs": 180.20000000018626,
+            "warmMedianSubmitMs": 5.900000000372529,
+            "compositions": 100,
+            "maskBuilds": 1,
+            "uploads": 100,
+            "pending": 0,
+            "gpuBytes": 11055940,
+            "jsHeapBytes": 6142811
+          },
+          {
+            "phase": "stress",
+            "profile": "bare",
+            "count": 300,
+            "selectedQuality": "reduced",
+            "nativeFaceSize": [122, 170],
+            "displayedFaceSize": [36, 50],
+            "viewport": [800, 800],
+            "opaquePixels": 531360,
+            "maxMainThreadGapMs": 367.8999999994412,
+            "readyMs": 289.29999999981374,
+            "coldSubmitMs": 14.599999999627471,
+            "coldCompletionMs": 1492.2999999998137,
+            "warmFrames": 12,
+            "warmMedianCompletionMs": 400.29999999981374,
+            "warmMaxCompletionMs": 413.40000000037253,
+            "warmMedianSubmitMs": 11.700000000186265,
+            "compositions": 300,
+            "maskBuilds": 1,
+            "uploads": 300,
+            "pending": 0,
+            "gpuBytes": 33126340,
+            "jsHeapBytes": 10142584
+          },
+          {
+            "phase": "cached-revisit",
+            "count": 100,
+            "submitMs": 3,
+            "completionMs": 120.29999999981374,
+            "compositions": 300,
+            "uploads": 300
+          }
+        ],
+        "guestMemory": {
+          "totalBytes": 8499523584,
+          "minAvailableBytes": 4465975296
+        },
+        "errors": []
+      }
+    }
+  }
+}

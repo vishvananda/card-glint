@@ -89,9 +89,9 @@ export async function runStress({ createRenderer, IDENTITY }, quality, profile =
         1,
       ],
       normal: [0, 0, 1],
-      finish: profile === 'regular' ? 'regular' : finishes[index % finishes.length],
-      printDots: { amount: 0.35, artwork: false },
-      cardstock: { amount: 0.2 },
+      finish: profile === 'mixed' ? finishes[index % finishes.length] : 'regular',
+      printDots: { amount: profile === 'bare' ? 0 : 0.35, artwork: false },
+      cardstock: { amount: profile === 'bare' ? 0 : 0.2 },
     };
   });
   async function completedFrame(time, budget = 45000) {
