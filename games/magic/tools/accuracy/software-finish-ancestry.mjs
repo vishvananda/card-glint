@@ -43,11 +43,11 @@ export function softwareOptimizationProof() {
     const bytes = await readFile(
       'games/magic/fixtures/accuracy/software-finishes/optimization-history.json.gz',
     );
-    assert.equal(hash(bytes), '08403339eede0c5e2d920380b03484f37123238e5991de4a21ec8ff9933d7e8b');
+    assert.equal(hash(bytes), '013a93e29cae1073a9541d910098d0477c0c8a04c46918a8e3734a8c35a5dd78');
     const p = JSON.parse(gunzipSync(bytes));
     assert.equal(p.kind, 'software-finish-program-optimization');
     assert.equal(p.scope, 'historical-browser-source-only-no-flat-face-score-approval');
-    assert.equal(Object.keys(p.files).length, 9);
+    assert.equal(Object.keys(p.files).length, 10);
     for (const [file, e] of Object.entries(p.files)) {
       assert(file.startsWith('packages/browser/src/'), 'No game painter approval');
       assert.equal(hash(e.beforeSource), e.before);

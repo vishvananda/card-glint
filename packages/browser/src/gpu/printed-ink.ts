@@ -61,7 +61,7 @@ export function invisiblePrinting(
           (!overlay || invisibleAtTier(overlay, values[1]!)))),
   );
 }
-type Entry = {
+export type PrintedEntry = {
   source: Texture;
   overlay?: Texture;
   settings: string;
@@ -78,8 +78,8 @@ export class PrintedInk {
   private shader: WebGLProgram;
   private framebuffer: WebGLFramebuffer;
   private vao: WebGLVertexArrayObject;
-  private entries: Entry[] = [];
-  private invisible = new WeakMap<WebGLTexture, Entry>();
+  private entries: PrintedEntry[] = [];
+  private invisible = new WeakMap<WebGLTexture, PrintedEntry>();
   private frame = 0;
   bytes = 0;
   passes = 0;
@@ -143,6 +143,7 @@ export class PrintedInk {
     overlay: Texture | undefined,
     profile: NonNullable<Instance['printDots']>,
     windows: readonly Rect[] = [],
+    canEvict?: (entry: PrintedEntry) => boolean,
   ) {
     const values = printDotValues(profile);
     // The screen shader is identically inactive below this physical sampling
@@ -151,7 +152,7 @@ export class PrintedInk {
     if (invisiblePrinting(source, overlay, profile)) {
       const previous = this.invisible.get(source.texture);
       if (previous && previous.overlay?.texture === overlay?.texture) return previous;
-      const entry: Entry = {
+      const entry: PrintedEntry = {
         source,
         overlay,
         settings: 'invisible',
@@ -181,7 +182,7 @@ export class PrintedInk {
     if (bytes > limit) return undefined;
     while (this.bytes + bytes > limit) {
       const victim = this.entries.findIndex(
-        (e) => this.frame === 0 || e.lastFrame < this.frame - 1,
+        (e) => (this.frame === 0 || e.lastFrame < this.frame - 1) && (!canEvict || canEvict(e)),
       );
       if (victim < 0) return undefined;
       const old = this.entries.splice(victim, 1)[0]!;
@@ -251,7 +252,7 @@ export class PrintedInk {
       gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
     }
   }
-  private release(entry: Entry) {
+  private release(entry: PrintedEntry) {
     this.gl.deleteTexture(entry.face.texture);
     this.gl.deleteTexture(entry.top?.texture ?? null);
     this.bytes -= entry.bytes;

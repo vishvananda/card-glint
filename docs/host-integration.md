@@ -586,9 +586,12 @@ owns its shader quality policy.
 
 At both quality levels, the native renderer skips printing shader preparation
 when the uploaded face and overlay mip chains already filter the dots out.
-Cached visible printing uses plain texture sampling. Mixed per-instance settings
-and cache pressure retain a prepared analytic fallback without compiling during
-a draw. Full-quality finish pixels retain their existing appearance.
+Visible printing is prepared once and uses plain texture sampling. The native
+backend compiles the analytic fallback only for mixed per-instance settings or
+cache pressure. Cached entries stay protected until every finish using them has
+a ready fallback; eviction cannot trigger compilation during a warm draw. The
+cache remains bounded at 16 MiB. Full-quality finish pixels retain their existing
+appearance.
 
 A host can also lower its output canvas resolution and frame rate for this
 profile. Keep its source face and normalized geometry consistent, scale copies

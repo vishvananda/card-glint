@@ -11,7 +11,7 @@ import { SurfaceMotion } from '../surface-motion.js';
 import { surfaceSeed } from '../deformation.js';
 import { Caustics } from './caustics.js';
 import { Cardstock } from './cardstock.js';
-import { invisiblePrinting, PrintedInk } from './printed-ink.js';
+import { invisiblePrinting, PrintedInk, type PrintedEntry } from './printed-ink.js';
 import { DEFAULT_PRINT_DOTS, printDotValues, printArtBounds } from '../print-settings.js';
 const kinds = {
   regular: 0,
@@ -55,6 +55,9 @@ export class Device {
   private caustics?: Caustics;
   private cardstock?: Cardstock;
   private printedInk?: PrintedInk;
+  // An entry can serve several finishes. Do not evict it until every affected
+  // analytic fallback is ready; this keeps lazy compilation out of warm draws.
+  private printingUsers = new WeakMap<PrintedEntry, Set<string>>();
   private causticsPending?: Promise<Caustics>;
   private cardstockPending?: Promise<Cardstock>;
   private printedInkPending?: Promise<PrintedInk>;
@@ -185,16 +188,15 @@ export class Device {
     if (!list.length) pending.push(this.compile(recipe, 'regular', false));
     const seen = new Set<string>();
     for (const item of list) {
-      // Cached printing uses the ordinary sampler. Prepare the bounded analytic
-      // fallback as well when printing is visible, before any draw can need it.
-      for (const procedural of this.visiblePrint(material, item) ? [false, true] : [false]) {
-        const key = this.key(recipe, item.finish, procedural);
-        if (!seen.has(key)) {
-          seen.add(key);
-          pending.push(this.compile(recipe, item.finish, procedural));
-        }
+      // Prepare ordinary sampling first. The printing cache below decides
+      // whether this material also needs an analytic fallback.
+      const key = this.key(recipe, item.finish, false);
+      if (!seen.has(key)) {
+        seen.add(key);
+        pending.push(this.compile(recipe, item.finish, false));
       }
     }
+
     if (list.some((item) => item.finish === 'pool')) {
       if (!this.causticsPending) this.compiling++;
       this.causticsPending ??= Promise.resolve()
@@ -247,7 +249,16 @@ export class Device {
         .finally(() => this.compiling--);
       pending.push(this.printedInkPending);
     }
-    const ready = Promise.all(pending).then(() => {});
+    const ready = Promise.all(pending).then(async () => {
+      signal?.throwIfAborted();
+      this.lifetime.signal.throwIfAborted();
+      if (list.some((item) => this.visiblePrint(material, item)) && !this.printing(material, list))
+        await Promise.all(
+          list
+            .filter((item) => this.visiblePrint(material, item))
+            .map((item) => this.compile(recipe, item.finish, true)),
+        );
+    });
     if (!signal) return ready;
     await new Promise<void>((resolve, reject) => {
       const abort = () => reject(signal.reason);
@@ -353,15 +364,25 @@ export class Device {
             printDotValues(item.printDots).every((value, i) => value === settings[i]) &&
             (item.printDots?.artwork !== false) === (profile.artwork !== false),
         ));
-    return homogeneous
-      ? this.printedInk?.prepare(
-          material.face,
-          material.overlay,
-          profile,
-          material.recipe.artWindows,
-        )
-      : undefined;
+    if (!homogeneous) return undefined;
+    const entry = this.printedInk?.prepare(
+      material.face,
+      material.overlay,
+      profile,
+      material.recipe.artWindows,
+      (candidate) => {
+        const users = this.printingUsers.get(candidate);
+        return Boolean(users && [...users].every((key) => this.programs.get(key)?.value));
+      },
+    );
+    if (entry) {
+      let users = this.printingUsers.get(entry);
+      if (!users) this.printingUsers.set(entry, (users = new Set()));
+      for (const item of list) users.add(this.key(material.recipe, item.finish, true));
+    }
+    return entry;
   }
+
   draw(material: Material, frame: Frame, list: readonly Instance[]) {
     const gl = this.gl;
     const visible = list.some((item) => this.visiblePrint(material, item));
@@ -377,7 +398,7 @@ export class Device {
       !plain ||
       (pool && !this.caustics) ||
       (coated && !this.cardstock) ||
-      (visible && (!this.printedInk || !fallback))
+      (visible && !this.printedInk)
     ) {
       void this.prepare(material, list).catch(this.report);
       return;
@@ -385,7 +406,11 @@ export class Device {
     if (pool) this.caustics!.prepare(frame.time ?? 0);
     if (coated) this.cardstock!.prepare();
     const printed = visible ? this.printing(material, list) : undefined;
-    const p = visible && !printed ? fallback! : plain;
+    const p = visible && !printed ? fallback : plain;
+    if (!p) {
+      void this.prepare(material, list).catch(this.report);
+      return;
+    }
     this.bind(p, frame, list, !visible || Boolean(printed));
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);

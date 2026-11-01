@@ -160,11 +160,14 @@ vec3 printDotInk(vec3 ink,vec2 uv){
  float brightness=dot(ink,vec3(.2126,.7152,.0722));
  float gaps=(.06+.54*smoothstep(.18,.9,brightness))*smoothstep(.1,.35,brightness);
  float lightGain=mix(1.,2.6,smoothstep(.1,.35,brightness));
- vec2 cyan=vec2(-.258819,.965926),magenta=vec2(.258819,.965926),yellow=vec2(0.,1.),black=vec2(.707107);
- PrintPlate c=preparePlate(p,paper,cyan,1.,vec2(-.30,.12),softness);
- PrintPlate m=preparePlate(p,paper,magenta,5.,vec2(.20,-.22),softness);
- PrintPlate y=preparePlate(p,paper,yellow,9.,vec2(.08,.26),softness);
- PrintPlate k=preparePlate(p,paper,black,13.,vec2(-.05,-.03),softness);
+ // Uniform loop bounds keep Windows compilers from cloning the full source,
+ // registration and screen filter once per color plate. All four plates retain
+ // the same axes, offsets, channel seeds and arithmetic as the unrolled form.
+ const vec2 axes[4]=vec2[4](vec2(-.258819,.965926),vec2(.258819,.965926),vec2(0.,1.),vec2(.707107));
+ const vec2 offsets[4]=vec2[4](vec2(-.30,.12),vec2(.20,-.22),vec2(.08,.26),vec2(-.05,-.03));
+ int plateEnd=printDotsInfo.y<0.?0:4;
+ PrintPlate plates[4];
+ for(int i=0;i<plateEnd;i++)plates[i]=preparePlate(p,paper,axes[i],1.+4.*float(i),offsets[i],softness);
  vec3 sum=vec3(0.);
  #ifdef GLINT_PRINT_PROCEDURAL
  // Uncached mixed-instance/pressure fallback uses the analytic footprint.
@@ -176,8 +179,9 @@ vec3 printDotInk(vec3 ink,vec2 uv){
  for(int sy=-1;sy<=blurEnd;sy++)for(int sx=-1;sx<=blurEnd;sx++){
 #endif
   vec2 q=p+vec2(float(sx),float(sy))*softness/printDotsInfo.y;
-  vec3 plates=vec3(screenedPlate(q,cyan,1.,c,aa,gaps),screenedPlate(q,magenta,5.,m,aa,gaps),screenedPlate(q,yellow,9.,y,aa,gaps));
-  vec3 screened=(1.-plates)*(1.-screenedPlate(q,black,13.,k,aa,gaps));
+  vec4 coverage=vec4(0.);
+  for(int i=0;i<plateEnd;i++)coverage[i]=screenedPlate(q,axes[i],1.+4.*float(i),plates[i],aa,gaps);
+  vec3 screened=(1.-coverage.xyz)*(1.-coverage.w);
   vec3 delta=screened-ink;
   float gain=dot(delta,vec3(.2126,.7152,.0722))>=0.?lightGain:1.;
   #ifdef GLINT_PRINT_PROCEDURAL
