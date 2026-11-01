@@ -4,6 +4,9 @@ import { chromium, firefox } from 'playwright';
 
 const [backend = 'default', quality = 'auto', engine = 'msedge'] = process.argv.slice(2);
 const stress = process.env.GLINT_PROBE_STRESS === '1';
+const printPeriod = Number(process.env.GLINT_PROBE_PRINT_PERIOD || 2);
+if (!Number.isFinite(printPeriod) || printPeriod < 2 || printPeriod > 16)
+  throw Error('Invalid print period');
 const stressProfile = process.env.GLINT_STRESS_PROFILE || 'mixed';
 if (!['mixed', 'regular', 'bare'].includes(stressProfile)) throw Error('Invalid stress profile');
 const evaluationBudgetMs = stress
@@ -33,6 +36,7 @@ const report = {
   engine,
   mode: stress ? 'stress' : 'finishes',
   stressProfile: stress ? stressProfile : undefined,
+  printPeriod,
   scope:
     'Browser probe; OS, adapter and headless fields define coverage. readyMs waits for resources/materials; submitMs is CPU render-call time, not GPU completion. captureMs includes explicit export/readback. This is not physical GPU validation.',
   rows: [],
@@ -155,7 +159,7 @@ try {
   await page.goto(base + '/probe.html');
   await progress('page-evaluation');
   const run = page.evaluate(
-    async ({ quality, stress, stressProfile }) => {
+    async ({ quality, stress, stressProfile, printPeriod }) => {
       const probe = document.createElement('canvas'),
         gl = probe.getContext('webgl2');
       if (!gl) return { supported: false };
@@ -244,7 +248,7 @@ try {
             transform,
             normal: [0, 0, 1],
             finish,
-            printDots: { amount: 0.35, artwork: false },
+            printDots: { amount: 0.35, artwork: false, period: printPeriod },
             cardstock: { amount: 0.2 },
           };
           const start = performance.now();
@@ -307,7 +311,7 @@ try {
         renderer.dispose();
       }
     },
-    { quality, stress, stressProfile },
+    { quality, stress, stressProfile, printPeriod },
   );
   const result = await Promise.race([
     run,

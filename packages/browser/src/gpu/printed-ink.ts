@@ -32,7 +32,10 @@ void main(){
  if(printDotPeriodTexels()<4.){
   vec4 source=textureLod(face,uv,0.);vec3 ink=previewInk(source.rgb),sum=vec3(0.);
   vec2 pixel=1./vec2(textureSize(face,0));
-  for(int y=0;y<2;y++)for(int x=0;x<2;x++){
+  // Validated periods are positive. Keep the four area samples in a uniform
+  // loop so D3D compilers do not clone the entire CMYK filter four times.
+  int sampleEnd=printDotsInfo.y<0.?0:2;
+  for(int y=0;y<sampleEnd;y++)for(int x=0;x<sampleEnd;x++){
    vec2 offset=(vec2(float(x),float(y))-.5)*.5;
    sum+=previewLinear(printDotInk(ink,uv+offset*pixel));
   }

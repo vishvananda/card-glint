@@ -565,7 +565,7 @@ cell-centered samples so quantized cell coordinates cannot select unstable mips.
 ## Software rendering profiles
 
 `createRenderer({ canvas, finishQuality: 'auto' })` selects cheaper finish
-preparation when WebGL identifies a software rasterizer such as SwiftShader or
+preparation and shading when WebGL identifies a software rasterizer such as SwiftShader or
 llvmpipe. An unknown or hidden device identity keeps full detail. The library's
 compatibility default remains `'full'`; hosts can also request `'reduced'`
 explicitly. `renderer.finishQuality` reports the resolved choice, and
@@ -577,6 +577,18 @@ both dimensions of the shared cardstock relief map. The print period remains
 relative to card width, and minification fades fine screens. Artwork exclusion,
 coverage, alpha, layout and card data retain their existing contracts. Printing
 and coating maps remain cached through pointer motion.
+
+Reduced shading also uses fewer rain/heat blur samples, central stationary rain
+beads, single-sample pool irradiance, and omits fine etched/opal sparkle grain.
+The finishes retain their lighting, refraction, masks and time-driven motion.
+These reductions apply to native renderer programs; a host using exported GLSL
+owns its shader quality policy.
+
+At both quality levels, the native renderer skips printing shader preparation
+when the uploaded face and overlay mip chains already filter the dots out.
+Cached visible printing uses plain texture sampling. Mixed per-instance settings
+and cache pressure retain a prepared analytic fallback without compiling during
+a draw. Full-quality finish pixels retain their existing appearance.
 
 A host can also lower its output canvas resolution and frame rate for this
 profile. Keep its source face and normalized geometry consistent, scale copies

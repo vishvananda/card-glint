@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('root', type=Path)
 parser.add_argument('--browser', choices=['msedge', 'chromium', 'firefox'], default='msedge')
 parser.add_argument('--backend', choices=['default', 'warp', 'swiftshader'], default='default')
-parser.add_argument('--suite', choices=['finishes', 'stress', 'control', 'bare', 'all'], default='all')
+parser.add_argument('--suite', choices=['finishes', 'visible', 'stress', 'control', 'bare', 'all'], default='all')
 parser.add_argument('--timeout', type=int, default=600)
 parser.add_argument('--prefix', default=time.strftime('%Y%m%dT%H%M%SZ', time.gmtime()) + '-' + uuid.uuid4().hex[:6])
 args = parser.parse_args()
@@ -33,7 +33,7 @@ def fingerprint():
     digest = hashlib.sha256()
     files = list((root / 'tools/sdk').rglob('*'))
     files += [root / 'tools/payload' / name for name in [
-        'shader-probe.mjs', 'stress-scene.mjs', 'stress-probe.mjs', 'stress-control-probe.mjs', 'stress-bare-probe.mjs',
+        'shader-probe.mjs', 'visible-print-probe.mjs', 'stress-scene.mjs', 'stress-probe.mjs', 'stress-control-probe.mjs', 'stress-bare-probe.mjs',
     ]]
     for file in sorted(files):
         if file.is_file():
@@ -54,7 +54,7 @@ def report_from(result):
     return report
 
 
-scripts = {'finishes': 'shader-probe.mjs', 'stress': 'stress-probe.mjs', 'control': 'stress-control-probe.mjs', 'bare': 'stress-bare-probe.mjs'}
+scripts = {'finishes': 'shader-probe.mjs', 'visible': 'visible-print-probe.mjs', 'stress': 'stress-probe.mjs', 'control': 'stress-control-probe.mjs', 'bare': 'stress-bare-probe.mjs'}
 suites = list(scripts) if args.suite == 'all' else [args.suite]
 plan = [(suite, quality) for suite in suites for quality in (['reduced'] if suite in ['control', 'bare'] else ['reduced', 'full'])]
 summary = {'schema': 1, 'browser': args.browser, 'backend': args.backend, 'fingerprint': fingerprint(), 'cases': []}
@@ -88,7 +88,7 @@ for suite, quality in plan:
     report = report_from(result)
     unsupported = report is not None and report.get('supported') is False
     valid_rows = report is not None and (
-        len(report.get('rows', [])) == 10 if suite == 'finishes' else
+        len(report.get('rows', [])) == 10 if suite in ['finishes', 'visible'] else
         [row.get('count') for row in report.get('rows', [])] == [100, 300, 100]
     )
     passed = result.get('exitCode') == 0 and not result.get('timedOut') and valid_rows and report.get('selectedQuality') == quality and not report.get('error') and not report.get('errors')

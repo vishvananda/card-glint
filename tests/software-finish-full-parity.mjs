@@ -2,13 +2,18 @@ import assert from 'node:assert/strict';
 import { cp, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { createServer } from 'vite';
 import { chromium } from 'playwright';
-import { softwareFinishProof } from '../games/magic/tools/accuracy/software-finish-ancestry.mjs';
+import {
+  softwareFinishProof,
+  softwareOptimizationProof,
+} from '../games/magic/tools/accuracy/software-finish-ancestry.mjs';
 
 // Exercise the actual historical runtime, rather than replacing shader strings.
 const directory = await mkdtemp('tests/.software-finish-reference-');
 let server, browser, deadline;
 try {
   await cp('packages/browser', directory, { recursive: true });
+  for (const [file, e] of Object.entries((await softwareOptimizationProof()).files))
+    await writeFile(directory + file.slice('packages/browser'.length), e.beforeSource);
   for (const [file, e] of Object.entries((await softwareFinishProof()).files))
     await writeFile(directory + file.slice('packages/browser'.length), e.beforeSource);
   server = await createServer({
