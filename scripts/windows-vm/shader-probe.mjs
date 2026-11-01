@@ -1,5 +1,5 @@
 import { createServer, request as httpRequest } from 'node:http';
-import { platform, release, arch } from 'node:os';
+import { platform, release, arch, freemem, totalmem } from 'node:os';
 import { chromium, firefox } from 'playwright';
 
 const [backend = 'default', quality = 'auto', engine = 'msedge'] = process.argv.slice(2);
@@ -28,7 +28,13 @@ const report = {
     'Browser probe; OS, adapter and headless fields define coverage. readyMs waits for resources/materials; submitMs is CPU render-call time, not GPU completion. captureMs includes explicit export/readback. This is not physical GPU validation.',
   rows: [],
   errors: [],
+  console: [],
+  guestMemory: { totalBytes: totalmem(), minAvailableBytes: freemem() },
 };
+const memoryTimer = setInterval(() => {
+  report.guestMemory.minAvailableBytes = Math.min(report.guestMemory.minAvailableBytes, freemem());
+}, 1000);
+memoryTimer.unref();
 async function progress(phase, details = {}) {
   const event = { stage: 'probe-progress', jobId: process.env.GLINT_JOB_ID, phase, ...details };
   console.log(JSON.stringify(event));
@@ -101,7 +107,7 @@ try {
   report.launchMs = Date.now() - started;
   report.browserVersion = browser.version();
   report.headless = process.env.GLINT_PROBE_HEADLESS === '1';
-  report.sandboxEnabled = engine === 'firefox' || platform() === 'win32';
+  report.chromiumSandboxRequested = engine !== 'firefox' && platform() === 'win32';
   await progress('browser-launched', { browserVersion: report.browserVersion });
   if (engine !== 'firefox') {
     const session = await browser.newBrowserCDPSession();
@@ -111,6 +117,7 @@ try {
       report.gpuInfo = {
         devices: info.gpu.devices,
         renderer: info.gpu.auxAttributes?.glRenderer,
+        gpuProcessSandboxed: info.gpu.auxAttributes?.sandboxed ?? null,
         featureStatus: info.gpu.featureStatus,
       };
     } finally {
@@ -119,6 +126,10 @@ try {
   }
   const page = await browser.newPage({ viewport: { width: 900, height: 850 } });
   page.on('pageerror', (error) => report.errors.push(error.message));
+  page.on('console', (message) => {
+    if (['warning', 'error'].includes(message.type()) && report.console.length < 40)
+      report.console.push({ type: message.type(), text: message.text().slice(0, 2000) });
+  });
   page.on('crash', () => report.errors.push('Browser page crashed'));
   await page.exposeFunction('recordStep', async (row) => {
     report.rows.push(row);
@@ -298,6 +309,7 @@ try {
   report.error = error.message;
   process.exitCode = 1;
 } finally {
+  clearInterval(memoryTimer);
   clearTimeout(timer);
   console.log(
     JSON.stringify({ stage: 'report', ...report, completedAt: new Date().toISOString() }),

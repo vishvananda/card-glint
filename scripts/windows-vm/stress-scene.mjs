@@ -22,6 +22,13 @@ export async function runStress({ createRenderer, IDENTITY }, quality) {
     etching: 'rust',
   });
   const gl = canvas.getContext('webgl2');
+  let maxMainThreadGapMs = 0,
+    lastBeat = performance.now();
+  const heartbeat = setInterval(() => {
+    const now = performance.now();
+    maxMainThreadGapMs = Math.max(maxMainThreadGapMs, now - lastBeat);
+    lastBeat = now;
+  }, 16);
   const documents = Array.from({ length: 300 }, (_, index) => {
     const id = index + 1;
     return {
@@ -123,6 +130,8 @@ export async function runStress({ createRenderer, IDENTITY }, quality) {
   try {
     await window.recordAdapter({ stressPhase: 'empty-frame', ...(await completedFrame(0, 10000)) });
     for (const count of [100, 300]) {
+      maxMainThreadGapMs = 0;
+      lastBeat = performance.now();
       document.querySelector('#status').textContent =
         'Preparing ' + count + ' distinct faces · ' + quality;
       await window.recordAdapter({ stressPhase: 'preparing', count, quality });
@@ -156,6 +165,7 @@ export async function runStress({ createRenderer, IDENTITY }, quality) {
         displayedFaceSize: [36, 50],
         viewport: [800, 800],
         opaquePixels,
+        maxMainThreadGapMs,
         readyMs,
         coldSubmitMs: first.submitMs,
         coldCompletionMs: first.completionMs,
@@ -186,6 +196,7 @@ export async function runStress({ createRenderer, IDENTITY }, quality) {
     document.querySelector('#status').textContent = '100 / 300 face stress checks completed';
     return { selectedQuality: renderer.finishQuality };
   } finally {
+    clearInterval(heartbeat);
     renderer.dispose();
   }
 }
