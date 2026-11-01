@@ -2,6 +2,17 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from '../games/magic/tools/accuracy/common.mjs';
 import {
+  shaderSubmissionProof,
+  preShaderSubmissionSource,
+} from '../games/magic/tools/accuracy/shader-submission-ancestry.mjs';
+for (const [file, e] of Object.entries((await shaderSubmissionProof()).files)) {
+  const bytes = await readFile(file);
+  assert.equal(hash(bytes), e.after, 'Unreviewed shader scheduling source');
+  assert.equal(hash(await preShaderSubmissionSource(file, bytes)), e.before);
+  const unknown = Buffer.concat([bytes, Buffer.from('// unknown edit')]);
+  assert.strictEqual(await preShaderSubmissionSource(file, unknown), unknown);
+}
+import {
   softwareFinishProof,
   softwareOptimizationProof,
   preSoftwareOptimizationSource,

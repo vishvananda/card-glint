@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { hash } from './common.mjs';
+import { preShaderSubmissionSource } from './shader-submission-ancestry.mjs';
 let checked;
 export function softwareFinishProof() {
   return (checked ??= (async () => {
@@ -69,6 +70,7 @@ export async function preSoftwareOptimizationSource(file, bytes) {
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
 }
 export async function preSoftwareFinishSource(file, bytes) {
+  bytes = await preShaderSubmissionSource(file, bytes);
   bytes = await preSoftwareOptimizationSource(file, bytes);
   const e = (await softwareFinishProof()).files[file];
   return e && hash(bytes) === e.after ? Buffer.from(e.beforeSource) : bytes;
