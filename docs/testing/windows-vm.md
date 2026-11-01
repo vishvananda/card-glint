@@ -155,6 +155,8 @@ first 100 faces without new compositions, masks or uploads. Every phase checks
 the rendered coverage. The separate GPU-fence completion time includes queued
 driver work; CPU submission time does not. The cold software-driver budget is
 longer than the warmed-frame budget. Run this separately at `full` and `reduced`.
+`stress-control-probe.mjs` repeats the same faces and sizes with regular finishes
+as a control for face-count overhead versus finish shading.
 
 Use `warp` for Firefox's forced software path; its launcher does not support
 Chromium's `swiftshader` selection. Always inspect the reported adapter.

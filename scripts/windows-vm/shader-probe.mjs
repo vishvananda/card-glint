@@ -4,7 +4,15 @@ import { chromium, firefox } from 'playwright';
 
 const [backend = 'default', quality = 'auto', engine = 'msedge'] = process.argv.slice(2);
 const stress = process.env.GLINT_PROBE_STRESS === '1';
-const evaluationBudgetMs = stress ? 300000 : backend === 'warp' ? 450000 : 150000;
+const stressProfile = process.env.GLINT_STRESS_PROFILE || 'mixed';
+if (!['mixed', 'regular'].includes(stressProfile)) throw Error('Invalid stress profile');
+const evaluationBudgetMs = stress
+  ? backend === 'warp'
+    ? 540000
+    : 300000
+  : backend === 'warp'
+    ? 450000
+    : 150000;
 if (
   !['default', 'warp', 'swiftshader'].includes(backend) ||
   !['auto', 'full', 'reduced'].includes(quality) ||
@@ -24,6 +32,7 @@ const report = {
   quality,
   engine,
   mode: stress ? 'stress' : 'finishes',
+  stressProfile: stress ? stressProfile : undefined,
   scope:
     'Browser probe; OS, adapter and headless fields define coverage. readyMs waits for resources/materials; submitMs is CPU render-call time, not GPU completion. captureMs includes explicit export/readback. This is not physical GPU validation.',
   rows: [],
@@ -139,7 +148,7 @@ try {
   await page.goto(base + '/probe.html');
   await progress('page-evaluation');
   const run = page.evaluate(
-    async ({ quality, stress }) => {
+    async ({ quality, stress, stressProfile }) => {
       const probe = document.createElement('canvas'),
         gl = probe.getContext('webgl2');
       if (!gl) return { supported: false };
@@ -160,7 +169,7 @@ try {
         return {
           supported: true,
           identity,
-          ...(await runStress({ createRenderer, IDENTITY }, quality)),
+          ...(await runStress({ createRenderer, IDENTITY }, quality, stressProfile)),
         };
       }
       const canvas = document.createElement('canvas');
@@ -291,7 +300,7 @@ try {
         renderer.dispose();
       }
     },
-    { quality, stress },
+    { quality, stress, stressProfile },
   );
   const result = await Promise.race([
     run,

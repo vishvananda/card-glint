@@ -11,7 +11,7 @@ const finishes = [
   'pool',
 ];
 
-export async function runStress({ createRenderer, IDENTITY }, quality) {
+export async function runStress({ createRenderer, IDENTITY }, quality, profile = 'mixed') {
   const canvas = document.createElement('canvas');
   canvas.width = canvas.height = 800;
   document.body.append(canvas);
@@ -89,7 +89,7 @@ export async function runStress({ createRenderer, IDENTITY }, quality) {
         1,
       ],
       normal: [0, 0, 1],
-      finish: finishes[index % finishes.length],
+      finish: profile === 'regular' ? 'regular' : finishes[index % finishes.length],
       printDots: { amount: 0.35, artwork: false },
       cardstock: { amount: 0.2 },
     };
@@ -159,6 +159,7 @@ export async function runStress({ createRenderer, IDENTITY }, quality) {
       const ordered = samples.map((row) => row.completionMs).sort((a, b) => a - b);
       await window.recordStep({
         phase: 'stress',
+        profile,
         count,
         selectedQuality: renderer.finishQuality,
         nativeFaceSize: [122, 170],
