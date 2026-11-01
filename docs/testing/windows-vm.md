@@ -88,8 +88,7 @@ Run these commands from the repository as the normal host user:
 
 ```sh
 cp scripts/windows-vm/*.{py,sh,ps1,mjs} "$VM_ROOT/tools/"
-cp scripts/windows-vm/{guest-agent.ps1,guest-agent.mjs,shader-probe.mjs,install-browsers.mjs} \
-  "$VM_ROOT/tools/payload/"
+cp scripts/windows-vm/*.{ps1,mjs} "$VM_ROOT/tools/payload/"
 python3 "$VM_ROOT/tools/prepare-answer.py" "$VM_ROOT"
 bash "$VM_ROOT/tools/start-vm.sh" "$VM_ROOT" install
 ```
@@ -128,6 +127,8 @@ Write one job atomically to `$VM_ROOT/tools/job.json`:
 
 Use a new ID for each run. Backend choices are `default`, `warp`, `swiftshader`;
 quality choices are `auto`, `full`, `reduced`. Edge is included with Windows.
+`full` and `reduced` correspond to high and low quality. Test both explicitly;
+an `auto` result alone does not exercise both paths.
 The `chromium` and `firefox` selections require their Playwright browser installs
 inside the guest first. A forced backend is a separate diagnostic, not evidence
 that the browser's default path works.
@@ -137,6 +138,26 @@ To install a Playwright browser, submit a job with
 `"timeoutSeconds": 600`. Keep valid `backend` and `quality` fields. Wait for
 that job to complete before submitting its shader probe. The installer uses
 Playwright's official browser downloads and the guest's persistent browser cache.
+
+Firefox also needs the [Microsoft Visual C++ v14 x64 runtime](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist).
+Download its official `https://aka.ms/vc14/vc_redist.x64.exe` link into
+`tools/payload/vc_redist.x64.exe`, then submit an `install-runtime.mjs` job with a
+600-second timeout. The helper verifies Microsoft's Authenticode signature and
+records the version and SHA256 before installation. Approve the Microsoft
+installer's elevation prompt in the private VM console. No browser sandbox or
+Windows security setting needs to be disabled.
+
+Use `"script": "stress-probe.mjs"` and a 600-second process timeout for the
+many-face test. It prepares 100, then 300 distinct 122×170 faces, displays them
+as 36×50 thumbnails in an 800×800 surface, and mixes all ten finishes with
+print dots and cardstock. It measures twelve warmed frames and revisits the
+first 100 faces without new compositions, masks or uploads. Every phase checks
+the rendered coverage. The separate GPU-fence completion time includes queued
+driver work; CPU submission time does not. The cold software-driver budget is
+longer than the warmed-frame budget. Run this separately at `full` and `reduced`.
+
+Use `warp` for Firefox's forced software path; its launcher does not support
+Chromium's `swiftshader` selection. Always inspect the reported adapter.
 
 Read `logs/guest-events.jsonl` for bootstrap, heartbeat and job progress. Each
 completed job saves `results/JOB_ID.json`, including timeouts and child output.
@@ -165,6 +186,8 @@ pose/time changes without new static composition or mask uploads, and exports
 an opaque card. `readyMs` includes resource/material preparation. `submitMs` is
 CPU API time, not GPU completion time. `captureMs` includes explicit export and
 readback. The page and process-tree deadlines are independent.
+WARP finish tests allow a longer page deadline for slow cold compilation; use
+a 600-second process timeout when collecting a complete WARP run.
 
 A VM without GPU passthrough tests WARP/SwiftShader and Windows/ANGLE integration.
 It does not validate physical Intel, AMD or NVIDIA drivers. Preserve the actual
