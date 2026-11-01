@@ -109,6 +109,10 @@ try {
         passes = ink.passes,
         compiles = sources.length;
       check(passes === 1, 'Visible printing was not cached');
+      check(
+        !device.programs.has('prismatic:false:true'),
+        'Cached printing eagerly compiled an analytic fallback',
+      );
       const plain = device.programs.get('prismatic:false:false').value;
       check(
         gl.getParameter(gl.CURRENT_PROGRAM) === plain,
@@ -121,15 +125,23 @@ try {
       );
       const mixed = [visible, { ...visible, id: 2, printDots: { amount: 0.35, period: 8 } }];
       await device.prepare(material, mixed);
+      const mixedCompiles = sources.length;
       draw(mixed);
       check(
         gl.getParameter(gl.CURRENT_PROGRAM) === device.programs.get('prismatic:false:true').value,
         'Mixed printing lost its prepared fallback',
       );
       check(
-        ink.passes === passes && sources.length === compiles,
+        ink.passes === passes && sources.length === mixedCompiles,
         'Mixed printing thrashed the cache or compiled during draw',
       );
+      // One printing can serve several finishes. An inactive entry must remain
+      // protected if any of those finishes has no prepared fallback yet.
+      const gloss = { ...visible, finish: 'gloss' };
+      await device.prepare(material, [gloss]);
+      const pressureCompiles = sources.length;
+      check(!device.programs.has('gloss:false:true'), 'Cached second finish compiled a fallback');
+      for (let i = 0; i < 3; i++) device.begin(frame);
       // A real working set larger than the 16 MiB printing cache must retain
       // its active entries, falling back without rebaking them on the next frame.
       const large = Array.from({ length: 10 }, () => ({
@@ -140,7 +152,12 @@ try {
         for (const m of large) await device.prepare(m, [visible]);
         const batch = () => {
           device.begin(frame);
+          device.draw(material, frame, [gloss]);
           for (const m of large) device.draw(m, frame, [visible]);
+          check(
+            device.draws === large.length + 1,
+            'Eviction skipped a ready face while compiling a fallback',
+          );
         };
         batch();
         check(
@@ -150,7 +167,7 @@ try {
         const overflowPasses = ink.passes;
         batch();
         check(
-          ink.passes === overflowPasses && sources.length === compiles,
+          ink.passes === overflowPasses && sources.length === pressureCompiles,
           'Active printing working set thrashed under pressure',
         );
         check(gl.getError() === gl.NO_ERROR, 'Cache pressure GL error');
@@ -162,7 +179,7 @@ try {
       return {
         invisibleShaderStages: 2,
         visiblePasses: passes,
-        warmCompiles: sources.length - compiles,
+        warmCompiles: sources.length - pressureCompiles,
       };
     } finally {
       device.dispose();

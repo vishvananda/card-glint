@@ -11,7 +11,8 @@ const fragment = (await readFile('packages/browser/src/gpu/printed-ink.ts', 'utf
     dots.replace('flat in vec4 printDotsInfo;', 'uniform vec4 printDotsInfo;'),
   );
 assert.ok(
-  fragment.includes('if(printDotPeriodTexels()<4.)'),
+  fragment.includes('if(printDotPeriodTexels()<4.)') &&
+    fragment.includes('int sampleEnd=printDotsInfo.y<0.?0:2;'),
   'Update the area-reference fixture when the integration branch changes',
 );
 const browser = await chromium.launch({ args: ['--no-sandbox', '--enable-unsafe-swiftshader'] });
@@ -48,8 +49,7 @@ try {
       );
       const dense = fragment
         .replace('if(printDotPeriodTexels()<4.)', 'if(true)')
-        .replaceAll('y<2', 'y<8')
-        .replaceAll('x<2', 'x<8')
+        .replace('int sampleEnd=printDotsInfo.y<0.?0:2;', 'int sampleEnd=printDotsInfo.y<0.?0:8;')
         .replace('(vec2(float(x),float(y))-.5)*.5', '(vec2(float(x),float(y))-3.5)/8.')
         .replace('sum*.25', 'sum/64.');
       const programs = [program(centered), program(fragment), program(dense)];
