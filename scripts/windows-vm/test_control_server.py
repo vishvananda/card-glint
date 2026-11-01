@@ -84,7 +84,12 @@ class ControlTransportTests(unittest.TestCase):
     def test_malformed_or_oversized_report_is_rejected(self):
         self.assertEqual(self.call('POST', '/event', b'invalid')[0], 400)
         self.assertEqual(self.call('POST', '/event', b'[]')[0], 400)
+        self.assertEqual(self.call('POST', '/event', extra_headers={'Content-Length': 'invalid'})[0], 400)
         self.assertEqual(self.call('POST', '/event', extra_headers={'Content-Length': str(5 * 1024 * 1024)})[0], 413)
+
+    def test_bootstrap_marks_existing_installation_to_prevent_accidental_reinstall(self):
+        self.assertEqual(self.call('POST', '/event', json.dumps({'stage': 'bootstrap'}))[0], 200)
+        self.assertTrue((self.root / 'state/installed').exists())
 
     def test_result_is_saved_atomically_with_validated_name(self):
         payload = {'stage': 'complete', 'jobId': 'matrix-1', 'timedOut': True}

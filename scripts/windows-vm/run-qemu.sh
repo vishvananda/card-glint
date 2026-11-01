@@ -4,6 +4,7 @@ root=$(realpath "${1:?Pass the private VM storage directory}")
 exec 9>"$root/state/vm.lock"
 flock -n 9 || { echo 'This VM already has a running process.' >&2; exit 1; }
 mode=${2:-run}
+[[ "$mode" != install || ! -f "$root/state/installed" ]] || { echo 'Windows is already installed; use run mode.' >&2; exit 1; }
 [[ "$mode" == run || "$mode" == install ]] || { echo 'Mode must be run or install' >&2; exit 2; }
 [[ -r /dev/kvm && -w /dev/kvm ]] || { echo 'This process needs /dev/kvm access (use the documented scoped service group).' >&2; exit 1; }
 [[ -f "$root/state/windows.qcow2" && -f "$root/state/OVMF_VARS.fd" ]] || { echo 'VM disk/firmware state is missing.' >&2; exit 1; }

@@ -66,7 +66,11 @@ class Handler(BaseHTTPRequestHandler):
         if path != '/event':
             self.send_json(404, {'error': 'Unknown path'})
             return
-        length = int(self.headers.get('Content-Length', '0'))
+        try:
+            length = int(self.headers.get('Content-Length', '0'))
+        except ValueError:
+            self.send_json(400, {'error': 'Invalid report length'})
+            return
         if not 0 < length <= 4 * 1024 * 1024:
             self.send_json(413, {'error': 'Invalid report size'})
             return
@@ -78,6 +82,8 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(400, {'error': 'Invalid JSON'})
             return
         data['hostReceivedAt'] = time.time()
+        if data.get('stage') in ['bootstrap', 'bootstrap-complete', 'agent-ready']:
+            (root / 'state' / 'installed').touch()
         with (root / 'logs' / 'guest-events.jsonl').open('a') as stream:
             stream.write(json.dumps(data) + '\n')
         name = data.get('jobId')

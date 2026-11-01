@@ -12,7 +12,13 @@ args = parser.parse_args()
 root = args.root.resolve()
 with socket.socket(socket.AF_UNIX) as connection:
     connection.settimeout(15)
-    connection.connect(str(root / 'state/qmp.sock'))
+    try:
+        connection.connect(str(root / 'state/qmp.sock'))
+    except (FileNotFoundError, ConnectionRefusedError):
+        if args.command != 'system_powerdown':
+            raise
+        print(json.dumps({'status': 'already-stopped'}))
+        raise SystemExit(0)
     stream = connection.makefile('rwb', buffering=0)
     stream.readline()
     def request(command, arguments=None):

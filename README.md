@@ -23,7 +23,8 @@ Your game supplies the artwork, frame geometry, typography and hit regions.
 
 [Try the interactive showcase](https://vishvananda.github.io/card-glint/) ·
 [Architecture and layering](docs/architecture.md) ·
-[Hardware and cache measurements](docs/performance.md)
+[Hardware and cache measurements](docs/performance.md) ·
+[Windows VM shader checks](docs/testing/windows-vm.md)
 
 **No internal art assets are used or distributed in this repository.** The
 showcase uses original AI-generated fantasy illustrations and code-drawn frames
