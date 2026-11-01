@@ -1,7 +1,10 @@
 $ErrorActionPreference = 'Stop'
+$ProgressPreference = 'SilentlyContinue'
 $Root = 'C:\Glint'
 New-Item -ItemType Directory -Force -Path $Root | Out-Null
-Copy-Item (Join-Path $PSScriptRoot 'settings.json') (Join-Path $Root 'settings.json') -Force
+$SourceSettings = Join-Path $PSScriptRoot 'settings.json'
+$TargetSettings = Join-Path $Root 'settings.json'
+if ($SourceSettings -ne $TargetSettings) { Copy-Item $SourceSettings $TargetSettings -Force }
 $Config = Get-Content (Join-Path $Root 'settings.json') -Raw | ConvertFrom-Json
 $Headers = @{ Authorization = "Bearer $($Config.token)" }
 function Send-Status($Stage, $Details) {
@@ -18,11 +21,14 @@ try {
     $NodeFolder = Get-ChildItem (Join-Path $Root 'node') -Directory | Select-Object -First 1
     $Node = Join-Path $NodeFolder.FullName 'node.exe'
     $env:Path = "$($NodeFolder.FullName);$env:Path"
+    Send-Status 'bootstrap-node-ready' @{node=(& $Node --version)}
     $env:PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = '1'
     $Runner = Join-Path $Root 'runner'
     New-Item -ItemType Directory -Force -Path $Runner | Out-Null
-    & (Join-Path $NodeFolder.FullName 'npm.cmd') install --prefix $Runner --ignore-scripts --no-audit --no-fund 'playwright@1.60.0' *> (Join-Path $Root 'npm-install.log')
-    if ($LASTEXITCODE -ne 0) { throw 'Playwright installation failed' }
+    Send-Status 'bootstrap-playwright-install' @{}
+    $NpmCli = Join-Path $NodeFolder.FullName 'node_modules\npm\bin\npm-cli.js'
+    $Npm = Start-Process -FilePath $Node -ArgumentList @($NpmCli,'install','--prefix',$Runner,'--ignore-scripts','--no-audit','--no-fund','playwright@1.60.0') -NoNewWindow -PassThru -Wait -RedirectStandardOutput (Join-Path $Root 'npm-install.log') -RedirectStandardError (Join-Path $Root 'npm-install-errors.log')
+    if ($Npm.ExitCode -ne 0) { throw 'Playwright installation failed' }
     Invoke-WebRequest -UseBasicParsing -Headers $Headers -Uri "$($Config.base)/payload/guest-agent.ps1" -OutFile (Join-Path $Root 'guest-agent.ps1')
     $Action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument '-NoProfile -ExecutionPolicy Bypass -File C:\Glint\guest-agent.ps1'
     $Trigger = New-ScheduledTaskTrigger -AtLogOn -User "$env:COMPUTERNAME\$env:USERNAME"

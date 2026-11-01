@@ -88,7 +88,7 @@ Run these commands from the repository as the normal host user:
 
 ```sh
 cp scripts/windows-vm/*.{py,sh,ps1,mjs} "$VM_ROOT/tools/"
-cp scripts/windows-vm/guest-agent.ps1 scripts/windows-vm/shader-probe.mjs \
+cp scripts/windows-vm/{guest-agent.ps1,shader-probe.mjs,install-browsers.mjs} \
   "$VM_ROOT/tools/payload/"
 python3 "$VM_ROOT/tools/prepare-answer.py" "$VM_ROOT"
 bash "$VM_ROOT/tools/start-vm.sh" "$VM_ROOT" install
@@ -131,6 +131,12 @@ quality choices are `auto`, `full`, `reduced`. Edge is included with Windows.
 The `chromium` and `firefox` selections require their Playwright browser installs
 inside the guest first. A forced backend is a separate diagnostic, not evidence
 that the browser's default path works.
+
+To install a Playwright browser, submit a job with
+`"script": "install-browsers.mjs"`, the desired `browser`, a new ID and
+`"timeoutSeconds": 600`. Keep valid `backend` and `quality` fields. Wait for
+that job to complete before submitting its shader probe. The installer uses
+Playwright's official browser downloads and the guest's persistent browser cache.
 
 Read `logs/guest-events.jsonl` for bootstrap, heartbeat and job progress. Each
 completed job saves `results/JOB_ID.json`, including timeouts and child output.

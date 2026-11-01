@@ -1,4 +1,5 @@
 $ErrorActionPreference = 'Stop'
+$ProgressPreference = 'SilentlyContinue'
 $Root = 'C:\Glint'
 $Config = Get-Content (Join-Path $Root 'settings.json') -Raw | ConvertFrom-Json
 $Headers = @{ Authorization = "Bearer $($Config.token)" }
@@ -29,6 +30,7 @@ while ($true) {
             $Stdout = Join-Path $Root "$($Job.id)-stdout.log"
             $Stderr = Join-Path $Root "$($Job.id)-stderr.log"
             Send-Status @{stage='running'; jobId=$Job.id; backend=$Job.backend; quality=$Job.quality; browser=$Job.browser}
+            $env:GLINT_JOB_ID = $Job.id
             $Started = Get-Date
             $Process = Start-Process -FilePath $Node -WorkingDirectory (Join-Path $Root 'runner') -ArgumentList @($Script,$Job.backend,$Job.quality,$Job.browser) -RedirectStandardOutput $Stdout -RedirectStandardError $Stderr -PassThru
             $Timeout = [Math]::Min(600, [Math]::Max(30, [int]$Job.timeoutSeconds)) * 1000

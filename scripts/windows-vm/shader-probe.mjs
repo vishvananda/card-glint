@@ -20,10 +20,24 @@ const report = {
   quality,
   engine,
   scope:
-    'Headed virtual Windows browser. readyMs waits for resources/materials; submitMs is CPU render-call time, not GPU completion. captureMs includes explicit export/readback. This is not physical GPU validation.',
+    'Browser probe; OS, adapter and headless fields define coverage. readyMs waits for resources/materials; submitMs is CPU render-call time, not GPU completion. captureMs includes explicit export/readback. This is not physical GPU validation.',
   rows: [],
   errors: [],
 };
+async function progress(phase, details = {}) {
+  const event = { stage: 'probe-progress', jobId: process.env.GLINT_JOB_ID, phase, ...details };
+  console.log(JSON.stringify(event));
+  try {
+    await fetch(new URL('/event', upstream), {
+      method: 'POST',
+      headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify(event),
+      signal: AbortSignal.timeout(3000),
+    });
+  } catch {
+    /* Local stdout still records the last reached stage. */
+  }
+}
 const server = createServer((req, res) => {
   if (req.url === '/probe.html') {
     res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -64,9 +78,10 @@ const flags =
       : [];
 let browser, timer;
 try {
+  await progress('launch');
   const started = Date.now();
   browser = await (engine === 'firefox' ? firefox : chromium).launch({
-    headless: false,
+    headless: process.env.GLINT_PROBE_HEADLESS === '1',
     ...(engine === 'msedge' ? { channel: 'msedge' } : {}),
     ...(engine === 'firefox'
       ? {
@@ -75,14 +90,18 @@ try {
               ? { 'webgl.force-enabled': true, 'webgl.angle.force-warp': true }
               : {},
         }
-      : { args: flags }),
+      : { args: flags, chromiumSandbox: platform() === 'win32' }),
     timeout: 60000,
   });
   report.launchMs = Date.now() - started;
   report.browserVersion = browser.version();
+  report.headless = process.env.GLINT_PROBE_HEADLESS === '1';
+  report.sandboxEnabled = engine === 'firefox' || platform() === 'win32';
+  await progress('browser-launched', { browserVersion: report.browserVersion });
   if (engine !== 'firefox') {
     const session = await browser.newBrowserCDPSession();
     try {
+      await progress('query-gpu-info');
       const info = await session.send('SystemInfo.getInfo');
       report.gpuInfo = {
         devices: info.gpu.devices,
@@ -96,11 +115,13 @@ try {
   const page = await browser.newPage({ viewport: { width: 900, height: 850 } });
   page.on('pageerror', (error) => report.errors.push(error.message));
   page.on('crash', () => report.errors.push('Browser page crashed'));
-  await page.exposeFunction('recordStep', (row) => {
+  await page.exposeFunction('recordStep', async (row) => {
     report.rows.push(row);
-    console.log(JSON.stringify({ stage: 'finish', ...row }));
+    await progress('finish', row);
   });
+  await page.exposeFunction('recordAdapter', (identity) => progress('adapter', identity));
   await page.goto(base + '/probe.html');
+  await progress('page-evaluation');
   const run = page.evaluate(async (quality) => {
     const probe = document.createElement('canvas'),
       gl = probe.getContext('webgl2');
@@ -114,6 +135,7 @@ try {
         version: gl.getParameter(gl.VERSION),
         parallelCompile: Boolean(gl.getExtension('KHR_parallel_shader_compile')),
       };
+    await window.recordAdapter(identity);
     gl.getExtension('WEBGL_lose_context')?.loseContext();
     const { createRenderer, IDENTITY } = await import('/sdk/browser.js');
     const canvas = document.createElement('canvas');
@@ -201,13 +223,21 @@ try {
         )
           throw Error('Static resources rebuilt during motion: ' + finish);
         const captureStart = performance.now(),
-          capture = await renderer.exportCard(1, {
+          blob = await renderer.exportCard(1, {
+            revision: 1,
+            width: 244,
             finish,
             lighting: 'studio',
             normal: [0, 0, 1],
             printDots: instance.printDots,
             cardstock: instance.cardstock,
           });
+        const bitmap = await createImageBitmap(blob),
+          capture = document.createElement('canvas');
+        capture.width = bitmap.width;
+        capture.height = bitmap.height;
+        capture.getContext('2d').drawImage(bitmap, 0, 0);
+        bitmap.close();
         const bytes = capture
           .getContext('2d')
           .getImageData(0, 0, capture.width, capture.height).data;
