@@ -130,6 +130,33 @@ try {
         ink.passes === passes && sources.length === compiles,
         'Mixed printing thrashed the cache or compiled during draw',
       );
+      // A real working set larger than the 16 MiB printing cache must retain
+      // its active entries, falling back without rebaking them on the next frame.
+      const large = Array.from({ length: 10 }, () => ({
+        ...material,
+        face: makeTexture(488, 680),
+      }));
+      try {
+        for (const m of large) await device.prepare(m, [visible]);
+        const batch = () => {
+          device.begin(frame);
+          for (const m of large) device.draw(m, frame, [visible]);
+        };
+        batch();
+        check(
+          gl.getParameter(gl.CURRENT_PROGRAM) === device.programs.get('prismatic:false:true').value,
+          'Cache pressure lost the prepared fallback',
+        );
+        const overflowPasses = ink.passes;
+        batch();
+        check(
+          ink.passes === overflowPasses && sources.length === compiles,
+          'Active printing working set thrashed under pressure',
+        );
+        check(gl.getError() === gl.NO_ERROR, 'Cache pressure GL error');
+      } finally {
+        for (const m of large) deleteTexture(m.face.texture);
+      }
       device.dispose();
       check(!deleted.includes(face.texture), 'Borrowed printing source was deleted');
       return {
