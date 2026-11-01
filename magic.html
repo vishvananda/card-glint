@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>card-glint · Magic pack preview</title>
+    <link rel="stylesheet" href="./magic.css" />
+    <style>
+      body {
+        margin: 24px;
+        color: #e8e0d0;
+        background: #161b24;
+        font: 16px system-ui;
+      }
+      main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: start;
+      }
+      section {
+        flex: 1;
+        min-width: 280px;
+        max-width: 650px;
+      }
+      textarea {
+        box-sizing: border-box;
+        width: 100%;
+        height: 380px;
+        font: 14px monospace;
+      }
+      canvas {
+        width: min(85vw, 360px);
+        height: auto;
+      }
+      button,
+      select {
+        padding: 10px;
+        margin: 8px 8px 8px 0;
+      }
+      a {
+        color: #e8c584;
+      }
+      footer {
+        max-width: 960px;
+        margin-top: 24px;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Magic pack preview</h1>
+    <p>This optional example fetches the pack's external frame and font references.</p>
+    <main>
+      <section>
+        <label for="face">Presentation fields</label>
+        <textarea id="face" spellcheck="false"></textarea>
+        <button id="draw">Render</button>
+        <label
+          >Finish
+          <select id="finish">
+            <option value="regular">Regular</option>
+            <option value="etched">Etched</option>
+            <option value="cold">Cold foil</option>
+            <option value="opal">Opal</option>
+          </select></label
+        >
+        <p id="status" role="status"></p>
+      </section>
+      <canvas id="card" width="732" height="1020" aria-label="Rendered Magic card"></canvas>
+    </main>
+    <footer id="notice"></footer>
+    <p>
+      <a href="https://github.com/vishvananda/card-glint/tree/main/games/magic"
+        >Pack source, contribution guide and asset notices</a
+      >
+    </p>
+    <script type="module" src="./magic-example.js"></script>
+  </body>
+</html>
