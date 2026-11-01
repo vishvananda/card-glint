@@ -47,6 +47,7 @@ In this sample, the printing path greatly increased SwiftShader frame cost even 
 - Initial Edge/WARP finish runs hit a 150-second page deadline after seven low-quality or four high-quality finishes. The later many-face runs used a longer budget and completed. A page deadline is distinct from a shader validation failure or an indefinitely hung process.
 - Default Firefox had no WebGL2 context in this VM. Forced WARP was verified from the actual adapter string. This unsupported default was kept separate from rendering failures.
 - A deliberate stalled-process test confirmed that the coordinator kills a Node process and its child after the deadline, then remains available. The public matrix CLI also passed an end-to-end Windows control run.
+- A final restart check booted the installed disk with the pinned Broadwell-v4 launcher. The agent started automatically and a post-reboot bare-face matrix passed. The timing samples above were collected before that restart verification.
 
 ## Next profiling targets
 
