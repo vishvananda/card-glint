@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Host-owned finish example</title>
+  <style>
+    body {
+      background: #18232c;
+      color: #eee;
+      font: 16px system-ui;
+      max-width: 40rem;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    canvas {
+      display: block;
+      width: min(100%, 366px);
+      height: auto;
+      margin: 1rem 0;
+    }
+  </style>
+  <h1>Host-owned finishes</h1>
+  <p>
+    Procedural artwork, specialized shaders and cached GPU printing. Move over the card to change
+    the light.
+  </p>
+  <label
+    >Finish
+    <select id="finish">
+      <option value="2">Prismatic</option>
+      <option value="4">Opal</option>
+      <option value="8">Gloss</option>
+    </select></label
+  >
+  <label><input id="printing" type="checkbox" checked /> Print dots</label>
+  <canvas id="card" width="366" height="510"></canvas>
+  <p id="status" role="status">Preparing…</p>
+  <script type="module" src="./host-example.js"></script>
+</html>

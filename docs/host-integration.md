@@ -172,6 +172,63 @@ and draw framebuffer before yielding. The final buffer copy separately restores
 the pixel-pack binding current at that moment. No saved GL state spans an `await`.
 Cache the returned bytes outside animation, using the same identity as a canvas mask.
 
+### Host shader preparation
+
+`FinishTextures.ready()` prepares SDK printing, coating and caustics programs.
+It does not prepare a host's assembled material, normalization or postprocessing
+programs. Those need their own asynchronous lifecycle before the first visible
+draw or export. Creating a Promise around synchronous compilation does not avoid
+blocking status queries.
+
+Specialize each material before inserting SDK GLSL:
+
+```ts
+const surface = kind >= 5 && kind <= 7;
+const libraries = `
+#define GLINT_FINISH_KIND ${kind}
+${foilShader({ liquid: false })}
+${surface ? SURFACE_GLSL : ''}
+`;
+// Insert libraries after #version, precision and the host's input declarations.
+// Set previewKind to the same kind and use animatedSurface for kinds 5–7.
+```
+
+Kinds are 0 regular, 1 etched, 2 prismatic, 3 cold, 4 opal, 5 rain, 6 heat,
+7 pool, 8 gloss and 9 holofoil. These surface values assume `liquid: false`;
+the legacy host-simulated liquid mode has a separate contract. A constant
+`previewKind` alone leaves unrelated branches for the driver to process;
+`GLINT_FINISH_KIND` removes guarded branches during preprocessing. A specialized
+program must only draw its selected kind. Cache by context generation, finish
+kind, sampling/instancing layout and procedural-printing variant. Include the
+printing library only when procedural printing is needed; prepared textures must
+not receive a second dot treatment.
+
+For each host program:
+
+1. Submit shader compilation and program linking, then call `gl.flush()`.
+   This submits commands without waiting and works when drawing is paused.
+2. When `KHR_parallel_shader_compile` is available, poll
+   `COMPLETION_STATUS_KHR`, yielding with a timer between unsuccessful polls.
+   Query link status, failure logs and uniforms/attributes only after completion.
+   Immediate `COMPILE_STATUS` or `LINK_STATUS` queries can block.
+3. Publish the completed program and invalidate waiting draws. A framework must
+   adopt that program without compiling/linking it again. Keep pending draws
+   pending until both SDK helper readiness and host material readiness succeed.
+4. On cancellation, disposal or context loss, stop polling, release live objects
+   and ignore completions belonging to an obsolete context generation. Recreate
+   helpers, programs and source textures after restoration.
+
+Without the extension, deferred status checks can still block the driver. Do not
+promise nonblocking compilation on every browser/backend. Avoid busy polling or
+`gl.finish()`. Capture/restore host GL state only around synchronous preparation;
+never keep a state snapshot across an `await`.
+
+The browser ZIP's [host example](../examples/standalone/host.html) demonstrates
+specialized materials, asynchronous compilation, shared helper readiness,
+bounded texture caching, redraw and context recovery with original procedural
+artwork. Its [compiler](../examples/standalone/host-program.js) is example code,
+not an additional SDK export. CPU submission time is not GPU completion time.
+
 ### Standalone finish readiness
 
 For a deterministic first draw, select the scene instances before awaiting
@@ -439,8 +496,9 @@ and wear. Existing card-local layers can restrict it using `finishCoverage`.
 
 Use `printDots: { artwork: false }` with the renderer to retain scanned art
 inside `FaceRecipe.artWindows` while applying dots to the rest of the printing.
+Import `DEFAULT_PRINT_DOTS` instead of duplicating saved defaults.
 An empty profile opts into `DEFAULT_PRINT_DOTS` (amount 0.35, period 2, variation
-0.5, inset 0); an absent profile stays disabled. Generated art can include dots.
+0.5, inset 0.035); an absent profile stays disabled. Generated art can include dots.
 `FinishResources.printDots(source, width, height, settings, artWindows)` accepts
 the same normalized top-left rectangles as an optional fifth argument (maximum
 eight). Omitted windows exclude nothing. Cached and procedural paths use the

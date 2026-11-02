@@ -334,3 +334,19 @@ prepares GPU textures directly in a host-owned WebGL2 context, including sources
 in texture-array layers, without CPU readback or a second context. See the
 [host material contracts](docs/host-integration.md#printing-and-coating-in-host-materials)
 for texture encoding, shader inputs, caching and ownership.
+
+Await preparation before calling synchronous GPU helpers:
+
+```ts
+const finishes = new FinishTextures(gl);
+await finishes.ready(signal);
+// Now call printDots(), cardstock() or caustics().
+```
+
+A first synchronous call without readiness can block on shader compilation.
+This warms SDK preparation programs; a custom host must also prepare its own
+material programs. For the complete renderer, call `updateScene` before
+`ready(id, revision)`, including when selecting a previously unused finish.
+See [host shader preparation](docs/host-integration.md#host-shader-preparation)
+and the [runnable host example](examples/standalone/host.html), included in the
+browser ZIP. It uses procedural artwork and no game pack.
