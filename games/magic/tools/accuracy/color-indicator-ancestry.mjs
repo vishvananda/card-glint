@@ -5,7 +5,7 @@ import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { root, hash } from './common.mjs';
 const FILE = 'games/magic/fixtures/accuracy/color-indicators/source-proof.json.gz';
-const SHA = '237b169e673eb2da90c8da30d2990d8997a9e8295990219f8b0c2708a8941124';
+const SHA = 'ba1f585215697c7896718f6f50d23876e79920eda7c9fde3dd40f1a8bd78fd4b';
 let checked;
 export function colorIndicatorAncestry() {
   return (checked ??= (async () => {
@@ -21,6 +21,12 @@ export function colorIndicatorAncestry() {
       p.evidence.rows.every((r) => r.changedDefaultBytes === 0 && r.changedIndicatorBytes > 0),
     );
     assert.equal(p.evidence.pngExport, true);
+    assert.equal(p.evidence.tool.file, 'tests/magic-color-indicators-browser.mjs');
+    assert.equal(
+      hash(await readFile(path.join(root, p.evidence.tool.file))),
+      p.evidence.tool.sha256,
+      'Changed indicator differential tool',
+    );
     for (const [file, e] of Object.entries(p.files)) {
       assert(
         file.startsWith('games/magic/src/') || file === 'games/magic/tools/accuracy/adapter.mjs',

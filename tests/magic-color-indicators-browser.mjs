@@ -391,6 +391,12 @@ try {
     );
   result.parent = execFileSync('git', ['rev-parse', parent], { encoding: 'utf8' }).trim();
   result.checkedAt = new Date().toISOString();
+  result.tool = {
+    file: 'tests/magic-color-indicators-browser.mjs',
+    sha256: createHash('sha256')
+      .update(await readFile('tests/magic-color-indicators-browser.mjs'))
+      .digest('hex'),
+  };
   result.sources = Object.fromEntries(
     await Promise.all(
       files.map(async (f) => [

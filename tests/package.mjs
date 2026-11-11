@@ -78,6 +78,10 @@ try {
     assert.ok(canvasFontAssets.length>0 && canvasFontAssets.every(font=>font.family && font.url));
     import { artworkFoilMask, resolvePrintingWording, resolvePrintingArtist, resolvePrintingPreset, resolveScryfallPrinting, fromScryfallCard, fromMtgjsonCard, artworkGeometry, resolveArtPlacement, printingStyles, resolvePrintingStyle, composePrintingSelection, validatePrintingStyle, resolvePrintingCalibration, printingCalibrationOptions, printingCalibrationApiVersion } from 'card-glint/magic';
     assert.equal(typeof artworkFoilMask,'function');
+    const {resolveColorIndicator,colorIndicatorRegions}=await import('card-glint/magic');
+    const currentColor={name:'Example Relic',typeLine:'Artifact',colors:[],currentColors:['U'],colorIndicatorDisplay:'current-if-changed'};
+    assert.deepEqual(resolveColorIndicator(currentColor).colors,['U']);
+    assert.equal(colorIndicatorRegions(currentColor)[0].id,'color-indicator');
     assert.equal(printingCalibrationApiVersion,1);
     const calibrated={name:'Calibration probe',setCode:'NEO',colors:['R'],calibration:'auto'};
     assert.equal(resolvePrintingCalibration(calibrated).components.border.color,'#16130e');
@@ -108,6 +112,10 @@ try {
 import { createRenderer, createDisplayRaster, printSamplingVersion, IDENTITY, type CardDocument, type DisplayRaster } from 'card-glint';
 export { createDisplayRaster, printSamplingVersion, type DisplayRaster };
 import { showcase } from 'card-glint/showcase';
+import { resolveColorIndicator, type ColorIndicatorInput } from 'card-glint/magic';
+const liveColor: ColorIndicatorInput = {currentColors:['U'],colorIndicatorDisplay:'current-if-changed'};
+export const currentColorCard: MagicCard = {name:'Example Relic',typeLine:'Artifact',colors:[],...liveColor};
+export const currentColorDescription = resolveColorIndicator(currentColorCard);
 export { canvas, closeRaster, decodeCanvasImage } from 'card-glint/canvas';
 export { loadMagicSet, prepareMagicCards } from 'card-glint/magic/lazy';
 export { resolveSetPrintingWording, resolveSetPrintingArtist } from 'card-glint/magic/printing';

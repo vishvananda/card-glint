@@ -11,7 +11,9 @@ This is available in the source branch; it is not part of release 0.7.13.
 Supply `colorIndicator` on the face that has the printed dot:
 
 ```ts
-const face = {
+import type { MagicCard } from 'card-glint/magic';
+
+const face: MagicCard = {
   name: 'Example Back Face',
   typeLine: 'Creature — Insect',
   colors: ['U'],
@@ -33,7 +35,7 @@ The host supplies resolved current colors. The renderer does not interpret
 spells, effects, layers or timestamps. For a Sol Ring made blue:
 
 ```ts
-const visible = {
+const visible: MagicCard = {
   ...printedSolRing,
   colors: [], // base card's colors
   currentColors: ['U'],
