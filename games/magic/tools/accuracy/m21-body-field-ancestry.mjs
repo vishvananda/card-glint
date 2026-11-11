@@ -1,4 +1,5 @@
 import { preAbuFlowToolSource } from './abu-flow-ancestry.mjs';
+import { preColorIndicatorSource } from './color-indicator-ancestry.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
@@ -29,7 +30,12 @@ async function equivalence() {
       proof.legacy,
     ])
       assert.equal(
-        hash(preAbuFlowToolSource(item.file, await readFile(item.file))),
+        hash(
+          preAbuFlowToolSource(
+            item.file,
+            await preColorIndicatorSource(item.file, await readFile(item.file)),
+          ),
+        ),
         item.sha256,
         'Changed M21 body-field proof dependency: ' + item.file,
       );
@@ -45,6 +51,7 @@ async function equivalence() {
  * text, Oracle score, or renderer identity inherits this compatibility. */
 export async function preM21BodyFieldSource(file, bytes, set) {
   if (set !== 'm21') return bytes;
+  bytes = await preColorIndicatorSource(file, bytes);
   bytes = preAbuFlowToolSource(file, bytes);
   if (file !== 'games/magic/tools/accuracy/printing-fields.mjs') return bytes;
   const { change } = await equivalence();

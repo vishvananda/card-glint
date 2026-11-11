@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { hash } from './common.mjs';
+import { preColorIndicatorSource } from './color-indicator-ancestry.mjs';
 
 const receipt = 'f266e8a70aac18a8bfd3b047f3d0b77e10f5001854add21b804fb9960cdf460a';
 let checked;
@@ -15,6 +16,7 @@ export function oracleFlavorAncestryProof() {
 }
 /** Exact prior source for default-selection tests; no current render approval. */
 export async function preOracleFlavorSource(file, bytes) {
+  bytes = await preColorIndicatorSource(file, bytes);
   const change = (await oracleFlavorAncestryProof()).files[file];
   if (!change) return bytes;
   assert.equal(hash(bytes), change.after, 'Unreviewed Oracle flavor API source: ' + file);
