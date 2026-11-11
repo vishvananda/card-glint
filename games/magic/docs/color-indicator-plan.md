@@ -101,11 +101,12 @@ colorIndicatorDisplay?: 'printed' | 'current-if-changed' | 'hidden';
 - `colors` retains the base card's semantic colors; `frameColors` retains its
   existing palette override. `currentColors` is an optional resolved projection
   supplied by the host. The renderer does not compute game effects.
-- The default display is `printed`. `current-if-changed` compares normalized
+- The default display is `current-if-changed`. It compares normalized
   current colors against the explicitly supplied base `colors`. If they differ,
   it shows current colors; otherwise it retains the printed indicator. Require
   known base colors for this comparison rather than interpreting missing data
-  as colorless. `hidden` draws nothing and reserves no space.
+  as colorless. Without `currentColors`, the printed indicator remains.
+  `printed` suppresses current-color changes; `hidden` draws nothing and reserves no space.
 - Normalize sets, reject invalid colors, and provide deterministic segment
   ordering. Check multicolor orientation against actual upstream masks/scans;
   do not assume that a list's provider order specifies the visual orientation.

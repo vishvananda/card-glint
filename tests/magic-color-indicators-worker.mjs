@@ -112,7 +112,6 @@ try {
         setCode: 'GLINT',
         illustration: 'fixture-art',
         currentColors: ['U'],
-        colorIndicatorDisplay: 'current-if-changed',
       };
       const tasks = [
         ...[244, 488, 732].map((width) => ({ width, face: base })),

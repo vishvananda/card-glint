@@ -10,7 +10,7 @@ export interface ColorIndicatorInput {
   colorIndicatorPrinting?: 'known' | 'unknown';
   /** Host-resolved current colors. [] means currently colorless, not a sixth color. */
   currentColors?: readonly FrameColor[];
-  /** Printed is the default; Oracle deliberately modernizes an older printing's dot. */
+  /** Current-if-changed is the default; without current colors it shows the printed dot. */
   colorIndicatorDisplay?: 'printed' | 'oracle' | 'current-if-changed' | 'hidden';
 }
 export interface ResolvedColorIndicator {
@@ -49,7 +49,7 @@ export function validateColorIndicator(face: ColorIndicatorInput): void {
 }
 export function resolveColorIndicator(face: RenderedCardInput): ResolvedColorIndicator | null {
   validateColorIndicator(face);
-  const mode = face.colorIndicatorDisplay ?? 'printed';
+  const mode = face.colorIndicatorDisplay ?? 'current-if-changed';
   if (mode === 'hidden') return null;
   let source: ResolvedColorIndicator['source'] = mode === 'oracle' ? 'oracle' : 'printed';
   let colors = indicatorColors(

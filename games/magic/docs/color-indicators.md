@@ -4,8 +4,9 @@
 
 The pack draws a color indicator to the left of the type text and reserves its
 space before fitting the text. The frame palette and mana cost stay independent.
-Available in card-glint 0.7.14 and later. The default shows only the physical
-printing's indicator; frame and mana-cost colors do not trigger one.
+Available in card-glint 0.7.14 and later. The default shows changed current colors
+when the host supplies them; otherwise it shows the physical printing's indicator.
+Frame and mana-cost colors alone do not trigger one.
 
 ## Printed indicators
 
@@ -40,7 +41,6 @@ const visible: MagicCard = {
   ...printedSolRing,
   colors: [], // base card's colors
   currentColors: ['U'],
-  colorIndicatorDisplay: 'current-if-changed',
 };
 ```
 
@@ -55,17 +55,38 @@ Always retain the base card's `colors`. Do not replace them with current colors
 when using this comparison. Missing base colors cause an error rather than being
 treated as colorless. Set state on individual child faces for composite cards.
 
-| `colorIndicatorDisplay` | Result                                                                            |
-| ----------------------- | --------------------------------------------------------------------------------- |
-| Omitted or `printed`    | Physical indicator only.                                                          |
-| `oracle`                | `oracleColorIndicator`, falling back to the physical indicator.                   |
-| `current-if-changed`    | Current colors when different from base colors; otherwise the physical indicator. |
-| `hidden`                | No indicator and no reserved space.                                               |
+| `colorIndicatorDisplay`         | Result                                                                            |
+| ------------------------------- | --------------------------------------------------------------------------------- |
+| `printed`                       | Physical indicator only, even when current colors differ.                         |
+| `oracle`                        | `oracleColorIndicator`, falling back to the physical indicator.                   |
+| Omitted or `current-if-changed` | Current colors when different from base colors; otherwise the physical indicator. |
+| `hidden`                        | No indicator and no reserved space.                                               |
 
 These are raster inputs. Prepare a new face revision when they change; card
 movement still reuses the prepared texture. Visible colors participate in the
 face cache key. Invisible indicator data, artwork-only pixels and the existing
 art/set-symbol etching mask keep their prior keys. No new finish shader is used.
+
+## Colored artifact frames
+
+Frame appearance is independent of the current-color badge. For a blue Sol Ring
+with modern colored-artifact framing:
+
+```ts
+const coloredArtifact: MagicCard = {
+  ...printedSolRing,
+  colors: [],
+  currentColors: ['U'],
+  frameColors: ['U'],
+  artifact: true,
+  frameStyle: 'modern',
+};
+```
+
+`frameColors` selects the blue surround, while `artifact` retains artifact panels.
+The type line normally supplies the artifact flag, so explicitly setting it is
+optional for Sol Ring. Omitting `frameColors` retains the normal artifact frame.
+Neither appearance choice changes the base card's `colors` or mana cost.
 
 ## Provider and printing data
 

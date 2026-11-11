@@ -5,7 +5,7 @@ import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { root, hash } from './common.mjs';
 const FILE = 'games/magic/fixtures/accuracy/color-indicators/source-proof.json.gz';
-const SHA = 'ba1f585215697c7896718f6f50d23876e79920eda7c9fde3dd40f1a8bd78fd4b';
+const SHA = '0e1627c31e30c1046ec5fe5edcdcfa53944908814bb93ad884ef8c7df8eb41a4';
 let checked;
 export function colorIndicatorAncestry() {
   return (checked ??= (async () => {

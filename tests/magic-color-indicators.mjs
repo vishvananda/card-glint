@@ -12,7 +12,7 @@ try {
   const api = await server.ssrLoadModule('/games/magic/src/presentation.ts');
   const pack = await server.ssrLoadModule('/games/magic/src/index.ts');
   const base = { name: 'Sol Ring', typeLine: 'Artifact', colors: [], manaSymbols: ['1'] };
-  const blue = { ...base, currentColors: ['U'], colorIndicatorDisplay: 'current-if-changed' };
+  const blue = { ...base, currentColors: ['U'] };
   assert.equal(api.resolveColorIndicator(base), null);
   assert.deepEqual(api.resolveColorIndicator(blue), {
     colors: ['U'],
@@ -21,11 +21,37 @@ try {
   });
   assert.deepEqual(api.resolveCardProfile(blue), api.resolveCardProfile(base));
   assert.deepEqual(blue.manaSymbols, base.manaSymbols);
+  const coloredArtifact = { ...blue, frameColors: ['U'], artifact: true, frameStyle: 'modern' };
+  const coloredProfile = api.resolveCardProfile(coloredArtifact);
+  assert.equal(coloredProfile.frame, 'U');
+  assert.equal(coloredProfile.boxes, 'Artifact');
+  assert.deepEqual(api.resolveColorIndicator(coloredArtifact), api.resolveColorIndicator(blue));
+  assert.deepEqual(coloredArtifact.colors, []);
+
   assert.equal(api.resolveColorIndicator({ ...blue, currentColors: [] }), null);
   assert.equal(api.resolveColorIndicator({ ...blue, colorIndicatorDisplay: 'hidden' }), null);
   const printed = { ...base, colors: ['G'], colorIndicator: ['G'] };
   assert.equal(api.resolveColorIndicator(printed).source, 'printed');
-  assert.equal(api.resolveColorIndicator({ ...printed, currentColors: ['R'] }).source, 'printed');
+  assert.equal(api.resolveColorIndicator({ ...printed, currentColors: ['R'] }).source, 'current');
+  assert.deepEqual(
+    api.resolveColorIndicator({ ...blue, colorIndicatorDisplay: 'current-if-changed' }),
+    api.resolveColorIndicator(blue),
+  );
+  assert.equal(api.resolveColorIndicator({ ...blue, colorIndicatorDisplay: 'printed' }), null);
+  assert.equal(api.resolveColorIndicator({ ...printed, currentColors: ['G'] }).source, 'printed');
+  assert.equal(
+    api.resolveColorIndicator({
+      ...printed,
+      currentColors: ['R'],
+      colorIndicatorDisplay: 'printed',
+    }).source,
+    'printed',
+  );
+  assert.equal(
+    api.resolveColorIndicator({ ...base, colors: ['U'] }),
+    null,
+    'Base color differs from artifact frame and mana, but no indicator is inferred',
+  );
   assert.equal(
     api.resolveColorIndicator({
       ...printed,
