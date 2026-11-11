@@ -14,6 +14,8 @@ checks. Read [asset sources and terms](../NOTICE.md) before using external asset
 - [Host rendering](host-rendering.md): low-level painting, masks and editor controls.
 - [Finishes and stamps](finishes.md): whole-card finishes and local holograms.
 - [Symbol controls](symbol-adjustments.md): position, size, spacing and generic numerals.
+- [Color indicator proposal](color-indicator-plan.md): upstream assets, printed visibility
+  and optional current-color display.
 
 ## Calibrate and contribute
 
