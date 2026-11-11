@@ -9,12 +9,13 @@ import {
   fontGeometryTaskAffected,
 } from '../games/magic/tools/accuracy/font-geometry-ancestry.mjs';
 import { hash, sourceHash } from '../games/magic/tools/accuracy/common.mjs';
+import { preColorIndicatorSource } from '../games/magic/tools/accuracy/color-indicator-ancestry.mjs';
 const p = await fontGeometryHistory();
 assert.equal(p.scoreReuse, false, 'Font geometry changes cannot reuse typography scores');
 assert(Object.keys(p.files).length >= 50);
 let additions = 0;
 for (const [file, e] of Object.entries(p.files)) {
-  const current = await fs.readFile(file);
+  const current = await preColorIndicatorSource(file, await fs.readFile(file));
   assert.equal(hash(current), e.after, 'Unreviewed font source: ' + file);
   const old = await preFontGeometrySource(file, current);
   if (e.beforeSource !== null) {

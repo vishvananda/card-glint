@@ -1,6 +1,7 @@
 # Color indicators: investigation and implementation plan
 
-Status: proposed; no renderer behavior or public API changed by this document.
+Status: implemented on the feature branch; see [the input and usage guide](color-indicators.md).
+This document records the original investigation and implementation decisions.
 Inspected source: `a39f137a`, after 0.7.13. Upstream references use the revisions
 already pinned in `assets.json`.
 

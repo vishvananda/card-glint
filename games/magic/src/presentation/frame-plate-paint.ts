@@ -1,3 +1,4 @@
+import { paintFittedTypeLine } from './color-indicator-text.js';
 import { setFont } from './font-geometry.js';
 import { paintEighthStockRule } from './eighth-stock-rule.js';
 import { eighthFrameGeometry, paintEighthFrame } from './eighth-frame-geometry.js';
@@ -246,8 +247,10 @@ export function paintFramePlateFace(
   c.translate(typeFit.dx + (eighthType?.dx ?? 0), typeFit.dy + (eighthType?.dy ?? 0));
   paintColorshiftedHeading(c, face, plate.frame);
   setFont(c, `bold ${plate.typeSize}px "${family}", Georgia`);
-  paintFittedText(
+  paintFittedTypeLine(
     c,
+    face,
+    images,
     face.typeLine ?? '',
     x + modernType.dx,
     y + h / 2 + modernType.dy,

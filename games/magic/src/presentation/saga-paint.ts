@@ -1,3 +1,4 @@
+import { paintFittedTypeLine } from './color-indicator-text.js';
 import { paintFontText, setFont } from './font-geometry.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import {
@@ -85,8 +86,10 @@ export function paintSagaFace(
   const iw = icon ? icon.width * crop[2] * scale : 0,
     ih = icon ? icon.height * crop[3] * scale : 0;
   const bounds: [number, number, number, number] = [450.3 - iw, 594.25 - ih / 2, iw, ih];
-  paintFittedText(
+  paintFittedTypeLine(
     c,
+    face,
+    images,
     face.typeLine ?? '',
     41.7,
     594.5,

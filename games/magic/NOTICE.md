@@ -51,6 +51,14 @@ Their original source palettes are rebound during cached preparation; no image
 binaries are redistributed. See [historical mana](docs/historical-mana.md) for choices,
 scan evidence and independent original/Oracle wording behavior.
 
+Color indicators reference that same pinned Full Magic Pack revision's
+`magic-modules.mse-include/indicators/` mono-color discs and neutral `aidentity.png`.
+The source images include the rim; the compositor clips color sectors locally.
+The neutral disc is used only for an application's current-colorless display,
+not as a sixth Magic color. Geometry references its indicator/typeline modules
+and Card Conjurer's pinned `packM15CIPips.js`. No upstream code or image binaries
+are redistributed. See [color indicators](docs/color-indicators.md).
+
 Replacement base plates (Eighth Edition and M15 Accurate), their masks and
 power/toughness badges, artist brushes, the optional Matrix Bold and Matrix
 Bold Small Caps fonts, and complete styled set

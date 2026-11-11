@@ -1,4 +1,5 @@
 import { measureFontText, paintFontText, setFont } from './font-geometry.js';
+import { paintTypeColorIndicator } from './color-indicator-paint.js';
 import {
   type CanvasContext,
   type CanvasRaster,
@@ -99,7 +100,19 @@ export function paintFutureTemplate(
     // Shared lettering fit uses frozen frame-only scan poses and reserved cards;
     // keep Matrix Bold, whose glyphs fit better than the alternate MSE Medium.
     label(face.name, g.title, 30.248, 1.25);
-    label(face.typeLine ?? '', g.type, 24.969, -1.5, true);
+    const type = paintTypeColorIndicator(c, face, images, [
+      g.type[0] + 1.25,
+      g.type[1] - 1.5,
+      g.type[2],
+      g.type[3],
+    ]);
+    label(
+      face.typeLine ?? '',
+      [type[0] - 1.25, type[1] + 1.5, type[2], type[3]],
+      24.969,
+      -1.5,
+      true,
+    );
     const rulesInk = p.land && palette.length === 2 && !palette.includes('W') ? '#fff' : '#111';
     // The textless treatment is physical. Additional Oracle text does not
     // switch it to the regular frame or silently change the artwork aperture.

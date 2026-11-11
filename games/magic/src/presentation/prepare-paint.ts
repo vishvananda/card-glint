@@ -1,3 +1,4 @@
+import { paintFittedTypeLine } from './color-indicator-text.js';
 import {
   type CanvasContext,
   type CanvasRaster,
@@ -59,8 +60,10 @@ function headers(c: CanvasContext, face: RenderedCardInput, images: CanvasImages
   const w = icon ? icon.width * crop[2] * scale : 0,
     h = icon ? icon.height * crop[3] * scale : 0;
   const bounds = [450.3 - w, 402 - h / 2, w, h] as const;
-  paintFittedText(
+  paintFittedTypeLine(
     c,
+    face,
+    images,
     face.typeLine ?? '',
     41.7,
     401.5,
@@ -78,8 +81,10 @@ function headers(c: CanvasContext, face: RenderedCardInput, images: CanvasImages
   }
   const spell = preparedSpell(face);
   title(spell, true);
-  paintFittedText(
+  paintFittedTypeLine(
     c,
+    spell,
+    images,
     spell.typeLine ?? '',
     (1042 / 2010) * 488,
     477,

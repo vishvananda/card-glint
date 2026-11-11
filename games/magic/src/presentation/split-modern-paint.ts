@@ -1,3 +1,4 @@
+import { paintFittedTypeLine } from './color-indicator-text.js';
 import { paintFontText, setFont } from './font-geometry.js';
 import {
   type CanvasContext,
@@ -91,8 +92,10 @@ export function paintModernSplitHeader(
     : 0;
   const w = symbol ? symbol.width * crop[2] * scale : 0,
     h = symbol ? symbol.height * crop[3] * scale : 0;
-  paintFittedText(
+  paintFittedTypeLine(
     c,
+    half,
+    images,
     half.typeLine ?? '',
     70,
     277,

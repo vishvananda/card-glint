@@ -23,6 +23,8 @@ function id(value: unknown) {
   if (typeof value !== 'string' || !idPattern.test(value)) throw Error('Invalid printing style ID');
 }
 const overrideKeys = [
+  'colorIndicator',
+  'colorIndicatorDisplay',
   'calibration',
   'artist',
   'legalText',

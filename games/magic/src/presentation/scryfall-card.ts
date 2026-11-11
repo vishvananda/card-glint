@@ -1,6 +1,8 @@
 import { resolveScryfallPrinting } from './scryfall-printing.js';
 import { providerFrameAppearance, providerLandPalette } from './provider-appearance.js';
 import type { RenderedCardInput } from './face-layout.js';
+import { providerColorIndicator } from './color-indicator-printing.mjs';
+import { validateColorIndicator } from './color-indicator.js';
 import {
   providerRecord,
   providerText,
@@ -25,6 +27,12 @@ export function fromScryfallCard(
   const input = card.card_faces === undefined ? [card] : card.card_faces;
   if (!Array.isArray(input) || !input.length || input.length > 2)
     throw Error('Supply one Scryfall card with at most two faces.');
+  if (
+    options.colorIndicators !== undefined &&
+    (!Array.isArray(options.colorIndicators) || options.colorIndicators.length !== input.length)
+  )
+    throw Error('Supply one color indicator override per input face.');
+  validateColorIndicator({ colorIndicatorDisplay: options.colorIndicatorDisplay });
   const appearance = resolveScryfallPrinting({
     set: providerText(card.set),
     frame: providerText(card.frame),
@@ -88,6 +96,19 @@ export function fromScryfallCard(
       : undefined;
     return providerWording(
       {
+        ...(providerColorIndicator(
+          {
+            ...card,
+            color_indicator: face.color_indicator,
+          },
+          {
+            printingDate: options.printingDate,
+            colorIndicator: options.colorIndicators?.[index],
+          },
+        ) as Partial<RenderedCardInput>),
+        ...(options.colorIndicatorDisplay !== undefined
+          ? { colorIndicatorDisplay: options.colorIndicatorDisplay }
+          : {}),
         ...providerFrameAppearance(appearance, typeLine, rulesText),
         ...(index > 0 &&
         ['transform', 'modal_dfc', 'battle', 'double_faced_token'].includes(String(card.layout))

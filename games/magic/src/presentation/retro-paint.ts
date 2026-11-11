@@ -1,4 +1,5 @@
 import { paintFontText, setFont } from './font-geometry.js';
+import { paintTypeColorIndicator } from './color-indicator-paint.js';
 import { inheritedOldFrameManaBase } from '../calibration/old-frame-defaults.js';
 import { calibrationForFace } from '../calibration/selection.js';
 import { paintRetroFramePlate } from './retro-frame-plate.js';
@@ -268,21 +269,20 @@ export function paintRetroFace(
       };
   c.save();
   c.translate(typePlacement.dx, typePlacement.dy);
-  paintType(
-    retroBasicPrinting(face)?.typeLine ?? face.typeLine ?? '',
-    details?.typeX ?? tx,
-    ty + th / 2,
-    icon
-      ? Math.max(
-          1,
-          Math.min(
-            tw - 48,
-            geometry ? geometry.right - geometry.width - tx - 6 : tw,
-            symbolBounds !== baseBounds ? symbolBounds[0] - (details?.typeX ?? tx) - 6 : tw,
-          ),
-        )
-      : tw,
-  );
+  const typeX = details?.typeX ?? tx;
+  const typeWidth = icon
+    ? Math.max(
+        1,
+        Math.min(
+          tw - 48,
+          geometry ? geometry.right - geometry.width - tx - 6 : tw,
+          symbolBounds !== baseBounds ? symbolBounds[0] - typeX - 6 : tw,
+        ),
+      )
+    : tw;
+  const type = paintTypeColorIndicator(c, face, images, [typeX, ty, typeWidth, th]);
+  c.translate(type[0] - typeX, 0);
+  paintType(retroBasicPrinting(face)?.typeLine ?? face.typeLine ?? '', typeX, ty + th / 2, type[2]);
   c.restore();
   paintPrintingElement(c, face, 'setSymbol', () =>
     paintAdjustedSymbols(c, originalBounds, face.symbolAdjustment?.set, () => {

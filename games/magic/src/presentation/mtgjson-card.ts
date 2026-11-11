@@ -20,6 +20,11 @@ export function fromMtgjsonCard(
   if (!records.length || records.length > 2)
     throw Error('Supply the associated records of one MTGJSON card.');
   if (
+    options.colorIndicators !== undefined &&
+    (!Array.isArray(options.colorIndicators) || options.colorIndicators.length !== records.length)
+  )
+    throw Error('Supply one color indicator override per input face.');
+  if (
     options.illustrations !== undefined &&
     (!Array.isArray(options.illustrations) || options.illustrations.length !== records.length)
   )
@@ -76,6 +81,7 @@ export function fromMtgjsonCard(
     oracle_text: row.text ?? '',
     mana_cost: row.manaCost ?? '',
     colors: row.colors,
+    color_indicator: row.colorIndicator,
     produced_mana: mtgjsonProducedMana(providerText(row.text)),
     watermark: row.watermark,
     power: row.power,
@@ -104,6 +110,11 @@ export function fromMtgjsonCard(
         wording: options.wording,
         symbolStyle: options.symbolStyle,
         includeFlavorText: options.includeFlavorText,
+        printingDate: options.printingDate,
+        colorIndicatorDisplay: options.colorIndicatorDisplay,
+        ...(options.colorIndicators !== undefined
+          ? { colorIndicators: [options.colorIndicators[supplied.indexOf(row)]!] }
+          : {}),
       },
     ),
   );

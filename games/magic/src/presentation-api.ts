@@ -17,6 +17,13 @@ export * from './presentation/rules-paint.js';
 export * from './presentation/extra-rule-paint.js';
 export * from './presentation/extra-rules.js';
 export * from './presentation/face-layout.js';
+export * from './presentation/color-indicator.js';
+export * from './presentation/color-indicator-paint.js';
+export * from './presentation/color-indicator-regions.js';
+export {
+  prepareColorIndicators,
+  clearColorIndicatorBitmaps,
+} from './presentation/color-indicator-material.js';
 export * from './presentation/illustration-layout.js';
 export * from './presentation/illustration-paint.js';
 export * from './presentation/power-toughness-layout.js';

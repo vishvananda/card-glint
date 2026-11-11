@@ -4,6 +4,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { root, hash, sourceHash } from './common.mjs';
+import {
+  preColorIndicatorSource,
+  colorIndicatorHistoricalFiles,
+} from './color-indicator-ancestry.mjs';
 const FILE = 'games/magic/fixtures/accuracy/font-geometry/source-history.json.gz';
 const SHA = '3d724929498173bb50445fd6f1213856cc87708dd632ac9491952c0dad5ee92f';
 let checked;
@@ -30,6 +34,7 @@ export function fontGeometryHistory() {
 }
 /** Reverse these exact bytes only; foreign edits retain their actual identity. */
 export async function preFontGeometrySource(file, bytes) {
+  bytes = await preColorIndicatorSource(file, bytes);
   const e = (await fontGeometryHistory()).files[file];
   if (!e || e.beforeSource === null || hash(bytes) !== e.after) return bytes;
   return Buffer.from(e.beforeSource);
@@ -38,7 +43,7 @@ export async function preFontGeometrySource(file, bytes) {
 export async function fontGeometryHistoricalFiles(files) {
   const p = await fontGeometryHistory(),
     kept = [];
-  for (const file of files) {
+  for (const file of await colorIndicatorHistoricalFiles(files)) {
     const key = file.startsWith('games/') ? file : path.relative(root, file);
     const e = p.files[key];
     if (e?.beforeSource === null && hash(await fs.readFile(path.join(root, key))) === e.after)

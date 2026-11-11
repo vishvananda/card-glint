@@ -35,9 +35,18 @@ import type { RenderedCardInput } from './presentation/face-layout.js';
 import { faceCornerRadius } from './presentation/face-silhouette.js';
 import { isPrepared, PREPARE_SPELL_RECTS } from './presentation/prepare-frame.js';
 import { securityStampHologram } from './presentation/security-stamp-hologram.js';
+import { colorIndicatorRegions } from './presentation/color-indicator-regions.js';
+import { clearColorIndicatorBitmaps } from './presentation/color-indicator-material.js';
+export { colorIndicatorRegions } from './presentation/color-indicator-regions.js';
 export type { RenderedCardInput as MtgCard, SecurityStamp } from './presentation/face-layout.js';
 export { setSymbolAsset, manaSymbolAsset, profileAssets } from './presentation/assets.js';
 export { FACE_RECTS, FACE_TEXT } from './presentation/face-layout.js';
+export {
+  resolveColorIndicator,
+  colorIndicatorLayout,
+  type ColorIndicatorInput,
+  type ResolvedColorIndicator,
+} from './presentation/color-indicator.js';
 export {
   withCardWording,
   type CardWording,
@@ -75,6 +84,7 @@ function loader(host: RasterHost) {
 export const mtg: GamePack<RenderedCardInput> = {
   id: 'mtg',
   dispose() {
+    clearColorIndicatorBitmaps();
     clearHistoricalSymbolSources();
     clearEarlyHsbBitmaps();
     setSymbolMaskCache.clear();
@@ -177,6 +187,7 @@ export const mtg: GamePack<RenderedCardInput> = {
       ),
       cornerRadius: faceCornerRadius(face),
       regions: [
+        ...colorIndicatorRegions(face).map(({ id, rect }) => ({ id, rect })),
         ...Object.entries(faceRects(face)).map(([id, rect]) => ({ id, rect })),
         ...(face.frameTemplate === 'battle' && face.reverseStats
           ? [{ id: 'reverse-stats', rect: battlePhysicalRect(BATTLE_REVERSE_STATS.rect) }]

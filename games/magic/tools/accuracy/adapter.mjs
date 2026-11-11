@@ -8,6 +8,7 @@ import { earlyLandTypeAnnotation } from './early-land-types.mjs';
 import { emptyPrintingTextAnnotation } from './empty-printing-text.mjs';
 import { printedArtistAnnotation } from './printed-artist.mjs';
 import { printedTextOutlierAnnotation } from './printed-text-outliers.mjs';
+import { providerColorIndicator } from '../../src/presentation/color-indicator-printing.mjs';
 
 export function presentation(entry, annotations = {}, printingText = {}) {
   const card = entry.card;
@@ -78,6 +79,11 @@ export function presentation(entry, annotations = {}, printingText = {}) {
       })),
   ];
   const face = {
+    ...providerColorIndicator(card, {
+      ...(Object.hasOwn(annotation, 'colorIndicator')
+        ? { colorIndicator: annotation.colorIndicator }
+        : {}),
+    }),
     name: annotation.name ?? card.name,
     typeLine: annotation.typeLine ?? card.printed_type_line ?? card.type_line,
     colors: card.colors,
@@ -124,6 +130,10 @@ export function presentation(entry, annotations = {}, printingText = {}) {
         }),
     ...(entry.category === 'planeswalker' ? { rulesText: rules } : {}),
   };
+  if (face.colorIndicatorPrinting === 'unknown')
+    throw Error(
+      `Physical color indicator visibility is unverified for ${card.name}; supply a reviewed colorIndicator.`,
+    );
   return {
     face,
     reviewedFields: Object.keys(fields),

@@ -1,3 +1,4 @@
+import { paintFittedTypeLine } from './color-indicator-text.js';
 import { paintFontText, setFont } from './font-geometry.js';
 import {
   type CanvasContext,
@@ -130,8 +131,10 @@ export function paintAftermathFace(
         paintMana(c, symbol, right - cw + i * (size + gap), y + 3, size, images, true),
       );
       const symbol = !index ? images.get(faceSetSymbol(half) ?? '') : undefined;
-      paintFittedText(
+      paintFittedTypeLine(
         c,
+        half,
+        images,
         half.typeLine ?? '',
         rects.type[0],
         rects.type[1] + 16.5,

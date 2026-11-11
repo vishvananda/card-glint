@@ -31,6 +31,7 @@ import type { RenderedCardInput } from './face-layout.js';
 import { framePlateUrls } from './frame-plates.js';
 import { CONJURER_ROOT } from './styled-set-symbols.js';
 import { mountedSecurityStamp } from './security-stamp-paint.js';
+import { COLOR_INDICATOR_ROOT, colorIndicatorAssets } from './color-indicator-paint.js';
 
 import { walkerPalette, walkerSources } from './planeswalker-sources.js';
 import type { EarlyManaNumeral } from './early-expansion-mana.js';
@@ -61,6 +62,7 @@ export async function fetchCanvasAsset(url: string, signal: AbortSignal): Promis
 
 /** Pinned frame components exceed 2,600 px wide; inspection paints at most 732 px. */
 export function canvasAssetWidth(url: string): number | undefined {
+  if (url.startsWith(COLOR_INDICATOR_ROOT + '/')) return 128;
   if (
     url.startsWith(`${CONJURER_ROOT}/img/frames/m15/holoStamps/`) ||
     url.startsWith(`${CONJURER_ROOT}/img/frames/planeswalker/holo/`)
@@ -130,8 +132,19 @@ export async function loadCanvasImages(
   };
 }
 
-export function canvasAssetUrls(face: RenderedCardInput): (string | null | undefined)[] {
+export function canvasAssetUrls(
+  face: RenderedCardInput,
+  includeColorIndicators = true,
+): (string | null | undefined)[] {
   face = calibrationFace(face);
+  const indicators = includeColorIndicators ? indicatorAssets(face) : [];
+  const frames = canvasFrameAssetUrls(face);
+  return indicators.length ? [...new Set([...frames, ...indicators])] : frames;
+}
+function indicatorAssets(face: RenderedCardInput): string[] {
+  return [...colorIndicatorAssets(face), ...(face.faces ?? []).flatMap(indicatorAssets)];
+}
+function canvasFrameAssetUrls(face: RenderedCardInput): (string | null | undefined)[] {
   if (face.frameTemplate)
     return [
       ...standardTemplateAssets(face),
@@ -194,7 +207,7 @@ export function canvasAssetUrls(face: RenderedCardInput): (string | null | undef
   if (faceFrame(face) === 'saga')
     return [...sagaAssets(face), face.illustration, faceSetSymbol(face), ...faceManaAssets(face)];
   const panels = splitPanels(face);
-  if (panels.length) return panels.flatMap((panel) => canvasAssetUrls(panel.face));
+  if (panels.length) return panels.flatMap((panel) => canvasFrameAssetUrls(panel.face));
   const profile = resolveCardProfile(face),
     assets = profileAssets(profile, faceFrame(face));
   return [

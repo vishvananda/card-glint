@@ -5,6 +5,11 @@ import { originalManaOrder } from './historic-mana-order.js';
 
 /** Imports are pure: callers own downloads, storage and finish selection. */
 export interface CardImportOptions {
+  /** Set release date when the provider record lacks it (not the card's first printing date). */
+  printingDate?: string;
+  /** Reviewed physical indicators, in supplied face order; null explicitly means absent. */
+  colorIndicators?: readonly (readonly FrameColor[] | null)[];
+  colorIndicatorDisplay?: RenderedCardInput['colorIndicatorDisplay'];
   /** Omit for a complete composite face or the front of a two-sided card.
    * Set explicitly to inspect/edit one source face or panel. */
   faceIndex?: number;
@@ -99,6 +104,11 @@ export function providerFace(
   sharedArt: string | null = null,
 ): RenderedCardInput {
   if (!faces.length || faces.length > 2) throw Error('Supply one card with at most two faces.');
+  if (
+    options.colorIndicators !== undefined &&
+    (!Array.isArray(options.colorIndicators) || options.colorIndicators.length !== faces.length)
+  )
+    throw Error('Supply one color indicator override per input face.');
   if (
     options.illustrations !== undefined &&
     (!Array.isArray(options.illustrations) ||

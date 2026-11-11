@@ -4,6 +4,7 @@ import type { PrintingElements } from './printing-elements.js';
 import type { SymbolAdjustment } from './symbol-adjustment.js';
 import type { CardProfileInput } from './profile.js';
 import type { SetCalibrationCandidate } from '../calibration/editor-types.js';
+import type { ColorIndicatorInput } from './color-indicator.js';
 
 export type CardBorderColor = 'black' | 'white' | 'silver';
 export type SecurityStamp = 'none' | 'oval' | 'triangle' | 'acorn' | 'circle' | 'arena' | 'heart';
@@ -33,7 +34,7 @@ export interface CardTextInk {
 }
 
 /** Presentation inputs shared by DOM faces and Canvas2D texture composition. */
-export interface RenderedCardInput extends CardProfileInput {
+export interface RenderedCardInput extends CardProfileInput, ColorIndicatorInput {
   name: string;
   /** Opt-in set proposal; never changes the registered printing defaults. */
   setCalibrationCandidate?: SetCalibrationCandidate;

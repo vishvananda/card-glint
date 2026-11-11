@@ -9,6 +9,7 @@ import { resolveArtPlacement, type ArtPlacement } from './art-placement.js';
 import type { RenderedCardInput } from './face-layout.js';
 import { framePlate } from './frame-plates.js';
 import { validatePrintingElements, type PrintingElements } from './printing-elements.js';
+import { validateColorIndicator } from './color-indicator.js';
 
 export type PrintingFrameFamily = 'match' | 'retro' | 'eighth' | 'modern' | 'future';
 export interface PrintingPreset {
@@ -133,6 +134,8 @@ export const printingPresets: readonly Readonly<PrintingPreset>[] = Object.freez
   entries.map((p) => Object.freeze(p)),
 );
 export interface PrintingOverrides {
+  colorIndicator?: RenderedCardInput['colorIndicator'];
+  colorIndicatorDisplay?: RenderedCardInput['colorIndicatorDisplay'];
   calibration?: RenderedCardInput['calibration'];
   /** Undefined follows preset, null hides the component, string replaces it. */
   artist?: string | null;
@@ -303,6 +306,12 @@ export function resolvePrintingPreset(
       )
         throw Error('Invalid frame colors');
       face.frameColors = [...value];
+      continue;
+    }
+    if (key === 'colorIndicator' || key === 'colorIndicatorDisplay') {
+      Object.assign(face, { [key]: structuredClone(value) });
+      validateColorIndicator(face);
+      if (key === 'colorIndicator') face.colorIndicatorPrinting = 'known';
       continue;
     }
     if (key === 'elements') face.printingElements = structuredClone(value as PrintingElements);

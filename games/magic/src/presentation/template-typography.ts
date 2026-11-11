@@ -7,10 +7,23 @@ import type { RenderedCardInput, FaceRect, CardTextInk } from './face-layout.js'
 import { paintFittedText, paintMana } from './canvas-text.js';
 import { layoutRules } from './rules-layout.js';
 import { paintRulesLayout } from './rules-paint.js';
+import { paintTypeColorIndicator } from './color-indicator-paint.js';
 
 // MSE Font::toWxFont uses 96 / 72 pixels per point. Template coordinates
 // remain native pixels; only text font sizes receive this conversion.
 const POINT = 96 / 72;
+
+export function templateTypeLabel(
+  c: CanvasContext,
+  face: RenderedCardInput,
+  images: CanvasImages,
+  rect: FaceRect,
+  size: number,
+  family: 'CardRenderer MTG Matrix' | 'CardRenderer MTG Beleren',
+) {
+  const type = paintTypeColorIndicator(c, face, images, rect, 375);
+  templateLabel(c, face.typeLine ?? '', type, size, family, face.textInk);
+}
 
 export function templateLabel(
   c: CanvasContext,

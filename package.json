@@ -83,7 +83,8 @@
     "test:ci-plan": "node --test tests/ci-plan.test.mjs",
     "test:gpu-lifecycle": "node --test tests/gpu-program.test.mjs && node tests/gpu-readiness.mjs && node tests/gpu-material-parity.mjs && node tests/magic-deferred-gpu-ancestry.mjs",
     "test:magic-fonts": "node --test tests/magic-font-boundary.test.mjs && node tests/magic-font-geometry.mjs",
-    "test:software-finishes": "node tests/software-finish-history.mjs && node tests/printing-programs.mjs && node tests/software-finish-full-parity.mjs && node tests/finish-quality.mjs"
+    "test:software-finishes": "node tests/software-finish-history.mjs && node tests/printing-programs.mjs && node tests/software-finish-full-parity.mjs && node tests/finish-quality.mjs",
+    "test:color-indicators": "node tests/magic-color-indicators.mjs && node tests/magic-color-indicators-browser.mjs && node tests/magic-color-indicators-worker.mjs && node tests/magic-color-indicators-worker.mjs --built && node tests/magic-color-indicators-ancestry.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

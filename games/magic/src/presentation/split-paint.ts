@@ -1,3 +1,4 @@
+import { paintFittedTypeLine } from './color-indicator-text.js';
 import { paintFontText, setFont } from './font-geometry.js';
 import { canvasFonts } from './canvas-font-registry.js';
 import {
@@ -127,8 +128,10 @@ function paintSplitHeader(
     symbol = images.get(url ?? ''),
     crop = setSymbolCrop(half);
   const [tx, ty, tw, th] = g.type;
-  paintFittedText(
+  paintFittedTypeLine(
     c,
+    half,
+    images,
     half.typeLine ?? '',
     tx,
     ty + th / 2,

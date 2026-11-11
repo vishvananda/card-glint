@@ -10,6 +10,7 @@ import { faceSetSymbol } from './assets.js';
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
 import {
   templateLabel,
+  templateTypeLabel,
   templateCost,
   templateRules,
   templateStats,
@@ -93,13 +94,13 @@ export function paintFlipTemplate(
       17,
       family,
     );
-    templateLabel(
+    templateTypeLabel(
       c,
-      f.typeLine ?? '',
+      f,
+      images,
       [type[0], type[1], type[2] - (f.power != null ? 60 : 0), type[3]],
       14,
       family,
-      f.textInk,
     );
     templateRules(c, f, images, rules, 14, 8);
     templateStats(c, f, stats, 17, family);

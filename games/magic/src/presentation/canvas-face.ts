@@ -121,6 +121,13 @@ import { paintEtchingMask, type EtchingResolver } from './canvas-etching.js';
 import { fullResolutionScan } from '../scan-url.js';
 import type { AbilityEmblem } from '../emblems.js';
 import { paintCardStatus } from './canvas-status.js';
+import {
+  colorIndicatorKey,
+  colorIndicatorChangesPrinting,
+  resolveColorIndicator,
+} from './color-indicator.js';
+import { paintTypeColorIndicator } from './color-indicator-paint.js';
+import { prepareColorIndicators } from './color-indicator-material.js';
 import { paintIllustration, type PaintLayer } from './illustration-paint.js';
 
 export type TextureTier = 'table' | 'native' | 'inspect' | number;
@@ -212,6 +219,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
       input.layer ?? 'face',
       input.layer === 'etching' ? (input.etchThreshold ?? 20) : null,
     ]);
+  input = indicatorTextureInput(input);
   // Only visible face content; no identity handles, finish or interaction state.
   const face = input.face;
   const dualFrameRevision =
@@ -230,7 +238,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
     (face.frameAssetFamily === 'eighth' ||
       face.frameTemplate === 'future' ||
       nativeSplitEra(face) === 'eighth');
-  const content = faceContentKey(face, input.layer === 'etching');
+  const content = faceContentKey(face, input.layer === 'etching', input.paintLayer !== 'artwork');
   const stats =
     input.currentStats?.power != null && input.currentStats.toughness != null
       ? [input.currentStats.power, input.currentStats.toughness]
@@ -333,7 +341,7 @@ export function cardTextureKey(input: CardTextureInput, tier: TextureTier): stri
   ]);
 }
 
-function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
+function faceContentKey(face: RenderedCardInput, mask: boolean, indicators = true): unknown {
   const options = [
     face.printingElements,
     face.collectorTotal,
@@ -342,6 +350,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
     ...(face.calibration !== undefined ? [['printing-calibration-v1', face.calibration]] : []),
   ];
   const printingOptions = [
+    ...(!mask && indicators ? colorIndicatorKey(face) : []),
     ...(options.some((v) => v !== undefined) ? [['printing-elements-v1', ...options]] : []),
     // Recursion below also versions split/child faces. Original and etching
     // keys retain their exact previous identity.
@@ -361,7 +370,14 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
       face.collectorNumber ?? null,
       face.legalText ?? null,
       face.borderColor ?? null,
-      panels.map((p) => [p.x, p.y, p.width, p.height, p.rotation, faceContentKey(p.face, mask)]),
+      panels.map((p) => [
+        p.x,
+        p.y,
+        p.width,
+        p.height,
+        p.rotation,
+        faceContentKey(p.face, mask, indicators),
+      ]),
       !mask && splitHasFuse(face),
       !mask && splitFuseParagraphs(face),
       ...(!mask && face.printingOmissions?.length ? [face.printingOmissions] : []),
@@ -393,7 +409,7 @@ function faceContentKey(face: RenderedCardInput, mask: boolean): unknown {
         face.frameTemplate ?? null,
         face.futureTreatment ?? null,
         face.defense ?? null,
-        face.faces?.map((child) => faceContentKey(child, mask)) ?? null,
+        face.faces?.map((child) => faceContentKey(child, mask, indicators)) ?? null,
         face.name,
         face.manaSymbols ?? [],
         face.symbolAdjustment ?? null,
@@ -452,6 +468,19 @@ export interface CardTextureHooks {
   loadRetroFont?: () => Promise<void>;
   underArt?: CanvasRaster;
 }
+function indicatorTextureInput(input: CardTextureInput): CardTextureInput {
+  return !input.custom &&
+    input.printedImage &&
+    input.paintLayer !== 'artwork' &&
+    input.layer !== 'etching' &&
+    colorIndicatorChangesPrinting(input.face)
+    ? { ...input, printedImage: null }
+    : input;
+}
+function validateIndicatorTree(face: RenderedCardInput): void {
+  resolveColorIndicator(face);
+  for (const child of face.faces ?? []) validateIndicatorTree(child);
+}
 export function composeCardTexture(
   input: CardTextureInput,
   tier: TextureTier,
@@ -489,7 +518,18 @@ export async function composeCardTexture(
       closeRaster(raster);
     }
   };
-  input = { ...input, face: calibrationFace(input.face) };
+  const scanned = Boolean(input.printedImage);
+  input = indicatorTextureInput({ ...input, face: calibrationFace(input.face) });
+  validateIndicatorTree(input.face);
+  if (
+    scanned &&
+    !input.printedImage &&
+    !input.face.illustration &&
+    !input.face.faces?.every((face) => face.illustration)
+  )
+    throw Error(
+      'Changing a scanned color indicator requires illustration data for the rebuilt face',
+    );
   validateArtPlacement(input.face);
   validatePrintingElements(input.face);
   validateSymbolAdjustment(input.face);
@@ -601,11 +641,15 @@ export async function composeCardTexture(
           : Promise.resolve(),
       ]);
     signal.throwIfAborted();
-    const loaded = await loadImages(canvasAssetUrls(input.face), signal);
+    const loaded = await loadImages(
+      canvasAssetUrls(input.face, input.paintLayer !== 'artwork'),
+      signal,
+    );
     let calibrated: Awaited<ReturnType<typeof prepareEarlyHsb>> | undefined;
     let dual: Awaited<ReturnType<typeof prepareRetroDualFrame>> | undefined;
     let numerals: Awaited<ReturnType<typeof prepareManaNumerals>> | undefined;
     let walkers: Awaited<ReturnType<typeof preparePlaneswalkerMaterials>> | undefined;
+    let indicators: Awaited<ReturnType<typeof prepareColorIndicators>> | undefined;
     try {
       if (input.paintLayer !== 'artwork')
         calibrated = await prepareEarlyHsb(input.face, loaded.images, signal);
@@ -621,9 +665,15 @@ export async function composeCardTexture(
             );
       if (input.paintLayer !== 'artwork')
         walkers = await preparePlaneswalkerMaterials(input.face, numerals.images, signal);
+      if (input.paintLayer !== 'artwork')
+        indicators = await prepareColorIndicators(
+          input.face,
+          walkers?.images ?? numerals.images,
+          signal,
+        );
       await hooks?.beforePaint?.();
       signal.throwIfAborted();
-      const paintingImages = walkers?.images ?? numerals.images;
+      const paintingImages = indicators?.images ?? walkers?.images ?? numerals.images;
       withRulesInk(context, input.rulesText !== false, () =>
         withPrintingOmissions(context, input.face, () =>
           paintAssembledFace(
@@ -669,6 +719,7 @@ export async function composeCardTexture(
       roundCanvasSilhouette(context, input.face);
       return await complete(canvas);
     } finally {
+      indicators?.dispose();
       walkers?.dispose();
       numerals?.dispose();
       dual?.dispose();
@@ -1099,12 +1150,18 @@ export function paintAssembledFace(
             typeWidth * 0.97
         ? WALKER_GEOMETRY.typeWidth
         : 1;
+  const indicatorType = paintTypeColorIndicator(context, face, images, [
+    textX + (planeswalker ? 1.5 : 0) + typeFit.dx,
+    typeCenter + typeFit.dy - (FACE_TEXT.typeFont * textScale) / 2,
+    typeWidth - typeFit.dx,
+    FACE_TEXT.typeFont * textScale,
+  ]);
   paintFittedText(
     context,
     face.typeLine ?? '',
-    textX + (planeswalker ? 1.5 : 0) + typeFit.dx,
+    indicatorType[0],
     typeCenter + typeFit.dy,
-    typeWidth - typeFit.dx,
+    indicatorType[2],
     FACE_TEXT.typeFont * textScale * typeFit.size,
     false,
     typeWidthScale * typeFit.width,
