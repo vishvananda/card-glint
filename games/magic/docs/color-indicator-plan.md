@@ -1,11 +1,11 @@
 # Color indicators: investigation and implementation plan
 
-Status: implemented on the feature branch; see [the input and usage guide](color-indicators.md).
+Status: implemented in 0.7.14; see [the input and usage guide](color-indicators.md).
 This document records the original investigation and implementation decisions.
 Inspected source: `a39f137a`, after 0.7.13. Upstream references use the revisions
 already pinned in `assets.json`.
 
-## Current support
+## Support before this change
 
 The Magic pack does not draw color indicators. `RenderedCardInput` has no
 indicator field or geometry, and neither ordinary type-line painter reserves

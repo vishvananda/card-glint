@@ -4,7 +4,8 @@
 
 The pack draws a color indicator to the left of the type text and reserves its
 space before fitting the text. The frame palette and mana cost stay independent.
-This is available in the source branch; it is not part of release 0.7.13.
+Available in card-glint 0.7.14 and later. The default shows only the physical
+printing's indicator; frame and mana-cost colors do not trigger one.
 
 ## Printed indicators
 
