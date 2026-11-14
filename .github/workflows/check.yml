@@ -76,8 +76,8 @@ jobs:
         with:
           name: renderer-build
           path: .
-      - name: Fetch exact pre-indicator painter for differential controls
-        run: git fetch --no-tags --depth=1 origin a39f137a23a8cac7b47fcaf31c18e88b1af4f241
+      - name: Fetch exact painter baselines for differential controls
+        run: git fetch --no-tags --depth=1 origin a39f137a23a8cac7b47fcaf31c18e88b1af4f241 efaa4a952840000e8d66f0522ebed2e6bbb2c11e
       - name: Use primary Ubuntu archive for browser dependencies
         run: |
           for source in /etc/apt/sources.list /etc/apt/sources.list.d/*.sources /etc/apt/sources.list.d/*.list /etc/apt/apt-mirrors*.txt; do

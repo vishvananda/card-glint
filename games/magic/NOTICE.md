@@ -184,3 +184,10 @@ The optional old-frame calibration adapter also references the pinned
 Its JPEG plates remain external URLs. The adapter uses the style's declared
 illustration field to leave room for separately supplied artwork. These source
 references do not include external artwork or change the repository license.
+
+Recent set-code aliases follow [Scryfall set icon metadata](https://scryfall.com/docs/api/sets).
+The Zeta Set silhouette is an external [Scryfall SVG reference](https://svgs.scryfall.io/sets/slz.svg),
+with its observed revision and checksum recorded in the recent-symbol catalog.
+No Scryfall SVG bytes are redistributed. This fallback has no claim to a
+measured rarity gradient or source immutability; the audit flags changed bytes.
+See [recent set symbols](docs/recent-set-symbols.md) for source and coverage limits.

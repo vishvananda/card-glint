@@ -4,6 +4,10 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { root, hash } from './common.mjs';
+import {
+  preRecentSymbolSource,
+  recentSymbolHistoricalFiles,
+} from './recent-symbol-source-ancestry.mjs';
 const FILE = 'games/magic/fixtures/accuracy/color-indicators/source-proof.json.gz';
 const SHA = '0e1627c31e30c1046ec5fe5edcdcfa53944908814bb93ad884ef8c7df8eb41a4';
 let checked;
@@ -32,7 +36,7 @@ export function colorIndicatorAncestry() {
         file.startsWith('games/magic/src/') || file === 'games/magic/tools/accuracy/adapter.mjs',
       );
       assert.equal(
-        hash(await readFile(path.join(root, file))),
+        hash(await preRecentSymbolSource(file, await readFile(path.join(root, file)))),
         e.after,
         'Unreviewed color indicator dependency: ' + file,
       );
@@ -43,6 +47,7 @@ export function colorIndicatorAncestry() {
 }
 /** Exact inactive-extension ancestry; foreign bytes never acquire an older identity. */
 export async function preColorIndicatorSource(file, bytes) {
+  bytes = await preRecentSymbolSource(file, bytes);
   const e = (await colorIndicatorAncestry()).files[file];
   return e && e.beforeSource !== null && hash(bytes) === e.after
     ? Buffer.from(e.beforeSource)
@@ -51,7 +56,7 @@ export async function preColorIndicatorSource(file, bytes) {
 export async function colorIndicatorHistoricalFiles(files) {
   const p = await colorIndicatorAncestry();
   const kept = [];
-  for (const file of files) {
+  for (const file of await recentSymbolHistoricalFiles(files)) {
     const key = file.startsWith('games/') ? file : path.relative(root, file);
     const e = p.files[key];
     if (e?.beforeSource === null && hash(await readFile(path.join(root, key))) === e.after)

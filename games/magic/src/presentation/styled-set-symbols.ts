@@ -2,6 +2,7 @@ import manifest from '../../assets.json' with { type: 'json' };
 import inventory from '../../set-symbol-inventory.json' with { type: 'json' };
 import { usesMonochromeSetSymbol } from './historical-set-symbol.js';
 import type { RenderedCardInput } from './face-layout.js';
+import { recentSetSymbolCode } from './recent-set-symbols.js';
 
 export const CONJURER_ROOT = manifest.CONJURER_ROOT;
 const ROOT = `${CONJURER_ROOT}/img/setSymbols/official/`;
@@ -20,7 +21,7 @@ export function styledSetSymbol(
   rarity = 'common',
   source: RenderedCardInput['setSymbolSource'] = 'auto',
 ): string | null {
-  const key = code.trim().toLowerCase();
+  const key = recentSetSymbolCode(code);
   if (source === 'keyrune') return null;
   const suffix = usesMonochromeSetSymbol(key) ? 'c' : rarities[rarity];
   // Missing rarities fall back to Keyrune, never a different rarity's artwork.

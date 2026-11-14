@@ -8,9 +8,10 @@ import {
 } from '../games/magic/tools/accuracy/color-indicator-ancestry.mjs';
 import { preOracleFlavorSource } from '../games/magic/tools/accuracy/oracle-flavor-ancestry.mjs';
 import { preM21BodyFieldSource } from '../games/magic/tools/accuracy/m21-body-field-ancestry.mjs';
+import { preRecentSymbolSource } from '../games/magic/tools/accuracy/recent-symbol-source-ancestry.mjs';
 const proof = await colorIndicatorAncestry();
 for (const [file, e] of Object.entries(proof.files)) {
-  const bytes = await readFile(file);
+  const bytes = await preRecentSymbolSource(file, await readFile(file));
   assert.equal(hash(bytes), e.after);
   const before = await preColorIndicatorSource(file, bytes);
   assert.equal(hash(before), e.beforeSource === null ? e.after : e.before);

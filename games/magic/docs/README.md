@@ -38,6 +38,7 @@ later releases. Check the current profile and Lab status before reusing values.
 - [Futureshifted](futureshifted.md), [Planar Chaos](planar-chaos.md),
   [Eighth Edition](eighth-edition.md), and [Flip/Battle templates](template-frames.md).
 - [Set symbol assets](set-symbol-assets.md): styled sources, masks and SVG patches.
+- [Recent set symbols](recent-set-symbols.md): source audit, explicit aliases and remaining gaps.
 - [Revised lands](retro-lands.md) and [early-printing follow-up](early-printing-followup.md).
 - [Planeswalker materials](planeswalker-materials.md).
 - [Sagas](saga-layout.md), [Adventure](adventure-layout.md), [Prepared cards](prepare-layout.md),

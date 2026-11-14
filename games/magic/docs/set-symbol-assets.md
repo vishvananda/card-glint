@@ -9,6 +9,8 @@ white details, black outlines and metallic gradients. The
 `setSymbolSource: 'keyrune'` to select the prior source. Frame-family
 selection does not change the symbol-source policy. A missing exact rarity falls back to
 Keyrune; unknown sets return no symbol instead of requesting a nonexistent file.
+Recent promo, Alchemy and anthology aliases reuse verified symbol identities; see
+[the recent-set source audit](recent-set-symbols.md) for coverage and pending sources.
 Pre-Exodus printings still use monochrome symbols. Host-owned `setSymbol` URLs
 and the original GLINT/FORGE marks take precedence and preserve their colors.
 

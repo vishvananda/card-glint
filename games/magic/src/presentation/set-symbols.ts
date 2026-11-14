@@ -1,6 +1,7 @@
 import manifest from '../../assets.json' with { type: 'json' };
 import type { FaceRect, RenderedCardInput } from './face-layout.js';
 import { styledSetSymbol } from './styled-set-symbols.js';
+import { recentSetSymbolCode, recentSetSymbolVector } from './recent-set-symbols.js';
 /** Keyrune set-symbol SVGs by Andrew Gioia, pinned to commit 256add455.
  * Glyph SVGs are GPL-3.0: https://github.com/andrewgioia/keyrune/blob/256add455a043462f7b2bfa224ca71bfc66b62ab/LICENSE.md
  * The CDN serves immutable vectors with CORS so Canvas2D and CSS use the same art.
@@ -79,11 +80,14 @@ export function setSymbolVector(
   rarity = 'common',
   source?: RenderedCardInput['setSymbolSource'],
 ): string | null {
-  const normalized = code.trim().toLowerCase();
+  const normalized = recentSetSymbolCode(code);
   if (normalized === 'forge') return forgeSymbol(rarity);
   if (normalized === LOCAL_CARD_SET_CODE.toLowerCase()) return localCardSymbol(rarity);
   const styled = styledSetSymbol(normalized, rarity, source);
   if (styled) return styled;
   const key = normalized === 'con' ? 'con_' : normalized === 'p02' ? 'po2' : normalized;
-  return KEYRUNE_CODES.has(key) ? `${KEYRUNE_ROOT}/${key}.svg` : null;
+  return (
+    (source === 'keyrune' ? null : recentSetSymbolVector(key)) ??
+    (KEYRUNE_CODES.has(key) ? `${KEYRUNE_ROOT}/${key}.svg` : null)
+  );
 }
