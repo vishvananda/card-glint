@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Printing presets · Magic pack prototype</title>
+    <link rel="stylesheet" href="./magic.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #141c25;
+        color: #f1e6ce;
+        font: 15px system-ui;
+      }
+      main {
+        max-width: 1080px;
+        margin: 24px auto;
+        padding: 16px;
+        display: grid;
+        grid-template-columns: minmax(280px, 1fr) minmax(300px, 430px);
+        gap: 30px;
+      }
+      h1 {
+        margin-top: 0;
+        font-size: 25px;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button {
+        border: 1px solid #617081;
+        border-radius: 8px;
+        padding: 9px 12px;
+        background: #263547;
+        color: inherit;
+        cursor: pointer;
+      }
+      button[aria-pressed='true'] {
+        border-color: #e6c375;
+        background: #3d483d;
+      }
+      #presets {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      #presets button {
+        text-align: left;
+      }
+      #presets button:disabled {
+        opacity: 0.4;
+        cursor: default;
+      }
+      label {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin: 12px 0;
+      }
+      label input:not([type='checkbox']),
+      label select {
+        min-width: 0;
+        flex: 1;
+        padding: 5px;
+      }
+      aside {
+        position: sticky;
+        top: 20px;
+        align-self: start;
+      }
+      canvas {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      small,
+      p {
+        color: #b9c7d0;
+        line-height: 1.5;
+      }
+      details {
+        margin-top: 18px;
+        border-top: 1px solid #526070;
+        padding-top: 12px;
+      }
+      fieldset {
+        margin: 15px 0;
+        border: 1px solid #526070;
+        border-radius: 8px;
+      }
+      fieldset label {
+        font-size: 13px;
+      }
+      fieldset input[type='number'] {
+        width: 68px;
+        flex: 0;
+      }
+      #status {
+        min-height: 3em;
+      }
+      #notice {
+        max-width: 1080px;
+        margin: 25px auto;
+        padding: 16px;
+        font-size: 12px;
+      }
+      @media (max-width: 700px) {
+        main {
+          display: flex;
+          flex-direction: column;
+        }
+        aside {
+          position: static;
+          max-width: 360px;
+          order: -1;
+          align-self: center;
+        }
+        h1 {
+          font-size: 21px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>Printing presets</h1>
+        <p>
+          Hover or focus a preset to preview it. Click to keep it. Presets include frame, symbols,
+          type, credit formatting and legal defaults. Your source card stays unchanged.
+        </p>
+        <div id="presets"></div>
+        <p id="status" role="status"></p>
+        <details>
+          <summary>Customize details</summary>
+          <p>
+            Empty fields follow the preset. Offsets use 488 × 680 reference pixels. Reset restores
+            preset defaults.
+          </p>
+          <label>Artist <input id="artist" placeholder="Use source artist" /></label
+          ><label>Copyright <input id="legal" placeholder="Use preset legal line" /></label
+          ><label>Number <input id="number" placeholder="Use source number" /></label
+          ><label
+            >Set total
+            <input id="total" type="number" min="1" max="99999" placeholder="Preset" /></label
+          ><label>Language <input id="language" placeholder="EN" maxlength="5" /></label
+          ><label>Set symbol <input id="symbol" placeholder="Custom image URL or preset" /></label
+          ><label
+            >Mana symbols
+            <select id="mana">
+              <option value="">Use preset</option>
+              <option value="original">Original</option>
+              <option value="modern">Modern</option>
+            </select></label
+          >
+          <div id="elements"></div>
+          <button id="reset" type="button">Reset customizations</button>
+        </details>
+      </section>
+      <aside>
+        <canvas id="card" width="732" height="1020" aria-label="Printing style preview"></canvas
+        ><label
+          >Finish
+          <select id="finish">
+            <option value="holofoil">Holofoil</option>
+            <option value="gloss">Shiny</option>
+            <option value="regular">None</option>
+            <option value="etched">Etched</option>
+            <option value="opal">Opal</option>
+          </select></label
+        ><button id="download" type="button">Download PNG</button>
+      </aside>
+    </main>
+    <footer id="notice"></footer>
+    <script type="module" src="./printing-presets-example.js"></script>
+  </body>
+</html>
